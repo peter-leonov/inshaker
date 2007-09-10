@@ -1,0 +1,141 @@
+/*
+ * © 2007 http://www.markup.programica.ru/
+ * Author - Kornilov Pavel
+ */
+
+@import url(ie.css);
+
+img
+{
+	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
+}
+
+label
+{
+	behavior		: expression( (this["for"] == null && firstChild && runtimeStyle.behavior == '') ?
+									onclick = function () {
+										if (this.getElementsByTagName("input")[0])
+										{
+											try {
+											this.getElementsByTagName("input")[0].click() ||
+											this.getElementsByTagName("input")[0].focus()
+											}
+											catch (ex) { /* ничего */ }
+										}
+										else if (this.getElementsByTagName("textarea")[0])
+										{
+											this.getElementsByTagName("textarea")[0].focus()			
+										}
+									} : '', runtimeStyle.behavior = 'none' )
+}
+
+/* png fix */
+.bg-png-crop
+{
+	filter	: expression(
+		(runtimeStyle.filter == '') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)' : runtimeStyle.filter,
+		runtimeStyle.backgroundImage = 'none');
+}
+.bg-png-scale
+{
+	filter	: expression(
+		(runtimeStyle.backgroundImage != 'none') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=scale)' : runtimeStyle.filter,
+		runtimeStyle.backgroundImage = 'none');
+}
+img.this-src-png
+{
+	width: expression(width);
+	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='image')" : '',
+						src = '/i/0.gif');
+}
+/* Позиционируем по аналогии с бэкграундом */
+.izvrat-plus-div
+{
+	behavior: expression(
+				(runtimeStyle.behavior == '') ? innerHTML += '<div class="ie" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)"></div>' : '',
+				runtimeStyle.backgroundImage = 'none',
+				runtimeStyle.behavior = 'none'
+			);
+}
+.izvrat-plus-div .ie
+{
+	position		: absolute;
+	top				: 0;
+	right			: 0;
+	height			: 40px;
+	width			: 18px;
+}
+
+
+.content-after
+{
+	behavior: expression( innerHTML += '<div class="ie">ie</div>', runtimeStyle.behavior = 'none' )
+}
+
+/* position: fixed */
+html { background-attachment: fixed; }
+.position-fixed
+{
+	position		: absolute;
+	top				: expression(parseInt(document.documentElement.scrollTop, 10) + "px");
+}
+
+.add-hover-class-for-any-elements
+{
+	behavior		: expression(
+						onmouseover = function() {this.className += ' hover'},
+						onmouseout = function() {this.className = this.className.replace(/ hover/g, "")},
+						runtimeStyle.behavior = 'none'
+					);
+}
+
+.max-width { width : expression(document.body.clientWidth > 920 ? "92em" : "auto"); }
+.height-100-percantage { height: expression(document.body.clientHeight+'px'); }
+.border-color-transparent
+{
+	filter			: chroma(color=cyan);
+	border-color	: cyan;
+}
+
+
+/* input[type=...] */
+form .where-input
+{
+	background-color: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "#5f5f5f" : "inherit");
+	border			: expression(this.getAttribute("type") && this.getAttribute("type")=="text" ? "3px solid #5f5f5f" : "inherit");
+	color			: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "#8f8f8f" : "inherit");
+	display			: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "block" : "inherit");
+	margin			: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "5px 0 0 0" : "inherit");
+	padding			: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "0 2px" : "inherit");
+	width			: expression(this.getAttribute("type") && (this.getAttribute("type")=="file" || this.getAttribute("type")=="text") ? "315px" : "inherit");
+}
+
+.img-for-em
+{
+	height		: expression(runtimeStyle.height = (height/10)+'em');
+	width		: expression(runtimeStyle.width = (width/10)+'em');
+}
+
+.wrapper-vertical-align-middle
+{
+	margin-top: expression(
+						((parentNode.offsetHeight/2)-parseInt(offsetHeight)/2) < 0 ? "0" :
+						(parentNode.offsetHeight/2)-(parseInt(offsetHeight)/2) +'px'
+					);
+}
+
+.first-child
+{
+	background-color: expression(this.parentNode.currentStyle.color)
+	behavior		: expression( (this == parentNode.firstChild) ? className += ' first-child' : '', runtimeStyle.behavior = 'none' )
+}
+
+.inherit
+{
+	background-color: expression( runtimeStyle.backgroundColor = parentNode.currentStyle.backgroundColor);
+}
+
+/*this crash ie*/
+filter	: expression(
+	(runtimeStyle.filter == '') ? runtimeStyle.filter = '' : runtimeStyle.filter,
+	parentNode.);

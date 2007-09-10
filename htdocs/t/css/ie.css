@@ -1,0 +1,16 @@
+html
+{
+	font-size		: 101%;
+}
+
+/* delete title, where alt="..." */
+img
+{
+	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
+}
+
+.opacity
+{
+	filter			: expression( runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity='+currentStyle.opacity*100+')' );
+	zoom			: 1;
+}
