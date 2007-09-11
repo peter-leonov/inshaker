@@ -73,7 +73,7 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 
 .main {
 	margin			: 0 auto;
-	width			: 96em;
+	width			: 95.8em;
 	}
 .main-wrapper {
 	border			: 0 solid #d7d7d7;
@@ -82,10 +82,11 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 	float			: left;
 	width			: 63.8em;
 	}
-.main-wrapper-container		{ padding: 10px 9px; margin: 0 1px; background: url('bg/main-wrapper.gif') repeat-x 0 0; }
+.main-wrapper-container		{ padding: 10px 18px; margin: 0 1px; background: url(bg/main-wrapper.gif) repeat-x 0 0; }
 .main-wrapper .border-bot,
 .main-wrapper .border-top	{ border-top: 1px solid #d7d7d7; background: none; position: relative; top: -1px; width: 100%; }
 .main-wrapper .border-bot	{ top: 1px; }
+
 .sidebar {
 	width			: 31em;
 	float			: right;
@@ -109,27 +110,26 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 .searchbar .form dt,
 .searchbar .form dd		{ background: none; padding: 0; }
 
-.searchbar p		{ padding: 0 9px 0 8px; }
+.searchbar p			{ padding: 0 9px 0 8px; }
 
-.searchbar dl		{ line-height: 15px; font-size: 11px; margin-bottom: 4px;  }
-.searchbar dt		{ background: #343b40 url(bg/border-radius-right.gif) no-repeat 0 0; font-weight: bold; height: 17px; color: #fff; margin-top: 10px; padding-left: 8px; }
-.searchbar dd		{ background: transparent url(bg/border-radius-right.gif) no-repeat 0 0; height: 17px; position: relative; margin-bottom: 1px; padding-left: 8px; }
-.searchbar dd a		{  }
+.searchbar dl			{ line-height: 15px; font-size: 11px; margin-bottom: 4px;  }
+.searchbar dt			{ background: #343b40 url(bg/border-radius-right.gif) no-repeat 0 0; font-weight: bold; height: 17px; color: #fff; margin-top: 10px; padding-left: 8px; }
+.searchbar dd			{ background: transparent url(bg/border-radius-right.gif) no-repeat 0 0; height: 17px; position: relative; margin-bottom: 1px; padding-left: 8px; }
+.searchbar dd a			{  }
 
-.searchbar dd img	{ position: absolute; right: 0; top: 6px; cursor: pointer; }
-.searchbar h3		{ color: #000; line-height: 10px; margin: 24px 0 0 9px; }
+.searchbar dd img		{ position: absolute; right: 0; top: 6px; cursor: pointer; }
+.searchbar h3			{ color: #000; line-height: 10px; margin: 24px 0 0 9px; }
 
 .searchbar .now			{ background-color: #e3f3fd; }
 .searchbar .now a		{ display: block; height: 100%; color: #343b40; background: url(icon/close-black.gif) no-repeat 115px 6px; text-decoration: none; }
 .searchbar .dis a		{ text-decoration: none; color: #7d7d7d; cursor: default; }
 
-.page-search-coctails .content {
-	font-size		: 1.1em; 
-	margin-left		: 149px;
-	}
+.page-search-coctails .content		{ margin-left: 149px; }
+.page-ingridients .main-wrapper		{ width: 100%; float: none; }
 
-.content .title						{ padding: 0 10px; height: 50px; overflow: hidden; line-height: 30px; }
-.content .title h1					{ float: left; font-size: 24px; line-height: 30px;  }
+.content							{ font-size: 1.1em;  }
+.content .title						{ background: url(border/border.gif) repeat-x 0 100%; height: 48px; overflow: hidden; margin-bottom: 9px; line-height: 40px; }
+.content .title h1					{ float: left; font-size: 24px; color: #343b40; line-height: 40px;  }
 .content .title p					{ float: right; }
 
 .content .alphabetical				{ background: #ebebeb; height: 2.73em; line-height: 2.73em; overflow: hidden; }
@@ -161,6 +161,13 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 .content .nav						{ position: absolute; top: 17px; right: 9px; }
 .content .nav.prev					{ right: 29px; }
 
+
+.top-alphabetical dl				{ float: left; background: red; width: 13.7em; font-size: 12px; margin: 0 10px 1em 10px; }
+.top-alphabetical dt				{ font-size: 1.5em; margin: 0 0 0 0; line-height: 2em; }
+.top-alphabetical dd				{ width: 1px; white-space: nowrap; cursor: pointer; color: #1498f1; height: 1.5em; }
+.top-alphabetical dd:hover			{ text-decoration: underline; }
+.top-alphabetical dd.dis			{ color: #adacac; }
+.top-alphabetical dd.dis:hover		{ text-decoration: none; cursor: default; }
 
 /* Inline blocks
 --------------------*/
