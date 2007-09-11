@@ -3,12 +3,7 @@ html
 	font-size		: 101%;
 }
 
-/* delete title, where alt="..." */
-img
-{
-	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
-}
-
+/* delete title, where alt="..." Если подключена програмика - удалить */
 .opacity
 {
 	filter			: expression( runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity='+currentStyle.opacity*100+')' );

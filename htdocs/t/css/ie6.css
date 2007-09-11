@@ -5,30 +5,11 @@
 
 @import url(ie.css);
 
-img
-{
-	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
-}
+.main-wrapper-container{ zoom:1; }
+.content .pager { zoom: 1; }
 
-label
-{
-	behavior		: expression( (this["for"] == null && firstChild && runtimeStyle.behavior == '') ?
-									onclick = function () {
-										if (this.getElementsByTagName("input")[0])
-										{
-											try {
-											this.getElementsByTagName("input")[0].click() ||
-											this.getElementsByTagName("input")[0].focus()
-											}
-											catch (ex) { /* ничего */ }
-										}
-										else if (this.getElementsByTagName("textarea")[0])
-										{
-											this.getElementsByTagName("textarea")[0].focus()			
-										}
-									} : '', runtimeStyle.behavior = 'none' )
-}
-
+.content .pager .numbers a.now,
+.content .sort-by a.now { width: 1px; white-space: nowrap; }
 /* png fix */
 .bg-png-crop
 {
