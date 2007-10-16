@@ -64,6 +64,10 @@ b b				{ background-position: 0 100%; }
 b b b			{ background-position: 100% 0; }
 b b b b			{ background-position: 100% 100%; }
 a b				{ display: inline; }
+a b				{ background-position: 0 0 !important; }
+a b b			{ background-position: 0 100% !important; }
+a b b b			{ background-position: 100% 0 !important; }
+a b b b b		{ background-position: 100% 100% !important; }
 a.now b			{ display: block; }
 a.now b b b b	{ padding: 0 4px 0 4px; }
 
@@ -73,16 +77,16 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 
 .main {
 	margin			: 0 auto;
-	width			: 95.8em;
+	width			: 96em;
 	}
 .main-wrapper {
+	background		: #fff;
 	border			: 0 solid #d7d7d7;
 	border-width	: 0 1px;
-	background		: #fff;
 	float			: left;
 	width			: 63.8em;
 	}
-.main-wrapper-container		{ padding: 10px 18px; margin: 0 1px; background: url(bg/main-wrapper.gif) repeat-x 0 0; }
+.main-wrapper-container		{ padding: 10px 9px; margin: 0 1px;	background: url(bg/main-wrapper.gif) repeat-x 0 0; }
 .main-wrapper .border-bot,
 .main-wrapper .border-top	{ border-top: 1px solid #d7d7d7; background: none; position: relative; top: -1px; width: 100%; }
 .main-wrapper .border-bot	{ top: 1px; }
@@ -101,20 +105,28 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 	color			: #f1f7b6;
 	margin-bottom	: 6px;
 	}
-.searchbar .form b b b b{ padding: 1px; }
-.searchbar .form .b		{ background: url(bg/over-white.a.png) repeat-x 0 0; padding: 10px 9px 14px 8px; }
-.searchbar .form a		{ color: #f1f7b6; }
-.searchbar .form strong	{ color: #fff; }
-.searchbar .form input	{ border: 1px solid red; border-color: #d7d7d7 #fff #fff #d7d7d7; background: #f1f7b6; margin: 0; width: 118px; }
-.searchbar .form form	{ margin: 16px 0; }
+
+.page-search-coctails .content				{ margin-left: 149px; }
+.page-ingridients .main-wrapper				{ width: 100%; float: none; }
+.page-ingridients .main-wrapper-container	{ padding: 10px 18px; position: relative; }
+.page-ingridients .content .title			{ margin-bottom: 8px; }
+.page-coctail .content .title				{ margin: 0 10px; }
+
+
+
+.searchbar .form b b b b	{ padding: 1px; }
+.searchbar .form .container	{ background: url(bg/over-white.a.png) repeat-x 0 0; padding: 10px 9px 14px 8px; }
+
+.searchbar .form form		{ margin: 16px 0; }
 .searchbar .form dt,
-.searchbar .form dd		{ background: none; padding: 0; }
+.searchbar .form dd			{ background: none; padding: 0; }
+.searchbar .form .container	{ background: url(bg/over-white.a.png) repeat-x 0 0; padding: 10px 9px 14px 8px; }
 
 .searchbar p			{ padding: 0 9px 0 8px; }
 
 .searchbar dl			{ line-height: 15px; font-size: 11px; margin-bottom: 4px;  }
 .searchbar dt			{ background: #343b40 url(bg/border-radius-right.gif) no-repeat 0 0; font-weight: bold; height: 17px; color: #fff; margin-top: 10px; padding-left: 8px; }
-.searchbar dd			{ background: transparent url(bg/border-radius-right.gif) no-repeat 0 0; height: 17px; position: relative; margin-bottom: 1px; padding-left: 8px; }
+.searchbar dd			{ background: transparent url(bg/border-radius-right.gif) no-repeat 0 0; height: 17px; font-size: 12px;  position: relative; margin-bottom: 1px; padding-left: 8px; }
 .searchbar dd a			{  }
 
 .searchbar dd img		{ position: absolute; right: 0; top: 6px; cursor: pointer; }
@@ -124,11 +136,22 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 .searchbar .now a		{ display: block; height: 100%; color: #343b40; background: url(icon/close-black.gif) no-repeat 115px 6px; text-decoration: none; }
 .searchbar .dis a		{ text-decoration: none; color: #7d7d7d; cursor: default; }
 
-.page-search-coctails .content		{ margin-left: 149px; }
-.page-ingridients .main-wrapper		{ width: 100%; float: none; }
+.page-search-coctails .searchbar .form a		{ color: #f1f7b6; }
+.page-search-coctails .searchbar .form strong	{ color: #fff; }
+.page-search-coctails .searchbar .form input	{ border: 1px solid red; border-color: #d7d7d7 #fff #fff #d7d7d7; background: #f1f7b6; margin: 0; width: 118px; }
+.page-ingridients .searchbar					{  }
+.page-ingridients .searchbar .form				{ width: 179px; background: #f1f7b6; position: fixed; z-index: 9; top: 50%; }
+.page-ingridients .searchbar dl					{ padding: 0 0 0 18px; }
+.page-ingridients .searchbar dt					{ color: #343b40; margin-top: 17px; height: 18px; }
+.page-ingridients .searchbar form				{ margin-top: 23px; }
+.page-ingridients .searchbar form input			{ margin: 18px auto 0 auto; display: block; }
+.page-ingridients .searchbar form dd			{ color: #eb1c57; font-weight: bold; }
+.page-ingridients .searchbar dd a				{ text-decoration: none; color: #343b40; }
+.page-ingridients .searchbar a					{ background: url(icon/close-red.gif) no-repeat 100% 4px; padding-right: 10px; }
+/*.page-ingridients .searchbar.double				{ position: absolute; bottom: 4px; left: 18px; }*/
 
 .content							{ font-size: 1.1em;  }
-.content .title						{ background: url(border/border.gif) repeat-x 0 100%; height: 48px; overflow: hidden; margin-bottom: 9px; line-height: 40px; }
+.content .title						{ background: url(border/border.gif) repeat-x 0 100%; height: 48px; overflow: hidden; line-height: 40px; }
 .content .title h1					{ float: left; font-size: 24px; color: #343b40; line-height: 40px;  }
 .content .title p					{ float: right; }
 
@@ -145,7 +168,7 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 
 
 .content .items-result				{ margin-left: 10px; overflow: hidden; }
-.content li							{ float: left; height: 129px; margin-right: 20px;  }
+.content .items-result li			{ float: left; height: 129px; margin-right: 20px;  }
 .content .items-result a			{ font-size: 12px; line-height: 2; }
 .content .items-result span			{ display: block; }
 .content a.coctails-small			{ background-repeat: no-repeat;	background-position: center center; display: block; width: 50px; height: 50px; position: relative; }
@@ -154,6 +177,15 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 .content a.in-basket img			{ position: absolute; top: -3px; right: -17px; background: #e4146e; cursor: pointer; }
 .content a.in-basket:hover img		{ background-color: #1c9ae4; }
 
+.content .tooltip					{ background: url(bg/tooltip-t.png) no-repeat 0 0; color: #fff; font-size: 10px; line-height: 1.4; position: absolute; z-index: 2; width: 277px; min-height: 108px; }
+.content .tooltip .bg				{ background: url(bg/tooltip-b.png) no-repeat 0 bottom; top:0; left: 0; bottom: 0; padding: 91px 0 17px 0; position: absolute; width: 100%; }
+.content .tooltip .bg .bg			{ background: url(bg/tooltip-m.png) repeat-y 0 91px; padding: 0; position: static; height: 100%; }
+.content .tooltip .text-container	{ padding: 16px 14px 28px 14px; position: relative; z-index: 2; }
+.content .tooltip h3				{ color: #f1f7b6; }
+.content .tooltip .desc				{ padding: 2px 0 16px 0; }
+.content .tooltip a					{ color: #00c0ff; text-decoration: none; }
+.content .tooltip a:hover			{ text-decoration: underline; }
+
 .content .pager						{ background: url(border/border.gif) repeat-x 0 0; margin: 16px 0 0 10px; padding: 16px 0 20px 0; line-height: 1.36em; position: relative; }
 .content .pager .numbers			{ word-spacing: .5em; padding-left: .5em; }
 .content .pager .numbers a			{ height: 1.36em; }
@@ -161,13 +193,46 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 .content .nav						{ position: absolute; top: 17px; right: 9px; }
 .content .nav.prev					{ right: 29px; }
 
-
-.top-alphabetical dl				{ float: left; background: red; width: 13.7em; font-size: 12px; margin: 0 10px 1em 10px; }
-.top-alphabetical dt				{ font-size: 1.5em; margin: 0 0 0 0; line-height: 2em; }
-.top-alphabetical dd				{ width: 1px; white-space: nowrap; cursor: pointer; color: #1498f1; height: 1.5em; }
+/* Страница поиска коктейля по алфавиту
+--------------------*/
+.top-alphabetical					{ overflow: hidden; padding: 1px 0 0 22px; }
+.top-alphabetical dl				{ width: 13.7em; font-size: 12px; margin: 0 10px 1em 10px; float: left; }
+.top-alphabetical dt				{ font-size: 1.5em; padding-left: 10px; margin: 0 0 0 0; line-height: 2em; }
+.top-alphabetical dd				{ width: 1px; padding-left: 10px; line-height: 1.5; white-space: nowrap; cursor: pointer; color: #1498f1; min-height: 1.5em; }
 .top-alphabetical dd:hover			{ text-decoration: underline; }
+.top-alphabetical dd:hover dl:hover,
+.top-alphabetical dd:hover *		{ text-decoration: none !important; }
 .top-alphabetical dd.dis			{ color: #adacac; }
-.top-alphabetical dd.dis:hover		{ text-decoration: none; cursor: default; }
+.top-alphabetical dd.dis:hover		{ text-decoration: none; cursor: default !important; }
+.top-alphabetical dd.now			{ display: block; color: #fff; background: #ee0245 url(icon/close.gif) no-repeat 147px center; width: 152px; }
+.top-alphabetical dd.now:hover		{ text-decoration: none; }
+.top-alphabetical dd dl				{ margin: 0; width: auto; }
+
+/* Страница коктейля
+--------------------*/
+.coctail-contents					{ background-color: #0d0d0d; background-repeat: no-repeat; background-position: 0 42px; height: 242px; }
+.coctail-contents ul				{ overflow: hidden; }
+.coctail-contents li				{ padding-top: 11px; margin-left: 10px; float: left; }
+.coctail-contents a					{ color: #fff; font-size: 10px; display: block; line-height: 20px; height: 20px; text-decoration: none; }
+.coctail-contents a:hover			{ background: #0392f1; }
+.coctail-contents a b				{ background-image: url(border/0d0d0d.gif); display: block; }
+.coctail-contents a b b b b			{ font-weight: bold; padding: 0 10px; }
+
+.hreview							{ padding: 20px 10px 0 10px; overflow: hidden; }
+.hreview h2							{ color: #e4146e; line-height: 33px; font-size: 18px; }
+.hreview .description				{ font-size: 1.09em; }
+.hreview .tags						{ background: url(icon/lampa.gif) no-repeat 0 bottom; height: 19px; padding: 21px 0 0 27px; margin-left: 17px; }
+.hreview .photo						{ float: right; }
+
+.additional							{ overflow: hidden; }
+
+.need								{ float: left; line-height: 30px; margin: 0 0 0 10px; width: 25.45em; }
+.need.need-tools					{ float: right; margin-right: 10px; }
+.need dt							{ color: #e4146e; border-bottom: 3px solid #353b41; font-size: 14px;  }
+.need dd							{ color: #343b40; background: url(border/border.gif) repeat-x 0 100%; height: 31px; }
+.need dd strong						{ font-weight: normal; float: left; height: 30px; width: 181px; line-height: 30px; }
+
+
 
 /* Inline blocks
 --------------------*/
@@ -177,8 +242,8 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 
 /* Borders
 --------------------*/
-.searchbar .form,
-.content {
+.s-earchbar .form,
+.c-ontent {
 	-moz-border-radius: 2px;
 	-moz-border-radius-topright: 2px;
 	-moz-border-radius-bottomright: 2px;
@@ -189,7 +254,7 @@ a.now b b b b	{ padding: 0 4px 0 4px; }
 
 /* Symbols
 --------------------*/
-img[src="t/close.gif"] {
+img[src="t/icon/close.gif"] {
 	font-size		: 9px;
 	}
 

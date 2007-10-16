@@ -17,7 +17,7 @@
 		(runtimeStyle.filter == '') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)' : runtimeStyle.filter,
 		runtimeStyle.backgroundImage = 'none');
 }
-.bg-png-scale
+.content .tooltip .bg .bg
 {
 	filter	: expression(
 		(runtimeStyle.backgroundImage != 'none') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=scale)' : runtimeStyle.filter,
@@ -29,29 +29,26 @@ img.this-src-png
 	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='image')" : '',
 						src = '/i/0.gif');
 }
-/* Позиционируем по аналогии с бэкграундом */
-.izvrat-plus-div
+/* Позиционируем по аналогии с бэкграундом
+   Только для no-repeat!
+*/
+.content .tooltip,
+.content .tooltip .bg
 {
-	behavior: expression(
-				(runtimeStyle.behavior == '') ? innerHTML += '<div class="ie" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)"></div>' : '',
-				runtimeStyle.backgroundImage = 'none',
-				runtimeStyle.behavior = 'none'
-			);
-}
-.izvrat-plus-div .ie
-{
-	position		: absolute;
-	top				: 0;
-	right			: 0;
-	height			: 40px;
-	width			: 18px;
+	behavior		: expression(
+						(runtimeStyle.behavior==''&&currentStyle.backgroundImage!='none') ?
+							insertAdjacentHTML('afterBegin', '<div class="ie"" style="height:1;width:1;position:absolute;'
+								+((currentStyle.backgroundPositionX!='100%'&&currentStyle.backgroundPositionX!='right') ? 'left:'+((currentStyle.backgroundPositionX == 'left') ? 0 : currentStyle.backgroundPositionX ) : 'right:0')+';'
+								+((currentStyle.backgroundPositionY!='100%'&&currentStyle.backgroundPositionY!='bottom') ? ';top:'+((currentStyle.backgroundPositionY == 'top') ? 0 : currentStyle.backgroundPositionY ) : 'bottom:0')
+								+';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)">'+'<img src="'+currentStyle.backgroundImage.split('\"')[1]+'" alt="" style="visibility:hidden" /></div>') : '',
+						runtimeStyle.backgroundImage = 'none',
+						runtimeStyle.behavior = 'none'
+					);
 }
 
+.content .tooltip .bg { height: expression((parentNode.offsetHeight-108) + 'px') }
+.content .tooltip .bg .bg { height: 100%; }
 
-.content-after
-{
-	behavior: expression( innerHTML += '<div class="ie">ie</div>', runtimeStyle.behavior = 'none' )
-}
 
 /* position: fixed */
 html { background-attachment: fixed; }
@@ -116,7 +113,3 @@ form .where-input
 	background-color: expression( runtimeStyle.backgroundColor = parentNode.currentStyle.backgroundColor);
 }
 
-/*this crash ie*/
-filter	: expression(
-	(runtimeStyle.filter == '') ? runtimeStyle.filter = '' : runtimeStyle.filter,
-	parentNode.);
