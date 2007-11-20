@@ -2,14 +2,34 @@
  * © 2007 http://www.markup.programica.ru/
  * Author - Kornilov Pavel
  */
-
 @import url(ie.css);
 
-.main-wrapper-container{ zoom:1; }
-.content .pager { zoom: 1; }
+html {
+filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));
+}
 
-.content .pager .numbers a.now,
-.content .sort-by a.now { width: 1px; white-space: nowrap; }
+#top .nav img { padding-top: 12px; }
+.banners { zoom:1; }
+
+label /* If Programica.js — delete */
+{
+	behavior		: expression( (this['for'] == null && firstChild && runtimeStyle.behavior == '') ?
+									onclick = function () {
+										if (this.getElementsByTagName('input')[0])
+										{
+											try {
+											this.getElementsByTagName('input')[0].click() ||
+											this.getElementsByTagName('input')[0].focus()
+											}
+											catch (ex) { /* ничего */ }
+										}
+										else if (this.getElementsByTagName('textarea')[0])
+										{
+											this.getElementsByTagName('textarea')[0].focus()			
+										}
+									} : '', runtimeStyle.behavior = 'none' )
+}
+
 /* png fix */
 .bg-png-crop
 {
@@ -17,38 +37,67 @@
 		(runtimeStyle.filter == '') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)' : runtimeStyle.filter,
 		runtimeStyle.backgroundImage = 'none');
 }
-.content .tooltip .bg .bg
+.bg-png-scale
 {
 	filter	: expression(
 		(runtimeStyle.backgroundImage != 'none') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=scale)' : runtimeStyle.filter,
 		runtimeStyle.backgroundImage = 'none');
 }
+
 img.this-src-png
 {
 	width: expression(width);
 	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='image')" : '',
 						src = '/i/0.gif');
 }
-/* Позиционируем по аналогии с бэкграундом
-   Только для no-repeat!
+
+/*
+	Реализуем [type="text(или что угодно)"]. Приходится копировать все стили в css для ie6 или дублировать стилевое описание в основном файле.
+	<input type="text" class="red type-text"/>
+	<input type="text" class="type-text"/>
 */
-.content .tooltip,
-.content .tooltip .bg
+input
+{
+	scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? ' type-'+type : 'type-'+type)
+}
+input.type-password,
+input.type-text		{ background: #f3f3f3; height: 24px; border: 0 solid #c9c9c9; border-width: 1px 0 0 1px; padding: 0 0 0 4px; line-height: 24px; }
+.index-wrapper #registration input.type-password	{ width: 138px; }
+/* Позиционируем по аналогии с бэкграундом
+innerHTML expression Object required при innerHTML
+*/
+.izvrat-plus,
+.index-wrapper form * { position: relative; z-index: 10; }
+.index-wrapper form
 {
 	behavior		: expression(
 						(runtimeStyle.behavior==''&&currentStyle.backgroundImage!='none') ?
-							insertAdjacentHTML('afterBegin', '<div class="ie"" style="height:1;width:1;position:absolute;'
-								+((currentStyle.backgroundPositionX!='100%'&&currentStyle.backgroundPositionX!='right') ? 'left:'+((currentStyle.backgroundPositionX == 'left') ? 0 : currentStyle.backgroundPositionX ) : 'right:0')+';'
-								+((currentStyle.backgroundPositionY!='100%'&&currentStyle.backgroundPositionY!='bottom') ? ';top:'+((currentStyle.backgroundPositionY == 'top') ? 0 : currentStyle.backgroundPositionY ) : 'bottom:0')
-								+';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)">'+'<img src="'+currentStyle.backgroundImage.split('\"')[1]+'" alt="" style="visibility:hidden" /></div>') : '',
+							insertAdjacentHTML('beforeEnd', '<div class="ie"" style="height:10px;width:10px;position:absolute;'
+								+';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)">'+'<img src="'+currentStyle.backgroundImage.split('\"')[1]+'" style="visibility: hidden" alt="" /></div>') : '',
 						runtimeStyle.backgroundImage = 'none',
 						runtimeStyle.behavior = 'none'
 					);
 }
+.index-wrapper form .ie { top: 0; left:0; z-index: 1; }
 
-.content .tooltip .bg { height: expression((parentNode.offsetHeight-108) + 'px') }
-.content .tooltip .bg .bg { height: 100%; }
+.content-after
+{
+	behavior: expression( innerHTML += '<div class="ie">ie</div>', runtimeStyle.behavior = 'none' )
+}
 
+.b {
+	background-image: url(../border/f.gif);
+	background-repeat: no-repeat;
+	background-position: 100% 0;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/border/f.gif',sizingMethod=crop);
+	zoom	: expression(runtimeStyle.zoom = 1,
+				insertAdjacentHTML('beforeEnd', '<div class="hr"></div>')
+	);
+}
+.b .hr		{ display: block; border: 0 solid #fff; border-width: 0 1px; height: 1px; background: transparent; padding: 0; overflow: hidden; }
+
+#mybar h2	{ width: expression( runtimeStyle.width = firstChild.clientWidth); }
+#mybar h2 a	{ display: inline-block; }
 
 /* position: fixed */
 html { background-attachment: fixed; }
@@ -113,3 +162,7 @@ form .where-input
 	background-color: expression( runtimeStyle.backgroundColor = parentNode.currentStyle.backgroundColor);
 }
 
+/*this crash ie*/
+filter	: expression(
+	(runtimeStyle.filter == '') ? runtimeStyle.filter = '' : runtimeStyle.filter,
+	parentNode.);

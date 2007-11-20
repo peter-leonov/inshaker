@@ -3,9 +3,16 @@ html
 	font-size		: 101%;
 }
 
-/* delete title, where alt="..." Если подключена програмика - удалить */
+/* delete title, where alt="..."  Если подключена програмика - удалить */
+img
+{
+	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
+}
+
 .opacity
 {
 	filter			: expression( runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity='+currentStyle.opacity*100+')' );
 	zoom			: 1;
 }
+
+#top .nav img { padding-top: 12px; }
