@@ -16,3 +16,7 @@ img
 }
 
 #top .nav img { padding-top: 12px; }
+#mybar h2	{ width: expression( runtimeStyle.width = firstChild.clientWidth); }
+#mybar h2 a	{ display: inline; zoom: 1; }
+.mybar-user .menu	{ display: inline; zoom: 1; width: expression( runtimeStyle.width = clientWidth, style.display = 'block'); }
+.mybar-user .menu * { display: inline !important; zoom: 1; }

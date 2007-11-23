@@ -10,7 +10,7 @@ Link.prototype.open = function(a)
 		this.close()
 
 	this.url = (a.constructor == String) ? a : a.href.split('#')[1]
-
+	
 	this._url(this.url)
 	this.element	= $(this.url)
 

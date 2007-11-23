@@ -9,6 +9,8 @@ filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImag
 }
 
 #top .nav img { padding-top: 12px; }
+
+#mybar-coctails,
 .banners { zoom:1; }
 
 label /* If Programica.js — delete */
@@ -17,7 +19,7 @@ label /* If Programica.js — delete */
 									onclick = function () {
 										if (this.getElementsByTagName('input')[0])
 										{
-											try {
+											try { 
 											this.getElementsByTagName('input')[0].click() ||
 											this.getElementsByTagName('input')[0].focus()
 											}
@@ -44,11 +46,11 @@ label /* If Programica.js — delete */
 		runtimeStyle.backgroundImage = 'none');
 }
 
-img.this-src-png
+#mybar-coctails	li img
 {
 	width: expression(width);
 	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='image')" : '',
-						src = '/i/0.gif');
+						src = '/t/0.gif');
 }
 
 /*
@@ -66,7 +68,7 @@ input.type-text		{ background: #f3f3f3; height: 24px; border: 0 solid #c9c9c9; b
 /* Позиционируем по аналогии с бэкграундом
 innerHTML expression Object required при innerHTML
 */
-.izvrat-plus,
+
 .index-wrapper form * { position: relative; z-index: 10; }
 .index-wrapper form
 {
@@ -96,15 +98,28 @@ innerHTML expression Object required при innerHTML
 }
 .b .hr		{ display: block; border: 0 solid #fff; border-width: 0 1px; height: 1px; background: transparent; padding: 0; overflow: hidden; }
 
-#mybar h2	{ width: expression( runtimeStyle.width = firstChild.clientWidth); }
-#mybar h2 a	{ display: inline-block; }
+
+.mybar-user .menu a:hover * { zoom: 1; }
+.mybar-user .menu a b /* Taransparent border */
+{
+	filter		: chroma(color=cyan);
+	border-left-color: expression( runtimeStyle.borderLeftColor = ((parentNode == parentNode.parentNode.firstChild) ? 'cyan' : currentStyle.borderLeftColor) )
+}
+
+#mybar-coctails				{ width: 96em; }
+#mybar-coctails	.viewport	{ width: 76.5em; }
+
+
+
+
+
 
 /* position: fixed */
-html { background-attachment: fixed; }
-.position-fixed
+html {  background: url(/t/0.gif); background-attachment: fixed; }
+#mybar /*posiition: fixed, bottom: 0*/
 {
-	position		: absolute;
-	top				: expression(parseInt(document.documentElement.scrollTop, 10) + "px");
+	position	: absolute;
+	top			: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6) + "px");/*border-width*/
 }
 
 .add-hover-class-for-any-elements
@@ -161,8 +176,3 @@ form .where-input
 {
 	background-color: expression( runtimeStyle.backgroundColor = parentNode.currentStyle.backgroundColor);
 }
-
-/*this crash ie*/
-filter	: expression(
-	(runtimeStyle.filter == '') ? runtimeStyle.filter = '' : runtimeStyle.filter,
-	parentNode.);

@@ -34,16 +34,16 @@ body.index-page	{ background-image: url(bg/body/index.gif); }
 
 #top			{ position: relative; height: 120px; font-size: 12px;  }
 #top h2,
-#top h1			{ position: absolute; top: 0; left: -14px; }
+#top h1			{ position: absolute; top: 3px; left: -14px; }
 #top .nav		{ background: #000 url(bg/body/index.gif) repeat-x 0 0; overflow: hidden; margin-left: 190px; font-weight: bold;  }
 #top .nav li	{ float: left; margin-right: 16px; }
-#top .nav a		{ display: block;/*for moz*/ display: inline-block; height: 49px; font-size: 14px; text-decoration: none; color: #fff; line-height: 44px; padding: 16px 10px 0 10px; }
+#top .nav a		{ display: block;/*for moz*/ display: inline-block; height: 49px; font-size: 14px; text-decoration: none; color: #fff; line-height: 48px; padding: 8px 10px 8px 10px; }
 #top .nav a:hover	{ background: url(bg/nav/hover.gif) repeat-x 0 bottom; }
 #top .nav img	{  }
 #top .nav2		{ position: absolute; right: 3px; top: 54px; line-height: 62px; }
 #top .nav2 a	{ color: #e4146e; }
 
-#top form		{ position: absolute; right: 0; top: 27px;  }
+#top form		{ position: absolute; right: 0; top: 20px;  }
 #top form input	{ font-size: 11px; height: 17px; border: 1px solid #fff; border-top-color: #c9c9c9; line-height: 17px; padding-top: 2px; width: 175px; margin-right: 10px; }
 
 form button		{ vertical-align: top; }
@@ -87,30 +87,37 @@ label			{ display: block; }
 
 /* My Bar panel */
 #mybar			{ border-top: 6px solid #0d0d0d; color: #fff; background: url(bg/mybar.png); position: fixed; bottom: 0; left: 0; right: 0; }
-#mybar h2		{ font-size: 1em; font-weight: bold; line-height: 1.9; display: table; margin: 0 auto; }
-#mybar h2 a		{ background: #0d0d0d; padding: 0 25px; display: block; color: #fff; text-decoration: none; }
+#mybar h2		{ font-size: 1em; font-weight: bold; display: table; line-height: 1.6; margin: 0 auto; white-space: nowrap; }
+#mybar h2 a		{ background: #0d0d0d; padding: 0 25px; height: 1.8em; display: block; color: #fff; text-decoration: none; }
 #mybar h2 span	{ display: block; background: #0d0d0d; margin: 0 1px; height: 1px; }
 
 #mybar input[type="password"],
 #mybar input[type="text"] { margin-top: 7px; display: block; width: 314px; height: 25px; border: 1px solid #fff; border-top-color: #c9c9c9; font-size: 18px }
 
+#mybar form .good	{ background: url(icon/form-ok.gif) no-repeat 100% 27px; }
+#mybar form .bad	{ background: url(icon/form-error.gif) no-repeat 100% 25px; }
+#mybar form p		{ display: block; font-size: 13px; }
+#mybar h3			{ font-size: 18px; font-weight: bold; color: #9dd837; text-align: center; padding-right: 36px; }
+#mybar label small	{ color: #ccc; font-size: 11px; display: block; padding: 3px 33px 0 0; text-align: right; }
 
 
 /* User panel */
-.mybar-user .menu			{ height: 25px; display: table; margin: 19px auto 8px auto; }
-.mybar-user .menu a			{ float: left; color: #cbcbcb; position: relative; text-decoration: none; font-size: 13px; line-height: 12px; height: 25px;
+.mybar-user .menu			{ height: 25px; display: table; margin: 19px auto 8px auto; white-space: nowrap; }
+.mybar-user .menu a			{ outline: 0; float: left; color: #cbcbcb; position: relative; text-decoration: none; font-size: 13px; line-height: 12px; height: 25px;
 							}
 .mybar-user .menu a b		{ padding: 0 15px; display: block; border-left: 1px solid #828282; height: 12px; }
 .mybar-user .menu a.now,
-.mybar-user .menu a:hover	{ background: url(bg/mybar/menu-hover.png) no-repeat -299px 0; color: #fff; line-height: 25px; z-index: 2;
+.mybar-user .menu a:hover	{ background: url(bg/mybar/menu-hover.png) no-repeat -299px 0; color: #fff; line-height: 24px; z-index: 2;
 							margin: -6px -1px 0 0; padding: 0 0 6px 1px; }
 .mybar-user .menu a.now b,
 .mybar-user .menu a:hover b	{ background: url(bg/mybar/menu-hover.png) no-repeat 100% 0; padding-right: 16px; height: 25px; border: none; }
-.mybar-user .menu a:first-child	{ border-color: transparent; }
-.mybar-user .menu a.now		{ background: url(bg/mybar/menu-hover.png) no-repeat -299px 100%; color: #fff; }
+.mybar-user .menu a:first-child b	{ border-color: transparent; }
+.mybar-user .menu a.now:hover,
+.mybar-user .menu a.now		{ background: url(bg/mybar/menu-hover.png) no-repeat -299px -75px; color: #fff; }
+.mybar-user .menu a.now:hover b,
 .mybar-user .menu a.now b	{ background: url(bg/mybar/menu-hover.png) no-repeat 100% 100%; }
 
-#mybar-coctails				{ /*display: none;*/; margin: 0 auto; max-width: 96em; position: relative; }
+#mybar-coctails				{ display: none;  margin: 0 auto; max-width: 96em; position: relative; }
 #mybar-coctails	.viewport	{ overflow: hidden; height: 122px; margin: 0 115px 0 80px; position: relative; }
 #mybar-coctails	ul			{ width: 10000px; }
 #mybar-coctails	li			{ float: left; width: 165px; margin-right: 35px; position: relative; }
@@ -126,13 +133,20 @@ label			{ display: block; }
 .mybar-user .next:hover,
 .mybar-user .prev:hover		{ background-color: red; }
 
+#mybar-settings					{ display: none; width: 658px; margin: 0 auto; padding: 22px 0 0 82px; }
+#mybar-settings	label			{ font-size: 14px; float: left; width: 294px; margin-right: 35px; padding-bottom: 26px; position: relative; }
+#mybar-settings label small		{ padding-right: 44px; position: absolute; right: 0; bottom: 9px; color: #fff; }
+#mybar-settings	label input		{ width: 244px !important; }
+#mybar-settings .checkform		{ font-size: 12px; padding-top: 26px; line-height: 27px; }
+#mybar-settings .checkform input{ width: auto !important; margin-left: 0; }
+#mybar-settings label.attention	{ font-size: 12px; background: url(bg/mybar/delete-mybar.gif) no-repeat 0 13px; width: 579px !important; padding: 13px 0 42px 0; line-height: 30px; text-align: center; height: 30px; float: none; clear: both; }
+#mybar-settings .attention input{ width: auto !important; }
+#mybar-settings button.bt-save	{ display: block; margin: 0 auto 18px auto; position: relative; left: -40px; }
+
+
 /* Form for not user*/
-.mybar-login		{ padding-bottom: 5px; }
-#mybar form .good	{ background: url(icon/form-ok.gif) no-repeat 100% 27px; }
-#mybar form .bad	{ background: url(icon/form-error.gif) no-repeat 100% 25px; }
-#mybar form			{ display: none; margin: 0 auto; width: 354px; padding-left: 34px; }
-#mybar form p		{ display: block; font-size: 13px; }
-#mybar h3			{ font-size: 18px; font-weight: bold; color: #9dd837; text-align: center; padding-right: 36px; }
+.mybar-login				{ padding-bottom: 5px; }
+.mybar-login form			{ display: none; margin: 0 auto; width: 354px; padding-left: 34px; }
 
 #mybar-login				{ margin: 0 auto; padding: 25px 0 32px 0; }
 #mybar-login .login			{ font-size: 1.4em; margin-bottom: 25px; }
@@ -146,7 +160,6 @@ label			{ display: block; }
 #mybar-reg					{ font-size: 1.4em; padding: 16px 0 23px 0; position: relative; }
 #mybar-reg h3				{ padding-bottom: 40px; }
 #mybar-reg label			{ margin-bottom: 10px; }
-#mybar-reg small			{ color: #ccc; font-size: 11px; display: block; padding: 3px 33px 0 0; text-align: right; }
 #mybar-reg .iagree			{ font-size: 11px; padding: 15px 0 27px; }
 #mybar-reg button			{ display: block; margin: 0 auto; padding-right: 120px; }
 
@@ -163,12 +176,7 @@ form#mybar-lost-password		{ width: 480px; padding: 0 0 18px 0; }
 
 
 /* Image buttons */
-
-button.bt-mix,
-button.bt-lost-pass,
-button.bt-new-bar,
-button.bt-search,
-button.bt-enter	{ background: url(button/green-buttons.gif) no-repeat 0 0; width: 10px; height: 20px; margin: 0; padding: 0; border: 0; overflow: hidden; text-indent: -100em; }
+button	{ background: url(button/green-buttons.png) no-repeat 0 0; width: 10px; height: 20px; margin: 0; padding: 0; border: 0; overflow: hidden; text-indent: -100em; }
 
 button.bt-mix		{ background: url(button/grey-buttons.gif) no-repeat 0 0; width: 85px; height: 30px; }
 
@@ -176,9 +184,14 @@ button.bt-new-bar	{ background-position: 0 0; height: 28px; width: 85px; }
 button.bt-enter		{ background-position: 0 -28px; height: 28px; width: 50px; }
 button.bt-search	{ background-position: 0 -56px; height: 28px; width: 50px; }
 button.bt-lost-pass	{ background-position: 0 -146px; height: 28px; width: 104px; }
-#mybar button.bt-enter	{ background-position: 0 -194px; height: 28px; width: 87px; }
+#mybar button.bt-enter		{ background-position: 0 -194px; height: 28px; width: 87px; }
 #mybar button.bt-new-bar	{ background-position: 0 -222px; width: 87px; }
+#mybar button.bt-save		{ background-position: 0 -250px; height: 28px; width: 87px; }
+
 .i-close			{ background: url(icon/close.gif) no-repeat 0 0; display: block; width: 10px; height: 10px; }
+
+
+
 .b:before,
 .b:after	{ display: block; height: 1px; content: ''; border: 0 solid #fff; border-width: 0 1px; }
 
