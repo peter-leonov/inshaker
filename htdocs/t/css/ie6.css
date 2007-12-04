@@ -48,8 +48,7 @@ label /* If Programica.js — delete */
 
 #mybar-coctails	li img
 {
-	width: expression(width);
-	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='image')" : '',
+	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod=image)" : '',
 						src = '/t/0.gif');
 }
 
@@ -65,6 +64,9 @@ input
 input.type-password,
 input.type-text		{ background: #f3f3f3; height: 24px; border: 0 solid #c9c9c9; border-width: 1px 0 0 1px; padding: 0 0 0 4px; line-height: 24px; }
 .index-wrapper #registration input.type-password	{ width: 138px; }
+#mybar input.type-password,
+#mybar input.type-text { margin-top: 7px; display: block; width: 314px; height: 25px; border: 1px solid #fff; border-top-color: #c9c9c9; font-size: 18px }
+
 /* Позиционируем по аналогии с бэкграундом
 innerHTML expression Object required при innerHTML
 */

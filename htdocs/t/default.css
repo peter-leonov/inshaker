@@ -1,14 +1,17 @@
+@import "css/public.css";
+
 body { background: #fff url(bg/body/all.gif) repeat-x 0 0; font: 62.5% Tahoma, Arial, sans-serif; color: #343b40; }
 
 body, table,
-h1, h2, h3, 
+h1, h2, h3,
 p, form,
-ul, li {
-	font-weight		: normal; 
+fieldset, legend,
+ul, li, dl, dt, dd {
 	margin			: 0;
 	padding			: 0;
+	border			: 0;
 }
-
+h2, h3	{ font-weight: normal;  } 
 td { font-size: 1em; vertical-align: top; }
 
 a {
@@ -23,7 +26,7 @@ input, select, textarea { font: 1.1em Tahoma, Arial, sans-serif; }
 
 /*width - 9px!*/
 input[type="password"],
-input[type="text"] { background: #f3f3f3; height: 20px; border: 0 solid #c9c9c9; border-width: 1px 0 0 1px; padding: 4px 0 0 4px; line-height: 24px; }
+input[type="text"] { background: #f3f3f3; height: 20px; border: 0 solid #c9c9c9; border-width: 1px 0 0 1px; margin-left: 0; padding: 4px 0 0 4px; line-height: 24px; }
 
 ul { list-style-type: none; }
 
@@ -31,16 +34,16 @@ ul { list-style-type: none; }
 
 /* Main classes */
 body.index-page	{ background-image: url(bg/body/index.gif); }
-
-#top			{ position: relative; height: 120px; font-size: 12px;  }
+.index-page #top{ height: 120px; }
+#top			{ position: relative; height: 131px; font-size: 12px;  }
 #top h2,
-#top h1			{ position: absolute; top: 3px; left: -14px; }
+#top h1			{ position: absolute; top: 3px; left: -9px; font-size: 2.4em; }
 #top .nav		{ background: #000 url(bg/body/index.gif) repeat-x 0 0; overflow: hidden; margin-left: 190px; font-weight: bold;  }
 #top .nav li	{ float: left; margin-right: 16px; }
 #top .nav a		{ display: block;/*for moz*/ display: inline-block; height: 49px; font-size: 14px; text-decoration: none; color: #fff; line-height: 48px; padding: 8px 10px 8px 10px; }
 #top .nav a:hover	{ background: url(bg/nav/hover.gif) repeat-x 0 bottom; }
 #top .nav img	{  }
-#top .nav2		{ position: absolute; right: 3px; top: 54px; line-height: 62px; }
+#top .nav2		{ position: absolute; right: 3px; top: 65px; line-height: 62px; }
 #top .nav2 a	{ color: #e4146e; }
 
 #top form		{ position: absolute; right: 0; top: 20px;  }
@@ -51,6 +54,9 @@ form input		{ vertical-align: middle; }
 form p			{ display: inline; }
 form .b p		{ display: block; padding: 0; }
 label			{ display: block; }
+
+
+
 #main-wrapper	{ margin: 0 auto; width: 96em; }
 .index-wrapper	{ position: relative; height: 420px; }
 .index-wrapper .illustration	{ background: url(bg/index.png) no-repeat 80px 1px; width: 1120px; height: 417px; position: absolute; top: -20px; right: 0; }
@@ -82,6 +88,127 @@ label			{ display: block; }
 
 .index-page .banners		{ overflow: hidden; margin: 0 -35px 40px 0; /*-35 это запас для ie6*/ }
 .index-page .banners li		{ float: left; margin-right: 25px; }
+
+
+
+/* Coctail page */
+.body-wrapper		{ background: #c0c0c0; width: 63em; float: left; } /* 330 - account place */
+.b-body-wrapper2	{ border: 1px solid #fff; padding: 14px 18px; overflow: hidden; margin: 0 1px; background: #fff url(bg/body/body-wrapper.gif) repeat-x 0 0;  } 
+
+.b-title				{ background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 14px; position: relative; }
+.b-title h1				{ font-size: 24px; margin-left: -1px; }
+.b-title p				{ position: absolute; left: 15.5em; bottom: 18px; font-size: 1.1em; }
+.b-title .sort-by a		{ padding: 0 6px 2px 6px; margin: 0 2px; display: inline-block; display: -moz-inline-stack; -moz-border-radius: 2pt; -moz-border-radius-topright: 2%; -moz-border-radius-bottomright: 2%; }
+.b-title .sort-by .now	{ color: #fff; background: #0392f1; text-decoration: none; cursor: default; }
+.b-title .sum			{ left: auto; right: 0; bottom: 20px; font-weight: bold;  }
+
+
+.b-search		{ float: left; margin-right: 2em; width: 14em; }
+
+.b-search .all-list		{ background: url(icon/all-list.jpg) no-repeat 10px 0; font-size: 1.1em; padding: 0 0 20px 46px; margin-top: 22px; } /* для разных раздделов будут разные иконки */
+
+.b-search dl			{ font-size: 120%; line-height: 1.5; }
+.b-search dt			{ font-weight: bold; padding: 16px 0 0 10px; }
+.b-search dd			{ line-height: 1.4; margin: 1px 0; height: 1.5em; }
+.b-search>dl>dd a				{ display: table; margin-left: 10px; }
+.b-search>dl>dd a.dis span,
+.b-search>dl>dd a.dis			{ color: #999 !important; text-decoration: none; cursor: default; background: none !important; }
+.b-search>dl>dd a:hover			{ width: 100%; margin-left: 0; background: #f1f7b6 url(icon/del.gif) no-repeat 92.5% -63px; }
+.b-search>dl>dd span			{ text-decoration: underline; /* FF2 */ }
+.b-search>dl>dd a:hover span	{ padding-left: 10px; display: block; text-decoration: none; color: #343b40; }
+.b-search>dl>dd a:hover, x:-moz-any-link		{ display: block; }
+.b-search>dl>dd a:hover span, x:-moz-any-link	{ margin-top: -1px; }
+
+
+.b-search form 			{ background: #77a300; color: #fff; }
+.b-search form fieldset	{ background: url(bg/blocks/green-white.gif) repeat-x 0 0; padding: 0 9px; margin: 0 1px;  }
+.b-search form strong	{ font-size: 120%; line-height: 1; display: block; padding: 12px 0 17px 0; }
+.b-search form input	{ width: 114px; }
+.b-search form small	{ color: #f1f7b6; line-height: 1.5; display: block; }
+.b-search form dl		{ padding: 19px 0 18px 0; overflow: hidden; }
+.b-search form dt		{ padding: 0; font-size: 92%; }
+.b-search form dd		{ float: left; line-height: 1.5; clear: both; position: relative; margin: 0; }
+.b-search form dd .del	{ position: absolute; right: -9px; top: 6px; }
+
+
+
+/*Block content*/
+.b-content		{ margin-left: 16em; }
+
+
+
+/*pager list*/
+.b-content .p-list a:hover,
+.b-content .p-list .now		{ color: #fff; background: #666; text-decoration: none; }
+.b-content .p-list a		{ padding: 0 .21em .2em .21em; }
+
+.b-content .alphabetical				{ background: #efefef; font-size: 110%; margin-bottom: 12px; }
+.b-content .alphabetical .wrapper		{ display: block; padding: 6px 0 9px 10px; position: relative; }
+.b-content .alphabetical .p-list a		{ margin-right: -2px; text-decoration: none; }
+.b-content .alphabetical a.lang-to-en	{ background: url(button/langs.gif) no-repeat 0 0; width: 22px; height: 14px; display: block; position: absolute; top : 7px; right: 10px; text-decoration: none; }
+
+.tooltip					{ display: none; background: url(bg/tooltip/t.png) no-repeat 0 -17px; color: #fff; font-size: 10px; line-height: 1.4; position: absolute; z-index: 2; width: 277px; }
+.tooltip:after				{ background: url(bg/tooltip/t.png) no-repeat 0 0; content: ''; display: block; height: 17px; margin-bottom: -17px; }
+
+.tooltip .text-container	{ padding: 13px 14px; }
+.tooltip h3					{ color: #f1f7b6; }
+.tooltip .desc				{ padding: 2px 0 16px 0; }
+.tooltip a					{ color: #00c0ff; text-decoration: none; }
+.tooltip a:hover			{ text-decoration: underline; }
+
+
+.b-content .items-result			{ overflow: auto; margin-right: -8px; }
+.b-content .items-result li			{ float: left; width: 100px; margin-right: 9px; height: 139px; position: relative; }
+.b-content .items-result li .love	{ background: url(icon/love.png) no-repeat 0 0; position: absolute; left: 55px; top: 20px; padding-left: 15px; }
+.b-content .items-result li a		{ font-size: 120%; position: absolute; top: 98px; left: 10px; }
+.b-content .items-result li img		{ display: block; }
+
+.b-content .pager			{ background: url(bg/body/hr-repeat.gif) repeat-x 0 0; font-size: 110%; padding: 17px 0 0 0; margin-top: 18px; position: relative; }
+.b-content .pager .p-list a	{ padding-bottom: 0; }
+.b-content .pager .prev,
+.b-content .pager .next		{ background: url(icon/strs-green.gif) no-repeat -12px 0; width: 12px; height: 12px; display: block; position: absolute; right: 0; top: 18px; }
+.b-content .pager .prev		{ background-position: 0 0; right: 20px; }
+.b-content .pager .dis		{ background-position: 0 -12px; cursor: default; }
+.b-content .pager .next.dis	{ background-position: -12px -12px; }
+
+
+
+/* bill - payment account */
+#b-bill		{ background: #fff url(bg/bill/bottom.gif) repeat-x 0 100%; float: left; width: 30.8em; margin-top: 1px; margin-left: 2em; border: 0 solid #c0c0c0; border-width: 0 1px; position: relative; }
+#b-bill h2				{ padding: 18px 0 16px 20px; font-size: 180%; background: url(bg/bill/menus.png) repeat-x 0 100%; }
+#b-bill h2 a			{ font-weight: bold;  }
+#b-bill	h2 b			{ font-weight: normal; font-size: 67%; position: absolute; right: 20px; top: 21px; }
+
+#b-bill	dt				{ background: url(bg/bill/menus.png) repeat-x 0 -140px; height: 35px; margin-top: 1px; color: #343b40; font-size: 120%; position: relative; font-weight: bold; line-height: 35px; padding-left: 20px;  }
+#b-bill	dt span			{ background: url(bg/bill/menus.png) no-repeat 100% -35px; font-size: 120%; position: absolute; top: 0; right: 32px; display: block; padding-right: 32px; }
+#b-bill	dl dt:hover,
+#b-bill	dl.on dt		{ background-position: 0 -105px; color: #fff; cursor: pointer; }
+#b-bill	dl dt:hover span{ background-position: 100% 0; }
+#b-bill	dl.on dt span	{ background-position: 100% -70px; text-indent: -10000em; }
+
+#b-bill	dd li			{ height: 20px; padding: 10px 0; position: relative; background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; }
+#b-bill	dd li label		{ position: absolute; top: 10px; width: 110px; right: 30px; white-space: nowrap; }
+#b-bill	dd li b			{ font-weight: normal; display: block; }
+#b-bill	dd li button	{ position: absolute; top: 12px; right: 8px; }
+#b-bill	dd				{ padding: 0 20px; font-size: 120%; }
+#b-bill	dd strong		{ display: block; padding: 26px 0 8px 0; }
+#b-bill	dd p			{ color: #010101; padding-right: 30px; text-align: right; font-weight: bold; line-height: 40px; }
+#b-bill	ul.money li		{ padding: 6px 0; height: 28px; }
+#b-bill	ul.money label	{ text-align: right; }
+#b-bill	ul.money input	{ float: left; }
+#b-bill	ul input		{ text-align: center; padding-left: 0; width: 35px; font-size: 11px; }/*TODO*/
+#b-bill .total			{ padding: 22px 23px 35px 10px; }
+#b-bill .total li		{ background: url(bg/bill/white-for-text.png) no-repeat top left; font-size: 110%; width: 106px; height: 36px; line-height: 36px; padding: 0 9px 0 10px; text-align: right; }
+#b-bill .total li a		{ float: left; }
+#b-bill .total .money	{ float: right; font: bold 240% Georgia; padding-top: .1em; }
+
+
+
+
+
+
+
+
 
 
 
@@ -121,7 +248,7 @@ label			{ display: block; }
 #mybar-coctails	.viewport	{ overflow: hidden; height: 122px; margin: 0 115px 0 80px; position: relative; }
 #mybar-coctails	ul			{ width: 10000px; }
 #mybar-coctails	li			{ float: left; width: 165px; margin-right: 35px; position: relative; }
-#mybar-coctails	li .del		{ background: url(icon/del.gif) no-repeat top left; width: 5px; height: 5px; overflow: hidden; text-indent: -100em; display: block; margin: 14px 0 7px 1px; }
+#mybar-coctails	li .del		{ margin: 14px 0 7px 1px; }
 #mybar-coctails	a			{ color: #00c0ff; font-size: 12px; }
 #mybar-coctails	li img		{ float: left; }
 #mybar-coctails .prev		{ position: absolute; top: 40px; left: 41px; }
@@ -139,9 +266,14 @@ label			{ display: block; }
 #mybar-settings	label input		{ width: 244px !important; }
 #mybar-settings .checkform		{ font-size: 12px; padding-top: 26px; line-height: 27px; }
 #mybar-settings .checkform input{ width: auto !important; margin-left: 0; }
-#mybar-settings label.attention	{ font-size: 12px; background: url(bg/mybar/delete-mybar.gif) no-repeat 0 13px; width: 579px !important; padding: 13px 0 42px 0; line-height: 30px; text-align: center; height: 30px; float: none; clear: both; }
-#mybar-settings .attention input{ width: auto !important; }
-#mybar-settings button.bt-save	{ display: block; margin: 0 auto 18px auto; position: relative; left: -40px; }
+#mybar-settings label.attention	{ font-size: 12px; background: url(bg/mybar/delete-mybar.gif) no-repeat 0 100%; width: 579px !important; padding: 18px 0 0 0; text-align: center; height: 25px; float: none; clear: both; }
+#mybar-settings .attention input{ width: auto !important; zoom: 1; }
+#mybar-settings button.bt-save	{ display: block; margin: 42px auto 18px auto; position: relative; left: -40px; }
+
+
+
+
+
 
 
 /* Form for not user*/
@@ -175,6 +307,10 @@ form#mybar-lost-password		{ width: 480px; padding: 0 0 18px 0; }
 #mybar-lost-password button		{ margin: 11px 0 0 17px; } /* TODO replace icon? */
 
 
+
+
+
+
 /* Image buttons */
 button	{ background: url(button/green-buttons.png) no-repeat 0 0; width: 10px; height: 20px; margin: 0; padding: 0; border: 0; overflow: hidden; text-indent: -100em; }
 
@@ -184,23 +320,48 @@ button.bt-new-bar	{ background-position: 0 0; height: 28px; width: 85px; }
 button.bt-enter		{ background-position: 0 -28px; height: 28px; width: 50px; }
 button.bt-search	{ background-position: 0 -56px; height: 28px; width: 50px; }
 button.bt-lost-pass	{ background-position: 0 -146px; height: 28px; width: 104px; }
+button.bt-info		{ background-position: 0 -278px; height: 20px; width: 16px; }
+
+button.bt-deliver,
+button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
+button.bt-deliver	{ background-position: 0 0; height: 28px; width: 87px; }
+
 #mybar button.bt-enter		{ background-position: 0 -194px; height: 28px; width: 87px; }
 #mybar button.bt-new-bar	{ background-position: 0 -222px; width: 87px; }
 #mybar button.bt-save		{ background-position: 0 -250px; height: 28px; width: 87px; }
 
+
+
+
+
+
+
+
+
 .i-close			{ background: url(icon/close.gif) no-repeat 0 0; display: block; width: 10px; height: 10px; }
 
+.del				{ background: url(icon/del.gif) no-repeat 0 0; width: 5px; height: 5px; overflow: hidden; text-indent: -100em; display: block; } /* red */
+.b-search form .del	{ background-position: 0 -5px; } /* white */
 
-
+.b-search>dl>dd a:before, 
+.b-search>dl>dd a:after,
 .b:before,
 .b:after	{ display: block; height: 1px; content: ''; border: 0 solid #fff; border-width: 0 1px; }
 
+/*not use in Firefox 2*/
+.b-title .sort-by .b			{ position: relative; }
+.b-title .sort-by .b:after		{ position: absolute; bottom: 0; left: 0; right: 0; }
+.b-title .sort-by .b:before	{ position: absolute; top: 0; left: 0; right: 0 }
 
+.body-wrapper.b:before	{ border-color: #d6d6d6; }
 
+.border-block:before,
+.border-block:after	{ display: block; height: 1px; content: ''; border-top: 1px solid #c0c0c0; margin-top: -1px; }
+.border-block:after	{ margin: 0 0 -2px 0; }
 /* inline-block's' */
 /*.mybar-user .menu a
 { display: inline-block; display: -moz-inline-stack;  }*/
 
 
-#bottom	{ font-size: 1.1em; line-height: 1.7; overflow: hidden; color: #788894; }
+#bottom	{ font-size: 1.1em; line-height: 1.7; overflow: hidden; color: #788894; clear: both; }
 #bottom .search-error	{ float: right; }
