@@ -15,7 +15,6 @@
 		<h2><a href="index.html"><img src="t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
 		
 		<ul class="nav">
-			<li><a href="#">Вечеринки</a></li>
 			<li><a href="coctails.html" class="now">Коктейли</a></li>
 			<li><a href="#">Ингредиенты</a></li>
 			<li><a href="gadget.html">Штучки</a></li>
@@ -39,66 +38,129 @@
 			<p>Крепость: <a>слабоалкогольный</a></p>
 		</div>
 	</div>
-	<div class="b body-wrapper" id="coctail-page"><div class="b-body-wrapper2">
-		<div class="b-title">
-			<h1>Название коктейля</h1>
-			<!--p class="sort-by">
-				Показать:
-				<a class="b" onclick="this.className+=' now'">все коктейли</a> | <a class="b" onclick="this.className+=' now'">самые любимые</a>
-			</p-->
-			<p><a href="coctails.html">Вернуться назад →</a></p>
-		</div>
-		<div class="b-content">
-			
-			<div class="hreview">
-				<div class="menu"><div class="b">
-					<p class="border-links">
-						<a>Легенда</a>
-						<a>Как приготовить</a>
-						<a>Видео рецепт</a>
-						<a>Распечатать рецепт</a>		
-					</p>
-				</div></div>
-				<div class="entry">
-					<img src="i/coctail/white/b/01.png" width="141" height="307" alt=""/>
-					<div class="desc">
-						<div class="loved">
-							<dl>
-								<dt><!-- --></dt>
-								<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
-							</dl>
-						</div>
-						<h2 class="summary">Мохи́то — </h2>
-						<div class="description" onclick="this.innerHTML+=' белого рома'">
-							слабоалкогольный коктейль на основе белого рома и листьев мяты. Происходит с острова Куба, стал популярен в США с конца XIX в. Огибающая, в первом приближении, усиливает изоморфный интеграл<a href="#">…</a>
-						</div>
-					</div>
-					<p class="tags"><b>Группы:</b> <a rel="tag">популярные</a>, <a rel="tag">крепкие</a>, <a rel="tag">освежающие</a>, <a rel="tag">универсальные</a>.</p>
-					<button class="bt-want-slap">Хочу приготовить</button>
-					<button class="bt-love-her">Люблю его</button>
-				</div>
+	<div class="column-main">
+		<div class="b body-wrapper" id="coctail-page"><div class="b-body-wrapper2">
+			<div class="b-title">
+				<h1>Название коктейля</h1>
+				<!--p class="sort-by">
+					Показать:
+					<a class="b" onclick="this.className+=' now'">все коктейли</a> | <a class="b" onclick="this.className+=' now'">самые любимые</a>
+				</p-->
+				<p><a href="coctails.html">Вернуться назад →</a></p>
 			</div>
-			<div class="what-need">
-				<dl class="ingridients">
-					<dt>Необходимые ингредиенты</dt>
-					<dd><a>Сахарный песок</a> 2 ч/ложки</dd>
-					<dd><a>Сок лайма</a> 20 ml</dd>
-					<dd><a>Белый ром Bacardi</a> 50 ml</dd>
-					<dd><a>Содовая вода</a> 30 ml</dd>
-					<dd><a>Листья мяты</a> 3 штуки</dd>
-					<dd><a>Лед</a> 20 кубиков</dd>
-				</dl>
-				<dl class="tools">
-					<dt>Необходимые штучки</dt>
-					<dd><a>Тублер (250 ml)</a></dd>
-					<dd><a>Коктейльная ложка</a></dd>
-					<dd><a>Пестик</a></dd>
-				</dl>
-			</div>
-			
-		</div>
+			<div class="b-content">
 		
-	</div></div>
+				<div class="hreview">
+					<div class="menu"><div class="b">
+						<p class="border-links" id="panel_coctail">
+							<a href="#view-prepare">Легенда</a>
+							<a>Как приготовить</a>
+							<a href="#view-video">Видео рецепт</a>
+							<a>Распечатать рецепт</a>		
+						</p>
+					</div></div>
+					<div class="entry">
+						<img src="i/coctail/white/b/01.png" width="141" height="307" alt="" class="illustration"/>
+						<div class="desc">
+							<div class="loved">
+								<dl>
+									<dt><!-- --></dt>
+									<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
+								</dl>
+							</div>
+							<h2 class="summary">Мохито — </h2>
+							<div class="description" onclick="this.innerHTML+=' белого рома'">
+								слабоалкогольный коктейль на основе белого рома и листьев мяты. Происходит с острова Куба, стал популярен в США с конца XIX в. Огибающая, в первом приближении, усиливает изоморфный интеграл <a onclick="link.open('view-prepare')">…</a>
+							</div>
+						</div>
+						<p class="tags"><b>Группы:</b> <a rel="tag">популярные</a>, <a rel="tag">крепкие</a>, <a rel="tag">освежающие</a>, <a rel="tag">универсальные</a>.</p>
+						<button class="bt-want-slap">Хочу приготовить</button>
+						<button class="bt-love-her">Люблю его</button>
+						
+						<!-- Попапы -->
+						<div class="popup" id="view-prepare">
+							<h3>Легенда коктейля</h3>
+							<p>Гранулометрический анализ, как следует из полевых и лабораторных наблюдений, адсорбирует подбур только в отсутствие тепло- и массообмена с окружающей средой. Бактерия сжимает бюкс, все дальнейшее далеко выходит за рамки текущего исследования 
+							и не будет здесь рассматриваться. Альбедо, в случае использования адаптивно-ландшафтных систем земледелия, представляет собой гумус, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Латерит локально перемещает генетический почвообразовательный процесс, вне зависимости от предсказаний теоретической модели явления. Сопротивление, согласно традиционным представлениям, притягивает пирогенный карбонат кальция только в отсутствие тепло- и массообмена с окружающей средой. Однако, при увеличении выборки возмущение плотности аналитически усиливает зоогенный песок, что дает возможность использования данной методики как универсальной.</p>
+							<a class="close b" onclick="link.close()">закрыть легенду</a>
+						</div>
+						<div class="popup" id="view-video">
+							<div style="width:471px;height:280px"><img src="t/TEMP_tube.jpg" width="471" height="280" alt="TEMP Tube"/></div>
+							<a class="close b" onclick="link.close()">закрыть видео</a>
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				
+				<div class="what-need">
+					<dl class="ingridients">
+						<dt>Необходимые ингредиенты</dt>
+						<dd><a>Сахарный песок</a> <strong>2 ч/ложки</strong></dd>
+						<dd><a>Сок лайма</a> <strong>20 ml</strong></dd>
+						<dd><a>Белый ром Bacardi</a> <strong>50 ml</strong></dd>
+						<dd><a>Содовая вода</a> <strong>30 ml</strong></dd>
+						<dd><a>Листья мяты</a> <strong>3 штуки</strong></dd>
+						<dd><a>Лед</a> <strong>20 кубиков</strong></dd>
+					</dl>
+					<dl class="tools">
+						<dt>Необходимые штучки</dt>
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Тублер (250 ml)</a></dd>
+						<dd><a>Коктейльная ложка</a></dd>
+						<dd><a>Пестик</a></dd>
+					</dl>
+				</div>
+		
+			</div>
+		</div></div>
+		
+		
+		<!-- Дополнтиельный блок к основному контенту -->
+		<div class="b-more">
+			<div class="b body-wrapper b-more-korol">	
+				<dl class="b-body-wrapper2">
+					<dt><b>Король мира!</b></dt>
+					<dd>
+						<p><i>1378 посетителей</i> считают, 
+						что для того, чтобы стать «<a onclick="$('korol-mira').show()">Королем Мира</a>» необходимо выпить — <i>20 мохито</i>.</p>
+						<strong><a onclick="$('korol-mira').show()">А сколько нужно тебе?</a></strong>
+					</dd>
+				</dl>
+				
+				<div id="korol-mira"><div class="wrapper">
+					<strong>Сколько нужно тебе?</strong>
+					<div class="ruler">
+						<img src="t/bg/coctail/korol-ruler.gif" width="172" height="10" alt="llllllllllllllllllll"/>
+						<div class="dragger" style="left:32px">6</div>
+						<b>1</b><b class="last">20</b>
+					</div>
+					<button class="bt-korol-vote" onclick="$('korol-mira').hide()">Вот столько!</button>
+				</div></div>
+				
+			</div>
+			
+			<div class="b body-wrapper b-more-coctails">	
+				<dl class="b-body-wrapper2">
+					<dt><b>Вам также могут понравится</b></dt>
+					<dd>
+						<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
+						<a class="next" onclick="this.className += ' dis'"><!-- --></a>
+						<div class="viewport">
+							<ul>
+								<li><a href="#"><img src="i/coctail/white/s/_09.jpg" width="60" height="80" alt=" 05"/>Кайпиринья</a></li>
+								<li><a href="#"><img src="i/coctail/white/s/_25.jpg" width="60" height="80" alt=" 05"/>Кровавая Маша</a></li>
+								<li><a href="#"><img src="i/coctail/white/s/_03.jpg" width="60" height="80" alt=" 03"/>Негрони</a></li>
+							</ul>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	
+	
+	
 	<div id="b-bill" class="border-block">
 		<h2>
 			&#160;
@@ -112,10 +174,10 @@
 				</ul>
 				<strong>В них входят:</strong>
 				<ul class="money">
-					<li><a>Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button></li>
-					<li><a>Sprite</a><b></b><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label></li>
-					<li><a>Кашаса Puerto</a><b></b><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button></li>
-					<li><a>Лайм</a><b></b><b>1 шт.</b>			<label><input type="text" name="portion" value=""/> 70 р.</label></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button></li>
+					<li><a href="#shop-coctail2" onclick="link.open(this); return false">Sprite</a><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Лайм</a><b>1 шт.</b>			<label><input type="text" name="portion" value=""/> 70 р.</label></li>
 				</ul>
 				<p class="sum">23 570 р.</p>
 			</dd>
@@ -147,155 +209,275 @@
 
 <br/><br/><br/><br/>
 
-<!-- YEE :) -->
-<div id="mybar" class="mybar-login">
-	<h2><a href="#mybar-login">МОЙ БАР</a><span><!-- --></span></h2>
-	
-	<!-- Форма входа -->
-	<form action="#" id="mybar-login">
-		<label class="login good">
-			Логин
-			<input type="text" name="mail" value="k;lkD"/>
-		</label>
-		<a href="#mybar-lost-password" class="lost">Забыли пароль?</a>
-		<label class="password">
-			Пароль
-			<input type="password" name="password" value=""/>
-		</label>
-		<label class="remember"><input type="checkbox" name="remember" value=""/> Запомнить меня</label>
-		<button class="bt-enter" value="Войти" type="submit"><!-- --></button>
-		<a href="#mybar-reg" class="create">Создать свой бар!</a>
-	</form>
-	
-	<!-- Регистрация -->
-	<form action="#mybar-reg-successfully" method="post" id="mybar-reg" onsubmit="link.go('mybar-reg-successfully'); return false">
-		<h3>Стать хозяином бара!</h3>
-		<label class="good">
-			Электронная почта
-			<input type="text" name="mail" value=""/>
-			<small>используется для входа в бар</small>
-		</label>
-		<label>
-			Пароль
-			<input type="password" name="password" value=""/>
-			<small>не менее 4 символов</small>
-		</label>
-		<label class="bad">
-			Повторите пароль
-			<input type="password" name="password" value=""/>
-			<small>не менее 4 символов</small>
-		</label>
+<!--#include virtual="/inc/mybar-login.html" -->
 
-		<label class="iagree"><input type="checkbox" name="iagree" value=""/> Мне исполнилось 18 лет и я согласен с условиями проекта</label>
-		<button type="submit" value="Создать Бар" class="bt-new-bar"><!-- --></button>
-	</form>
-	<div class="b-successfully" id="mybar-reg-successfully">
-		<h3>Бар создан!</h3>
-		<p>Ваш бар будет открыт после того, как вы подтвердите свой адрес электронной почты.  Пройдя, по ссылке, которая находится в вашем почтовом ящике —
-		вы сможете сразу зайти в свой бар.</p>
-	</div>
+
+<!-- магазин -->
+<div class="win-shop" id="shop-coctail">
 	
-	<!-- Форма Вспомнить пароль -->
-	<form action="#" method="post" id="mybar-lost-password" onsubmit="link.go('mybar-lost-password-successfully'); return false">
-		<h3>Забыли пароль?</h3>
-		<p>Не волнуйтесь, мы вам поможем!<br/>
-		Введите адрес электронной почты, указаный Вами при регистрации 
-		и мы вышлем ваш пароль на него. Все очень просто. Не отчаивайтесь!</p>
-		<p><input type="text" name="mail" value=""/> 
-		<button type="submit" value="Выслать пароль" class="bt-lost-pass"><!-- --></button></p>
-	</form>
-	<div class="b-successfully" id="mybar-lost-password-successfully">
-		<h3>Пароль послан, нах!</h3>
-		<p>Ваш пароль отправлен по адресу: sasha@zhuravlev.ru</p>
+	<div class="opacity"><!-- --></div>
+	
+	<div class="win">
+		<div class="win-bg"></div>
+		
+		<div class="main b"><div class="wrapper">
+			<a onclick="link.close()" class="close">x</a>
+			<h3>Хеннэсси Икс О (Hennessy X.O.)</h3>
+			
+			<div class="gallery gallery-nav">
+				<p>
+					<a class="zoom">
+						<img src="i/food/m/1.jpg" width="118" height="195" alt="1"/>
+						<b><!-- --></b><span>Рассмотреть поближе</span>
+					</a>
+				</p>
+				<ul>
+					<li>
+						<a><img src="i/food/s/1.jpg" width="38" height="38" alt="1"/></a>
+						1 л
+					</li>
+					<li>
+						<a><img src="i/food/s/2.jpg" width="38" height="38" alt="1"/></a>
+						0,7 л
+					</li>
+					<li>
+						<a><img src="i/food/s/3.jpg" width="38" height="38" alt="1"/></a>
+						0,33 л
+					</li>
+				</ul>
+			</div>
+			
+			<div class="content">
+				<div class="loved">
+					<dl>
+						<dt><!-- --></dt>
+						<dd>
+							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
+							<a>Я люблю</a>
+						</dd>
+					</dl>
+				</div>
+				<ul class="composition">
+					<li>Ром светлый</li>
+					<li>Марка: <a>Bacardi</a></li>
+					<li>Крепость: крепкий (40%)</li>
+				</ul>
+				<p class="desc">Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров и журналистов, создателей научных заявок и отчетов.</p>
+				<div class="need dots">
+					<dl><dt>Необходимо</dt><dd>4,5 л</dd></dl>
+					<dl class="alert"><dt>Сейчас не хватает</dt><dd>1 л</dd></dl>
+				</div>
+				<form class="dots">
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 1 л</a></dt><dd><strong>1000 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 0,7 л</a></dt><dd><strong>890 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1" disabled="disabled"/> <a>Банка 0,33 л</a></dt><dd><strong>200 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+				</form>
+				<div class="sum">
+					<p>
+						<strong class="alert">Итого: 4450 р.</strong>
+						<small>Доставка: 1-2 дня</small>
+					</p>
+					<button class="bt-add-in-account">Добавить в счет</button>
+				</div>
+			</div>
+		</div></div>
+	
+		<div class="b-alternative b">
+			<div class="viewport">
+				<a href="#" class="prev">←</a>
+				<ul>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+				</ul>
+				<a href="#" class="next">→</a>
+			</div>
+		</div>
+			
 	</div>
 	
 </div>
-<script src="js/link.js" type="text/javascript"></script>
+
+<div class="win-shop" id="shop-coctail2">
+	
+	<div class="opacity"><!-- --></div>
+	
+	<div class="win">
+		<div class="win-bg"></div>
+		
+		<div class="main b"><div class="wrapper">
+			<a onclick="link.close()" class="close">x</a>
+			<h3>Хеннэсси Икс О (Hennessy X.O.)</h3>
+			
+			<div class="gallery gallery-nav">
+				<p>
+					<a class="zoom">
+						<img src="i/food/m/1.jpg" width="118" height="195" alt="1"/>
+						<b><!-- --></b><span>Рассмотреть поближе</span>
+					</a>
+				</p>
+				<ul>
+					<li>
+						<a><img src="i/food/s/1.jpg" width="38" height="38" alt="1"/></a>
+						1 л
+					</li>
+					<li>
+						<a><img src="i/food/s/2.jpg" width="38" height="38" alt="1"/></a>
+						0,7 л
+					</li>
+					<li>
+						<a><img src="i/food/s/3.jpg" width="38" height="38" alt="1"/></a>
+						0,33 л
+					</li>
+				</ul>
+			</div>
+			
+			<div class="content">
+				<div class="loved">
+					<dl>
+						<dt><!-- --></dt>
+						<dd>
+							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
+							<a>Я люблю</a>
+						</dd>
+					</dl>
+				</div>
+				<ul class="composition">
+					<li>Ром светлый</li>
+					<li>Марка: <a>Bacardi</a></li>
+					<li>Крепость: крепкий (40%)</li>
+				</ul>
+				<p class="desc">Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров и журналистов, создателей научных заявок и отчетов.</p>
+				<div class="need dots">
+					<dl><dt>Необходимо</dt><dd>4,5 л</dd></dl>
+					<dl class="alert"><dt>Сейчас не хватает</dt><dd>1 л</dd></dl>
+				</div>
+				<form class="dots">
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 1 л</a></dt><dd><strong>1000 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 0,7 л</a></dt><dd><strong>890 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1" disabled="disabled"/> <a>Банка 0,33 л</a></dt><dd><strong>200 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+				</form>
+				<div class="sum">
+					<p>
+						<strong class="alert">Итого: 4450 р.</strong>
+						<small>Доставка: 1-2 дня</small>
+					</p>
+					<button class="bt-add-in-account">Добавить в счет</button>
+				</div>
+			</div>
+		</div></div>
+			
+	</div>
+	
+</div>
+
+
+<div class="win-shop" id="shop-gadget">
+	
+	<div class="opacity"><!-- --></div>
+	
+	<div class="win b-gadget"><div class="win-bg"><!-- --></div><div class="gadget-wrapper">
+		
+		
+		<div class="main b"><div class="wrapper">
+			<a onclick="link.close()" class="close">x</a>
+			<h3>Stainless Steel Martini 
+			Shaker and 5-pc. Bar Set</h3>
+			
+			<div class="gallery gallery-nav">
+				<p>
+					<a class="zoom">
+						<img src="i/gadget/b/1.jpg" width="212" height="233" alt="1"/>
+						<b><!-- --></b><span>Рассмотреть поближе</span>
+					</a>
+				</p>
+				<ul>
+					<li>
+						<a><img src="i/food/s/1.jpg" width="38" height="38" alt="1"/></a>
+						1 л
+					</li>
+					<li>
+						<a><img src="i/food/s/2.jpg" width="38" height="38" alt="1"/></a>
+						0,7 л
+					</li>
+					<li>
+						<a><img src="i/food/s/3.jpg" width="38" height="38" alt="1"/></a>
+						0,33 л
+					</li>
+				</ul>
+			</div>
+			
+			<div class="content">
+				<strong class="cost alert">Стоимость: 270 р.</strong>
+				<p class="desc">Аффинное преобразование, как следует 
+				из вышесказанного, порождает критерий сходимости Коши, как и предполагалось. Линейное уравнение изящно отображает многочлен, что неудивительно.</p>
+				<small class="count"><strong>Количество</strong> <input type="text" name="count" value=""/></small>
+				<small>Доставка товара: 1-2 дня</small>
+				<button class="bt-add-in-account2">Добавить в счет</button>
+				<p class="tags"><b>Ключевые слова</b>: инструменты бармена, коллекция, 
+				сталь, тумблер, нож бармена, ситечко, мерный стаканчик, нож для цедры, дозатор, пестик, шейкер, ДолчеГаббана</p>
+
+			</div>
+		</div></div>
+		
+		<div class="b-alternative b">
+			<div class="viewport">
+				<a href="#" class="prev">←</a>
+				<ul>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+				</ul>
+				<a href="#" class="next">→</a>
+			</div>
+		</div>
+		
+		<div class="view-photo gallery-nav"><div class="border"><div class="bor-wr">
+			<a onclick="this.parentNode.parentNode.parentNode.hide()" class="close">x</a>
+			<h3><img src="i/gadget/o/1.jpg" width="584" height="452" alt="1" style="margin: 12px 0 0 2px"/></h3>
+			<ul>
+				<li class="prev"><a><!-- --></a></li>
+				<li><a><img src="i/food/s/1.jpg" width="38" height="38" alt="1"/></a></li>
+				<li><a><img src="i/food/s/2.jpg" width="38" height="38" alt="1"/></a></li>
+				<li><a><img src="i/food/s/3.jpg" width="38" height="38" alt="1"/></a></li>
+				<li class="next"><a><!-- --></a></li>
+			</ul>
+		</div></div></div>
+			
+	</div></div>
+	
+</div>
+
+
+
 <script type="text/javascript">
-	
-	mybar_links = $('mybar').getElementsByTagName('a')
-	for (var i = mybar_links.length - 1; i >= 1; i--) // i >= 1 !!!
+	//Панель с легендой и видео
+	$.onload( function()
 	{
-		mybar_links[i].addEventListener(
-			'click',
-			function(e)
-			{
-				link.open(this)
-				e.preventDefault()
-			},
-			false
-		)
-	}
-	// Ссылка Мой Бар
-	mybar_links[0].addEventListener(
-		'click',
-		function(e)
+		var menu		= $('panel_coctail')
+		menu.now		= menu // Какая ссылка активна (по умолчанию такой нет)
+		var mybar_links	= menu.getElementsByTagName('a')
+		for (var i = mybar_links.length - 1; i >= 0; i--)
 		{
-			if (link.element)
-				link.close()
-			else
-				link.open(mybar_links[i])
-			e.preventDefault()
-		},
-		false
-	)
-
-	// Регистрация
-	/*$('mybar-reg').show = function()
-	{
-		$('mybar-reg').show()
-		$('mybar-reg-successfully').style.display = 'none'
-		this.style.display = 'block'
-		this.style.visibility = 'visible'
-	}*/
-	
-	// Нужно делать форму невидимой, чтобы держать высоту
-	$('mybar-reg').hide = function(to)
-	{
-		if (to == 'mybar-reg-successfully')
-			this.style.visibility = 'hidden'
-		else
-			this.style.display = 'none'
-	}
-	$('mybar-lost-password').hide = function(to)
-	{
-		if (to == 'mybar-lost-password-successfully')
-			this.style.visibility = 'hidden'
-		else
-			this.style.display = 'none'
-	}
-	
-	$('mybar-reg-successfully').hide = function()
-	{
-		$('mybar-reg').hide()
-		this.style.display = 'none'
-	}
-	$('mybar-lost-password-successfully').hide = function()
-	{
-		$('mybar-lost-password').hide()
-		this.style.display = 'none'
-	}
-
-
-	link = new Link()
-	
-	
-	//////////////////////////////////////////////////////////////////
-	// qTip - CSS Tool Tips - by Craig Erskine
-	// http://qrayg.com
-	//
-	// Inspired by code from Travis Beckham
-	// http://www.squidfingers.com | http://www.podlob.com
-	//////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
+			mybar_links[i].addEventListener(
+				'click',
+				function(e)
+				{
+					link.open(this)
+					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
+					this.addClassName('now')
+					this.parentNode.now = this
+					e.preventDefault()
+				},
+				false
+			)
+		}
+	})
 </script>
-
 
 
 
@@ -303,10 +485,6 @@
 <style type="text/css" media="screen">
 	body { min-height: 802px; }
 </style>
-
-
-
-
 
 
 

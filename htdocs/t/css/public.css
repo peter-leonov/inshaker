@@ -1,6 +1,28 @@
+/* оформление с многоточиями */
+.dots dl		{ background: url(../bg/coctail/dots.gif) repeat-x 0 1em; clear: both; overflow: hidden; line-height: 1.45; font-size: 92%; }
+.dots dt		{ float: left; background: #fff; padding-right: 3px; }
+.dots dd		{ float: right; background: #fff; padding-left: 3px; }
 
 
 /* yellow inputs */
+.win-shop .b-gadget .count input,
+.win-shop .content dd input,
 #b-bill	dd input,
 .b-search form input
-{ border: 1px solid red; height: 15px; line-height: 1; padding-top: 3px; border-color: #d7d7d7 #fff #fff #d7d7d7; background: #f1f7b6; margin: 0; width: 31px; }
+{ border: 1px solid red; text-align: center; height: 15px; font-size: 1em; line-height: 1; padding: 3px 0 0 0; border-color: #d7d7d7 #fff #fff #d7d7d7; background: #f1f7b6; margin: 0; width: 35px; }
+
+/* nav str */
+.b-alternative .next,
+.b-alternative .prev,
+.mybar-user .next,
+.mybar-user .prev			{ background: #b0b0b0 url(../icon/mybar-strs.png) no-repeat 0 0; width: 20px; height: 20px; display: block; text-indent: -100em; overflow: hidden; }
+.b-alternative .next,
+.mybar-user .next			{ background-position: -20px 0; }
+
+/* Маленькие картинки */
+.gallery-nav ul		{ margin: 0 auto; display: table; font-size: 110%; line-height: 2.5; }
+.gallery-nav li		{ text-align: center; float: left; margin: 0 10px; }
+.gallery-nav li a	{ border: 1px solid #73787b; display: block; width: 38px; height: 38px; overflow: hidden; }
+.gallery-nav li a:hover		{ border: 3px solid #0392f1; width: 34px; height: 34px; }
+.gallery-nav li a:hover img	{ margin: -2px 0 0 -2px; }
+.gallery-nav li img	{ display: block; }

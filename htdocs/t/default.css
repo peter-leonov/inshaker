@@ -1,7 +1,7 @@
 @import "css/public.css";
 @import "css/borders.css";
-
-body { background: #fff url(bg/body/all.gif) repeat-x 0 0; font: 62.5% Tahoma, Arial, sans-serif; color: #343b40; }
+html	{ height: 100% }
+body { background: #fff url(bg/body/all.gif) repeat-x 0 0; font: 62.5% Tahoma, Arial, sans-serif; color: #343b40; position: relative; min-height: 100%; }
 
 body, table,
 h1, h2, h3,
@@ -47,10 +47,10 @@ body.index-page	{ background-image: url(bg/body/index.gif); }
 #top .nav a.now	{ background: url(bg/nav/top.gif) repeat-x 0 19px !important; cursor: default; }
 #top .nav a:hover	{ background: url(bg/nav/top.gif) repeat-x 0 bottom; }
 #top .nav img	{  }
-#top .nav2		{ position: absolute; right: 3px; top: 65px; line-height: 62px; }
+#top .nav2		{ position: absolute; right: 3px; top: 65px; line-height: 62px;/*index-page*/ }
 #top .nav2 a	{ color: #e4146e; }
 
-#top form		{ position: absolute; right: 0; top: 20px;  }
+#top form		{ position: absolute; right: 0; top: 20px; display: none; }
 #top form input	{ font-size: 11px; height: 17px; border: 1px solid #fff; border-top-color: #c9c9c9; line-height: 17px; padding-top: 2px; width: 175px; margin-right: 10px; }
 
 form button		{ vertical-align: top; }
@@ -63,10 +63,10 @@ label			{ display: block; }
 
 #main-wrapper	{ margin: 0 auto; width: 96em; }
 .index-wrapper	{ position: relative; height: 420px; }
-.index-wrapper .illustration	{ background: url(bg/index.png) no-repeat 80px 1px; width: 1120px; height: 417px; position: absolute; top: -20px; right: 0; }
-
+.index-wrapper .illustration	{ background: url(bg/index.png) no-repeat 80px 1px; width: 1120px; height: 417px; position: absolute; top: -18px; right: 0; }
+/* TODO удалить? */
 /* Index form login */
-.index-wrapper form						{ font-size: 12px; position: absolute; right: -2px; height: 190px; width: 256px; padding: 18px 30px; background: url(bg/form/index.png) no-repeat 0 0; top: 40px; }
+.index-wrapper form						{ display: none; font-size: 12px; position: absolute; right: -2px; height: 190px; width: 256px; padding: 18px 30px; background: url(bg/form/index.png) no-repeat 0 0; top: 40px; }
 .index-wrapper label					{ display: block; clear: both; padding-top: 10px; height: 25px; line-height: 25px; position: relative; }
 .index-wrapper label input				{ position: absolute; right: 0; width: 194px; }
 .index-wrapper .i-close					{ position: absolute; top: 10px; right: 10px; }
@@ -90,13 +90,14 @@ label			{ display: block; }
 .index-wrapper #registration .b p		{ font-size: 11px; padding: 10px 20px; }
 .index-wrapper #registration button		{ margin-top: 20px; }
 
-.index-page .banners		{ overflow: hidden; margin-right: -35px; /*-35 это запас для ie6*/ }
+.index-page .banners		{ overflow: hidden; margin-right: -35px; visibility: hidden; /*-35 это запас для ie6*/ }
 .index-page .banners li		{ float: left; margin-right: 25px; }
 
 
 
 /* Coctail page */
-.body-wrapper		{ background: #c0c0c0; width: 63em; float: left; } /* 330 - account place */
+.column-main		{ float: left; width: 63em; }
+.body-wrapper		{ background: #c0c0c0; }
 .b-body-wrapper2	{ border: 1px solid #fff; padding: 14px 18px; overflow: hidden; margin: 0 1px; background: #fff url(bg/body/body-wrapper.gif) repeat-x 0 0;  } 
 
 .b-title				{ background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 14px; position: relative; }
@@ -105,9 +106,7 @@ label			{ display: block; }
 .b-title .sort-by a		{ padding: 0 6px 2px 6px; margin: 0 2px; display: inline-block; display: -moz-inline-stack; -moz-border-radius: 2pt; -moz-border-radius-topright: 2%; -moz-border-radius-bottomright: 2%; }
 .b-title .sort-by .now	{ color: #fff; background: #0392f1; text-decoration: none; cursor: default; }
 
-
 .b-search		{ float: left; margin-right: 2em; width: 14em; }
-
 .b-search .all-list		{ background: url(icon/all-list.jpg) no-repeat 10px 0; font-size: 1.1em; padding: 0 0 20px 46px; margin-top: 22px; } /* для разных раздделов будут разные иконки */
 
 .b-search dl			{ font-size: 120%; line-height: 1.5; }
@@ -126,13 +125,12 @@ label			{ display: block; }
 .b-search form 			{ background: #77a300; color: #fff; }
 .b-search form fieldset	{ background: url(bg/blocks/green-white.gif) repeat-x 0 0; padding: 0 9px; margin: 0 1px;  }
 .b-search form strong	{ font-size: 120%; line-height: 1; display: block; padding: 12px 0 17px 0; }
-.b-search form input	{ width: 114px; }
+.b-search form input	{ width: 114px; padding-left: 4px; }
 .b-search form small	{ color: #f1f7b6; line-height: 1.5; display: block; }
 .b-search form dl		{ padding: 19px 0 18px 0; overflow: hidden; }
 .b-search form dt		{ padding: 0; font-size: 92%; }
 .b-search form dd		{ float: left; line-height: 1.5; clear: both; position: relative; margin: 0; }
 .b-search form dd .del	{ position: absolute; right: -9px; top: 6px; }
-
 
 
 /*Block content*/
@@ -145,7 +143,7 @@ label			{ display: block; }
 .b-content .p-list .now		{ color: #fff; background: #666; text-decoration: none; }
 .b-content .p-list a		{ padding: 0 .21em .2em .21em; }
 
-.b-content .alphabetical				{ background: #efefef; font-size: 110%; margin-bottom: 12px; }
+.b-content .alphabetical				{ background: #efefef; font-size: 110%; margin-bottom: 22px; }
 .b-content .alphabetical .wrapper		{ display: block; padding: 6px 0 9px 10px; position: relative; }
 .b-content .alphabetical .p-list a		{ margin: 0 -1.5px 0 -1.5px; text-decoration: none; }
 .b-content .alphabetical a.lang-to-en	{ background: url(button/langs.gif) no-repeat 0 0; width: 22px; height: 14px; display: block; position: absolute; top : 7px; right: 10px; text-decoration: none; }
@@ -160,11 +158,11 @@ label			{ display: block; }
 .tooltip a:hover			{ text-decoration: underline; }
 
 
-.b-content .items-result			{ overflow: auto; margin-right: -8px; }
-.b-content .items-result li			{ float: left; width: 100px; margin-right: 9px; height: 139px; position: relative; }
-.b-content .items-result li .love	{ background: url(icon/love.png) no-repeat 0 0; position: absolute; left: 55px; top: 20px; padding-left: 15px; }
-.b-content .items-result li a		{ font-size: 120%; position: absolute; top: 98px; left: 10px; }
-.b-content .items-result li img		{ display: block; }
+.b-content .items-result			{ overflow: auto; margin-right: -10px; }
+.b-content .items-result li			{ float: left; width: 90px; margin-right: 10px; padding-left: 10px;  height: 140px; position: relative; }
+.b-content .items-result li .love	{ background: url(icon/love.png) no-repeat 0 0; position: absolute; left: 55px; top: 10px; padding-left: 15px; }
+.b-content .items-result li a		{ font-size: 120%; }
+.b-content .items-result li img		{ display: block; margin: 0 0 7px -10px; }
 
 .b-content .pager			{ background: url(bg/body/hr-repeat.gif) repeat-x 0 0; font-size: 110%; padding: 17px 0 0 0; margin-top: 18px; position: relative; }
 .b-content .pager .p-list a	{ padding-bottom: 0; }
@@ -175,32 +173,76 @@ label			{ display: block; }
 .b-content .pager .next.dis	{ background-position: -12px -12px; }
 
 /* coctail page */
-#coctail-page .hreview				{ background: url(bg/coctail/bgs.gif) repeat-x 0 100%; position: relative; }
+#coctail-page .hreview				{ background: url(bg/coctail/bgs.gif) repeat-x 0 100%; }
 #coctail-page .hreview .menu		{ background: #3d3d3d url(bg/coctail/bgs.gif) repeat-x 0 0; }
 #coctail-page .hreview .menu div	{ background: url(../i/coctail/bg/default.jpg) no-repeat 0 100%; }
 #coctail-page .hreview .menu p		{ border-bottom: 3px solid #000; padding: 11px 0 9px 9px; overflow: hidden; margin-bottom: 139px; font-size: 110%; }
 
-#coctail-page .hreview .entry		{ padding: 21px 16px 27px 220px; }
+#coctail-page .hreview .entry		{ padding: 21px 16px 27px 220px; position: relative; }
 #coctail-page .hreview .desc		{ font-size: 120%; overflow: hidden; line-height: 1.25; }
 #coctail-page .hreview .desc h2		{ font-size: 117%; font-weight: bold; padding-bottom: 3px; }
 #coctail-page .hreview .tags		{ font-size: 110%; padding: 29px 0 38px 0; }
 #coctail-page .hreview button		{ margin-right: 16px; }
-#coctail-page .hreview .entry img	{ position: absolute; left: 30px; bottom: -10px; }
+#coctail-page .hreview .entry .illustration	{ position: absolute; left: 30px; bottom: -10px; }
+
+#coctail-page .popup				{ display: none; position: absolute; top: -140px; padding-top: 140px; min-height: 100%; font-size: 120%; line-height: 1.67; color: #fff; margin-bottom: -42px; left: 0; width: 100%; background: #000; background: rgba(0, 0, 0, .9); }
+#coctail-page .popup h3				{ font-size: 150%; font-weight: bold;  margin: -112px 20px -1px; }
+#coctail-page .popup p				{ margin: 20px 40px 40px 20px; }
+#coctail-page .popup .close			{ display: none; border-color: #020202 !important; position: absolute; background-color: #515152; color: #fff; text-decoration: none; text-align: center; left: 50%; margin-left: -4.45em; bottom: 20px; display: block; font-size: 92%; height: 1.82em; width: 8.91em }
+#coctail-page #view-video div		{ margin: -100px auto 0; }
+
 
 /* Уже Любят */
-.b-content .loved	{ background: url(bg/coctail/love.gif) no-repeat 100% 0; float: right; margin: 6px 0 2em 8px; height: 63px; padding-right: 10px; min-width: 72px; }
-.b-content .loved dl{ background: url(bg/coctail/love.gif) no-repeat 0 0; height: 100%; padding-left: 10px; }
-.b-content .loved dt{ background: url(bg/coctail/love-text.gif) no-repeat center 11px; height: 30px; display: block; }
-.b-content .loved dd{ font: 14px Georgia; color: #fff; height: 33px; text-align: center; }
-.b-content .loved dd b{ background: url(bg/coctail/love-text.gif) no-repeat 0 -79px; padding-left: 28px; padding-bottom: 16px; }
+.loved		{ background: url(bg/coctail/love.png) no-repeat 100% 0; float: right; margin: 6px 0 2em 8px; height: 63px; padding-right: 10px; min-width: 72px; }
+.loved dl	{ background: url(bg/coctail/love.png) no-repeat 0 0; height: 100%; padding-left: 10px; }
+.loved dt	{ background: url(bg/coctail/love-text.gif) no-repeat center 11px; height: 30px; display: block; }
+.loved dd	{ font: 14px Georgia; color: #fff; text-align: center; }
+.loved dd b	{ background: url(bg/coctail/love-text.gif) no-repeat 0 -30px; padding-left: 28px; display: block; height: 33px; }
 
-#coctail-page .what-need			{ overflow: hidden; font-size: 120%; }
-#coctail-page .what-need dl			{ float: left; line-height: 30px; width: 23em; margin-bottom: -1px; }
+#coctail-page .what-need			{ overflow: hidden; font-size: 120%; padding-top: 27px; margin-bottom: 27px; }
+#coctail-page .what-need dl			{ float: left; width: 23em; margin-bottom: -1px; }
 #coctail-page .what-need .tools		{ float: right; }
-#coctail-page .what-need dt			{ border-bottom: 3px solid #5c5c5c; font-weight: bold; margin-bottom: 10px; }
-#coctail-page .what-need dd			{ color: #343b40; background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; height: 30px; }
-#coctail-page .what-need dd a		{ float: left; height: 30px; width: 75%; line-height: 29px; }
+#coctail-page .what-need dt			{ border-bottom: 3px solid #5c5c5c; font-weight: bold; margin-bottom: 10px; padding-bottom: 6px; }
+#coctail-page .what-need dd			{ color: #343b40; line-height: 2.3; background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; height: 2.5em; }
+#coctail-page .what-need dd:last-child	{ background: none; }
+#coctail-page .what-need dd a		{ float: left; padding-right: 18px; }
+#coctail-page .what-need dd a:hover	{ color: #ec275f; background: url(icon/plus.gif) no-repeat 100% 60%; text-decoration: underline; }
+#coctail-page .what-need strong		{ font-weight: normal; display: block; float: right; width: 25%; }
 
+
+/* more in coctail */
+.b-more	{ float: left; }
+.b-more	.b-more-korol	{ width: 22em; margin-right: 1em; }
+.b-more	.b-more-coctails{ width: 40em; }
+.b-more .body-wrapper	{ float: left; margin-top: 9px; position: relative; }
+.b-more dl				{ font-size: 120%; height: 11.24em; background: #fff url(bg/body/green-more-title.gif) repeat-x 0 -19px; }
+.b-more dt				{ background: #77a300 url(bg/body/green-more-title.gif) repeat-x 0 18px;  margin: -5px -10px 0; padding: 0 1px; height: 29px; }
+.b-more dt b			{ background: #77a300 url(bg/body/green-more-title.gif) repeat-x 0 19px; color: #fff; padding: 0 10px; position: relative; top: -1px; line-height: 28px; font-weight: normal; display: block; height: 31px; }
+.b-more dd				{ line-height: 1.17; position: relative; }
+.b-more-korol dd p		{ padding: 19px 0 11px 0; }
+.b-more-korol dd i		{ color: #e4146e; font-style: normal; }
+.b-more-coctails .viewport	{ margin-left: 15px; }
+.b-more-coctails ul			{ padding-top: 10px; }
+.b-more-coctails li			{ width: 8em; text-align: center; float: left; width: 110px; }
+.b-more-coctails img		{ display: block; margin: 0 auto 5px; }
+.b-more-coctails .prev,
+.b-more-coctails .next		{ background: url(icon/strs-green.gif) no-repeat -16px -24px; position: absolute; top: 54px; right: 0; height: 14px; width: 16px; }
+.b-more-coctails .prev		{ background-position: 0 -24px; left: 0; right: auto; }
+.b-more-coctails .next.dis	{ background-position: -16px -38px; cursor: default; }
+.b-more-coctails .prev.dis	{ background-position: 0 -38px; cursor: default; }
+
+.b-more #korol-mira				{ background: #000 url(bg/coctail/korol.gif) repeat-x 0 100%; display: none; position: absolute; top: 1px; left: 0; height: 16.4em; width: 100%; color: #fff; }
+.b-more #korol-mira .wrapper	{ background: #000 url(bg/coctail/korol.gif) repeat-x 0 100%; height: 100%; padding: 1px 0; position: relative; font-size: 120%; top: -1px; margin: 0 1px; }
+.b-more #korol-mira	strong		{ padding: 17px 0 0 20px; display: block; }
+.b-more #korol-mira	.ruler		{ width: 172px; margin: 26px auto 0; position: relative; padding-top: 17px; font-size: 92%; }
+.b-more #korol-mira	.ruler img	{ display: block; }
+.b-more #korol-mira	.ruler b	{ display: block; margin-left: -.1em; font-weight: normal; padding-top: 4px; position: absolute; top: 27px; }
+.b-more #korol-mira	.ruler .last{ position: absolute; right: -.6em; }
+.b-more #korol-mira	.dragger	{ background: url(bg/coctail/korol-coctail.png) no-repeat 100% 0; cursor: pointer; width: 26px; top: 0; padding-top: 31px; text-align: center; color: #9ce025; font-weight: bold;  position: absolute; }
+.b-more #korol-mira button		{ position: absolute; bottom: 10px; left: 50%; margin-left: -56px; }
+
+
+.b-more #korol-mira			{  }
 
 
 /* bill - payment account */
@@ -237,7 +279,75 @@ label			{ display: block; }
 
 
 
+/* Window, Shoping */
+.win-shop				{ display: none; }
+.win-shop .opacity,
+.win-shop	{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.win-shop .opacity		{ background: #fff; opacity: .75; }
+.win-shop .win			{ background: url(bg/win/win.png) no-repeat 0 100%; margin: 72px auto 0; position: relative; width: 620px; padding: 0 19px 19px; }
+.win-shop .win-bg		{ background: url(bg/win/win.png) no-repeat 0 0; position: absolute; top: -20px; width: 100%; height: 20px; left: 0; }
+.win-shop .gadget-wrapper	{ position: relative; }
+.win-shop .main				{ background: #c0c0c0; position: relative;  }
+.win-shop .main .wrapper,
+.win-shop .view-photo .border{ background: #fff url(bg/win/main-bt.gif) repeat-x 0 100%; }
+.win-shop .main .wrapper	{ margin: 0 1px; position: relative; overflow: hidden; }
+.win-shop .main .wrapper2	{ position: relative; }
+.win-shop .close			{ background: url(icon/close.gif) no-repeat 0 -10px; position: absolute; height: 14px; width: 14px; top: 11px; right: 10px; text-indent: -1000em; }
+.win-shop h3				{ background: url(bg/body/green-more-title.gif) repeat-x 0 -19px; padding: 34px 0 0 290px; font-weight: bold; font-size: 180%;  }
 
+.win-shop .main .zoom		{ text-align: center; margin: 0 auto 37px; display: table; text-decoration: none; }
+.win-shop .main a.zoom:hover span	{ text-decoration: none; }
+.win-shop .main .zoom img	{ display: block; margin: 0 auto 13px; }
+.win-shop .main .zoom span	{ text-decoration: underline; }
+.win-shop .main .zoom b		{ background: url(icon/zoom.gif) no-repeat 0 center; padding-left: 11px; text-decoration: none !important;  }
+.win-shop .main .gallery		{ float: left; width: 290px; padding-top: 37px; }
+.win-shop .main .gallery ul		{ margin-bottom: 35px; }
+
+.win-shop .content				{ font-size: 120%; float: left; width: 328px; }
+.win-shop .content small		{ font-size: 92%; }
+.win-shop .content .alert		{ color: #eb1c57; }
+.win-shop .content .composition	{ list-style: disc inside; margin: 23px 0 0 11px; min-height: 7em; line-height: 1.5; }
+.win-shop .content .loved		{ height: 82px; margin: 19px 25px 0 0; }
+.win-shop .content .loved a		{ background: url(bg/coctail/love-text.gif) no-repeat center -58px; text-indent: -1000em; display: block; margin: 3px -6px 0; }
+.win-shop .content .loved span	{ background: url(bg/coctail/love-text.gif) no-repeat center -58px; text-indent: -1000em; display: block; margin: 3px -6px 0;  }
+.win-shop .content .desc		{ clear: both; padding: 8px 28px 21px 0; }
+.win-shop .content .need		{ background: #f7f7f7 url(bg/coctail/info.png) no-repeat 0 0; width: 160px; height: 47px; padding: 12px 30px 0 56px;  }/*отцентровать по вертикале для ie*/
+.win-shop .content .need dl *	{ background: #f7f7f7; }
+.win-shop .content form			{ padding: 20px 0 12px 0; }
+.win-shop .content form dl		{ margin: 0 52px 6px 18px; }
+.win-shop .content form strong	{ font-weight: normal; padding-right: 12px; }
+.win-shop .content form a		{ margin-left: 4px; }
+.win-shop .content .sum			{ overflow: hidden; text-align: right; height: 66px; }
+.win-shop .content .sum p		{ float: left; text-align: left; }
+.win-shop .content .sum p small	{ display: block; padding-top: 4px; }
+.win-shop .content .sum button	{ margin: 6px 28px 0 0; }
+
+
+.win-shop .b-alternative		{ background: #0d0d0d url(bg/win/alt.png) repeat-x 0 100%; margin-top: 7px; position: relative; }
+.win-shop .b-alternative .next,
+.win-shop .b-alternative .prev	{ background-color: #fff; position: absolute; top: 41px; left: 20px; }
+.win-shop .b-alternative .next	{ left: auto; right: 20px; }
+.win-shop .b-alternative .viewport	{ width: 455px; margin: 0 auto; overflow: hidden; height: 98px; }
+.win-shop .b-alternative ul		{ width: 1000em; }
+.win-shop .b-alternative ul li	{ float: left; width: 100px; padding-top: 9px; }
+.win-shop .b-alternative ul img	{  }
+
+.win-shop .view-photo			{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
+.win-shop .view-photo h3		{ padding: 0; height: auto; }
+.win-shop .view-photo ul		{ position: absolute; bottom: 21px; left: 179px; margin: 0; }
+.win-shop .view-photo ul .next	{ margin-left: 20px; width: 20px; }
+.win-shop .view-photo ul .prev	{ margin-right: 20px; width: 20px; }
+.win-shop .view-photo ul .next a,
+.win-shop .view-photo ul .prev a{ border: 0 !important; padding: 0 !important; margin-top: 10px; width: 20px; height: 20px; background: url(icon/strs-green.gif) no-repeat 0 -52px; }
+.win-shop .view-photo ul .next a{ background-position: -20px -52px; }
+
+.win-shop .b-gadget .cost		{ font-size: 117%; line-height: 5; display: block; }
+.win-shop .b-gadget .count		{ display: block; margin-bottom: 6px; }
+.win-shop .b-gadget .count input{ margin-left: 6px; }
+.win-shop .b-gadget .tags		{ font-size: 82%; color: #343b40; padding-bottom: 40px; }
+.win-shop .b-gadget small		{ display: block; }
+.win-shop .b-gadget button		{ display: block; margin: 13px 0 21px 0; }
+.win-shop .b-gadget .gallery	{ padding-top: 0; }
 
 
 
@@ -285,9 +395,6 @@ label			{ display: block; }
 #mybar-coctails .prev		{ position: absolute; top: 40px; left: 41px; }
 #mybar-coctails .next		{ position: absolute; top: 40px; right: 40px; }
 #mybar-coctails .bt-mix		{ position: absolute; top: 69px; right: 0; }
-.mybar-user .next,
-.mybar-user .prev			{ background: #b0b0b0 url(icon/mybar-strs.png) no-repeat 0 0; width: 20px; height: 20px; display: block; text-indent: -100em; overflow: hidden; }
-.mybar-user .next			{ background-position: -20px 0; }
 .mybar-user .next:hover,
 .mybar-user .prev:hover		{ background-color: red; }
 
@@ -353,6 +460,9 @@ button.bt-lost-pass	{ background-position: 0 -146px; height: 28px; width: 104px;
 button.bt-info		{ background-position: 0 -278px; height: 19px; width: 16px; }
 button.bt-deliver	{ background-position: 0 -297px; height: 20px; width: 112px; }
 button.bt-want-slap	{ background-position: 0 -84px; height: 31px; width: 112px; }
+button.bt-add-in-account	{ background-position: 0 -298px; height: 31px; width: 112px; }
+button.bt-add-in-account2	{ background-position: 0 -115px; height: 31px; width: 112px; }
+button.bt-korol-vote		{ background-position: 0 -329px; height: 31px; width: 112px; }
 
 button.bt-love-her,
 button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
