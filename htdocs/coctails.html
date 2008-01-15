@@ -16,7 +16,7 @@
 		
 		<ul class="nav">
 			<li><a href="coctails.html" class="now">Коктейли</a></li>
-			<li><a href="#">Ингредиенты</a></li>
+			<li><a href="ingridients.html">Ингредиенты</a></li>
 			<li><a href="gadget.html">Штучки</a></li>
 			
 			<li class="icon"><a href="#"><img src="t/icon/gift.gif" width="16" height="16" alt="Gift"/></a></li>
@@ -26,7 +26,7 @@
 			<input type="text" name="search" value="Что хотите найти?"/>
 			<p><button type="submit" value="Найти" class="bt-search"><!-- --></button></p>
 		</form>
-		<p class="nav2"><a href="#">Университет</a>        <a href="#">Бары мира</a></p>
+		<p class="nav2"><a href="#">Университет</a> <a href="bars.html">Бары мира</a></p>
 	</div>
 	
 	<div class="tooltip" id="tooltip">
@@ -38,191 +38,190 @@
 			<p>Крепость: <a>слабоалкогольный</a></p>
 		</div>
 	</div>
-	<div class="column-main">
-		<div class="b body-wrapper" id="search-coctails-page"><div class="b-body-wrapper2">
-			<div class="b-title">
-				<h1>Коктейли</h1>
-				<!--p class="sort-by">
-					Показать:
-					<a class="b" onclick="this.className+=' now'">все коктейли</a> | <a class="b" onclick="this.className+=' now'">самые любимые</a>
-				</p-->
-				<!--p class="sum">Всего коктейлей: 7961</p-->
-			</div>
-			<div class="b-search">
+	
+	<div class="column column-main"><div class="body-wrapper" id="search-coctails-page">
+		<div class="b-title">
+			<h1>Коктейли</h1>
+			<!--p class="sort-by">
+				Показать:
+				<a class="b" onclick="this.className+=' now'">все коктейли</a> | <a class="b" onclick="this.className+=' now'">самые любимые</a>
+			</p-->
+			<!--p class="sum">Всего коктейлей: 7961</p-->
+		</div>
+		<div class="b-search">
 
-				<form action="?" method="post" class="b">
-					<fieldset>
-						<strong>Поиск<br/>по ингредиенту</strong>
-						<input type="text" name="text" value=""/>
-						<small>например: виски</small>
-						<dl>
-							<dt>Коктейли с:</dt>
-							<dd>malibu coconut rum <a title="Убрать из поиска" class="del">Удалить</a></dd>
-							<dd>vodka <a title="Убрать из поиска" class="del">Удалить</a></dd>
-							<dd>orange juice <a title="Убрать из поиска" class="del">Удалить</a></dd>
-						</dl>
-					</fieldset>
-				</form>
-				
-				<p class="all-list"><a>Вcе коктейльные ингредиенты</a></p>
-				<!--dl>
-					<dt>Группы</dt>
-					<dd><a><span>Cладенькие</span></a></dd>
-					<dd><a><span>Кисленькие</span></a></dd>
-					<dd><a class="dis"><span>Сливочные</span></a></dd>
-					<dd><a><span>Фруктовые</span></a></dd>
-					<dd><a class="dis"><span>Слоистые</span></a></dd>
-					<dd><a><span>Горящие</span></a></dd>
-					<dd><a class="dis"><span>Согревающие</span></a></dd>
-					<dd><a class="dis"><span>Освежающие</span></a></dd>
-					<dd><a><span>Универсальные</span></a></dd>
-				</dl>
-				<dl>
-					<dt>Крепость</dt>
-					<dd><a><span>Любая</span></a></dd>
-					<dd><a class="dis"><span>Безаколькольные</span></a></dd>
-					<dd><a class="dis"><span>Слабоалкогольные</span></a></dd>
-					<dd><a><span>Крепкие</span></a></dd>
-					<dd><a><span>Очень крепкие</span></a></dd>
-				</dl-->
-			</div>
+			<form action="?" method="post" class="b">
+				<fieldset>
+					<strong>Поиск<br/>по ингредиенту</strong>
+					<input type="text" name="text" value=""/>
+					<small>например: виски</small>
+					<dl>
+						<dt>Коктейли с:</dt>
+						<dd>malibu coconut rum <a title="Убрать из поиска" class="del">Удалить</a></dd>
+						<dd>vodka <a title="Убрать из поиска" class="del">Удалить</a></dd>
+						<dd>orange juice <a title="Убрать из поиска" class="del">Удалить</a></dd>
+					</dl>
+				</fieldset>
+			</form>
 			
-			
-			
-			<div class="b-content">
-				<p class="alphabetical b"><span class="wrapper">
-					По букве:
-					<span class="p-list" id="alphabetical-ru">
-						<a onclick="this.className = 'now'">а</a>
-						<a onclick="this.className = 'now'">б</a>
-						<a onclick="this.className = 'now'">в</a>
-						<a onclick="this.className = 'now'">г</a>
-						<a onclick="this.className = 'now'">д</a>
-						<a onclick="this.className = 'now'">е</a>
-						<a onclick="this.className = 'now'">ж</a>
-						<a onclick="this.className = 'now'">з</a>
-						<a onclick="this.className = 'now'">и</a>
-						<a onclick="this.className = 'now'">к</a>
-						<a onclick="this.className = 'now'">л</a>
-						<a onclick="this.className = 'now'">м</a>
-						<a onclick="this.className = 'now'">н</a>
-						<a onclick="this.className = 'now'">о</a>
-						<a onclick="this.className = 'now'">п</a>
-						<a onclick="this.className = 'now'">р</a>
-						<a onclick="this.className = 'now'">с</a>
-						<a onclick="this.className = 'now'">т</a>
-						<a onclick="this.className = 'now'">у</a>
-						<a onclick="this.className = 'now'">ф</a>
-						<a onclick="this.className = 'now'">х</a>
-						<a onclick="this.className = 'now'">ц</a>
-						<a onclick="this.className = 'now'">ч</a>
-						<a onclick="this.className = 'now'">ш</a>
-						<a onclick="this.className = 'now'">щ</a>
-						<a onclick="this.className = 'now'">э</a>
-						<a onclick="this.className = 'now'">ю</a>
-						<a onclick="this.className = 'now'">я</a>
-					</span>
-					<a class="lang-to-en"> </a>
-				</span></p>
-
-				<ul class="items-result" id="FOR_TOOLTIP_items-result">
-					<li>
-						<a href="coctail.html"><img src="i/coctail/white/s/_03.jpg" width="60" height="80" alt=" 03"/>
-						Абсолютное несчастье</a>
-						<span class="love">645</span>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_05.jpg" width="60" height="80" alt=" 05"/>
-						Кровавая Мэри</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_07.jpg" width="60" height="80" alt=" 05"/>
-						Болли-Столли</a>
-						<span class="love">645</span>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_09.jpg" width="60" height="80" alt=" 05"/>
-						Гарибальди</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_15.jpg" width="60" height="80" alt=" 05"/>
-						Гибсон</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_16.jpg" width="60" height="80" alt=" 05"/>
-						Алый лев</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_17.jpg" width="60" height="80" alt=" 05"/>
-						В постели</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_18.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_23.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_24.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_25.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_26.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-					<li>
-						<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
-						Морской бриз</a>
-					</li>
-				</ul>
-				<div class="pager">
-					Страницы:
-					<span class="p-list">
-						<a>1</a>
-						<a>2</a>
-						<a>3</a>
-						<a class="now">4</a>
-						<a>5</a>
-						<a>6</a>
-						<a>7</a>
-						<a>8</a>
-						<a>9</a>
-						<a>10</a>
-						<a>...</a>
-						<a>132</a>
-					</span>
-					<a class="next" onclick="this.className += ' dis'"><!-- --></a>
-					<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
-
-
-
-				</div>
-			</div>
+			<p class="all-list"><a>Вcе коктейльные ингредиенты</a></p>
+			<!--dl>
+				<dt>Группы</dt>
+				<dd><a><span>Cладенькие</span></a></dd>
+				<dd><a><span>Кисленькие</span></a></dd>
+				<dd><a class="dis"><span>Сливочные</span></a></dd>
+				<dd><a><span>Фруктовые</span></a></dd>
+				<dd><a class="dis"><span>Слоистые</span></a></dd>
+				<dd><a><span>Горящие</span></a></dd>
+				<dd><a class="dis"><span>Согревающие</span></a></dd>
+				<dd><a class="dis"><span>Освежающие</span></a></dd>
+				<dd><a><span>Универсальные</span></a></dd>
+			</dl>
+			<dl>
+				<dt>Крепость</dt>
+				<dd><a><span>Любая</span></a></dd>
+				<dd><a class="dis"><span>Безаколькольные</span></a></dd>
+				<dd><a class="dis"><span>Слабоалкогольные</span></a></dd>
+				<dd><a><span>Крепкие</span></a></dd>
+				<dd><a><span>Очень крепкие</span></a></dd>
+			</dl-->
+		</div>
 		
-		</div></div>
-	</div>
+		
+		
+		<div class="b-content">
+			<p class="alphabetical b"><span class="wrapper">
+				По букве:
+				<span class="p-list" id="alphabetical-ru">
+					<a onclick="this.className = 'now'">а</a>
+					<a onclick="this.className = 'now'">б</a>
+					<a onclick="this.className = 'now'">в</a>
+					<a onclick="this.className = 'now'">г</a>
+					<a onclick="this.className = 'now'">д</a>
+					<a onclick="this.className = 'now'">е</a>
+					<a onclick="this.className = 'now'">ж</a>
+					<a onclick="this.className = 'now'">з</a>
+					<a onclick="this.className = 'now'">и</a>
+					<a onclick="this.className = 'now'">к</a>
+					<a onclick="this.className = 'now'">л</a>
+					<a onclick="this.className = 'now'">м</a>
+					<a onclick="this.className = 'now'">н</a>
+					<a onclick="this.className = 'now'">о</a>
+					<a onclick="this.className = 'now'">п</a>
+					<a onclick="this.className = 'now'">р</a>
+					<a onclick="this.className = 'now'">с</a>
+					<a onclick="this.className = 'now'">т</a>
+					<a onclick="this.className = 'now'">у</a>
+					<a onclick="this.className = 'now'">ф</a>
+					<a onclick="this.className = 'now'">х</a>
+					<a onclick="this.className = 'now'">ц</a>
+					<a onclick="this.className = 'now'">ч</a>
+					<a onclick="this.className = 'now'">ш</a>
+					<a onclick="this.className = 'now'">щ</a>
+					<a onclick="this.className = 'now'">э</a>
+					<a onclick="this.className = 'now'">ю</a>
+					<a onclick="this.className = 'now'">я</a>
+				</span>
+				<a class="lang-to-en"> </a>
+			</span></p>
+
+			<ul class="items-result" id="FOR_TOOLTIP_items-result">
+				<li>
+					<a href="coctail.html"><img src="i/coctail/white/s/_03.jpg" width="60" height="80" alt=" 03"/>
+					Абсолютное несчастье</a>
+					<span class="love">645</span>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_05.jpg" width="60" height="80" alt=" 05"/>
+					Кровавая Мэри</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_07.jpg" width="60" height="80" alt=" 05"/>
+					Болли-Столли</a>
+					<span class="love">645</span>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_09.jpg" width="60" height="80" alt=" 05"/>
+					Гарибальди</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_15.jpg" width="60" height="80" alt=" 05"/>
+					Гибсон</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_16.jpg" width="60" height="80" alt=" 05"/>
+					Алый лев</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_17.jpg" width="60" height="80" alt=" 05"/>
+					В постели</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_18.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_23.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_24.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_25.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_26.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+				<li>
+					<a><img src="i/coctail/white/s/_31.jpg" width="60" height="80" alt=" 05"/>
+					Морской бриз</a>
+				</li>
+			</ul>
+			<div class="pager">
+				Страницы:
+				<span class="p-list">
+					<a>1</a>
+					<a>2</a>
+					<a>3</a>
+					<a class="now">4</a>
+					<a>5</a>
+					<a>6</a>
+					<a>7</a>
+					<a>8</a>
+					<a>9</a>
+					<a>10</a>
+					<a>...</a>
+					<a>132</a>
+				</span>
+				<a class="next" onclick="this.className += ' dis'"><!-- --></a>
+				<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
+
+
+
+			</div>
+		</div>
+	
+	</div></div>
 	
 	
 	
-	<div id="b-bill" class="border-block">
+	<div id="b-bill" class="column">
 		<h2>
 			&#160;
 		</h2>

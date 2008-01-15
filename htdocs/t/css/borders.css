@@ -8,12 +8,13 @@
 .b-title .sort-by .b:after		{ position: absolute; bottom: 0; left: 0; right: 0; }
 .b-title .sort-by .b:before	{ position: absolute; top: 0; left: 0; right: 0 }
 */
-.body-wrapper.b:before	{ border-color: #d6d6d6; }
+/*.body-wrapper.b:before	{ border-color: #d6d6d6; }
+*/
 .popup .b:before,
 .popup .b:after		{ border-color: #020202}
-.border-block:before,
-.border-block:after	{ display: block; height: 1px; content: ''; border-top: 1px solid #c0c0c0; margin-top: -1px; }
-.border-block:after	{ margin: 0 0 -2px 0; }
+.column:before,
+.column:after	{ display: block; height: 1px; content: ''; border-top: 1px solid #c0c0c0; margin-top: -1px; }
+.column:after	{ margin: 0 0 -2px 0; }
 
 /* засчет бордеров и позиционирования. Подходит для обводки */
 .border	{ border-color: #c0c0c0; border-style: solid; border-width: 0 1px; height: 100%; margin-top: 1px; }

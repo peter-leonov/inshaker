@@ -16,7 +16,7 @@
 		
 		<ul class="nav">
 			<li><a href="coctails.html" class="now">Коктейли</a></li>
-			<li><a href="#">Ингредиенты</a></li>
+			<li><a href="ingridients.html">Ингредиенты</a></li>
 			<li><a href="gadget.html">Штучки</a></li>
 			
 			<li class="icon"><a href="#"><img src="t/icon/gift.gif" width="16" height="16" alt="Gift"/></a></li>
@@ -26,7 +26,7 @@
 			<input type="text" name="search" value="Что хотите найти?"/>
 			<p><button type="submit" value="Найти" class="bt-search"><!-- / --></button></p>
 		</form>
-		<p class="nav2"><a href="#">Университет</a>        <a href="#">Бары мира</a></p>
+		<p class="nav2"><a href="#">Университет</a> <a href="bars.html">Бары мира</a></p>
 	</div>
 	
 	<div class="tooltip" id="tooltip">
@@ -38,8 +38,9 @@
 			<p>Крепость: <a>слабоалкогольный</a></p>
 		</div>
 	</div>
-	<div class="column-main">
-		<div class="b body-wrapper" id="coctail-page"><div class="b-body-wrapper2">
+	
+	<div class="column-main-container">
+		<div class="column" id="coctail-page"><div class="body-wrapper">
 			<div class="b-title">
 				<h1>Название коктейля</h1>
 				<!--p class="sort-by">
@@ -118,8 +119,8 @@
 		
 		<!-- Дополнтиельный блок к основному контенту -->
 		<div class="b-more">
-			<div class="b body-wrapper b-more-korol">	
-				<dl class="b-body-wrapper2">
+			<div class="column b-more-korol">	
+				<dl class="body-wrapper">
 					<dt><b>Король мира!</b></dt>
 					<dd>
 						<p><i>1378 посетителей</i> считают, 
@@ -140,8 +141,8 @@
 				
 			</div>
 			
-			<div class="b body-wrapper b-more-coctails">	
-				<dl class="b-body-wrapper2">
+			<div class="column b-more-coctails">	
+				<dl class="body-wrapper">
 					<dt><b>Вам также могут понравится</b></dt>
 					<dd>
 						<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
@@ -161,7 +162,7 @@
 	
 	
 	
-	<div id="b-bill" class="border-block">
+	<div id="b-bill" class="column">
 		<h2>
 			&#160;
 		</h2>

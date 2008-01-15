@@ -20,3 +20,4 @@ img
 #mybar h2 a	{ display: inline; zoom: 1; }
 .mybar-user .menu	{ display: inline; zoom: 1; width: expression( runtimeStyle.width = clientWidth, style.display = 'block'); }
 .mybar-user .menu * { display: inline !important; zoom: 1; }
+
