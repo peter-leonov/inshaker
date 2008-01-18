@@ -64,7 +64,7 @@ label			{ display: block; }
 
 
 
-#main-wrapper	{ margin: 0 auto; width: 96em; }
+#main-wrapper	{ margin: 0 auto; width: 95.8em; }
 .index-wrapper	{ position: relative; height: 420px; }
 .index-wrapper .illustration	{ background: url(bg/index.png) no-repeat 80px 1px; width: 1120px; height: 417px; position: absolute; top: -18px; right: 0; }
 /* TODO удалить? */
@@ -96,19 +96,21 @@ label			{ display: block; }
 .index-page .banners		{ overflow: hidden; margin-right: -35px; visibility: hidden; /*-35 это запас для ie6*/ }
 .index-page .banners li		{ float: left; margin-right: 25px; }
 
-
+.column-mini,
 .column				{ border: 0 solid #c0c0c0; border-width: 0 1px; background: #fff; float: left; width: 100%; }
 /* Coctail page */
 .column-main		{ width: 62.8em; }
+.column-mini		{ width: 31.3em; margin-left: 8px; margin-bottom: 11px; } /* knowledge */
 .column-main-container	{ width: 63em; float: left; }
 .body-wrapper		{ border: 0 solid #fff; border-width: 0 1px; background: #fff url(bg/body/body-wrapper.gif) repeat-x 0 0; padding: 14px 18px; overflow: hidden; }
 
 
 .b-title				{ background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 14px; position: relative; }
 .b-title h1				{ font-size: 24px; margin-left: -1px; }
-.b-title p				{ position: absolute; right: 0; bottom: 20px; font-size: 110%; }
-.b-title .sort-by 		{  }
-.b-title .sort-by a		{ margin-left: 18px; float: left; height: 1.18em; display: block; padding: 0 1px; }
+.b-title h2				{ font-size: 18px; font-weight: bold;  margin-left: -1px; }
+.b-title .sort-by,
+.b-title a				{ position: absolute; right: 0; bottom: 20px; font-size: 110%; }
+.b-title .sort-by a		{ position: static; margin-left: 18px; float: left; height: 1.18em; display: block; padding: 0 1px; }
 .b-title .sort-by a b	{ font-weight: normal; display: block; height: 100%; line-height: 1.18; padding: 0 4px 2px; position: relative; top: -1px; }
 .b-title .sort-by .now b,
 .b-title .sort-by .now	{ color: #fff; background: #0392f1; text-decoration: none; cursor: default; }
@@ -182,7 +184,7 @@ label			{ display: block; }
 /* coctail page */
 #coctail-page			{ width: 62.8em; }
 #coctail-page .hreview	{ background: url(bg/coctail/bgs.gif) repeat-x 0 100%; }
-.hreview .menu			{ background: #3d3d3d url(bg/coctail/bgs.gif) repeat-x 0 0; }
+.hreview .menu			{ background: #3d3d3d url(bg/coctail/bgs.gif) repeat-x 0 0; position: relative; }
 .hreview .menu div		{ background: url(../i/coctail/bg/default.jpg) no-repeat 0 100%; }
 .hreview .menu p		{ border-bottom: 3px solid #000; padding: 11px 0 9px 9px; overflow: hidden; margin-bottom: 139px; font-size: 110%; }
 
@@ -204,6 +206,12 @@ label			{ display: block; }
 
 
 /* bar page */
+#bar-page .menu .prev,
+#bar-page .menu .next		{ background: url(icon/str/bar-ra.png) no-repeat 0 0; width: 60px; height: 60px; position: absolute; top: 112px; right: 0; }
+#bar-page .menu .prev		{ background-image: url(icon/str/bar-la.png); right: auto; left: 0; }
+#bar-page .menu .prev.dis	{ background-image: url(icon/str/bar-ln.png); }
+#bar-page .menu .next.dis	{ background-image: url(icon/str/bar-rn.png); }
+
 #bar-page .hreview .menu p			{ margin-bottom: 199px; }
 #bar-page .hreview .entry			{ padding: 25px 10px 21px; position: relative; }
 #bar-page .hreview .entry h3		{ font-size: 150%; margin-bottom: 7px; }
@@ -217,7 +225,6 @@ label			{ display: block; }
 #view-coctailmap h3		{ border-bottom: 2px solid #8c8c8c; margin-top: -183px !important; padding-bottom: 2px; }
 #view-coctailmap div	{ overflow: hidden; margin: 21px 0 0 5px; line-height: 1.2; }
 #view-coctailmap dl		{ float: left; width: 21.67em; margin: 0 15px; position: relative; border-bottom: 1px solid #515152; padding: 7px 0; letter-spacing: -.2px; }
-#view-coctailmap dt		{  }
 #view-coctailmap i		{ font-style: normal; display: block; }
 #view-coctailmap dd		{ position: absolute; right: 0; top: 7px; }
 
@@ -296,7 +303,7 @@ label			{ display: block; }
 
 /* bill - payment account */
 #b-bar,
-#b-bill		{ background: #fff url(bg/bill/bottom.gif) repeat-x 0 100%; float: left; width: 30.8em; margin-left: 2em; position: relative; }
+#b-bill		{ background: #fff url(bg/bill/bottom.gif) repeat-x 0 100%; float: left; width: 30.8em; margin-left: 1.8em; position: relative; }
 #b-bill h2				{ padding: 23px 0 19px 20px; font-size: 120%; background: url(bg/bill/menus.png) repeat-x 0 100%; }
 
 #b-bill	dt				{ background: url(bg/bill/menus.png) repeat-x 0 -140px; height: 35px; margin-top: 1px; color: #343b40; font-size: 120%; position: relative; font-weight: bold; line-height: 35px; padding-left: 20px;  }
@@ -427,6 +434,36 @@ label			{ display: block; }
 
 
 
+/* Knowledge page*/
+.b-kn-1						{ margin-left: 0; }
+.b-kn-3						{ margin-right: -8px; margin-left: 7px; }
+.b-kn-1 .mini-wrap			{ background-image: url(bg/knowledge/col1.jpg) !important; }
+.b-kn-1 ul					{ list-style: disc inside; line-height: 2; margin: 22px 0 80px;}
+.column-mini .body-wrapper	{ font-size: 120%; padding: 0; position: relative; }
+.column-mini .b-title		{ padding-bottom: 12px;  }
+.column-mini h3				{ font-size: 117%; font-weight: bold; position: relative; margin-bottom: 4px; }
+.column-mini .mini-wrap		{ background: url(bg/knowledge/column.gif) repeat-x 0 100%; padding: 14px 18px; height: 328px; border-bottom: 1px solid #fff; }
+.column-mini p				{ font-size: 92%; }
+.column-mini button			{ position: absolute; bottom: 11px; left: 50%; margin-left: -58px; }
+.column-mini .slider		{ height: 180px; margin-bottom: -24px; }
+.column-mini .slider .prev,
+.column-mini .slider .next	{ top: 70px; }
+
+.b-legends .slider img		{ margin: 0 20px 0 30px; display: block; float: left; }
+.b-legends .b-title a		{ font-size: 120%; }
+
+
+
+/**/
+.slider					{ position: relative; overflow: hidden; }
+.slider .prev,
+.slider .next			{ position: absolute; width: 20px; height: 20px; background: url(icon/strs-green.gif) no-repeat 0 -72px; left: 0; top: 50%; margin-top: -10px; }
+.slider .next			{ background-position: -20px -72px; left: auto; right: 0; }
+.slider .prev.dis		{ background-position: 0 97px; }
+.slider .next.dis		{ background-position: -20px 97px; }
+
+
+
 /* My Bar panel */
 #mybar			{ border-top: 6px solid #0d0d0d; color: #fff; background: url(bg/mybar.png); position: fixed; bottom: 0; left: 0; right: 0; }
 #mybar h2		{ font-size: 1em; font-weight: bold; display: table; line-height: 1.6; margin: 0 auto; white-space: nowrap; }
@@ -441,6 +478,7 @@ label			{ display: block; }
 #mybar form p		{ display: block; font-size: 13px; }
 #mybar h3			{ font-size: 18px; font-weight: bold; color: #9dd837; text-align: center; padding-right: 36px; }
 #mybar label small	{ color: #ccc; font-size: 11px; display: block; padding: 3px 33px 0 0; text-align: right; }
+
 
 
 /* User panel */
@@ -536,7 +574,9 @@ button.bt-deliver	{ background-position: 0 -297px; height: 20px; width: 112px; }
 button.bt-want-slap	{ background-position: 0 -84px; height: 31px; width: 112px; }
 button.bt-add-in-account	{ background-position: 0 -298px; height: 31px; width: 112px; }
 button.bt-add-in-account2	{ background-position: 0 -115px; height: 31px; width: 112px; }
-button.bt-korol-vote		{ background-position: 0 -329px; height: 31px; width: 112px; }
+button.bt-pick-up-utensils	{ background-position: 0 -329px; height: 29px; width: 116px; }
+button.bt-all-dishes		{ background-position: 0 -358px; height: 29px; width: 116px; }
+button.bt-korol-vote		{ background-position: 0 -387px; height: 31px; width: 112px; }/*todo*/
 
 button.bt-love-her,
 button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
