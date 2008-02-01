@@ -5,38 +5,31 @@
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
-	<script type="text/javaScript" src="http://programica.ru/lib/Programica.js"></script>
+	<script type="text/javaScript" src="/lib/Programica.js"></script>
 	<title>InShaker √ Коктейли</title>
 </head>
 <body>
+	
 <div id="main-wrapper">
 	
 	<div id="top">
 		<h2><a href="index.html"><img src="t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
 		
 		<ul class="nav">
+			<li><a href="index.html">Вечеринки</a></li>
 			<li><a href="coctails.html" class="now">Коктейли</a></li>
-			<li><a href="ingridients.html">Ингредиенты</a></li>
-			<li><a href="gadget.html">Штучки</a></li>
-			
-			<li class="icon"><a href="#"><img src="t/icon/gift.gif" width="16" height="16" alt="Gift"/></a></li>
+			<li><a href="knowledge.html">Университет</a></li>
+			<li><a href="bars.html">Бары мира</a></li>
 		</ul>
-	
-		<form action="#">
-			<input type="text" name="search" value="Что хотите найти?"/>
-			<p><button type="submit" value="Найти" class="bt-search"><!-- --></button></p>
-		</form>
-		<p class="nav2"><a href="knowledge.html">Университет</a> <a href="bars.html">Бары мира</a></p>
 	</div>
 	
 	<div class="tooltip" id="tooltip">
-		<div class="text-container">
-			<h3>Утренняя роса.</h3>
-			<p class="desc">Аллегро дает неизменный аккорд, что отчасти объясняет такое количество кавер-версий...</p>
-			<p>Ингредиенты: <a>джин</a>, <a>ром</a>, <a>сок апельсиновый</a></p>
-			<p>Вкус: <a>слоистые</a>, <a>сладкие</a>, <a>горящие</a></p>
-			<p>Крепость: <a>слабоалкогольный</a></p>
-		</div>
+		<h3>Утренняя роса.</h3>
+		<p class="desc">Аллегро дает неизменный аккорд, что отчасти объясняет такое количество кавер-версий...</p>
+		<p>Ингредиенты: <a>джин</a>, <a>ром</a>, <a>сок апельсиновый</a></p>
+		<p>Вкус: <a>слоистые</a>, <a>сладкие</a>, <a>горящие</a></p>
+		<p>Крепость: <a>слабоалкогольный</a></p>
+		<div class="bg"><!-- --></div>
 	</div>
 	
 	<div class="column column-main"><div class="body-wrapper" id="search-coctails-page">
@@ -45,7 +38,7 @@
 		</div>
 		<div class="b-search">
 
-			<form action="?" method="post" class="b">
+			<form action="#" method="post" class="b">
 				<fieldset>
 					<strong>Поиск<br/>по ингредиенту</strong>
 					<input type="text" name="text" value=""/>
@@ -59,8 +52,14 @@
 				</fieldset>
 			</form>
 			
-			<p class="all-list"><a>Вcе коктейльные ингредиенты</a></p>
-			<!--dl>
+			<p class="all-list"><a href="ingridients.html">Вcе коктейльные ингредиенты</a></p>
+			<dl class="groups">
+				<dt>Крепость</dt>
+				<dd><a><span>Крепкие</span></a></dd>
+				<dd><a class="dis"><span>Слабоалкогольные</span></a></dd>
+				<dd><a class="dis"><span>Безаколькольные</span></a></dd>
+			</dl>
+			<dl class="groups">
 				<dt>Группы</dt>
 				<dd><a><span>Cладенькие</span></a></dd>
 				<dd><a><span>Кисленькие</span></a></dd>
@@ -72,14 +71,6 @@
 				<dd><a class="dis"><span>Освежающие</span></a></dd>
 				<dd><a><span>Универсальные</span></a></dd>
 			</dl>
-			<dl>
-				<dt>Крепость</dt>
-				<dd><a><span>Любая</span></a></dd>
-				<dd><a class="dis"><span>Безаколькольные</span></a></dd>
-				<dd><a class="dis"><span>Слабоалкогольные</span></a></dd>
-				<dd><a><span>Крепкие</span></a></dd>
-				<dd><a><span>Очень крепкие</span></a></dd>
-			</dl-->
 		</div>
 		
 		
@@ -120,7 +111,7 @@
 				<a class="lang-to-en"> </a>
 			</span></p>
 
-			<ul class="items-result" id="FOR_TOOLTIP_items-result">
+			<ul class="coctails" id="FOR_TOOLTIP_items-result">
 				<li>
 					<a href="coctail.html"><img src="i/coctail/white/s/_03.jpg" width="60" height="80" alt=" 03"/>
 					Абсолютное несчастье</a>
@@ -204,8 +195,8 @@
 					<a>...</a>
 					<a>132</a>
 				</span>
-				<a class="next" onclick="this.className += ' dis'"><!-- --></a>
-				<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
+				<a class="next" onclick="this.className += ' dis'; return false"><!-- --></a>
+				<a class="prev" onclick="this.className += ' dis'; return false"><!-- --></a>
 
 
 
@@ -216,7 +207,7 @@
 	
 	
 	
-	<div id="b-bill" class="column">
+	<div id="b-bill" class="column"><div class="r-body-wrapper">
 		<h2>
 			&#160;
 		</h2>
@@ -234,7 +225,6 @@
 					<li><a>Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button></li>
 					<li><a>Лайм</a><b>1 шт.</b>			<label><input type="text" name="portion" value=""/> 70 р.</label></li>
 				</ul>
-				<p class="sum">23 570 р.</p>
 			</dd>
 		</dl>
 		
@@ -243,41 +233,30 @@
 		<dl><dt>Вечеринки <span>15 000 р.</span></dt></dl>
 		
 		<div class="total">
-			<p class="money">45 000 p. <button class="bt-deliver">Доставить</button></p>
-			
 			<ul>			
 				<li><a>Распечатать план</a> »</li>
 				<li><a>Оставить на потом</a> »</li>
 			</ul>
+			
+			<p class="money">45 000 p. <button class="bt-deliver">Доставить</button></p>
 		</div>
-	</div>
+	</div></div>
 
 
 	
 	<p id="bottom">
-		<span class="search-error">Нашли ошибку? <a>Сообщите нам!</a></span>
+		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
+
 	
-		<a>О проекте</a>   |   <a>Правовая информация</a>   |   <a>Контактная информация</a>   |   <a>Блог InShaker</a><br/>
+		<a>О проекте</a>   |   <a>Правовая информация</a><br/>
 		Copyright © 2007 InShaker. Все права защищены
 	</p>
 </div>
 
-<br/><br/><br/><br/>
-
-<!--#include virtual="/inc/mybar-login.html" -->
-
 <script type="text/javascript">
-	//////////////////////////////////////////////////////////////////
-	// qTip - CSS Tool Tips - by Craig Erskine
-	// http://qrayg.com
-	//
-	// Inspired by code from Travis Beckham
-	// http://www.squidfingers.com | http://www.podlob.com
-	//////////////////////////////////////////////////////////////////
-
-	//There's No need to edit anything below this line//
-	document.getElementById('tooltip').show()
-	tooltip = {
+$.onload(function(){
+	document.getElementById('tooltip').style.display = 'block'
+	var tooltip = {
 	  tip : document.getElementById('tooltip'),
 	  offsetX : 22,
 	  offsetY : document.getElementById('tooltip').offsetHeight+24
@@ -286,7 +265,7 @@
 
 	tooltip.init = function () {
 		
-		if (this.tip) document.onmousemove = function (evt) {tooltip.move (evt)};
+		if (this.tip) $("FOR_TOOLTIP_items-result").onmousemove = function (evt) {tooltip.move (evt)};
 
 		var a;
 		var anchors = $("FOR_TOOLTIP_items-result").getElementsByTagName('img');
@@ -302,8 +281,8 @@
 	tooltip.move = function (evt) {
 		var x=0, y=0;
 		if (document.all) {//IE
-			x = (document.documentElement && document.documentElement.scrollLeft) ? document.documentElement.scrollLeft : document.body.scrollLeft;
-			y = (document.documentElement && document.documentElement.scrollTop) ? document.documentElement.scrollTop : document.body.scrollTop;
+			x = document.documentElement.scrollLeft;
+			y = document.documentElement.scrollTop;
 			x += window.event.clientX;
 			y += window.event.clientY;
 
@@ -328,14 +307,12 @@
 	}
 
 	tooltip.init();
+})
 </script>
 
 
 
 <img src="my.bar-coctails.png" width="1120" height="1463" alt="" id="model" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
-<style type="text/css" media="screen">
-	body { min-height: 802px; }
-</style>
 
 
 
