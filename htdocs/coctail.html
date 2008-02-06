@@ -28,16 +28,6 @@
 		<p class="nav2"><a href="knowledge.html">Университет</a> <a href="bars.html">Бары мира</a></p>
 	</div>
 	
-	<div class="tooltip" id="tooltip">
-		<div class="text-container">
-			<h3>Утренняя роса.</h3>
-			<p class="desc">Аллегро дает неизменный аккорд, что отчасти объясняет такое количество кавер-версий...</p>
-			<p>Ингредиенты: <a>джин</a>, <a>ром</a>, <a>сок апельсиновый</a></p>
-			<p>Вкус: <a>слоистые</a>, <a>сладкие</a>, <a>горящие</a></p>
-			<p>Крепость: <a>слабоалкогольный</a></p>
-		</div>
-	</div>
-	
 	<div class="column-main-container">
 		<div class="column" id="coctail-page"><div class="body-wrapper">
 			<div class="b-title">
@@ -49,37 +39,72 @@
 				<div class="hreview">
 					<div class="menu"><div class="b">
 						<p class="border-links" id="panel_coctail">
-							<a href="#view-prepare"><b>Легенда</b></a>
-							<a><b>Как приготовить</b></a>
+							<!--a href="#view-prepare"><b>Легенда</b></a-->
+							<a href="#view-how"><b>Как приготовить</b></a>
 							<a href="#view-video"><b>Видео рецепт</b></a>
-							<a><b>Распечатать рецепт</b></a>		
 						</p>
 					</div></div>
+					
 					<div class="entry">
-						<img src="i/coctail/white/b/01.png" width="141" height="307" alt="" class="illustration"/>
-						<div class="desc">
-							<div class="loved">
-								<dl>
-									<dt><!-- --></dt>
-									<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
-								</dl>
+						<div id="main-content">
+							<img src="i/coctail/white/b/01.png" width="190" height="371" alt="01" class="illustration"/>
+							<div class="desc">
+								<div class="loved">
+									<dl>
+										<dt><!-- --></dt>
+										<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
+									</dl>
+								</div>
+								<h2 class="summary">Мохито — </h2>
+								<div class="description">
+									<p>Френсис Дрейк был не просто пиратом. Имея в подчинении пол сотни кораблей, гроза морей честно служил английской короне, грабя испанские суда и побережья. </p>
+									<p>Последней экспансией пирата была Куба. Вдоволь нагулявшись на солнечном острове, Френсис в шутку приказал
+									<a onclick="link.open('view-prepare')">…</a><p>
+								</div>
 							</div>
-							<h2 class="summary">Мохито — </h2>
-							<div class="description" onclick="this.innerHTML+=' белого рома'">
-								слабоалкогольный коктейль на основе белого рома и листьев мяты. Происходит с острова Куба, стал популярен в США с конца XIX в. Огибающая, в первом приближении, усиливает изоморфный интеграл
-								<a onclick="link.open('view-prepare')">…</a>
-							</div>
+							<p class="tags"><b>Группы:</b> <a rel="tag">популярные</a>, <a rel="tag">крепкие</a>, <a rel="tag">освежающие</a>, <a rel="tag">универсальные</a>.</p>
+							<button class="bt-want-slap">Хочу приготовить</button>
+							<button class="bt-love-her">Люблю его</button>
 						</div>
-						<p class="tags"><b>Группы:</b> <a rel="tag">популярные</a>, <a rel="tag">крепкие</a>, <a rel="tag">освежающие</a>, <a rel="tag">универсальные</a>.</p>
-						<button class="bt-want-slap">Хочу приготовить</button>
-						<button class="bt-love-her">Люблю его</button>
 						
 						<!-- Попапы -->
-						<div class="popup" id="view-prepare">
+						<div id="view-prepare">
 							<h3>Легенда коктейля</h3>
-							<p>Гранулометрический анализ, как следует из полевых и лабораторных наблюдений, адсорбирует подбур только в отсутствие тепло- и массообмена с окружающей средой. Бактерия сжимает бюкс, все дальнейшее далеко выходит за рамки текущего исследования 
-							и не будет здесь рассматриваться. Альбедо, в случае использования адаптивно-ландшафтных систем земледелия, представляет собой гумус, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Латерит локально перемещает генетический почвообразовательный процесс, вне зависимости от предсказаний теоретической модели явления. Сопротивление, согласно традиционным представлениям, притягивает пирогенный карбонат кальция только в отсутствие тепло- и массообмена с окружающей средой. Однако, при увеличении выборки возмущение плотности аналитически усиливает зоогенный песок, что дает возможность использования данной методики как универсальной.</p>
-							<a class="close b" onclick="link.close()">закрыть легенду</a>
+							<p>
+							Френсис Дрейк был не просто пиратом. Имея в подчинении пол сотни кораблей, гроза морей честно служил английской короне - грабя испанские суда и побережья.
+							</p><p>
+							Последней экспансией пирата была Куба. Вдоволь нагулявшись на солнечном острове, Френсис в шутку приказал не брать с собой воду, и хорошенько запастись ромом. До дрожи в коленях, боявшиеся капитана матросы исполнили шутку. 
+							</p><p>
+							Именно так появился мохито, коктейль спасший Дрейка от бунта, а матросов от скуки.
+							</p>
+							<button class="bt-close-legend" onclick="link.close(); $('panel_coctail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+						</div>
+						
+						<div id="view-how">
+							<div class="ingridients"><div class="wrap">
+									<a class="prev"><!-- --></a>
+									<div class="viewport">
+										<div class="surface">
+											<img src="i/food/l/f1.png" width="116" height="140" alt="F1"/>
+											<img src="i/food/l/f2.png" width="116" height="140" alt="F2"/>
+											<img src="i/food/l/f3.png" width="116" height="140" alt="F3"/>
+										</div>
+									</div>
+									<a class="next"><!-- --></a>
+							</div></div>
+							<h3>Как приготовить:</h3>
+							<ul>
+								<li>— Брось в стакан 10 веточек мяты</li>
+								<li>— 2 дольки лайма</li>
+								<li>— 2 ч/ложки <a>тросникового сахара</a></li>
+								<li>— Хорошенько подави их пестиком</li>
+								<li>— Засыпь доверху колотого льда</li>
+								<li>— Используя мерный стаканчик влей 50 мл белого рома</li>
+								<li>— Потом содовую воду до краев</li>
+								<li>— Размешай все коктейльной ложкой и укрась веточкой мяты.</li>
+							</ul>
+							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
+							<button class="bt-print-how"><!-- --></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:471px;height:280px"><img src="t/TEMP_tube.jpg" width="471" height="280" alt="TEMP Tube"/></div>
@@ -425,7 +450,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		var menu		= $('panel_coctail')
+		menu		= $('panel_coctail')
 		menu.now		= menu // Какая ссылка активна (по умолчанию такой нет)
 		var mybar_links	= menu.getElementsByTagName('a')
 		for (var i = mybar_links.length - 1; i >= 0; i--)
@@ -446,6 +471,30 @@
 		
 		link = new Link()
 	})
+	
+	$('view-prepare').show = function()
+	{
+		$('main-content').style.visibility = 'hidden'
+		this.style.display = 'block';
+	}
+	$('view-prepare').hide = function()
+	{
+		this.style.display = 'none';
+		$('main-content').style.visibility = 'visible'
+	}
+	$('view-how').show = function()
+	{
+		$('main-content').className = 'view-how'
+		this.style.display = 'block';
+	}
+	$('view-how').hide = function()
+	{
+		this.style.display = 'none';
+		$('main-content').className = ''
+		menu.now.remClassName('now')
+	}
+	
+	
 </script>
 
 

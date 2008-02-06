@@ -17,6 +17,7 @@ Link.prototype.open = function(a)
 	if (!this.element)
 		return false;
 
+	//передаем параметр для кастамных открытий
 	this.element.show()
 }
 

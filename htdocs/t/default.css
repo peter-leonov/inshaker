@@ -187,12 +187,13 @@ label			{ display: block; }
 .hreview .menu div		{ background: url(../i/coctail/bg/default.jpg) no-repeat 0 100%; }
 .hreview .menu p		{ border-bottom: 3px solid #000; padding: 10px 0 8px 9px; overflow: hidden; margin-bottom: 139px; font-size: 110%; }
 
-#coctail-page .hreview .entry		{ padding: 21px 16px 27px 220px; position: relative; }
+#coctail-page .hreview .entry		{ padding: 21px 16px 32px 218px; position: relative; }
 #coctail-page .hreview .desc		{ font-size: 120%; overflow: hidden; line-height: 1.25; }
-#coctail-page .hreview .desc h2		{ font-size: 117%; font-weight: bold; padding-bottom: 3px; }
+#coctail-page .hreview .desc h2		{ font-size: 14px; font-weight: bold; padding: 0 0 3px 16px; background: url(icon/love-small.gif) no-repeat 0 .3em; }
+#coctail-page .hreview .desc .description	{ padding-left: 16px; }
 #coctail-page .hreview .tags		{ font-size: 110%; padding: 29px 0 38px 0; }
 #coctail-page .hreview button		{ margin-right: 16px; }
-#coctail-page .hreview .entry .illustration	{ position: absolute; left: 30px; bottom: -10px; }
+#coctail-page .hreview .entry .illustration	{ position: absolute; left: -2px; bottom: 3px; }
 
 
 
@@ -200,7 +201,29 @@ label			{ display: block; }
 .popup h3				{ font-size: 150%; font-weight: bold; margin: -52px 20px -1px; }
 .popup p				{ padding: 20px 40px 0 20px; }
 .popup a				{ color: #00c0ff; }
-.popup .close			{ display: none; border-color: #020202 !important; position: absolute; background-color: #515152; color: #fff; text-decoration: none; text-align: center; left: 50%; margin-left: -4.45em; bottom: 20px; display: block; font-size: 92%; width: 8.91em }
+.popup .close			{ border-color: #020202 !important; position: absolute; background-color: #515152; color: #fff; text-decoration: none; text-align: center; left: 50%; margin-left: -4.45em; bottom: 20px; display: block; font-size: 92%; width: 8.91em }
+
+#coctail-page #view-prepare			{ display: none; position: absolute; min-height: 100%; top: 0; left: 0; font-size: 120%; line-height: 1.5; width: 93%; padding: 0 3.5%; }
+#coctail-page #view-prepare h3		{ font-size: 150%; margin: 13px 0 10px; }
+#coctail-page #view-prepare button	{ position: absolute; left: 50%; margin-left: -4.45em; bottom: 11px; }
+
+#coctail-page #view-how				{ display: none; position: absolute; top: -139px; height: 100%; padding-top: 139px; font-size: 120%; left: 0; width: 100%; }
+#coctail-page #view-how h3			{ font-size: 150%; padding: 17px 0 11px 197px; }
+#coctail-page #view-how ul			{ padding-left: 197px; line-height: 1.5; }
+#coctail-page #view-how .ingridients				{ background: url(bg/coctail/how-bg.png) repeat-x 0 0; height: 139px; margin-top: -140px; padding: 0 1px; }
+#coctail-page #view-how .ingridients .wrap			{ background: url(bg/coctail/how-bg.png) repeat-x 0 0; height: 140px; position: relative; }
+#coctail-page #view-how .ingridients .viewport		{ position: absolute; bottom: 0; left: 173px; width: 350px; }
+#coctail-page #view-how .ingridients .surface		{ width: 10000em; }
+#coctail-page #view-how .ingridients .surface img	{ float: left; margin-left: 7px; }
+#coctail-page #view-how .next,
+#coctail-page #view-how .prev			{ display: block; z-index: 3; width: 20px; height: 20px; position: absolute; left: 153px; top: 66px; background: url(icon/strs-green.gif) no-repeat 0 -72px; }
+#coctail-page #view-how .next			{ background-position: -20px -72px; left: auto; right: 19px; }
+#coctail-page #view-how button			{ position: absolute; bottom: 15px; left: 197px; }
+#coctail-page #view-how .bt-print-how	{ left: 363px; }
+
+#coctail-page .view-how#main-content *	{ visibility: hidden; }
+#coctail-page .view-how#main-content .illustration	{ visibility: visible; z-index: 2; }
+
 #coctail-page #view-video div		{ margin: -40px auto 0; }
 
 
@@ -229,12 +252,12 @@ label			{ display: block; }
 
 
 
-/* Уже Любят */
-.loved		{ background: url(bg/coctail/love.png) no-repeat 100% 0; position: relative; float: right; margin: 6px 0 2em 8px; height: 63px; padding-right: 10px; min-width: 72px; }
+/* DELETE Уже Любят */
+.loved		{ display: none; background: url(bg/coctail/love.png) no-repeat 100% 0; position: relative; float: right; margin: 6px 0 2em 8px; height: 63px; padding-right: 10px; min-width: 72px; }
 .loved dl	{ background: url(bg/coctail/love.png) no-repeat 0 0; height: 100%; padding-left: 10px; }
 .loved dt	{ background: url(bg/coctail/love-text.gif) no-repeat 0 0; position: absolute; width: 54px; height: 7px; left: 50%; margin-left: -27px; top: 11px; }
 .loved dd	{ font: 14px Georgia; color: #fff; text-align: center; }
-.loved b	{ background: url(bg/coctail/love-text.gif) no-repeat 3px -30px; padding-left: 26px; font-weight: normal; display: block; height: 33px; position: relative; top: 30px; }
+.loved b	{ background: url(bg/coctail/love-text.gif) no-repeat 3px -30px; padding-left: 30px; font-weight: normal; display: block; height: 33px; position: relative; top: 30px; }
 
 .loved a	{ position: absolute; width: 43px; height: 7px; left: 50%; margin-left: -24px; background: url(bg/coctail/love-text.gif) no-repeat 0 -63px; text-indent: -1000em; display: block; position: absolute; top: 71px; }
 
@@ -573,17 +596,27 @@ button.bt-search	{ background-position: 0 -56px; height: 28px; width: 50px; }
 button.bt-lost-pass	{ background-position: 0 -146px; height: 28px; width: 104px; }
 button.bt-info		{ background-position: 0 -278px; height: 19px; width: 16px; }
 button.bt-deliver	{ background-position: 0 -297px; height: 20px; width: 112px; }
-button.bt-want-slap	{ background-position: 0 -84px; height: 31px; width: 112px; }
+
 button.bt-add-in-account	{ background-position: 0 -298px; height: 31px; width: 112px; }
 button.bt-add-in-account2	{ background-position: 0 -115px; height: 31px; width: 112px; }
 button.bt-pick-up-utensils	{ background-position: 0 -329px; height: 29px; width: 116px; }
 button.bt-all-dishes		{ background-position: 0 -358px; height: 29px; width: 116px; }
 button.bt-korol-vote		{ background-position: 0 -387px; height: 31px; width: 112px; }/*todo*/
 
-button.bt-love-her,
-button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
-button.bt-love-her	{ background-position: 0 0; height: 31px; width: 112px; }
 
+button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
+
+button.bt-print-how,
+button.bt-close-how,
+button.bt-want-slap,
+button.bt-love-her,
+button.bt-close-legend	{ background: url(button/n_green-buttons.png) no-repeat 0 -36px; width: 155px; height: 36px; }
+
+button.bt-close-how		{ background-position: 0 -144px; height: 36px; width: 145px; }
+button.bt-want-slap		{ background-position: 0 -72px; height: 36px; width: 155px; }
+/* InFuture */
+button.bt-love-her		{ display: none; background-position: 0 -108px; height: 36px; width: 118px; }
+button.bt-print-how		{ background-position: 0 -180px; height: 36px; width: 147px; }
 
 #mybar button.bt-enter		{ background-position: 0 -194px; height: 28px; width: 87px; }
 #mybar button.bt-new-bar	{ background-position: 0 -222px; width: 87px; }
