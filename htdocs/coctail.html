@@ -2,11 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" type="text/css" href="t/default.css"/>
+	<link rel="stylesheet" type="text/css" href="t/default.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="t/css/print-plan.css" media="print"/>
+	<!--link rel="stylesheet" type="text/css" href="t/css/print-how.css" media="print"/-->
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
 	<script type="text/javaScript" src="/lib/Programica.js"></script>
-	<title>InShaker √ Коктейли</title>
+	<title>InShaker √ Мохито</title>
 </head>
 <body>
 <div id="main-wrapper">
@@ -20,46 +22,42 @@
 			<li><a href="knowledge.html">Университет</a></li>
 			<li><a href="bars.html">Бары мира</a></li>
 		</ul>
-	
-		<form action="#">
-			<input type="text" name="search" value="Что хотите найти?"/>
-			<p><button type="submit" value="Найти" class="bt-search"><!-- / --></button></p>
-		</form>
+		
 		<p class="nav2"><a href="knowledge.html">Университет</a> <a href="bars.html">Бары мира</a></p>
 	</div>
 	
 	<div class="column-main-container">
-		<div class="column" id="coctail-page"><div class="body-wrapper">
+		<div class="column column-main" id="coctail-page"><div class="body-wrapper">
 			<div class="b-title">
-				<h1>Название коктейля</h1>
+				<h1>Мохито</h1>
 				<a href="coctails.html">Вернуться назад →</a>
 			</div>
 			<div class="b-content">
 		
 				<div class="hreview">
-					<div class="menu"><div class="b">
+					<div class="top-menu"><div class="b">
 						<p class="border-links" id="panel_coctail">
-							<!--a href="#view-prepare"><b>Легенда</b></a-->
 							<a href="#view-how"><b>Как приготовить</b></a>
 							<a href="#view-video"><b>Видео рецепт</b></a>
 						</p>
+						<img src="i/coctail/bg/1.png" width="590" height="202" alt="1" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="i/coctail/white/b/01.png" width="190" height="371" alt="01" class="illustration"/>
 							<div class="desc">
-								<div class="loved">
+								<!--div class="loved">
 									<dl>
-										<dt><!-- --></dt>
+										<dt></dt>
 										<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
 									</dl>
-								</div>
+								</div-->
 								<h2 class="summary">Мохито — </h2>
 								<div class="description">
 									<p>Френсис Дрейк был не просто пиратом. Имея в подчинении пол сотни кораблей, гроза морей честно служил английской короне, грабя испанские суда и побережья. </p>
 									<p>Последней экспансией пирата была Куба. Вдоволь нагулявшись на солнечном острове, Френсис в шутку приказал
-									<a onclick="link.open('view-prepare')">…</a><p>
+									<a onclick="link.open('view-prepare')">…</a></p>
 								</div>
 							</div>
 							<p class="tags"><b>Группы:</b> <a rel="tag">популярные</a>, <a rel="tag">крепкие</a>, <a rel="tag">освежающие</a>, <a rel="tag">универсальные</a>.</p>
@@ -121,7 +119,7 @@
 						<dt>Необходимые ингредиенты</dt>
 						<dd><a>Сахарный песок</a> <strong>2 ч/ложки</strong></dd>
 						<dd><a>Сок лайма</a> <strong>20 ml</strong></dd>
-						<dd><a>Martini & Rossi extra dry Vermut</a> <strong>50 ml</strong></dd>
+						<dd><a>Martini &amp; Rossi extra dry Vermut</a> <strong>50 ml</strong></dd>
 						<dd><a>Содовая вода</a> <strong>30 ml</strong></dd>
 						<dd><a>Листья мяты</a> <strong>3 штуки</strong></dd>
 						<dd><a>Лед</a> <strong>20 кубиков</strong></dd>
@@ -153,7 +151,7 @@
 				<div id="korol-mira"><div class="wrapper">
 					<strong>Сколько нужно тебе?</strong>
 					<div class="ruler">
-						<img src="t/bg/coctail/korol-ruler.gif" width="172" height="10" alt="llllllllllllllllllll"/>
+						<img src="t/bg/coctail/korol-ruler.gif" width="172" height="10" alt="||||||||||||||||||||"/>
 						<div class="dragger" style="left:32px">6</div>
 						<b>1</b><b class="last">20</b>
 					</div>
@@ -185,6 +183,7 @@
 	
 	<div id="b-bill" class="column">
 		<h2>
+			<span class="to-print">План покупок</span>
 			&#160;
 		</h2>
 		<dl class="on">
@@ -194,19 +193,27 @@
 					<li><a>Мохито</a>		<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
 					<li><a>Капериния</a>	<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
 				</ul>
-				<strong>В них входят:</strong>
+				<strong>Ингредиенты:</strong>
 				<ul class="money">
-					<li><a href="#shop-coctail" onclick="link.open(this); return false">Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button></li>
-					<li><a href="#shop-coctail2" onclick="link.open(this); return false">Sprite</a><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label></li>
-					<li><a href="#shop-coctail" onclick="link.open(this); return false">Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button></li>
-					<li><a href="#shop-coctail" onclick="link.open(this); return false">Лайм</a><b>1 шт.</b>			<label><input type="text" name="portion" value=""/> 70 р.</label></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button><span class="to-print">20 литров<span><!-- --></span></span></li>
+					<li><a href="#shop-coctail2" onclick="link.open(this); return false">Sprite</a><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label><span class="to-print">200 грамм<span><!-- --></span></span></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button><span class="to-print">15 литров<span><!-- --></span></span></li>
+					<li><a href="#shop-coctail" onclick="link.open(this); return false">Лед</a><b>1 кубик</b>			<label><input type="text" name="portion" value=""/> 70 р.</label><span class="to-print">100 кубиков<span><!-- --></span></span></li>
 				</ul>
 			</dd>
 		</dl>
 		
-		<dl><dt>Ингредиенты <span>0 р.</span></dt></dl>
-		<dl><dt>Штучки <span>4 320 р.</span></dt></dl>
-		<dl><dt>Вечеринки <span>15 000 р.</span></dt></dl>
+		<dl style="display:none"><dt>Ингредиенты <span>0 р.</span></dt></dl>
+		<dl class="to-print">
+			<dt>Штучки <span>4 320 р.</span></dt>
+			<ul class="money">
+				<li><a href="#shop-coctail">Шейкер</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-coctail2">Стрейнер</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-coctail">Дробилка для льда</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-coctail">Трубочки</a><b>1 кубик</b><span class="to-print"><span><!-- --></span></span></li>
+			</ul>
+		</dl>
+		<dl class="parties"><dt>Вечеринки <span>15 000 р.</span></dt></dl>
 		
 		<div class="total">
 			<p class="money">45 000 p. <button class="bt-deliver">Доставить</button></p>
@@ -224,7 +231,7 @@
 		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
 
 	
-		<a>О проекте</a>   |   <a>Правовая информация</a><br/>
+		<a href="about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
 		Copyright © 2007 InShaker. Все права защищены
 	</p>
 </div>
@@ -486,11 +493,13 @@
 	{
 		$('main-content').className = 'view-how'
 		this.style.display = 'block';
+		$('poster').style.visibility = 'hidden'
 	}
 	$('view-how').hide = function()
 	{
 		this.style.display = 'none';
 		$('main-content').className = ''
+		$('poster').style.visibility = 'visible'
 		menu.now.remClassName('now')
 	}
 	
@@ -499,9 +508,8 @@
 
 
 
-<img src="my.bar-coctail.png" width="1120" height="1463" alt="" id="model" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
-
-
+<img src="my.bar-coctail.png" width="1120" height="1463" alt="" id="mode-l" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
+<img src="my.bar-coctail.png" width="595" height="842" id="model" alt="" style="display: none; top: 6px; position: absolute; left: 0" />
 
 
 </body>

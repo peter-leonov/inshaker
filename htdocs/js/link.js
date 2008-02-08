@@ -8,14 +8,17 @@ Link.prototype.open = function(a)
 {
 	if (this.element)
 		this.close()
-
+	
 	this.url = (a.constructor == String) ? a : a.href.split('#')[1]
 	
 	this._url(this.url)
-	this.element	= $(this.url)
+	this.element	= $(this.url) 
 
 	if (!this.element)
+	{
+		this.url = null
 		return false;
+	}
 
 	//передаем параметр для кастамных открытий
 	this.element.show()

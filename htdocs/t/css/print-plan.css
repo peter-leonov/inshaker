@@ -1,0 +1,56 @@
+html,body,h1,h2,h3,dl,dd,dt,ul,li	{ margin: 0; padding: 0; font: 12px Tahoma; }
+img		{ border: 0; }
+a		{ text-decoration: none; color: #000; }
+ul,li	{ list-style: none; }
+
+#b-bill .parties,
+#b-bill .total,
+.surface,
+#view-prepare,
+#view-video,
+#main-content *,
+button,
+.menu,
+.b-title a,
+.column,
+#bottom,
+.b-more,
+.win-shop,
+#top ul,
+.money li label,
+#top p	{ display: none; }
+
+
+#b-bill	{ display: block; padding: 34px 50px 0; }
+
+#top h2 { border-top: #000 solid 66px; }
+#top h2 img	{ display: block; position: absolute; top: 5px; border: 0; left: 40px; }
+#b-bill h2	{ font-size: 24px; font-weight: bold;  }
+
+
+#view-how,
+.what-need dl,
+h1		{ margin-left: 268px; }
+h1		{ font-size: 24px; margin-top: 34px; font-weight: bold;  }
+
+dl dt span	{ display: none; }
+dl,dt,dd	{ display: block; }
+
+input		{ border: 0; font-size: 1em; text-align: right; }
+
+h3,
+
+strong,
+dt			{ border-bottom: 3pt solid #5c5c5c; margin-top: 22px; display: block; font-weight: bold; margin-bottom: 10px; padding-bottom: 6px; }
+li			{ line-height: 2.3; border-bottom: #717171 dotted 1pt; text-align: right; }
+li:last-child	{ border: 0; }
+li a		{ position: absolute; left: 0; }
+
+li			{  height: 29px; position: relative; }
+
+.money li b	{ display: none; }
+
+.money li a		{ left: 18px; }
+.money li label	{ border: 1px solid #000; }
+/* чекбоксы для галочек */
+.money li .to-print span	{ border: 1px solid #000; width: 7px; height: 7px; overflow: hidden; position: absolute; top: 10px; left: 0; }
