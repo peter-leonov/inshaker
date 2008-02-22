@@ -134,7 +134,6 @@ function Autocompleter(set, field, div, form, error_div) {
 	this.resetSelection = function() {
 		this.hi_pos = -1;
 		this.selected_elem = null;
-		this.initial_inpit = "";
 	}
 	
 	this.findInSet = function(name) {
@@ -149,6 +148,7 @@ function Autocompleter(set, field, div, form, error_div) {
 		return res;
 	}
 	
+	this.emptyField = function() { field.value = "" }
 	this.clearResults = function() { error_div.innerHTML = div.innerHTML = ""; }
 	
 	this.fillResults = function() {

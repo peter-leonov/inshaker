@@ -17,6 +17,7 @@ var Controller = {
 	filter_letter: "",
 	filter_tag: "",
 	filter_strength: "",
+	filter_ingredient: "",
 	
 	filter_letter_elem: null,
 	filter_tag_elem: null,
@@ -74,6 +75,7 @@ var Controller = {
 	onLetterFilter: function(target_elem) {
 		this._resetTagFilter();
 		this._resetStrengthFilter();
+		this._resetIngredientFilter();
 		
 		var letter = target_elem.innerHTML.toUpperCase();
 		if(this.filter_letter != letter) {
@@ -82,10 +84,9 @@ var Controller = {
 			this.filter_letter = letter;
 			this.filter_letter_elem = target_elem;
 			if(target_elem.id == this.LETTERS_ALL){
-				this.result_set = this.cocktails_set;
-			} else {
-				this.result_set = this._filterByLetter(this.cocktails_set, letter);
+				this._resetLetterFilter();
 			}
+			this.applyFilters();
 			this.renderAllPages();
 		}
 	},
@@ -101,19 +102,10 @@ var Controller = {
 			target_elem.parentNode.addClassName(this.SELECTED_STYLE);
 			this.filter_tag = tag;
 			this.filter_tag_elem = target_elem.parentNode; // a, not span
-			
-			this.result_set = this._filterByTag(this.cocktails_set, this.filter_tag);
-			if(this.filter_strength.length > 0) {
-				this.result_set = this._filterByStrength(this.result_set, this.filter_strength);
-			}
-		} else { // cancelling filter
+		} else { 
 			this._resetTagFilter();
-			if(this.filter_strength.length > 0) {
-				this.result_set = this._filterByStrength(this.cocktails_set, this.filter_strength);
-			} else {
-				this.result_set = this.cocktails_set;
-			}
 		}
+		this.applyFilters();
 		this.renderAllPages();
 	},
 	
@@ -128,28 +120,55 @@ var Controller = {
 			target_elem.parentNode.addClassName(this.SELECTED_STYLE);
 			this.filter_strength = strength;
 			this.filter_strength_elem = target_elem.parentNode; // a, not span
-			
-			this.result_set = this._filterByStrength(this.cocktails_set, this.filter_strength);
-			if(this.filter_tag.length > 0) {
-				this.result_set = this._filterByTag(this.result_set, this.filter_tag);
-			}
-		} else { // cancelling
+		} else { 
 			this._resetStrengthFilter();
-			if(this.filter_tag.length > 0 ) {
-				this.result_set = this._filterByTag(this.cocktails_set, this.filter_tag);
-			} else {
-				this.result_set = this.cocktails_set;
-			}
 		}
+		this.applyFilters();
 		this.renderAllPages();
 	},
 	
 	onIngredientFilter: function(name){
-		alert(name);
+		this._resetLetterFilter();
+		
+		this.filter_ingredient = name;
+		this.applyFilters();
+		this.renderAllPages();
 	},
 	
+	applyFilters: function(){
+		var filtered = false;
+		if(this.filter_letter.length > 0){
+			this.result_set = this._filterByLetter(this.cocktails_set, this.filter_letter);
+			return 0;
+		} else this.result_set = this.cocktails_set;
+		if(this.filter_tag.length > 0) {
+			this.result_set = this._filterByTag(this.cocktails_set, this.filter_tag);
+			filtered = true;
+		}
+		if(this.filter_strength.length > 0) {
+			var to_filter = [];
+			if(filtered) { to_filter = this.result_set } else { to_filter = this.cocktails_set }
+			this.result_set = this._filterByStrength(to_filter, this.filter_strength);
+			filtered = true;
+		}
+		if(this.filter_ingredient.length > 0) {
+			var to_filter = [];
+			if(filtered) { to_filter = this.result_set } else { to_filter = this.cocktails_set }
+			this.result_set = this._filterByIngredient(to_filter, this.filter_ingredient);
+			filtered = true;
+		}
+	},
+	
+	/**
+	 * Listening to Autocompleter
+	 */
 	searchConfirmed: function(name){
 		this.onIngredientFilter(name);
+	},
+	
+	_resetIngredientFilter: function(){
+		this.filter_ingredient = "";
+		this.autocompleter.emptyField();
 	},
 	
 	_resetLetterFilter: function() {
@@ -277,6 +296,18 @@ var Controller = {
 		for(var i = 0; i < set.length; i++){
 			if(set[i].strength == strength) {
 				res.push(set[i]);
+			}
+		}
+		return res;
+	},
+	
+	_filterByIngredient: function(set, ingredient) {
+		var res = [];
+		for(var i = 0; i < set.length; i++) {
+			for(var j = 0; j < set[i].ingredients.length; j++) {
+				if(set[i].ingredients[j][0] == ingredient) {
+					res.push(set[i]);
+				}
 			}
 		}
 		return res;
