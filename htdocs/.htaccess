@@ -1,0 +1,7 @@
+Options +Includes
+AddHandler server-parsed .html
+
+AuthType "Basic"
+AuthName "admin"
+AuthUserFile  /www/.htpasswd
+require valid-user

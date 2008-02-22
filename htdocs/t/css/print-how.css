@@ -1,0 +1,40 @@
+html,body,h1,h2,h3,dl,dd,dt,ul,li	{ margin: 0; padding: 0; font: 12px Tahoma; }
+img		{ border: 0; }
+a		{ text-decoration: none; color: #000; }
+ul,li	{ list-style: none; }
+.surface,
+#view-prepare,
+#view-video,
+#main-content *,
+button,
+.menu,
+.b-title a,
+#bottom,
+#b-bill,
+.b-more,
+.win-shop,
+#top ul,
+#top p	{ display: none; }
+
+h2 { border-top: #000 solid 66px; }
+h2 img	{ display: block; position: absolute; top: 5px; border: 0; left: 40px; }
+#view-how,
+.what-need dl,
+h1		{ margin-left: 268px; }
+h1		{ font-size: 24px; margin-top: 34px; font-weight: bold;  }
+
+
+#main-content .illustration	{ display: block; position: absolute; top: 105px; left: 32px; }
+#view-how li	{ line-height: 1.5; text-indent: -1.3em; padding-left: 1.3em; }
+#view-how	{ width: 276px; }
+h3			{  }
+
+h3,
+.what-need dl			{ width: 276px; margin-top: 22px; }
+h3,
+.what-need dt				{ border-bottom: 3pt solid #5c5c5c; font-weight: bold; margin-bottom: 10px; padding-bottom: 6px; }
+.what-need dd				{ color: #343b40; line-height: 2.3; border-bottom: #717171 dotted 1pt; height: 2.5em; }
+.what-need dd:last-child	{ border: 0; }
+.what-need dd a				{ float: left; padding-right: 18px; }
+.what-need strong			{ font-weight: normal; display: block; float: right; width: 25%; }
+

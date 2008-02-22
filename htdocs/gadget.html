@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="t/default.css"/>
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
+	<script type="text/javaScript" src="/lib/Programica.js"></script>
+	<title>InShaker √ Штучки</title>
+</head>
+<body>
+<div id="main-wrapper">	
+	<div id="top">
+		<h1><a href="/"><img src="t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h1>
+		
+		<ul class="nav">
+			<li><a href="cocktails.html">Коктейли</a></li>
+			<li><a href="ingridients.html">Ингредиенты</a></li>
+			<li><a href="gadget.html" class="now">Штучки</a></li>
+			<li class="icon"><a href="#"><img src="t/icon/gift.gif" width="16" height="16" alt="Gift"/></a></li>
+		</ul>
+	
+		<form action="#">
+			<input type="text" name="search" value="Что хотите найти?"/><p><button type="submit" value="Найти" class="bt-search"><!-- --></button></p>
+		</form>
+		<p class="nav2"><a href="knowledge.html">Университет</a> <a href="bars.html">Бары мира</a></p>
+	</div>
+	
+	<div class="index-wrapper">
+		<div class="illustration"><!-- --></div>
+		<form action="#" class="login">
+			<h2>Мой бар</h2>
+			<a class="lost" onclick="$('lost').show()">Вспомнить пароль</a>
+			<label>E-mail <input type="text" name="mail" value=""/></label>
+			<label>Пароль <input type="password" name="password" value=""/></label>
+			<label class="remember"><input type="checkbox" name="remember" value=""/> Запомнить меня</label>
+			<p><button type="submit" value="Войти" class="bt-enter"><!-- --></button></p>
+			<strong><a onclick="$('registration').show()">Создай свой бар!</a></strong>
+		</form>
+		<form action="#" method="post" id="lost">
+			<a href="#" class="i-close" onclick="$('lost').hide()"><!-- --></a>
+			<h2>Восстановление пароля</h2>
+			<p>Введите адрес электронной почты, указанной Вами при регистрации. <input type="text" name="mail" value=""/></p>
+			
+			<button type="submit" value="Выслать пароль" class="bt-lost-pass"><!-- --></button>
+		</form>
+		<form action="#" method="post" id="registration">
+			<a href="#" class="i-close" onclick="$('registration').hide()"><!-- --></a>
+			<h2>Создай свой бар!</h2>
+			<div class="b"><p>Создав свой бар, можно удобно и быстро пополнять запасы любимых ингредиентов.</p></div>
+			<label>E-mail <input type="text" name="mail" value=""/></label>
+			<label>Пароль <input type="password" name="password" value=""/></label>
+			<label>Пароль еще раз <input type="password" name="password2" value=""/></label>
+			<button type="submit" value="Создать Бар" class="bt-new-bar"><!-- --></button>
+		</form>
+	</div>
+	
+	<p id="bottom">
+		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
+
+	
+		<a href="about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
+		Copyright © 2007 InShaker. Все права защищены
+	</p>
+</div>
+
+
+
+<!-- YEE :) -->
+<div id="mybar" class="mybar-user">
+	<h2><a href="#">БАР «Дикий КОЙОТ»</a><span><!-- --></span></h2>
+	<div class="menu">
+		<a href="#mybar-cocktails"><b>Любимые коктейли</b></a><a href="#"><b>Любимые ингредиенты</b></a><a href="#"><b>Мой счет</b></a><a href="#"><b>История заказов</b></a><a href="#mybar-settings"><b>Настройки</b></a><a href="#"><b>Выйти</b></a>
+	</div>
+	
+	<!-- Любимые коктейли -->
+	<div id="mybar-cocktails">
+		
+		<a href="#" class="prev">←</a>
+		
+		<div class="viewport"><ul>
+			<li>
+				<img src="i/cocktail/s/_03.png" width="80" height="122" alt=""/>
+				<a href="#" class="del" title="удалить">Удалить</a>
+				<a>Абсолютное несчастье</a>
+				<button class="bt-mix">Приготовить</button>
+			</li>
+			<li>
+				<img src="i/cocktail/s/_05.png" width="80" height="121" alt=""/>
+				<a href="#" class="del" title="удалить">Удалить</a>
+				<a>Гарибальди</a>
+				<button class="bt-mix">Приготовить</button>
+			</li>
+			<li>
+				<img src="i/cocktail/s/_07.png" width="79" height="122" alt=" 07"/>
+				<a href="#" class="del" title="удалить">Удалить</a>
+				<a>Кровавая Мэри</a>
+				<button class="bt-mix">Приготовить</button>
+			</li>
+			<li>
+				<img src="i/cocktail/s/_07.png" width="79" height="122" alt=" 07"/>
+				<a href="#" class="del" title="удалить">Удалить</a>
+				<a>Кровавая Мэри</a>
+				<button class="bt-mix">Приготовить</button>
+			</li>
+			<li>
+				<img src="i/cocktail/s/_09.png" width="80" height="122" alt="09"/>
+				<a href="#" class="del" title="удалить">Удалить</a>
+				<a>Алый лев</a>
+			</li>
+		</ul></div>
+		
+		<a href="#" class="next">→</a>
+		
+	</div>
+	
+	<!-- Настройки -->
+	<form action="#" method="post" id="mybar-settings">
+		<label>
+			E-mail
+			<input type="text" name="email" value=""/>
+		</label>
+		<label class="good">
+			Старый пароль
+			<input type="password" name="oldpasword" value=""/>
+		</label>
+		<label>
+			Название бара
+			<input type="text" name="name" value="Дикий КОЙОТ"/>
+		</label>
+		
+		<label class="bad">
+			Новый пароль
+			<input type="password" name="newpasword" value=""/>
+			<small>не менее 4 символов</small>
+		</label>
+		
+		<label class="checkform">
+			<input type="checkbox" name="sendnews"/>
+			Хочу получать новости  Inshaker.ru
+		</label>
+		
+		<label>
+			Новый пароль еще раз
+			<input type="password" name="newpasword2" value=""/>
+		</label>
+		
+		
+		<label class="attention">
+			<input type="checkbox" name="delete-mybar"/>
+			Удалить мой бар. Я устал, я ужожу и больше не собираюсь пользоваться сервисом.
+		</label>
+		
+		<button type="submit" class="bt-save">Сохранить</button>
+		
+	</form>
+</div>
+
+<script src="js/link.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$.onload( function()
+	{
+		var menu		= $('mybar').getElementsByTagName('div')[0]
+		menu.now		= menu // Какая ссылка активна (по умолчанию такой неты)
+		var mybar_links	= menu.getElementsByTagName('a')
+		for (var i = mybar_links.length - 1; i >= 0; i--)
+		{
+			
+			mybar_links[i].addEventListener(
+				'click',
+				function(e)
+				{
+					link.open(this)
+					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
+					this.addClassName('now')
+					this.parentNode.now = this
+					e.preventDefault()
+				},
+				false
+			)
+		}
+		// Ссылка Мой Бар
+		$('mybar').getElementsByTagName('a')[0].addEventListener(
+			'click',
+			function(e)
+			{
+				if (link.element)
+					link.close()
+				else
+					link.open(mybar_links[i])
+				e.preventDefault()
+			},
+			false
+		)
+	
+		var link = new Link()
+
+	})
+
+</script>
+
+
+<img src="my.bar-settings.png" width="1120" height="802" alt="" id="model" style="display: none; position: fixed; bottom: 0; left: 50%; margin-left: -560px; z-index: 100"/>
+<style type="text/css" media="screen">
+	body { min-height: 802px; }
+</style>
+
+
+
+</body>
+</html>

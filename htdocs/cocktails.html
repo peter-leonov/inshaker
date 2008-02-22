@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/t/default.css"/>
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/t/css/ie6.css"/><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/t/css/ie7.css"/><![endif]-->
+	<script type="text/javascript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
+	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javascript" src="/lib/base2/cssQuery.js"></script>
+	<script type="text/javascript" src="/js/controller.js"></script>
+	<script type="text/javascript" src="/js/db.js"></script>
+	<title>InShaker √ Коктейли</title>
+</head>
+<body>
+	
+<div id="main-wrapper">
+	
+	<div id="top">
+		<h2><a href="/index.html"><img src="/t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
+		
+		<ul class="nav">
+			<li><a href="/index.html">Вечеринки</a></li>
+			<li><a href="/cocktails.html" class="now">Коктейли</a></li>
+			<li><a href="/knowledge.html">Университет</a></li>
+			<li><a href="/bars.html">Бары мира</a></li>
+		</ul>
+	</div>
+	
+	<div class="tooltip" id="tooltip">
+		<h3>Утренняя роса.</h3>
+		<p class="desc">Аллегро дает неизменный аккорд, что отчасти объясняет такое количество кавер-версий...</p>
+		<p>Ингредиенты: <a>джин</a>, <a>ром</a>, <a>сок апельсиновый</a></p>
+		<p>Вкус: <a>слоистые</a>, <a>сладкие</a>, <a>горящие</a></p>
+		<p>Крепость: <a>слабоалкогольный</a></p>
+		<div class="bg"><!-- --></div>
+	</div>
+	
+	<div class="column column-main"><div class="body-wrapper" id="search-cocktails-page">
+		<div class="b-title">
+			<h1>Коктейли</h1>
+		</div>
+		<div class="b-search">
+
+			<form class="b" id="search_form">
+				<fieldset>
+					<strong>Поиск<br/>по ингредиенту</strong>
+					<div id="search_error"></div>
+					<input type="text" name="text" value="" id="search_input" autocomplete="off"/>
+					<div id="autocomplete" style="display: none;"></div>
+					<small>например: Виски</small>
+					<dl id="searches_list">
+					</dl>
+				</fieldset>
+			</form>
+			
+			<p class="all-list"><a href="ingridients.html">Вcе коктейльные ингредиенты</a></p>
+			<dl class="groups" id="strengths_list">
+				<dt>Крепость</dt>
+			</dl>
+			<dl class="groups" id="tags_list">
+				<dt>Группы</dt>
+			</dl>
+		</div>
+		
+		
+		
+		<div class="b-content">
+			<p class="alphabetical b"><span class="wrapper">
+				<span class="p-list" id="alphabetical-ru">
+					<a id="letters_all" class="selected-button">все</a>
+					<a>а</a>
+					<a>б</a>
+					<a>в</a>
+					<a>г</a>
+					<a>д</a>
+					<a>е</a>
+					<a>ж</a>
+					<a>з</a>
+					<a>и</a>
+					<a>к</a>
+					<a>л</a>
+					<a>м</a>
+					<a>н</a>
+					<a>о</a>
+					<a>п</a>
+					<a>р</a>
+					<a>с</a>
+					<a>т</a>
+					<a>у</a>
+					<a>ф</a>
+					<a>х</a>
+					<a>ц</a>
+					<a>ч</a>
+					<a>ш</a>
+					<a>щ</a>
+					<a>э</a>
+					<a>ю</a>
+					<a>я</a>
+				</span>
+				<a class="lang-to-en"> </a>
+			</span></p>
+
+			<div id="results_display" class="programica-rolling-images">
+				<div class="viewport">
+					<div class="surface" id="surface">
+					</div>
+				</div>
+				<div class="pager">
+					Страницы:
+					<span class="p-list" id="p-list">
+					</span>
+					<a class="next" onclick1="Controller.next();"></a>
+					<a class="prev" onclick1="Controller.prev();"></a>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div></div>
+	
+	
+	
+	<div id="b-bill" class="column"><div class="r-body-wrapper">
+		<h2>
+			&#160;
+		</h2>
+		<dl class="on">
+			<dt>Хочу приготовить <span>23 570 р.</span></dt>
+			<dd>
+				<ul>
+					<li><a>Мохито</a>		<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
+					<li><a>Капериния</a>	<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
+				</ul>
+				<strong>В них входят:</strong>
+				<ul class="money">
+					<li><a>Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button></li>
+					<li><a>Sprite</a><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label></li>
+					<li><a>Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button></li>
+					<li><a>Лайм</a><b>1 шт.</b>			<label><input type="text" name="portion" value=""/> 70 р.</label></li>
+				</ul>
+			</dd>
+		</dl>
+		
+		<dl><dt>Ингредиенты <span>0 р.</span></dt></dl>
+		<dl><dt>Штучки <span>4 320 р.</span></dt></dl>
+		<dl><dt>Вечеринки <span>15 000 р.</span></dt></dl>
+		
+		<div class="total">
+			<ul>			
+				<li><a>Распечатать план</a> »</li>
+				<li><a>Оставить на потом</a> »</li>
+			</ul>
+			
+			<p class="money">45 000 p. <button class="bt-deliver">Доставить</button></p>
+		</div>
+	</div></div>
+
+
+	
+	<p id="bottom">
+		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
+
+	
+		<a href="about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
+		Copyright © 2007 InShaker. Все права защищены
+	</p>
+</div>
+
+<script type="text/javascript">
+$.onload(function(){
+	document.getElementById('tooltip').style.display = 'block'
+	var tooltip = {
+	  tip : document.getElementById('tooltip'),
+	  offsetX : 22,
+	  offsetY : document.getElementById('tooltip').offsetHeight+24
+	}
+	document.getElementById('tooltip').hide()
+
+	tooltip.init = function () {
+		
+		if (this.tip) $("FOR_TOOLTIP_items-result").onmousemove = function (evt) {tooltip.move (evt)};
+
+		var a;
+		var anchors = $("FOR_TOOLTIP_items-result").getElementsByTagName('img');
+
+		for (var i = 0; i < anchors.length; i ++) {
+			a = anchors[i];
+
+				a.onmouseover = function() {tooltip.show()};
+				a.onmouseout = function() {tooltip.hide()};
+		}
+	}
+
+	tooltip.move = function (evt) {
+		var x = 0, y = 0;
+		if (document.all) {//IE
+			x = document.documentElement.scrollLeft;
+			y = document.documentElement.scrollTop;
+			x += window.event.clientX;
+			y += window.event.clientY;
+
+		} else {//Good Browsers
+			x = evt.pageX;
+			y = evt.pageY;
+		}
+		this.tip.style.left = (x - this.offsetX) + "px";
+		this.tip.style.top =  (y - this.offsetY) + "px";
+	}
+
+	tooltip.show = function (text) {
+		if (!this.tip) return;
+		//this.tip.innerHTML = text;
+		this.tip.style.display = "block";
+	}
+
+	tooltip.hide = function () {
+		if (!this.tip) return;
+		//this.tip.innerHTML = "";
+		this.tip.style.display = "none";
+	}
+
+	// tooltip.init();
+	Controller.init();
+})
+</script>
+
+
+
+<img src="my.bar-cocktails.png" width="1120" height="1463" alt="" id="model" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
+
+
+
+</body>
+</html>
