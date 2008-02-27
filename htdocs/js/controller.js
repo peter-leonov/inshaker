@@ -8,201 +8,144 @@ var Controller = {
 	STRENGTHS_LIST:  'strengths_list',
 	SELECTED_STYLE:  'selected-button',
 	
-	SEARCHES_LIST:   'searches_list',
+	SEARCHES_LIST:   'ingredients_list',
 	SEARCH_INPUT:    'search_input',
 	SEARCH_FORM:     'search_form',
 	SEARCH_ERROR:    'search_error',
 	AUTOCOMPLETE:    'autocomplete', 
 	
-	filter_letter: "",
-	filter_tag: "",
-	filter_strength: "",
-	filter_ingredient: "",
+	FILTER_COOKIE:   'filters',
+	filterElems :   { tag: null, strength: null, letter: null },
 	
-	filter_letter_elem: null,
-	filter_tag_elem: null,
-	filter_strength_elem: null,
-	
-	per_page: 16,
-	result_set: [],
-	cocktails_set: [],
+	perPage: 16,
 	autocompleter: null,
 	
 	init: function() {
-		var sortfunc = function(a, b){
-			if(a.name > b.name) return 1;
-			else if(a.name == b.name) return 0;
-			else return -1;
-		}
-		this.result_set = this.cocktails_set = toArray(cocktails).sort(sortfunc);
-		this.filter_letter_elem = $(this.LETTERS_ALL);
-		this.renderAllPages();
-		this.renderSet($(this.TAGS_LIST), tags);
-		this.renderSet($(this.STRENGTHS_LIST), strengths); 
-		$(this.ROLLING_IMGS_ID).RollingImages.goInit();
-		this.bindEvents();
-		this.autocompleter = new Autocompleter(ingredients, $(this.SEARCH_INPUT), 
+		this.autocompleter = new Autocompleter(Model.ingredients, $(this.SEARCH_INPUT), 
 							$(this.AUTOCOMPLETE), $(this.SEARCH_FORM), $(this.SEARCH_ERROR));
-		this.autocompleter.listener = this;
+		this.renderSet($(this.TAGS_LIST), 	   Model.tags);
+		this.renderSet($(this.STRENGTHS_LIST), Model.strengths); 
+		this.bindEvents();
+		Model.init(Cookie.get(this.FILTER_COOKIE));
 	},
 	
 	bindEvents: function() {
-		var letter_links = $(this.ALPHABET_RU).getElementsByTagName("a");
-		for(var i = 0; i < letter_links.length; i++){
-			var self = this;
-			letter_links[i].addEventListener('click', function(e){
-				self.onLetterFilter(e.target);
+		Model.dataListener = this;
+		this.autocompleter.changeListener = this;
+		var self = this;
+		
+		var letterLinks = $(this.ALPHABET_RU).getElementsByTagName("a");
+		for(var i = 0; i < letterLinks.length; i++){
+			letterLinks[i].addEventListener('mousedown', function(e){
+				self.onLetterClick(e.target);
 			}, false);
 		}
 		
-		var tag_links = $(this.TAGS_LIST).getElementsByTagName("a");
-		for(var i = 0; i < tag_links.length; i++){
-			var self = this;
-			tag_links[i].addEventListener('click', function(e){
-				self.onTagFilter(e.target);
+		var tagLinks = $(this.TAGS_LIST).getElementsByTagName("a");
+		for(var i = 0; i < tagLinks.length; i++){
+			tagLinks[i].addEventListener('mousedown', function(e){
+				self.onTagClick(e.target);
 			}, false);
 		}
 		
-		var strength_links = $(this.STRENGTHS_LIST).getElementsByTagName("a");
-		for(var i = 0; i < strength_links.length; i++){
-			var self = this;
-			strength_links[i].addEventListener('click', function(e){
-				self.onStrengthFilter(e.target);
+		var strengthLinks = $(this.STRENGTHS_LIST).getElementsByTagName("a");
+		for(var i = 0; i < strengthLinks.length; i++){
+			strengthLinks[i].addEventListener('mousedown', function(e){
+				self.onStrengthClick(e.target);
 			}, false);
 		}
 	},
 	
-	onLetterFilter: function(target_elem) {
-		this._resetTagFilter();
-		this._resetStrengthFilter();
-		this._resetIngredientFilter();
-		
-		var letter = target_elem.innerHTML.toUpperCase();
-		if(this.filter_letter != letter) {
-			this.filter_letter_elem.remClassName(this.SELECTED_STYLE);
-			target_elem.addClassName(this.SELECTED_STYLE);
-			this.filter_letter = letter;
-			this.filter_letter_elem = target_elem;
-			if(target_elem.id == this.LETTERS_ALL){
-				this._resetLetterFilter();
-			}
-			this.applyFilters();
-			this.renderAllPages();
-		}
+	onLetterClick: function(targetElem) {		
+		Model.onLetterFilter(targetElem.innerHTML.toUpperCase(), 
+					 $(this.LETTERS_ALL).innerHTML.toUpperCase());
 	},
 	
-	onTagFilter: function(target_elem) {
-		this._resetLetterFilter();
-		
-		var tag = target_elem.innerHTML.toLowerCase();
-		if(this.filter_tag != tag) {
-			if(this.filter_tag_elem){
-				this.filter_tag_elem.remClassName(this.SELECTED_STYLE);
-			}
-			target_elem.parentNode.addClassName(this.SELECTED_STYLE);
-			this.filter_tag = tag;
-			this.filter_tag_elem = target_elem.parentNode; // a, not span
-		} else { 
-			this._resetTagFilter();
-		}
-		this.applyFilters();
-		this.renderAllPages();
+	onTagClick: function(targetElem) {
+		Model.onTagFilter(targetElem.innerHTML.toLowerCase());
 	},
 	
-	onStrengthFilter: function(target_elem){
-		this._resetLetterFilter();
-		
-		var strength = target_elem.innerHTML.toLowerCase();		
-		if(this.filter_strength != strength) {
-			if(this.filter_strength_elem) {
-				this.filter_strength_elem.remClassName(this.SELECTED_STYLE);
-			}
-			target_elem.parentNode.addClassName(this.SELECTED_STYLE);
-			this.filter_strength = strength;
-			this.filter_strength_elem = target_elem.parentNode; // a, not span
-		} else { 
-			this._resetStrengthFilter();
-		}
-		this.applyFilters();
-		this.renderAllPages();
+	onStrengthClick: function(targetElem){
+		Model.onStrengthFilter(targetElem.innerHTML.toLowerCase());
 	},
 	
-	onIngredientFilter: function(name){
-		this._resetLetterFilter();
-		
-		this.filter_ingredient = name;
-		this.applyFilters();
-		this.renderAllPages();
+	onIngredientSelected: function(name){
+		Model.onIngredientFilter(name);
 	},
 	
-	applyFilters: function(){
-		var filtered = false;
-		if(this.filter_letter.length > 0){
-			this.result_set = this._filterByLetter(this.cocktails_set, this.filter_letter);
-			return 0;
-		} else this.result_set = this.cocktails_set;
-		if(this.filter_tag.length > 0) {
-			this.result_set = this._filterByTag(this.cocktails_set, this.filter_tag);
-			filtered = true;
-		}
-		if(this.filter_strength.length > 0) {
-			var to_filter = [];
-			if(filtered) { to_filter = this.result_set } else { to_filter = this.cocktails_set }
-			this.result_set = this._filterByStrength(to_filter, this.filter_strength);
-			filtered = true;
-		}
-		if(this.filter_ingredient.length > 0) {
-			var to_filter = [];
-			if(filtered) { to_filter = this.result_set } else { to_filter = this.cocktails_set }
-			this.result_set = this._filterByIngredient(to_filter, this.filter_ingredient);
-			filtered = true;
-		}
-	},
-	
-	/**
-	 * Listening to Autocompleter
-	 */
-	searchConfirmed: function(name){
-		this.onIngredientFilter(name);
-	},
-	
-	_resetIngredientFilter: function(){
-		this.filter_ingredient = "";
+	searchConfirmed: function(name){ // autocompleter
+		this.onIngredientSelected(name);
 		this.autocompleter.emptyField();
 	},
 	
-	_resetLetterFilter: function() {
-		this.filter_letter = "";
-		if(this.filter_letter_elem) {
-			this.filter_letter_elem.remClassName(this.SELECTED_STYLE);
-		}
-		this.filter_letter_elem = $(this.LETTERS_ALL);
-		this.filter_letter_elem.addClassName(this.SELECTED_STYLE);
+	onModelChanged: function(resultSet, filters) { // model
+		this.renderAllPages(resultSet);
+		this.renderFilters(filters);
+		this.saveFiltersToCookie(filters);
 	},
 	
-	_resetTagFilter: function() {
-		this.filter_tag = "";
-		if(this.filter_tag_elem){
-			this.filter_tag_elem.remClassName(this.SELECTED_STYLE);
-		}
-		this.filter_tag_elem = null;
-	},
+	_remClass: function(elem, className) { if(elem) elem.remClassName(className); },
+	
+	renderFilters: function(filters){
+		this._remClass(this.filterElems.letter || $(this.LETTERS_ALL), this.SELECTED_STYLE);
+		if(filters.letter != "") {
+			var letterElems = $(this.ALPHABET_RU).getElementsByTagName("a");
+			for(var i = 0; i < letterElems.length; i++) {
+				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
+					this.filterElems.letter = letterElems[i];
+					break;
+				}
+			}
+		} else this.filterElems.letter = $(this.LETTERS_ALL);
+		this.filterElems.letter.addClassName(this.SELECTED_STYLE);
 		
-	_resetStrengthFilter: function() {
-		this.filter_strength = "";
-		if(this.filter_strength_elem) {
-			this.filter_strength_elem.remClassName(this.SELECTED_STYLE);
+		this._remClass(this.filterElems.tag, this.SELECTED_STYLE);
+		if(filters.tag != "") {
+			var tagElems = $(this.TAGS_LIST).getElementsByTagName("span");
+			for(var i = 0; i < tagElems.length; i++) {
+				if(tagElems[i].innerHTML.toLowerCase() == filters.tag) {
+					this.filterElems.tag = tagElems[i].parentNode; // a, not span
+					this.filterElems.tag.addClassName(this.SELECTED_STYLE);
+					break;
+				}
+			}
 		}
-		this.filter_strength_elem = null;
+		
+		this._remClass(this.filterElems.strength, this.SELECTED_STYLE);
+		if(filters.strength != "") {
+			var strengthElems = $(this.STRENGTHS_LIST).getElementsByTagName("span");
+			for(var i = 0; i < strengthElems.length; i++) {
+				if(strengthElems[i].innerHTML.toLowerCase() == filters.strength) {
+					this.filterElems.strength = strengthElems[i].parentNode; // a, not span
+					this.filterElems.strength.addClassName(this.SELECTED_STYLE);
+					break;
+				}
+			}
+		}
+		
+		var ingredientsParent = $(this.SEARCHES_LIST);
+		ingredientsParent.innerHTML = "";
+		if(filters.ingredients.length > 0) {
+			var ingreds = filters.ingredients;
+			ingredientsParent.appendChild(this._createIngredientTitle());
+			for(var i = 0; i < ingreds.length; i++) {
+				ingredientsParent.appendChild(this._createIngredientElement(ingreds[i]));
+			}
+		}	
 	},
 	
-	renderAllPages: function(){
+	saveFiltersToCookie: function(filters){
+		Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
+	},
+	
+	renderAllPages: function(resultSet){
 		$(this.RESULTS_ROOT).innerHTML=""; // clean up
-		var np = this._getNumOfPages();
+		var np = this._getNumOfPages(resultSet);
 		for(var i = 1; i <= np; i++) {
-			this._renderPage(i);
+			var selectedSet = resultSet.slice((i-1)*this.perPage, i*this.perPage);
+			this._renderPage(selectedSet, i);
 		}
-		this._renderPager();
+		this._renderPager(np);
 		$(this.ROLLING_IMGS_ID).RollingImages.sync();
 		$(this.ROLLING_IMGS_ID).RollingImages.goInit();
 	},
@@ -220,22 +163,20 @@ var Controller = {
 		}		
 	},
 	
-	_renderPage: function (page_num) {
-		var selected = this.result_set.slice((page_num - 1) * this.per_page,
-		 									  page_num * this.per_page);
+	_renderPage: function (selectedSet, pageNum) {
 		var parent = $(this.RESULTS_ROOT);
 		var page = document.createElement("div");
-		page.id = "page_" + page_num;
+		page.id = "page_" + pageNum;
 		page.className = "point";
 		parent.appendChild(page);
 		
 		var ul = document.createElement("ul");
-		ul.id = "ul_" + page_num;
+		ul.id = "ul_" + pageNum;
 		ul.className = "cocktails";
 		page.appendChild(ul);
 		
-		for (var i = 0; i < selected.length; i++) {
-			ul.appendChild(this._createCocktailElement(selected[i]));
+		for (var i = 0; i < selectedSet.length; i++) {
+			ul.appendChild(this._createCocktailElement(selectedSet[i]));
 		}
 	},
 	
@@ -252,64 +193,42 @@ var Controller = {
 		return li;		
 	},
 	
-	_getNumOfPages: function() {
-		return parseInt(this.result_set.length / this.per_page) + 1;
+	_createIngredientTitle: function(){
+		var dt = document.createElement("dt");
+		dt.innerHTML = "Коктейли с:";
+		return dt;
 	},
 	
-	_renderPager: function () {
+	_createIngredientElement: function(name){
+		var dd = document.createElement("dd");
+		var a = document.createElement("a");
+		a.title = "Убрать из поиска";
+		a.innerHTML = "Удалить";
+		a.className = "del";
+		dd.innerHTML = name;
+		dd.appendChild(a);
+		var self = this;
+		dd.addEventListener('mousedown', function(e){
+			self.onIngredientSelected(name);
+		}, false);
+		return dd;	
+	},
+	
+	_getNumOfPages: function(resultSet) {
+		if (resultSet.length == this.perPage) return 1;
+		return parseInt(resultSet.length / this.perPage) + 1;
+	},
+	
+	_renderPager: function (numOfPages) {
 		var span = $(this.PAGER_ROOT);
 		span.innerHTML=""; // clean up
-		var num_of_pages = this._getNumOfPages();
 		var pointer = 1;
-		while(pointer <= num_of_pages){
+		while(pointer <= numOfPages){
 			var a = document.createElement("a");
 			a.className="button";
 			a.appendChild(document.createTextNode(pointer));
 			span.appendChild(a);
 			pointer++;
 		}
-	},
-	
-	_filterByLetter: function (set, letter){
-		var res = [];	
-		var reg = new RegExp("^(" + letter.toUpperCase() + ")");
-		for(var i = 0; i < set.length; i++) {
-			if(set[i].name.match(reg)){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByTag: function (set, tag) {
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].tags.indexOf(tag) > -1){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByStrength: function(set, strength) {
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].strength == strength) {
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByIngredient: function(set, ingredient) {
-		var res = [];
-		for(var i = 0; i < set.length; i++) {
-			for(var j = 0; j < set[i].ingredients.length; j++) {
-				if(set[i].ingredients[j][0] == ingredient) {
-					res.push(set[i]);
-				}
-			}
-		}
-		return res;
-	}
+	},	
 };

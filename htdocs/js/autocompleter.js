@@ -1,6 +1,6 @@
 /**
  * Виджет для автодополнения текста в input'e.
- * Чтобы использовать, нужно стать listener'ом с методом searchConfirmed(result)
+ * Чтобы использовать, нужно стать changeListener'ом с методом searchConfirmed(result)
  * 
  * @param set - массив, по которому будут подбираться результаты
  * @param field - текстовое поле &lt;input&gt;, в котором будет показан выбор
@@ -19,7 +19,7 @@ function Autocompleter(set, field, div, form, error_div) {
 	
 	this.hi_pos = -1; // highlight position
 	this.selected_elem = null;
-	this.listener = null;
+	this.changeListener = null;
 	this.shown = false;
 	this.initial_input = "";
 	
@@ -91,7 +91,7 @@ function Autocompleter(set, field, div, form, error_div) {
 	}
 	
 	this.confirm = function() { 
-		this.listener.searchConfirmed(field.value.capitalize()); 
+		this.changeListener.searchConfirmed(field.value.capitalize()); 
 		field.focus();
 	}
 	
