@@ -15,19 +15,25 @@ var Model = {
 	
 	dataListener : null,
 	
-	init: function(json) {
+	init: function(filters) {
 		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(this._sortFunc);
-		if(json) this._restoreFiltersFromJSON(json);
+		if(filters) this.filters = this._completeFilters(filters);
 		this._applyFilters();
 	},
 	
-	_restoreFiltersFromJSON : function(json) { this.filters = JSON.parse(json); },
+	_completeFilters: function(filters){
+		if(!filters.letter)      filters.letter = "";
+		if(!filters.tag)         filters.tag = "";
+		if(!filters.strength)    filters.strength = "";
+		if(!filters.ingredients) filters.ingredients = [];
+		return filters;
+	},
 	
 	onLetterFilter: function(name, name_all) { 
 		if(name != this.filters.letter) {
-			this.filters.ingredients = [];
-			this.filters.tag         = "";
-			this.filters.strength    = "";
+			this.filters.ingredients = []; // reset
+			this.filters.tag         = ""; // some
+			this.filters.strength    = ""; // filters
 			if(name != name_all) {
 				this.filters.letter    = name;
 			} else this.filters.letter = "";
@@ -37,7 +43,7 @@ var Model = {
 	
 	onTagFilter: function(name) { 
 		if(name != this.filters.tag) {
-			this.filters.letter = "";
+			this.filters.letter = ""; // reset
 			this.filters.tag    = name;  
 		} else this.filters.tag  = "";
 		this._applyFilters();
@@ -45,91 +51,49 @@ var Model = {
 	
 	onStrengthFilter: function(name) { 
 		if(name != this.filters.strength) {
-			this.filters.letter     = "";
+			this.filters.letter     = ""; // reset
 			this.filters.strength   = name;
 		} else this.filters.strength = "";
 		this._applyFilters(); 
 	},
 		
-	onIngredientFilter: function(name) {
-		this.filters.letter = "";
-		var idx = -1;
-		if((idx = this.filters.ingredients.indexOf(name)) == -1) {
-			   this.filters.ingredients.push(name);
-		} else this.filters.ingredients.splice(idx, 1);
+	onIngredientFilter: function(name, remove) {
+		this.filters.letter = ""; // reset
+		var idx = this.filters.ingredients.indexOf(name);
+		if(remove) {
+			this.filters.ingredients.splice(idx, 1);
+		} else if (idx == -1){
+			this.filters.ingredients.push(name);
+		} else return; // duplicate entry
 		this._applyFilters();
 	},
 	
 	_applyFilters: function() {
 		var filtered = false;
 		if(this.filters.letter.length > 0){
-			this.resultSet = this._filterByLetter(this.cocktailsSet, this.filters.letter);
+			this.resultSet = DataFilter.filterByLetter(this.cocktailsSet, this.filters.letter);
 			this.dataListener.onModelChanged(this.resultSet, this.filters);
 			return 0;
 		} else this.resultSet = this.cocktailsSet;
 		if(this.filters.tag.length > 0) {
-			this.resultSet = this._filterByTag(this.cocktailsSet, this.filters.tag);
+			this.resultSet = DataFilter.filterByTag(this.cocktailsSet, this.filters.tag);
 			filtered = true;
 		}
 		if(this.filters.strength.length > 0) {
 			var to_filter = [];
 			if(filtered) { to_filter = this.resultSet } else { to_filter = this.cocktailsSet }
-			this.resultSet = this._filterByStrength(to_filter, this.filters.strength);
+			this.resultSet = DataFilter.filterByStrength(to_filter, this.filters.strength);
 			filtered = true;
 		}
 		if(this.filters.ingredients.length > 0) {
 			var to_filter = [];
 			if(filtered) { to_filter = this.resultSet } else { to_filter = this.cocktailsSet }
-			this.resultSet = this._filterByIngredients(to_filter, this.filters.ingredients);
+			this.resultSet = DataFilter.filterByIngredients(to_filter, this.filters.ingredients);
 			filtered = true;
 		}
 		this.dataListener.onModelChanged(this.resultSet, this.filters);
 	},
 	
-	_filterByLetter: function (set, letter){
-		var res = [];	
-		var reg = new RegExp("^(" + letter.toUpperCase() + ")");
-		for(var i = 0; i < set.length; i++) {
-			if(set[i].name.match(reg)){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByTag: function (set, tag) {
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].tags.indexOf(tag) > -1){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByStrength: function(set, strength) {
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].strength == strength) {
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
-	_filterByIngredients: function(set, ingredients) {
-		var res = [];
-		for(var i = 0; i < set.length; i++) {
-			var good = 0;
-			for(var j = 0; j < set[i].ingredients.length; j++) {
-				for(var k = 0; k < ingredients.length; k++){
-					if(set[i].ingredients[j][0] == ingredients[k]) good++;
-				}
-			}
-			if(good == ingredients.length) res.push(set[i]);
-		}
-		return res;
-	},
 	
 	_sortFunc: function(a, b){
 		if(a.name > b.name) return 1;

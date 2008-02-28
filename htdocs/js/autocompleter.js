@@ -1,6 +1,6 @@
 /**
  * Виджет для автодополнения текста в input'e.
- * Чтобы использовать, нужно стать changeListener'ом с методом searchConfirmed(result)
+ * Чтобы использовать, нужно стать changeListener'ом с методом onSearchConfirmed(result)
  * 
  * @param set - массив, по которому будут подбираться результаты
  * @param field - текстовое поле &lt;input&gt;, в котором будет показан выбор
@@ -8,7 +8,12 @@
  * @param form - форма, в которой содержится поле ввода
  * @param error_div - контейнер для сообщений об ошибке
  */
-function Autocompleter(set, field, div, form, error_div) {
+function Autocompleter(set) {
+	var field     = $('search_input');
+	var div       = $('autocomplete');
+	var form      = $('search_form');
+	var error_div = $('search_error');
+	
 	this.HI_STYLE = 'hi';
 	this.ERR_MESSAGE = '...этого у нас еще нет';
 
@@ -23,8 +28,9 @@ function Autocompleter(set, field, div, form, error_div) {
 	this.shown = false;
 	this.initial_input = "";
 	
+	
+	div.style.width = (field.offsetWidth-5) + "px";
 	this.result_set = [];
-	div.style.width = (field.offsetWidth-5) + "px;";
 
 	var self = this;
 	form.addEventListener('submit', function(e) { e.preventDefault() }, false);
@@ -91,7 +97,7 @@ function Autocompleter(set, field, div, form, error_div) {
 	}
 	
 	this.confirm = function() { 
-		this.changeListener.searchConfirmed(field.value.capitalize()); 
+		this.changeListener.onSearchConfirmed(field.value.capitalize()); 
 		field.focus();
 	}
 	
@@ -172,6 +178,6 @@ function Autocompleter(set, field, div, form, error_div) {
 		}
 	}
 	
-	this.show = function() { div.style.display = "block"; this.shown = true;  }
+	this.show = function() { div.style.display = "block"; this.shown = true; }
 	this.hide = function() { div.style.display = "none";  this.shown = false; }
 }

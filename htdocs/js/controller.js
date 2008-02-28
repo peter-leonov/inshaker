@@ -9,10 +9,6 @@ var Controller = {
 	SELECTED_STYLE:  'selected-button',
 	
 	SEARCHES_LIST:   'ingredients_list',
-	SEARCH_INPUT:    'search_input',
-	SEARCH_FORM:     'search_form',
-	SEARCH_ERROR:    'search_error',
-	AUTOCOMPLETE:    'autocomplete', 
 	
 	FILTER_COOKIE:   'filters',
 	filterElems :   { tag: null, strength: null, letter: null },
@@ -21,12 +17,33 @@ var Controller = {
 	autocompleter: null,
 	
 	init: function() {
-		this.autocompleter = new Autocompleter(Model.ingredients, $(this.SEARCH_INPUT), 
-							$(this.AUTOCOMPLETE), $(this.SEARCH_FORM), $(this.SEARCH_ERROR));
+		this.autocompleter = new Autocompleter(Model.ingredients);
 		this.renderSet($(this.TAGS_LIST), 	   Model.tags);
 		this.renderSet($(this.STRENGTHS_LIST), Model.strengths); 
 		this.bindEvents();
-		Model.init(Cookie.get(this.FILTER_COOKIE));
+		
+		var filters = this._filtersFromRequest() || this._filtersFromCookie();
+		Model.init(filters);
+	},
+	
+	_filtersFromRequest: function(){
+		var address = window.location.href;
+		var match = address.match(/.+\?(.+)/);
+		if(match){
+			var params = match[1].split("&");
+			var filters = {};
+			for(var i = 0; i < params.length; i++) {
+				var pair = params[i].split("=");
+				filters[pair[0]]=decodeURIComponent(pair[1]);
+			}
+			return filters;
+		} else return null;
+	},
+	
+	_filtersFromCookie: function(){
+		var cookie = Cookie.get(this.FILTER_COOKIE);
+		if(cookie) return JSON.parse(cookie);
+		else return null;
 	},
 	
 	bindEvents: function() {
@@ -68,13 +85,17 @@ var Controller = {
 	onStrengthClick: function(targetElem){
 		Model.onStrengthFilter(targetElem.innerHTML.toLowerCase());
 	},
-	
-	onIngredientSelected: function(name){
-		Model.onIngredientFilter(name);
+
+	onIngredientAdded: function(name){
+		Model.onIngredientFilter(name, false);
 	},
 	
-	searchConfirmed: function(name){ // autocompleter
-		this.onIngredientSelected(name);
+	onIngredientRemoved: function(name) {
+		Model.onIngredientFilter(name, true);
+	},
+	
+	onSearchConfirmed: function(name){ // autocompleter
+		this.onIngredientAdded(name);
 		this.autocompleter.emptyField();
 	},
 	
@@ -209,7 +230,7 @@ var Controller = {
 		dd.appendChild(a);
 		var self = this;
 		dd.addEventListener('mousedown', function(e){
-			self.onIngredientSelected(name);
+			self.onIngredientRemoved(name);
 		}, false);
 		return dd;	
 	},
