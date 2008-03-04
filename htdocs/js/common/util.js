@@ -6,6 +6,20 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.substr(1);
 }
 
+String.prototype.beforeTag = function() {
+	if(this.match(/(.+)<.+>.*<\/.+>/)) {
+		return this.match(/(.+)<.+>.*<\/.+>/)[1]
+	} else return this;
+}
+
+Array.prototype.uniq = function(){
+	var tmp = [];
+	for(var i = 0; i < this.length; i++){
+		if(tmp.indexOf(this[i]) == -1) tmp.push(this[i]);
+	}
+	return tmp;
+}
+
 function toArray(hash) {
 	var results = [];
 	for(key in hash) results.push(hash[key]);

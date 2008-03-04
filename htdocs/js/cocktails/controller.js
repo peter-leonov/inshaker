@@ -236,7 +236,7 @@ var Controller = {
 	},
 	
 	_getNumOfPages: function(resultSet) {
-		if (resultSet.length == this.perPage) return 1;
+		if ((resultSet.length % this.perPage) == 0) return (resultSet.length/this.perPage);
 		return parseInt(resultSet.length / this.perPage) + 1;
 	},
 	

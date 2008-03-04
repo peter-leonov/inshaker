@@ -16,7 +16,7 @@ var Model = {
 	dataListener : null,
 	
 	init: function(filters) {
-		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(this._sortFunc);
+		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
 		if(filters) this.filters = this._completeFilters(filters);
 		this._applyFilters();
 	},
@@ -26,6 +26,7 @@ var Model = {
 		if(!filters.tag)         filters.tag = "";
 		if(!filters.strength)    filters.strength = "";
 		if(!filters.ingredients) filters.ingredients = [];
+		if(!filters.page)        filters.page = 1;
 		return filters;
 	},
 	
@@ -71,33 +72,26 @@ var Model = {
 	_applyFilters: function() {
 		var filtered = false;
 		if(this.filters.letter.length > 0){
-			this.resultSet = DataFilter.filterByLetter(this.cocktailsSet, this.filters.letter);
+			this.resultSet = DataFilter.cocktailsByLetter(this.cocktailsSet, this.filters.letter);
 			this.dataListener.onModelChanged(this.resultSet, this.filters);
 			return 0;
 		} else this.resultSet = this.cocktailsSet;
 		if(this.filters.tag.length > 0) {
-			this.resultSet = DataFilter.filterByTag(this.cocktailsSet, this.filters.tag);
+			this.resultSet = DataFilter.cocktailsByTag(this.cocktailsSet, this.filters.tag);
 			filtered = true;
 		}
 		if(this.filters.strength.length > 0) {
 			var to_filter = [];
 			if(filtered) { to_filter = this.resultSet } else { to_filter = this.cocktailsSet }
-			this.resultSet = DataFilter.filterByStrength(to_filter, this.filters.strength);
+			this.resultSet = DataFilter.cocktailsByStrength(to_filter, this.filters.strength);
 			filtered = true;
 		}
 		if(this.filters.ingredients.length > 0) {
 			var to_filter = [];
 			if(filtered) { to_filter = this.resultSet } else { to_filter = this.cocktailsSet }
-			this.resultSet = DataFilter.filterByIngredients(to_filter, this.filters.ingredients);
+			this.resultSet = DataFilter.cocktailsByIngredients(to_filter, this.filters.ingredients);
 			filtered = true;
 		}
 		this.dataListener.onModelChanged(this.resultSet, this.filters);
-	},
-	
-	
-	_sortFunc: function(a, b){
-		if(a.name > b.name) return 1;
-		else if(a.name == b.name) return 0;
-		else return -1;
 	}
 }

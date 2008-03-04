@@ -16,7 +16,7 @@ module Config
   BASE_DIR      = "base/"
   HTDOCS_DIR    = "../htdocs/"
   COCKTAILS_DIR = HTDOCS_DIR + "cocktails/"
-  DB_JS         = HTDOCS_DIR + "js/db.js"
+  DB_JS         = HTDOCS_DIR + "js/common/db.js"
   IMAGES_ROOT   = HTDOCS_DIR + "i/cocktail/"
   
   IMAGES_BG_DIR    = IMAGES_ROOT + "bg/"
@@ -39,7 +39,7 @@ class Barman
   
   def prepare
     root = Dir.new(Dir.pwd + "/" + Config::BASE_DIR)
-    excluded = [root.path + ".", root.path + "..", root.path + ".svn"]
+    excluded = [root.path + ".", root.path + "..", root.path + ".svn", root.path + ".TemporaryItems"]
     
     root.each do |dir|
       cocktail_dir = root.path + dir
@@ -55,7 +55,11 @@ class Barman
         parse_title (about_text.scan /.*Название:\ *\n(.+)\n.*/)[0][0]
         parse_teaser (about_text.scan /.*Тизер:\ (.+)\ *\n.*/)[0][0]
         parse_strength (about_text.scan /.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
-        parse_tags (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
+        if (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
+          parse_tags (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
+        else
+          parse_tags ""
+        end
         parse_ingredients (about_text.scan /.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
         parse_tools (about_text.scan /.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
         parse_receipt (about_text.scan /.*Как приготовить:\ *\n(.+)*/m)[0][0]
@@ -130,6 +134,10 @@ private
   end
   
   def parse_tags(tags)
+    if tags == ""
+      @cocktail[:tags] = []
+      return
+    end
     tags = tags.split("\n")
     tags.each do |tag|
       if !@tags.include? tag
@@ -165,7 +173,7 @@ private
   end
   
   def parse_description(text)
-    paragraphs = text.split("\n")
+    paragraphs = text.split(%r{[\n\r]})
     @cocktail[:desc_start] = paragraphs.first
     @cocktail[:desc_end]   = paragraphs[1..-1].join ""
   end
