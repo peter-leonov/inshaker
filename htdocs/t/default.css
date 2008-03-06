@@ -288,7 +288,16 @@ label			{ display: block; }
 
 /* more in cocktail */
 .b-more		{ padding-top: 9px; overflow: hidden; width: 100%; clear: both; padding-bottom: 1px; }
-.b-more	.b-more-korol	{ width: 21.8em; margin-right: 1em; }
+.b-more	.b-more-rec	{ width: 21.8em; margin-right: 1em; }
+.b-more .b-more-rec .viewport { overflow: hidden; position: relative; width: 150px; height: 120px; left: 16px;}
+.b-more .b-more-rec .surface {width: 2000px;}
+.b-more .b-more-rec .point {width: 130px; height: 100px; float: left; padding: 10px;}
+.b-more-rec .prev,
+.b-more-rec .next		{ background: url(icon/strs-green.gif) no-repeat -16px -24px; position: absolute; top: 54px; right: 0; height: 14px; width: 16px; }
+.b-more-rec .prev		{ background-position: 0 -24px; left: 0; right: auto; }
+.b-more-rec .next.disabled	{ background-position: -16px -38px; cursor: default; }
+.b-more-rec .prev.disabled	{ background-position: 0 -38px; cursor: default; }
+
 .b-more	.b-more-cocktails{ width: 39.8em; }
 .b-more .column			{ position: relative; }
 .b-more dl				{ height: 163px; font-size: 120%; height: 11.24em; background: #fff url(bg/body/green-more-title.gif) repeat-x 0 -19px; }

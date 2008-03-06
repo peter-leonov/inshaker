@@ -12,7 +12,8 @@ var Controller = {
 	LEFT: true,
 	RIGHT: false,
 	COLUMNS: 5,
-	GAP: 4,
+	GAP: 5,
+	TRIES: 109,
 	
 	// selected ingredients
 	selected: [],
@@ -120,7 +121,7 @@ var Controller = {
 			var shortest = this._findShortestIdx(col_counts);
 			
 			all_cols = col_counts[col_counts.length-1] > 0;
-			if((col_counts[longest] - col_counts[shortest] < this.GAP && all_cols) || i > 200) stabilized = true;
+			if((col_counts[longest] - col_counts[shortest] < this.GAP && all_cols) || i > this.TRIES) stabilized = true;
 			if(i++ % 50 == 0)  this.GAP++;
 		}
 	},

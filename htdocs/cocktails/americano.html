@@ -8,8 +8,14 @@
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/t/css/ie7.css"/><![endif]-->
 	<script type="text/javascript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
+	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	
+	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
 	<script type="text/javascript" src="/js/common/link.js"></script>
+	<script type="text/javascript" src="/js/cocktail/model.js"></script>
+	<script type="text/javascript" src="/js/cocktail/controller.js"></script>
 	<title>InShaker √ Американо</title>
 </head>
 <body>
@@ -31,7 +37,7 @@
 	<div class="column-main-container">
 		<div class="column column-main" id="cocktail-page"><div class="body-wrapper">
 			<div class="b-title">
-				<h1>Американо</h1>
+				<h1 id="cocktail_name">Американо</h1>
 				<a href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -77,7 +83,7 @@
 						<!-- Попапы -->
 						<div id="view-prepare">
 							<h3>Легенда коктейля</h3>
-							<p>Обрести полную свободу. Заработать миллион за один день. Получить всемирную славу за два. Все возможно когда ты - американец.</p><p>Итальянец Гаспар Кампари - главный бармен кампари кафе всегда мечтал эмигрировать в америку. Пока в один вечер, не оглянувшись вокруг себя, не увидел американцев с великой радостью распивающих коктейль, который он только придумал. С ними были красивые итальянские девушки, вечер только начинался."Белиссимо" - воскликнул бармен, осознав, что красивая жизнь зависит только от того, что ты чувствуешь внутри. Назвав свой коктейль "Американец" Гаспар подарил чувство красоты и роскоши каждому. Сегодня. Сейчас. Здесь.</p>
+							<p>Обрести полную свободу. Заработать миллион за один день. Получить всемирную славу за два. Все возможно когда ты - американец.</p><p>Итальянец Гаспар Кампари - главный бармен кампари кафе всегда мечтал эмигрировать в америку. Пока в один вечер, не оглянувшись вокруг себя, не увидел американцев с великой радостью распивающих коктейль, который он только придумал. С ними были красивые итальянские девушки, вечер только начинался.</p><p>"Белиссимо" - воскликнул бармен, осознав, что красивая жизнь зависит только от того, что ты чувствуешь внутри. Назвав свой коктейль "Американец" Гаспар подарил чувство красоты и роскоши каждому. Сегодня. Сейчас. Здесь.</p>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -147,13 +153,17 @@
 		
 		<!-- Дополнтиельный блок к основному контенту -->
 		<div class="b-more">
-			<div class="column b-more-korol">	
+			<div class="column b-more-rec">	
 				<dl class="body-wrapper">
-					<dt><b>Король мира!</b></dt>
+					<dt><b>Inshaker рекомендует</b></dt>
 					<dd>
-						<p><i>1378 посетителей</i> считают, 
-						что для того, чтобы стать «<a onclick="$('korol-mira').show()">Королем Мира</a>» необходимо выпить — <i>20 американо</i>.</p>
-						<strong><a onclick="$('korol-mira').show()">А сколько нужно тебе?</a></strong>
+						<div class="programica-rolling-images" id="recommendations">
+							<a class="prev"><!-- --></a>
+							<a class="next"><!-- --></a>
+							<div class="viewport">
+								<div class="surface" id="rec_surface"></div>
+							</div>
+						</div>
 					</dd>
 				</dl>
 				
@@ -486,6 +496,7 @@
 		}
 		
 		link = new Link()
+		Controller.init($('cocktail_name').innerHTML);
 	})
 	
 	$('view-prepare').show = function()

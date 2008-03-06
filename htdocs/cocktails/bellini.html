@@ -8,8 +8,14 @@
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/t/css/ie7.css"/><![endif]-->
 	<script type="text/javascript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
+	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	
+	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
 	<script type="text/javascript" src="/js/common/link.js"></script>
+	<script type="text/javascript" src="/js/cocktail/model.js"></script>
+	<script type="text/javascript" src="/js/cocktail/controller.js"></script>
 	<title>InShaker √ Беллини</title>
 </head>
 <body>
@@ -31,7 +37,7 @@
 	<div class="column-main-container">
 		<div class="column column-main" id="cocktail-page"><div class="body-wrapper">
 			<div class="b-title">
-				<h1>Беллини</h1>
+				<h1 id="cocktail_name">Беллини</h1>
 				<a href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -81,7 +87,7 @@
 						<!-- Попапы -->
 						<div id="view-prepare">
 							<h3>Легенда коктейля</h3>
-							<p>Гарри Пиккеринг бостонский юноша остановившийся в 1931 году в отеле Европа в Венеции, прокутил все деньги в барах и казино. Нечем было заплатить за гостиницу, что уж сказать о покупке билета домой. </p><p>Джузеппе Каприани, работавший тогда в баре отеля, узнав о проблемах своего частого постояльца не задумываясь помог другу, заняв ему все свои накопления - 5000$.Прошло несколько лет и Гарри вернулся в Венецию. “Джузеппе вот мой долг, сказал молодой бизнесмен, а вот еще 45 000$ сверху на открытие нашего первого бара, мы назовем его Гарри.”К 1948 году бар “Гарри” стал культовым местом, туда захаживали Чарли Чаплин и Ротшильд, Вуди Ален и Хэмингуэй. Пришло время ввести фирменный коктейль, отражающий дух бара. Как раз в это время проходила выставка итальянского живописца Беллини, Джузеппе был настолько поражен его творчеством, что придумал коктейль о котором мечтал. Коктейль “Беллини” стал легендой, сделав поставщика персиков миллионером и превратив бар в международную сеть роскошных питейных заведений.</p>
+							<p>Гарри Пиккеринг бостонский юноша остановившийся в 1931 году в отеле Европа в Венеции, прокутил все деньги в барах и казино. Нечем было заплатить за гостиницу, что уж сказать о покупке билета домой. </p><p>Джузеппе Каприани, работавший тогда в баре отеля, узнав о проблемах своего частого постояльца не задумываясь помог другу, заняв ему все свои накопления - 5000$.</p><p>Прошло несколько лет и Гарри вернулся в Венецию. “Джузеппе вот мой долг, сказал молодой бизнесмен, а вот еще 45 000$ сверху на открытие нашего первого бара, мы назовем его Гарри.”</p><p>К 1948 году бар “Гарри” стал культовым местом, туда захаживали Чарли Чаплин и Ротшильд, Вуди Ален и Хэмингуэй. Пришло время ввести фирменный коктейль, отражающий дух бара. Как раз в это время проходила выставка итальянского живописца Беллини, Джузеппе был настолько поражен его творчеством, что придумал коктейль о котором мечтал. </p><p>Коктейль “Беллини” стал легендой, сделав поставщика персиков миллионером и превратив бар в международную сеть роскошных питейных заведений.</p>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -151,13 +157,17 @@
 		
 		<!-- Дополнтиельный блок к основному контенту -->
 		<div class="b-more">
-			<div class="column b-more-korol">	
+			<div class="column b-more-rec">	
 				<dl class="body-wrapper">
-					<dt><b>Король мира!</b></dt>
+					<dt><b>Inshaker рекомендует</b></dt>
 					<dd>
-						<p><i>1378 посетителей</i> считают, 
-						что для того, чтобы стать «<a onclick="$('korol-mira').show()">Королем Мира</a>» необходимо выпить — <i>20 беллини</i>.</p>
-						<strong><a onclick="$('korol-mira').show()">А сколько нужно тебе?</a></strong>
+						<div class="programica-rolling-images" id="recommendations">
+							<a class="prev"><!-- --></a>
+							<a class="next"><!-- --></a>
+							<div class="viewport">
+								<div class="surface" id="rec_surface"></div>
+							</div>
+						</div>
 					</dd>
 				</dl>
 				
@@ -490,6 +500,7 @@
 		}
 		
 		link = new Link()
+		Controller.init($('cocktail_name').innerHTML);
 	})
 	
 	$('view-prepare').show = function()

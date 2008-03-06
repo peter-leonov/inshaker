@@ -1,4 +1,8 @@
 class String
+  def zpt
+    return self.gsub(",",".")
+  end
+  
   def html_name
     return self.downcase.gsub(/ /,"_")
   end

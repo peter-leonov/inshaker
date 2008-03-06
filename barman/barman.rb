@@ -3,6 +3,7 @@ require 'active_support'
 require 'unicode'
 require 'fileutils'
 require 'erb'
+require 'csv'
 
 require 'string_util'
 $KCODE = 'u'
@@ -13,15 +14,18 @@ module Config
   DEBUG = true
   
   # Paths are relative to the script's location
-  BASE_DIR      = "base/"
-  HTDOCS_DIR    = "../htdocs/"
-  COCKTAILS_DIR = HTDOCS_DIR + "cocktails/"
-  DB_JS         = HTDOCS_DIR + "js/common/db.js"
-  IMAGES_ROOT   = HTDOCS_DIR + "i/cocktail/"
+  BASE_DIR           = "base/"
+  COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
+  MERCH_DIR          = BASE_DIR + "Merchandise/"
   
-  IMAGES_BG_DIR    = IMAGES_ROOT + "bg/"
-  IMAGES_BIG_DIR   = IMAGES_ROOT + "b/"
-  IMAGES_SMALL_DIR = IMAGES_ROOT + "s/"
+  HTDOCS_DIR         = "../htdocs/"
+  COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
+  DB_JS_DIR          = HTDOCS_DIR + "js/common/db.js"
+  IMAGES_DIR         = HTDOCS_DIR + "i/cocktail/"
+  
+  IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
+  IMAGES_BIG_DIR   = IMAGES_DIR + "b/"
+  IMAGES_SMALL_DIR = IMAGES_DIR + "s/"
   
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
@@ -35,11 +39,12 @@ class Barman
     @ingredients = []
     @strengths   = []
     @tools       = []
+    @goods       = {}
   end
   
   def prepare
-    root = Dir.new(Dir.pwd + "/" + Config::BASE_DIR)
-    excluded = [root.path + ".", root.path + "..", root.path + ".svn", root.path + ".TemporaryItems"]
+    root = Dir.new(Dir.pwd + "/" + Config::COCKTAILS_DIR)
+    excluded = [root.path + ".", root.path + "..", root.path + ".svn", root.path + ".TemporaryItems", root.path + "Merchandise"]
     
     root.each do |dir|
       cocktail_dir = root.path + dir
@@ -68,7 +73,10 @@ class Barman
         Dir.chdir("../")
       end
     end
-    Dir.chdir("../")
+    Dir.chdir("../../") # back from cocktails dir to barman root
+    Dir.chdir(Config::MERCH_DIR)
+      parse_goods (File.open("Merchandise-drinks.csv").read)
+    Dir.chdir("../../") # back from merch dir to barman root
   end
   
   def flush_json
@@ -77,13 +85,15 @@ class Barman
      tags_json        = ActiveSupport::JSON.encode(@tags).unescape
      strengths_json   = ActiveSupport::JSON.encode(@strengths).unescape
      tools_json       = ActiveSupport::JSON.encode(@tools).unescape
+     goods_json      = ActiveSupport::JSON.encode(@goods).unescape
      
-     File.open(Config::DB_JS, "w+") do |db|
-      db.puts "\nvar cocktails = #{cocktails_json};"
-      db.puts "\nvar ingredients = #{ingredients_json};"
-      db.puts "\nvar tags = #{tags_json};"
-      db.puts "\nvar strengths = #{strengths_json};"
-      db.puts "\nvar tools = #{tools_json};"
+     File.open(Config::DB_JS_DIR, "w+") do |db|
+      db.puts "var cocktails = #{cocktails_json};"
+      db.puts "var ingredients = #{ingredients_json};"
+      db.puts "var tags = #{tags_json};"
+      db.puts "var strengths = #{strengths_json};"
+      db.puts "var tools = #{tools_json};"
+      db.puts "var goods = #{goods_json};"
       db.close
      end
   end
@@ -93,7 +103,7 @@ class Barman
     renderer = ERB.new(template)
     @cocktails.each do |name, hash|
       cocktail = Cocktail.new(hash)
-      Dir.chdir(Config::COCKTAILS_DIR)
+      Dir.chdir(Config::COCKTAILS_HTML_DIR)
       File.open(hash[:name_eng].html_name + ".html", "w+") do |html|
         html.write renderer.result(cocktail.get_binding)
       end
@@ -104,7 +114,7 @@ class Barman
   
   def flush_images
     @cocktails.each do |name, hash|
-      from     = Dir.pwd + "/" + Config::BASE_DIR + hash[:name_eng] + "/"
+      from     = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/"
       to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
       to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
       to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
@@ -154,7 +164,7 @@ private
       if !@ingredients.include? name
         @ingredients << name
       end
-      @cocktail[:ingredients] << [name, dose]
+      @cocktail[:ingredients] << [name, dose.zpt]
     end
   end
   
@@ -175,17 +185,51 @@ private
   def parse_description(text)
     paragraphs = text.split(%r{[\n\r]})
     @cocktail[:desc_start] = paragraphs.first
-    @cocktail[:desc_end]   = paragraphs[1..-1].join ""
+    @cocktail[:desc_end]   = paragraphs[1..-1].join "\n"
+  end
+  
+  def parse_goods(text)
+    csv = CSV::parse(text)
+    csv.shift # shifting through fields
+    
+    goods_arr = []
+    good = {}
+    type = ""
+    
+    csv.each do |line|
+      if !line[0].nil? # new drink
+        goods_arr = []
+        good = {}
+        type = line[0]
+        good[:name] = line[1].nil? ? "" : line[1]
+        good[:unit] = line[2]
+        good[:volumes] = []
+        goods_arr << good
+        @goods[type] = goods_arr
+      elsif line[0].nil? and line[1].nil? and line[2].nil? # volumes
+        vol = line[3].nil? ? "" : line[3].zpt.to_f
+        price = line[4].to_f
+        avail = (line[5] == "есть") ? true : false
+        good[:volumes] << [vol, price, avail]
+      elsif !line[1].nil? # drink of the same type
+        this_type = type
+        good = {}
+        good[:name] = line[1].nil? ? "" : line[1]
+        good[:unit] = line[2]
+        good[:volumes] = []
+        goods_arr << good
+      end
+    end
   end
 end
 
-puts "Creating a barman.."
+# Here we go
 joe = Barman.new
-puts "Mixing cocktails from #{Config::BASE_DIR}"
+puts "Mixing cocktails from #{Config::COCKTAILS_DIR}"
 joe.prepare
-puts "Flushing JSON to #{Config::DB_JS}"
+puts "Flushing JSON to #{Config::DB_JS_DIR}"
 joe.flush_json
-puts "Flushing HTML to #{Config::COCKTAILS_DIR}"
+puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}"
 joe.flush_html
-puts "Flushing images to #{Config::IMAGES_ROOT}"
+puts "Flushing images to #{Config::IMAGES_DIR}"
 joe.flush_images

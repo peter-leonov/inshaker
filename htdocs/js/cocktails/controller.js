@@ -1,20 +1,23 @@
 var Controller = {
-	ROLLING_IMGS_ID: 'results_display',
-	RESULTS_ROOT:    'surface',
-	PAGER_ROOT:      'p-list',
-	ALPHABET_RU:     'alphabetical-ru',
-	LETTERS_ALL:     'letters_all',
-	TAGS_LIST:       'tags_list',
-	STRENGTHS_LIST:  'strengths_list',
-	SELECTED_STYLE:  'selected-button',
+	ROLLING_IMGS_ID : 'results_display',
+	RESULTS_ROOT    : 'surface',
+	PAGER_ROOT      : 'p-list',
+	ALPHABET_RU     : 'alphabetical-ru',
+	LETTERS_ALL     : 'letters_all',
+	TAGS_LIST       : 'tags_list',
+	STRENGTHS_LIST  : 'strengths_list',
+	SELECTED_STYLE  : 'selected-button',
 	
-	SEARCHES_LIST:   'ingredients_list',
+	SEARCHES_LIST   : 'ingredients_list',
 	
-	FILTER_COOKIE:   'filters',
-	filterElems :   { tag: null, strength: null, letter: null },
+	FILTER_COOKIE   : 'filters',
+	PAGE_COOKIE     : 'page',
+	filterElems     : { tag: null, strength: null, letter: null },
 	
-	perPage: 16,
-	autocompleter: null,
+	perPage         : 16,
+	autocompleter   : null,
+	
+	riJustInited    : true,
 	
 	init: function() {
 		this.autocompleter = new Autocompleter(Model.ingredients);
@@ -71,6 +74,15 @@ var Controller = {
 				self.onStrengthClick(e.target);
 			}, false);
 		}
+		
+		$(this.ROLLING_IMGS_ID).RollingImages.onselect = function(node, num){
+			if   (!self.riJustInited) self.onPageChanged(num);
+			else { self.riJustInited = false; }
+		}
+	},
+	
+	onPageChanged: function(num){
+		Model.onPageChanged(num);
 	},
 	
 	onLetterClick: function(targetElem) {		
@@ -102,7 +114,7 @@ var Controller = {
 	onModelChanged: function(resultSet, filters) { // model
 		this.renderAllPages(resultSet);
 		this.renderFilters(filters);
-		this.saveFiltersToCookie(filters);
+		this.saveFilters(filters);
 	},
 	
 	_remClass: function(elem, className) { if(elem) elem.remClassName(className); },
@@ -152,10 +164,14 @@ var Controller = {
 			for(var i = 0; i < ingreds.length; i++) {
 				ingredientsParent.appendChild(this._createIngredientElement(ingreds[i]));
 			}
-		}	
+		}
+		
+		if(filters.page > 0) {
+			$(this.ROLLING_IMGS_ID).RollingImages.goToFrame(filters.page, 'directJump');	
+		}
 	},
 	
-	saveFiltersToCookie: function(filters){
+	saveFilters: function(filters){
 		Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
 	},
 	
@@ -167,6 +183,7 @@ var Controller = {
 			this._renderPage(selectedSet, i);
 		}
 		this._renderPager(np);
+		
 		$(this.ROLLING_IMGS_ID).RollingImages.sync();
 		$(this.ROLLING_IMGS_ID).RollingImages.goInit();
 	},

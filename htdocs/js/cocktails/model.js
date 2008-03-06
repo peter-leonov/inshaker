@@ -10,7 +10,8 @@ var Model = {
 		letter      : "",
 		tag         : "",
 		strength    : "",
-		ingredients : []
+		ingredients : [],
+		page        : 0,
 	},
 	
 	dataListener : null,
@@ -26,8 +27,13 @@ var Model = {
 		if(!filters.tag)         filters.tag = "";
 		if(!filters.strength)    filters.strength = "";
 		if(!filters.ingredients) filters.ingredients = [];
-		if(!filters.page)        filters.page = 1;
+		if(!filters.page)        filters.page = 0;
 		return filters;
+	},
+	
+	onPageChanged: function(num){
+		this.filters.page = num;
+		this.dataListener.saveFilters(this.filters);
 	},
 	
 	onLetterFilter: function(name, name_all) { 
@@ -35,6 +41,8 @@ var Model = {
 			this.filters.ingredients = []; // reset
 			this.filters.tag         = ""; // some
 			this.filters.strength    = ""; // filters
+			this.filters.page        = 0;  // page, too
+			
 			if(name != name_all) {
 				this.filters.letter    = name;
 			} else this.filters.letter = "";
@@ -47,6 +55,7 @@ var Model = {
 			this.filters.letter = ""; // reset
 			this.filters.tag    = name;  
 		} else this.filters.tag  = "";
+		this.filters.page = 0; // anyway
 		this._applyFilters();
 	},
 	
@@ -55,11 +64,14 @@ var Model = {
 			this.filters.letter     = ""; // reset
 			this.filters.strength   = name;
 		} else this.filters.strength = "";
+		this.filters.page = 0; // anyway
 		this._applyFilters(); 
 	},
 		
 	onIngredientFilter: function(name, remove) {
 		this.filters.letter = ""; // reset
+		this.filters.page   = 0;  // anyway
+		
 		var idx = this.filters.ingredients.indexOf(name);
 		if(remove) {
 			this.filters.ingredients.splice(idx, 1);
