@@ -20,6 +20,14 @@ Array.prototype.uniq = function(){
 	return tmp;
 }
 
+Array.prototype.without = function(index) {
+	var tmp = [];
+	for(var i = 0; i < this.length; i++){
+		if(i != index) tmp.push(this[i]);
+	}
+	return tmp;
+}
+
 function toArray(hash) {
 	var results = [];
 	for(key in hash) results.push(hash[key]);

@@ -13,6 +13,7 @@
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
+	<script type="text/javascript" src="/js/common/datafilter.js"></script>
 	<script type="text/javascript" src="/js/common/link.js"></script>
 	<script type="text/javascript" src="/js/cocktail/model.js"></script>
 	<script type="text/javascript" src="/js/cocktail/controller.js"></script>
@@ -83,7 +84,7 @@
 						<!-- Попапы -->
 						<div id="view-prepare">
 							<h3>Легенда коктейля</h3>
-							<p>Обрести полную свободу. Заработать миллион за один день. Получить всемирную славу за два. Все возможно когда ты - американец.</p><p>Итальянец Гаспар Кампари - главный бармен кампари кафе всегда мечтал эмигрировать в америку. Пока в один вечер, не оглянувшись вокруг себя, не увидел американцев с великой радостью распивающих коктейль, который он только придумал. С ними были красивые итальянские девушки, вечер только начинался.</p><p>"Белиссимо" - воскликнул бармен, осознав, что красивая жизнь зависит только от того, что ты чувствуешь внутри. Назвав свой коктейль "Американец" Гаспар подарил чувство красоты и роскоши каждому. Сегодня. Сейчас. Здесь.</p>
+							<p>Обрести полную свободу. Заработать миллион за один день. Получить всемирную славу за два. Все возможно когда ты - американец.</p><p>Главный бармен Гаспар Кампари всегда мечтал эмигрировать в америку. Пока в один вечер, не оглянувшись вокруг себя, не увидел американцев с великой радостью распивающих придуманный им коктейль с красивыми итальянскими девушками.</p><p>"Белиссимо" - воскликнул бармен, осознав, что красивая жизнь зависит только от нашего настроения. Назвав коктейль "Американо" Гаспар подарил чувство красоты и роскоши каждому. Сегодня. Сейчас. Здесь.</p>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -183,14 +184,12 @@
 				<dl class="body-wrapper">
 					<dt><b>Вам также могут понравиться</b></dt>
 					<dd>
-						<a class="prev" onclick="this.className += ' dis'"><!-- --></a>
-						<a class="next" onclick="this.className += ' dis'"><!-- --></a>
-						<div class="viewport">
-							<ul>
-								<li><a href="#"><img src="/i/cocktail/white/s/_09.jpg" width="60" height="80" alt=" 05"/>Кайпиринья</a></li>
-								<li><a href="#"><img src="/i/cocktail/white/s/_25.jpg" width="60" height="80" alt=" 05"/>Кровавая Маша</a></li>
-								<li><a href="#"><img src="/i/cocktail/white/s/_03.jpg" width="60" height="80" alt=" 03"/>Негрони</a></li>
-							</ul>
+						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+							<a class="prev"><!-- --></a>
+							<a class="next"><!-- --></a>
+							<div class="viewport" id="rel_viewport">
+								<div class="surface" id="rel_surface"></div>
+							</div>
 						</div>
 					</dd>
 				</dl>

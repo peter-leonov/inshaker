@@ -177,7 +177,7 @@ var Controller = {
 	
 	renderAllPages: function(resultSet){
 		$(this.RESULTS_ROOT).innerHTML=""; // clean up
-		var np = this._getNumOfPages(resultSet);
+		var np = this._getNumOfPages(resultSet, this.perPage);
 		for(var i = 1; i <= np; i++) {
 			var selectedSet = resultSet.slice((i-1)*this.perPage, i*this.perPage);
 			this._renderPage(selectedSet, i);
@@ -221,7 +221,7 @@ var Controller = {
 	_createCocktailElement: function(cocktail) {
 		var li = document.createElement("li");
 		var a = document.createElement("a");
-		a.href = "cocktails/" + cocktail.name_eng.htmlName() + ".html";
+		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
 		var img = document.createElement("img");
 		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
 		var txt = document.createTextNode(cocktail.name);
@@ -252,9 +252,9 @@ var Controller = {
 		return dd;	
 	},
 	
-	_getNumOfPages: function(resultSet) {
-		if ((resultSet.length % this.perPage) == 0) return (resultSet.length/this.perPage);
-		return parseInt(resultSet.length / this.perPage) + 1;
+	_getNumOfPages: function(resultSet, perPage) {
+		if ((resultSet.length % perPage) == 0) return (resultSet.length/perPage);
+		return parseInt(resultSet.length / perPage) + 1;
 	},
 	
 	_renderPager: function (numOfPages) {

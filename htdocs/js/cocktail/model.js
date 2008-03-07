@@ -1,11 +1,20 @@
 var Model = {
 	cocktail: null,
+	cocktailsSet: [],
+	dataListener: null,
 	recs: [], // recommendations
 	
 	init: function(name){
 		this.cocktail = cocktails[name];
+		this.cocktailsSet = toArray(cocktails);
 		
-		var ingreds = this.cocktail.ingredients; 
+		this.recs = this._findRecs(this.cocktail);
+		if(this.recs.length == 0) this.dataListener.expandRelated();
+	},
+	
+	_findRecs: function(cocktail){
+		var recs = [];
+		var ingreds = cocktail.ingredients; 
 		
 		for(var i = 0; i < ingreds.length; i++){
 			var rec = goods[ingreds[i][0]];
@@ -15,8 +24,13 @@ var Model = {
 				else obj["text"] = ingreds[i][0] + " " + rec[0].name;
 				
 				obj["image"] = rec[0].name.htmlName() + ".png";
-				this.recs.push(obj);
+				recs.push(obj);
 			}
 		}
+		return recs;
+	},
+	
+	getRelated: function(howMany){
+		return DataFilter.relatedCocktails(this.cocktailsSet, this.cocktail, howMany);
 	}
 }

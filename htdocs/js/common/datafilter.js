@@ -1,4 +1,32 @@
 var DataFilter = {
+	relatedCocktails: function(set, cocktail, howMany) {
+		var res = [];
+		var ingreds = [];
+		var possibleSets = [];
+		
+		for(var i = 0; i < cocktail.ingredients.length; i++) {
+			ingreds.push(cocktail.ingredients[i][0]);
+		}
+		possibleSets.push([].concat(ingreds));
+		
+		while(ingreds.length > 1) {
+			var spliced = ingreds.length-1;
+			while(spliced >= 0){
+				possibleSets.push(ingreds.without(spliced));
+				spliced--;
+			}
+			ingreds.splice(ingreds.length-1, 1);
+		}
+		
+		for(var i = 0; i < possibleSets.length; i++){
+			var cocktails = this.cocktailsByIngredients(set, possibleSets[i]);
+			cocktails.splice(cocktails.indexOf(cocktail), 1);
+			res = res.concat(cocktails);
+			if(res.uniq().length >= howMany) break;
+		}
+		return res.uniq().slice(0, howMany);
+	},
+	
 	suitableIngredients: function(set, list){
 		var res = [];
 		var cocktails = this.cocktailsByIngredients(set, list);

@@ -290,8 +290,8 @@ label			{ display: block; }
 .b-more		{ padding-top: 9px; overflow: hidden; width: 100%; clear: both; padding-bottom: 1px; }
 .b-more	.b-more-rec	{ width: 21.8em; margin-right: 1em; }
 .b-more .b-more-rec .viewport { overflow: hidden; position: relative; width: 150px; height: 120px; left: 16px;}
-.b-more .b-more-rec .surface {width: 2000px;}
-.b-more .b-more-rec .point {width: 130px; height: 100px; float: left; padding: 10px;}
+.b-more .b-more-rec .surface  { width: 2000px;}
+.b-more .b-more-rec .point    { width: 130px; height: 100px; float: left; padding: 10px;}
 .b-more-rec .prev,
 .b-more-rec .next		{ background: url(icon/strs-green.gif) no-repeat -16px -24px; position: absolute; top: 54px; right: 0; height: 14px; width: 16px; }
 .b-more-rec .prev		{ background-position: 0 -24px; left: 0; right: auto; }
@@ -306,15 +306,17 @@ label			{ display: block; }
 .b-more dd				{ line-height: 1.17; position: relative; }
 .b-more-korol dd p		{ padding: 19px 0 11px 0; }
 .b-more-korol dd i		{ color: #e4146e; font-style: normal; }
-.b-more-cocktails .viewport	{ margin-left: 15px; }
-.b-more-cocktails ul			{ padding-top: 10px; }
+.b-more-cocktails .viewport	{ overflow: hidden; position: relative; left: 0; height: 120px; }
+.b-more-cocktails .surface  { width: 2000px; }
+.b-more-cocktails .point    { height: 100px; float: left;}
+.b-more-cocktails ul			{ padding-top: 5px; }
 .b-more-cocktails li			{ width: 8em; text-align: center; float: left; width: 110px; }
 .b-more-cocktails img		{ display: block; margin: 0 auto 5px; }
 .b-more-cocktails .prev,
 .b-more-cocktails .next		{ background: url(icon/strs-green.gif) no-repeat -16px -24px; position: absolute; top: 54px; right: 0; height: 14px; width: 16px; }
-.b-more-cocktails .prev		{ background-position: 0 -24px; left: 0; right: auto; }
-.b-more-cocktails .next.dis	{ background-position: -16px -38px; cursor: default; }
-.b-more-cocktails .prev.dis	{ background-position: 0 -38px; cursor: default; }
+.b-more-cocktails .prev		{ background-position: 0 -24px; left: auto; right: 20px; }
+.b-more-cocktails .next.disabled	{ background-position: -16px -38px; cursor: default; }
+.b-more-cocktails .prev.disabled	{ background-position: 0 -38px; cursor: default; }
 
 .b-more #korol-mira				{ background: #000 url(bg/cocktail/korol.gif) repeat-x 0 100%; display: none; position: absolute; top: 0; left: -1px; height: 100%; width: 100%; padding: 0 1px; color: #fff; }
 .b-more #korol-mira .wrapper	{ background: #000 url(bg/cocktail/korol.gif) repeat-x 0 100%; height: 100%; padding: 1px 0; position: relative; font-size: 120%; top: -1px; }
