@@ -66,8 +66,7 @@
 								<div class="description">
 									<p>
 									
-									Популярность коктейлю придал фильм “Женщина кошка”. Героиня предпочитала свою особенную версию коктейля. “Налейте мне пожалуйста “Белый русский” только без водки, калуа и льда”
-									<a onclick="link.open('view-prepare')">…</a>
+									Популярность коктейлю принес фильм “Женщина кошка”. Героина предпочитала свою особенную версию коктейля: “Налейте мне пожалуйста “Белый русский” только без водки, калуа и льда”.
 									</p>
 								</div>
 							</div>
@@ -86,18 +85,15 @@
 						<!-- Попапы -->
 						<div id="view-prepare">
 							<h3>Легенда коктейля</h3>
-							<p>Популярность коктейлю придал фильм “Женщина кошка”. Героиня предпочитала свою особенную версию коктейля. “Налейте мне пожалуйста “Белый русский” только без водки, калуа и льда”.</p><p>Впрочем не в каждом баре сливки такого отменного качества, чтобы попросить бармена заполнить ваш стакан только ими. В таких случаях профессионалы рекомендуют Чёрный русский. Превосходный коктейль с кофейным оттенком и ни капли не зависит от качества сливок.</p>
+							<p>Популярность коктейлю принес фильм “Женщина кошка”. Героина предпочитала свою особенную версию коктейля: “Налейте мне пожалуйста “Белый русский” только без водки, калуа и льда”.</p>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
 						<div id="view-how">
-							<div class="ingridients"><div class="wrap">
+							<div class="ingridients"><div class="wrap programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
 									<a class="prev"><!-- --></a>
 									<div class="viewport">
-										<div class="surface">
-											<img src="/i/food/l/f1.png" width="116" height="140" alt="F1"/>
-											<img src="/i/food/l/f2.png" width="116" height="140" alt="F2"/>
-											<img src="/i/food/l/f3.png" width="116" height="140" alt="F3"/>
+										<div class="surface" id="ingreds_surface">
 										</div>
 									</div>
 									<a class="next"><!-- --></a>
@@ -111,7 +107,7 @@
 								
 								<li>— Хорошенько взболтай</li>
 								
-								<li>— Брось в олд фешенд 2 кубика льда</li>
+								<li>— Брось в рокс 2 кубика льда</li>
 								
 								<li>— И через стрейнер перелей в него содержимое шейкера</li>
 								
@@ -145,7 +141,7 @@
 					<dl class="tools">
 						<dt>Необходимые штучки</dt>
 						
-						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Олд фешенд</a></dd>
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Рокс</a></dd>
 						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Шейкер</a></dd>
 						
@@ -494,6 +490,7 @@
 					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
 					this.addClassName('now')
 					this.parentNode.now = this
+					Controller.linkClicked()
 					e.preventDefault()
 				},
 				false

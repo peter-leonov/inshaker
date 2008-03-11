@@ -1,4 +1,10 @@
+require 'rutils'
+
 class String
+  def trans
+    return self.bidi_translify.gsub("+", "")
+  end
+  
   def zpt
     return self.gsub(",",".")
   end

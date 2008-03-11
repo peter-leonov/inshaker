@@ -6,8 +6,13 @@ var Controller = {
 	ID_REL_SUR : 'rel_surface',
 	ID_REL_VPR : 'rel_viewport',
 	
+	ID_ING     : 'ingredients',
+	ID_ING_SUR : 'ingreds_surface',
+	
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
+	
+	PATH_MERCH : '/i/merchandise/',
 	
 	name : "",
 	relatedCount: 10,
@@ -21,6 +26,12 @@ var Controller = {
 			perPage = 3;
 		}
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
+		this.renderIngredients(Model.ingredients, Model.goods);
+	},
+	
+	linkClicked: function() {
+	 // working around RollingImages init bug
+		$(this.ID_ING).RollingImages.goInit();
 	},
 	
 	renderRecommendations: function(recs){
@@ -30,7 +41,10 @@ var Controller = {
 			var div = document.createElement("div");
 			div.className = "point";
 			div.id = "rec_"+(i+1);
-			div.innerHTML = recs[i].text;
+			var img = document.createElement("img");
+			img.src = this.PATH_MERCH + "banners/" + recs[i].banner;
+			img.alt = recs[i].text;
+			div.appendChild(img);
 			parent.appendChild(div);
 		}
 
@@ -49,6 +63,35 @@ var Controller = {
 		}
 		$(this.ID_RELATED).RollingImages.sync();
 		$(this.ID_RELATED).RollingImages.goInit();
+	},
+	
+	renderIngredients: function(ingredients, goods) {
+		var perPage = 3;
+		var np = this._getNumOfPages(ingredients, perPage);
+		
+		for(var i = 1; i <= np; i++){
+			var selectedSet = ingredients.slice((i-1)*perPage, i*perPage);
+			this._renderIngPage(selectedSet, i);
+		}
+		
+		$(this.ID_ING).RollingImages.sync();
+		$(this.ID_ING).RollingImages.goInit();
+	},
+	
+	_renderIngPage: function(resultSet, pageNum){
+		var parent = $(this.ID_ING_SUR);
+		var div = document.createElement("div");
+		div.className = "point";
+		div.id = "ing_" + pageNum;
+		parent.appendChild(div);
+		
+		for(var i = 0; i < resultSet.length; i++){
+			var img = document.createElement("img");
+			var related_goods = goods[resultSet[i][0]];
+			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + "_big.png";
+			img.alt = resultSet[i][0];
+			div.appendChild(img);
+		}
 	},
 	
 	_getNumOfPages: function(resultSet, perPage) {

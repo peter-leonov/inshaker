@@ -91,13 +91,10 @@
 						</div>
 						
 						<div id="view-how">
-							<div class="ingridients"><div class="wrap">
+							<div class="ingridients"><div class="wrap programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
 									<a class="prev"><!-- --></a>
 									<div class="viewport">
-										<div class="surface">
-											<img src="/i/food/l/f1.png" width="116" height="140" alt="F1"/>
-											<img src="/i/food/l/f2.png" width="116" height="140" alt="F2"/>
-											<img src="/i/food/l/f3.png" width="116" height="140" alt="F3"/>
+										<div class="surface" id="ingreds_surface">
 										</div>
 									</div>
 									<a class="next"><!-- --></a>
@@ -105,7 +102,7 @@
 							<h3>Как приготовить:</h3>
 							<ul>
 								
-								<li>— В охлажденный флюте налей сухое шампанское 150 мл</li>
+								<li>— В охлажденный флюте налей сухое шампанское 130 мл</li>
 								
 								<li>— Добавь ликер гранд марнье 20 мл и персиковый сок 20 мл</li>
 								
@@ -137,7 +134,7 @@
 						
 						<dd><a>Апельсиновый сок</a> <strong>20 мл</strong></dd>
 						
-						<dd><a>Апельсин</a> <strong>1 шт</strong></dd>
+						<dd><a>Апельсин</a> <strong>1/6 шт</strong></dd>
 						
 					</dl>
 					<dl class="tools">
@@ -146,6 +143,8 @@
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Флюте</a></dd>
 						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Коктейльная ложка</a></dd>
+						
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Нож для цедры</a></dd>
 						
 					</dl>
 				</div>
@@ -490,6 +489,7 @@
 					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
 					this.addClassName('now')
 					this.parentNode.now = this
+					Controller.linkClicked()
 					e.preventDefault()
 				},
 				false

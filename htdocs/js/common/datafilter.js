@@ -21,7 +21,7 @@ var DataFilter = {
 		for(var i = 0; i < possibleSets.length; i++){
 			var cocktails = this.cocktailsByIngredients(set, possibleSets[i]);
 			cocktails.splice(cocktails.indexOf(cocktail), 1);
-			res = res.concat(cocktails);
+			res = res.concat(cocktails.sort(this.nameSort));
 			if(res.uniq().length >= howMany) break;
 		}
 		return res.uniq().slice(0, howMany);

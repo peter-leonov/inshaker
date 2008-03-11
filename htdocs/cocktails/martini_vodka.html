@@ -88,13 +88,10 @@
 						</div>
 						
 						<div id="view-how">
-							<div class="ingridients"><div class="wrap">
+							<div class="ingridients"><div class="wrap programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
 									<a class="prev"><!-- --></a>
 									<div class="viewport">
-										<div class="surface">
-											<img src="/i/food/l/f1.png" width="116" height="140" alt="F1"/>
-											<img src="/i/food/l/f2.png" width="116" height="140" alt="F2"/>
-											<img src="/i/food/l/f3.png" width="116" height="140" alt="F3"/>
+										<div class="surface" id="ingreds_surface">
 										</div>
 									</div>
 									<a class="next"><!-- --></a>
@@ -491,6 +488,7 @@
 					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
 					this.addClassName('now')
 					this.parentNode.now = this
+					Controller.linkClicked()
 					e.preventDefault()
 				},
 				false

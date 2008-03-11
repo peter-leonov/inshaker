@@ -226,12 +226,15 @@ label			{ display: block; }
 #cocktail-page #view-how ul			{ padding-left: 197px; line-height: 1.5; }
 #cocktail-page #view-how .ingridients				{ background: url(bg/cocktail/how-bg.png) repeat-x 0 0; height: 139px; margin-top: -140px; padding: 0 1px; }
 #cocktail-page #view-how .ingridients .wrap			{ background: url(bg/cocktail/how-bg.png) repeat-x 0 0; height: 140px; position: relative; }
-#cocktail-page #view-how .ingridients .viewport		{ position: absolute; bottom: 0; left: 173px; width: 350px; }
-#cocktail-page #view-how .ingridients .surface		{ width: 10000em; }
-#cocktail-page #view-how .ingridients .surface img	{ float: left; margin-left: 7px; }
+#cocktail-page #view-how .ingridients .viewport		{ position: absolute; bottom: 0; left: 170px; width: 360px; height: 120px;}
+#cocktail-page #view-how .ingridients .surface		{ width: 5000px; height: 120px;}
+#cocktail-page #view-how .ingridients .surface img	{ float: left; margin-left: 20px; }
+#cocktail-page #view-how .ingridients .point { width: 400px; height: 120px; float: left;}
 #cocktail-page #view-how .next,
-#cocktail-page #view-how .prev			{ display: block; z-index: 3; width: 20px; height: 20px; position: absolute; left: 153px; top: 66px; background: url(icon/strs-green.gif) no-repeat 0 -72px; }
-#cocktail-page #view-how .next			{ background-position: -20px -72px; left: auto; right: 19px; }
+#cocktail-page #view-how .prev			{ display: block; z-index: 3; width: 20px; height: 20px; position: absolute; left: auto; top: 72px; right: 19px; background: url(icon/strs-green.gif) no-repeat 0 -72px; }
+#cocktail-page #view-how .next			{ background-position: -20px -72px; left: auto; right: 19px; top: 48px;}
+#cocktail-page #view-how .prev.disabled { background-position: 0px -92px; cursor: normal;}
+#cocktail-page #view-how .next.disabled { background-position: -20px -92px; cursor: normal;}
 #cocktail-page #view-how button			{ position: absolute; bottom: 15px; left: 197px; }
 #cocktail-page #view-how .bt-print-how	{ left: 363px; }
 

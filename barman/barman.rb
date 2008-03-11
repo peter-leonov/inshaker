@@ -21,11 +21,16 @@ module Config
   HTDOCS_DIR         = "../htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
   DB_JS_DIR          = HTDOCS_DIR + "js/common/db.js"
-  IMAGES_DIR         = HTDOCS_DIR + "i/cocktail/"
   
+  IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
   IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
   IMAGES_BIG_DIR   = IMAGES_DIR + "b/"
   IMAGES_SMALL_DIR = IMAGES_DIR + "s/"
+  
+  MERCH_ROOT    = HTDOCS_DIR + "i/merchandise/"
+  INGREDS_DIR   = MERCH_ROOT + "ingredients/"
+  VOLUMES_DIR   = MERCH_ROOT + "volumes/"
+  BANNERS_DIR   = MERCH_ROOT + "banners/"
   
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
@@ -124,6 +129,38 @@ class Barman
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
     end
   end
+  
+  def flush_goods
+    opt = {:remove_destination => true}
+    @goods.each do |ingredient, arr|
+      arr.each do |good|
+        if good[:brand].empty? # unbranded
+          from_big   = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/i_big.png"
+          from_small = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/i_small.png"
+          
+          to_big     = Config::INGREDS_DIR + ingredient.trans + "_big.png"
+          to_small   = Config::INGREDS_DIR + ingredient.trans + "_small.png"
+
+          FileUtils.cp_r(from_big, to_big, opt) unless !File.exists?(from_big)
+          FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+        else # brand-name goods
+          from_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
+          from_banner = from_dir + "banner.png"
+          from_big    = from_dir + "i_big.png"
+          from_small  = from_dir + "i_small.png"
+          
+          to_big    = Config::INGREDS_DIR + ingredient.trans + "_big.png"
+          to_small  = Config::INGREDS_DIR + ingredient.trans + "_small.png"  
+          to_banner = Config::BANNERS_DIR + good[:brand].trans + ".png"
+          
+          FileUtils.cp_r(from_banner, to_banner, opt) unless !File.exists?(from_banner)
+          FileUtils.cp_r(from_big, to_big, opt) unless !File.exists?(from_big)
+          FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+          # TODO: volumes for brand-name goods
+        end
+      end
+    end
+  end
 
 private
   
@@ -194,27 +231,26 @@ private
     
     goods_arr = []
     good = {}
-    type = ""
+    ingredient = ""
     
     csv.each do |line|
       if !line[0].nil? # new drink
         goods_arr = []
         good = {}
-        type = line[0]
-        good[:name] = line[1].nil? ? "" : line[1]
+        ingredient = line[0]
+        good[:brand] = line[1].nil? ? "" : line[1]
         good[:unit] = line[2]
         good[:volumes] = []
         goods_arr << good
-        @goods[type] = goods_arr
+        @goods[ingredient] = goods_arr
       elsif line[0].nil? and line[1].nil? and line[2].nil? # volumes
         vol = line[3].nil? ? "" : line[3].zpt.to_f
         price = line[4].to_f
         avail = (line[5] == "есть") ? true : false
         good[:volumes] << [vol, price, avail]
-      elsif !line[1].nil? # drink of the same type
-        this_type = type
+      elsif !line[1].nil? # drink of the same ingredient
         good = {}
-        good[:name] = line[1].nil? ? "" : line[1]
+        good[:brand] = line[1].nil? ? "" : line[1]
         good[:unit] = line[2]
         good[:volumes] = []
         goods_arr << good
@@ -233,3 +269,5 @@ puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}"
 joe.flush_html
 puts "Flushing images to #{Config::IMAGES_DIR}"
 joe.flush_images
+puts "Flushing goods to #{Config::MERCH_ROOT}"
+joe.flush_goods
