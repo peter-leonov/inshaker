@@ -3,7 +3,7 @@ var Model = {
 	cocktailsSet : [],
 
 	tags        : tags,
-	strengths   : strengths,
+	strengths   : (strengths.length > 3) ? strengths : ["Безалкогольные", "Слабоалкогольные", "Крепкие"],
 	ingredients : ingredients,
 	
 	filters: {

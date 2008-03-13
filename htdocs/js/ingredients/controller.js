@@ -13,7 +13,7 @@ var Controller = {
 	RIGHT: false,
 	COLUMNS: 5,
 	GAP: 5,
-	TRIES: 109,
+	TRIES: 108,
 	
 	// selected ingredients
 	selected: [],

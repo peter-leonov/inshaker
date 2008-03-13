@@ -22,17 +22,22 @@ var Model = {
 		var ingreds = cocktail.ingredients; 
 		
 		for(var i = 0; i < ingreds.length; i++){
-			var rec = goods[ingreds[i][0]];
-			if(rec && rec[0].brand != ""){
-				var obj = {};
-				if(ingreds[i][0] == rec[0].brand) obj["text"] = rec[0].brand;
-				else obj["text"] = ingreds[i][0] + " " + rec[0].brand;
-				
-				obj["banner"] = rec[0].brand.trans() + ".png";
-				recs.push(obj);
+			var items = goods[ingreds[i][0]];
+			if(items && items[0].brand != "" && this._doesntHave(recs, items[0].brand)){
+				var rec = {};
+				rec.brand  = items[0].brand;
+				rec.banner = items[0].brand.trans() + ".png";
+				recs.push(rec);
 			}
 		}
 		return recs;
+	},
+	
+	_doesntHave: function(recs, name){
+		for(var i = 0; i < recs.length; i++){
+			if(recs[i].brand == name) return false;
+		}
+		return true;
 	},
 	
 	getRelated: function(howMany){

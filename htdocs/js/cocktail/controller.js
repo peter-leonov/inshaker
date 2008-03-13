@@ -19,6 +19,7 @@ var Controller = {
 	
 	init: function(name){
 		Model.dataListener = this;
+		this.bindEvents();
 		Model.init(name);
 		var perPage = 5;
 		if(Model.recs.length > 0) {
@@ -29,7 +30,74 @@ var Controller = {
 		this.renderIngredients(Model.ingredients, Model.goods);
 	},
 	
-	linkClicked: function() {
+	bindEvents: function(){
+		var self = this;
+		var menu = $('panel_cocktail');
+		menu.now = menu; 
+		var mybar_links	= menu.getElementsByTagName('a');
+		for (var i = mybar_links.length - 1; i >= 0; i--) {
+			mybar_links[i].addEventListener('click', function(e) {
+					link.open(this);
+					this.parentNode.now.remClassName('now');
+					this.addClassName('now');
+					this.parentNode.now = this;
+					self.linkClicked();
+					e.preventDefault();
+				}, false);
+		}
+		link = new Link();
+		this._initNavigationRules(menu);
+	},
+	
+	_initNavigationRules: function(menu){
+		// TODO: remove UI fixes from Controller
+		var entry = cssQuery("#cocktail-page .hreview .entry")[0];
+		var ul = cssQuery("#cocktail-page #view-how ul")[0]; 
+
+		$('view-prepare').show = function()
+		{
+			$('main-content').style.visibility = 'hidden';
+			this.style.display = 'block';
+		}
+		$('view-prepare').hide = function()
+		{
+			this.style.display = 'none';
+			$('main-content').style.visibility = 'visible';
+		}
+		$('view-how').show = function()
+		{
+			$('main-content').className = 'view-how';
+			this.style.display = 'block';
+			$('poster').style.visibility = 'hidden';
+
+			if(ul.offsetHeight > 130) entry.style.height = (ul.offsetHeight + 60) + "px";
+		}
+		$('view-how').hide = function()
+		{
+			this.style.display = 'none';
+			$('main-content').className = '';
+			$('poster').style.visibility = 'visible';
+			menu.now.remClassName('now');
+			entry.style.height = "";
+		}
+
+		$('view-video').show = function()
+		{
+			$('main-content').className = 'view-video';
+			this.style.display = 'block';
+			$('poster').style.visibility = 'hidden';
+		}
+
+		$('view-video').hide = function()
+		{
+			this.style.display = 'none';
+			$('main-content').className = '';
+			$('poster').style.visibility = 'visible';
+			menu.now.remClassName('now');
+		}	
+	},
+	
+	linkClicked: function(href) {
 	 // working around RollingImages init bug
 		$(this.ID_ING).RollingImages.goInit();
 	},
@@ -43,7 +111,7 @@ var Controller = {
 			div.id = "rec_"+(i+1);
 			var img = document.createElement("img");
 			img.src = this.PATH_MERCH + "banners/" + recs[i].banner;
-			img.alt = recs[i].text;
+			img.alt = recs[i].brand;
 			div.appendChild(img);
 			parent.appendChild(div);
 		}
@@ -69,7 +137,7 @@ var Controller = {
 		var perPage = 3;
 		var np = this._getNumOfPages(ingredients, perPage);
 		
-		for(var i = 1; i <= np; i++){
+		for(var i = 1; i <= np; i++) {
 			var selectedSet = ingredients.slice((i-1)*perPage, i*perPage);
 			this._renderIngPage(selectedSet, i);
 		}

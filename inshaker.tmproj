@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>htdocs/js/controller.js</string>
+	<string>htdocs/js/ingredients/controller.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>lib</string>
 			<key>regexFolderFilter</key>
@@ -31,42 +29,28 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>htdocs/cocktails.html</key>
+		<key>htdocs/js/cocktail/controller.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>44</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>44</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>56</integer>
 		</dict>
-		<key>htdocs/js/controller.js</key>
+		<key>htdocs/js/ingredients/controller.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>173</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>166</integer>
-		</dict>
-		<key>htdocs/js/util.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
 				<integer>11</integer>
+				<key>line</key>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -76,13 +60,12 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>htdocs/js/controller.js</string>
-		<string>htdocs/js/util.js</string>
-		<string>htdocs/cocktails.html</string>
+		<string>htdocs/js/cocktail/controller.js</string>
+		<string>htdocs/js/ingredients/controller.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{289, 110}, {777, 908}}</string>
+	<string>{{264, 122}, {811, 893}}</string>
 </dict>
 </plist>

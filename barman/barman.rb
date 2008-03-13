@@ -27,6 +27,8 @@ module Config
   IMAGES_BIG_DIR   = IMAGES_DIR + "b/"
   IMAGES_SMALL_DIR = IMAGES_DIR + "s/"
   
+  VIDEOS_DIR = HTDOCS_DIR + "v/"
+  
   MERCH_ROOT    = HTDOCS_DIR + "i/merchandise/"
   INGREDS_DIR   = MERCH_ROOT + "ingredients/"
   VOLUMES_DIR   = MERCH_ROOT + "volumes/"
@@ -55,26 +57,19 @@ class Barman
       cocktail_dir = root.path + dir
       if File.ftype(cocktail_dir) == "directory" and !excluded.include?(cocktail_dir)
         Dir.chdir(cocktail_dir)
-        about_text = File.open(cocktail_dir + "/about.txt").read
         
         @cocktail               = {}
         @cocktail[:tags]        = []
         @cocktail[:tools]       = []
         @cocktail[:ingredients] = []
+        @cocktail[:has_video]   = false
         
-        parse_title (about_text.scan /.*Название:\ *\n(.+)\n.*/)[0][0]
-        parse_teaser (about_text.scan /.*Тизер:\ (.+)\ *\n.*/)[0][0]
-        parse_strength (about_text.scan /.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
-        if (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
-          parse_tags (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
-        else
-          parse_tags ""
-        end
-        parse_ingredients (about_text.scan /.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
-        parse_tools (about_text.scan /.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
-        parse_receipt (about_text.scan /.*Как приготовить:\ *\n(.+)*/m)[0][0]
-        parse_description File.open(cocktail_dir + "/legend.txt").read
+        parse_about_text  File.open(cocktail_dir + "/about.txt").read
+        parse_legend_text File.open(cocktail_dir + "/legend.txt").read
+        
+        if File.exists? cocktail_dir + "/video.flv" then @cocktail[:has_video] = true end
         @cocktails[@cocktail[:name]] = @cocktail
+        
         Dir.chdir("../")
       end
     end
@@ -118,15 +113,25 @@ class Barman
   end
   
   def flush_images
+    opt = {:remove_destination => true}
     @cocktails.each do |name, hash|
-      from     = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/"
+      from = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/"
+      
       to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
       to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
       to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
-      opt = {:remove_destination => true}
       FileUtils.cp_r(from + "big.png", to_big, opt)     unless !File.exists?(from + "big.png")
       FileUtils.cp_r(from + "small.png", to_small, opt) unless !File.exists?(from + "small.png")
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
+    end
+  end
+  
+  def flush_videos
+    opt = {:remove_destination => true}
+    @cocktails.each do |name, hash|
+      from = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
+      to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
+      FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
   end
   
@@ -163,6 +168,20 @@ class Barman
   end
 
 private
+
+  def parse_about_text(about_text)
+    parse_title (about_text.scan /.*Название:\ *\n(.+)\n.*/)[0][0]
+    parse_teaser (about_text.scan /.*Тизер:\ (.+)\ *\n.*/)[0][0]
+    parse_strength (about_text.scan /.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
+    if (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
+      parse_tags (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
+    else
+      parse_tags ""
+    end
+    parse_ingredients (about_text.scan /.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
+    parse_tools (about_text.scan /.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
+    parse_receipt (about_text.scan /.*Как приготовить:\ *\n(.+)*/m)[0][0]
+  end
   
   def parse_title(title)
     @cocktail[:name], @cocktail[:name_eng] = title.split("; ")
@@ -219,7 +238,7 @@ private
     @cocktail[:receipt] = receipt.split("\n")
   end
   
-  def parse_description(text)
+  def parse_legend_text(text)
     paragraphs = text.split(%r{[\n\r]})
     @cocktail[:desc_start] = paragraphs.first
     @cocktail[:desc_end]   = paragraphs[1..-1].join "\n"
@@ -259,15 +278,22 @@ private
   end
 end
 
-# Here we go
-joe = Barman.new
-puts "Mixing cocktails from #{Config::COCKTAILS_DIR}"
-joe.prepare
-puts "Flushing JSON to #{Config::DB_JS_DIR}"
-joe.flush_json
-puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}"
-joe.flush_html
-puts "Flushing images to #{Config::IMAGES_DIR}"
-joe.flush_images
-puts "Flushing goods to #{Config::MERCH_ROOT}"
-joe.flush_goods
+def go
+  joe = Barman.new
+  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}"
+  joe.prepare
+  puts "Flushing JSON to #{Config::DB_JS_DIR}"
+  joe.flush_json
+  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}"
+  joe.flush_html
+  puts "Flushing images to #{Config::IMAGES_DIR}"
+  joe.flush_images
+  puts "Flushing videos to #{Config::VIDEOS_DIR}"
+  joe.flush_videos
+  puts "Flushing goods to #{Config::MERCH_ROOT}"
+  joe.flush_goods
+end
+
+# Here 
+# we
+  go
