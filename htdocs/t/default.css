@@ -241,6 +241,7 @@ label			{ display: block; }
 #cocktail-page .view-how#main-content *	{ visibility: hidden; }
 #cocktail-page .view-how#main-content .illustration	{ visibility: visible; z-index: 2; }
 #cocktail-page .view-video#main-content *	{ visibility: hidden; }
+#view-video.popup { background-color: #000; }
 
 #cocktail-page #view-video div		{ margin: -40px auto 0; }
 

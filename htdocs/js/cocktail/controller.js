@@ -34,6 +34,8 @@ var Controller = {
 		var self = this;
 		var menu = $('panel_cocktail');
 		menu.now = menu; 
+		this._initNavigationRules(menu);
+		
 		var mybar_links	= menu.getElementsByTagName('a');
 		for (var i = mybar_links.length - 1; i >= 0; i--) {
 			mybar_links[i].addEventListener('click', function(e) {
@@ -41,18 +43,18 @@ var Controller = {
 					this.parentNode.now.remClassName('now');
 					this.addClassName('now');
 					this.parentNode.now = this;
-					self.linkClicked();
+					$(self.ID_ING).RollingImages.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
 				}, false);
 		}
 		link = new Link();
-		this._initNavigationRules(menu);
 	},
 	
 	_initNavigationRules: function(menu){
 		// TODO: remove UI fixes from Controller
 		var entry = cssQuery("#cocktail-page .hreview .entry")[0];
-		var ul = cssQuery("#cocktail-page #view-how ul")[0]; 
+		var ul = cssQuery("#cocktail-page #view-how ul")[0];
+		var hreview = cssQuery("#cocktail-page .hreview")[0]; 
 
 		$('view-prepare').show = function()
 		{
@@ -69,7 +71,8 @@ var Controller = {
 			$('main-content').className = 'view-how';
 			this.style.display = 'block';
 			$('poster').style.visibility = 'hidden';
-
+			
+			// Apply fix
 			if(ul.offsetHeight > 130) entry.style.height = (ul.offsetHeight + 60) + "px";
 		}
 		$('view-how').hide = function()
@@ -78,14 +81,19 @@ var Controller = {
 			$('main-content').className = '';
 			$('poster').style.visibility = 'visible';
 			menu.now.remClassName('now');
+			
+			// Cancel fix
 			entry.style.height = "";
 		}
 
 		$('view-video').show = function()
 		{
-			$('main-content').className = 'view-video';
 			this.style.display = 'block';
+			$('main-content').className = 'view-video';
 			$('poster').style.visibility = 'hidden';
+			
+			// Apply fix
+			hreview.style.height = (this.offsetHeight + 38) + "px";
 		}
 
 		$('view-video').hide = function()
@@ -94,12 +102,10 @@ var Controller = {
 			$('main-content').className = '';
 			$('poster').style.visibility = 'visible';
 			menu.now.remClassName('now');
+			
+			// Cancel fix
+			hreview.style.height = "";
 		}	
-	},
-	
-	linkClicked: function(href) {
-	 // working around RollingImages init bug
-		$(this.ID_ING).RollingImages.goInit();
 	},
 	
 	renderRecommendations: function(recs){

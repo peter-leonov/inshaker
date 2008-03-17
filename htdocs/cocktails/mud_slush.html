@@ -15,8 +15,14 @@
 	<script type="text/javascript" src="/js/common/db.js"></script>
 	<script type="text/javascript" src="/js/common/datafilter.js"></script>
 	<script type="text/javascript" src="/js/common/link.js"></script>
+	
 	<script type="text/javascript" src="/js/cocktail/model.js"></script>
 	<script type="text/javascript" src="/js/cocktail/controller.js"></script>
+	
+	<script type="text/javascript" src="/js/calculator/model.js"></script>
+	<script type="text/javascript" src="/js/calculator/view.js"></script>
+	<script type="text/javascript" src="/js/calculator/controller.js"></script>
+	<script type="text/javascript" src="/js/calculator/calculator.js"></script>
 	<title>InShaker √ Противная слякоть</title>
 </head>
 <body>
@@ -214,18 +220,14 @@
 			&#160;
 		</h2>
 		<dl class="on">
-			<dt>Хочу приготовить <span>23 570 р.</span></dt>
+			<dt>Хочу приготовить <span id="cart_sum">23 570 р.</span></dt>
 			<dd>
-				<ul>
-					<li><a>Мохито</a>		<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
-					<li><a>Капериния</a>	<label><input type="text" name="portion" value=""/> порции</label><button class="bt-del" title="Удалить">x</button></li>
+				<ul id="cart_cocktails">
+
 				</ul>
 				<strong>Ингредиенты:</strong>
-				<ul class="money">
-					<li><a href="#shop-cocktail" onclick="link.open(this); return false">Ром Bacardi Cart...</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 5 500 р.</label><button class="bt-info">i</button><span class="to-print">20 литров<span><!-- --></span></span></li>
-					<li><a href="#shop-cocktail2" onclick="link.open(this); return false">Sprite</a><b>0.5 л</b>			<label><input type="text" name="portion" value=""/> 115 000 р.</label><span class="to-print">200 грамм<span><!-- --></span></span></li>
-					<li><a href="#shop-cocktail" onclick="link.open(this); return false">Кашаса Puerto</a><b>1 л</b>	<label><input type="text" name="portion" value=""/> 3 000 р.</label><button class="bt-info">i</button><span class="to-print">15 литров<span><!-- --></span></span></li>
-					<li><a href="#shop-cocktail" onclick="link.open(this); return false">Лед</a><b>1 кубик</b>			<label><input type="text" name="portion" value=""/> 70 р.</label><span class="to-print">100 кубиков<span><!-- --></span></span></li>
+				<ul class="money" id="cart_ingredients">
+
 				</ul>
 			</dd>
 		</dl>
@@ -484,6 +486,7 @@
 	$.onload( function()
 	{
 		Controller.init($('cocktail_name').innerHTML);
+		Calculator.init();
 	})
 	
 </script>

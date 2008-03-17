@@ -280,17 +280,17 @@ end
 
 def go
   joe = Barman.new
-  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}"
+  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" unless !Config::DEBUG
   joe.prepare
-  puts "Flushing JSON to #{Config::DB_JS_DIR}"
+  puts "Flushing JSON to #{Config::DB_JS_DIR}"          unless !Config::DEBUG
   joe.flush_json
-  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}"
+  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" unless !Config::DEBUG
   joe.flush_html
-  puts "Flushing images to #{Config::IMAGES_DIR}"
+  puts "Flushing images to #{Config::IMAGES_DIR}"       unless !Config::DEBUG
   joe.flush_images
-  puts "Flushing videos to #{Config::VIDEOS_DIR}"
+  puts "Flushing videos to #{Config::VIDEOS_DIR}"       unless !Config::DEBUG
   joe.flush_videos
-  puts "Flushing goods to #{Config::MERCH_ROOT}"
+  puts "Flushing goods to #{Config::MERCH_ROOT}"        unless !Config::DEBUG
   joe.flush_goods
 end
 

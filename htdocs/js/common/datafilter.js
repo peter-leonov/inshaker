@@ -1,4 +1,50 @@
 var DataFilter = {
+	/**
+	 * Подбор товаров и их емкостей под коктейли
+	 * @param goods - хэш товаров
+	 * @param cocktailsAndQuant - массив вида [[<cocktail1>, <quantity1>], [<cocktail2>, <quantity2>]]
+	 * @return хэш (ключ - ингредиент), включающий для каждого эл-та товар, дозировку, бутылки
+	 */
+	goodsByCocktails: function(goods, cocktailsAndQuant){
+		var res = {};
+		for(var i = 0; i < cocktailsAndQuant.length; i++){
+			var cocktail = cocktailsAndQuant[i][0];
+			var quantity = cocktailsAndQuant[i][1];
+			for(var j = 0; j < cocktail.ingredients.length; j++){
+				
+				var ingred = cocktail.ingredients[j][0];
+				
+				if(goods[ingred]) {
+					var dose = this._parseDose(goods[ingred][0].unit, cocktail.ingredients[j][1]);
+					if(!res[ingred]) {
+						res[ingred] = {};
+						res[ingred].good = goods[ingred][0];
+						res[ingred].bottles = {};
+						res[ingred].dose = 0;
+					}
+					res[ingred].dose += dose*quantity;
+				}
+			}
+		}
+		// предлагаем бутылки
+		for(ingred in res){
+			var dose = res[ingred].dose;
+			var vols = res[ingred].good.volumes;
+			while(dose > 0){
+				var cv = this._findClosestVol(vols, dose);
+				var id = cv[0];
+				if(res[ingred].bottles[id])	res[ingred].bottles[id].count++;
+				else {
+					res[ingred].bottles[id] = {};
+					res[ingred].bottles[id].count = 1;
+					res[ingred].bottles[id].vol = cv; 
+				}
+				dose -= cv[0];
+			}
+		}
+		return res;
+	},
+	
 	relatedCocktails: function(set, cocktail, howMany) {
 		var res = [];
 		var ingreds = [];
@@ -98,5 +144,53 @@ var DataFilter = {
 		if(a.name > b.name) return 1;
 		else if(a.name == b.name) return 0;
 		else return -1;
+	},
+	
+	/**
+	 * Нормализация объема относительно заданной единицы
+	 * @param normUnit - заданная единица (напр., "л")
+	 * @param txt - текст объема (напр., "15 мл")
+	 * @return нормализованное значение (напр., 0.015)
+	 */
+	_parseDose: function(normUnit, txt){
+		var arr = txt.match(/^(.+)\ (.+)/);
+		var vol = arr[1];
+		var unit = arr[2];
+		if(unit == "мл" && normUnit == "л") return vol/1000;
+		else if(unit == "кубика" && normUnit == "кубики") return parseInt(vol);
+		else if(unit == "шт" && normUnit == "шт") return this._parseDecimal(vol);
+		else if(unit == "капли" && normUnit == "л") return vol/40000;
+		else if(unit == normUnit) return parseFloat(vol);
+	},
+	
+	/**
+	 * Парсинг значений объема, заданных в виде дробей
+	 * @param volume - например, "1/2"
+	 * @return число типа float наподобие 0.5
+	 */
+	_parseDecimal: function(volume){
+		if(volume.indexOf("/") > -1) return eval(volume);
+		else return parseFloat(volume);
+	},
+	
+	/**
+	 * Нахождение подходящей емкости по заданному объему
+	 * @param volumes массив объемов вида [<емкость>, <цена>, <наличие>]
+	 * @param dose объем, под который ищем емкость
+	 * @return volume элемент массива объемов
+	 */
+	_findClosestVol: function(volumes, dose){
+		var closest_idx = 0;
+		for(var i = 0; i < volumes.length; i++) {
+			if((volumes[i][0] > volumes[closest_idx][0]) && volumes[i][2]) closest_idx = i;
+		}
+		for(var i = 0; i < volumes.length; i++){
+			if(volumes[i][2]) { // в наличии
+				var gap = volumes[i][0] - dose;
+				var closestGap = volumes[closest_idx][0] - dose;
+				if((gap >= 0) && (gap < closestGap)) closest_idx = i;
+			}
+		}
+		return volumes[closest_idx];
 	}
 }
