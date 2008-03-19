@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -90,8 +91,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Роб Рой - шотландский Робин Гуд, живший в 17 веке. Не обходился без настоящего виски. Помогал бедным и много пил.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Роб Рой - шотландский Робин Гуд, живший в 17 веке. Не обходился без настоящего виски. Помогал бедным и много пил.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -488,7 +491,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

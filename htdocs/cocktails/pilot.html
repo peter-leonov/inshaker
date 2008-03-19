@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -88,8 +89,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Давно это было. Денег на учебные полеты выделялось мало. Но какой пилот может прожить без неба? Так и появился прекрасный коктейль, запустивший в небо не одного пилота!</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Давно это было. Денег на учебные полеты выделялось мало. Но какой пилот может прожить без неба? Так и появился прекрасный коктейль, запустивший в небо не одного пилота!</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -470,7 +473,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

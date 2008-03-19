@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -95,8 +96,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Френсис Дрейк был не просто пиратом. Имея в подчинении пол сотни кораблей, гроза морей честно служил английской короне - грабя испанские суда и побережья.</p><p>Последней экспансией пирата была Куба. Вдоволь нагулявшись на солнечном острове, Френсис в шутку приказал не брать с собой воду, и хорошенько запастись ромом. До дрожи в коленях, боявшиеся капитана матросы исполнили шутку. </p><p>Именно так появился мохито, коктейль спасший Дрейка от бунта, а матросов от скуки.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Френсис Дрейк был не просто пиратом. Имея в подчинении пол сотни кораблей, гроза морей честно служил английской короне - грабя испанские суда и побережья.</p><p>Последней экспансией пирата была Куба. Вдоволь нагулявшись на солнечном острове, Френсис в шутку приказал не брать с собой воду, и хорошенько запастись ромом. До дрожи в коленях, боявшиеся капитана матросы исполнили "приказ".</p><p>Именно так появился мохито, коктейль спасший Дрейка от бунта, а матросов от скуки.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -112,13 +115,15 @@
 							<h3>Как приготовить:</h3>
 							<ul>
 								
-								<li>— Брось в стакан 10 веточек мяты, 2 дольки лайма и 2 ч/ложки тросникового сахара</li>
+								<li>— Брось в тумблер 10 веточек мяты, 2 дольки лайма </li>
 								
-								<li>— Хорошенько подави их пестиком и засыпь доверху колотого льда</li>
+								<li>— и 2 ч/ложки тростникового сахара</li>
 								
-								<li>— Используя мерный стаканчик влей 50 мл белого рома, а потом содовую воду до краев </li>
+								<li>— Подави все пестиком и засыпь доверху колотый лед</li>
 								
-								<li>— Размешай все коктейльной ложкой и укрась веточкой мяты.</li>
+								<li>— Налей белый ром 50 мл и до верху содовую</li>
+								
+								<li>— Размешай и укрась долькой лайма</li>
 								
 							</ul>
 							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
@@ -148,13 +153,13 @@
 					<dl class="ingridients">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Белый ром</a> <strong>50 мл</strong></dd>
+						<dd><a>Белый ром</a> <strong>40 мл</strong></dd>
 						
-						<dd><a>Содовая</a> <strong>200 мл</strong></dd>
+						<dd><a>Содовая</a> <strong>120 мл</strong></dd>
 						
-						<dd><a>Тростниковый сахар</a> <strong>2 ч/ложки</strong></dd>
+						<dd><a>Тростниковый сахар</a> <strong>10 гр</strong></dd>
 						
-						<dd><a>Мята</a> <strong>10 листьев</strong></dd>
+						<dd><a>Мята</a> <strong>50 гр</strong></dd>
 						
 						<dd><a>Лайм</a> <strong>1/2 шт</strong></dd>
 						
@@ -164,17 +169,15 @@
 					<dl class="tools">
 						<dt>Необходимые штучки</dt>
 						
-						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Хайбол</a></dd>
-						
-						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Нож</a></dd>
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Тумблер</a></dd>
 						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Пестик</a></dd>
 						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Коктейльная ложка</a></dd>
 						
-						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Мерный стаканчик</a></dd>
-						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Дробилка для льда</a></dd>
+						
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Трубочки</a></dd>
 						
 					</dl>
 				</div>
@@ -501,7 +504,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

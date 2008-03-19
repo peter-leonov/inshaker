@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -91,8 +92,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Отель Ритц Париж - не просто палас. Это никем и никогда не опровергнутое искусство жить.</p><p></p><p>Неотразимая Коко Шанель прожила здесь 30 лет. Все эти годы, как и при Людовике 14, в Ритце всегда был праздник. Здесь родился великий ликер Grand Marnier, и на его основе придуман любимый коктейль Коко - Гранд Мимоза.</p><p> </p><p>Здесь танцевали не только вечером, но и с утра, всегда наслаждаясь шампанским с коньячным ликером.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Отель Ритц Париж - не просто палас. Это никем и никогда не опровергнутое искусство жить.</p><p></p><p>Неотразимая Коко Шанель прожила здесь 30 лет. Все эти годы, как и при Людовике 14, в Ритце всегда был праздник. Здесь родился великий ликер Grand Marnier, и на его основе придуман любимый коктейль Коко - Гранд Мимоза.</p><p> </p><p>Здесь танцевали не только вечером, но и с утра, всегда наслаждаясь шампанским с коньячным ликером.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -487,7 +490,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

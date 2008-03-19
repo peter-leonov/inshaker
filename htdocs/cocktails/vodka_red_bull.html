@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -88,8 +89,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>По статистике 80% процентов заказывающих в баре Водку Ред Бул, на утро говорят, что им стыдно. Но они не помнят перед кем. Впрочем также все в один голос заявляют, что было очень хорошо!</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>По статистике 80% процентов заказывающих в баре Водку Ред Бул, на утро говорят, что им стыдно. Но они не помнят перед кем. Впрочем также все в один голос заявляют, что было очень хорошо!</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -107,7 +110,7 @@
 								
 								<li>— Брось 3 кубика льда в тумблер</li>
 								
-								<li>— Налей водку 40 мл и ред бул 160 мл</li>
+								<li>— Налей водку 40 мл и ред бул 200 мл</li>
 								
 								<li>— Перемешай коктейльной ложкой</li>
 								
@@ -141,7 +144,7 @@
 						
 						<dd><a>Водка</a> <strong>40 мл</strong></dd>
 						
-						<dd><a>Ред Бул</a> <strong>160 мл</strong></dd>
+						<dd><a>Ред Бул</a> <strong>200 мл</strong></dd>
 						
 						<dd><a>Лед</a> <strong>3 кубика</strong></dd>
 						
@@ -480,7 +483,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

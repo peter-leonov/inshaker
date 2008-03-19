@@ -45,12 +45,12 @@ function toArray(hash) {
 }
 
 /**
- * Cookie functionality
- * Getter and setter for cookies
+ * Cookie functionality. 
+ * All cookies are saved with "path=/"
  */
 var Cookie = {
   set: function(name, value) {
-    return (document.cookie = escape(name) + '=' + escape(value || ''));
+    return (document.cookie = escape(name) + '=' + escape(value || '') + "; path=/");
   },
 
   get: function(name) {

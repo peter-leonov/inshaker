@@ -1,4 +1,5 @@
 var Controller = {
+	NAME_ELEM  : 'cocktail_name',
 	ID_REC     : 'recommendations',
 	ID_REC_SUR : 'rec_surface',
 	
@@ -17,7 +18,8 @@ var Controller = {
 	name : "",
 	relatedCount: 10,
 	
-	init: function(name){
+	init: function(){
+		var name = $(this.NAME_ELEM).innerHTML;
 		Model.dataListener = this;
 		this.bindEvents();
 		Model.init(name);
@@ -55,16 +57,23 @@ var Controller = {
 		var entry = cssQuery("#cocktail-page .hreview .entry")[0];
 		var ul = cssQuery("#cocktail-page #view-how ul")[0];
 		var hreview = cssQuery("#cocktail-page .hreview")[0]; 
+		var desc = $('view-prepare-text');
 
 		$('view-prepare').show = function()
 		{
 			$('main-content').style.visibility = 'hidden';
 			this.style.display = 'block';
+			
+			// Apply fix
+			if(desc.offsetHeight > 160 && entry.offsetHeight < 240) entry.style.height = (desc.offsetHeight + 20) + "px";
 		}
 		$('view-prepare').hide = function()
 		{
 			this.style.display = 'none';
 			$('main-content').style.visibility = 'visible';
+			
+			// Cancel fix
+			entry.style.height = "";
 		}
 		$('view-how').show = function()
 		{

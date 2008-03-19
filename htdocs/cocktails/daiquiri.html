@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -93,8 +94,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Хэмингуэй гордился тем, что может выпить 16 порций за вечер. Джон Кеннеди тоже любил Дайкири, но такого количества позволить себе не мог.</p><p>Впрочем попросив бармена приготовить сначала банановый дайкири, потом замороженный, а потом дынный, можно не заметить как был побит рекорд великого писателя.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Хэмингуэй гордился тем, что может выпить 16 порций за вечер. Джон Кеннеди тоже любил Дайкири, но такого количества позволить себе не мог.</p><p>Впрочем попросив бармена приготовить сначала банановый дайкири, потом замороженный, а потом дынный, можно не заметить как был побит рекорд великого писателя.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -110,13 +113,13 @@
 							<h3>Как приготовить:</h3>
 							<ul>
 								
-								<li>— Наполни на 1/4 шейкер льдом</li>
+								<li>— Брось в шейкер 3 кубика льда</li>
 								
-								<li>— Налей в шейкер белый ром 40 мл и лимонный сок 20 мл</li>
+								<li>— Налей в него белый ром 40 мл и лимонный сок 20 мл</li>
 								
-								<li>— Подсласти сахарным сиропом 30 мл</li>
+								<li>— Подсласти сахарным сиропом 30 мл и хорошенько взболтай</li>
 								
-								<li>— Хорошенько взболтай и с помощью стрейнера перелей в коктейльный бокал</li>
+								<li>— Перелей через стрейнер в охлажденный коктейльный бокал</li>
 								
 							</ul>
 							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
@@ -151,6 +154,8 @@
 						<dd><a>Лимонный сок</a> <strong>20 мл</strong></dd>
 						
 						<dd><a>Сахарный сироп</a> <strong>30 мл</strong></dd>
+						
+						<dd><a>Лед</a> <strong>3 кубика</strong></dd>
 						
 					</dl>
 					<dl class="tools">
@@ -487,7 +492,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

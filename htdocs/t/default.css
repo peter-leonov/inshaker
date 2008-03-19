@@ -395,12 +395,14 @@ label			{ display: block; }
 #b-bill	dl.on dt span	{ top: auto; bottom: 2px; color: #343b40; right: 18px; }
 
 #b-bill	dd				{ padding: 0 20px 40px 20px; font-size: 120%; background: #fff; }
-#b-bill	dd li			{ height: 20px; padding: 10px 0; position: relative; background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; }
+#b-bill	dd li			{ height: 100%; padding: 10px 0; position: relative; background: url(bg/body/hr-repeat.gif) repeat-x 0 100%; }
+#b-bill dd li a         { display: block; width: 125px;}
 #b-bill	dd li label		{ position: absolute; top: 10px; width: 110px; right: 30px; white-space: nowrap; }
 #b-bill	dd li b			{ font-weight: normal; display: block; }
 #b-bill	dd li button	{ position: absolute; top: 12px; right: 8px; }
 #b-bill	dd strong		{ display: block; padding: 26px 0 8px 0; }
-#b-bill	ul.money li		{ padding: 6px 0; height: 28px; }
+#b-bill	ul.money li		{ padding: 6px 0; height: 100%; }
+#b-bill ul.money li a   { display: block; width: 125px; }
 #b-bill	ul.money label	{ text-align: right; }
 #b-bill	ul.money input	{ float: left; }
 #b-bill	ul input		{ text-align: center; padding-left: 0; width: 35px; font-size: 11px; }/*TODO*/
@@ -656,7 +658,7 @@ button.bt-all-dishes		{ background-position: 0 -358px; height: 29px; width: 116p
 button.bt-korol-vote		{ background-position: 0 -387px; height: 31px; width: 112px; }/*todo*/
 
 
-button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; }
+button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; cursor: pointer;}
 
 button.bt-print-how,
 button.bt-close-how,

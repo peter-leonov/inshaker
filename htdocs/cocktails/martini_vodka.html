@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -88,8 +89,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>Любимый коктейль Джеймса Бонда, гениален и прост. Главное следовать рекомендациям харизматичного агента 007 - “Взболтать, но не смешивать”.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>Любимый коктейль Джеймса Бонда, гениален и прост. Главное следовать рекомендациям харизматичного агента 007 - “Взболтать, но не смешивать”.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -107,11 +110,11 @@
 								
 								<li>— Положи в шейкер 3 кубика льда</li>
 								
-								<li>— Налей в него водки 60 мл и капни сухого вермута 8 мл</li>
+								<li>— Налей в него водки 60 мл и капни сухой вермут 8 мл</li>
 								
 								<li>— Хорошенько взболтай содержимое</li>
 								
-								<li>— И перелей, используя стрейнер, в него все содержимое</li>
+								<li>— И перелей все, используя стрейнер, в коктейльный бокал</li>
 								
 								<li>— Добавь зеленую оливку для вкуса</li>
 								
@@ -486,7 +489,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	

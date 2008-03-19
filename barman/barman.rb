@@ -79,13 +79,13 @@ class Barman
     Dir.chdir("../../") # back from merch dir to barman root
   end
   
-  def flush_json
+  def flush_json     
      cocktails_json   = ActiveSupport::JSON.encode(@cocktails).unescape
      ingredients_json = ActiveSupport::JSON.encode(@ingredients).unescape
      tags_json        = ActiveSupport::JSON.encode(@tags).unescape
      strengths_json   = ActiveSupport::JSON.encode(@strengths).unescape
      tools_json       = ActiveSupport::JSON.encode(@tools).unescape
-     goods_json      = ActiveSupport::JSON.encode(@goods).unescape
+     goods_json       = ActiveSupport::JSON.encode(@goods).unescape
      
      File.open(Config::DB_JS_DIR, "w+") do |db|
       db.puts "var cocktails = #{cocktails_json};"

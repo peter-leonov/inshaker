@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>htdocs/js/ingredients/controller.js</string>
+	<string>htdocs/js/calculator/view.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,43 +29,103 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>htdocs/js/cocktail/controller.js</key>
+		<key>barman/templates/cocktail.rhtml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>44</integer>
+				<integer>477</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>56</integer>
+			<integer>446</integer>
 		</dict>
-		<key>htdocs/js/ingredients/controller.js</key>
+		<key>htdocs/js/calculator/calculator.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>htdocs/js/calculator/controller.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/js/calculator/model.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/js/calculator/view.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/js/common/datafilter.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>159</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>41</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>htdocs/js/cocktail/controller.js</string>
-		<string>htdocs/js/ingredients/controller.js</string>
+		<string>htdocs/js/calculator/calculator.js</string>
+		<string>htdocs/js/calculator/controller.js</string>
+		<string>htdocs/js/calculator/model.js</string>
+		<string>htdocs/js/common/datafilter.js</string>
+		<string>htdocs/js/calculator/view.js</string>
+		<string>barman/templates/cocktail.rhtml</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{264, 122}, {811, 893}}</string>
+	<string>{{260, 116}, {811, 893}}</string>
 </dict>
 </plist>

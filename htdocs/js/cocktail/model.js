@@ -33,9 +33,13 @@ var Model = {
 		return recs;
 	},
 	
+	/**
+	 * Нет ли бренда уже в списке рекомендуемых
+	 * Проверяет первое слово в названиях
+	 */
 	_doesntHave: function(recs, name){
 		for(var i = 0; i < recs.length; i++){
-			if(recs[i].brand == name) return false;
+			if(recs[i].brand.split(" ")[0] == name.split(" ")[0]) return false;
 		}
 		return true;
 	},

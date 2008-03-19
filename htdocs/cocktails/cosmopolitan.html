@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="/lib/Programica.js"></script>
 	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
 	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
+	<script type="text/javaScript" src="/lib/json2.js"></script>
 	
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<script type="text/javascript" src="/js/common/db.js"></script>
@@ -91,8 +92,10 @@
 						
 						<!-- Попапы -->
 						<div id="view-prepare">
-							<h3>Легенда коктейля</h3>
-							<p>“Чизбургер, большую жареную картошку и космополитен” - шутит Керри Бредшоу в одной из серии “Секса в большом городе”. </p><p>Один из немногих легендарных коктейлей придуманный девушкой (Шерри Кук) для девушек. В основе коктейля лежат главные хиты мировой культуры последних лет - розовый цвет и коктейльный бокал.</p>
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>“Чизбургер, большую жареную картошку и космополитен” - шутит Керри Бредшоу в одной из серии “Секса в большом городе”. </p><p>Один из немногих легендарных коктейлей придуманный девушкой (Шерри Кук) для девушек. В основе коктейля лежат главные хиты мировой культуры последних лет - розовый цвет и коктейльный бокал.</p>
+							</div>
 							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
 						</div>
 						
@@ -108,13 +111,19 @@
 							<h3>Как приготовить:</h3>
 							<ul>
 								
-								<li>— Наполни на 1/4 шейкер льдом</li>
+								<li>— Брось в шейкер 3 кубика льда</li>
 								
-								<li>— Влей в него все ингредиенты и взболтай</li>
+								<li>— Налей водку 40 мл и апельсиновый ликер 30 мл,</li>
 								
-								<li>— Используя стрейнер, перелей все в охлажденный коктейльный бокал</li>
+								<li>— клюквенный сок 20 мл и лимонный сок 15 мл,</li>
 								
-								<li>— Добавь цедру апельсина</li>
+								<li>— лимонный сок 15 мл, сахарный сироп 7 мл</li>
+								
+								<li>— Взболтай и перелей через стрейнер в </li>
+								
+								<li>— охлажденный коктейльный бокал</li>
+								
+								<li>— Укрась цедрой апельсина</li>
 								
 							</ul>
 							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
@@ -148,13 +157,15 @@
 						
 						<dd><a>Апельсиновый ликер</a> <strong>30 мл</strong></dd>
 						
-						<dd><a>Клюквенный морс</a> <strong>20 мл</strong></dd>
+						<dd><a>Клюквенный сок</a> <strong>20 мл</strong></dd>
 						
 						<dd><a>Лимонный сок</a> <strong>15 мл</strong></dd>
 						
 						<dd><a>Сахарный сироп</a> <strong>7 мл</strong></dd>
 						
-						<dd><a>Апельсин</a> <strong>1 шт</strong></dd>
+						<dd><a>Апельсин</a> <strong>1/6 шт</strong></dd>
+						
+						<dd><a>Лед</a> <strong>3 кубика</strong></dd>
 						
 					</dl>
 					<dl class="tools">
@@ -165,6 +176,8 @@
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Шейкер</a></dd>
 						
 						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Стрейнер</a></dd>
+						
+						<dd><a href="#shop-gadget" onclick="link.open(this); return false">Нож для цедры</a></dd>
 						
 					</dl>
 				</div>
@@ -491,7 +504,7 @@
 	//Панель с легендой и видео
 	$.onload( function()
 	{
-		Controller.init($('cocktail_name').innerHTML);
+		Controller.init();
 		Calculator.init();
 	})
 	
