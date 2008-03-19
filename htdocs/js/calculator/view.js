@@ -9,7 +9,8 @@ function CalculatorView() {
 	this.KEY_RIGHT = 39;
 	this.KEY_ENTER = 13;
 	this.KEY_ESC   = 27;
-	this.IGNORED_KEYS = [this.KEY_LEFT, this.KEY_RIGHT, this.KEY_ESC, this.KEY_ENTER];
+	this.KEY_TAB   = 9;
+	this.IGNORED_KEYS = [this.KEY_LEFT, this.KEY_RIGHT, this.KEY_ESC, this.KEY_ENTER, this.KEY_TAB];
 	
 	this.eventListener = null; // controller
 	this.lastInputId = "";

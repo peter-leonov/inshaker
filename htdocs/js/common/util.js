@@ -10,13 +10,19 @@ String.prototype.capitalize = function() {
 }
 
 String.prototype.beforeTag = function() {
-	if(this.match(/(.+)<.+>.*<\/.+>/)) {
-		return this.match(/(.+)<.+>.*<\/.+>/)[1]
+	var reg = new RegExp(/(.+)<.+>.*<\/.+>/);
+	if(this.match(reg)) {
+		return this.match(reg)[1]
 	} else return this;
 }
 
 String.prototype.trans = function(){
 	return BiDiTranslit(this, false, true).replace(/\+/g, "");
+}
+
+// deep copy using JSON lib ;-)
+function cloneObject(obj){
+	return JSON.parse(JSON.stringify(obj));
 }
 
 /**

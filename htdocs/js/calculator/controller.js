@@ -30,7 +30,7 @@ function CalculatorController(model, view) {
 	 * Сериализация набора данных калькулятора и сохранение его в cookie
 	 */
 	this.saveCartData = function(cartData){
-		var cd = JSON.parse(JSON.stringify(cartData));
+		var cd = cloneObject(cartData);
 		for(var i = 0; i < cd.cocktails.length; i++){
 			// cocktail -> name
 			cd.cocktails[i][0] = cd.cocktails[i][0].name;
