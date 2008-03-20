@@ -426,7 +426,7 @@ label			{ display: block; }
 /* Window, Shoping */
 .win-shop				{ display: none; }
 .win-shop .opacity,
-.win-shop				{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.win-shop				{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
 .win-shop .opacity		{ background: #fff; opacity: .75; }
 .win-shop .win			{ background: url(bg/win/win.png) no-repeat 0 100%; margin: 0 auto; top: 72px; position: relative; width: 620px; padding: 0 19px 19px; }
 .win-shop .win-bg		{ background: url(bg/win/win.png) no-repeat 0 0; position: absolute; top: -20px; width: 658px; height: 20px; left: 0; }
@@ -450,7 +450,7 @@ label			{ display: block; }
 .win-shop .content				{ font-size: 120%; float: left; width: 328px; }
 .win-shop .content small		{ font-size: 92%; }
 .win-shop .content .alert		{ color: #eb1c57; }
-.win-shop .content .composition	{ list-style: disc inside; margin: 23px 0 0 11px; min-height: 7em; line-height: 1.5; }
+.win-shop .content .composition	{ list-style: disc inside; margin: 23px 0 0 11px; min-height: 5.5em; line-height: 1.5; }
 .win-shop .content .loved		{ height: 82px; margin: 19px 25px 0 0; }
 .win-shop .content .desc		{ clear: both; padding: 8px 28px 21px 0; }
 .win-shop .content .need		{ background: #f7f7f7 url(bg/cocktail/info.png) no-repeat 0 0; width: 160px; height: 47px; padding: 12px 30px 0 56px;  }/*отцентровать по вертикале для ie*/
@@ -465,7 +465,7 @@ label			{ display: block; }
 .win-shop .content .sum button	{ margin: 6px 28px 0 0; }
 
 
-.win-shop .b-alternative		{ background: #0d0d0d url(bg/win/alt.png) repeat-x 0 100%; margin-top: 7px; position: relative; }
+.win-shop .b-alternative		{ display: none; background: #0d0d0d url(bg/win/alt.png) repeat-x 0 100%; margin-top: 7px; position: relative; } // ForFuture
 .win-shop .b-alternative .next,
 .win-shop .b-alternative .prev	{ background-color: #fff; position: absolute; top: 41px; left: 20px; }
 .win-shop .b-alternative .next	{ left: auto; right: 20px; }
@@ -657,14 +657,14 @@ button.bt-pick-up-utensils	{ background-position: 0 -329px; height: 29px; width:
 button.bt-all-dishes		{ background-position: 0 -358px; height: 29px; width: 116px; }
 button.bt-korol-vote		{ background-position: 0 -387px; height: 31px; width: 112px; }/*todo*/
 
-
-button.bt-del		{ background: url(button/red-buttons.gif) no-repeat 0 -31px; width: 16px; height: 20px; cursor: pointer;}
+button.bt-less,
+button.bt-del		{ background: url(button/red-buttons.gif) no-repeat; cursor: pointer;}
 
 button.bt-print-how,
 button.bt-close-how,
 button.bt-want-slap,
 button.bt-love-her,
-button.bt-info,
+button.bt-more,
 button.bt-send,
 button.bt-close-legend	{ background: url(button/n_green-buttons.png) no-repeat 0 -36px; width: 155px; height: 36px; cursor: pointer;}
 
@@ -672,8 +672,10 @@ button.bt-close-how		{ background-position: 0 -144px; height: 36px; width: 145px
 button.bt-want-slap		{ background-position: 0 -72px; height: 36px; width: 155px; }
 button.bt-love-her		{ display: none; background-position: 0 -108px; height: 36px; width: 118px; } /* InFuture */
 button.bt-print-how		{ background-position: 0 -180px; height: 36px; width: 147px; }
-button.bt-info			{ background-position: 0 -216px; height: 19px; width: 16px; }
+button.bt-more			{ background-position: 0 -216px; height: 19px; width: 16px; }
+button.bt-less			{ background-position: -17px -31px; height: 19px; width: 16px; }
 button.bt-send			{ background-position: 0 -236px; height: 38px; width: 110px; }
+button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 
 #mybar button.bt-enter		{ background-position: 0 -194px; height: 28px; width: 87px; }
 #mybar button.bt-new-bar	{ background-position: 0 -222px; width: 87px; }

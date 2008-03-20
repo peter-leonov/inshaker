@@ -146,7 +146,7 @@ class Barman
           to_big     = Config::INGREDS_DIR + ingredient.trans + "_big.png"
           to_small   = Config::INGREDS_DIR + ingredient.trans + "_small.png"
 
-          FileUtils.cp_r(from_big, to_big, opt) unless !File.exists?(from_big)
+          FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
           FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
         else # brand-name goods
           from_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
@@ -159,9 +159,20 @@ class Barman
           to_banner = Config::BANNERS_DIR + good[:brand].trans + ".png"
           
           FileUtils.cp_r(from_banner, to_banner, opt) unless !File.exists?(from_banner)
-          FileUtils.cp_r(from_big, to_big, opt) unless !File.exists?(from_big)
-          FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
-          # TODO: volumes for brand-name goods
+          FileUtils.cp_r(from_big, to_big, opt)       unless !File.exists?(from_big)
+          FileUtils.cp_r(from_small, to_small, opt)   unless !File.exists?(from_small)
+          
+          good[:volumes].each do |vol_arr|
+            vol_name   = vol_arr[0].to_s.gsub(".", "_")
+            from_big   = from_dir + vol_name + "_big.png"
+            from_small = from_dir + vol_name + "_small.png"
+            
+            to_big   = Config::VOLUMES_DIR + good[:brand].trans + "_" + vol_name + "_big.png"
+            to_small = Config::VOLUMES_DIR + good[:brand].trans + "_" + vol_name + "_small.png"
+            
+            FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
+            FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+          end
         end
       end
     end

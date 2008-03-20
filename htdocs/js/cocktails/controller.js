@@ -79,6 +79,7 @@ var Controller = {
 			if   (!self.riJustInited) self.onPageChanged(num);
 			else { self.riJustInited = false; }
 		}
+		link = new Link();
 	},
 	
 	onPageChanged: function(num){

@@ -2,6 +2,8 @@ function CalculatorModel(view){
 	this.dataListener = view;
 	this.cartData = {};
 	
+	this.optimalGoods = {};
+	
 	this.initialize = function(cartData) {
 		// десериализация полученного от контроллера набора
 		if(cartData) {
@@ -17,6 +19,7 @@ function CalculatorModel(view){
 			this.cartData.cocktails = [];
 			this.cartData.goods = {};
 		}
+		this.optimalGoods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 		this.dataListener.modelChanged(this.cartData, true);
 	};
 	
@@ -27,7 +30,9 @@ function CalculatorModel(view){
 			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktails[name]) found = true;
 			if(!found){
 				this.cartData.cocktails.push([cocktails[name], 1]);
+				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListener.modelChanged(this.cartData);
 			}
 		}
@@ -38,7 +43,9 @@ function CalculatorModel(view){
 		for(var i = 0; i < cs.length; i++){
 			if(cs[i][0] == cocktail){
 				this.cartData.cocktails.splice(i,1);
+				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListener.modelChanged(this.cartData);
 				break;
 			}
@@ -46,7 +53,7 @@ function CalculatorModel(view){
 	};
 	
 	this.goodQuantityChanged = function(name, bottleId, quantity){
-		var diff = this.cartData.goods[name].bottles[bottleId].count - quantity;
+		var diff = quantity - this.optimalGoods[name].bottles[bottleId].count;
 		this.cartData.goods[name].bottles[bottleId].count = quantity;
 		this.cartData.goods[name].bottles[bottleId].diff = diff; // количество было изменено
 		this.dataListener.modelChanged(this.cartData);
@@ -57,7 +64,9 @@ function CalculatorModel(view){
 		for(var i = 0; i < cs.length; i++){
 			if((cs[i][0] == cocktail) && (cs[i][1] != quantity)) {
 				this.cartData.cocktails[i][1] = quantity;
+				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListener.modelChanged(this.cartData);
 				break;
 			}

@@ -5,6 +5,8 @@ function CalculatorView() {
 	this.CLASS_ADD_BTN = '.bt-want-slap';
 	this.NAME_ELEM     = 'cocktail_name';
 	
+	this.PATH_VOLUMES = '/i/merchandise/volumes/';
+	
 	this.KEY_LEFT  = 37;
 	this.KEY_RIGHT = 39;
 	this.KEY_ENTER = 13;
@@ -99,8 +101,7 @@ function CalculatorView() {
 	
 	this._createIngredientElement = function(item, bottle, name){
 		var li = document.createElement("li");
-		var a  = document.createElement("a");
-		a.href = "#shop-cocktail";		
+		var a  = document.createElement("a");		
 		a.innerHTML = item.good.brand || name;
 		var b  = document.createElement("b");
 		b.innerHTML = bottle.vol[0] + " " + this._tryPlural(bottle.vol[0], item.good.unit);
@@ -116,9 +117,9 @@ function CalculatorView() {
 		label.appendChild(input);
 		label.appendChild(txt);
 		li.appendChild(label);
-		if(bottle.diff && bottle.diff > 0) {
+		if(bottle.diff) {
 			var button = document.createElement("button");
-			button.className = "bt-info";
+			button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
 			button.title = "Инфо";
 			button.innerHTML = "i";
 			li.appendChild(button);
@@ -133,11 +134,55 @@ function CalculatorView() {
 		}, false);
 		
 		a.addEventListener('mousedown', function(e){
-			link.open(this); 
+			self.preparePopup(item, name);
+			link.open("shop-cocktail"); 
 			return false;
 		}, false);
 		
 		return li;
+	};
+	
+	this.preparePopup = function(item, name){
+		$('good_name').innerHTML = item.good.brand;
+		$('good_brand').innerHTML = item.good.brand;
+		$('good_ingredient').innerHTML = name;
+		$('good_picture').src = this._getGoodPicSrc(item.good); 
+		$('good_needed_vol').innerHTML = item.dose + " " +item.good.unit;
+		
+		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
+		var summ = 0;
+		for(var i = 0; i < item.good.volumes.length; i++){
+			var bottleId = item.good.volumes[i][0];
+			
+			var dl         = document.createElement("dl");
+			var dt         = document.createElement("dt");
+			var input      = document.createElement("input");
+			var a          = document.createElement("a");
+			var dd         = document.createElement("dd");
+			var strong     = document.createElement("strong");
+			var inputQuant = document.createElement("input");
+
+			input.type = "checkbox";
+			if(item.bottles[bottleId])   input.checked = true;
+			if(!item.good.volumes[i][2]) input.disabled = "disabled";
+			
+			a.innerHTML      = item.good.volumes[i][0] + " " + item.good.unit;
+			strong.innerHTML = item.good.volumes[i][1] + " р.";
+			
+			inputQuant.type  = "text";
+			inputQuant.value = item.bottles[bottleId] ? item.bottles[bottleId].count : 0;
+			if(inputQuant.value > 0) summ += inputQuant.value * item.good.volumes[i][1];
+
+			dl.appendChild(dt);
+			dt.appendChild(input);
+			dt.appendChild(a);
+			dl.appendChild(dd);
+			dd.appendChild(strong);
+			dd.appendChild(inputQuant);
+			dd.appendChild(document.createTextNode(" шт."));
+			volsNode.appendChild(dl);
+		}
+		$('good_summ').innerHTML = "Итого: " + summ + " р."
 	};
 	
 	this.checkKey = function(keyCode){
@@ -155,4 +200,7 @@ function CalculatorView() {
 		return unit;
 	};
 	
+	this._getGoodPicSrc = function(good){
+		return this.PATH_VOLUMES + good.brand.trans() + "_" + good.volumes[0][0].toString().replace(".", "_") + "_big.png";
+	}
 };

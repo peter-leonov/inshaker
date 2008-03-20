@@ -264,16 +264,16 @@
 		
 		<div class="main b"><div class="wrapper">
 			<a onclick="link.close()" class="close">x</a>
-			<h3>Хеннэсси Икс О (Hennessy X.O.)</h3>
+			<h3 id="good_name"></h3>
 			
 			<div class="gallery gallery-nav">
 				<p>
 					<a class="zoom">
-						<img src="/i/food/m/1.jpg" width="118" height="195" alt="1"/>
+						<img id="good_picture" src="" alt="1"/>
 						<b><!-- --></b><span>Рассмотреть поближе</span>
 					</a>
 				</p>
-				<ul>
+				<ul id="good_volumes_previews">
 					<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
 					<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
 					<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
@@ -291,23 +291,23 @@
 					</dl>
 				</div>
 				<ul class="composition">
-					<li>Ром светлый</li>
-					<li>Марка: <a>Bacardi</a></li>
-					<li>Крепость: крепкий (40%)</li>
+					<li id="good_ingredient">Ром светлый</li>
+					<li>Марка: <a id="good_brand">Bacardi</a></li>
+					<!-- <li>Крепость: крепкий (40%)</li> -->
 				</ul>
-				<p class="desc">Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров и журналистов, создателей научных заявок и отчетов.</p>
-				<div class="need dots">
-					<dl><dt>Необходимо</dt><dd>4,5 л</dd></dl>
-					<dl class="alert"><dt>Сейчас не хватает</dt><dd>1 л</dd></dl>
+				<p class="desc">Этот ингредиент очень важен для данного коктейля. Его вкусовые особенности и консистенция напрямую влияют на восприятие готового напитка.</p>
+				<div class="need dots" id="good_needed">
+					<dl><dt>Необходимо</dt><dd id="good_needed_vol">4,5 л</dd></dl>
+					<dl class="alert" id="good_needed_label"><dt id="good_needed_text">Сейчас не хватает</dt><dd id="good_needed_diff">1 л</dd></dl>
 				</div>
-				<form class="dots">
+				<form class="dots" id="good_volumes">
 					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 1 л</a></dt><dd><strong>1000 р.</strong><input type="text" value="0"/> шт.</dd></dl>
 					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 0,7 л</a></dt><dd><strong>890 р.</strong><input type="text" value="0"/> шт.</dd></dl>
 					<dl><dt><input type="checkbox" name="b1" disabled="disabled"/> <a>Банка 0,33 л</a></dt><dd><strong>200 р.</strong><input type="text" value="0"/> шт.</dd></dl>
 				</form>
 				<div class="sum">
 					<p>
-						<strong class="alert">Итого: 4450 р.</strong>
+						<strong class="alert" id="good_summ">Итого: 4450 р.</strong>
 						<small>Доставка: 1-2 дня</small>
 					</p>
 					<button class="bt-add-in-account">Добавить в счет</button>
