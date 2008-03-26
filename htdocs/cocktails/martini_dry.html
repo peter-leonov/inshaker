@@ -111,11 +111,11 @@
 								
 								<li>— Положи в шейкер 3 кубика льда</li>
 								
-								<li>— Налей в него джин 80 мл и сухой вермут 20 мл</li>
+								<li>— Налей в него джин 60 мл и сухой вермут 15 мл</li>
 								
-								<li>— Хорошенько взболтай содержимое</li>
+								<li>— Хорошенько взболтай содержимое и перелей</li>
 								
-								<li>— И перелей все, используя стрейнер, в коктейльный бокал</li>
+								<li>— через стрейнер в охлажденный коктейльный бокал</li>
 								
 								<li>— Добавь зеленую оливку для вкуса</li>
 								
@@ -147,9 +147,9 @@
 					<dl class="ingridients">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>80 мл</strong></dd>
+						<dd><a>Джин</a> <strong>60 мл</strong></dd>
 						
-						<dd><a>Сухой вермут</a> <strong>20 мл</strong></dd>
+						<dd><a>Сухой вермут</a> <strong>15 мл</strong></dd>
 						
 						<dd><a>Оливки</a> <strong>1 шт</strong></dd>
 						
@@ -225,19 +225,19 @@
 			&#160;
 		</h2>
 		<dl class="on">
-			<dt>Хочу приготовить <span id="cart_sum">23 570 р.</span></dt>
+			<dt>Хочу приготовить</dt>
 			<dd>
 				<ul id="cart_cocktails">
 
 				</ul>
-				<strong>Ингредиенты:</strong>
+				<strong>Вам понадобятся:</strong>
 				<ul class="money" id="cart_ingredients">
 
 				</ul>
 			</dd>
 		</dl>
 		
-		<dl style="display:none"><dt>Ингредиенты <span>0 р.</span></dt></dl>
+		<!--<dl><dt>Ингредиенты <span>0 р.</span></dt></dl>-->
 		<dl class="to-print">
 			<dt>Штучки <span>4 320 р.</span></dt>
 			<ul class="money">
@@ -247,14 +247,14 @@
 				<li><a href="#shop-cocktail">Трубочки</a><b>1 кубик</b><span class="to-print"><span><!-- --></span></span></li>
 			</ul>
 		</dl>
-		<dl class="parties"><dt>Вечеринки <span>15 000 р.</span></dt></dl>
+		<!--<dl><dt>Штучки <span>0 р.</span></dt></dl>-->
 		
 		<div class="total">
-			<p class="money">45 000 p. <button class="bt-deliver">Доставить</button></p>
+			<p class="money"><span id="cart_sum">23 570 р.</span><!--<button class="bt-deliver">Доставить</button>--></p>
 			
 			<ul>			
 				<li><a>Распечатать план</a> »</li>
-				<li><a>Оставить на потом</a> »</li>
+				<!--<li><a>Оставить на потом</a> »</li>-->
 			</ul>
 		</div>
 	</div>
@@ -290,11 +290,11 @@
 						<b><!-- --></b><span>Рассмотреть поближе</span>
 					</a>
 				</p>
-				<ul id="good_volumes_previews">
+				<!--<ul id="good_volumes_previews">
 					<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
 					<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
 					<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
-				</ul>
+				</ul>-->
 			</div>
 			
 			<div class="content">
@@ -309,13 +309,13 @@
 				</div>
 				<ul class="composition">
 					<li id="good_ingredient">Ром светлый</li>
-					<li>Марка: <a id="good_brand">Bacardi</a></li>
+					<li>Марка: <a id="good_mark">Bacardi</a></li>
 					<!-- <li>Крепость: крепкий (40%)</li> -->
 				</ul>
-				<p class="desc">Этот ингредиент очень важен для данного коктейля. Его вкусовые особенности и консистенция напрямую влияют на восприятие готового напитка.</p>
-				<div class="need dots" id="good_needed">
+				<p class="desc" id="good_desc">Этот ингредиент очень важен для данного коктейля. Его вкусовые особенности и консистенция напрямую влияют на восприятие готового напитка.</p>
+				<div class="dots" id="good_needed">
 					<dl><dt>Необходимо</dt><dd id="good_needed_vol">4,5 л</dd></dl>
-					<dl class="alert" id="good_needed_label"><dt id="good_needed_text">Сейчас не хватает</dt><dd id="good_needed_diff">1 л</dd></dl>
+					<dl><dt>Сейчас в счете</dt><dd id="good_needed_have">1 л</dd></dl>
 				</div>
 				<form class="dots" id="good_volumes">
 					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 1 л</a></dt><dd><strong>1000 р.</strong><input type="text" value="0"/> шт.</dd></dl>
@@ -324,10 +324,10 @@
 				</form>
 				<div class="sum">
 					<p>
-						<strong class="alert" id="good_summ">Итого: 4450 р.</strong>
-						<small>Доставка: 1-2 дня</small>
+						<strong class="alert" id="good_summ">Итого: <i>4450 р.</i></strong>
+						<!--<small>Доставка: 1-2 дня</small>-->
 					</p>
-					<button class="bt-add-in-account">Добавить в счет</button>
+					<button class="bt-add-in-account" onclick="link.close()">Добавить в счет</button>
 				</div>
 			</div>
 		</div></div>

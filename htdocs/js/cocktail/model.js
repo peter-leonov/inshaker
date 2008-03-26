@@ -23,10 +23,10 @@ var Model = {
 		
 		for(var i = 0; i < ingreds.length; i++){
 			var items = goods[ingreds[i][0]];
-			if(items && items[0].brand != "" && this._doesntHave(recs, items[0].brand)){
+			if(items && items[0].mark != "" && this._doesntHave(recs, items[0].mark)){
 				var rec = {};
-				rec.brand  = items[0].brand;
-				rec.banner = items[0].brand.trans() + ".png";
+				rec.mark  = items[0].mark;
+				rec.banner = items[0].mark.trans() + ".png";
 				recs.push(rec);
 			}
 		}
@@ -39,7 +39,7 @@ var Model = {
 	 */
 	_doesntHave: function(recs, name){
 		for(var i = 0; i < recs.length; i++){
-			if(recs[i].brand.split(" ")[0] == name.split(" ")[0]) return false;
+			if(recs[i].mark == name) return false;
 		}
 		return true;
 	},

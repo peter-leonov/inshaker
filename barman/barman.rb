@@ -4,15 +4,12 @@ require 'unicode'
 require 'fileutils'
 require 'erb'
 require 'csv'
-
 require 'string_util'
+require 'entities'
 $KCODE = 'u'
 
-require 'entities'
 
 module Config
-  DEBUG = true
-  
   # Paths are relative to the script's location
   BASE_DIR           = "base/"
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
@@ -40,7 +37,9 @@ end
 
 class Barman
 
-  def initialize
+  def initialize(debug)
+    @debug = debug
+    
     @cocktails   = {}
     @tags        = []
     @ingredients = []
@@ -138,10 +137,12 @@ class Barman
   def flush_goods
     opt = {:remove_destination => true}
     @goods.each do |ingredient, arr|
-      arr.each do |good|
+      arr.each do |good|        
         if good[:brand].empty? # unbranded
-          from_big   = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/i_big.png"
-          from_small = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/i_small.png"
+          unbranded_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/"
+
+          from_big   = unbranded_dir + "i_big.png"
+          from_small = unbranded_dir + "i_small.png"
           
           to_big     = Config::INGREDS_DIR + ingredient.trans + "_big.png"
           to_small   = Config::INGREDS_DIR + ingredient.trans + "_small.png"
@@ -150,13 +151,15 @@ class Barman
           FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
         else # brand-name goods
           from_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
+          
           from_banner = from_dir + "banner.png"
           from_big    = from_dir + "i_big.png"
           from_small  = from_dir + "i_small.png"
           
+          puts "..#{ingredient}" unless !@debug
           to_big    = Config::INGREDS_DIR + ingredient.trans + "_big.png"
           to_small  = Config::INGREDS_DIR + ingredient.trans + "_small.png"  
-          to_banner = Config::BANNERS_DIR + good[:brand].trans + ".png"
+          to_banner = Config::BANNERS_DIR + good[:mark].trans + ".png"
           
           FileUtils.cp_r(from_banner, to_banner, opt) unless !File.exists?(from_banner)
           FileUtils.cp_r(from_big, to_big, opt)       unless !File.exists?(from_big)
@@ -196,7 +199,7 @@ private
   
   def parse_title(title)
     @cocktail[:name], @cocktail[:name_eng] = title.split("; ")
-    if Config::DEBUG then puts "..#{@cocktail[:name_eng]}" end
+    if @debug then puts "..#{@cocktail[:name_eng]}" end
   end
   
   def parse_teaser(teaser)
@@ -269,39 +272,51 @@ private
         good = {}
         ingredient = line[0]
         good[:brand] = line[1].nil? ? "" : line[1]
-        good[:unit] = line[2]
+        good[:mark]  = line[2].nil? ? "" : line[2]
+        good[:unit] = line[3]
         good[:volumes] = []
+        good[:desc] = get_desc(ingredient, good[:brand])
         goods_arr << good
         @goods[ingredient] = goods_arr
       elsif line[0].nil? and line[1].nil? and line[2].nil? # volumes
-        vol = line[3].nil? ? "" : line[3].zpt.to_f
-        price = line[4].to_f
-        avail = (line[5] == "есть") ? true : false
+        vol = line[4].nil? ? "" : line[4].zpt.to_f
+        price = line[5].to_f
+        avail = (line[6] == "есть") ? true : false
         good[:volumes] << [vol, price, avail]
       elsif !line[1].nil? # drink of the same ingredient
         good = {}
         good[:brand] = line[1].nil? ? "" : line[1]
-        good[:unit] = line[2]
+        good[:mark]  = line[2].nil? ? "" : line[2]
+        good[:unit] = line[3]
         good[:volumes] = []
+        good[:desc] = get_desc(ingredient, good[:brand])
         goods_arr << good
       end
     end
   end
+  
+  def get_desc(ingredient, brand)
+    dir  = Dir.pwd + "/" + ingredient + "/"
+    dir += (brand.empty?) ? "" : brand + "/"
+    return File.exists?(dir + "about.txt") ? File.open(dir + "about.txt").read : ""
+  end
+  
 end
 
 def go
-  joe = Barman.new
-  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" unless !Config::DEBUG
-  joe.prepare
-  puts "Flushing JSON to #{Config::DB_JS_DIR}"          unless !Config::DEBUG
-  joe.flush_json
-  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" unless !Config::DEBUG
-  joe.flush_html
-  puts "Flushing images to #{Config::IMAGES_DIR}"       unless !Config::DEBUG
-  joe.flush_images
-  puts "Flushing videos to #{Config::VIDEOS_DIR}"       unless !Config::DEBUG
-  joe.flush_videos
-  puts "Flushing goods to #{Config::MERCH_ROOT}"        unless !Config::DEBUG
+  debug = !(ARGV[0] == "-silent")
+  joe = Barman.new(debug)
+  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
+  joe.prepare                                           
+  puts "Flushing JSON to #{Config::DB_JS_DIR}"          
+  joe.flush_json                                        
+  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
+  joe.flush_html                                        
+  puts "Flushing images to #{Config::IMAGES_DIR}"       
+  joe.flush_images                                      
+  puts "Flushing videos to #{Config::VIDEOS_DIR}"       
+  joe.flush_videos                                      
+  puts "Flushing goods to #{Config::MERCH_ROOT}"        
   joe.flush_goods
 end
 

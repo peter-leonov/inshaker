@@ -126,7 +126,7 @@ var Controller = {
 			div.id = "rec_"+(i+1);
 			var img = document.createElement("img");
 			img.src = this.PATH_MERCH + "banners/" + recs[i].banner;
-			img.alt = recs[i].brand;
+			img.alt = recs[i].mark;
 			div.appendChild(img);
 			parent.appendChild(div);
 		}
@@ -161,7 +161,7 @@ var Controller = {
 		$(this.ID_ING).RollingImages.goInit();
 	},
 	
-	_renderIngPage: function(resultSet, pageNum){
+	_renderIngPage: function(resultSet, pageNum) {
 		var parent = $(this.ID_ING_SUR);
 		var div = document.createElement("div");
 		div.className = "point";

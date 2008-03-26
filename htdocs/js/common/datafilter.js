@@ -31,7 +31,7 @@ var DataFilter = {
 			var dose = res[ingred].dose;
 			var vols = res[ingred].good.volumes;
 			while(dose > 0){
-				var cv = this._findClosestVol(vols, dose);
+				var cv = this.findClosestVol(vols, dose);
 				var id = cv[0];
 				if(res[ingred].bottles[id])	res[ingred].bottles[id].count++;
 				else {
@@ -40,6 +40,18 @@ var DataFilter = {
 					res[ingred].bottles[id].vol = cv; 
 				}
 				dose -= cv[0];
+			}
+		}
+		return res;
+	},
+	
+	bottleByIngredientAndVolume: function(goods, ingred, vol){
+		var res = {};
+		var volumes = goods[ingred][0].volumes;
+		for(var i = 0; i < volumes.length; i++){
+			if(volumes[i][0] == vol) {
+				res.vol = volumes[i];
+				break;
 			}
 		}
 		return res;
@@ -179,7 +191,7 @@ var DataFilter = {
 	 * @param dose объем, под который ищем емкость
 	 * @return volume элемент массива объемов
 	 */
-	_findClosestVol: function(volumes, dose){
+	findClosestVol: function(volumes, dose){
 		var closest_idx = 0;
 		for(var i = 0; i < volumes.length; i++) {
 			if((volumes[i][0] > volumes[closest_idx][0]) && volumes[i][2]) closest_idx = i;

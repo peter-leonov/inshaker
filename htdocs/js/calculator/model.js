@@ -29,7 +29,7 @@ function CalculatorModel(view){
 			var found = false;
 			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktails[name]) found = true;
 			if(!found){
-				this.cartData.cocktails.push([cocktails[name], 1]);
+				this.cartData.cocktails.push([cocktails[name], 10]); // сразу 10
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
@@ -53,9 +53,33 @@ function CalculatorModel(view){
 	};
 	
 	this.goodQuantityChanged = function(name, bottleId, quantity){
-		var diff = quantity - this.optimalGoods[name].bottles[bottleId].count;
-		this.cartData.goods[name].bottles[bottleId].count = quantity;
-		this.cartData.goods[name].bottles[bottleId].diff = diff; // количество было изменено
+		var bottle = null;
+		if(this.cartData.goods[name].bottles[bottleId]){
+			bottle = this.cartData.goods[name].bottles[bottleId];
+		} else { // дополнительная бутылка
+			bottle = DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
+			this.cartData.goods[name].bottles[bottleId] = bottle;
+		}
+		if(quantity == 0) {
+			delete this.cartData.goods[name].bottles[bottleId];
+		} else bottle.count = quantity;
+		
+		var bottles = this.cartData.goods[name].bottles;
+		var sum_vol = 0;
+		var vol_arr = []; // массив всех объемов
+		for(id in bottles){
+			sum_vol += bottles[id].vol[0] * bottles[id].count;
+			vol_arr.push(bottles[id].vol);
+			delete bottles[id].diff;
+		}
+		var diff = sum_vol - this.cartData.goods[name].dose;
+		// кому бы поставить значок "больше" или меньше?
+		// тому, чей объем наиболее близок к diff
+		var vol = DataFilter.findClosestVol(vol_arr, Math.abs(diff));
+		var target = this.cartData.goods[name].bottles[vol[0]];
+		// в случае небольшого перебора (до 1 целой емкости) знак ставить не надо
+		if(diff < 0 || Math.abs(diff) >= target.vol[0]) target.diff = diff; 
+
 		this.dataListener.modelChanged(this.cartData);
 	};
 	

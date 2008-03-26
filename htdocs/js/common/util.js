@@ -1,4 +1,13 @@
 /**
+ * Math enhancements
+ */
+Math._round = Math.round;
+Math.round = function($num, $precision) {
+	if (isNaN($precision)) $precision = 0;
+ 	return Math._round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
+};
+
+/**
  * String enhancements
  */
 String.prototype.htmlName = function () {
@@ -18,6 +27,11 @@ String.prototype.beforeTag = function() {
 
 String.prototype.trans = function(){
 	return BiDiTranslit(this, false, true).replace(/\+/g, "");
+}
+
+Number.prototype.toFloatString = function(){
+	if(this.toString() != parseInt(this)) return this.toString();
+	return this + ".0";
 }
 
 // deep copy using JSON lib ;-)
