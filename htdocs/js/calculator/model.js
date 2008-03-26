@@ -60,7 +60,8 @@ function CalculatorModel(view){
 			bottle = DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
-		if(quantity == 0) {
+		// Если задано кол-во 0 и бутылка не последняя, то удаляем
+		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
 			delete this.cartData.goods[name].bottles[bottleId];
 		} else bottle.count = quantity;
 		
@@ -77,11 +78,16 @@ function CalculatorModel(view){
 		// тому, чей объем наиболее близок к diff
 		var vol = DataFilter.findClosestVol(vol_arr, Math.abs(diff));
 		var target = this.cartData.goods[name].bottles[vol[0]];
-		// в случае небольшого перебора (до 1 целой емкости) знак ставить не надо
+		// в случае небольшого превышения (до 1 целой емкости) знак ставить не надо
 		if(diff < 0 || Math.abs(diff) >= target.vol[0]) target.diff = diff; 
 
 		this.dataListener.modelChanged(this.cartData);
 	};
+	
+	this.goodItemChanged = function(item, name){
+		this.cartData.goods[name] = item;
+		this.dataListener.modelChanged(this.cartData);
+	}
 	
 	this.cocktailQuantityChanged = function(cocktail, quantity){
 		var cs = this.cartData.cocktails;

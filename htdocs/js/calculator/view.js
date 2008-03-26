@@ -21,10 +21,22 @@ function CalculatorView() {
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
 	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
+	this.itemFromPopup = [];
 	
 	var self = this;
 	if(this.addBtn) this.addBtn.addEventListener('mousedown', function(e){
 		self.eventListener.addCocktail(self.cocktailName);
+	}, false);
+	
+	$('good_cancel').addEventListener('mousedown', function(e){
+		link.close();
+	}, false);
+	
+	$('good_accept').addEventListener('mousedown', function(e){
+		var item = self.itemFromPopup[0];
+		var name = self.itemFromPopup[1];
+		self.eventListener.goodItemChanged(item, name);
+		link.close();
 	}, false);
 	
 	/**
@@ -154,6 +166,7 @@ function CalculatorView() {
 	};
 	
 	this.renderPopup = function(item, name){
+		this.itemFromPopup = [cloneObject(item), name];
 		$('good_name').innerHTML = item.good.brand;
 		$('good_mark').innerHTML = item.good.mark;
 		$('good_desc').innerHTML = item.good.desc;
@@ -192,8 +205,10 @@ function CalculatorView() {
 				
 				inputQuant.addEventListener('keyup', function(iname, id, fieldId){ return function(e){
 					if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-						self.lastInputId = fieldId;
-						self.eventListener.goodQuantityChanged(iname, id, parseInt(this.value));
+						var cloneItem = cloneObject(item);
+						cloneItem.bottles[id].count = this.value;
+						self.renderPopup(cloneItem, name);
+						$(fieldId).focus();
 					}
 				}}(name, bottleId, inputQuant.id), false);
             	

@@ -26,6 +26,10 @@ function CalculatorController(model, view) {
 		this.eventListener.goodQuantityChanged(name, bottleId, quantity);
 	}
 	
+	this.goodItemChanged = function(item, name){
+		this.eventListener.goodItemChanged(item, name);
+	}
+	
 	/**
 	 * Сериализация набора данных калькулятора и сохранение его в cookie
 	 */
