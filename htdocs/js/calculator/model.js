@@ -60,11 +60,20 @@ function CalculatorModel(view){
 			bottle = DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
-		// Если задано кол-во 0 и бутылка не последняя, то удаляем
 		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
 			delete this.cartData.goods[name].bottles[bottleId];
 		} else bottle.count = quantity;
-		
+		this.countDiffs(name);
+		this.dataListener.modelChanged(this.cartData);
+	};
+	
+	/**
+	 * Высчитываем недостаточность или избыточность объема напитка, 
+	 * отвечающего данному ингредиенту и проставляем значок "больше" или "меньше"
+	 * той бутылке, чей объем лучше покрывает разницу
+	 * @param name - название ингредиента
+	 */
+	this.countDiffs = function(name) {
 		var bottles = this.cartData.goods[name].bottles;
 		var sum_vol = 0;
 		var vol_arr = []; // массив всех объемов
@@ -74,21 +83,37 @@ function CalculatorModel(view){
 			delete bottles[id].diff;
 		}
 		var diff = sum_vol - this.cartData.goods[name].dose;
-		// кому бы поставить значок "больше" или меньше?
-		// тому, чей объем наиболее близок к diff
 		var vol = DataFilter.findClosestVol(vol_arr, Math.abs(diff));
 		var target = this.cartData.goods[name].bottles[vol[0]];
-		// в случае небольшого превышения (до 1 целой емкости) знак ставить не надо
-		if(diff < 0 || Math.abs(diff) >= target.vol[0]) target.diff = diff; 
-
+		if(diff < 0 || Math.abs(diff) >= target.vol[0]) target.diff = diff;
+	};
+	
+	/**
+	 * Полностью меняются данные о напитке данного ингредиента
+	 * (например, сразу о нескольких бутылках)
+	 * @param item - элемент хэша cartData.goods с ключом name
+	 * @param name - название ингредиента, так же - ключ в хэше cartData.goods
+	 */
+	this.goodItemChanged = function(item, name){
+		for(id in item.bottles){
+			if(item.bottles[id].count == 0 && (lengthOf(item.bottles) > 1)){
+				delete item.bottles[id];
+			}
+		}
+		this.cartData.goods[name] = item;
+		this.countDiffs(name);
 		this.dataListener.modelChanged(this.cartData);
 	};
 	
-	this.goodItemChanged = function(item, name){
-		this.cartData.goods[name] = item;
-		this.dataListener.modelChanged(this.cartData);
-	}
+	this.getNewBottle = function(name, bottleId){
+		return DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
+	};
 	
+	/**
+	 * Поменялось количество коктейля в калькуляторе
+	 * @param cocktail - коктейль, элемент глобального хэша коктейлей
+	 * @param quantity - новое количество
+	 */
 	this.cocktailQuantityChanged = function(cocktail, quantity){
 		var cs = this.cartData.cocktails;
 		for(var i = 0; i < cs.length; i++){
@@ -101,5 +126,5 @@ function CalculatorModel(view){
 				break;
 			}
 		}
-	}
+	};
 };

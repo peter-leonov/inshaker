@@ -191,7 +191,7 @@ function CalculatorView() {
 				var inputQuant = document.createElement("input");
             	
 				input.type = "checkbox";
-				if(item.bottles[bottleId])   input.checked = true;
+				if(item.bottles[bottleId] && item.bottles[bottleId].count > 0) input.checked = true;
 				if(!item.good.volumes[i][2]) input.disabled = "disabled";
 				
 				a.innerHTML      = item.good.volumes[i][0] + " " + this._tryPlural(item.good.volumes[i][0], item.good.unit);
@@ -206,7 +206,13 @@ function CalculatorView() {
 				inputQuant.addEventListener('keyup', function(iname, id, fieldId){ return function(e){
 					if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 						var cloneItem = cloneObject(item);
-						cloneItem.bottles[id].count = this.value;
+						if(cloneItem.bottles[id]) {
+							cloneItem.bottles[id].count = this.value;
+						} else { // новая бутылка
+							var bottle = self.eventListener.needNewBottle(iname, id);
+							bottle.count = this.value;
+							cloneItem.bottles[id] = bottle;
+						}
 						self.renderPopup(cloneItem, name);
 						$(fieldId).focus();
 					}

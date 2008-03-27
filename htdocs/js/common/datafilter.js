@@ -1,4 +1,6 @@
 var DataFilter = {
+	good_paths: [],
+	
 	/**
 	 * Подбор товаров и их емкостей под коктейли
 	 * @param goods - хэш товаров
@@ -26,23 +28,63 @@ var DataFilter = {
 				}
 			}
 		}
+		
 		// предлагаем бутылки
 		for(ingred in res){
 			var dose = res[ingred].dose;
 			var vols = res[ingred].good.volumes;
-			while(dose > 0){
-				var cv = this.findClosestVol(vols, dose);
-				var id = cv[0];
-				if(res[ingred].bottles[id])	res[ingred].bottles[id].count++;
-				else {
-					res[ingred].bottles[id] = {};
-					res[ingred].bottles[id].count = 1;
-					res[ingred].bottles[id].vol = cv; 
-				}
-				dose -= cv[0];
+			this.good_paths = [];
+			// console.time('rec '+ingred);
+			for(var i = 0; i < vols.length; i++){
+				this.walk([vols[i]], vols[i][0], vols, dose);
 			}
+			// console.timeEnd('rec '+ingred);
+			// console.time('cheap '+ingred);
+			res[ingred].bottles = this.getCheapestSet(this.good_paths);
+			// console.timeEnd('cheap '+ingred);
 		}
 		return res;
+	},
+	
+	getCheapestSet: function(paths){
+		var largestSumm = 0;
+		for(var i = 0; i < paths.length; i++){
+			var currSumm = 0;
+			for(var j = 0; j < paths[i].length; j++) currSumm += paths[i][j][1];
+			if(currSumm > largestSumm) largestSumm = currSumm;
+		}
+		var cheapestSumm = largestSumm;
+		var cheapestIdx = -1;
+		for(var i = 0; i < paths.length; i++){
+			var currSumm = 0;
+			for(var j = 0; j < paths[i].length; j++) currSumm += paths[i][j][1];
+			if(currSumm <= cheapestSumm) {
+				cheapestSumm = currSumm;
+				cheapestIdx  = i;
+			}
+		}
+		var cheapestPath = paths[cheapestIdx];
+		var bottles = {};
+		for(var i = 0; i < cheapestPath.length; i++){
+			var id = cheapestPath[i][0];
+			if(bottles[id]) bottles[id].count++;
+			else {
+				bottles[id] = {};
+				bottles[id].vol = cheapestPath[i];
+				bottles[id].count = 1;
+			}
+		}
+		return bottles;
+	},
+		
+	walk: function(path, summ, volumes, dose){
+		if(summ >= dose) this.good_paths.push(path);
+		else {
+			for(var i = 0; i < volumes.length; i++){
+				var curr_summ = summ + volumes[i][0];
+				this.walk(path.concat([volumes[i]]), curr_summ, volumes, dose);
+			}
+		}
 	},
 	
 	bottleByIngredientAndVolume: function(goods, ingred, vol){
@@ -169,7 +211,7 @@ var DataFilter = {
 		var vol = arr[1];
 		var unit = arr[2];
 		if(unit == "мл" && normUnit == "л") return vol/1000;
-		else if(unit == "кубика" && normUnit == "кубики") return parseInt(vol);
+		else if((unit.indexOf("кубик") > -1) && normUnit == "кубиков") return parseInt(vol);
 		else if(unit == "шт" && normUnit == "шт") return this._parseDecimal(vol);
 		else if(unit == "капли" && normUnit == "л") return vol/40000;
 		else if(unit == normUnit) return parseFloat(vol);
