@@ -33,15 +33,30 @@ var DataFilter = {
 		for(ingred in res){
 			var dose = res[ingred].dose;
 			var vols = res[ingred].good.volumes;
+			var cv = this.findClosestVol(vols, dose);
+			var cutted = false;
+			
+			var numWhole = Math.round(dose/cv[0]);
+			
+			if(numWhole >= 3) {
+				dose -= cv[0]*(numWhole-2);
+				cutted = true;
+			}
+			
 			this.good_paths = [];
-			// console.time('rec '+ingred);
 			for(var i = 0; i < vols.length; i++){
 				this.walk([vols[i]], vols[i][0], vols, dose);
 			}
-			// console.timeEnd('rec '+ingred);
-			// console.time('cheap '+ingred);
 			res[ingred].bottles = this.getCheapestSet(this.good_paths);
-			// console.timeEnd('cheap '+ingred);
+			
+			if(cutted){
+				if(res[ingred].bottles[cv[0]]) res[ingred].bottles[cv[0]].count+=(numWhole-2);
+				else {
+					res[ingred].bottles[cv[0]] = {};
+					res[ingred].bottles[cv[0]].vol = cv;
+					res[ingred].bottles[cv[0]].count = (numWhole-2);
+				}
+			}
 		}
 		return res;
 	},
@@ -57,8 +72,15 @@ var DataFilter = {
 		var cheapestIdx = -1;
 		for(var i = 0; i < paths.length; i++){
 			var currSumm = 0;
-			for(var j = 0; j < paths[i].length; j++) currSumm += paths[i][j][1];
-			if(currSumm <= cheapestSumm) {
+			var skip = false;
+			for(var j = 0; j < paths[i].length; j++) {
+				if(!paths[i][j][2]){
+					skip = true;
+					break; // наличие
+				}
+				currSumm += paths[i][j][1];
+			}
+			if(!skip && currSumm <= cheapestSumm) {
 				cheapestSumm = currSumm;
 				cheapestIdx  = i;
 			}

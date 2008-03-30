@@ -67,7 +67,7 @@ function CalculatorView() {
 			var item = cartData.goods[name];
 			var bottles = cartData.goods[name].bottles;
 			for(id in bottles){
-				sum += bottles[id].vol[1]*bottles[id].count;
+				sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
 				ingredsParent.appendChild(this._createIngredientElement(item, bottles[id], name));
 			}
 		}
@@ -132,7 +132,7 @@ function CalculatorView() {
 		input.name = "portion";
 		input.id = "input_"+name.trans().htmlName() + "_" + bottle.vol[0];
 		input.value = bottle.count;
-		var txt = document.createTextNode(" " + (bottle.vol[1]*bottle.count) + " р.");
+		var txt = document.createTextNode(" " + Math.round(bottle.vol[1]*bottle.count,2) + " р.");
 		label.appendChild(input);
 		label.appendChild(txt);
 		li.appendChild(label);
