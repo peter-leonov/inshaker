@@ -63,13 +63,6 @@ var Controller = {
 		}
 	},
 	
-	_getGoodPicSrc: function(name, good){
-		var i = 0;
-		while(!good.volumes[i][2]) i++;
-		
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + good.volumes[i][0].toFloatString().replace(".", "_") + "_big.png";
-	},
-	
 	_tryPlural: function(vol, unit){
 		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
 		return unit;
@@ -81,13 +74,30 @@ var Controller = {
 		return "";
 	},
 	
+	setPicture: function(name, good, vol){
+		$('good_picture').src = this._getGoodPicSrc(name, good, vol);
+	},
+	
+	_getGoodPicSrc: function(name, good, vol){
+		if(!vol) { 
+			var i = 0;
+			while(!good.volumes[i][2]) i++;
+			vol = good.volumes[i];
+		}
+		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
+	},
+	
 	renderPopup: function(ingred){
 		var good = Model.goods[ingred][0];
 		
-		$('good_name').innerHTML = good.brand;
-		$('good_mark').innerHTML = good.mark;
+		$('good_name').innerHTML = good.brand || ingred;
+		if(good.mark){
+			$('good_composition').style.display = "block";
+			$('good_mark').innerHTML = good.mark;
+			$('good_ingredient').innerHTML = ingred;
+		} else $('good_composition').style.display = "none";
+		
 		$('good_desc').innerHTML = good.desc;
-		$('good_ingredient').innerHTML = ingred;
 		$('good_picture').src = this._getGoodPicSrc(ingred, good); 
 
 		$('good_needed').style.display = "none";
@@ -97,6 +107,7 @@ var Controller = {
 		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
 		var summ = 0;
 		var have = 0;
+		var self = this;
 		
 		for(var i = 0; i < good.volumes.length; i++){
 			if(good.volumes[i][2]) {
@@ -107,6 +118,10 @@ var Controller = {
 				var strong     = document.createElement("strong");
 				
 				a.innerHTML      = this._tryBottle(ingred, good.unit) + good.volumes[i][0] + " " + this._tryPlural(good.volumes[i][0], good.unit);
+				a.addEventListener('mousedown', function(j) { return function(e) {
+					self.setPicture(ingred, good, good.volumes[j]);
+				}}(i), false);
+				
 				strong.innerHTML = good.volumes[i][1] + " р.";            	
 				dl.appendChild(dt);
 				dt.appendChild(a);

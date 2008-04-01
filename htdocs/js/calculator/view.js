@@ -165,6 +165,30 @@ function CalculatorView() {
 		return li;
 	};
 	
+	this._tryPlural = function(vol, unit){
+		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
+		return unit;
+	};
+	
+	this._tryBottle = function(ingred, unit){
+		if(unit == "л") return "Бутылка ";
+		else if(ingred == "Лед" || unit == "гр") return "Пакетик ";
+		return "";
+	};
+	
+	this.setPicture = function(name, good, vol){
+		$('good_picture').src = this._getGoodPicSrc(name, good, vol);
+	};
+	
+	this._getGoodPicSrc = function(name, good, vol){
+		if(!vol) { 
+			var i = 0;
+			while(!good.volumes[i][2]) i++;
+			vol = good.volumes[i];
+		}
+		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
+	}
+	
 	this.renderPopup = function(item, name){
 		this.itemFromPopup = [cloneObject(item), name];
 		
@@ -172,10 +196,14 @@ function CalculatorView() {
 		$('good_summ').style.display   = "block";
 		$('good_accept').style.display = "inline";
 		
-		$('good_name').innerHTML = item.good.brand;
-		$('good_mark').innerHTML = item.good.mark;
+		$('good_name').innerHTML = item.good.brand || name;
+		if(item.good.mark){
+			$('good_composition').style.display = "block";
+			$('good_mark').innerHTML = item.good.mark;
+			$('good_ingredient').innerHTML = name;
+		} else $('good_composition').style.display = "none";
+		
 		$('good_desc').innerHTML = item.good.desc;
-		$('good_ingredient').innerHTML = name;
 		$('good_picture').src = this._getGoodPicSrc(name, item.good); 
 		$('good_needed_vol').innerHTML = Math.round(item.dose, 2) + " " +this._tryPlural(item.dose, item.good.unit);
 		
@@ -204,6 +232,9 @@ function CalculatorView() {
 				img.style.width  = "14px";
 				
 				a.innerHTML      = this._tryBottle(name, item.good.unit) + item.good.volumes[i][0] + " " + this._tryPlural(item.good.volumes[i][0], item.good.unit);
+				a.addEventListener('mousedown', function(j) { return function(e) {
+					self.setPicture(name, item.good, item.good.volumes[j]);
+				}}(i), false);
 				strong.innerHTML = item.good.volumes[i][1] + " р.";
 				
 				inputQuant.type  = "text";
@@ -250,24 +281,4 @@ function CalculatorView() {
 	};
 	
 	this.validateNumeric = function(txt){
-		if(txt.match(/^\d+$/)) return true;
-		return false;
-	};
-	
-	this._tryPlural = function(vol, unit){
-		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
-		return unit;
-	};
-	
-	this._tryBottle = function(ingred, unit){
-		if(unit == "л") return "Бутылка ";
-		else if(ingred == "Лед" || unit == "гр") return "Пакетик ";
-		return "";
-	};
-	
-	this._getGoodPicSrc = function(name, good){
-		var i = 0;
-		while(!good.volumes[i][2]) i++;
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + good.volumes[i][0].toFloatString().replace(".", "_") + "_big.png";
-	}
 };
