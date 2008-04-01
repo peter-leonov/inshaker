@@ -39,6 +39,10 @@ function CalculatorView() {
 		link.close();
 	}, false);
 	
+	$('overlay').addEventListener('click', function(e){
+		link.close();
+	}, false);
+	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения
 	 * @param cartData - набор данных калькулятора
@@ -180,15 +184,6 @@ function CalculatorView() {
 		$('good_picture').src = this._getGoodPicSrc(name, good, vol);
 	};
 	
-	this._getGoodPicSrc = function(name, good, vol){
-		if(!vol) { 
-			var i = 0;
-			while(!good.volumes[i][2]) i++;
-			vol = good.volumes[i];
-		}
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
-	}
-	
 	this.renderPopup = function(item, name){
 		this.itemFromPopup = [cloneObject(item), name];
 		
@@ -281,4 +276,16 @@ function CalculatorView() {
 	};
 	
 	this.validateNumeric = function(txt){
+		if(txt.match(/^\d+$/)) return true;
+		return false;
+	};
+	
+	this._getGoodPicSrc = function(name, good, vol){
+		if(!vol) { 
+			var i = 0;
+			while(!good.volumes[i][2]) i++;
+			vol = good.volumes[i];
+		}
+		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
+	}
 };
