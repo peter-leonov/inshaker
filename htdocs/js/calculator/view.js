@@ -71,7 +71,7 @@ function CalculatorView() {
 				ingredsParent.appendChild(this._createIngredientElement(item, bottles[id], name));
 			}
 		}
-		sumParent.innerHTML = sum + " р.";
+		sumParent.innerHTML = spaces(sum) + " р.";
 		
 		if(cartData.goods[this.lastShownIngred]) {
 			this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
@@ -132,7 +132,7 @@ function CalculatorView() {
 		input.name = "portion";
 		input.id = "input_"+name.trans().htmlName() + "_" + bottle.vol[0];
 		input.value = bottle.count;
-		var txt = document.createTextNode(" " + Math.round(bottle.vol[1]*bottle.count,2) + " р.");
+		var txt = document.createTextNode(" " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р.");
 		label.appendChild(input);
 		label.appendChild(txt);
 		li.appendChild(label);
@@ -167,11 +167,16 @@ function CalculatorView() {
 	
 	this.renderPopup = function(item, name){
 		this.itemFromPopup = [cloneObject(item), name];
+		
+		$('good_needed').style.display = "block";
+		$('good_summ').style.display   = "block";
+		$('good_accept').style.display = "inline";
+		
 		$('good_name').innerHTML = item.good.brand;
 		$('good_mark').innerHTML = item.good.mark;
 		$('good_desc').innerHTML = item.good.desc;
 		$('good_ingredient').innerHTML = name;
-		$('good_picture').src = this._getGoodPicSrc(item.good); 
+		$('good_picture').src = this._getGoodPicSrc(name, item.good); 
 		$('good_needed_vol').innerHTML = Math.round(item.dose, 2) + " " +this._tryPlural(item.dose, item.good.unit);
 		
 		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
@@ -184,17 +189,21 @@ function CalculatorView() {
 				
 				var dl         = document.createElement("dl");
 				var dt         = document.createElement("dt");
-				var input      = document.createElement("input");
+				var img        = document.createElement("img");
 				var a          = document.createElement("a");
 				var dd         = document.createElement("dd");
 				var strong     = document.createElement("strong");
 				var inputQuant = document.createElement("input");
-            	
-				input.type = "checkbox";
-				if(item.bottles[bottleId] && item.bottles[bottleId].count > 0) input.checked = true;
-				if(!item.good.volumes[i][2]) input.disabled = "disabled";
+
 				
-				a.innerHTML      = item.good.volumes[i][0] + " " + this._tryPlural(item.good.volumes[i][0], item.good.unit);
+				if(item.bottles[bottleId] && item.bottles[bottleId].count > 0) {
+					img.src = "/t/icon/checked.png";
+				} else img.src = "/t/border/f.gif"; // blank
+				img.alt = "Добавлен";
+				img.style.height = "11px";
+				img.style.width  = "14px";
+				
+				a.innerHTML      = this._tryBottle(name, item.good.unit) + item.good.volumes[i][0] + " " + this._tryPlural(item.good.volumes[i][0], item.good.unit);
 				strong.innerHTML = item.good.volumes[i][1] + " р.";
 				
 				inputQuant.type  = "text";
@@ -219,7 +228,7 @@ function CalculatorView() {
 				}}(name, bottleId, inputQuant.id), false);
             	
 				dl.appendChild(dt);
-				dt.appendChild(input);
+				dt.appendChild(img);
 				dt.appendChild(a);
 				dl.appendChild(dd);
 				dd.appendChild(strong);
@@ -228,7 +237,7 @@ function CalculatorView() {
 				volsNode.appendChild(dl);
 			}
 		}
-		$('good_summ').innerHTML = "Итого: <i>" + summ + " р.</i>"
+		$('good_summ').innerHTML = "<i>" + spaces(summ) + " р.</i>"
 		$('good_needed_have').innerHTML = Math.round(have, 2) + " " + item.good.unit;
 		$('good_needed').remClassName(item.dose  > have ? "more" : "less");
 		$('good_needed').addClassName(item.dose <= have ? "more" : "less");
@@ -250,9 +259,15 @@ function CalculatorView() {
 		return unit;
 	};
 	
-	this._getGoodPicSrc = function(good){
+	this._tryBottle = function(ingred, unit){
+		if(unit == "л") return "Бутылка ";
+		else if(ingred == "Лед" || unit == "гр") return "Пакетик ";
+		return "";
+	};
+	
+	this._getGoodPicSrc = function(name, good){
 		var i = 0;
 		while(!good.volumes[i][2]) i++;
-		return this.PATH_VOLUMES + good.brand.trans() + "_" + good.volumes[i][0].toFloatString().replace(".", "_") + "_big.png";
+		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + good.volumes[i][0].toFloatString().replace(".", "_") + "_big.png";
 	}
 };

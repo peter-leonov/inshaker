@@ -14,7 +14,9 @@ var Controller = {
 	REL_WIDTH_BIG   : '560px',
 	
 	PATH_MERCH : '/i/merchandise/',
-	
+	PATH_VOLUMES : '/i/merchandise/volumes/',
+	INGRED_POPUP : 'shop-cocktail',
+
 	name : "",
 	relatedCount: 10,
 	
@@ -29,7 +31,7 @@ var Controller = {
 			perPage = 3;
 		}
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
-		this.renderIngredients(Model.ingredients, Model.goods);
+		this.renderIngredients(Model.ingredients);
 	},
 	
 	bindEvents: function(){
@@ -50,6 +52,69 @@ var Controller = {
 				}, false);
 		}
 		link = new Link();
+		
+		var ingreds_links = cssQuery(".b-content .ingridients dd a");
+		for (var i = 0; i < ingreds_links.length; i++){
+			var ingred = ingreds_links[i].innerHTML;
+			ingreds_links[i].addEventListener('click', function(name){ return function(e){	
+				self.renderPopup(name);
+				link.open(self.INGRED_POPUP);
+			}}(ingred), false);
+		}
+	},
+	
+	_getGoodPicSrc: function(name, good){
+		var i = 0;
+		while(!good.volumes[i][2]) i++;
+		
+		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + good.volumes[i][0].toFloatString().replace(".", "_") + "_big.png";
+	},
+	
+	_tryPlural: function(vol, unit){
+		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
+		return unit;
+	},
+	
+	_tryBottle: function(ingred, unit){
+		if(unit == "л") return "Бутылка ";
+		else if(ingred == "Лед") return "Пакетик ";
+		return "";
+	},
+	
+	renderPopup: function(ingred){
+		var good = Model.goods[ingred][0];
+		
+		$('good_name').innerHTML = good.brand;
+		$('good_mark').innerHTML = good.mark;
+		$('good_desc').innerHTML = good.desc;
+		$('good_ingredient').innerHTML = ingred;
+		$('good_picture').src = this._getGoodPicSrc(ingred, good); 
+
+		$('good_needed').style.display = "none";
+		$('good_summ').style.display = "none";
+		$('good_accept').style.display = "none";
+		
+		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
+		var summ = 0;
+		var have = 0;
+		
+		for(var i = 0; i < good.volumes.length; i++){
+			if(good.volumes[i][2]) {
+				var dl         = document.createElement("dl");
+				var dt         = document.createElement("dt");
+				var a          = document.createElement("a");
+				var dd         = document.createElement("dd");
+				var strong     = document.createElement("strong");
+				
+				a.innerHTML      = this._tryBottle(ingred, good.unit) + good.volumes[i][0] + " " + this._tryPlural(good.volumes[i][0], good.unit);
+				strong.innerHTML = good.volumes[i][1] + " р.";            	
+				dl.appendChild(dt);
+				dt.appendChild(a);
+				dl.appendChild(dd);
+				dd.appendChild(strong);
+				volsNode.appendChild(dl);
+			}
+		}
 	},
 	
 	_initNavigationRules: function(menu){
@@ -148,7 +213,7 @@ var Controller = {
 		$(this.ID_RELATED).RollingImages.goInit();
 	},
 	
-	renderIngredients: function(ingredients, goods) {
+	renderIngredients: function(ingredients) {
 		var perPage = 3;
 		var np = this._getNumOfPages(ingredients, perPage);
 		
@@ -170,7 +235,6 @@ var Controller = {
 		
 		for(var i = 0; i < resultSet.length; i++){
 			var img = document.createElement("img");
-			var related_goods = goods[resultSet[i][0]];
 			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + "_big.png";
 			img.alt = resultSet[i][0];
 			div.appendChild(img);

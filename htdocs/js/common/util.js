@@ -34,6 +34,16 @@ Number.prototype.toFloatString = function(){
 	return this + ".0";
 }
 
+function spaces(num){
+	var letters = (num + "").split("");
+	var res = letters.splice(0, letters.length % 3).concat([" "]);
+	while(letters.length > 0) {
+		res = res.concat(letters.splice(0, 3));
+		if(letters.length > 0) res = res.concat([" "]);
+	}
+	return res.join("");
+}
+
 // deep copy using JSON lib ;-)
 function cloneObject(obj){
 	return JSON.parse(JSON.stringify(obj));

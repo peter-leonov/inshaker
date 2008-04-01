@@ -149,6 +149,18 @@ class Barman
 
           FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
           FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+          
+          good[:volumes].each do |vol_arr|
+            vol_name   = vol_arr[0].to_s.gsub(".", "_")
+            from_big   = unbranded_dir + vol_name + "_big.png"
+            from_small = unbranded_dir + vol_name + "_small.png"
+            
+            to_big   = Config::VOLUMES_DIR + ingredient.trans + "_" + vol_name + "_big.png"
+            to_small = Config::VOLUMES_DIR + ingredient.trans + "_" + vol_name + "_small.png"
+            
+            FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
+            FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+          end
         else # brand-name goods
           from_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
           
