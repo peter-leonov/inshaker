@@ -14,7 +14,6 @@ var Controller = {
 	REL_WIDTH_BIG   : '560px',
 	
 	PATH_MERCH : '/i/merchandise/',
-	PATH_VOLUMES : '/i/merchandise/volumes/',
 	INGRED_POPUP : 'shop-cocktail',
 
 	name : "",
@@ -63,42 +62,22 @@ var Controller = {
 		}
 	},
 	
-	_tryPlural: function(vol, unit){
-		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
-		return unit;
-	},
-	
-	_tryBottle: function(ingred, unit){
-		if(unit == "л") return "Бутылка ";
-		else if(ingred == "Лед") return "Пакетик ";
-		return "";
-	},
-	
 	setPicture: function(name, good, vol){
-		$('good_picture').src = this._getGoodPicSrc(name, good, vol);
-	},
-	
-	_getGoodPicSrc: function(name, good, vol){
-		if(!vol) { 
-			var i = 0;
-			while(!good.volumes[i][2]) i++;
-			vol = good.volumes[i];
-		}
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
+		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
 	},
 	
 	renderPopup: function(ingred){
 		var good = Model.goods[ingred][0];
 		
 		$('good_name').innerHTML = good.brand || ingred;
-		if(good.mark){
+		if(good.mark){ // branded
 			$('good_composition').style.display = "block";
 			$('good_mark').innerHTML = good.mark;
 			$('good_ingredient').innerHTML = ingred;
 		} else $('good_composition').style.display = "none";
 		
 		$('good_desc').innerHTML = good.desc;
-		$('good_picture').src = this._getGoodPicSrc(ingred, good); 
+		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 
 		$('good_needed').style.display = "none";
 		$('good_summ').style.display = "none";
@@ -117,7 +96,7 @@ var Controller = {
 				var dd         = document.createElement("dd");
 				var strong     = document.createElement("strong");
 				
-				a.innerHTML      = this._tryBottle(ingred, good.unit) + good.volumes[i][0] + " " + this._tryPlural(good.volumes[i][0], good.unit);
+				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit) + good.volumes[i][0] + " " + GoodHelper.pluralTxt(good.volumes[i][0], good.unit);
 				a.addEventListener('mousedown', function(j) { return function(e) {
 					self.setPicture(ingred, good, good.volumes[j]);
 				}}(i), false);

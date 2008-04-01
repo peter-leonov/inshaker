@@ -7,8 +7,6 @@ function CalculatorView() {
 	
 	this.INGRED_POPUP = 'shop-cocktail';
 	
-	this.PATH_VOLUMES = '/i/merchandise/volumes/';
-	
 	this.KEY_LEFT  = 37;
 	this.KEY_RIGHT = 39;
 	this.KEY_ENTER = 13;
@@ -127,7 +125,7 @@ function CalculatorView() {
 		var a  = document.createElement("a");		
 		a.innerHTML = item.good.brand || name;
 		var b  = document.createElement("b");
-		b.innerHTML = bottle.vol[0] + " " + this._tryPlural(bottle.vol[0], item.good.unit);
+		b.innerHTML = bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], item.good.unit);
 		li.appendChild(a);
 		li.appendChild(b);
 		var label = document.createElement("label");
@@ -169,19 +167,8 @@ function CalculatorView() {
 		return li;
 	};
 	
-	this._tryPlural = function(vol, unit){
-		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
-		return unit;
-	};
-	
-	this._tryBottle = function(ingred, unit){
-		if(unit == "л") return "Бутылка ";
-		else if(ingred == "Лед" || unit == "гр") return "Пакетик ";
-		return "";
-	};
-	
 	this.setPicture = function(name, good, vol){
-		$('good_picture').src = this._getGoodPicSrc(name, good, vol);
+		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
 	};
 	
 	this.renderPopup = function(item, name){
@@ -192,15 +179,15 @@ function CalculatorView() {
 		$('good_accept').style.display = "inline";
 		
 		$('good_name').innerHTML = item.good.brand || name;
-		if(item.good.mark){
+		if(item.good.mark){ // branded
 			$('good_composition').style.display = "block";
 			$('good_mark').innerHTML = item.good.mark;
 			$('good_ingredient').innerHTML = name;
 		} else $('good_composition').style.display = "none";
 		
 		$('good_desc').innerHTML = item.good.desc;
-		$('good_picture').src = this._getGoodPicSrc(name, item.good); 
-		$('good_needed_vol').innerHTML = Math.round(item.dose, 2) + " " +this._tryPlural(item.dose, item.good.unit);
+		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
+		$('good_needed_vol').innerHTML = Math.round(item.dose, 2) + " " +GoodHelper.pluralTxt(item.dose, item.good.unit);
 		
 		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
 		var summ = 0;
@@ -226,7 +213,7 @@ function CalculatorView() {
 				img.style.height = "11px";
 				img.style.width  = "14px";
 				
-				a.innerHTML      = this._tryBottle(name, item.good.unit) + item.good.volumes[i][0] + " " + this._tryPlural(item.good.volumes[i][0], item.good.unit);
+				a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit) + item.good.volumes[i][0] + " " + GoodHelper.pluralTxt(item.good.volumes[i][0], item.good.unit);
 				a.addEventListener('mousedown', function(j) { return function(e) {
 					self.setPicture(name, item.good, item.good.volumes[j]);
 				}}(i), false);
@@ -279,13 +266,4 @@ function CalculatorView() {
 		if(txt.match(/^\d+$/)) return true;
 		return false;
 	};
-	
-	this._getGoodPicSrc = function(name, good, vol){
-		if(!vol) { 
-			var i = 0;
-			while(!good.volumes[i][2]) i++;
-			vol = good.volumes[i];
-		}
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
-	}
 };
