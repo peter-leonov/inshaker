@@ -7,6 +7,10 @@ var Model = {
 		this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
 	},
 	
+	uniqueLetters: function(){
+		return DataFilter.firstLetters(this.ingredients, false);
+	},
+	
 	ingredientsOn: function(letter) {
 		return DataFilter.ingredientsByLetter(this.ingredients, letter);
 	},

@@ -216,6 +216,17 @@ var DataFilter = {
 		return res;
 	},
 	
+	firstLetters: function(set, lowerCase){
+		var letters = [];
+		for(var i = 0; i < set.length; i++){
+			var letter = set[i].substr(0,1);
+			if(lowerCase) letter = letter.toLowerCase();
+			letters.push(letter);
+		}
+		letters = letters.uniq().sort();
+		return letters;	
+	},
+	
 	nameSort: function(a, b){
 		if(a.name > b.name) return 1;
 		else if(a.name == b.name) return 0;

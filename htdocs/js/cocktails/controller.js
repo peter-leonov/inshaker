@@ -9,6 +9,7 @@ var Controller = {
 	SELECTED_STYLE  : 'selected-button',
 	
 	SEARCHES_LIST   : 'ingredients_list',
+	SEARCH_EXAMPLE  : 'search_example',
 	
 	FILTER_COOKIE   : 'filters',
 	PAGE_COOKIE     : 'page',
@@ -21,9 +22,11 @@ var Controller = {
 	
 	init: function() {
 		this.autocompleter = new Autocompleter(Model.ingredients);
-		this.renderSet($(this.TAGS_LIST), 	   Model.tags);
-		this.renderSet($(this.STRENGTHS_LIST), Model.strengths); 
+		this.renderLetters($(this.ALPHABET_RU), Model.cocktailsLetters());
+		this.renderSet($(this.TAGS_LIST), 	    Model.tags);
+		this.renderSet($(this.STRENGTHS_LIST),  Model.strengths); 
 		this.bindEvents();
+		$(this.SEARCH_EXAMPLE).innerHTML = Model.randomIngredient();
 		
 		var filters = this._filtersFromRequest() || this._filtersFromCookie();
 		Model.init(filters);
@@ -80,6 +83,10 @@ var Controller = {
 			else { self.riJustInited = false; }
 		}
 		link = new Link();
+		
+		$(this.SEARCH_EXAMPLE).addEventListener('mousedown', function(e){
+			self.autocompleter.force($(self.SEARCH_EXAMPLE).innerHTML);
+		}, false);
 	},
 	
 	onPageChanged: function(num){
@@ -200,6 +207,14 @@ var Controller = {
 			dd.appendChild(a);
 			parent.appendChild(dd);
 		}		
+	},
+	
+	renderLetters: function(parent, set){
+		for(var i = 0; i < set.length; i++){
+			var a = document.createElement("a");
+			a.innerHTML = set[i];
+			parent.appendChild(a);
+		}
 	},
 	
 	_renderPage: function (selectedSet, pageNum) {

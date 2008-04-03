@@ -2,6 +2,9 @@ function CalculatorView() {
 	this.ID_COCKTAILS  = 'cart_cocktails';
 	this.ID_INGREDS    = 'cart_ingredients';
 	this.ID_SUM        = 'cart_sum';
+	this.ID_CONTENTS   = 'cart_contents';
+	this.ID_TOTALS     = 'cart_totals';
+	this.ID_DRAGHERE   = 'cart_draghere';
 	this.CLASS_ADD_BTN = '.bt-want-slap';
 	this.NAME_ELEM     = 'cocktail_name';
 	
@@ -52,33 +55,43 @@ function CalculatorView() {
 	};
 	
 	this.renderCart = function(cartData){
-		var cocktailsParent = $(this.ID_COCKTAILS);
-		var ingredsParent = $(this.ID_INGREDS);
-		var sumParent = $(this.ID_SUM);
-		
-		// Clean up
-		cocktailsParent.innerHTML = "";
-		ingredsParent.innerHTML = "";
-		
-		for(var i = 0; i < cartData.cocktails.length; i++){
-			cocktailsParent.appendChild(this._createCocktailElement(cartData.cocktails[i]));
-		}
-		
-		var sum = 0;
-		for(name in cartData.goods){
-			var item = cartData.goods[name];
-			var bottles = cartData.goods[name].bottles;
-			for(id in bottles){
-				sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
-				ingredsParent.appendChild(this._createIngredientElement(item, bottles[id], name));
+		if(cartData.cocktails.length > 0) {
+			$(this.ID_CONTENTS).style.display = "block";
+			$(this.ID_TOTALS).style.display = "block";
+			$(this.ID_DRAGHERE).style.display = "none";
+			
+			var cocktailsParent = $(this.ID_COCKTAILS);
+			var ingredsParent = $(this.ID_INGREDS);
+			var sumParent = $(this.ID_SUM);
+			
+			// Clean up
+			cocktailsParent.innerHTML = "";
+			ingredsParent.innerHTML = "";
+			
+			for(var i = 0; i < cartData.cocktails.length; i++){
+				cocktailsParent.appendChild(this._createCocktailElement(cartData.cocktails[i]));
 			}
+			
+			var sum = 0;
+			for(name in cartData.goods){
+				var item = cartData.goods[name];
+				var bottles = cartData.goods[name].bottles;
+				for(id in bottles){
+					sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
+					ingredsParent.appendChild(this._createIngredientElement(item, bottles[id], name));
+				}
+			}
+			sumParent.innerHTML = spaces(sum) + " р.";
+			
+			if(cartData.goods[this.lastShownIngred]) {
+				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
+			} 
+			if(this.lastInputId && $(this.lastInputId)) $(this.lastInputId).focus();
+		} else { // empty
+			$(this.ID_CONTENTS).style.display = "none";
+			$(this.ID_TOTALS).style.display = "none";
+			$(this.ID_DRAGHERE).style.display = "block";
 		}
-		sumParent.innerHTML = spaces(sum) + " р.";
-		
-		if(cartData.goods[this.lastShownIngred]) {
-			this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
-		} 
-		if(this.lastInputId && $(this.lastInputId)) $(this.lastInputId).focus();
 	};
 	
 	this._createCocktailElement = function(cocktailsItem){

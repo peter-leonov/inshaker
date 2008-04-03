@@ -97,6 +97,12 @@ function Autocompleter(set) {
 		field.focus();
 	}
 	
+	this.force = function(value){
+		field.value = value;
+		this.changeListener.onSearchConfirmed(value);
+		field.focus();
+	}
+	
 	this.error = function() { error_div.innerHTML = this.ERR_MESSAGE; }
 	
 	this._hideSelector = function(up) {

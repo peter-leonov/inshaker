@@ -71,7 +71,7 @@
 										<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
 									</dl>
 								</div-->
-								<h2 class="summary">Американо — I wanna be American</h2>
+								<h2 class="summary">Американо — I wanna be Americano</h2>
 								<div class="description">
 									<p>
 									
@@ -228,13 +228,11 @@
 		</h2>
 		<dl class="on">
 			<dt>Хочу приготовить</dt>
-			<dd>
+			<dd id="cart_contents">
 				<ul id="cart_cocktails">
-
 				</ul>
 				<strong>Вам понадобятся:</strong>
 				<ul class="money" id="cart_ingredients">
-
 				</ul>
 			</dd>
 		</dl>
@@ -251,13 +249,14 @@
 		</dl>
 		<!--<dl><dt>Штучки <span>0 р.</span></dt></dl>-->
 		
-		<div class="total">
+		<div class="total" id="cart_totals">
 			<p class="money"><span id="cart_sum">0 р.</span><!--<button class="bt-deliver">Доставить</button>--></p>
-			
 			<ul>			
 				<li><a>Распечатать план</a> »</li>
-				<!--<li><a>Оставить на потом</a> »</li>-->
 			</ul>
+		</div>
+		<div id="cart_draghere">
+			<div>Перетащите <b>сюда</b> коктейль или нажмите "Хочу приготовить!"</div>
 		</div>
 	</div>
 

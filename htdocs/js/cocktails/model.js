@@ -22,6 +22,11 @@ var Model = {
 		this._applyFilters();
 	},
 	
+	randomIngredient: function(){
+		var num = Math.floor((this.ingredients.length)*Math.random());
+		return this.ingredients[num];
+	},
+	
 	_completeFilters: function(filters){
 		if(!filters.letter)      filters.letter = "";
 		if(!filters.tag)         filters.tag = "";
@@ -29,6 +34,14 @@ var Model = {
 		if(!filters.ingredients) filters.ingredients = [];
 		if(!filters.page)        filters.page = 0;
 		return filters;
+	},
+	
+	cocktailsLetters: function(){
+		var cocktailsNames = [];
+		for(i in cocktails){
+			cocktailsNames.push(cocktails[i].name);
+		}
+		return DataFilter.firstLetters(cocktailsNames, true);
 	},
 	
 	onPageChanged: function(num){

@@ -149,9 +149,10 @@ label			{ display: block; }
 .b-search form dt		{ padding: 0; font-size: 92%; }
 .b-search form dd		{ float: left; line-height: 1.5; clear: both; position: relative; margin: 0; color: #F1F7B6; text-decoration: underline; cursor: pointer; font-size: 96%;}
 .b-search form dd .del	{ position: absolute; right: -9px; top: 6px; }
-#autocomplete {position: absolute; background-color: #FFFFFF; color: #000000; border: #000000 solid; border-width: 0px 1px 1px 1px; padding: 2px; z-index: 1;}
-#autocomplete div {cursor: pointer;}
+#autocomplete { position: absolute; background-color: #FFFFFF; color: #000000; border: #000000 solid; border-width: 0px 1px 1px 1px; padding: 2px; z-index: 1;}
+#autocomplete div { cursor: pointer;}
 #autocomplete div.hi { background-color: #cede97;}
+#search_example {border-bottom: 1px dotted; color: #F1F7B6; text-decoration: none;}
 
 /*Block content*/
 #search-cocktails-page .b-content	{ margin-left: 16em; }
@@ -413,6 +414,12 @@ label			{ display: block; }
 #b-bill .total li a		{ float: left; }
 #b-bill .total .money	{ float: right; font: bold 240% Georgia; padding-top: .1em; text-align: right; overflow: hidden; letter-spacing: -.04em; }
 #b-bill .bt-deliver		{ margin-top: 1em; display: block; }
+
+#cart_contents { display: none; }
+#cart_totals   { display: none; }
+#cart_draghere { display:none; font-weight: bold; background: transparent url(bg/bill/drag-bg.gif) no-repeat 24px; padding: 24px; font-size: 12px; height: 65px;}
+#cart_draghere div { width: 212px; padding: 14px 0 10px 42px;}
+#cart_draghere b { color: #7ca527; }
 
 
 /*bar block*/

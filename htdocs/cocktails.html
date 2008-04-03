@@ -62,7 +62,7 @@
 					<div id="search_error"></div>
 					<input type="text" name="text" value="" id="search_input" autocomplete="off"/>
 					<div id="autocomplete" style="display: none;"></div>
-					<small>например: Виски</small>
+					<small>Например, <a id="search_example">Виски</a></small>
 					<dl id="ingredients_list">
 					</dl>
 				</fieldset>
@@ -83,36 +83,9 @@
 			<p class="alphabetical b"><span class="wrapper">
 				<span class="p-list" id="alphabetical-ru">
 					<a id="letters_all" class="selected-button">все</a>
-					<a>а</a>
-					<a>б</a>
-					<a>в</a>
-					<a>г</a>
-					<a>д</a>
-					<a>е</a>
-					<a>ж</a>
-					<a>з</a>
-					<a>и</a>
-					<a>к</a>
-					<a>л</a>
-					<a>м</a>
-					<a>н</a>
-					<a>о</a>
-					<a>п</a>
-					<a>р</a>
-					<a>с</a>
-					<a>т</a>
-					<a>у</a>
-					<a>ф</a>
-					<a>х</a>
-					<a>ц</a>
-					<a>ч</a>
-					<a>ш</a>
-					<a>щ</a>
-					<a>э</a>
-					<a>ю</a>
-					<a>я</a>
+
 				</span>
-				<a class="lang-to-en"> </a>
+				<!--<a class="lang-to-en"> </a>-->
 			</span></p>
 
 			<div id="results_display" class="programica-rolling-images">
@@ -131,44 +104,47 @@
 			
 		</div>
 	
-	</div></div>
+	</div></div>	
 	
-	
-	
-	<div id="b-bill" class="column"><div class="r-body-wrapper">
+	<div id="b-bill" class="column">
 		<h2>
 			<span class="to-print">План покупок</span>
 			&#160;
 		</h2>
 		<dl class="on">
-			<dt>Хочу приготовить </dt>
-			<dd>
+			<dt>Хочу приготовить</dt>
+			<dd id="cart_contents">
 				<ul id="cart_cocktails">
-
 				</ul>
 				<strong>Вам понадобятся:</strong>
 				<ul class="money" id="cart_ingredients">
-
 				</ul>
 			</dd>
 		</dl>
 		
 		<!--<dl><dt>Ингредиенты <span>0 р.</span></dt></dl>-->
+		<dl class="to-print">
+			<dt>Штучки <span>4 320 р.</span></dt>
+			<ul class="money">
+				<li><a href="#shop-cocktail">Шейкер</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-cocktail2">Стрейнер</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-cocktail">Дробилка для льда</a><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-cocktail">Трубочки</a><b>1 кубик</b><span class="to-print"><span><!-- --></span></span></li>
+			</ul>
+		</dl>
 		<!--<dl><dt>Штучки <span>0 р.</span></dt></dl>-->
-		<!--<dl><dt>Вечеринки <span>15 000 р.</span></dt></dl>-->
 		
-		<div class="total">
+		<div class="total" id="cart_totals">
+			<p class="money"><span id="cart_sum">0 р.</span><!--<button class="bt-deliver">Доставить</button>--></p>
 			<ul>			
 				<li><a>Распечатать план</a> »</li>
-				<!--<li><a>Оставить на потом</a> »</li>-->
 			</ul>
-			
-			<p class="money"><span id="cart_sum">0 р.</span><!--<button class="bt-deliver">Доставить</button>--></p>
 		</div>
-	</div></div>
+		<div id="cart_draghere">
+			<div>Перетащите <b>сюда</b> коктейль или нажмите "Хочу приготовить!"</div>
+		</div>
+	</div>
 
-
-	
 	<p id="bottom">
 		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
 

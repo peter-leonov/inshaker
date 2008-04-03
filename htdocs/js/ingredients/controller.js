@@ -59,11 +59,7 @@ var Controller = {
 		}
 		
 		// finding unique letters
-		var letters = [];
-		for(var i = 0; i < ingredients.length; i++){
-			letters.push(ingredients[i].substr(0,1));
-		}
-		letters = letters.uniq().sort();
+		var letters = Model.uniqueLetters();
 		
 		// creating divs with heading and ingredients
 		var divs = {};
