@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>barman/barman.rb</string>
+	<string>htdocs/js/cocktails/controller.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,88 +29,28 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>barman/barman.rb</key>
+		<key>htdocs/js/cocktails/controller.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>48</integer>
 				<key>line</key>
-				<integer>268</integer>
+				<integer>134</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>203</integer>
-		</dict>
-		<key>barman/templates/cocktail.rhtml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>312</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>291</integer>
-		</dict>
-		<key>htdocs/cocktails.html</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>233</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>212</integer>
-		</dict>
-		<key>htdocs/js/calculator/view.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>239</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>216</integer>
-		</dict>
-		<key>htdocs/js/cocktail/controller.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>42</integer>
-				<key>line</key>
-				<integer>93</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>73</integer>
+			<integer>107</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>htdocs/js/calculator/view.js</string>
-		<string>barman/barman.rb</string>
-		<string>barman/templates/cocktail.rhtml</string>
-		<string>htdocs/cocktails.html</string>
-		<string>htdocs/js/cocktail/controller.js</string>
+		<string>htdocs/js/cocktails/controller.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{243, 67}, {816, 946}}</string>
+	<string>{{235, 75}, {816, 946}}</string>
 </dict>
 </plist>

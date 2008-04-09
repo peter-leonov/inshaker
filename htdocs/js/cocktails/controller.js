@@ -7,6 +7,7 @@ var Controller = {
 	TAGS_LIST       : 'tags_list',
 	STRENGTHS_LIST  : 'strengths_list',
 	SELECTED_STYLE  : 'selected-button',
+	DISABLED_STYLE  : 'dis',
 	
 	SEARCHES_LIST   : 'ingredients_list',
 	SEARCH_EXAMPLE  : 'search_example',
@@ -19,18 +20,20 @@ var Controller = {
 	autocompleter   : null,
 	
 	riJustInited    : true,
-	
+    
 	init: function() {
 		this.autocompleter = new Autocompleter(Model.ingredients);
-		this.renderLetters($(this.ALPHABET_RU), Model.cocktailsLetters());
+
+        this.renderLetters($(this.ALPHABET_RU), Model.cocktailsLetters());
 		this.renderSet($(this.TAGS_LIST), 	    Model.tags);
 		this.renderSet($(this.STRENGTHS_LIST),  Model.strengths); 
-		this.bindEvents();
+		
+        this.bindEvents();
 		$(this.SEARCH_EXAMPLE).innerHTML = Model.randomIngredient();
 		
 		var filters = this._filtersFromRequest() || this._filtersFromCookie();
 		Model.init(filters);
-	},
+ 	},
 	
 	_filtersFromRequest: function(){
 		var address = window.location.href;
@@ -67,14 +70,18 @@ var Controller = {
 		var tagLinks = $(this.TAGS_LIST).getElementsByTagName("a");
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(e){
-				self.onTagClick(e.target);
+                if(e.target.getAttribute('disabled') != 'true') {
+                    self.onTagClick(e.target);
+                }
 			}, false);
 		}
 		
 		var strengthLinks = $(this.STRENGTHS_LIST).getElementsByTagName("a");
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(e){
-				self.onStrengthClick(e.target);
+				if(e.target.getAttribute('disabled') != 'true') {
+                    self.onStrengthClick(e.target);
+                }
 			}, false);
 		}
 		
@@ -136,31 +143,39 @@ var Controller = {
 					this.filterElems.letter = letterElems[i];
 					break;
 				}
-			}
+			}   
 		} else this.filterElems.letter = $(this.LETTERS_ALL);
 		this.filterElems.letter.addClassName(this.SELECTED_STYLE);
 		
-		this._remClass(this.filterElems.tag, this.SELECTED_STYLE);
-		if(filters.tag != "") {
-			var tagElems = $(this.TAGS_LIST).getElementsByTagName("span");
-			for(var i = 0; i < tagElems.length; i++) {
-				if(tagElems[i].innerHTML.toLowerCase() == filters.tag) {
-					this.filterElems.tag = tagElems[i].parentNode; // a, not span
-					this.filterElems.tag.addClassName(this.SELECTED_STYLE);
-					break;
-				}
+		var tagElems = $(this.TAGS_LIST).getElementsByTagName("span");
+		for(var i = 0; i < tagElems.length; i++) {
+			var elemTxt = tagElems[i].innerHTML.toLowerCase();
+			if(elemTxt == filters.tag) {
+				this.filterElems.tag = tagElems[i].parentNode; // a, not span
+				this.filterElems.tag.className = this.SELECTED_STYLE;
+                tagElems[i].setAttribute("disabled", false);
+			} else if(Model.tagState.indexOf(elemTxt) == -1) {
+				tagElems[i].parentNode.className = this.DISABLED_STYLE;
+                tagElems[i].setAttribute("disabled", true);
+			} else {
+				tagElems[i].parentNode.className = "";
+                tagElems[i].setAttribute("disabled", false);
 			}
 		}
 		
-		this._remClass(this.filterElems.strength, this.SELECTED_STYLE);
-		if(filters.strength != "") {
-			var strengthElems = $(this.STRENGTHS_LIST).getElementsByTagName("span");
-			for(var i = 0; i < strengthElems.length; i++) {
-				if(strengthElems[i].innerHTML.toLowerCase() == filters.strength) {
-					this.filterElems.strength = strengthElems[i].parentNode; // a, not span
-					this.filterElems.strength.addClassName(this.SELECTED_STYLE);
-					break;
-				}
+		var strengthElems = $(this.STRENGTHS_LIST).getElementsByTagName("span");
+		for(var i = 0; i < strengthElems.length; i++) {
+			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
+			if(elemTxt == filters.strength) {
+				this.filterElems.strength = strengthElems[i].parentNode; // a, not span
+				this.filterElems.strength.className = this.SELECTED_STYLE;
+                strengthElems[i].setAttribute('disabled', false);
+            } else if(Model.strengthState.indexOf(elemTxt) == -1) {
+			    strengthElems[i].parentNode.className = this.DISABLED_STYLE;
+            	strengthElems[i].setAttribute('disabled', true);
+			} else {
+				strengthElems[i].parentNode.className = "";
+                strengthElems[i].setAttribute('disabled', false);
 			}
 		}
 		
@@ -249,17 +264,19 @@ var Controller = {
 	
 	_createIngredientTitle: function(){
 		var dt = document.createElement("dt");
-		dt.innerHTML = "Коктейли с:";
 		return dt;
 	},
 	
 	_createIngredientElement: function(name){
+		name = GoodHelper.shortName(name);
 		var dd = document.createElement("dd");
+		var span = document.createElement("span");
 		var a = document.createElement("a");
 		a.title = "Убрать из поиска";
 		a.innerHTML = "Удалить";
-		a.className = "del";
-		dd.innerHTML = name;
+		a.className = "rem";
+		span.innerHTML = name;
+		dd.appendChild(span);
 		dd.appendChild(a);
 		var self = this;
 		dd.addEventListener('mousedown', function(e){

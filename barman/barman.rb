@@ -261,7 +261,18 @@ private
   end
   
   def parse_receipt(receipt)
-    @cocktail[:receipt] = receipt.split("\n")
+    res = []
+    lines = receipt.split("\n")
+    lines.each do |line|
+      letters = line.split("")
+      if(letters[0] != letters[0].downcase)
+        res.push line
+      else
+        idx = res.index res.last
+        res[idx] = res[idx] + " " + line
+      end
+    end
+    @cocktail[:receipt] = res
   end
   
   def parse_legend_text(text)
@@ -310,8 +321,9 @@ private
   def get_desc(ingredient, brand)
     dir  = Dir.pwd + "/" + ingredient + "/"
     dir += (brand.empty?) ? "" : brand + "/"
-    return File.exists?(dir + "about.txt") ? File.open(dir + "about.txt").read : ""
-  end
+    desc =  File.exists?(dir + "about.txt") ? File.open(dir + "about.txt").read : ""
+    return desc
+  end 
   
 end
 

@@ -42,4 +42,9 @@ var GoodHelper = {
 		}
 		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
 	},
+	
+	shortName: function(name){
+		if(name == "Черносмородиновый ликер") return "Черносмородин. ликер";
+		return name;
+	}
 };
