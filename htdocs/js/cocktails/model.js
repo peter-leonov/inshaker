@@ -20,14 +20,14 @@ var Model = {
 	
 	dataListener : null,
 	
-	init: function(filters) {
+	init: function(filters, states) {
 		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
 		if(filters) this.filters = this._completeFilters(filters);
 		
-        this.strengthState = strengths;
-        this.tagState = tags;
+        this.strengthState = states ? states[0] : strengths;
+        this.tagState      = states ? states[1] : tags;
         
-        this._applyFilters(true, true);
+        this._applyFilters(!states && this.filters.strength); // well..
 	},
 	
 	randomIngredient: function(){
@@ -93,7 +93,7 @@ var Model = {
 			this.filters.tag    = name;  
 		} else this.filters.tag  = "";
 		this.filters.page = 0; // anyway
-		this._applyFilters();
+		this._applyFilters(false, false, false, true);
 	},
 	
 	onStrengthFilter: function(name) {
@@ -121,7 +121,7 @@ var Model = {
 		this._applyFilters(false, true);
 	},
 
-    _updateStates: function(strengthChanged, ingredChanged, letterChanged) {
+    _updateStates: function(strengthChanged, ingredChanged, letterChanged, tagChanged) {
         if(letterChanged) {
             this.strengthState = this.strengths;
             this.tagState      = this.tags;
@@ -134,11 +134,11 @@ var Model = {
         }
     },
 
-	_applyFilters: function(strengthChanged, ingredChanged, letterChanged) {
+	_applyFilters: function(strengthChanged, ingredChanged, letterChanged, tagChanged) {
         var filtered = false;
 		if(this.filters.letter.length > 0){
 			this.resultSet = DataFilter.cocktailsByLetter(this.cocktailsSet, this.filters.letter);
-			this._updateStates(strengthChanged, ingredChanged, letterChanged);
+			this._updateStates(strengthChanged, ingredChanged, letterChanged, tagChanged);
             this.dataListener.onModelChanged(this.resultSet, this.filters);
 			return 0;
 		} else this.resultSet = this.cocktailsSet;
@@ -158,7 +158,7 @@ var Model = {
 			this.resultSet = DataFilter.cocktailsByIngredients(to_filter, this.filters.ingredients);
 			filtered = true;
 		}
-		this._updateStates(strengthChanged, ingredChanged, letterChanged);
+		this._updateStates(strengthChanged, ingredChanged, letterChanged, tagChanged);
 		this.dataListener.onModelChanged(this.resultSet, this.filters);
 	}
 }

@@ -13,8 +13,11 @@ var Controller = {
 	SEARCH_EXAMPLE  : 'search_example',
 	
 	FILTER_COOKIE   : 'filters',
-	PAGE_COOKIE     : 'page',
-	filterElems     : { tag: null, strength: null, letter: null },
+
+    STRENGTH_STATE_COOKIE : 'strength_state',
+    TAG_STATE_COOKIE      : 'tag_state',
+	
+    filterElems     : { tag: null, strength: null, letter: null },
 	
 	perPage         : 16,
 	autocompleter   : null,
@@ -31,8 +34,13 @@ var Controller = {
         this.bindEvents();
 		$(this.SEARCH_EXAMPLE).innerHTML = Model.randomIngredient();
 		
-		var filters = this._filtersFromRequest() || this._filtersFromCookie();
-		Model.init(filters);
+		var filters = this._filtersFromRequest();
+        var states = null;
+        if(!filters) {
+            filters = this._filtersFromCookie();
+            states = this._statesFromCookies();
+        }
+        Model.init(filters, states);
  	},
 	
 	_filtersFromRequest: function(){
@@ -49,6 +57,15 @@ var Controller = {
 		} else return null;
 	},
 	
+    _statesFromCookies: function(){
+        var res = [];
+        var ss = Cookie.get(this.STRENGTH_STATE_COOKIE);
+        if(ss) res[0] = JSON.parse(ss);
+        var ts = Cookie.get(this.TAG_STATE_COOKIE);
+        if(ts) res[1] = JSON.parse(ts);
+        return res;
+    },
+
 	_filtersFromCookie: function(){
 		var cookie = Cookie.get(this.FILTER_COOKIE);
 		if(cookie) return JSON.parse(cookie);
@@ -129,7 +146,7 @@ var Controller = {
 	onModelChanged: function(resultSet, filters) { // model
 		this.renderAllPages(resultSet);
 		this.renderFilters(filters);
-		this.saveFilters(filters);
+		this.saveState(filters);
 	},
 	
 	_remClass: function(elem, className) { if(elem) elem.remClassName(className); },
@@ -194,8 +211,10 @@ var Controller = {
 		}
 	},
 	
-	saveFilters: function(filters){
-		Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
+	saveState: function(filters){
+		Cookie.set(this.TAG_STATE_COOKIE, JSON.stringify(Model.tagState));
+        Cookie.set(this.STRENGTH_STATE_COOKIE, JSON.stringify(Model.strengthState));
+        Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
 	},
 	
 	renderAllPages: function(resultSet){
