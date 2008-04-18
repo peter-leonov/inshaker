@@ -1,12 +1,10 @@
 function CalculatorController(model, view) {
-	this.CART_COOKIE = 'cart',
-	
 	this.eventListener = model;
 	view.eventListener = this;
 	
 	this.initialize = function(){
-		if(Cookie.get(this.CART_COOKIE)){
-			this.eventListener.initialize(JSON.parse(Cookie.get(this.CART_COOKIE)));
+		if(Cookie.get(GoodHelper.CART_COOKIE)){
+			this.eventListener.initialize(JSON.parse(Cookie.get(GoodHelper.CART_COOKIE)));
 		} else this.eventListener.initialize(null);
 	};
 	
@@ -35,14 +33,8 @@ function CalculatorController(model, view) {
 	 */
 	this.saveCartData = function(cartData){
 		var cd = cloneObject(cartData);
-		for(var i = 0; i < cd.cocktails.length; i++){
-			// cocktail -> name
-			cd.cocktails[i][0] = cd.cocktails[i][0].name;
-		}
-		for(ingred in cd.goods){
-			cd.goods[ingred].good = null;
-		}
-		Cookie.set(this.CART_COOKIE, JSON.stringify(cd));
+	    cd = GoodHelper.serializeCartData(cd);	
+		Cookie.set(GoodHelper.CART_COOKIE, JSON.stringify(cd));
 	};
 	
 	this.needNewBottle = function(name, bottleId){

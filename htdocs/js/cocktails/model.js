@@ -24,8 +24,8 @@ var Model = {
 		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
 		if(filters) this.filters = this._completeFilters(filters);
 		
-        this.strengthState = states ? states[0] : strengths;
-        this.tagState      = states ? states[1] : tags;
+        this.strengthState = states && (states.length > 0) ? states[0] : strengths;
+        this.tagState      = states && (states.length > 0) ? states[1] : tags;
         
         this._applyFilters(!states && this.filters.strength); // well..
 	},
@@ -70,7 +70,7 @@ var Model = {
 	
 	onPageChanged: function(num){
 		this.filters.page = num;
-		this.dataListener.saveFilters(this.filters);
+		this.dataListener.saveState(this.filters);
 	},
 	
 	onLetterFilter: function(name, name_all) { 
@@ -93,7 +93,7 @@ var Model = {
 			this.filters.tag    = name;  
 		} else this.filters.tag  = "";
 		this.filters.page = 0; // anyway
-		this._applyFilters(false, false, false, true);
+		this._applyFilters();
 	},
 	
 	onStrengthFilter: function(name) {
@@ -121,7 +121,7 @@ var Model = {
 		this._applyFilters(false, true);
 	},
 
-    _updateStates: function(strengthChanged, ingredChanged, letterChanged, tagChanged) {
+    _updateStates: function(strengthChanged, ingredChanged, letterChanged) {
         if(letterChanged) {
             this.strengthState = this.strengths;
             this.tagState      = this.tags;
@@ -134,11 +134,11 @@ var Model = {
         }
     },
 
-	_applyFilters: function(strengthChanged, ingredChanged, letterChanged, tagChanged) {
+	_applyFilters: function(strengthChanged, ingredChanged, letterChanged) {
         var filtered = false;
 		if(this.filters.letter.length > 0){
 			this.resultSet = DataFilter.cocktailsByLetter(this.cocktailsSet, this.filters.letter);
-			this._updateStates(strengthChanged, ingredChanged, letterChanged, tagChanged);
+			this._updateStates(strengthChanged, ingredChanged, letterChanged);
             this.dataListener.onModelChanged(this.resultSet, this.filters);
 			return 0;
 		} else this.resultSet = this.cocktailsSet;
@@ -158,7 +158,7 @@ var Model = {
 			this.resultSet = DataFilter.cocktailsByIngredients(to_filter, this.filters.ingredients);
 			filtered = true;
 		}
-		this._updateStates(strengthChanged, ingredChanged, letterChanged, tagChanged);
+		this._updateStates(strengthChanged, ingredChanged, letterChanged);
 		this.dataListener.onModelChanged(this.resultSet, this.filters);
 	}
 }

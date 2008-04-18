@@ -3,14 +3,44 @@
  */
 var GoodHelper = {
 	PATH_VOLUMES : '/i/merchandise/volumes/',
-	
-	/**
+    CART_COOKIE  : 'cart',
+
+    serializeCartData: function(cd) {
+        for(var i = 0; i < cd.cocktails.length; i++){
+			// cocktail -> name
+			cd.cocktails[i][0] = cd.cocktails[i][0].name;
+		}
+		for(ingred in cd.goods){
+			cd.goods[ingred].good = null;
+		}
+        return cd;
+    },
+
+    deSerializeCartData: function(cartData){
+    	for(var i = 0; i < cartData.cocktails.length; i++){
+				 // name -> cocktail
+				var name = cartData.cocktails[i][0];
+				cartData.cocktails[i][0] = cocktails[name];
+			}
+		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred][0];
+        return cartData;
+    },
+
+	isBottled: function(good){
+        if((good.volumes.length == 1) &&
+            (good.unit == "шт") && (good.volumes[0][0] == 1)) return false;
+        return true;
+    },
+
+    /**
 	 * Возвращает числительное для данного объема
 	 * @param vol - значение объема
 	 * @param unit - единица измерения
 	 */
 	pluralTxt: function(vol, unit){
 		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
+        if(unit == "штуки") return vol.plural("штука", "штуки", "штук");
+        if(unit == "порция") return vol.plural("порция", "порции", "порций");
 		return unit;
 	},
 	

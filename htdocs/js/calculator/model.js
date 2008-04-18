@@ -6,14 +6,8 @@ function CalculatorModel(view){
 	
 	this.initialize = function(cartData) {
 		// десериализация полученного от контроллера набора
-		if(cartData) {
-			for(var i = 0; i < cartData.cocktails.length; i++){
-				 // name -> cocktail
-				var name = cartData.cocktails[i][0];
-				cartData.cocktails[i][0] = cocktails[name];
-			}
-			for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred][0];
-			this.cartData = cartData;
+		if(cartData) {	
+			this.cartData = GoodHelper.deSerializeCartData(cartData);
 		} else {
 			this.cartData = {};
 			this.cartData.cocktails = [];
