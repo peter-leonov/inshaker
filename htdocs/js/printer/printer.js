@@ -22,7 +22,7 @@ var Printer = {
     cocktailInit: function(param){
         var cocktail = null;
         for(name in cocktails) {
-            if(cocktails[name].name_eng == param) {
+            if(cocktails[name].name_eng.htmlName() == param) {
                 cocktail = cocktails[name];
                 break;
             }
