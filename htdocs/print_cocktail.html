@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/js/printer/printer.js"></script>
     <title>InShaker √  План покупок</title>
 </head>
-<body onLoad="pageLoad()">
+<body>
     <div class="title"><img class="logo" src="/t/print/logo.gif"/><a href="/"><img class="link" src="/t/print/link.gif"/></a></div>
     <div class="content">
         <img id="cocktail_img" src=""/>
@@ -37,6 +37,7 @@
             var loc = window.location.hash;
             Printer.init("cocktail", loc.substr(1, loc.length-1));
         };
+        window.onload = pageLoad();
     </script>
 </body>
 </html>

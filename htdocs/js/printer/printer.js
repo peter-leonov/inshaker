@@ -19,7 +19,14 @@ var Printer = {
         if(this[context+"Init"]) this[context+"Init"](param);
     },
 
+
+    preloadImages: function(){
+        var img = new Image();
+        img.src = this.IMG_MARKER;
+    },
+
     cocktailInit: function(param){
+        this.preloadImages();
         var cocktail = null;
         for(name in cocktails) {
             if(cocktails[name].name_eng.htmlName() == param) {
@@ -32,8 +39,9 @@ var Printer = {
         var toolsRoot     = $(this.ID_TOOLS_LIST);
         var imgsRoot      = $(this.ID_INGREDS_IMGS);
         
+       document.title = "InShaker √  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
-       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";
+       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";     
        for(var i = 0; i < cocktail.receipt.length; i++){
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
@@ -47,17 +55,25 @@ var Printer = {
            var last = (i == (cocktail.tools.length - 1));
            toolsRoot.appendChild(this.createToolElement(cocktail.tools[i], last));
        }
-
+       
+       var imgCounter = 0;
        for(var i = 0; i < cocktail.ingredients.length; i++) {
-            imgsRoot.appendChild(this.createIngredImage(cocktail.ingredients[i][0]));
-       }
+            var img = this.createIngredImage(cocktail.ingredients[i][0]);
+            imgsRoot.appendChild(img);
+            img.onload = function(e){
+                imgCounter++;
+                if(imgCounter == cocktail.ingredients.length) print();
+            }
+       } 
     },
     
     cartInit: function(){
         if(Cookie.get(GoodHelper.CART_COOKIE)){
+            this.preloadImages();
             this.cartData = Cookie.get(GoodHelper.CART_COOKIE);
             this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
+            print();
         } else {
             alert("ERROR: Unable to obtain cartData");
         }
@@ -144,7 +160,9 @@ var Printer = {
         var img = new Image();
         img.src = this.IMG_MARKER;
         div.appendChild(img);
-        div.appendChild(document.createTextNode(pair[0]));
+        var name = pair[0];
+        var txt = name + (goods[name][0].mark ? " " + goods[name][0].mark : "");
+        div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
         cnt.innerHTML = pair[1];
