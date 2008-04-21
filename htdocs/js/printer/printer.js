@@ -26,7 +26,7 @@ var Printer = {
         var self = this;
         img.src = this.IMG_MARKER;
         img.onload = function(e){
-            if(self.wannaPrint) print();
+            if(self.wannaPrint) setTimeout("print()", 500);
         }
     },
 
