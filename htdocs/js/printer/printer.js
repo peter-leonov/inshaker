@@ -13,6 +13,7 @@ var Printer = {
     IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
     IMG_MARKER        : '/t/print/li.gif',
 
+    wannaPrint: false,
     cartData : {},
 
     init: function(context, param) {
@@ -22,7 +23,11 @@ var Printer = {
 
     preloadImages: function(){
         var img = new Image();
+        var self = this;
         img.src = this.IMG_MARKER;
+        img.onload = function(e){
+            if(self.wannaPrint) print();
+        }
     },
 
     cocktailInit: function(param){
@@ -73,7 +78,7 @@ var Printer = {
             this.cartData = Cookie.get(GoodHelper.CART_COOKIE);
             this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
-            print();
+            this.wannaPrint = true;
         } else {
             alert("ERROR: Unable to obtain cartData");
         }

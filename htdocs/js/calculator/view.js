@@ -24,6 +24,7 @@ function CalculatorView() {
 	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
 	this.itemFromPopup = [];
 	
+    if(window.location.href.indexOf(this.INGRED_POPUP) > -1) link.close();
 	var self = this;
 	if(this.addBtn) this.addBtn.addEventListener('mousedown', function(e){
 		self.eventListener.addCocktail(self.cocktailName);
