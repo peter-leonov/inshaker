@@ -715,3 +715,5 @@ button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 
 #bottom	{ font-size: 1.1em; line-height: 1.7; overflow: hidden; color: #788894; clear: both; padding-top: 40px; }
 #bottom .search-error	{ float: right; }
+
+.drag_cursor { cursor: url(/t/grabbing.ico), -moz-grabbing; }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>htdocs/js/cocktails/controller.js</string>
+	<string>htdocs/js/common/dnd.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,28 +29,28 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>htdocs/js/cocktails/controller.js</key>
+		<key>htdocs/js/common/dnd.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>48</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>134</integer>
+				<integer>54</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>107</integer>
+			<integer>18</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>htdocs/js/cocktails/controller.js</string>
+		<string>htdocs/js/common/dnd.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{235, 75}, {816, 946}}</string>
+	<string>{{744, 87}, {922, 932}}</string>
 </dict>
 </plist>

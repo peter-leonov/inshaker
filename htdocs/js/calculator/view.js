@@ -1,14 +1,14 @@
 function CalculatorView() {
-	this.ID_COCKTAILS  = 'cart_cocktails';
-	this.ID_INGREDS    = 'cart_ingredients';
-	this.ID_SUM        = 'cart_sum';
-	this.ID_CONTENTS   = 'cart_contents';
-	this.ID_TOTALS     = 'cart_totals';
-	this.ID_DRAGHERE   = 'cart_draghere';
-	this.CLASS_ADD_BTN = '.bt-want-slap';
-	this.NAME_ELEM     = 'cocktail_name';
+	this.ID_COCKTAILS   = 'cart_cocktails';
+	this.ID_INGREDS     = 'cart_ingredients';
+	this.ID_SUM         = 'cart_sum';
+	this.ID_CONTENTS    = 'cart_contents';
+	this.ID_TOTALS      = 'cart_totals';
+	this.ID_DROP_TARGET = 'cart_draghere';
+	this.CLASS_ADD_BTN  = '.bt-want-slap';
+	this.NAME_ELEM      = 'cocktail_name';
 	
-	this.INGRED_POPUP = 'shop-cocktail';
+	this.INGRED_POPUP   = 'shop-cocktail';
 	
 	this.KEY_LEFT  = 37;
 	this.KEY_RIGHT = 39;
@@ -18,6 +18,7 @@ function CalculatorView() {
 	this.IGNORED_KEYS = [this.KEY_LEFT, this.KEY_RIGHT, this.KEY_ESC, this.KEY_ENTER, this.KEY_TAB];
 	
 	this.eventListener = null; // controller
+
 	this.lastInputId = "";
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
@@ -29,6 +30,10 @@ function CalculatorView() {
 	if(this.addBtn) this.addBtn.addEventListener('mousedown', function(e){
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
+	
+	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
+		self.eventListener.addCocktail(cocktailName);
+	};
 	
 	$('good_cancel').addEventListener('mousedown', function(e){
 		link.close();
@@ -59,7 +64,7 @@ function CalculatorView() {
 		if(cartData.cocktails.length > 0) {
 			$(this.ID_CONTENTS).style.display = "block";
 			$(this.ID_TOTALS).style.display = "block";
-			$(this.ID_DRAGHERE).style.display = "none";
+			$(this.ID_DROP_TARGET).style.display = "none";
 			
 			var cocktailsParent = $(this.ID_COCKTAILS);
 			var ingredsParent = $(this.ID_INGREDS);
@@ -91,7 +96,7 @@ function CalculatorView() {
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
 			$(this.ID_TOTALS).style.display = "none";
-			$(this.ID_DRAGHERE).style.display = "block";
+			$(this.ID_DROP_TARGET).style.display = "block";
 		}
 	};
 	

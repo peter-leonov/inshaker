@@ -16,6 +16,8 @@ var Controller = {
 
     STRENGTH_STATE_COOKIE : 'strength_state',
     TAG_STATE_COOKIE      : 'tag_state',
+
+	DROP_TARGET   : 'cart_draghere',
 	
     filterElems     : { tag: null, strength: null, letter: null },
 	
@@ -274,6 +276,7 @@ var Controller = {
 		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
 		var img = document.createElement("img");
 		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
+		new Draggable(img, cocktail.name, $(this.DROP_TARGET));
 		var txt = document.createTextNode(cocktail.name);
 		a.appendChild(img);
 		a.appendChild(txt);
