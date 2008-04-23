@@ -17,7 +17,8 @@ var Controller = {
     STRENGTH_STATE_COOKIE : 'strength_state',
     TAG_STATE_COOKIE      : 'tag_state',
 
-	DROP_TARGET   : 'cart_draghere',
+	ID_CART_EMPTY   : 'cart_draghere',
+	ID_CART_FULL    : 'cart_contents',
 	
     filterElems     : { tag: null, strength: null, letter: null },
 	
@@ -27,6 +28,8 @@ var Controller = {
 	riJustInited    : true,
     
 	init: function() {
+		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
+		
 		this.autocompleter = new Autocompleter(Model.ingredients);
 
         this.renderLetters($(this.ALPHABET_RU), Model.cocktailsLetters());
@@ -276,7 +279,7 @@ var Controller = {
 		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
 		var img = document.createElement("img");
 		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
-		new Draggable(img, cocktail.name, $(this.DROP_TARGET));
+		new Draggable(img, cocktail.name, this.DROP_TARGETS);
 		var txt = document.createTextNode(cocktail.name);
 		a.appendChild(img);
 		a.appendChild(txt);

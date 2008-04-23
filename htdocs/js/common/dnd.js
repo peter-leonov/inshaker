@@ -1,11 +1,11 @@
-function Draggable(element, name, dropTarget){
+function Draggable(element, name, dropTargets){
     this.STYLE_CURSOR = 'drag_cursor';
 
 	this.dragObject = null;
     var self = this;
 	var mouseOffset = {};
 
-    element.addEventListener('mousedown', function(e){
+   	element.addEventListener('mousedown', function(e){
         e.preventDefault();
         
 		self.dragObject = element.cloneNode(true);
@@ -15,7 +15,8 @@ function Draggable(element, name, dropTarget){
 		mouseOffset = self.getMouseOffset(element);
 		
 		self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
-        self.dragObject.style.left = (mousePos.x - mouseOffset.x)  + "px";
+		self.dragObject.style.display = "none";
+        self.dragObject.style.left = "0px";
 		
 		document.body.appendChild(self.dragObject);
 		document.body.addClassName(self.STYLE_CURSOR);
@@ -24,16 +25,34 @@ function Draggable(element, name, dropTarget){
 
     document.addEventListener('mouseup', function(e){
         if(self.dragObject) {
-            document.body.removeChild(self.dragObject);
+            var mousePos = self.mouseCoords(e);
+			document.body.removeChild(self.dragObject);
 			document.body.remClassName(self.STYLE_CURSOR);
+			
+			// dropping
+			for(var i = 0; i < dropTargets.length; i++){
+				if(dropTargets[i].style.display != "none"){
+					var targPos    = self.getPosition(dropTargets[i]);
+					var targWidth  = parseInt(dropTargets[i].offsetWidth);
+					var targHeight = parseInt(dropTargets[i].offsetHeight);
+            		
+					if(
+						(mousePos.x > targPos.x)                &&
+						(mousePos.x < (targPos.x + targWidth))  &&
+						(mousePos.y > targPos.y)                &&
+						(mousePos.y < (targPos.y + targHeight))){
+						dropTargets[i].onDrop(name);
+					}
+				}
+			}
             self.dragObject = null;
         }
     }, false);
 
     document.addEventListener('mousemove', function(e){
-        e = e || window.event;
         var mousePos = self.mouseCoords(e);
         if(self.dragObject){
+			self.dragObject.style.display = "block";
             self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
             self.dragObject.style.left = (mousePos.x - mouseOffset.x)  + "px";
             return false;
@@ -53,5 +72,21 @@ function Draggable(element, name, dropTarget){
             y:e.clientY + document.body.scrollTop  - document.body.clientTop
         };
     };
+
+	this.getPosition = function(e){
+		var left = 0;
+		var top  = 0;
+
+		while (e.offsetParent){
+			left += e.offsetLeft;
+			top  += e.offsetTop;
+			e     = e.offsetParent;
+		}
+
+		left += e.offsetLeft;
+		top  += e.offsetTop;
+
+		return {x:left, y:top};
+	};
     
 }

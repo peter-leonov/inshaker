@@ -35,6 +35,10 @@ function CalculatorView() {
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
+	$(this.ID_CONTENTS).onDrop = function(cocktailName){
+		self.eventListener.addCocktail(cocktailName);
+	};
+	
 	$('good_cancel').addEventListener('mousedown', function(e){
 		link.close();
 	}, false);
