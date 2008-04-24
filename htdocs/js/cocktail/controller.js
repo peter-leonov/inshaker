@@ -3,6 +3,8 @@ var Controller = {
 	ID_REC     : 'recommendations',
 	ID_REC_SUR : 'rec_surface',
 	
+	ID_ILLUSTRATION : 'illustration',
+	
 	ID_RELATED : 'related',
 	ID_REL_SUR : 'rel_surface',
 	ID_REL_VPR : 'rel_viewport',
@@ -15,12 +17,19 @@ var Controller = {
 	
 	PATH_MERCH : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
+	
+	ID_CART_EMPTY   : 'cart_draghere',
+	ID_CART_FULL    : 'cart_contents',
 
 	name : "",
 	relatedCount: 10,
 	
 	init: function(){
 		var name = $(this.NAME_ELEM).innerHTML;
+		
+		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
+		new Draggable($(this.ID_ILLUSTRATION), name, this.DROP_TARGETS);
+		
 		Model.dataListener = this;
 		this.bindEvents();
 		Model.init(name);

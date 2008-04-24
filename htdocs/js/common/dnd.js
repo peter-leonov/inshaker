@@ -10,13 +10,9 @@ function Draggable(element, name, dropTargets){
         
 		self.dragObject = element.cloneNode(true);
 		self.dragObject.style.position = "absolute";
-		 
-        var mousePos = self.mouseCoords(e);
+
 		mouseOffset = self.getMouseOffset(element);
-		
-		self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
 		self.dragObject.style.display = "none";
-        self.dragObject.style.left = "0px";
 		
 		document.body.appendChild(self.dragObject);
 		document.body.addClassName(self.STYLE_CURSOR);
@@ -87,6 +83,5 @@ function Draggable(element, name, dropTargets){
 		top  += e.offsetTop;
 
 		return {x:left, y:top};
-	};
-    
+	};   
 }
