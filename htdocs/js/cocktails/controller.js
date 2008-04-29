@@ -100,7 +100,7 @@ var Controller = {
 		var tagLinks = $(this.TAGS_LIST).getElementsByTagName("a");
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(e){
-                if(e.target.getAttribute('disabled') != 'true') {
+                if(e.target.getAttribute('disabled')+"" != 'true') {
                     self.onTagClick(e.target);
                 }
 			}, false);
@@ -109,7 +109,7 @@ var Controller = {
 		var strengthLinks = $(this.STRENGTHS_LIST).getElementsByTagName("a");
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(e){
-				if(e.target.getAttribute('disabled') != 'true') {
+				if(e.target.getAttribute('disabled')+"" != 'true') {
                     self.onStrengthClick(e.target);
                 }
 			}, false);
