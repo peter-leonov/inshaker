@@ -3,17 +3,13 @@ html
 	font-size		: 101%;
 }
 
-/* delete title, where alt="..."  Если подключена програмика - удалить */
-img
-{
-	behavior		: expression( (alt&&!title) ? title = '' : '', runtimeStyle.behavior = 'none' );
-}
-
-.win-shop .opacity
+/*.win-shop .opacity
 {
 	filter			: expression( runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity='+currentStyle.opacity*100+')' );
 	zoom			: 1;
 }
+*/
+
 /*.r-body-wrapper,
 .body-wrapper	{ border: 0 solid #c0c0c0; margin: -1px 0; border-width: 1px 0; height: 100%; position: relative; }
 */
@@ -27,9 +23,9 @@ img
 
 #top .nav img	{ padding-top: 12px; }
 #top h2			{ top: 2px; }
-#mybar h2		{ width: expression( runtimeStyle.width = firstChild.clientWidth); }
+/*#mybar h2		{ width: expression( runtimeStyle.width = firstChild.clientWidth); }*/
 #mybar h2 a		{ display: inline; zoom: 1; }
-.mybar-user .menu	{ display: inline; zoom: 1; width: expression( runtimeStyle.width = clientWidth, style.display = 'block'); }
+/*.mybar-user .menu	{ display: inline; zoom: 1; width: expression( runtimeStyle.width = clientWidth, style.display = 'block'); }*/
 .mybar-user .menu * { display: inline !important; zoom: 1; }
 #b-bill ul.money label input { position: absolute; left: 0; }
 
@@ -43,11 +39,11 @@ img
 
 .column
 {
-	behavior	: expression(
+	scrollbar-face-color	: expression(runtimeStyle.scrollbarFaceColor='#fff',(
 					runtimeStyle.behavior = 'none',
 						insertAdjacentHTML('afterBegin', '<div style="position:relative;top: -1px; border-top: 1px solid #c0c0c0"></div>'),
 						insertAdjacentHTML('beforeEnd', '<div style="position:relative;top: 1px; border-top: 1px solid #c0c0c0"></div>')
-				);
+				));
 }
 .b {
 	scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor='#fff',

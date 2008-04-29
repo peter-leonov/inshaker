@@ -13,7 +13,19 @@ function Draggable(element, name, dropTargets){
     var self = this;
 	var mouseOffset = {};
 
-   	element.addEventListener('mousedown', function(e){
+	element.addEventListener('mousedown', function(e){
+		
+		document.addEventListener('mousemove', function(e){
+	        var mousePos = self.mouseCoords(e);
+	        if(self.dragObject){
+				self.dragObject.style.display = "block";
+	            self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
+	            self.dragObject.style.left = (mousePos.x - mouseOffset.x)  + "px";
+	            return false;
+	        }
+	    }, false);
+	    
+		
         e.preventDefault();
         
 		self.dragObject = element.cloneNode(true);
@@ -50,16 +62,6 @@ function Draggable(element, name, dropTargets){
 				}
 			}
             self.dragObject = null;
-        }
-    }, false);
-
-    document.addEventListener('mousemove', function(e){
-        var mousePos = self.mouseCoords(e);
-        if(self.dragObject){
-			self.dragObject.style.display = "block";
-            self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
-            self.dragObject.style.left = (mousePos.x - mouseOffset.x)  + "px";
-            return false;
         }
     }, false);
 
