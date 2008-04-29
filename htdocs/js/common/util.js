@@ -58,6 +58,18 @@ function lengthOf(obj){
 /**
  * Array enhancements
  */
+if(!Array.indexOf){
+	Array.prototype.indexOf = function(obj){
+    	for(var i = 0; i < this.length; i++){
+        	if(this[i] == obj){
+            	return i;
+        	}
+		}
+		return -1;
+	}
+}
+
+
 Array.prototype.uniq = function(){
 	var tmp = [];
 	for(var i = 0; i < this.length; i++){
@@ -98,14 +110,6 @@ var Cookie = {
     var cookie = Cookie.get(name) || true;
     Cookie.set(name, '', -1);
     return cookie;
-  },
-
-  accept: function() {
-    if (typeof navigator.cookieEnabled == 'boolean') {
-      return navigator.cookieEnabled;
-    }
-    Cookie.set('_test', '1');
-    return (Cookie.erase('_test') = '1');
   }
 };
 

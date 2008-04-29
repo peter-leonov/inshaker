@@ -3,9 +3,12 @@ function CalculatorController(model, view) {
 	view.eventListener = this;
 	
 	this.initialize = function(){
-		if(Cookie.get(GoodHelper.CART_COOKIE)){
-			this.eventListener.initialize(JSON.parse(Cookie.get(GoodHelper.CART_COOKIE)));
-		} else this.eventListener.initialize(null);
+		var self = this;
+		Storage.init(function(){
+			if(Storage.get(GoodHelper.CART)){
+				self.eventListener.initialize(JSON.parse(Storage.get(GoodHelper.CART)));
+			} else self.eventListener.initialize(null);
+		});
 	};
 	
 	this.addCocktail = function(name){
@@ -29,12 +32,12 @@ function CalculatorController(model, view) {
 	};
 	
 	/**
-	 * Сериализация набора данных калькулятора и сохранение его в cookie
+	 * Сериализация набора данных калькулятора и сохранение
 	 */
 	this.saveCartData = function(cartData){
 		var cd = cloneObject(cartData);
 	    cd = GoodHelper.serializeCartData(cd);	
-		Cookie.set(GoodHelper.CART_COOKIE, JSON.stringify(cd));
+		Storage.put(GoodHelper.CART, JSON.stringify(cd));
 	};
 	
 	this.needNewBottle = function(name, bottleId){

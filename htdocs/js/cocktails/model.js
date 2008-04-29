@@ -11,7 +11,7 @@ var Model = {
 		tag         : "",
 		strength    : "",
 		ingredients : [],
-		page        : 0,
+		page        : 0
 	},
     
     // current subsets of strengths and tags
@@ -20,14 +20,15 @@ var Model = {
 	
 	dataListener : null,
 	
-	init: function(filters, states) {
+	init: function(filters, states, forceChange) {
 		this.resultSet = this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
 		if(filters) this.filters = this._completeFilters(filters);
 		
         this.strengthState = states && (states.length > 0) ? states[0] : strengths;
         this.tagState      = states && (states.length > 0) ? states[1] : tags;
         
-        this._applyFilters(!states && this.filters.strength); // well..
+		var ingredChanged = forceChange && (forceChange.indexOf("ingredient") > -1);
+        this._applyFilters(!states && this.filters.strength, ingredChanged); // well..
 	},
 	
 	randomIngredient: function(){

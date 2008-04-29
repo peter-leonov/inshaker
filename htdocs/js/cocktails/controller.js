@@ -13,6 +13,7 @@ var Controller = {
 	SEARCH_EXAMPLE  : 'search_example',
 	
 	FILTER_COOKIE   : 'filters',
+	FORCE_COOKIE    : 'force',
 
     STRENGTH_STATE_COOKIE : 'strength_state',
     TAG_STATE_COOKIE      : 'tag_state',
@@ -45,7 +46,8 @@ var Controller = {
             filters = this._filtersFromCookie();
             states = this._statesFromCookies();
         }
-        Model.init(filters, states);
+		var forceChange = this._forceFromCookies();
+        Model.init(filters, states, forceChange);
  	},
 	
 	_filtersFromRequest: function(){
@@ -75,6 +77,12 @@ var Controller = {
 		var cookie = Cookie.get(this.FILTER_COOKIE);
 		if(cookie) return JSON.parse(cookie);
 		else return null;
+	},
+	
+	_forceFromCookies: function(){
+		var force = Cookie.get(this.FORCE_COOKIE);
+		Cookie.erase(this.FORCE_COOKIE);
+		return force;
 	},
 	
 	bindEvents: function() {
@@ -326,5 +334,5 @@ var Controller = {
 			span.appendChild(a);
 			pointer++;
 		}
-	},	
+	}	
 };

@@ -33,8 +33,7 @@ body { height: 100%; }
 
 a {
 	scrollbar-face-color: expression(
-				runtimeStyle.scrollbarFaceColor = '#fff',
-					(!href) ? setAttribute('href',"#") : ''
+				runtimeStyle.scrollbarFaceColor = '#fff'
 			);
 }
 /*html	{ scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff',
@@ -45,15 +44,15 @@ a {
 
 .b-content ul.cocktails			{ zoom: 1; margin-right: -20px; }
 .b-content ul.cocktails li		{ margin-right: 10px; float: none; display: inline; zoom: 1; }
+.b-content ul.cocktails img {
 
+}
 
 /* png fix */
 .b-more #korol-mira .dragger,
 .b-content ul.cocktails li .love
 {
-	filter	: expression(
-		(runtimeStyle.filter == '') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=crop)' : runtimeStyle.filter,
-		runtimeStyle.backgroundImage = 'none');
+
 }
 
 .tooltip,

@@ -3,7 +3,7 @@
  */
 var GoodHelper = {
 	PATH_VOLUMES : '/i/merchandise/volumes/',
-    CART_COOKIE  : 'cart',
+    CART : 'cart',
 
     serializeCartData: function(cd) {
         for(var i = 0; i < cd.cocktails.length; i++){

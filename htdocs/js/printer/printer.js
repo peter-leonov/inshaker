@@ -17,7 +17,10 @@ var Printer = {
     cartData : {},
 
     init: function(context, param) {
-        if(this[context+"Init"]) this[context+"Init"](param);
+		var self = this;
+		Storage.init(function(){
+			if(self[context+"Init"]) self[context+"Init"](param);
+		});
     },
 
 
@@ -73,9 +76,9 @@ var Printer = {
     },
     
     cartInit: function(){
-        if(Cookie.get(GoodHelper.CART_COOKIE)){
+        if(Storage.get(GoodHelper.CART)){
             this.preloadImages();
-            this.cartData = Cookie.get(GoodHelper.CART_COOKIE);
+            this.cartData = Storage.get(GoodHelper.CART);
             this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;

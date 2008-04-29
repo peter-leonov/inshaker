@@ -19,6 +19,11 @@ var Controller = {
 	selected: [],
 	
 	FILTER_COOKIE  : 'filters',
+	FORCE_COOKIE   : 'force',
+	
+	STRENGTH_STATE_COOKIE : 'strength_state',
+    TAG_STATE_COOKIE      : 'tag_state',
+
 	topCocktail    : null,
 	numCanPrepare  : 0,
 	
@@ -146,6 +151,7 @@ var Controller = {
 		if(this.numCanPrepare > 1){
 			var filters = {};
 			filters.ingredients = this.selected;
+			Cookie.set(this.FORCE_COOKIE, "ingredient");
 			Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
 			window.location.href = "/cocktails.html";
 		} else {
