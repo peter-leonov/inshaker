@@ -435,13 +435,13 @@ label			{ display: block; }
 /* Window, Shoping */
 .win-shop				{ display: none; }
 .win-shop				{ position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
-#overlay				{ background: #fff; opacity: .75; }
+#overlay				{ background: #fff; opacity: 0.75; position: absolute; left: 0; top: 0; bottom: 0; right: 0; }
 .win-shop .win			{ background: url(bg/win/win.png) no-repeat 0 100%; margin: 0 auto; top: 72px; position: relative; width: 620px; padding: 0 19px 19px; }
 .win-shop .win-bg		{ background: url(bg/win/win.png) no-repeat 0 0; position: absolute; top: -20px; width: 658px; height: 20px; left: 0; }
 .win-shop .gadget-wrapper	{ position: relative; }
 .win-shop .main				{ background: #c0c0c0; position: relative;  }
-.win-shop .main .wrapper,
-.win-shop .view-photo .border{ background: #fff url(bg/win/main-bt.gif) repeat-x 0 100%; }
+/*.win-shop .main .wrapper { background: #fff url(bg/win/main-bt.gif) repeat-x 0 100%; }*/
+.win-shop .main .wrapper { background: #fff; }
 .win-shop .main .wrapper	{ margin: 0 1px; position: relative; overflow: hidden; }
 .win-shop .main .wrapper2	{ position: relative; }
 .win-shop .close			{ background: url(icon/close.gif) no-repeat 0 -10px; position: absolute; height: 14px; width: 14px; top: 11px; right: 10px; text-indent: -1000em; }

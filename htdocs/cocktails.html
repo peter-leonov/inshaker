@@ -69,8 +69,7 @@
 					<input type="text" name="text" value="" id="search_input" autocomplete="off"/>
 					<div id="autocomplete" style="display: none;"></div>
 					<small>Например, <a id="search_example">Виски</a></small>
-					<dl id="ingredients_list">
-					</dl>
+					<dl id="ingredients_list"></dl>
 				</fieldset>
 			</form>
 			
@@ -159,76 +158,75 @@
 		Copyright © 2007 InShaker. Все права защищены
 	</p>
 
+</div>
 
-	<!-- магазин -->
-	<div class="win-shop" id="shop-cocktail">
+<!-- магазин -->
+<div class="win-shop" id="shop-cocktail">
 
-		<div id="overlay"></div>
+	<div id="overlay"></div>
 
-		<div class="win">
-			<div class="win-bg"></div>
+	<div class="win">
+		<div class="win-bg"></div>
+		
+		<div class="main b"><div class="wrapper">
+			<a id="good_cancel" class="close">x</a>
+			<h3 id="good_name"></h3>
 			
-			<div class="main b"><div class="wrapper">
-				<a id="good_cancel" class="close">x</a>
-				<h3 id="good_name"></h3>
-				
-				<div class="gallery gallery-nav">
+			<div class="gallery gallery-nav">
+				<p>
+					<a class="zoom">
+						<img id="good_picture" src="" alt="1"/>
+						<!--<b>&nbsp;</b><span>Рассмотреть поближе</span>-->
+					</a>
+				</p>
+				<!--<ul id="good_volumes_previews">
+					<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
+					<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
+					<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
+				</ul>-->
+			</div>
+
+			<div class="content">
+				<div class="loved">
+					<dl>
+						<dt><!-- --></dt>
+						<dd>
+							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
+							<a>Я люблю</a>
+						</dd>
+					</dl>
+				</div>
+				<ul class="composition" id="good_composition">
+					<li id="good_ingredient"></li>
+					<li>Марка: <a id="good_mark"></a></li>
+					<!-- <li>Крепость: крепкий (40%)</li> -->
+				</ul>
+				<p class="desc" id="good_desc"></p>
+				<div class="dots" id="good_needed">
+					<dl><dt>Необходимо</dt><dd id="good_needed_vol"></dd></dl>
+					<dl><dt>Сейчас в счете</dt><dd id="good_needed_have"></dd></dl>
+				</div>
+				<form class="dots" id="good_volumes"></form>
+				<div class="sum">
 					<p>
-						<a class="zoom">
-							<img id="good_picture" src="" alt="1"/>
-							<!--<b>&nbsp;</b><span>Рассмотреть поближе</span>-->
-						</a>
+						<strong id="good_summ">Итого: <i></i></strong>
+						<!--<small>Доставка: 1-2 дня</small>-->
 					</p>
-					<!--<ul id="good_volumes_previews">
-						<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
-						<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
-						<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
-					</ul>-->
+					<button class="bt-add-in-account" id="good_accept">Добавить в счет</button>
 				</div>
+			</div>
+		</div></div>
 
-				<div class="content">
-					<div class="loved">
-						<dl>
-							<dt><!-- --></dt>
-							<dd>
-								<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
-								<a>Я люблю</a>
-							</dd>
-						</dl>
-					</div>
-					<ul class="composition" id="good_composition">
-						<li id="good_ingredient"></li>
-						<li>Марка: <a id="good_mark"></a></li>
-						<!-- <li>Крепость: крепкий (40%)</li> -->
-					</ul>
-					<p class="desc" id="good_desc"></p>
-					<div class="dots" id="good_needed">
-						<dl><dt>Необходимо</dt><dd id="good_needed_vol"></dd></dl>
-						<dl><dt>Сейчас в счете</dt><dd id="good_needed_have"></dd></dl>
-					</div>
-					<form class="dots" id="good_volumes"></form>
-					<div class="sum">
-						<p>
-							<strong id="good_summ">Итого: <i></i></strong>
-							<!--<small>Доставка: 1-2 дня</small>-->
-						</p>
-						<button class="bt-add-in-account" id="good_accept">Добавить в счет</button>
-					</div>
-				</div>
-			</div></div>
-
-			<div class="b-alternative b">
-				<div class="viewport">
-					<a class="prev">←</a>
-					<ul></ul>
-					<a class="next">→</a>
-				</div>
+		<div class="b-alternative b">
+			<div class="viewport">
+				<a class="prev">←</a>
+				<ul></ul>
+				<a class="next">→</a>
 			</div>
 		</div>
 	</div>
-
-
 </div>
+
 
 <script type="text/javascript">
 $.onload(function(){
