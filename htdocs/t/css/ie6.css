@@ -60,7 +60,7 @@ body { height: 100%; }
 
 /*.popup		{ zoom: 1; width: expression( runtimeStyle.width = parentNode.clientWidth+'px' ); }*/
 .b-more dt b	{ margin-bottom: -2px; }
-.win-shop .opacity	{ padding-top: 100%; }
+#overlay		{ padding-top: 100%; }
 .win-shop .win-bg,
 .win-shop .main .wrapper,
 .win-shop .b-alternative,
