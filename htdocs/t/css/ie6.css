@@ -136,6 +136,8 @@ body { height: 100%; }
 #view-video .close { scrollbar-face-color: transparent; }
 
 
+#ingridients-page .b-content { width: 100%; }
+
 
 .mybar-user .menu a:hover * { zoom: 1; }
 /*.mybar-user .menu a b
