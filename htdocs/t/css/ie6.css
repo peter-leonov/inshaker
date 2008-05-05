@@ -122,7 +122,7 @@ body { height: 100%; }
 
 #cocktail-page {  }
 #cocktail-page .b-title {  }
-#cocktail-page .b-content { width: 590px; position: relative; }
+#cocktail-page .b-content { width: 590px; }
 #cocktail-page .hreview { /*border: solid 1px red;*/ }
 #cocktail-page .hreview .top-menu {  }
 #cocktail-page .hreview .top-menu .b { width: 100%; height: 182px; overflow: hidden; }
@@ -133,10 +133,13 @@ body { height: 100%; }
 #cocktail-page .b-content .entry { width: 100%; /*background: green;*/ }
 #cocktail-page #view-how { /*background: red;*/ }
 #cocktail-page #view-how button { bottom: -50px; }
+#cocktail-page .hreview .desc { width: 365px; }
 #view-video .close { scrollbar-face-color: transparent; }
 
 
 #ingridients-page .b-content { width: 100%; }
+#ingridients-page .count-cocktails input { width: 90%; }
+#ingridients-page .you-choise a { font-size: 1px; }
 
 
 .mybar-user .menu a:hover * { zoom: 1; }
@@ -172,9 +175,22 @@ html {  background: url(/t/0.gif); background-attachment: fixed; }
 .b-search form dd span { white-space: normal; }
 .b-search form dd a { position: relative; right: -5px; background: red; }
 
-/* .class.class hack*/
+/* background-position-[xy] hack */
 .b-content .pager .prev	{ background-position-x: 0; }
-.b-content .pager .dis	{ background-position-y: -12px; }
+.b-content .pager .disabled	{ background-position-y: -12px; }
 .b-content .pager .prev, .b-content .pager .next { font-size: 2px; }
 
+#cocktail-page #view-how .prev { background-position-x: 0; }
+
+/*#cocktail-page #view-how .next			{ background-position: -20px -72px; left: auto; right: 19px; top: 48px;}
+#cocktail-page #view-how .prev.disabled { background-position: 0px -92px; cursor: normal;}
+#cocktail-page #view-how .next.disabled { background-position: -20px -92px; cursor: normal;}
+*/
+
+/*.b-more-rec .disabled	{ background-position-y: -38px; cursor: default; }*/
+.b-more-rec .next, .b-more-cocktails .next { background-position-x: -16px; }
+.b-more-rec .next { right: 15px; }
+
+
+#cocktail-page #view-prepare button { bottom: -50px; }
 

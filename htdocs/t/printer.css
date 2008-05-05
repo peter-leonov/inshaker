@@ -33,6 +33,8 @@ h2, dt {
     margin-top: 20px;
     line-height: 25px;
     border-bottom: 3px #5c5c5c solid;
+	zoom: 1;
+	clear: both;
 }
 
 .title   { width: 100%; border-bottom: 60px #000 solid; } 
@@ -41,6 +43,7 @@ img.logo { left: 40px; top: 14px; }
 img.link { right: 40px; top: 24px;}
 
 .content { padding: 40px; }
+#cocktail_img { scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="scale")')&&(src='/lib/img/dot.gif')); }
 
 h1#cocktail_name { margin-bottom: 26px; }
 img#cocktail_img { height: 210px; width: 106px; float: left; }
@@ -57,9 +60,10 @@ ul#receipt li { padding-bottom: 5px; }
 
 dd {
     font-size: 80%;
-    line-height: 40px;
     border-bottom: 1px #000 dashed;
     overflow: hidden;
+	zoom: 1;
+	padding: 12px 0;
 }
 
 dd.last { border: 0; }
