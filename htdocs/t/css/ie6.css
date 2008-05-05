@@ -134,6 +134,8 @@ body { height: 100%; }
 #cocktail-page #view-how { /*background: red;*/ }
 #cocktail-page #view-how button { bottom: -50px; }
 #cocktail-page .hreview .desc { width: 365px; }
+#cocktail-page .hreview button { float: left; }
+
 #view-video .close { scrollbar-face-color: transparent; }
 
 
