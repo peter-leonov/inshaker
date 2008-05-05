@@ -7,41 +7,39 @@
  * @param dropTargets - массив элементов-целей, на которые можно перетаскивать
  */
 function Draggable(element, name, dropTargets){
-    this.STYLE_CURSOR = 'drag_cursor';
-
+	this.STYLE_CURSOR = 'drag_cursor';
+	
 	this.dragObject = null;
-    var self = this;
+	var self = this;
 	var mouseOffset = {};
-
+	
+	function elementMove(e){
+		e.preventDefault()
+		if(self.dragObject){
+			self.dragObject.style.display = "block";
+			self.dragObject.style.top  = (e.pageY - mouseOffset.y) + "px";
+			self.dragObject.style.left = (e.pageX - mouseOffset.x)  + "px";
+			return false;
+		}
+	}
+	
 	element.addEventListener('mousedown', function(e){
-		
-		document.addEventListener('mousemove', function(e){
-	        var mousePos = self.mouseCoords(e);
-	        if(self.dragObject){
-				self.dragObject.style.display = "block";
-	            self.dragObject.style.top  = (mousePos.y - mouseOffset.y) + "px";
-	            self.dragObject.style.left = (mousePos.x - mouseOffset.x)  + "px";
-	            return false;
-	        }
-	    }, false);
-	    
-		
-        e.preventDefault();
-        
+		e.preventDefault()
 		self.dragObject = element.cloneNode(true);
 		self.dragObject.style.position = "absolute";
-
+		
 		mouseOffset = self.getMouseOffset(element);
 		self.dragObject.style.display = "none";
 		
 		document.body.appendChild(self.dragObject);
 		document.body.addClassName(self.STYLE_CURSOR);
-        return false;
-    }, false);
-
-    document.addEventListener('mouseup', function(e){
-        if(self.dragObject) {
-            var mousePos = self.mouseCoords(e);
+		
+		document.addEventListener('mousemove', elementMove, false);
+	}, false);
+	
+	document.addEventListener('mouseup', function(e){
+		document.removeEventListener('mousemove', elementMove, false);
+		if(self.dragObject) {
 			document.body.removeChild(self.dragObject);
 			document.body.remClassName(self.STYLE_CURSOR);
 			
@@ -51,33 +49,23 @@ function Draggable(element, name, dropTargets){
 					var targPos    = self.getPosition(dropTargets[i]);
 					var targWidth  = parseInt(dropTargets[i].offsetWidth);
 					var targHeight = parseInt(dropTargets[i].offsetHeight);
-            		
+					
 					if(
-						(mousePos.x > targPos.x)                &&
-						(mousePos.x < (targPos.x + targWidth))  &&
-						(mousePos.y > targPos.y)                &&
-						(mousePos.y < (targPos.y + targHeight))){
+						(e.pageX > targPos.x)                &&
+						(e.pageX < (targPos.x + targWidth))  &&
+						(e.pageY > targPos.y)                &&
+						(e.pageY < (targPos.y + targHeight))){
 						dropTargets[i].onDrop(name);
 					}
 				}
 			}
-            self.dragObject = null;
+			self.dragObject = null;
         }
     }, false);
 
 	this.getMouseOffset = function(elem){
 		return {x:elem.offsetWidth/2, y:elem.offsetHeight/2};
 	};
-
-    this.mouseCoords = function(e){
-        if(e.pageX || e.pageY) {
-            return {x:e.pageX, y:e.pageY};
-        }
-        return {
-            x:e.clientX + document.body.scrollLeft - document.body.clientLeft,
-            y:e.clientY + document.body.scrollTop  - document.body.clientTop
-        };
-    };
 
 	this.getPosition = function(e){
 		var left = 0;
