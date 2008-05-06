@@ -11,9 +11,7 @@ Storage = {
        	var browser = navigator.userAgent;
 		var rx = Programica.userAgentRegExps;
 		if(rx.Gecko.test(browser)) this.globalStorage(onready);
-		// if(rx.Gecko.test(browser)) this.windowName(onready);
 		else if(rx.MSIE.test(browser)) this.userData(onready);
-		// else if(rx.MSIE.test(browser)) this.windowName(onready);
 		else this.flash8(onready); 
     }
 };
@@ -39,48 +37,42 @@ Storage.globalStorage = function(onready) {
     onready();
 };
 
-/**
- * @browsers WebKit
- */
-Storage.sqlite = function(onready){
-	onready();
-};
 
-Storage.windowName = function(onready){
-	Storage = {
-		put: function(name, value) {
-			var reg = new RegExp(name+"=([^;]+);");
-			if(!window.name.match(reg)) {
-				window.name = window.name + name + "=" + escape(value) + ";";
-			} else {
-				var pair = window.name.match(reg)[0];
-				var idx  = window.name.indexOf(pair);
-				window.name = name + "=" + escape(value) + ";" + window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
-			}
-		},
-		
-		get: function(name) {
-			var reg = new RegExp(name+"=([^;]+);");
-			if(window.name.match(reg)) return unescape(window.name.match(reg)[1]);
-			return null;
-		},
-		
-		remove: function(name) {
-			var reg = new RegExp(name+"=([^;]+);");
-			if(window.name.match(reg)) {
-				var pair = window.name.match(reg)[0];
-				var idx  = window.name.indexOf(pair);
-				window.name = window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
-			}
-			return pair;
-		}, 
-		
-		clear: function() {
-			window.name = "";
-		}
-	}
-	onready();
-};
+// Storage.windowName = function(onready){
+// 	Storage = {
+// 		put: function(name, value) {
+// 			var reg = new RegExp(name+"=([^;]+);");
+// 			if(!window.name.match(reg)) {
+// 				window.name = window.name + name + "=" + escape(value) + ";";
+// 			} else {
+// 				var pair = window.name.match(reg)[0];
+// 				var idx  = window.name.indexOf(pair);
+// 				window.name = name + "=" + escape(value) + ";" + window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
+// 			}
+// 		},
+// 		
+// 		get: function(name) {
+// 			var reg = new RegExp(name+"=([^;]+);");
+// 			if(window.name.match(reg)) return unescape(window.name.match(reg)[1]);
+// 			return null;
+// 		},
+// 		
+// 		remove: function(name) {
+// 			var reg = new RegExp(name+"=([^;]+);");
+// 			if(window.name.match(reg)) {
+// 				var pair = window.name.match(reg)[0];
+// 				var idx  = window.name.indexOf(pair);
+// 				window.name = window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
+// 			}
+// 			return pair;
+// 		}, 
+// 		
+// 		clear: function() {
+// 			window.name = "";
+// 		}
+// 	}
+// 	onready();
+// };
 
 /**
  * @browsers MSIE 5+

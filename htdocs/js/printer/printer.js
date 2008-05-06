@@ -42,11 +42,15 @@ var Printer = {
                 break;
             }
         }
-        var receiptRoot   = $(this.ID_RECEIPT);
-        var ingredsRoot   = $(this.ID_INGREDS_LIST);
-        var toolsRoot     = $(this.ID_TOOLS_LIST);
-        var imgsRoot      = $(this.ID_INGREDS_IMGS);
-        
+  		this.renderCocktail(cocktail);
+    },  
+
+	renderCocktail: function(cocktail){
+	   var receiptRoot   = $(this.ID_RECEIPT);
+       var ingredsRoot   = $(this.ID_INGREDS_LIST);
+       var toolsRoot     = $(this.ID_TOOLS_LIST);
+       var imgsRoot      = $(this.ID_INGREDS_IMGS);
+
        document.title = "InShaker √  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
        $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";     
@@ -63,7 +67,7 @@ var Printer = {
            var last = (i == (cocktail.tools.length - 1));
            toolsRoot.appendChild(this.createToolElement(cocktail.tools[i], last));
        }
-       
+
        var imgCounter = 0;
        for(var i = 0; i < cocktail.ingredients.length; i++) {
             var img = this.createIngredImage(cocktail.ingredients[i][0]);
@@ -72,9 +76,9 @@ var Printer = {
                 imgCounter++;
                 if(imgCounter == cocktail.ingredients.length) print();
             }
-       } 
-    },
-    
+       }
+	},
+
     cartInit: function(){
         if(Storage.get(GoodHelper.CART)){
             this.preloadImages();
@@ -108,12 +112,11 @@ var Printer = {
         var i = 0; 
         var l = lengthOf(cartData.goods);
         for(name in cartData.goods){
-			var item = cartData.goods[name];
 			var bottles = cartData.goods[name].bottles;
 			var j = 0;
             for(id in bottles){
                 var last = (i == (l-1)) && (j == (lengthOf(bottles)-1)); 
-				ingredsRoot.appendChild(this.createIngredElement(item, bottles[id], name, last));
+				ingredsRoot.appendChild(this.createIngredElement(bottles[id], name, last));
                 j++;
 			}
             i++;
@@ -169,7 +172,8 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         var name = pair[0];
-        var txt = name + (goods[name][0].mark ? " " + goods[name][0].mark : "");
+
+        var txt = this.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
@@ -181,7 +185,7 @@ var Printer = {
         return dd;
     },
     
-    createIngredElement: function(item, bottle, name, last) {
+    createIngredElement: function(bottle, name, last) {
         var dd = document.createElement("dd");
         if(last) dd.className = "last";
         
@@ -191,12 +195,13 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         
-        var txt = name + (item.good.mark ? " " + item.good.mark : "");
+		var txt = this.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
-        if(GoodHelper.isBottled(item.good)){
+        
+		if(GoodHelper.isBottled(goods[name][0])){
             var span = document.createElement("span");
-            var spanTxt = " (" + GoodHelper.bottleTxt(name, item.good.unit);
-            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], item.good.unit);
+            var spanTxt = " (" + GoodHelper.bottleTxt(name, goods[name][0].unit);
+            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], goods[name][0].unit);
             spanTxt += ")";
             span.className = "bottle";
             span.innerHTML = spanTxt;
@@ -211,6 +216,14 @@ var Printer = {
         dd.appendChild(cnt);
         return dd;
     },
+
+	getIngredText: function(name){
+		var brand = goods[name][0].brand || "";
+		if(brand.indexOf(name) > -1) name = "";
+		var gap = "";
+		if(brand && name) gap = " ";
+		return name + (brand ? gap + brand : "");
+	},
 
     createToolElement: function(name, last) {
         var dd = document.createElement("dd");
