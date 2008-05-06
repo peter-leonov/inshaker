@@ -20,6 +20,8 @@ var Controller = {
 	
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
+	
+	CLASS_VIEW_HOW_BTN : '.bt-view-how',
 
 	name : "",
 	relatedCount: 10,
@@ -60,6 +62,15 @@ var Controller = {
 				}, false);
 		}
 		link = new Link();
+		
+		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
+		viewHowBtn.addEventListener('click', function(e){
+			mybar_links[0].parentNode.now.remClassName('now');
+			mybar_links[0].addClassName('now');
+			mybar_links[0].parentNode.now = mybar_links[0];
+			link.open("view-how");
+			$(self.ID_ING).RollingImages.goInit(); // Work-around for RI: FIXME
+		}, false);
 		
 		var ingreds_links = cssQuery(".b-content .ingridients dd a");
 		for (var i = 0; i < ingreds_links.length; i++){
