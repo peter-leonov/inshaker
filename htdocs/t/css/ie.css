@@ -34,7 +34,7 @@ html
 .gallery-nav ul li		{ float: none; display: inline; zoom: 1; }
 .dots dl				{ background-position-y: 1.3em; }
 .win-shop .main .zoom b	{ zoom: 1; height: 12px; }
-
+#overlay		{ filter: alpha(opacity=75); }
 .b-search form dl	{ white-space: nowrap; }  
 
 .column

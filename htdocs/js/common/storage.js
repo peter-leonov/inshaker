@@ -11,8 +11,9 @@ Storage = {
        	var browser = navigator.userAgent;
 		var rx = Programica.userAgentRegExps;
 		if(rx.Gecko.test(browser)) this.globalStorage(onready);
-		//else if(rx.Safari.test(browser)) this.sqlite(onready);
+		// if(rx.Gecko.test(browser)) this.windowName(onready);
 		else if(rx.MSIE.test(browser)) this.userData(onready);
+		// else if(rx.MSIE.test(browser)) this.windowName(onready);
 		else this.flash8(onready); 
     }
 };
@@ -45,6 +46,42 @@ Storage.sqlite = function(onready){
 	onready();
 };
 
+Storage.windowName = function(onready){
+	Storage = {
+		put: function(name, value) {
+			var reg = new RegExp(name+"=([^;]+);");
+			if(!window.name.match(reg)) {
+				window.name = window.name + name + "=" + escape(value) + ";";
+			} else {
+				var pair = window.name.match(reg)[0];
+				var idx  = window.name.indexOf(pair);
+				window.name = name + "=" + escape(value) + ";" + window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
+			}
+		},
+		
+		get: function(name) {
+			var reg = new RegExp(name+"=([^;]+);");
+			if(window.name.match(reg)) return unescape(window.name.match(reg)[1]);
+			return null;
+		},
+		
+		remove: function(name) {
+			var reg = new RegExp(name+"=([^;]+);");
+			if(window.name.match(reg)) {
+				var pair = window.name.match(reg)[0];
+				var idx  = window.name.indexOf(pair);
+				window.name = window.name.substr(0, idx) + window.name.substr(idx+pair.length, window.name.length);
+			}
+			return pair;
+		}, 
+		
+		clear: function() {
+			window.name = "";
+		}
+	}
+	onready();
+};
+
 /**
  * @browsers MSIE 5+
  */
@@ -55,46 +92,50 @@ Storage.userData = function(onready) {
         throw new Error("No addBehavior available");
     }
 
-    var storage = document.getElementById('storageElement');
-    if (!storage) {
-        storage = document.createElement('span');
-        document.body.appendChild(storage);
-        storage.addBehavior("#default#userData");
-        // initial element load
-        storage.load(namespace);
-    }
-    
-    Storage = {
-        get: function(key) {
-            return storage.getAttribute(key);
-        },
+	var e = document.createElement("iframe");
+	e.setAttribute('id', 'storageFrame');
+	e.style.border = '0';
+	e.style.width  = '0';
+	e.style.height = '0';
+	var iframe = document.body.appendChild(e);
+	iframe.src='/js/common/proxy.html';
+	
+	iframe.addEventListener('load', function(e){
+		var storage = iframe.contentWindow.document.getElementById('storageElement');
+		storage.load(namespace);
 
-        put: function(key, value) {
-            storage.setAttribute(key, value);
-            storage.save(namespace);
-        },
-        
-        remove: function(key) {
-            storage.removeAttribute(key);
-            storage.save(namespace);
-        },
-        
-        clear: function() {
-            var attrs = storage.XMLDocument.documentElement.attributes;
-            
-            for(var i = 0; i < attrs.length; i++) storage.removeAttribute(attrs[i].name);
-            storage.save(namespace);
-        },
+	    Storage = {
+	        get: function(key) {
+	            return storage.getAttribute(key);
+	        },
 
-        getKeys: function() {
-            var res = [];
-            var attrs = storage.XMLDocument.documentElement.attributes;
-            
-            for(var i = 0; i < attrs.length; i++) res.push(attrs[i].name);
-            return res;
-        }
-    }
-    onready();
+	        put: function(key, value) {
+	            storage.setAttribute(key, value);
+	            storage.save(namespace);
+	        },
+
+	        remove: function(key) {
+	            storage.removeAttribute(key);
+	            storage.save(namespace);
+	        },
+
+	        clear: function() {
+	            var attrs = storage.XMLDocument.documentElement.attributes;
+
+	            for(var i = 0; i < attrs.length; i++) storage.removeAttribute(attrs[i].name);
+	            storage.save(namespace);
+	        },
+
+	        getKeys: function() {
+	            var res = [];
+	            var attrs = storage.XMLDocument.documentElement.attributes;
+
+	            for(var i = 0; i < attrs.length; i++) res.push(attrs[i].name);
+	            return res;
+	        }
+	    }
+	    onready();
+	}, false);
 };
 
 /**
