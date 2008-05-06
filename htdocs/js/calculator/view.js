@@ -236,7 +236,7 @@ function CalculatorView() {
 				img.style.height = "11px";
 				img.style.width  = "14px";
 				
-				a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit) + item.good.volumes[i][0] + " " + GoodHelper.pluralTxt(item.good.volumes[i][0], item.good.unit);
+				a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, item.good.volumes[i][0]) + item.good.volumes[i][0] + " " + GoodHelper.pluralTxt(item.good.volumes[i][0], item.good.unit);
 				a.addEventListener('mousedown', function(j) { return function(e) {
 					self.setPicture(name, item.good, item.good.volumes[j]);
 				}}(i), false);

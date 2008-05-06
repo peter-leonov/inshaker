@@ -49,11 +49,16 @@ var GoodHelper = {
 	 * для заданного ингредиента
 	 * @param ingred - название ингредиента
 	 * @param unit - единица измерения ингредиента
+	 * @param {Number} vol - объем емкости
 	 */
-	bottleTxt: function(ingred, unit){
+	bottleTxt: function(ingred, unit, vol){
 		if(ingred == "Ред Булл") return "Банка ";
-		if(unit == "л")          return "Бутылка ";
-		else if(ingred == "Лед") return "Пакетик ";
+		if(ingred == "Кола") {
+			if([0.33, 0.15].indexOf(vol) > -1) return "Банка ";
+			return "Бутылка ";
+		}
+		if(unit == "л")     return "Бутылка ";
+		if(ingred == "Лед") return "Пакетик ";
 		return "";
 	},
 	

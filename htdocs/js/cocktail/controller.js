@@ -105,7 +105,7 @@ var Controller = {
 				var dd         = document.createElement("dd");
 				var strong     = document.createElement("strong");
 				
-				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit) + good.volumes[i][0] + " " + GoodHelper.pluralTxt(good.volumes[i][0], good.unit);
+				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit, good.volumes[i][0]) + good.volumes[i][0] + " " + GoodHelper.pluralTxt(good.volumes[i][0], good.unit);
 				a.addEventListener('mousedown', function(j) { return function(e) {
 					self.setPicture(ingred, good, good.volumes[j]);
 				}}(i), false);
