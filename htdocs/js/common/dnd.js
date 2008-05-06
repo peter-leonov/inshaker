@@ -14,7 +14,7 @@ function Draggable(element, name, dropTargets){
 	var mouseOffset = {};
 	
 	function elementMove(e){
-		e.preventDefault()
+		e.preventDefault();
 		if(self.dragObject){
 			self.dragObject.style.display = "block";
 			self.dragObject.style.top  = (e.pageY - mouseOffset.y) + "px";
