@@ -265,27 +265,6 @@ Link.prototype._url = function (url)
 	//}
 }
 
-window.pop = function(href){
-	// var form = document.createElement("form");
-	// form.target = "_blank";
-	// form.action = href;
-	// form.style.display = "none";
-	// document.body.appendChild(form);
-	// form.submit();
-	
-	var a = document.createElement("a");
-	a.href = href;
-	a.target = "_blank";
-	document.body.appendChild(a);
-	
-	var e = document.createEvent('MouseEvents');
-	e.initEvent('click', true, true);
-	a.dispatchEvent(e);
-	
-	setTimeout(function(){
-		document.body.removeChild(a);
-	}, 500);
-}
 
 function setCaretPosition(elemId, caretPos) {
 	var elem = $(elemId);
@@ -303,3 +282,4 @@ function setCaretPosition(elemId, caretPos) {
         }
     }
 }
+
