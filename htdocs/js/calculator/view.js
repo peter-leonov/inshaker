@@ -96,7 +96,9 @@ function CalculatorView() {
 			if(cartData.goods[this.lastShownIngred]) {
 				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
 			} 
-			if(this.lastInputId && $(this.lastInputId)) $(this.lastInputId).focus();
+			if(this.lastInputId && $(this.lastInputId)) {
+				setCaretPosition(this.lastInputId, $(this.lastInputId).value.length);
+			}
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
 			$(this.ID_TOTALS).style.display = "none";
