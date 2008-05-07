@@ -38,7 +38,7 @@
             var loc = window.location.hash;
             Printer.init("cocktail", loc.substr(1, loc.length-1));
         };
-        window.onload = pageLoad();
+		window.addEventListener('load', function(e){ pageLoad() }, false);
     </script>
 </body>
 </html>
