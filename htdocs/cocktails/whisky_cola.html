@@ -84,8 +84,8 @@
 							<a rel="tag" href="/cocktails.html?tag=легендарные">легендарные</a>.
 							
 							</p>
-							<button class="bt-want-slap">Хочу приготовить</button>
 							<button class="bt-view-how">Как приготовить</button>
+							<button class="bt-want-slap">Хочу приготовить</button>
 						</div>
 						
 						<!-- Попапы -->
@@ -119,7 +119,7 @@
 								
 							</ul>
 							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.pop("/print_cocktail.html#whisky_cola")'></button>
+							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#whisky_cola")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -414,40 +414,26 @@
 
 	<div class="win-shop" id="shop-gadget">
 
-	<div class="opacity"></div>
+	<div class="opacity" id="overlay"></div>
 
 	<div class="win b-gadget"><div class="win-bg"></div><div class="gadget-wrapper">
 
 
 			<div class="main b"><div class="wrapper">
 				<a onclick="link.close()" class="close">x</a>
-				<h3>Stainless Steel Martini 
-				Shaker and 5-pc. Bar Set</h3>
+				<h3 id="tool_name">Штукенция</h3>
 
 				<div class="gallery gallery-nav">
 					<p>
 						<a class="zoom">
-							<img src="/i/gadget/b/1.jpg" width="212" height="233" alt="1"/>
-						<b></b><span>Рассмотреть поближе</span>
+							<img id="tool_picture" src="/i/gadget/b/1.jpg" alt="1"/>
+						<b></b>
 						</a>
 					</p>
-					<ul>
-						<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
-						<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
-						<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
-					</ul>
 				</div>
 
 				<div class="content">
-					<strong class="cost alert">Стоимость: 270 р.</strong>
-					<p class="desc">Аффинное преобразование, как следует 
-					из вышесказанного, порождает критерий сходимости Коши, как и предполагалось. Линейное уравнение изящно отображает многочлен, что неудивительно.</p>
-					<small class="count"><strong>Количество</strong> <input type="text" name="count" value=""/></small>
-					<small>Доставка товара: 1-2 дня</small>
-					<button class="bt-add-in-account2">Добавить в счет</button>
-					<p class="tags"><b>Ключевые слова</b>: инструменты бармена, коллекция, 
-					сталь, тумблер, нож бармена, ситечко, мерный стаканчик, нож для цедры, дозатор, пестик, шейкер, ДолчеГаббана</p>
-
+					<p class="desc" id="tool_desc">Этим инструменом можно размешивать, взбалтывать коктейли. Но это еще не все.</p>
 				</div>
 			</div></div>
 
@@ -465,7 +451,7 @@
 				</div>
 			</div>
 
-			<div class="view-photo gallery-nav"><div class="border"><div class="bor-wr">
+			<!--<div class="view-photo gallery-nav"><div class="border"><div class="bor-wr">
 				<a onclick="this.parentNode.parentNode.parentNode.hide()" class="close">x</a>
 				<h3><img src="/i/gadget/o/1.jpg" width="584" height="452" alt="1" style="margin: 12px 0 0 2px"/></h3>
 				<ul>
@@ -475,7 +461,7 @@
 					<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a></li>
 				<li class="next"><a></a></li>
 				</ul>
-			</div></div></div>
+			</div></div></div>-->
 			
 		</div></div>
 		

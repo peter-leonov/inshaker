@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>nginx.conf</string>
+	<string>htdocs/js/calculator/controller.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,119 +29,103 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>barman/templates/cocktail.rhtml</key>
+		<key>htdocs/js/calculator/controller.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
-		<key>htdocs/cocktails.html</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>43</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>12</integer>
-		</dict>
-		<key>htdocs/ingredients.html</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>26</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>htdocs/js/common/proxy.html</key>
+		<key>htdocs/js/calculator/view.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>182</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>151</integer>
 		</dict>
 		<key>htdocs/js/common/storage.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>78</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>102</integer>
+				<integer>11</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>69</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>64</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>102</integer>
+				<integer>11</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>78</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>102</integer>
+				<integer>11</integer>
 			</dict>
 		</dict>
-		<key>nginx.conf</key>
+		<key>htdocs/js/common/util.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>50</integer>
+				<integer>282</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<integer>240</integer>
+		</dict>
+		<key>htdocs/js/printer/printer.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>202</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>htdocs/js/calculator/view.js</string>
+		<string>htdocs/js/calculator/controller.js</string>
+		<string>htdocs/js/common/util.js</string>
 		<string>htdocs/js/common/storage.js</string>
-		<string>barman/templates/cocktail.rhtml</string>
-		<string>htdocs/js/common/proxy.html</string>
-		<string>nginx.conf</string>
-		<string>htdocs/ingredients.html</string>
-		<string>htdocs/cocktails.html</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{583, 78}, {1018, 933}}</string>
+	<string>{{430, 44}, {1018, 933}}</string>
 </dict>
 </plist>

@@ -163,8 +163,8 @@ label			{ display: block; }
 
 /*pager list*/
 /*.b-content .p-list a:hover, */
-.b-content .p-list .selected-button		{ color: #fff; background: #666; text-decoration: none; }
-.b-content .p-list a		{ padding: 0 .17em .2em .21em; }
+.b-content .p-list .selected-button		{ color: #ec118f; text-decoration: none; }
+.b-content .p-list a		{ padding: 0pt 8px 0.2em 0px; }
 #letters_all { margin: 0px 4px 0px 0px; }
 
 .b-content .alphabetical				{ background: #efefef; font-size: 110%; margin-bottom: 22px; }
@@ -687,7 +687,7 @@ button.bt-love-her		{ display: none; background-position: 0 -108px; height: 36px
 button.bt-print-how		{ background-position: 0 -180px; height: 36px; width: 147px; }
 button.bt-more			{ background-position: 0 -216px; height: 19px; width: 16px; }
 button.bt-less			{ background-position: -17px -31px; height: 19px; width: 16px; }
-button.bt-send			{ background-position: 0 -236px; height: 38px; width: 110px; }
+button.bt-send			{ background-position: 0 -272px; height: 38px; width: 110px; }
 button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 
 #mybar button.bt-enter		{ background-position: 0 -194px; height: 28px; width: 87px; }

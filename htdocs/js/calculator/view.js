@@ -96,8 +96,9 @@ function CalculatorView() {
 			if(cartData.goods[this.lastShownIngred]) {
 				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
 			} 
+			
 			if(this.lastInputId && $(this.lastInputId)) {
-				setCaretPosition(this.lastInputId, $(this.lastInputId).value.length);
+				putFocus($(this.lastInputId));
 			}
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
@@ -261,7 +262,7 @@ function CalculatorView() {
 							cloneItem.bottles[id] = bottle;
 						}
 						self.renderPopup(cloneItem, name);
-						$(fieldId).focus();
+						putFocus($(fieldId));
 					}
 				}}(name, bottleId, inputQuant.id), false);
             	

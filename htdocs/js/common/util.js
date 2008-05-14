@@ -266,6 +266,10 @@ Link.prototype._url = function (url)
 }
 
 
+function putFocus(input){
+	input.focus();
+}
+
 function setCaretPosition(elemId, caretPos) {
 	var elem = $(elemId);
 
