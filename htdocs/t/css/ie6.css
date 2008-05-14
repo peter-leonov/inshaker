@@ -131,7 +131,8 @@ body { height: 100%; }
 #panel_cocktail a b { border: none; }
 #cocktail-page .b-content .entry { width: 100%; /*background: green;*/ }
 #cocktail-page #view-how { /*background: red;*/ }
-#cocktail-page #view-how button { bottom: -50px; }
+#cocktail-page #view-how button { position: static; margin: 15px;  }
+#cocktail-page #view-how button.bt-close-how { margin-left: 200px;  }
 #cocktail-page .hreview .desc { width: 365px; }
 #cocktail-page .hreview button { float: left; }
 
