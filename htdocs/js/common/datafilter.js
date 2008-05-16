@@ -39,7 +39,7 @@ var DataFilter = {
 			var numWhole = Math.round(dose/cv[0]);
 			
 			if(numWhole >= 3) {
-				dose -= cv[0]*(numWhole-2);
+				dose -= cv[0]*(numWhole-1);
 				cutted = true;
 			}
 			
@@ -50,11 +50,11 @@ var DataFilter = {
 			res[ingred].bottles = this.getCheapestSet(this.good_paths);
 			
 			if(cutted){
-				if(res[ingred].bottles[cv[0]]) res[ingred].bottles[cv[0]].count+=(numWhole-2);
+				if(res[ingred].bottles[cv[0]]) res[ingred].bottles[cv[0]].count+=(numWhole-1);
 				else {
 					res[ingred].bottles[cv[0]] = {};
 					res[ingred].bottles[cv[0]].vol = cv;
-					res[ingred].bottles[cv[0]].count = (numWhole-2);
+					res[ingred].bottles[cv[0]].count = (numWhole-1);
 				}
 			}
 		}
