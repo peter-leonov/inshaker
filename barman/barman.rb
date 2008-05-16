@@ -14,6 +14,7 @@ module Config
   BASE_DIR           = "base/"
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
   MERCH_DIR          = BASE_DIR + "Merchandise/"
+  TOOLS_DIR          = MERCH_DIR + "Tools/"
   
   HTDOCS_DIR         = "../htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
@@ -30,6 +31,7 @@ module Config
   INGREDS_DIR   = MERCH_ROOT + "ingredients/"
   VOLUMES_DIR   = MERCH_ROOT + "volumes/"
   BANNERS_DIR   = MERCH_ROOT + "banners/"
+  TOOLS_ROOT    = MERCH_ROOT + "tools/"
   
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
@@ -44,7 +46,7 @@ class Barman
     @tags        = []
     @ingredients = []
     @strengths   = []
-    @tools       = []
+    @tools       = {}
     @goods       = {}
   end
   
@@ -130,6 +132,15 @@ class Barman
     @cocktails.each do |name, hash|
       from = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
       to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
+      FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
+    end
+  end
+  
+  def flush_tools
+    opt = {:remove_destination => true}
+    @tools.each do |tool, desc|
+      from = Dir.pwd + "/" + Config::TOOLS_DIR + tool + "/image.png"
+      to   = Config::TOOLS_ROOT + tool.trans + ".png"
       FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
   end
@@ -253,8 +264,8 @@ private
   def parse_tools(tools)
     tools = tools.split("\n")
     tools.each do |tool|
-      if !@tools.include? tool
-        @tools << tool
+      if !@tools.has_key? tool
+        @tools[tool] = get_tool_desc(tool)
       end
       @cocktail[:tools] << tool
     end
@@ -318,6 +329,14 @@ private
     end
   end
   
+  def get_tool_desc(tool)
+    old_dir = Dir.pwd
+    Dir.chdir "../../../" + Config::TOOLS_DIR + tool
+    desc = File.exists?("about.txt") ? File.open("about.txt").read : ""
+    Dir.chdir old_dir
+    return desc
+  end
+  
   def get_desc(ingredient, brand)
     dir  = Dir.pwd + "/" + ingredient + "/"
     dir += (brand.empty?) ? "" : brand + "/"
@@ -342,6 +361,8 @@ def go
   joe.flush_videos                                      
   puts "Flushing goods to #{Config::MERCH_ROOT}"        
   joe.flush_goods
+  puts "Flushing tools to #{Config::TOOLS_ROOT}"
+  joe.flush_tools
 end
 
 # Here 
