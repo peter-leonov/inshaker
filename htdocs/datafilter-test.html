@@ -43,7 +43,7 @@
 		var min = Infinity
 		var the_one = null
 		
-		function walk (summ_vol, summ_cost)
+		function walk (summ_vol, summ_cost, vols_length, vols, costs)
 		{
 			for (var i = 0; i < vols_length; i++)
 			{
@@ -53,12 +53,10 @@
 				var now_cost = summ_cost + cost
 				var now_vol = summ_vol + vol
 				
-				// code below this condition is calling very rarely
-				// only 3-5 times for complex computation
 				if (now_cost >= min)
 					continue
 				
-				stack.push(vol)
+				stack[stack.length] = vol
 				if (now_vol >= tail)
 				{
 					min = now_cost
@@ -66,12 +64,12 @@
 					// console.info(now_vol, now_cost, stack.slice())
 				}
 				else
-					walk(now_vol, now_cost)
-				stack.pop()
+					walk(now_vol, now_cost, vols_length, vols, costs)
+				stack.length--
 			}
 		}
 		
-		walk(0, 0)
+		walk(0, 0, vols_length, vols, costs)
 		
 		var answer = {}
 		for (var i = 0; i < the_one.length; i++)
