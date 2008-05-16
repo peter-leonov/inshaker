@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<title>DataFilter test</title>
+</head>
+<body>
+<script>
+	function onload ()
+	{
+		var vols =  [2,   1,   0.5,  0.33,  0.25,  0.15]
+		var costs = [52,  38,  32,   30,    35,    30]
+		
+		console.log('minimal = ' + count(2.4, 0, vols, costs))
+	}
+	
+	function count (max_vol, now, vols, costs)
+	{
+		var vol_index = 0
+		var vols_length = vols.length
+		
+		var stack = []
+		var summ_cost = 0
+		var summ_vol = 0
+		var min_cost = Infinity //Math.floor(max / vols[0]) + 1) * costs[0]
+		var the_one = null
+		
+		function walk (summ_vol, summ_cost)
+		{
+			for (var i = 0; i < vols_length; i++)
+			{
+				var step_cost = costs[i]
+				var step_vol = vols[i]
+				
+				if (summ_vol + step_vol >= max_vol)
+				{
+					console.log(summ_vol + step_vol)
+					if (summ_cost + step_cost < min_cost)
+					{
+						min_cost = summ_cost + step_cost
+						the_one = [summ_cost + step_cost, stack.slice()]
+					}
+					else
+						return
+				}
+				else
+				{
+					stack.push(i)
+					walk(summ_vol + step_vol, summ_cost + step_cost)
+					stack.pop()
+				}
+				
+			}
+		}
+		
+		walk(0, 0)
+		
+		return the_one //variants.sort(function (a, b) { return a[0] - b[0] })[0]
+	}
+</script>
+</body>
+</html>
