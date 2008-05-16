@@ -5,56 +5,88 @@
 </head>
 <body>
 <script>
+	
+	// условия, на которые опирается этот алгоритм:
+	//  литр из большей тары дешевле литра из меньшей
+	//  массивы отсортированы по объему
+	//  лучше купить больше за те же деньги
+	
 	function onload ()
 	{
 		var vols =  [2,   1,   0.5,  0.33,  0.25,  0.15]
 		var costs = [52,  38,  32,   30,    35,    30]
+		var vol = 117.2
 		
-		console.log('minimal = ' + count(2.4, 0, vols, costs))
+		console.time('count')
+		var answer = count(vol, 0, vols, costs)
+		console.timeEnd('count')
+		console.info(answer)
+		
+		// console.time('count reverse')
+		// console.log('minimal = ' + count(vol, 0, vols.reverse(), costs.reverse()))
+		// console.timeEnd('count reverse')
 	}
 	
 	function count (max_vol, now, vols, costs)
 	{
 		var vol_index = 0
 		var vols_length = vols.length
+		var biggest = vols[0]
+		
+		var tail = max_vol % (biggest * 2)
+		var big_bottles_count = (max_vol - tail) / biggest
 		
 		var stack = []
 		var summ_cost = 0
 		var summ_vol = 0
-		var min_cost = Infinity //Math.floor(max / vols[0]) + 1) * costs[0]
+		var min = Infinity
 		var the_one = null
 		
 		function walk (summ_vol, summ_cost)
 		{
 			for (var i = 0; i < vols_length; i++)
 			{
-				var step_cost = costs[i]
-				var step_vol = vols[i]
+				var cost = costs[i]
+				var vol = vols[i]
 				
-				if (summ_vol + step_vol >= max_vol)
+				var now_cost = summ_cost + cost
+				var now_vol = summ_vol + vol
+				
+				// stack.push(vol)
+				// console.log(now_vol, now_cost, stack.slice())
+				// stack.pop()
+				
+				if (now_cost >= min)
+					return
+				
+				stack.push(vol)
+				if (now_vol >= tail)
 				{
-					console.log(summ_vol + step_vol)
-					if (summ_cost + step_cost < min_cost)
-					{
-						min_cost = summ_cost + step_cost
-						the_one = [summ_cost + step_cost, stack.slice()]
-					}
-					else
-						return
+					min = now_cost
+					the_one = stack.slice()
+					// console.info(now_vol, now_cost, stack.slice())
 				}
 				else
-				{
-					stack.push(i)
-					walk(summ_vol + step_vol, summ_cost + step_cost)
-					stack.pop()
-				}
-				
+					walk(now_vol, now_cost)
+				stack.pop()
 			}
 		}
 		
 		walk(0, 0)
 		
-		return the_one //variants.sort(function (a, b) { return a[0] - b[0] })[0]
+		var answer = {}
+		for (var i = 0; i < the_one.length; i++)
+			if (answer[the_one[i]])
+				answer[the_one[i]]++
+			else
+				answer[the_one[i]] = 1
+		
+		if (answer[biggest])
+			answer[biggest] += big_bottles_count
+		else
+			answer[biggest] = big_bottles_count
+		
+		return answer
 	}
 </script>
 </body>
