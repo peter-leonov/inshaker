@@ -13,26 +13,29 @@
 	
 	function onload ()
 	{
-		var vols =  [2,   1,   0.5,  0.33,  0.25,  0.15]
-		var costs = [52,  38,  32,   30,    35,    30]
-		var vol = 117.2
-		
 		console.time('count')
-		var answer = count(vol, 0, vols, costs)
+		var answer = count(117.2, [2, 1, 0.5, 0.33, 0.25, 0.15], [52,  38, 32, 30, 35, 30])
 		console.timeEnd('count')
 		console.info(answer)
 		
-		// console.time('count reverse')
-		// console.log('minimal = ' + count(vol, 0, vols.reverse(), costs.reverse()))
-		// console.timeEnd('count reverse')
+		console.time('count')
+		var answer = count(117.2, [0.5, 0.33], [32, 30])
+		console.timeEnd('count')
+		console.info(answer)
+		
+		console.time('count')
+		var answer = count(1.5, [1, 0.75, 0.5], [20, 14, 10])
+		console.timeEnd('count')
+		console.info(answer)
 	}
 	
-	function count (max_vol, now, vols, costs)
+	function count (max_vol, vols, costs)
 	{
 		var vol_index = 0
 		var vols_length = vols.length
 		var biggest = vols[0]
 		
+		// calculating long tail
 		var tail = max_vol % (biggest * 2)
 		var big_bottles_count = (max_vol - tail) / biggest
 		
@@ -52,12 +55,8 @@
 				var now_cost = summ_cost + cost
 				var now_vol = summ_vol + vol
 				
-				// stack.push(vol)
-				// console.log(now_vol, now_cost, stack.slice())
-				// stack.pop()
-				
 				if (now_cost >= min)
-					return
+					continue
 				
 				stack.push(vol)
 				if (now_vol >= tail)
@@ -81,10 +80,13 @@
 			else
 				answer[the_one[i]] = 1
 		
-		if (answer[biggest])
-			answer[biggest] += big_bottles_count
-		else
-			answer[biggest] = big_bottles_count
+		if (big_bottles_count)
+		{
+			if (answer[biggest])
+				answer[biggest] += big_bottles_count
+			else
+				answer[biggest] = big_bottles_count
+		}
 		
 		return answer
 	}
