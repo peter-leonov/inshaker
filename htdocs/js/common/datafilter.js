@@ -39,7 +39,7 @@ var DataFilter = {
 	},
 	
 	countOptimal: function(max_vol, volumes){
-		var vols = []; var costs = [];
+		var vols = [], costs = [];
 		var j = 0;
 		for(var i = 0; i < volumes.length; i++) {			
 			if(volumes[i][2]) {
@@ -49,27 +49,27 @@ var DataFilter = {
 			}
 		}
 		
-		var vol_index = 0
-		var vols_length = vols.length
-		var biggest = vols[0]
+		var vol_index = 0,
+		vols_length = vols.length,
+		biggest = vols[0],
 		
 		// calculating long tail
-		var tail = max_vol % (biggest * 2)
-		var big_bottles_count = (max_vol - tail) / biggest
+		tail = max_vol % (biggest * 2),
+		big_bottles_count = (max_vol - tail) / biggest,
 		
-		var stack = []
-		var min = Infinity
-		var the_one = null
+		stack = [],
+		min = Infinity,
+		the_one = [],
+		answer = {}
 		
 		function walk (summ_vol, summ_cost, vols_length, vols, costs)
 		{
 			for (var i = 0; i < vols_length; i++)
 			{
-				var cost = costs[i]
-				var vol = vols[i]
-				
-				var now_cost = summ_cost + cost
-				var now_vol = summ_vol + vol
+				var cost = costs[i],
+				vol = vols[i],
+				now_cost = summ_cost + cost,
+				now_vol = summ_vol + vol
 				
 				if (now_cost >= min)
 					continue
@@ -87,9 +87,9 @@ var DataFilter = {
 			}
 		}
 		
-		walk(0, 0, vols_length, vols, costs)
+		if (tail)
+			walk(0, 0, vols_length, vols, costs)
 		
-		var answer = {}
 		for (var i = 0; i < the_one.length; i++)
 			if (answer[the_one[i]]){
 				answer[the_one[i]].count++;
