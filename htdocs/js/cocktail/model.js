@@ -12,6 +12,7 @@ var Model = {
 		this.cocktail = cocktails[name];
 		this.cocktailsSet = toArray(cocktails);
 		this.ingredients = this.cocktail.ingredients;
+		this.tools = tools;
 		
 		this.recs = this._findRecs(this.cocktail);
 		if(this.recs.length == 0) this.dataListener.expandRelated();

@@ -50,7 +50,7 @@ function CalculatorView() {
 		link.close();
 	}, false);
 	
-	$('overlay').addEventListener('click', function(e){
+	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		link.close();
 	}, false);
 	

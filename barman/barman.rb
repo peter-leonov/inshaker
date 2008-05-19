@@ -332,7 +332,7 @@ private
   def get_tool_desc(tool)
     old_dir = Dir.pwd
     Dir.chdir "../../../" + Config::TOOLS_DIR + tool
-    desc = File.exists?("about.txt") ? File.open("about.txt").read : ""
+    desc = File.exists?("about.txt") ? File.open("about.txt").read.html_paragraphs : ""
     Dir.chdir old_dir
     return desc
   end

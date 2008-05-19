@@ -17,6 +17,7 @@ var Controller = {
 	
 	PATH_MERCH : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
+	TOOL_POPUP: 'shop-gadget',
 	
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
@@ -80,6 +81,20 @@ var Controller = {
 				link.open(self.INGRED_POPUP);
 			}}(ingred), false);
 		}
+		
+		var tools_links = cssQuery(".b-content .tools dd a");
+		for (var i = 0; i < tools_links.length; i++){
+			var tool = tools_links[i].innerHTML;
+			tools_links[i].addEventListener('click', function(name){ return function(e){	
+				self.renderToolPopup(name);
+				link.open(self.TOOL_POPUP);
+			}}(tool), false);
+		}
+		
+		if(window.location.href.indexOf(this.TOOL_POPUP) > -1) link.close();
+		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
+			link.close();
+		}, false);
 	},
 	
 	setPicture: function(name, good, vol){
@@ -129,6 +144,13 @@ var Controller = {
 				volsNode.appendChild(dl);
 			}
 		}
+	},
+	
+	renderToolPopup: function(name){
+		var desc = Model.tools[name];
+		$('tool_name').innerHTML = name;
+		$('tool_desc').innerHTML = desc;
+		$('tool_picture').src = this.PATH_MERCH + "tools/" + name.trans() + ".png";
 	},
 	
 	_initNavigationRules: function(menu){
@@ -200,19 +222,49 @@ var Controller = {
 		var parent = $(this.ID_REC_SUR);
 		
 		for(var i = 0; i < recs.length; i++){
-			var div = document.createElement("div");
-			div.className = "point";
-			div.id = "rec_"+(i+1);
-			var img = document.createElement("img");
-			img.src = this.PATH_MERCH + "banners/" + recs[i].banner;
-			img.alt = recs[i].mark;
-			div.appendChild(img);
+			var div = this._createRecommendationElement(recs[i], i);
 			parent.appendChild(div);
 		}
-
+		parent.appendChild(this._createRecommendationElement(recs[0], i));
 		
-		$(this.ID_REC).RollingImages.sync();
-		$(this.ID_REC).RollingImages.goInit();
+		var ri = $(this.ID_REC).RollingImages;
+		switchFrame = function(){
+			var len = ri.points.length
+			var cur = ri.current
+			
+			if(cur == len-2) {
+				var animation = ri.goToFrame(cur+1);
+				animation.addEventListener('complete', function(){
+					ri.goToFrame(0, 'directJump');
+				}, false);
+			} else {
+				ri.goToFrame(cur+1);
+			}
+		}
+		var frameSwitchTimer = setInterval(switchFrame, 2500);
+		var removedLast = false;
+		parent.addEventListener('mouseover', function(){ 
+			clearInterval(frameSwitchTimer);
+			if(!removedLast){
+				parent.removeChild(parent.lastChild);
+				ri.sync();
+				removedLast = true;
+			}
+		}, false);
+		
+		ri.sync();
+		ri.goInit();
+	},
+	
+	_createRecommendationElement: function(rec, num){
+		var div = document.createElement("div");
+		div.className = "point";
+		div.id = "rec_"+(num+1);
+		var img = document.createElement("img");
+		img.src = this.PATH_MERCH + "banners/" + rec.banner;
+		img.alt = rec.mark;
+		div.appendChild(img);
+		return div;	
 	},
 	
 	renderRelated: function(resultSet, perPage){
