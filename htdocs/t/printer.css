@@ -43,7 +43,7 @@ img.logo { left: 40px; top: 14px; }
 img.link { right: 40px; top: 24px;}
 
 .content { padding: 40px; }
-#cocktail_img, #cocktail_ingreds img { scrollbar-base-color:expression(setTimeout(function(){(runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="scale")')&&(src='/lib/img/dot.gif')},1000)); }
+#cocktail_img, #cocktail_ingreds img { scrollbar-base-color:expression(setTimeout(function(){(runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="scale")')&&(src='/t/0.gif')},1000)); }
 
 h1#cocktail_name { margin-bottom: 26px; }
 img#cocktail_img { height: 210px; width: 106px; float: left; }
@@ -51,7 +51,7 @@ div#cocktail_ingreds { min-height: 210px; margin-left: 130px; }
 #cocktail_ingreds img { margin: 0 13px 8px 0; }
 
 ul#receipt {
-    list-style-image: url(bg/cocktail/li.gif);
+    list-style-image: url(bg/cocktail/li.png);
     font-size: 80%;
     margin-left: 20px;
     margin-top: 12px;

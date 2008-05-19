@@ -11,7 +11,7 @@ var Printer = {
 
     IMG_COCKTAIL_PRFX : '/i/cocktail/b/',
     IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
-    IMG_MARKER        : '/t/print/li.gif',
+    IMG_MARKER        : '/t/print/li.png',
 
     wannaPrint: false,
     cartData : {},

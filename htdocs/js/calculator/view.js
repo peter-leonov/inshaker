@@ -234,7 +234,7 @@ function CalculatorView() {
 				
 				if(item.bottles[bottleId] && item.bottles[bottleId].count > 0) {
 					img.src = "/t/icon/checked.png";
-				} else img.src = "/t/border/f.gif"; // blank
+				} else img.src = "/t/border/f.png"; // blank
 				img.alt = "Добавлен";
 				img.style.height = "11px";
 				img.style.width  = "14px";

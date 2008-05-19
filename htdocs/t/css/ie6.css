@@ -1,9 +1,9 @@
 /*
- * © 2007 http://www.markup.programica.ru/
+ * © 2007 http://www.programica.ru/
  * Author - Kornilov Pavel
  */
 @import url(ie.css);
-/*html { filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}*/
+html { filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}
 body { height: 100%; }
 
 #top .nav img { padding-top: 12px; }
@@ -44,14 +44,7 @@ body { height: 100%; }
 
 .win-shop { position: absolute; top: expression(String(document.documentElement.scrollTop)+'px'); }
 
-.b-content ul.cocktails img { scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/lib/img/dot.gif'));
-}
-
-/* png fix */
-.b-more #korol-mira .dragger,
-.b-content ul.cocktails li .love
-{
-
+.b-content ul.cocktails img { scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));
 }
 
 .tooltip,
@@ -113,10 +106,10 @@ body { height: 100%; }
 #mybar-cocktails	li img
 {
 	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod=image)" : '',
-						src = '/t/0.gif');
+						src = '/t/0.png');
 }
 
-#related ul li a img, #poster, #ingreds_surface .point  img { scrollbar-base-color: expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/lib/img/dot.gif')); }
+#related ul li a img, #poster, #ingreds_surface .point  img { scrollbar-base-color: expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png')); }
 
 
 #cocktail-page {  }
@@ -163,7 +156,7 @@ body { height: 100%; }
 #b-bill .total li a { position: relative; }
 
 /* position: fixed */
-html {  background: url(/t/0.gif); background-attachment: fixed; }
+html {  background: url(/t/0.png); background-attachment: fixed; }
 
 #mybar /*posiition: fixed, bottom: 0*/
 {
