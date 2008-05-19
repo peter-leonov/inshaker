@@ -33,80 +33,87 @@ var DataFilter = {
 		for(ingred in res){
 			var dose = res[ingred].dose;
 			var vols = res[ingred].good.volumes;
-			var cv = this.findClosestVol(vols, dose);
-			var cutted = false;
-			
-			var numWhole = Math.round(dose/cv[0]);
-			
-			if(numWhole >= 3) {
-				dose -= cv[0]*(numWhole-1);
-				cutted = true;
-			}
-			
-			this.good_paths = [];
-			for(var i = 0; i < vols.length; i++){
-				this.walk([vols[i]], vols[i][0], vols, dose);
-			}
-			res[ingred].bottles = this.getCheapestSet(this.good_paths);
-			
-			if(cutted){
-				if(res[ingred].bottles[cv[0]]) res[ingred].bottles[cv[0]].count+=(numWhole-1);
-				else {
-					res[ingred].bottles[cv[0]] = {};
-					res[ingred].bottles[cv[0]].vol = cv;
-					res[ingred].bottles[cv[0]].count = (numWhole-1);
-				}
-			}
+			res[ingred].bottles = this.countOptimal(dose, vols);
 		}
 		return res;
 	},
 	
-	getCheapestSet: function(paths){
-		var largestSumm = 0;
-		for(var i = 0; i < paths.length; i++){
-			var currSumm = 0;
-			for(var j = 0; j < paths[i].length; j++) currSumm += paths[i][j][1];
-			if(currSumm > largestSumm) largestSumm = currSumm;
-		}
-		var cheapestSumm = largestSumm;
-		var cheapestIdx = -1;
-		for(var i = 0; i < paths.length; i++){
-			var currSumm = 0;
-			var skip = false;
-			for(var j = 0; j < paths[i].length; j++) {
-				if(!paths[i][j][2]){
-					skip = true;
-					break; // наличие
-				}
-				currSumm += paths[i][j][1];
-			}
-			if(!skip && currSumm <= cheapestSumm) {
-				cheapestSumm = currSumm;
-				cheapestIdx  = i;
+	countOptimal: function(max_vol, volumes){
+		var vols = []; var costs = [];
+		var j = 0;
+		for(var i = 0; i < volumes.length; i++) {			
+			if(volumes[i][2]) {
+				vols[j] = volumes[i][0];
+				costs[j] = volumes[i][1];
+				j++;
 			}
 		}
-		var cheapestPath = paths[cheapestIdx];
-		var bottles = {};
-		for(var i = 0; i < cheapestPath.length; i++){
-			var id = cheapestPath[i][0];
-			if(bottles[id]) bottles[id].count++;
-			else {
-				bottles[id] = {};
-				bottles[id].vol = cheapestPath[i];
-				bottles[id].count = 1;
-			}
-		}
-		return bottles;
-	},
 		
-	walk: function(path, summ, volumes, dose){
-		if(summ >= dose) this.good_paths.push(path);
-		else {
-			for(var i = 0; i < volumes.length; i++){
-				var curr_summ = summ + volumes[i][0];
-				this.walk(path.concat([volumes[i]]), curr_summ, volumes, dose);
+		var vol_index = 0
+		var vols_length = vols.length
+		var biggest = vols[0]
+		
+		// calculating long tail
+		var tail = max_vol % (biggest * 2)
+		var big_bottles_count = (max_vol - tail) / biggest
+		
+		var stack = []
+		var min = Infinity
+		var the_one = null
+		
+		function walk (summ_vol, summ_cost, vols_length, vols, costs)
+		{
+			for (var i = 0; i < vols_length; i++)
+			{
+				var cost = costs[i]
+				var vol = vols[i]
+				
+				var now_cost = summ_cost + cost
+				var now_vol = summ_vol + vol
+				
+				if (now_cost >= min)
+					continue
+				
+				stack[stack.length] = vol
+				if (now_vol >= tail)
+				{
+					min = now_cost
+					the_one = stack.slice()
+					// console.info(now_vol, now_cost, stack.slice())
+				}
+				else
+					walk(now_vol, now_cost, vols_length, vols, costs)
+				stack.length--
 			}
 		}
+		
+		walk(0, 0, vols_length, vols, costs)
+		
+		var answer = {}
+		for (var i = 0; i < the_one.length; i++)
+			if (answer[the_one[i]]){
+				answer[the_one[i]].count++;
+			} else {
+				answer[the_one[i]] = {};
+				answer[the_one[i]].count = 1;
+			}
+		
+		if (big_bottles_count)
+		{
+			if (answer[biggest]) {
+				answer[biggest].count += big_bottles_count;
+			} else {
+				answer[biggest] = {};
+				answer[biggest].count = big_bottles_count;
+			}
+		}
+		
+		for(var i = 0; i < volumes.length; i++){
+			if(answer[volumes[i][0]])
+				answer[volumes[i][0]].vol = volumes[i];
+		}
+		
+		return answer
 	},
 	
 	bottleByIngredientAndVolume: function(goods, ingred, vol){
