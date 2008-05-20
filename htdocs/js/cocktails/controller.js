@@ -1,5 +1,6 @@
 var Controller = {
 	ROLLING_IMGS_ID : 'results_display',
+	ERROR_ID        : 'error_display',
 	RESULTS_ROOT    : 'surface',
 	PAGER_ROOT      : 'p-list',
 	ALPHABET_RU     : 'alphabetical-ru',
@@ -231,16 +232,24 @@ var Controller = {
 	},
 	
 	renderAllPages: function(resultSet){
-		$(this.RESULTS_ROOT).innerHTML=""; // clean up
 		var np = this._getNumOfPages(resultSet, this.perPage);
-		for(var i = 1; i <= np; i++) {
-			var selectedSet = resultSet.slice((i-1)*this.perPage, i*this.perPage);
-			this._renderPage(selectedSet, i);
-		}
-		this._renderPager(np);
 		
-		$(this.ROLLING_IMGS_ID).RollingImages.sync();
-		$(this.ROLLING_IMGS_ID).RollingImages.goInit();
+		if(resultSet.length > 0){
+			$(this.ROLLING_IMGS_ID).style.display = "block";
+			$(this.ERROR_ID).style.display = "none";
+			
+			$(this.RESULTS_ROOT).innerHTML=""; // clean up
+			for(var i = 1; i <= np; i++) {
+				var selectedSet = resultSet.slice((i-1)*this.perPage, i*this.perPage);
+				this._renderPage(selectedSet, i);
+			}
+			this._renderPager(np);
+			$(this.ROLLING_IMGS_ID).RollingImages.sync();
+			$(this.ROLLING_IMGS_ID).RollingImages.goInit();
+		} else {
+			$(this.ROLLING_IMGS_ID).style.display = "none";
+			$(this.ERROR_ID).style.display = "block";
+		}
 	},
 
 	renderSet: function(parent, set){

@@ -718,3 +718,4 @@ button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 #bottom .search-error	{ float: right; }
 
 .drag_cursor { cursor: url(/t/grabbing.ico), -moz-grabbing; }
+#error_display { display: none; }

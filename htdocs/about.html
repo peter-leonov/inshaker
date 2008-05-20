@@ -7,7 +7,8 @@
 	<!--link rel="stylesheet" type="text/css" href="t/css/print-how.css" media="print"/-->
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
-	<script type="text/javaScript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/js/common/util.js"></script>
 	<title>InShaker √ Коктейльный сайт InShaker </title>
 </head>
 <body>
@@ -30,7 +31,7 @@
 		
 					<div class="top-menu"><div class="b">
 						<p class="border-links" id="panel_cocktail">
-							<a href="#view-about" class="now"><b>О проекте</b></a>
+							<a href="#view-about"><b>О проекте</b></a>
 							<a href="#view-stat"><b>Cтатистика</b></a>
 							<a href="#view-advert"><b>Рекламные материалы</b></a>
 						</p>
@@ -53,10 +54,9 @@
 					</div>
 					<div class="content" id="view-advert" style="display:none">
 						<h3>Рекламные материалы</h3>
-						<img src="t/bg/about/preview.png" width="328" height="101" alt=""/>
+						<a href="/inshaker-brand.eps"><img src="t/bg/about/preview.png" width="328" height="101" alt=""/></a>
 						<p>
-						<a href="#.ai">Скачать логотип (.ai)</a>   
-						<a href="#.cdr">Скачать логотип (.cdr)</a>
+						<a href="/inshaker-brand.eps">Скачать логотип (.eps)</a>
 						</p>
 					</div>
 			</div>
@@ -79,10 +79,7 @@
 				<label>и как называется Ваша компания:	<input type="text" name="company" value=""></label>
 				<label>Ваше предложение или вопрос:		<textarea name="text" rows="8" cols="40"></textarea></label>
 				<p><button class="bt-send">Отправить<button></p>
-				<p>
-					Вы также можете связаться с нами по телефону:
-					<img src="t/tel.png" width="198" height="30" alt="499 7888898"/>
-				</p>
+
 				
 			</form>
 		</div>
@@ -101,18 +98,28 @@
 
 
 
-
-
-<script src="js/link.js" type="text/javascript"></script>
 <script type="text/javascript">
 	//Панель с легендой и видео
 	$.onload( function()
 	{
+		$('view-advert').show = function() {
+			this.style.display = "block";
+			$('panel_cocktail').style.marginBottom = "0";
+			$('poster').style.display = "none";
+		}
+		
+		$('view-advert').hide = function(){
+			this.style.display="none";
+			$('panel_cocktail').style.marginBottom = "142px";
+			$('poster').style.display = "block";
+		}
+		
 		menu			= $('panel_cocktail')
 		var menu_links	= menu.getElementsByTagName('a')
-		menu.now		= menu_links[0] // Какая ссылка активна (по умолчанию О проекте )
+		var loc = window.location.hash
 		for (var i = menu_links.length - 1; i >= 0; i--)
 		{
+			if(loc && menu_links[i].href.indexOf(loc) > -1) menu.now = menu_links[i];
 			menu_links[i].addEventListener(
 				'click',
 				function(e)
@@ -126,6 +133,8 @@
 				false
 			)
 		}
+		if(!menu.now) menu.now = menu_links[0];
+		menu.now.addClassName("now");
 		
 		link = new Link()
 		if (!link.url)
@@ -137,12 +146,5 @@
 	
 	
 </script>
-
-
-
-<img src="my.bar-cocktail.png" width="1120" height="1463" alt="" id="mode-l" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
-<img src="my.bar-cocktail.png" width="595" height="842" id="model" alt="" style="display: none; top: 6px; position: absolute; left: 0" />
-
-
 </body>
 </html>
