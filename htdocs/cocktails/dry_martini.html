@@ -1,34 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="imagetoolbar" content="no"/>
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/css/print-plan.css" media="print"/>
 	<!--link rel="stylesheet" type="text/css" href="/t/css/print-how.css" media="print"/-->
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/t/css/ie7.css"/><![endif]-->
-	<script type="text/javascript" src="/lib/base2/cssQuery.js"></script>
-	<script type="text/javascript" src="/lib/json2.js"></script>
-	
-	<script type="text/javascript" src="/lib/Programica.js"></script>
-	<script type="text/javascript" src="/lib/Programica/Widget.js"></script>
-	<script type="text/javascript" src="/lib/Widgets/RollingImages.js"></script>
-	
-	<script type="text/javascript" src="/js/common/util.js"></script>
-	<script type="text/javascript" src="/js/common/storage.js"></script>
-	<script type="text/javascript" src="/js/common/dnd.js"></script>
-	<script type="text/javascript" src="/js/common/db.js"></script>
-	<script type="text/javascript" src="/js/common/good_helper.js"></script>
-	<script type="text/javascript" src="/js/common/datafilter.js"></script>
-	
-	<script type="text/javascript" src="/js/cocktail/model.js"></script>
-	<script type="text/javascript" src="/js/cocktail/controller.js"></script>
-	
-	<script type="text/javascript" src="/js/calculator/model.js"></script>
-	<script type="text/javascript" src="/js/calculator/view.js"></script>
-	<script type="text/javascript" src="/js/calculator/controller.js"></script>
-	<script type="text/javascript" src="/js/calculator/calculator.js"></script>
-	<title>InShaker √ Мартини Драй</title>
+	<script type="text/javascript" src="/js/compiled/cocktail.js"></script>
+	<title>InShaker √ Драй Мартини</title>
 </head>
 <body>
 <div id="main-wrapper">
@@ -36,12 +16,9 @@
 	<div id="top">
 		<h2><a href="/index.html"><img src="/t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
 		
-		<ul class="nav">
-			<li><a href="/index.html">Вечеринки</a></li>
-			<li><a href="/cocktails.html">Коктейли</a></li>
-			<li><a href="/knowledge.html">Университет</a></li>
-			<li><a href="/bars.html">Бары мира</a></li>
-		</ul>
+		<!--<ul class="nav">
+			<li><a href="/cocktails.html" class="now">Коктейли</a></li>
+		</ul>-->
 		
 		<p class="nav2"><a href="/knowledge.html">Университет</a> <a href="/bars.html">Бары мира</a></p>
 	</div>
@@ -49,7 +26,7 @@
 	<div class="column-main-container">
 		<div class="column column-main" id="cocktail-page"><div class="body-wrapper">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мартини Драй</h1>
+				<h1 id="cocktail_name">Драй Мартини</h1>
 				<a href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -60,12 +37,12 @@
 							<a href="#view-how"><b>Как приготовить</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/martini_dry.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/dry_martini.png" width="590" height="210" alt="1" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="/i/cocktail/b/martini_dry.png" alt="Мартини Драй" id="illustration" class="illustration"/>
+							<img src="/i/cocktail/b/dry_martini.png" alt="Драй Мартини" id="illustration" class="illustration"/>
 							<div class="desc">
 								<!--div class="loved">
 									<dl>
@@ -73,7 +50,7 @@
 										<dd><b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b></dd>
 									</dl>
 								</div-->
-								<h2 class="summary">Мартини Драй — Импровизируй</h2>
+								<h2 class="summary">Драй Мартини — Импровизируй!</h2>
 								<div class="description">
 									<p>
 									
@@ -88,8 +65,8 @@
 							<a rel="tag" href="/cocktails.html?tag=легендарные">легендарные</a>.
 							
 							</p>
+							<button class="bt-view-how">Как приготовить</button>
 							<button class="bt-want-slap">Хочу приготовить</button>
-							<button class="bt-love-her">Люблю его</button>
 						</div>
 						
 						<!-- Попапы -->
@@ -103,12 +80,12 @@
 						
 						<div id="view-how">
 							<div class="ingridients"><div class="wrap programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-									<a class="prev"><!-- --></a>
+									<a class="prev"></a>
 									<div class="viewport">
 										<div class="surface" id="ingreds_surface">
 										</div>
 									</div>
-									<a class="next"><!-- --></a>
+									<a class="next"></a>
 							</div></div>
 							<h3>Как приготовить:</h3>
 							<ul>
@@ -123,7 +100,7 @@
 								
 							</ul>
 							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<a href="/print_cocktail.html#martini_dry" target="_blank"><button class="bt-print-how"><!-- --></button></a>
+							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#dry_martini")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -134,7 +111,7 @@
 								menu="false"
 								allowscriptaccess="always" 
 								allowfullscreen="true" 
-								flashvars="width=480&height=330&file=/v/martini_dry.flv" 
+								flashvars="width=480&height=330&file=/v/dry_martini.flv" 
 								/>
 							</div>
 							<a class="close b" onclick="link.close()">закрыть видео</a>
@@ -155,7 +132,7 @@
 						
 						<dd><a>Оливки</a> <strong>1 шт</strong></dd>
 						
-						<dd><a>Лед</a> <strong>4 кубика</strong></dd>
+						<dd><a>Лед</a> <strong>12 кубиков</strong></dd>
 						
 					</dl>
 					<dl class="tools">
@@ -181,8 +158,8 @@
 					<dt><b>Inshaker рекомендует</b></dt>
 					<dd>
 						<div class="programica-rolling-images" id="recommendations">
-							<a class="prev"><!-- --></a>
-							<a class="next"><!-- --></a>
+							<a class="prev"></a>
+							<a class="next"></a>
 							<div class="viewport">
 								<div class="surface" id="rec_surface"></div>
 							</div>
@@ -207,8 +184,8 @@
 					<dt><b>Вам также могут понравиться</b></dt>
 					<dd>
 						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
-							<a class="prev"><!-- --></a>
-							<a class="next"><!-- --></a>
+							<a class="prev"></a>
+							<a class="next"></a>
 							<div class="viewport" id="rel_viewport">
 								<div class="surface" id="rel_surface"></div>
 							</div>
@@ -241,10 +218,10 @@
 		<dl class="to-print">
 			<dt>Штучки <span>4 320 р.</span></dt>
 			<ul class="money">
-				<li><a href="#shop-cocktail">Шейкер</a><span class="to-print"><span><!-- --></span></span></li>
-				<li><a href="#shop-cocktail2">Стрейнер</a><span class="to-print"><span><!-- --></span></span></li>
-				<li><a href="#shop-cocktail">Дробилка для льда</a><span class="to-print"><span><!-- --></span></span></li>
-				<li><a href="#shop-cocktail">Трубочки</a><b>1 кубик</b><span class="to-print"><span><!-- --></span></span></li>
+				<li><a href="#shop-cocktail">Шейкер</a><span class="to-print"><span></span></span></li>
+				<li><a href="#shop-cocktail2">Стрейнер</a><span class="to-print"><span></span></span></li>
+				<li><a href="#shop-cocktail">Дробилка для льда</a><span class="to-print"><span></span></span></li>
+				<li><a href="#shop-cocktail">Трубочки</a><b>1 кубик</b><span class="to-print"><span></span></span></li>
 			</ul>
 		</dl>
 		<!--<dl><dt>Штучки <span>0 р.</span></dt></dl>-->
@@ -266,7 +243,7 @@
 		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
 
 	
-		<a href="about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
+		<a href="/about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
 		Copyright © 2007 InShaker. Все права защищены
 	</p>
 </div>
@@ -275,7 +252,7 @@
 <!-- магазин -->
 <div class="win-shop" id="shop-cocktail">
 	
-	<div class="opacity" id="overlay"><!-- --></div>
+	<div class="opacity" id="overlay"></div>
 	
 	<div class="win">
 		<div class="win-bg"></div>
@@ -301,7 +278,7 @@
 			<div class="content">
 				<div class="loved">
 					<dl>
-						<dt><!-- --></dt>
+						<dt></dt>
 						<dd>
 							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
 							<a>Я люблю</a>
@@ -353,7 +330,7 @@
 
 <div class="win-shop" id="shop-cocktail2">
 	
-	<div class="opacity"><!-- --></div>
+	<div class="opacity"></div>
 	
 	<div class="win">
 		<div class="win-bg"></div>
@@ -379,7 +356,7 @@
 			<div class="content">
 				<div class="loved">
 					<dl>
-						<dt><!-- --></dt>
+						<dt></dt>
 						<dd>
 							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
 							<a>Я люблю</a>
@@ -413,42 +390,30 @@
 			
 	</div>
 	
+</div>
+
+
 	<div class="win-shop" id="shop-gadget">
 
-		<div id="overlay"></div>
+	<div class="opacity" id="overlay"></div>
 
-		<div class="win b-gadget"><div class="win-bg"><!-- --></div><div class="gadget-wrapper">
+	<div class="win b-gadget"><div class="win-bg"></div><div class="gadget-wrapper">
 
 
 			<div class="main b"><div class="wrapper">
 				<a onclick="link.close()" class="close">x</a>
-				<h3>Stainless Steel Martini 
-				Shaker and 5-pc. Bar Set</h3>
+				<h3 id="tool_name">Штукенция</h3>
 
 				<div class="gallery gallery-nav">
 					<p>
 						<a class="zoom">
-							<img src="/i/gadget/b/1.jpg" width="212" height="233" alt="1"/>
-							<b><!-- --></b><span>Рассмотреть поближе</span>
+							<img id="tool_picture" src="/i/gadget/b/1.jpg" alt="1"/>
 						</a>
 					</p>
-					<ul>
-						<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a>1 л</li>
-						<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a>0,7 л</li>
-						<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a>0,33 л</li>
-					</ul>
 				</div>
 
 				<div class="content">
-					<strong class="cost alert">Стоимость: 270 р.</strong>
-					<p class="desc">Аффинное преобразование, как следует 
-					из вышесказанного, порождает критерий сходимости Коши, как и предполагалось. Линейное уравнение изящно отображает многочлен, что неудивительно.</p>
-					<small class="count"><strong>Количество</strong> <input type="text" name="count" value=""/></small>
-					<small>Доставка товара: 1-2 дня</small>
-					<button class="bt-add-in-account2">Добавить в счет</button>
-					<p class="tags"><b>Ключевые слова</b>: инструменты бармена, коллекция, 
-					сталь, тумблер, нож бармена, ситечко, мерный стаканчик, нож для цедры, дозатор, пестик, шейкер, ДолчеГаббана</p>
-
+					<div class="desc" id="tool_desc">Этим инструменом можно размешивать, взбалтывать коктейли. Но это еще не все.</div>
 				</div>
 			</div></div>
 
@@ -466,24 +431,22 @@
 				</div>
 			</div>
 
-			<div class="view-photo gallery-nav"><div class="border"><div class="bor-wr">
+			<!--<div class="view-photo gallery-nav"><div class="border"><div class="bor-wr">
 				<a onclick="this.parentNode.parentNode.parentNode.hide()" class="close">x</a>
 				<h3><img src="/i/gadget/o/1.jpg" width="584" height="452" alt="1" style="margin: 12px 0 0 2px"/></h3>
 				<ul>
-					<li class="prev"><a><!-- --></a></li>
+				<li class="prev"><a></a></li>
 					<li><a><img src="/i/food/s/1.jpg" width="38" height="38" alt="1"/></a></li>
 					<li><a><img src="/i/food/s/2.jpg" width="38" height="38" alt="1"/></a></li>
 					<li><a><img src="/i/food/s/3.jpg" width="38" height="38" alt="1"/></a></li>
-					<li class="next"><a><!-- --></a></li>
+				<li class="next"><a></a></li>
 				</ul>
-			</div></div></div>
+			</div></div></div>-->
 			
 		</div></div>
 		
 	</div>
 	
-</div>
-
 
 
 <script type="text/javascript">
@@ -495,12 +458,6 @@
 	})
 	
 </script>
-
-
-
-<img src="my.bar-cocktail.png" width="1120" height="1463" alt="" id="mode-l" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
-<img src="my.bar-cocktail.png" width="595" height="842" id="model" alt="" style="display: none; top: 6px; position: absolute; left: 0" />
-
 
 </body>
 </html>
