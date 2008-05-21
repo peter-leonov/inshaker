@@ -419,7 +419,7 @@ label			{ display: block; }
 
 #cart_contents { display: none; }
 #cart_totals   { display: none; }
-#cart_draghere { display:none; font-weight: bold; background: transparent url(bg/bill/drag-bg.png) no-repeat 24px; padding: 24px; font-size: 12px; height: 65px;}
+#cart_draghere { display:none; font-weight: bold; background: transparent url(bg/bill/drag-bg.png) no-repeat 24px 24px; padding: 24px; font-size: 12px;}
 #cart_draghere div { width: 212px; padding: 14px 0 10px 42px;}
 #cart_draghere b { color: #7ca527; }
 
@@ -718,4 +718,4 @@ button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 #bottom .search-error	{ float: right; }
 
 .drag_cursor { cursor: url(/t/grabbing.ico), -moz-grabbing; }
-#error_display { display: none; background: transparent url(/t/button/info.png) no-repeat scroll 0%; color: #999999; font-size: 13px; padding: 4px 0pt 0pt 35px; min-height: 35px;}
+#error_display { display: none; background: url(/t/button/info.png) no-repeat; color: #999999; font-size: 13px; padding: 4px 0pt 0pt 35px; min-height: 35px; }

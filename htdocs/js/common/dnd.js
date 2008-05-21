@@ -33,6 +33,9 @@ function Draggable(element, name, dropTargets){
 		
 		document.body.appendChild(self.dragObject);
 		document.body.addClassName(self.STYLE_CURSOR);
+		for(var i = 0; i < dropTargets.length; i++){
+			if(dropTargets[i].onDragStart) dropTargets[i].onDragStart(element);
+		}
 		
 		document.addEventListener('mousemove', elementMove, false);
 	}, false);
@@ -56,6 +59,8 @@ function Draggable(element, name, dropTargets){
 						(e.pageY > targPos.y)                &&
 						(e.pageY < (targPos.y + targHeight))){
 						dropTargets[i].onDrop(name);
+					} else {
+						if(dropTargets[i].onDragEnd) dropTargets[i].onDragEnd();
 					}
 				}
 			}

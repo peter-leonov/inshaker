@@ -31,8 +31,22 @@ function CalculatorView() {
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
 	
+	var dropTargetHeight = 70;
+	$(this.ID_DROP_TARGET).style.height = dropTargetHeight + "px";
+	
 	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
 		self.eventListener.addCocktail(cocktailName);
+		this.style.height = dropTargetHeight + "px";
+	};
+	
+	$(this.ID_DROP_TARGET).onDragEnd = function(){
+		this.style.height = dropTargetHeight + "px";
+	};
+	
+	$(this.ID_DROP_TARGET).onDragStart = function(element){
+		if(this.offsetHeight < element.offsetHeight) {
+			this.animate("easeInCubic", {height: element.offsetHeight*1.2}, 0.15).start();
+		}
 	};
 	
 	$(this.ID_CONTENTS).onDrop = function(cocktailName){
