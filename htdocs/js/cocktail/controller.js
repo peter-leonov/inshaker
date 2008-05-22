@@ -219,39 +219,40 @@ var Controller = {
 	},
 	
 	renderRecommendations: function(recs){
+		var ri = $(this.ID_REC).RollingImages;
 		var parent = $(this.ID_REC_SUR);
 		
 		for(var i = 0; i < recs.length; i++){
 			var div = this._createRecommendationElement(recs[i], i);
 			parent.appendChild(div);
 		}
-		parent.appendChild(this._createRecommendationElement(recs[0], i));
 		
-		var ri = $(this.ID_REC).RollingImages;
-		switchFrame = function(){
-			var len = ri.points.length
-			var cur = ri.current
-			
-			if(cur == len-2) {
-				var animation = ri.goToFrame(cur+1);
-				animation.addEventListener('complete', function(){
-					ri.goToFrame(0, 'directJump');
-				}, false);
-			} else {
-				ri.goToFrame(cur+1);
+		if(recs.length > 1){
+			parent.appendChild(this._createRecommendationElement(recs[0], i));
+			switchFrame = function(){
+				var len = ri.points.length
+				var cur = ri.current
+				
+				if(cur == len-2) {
+					var animation = ri.goToFrame(cur+1);
+					animation.addEventListener('complete', function(){
+						ri.goToFrame(0, 'directJump');
+					}, false);
+				} else {
+					ri.goToFrame(cur+1);
+				}
 			}
+			var frameSwitchTimer = setInterval(switchFrame, 2500);
+			var removedLast = false;
+			parent.addEventListener('mouseover', function(){ 
+				clearInterval(frameSwitchTimer);
+				if(!removedLast){
+					parent.removeChild(parent.lastChild);
+					ri.sync();
+					removedLast = true;
+				}
+			}, false);
 		}
-		var frameSwitchTimer = setInterval(switchFrame, 2500);
-		var removedLast = false;
-		parent.addEventListener('mouseover', function(){ 
-			clearInterval(frameSwitchTimer);
-			if(!removedLast){
-				parent.removeChild(parent.lastChild);
-				ri.sync();
-				removedLast = true;
-			}
-		}, false);
-		
 		ri.sync();
 		ri.goInit();
 	},

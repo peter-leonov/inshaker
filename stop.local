@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# /www/inshaker/apachectl stop
+/www/inshaker/apachectl stop
 /www/inshaker/nginxctl stop

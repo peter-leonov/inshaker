@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# /www/inshaker/apachectl restart
+/www/inshaker/apachectl restart
 /www/inshaker/nginxctl restart

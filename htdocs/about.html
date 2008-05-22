@@ -3,11 +3,10 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="t/default.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="t/css/print-plan.css" media="print"/>
-	<!--link rel="stylesheet" type="text/css" href="t/css/print-how.css" media="print"/-->
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
 	<script type="text/javascript" src="/lib/Programica.js"></script>
+	<script type="text/javascript" src="/lib/Widgets/FormPoster.js"></script>
 	<script type="text/javascript" src="/js/common/util.js"></script>
 	<title>InShaker √ Коктейльный сайт InShaker </title>
 </head>
@@ -72,15 +71,12 @@
 			<div class="b-title">
 				<h2>Сотрудничество</h2>
 			</div>
-			<form action="#" method="post">
-			
+			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="alert('Ваше сообщение было отправлено')">
 				<label>Пожалуйста, представьтесь:		<input type="text" name="name" value=""></label>
-				<label>Укажите как с Вами связаться:	<input type="text" name="adress" value=""></label>
+				<label>Укажите как с Вами связаться:	<input type="text" name="address" value=""></label>
 				<label>и как называется Ваша компания:	<input type="text" name="company" value=""></label>
 				<label>Ваше предложение или вопрос:		<textarea name="text" rows="8" cols="40"></textarea></label>
 				<p><button class="bt-send">Отправить<button></p>
-
-				
 			</form>
 		</div>
 	</div>

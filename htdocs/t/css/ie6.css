@@ -190,3 +190,7 @@ html {  background: url(/t/0.png); background-attachment: fixed; }
 #cocktail-page #view-prepare button { bottom: -50px; }
 
 #autocomplete { position: relative; width: 90%; }
+
+#about-page .b-content { width: 590px; }
+#about-page #poster { position: absolute; top: 42px;}
+#about-page .b-content .content { width: 100%; background: green; }
