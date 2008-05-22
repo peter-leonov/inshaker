@@ -164,7 +164,7 @@ label			{ display: block; }
 /*pager list*/
 /*.b-content .p-list a:hover, */
 .b-content .p-list .selected-button		{ color: #ec118f; text-decoration: none; }
-.b-content .p-list a		{ padding: 0pt 8px 0.2em 0px; }
+.b-content .p-list a		{ padding: 0pt 5px 0.2em 5px; }
 #letters_all { margin: 0px 4px 0px 0px; }
 
 .b-content .alphabetical				{ background: #efefef; font-size: 110%; margin-bottom: 22px; }
