@@ -267,7 +267,12 @@ Link.prototype._url = function (url)
 
 
 function putFocus(input){
-	input.focus();
+	if(Programica.userAgentRegExps.MSIE.test(navigator.userAgent)){
+		setTimeout(function() { 
+			input.focus(); 
+			input.value = input.value;
+		}, 0);
+	} else input.focus();
 }
 
 function setCaretPosition(elemId, caretPos) {

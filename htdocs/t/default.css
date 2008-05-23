@@ -372,7 +372,7 @@ label			{ display: block; }
 #b-cr-about label	{ margin-top: 1em; }
 #b-cr-about button	{ margin: 19px 0 10px; }
 #b-cr-about textarea,
-#b-cr-about input	{ display: block; border: 2px inset #ccc;  background: #fff; width: 262px; }
+#b-cr-about input	{ display: block; border: 1px solid #CCC;  background: #fff; width: 262px; }
 #b-cr-about textarea{ width: 266px; }
 
 
@@ -718,4 +718,4 @@ button.bt-del			{ background-position: 0 -31px;  height: 20px; width: 16px; }
 #bottom .search-error	{ float: right; }
 
 .drag_cursor { cursor: url(/t/grabbing.ico), -moz-grabbing; }
-#error_display { display: none; background: url(/t/button/info.png) no-repeat; color: #999999; font-size: 13px; padding: 4px 0pt 0pt 35px; min-height: 35px; }
+#error_display { display: none; background: url(/t/button/info.png) no-repeat; color: #999999; font-size: 13px; padding: 4px 0pt 0pt 35px; height: 35px; }

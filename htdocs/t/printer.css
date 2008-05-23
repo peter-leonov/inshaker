@@ -43,7 +43,7 @@ img.logo { left: 40px; top: 14px; }
 img.link { right: 40px; top: 24px;}
 
 .content { padding: 40px; }
-#cocktail_img, #cocktail_ingreds img { scrollbar-base-color:expression(setTimeout(function(){(runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="scale")')&&(src='/t/0.gif')},1000)); }
+#cocktail_img, #cocktail_ingreds img { scrollbar-base-color:expression(setTimeout(function(){(runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="scale")')&&(src='/t/0.png')},1000)); }
 
 h1#cocktail_name { margin-bottom: 26px; }
 img#cocktail_img { height: 210px; width: 106px; float: left; }
