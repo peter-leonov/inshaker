@@ -136,6 +136,7 @@ var DataFilter = {
 		for(var i = 0; i < cocktail.ingredients.length; i++) {
 			ingreds.push(cocktail.ingredients[i][0]);
 		}
+		var ingredsCopy = cloneObject(ingreds);
 		possibleSets.push([].concat(ingreds));
 		
 		while(ingreds.length > 1) {
@@ -146,6 +147,8 @@ var DataFilter = {
 			}
 			ingreds.splice(ingreds.length-1, 1);
 		}
+		
+		for(var i = 0; i < ingredsCopy.length; i++) possibleSets.push([].concat(ingredsCopy[i]));
 		
 		for(var i = 0; i < possibleSets.length; i++){
 			var cocktails = this.cocktailsByIngredients(set, possibleSets[i]);

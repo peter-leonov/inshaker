@@ -56,4 +56,4 @@ html
 .hreview .menu p a.now b,
 .hreview .menu p a:hover b { background: #0392f1; }
 #ingridients-page .count-cocktails input { width: 90%; }
-#autocomplete { position: relative; width: 90%; z-index: 1;}
+#autocomplete { position: absolute; margin-left: -123px; margin-top: 21px; width: 90%; z-index: 3;}

@@ -4,6 +4,7 @@ require 'unicode'
 require 'fileutils'
 require 'erb'
 require 'csv'
+require 'RMagick'
 require 'string_util'
 require 'entities'
 $KCODE = 'u'
@@ -24,11 +25,13 @@ module Config
   IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
   IMAGES_BIG_DIR   = IMAGES_DIR + "b/"
   IMAGES_SMALL_DIR = IMAGES_DIR + "s/"
+  IMAGES_PRINT_DIR = IMAGES_DIR + "print/"
   
   VIDEOS_DIR = HTDOCS_DIR + "v/"
   
   MERCH_ROOT    = HTDOCS_DIR + "i/merchandise/"
   INGREDS_DIR   = MERCH_ROOT + "ingredients/"
+  INGREDS_PRINT_DIR = INGREDS_DIR + "print/"
   VOLUMES_DIR   = MERCH_ROOT + "volumes/"
   BANNERS_DIR   = MERCH_ROOT + "banners/"
   TOOLS_ROOT    = MERCH_ROOT + "tools/"
@@ -121,10 +124,20 @@ class Barman
       to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
       to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
       to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
+      to_print = Config::IMAGES_PRINT_DIR + hash[:name_eng].html_name + ".jpg"
+      
       FileUtils.cp_r(from + "big.png", to_big, opt)     unless !File.exists?(from + "big.png")
       FileUtils.cp_r(from + "small.png", to_small, opt) unless !File.exists?(from + "small.png")
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
+      
+      write_print_img(from + "big.png", to_print, [106, 210])
     end
+  end
+  
+  def write_print_img(src, dst, size)
+    img_list = Magick::ImageList.new(src)
+    img_list[0].background_color = "white"
+    img_list.flatten_images.scale(size[0], size[1]).write(dst)
   end
   
   def flush_videos
@@ -153,13 +166,12 @@ class Barman
           unbranded_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/"
 
           from_big   = unbranded_dir + "i_big.png"
-          from_small = unbranded_dir + "i_small.png"
           
-          to_big     = Config::INGREDS_DIR + ingredient.trans + "_big.png"
-          to_small   = Config::INGREDS_DIR + ingredient.trans + "_small.png"
+          to_big   = Config::INGREDS_DIR       + ingredient.trans + ".png"
+          to_print = Config::INGREDS_PRINT_DIR + ingredient.trans + ".jpg"
 
-          FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
-          FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+          FileUtils.cp_r(from_big, to_big, opt)         unless !File.exists?(from_big)
+          write_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
           
           good[:volumes].each do |vol_arr|
             vol_name   = vol_arr[0].to_s.gsub(".", "_")
@@ -177,16 +189,15 @@ class Barman
           
           from_banner = from_dir + "banner.png"
           from_big    = from_dir + "i_big.png"
-          from_small  = from_dir + "i_small.png"
           
           puts "..#{ingredient}" unless !@debug
-          to_big    = Config::INGREDS_DIR + ingredient.trans + "_big.png"
-          to_small  = Config::INGREDS_DIR + ingredient.trans + "_small.png"  
-          to_banner = Config::BANNERS_DIR + good[:mark].trans + ".png"
+          to_big    = Config::INGREDS_DIR       + ingredient.trans  + ".png"
+          to_print  = Config::INGREDS_PRINT_DIR + ingredient.trans  + ".jpg"  
+          to_banner = Config::BANNERS_DIR       + good[:mark].trans + ".png"
           
-          FileUtils.cp_r(from_banner, to_banner, opt) unless !File.exists?(from_banner)
-          FileUtils.cp_r(from_big, to_big, opt)       unless !File.exists?(from_big)
-          FileUtils.cp_r(from_small, to_small, opt)   unless !File.exists?(from_small)
+          FileUtils.cp_r(from_banner, to_banner, opt)   unless !File.exists?(from_banner)
+          FileUtils.cp_r(from_big, to_big, opt)         unless !File.exists?(from_big)
+          write_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
           
           good[:volumes].each do |vol_arr|
             vol_name   = vol_arr[0].to_s.gsub(".", "_")

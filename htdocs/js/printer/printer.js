@@ -9,8 +9,8 @@ var Printer = {
     ID_COCKTAIL_IMG   : 'cocktail_img',
     ID_INGREDS_IMGS   : 'cocktail_ingreds',
 
-    IMG_COCKTAIL_PRFX : '/i/cocktail/b/',
-    IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
+    IMG_COCKTAIL_PRFX : '/i/cocktail/print/',
+    IMG_INGRED_PRFX   : '/i/merchandise/ingredients/print/',
     IMG_MARKER        : '/t/print/li.png',
 
     wannaPrint: false,
@@ -51,9 +51,9 @@ var Printer = {
        var toolsRoot     = $(this.ID_TOOLS_LIST);
        var imgsRoot      = $(this.ID_INGREDS_IMGS);
 
-       document.title = "InShaker √  " + cocktail.name;
+       document.title = "Inshaker √  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
-       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";     
+       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".jpg";     
        for(var i = 0; i < cocktail.receipt.length; i++){
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
@@ -159,7 +159,7 @@ var Printer = {
     
     createIngredImage: function(name){
        var img = new Image();
-       img.src = this.IMG_INGRED_PRFX + name.trans() + "_small.png";
+       img.src = this.IMG_INGRED_PRFX + name.trans() + ".jpg";
        return img;
     },
 

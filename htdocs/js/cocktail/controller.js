@@ -302,7 +302,7 @@ var Controller = {
 		
 		for(var i = 0; i < resultSet.length; i++){
 			var img = document.createElement("img");
-			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + "_big.png";
+			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
 			img.alt = resultSet[i][0];
 			div.appendChild(img);
 		}

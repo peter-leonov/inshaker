@@ -103,7 +103,7 @@ function Autocompleter(set) {
 		field.focus();
 	}
 	
-	this.error = function() { error_div.innerHTML = this.ERR_MESSAGE; }
+	this.error = function() { error_div.style.display = "block"; error_div.innerHTML = this.ERR_MESSAGE; }
 	
 	this._hideSelector = function(up) {
 		if(this.selected_elem){
@@ -157,7 +157,7 @@ function Autocompleter(set) {
 	}
 	
 	this.emptyField = function() { field.value = "" }
-	this.clearResults = function() { error_div.innerHTML = div.innerHTML = ""; }
+	this.clearResults = function() { error_div.style.display = "none"; div.innerHTML = ""; }
 	
 	this.fillResults = function() {
 		for(var i = 0; i < this.result_set.length; i++) {
