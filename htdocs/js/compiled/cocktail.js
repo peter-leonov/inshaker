@@ -1,3 +1,4 @@
+<!--#include file="/js/common/analytics.js" -->
 <!--#include file="/lib/base2/cssQuery.js" -->
 <!--#include file="/lib/json2.js" -->
 <!--#include file="/lib/Programica.js" -->
