@@ -24,7 +24,7 @@
 	<div class="column-main-container">
 		<div class="column column-main" id="about-page"><div class="body-wrapper">
 			<div class="b-title">
-				<h1>Коктейльный сайт Inshaker</h1>
+				<h1>Коктейльный сайт Inshaker</h1><a href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
 		
@@ -100,10 +100,10 @@
 
 
 	<p id="bottom">
-		<span class="search-error">Хотите спросить? <a href="/about.html">Спрашивайте!</a></span>
+		<span class="search-error">Хотите спросить? <a>Спрашивайте!</a></span>
 
 	
-		<a href="/about.html">О проекте</a>   |   <a href="/about.html#view-own-cocktail">Cвой коктейль</a>   |   <a href="/about.html#view-brand-managers">Брэнд менеджерам</a><br/>
+		<a href="#view-about">О проекте</a>   |   <a href="#view-own-cocktail">Cвой коктейль</a>   |   <a href="#view-brand-managers">Брэнд менеджерам</a><br/>
 		Copyright © 2008 Inshaker. Все права защищены
 	</p>
 </div>
@@ -112,7 +112,6 @@
 
 <script type="text/javascript">
 	function formSuccess(){
-		$('form_success').style.height = $('feedback_form').offsetHeight + "px";
 		$('feedback_form').hide();
 		$('form_success').show();
 	}
@@ -137,33 +136,35 @@
 			$('poster').style.display = "block";
 		}
 		
-		menu			= $('panel_cocktail')
-		var menu_links	= menu.getElementsByTagName('a')
-		var loc = window.location.hash
-		for (var i = menu_links.length - 1; i >= 0; i--)
-		{
+		var handler = function(e, element) {
+			var self = element || this;
+			link.open(self);
+			self.parentNode.now.remClassName('now');
+			self.addClassName('now');
+			self.parentNode.now = self;
+			e.preventDefault();
+		};
+		
+		menu = $('panel_cocktail');
+		var menu_links = menu.getElementsByTagName('a');
+		var loc = window.location.hash;
+		for (var i = menu_links.length - 1; i >= 0; i--) {
 			if(loc && menu_links[i].href.indexOf(loc) > -1) menu.now = menu_links[i];
-			menu_links[i].addEventListener(
-				'click',
-				function(e)
-				{
-					link.open(this)
-					this.parentNode.now.remClassName('now') // Скрываем предыдущую активную ссылку
-					this.addClassName('now')
-					this.parentNode.now = this
-					e.preventDefault()
-				},
-				false
-			)
+			menu_links[i].addEventListener('click', handler, false);
 		}
 		if(!menu.now) menu.now = menu_links[0];
 		menu.now.addClassName("now");
 		
-		link = new Link()
-		if (!link.url)
-			link.element = $('view-about')
-		else if (link.url != 'view-about')
-			$('view-about').hide()
+		var bottom_links = $('bottom').getElementsByTagName('a');
+		for(var i = 1; i < bottom_links.length; i++) {
+			bottom_links[i].addEventListener('click', function(idx){ return function(e){
+				handler(e, menu_links[idx]);
+			}}(i-1), false);
+		}
+		
+		link = new Link();
+		if (!link.url) link.element = $('view-about');
+		else if (link.url != 'view-about') $('view-about').hide();
 	})	
 </script>
 </body>

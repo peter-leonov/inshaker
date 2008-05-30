@@ -14,7 +14,7 @@ map { $q->{$_} = $cgi->param($_) } $cgi->param;
 $msg = MIME::Lite->new
 (
 	From    => 'cooperation@inshaker.ru',
-	To      => 'vaskas@contactmaker.ru',
+	To      => 'mail@inshaker.ru, vaskas@contactmaker.ru',
 	Subject =>  encode_mimewords('Предложение или вопрос по иншейкеру', Charset => 'UTF-8'),
 	Type    => 'multipart/mixed'
 );
@@ -24,7 +24,7 @@ $msg->attach
 (
 	Type     => 'text/html; charset=utf-8',
 	Encoding => 'base64',
-	Data     =>  "Имя: ".$q->{name}."<br/>Адрес: ".$q->{address}."<br/>Компания: ".$q->{company}."<br/>Что говорит: ".$q->{text}
+	Data     =>  "Имя: ".$q->{name}."<br/>Контакт: ".$q->{address}."<br/>Компания: ".$q->{company}."<br/>Что говорит: ".$q->{text}
 );
 $msg->attr('X-HTTP-User-Agent' => $ENV{HTTP_USER_AGENT});
 $msg->attr('X-Http-Remote-Addr' => $ENV{HTTP_X_FORWARDED_FOR} || $ENV{HTTP_X_REAL_IP} || $ENV{REMOTE_ADDR});
