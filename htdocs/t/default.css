@@ -439,9 +439,9 @@ label			{ display: block; }
 
 /* Window, Shoping */
 .win-shop				{ display: none; }
-.win-shop				{ position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
-#overlay				{ background: #000; opacity: 0.75; position: absolute; left: 0; top: 0; bottom: 0; right: 0; }
-.win-shop .win			{ background: url(bg/win/win.png) no-repeat 0 100%; margin: 0 auto; top: 72px; position: relative; width: 620px; padding: 0 19px 19px; }
+.win-shop				{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+#overlay				{ background: #000; opacity: 0.75; position: absolute; left: 0; top: 0; bottom: 0; right: 0; z-index: 4;}
+.win-shop .win			{ background: url(bg/win/win.png) no-repeat 0 100%; margin: 0 auto; top: 72px; position: relative; width: 620px; padding: 0 19px 19px; z-index: 5;}
 .win-shop .win-bg		{ background: url(bg/win/win.png) no-repeat 0 0; position: absolute; top: -20px; width: 658px; height: 20px; left: 0; }
 .win-shop .gadget-wrapper	{ position: relative; }
 .win-shop .main				{ background: #c0c0c0; position: relative;  }
