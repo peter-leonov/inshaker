@@ -17,3 +17,8 @@
 <!--#include file="/js/calculator/view.js" -->
 <!--#include file="/js/calculator/controller.js" -->
 <!--#include file="/js/calculator/calculator.js" -->
+
+$.onload(function(){
+	Controller.init();
+	Calculator.init();
+})
