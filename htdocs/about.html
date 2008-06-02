@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="t/default.css" media="screen"/>
 	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="t/css/ie6.css"/><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="t/css/ie7.css"/><![endif]-->
-	<script type="text/javascript" src="/js/compiled/about.js"></script>
 	<title>Inshaker √ Коктейльный сайт</title>
 </head>
 <body>
@@ -82,7 +81,7 @@
 			<div class="b-title">
 				<h2>Сотрудничество</h2>
 			</div>
-			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуйте еще раз.')" id='feedback_form'>
+			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="About.formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуйте еще раз.')" id='feedback_form'>
 				<label>Меня зовут		<input type="text" name="name" value=""></label>
 				<label>мой телефон или email	<input type="text" name="address" value=""></label>
 				<label>я из компании	<input type="text" name="company" value=""></label>
@@ -91,7 +90,7 @@
 			</form>
 			<div id="form_success">
 				Сообщение отправлено
-				<a onclick="formShow()">Отправить еще одно?</a>
+				<a onclick="About.formShow()">Отправить еще одно?</a>
 			</div>
 		</div>
 	</div>
@@ -105,65 +104,6 @@
 		Copyright © 2008 Inshaker. Все права защищены
 	</p>
 </div>
-
-
-
-<script type="text/javascript">
-	function formSuccess(){
-		$('feedback_form').hide();
-		$('form_success').show();
-	}
-	
-	function formShow(){
-		$('form_success').hide();
-		$('feedback_form').show();
-	}
-	
-	//Панель с легендой и видео
-	$.onload( function()
-	{
-		$('view-advert').show = function() {
-			this.style.display = "block";
-			$('panel_cocktail').style.marginBottom = "0";
-			$('poster').style.display = "none";
-		}
-		
-		$('view-advert').hide = function(){
-			this.style.display="none";
-			$('panel_cocktail').style.marginBottom = "142px";
-			$('poster').style.display = "block";
-		}
-		
-		var handler = function(e, element) {
-			var self = element || this;
-			link.open(self);
-			self.parentNode.now.remClassName('now');
-			self.addClassName('now');
-			self.parentNode.now = self;
-			e.preventDefault();
-		};
-		
-		menu = $('panel_cocktail');
-		var menu_links = menu.getElementsByTagName('a');
-		var loc = window.location.hash;
-		for (var i = menu_links.length - 1; i >= 0; i--) {
-			if(loc && menu_links[i].href.indexOf(loc) > -1) menu.now = menu_links[i];
-			menu_links[i].addEventListener('click', handler, false);
-		}
-		if(!menu.now) menu.now = menu_links[0];
-		menu.now.addClassName("now");
-		
-		var bottom_links = $('bottom').getElementsByTagName('a');
-		for(var i = 1; i < bottom_links.length; i++) {
-			bottom_links[i].addEventListener('click', function(idx){ return function(e){
-				handler(e, menu_links[idx]);
-			}}(i-1), false);
-		}
-		
-		link = new Link();
-		if (!link.url) link.element = $('view-about');
-		else if (link.url != 'view-about') $('view-about').hide();
-	})	
-</script>
+<script type="text/javascript" src="/js/compiled/about.js"></script>	
 </body>
 </html>
