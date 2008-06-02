@@ -1,4 +1,3 @@
-<!--#include file="/js/common/analytics.js" -->
 <!--#include file="/lib/base2/cssQuery.js" -->
 <!--#include file="/lib/json2.js" -->
 <!--#include file="/js/common/programica.js" -->
@@ -17,3 +16,5 @@
 <!--#include file="/js/calculator/view.js" -->
 <!--#include file="/js/calculator/controller.js" -->
 <!--#include file="/js/calculator/calculator.js" -->
+
+$.onload(function () { setTimeout(function () { $.include('/js/common/analytics.js') }, 1200) })
