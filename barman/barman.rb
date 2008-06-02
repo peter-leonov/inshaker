@@ -83,7 +83,11 @@ class Barman
     Dir.chdir("../../") # back from merch dir to barman root
   end
   
-  def flush_json     
+  def flush_json
+     @cocktails.each do |name, hash|
+      hash[:desc_start] = hash[:desc_end] = "" # YAGNI
+     end
+     
      cocktails_json   = ActiveSupport::JSON.encode(@cocktails).unescape
      ingredients_json = ActiveSupport::JSON.encode(@ingredients).unescape
      tags_json        = ActiveSupport::JSON.encode(@tags).unescape
@@ -131,6 +135,7 @@ class Barman
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
       
       write_print_img(from + "big.png", to_print, [106, 210])
+      system("optipng " + to_small + " > /dev/null")
     end
   end
   
@@ -361,11 +366,11 @@ def go
   debug = !(ARGV[0] == "-silent")
   joe = Barman.new(debug)
   puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
-  joe.prepare                                           
-  puts "Flushing JSON to #{Config::DB_JS_DIR}"          
-  joe.flush_json                                        
+  joe.prepare
   puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
-  joe.flush_html                                        
+  joe.flush_html                                           
+  puts "Flushing JSON to #{Config::DB_JS_DIR}"          
+  joe.flush_json                                                                              
   puts "Flushing images to #{Config::IMAGES_DIR}"       
   joe.flush_images                                      
   puts "Flushing videos to #{Config::VIDEOS_DIR}"       
