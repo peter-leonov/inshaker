@@ -3,8 +3,7 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" media="print, screen" href="/t/printer.css"/>
-    <script type="text/javascript" src="/js/compiled/print_cocktail.js"></script>
-    <title>Inshaker √  План покупок</title>
+	<title>Inshaker √  План покупок</title>
 </head>
 <body>
     <div class="title"><img class="logo" src="/t/print/logo.png"/><a href="/"><img class="link" src="/t/print/link.png"/></a></div>
@@ -23,12 +22,7 @@
             <dt>Необходимые штучки:</dt>
         </dl>
     </div>
-    <script type="text/javascript">
-        function pageLoad(){
-            var loc = window.location.hash;
-            Printer.init("cocktail", loc.substr(1, loc.length-1));
-        };
-		window.addEventListener('load', function(e){ pageLoad() }, false);
-    </script>
+	<script type="text/javascript" src="/js/common/db.js"></script>
+	<script type="text/javascript" src="/js/compiled/print_cocktail.js"></script>
 </body>
 </html>
