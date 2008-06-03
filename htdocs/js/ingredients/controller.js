@@ -152,7 +152,7 @@ var Controller = {
 			var filters = {};
 			filters.ingredients = this.selected;
 			Cookie.set(this.FORCE_COOKIE, "ingredient");
-			Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
+			Cookie.set(this.FILTER_COOKIE, Object.stringify(filters));
 			window.location.href = "/cocktails.html";
 		} else {
 			Cookie.erase(this.FILTER_COOKIE);

@@ -83,7 +83,7 @@ var Printer = {
         if(Storage.get(GoodHelper.CART)){
             this.preloadImages();
             this.cartData = Storage.get(GoodHelper.CART);
-            this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
+            this.cartData = GoodHelper.deSerializeCartData(Object.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
         } else {

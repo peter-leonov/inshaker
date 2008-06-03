@@ -44,9 +44,9 @@ function spaces(num){
 	return res.join("");
 }
 
-// deep copy using JSON lib ;-)
+// deep copy using JSON-like lib ;-)
 function cloneObject(obj){
-	return JSON.parse(JSON.stringify(obj));
+	return Object.parse(Object.stringify(obj));
 }
 
 function lengthOf(obj){

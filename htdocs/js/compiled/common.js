@@ -1,7 +1,7 @@
 <!--#include file="/lib/base2/cssQuery.js" -->
-<!--#include file="/lib/json2.js" -->
 <!--#include file="/js/common/programica.js" -->
 
+<!--#include file="/lib/Programica/Stringify.js" -->
 <!--#include file="/lib/Programica/Widget.js" -->
 <!--#include file="/lib/Widgets/RollingImages.js" -->
 

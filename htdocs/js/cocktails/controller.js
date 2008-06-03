@@ -68,15 +68,15 @@ var Controller = {
     _statesFromCookies: function(){
         var res = [];
         var ss = Cookie.get(this.STRENGTH_STATE_COOKIE);
-        if(ss) res[0] = JSON.parse(ss);
+        if(ss) res[0] = Object.parse(ss);
         var ts = Cookie.get(this.TAG_STATE_COOKIE);
-        if(ts) res[1] = JSON.parse(ts);
+        if(ts) res[1] = Object.parse(ts);
         return res;
     },
 
 	_filtersFromCookie: function(){
 		var cookie = Cookie.get(this.FILTER_COOKIE);
-		if(cookie) return JSON.parse(cookie);
+		if(cookie) return Object.parse(cookie);
 		else return null;
 	},
 	
@@ -226,9 +226,9 @@ var Controller = {
 	},
 	
 	saveState: function(filters){
-		Cookie.set(this.TAG_STATE_COOKIE, JSON.stringify(Model.tagState));
-        Cookie.set(this.STRENGTH_STATE_COOKIE, JSON.stringify(Model.strengthState));
-        Cookie.set(this.FILTER_COOKIE, JSON.stringify(filters));
+		Cookie.set(this.TAG_STATE_COOKIE, Object.stringify(Model.tagState));
+        Cookie.set(this.STRENGTH_STATE_COOKIE, Object.stringify(Model.strengthState));
+        Cookie.set(this.FILTER_COOKIE, Object.stringify(filters));
 	},
 	
 	renderAllPages: function(resultSet){
