@@ -46,7 +46,7 @@ function CalculatorView() {
 	$(this.ID_DROP_TARGET).onDragStart = function(element){
 		var gap = 50;
 		if(this.offsetHeight < element.offsetHeight+gap) {
-			this.animate("easeInCubic", {height: element.offsetHeight+gap}, 0.15).start();
+			this.animate("easeInCubic", {height: element.offsetHeight+gap}, 0.15);
 		}
 	};
 	
