@@ -101,9 +101,9 @@ var Model = {
 		if(name != this.filters.strength) {
 			this.filters.letter     = ""; // reset
 			this.filters.strength   = name;
-            this.filters.tag = "";
 		} else this.filters.strength = "";
 		this.filters.page = 0; // anyway
+		this.filters.tag = "";
 		this._applyFilters(true, false); 
 	},
 		
