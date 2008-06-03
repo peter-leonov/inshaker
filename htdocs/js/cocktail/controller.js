@@ -235,9 +235,9 @@ var Controller = {
 				
 				if(cur == len-2) {
 					var animation = ri.goToFrame(cur+1);
-					animation.addEventListener('complete', function(){
+					animation.oncomplete = function(){
 						ri.goToFrame(0, 'directJump');
-					}, false);
+					};
 				} else {
 					ri.goToFrame(cur+1);
 				}
