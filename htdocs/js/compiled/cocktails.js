@@ -3,6 +3,7 @@
 <!--#include file="/js/cocktails/controller.js" -->
 
 $.onload(function(){
+	new Programica.RollingImagesLite($('results_display'));
 	Controller.init();
 	Calculator.init();
 })

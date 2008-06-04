@@ -58,7 +58,7 @@ var Controller = {
 					this.parentNode.now.remClassName('now');
 					this.addClassName('now');
 					this.parentNode.now = this;
-					$(self.ID_ING).RollingImages.goInit(); // Work-around for RI: FIXME
+					$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
 				}, false);
 		}
@@ -70,7 +70,7 @@ var Controller = {
 			mybar_links[0].addClassName('now');
 			mybar_links[0].parentNode.now = mybar_links[0];
 			link.open("view-how");
-			$(self.ID_ING).RollingImages.goInit(); // Work-around for RI: FIXME
+			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
 		var ingreds_links = cssQuery(".b-content .ingridients dd a");
@@ -219,7 +219,7 @@ var Controller = {
 	},
 	
 	renderRecommendations: function(recs){
-		var ri = $(this.ID_REC).RollingImages;
+		var ri = $(this.ID_REC).RollingImagesLite;
 		var parent = $(this.ID_REC_SUR);
 		
 		for(var i = 0; i < recs.length; i++){
@@ -276,8 +276,8 @@ var Controller = {
 			var selectedSet = resultSet.slice((i-1)*perPage, i*perPage);
 			this._renderPage(selectedSet, i, perPage);
 		}
-		$(this.ID_RELATED).RollingImages.sync();
-		$(this.ID_RELATED).RollingImages.goInit();
+		$(this.ID_RELATED).RollingImagesLite.sync();
+		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 	
 	renderIngredients: function(ingredients) {
@@ -289,8 +289,8 @@ var Controller = {
 			this._renderIngPage(selectedSet, i);
 		}
 		
-		$(this.ID_ING).RollingImages.sync();
-		$(this.ID_ING).RollingImages.goInit();
+		$(this.ID_ING).RollingImagesLite.sync();
+		$(this.ID_ING).RollingImagesLite.goInit();
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
