@@ -1,10 +1,6 @@
 <!--#include file="/lib/base2/cssQuery.js" -->
 <!--#include file="/js/common/programica.js" -->
 
-<!--#include file="/lib/Programica/Stringify.js" -->
-<!--#include file="/lib/Programica/Widget.js" -->
-<!--#include file="/lib/Widgets/RollingImages.js" -->
-
 <!--#include file="/js/common/util.js" -->
 <!--#include file="/js/common/storage.js" -->
 <!--#include file="/js/common/dnd.js" -->
