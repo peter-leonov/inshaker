@@ -1,194 +1,109 @@
-/*
- * © 2007 http://www.programica.ru/
- * Author - Kornilov Pavel
- */
-@import url(ie.css);
-html { filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}
-body { height: 100%; }
+/* Author: Kornilov Pavel */
+<!--#include file="/t/css/ie.css" -->
 
-#top .nav img { padding-top: 12px; }
-
-#b-bill .total, #b-bill .total *,
+html{filter:expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache',false,true));}
+body{height:100%;}
+#top .nav img{padding-top:12px;}
+#b-bill .total,#b-bill .total *,
 .b-content,
 .column,
 .body-wrapper,
 #mybar-cocktails,
-#b-bill	dl,
+#b-bill dl,
 .b-search form dl,
 .b-content ul.cocktails li img,
 .b-title,
 .you-choise span a,
-.desc, .entry,
+.desc,.entry,
 .hreview,
 .hreview .menu p a,
 .hreview .menu p,
-.b-more-cocktails dd
-{ zoom:1; }
-
+.b-more-cocktails dd{zoom:1;}
 /*cocktail page*/
-.loved { width: 72px; }
-
-.b-search { width: 140px; overflow: hidden; }
-.b-content { width: 426px; overflow: hidden; }
-
-.you-choise span a { width: 0; height: 0; }
-
-/*html	{ scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff',
-				document.createElement('header'),document.createElement('footer'),document.createElement('aside')
-			);
-}*/
-.b-search .groups dd a:hover span { margin: -1px 0; top: 0; }
-
-.b-content ul.cocktails			{ zoom: 1; margin-right: -20px; }
-.b-content ul.cocktails li		{ margin-right: 10px; float: none; display: inline; zoom: 1; }
-
-.win-shop { position: absolute; top: expression(String(document.documentElement.scrollTop)+'px'); }
-
-.b-content ul.cocktails img { scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));
-}
-
+.loved{width:72px;}
+.b-search{width:140px;overflow:hidden;}
+.b-content{width:426px;overflow:hidden;}
+.you-choise span a{width:0;height:0;}
+.b-search .groups dd a:hover span{margin:-1px 0;top:0;}
+.b-content ul.cocktails{zoom:1;margin-right:-20px;}
+.b-content ul.cocktails li{margin-right:10px;float:none;display:inline;zoom:1;}
+.win-shop{position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
+.b-content ul.cocktails img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 .tooltip,
-.tooltip .bg { background-image: url('../bg/tooltip/t.8.png'); }
-
-
-/*.popup		{ zoom: 1; width: expression( runtimeStyle.width = parentNode.clientWidth+'px' ); }*/
-.b-more dt b	{ margin-bottom: -2px; }
-
-.main-wrapper { position: relative; }
-.win { position: absolute; left: 0; top: 0; }
-#overlay		{ width: 100%; height: 100%; position: absolute; left: 0; top: 0; filter: alpha(opacity=75); }
+.tooltip .bg{background-image:url('../bg/tooltip/t.8.png');}
+.b-more dt b{margin-bottom:-2px;}
+.main-wrapper{position:relative;}
+.win{position:absolute;left:0;top:0;}
+#overlay{width:100%;height:100%;position:absolute;left:0;top:0;filter:alpha(opacity=75);}
 .win-shop .win-bg,
 .win-shop .main .wrapper,
 .win-shop .b-alternative,
-.dots dl	{ zoom: 1; }
-#good_volumes.dots dt	{ margin-top: 5px; }
-/*.dots dl	{ zoom: 1; background-position-y: 0.9em; }*/
-.win-shop .view-photo ul li	{ vertical-align: top; }
-.win-shop .gadget-wrapper { zoom: 1; }
-.win-shop .view-photo	{  height: 588px; }
-.win-shop .view-photo .bor-wr	{ margin-bottom: -2px; }
-.b-more #korol-mira .wrapper { zoom: 1; height: 11.24em; padding-top: 14px; padding-bottom: 17px; margin-bottom: -1px; }
-.win-shop .win, .win-shop .win-bg { background-image: none; }
-
-
-/*#b-bill	dl
-{
-	scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff',
-					onmouseover = function() {this.className += ' hover'},
-					onmouseout = function() {this.className = this.className.replace(/ hover/g, '')}
-				);
-}
-*/
-
-/* антимигание */
+.dots dl{zoom:1;}
+#good_volumes.dots dt{margin-top:5px;}
+.win-shop .view-photo ul li{vertical-align:top;}
+.win-shop .gadget-wrapper{zoom:1;}
+.win-shop .view-photo{height:588px;}
+.win-shop .view-photo .bor-wr{margin-bottom:-2px;}
+.b-more #korol-mira .wrapper{zoom:1;height:11.24em;padding-top:14px;padding-bottom:17px;margin-bottom:-1px;}
+.win-shop .win,.win-shop .win-bg{background-image:none;}
 #top h2 a,
-#top h1	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/inshaker.ru.png', sizingMethod='image'); height: 1px; width: 1px; display: block; }
+#top h1{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/inshaker.ru.png',sizingMethod='image');height:1px;width:1px;display:block;}
 #top h2 img,
-#top h1 img	{ display: none; }
-
-
-#ingridients-page .count-cocktails * { position: relative; z-index: 2; zoom: 1; }
-#ingridients-page .count-cocktails
-{
-	position	: absolute;
-	top			: expression(eval(document.documentElement.scrollTop+297) + "px");/*border-width*/
-	behavior: expression(
-				(runtimeStyle.behavior==''&&currentStyle.backgroundImage!='none') ?
-					insertAdjacentHTML('afterBegin', '<div class="ie"" style="height:10px;width:10px;position:absolute;top:0;left:0'
-						+';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)">'+'<img src="'+currentStyle.backgroundImage.split('\"')[1]+'" style="visibility: hidden" alt="" /></div>') : '',
-				runtimeStyle.backgroundImage = 'none',
-				runtimeStyle.behavior = 'none'
-			);
-}
-
+#top h1 img{display:none;}
+#ingridients-page .count-cocktails *{position:relative;z-index:2;zoom:1;}
+#ingridients-page .count-cocktails{position :absolute;top :expression(eval(document.documentElement.scrollTop+297) + "px");/*border-width*/
+behavior:expression(
+(runtimeStyle.behavior==''&&currentStyle.backgroundImage!='none') ?
+insertAdjacentHTML('afterBegin','<div class="ie"" style="height:10px;width:10px;position:absolute;top:0;left:0'
++';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)">'+'<img src="'+currentStyle.backgroundImage.split('\"')[1]+'" style="visibility:hidden" alt="" /></div>') :'',
+runtimeStyle.backgroundImage = 'none',
+runtimeStyle.behavior = 'none'
+);}
 .win-shop .b-alternative ul img,
 #cocktail-page .hreview .entry .illustration,
-#mybar-cocktails	li img
-{
-	filter: expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod=image)" : '',
-						src = '/t/0.png');
-}
-
-#related ul li a img, #poster, #ingreds_surface .point  img { scrollbar-base-color: expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png')); }
-
-
-#cocktail-page {  }
-#cocktail-page .b-title {  }
-#cocktail-page .b-content { width: 590px; }
-#cocktail-page .hreview { /*border: solid 1px red;*/ }
-#cocktail-page .hreview .top-menu {  }
-#cocktail-page .hreview .top-menu .b { width: 100%; height: 182px; overflow: hidden; }
-#poster { position: absolute; top: -28px; }
-#panel_cocktail { /*z-index: 20; position: absolute;*/ width: 100%; }
-#panel_cocktail a { width: 1px; white-space: nowrap; }
-#panel_cocktail a b { border: none; }
-#cocktail-page .b-content .entry { width: 100%; /*background: green;*/ }
-#cocktail-page #view-how { /*background: red;*/ }
-#cocktail-page #view-how button { position: static; margin: 15px;  }
-#cocktail-page #view-how button.bt-close-how { margin-left: 200px;  }
-#cocktail-page .hreview .desc { width: 365px; }
-#cocktail-page .hreview button { float: left; }
-
-#view-video .close { scrollbar-face-color: transparent; }
-
-
-#ingridients-page .b-content { width: 100%; }
-#ingridients-page .count-cocktails input { width: 90%; }
-#ingridients-page .you-choise a { font-size: 1px; }
-
-
-.mybar-user .menu a:hover * { zoom: 1; }
-/*.mybar-user .menu a b
-{
-	filter		: chroma(color=cyan);
-	border-left-color: expression( runtimeStyle.borderLeftColor = ((parentNode == parentNode.parentNode.firstChild) ? 'cyan' : currentStyle.borderLeftColor) )
-}
-*/
-#mybar-cocktails				{ width: 96em; }
-#mybar-cocktails	.viewport	{ width: 76.5em; }
-
-#b-bill .total li
-{
-	filter	: expression(
-		(runtimeStyle.backgroundImage != 'none') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+', sizingMethod=scale)' : runtimeStyle.filter,
-		runtimeStyle.backgroundImage = 'none');
-}
-#b-bill .total li a { position: relative; }
-
-/* position: fixed */
-html {  background: url(/t/0.png); background-attachment: fixed; }
-
-#mybar /*posiition: fixed, bottom: 0*/
-{
-	position	: absolute;
-	top			: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6) + "px");/*border-width*/
-}
-
-
-
-.b-search form dd { zoom: 1; }
-.b-search form dd span { white-space: normal; }
-.b-search form dd a { position: relative; right: -5px; background: red; }
-
+#mybar-cocktails li img{filter:expression( (runtimeStyle.filter == '') ? runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"',sizingMethod=image)" :'',
+src = '/t/0.png');}
+#related ul li a img,#poster,#ingreds_surface .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+#cocktail-page{}
+#cocktail-page .b-title{}
+#cocktail-page .b-content{width:590px;}
+#cocktail-page .hreview{/*border:solid 1px red;*/}
+#cocktail-page .hreview .top-menu{}
+#cocktail-page .hreview .top-menu .b{width:100%;height:182px;overflow:hidden;}
+#poster{position:absolute;top:-28px;}
+#panel_cocktail{/*z-index:20;position:absolute;*/ width:100%;}
+#panel_cocktail a{width:1px;white-space:nowrap;}
+#panel_cocktail a b{border:none;}
+#cocktail-page .b-content .entry{width:100%;/*background:green;*/}
+#cocktail-page #view-how{/*background:red;*/}
+#cocktail-page #view-how button{position:static;margin:15px;}
+#cocktail-page #view-how button.bt-close-how{margin-left:200px;}
+#cocktail-page .hreview .desc{width:365px;}
+#cocktail-page .hreview button{float:left;}
+#view-video .close{scrollbar-face-color:transparent;}
+#ingridients-page .b-content{width:100%;}
+#ingridients-page .count-cocktails input{width:90%;}
+#ingridients-page .you-choise a{font-size:1px;}
+.mybar-user .menu a:hover *{zoom:1;}
+#mybar-cocktails{width:96em;}
+#mybar-cocktails .viewport{width:76.5em;}
+#b-bill .total li{filter :expression(
+(runtimeStyle.backgroundImage != 'none') ? runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)' :runtimeStyle.filter,
+runtimeStyle.backgroundImage = 'none');}
+#b-bill .total li a{position:relative;}
+html{background:url(/t/0.png);background-attachment:fixed;}
+#mybar {position :absolute;top :expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6) + "px");}
+.b-search form dd{zoom:1;}
+.b-search form dd span{white-space:normal;}
+.b-search form dd a{position:relative;right:-5px;background:red;}
 /* background-position-[xy] hack */
-.b-content .pager .prev	{ background-position-x: 0; }
-.b-content .pager .disabled	{ background-position-y: -12px; }
-.b-content .pager .prev, .b-content .pager .next { font-size: 2px; }
-
-#cocktail-page #view-how .prev { background-position-x: 0; }
-
-/*#cocktail-page #view-how .next			{ background-position: -20px -72px; left: auto; right: 19px; top: 48px;}
-#cocktail-page #view-how .prev.disabled { background-position: 0px -92px; cursor: normal;}
-#cocktail-page #view-how .next.disabled { background-position: -20px -92px; cursor: normal;}
-*/
-
-/*.b-more-rec .disabled	{ background-position-y: -38px; cursor: default; }*/
-.b-more-rec .next, .b-more-cocktails .next { background-position-x: -16px; }
-.b-more-rec .next { right: 15px; }
-
-
-#cocktail-page #view-prepare button { bottom: -50px; }
-
-#about-page .b-content { width: 590px; }
-#about-page .b-content .border-links {width: 581px;}
-#about-page #poster { position: absolute; top: 42px;}
+.b-content .pager .prev{background-position-x:0;}
+.b-content .pager .disabled{background-position-y:-12px;}
+.b-content .pager .prev,.b-content .pager .next{font-size:2px;}
+#cocktail-page #view-how .prev{background-position-x:0;}
+.b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
+.b-more-rec .next{right:15px;}
+#cocktail-page #view-prepare button{bottom:-50px;}
+#about-page .b-content{width:590px;}
+#about-page .b-content .border-links{width:581px;}
+#about-page #poster{position:absolute;top:42px;}
