@@ -22,6 +22,18 @@ var About = {
 			$('poster').style.display = "block";
 		}
 		
+		$('view-stat').show = function() {
+			this.style.display = "block";
+			$('body_wrapper').style.height = "720px"
+			if($('rolling_stats').RollingImagesLite)
+				$('rolling_stats').RollingImagesLite.goInit();
+		}
+		
+		$('view-stat').hide = function(){
+			$('body_wrapper').style.height = "545px"
+			this.style.display="none";
+		}
+		
 		var handler = function(e, element) {
 			var self = element || this;
 			link.open(self);
@@ -51,5 +63,20 @@ var About = {
 		link = new Link();
 		if (!link.url) link.element = $('view-about');
 		else if (link.url != 'view-about') $('view-about').hide();
+		
+		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
+		line.addVariable("path", "stat/amcharts/");
+		line.addParam("wmode", "opaque");
+		line.addVariable("settings_file", escape("stat/visitors/settings.xml"));
+		line.addVariable("data_file", escape("stat/visitors/data.xml"));
+		line.write("stat_visits");
+
+		var pie = new SWFObject("stat/amcharts/ampie.swf", "ampie", "510", "400", "8", "#FFFFFF");
+		pie.addVariable("path", "stat/amcharts/");
+		pie.addParam("wmode", "opaque");
+		pie.addVariable("settings_file", escape("stat/cities/settings.xml"));
+		pie.addVariable("data_file", escape("stat/cities/data.xml"));		
+		pie.addVariable("preloader_color", "#999999");
+		pie.write("stat_cities");
 	}
 };

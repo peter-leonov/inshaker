@@ -274,10 +274,17 @@ label{display:block;}
 #about-page .b-content{min-height:46em;}
 .b-content .content p{font-size:12px;margin:1.5em 0;}
 .b-content .content h3{font-size:18px;margin:1em 0;}
-#about-page #view-stat .stat{position:relative;width:483px;margin:0 auto;text-align:center;}
+#about-page #view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;}
+#about-page #view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;}
+#about-page #view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;}
+#about-page #view-stat .stat .point { width: 510px; height: 560px;}
+#about-page #view-stat .stat .surface { width: 2000px; height:560px;}
+#about-page #view-stat .stat a { margin-top: 140px; z-index: 1;}
 #about-page #view-stat .stat .prev,
 #about-page #view-stat .stat .next{position:absolute;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -72px;left:0;top:90px;}
 #about-page #view-stat .stat .next{background-position:-20px -72px;left:auto;right:0;}
+#about-page #view-stat .stat .disabled {background-position:0 -92px;}
+#about-page #view-stat .stat .next.disabled {background-position:-20px -92px;}
 #about-page .body-wrapper{height:545px;}
 #b-cr-about .body-wrapper{height:545px;}
 #b-cr-about form{font-size:11px;line-height:2;}

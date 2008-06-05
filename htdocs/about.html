@@ -17,7 +17,7 @@
 	</div>
 	
 	<div class="column-main-container">
-		<div class="column column-main" id="about-page"><div class="body-wrapper">
+		<div class="column column-main" id="about-page"><div class="body-wrapper" id="body_wrapper">
 			<div class="b-title">
 				<h1>Коктейльный сайт Inshaker</h1><a href="/cocktails.html">← к списку коктейлей</a>
 			</div>
@@ -28,7 +28,7 @@
 							<a href="#view-about"><b>О проекте</b></a>
 							<a href="#view-own-cocktail"><b>Свой коктейль</b></a>
 							<a href="#view-brand-managers"><b>Брэнд менеджерам</b></a>
-							<!--<a href="#view-stat"><b>Cтатистика</b></a>-->
+							<a href="#view-stat"><b>Cтатистика</b></a>
 							<!--<a href="#view-advert"><b>Рекламные материалы</b></a>-->
 						</p>
 						<img src="t/bg/about/poster.jpg" width="590" height="140" id="poster"/>
@@ -52,11 +52,22 @@
 						<p>Присоединяйтесь к развитию коктейльной культуры. Размещайте коктейли со своим ингредиентом.</p>			
 					</div>
 					<div class="content" id="view-stat" style="display:none">
-						<h3>Посетителей / Просмотров страниц</h3>
-						<div class="stat">
+						<div class="note">Статистика по данным <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a></div>
+						<div class="stat" id="rolling_stats">
 							<a class="prev"></a>
-							<img src="t/TEMP_stat.png" width="405" height="281" alt="TEMP Stat"/>
-							<a class="next"></a>							
+							<a class="next"></a>
+							<div class="viewport">
+								<div class="surface">
+									<div class="point">
+										<h3>Посетители и просмотры</h3>
+										<div id="stat_visits"></div>
+									</div>
+									<div class="point">
+										<h3>Посетители по городам</h3>
+										<div id="stat_cities"></div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="content" id="view-advert" style="display:none">
