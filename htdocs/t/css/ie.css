@@ -15,12 +15,12 @@ html{font-size :101%;}
 .win-shop .main .zoom b{zoom:1;height:12px;}
 #overlay{filter:alpha(opacity=75);}
 .b-search form dl{white-space:nowrap;}
-.column{scrollbar-face-color :expression(runtimeStyle.scrollbarFaceColor='#fff',(
+html.loaded .column{scrollbar-face-color :expression(runtimeStyle.scrollbarFaceColor='#fff',(
 runtimeStyle.behavior = 'none',
 insertAdjacentHTML('afterBegin','<div style="position:relative;top:-1px;border-top:1px solid #c0c0c0"></div>'),
 insertAdjacentHTML('beforeEnd','<div style="position:relative;top:1px;border-top:1px solid #c0c0c0"></div>')
 ));}
-.b{scrollbar-face-color:expression(runtimeStyle.scrollbarFaceColor='#fff',
+html.loaded .b{scrollbar-face-color:expression(runtimeStyle.scrollbarFaceColor='#fff',
 insertAdjacentHTML('afterBegin','<b style="display:block;border:0 solid #fff;border-width:0 1px;height:1px;overflow:hidden"></b>'),
 insertAdjacentHTML('beforeEnd','<b style="display:block;border:0 solid #fff;border-width:0 1px;height:1px;overflow:hidden"></b>'))}
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}

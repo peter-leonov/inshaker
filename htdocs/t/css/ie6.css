@@ -51,7 +51,7 @@ body{height:100%;}
 #top h2 img,
 #top h1 img{display:none;}
 #ingridients-page .count-cocktails *{position:relative;z-index:2;zoom:1;}
-#ingridients-page .count-cocktails{position :absolute;top :expression(eval(document.documentElement.scrollTop+297) + "px");/*border-width*/
+html.loaded #ingridients-page .count-cocktails{position :absolute;top :expression(eval(document.documentElement.scrollTop+297) + "px");/*border-width*/
 behavior:expression(
 (runtimeStyle.behavior==''&&currentStyle.backgroundImage!='none') ?
 insertAdjacentHTML('afterBegin','<div class="ie"" style="height:10px;width:10px;position:absolute;top:0;left:0'
