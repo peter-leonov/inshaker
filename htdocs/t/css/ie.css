@@ -15,14 +15,11 @@ html{font-size :101%;}
 .win-shop .main .zoom b{zoom:1;height:12px;}
 #overlay{filter:alpha(opacity=75);}
 .b-search form dl{white-space:nowrap;}
-html.loaded .column{scrollbar-face-color :expression(runtimeStyle.scrollbarFaceColor='#fff',(
-runtimeStyle.behavior = 'none',
-insertAdjacentHTML('afterBegin','<div style="position:relative;top:-1px;border-top:1px solid #c0c0c0"></div>'),
-insertAdjacentHTML('beforeEnd','<div style="position:relative;top:1px;border-top:1px solid #c0c0c0"></div>')
-));}
-html.loaded .b{scrollbar-face-color:expression(runtimeStyle.scrollbarFaceColor='#fff',
-insertAdjacentHTML('afterBegin','<b style="display:block;border:0 solid #fff;border-width:0 1px;height:1px;overflow:hidden"></b>'),
-insertAdjacentHTML('beforeEnd','<b style="display:block;border:0 solid #fff;border-width:0 1px;height:1px;overflow:hidden"></b>'))}
+.b-search form{padding:1px;}
+.b-search form fieldset{margin:0px;}
+.column{border:1px solid #C0C0C0;}
+.column .body-wrapper{border:1px solid #fff;}
+.b{}
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
 .hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
 .hreview .menu p a.now b,
