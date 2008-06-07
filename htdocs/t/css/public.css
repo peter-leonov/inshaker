@@ -1,5 +1,5 @@
 /* dotted */
-.dots dl{background:url(../bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
+.dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
 .dots dd{float:right;background:#fff;padding-left:3px;}
 /* yellow inputs */
@@ -11,7 +11,7 @@
 .b-alternative .next,
 .b-alternative .prev,
 .mybar-user .next,
-.mybar-user .prev{background:#b0b0b0 url(../icon/mybar-strs.png) no-repeat 0 0;width:20px;height:20px;display:block;text-indent:-100em;overflow:hidden;}
+.mybar-user .prev{background:#b0b0b0 url(icon/mybar-strs.png) no-repeat 0 0;width:20px;height:20px;display:block;text-indent:-100em;overflow:hidden;}
 .b-alternative .next,
 .mybar-user .next{background-position:-20px 0;}
 /* small imgs */

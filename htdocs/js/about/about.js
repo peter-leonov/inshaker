@@ -9,29 +9,38 @@ var About = {
 		$('feedback_form').show();
 	},
 	
+	hidePoster: function(){
+		$('panel_cocktail').style.marginBottom = "0";
+		$('poster').style.display = "none";
+	},
+	
+	showPoster: function(){
+		$('panel_cocktail').style.marginBottom = "142px";
+		$('poster').style.display = "block";		
+	},
+	
 	init: function(){
 		$('view-advert').show = function() {
 			this.style.display = "block";
-			$('panel_cocktail').style.marginBottom = "0";
-			$('poster').style.display = "none";
+			About.hidePoster();
 		}
 		
 		$('view-advert').hide = function(){
 			this.style.display="none";
-			$('panel_cocktail').style.marginBottom = "142px";
-			$('poster').style.display = "block";
+			About.showPoster();
 		}
 		
 		$('view-stat').show = function() {
 			this.style.display = "block";
-			$('body_wrapper').style.height = "720px"
 			if($('rolling_stats').RollingImagesLite)
 				$('rolling_stats').RollingImagesLite.goInit();
+				
+			About.hidePoster();
 		}
 		
 		$('view-stat').hide = function(){
-			$('body_wrapper').style.height = "545px"
 			this.style.display="none";
+			About.showPoster();
 		}
 		
 		var handler = function(e, element) {

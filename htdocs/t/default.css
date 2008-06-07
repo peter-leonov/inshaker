@@ -274,10 +274,17 @@ label{display:block;}
 #about-page .b-content{min-height:46em;}
 .b-content .content p{font-size:12px;margin:1.5em 0;}
 .b-content .content h3{font-size:18px;margin:1em 0;}
-#about-page #view-stat .stat{position:relative;width:483px;margin:0 auto;text-align:center;}
+#about-page #view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;} 
+#about-page #view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;} 
+#about-page #view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;} 
+#about-page #view-stat .stat .point { width: 510px; height: 560px;} 
+#about-page #view-stat .stat .surface { width: 2000px; height:560px;} 
+#about-page #view-stat .stat a { margin-top: 140px; z-index: 1;}
 #about-page #view-stat .stat .prev,
 #about-page #view-stat .stat .next{position:absolute;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -72px;left:0;top:90px;}
 #about-page #view-stat .stat .next{background-position:-20px -72px;left:auto;right:0;}
+#about-page #view-stat .stat .disabled {background-position:0 -92px;} 
+#about-page #view-stat .stat .next.disabled {background-position:-20px -92px;}
 #about-page .body-wrapper{height:545px;}
 #b-cr-about .body-wrapper{height:545px;}
 #b-cr-about form{font-size:11px;line-height:2;}
@@ -343,7 +350,7 @@ label{display:block;}
 .win-shop .gadget-wrapper{position:relative;}
 .win-shop .main{background:#c0c0c0;position:relative;}
 .win-shop .main .wrapper{background:#fff;}
-.win-shop .main .wrapper{margin:0 1px;position:relative;overflow:hidden;}
+.win-shop .main .wrapper{position:relative;overflow:hidden; border: 1px #c0c0c0 solid;}
 .win-shop .main .wrapper2{position:relative;}
 .win-shop .close{background:url(icon/close.png) no-repeat 0 -10px;position:absolute;height:14px;width:14px;top:11px;right:10px;text-indent:-1000em;}
 .win-shop h3{background:url(bg/body/green-more-title.png) repeat-x 0 -19px;padding:34px 0 0 290px;font-weight:bold;font-size:180%;}
