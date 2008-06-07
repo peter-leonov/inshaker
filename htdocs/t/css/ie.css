@@ -19,7 +19,7 @@ html{font-size :101%;}
 .b-search form fieldset{margin:0px;}
 .column{border:1px solid #C0C0C0;}
 .column .body-wrapper{border:1px solid #fff;}
-.b{}
+.b{zoom:1;}
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
 .hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
 .hreview .menu p a.now b,
