@@ -69,7 +69,7 @@ var Controller = {
 		// creating divs with heading and ingredients
 		var divs = {};
 		for(var i = 0; i < letters.length; i++) {
-			var ingreds  = Model.ingredientsOn(letters[i]);
+			var ingreds  = Model.ingredientsOn(letters[i]).sort();
 			var div      = document.createElement("div");
 			var h3       = document.createElement("h3");
 			h3.innerHTML = letters[i];
