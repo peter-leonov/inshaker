@@ -15,7 +15,7 @@ a:hover{text-decoration:none;}
 a img{border:0;vertical-align:middle;}
 input,select,textarea{font:1.1em Tahoma,Arial,sans-serif;}
 input[type="password"],
-input[type="text"]{background:#f3f3f3;height:20px;border:0 solid #c9c9c9;border-width:1px 0 0 1px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
+input[type="text"]{background:#f3f3f3;height:20px;border:0 solid #c9c9c9;border-width:1px 0 0 0;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
 ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
@@ -559,5 +559,33 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 .drag_cursor{cursor:url(/t/grabbing.ico),-moz-grabbing;}
 #error_display{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;font-size:13px;padding:4px 0pt 0pt 35px;height:35px;}
 #form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
+
+#call-barmen-page .b-content {font-size:12px;}
+#call-barmen-page .note { background: #F1F7B6 url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
+#call-barmen-page textarea {background:#f3f3f3; border:0 solid #c9c9c9; border-width:1px 0 0 0px; margin-left:0; padding:4px 0 0 4px; overflow:auto;}
+#call-barmen-page form { font-size:100%; margin: 0; padding: 0; min-width: 500px; max-width: 600px; width: 560px; }
+#call-barmen-page form fieldset {/ * clear: both; */ padding: 10px; margin: 0; }
+#call-barmen-page form fieldset legend { font-size:1.2em; font-weight: bold; padding: 12px 0;}
+#call-barmen-page form label { display: block; float: left; width: 60px; padding: 0; margin: 5px 0 0 10px; text-align: left; line-height: 25px;}
+
+#call-barmen-page form label#label_date, 
+#call-barmen-page form label#label_num_guests,
+#call-barmen-page form label#label_time {width: 120px;}
+
+#call-barmen-page form input, form textarea { /* display: inline; */ width:auto; margin:5px 0 0 10px; }
+#call-barmen-page form input[type="text"] {height: 24px; font-size: 1.2em; width: 158px;}
+#call-barmen-page form input[type="radio"] {margin-right: 5px; line-height: 24px;}
+#call-barmen-page form .radio_block input { margin: 0 0 5px 10px; }
+
+#call-barmen-page form input#time1 { width: 50px;}
+#call-barmen-page form input#time2 { margin: 5px 0 0 2px; width: 50px; }
+#call-barmen-page form input#num_guests { width: 50px; }
+#call-barmen-page form input#phone1 { width: 32px; }
+#call-barmen-page form input#phone2 { margin: 5px 0 0 2px; width: 32px;}
+#call-barmen-page form input#phone3 { margin: 5px 0 0 2px; width: 74px;}
+
+#call-barmen-page form br { clear:left; }
+#call-barmen-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
+
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--#include file="/t/css/ie6.css" --><!--#endif -->
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--#include file="/t/css/ie7.css" --><!--#endif -->
