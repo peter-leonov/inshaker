@@ -29,7 +29,7 @@ function Autocompleter(set) {
 	this.result_set = [];
 
 	var self = this;
-	form.addEventListener('submit', function(e) { e.preventDefault() }, false);
+	if(form) form.addEventListener('submit', function(e) { e.preventDefault() }, false);
 	field.addEventListener('keyup', function(e) {
 		switch(e.keyCode){
 			case self.KEY_ENTER:

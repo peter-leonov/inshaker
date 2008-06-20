@@ -34,6 +34,12 @@ Number.prototype.toFloatString = function(){
 	return this + ".0";
 }
 
+Date.prototype.getFormatted = function(){
+	var weekdays = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"];
+	var months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"]; 
+	return this.getDate() + " " + months[this.getMonth()] + ", " + weekdays[this.getDay()];
+}
+
 function spaces(num){
 	var letters = (num + "").split("");
 	var res = letters.splice(0, letters.length % 3).concat([" "]);
