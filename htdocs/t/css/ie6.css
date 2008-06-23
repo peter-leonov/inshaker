@@ -54,8 +54,8 @@ body{height:100%;}
 #ingridients-page .count-cocktails{position:absolute;top:expression(eval(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
 .win-shop .b-alternative ul img,
 #cocktail-page .hreview .entry .illustration,
-#mybar-cocktails li img{filter:expression((runtimeStyle.filter=='')?runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"',sizingMethod=image)":'',src='/t/0.png');}
-#related ul li a img,#poster,#ingreds_surface .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+#mybar-cocktails li img{}
+body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds_surface .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 #cocktail-page{}
 #cocktail-page .b-title{}
 #cocktail-page .b-content{width:590px;}
