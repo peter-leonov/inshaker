@@ -295,6 +295,7 @@ var Controller = {
 		var a = document.createElement("a");
 		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
 		var img = document.createElement("img");
+		img.className = "mini-illustration";
 		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
 		new Draggable(img, cocktail.name, this.DROP_TARGETS);
 		var txt = document.createTextNode(cocktail.name);
