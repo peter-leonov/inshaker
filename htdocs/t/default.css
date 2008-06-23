@@ -292,7 +292,7 @@ label{display:block;}
 #b-cr-about label{margin-top:1em;}
 #b-cr-about button{margin:24px 0 10px;}
 #b-cr-about textarea,
-#b-cr-about input{display:block;border:1px solid #CCC;background:#fff;width:262px;margin:0;}
+#b-cr-about input{display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
 /* right column */
 .column-r .b-title h2{line-height:29px;}
@@ -573,7 +573,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #order-page form label#label_face_phys,
 #order-page form label#label_face_legal {display: inline; float:none; margin: 0;}
 
-#order-page form input, form textarea { /* display: inline; */ width:auto; margin:5px 0 0 10px; }
+#order-page form input, #order-page form textarea { /* display: inline; */ width:auto; margin:5px 0 0 10px; }
 #order-page form select { /* display: inline; */ width:auto; margin:5px 0 0 0; }
 #order-page form input.text_field {
 	height: 24px; 
