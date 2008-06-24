@@ -171,8 +171,8 @@ label{display:block;}
 #cocktail-page #view-how .next,
 #cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;top:72px;right:19px;background:url(icon/strs-green.png) no-repeat 0 -72px;}
 #cocktail-page #view-how .next{background-position:-20px -72px;left:auto;right:19px;top:48px;}
-#cocktail-page #view-how .prev.disabled{background-position:0px -92px;cursor:normal;}
-#cocktail-page #view-how .next.disabled{background-position:-20px -92px;cursor:normal;}
+#cocktail-page #view-how .prev.disabled{background-position:0px -92px;cursor:default;}
+#cocktail-page #view-how .next.disabled{background-position:-20px -92px;cursor:default;}
 #cocktail-page #view-how button{bottom:15px;left:197px;position:absolute;}
 #cocktail-page #view-how .bt-print-how{left:363px;}
 #cocktail-page .view-how#main-content *{visibility:hidden;}
@@ -381,7 +381,7 @@ label{display:block;}
 .win-shop .content .sum button{margin:6px 47px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
 .win-shop .b-alternative{display:none;background:#0d0d0d url(bg/win/alt.png) repeat-x 0 100%;margin-top:7px;position:relative;}
-// ForFuture
+/* ForFuture */
 .win-shop .b-alternative .next,
 .win-shop .b-alternative .prev{background-color:#fff;position:absolute;top:41px;left:20px;}
 .win-shop .b-alternative .next{left:auto;right:20px;}
@@ -421,7 +421,7 @@ label{display:block;}
 #ingridients-page .count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 9px;}
 #ingridients-page .count-cocktails input{font-size:11px;}
 #ingridients-page .count-cocktails{}
-/* Knowledge page*/
+/* Knowledge page */
 .b-kn-1{margin-left:0;}
 .b-kn-3{margin-right:-8px;margin-left:7px;}
 .b-kn-1 .mini-wrap{background-image:url(bg/knowledge/col1.jpg) !important;}
@@ -487,7 +487,7 @@ label{display:block;}
 #mybar-settings .checkform{font-size:12px;padding-top:26px;line-height:27px;}
 #mybar-settings .checkform input{width:auto !important;margin-left:0;}
 #mybar-settings label.attention{font-size:12px;background:url(bg/mybar/delete-mybar.png) no-repeat 0 100%;width:579px !important;padding:18px 0 0 0;text-align:center;height:25px;float:none;clear:both;}
-#mybar-settings .attention input{width:auto !important;zoom:1;}
+#mybar-settings .attention input{width:auto !important;}
 #mybar-settings button.bt-save{display:block;margin:42px auto 18px auto;position:relative;left:-40px;}
 /* Form for not user*/
 .mybar-login{padding-bottom:5px;}
@@ -564,7 +564,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #order-page .note { background: #F1F7B6 url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
 #order-page textarea {background:#f3f3f3; border:0 solid #c9c9c9; border-width:1px 0 0 0px; margin-left:0; padding:4px 0 0 4px; overflow:auto;}
 #order-page form { font-size:100%; margin: 0; padding: 0; min-width: 500px; max-width: 600px; width: 560px; }
-#order-page form fieldset {/ * clear: both; */ padding: 10px; margin: 0; }
+#order-page form fieldset {/* clear: both; */ padding: 10px; margin: 0; }
 #order-page form fieldset legend { font-size:1.2em; font-weight: bold; padding: 12px 0;}
 #order-page form label { display: block; float: left; padding: 0; margin: 5px 0 0 10px; text-align: left; line-height: 25px;width: 120px;}
 
