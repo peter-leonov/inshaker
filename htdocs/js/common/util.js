@@ -271,7 +271,7 @@ Link.prototype._url = function (url)
 	//}
 }
 
-
+// deprecated
 function putFocus(input){
 	if(Programica.userAgentRegExps.MSIE.test(navigator.userAgent)){
 		setTimeout(function() { 
@@ -289,12 +289,22 @@ function setCaretPosition(elemId, caretPos) {
 			var range = elem.createTextRange();
 			range.move('character', caretPos);
 			range.select();
-        } else {
-            if(elem.selectionStart) {
-                elem.focus();
-                elem.setSelectionRange(caretPos, caretPos);
-            } else elem.focus();
-        }
-    }
+		} else {
+			if(elem.selectionStart) {
+				elem.focus();
+				elem.setSelectionRange(caretPos, caretPos);
+			} else elem.focus();
+		}
+	}
 }
 
+function mergeNodes(parentNode, nodesArray)
+{
+	var childs = Array.copy(parentNode.childNodes);
+	for (var i = 0, il = childs.length; i < il; i++)
+	{
+		var node = childs[i]
+		if (node && nodesArray.indexOf(node) < 0)
+			parentNode.removeChild(node)
+	}
+}

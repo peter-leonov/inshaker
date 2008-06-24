@@ -19,7 +19,6 @@ function CalculatorView() {
 	
 	this.eventListener = null; // controller
 
-	this.lastInputId = "";
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
 	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
@@ -92,31 +91,39 @@ function CalculatorView() {
 			var sumParent = $(this.ID_SUM);
 			
 			// Clean up
-			cocktailsParent.innerHTML = "";
-			ingredsParent.innerHTML = "";
+			// cocktailsParent.innerHTML = "";
+			// ingredsParent.innerHTML = "";
 			
+			var newCocktails = []
 			for(var i = 0; i < cartData.cocktails.length; i++){
-				cocktailsParent.appendChild(this._createCocktailElement(cartData.cocktails[i]));
+				var ingredElem = this._createCocktailElement(cartData.cocktails[i]);
+				newCocktails.push(ingredElem)
+				if (ingredElem.parentNode != cocktailsParent)
+					cocktailsParent.appendChild(ingredElem);
 			}
+			// from util.js
+			mergeNodes(cocktailsParent, newCocktails)
 			
+			var newIngredients = []
 			var sum = 0;
-			for(name in cartData.goods){
+			for(var name in cartData.goods){
 				var item = cartData.goods[name];
 				var bottles = cartData.goods[name].bottles;
-				for(id in bottles){
+				for(var id in bottles){
 					sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
-					ingredsParent.appendChild(this._createIngredientElement(item, bottles[id], name));
+					var ingredElem = this._createIngredientElement(item, bottles[id], name);
+					newIngredients.push(ingredElem);
+					if (ingredElem.parentNode != ingredsParent)
+						ingredsParent.appendChild(ingredElem);
 				}
 			}
+			// from util.js
+			mergeNodes(ingredsParent, newIngredients)
 			sumParent.innerHTML = spaces(sum) + " р.";
 			
 			if(cartData.goods[this.lastShownIngred]) {
 				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
 			} 
-			
-			if(this.lastInputId && $(this.lastInputId)) {
-				putFocus($(this.lastInputId));
-			}
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
 			$(this.ID_TOTALS).style.display = "none";
@@ -124,88 +131,125 @@ function CalculatorView() {
 		}
 	};
 	
+	var _createCocktailElementCache = {};
+	
 	this._createCocktailElement = function(cocktailsItem){
-		var self = this;
 		var cocktail = cocktailsItem[0];
 		var quantity = cocktailsItem[1];
 		
-		var li = document.createElement("li");
-		var a  = document.createElement("a");
-		a.href = "/cocktails/"+cocktail.name_eng.htmlName()+".html";
-		a.innerHTML = cocktail.name;
-		li.appendChild(a);
-		var label = document.createElement("label");
-		var input = document.createElement("input");
-		input.type = "text";
-		input.name = "portion";
-		input.id = "input_" + cocktail.name_eng.htmlName();
-		input.value = quantity || "";
-		var txt = document.createTextNode(" " + quantity.plural("порцию", "порции", "порций"));
-		label.appendChild(input);
-		label.appendChild(txt);
-		li.appendChild(label);
-		var button = document.createElement("button");
-		button.className = "bt-del";
-		button.title = "Удалить";
-		button.innerHTML = "x";
-		li.appendChild(button);
+		var cacheKey = cocktail.name_eng;
 		
-		button.addEventListener('mousedown', function(e){
-			self.eventListener.deleteCocktail(cocktail);
-		}, false);
 		
-		input.addEventListener('keyup', function(e){
-			if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-				self.lastInputId = this.id;
-				self.eventListener.cocktailQuantityChanged(cocktail, parseInt(this.value));
-			}
-		}, false);
+		var li;
+		if (_createCocktailElementCache[cacheKey])
+			li = _createCocktailElementCache[cacheKey];
+		else
+		{
+			var self = this;
+			
+			li = _createCocktailElementCache[cacheKey] = document.createElement("li");
+			li.childsCache = {}
+			
+			var a = document.createElement("a");
+			a.href = "/cocktails/"+cocktail.name_eng.htmlName()+".html";
+			a.innerHTML = cocktail.name;
+			li.appendChild(a);
+			var label = document.createElement("label");
+			var input = li.childsCache.input = document.createElement("input");
+			input.type = "text";
+			input.name = "portion";
+			input.id = "input_" + cocktail.name_eng.htmlName();
+			var txt = li.childsCache.txt = document.createTextNode("");
+			label.appendChild(input);
+			label.appendChild(txt);
+			li.appendChild(label);
+			var button = document.createElement("button");
+			button.className = "bt-del";
+			button.title = "Удалить";
+			button.innerHTML = "x";
+			li.appendChild(button);
+
+			button.addEventListener('mousedown', function(e){
+				self.eventListener.deleteCocktail(cocktail);
+			}, false);
+
+			input.addEventListener('keyup', function(e){
+				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
+					self.eventListener.cocktailQuantityChanged(cocktail, parseInt(this.value));
+				}
+			}, false);
+		}
+		
+		if (li.childsCache.input.value != quantity)
+			li.childsCache.input.value = quantity || "";
+		li.childsCache.txt.nodeValue = " " + quantity.plural("порцию", "порции", "порций");
+		
 		return li;
 	};
 	
-	this._createIngredientElement = function(item, bottle, name){		
-		var li = document.createElement("li");
-		var a  = document.createElement("a");		
-		a.innerHTML = item.good.brand || name;
-		var b  = document.createElement("b");
-		b.innerHTML = bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], item.good.unit);
-		li.appendChild(a);
-		li.appendChild(b);
-		var label = document.createElement("label");
-		var input = document.createElement("input");
-		input.type = "text";
-		input.name = "portion";
-		input.id = "input_"+name.trans().htmlName() + "_" + bottle.vol[0];
-		input.value = bottle.count;
-		var txt = document.createTextNode(" " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р.");
-		label.appendChild(input);
-		label.appendChild(txt);
-		li.appendChild(label);
-		if(bottle.diff) {
-			var button = document.createElement("button");
-			button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
+	var _createIngredientElementCache = {};
+	
+	this._createIngredientElement = function(item, bottle, name){
+		var cacheKey = name + ':' + bottle.vol[0];
+		var li
+		if(_createIngredientElementCache[cacheKey])
+			li = _createIngredientElementCache[cacheKey];
+		else
+		{
+			li = _createIngredientElementCache[cacheKey] = document.createElement("li");
+			var a  = document.createElement("a");
+			a.innerHTML = item.good.brand || name;
+			li.appendChild(a);
+			
+			var b = document.createElement("b");
+			b.innerHTML = bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], item.good.unit);
+			li.appendChild(b);
+			
+			var label = document.createElement("label");
+			var input = li.input = document.createElement("input");
+			input.type = "text";
+			input.name = "portion";
+			var txt = li.txt = document.createTextNode("");
+			label.appendChild(input);
+			label.appendChild(txt);
+			li.appendChild(label);
+			
+			var button = li.button = document.createElement("button");
 			button.title = "Инфо";
+			button.hide();
 			button.innerHTML = "i";
 			button.addEventListener('mousedown', function(e){
 				self.renderPopup(item, name);
 				link.open(self.INGRED_POPUP);
 			}, false);
 			li.appendChild(button);
+			
+			
+			// fires goodQuantityChanged
+			input.addEventListener('keyup', function(e){
+				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
+					var bottleId = bottle.vol[0];
+					self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
+				}
+			}, false);
+			
+			a.addEventListener('mousedown', function(e){
+				self.renderPopup(item, name);
+				link.open(self.INGRED_POPUP); 
+				return false;
+			}, false);
 		}
 		
-		input.addEventListener('keyup', function(e){
-			if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-				self.lastInputId = this.id;
-				var bottleId = bottle.vol[0];
-				self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
-			}
-		}, false);
+		if (bottle.count != li.input.value)
+			li.input.value = bottle.count;
+		li.txt.nodeValue = " " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р."
 		
-		a.addEventListener('mousedown', function(e){
-			self.renderPopup(item, name);
-			link.open(self.INGRED_POPUP); 
-			return false;
-		}, false);
+		// red/green balloon
+		if(bottle.diff){
+			li.button.show()
+			li.button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
+		}
+		else li.button.hide();
 		
 		return li;
 	};
@@ -279,7 +323,6 @@ function CalculatorView() {
 							cloneItem.bottles[id] = bottle;
 						}
 						self.renderPopup(cloneItem, name);
-						putFocus($(fieldId));
 					}
 				}}(name, bottleId, inputQuant.id), false);
             	
