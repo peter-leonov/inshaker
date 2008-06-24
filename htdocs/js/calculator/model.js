@@ -12,7 +12,7 @@ function CalculatorModel(view){
 			this.cartData = {};
 			this.cartData.cocktails = [];
 			this.cartData.goods = {};
-		}
+		}		
 		this.optimalGoods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 		this.dataListener.modelChanged(this.cartData, true);
 	};
