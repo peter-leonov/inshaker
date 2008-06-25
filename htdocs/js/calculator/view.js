@@ -213,10 +213,6 @@ function CalculatorView() {
 			button.title = "Инфо";
 			button.hide();
 			button.innerHTML = "i";
-			button.addEventListener('mousedown', function(e){
-				self.renderPopup(item, name);
-				link.open(self.INGRED_POPUP);
-			}, false);
 			li.appendChild(button);
 			
 			li.childsCache = {input: input, button: button, txt: txt, a: a};
@@ -236,6 +232,11 @@ function CalculatorView() {
 				self.renderPopup(item, name);
 				link.open(self.INGRED_POPUP); 
 				return false;
+			}
+			
+			button.onmousedown =  function(e){
+				self.renderPopup(item, name);
+				link.open(self.INGRED_POPUP);
 			}
 			
 			
