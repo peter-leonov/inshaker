@@ -131,26 +131,29 @@ function CalculatorView() {
 		var cacheKey = cocktail.name_eng;
 		
 		
-		var li;
+		var li, input, txt;
 		if (_createCocktailElementCache[cacheKey])
+		{
 			li = _createCocktailElementCache[cacheKey];
+			input = li.childsCache.input;
+			txt = li.childsCache.txt;
+		}
 		else
 		{
 			var self = this;
 			
 			li = _createCocktailElementCache[cacheKey] = document.createElement("li");
-			li.childsCache = {}
 			
 			var a = document.createElement("a");
 			a.href = "/cocktails/"+cocktail.name_eng.htmlName()+".html";
 			a.innerHTML = cocktail.name;
 			li.appendChild(a);
 			var label = document.createElement("label");
-			var input = li.childsCache.input = document.createElement("input");
+			input = document.createElement("input");
 			input.type = "text";
 			input.name = "portion";
 			input.id = "input_" + cocktail.name_eng.htmlName();
-			var txt = li.childsCache.txt = document.createTextNode("");
+			txt = document.createTextNode("");
 			label.appendChild(input);
 			label.appendChild(txt);
 			li.appendChild(label);
@@ -159,11 +162,13 @@ function CalculatorView() {
 			button.title = "Удалить";
 			button.innerHTML = "x";
 			li.appendChild(button);
-
+			
+			li.childsCache = {input: input, txt: txt};
+			
 			button.addEventListener('mousedown', function(e){
 				self.eventListener.deleteCocktail(cocktail);
 			}, false);
-
+			
 			input.addEventListener('keyup', function(e){
 				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 					self.eventListener.cocktailQuantityChanged(cocktail, parseInt(this.value));
@@ -171,9 +176,9 @@ function CalculatorView() {
 			}, false);
 		}
 		
-		if (li.childsCache.input.value != quantity)
-			li.childsCache.input.value = quantity || "";
-		li.childsCache.txt.nodeValue = " " + quantity.plural("порцию", "порции", "порций");
+		if(input.value != quantity)
+			input.value = quantity || "";
+		txt.nodeValue = " " + quantity.plural("порцию", "порции", "порций");
 		
 		return li;
 	};
@@ -181,7 +186,7 @@ function CalculatorView() {
 	var _createIngredientElementCache = {};
 	this._createIngredientElement = function(item, bottle, name){
 		var cacheKey = name + ':' + bottle.vol[0];
-		var li
+		var li;
 		if(_createIngredientElementCache[cacheKey])
 			li = _createIngredientElementCache[cacheKey];
 		else
@@ -196,15 +201,15 @@ function CalculatorView() {
 			li.appendChild(b);
 			
 			var label = document.createElement("label");
-			var input = li.input = document.createElement("input");
+			var input = document.createElement("input");
 			input.type = "text";
 			input.name = "portion";
-			var txt = li.txt = document.createTextNode("");
+			var txt = document.createTextNode("");
 			label.appendChild(input);
 			label.appendChild(txt);
 			li.appendChild(label);
 			
-			var button = li.button = document.createElement("button");
+			var button = document.createElement("button");
 			button.title = "Инфо";
 			button.hide();
 			button.innerHTML = "i";
@@ -214,32 +219,37 @@ function CalculatorView() {
 			}, false);
 			li.appendChild(button);
 			
-			
+			li.childsCache = {input: input, button: button, txt: txt, a: a};
+		}
+		
+		with (li.childsCache)
+		{
 			// fires goodQuantityChanged
-			input.addEventListener('keyup', function(e){
+			input.onkeyup = function(e){
 				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 					var bottleId = bottle.vol[0];
 					self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
 				}
-			}, false);
+			}
 			
-			a.addEventListener('mousedown', function(e){
+			a.onmousedown = function(e){
 				self.renderPopup(item, name);
 				link.open(self.INGRED_POPUP); 
 				return false;
-			}, false);
+			}
+			
+			
+			if (bottle.count != input.value)
+				input.value = bottle.count;
+			txt.nodeValue = " " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р."
+			
+			// red/green balloon
+			if(bottle.diff){
+				button.show()
+				button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
+			}
+			else button.hide();
 		}
-		
-		if (bottle.count != li.input.value)
-			li.input.value = bottle.count;
-		li.txt.nodeValue = " " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р."
-		
-		// red/green balloon
-		if(bottle.diff){
-			li.button.show()
-			li.button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
-		}
-		else li.button.hide();
 		
 		return li;
 	};
@@ -248,13 +258,9 @@ function CalculatorView() {
 	this._createPopupIngredientElement = function(item, bottle, volume, name, bottleId){
 		var cacheKey = name + ':' + volume;
 		
-		var dl
-		var inputQuant
+		var dl;
 		if (_createPopupIngredientElementCache[cacheKey])
-		{
 			dl = _createPopupIngredientElementCache[cacheKey]
-			inputQuant = dl.childsCache.inputQuant
-		}
 		else
 		{
 				dl         = document.createElement("dl");
@@ -266,16 +272,13 @@ function CalculatorView() {
 			var inputQuant = document.createElement("input");
 			
 			_createPopupIngredientElementCache[cacheKey] = dl
-			dl.childsCache = {img: img, inputQuant: inputQuant};
+			dl.childsCache = {img: img, inputQuant: inputQuant, a: a};
 			
 			img.alt = "Добавлен";
 			img.style.height = "11px";
 			img.style.width  = "14px";
 			
 			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + volume[0] + " " + GoodHelper.pluralTxt(volume[0], item.good.unit);
-			a.addEventListener('mousedown', function(e) {
-				self.setPicture(name, item.good, volume);
-			}, false);
 			strong.innerHTML = volume[1] + " р.";
 			
 			inputQuant.type  = "text";
@@ -290,29 +293,31 @@ function CalculatorView() {
 			dd.appendChild(document.createTextNode(" шт."));
 		}
 		
-		function keyup(e){
-			if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-				if(item.bottles[bottleId]) {
-					item.bottles[bottleId].count = this.value;
-				} else { // новая бутылка
-					var bottle = self.eventListener.needNewBottle(name, bottleId);
-					bottle.count = this.value;
-					log('new bottle')
-					item.bottles[bottleId] = bottle;
-				}
-				self.renderPopup(item, name);
+		with (dl.childsCache)
+		{
+			a.onmousedown = function(e) {
+				self.setPicture(name, item.good, volume);
 			}
+			
+			inputQuant.onkeyup = function(e){
+				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
+					if(item.bottles[bottleId]) {
+						item.bottles[bottleId].count = this.value;
+					} else { // новая бутылка
+						var bottle = self.eventListener.needNewBottle(name, bottleId);
+						bottle.count = this.value;
+						log('new bottle')
+						item.bottles[bottleId] = bottle;
+					}
+					self.renderPopup(item, name);
+				}
+			}
+			
+			img.src = bottle && bottle.count > 0 ? "/t/icon/checked.png" : "/t/border/f.png";
+			var newValue = bottle ? bottle.count : 0;
+			if (!inputQuant.value || newValue != inputQuant.value)
+				inputQuant.value = newValue;
 		}
-		
-		inputQuant.removeEventListener('keyup', inputQuant.lastKeyupListener, false);
-		inputQuant.lastKeyupListener = keyup
-		inputQuant.addEventListener('keyup', keyup, false);
-		
-		dl.childsCache.img.src = bottle && bottle.count > 0 ? "/t/icon/checked.png" : "/t/border/f.png";
-		var newValue = bottle ? bottle.count : 0;
-		if (!inputQuant.value || newValue != inputQuant.value)
-			inputQuant.value = newValue;
-		
 		
 		return dl;
 	};
