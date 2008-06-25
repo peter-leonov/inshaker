@@ -298,8 +298,20 @@ function setCaretPosition(elemId, caretPos) {
 	}
 }
 
+/**
+ * This function merges nodes from parentNode with nodes given in nodesArray.
+ * It deletes nodes those aren't in nodesArray, appends noes those are'n in parentNode
+ * and doesn't touch nodes those are in both parentNode and nodesArray
+ * @param parentNode - destination node for merging result
+ * @param nodesArray - new state of parentNode that could be made
+ */
+
 function mergeNodes(parentNode, nodesArray)
 {
+	for (var i = 0; i < nodesArray.length; i++)
+		if (nodesArray[i].parentNode != parentNode)
+			parentNode.appendChild(nodesArray[i]);
+	
 	var childs = Array.copy(parentNode.childNodes);
 	for (var i = 0, il = childs.length; i < il; i++)
 	{
