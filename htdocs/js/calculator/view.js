@@ -310,7 +310,7 @@ function CalculatorView() {
 		
 		dl.childsCache.img.src = bottle && bottle.count > 0 ? "/t/icon/checked.png" : "/t/border/f.png";
 		var newValue = bottle ? bottle.count : 0;
-		if (newValue !== inputQuant.value)
+		if (!inputQuant.value || newValue != inputQuant.value)
 			inputQuant.value = newValue;
 		
 		
