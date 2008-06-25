@@ -302,7 +302,7 @@ label{display:block;}
 #b-bill{background:#fff url(bg/bill/bottom.png) repeat-x 0 100%;float:left;width:30.8em;margin-left:1.8em;position:relative;}
 #b-bill h2{padding:23px 0 19px 20px;font-size:120%;background:url(bg/bill/menus.png) repeat-x 0 100%;}
 #b-bill dl{background:url(bg/bill/menus.png) repeat-x 0 -140px;position:relative;margin-top:1px;}
-#b-bill dt{background:url(bg/bill/menus.png) no-repeat 89% -35px;cursor:pointer;height:35px;color:#343b40;font-size:120%;font-weight:bold;line-height:35px;padding-left:20px;}
+#b-bill dt{/*background:url(bg/bill/menus.png) no-repeat 89% -35px;cursor:pointer;*/height:35px;color:#343b40;font-size:120%;font-weight:bold;line-height:35px;padding-left:20px;}
 #b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
 #b-bill dl.hover,
 #b-bill dl:hover,
@@ -588,6 +588,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 }
 #order-page form .radio_block input { margin: 0 5px 0 10px; }
 
+#order-page form input.error, #order-page form textarea.error { border: 1px #ec275f solid; }
 #order-page form input#time1 { width: 50px;}
 #order-page form input#time2 { margin: 5px 0 0 2px; width: 50px; }
 #order-page form input#num_guests { width: 50px; }

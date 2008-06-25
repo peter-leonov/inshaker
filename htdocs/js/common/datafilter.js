@@ -55,7 +55,7 @@ var DataFilter = {
 		
 		// calculating long tail
 		tail = max_vol % (biggest * 2),
-		big_bottles_count = (max_vol - tail) / biggest,
+		big_bottles_count = Math.round((max_vol - tail) / biggest),
 		
 		stack = [],
 		min = Infinity,
