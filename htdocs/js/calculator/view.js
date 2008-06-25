@@ -246,11 +246,15 @@ function CalculatorView() {
 	
 	var _createPopupIngredientElementCache = {};
 	this._createPopupIngredientElement = function(item, bottle, volume, name, bottleId){
-		var cacheKey = item.good.mark + ':' + bottle.vol[0];
+		var cacheKey = name + ':' + volume;
 		
 		var dl
+		var inputQuant
 		if (_createPopupIngredientElementCache[cacheKey])
+		{
 			dl = _createPopupIngredientElementCache[cacheKey]
+			inputQuant = dl.childsCache.inputQuant
+		}
 		else
 		{
 				dl         = document.createElement("dl");
@@ -277,22 +281,6 @@ function CalculatorView() {
 			inputQuant.type  = "text";
 			// inputQuant.id = "inputQuant_"+name.trans().htmlName() + "_" + volume[0];
 			
-			inputQuant.addEventListener('keyup', function(e){
-				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-					var cloneItem = cloneObject(item);
-					
-					if(cloneItem.bottles[bottleId]) {
-						cloneItem.bottles[bottleId].count = this.value;
-					} else { // новая бутылка
-						var bottle = self.eventListener.needNewBottle(name, bottleId);
-						bottle.count = this.value;
-						log(cloneItem.bottles)
-						cloneItem.bottles[bottleId] = bottle;
-					}
-					self.renderPopup(cloneItem, name);
-				}
-			}, false);
-			
 			dl.appendChild(dt);
 			dt.appendChild(img);
 			dt.appendChild(a);
@@ -302,10 +290,29 @@ function CalculatorView() {
 			dd.appendChild(document.createTextNode(" шт."));
 		}
 		
+		function keyup(e){
+			if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
+				if(item.bottles[bottleId]) {
+					item.bottles[bottleId].count = this.value;
+				} else { // новая бутылка
+					var bottle = self.eventListener.needNewBottle(name, bottleId);
+					bottle.count = this.value;
+					log('new bottle')
+					item.bottles[bottleId] = bottle;
+				}
+				self.renderPopup(item, name);
+			}
+		}
+		
+		inputQuant.removeEventListener('keyup', inputQuant.lastKeyupListener, false);
+		inputQuant.lastKeyupListener = keyup
+		inputQuant.addEventListener('keyup', keyup, false);
+		
 		dl.childsCache.img.src = bottle && bottle.count > 0 ? "/t/icon/checked.png" : "/t/border/f.png";
 		var newValue = bottle ? bottle.count : 0;
-		if (newValue != dl.childsCache.inputQuant.value)
-			dl.childsCache.inputQuant.value = newValue;
+		if (newValue !== inputQuant.value)
+			inputQuant.value = newValue;
+		
 		
 		return dl;
 	};
@@ -316,6 +323,7 @@ function CalculatorView() {
 	
 	this.renderPopup = function(item, name){
 		this.itemFromPopup = [cloneObject(item), name];
+		item = cloneObject(item);
 		
 		$('good_needed').style.display = "block";
 		$('good_summ').style.display   = "block";
