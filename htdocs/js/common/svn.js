@@ -1,1 +1,1 @@
-$Revision$
+var svn = "$Revision: 2379$"
