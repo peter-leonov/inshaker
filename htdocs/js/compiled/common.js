@@ -1,6 +1,7 @@
 <!--#include file="/lib/base2/cssQuery.js" -->
 <!--#include file="/js/common/programica.js" -->
 
+<!--#include file="/js/common/svn.js" -->
 <!--#include file="/js/common/util.js" -->
 <!--#include file="/js/common/storage.js" -->
 <!--#include file="/js/common/dnd.js" -->

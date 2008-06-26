@@ -1,5 +1,5 @@
 var svn = {};
-svn.revision = "$Revision$";
+svn.text = "$Revision$";
 svn.getRevision = function(){
-	return this.revision.match(/\$Revision:\ (\d+)\ \$/)[1];
+	return this.text.match(/\$Revision:\ (\d+)\ \$/)[1];
 }
