@@ -77,7 +77,7 @@ function CalculatorView() {
 	 */
 	this.modelChanged = function(cartData, dontSave){ // model
 		this.renderCart(cartData);
-		if(!dontSave) this.eventListener.saveCartData(cartData); //save to cookies
+		if(!dontSave) this.eventListener.saveCartData(cartData); //save to storage
 	};
 	
 	this.renderCart = function(cartData){
