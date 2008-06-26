@@ -588,13 +588,16 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 }
 #order-page form .radio_block input { margin: 0 5px 0 10px; }
 
-#order-page form input.error, #order-page form textarea.error { border: 1px #ec275f solid; }
+#order-page form input.error, #order-page form textarea.error { border: 0 #ec275f solid; border-width:1px 0 0 0; }
 #order-page form input#time1 { width: 50px;}
 #order-page form input#time2 { margin: 5px 0 0 2px; width: 50px; }
 #order-page form input#num_guests { width: 50px; }
-#order-page form input#phone1 { width: 32px; }
-#order-page form input#phone2 { margin: 5px 0 0 2px; width: 32px;}
-#order-page form input#phone3 { margin: 5px 0 0 2px; width: 74px;}
+#order-page form input#phone11,
+#order-page form input#phone21 { width: 32px; }
+#order-page form input#phone12,
+#order-page form input#phone22 { margin: 5px 0 0 2px; width: 32px;}
+#order-page form input#phone13,
+#order-page form input#phone23 { margin: 5px 0 0 2px; width: 74px;}
 
 #order-page form br { clear:left; }
 #order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
