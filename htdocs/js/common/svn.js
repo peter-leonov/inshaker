@@ -1,4 +1,4 @@
-var _svnReg = new RegExp("\$Revision:\ (\d+)\ \$")
+var _svnReg = new RegExp(/\$Revision:\ (\d+)\ \$/)
 
 var svn = {};
 svn.text = "$Revision$";
