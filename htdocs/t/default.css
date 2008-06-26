@@ -2,7 +2,6 @@
 .dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
 .dots dd{float:right;background:#fff;padding-left:3px;}
-/* yellow inputs */
 .win-shop .b-gadget .count input,
 .win-shop .content dd input,
 #b-bill dd input,
