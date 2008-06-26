@@ -112,10 +112,24 @@ var Cookie = {
     return (cookie ? unescape(cookie[2]) : null);
   },
 
-  erase: function(name) {
+  remove: function(name) {
     var cookie = Cookie.get(name) || true;
     Cookie.set(name, '', -1);
     return cookie;
+  },
+  
+  getKeys: function(){
+	var res = [];
+	var arr = document.cookie.match(/(\w+)=[\w\d\S]*;*/ig);
+	for(var i = 0; i < arr.length; i++){
+		res.push(arr[i].split("=")[0])
+	}
+	return res;
+  },
+  
+  clear: function(){
+	var keys = Cookie.getKeys();
+	for(var i = 0; i < keys.length; i++) Cookie.remove(keys[i]); 
   }
 };
 

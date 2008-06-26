@@ -155,7 +155,7 @@ var Controller = {
 			Cookie.set(this.FILTER_COOKIE, Object.stringify(filters));
 			window.location.href = "/cocktails.html";
 		} else {
-			Cookie.erase(this.FILTER_COOKIE);
+			Cookie.remove(this.FILTER_COOKIE);
 			window.location.href = "/cocktails/" + this.topCocktail.name_eng.htmlName() + ".html";
 		}
 	},

@@ -82,7 +82,7 @@ var Controller = {
 	
 	_forceFromCookies: function(){
 		var force = Cookie.get(this.FORCE_COOKIE);
-		Cookie.erase(this.FORCE_COOKIE);
+		Cookie.remove(this.FORCE_COOKIE);
 		return force;
 	},
 	
