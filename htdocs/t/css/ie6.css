@@ -81,7 +81,6 @@ body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds
 #mybar-cocktails .viewport{width:76.5em;}
 #b-bill .total li{filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
-html{background:url(/t/0.png);background-attachment:fixed;}
 #mybar {position :absolute;top :expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6)+"px");}
 .b-search form dd{zoom:1;}
 .b-search form dd span{white-space:normal;}

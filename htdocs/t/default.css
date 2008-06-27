@@ -53,8 +53,8 @@ table{border:0;border-collapse:collapse;}
 table td{padding:0;}
 .to-print{display:none;}
 
-html{height:100%; background:#fff url(/t/alchogol-sucks.png) no-repeat center 98.2%;}
-body{background:url(bg/body/all.png) repeat-x 0 0;font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
+html{background:#fff url(/t/alchogol-sucks.png) no-repeat center 98.5%;}
+body{background:transparent url(bg/body/all.png) repeat-x 0 0;font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
 
 #top{position:relative;height:132px;font-size:12px;}
 #top h2,
