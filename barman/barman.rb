@@ -19,7 +19,8 @@ module Config
   
   HTDOCS_DIR         = "../htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
-  DB_JS_DIR          = HTDOCS_DIR + "js/common/db.js"
+  DB_JS              = HTDOCS_DIR + "js/common/db.js"
+  DB_REVISION_JS     = HTDOCS_DIR + "js/common/db.revision.js"
   
   IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
   IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
@@ -39,7 +40,6 @@ module Config
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
   
-  SVN_CODE = 'var db={}; db._revText="$Revision$"; db.revision=db._revText.match(/\$Revision:\ (\d+)\ \$/)[1];'
 end
 
 class Barman
@@ -97,15 +97,18 @@ class Barman
      tools_json       = ActiveSupport::JSON.encode(@tools).unescape
      goods_json       = ActiveSupport::JSON.encode(@goods).unescape
      
-     File.open(Config::DB_JS_DIR, "w+") do |db|
+     File.open(Config::DB_JS, "w+") do |db|
       db.puts "var cocktails = #{cocktails_json};"
       db.puts "var ingredients = #{ingredients_json};"
       db.puts "var tags = #{tags_json};"
       db.puts "var strengths = #{strengths_json};"
       db.puts "var tools = #{tools_json};"
       db.puts "var goods = #{goods_json};"
-      db.puts Config::SVN_CODE
       db.close
+     end
+     
+     File.open(Config::DB_REVISION_JS, "a") do |rev|
+      rev.puts Time.now.strftime("// %Y/%m/%d at %H:%M")
      end
   end
   
@@ -372,7 +375,7 @@ def go
   joe.prepare
   puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
   joe.flush_html                                           
-  puts "Flushing JSON to #{Config::DB_JS_DIR}"          
+  puts "Flushing JSON to #{Config::DB_JS}"          
   joe.flush_json                                                                              
   puts "Flushing images to #{Config::IMAGES_DIR}"       
   joe.flush_images                                      
