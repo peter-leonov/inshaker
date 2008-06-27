@@ -285,30 +285,11 @@ Link.prototype._url = function (url)
 	//}
 }
 
-// deprecated
-function putFocus(input){
-	if(Programica.userAgentRegExps.MSIE.test(navigator.userAgent)){
-		setTimeout(function() { 
-			input.focus(); 
-			input.value = input.value;
-		}, 0);
-	} else input.focus();
-}
-
-function setCaretPosition(elemId, caretPos) {
-	var elem = $(elemId);
-
-	if(elem != null) {
-		if(elem.createTextRange) {
-			var range = elem.createTextRange();
-			range.move('character', caretPos);
-			range.select();
-		} else {
-			if(elem.selectionStart) {
-				elem.focus();
-				elem.setSelectionRange(caretPos, caretPos);
-			} else elem.focus();
-		}
+function checkDbRevision(){
+	if(Cookie.get("db_revision") == db.revision) return true;
+	else {
+		Cookie.set("db_revision", db.revision);
+		return false;
 	}
 }
 
