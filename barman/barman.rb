@@ -108,7 +108,7 @@ class Barman
      end
      
      File.open(Config::DB_REVISION_JS, "a") do |rev|
-      rev.puts Time.now.strftime("// %Y/%m/%d at %H:%M")
+      rev.puts "\n"+Time.now.strftime("// %Y/%m/%d at %H:%M")
      end
   end
   
