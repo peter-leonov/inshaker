@@ -39,7 +39,7 @@ module Config
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
   
-  SVN_CODE = 'var svn={}; svn.text="$Revision$"; svn.revision=svn.text.match(/\$Revision:\ (\d+)\ \$/)[1];'
+  SVN_CODE = 'var db={}; db._revText="$Revision$"; db.revision=db._revText.match(/\$Revision:\ (\d+)\ \$/)[1];'
 end
 
 class Barman
