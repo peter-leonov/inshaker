@@ -598,6 +598,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 
 #order-page .b-content {font-size:12px;}
 #order-page .note { background: #F1F7B6 url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
+#order-page #order_more { margin-left: 10px; background: url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
 #order-page textarea {background:#f3f3f3; border:0 solid #c9c9c9; border-width:1px 0 0 0px; margin-left:0; padding:4px 0 0 4px; overflow:auto;}
 #order-page form { font-size:100%; margin: 0; padding: 0; min-width: 500px; max-width: 600px; width: 560px; }
 #order-page form fieldset {/* clear: both; */ padding: 10px; margin: 0; }

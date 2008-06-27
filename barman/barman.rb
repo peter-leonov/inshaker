@@ -139,7 +139,7 @@ class Barman
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
       
       write_print_img(from + "big.png", to_print, [106, 210])
-      system("optipng " + to_small + " > /dev/null")
+      system("/usr/local/bin/optipng " + to_small + " > /dev/null")
     end
   end
   
