@@ -38,6 +38,8 @@ module Config
   
   TEMPLATES_DIR = "templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
+  
+  SVN_CODE = 'var svn={};\nsvn.text="$Revision$";\nsvn.revision=svn.text.match(/\$Revision:\ (\d+)\ \$/)[1];'
 end
 
 class Barman
@@ -102,6 +104,7 @@ class Barman
       db.puts "var strengths = #{strengths_json};"
       db.puts "var tools = #{tools_json};"
       db.puts "var goods = #{goods_json};"
+      db.puts Config::SVN_CODE
       db.close
      end
   end
