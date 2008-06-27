@@ -41,6 +41,7 @@ var Controller = {
         this.bindEvents();
 		$(this.SEARCH_EXAMPLE).innerHTML = Model.randomIngredient();
 		
+		if(!checkDbRevision()) Cookie.clear();
 		var filters = this._filtersFromRequest();
         var states = null;
         if(!filters) {
