@@ -20,7 +20,6 @@ module Config
   HTDOCS_DIR         = "../htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
   DB_JS              = HTDOCS_DIR + "js/common/db.js"
-  DB_REVISION_JS     = HTDOCS_DIR + "js/common/db.revision.js"
   
   IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
   IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
@@ -97,7 +96,10 @@ class Barman
      tools_json       = ActiveSupport::JSON.encode(@tools).unescape
      goods_json       = ActiveSupport::JSON.encode(@goods).unescape
      
+     db_revision_snippet = File.open(Config::DB_JS).read.split("\n")[0]
+     
      File.open(Config::DB_JS, "w+") do |db|
+      db.puts db_revision_snippet
       db.puts "var cocktails = #{cocktails_json};"
       db.puts "var ingredients = #{ingredients_json};"
       db.puts "var tags = #{tags_json};"
@@ -105,10 +107,6 @@ class Barman
       db.puts "var tools = #{tools_json};"
       db.puts "var goods = #{goods_json};"
       db.close
-     end
-     
-     File.open(Config::DB_REVISION_JS, "a") do |rev|
-      rev.puts "\n"+Time.now.strftime("// %Y/%m/%d at %H:%M")
      end
   end
   
