@@ -78,6 +78,14 @@ var GoodHelper = {
 		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
 	},
 	
+	getIngredText: function(name){
+		var brand = goods[name][0].brand || "";
+		if(brand.indexOf(name) > -1) name = "";
+		var gap = "";
+		if(brand && name) gap = " ";
+		return name + (brand ? gap + brand : "");
+	},
+	
 	shortName: function(name){
 		if(name == "Черносмородиновый ликер") return "Черносмородин. ликер";
 		return name;

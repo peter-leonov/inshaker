@@ -173,7 +173,7 @@ var Printer = {
         div.appendChild(img);
         var name = pair[0];
 
-        var txt = this.getIngredText(name);
+        var txt = GoodHelper.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
@@ -195,7 +195,7 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         
-		var txt = this.getIngredText(name);
+		var txt = GoodHelper.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
 		if(GoodHelper.isBottled(goods[name][0])){
@@ -216,14 +216,6 @@ var Printer = {
         dd.appendChild(cnt);
         return dd;
     },
-
-	getIngredText: function(name){
-		var brand = goods[name][0].brand || "";
-		if(brand.indexOf(name) > -1) name = "";
-		var gap = "";
-		if(brand && name) gap = " ";
-		return name + (brand ? gap + brand : "");
-	},
 
     createToolElement: function(name, last) {
         var dd = document.createElement("dd");
