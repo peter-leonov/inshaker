@@ -294,19 +294,22 @@ label{display:block;}
 /*bars page*/
 #bars-page .bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:0 25px 20px 0;background:no-repeat center;}
 #bars-page .bar-mini a {display:block;position:absolute;left:0;top:0;width:290px;height:50px;padding:158px 0 0 15px;background:url(/t/bg/bars/pre-mask-full.png);line-height:40px;color:#fff;font-size:13px;}
-#bars-page .switch-view { position:absolute; right:0px; top:15px; }
+#bars-page #switch-view { position:absolute; right:0px; top:15px; }
 
-#bars-page .switch-view li { display: block; float: right; margin: 0 0 0 20px; padding: 1px 4px 2px; color: #0392f1; cursor: pointer; }
-#bars-page .switch-view li:hover { text-decoration: underline; }
-#bars-page .switch-view li:before, #bars-page .switch-view li:after { padding-bottom:1px; color: #fff; }
-#bars-page .switch-view li:before { border-left:1px solid; content:''; padding-left:6px; margin-left:-5px; }
-#bars-page .switch-view li:after  { border-right:1px solid; content:''; padding-right:6px; margin-right:-5px; }
-#bars-page .switch-view li.selected { background: #0392f1; color: #fff; cursor: default; }
-#bars-page .switch-view li.selected:hover { text-decoration: none; }
-#bars-page .switch-view li.selected:before, #bars-page .switch-view li.selected:after { border-color:#0392f1; }
+#bars-page #switch-view li { display: inline; margin: 0 0 0 20px; padding: 1px 4px 2px; color: #0392f1; cursor: pointer; }
+#bars-page #switch-view li:hover { text-decoration: underline; }
+#bars-page #switch-view li:before, #bars-page #switch-view li:after { padding-bottom:1px; color: #fff; }
+#bars-page #switch-view li:before { border-left:1px solid; content:''; padding-left:6px; margin-left:-5px; }
+#bars-page #switch-view li:after  { border-right:1px solid; content:''; padding-right:6px; margin-right:-5px; }
+#bars-page #switch-view li.selected { background: #0392f1; color: #fff; cursor: default; }
+#bars-page #switch-view li.selected:hover { text-decoration: none; }
+#bars-page #switch-view li.selected:before, #bars-page #switch-view li.selected:after { border-color:#0392f1; }
+
+#bars-page #bars-map { display: none; }
+#bars-page #map { height: 500px; background: #ccc; }
 
 /*#bars-page .bar-mini img {position:absolute;left:0;top:0;width:290px;height:200px;}*/
-#bars-page .b-content {width:945px;}
+#bars-page #bars-list {width:945px;}
 /* about page */
 #about-page .b-content{min-height:46em;}
 .b-content .content p{font-size:12px;margin:1.5em 0;}

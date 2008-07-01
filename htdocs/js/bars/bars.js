@@ -20,5 +20,7 @@ $.onload
 			barsContainer: $('bars-container')
 		}
 		Bars.init(bars_db, nodes)
+		
+		Switcher.init($('switch-view'), [$('bars-list'), $('bars-map')])
 	}
 )
