@@ -1,3 +1,4 @@
+/* Authors: Kornilov Pavel, Vasiliy Mikhailichenko, Peter Leonov */
 /* dotted */
 .dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
@@ -38,7 +39,7 @@ body,table,
 h1,h2,h3,h4,
 p,form,
 fieldset,legend,
-ul,li,dl,dt,dd{margin:0;padding:0;border:0;}
+ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;}
 h2,h3{font-weight:normal;}
 td{font-size:1em;vertical-align:top;}
 a{color :#0392f1;cursor :pointer;
@@ -292,9 +293,10 @@ label{display:block;}
 .b-more #korol-mira .dragger{background:url(bg/cocktail/korol-cocktail.png) no-repeat 100% 0;cursor:pointer;width:26px;top:0;padding-top:31px;text-align:center;color:#9ce025;font-weight:bold;position:absolute;}
 .b-more #korol-mira button{position:absolute;bottom:10px;left:50%;margin-left:-56px;}
 /*bars page*/
-#bars-page .bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:0 25px 20px 0;background:no-repeat center;}
+#bars-page .bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:20px 25px 0 0;background:no-repeat center;}
 #bars-page .bar-mini a {display:block;position:absolute;left:0;top:0;width:290px;height:50px;padding:158px 0 0 15px;background:url(/t/bg/bars/pre-mask-full.png);line-height:40px;color:#fff;font-size:13px;}
 #bars-page #switch-view { position:absolute; right:0px; top:15px; }
+#bars-page #sort-menu { margin: 0; }
 
 #bars-page #switch-view li { display: inline; margin: 0 0 0 20px; padding: 1px 4px 2px; color: #0392f1; cursor: pointer; }
 #bars-page #switch-view li:hover { text-decoration: underline; }
@@ -307,6 +309,14 @@ label{display:block;}
 
 #bars-page #bars-map { display: none; }
 #bars-page #map { height: 500px; background: #ccc; }
+
+#bars-list .bars-select { display: block; position: relative; width: 290px; height: 40px; overflow: hidden; z-index: 10; }
+#bars-list .bars-select dt { display: block; width: 275px; height: 100%; padding: 0 0 0 15px; background: url(/t/bg/bars/select.png) 0 -40px; line-height: 40px; font-size: 14px; color: #ffc1dc; }
+#bars-list .bars-select dd ul { /*background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.5);*/ background: url(/t/bg/bars/select-dropdown.png) 0 bottom; padding: 10px; color: #fff; }
+#bars-list .bars-select dt small { position: absolute; right: 40px; color: #fff	; }
+
+#bars-list .bars-select:hover { overflow: visible; }
+#bars-list .bars-select:hover dt { background-position: 0 -80px; }
 
 /*#bars-page .bar-mini img {position:absolute;left:0;top:0;width:290px;height:200px;}*/
 #bars-page #bars-list {width:945px;}
@@ -642,6 +652,6 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 
 #order-page form br { clear:left; }
 #order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
-
+my { display: block; background: red; }
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--#include file="/t/css/ie6.css" --><!--#endif -->
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--#include file="/t/css/ie7.css" --><!--#endif -->
