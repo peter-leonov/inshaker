@@ -21,6 +21,13 @@ $.onload
 		}
 		Bars.init(bars_db, nodes)
 		
-		Switcher.init($('switch-view'), [$('bars-list'), $('bars-map')])
+		Switcher.bind($('switch-view'), [$('bars-list'), $('bars-map')])
+		
+		var citySelect = Selecter.bind($('bars-city'))
+		citySelect.setOptions(['Москва', 'Санкт-Петербург', 'Омск', 'Волгоград', 'Казань', 'Челябинск', 'Новосибирск', 'Ростов', 'Набережные Челны', 'Комсомольск-на-Амуре'])
+		citySelect.select(0)
+		
+		Selecter.bind($('bars-feel')).select(0)
+		Selecter.bind($('bars-feature')).select(0)
 	}
 )
