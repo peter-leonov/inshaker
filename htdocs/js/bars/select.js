@@ -11,7 +11,8 @@ var Selecter =
 			options: main.getElementsByClassName('options')[0]
 		}
 		
-		main.onselect = function () {}
+		if (!main.onselect)
+		 	main.onselect = function () {}
 		
 		main.setCaption = function (str)
 		{
@@ -59,12 +60,15 @@ var Selecter =
 					options.removeChild(optionsChilds[i])
 		}
 		
-		main.select = function (num)
+		main.select = function (num, force)
 		{
 			var optionsChilds = this.nodes.options.childNodes
 			var selected = optionsChilds[num]
 			if (selected)
 			{
+				if (!force && this.onselect(selected.innerHTML, num, selected) === false)
+					return
+				
 				for (var i = 0; i < optionsChilds.length; i++)
 					optionsChilds[i].remClassName('selected')
 				
@@ -99,11 +103,7 @@ var Selecter =
 			close()
 			var target = e.target
 			if (target.nodeName == 'LI')
-			{
-				var num = main.getNodeNumber(target)
-				if (main.onselect(target, num) !== false)
-					main.select(num)
-			}
+				main.select(main.getNodeNumber(target))
 		}
 		
 		main.open = open

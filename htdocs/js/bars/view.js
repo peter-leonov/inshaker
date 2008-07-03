@@ -5,11 +5,35 @@ var BarsView =
 	initialize: function (nodes)
 	{
 		this.nodes = nodes
+		nodes.citySelect.onselect	= function (val) { BarsController.citySelected(val) }
+		nodes.formatSelect.onselect = function (val) { BarsController.formatSelected(val) }
+		nodes.feelSelect.onselect	= function (val) { BarsController.feelSelected(val) }
 	},
 	
 	modelChanged: function (data)
 	{
 		this.renderBars(data)
+	},
+	
+	renderCities: function (options)
+	{
+		var node = this.nodes.citySelect
+		node.setOptions(options)
+		node.select(0, true)
+	},
+	
+	renderFormats: function (options)
+	{
+		var node = this.nodes.formatSelect
+		node.setOptions(options)
+		node.select(0, true)
+	},
+	
+	renderFeels: function (options)
+	{
+		var node = this.nodes.feelSelect
+		node.setOptions(options)
+		node.select(0, true)
 	},
 	
 	renderBars: function (bars)
