@@ -15,18 +15,19 @@ $.onload
 (
 	function ()
 	{
-		Switcher.bind($('switch-view'), [$('bars-container'), $('map')])
-		
+		var viewSwitcher = Switcher.bind($('switch-view'), [$('bars-container'), $('map')])
 		var citySelect = Selecter.bind($('bars-city'))
 		var formatSelect = Selecter.bind($('bars-format'))
 		var feelSelect = Selecter.bind($('bars-feel'))
 		
 		var nodes =
 		{
+			viewSwitcher: viewSwitcher,
 			barsContainer: $('bars-container'),
 			citySelect: citySelect,
 			formatSelect: formatSelect,
-			feelSelect: feelSelect
+			feelSelect: feelSelect,
+			map: $('map')
 		}
 		Bars.init(bars_db, nodes)
 	}

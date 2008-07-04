@@ -23,6 +23,13 @@ var BarsModel =
 		BarsView.modelChanged(this._getAllCurrentBars())
 	},
 	
+	setViewType: function (type)
+	{
+		this.viewType = type
+		BarsView.setViewType(type)
+		BarsView.modelChanged(this._getAllCurrentBars())
+	},
+	
 	anyFormat: 'любой формат',
 	anyFeel: 'любая атмосфера',
 	
