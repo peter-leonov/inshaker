@@ -15,7 +15,7 @@ $.onload
 (
 	function ()
 	{
-		Switcher.bind($('switch-view'), [$('bars-list'), $('bars-map')])
+		Switcher.bind($('switch-view'), [$('bars-container'), $('map')])
 		
 		var citySelect = Selecter.bind($('bars-city'))
 		var formatSelect = Selecter.bind($('bars-format'))

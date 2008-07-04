@@ -1,6 +1,6 @@
 var BarsView =
 {
-	cache: {},
+	cache: {barNode:{}},
 	
 	initialize: function (nodes)
 	{
@@ -19,7 +19,7 @@ var BarsView =
 	{
 		var node = this.nodes.citySelect
 		node.setOptions(options)
-		node.select(0, true)
+		node.select(0)
 	},
 	
 	renderFormats: function (options)
@@ -39,6 +39,7 @@ var BarsView =
 	renderBars: function (bars)
 	{
 		var parent = this.nodes.barsContainer
+		parent.innerHTML = ''
 		for (var i = 0; i < bars.length; i++)
 		{
 			var bar = bars[i]
@@ -50,7 +51,8 @@ var BarsView =
 	
 	getBarNode: function (bar)
 	{
-		var main = this.createBarNode(bar)
+		
+		var main = this.cache.barNode[bar.name] || (this.cache.barNode[bar.name] = this.createBarNode(bar))
 		main.setName(bar.name)
 		main.setImage('/i/bar/pre/'+bar.id+'.jpg')
 		main.setHref('/bars/'+bar.id+'.html')
