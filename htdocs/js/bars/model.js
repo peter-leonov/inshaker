@@ -75,6 +75,11 @@ var BarsModel =
 			if (rex.test(bar.searchKey))
 				res.push(bar)
 		}
+		
+		res.city = this.city
+		res.format = this.format
+		res.feel = this.feel
+		
 		return res
 	},
 	

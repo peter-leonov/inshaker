@@ -2,6 +2,12 @@ var BarsView =
 {
 	cache: {barNode:{}},
 	viewType: 'list',
+	citiesData:
+	{
+		'Москва': {point: [55.790473,37.619934]},
+		'Санкт-Петербург': {point: [59.941084,30.315914]},
+		'Омск': {point: [54.990222,73.394165]}
+	},
 	
 	initialize: function (nodes)
 	{
@@ -83,7 +89,9 @@ var BarsView =
 	renderBarsMap: function (bars)
 	{
 		var map = this.gMap
-		map.setCenter(new GLatLng(55.75,37.6), 10)
+		log(bars.city)
+		var cityPoint = this.citiesData[bars.city].point
+		map.setCenter(new GLatLng(cityPoint[0],cityPoint[1]), 10)
 		map.clearOverlays()
 		// vac.gMarker.openInfoWindowHtml('<div class="info-window-popup"><div class="logo">' + vac.brand + '</div><div class="type">' + vac.type + '</div></div>')
 		parent.innerHTML = ''
