@@ -1,94 +1,72 @@
 var BarsModel =
 {
-	initialize: function (db)
+	initialize: function (db, state)
 	{
-		this.db = db
-		
-		for (var i = 0; i < db.length; i++)
+		for (var k in db)
 		{
-			var bar = db[i]
-			if (!bar.feel)
-				bar.feel = []
-			if (!bar.format)
-				bar.format = []
+			var bars = db[k]
+			for (var i = 0; i < bars.length; i++)
+			{
+				var bar = bars[i]
+				if (!bar.feel)
+					bar.feel = []
+				if (!bar.format)
+					bar.format = []
 			
-			bar.searchKey = [bar.city, ':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':'].join('\n')
-			// log(bar.searchKey)
+				bar.searchKey = [bar.city, ':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':'].join('\n')
+			}
 		}
 		
-		BarsView.renderFeels(this._getAllFeels(db))
-		BarsView.renderFormats(this._getAllFormats(db))
-		BarsView.renderCities(this._getAllCities(db))
-		
-		BarsView.modelChanged(this._getAllCurrentBars())
+		this.db = db
+		this.setState(state)
 	},
 	
-	setViewType: function (type)
+	setState: function (state)
 	{
-		this.viewType = type
-		BarsView.setViewType(type)
-		BarsView.modelChanged(this._getAllCurrentBars())
+		var db = this._getBars(state)
+		BarsView.modelChanged(db, state)
+		BarsView.renderCities(this._getCities(this.db), state.city)
+		BarsView.renderFormats(this._getFormatsByCity(state.city), state.format)
+		BarsView.renderFeels(this._getFeelsByCityFormat(state.city, state.format), state.feel)
 	},
 	
-	anyFormat: 'любой формат',
-	anyFeel: 'любая атмосфера',
-	
-	setCity: function (val)
+	_getBars: function (state)
 	{
-		this.city = val
-		this.format = null
-		this.feel = null
-		var db = this._getAllCurrentBars()
-		BarsView.modelChanged(db)
-		BarsView.renderFormats(this._getAllFormats(db))
-		BarsView.renderFeels(this._getAllFeels(db))
-	},
-	setFormat: function (val)
-	{
-		this.format = val
-		this.feel = null
-		var db = this._getAllCurrentBars()
-		BarsView.modelChanged(db)
-		BarsView.renderFeels(this._getAllFeels(db))
-	},
-	setFeel: function (val)
-	{
-		this.feel = val
-		var db = this._getAllCurrentBars()
-		BarsView.modelChanged(db)
-	},
-	
-	_getAllCurrentBars: function ()
-	{
-		var db = this.db
-		var feelRex = (!this.feel || this.feel == this.anyFeel) ? '.*' : '.*:' + this.feel + ':.*'
-		var formatRex = (!this.format || this.format == this.anyFormat) ? '.*' : '.*:' + this.format + ':.*'
-		var rex = new RegExp(this.city + '\n' + feelRex + '\n' + formatRex, 'i')
-		// log(rex)
-		
+		state = state || {}
 		var res = []
-		if (!this.city)
+		
+		var bars = this.db[state.city]
+		if (!bars)
 			return res
-		for (var i = 0; i < db.length; i++)
+		
+		var feelRex = state.feel === undefined ? '.*' : '.*:' + state.feel + ':.*'
+		var formatRex = state.format === undefined ? '.*' : '.*:' + state.format + ':.*'
+		var rex = new RegExp(feelRex + '\n' + formatRex, 'i')
+		
+		for (var i = 0; i < bars.length; i++)
 		{
-			var bar = db[i]
+			var bar = bars[i]
 			if (rex.test(bar.searchKey))
 				res.push(bar)
 		}
-		
-		res.city = this.city
-		res.format = this.format
-		res.feel = this.feel
-		
+		res.state = state
 		return res
 	},
 	
-	_getPropertiesSorted: function (db, key)
+	_getCities: function (db)
+	{
+		var res = []
+		for (var k in db)
+			res.push(k)
+		return res.sort(function (a, b) { return db[b].length - db[a].length })
+	},
+	
+	_getPropertiesSorted: function (bars, key)
 	{
 		var hash = {}
-		for (var i = 0; i < db.length; i++)
+		for (var i = 0; i < bars.length; i++)
 		{
-			var bar = db[i]
+			var bar = bars[i]
 			var arr = bar[key]
 			if (typeof arr != 'object')
 				arr = [arr]
@@ -109,7 +87,6 @@ var BarsModel =
 		return res.sort(function (a, b) { return hash[b] - hash[a] })
 	},
 	
-	_getAllCities: function (db) { return this._getPropertiesSorted(db, 'city') },
-	_getAllFormats: function (db) { var arr = this._getPropertiesSorted(db, 'format'); arr.unshift(this.anyFormat); return arr },
-	_getAllFeels: function (db) { var arr = this._getPropertiesSorted(db, 'feel'); arr.unshift(this.anyFeel); return arr }
+	_getFormatsByCity: function (city) { return this._getPropertiesSorted(this._getBars({city:city}), 'format') },
+	_getFeelsByCityFormat: function (city, format) { return this._getPropertiesSorted(this._getBars({city:city, format:format}), 'feel') }
 }

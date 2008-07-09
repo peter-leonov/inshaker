@@ -62,6 +62,8 @@ var Selecter =
 		
 		main.select = function (num, force)
 		{
+			if (typeof num !== 'number')
+				num = this.getValueNumber(num)
 			var optionsChilds = this.nodes.options.childNodes
 			var selected = optionsChilds[num]
 			if (selected)
@@ -75,6 +77,8 @@ var Selecter =
 				selected.addClassName('selected')
 				this.setCaption(selected.innerHTML)
 			}
+			else
+				throw new Error('Can`t select option with value "'+num+'": no such option`')
 		}
 		
 		main.removeGarbageNodes()

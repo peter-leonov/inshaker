@@ -3,12 +3,19 @@ var Switcher =
 	bind: function (main, tabs)
 	{
 		main.nodes = {tabs: tabs}
+		main.names = []
 		
+		main.autoSelect = true
 		main.onselect = function () {}
-		main.select = function (num, node)
+		main.setTabs = function (tabs) { this.nodes.tabs = tabs }
+		main.setNames = function (names) { this.names = names }
+		main.select = function (num)
 		{
+			if (typeof num != 'Number')
+				num = this.names.indexOf(num)
+			
 			var tabs = this.nodes.tabs
-			if (tabs)
+			if (tabs && tabs[num])
 			{
 				for (var i = 0; i < tabs.length; i++)
 					tabs[i].hide()
@@ -29,7 +36,7 @@ var Switcher =
 			}
 			e.target.addClassName('selected')
 			
-			if (this.onselect(num, e.target) !== false)
+			if (this.onselect(num, e.target) !== false && this.autoSelect)
 				this.select(num, e.target)
 		}
 		main.addEventListener('mousedown', select, false)
