@@ -331,6 +331,12 @@ label{display:block;}
 
 #bars-page .body-wrapper { width:920px; }
 #bars-page #bars-list {width:945px;}
+
+#bars-page .bar-map-popup img {width:100px;float:right;}
+#bars-page .bar-map-popup h2 {font-weight:bold;}
+#bars-page .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
+
+
 /* about page */
 #about-page .b-content{min-height:46em;}
 .b-content .content p{font-size:12px;margin:1.5em 0;}

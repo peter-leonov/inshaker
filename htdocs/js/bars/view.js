@@ -3,9 +3,9 @@ var BarsView =
 	cache: {barNode:{}},
 	citiesData:
 	{
-		'Москва': {point: [55.790473,37.619934]},
-		'Санкт-Петербург': {point: [59.941084,30.315914]},
-		'Омск': {point: [54.990222,73.394165]}
+		'Москва': {point: [55.790473,37.619934], zoom: 10},
+		'Санкт-Петербург': {point: [59.941084,30.315914], zoom: 10},
+		'Омск': {point: [54.990222,73.394165], zoom: 11}
 	},
 	
 	any: {format: 'любой формат', feel: 'любая атмосфера'},
@@ -20,7 +20,7 @@ var BarsView =
 		nodes.viewSwitcher.onselect = function (num) { self._setViewNum(num) }
 		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
-		nodes.viewSwitcher.autoSelect = false
+		// nodes.viewSwitcher.autoSelect = false
 		
 		this.nodes.map.show()
 		var map = new GMap2(this.nodes.map)
@@ -28,7 +28,7 @@ var BarsView =
 		map.addControl(new GSmallMapControl())
 		map.enableContinuousZoom()
 		map.enableScrollWheelZoom()
-		map.moveend = function () { alert('moveend') }
+		GEvent.addListener(map, 'moveend', function () { BarsController.gMapMoveEnd(this) })
 		this.gMap = map
 		
 		var gIcon = new GIcon()
@@ -45,12 +45,16 @@ var BarsView =
 		this.renderBars(data, state)
 	},
 	
-	_setViewNum: function (num) { return this.setViewType(['list','map'][num]) },
+	_setViewNum: function (num)
+	{
+		var type = ['list','map'][num]
+		this.setViewType(type)
+		BarsController.viewTypeSwitched(type)
+	},
 	
 	setViewType: function (type)
 	{
 		this.nodes.viewSwitcher.select(type)
-		BarsController.viewTypeSwitched(type)
 	},
 	
 	renderCities: function (options, selected)
@@ -103,12 +107,24 @@ var BarsView =
 		
 		if (this.lastCity != state.city)
 		{
-			var cityPoint = this.citiesData[state.city].point
-			map.setCenter(new GLatLng(cityPoint[0],cityPoint[1]), 10)
+			var ll, zoom
+			if (!this.lastCity && state.lat && state.lng)
+			{
+				ll = new GLatLng(parseFloat(state.lat), parseFloat(state.lng))
+				zoom = parseInt(state.zoom) || 10
+			}
+			else
+			{
+				var cityData = this.citiesData[state.city]
+				var cityPoint = cityData.point
+				ll = new GLatLng(cityPoint[0],cityPoint[1])
+				zoom = cityData.zoom || 10
+			}
+			
+			map.setCenter(ll, zoom)
 			this.lastCity = state.city
 		}
 		map.clearOverlays()
-		// vac.gMarker.openInfoWindowHtml('<div class="info-window-popup"><div class="logo">' + vac.brand + '</div><div class="type">' + vac.type + '</div></div>')
 		parent.innerHTML = ''
 		for (var i = 0; i < bars.length; i++)
 		{
@@ -124,16 +140,28 @@ var BarsView =
 		var gPoint = new GLatLng(bar.point[0], bar.point[1])
 		// var mkey = bar.point[0] + ':' + bar.point[1]
 		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
-		GEvent.addListener(gMarker, 'click', function () { alert('click') })
+		var _this = this
+		function click ()
+		{
+			BarsController.gMarkerClicked(gMarker)
+		}
+		GEvent.addListener(gMarker, 'click', click)
+		gMarker.bar = bar
+		bar.gMarker = gMarker
 		return gMarker
+	},
+	
+	showBarMapPopup: function (bar)
+	{
+		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+this.getBarHref(bar)+'">Посмотреть бар…</a></div>') // <img src="'+_this.getBarImageSrc(bar)+'"/>
 	},
 	
 	getBarNode: function (bar)
 	{
 		var main = this.cache.barNode[bar.id] || (this.cache.barNode[bar.id] = this.createBarNode(bar))
 		main.setName(bar.name)
-		main.setImage('/i/bar/pre/'+bar.id+'.jpg')
-		main.setHref('/bars/'+bar.id+'.html')
+		main.setImage(this.getBarImageSrc(bar))
+		main.setHref(this.getBarHref(bar))
 		return main
 	},
 	
@@ -148,5 +176,8 @@ var BarsView =
 		main.setName = function (text) { name.innerHTML = text }
 		main.setHref = function (href) { name.href = href }
 		return main
-	}
+	},
+	
+	getBarHref: function (bar) { return '/bars/' + bar.id + '.html' },
+	getBarImageSrc: function (bar) { return '/i/bar/pre/' + bar.id + '.jpg' }
 }

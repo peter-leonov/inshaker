@@ -14,6 +14,17 @@ var Switcher =
 			if (typeof num != 'Number')
 				num = this.names.indexOf(num)
 			
+			var childs = Array.copy(this.childNodes)
+			
+			var selected = childs[num]
+			if (selected)
+			{
+				for (var i = 0; i < childs.length; i++)
+					childs[i].remClassName('selected')
+				
+				selected.addClassName('selected')
+			}
+			
 			var tabs = this.nodes.tabs
 			if (tabs && tabs[num])
 			{
@@ -26,15 +37,11 @@ var Switcher =
 		
 		function select (e)
 		{
+			var childs = Array.copy(main.childNodes)
 			var num
-			for (var i = 0; i < this.childNodes.length; i++)
-			{
-				var node = main.childNodes[i]
-				node.remClassName('selected')
-				if (node == e.target)
+			for (var i = 0; i < childs.length; i++)
+				if (childs[i] == e.target)
 					num = i
-			}
-			e.target.addClassName('selected')
 			
 			if (this.onselect(num, e.target) !== false && this.autoSelect)
 				this.select(num, e.target)
