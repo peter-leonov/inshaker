@@ -23,7 +23,6 @@ var BarsController =
 	{
 		var gLatLng = map.getCenter()
 		var gZoom = map.getZoom()
-		log(gLatLng, gZoom)
 		this.state.zoom = gZoom
 		this.state.lat = Math.round(gLatLng.lat() * 10000) / 10000
 		this.state.lng = Math.round(gLatLng.lng() * 10000) / 10000

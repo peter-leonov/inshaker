@@ -1,22 +1,16 @@
 var BarsView =
 {
 	cache: {barNode:{}},
-	citiesData:
-	{
-		'Москва': {point: [55.790473,37.619934], zoom: 10},
-		'Санкт-Петербург': {point: [59.941084,30.315914], zoom: 10},
-		'Омск': {point: [54.990222,73.394165], zoom: 11}
-	},
-	
 	any: {format: 'любой формат', feel: 'любая атмосфера'},
 	
-	initialize: function (nodes)
+	initialize: function (nodes, citiesData)
 	{
+		this.citiesData = citiesData
 		this.nodes = nodes
 		var self = this
 		nodes.citySelect.onselect	= function (val) { BarsController.citySelected(val) }
-		nodes.formatSelect.onselect = function (val) { BarsController.formatSelected(val == self.any.format ? null : val) }
-		nodes.feelSelect.onselect	= function (val) { BarsController.feelSelected(val == self.any.feel ? null : val) }
+		nodes.formatSelect.onselect = function (val) { BarsController.formatSelected(val == self.any.format ? undefined : val) }
+		nodes.feelSelect.onselect	= function (val) { BarsController.feelSelected(val == self.any.feel ? undefined : val) }
 		nodes.viewSwitcher.onselect = function (num) { self._setViewNum(num) }
 		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])

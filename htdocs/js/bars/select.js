@@ -22,13 +22,25 @@ var Selecter =
 		main.setOptions = function (options)
 		{
 			var optionsNode = this.nodes.options
-			optionsNode.innerHTML = ''
-			for (var i = 0; i < options.length; i++)
+			optionsNode.empty()
+			
+			this.remClassName('empty')
+			this.remClassName('single')
+			
+			if (options && options.length)
 			{
-				var li = document.createElement('li')
-				li.appendChild(document.createTextNode(options[i]))
-				optionsNode.appendChild(li)
+				for (var i = 0; i < options.length; i++)
+				{
+					var li = document.createElement('li')
+					li.appendChild(document.createTextNode(options[i]))
+					optionsNode.appendChild(li)
+				}
+				
+				if (options.length == 1)
+					this.addClassName('single')
 			}
+			else
+				this.addClassName('empty')
 			
 			return options
 		}
@@ -93,6 +105,8 @@ var Selecter =
 		
 		function open (e)
 		{
+			if (main.nodes.options.childNodes.length < 2)
+				return
 			Selecter.closeAll()
 			e.stopPropagation()
 			main.addClassName('open')
@@ -118,6 +132,7 @@ var Selecter =
 		main.nodes.options.addEventListener('mousedown', select, false)
 		main.nodes.options.addEventListener('mouseup', select, false)
 		
+		main.setOptions([])
 		this.stack.push(main)
 		
 		return main

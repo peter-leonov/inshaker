@@ -1,13 +1,13 @@
 var Bars =
 {
-	init: function (db, nodes)
+	init: function (db, citiesData, nodes)
 	{
 		this.view       = BarsView;
 		this.model      = BarsModel;
 		this.controller = BarsController;
 		
 		var state = {city: 'Москва', view: 'list'}
-		this.view.initialize(nodes)
+		this.view.initialize(nodes, citiesData)
 		this.controller.initialize(db, state)
 	}
 }
@@ -47,6 +47,6 @@ $.onload
 		// }
 		// Storage.init(dbInit)
 		
-		Bars.init(bars_db, nodes)
+		Bars.init(bars_db, bars_cities_gData, nodes)
 	}
 )

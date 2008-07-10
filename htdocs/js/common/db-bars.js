@@ -21,3 +21,10 @@ var bars_db =
 		{name: '33 зуба', format: ['уютная', 'омская'], name_eng: '33 teeth', point: [54.9,73.3], id: '33-teeth'}
 	]
 }
+
+var bars_cities_gData =
+{
+	'Москва': {point: [55.751,37.645], zoom: 10},
+	'Санкт-Петербург': {point: [59.941084,30.315914], zoom: 10},
+	'Омск': {point: [54.961,73.394165], zoom: 11}
+}
