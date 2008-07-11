@@ -671,6 +671,6 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 
 #order-page form br { clear:left; }
 #order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
-my { display: block; background: red; }
+
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--#include file="/t/css/ie6.css" --><!--#endif -->
 <!--#if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--#include file="/t/css/ie7.css" --><!--#endif -->

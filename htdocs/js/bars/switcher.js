@@ -11,7 +11,7 @@ var Switcher =
 		main.setNames = function (names) { this.names = names }
 		main.select = function (num)
 		{
-			if (typeof num != 'Number')
+			if (typeof num != 'number')
 				num = this.names.indexOf(num)
 			
 			var childs = Array.copy(this.childNodes)

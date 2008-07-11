@@ -76,12 +76,12 @@ var BarsView =
 	
 	renderBars: function (bars, state)
 	{
-		if (state.view == 'list')
+		if (!state.view || state.view == 'list')
 			return this.renderBarsList(bars, state)
 		else if (state.view == 'map')
 			return this.renderBarsMap(bars, state)
 		else
-			xxx
+			log('Unknown view type "'+state.view+'"')
 	},
 	renderBarsList: function (bars, state)
 	{
