@@ -18,7 +18,8 @@ function CalculatorView() {
 	this.IGNORED_KEYS = [this.KEY_LEFT, this.KEY_RIGHT, this.KEY_ESC, this.KEY_ENTER, this.KEY_TAB];
 	
 	this.eventListener = null; // controller
-
+	this.popupStatusListener = null; // external
+	
 	this.cartSum = 0;
 	
 	this.lastShownIngred = "";
@@ -71,6 +72,16 @@ function CalculatorView() {
 	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		link.close();
 	}, false);
+	
+	$(this.INGRED_POPUP).show = function(){
+		this.style.display = "block";
+		if(self.popupStatusListener) self.popupStatusListener.popupShown();
+	};
+	
+	$(this.INGRED_POPUP).hide = function(){
+		this.style.display = "none";
+		if(self.popupStatusListener) self.popupStatusListener.popupHidden();
+	};
 	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения

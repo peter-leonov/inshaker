@@ -1,8 +1,20 @@
 function CalculatorModel(view){
-	this.dataListener = view;
 	this.cartData = {};
 	
 	this.optimalGoods = {};
+	
+	this.dataListeners = {
+		listeners: [view],
+		modelChanged: function(cartData, dontSave){
+			for(var i = 0; i < this.listeners.length; i++){
+				this.listeners[i].modelChanged(cartData, dontSave);
+			}
+		}
+	};
+	
+	this.addDataListener = function(listener){
+		this.dataListeners.listeners.push(listener);
+	}
 	
 	this.initialize = function(cartData) {
 		// десериализация полученного от контроллера набора
@@ -14,7 +26,7 @@ function CalculatorModel(view){
 			this.cartData.goods = {};
 		}		
 		this.optimalGoods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
-		this.dataListener.modelChanged(this.cartData, true);
+		this.dataListeners.modelChanged(this.cartData, true);
 	};
 	
 	this.addCocktail = function(name){
@@ -27,7 +39,7 @@ function CalculatorModel(view){
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
-				this.dataListener.modelChanged(this.cartData);
+				this.dataListeners.modelChanged(this.cartData);
 			}
 		}
 	};
@@ -40,7 +52,7 @@ function CalculatorModel(view){
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
-				this.dataListener.modelChanged(this.cartData);
+				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}
 		}
@@ -58,7 +70,7 @@ function CalculatorModel(view){
 			delete this.cartData.goods[name].bottles[bottleId];
 		} else bottle.count = quantity;
 		this.countDiffs(name);
-		this.dataListener.modelChanged(this.cartData);
+		this.dataListeners.modelChanged(this.cartData);
 	};
 	
 	/**
@@ -96,7 +108,7 @@ function CalculatorModel(view){
 		}
 		this.cartData.goods[name] = item;
 		this.countDiffs(name);
-		this.dataListener.modelChanged(this.cartData);
+		this.dataListeners.modelChanged(this.cartData);
 	};
 	
 	this.getNewBottle = function(name, bottleId){
@@ -116,7 +128,7 @@ function CalculatorModel(view){
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
-				this.dataListener.modelChanged(this.cartData);
+				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}
 		}

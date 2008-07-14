@@ -11,5 +11,13 @@ var Calculator = {
 	
 	getShopList: function(){
 		return this.model.cartData;
+	},
+	
+	addChangeListener: function(listener){
+		this.model.addDataListener(listener);
+	},
+	
+	setPopupStatusListener: function(listener){
+		this.view.popupStatusListener = listener;
 	}
 };

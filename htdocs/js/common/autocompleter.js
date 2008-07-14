@@ -180,6 +180,29 @@ function Autocompleter(set) {
 		}
 	}
 	
-	this.show = function() { div.style.display = "block"; this.shown = true; }
-	this.hide = function() { div.style.display = "none";  this.shown = false; }
+	this.show = function() { div.show(); this.adaptFrame(this.backFrame, true);  this.shown = true; }
+	this.hide = function() { div.hide(); this.adaptFrame(this.backFrame, false); this.shown = false; }
+	
+	this.adaptFrame = function(frame, toShow){
+		if(toShow){
+			frame.show();
+			frame.style.left   = div.offsetLeft   + "px";
+			frame.style.top    = div.offsetTop    + "px";
+			frame.style.width  = div.offsetWidth  + "px";
+			frame.style.height = div.offsetHeight + "px";
+		} else frame.hide();
+	}
+	
+	this.createBackFrame = function(){
+		var e = document.createElement("iframe");
+		e.setAttribute('id', 'backFrame');
+		e.style.border = "0";
+		e.style.width = "0";
+		e.style.height = "0";
+		e.style.position = "absolute";
+		var iframe = document.body.appendChild(e);
+		return e;
+	}
+	
+	this.backFrame = this.createBackFrame();
 }

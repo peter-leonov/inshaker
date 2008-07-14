@@ -49,7 +49,7 @@ function Draggable(element, name, dropTargets){
 			// dropping
 			for(var i = 0; i < dropTargets.length; i++){
 				if(dropTargets[i].style.display != "none"){
-					var targPos    = self.getPosition(dropTargets[i]);
+					var targPos    = getPosition(dropTargets[i]); // from util.js
 					var targWidth  = parseInt(dropTargets[i].offsetWidth);
 					var targHeight = parseInt(dropTargets[i].offsetHeight);
 					
@@ -70,21 +70,5 @@ function Draggable(element, name, dropTargets){
 
 	this.getMouseOffset = function(elem){
 		return {x:elem.offsetWidth/2, y:elem.offsetHeight/2};
-	};
-
-	this.getPosition = function(e){
-		var left = 0;
-		var top  = 0;
-
-		while (e.offsetParent){
-			left += e.offsetLeft;
-			top  += e.offsetTop;
-			e     = e.offsetParent;
-		}
-
-		left += e.offsetLeft;
-		top  += e.offsetTop;
-
-		return {x:left, y:top};
-	};   
+	}; 
 }
