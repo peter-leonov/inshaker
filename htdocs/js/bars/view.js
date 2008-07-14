@@ -15,28 +15,38 @@ var BarsView =
 		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
 		// nodes.viewSwitcher.autoSelect = false
-		
-		this.nodes.map.show()
-		var map = new GMap2(this.nodes.map)
-		this.nodes.map.hide()
-		map.addControl(new GSmallMapControl())
-		map.enableContinuousZoom()
-		map.enableScrollWheelZoom()
-		GEvent.addListener(map, 'moveend', function () { BarsController.gMapMoveEnd(this) })
-		this.gMap = map
-		
-		var gIcon = new GIcon()
-		gIcon.shadow = '/t/bg/bars/bar-icon.png'
-		gIcon.image = '/t/bg/bars/bar-icon.png'
-		gIcon.iconAnchor = new GPoint(12, 34)
-		gIcon.infoWindowAnchor = new GPoint(16, 0)
-		gIcon.infoShadowAnchor = new GPoint(18, 25)
-		this.gIcon = gIcon
+		this.initMap()
 	},
 	
 	modelChanged: function (data, state)
 	{
 		this.renderBars(data, state)
+	},
+	
+	initMap: function ()
+	{
+		if (!this.gMap)
+		{
+			this.nodes.map.show()
+			var map = new GMap2(this.nodes.map)
+			this.nodes.map.hide()
+			map.addControl(new GSmallMapControl())
+			map.enableContinuousZoom()
+			map.enableScrollWheelZoom()
+			GEvent.addListener(map, 'moveend', function () { BarsController.gMapMoveEnd(this) })
+			this.gMap = map
+		}
+		
+		if (!this.gIcon)
+		{
+			var gIcon = new GIcon()
+			gIcon.shadow = '/t/bg/bars/bar-icon.png'
+			gIcon.image = '/t/bg/bars/bar-icon.png'
+			gIcon.iconAnchor = new GPoint(12, 34)
+			gIcon.infoWindowAnchor = new GPoint(16, 0)
+			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			this.gIcon = gIcon	
+		}
 	},
 	
 	_setViewNum: function (num)
