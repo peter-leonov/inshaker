@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<meta http-equiv="imagetoolbar" content="no"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
+	<title>Inshaker √ Доставка моего бара</title>
+</head>
+<body>
+<div id="main-wrapper">
+	
+	<div id="top">
+		<h2><a href="/"><img src="/t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
+	</div>
+	
+	<div class="column-main-container">
+		<div class="column column-main" id="order-page"><div class="body-wrapper">
+			<div class="b-title">
+				<h1>Доставить мой бар</h1>
+				<a href="/cocktails.html">← продолжить выбор коктейлей</a>
+			</div>
+			<div class="b-content">
+				<div class="note" style="display:none">Стоимость обслуживания выездного бара формируется исходя из параметров конкретного мероприятия. <a href="#">Расценки на выездное обслуживание</a>.</div>
+				<form action="/act/order.cgi" method="post" name="order_form" id="search_form" target="ajax">
+				<fieldset>
+				<legend>Адрес и удобное время доставки</legend>
+					<div class="radio_block">
+						<label id="label_city_moscow"><input type="radio" name="area" id="city_moscow" value="city_moscow" checked/>Москва</label> <label id="label_city_mo"><input type="radio" name="area" value="city_mo" id="city_mo">Московская область</label>
+					</div>
+						<textarea name="address" rows="6" cols="60" id="address" tabindex="1"></textarea><br>
+					<input type="hidden" name="order_type" value="Доставка моего бара с inshaker.ru"/>
+					<input type="hidden" name="min_sum" id="min_sum" value="5000"/>
+					<div id="metro_info" style="overflow:hidden;">
+					<label for="metro" id="label_metro">Ближайшее метро </label>
+						<div id="search_error"></div>
+						<input type="text" name="metro" class="text_field" id="search_input" autocomplete="off" tabindex="2"/>
+						<div id="autocomplete" style="display: none;"></div>
+					</div>
+					<label for="date" >Дата доставки </label>
+						<span id="date_selector"></span><br/>
+					<label for="time1">Удобные часы </label>
+					с
+						<select name="time1" id="time1">
+							<option value="10:00" selected="selected">10:00</option>
+							<option value="11:00">11:00</option>
+							<option value="12:00">12:00</option>
+							<option value="13:00">13:00</option>
+							<option value="14:00">14:00</option>
+							<option value="15:00">15:00</option>
+							<option value="16:00">16:00</option>
+							<option value="17:00">17:00</option>
+							<option value="18:00">18:00</option>
+						</select> 
+						до 
+						<select name="time2" id="time2">
+							<option value="12:00">12:00</option>
+							<option value="13:00">13:00</option>
+							<option value="14:00">14:00</option>
+							<option value="15:00">15:00</option>
+							<option value="16:00">16:00</option>
+
+							<option value="17:00">17:00</option>
+							<option value="18:00">18:00</option>
+							<option value="19:00">19:00</option>
+							<option value="20:00" selected="selected">20:00</option>
+						</select>
+					<br/>
+				</fieldset>
+				<fieldset>
+				<legend>Получатель</legend>
+					<div class="radio_block">
+						<label id="label_face_phys"><input type="radio" id="face_phys" name="face" value="face_phys" checked/>Физическое лицо</label> <label id="label_face_legal"><input type="radio" id="face_legal" name="face" value="face_legal">Юридическое лицо</label>
+					</div>
+					<div id="legal_info" style="overflow:hidden; height:0">
+					<label for="legal_name">Юр. название </label>
+						<input type="text" class="text_field" id="legal_name" name="legal_name" tabindex="6"/><br/>
+					<label for="inn">ИНН </label>
+						<input type="text" class="text_field" id="inn" name="inn" tabindex="6"/><br/>
+					<label for="kpp">КПП </label>
+						<input type="text" class="text_field" id="kpp" name="kpp" tabindex="6"/><br/>
+					</div>
+					<label for="firstname">Имя </label>
+						<input type="text" class="text_field" id="firstname" name="firstname" tabindex="6"/><br/>
+					<label for="lastname">Фамилия </label>
+						<input type="text" class="text_field" id="lastname" name="lastname" tabindex="7"/><br/>
+					<label for="phone1">Телефон основной</label>
+						<input type="text" class="text_field" id="phone11" name="phone11" tabindex="8" value="+7" disabled/> <input type="text" class="text_field" id="phone12" name="phone12" tabindex="9"/> <input type="text" class="text_field" id="phone13" name="phone13" tabindex="10"/><br/>
+					<label for="phone2">Телефон запасной</label>
+							<input type="text" class="text_field" id="phone21" name="phone21" tabindex="11" value="+7" disabled/> <input type="text" class="text_field" id="phone22" name="phone22" tabindex="12"/> <input type="text" class="text_field" id="phone23" name="phone23" tabindex="13"/><br/>
+					<label for="email">E-mail </label>
+						<input type="text" class="text_field" id="email" name="email" tabindex="14" title="email"><br/>
+				</fieldset>
+				<fieldset>
+				<legend>Комментарии</legend>
+					<textarea name="comments" rows="6" cols="60" id="comments" tabindex="15"></textarea><br/>
+				</fieldset>
+				<div id="order_more" style="display: none">Минимальная сумма заказа - 3000 рублей. <a href="/cocktails.html">Закажите еще что-нибудь</a> :-)</div>
+					<div id="buttons_area">&nbsp;<button class="bt-send" type="submit" id="button_submit">Отправить</button></div>
+				</form>
+			</div>
+		</div></div>
+	</div>
+	
+	
+	
+<!--#include file="/inc/calculator.html" -->	
+<!--#include file="/inc/bottom-common.html" -->
+</div>
+
+
+<!-- магазин -->
+<div class="win-shop" id="shop-cocktail">
+	
+	<div class="opacity" id="overlay"></div>
+	
+	<div class="win">
+		<div class="win-bg"></div>
+		
+		<div class="main"><div class="wrapper">
+			<a class="close" id="good_cancel">x</a>
+			<h3 id="good_name"></h3>
+			
+			<div class="gallery gallery-nav">
+				<p>
+					<a class="zoom">
+						<img id="good_picture" src="" alt="1"/>
+					</a>
+				</p>
+			</div>
+			
+			<div class="content">
+				<div class="loved">
+					<dl>
+						<dt></dt>
+						<dd>
+							<b onclick="(this.i)?this.innerHTML+=this.i++:this.i=1">427</b>
+							<a>Я люблю</a>
+						</dd>
+					</dl>
+				</div>
+				<ul class="composition" id="good_composition">
+					<li id="good_ingredient">Ром светлый</li>
+					<li>Марка: <a id="good_mark">Bacardi</a></li>
+				</ul>
+				<p class="desc" id="good_desc">Этот ингредиент очень важен для данного коктейля. Его вкусовые особенности и консистенция напрямую влияют на восприятие готового напитка.</p>
+				<div class="dots" id="good_needed">
+					<dl><dt>Необходимо</dt><dd id="good_needed_vol">4,5 л</dd></dl>
+					<dl><dt>Сейчас в плане</dt><dd id="good_needed_have">1 л</dd></dl>
+				</div>
+				<form class="dots" id="good_volumes">
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 1 л</a></dt><dd><strong>1000 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1"/> <a>Бутылка 0,7 л</a></dt><dd><strong>890 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+					<dl><dt><input type="checkbox" name="b1" disabled="disabled"/> <a>Банка 0,33 л</a></dt><dd><strong>200 р.</strong><input type="text" value="0"/> шт.</dd></dl>
+				</form>
+				<div class="sum">
+					<p>
+						<strong id="good_summ">Итого: <i>4450 р.</i></strong>
+					</p>
+					<button class="bt-add-in-account" id="good_accept">Добавить в счет</button>
+				</div>
+			</div>
+		</div></div>
+	
+		<div class="b-alternative b">
+			<div class="viewport">
+				<a href="#" class="prev">←</a>
+				<ul>
+					<li><a href="#"><img src="/i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="/i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="/i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="/i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+					<li><a href="#"><img src="/i/food/l/1.png" width="54" height="88" alt="1"/></a></li>
+				</ul>
+				<a href="#" class="next">→</a>
+			</div>
+		</div>
+			
+	</div>
+	
+</div>
+<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/common/metro.js"></script>
+<script type="text/javascript" src="/js/common/db.js"></script>
+<script type="text/javascript" src="/js/order/order.js"></script>
+</body>
+</html>
