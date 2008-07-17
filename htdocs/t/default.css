@@ -382,7 +382,7 @@ label{display:block;}
 .column-r,
 #b-bar,
 #b-bill{background:#fff url(bg/bill/bottom.png) repeat-x 0 100%;float:left;width:30.8em;margin-left:1.8em;position:relative;}
-#b-bill h2{padding:23px 0 19px 20px;font-size:120%;background:url(bg/bill/menus.png) repeat-x 0 100%;}
+#b-bill h2{padding:23px 0 19px 20px;background:url(bg/bill/menus.png) repeat-x 0 100%; font-weight: bold;}
 #b-bill dl{background:url(bg/bill/menus.png) repeat-x 0 -140px;position:relative;margin-top:1px;}
 #b-bill dt{/*background:url(bg/bill/menus.png) no-repeat 89% -35px;cursor:pointer;*/height:35px;color:#343b40;font-size:120%;font-weight:bold;line-height:35px;padding-left:20px;}
 #b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
