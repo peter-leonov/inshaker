@@ -92,6 +92,10 @@ Array.prototype.without = function(index) {
 	return tmp;
 }
 
+Array.prototype.last = function(){
+	return this[this.length-1];
+}
+
 function toArray(hash) {
 	var results = [];
 	for(key in hash) results.push(hash[key]);

@@ -58,6 +58,14 @@ function CalculatorView() {
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
+	if($('order_button')){
+		$('order_button').addEventListener('click', function(e){
+			if(!Calculator.checkSum("order")){
+				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("order") + ". Добавьте что-нибудь еще ;-)");
+			} else window.location.href="/order.html";
+		}, false);
+	}
+	
 	$('good_cancel').addEventListener('mousedown', function(e){
 		link.close();
 	}, false);
@@ -192,7 +200,7 @@ function CalculatorView() {
 		
 		if(input.value != quantity)
 			input.value = quantity || "";
-		txt.nodeValue = " " + quantity.plural("порцию", "порции", "порций");
+		txt.nodeValue = " " + quantity.plural("порция", "порции", "порций");
 		
 		return li;
 	};

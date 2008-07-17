@@ -63,10 +63,10 @@ var About = {
 		menu.now.addClassName("now");
 		
 		var bottom_links = $('bottom').getElementsByTagName('a');
-		for(var i = 1; i < bottom_links.length; i++) {
+		for(var i = 2; i < bottom_links.length; i++) {
 			bottom_links[i].addEventListener('click', function(idx){ return function(e){
 				handler(e, menu_links[idx]);
-			}}(i-1), false);
+			}}(i-2), false);
 		}
 		
 		link = new Link();
