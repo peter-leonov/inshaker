@@ -407,18 +407,18 @@ label{display:block;}
 #b-bill ul.money input{float:left;}
 #b-bill ul input{text-align:center;padding-left:0;width:35px;font-size:11px;}
 /*TODO*/
-#b-bill .total{padding:9px 23px 35px 10px;position:relative;overflow:hidden;}
+#b-bill .total{padding:9px 23px 0 10px;position:relative;overflow:hidden;}
 #b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
-#b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 0pt auto;}
+#b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
 #b-bill #print_plan,
 #b-bill #call_barmen { font-size: 11px; }
-#b-bill .print-call {margin-top: 17px; text-align: center;}
+#b-bill .print-call {margin-top: 14px; text-align: center; padding-bottom: 30px;}
 #b-bill #print_plan { background: url(button/print_plan.png) no-repeat; padding-left: 16px;}
 #b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; padding-left: 16px; margin-left: 30px;}
 
 #cart_contents{display:none;}
 #cart_totals{display:none;}
-#cart_draghere{display:none;font-weight:bold;background:transparent url(bg/bill/drag-bg.png) no-repeat 24px 24px;padding:24px;font-size:12px;}
+#cart_draghere{display:none;font-weight:bold;background:transparent url(bg/bill/drag-bg.png) no-repeat 24px 24px;padding:24px 24px 0pt;font-size:12px;}
 #cart_draghere div{width:212px;padding:14px 0 10px 42px;}
 #cart_draghere b{color:#7ca527;}
 /*bar block*/
@@ -466,6 +466,10 @@ label{display:block;}
 .win-shop .content .sum button{margin:6px 47px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
 .win-shop .b-alternative{display:none;background:#0d0d0d url(bg/win/alt.png) repeat-x 0 100%;margin-top:7px;position:relative;}
+.win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
+.win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
+.win-shop .content #order_note a:hover { text-decoration: none;}
+
 /* ForFuture */
 .win-shop .b-alternative .next,
 .win-shop .b-alternative .prev{background-color:#fff;position:absolute;top:41px;left:20px;}

@@ -45,6 +45,10 @@ var Controller = {
 		this.renderIngredients(Model.ingredients);
 	},
 	
+	getCocktailName: function(){
+		return $(this.NAME_ELEM).innerHTML;
+	},
+	
 	bindEvents: function(){
 		var self = this;
 		var menu = $('panel_cocktail');
@@ -95,6 +99,10 @@ var Controller = {
 		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
 			link.close();
 		}, false);
+		
+		$('good_cancel').addEventListener('mousedown', function(e){
+			$('order_note').hide();
+		}, false);
 	},
 	
 	setPicture: function(name, good, vol){
@@ -144,6 +152,8 @@ var Controller = {
 				volsNode.appendChild(dl);
 			}
 		}
+		if(!Calculator.isIngredientPresent(ingred)) $('order_note').show();
+		else $('order_note').hide();
 	},
 	
 	renderToolPopup: function(name){

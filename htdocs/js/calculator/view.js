@@ -58,11 +58,27 @@ function CalculatorView() {
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
+	if($('order_link')) {
+		$('order_link').addEventListener('mousedown', function(e){
+			var name = Controller.getCocktailName(); // FIXME: this anti-pattern sucks
+			if(name) self.eventListener.addCocktail(name);
+			link.close();
+		}, false);
+	}
+	
 	if($('order_button')){
 		$('order_button').addEventListener('click', function(e){
 			if(!Calculator.checkSum("order")){
 				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("order") + ". Добавьте что-нибудь еще ;-)");
 			} else window.location.href="/order.html";
+		}, false);
+	}
+	
+	if($('call_barmen')){
+		$('call_barmen').addEventListener('click', function(e){
+			if(!Calculator.checkSum("call_barmen")){
+				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
+			} else window.location.href="/call_barmen.html";
 		}, false);
 	}
 	

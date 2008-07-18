@@ -133,4 +133,8 @@ function CalculatorModel(view){
 			}
 		}
 	};
+	
+	this.isIngredientPresent = function(name){
+		return this.cartData.goods[name];
+	};
 };

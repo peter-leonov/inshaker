@@ -1,5 +1,5 @@
 var Calculator = {	
-	_MIN_CALL_BARMEN_SUM : 0,
+	_MIN_CALL_BARMEN_SUM : 25000,
 	_MIN_ORDER_SUM  : 3000,
 	
 	init: function(){
@@ -32,5 +32,9 @@ var Calculator = {
 	getMinSum: function(context){
 		var value = "_MIN_" + context.toUpperCase() + "_SUM";
 		return this[value] || 0;
+	},
+	
+	isIngredientPresent: function(name){
+		return this.model.isIngredientPresent(name);
 	}
 };

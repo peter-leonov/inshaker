@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>htdocs/t/css/ie6.css</string>
+	<string>htdocs/js/calculator/view.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,12 +29,68 @@
 	<integer>236</integer>
 	<key>metaData</key>
 	<dict>
-		<key>htdocs/about.html</key>
+		<key>barman/templates/cocktail.rhtml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>211</integer>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>164</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>140</integer>
+		</dict>
+		<key>htdocs/act/order.cgi</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/call_barmen.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>53</integer>
+				<key>line</key>
+				<integer>117</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>107</integer>
+			<key>firstVisibleLine</key>
+			<integer>115</integer>
+		</dict>
+		<key>htdocs/inc/calculator.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/inc/shop-cocktail.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>64</integer>
 				<key>line</key>
 				<integer>47</integer>
 			</dict>
@@ -42,6 +98,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>23</integer>
+		</dict>
+		<key>htdocs/js/calculator/calculator.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>29</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
 		</dict>
 		<key>htdocs/js/calculator/controller.js</key>
 		<dict>
@@ -62,38 +148,104 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>137</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>92</integer>
 		</dict>
-		<key>htdocs/t/css/ie6.css</key>
+		<key>htdocs/js/calculator/view.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>97</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>59</integer>
+			<integer>49</integer>
+		</dict>
+		<key>htdocs/js/cocktail/controller.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>155</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>120</integer>
+		</dict>
+		<key>htdocs/js/order/order.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>50</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>htdocs/order.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>119</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>110</integer>
+		</dict>
+		<key>htdocs/t/default.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>107</integer>
+				<key>line</key>
+				<integer>469</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>438</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>htdocs/about.html</string>
-		<string>htdocs/t/css/ie6.css</string>
+		<string>htdocs/act/order.cgi</string>
+		<string>htdocs/order.html</string>
+		<string>barman/templates/cocktail.rhtml</string>
+		<string>htdocs/t/default.css</string>
+		<string>htdocs/js/cocktail/controller.js</string>
+		<string>htdocs/inc/shop-cocktail.html</string>
+		<string>htdocs/inc/calculator.html</string>
+		<string>htdocs/call_barmen.html</string>
+		<string>htdocs/js/calculator/calculator.js</string>
+		<string>htdocs/js/calculator/model.js</string>
+		<string>htdocs/js/calculator/view.js</string>
+		<string>htdocs/js/order/order.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{766, 121}, {707, 860}}</string>
+	<string>{{587, 81}, {936, 892}}</string>
 </dict>
 </plist>
