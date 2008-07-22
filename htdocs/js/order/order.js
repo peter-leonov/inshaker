@@ -97,7 +97,7 @@ $.onload(function(){
 			html += "</ol>";
 			html += "<br/><br/>Сумма заказа: " + Calculator.getSum() + " рублей";
 			
-			var add_email = (CONTEXT == "order") ? "sale@alcomag.ru" : "";
+			var add_email = (CONTEXT == "order") ? "me@alcomag.ru" : "";
 			var req = aPost("/act/order.cgi", {email: fh["email"], html: html, order_type: fh["order_type"], add_email: add_email});
 			req.onSuccess = function(){
 				alert("Ваш заказ был отправлен. Спасибо!");
