@@ -1,5 +1,5 @@
-<!--#include file="/js/cocktail/model.js" -->
-<!--#include file="/js/cocktail/controller.js" -->
+<!--# include file="/js/cocktail/model.js" -->
+<!--# include file="/js/cocktail/controller.js" -->
 
 $.onload(function(){
 	new Programica.RollingImagesLite($('recommendations'));

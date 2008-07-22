@@ -1,8 +1,8 @@
-<!--#include file="/js/common/autocompleter.js" -->
-<!--#include file="/lib/Programica/Request.js" -->
-<!--#include file="/lib/Programica/Form.js" -->
-<!--#include file="/lib/Programica/Widget.js" -->
-<!--#include file="/lib/Widgets/FormPoster.js" -->
+<!--# include file="/js/common/autocompleter.js" -->
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
 $.onload(function(){
 	link = new Link();
 	Calculator.init();

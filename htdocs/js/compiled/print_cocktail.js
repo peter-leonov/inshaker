@@ -1,4 +1,4 @@
-<!--#include file="/js/printer/printer.js" -->
+<!--# include file="/js/printer/printer.js" -->
 
 function pageLoad(){
     var loc = window.location.hash;
