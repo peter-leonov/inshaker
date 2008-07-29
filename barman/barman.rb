@@ -13,7 +13,7 @@ $KCODE = 'u'
 module Config
   # Paths are relative to the script's location
   ROOT_DIR           = "/www/inshaker/"
-  BASE_DIR           = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "base/")
+  BASE_DIR           = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
   MERCH_DIR          = BASE_DIR + "Merchandise/"
   TOOLS_DIR          = MERCH_DIR + "Tools/"
