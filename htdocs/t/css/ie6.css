@@ -100,6 +100,8 @@ body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds
 #preloader{top:0;left:0;width:100%;height:100%;}
 
 #bars-list .bars-select dd ul { background: #000; border-bottom: 1px solid #555; }
-	
+
+#bar-page .b-content .photos .next { display: block; }
+
 /* label click forwarding in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}

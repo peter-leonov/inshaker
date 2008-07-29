@@ -12,12 +12,13 @@ $KCODE = 'u'
 
 module Config
   # Paths are relative to the script's location
-  BASE_DIR           = "base/"
+  ROOT_DIR           = "/www/inshaker/"
+  BASE_DIR           = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "base/")
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
   MERCH_DIR          = BASE_DIR + "Merchandise/"
   TOOLS_DIR          = MERCH_DIR + "Tools/"
   
-  HTDOCS_DIR         = "../htdocs/"
+  HTDOCS_DIR         = ROOT_DIR + "htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
   DB_JS              = HTDOCS_DIR + "js/common/db.js"
   
@@ -36,7 +37,7 @@ module Config
   BANNERS_DIR   = MERCH_ROOT + "banners/"
   TOOLS_ROOT    = MERCH_ROOT + "tools/"
   
-  TEMPLATES_DIR = "templates/"
+  TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   COCKTAIL_ERB  = TEMPLATES_DIR + "cocktail.rhtml"
   
 end
@@ -55,7 +56,7 @@ class Barman
   end
   
   def prepare
-    root = Dir.new(Dir.pwd + "/" + Config::COCKTAILS_DIR)
+    root = Dir.new(Config::COCKTAILS_DIR)
     excluded = [root.path + ".", root.path + "..", root.path + ".svn", root.path + ".TemporaryItems", root.path + "Merchandise"]
     
     root.each do |dir|
@@ -127,7 +128,7 @@ class Barman
   def flush_images
     opt = {:remove_destination => true}
     @cocktails.each do |name, hash|
-      from = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/"
+      from = Config::COCKTAILS_DIR + hash[:name_eng] + "/"
       
       to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
       to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
@@ -152,7 +153,7 @@ class Barman
   def flush_videos
     opt = {:remove_destination => true}
     @cocktails.each do |name, hash|
-      from = Dir.pwd + "/" + Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
+      from = Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
       to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
       FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
@@ -161,7 +162,7 @@ class Barman
   def flush_tools
     opt = {:remove_destination => true}
     @tools.each do |tool, desc|
-      from = Dir.pwd + "/" + Config::TOOLS_DIR + tool + "/image.png"
+      from = Config::TOOLS_DIR + tool + "/image.png"
       to   = Config::TOOLS_ROOT + tool.trans + ".png"
       FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
@@ -172,7 +173,7 @@ class Barman
     @goods.each do |ingredient, arr|
       arr.each do |good|        
         if good[:brand].empty? # unbranded
-          unbranded_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/"
+          unbranded_dir = Config::MERCH_DIR + ingredient + "/"
 
           from_big   = unbranded_dir + "i_big.png"
           
@@ -194,7 +195,7 @@ class Barman
             FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
           end
         else # brand-name goods
-          from_dir = Dir.pwd + "/" + Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
+          from_dir = Config::MERCH_DIR + ingredient + "/" + good[:brand] + "/"
           
           from_banner = from_dir + "banner.png"
           from_big    = from_dir + "i_big.png"
@@ -350,15 +351,15 @@ private
   end
   
   def get_tool_desc(tool)
-    old_dir = Dir.pwd
-    Dir.chdir "../../../" + Config::TOOLS_DIR + tool
+    old_dir = Config::ROOT_DIR
+    Dir.chdir Config::TOOLS_DIR + tool
     desc = File.exists?("about.txt") ? File.open("about.txt").read.html_paragraphs : ""
     Dir.chdir old_dir
     return desc
   end
   
   def get_desc(ingredient, brand)
-    dir  = Dir.pwd + "/" + ingredient + "/"
+    dir  = Config::ROOT_DIR + ingredient + "/"
     dir += (brand.empty?) ? "" : brand + "/"
     desc =  File.exists?(dir + "about.txt") ? File.open(dir + "about.txt").read : ""
     return desc

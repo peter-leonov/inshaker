@@ -1,166 +1,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html id="bars-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
-	<script type="text/javaScript" src="/lib/Programica.js"></script>
-	<title>InShaker √ Бары мира</title>
+	<title>Inshaker √ Коктейли</title>
 </head>
 <body>
 <div id="main-wrapper">
 	
-	<div id="top">
-		<h2><a href="/"><img src="t/inshaker.ru.png" width="147" height="60" alt="Inshaker.Ru"/></a></h2>
-		
-		<ul class="nav">
-			<li><a href="/">Вечеринки</a></li>
-			<li><a href="cocktails.html">Коктейли</a></li>
-			<li><a href="knowledge.html">Университет</a></li>
-			<li><a href="bars.html" class="now">Бары мира</a></li>
-		</ul>
+	<!--# include file="/inc/top-common.html" -->
 	
-		<form action="#">
-			<input type="text" name="search" value="Что хотите найти?"/>
-			<p><button type="submit" value="Найти" class="bt-search"><!-- / --></button></p>
-		</form>
-		<p class="nav2"><a href="knowledge.html">Университет</a> <a href="#" class="now"><b>Бары мира</b></a></p>
-	</div>
-	
-	<div class="column"><div class="body-wrapper" id="bars-page">
+	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>Лучшие бары мира</h1>
-			<p class="sort-by">
-				<a onclick="this.className=''" class="now"><b>все бары</b></a> <a onclick="this.className+=' now'"><b>все бары на карте</b></a>
-			</p>
+			<h1>Лучшие бары России</h1>
+			<ul id="switch-view"><li>списком</li><li>на карте</li></ul>
 		</div>
-		<div class="b-content">
-			<div class="menu-select">
-				<dl>
-					<dt><strong>Страна</strong>: Россия <a onclick="toggle_class(this.parentNode.parentNode, 'active')">выбрать страну</a></dt>
-					<dd><div><ul>
-						<li><a>Россия</a></li>
-						<li><a>Татарстан</a></li>
-						<li><a>Казахстан</a></li>
-						<li><a>Чили</a></li>
-					</ul><ul>
-						<li><a>США</a></li>
-						<li><a>Ирак</a></li>
-						<li><a>Иран</a></li>
-						<li><a>Москва</a></li>
-					</ul></div></dd>
+		
+		<div class="b-content" id="bars-list">
+			<div id="sort-menu">
+				<dl class="bars-select" id="bars-city">
+					<dt class="button"><span class="caption"></span> <small></small></dt>
+					<dd>
+						<ul class="options"></ul>
+					</dd>
 				</dl>
-				<dl>
-					<dt><strong>Город</strong>: любой <a onclick="toggle_class(this.parentNode.parentNode, 'active')">выбрать город</a></dt>
-					<dd><div><ul>
-						<li><a>Москва</a></li>
-						<li><a>Санкт-Петербург</a></li>
-						<li><a>Екатеринбург</a></li>
-						<li><a>Казань</a></li>
-						<li><a>Краснодар</a></li>
-					</ul><ul>
-						<li><a>Рязань</a></li>
-						<li><a>Самара</a></li>
-						<li><a>Тольятти</a></li>
-						<li><a>Тула</a></li>
-						<li><a>Уфа</a></li>
-					</ul></div></dd>
+				<dl class="bars-select" id="bars-format">
+					<dt class="button"><span class="caption"></span> <small></small></dt>
+					<dd>
+						<ul class="options"></ul>
+					</dd>
 				</dl>
-				<dl>
-					<dt><strong>Тип бара</strong>: любой <a onclick="toggle_class(this.parentNode.parentNode, 'active')">выбрать тип</a></dt>
-					<dd><div><ul>
-						<li><a>Крутой</a></li>
-						<li><a>Понтовый</a></li>
-					</ul><ul>
-						<li><a>Некрутой</a></li>
-						<li><a>Беспонтовый</a></li>
-					</ul></div></dd>
+				<dl class="bars-select" id="bars-feel">
+					<dt class="button"><span class="caption"></span> <small></small></dt>
+					<dd>
+						<ul class="options"></ul>
+					</dd>
 				</dl>
 			</div>
-			<ul class="bars-list">
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/1.jpg)"/>
-					<p><a href="bar.html">Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/2.jpg)"/>
-					<p><a>Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/3.jpg)"/>
-					<p><a>Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/2.jpg)"/>
-					<p><a>Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/3.jpg)"/>
-					<p><a>Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-				<li>
-					<img src="/t/bg/bars/foto.png" width="290" height="199" alt="" style="background-image: url(/i/bar/pre/1.jpg)"/>
-					<p><a>Твой Бар №1</a></p>
-					<p>Россия, Москва<br/>
-					ул. Остоженка, 32</p>
-					<p>Индекс Виски-кола: 240 руб.</p>
-				</li>
-			</ul>
-	
+			<div id="bars-container"></div>
+			<div id="map">А тут такая карта красивая :)</div>
 		</div>
 	</div></div>
 	
-	
-	
-	
-	
-	
-	<p id="bottom">
-		<span class="search-error">Хотите спросить? <a href="/about.html">Спрашивайте!</a></span>
-
-	
-		<a href="about.html">О проекте</a>   |   <a>Правовая информация</a><br/>
-		Copyright © 2007 InShaker. Все права защищены
-	</p>
+<!--# include file="/inc/bottom-common.html" -->
 </div>
-
-<br/><br/><br/><br/>
-
-<!--# include virtual="/inc/mybar-login.html" -->
-
-
-
-
-<script type="text/javascript">
-	function toggle_class(el, className)
-	{
-		log(el.className == className)
-		return (el.className == className) ? el.className = '' : el.className = className
-	}
-</script>
-
-
-
-<img src="my.bar-bars.png" width="1120" height="1463" alt="" id="model" style="display: none; top: 1px; position: absolute; left: 50%; margin-left: -560px"/>
-<style type="text/css" media="screen">
-	body { min-height: 802px; }
-</style>
-
-
-
+<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/common/db-bars.js"></script>
+<script type="text/javascript" src="/js/compiled/bars.js"></script>
+<script type="text/javascript" src="/js/compiled/maps.js"></script>
 </body>
 </html>
