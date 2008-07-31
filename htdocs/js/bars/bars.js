@@ -1,21 +1,24 @@
-var Bars =
+var BarsPage =
 {
-	init: function (db, citiesData, nodes)
+	init: function (db, citiesDB, nodes)
 	{
-		this.view       = BarsView;
-		this.model      = BarsModel;
-		this.controller = BarsController;
-		
 		var state = {city: 'Москва', view: 'list'}
-		this.view.initialize(nodes, citiesData)
+		this.view.initialize(nodes, citiesDB)
 		this.controller.initialize(db, state)
 	}
+}
+
+function mapsApiIsLoaded ()
+{
+	BarsPage.view.loadedGMap()
 }
 
 $.onload
 (
 	function ()
 	{
+		(function () { $.include('/js/compiled/maps.js') }).delay(1500)
+		
 		var viewSwitcher = Switcher.bind($('switch-view'))
 		var citySelect = Selecter.bind($('bars-city'))
 		var formatSelect = Selecter.bind($('bars-format'))
@@ -31,22 +34,6 @@ $.onload
 			map: $('map')
 		}
 		
-		// function dbInit ()
-		// {
-		// 	// if(!checkDbRevision())
-		// 	// 	Storage.clear()
-		// 	
-		// 	var barsState = Storage.get('bars::state')
-		// 	if(barsState)
-		// 	{
-		// 		barsState = eval('('+barsState+')')
-		// 		log(barsState)
-		// 	}
-		// 	
-		// 	BarsModel.initialize(db)
-		// }
-		// Storage.init(dbInit)
-		
-		Bars.init(bars_db, bars_cities_gData, nodes)
+		BarsPage.init(DB.Bars, DB.Cities, nodes)
 	}
 )

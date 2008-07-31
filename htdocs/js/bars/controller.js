@@ -1,5 +1,7 @@
-var BarsController =
+BarsPage.controller =
 {
+	owner: BarsPage,
+	
 	state: {city: undefined, format: undefined, feel: undefined},
 	
 	initialize: function (db, state)
@@ -8,15 +10,15 @@ var BarsController =
 		if (location.hash.length > 1)
 			Object.extend(this.state, UrlEncode.parse(location.hash))
 		
-		BarsModel.initialize(db, this.state)
+		this.owner.model.initialize(db, this.state)
 		
-		BarsView.setViewType(this.state.view)
-		BarsModel.setState(this.state)
+		this.owner.view.setViewType(this.state.view)
+		this.owner.model.setState(this.state)
 	},
 	
 	gMarkerClicked: function (gMarker)
 	{
-		BarsView.showBarMapPopup(gMarker.bar)
+		this.owner.view.showBarMapPopup(gMarker.bar)
 	},
 	
 	gMapMoveEnd: function (map)
@@ -33,7 +35,7 @@ var BarsController =
 	{
 		this.state.view = type
 		this.setHash(this.state)
-		BarsModel.setState(this.state)
+		this.owner.model.setState(this.state)
 	},
 	
 	setHash: function (hash)
@@ -47,20 +49,20 @@ var BarsController =
 		this.state.format = undefined
 		this.state.feel = undefined
 		this.setHash(this.state)
-		BarsModel.setState(this.state)
+		this.owner.model.setState(this.state)
 	},
 	formatSelected: function (val)
 	{
 		this.state.format = val
 		this.state.feel = undefined
 		this.setHash(this.state)
-		BarsModel.setState(this.state)
+		this.owner.model.setState(this.state)
 	},
 	feelSelected: function (val)
 	{
 		this.state.feel = val
 		this.setHash(this.state)
-		BarsModel.setState(this.state)
+		this.owner.model.setState(this.state)
 	}
 }
 

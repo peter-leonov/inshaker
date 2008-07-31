@@ -1,21 +1,23 @@
-var BarsView =
+BarsPage.view =
 {
+	owner: BarsPage,
 	cache: {barNode:{}},
 	any: {format: 'любой формат', feel: 'любая атмосфера'},
 	
-	initialize: function (nodes, citiesData)
+	initialize: function (nodes, citiesDB)
 	{
-		this.citiesData = citiesData
+		this.citiesDB = citiesDB
 		this.nodes = nodes
-		var self = this
-		nodes.citySelect.onselect	= function (val) { BarsController.citySelected(val) }
-		nodes.formatSelect.onselect = function (val) { BarsController.formatSelected(val == self.any.format ? undefined : val) }
-		nodes.feelSelect.onselect	= function (val) { BarsController.feelSelected(val == self.any.feel ? undefined : val) }
-		nodes.viewSwitcher.onselect = function (num) { self._setViewNum(num) }
+		var me = this
+		var controller = me.owner.controller
+		nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
+		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
+		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
+		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
 		// nodes.viewSwitcher.autoSelect = false
-		this.initMap()
+		// this.initMap()
 	},
 	
 	modelChanged: function (data, state)
@@ -25,15 +27,28 @@ var BarsView =
 	
 	initMap: function ()
 	{
+		var me = this
+		if (!window.GMap2)
+		{
+			if (this.gMapTimer)
+				return
+			
+			this.gMapTimer = setTimeout(function () {  })
+		}
+		
+		
 		if (!this.gMap)
 		{
-			this.nodes.map.show()
-			var map = new GMap2(this.nodes.map)
-			this.nodes.map.hide()
+			var mapNode = this.nodes.map
+			// var isVisible = mapNode.visible()
+			// mapNode.show()
+			var map = new GMap2(mapNode)
+			// if (!isVisible)
+				// mapNode.hide()
 			map.addControl(new GSmallMapControl())
 			map.enableContinuousZoom()
 			map.enableScrollWheelZoom()
-			GEvent.addListener(map, 'moveend', function () { BarsController.gMapMoveEnd(this) })
+			GEvent.addListener(map, 'moveend', function () { me.owner.controller.gMapMoveEnd(this) })
 			this.gMap = map
 		}
 		
@@ -49,11 +64,30 @@ var BarsView =
 		}
 	},
 	
+	waitGMap: function (f)
+	{
+		this.waitGMapFunction = f
+	},
+	
+	loadedGMap: function ()
+	{
+		if (this.waitGMapFunction)
+		{
+			this.waitGMapFunction()
+			this.waitGMapFunction = null
+		}
+	},
+	
+	isGMapLoaded: function ()
+	{
+		return !!window.GLatLng
+	},
+	
 	_setViewNum: function (num)
 	{
 		var type = ['list','map'][num]
 		this.setViewType(type)
-		BarsController.viewTypeSwitched(type)
+		this.owner.controller.viewTypeSwitched(type)
 	},
 	
 	setViewType: function (type)
@@ -95,6 +129,8 @@ var BarsView =
 	},
 	renderBarsList: function (bars, state)
 	{
+		this.waitGMap(null)
+		
 		var parent = this.nodes.barsContainer
 		parent.empty()
 		for (var i = 0; i < bars.length; i++)
@@ -107,6 +143,16 @@ var BarsView =
 	},
 	renderBarsMap: function (bars, state)
 	{
+		if (!this.isGMapLoaded())
+		{
+			this.waitGMap(arguments.callee.bind(this, [bars, state]))
+			return
+		}
+		else
+		{
+			this.initMap()
+		}
+		
 		var map = this.gMap
 		
 		if (this.lastCity != state.city)
@@ -119,7 +165,7 @@ var BarsView =
 			}
 			else
 			{
-				var cityData = this.citiesData[state.city]
+				var cityData = this.citiesDB.getByName(state.city)
 				var cityPoint = cityData.point
 				ll = new GLatLng(cityPoint[0],cityPoint[1])
 				zoom = cityData.zoom || 10
@@ -144,11 +190,8 @@ var BarsView =
 		var gPoint = new GLatLng(bar.point[0], bar.point[1])
 		// var mkey = bar.point[0] + ':' + bar.point[1]
 		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
-		var _this = this
-		function click ()
-		{
-			BarsController.gMarkerClicked(gMarker)
-		}
+		var me = this
+		function click () { me.owner.controller.gMarkerClicked(gMarker) }
 		GEvent.addListener(gMarker, 'click', click)
 		gMarker.bar = bar
 		bar.gMarker = gMarker
@@ -157,7 +200,7 @@ var BarsView =
 	
 	showBarMapPopup: function (bar)
 	{
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+this.getBarHref(bar)+'">Посмотреть бар…</a></div>') // <img src="'+_this.getBarImageSrc(bar)+'"/>
+		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+this.getBarHref(bar)+'">Посмотреть бар…</a></div>') // <img src="'+me.getBarImageSrc(bar)+'"/>
 	},
 	
 	getBarNode: function (bar)

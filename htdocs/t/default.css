@@ -39,7 +39,7 @@ body,table,
 h1,h2,h3,h4,
 p,form,
 fieldset,legend,
-ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;}
+ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
 h2,h3{font-weight:normal;}
 td{font-size:1em;vertical-align:top;}
 a{color :#0392f1;cursor :pointer;
@@ -251,15 +251,6 @@ label{display:block;}
 #cocktail-page .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 /* more in cocktail */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
-.b-more .b-more-rec {width:20.8em;margin-right:2em;}
-.b-more .b-more-rec .viewport{overflow:hidden;position:relative;width:150px;height:120px;left:16px;}
-.b-more .b-more-rec .surface{width:2000px;}
-.b-more .b-more-rec .point{width:130px;height:100px;float:left;padding:10px;text-align:center;}
-.b-more-rec .prev,
-.b-more-rec .next{background:url(icon/strs-green.png) no-repeat -16px -24px;position:absolute;top:54px;right:0;height:14px;width:16px;}
-.b-more-rec .prev{background-position:0 -24px;left:0;right:auto;}
-.b-more-rec .next.disabled{background-position:-16px -38px;cursor:default;}
-.b-more-rec .prev.disabled{background-position:0 -38px;cursor:default;}
 .b-more .b-more-cocktails { width:39.8em;}
 .b-more .column{position:relative;}
 .b-more dl{height:163px;font-size:120%;height:11.24em;background:#fff url(bg/body/green-more-title.png) repeat-x 0 -19px;}
@@ -268,6 +259,7 @@ label{display:block;}
 .b-more dd{line-height:1.17;position:relative;}
 .b-more-korol dd p{padding:19px 0 11px 0;}
 .b-more-korol dd i{color:#e4146e;font-style:normal;}
+
 .b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;height:120px; width:330px;}
 .b-more-cocktails .surface{width:2000px;}
 .b-more-cocktails .point{height:100px;float:left; }
@@ -279,6 +271,9 @@ label{display:block;}
 .b-more-cocktails .prev{background-position:0 -24px;left:0px;right:auto;}
 .b-more-cocktails .next.disabled{background-position:-16px -38px;cursor:default;}
 .b-more-cocktails .prev.disabled{background-position:0 -38px;cursor:default;}
+.b-more .b-more-rec {width:20.8em;margin-right:2em;}
+.b-more .b-more-rec .viewport{width:130px;}
+.b-more .b-more-rec li{width:130px;}
 .b-more #korol-mira{background:#000 url(bg/cocktail/korol.png) repeat-x 0 100%;display:none;position:absolute;top:0;left:-1px;height:100%;width:100%;padding:0 1px;color:#fff;}
 .b-more #korol-mira .wrapper{background:#000 url(bg/cocktail/korol.png) repeat-x 0 100%;height:100%;padding:1px 0;position:relative;font-size:120%;top:-1px;}
 .b-more #korol-mira strong{padding:17px 0 0 20px;display:block;}
@@ -324,8 +319,9 @@ label{display:block;}
 
 #bars-container { overflow: hidden; clear: both; }
 
-#bars-page #map { display: none; height: 500px; background: #ccc; clear: both; margin: 20px 25px 0 0; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
+#bars-page #map { display: none; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
 
+#map .loading { background: url(loader-black.gif) no-repeat center 27.5%; text-align: center; font-size: 25px; height: 100%; padding: 25% 0 0 0; }
 
 #bars-page .body-wrapper { width:922px; }
 #bars-page #bars-list {width:945px;}
@@ -698,8 +694,8 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #bar-page .b-content .info dl dt,
 #bar-page .b-content .info dl dd { display: inline; }
 #bar-page .b-content .info dl dt { font-weight: bold; }
-#bar-page .b-content .info dl dd { color: #777; }
-#bar-page .b-content .info dl dd a { line-height: 18px; }
+#bar-page .b-content .info dl dd { color: #777; line-height: 18px; }
+#bar-page .b-content .info dl dd a {  }
 
 #bar-page .b-content .photos .viewport,
 #bar-page .b-content .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }

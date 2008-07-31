@@ -8,26 +8,17 @@ $.onload
 		new Programica.RollingImagesLite($('recommendations'))
 		new Programica.RollingImagesLite($('carte'), {animationType: 'easeInOutCubic'})
 		
-		
+		setTimeout(function () { $.include('/js/compiled/maps.js') }, 1000)
 		
 		var barId = $('bar-id').innerHTML
 		var cityName = $('city-name').innerHTML
 		
-		var bar = Bars.getBarByCityId(cityName, barId)
+		window.bar = Bars.getBarByCityId(cityName, barId)
 		
 		if (bar)
 		{
-			initMap($('map'), bar)
-			
-			
-			var cocktailsSet = []
-			for (var i = 0; i < bar.cocktails.length; i++)
-			{
-				cocktailsSet[i] = cocktails[bar.cocktails[i]]
-			}
-			
-			var carteNode = $('carte')
-			renderCocktails(carteNode.getElementsByClassName('surface')[0], cocktailsSet)
+			renderCocktails($('carte'), getCocktailsByNames(bar.cocktails), 3)
+			renderCocktails($('recommendations'), getCocktailsByNames(bar.recommended), 1)
 		}
 		
 		// more
@@ -59,6 +50,11 @@ $.onload
 	}
 )
 
+function mapsApiIsLoaded ()
+{
+	initMap($('map'), window.bar)
+}
+
 var AnimatedSizer =
 {
 	resize: function (node)
@@ -86,14 +82,31 @@ function initMap (node, bar)
 	showPopup()
 }
 
-function renderCocktails (parent, set)
+
+function getCocktailsByNames (arr)
 {
+	var set = []
+	for (var i = 0; i < arr.length; i++)
+		set[i] = cocktails[arr[i]]
+	return set
+}
+
+function renderCocktails (node, set, len)
+{
+	var parent = node.getElementsByClassName('surface')[0]
 	parent.empty()
 	for (var i = 0; i < set.length; i++)
 	{
+		if (i % len == 0)
+		{
+			var point = document.createElement('ul')
+			point.className = 'point'
+			parent.appendChild(point)
+		}
 		var cocktailNode = _createCocktailElement(set[i])
-		parent.appendChild(cocktailNode)
+		point.appendChild(cocktailNode)
 	}
+	node.RollingImagesLite.sync()
 }
 
 function _createCocktailElement (cocktail)
