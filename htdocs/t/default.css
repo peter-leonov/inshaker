@@ -233,13 +233,7 @@ label{display:block;}
 #view-cocktailmap dl{float:left;width:21.67em;margin:0 15px;position:relative;border-bottom:1px solid #515152;padding:7px 0;letter-spacing:-.2px;}
 #view-cocktailmap i{font-style:normal;display:block;}
 #view-cocktailmap dd{position:absolute;right:0;top:7px;}
-/* DELETE loved */
-.loved{display:none;background:url(bg/cocktail/love.png) no-repeat 100% 0;position:relative;float:right;margin:6px 0 2em 8px;height:63px;padding-right:10px;min-width:72px;}
-.loved dl{background:url(bg/cocktail/love.png) no-repeat 0 0;height:100%;padding-left:10px;}
-.loved dt{background:url(bg/cocktail/love-text.png) no-repeat 0 0;position:absolute;width:54px;height:7px;left:50%;margin-left:-27px;top:11px;}
-.loved dd{font:14px Georgia;color:#fff;text-align:center;}
-.loved b{background:url(bg/cocktail/love-text.png) no-repeat 3px -30px;padding-left:30px;font-weight:normal;display:block;height:33px;position:relative;top:30px;}
-.loved a{position:absolute;width:43px;height:7px;left:50%;margin-left:-24px;background:url(bg/cocktail/love-text.png) no-repeat 0 -63px;text-indent:-1000em;display:block;position:absolute;top:71px;}
+
 #cocktail-page .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
 #cocktail-page .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 #cocktail-page .what-need .tools{float:right;}
@@ -274,15 +268,6 @@ label{display:block;}
 .b-more .b-more-rec {width:20.8em;margin-right:2em;}
 .b-more .b-more-rec .viewport{width:130px;top:2px;}
 .b-more .b-more-rec li{width:130px;}
-.b-more #korol-mira{background:#000 url(bg/cocktail/korol.png) repeat-x 0 100%;display:none;position:absolute;top:0;left:-1px;height:100%;width:100%;padding:0 1px;color:#fff;}
-.b-more #korol-mira .wrapper{background:#000 url(bg/cocktail/korol.png) repeat-x 0 100%;height:100%;padding:1px 0;position:relative;font-size:120%;top:-1px;}
-.b-more #korol-mira strong{padding:17px 0 0 20px;display:block;}
-.b-more #korol-mira .ruler{width:172px;margin:26px auto 0;position:relative;padding-top:17px;font-size:92%;}
-.b-more #korol-mira .ruler img{display:block;}
-.b-more #korol-mira .ruler b{display:block;margin-left:-.1em;font-weight:normal;padding-top:4px;position:absolute;top:27px;}
-.b-more #korol-mira .ruler .last{position:absolute;right:-.6em;}
-.b-more #korol-mira .dragger{background:url(bg/cocktail/korol-cocktail.png) no-repeat 100% 0;cursor:pointer;width:26px;top:0;padding-top:31px;text-align:center;color:#9ce025;font-weight:bold;position:absolute;}
-.b-more #korol-mira button{position:absolute;bottom:10px;left:50%;margin-left:-56px;}
 /*bars page*/
 
 #bars-page {overflow-y: scroll;}
@@ -442,7 +427,6 @@ label{display:block;}
 .win-shop .content small{font-size:92%;}
 .win-shop .content .alert{color:#eb1c57;}
 .win-shop .content .composition{list-style:disc inside;margin:23px 0 0 11px;min-height:4.5em;line-height:1.5;}
-.win-shop .content .loved{height:82px;margin:19px 25px 0 0;}
 .win-shop .content .desc{clear:both;padding:8px 28px 21px 0;}
 .win-shop .content .more{background:#f7f7f7 url(bg/cocktail/info.png) no-repeat 0 0;width:160px;height:47px;padding:12px 30px 0 56px;}
 .win-shop .content .more dl *{background:#f7f7f7;}
