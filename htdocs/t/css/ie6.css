@@ -19,7 +19,6 @@ body{height:100%;}
 .hreview .menu p,
 .b-more-cocktails dd{zoom:1;}
 /*cocktail page*/
-.loved{width:72px;}
 .b-search{width:140px;overflow:hidden;}
 .b-content{width:426px;overflow:hidden;}
 .you-choise span a{width:0;height:0;}
@@ -43,7 +42,6 @@ body{height:100%;}
 .win-shop .gadget-wrapper{zoom:1;}
 .win-shop .view-photo{height:588px;}
 .win-shop .view-photo .bor-wr{margin-bottom:-2px;}
-.b-more #korol-mira .wrapper{zoom:1;height:11.24em;padding-top:14px;padding-bottom:17px;margin-bottom:-1px;}
 .win-shop .win,.win-shop .win-bg{background-image:none;}
 #top h2 a,
 #top h1{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/inshaker.ru.png',sizingMethod='image');height:1px;width:1px;display:block;}
