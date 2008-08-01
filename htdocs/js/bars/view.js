@@ -144,14 +144,9 @@ BarsPage.view =
 	renderBarsMap: function (bars, state)
 	{
 		if (!this.isGMapLoaded())
-		{
-			this.waitGMap(arguments.callee.bind(this, [bars, state]))
-			return
-		}
+			return this.waitGMap(arguments.callee.bind(this, arguments))
 		else
-		{
 			this.initMap()
-		}
 		
 		var map = this.gMap
 		
