@@ -31,3 +31,4 @@ html{font-size :101%;}
 .hide_control {display:none;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")))}
+.b-more-rec .point img{float:left;}

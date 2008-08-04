@@ -89,7 +89,6 @@ body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds
 .b-content .pager .prev,.b-content .pager .next{font-size:2px;}
 #cocktail-page #view-how .prev{background-position-x:0;}
 .b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
-.b-more-rec .next{right:15px;}
 #cocktail-page #view-prepare button{bottom:-50px;}
 #about-page .b-content, #delivery-page .b-content {width:590px;}
 #about-page .b-content .border-links, #delivery-page .b-content .border-links {width:581px;}
