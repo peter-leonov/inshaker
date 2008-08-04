@@ -52,7 +52,7 @@ body{height:100%;}
 .win-shop .b-alternative ul img,
 #cocktail-page .hreview .entry .illustration,
 #mybar-cocktails li img{}
-body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds_surface .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 #cocktail-page{}
 #cocktail-page .b-title{}
 #cocktail-page .b-content{width:590px;}
@@ -98,7 +98,12 @@ body .illustration,body .mini-illustration,#related ul li a img,#poster,#ingreds
 
 #bars-list .bars-select dd ul { background: #000; border-bottom: 1px solid #555; }
 
+#bar-page .b-content .photos .disabled { background-position-y: -60px; }
+#bar-page .b-content .photos .prev { background-position-x: -60px; }
 #bar-page .b-content .photos .next { display: block; }
+#bar-page .b-content .photos .prev,
+#bar-page .b-content .photos .next { display: block; }
+
 
 /* label click forwarding in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}
