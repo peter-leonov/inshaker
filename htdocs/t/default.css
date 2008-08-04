@@ -40,7 +40,7 @@ h1,h2,h3,h4,
 p,form,
 fieldset,legend,
 ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
-h2,h3{font-weight:normal;}
+h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
 td{font-size:1em;vertical-align:top;}
 a{color :#0392f1;cursor :pointer;
 text-decoration :underline;}
