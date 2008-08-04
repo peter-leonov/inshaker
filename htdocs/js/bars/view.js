@@ -16,6 +16,8 @@ BarsPage.view =
 		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
+		
+		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
 		// nodes.viewSwitcher.autoSelect = false
 		// this.initMap()
 	},
@@ -196,6 +198,24 @@ BarsPage.view =
 	showBarMapPopup: function (bar)
 	{
 		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+this.getBarHref(bar)+'">Посмотреть бар…</a></div>') // <img src="'+me.getBarImageSrc(bar)+'"/>
+	},
+	
+	renderTitle: function (cocktail)
+	{
+		var nodes = this.nodes
+		if (cocktail)
+		{
+			nodes.titleAll.hide()
+			nodes.titleSearch.show()
+			var nameNode = nodes.titleSearchName
+			nameNode.innerHTML = cocktail.name
+			nameNode.href = '/cocktails/' + cocktail.name_eng.htmlName() + '.html'
+		}
+		else
+		{
+			nodes.titleSearch.hide()
+			nodes.titleAll.show()
+		}
 	},
 	
 	getBarNode: function (bar)

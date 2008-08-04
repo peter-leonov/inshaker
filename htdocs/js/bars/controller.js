@@ -4,16 +4,16 @@ BarsPage.controller =
 	
 	state: {city: undefined, format: undefined, feel: undefined},
 	
-	initialize: function (db, state)
+	initialize: function (barsDB, cocktailsDB, state)
 	{
 		this.state = state
 		if (location.hash.length > 1)
 			Object.extend(this.state, UrlEncode.parse(location.hash))
 		
-		this.owner.model.initialize(db, this.state)
-		
-		this.owner.view.setViewType(this.state.view)
-		this.owner.model.setState(this.state)
+		var owner = this.owner
+		owner.model.initialize(barsDB, cocktailsDB, this.state)
+		owner.view.setViewType(this.state.view)
+		owner.model.setState(this.state)
 	},
 	
 	gMarkerClicked: function (gMarker)
@@ -29,6 +29,13 @@ BarsPage.controller =
 		this.state.lat = Math.round(gLatLng.lat() * 10000) / 10000
 		this.state.lng = Math.round(gLatLng.lng() * 10000) / 10000
 		this.setHash(this.state)
+	},
+	
+	showAllBars: function ()
+	{
+		this.state.cocktail = undefined
+		this.setHash(this.state)
+		this.owner.model.setState(this.state)
 	},
 	
 	viewTypeSwitched: function (type)

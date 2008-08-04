@@ -2,9 +2,10 @@ BarsPage.model =
 {
 	owner: BarsPage,
 	
-	initialize: function (barsDB, state)
+	initialize: function (barsDB, cocktailsDB, state)
 	{
 		this.barsDB = barsDB
+		this.cocktailsDB = cocktailsDB
 		this.setState(state)
 	},
 	
@@ -12,11 +13,15 @@ BarsPage.model =
 	{
 		var barsSet = this.barsDB.getByState(state),
 			view = this.owner.view,
-			barsDB = this.barsDB
+			barsDB = this.barsDB,
+			cocktailsDB = this.cocktailsDB
 		
+		var cocktail = cocktailsDB.getByName(state.cocktail)
+		view.renderTitle(cocktail)
 		view.modelChanged(barsSet, state)
 		view.renderCities(barsDB.getCities(), state.city)
-		view.renderFormats(barsDB.getFormatsByCity(state.city), state.format)
-		view.renderFeels(barsDB.getFeelsByCityFormat(state.city, state.format), state.feel)
+		
+		view.renderFormats(barsDB.getFormats(state), state.format)
+		view.renderFeels(barsDB.getFeels(state), state.feel)
 	}
 }

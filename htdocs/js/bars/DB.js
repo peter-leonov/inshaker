@@ -19,7 +19,8 @@ DB.Bars =
 					bar.format = []
 				if (!bar.id)
 					bar.id = ++id
-				bar.searchKey = [bar.city, ':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':'].join('\n')
+				bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
+				log(bar.searchKey)
 			}
 		}
 		this.db = db
@@ -36,8 +37,9 @@ DB.Bars =
 		
 		var feelRex = state.feel === undefined ? '.*' : '.*:' + state.feel + ':.*'
 		var formatRex = state.format === undefined ? '.*' : '.*:' + state.format + ':.*'
-		var rex = new RegExp(feelRex + '\n' + formatRex, 'i')
-		
+		var cocktailRex = state.cocktail === undefined ? '.*' : '.*:' + state.cocktail + ':.*'
+		var rex = new RegExp(feelRex + '\n' + formatRex + '\n' + cocktailRex, 'i')
+		log(rex)
 		for (var i = 0; i < bars.length; i++)
 		{
 			var bar = bars[i]
@@ -112,8 +114,8 @@ DB.Bars =
 		return res.sort(function (a, b) { return hash[b] - hash[a] })
 	},
 	
-	getFormatsByCity: function (city) { return this.getPropertiesSorted(this.getByState({city:city}), 'format') },
-	getFeelsByCityFormat: function (city, format) { return this.getPropertiesSorted(this.getByState({city:city, format:format}), 'feel') },
+	getFormats: function (state) { return this.getPropertiesSorted(this.getByState({city:state.city, cocktail:state.cocktail}), 'format') },
+	getFeels: function (state) { return this.getPropertiesSorted(this.getByState({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') },
 	
 	
 	getCities: function ()
