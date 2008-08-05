@@ -20,8 +20,7 @@ BarPage.model =
 	setBarCity: function (barId, cityName)
 	{
 		var bar = this.barsDB.getBarByCityId(cityName, barId)
-		log(bar)
-		var recommendations = this.getCocktailsByNames(bar.recommendations)
+		var recommendations = this.getCocktailsByNames(bar.recs)
 		var carte = this.getCocktailsByNames(bar.carte)
 		
 		var otherBarsSet = this.barsDB.getAllBarsByCity(cityName)
