@@ -680,7 +680,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #bar-page .b-content .info dl dt,
 #bar-page .b-content .info dl dd { display: inline; }
 #bar-page .b-content .info dl dt { font-weight: bold; }
-#bar-page .b-content .info dl dd { color: #777; line-height: 18px; }
+#bar-page .b-content .info dl dd { line-height: 18px; }
 #bar-page .b-content .info dl dd a {  }
 
 #bar-page .b-content .photos .viewport,
