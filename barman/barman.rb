@@ -17,6 +17,7 @@ module Config
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
   MERCH_DIR          = BASE_DIR + "Merchandise/"
   TOOLS_DIR          = MERCH_DIR + "Tools/"
+  BARS_DIR           = ""
   
   HTDOCS_DIR         = ROOT_DIR + "htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
@@ -140,7 +141,7 @@ class Barman
       FileUtils.cp_r(from + "bg.png", to_bg, opt)       unless !File.exists?(from + "bg.png")
       
       write_print_img(from + "big.png", to_print, [106, 210])
-      system("/usr/local/bin/optipng " + to_small + " > /dev/null")
+      #system("/usr/local/bin/optipng " + to_small + " > /dev/null")
     end
   end
   
@@ -157,6 +158,10 @@ class Barman
       to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
       FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
+  end
+  
+  def flush_bars
+    opt = {:remove_destination => true}
   end
   
   def flush_tools
@@ -384,6 +389,8 @@ def go
   joe.flush_goods
   puts "Flushing tools to #{Config::TOOLS_ROOT}"
   joe.flush_tools
+  #puts "Flushing bars to #{Config::BARS_ROOT}"
+  #joe.flush_bars
 end
 
 # Here 
