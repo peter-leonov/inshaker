@@ -11,7 +11,7 @@ Math.round = function($num, $precision) {
  * String enhancements
  */
 String.prototype.htmlName = function () {
-	return this.toLowerCase().replace(/[^\w\-]/g, "_");
+	return this.toLowerCase().replace(/[^\w\-\.]/g, "_");
 }
 
 String.prototype.capitalize = function() {
