@@ -359,7 +359,7 @@ private
   end
   
   def get_desc(ingredient, brand)
-    dir  = Config::ROOT_DIR + ingredient + "/"
+    dir  = Config::MERCH_DIR + ingredient + "/"
     dir += (brand.empty?) ? "" : brand + "/"
     desc =  File.exists?(dir + "about.txt") ? File.open(dir + "about.txt").read : ""
     return desc

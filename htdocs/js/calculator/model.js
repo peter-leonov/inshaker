@@ -12,9 +12,20 @@ function CalculatorModel(view){
 		}
 	};
 	
+	this.getCartSum = function(){
+		var sum = 0;
+		for(var name in this.cartData.goods){
+			var bottles = this.cartData.goods[name].bottles;
+			for(var id in bottles){
+				sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
+			}
+		}
+		return sum;
+	};
+	
 	this.addDataListener = function(listener){
 		this.dataListeners.listeners.push(listener);
-	}
+	};
 	
 	this.initialize = function(cartData) {
 		// десериализация полученного от контроллера набора

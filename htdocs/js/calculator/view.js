@@ -20,8 +20,6 @@ function CalculatorView() {
 	this.eventListener = null; // controller
 	this.popupStatusListener = null; // external
 	
-	this.cartSum = 0;
-	
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
 	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
@@ -149,7 +147,6 @@ function CalculatorView() {
 			// from util.js
 			mergeNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
-			this.cartSum = sum; // FIXME: move to model
 			
 			if(cartData.goods[this.lastShownIngred]) {
 				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
@@ -411,6 +408,8 @@ function CalculatorView() {
 		$('good_needed').remClassName(item.dose  > have ? "more" : "less");
 		$('good_needed').addClassName(item.dose <= have ? "more" : "less");
 		this.lastShownIngred = name;
+		
+		$('order_note').hide();
 	};
 	
 	this.checkKey = function(keyCode){

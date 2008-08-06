@@ -9,7 +9,7 @@ var Calculator = {
 	},
 	
 	getSum: function(){
-		return this.view.cartSum;
+		return this.model.getCartSum();
 	},
 	
 	checkSum: function(context){
