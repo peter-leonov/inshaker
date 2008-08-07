@@ -6,14 +6,22 @@ BarsPage.controller =
 	
 	initialize: function (barsDB, cocktailsDB, state)
 	{
-		this.state = state
-		if (location.hash.length > 1)
-			Object.extend(this.state, UrlEncode.parse(location.hash))
-		
+		this.state = Object.copy(state)
+		this.emptyState = Object.copy(state)
+		this.owner.model.initialize(barsDB, cocktailsDB)
+	},
+	
+	hashUpdated: function (hash)
+	{
+		var state = this.state
+		if (hash)
+			Object.extend(state, hash)
+		else
+			state = this.state = Object.copy(this.emptyState)
+		//log(hash, state)
 		var owner = this.owner
-		owner.model.initialize(barsDB, cocktailsDB, this.state)
-		owner.view.setViewType(this.state.view)
-		owner.model.setState(this.state)
+		owner.view.setViewType(state.view)
+		owner.model.setState(state)
 	},
 	
 	gMarkerClicked: function (gMarker)
@@ -21,54 +29,56 @@ BarsPage.controller =
 		this.owner.view.showBarMapPopup(gMarker.bar)
 	},
 	
-	gMapMoveEnd: function (map)
+	gMapMoveEnd: function (ll, zoom)
 	{
-		var gLatLng = map.getCenter()
-		var gZoom = map.getZoom()
-		this.state.zoom = gZoom
-		this.state.lat = Math.round(gLatLng.lat() * 10000) / 10000
-		this.state.lng = Math.round(gLatLng.lng() * 10000) / 10000
-		this.setHash(this.state)
+		var state = this.state
+		state.zoom = zoom
+		state.lat = Math.round(ll.lat() * 10000) / 10000
+		state.lng = Math.round(ll.lng() * 10000) / 10000
+		this.owner.view.setHash(state)
 	},
 	
 	showAllBars: function ()
 	{
-		this.state.cocktail = undefined
-		this.setHash(this.state)
-		this.owner.model.setState(this.state)
+		this.cocktailSelected()
 	},
 	
 	viewTypeSwitched: function (type)
 	{
 		this.state.view = type
-		this.setHash(this.state)
+		this.owner.view.setHash(this.state)
 		this.owner.model.setState(this.state)
 	},
 	
-	setHash: function (hash)
+	cocktailSelected: function (val)
 	{
-		location.hash = UrlEncode.stringify(hash)
+		var state = this.state,
+			owner = this.owner
+		
+		state.cocktail = val
+		state.city = state.format = state.feel = undefined
+		owner.view.setHash(state)
+		owner.model.setState(state)
 	},
-	
 	citySelected: function (val)
 	{
 		this.state.city = val
 		this.state.format = undefined
 		this.state.feel = undefined
-		this.setHash(this.state)
+		this.owner.view.setHash(this.state)
 		this.owner.model.setState(this.state)
 	},
 	formatSelected: function (val)
 	{
 		this.state.format = val
 		this.state.feel = undefined
-		this.setHash(this.state)
+		this.owner.view.setHash(this.state)
 		this.owner.model.setState(this.state)
 	},
 	feelSelected: function (val)
 	{
 		this.state.feel = val
-		this.setHash(this.state)
+		this.owner.view.setHash(this.state)
 		this.owner.model.setState(this.state)
 	}
 }

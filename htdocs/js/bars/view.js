@@ -20,69 +20,32 @@ BarsPage.view =
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
 		// nodes.viewSwitcher.autoSelect = false
 		// this.initMap()
+		
+		this.lastHash = null
+		var location = document.location
+		// setInterval(function () { me.checkHash() }, 250)
+		this.checkHash()
+	},
+	
+	checkHash: function ()
+	{
+		var hashStr = location.hash
+		if (hashStr != this.lastHash)
+		{
+			this.lastHash = hashStr
+			var hash = hashStr.length > 1 ? UrlEncode.parse(hashStr) : null
+			this.owner.controller.hashUpdated(hash)
+		}
+	},
+	
+	setHash: function (hash)
+	{
+		this.lastHash = location.hash = UrlEncode.stringify(hash)
 	},
 	
 	modelChanged: function (data, state)
 	{
 		this.renderBars(data, state)
-	},
-	
-	initMap: function ()
-	{
-		var me = this
-		if (!window.GMap2)
-		{
-			if (this.gMapTimer)
-				return
-			
-			this.gMapTimer = setTimeout(function () {  })
-		}
-		
-		
-		if (!this.gMap)
-		{
-			var mapNode = this.nodes.map
-			// var isVisible = mapNode.visible()
-			// mapNode.show()
-			var map = new GMap2(mapNode)
-			// if (!isVisible)
-				// mapNode.hide()
-			map.addControl(new GSmallMapControl())
-			map.enableContinuousZoom()
-			map.enableScrollWheelZoom()
-			GEvent.addListener(map, 'moveend', function () { me.owner.controller.gMapMoveEnd(this) })
-			this.gMap = map
-		}
-		
-		if (!this.gIcon)
-		{
-			var gIcon = new GIcon()
-			gIcon.shadow = '/t/bg/bars/bar-icon.png'
-			gIcon.image = '/t/bg/bars/bar-icon.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
-			this.gIcon = gIcon	
-		}
-	},
-	
-	waitGMap: function (f)
-	{
-		this.waitGMapFunction = f
-	},
-	
-	loadedGMap: function ()
-	{
-		if (this.waitGMapFunction)
-		{
-			this.waitGMapFunction()
-			this.waitGMapFunction = null
-		}
-	},
-	
-	isGMapLoaded: function ()
-	{
-		return !!window.GLatLng
 	},
 	
 	_setViewNum: function (num)
@@ -150,29 +113,29 @@ BarsPage.view =
 		else
 			this.initMap()
 		
-		var map = this.gMap
-		
 		if (this.lastCity != state.city)
 		{
-			var ll, zoom
+			var lat, lng, zoom
 			if (!this.lastCity && state.lat && state.lng)
 			{
-				ll = new GLatLng(parseFloat(state.lat), parseFloat(state.lng))
+				lat = parseFloat(state.lat)
+				lng = parseFloat(state.lng)
 				zoom = parseInt(state.zoom) || 10
 			}
 			else
 			{
 				var cityData = this.citiesDB.getByName(state.city)
 				var cityPoint = cityData.point
-				ll = new GLatLng(cityPoint[0],cityPoint[1])
+				lat = cityPoint[0]
+				lng = cityPoint[1]
 				zoom = cityData.zoom || 10
 			}
 			
-			map.setCenter(ll, zoom)
+			this.gMapMove(lat, lng, zoom)
 			this.lastCity = state.city
 		}
+		var map = this.gMap
 		map.clearOverlays()
-		parent.innerHTML = ''
 		for (var i = 0; i < bars.length; i++)
 		{
 			var bar = bars[i]
@@ -180,6 +143,81 @@ BarsPage.view =
 				bar.gMarker = this.getGMarker(bar)
 			map.addOverlay(bar.gMarker)
 		}
+	},
+	
+	gMapMove: function (lat, lng, zoom)
+	{
+		// log('gMapMove', lat, lng, zoom)
+		var map = this.gMap
+		if (map)
+		{
+			// if (this.checkLatLngZoom(lat, lng, zoom))
+				map.setCenter(new GLatLng(lat, lng), zoom)
+		}
+	},
+	
+	checkLatLngZoom: function (nlat, nlng, nzoom)
+	{
+		var map = this.gMap,
+			ll = map.getCenter()
+		
+		if (!ll)
+			return true
+		
+		var lat = ll.lat(),
+			lng = ll.lng(),
+			zoom = map.getZoom()
+		
+		return !(nlat == lat && nlng == lng && nzoom == zoom)
+	},
+	
+	initMap: function ()
+	{
+		var me = this
+		if (!this.gMap)
+		{
+			var mapNode = this.nodes.map
+			// var isVisible = mapNode.visible()
+			// mapNode.show()
+			var map = new GMap2(mapNode)
+			// if (!isVisible)
+				// mapNode.hide()
+			map.addControl(new GSmallMapControl())
+			map.enableContinuousZoom()
+			map.enableScrollWheelZoom()
+			GEvent.addListener(map, 'moveend', function () { me.owner.controller.gMapMoveEnd(map.getCenter(), map.getZoom()) })
+			this.gMap = map
+		}
+		
+		if (!this.gIcon)
+		{
+			var gIcon = new GIcon()
+			gIcon.shadow = '/t/bg/bars/bar-icon.png'
+			gIcon.image = '/t/bg/bars/bar-icon.png'
+			gIcon.iconAnchor = new GPoint(12, 34)
+			gIcon.infoWindowAnchor = new GPoint(16, 0)
+			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			this.gIcon = gIcon	
+		}
+	},
+	
+	waitGMap: function (f)
+	{
+		this.waitGMapFunction = f
+	},
+	
+	loadedGMap: function ()
+	{
+		if (this.waitGMapFunction)
+		{
+			this.waitGMapFunction()
+			this.waitGMapFunction = null
+		}
+	},
+	
+	isGMapLoaded: function ()
+	{
+		return !!window.GLatLng
 	},
 	
 	getGMarker: function (bar)
@@ -197,7 +235,7 @@ BarsPage.view =
 	
 	showBarMapPopup: function (bar)
 	{
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+this.getBarHref(bar)+'">Посмотреть бар…</a></div>') // <img src="'+me.getBarImageSrc(bar)+'"/>
+		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>'+bar.name+'</h2><p>'+bar.address+'</p><a href="'+bar.pageHref()+'">Посмотреть бар…</a></div>')
 	},
 	
 	renderTitle: function (cocktail)
@@ -222,8 +260,8 @@ BarsPage.view =
 	{
 		var main = this.cache.barNode[bar.id] || (this.cache.barNode[bar.id] = this.createBarNode(bar))
 		main.setName(bar.name)
-		main.setImage(this.getBarImageSrc(bar))
-		main.setHref(this.getBarHref(bar))
+		main.setImage(bar.smallImageHref())
+		main.setHref(bar.pageHref())
 		return main
 	},
 	
@@ -238,8 +276,5 @@ BarsPage.view =
 		main.setName = function (text) { name.innerHTML = text }
 		main.setHref = function (href) { name.href = href }
 		return main
-	},
-	
-	getBarHref: function (bar) { return '/bars/' + bar.id + '.html' },
-	getBarImageSrc: function (bar) { return '/i/bar/pre/' + bar.id + '.jpg' }
+	}
 }

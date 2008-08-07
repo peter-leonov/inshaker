@@ -303,6 +303,7 @@ label{display:block;}
 #bars-list .bars-select.open dd { display: block; }
 #bars-list .bars-select.open dt { background-position: 0 -80px; cursor: default; }
 #bars-list .bars-select.single dt { background-position: 0 -120px; cursor: default; }
+#bars-list .bars-select.single .caption { opacity: 0.7; }
 
 #bars-container { overflow: hidden; clear: both; }
 

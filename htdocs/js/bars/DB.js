@@ -1,4 +1,31 @@
-var DB = {}
+Bar = function (data)
+{
+	// Object.extend(this, data)
+	for (var k in data)
+		this[k] = data[k]
+	
+	if (!this.feel)
+		this.feel = []
+	if (!this.format)
+		this.format = []
+}
+Bar.prototype =
+{
+	constructor: Bar,
+	
+	smallImageHref: function ()
+	{
+		return '/i/bars/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '/small.jpg'
+	},
+	
+	pageHref: function ()
+	{
+		return '/bars/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '.html'
+	}
+}
+
+
+DB = {}
 
 DB.Bars =
 {
@@ -6,47 +33,45 @@ DB.Bars =
 	
 	initialize: function (db)
 	{
+		// console.time('DB.Bars.initialize')
 		var id = 0
 		for (var k in db)
 		{
 			var bars = db[k]
 			for (var i = 0; i < bars.length; i++)
 			{
-				var bar = bars[i]
-				if (!bar.feel)
-					bar.feel = []
-				if (!bar.format)
-					bar.format = []
-				if (!bar.id)
-					bar.id = ++id
+				var bar = new Bar(bars[i])
+				bars[i] = bar
+				bar.city = k
+				bar.id = ++id
 				bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
-				log(bar.searchKey)
 			}
 		}
 		this.db = db
+		// console.timeEnd('DB.Bars.initialize')
 	},
 	
-	getByState: function (state)
+	getByQuery: function (query)
 	{
-		state = state || {}
+		query = query || {}
 		var res = []
 		
-		var bars = this.db[state.city]
+		var bars = query.city ? this.getAllBarsByCity(query.city) : this.getAllBars()
 		if (!bars)
 			return res
 		
-		var feelRex = state.feel === undefined ? '.*' : '.*:' + state.feel + ':.*'
-		var formatRex = state.format === undefined ? '.*' : '.*:' + state.format + ':.*'
-		var cocktailRex = state.cocktail === undefined ? '.*' : '.*:' + state.cocktail + ':.*'
+		var feelRex = query.feel === undefined ? '.*' : '.*:' + query.feel + ':.*'
+		var formatRex = query.format === undefined ? '.*' : '.*:' + query.format + ':.*'
+		var cocktailRex = query.cocktail === undefined ? '.*' : '.*:' + query.cocktail + ':.*'
 		var rex = new RegExp(feelRex + '\n' + formatRex + '\n' + cocktailRex, 'i')
-		log(rex)
+		
 		for (var i = 0; i < bars.length; i++)
 		{
 			var bar = bars[i]
 			if (rex.test(bar.searchKey))
 				res.push(bar)
 		}
-		res.state = state
+		// log(res, query)
 		return res
 	},
 	
@@ -114,18 +139,9 @@ DB.Bars =
 		return res.sort(function (a, b) { return hash[b] - hash[a] })
 	},
 	
-	getFormats: function (state) { return this.getPropertiesSorted(this.getByState({city:state.city, cocktail:state.cocktail}), 'format') },
-	getFeels: function (state) { return this.getPropertiesSorted(this.getByState({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') },
-	
-	
-	getCities: function ()
-	{
-		var db = this.db
-		var res = []
-		for (var k in db)
-			res.push(k)
-		return res.sort(function (a, b) { return db[b].length - db[a].length })
-	}
+	getCities: function (state) { return this.getPropertiesSorted(this.getByQuery({cocktail:state.cocktail}), 'city') },
+	getFormats: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, cocktail:state.cocktail}), 'format') },
+	getFeels: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') }
 }
 
 DB.Cities =

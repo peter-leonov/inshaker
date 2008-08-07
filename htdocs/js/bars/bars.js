@@ -2,9 +2,9 @@ BarsPage =
 {
 	init: function (barsDB, citiesDB, cocktailsDB, nodes)
 	{
-		var state = {city: 'Москва', view: 'list'}
-		this.view.initialize(nodes, citiesDB)
+		var state = {view: 'list'}
 		this.controller.initialize(barsDB, cocktailsDB, state)
+		this.view.initialize(nodes, citiesDB)
 	}
 }
 
