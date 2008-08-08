@@ -32,7 +32,7 @@ function Draggable(element, name, dropTargets){
 		self.dragObject.style.display = "none";
 		
 		document.body.appendChild(self.dragObject);
-		document.body.addClassName(self.STYLE_CURSOR);
+		// document.body.addClassName(self.STYLE_CURSOR);
 		for(var i = 0; i < dropTargets.length; i++){
 			if(dropTargets[i].onDragStart) dropTargets[i].onDragStart(element);
 		}
@@ -44,7 +44,7 @@ function Draggable(element, name, dropTargets){
 		document.removeEventListener('mousemove', elementMove, false);
 		if(self.dragObject) {
 			document.body.removeChild(self.dragObject);
-			document.body.remClassName(self.STYLE_CURSOR);
+			// document.body.remClassName(self.STYLE_CURSOR);
 			
 			// dropping
 			for(var i = 0; i < dropTargets.length; i++){
