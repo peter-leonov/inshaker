@@ -713,6 +713,39 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #bar-page #city-name, #bar-page #bar-id { display: none; }
 #bar-page #map { width: 100%; height: 430px; position: relative; overflow: hidden; border: 1px solid #888; }
 
+
+
+#event-page #both-wrapper { overflow: hidden; padding: 0 0 10px 0; }
+
+#event-page .column-main-container { }
+#event-page .column-main { width: 60.6em; }
+#event-page .column-main .body-wrapper { padding: 14px 18px; }
+#event-page #sidebar { width: 29.8em; margin-left: 0.8em; }
+#event-page #sidebar .body-wrapper { padding: 14px 18px 11px; }
+#event-page .b-title { padding-bottom: 13px; font-family: Tahoma; }
+#event-page .b-title h1, #event-page .b-title h3 { font-size: 20px; }
+#event-page .b-title h2, #event-page .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
+#event-page #illustration { width: 566px; height: 240px; position: relative; margin-top: -53px; background: url(event/illustration-bg.png); }
+#event-page #main-sponsor { background: url(event/main-sponsor.jpg); width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+
+#event-page .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
+#event-page .about .parole { font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.85px; margin: 6px 0 0 0; }
+#event-page .about .info { margin: 23px 0 0 0; font-size: 11px; line-height: 14px; }
+#event-page .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
+#event-page .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
+#event-page .about .sign-on span { text-decoration: underline; margin: 0 2px; }
+
+#event-page #sponsors-flow { clear: left; }
+#event-page #sponsors-flow .sponsor { width: 606px; margin: 30px 0 0 0; }
+#event-page #sponsors-flow .sponsor img { width: 600px; height: 100px; display: block; margin: 3px; }
+
+#event-page #sponsors-others { height: 163px; }
+#event-page #sponsors-others .viewport { height: 99px; }
+
+#model { position: absolute; left: -91px; top: 9px; z-index: 10; opacity: 0.4; display: none; }
+#main-wrapper { position: relative; }
+
+
 b.lt { left: 0; top: 0; }
 b.rt { right: 0; top: 0; }
 b.lb { left: 0; bottom: 0; }

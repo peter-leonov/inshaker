@@ -1,0 +1,1 @@
+window.addEventListener('keypress', function (e) { if (e.charCode == 109) $('model').toggle() }, false)
