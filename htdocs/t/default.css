@@ -194,7 +194,8 @@ label{display:block;}
 #cocktail-page #view-prepare button{position:absolute;left:50%;margin-left:-4.45em;bottom:11px;}
 #cocktail-page #view-how{display:none;position:absolute;top:-139px;padding-top:139px;font-size:120%;left:0;width:100%;height:100%;}
 #cocktail-page #view-how h3{font-size:150%;padding:17px 0 11px 197px;}
-#cocktail-page #view-how ul {padding-left:217px;line-height:1.5;list-style-image:url(bg/cocktail/li.png);}
+#cocktail-page #view-how ul {padding-left:217px;line-height:1.5;}
+#cocktail-page #view-how ul li {list-style-image:url(bg/cocktail/li.png);}
 #cocktail-page #view-how .ingridients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
 #cocktail-page #view-how .ingridients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
 #cocktail-page #view-how .ingridients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}

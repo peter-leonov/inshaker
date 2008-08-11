@@ -2,7 +2,7 @@ BarsPage.view =
 {
 	owner: BarsPage,
 	cache: {barNode:{}},
-	any: {format: 'любой формат', feel: 'любая атмосфера'},
+	any: {format: 'делать что угодно', feel: 'с кем угодно'},
 	
 	initialize: function (nodes, citiesDB)
 	{
@@ -276,5 +276,8 @@ BarsPage.view =
 		main.setName = function (text) { name.innerHTML = text }
 		main.setHref = function (href) { name.href = href }
 		return main
-	}
+	},
+	
+	getBarHref: function (bar) { return '/bars/' + bar.city.trans().htmlName() + '/' + bar.name_eng.htmlName() + '.html' },
+	getBarImageSrc: function (bar) { return '/i/bar/'+bar.city.trans().htmlName() + '/' + bar.name_eng.htmlName() + '-mini.png' }
 }

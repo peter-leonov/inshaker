@@ -40,8 +40,8 @@ $.onload
 			barMore: cssQuery('.about .more')[0],
 			map: $('map')
 		}
-		
 		BarPage.initialize(nodes, DB.Bars, DB.Cocktails)
+
 	}
 )
 

@@ -22,7 +22,7 @@ BarPage.model =
 		var bar = this.barsDB.getBarByCityId(cityName, barId)
 		var recommendations = this.getCocktailsByNames(bar.recs)
 		var carte = this.getCocktailsByNames(bar.carte)
-		
+
 		var otherBarsSet = this.barsDB.getAllBarsByCity(cityName)
 		
 		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet)

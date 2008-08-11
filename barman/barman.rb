@@ -6,7 +6,9 @@ require 'erb'
 require 'csv'
 require 'RMagick'
 require 'string_util'
-require 'entities'
+require 'templates'
+
+require 'bars_processor'
 $KCODE = 'u'
 
 
@@ -17,7 +19,6 @@ module Config
   COCKTAILS_DIR      = BASE_DIR + "Cocktails/"
   MERCH_DIR          = BASE_DIR + "Merchandise/"
   TOOLS_DIR          = MERCH_DIR + "Tools/"
-  BARS_DIR           = ""
   
   HTDOCS_DIR         = ROOT_DIR + "htdocs/"
   COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
@@ -116,7 +117,7 @@ class Barman
     template = File.open(Config::COCKTAIL_ERB).read
     renderer = ERB.new(template)
     @cocktails.each do |name, hash|
-      cocktail = Cocktail.new(hash)
+      cocktail = CocktailTemplate.new(hash)
       Dir.chdir(Config::COCKTAILS_HTML_DIR)
       File.open(hash[:name_eng].html_name + ".html", "w+") do |html|
         html.write renderer.result(cocktail.get_binding)
@@ -158,10 +159,6 @@ class Barman
       to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
       FileUtils.cp_r(from, to, opt) unless !File.exists?(from)
     end
-  end
-  
-  def flush_bars
-    opt = {:remove_destination => true}
   end
   
   def flush_tools
@@ -389,8 +386,8 @@ def go
   joe.flush_goods
   puts "Flushing tools to #{Config::TOOLS_ROOT}"
   joe.flush_tools
-  #puts "Flushing bars to #{Config::BARS_ROOT}"
-  #joe.flush_bars
+  puts "Processing bars data"
+  BarsProcessor.new.run
 end
 
 # Here 

@@ -9,8 +9,12 @@ class String
     return self.gsub(",",".")
   end
   
+  def trim
+    return self.gsub(/\s+$/,"")
+  end
+  
   def html_name
-    return self.downcase.gsub(/ /,"_")
+    return self.downcase.gsub(/[^\w\-\.]/,"_")
   end
   
   def cut_last_dot

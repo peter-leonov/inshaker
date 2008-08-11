@@ -15,7 +15,7 @@ Bar.prototype =
 	
 	smallImageHref: function ()
 	{
-		return '/i/bars/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '/small.jpg'
+		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '-mini.png'
 	},
 	
 	pageHref: function ()
@@ -108,7 +108,7 @@ DB.Bars =
 	{
 		var bars = this.getAllBarsByCity(city)
 		for (var i = 0; i < bars.length; i++)
-			if (bars[i].id == id)
+			if (bars[i]["id"] == id)
 				return bars[i]
 		return null
 	},
