@@ -262,7 +262,7 @@ label{display:block;}
 .b-more-cocktails li{width:8em;text-align:center;float:left;width:110px;}
 .b-more-cocktails img{display:block;margin:0 auto 5px;}
 .b-more-cocktails .prev,
-.b-more-cocktails .next{background:url(icon/strs-green.png) no-repeat -16px -24px;position:absolute;top:54px;right:-1px;height:14px;width:16px;}
+.b-more-cocktails .next{background:url(icon/strs-green.png) no-repeat -16px -24px;position:absolute;top:54px;right:-1px;height:14px;width:16px;z-index:2;}
 .b-more-cocktails .prev{background-position:0 -24px;left:0px;right:auto;}
 .b-more-cocktails .next.disabled{background-position:-16px -38px;cursor:default;}
 .b-more-cocktails .prev.disabled{background-position:0 -38px;cursor:default;}
@@ -720,16 +720,16 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .column-main-container { }
 #event-page .column-main { width: 60.6em; }
 #event-page .column-main .body-wrapper { padding: 14px 18px; }
-#event-page #sidebar { width: 29.8em; margin-left: 0.8em; }
+#event-page #sidebar { width: 29.8em; margin-left: 0.8em; background: none; }
 #event-page #sidebar .body-wrapper { padding: 14px 18px 11px; }
 #event-page .b-title { padding-bottom: 13px; font-family: Tahoma; }
 #event-page .b-title h1, #event-page .b-title h3 { font-size: 20px; }
 #event-page .b-title h2, #event-page .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
-#event-page #illustration { width: 566px; height: 240px; position: relative; margin-top: -53px; background: url(event/illustration-bg.png); }
-#event-page #main-sponsor { background: url(event/main-sponsor.jpg); width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+#event-page #illustration { width: 566px; height: 240px; position: relative; margin-top: -53px; }
+#event-page #main-sponsor { width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 #event-page .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
-#event-page .about .parole { font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.85px; margin: 6px 0 0 0; }
+#event-page .about .parole { font-family: Arial; font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
 #event-page .about .info { margin: 23px 0 0 0; font-size: 11px; line-height: 14px; }
 #event-page .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
 #event-page .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
@@ -739,8 +739,28 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #sponsors-flow .sponsor { width: 606px; margin: 30px 0 0 0; }
 #event-page #sponsors-flow .sponsor img { width: 600px; height: 100px; display: block; margin: 3px; }
 
-#event-page #sponsors-others { height: 163px; }
-#event-page #sponsors-others .viewport { height: 99px; }
+#event-page #comming { margin: 24px 0 0 0; float: left; line-height: 19px;  }
+#event-page #comming h2 { font-family: Arial; font-size: 20px; font-style: italic; }
+#event-page #comming h2 .people { color: #f32c9f; }
+#event-page #comming h2 .from { color: #0392f1; }
+#event-page #comming .rating { font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
+#event-page #comming .rating dt,
+#event-page #comming .rating dd { margin: 1px 0; }
+#event-page #comming .rating dt { width: 115px; float: left; clear: left; }
+#event-page #comming .rating dd { width: 175px; float: left; padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#event-page #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; }
+
+#event-page #sponsors-others { margin: 17px 24px 0 0; }
+#event-page #sponsors-others .b-title { padding: 0 0 7px 0; }
+#event-page #sponsors-others .b-content { position: relative; }
+#event-page #sponsors-others .b-content .viewport { width: 865px; }
+#event-page #sponsors-others .b-content .viewport .surface { width: 10000px; }
+#event-page #sponsors-others .b-content .viewport .surface img { display: inline; }
+#event-page #sponsors-others .b-content .viewport .surface hr { display: inline; padding: 0 500px 0 0; visibility: hidden; }
+#event-page #sponsors-others .b-content .viewport .point { width: 840px; height: 120px; padding: 0 15px; margin: 0 30px; text-align: justify; line-height: 120px; }
+
+
+
 
 #model { position: absolute; left: -91px; top: 9px; z-index: 10; opacity: 0.4; display: none; }
 #main-wrapper { position: relative; }
