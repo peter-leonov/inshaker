@@ -34,7 +34,7 @@ $.onload
 			photos: cssQuery('.b-content .photos')[0],
 			recommendations: $('recommendations'),
 			carte: $('carte'),
-			barId: $('bar-id'),
+			barName: $('bar-name'),
 			cityName: $('city-name'),
 			showMore: cssQuery('.about .show-more')[0],
 			barMore: cssQuery('.about .more')[0],

@@ -47,10 +47,10 @@ BarPage.view =
 	readBarCityNames: function ()
 	{
 		var nodes = this.nodes
-		var barId = nodes.barId.innerHTML
+		var barName = nodes.barName.innerHTML
 		var cityName = nodes.cityName.innerHTML
 		
-		this.owner.controller.barCityNamesLoaded(barId, cityName)
+		this.owner.controller.barCityNamesLoaded(barName, cityName)
 	},
 	
 	toggleMore: function ()
@@ -161,8 +161,8 @@ BarPage.view =
 				point.className = 'point'
 				parent.appendChild(point)
 			}
-			var cocktailNode = this._createCocktailElement(set[i])
-			point.appendChild(cocktailNode)
+			if (set[i])
+			point.appendChild(this._createCocktailElement(set[i]))
 		}
 		node.RollingImagesLite.sync()
 	},

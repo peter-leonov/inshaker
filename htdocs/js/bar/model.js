@@ -17,9 +17,9 @@ BarPage.model =
 		return res
 	},
 	
-	setBarCity: function (barId, cityName)
+	setBarCity: function (barName, cityName)
 	{
-		var bar = this.barsDB.getBarByCityId(cityName, barId)
+		var bar = this.barsDB.getBarByCityName(cityName, barName)
 		var recommendations = this.getCocktailsByNames(bar.recs)
 		var carte = this.getCocktailsByNames(bar.carte)
 

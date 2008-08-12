@@ -1,9 +1,20 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'active_support'
+require 'unicode'
+require 'fileutils'
+require 'erb'
+require 'string_util'
+require 'templates'
 require 'curb'
+
+$KCODE = 'u'
 
 module BarsConfig
   INSHAKER_ROOT = "/www/inshaker/"
   
-  BARS_DIR = INSHAKER_ROOT + "barman/base/Bars/"
+  BARS_DIR = (ENV['BARMAN_BASE_DIR'] + "Bars/") || (INSHAKER_ROOT + "barman/base/Bars/")
   BARS_ERB = INSHAKER_ROOT + "barman/templates/bar.rhtml"
   
   OUT_ROOT       = INSHAKER_ROOT + "htdocs/"
@@ -52,7 +63,6 @@ class BarsProcessor
             parse_about_text     File.open(bar_path + "/about.txt").read
             parse_cocktails_text File.open(bar_path + "/cocktails.txt").read
             detect_big_images bar_path
-            @bar[:id] = @bar[:city].trans.html_name + "_" + @bar[:name_eng].html_name
             @bar[:point] = @bar_points[@bar[:name]] || []
             @bars[city_dir] << @bar
           end
@@ -164,3 +174,6 @@ private
     @bar[:carte] = blocks[1].split(%r{[\n\r]})
   end
 end
+
+
+BarsProcessor.new.run

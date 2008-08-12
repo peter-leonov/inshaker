@@ -7,11 +7,11 @@ BarPage.controller =
 		
 	},
 	
-	barCityNamesLoaded: function (barId, cityName)
+	barCityNamesLoaded: function (barName, cityName)
 	{
 		this.cityName = cityName
-		this.barId = barId
-		this.owner.model.setBarCity(barId, cityName)
+		this.barName = barName
+		this.owner.model.setBarCity(barName, cityName)
 	},
 	
 	gMarkerClicked: function (gMarker)

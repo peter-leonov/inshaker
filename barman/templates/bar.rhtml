@@ -14,7 +14,6 @@
 		<div class="column column-main"><div class="body-wrapper">
 			<div class="b-title">
 				<h1 id="bar-name"><%= @name %></h1>
-				<h2 id="bar-id"><%= @id%></h2>
 				<h2 id="city-name"><%= @city%></h2>
 				<ul class="hrefs"><li><a class="prev">←</a></li><li><a href="/bars.html">все бары</a></li><li><a class="next">→</a></li></ul>
 			</div>
@@ -39,7 +38,7 @@
 							<dt>Тут можно:</dt>
 							<dd>
 								<% @format.each do |fmt| %>
-									<a><%=fmt%></a><%= (fmt == @format.last) ? "." : ", " %>
+									<a href="/bars.html#format=<%=fmt%>"><%=fmt%></a><%= (fmt == @format.last) ? "." : ", " %>
 								<% end %>
 							</dd>
 						</dl>
@@ -63,7 +62,7 @@
 							<dt>Гости:</dt>
 							<dd>
 								<% @feel.each do |fl| %>
-								<a><%= fl%></a><%= (fl == @feel.last) ? "." : ", " %>
+								<a href="/bars.html#feel=<%=fl%>"><%=fl%></a><%= (fl == @feel.last) ? "." : ", " %>
 								<% end %>
 							</dd>
 						</dl>
