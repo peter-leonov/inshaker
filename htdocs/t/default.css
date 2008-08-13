@@ -743,24 +743,31 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #comming h2 { font-family: Arial; font-size: 20px; font-style: italic; }
 #event-page #comming h2 .people { color: #f32c9f; }
 #event-page #comming h2 .from { color: #0392f1; }
-#event-page #comming .rating { font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
+#event-page #comming .rating { width: 300px; font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
 #event-page #comming .rating dt,
 #event-page #comming .rating dd { margin: 1px 0; }
 #event-page #comming .rating dt { width: 115px; float: left; clear: left; }
-#event-page #comming .rating dd { width: 175px; float: left; padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#event-page #comming .rating dd { width: 175px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #event-page #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; }
 
 #event-page #sponsors-others { margin: 17px 24px 0 0; }
 #event-page #sponsors-others .b-title { padding: 0 0 7px 0; }
-#event-page #sponsors-others .b-content { position: relative; }
-#event-page #sponsors-others .b-content .viewport { width: 865px; }
+#event-page #sponsors-others .b-content { position: relative; width: 100%; }
+#event-page #sponsors-others .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
 #event-page #sponsors-others .b-content .viewport .surface { width: 10000px; }
 #event-page #sponsors-others .b-content .viewport .surface img { display: inline; }
-#event-page #sponsors-others .b-content .viewport .surface hr { display: inline; padding: 0 500px 0 0; visibility: hidden; }
-#event-page #sponsors-others .b-content .viewport .point { width: 840px; height: 120px; padding: 0 15px; margin: 0 30px; text-align: justify; line-height: 120px; }
+#event-page #sponsors-others .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
+#event-page #sponsors-others .b-content .viewport .point { width: 782px; height: 120px; padding: 0 26px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
+#event-page #sponsors-others dl { height: 18px; padding: 75px 0 0 0; font-size: 11px; line-height: 11px; text-align: justify; }
+#event-page #sponsors-others dl dt { display: inline; position: relative; z-index: 2; }
+#event-page #sponsors-others dl dt a { text-decoration: none; border-bottom: 1px dashed; }
+#event-page #sponsors-others dl dt.spacer { visibility: hidden; padding: 0 300px 0 0; }
+#event-page #sponsors-others dl dd { position: absolute; left: 0; top: -25px; width: 100%; display: none; }
 
-
+#event-page #get-invitation { position: absolute; left: 547px; top: -8px; color: #fff; text-decoration: none; margin: 100px; white-space: nowrap; padding: 3px 10px 3px 0; font-size: 11px; background: url(event/pink-button.png) right center; }
+#event-page #get-invitation span { text-decoration: underline; padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }
+#event-page #get-invitation:hover span { text-decoration: none; }
 
 #model { position: absolute; left: -91px; top: 9px; z-index: 10; opacity: 0.4; display: none; }
 #main-wrapper { position: relative; }

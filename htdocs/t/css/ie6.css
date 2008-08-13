@@ -76,7 +76,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 .mybar-user .menu a:hover *{zoom:1;}
 #mybar-cocktails{width:96em;}
 #mybar-cocktails .viewport{width:76.5em;}
-#b-bill .total li{filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+#b-bill .total li, #event-page #illustration {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #bars-page .bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
 #mybar {position :absolute;top :expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6)+"px");}
@@ -103,6 +103,12 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #bar-page .b-content .photos .next { display: block; }
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { display: block; }
+
+#event-page #sponsors-others { zoom: 1; }
+#event-page .b-more-cocktails .point {font-size: 103px;}
+
+#event-page #get-invitation { color: #fff; text-decoration: none; overflow: visible; margin: 100px; white-space: nowrap; padding: 0 10px 0 0; font-size: 11px; line-height: 11px; }
+#event-page #get-invitation span { line-height: 15px; text-decoration: underline; vertical-align: middle; padding: 2px 0 4px 15px; zoom: 1; position: relative; left: -10px; height: 15px; }
 
 
 /* label click forwarding in IE6 */
