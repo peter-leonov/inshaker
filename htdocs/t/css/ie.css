@@ -31,3 +31,8 @@ html{font-size :101%;}
 .hide_control {display:none;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")))}
+
+#event-page #get-invitation { color: #fff; text-decoration: none; overflow: visible; margin: 100px; white-space: nowrap; padding: 0 10px 0 0; font-size: 11px; line-height: 11px; }
+#event-page #get-invitation span { line-height: 15px; text-decoration: underline; vertical-align: middle; padding: 2px 0 4px 15px; zoom: 1; position: relative; left: -10px; height: 15px; }
+
+#event-page #sponsors-others .b-content .viewport .surface a { margin: 0; }

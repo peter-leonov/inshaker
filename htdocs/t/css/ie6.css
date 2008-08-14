@@ -107,9 +107,6 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #event-page #sponsors-others { zoom: 1; }
 #event-page .b-more-cocktails .point {font-size: 103px;}
 
-#event-page #get-invitation { color: #fff; text-decoration: none; overflow: visible; margin: 100px; white-space: nowrap; padding: 0 10px 0 0; font-size: 11px; line-height: 11px; }
-#event-page #get-invitation span { line-height: 15px; text-decoration: underline; vertical-align: middle; padding: 2px 0 4px 15px; zoom: 1; position: relative; left: -10px; height: 15px; }
-
 
 /* label click forwarding in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}

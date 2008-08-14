@@ -755,7 +755,8 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #sponsors-others .b-content { position: relative; width: 100%; }
 #event-page #sponsors-others .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
 #event-page #sponsors-others .b-content .viewport .surface { width: 10000px; }
-#event-page #sponsors-others .b-content .viewport .surface img { display: inline; }
+#event-page #sponsors-others .b-content .viewport .surface a { margin: 0 10px; }
+#event-page #sponsors-others .b-content .viewport .surface img { display: inline; margin: 0; }
 #event-page #sponsors-others .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
 #event-page #sponsors-others .b-content .viewport .point { width: 782px; height: 120px; padding: 0 26px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
@@ -769,8 +770,14 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #get-invitation span { text-decoration: underline; padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }
 #event-page #get-invitation:hover span { text-decoration: none; }
 
+#event-page #promo-back { position: absolute; left: 0; top: 65px; width: 100%; height: 80%; background: repeat-x top center; }
+#event-page #main-wrapper { position: relative; z-index: 1; }
+#event-page #templates { position: absolute; left: 0; top: 0; z-index: -1; width: 1; height: 1; overflow: hidden; visibility: hidden; }
+/*#event-page #templates { position: absolute; left: 0; top: 0; z-index: 10; }*/
+
+
 #model { position: absolute; left: -91px; top: 9px; z-index: 10; opacity: 0.4; display: none; }
-#main-wrapper { position: relative; }
+
 
 
 b.lt { left: 0; top: 0; }

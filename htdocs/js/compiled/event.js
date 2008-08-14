@@ -1,9 +1,7 @@
-window.addEventListener('keypress', function (e) { if (e.charCode == 109) $('model').toggle() }, false)
+<!--# include file="/js/event/DB.js" -->
 
-$.onload
-(
-	function ()
-	{
-		cssQuery('.programica-rolling-images').forEach(function (v) { new Programica.RollingImagesLite(v, {animationType: 'easeOutQuad'}) })
-	}
-)
+<!--# include file="/js/event/event.js" -->
+<!--# include file="/js/event/model.js" -->
+<!--# include file="/js/event/controller.js" -->
+<!--# include file="/js/event/view.js" -->
+
