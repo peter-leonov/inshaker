@@ -1,9 +1,11 @@
-var Switcher =
+Switcher =
 {
-	bind: function (main, tabs)
+	bind: function (main, buttons, tabs, names)
 	{
-		main.nodes = {tabs: tabs}
-		main.names = []
+		if (!main || !buttons || !tabs)
+			throw new Error('main, buttons or tabs are not defined: ' + [!!main, !!buttons, !!tabs].join(', '))
+		main.nodes = {buttons: Array.copy(buttons), tabs: Array.copy(tabs)}
+		main.names = names || []
 		
 		main.autoSelect = true
 		main.onselect = function () {}
@@ -14,13 +16,13 @@ var Switcher =
 			if (typeof num != 'number')
 				num = this.names.indexOf(num)
 			
-			var childs = Array.copy(this.childNodes)
+			var buttons = this.nodes.buttons
 			
-			var selected = childs[num]
+			var selected = buttons[num]
 			if (selected)
 			{
-				for (var i = 0; i < childs.length; i++)
-					childs[i].remClassName('selected')
+				for (var i = 0; i < buttons.length; i++)
+					buttons[i].remClassName('selected')
 				
 				selected.addClassName('selected')
 			}
@@ -34,17 +36,33 @@ var Switcher =
 			}
 		}
 		
+		function isParent (node, parent, root)
+		{
+			do
+			{
+				// log(node)
+				if (node == parent)
+					return true
+				if (node == root)
+					return false
+			}
+			while (node = node.parentNode)
+			
+			return false
+		}
 		
 		function select (e)
 		{
-			var childs = Array.copy(main.childNodes)
-			var num
-			for (var i = 0; i < childs.length; i++)
-				if (childs[i] == e.target)
+			var buttons = this.nodes.buttons
+			var num = -1
+			for (var i = 0; i < buttons.length; i++)
+				if (isParent(e.target, buttons[i], this))
 					num = i
 			
-			if (this.onselect(num, e.target) !== false && this.autoSelect)
-				this.select(num, e.target)
+			if (num > -1 && this.onselect(num, e.target) !== false && this.autoSelect)
+				return this.select(num, e.target)
+			
+			return false
 		}
 		main.addEventListener('mousedown', select, false)
 		

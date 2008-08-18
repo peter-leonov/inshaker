@@ -1,3 +1,4 @@
+<!--# include file="/js/bars/switcher.js" -->
 <!--# include file="/js/event/DB.js" -->
 
 <!--# include file="/js/event/event.js" -->

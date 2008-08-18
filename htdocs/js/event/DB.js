@@ -1,5 +1,5 @@
-if (typeof DB == 'undefined')
-	DB = {}
+if (!self.DB)
+	self.DB = {}
 
 DB.Events =
 {

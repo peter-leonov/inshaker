@@ -8,14 +8,19 @@ BarsPage.view =
 	{
 		this.citiesDB = citiesDB
 		this.nodes = nodes
-		var me = this
-		var controller = me.owner.controller
+		var me = this,
+			controller = me.owner.controller,
+			viewSwitcher = nodes.viewSwitcher
 		nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
 		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
 		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
-		nodes.viewSwitcher.setTabs([this.nodes.barsContainer, this.nodes.map])
-		nodes.viewSwitcher.setNames(['list', 'map'])
+		Switcher.bind(viewSwitcher, viewSwitcher.childNodes, [this.nodes.barsContainer, this.nodes.map])
+		viewSwitcher.setNames(['list', 'map'])
+		
+		Selecter.bind(nodes.citySelect)
+		Selecter.bind(nodes.formatSelect)
+		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
 		// nodes.viewSwitcher.autoSelect = false

@@ -758,13 +758,14 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #sponsors-others .b-content .viewport .surface a { margin: 0 10px; }
 #event-page #sponsors-others .b-content .viewport .surface img { display: inline; margin: 0; }
 #event-page #sponsors-others .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
-#event-page #sponsors-others .b-content .viewport .point { width: 782px; height: 120px; padding: 0 26px; margin: 0 30px; text-align: justify; line-height: 120px; }
+#event-page #sponsors-others .b-content .viewport .point { width: 806px; height: 120px; padding: 0 16px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
 #event-page #sponsors-others dl { height: 18px; padding: 75px 0 0 0; font-size: 11px; line-height: 11px; text-align: justify; }
-#event-page #sponsors-others dl dt { display: inline; position: relative; z-index: 2; }
+#event-page #sponsors-others dl dt { display: inline; position: relative; z-index: 2; margin: 0 7px 0 0; }
 #event-page #sponsors-others dl dt a { text-decoration: none; border-bottom: 1px dashed; }
-#event-page #sponsors-others dl dt.spacer { visibility: hidden; padding: 0 300px 0 0; }
-#event-page #sponsors-others dl dd { position: absolute; left: 0; top: -25px; width: 100%; display: none; }
+#event-page #sponsors-others dl dt.selected a { border-bottom: none; color: #e4146e; }
+#event-page #sponsors-others dl dt.spacer { visibility: hidden; padding: 0 350px 0 0; }
+#event-page #sponsors-others dl dd { position: absolute; left: 0; top: -25px; width: 100%; }
 
 #event-page #get-invitation { position: absolute; left: 547px; top: -8px; color: #fff; text-decoration: none; margin: 100px; white-space: nowrap; padding: 3px 10px 3px 0; font-size: 11px; background: url(event/pink-button.png) right center; }
 #event-page #get-invitation span { text-decoration: underline; padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }

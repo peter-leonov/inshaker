@@ -10,5 +10,5 @@ EventPage.controller =
 	setEventName: function (name)
 	{
 		this.owner.model.setState({name: name})
-	},
+	}
 }

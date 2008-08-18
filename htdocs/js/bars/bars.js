@@ -21,22 +21,17 @@ $.onload
 		
 		DB.Cocktails.initialize(cocktails)
 		
-		var viewSwitcher = Switcher.bind($('switch-view'))
-		var citySelect = Selecter.bind($('bars-city'))
-		var formatSelect = Selecter.bind($('bars-format'))
-		var feelSelect = Selecter.bind($('bars-feel'))
-		
 		var nodes =
 		{
 			titleAll: cssQuery('.b-title .all')[0],
 			titleSearch: cssQuery('.b-title .search')[0],
 			titleSearchName: cssQuery('.b-title .search a')[0],
 			titleSearchAll: cssQuery('.b-title .search a')[1],
-			viewSwitcher: viewSwitcher,
+			viewSwitcher: $('switch-view'),
 			barsContainer: $('bars-container'),
-			citySelect: citySelect,
-			formatSelect: formatSelect,
-			feelSelect: feelSelect,
+			citySelect: $('bars-city'),
+			formatSelect: $('bars-format'),
+			feelSelect: $('bars-feel'),
 			map: $('map')
 		}
 		

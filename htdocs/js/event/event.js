@@ -24,7 +24,9 @@ $.onload
 		var nodes =
 		{
 			name: $('event-name'),
-			destination: $('destination')
+			rating: cssQuery('#comming .rating')[0],
+			sponsorsOthers: $('sponsors-others'),
+			sponsorsOthersContent: cssQuery('#sponsors-others .b-content')[0]
 		}
 		
 		EventPage.initialize(nodes, DB.Events)
