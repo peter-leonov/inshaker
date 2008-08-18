@@ -25,8 +25,11 @@ $.onload
 		{
 			name: $('event-name'),
 			rating: cssQuery('#comming .rating')[0],
-			sponsorsOthers: $('sponsors-others'),
-			sponsorsOthersContent: cssQuery('#sponsors-others .b-content')[0]
+			sponsorsLow: $('low-sponsors'),
+			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],
+			sponsorsMedium: $('medium-sponsors'),
+			sponsorsHighTitle: cssQuery('#sidebar .b-title h4')[0],
+			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0]
 		}
 		
 		EventPage.initialize(nodes, DB.Events)

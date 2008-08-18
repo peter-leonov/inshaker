@@ -690,7 +690,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 /*#bar-page .b-content .photos b { position: absolute; width: 1px; height: 1px; background: #fff; opacity: 0.75; }*/
 
 #bar-page .b-content .photos .viewport .point { float: left; width: 590px; height: 100%; }
-#bar-page .b-content .photos .viewport .surface { width: 4000px; }
+#bar-page .b-content .photos .viewport .surface { width: 20000px; }
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(bar/photos-buttons.png); }
 #bar-page .b-content .photos:hover .prev,
@@ -726,7 +726,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .b-title h1, #event-page .b-title h3 { font-size: 20px; }
 #event-page .b-title h2, #event-page .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
 #event-page #illustration { width: 566px; height: 240px; position: relative; margin-top: -53px; }
-#event-page #main-sponsor { width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+#event-page .main-sponsor { display: block; width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 #event-page .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
 #event-page .about .parole { font-family: Arial; font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
@@ -735,9 +735,9 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
 #event-page .about .sign-on span { text-decoration: underline; margin: 0 2px; }
 
-#event-page #sponsors-flow { clear: left; }
-#event-page #sponsors-flow .sponsor { width: 606px; margin: 30px 0 0 0; }
-#event-page #sponsors-flow .sponsor img { width: 600px; height: 100px; display: block; margin: 3px; }
+#event-page #medium-sponsors { clear: left; }
+#event-page #medium-sponsors .sponsor { width: 606px; margin: 30px 0 0 0; }
+#event-page #medium-sponsors .sponsor img { width: 600px; height: 100px; display: block; margin: 3px; }
 
 #event-page #comming { margin: 24px 0 0 0; float: left; line-height: 19px;  }
 #event-page #comming h2 { font-family: Arial; font-size: 20px; font-style: italic; }
@@ -750,22 +750,22 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #comming .rating dd { width: 175px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #event-page #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; }
 
-#event-page #sponsors-others { margin: 17px 24px 0 0; }
-#event-page #sponsors-others .b-title { padding: 0 0 7px 0; }
-#event-page #sponsors-others .b-content { position: relative; width: 100%; }
-#event-page #sponsors-others .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
-#event-page #sponsors-others .b-content .viewport .surface { width: 10000px; }
-#event-page #sponsors-others .b-content .viewport .surface a { margin: 0 10px; }
-#event-page #sponsors-others .b-content .viewport .surface img { display: inline; margin: 0; }
-#event-page #sponsors-others .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
-#event-page #sponsors-others .b-content .viewport .point { width: 806px; height: 120px; padding: 0 16px; margin: 0 30px; text-align: justify; line-height: 120px; }
+#event-page #low-sponsors { margin: 17px 24px 0 0; }
+#event-page #low-sponsors .b-title { padding: 0 0 7px 0; }
+#event-page #low-sponsors .b-content { position: relative; width: 100%; }
+#event-page #low-sponsors .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
+#event-page #low-sponsors .b-content .viewport .surface { width: 10000px; }
+#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
+#event-page #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
+#event-page #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
+#event-page #low-sponsors .b-content .viewport .point { width: 806px; height: 120px; padding: 0 16px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
-#event-page #sponsors-others dl { height: 18px; padding: 75px 0 0 0; font-size: 11px; line-height: 11px; text-align: justify; }
-#event-page #sponsors-others dl dt { display: inline; position: relative; z-index: 2; margin: 0 7px 0 0; }
-#event-page #sponsors-others dl dt a { text-decoration: none; border-bottom: 1px dashed; }
-#event-page #sponsors-others dl dt.selected a { border-bottom: none; color: #e4146e; }
-#event-page #sponsors-others dl dt.spacer { visibility: hidden; padding: 0 350px 0 0; }
-#event-page #sponsors-others dl dd { position: absolute; left: 0; top: -25px; width: 100%; }
+#event-page #low-sponsors dl { height: 18px; padding: 75px 0 0 0; font-size: 11px; line-height: 11px; text-align: justify; }
+#event-page #low-sponsors dl dt { display: inline; position: relative; z-index: 2; margin: 0 7px 0 0; }
+#event-page #low-sponsors dl dt a { text-decoration: none; border-bottom: 1px dashed; }
+#event-page #low-sponsors dl dt.selected a { border-bottom: none; color: #e4146e; cursor: default; }
+#event-page #low-sponsors dl dt.spacer { visibility: hidden; padding: 0 350px 0 0; }
+#event-page #low-sponsors dl dd { position: absolute; left: 0; top: -25px; width: 100%; }
 
 #event-page #get-invitation { position: absolute; left: 547px; top: -8px; color: #fff; text-decoration: none; margin: 100px; white-space: nowrap; padding: 3px 10px 3px 0; font-size: 11px; background: url(event/pink-button.png) right center; }
 #event-page #get-invitation span { text-decoration: underline; padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }

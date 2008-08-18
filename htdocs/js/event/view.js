@@ -23,13 +23,15 @@ EventPage.view =
 	
 	modelChanged: function (event)
 	{
-		this.renderOtherSponsors(event.others)
+		this.renderLowSponsors(event.low)
 		this.renderRating(event.rating)
+		this.renderMediumSponsors(event.medium)
+		this.renderHighSponsors(event.high)
 	},
 	
-	renderOtherSponsors: function (sponsorsSet)
+	renderLowSponsors: function (sponsorsSet)
 	{
-		var root = this.nodes.sponsorsOthersContent
+		var root = this.nodes.sponsorsLowContent
 		root.empty()
 		
 		var main = N('dl')
@@ -48,7 +50,7 @@ EventPage.view =
 			
 			var dd = N('dd')
 			
-			var node = this.createOtherSponsorNode(part.logos)
+			var node = this.createLowSponsorNode(part.logos)
 			dd.appendChild(node)
 			
 			main.appendChild(dt)
@@ -73,10 +75,10 @@ EventPage.view =
 		main.select(0)
 	},
 	
-	createOtherSponsorNode: function (logosSet)
+	createLowSponsorNode: function (logosSet)
 	{
-		var main = N('div')
-		main.className = 'programica-rolling-images'
+		var root = N('div')
+		root.className = 'programica-rolling-images'
 		
 		var prev = N('a')
 		prev.className = 'prev'
@@ -116,16 +118,16 @@ EventPage.view =
 			surface.appendChild(point)
 		}
 		
-		main.appendChild(prev)
-		main.appendChild(next)
-		main.appendChild(viewport)
+		root.appendChild(prev)
+		root.appendChild(next)
+		root.appendChild(viewport)
 		
-		return main
+		return root
 	},
 	
 	renderRating: function (rating)
 	{
-		var main = this.nodes.rating
+		var root = this.nodes.rating
 		
 		var sorted = Object.keys(rating).sort(function (a, b) { return rating[b] - rating[a] })
 		
@@ -133,7 +135,7 @@ EventPage.view =
 		var min = rating[sorted[sorted.length-1]]
 		
 		var padding = String(max).length * 7.5
-		var k = max && min ? ((175 - padding) / (max - min + 1)  * 100) / 100 : 1
+		var k = max && min ? ((171 - padding) / (max - min + 1)  * 100) / 100 : 1
 		log((max - min), k, padding)
 		
 		for (var i = 0; i < sorted.length; i++)
@@ -149,9 +151,46 @@ EventPage.view =
 			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
 			dd.appendChild(T(count))
 			
-			main.appendChild(dt)
-			main.appendChild(dd)
+			root.appendChild(dt)
+			root.appendChild(dd)
 		}
+	},
+	
+	// <a class="column sponsor"><img src="/i/event/sponsor-1.jpg" alt="Дамская водка"/></a>
+	renderMediumSponsors: function (sponsorsSet)
+	{
+		var root = this.nodes.sponsorsMedium
+		
+		for (var i = 0; i < sponsorsSet.length; i++)
+		{
+			var sponsor = sponsorsSet[i]
+			
+			var a = N('a')
+			a.className = 'column sponsor'
+			a.href = sponsor.href
+			
+			var img = N('img')
+			img.src = '/i/event/' + sponsor.src
+			img.alt = sponsor.name
+			a.appendChild(img)
+			
+			root.appendChild(a)
+		}
+	},
+	
+	renderHighSponsors: function (sponsorsSet)
+	{
+		var nodes = this.nodes
+		
+		var sponsor = sponsorsSet[0]
+		nodes.sponsorsHighTitle.innerHTML = sponsor.name
+		nodes.sponsorsHigh.style.backgroundImage = 'url(' + '/i/event/' + sponsor.src + ')'
+		
+		// var root = this.nodes.sponsorsHigh
+		// for (var i = 0; i < sponsorsSet.length; i++)
+		// {
+		// 	var sponsor = sponsorsSet[i]
+		// }
 	}
 }
 
