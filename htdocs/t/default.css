@@ -725,7 +725,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .b-title { padding-bottom: 13px; font-family: Tahoma; }
 #event-page .b-title h1, #event-page .b-title h3 { font-size: 20px; }
 #event-page .b-title h2, #event-page .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
-#event-page #illustration { width: 566px; height: 240px; position: relative; margin-top: -53px; }
+#event-page #illustration { width: 566px; height: 300px; position: relative; margin-top: -104px; overflow: hidden; }
 #event-page .main-sponsor { display: block; width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 #event-page .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
@@ -755,7 +755,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #low-sponsors .b-content { position: relative; width: 100%; }
 #event-page #low-sponsors .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
 #event-page #low-sponsors .b-content .viewport .surface { width: 10000px; }
-#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
+#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 8px; }
 #event-page #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
 #event-page #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
 #event-page #low-sponsors .b-content .viewport .point { width: 806px; height: 120px; padding: 0 16px; margin: 0 30px; text-align: justify; line-height: 120px; }

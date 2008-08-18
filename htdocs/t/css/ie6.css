@@ -76,7 +76,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 .mybar-user .menu a:hover *{zoom:1;}
 #mybar-cocktails{width:96em;}
 #mybar-cocktails .viewport{width:76.5em;}
-#b-bill .total li, #event-page #illustration {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+#b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #bars-page .bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
 #mybar {position :absolute;top :expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-clientHeight-6)+"px");}
@@ -107,6 +107,10 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #event-page #sponsors-others { zoom: 1; }
 #event-page .b-more-cocktails .point {font-size: 103px;}
 #event-page #sponsors-others .b-content .viewport .surface a { margin: 0 -7px; }
+
+#event-page #illustration { float: left; }
+
+#event-page #illustration {scrollbar-base-color:expression(runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)');}
 
 /* label click forwarding in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}

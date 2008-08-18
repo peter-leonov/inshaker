@@ -24,6 +24,8 @@ $.onload
 		var nodes =
 		{
 			name: $('event-name'),
+			illustration: $('illustration'),
+			illustrationPopups: cssQuery('#illustration img')[0],
 			rating: cssQuery('#comming .rating')[0],
 			sponsorsLow: $('low-sponsors'),
 			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],

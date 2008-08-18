@@ -23,8 +23,9 @@ EventPage.view =
 	
 	modelChanged: function (event)
 	{
-		this.renderLowSponsors(event.low)
+		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
+		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
 	},
@@ -136,7 +137,6 @@ EventPage.view =
 		
 		var padding = String(max).length * 7.5
 		var k = max && min ? ((171 - padding) / (max - min + 1)  * 100) / 100 : 1
-		log((max - min), k, padding)
 		
 		for (var i = 0; i < sorted.length; i++)
 		{
@@ -185,12 +185,47 @@ EventPage.view =
 		var sponsor = sponsorsSet[0]
 		nodes.sponsorsHighTitle.innerHTML = sponsor.name
 		nodes.sponsorsHigh.style.backgroundImage = 'url(' + '/i/event/' + sponsor.src + ')'
+		nodes.sponsorsHigh.href = sponsor.href
 		
 		// var root = this.nodes.sponsorsHigh
 		// for (var i = 0; i < sponsorsSet.length; i++)
 		// {
 		// 	var sponsor = sponsorsSet[i]
 		// }
+	},
+	
+	renderDialogue: function (dialogue)
+	{
+		var nodes = this.nodes,
+			illustration = nodes.illustration,
+			illustrationPopups = nodes.illustrationPopups
+		illustration.style.backgroundImage = 'url(/i/event/' + dialogue.back + ')'
+		illustrationPopups.src = '/i/event/' + dialogue.popups
+		
+		illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
+		
+		function animatePopups ()
+		{
+			illustrationPopups.animate('linearTween', {opacity: [0]}, 0.3).oncomplete =
+			function ()
+			{
+				setTimeout
+				(
+					function ()
+					{ 
+					if (illustration.scrollTop + 300 >= illustration.scrollHeight)
+						illustration.scrollTop = 0
+					else
+						illustration.scrollTop += 300
+				
+					illustrationPopups.animate('linearTween', {opacity: [1]}, 0.3)
+					},
+					500
+				)
+			}
+		}
+		
+		setInterval(animatePopups, 2500)
 	}
 }
 
