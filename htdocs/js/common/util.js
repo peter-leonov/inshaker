@@ -102,6 +102,11 @@ function toArray(hash) {
 	return results;
 }
 
+function validateNumeric(txt){
+	if(txt.match(/^\d+$/)) return true;
+	return false;
+};
+
 /**
  * Cookie functionality. 
  * All cookies are saved with "path=/"

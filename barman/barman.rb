@@ -9,6 +9,8 @@ require 'string_util'
 require 'templates'
 
 require 'bars_processor'
+require 'parties_processor'
+
 $KCODE = 'u'
 
 
@@ -371,23 +373,25 @@ end
 
 def go
   debug = !(ARGV[0] == "-silent")
-  joe = Barman.new(debug)
-  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
-  joe.prepare
-  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
-  joe.flush_html                                           
-  puts "Flushing JSON to #{Config::DB_JS}"          
-  joe.flush_json                                                                              
-  puts "Flushing images to #{Config::IMAGES_DIR}"       
-  joe.flush_images                                      
-  puts "Flushing videos to #{Config::VIDEOS_DIR}"       
-  joe.flush_videos                                      
-  puts "Flushing goods to #{Config::MERCH_ROOT}"        
-  joe.flush_goods
-  puts "Flushing tools to #{Config::TOOLS_ROOT}"
-  joe.flush_tools
-  puts "Processing bars data"
-  BarsProcessor.new.run
+  # joe = Barman.new(debug)
+  # puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
+  # joe.prepare
+  # puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
+  # joe.flush_html                                           
+  # puts "Flushing JSON to #{Config::DB_JS}"          
+  # joe.flush_json                                                                              
+  # puts "Flushing images to #{Config::IMAGES_DIR}"       
+  # joe.flush_images                                      
+  # puts "Flushing videos to #{Config::VIDEOS_DIR}"       
+  # joe.flush_videos                                      
+  # puts "Flushing goods to #{Config::MERCH_ROOT}"        
+  # joe.flush_goods
+  # puts "Flushing tools to #{Config::TOOLS_ROOT}"
+  # joe.flush_tools
+  # puts "Processing bars data"
+  #   BarsProcessor.new.run
+  puts "Processing parties data"
+    PartiesProcessor.new.run
 end
 
 # Here 

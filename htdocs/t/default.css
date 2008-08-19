@@ -1,4 +1,4 @@
-/* Authors: Kornilov Pavel, Vasiliy Mikhailichenko, Peter Leonov */
+/* Authors: Kornilov Pavel, Vasily Mikhailitchenko, Peter Leonov */
 /* dotted */
 .dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
@@ -99,10 +99,78 @@ label{display:block;}
 .index-wrapper #registration .b{background-color:#f1f2f2;margin:16px 0 10px 0;}
 .index-wrapper #registration .b p{font-size:11px;padding:10px 20px;}
 .index-wrapper #registration button{margin-top:20px;}
-/* index-page */
-#index-page .column{margin-top:39px;}
-#index-page .column .cocktails{margin-left:30px;margin-top:20px;}
-#index-page .column .body-wrapper{padding-bottom:0;}
+/* parties-page */
+
+#parties-page .b-title{padding-bottom:10px; margin-bottom: 24px;}
+#parties-page #top{position:relative;height:105px;font-size:12px;}
+#parties-page #main-wrapper {z-index: 1; position:relative;}
+
+#parties-page .b-title h1,
+#parties-page .b-title h2{font-size:20px;margin-left:-1px;}
+
+#parties-page .column{ margin-bottom: 32px;}
+#parties-page .column .body-wrapper{padding-bottom:0;}
+
+#parties-page .party-previews .party { float: left; width: 213px; text-align: center; cursor:pointer;}
+#parties-page .party-previews .name { font-family: Arial, sans-serif; font-size: 13pt; font-style: italic; color: #0392f1; text-decoration: underline;}
+#parties-page .party-previews .party.selected .name { color: #e2138a;}
+#parties-page .party-previews .viewport,
+#parties-page .party-previews { overflow: hidden; position: relative; width: 920px; height: 150px; }
+#parties-page .party-previews .viewport {width: 855px; margin-left: 34px;}
+#parties-page .party-previews .viewport .point { float: left; width: 855px; height: 100%; }
+#parties-page .party-previews .viewport .surface { width: 4000px; padding: 0;}
+#parties-page .party-previews .prev,
+#parties-page .party-previews .next {
+display:block; z-index:3; width:20px; height:20px; position:absolute; left:auto; top:41px; right:19px;
+background: url(icon/strs-green.png) no-repeat 0pt -72px;
+}
+#parties-page .party-previews .prev { left: 0; background-position: 0 -72px; }
+#parties-page .party-previews .next { right: 0; background-position: -20px -72px; }
+#parties-page .party-previews .prev.disabled { background-position: 0 -92px; cursor: default; }
+#parties-page .party-previews .next.disabled { background-position: -20px -92px; cursor: default; }
+
+#parties-page .party-photos .viewport,
+#parties-page .party-photos { overflow: hidden; position: relative; width: 960px; height: 410px; }
+#parties-page .party-photos .viewport .point { float: left; width: 960px; height: 100%; }
+#parties-page .party-photos .viewport .surface { width: 10000px; }
+#parties-page .party-photos .prev,
+#parties-page .party-photos .next { position: absolute; top: 204px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
+#parties-page .party-photos:hover .prev,
+#parties-page .party-photos:hover .next {display:block;}
+#parties-page .party-photos:hover .prev.hidden,
+#parties-page .party-photos:hover .next.hidden {display:none;}
+#parties-page .party-photos .prev { left: 0; background-position: -60px 0; display:none;}
+#parties-page .party-photos .next { right: 0; background-position: 0 0; display:none;}
+#parties-page .party-photos .prev.disabled { background-position: -60px -60px; cursor: default; }
+#parties-page .party-photos .next.disabled { background-position: 0 -60px; cursor: default; }
+
+.party-top {height: 90px; position:absolute; top:0; left:0; width: 960px; z-index:2; }
+.party-desc {float:left; color: #fff; font-family: Arial, sans-serif; font-style: italic; font-size: 20pt; width: 298px; padding: 10px 0 0 20px;}
+#bar_name {text-decoration: underline;}
+.party-teaser { margin-top: 29px; float:left; width: 518px; height: 35px; background:url('/t/bg/parties/only_for.png'); font-size: 31pt; color: #fff60e; line-height: 26pt; margin-right: 20px; font-family: Arial, sans-serif;}
+#party_price_per_guest {margin-right: 290px; float:right;}
+#want_link {display: block; margin-top: 29px; }
+
+#want_popup_area { display:none; width: 100%; height: 100%; left:0; top: 0; position: fixed;}
+#want_popup { z-index:5; position: relative; top: 100px; margin:0 auto; width: 493px; height: 171px; background: url('/t/bg/parties/popup_bg.png'); font-family: Arial, sans-serif; font-style:italic; font-weight:bold; text-align:center;}
+
+#want_close {clear:both; width:493px; z-index: 5; height: 10px; margin: 0 auto; position: relative; top: 79px;}
+#want_close_text  { float: left;  display: block; background: url('/t/button/close_text.png');  height:10px; width: 45px;}
+#want_close_cross { float: right; display: block; background: url('/t/button/close_cross.png'); height: 7px; width: 7px;}
+
+#want_text  { color:#0392f1; font-size: 19pt; padding-top: 32px;}
+#want_phone { color:#f22b9f; font-size: 25pt; padding-top: 10px;}
+
+
+.party-bottom {position: absolute; top: 370px; left: 0; height: 35px; line-height: 35px; z-index: 2; font-family: Arial, sans-serif; color: #fff; font-size: 16pt; font-style: italic; width: 940px; padding-left: 20px;}
+.party-bottom-start {float: left;}
+#party_guests_minus {background: url('/t/button/minus.png'); height: 18px; width: 19px; float:left;margin: 10px 8px 0 10px;}
+#party_guests_plus {background: url('/t/button/plus.png'); height: 18px; width: 19px; float:left; margin: 10px 10px 0 8px;}
+#party_guests_number { width: 30px; background: #f4f7c2; font-size: 13px; text-align: center; padding: 0; float:left; margin-top: 10px; height: 21px; line-height: 21px;}
+.party-price-hi { color: #fff60e;}
+
+#party_backdrop {position:absolute; top: 65px; left:0px; width: 100%; height: 80%; background: url('/t/bg/parties/backdrop.jpg') #fff no-repeat scroll center top}
+
 .column-mini,
 .column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;}
 .column-main{width:62.8em;}
@@ -111,6 +179,7 @@ label{display:block;}
 .column-main-container{width:63em;float:left;}
 .body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;overflow:hidden;}
 .b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:14px;position:relative;}
+
 .b-title h1,
 .b-title h2{font-size:24px;margin-left:-1px;}
 .b-title .hrefs{position:absolute;right:0;bottom:20px;font-size:110%;}
