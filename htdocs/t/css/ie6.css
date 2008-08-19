@@ -104,13 +104,15 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { display: block; }
 
+#event-page #form-popup { position: absolute; }
 #event-page #sponsors-others { zoom: 1; }
 #event-page .b-more-cocktails .point {font-size: 103px;}
 #event-page #sponsors-others .b-content .viewport .surface a { margin: 0 -7px; }
-
 #event-page #illustration { float: left; }
+#event-page #form-popup { height: 200%; }
+#event-page #form-popup .content form label input { right: 30px; }
+#event-page #form-popup .content form .limit input { width: 160px; }
 
-#event-page #illustration {scrollbar-base-color:expression(runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)');}
 
 /* label click forwarding in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}

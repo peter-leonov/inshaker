@@ -31,8 +31,16 @@ $.onload
 			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],
 			sponsorsMedium: $('medium-sponsors'),
 			sponsorsHighTitle: cssQuery('#sidebar .b-title h4')[0],
-			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0]
+			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0],
+			formPopup: $('form-popup'),
+			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
+			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
+			variableInputs: cssQuery('#form-popup .variable')[0]
 		}
+		
+		// log(document.documentElement.appendChild($('form-popup')))
+		
+		// document.addEventListener('click', function () { alert(document.body.parentNode.scrollHeight + document.body.parentNode.scrollTop) })
 		
 		EventPage.initialize(nodes, DB.Events)
 	}

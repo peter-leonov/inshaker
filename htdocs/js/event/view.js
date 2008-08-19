@@ -12,6 +12,8 @@ EventPage.view =
 	{
 		this.nodes = nodes
 		
+		nodes.formPopupOverlay.addEventListener('click', function () { this.owner.controller.formPopupCloseClicked() }, false)
+		
 		// cssQuery('.programica-rolling-images').forEach(function (v) { new Programica.RollingImagesLite(v, {animationType: 'easeOutQuad'}) })
 	},
 	
@@ -28,6 +30,7 @@ EventPage.view =
 		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
+		this.renderVariableFields(event.fields, event.name)
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
@@ -226,6 +229,27 @@ EventPage.view =
 		}
 		
 		setInterval(animatePopups, 2500)
+	},
+	
+	renderVariableFields: function (fieldsSet, name)
+	{
+		var root = this.nodes.variableInputs
+		
+		for (var i = 0; i < fieldsSet.length; i++)
+		{
+			var field = fieldsSet[i]
+			var label = N('label')
+			var input = N('input')
+			input.type = 'text'
+			input.name = field
+			
+			label.appendChild(T(field + ':'))
+			label.appendChild(input)
+			
+			root.appendChild(label)
+		}
+		
+		this.nodes.formPopupNameInput.value = name
 	}
 }
 

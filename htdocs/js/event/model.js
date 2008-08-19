@@ -10,6 +10,7 @@ EventPage.model =
 	setState: function (state)
 	{
 		var event = this.eventsDB.getByName(state.name)
+		event.name = state.name
 		
 		this.owner.view.modelChanged(event)
 	}

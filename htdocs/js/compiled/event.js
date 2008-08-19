@@ -1,3 +1,9 @@
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
+
 <!--# include file="/js/bars/switcher.js" -->
 <!--# include file="/js/event/DB.js" -->
 
