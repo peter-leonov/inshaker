@@ -11,9 +11,14 @@ EventPage.view =
 	initialize: function (nodes)
 	{
 		this.nodes = nodes
+		var me = this
 		
-		nodes.formPopupOverlay.addEventListener('click', function () { this.owner.controller.formPopupCloseClicked() }, false)
+		function formPopupCloseClicked () { me.owner.controller.formPopupCloseClicked() }
+		nodes.formPopupOverlay.addEventListener('click', formPopupCloseClicked, false)
+		nodes.formPopupMenu.addEventListener('click', formPopupCloseClicked, false)
 		
+		function formPopupOpenClicked () { me.owner.controller.formPopupOpenClicked() }
+		nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
 		// cssQuery('.programica-rolling-images').forEach(function (v) { new Programica.RollingImagesLite(v, {animationType: 'easeOutQuad'}) })
 	},
 	
@@ -250,6 +255,16 @@ EventPage.view =
 		}
 		
 		this.nodes.formPopupNameInput.value = name
+	},
+	
+	showFormPopup: function ()
+	{
+		this.nodes.formPopup.show()
+	},
+	
+	hideFormPopup: function ()
+	{
+		this.nodes.formPopup.hide()
 	}
 }
 

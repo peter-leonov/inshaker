@@ -34,8 +34,10 @@ $.onload
 			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0],
 			formPopup: $('form-popup'),
 			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
+			formPopupMenu: cssQuery('#form-popup .menu')[0],
 			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
-			variableInputs: cssQuery('#form-popup .variable')[0]
+			variableInputs: cssQuery('#form-popup .variable')[0],
+			getInvitation: [$('get-invitation'), $('invitations-only'), cssQuery('.about .sign-on')[0]]
 		}
 		
 		// log(document.documentElement.appendChild($('form-popup')))

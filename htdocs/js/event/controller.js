@@ -15,5 +15,10 @@ EventPage.controller =
 	formPopupCloseClicked: function ()
 	{
 		this.owner.view.hideFormPopup()
+	},
+	
+	formPopupOpenClicked: function ()
+	{
+		this.owner.view.showFormPopup()
 	}
 }
