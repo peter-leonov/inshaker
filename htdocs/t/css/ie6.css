@@ -113,6 +113,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #event-page #form-popup { height: 200%; }
 #event-page #form-popup .content form label input { right: 30px; }
 #event-page #form-popup .content form .limit input { width: 160px; }
+#event-page #form-popup .content form .thanks { left: -20px; }
 
 
 /* label click forwarding in IE6 */

@@ -66,14 +66,17 @@
 	<div class="content">
 		<p class="menu"><img src="/t/event/close.png"><a>Закрыть</a></p>
 		<form action="/act/event-form.cgi" method="post" target="ajax">
-			<h2>Хочу посетить мероприятие!</h2>
-			<label>Фамилия:<input type="text" name="second"/></label>
-			<label>Имя:<input type="text" name="first"/></label>
-			<label>Мой город:<input type="text" name="city"/></label>
-			<div class="variable"></div>
-			<label>Мой e-mail:<input type="text" name="email"/></label>
-			<p class="limit">*Количество приглашений лимитировано. <input type="submit" value="Внести меня в списки!"/></p>
-			<input type="hidden" name="event"/>
+			<div class="fields">
+				<h2>Хочу посетить мероприятие!</h2>
+				<label>Имя:<input type="text" name="first"/></label>
+				<label>Фамилия:<input type="text" name="second"/></label>
+				<label>Мой город:<input type="text" name="city"/></label>
+				<div class="variable"></div>
+				<label>Мой e-mail:<input type="text" name="email"/></label>
+				<p class="limit">*Количество приглашений лимитировано. <input type="submit" value="Внести меня в списки!"/></p>
+				<input type="hidden" name="event"/>
+			</div>
+			<div class="thanks">Спасибо!</div>
 		</form>
 	</div>
 </div>

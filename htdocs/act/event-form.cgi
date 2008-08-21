@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-
+sleep 1;
 use strict;
 # use utf8;
 use CGI::Minimal;

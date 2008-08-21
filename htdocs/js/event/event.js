@@ -32,10 +32,14 @@ $.onload
 			sponsorsMedium: $('medium-sponsors'),
 			sponsorsHighTitle: cssQuery('#sidebar .b-title h4')[0],
 			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0],
+			form: cssQuery('#form-popup form')[0],
 			formPopup: $('form-popup'),
 			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
 			formPopupMenu: cssQuery('#form-popup .menu')[0],
+			formPopupFields: cssQuery('#form-popup .fields')[0],
+			formPopupThanks: cssQuery('#form-popup .thanks')[0],
 			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
+			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
 			variableInputs: cssQuery('#form-popup .variable')[0],
 			getInvitation: [$('get-invitation'), $('invitations-only'), cssQuery('.about .sign-on')[0]]
 		}

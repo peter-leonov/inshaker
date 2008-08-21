@@ -11,15 +11,27 @@ EventPage.view =
 	initialize: function (nodes)
 	{
 		this.nodes = nodes
-		var me = this
+		var me = this,
+			controller = this.owner.controller
 		
-		function formPopupCloseClicked () { me.owner.controller.formPopupCloseClicked() }
+		function formPopupCloseClicked () { controller.formPopupCloseClicked() }
 		nodes.formPopupOverlay.addEventListener('click', formPopupCloseClicked, false)
 		nodes.formPopupMenu.addEventListener('click', formPopupCloseClicked, false)
 		
-		function formPopupOpenClicked () { me.owner.controller.formPopupOpenClicked() }
+		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
 		nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
 		// cssQuery('.programica-rolling-images').forEach(function (v) { new Programica.RollingImagesLite(v, {animationType: 'easeOutQuad'}) })
+		
+		var form = nodes.form
+		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
+		form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
+		form.onsend = function (e) { return controller.formSend() }
+		form.onload = function (e) { return controller.formLoad() }
+		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
+		
+		
+		this.nodes.formPopupFields.hide = this.nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
+		this.nodes.formPopupFields.show = this.nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
 	},
 	
 	start: function ()
@@ -36,6 +48,7 @@ EventPage.view =
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields, event.name)
+		this.setFormLock(true)
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
@@ -255,16 +268,58 @@ EventPage.view =
 		}
 		
 		this.nodes.formPopupNameInput.value = name
+		this.nodes.form.variableFields = fieldsSet
 	},
 	
 	showFormPopup: function ()
 	{
+		this.startFormChecker()
 		this.nodes.formPopup.show()
+		this.hideFormPopupThanks()
 	},
 	
 	hideFormPopup: function ()
 	{
+		this.stopFormChecker()
 		this.nodes.formPopup.hide()
+	},
+	
+	showFormPopupThanks: function ()
+	{
+		this.stopFormChecker()
+		this.nodes.formPopupFields.hide()
+		this.nodes.formPopupThanks.show()
+	},
+	
+	hideFormPopupThanks: function ()
+	{
+		this.startFormChecker()
+		this.nodes.formPopupThanks.hide()
+		this.nodes.formPopupFields.show()
+	},
+	
+	setFormLock: function (status)
+	{
+		var button = this.nodes.formPopupSubmit
+		status ? button.disable() : button.enable()
+	},
+	
+	resetForm: function ()
+	{
+		this.nodes.form.reset()
+		this.setFormLock(true)
+	},
+	
+	startFormChecker: function ()
+	{
+		var me = this
+		clearInterval(this.formCheckTimer)
+		this.formCheckTimer = setInterval(function () { log('check'); me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
+	},
+	
+	stopFormChecker: function ()
+	{
+		clearInterval(this.formCheckTimer)
 	}
 }
 
