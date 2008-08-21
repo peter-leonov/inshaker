@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<link rel="stylesheet" type="text/css" href="t/default.css" media="screen"/>
+	<title>InShaker √ Вечеринки</title>
+</head>
+<body id="parties-page">
+<div id="main-wrapper">	
+
+	<!--# include file="/inc/top-common.html" -->
+	<div class="column"><div class="body-wrapper">
+		<div class="b-title">
+			<h2>Устрой лучшую коктейльную вечеринку в баре Москвы</h2>
+		</div>
+		<div class="b-content">
+			<div class="party-previews programica-rolling-images">
+				<div class="viewport">
+					<ul class="surface" id="party_previews_surface">
+					</ul>
+				</div>
+				<a class="prev disabled" disabled="true"></a><a class="next"></a>
+			</div>
+		</div>
+	</div></div>
+	<div class="party-photos programica-rolling-images">
+		<div class="party-top">
+			<div class="party-desc">
+				<span id="party_name">Сигарная комната</span> в<br/> <a id="bar_name">Wall Street Bar</a>
+			</div>
+			<a id="want_link"><img src="/t/button/want.png" alt="Хочу так же!"></a>
+			<div class="party-teaser"><img src="/t/bg/parties/rub_guest.png" alt="рублей на человека" id="party_rub_guest"><span id="party_price_per_guest"></span><img id="party_from" src="/t/bg/parties/from.png" alt="от"></div>
+		</div>
+		<div class="viewport">
+			<ul class="surface" id="party_photos_surface">
+			</ul>
+		</div>
+		<a class="prev disabled" disabled="true"></a><a class="next"></a>
+		<div class="party-bottom">
+			<div class="party-bottom-start">На</div> <a id="party_guests_minus"></a><input id="party_guests_number" type="text" value="0"/><a id="party_guests_plus"></a> <span id="party_person_txt"></span> - <span id="party_payment_type"></span>&nbsp;от <span class="party-price-hi"><span id="party_price_min"></span>&nbsp;рублей</span> (Не более <span id="party_max_guests"></span>&nbsp;<span id="party_max_person_txt"></span>)
+		</div>
+	</div>
+	<!--# include file="/inc/bottom-common.html" -->
+</div>
+<div id="party_backdrop"></div>
+<div id="want_popup_area">
+	<div id="overlay" class="opacity"></div>
+	<div id="want_close">
+		<a id="want_close_text"></a>
+		<a id="want_close_cross"></a>
+	</div>
+	<div id="want_popup">
+		<div id="want_text">Позвоните коктейльному<br/>
+		другу по телефону:</div>
+		<div id="want_phone">+7 (495) 724-63-73</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+//window.addEventListener('keypress', function(e){ if(e.charCode == 109) $('mockup').toggle() }, false);
+</script>
+<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/compiled/parties.js"></script>
+<script type="text/javascript" src="/js/common/db-bars.js"></script>
+<script type="text/javascript" src="/js/common/db-parties.js"></script>
+</html>

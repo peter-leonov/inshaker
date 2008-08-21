@@ -50,6 +50,18 @@ function spaces(num){
 	return res.join("");
 }
 
+function priceSpaces(num, symbol){
+	if(num < 10000) return num;
+	if(!symbol) symbol = " ";
+	var letters = (num + "").split("");
+	var res = letters.splice(0, letters.length % 3).concat([symbol]);
+	while(letters.length > 0) {
+		res = res.concat(letters.splice(0, 3));
+		if(letters.length > 0) res = res.concat([symbol]);
+	}
+	return res.join("");
+}
+
 // deep copy using JSON-like lib ;-)
 function cloneObject(obj){
 	return Object.parse(Object.stringify(obj));

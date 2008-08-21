@@ -388,8 +388,8 @@ def go
   # joe.flush_goods
   # puts "Flushing tools to #{Config::TOOLS_ROOT}"
   # joe.flush_tools
-  # puts "Processing bars data"
-  #   BarsProcessor.new.run
+  puts "Processing bars data"
+    BarsProcessor.new.run
   puts "Processing parties data"
     PartiesProcessor.new.run
 end

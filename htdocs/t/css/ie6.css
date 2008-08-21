@@ -104,6 +104,19 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { display: block; }
 
+#parties-page #want_popup_area{z-index: 99;position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
+#parties-page .party-photos .disabled { background-position-y: -60px; }
+#parties-page .party-photos .prev { background-position-x: -60px; }
+#parties-page .party-photos .prev,
+#parties-page .party-photos .next { display: block; }
+#parties-page .party-photos .hidden {display:none;}
+#want_link {margin: 29px 14px 0 0;}
+
+#parties-page .party-previews .prev { background-position-x: -52px; }
+
+
+#event-page #sponsors-others { zoom: 1; }
+
 #event-page .b-content { width:100%; }
 #event-page #form-popup { position: absolute; }
 #event-page #low-sponsors { zoom: 1; }
