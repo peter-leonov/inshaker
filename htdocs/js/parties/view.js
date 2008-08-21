@@ -91,7 +91,9 @@ function PartiesView(nodes){
 		}
 		if(ok){ 
 			nodes.guestsNumber.value = guestsNumber;
-			nodes.pricePerGuest.innerHTML = priceSpaces(Math.round(this.selectedParty.payment_amount/guestsNumber));
+			var pricePerGuest = Math.round(this.selectedParty.payment_amount/guestsNumber);
+			nodes.pricePerGuest.innerHTML = priceSpaces(pricePerGuest);
+			nodes.imgRubGuest.src = '/t/bg/parties/rub_guest_' + pricePerGuest.plural("2","5","5") + ".png";
 			nodes.person.innerHTML = guestsNumber.plural("человека","человек","человек");
 		}
 	};
@@ -126,7 +128,10 @@ function PartiesView(nodes){
 		
 		nodes.guestsNumber.value = party.max_guests;
 		nodes.priceMin.innerHTML = spaces(party.payment_amount);
-		nodes.pricePerGuest.innerHTML = priceSpaces(Math.round(party.payment_amount/party.max_guests));
+		
+		var pricePerGuest = Math.round(party.payment_amount/party.max_guests);
+		nodes.pricePerGuest.innerHTML = priceSpaces(pricePerGuest);
+		nodes.imgRubGuest.src = '/t/bg/parties/rub_guest_' + pricePerGuest.plural("2","5","5") + ".png";
 		
 		nodes.paymentType.innerHTML = party.payment_type;
 	};

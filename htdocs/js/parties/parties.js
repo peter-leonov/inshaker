@@ -21,6 +21,7 @@ $.onload (
 			maxGuests: $('party_max_guests'),
 			priceMin: $('party_price_min'),
 			pricePerGuest: $('party_price_per_guest'),
+			imgRubGuest: $('party_rub_guest'),
 			guestsNumber: $('party_guests_number'),
 			paymentType: $('party_payment_type'),
 			
