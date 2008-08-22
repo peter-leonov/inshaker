@@ -62,10 +62,16 @@ EventPage.controller =
 		var view = this.owner.view
 		view.showFormPopupThanks()
 		view.resetForm()
+		setTimeout(function () { view.hideFormPopup() }, 1200)
 	},
 	
 	formError: function (message)
 	{
 		reportError(message)
+	},
+	
+	ratingShowAllClicked: function ()
+	{
+		this.owner.view.showAllRating()
 	}
 }

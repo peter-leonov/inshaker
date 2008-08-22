@@ -20,7 +20,8 @@ EventPage.view =
 		
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
 		nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
-		// cssQuery('.programica-rolling-images').forEach(function (v) { new Programica.RollingImagesLite(v, {animationType: 'easeOutQuad'}) })
+		
+		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
 		
 		var form = nodes.form
 		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
@@ -30,8 +31,8 @@ EventPage.view =
 		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
 		
 		
-		this.nodes.formPopupFields.hide = this.nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
-		this.nodes.formPopupFields.show = this.nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
+		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
+		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
 	},
 	
 	start: function ()
@@ -44,6 +45,7 @@ EventPage.view =
 	{
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
+		this.renderRatingHead(event.rating)
 		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
@@ -149,20 +151,19 @@ EventPage.view =
 	
 	renderRating: function (rating)
 	{
-		var root = this.nodes.rating
-		
-		var sorted = Object.keys(rating).sort(function (a, b) { return rating[b] - rating[a] })
-		
-		var max = rating[sorted[0]]
-		var min = rating[sorted[sorted.length-1]]
-		
-		var padding = String(max).length * 7.5
-		var k = max && min ? ((171 - padding) / (max - min + 1)  * 100) / 100 : 1
+		var nodes = this.nodes,
+			data = rating.data,
+			root = nodes.rating,
+			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
+			max = data[sorted[0]],
+			min = data[sorted[sorted.length-1]],
+			padding = String(max).length * 7.5,
+			k = max && min ? ((171 - padding) / (max - min + 1)  * 100) / 100 : 1
 		
 		for (var i = 0; i < sorted.length; i++)
 		{
-			var name = sorted[i]
-			var count = rating[name]
+			var name = sorted[i],
+				count = data[name]
 			
 			var dt = N('dt')
 			dt.appendChild(T(name))
@@ -175,9 +176,72 @@ EventPage.view =
 			root.appendChild(dt)
 			root.appendChild(dd)
 		}
+		
+		if (sorted.length > rating.max)
+		{
+			root.style.height = rating.max * 18 + 'px'
+			this.nodes.ratingShowAll.show()
+		}
 	},
 	
-	// <a class="column sponsor"><img src="/i/event/sponsor-1.jpg" alt="Дамская водка"/></a>
+	showAllRating: function ()
+	{
+		var root = this.nodes.rating
+		root.animate('easeOutQuad', {height:root.scrollHeight}, 0.5)
+		this.nodes.ratingShowAll.hide()
+	},
+	
+	renderRatingHead: function (rating)
+	{
+		var totalPeople = 0, totalFrom = 0, data = rating.data
+		
+		for (var k in data)
+			totalPeople += data[k],
+			totalFrom++
+		
+		var ratingHead = this.nodes.ratingHead
+		ratingHead.empty()
+		function builder (act)
+		{
+			var node
+			if (act.name)
+			{
+				node = N('span')
+				node.className = act.name
+				node.appendChild(T(act.value))
+			}
+			else
+				node = T(act.value)
+			
+			ratingHead.appendChild(node)
+		}
+		this.execPluralizer(rating.phrase, builder, [totalPeople, totalFrom])
+	},
+	
+	execPluralizer: function (ops, fun, data)
+	{
+		var plural = Number.prototype.plural
+			A = Array
+		for (var i = 0; i < ops.length; i++)
+		{
+			var op = ops[i]
+			switch (typeof op)
+			{
+				case 'string':
+					fun({value:op})
+				break
+				
+				case 'object':
+					if (op[0] !== null && typeof op[2] == 'object' && op[2].constructor == A)
+						fun({name:op[1], value:plural.apply(Number(data[op[0]]), op[2])})
+					else if (op[0] !== null)
+						fun({name:op[1], value:data[op[0]]})
+				break
+			}
+		}
+		
+	},
+	
 	renderMediumSponsors: function (sponsorsSet)
 	{
 		var root = this.nodes.sponsorsMedium
@@ -207,12 +271,6 @@ EventPage.view =
 		nodes.sponsorsHighTitle.innerHTML = sponsor.name
 		nodes.sponsorsHigh.style.backgroundImage = 'url(' + '/i/event/' + sponsor.src + ')'
 		nodes.sponsorsHigh.href = sponsor.href
-		
-		// var root = this.nodes.sponsorsHigh
-		// for (var i = 0; i < sponsorsSet.length; i++)
-		// {
-		// 	var sponsor = sponsorsSet[i]
-		// }
 	},
 	
 	renderDialogue: function (dialogue)
@@ -322,6 +380,5 @@ EventPage.view =
 		clearInterval(this.formCheckTimer)
 	}
 }
-
 
 })()}
