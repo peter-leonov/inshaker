@@ -14,7 +14,7 @@ $KCODE = 'u'
 module BarsConfig
   INSHAKER_ROOT = "/www/inshaker/"
   
-  BARS_DIR = INSHAKER_ROOT + "barman/base/Bars/"
+  BARS_DIR = ENV['BARMAN_BASE_DIR'] ? ENV['BARMAN_BASE_DIR'] + 'Bars/' : INSHAKER_ROOT + "barman/base/Bars/"
   BARS_ERB = INSHAKER_ROOT + "barman/templates/bar.rhtml"
   
   OUT_ROOT       = INSHAKER_ROOT + "htdocs/"
