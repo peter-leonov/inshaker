@@ -5,20 +5,18 @@ BarsPage =
 		var state = {view: 'list'}
 		this.controller.initialize(barsDB, cocktailsDB, state)
 		this.view.initialize(nodes, citiesDB)
+	},
+	
+	mapsApiIsLoaded: function ()
+	{
+		this.view.loadedGMap()
 	}
-}
-
-function mapsApiIsLoaded ()
-{
-	BarsPage.view.loadedGMap()
 }
 
 $.onload
 (
 	function ()
 	{
-		(function () { $.include('/js/compiled/maps.js') }).delay(1500)
-		
 		DB.Cocktails.initialize(cocktails)
 		
 		var nodes =
@@ -38,3 +36,8 @@ $.onload
 		BarsPage.init(DB.Bars, DB.Cities, DB.Cocktails, nodes)
 	}
 )
+
+function googleApiLoaderIsLoaded ()
+{
+	google.load("maps", "2", {nocss: true, callback: function () { BarsPage.mapsApiIsLoaded() }})
+}

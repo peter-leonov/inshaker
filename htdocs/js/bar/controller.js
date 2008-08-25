@@ -17,7 +17,7 @@ BarPage.controller =
 	gMarkerClicked: function (gMarker)
 	{
 		var view = this.owner.view
-		if (gMarker.bar.id == this.barId)
+		if (gMarker.bar.city == this.cityName && gMarker.bar.name == this.barName)
 			view.showMainBarMapPopup(gMarker.bar)
 		else
 			view.showBarMapPopup(gMarker.bar)

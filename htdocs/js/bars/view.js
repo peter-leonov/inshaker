@@ -6,6 +6,8 @@ BarsPage.view =
 	
 	initialize: function (nodes, citiesDB)
 	{
+		loadGoogleApi.delay(1000)
+		
 		this.citiesDB = citiesDB
 		this.nodes = nodes
 		var me = this,
@@ -14,9 +16,9 @@ BarsPage.view =
 		nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
 		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
-		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		Switcher.bind(viewSwitcher, viewSwitcher.childNodes, [this.nodes.barsContainer, this.nodes.map])
 		viewSwitcher.setNames(['list', 'map'])
+		viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		
 		Selecter.bind(nodes.citySelect)
 		Selecter.bind(nodes.formatSelect)

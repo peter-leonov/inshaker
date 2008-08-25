@@ -4,6 +4,8 @@ BarPage.view =
 	
 	initialize: function (nodes)
 	{
+		loadGoogleApi.delay(1000)
+		
 		this.nodes = nodes
 		
 		new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
@@ -30,6 +32,8 @@ BarPage.view =
 		
 		var me = this
 		nodes.showMore.addEventListener('click', function () { me.owner.controller.toggleMoreClicked() }, false)
+		
+		// 
 	},
 	
 	modelChanged: function (bar, recommendations, carte, otherBarsSet)
@@ -146,7 +150,7 @@ BarPage.view =
 	
 	showBarMapPopup: function (bar)
 	{
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + bar.address + '</p><a href="/bars/' + bar.id + '.html">Посмотреть бар…</a></div>')
+		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + bar.address + '</p><a href="' + bar.pageHref() + '">Посмотреть бар…</a></div>')
 	},
 	
 	renderCocktails: function (node, set, len)

@@ -25,8 +25,6 @@ $.onload
 (
 	function ()
 	{
-		(function () { $.include('/js/compiled/maps.js') }).delay(1500)
-		
 		DB.Cocktails.initialize(cocktails)
 		
 		var nodes =
@@ -45,8 +43,7 @@ $.onload
 	}
 )
 
-function mapsApiIsLoaded ()
+function googleApiLoaderIsLoaded ()
 {
-	BarPage.mapsApiIsLoaded()
+	google.load("maps", "2", {nocss: true, callback: function () { BarPage.mapsApiIsLoaded() }})
 }
-
