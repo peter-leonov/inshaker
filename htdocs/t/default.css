@@ -114,6 +114,7 @@ label{display:block;}
 #parties-page .party-previews .party { float: left; width: 213px; text-align: center; cursor:pointer;}
 #parties-page .party-previews .name { font-family: Arial, sans-serif; font-size: 13pt; font-style: italic; color: #0392f1; text-decoration: underline;}
 #parties-page .party-previews .party.selected .name { color: #e2138a;}
+
 #parties-page .party-previews .viewport,
 #parties-page .party-previews { overflow: hidden; position: relative; width: 920px; height: 150px; }
 #parties-page .party-previews .viewport {width: 855px; margin-left: 34px;}
@@ -132,7 +133,7 @@ background: url(icon/strs-green.png);
 #parties-page .party-photos .viewport,
 #parties-page .party-photos { overflow: hidden; position: relative; width: 960px; height: 410px; }
 #parties-page .party-photos .viewport .point { float: left; width: 960px; height: 100%; }
-#parties-page .party-photos .viewport .surface { width: 10000px; }
+#parties-page .party-photos .viewport .surface { width: 10000px; height:100%;}
 #parties-page .party-photos .prev,
 #parties-page .party-photos .next { position: absolute; top: 204px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
 #parties-page .party-photos:hover .prev,

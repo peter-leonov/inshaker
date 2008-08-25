@@ -123,7 +123,7 @@ function PartiesView(nodes){
 		nodes.barName.href = this.getBarHref(party);
 		nodes.maxGuests.innerHTML = party.max_guests;
 		
-		nodes.person.innerHTML = party.max_guests.plural("человека","человек","человек");
+		nodes.person.innerHTML    = party.max_guests.plural("человека","человек","человек");
 		nodes.maxPerson.innerHTML = party.max_guests.plural("человека","человек","человек");
 		
 		nodes.guestsNumber.value = party.max_guests;
