@@ -33,7 +33,7 @@ BarPage.view =
 		var controller = this.owner.controller
 		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
 		
-		nodes.barPrev.hide = nodes.barNext.hide = function () { this.style.visibility = 'hidden' }
+		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
 	modelChanged: function (bar, recommendations, carte, otherBarsSet, prevNext)
