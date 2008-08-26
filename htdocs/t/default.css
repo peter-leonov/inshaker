@@ -380,7 +380,8 @@ background: url(icon/strs-green.png);
 
 #bars-page #map { display: none; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
 
-#map .loading { background: url(loader-black.gif) no-repeat center 27.5%; text-align: center; font-size: 25px; height: 100%; padding: 25% 0 0 0; }
+#map { position: relative; }
+#map .loading { position: absolute; top: 40%; left: 0; padding: 40px 0 0 0; width: 100%; background: url(loader-black.gif) no-repeat center 0; text-align: center; font-size: 25px; }
 
 #bars-page .body-wrapper { width:922px; }
 #bars-page #bars-list {width:945px;}
@@ -743,6 +744,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #order-page form br { clear:left; }
 #order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
 
+#bar-page .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
 #bar-page .b-content { width: 100%; }
 #bar-page .b-content .about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
 #bar-page .b-content .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; }
