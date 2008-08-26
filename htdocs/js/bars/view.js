@@ -2,7 +2,7 @@ BarsPage.view =
 {
 	owner: BarsPage,
 	cache: {barNode:{}},
-	any: {format: 'делать что угодно', feel: 'с кем угодно'},
+	any: {format: 'выпить по коктейльчику', feel: 'с кем угодно'},
 	
 	initialize: function (nodes, citiesDB)
 	{
