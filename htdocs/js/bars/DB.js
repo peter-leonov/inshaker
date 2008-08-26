@@ -75,6 +75,20 @@ DB.Bars =
 		return res
 	},
 	
+	getPrevNext: function (query)
+	{
+		query = query || {}
+		
+		var bars = query.city ? this.getAllBarsByCity(query.city) : this.getAllBars()
+		if (!bars)
+			return []
+		
+		for (var i = 0; i < bars.length; i++)
+			if (bars[i].name == query.name)
+				return [bars[i-1], bars[i+1]]
+		
+		return []
+	},
 	
 	getAllBars: function ()
 	{

@@ -760,7 +760,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 /*#bar-page .b-content .photos b { position: absolute; width: 1px; height: 1px; background: #fff; opacity: 0.75; }*/
 
 #bar-page .b-content .photos .viewport .point { float: left; width: 590px; height: 100%; }
-#bar-page .b-content .photos .viewport .surface { width: 20000px; }
+#bar-page .b-content .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(bar/photos-buttons.png); }
 #bar-page .b-content .photos:hover .prev,

@@ -30,13 +30,13 @@ BarPage.view =
 			}
 		}
 		
-		var me = this
-		nodes.showMore.addEventListener('click', function () { me.owner.controller.toggleMoreClicked() }, false)
+		var controller = this.owner.controller
+		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
 		
-		// 
+		nodes.barPrev.hide = nodes.barNext.hide = function () { this.style.visibility = 'hidden' }
 	},
 	
-	modelChanged: function (bar, recommendations, carte, otherBarsSet)
+	modelChanged: function (bar, recommendations, carte, otherBarsSet, prevNext)
 	{
 		var nodes = this.nodes
 		
@@ -46,6 +46,7 @@ BarPage.view =
 		this.renderCocktails(nodes.recommendations, recommendations, 1)
 		this.renderCocktails(nodes.carte, carte, 3)
 		this.renderMap(bar, otherBarsSet)
+		this.renderPrevNext(prevNext)
 	},
 	
 	readBarCityNames: function ()
@@ -183,5 +184,26 @@ BarPage.view =
 		a.appendChild(txt)
 		li.appendChild(a)
 		return li
+	},
+	
+	renderPrevNext: function (prevNext)
+	{
+		if (prevNext[0])
+		{
+			this.nodes.barPrev.href = prevNext[0].pageHref()
+			this.nodes.barPrev.title = prevNext[0].name
+		}
+		else
+			this.nodes.barPrev.hide()
+		
+		if (prevNext[1])
+		{
+			this.nodes.barNext.href = prevNext[1].pageHref()
+			this.nodes.barNext.title = prevNext[1].name
+		}
+		else
+			this.nodes.barNext.hide()
 	}
 }
+
+

@@ -20,6 +20,18 @@ BarPage.model =
 	setBarCity: function (barName, cityName)
 	{
 		var bar = this.barsDB.getBarByCityName(cityName, barName)
+		var prevNext = this.barsDB.getPrevNext({name: barName, city: cityName})
+		var recommendations = this.getCocktailsByNames(bar.recs)
+		var carte = this.getCocktailsByNames(bar.carte)
+
+		var otherBarsSet = this.barsDB.getAllBarsByCity(cityName)
+		
+		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet, prevNext)
+	},
+	
+	nextBarCity: function (barName, cityName)
+	{
+		var bar = this.barsDB.getBarByCityName(cityName, barName)
 		var recommendations = this.getCocktailsByNames(bar.recs)
 		var carte = this.getCocktailsByNames(bar.carte)
 
@@ -27,4 +39,5 @@ BarPage.model =
 		
 		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet)
 	}
+	
 }

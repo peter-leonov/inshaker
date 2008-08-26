@@ -36,10 +36,11 @@ $.onload
 			cityName: $('city-name'),
 			showMore: cssQuery('.about .show-more')[0],
 			barMore: cssQuery('.about .more')[0],
-			map: $('map')
+			map: $('map'),
+			barPrev: cssQuery('.b-title .hrefs .prev')[0],
+			barNext: cssQuery('.b-title .hrefs .next')[0]
 		}
 		BarPage.initialize(nodes, DB.Bars, DB.Cocktails)
-
 	}
 )
 
