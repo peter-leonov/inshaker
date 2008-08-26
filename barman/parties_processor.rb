@@ -29,8 +29,8 @@ class PartiesProcessor
     root_dir = Dir.new(PartiesConfig::BARS_DIR)
     root_dir.each do |city_dir|
       city_path = root_dir.path + city_dir
-      @parties[city_dir] = []
       if File.ftype(city_path) == "directory" and !excluded.include?(city_dir)
+        @parties[city_dir] = []
         bars_dir = Dir.new(city_path)
         bars_dir.each do |bar_dir|
           bar_path = bars_dir.path + "/" + bar_dir
