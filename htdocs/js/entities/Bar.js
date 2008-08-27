@@ -25,9 +25,7 @@ Bar.prototype =
 }
 
 
-DB = {}
-
-DB.Bars =
+Object.extend(Bar,
 {
 	db: null, // must be defined in db-bars.js by calling initialize()
 	
@@ -156,40 +154,6 @@ DB.Bars =
 	getCities: function (state) { return this.getPropertiesSorted(this.getByQuery({cocktail:state.cocktail}), 'city') },
 	getFormats: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, cocktail:state.cocktail}), 'format') },
 	getFeels: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') }
-}
+})
 
-DB.Cities =
-{
-	db: null, // must be defined in db-bars.js by calling initialize()
-	
-	initialize: function (db)
-	{
-		this.db = db
-	},
-	
-	getByName: function (name)
-	{
-		return this.db[name]
-	}
-}
-
-DB.Cocktails =
-{
-	db: null, // bust be defined somewhere by calling initialize()
-	
-	initialize: function (db)
-	{
-		this.db = db
-	},
-	
-	getByName: function (name)
-	{
-		return this.db[name]
-	}
-}
-
-// Bars.Bar = function () {  }
-// Bars.Bar.prototype =
-// {
-// 	
-// }
+Bar.initialize(<!--# include file="/db/bars.js" -->)

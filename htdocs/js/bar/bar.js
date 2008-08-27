@@ -19,13 +19,28 @@ BarPage =
 	}
 }
 
+Cocktail =
+{
+	db: null, // bust be defined somewhere by calling initialize()
+	
+	initialize: function (db)
+	{
+		this.db = db
+	},
+	
+	getByName: function (name)
+	{
+		return this.db[name]
+	}
+}
+
 
 
 $.onload
 (
 	function ()
 	{
-		DB.Cocktails.initialize(cocktails)
+		Cocktail.initialize(cocktails)
 		
 		var nodes =
 		{
@@ -40,7 +55,7 @@ $.onload
 			barPrev: cssQuery('.b-title .hrefs .prev')[0],
 			barNext: cssQuery('.b-title .hrefs .next')[0]
 		}
-		BarPage.initialize(nodes, DB.Bars, DB.Cocktails)
+		BarPage.initialize(nodes, Bar, Cocktail)
 	}
 )
 
