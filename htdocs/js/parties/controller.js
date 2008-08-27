@@ -28,7 +28,7 @@ function PartiesController(model, view){
 	
 	this.getBarHrefForParty = function(party){
 		var bar = this.model.getBarForParty(party);
-		return '/bars/' + bar.city.trans().htmlName() + '/' + bar.name_eng.htmlName() + '.html';
+		return bar.pageHref();
 	}
 	
 	this.initialize();

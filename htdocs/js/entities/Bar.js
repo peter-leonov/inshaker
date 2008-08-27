@@ -107,7 +107,7 @@ Object.extend(Bar,
 		return bars ? bars.slice() : []
 	},
 	
-	getBarByCityName: function (city, name)
+	getByCityName: function (city, name)
 	{
 		var bars = this.getAllBarsByCity(city)
 		for (var i = 0; i < bars.length; i++)

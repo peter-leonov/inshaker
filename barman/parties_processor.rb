@@ -6,7 +6,7 @@ module PartiesConfig
   OUT_ROOT       = INSHAKER_ROOT + "htdocs/"
   OUT_IMAGES_DIR = OUT_ROOT + "i/party/"
   
-  OUT_JS_DB = OUT_ROOT + "js/common/db-parties.js"
+  OUT_JS_DB = OUT_ROOT + "db/parties.js"
   
   MV_OPT = {:remove_destination => true}
 end
@@ -90,9 +90,7 @@ class PartiesProcessor
     parties_json = ActiveSupport::JSON.encode(@parties).unescape
     
     File.open(PartiesConfig::OUT_JS_DB, "w+") do |db|
-     db.puts "Party.initialize("
      db.puts parties_json
-     db.puts ")\n\n"
      db.close
     end
   end

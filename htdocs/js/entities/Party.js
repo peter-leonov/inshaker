@@ -1,5 +1,3 @@
-<!--# include file="/db/parties.js" -->
-
 var Party = function(data){
 	for (var k in data)
 		this[k] = data[k]
@@ -43,3 +41,5 @@ Object.extend(Party,
 		return null;
 	}
 });
+
+Party.initialize(<!--# include file="/db/parties.js" -->);
