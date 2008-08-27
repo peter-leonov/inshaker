@@ -1,7 +1,7 @@
 function PartiesModel(view){
 	this.DEFAULT_CITY = "Москва";
 	
-	this.view   = view;
+	this.view = view;
 	
 	this.initialize = function(filters){
 		this.view.initialize();

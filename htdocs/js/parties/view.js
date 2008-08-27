@@ -51,7 +51,7 @@ function PartiesView(nodes){
 		var div = document.createElement("div");
 		div.addClassName("party");
 		var img = document.createElement("img");
-		img.src = this.getPartyImgSrc(party, "-mini.png");
+		img.src = party.getImgSrc("-mini.png");
 		img.alt = party.name;
 		div.appendChild(img);
 		var name = document.createElement("div");
@@ -107,7 +107,7 @@ function PartiesView(nodes){
 			point.addClassName("point");
 			var img = document.createElement("img");
 			img.alt = party.name;
-			img.src = this.getPartyImgSrc(party, "-big-" + i + ".jpg");
+			img.src = party.getImgSrc("-big-" + i + ".jpg");
 			point.appendChild(img);
 			nodes.photoSurface.appendChild(point);
 		}
@@ -136,10 +136,6 @@ function PartiesView(nodes){
 		nodes.imgRubGuest.src = '/t/bg/parties/rub_guest_' + pricePerGuest.plural("2","5","5") + ".png";
 		
 		nodes.paymentType.innerHTML = party.payment_type;
-	};
-	
-	this.getPartyImgSrc = function(party, postfix){
-		return "/i/party/" + party.city.trans().htmlName() + "/" + party.bar.trans().htmlName() + "-" + party.name.trans().htmlName() + postfix;
 	};
 	
 	this.getBarHref = function(party){

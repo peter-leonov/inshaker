@@ -3,6 +3,15 @@ var Party = function(data){
 		this[k] = data[k]
 };
 
+Party.prototype = {
+	
+	constructor: Party,
+	
+	getImgSrc: function(postfix){
+		return "/i/party/" + this.city.trans().htmlName() + "/" + this.bar.trans().htmlName() + "-" + this.name.trans().htmlName() + postfix;
+	}
+}
+
 Object.extend(Party,
 {
 	parties: [],
