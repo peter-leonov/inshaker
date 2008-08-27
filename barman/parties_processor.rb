@@ -90,7 +90,7 @@ class PartiesProcessor
     parties_json = ActiveSupport::JSON.encode(@parties).unescape
     
     File.open(PartiesConfig::OUT_JS_DB, "w+") do |db|
-     db.puts "DB.Parties.initialize("
+     db.puts "Party.initialize("
      db.puts parties_json
      db.puts ")\n\n"
      db.close

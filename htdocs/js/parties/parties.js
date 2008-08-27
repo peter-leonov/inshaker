@@ -1,10 +1,10 @@
-var Parties = {
-	initialize: function(nodes, partiesDB){
+var PartiesPage = {
+	initialize: function(nodes){
 		this.view       = new PartiesView(nodes);
-		this.model      = new PartiesModel(this.view, partiesDB);
+		this.model      = new PartiesModel(this.view);
 		this.controller = new PartiesController(this.model, this.view);
 	}
-}
+};
 
 $.onload (
 	function(){		
@@ -35,6 +35,6 @@ $.onload (
 			
 			wantCloseItems: [$('want_close_text'), $('want_close_cross'), $('overlay')]
 		}
-		Parties.initialize(nodes, DB.Parties);
+		PartiesPage.initialize(nodes);
 	}
 )

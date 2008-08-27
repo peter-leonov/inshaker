@@ -1,9 +1,7 @@
-function PartiesModel(view, parties_db){
+function PartiesModel(view){
 	this.DEFAULT_CITY = "Москва";
 	
 	this.view   = view;
-	this.db     = parties_db;
-	this.barsDB = DB.Bars;
 	
 	this.initialize = function(filters){
 		this.view.initialize();
@@ -12,11 +10,11 @@ function PartiesModel(view, parties_db){
 		var initialParty = null;
 		
 		if(filters && filters.city){
-			initialCity  = this.db.cityExists(filters.city) ? filters.city : null;
-			initialParty = this.db.partyByCityAndName(filters.city, filters.party); 
+			initialCity  = Party.cityExists(filters.city) ? filters.city : null;
+			initialParty = Party.getByCityName(filters.city, filters.party); 
 		}
-		this.view.setPreviews(this.db.getByCity(initialCity).sort(this.previewSort));
-		this.view.partySelected(initialParty || this.db.getByCity(initialCity).sort(this.previewSort)[0], false);
+		this.view.setPreviews(Party.getAllByCity(initialCity).sort(this.previewSort));
+		this.view.partySelected(initialParty || Party.getAllByCity(initialCity).sort(this.previewSort)[0], false);
 	};
 	
 	this.previewSort = function(a,b){
@@ -26,6 +24,6 @@ function PartiesModel(view, parties_db){
 	};
 	
 	this.getBarForParty = function(party){
-		return this.barsDB.getBarByCityName(party.city, party.bar);
+		return Bar.getByCityName(party.city, party.bar);
 	};
 }
