@@ -17,8 +17,6 @@ $.onload
 (
 	function ()
 	{
-		DB.Cocktails.initialize(cocktails)
-		
 		var nodes =
 		{
 			titleAll: cssQuery('.b-title .all')[0],
@@ -33,7 +31,8 @@ $.onload
 			map: $('map')
 		}
 		
-		BarsPage.init(DB.Bars, DB.Cities, DB.Cocktails, nodes)
+		BarsPage.init(Bar, Citiy, Cocktail, nodes)
+		
 	}
 )
 
@@ -41,3 +40,15 @@ function googleApiLoaderIsLoaded ()
 {
 	google.load("maps", "2", {nocss: true, callback: function () { BarsPage.mapsApiIsLoaded() }})
 }
+
+
+<!--# include file="/js/bars/model.js" -->
+<!--# include file="/js/bars/controller.js" -->
+<!--# include file="/js/bars/view.js" -->
+
+<!--# include file="/lib/Programica/UrlEncode.js" -->
+<!--# include file="/lib/Programica/Switcher.js" -->
+<!--# include file="/lib/Programica/Select.js" -->
+
+
+

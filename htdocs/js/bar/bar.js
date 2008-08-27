@@ -19,29 +19,10 @@ BarPage =
 	}
 }
 
-Cocktail =
-{
-	db: null, // bust be defined somewhere by calling initialize()
-	
-	initialize: function (db)
-	{
-		this.db = db
-	},
-	
-	getByName: function (name)
-	{
-		return this.db[name]
-	}
-}
-
-
-
 $.onload
 (
 	function ()
 	{
-		Cocktail.initialize(cocktails)
-		
 		var nodes =
 		{
 			photos: cssQuery('.b-content .photos')[0],
@@ -63,3 +44,8 @@ function googleApiLoaderIsLoaded ()
 {
 	google.load("maps", "2", {nocss: true, callback: function () { BarPage.mapsApiIsLoaded() }})
 }
+
+<!--# include file="/js/bar/model.js" -->
+<!--# include file="/js/bar/controller.js" -->
+<!--# include file="/js/bar/view.js" -->
+
