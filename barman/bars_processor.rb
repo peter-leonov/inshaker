@@ -21,7 +21,8 @@ module BarsConfig
   OUT_HTML_DIR   = OUT_ROOT + "bars/"
   OUT_IMAGES_DIR = OUT_ROOT + "i/bar/"
   
-  OUT_JS_DB = OUT_ROOT + "js/common/db-bars.js"
+  OUT_JS_DB        = OUT_ROOT + "db/bars.js"
+  OUT_JS_DB_CITIES = OUT_ROOT + "db/cities.js"
   
   MV_OPT = {:remove_destination => true}
 end
@@ -123,7 +124,10 @@ class BarsProcessor
   def flush_json
     @bars.each do |city, bars_arr|
       bars_arr.each do |bar|
-        bar[:desc_start] = bar[:desc_end] = "" # YAGNI
+        # YAGNI
+        bar.delete(:desc_start)
+        bar.delete(:desc_end) 
+        bar.delete(:city) 
      end
     end
     
@@ -131,12 +135,12 @@ class BarsProcessor
     cities_json = ActiveSupport::JSON.encode(@city_points).unescape
     
     File.open(BarsConfig::OUT_JS_DB, "w+") do |db|
-     db.puts "DB.Bars.initialize("
-     db.puts bars_json
-     db.puts ")\n\n"
-     db.puts "DB.Cities.initialize("
-     db.puts cities_json
-     db.puts ")"
+     db.print bars_json
+     db.close
+    end
+    
+    File.open(BarsConfig::OUT_JS_DB_CITIES, "w+") do |db|
+     db.print cities_json
      db.close
     end
   end
@@ -156,7 +160,7 @@ private
     @bar[:name], @bar[:name_eng] = ((txt.scan /.*Название:\ *\n(.+)\n.*/)[0][0]).split("; ")
     @bar[:country]  = (txt.scan /.*Страна:\ *\n(.+)\ *\n.*/)[0][0]
     @bar[:city]     = (txt.scan /.*Город:\ *\n(.+)\ *\n.*/)[0][0]
-    @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)\ *\n.*/).join("<br/>")
+    @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)\ *\n.*/)
     @bar[:format]   = (txt.scan /.*Тут можно:\ *\n(.+)\n\nС кем.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
     @bar[:feel]     = (txt.scan /.*С кем:\ *\n(.+)\n\nВход.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
     @bar[:entrance] = (txt.scan /.*Вход:\ (.+)\ *\n.*/)[0][0]
