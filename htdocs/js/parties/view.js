@@ -43,6 +43,8 @@ function PartiesView(nodes){
 			}
 			curPoint.appendChild(this.createPreviewElement(parties[i]));
 		}
+		nodes.previews.RollingImagesLite.sync();
+		nodes.previews.RollingImagesLite.goInit();
 	};
 	
 	this.createPreviewElement = function(party){
