@@ -66,7 +66,7 @@ function PartiesView(nodes){
 		return div;
 	};
 	
-	this.partySelected = function(party){
+	this.partySelected = function(party, init){
 		this.selectedParty = party;
 		if(this.selectedPartyNode) this.selectedPartyNode.remClassName("selected")
 		this.selectedPartyNode = cssQuery(".party:contains('"+ party.name +"')")[0];
@@ -74,8 +74,15 @@ function PartiesView(nodes){
 		
 		this.setPartyDisplayData(party);
 		this.setPartyPhotos(party);
+		if(init) this.scrollPreviews();
 		
 		this.controller.partySelected(party);
+	};
+	
+	this.scrollPreviews = function(){
+		var points = nodes.previews.getElementsByClassName("point");
+		var point = this.selectedPartyNode.parentNode;
+		nodes.previews.RollingImagesLite.goToNode(point, "directJump");
 	};
 	
 	this.guestsNumberChanged = function(plus, newValue){

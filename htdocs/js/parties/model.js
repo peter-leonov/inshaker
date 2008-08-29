@@ -14,7 +14,7 @@ function PartiesModel(view){
 			initialParty = Party.getByCityName(filters.city, filters.party); 
 		}
 		this.view.setPreviews(Party.getAllByCity(initialCity).sort(this.previewSort));
-		this.view.partySelected(initialParty || Party.getAllByCity(initialCity).sort(this.previewSort)[0], false);
+		this.view.partySelected(initialParty || Party.getAllByCity(initialCity).sort(this.previewSort)[0], true);
 	};
 	
 	this.previewSort = function(a,b){
