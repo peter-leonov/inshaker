@@ -1,7 +1,4 @@
-if (!self.DB)
-	self.DB = {}
-
-DB.Events =
+Event =
 {
 	db: null, // must be defined in db-events.js by calling initialize()
 	
@@ -15,3 +12,5 @@ DB.Events =
 		return this.db[name]
 	}
 }
+
+Event.initialize(<!--# include file="/db/events.js" -->)

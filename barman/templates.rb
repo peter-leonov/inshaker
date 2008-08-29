@@ -41,3 +41,21 @@ class BarTemplate
     binding
   end
 end
+
+class EventTemplate
+  def initialize(hash)
+    @name       = hash[:name]
+    @city       = hash[:city]
+    @header     = hash[:header]
+    @subject    = hash[:subject]
+    @country    = hash[:country]
+    @href       = hash[:href]
+    @address    = hash[:address]
+    @bar        = hash[:bar]
+    @fields     = hash[:fields]
+  end
+  
+  def get_binding
+    binding
+  end
+end

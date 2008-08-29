@@ -51,7 +51,19 @@ $.onload
 		
 		// document.addEventListener('click', function () { alert(document.body.parentNode.scrollHeight + document.body.parentNode.scrollTop) })
 		
-		EventPage.initialize(nodes, DB.Events)
+		EventPage.initialize(nodes, Event)
 	}
 )
+
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
+<!--# include file="/lib/Widgets/Switcher.js" -->
+
+
+<!--# include file="/js/event/model.js" -->
+<!--# include file="/js/event/controller.js" -->
+<!--# include file="/js/event/view.js" -->
 

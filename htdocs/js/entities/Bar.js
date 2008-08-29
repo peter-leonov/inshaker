@@ -31,7 +31,7 @@ Object.extend(Bar,
 	
 	initialize: function (db)
 	{
-		// console.time('DB.Bars.initialize')
+		// console.time('Bar.initialize')
 		var id = 0
 		for (var k in db)
 		{
@@ -54,7 +54,7 @@ Object.extend(Bar,
 		query = query || {}
 		var res = []
 		
-		var bars = query.city ? this.getAllBarsByCity(query.city) : this.getAllBars()
+		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
 		if (!bars)
 			return res
 		
@@ -77,7 +77,7 @@ Object.extend(Bar,
 	{
 		query = query || {}
 		
-		var bars = query.city ? this.getAllBarsByCity(query.city) : this.getAllBars()
+		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
 		if (!bars)
 			return []
 		
@@ -88,7 +88,7 @@ Object.extend(Bar,
 		return []
 	},
 	
-	getAllBars: function ()
+	getAll: function ()
 	{
 		var db = this.db
 		var bars = []
@@ -101,7 +101,7 @@ Object.extend(Bar,
 		return bars
 	},
 	
-	getAllBarsByCity: function (city)
+	getAllByCity: function (city)
 	{
 		var bars = this.db[city]
 		return bars ? bars.slice() : []
@@ -109,18 +109,9 @@ Object.extend(Bar,
 	
 	getByCityName: function (city, name)
 	{
-		var bars = this.getAllBarsByCity(city)
+		var bars = this.getAllByCity(city)
 		for (var i = 0; i < bars.length; i++)
 			if (bars[i].name == name)
-				return bars[i]
-		return null
-	},
-	
-	getBarByCityId: function (city, id)
-	{
-		var bars = this.getAllBarsByCity(city)
-		for (var i = 0; i < bars.length; i++)
-			if (bars[i]["id"] == id)
 				return bars[i]
 		return null
 	},

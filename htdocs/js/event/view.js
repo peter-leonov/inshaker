@@ -151,6 +151,9 @@ EventPage.view =
 	
 	renderRating: function (rating)
 	{
+		if (!rating || !rating.data)
+			return
+		
 		var nodes = this.nodes,
 			data = rating.data,
 			root = nodes.rating,
@@ -215,7 +218,9 @@ EventPage.view =
 			
 			ratingHead.appendChild(node)
 		}
-		this.execPluralizer(rating.phrase, builder, [totalPeople, totalFrom])
+		
+		if (rating.phrase)
+			this.execPluralizer(rating.phrase, builder, [totalPeople, totalFrom])
 	},
 	
 	execPluralizer: function (ops, fun, data)
@@ -275,9 +280,15 @@ EventPage.view =
 	
 	renderDialogue: function (dialogue)
 	{
+		dialogue = dialogue ? dialogue[Math.floor(dialogue.length * Math.random())] || dialogue[0] : null
+			
 		var nodes = this.nodes,
 			illustration = nodes.illustration,
 			illustrationPopups = nodes.illustrationPopups
+		
+		if (!dialogue)
+			return illustration.remove()
+		
 		illustration.style.backgroundImage = 'url(/i/event/' + dialogue.back + ')'
 		illustrationPopups.src = '/i/event/' + dialogue.popups
 		
@@ -304,7 +315,7 @@ EventPage.view =
 			}
 		}
 		
-		setInterval(animatePopups, 2500)
+		setInterval(animatePopups, 3200)
 	},
 	
 	renderVariableFields: function (fieldsSet, name)
