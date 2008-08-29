@@ -160,7 +160,7 @@ private
     @bar[:name], @bar[:name_eng] = ((txt.scan /.*Название:\ *\n(.+)\n.*/)[0][0]).split("; ")
     @bar[:country]  = (txt.scan /.*Страна:\ *\n(.+)\ *\n.*/)[0][0]
     @bar[:city]     = (txt.scan /.*Город:\ *\n(.+)\ *\n.*/)[0][0]
-    @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)\ *\n.*/)
+    @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)?\ *\n.*/)[0]
     @bar[:format]   = (txt.scan /.*Тут можно:\ *\n(.+)\n\nС кем.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
     @bar[:feel]     = (txt.scan /.*С кем:\ *\n(.+)\n\nВход.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
     @bar[:entrance] = (txt.scan /.*Вход:\ (.+)\ *\n.*/)[0][0]

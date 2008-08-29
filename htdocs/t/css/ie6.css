@@ -120,9 +120,9 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #event-page .b-content { width:100%; }
 #event-page #form-popup { position: absolute; }
 #event-page #low-sponsors { zoom: 1; }
-#event-page #low-sponsors { zoom: 1; }
 #event-page .b-more-cocktails .point {font-size: 103px;}
-#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 -7px; }
+#event-page .b-more-cocktails .point img {scrollbar-base-color: transparent;}
+#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 5px; }
 #event-page #form-popup { height: 200%; }
 #event-page #form-popup .content form label input { right: 30px; }
 #event-page #form-popup .content form .limit input { width: 160px; }

@@ -37,7 +37,6 @@ class EventsProcessor
   def run
     prepare_entities
     
-    # flush_images
     flush_html
     flush_json
   end
@@ -58,8 +57,8 @@ class EventsProcessor
             puts ".." + entity_dir
             
             @entity = {}
-            parse_about     YAML::load(File.open(entity_path + "/about.yaml"))
-            # detect_big_images bar_path
+            parse_about  entity_path
+            process_images entity_path
             # @entities[city_dir] << @entity
             @entities[@entity[:name]] = @entity
           end
@@ -68,24 +67,28 @@ class EventsProcessor
     end
   end
   
-  def flush_images
-    @bars.each do |city, bars_arr|
-      bars_arr.each do |bar|
-        bar_path = BarsConfig::BARS_DIR + city + "/" + bar[:name] + "/"
-        out_images_path = BarsConfig::OUT_IMAGES_DIR + city.trans.html_name
-        if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
-        
-        if File.exists?(bar_path + "mini.png")
-          FileUtils.cp_r(bar_path + "mini.png", out_images_path + "/" + bar[:name_eng].html_name + "-mini.png", BarsConfig::MV_OPT)
-        end
-        
-        counter = 1
-        while File.exists?(bar_path + "big-#{counter}.jpg")
-          FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", BarsConfig::MV_OPT)
-          counter +=1
-        end
-      end
+  def process_images src_dir
+    @entity[:imgdir] = '/i/event/' + @entity[:city].trans.html_name + "/" + @entity[:href]
+    out_images_path = Config::OUT_IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
+    if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
+    
+    if File.exists?(src_dir + "/promo-bg.png")
+      @entity[:promo] = 1
+      FileUtils.cp_r(src_dir + "/promo-bg.png", out_images_path + "/promo-bg.png", Config::MV_OPT)
     end
+    
+    @entity[:dialogue].each do |v|
+      FileUtils.mkdir_p out_images_path + "/dialogues/"
+      FileUtils.cp_r(src_dir + "/dialogues/" + v[:back], out_images_path + "/dialogues/" + v[:back], Config::MV_OPT)
+      FileUtils.cp_r(src_dir + "/dialogues/" + v[:popups], out_images_path + "/dialogues/" + v[:popups], Config::MV_OPT)
+    end
+    
+    # 
+    # counter = 1
+    # while File.exists?(bar_path + "big-#{counter}.jpg")
+    #   FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", Config::MV_OPT)
+    #   counter +=1
+    # end
   end
   
   def flush_html
@@ -108,9 +111,12 @@ class EventsProcessor
       entity.delete(:name)
       entity.delete(:header)
       entity.delete(:subject)
+      entity.delete(:promo)
+      entity.delete(:imgdir)
+      entity.delete(:target)
     end
     
-    entities_json = ActiveSupport::JSON.encode(@entities) #, {:escape => false})
+    entities_json = ActiveSupport::JSON.encode(@entities, {:escape => false})
     # warn entities_json
     File.open(Config::OUT_JS_DB, "w+") do |db|
      db.print entities_json
@@ -118,10 +124,14 @@ class EventsProcessor
   end
   
 private
-  def parse_about(yaml)
+  def parse_about src_dir
+    
+    yaml = YAML::load(File.open(src_dir + "/about.yaml"))
+    
     # warn yaml.inspect
     @entity[:name]      = yaml['Название']
     @entity[:header]    = yaml['Слоган']
+    @entity[:target]    = yaml['Задача']
     @entity[:subject]   = yaml['Задача']
     @entity[:city]      = yaml['Город']
     @entity[:country]   = yaml['Страна']
@@ -134,30 +144,46 @@ private
     # @entity[:low]       = yaml['При поддержке']
     @entity[:rating]    = {}
     
+    out_images_path = Config::OUT_IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
+    
     arr = []
-    yaml['Генеральные спонсоры'].each do |sponsor|
-      arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+    yaml['Диалоги'].each do |v|
+      arr << {:back => v[0], :popups => v[1]}
+    end
+    @entity[:dialogue] = arr
+    
+    FileUtils.mkdir_p out_images_path + "/logos/"
+    
+    arr = []
+    yaml['Генеральные спонсоры'].each do |v|
+      hash = {:name => v[0], :src => v[1], :href => v[2]}
+      arr << hash
+      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], Config::MV_OPT)
     end
     @entity[:high] = arr
     
     arr = []
-    yaml['Спонсоры'].each do |sponsor|
-      arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+    yaml['Спонсоры'].each do |v|
+      hash = {:name => v[0], :src => v[1], :href => v[2]}
+      arr << hash
+      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], Config::MV_OPT)
     end
     @entity[:medium] = arr
     
     low = []
-    yaml['При поддержке'].each do |name, logos|
+    yaml['При поддержке'].each do |v|
+      name, logos = v['Название'], v['Логотипы']
       arr = []
-      low << sponsor = {:name => name, :logos => arr}
+      low << {:name => name, :logos => arr}
 	    logos.each do |sponsor|
-	      arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+	      hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+	      arr << hash
+	      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], Config::MV_OPT)
 	    end
 	    
       # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
     end
     @entity[:low] = low
-    
   end
 end
 

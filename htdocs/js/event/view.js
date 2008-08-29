@@ -43,6 +43,7 @@ EventPage.view =
 	
 	modelChanged: function (event)
 	{
+	    this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
 		this.renderRatingHead(event.rating)
@@ -63,6 +64,15 @@ EventPage.view =
 		
 		var tabs = []
 		var buttons = []
+		
+		var all = []
+		for (var i = 0; i < sponsorsSet.length; i++)
+		{
+			var logos = sponsorsSet[i].logos
+			for (var j = 0; j < logos.length; j++)
+				all.push(logos[j])
+		}
+		sponsorsSet.unshift({name: 'Все', logos: all})
 		
 		for (var i = 0; i < sponsorsSet.length; i++)
 		{
@@ -133,7 +143,7 @@ EventPage.view =
 			
 			var img = N('img')
 			a.appendChild(img)
-			img.src = '/i/event/logo-' + logo.src + '.png'
+			img.src = this.iroot + '/logos/' + logo.src
 			
 			
 			if (i % 5 == 4)
@@ -260,7 +270,7 @@ EventPage.view =
 			a.href = sponsor.href
 			
 			var img = N('img')
-			img.src = '/i/event/' + sponsor.src
+			img.src = this.iroot + '/logos/' + sponsor.src
 			img.alt = sponsor.name
 			a.appendChild(img)
 			
@@ -274,7 +284,7 @@ EventPage.view =
 		
 		var sponsor = sponsorsSet[0]
 		nodes.sponsorsHighTitle.innerHTML = sponsor.name
-		nodes.sponsorsHigh.style.backgroundImage = 'url(' + '/i/event/' + sponsor.src + ')'
+		nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
 		nodes.sponsorsHigh.href = sponsor.href
 	},
 	
@@ -289,8 +299,8 @@ EventPage.view =
 		if (!dialogue)
 			return illustration.remove()
 		
-		illustration.style.backgroundImage = 'url(/i/event/' + dialogue.back + ')'
-		illustrationPopups.src = '/i/event/' + dialogue.popups
+		illustration.style.backgroundImage = 'url(' + this.iroot + '/dialogues/' + dialogue.back + ')'
+		illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
 		
 		illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
 		

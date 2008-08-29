@@ -47,12 +47,15 @@ class EventTemplate
     @name       = hash[:name]
     @city       = hash[:city]
     @header     = hash[:header]
+    @target     = hash[:target]
     @subject    = hash[:subject]
     @country    = hash[:country]
     @href       = hash[:href]
     @address    = hash[:address]
     @bar        = hash[:bar]
     @fields     = hash[:fields]
+    @imgdir     = hash[:imgdir]
+    @promo      = hash[:promo]
   end
   
   def get_binding

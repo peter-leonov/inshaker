@@ -799,7 +799,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .b-title { padding-bottom: 13px; font-family: Tahoma; }
 #event-page .b-title h1, #event-page .b-title h3 { font-size: 20px; }
 #event-page .b-title h2, #event-page .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
-#event-page #illustration { width: 566px; height: 300px; position: relative; margin-top: -104px; overflow: hidden; }
+#event-page #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
 #event-page .main-sponsor { display: block; width: 259px; height: 179px; margin: 18px 0 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 #event-page .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
@@ -830,20 +830,20 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #low-sponsors .b-content { position: relative; width: 100%; }
 #event-page #low-sponsors .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
 #event-page #low-sponsors .b-content .viewport .surface { width: 10000px; }
-#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 8px; }
+#event-page #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #event-page #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
 #event-page #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
-#event-page #low-sponsors .b-content .viewport .point { width: 806px; height: 120px; padding: 0 16px; margin: 0 30px; text-align: justify; line-height: 120px; }
+#event-page #low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
 #event-page #low-sponsors dl { height: 18px; padding: 75px 0 0 0; font-size: 11px; line-height: 11px; text-align: justify; }
-#event-page #low-sponsors dl dt { display: inline; position: relative; z-index: 2; margin: 0 7px 0 0; }
+#event-page #low-sponsors dl dt { display: inline; position: relative; z-index: 2; margin: 0 15px 0 0; }
 #event-page #low-sponsors dl dt a { text-decoration: none; border-bottom: 1px dashed; }
 #event-page #low-sponsors dl dt.selected a { border-bottom: none; color: #e4146e; cursor: default; }
-#event-page #low-sponsors dl dt.spacer { visibility: hidden; padding: 0 350px 0 0; }
+#event-page #low-sponsors dl dt.spacer { visibility: hidden; padding: 0 300px 0 0; }
 #event-page #low-sponsors dl dd { position: absolute; left: 0; top: -25px; width: 100%; }
 
-#event-page #get-invitation { position: absolute; left: 547px; top: -8px; color: #fff; text-decoration: none; margin: 100px; white-space: nowrap; padding: 3px 10px 3px 0; font-size: 11px; background: url(event/pink-button.png) right center; }
-#event-page #get-invitation span { text-decoration: underline; padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }
+#event-page #get-invitation { position: absolute; left: 548px; top: -8px; color: #fff; text-decoration: none; margin: 100px; white-space: nowrap; padding: 3px 10px 3px 0; font-size: 11px; background: url(event/pink-button.png) right center; }
+#event-page #get-invitation span { padding: 3px 0 3px 15px; margin-left: -10px; background: url(event/pink-button.png) left center; }
 #event-page #get-invitation:hover span { text-decoration: none; }
 
 #event-page #promo-back { position: absolute; left: 0; top: 65px; width: 100%; height: 80%; background: repeat-x top center; }
