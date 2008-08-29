@@ -1,11 +1,11 @@
 require 'rubygems'
-require 'active_support'
+require 'lib/active_support_pmc'
 require 'unicode'
 require 'fileutils'
 require 'erb'
 require 'csv'
 require 'RMagick'
-require 'string_util'
+require 'lib/string_util'
 require 'templates'
 
 require 'bars_processor'
@@ -390,8 +390,6 @@ def go
   joe.flush_goods
   puts "Flushing tools to #{Config::TOOLS_ROOT}"
   joe.flush_tools
-  puts "Processing bars data"
-    BarsProcessor.new.run
   puts "Processing parties data"
     PartiesProcessor.new.run
 end

@@ -1,11 +1,11 @@
 #!/usr/bin/ruby
 
 require 'rubygems'
-require 'active_support'
+require 'lib/active_support_pmc'
 require 'unicode'
 require 'fileutils'
 require 'erb'
-require 'string_util'
+require 'lib/string_util'
 require 'templates'
 require 'curb'
 
@@ -179,5 +179,5 @@ private
   end
 end
 
-
+puts "Processing bars data"
 BarsProcessor.new.run
