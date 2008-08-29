@@ -146,17 +146,25 @@ BarPage.view =
 	
 	showMainBarMapPopup: function (bar)
 	{
-	    var address = bar.address[0] + '<br/>' + bar.address[1]
-	    if (bar.address[2])
-	        address += '<br/><a href="http://' + bar.address[2] + '">' + bar.address[2] + '</a>'
+		var address = ''
+		if (bar.address)
+		{
+			address = bar.address[0] + '<br/>' + bar.address[1]
+			if (bar.address[2])
+				address += '<br/><a href="http://' + bar.address[2] + '">' + bar.address[2] + '</a>'
+		}
 		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + address + '</p></div>')
 	},
 	
 	showBarMapPopup: function (bar)
 	{
-	    var address = bar.address[0] + '<br/>' + bar.address[1]
-	    if (bar.address[2])
-	        address += '<br/><a href="http://' + bar.address[2] + '">' + bar.address[2] + '</a>'
+		var address = ''
+		if (bar.address)
+		{
+			address = bar.address[0] + '<br/>' + bar.address[1]
+			if (bar.address[2])
+				address += '<br/><a href="http://' + bar.address[2] + '">' + bar.address[2] + '</a>'
+		}
 		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + address + '</p><a href="' + bar.pageHref() + '">Посмотреть бар…</a></div>')
 	},
 	
