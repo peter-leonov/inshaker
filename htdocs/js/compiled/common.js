@@ -15,3 +15,4 @@
 <!--# include file="/js/calculator/calculator.js" -->
 
 $.onload(function () { setTimeout(function () { $.include('/js/common/analytics.js') }, 1200) })
+$.onload(function () { setTimeout(function () { cssQuery('#top .nav a').forEach(function (v) { if (v.href == location.href.split(/#/)[0]){v.addClassName('now')} }) }) })
