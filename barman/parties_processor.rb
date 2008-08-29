@@ -87,7 +87,7 @@ class PartiesProcessor
   end
   
   def flush_json
-    parties_json = ActiveSupport::JSON.encode(@parties).unescape
+    parties_json = ActiveSupport::JSON.encode(@parties, {:escape => false})
     
     File.open(PartiesConfig::OUT_JS_DB, "w+") do |db|
      db.puts parties_json

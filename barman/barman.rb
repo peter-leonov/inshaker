@@ -94,12 +94,14 @@ class Barman
       hash[:desc_start] = hash[:desc_end] = "" # YAGNI
      end
      
-     cocktails_json   = ActiveSupport::JSON.encode(@cocktails).unescape
-     ingredients_json = ActiveSupport::JSON.encode(@ingredients).unescape
-     tags_json        = ActiveSupport::JSON.encode(@tags).unescape
-     strengths_json   = ActiveSupport::JSON.encode(@strengths).unescape
-     tools_json       = ActiveSupport::JSON.encode(@tools).unescape
-     goods_json       = ActiveSupport::JSON.encode(@goods).unescape
+     options = {:escape => false}
+     
+     cocktails_json   = ActiveSupport::JSON.encode(@cocktails, options)
+     ingredients_json = ActiveSupport::JSON.encode(@ingredients, options)
+     tags_json        = ActiveSupport::JSON.encode(@tags, options)
+     strengths_json   = ActiveSupport::JSON.encode(@strengths, options)
+     tools_json       = ActiveSupport::JSON.encode(@tools, options)
+     goods_json       = ActiveSupport::JSON.encode(@goods, options)
      
      db_revision_snippet = File.open(Config::DB_JS).read.split("\n")[0]
      
@@ -373,21 +375,21 @@ end
 
 def go
   debug = !(ARGV[0] == "-silent")
-  # joe = Barman.new(debug)
-  # puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
-  # joe.prepare
-  # puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
-  # joe.flush_html                                           
-  # puts "Flushing JSON to #{Config::DB_JS}"          
-  # joe.flush_json                                                                              
-  # puts "Flushing images to #{Config::IMAGES_DIR}"       
-  # joe.flush_images                                      
-  # puts "Flushing videos to #{Config::VIDEOS_DIR}"       
-  # joe.flush_videos                                      
-  # puts "Flushing goods to #{Config::MERCH_ROOT}"        
-  # joe.flush_goods
-  # puts "Flushing tools to #{Config::TOOLS_ROOT}"
-  # joe.flush_tools
+  joe = Barman.new(debug)
+  puts "Mixing cocktails from #{Config::COCKTAILS_DIR}" 
+  joe.prepare
+  puts "Flushing HTML to #{Config::COCKTAILS_HTML_DIR}" 
+  joe.flush_html                                           
+  puts "Flushing JSON to #{Config::DB_JS}"          
+  joe.flush_json                                                                              
+  puts "Flushing images to #{Config::IMAGES_DIR}"       
+  joe.flush_images                                      
+  puts "Flushing videos to #{Config::VIDEOS_DIR}"       
+  joe.flush_videos                                      
+  puts "Flushing goods to #{Config::MERCH_ROOT}"        
+  joe.flush_goods
+  puts "Flushing tools to #{Config::TOOLS_ROOT}"
+  joe.flush_tools
   puts "Processing bars data"
     BarsProcessor.new.run
   puts "Processing parties data"

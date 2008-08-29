@@ -131,8 +131,8 @@ class BarsProcessor
      end
     end
     
-    bars_json    = ActiveSupport::JSON.encode(@bars).unescape
-    cities_json = ActiveSupport::JSON.encode(@city_points).unescape
+    bars_json   = ActiveSupport::JSON.encode(@bars, {:escape => false})
+    cities_json = ActiveSupport::JSON.encode(@city_points, {:escape => false})
     
     File.open(BarsConfig::OUT_JS_DB, "w+") do |db|
      db.print bars_json
