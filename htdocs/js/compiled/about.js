@@ -6,7 +6,7 @@
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 
 <!--# include file="/js/about/about.js" -->
-<!--# include file="/stat/amcharts/swfobject.js" -->
+<!--# include file="/lib/swfobject.js" -->
 
 $.onload(function(){
 	About.init();
