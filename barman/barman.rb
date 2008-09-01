@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 require 'rubygems'
 require 'lib/active_support_pmc'
 require 'unicode'
