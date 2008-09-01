@@ -23,10 +23,12 @@ BarPage.model =
 		var prevNext = this.barsDB.getPrevNext({name: barName, city: cityName})
 		var recommendations = this.getCocktailsByNames(bar.recs)
 		var carte = this.getCocktailsByNames(bar.carte)
-
+		
 		var otherBarsSet = this.barsDB.getAllByCity(cityName)
 		
-		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet, prevNext)
+		var parties = Party.getAllByCity(cityName)
+		
+		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet, prevNext, parties)
 	},
 	
 	nextBarCity: function (barName, cityName)

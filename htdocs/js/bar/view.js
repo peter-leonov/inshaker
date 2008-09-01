@@ -1,3 +1,9 @@
+{(function(){
+
+var doc = document
+function N (name) { return doc.createElement(name) }
+function T (text) { return doc.createTextNode(text) }
+
 BarPage.view =
 {
 	owner: null, // must be defined before initialize
@@ -11,6 +17,7 @@ BarPage.view =
 		new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
 		new Programica.RollingImagesLite(nodes.recommendations)
 		new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
+		new Programica.RollingImagesLite(nodes.partiesMain, {animationType: 'easeInOutCubic'})
 		
 		
 		var barMore = nodes.barMore
@@ -36,17 +43,19 @@ BarPage.view =
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
-	modelChanged: function (bar, recommendations, carte, otherBarsSet, prevNext)
+	modelChanged: function (bar, recommendations, carte, otherBarsSet, prevNext, partiesSet)
 	{
 		var nodes = this.nodes
 		
 		// bar
+		this.bar = bar
 		
 		// cocktails
 		this.renderCocktails(nodes.recommendations, recommendations, 1)
 		this.renderCocktails(nodes.carte, carte, 3)
 		this.renderMap(bar, otherBarsSet)
 		this.renderPrevNext(prevNext)
+		this.renderParties(partiesSet)
 	},
 	
 	readBarCityNames: function ()
@@ -221,8 +230,34 @@ BarPage.view =
 	
 	renderParties: function (partiesSet)
 	{
-		log(partiesSet)
+		var root = this.nodes.parties
+		
+		var selected = 0
+		
+		for (var i = 0; i < partiesSet.length; i++)
+		{
+			var party = partiesSet[i]
+			
+			var point = N('a')
+			point.className = 'point'
+			point.href = party.getPageHref()
+			point.title = party.name
+			
+			// log(this.bar.name == party.bar)
+			if (this.bar.name == party.bar)
+				selected = i
+			
+			var img = N('img')
+			img.src = party.getMiniImgSrc()
+			point.appendChild(img)
+			
+			root.appendChild(point)
+		}
+		
+		var ri = this.nodes.partiesMain.RollingImagesLite
+		ri.sync()
+		ri.goToFrame(selected, 'directJump')
 	}
 }
 
-
+})()}

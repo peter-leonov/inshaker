@@ -9,6 +9,14 @@ Party.prototype = {
 	
 	getImgSrc: function(postfix){
 		return "/i/party/" + this.city.trans().htmlName() + "/" + this.bar.trans().htmlName() + "-" + this.name.trans().htmlName() + postfix;
+	},
+	
+	getMiniImgSrc: function(){
+		return this.getImgSrc("-mini.png");
+	},
+	
+	getPageHref: function(){
+		return "/parties.html#city="+encodeURIComponent(this.city)+"&party="+encodeURIComponent(this.name);
 	}
 }
 

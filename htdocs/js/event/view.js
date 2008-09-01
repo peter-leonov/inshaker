@@ -1,8 +1,8 @@
 {(function(){
 
 var doc = document
-var N = function (name) { return doc.createElement(name) }
-var T = function (text) { return doc.createTextNode(text) }
+function N (name) { return doc.createElement(name) }
+function T (text) { return doc.createTextNode(text) }
 
 EventPage.view =
 {

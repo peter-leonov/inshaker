@@ -27,6 +27,8 @@ $.onload
 		{
 			photos: cssQuery('.b-content .photos')[0],
 			recommendations: $('recommendations'),
+			parties: cssQuery('#parties .surface')[0],
+			partiesMain: $('parties'),
 			carte: $('carte'),
 			barName: $('bar-name'),
 			cityName: $('city-name'),

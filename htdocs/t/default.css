@@ -776,9 +776,12 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #bar-page .hrefs .prev, #bar-page .hrefs .next { font-size: 17px; text-decoration: none; }
 
 #bar-page .column-main .body-wrapper,
-#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 487px; }
+#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; height: 487px; }
 #bar-page #sidebar .parties { overflow: visible; }
 #bar-page #sidebar .parties .column { width: 30.7em; }
+#bar-page #sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
+#bar-page #sidebar .parties .viewport .point { width: 220px; display: block; }
+#bar-page #sidebar .parties .viewport .point img { margin: 0 auto; }
 #bar-page .b-more-rec dt,
 #bar-page .b-more-rec dt b,
 #bar-page .b-more-cocktails dt,
