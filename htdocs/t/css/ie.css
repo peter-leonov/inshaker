@@ -33,7 +33,7 @@ html{font-size :101%;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
 
 #event-page #get-invitation { color: #fff; text-decoration: none; overflow: visible; margin: 100px; white-space: nowrap; padding: 0 10px 0 0; font-size: 11px; line-height: 11px; }
-#event-page #get-invitation span { line-height: 15px; text-decoration: underline; vertical-align: middle; padding: 2px 0 4px 15px; zoom: 1; position: relative; left: -10px; height: 15px; }
+#event-page #get-invitation span { line-height: 15px; vertical-align: middle; padding: 2px 0 4px 15px; zoom: 1; position: relative; left: -10px; height: 15px; }
 
 #event-page #illustration { float: left; }
 #event-page #low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
