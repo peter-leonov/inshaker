@@ -23,10 +23,10 @@ $.onload(function(){
 	
 	var CONTEXT = window.location.href.match(/.+\/(.+).html/).last();
 		
-	if(CONTEXT == "order") $('order_button').hide();
+	if(CONTEXT == "order" && $('order_button')) $('order_button').hide();
 	else if(CONTEXT == "call_barmen") {
 		$('call_barmen').hide();
-		$('order_button').hide();
+		if($('order_button')) $('order_button').hide();
 	}
 	
 	var autocompleter = new Autocompleter(metro_stations);
