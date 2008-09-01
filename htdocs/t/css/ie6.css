@@ -53,6 +53,9 @@ body{height:100%;}
 #cocktail-page .hreview .entry .illustration,
 #mybar-cocktails li img{}
 body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+
+#cocktails-page #top { left: -9px; }
+
 #cocktail-page{}
 #cocktail-page .b-title{}
 #cocktail-page .b-content{width:590px;}

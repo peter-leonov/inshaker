@@ -58,7 +58,7 @@ table td{padding:0;}
 html{background:#fff url(/t/alchogol-sucks.png) no-repeat center 98.5%;}
 body{background:transparent url(bg/body/all.png) repeat-x 0 0;font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
 
-#top{position:relative;height:132px;font-size:12px;}
+#top{position:relative;height:132px;width:960px;font-size:12px;margin:0 auto;}
 #top h2,
 #top h1{position:absolute;top:3px;left:-9px;}
 #top .nav{background:#000 url(bg/body/index.png) repeat-x 0 0;overflow:hidden;margin-left:190px;font-weight:bold;}
