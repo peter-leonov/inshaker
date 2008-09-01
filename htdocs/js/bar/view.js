@@ -217,6 +217,11 @@ BarPage.view =
 		}
 		else
 			this.nodes.barNext.hide()
+	},
+	
+	renderParties: function (partiesSet)
+	{
+		log(partiesSet)
 	}
 }
 
