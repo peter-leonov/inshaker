@@ -10,6 +10,7 @@ require 'templates'
 
 require 'bars_processor'
 require 'parties_processor'
+require 'events_processor'
 
 $KCODE = 'u'
 
