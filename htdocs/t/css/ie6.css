@@ -107,6 +107,10 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { display: block; }
 
+#bar-page .column-main .body-wrapper,
+#bar-page #sidebar .map .body-wrapper { height: 487px; }
+
+
 #parties-page #want_popup_area{z-index: 99;position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
 #parties-page .party-photos .disabled { background-position-y: -60px; }
 #parties-page .party-photos .prev { background-position-x: -60px; }
