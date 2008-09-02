@@ -102,6 +102,7 @@ label{display:block;}
 /* parties-page */
 
 #parties-page .b-title{padding-bottom:10px; margin-bottom: 24px;}
+#parties-page .column, #parties-page .column-mini {float:none;}
 #parties-page #top{position:relative;height:105px;font-size:12px;}
 #parties-page #main-wrapper {z-index: 1; position:relative;}
 
@@ -879,6 +880,6 @@ b.lt { left: 0; top: 0; }
 b.rt { right: 0; top: 0; }
 b.lb { left: 0; bottom: 0; }
 b.rb { right: 0; bottom: 0; }
-
+<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" --><!--# include file="/t/css/ff2.css" --><!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--# include file="/t/css/ie6.css" --><!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--# include file="/t/css/ie7.css" --><!--# endif -->
