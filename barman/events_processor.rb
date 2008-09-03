@@ -8,6 +8,7 @@ require 'erb'
 require 'lib/string_util'
 require 'templates'
 require 'yaml'
+require 'csv'
 
 $KCODE = 'u'
 
@@ -59,6 +60,7 @@ class EventsProcessor
             @entity = {}
             parse_about  entity_path
             process_images entity_path
+            process_rating entity_path
             # @entities[city_dir] << @entity
             @entities[@entity[:name]] = @entity
           end
@@ -82,13 +84,6 @@ class EventsProcessor
       FileUtils.cp_r(src_dir + "/dialogues/" + v[:back], out_images_path + "/dialogues/" + v[:back], Config::MV_OPT)
       FileUtils.cp_r(src_dir + "/dialogues/" + v[:popups], out_images_path + "/dialogues/" + v[:popups], Config::MV_OPT)
     end
-    
-    # 
-    # counter = 1
-    # while File.exists?(bar_path + "big-#{counter}.jpg")
-    #   FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", Config::MV_OPT)
-    #   counter +=1
-    # end
   end
   
   def flush_html
@@ -184,7 +179,29 @@ private
       # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
     end
     @entity[:low] = low
+    
+    rating = yaml['Рейтинг']
+    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить']}
   end
+  
+  def process_rating src_dir
+    fname = src_dir + "/rating.csv"
+    rating = {}
+    if File.exists? fname
+      csv = CSV::parse(File.open(fname).read)
+      csv.shift
+      csv.each do |line|
+        v = line[0]
+        rating[v] = rating[v] ? rating[v] + 1 : 1
+        # warn rating[v]
+      end
+    end
+    
+    @entity[:rating][:data] = rating
+    
+    # warn @entity[:rating].inspect
+  end
+  
 end
 
 

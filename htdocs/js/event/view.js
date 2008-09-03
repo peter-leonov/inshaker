@@ -213,48 +213,50 @@ EventPage.view =
 			totalFrom++
 		
 		var ratingHead = this.nodes.ratingHead
-		ratingHead.empty()
-		function builder (act)
-		{
-			var node
-			if (act.name)
-			{
-				node = N('span')
-				node.className = act.name
-				node.appendChild(T(act.value))
-			}
-			else
-				node = T(act.value)
-			
-			ratingHead.appendChild(node)
-		}
-		
 		if (rating.phrase)
-			this.execPluralizer(rating.phrase, builder, [totalPeople, totalFrom])
+			ratingHead.innerHTML = this.execPluralizer(rating.phrase, {people: totalPeople, from: totalFrom})
 	},
 	
-	execPluralizer: function (ops, fun, data)
+	parsePluralizer: function (plu)
+	{
+		var ops = []
+		
+		var strs = plu.split(/\$\{.*?\}/g)
+		var vars = plu.match(/\$\{.*?\}/g)
+		
+		log(strs)
+		log(vars)
+		
+		return ops
+		// return [['people', ['Придет','Придут','Придут']], ' снимать напряжение <span class="people">', ['people'], '</span> ', ['people', ['банкир','банкира','банкиров']], ' из ', ['from'], ' ', ['from', ['банка', 'банков', 'банков']], ':']
+	},
+	
+	execPluralizer: function (str, data)
 	{
 		var plural = Number.prototype.plural
-			A = Array
+			A = Array,
+			res = '',
+			ops = this.parsePluralizer(str)
+		
 		for (var i = 0; i < ops.length; i++)
 		{
 			var op = ops[i]
 			switch (typeof op)
 			{
 				case 'string':
-					fun({value:op})
+					log(res += op)
 				break
 				
 				case 'object':
-					if (op[0] !== null && typeof op[2] == 'object' && op[2].constructor == A)
-						fun({name:op[1], value:plural.apply(Number(data[op[0]]), op[2])})
+					if (op[0] !== null && typeof op[1] == 'object' && op[1].constructor == A)
+						res += plural.apply(Number(data[op[0]]), op[1])
 					else if (op[0] !== null)
-						fun({name:op[1], value:data[op[0]]})
+						res += Number(data[op[0]])
 				break
 			}
 		}
 		
+		return res
 	},
 	
 	renderMediumSponsors: function (sponsorsSet)
