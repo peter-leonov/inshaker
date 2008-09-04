@@ -43,6 +43,7 @@ EventPage.view =
 	
 	modelChanged: function (event)
 	{
+		this.event = event
 	    this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
@@ -50,7 +51,7 @@ EventPage.view =
 		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
-		this.renderVariableFields(event.fields, event.name)
+		this.renderVariableFields(event.fields)
 		this.setFormLock(true)
 	},
 	
@@ -330,7 +331,7 @@ EventPage.view =
 		setInterval(animatePopups, 3200)
 	},
 	
-	renderVariableFields: function (fieldsSet, name)
+	renderVariableFields: function (fieldsSet)
 	{
 		var root = this.nodes.variableInputs
 		
@@ -348,8 +349,8 @@ EventPage.view =
 			root.appendChild(label)
 		}
 		
-		this.nodes.formPopupNameInput.value = name
 		this.nodes.form.variableFields = fieldsSet
+		this.resetForm()
 	},
 	
 	showFormPopup: function ()
@@ -388,6 +389,7 @@ EventPage.view =
 	resetForm: function ()
 	{
 		this.nodes.form.reset()
+		this.nodes.formPopupNameInput.value = this.event.name
 		this.setFormLock(true)
 	},
 	
