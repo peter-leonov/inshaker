@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>htdocs/db/parties.js</string>
+	<string>barman/base/Events/Москва/finans-2/about.yaml</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -42,6 +42,34 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>234</integer>
+		</dict>
+		<key>barman/base/Events/Москва/finans-2/about.yaml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
+		</dict>
+		<key>barman/events_processor.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>74</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>49</integer>
 		</dict>
 		<key>barman/templates/bar.rhtml</key>
 		<dict>
@@ -287,6 +315,20 @@
 			<key>firstVisibleLine</key>
 			<integer>830</integer>
 		</dict>
+		<key>nginx.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>58</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>27</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -299,6 +341,9 @@
 		<string>htdocs/db/cities.js</string>
 		<string>htdocs/db/events.js</string>
 		<string>htdocs/db/parties.js</string>
+		<string>nginx.conf</string>
+		<string>barman/events_processor.rb</string>
+		<string>barman/base/Events/Москва/finans-2/about.yaml</string>
 		<string>htdocs/t/css/ff2.css</string>
 		<string>htdocs/ingredients.html</string>
 		<string>barman/barman.rb</string>
