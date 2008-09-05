@@ -54,7 +54,7 @@ function PartiesView(nodes){
 		img.src = party.getImgSrc("-mini.png");
 		img.alt = party.name;
 		div.appendChild(img);
-		var name = document.createElement("div");
+		var name = document.createElement("span");
 		name.addClassName("name");
 		name.innerHTML = party.name + " в<br/>" + party.bar;
 		div.appendChild(name);

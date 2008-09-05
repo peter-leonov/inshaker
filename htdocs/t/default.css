@@ -101,7 +101,7 @@ label{display:block;}
 .index-wrapper #registration button{margin-top:20px;}
 /* parties-page */
 
-#parties-page .b-title{padding-bottom:10px; margin-bottom: 24px;}
+#parties-page .b-title{padding-bottom:10px; margin-bottom: 15px;}
 #parties-page .column, #parties-page .column-mini {float:none;}
 #parties-page #top{position:relative;height:105px;font-size:12px;}
 #parties-page #main-wrapper {z-index: 1; position:relative;}
@@ -112,12 +112,13 @@ label{display:block;}
 #parties-page .column{ margin-bottom: 32px;}
 #parties-page .column .body-wrapper{padding-bottom:0;}
 
-#parties-page .party-previews .party { float: left; width: 213px; text-align: center; cursor:pointer;}
-#parties-page .party-previews .name { font-family: Arial, sans-serif; font-size: 13pt; font-style: italic; color: #0392f1; text-decoration: underline;}
-#parties-page .party-previews .party.selected .name { color: #e2138a;}
+#parties-page .party-previews .party { float: left; width: 213px; text-align: center; cursor:pointer; }
+#parties-page .party-previews .party img { display: block; margin: 0 auto 6px; }
+#parties-page .party-previews .name { font-family: Arial, sans-serif; font-size: 13pt; font-style: italic; color: #0392f1; border-bottom: dashed 1px; }
+#parties-page .party-previews .party.selected .name { color: #e2138a; border-bottom: none; cursor: default; }
 
 #parties-page .party-previews .viewport,
-#parties-page .party-previews { overflow: hidden; position: relative; width: 920px; height: 150px; }
+#parties-page .party-previews { overflow: hidden; position: relative; width: 920px; height: 159px; }
 #parties-page .party-previews .viewport {width: 855px; margin-left: 34px;}
 #parties-page .party-previews .viewport .point { float: left; width: 855px; height: 100%; }
 #parties-page .party-previews .viewport .surface { width: 4000px; padding: 0;}
@@ -148,7 +149,7 @@ background: url(icon/strs-green.png);
 .party-top {height: 90px; position:absolute; top:0; left:0; width: 960px; z-index:2; }
 .party-desc {float:left; color: #fff; font-family: Arial, sans-serif; font-style: italic; font-size: 20pt; width: 298px; padding: 10px 0 0 20px;}
 #bar_name {text-decoration: underline; color:#FFF;}
-.party-teaser {margin-top: 29px; float:right; height: 35px; background: #e2138a; font-size: 31pt; color: #fff60e; line-height: 26pt; margin-right: 20px; font-family: Arial, sans-serif; -moz-border-radius: 2px; -webkit-border-radius: 2px;}
+.party-teaser {margin-top: 29px; float:right; height: 35px; background: #e2138a; font-size: 34pt; color: #fff60e; line-height: 26pt; margin-right: 20px; font-family: Arial, sans-serif; -moz-border-radius: 2px; -webkit-border-radius: 2px;}
 #party_price_per_guest {float:right;}
 #party_rub_guest, #party_from {float:right; margin: 2px 12px;}
 #want_link {display: block; margin: 29px 27px 0 0; width:75px; height:39px; float:right;}
