@@ -1,9 +1,11 @@
 <!--# include file="/lib/Programica/Request.js" -->
 <!--# include file="/lib/Programica/Form.js" -->
+<!--# include file="/lib/Programica/LocationHash.js" -->
 
 <!--# include file="/lib/Programica/Widget.js" -->
 <!--# include file="/lib/Widgets/FormPoster.js" -->
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
+<!--# include file="/lib/Widgets/Switcher.js" -->
 
 <!--# include file="/js/about/about.js" -->
 <!--# include file="/lib/swfobject.js" -->

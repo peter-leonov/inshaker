@@ -19,59 +19,24 @@ var About = {
 		$('poster').style.display = "block";		
 	},
 	
-	init: function(){
-		$('view-advert').show = function() {
-			this.style.display = "block";
-			About.hidePoster();
-		}
+	init: function ()
+	{
+		var main = $('menu')
+		var tabs = cssQuery('.content')
+		var buttons = cssQuery('#menu a')
 		
-		$('view-advert').hide = function(){
-			this.style.display="none";
-			About.showPoster();
-		}
+		LocationHash.bind(location)
+		var name = LocationHash.get()
 		
-		$('view-stat').show = function() {
-			this.style.display = "block";
-			if($('rolling_stats').RollingImagesLite)
-				$('rolling_stats').RollingImagesLite.goInit();
-				
-			About.hidePoster();
-		}
+		// var hrefs = ['view-about', 'view-cocktail-friend', 'view-stat']
+		var hrefs = tabs.map(function (v) { return String(v.className).split(/\s+/)[0] })
+		log(hrefs)
 		
-		$('view-stat').hide = function(){
-			this.style.display="none";
-			About.showPoster();
-		}
+		var sw = Switcher.bind(main, buttons, tabs)
+		sw.select(hrefs.indexOf(name))
+		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
-		var handler = function(e, element) {
-			var self = element || this;
-			link.open(self);
-			self.parentNode.now.remClassName('now');
-			self.addClassName('now');
-			self.parentNode.now = self;
-			e.preventDefault();
-		};
-		
-		menu = $('panel_cocktail');
-		var menu_links = menu.getElementsByTagName('a');
-		var loc = window.location.hash;
-		for (var i = menu_links.length - 1; i >= 0; i--) {
-			if(loc && menu_links[i].href.indexOf(loc) > -1) menu.now = menu_links[i];
-			menu_links[i].addEventListener('click', handler, false);
-		}
-		if(!menu.now) menu.now = menu_links[0];
-		menu.now.addClassName("now");
-		
-		var bottom_links = $('bottom').getElementsByTagName('a');
-		for(var i = 2; i < bottom_links.length; i++) {
-			bottom_links[i].addEventListener('click', function(idx){ return function(e){
-				handler(e, menu_links[idx]);
-			}}(i-2), false);
-		}
-		
-		link = new Link();
-		if (!link.url) link.element = $('view-about');
-		else if (link.url != 'view-about') $('view-about').hide();
+		LocationHash.onchange = function (now, last) { sw.select(hrefs.indexOf(now)); log(now) }
 		
 		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
 		line.addVariable("path", "stat/amcharts/");
@@ -89,3 +54,4 @@ var About = {
 		pie.write("stat_cities");
 	}
 };
+

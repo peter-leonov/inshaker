@@ -63,9 +63,9 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #cocktail-page .hreview .top-menu{}
 #cocktail-page .hreview .top-menu .b{width:100%;height:182px;overflow:hidden;}
 #poster{position:absolute;top:-28px;}
-#panel_cocktail{/*z-index:20;position:absolute;*/ width:100%;}
-#panel_cocktail a{width:1px;white-space:nowrap;}
-#panel_cocktail a b{border:none;}
+#panel_cocktail, #about-page #menu{/*z-index:20;position:absolute;*/ width:90%;}
+#panel_cocktail a, #about-page #menu a{width:1px;white-space:nowrap;}
+#panel_cocktail a b, #about-page #menu a b{border:none;}
 #cocktail-page .b-content .entry{width:100%;/*background:green;*/}
 #cocktail-page #view-how{/*background:red;*/}
 #cocktail-page #view-how button{position:static;margin:15px;}
