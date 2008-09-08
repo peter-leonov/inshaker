@@ -1,35 +1,23 @@
 #!/usr/bin/ruby
+require 'barman'
 
-require 'rubygems'
-require 'lib/active_support_pmc'
-require 'unicode'
-require 'fileutils'
-require 'erb'
-require 'lib/string_util'
-require 'templates'
-require 'curb'
+class BarsProcessor < Barman::Processor
+  
+  module Config
+    BARS_DIR   = Barman::BASE_DIR + "Bars/"
+    HTDOCS_DIR = Barman::HTDOCS_DIR
+    
+    BARS_HTML_DIR = HTDOCS_DIR + "bars/"
+    IMAGES_DIR    = HTDOCS_DIR + "i/bar/"
 
-$KCODE = 'u'
+    DB_JS        = HTDOCS_DIR  + "db/bars.js"
+    DB_JS_CITIES = HTDOCS_DIR  + "db/cities.js"
 
-module BarsConfig
-  INSHAKER_ROOT = "/www/inshaker/"
+    BAR_ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
+  end
   
-  BARS_DIR = ENV['BARMAN_BASE_DIR'] ? ENV['BARMAN_BASE_DIR'] + 'Bars/' : INSHAKER_ROOT + "barman/base/Bars/"
-  BARS_ERB = INSHAKER_ROOT + "barman/templates/bar.rhtml"
-  
-  OUT_ROOT       = INSHAKER_ROOT + "htdocs/"
-  OUT_HTML_DIR   = OUT_ROOT + "bars/"
-  OUT_IMAGES_DIR = OUT_ROOT + "i/bar/"
-  
-  OUT_JS_DB        = OUT_ROOT + "db/bars.js"
-  OUT_JS_DB_CITIES = OUT_ROOT + "db/cities.js"
-  
-  MV_OPT = {:remove_destination => true}
-end
-
-class BarsProcessor
-  
-  def initialize    
+  def initialize
+    super   
     @bars = {}
     @bar  = {} # currently processed bar
     @bar_points = {}
@@ -46,18 +34,16 @@ class BarsProcessor
   end
   
   def prepare_bars
-    excluded = [".", "..", ".svn", ".TemporaryItems", ".DS_Store"]
-    
-    root_dir = Dir.new(BarsConfig::BARS_DIR)
+    root_dir = Dir.new(Config::BARS_DIR)
     root_dir.each do |city_dir|
       city_path = root_dir.path + city_dir
-      if File.ftype(city_path) == "directory" and !excluded.include?(city_dir)
+      if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
         @bars[city_dir] = []
         puts city_dir
         bars_dir = Dir.new(city_path)
         bars_dir.each do |bar_dir|
           bar_path = bars_dir.path + "/" + bar_dir
-          if File.ftype(bar_path) == "directory" and !excluded.include?(bar_dir)
+          if File.ftype(bar_path) == "directory" and !@excl.include?(bar_dir)
             puts ".." + bar_dir
             
             @bar = {}
@@ -75,17 +61,17 @@ class BarsProcessor
   def flush_images
     @bars.each do |city, bars_arr|
       bars_arr.each do |bar|
-        bar_path = BarsConfig::BARS_DIR + city + "/" + bar[:name] + "/"
-        out_images_path = BarsConfig::OUT_IMAGES_DIR + city.trans.html_name
+        bar_path = Config::BARS_DIR + city + "/" + bar[:name] + "/"
+        out_images_path = Config::IMAGES_DIR + city.trans.html_name
         if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
         
         if File.exists?(bar_path + "mini.png")
-          FileUtils.cp_r(bar_path + "mini.png", out_images_path + "/" + bar[:name_eng].html_name + "-mini.png", BarsConfig::MV_OPT)
+          FileUtils.cp_r(bar_path + "mini.png", out_images_path + "/" + bar[:name_eng].html_name + "-mini.png", @mv_opt)
         end
         
         counter = 1
         while File.exists?(bar_path + "big-#{counter}.jpg")
-          FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", BarsConfig::MV_OPT)
+          FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", @mv_opt)
           counter +=1
         end
       end
@@ -93,11 +79,11 @@ class BarsProcessor
   end
   
   def flush_html
-    template = File.open(BarsConfig::BARS_ERB).read
+    template = File.open(Config::BAR_ERB).read
     renderer = ERB.new(template)
     @bars.each do |city, bars_arr|
       bars_arr.each do |bar|
-        out_html_path = BarsConfig::OUT_HTML_DIR + city.trans.html_name
+        out_html_path = Config::BARS_HTML_DIR + city.trans.html_name
         if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
         bar_erb = BarTemplate.new(bar)
         File.open(out_html_path + "/" + bar[:name_eng].html_name + ".html", "w+") do |html|
@@ -131,18 +117,8 @@ class BarsProcessor
      end
     end
     
-    bars_json   = ActiveSupport::JSON.encode(@bars, {:escape => false})
-    cities_json = ActiveSupport::JSON.encode(@city_points, {:escape => false})
-    
-    File.open(BarsConfig::OUT_JS_DB, "w+") do |db|
-     db.print bars_json
-     db.close
-    end
-    
-    File.open(BarsConfig::OUT_JS_DB_CITIES, "w+") do |db|
-     db.print cities_json
-     db.close
-    end
+    flush_json_object(@bars, Config::DB_JS)
+    flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   
 private
@@ -179,5 +155,4 @@ private
   end
 end
 
-puts "Processing bars data"
 BarsProcessor.new.run
