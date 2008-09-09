@@ -17,7 +17,7 @@ class EventsProcessor < Barman::Processor
   
   
   def initialize
-    super    
+    super
     @entities = {}
     @entity  = {} # currently processed bar
   end
@@ -166,15 +166,42 @@ private
   end
   
   def process_rating src_dir
-    fname = src_dir + "/rating.csv"
+    fname_rating      = src_dir + "/rating.csv"
+    fname_substitute  = src_dir + "/substitute.csv"
     rating = {}
-    if File.exists? fname
-      csv = CSV::parse(File.open(fname).read)
-      csv.shift
-      csv.each do |line|
+    substitute = {}
+    errors = []
+    if File.exists? fname_rating and File.exists? fname_substitute
+      csv_rating = CSV::parse(File.open(fname_rating).read)
+      csv_substitute = CSV::parse(File.open(fname_substitute).read)
+      csv_substitute.each do |v|
+        substitute[v[0]] = v[1]
+      end
+      csv_rating.shift
+      csv_rating.each do |line|
         v = line[0]
-        rating[v] = rating[v] ? rating[v] + 1 : 1
-        # warn rating[v]
+        m = /\@(\S+)/.match v
+        if m then
+          bank = substitute[m[1]]
+          if bank then
+            unless /^\s*!\s*$/.match(bank) then
+              rating[bank] = rating[bank] ? rating[bank] + 1 : 1
+            end
+          else
+            errors.push m[1]
+          end
+        else
+          throw "Can`t parse #{v}"
+        end
+      end
+      
+      unless errors.empty? then
+        message = 'Неизвестные банки: ' + errors.join(', ')
+        fork do
+          puts 'mailing error mesage'
+          RMail::Message.bake({:to => 'max@contactmaker.ru, pl@contactmaker.ru', :subject => 'Неизвестные банки', :body => message}).send
+        end
+        warn message
       end
     end
     
