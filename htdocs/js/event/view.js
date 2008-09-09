@@ -223,13 +223,35 @@ EventPage.view =
 		var ops = []
 		
 		var strs = plu.split(/\$\{.*?\}/g)
+		if (strs[0] === '')
+			strs.shift()
 		var vars = plu.match(/\$\{.*?\}/g)
 		
-		log(strs)
-		log(vars)
+		for (var i = 0; i < strs.length; i++)
+		{
+			var s = strs[i],
+				v = vars[i]
+			
+			if (v !== undefined)
+			{
+				var m = v.match(/\$\{(.*?)(?::(.*?),(.*?),(.*?))?\}/)
+				if (m)
+				{
+					if (m[2] && m[3] && m[4])
+						ops.push([m[1], [m[2], m[3], m[4]]])
+					else
+						ops.push([m[1]])
+				}
+				else
+					reportError(v)
+			}
+			
+			ops.push(s)
+		}
+		
+		// log(ops)
 		
 		return ops
-		// return [['people', ['Придет','Придут','Придут']], ' снимать напряжение <span class="people">', ['people'], '</span> ', ['people', ['банкир','банкира','банкиров']], ' из ', ['from'], ' ', ['from', ['банка', 'банков', 'банков']], ':']
 	},
 	
 	execPluralizer: function (str, data)
@@ -245,7 +267,7 @@ EventPage.view =
 			switch (typeof op)
 			{
 				case 'string':
-					log(res += op)
+					res += op
 				break
 				
 				case 'object':
