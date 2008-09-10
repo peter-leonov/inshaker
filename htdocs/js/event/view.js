@@ -186,10 +186,12 @@ EventPage.view =
 			var width = String(Math.floor((count - min + 1) * k) + padding)
 			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
 			dd.appendChild(T(count))
-			
+			// dt.addEventListener('click', function () { log(this.offsetWidth, this.scrollWidth) }, false)
 			root.appendChild(dt)
 			root.appendChild(dd)
 		}
+		
+		Humanize.adjustTextSizeOfNodes(root, 'dt')
 		
 		if (sorted.length > rating.max)
 		{

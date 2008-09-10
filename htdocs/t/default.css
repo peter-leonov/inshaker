@@ -833,8 +833,8 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #comming h2 .from { color: #0392f1; }
 #event-page #comming .rating { width: 300px; font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
 #event-page #comming .rating dt,
-#event-page #comming .rating dd { margin: 1px 0; }
-#event-page #comming .rating dt { width: 115px; float: left; clear: left; white-space: nowrap; overflow: hidden; }
+#event-page #comming .rating dd { margin: 0px 0; }
+#event-page #comming .rating dt { width: 112px; float: left; clear: left; white-space: nowrap; overflow: hidden; }
 #event-page #comming .rating dd { width: 20px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #event-page #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
