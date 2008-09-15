@@ -1,6 +1,3 @@
-<!--# include file="/js/cocktail/model.js" -->
-<!--# include file="/js/cocktail/controller.js" -->
-
 $.onload(function(){
 	var aniOpts = {animationType: 'easeInOutCubic'};
 	new Programica.RollingImagesLite($('recommendations'), aniOpts);
@@ -9,3 +6,6 @@ $.onload(function(){
 	Controller.init();
 	Calculator.init();
 })
+
+<!--# include file="/js/cocktail/model.js" -->
+<!--# include file="/js/cocktail/controller.js" -->

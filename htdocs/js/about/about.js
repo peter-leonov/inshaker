@@ -1,4 +1,4 @@
-var About = {
+var AboutPage = {
 	formSuccess: function(){
 		$('feedback_form').hide();
 		$('form_success').show();
@@ -54,4 +54,20 @@ var About = {
 		pie.write("stat_cities");
 	}
 };
+
+$.onload(function(){
+	AboutPage.init();
+	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
+})
+
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+<!--# include file="/lib/Programica/LocationHash.js" -->
+
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
+<!--# include file="/lib/Widgets/RollingImagesLite.js" -->
+<!--# include file="/lib/Widgets/Switcher.js" -->
+
+<!--# include file="/lib/swfobject.js" -->
 

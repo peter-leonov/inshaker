@@ -98,7 +98,7 @@
 			<div class="b-title">
 				<h2>Сотрудничество</h2>
 			</div>
-			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="About.formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуй еще раз.')" id='feedback_form'>
+			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="AboutPage.formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуй еще раз.')" id='feedback_form'>
 				<label>Меня зовут		<input type="text" name="name" value=""></label>
 				<label>Мой телефон или email	<input type="text" name="address" value=""></label>
 				<label>Я из компании	<input type="text" name="company" value=""></label>
@@ -107,7 +107,7 @@
 			</form>
 			<div id="form_success">
 				Сообщение отправлено
-				<a onclick="About.formShow()">Отправить еще одно?</a>
+				<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
 			</div>
 		</div>
 	</div>
@@ -116,6 +116,6 @@
 
 </div>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
-<script type="text/javascript" src="/js/compiled/about.js"></script>
+<script type="text/javascript" src="/js/about/about.js"></script>
 </body>
 </html>
