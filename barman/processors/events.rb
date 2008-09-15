@@ -178,7 +178,9 @@ private
         substitute[v[0]] = v[1]
       end
       csv_rating.shift
+      i = 0
       csv_rating.each do |line|
+        i += 1
         v = line[0]
         m = /\@(\S+)/.match v
         if m then
@@ -188,15 +190,15 @@ private
               rating[bank] = rating[bank] ? rating[bank] + 1 : 1
             end
           else
-            errors.push m[1]
+            errors.push "#{i}: #{m[1]}"
           end
         else
-          throw "Can`t parse #{v}"
+          puts "Can`t parse #{v}"
         end
       end
       
       unless errors.empty? then
-        message = 'Неизвестные банки: ' + errors.join(', ')
+        message = "Неизвестные банки:\n" + errors.join("\n")
         fork do
           puts 'mailing error mesage'
           RMail::Message.bake({:to => 'max@contactmaker.ru, pl@contactmaker.ru', :subject => 'Неизвестные банки', :body => message}).send
