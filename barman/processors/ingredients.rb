@@ -14,19 +14,23 @@ class IngredientsProcessor < Barman::Processor
     VOLUMES_ROOT        = MERCH_ROOT + "volumes/"
     BANNERS_ROOT        = MERCH_ROOT + "banners/"
 
-    DB_JS_INGREDS = HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_GOODS   = HTDOCS_DIR + "db/goods.js"
+    DB_JS_INGREDS        = HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_INGREDS_GROUPS = HTDOCS_DIR + "db/ingredients_groups.js"
+    DB_JS_GOODS          = HTDOCS_DIR + "db/goods.js"
   end
   
   def initialize
     super
     @ingredients = []
+    @ingredients_groups = []
     @goods = {}
   end
   
   def run
     prepare_ingredients
+    prepare_groups
     prepare_goods
+    
     flush_images
     flush_json
   end
@@ -48,6 +52,13 @@ class IngredientsProcessor < Barman::Processor
     end
   end
   
+  def prepare_groups
+    order = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
+    order.each do |name, num|
+      @ingredients_groups[num-1] = name
+    end
+  end
+  
   def prepare_goods
     csv = CSV::parse(File.open(Config::GOODS_CSV).read)
     csv.shift # shifting through fields
@@ -64,6 +75,9 @@ class IngredientsProcessor < Barman::Processor
         good[:mark]  = line[2].nil? ? "" : line[2]
         good[:unit] = line[3]
         good[:volumes] = []
+        puts "..#{ingredient}"
+        about_path = Config::INGREDIENTS_DIR + group_dir_of(ingredient) + ingredient + (good[:brand] ? "/#{good[:brand]}/" : "/") + "about.txt"
+        good[:desc] = File.exists?(about_path) ? File.open(about_path).read : ""
         goods_arr << good
         @goods[ingredient] = goods_arr
       elsif line[0].nil? and line[1].nil? and line[2].nil? # volumes
@@ -85,6 +99,7 @@ class IngredientsProcessor < Barman::Processor
   def flush_json
     flush_json_object(@ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@goods, Config::DB_JS_GOODS)
+    flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
   
   def flush_images

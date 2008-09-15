@@ -23,7 +23,7 @@ module Barman
   class Processor
     def initialize
       @mv_opt = {:remove_destination => true}
-      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv"]
+      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml"]
     end
     
     def flush_json_object(object, dest_file)

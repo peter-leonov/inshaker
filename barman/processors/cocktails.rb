@@ -9,6 +9,8 @@ class CocktailsProcessor < Barman::Processor
     
     COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
+    DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
+    DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
 
     IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
     IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
@@ -23,12 +25,12 @@ class CocktailsProcessor < Barman::Processor
 
   def initialize
     super    
-    @cocktails   = {}
-    @tags        = []
-    @strengths   = []
+    @cocktails = {}
+    @tags      = []
+    @strengths = []
   end
   
-  def prepare
+  def prepare_cocktails
     root = Dir.new(Config::COCKTAILS_DIR)
     
     root.each do |dir|
@@ -50,26 +52,27 @@ class CocktailsProcessor < Barman::Processor
     end
   end
   
+  def prepare_tags_and_strengths
+    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+    order.each do |name, num|
+      @tags[num-1] = name
+    end
+    
+    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    order.each do |name, num|
+      @strengths[num-1] = name
+    end
+  end
+  
   def flush_json
      @cocktails.each do |name, hash|
       hash.delete(:desc_start)
       hash.delete(:desc_end)
      end
      
-     options = {:escape => false}
-     cocktails_json   = ActiveSupport::JSON.encode(@cocktails, options)
-     tags_json        = ActiveSupport::JSON.encode(@tags, options)
-     strengths_json   = ActiveSupport::JSON.encode(@strengths, options)
-     
-     db_revision_snippet = File.open(Config::DB_JS).read.split("\n")[0]
-     
-     File.open(Config::DB_JS, "w+") do |db|
-      db.puts db_revision_snippet
-      db.puts "var cocktails = #{cocktails_json};"
-      db.puts "var tags = #{tags_json};"
-      db.puts "var strengths = #{strengths_json};"
-      db.close
-     end
+     flush_json_object(@cocktails, Config::DB_JS)
+     flush_json_object(@tags, Config::DB_JS_TAGS)
+     flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
   end
   
   def flush_html
@@ -110,7 +113,9 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def run
-    prepare
+    prepare_cocktails
+    prepare_tags_and_strengths
+    
     flush_html
     flush_images
     flush_videos
@@ -143,10 +148,9 @@ private
   end
   
   def parse_strength(strength)
-    if !@strengths.include? strength.downcase
-      @strengths << strength
-    end
+    strength = strength.trim
     @cocktail[:strength] = strength
+    if(!@strengths.include?(strength)) then @strengths << strength end
   end
   
   def parse_tags(tags)
@@ -156,10 +160,9 @@ private
     end
     tags = tags.split("\n")
     tags.each do |tag|
-      if !@tags.include? tag
-        @tags << tag
-      end
+      tag = tag.trim
       @cocktail[:tags] << tag
+      if(!@tags.include?(tag)) then @tags << tag end
     end
   end
   
