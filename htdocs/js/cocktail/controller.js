@@ -157,10 +157,10 @@ var Controller = {
 	},
 	
 	renderToolPopup: function(name){
-		var desc = Model.tools[name];
-		$('tool_name').innerHTML = name;
-		$('tool_desc').innerHTML = desc;
-		$('tool_picture').src = this.PATH_MERCH + "tools/" + name.trans() + ".png";
+		var tool = Tool.getByName(name);
+		$('tool_name').innerHTML = tool.name;
+		$('tool_desc').innerHTML = tool.desc;
+		$('tool_picture').src = tool.imgSrc();
 	},
 	
 	_initNavigationRules: function(menu){

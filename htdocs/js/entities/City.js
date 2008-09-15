@@ -1,4 +1,4 @@
-Citiy =
+City =
 {
 	db: null, // must be defined in db-bars.js by calling initialize()
 	
@@ -13,4 +13,4 @@ Citiy =
 	}
 }
 
-Citiy.initialize(<!--# include file="/db/cities.js" -->)
+City.initialize(<!--# include file="/db/cities.js" -->)

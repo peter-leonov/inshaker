@@ -31,7 +31,7 @@ $.onload
 			map: $('map')
 		}
 		
-		BarsPage.init(Bar, Citiy, Cocktail, nodes)
+		BarsPage.init(Bar, City, Cocktail, nodes)
 		
 	}
 )

@@ -5,7 +5,7 @@ function CalculatorController(model, view) {
 	this.initialize = function(){
 		var self = this;
 		Storage.init(function(){
-			if(!checkDbRevision()) Storage.clear(); // util.js
+			//if(!checkDbRevision()) Storage.clear(); // util.js
 			if(Storage.get(GoodHelper.CART)){
 				self.eventListener.initialize(Object.parse(Storage.get(GoodHelper.CART)));
 			} else self.eventListener.initialize(null);

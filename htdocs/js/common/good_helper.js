@@ -20,7 +20,7 @@ var GoodHelper = {
     	for(var i = 0; i < cartData.cocktails.length; i++){
 				 // name -> cocktail
 				var name = cartData.cocktails[i][0];
-				cartData.cocktails[i][0] = cocktails[name];
+				cartData.cocktails[i][0] = Cocktail.getByName(name);
 			}
 		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred][0];
         return cartData;

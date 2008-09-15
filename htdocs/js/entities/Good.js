@@ -1,0 +1,1 @@
+var goods = <!--# include file="/db/goods.js" -->;

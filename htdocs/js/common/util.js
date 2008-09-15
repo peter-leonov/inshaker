@@ -119,6 +119,9 @@ function validateNumeric(txt){
 	return false;
 };
 
+function remClass(elem, className) { if(elem) elem.remClassName(className) };
+function logObject(obj) { if(console.log) console.log(Object.stringify(obj))};
+
 /**
  * Cookie functionality. 
  * All cookies are saved with "path=/"

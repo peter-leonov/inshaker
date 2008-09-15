@@ -9,10 +9,10 @@ var Model = {
 	recs: [], // recommendations
 	
 	init: function(name){
-		this.cocktail = cocktails[name];
-		this.cocktailsSet = toArray(cocktails);
+		this.cocktail = Cocktail.getByName(name);
+		this.cocktailsSet = Cocktail.cocktails.sort(DataFilter.nameSort);
 		this.ingredients = this.cocktail.ingredients;
-		this.tools = tools;
+		this.tools = Tool.tools;
 		
 		this.recs = this._findRecs(this.cocktail);
 		if(this.recs.length == 0) this.dataListener.expandRelated();
