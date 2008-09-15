@@ -22,13 +22,13 @@ Object.extend(Ingredient,
 		this.groups = db_groups;
 	},
 	
-	byName: function (name){
+	getByName: function (name){
 		for(var i = 0; i < this.ingredients.length; i++){
 			if(this.ingredients[i].name == name) return this.ingredients[i];
 		}
 	},
 	
-	byGroup: function(group){
+	getByGroup: function(group){
 		var res = [];
 		for(var i = 0; i < this.ingredients.length; i++){
 			if(this.ingredients[i].group == group) res.push(this.ingredients[i]);
@@ -36,8 +36,11 @@ Object.extend(Ingredient,
 		return res;
 	},
 	
-	getGroups: function(){
-		return groups;
+	sortByGroups: function(a, b){
+		var self = Ingredient;
+		if(self.groups.indexOf(self.getByName(a).group) > 
+			self.groups.indexOf(self.getByName(b).group)) return 1;
+		else return -1;
 	}
 })
 

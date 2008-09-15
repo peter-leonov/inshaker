@@ -52,9 +52,10 @@ var Printer = {
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
 
-       for(var i = 0; i < cocktail.ingredients.length; i++){
-           var last = (i == (cocktail.ingredients.length - 1));
-           ingredsRoot.appendChild(this.createIngredPairElement(cocktail.ingredients[i], last));
+	   var ingredients = cocktail.ingredients.sort(Ingredient.sortByGroups);
+       for(var i = 0; i < ingredients.length; i++){
+           var last = (i == (ingredients.length - 1));
+           ingredsRoot.appendChild(this.createIngredPairElement(ingredients[i], last));
        }
 
        for(var i = 0; i < cocktail.tools.length; i++){
@@ -102,10 +103,15 @@ var Printer = {
         var numTxt = "";
         if(cNum > 1) numTxt = cNum + " " + cNum.plural("коктейль", "коктейля", "коктейлей");
         $(this.ID_COCKTAILS_NUM).innerHTML = numTxt;
-        
-        var i = 0; 
+         
         var l = lengthOf(cartData.goods);
-        for(name in cartData.goods){
+		
+		var names = [];
+		for(var name in cartData.goods) {names.push(name)};
+		names = names.sort(Ingredient.sortByGroups);
+		
+        for(var i = 0; i < names.length; i++){
+			var name = names[i];
 			var bottles = cartData.goods[name].bottles;
 			var j = 0;
             for(id in bottles){
@@ -113,7 +119,6 @@ var Printer = {
 				ingredsRoot.appendChild(this.createIngredElement(bottles[id], name, last));
                 j++;
 			}
-            i++;
 		}
 
         var tools = this.collectTools(cartData.cocktails);
