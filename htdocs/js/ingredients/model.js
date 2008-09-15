@@ -1,10 +1,10 @@
 var Model = {
-	ingredients: ingredients,
+	ingredients: Cocktail.ingredients,
 	resultSet: [],
 	dataListener: null,
 	
 	init: function(){
-		this.cocktailsSet = toArray(cocktails).sort(DataFilter.nameSort);
+		this.cocktailsSet = Cocktail.cocktails.sort(DataFilter.nameSort);
 	},
 	
 	uniqueLetters: function(){

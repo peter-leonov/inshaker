@@ -38,3 +38,7 @@ $.onload (
 		PartiesPage.initialize(nodes);
 	}
 )
+
+<!--# include file="/js/parties/model.js" -->
+<!--# include file="/js/parties/controller.js" -->
+<!--# include file="/js/parties/view.js" -->

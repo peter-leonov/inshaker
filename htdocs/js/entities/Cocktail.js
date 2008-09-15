@@ -34,6 +34,12 @@ Object.extend(Cocktail,
 		}
 	},
 	
+	getByHtmlName: function(htmlName){
+		for(var i = 0; i < this.cocktails.length; i++){
+			if(this.cocktails[i].name_eng.htmlName() == htmlName) return this.cocktails[i];
+		}
+	},
+	
 	getByLetter: function (letter, set){
 		if(!set) set = this.cocktails;
 		var res = [];	

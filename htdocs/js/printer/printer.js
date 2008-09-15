@@ -35,13 +35,7 @@ var Printer = {
 
     cocktailInit: function(param){
         this.preloadImages();
-        var cocktail = null;
-        for(name in cocktails) {
-            if(cocktails[name].name_eng.htmlName() == param) {
-                cocktail = cocktails[name];
-                break;
-            }
-        }
+        var cocktail = Cocktail.getByHtmlName(param);
   		this.renderCocktail(cocktail);
     },  
 
