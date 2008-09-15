@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<title>InShaker √ Barman</title>
+	<style>
+		html { font-family: sans-serif; }
+		img { display:block; }
+		#main-wrapper {
+			width: 450px;
+			border: 1px #E0E0E0 solid;
+			-moz-border-radius-topleft: 10px;
+			-moz-border-radius-topright: 10px;
+			-webkit-border-top-left-radius: 10px;
+			-webkit-border-top-right-radius: 10px;
+			margin: 30px auto;
+			padding: 20px;
+		}
+		
+		.name {
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+		
+		.logo {
+			float:left;
+		}
+		
+		a {
+			color:#cc2f7c;
+		}
+		
+		.go {
+			cursor: pointer;
+			background:#cc2f7c;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			width: 100px;
+			line-height: 40px;
+			height: 40px;
+			float: right;
+			color: #FFFFFF;
+			text-align:center;
+			margin-top: 50px;
+		}
+		
+		.clicked {
+			background: #E0E0E0;
+			color: #C0C0C0;
+			border: 1px #C0C0C0 solid;
+		}
+		
+		.options {
+			float: left;
+			width: 195px;
+			margin-left: 25px;
+			font-size: 16px;
+		}
+		#output {
+			visibility: hidden;
+			font-size: 12px;
+			margin-top: 170px;
+			background: #EDEDED;
+			border: 1px #C0C0C0 solid;
+			height: 0px;
+			overflow: auto;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body id="barman-page">
+	<div id="main-wrapper">
+		<div class="name">Обновление <a href="http://inshaker.barman.programica.ru" target="_blank">inshaker.barman.programica.ru</a></div>
+		<img class="logo" src="/i/logo/barman.png"></img>
+		<div class="options">
+			<form action="#" method="post" id='barman_form'>
+				<input type="checkbox" checked="yes" name="cocktails" value="cocktails"/> Коктейли<br/>
+				<input type="checkbox" checked="yes" name="ingredients" value="ingredients"/> Ингредиенты<br/>
+				<input type="checkbox" checked="yes" name="tools" value="tools"/> Штучки<br/>
+				<input type="checkbox" checked="yes" name="bars" value="bars"/> Бары<br/>
+				<input type="checkbox" checked="yes" name="events" value="events"/> События<br/>
+				<input type="checkbox" checked="yes" name="parties" value="parties"/> Вечеринки<br/>
+			</form>
+		</div>
+		<div id="go" class="go">Запустить</div>
+		<pre id="output">
+		</pre>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+<!--# include file="/js/common/programica.js" -->
+<!--# include file="/js/common/util.js" -->
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+
+$.onload(function(){
+	var inflateNode = function(node){ 
+		node.style.visibility="visible"; 
+		var ht = (node.scrollHeight > 300) ? 300 : node.scrollHeight;
+		node.animate("easeInCubic", {height: ht}, 0.15) 
+	};
+	var squeezeNode = function(node){ 
+		node.animate("easeInCubic", {height: 0}, 0.15);
+		node.style.visibility="hidden";
+	};
+	
+	$('go').addEventListener('click',function(e){
+		$('go').addClassName('clicked');
+		$('go').innerHTML = "Подожди...";
+		
+		var fh = $('barman_form').toHash();
+		logObject(fh);
+		squeezeNode($('output'));
+		
+		var req = aPost("/act/launcher.cgi", fh);
+		req.onSuccess = function (){
+			$('output').innerHTML = this.responseText();
+			inflateNode($('output'));
+			$('go').remClassName('clicked');
+			$('go').innerHTML = "Запустить";
+		}
+		req.onError = function(){
+			alert("Не могу запустить Barman")
+		}
+	}, false);
+})
+</script>
