@@ -3,7 +3,7 @@
 <head>
 	<title>InShaker √ Barman</title>
 	<style>
-		html { font-family: sans-serif; }
+		html { font-family: Arial,sans-serif; }
 		img { display:block; }
 		#main-wrapper {
 			width: 450px;
@@ -65,20 +65,27 @@
 			overflow: auto;
 			padding: 5px;
 		}
+		
+		form label {
+			display: block;
+		}
+		form label input {
+			vertical-align: bottom;
+		}
 	</style>
 </head>
 <body id="barman-page">
 	<div id="main-wrapper">
 		<div class="name">Обновление <a href="http://inshaker.barman.programica.ru" target="_blank">inshaker.barman.programica.ru</a></div>
-		<img class="logo" src="/i/logo/barman.png"></img>
+		<img class="logo" src="/i/logo/barman.png"/>
 		<div class="options">
 			<form action="#" method="post" id='barman_form'>
-				<input type="checkbox" checked="yes" name="cocktails" value="cocktails"/> Коктейли<br/>
-				<input type="checkbox" checked="yes" name="ingredients" value="ingredients"/> Ингредиенты<br/>
-				<input type="checkbox" checked="yes" name="tools" value="tools"/> Штучки<br/>
-				<input type="checkbox" checked="yes" name="bars" value="bars"/> Бары<br/>
-				<input type="checkbox" checked="yes" name="events" value="events"/> События<br/>
-				<input type="checkbox" checked="yes" name="parties" value="parties"/> Вечеринки<br/>
+				<label><input type="checkbox" name="cocktails" checked="checked" value="yes"/>Коктейли</label>
+				<label><input type="checkbox" name="ingredients" checked="checked" value="yes"/>Ингредиенты</label>
+				<label><input type="checkbox" name="tools" checked="checked" value="yes"/>Штучки</label>
+				<label><input type="checkbox" name="bars" checked="checked" value="yes"/>Бары</label>
+				<label><input type="checkbox" name="events" checked="checked" value="yes"/>События</label>
+				<label><input type="checkbox" name="parties" checked="checked" value="yes"/>Вечеринки</label>
 			</form>
 		</div>
 		<div id="go" class="go">Запустить</div>
@@ -104,6 +111,19 @@ $.onload(function(){
 		node.animate("easeInCubic", {height: 0}, 0.15);
 		node.style.visibility="hidden";
 	};
+	
+	var memory = Object.parse(Cookie.get('barman-memory'));
+	if (memory){
+		var inputs = $('barman_form').getElementsByTagName('input')
+		for (var i = 0; i < inputs.length; i++){
+				inputs[i].checked = memory[inputs[i].name] ? 'checked' : ''
+		}
+	}
+	
+	$('barman_form').addEventListener('click', function(e){
+		var memory = Object.stringify($('barman_form').toHash());
+		Cookie.set('barman-memory', memory);
+	}, false);
 	
 	$('go').addEventListener('click',function(e){
 		$('go').addClassName('clicked');
