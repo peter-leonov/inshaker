@@ -170,7 +170,9 @@ private
     fname_substitute  = src_dir + "/substitute.csv"
     rating = {}
     substitute = {}
-    errors = []
+    unknown = []
+    doubles = []
+    uniq = {}
     if File.exists? fname_rating and File.exists? fname_substitute
       csv_rating = CSV::parse(File.open(fname_rating).read)
       csv_substitute = CSV::parse(File.open(fname_substitute).read)
@@ -182,6 +184,13 @@ private
       csv_rating.each do |line|
         i += 1
         v = line[0]
+        
+        if uniq[v]
+          doubles << "#{i}: #{v}"
+          next
+        end
+        uniq[v] = true
+        
         m = /\@(\S+)/.match v
         if m then
           bank = substitute[m[1]]
@@ -190,21 +199,15 @@ private
               rating[bank] = rating[bank] ? rating[bank] + 1 : 1
             end
           else
-            errors.push "#{i}: #{m[1]}"
+            unknown << "#{i}: #{m[1]}"
           end
         else
-          puts "Can`t parse #{v}"
+          puts "  #{i}: Не могу понять email: '#{v}'"
         end
       end
       
-      unless errors.empty? then
-        message = "Неизвестные банки:\n" + errors.join("\n")
-        fork do
-          puts 'mailing error mesage'
-          RMail::Message.bake({:to => 'max@contactmaker.ru, pl@contactmaker.ru', :subject => 'Неизвестные банки', :body => message}).send
-        end
-        warn message
-      end
+      puts "  Неизвестные банки:\n  " + unknown.join("\n  ") unless unknown.empty?
+      puts "\n  Повторяющиеся адреса:\n  " + doubles.join("\n  ") unless doubles.empty?
     end
     
     @entity[:rating][:data] = rating
