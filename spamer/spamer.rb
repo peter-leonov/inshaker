@@ -22,13 +22,14 @@ class Person
   end
 end
 
-render = ERB.new(File.read(ARGV[1]).gsub("\r", ''))
-csv = CSV.parse(File.read(ARGV[0]))
+render = ERB.new(File.read(ARGV[0]).gsub("\r", ''))
+csv = CSV.parse(File.read(ARGV[1]))
 Person.init csv.shift
 
+i = 0
 csv.each do |row|
+  i += 1
   raw = render.result(Person.new(row).get_binding)
-  
   message = {}
   head, body = raw.split(/\n\n/, 2)
   head.split(/\n/).each do |v|
@@ -37,9 +38,9 @@ csv.each do |row|
   end
   message[:body] = body
   
-  sleep 3
-  
-  puts message[:to]
+  puts "#{i}: " + message[:to]
   RMail::Message.bake(message).send
+  
+  sleep 5
 end
 
