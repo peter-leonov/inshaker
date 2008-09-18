@@ -15,5 +15,4 @@ IO.popen("cd /www/inshaker/barman && ./launcher.rb #{processors} 2>&1") { |f|
 	  res += f.gets
   end
 }
-
 cgi.out { res }
