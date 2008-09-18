@@ -278,7 +278,7 @@ $.onload(function(){
 		goUpButton.setEnabled(false);
 		
 		squeezeNode($('output'));
-		var req = aPost("/act/deploy.cgi", {});
+		var req = aPost("/act/deployer.cgi", {});
 		req.onSuccess = function (){
 			$('output').innerHTML = this.responseText();
 			inflateNode($('output'));
