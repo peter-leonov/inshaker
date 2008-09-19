@@ -104,7 +104,7 @@ class BarsProcessor < Barman::Processor
     c = Curl::Easy.new("http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml")
     c.http_get
     points_arrs = c.body_str.scan(rx)
-    points_arrs.each {|arr| @city_points[arr[0]] = {:point => [arr[2].to_f, arr[1].to_f], :zoom => 10}}
+    points_arrs.each {|arr| @city_points[arr[0]] = {:point => [arr[2].to_f, arr[1].to_f], :zoom => 11}}
   end
   
   def flush_json
