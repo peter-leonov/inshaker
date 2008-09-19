@@ -23,7 +23,7 @@ class Deployer
   
   def svn_commit
     begin
-      system("cd #{Config::BASE_DIR} && svn ci -m 'content updated from WEB on #{Time.now}'")
+      system("cd #{Config::BASE_DIR} && svn ci -m 'content updated from WEB on #{Time.now}' 2>&1")
     rescue
       puts "Unable to perform svn commit"
       exit 1
