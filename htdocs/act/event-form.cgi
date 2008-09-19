@@ -7,15 +7,16 @@ use MIME::Lite;
 use MIME::EncWords qw(:all);
 use MIME::Base64;
 use Encode qw(encode);
+use Text::CSV_XS;
 
 my $cgi = CGI::Minimal->new;
 my $q = {map { $_, $cgi->param($_) } $cgi->param};
 
-my $signatire = $q->{first} . ' ' . $q->{second} . ' [' . $q->{city} . ']';
+my $signature = $q->{first} . ' ' . $q->{second} . ' [' . $q->{city} . ']';
 
 my $msg = MIME::Lite->new
 (
-	From    => encode_mimewords($signatire . ' <' . $q->{email} . '>', Charset => 'UTF-8'),
+	From    => encode_mimewords($signature . ' <' . $q->{email} . '>', Charset => 'UTF-8'),
 	To      => 'event@inshaker.ru, pl@contactmaker.ru',
 	Subject =>  encode_mimewords($q->{event}, Charset => 'UTF-8'),
 	Type    => 'multipart/mixed'
@@ -41,7 +42,17 @@ for my $k (keys %$q)
 my $row1 = join('', map { "<th>$_</th>" } @names);
 my $row2 = join('', map { "<td>$_</td>" } @values);
 
-my $html = qq { <h1>$signatire</h1> <br> <table border="1" cellspacing="0" cellpadding="2"><tr>$row1</tr><tr>$row2</tr></table> <br><br> <table>$human</table> };
+# my $table_fn = $q->{event};
+# $table_fn =~ tr/абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ/abvgdeejziiklmnoprstufhc4wwyyyeuaABVGDEEJZIIKLMNOPRSTUFHC4WWYYYEUA/;
+# $table_fn =~ s/[^a-zA-Z]/_/g;
+open my $table, '>>', "../../data/event-subscribers.csv";
+my $csv = Text::CSV_XS->new({ binary => 1, eol => $/ });
+$csv->combine(scalar localtime, $q->{event}, @values);
+print $table $csv->string;
+close $table;
+
+
+my $html = qq { <h1>$signature</h1> <br> <table border="1" cellspacing="0" cellpadding="2"><tr>$row1</tr><tr>$row2</tr></table> <br><br> <table>$human</table> };
 
 $msg->attach
 (
