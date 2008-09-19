@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<title>InShaker √ Barman</title>
+	<title>InShaker — Barman</title>
 	<style>
 		html { font-family: Arial,sans-serif; }
 		img { display:block; }
@@ -145,9 +145,11 @@
 		
 		form label {
 			display: block;
+			padding: 1px 0;
 		}
 		form label input {
 			vertical-align: bottom;
+			margin: 3px;
 		}
 	</style>
 </head>
@@ -167,15 +169,15 @@
 				</div>
 				<div class="wrapper rounded-top point" id="point_1">
 					<div class="name">Обновление <a href="http://inshaker.barman.programica.ru" target="_blank">inshaker.barman.programica.ru</a></div>
-					<img class="logo" src="/i/logo/barman.png"></img>
+					<img class="logo" src="/i/logo/barman.png"/>
 					<div class="options">
 						<form action="#" method="post" id='barman_form'>
-							<input type="checkbox" name="cocktails" value="cocktails"/> Коктейли<br/>
-							<input type="checkbox" name="ingredients" value="ingredients"/> Ингредиенты<br/>
-							<input type="checkbox" name="tools" value="tools"/> Штучки<br/>
-							<input type="checkbox" name="bars" value="bars"/> Бары<br/>
-							<input type="checkbox" name="events" value="events"/> События<br/>
-							<input type="checkbox" name="parties" value="parties"/> Вечеринки<br/>
+							<label><input type="checkbox" name="cocktails"/>Коктейли</label>
+							<label><input type="checkbox" name="ingredients"/>Ингредиенты</label>
+							<label><input type="checkbox" name="tools"/>Штучки</label>
+							<label><input type="checkbox" name="bars"/>Бары</label>
+							<label><input type="checkbox" name="events"/>События</label>
+							<label><input type="checkbox" name="parties"/>Вечеринки</label>
 						</form>
 					</div>
 					<div id="goBarman" class="go"></div>

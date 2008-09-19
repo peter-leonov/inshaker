@@ -45,7 +45,7 @@ var Printer = {
        var toolsRoot     = $(this.ID_TOOLS_LIST);
        var imgsRoot      = $(this.ID_INGREDS_IMGS);
 
-       document.title = "Inshaker √  " + cocktail.name;
+       document.title = "Inshaker —  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
        $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".jpg";     
        for(var i = 0; i < cocktail.receipt.length; i++){
