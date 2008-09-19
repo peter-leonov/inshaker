@@ -33,7 +33,7 @@ class Deployer
   def svn_update
     begin
       puts "Connecting to inshaker.ru..."
-      system("ssh root@inshaker.ru 'cd /www && sudo -u www svn up 2>&1 | grep revision'")
+      system("ssh root@inshaker.ru 'cd /www && sudo -u www svn up 2>&1'")
     rescue
       puts "Unable to perform svn update on server"
       exit 1
