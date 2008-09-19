@@ -42,9 +42,6 @@ for my $k (keys %$q)
 my $row1 = join('', map { "<th>$_</th>" } @names);
 my $row2 = join('', map { "<td>$_</td>" } @values);
 
-# my $table_fn = $q->{event};
-# $table_fn =~ tr/абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ/abvgdeejziiklmnoprstufhc4wwyyyeuaABVGDEEJZIIKLMNOPRSTUFHC4WWYYYEUA/;
-# $table_fn =~ s/[^a-zA-Z]/_/g;
 open my $table, '>>', "../../data/event-subscribers.csv";
 my $csv = Text::CSV_XS->new({ binary => 1, eol => $/ });
 $csv->combine(scalar localtime, $q->{event}, @values);
