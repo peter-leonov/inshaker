@@ -1,28 +1,11 @@
 #!/usr/bin/ruby
 
+NGINX_PORT = 8003
+APACHE_PORT = 8103
 
-DIR = $0.match(/^(.+)\//)[1]
-NAME = DIR.match(/^.+\/(.+)/)[1]
+require 'pmc/servers'
 
-if ENV['SERVER_TYPE'] == "developer"
-  TYPE = "developer"
-else
-  TYPE = "server"
-end
+puts "Stopping #{Servers::NAME} as #{Servers::TYPE}..."
 
-# PID=`perl -ne "print; if (/;\s*pid\s+(\S+)\s*;/){ print $1; last }" $DIR/nginx.conf.tmp`
-
-puts "Stopping #{NAME} as #{TYPE}..."
-
-
-
-def stop server
-  if File.exists?("#{DIR}/#{server}.pid")
-    Process.kill("INT", File.read("#{DIR}/#{server}.pid").to_i)
-  else
-    puts "  #{server} is not started"
-  end
-end
-
-stop "nginx"
-stop "apache"
+Servers.stop 'nginx'
+Servers.stop 'apache'
