@@ -2,7 +2,7 @@ BarsPage.view =
 {
 	owner: BarsPage,
 	cache: {barNode:{}},
-	any: {format: 'выпить по коктейльчику', feel: 'с кем угодно'},
+	any: {format: 'выпить по коктейльчику', feel: 'хороших людей'},
 	
 	initialize: function (nodes, citiesDB)
 	{
@@ -13,14 +13,14 @@ BarsPage.view =
 		var me = this,
 			controller = me.owner.controller,
 			viewSwitcher = nodes.viewSwitcher
-		nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
+		// nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
 		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
-		Switcher.bind(viewSwitcher, viewSwitcher.childNodes, [this.nodes.barsContainer, this.nodes.map])
+		Switcher.bind(viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
 		viewSwitcher.setNames(['list', 'map'])
 		viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		
-		Selecter.bind(nodes.citySelect)
+		// Selecter.bind(nodes.citySelect)
 		Selecter.bind(nodes.formatSelect)
 		Selecter.bind(nodes.feelSelect)
 		
@@ -69,9 +69,9 @@ BarsPage.view =
 	
 	renderCities: function (options, selected)
 	{
-		var node = this.nodes.citySelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		// var node = this.nodes.citySelect
+		// node.setOptions(options)
+		// node.select(selected || 0, true)
 	},
 	
 	renderFormats: function (options, selected)
@@ -199,8 +199,8 @@ BarsPage.view =
 		if (!this.gIcon)
 		{
 			var gIcon = new GIcon()
-			gIcon.shadow = '/t/bg/bars/bar-icon.png'
-			gIcon.image = '/t/bg/bars/bar-icon.png'
+			// gIcon.shadow = '/t/bars/bar-icon.png'
+			gIcon.image = '/t/bars/bar-icon.png'
 			gIcon.iconAnchor = new GPoint(12, 34)
 			gIcon.infoWindowAnchor = new GPoint(16, 0)
 			gIcon.infoShadowAnchor = new GPoint(18, 25)

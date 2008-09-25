@@ -18,7 +18,7 @@ BarsPage.controller =
 			Object.extend(state, hash)
 		else
 			state = this.state = Object.copy(this.emptyState)
-		log(hash, state)
+		// log(hash, state)
 		var owner = this.owner
 		owner.view.setViewType(state.view)
 		owner.model.setState(state)

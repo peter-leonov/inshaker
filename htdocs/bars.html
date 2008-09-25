@@ -3,6 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
+	<link rel="stylesheet" type="text/css" href="t/bars.css"/>
 	<title>Inshaker — Лучшие бары России на карте или списком</title>
 </head>
 <body>
@@ -10,32 +11,12 @@
 	<!--# include file="/inc/top-common.html" -->
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1 class="all">Лучшие бары России</h1>
-			<h2 class="search"><a>Мохито</a> в лучших <a>барах</a> России</h2>
-			<ul id="switch-view"><li>списком</li><li>на карте</li></ul>
+			<h1 class="all">Гид по лучшим барам и клубам в Москве <span id="switch-view"><a>списком</a> или <a>на карте</a></span></h1>
+			<h2 class="search"><a></a> в лучших <a>барах и клубах</a> Москвы</h2>
 		</div>
 		
 		<div class="b-content" id="bars-list">
-			<div id="sort-menu">
-				<dl class="bars-select" id="bars-city">
-					<dt class="button"><span class="caption"></span> <small></small></dt>
-					<dd>
-						<ul class="options"></ul>
-					</dd>
-				</dl>
-				<dl class="bars-select" id="bars-format">
-					<dt class="button"><span class="caption"></span> <small></small></dt>
-					<dd>
-						<ul class="options"></ul>
-					</dd>
-				</dl>
-				<dl class="bars-select" id="bars-feel">
-					<dt class="button"><span class="caption"></span> <small></small></dt>
-					<dd>
-						<ul class="options"></ul>
-					</dd>
-				</dl>
-			</div>
+			<div id="sort-menu">Хочу <dl class="bars-select" id="bars-format"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl></div>
 			<div id="bars-container"></div>
 			<div id="map"><p class="loading">   Загрузка…</p></div>
 		</div>

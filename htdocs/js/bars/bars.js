@@ -24,8 +24,9 @@ $.onload
 			titleSearchName: cssQuery('.b-title .search a')[0],
 			titleSearchAll: cssQuery('.b-title .search a')[1],
 			viewSwitcher: $('switch-view'),
+			viewSwitcherButtons: cssQuery('#switch-view a'),
 			barsContainer: $('bars-container'),
-			citySelect: $('bars-city'),
+			// citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map')

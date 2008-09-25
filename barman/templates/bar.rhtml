@@ -3,6 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/bar.css" media="screen"/>
 	<title>Inshaker — <%= @name %></title>
 </head>
 <body id="bar-page">
@@ -42,6 +43,15 @@
 								<% end %>
 							</dd>
 						</dl>
+						<dl class="part people">
+							<dt>В компании:</dt>
+							<dd>
+								<% @feel.each do |fl| %>
+								<a href="/bars.html#feel=<%=fl%>"><%=fl%></a><%= (fl == @feel.last) ? "" : ", " %>
+								<% end %>
+							</dd>
+						</dl>
+						
 						<dl class="part barman">
 							<dt>Главный бармен:</dt>
 							<dd><%=@chief%></dd>
@@ -55,14 +65,6 @@
 							<dd>
 								<% @cuisine.each do |cu| %>
 								<%= cu %><%= (cu == @cuisine.last) ? "" : ", " %>
-								<% end %>
-							</dd>
-						</dl>
-						<dl class="part people">
-							<dt>Гости:</dt>
-							<dd>
-								<% @feel.each do |fl| %>
-								<a href="/bars.html#feel=<%=fl%>"><%=fl%></a><%= (fl == @feel.last) ? "" : ", " %>
 								<% end %>
 							</dd>
 						</dl>
