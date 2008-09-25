@@ -86,8 +86,7 @@ BarPage.view =
 		if (!this.gIcon)
 		{
 			var gIcon = new GIcon()
-			gIcon.shadow = '/t/bg/bars/bar-icon.png'
-			gIcon.image = '/t/bg/bars/bar-icon.png'
+			gIcon.image = '/t/bars/bar-icon.png'
 			gIcon.iconAnchor = new GPoint(12, 34)
 			gIcon.infoWindowAnchor = new GPoint(16, 0)
 			gIcon.infoShadowAnchor = new GPoint(18, 25)

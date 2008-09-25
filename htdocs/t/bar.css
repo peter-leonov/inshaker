@@ -1,20 +1,4 @@
 /* bar page */
-/*#bar-page .top-menu .prev,
-#bar-page .top-menu .next{background:url(icon/str/bar-ra.png) no-repeat 0 0;width:60px;height:60px;position:absolute;top:112px;right:0;}
-#bar-page .top-menu .prev{background-image:url(icon/str/bar-la.png);right:auto;left:0;}
-#bar-page .top-menu .prev.dis{background-image:url(icon/str/bar-ln.png);}
-#bar-page .top-menu .next.dis{background-image:url(icon/str/bar-rn.png);}
-#bar-page .hreview .top-menu p{margin-bottom:199px;}
-#bar-page .hreview .entry{padding:25px 10px 21px;position:relative;}
-#bar-page .hreview .entry h3{font-size:150%;margin-bottom:7px;}
-#bar-page .hreview .entry .about{float:right;margin:1em 0 0 55px;}
-#bar-page .hreview .entry .about li{border-top:1px solid #dfdfdf;line-height:1.92;}
-#bar-page .hreview .entry .about li:first-child{border:0;}
-#bar-page .hreview .wrapper{overflow:hidden;line-height:1.33;font-size:120%;}
-#bar-page .popup{top:-200px;padding-top:195px;}
-#bar-page .popup h3{margin:-167px 20px -1px;}
-*/
-
 
 #bar-page .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
 #bar-page .b-content { width: 100%; }
@@ -49,7 +33,7 @@
 #bar-page .hrefs .prev, #bar-page .hrefs .next { font-size: 17px; text-decoration: none; }
 
 #bar-page .column-main .body-wrapper,
-#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 487px; }
+#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 500px; }
 #bar-page #sidebar .parties { overflow: visible; }
 #bar-page #sidebar .parties .column { width: 30.7em; }
 #bar-page #sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
@@ -61,7 +45,7 @@
 #bar-page .b-more-cocktails dt b { background: #000000 url(bg/body/black-more-title.png) repeat-x scroll 0px 0px; }
 
 #bar-page #city-name, #bar-page #bar-id { display: none; }
-#bar-page #map { width: 100%; height: 430px; position: relative; overflow: hidden; border: 1px solid #888; }
+#bar-page #map { width: 100%; height: 440px; position: relative; overflow: hidden; border: 1px solid #888; }
 
 
 
