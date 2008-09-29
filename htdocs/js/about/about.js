@@ -33,7 +33,8 @@ var AboutPage = {
 		log(hrefs)
 		
 		var sw = Switcher.bind(main, buttons, tabs)
-		sw.select(hrefs.indexOf(name))
+		var selected = hrefs.indexOf(name)
+		sw.select(selected >= 0 ? selected : 0)
 		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
 		LocationHash.onchange = function (now, last) { sw.select(hrefs.indexOf(now)); log(now) }
