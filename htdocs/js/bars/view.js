@@ -25,7 +25,6 @@ BarsPage.view =
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-		// nodes.viewSwitcher.autoSelect = false
 		// this.initMap()
 		
 		this.lastHash = null
@@ -64,7 +63,7 @@ BarsPage.view =
 	
 	setViewType: function (type)
 	{
-		this.nodes.viewSwitcher.select(type)
+		this.nodes.viewSwitcher.drawSelected(type)
 	},
 	
 	renderCities: function (options, selected)
