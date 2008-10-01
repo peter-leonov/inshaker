@@ -1,10 +1,16 @@
 BarsPage =
 {
-	init: function (barsDB, citiesDB, cocktailsDB, nodes)
+	initialize: function (nodes)
 	{
 		var state = {view: 'list'}
-		this.controller.initialize(barsDB, cocktailsDB, state)
-		this.view.initialize(nodes, citiesDB)
+		var model = this.model = new BarsPageModel()
+		var controller = this.controller = new BarsPageController(state)
+		var view = this.view = new BarsPageView(controller, nodes)
+		model.view = view
+		controller.view = view
+		controller.model = model
+		
+		view.checkHash()
 	},
 	
 	mapsApiIsLoaded: function ()
@@ -32,8 +38,7 @@ $.onload
 			map: $('map')
 		}
 		
-		BarsPage.init(Bar, City, Cocktail, nodes)
-		
+		BarsPage.initialize(nodes)
 	}
 )
 

@@ -1,24 +1,30 @@
-BarsPage.view =
+function BarsPageView ()
 {
-	owner: BarsPage,
+	BarsPageView.name = "BarsPageView"
+	this.constructor = BarsPageView
+	this.initialize.apply(this, arguments)
+}
+
+BarsPageView.prototype =
+{
 	cache: {barNode:{}},
 	any: {format: 'выпить по коктейльчику', feel: 'хороших людей'},
 	
-	initialize: function (nodes, citiesDB)
+	initialize: function (controller, nodes)
 	{
-		loadGoogleApi.delay(1000)
-		
-		this.citiesDB = citiesDB
+		this.controller = controller
 		this.nodes = nodes
-		var me = this,
-			controller = me.owner.controller,
-			viewSwitcher = nodes.viewSwitcher
+		
+		// loadGoogleApi.delay(1000)
+		
+		this.nodes = nodes
+		var me = this
 		// nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
 		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
-		Switcher.bind(viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
-		viewSwitcher.setNames(['list', 'map'])
-		viewSwitcher.onselect = function (num) { me._setViewNum(num) }
+		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
+		nodes.viewSwitcher.setNames(['list', 'map'])
+		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
 		
 		// Selecter.bind(nodes.citySelect)
 		Selecter.bind(nodes.formatSelect)
@@ -30,7 +36,6 @@ BarsPage.view =
 		this.lastHash = null
 		var location = document.location
 		// setInterval(function () { me.checkHash() }, 250)
-		this.checkHash()
 	},
 	
 	checkHash: function ()
@@ -40,25 +45,25 @@ BarsPage.view =
 		{
 			this.lastHash = hashStr
 			var hash = hashStr.length > 1 ? UrlEncode.parse(hashStr) : null
-			this.owner.controller.hashUpdated(hash)
+			this.controller.hashUpdated(hash)
 		}
 	},
 	
 	setHash: function (hash)
 	{
-		this.lastHash = location.hash = UrlEncode.stringify(hash)
+		this.lastHash = location.hash = "#" + UrlEncode.stringify(hash)
 	},
 	
-	modelChanged: function (data, state)
+	modelChanged: function (data)
 	{
-		this.renderBars(data, state)
+		this.renderBars(data)
 	},
 	
 	_setViewNum: function (num)
 	{
 		var type = ['list','map'][num]
 		this.setViewType(type)
-		this.owner.controller.viewTypeSwitched(type)
+		this.controller.viewTypeSwitched(type)
 	},
 	
 	setViewType: function (type)
@@ -89,20 +94,22 @@ BarsPage.view =
 		node.select(selected || 0, true)
 	},
 	
-	renderBars: function (bars, state)
+	renderBars: function (data)
 	{
+		var state = data.state
 		if (!state.view || state.view == 'list')
-			return this.renderBarsList(bars, state)
+			return this.renderBarsList(data)
 		else if (state.view == 'map')
-			return this.renderBarsMap(bars, state)
+			return this.renderBarsMap(data)
 		else
-			log('Unknown view type "'+state.view+'"')
+			log('Unknown view type "' + state.view + '"')
 	},
-	renderBarsList: function (bars, state)
+	renderBarsList: function (data)
 	{
-		this.waitGMap(null)
+		var parent = this.nodes.barsContainer,
+			bars = data.bars,
+			state = data.state
 		
-		var parent = this.nodes.barsContainer
 		parent.empty()
 		for (var i = 0; i < bars.length; i++)
 		{
@@ -112,8 +119,12 @@ BarsPage.view =
 			parent.appendChild(document.createTextNode(' '))
 		}
 	},
-	renderBarsMap: function (bars, state)
+	renderBarsMap: function (data)
 	{
+		var bars = data.bars,
+			state = data.state,
+			city = data.city
+		
 		if (!this.isGMapLoaded())
 			return this.waitGMap(arguments.callee.bind(this, arguments))
 		else
@@ -130,11 +141,10 @@ BarsPage.view =
 			}
 			else
 			{
-				var cityData = this.citiesDB.getByName(state.city)
-				var cityPoint = cityData.point
-				lat = cityPoint[0]
-				lng = cityPoint[1]
-				zoom = cityData.zoom || 10
+				var point = city.point
+				lat = point[0]
+				lng = point[1]
+				zoom = city.zoom || 10
 			}
 			
 			this.gMapMove(lat, lng, zoom)
@@ -191,7 +201,7 @@ BarsPage.view =
 			map.addControl(new GSmallMapControl())
 			map.enableContinuousZoom()
 			map.enableScrollWheelZoom()
-			GEvent.addListener(map, 'moveend', function () { me.owner.controller.gMapMoveEnd(map.getCenter(), map.getZoom()) })
+			GEvent.addListener(map, 'moveend', function () { me.controller.gMapMoveEnd(map.getCenter(), map.getZoom()) })
 			this.gMap = map
 		}
 		
@@ -209,6 +219,8 @@ BarsPage.view =
 	
 	waitGMap: function (f)
 	{
+		if (f)
+			loadGoogleApi()
 		this.waitGMapFunction = f
 	},
 	
@@ -232,7 +244,7 @@ BarsPage.view =
 		// var mkey = bar.point[0] + ':' + bar.point[1]
 		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
 		var me = this
-		function click () { me.owner.controller.gMarkerClicked(gMarker) }
+		function click () { me.controller.gMarkerClicked(gMarker) }
 		GEvent.addListener(gMarker, 'click', click)
 		gMarker.bar = bar
 		bar.gMarker = gMarker

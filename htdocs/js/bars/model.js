@@ -1,31 +1,30 @@
-BarsPage.model =
+function BarsPageModel ()
 {
-	owner: BarsPage,
-	
-	initialize: function (barsDB, cocktailsDB)
-	{
-		this.barsDB = barsDB
-		this.cocktailsDB = cocktailsDB
-	},
+	BarsPageModel.name = "BarsPageModel"
+	this.constructor = BarsPageModel
+	this.initialize.apply(this, arguments)
+}
+
+BarsPageModel.prototype =
+{
+	initialize: function () { },
 	
 	setState: function (state)
 	{
 		state = Object.copy(state)
 		
-		var view = this.owner.view,
-			barsDB = this.barsDB,
-			cocktailsDB = this.cocktailsDB
-		
-		var cities = barsDB.getCities(state)
+		var cities = Bar.getCities(state)
 		if (!state.city)
 			state.city = cities[0]
 		
-		var barsSet = this.barsDB.getByQuery(state)
+		var barsSet = Bar.getByQuery(state)
 		
-		view.modelChanged(barsSet, state)
-		view.renderTitle(cocktailsDB.getByName(state.cocktail))
+		var city = City.getByName(state.city)
+		var view = this.view
+		view.modelChanged({bars: barsSet, state: state, city: city})
+		view.renderTitle(Cocktail.getByName(state.cocktail))
 		view.renderCities(cities, state.city)
-		view.renderFormats(barsDB.getFormats(state), state.format)
-		view.renderFeels(barsDB.getFeels(state), state.feel)
+		view.renderFormats(Bar.getFormats(state), state.format)
+		view.renderFeels(Bar.getFeels(state), state.feel)
 	}
 }
