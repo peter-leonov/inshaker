@@ -53,6 +53,8 @@ function googleApiLoaderIsLoaded ()
 <!--# include file="/js/bars/view.js" -->
 
 <!--# include file="/lib/Programica/UrlEncode.js" -->
+<!--# include file="/lib/Programica/LocationHash.js" -->
+<!--# include file="/lib/Programica/WindowName.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 <!--# include file="/lib/Widgets/Selecter.js" -->
 

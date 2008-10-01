@@ -23,6 +23,7 @@ BarsPageController.prototype =
 		else
 			state = this.state = Object.copy(this.emptyState)
 		// log(hash, state)
+		this.view.setHash(state)
 		this.view.setViewType(state.view)
 		this.model.setState(state)
 	},

@@ -31,27 +31,26 @@ BarsPageView.prototype =
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-		// this.initMap()
-		
-		this.lastHash = null
-		var location = document.location
-		// setInterval(function () { me.checkHash() }, 250)
 	},
 	
 	checkHash: function ()
 	{
-		var hashStr = location.hash
-		if (hashStr != this.lastHash)
-		{
-			this.lastHash = hashStr
-			var hash = hashStr.length > 1 ? UrlEncode.parse(hashStr) : null
-			this.controller.hashUpdated(hash)
-		}
+		var hash = null,
+			hashStr, winStr
+		
+		if (hashStr = location.hash.substr(1))
+			hash = UrlEncode.parse(hashStr)
+		else if (winStr = WindowName.get('bars:state'))
+			hash = UrlEncode.parse(winStr)
+		
+		this.controller.hashUpdated(hash)
 	},
 	
 	setHash: function (hash)
 	{
-		this.lastHash = location.hash = "#" + UrlEncode.stringify(hash)
+		var urledHash = UrlEncode.stringify(hash)
+		location.hash = "#" + urledHash
+		WindowName.set('bars:state', urledHash)
 	},
 	
 	modelChanged: function (data)
