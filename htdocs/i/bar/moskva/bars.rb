@@ -16,6 +16,8 @@ class BarsProcessor < Barman::Processor
     BAR_ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
   end
   
+  ANY = {:format => "выпить по коктейльчику", :feel => "хороших людей"}
+  
   def initialize
     super   
     @bars = {}
@@ -65,8 +67,8 @@ class BarsProcessor < Barman::Processor
         out_images_path = Config::IMAGES_DIR + city.trans.html_name
         if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
         
-        if File.exists?(bar_path + "mini.png")
-          FileUtils.cp_r(bar_path + "mini.png", out_images_path + "/" + bar[:name_eng].html_name + "-mini.png", @mv_opt)
+        if File.exists?(bar_path + "mini.jpg")
+          FileUtils.cp_r(bar_path + "mini.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-mini.jpg", @mv_opt)
         end
         
         counter = 1
@@ -117,7 +119,7 @@ class BarsProcessor < Barman::Processor
      end
     end
     
-    flush_json_object(@bars, Config::DB_JS)
+    flush_json_object({:db => @bars, :opts => {:any => ANY}}, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   

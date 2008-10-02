@@ -15,7 +15,7 @@ Bar.prototype =
 	
 	smallImageHref: function ()
 	{
-		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '-mini.png'
+		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '-mini.jpg'
 	},
 	
 	pageHref: function ()
@@ -71,21 +71,6 @@ Object.extend(Bar,
 		}
 		// log(res, query)
 		return res
-	},
-	
-	getPrevNext: function (query)
-	{
-		query = query || {}
-		
-		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
-		if (!bars)
-			return []
-		
-		for (var i = 0; i < bars.length; i++)
-			if (bars[i].name == query.name)
-				return [bars[i-1], bars[i+1]]
-		
-		return []
 	},
 	
 	getAll: function ()
