@@ -20,9 +20,9 @@ function PartiesView(nodes){
 			self.guestsNumberChanged(false, this.value);
 		}, false);
 		
-		nodes.wantLink.addEventListener('click', function(e){
-			nodes.wantPopup.show();
-		}, false);
+		// nodes.wantLink.addEventListener('click', function(e){
+		// 	nodes.wantPopup.show();
+		// }, false);
 		
 		var wci = nodes.wantCloseItems;
 		for(var i = 0; i < wci.length; i++){
@@ -56,7 +56,7 @@ function PartiesView(nodes){
 		div.appendChild(img);
 		var name = document.createElement("span");
 		name.addClassName("name");
-		name.innerHTML = party.name + " в<br/>" + party.bar;
+		name.innerHTML = party.name + "<br/>" + party.bar;
 		div.appendChild(name);
 		
 		var self = this;
@@ -129,7 +129,7 @@ function PartiesView(nodes){
 	this.setPartyDisplayData = function(party){
 		nodes.partyName.innerHTML = party.name;
 		nodes.barName.innerHTML = party.bar;
-		nodes.barName.href = this.getBarHref(party);
+		nodes.wantLink.href = nodes.barName.href = this.getBarHref(party);
 		nodes.maxGuests.innerHTML = party.max_guests;
 		
 		nodes.person.innerHTML    = party.max_guests.plural("человека","человек","человек");
