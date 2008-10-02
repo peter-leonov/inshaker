@@ -43,28 +43,37 @@ BarPage.view =
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
-	modelChanged: function (bar, recommendations, carte, otherBarsSet, prevNext, partiesSet)
+	modelChanged: function (data)
 	{
 		var nodes = this.nodes
 		
 		// bar
-		this.bar = bar
+		this.bar = data.bar
 		
 		// cocktails
-		this.renderCocktails(nodes.recommendations, recommendations, 1)
-		this.renderCocktails(nodes.carte, carte, 3)
-		this.renderMap(bar, otherBarsSet)
-		this.renderPrevNext(prevNext)
-		this.renderParties(partiesSet)
+		this.renderCocktails(nodes.recommendations, data.recommendations, 1)
+		this.renderCocktails(nodes.carte, data.carte, 3)
+		this.renderMap(data.bar, data.otherBarsSet)
+		this.renderPrevNext(data.prevNext)
+		this.renderParties(data.partiesSet)
 	},
 	
 	readBarCityNames: function ()
 	{
-		var nodes = this.nodes
-		var barName = nodes.barName.innerHTML
-		var cityName = nodes.cityName.innerHTML
+		var nodes = this.nodes,
+			barName = nodes.barName.innerHTML,
+			cityName = nodes.cityName.innerHTML,
+			winStr, state
 		
-		this.owner.controller.barCityNamesLoaded(barName, cityName)
+		if (winStr = WindowName.get('bars:state'))
+			state = UrlEncode.parse(winStr)
+		else
+			state = {}
+		
+		state.name = barName
+		state.city = cityName
+		
+		this.owner.controller.barCityNamesLoaded(state)
 	},
 	
 	toggleMore: function ()

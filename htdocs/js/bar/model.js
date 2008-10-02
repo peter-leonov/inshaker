@@ -2,44 +2,47 @@ BarPage.model =
 {
 	owner: null, // must be defined before initialize
 	
-	initialize: function (barsDB, cocktailsDB)
-	{
-		this.barsDB = barsDB
-		this.cocktailsDB = cocktailsDB
-	},
+	initialize: function () { },
 	
 	getCocktailsByNames: function (arr)
 	{
-		var res = [],
-			cocktailsDB = this.cocktailsDB
+		var res = []
 		for (var i = 0; i < arr.length; i++)
-			res[i] = cocktailsDB.getByName(arr[i])
+			res[i] = Cocktail.getByName(arr[i])
 		return res
 	},
 	
-	setBarCity: function (barName, cityName)
+	getPrevNext: function (name, query)
 	{
-		var bar = this.barsDB.getByCityName(cityName, barName)
-		var prevNext = this.barsDB.getPrevNext({name: barName, city: cityName})
-		var recommendations = this.getCocktailsByNames(bar.recs)
-		var carte = this.getCocktailsByNames(bar.carte)
+		query = query || {}
 		
-		var otherBarsSet = this.barsDB.getAllByCity(cityName)
+		var bars = Bar.getByQuery(query)
+		if (!bars)
+			return []
+		log(query, bars)
+		for (var i = 0; i < bars.length; i++)
+			if (bars[i].name == name)
+				return [bars[i-1], bars[i+1]]
 		
-		var parties = Party.getAllByCity(cityName)
-		
-		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet, prevNext, parties)
+		return []
 	},
 	
-	nextBarCity: function (barName, cityName)
+	setQuery: function (query)
 	{
-		var bar = this.barsDB.getByCityName(cityName, barName)
-		var recommendations = this.getCocktailsByNames(bar.recs)
-		var carte = this.getCocktailsByNames(bar.carte)
-
-		var otherBarsSet = this.barsDB.getAllByCity(cityName)
-		
-		this.owner.view.modelChanged(bar, recommendations, carte, otherBarsSet)
+		var bar = Bar.getByCityName(query.city, query.name)
+		if (bar)
+		{
+			var data =
+			{
+				bar: bar,
+				recommendations: this.getCocktailsByNames(bar.recs),
+				carte: this.getCocktailsByNames(bar.carte),
+				otherBarsSet: Bar.getAllByCity(query.city),
+				prevNext: this.getPrevNext(query.name, {city: query.city, format: query.format, feel: query.feel}),
+				partiesSet: Party.getAllByCity(query.city)
+			}
+			
+			this.owner.view.modelChanged(data)
+		}
 	}
-	
 }

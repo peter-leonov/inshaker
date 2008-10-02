@@ -14,7 +14,6 @@ BarPage =
 	
 	mapsApiIsLoaded: function ()
 	{
-		// this.controller.mapsApiIsLoaded()
 		this.view.loadedGMap()
 	}
 }
@@ -51,3 +50,5 @@ function googleApiLoaderIsLoaded ()
 <!--# include file="/js/bar/controller.js" -->
 <!--# include file="/js/bar/view.js" -->
 
+<!--# include file="/lib/Programica/WindowName.js" -->
+<!--# include file="/lib/Programica/UrlEncode.js" -->
