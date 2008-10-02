@@ -33,7 +33,7 @@
 #bar-page .hrefs .prev, #bar-page .hrefs .next { font-size: 17px; text-decoration: none; }
 
 #bar-page .column-main .body-wrapper,
-#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 500px; }
+#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
 #bar-page #sidebar .parties { overflow: visible; }
 #bar-page #sidebar .parties .column { width: 30.7em; }
 #bar-page #sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
