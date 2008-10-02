@@ -41,6 +41,7 @@ $.onload
 			formPopupMenu: cssQuery('#form-popup .menu')[0],
 			formPopupFields: cssQuery('#form-popup .fields')[0],
 			formPopupThanks: cssQuery('#form-popup .thanks')[0],
+			formPopupHolding: cssQuery('#form-popup .holding')[0],
 			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
 			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
 			variableInputs: cssQuery('#form-popup .variable')[0],

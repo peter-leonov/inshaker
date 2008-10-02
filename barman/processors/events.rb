@@ -115,6 +115,7 @@ private
     @entity[:address]   = yaml['Адрес']
     @entity[:bar]       = yaml['Бар']
     @entity[:fields]    = yaml['Поля формы']
+    @entity[:status]    = {'проведение' => 'holding' }[yaml['Статус']]
     # @entity[:high]      = yaml['Генеральные спонсоры']
     # @entity[:medium]    = yaml['Спонсоры']
     # @entity[:low]       = yaml['При поддержке']

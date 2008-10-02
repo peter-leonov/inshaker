@@ -53,6 +53,8 @@ EventPage.view =
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
 		this.setFormLock(true)
+		
+		this.renderStatus(event.status)
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
@@ -381,7 +383,7 @@ EventPage.view =
 	{
 		this.startFormChecker()
 		this.nodes.formPopup.show()
-		this.hideFormPopupThanks()
+		// this.hideFormPopupThanks()
 	},
 	
 	hideFormPopup: function ()
@@ -395,6 +397,13 @@ EventPage.view =
 		this.stopFormChecker()
 		this.nodes.formPopupFields.hide()
 		this.nodes.formPopupThanks.show()
+	},
+	
+	showFormHolding: function ()
+	{
+		this.stopFormChecker()
+		this.nodes.formPopupFields.hide()
+		this.nodes.formPopupHolding.show()
 	},
 	
 	hideFormPopupThanks: function ()
@@ -427,6 +436,14 @@ EventPage.view =
 	stopFormChecker: function ()
 	{
 		clearInterval(this.formCheckTimer)
+	},
+	
+	renderStatus: function (status)
+	{
+		if (status == "holding")
+		{
+			this.showFormHolding()
+		}
 	}
 }
 

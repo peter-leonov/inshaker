@@ -684,6 +684,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #form-popup { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
 #event-page #form-popup .content { position: relative; z-index: 10; width: 495px; margin: 0 auto; top: 64px; }
 #event-page #form-popup .content form .thanks,
+#event-page #form-popup .content form .holding,
 #event-page #form-popup .content h2 { font-size: 27px; color: #f22b9f; font-style: italic; font-weight: bold; }
 #event-page #form-popup .content h2 { margin: 0 0 32px; }
 #event-page #form-popup .content .menu { margin: 0 0 20px 0; }
@@ -695,7 +696,8 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page #form-popup .content form label input { position: absolute; width: 280px; right: 0; font-size: 16px; padding: 0px 6px 3px; }
 #event-page #form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
 #event-page #form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }
-#event-page #form-popup .content form .thanks { position: absolute; left: 0; top: 47%; width: 100%; text-align: center; visibility: hidden; }
+#event-page #form-popup .content form .thanks,
+#event-page #form-popup .content form .holding { position: absolute; left: 0; top: 47%; width: 100%; text-align: center; visibility: hidden; }
 
 
 
