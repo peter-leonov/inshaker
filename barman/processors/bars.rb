@@ -65,8 +65,8 @@ class BarsProcessor < Barman::Processor
         out_images_path = Config::IMAGES_DIR + city.trans.html_name
         if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
         
-        if File.exists?(bar_path + "mini.png")
-          FileUtils.cp_r(bar_path + "mini.png", out_images_path + "/" + bar[:name_eng].html_name + "-mini.png", @mv_opt)
+        if File.exists?(bar_path + "mini.jpg")
+          FileUtils.cp_r(bar_path + "mini.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-mini.jpg", @mv_opt)
         end
         
         counter = 1
