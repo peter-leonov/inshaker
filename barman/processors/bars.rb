@@ -117,7 +117,7 @@ class BarsProcessor < Barman::Processor
      end
     end
     
-    flush_json_object(@bars, Config::DB_JS)
+    flush_json_object({:db => @bars, :opts => {}}, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   

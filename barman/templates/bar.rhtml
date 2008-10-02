@@ -39,7 +39,7 @@
 							<dt>Тут можно:</dt>
 							<dd>
 								<% @format.each do |fmt| %>
-									<a href="/bars.html#format=<%=fmt%>"><%=fmt%></a><%= (fmt == @format.last) ? "" : ", " %>
+								<a href="/bars.html#format=<%=fmt%>"><%=fmt%></a><%= (fmt == @format.last) ? "" : ", " %>
 								<% end %>
 							</dd>
 						</dl>

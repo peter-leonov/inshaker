@@ -29,8 +29,9 @@ Object.extend(Bar,
 {
 	db: null, // must be defined in db-bars.js by calling initialize()
 	
-	initialize: function (db)
+	initialize: function (store)
 	{
+		var db = store.db
 		// console.time('Bar.initialize')
 		var id = 0
 		for (var k in db)
@@ -45,8 +46,15 @@ Object.extend(Bar,
 				bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
 			}
 		}
+		
 		this.db = db
+		this.opts = store.opts
 		// console.timeEnd('DB.Bars.initialize')
+	},
+	
+	getOpts: function ()
+	{
+		return this.opts
 	},
 	
 	getByQuery: function (query)
