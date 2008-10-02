@@ -8,7 +8,6 @@ function BarsPageView ()
 BarsPageView.prototype =
 {
 	cache: {barNode:{}},
-	any: {format: 'выпить по коктейльчику', feel: 'хороших людей'},
 	
 	initialize: function (controller, nodes)
 	{
@@ -16,12 +15,12 @@ BarsPageView.prototype =
 		this.nodes = nodes
 		
 		// loadGoogleApi.delay(1000)
-		
+		// {format: 'выпить по коктейльчику', feel: 'хороших людей'}
 		this.nodes = nodes
 		var me = this
 		// nodes.citySelect.onselect	= function (val) { controller.citySelected(val) }
-		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val == me.any.format ? undefined : val) }
-		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val == me.any.feel ? undefined : val) }
+		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val) }
+		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val) }
 		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
 		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
@@ -80,7 +79,6 @@ BarsPageView.prototype =
 	renderFormats: function (options, selected)
 	{
 		var node = this.nodes.formatSelect
-		options.unshift(this.any.format)
 		node.setOptions(options)
 		node.select(selected || 0, true)
 	},
@@ -88,7 +86,6 @@ BarsPageView.prototype =
 	renderFeels: function (options, selected)
 	{
 		var node = this.nodes.feelSelect
-		options.unshift(this.any.feel)
 		node.setOptions(options)
 		node.select(selected || 0, true)
 	},
