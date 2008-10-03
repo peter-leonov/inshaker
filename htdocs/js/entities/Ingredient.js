@@ -24,7 +24,8 @@ Object.extend(Ingredient,
 	
 	getByName: function (name){
 		for(var i = 0; i < this.ingredients.length; i++){
-			if(this.ingredients[i].name == name) return this.ingredients[i];
+			if(this.ingredients[i].name.toLowerCase() == name.toLowerCase())
+        return this.ingredients[i];
 		}
 	},
 	
@@ -38,6 +39,8 @@ Object.extend(Ingredient,
 	
 	sortByGroups: function(a, b){
 		var self = Ingredient;
+    if(typeof a == 'object') { a = a[0]; b = b[0] }
+
 		if(self.groups.indexOf(self.getByName(a).group) > 
 			self.groups.indexOf(self.getByName(b).group)) return 1;
 		else return -1;
