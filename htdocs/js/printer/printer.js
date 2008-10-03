@@ -108,7 +108,7 @@ var Printer = {
 		
 		var names = [];
 		for(var name in cartData.goods) {names.push(name)};
-		names = names.sort(Ingredient.sortByGroups);
+    names = names.sort(Ingredient.sortByGroups);
 		
         for(var i = 0; i < names.length; i++){
 			var name = names[i];
