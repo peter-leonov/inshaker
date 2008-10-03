@@ -74,9 +74,11 @@ function CalculatorView() {
 	
 	if($('call_barmen')){
 		$('call_barmen').addEventListener('click', function(e){
-			if(!Calculator.checkSum("call_barmen")){
-				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
-			} else window.location.href="/call_barmen.html";
+			// if(!Calculator.checkSum("call_barmen")){
+			//  alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
+			// } else {
+        window.location.href="/bars/moskva/inshaker.html";
+      // }
 		}, false);
 	}
 	
@@ -135,6 +137,7 @@ function CalculatorView() {
 			
 			var newIngredients = []
 			var sum = 0;
+			
 			for(var name in cartData.goods){
 				var item = cartData.goods[name];
 				var bottles = cartData.goods[name].bottles;
