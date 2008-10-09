@@ -1,0 +1,48 @@
+/*index page*/
+
+#index-page #main-wrapper { width: 964px; }
+
+.box { padding: 1px 1px 0 1px; background: #fff; border: solid 1px #c0c0c0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+.box .body { width: 100%; height: 100%; background: #FFFFFF url(/t/bg/body/body-wrapper.png) repeat-x scroll 0 0; overflow: hidden; }
+
+/*#index-page #big { display: block; }*/
+#index-page #big { padding: 0; }
+#index-page #big a { display: block; width: 962px; height: 450px; text-indent: 1000px;}
+
+#index-page .info-blocks { margin: 21px 0 0 0px; }
+#index-page .info-blocks .box { float: left; width: 221px; height: 157px; overflow: hidden; margin-right: 21px; }
+#index-page .info-blocks .last { margin-right: 0; }
+
+#index-page .info-blocks a { font-size: 11px; }
+#index-page .info-blocks dt { text-align: center; padding: 11px 0 0 0; }
+#index-page .info-blocks dt b { font-size: 14px; font-style: italic; color: #343b40; font-family: Arial; }
+#index-page .info-blocks dd { height: 130px; width: 100%; }
+#index-page .info-blocks .simple dd a { display: block; text-align: center; height: 95px; line-height: 204px; background: no-repeat center center; }
+#index-page .info-blocks .simple dd a img { display: block; }
+
+
+
+/* more in cocktail */
+.programica-rolling-images { position: relative; }
+.programica-rolling-images .prev,
+.programica-rolling-images .next { position: absolute; z-index: 2; }
+.programica-rolling-images .viewport { overflow: hidden; position: relative; z-index: 1; }
+.programica-rolling-images .viewport .surface { padding: 0; margin: 0; }
+
+#index-page .info-blocks .cocktails-list .prev,
+#index-page .info-blocks .cocktails-list .next { top: 50px; background: transparent url(/t/icon/strs-green.png) no-repeat scroll; cursor: pointer; }
+#index-page .info-blocks .cocktails-list .prev { left: 20px; background-position: 0 -24px; }
+#index-page .info-blocks .cocktails-list .next { right: 20px; background-position: -16px -24px; }
+#index-page .info-blocks .cocktails-list .disabled { cursor: default; }
+#index-page .info-blocks .cocktails-list .next.disabled { background-position: -16px -38px; }
+#index-page .info-blocks .cocktails-list .prev.disabled { background-position: 0 -38px; }
+
+#index-page .info-blocks .cocktails-list .viewport { margin: 0 50px; }
+#index-page .info-blocks .cocktails-list .viewport .surface { width: 10000px; }
+#index-page .info-blocks .cocktails-list .point { float: left; width: 121px; }
+#index-page .info-blocks .cocktails-list { width: 100%; height: 100%; }
+#index-page .info-blocks .cocktails-list .prev,
+#index-page .info-blocks .cocktails-list .next { width: 16px; height: 14px; }
+
+#index-page .info-blocks .cocktails-list .point a { display: block; text-align: center; }
+#index-page .info-blocks .cocktails-list .point a img { display: block; margin: 8px auto; }
