@@ -52,8 +52,8 @@ function CocktailsController (model, view, cookies) {
 	
 	this.saveState = function (filters, tagState, strengthState) {
 		Cookie.set(cookies.tagState, Object.stringify(tagState));
-        Cookie.set(cookies.strengthState, Object.stringify(strengthState));
-        Cookie.set(cookies.filter, Object.stringify(filters));
+    Cookie.set(cookies.strengthState, Object.stringify(strengthState));
+    Cookie.set(cookies.filter, Object.stringify(filters));
 	};
 	
 	this.onLetterFilter = function(letter, all) {		
@@ -72,8 +72,24 @@ function CocktailsController (model, view, cookies) {
 		this.model.onIngredientFilter(name, remove);
 	};
 	
+	this.onNameFilter = function(name){
+		this.model.onNameFilter(name);
+	};
+	
 	this.onPageChanged = function(num){
 		this.model.onPageChanged(num);
+	};
+	
+	this.onStateChanged = function(num){
+		this.model.onStateChanged(num);
+	}
+	
+	this.needRandomIngredient = function(){
+		return this.model.randomIngredient();
+	};
+	
+	this.needRandomCocktailNames = function(){
+		return this.model.randomCocktailNames();
 	};
 	
 	this.initialize();

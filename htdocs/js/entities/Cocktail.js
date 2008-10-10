@@ -6,17 +6,26 @@ Cocktail = function (data)
 Object.extend(Cocktail,
 {
 	cocktails: [],
-	tags: [],
-	strengths: [],
 	ingredients: [],
 	letters: [],
+	names: [],
+
+  dictNames: {},
+  dictLetters: {},
 	
 	initialize: function (db){
 		var i = 0;
+    
 		for (var k in db){
 			var cocktail = new Cocktail(db[k]);
-			this.cocktails[i++] = cocktail;
+			this.names[i] = cocktail.name;
+			this.cocktails[i] = cocktail;
 			
+      var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
+      var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
+      this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
+
+
 			var ingreds = cocktail.ingredients;
 			for(var j = 0; j < ingreds.length; j++) {
 				if(this.ingredients.indexOf(ingreds[j][0]) == -1) this.ingredients.push(ingreds[j][0])
@@ -24,6 +33,10 @@ Object.extend(Cocktail,
 			
 			var letter = cocktail.name.substr(0,1).toLowerCase();
 			if(this.letters.indexOf(letter) == -1) this.letters.push(letter);
+      if(!this.dictLetters[letter]) this.dictLetters[letter] = [];
+      this.dictLetters[letter].push(i);
+
+      i++;
 		}
 		this.letters = this.letters.sort();
 	},
@@ -34,22 +47,33 @@ Object.extend(Cocktail,
 		}
 	},
 	
+	getBySimilarName: function (name){
+    var term = name.split(" ").map(function(v){ return v.toLowerCase() }).sort().join("");
+
+    var res = [];
+    for(var key in this.dictNames) {
+      if (key.indexOf(term) > -1) res.push(this.cocktails[this.dictNames[key]])
+    }
+    return res;
+	},
+	
 	getByHtmlName: function(htmlName){
 		for(var i = 0; i < this.cocktails.length; i++){
 			if(this.cocktails[i].name_eng.htmlName() == htmlName) return this.cocktails[i];
 		}
 	},
 	
-	getByLetter: function (letter, set){
-		if(!set) set = this.cocktails;
-		var res = [];	
-		var reg = new RegExp("^(" + letter.toUpperCase() + ")");
-		for(var i = 0; i < set.length; i++) {
-			if(set[i].name.match(reg)){
-				res.push(set[i]);
-			}
-		}
-		return res;
+	getByLetter: function (letter){
+    letter = letter.toLowerCase();
+
+		var res = [];
+    var cNums = this.dictLetters[letter];
+    	
+		for(var i = 0; i < cNums.length; i++){
+      res[i] = this.cocktails[cNums[i]];
+    }
+
+    return res;
 	},
 	
 	getByTag: function (tag, set) {
@@ -92,26 +116,35 @@ Object.extend(Cocktail,
 	getByFilters: function(filters){
 		var res = [];
 		var filtered = false;
-		
+		if(filters.name){
+			return this.getBySimilarName(filters.name);
+		}
 		if(filters.letter){
-			return Cocktail.getByLetter(filters.letter);
+			return this.getByLetter(filters.letter);
 		}
 		if(filters.tag) {
-			res = Cocktail.getByTag(filters.tag);
+			res = this.getByTag(filters.tag);
 			filtered = true;
 		}
 		if(filters.strength) {
 			var to_filter = [];
-			res = Cocktail.getByStrength(filters.strength, filtered ? res : null);
+			res = this.getByStrength(filters.strength, filtered ? res : null);
 			filtered = true;
 		}
-		if(filters.ingredients) {
-			var to_filter = [];
-			res = Cocktail.getByIngredients(filters.ingredients, filtered ? res : null);
+		if(filters.ingredients && filters.ingredients.length) {
+      var to_filter = [];
+			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
 			filtered = true;
 		}
+    if(!filtered) res = this.cocktails.sortedBy(this.nameSort);
 		return res;
-	}
+	},
+
+  nameSort: function(a,b) {
+    if(a.name > b.name) return 1;
+		  else if(a.name == b.name) return 0;
+		  else return -1;
+  }
 })
 
 Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)

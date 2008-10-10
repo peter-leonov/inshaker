@@ -1,62 +1,163 @@
-function CocktailsView (nodes, styles) {
+function CocktailsView (states, nodes, styles) {
 	nodes.preloader.hide();
 	document.documentElement.style.overflowY="auto";
 	new Programica.RollingImagesLite(nodes.resultsDisplay);
 	
 	this.filterElems   = { tag: null, strength: null, letter: null };
 	this.perPage       = 16;
-	this.autocompleter = null;	
-	this.riJustInited  = true;
-	this.dropTargets = [nodes.cartEmpty, nodes.cartFull];
+	this.np            = -1;
+  this.renderedPages = [];
+  this.nodeCache     = {};
+
+
+  this.riJustInited  = true;
+	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
+	this.IE6 = Programica.userAgentRegExps.MSIE6.test(navigator.userAgent);
+
+	this.currentState;
+	this.stateSwitcher;
+  this.resultSet; // for caching purposes only
 	
-	this.initialize = function (tags, strengths, cocktailsLetters, ingredients, randomIngredient){
-		this.autocompleter = new Autocompleter(ingredients);
-		this.autocompleter.changeListener = this;
-	
-        this.renderLetters(nodes.alphabetRu, cocktailsLetters);
+	this.initialize = function (tags, strengths, cocktailsLetters, ingredsNames, state){
+		this.iAutocompleter = new Autocompleter(ingredsNames, 
+								nodes.searchByIngreds.getElementsByTagName("input")[0],
+								nodes.searchByIngreds.getElementsByTagName("form")[0]);
+								
+    this.renderLetters(nodes.alphabetRu, cocktailsLetters);
 		this.renderSet(nodes.tagsList, tags);
 		this.renderSet(nodes.strengthsList, strengths);
-
-		nodes.searchExample.innerHTML = randomIngredient;
 		this.bindEvents();
+		this.turnToState(state);
 	};
 	
-	this.bindEvents = function () {	
+	this.bindEvents = function () {
 		var self = this;
-		var letterLinks = nodes.alphabetRu.getElementsByTagName("a");
+    
+    var letterLinks = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
 		for(var i = 0; i < letterLinks.length; i++){
-			letterLinks[i].addEventListener('mousedown', function(e){
-				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), nodes.lettersAll.innerHTML.toUpperCase());
+      letterLinks[i].addEventListener('mousedown', function(e){
+				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), 
+											nodes.lettersAll.innerHTML.toUpperCase());
 			}, false);
 		}
-		
-		var tagLinks = nodes.tagsList.getElementsByTagName("a");
+
+		var tagLinks = cssQuery("dd", nodes.tagsList);
 		for(var i = 0; i < tagLinks.length; i++){
-			tagLinks[i].addEventListener('mousedown', function(e){
-                if(e.target.getAttribute('disabled')+"" != 'true') {
-                    self.controller.onTagFilter(e.target.innerHTML.toLowerCase());
-                }
-			}, false);
+			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
+          if(!tagLinks[num].hasClassName(styles.disabled)) {
+              self.controller.onTagFilter(cssQuery("span", this)[0].innerHTML.toLowerCase());
+          }
+			}}(i), false);
 		}
-		
-		var strengthLinks = nodes.strengthsList.getElementsByTagName("a");
+
+		var strengthLinks = cssQuery("dd", nodes.strengthsList);
 		for(var i = 0; i < strengthLinks.length; i++){
-			strengthLinks[i].addEventListener('mousedown', function(e){
-				if(e.target.getAttribute('disabled')+"" != 'true') {
-                    self.controller.onStrengthFilter(e.target.innerHTML.toLowerCase());
-                }
+			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
+				if(!strengthLinks[num].hasClassName(styles.disabled)) {
+            self.controller.onStrengthFilter(cssQuery("span",this)[0].innerHTML.toLowerCase());
+        }
+			}}(i), false);
+		}
+    
+    var ril = nodes.resultsDisplay.RollingImagesLite;
+
+    nodes.bigPrev.addEventListener('mousedown', function(e){ ril.goPrev() }, false);
+    nodes.bigNext.addEventListener('mousedown', function(e){ ril.goNext() }, false);
+		
+    ril.onselect = function (node, num) {
+      if (!self.riJustInited) {
+        self.controller.onPageChanged(num);
+        self.renderNearbyPages(num);
+			} else { self.riJustInited = false }
+      
+      // big pager buttons
+      if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName(styles.disabled);
+      else nodes.bigNext.remClassName(styles.disabled);
+      if(num == 0 || self.np == 1) nodes.bigPrev.addClassName(styles.disabled);
+      else nodes.bigPrev.remClassName(styles.disabled);
+		}
+
+		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.iAutocompleter.force(this.innerHTML) }, false);
+
+		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
+		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
+		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
+
+		nodes.searchTipName.show = function () {
+			this.style.display = "block";
+			this.style.visibility = "visible";
+			var names = self.controller.needRandomCocktailNames();
+			nodes.searchExampleName.innerHTML = names[0];
+			nodes.searchExampleNameEng.innerHTML = names[1];
+		};
+    
+    nodes.removeAllIngreds.addEventListener('click', function(e){
+				self.onAllIngredientsRemoved();
 			}, false);
+
+    nodes.searchTipIngredient.show = function () {
+			this.style.display = "block";
+			this.style.visibility = "visible";
+			nodes.searchExampleIngredient.innerHTML = self.controller.needRandomIngredient();
+		};
+
+		var nameSearchHandler = function (e) {
+			searchByNameInput.value = this.innerHTML;
+			self.controller.onNameFilter(this.innerHTML);
+			nodes.searchTipName.hide();
+		};
+
+		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
+		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
+
+		this.stateSwitcher = Switcher.bind(nodes.searchTabs, nodes.searchTabs.getElementsByTagName("li"),
+						[nodes.searchByName, nodes.searchByLetter, nodes.searchByIngreds]);
+
+		this.stateSwitcher.onselect = function (num) {
+      self.turnToState(num);
+			self.controller.onStateChanged(num);
 		}
-		
-		nodes.resultsDisplay.RollingImagesLite.onselect = function(node, num){
-			if   (!self.riJustInited) self.controller.onPageChanged(num);
-			else { self.riJustInited = false; }
-		}
-		
-		nodes.searchExample.addEventListener('mousedown', function(e){
-			self.autocompleter.force(nodes.searchExample.innerHTML);
-		}, false);
+
+		this.iAutocompleter.changeListener = {
+			onSearchConfirmed: function (name) {
+				self.onIngredientAdded(name);
+				self.iAutocompleter.emptyField();
+		}};
+
 		link = new Link();
+	};
+	
+	this.turnToState = function(state){
+		this.currentState = state;
+		this.stateSwitcher.drawSelected(state);
+		
+		var expand = (state == states.byName || state == states.byLetter);
+		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
+		
+		if(expand) {
+      nodes.mainArea.style.marginLeft = 0;
+			nodes.tagStrengthArea.hide();
+      viewport.addClassName(styles.expanded);
+			this.perPage = 20;
+		} else {
+			nodes.mainArea.style.marginLeft = "16em";
+			nodes.tagStrengthArea.show();
+			viewport.remClassName(styles.expanded);
+			this.perPage = 16;
+		}
+    
+    if(this.IE6) nodes.resultsDisplay.style.width = viewport.offsetWidth + "px"
+		
+		nodes.ingredsView.hide();
+		nodes.ingredientsLink.setVisible(state == states.byIngredients);
+		nodes.searchTipLetter.setVisible(state == states.byLetter);
+    nodes.searchTipIngredient.setVisible(state == states.byIngredients);
+		nodes.searchTipName.setVisible(state == states.byName);
+    if(state != states.byName) cssQuery("input", nodes.searchByName)[0].value = "";
+	};
+	
+	this.onAllIngredientsRemoved = function () {
+		this.controller.onIngredientFilter();
 	};
 
 	this.onIngredientAdded = function(name) {
@@ -67,13 +168,8 @@ function CocktailsView (nodes, styles) {
 		this.controller.onIngredientFilter(name, true);
 	};
 	
-	this.onSearchConfirmed =  function(name){ // autocompleter
-		this.onIngredientAdded(name);
-		this.autocompleter.emptyField();
-	};
-	
 	this.onModelChanged = function(resultSet, filters, tagState, strengthState) { // model
-		this.renderAllPages(resultSet);
+		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(filters, tagState, strengthState);
 		this.controller.saveState(filters, tagState, strengthState);
 	};
@@ -82,7 +178,8 @@ function CocktailsView (nodes, styles) {
 	this.renderFilters = function(filters, tagState, strengthState){
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
 		if(filters.letter != "") {
-			var letterElems = nodes.alphabetRu.getElementsByTagName("a");
+            var letterElems = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
+
 			for(var i = 0; i < letterElems.length; i++) {
 				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
 					this.filterElems.letter = letterElems[i];
@@ -92,74 +189,109 @@ function CocktailsView (nodes, styles) {
 		} else this.filterElems.letter = nodes.lettersAll;
 		this.filterElems.letter.addClassName(styles.selected);
 		
-		var tagElems = nodes.tagsList.getElementsByTagName("span");
+		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].innerHTML.toLowerCase();
+			var elemTxt = tagElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
 			if(elemTxt == filters.tag) {
-				this.filterElems.tag = tagElems[i].parentNode; // a, not span
-				this.filterElems.tag.className = styles.selected;
-                tagElems[i].setAttribute("disabled", false);
+			    this.filterElems.tag = tagElems[i];
+			    this.filterElems.tag.className = styles.selected;
 			} else if(tagState.indexOf(elemTxt) == -1) {
-				tagElems[i].parentNode.className = styles.disabled;
-                tagElems[i].setAttribute("disabled", true);
+				  tagElems[i].className = styles.disabled;
 			} else {
-				tagElems[i].parentNode.className = "";
-                tagElems[i].setAttribute("disabled", false);
+				  tagElems[i].className = "";
 			}
 		}
 		
-		var strengthElems = nodes.strengthsList.getElementsByTagName("span");
+		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
 		for(var i = 0; i < strengthElems.length; i++) {
-			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
+			var elemTxt = strengthElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
 			if(elemTxt == filters.strength) {
-				this.filterElems.strength = strengthElems[i].parentNode; // a, not span
-				this.filterElems.strength.className = styles.selected;
-                strengthElems[i].setAttribute('disabled', false);
-            } else if(strengthState.indexOf(elemTxt) == -1) {
-			    strengthElems[i].parentNode.className = styles.disabled
-            	strengthElems[i].setAttribute('disabled', true);
+			    this.filterElems.strength = strengthElems[i]; 
+			    this.filterElems.strength.className = styles.selected;
+      } else if(strengthState.indexOf(elemTxt) == -1) {
+			    strengthElems[i].className = styles.disabled
 			} else {
-				strengthElems[i].parentNode.className = "";
-                strengthElems[i].setAttribute('disabled', false);
+			    strengthElems[i].className = "";
 			}
 		}
 		
 		var ingredientsParent = nodes.searchesList;
-		ingredientsParent.innerHTML = "";
+		ingredientsParent.empty();
 		if(filters.ingredients.length > 0) {
 			var ingreds = filters.ingredients;
-			ingredientsParent.appendChild(this.createIngredientTitle());
 			for(var i = 0; i < ingreds.length; i++) {
 				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
+				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
 			}
 		}
 		
-		if(filters.page > 0) {
-			nodes.resultsDisplay.RollingImagesLite.goToFrame(filters.page, 'directJump');	
+		if(this.currentState == states.byIngredients){
+			nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
+			nodes.ingredsView.setVisible(filters.ingredients.length > 0)
 		}
+		
+		if(filters.page > 0) {
+			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
+		}
+
+    if(filters.name) {
+      cssQuery("input", nodes.searchByName)[0].value = filters.name;
+    }
 	},
 	
-	this.renderAllPages = function(resultSet){
-		var np = this.getNumOfPages(resultSet, this.perPage);
+	this.renderAllPages = function(resultSet, pageNum){
+		this.resultSet = resultSet;
+    this.np = this.getNumOfPages(resultSet, this.perPage);
 		
-		nodes.resultsRoot.innerHTML=""; // clean up
-		for(var i = 1; i <= np; i++) {
-			var selectedSet = resultSet.slice((i-1)*this.perPage, i*this.perPage);
-			this.renderPage(selectedSet, i);
-		}
-		this.renderPager(np);
+		nodes.resultsRoot.empty();
+		
+    this.renderedPages = [];
+    this.renderSkeleton(this.np);
+    this.renderNearbyPages(pageNum);
+
+		this.renderPager(this.np);
 		nodes.resultsDisplay.RollingImagesLite.sync();
 		nodes.resultsDisplay.RollingImagesLite.goInit();
 	};
+ 
+  this.renderSkeleton = function(np){
+    var parent = nodes.resultsRoot;
+    
+    for(var i = 0; i < np; i++) {
+      var page = document.createElement("div");
+		  page.id = "page_" + i;
+		  page.className = styles.point;
+		  parent.appendChild(page);
+	  	if(this.currentState == states.byName ||
+			  this.currentState == states.byLetter){
+			  page.addClassName(styles.expanded);
+		  }
+		
+		  var ul = document.createElement("ul");
+		  ul.id = "ul_" + i;
+		  ul.className = "cocktails";
+		  page.appendChild(ul);
+    }
+  }
+  
+  this.renderNearbyPages = function(pageNum) {
+    var pagesToRender = [pageNum - 1, pageNum, pageNum + 1];
+
+    for(var i = 0; i < pagesToRender.length; i++) {
+      var j = pagesToRender[i];
+      if((j >= 0) && (j < this.np) && (this.renderedPages.indexOf(j) == -1)) this.renderPage(j);
+    }
+  };
 
 	this.renderSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
 			var a = document.createElement("a");
+			a.className = "rem";
 			var span = document.createElement("span");
 			var txt = document.createTextNode(set[i].capitalize());
 			span.appendChild(txt);
-			a.appendChild(span);
+			dd.appendChild(span);
 			dd.appendChild(a);
 			parent.appendChild(dd);
 		}		
@@ -173,58 +305,46 @@ function CocktailsView (nodes, styles) {
 		}
 	},
 	
-	this.renderPage = function (selectedSet, pageNum) {
-		var parent = nodes.resultsRoot;
-		var page = document.createElement("div");
-		page.id = "page_" + pageNum;
-		page.className = "point";
-		parent.appendChild(page);
-		
-		var ul = document.createElement("ul");
-		ul.id = "ul_" + pageNum;
-		ul.className = "cocktails";
-		page.appendChild(ul);
+	this.renderPage = function (pageNum) {
+		this.renderedPages.push(pageNum);
+    var selectedSet = this.resultSet.slice(pageNum*this.perPage, (pageNum+1)*this.perPage);
+    
+    var ul = $('ul_' + pageNum);
+
 		for (var i = 0; i < selectedSet.length; i++) {
 			ul.appendChild(this.createCocktailElement(selectedSet[i]));
 		}
 	};
 	
 	this.createCocktailElement = function(cocktail) {
-		var li = document.createElement("li");
-		var a = document.createElement("a");
-		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
-		var img = document.createElement("img");
-		img.className = "mini-illustration";
-		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
-		new Draggable(img, cocktail.name, this.dropTargets);
-		var txt = document.createTextNode(cocktail.name);
-		a.appendChild(img);
-		a.appendChild(txt);
-		li.appendChild(a);
-		return li;		
-	};
-	
-	this.createIngredientTitle = function(){
-		var dt = document.createElement("dt");
-		return dt;
+    var id = cocktail.name_eng.htmlName();
+    var li = this.nodeCache[id];
+
+    if(!li) {
+      li = document.createElement("li");
+      var a = document.createElement("a");
+		  a.href = "/cocktails/" + id + ".html";
+		  var img = document.createElement("img");
+		  img.className = "mini-illustration";
+		  img.src = "/i/cocktail/s/" + id + ".png";
+		  new Draggable(img, cocktail.name, this.dropTargets);
+		  var txt = document.createTextNode(cocktail.name);
+		  a.appendChild(img);
+		  a.appendChild(txt);
+		  li.appendChild(a);
+      this.nodeCache[id] = li;
+		}
+    return li;		
 	};
 	
 	this.createIngredientElement = function(name){
-		name = GoodHelper.shortName(name);
-		var dd = document.createElement("dd");
-		var span = document.createElement("span");
 		var a = document.createElement("a");
-		a.title = "Убрать из поиска";
-		a.innerHTML = "Удалить";
-		a.className = "rem";
-		span.innerHTML = name;
-		dd.appendChild(span);
-		dd.appendChild(a);
+		a.innerHTML = name;
 		var self = this;
-		dd.addEventListener('mousedown', function(e){
+		a.addEventListener('click', function(e){
 			self.onIngredientRemoved(name);
 		}, false);
-		return dd;	
+		return a;	
 	};
 	
 	this.getNumOfPages = function(resultSet, perPage) {
@@ -234,7 +354,7 @@ function CocktailsView (nodes, styles) {
 	
 	this.renderPager = function (numOfPages) {
 		var span = nodes.pagerRoot;
-		span.innerHTML=""; // clean up
+		span.empty();
 		var pointer = 1;
 		while(pointer <= numOfPages){
 			var a = document.createElement("a");

@@ -10,24 +10,42 @@
 	
 	<!--# include file="/inc/top-common.html" -->
 	
-	<div class="column column-main"><div class="body-wrapper" id="search-cocktails-page">
+	<div class="column column-main">
+  <div class="body-wrapper" id="search-cocktails-page">
 		<div class="b-title">
 			<h1>Коктейли</h1>
 		</div>
-		<div class="b-search">
-
-			<form class="b" id="search_form">
+		<div class="search-tabs-wrapper">
+			<ul id="search_tabs">
+				<li>По названию</li>
+				<li>По алфавиту</li>
+				<li class="selected">По ингредиенту</li>
+			</ul>
+			<p id="all_list"><a href="ingredients.html">Вcе коктейльные ингредиенты</a></p>
+		</div>
+		<div id="search_by_name" style="display:none" class="search-control">
+			<form class="search-form">
 				<fieldset>
-					<strong>Поиск<br/>по ингредиенту</strong>
-					<div id="search_error"></div>
-					<input type="text" name="text" value="" id="search_input" autocomplete="off"/>
-					<div id="autocomplete" style="display: none;"></div>
-					<small>Например, <a id="search_example">Виски</a></small>
-					<dl id="ingredients_list"></dl>
+					<input type="text" name="text" autocomplete="off"/>
 				</fieldset>
 			</form>
-			
-			<p class="all-list"><a href="ingredients.html">Вcе коктейльные ингредиенты</a></p>
+		</div>
+		<div id="search_by_letter" style="display:none" class="search-control">
+			<a id="letters_all" class="selected-button">все</a>
+			<div id="alphabetical-ru"></div>
+		</div>
+		<div id="search_by_ingreds" class="search-control">
+			<form class="search-form">
+				<fieldset>
+					<input type="text" name="text" value="" id="search_input" autocomplete="off"/>
+				</fieldset>
+			</form>
+		</div>
+		<div class="ingreds-list" style="display:none"><div id="ingredients_list"></div><a class="rem"></a></div>
+		<div class="search-tip" id="search_tip_letter" style="display:none; height:14px; width: 500px;"></div>
+    <div class="search-tip" id="search_tip_ingredient" style="display:none">Например, <a id="search_example_ingredient">Виски</a></div>
+		<div class="search-tip" id="search_tip_name" style="display:none">Например, <a id="search_example_name"></a> или <a id="search_example_name_eng"></a></div>
+		<div class="b-search" id="b_search">
 			<dl class="groups" id="strengths_list">
 				<dt>Крепость</dt>
 			</dl>
@@ -38,31 +56,29 @@
 		
 		
 		
-		<div class="b-content">
-			<p class="alphabetical b"><span class="wrapper">
-				<span class="p-list" id="alphabetical-ru">
-					<a id="letters_all" class="selected-button">все</a>
-
-				</span>
-				<!--<a class="lang-to-en"> </a>-->
-			</span></p>
-
+		<div class="b-content" id="b_content">
 			<div id="results_display" class="programica-rolling-images">
 				<div class="viewport">
 					<div class="surface" id="surface">
 					</div>
 				</div>
 				<div class="pager">
-					<span class="p-list" id="p-list">
-					</span>
-					<a class="next"></a>
-					<a class="prev"></a>
+					 <a class="prev">←</a>
+	        <div class="p-list" id="p-list"></div>
+          <a class="next">→</a>
 				</div>
 			</div>
 			<div id="error_display">Такого сочетания пока нет. Попробуйте другое.</div>
 		</div>
 	
-	</div></div>	
+	</div>
+  
+  <div class="pager-big">
+    <a class="prev"></a>
+    <a class="next"></a>
+  </div>
+
+  </div>
 	
 	<!--# include file="/inc/calculator.html" -->
 	<!--# include file="/inc/bottom-common.html" -->

@@ -108,6 +108,10 @@ Array.prototype.last = function(){
 	return this[this.length-1];
 }
 
+Array.prototype.sortedBy = function(sortFunc) {
+ return Array.copy(this).sort(sortFunc);
+}
+
 function toArray(hash) {
 	var results = [];
 	for(key in hash) results.push(hash[key]);
@@ -120,7 +124,7 @@ function validateNumeric(txt){
 };
 
 function remClass(elem, className) { if(elem) elem.remClassName(className) };
-function logObject(obj) { if(console.log) console.log(Object.stringify(obj))};
+function logObject(obj) { log(Object.stringify(obj))};
 
 /**
  * Cookie functionality. 

@@ -4,11 +4,17 @@
  * 
  * @param set - массив, по которому будут подбираться результаты
  */
-function Autocompleter(set) {
-	var field     = $('search_input');
-	var div       = $('autocomplete');
-	var form      = $('search_form');
-	var error_div = $('search_error');
+function Autocompleter(set, field, form) {
+	
+	var div = document.createElement("div");
+	div.className = "autocomplete";
+	field.parentNode.insertBefore(div, field.nextSibling);
+	div.style.width = (field.offsetWidth-5) + "px";
+	div.style.marginTop = field.offsetHeight + "px";
+	
+	var error_div = document.createElement("div");
+	error_div.className = "search-error";
+	field.parentNode.insertBefore(div, field);
 	
 	this.HI_STYLE = 'hi';
 	this.ERR_MESSAGE = '...этого у нас еще нет';
@@ -24,8 +30,6 @@ function Autocompleter(set) {
 	this.shown = false;
 	this.initial_input = "";
 	
-	
-	div.style.width = (field.offsetWidth-5) + "px";
 	this.result_set = [];
 
 	var self = this;

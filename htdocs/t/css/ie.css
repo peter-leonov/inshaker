@@ -14,9 +14,8 @@ html{font-size :101%;}
 .dots dl{background-position-y:1.3em;}
 .win-shop .main .zoom b{zoom:1;height:12px;}
 #overlay{filter:alpha(opacity=75);}
-.b-search form dl{white-space:nowrap;}
-.b-search form{padding:1px;}
-.b-search form fieldset{margin:0px;}
+
+
 .column{border:1px solid #C0C0C0;}
 .column .body-wrapper{border:1px solid #fff;}
 .b{zoom:1;}
