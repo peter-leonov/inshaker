@@ -8,7 +8,7 @@
 #about-page .view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;}
 #about-page .view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;}
 #about-page .view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;}
-#about-page .view-stat .stat .surface { width: 2000px; height:560px; padding:0;}
+#about-page .view-stat .stat .surface { width: 520px; padding:0;}
 #about-page .view-stat .stat .point { width: 510px; height: 560px; float: right;}
 #about-page .view-stat .stat a { margin-top: 140px; z-index: 1;}
 #about-page .view-stat .stat .prev,
