@@ -101,6 +101,18 @@ function CocktailsView (states, nodes, styles) {
 			nodes.searchExampleIngredient.innerHTML = self.controller.needRandomIngredient();
 		};
 
+    nodes.ingredsView.show = function(){
+      this.style.display = "block";
+      this.style.visibility = "visible";
+      nodes.searchTips.hide();
+    }
+
+    nodes.ingredsView.hide = function(){
+      this.style.visibility = "hidden";
+      this.style.display = "none";
+      nodes.searchTips.show();
+    }
+
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
@@ -149,8 +161,7 @@ function CocktailsView (states, nodes, styles) {
     if(this.IE6) nodes.resultsDisplay.style.width = viewport.offsetWidth + "px"
 		
 		nodes.ingredsView.hide();
-		nodes.ingredientsLink.setVisible(state == states.byIngredients);
-		nodes.searchTipLetter.setVisible(state == states.byLetter);
+		// nodes.ingredientsLink.setVisible(state == states.byIngredients);
     nodes.searchTipIngredient.setVisible(state == states.byIngredients);
 		nodes.searchTipName.setVisible(state == states.byName);
     if(state != states.byName) cssQuery("input", nodes.searchByName)[0].value = "";

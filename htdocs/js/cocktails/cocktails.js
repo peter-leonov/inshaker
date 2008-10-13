@@ -37,6 +37,7 @@ $.onload (
       ingredsView: cssQuery(".ingreds-list")[0],
 			removeAllIngreds: cssQuery(".ingreds-list .rem")[0],
       searchesList: $('ingredients_list'),
+      searchTips: $('search_tips'),
 			
 			ingredientsLink: $('all_list'),
 			
@@ -46,8 +47,6 @@ $.onload (
 			searchExampleName: $('search_example_name'),
 			searchExampleNameEng: $('search_example_name_eng'),
 			searchTipName: $('search_tip_name'),
-
-      searchTipLetter: $('search_tip_letter'),
 
 			cartEmpty: $('cart_draghere'),
 			cartFull: $('cart_contents')

@@ -55,7 +55,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 
 #cocktails-page #top { left: -9px; }
 #cocktails-page #results_display .viewport {width:426px; }
-#cocktails-page #results_display .expanded {width: 554px; padding-top: 4px; padding-left: 16px;}
+#cocktails-page #results_display .expanded {width: 554px; padding-left: 16px;}
 #cocktails-page .search-form {background:red;}
 #cocktails-page .search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
 #cocktails-page .pager-big { left:567px; }
