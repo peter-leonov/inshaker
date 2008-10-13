@@ -2,7 +2,7 @@
 .win-shop .main{zoom:1;}
 
 #cocktails-page #results_display .expanded {width: 554px; padding-top: 4px; padding-left: 16px;}
-#cocktails-page .search-form input { height: 20px; line-height: 20px}
+#cocktails-page .search-form input { height: 22px; line-height: 22px; position:absolute}
 #cocktail-page .hreview button.bt-view-how{float:left;}
 
 input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
