@@ -63,9 +63,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #cocktails-page .b-content .pager .prev,
 #cocktails-page .b-content .pager .next{font-size: 17px;}
 
-#cocktails-page #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; z-index:2; zoom:1}
-#cocktails-page #search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
-#cocktails-page #search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
+#cocktails-page #search_tabs { zoom:1}
 
 #cocktail-page .b-title{}
 #cocktail-page .b-content{width:590px;}

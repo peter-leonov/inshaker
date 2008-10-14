@@ -113,7 +113,7 @@ label{display:block;}
 .b-title h2{font-size:24px;margin-left:-1px;}
 .b-title .hrefs{position:absolute;right:0;bottom:20px;font-size:110%;}
 .b-search{float:left;margin-right:2em;width:14em;}
-#all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; z-index:2; float:right; height:19px;}
+#all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
@@ -139,7 +139,7 @@ label{display:block;}
 .search-form dd{background-color:#89af21;cursor:pointer;margin-bottom:3px;height:auto;overflow:hidden;padding:0 0 2px;}
 .search-form span{float:left;text-decoration:underline;font-size:11px;padding-left:6px;width:100px;}
 
-#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative;}
+#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
 #search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
 
