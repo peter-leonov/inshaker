@@ -1,5 +1,5 @@
-name,email
-Макс,max@contactmaker.ru
-Макс,maxibar@mail.ru
-Петя,pl@contactmaker.ru
-Петя,gojpeg@yandex.ru
+first,second,email
+Макс,Дергилев,max@contactmaker.ru
+Макс,Дергилев,maxibar@mail.ru
+Петя,Леонов,pl@contactmaker.ru
+Петя,Леонов,gojpeg@yandex.ru
