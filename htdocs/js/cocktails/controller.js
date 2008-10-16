@@ -1,6 +1,8 @@
-function CocktailsController (model, view, cookies) {
+function CocktailsController (states, cookies, model, view) {
 	this.model = model;
 	this.view  = view;
+
+  this.hashTimeout = null;
 	
 	this.initialize = function () {
 		var filters = this.filtersFromRequest();
@@ -9,15 +11,14 @@ function CocktailsController (model, view, cookies) {
             filters = this.filtersFromCookie();
             states = this.statesFromCookies();
         }
-		var forceChange = this.forceFromCookies();
 		
 		this.view.controller = this;
-		this.model.initialize(filters, states, forceChange);
+		this.model.initialize(filters, states);
 	};
 	
 	this.filtersFromRequest = function () {
 		var address = window.location.href;
-		var match = address.match(/.+\?(.+)/);
+		var match = address.match(/.+\#(.+)/);
 		if(match){
 			var params = match[1].split("&");
 			var filters = {};
@@ -44,17 +45,34 @@ function CocktailsController (model, view, cookies) {
 		else return null;
 	};
 	
-	this.forceFromCookies = function () {
-		var force = Cookie.get(cookies.force);
-		Cookie.remove(cookies.force);
-		return force;
-	};
-	
 	this.saveState = function (filters, tagState, strengthState) {
-		Cookie.set(cookies.tagState, Object.stringify(tagState));
-    Cookie.set(cookies.strengthState, Object.stringify(strengthState));
-    Cookie.set(cookies.filter, Object.stringify(filters));
+    var self = this;
+    clearTimeout(this.hashTimeout);
+    this.hashTimeout = setTimeout(function() { 
+      self.updatePageHash(filters);
+   	
+    	Cookie.set(cookies.tagState, Object.stringify(tagState));
+      Cookie.set(cookies.strengthState, Object.stringify(strengthState));
+      Cookie.set(cookies.filter, Object.stringify(filters));
+    } , 400);
 	};
+
+  this.updatePageHash = function(filters) {
+    var pairs = [];
+    for(var key in filters)
+      if(filters[key] != "" || (filters[key] === 0 && key != "page")) {
+        var value = filters[key];
+        if(key == "state") value = keyForValue(states, value)
+        pairs.push([key, value]);
+      }
+    
+    var hash = '';
+    for(var i = 0; i < pairs.length; i++) {
+      hash += pairs[i][0] + "=" + pairs[i][1];
+      if(i != pairs.length - 1) hash += "&";
+    }
+    if(hash) window.location.hash = hash;
+  };
 	
 	this.onLetterFilter = function(letter, all) {		
 		this.model.onLetterFilter(letter, all);

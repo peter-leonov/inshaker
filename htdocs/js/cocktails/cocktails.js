@@ -5,7 +5,7 @@ CocktailsPage =
 	init: function (states, nodes, styles, cookies) {
 		this.view       = new CocktailsView(states, nodes, styles);
 		this.model      = new CocktailsModel(states, this.view);
-		this.controller = new CocktailsController(this.model, this.view, cookies);
+		this.controller = new CocktailsController(states, cookies, this.model, this.view);
 	}
 }
 
@@ -71,10 +71,11 @@ $.onload (
 			byName:        0,
 			byLetter:      1,
 			byIngredients: 2,
-			defaultState: this.byName
+      
+			defaultState:  0
 		};
-		
-		CocktailsPage.init(states,nodes, styles, cookies);
+
+		CocktailsPage.init(states, nodes, styles, cookies);
 		Calculator.init();
 	}
 )

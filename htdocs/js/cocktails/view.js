@@ -1,7 +1,7 @@
 function CocktailsView (states, nodes, styles) {
 	nodes.preloader.hide();
 	document.documentElement.style.overflowY="auto";
-	new Programica.RollingImagesLite(nodes.resultsDisplay);
+	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
 	this.filterElems   = { tag: null, strength: null, letter: null };
 	this.perPage       = 16;
@@ -27,7 +27,7 @@ function CocktailsView (states, nodes, styles) {
 		this.renderSet(nodes.tagsList, tags);
 		this.renderSet(nodes.strengthsList, strengths);
 		this.bindEvents();
-		this.turnToState(state);
+    this.turnToState(state);
 	};
 	
 	this.bindEvents = function () {
@@ -140,9 +140,9 @@ function CocktailsView (states, nodes, styles) {
 	};
 	
 	this.turnToState = function(state){
-		this.currentState = state;
-		this.stateSwitcher.drawSelected(state);
-		
+    this.currentState = state;
+    this.stateSwitcher.drawSelected(state);
+
 		var expand = (state == states.byName || state == states.byLetter);
 		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
@@ -161,7 +161,6 @@ function CocktailsView (states, nodes, styles) {
     if(this.IE6) nodes.resultsDisplay.style.width = viewport.offsetWidth + "px"
 		
 		nodes.ingredsView.hide();
-		// nodes.ingredientsLink.setVisible(state == states.byIngredients);
     nodes.searchTipIngredient.setVisible(state == states.byIngredients);
 		nodes.searchTipName.setVisible(state == states.byName);
     if(state != states.byName) cssQuery("input", nodes.searchByName)[0].value = "";
@@ -237,7 +236,7 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
+      nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
 			nodes.ingredsView.setVisible(filters.ingredients.length > 0)
 		}
 		

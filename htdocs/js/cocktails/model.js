@@ -18,16 +18,15 @@ function CocktailsModel (states, view) {
 	this.resultSet = [];
 	
 	
-	this.initialize = function(filters, tsStates, forceChange) {
+	this.initialize = function(filters, tsStates) {
 		this.strengthState = tsStates && tsStates.length ? tsStates[0] : Cocktail.strengths;
     this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
         
-		var ingredChanged = forceChange && (forceChange.indexOf("ingredient") > -1)
-		if(filters) this.filters = this.completeFilters(filters, ingredChanged)
+		if(filters) this.filters = this.completeFilters(filters);
 		
-		view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
-										
-    this.applyFilters(!tsStates && this.filters.strength, ingredChanged); // well..
+    view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
+    								
+    this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length);
 	};
 	
 	this.randomIngredient = function(){
@@ -41,19 +40,23 @@ function CocktailsModel (states, view) {
 		return [cocktail.name, cocktail.name_eng];
 	}
 	
-	this.completeFilters = function(filters, ingredChanged){		
-		if(!filters.name)		   filters.name = "";
+	this.completeFilters = function(filters){		
+    if(!filters.name)          filters.name = "";
 		if(!filters.letter)        filters.letter = "";
 		if(!filters.tag)           filters.tag = "";
 		if(!filters.strength)      filters.strength = "";
-		if(!filters.ingredients)   filters.ingredients = [];
 		if(!filters.page)          filters.page = 0;
-		if(filters.state === null) filters.state = states.defaultState;
-		
-		if(ingredChanged || filters.ingredients.length || filters.tag || filters.strength){
-			filters.state = states.byIngredients	
-		}
-		
+    
+    if(!filters.ingredients)   filters.ingredients = [];
+		else filters.ingredients = filters.ingredients.split(",");
+
+    if(filters.state == null)  filters.state = states.defaultState
+    else filters.state = states[filters.state]
+
+    if(filters.ingredients.length || filters.tag || filters.strength) {
+      filters.state = states.byIngredients;
+    }
+
 		return filters;
 	};
 	

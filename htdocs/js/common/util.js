@@ -113,9 +113,14 @@ Array.prototype.sortedBy = function(sortFunc) {
 }
 
 function toArray(hash) {
-	var results = [];
-	for(key in hash) results.push(hash[key]);
-	return results;
+	var results = []
+	for(var key in hash) results.push(hash[key])
+	return results
+}
+
+function keyForValue(hash, value) {
+  for(var key in hash) if(hash[key] == value) return key
+  return null
 }
 
 function validateNumeric(txt){

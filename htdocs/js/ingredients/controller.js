@@ -18,12 +18,6 @@ var Controller = {
 	// selected ingredients
 	selected: [],
 	
-	FILTER_COOKIE  : 'filters',
-	FORCE_COOKIE   : 'force',
-	
-	STRENGTH_STATE_COOKIE : 'strength_state',
-    TAG_STATE_COOKIE      : 'tag_state',
-
 	topCocktail    : null,
 	numCanPrepare  : 0,
 	
@@ -149,13 +143,8 @@ var Controller = {
 	
 	viewCocktailsClicked: function(){
 		if(this.numCanPrepare > 1){
-			var filters = {};
-			filters.ingredients = this.selected;
-			Cookie.set(this.FORCE_COOKIE, "ingredient");
-			Cookie.set(this.FILTER_COOKIE, Object.stringify(filters));
-			window.location.href = "/cocktails.html";
+			window.location.href = "/cocktails.html#ingredients=" + this.selected.join(",");
 		} else {
-			Cookie.remove(this.FILTER_COOKIE);
 			window.location.href = "/cocktails/" + this.topCocktail.name_eng.htmlName() + ".html";
 		}
 	},
