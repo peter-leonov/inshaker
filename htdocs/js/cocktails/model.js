@@ -50,8 +50,9 @@ function CocktailsModel (states, view) {
     if(!filters.ingredients)   filters.ingredients = [];
 		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
 
-    if(filters.state == null)  filters.state = states.defaultState
-    else filters.state = states[filters.state]
+    if(!filters.state)  filters.state = states.defaultState
+    else  filters.state = states[filters.state] 
+
 
     if(filters.ingredients.length || filters.tag || filters.strength) {
       filters.state = states.byIngredients;
