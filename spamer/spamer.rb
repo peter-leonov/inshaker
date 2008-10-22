@@ -38,7 +38,9 @@ csv.each do |row|
   end
   message[:body] = body
   
-  puts "#{i}: " + message[:to]
+  status = "#{i}: " + message[:to]
+  puts status
+  warn status
   RMail::Message.bake(message).send
   
   sleep 5
