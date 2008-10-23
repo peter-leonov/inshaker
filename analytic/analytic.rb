@@ -70,7 +70,6 @@ def process_visits
       value = Element.new("value")
       value.attributes["xid"] = j.to_s
       value.text = num
-      puts num
       graph.add value
     }
     graphs.add graph
