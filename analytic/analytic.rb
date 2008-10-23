@@ -12,7 +12,7 @@ $KCODE = 'u'
 
 class String
   def merge_i
-    self.gsub(" ", "").to_i
+    self.gsub(",", "").to_i
   end
 end
 
@@ -70,6 +70,7 @@ def process_visits
       value = Element.new("value")
       value.attributes["xid"] = j.to_s
       value.text = num
+      puts num
       graph.add value
     }
     graphs.add graph
