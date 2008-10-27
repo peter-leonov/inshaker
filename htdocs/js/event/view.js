@@ -19,7 +19,7 @@ EventPage.view =
 		nodes.formPopupMenu.addEventListener('click', formPopupCloseClicked, false)
 		
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
-		nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
+		// nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
 		
 		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
 		
