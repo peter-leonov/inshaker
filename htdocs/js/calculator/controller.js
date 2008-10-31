@@ -1,7 +1,7 @@
 function CalculatorController(model, view) {
 	this.eventListener = model;
 	view.eventListener = this;
-	
+  
 	this.initialize = function(){
 		var self = this;
 		Storage.init(function(){
@@ -11,6 +11,10 @@ function CalculatorController(model, view) {
 			} else self.eventListener.initialize(null);
 		});
 	};
+
+  this.setBarName = function(name){
+    Storage.put('barName', name)
+  };
 	
 	this.addCocktail = function(name){
 		this.eventListener.addCocktail(name);

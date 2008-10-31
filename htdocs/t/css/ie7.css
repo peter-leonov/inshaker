@@ -5,6 +5,11 @@
 #cocktails-page .search-form input { height: 22px; line-height: 22px; position:absolute}
 #cocktail-page .hreview button.bt-view-how{float:left;}
 
+#b-bill .b-title h1 {}
+#b-bill .b-title label { margin-left:-6px; }
+#b-bill .b-title input { height: 22px; line-height: 22px; background: #FFF; width:275px}
+#b-bill .b-title .tip { padding: 3px 0px; }
+
 input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
 
 #event-page #form-popup .content form .limit input { width: 160px; }

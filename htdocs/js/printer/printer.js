@@ -1,4 +1,5 @@
 var Printer = {
+    ID_PLAN_TITLE     : 'plan_title',
     ID_COCKTAILS_NUM  : 'cocktails_num',
     ID_COCKTAILS_LIST : 'cocktails_list',
     ID_INGREDS_LIST   : 'ingredients_list',
@@ -12,6 +13,8 @@ var Printer = {
     IMG_COCKTAIL_PRFX : '/i/cocktail/print/',
     IMG_INGRED_PRFX   : '/i/merchandise/ingredients/print/',
     IMG_MARKER        : '/t/print/li.png',
+
+    ST_BAR_NAME   : 'barName',
 
     wannaPrint: false,
     cartData : {},
@@ -76,6 +79,8 @@ var Printer = {
 
     cartInit: function(){
         if(Storage.get(GoodHelper.CART)){
+            var barName = Storage.get(this.ST_BAR_NAME);
+            $(this.ID_PLAN_TITLE).innerHTML = "План покупок " + (barName ? "для " + barName : ""); 
             this.preloadImages();
             this.cartData = Storage.get(GoodHelper.CART);
             this.cartData = GoodHelper.deSerializeCartData(Object.parse(this.cartData));

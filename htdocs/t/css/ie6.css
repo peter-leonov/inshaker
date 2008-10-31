@@ -65,6 +65,12 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 
 #cocktails-page #search_tabs { zoom:1}
 
+#b-bill .body-wrapper {width:270px}
+#b-bill .b-title h1 {margin-left: 5px; }
+#b-bill .b-title label {zoom:1; position:relative; margin-left:auto;}
+#b-bill .b-title input {float:left; width: 265px; height:24px; line-height:24px; background:#FFF} 
+#b-bill .b-title .tip {scrollbar-base-color:expression(this.unselectable='on'); padding: 3px 6px; }
+
 #cocktail-page .b-title{}
 #cocktail-page .b-content{width:590px;}
 #cocktail-page .hreview{/*border:solid 1px red;*/}
