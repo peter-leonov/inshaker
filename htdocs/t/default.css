@@ -108,11 +108,11 @@ label{display:block;}
 /* knowledge */
 .column-main-container{width:63em;float:left;}
 .body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;overflow:hidden;}
-.b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:14px;position:relative;}
+.b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:11px;position:relative;}
 
 .b-title h1,
-.b-title h2{font-size:24px;margin-left:-1px;}
-.b-title .hrefs{position:absolute;right:0;bottom:20px;font-size:110%;}
+.b-title h2{font-size:20px;margin-left:-1px;}
+.b-title .hrefs{position:absolute;right:0;bottom:15px;font-size:110%;}
 .b-search{float:left;margin-right:2em;width:14em;}
 #all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
 .b-search dl{font-size:120%;line-height:1.5;}
