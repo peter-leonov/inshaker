@@ -6,7 +6,9 @@
 .box .body { width: 100%; height: 100%; background: #FFFFFF url(/t/bg/body/body-wrapper.png) repeat-x scroll 0 0; overflow: hidden; }
 
 #index-page #big { padding: 0; }
-#index-page #big a { display: block; width: 962px; height: 450px; text-indent: 1000px;}
+#index-page #big .cover { display: block; width: 962px; height: 450px; background:url(/i/index/november.png)}
+#index-page #big .video { position:relative; top:73px; left:73px; width:817px; height:371px;}
+#index-page #big .audio { height:1px; width:1px; } 
 
 #index-page .info-blocks { margin: 21px 0 0 0px; }
 #index-page .info-blocks .box { float: left; width: 221px; height: 157px; overflow: hidden; margin-right: 21px; }

@@ -136,6 +136,13 @@ function CocktailsView (states, nodes, styles) {
 				self.iAutocompleter.emptyField();
 		}};
 
+    var spTag = nodes.spotlighted.getElementsByClassName('group')[0].innerHTML.toLowerCase()
+    nodes.spotlighted.addEventListener('click', function(e){
+      self.turnToState(states.byIngredients)
+      self.controller.onStateChanged(states.byIngredients)
+      self.controller.onTagFilter(spTag)
+    }, false)
+
 		link = new Link();
 	};
 	

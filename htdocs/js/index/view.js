@@ -10,7 +10,6 @@ IndexPageView.prototype =
 	initialize: function (nodes)
 	{
 		this.nodes = nodes
-		
 		new Programica.RollingImagesLite(nodes.cocktails, {animationType: 'easeOutQuad'})
 	},
 	

@@ -49,7 +49,9 @@ $.onload (
 			searchTipName: $('search_tip_name'),
 
 			cartEmpty: $('cart_draghere'),
-			cartFull: $('cart_contents')
+			cartFull: $('cart_contents'),
+
+      spotlighted: $('spotlighted')
 		};
 		
 		var styles = {

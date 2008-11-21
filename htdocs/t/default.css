@@ -76,7 +76,7 @@ form input{vertical-align:middle;}
 form p{display:inline;}
 form .b p{display:block;padding:0;}
 label{display:block;}
-#main-wrapper{margin:0 auto;width:96em;}
+#main-wrapper{margin:0 auto;width:96em; position:relative; z-index:1}
 .index-wrapper{position:relative;height:420px;}
 /* Index form login */
 .index-page form{display:none;font-size:12px;position:absolute;right:-2px;height:190px;width:256px;padding:18px 30px;background:url(bg/form/index.png) no-repeat 0 0;top:40px;}
@@ -112,7 +112,8 @@ label{display:block;}
 
 .b-title h1,
 .b-title h2{font-size:20px;margin-left:-1px;}
-.b-title .hrefs{position:absolute;right:0;bottom:15px;font-size:110%;}
+.b-title #spotlighted {position:absolute;right:0;bottom:15px;font-size:110%; width:15px; height: 21px; background:transparent url(/t/icon/warming.png) no-repeat;}
+.b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 .b-search{float:left;margin-right:2em;width:14em;}
 #all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
 .b-search dl{font-size:120%;line-height:1.5;}
@@ -140,9 +141,9 @@ label{display:block;}
 .search-form dd{background-color:#89af21;cursor:pointer;margin-bottom:3px;height:auto;overflow:hidden;padding:0 0 2px;}
 .search-form span{float:left;text-decoration:underline;font-size:11px;padding-left:6px;width:100px;}
 
-
 #cocktails-page .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
 #cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
+#cocktails-page .b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
 #search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
@@ -708,6 +709,8 @@ b.lt { left: 0; top: 0; }
 b.rt { right: 0; top: 0; }
 b.lb { left: 0; bottom: 0; }
 b.rb { right: 0; bottom: 0; }
+
+<!--# include file="/t/theme.css" -->
 
 <!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" --><!--# include file="/t/css/ff2.css" --><!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--# include file="/t/css/ie6.css" --><!--# endif -->

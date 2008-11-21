@@ -9,8 +9,11 @@
 <body>
 <div id="main-wrapper">
 	<!--# include file="/inc/top-common.html" -->
-	<div id="big" class="box"><div class="body">
-		<a style="background-image: url(/i/index/big.jpg);" href="/cocktails.html">Коктейли</a>
+	<div id="big"><div class="body">
+    <div class="cover">
+      <embed class="video" flashvars="autostart=true&stretching=fill&file=/v/index/fireplace.flv&width=817&height=307&&repeat=always&backcolor=#000000" allowfullscreen="true" allowscriptaccess="always" menu="false" src="/index-player.swf" wmode="transparent"/>
+      <embed class="audio" flashvars="autostart=true&file=/v/index/fireplace.mp3&repeat=always" src="/index-player.swf"/>
+    </div>
 	</div></div>
 	
 	<div class="info-blocks">
@@ -57,6 +60,7 @@
 	
 <!--# include file="/inc/bottom-common.html" -->
 </div>
+<div id="backdrop"></div>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/index/index.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
