@@ -40,7 +40,7 @@ var Controller = {
 		if(Model.recs.length > 0) {
 			this.renderRecommendations(Model.recs);
 			perPage = 3;
-		}
+		} else this.expandRelated();
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
 		this.renderIngredients(Model.ingredients);
 	},
@@ -356,7 +356,7 @@ var Controller = {
 	
 	expandRelated: function(){ // model
 		var recsCol = cssQuery(".column.b-more-rec")[0];
-		var relCol  = cssQuery(".column.b-more-cocktails")[0];
+		var relCol  = cssQuery(".column.b-more-cocktails")[1];
 		recsCol.style.display = "none";
 		relCol.style.width = "62.8em";
 	}
