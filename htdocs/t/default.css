@@ -183,6 +183,7 @@ label{display:block;}
 .b-content ul.cocktails li .love{background:url(icon/love.png) no-repeat 0 0;position:absolute;left:55px;top:10px;padding-left:15px;}
 .b-content ul.cocktails li a{font-size:120%;}
 .b-content ul.cocktails li img{display:block;padding-bottom:7px;margin-left:-10px;width:60px;height:80px;}
+.mini-illustration {z-index:2} /* also applied to the dragged element */
 
 .pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:relative; left: 564px; top: -363px; }
 .pager-big .prev,
@@ -217,7 +218,7 @@ label{display:block;}
 #cocktail-page .hreview .desc .description{padding-left:16px;}
 #cocktail-page .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
 #cocktail-page .hreview button{margin-right:16px;}
-#cocktail-page .hreview .entry .illustration{position:absolute;left:-2px;bottom:3px;}
+#cocktail-page .illustration{ position:absolute; left:-2px; bottom:3px; z-index:2;} /* also applied to the dragged element */ 
 .popup{font-size:120%;line-height:1.67;display:none;position:absolute;top:-140px;padding:80px 0 60px 0;min-height:100%;color:#fff;margin-bottom:-102px;left:0;width:100%;background:#000;background:rgba(0,0,0,.9);}
 .popup h3{font-size:150%;font-weight:bold;margin:-52px 20px -1px;}
 .popup p{padding:20px 40px 0 20px;}
