@@ -134,7 +134,7 @@ label{display:block;}
 
 .search-control {background:url(bg/blocks/green-line.png) no-repeat; padding:5px; color:#fff; height: 22px;}
 .search-form strong{font-size:120%;line-height:1;display:block;padding:12px 0 17px 0;}
-.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: #f4f7c2; line-height: 18px; height:18px;}
+.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: #f4f7c2; line-height: 18px; height:18px; border-top:none;}
 .search-form small{color:#f1f7b6;line-height:1.5;display:block;}
 .search-form dl{overflow:hidden;}
 .search-form dt{padding:0;font-size:92%;}
@@ -151,7 +151,7 @@ label{display:block;}
 #search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; width:510px; margin-top:2px;}
-#alphabetical-ru a {margin-right: 4px; float:left; display:block; width:17px; height: 18px; line-height:14px; text-align:center; padding-left:2px;}
+#alphabetical-ru a {margin-right: 4px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png);  color: #ec118f; }
 
 .autocomplete { font-size:12px; position:absolute; background-color:#FFFFFF; color:#000000; border:#000000 solid; border-width:0px 1px 1px 1px; padding:2px; z-index:1; display:none; }
