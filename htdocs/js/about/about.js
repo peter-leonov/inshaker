@@ -70,5 +70,5 @@ $.onload(function(){
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 
-<!--# include file="/lib/swfobject.js" -->
+<!--# include file="/external/swfobject.js" -->
 

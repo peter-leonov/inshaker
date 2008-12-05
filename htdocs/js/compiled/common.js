@@ -1,4 +1,4 @@
-<!--# include virtual="/lib/Programica/Oops.js" -->
+<!--# include virtual="/external/Oops.js" -->
 <!--# include file="/lib/base2/cssQuery.js" -->
 <!--# include file="/js/common/programica.js" -->
 
