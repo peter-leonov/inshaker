@@ -2,7 +2,7 @@
 
 #parties-page .b-title{padding-bottom:10px; margin-bottom: 15px;}
 #parties-page .column, #parties-page .column-mini {float:none;}
-#parties-page #top{position:relative;height:105px;font-size:12px;}
+#parties-page #top{}
 #parties-page #main-wrapper {z-index: 1; position:relative;}
 
 #parties-page .b-title h1,
