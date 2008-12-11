@@ -18,15 +18,13 @@ function CocktailsModel (states, view) {
 	this.resultSet = [];
 	
 	
-	this.initialize = function(filters, tsStates) {
+	this.initialize = function(filters, tsStates, origin) {
 		this.strengthState = tsStates && tsStates.length ? tsStates[0] : Cocktail.strengths;
     this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
-        
-		if(filters) this.filters = this.completeFilters(filters);
+    if(filters) this.filters = this.completeFilters(filters);
 		
     view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
-    								
-    this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length);
+    this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length && origin == "request");
 	};
 	
 	this.randomIngredient = function(){
@@ -41,24 +39,24 @@ function CocktailsModel (states, view) {
 	}
 	
 	this.completeFilters = function(filters){		
-    if(!filters.name)          filters.name = "";
-		if(!filters.letter)        filters.letter = "";
-		if(!filters.tag)           filters.tag = "";
-		if(!filters.strength)      filters.strength = "";
-		if(!filters.page)          filters.page = 0;
-    
-    if(!filters.ingredients)   filters.ingredients = [];
-		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
-
-    if(!filters.state)  filters.state = states.defaultState
-    else  filters.state = states[filters.state] 
-
-
-    if(filters.ingredients.length || filters.tag || filters.strength) {
-      filters.state = states.byIngredients;
-    }
-
-		return filters;
+        if(!filters.name)          filters.name = "";
+        if(!filters.letter)        filters.letter = "";
+        if(!filters.tag)           filters.tag = "";
+        if(!filters.strength)      filters.strength = "";
+        if(!filters.page)          filters.page = 0;
+        
+        if(!filters.ingredients)   filters.ingredients = [];
+        else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
+        
+        if(!filters.state)  filters.state = states.defaultState
+        else filters.state = states[filters.state] 
+        
+        
+        if(filters.ingredients.length || filters.tag || filters.strength) {
+          filters.state = states.byIngredients;
+        }
+        
+        return filters;
 	};
 	
 	this.resetFilters = function(){
@@ -174,8 +172,8 @@ function CocktailsModel (states, view) {
     };
 
 	this.applyFilters = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
-    this.resultSet = Cocktail.getByFilters(this.filters);
-		this.updateStates(strengthChanged, ingredChanged, letterChanged, nameChanged);
-		view.onModelChanged(this.resultSet, this.filters, this.tagState, this.strengthState);
+        this.resultSet = Cocktail.getByFilters(this.filters);
+        this.updateStates(strengthChanged, ingredChanged, letterChanged, nameChanged);
+        view.onModelChanged(this.resultSet, this.filters, this.tagState, this.strengthState);
 	}
 }

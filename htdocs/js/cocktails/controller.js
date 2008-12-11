@@ -6,14 +6,16 @@ function CocktailsController (states, cookies, model, view) {
 	
 	this.initialize = function () {
 		var filters = this.filtersFromRequest();
-        var states = null;
-        if(!filters) {
-            filters = this.filtersFromCookie();
-            states = this.statesFromCookies();
-        }
+    var states = null;
+    var origin = "request";
+    if(!filters) {
+      filters = this.filtersFromCookie();
+      states = this.statesFromCookies();
+      origin = "cookie";
+    }
 		
 		this.view.controller = this;
-		this.model.initialize(filters, states);
+		this.model.initialize(filters, states, origin);
 	};
 	
 	this.filtersFromRequest = function () {
@@ -42,7 +44,7 @@ function CocktailsController (states, cookies, model, view) {
 	this.filtersFromCookie = function () {
 		var cookie = Cookie.get(cookies.filter);
 		if(cookie) return Object.parse(cookie);
-		else return null;
+    else return null;
 	};
 	
 	this.saveState = function (filters, tagState, strengthState) {
