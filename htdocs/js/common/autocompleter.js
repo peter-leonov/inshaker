@@ -184,8 +184,8 @@ function Autocompleter(set, field, form) {
 		}
 	}
 	
-	this.show = function() { div.show(); this.adaptFrame(this.backFrame, true);  this.shown = true; }
-	this.hide = function() { div.hide(); this.adaptFrame(this.backFrame, false); this.shown = false; }
+	this.show = function() { div.show(); /* this.adaptFrame(this.backFrame, true); */  this.shown = true; }
+	this.hide = function() { div.hide(); /* this.adaptFrame(this.backFrame, false); */ this.shown = false; }
 	
 	this.adaptFrame = function(frame, toShow){
 		if(toShow){
@@ -208,5 +208,5 @@ function Autocompleter(set, field, form) {
 		return e;
 	}
 	
-	this.backFrame = this.createBackFrame();
+	// this.backFrame = this.createBackFrame();
 }
