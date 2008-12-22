@@ -35,7 +35,11 @@ $.onload
 			// citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
-			map: $('map')
+			map: $('map'),
+			
+			photographer: $('photographer'),
+			photoPopup: $('photo_popup_area'),
+			photoCloseItems: [$('photo_close_text'), $('photo_close_cross'), $('overlay')]
 		}
 		
 		BarsPage.initialize(nodes)

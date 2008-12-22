@@ -24,6 +24,12 @@ BarsPageView.prototype =
 		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
 		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
+		nodes.photographer.addEventListener('click', function(e){ nodes.photoPopup.show() }, false)
+		
+		var pci = nodes.photoCloseItems
+		for(var i = 0; i < pci.length; i++){
+			pci[i].addEventListener('click', function(e){ nodes.photoPopup.hide() }, false)
+		}
 		
 		// Selecter.bind(nodes.citySelect)
 		Selecter.bind(nodes.formatSelect)
