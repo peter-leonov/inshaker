@@ -21,7 +21,7 @@ function CocktailsModel (states, view) {
 	this.initialize = function(filters, tsStates, origin) {
 		this.strengthState = tsStates && tsStates.length ? tsStates[0] : Cocktail.strengths;
     this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
-    if(filters) this.filters = this.completeFilters(filters);
+    if(filters) this.filters = this.completeFilters(filters, origin);
 		
     view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
     this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length && origin == "request");
@@ -38,7 +38,7 @@ function CocktailsModel (states, view) {
 		return [cocktail.name, cocktail.name_eng];
 	}
 	
-	this.completeFilters = function(filters){		
+	this.completeFilters = function(filters, origin){		
         if(!filters.name)          filters.name = "";
         if(!filters.letter)        filters.letter = "";
         if(!filters.tag)           filters.tag = "";
@@ -49,8 +49,7 @@ function CocktailsModel (states, view) {
         else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
         
         if(!filters.state)  filters.state = states.defaultState
-        else filters.state = states[filters.state] 
-        
+        else if(origin == "request") filters.state = states[filters.state] 
         
         if(filters.ingredients.length || filters.tag || filters.strength) {
           filters.state = states.byIngredients;
