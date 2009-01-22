@@ -17,7 +17,6 @@ BarPage.view =
 		new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
 		new Programica.RollingImagesLite(nodes.recommendations)
 		new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
-		new Programica.RollingImagesLite(nodes.partiesMain, {animationType: 'easeInOutCubic'})
 		
 		
 		var barMore = nodes.barMore
@@ -55,7 +54,8 @@ BarPage.view =
 		this.renderCocktails(nodes.carte, data.carte, 3)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
-		this.renderParties(data.partiesSet)
+
+    this.renderPriceIndex(data.bar)
 	},
 	
 	readBarCityNames: function ()
@@ -236,36 +236,11 @@ BarPage.view =
 			this.nodes.barNext.hide()
 	},
 	
-	renderParties: function (partiesSet)
-	{
-		var root = this.nodes.parties
-		
-		var selected = 0
-		
-		for (var i = 0; i < partiesSet.length; i++)
-		{
-			var party = partiesSet[i]
-			
-			var point = N('a')
-			point.className = 'point'
-			point.href = party.getPageHref()
-			point.title = party.name
-			
-			// log(this.bar.name == party.bar)
-			if (this.bar.name == party.bar)
-				selected = i
-			
-			var img = N('img')
-			img.src = party.getMiniImgSrc()
-			point.appendChild(img)
-			
-			root.appendChild(point)
-		}
-		
-		var ri = this.nodes.partiesMain.RollingImagesLite
-		ri.sync()
-		ri.goToFrame(selected, 'directJump')
-	}
+  renderPriceIndex: function(bar)
+  {
+    this.nodes.priceIndex.innerHTML = bar.price_index + "&nbsp;р." 
+  }
+
 }
 
 })()}
