@@ -88,7 +88,6 @@ class EventsProcessor < Barman::Processor
   def flush_json
     @entities.each do |name, entity|
       # YAGNI
-      entity.delete(:name)
       entity.delete(:subject)
       entity.delete(:promo)
       entity.delete(:imgdir)
