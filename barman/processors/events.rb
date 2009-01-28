@@ -25,7 +25,7 @@ class EventsProcessor < Barman::Processor
   def run
     prepare
     
-    flush_html
+    # flush_html # let's use events.html
     flush_json
   end
   
@@ -89,11 +89,9 @@ class EventsProcessor < Barman::Processor
     @entities.each do |name, entity|
       # YAGNI
       entity.delete(:name)
-      entity.delete(:header)
       entity.delete(:subject)
       entity.delete(:promo)
       entity.delete(:imgdir)
-      entity.delete(:target)
     end
     
     flush_json_object(@entities, Config::DB_JS)
