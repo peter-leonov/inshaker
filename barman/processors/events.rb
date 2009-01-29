@@ -103,7 +103,7 @@ private
     
     # warn yaml.inspect
     ru_date             = yaml['Дата'].split(".")
-    ru_date_obj         = Date.new(ru_date[2], ru_date[1], ru_date[0])
+    ru_date_obj         = Date.new(ru_date[2].to_i, ru_date[1].to_i, ru_date[0].to_i)
     ru_date_str         = "#{ru_date_obj.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date_obj.mon].downcase} #{ru_date_obj.year}"
     @entity[:date]      = ru_date_obj
     
