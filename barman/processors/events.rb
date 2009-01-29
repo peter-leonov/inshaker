@@ -64,6 +64,10 @@ class EventsProcessor < Barman::Processor
       FileUtils.cp_r(src_dir + "/promo-bg.png", out_images_path + "/promo-bg.png", @mv_opt)
     end
     
+    if File.exists?(src_dir + "/preview.jpg")
+      FileUtils.cp_r(src_dir + "/preview.jpg", out_images_path + "/preview.jpg", @mv_opt)
+    end
+    
     @entity[:dialogue].each do |v|
       FileUtils.mkdir_p out_images_path + "/dialogues/"
       FileUtils.cp_r(src_dir + "/dialogues/" + v[:back], out_images_path + "/dialogues/" + v[:back], @mv_opt)
