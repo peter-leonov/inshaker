@@ -102,6 +102,11 @@ private
     yaml = YAML::load(File.open(src_dir + "/about.yaml"))
     
     # warn yaml.inspect
+    ru_date             = yaml['Дата'].split(".")
+    ru_date_obj         = Date.new(ru_date[2], ru_date[1], ru_date[0])
+    ru_date_str         = "#{ru_date_obj.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date_obj.mon].downcase} #{ru_date_obj.year}"
+    @entity[:date]      = ru_date_obj
+    
     @entity[:name]      = yaml['Название']
     @entity[:header]    = yaml['Слоган']
     @entity[:target]    = yaml['Задача']
@@ -109,10 +114,16 @@ private
     @entity[:city]      = yaml['Город']
     @entity[:country]   = yaml['Страна']
     @entity[:href]      = yaml['Ссылка']
-    @entity[:address]   = yaml['Адрес']
-    @entity[:bar]       = yaml['Бар']
+    @entity[:venue]     = yaml['Место']
+    @entity[:venue_link]= yaml['Ссылка на место']
+    @entity[:time]      = yaml['Время']
     @entity[:fields]    = yaml['Поля формы']
     @entity[:status]    = {'проведение' => 'holding' }[yaml['Статус']]
+    
+    # Legacy
+    @entity[:address]   = "#{yaml['Город']} - #{yaml['Место']}, #{ru_date_str}" # TODO: delete
+    @entity[:bar]       = yaml['Ссылка на место'] # TODO: delete
+
     # @entity[:high]      = yaml['Генеральные спонсоры']
     # @entity[:medium]    = yaml['Спонсоры']
     # @entity[:low]       = yaml['При поддержке']
