@@ -5,13 +5,13 @@ Cocktail = function (data)
 
 Object.extend(Cocktail,
 {
-	cocktails: [],
-	ingredients: [],
-	letters: [],
-	names: [],
-
-  dictNames: {},
-  dictLetters: {},
+    cocktails: [],
+    ingredients: [],
+    letters: [],
+    names: [],
+    
+    dictNames: {},
+    dictLetters: {},
 	
 	initialize: function (db){
 		var i = 0;
@@ -21,11 +21,10 @@ Object.extend(Cocktail,
 			this.names[i] = cocktail.name;
 			this.cocktails[i] = cocktail;
 			
-      var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-      var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-      this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
-
-
+            var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
+            var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
+            this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
+            
 			var ingreds = cocktail.ingredients;
 			for(var j = 0; j < ingreds.length; j++) {
 				if(this.ingredients.indexOf(ingreds[j][0]) == -1) this.ingredients.push(ingreds[j][0])
@@ -33,10 +32,10 @@ Object.extend(Cocktail,
 			
 			var letter = cocktail.name.substr(0,1).toLowerCase();
 			if(this.letters.indexOf(letter) == -1) this.letters.push(letter);
-      if(!this.dictLetters[letter]) this.dictLetters[letter] = [];
-      this.dictLetters[letter].push(i);
+            if(!this.dictLetters[letter]) this.dictLetters[letter] = [];
+            this.dictLetters[letter].push(i);
 
-      i++;
+            i++;
 		}
 		this.letters = this.letters.sort();
 	},
@@ -48,13 +47,13 @@ Object.extend(Cocktail,
 	},
 	
 	getBySimilarName: function (name){
-    var term = name.split(" ").map(function(v){ return v.toLowerCase() }).sort().join("");
+        var term = name.split(" ").map(function(v){ return v.toLowerCase() }).sort().join("");
 
-    var res = [];
-    for(var key in this.dictNames) {
-      if (key.indexOf(term) > -1) res.push(this.cocktails[this.dictNames[key]])
-    }
-    return res;
+        var res = [];
+        for(var key in this.dictNames) {
+            if (key.indexOf(term) > -1) res.push(this.cocktails[this.dictNames[key]])
+        }
+        return res;
 	},
 	
 	getByHtmlName: function(htmlName){
@@ -64,16 +63,16 @@ Object.extend(Cocktail,
 	},
 	
 	getByLetter: function (letter){
-    letter = letter.toLowerCase();
+        letter = letter.toLowerCase();
 
 		var res = [];
-    var cNums = this.dictLetters[letter];
+        var cNums = this.dictLetters[letter];
     	
 		for(var i = 0; i < cNums.length; i++){
-      res[i] = this.cocktails[cNums[i]];
-    }
+            res[i] = this.cocktails[cNums[i]];
+        }
 
-    return res;
+        return res;
 	},
 	
 	getByTag: function (tag, set) {
@@ -132,18 +131,18 @@ Object.extend(Cocktail,
 			filtered = true;
 		}
 		if(filters.ingredients && filters.ingredients.length) {
-      var to_filter = [];
+            var to_filter = [];
 			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
 			filtered = true;
 		}
-    if(!filtered) res = this.cocktails.sortedBy(this.nameSort);
+        if(!filtered) res = this.cocktails.sortedBy(this.nameSort);
 		return res;
 	},
 
   nameSort: function(a,b) {
-    if(a.name > b.name) return 1;
-		  else if(a.name == b.name) return 0;
-		  else return -1;
+      if(a.name > b.name) return 1;
+	  else if(a.name == b.name) return 0;
+	  else return -1;
   }
 })
 

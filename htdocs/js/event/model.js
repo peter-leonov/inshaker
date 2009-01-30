@@ -13,5 +13,28 @@ EventPage.model =
 		event.name = state.name
 		
 		this.owner.view.modelChanged(event)
+	},
+	
+	needToRenderPreviews: function()
+	{
+		this.owner.view.renderPreviews(this.eventsDB.getAll())
+	},
+	
+	needToSelectEvent: function()
+	{
+	    var events = this.eventsDB.getAll()
+	    var closest = null, smallestGap = Infinity
+	    
+	    for(var i = 0; i < events.length; i++) 
+	    {
+	        var curGap = new Date() - new Date(events[i].date)
+	        if(curGap < smallestGap)
+	        {
+	            smallestGap = curGap
+	            closest = events[i]
+	        }
+	    }
+	    
+	    this.owner.view.setSelected(closest)
 	}
 }

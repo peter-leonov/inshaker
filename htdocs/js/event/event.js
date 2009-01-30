@@ -24,6 +24,13 @@ $.onload
 		var nodes =
 		{
 			name: $('event-name'),
+			header: $('event-header'),
+			target: $('parole'),
+			address: $('address'),
+			venueLink: $('venue-link'),
+			promoBack: $('promo-back'),
+			previews: cssQuery('.previews')[0],
+			previewSurface: cssQuery('.previews .viewport .surface')[0],
 			illustration: $('illustration'),
 			illustrationPopups: cssQuery('#illustration img')[0],
 			rating: cssQuery('#comming .rating')[0],

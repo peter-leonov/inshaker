@@ -33,18 +33,28 @@ EventPage.view =
 		
 		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
 		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
+		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
+		
+	    this.fakeEvents = [
+	        {name: "Грандиозное событие", date: "совсем скоро", venue: "Отличное место"},
+	    	{name: "Первоклассная вечеринка", date: "скоро", venue: "Где-то рядом"},
+	        {name: "Настоящий праздник", date: "в этом сезоне", venue: "Твой любимый бар"}
+	    ]
 	},
 	
 	start: function ()
 	{
-		var name = this.nodes.name.innerHTML
-		this.owner.controller.setEventName(name)
+		this.owner.controller.needToRenderPreviews()
+		this.owner.controller.needToSelectEvent()
 	},
 	
 	modelChanged: function (event)
 	{
 		this.event = event
-	    this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		
+		this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		
+		this.renderMainInfo(event)
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
 		this.renderRatingHead(event.rating)
@@ -54,7 +64,110 @@ EventPage.view =
 		this.renderVariableFields(event.fields)
 		this.setFormLock(true)
 		
+		this.fixRatingHeight()
+		
 		this.renderStatus(event.status)
+	},
+	
+	renderPreviews: function(events)
+	{
+		var curPoint = null
+		
+		events = events.sort(Event.dateSort)
+		
+		for(var i = 0; i < events.length; i++) {
+			if(i % 4 == 0) {
+				curPoint = document.createElement("li")
+				curPoint.addClassName("point")
+				this.nodes.previewSurface.appendChild(curPoint)
+			}
+			curPoint.appendChild(this.createPreviewElement(events[i]))
+		}
+		
+		var fakeNeeded = 4 - events.length
+		if(fakeNeeded > 0)
+		{
+		    for(var i = 0; i < fakeNeeded; i++) curPoint.appendChild(this.createFakePreviewElement(i, this.fakeEvents[i]))
+		}
+		this.nodes.previews.RollingImagesLite.sync()
+		this.nodes.previews.RollingImagesLite.goInit()
+	},
+	
+	createPreviewElement: function(event)
+	{
+		var iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		
+		var div = N("div")
+		div.addClassName("event")
+		
+		var block = N("div")
+		block.style.backgroundImage = "url(" + iroot + "/preview.jpg)"
+		var a = N("a")
+		a.innerHTML = new Date(event.date).getFormatted()
+		block.appendChild(a)
+		div.appendChild(block)
+		
+		var name = N("span")
+		name.addClassName("name")
+		name.innerHTML = event.name + "<br/>" + event.venue + "<br/>"
+		div.appendChild(name)
+		
+		var self = this
+		div.addEventListener('click', function(e){
+			if(self.event != event) self.setSelected(event)
+		}, false)
+		
+		return div
+	},
+	
+	createFakePreviewElement: function(i, event)
+	{
+	    var iroot = '/i/event/fake/'
+	    var div = N("div")
+		div.addClassName("event")
+		
+		var block = N("div")
+		block.style.backgroundImage = "url(" + iroot + "/preview" + (i + 1) + ".jpg)"
+		var a = N("a")
+		a.innerHTML = event.date
+		block.appendChild(a)
+		div.appendChild(block)
+		
+		var name = N("span")
+		name.addClassName("name")
+		name.innerHTML = event.name + "<br/>" + event.venue + "<br/>"
+		div.appendChild(name)
+		div.addClassName("fake")
+		
+		return div
+	},
+	
+	setSelected: function(event)
+	{
+	    if(this.selectedEventNode) this.selectedEventNode.remClassName('selected')
+        this.selectedEventNode = cssQuery(".event:contains('"+ event.name +"')")[0]
+        this.selectedEventNode.addClassName('selected')
+        
+        this.owner.controller.setEventName(event.name)
+	},
+	
+	renderMainInfo: function(event)
+	{
+		this.nodes.target.innerHTML  = event.target
+		this.nodes.header.innerHTML  = event.header
+		this.nodes.name.innerHTML    = event.name
+		this.nodes.address.innerHTML = event.address
+		this.nodes.venueLink.href    = event.venue_link
+		
+		this.nodes.promoBack.style.backgroundImage = "url(" + this.iroot + "/promo-bg.png)"
+	},
+	
+	fixRatingHeight: function() 
+	{
+		var space = 0,
+			sponsorBanners = this.nodes.sponsorsMedium.childNodes
+		for(var i = 0; i < sponsorBanners.length; i++) space += sponsorBanners[i].offsetHeight
+		this.nodes.rating.style.height = parseInt((space + 40*sponsorBanners.length)/16)*16 + "px"
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
@@ -176,6 +289,8 @@ EventPage.view =
 			padding = String(max).length * 7.5,
 			k = max && min ? ((171 - padding) / (max - min + 1)  * 100) / 100 : 1
 		
+		root.empty()
+		
 		for (var i = 0; i < sorted.length; i++)
 		{
 			var name = sorted[i],
@@ -289,6 +404,7 @@ EventPage.view =
 	renderMediumSponsors: function (sponsorsSet)
 	{
 		var root = this.nodes.sponsorsMedium
+		root.empty()
 		
 		for (var i = 0; i < sponsorsSet.length; i++)
 		{

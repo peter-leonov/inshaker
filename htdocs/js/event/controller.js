@@ -12,6 +12,16 @@ EventPage.controller =
 		this.owner.model.setState({name: name})
 	},
 	
+	needToRenderPreviews: function()
+	{
+		this.owner.model.needToRenderPreviews()
+	},
+	
+	needToSelectEvent: function()
+	{
+	    this.owner.model.needToSelectEvent()
+	},
+	
 	formPopupCloseClicked: function ()
 	{
 		this.owner.view.hideFormPopup()

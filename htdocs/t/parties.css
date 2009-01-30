@@ -1,7 +1,6 @@
 /* parties-page */
 
 #parties-page .b-title{padding-bottom:10px; margin-bottom: 15px;}
-#parties-page .column, #parties-page .column-mini {float:none;}
 #parties-page #top{}
 #parties-page #main-wrapper {z-index: 1; position:relative;}
 
@@ -32,7 +31,7 @@ background: url(icon/strs-green.png);
 #parties-page .party-previews .next.disabled { background-position: -20px -92px; cursor: default; }
 
 #parties-page .party-photos .viewport,
-#parties-page .party-photos { overflow: hidden; position: relative; width: 960px; height: 410px; }
+#parties-page .party-photos { overflow: hidden; position: relative; width: 960px; height: 410px; clear:both;}
 #parties-page .party-photos .viewport .point { float: left; width: 960px; height: 100%; }
 #parties-page .party-photos .viewport .surface { width: 10000px; height:100%;}
 #parties-page .party-photos .prev,
