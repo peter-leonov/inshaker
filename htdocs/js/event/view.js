@@ -1,7 +1,7 @@
 {(function(){
 
 var doc = document
-function N (name) { return doc.createElement(name) }
+function N (name, classN) { var res = doc.createElement(name); if(classN) res.className = classN; return res; }
 function T (text) { return doc.createTextNode(text) }
 
 EventPage.view =
@@ -42,12 +42,6 @@ EventPage.view =
 	    ]
 	},
 	
-	start: function ()
-	{
-		this.owner.controller.needToRenderPreviews()
-		this.owner.controller.needToSelectEvent()
-	},
-	
 	modelChanged: function (event)
 	{
 		this.event = event
@@ -86,9 +80,9 @@ EventPage.view =
 		
 		var fakeNeeded = 4 - events.length
 		if(fakeNeeded > 0)
-		{
-		    for(var i = 0; i < fakeNeeded; i++) curPoint.appendChild(this.createFakePreviewElement(i, this.fakeEvents[i]))
-		}
+		    for(var i = 0; i < fakeNeeded; i++)
+		        curPoint.appendChild(this.createFakePreviewElement(i, this.fakeEvents[i]))
+
 		this.nodes.previews.RollingImagesLite.sync()
 		this.nodes.previews.RollingImagesLite.goInit()
 	},
@@ -96,49 +90,50 @@ EventPage.view =
 	createPreviewElement: function(event)
 	{
 		var iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		var ehref = '/events.html?event=' + event.href + '&city=' + event.city.trans().htmlName()
 		
-		var div = N("div")
-		div.addClassName("event")
+		var div   = N("div", "event")
+		var mini = N("div","mini")
+		mini.style.backgroundImage = "url(" + iroot + "/preview.jpg)"
 		
-		var block = N("div")
-		block.style.backgroundImage = "url(" + iroot + "/preview.jpg)"
-		var a = N("a")
-		a.innerHTML = new Date(event.date).getFormatted()
-		block.appendChild(a)
-		div.appendChild(block)
+		var date = N("a")
+		date.href = ehref
+	    date.innerHTML = new Date(event.date).getFormatted()
+		mini.appendChild(date)
+		div.appendChild(mini)
 		
-		var name = N("span")
-		name.addClassName("name")
-		name.innerHTML = event.name + "<br/>" + event.venue + "<br/>"
-		div.appendChild(name)
-		
-		var self = this
-		div.addEventListener('click', function(e){
-			if(self.event != event) self.setSelected(event)
-		}, false)
+		var desc = N("div", "desc"), a = N("a")
+		a.href = ehref
+		a.innerHTML = event.name + "<br/>" + event.venue
+		desc.appendChild(a)
+					
+		desc.appendChild(N("span", "fade"))
+		div.appendChild(desc)
 		
 		return div
 	},
 	
 	createFakePreviewElement: function(i, event)
 	{
-	    var iroot = '/i/event/fake/'
-	    var div = N("div")
-		div.addClassName("event")
+	    var iroot = '/i/event/fake'
+	    var div = N("div", "event")
 		
-		var block = N("div")
-		block.style.backgroundImage = "url(" + iroot + "/preview" + (i + 1) + ".jpg)"
+		var mini = N("div", "mini")
+		mini.style.backgroundImage = "url(" + iroot + "/preview" + (i + 1) + ".jpg)"
+		
 		var a = N("a")
 		a.innerHTML = event.date
-		block.appendChild(a)
-		div.appendChild(block)
+		mini.appendChild(a)
+		div.appendChild(mini)
 		
-		var name = N("span")
-		name.addClassName("name")
-		name.innerHTML = event.name + "<br/>" + event.venue + "<br/>"
-		div.appendChild(name)
+		var desc = N("div", "desc"), a = N("a")
+		a.innerHTML = event.name + "<br/>" + event.venue
+		desc.appendChild(a)
+			
+		desc.appendChild(N("span", "fade"))
+		div.appendChild(desc)
+		
 		div.addClassName("fake")
-		
 		return div
 	},
 	
@@ -156,7 +151,7 @@ EventPage.view =
 		this.nodes.target.innerHTML  = event.target
 		this.nodes.header.innerHTML  = event.header
 		this.nodes.name.innerHTML    = event.name
-		this.nodes.address.innerHTML = event.address
+		this.nodes.address.innerHTML = event.city + "&nbsp;-&nbsp;<a href='" + event.venue_link + "'>" + event.venue + "</a>, " + new Date(event.date).getFormatted(true)
 		this.nodes.venueLink.href    = event.venue_link
 		
 		this.nodes.promoBack.style.backgroundImage = "url(" + this.iroot + "/promo-bg.png)"

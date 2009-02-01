@@ -34,10 +34,10 @@ Number.prototype.toFloatString = function(){
 	return this + ".0";
 }
 
-Date.prototype.getFormatted = function(){
-	var weekdays = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"];
-	var months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"]; 
-	return this.getDate() + " " + months[this.getMonth()] + ", " + weekdays[this.getDay()];
+Date.prototype.getFormatted = function(withYear){
+	var weekdays = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"]
+	var months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"] 
+	return this.getDate() + " " + months[this.getMonth()] + (withYear ? " " + this.getFullYear() : ", " + weekdays[this.getDay()])
 }
 
 function spaces(num){

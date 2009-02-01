@@ -125,7 +125,8 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #parties-page .party-previews .prev { background-position-x: -52px; }
 
 #event-page .column-main-container { width: 62.8em; }
-#event-page .previews .event div a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+#event-page .previews .event .fade,
+#event-page .previews .event .mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
 #event-page #sponsors-others { zoom: 1; }
 

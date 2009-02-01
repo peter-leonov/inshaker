@@ -2,9 +2,16 @@ EventPage.model =
 {
 	owner: null, // must be defined before initialize
 	
-	initialize: function (eventsDB)
+	initialize: function (eventsDB, filters)
 	{
 		this.eventsDB = eventsDB
+		var event = null
+		if(filters && filters.event && filters.city) 
+		    event = Event.getByHrefAndCity(filters.event, filters.city)
+	    if(!event) event = this.getClosestEvent()
+	    
+	    this.owner.view.renderPreviews(this.eventsDB.getAll())
+	    this.owner.view.setSelected(event)
 	},
 	
 	setState: function (state)
@@ -20,7 +27,7 @@ EventPage.model =
 		this.owner.view.renderPreviews(this.eventsDB.getAll())
 	},
 	
-	needToSelectEvent: function()
+	getClosestEvent: function()
 	{
 	    var events = this.eventsDB.getAll()
 	    var closest = null, smallestGap = Infinity
@@ -35,6 +42,6 @@ EventPage.model =
 	        }
 	    }
 	    
-	    this.owner.view.setSelected(closest)
+	    return closest
 	}
 }

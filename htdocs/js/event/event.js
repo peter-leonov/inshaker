@@ -11,9 +11,7 @@ EventPage =
 		controller.owner = this
 		
 		view.initialize(nodes)
-		controller.initialize()
-		model.initialize(eventsDB)
-		view.start()
+		model.initialize(eventsDB, controller.initialize())
 	}
 }
 

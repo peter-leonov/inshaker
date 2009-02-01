@@ -623,24 +623,28 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page { background: #FFFFFF; }
 #event-page .timeline .b-title{padding-bottom:10px; margin-bottom: 15px;}
 #event-page .timeline.column { margin-bottom: 32px;} 
-#event-page .timeline .b-title h1{font-size:21px;margin-left:-1px;}
-#event-page .timeline .b-title h1 a {color: #F32C9F; border-bottom: 2px dashed; text-decoration:none;}
+#event-page .timeline .b-title h1{font-size:20px; margin-left:-1px;}
+#event-page .timeline .b-title h1 a {text-decoration:none; border-bottom: 2px dashed;}
+#event-page .timeline .b-title h1 a:hover {border-bottom:0;}
 #event-page .timeline .body-wrapper{padding-bottom:0;}
 
-#event-page .previews .event { float: left; width: 180px; text-align: center; cursor:pointer; margin-right: 32px;}
-#event-page .previews .event div { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
-#event-page .previews .event div a { line-height: 15px; color:#FFFFFF; background: url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; text-decoration:none; width: 170px;}
-#event-page .previews .name { font-family: Arial, sans-serif; font-size: 12px; color: #0392f1; border-bottom: dashed 1px; }
-#event-page .previews .event.selected .name { color: #F32C9F; border-bottom: none; }
-#event-page .previews .event.selected div a {background: url(/t/event/pre-mask-full-selected.png);}
+#event-page .previews .event { float: left; width: 180px; text-align: center; margin-right: 32px; }
+#event-page .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
+#event-page .previews .event .mini a { line-height: 15px; color:#FFFFFF; background: url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; text-decoration:none; width: 170px;}
 
-#event-page .previews .event.fake .name { color: #c0c0c0; }
-#event-page .previews .event.fake div a { cursor: default; }
-#event-page .previews .event.fake { cursor: default; }
+#event-page .previews .event .fade { background:url(/t/bg/blocks/fade-bg.png); position:absolute; right:0; top:0; height:32px; width: 25px; }
+#event-page .previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; white-space:nowrap; overflow:hidden; position:relative; width:180px; height: 30px;}
+#event-page .previews .event .desc a { color: #0392f1; border-bottom: dashed 1px; text-decoration: none;}
+
+#event-page .previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
+#event-page .previews .event.selected .mini a {background: url(/t/event/pre-mask-full-selected.png);}
+
+#event-page .previews .event.fake .desc a { color: #c0c0c0; cursor: default;}
+#event-page .previews .event.fake .mini a { cursor: default; }
 
 #event-page .previews .viewport,
 #event-page .previews { overflow: hidden; position: relative; width: 920px; height: 159px; }
-#event-page .previews .viewport {width: 855px; margin-left: 34px;}
+#event-page .previews .viewport {width: 818px; margin-left: 52px;}
 #event-page .previews .viewport .point { float: left; width: 855px; height: 100%; }
 #event-page .previews .viewport .surface { width: 4000px; padding: 0;}
 #event-page .previews .prev,
@@ -689,10 +693,10 @@ background: url(icon/strs-green.png);
 #event-page #comming .rating dd { width: 20px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #event-page #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
-#event-page #low-sponsors { margin: 17px 24px 0 0; }
+#event-page #low-sponsors { margin: 17px 0 0 0; }
 #event-page #low-sponsors .b-title { padding: 0 0 7px 0; }
 #event-page #low-sponsors .b-content { position: relative; width: 100%; }
-#event-page #low-sponsors .b-content .viewport { width: 840px; margin: 0 0 0 15px; }
+#event-page #low-sponsors .b-content .viewport { width: 852px; margin: 0 0 0 27px; }
 #event-page #low-sponsors .b-content .viewport .surface { width: 10000px; }
 #event-page #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #event-page #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
