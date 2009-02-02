@@ -641,7 +641,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .previews .event.fake .desc a { color: #c0c0c0; cursor: default;}
 #event-page .previews .event.fake .mini a { cursor: default; }
 
-#event-page #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px;}
+#event-page #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
 
 #event-page .previews .viewport,
 #event-page .previews { overflow: hidden; position: relative; width: 920px; height: 159px; }

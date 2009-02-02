@@ -116,6 +116,7 @@ EventPage.view =
 		    date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
 		    div.addClassName("now")
 		    this.nodes.mark.style.left = this.markerOffsets[idx]
+		    this.nodes.mark.show()
 	    }
 		return div
 	},
