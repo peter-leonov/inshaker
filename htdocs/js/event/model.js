@@ -10,8 +10,8 @@ EventPage.model =
 		    event = Event.getByHrefAndCity(filters.event, filters.city)
 	    if(!event) event = this.getClosestEvent()
 	    
-	    this.owner.view.renderPreviews(this.eventsDB.getAll())
-	    this.owner.view.setSelected(event)
+	    this.owner.view.renderPreviews(this.eventsDB.getAll(), event)
+	    this.owner.view.modelChanged(event)
 	},
 	
 	setState: function (state)

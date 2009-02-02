@@ -131,6 +131,7 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #event-page #sponsors-others { zoom: 1; }
 
 #event-page .b-content { width:100%; }
+#event-page .timeline .previews .prev { background-position-x: -52px; }
 #event-page #form-popup { position: absolute; }
 #event-page #low-sponsors { zoom: 1; }
 #event-page .b-more-cocktails .point {font-size: 103px;}

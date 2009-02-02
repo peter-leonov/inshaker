@@ -626,21 +626,22 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 #event-page .timeline .b-title h1 a {text-decoration:none; border-bottom: 2px dashed;}
 #event-page .timeline .b-title h1 a:hover {border-bottom:0;}
-#event-page .timeline .body-wrapper{padding-bottom:0;}
+#event-page .timeline .body-wrapper{padding-bottom:0; height:210px;}
 
 #event-page .previews .event { float: left; width: 180px; text-align: center; margin-right: 32px; }
 #event-page .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
-#event-page .previews .event .mini a { line-height: 15px; color:#FFFFFF; background: url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; text-decoration:none; width: 170px;}
+#event-page .previews .event .mini a { line-height: 15px; color:#FFFFFF; background:url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; text-decoration:none; width: 170px;}
 
 #event-page .previews .event .fade { background:url(/t/bg/blocks/fade-bg.png); position:absolute; right:0; top:0; height:32px; width: 25px; }
 #event-page .previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; white-space:nowrap; overflow:hidden; position:relative; width:180px; height: 30px;}
 #event-page .previews .event .desc a { color: #0392f1; border-bottom: dashed 1px; text-decoration: none;}
 
-#event-page .previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
-#event-page .previews .event.selected .mini a {background: url(/t/event/pre-mask-full-selected.png);}
+#event-page .previews .event.now .desc a { color: #F32C9F; border-bottom: none; }
 
 #event-page .previews .event.fake .desc a { color: #c0c0c0; cursor: default;}
 #event-page .previews .event.fake .mini a { cursor: default; }
+
+#event-page #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px;}
 
 #event-page .previews .viewport,
 #event-page .previews { overflow: hidden; position: relative; width: 920px; height: 159px; }

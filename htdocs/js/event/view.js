@@ -38,8 +38,8 @@ EventPage.view =
 	    this.fakeEvents = [
 	        {name: "Грандиозное событие", date: "совсем скоро", venue: "Отличное место"},
 	    	{name: "Первоклассная вечеринка", date: "скоро", venue: "Где-то рядом"},
-	        {name: "Настоящий праздник", date: "в этом сезоне", venue: "Твой любимый бар"}
-	    ]
+	        {name: "Настоящий праздник", date: "в этом сезоне", venue: "Твой любимый бар"} ]
+	    this.markerOffsets = ["144px", "360px", "576px", "792px"]
 	},
 	
 	modelChanged: function (event)
@@ -63,7 +63,7 @@ EventPage.view =
 		this.renderStatus(event.status)
 	},
 	
-	renderPreviews: function(events)
+	renderPreviews: function(events, selectedEvent)
 	{
 		var curPoint = null
 		
@@ -75,7 +75,8 @@ EventPage.view =
 				curPoint.addClassName("point")
 				this.nodes.previewSurface.appendChild(curPoint)
 			}
-			curPoint.appendChild(this.createPreviewElement(events[i]))
+			var idx = (i/4 - parseInt(i/4))*4
+			curPoint.appendChild(this.createPreviewElement(idx, events[i], selectedEvent == events[i]))
 		}
 		
 		var fakeNeeded = 4 - events.length
@@ -87,8 +88,8 @@ EventPage.view =
 		this.nodes.previews.RollingImagesLite.goInit()
 	},
 	
-	createPreviewElement: function(event)
-	{
+	createPreviewElement: function(idx, event, selected)
+	{   
 		var iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
 		var ehref = '/events.html?event=' + event.href + '&city=' + event.city.trans().htmlName()
 		
@@ -110,20 +111,26 @@ EventPage.view =
 		desc.appendChild(N("span", "fade"))
 		div.appendChild(desc)
 		
+		if(selected) 
+		{
+		    date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
+		    div.addClassName("now")
+		    this.nodes.mark.style.left = this.markerOffsets[idx]
+	    }
 		return div
 	},
 	
-	createFakePreviewElement: function(i, event)
+	createFakePreviewElement: function(idx, event)
 	{
 	    var iroot = '/i/event/fake'
 	    var div = N("div", "event")
 		
 		var mini = N("div", "mini")
-		mini.style.backgroundImage = "url(" + iroot + "/preview" + (i + 1) + ".jpg)"
+		mini.style.backgroundImage = "url(" + iroot + "/preview" + (idx + 1) + ".jpg)"
 		
-		var a = N("a")
-		a.innerHTML = event.date
-		mini.appendChild(a)
+		var date = N("a")
+		date.innerHTML = event.date
+		mini.appendChild(date)
 		div.appendChild(mini)
 		
 		var desc = N("div", "desc"), a = N("a")
@@ -136,16 +143,7 @@ EventPage.view =
 		div.addClassName("fake")
 		return div
 	},
-	
-	setSelected: function(event)
-	{
-	    if(this.selectedEventNode) this.selectedEventNode.remClassName('selected')
-        this.selectedEventNode = cssQuery(".event:contains('"+ event.name +"')")[0]
-        this.selectedEventNode.addClassName('selected')
-        
-        this.owner.controller.setEventName(event.name)
-	},
-	
+		
 	renderMainInfo: function(event)
 	{
 		this.nodes.target.innerHTML  = event.target

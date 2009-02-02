@@ -27,6 +27,7 @@ $.onload
 			address: $('address'),
 			venueLink: $('venue-link'),
 			promoBack: $('promo-back'),
+			mark: $('mark'),
 			previews: cssQuery('.previews')[0],
 			previewSurface: cssQuery('.previews .viewport .surface')[0],
 			illustration: $('illustration'),
