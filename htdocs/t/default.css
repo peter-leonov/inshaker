@@ -704,7 +704,7 @@ background: url(icon/strs-green.png);
 #event-page #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
 #event-page #low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 120px; }
 
-#event-page #low-sponsors dl { height: 18px; padding: 75px 0 0 10px; font-size: 11px; line-height: 11px; text-align: justify; }
+#event-page #low-sponsors dl { height: 18px; padding: 75px 0 0 15px; font-size: 11px; line-height: 11px; text-align: justify; }
 #event-page #low-sponsors dl dt { display: inline; position: relative; z-index: 2; margin: 0 15px 0 0; }
 #event-page #low-sponsors dl dt a { text-decoration: none; border-bottom: 1px dashed; }
 #event-page #low-sponsors dl dt.selected a { border-bottom: none; color: #e4146e; cursor: default; }
