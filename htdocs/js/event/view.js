@@ -105,7 +105,7 @@ EventPage.view =
 		
 		var desc = N("div", "desc"), a = N("a")
 		a.href = ehref
-		a.innerHTML = event.name + "<br/>" + event.venue
+		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
 		desc.appendChild(a)
 					
 		desc.appendChild(N("span", "fade"))
@@ -135,7 +135,7 @@ EventPage.view =
 		div.appendChild(mini)
 		
 		var desc = N("div", "desc"), a = N("a")
-		a.innerHTML = event.name + "<br/>" + event.venue
+		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
 		desc.appendChild(a)
 			
 		desc.appendChild(N("span", "fade"))

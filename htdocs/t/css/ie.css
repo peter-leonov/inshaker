@@ -34,6 +34,6 @@ img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="
 
 #event-page #illustration { float: left; }
 #event-page #low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
-
+#event-page #mark {top:227px;}
 
 #parties-page .party-previews .party { padding-bottom: 4px;}
