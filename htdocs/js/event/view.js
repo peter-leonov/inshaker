@@ -36,9 +36,9 @@ EventPage.view =
 		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
 		
 	    this.fakeEvents = [
-	        {name: "Грандиозное событие", date: "совсем скоро", venue: "Отличное место"},
-	    	{name: "Первоклассная вечеринка", date: "скоро", venue: "Где-то рядом"},
-	        {name: "Настоящий праздник", date: "в этом сезоне", venue: "Твой любимый бар"} ]
+	        {name: "Интересное событие", date: "скоро", venue: "в супер баре"},
+	    	{name: "Прекрасное событие", date: "скоро", venue: "в супер баре"},
+	        {name: "Необычное событие",  date: "скоро", venue: "в супер баре"} ]
 	    this.markerOffsets = ["144px", "360px", "576px", "792px"]
 	},
 	
