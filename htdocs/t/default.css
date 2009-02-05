@@ -624,7 +624,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #event-page .timeline .b-title{padding-bottom:10px; margin-bottom: 15px;}
 #event-page .timeline.column { margin-bottom: 32px;} 
 #event-page .timeline .b-title h1{font-size:20px; margin-left:-1px;}
-#event-page .timeline .b-title h1 a {text-decoration:none; border-bottom: 2px dashed;}
+#event-page .timeline .b-title h1 a {text-decoration:none; cursor:default; }
 #event-page .timeline .b-title h1 a:hover {border-bottom:0;}
 #event-page .timeline .body-wrapper{padding-bottom:0; height:210px;}
 
@@ -677,7 +677,7 @@ background: url(icon/strs-green.png);
 #event-page .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
 #event-page .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
 #event-page .about .sign-on span { border-bottom: 2px dashed; margin: 0 2px; }
-#event-page #invitations-only { text-decoration: none; border-bottom: 1px dashed; }
+#event-page #invitations-only { text-decoration: none; color: #000; }
 
 #event-page #medium-sponsors { clear: left; }
 #event-page #medium-sponsors .sponsor { width: 606px; margin: 30px 0 0 0; }
