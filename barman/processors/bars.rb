@@ -152,7 +152,7 @@ private
     blocks = txt.split("\n\n")
     @bar[:recs]  = blocks[0].split(%r{[\n\r]})
     @bar[:carte] = blocks[1].split(%r{[\n\r]})
-    @bar[:price_index] = blocks[2].split(%r{[\n\r]})
+    @bar[:price_index] = blocks[2].split(": ")[1]
   end
 end
 
