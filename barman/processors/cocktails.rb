@@ -197,9 +197,15 @@ private
   end
   
   def parse_legend_text(text)
-    paragraphs = text.split(%r{[\n\r]})
-    @cocktail[:desc_start] = paragraphs.first
-    @cocktail[:desc_end]   = paragraphs[1..-1].join "\n"
+    if text.slice(0,1) == "#"
+      paragraphs = text.split("#")
+      @cocktail[:desc_start] = paragraphs[1]
+      @cocktail[:desc_end] = paragraphs[2].split(%r{[\n\r]}).join "\n"
+    else
+      paragraphs = text.split(%r{[\n\r]})
+      @cocktail[:desc_start] = paragraphs.first
+      @cocktail[:desc_end]   = paragraphs[1..-1].join "\n"
+    end
   end
   
 end

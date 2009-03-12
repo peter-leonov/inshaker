@@ -6,7 +6,11 @@ class String
     res = self.gsub('й','й')
     return res.bidi_translify.gsub("+", "")
   end
-  
+
+  def yi
+    self.gsub('й','й')
+  end
+
   def zpt
     return self.gsub(",",".")
   end
@@ -23,8 +27,13 @@ class String
     self.gsub(/\.\s*$/, "")
   end
   
-  def html_paragraphs
-    self.split("\n").map {|p| p = "<p>#{p}</p>"}.join("")
+  def html_paragraphs final_snippet = ""
+    res = []
+    paragpaphs = self.split("\n")
+    paragpaphs.each_with_index {|p,i| 
+      res << "<p>#{p}#{i == paragpaphs.length - 1 ? final_snippet : "" }</p>" 
+    }
+    return res.join("")
   end
   
   def downcase
