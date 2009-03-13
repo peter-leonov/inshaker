@@ -30,7 +30,6 @@ EventPage.view =
 		form.onload = function (e) { return controller.formLoad() }
 		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
 		
-		
 		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
 		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
 		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
@@ -188,7 +187,7 @@ EventPage.view =
 		{
 			var part = sponsorsSet[i]
 			var dt = N('dt')
-			var a = N('a')
+	  	var a = N('a')
 			a.appendChild(T(part.name.replace(/\s+/g, ' ')))
 			dt.appendChild(a)
 			

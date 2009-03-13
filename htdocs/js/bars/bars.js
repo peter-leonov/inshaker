@@ -37,9 +37,10 @@ $.onload
 			feelSelect: $('bars-feel'),
 			map: $('map'),
 			
-			photographer: $('photographer'),
+			dontMiss: $('dont-miss'),
+      photographer: $('photographer'),
 			photoPopup: $('photo_popup_area'),
-			photoCloseItems: [$('photo_close_text'), $('photo_close_cross'), $('overlay')]
+			photoCloseItems: [$('photo_close_text'), $('photo_close_cross'), $('photo-overlay')]
 		}
 		
 		BarsPage.initialize(nodes)
@@ -62,5 +63,13 @@ function googleApiLoaderIsLoaded ()
 <!--# include file="/lib/Widgets/Switcher.js" -->
 <!--# include file="/lib/Widgets/Selecter.js" -->
 
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
+
+<!--# include file="/js/common/autocompleter.js" -->
+<!--# include file="/js/common/newsFormPopup.js" -->
 
 

@@ -348,6 +348,40 @@ function mergeNodes(parentNode, nodesArray)
 			parentNode.removeChild(node)
 	}
 }
+
+function mergeIngredientsNodes(parentNode, nodesArray)
+{
+    var presentIngreds = cssQuery("li", parentNode).map(function(e){ return [e, Ingredient.getByName(e.getElementsByTagName("input")[1].value)]})
+    
+    for (var i = 0; i < nodesArray.length; i++)
+		if (nodesArray[i].parentNode != parentNode)
+		    insertChild(presentIngreds, parentNode, nodesArray[i]);
+	
+	var childs = Array.copy(parentNode.childNodes);
+	for (var i = 0, il = childs.length; i < il; i++)
+	{
+		var node = childs[i]
+		if (node && nodesArray.indexOf(node) < 0)
+			parentNode.removeChild(node)
+	}
+}
+
+function insertChild(presentIngreds, parentNode, node)
+{
+    var insertedIngredient = Ingredient.getByName(node.getElementsByTagName("input")[1].value)
+    var brotherFound = false
+
+    for(var i = 0; i < presentIngreds.length; i++)
+    {
+        if(presentIngreds[i][1].group == insertedIngredient.group)
+        {
+            brotherFound = true
+            parentNode.insertBefore(node, presentIngreds[i][0])
+        }
+    }
+    if(!brotherFound) parentNode.appendChild(node)
+}
+
 /**
  * Get element's absolute position
  * 

@@ -20,11 +20,11 @@ function CocktailsModel (states, view) {
 	
 	this.initialize = function(filters, tsStates, origin) {
 		this.strengthState = tsStates && tsStates.length ? tsStates[0] : Cocktail.strengths;
-    this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
-    if(filters) this.filters = this.completeFilters(filters, origin);
+        this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
+        if(filters) this.filters = this.completeFilters(filters, origin);
 		
-    view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
-    this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length && origin == "request");
+        view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
+        this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length && origin == "request");
 	};
 	
 	this.randomIngredient = function(){

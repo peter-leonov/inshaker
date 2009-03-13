@@ -2,7 +2,8 @@ IndexPage =
 {
 	initialize: function (nodes)
 	{
-		var model       = this.model         = new IndexPageModel()
+    var params = <!--# include file="/db/decoration.js"-->
+    var model       = this.model         = new IndexPageModel(params)
 		var controller  = this.controller    = new IndexPageController()
 		var view        = this.view          = new IndexPageView(nodes)
 		
@@ -21,12 +22,24 @@ $.onload
 	{
 		var nodes =
 		{
-			cocktails: cssQuery('.info-blocks .cocktails-list')[0]
+			cocktails: cssQuery('.info-blocks .cocktails-list')[0],
+			links: cssQuery('.info-blocks .links-list')[0],
+      promo: $('promo'),
+			dontMiss: $('dont-miss')
 		}
-		
-		IndexPage.initialize(nodes)
+
+    IndexPage.initialize(nodes)
 	}
 )
+
+<!--# include file="/lib/Programica/Request.js" -->
+<!--# include file="/lib/Programica/Form.js" -->
+
+<!--# include file="/lib/Programica/Widget.js" -->
+<!--# include file="/lib/Widgets/FormPoster.js" -->
+
+<!--# include file="/js/common/autocompleter.js" -->
+<!--# include file="/js/common/newsFormPopup.js" -->
 
 <!--# include file="/js/index/model.js" -->
 <!--# include file="/js/index/controller.js" -->

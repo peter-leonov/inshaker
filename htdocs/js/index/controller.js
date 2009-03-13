@@ -16,5 +16,6 @@ IndexPageController.prototype =
 	{
 		this.model.setState({})
 	}
+  
 }
 

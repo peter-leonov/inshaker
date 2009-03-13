@@ -208,5 +208,5 @@ function Autocompleter(set, field, form) {
 		return e;
 	}
 	
-	// this.backFrame = this.createBackFrame();
+	this.backFrame = this.createBackFrame();
 }

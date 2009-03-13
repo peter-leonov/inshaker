@@ -36,6 +36,7 @@ BarsPageView.prototype =
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
+    new NewsFormPopup(nodes.dontMiss)
 	},
 	
 	checkHash: function ()

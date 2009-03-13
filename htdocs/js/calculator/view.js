@@ -176,9 +176,9 @@ function CalculatorView() {
 	 */
 	this.modelChanged = function(cartData, init){ // model
 		var barName = Storage.get('barName')
-    this.renderCart(cartData);
+        this.renderCart(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
-    else this.initBarChanger(barName)
+        else this.initBarChanger(barName)
 	};
 	
 	this.renderCart = function(cartData){
@@ -201,9 +201,11 @@ function CalculatorView() {
 			
 			var newIngredients = []
 			var sum = 0;
-			
-			for(var name in cartData.goods){
-				var item = cartData.goods[name];
+		    
+			var inames = []; for(var name in cartData.goods) inames.push(name); inames.sort(Ingredient.sortByGroups)
+            for(var i = 0; i < inames.length; i++){
+				var name = inames[i];
+                var item = cartData.goods[name];
 				var bottles = cartData.goods[name].bottles;
 				for(var id in bottles){
 					sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
@@ -212,7 +214,7 @@ function CalculatorView() {
 				}
 			}
 			// from util.js
-			mergeNodes(ingredsParent, newIngredients);
+			mergeIngredientsNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
 			
 			if(cartData.goods[this.lastShownIngred]) {
@@ -306,12 +308,18 @@ function CalculatorView() {
 			var input = document.createElement("input");
 			input.type = "text";
 			input.name = "portion";
-			var txt = document.createTextNode("");
+            var txt = document.createTextNode("");
 			label.appendChild(input);
 			label.appendChild(txt);
 			li.appendChild(label);
 			
-			var button = document.createElement("button");
+			var iNameInput = document.createElement("input");
+			iNameInput.type = "hidden";
+            iNameInput.name = "ingredName";
+            iNameInput.value = name;
+            label.appendChild(iNameInput);
+
+            var button = document.createElement("button");
 			button.title = "Инфо";
 			button.hide();
 			button.innerHTML = "i";

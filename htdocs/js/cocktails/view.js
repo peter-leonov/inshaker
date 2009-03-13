@@ -1,4 +1,4 @@
-function CocktailsView (states, nodes, styles) {
+function CocktailsView (states, nodes, styles, decorationParams) {
 	nodes.preloader.hide();
 	document.documentElement.style.overflowY="auto";
 	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
@@ -6,28 +6,28 @@ function CocktailsView (states, nodes, styles) {
 	this.filterElems   = { tag: null, strength: null, letter: null };
 	this.perPage       = 16;
 	this.np            = -1;
-  this.renderedPages = [];
-  this.nodeCache     = {};
+    this.renderedPages = [];
+    this.nodeCache     = {};
 
 
-  this.riJustInited  = true;
+    this.riJustInited  = true;
 	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
 	this.IE6 = Programica.userAgentRegExps.MSIE6.test(navigator.userAgent);
 
 	this.currentState;
 	this.stateSwitcher;
-  this.resultSet; // for caching purposes only
+    this.resultSet; // for caching purposes only
 	
 	this.initialize = function (tags, strengths, cocktailsLetters, ingredsNames, state){
 		this.iAutocompleter = new Autocompleter(ingredsNames, 
 								nodes.searchByIngreds.getElementsByTagName("input")[0],
 								nodes.searchByIngreds.getElementsByTagName("form")[0]);
 								
-    this.renderLetters(nodes.alphabetRu, cocktailsLetters);
+        this.renderLetters(nodes.alphabetRu, cocktailsLetters);
 		this.renderSet(nodes.tagsList, tags);
 		this.renderSet(nodes.strengthsList, strengths);
 		this.bindEvents();
-    this.turnToState(state);
+        this.turnToState(state);
 	};
 	
 	this.bindEvents = function () {
@@ -136,12 +136,8 @@ function CocktailsView (states, nodes, styles) {
 				self.iAutocompleter.emptyField();
 		}};
 
-    var spTag = nodes.spotlighted.getElementsByClassName('group')[0].innerHTML.toLowerCase()
-    nodes.spotlighted.addEventListener('click', function(e){
-      self.turnToState(states.byIngredients)
-      self.controller.onStateChanged(states.byIngredients)
-      self.controller.onTagFilter(spTag)
-    }, false)
+        nodes.spotlighted.href = decorationParams.spotlighted[1]
+        nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
 
 		link = new Link();
 	};

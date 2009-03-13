@@ -2,10 +2,10 @@
 
 CocktailsPage =
 {	
-	init: function (states, nodes, styles, cookies) {
-		this.view       = new CocktailsView(states, nodes, styles);
-		this.model      = new CocktailsModel(states, this.view);
-		this.controller = new CocktailsController(states, cookies, this.model, this.view);
+	init: function (states, nodes, styles, cookies, decorationParams) {
+		this.view       = new CocktailsView(states, nodes, styles, decorationParams)
+		this.model      = new CocktailsModel(states, this.view)
+		this.controller = new CocktailsController(states, cookies, this.model, this.view)
 	}
 }
 
@@ -17,8 +17,8 @@ $.onload (
 			resultsRoot: $('surface'),
 			pagerRoot: $('p-list'),
 			
-      bigNext: cssQuery(".pager-big .next")[0],
-      bigPrev: cssQuery(".pager-big .prev")[0],
+            bigNext: cssQuery(".pager-big .next")[0],
+            bigPrev: cssQuery(".pager-big .prev")[0],
 
 			alphabetRu: $('alphabetical-ru'),
 			lettersAll: $('letters_all'),
@@ -34,10 +34,10 @@ $.onload (
 			mainArea: $('b_content'),
 			
 			searchTabs: $('search_tabs'),
-      ingredsView: cssQuery(".ingreds-list")[0],
+            ingredsView: cssQuery(".ingreds-list")[0],
 			removeAllIngreds: cssQuery(".ingreds-list .rem")[0],
-      searchesList: $('ingredients_list'),
-      searchTips: $('search_tips'),
+            searchesList: $('ingredients_list'),
+            searchTips: $('search_tips'),
 			
 			ingredientsLink: $('all_list'),
 			
@@ -51,15 +51,15 @@ $.onload (
 			cartEmpty: $('cart_draghere'),
 			cartFull: $('cart_contents'),
 
-      spotlighted: $('spotlighted')
-		};
+            spotlighted: $('spotlighted')
+		}
 		
 		var styles = {
 			selected: 'selected-button',
 			disabled: 'dis',
 			expanded: 'expanded',
 			point: 'point'
-		};
+		}
 		
 		var cookies = {
 			filter: 'filters',
@@ -67,7 +67,7 @@ $.onload (
 			
 			strengthState: 'strength_state',
 		    tagState: 'tag_state'
-		};
+		}
 		
 		var states = {
 			byName:        0,
@@ -75,10 +75,12 @@ $.onload (
 			byIngredients: 2,
       
 			defaultState:  0
-		};
+		}
+		
+		var decorationParams = <!--# include file="/db/decoration.js"-->
 
-		CocktailsPage.init(states, nodes, styles, cookies);
-		Calculator.init();
+		CocktailsPage.init(states, nodes, styles, cookies, decorationParams)
+		Calculator.init()
 	}
 )
 

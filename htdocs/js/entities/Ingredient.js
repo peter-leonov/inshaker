@@ -25,7 +25,7 @@ Object.extend(Ingredient,
 	getByName: function (name){
 		for(var i = 0; i < this.ingredients.length; i++){
 			if(this.ingredients[i].name.toLowerCase() == name.toLowerCase())
-        return this.ingredients[i];
+                return this.ingredients[i];
 		}
 	},
 	

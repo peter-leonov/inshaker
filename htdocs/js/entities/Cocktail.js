@@ -72,7 +72,7 @@ Object.extend(Cocktail,
             res[i] = this.cocktails[cNums[i]];
         }
 
-        return res;
+        return res.sortedBy(this.nameSort);
 	},
 	
 	getByTag: function (tag, set) {
