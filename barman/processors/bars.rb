@@ -133,7 +133,7 @@ private
   end
 
   def parse_about_text(txt)
-    @bar[:name], @bar[:name_eng] = ((txt.scan /.*Название:\ *\n(.+)\n.*/)[0][0]).split("; ")
+    @bar[:name], @bar[:name_eng] = ((txt.scan /.*Название:\ *\n(.+)\n.*/)[0][0]).split("; ").map { |nm| nm = nm.yi }
     @bar[:country]  = (txt.scan /.*Страна:\ *\n(.+)\ *\n.*/)[0][0]
     @bar[:city]     = (txt.scan /.*Город:\ *\n(.+)\ *\n.*/)[0][0]
     @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)?\ *\n.*/)[0]
@@ -146,6 +146,7 @@ private
                  desc = (txt.scan /.*О баре:\ *\n(.+)*/m)[0][0].split(%r{[\n\r]})
     @bar[:desc_start] = desc.first
     @bar[:desc_end]   = desc[1..-1].join "\n"
+
   end
   
   def parse_cocktails_text(txt)
