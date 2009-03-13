@@ -4,6 +4,7 @@
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
 	<link rel="stylesheet" type="text/css" href="t/bars.css"/>
+	<link rel="stylesheet" type="text/css" href="t/news-form-popup.css"/>
 	<title>Inshaker — Гид по лучшим барам и клубам России</title>
 </head>
 <body>
@@ -11,13 +12,13 @@
 <div id="main-wrapper">
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1 class="all">Гид по лучшим барам и клубам Москвы <span id="switch-view"><a>списком</a> или <a>на карте</a></span></h1>
+			<h1 class="all"><a class="city">Москва</a> – гид по лучшим барам и клубам <span id="switch-view"><a>списком</a> или <a>на карте</a></span></h1>
 			<a id="photographer"></a>
 			<h2 class="search"><a></a> в лучших <a>барах и клубах</a> Москвы</h2>
 		</div>
 		
 		<div class="b-content" id="bars-list">
-			<div id="sort-menu">Хочу <dl class="bars-select" id="bars-format"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl></div>
+			<div id="sort-menu">Хочу <dl class="bars-select" id="bars-format"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl><a id="dont-miss">Не пропусти интересные события!</a></div>
 			<div id="bars-container"></div>
 			<div id="map"><p class="loading">   Загрузка…</p></div>
 		</div>
@@ -25,10 +26,11 @@
 	
 <!--# include file="/inc/bottom-common.html" -->
 </div>
+<!--# include file="/inc/news-form-popup.html" -->
 <div id="photo_popup_area" class="win-shop">
-	<div id="overlay" class="opacity"></div>
+	<div id="photo-overlay" class="opacity"></div>
 	<div id="photo_close">
-		<a id="photo_close_text"></a>
+		<a id="photo_close_text">Закрыть</a>
 		<a id="photo_close_cross"></a>
 	</div>
 	<div id="photo_popup">

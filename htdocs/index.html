@@ -1,25 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="index-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
 	<link rel="stylesheet" type="text/css" href="t/index/screen.css"/>
+	<link rel="stylesheet" type="text/css" href="t/news-form-popup.css"/>
 	<title>Inshaker — Коктейльный сайт</title>
 </head>
-<body>
+<body id="index-page">
 <!--# include file="/inc/top-common.html" -->
 <div id="main-wrapper">
-	<div id="big"><div class="body">
-    <div class="cover">
-      <embed class="video" flashvars="autostart=true&stretching=fill&file=/v/index/fireplace.flv&width=817&height=307&&repeat=always&backcolor=#000000" allowfullscreen="true" allowscriptaccess="always" menu="false" src="/index-player.swf" wmode="transparent"/>
-      <embed class="audio" flashvars="autostart=true&file=/v/index/fireplace.mp3&repeat=always" src="/index-player.swf"/>
+	<div id="promo" class="programica-rolling-images">
+    <a class="prev"></a>
+    <a class="next"></a>
+    <div class="viewport cover">
+      <div class="surface"></div>
     </div>
-	</div></div>
+	</div>
 	
 	<div class="info-blocks">
 		<div class="box">
 			<dl class="body">
-				<dt><b>Как приготовить?</b></dt>
+				<dt><b>Готовим коктейли дома</b></dt>
 				<dd>
 					<div class="programica-rolling-images cocktails-list">
 						<a class="prev"></a>
@@ -33,7 +35,7 @@
 		</div>
 		<div class="box">
 			<dl class="body simple">
-				<dt><b>Куда сходить?</b></dt>
+				<dt><b>Пробуем в лучших барах!</b></dt>
 				<dd>
 					<a href="/bars.html#view=map" style="background-image: url(/i/index/bars-map.png);"><span>Лучшие бары России на карте</span></a>
 				</dd>
@@ -41,17 +43,23 @@
 		</div>
 		<div class="box">
 			<dl class="body simple">
-				<dt><b>Где отметить ДР?</b></dt>
+				<dt><b>Не пропускаем интересное!</b></dt>
 				<dd>
-					<a href="/parties.html#city=Москва&party=Спой от души" style="background-image: url(/i/index/bars-mic.png);"><span>Спой от души в Kalina Bar</span></a>
+					<a id="dont-miss" style="background-image: url(/i/index/dontmiss.png);"><span>В курсе интересных событий</span></a>
 				</dd>
 			</dl>
 		</div>
 		<div class="box last">
-			<dl class="body simple">
-				<dt><b>Вызвать барменов?</b></dt>
+			<dl class="body">
+				<dt><b>Рекомендуем попробовать!</b></dt>
 				<dd>
-					<a href="/bars/moskva/inshaker.html" style="background-image: url(/i/index/bars-bell.png);"><span>Выездной бар Inshaker!</span></a>
+          <div class="programica-rolling-images links-list">
+						<a class="prev"></a>
+						<a class="next"></a>
+						<div class="viewport">
+							<div class="surface"></div>
+						</div>
+					</div>
 				</dd>
 			</dl>
 		</div>
@@ -60,6 +68,7 @@
 	
 <!--# include file="/inc/bottom-common.html" -->
 </div>
+<!--# include file="/inc/news-form-popup.html" -->
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/index/index.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
