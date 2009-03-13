@@ -1,0 +1,28 @@
+#form-popup { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
+#form-popup .content { position: relative; z-index: 10; width: 495px; margin: 0 auto; top: 72px; }
+#form-popup .content form .thanks,
+#form-popup .content form .holding,
+#form-popup .content h2 { font-size: 27px; color: #f22b9f; font-style: italic; font-weight: bold; }
+#form-popup .content h2 { margin: 0 0 32px; }
+#form-popup .content .menu { margin: 0 0 20px 0; }
+#form-popup .content .menu a { color: #fff; text-decoration: none; border-bottom: 1px dashed; }
+#form-popup .content .menu img { float: right; padding: 6px; margin: 0 -6px 0 0; cursor: pointer; }
+#form-popup .content form { position: relative; font-family: Arial; display: block; height: 201px; padding: 18px 30px 30px; background: #fff; border: #8fdaec solid 5px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
+#form-popup .content form.sending .fields { opacity: 0.75; }
+#form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-style: italic; font-weight: bold; }
+#form-popup .content form label input { position: absolute; width: 280px; right: 0; font-size: 16px; padding: 0px 6px 3px; outline-style:none; outline-width:0px;}
+#form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
+#form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }
+#form-popup .content form .thanks,
+#form-popup .content form .holding { position: absolute; left: 0; top: 47%; width: 100%; text-align: center; visibility: hidden; }
+
+#form-popup .autocomplete { width: 286px; font-weight: normal; font-style:normal; font-size: 16px; left:133px; top:0; border-color:#C9C9C9;}
+#form-popup .autocomplete div.hi { background-color:#8FDAEC }
+#form-popup .autocomplete div { padding:3px 3px 3px 4px; width: 279px;}
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+#form-popup .content {top:expression(String(document.documentElement.scrollTop+73)+'px');}
+#form-popup { position:absolute; }
+#form-popup input.ti { background:#f3f3f3;height:20px;border:0 solid #c9c9c9;border-width:1px 0 0 0;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
+#form-popup .content form label input { right: 30px; }
+<!--# endif -->
