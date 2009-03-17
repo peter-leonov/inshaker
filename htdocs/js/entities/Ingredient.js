@@ -6,7 +6,8 @@ Ingredient = function (data)
 
 Ingredient.prototype =
 {
-	constructor: Ingredient
+	constructor: Ingredient,
+    listOrder: function () { return Ingredient.groups.indexOf(this.group) }
 }
 
 Object.extend(Ingredient,

@@ -24,8 +24,9 @@ $.onload
 		{
 			cocktails: cssQuery('.info-blocks .cocktails-list')[0],
 			links: cssQuery('.info-blocks .links-list')[0],
-      promo: $('promo'),
-			dontMiss: $('dont-miss')
+            promo: $('promo'),
+			dontMiss: $('dont-miss'),
+            arrows:[cssQuery('#promo .prev')[0], cssQuery('#promo .next')[0]]
 		}
 
     IndexPage.initialize(nodes)
