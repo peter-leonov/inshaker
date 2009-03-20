@@ -17,13 +17,13 @@
 #bars-page #sort-menu dl,
 #bars-page #sort-menu dd { position: relative; }
 
-#bars-page #sort-menu .bars-select dt .caption { color: #74c8ff; border-bottom: 1px dashed; }
+#bars-page #sort-menu .bars-select dt .caption { border-bottom: 1px dashed; }
 #bars-page #sort-menu .bars-select dt { cursor: pointer; }
 #bars-page #sort-menu .bars-select dd { display: none; position: absolute; top: 33px; /*left: 50%;*/ left: -14px; }
 #bars-page #sort-menu .bars-select dd ul { position: relative; /*left: -50%;*/ padding: 10px 15px; width: 260px; background: url(bars/select-dropdown.png) 0 bottom; color: #fff; }
 #bars-page #sort-menu .bars-select dd ul li { font-size: 14px; line-height: 20px; cursor: pointer; }
-#bars-page #sort-menu .bars-select dd ul li.selected { color: #74c8ff; cursor: default; }
-#bars-page #sort-menu .bars-select dd ul li:hover { color: #74c8ff; }
+#bars-page #sort-menu .bars-select dd ul li.selected { cursor: default; }
+#bars-page #sort-menu .bars-select dd ul li:hover {  }
 #bars-page #sort-menu .bars-select.open dd { display: block; }
 #bars-page #sort-menu .bars-select.open dt { cursor: default; }
 #bars-page #dont-miss {color: #FFF; font-size:12px; position:absolute; right: 46px; height: 27px; text-decoration:none; border-bottom:1px #FFF dashed; top:-2px}

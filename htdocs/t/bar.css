@@ -46,7 +46,7 @@
 
 #bar-page #city-name, #bar-page #bar-id { display: none; }
 #bar-page #map { width: 100%; height: 440px; position: relative; overflow: hidden; border: 1px solid #888; }
-#bar-page #price-index { padding: 36px 0 0 89px; font-size: 35px; color: #F32C9F;}
+#bar-page #price-index { padding: 36px 0 0 89px; font-size: 35px;}
 
 
 
