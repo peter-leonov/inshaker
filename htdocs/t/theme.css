@@ -1,35 +1,9 @@
-#index-page{ background-position: center; background-repeat: repeat-x; }
-#bars-page, body.bars-page {background-repeat: no-repeat; background-position: left top; }
-#bars-page #sort-menu .bars-select dt .caption { color: #ecde9f; border-bottom: 1px dashed; }
-#bars-page #sort-menu .bars-select dd ul li.selected { color: #ecde9f; cursor: default; }
-#bars-page .b-title #photographer {display:none;}
-#bars-page #sort-menu .bars-select dd ul li:hover { color: #ecde9f; }
-#bars-page .b-title h1 a.city {color:#d32229; text-decoration:none; cursor:default;}
-#bars-page #switch-view a { color:#d32229 } 
-#bar-page .hrefs a {color: #D32229 }
-#bar-page .show-more a {color:#D32229 }
-#bar-page #price-index { color: #D32229;}
-#bars-page #bottom a, #bar-page #bottom a {color: #9b865b} 
-#cocktails-page, body.cocktails-page {background-repeat: no-repeat; background-position: center bottom; }
-#cocktails-page #all_list a { color: #000000; }
-#cocktails-page #search_tips a {color: #dd100e; text-decoration: none; border-bottom: 1px #dd100e dashed;}
-#cocktails-page #alphabetical-ru a.selected-button { color: #dd100e;}
-#cocktails-page #results_display .next, #cocktails-page #results_display .prev { color: #dd100e; }
-#cocktails-page #results_display .p-list a { color: #000000; }
-#cocktails-page #results_display .p-list a.selected-button { color: #FFFFFF; }
-#cocktails-page #bottom, #cocktail-page #bottom, #ingredients-page #bottom { color: #FFFFFF; }
-#cocktails-page #bottom a, #cocktail-page #bottom a, #ingredients-page #bottom a { color: #f1ddaf; }
-#cocktail-page .b-more dt {background-color: #c00008;}
-#cocktail-page .b-more dt b {background-color: #c00008;}
-#cocktail-page .what-need dd a {color: #000000; }
-.border-links a.now, .border-links a.selected, .border-links a:hover { background: #dd100e; }
-.border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #dd100e; }
-.b-title .hrefs {color: #000000; }
-.autocomplete div.hi{background-color:#e7a889;}
-#cart_draghere b {color: #dd100e;}
-#b-bill .print-call a {color:#000000}
-#ingredients-page .count-cocktails strong {color:#D32229}
-#bars-page, body.bars-page {background-image:url(bg/bars/bg.png)} 
-#cocktails-page, body.cocktails-page {background-image:url(bg/cocktails/bg.png)} 
-#index-page, body.index-page {background-image:url(bg/index/bg.png)} 
-#ingredients-page, body.ingredients-page {background-image:url(bg/ingredients/bg.png)} 
+body {background-position:-139px -141px; background-repeat: repeat-x;}
+#bars-page #sort-menu .bars-select dt .caption { color: #74c8ff; }
+#bars-page #sort-menu .bars-select dd ul li.selected { color: #74c8ff; cursor: default; }
+#bars-page .b-title #partner {display:none;}
+#bars-page #sort-menu .bars-select dd ul li:hover { color: #74c8ff; }
+#bar-page #price-index { padding: 36px 0 0 89px; font-size: 35px; color: #F32C9F;}
+#bars-page body, .bars-page body { background-image:url(bg/bars/bg.png) } 
+#cocktails-page body, .cocktails-page body { background-image:url(bg/cocktails/bg.png) } 
+#index-page body, .index-page body { background-image:url(bg/index/bg.png) } 

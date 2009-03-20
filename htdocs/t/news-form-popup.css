@@ -2,7 +2,7 @@
 #form-popup .content { position: relative; z-index: 10; width: 495px; margin: 0 auto; top: 72px; }
 #form-popup .content form .thanks,
 #form-popup .content form .holding,
-#form-popup .content h2 { font-size: 27px; color: #D32229; font-style: italic; font-weight: bold; }
+#form-popup .content h2 { font-size: 27px; color: #f22b9f; font-style: italic; font-weight: bold; }
 #form-popup .content h2 { margin: 0 0 32px; }
 #form-popup .content .menu { margin: 0 0 20px 0; }
 #form-popup .content .menu a { color: #fff; text-decoration: none; border-bottom: 1px dashed; }
