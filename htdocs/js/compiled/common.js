@@ -1,4 +1,3 @@
-<!--# include file="/lib/base2/cssQuery.js" -->
 <!--# include file="/js/common/programica.js" -->
 
 <!--# include file="/js/common/util.js" -->

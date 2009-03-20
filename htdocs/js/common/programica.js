@@ -6,4 +6,5 @@
 <!--# include file="/lib/Programica/UA.js" -->
 <!--# include file="/lib/Programica/Humanize.js" -->
 <!--# include file="/lib/Programica/Stringify.js" -->
+<!--# include file="/lib/Programica/Sizzle.js" -->
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
