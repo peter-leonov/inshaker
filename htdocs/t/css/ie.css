@@ -2,7 +2,7 @@ html{font-size :101%;}
 .gallery-nav ul li a,
 .you-choise span,
 .win-shop .content form{zoom:1;}
-#ingridients-page .count-coctails input{width:130px;}
+#ingredients-page .count-coctails input{width:130px;}
 #top .nav img{padding-top:12px;}
 #top h2{top:2px;}
 #mybar h2 a{display:inline;zoom:1;}
@@ -21,7 +21,7 @@ html{font-size :101%;}
 .hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
 .hreview .menu p a.now b,
 .hreview .menu p a:hover b{background:#0392f1;}
-#ingridients-page .count-cocktails input{width:90%;}
+#ingredients-page .count-cocktails input{width:90%;}
 #autocomplete{position:absolute;margin-left:-123px;margin-top:21px;width:90%;z-index:3;}
 #preloader{filter:alpha(opacity=85);}
 #mybar-settings .attention input{zoom:1;}
