@@ -754,3 +754,4 @@ b.rb { right: 0; bottom: 0; }
 <!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" --><!--# include file="/t/css/ff2.css" --><!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--# include file="/t/css/ie6.css" --><!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--# include file="/t/css/ie7.css" --><!--# endif -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" --><!--# include file="/t/css/ie8.css" --><!--# endif -->

@@ -1,0 +1,3 @@
+<!--# include file="/t/css/ie.css" -->
+
+.column:before, .column:after { display: none; }
