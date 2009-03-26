@@ -149,7 +149,7 @@ EventPage.view =
 		this.nodes.target.innerHTML  = event.target
 		this.nodes.header.innerHTML  = event.header
 		this.nodes.name.innerHTML    = event.name
-		this.nodes.address.innerHTML = event.city + "&nbsp;-&nbsp;<a href='" + event.venue_link + "'>" + event.venue + "</a>, " + new Date(event.date).getFormatted(true)
+		this.nodes.address.innerHTML = event.city + "&nbsp;-&nbsp;<a>" + event.venue + "</a>, " + new Date(event.date).getFormatted(true)
 		this.nodes.venueLink.href    = event.venue_link
 		
 		this.nodes.promoBack.style.backgroundImage = "url(" + this.iroot + "/promo-bg.png)"
