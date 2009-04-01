@@ -1,22 +1,34 @@
-;
-(function() {
-   var Papa = BarmensPage;
-   var Me = Papa.View;
+;(function() {
+	var Papa = BarmensPage;
+	var Me = Papa.View;
 
-   eval(NodesShortcut.include());
+	eval(NodesShortcut.include());
 
-   var myProto = {
-      initialize: function () {
-         this.nodes = {};
-      },
-      bind: function (nodes) {
-         this.nodes = nodes;
-         this.nodes.word = this.nodes.main.appendChild(T(''));
-      },
-      modelChanged: function (data) {
-         this.nodes.word.nodeValue = data;
-      }
-   };
+	var myProto = {
+		initialize: function () {
+			this.nodes = {};
+		},
+		bind: function (nodes) {
+			this.nodes = nodes;
+			//this.nodes.word = this.nodes.main.appendChild(T(''));
+		},
+		modelChanged: function (data) {
+			//this.nodes.word.nodeValue = data;
+		},
+		renderBarmanCocktails: function(cocktails) {
+			var tmp = document.createDocumentFragment();
 
-   Object.extend(Me.prototype, myProto);
+			for (var i=0, ii=cocktails.length; i<ii; i++) {
+				var cocktail = cocktails[i];
+				var li = Cocktail.getByName(cocktail).getPreviewNode();
+
+				tmp.appendChild(li);
+			}
+
+			this.nodes.ajaxLoadingImage.hide();
+			this.nodes.barmanCocktailsList.appendChild(tmp);
+		}
+	};
+
+	Object.extend(Me.prototype, myProto);
 })();

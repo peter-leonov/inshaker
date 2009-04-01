@@ -1,35 +1,52 @@
-;
-(function() {
-   var myName = 'BarmensPage';
-   var Me = self[myName] = MVC.create(myName);
+/**
+ * dependencies:
+ *    Barman.js
+ *    Cocktail.js
+ */
+;(function() {
+	var myName = 'BarmensPage';
+	var Me = self[myName] = MVC.create(myName);
 
-   var myProto = {
-      initialize: function() {
-         this.model.initialize();
-         this.view.initialize();
-         this.controller.initialize();
-      },
-      bind: function(nodes, sources, state) {
-         this.model.bind(sources);
-         this.view.bind(nodes);
-         this.controller.bind(state);
+	var myProto = {
+		initialize: function() {
+			this.model.initialize();
+			this.view.initialize();
+			this.controller.initialize();
+		},
+		bind: function(nodes, sources, state) {
+			this.model.bind(sources);
+			this.view.bind(nodes);
+			this.controller.bind(state);
 
-         return this;
-      }
-   };
+			return this;
+		},
+		setCocktails: function() {
+			this.controller.setCocktails();
+		}
+	};
 
-   Object.extend(Me.prototype, myProto);
+	Object.extend(Me.prototype, myProto);
 
-   $.onready(function () {
-      var nodes = {
-         barmanNameNode: $$('h1[data-barman-name]')[0]
-      };
-      var page = new BarmensPage();
+	$.onready(function () {
+		var nodes = {
+			ajaxLoadingImage: $$('#loading')[0],
+			barmanNameNode: $$('h1[data-barman-name]')[0],
+			barmanCocktailsList: $$('ul.point')[0]
+		};
+		var sources = {
+			barman: Barman.getByName(nodes.barmanNameNode.getAttribute('data-barman-name'))
+		};
 
-      page.initialize(nodes);
+		var page = new BarmensPage();
 
-      page.View.renderBarmanCocktails(nodes.barmanNameNode.getAttribute('data-barman-name '));
-   });
+		page.bind(nodes, sources);
+		page.setCocktails();
+		/* ---- */
+//		var barman = Barman.getByName(nodes.barmanNameNode.getAttribute('data-barman-name'));
+//		var cocktails = barman.cocktails;
+//		console.log(Cocktail.getByName(cocktails[0]));
+		/* ---- */
+	});
 })();
 
 <!--# include virtual="model.js" -->
