@@ -5,3 +5,6 @@
 *.pid
 .idea/*
 Thumbs.db
+startc.bat
+stopc.bat
+nginx.windows-anton.conf
