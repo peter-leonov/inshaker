@@ -4,9 +4,14 @@ var myName = 'Statistics'
 
 var Me =
 {
+	magazinePromoViewed: function (promo)
+	{
+		this.track('magazine-promo-viewed', promo ? promo.name : ('' + promo))
+	},
+	
 	barmanPopupViewed: function (barman)
 	{
-		this.track('barman-popup-viewed', barman.name)
+		this.track('barman-popup-viewed', barman ? barman.name : ('' + barman))
 	},
 	
 	cocktailsFilterSelected: function (name)
@@ -16,32 +21,37 @@ var Me =
 	
 	cocktailViewRecipe: function (cocktail)
 	{
-		this.track('cocktail-view-recipe', cocktail.name)
+		this.track('cocktail-view-recipe', cocktail ? cocktail.name : ('' + cocktail))
 	},
 	
 	cocktailAddedToCalculator: function (cocktail)
 	{
-		this.track('cocktail-added-to-calculator', cocktail.name)
+		this.track('cocktail-added-to-calculator', cocktail ? cocktail.name : ('' + cocktail))
 	},
 	
 	toolPopupOpened: function (tool)
 	{
-		this.track('tool-popup', tool.name)
+		this.track('tool-popup', tool ? tool.name : ('' + tool))
 	},
 	
 	ingredientPopupOpened: function (ingredient)
 	{
-		this.track('ingredient-popup', ingredient.name)
+		this.track('ingredient-popup', ingredient ? ingredient.name : ('' + ingredient))
+	},
+	
+	ingredientTypedIn: function (ingredient)
+	{
+		this.track('ingredient-typed-in', ingredient ? ingredient.name : ('' + ingredient))
 	},
 	
 	ingredientSelected: function (ingredient)
 	{
-		this.track('ingredient-selected', ingredient.name)
+		this.track('ingredient-selected', ingredient ? ingredient.name : ('' + ingredient))
 	},
 	
 	track: function (action, label, value)
 	{
-		setTimeout(function () { Tracker.track('statistics', action, label, value) }, 500)
+		setTimeout(function () { Tracker.track('UserAction', action, label, value) }, 500)
 	}
 }
 

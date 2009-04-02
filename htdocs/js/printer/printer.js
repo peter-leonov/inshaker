@@ -18,12 +18,17 @@ var Printer = {
     wannaPrint: false,
     cartData : {},
 
-    init: function(context, param) {
-		var self = this;
-		Storage.init(function(){
-			if(self[context+"Init"]) self[context+"Init"](param);
-		});
-    },
+	initCart: function (param)
+	{
+		var me = this
+		Storage.init(function () { me.cartInit(param) })
+	},
+	
+	initCocktail: function (param)
+	{
+		var me = this
+		Storage.init(function () { me.cocktailInit(param) })
+	},
 
 
     preloadImages: function(){
@@ -35,9 +40,9 @@ var Printer = {
         }
     },
 
-    cocktailInit: function(param){
+    cocktailInit: function(name){
         this.preloadImages();
-        var cocktail = Cocktail.getByHtmlName(param);
+		var cocktail = Cocktail.getByName(name)
 		cocktail.loadData()
   		this.renderCocktail(cocktail);
     },  

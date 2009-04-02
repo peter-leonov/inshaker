@@ -36,9 +36,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
 
-<!--# include virtual="/js/common/theme.js" -->
-Theme.bind()
-
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
@@ -72,9 +69,10 @@ function onready ()
 			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
 			mark: $$('#ingredient-info-popup .description .about .mark')[0],
+			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
-			allLink: $$('#ingredient-info-popup .description .about .all-cocktails a')[0],
+			allLink: $$('#ingredient-info-popup .description .about .all-cocktails .link')[0],
 			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
 			cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
 			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],

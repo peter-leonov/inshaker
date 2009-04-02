@@ -304,6 +304,12 @@ function CocktailsView (states, nodes, styles) {
 		
 		nodes.resultsRoot.empty();
 		
+		if (resultSet.length)
+			nodes.resultsDisplay.remClassName('empty')
+		else
+			nodes.resultsDisplay.addClassName('empty')
+			
+		
 		this.renderedPages = {}
 		this.nodeCache     = []
 		this.renderSkeleton(this.np);

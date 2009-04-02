@@ -64,7 +64,7 @@ b.rb { right: 0; bottom: 0; }
 #ingredients-page #top .nav a.ingredients,
 #bars-page #top .nav a.bars,
 #bar-page #top .nav a.bars,
-#gifts-page #top .nav a.gifts,
+#good-page #top .nav a.goods,
 #event-page #top .nav a.events
 { background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
@@ -80,7 +80,7 @@ b.rb { right: 0; bottom: 0; }
 #cocktail-page #bottom .main-menu a.cocktails,
 #bars-page #bottom .main-menu a.bars,
 #bar-page #bottom .main-menu a.bars,
-#gifts-page #bottom .main-menu a.gifts,
+#good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events
 { color: inherit; cursor: default; text-decoration: none !important; }
 
@@ -141,7 +141,7 @@ b.rb { right: 0; bottom: 0; }
 .b-more .b-more-rec li{width:130px;}
 
 .square-list .next,
-.square-list .prev { display: block; width: 20px; height: 20px; }
+.square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 .square-list .prev { background-position: -450px 0; }
 .square-list .next { background-position: -475px 0; }
 .square-list .prev.disabled,
@@ -198,10 +198,6 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .sum p small{display:block;padding-top:4px;}
 .win-shop .content .sum button{margin:6px 50px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
-.win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
-.win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
-.win-shop .content #order_note a:hover { text-decoration: none;}
-
 
 .win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
 .win-shop .b-gadget .count{display:block;margin-bottom:6px;}
@@ -281,7 +277,6 @@ body{height:100%;}
 
 .square-list .prev{background-position-x:-450px;}
 
-#good_volumes.dots dt{margin-top:5px;}
 .win-shop .gadget-wrapper{zoom:1;}
 .win-shop .win,
 .win-shop .win-bg{background-image:none;}
@@ -316,7 +311,6 @@ input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" -->
 .column:before, .column:after { display: none; }
-#gifts-page .promos .place {padding-bottom:26px;}
 <!--# endif -->
 
 <!--# include virtual="calculator.css" -->

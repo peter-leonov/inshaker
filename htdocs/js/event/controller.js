@@ -19,12 +19,10 @@ EventPage.controller =
 		this.owner.view.showFormPopup()
 	},
 	
-	checkTheForm: function (hash, fields)
+	checkTheForm: function (hash)
 	{
-		fields = fields.concat(['first', 'second', 'city', 'email'])
-		
-		for (var i = 0; i < fields.length; i++)
-			if (!hash[fields[i]])
+		for (var k in hash)
+			if (!/\S/.test(hash[k]))
 				return false
 		
 		return true
