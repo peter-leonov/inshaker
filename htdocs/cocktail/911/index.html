@@ -32,7 +32,7 @@
 								<h2 class="summary"><i></i>911 — Спасите, помогите!</h2>
 								<div class="description">
 									
-									<p>Многие ну очень профессиональные врачи советуют экстренный шот в качестве лекарства от плохого настроения<a onclick="link.open('view-prepare')">…</a></p>
+									<p>Многие ну очень профессиональные врачи советуют экстренный шот в качестве лекарства от плохого настроения<a class="link-open" onclick="/*link.open('view-prepare')*/">…</a></p>
 									
 								</div>
 							</div>
@@ -48,7 +48,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Многие ну очень профессиональные врачи советуют экстренный шот в качестве лекарства от плохого настроения.</p><p>Будь то непогода или жизненные трудности - 911 всегда придет к тебе на помощь.</p>
 							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+							<button class="rounded link-close" onclick="$('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -75,7 +75,7 @@
 								</dd>
 							</dl>
 							<ul class="controls">
-								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded strong bt-close-how link-close"><b>Закрыть рецепт</b></button></li>
 								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#911")'><b>Распечатать</b></button></li>
 							</ul>
 						</div>

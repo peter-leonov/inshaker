@@ -1,5 +1,3 @@
-<!--# include virtual="/js/common/link.js" -->
-
 Array.prototype.random = function() {
 	var len = this.length
 	if (len)
@@ -58,9 +56,49 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
+
+      var links = {
+         close: cssQuery('.link-close'),
+         open: cssQuery('.link-open')
+      };
+      var controller = this;
+
+      for (var i=0, close = links.close, ii=close.length; i<ii; i++) {
+         var link = close[i];
+
+         link.addEventListener('click', function(e) {
+            controller._linkClose();
+         }, false);
+      }
+
+      for (var i=0, open = links.open, ii=open.length; i<ii; i++) {
+         var link = open[i];
+
+         link.addEventListener('click', function(e) {
+            controller._linkOpen('view-prepare');
+         }, false);
+      }
 	},
 	
 	bindEvents: function(name){
+      function toggleLink(a) {
+         if (toggleLink.element) {
+            //hasClassName
+            toggleLink.element.hide();
+            toggleLink.element = null;
+         } else {
+            toggleLink.url = (a.constructor == String) ? a : a.href.split('#')[1];
+            toggleLink.element = $(toggleLink.url);
+
+            if (!toggleLink.element) {
+               toggleLink.url = null;
+               return false;
+            }
+            //передаем параметр для кастамных открытий
+            toggleLink.element.show();
+         }
+      }
+
 		var self = this;
 		var menu = $('panel_cocktail');
 		
@@ -105,9 +143,10 @@ var Controller = {
 		this._initNavigationRules(menu);
 		
 		var mybar_links	= menu.getElementsByTagName('a');
-		for (var i = mybar_links.length - 1; i >= 0; i--) {
+		for (var i = mybar_links.length - 1, controller = this; i >= 0; i--) {
 			mybar_links[i].addEventListener('click', function(e) {
-					link.open(this);
+					//link.open(this);
+               controller._linkOpen(this);
 					this.parentNode.now.remClassName('now');
 					// this.addClassName('now');
 					this.parentNode.now = this;
@@ -117,12 +156,12 @@ var Controller = {
 					e.preventDefault();
 				}, false);
 		}
-		link = new Link();
+		//link = new Link();
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
-			link.open("view-how", true);
+         controller._linkOpen('view-how');
 			var ri = $(self.ID_ING).RollingImagesLite
 			if (ri)
 				ri.goInit(); // Work-around for RI: FIXME
@@ -408,5 +447,31 @@ var Controller = {
 		var relCol  = cssQuery(".column.b-more-cocktails")[1];
 		recsCol.style.display = "none";
 		relCol.style.width = "62.8em";
-	}
+	},
+   _linkOpen: function(link) {
+      var linkOpen = this._linkOpen;
+
+      if (linkOpen.element) {
+         this._linkClose(link);
+      }
+
+      linkOpen.url = (link.constructor == String) ? link : link.href.split('#')[1];
+      linkOpen.element = $(linkOpen.url);
+
+      if (!linkOpen.element) {
+         linkOpen.url = null;
+         return false;
+      }
+
+      linkOpen.element.show();
+   },
+   _linkClose: function() {
+      var linkOpen = this._linkOpen;
+
+      if (linkOpen.element) {
+         linkOpen.element.hide();
+      }
+
+      linkOpen.element = null;
+   }
 }
