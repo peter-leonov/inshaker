@@ -81,24 +81,6 @@ var Controller = {
 	},
 	
 	bindEvents: function(name){
-      function toggleLink(a) {
-         if (toggleLink.element) {
-            //hasClassName
-            toggleLink.element.hide();
-            toggleLink.element = null;
-         } else {
-            toggleLink.url = (a.constructor == String) ? a : a.href.split('#')[1];
-            toggleLink.element = $(toggleLink.url);
-
-            if (!toggleLink.element) {
-               toggleLink.url = null;
-               return false;
-            }
-            //передаем параметр для кастамных открытий
-            toggleLink.element.show();
-         }
-      }
-
 		var self = this;
 		var menu = $('panel_cocktail');
 		
