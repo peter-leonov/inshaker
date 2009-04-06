@@ -21,13 +21,28 @@ var AboutPage = {
 	
 	init: function ()
 	{
+      var ingredients = Ingredient.getAll();
+      var marks = [];
+      var ul = cssQuery('#partners')[0];
+      for (var i=0, ii=ingredients.length; i<ii; i++) {
+         var mark = ingredients[i].mark;
+         if (mark && marks.indexOf(mark.trans()) == -1) {
+            marks.push(mark.trans());
+            var li = document.createElement("li");
+            var img = document.createElement("img");
+            img.src = '/i/merchandise/banners/' + mark.trans() + '.png';
+            li.appendChild(img);
+            ul.appendChild(li);
+         }
+      }
+
 		var main = $('menu')
 		var tabs = cssQuery('.content')
 		var buttons = cssQuery('#menu a')
 		
 		LocationHash.bind(location)
 		var name = LocationHash.get()
-		
+
 		// var hrefs = ['view-about', 'view-cocktail-friend', 'view-stat']
 		var hrefs = tabs.map(function (v) { return String(v.className).split(/\s+/)[0] })
 		log(hrefs)
@@ -37,7 +52,10 @@ var AboutPage = {
 		sw.select(selected >= 0 ? selected : 0)
 		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
-		LocationHash.onchange = function (now, last) { sw.select(hrefs.indexOf(now)); log(now) }
+		LocationHash.onchange = function (now, last) {
+         sw.select(hrefs.indexOf(now));
+         log(now);
+      };
 		
 		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
 		line.addVariable("path", "stat/amcharts/");

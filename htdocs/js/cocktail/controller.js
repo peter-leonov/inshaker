@@ -56,7 +56,7 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
-
+/*
       var links = {
          close: cssQuery('.link-close'),
          open: cssQuery('.link-open')
@@ -78,6 +78,7 @@ var Controller = {
             controller._linkOpen('view-prepare');
          }, false);
       }
+*/
 	},
 	
 	bindEvents: function(name){

@@ -62,3 +62,14 @@
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 .b-content .content ol {padding-left:23px;}
 <!--# endif -->
+
+#about-page .b-content #partners {
+   list-style-type: none;
+}
+
+#about-page .b-content #partners li {
+   float: left;
+   margin: 0 17px 17px 0;
+}
+
+#about-page .b-content .view-partners { padding-top: 20px; background: none; min-height:62em;}

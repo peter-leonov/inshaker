@@ -5,6 +5,7 @@ function Link () {}
 
 Link.prototype.open = function(a)
 {
+   //console.log('Link#open', a);
     if (this.element) this.close()
 	
 	this.url = (a.constructor == String) ? a : a.href.split('#')[1]
