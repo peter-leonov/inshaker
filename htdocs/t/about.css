@@ -65,11 +65,14 @@
 
 #about-page .b-content #partners {
    list-style-type: none;
+   width: 110%;
 }
 
 #about-page .b-content #partners li {
-   float: left;
-   margin: 0 17px 17px 0;
+   display: inline-block;
+   margin: 0 0 0 -33px;
+   text-align: center;
+   width: 188px;
 }
 
 #about-page .b-content .view-partners { padding-top: 20px; background: none; min-height:62em;}
