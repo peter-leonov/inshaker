@@ -13,7 +13,7 @@ class DecorationProcessor < Barman::Processor
   end
   
   def run
-    @theme = ARGV[0] || YAML::load(File.open(Config::DECORATION_DIR + "decoration.yaml"))['Выбранная тема'] 
+    @theme = YAML::load(File.open(Config::DECORATION_DIR + "decoration.yaml"))['Выбранная тема'] 
     @theme_dir  = Config::DECORATION_DIR + @theme + "/"
     
     @params = {}
