@@ -4,6 +4,7 @@
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/bar.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/info-popup.css" media="screen"/>
 	<title>Inshaker — КичКок</title>
 </head>
 <body>
@@ -89,10 +90,12 @@
 							</dd>
 						</dl>
 						
-						<dl class="part barman">
+						
+                        <dl class="part barman">
 							<dt>Главный бармен:</dt>
-							<dd>Юрий Яковлев</dd>
+							<dd><a>Юрий Яковлев</a></dd>
 						</dl>
+                        
 						<dl class="part entrance">
 							<dt>Вход:</dt>
 							<dd>Стиль творческий. Вход по стилю.</dd>
@@ -167,11 +170,14 @@
 	<!--# include file="/inc/bottom-common.html" -->
     <div class="alcohol-harm"></div>
 </div>
+    <!--# include file="/inc/barman-info-popup.html" -->
+
 <script type="text/javascript">window.menuItem = "bars.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/bar/bar.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Bar.js"></script>
+<script type="text/javascript" src="/js/entities/Barman.js"></script>
 <script type="text/javascript" src="/js/entities/City.js"></script>
 <script type="text/javascript" src="/js/entities/Party.js"></script>
 </body>

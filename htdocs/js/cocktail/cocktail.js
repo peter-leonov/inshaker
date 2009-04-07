@@ -7,5 +7,6 @@ $.onload(function(){
 	Calculator.init();
 })
 
+<!--# include file="/js/common/infoPopup.js" -->
 <!--# include file="/js/cocktail/model.js" -->
 <!--# include file="/js/cocktail/controller.js" -->

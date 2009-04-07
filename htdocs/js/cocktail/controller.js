@@ -32,9 +32,9 @@ var Controller = {
 		
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
 		new Draggable($(this.ID_ILLUSTRATION), name, this.DROP_TARGETS);
-		
+	    
 		Model.dataListener = this;
-		this.bindEvents();
+		this.bindEvents(name);
 		Model.init(name);
 		var perPage = 5;
 		if(Model.recs.length > 0) {
@@ -49,10 +49,19 @@ var Controller = {
 		return $(this.NAME_ELEM).innerHTML;
 	},
 	
-	bindEvents: function(){
+	bindEvents: function(name){
 		var self = this;
 		var menu = $('panel_cocktail');
-		menu.now = menu; 
+		
+        if (Barman.getByCocktailName(name)) {
+            var a = document.createElement("a")
+            a.href = "#"
+            a.innerHTML = "<b>Автор</b>"
+            menu.appendChild(a)
+            var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name))
+            ip.addCloseListener(function () { a.remClassName('now') })
+        }
+        menu.now = menu; 
 		this._initNavigationRules(menu);
 		
 		var mybar_links	= menu.getElementsByTagName('a');

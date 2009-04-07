@@ -3,6 +3,22 @@ Cocktail = function (data)
 	for (var k in data) this[k] = data[k];
 }
 
+Cocktail.prototype =
+{
+    getPreviewNode: function() {
+		var li = document.createElement("li");
+		var a = document.createElement("a");
+		a.href = "/cocktails/" + this.name_eng.htmlName() + ".html";
+		var img = document.createElement("img");
+		img.src = "/i/cocktail/s/" + this.name_eng.htmlName() + ".png";
+		var txt = document.createTextNode(this.name);
+		a.appendChild(img);
+		a.appendChild(txt);
+		li.appendChild(a);
+		return li;		
+	}
+}
+
 Object.extend(Cocktail,
 {
     cocktails: [],

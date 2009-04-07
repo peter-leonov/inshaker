@@ -12,13 +12,13 @@ function NewsFormPopup (opener)
   var nodes =
   {
       form: cssQuery('#form-popup form')[0],
-			formPopup: $('form-popup'),
-			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
-			formPopupFields: cssQuery('#form-popup .fields')[0],
-			formPopupThanks: cssQuery('#form-popup .thanks')[0],
-			formPopupMenu: cssQuery('#form-popup .menu')[0],
-			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
-			formCity: cssQuery('#form-popup input[name=city]')[0],
+	  formPopup: $('form-popup'),
+	  formPopupOverlay: cssQuery('#form-popup #overlay')[0],
+	  formPopupFields: cssQuery('#form-popup .fields')[0],
+	  formPopupThanks: cssQuery('#form-popup .thanks')[0],
+	  formPopupMenu: cssQuery('#form-popup .menu')[0],
+	  formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
+	  formCity: cssQuery('#form-popup input[name=city]')[0],
       opener: opener
   }
 
@@ -28,17 +28,17 @@ function NewsFormPopup (opener)
   {
     this.initialize = function ()
     {
-      var self = this, formPopupHide = function() { self.hideFormPopup() }, formPopupShow = function() { self.showFormPopup() }
+        var self = this, formPopupHide = function() { self.hideFormPopup() }, formPopupShow = function() { self.showFormPopup() }
 	    nodes.formPopupOverlay.addEventListener('click', formPopupHide, false)
-		  nodes.formPopupMenu.addEventListener('click', formPopupHide, false)
-      nodes.opener.addEventListener('click', formPopupShow, false)
+		nodes.formPopupMenu.addEventListener('click', formPopupHide, false)
+        nodes.opener.addEventListener('click', formPopupShow, false)
         
-      var form = nodes.form, controller = this.controller
-		  form.oncheck = function (e) { return controller.formOnCheck(e.hash) }
-		  form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
-		  form.onsend = function (e) { return controller.formSend() }
-		  form.onload = function (e) { return controller.formLoad() }
-		  form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
+        var form = nodes.form, controller = this.controller
+		form.oncheck = function (e) { return controller.formOnCheck(e.hash) }
+		form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
+		form.onsend = function (e) { return controller.formSend() }
+		form.onload = function (e) { return controller.formLoad() }
+		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
     }
 
     this.startFormChecker = function ()
@@ -50,50 +50,50 @@ function NewsFormPopup (opener)
 	
 	  this.stopFormChecker = function ()
 	  {
-		  clearInterval(this.formCheckTimer)
+	      clearInterval(this.formCheckTimer)
 	  }
 
     this.initAutoCompleter = function ()
     {
-        var ac = this.ac = new Autocompleter(cities, nodes.formCity, nodes.form)	
-        this.ac.changeListener = { onSearchConfirmed: function (value) {} }
-        nodes.formCity.addEventListener('keypress', function(e){ if(e.keyCode == ac.KEY_ENTER) e.preventDefault() }, false)
+         var ac = this.ac = new Autocompleter(cities, nodes.formCity, nodes.form)	
+         this.ac.changeListener = { onSearchConfirmed: function (value) {} }
+         nodes.formCity.addEventListener('keypress', function(e){ if(e.keyCode == ac.KEY_ENTER) e.preventDefault() }, false)
     }
 
     this.showFormPopup = function ()
     {
-      nodes.formPopupThanks.hide()
-      nodes.formPopupFields.show()
-      nodes.form.reset()
-      nodes.formPopup.show()
-      if (!this.ac) this.initAutoCompleter()
-      this.startFormChecker()
+         nodes.formPopupThanks.hide()
+         nodes.formPopupFields.show()
+         nodes.form.reset()
+         nodes.formPopup.show()
+         if (!this.ac) this.initAutoCompleter()
+         this.startFormChecker()
     }
 
     this.hideFormPopup = function ()
     {
-      this.stopFormChecker()
-      nodes.formPopup.hide()
+        this.stopFormChecker()
+        nodes.formPopup.hide()
     }
   
     this.setFormLock = function (status)
-	  {
-		  var button = nodes.formPopupSubmit
-		  status ? button.disable() : button.enable()
-	  }
+	{
+	    var button = nodes.formPopupSubmit
+	    status ? button.disable() : button.enable()
+	}
 	
-	  this.resetForm = function ()
-	  {
-		  nodes.form.reset()
-		  this.setFormLock(true)
-	  }
+	this.resetForm = function ()
+	{
+	    nodes.form.reset()
+		this.setFormLock(true)
+	}
 	
     this.showFormPopupThanks = function ()
-	  {
-		  this.stopFormChecker()
-		  nodes.formPopupFields.hide()
-		  nodes.formPopupThanks.show()
-	  }
+	{
+	    this.stopFormChecker()
+		nodes.formPopupFields.hide()
+		nodes.formPopupThanks.show()
+	}
 
   }
 

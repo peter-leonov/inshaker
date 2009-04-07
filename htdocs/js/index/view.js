@@ -148,7 +148,4 @@ IndexPageView.prototype =
 		}
 		node.RollingImagesLite.sync()
 	}
-
-    
-	
 }

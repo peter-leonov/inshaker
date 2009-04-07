@@ -32,15 +32,13 @@ $.onload
 			viewSwitcher: $('switch-view'),
 			viewSwitcherButtons: cssQuery('#switch-view a'),
 			barsContainer: $('bars-container'),
-			// citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),
 			
 			dontMiss: $('dont-miss'),
-      photographer: $('photographer'),
-			photoPopup: $('photo_popup_area'),
-			photoCloseItems: [$('photo_close_text'), $('photo_close_cross'), $('photo-overlay')]
+            photographer: $('photographer'),
+			photoPopup: $('guide-info-popup')
 		}
 		
 		BarsPage.initialize(nodes)
@@ -71,5 +69,6 @@ function googleApiLoaderIsLoaded ()
 
 <!--# include file="/js/common/autocompleter.js" -->
 <!--# include file="/js/common/newsFormPopup.js" -->
+<!--# include file="/js/common/infoPopup.js" -->
 
 

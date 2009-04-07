@@ -32,7 +32,9 @@ $.onload
 			cityName: $('city-name'),
 			showMore: cssQuery('.about .show-more')[0],
 			barMore: cssQuery('.about .more')[0],
-			map: $('map'),
+            barmanInfoPopup: $('barman-info-popup'),
+			barman: cssQuery('.part.barman dd a')[0],
+            map: $('map'),
 			barPrev: cssQuery('.b-title .hrefs .prev')[0],
 			barNext: cssQuery('.b-title .hrefs .next')[0]
 		}
@@ -49,5 +51,6 @@ function googleApiLoaderIsLoaded ()
 <!--# include file="/js/bar/controller.js" -->
 <!--# include file="/js/bar/view.js" -->
 
+<!--# include file="/js/common/infoPopup.js" -->
 <!--# include file="/lib/Programica/WindowName.js" -->
 <!--# include file="/lib/Programica/UrlEncode.js" -->

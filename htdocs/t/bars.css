@@ -42,25 +42,6 @@
 #bars-page .bar-map-popup h2 {font-weight:bold;}
 #bars-page .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
 
-#photo_popup_area { display:none; width: 100%; height: 100%; left:0; top: 0; position: fixed; z-index:2;}
-#photo_popup { z-index:5; margin: 22px auto 0; width: 960px;}
-#photo_popup .win { padding:0; width: 960px; }
-#photo_popup .b-title {margin-bottom:20px;}
-#photo_popup .content .photo { display:block; height: 281px; width: 357px; float:left;}
-#photo_popup .content .desc { background:#f1f0ed; width: 502px; padding: 22px 30px; margin-left: 357px; height: 237px; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; position:absolute}
-#photo_popup .content .desc p {margin-bottom: 15px;}
-#photo_popup h2 {margin-left:-1px; padding-bottom:10px; font-size: 18px;}
-#photo_popup .content {width: 924px; margin-bottom:20px;}
-#photo_popup .enrollment {font-size:20px; font-style:italic; color:#F22B9F; background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0; clear:both; padding:14px 0 3px 0;}
-
-#photo_close {clear:both; width:960px; z-index: 5; height: 10px; margin: 0 auto; position: relative; top: 74px;}
-#photo_close_text  { float: left; color:#FFF; border-bottom:1px dashed; text-decoration:none;}
-#photo_close_cross { float: right; display: block; background: url('/t/button/close_cross.png') no-repeat; height: 7px; width: 7px;}
-
-#photo_text  { color:#0392f1; font-size: 19pt; padding-top: 32px;}
-#photo_phone { color:#f22b9f; font-size: 25pt; padding-top: 10px;}
-
-
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
 #bars-page #sort-menu dl,
 #bars-page #sort-menu dd { position: static; }
@@ -69,21 +50,10 @@
 #bars-page #sort-menu #bars-feel.bars-select dd { left: 370px; }
 <!--# endif -->
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
-#photo_popup .content {margin-bottom:0}
-<!--# endif -->
-
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 #bars-page .bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
 #bars-page #dont-miss { border-bottom: 0; text-decoration:underline; top:0 }
 #bars-page #sort-menu .bars-select dd ul { background: #000; }
 #bars-page #switch-view a.selected { color: #333; }
-#photo_popup .content .desc {top:69px; height: 237px; overflow:hidden}
-#photo_popup_area {position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
-
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
-#photo_popup .content .desc {top:68px;}
 <!--# endif -->

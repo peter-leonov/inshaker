@@ -17,7 +17,7 @@ IndexPageModel.prototype =
 		var data =
 		{
 			cocktails: this.cocktails.map(function (v) { return Cocktail.getByName(v) }),
-      links: this.links, promos: this.promos
+            links: this.links, promos: this.promos
 		}
 		
 		this.view.modelChanged(data)
