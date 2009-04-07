@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export SERVER_TYPE=developer
+export RUBYLIB="/www/lib/ruby/"
+export RUBYOPT="-KU"
+
+/www/inshaker/stop && sleep 5 && /www/inshaker/start
+
