@@ -1,4 +1,5 @@
-;(function() {
+;
+(function() {
    var myName = 'BarmensPage';
    var Me = self[myName] = MVC.create(myName);
 
@@ -17,7 +18,15 @@
       }
    };
 
-   Object.extend(Me.prototype, myProto)
+   Object.extend(Me.prototype, myProto);
+
+   $.onready(function () {
+      var nodes = {
+         barmanName: $$('h1')[0]
+      };
+
+      new BarmensPage().initialize(nodes);
+   });
 })();
 
 <!--# include virtual="model.js" -->

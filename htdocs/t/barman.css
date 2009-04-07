@@ -73,3 +73,39 @@
 .barman-info .content .desc li {
    line-height: 15px;
 }
+
+.cocktails-list {
+   padding: 0px 0 3px 0;
+}
+
+.cocktails-list .viewport {
+   overflow: hidden;
+   position: relative;
+   left: 10px;
+   top: 2px;
+   height: 123px;
+   width: 900px;
+}
+
+.cocktails-list .surface {
+   width: 30000px;
+}
+
+.cocktails-list .point {
+   height: 100px;
+   width: 900px;
+   float: left;
+   font-size: 120%;
+}
+
+.cocktails-list li {
+   width: 8em;
+   text-align: center;
+   float: left;
+   width: 150px;
+}
+
+.cocktails-list img {
+   display: block;
+   margin: 0 auto 5px;
+}

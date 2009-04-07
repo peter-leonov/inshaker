@@ -3,7 +3,7 @@
    var Papa = BarmensPage;
    var Me = Papa.Model;
 
-   var meProto = {
+   var myProto = {
       initialize: function() {
          this.sources = {};
          this.state = {};
