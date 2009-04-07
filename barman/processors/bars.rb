@@ -57,7 +57,7 @@ class BarsProcessor < Barman::Processor
       end
     end
   end
-  
+    
   def flush_images
     @bars.each do |city, bars_arr|
       bars_arr.each do |bar|
