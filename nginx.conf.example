@@ -1,0 +1,93 @@
+worker_processes  4;
+
+% if DEVELOPER
+error_log  <%=ROOT%>/nginx.log  notice;
+% end
+
+% if SERVER
+error_log  <%=ROOT%>/nginx.log  alert;
+user  www www;
+% end
+
+pid        <%=ROOT%>/nginx.pid;
+
+events { worker_connections  1024; }
+
+http
+{
+	include mime.types;
+	default_type application/octet-stream;
+	
+	access_log off;
+	
+	sendfile on;
+	# tcp_nopush on;
+	keepalive_timeout 90;
+	
+	gzip on;
+	gzip_min_length 500;
+	gzip_comp_level 9;
+	gzip_types text/plain application/x-javascript text/css;
+	
+	ssi on;
+	ssi_types text/css application/x-javascript;
+	charset utf-8;
+	
+	server_names_hash_bucket_size 48;
+	
+	error_page 404 /404.html;
+	error_page 500 502 503 504 /50x.html;
+	
+	# if SERVER
+	server
+	{
+		listen <%=NGINX_PORT%>;
+		server_name zzz;
+		large_client_header_buffers 8 16k;
+		
+		location / {
+			root /www/ERROR/htdocs;
+		}
+	}
+	# endif
+	
+	server
+	{
+		listen <%=NGINX_PORT%>;
+% if SERVER
+		server_name www.inshaker.ru;
+% end
+% if DEVELOPER
+		server_name www.inshaker.ru ~^inshaker\.[A-Za-z\-]+\.programica.ru$;
+% end
+		
+		large_client_header_buffers 8 16k;
+		
+		root <%=ROOT%>/htdocs/;
+		expires 1h;
+		
+		location /
+		{
+			index index.html;
+		}
+		
+		location /external/ { root /www/lib/htdocs/; }
+		location /lib/ { alias /www/lib/js/0.1/; }
+		
+		location /act/
+		{
+			proxy_pass         http://<%=APACHE_HOST%>:<%=APACHE_PORT%>/act/;
+			proxy_set_header   Host             $host;
+			proxy_set_header   X-Real-IP        $remote_addr;
+		}
+	}
+	
+% if SERVER
+	server
+	{
+		listen <%=NGINX_PORT%>;
+		server_name  inshaker.ru;
+		rewrite ^(.*) http://www.inshaker.ru$1 permanent;
+	}
+% end
+}
