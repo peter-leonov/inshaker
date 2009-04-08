@@ -22,10 +22,13 @@
 
    $.onready(function () {
       var nodes = {
-         barmanName: $$('h1')[0]
+         barmanNameNode: $$('h1[data-barman-name]')[0]
       };
+      var page = new BarmensPage();
 
-      new BarmensPage().initialize(nodes);
+      page.initialize(nodes);
+
+      page.View.renderBarmanCocktails(nodes.barmanNameNode.getAttribute('data-barman-name '));
    });
 })();
 
