@@ -29,7 +29,7 @@
 
 	$.onready(function () {
 		var nodes = {
-			ajaxLoadingImage: $$('#loading')[0],
+			ajaxLoadingImage: $$('.loading')[0],
 			barmanNameNode: $$('h1[data-barman-name]')[0],
 			barmanCocktailsList: $$('ul.point')[0]
 		};

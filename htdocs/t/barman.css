@@ -101,9 +101,9 @@
 .cocktails-list li {
 	width: 8em;
 	text-align: center;
-	display: inline-block;
+	float: left;
 	margin: 0 0 20px 0;
-	height: auto;
+	height: 100px;
 	width: 150px;
 }
 
@@ -112,7 +112,8 @@
 	margin: 0 auto 5px;
 }
 
-#loading {
+.loading {
+	font-size: 20px;
 	text-align:center;
 }
 
