@@ -11,6 +11,9 @@
 		},
 		setCocktails: function() {
 			this.view.renderBarmanCocktails(this.model.sources.barman.cocktails);
+		},
+		setNextAndPrevBarmens: function() {
+			this.view.renderNextAndPrevBarmensLinks(this.model.sources.barman);
 		}
 	};
 

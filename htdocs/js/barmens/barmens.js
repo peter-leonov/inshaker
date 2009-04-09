@@ -22,6 +22,9 @@
 		},
 		setCocktails: function() {
 			this.controller.setCocktails();
+		},
+		setNextAndPrevBarmens: function() {
+			this.controller.setNextAndPrevBarmens();
 		}
 	};
 
@@ -31,7 +34,9 @@
 		var nodes = {
 			ajaxLoadingImage: $$('.loading')[0],
 			barmanNameNode: $$('h1[data-barman-name]')[0],
-			barmanCocktailsList: $$('ul.point')[0]
+			barmanCocktailsList: $$('ul.point')[0],
+			nextBarman: $$('a.arrow.next')[0],
+			prevBarman: $$('a.arrow.prev')[0]
 		};
 		var sources = {
 			barman: Barman.getByName(nodes.barmanNameNode.getAttribute('data-barman-name'))
@@ -41,6 +46,7 @@
 
 		page.bind(nodes, sources);
 		page.setCocktails();
+		page.setNextAndPrevBarmens();
 		/* ---- */
 //		var barman = Barman.getByName(nodes.barmanNameNode.getAttribute('data-barman-name'));
 //		var cocktails = barman.cocktails;

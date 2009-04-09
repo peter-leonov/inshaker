@@ -27,6 +27,10 @@
 
 			this.nodes.ajaxLoadingImage.hide();
 			this.nodes.barmanCocktailsList.appendChild(tmp);
+		},
+		renderNextAndPrevBarmensLinks: function(barman) {
+			this.nodes.nextBarman.href = '/barman/' + barman.next().path + '/index.html';
+			this.nodes.prevBarman.href = '/barman/' + barman.prev().path + '/index.html';
 		}
 	};
 
