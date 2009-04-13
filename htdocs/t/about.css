@@ -23,7 +23,7 @@
 #about-page .view-stat ul { font-size: 12px;} 
 #about-page .view-stat ul li { list-style: disc; margin: 0 20px; }
 
-#about-page .body-wrapper{min-height:545px;}
+#about-page .body-wrapper{min-height:505px;}
 #about-page #body_wrapper{padding-bottom: 14px;}
 #about-page .b-content .top-menu p { margin-bottom: 0; padding-bottom: 10px; }
 #about-page .b-content .top-menu .b:after { display: none; }
@@ -32,7 +32,7 @@
 #about-page .b-content .view-stat { padding-top: 20px; background: none; }
 #about-page #bottom a.local { text-decoration: none; border-bottom: dashed 1px; }
 
-#b-cr-about .body-wrapper{height:545px;}
+#b-cr-about .body-wrapper{height:505px;}
 #b-cr-about form, 
 #b-cr-delivery form {font-size:11px;line-height:2;}
 #b-cr-about p, 
