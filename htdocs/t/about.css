@@ -3,8 +3,11 @@
 .b-content .viewport { height: 450px; }
 #about-page .b-content{min-height:46em;}
 #about-page .content {display:none;}
-.b-content .content p{font-size:12px;margin:1.5em 0 0;}
+.b-content .content p, .b-content .content ol {font-size:12px;margin:1.5em 0 0;}
+.b-content .content ol {padding-left:18px;}
+.b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
 .b-content .content h3{font-size:18px;margin:1em 0;}
+#about-page .view-stat {padding-bottom: 30px}
 #about-page .view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;}
 #about-page .view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;}
 #about-page .view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;}
@@ -17,7 +20,7 @@
 #about-page .view-stat .stat .disabled {background-position:0 -92px;}
 #about-page .view-stat .stat .next.disabled {background-position:-20px -92px;}
 #about-page .view-stat dl dt { font-size: 14px; padding-bottom: 4px; }
-#about-page .view-stat ul { font-size: 12px; margin: 0 0 30px; }
+#about-page .view-stat ul { font-size: 12px;} 
 #about-page .view-stat ul li { list-style: disc; margin: 0 20px; }
 
 #about-page .body-wrapper{min-height:545px;}
@@ -44,3 +47,6 @@
 #b-cr-delivery input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
+.b-content .content ol {padding-left:23px;}
+<!--# endif -->
