@@ -20,6 +20,6 @@ IndexPageModel.prototype =
             links: this.links, promos: this.promos
 		}
 		
-		this.view.modelChanged(data)
+		this.view.modelChanged(data, state)
 	}
 }

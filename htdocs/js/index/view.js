@@ -10,7 +10,10 @@ IndexPageView.prototype =
 	initialize: function (nodes)
 	{
 		this.nodes = nodes
-		new Programica.RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+		this.imagesLoaded = false
+        this.switchBlock = false
+
+        new Programica.RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
         new Programica.RollingImagesLite(nodes.links, {animationType: 'easeOutQuad'})
 		new Programica.RollingImagesLite(nodes.cocktails, {animationType: 'easeOutQuad'})
     },
@@ -21,9 +24,9 @@ IndexPageView.prototype =
         this.controller.start()
     },
 
- 	modelChanged: function (data)
+ 	modelChanged: function (data, state)
 	{
-        this.renderPromo(this.nodes.promo, data.promos, 1)
+        this.renderPromo(this.nodes.promo, data.promos, 1, state)
         this.renderLinks(this.nodes.links, data.links, 1)
 		this.renderCocktails(this.nodes.cocktails, data.cocktails, 1)
 	},
@@ -47,17 +50,64 @@ IndexPageView.prototype =
     return li
   },
 
-  _createPromoElement: function (promo, promos)
+  createPromoElement: function (promo, promos)
   {
-    var li = document.createElement("li")
     var a  = document.createElement("a")
     a.href = promo[1]
     var img = document.createElement("img")
     img.alt = promo[0]
-    img.src = "/i/index/promos/" + (promos.indexOf(promo) + 1) + ".jpg"
+    img.setAttribute("lazy", "/i/index/promos/" + (promos.indexOf(promo) + 1) + ".jpg")
     a.appendChild(img)
-    li.appendChild(a)
-    return li
+    a.className = "point"
+    return a 
+  },
+
+  getPromoImages: function ()
+  {
+    return images = this.nodes.promo.getElementsByTagName("img")
+  },
+
+  loadFrames: function(list, onImageLoaded)
+  {
+    var images = this.getPromoImages() 
+    
+    for (var i = 0; i < list.length; i++)
+    {
+        var img = images[list[i]]
+        if(!img.src) 
+        {
+            img.src = img.getAttribute("lazy")
+            if(onImageLoaded) img.onload = onImageLoaded
+        }
+    }
+  },
+
+  getRange: function (initFrame)
+  {
+    var range = [initFrame]
+    var images = this.getPromoImages()
+    
+    if(images[initFrame - 1]) range.push(initFrame - 1)
+    if(images[initFrame + 1]) range.push(initFrame + 1)
+
+    var l = images.length
+
+    if(range.indexOf(1) > -1) range.push(l - 1) // first == last (fake)
+    if(range.indexOf(l - 2) > -1) range.push(0) // last == first (fake)
+    
+    return range.uniq()
+  },
+
+  loadInitialFrames: function (initFrame)
+  {
+    var me = this, counter = 0 
+    var range = this.getRange(initFrame) 
+     
+    this.loadFrames(range, function () 
+    {
+        counter++
+        if(counter == range.length) me.imagesLoaded = true       
+    })
   },
 	
   renderCocktails: function (node, set, len)
@@ -70,56 +120,96 @@ IndexPageView.prototype =
     this.renderSet(node, set, len, this._createLinkElement)
   },
   
-  renderPromo: function (node, set, len)
+  renderPromo: function (node, set, len, state)
   {
+    var initFrame = state.initFrame, customInit = state.customInit
+
     var ri = node.RollingImagesLite
     var parent = node.getElementsByClassName('surface')[0]
-    var point = null
     
 	parent.empty()
-	for (var i = 0; i < set.length; i++)
-	{
-		point = document.createElement('ul')
-		point.className = 'point'
-		parent.appendChild(point)
-		point.appendChild(this._createPromoElement(set[i], set))
-	}	
     
-   
+    // One fake before the actual series, one after
+    parent.appendChild(this.createPromoElement(set[set.length - 1], set))
+	for (var i = 0; i < set.length; i++) parent.appendChild(this.createPromoElement(set[i], set))
+    parent.appendChild(this.createPromoElement(set[0], set))
+    ri.sync() 
+
     if(set.length > 1)
     {
-        point = document.createElement('ul')
-	    point.className = 'point'
-	    parent.appendChild(point)
-        point.appendChild(this._createPromoElement(set[0], set))
-        var switchFrame = function ()
+        var len = ri.points.length, me = this
+        // Jumping to avoid fakes
+        var switchFrame = function (prev)
         {
-		    var len = ri.points.length, cur = ri.current
-		
-		    if(cur == len - 2) {
-			    var animation = ri.goToFrame(cur + 1)
-			    animation.oncomplete = function () { ri.goToFrame(0, 'directJump') }
-		    } else {
-			    ri.goToFrame(cur + 1)
-		    }
-	    }
-	    var frameSwitchTimer = setInterval(switchFrame, 3500)
-	    var removedLast = false
-	    parent.addEventListener('mouseover', function ()
-	    { 
-		    clearInterval(frameSwitchTimer)
-		    if(!removedLast)
-		    {
-			    parent.removeChild(point)
-			    ri.sync()
-			    removedLast = true
-		    }
-	    }, false)
-	} else {
-        this.nodes.arrows[0].hide()
-        this.nodes.arrows[1].hide()
+		    if(!me.switchBlock)
+            {
+                var cur = ri.current, after = cur 
+                
+                me.switchBlock = true
+                var switchUnblock = function () { me.switchBlock = false }
+                var jumpToAfter   = function () { ri.goToFrame(after, 'directJump'); switchUnblock() }
+                var slideToAfter  = function () { ri.goToFrame(after).oncomplete = switchUnblock }
+
+                if (prev) 
+                { 
+                    if (cur == 1) { after = len - 2; ri.goToFrame(0).oncomplete = jumpToAfter } 
+                    else { after = cur - 1; slideToAfter() } 
+                }
+                else 
+                {
+                    if (cur == len - 2) { after = 1; ri.goToFrame(len - 1).oncomplete = jumpToAfter }
+                    else { after = cur + 1; slideToAfter() }
+                }
+             
+                me.controller.updateHash(after)
+                me.loadFrames(me.getRange(after))
+	        }
+        }
+
+	    this.nodes.arrows[0].addEventListener('click', function (e) { switchFrame(true)  }, false)
+	    this.nodes.arrows[1].addEventListener('click', function (e) { switchFrame(false) }, false)
+        
+        var fastSwitchTimer = slowSwitchTimer = null
+        var startSwitching = function (customInit) 
+        {
+            fastSwitchTimer = setTimeout(function() 
+            { 
+                slowSwitchTimer = setInterval(function() { switchFrame(false) }, 3500)
+                switchFrame(false) 
+            }, customInit ? 4000 : 1500)
+        }
+        var stopSwitching = function () 
+        {
+            clearInterval(fastSwitchTimer)
+            clearInterval(slowSwitchTimer)
+        }
+        
+        if(!this.getPromoImages()[initFrame]) initFrame = 1
+         
+        this.loadInitialFrames(initFrame)
+        setTimeout(function() { ri.goToFrame(initFrame, 'directJump')  }, 100)
+        
+        // Wait for initial images to load and start switching
+        var imageLoadTimer = setInterval(function () { 
+            if(me.imagesLoaded) 
+            {
+                me.showButtons()
+                startSwitching(customInit)
+                me.nodes.promo.addEventListener('mousemove', function () { stopSwitching() }, false)
+                me.nodes.promo.addEventListener('mouseover', function () { stopSwitching() }, false)
+	            me.nodes.promo.addEventListener('mouseout' , function () { startSwitching() }, false)
+                clearInterval(imageLoadTimer)
+            }
+        }, 1000)
     }
-	node.RollingImagesLite.sync()
+  },
+ 
+  showButtons: function ()
+  {
+    var prev = this.nodes.arrows[0], next = this.nodes.arrows[1]
+    prev.show(); next.show()
+    prev.animate("easeOutBounce", {left: -29}, 0.6)
+    next.animate("easeOutBounce", {left: 962}, 0.6)
   },
   
   renderSet: function (node, set, len, renderFunction)

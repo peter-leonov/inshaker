@@ -2,8 +2,8 @@ IndexPage =
 {
 	initialize: function (nodes)
 	{
-    var params = <!--# include file="/db/decoration.js"-->
-    var model       = this.model         = new IndexPageModel(params)
+        var params = <!--# include file="/db/decoration.js"-->
+        var model       = this.model         = new IndexPageModel(params)
 		var controller  = this.controller    = new IndexPageController()
 		var view        = this.view          = new IndexPageView(nodes)
 		
@@ -26,7 +26,7 @@ $.onload
 			links: cssQuery('.info-blocks .links-list')[0],
             promo: $('promo'),
 			dontMiss: $('dont-miss'),
-            arrows:[cssQuery('#promo .prev')[0], cssQuery('#promo .next')[0]]
+            arrows:[cssQuery('#promo-prev')[0], cssQuery('#promo-next')[0]]
 		}
 
     IndexPage.initialize(nodes)
