@@ -5,5 +5,7 @@ update_stats.sh
 *.log
 *.tmp
 *.pid
+apache.stable.conf
+apache.conf
 nginx.conf
 htdocs/stat/*
