@@ -9,11 +9,11 @@ class Deployer
   end
   
   def initialize
-     git_add
+     git_add_all
      git_commit_and_push
   end
   
-  def git_add
+  def git_add_all
     Config::DEPLOY_DIRS.each do |deploy_dir|
       git_add Config::BASE_DIR + deploy_dir
     end
@@ -21,7 +21,7 @@ class Deployer
   
   def git_commit_and_push
     begin
-      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1 && git push")
+      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1")
     rescue
       puts "Unable to perform git commit and push"
       exit 1
