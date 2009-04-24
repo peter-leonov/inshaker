@@ -1,8 +1,9 @@
 .DS_Store
-analytic/reports
+analytic/reports/*.xml
 update_stats.sh
 .TemporaryItems
 *.log
 *.tmp
 *.pid
-
+nginx.conf
+htdocs/stat/*
