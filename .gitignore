@@ -1,4 +1,7 @@
 .DS_Store
+*analytic/reports/*
+*update_stats.sh
+.TemporaryItems
 *.log
 *.tmp
 *.pid

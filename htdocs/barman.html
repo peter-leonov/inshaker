@@ -161,13 +161,6 @@
 		<div class="viewport">
 			<div class="surface">
 				<div class="wrapper rounded-top point" id="point_0">
-					<div class="name">Код на <a href="http://inshaker.barman.programica.ru" target="_blank" class="purple">inshaker.barman.programica.ru</a></div>
-					<img class="logo" src="/i/logo/strip.png"></img>
-					<div class="options">Обновление кода на тестовом сервере из subversion.
-					</div>
-					<div id="goSVN" class="go-purple"></div>
-				</div>
-				<div class="wrapper rounded-top point" id="point_1">
 					<div class="name">Обновление <a href="http://inshaker.barman.programica.ru" target="_blank">inshaker.barman.programica.ru</a></div>
 					<img class="logo" src="/i/logo/barman.png"/>
 					<div class="options">
@@ -184,7 +177,7 @@
 					</div>
 					<div id="goBarman" class="go"></div>
 				</div>
-				<div class="wrapper rounded-top point" id="point_2">
+				<div class="wrapper rounded-top point" id="point_1">
 					<div class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></div>
 					<img class="logo" src="/i/logo/barman.png"></img>
 					<div class="options">...включая код, изображения и данные.
@@ -218,7 +211,7 @@ $.onload(function(){
 		node.style.visibility="hidden";
 	};
 	
-	var labels = ["Код", "Бармен", "Сайт"];
+	var labels = ["Бармен", "Сайт"];
 	ri.onselect = function(node, num){
 		if(labels[num-1]) $('left').innerHTML  = "← " + labels[num-1];
 		if(labels[num+1]) $('right').innerHTML = labels[num+1] + " →";
@@ -266,18 +259,6 @@ $.onload(function(){
 		}
 	});
 	
-	var goSVNButton = new UIButton('goSVN', 'clicked', 'Скачать', 'Подожди...', function(e){
-		goSVNButton.setEnabled(false);
-		
-		squeezeNode($('output'));
-		var req = aPost("/act/svnup.cgi", {});
-		req.onSuccess = function (){
-			$('output').innerHTML = this.responseText();
-			inflateNode($('output'));
-			goSVNButton.setEnabled(true);
-		}
-	});
-	
 	var goUpButton = new UIButton('goUp', 'clicked', 'Обновить', 'Подожди...', function(e){
 		goUpButton.setEnabled(false);
 		
@@ -290,6 +271,6 @@ $.onload(function(){
 		}
 	});
 	
-	ri.goToFrame(1); ri.onselect($('point_1'), 1);
+	ri.goToFrame(0); ri.onselect($('point_0'), 0);
 })
 </script>

@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /www/inshaker/analytic
+cd /Projects/inshaker/analytic
 ruby analytic.rb
 
