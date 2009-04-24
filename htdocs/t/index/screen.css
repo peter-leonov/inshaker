@@ -7,7 +7,7 @@
 
 #index-page #promo { width:962px; padding: 0; background: #CCC url(/t/loader-gray.gif) no-repeat scroll center center; }
 #index-page #promo .viewport { width:962px; height:450px; }
-#index-page #promo .viewport .surface { width: 10000px; }
+#index-page #promo .viewport .surface { width: 100000px; }
 #index-page #promo .point { display:block; float: left; color:#CCC; width:962px; height:450px;}
 #index-page #promo-prev,
 #index-page #promo-next { display:none; cursor:pointer; position:absolute; top:193px; width: 29px; height:64px; background: transparent url(/t/bg/index/arrows.png) no-repeat; }

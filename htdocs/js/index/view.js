@@ -174,9 +174,9 @@ IndexPageView.prototype =
         {
             fastSwitchTimer = setTimeout(function() 
             { 
-                slowSwitchTimer = setInterval(function() { switchFrame(false) }, 3500)
+                slowSwitchTimer = setInterval(function() { switchFrame(false) }, 4500)
                 switchFrame(false) 
-            }, customInit ? 4000 : 1500)
+            }, customInit ? 6000 : 1500)
         }
         var stopSwitching = function () 
         {
