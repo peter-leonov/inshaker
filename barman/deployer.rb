@@ -21,7 +21,7 @@ class Deployer
   
   def git_commit_and_push
     begin
-      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1")
+      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1 && git push")
     rescue
       puts "Unable to perform git commit and push"
       exit 1
