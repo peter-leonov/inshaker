@@ -1,4 +1,5 @@
 .DS_Store
+barman/base
 analytic/reports/*.xml
 update_stats.sh
 .TemporaryItems
