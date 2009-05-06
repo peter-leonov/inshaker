@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+PROJ_ROOT=`echo $0 | perl -ne 'm~(.*)/~; print \$1'`
 
-export SERVER_TYPE=developer
-export RUBYLIB="/www/lib/ruby/"
-export RUBYOPT="-KU"
-
-/www/inshaker/stop && sleep 5 && /www/inshaker/start
-
+$PROJ_ROOT/stop
+sleep 1
+$PROJ_ROOT/start
