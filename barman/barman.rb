@@ -6,7 +6,6 @@ require 'unicode'
 require 'fileutils'
 require 'erb'
 require 'csv'
-require 'RMagick'
 require 'yaml'
 
 $KCODE = 'u'

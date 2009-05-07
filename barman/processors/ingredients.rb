@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+require 'RMagick'
 require 'barman'
 
 class IngredientsProcessor < Barman::Processor
