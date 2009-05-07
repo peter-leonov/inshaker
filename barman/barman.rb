@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'lib/active_support_pmc'
 require 'lib/string_util'
-require 'lib/rmail_util'
 require 'templates'
 require 'unicode'
 require 'fileutils'

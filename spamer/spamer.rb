@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'csv'
-require '/www/inshaker/barman/lib/rmail_util'
+require 'lib/rmail_util'
 require 'erb'
 
 # render = ERB.new(File.read(ARGV[1]))
