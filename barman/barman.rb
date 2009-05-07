@@ -8,7 +8,6 @@ require 'erb'
 require 'csv'
 require 'RMagick'
 require 'yaml'
-require 'curb'
 
 $KCODE = 'u'
 

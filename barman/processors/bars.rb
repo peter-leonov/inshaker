@@ -96,14 +96,13 @@ class BarsProcessor < Barman::Processor
   def prepare_map_points
     rx = Regexp.new(/<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m)
     
-    c = Curl::Easy.new("http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml")
-    c.http_get
-    points_arrs = c.body_str.scan(rx)
+    body_str = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
+    points_arrs = body_str.scan(rx)
     points_arrs.each {|arr| @bar_points[arr[0]] = [arr[2].to_f, arr[1].to_f]}
     
-    c = Curl::Easy.new("http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml")
-    c.http_get
-    points_arrs = c.body_str.scan(rx)
+    
+    body_str = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
+    points_arrs = body_str.scan(rx)
     points_arrs.each {|arr| @city_points[arr[0]] = {:point => [arr[2].to_f, arr[1].to_f], :zoom => 11}}
   end
   
