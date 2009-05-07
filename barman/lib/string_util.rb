@@ -4,7 +4,7 @@ class String
   
   def trans
     res = self.gsub('й','й')
-    return res.bidi_translify.gsub("+", "")
+    return res.translify.gsub("+", "")
   end
 
   def yi

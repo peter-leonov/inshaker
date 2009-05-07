@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'lib/active_support_pmc'
+require 'lib/json'
 require 'lib/string_util'
 require 'templates'
 require 'unicode'
@@ -25,7 +25,7 @@ module Barman
     end
     
     def flush_json_object(object, dest_file)
-      json = ActiveSupport::JSON.encode(object, {:escape => false})
+      json = object.to_json
       File.open(dest_file, "w+") do |db|
        db.print json
        db.close
