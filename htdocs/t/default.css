@@ -621,6 +621,7 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
 
 #event-page { }
+#event-page .timeline {width:958px; /*two pixels preserved for left and right borders*/}
 #event-page .timeline .b-title{padding-bottom:10px; margin-bottom: 15px;}
 #event-page .timeline.column { margin-bottom: 32px;} 
 #event-page .timeline .b-title h1{font-size:20px; margin-left:-1px;}
