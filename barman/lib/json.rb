@@ -32,6 +32,6 @@ class Hash
     temp.keys.sort.each do |k|
       pairs.push("#{k.to_s.to_json}:#{temp[k].to_json}")
     end
-    "{#{pairs.join(",")}}"
+    "{#{pairs.join(",")}}".gsub('й','й')
   end
 end
