@@ -270,7 +270,7 @@ label{display:block;}
 #cocktail-page .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 /* more in cocktail */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
-.b-more .b-more-cocktails { width:39.8em;}
+.b-more .b-more-cocktails { width:398px;}
 .b-more .column{position:relative;}
 .b-more dl{height:163px;font-size:120%;height:11.24em;background:#fff url(bg/body/green-more-title.png) repeat-x 0 -19px;}
 .b-more dt{background:#77a300 url(bg/body/green-more-title.png) repeat-x 0 18px;margin:-5px -10px 0;padding:0 1px;height:29px;}
@@ -291,7 +291,7 @@ label{display:block;}
 .b-more-cocktails .next.disabled{background-position:-16px -38px;cursor:default;}
 .b-more-cocktails .prev.disabled{background-position:0 -38px;cursor:default;}
 .b-more .b-more-rec .point{width:130px;}
-.b-more .b-more-rec {width:20.8em;margin-right:2em;}
+.b-more .b-more-rec {width:208px;margin-right:20px;}
 .b-more .b-more-rec .viewport{width:130px;left:21px;}
 .b-more .b-more-rec li{width:130px;}
 
