@@ -44,7 +44,7 @@ $.onload
 
 function googleApiLoaderIsLoaded ()
 {
-	google.load("maps", "2", {nocss: true, callback: function () { BarPage.mapsApiIsLoaded() }})
+	google.load("maps", "2", {nocss: true, language: "ru", callback: function () { BarPage.mapsApiIsLoaded() }})
 }
 
 <!--# include file="/js/bar/model.js" -->
