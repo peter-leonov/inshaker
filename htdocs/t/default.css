@@ -10,11 +10,8 @@
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 /* nav str */
 .b-alternative .next,
-.b-alternative .prev,
-.mybar-user .next,
-.mybar-user .prev{background:#b0b0b0 url(icon/mybar-strs.png) no-repeat 0 0;width:20px;height:20px;display:block;text-indent:-100em;overflow:hidden;}
+.b-alternative .prev {background:#b0b0b0 url(icon/mybar-strs.png) no-repeat 0 0;width:20px;height:20px;display:block;text-indent:-100em;overflow:hidden;}
 .b-alternative .next,
-.mybar-user .next{background-position:-20px 0;}
 /* small imgs */
 .gallery-nav ul{margin:0 auto;display:table;font-size:110%;line-height:2.5;}
 .gallery-nav li{text-align:center;float:left;margin:0 10px;}
@@ -80,33 +77,12 @@ label{display:block;}
 #main-wrapper{margin:0 auto;width:960px; position:relative;}
 .index-wrapper{position:relative;height:420px;}
 /* Index form login */
-.index-page form{display:none;font-size:12px;position:absolute;right:-2px;height:190px;width:256px;padding:18px 30px;background:url(bg/form/index.png) no-repeat 0 0;top:40px;}
-.index-wrapper label{display:block;clear:both;padding-top:10px;height:25px;line-height:25px;position:relative;}
-.index-wrapper label input{position:absolute;right:0;width:194px;}
-.index-wrapper .i-close{position:absolute;top:10px;right:10px;}
-.index-wrapper h2{font-weight:normal;font-size:1.5em;}
-.index-wrapper .login h2{float:left;}
-.index-wrapper .login a.lost{float:right;}
-.index-wrapper .login label.remember{float:left;padding-left:60px;font-size:11px;padding-top:9px;height:auto;line-height:14px;}
-.index-wrapper .login label.remember input{position:static;width:auto;margin-left:0;margin-top:-2px;}
-.index-wrapper .login p{float:right;padding-top:10px;}
-.index-wrapper .login strong{display:block;padding-top:30px;clear:both;text-align:center;}
-.index-wrapper .login strong a{color:#e4146e;font-weight:normal;font-size:1.5em;}
-.index-wrapper #lost{display:none;background-image:url(bg/form/lost.png);right:0;width:250px;color:#fff;}
-.index-wrapper #lost .i-close{background-image:url(icon/close-black.png);}
-.index-wrapper #lost p{display:block;margin:14px 0;width:210px;}
-.index-wrapper #lost input{width:100%;margin-top:20px;}
-.index-wrapper #registration{display:none;background-image:url(bg/form/registration.png);height:295px;width:250px;right:0;}
-.index-wrapper #registration input[type="password"]{width:138px;}
-.index-wrapper #registration .b{background-color:#f1f2f2;margin:16px 0 10px 0;}
-.index-wrapper #registration .b p{font-size:11px;padding:10px 20px;}
-.index-wrapper #registration button{margin-top:20px;}
 
 .column-mini,
 .column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;}
 .column-main{width:628px;}
 .column-mini{width:31.3em;margin-left:8px;margin-bottom:11px;}
-/* knowledge */
+
 .column-main-container{width:630px;float:left;}
 .body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;overflow:hidden;}
 .b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:11px;position:relative;}
@@ -430,100 +406,20 @@ ul#cart_cocktails {margin-top: 9px;}
 .top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}
 .top-alphabetical a{display:block;margin:2px 0 2px 10px;padding:0 15px 0 0;text-decoration:none;line-height:18px;}
 .top-alphabetical a:hover{text-decoration:underline;}
-.top-alphabetical .now{color:#fff;background:#ee0245 url(bg/ingridient/now.png) no-repeat 0 0;display:block;float:none;line-height:18px;text-decoration:none !important;padding-left:10px;margin-left:0;}
+.top-alphabetical .now{color:#fff;background:#ee0245 url(bg/ingredient/now.png) no-repeat 0 0;display:block;float:none;line-height:18px;text-decoration:none !important;padding-left:10px;margin-left:0;}
 .top-alphabetical .dis{color:#ccc;text-decoration:none !important;cursor:default;}
 .top-alphabetical h3{font-size:150%;font-weight:normal;margin:17px 0 6px 11px;}
-#ingredients-page .count-cocktails{background:url(bg/ingridient/fixed.png) no-repeat top left;width:153px;height:73px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
+#ingredients-page .count-cocktails{background:url(bg/ingredient/fixed.png) no-repeat top left;width:153px;height:73px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
 #ingredients-page .count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 9px;}
 #ingredients-page .count-cocktails input{font-size:11px;}
 #ingredients-page .count-cocktails{}
-/* Knowledge page */
-.b-kn-1{margin-left:0;}
-.b-kn-3{margin-right:-8px;margin-left:7px;}
-.b-kn-1 .mini-wrap{background-image:url(bg/knowledge/col1.jpg) !important;}
-.b-kn-1 ul{list-style:disc inside;line-height:2;margin:22px 0 80px;}
-.column-mini .body-wrapper{font-size:120%;padding:0;position:relative;}
-.column-mini .b-title{padding-bottom:12px;}
-.column-mini h3{font-size:117%;font-weight:bold;position:relative;margin-bottom:4px;}
-.column-mini .mini-wrap{background:url(bg/knowledge/column.png) repeat-x 0 100%;padding:14px 18px;height:328px;border-bottom:1px solid #fff;}
-.column-mini p{font-size:92%;}
-.column-mini button{position:absolute;bottom:11px;left:50%;margin-left:-58px;}
-.column-mini .slider{height:180px;margin-bottom:-24px;}
-.column-mini .slider .prev,
-.column-mini .slider .next{top:70px;}
-.b-legends .slider img{margin:0 20px 0 30px;display:block;float:left;}
-.b-legends .b-title a{font-size:120%;}
-.slider{position:relative;overflow:hidden;}
-.slider .prev,
-.slider .next{position:absolute;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -72px;left:0;top:50%;margin-top:-10px;}
-.slider .next{background-position:-20px -72px;left:auto;right:0;}
-.slider .prev.dis{background-position:0 97px;}
-.slider .next.dis{background-position:-20px 97px;}
-/* My Bar panel */
-#mybar{border-top:6px solid #0d0d0d;color:#fff;background:url(bg/mybar.png);position:fixed;bottom:0;left:0;right:0;}
-#mybar h2{font-size:1em;font-weight:bold;display:table;line-height:1.6;margin:0 auto;white-space:nowrap;}
-#mybar h2 a{background:#0d0d0d;padding:0 25px;height:1.8em;display:block;color:#fff;text-decoration:none;}
-#mybar h2 span{display:block;background:#0d0d0d;margin:0 1px;height:1px;}
-#mybar input[type="password"],
-#mybar input[type="text"]{margin-top:7px;display:block;width:314px;height:25px;border:1px solid #fff;border-top-color:#c9c9c9;font-size:18px}
-#mybar form .good{background:url(icon/form-ok.png) no-repeat 100% 27px;}
-#mybar form .bad{background:url(icon/form-error.png) no-repeat 100% 25px;}
-#mybar form p{display:block;font-size:13px;}
-#mybar h3{font-size:18px;font-weight:bold;color:#9dd837;text-align:center;padding-right:36px;}
-#mybar label small{color:#ccc;font-size:11px;display:block;padding:3px 33px 0 0;text-align:right;}
-/* User panel */
-.mybar-user .menu{height:25px;display:table;margin:19px auto 8px auto;white-space:nowrap;}
-.mybar-user .menu a{outline:0;float:left;color:#cbcbcb;position:relative;text-decoration:none;font-size:13px;line-height:12px;height:25px;}
-.mybar-user .menu a b{padding:0 15px;display:block;border-left:1px solid #828282;height:12px;}
-.mybar-user .menu a.now,
-.mybar-user .menu a:hover{background:url(bg/mybar/menu-hover.png) no-repeat -299px 0;color:#fff;line-height:24px;z-index:2;margin:-6px -1px 0 0;padding:0 0 6px 1px;}
-.mybar-user .menu a.now b,
-.mybar-user .menu a:hover b{background:url(bg/mybar/menu-hover.png) no-repeat 100% 0;padding-right:16px;height:25px;border:none;}
-.mybar-user .menu a:first-child b{border-color:transparent;}
-.mybar-user .menu a.now:hover,
-.mybar-user .menu a.now{background:url(bg/mybar/menu-hover.png) no-repeat -299px -75px;color:#fff;}
-.mybar-user .menu a.now:hover b,
-.mybar-user .menu a.now b{background:url(bg/mybar/menu-hover.png) no-repeat 100% 100%;}
-#mybar-cocktails{display:none;margin:0 auto;max-width:96em;position:relative;}
-#mybar-cocktails .viewport{overflow:hidden;height:122px;margin:0 115px 0 80px;position:relative;}
-#mybar-cocktails ul{width:10000px;}
-#mybar-cocktails li{float:left;width:165px;margin-right:35px;position:relative;}
-#mybar-cocktails li .del{margin:14px 0 7px 1px;}
-#mybar-cocktails a{color:#00c0ff;font-size:12px;}
-#mybar-cocktails li img{float:left;}
-#mybar-cocktails .prev{position:absolute;top:40px;left:41px;}
-#mybar-cocktails .next{position:absolute;top:40px;right:40px;}
-#mybar-cocktails .bt-mix{position:absolute;top:69px;right:0;}
-.mybar-user .next:hover,
-.mybar-user .prev:hover{background-color:red;}
-#mybar-settings{display:none;width:658px;margin:0 auto;padding:22px 0 0 82px;}
-#mybar-settings label{font-size:14px;float:left;width:294px;margin-right:35px;padding-bottom:26px;position:relative;}
-#mybar-settings label small{padding-right:44px;position:absolute;right:0;bottom:9px;color:#fff;}
-#mybar-settings label input{width:244px !important;}
-#mybar-settings .checkform{font-size:12px;padding-top:26px;line-height:27px;}
-#mybar-settings .checkform input{width:auto !important;margin-left:0;}
-#mybar-settings label.attention{font-size:12px;background:url(bg/mybar/delete-mybar.png) no-repeat 0 100%;width:579px !important;padding:18px 0 0 0;text-align:center;height:25px;float:none;clear:both;}
-#mybar-settings .attention input{width:auto !important;}
-#mybar-settings button.bt-save{display:block;margin:42px auto 18px auto;position:relative;left:-40px;}
+
 /* Form for not user*/
-.mybar-login{padding-bottom:5px;}
-.mybar-login form{display:none;margin:0 auto;width:354px;padding-left:34px;}
-#mybar-login{margin:0 auto;padding:25px 0 32px 0;}
-#mybar-login .login{font-size:1.4em;margin-bottom:25px;}
-#mybar-login .password{font-size:1.4em;margin-bottom:20px;}
-#mybar-login .bt-enter,
-#mybar-login .lost{font-size:13px;float:right;margin-right:34px;}
-#mybar-login .remember{color:#e1e1e1;font-size:11px;float:left;color:#e1e1e1;}
-#mybar-login .remember input{margin-top:0;margin-left:0;vertical-align:top;}
-#mybar-login .create{background:url(bg/form/mybar-newbar.png) no-repeat top left;margin-top:92px;width:320px;height:40px;font-size:18px;display:block;line-height:40px;text-align:center;color:#fff;}
 #mybar-reg{font-size:1.4em;padding:16px 0 23px 0;position:relative;}
 #mybar-reg h3{padding-bottom:40px;}
 #mybar-reg label{margin-bottom:10px;}
 #mybar-reg .iagree{font-size:11px;padding:15px 0 27px;}
 #mybar-reg button{display:block;margin:0 auto;padding-right:120px;}
-.mybar-login .b-successfully{display:none;text-align:center;position:absolute;margin-left:-240px;top:86px;width:480px;font-size:13px;left:50%;}
-.mybar-login .b-successfully#mybar h3{padding-right:0;}
-.mybar-login .b-successfully p{line-height:20px;margin-top:17px;}
 .b-successfully#mybar-reg-successfully{margin-left:-233px;padding-left:14px;top:155px;text-align:left;}
 form#mybar-lost-password{width:480px;padding:0 0 18px 0;}
 #mybar-lost-password h3{font-weight:normal;color:#fff;text-align:left;padding:16px 0 17px 0;}
@@ -564,9 +460,6 @@ button.bt-less{background-position:-17px -31px;height:19px;width:16px;}
 button.bt-send{background-position:0 -272px;height:38px;width:115px;}
 button.bt-send-disabled {background: url(button/grey-buttons.png) no-repeat 0 -30px;height:36px;width:110px;}
 button.bt-del{background-position:0 -31px;height:20px;width:16px;}
-#mybar button.bt-enter{background-position:0 -194px;height:28px;width:87px;}
-#mybar button.bt-new-bar{background-position:0 -222px;width:87px;}
-#mybar button.bt-save{background-position:0 -250px;height:28px;width:87px;}
 .i-close{background:url(icon/close.png) no-repeat 0 0;display:block;width:10px;height:10px;}
 #view-advert a[href $='.cdr']{padding:1px 0 1px 21px;background:url(icon/cdr.png) no-repeat 0 center;line-height:16px;}
 #view-advert a[href $='.ai']{padding:1px 0 1px 21px;background:url(icon/ai.png) no-repeat 0 center;line-height:16px;}
