@@ -8,10 +8,6 @@
 .win-shop .content dd input,
 #b-bill dd input,
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
-/* nav str */
-.b-alternative .next,
-.b-alternative .prev {background:#b0b0b0 url(icon/mybar-strs.png) no-repeat 0 0;width:20px;height:20px;display:block;text-indent:-100em;overflow:hidden;}
-.b-alternative .next,
 /* small imgs */
 .gallery-nav ul{margin:0 auto;display:table;font-size:110%;line-height:2.5;}
 .gallery-nav li{text-align:center;float:left;margin:0 10px;}
@@ -368,19 +364,11 @@ ul#cart_cocktails {margin-top: 9px;}
 .win-shop .content .sum p small{display:block;padding-top:4px;}
 .win-shop .content .sum button{margin:6px 47px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
-.win-shop .b-alternative{display:none;background:#0d0d0d url(bg/win/alt.png) repeat-x 0 100%;margin-top:7px;position:relative;}
 .win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
 .win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
 .win-shop .content #order_note a:hover { text-decoration: none;}
 
 /* ForFuture */
-.win-shop .b-alternative .next,
-.win-shop .b-alternative .prev{background-color:#fff;position:absolute;top:41px;left:20px;}
-.win-shop .b-alternative .next{left:auto;right:20px;}
-.win-shop .b-alternative .viewport{width:455px;margin:0 auto;overflow:hidden;height:98px;}
-.win-shop .b-alternative ul{width:1000em;}
-.win-shop .b-alternative ul li{float:left;width:100px;padding-top:9px;}
-.win-shop .b-alternative ul img{}
 .win-shop .view-photo{position:absolute;top:0;left:0;height:100%;width:100%;}
 .win-shop .view-photo h3{padding:0;height:auto;}
 .win-shop .view-photo ul{position:absolute;bottom:21px;left:179px;margin:0;}
@@ -414,18 +402,6 @@ ul#cart_cocktails {margin-top: 9px;}
 #ingredients-page .count-cocktails input{font-size:11px;}
 #ingredients-page .count-cocktails{}
 
-/* Form for not user*/
-#mybar-reg{font-size:1.4em;padding:16px 0 23px 0;position:relative;}
-#mybar-reg h3{padding-bottom:40px;}
-#mybar-reg label{margin-bottom:10px;}
-#mybar-reg .iagree{font-size:11px;padding:15px 0 27px;}
-#mybar-reg button{display:block;margin:0 auto;padding-right:120px;}
-.b-successfully#mybar-reg-successfully{margin-left:-233px;padding-left:14px;top:155px;text-align:left;}
-form#mybar-lost-password{width:480px;padding:0 0 18px 0;}
-#mybar-lost-password h3{font-weight:normal;color:#fff;text-align:left;padding:16px 0 17px 0;}
-#mybar-lost-password p{line-height:20px;padding-bottom:27px;}
-#mybar-lost-password input{display:inline !important;}
-#mybar-lost-password button{margin:11px 0 0 17px;}
 /* Image buttons */
 button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}
 button.bt-mix{background:url(button/grey-buttons.png) no-repeat 0 0;width:85px;height:30px;}
