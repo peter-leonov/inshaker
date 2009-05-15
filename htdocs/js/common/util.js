@@ -197,6 +197,8 @@ var UPPER =
 	"Э":"E","Ю":"YU","Я":"YA"
 }
 
+var undef
+
 self.RuTils = 
 {
 	// Заменяет кириллицу в строке на латиницу. Немного специфично потому что поддерживает
@@ -209,13 +211,17 @@ self.RuTils =
 		{
 			var c = str[i], r
 			
-			if ((r = UPPER[c]))
+			if ((r = UPPER[c]) !== undef)
 			{
-				if (LOWER[str[i+1]])
+				if (LOWER[str[i+1]] !== undef)
 					r = r.toLowerCase().capitalize()
 			}
 			else
-				r = LOWER[c] || c
+			{
+				r = LOWER[c]
+				if (r === undef)
+					r = c
+			}
 			
 			res[i] = r
 		}
@@ -236,7 +242,8 @@ self.RuTils =
 	}
 }
 
-log("Щука".trans())
+log("Щука".trans() == 'schuka')
+log("апельсиновый сок".trans() == 'apelsinovyiy-sok')
 
 })();
 
