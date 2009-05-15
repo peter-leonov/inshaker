@@ -30,6 +30,11 @@ class CocktailsProcessor < Barman::Processor
     @strengths = []
   end
   
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
+      Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::IMAGES_PRINT_DIR, Config::VIDEOS_DIR]
+  end
+  
   def prepare_cocktails
     root = Dir.new(Config::COCKTAILS_DIR)
     
@@ -113,6 +118,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
     prepare_cocktails
     prepare_tags_and_strengths
     

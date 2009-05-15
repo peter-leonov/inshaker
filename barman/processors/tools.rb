@@ -17,9 +17,14 @@ class ToolsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
     prepare
     flush_images
     flush_json
+  end
+  
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::TOOLS_ROOT]
   end
   
   def prepare
