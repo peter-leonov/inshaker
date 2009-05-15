@@ -5,8 +5,6 @@ html{font-size :101%;}
 #ingredients-page .count-coctails input{width:130px;}
 #top .nav img{padding-top:12px;}
 #top h2{top:2px;}
-#mybar h2 a{display:inline;zoom:1;}
-.mybar-user .menu *{display:inline !important;zoom:1;}
 #b-bill ul.money label input{position:absolute;left:0;}
 .win-shop .main .zoom{display:inline-block;}
 .gallery-nav ul{text-align:center;}
@@ -24,7 +22,6 @@ html{font-size :101%;}
 #ingredients-page .count-cocktails input{width:90%;}
 #autocomplete{position:absolute;margin-left:-123px;margin-top:21px;width:90%;z-index:3;}
 #preloader{filter:alpha(opacity=85);}
-#mybar-settings .attention input{zoom:1;}
 .hide_control {display:none;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
