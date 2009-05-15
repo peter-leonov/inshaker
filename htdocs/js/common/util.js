@@ -25,8 +25,12 @@ String.prototype.beforeTag = function() {
 	} else return this;
 }
 
+String.prototype.translify = function(){
+	return RuTils.translify(this);
+}
+
 String.prototype.trans = function(){
-	return BiDiTranslit(this, false, true).replace(/\+/g, "");
+	return RuTils.dirify(this);
 }
 
 Number.prototype.toFloatString = function(){
@@ -166,89 +170,76 @@ var Cookie = {
   }
 };
 
-/**
- * Translit JS class.
- * @version 1.2
- * @date 12 November 2005
- * @author Mendokusee@pixeapes
- */
-function BiDiTranslit( str, direction_decode, allow_slashes )
+// ported from rutils.rb
+;(function(){
+
+var LOWER =
 {
-   var Tran = {
-    "А" : "A",  "Б" : "B",  "В" : "V",  "Г" : "G",  "Д" : "D",  "Е" : "E",  "Ё" : "JO",  "Ж" : "ZH",  "З" : "Z",  "И" : "I",
-    "Й" : "JJ", "К" : "K",  "Л" : "L",  "М" : "M",  "Н" : "N",  "О" : "O",  "П" : "P",   "Р" : "R",   "С" : "S",  "Т" : "T",
-    "У" : "U",  "Ф" : "F",  "Х" : "KH",  "Ц" : "C",  "Ч" : "CH", "Ш" : "SH", "Щ" : "SHH", "Ъ" : "_~",   "Ы" : "Y",  "Ь" : "_'",
-    "Э" : "EH", "Ю" : "JU", "Я" : "JA", "а" : "a",  "б" : "b",  "в" : "v",  "г" : "g",   "д" : "d",   "е" : "e",  "ё" : "jo",
-    "ж" : "zh", "з" : "z",  "и" : "i",  "й" : "jj", "к" : "k",  "л" : "l",  "м" : "m",   "н" : "n",   "о" : "o",  "п" : "p",
-    "р" : "r",  "с" : "s",  "т" : "t",  "у" : "u",  "ф" : "f",  "х" : "kh",  "ц" : "c",   "ч" : "ch",  "ш" : "sh", "щ" : "shh",
-    "ъ" : "~",  "ы" : "y",  "ь" : "'",  "э" : "eh", "ю" : "ju", "я" : "ja", " " : "__", "_" : "__"
-              };
-   // note how DeTran is sorted. That is one of MAJOR differences btwn PHP & JS versions
-   var DeTran = {
-    "SHH"  : "Щ", // note this is tri-letter
-    "CH"   : "Ч",  "SH"   : "Ш", "EH"   : "Э",  "JU"    : "Ю",  "_'"   : "Ь",  "_~"   : "Ъ", 
-    "JO"   : "Ё",  "ZH"   : "Ж", "JJ"   : "Й",  "KH"    : "Х",  "JA"   : "Я",  // note they are bi-letters
-    "A"    : "А",  "B"    : "Б",  "V"   : "В",  "G"     : "Г",  "D"    : "Д",  "E"    : "Е",  
-    "Z"    : "З",  "I"    : "И",  "K"   : "К",  "L"     : "Л",  "M"    : "М",  "N"    : "Н",  
-    "O"    : "О",  "P"    : "П",  "R"   : "Р",  "S"     : "С",  "T"    : "Т",  "U"    : "У",  
-    "F"    : "Ф",  "C"    : "Ц",  "Y"   : "Ы",  
-    "shh"  : "щ", // small tri-letters
-    "jo"   : "ё",  "zh"   : "ж",   "jj"   : "й",  "kh"   : "х",  "ch"   : "ч",  "sh"   : "ш",
-    "ju"   : "ю",  "ja"   : "я",   "__" : " ",  "eh"   : "э", // small bi-letters
-    "a"    : "а",  "b"     : "б",  "v"    : "в",  "g"    : "г",  "d"    : "д",  "e"    : "е",  
-    "z"    : "з",  "i"     : "и",  "k"    : "к",  "l"    : "л",  "m"    : "м",  "n"    : "н",
-    "o"    : "о",  "p"     : "п",  "r"    : "р",  "s"    : "с",  "t"    : "т",  "u"    : "у",  
-    "f"    : "ф",  "c"     : "ц",  "~"    : "ъ",  "y"    : "ы",  "'"    : "ь"
-              };
-
-   var result = "";
-   if (!direction_decode)
-   {
-     str = str.replace( /[^\/\- _0-9a-zа-яА-ЯёЁ]/gi, "" );
-     if (!allow_slashes) str = str.replace( /[^\/]/i, "");
-
-     // пробел -- "русский" символ
-     // все остальные не-буквы -- "английские" символы
-     var is_rus = new RegExp( "[а-яА-ЯёЁ ]", "i" );
-
-     // проходим по строке, разбивая её "русски-нерусски"
-     var lang_eng = true;
-     var _lang_eng = true;
-     var temp;
-     for (var i=0; i<str.length; i++)
-     {
-       _lang_eng = lang_eng;
-       temp = String(str.charAt(i));
-       if (temp.replace(is_rus, "") == temp) 
-         lang_eng = true;
-       else // convert; this conversion is the second MAJOR difference.
-       {
-         lang_eng = false;
-         temp = Tran[ temp ]; 
-       }
-       if (lang_eng != _lang_eng) temp = "+"+temp;
-       result += temp;
-     }
-   }
-   else
-   {
-     var pgs = str.split("/");
-     var DeTranRegex = new Array();
-     for (var k in DeTran)
-       DeTranRegex[k] = new RegExp( k, "g" );
-     for (var j=0; j<pgs.length; j++)
-     {
-       var strings = pgs[j].split("+");
-       for (var i=1; i<strings.length; i+=2)
-         for (var k in DeTran)
-           strings[i] = strings[i].replace( DeTranRegex[k], DeTran[k] );
-       pgs[j] = strings.join("");
-     }
-     result = pgs.join( allow_slashes?"/":":" );
-   }
-
-   return result.replace( /\/+$/, "" );
+	"і":"i","ґ":"g","ё":"yo","№":"#","є":"e",
+	"ї":"yi","а":"a","б":"b",
+	"в":"v","г":"g","д":"d","е":"e","ж":"zh",
+	"з":"z","и":"i","й":"y","к":"k","л":"l",
+	"м":"m","н":"n","о":"o","п":"p","р":"r",
+	"с":"s","т":"t","у":"u","ф":"f","х":"h",
+	"ц":"ts","ч":"ch","ш":"sh","щ":"sch","ъ":"'",
+	"ы":"yi","ь":"","э":"e","ю":"yu","я":"ya"
 }
+
+var UPPER =
+{
+	"Ґ":"G","Ё":"YO","Є":"E","Ї":"YI","І":"I",
+	"А":"A","Б":"B","В":"V","Г":"G",
+	"Д":"D","Е":"E","Ж":"ZH","З":"Z","И":"I",
+	"Й":"Y","К":"K","Л":"L","М":"M","Н":"N",
+	"О":"O","П":"P","Р":"R","С":"S","Т":"T",
+	"У":"U","Ф":"F","Х":"H","Ц":"TS","Ч":"CH",
+	"Ш":"SH","Щ":"SCH","Ъ":"'","Ы":"YI","Ь":"",
+	"Э":"E","Ю":"YU","Я":"YA"
+}
+
+self.RuTils = 
+{
+	// Заменяет кириллицу в строке на латиницу. Немного специфично потому что поддерживает
+	// комби-регистр (Щука -> Shuka)
+	translify: function (str)
+	{
+		var res = []
+		
+		for (var i = 0; i < str.length; i++)
+		{
+			var c = str[i], r
+			
+			if ((r = UPPER[c]))
+			{
+				if (LOWER[str[i+1]])
+					r = r.toLowerCase().capitalize()
+			}
+			else
+				r = LOWER[c] || c
+			
+			res[i] = r
+		}
+		
+		return res.join('')
+	},
+	
+	dirify: function (s)
+	{
+		return s.translify()
+				.replace(/(\s&\s)|(\s&amp;\s)/g, ' and ')
+				.replace(/\W/g, ' ')
+				.replace(/^_+|_+$/g, '')
+				.replace(/^\s+|\s+$/g, '-')
+				.translify() // yes, second
+				.replace(/[\s\-]+/g, '-')
+				.toLowerCase()
+	}
+}
+
+log("Щука".trans())
+
+})();
+
 
 /**
  * Переход по хэш-ссылкам, открытие поп-апов

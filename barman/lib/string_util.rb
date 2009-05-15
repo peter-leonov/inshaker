@@ -3,8 +3,7 @@ require 'rutils'
 class String
   
   def trans
-    res = self.gsub('й','й')
-    return res.translify.gsub("+", "")
+    gsub('й','й').dirify
   end
 
   def yi
