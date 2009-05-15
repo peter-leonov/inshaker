@@ -1,6 +1,5 @@
 #!/usr/bin/ruby
 require 'barman'
-require 'RMagick'
 
 class IngredientsProcessor < Barman::Processor
   
@@ -28,6 +27,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
     prepare_ingredients
     prepare_groups
     prepare_goods
@@ -36,6 +36,10 @@ class IngredientsProcessor < Barman::Processor
     flush_json
   end
   
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::INGREDS_PRINT_ROOT, Config::MERCH_ROOT, Config::INGREDS_ROOT,
+      Config::INGREDS_PRINT_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
+  end
   
   def prepare_ingredients
     path = Config::INGREDIENTS_DIR

@@ -59,4 +59,8 @@ class String
   def capitalize!
     self.replace capitalize
   end
+  
+  def ansi_quote
+    gsub(/(['\\])/, '\\\\\1')
+  end
 end

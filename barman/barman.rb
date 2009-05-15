@@ -32,9 +32,8 @@ module Barman
     end
     
     def flush_print_img(src_file, dest_file, size)
-      img_list = Magick::ImageList.new(src_file)
-      img_list[0].background_color = "white"
-      img_list.flatten_images.scale(size[0], size[1]).write(dest_file)
+      puts "converting #{src_file} -> #{dest_file}"
+      `convert $'#{src_file.ansi_quote}' -background white -flatten -scale #{size[0]}x#{size[1]} $'#{dest_file.ansi_quote}'`
     end
   end
 end
