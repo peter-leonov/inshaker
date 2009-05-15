@@ -242,8 +242,8 @@ self.RuTils =
 	}
 }
 
-log("Щука".trans() == 'schuka')
-log("апельсиновый сок".trans() == 'apelsinovyiy-sok')
+// log("Щука".trans() == 'schuka')
+// log("апельсиновый сок".trans() == 'apelsinovyiy-sok')
 
 })();
 
