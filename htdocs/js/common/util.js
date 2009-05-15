@@ -229,7 +229,7 @@ self.RuTils =
 				.replace(/(\s&\s)|(\s&amp;\s)/g, ' and ')
 				.replace(/\W/g, ' ')
 				.replace(/^_+|_+$/g, '')
-				.replace(/^\s+|\s+$/g, '-')
+				.replace(/^\s+|\s+$/g, '') // trim
 				.translify() // yes, second
 				.replace(/[\s\-]+/g, '-')
 				.toLowerCase()
