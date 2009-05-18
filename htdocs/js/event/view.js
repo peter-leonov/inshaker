@@ -294,7 +294,8 @@ EventPage.view =
 			
 			var dd = N('dd')
 			var width = String(Math.floor((count - min + 1) * k) + padding)
-			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
+			// dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
+			dd.style.width = width + 'px'
 			dd.appendChild(T(count))
 			// dt.addEventListener('click', function () { log(this.offsetWidth, this.scrollWidth) }, false)
 			root.appendChild(dt)
@@ -463,7 +464,7 @@ EventPage.view =
 			}
 		}
 		
-		setInterval(animatePopups, 3200)
+		// setInterval(animatePopups, 3200)
 	},
 	
 	renderVariableFields: function (fieldsSet)
