@@ -209,11 +209,11 @@ self.RuTils =
 		
 		for (var i = 0; i < str.length; i++)
 		{
-			var c = str[i], r
+			var c = str.charAt(i), r
 			
 			if ((r = UPPER[c]) !== undef)
 			{
-				if (LOWER[str[i+1]] !== undef)
+				if (LOWER[str.charAt(i+1)] !== undef)
 					r = r.toLowerCase().capitalize()
 			}
 			else
