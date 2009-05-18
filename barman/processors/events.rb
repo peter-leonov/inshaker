@@ -23,10 +23,15 @@ class EventsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
     prepare
     
-    # flush_html # let's use events.html
+    flush_html
     flush_json
+  end
+  
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
   end
   
   def prepare
@@ -55,6 +60,7 @@ class EventsProcessor < Barman::Processor
   end
   
   def process_images src_dir
+    return
     @entity[:imgdir] = '/i/event/' + @entity[:city].trans.html_name + "/" + @entity[:href]
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
     if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
@@ -124,10 +130,9 @@ private
     @entity[:fields]    = yaml['Поля формы']
     @entity[:status]    = {'проведение' => 'holding' }[yaml['Статус']]
     
-    # Legacy
-    @entity[:address]   = "#{yaml['Город']} - #{yaml['Место']}, #{ru_date_str}" # TODO: delete
-    @entity[:bar]       = yaml['Ссылка на место'] # TODO: delete
-
+    @entity[:address]   = "#{yaml['Город']} — #{yaml['Место']}, #{ru_date_str}"
+    @entity[:bar]       = yaml['Ссылка на место']
+    
     # @entity[:high]      = yaml['Генеральные спонсоры']
     # @entity[:medium]    = yaml['Спонсоры']
     # @entity[:low]       = yaml['При поддержке']
@@ -164,12 +169,12 @@ private
       name, logos = v['Название'], v['Логотипы']
       arr = []
       low << {:name => name, :logos => arr}
-	    logos.each do |sponsor|
-	      hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
-	      arr << hash
-	      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
-	    end
-	    
+      logos.each do |sponsor|
+        hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+        arr << hash
+        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
+      
       # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
     end
     @entity[:low] = low
