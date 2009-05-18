@@ -130,8 +130,17 @@ class IngredientsProcessor < Barman::Processor
             to_big   = Config::VOLUMES_ROOT + ingredient.trans + "_" + vol_name + "_big.png"
             to_small = Config::VOLUMES_ROOT + ingredient.trans + "_" + vol_name + "_small.png"
             
-            FileUtils.cp_r(from_big, to_big, opt)     unless !File.exists?(from_big)
-            FileUtils.cp_r(from_small, to_small, opt) unless !File.exists?(from_small)
+            if File.exists?(from_big)
+              FileUtils.cp_r(from_big, to_big, opt)
+            else
+              warn %Q{#{ingredient} hasn't big volume (#{vol_name}) image at "#{from_big}"}
+            end
+            
+            if File.exists?(from_small)
+              FileUtils.cp_r(from_small, to_small, opt)
+            else
+              # warn %Q{#{ingredient} hasn't small volume (#{vol_name}) image at "#{from_small}"}
+            end
           end
         else # brand-name goods
           from_dir = Config::INGREDIENTS_DIR + group_dir + ingredient + "/" + good[:brand] + "/"
