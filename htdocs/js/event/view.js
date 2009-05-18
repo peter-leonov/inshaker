@@ -34,11 +34,7 @@ EventPage.view =
 		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
 		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
 		
-	    this.fakeEvents = [
-	        {name: "Интересное событие", date: "скоро", venue: "в супер баре"},
-	    	{name: "Прекрасное событие", date: "скоро", venue: "в супер баре"},
-	        {name: "Необычное событие",  date: "скоро", venue: "в супер баре"} ]
-	    this.markerOffsets = ["144px", "360px", "576px", "792px"]
+		this.markerOffsets = ["144px", "360px", "576px", "792px"]
 	},
 	
 	modelChanged: function (event)
@@ -78,11 +74,6 @@ EventPage.view =
 			curPoint.appendChild(this.createPreviewElement(idx, events[i], selectedEvent == events[i]))
 		}
 		
-		var fakeNeeded = 4 - events.length
-		if(fakeNeeded > 0)
-		    for(var i = 0; i < fakeNeeded; i++)
-		        curPoint.appendChild(this.createFakePreviewElement(i, this.fakeEvents[i]))
-
 		this.nodes.previews.RollingImagesLite.sync()
 		this.nodes.previews.RollingImagesLite.goInit()
 	},
@@ -98,7 +89,7 @@ EventPage.view =
 		
 		var date = N("a")
 		date.href = ehref
-	    date.innerHTML = new Date(event.date).getFormatted()
+		date.innerHTML = new Date(event.date).getFormatted()
 		mini.appendChild(date)
 		div.appendChild(mini)
 		
@@ -112,38 +103,14 @@ EventPage.view =
 		
 		if(selected) 
 		{
-		    date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
-		    div.addClassName("now")
-		    this.nodes.mark.style.left = this.markerOffsets[idx]
-		    this.nodes.mark.show()
-	    }
+			date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
+			div.addClassName("now")
+			this.nodes.mark.style.left = this.markerOffsets[idx]
+			this.nodes.mark.show()
+		}
 		return div
 	},
 	
-	createFakePreviewElement: function(idx, event)
-	{
-	    var iroot = '/i/event/fake'
-	    var div = N("div", "event")
-		
-		var mini = N("div", "mini")
-		mini.style.backgroundImage = "url(" + iroot + "/preview" + (idx + 1) + ".jpg)"
-		
-		var date = N("a")
-		date.innerHTML = event.date
-		mini.appendChild(date)
-		div.appendChild(mini)
-		
-		var desc = N("div", "desc"), a = N("a")
-		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
-		desc.appendChild(a)
-			
-		desc.appendChild(N("span", "fade"))
-		div.appendChild(desc)
-		
-		div.addClassName("fake")
-		return div
-	},
-		
 	renderMainInfo: function(event)
 	{
 		this.nodes.target.innerHTML  = event.target
