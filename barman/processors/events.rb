@@ -4,7 +4,7 @@ require 'barman'
 class EventsProcessor < Barman::Processor
   
   module Config
-    EVENTS_DIR = Barman::BASE_DIR + "Events/"
+    EVENTS_DIR = Barman::BASE_DIR + "Events.next/"
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     EVENTS_HTML_DIR = HTDOCS_DIR + "events/"
