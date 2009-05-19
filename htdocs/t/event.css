@@ -11,11 +11,9 @@
 .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
 .previews .event .mini a { line-height: 15px; color:#FFFFFF; background:url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; text-decoration:none; width: 170px;}
 
-.previews .event .fade { background:url(/t/bg/blocks/fade-bg.png); position:absolute; right:0; top:0; height:32px; width: 25px; }
-.previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; white-space:nowrap; overflow:hidden; position:relative; width:180px; height: 32px;}
+.previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; overflow: hidden; width:180px; height: 32px;}
 .previews .event .desc a { color: #0392f1; border-bottom: dashed 1px; text-decoration: none;}
-
-.previews .event.now .desc a { color: #F32C9F; border-bottom: none; }
+.previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
 
 .previews .event.fake .desc a { color: #c0c0c0; cursor: default;}
 .previews .event.fake .mini a { cursor: default; }

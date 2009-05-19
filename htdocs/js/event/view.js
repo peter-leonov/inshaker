@@ -95,16 +95,15 @@ EventPage.view =
 		
 		var desc = N("div", "desc"), a = N("a")
 		a.href = ehref
-		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
+		a.appendChild(T(event.name))
 		desc.appendChild(a)
-					
-		desc.appendChild(N("span", "fade"))
+		
 		div.appendChild(desc)
 		
 		if(selected) 
 		{
 			date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
-			div.addClassName("now")
+			div.addClassName("selected")
 			this.nodes.mark.style.left = this.markerOffsets[idx]
 			this.nodes.mark.show()
 		}
