@@ -25,14 +25,6 @@ Event =
 		return res
 	},
 	
-	getByHrefAndCity: function(href, city)
-	{
-	    for(var key in this.db) 
-	        if((this.db[key].href == href) && 
-	            (this.db[key].city.trans().htmlName() == city))
-	                return this.db[key]
-	},
-	
 	getAll: function()
 	{
 		var res = []

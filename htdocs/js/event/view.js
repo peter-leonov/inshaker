@@ -32,16 +32,20 @@ EventPage.view =
 		
 		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
 		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
-		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
-		
-		this.markerOffsets = ["144px", "360px", "576px", "792px"]
 	},
 	
-	modelChanged: function (event)
+	readEvent: function ()
+	{
+		var name = this.nodes.name.firstChild.nodeValue
+		this.owner.controller.setEventName(name)
+	},
+	
+	modelChanged: function (event, previewSet)
 	{
 		this.event = event
-		
 		this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		
+		this.renderPreviews(previewSet, event)
 		
 		this.renderMainInfo(event)
 		this.renderDialogue(event.dialogue)
@@ -60,54 +64,55 @@ EventPage.view =
 	
 	renderPreviews: function(events, selectedEvent)
 	{
-		var curPoint = null
+		var point, surface = this.nodes.previewSurface, previews = this.nodes.previews
 		
 		events = events.sort(Event.dateSort)
 		
-		for(var i = 0; i < events.length; i++) {
-			if(i % 4 == 0) {
-				curPoint = document.createElement("li")
-				curPoint.addClassName("point")
-				this.nodes.previewSurface.appendChild(curPoint)
+		for (var i = 0; i < events.length; i++)
+		{
+			var event = events[i]
+			if (i % 4 == 0)
+			{
+				point = N('li', 'point')
+				surface.appendChild(point)
 			}
-			var idx = (i/4 - parseInt(i/4))*4
-			curPoint.appendChild(this.createPreviewElement(idx, events[i], selectedEvent == events[i]))
+			var idx = (i/4 - parseInt(i/4)) * 4
+			point.appendChild(this.createPreviewElement(idx, event, selectedEvent == event))
 		}
 		
-		this.nodes.previews.RollingImagesLite.sync()
-		this.nodes.previews.RollingImagesLite.goInit()
+		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad'});
 	},
 	
 	createPreviewElement: function(idx, event, selected)
 	{   
-		var iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
-		var ehref = '/events.html?event=' + event.href + '&city=' + event.city.trans().htmlName()
+		var city = event.city.trans().htmlName(),
+			href = event.href,
+			iroot = '/i/event/' + city + '/' + href,
+			ehref = '/events/' + city + '/' + href + '.html'
 		
-		var div   = N("div", "event")
-		var mini = N("div","mini")
-		mini.style.backgroundImage = "url(" + iroot + "/preview.jpg)"
+		var main = N('a', 'event')
+		var mini = N('div', 'mini')
+		mini.style.backgroundImage = 'url(' + iroot + '/preview.jpg)'
 		
-		var date = N("a")
+		var date = N('div')
 		date.href = ehref
 		date.innerHTML = new Date(event.date).getFormatted()
 		mini.appendChild(date)
-		div.appendChild(mini)
+		main.appendChild(mini)
 		
-		var desc = N("div", "desc"), a = N("a")
+		var desc = N('div', 'desc'), a = N('a')
 		a.href = ehref
 		a.appendChild(T(event.name))
 		desc.appendChild(a)
 		
-		div.appendChild(desc)
+		main.appendChild(desc)
 		
-		if(selected) 
+		if (selected) 
 		{
-			date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
-			div.addClassName("selected")
-			this.nodes.mark.style.left = this.markerOffsets[idx]
-			this.nodes.mark.show()
+			date.style.backgroundImage = 'url(/t/event/pre-mask-full-selected.png)'
+			a.addClassName('selected')
 		}
-		return div
+		return main
 	},
 	
 	renderMainInfo: function(event)
