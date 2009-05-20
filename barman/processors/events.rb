@@ -60,7 +60,6 @@ class EventsProcessor < Barman::Processor
   end
   
   def process_images src_dir
-    return
     @entity[:imgdir] = '/i/event/' + @entity[:city].trans.html_name + "/" + @entity[:href]
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
     if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
