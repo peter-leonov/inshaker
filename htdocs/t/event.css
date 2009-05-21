@@ -1,6 +1,4 @@
 
-html.loading .previews { visibility: hidden; }
-
 .timeline {width:958px; /*two pixels preserved for left and right borders*/}
 .timeline .b-title{padding-bottom:10px; margin-bottom: 15px;}
 .timeline.column { margin-bottom: 32px;} 
