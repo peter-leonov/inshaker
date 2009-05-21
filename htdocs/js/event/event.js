@@ -65,6 +65,8 @@ $.onload
 	}
 )
 
+$.onload(function () { document.documentElement.remClassName('loading') })
+
 <!--# include file="/lib/Programica/Request.js" -->
 <!--# include file="/lib/Programica/Form.js" -->
 
