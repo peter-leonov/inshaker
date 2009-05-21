@@ -125,7 +125,7 @@ EventPage.view =
 		return main
 	},
 	
-	renderMainInfo: function(event)
+	renderMainInfo: function (event)
 	{
 		this.nodes.target.innerHTML  = event.target
 		this.nodes.header.innerHTML  = event.header

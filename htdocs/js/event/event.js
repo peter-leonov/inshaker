@@ -28,7 +28,7 @@ $.onload
 		{
 			name: $('event-name'),
 			header: $('event-header'),
-			target: $('parole'),
+			target: cssQuery('.about .parole')[0],
 			address: $('address'),
 			venueLink: $('venue-link'),
 			promoBack: $('promo-back'),
