@@ -64,54 +64,64 @@ EventPage.view =
 	
 	renderPreviews: function(events, selectedEvent)
 	{
-		var point, surface = this.nodes.previewSurface, previews = this.nodes.previews
+		var surface = this.nodes.previewSurface, previews = this.nodes.previews,
+			point, selectedPoint, pointNum = -1
 		
 		events = events.sort(Event.dateSort)
 		
 		for (var i = 0; i < events.length; i++)
 		{
-			var event = events[i]
+			var event = events[i],
+				selected = selectedEvent == event
+			
 			if (i % 4 == 0)
 			{
+				pointNum++
 				point = N('li', 'point')
 				surface.appendChild(point)
 			}
-			var idx = (i/4 - parseInt(i/4)) * 4
-			point.appendChild(this.createPreviewElement(idx, event, selectedEvent == event))
+			if (selected)
+				selectedPoint = pointNum
+				
+			point.appendChild(this.createPreviewElement(event, selected))
 		}
 		
-		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad'});
+		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad'}).jumpToFrame(selectedPoint)
 	},
 	
-	createPreviewElement: function(idx, event, selected)
+	createPreviewElement: function(event, selected)
 	{   
 		var city = event.city.trans().htmlName(),
 			href = event.href,
 			iroot = '/i/event/' + city + '/' + href,
-			ehref = '/events/' + city + '/' + href + '.html'
+			ehref = '/events/' + city + '/' + href + '.html',
+			main
 		
-		var main = N('a', 'event')
-		var mini = N('div', 'mini')
+		if (selected)
+		{
+			main = N('span', 'event selected')
+		}
+		else
+		{
+			main = N('a', 'event')
+			main.href = ehref
+		}
+		
+		var mini = N('span', 'mini')
 		mini.style.backgroundImage = 'url(' + iroot + '/preview.jpg)'
 		
-		var date = N('div')
-		date.href = ehref
-		date.innerHTML = new Date(event.date).getFormatted()
+		var date = N('span', 'date')
+		
+		date.appendChild(T(event.date.getFormatted()))
 		mini.appendChild(date)
 		main.appendChild(mini)
 		
-		var desc = N('div', 'desc'), a = N('a')
-		a.href = ehref
+		var desc = N('span', 'desc'), a = N('a')
 		a.appendChild(T(event.name))
 		desc.appendChild(a)
 		
 		main.appendChild(desc)
 		
-		if (selected) 
-		{
-			date.style.backgroundImage = 'url(/t/event/pre-mask-full-selected.png)'
-			a.addClassName('selected')
-		}
 		return main
 	},
 	

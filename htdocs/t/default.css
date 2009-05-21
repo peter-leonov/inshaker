@@ -178,8 +178,8 @@ label{display:block;}
 .b-content .pager .disabled{cursor:default; color: #c0c0c0;}
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
-.b-content .point{height:560px;width:430px;float:left;}
 .b-content .expanded{width:540px; padding-left: 23px;}
+#cocktails-page .b-content .point{height:560px;width:430px;float:left;}
 #cocktails-page #search_tips { height: 14px}
 
 /* cocktail page */
