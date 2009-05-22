@@ -35,12 +35,20 @@
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
-						<h2><%= @address %></h2>
+						<% if @address %>
+							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @date %></h2>
+						<% else %>
+							<h2><%= @city %> — <%= @venue %>, <%= @date %></h2>
+						<% end %>
 						<p class="parole"><%= @target %></p>
-						<a href="http://flickr.com/photos/maxibar/sets/72157608419354651/" class="sign-on"><span>Посмотри фото!</span> →</a>
+						<% if @photos %>
+							<a href="<%= @photos %>" class="sign-on"><span>Посмотри фото!</span> →</a>
+						<% end %>
 						<dl class="info">
 							<dt>Вход:</dt><dd><a id="invitations-only">только по приглашениям</a></dd>
-							<dt>Адрес:</dt><dd><a href="<%= @bar %>">карта проезда</a></dd>
+							<% if @address %>
+							<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+							<% end %>
 						</dl>
 					</div>
 				</div>

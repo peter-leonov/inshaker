@@ -87,9 +87,9 @@ class EventsProcessor < Barman::Processor
       # warn entity
       out_html_path = Config::EVENTS_HTML_DIR + entity[:city].trans.html_name
       if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
-      bar_erb = EventTemplate.new(entity)
+      erb = EventTemplate.new(entity)
       File.open(out_html_path + "/" + entity[:href].html_name + ".html", "w+") do |html|
-        html.write renderer.result(bar_erb.get_binding)
+        html.write renderer.result(erb.get_binding)
       end
     end
   end
@@ -123,13 +123,13 @@ private
     @entity[:country]   = yaml['Страна']
     @entity[:href]      = yaml['Ссылка']
     @entity[:venue]     = yaml['Место']
-    @entity[:venue_link]= yaml['Ссылка на место']
     @entity[:time]      = yaml['Время']
+    @entity[:photos]    = yaml['Ссылка на фотки']
     @entity[:fields]    = yaml['Поля формы']
-    @entity[:status]    = {'проведение' => 'holding' }[yaml['Статус']]
+    @entity[:status]    = {'подготовка' => 'preparing', 'проведение' => 'holding'}[yaml['Статус']]
     
-    @entity[:address]   = "#{yaml['Город']} — #{yaml['Место']}, #{ru_date_str}"
-    @entity[:bar]       = yaml['Ссылка на место']
+    @entity[:date]      = ru_date_str
+    @entity[:address]   = yaml['Ссылка на место']
     
     # @entity[:high]      = yaml['Генеральные спонсоры']
     # @entity[:medium]    = yaml['Спонсоры']

@@ -46,16 +46,18 @@ class EventTemplate
   def initialize(hash)
     @name       = hash[:name]
     @city       = hash[:city]
+    @venue      = hash[:venue]
     @header     = hash[:header]
     @target     = hash[:target]
     @subject    = hash[:subject]
     @country    = hash[:country]
     @href       = hash[:href]
+    @date       = hash[:date]
     @address    = hash[:address]
-    @bar        = hash[:bar]
     @fields     = hash[:fields]
     @imgdir     = hash[:imgdir]
     @promo      = hash[:promo]
+    @photos     = hash[:photos]
   end
   
   def get_binding
