@@ -128,7 +128,7 @@ private
     @entity[:fields]    = yaml['Поля формы']
     @entity[:status]    = {'подготовка' => 'preparing', 'проведение' => 'holding'}[yaml['Статус']]
     
-    @entity[:date]      = ru_date_str
+    @entity[:date_ru]      = ru_date_str
     @entity[:address]   = yaml['Ссылка на место']
     
     # @entity[:high]      = yaml['Генеральные спонсоры']

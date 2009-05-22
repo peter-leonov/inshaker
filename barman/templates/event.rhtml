@@ -36,9 +36,9 @@
 					<div id="illustration"><img/></div>
 					<div class="about">
 						<% if @address %>
-							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @date %></h2>
+							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @date_ru %></h2>
 						<% else %>
-							<h2><%= @city %> — <%= @venue %>, <%= @date %></h2>
+							<h2><%= @city %> — <%= @venue %>, <%= @date_ru %></h2>
 						<% end %>
 						<p class="parole"><%= @target %></p>
 						<% if @photos %>

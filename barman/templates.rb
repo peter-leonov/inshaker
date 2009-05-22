@@ -53,6 +53,7 @@ class EventTemplate
     @country    = hash[:country]
     @href       = hash[:href]
     @date       = hash[:date]
+    @date_ru    = hash[:date_ru]
     @address    = hash[:address]
     @fields     = hash[:fields]
     @imgdir     = hash[:imgdir]
