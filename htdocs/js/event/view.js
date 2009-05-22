@@ -47,7 +47,6 @@ EventPage.view =
 		
 		this.renderPreviews(previewSet, event)
 		
-		this.renderMainInfo(event)
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
 		this.renderRatingHead(event.rating)
@@ -123,17 +122,6 @@ EventPage.view =
 		main.appendChild(desc)
 		
 		return main
-	},
-	
-	renderMainInfo: function (event)
-	{
-		this.nodes.target.innerHTML  = event.target
-		this.nodes.header.innerHTML  = event.header
-		this.nodes.name.innerHTML    = event.name
-		this.nodes.address.innerHTML = event.city + "&nbsp;-&nbsp;<a>" + event.venue + "</a>, " + new Date(event.date).getFormatted(true)
-		this.nodes.venueLink.href    = event.venue_link
-		
-		this.nodes.promoBack.style.backgroundImage = "url(" + this.iroot + "/promo-bg.png)"
 	},
 	
 	fixRatingHeight: function() 

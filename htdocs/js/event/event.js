@@ -27,10 +27,6 @@ $.onload
 		var nodes =
 		{
 			name: $('event-name'),
-			header: $('event-header'),
-			target: cssQuery('.about .parole')[0],
-			address: $('address'),
-			venueLink: $('venue-link'),
 			promoBack: $('promo-back'),
 			mark: $('mark'),
 			previews: cssQuery('.previews')[0],
