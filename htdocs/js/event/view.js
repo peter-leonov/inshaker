@@ -134,6 +134,12 @@ EventPage.view =
 	
 	renderLowSponsors: function (sponsorsSet)
 	{
+		if (sponsorsSet.length == 0)
+		{
+			this.nodes.sponsorsLow.hide()
+			return
+		}
+		
 		var root = this.nodes.sponsorsLowContent
 		root.empty()
 		
@@ -391,9 +397,16 @@ EventPage.view =
 		var nodes = this.nodes
 		
 		var sponsor = sponsorsSet[0]
-		nodes.sponsorsHighTitle.innerHTML = sponsor.name
-		nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
-		nodes.sponsorsHigh.href = sponsor.href
+		if (sponsor)
+		{
+			nodes.sponsorsHighTitle.innerHTML = sponsor.name
+			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
+			nodes.sponsorsHigh.href = sponsor.href
+		}
+		else
+		{
+			nodes.sponsorsHighBlock.hide()
+		}
 	},
 	
 	renderDialogue: function (dialogue)

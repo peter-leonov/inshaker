@@ -4,7 +4,7 @@ require 'barman'
 class EventsProcessor < Barman::Processor
   
   module Config
-    EVENTS_DIR = Barman::BASE_DIR + "Events.next/"
+    EVENTS_DIR = Barman::BASE_DIR + "Events/"
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     EVENTS_HTML_DIR = HTDOCS_DIR + "events/"
@@ -147,33 +147,39 @@ private
     FileUtils.mkdir_p out_images_path + "/logos/"
     
     arr = []
-    yaml['Генеральные спонсоры'].each do |v|
-      hash = {:name => v[0], :src => v[1], :href => v[2]}
-      arr << hash
-      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+    if yaml['Генеральные спонсоры']
+      yaml['Генеральные спонсоры'].each do |v|
+        hash = {:name => v[0], :src => v[1], :href => v[2]}
+        arr << hash
+        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
     end
     @entity[:high] = arr
     
     arr = []
-    yaml['Спонсоры'].each do |v|
-      hash = {:name => v[0], :src => v[1], :href => v[2]}
-      arr << hash
-      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+    if yaml['Спонсоры']
+      yaml['Спонсоры'].each do |v|
+        hash = {:name => v[0], :src => v[1], :href => v[2]}
+        arr << hash
+        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
     end
     @entity[:medium] = arr
     
     low = []
-    yaml['При поддержке'].each do |v|
-      name, logos = v['Название'], v['Логотипы']
-      arr = []
-      low << {:name => name, :logos => arr}
-      logos.each do |sponsor|
-        hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
-        arr << hash
-        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+    if yaml['При поддержке']
+      yaml['При поддержке'].each do |v|
+        name, logos = v['Название'], v['Логотипы']
+        arr = []
+        low << {:name => name, :logos => arr}
+        logos.each do |sponsor|
+          hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+          arr << hash
+          FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+        end
+        
+        # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
       end
-      
-      # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
     end
     @entity[:low] = low
     

@@ -51,7 +51,8 @@ background: url(icon/strs-green.png);
 .b-title h1, .b-title h3 { font-size: 20px; }
 .b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
 #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
-.main-sponsor { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+#main-sponsors { margin-bottom: 24px; }
+#main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
 .about h2 a { text-decoration: none; cursor: default; }
@@ -66,7 +67,7 @@ background: url(icon/strs-green.png);
 #medium-sponsors .sponsor { width: 606px; margin: 30px 0 0 0; }
 #medium-sponsors .sponsor img { width: 600px; height: 100px; display: block; margin: 2px 3px 3px 3px; }
 
-#comming { margin: 24px 0 0 0; float: left; line-height: 19px;  }
+#comming { margin: 0; float: left; line-height: 19px;  }
 #comming h2 { font-family: Arial; font-size: 20px; font-style: italic; }
 #comming h2 .people { color: #f32c9f; }
 #comming h2 .from { color: #0392f1; }
