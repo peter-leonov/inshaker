@@ -162,7 +162,7 @@ EventPage.view =
 		{
 			var part = sponsorsSet[i]
 			var dt = N('dt')
-	  	var a = N('a')
+			var a = N('a')
 			a.appendChild(T(part.name.replace(/\s+/g, ' ')))
 			dt.appendChild(a)
 			
@@ -255,7 +255,7 @@ EventPage.view =
 			max = data[sorted[0]],
 			min = data[sorted[sorted.length-1]],
 			padding = String(max).length * 7.5,
-			k = max && min ? ((177 - padding) / (max - min + 1)  * 100) / 100 : 1
+			k = max && min ? ((177 - padding) / (max - min + 1) * 100) / 100 : 1
 		
 		root.empty()
 		
