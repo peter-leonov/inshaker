@@ -39,6 +39,9 @@ background: url(icon/strs-green.png);
 
 #both-wrapper { padding: 0 0 10px 0; clear: both; overflow: hidden; }
 
+.column-mini,
+.column{ border-width: 1px; }
+
 .column-main-container {  }
 .column-main { width:606px; }
 .column-main .body-wrapper { padding: 14px 18px; }
