@@ -37,7 +37,7 @@ background: url(icon/strs-green.png);
 
 #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
 
-#both-wrapper { padding: 0 0 10px 0; clear: both;}
+#both-wrapper { padding: 0 0 10px 0; clear: both; overflow: hidden; }
 
 .column-main-container {  }
 .column-main { width:606px; }
