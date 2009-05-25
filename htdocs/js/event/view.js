@@ -114,6 +114,7 @@ EventPage.view =
 		if (selected)
 		{
 			main = N('span', 'event selected')
+			main.appendChild(N('span', 'mark'))
 		}
 		else
 		{

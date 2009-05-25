@@ -5,11 +5,11 @@
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 .timeline .b-title h1 a {text-decoration:none; cursor:default; }
 .timeline .b-title h1 a:hover {border-bottom:0;}
-.timeline .body-wrapper{padding-bottom:0; height:210px;}
+.timeline .body-wrapper{padding-bottom:0; height:210px; overflow: visible;}
 
 
 .previews { position: relative; width: 920px; height: 159px; }
-.previews .viewport { position: relative; overflow: hidden; height: 159px; width: 818px; margin-left: 52px;}
+.previews .viewport { position: relative; overflow: hidden; height: 175px; width: 818px; margin-left: 52px;}
 .previews .viewport .surface { width: 5000px; padding: 0;}
 .previews .viewport .point { float: left; width: 855px; }
 .previews .prev,
@@ -23,7 +23,7 @@ background: url(icon/strs-green.png);
 .previews .next.disabled { background-position: -20px -92px; cursor: default; }
 
 
-.previews .event { float: left; width: 180px; display: block; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; }
+.previews .event { float: left; position: relative; width: 180px; display: block; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; }
 .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
 .previews .event .mini .date { line-height: 15px; color:#FFFFFF; background:url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
 
@@ -32,8 +32,8 @@ background: url(icon/strs-green.png);
 .previews .event.selected .date { background-image: url(/t/event/pre-mask-full-selected.png); }
 .previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
 
-.previews .event.fake .desc a { color: #c0c0c0; cursor: default;}
-.previews .event.fake .mini a { cursor: default; }
+.previews .event .mark { position: absolute; left: 77px; top: 159px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
+
 
 #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
 
@@ -50,7 +50,7 @@ background: url(icon/strs-green.png);
 .b-title { padding-bottom: 13px; font-family: Tahoma; }
 .b-title h1, .b-title h3 { font-size: 20px; }
 .b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
-#illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
+#illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; background: no-repeat; }
 #main-sponsors { margin-bottom: 24px; }
 #main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
