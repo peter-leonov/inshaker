@@ -85,7 +85,7 @@ EventPage.view =
 			point.appendChild(this.createPreviewElement(event, selected))
 		}
 		
-		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad'}).jumpToFrame(selectedPoint)
+		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
 	},
 	
 	createPreviewElement: function(event, selected)
