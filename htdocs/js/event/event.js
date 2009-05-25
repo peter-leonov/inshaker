@@ -53,7 +53,7 @@ $.onload
 			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
 			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
 			variableInputs: cssQuery('#form-popup .variable')[0],
-			getInvitation: [$('get-invitation'), $('invitations-only'), cssQuery('.about .sign-on')[0]]
+			getInvitation: [$('invitations-only'), cssQuery('.about .sign-on')[0]]
 		}
 		
 		// log(document.documentElement.appendChild($('form-popup')))
