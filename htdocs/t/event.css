@@ -117,9 +117,11 @@ background: url(icon/strs-green.png);
 #form-popup .content .menu .button { float: right; padding: 6px; margin: 0 -6px 0 0; cursor: pointer; }
 #form-popup .content form { position: relative; font-family: Arial; display: block; padding: 18px 30px 30px; background: #fff; border: #8fdaec solid 5px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
 #form-popup .content form.sending .fields { opacity: 0.75; }
-#form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-style: italic; font-weight: bold; }
-#form-popup .content form label input { position: absolute; width: 280px; right: 0; font-size: 16px; padding: 0px 6px 3px; }
+#form-popup .content form label { position: relative; width: 180px; margin: 0 0 17px; font-size: 18px; color: #333; font-style: italic; font-weight: bold; }
+#form-popup .content form label input { position: absolute; width: 280px; right: -300px; font-size: 16px; padding: 0px 6px 3px; }
 #form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
 #form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }
 #form-popup .content form .thanks,
 #form-popup .content form .holding { position: absolute; left: 0; top: 47%; width: 100%; text-align: center; visibility: hidden; }
+
+html.empire-open-cinema #form-popup .content { width: 550px; }
