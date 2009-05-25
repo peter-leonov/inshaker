@@ -59,6 +59,8 @@ class EventTemplate
     @imgdir     = hash[:imgdir]
     @promo      = hash[:promo]
     @photos     = hash[:photos]
+    @enter      = hash[:enter]
+    @form_hint  = hash[:form_hint]
   end
   
   def get_binding

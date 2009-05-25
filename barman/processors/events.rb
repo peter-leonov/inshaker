@@ -124,8 +124,10 @@ private
     @entity[:href]      = yaml['Ссылка']
     @entity[:venue]     = yaml['Место']
     @entity[:time]      = yaml['Время']
+    @entity[:enter]     = yaml['Вход']
     @entity[:photos]    = yaml['Ссылка на фотки']
     @entity[:fields]    = yaml['Поля формы']
+    @entity[:form_hint] = yaml['Подсказка в форме']
     @entity[:status]    = {'подготовка' => 'preparing', 'проведение' => 'holding'}[yaml['Статус']]
     
     @entity[:date_ru]      = ru_date_str

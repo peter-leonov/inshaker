@@ -42,12 +42,14 @@
 						<% end %>
 						<p class="parole"><%= @target %></p>
 						<% if @photos %>
-							<a href="<%= @photos %>" class="sign-on"><span>Посмотри фото!</span> →</a>
+							<a href="<%= @photos %>" class="view-photos"><span>Посмотри фото!</span> →</a>
 						<% end %>
 						<dl class="info">
-							<dt>Вход:</dt><dd><a id="invitations-only">только по приглашениям</a></dd>
+							<% if @enter %>
+								<dt>Вход:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
+							<% end %>
 							<% if @address %>
-							<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+								<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
 							<% end %>
 						</dl>
 					</div>
@@ -98,7 +100,7 @@
 				<label>Мой город:<input type="text" name="city"/></label>
 				<div class="variable"></div>
 				<label>Мой e-mail:<input type="text" name="email"/></label>
-				<p class="limit">*Количество приглашений лимитировано. <input type="submit" value="Внести меня в списки!"/></p>
+				<p class="limit"><%= @form_hint %> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 			</div>
 			<div class="thanks">Спасибо!</div>
