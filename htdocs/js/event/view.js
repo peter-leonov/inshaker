@@ -57,8 +57,6 @@ EventPage.view =
 		this.setFormLock(true)
 		
 		this.fixRatingHeight()
-		
-		this.renderStatus(event.status)
 	},
 	
 	renderPreviews: function(events, selectedEvent)
@@ -491,13 +489,6 @@ EventPage.view =
 		this.nodes.formPopupThanks.show()
 	},
 	
-	showFormHolding: function ()
-	{
-		this.stopFormChecker()
-		this.nodes.formPopupFields.hide()
-		this.nodes.formPopupHolding.show()
-	},
-	
 	hideFormPopupThanks: function ()
 	{
 		this.startFormChecker()
@@ -528,14 +519,6 @@ EventPage.view =
 	stopFormChecker: function ()
 	{
 		clearInterval(this.formCheckTimer)
-	},
-	
-	renderStatus: function (status)
-	{
-		if (status == "holding")
-		{
-			this.showFormHolding()
-		}
 	}
 }
 
