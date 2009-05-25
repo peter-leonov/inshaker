@@ -111,8 +111,10 @@ background: url(icon/strs-green.png);
 #form-popup .content h2 { font-size: 27px; color: #f22b9f; font-style: italic; font-weight: bold; }
 #form-popup .content h2 { margin: 0 0 32px; }
 #form-popup .content .menu { margin: 0 0 20px 0; }
-#form-popup .content .menu a { color: #fff; text-decoration: none; border-bottom: 1px dashed; }
-#form-popup .content .menu img { float: right; padding: 6px; margin: 0 -6px 0 0; cursor: pointer; }
+#form-popup .content .menu .text,
+#form-popup .content .menu .button { color: #fff; text-decoration: none; }
+#form-popup .content .menu .text { border-bottom: 1px dashed; }
+#form-popup .content .menu .button { float: right; padding: 6px; margin: 0 -6px 0 0; cursor: pointer; }
 #form-popup .content form { position: relative; font-family: Arial; display: block; padding: 18px 30px 30px; background: #fff; border: #8fdaec solid 5px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
 #form-popup .content form.sending .fields { opacity: 0.75; }
 #form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-style: italic; font-weight: bold; }
