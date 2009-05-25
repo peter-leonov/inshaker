@@ -13,6 +13,23 @@ EventPage.view =
 		this.nodes = nodes
 		var me = this,
 			controller = this.owner.controller
+	},
+	
+	bindRaiting: function ()
+	{
+		var me = this, nodes = this.nodes,
+			controller = this.owner.controller
+		
+		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
+		
+		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
+		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
+	},
+	
+	bindFormPopup: function ()
+	{
+		var me = this, nodes = this.nodes,
+			controller = this.owner.controller
 		
 		function formPopupCloseClicked () { controller.formPopupCloseClicked() }
 		nodes.formPopupOverlay.addEventListener('click', formPopupCloseClicked, false)
@@ -21,17 +38,12 @@ EventPage.view =
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
 		nodes.getInvitation.forEach(function (v) { if (v) v.addEventListener('click', formPopupOpenClicked, false) })
 		
-		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
-		
 		var form = nodes.form
 		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
 		form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
 		form.onsend = function (e) { return controller.formSend() }
 		form.onload = function (e) { return controller.formLoad() }
 		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
-		
-		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
-		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
 	},
 	
 	readEvent: function ()
@@ -44,6 +56,11 @@ EventPage.view =
 	{
 		this.event = event
 		this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		
+		this.bindRaiting()
+		
+		if (event.status == 'preparing')
+			this.bindFormPopup()
 		
 		this.renderPreviews(previewSet, event)
 		
