@@ -28,7 +28,7 @@ background: url(icon/strs-green.png);
 .previews .event .mini .date { line-height: 15px; color:#FFFFFF; background:url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
 
 .previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; overflow: hidden; width:180px; height: 32px;}
-.previews .event .desc a { color: #0392f1; border-bottom: dashed 1px; text-decoration: none;}
+.previews .event .desc a { color: #0392f1; /*border-bottom: dashed 1px;*/ text-decoration: none;}
 .previews .event.selected .date { background-image: url(/t/event/pre-mask-full-selected.png); }
 .previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
 
@@ -62,8 +62,12 @@ background: url(icon/strs-green.png);
 .about .view-photos,
 .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
 .about .view-photos span,
-.about .sign-on span { /*border-bottom: 2px dashed;*/ text-decoration: underline; margin: 0 2px; }
+.about .sign-on span { margin: 0 2px; }
+.about .view-photos span { text-decoration: underline; }
+.about .sign-on span { border-bottom: 2px dashed; }
+
 #invitations-only { text-decoration: none; color: #000; }
+html.status-preparing #invitations-only { border-bottom:1px dashed; }
 
 #medium-sponsors { clear: left; }
 #medium-sponsors .sponsor { width: 606px; margin: 30px 0 0 0; }

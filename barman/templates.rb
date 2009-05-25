@@ -60,6 +60,7 @@ class EventTemplate
     @promo      = hash[:promo]
     @photos     = hash[:photos]
     @enter      = hash[:enter]
+    @status      = hash[:status]
     @form_hint  = hash[:form_hint]
   end
   
