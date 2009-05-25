@@ -59,7 +59,9 @@ background: url(icon/strs-green.png);
 .about .parole { font-family: Arial; font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
 .about .info { margin: 23px 0 0 0; font-size: 11px; line-height: 16px; }
 .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
+.about .view-photos,
 .about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
+.about .view-photos span,
 .about .sign-on span { /*border-bottom: 2px dashed;*/ text-decoration: underline; margin: 0 2px; }
 #invitations-only { text-decoration: none; color: #000; }
 
