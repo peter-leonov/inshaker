@@ -83,6 +83,8 @@ EventPage.view =
 		
 		events = events.sort(Event.dateSort)
 		
+		surface.empty()
+		
 		for (var i = 0; i < events.length; i++)
 		{
 			var event = events[i],

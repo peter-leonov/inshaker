@@ -26,6 +26,7 @@ class EventsProcessor < Barman::Processor
     prepare_dirs
     prepare
     
+    flush_interlinks
     flush_html
     flush_json
   end
@@ -103,6 +104,16 @@ class EventsProcessor < Barman::Processor
     end
     
     flush_json_object(@entities, Config::DB_JS)
+  end
+  
+  def flush_interlinks
+    hrefs = ""
+    @entities.each do |name, entity|
+      hrefs << %Q{<a href="/events/#{entity[:city].dirify}/#{entity[:href]}.html">#{entity[:name]}</a>}
+    end
+    File.open(Config::EVENTS_HTML_DIR + "interlink.html", "w") do |f|
+      f << hrefs
+    end
   end
   
 private
