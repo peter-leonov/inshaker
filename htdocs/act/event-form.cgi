@@ -11,8 +11,6 @@ require "/www/lib/ruby/pmc/rmail"
 
 p = CGI.new.params
 
-signature = "#{p["first"]} #{p["second"]} — #{p["event"]}, #{p["city"]}"
-
 
 filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true}
 names = ['Имя', 'Фамилия', 'Город', 'E-mail']
@@ -45,7 +43,7 @@ end
 
 
 html = %Q{
-<h1>#{signature}</h1>
+<h1>#{p["first"]} #{p["second"]}, #{p["city"]}</h1>
 <br/>
 
 <table border="0" cellpadding="3">#{human}</table>
@@ -58,7 +56,7 @@ html = %Q{
 }
 
 
-m = RMail::Message.bake :to => $main, :from => "#{p["first"]} #{p["second"]} <#{p["email"]}>", :subject => p["event"], :body => html
-# m.send
+m = RMail::Message.bake :to => $main, :from => "#{p["first"]} #{p["second"]} <#{p["email"]}>", :subject => "#{p["event"]} [#{p["city"]}]", :body => html
+m.send
 
 print %Q[Content-type: application/json\n\n{"result": "OK", "id": 1}\n]
