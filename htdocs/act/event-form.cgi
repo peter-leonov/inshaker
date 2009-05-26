@@ -33,9 +33,12 @@ end
 row1 = names.map  { |v| "<th>#{v}</th>" }.join("")
 row2 = values.map { |v| "<td>#{v}</td>" }.join("")
 
-fname = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
+fname  = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
+subdir = p["city"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
 
-File.open("#{$data_dir}#{fname}.csv", "a") do |f|
+subdir = "#{$data_dir}/#{subdir}/"
+FileUtils.mkdir_p [subdir]
+File.open("#{subdir}#{fname}.csv", "a") do |f|
   CSV::Writer.generate(f) do |w|
     w << [Time.now.strftime("%Y-%m-%d %H:%M:%S"), p["event"], *values]
   end
