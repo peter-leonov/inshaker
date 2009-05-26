@@ -1,6 +1,6 @@
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/}
-.timeline .b-title{padding-bottom:10px; margin-bottom: 15px;}
+.timeline .b-title{padding-bottom:10px; margin-bottom: 15px; height: 26px;}
 .timeline.column { margin-bottom: 32px;} 
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 .timeline .b-title h1 a {text-decoration:none; cursor:default; }
