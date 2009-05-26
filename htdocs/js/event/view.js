@@ -127,7 +127,7 @@ EventPage.view =
 		
 		var date = N('span', 'date')
 		
-		date.appendChild(T(event.date.getFormatted()))
+		date.appendChild(T(event.adate || event.date.getFormatted()))
 		mini.appendChild(date)
 		main.appendChild(mini)
 		

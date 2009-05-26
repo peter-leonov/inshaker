@@ -115,6 +115,7 @@ private
     ru_date_str         = "#{ru_date.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
     @entity[:date]      = ru_date.to_i * 1000
     
+    @entity[:adate]     = yaml['Примерная дата']
     @entity[:name]      = yaml['Название']
     @entity[:header]    = yaml['Слоган']
     @entity[:target]    = yaml['Задача']
