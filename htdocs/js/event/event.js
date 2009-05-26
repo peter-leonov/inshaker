@@ -50,7 +50,8 @@ $.onload
 			formPopupFields: cssQuery('#form-popup .fields')[0],
 			formPopupThanks: cssQuery('#form-popup .thanks')[0],
 			formPopupHolding: cssQuery('#form-popup .holding')[0],
-			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
+			formPopupNameInput: cssQuery('#form-popup input[name=event]')[0],
+			formPopupHrefInput: cssQuery('#form-popup input[name=href]')[0],
 			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
 			variableInputs: cssQuery('#form-popup .variable')[0],
 			getInvitation: [$('invitations-only'), cssQuery('.about .sign-on')[0]]

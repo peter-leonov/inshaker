@@ -6,6 +6,7 @@ $data_dir = "/www/inshaker/data/"
 require "rubygems"
 require "cgi"
 require "csv"
+require "rutils"
 require "/www/lib/ruby/pmc/rmail"
 
 p = CGI.new.params
@@ -13,7 +14,7 @@ p = CGI.new.params
 signature = "#{p["first"]} #{p["second"]} — #{p["event"]}, #{p["city"]}"
 
 
-filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true}
+filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true}
 names = ['Имя', 'Фамилия', 'Город', 'E-mail']
 values = [p["first"], p["second"], p["city"], p["email"]]
 human = ""
@@ -34,7 +35,9 @@ end
 row1 = names.map  { |v| "<th>#{v}</th>" }.join("")
 row2 = values.map { |v| "<td>#{v}</td>" }.join("")
 
-File.open("#{$data_dir}event-subscribers.csv", "a") do |f|
+fname = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
+
+File.open("#{$data_dir}#{fname}.csv", "a") do |f|
   CSV::Writer.generate(f) do |w|
     w << [Time.now.strftime("%Y-%m-%d %H:%M:%S"), p["event"], *values]
   end
@@ -57,7 +60,5 @@ html = %Q{
 
 m = RMail::Message.bake :to => $main, :from => "#{p["first"]} #{p["second"]} <#{p["email"]}>", :subject => p["event"], :body => html
 # m.send
-# puts m
-# puts html
 
 print %Q[Content-type: application/json\n\n{"result": "OK", "id": 1}\n]

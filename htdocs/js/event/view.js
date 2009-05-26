@@ -522,8 +522,10 @@ EventPage.view =
 	
 	resetForm: function ()
 	{
-		this.nodes.form.reset()
-		this.nodes.formPopupNameInput.value = this.event.name
+		var nodes = this.nodes
+		nodes.form.reset()
+		nodes.formPopupNameInput.value = this.event.name
+		nodes.formPopupHrefInput.value = this.event.href
 		this.setFormLock(true)
 	},
 	
