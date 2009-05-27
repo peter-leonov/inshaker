@@ -1,7 +1,7 @@
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/}
 .timeline .b-title{padding-bottom:10px; margin-bottom: 15px; height: 26px;}
-.timeline.column { margin-bottom: 32px;} 
+.timeline.column { margin-bottom: 31px; /*-1 px for crazy border (fkn. cut corners)*/} 
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 .timeline .b-title h1 a {text-decoration:none; cursor:default; }
 .timeline .b-title h1 a:hover {border-bottom:0;}
@@ -37,10 +37,7 @@ background: url(icon/strs-green.png);
 
 #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
 
-#both-wrapper { padding: 0 0 10px 0; clear: both; overflow: hidden; }
-
-.column-mini,
-.column{ border-width: 1px; }
+#both-wrapper { padding: 1px 0 10px 0; clear: both; overflow: hidden; }
 
 .column-main-container {  }
 .column-main { width:606px; }
