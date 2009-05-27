@@ -128,12 +128,6 @@ html.empire-open-cinema #form-popup .content form label input { right: -300px; }
 
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE /" -->
-#illustration { float: left; }
-#low-sponsors dl dt { zoom: 1; }
-.timeline .b-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
-<!--# endif -->
-
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
 .previews .event .mini .mask {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
@@ -154,6 +148,19 @@ html.empire-open-cinema #form-popup .content form label input { right: -300px; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
 /*#form-popup .content form .limit input { width: 160px; }*/
 <!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
+#illustration { float: left; }
+#low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
+.timeline .b-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+.timeline .b-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
+<!--# endif -->
+
+
+
 
 <!--# if expr="$HTTP_USER_AGENT = /Firefox/2\./" -->
 .previews .event { float: left; }
