@@ -83,7 +83,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming .rating dd { width: 20px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
-#low-sponsors { margin: 17px 0 0 0; }
+#low-sponsors { margin: 27px 0 0 0; }
 #low-sponsors .b-title { padding: 0 0 7px 0; }
 #low-sponsors .b-content { position: relative; width: 100%; }
 #low-sponsors .b-content .viewport { width: 852px; margin: 0 0 0 27px; }
@@ -91,14 +91,17 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
 #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
-#low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 120px; }
+#low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 70px; }
+#low-sponsors .b-content .prev,
+#low-sponsors .b-content .next { top: 32px; }
+#low-sponsors .b-content .next { right: 0; }
 
-#low-sponsors dl { height: 18px; padding: 75px 0 0 15px; font-size: 11px; line-height: 11px; text-align: justify; }
+#low-sponsors dl { height: 18px; padding: 80px 0 0 15px; font-size: 11px; line-height: 11px; text-align: justify; width: 100%; }
 #low-sponsors dl dt { display: inline; position: relative; z-index: 2; margin: 0 15px 0 0; }
 #low-sponsors dl dt a { text-decoration: none; border-bottom: 1px dashed; }
 #low-sponsors dl dt.selected a { border-bottom: none; color: #e4146e; cursor: default; }
 #low-sponsors dl dt.spacer { visibility: hidden; padding: 0 300px 0 0; }
-#low-sponsors dl dd { position: absolute; left: 0; top: -25px; width: 100%; }
+#low-sponsors dl dd { position: absolute; left: 0; top: 0px; width: 100%; }
 
 #promo-back { position: absolute; left: 0; top: 65px; width: 100%; height: 80%; background: repeat-x top center; }
 #main-wrapper { position: relative; z-index: 1; }
