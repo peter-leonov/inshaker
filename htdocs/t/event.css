@@ -34,6 +34,8 @@ background: url(icon/strs-green.png);
 
 .previews .event .mark { position: absolute; left: 77px; top: 173px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
 
+html.loading .previews .viewport { visibility: hidden; }
+
 
 #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
 
