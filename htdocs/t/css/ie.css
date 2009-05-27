@@ -26,8 +26,5 @@ html{font-size :101%;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
 
-#event-page #illustration { float: left; }
-#event-page #low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
-#event-page #mark {top:227px;}
 
 #parties-page .party-previews .party { padding-bottom: 4px;}

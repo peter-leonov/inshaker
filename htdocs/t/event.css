@@ -127,3 +127,47 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 
 html.empire-open-cinema #form-popup .content { width: 550px; }
 html.empire-open-cinema #form-popup .content form label input { right: -300px; }
+
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE /" -->
+#illustration { float: left; }
+#low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
+.previews .event .mini .mask {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+
+
+.timeline .previews .prev { background-position-x: -52px; }
+.b-content { width:100%; }
+
+#low-sponsors .point {font-size: 70px;}
+#low-sponsors .b-content .viewport .surface a { margin: 0 4px; }
+
+#both-wrapper { zoom: 1; }
+
+#form-popup { position: absolute; height: 200%; }
+/*#.column-main-container { width: 62.8em; }
+
+#sponsors-others { zoom: 1; }
+
+
+
+
+#low-sponsors { zoom: 1; }
+
+.b-more-cocktails .point img {scrollbar-base-color: transparent;}
+
+
+#form-popup .content form label input { right: 30px; }
+#form-popup .content form .limit input { width: 160px; }
+#form-popup .content form .thanks { left: -20px; }
+*/
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
+#form-popup .content form .limit input { width: 160px; }
+<!--# endif -->
+
+
