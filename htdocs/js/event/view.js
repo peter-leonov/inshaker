@@ -127,16 +127,16 @@ EventPage.view =
 		var mini = N('span', 'mini')
 		mini.style.backgroundImage = 'url(' + iroot + '/preview.jpg)'
 		
-		var date = N('span', 'date')
-		
-		date.appendChild(T(event.adate || event.date.getFormatted()))
-		mini.appendChild(date)
+		var mask = N('span', 'mask')
+		mini.appendChild(mask)
 		main.appendChild(mini)
 		
-		var desc = N('span', 'desc'), a = N('a')
-		a.appendChild(T(event.name))
-		desc.appendChild(a)
+		var date = N('span', 'date')
+		date.appendChild(T(event.adate || event.date.getFormatted()))
+		main.appendChild(date)
 		
+		var desc = N('span', 'desc')
+		desc.appendChild(T(event.name))
 		main.appendChild(desc)
 		
 		return main

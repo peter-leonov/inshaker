@@ -1,15 +1,15 @@
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/}
-.timeline .b-title{padding-bottom:10px; margin-bottom: 15px; height: 26px;}
+.timeline .b-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
 .timeline.column { margin-bottom: 31px; /*-1 px for crazy border (fkn. cut corners)*/} 
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 .timeline .b-title h1 a {text-decoration:none; cursor:default; }
 .timeline .b-title h1 a:hover {border-bottom:0;}
-.timeline .body-wrapper{padding-bottom:0; height:210px; overflow: visible;}
+.timeline .body-wrapper{padding-bottom:0; height:227px; overflow: visible;}
 
 
 .previews { position: relative; width: 920px; height: 159px; }
-.previews .viewport { position: relative; overflow: hidden; height: 175px; width: 818px; margin-left: 52px;}
+.previews .viewport { position: relative; overflow: hidden; height: 190px; width: 818px; margin-left: 52px;}
 .previews .viewport .surface { width: 5000px; padding: 0;}
 .previews .viewport .point { float: left; width: 855px; }
 .previews .prev,
@@ -25,14 +25,13 @@ background: url(icon/strs-green.png);
 
 .previews .event { float: left; position: relative; width: 180px; display: block; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; }
 .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
-.previews .event .mini .date { line-height: 15px; color:#FFFFFF; background:url(/t/event/pre-mask-full.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
+.previews .event .mini .mask { line-height: 15px; color:#FFFFFF; background:url(/t/event/preview-mask.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
 
-.previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; overflow: hidden; width:180px; height: 32px;}
-.previews .event .desc a { color: #0392f1; /*border-bottom: dashed 1px;*/ text-decoration: none;}
-.previews .event.selected .date { background-image: url(/t/event/pre-mask-full-selected.png); }
-.previews .event.selected .desc a { color: #F32C9F; border-bottom: none; }
+.previews .event .date { display: block; color: #343b40; font-size: 12px; font-weight: bold; margin: 7px 0 4px 0; }
+.previews .event .desc { font-family: Arial, sans-serif; font-size: 12px; overflow: hidden; width:180px; height: 32px; color: #0392f1; }
+.previews .event.selected .desc { color: #F32C9F; border-bottom: none; }
 
-.previews .event .mark { position: absolute; left: 77px; top: 159px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
+.previews .event .mark { position: absolute; left: 77px; top: 173px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
 
 
 #mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:225px; display:none;}
