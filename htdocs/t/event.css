@@ -1,3 +1,4 @@
+body { background-image: url(/t/event/bg.png); }
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/}
 .timeline .b-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
