@@ -78,26 +78,56 @@ EventPage.view =
 	
 	renderPreviews: function(events, selectedEvent)
 	{
-		var surface = this.nodes.previewSurface, previews = this.nodes.previews,
-			point, selectedPoint, pointNum = -1
+		var surface = this.nodes.previewSurface, previews = this.nodes.previews
 		
 		events = events.sort(Event.dateSort)
 		
-		surface.empty()
-		
+		// find nearest
+		var now = new Date(),
+			past = [], future = []
 		for (var i = 0; i < events.length; i++)
 		{
-			var event = events[i],
+			var event = events[i]
+			if (event.date < now)
+				past.push(event)
+			else
+				future.push(event)
+		}
+		
+		surface.empty()
+		var pointNum = -1, pastDiff = 4 - past.length % 4
+		
+		for (var i = 0; i < past.length; i++)
+		{
+			var event = past[i],
+				selected = selectedEvent == event
+			
+			if (!point || (i + pastDiff) % 4 == 0)
+			{
+				pointNum++
+				var point = N('li', 'point past')
+				surface.appendChild(point)
+			}
+			if (selected)
+				var selectedPoint = pointNum
+				
+			point.appendChild(this.createPreviewElement(event, selected))
+		}
+		
+		
+		for (var i = 0; i < future.length; i++)
+		{
+			var event = future[i],
 				selected = selectedEvent == event
 			
 			if (i % 4 == 0)
 			{
 				pointNum++
-				point = N('li', 'point')
+				var point = N('li', 'point future')
 				surface.appendChild(point)
 			}
 			if (selected)
-				selectedPoint = pointNum
+				var selectedPoint = pointNum
 				
 			point.appendChild(this.createPreviewElement(event, selected))
 		}

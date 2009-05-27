@@ -9,7 +9,8 @@ body { background-image: url(/t/event/bg.png); }
 .previews { position: relative; width: 920px; height: 159px; }
 .previews .viewport { position: relative; overflow: hidden; height: 190px; width: 818px; margin-left: 52px;}
 .previews .viewport .surface { width: 5000px; padding: 0;}
-.previews .viewport .point { float: left; width: 855px; }
+.previews .viewport .point { float: left; width: 848px; }
+.previews .viewport .point.past { text-align: right; }
 .previews .prev,
 .previews .next {
 display:block; z-index:3; width:20px; height:20px; position:absolute; left:auto; top:41px; right:19px;
