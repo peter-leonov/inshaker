@@ -3,7 +3,7 @@ body { background-image: url(/t/event/bg.png); }
 .timeline {width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}
 .timeline .b-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
-.timeline .body-wrapper{padding-bottom:0; height:227px;}
+.timeline .body-wrapper{padding-bottom:0; height:220px;}
 
 
 .previews { position: relative; width: 920px; height: 159px; }
@@ -30,7 +30,7 @@ background: url(icon/strs-green.png);
 .previews .event .desc { color: #0392f1; }
 .previews .event.selected .desc { color: #F32C9F; border-bottom: none; }
 
-.previews .event .mark { position: absolute; left: 77px; top: 173px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
+.previews .event .mark { position: absolute; left: 77px; top: 166px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
 
 html.loading .previews .viewport { visibility: hidden; }
 
