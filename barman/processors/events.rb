@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'barman'
+require 'lib/csv'
 
 class EventsProcessor < Barman::Processor
   
@@ -201,7 +202,7 @@ private
     @entity[:low] = low
     
     rating = yaml['Рейтинг']
-    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить']}
+    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить'], :type => {'корпоративный' => 'corp'}[rating['Тип']]}
   end
   
   def process_rating src_dir
@@ -211,41 +212,45 @@ private
     substitute = {}
     unknown = []
     doubles = []
-    uniq = {}
+    seen = {}
+    type = @entity[:rating][:type]
     if File.exists? fname_rating and File.exists? fname_substitute
-      csv_rating = CSV::parse(File.open(fname_rating).read)
-      csv_substitute = CSV::parse(File.open(fname_substitute).read)
-      csv_substitute.each do |v|
-        substitute[v[0]] = v[1]
+      CSV.foreach_hash fname_substitute do |row, line|
+        substitute[row["value"]] = row["name"]
       end
-      csv_rating.shift
-      i = 0
-      csv_rating.each do |line|
-        i += 1
-        v = line[0]
+      CSV.foreach_hash fname_rating do |row, line|
+        email = row["email"]
+        value = row["value"]
         
-        if uniq[v]
+        if seen[email]
           doubles << "#{i}: #{v}"
           next
         end
-        uniq[v] = true
+        seen[email] = true
         
-        m = /\@(\S+)/.match v
-        if m then
-          bank = substitute[m[1]]
-          if bank then
-            unless /^\s*!\s*$/.match(bank) then
-              rating[bank] = rating[bank] ? rating[bank] + 1 : 1
-            end
+        # for corporative staff
+        if type == "corp"
+          m = /\@(\S+)/.match email
+          if m then
+            value = m[1]
           else
-            unknown << "#{i}: #{m[1]}"
+            puts "  #{i}: Не могу понять email: '#{v}'"
+            next
+          end
+        end
+        
+        name = substitute[value]
+        if name then
+          unless name == "!" then
+            rating[name] = rating[name] ? rating[name] + 1 : 1
           end
         else
-          puts "  #{i}: Не могу понять email: '#{v}'"
+          unknown << "#{line}: #{value}"
         end
+        
       end
       
-      puts "  Неизвестные банки:\n  " + unknown.join("\n  ") unless unknown.empty?
+      puts "  Неизвестные значения:\n  " + unknown.join("\n  ") unless unknown.empty?
       puts "\n  Повторяющиеся адреса:\n  " + doubles.join("\n  ") unless doubles.empty?
     end
     
