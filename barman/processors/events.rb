@@ -90,7 +90,7 @@ class EventsProcessor < Barman::Processor
       out_html_path = Config::EVENTS_HTML_DIR + entity[:city].trans.html_name
       if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
       erb = EventTemplate.new(entity)
-      File.open(out_html_path + "/" + entity[:href].html_name + ".html", "w+") do |html|
+      File.open(out_html_path + "/" + entity[:href].html_name, "w+") do |html|
         html.write renderer.result(erb.get_binding)
       end
     end
@@ -110,7 +110,7 @@ class EventsProcessor < Barman::Processor
   def flush_interlinks
     hrefs = ""
     @entities.each do |name, entity|
-      hrefs << %Q{<a href="/events/#{entity[:city].dirify}/#{entity[:href]}.html">#{entity[:name]}</a>}
+      hrefs << %Q{<a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a>}
     end
     File.open(Config::EVENTS_HTML_DIR + "interlink.html", "w") do |f|
       f << hrefs

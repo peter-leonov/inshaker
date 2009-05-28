@@ -140,7 +140,7 @@ EventPage.view =
 		var city = event.city.trans().htmlName(),
 			href = event.href,
 			iroot = '/i/event/' + city + '/' + href,
-			ehref = '/events/' + city + '/' + href + '.html',
+			ehref = '/events/' + city + '/' + href,
 			main
 		
 		if (selected)
