@@ -317,10 +317,8 @@ EventPage.view =
 			
 			var dd = N('dd')
 			var width = String(Math.floor((count - min + 1) * k) + padding)
-			// dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
-			dd.style.width = width + 'px'
+			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
 			dd.appendChild(T(count))
-			// dt.addEventListener('click', function () { log(this.offsetWidth, this.scrollWidth) }, false)
 			root.appendChild(dt)
 			root.appendChild(dd)
 		}
@@ -384,8 +382,6 @@ EventPage.view =
 			
 			ops.push(s)
 		}
-		
-		// log(ops)
 		
 		return ops
 	},
@@ -494,7 +490,7 @@ EventPage.view =
 			}
 		}
 		
-		// setInterval(animatePopups, 3200)
+		setInterval(animatePopups, 3200)
 	},
 	
 	renderVariableFields: function (fieldsSet)
@@ -565,7 +561,7 @@ EventPage.view =
 	{
 		var me = this
 		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { log('check'); me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
+		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()
