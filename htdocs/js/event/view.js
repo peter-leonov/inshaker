@@ -72,8 +72,6 @@ EventPage.view =
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
 		this.setFormLock(true)
-		
-		this.fixRatingHeight()
 	},
 	
 	renderPreviews: function(events, selectedEvent)
@@ -170,14 +168,6 @@ EventPage.view =
 		main.appendChild(desc)
 		
 		return main
-	},
-	
-	fixRatingHeight: function() 
-	{
-		var space = 0,
-			sponsorBanners = this.nodes.sponsorsMedium.childNodes
-		for(var i = 0; i < sponsorBanners.length; i++) space += sponsorBanners[i].offsetHeight
-		this.nodes.rating.style.height = parseInt((space + 40*sponsorBanners.length)/16)*16 + "px"
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
@@ -297,16 +287,17 @@ EventPage.view =
 			return
 		
 		var nodes = this.nodes,
-			data = rating.data,
-			root = nodes.rating,
+			root = nodes.rating
+		
+		
+		var data = rating.data,
 			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
 			max = data[sorted[0]],
 			min = data[sorted[sorted.length-1]],
-			padding = String(max).length * 7.5,
+			padding = String(max).length * 6,
 			k = max && min ? ((177 - padding) / (max - min + 1) * 100) / 100 : 1
 		
 		root.empty()
-		
 		for (var i = 0; i < sorted.length; i++)
 		{
 			var name = sorted[i],

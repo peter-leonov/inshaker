@@ -76,7 +76,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming .rating dt,
 #comming .rating dd { margin: 0px 0; }
 #comming .rating dt { width: 112px; float: left; clear: left; white-space: nowrap; overflow: hidden; }
-#comming .rating dd { width: 20px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#comming .rating dd { width: 14px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
 #low-sponsors { margin: 27px 0 0 0; }
