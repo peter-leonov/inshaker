@@ -154,8 +154,10 @@ private
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
     
     arr = []
-    yaml['Диалоги'].each do |v|
-      arr << {:back => v[0], :popups => v[1]}
+    if yaml['Диалоги']
+      yaml['Диалоги'].each do |v|
+        arr << {:back => v[0], :popups => v[1]}
+      end
     end
     @entity[:dialogue] = arr
     
