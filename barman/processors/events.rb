@@ -32,6 +32,7 @@ class EventsProcessor < Barman::Processor
   end
   
   def prepare_dirs
+    FileUtils.rmtree [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
     FileUtils.mkdir_p [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
   end
   
