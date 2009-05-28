@@ -111,11 +111,11 @@
 		<form action="/act/event-form.cgi" method="post" target="ajax">
 			<div class="fields">
 				<h2>Хочу посетить мероприятие!</h2>
+				<label>Мой город:<input type="text" name="city"/></label>
 				<label>Имя:<input type="text" name="first"/></label>
 				<label>Фамилия:<input type="text" name="second"/></label>
-				<label>Мой город:<input type="text" name="city"/></label>
-				<div class="variable"></div>
 				<label>Мой e-mail:<input type="text" name="email"/></label>
+				<div class="variable"></div>
 				<p class="limit"><%= @form_hint %> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
