@@ -72,11 +72,13 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming h2 { font-family: Arial; font-size: 20px; font-style: italic; }
 #comming h2 .people { color: #f32c9f; }
 #comming h2 .from { color: #0392f1; }
-#comming .rating { width: 300px; font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
-#comming .rating dt,
-#comming .rating dd { margin: 0px 0; }
-#comming .rating dt { width: 112px; float: left; clear: left; white-space: nowrap; overflow: hidden; }
-#comming .rating dd { width: 14px; margin: 1px 0 2px 115px;  padding: 0 0 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#comming .rating { width: 310px; font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
+#comming .rating .labels { float: left; }
+#comming .rating .rates { margin: 0 0 0 115px; width: 179px; /* = .rating.width(310) - .rates.margin(115) - .rate.padding(8) * 2 */ }
+#comming .rating .label,
+#comming .rating .rate { margin: 1px 0 2px 0; }
+#comming .rating .label { width: 112px; white-space: nowrap; overflow: hidden; }
+#comming .rating .rate { width: 6%; padding: 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
 #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
 #low-sponsors { margin: 27px 0 0 0; }

@@ -294,27 +294,38 @@ EventPage.view =
 			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
 			max = data[sorted[0]],
 			min = data[sorted[sorted.length-1]],
-			padding = String(max).length * 6,
-			k = max && min ? ((177 - padding) / (max - min + 1) * 100) / 100 : 1
+			k = max && min ? 100 / (max - min + 1) : 1
 		
 		root.empty()
+		
+		var labels = N('div', 'labels'),
+			rates = N('div', 'rates')
+		
+		root.appendChild(labels)
+		root.appendChild(rates)
+		
 		for (var i = 0; i < sorted.length; i++)
 		{
 			var name = sorted[i],
-				count = data[name]
+				count = data[name],
+				padding = String(count).length * 3.4, // means 3.4% for a digit
+				width = Math.floor((count - min + 1) * k)
 			
-			var dt = N('dt')
-			dt.appendChild(T(name))
+			if (width < padding)
+				width = padding
 			
-			var dd = N('dd')
-			var width = String(Math.floor((count - min + 1) * k) + padding)
-			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
-			dd.appendChild(T(count))
-			root.appendChild(dt)
-			root.appendChild(dd)
+			var label = N('div', 'label')
+			label.appendChild(T(name))
+			labels.appendChild(label)
+			
+			var rate = N('div', 'rate')
+			rate.style.width = padding + '%'
+			rate.animate('easeInOutQuad', {width: [padding, width]}, 1, '%')
+			rate.appendChild(T(count))
+			rates.appendChild(rate)
 		}
 		
-		Humanize.adjustTextSizeOfNodes(root, 'dt')
+		Humanize.adjustTextSizeOfNodes(labels, 'div')
 		
 		if (sorted.length > rating.max)
 		{
