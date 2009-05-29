@@ -401,7 +401,7 @@ ul#cart_cocktails {margin-top: 9px;}
 #ingredients-page .count-cocktails{background:url(bg/ingredient/fixed.png) no-repeat top left;width:153px;height:73px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
 #ingredients-page .count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 9px;}
 #ingredients-page .count-cocktails input{font-size:11px;}
-#ingredients-page .count-cocktails{}
+#ingredients-page .body-wrapper { overflow: hidden; }
 
 /* Image buttons */
 button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}
