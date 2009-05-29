@@ -45,7 +45,7 @@ html.loading .previews .viewport { visibility: hidden; }
 .b-title { padding-bottom: 13px; font-family: Tahoma; }
 .b-title h1, .b-title h3 { font-size: 20px; }
 .b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
-#illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; background: no-repeat; }
+#illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
 #main-sponsors { margin-bottom: 24px; }
 #main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
@@ -74,7 +74,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming h2 .from { color: #0392f1; }
 #comming .rating { width: 310px; font-size: 11px; overflow: hidden; margin: 12px 0 4px 0; line-height: 16px; }
 #comming .rating .labels { float: left; }
-#comming .rating .rates { margin: 0 0 0 115px; width: 179px; /* = .rating.width(310) - .rates.margin(115) - .rate.padding(8) * 2 */ }
+#comming .rating .rates { margin: 0 0 0 115px; width: 175px; /* = .rating.width(310) - .rates.margin(115) - .rate.padding(8) * 2 - 4px for IE*/ }
 #comming .rating .label,
 #comming .rating .rate { margin: 1px 0 2px 0; }
 #comming .rating .label { width: 112px; white-space: nowrap; overflow: hidden; }
