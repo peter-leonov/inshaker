@@ -11,7 +11,3 @@ apache.conf
 nginx.conf
 htdocs/stat/*
 data/*
-
-htdocs/events/*
-htdocs/i/event/*
-htdocs/db/events.js
