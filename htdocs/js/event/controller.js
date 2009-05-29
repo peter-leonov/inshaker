@@ -2,41 +2,11 @@ EventPage.controller =
 {
 	owner: null, // must be defined before initialize
 	
-	initialize: function ()
-	{
-        return this.filtersFromRequest()
-	},
-	
-	filtersFromRequest: function()
-	{
-	    var address = window.location.href
-		var match = address.match(/.+\?(.+)/)
-		if(match)
-		{
-			var params = match[1].split("&")
-			var filters = {}
-			for(var i = 0; i < params.length; i++) 
-			{
-				var pair = params[i].split("=")
-				filters[pair[0]] = decodeURIComponent(pair[1])
-			}
-			return filters
-		} else return null
-	},
+	initialize: function () {},
 	
 	setEventName: function (name)
 	{
 		this.owner.model.setState({name: name})
-	},
-	
-	needToRenderPreviews: function()
-	{
-		this.owner.model.needToRenderPreviews()
-	},
-	
-	needToSelectEvent: function()
-	{
-	    this.owner.model.needToSelectEvent()
 	},
 	
 	formPopupCloseClicked: function ()

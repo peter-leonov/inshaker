@@ -11,9 +11,14 @@ EventPage =
 		controller.owner = this
 		
 		view.initialize(nodes)
-		model.initialize(eventsDB, controller.initialize())
+		model.initialize(eventsDB)
+		controller.initialize()
+		
+		view.readEvent()
 	}
 }
+
+$.onload(function () { document.documentElement.remClassName('loading') })
 
 $.onload
 (
@@ -22,10 +27,6 @@ $.onload
 		var nodes =
 		{
 			name: $('event-name'),
-			header: $('event-header'),
-			target: $('parole'),
-			address: $('address'),
-			venueLink: $('venue-link'),
 			promoBack: $('promo-back'),
 			mark: $('mark'),
 			previews: cssQuery('.previews')[0],
@@ -39,8 +40,9 @@ $.onload
 			sponsorsLow: $('low-sponsors'),
 			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],
 			sponsorsMedium: $('medium-sponsors'),
-			sponsorsHighTitle: cssQuery('#sidebar .b-title h4')[0],
-			sponsorsHigh: cssQuery('#sidebar .main-sponsor')[0],
+			sponsorsHighBlock: cssQuery('#main-sponsors')[0],
+			sponsorsHighTitle: cssQuery('#main-sponsors .b-title h4')[0],
+			sponsorsHigh: cssQuery('#main-sponsors .banner')[0],
 			form: cssQuery('#form-popup form')[0],
 			formPopup: $('form-popup'),
 			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
@@ -48,10 +50,11 @@ $.onload
 			formPopupFields: cssQuery('#form-popup .fields')[0],
 			formPopupThanks: cssQuery('#form-popup .thanks')[0],
 			formPopupHolding: cssQuery('#form-popup .holding')[0],
-			formPopupNameInput: cssQuery('#form-popup input[type=hidden]')[0],
+			formPopupNameInput: cssQuery('#form-popup input[name=event]')[0],
+			formPopupHrefInput: cssQuery('#form-popup input[name=href]')[0],
 			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
 			variableInputs: cssQuery('#form-popup .variable')[0],
-			getInvitation: [$('get-invitation'), $('invitations-only'), cssQuery('.about .sign-on')[0]]
+			getInvitation: [$('invitations-only'), cssQuery('.about .sign-on')[0]]
 		}
 		
 		// log(document.documentElement.appendChild($('form-popup')))
@@ -61,6 +64,7 @@ $.onload
 		EventPage.initialize(nodes, Event)
 	}
 )
+
 
 <!--# include file="/lib/Programica/Request.js" -->
 <!--# include file="/lib/Programica/Form.js" -->

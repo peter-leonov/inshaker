@@ -1,66 +1,62 @@
-#!/usr/bin/perl
-sleep 1;
-use strict;
-# use utf8;
-use CGI::Minimal;
-use MIME::Lite;
-use MIME::EncWords qw(:all);
-use MIME::Base64;
-use Encode qw(encode);
-use Text::CSV_XS;
+#!/usr/bin/env ruby
 
-my $cgi = CGI::Minimal->new;
-my $q = {map { $_, $cgi->param($_) } $cgi->param};
+$main = "event@inshaker.ru,pl@contactmaker.ru"
+$data_dir = "/www/inshaker/data/"
 
-my $signature = $q->{first} . ' ' . $q->{second} . ' [' . $q->{city} . ']';
+require "rubygems"
+require "cgi"
+require "csv"
+require "rutils"
+require "/www/lib/ruby/pmc/rmail"
 
-my $msg = MIME::Lite->new
-(
-	From    => encode_mimewords($signature . ' <' . $q->{email} . '>', Charset => 'UTF-8'),
-	To      => 'event@inshaker.ru, pl@contactmaker.ru',
-	Subject =>  encode_mimewords($q->{event}, Charset => 'UTF-8'),
-	Type    => 'multipart/mixed'
-);
+p = CGI.new.params
 
 
-my @names = qw(Имя Фамилия Город E-mail);
-my @values = ($q->{first}, $q->{second}, $q->{city}, $q->{email});
-my $human = '';
+filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true}
+names = ['Имя', 'Фамилия', 'Город', 'E-mail']
+values = [p["first"], p["second"], p["city"], p["email"]]
+human = ""
 
-for my $k (keys %$q)
-{
-	if ($k ne 'first' and $k ne 'second' and $k ne 'city' and $k ne 'email' and $k ne 'event')
-	{
-		push @names, $k;
-		push @values, $q->{$k};
-		
-		$human .= "<tr><th>$k:</th><td>$q->{$k}</td></tr>";
-	}
-	
+names.each_with_index do |v, i|
+  human << %Q{<tr><th align="right">#{v}:</th><td>#{values[i]}</td></tr>\n}
+end
+
+p.keys.sort.each do |k|
+  unless filter[k]
+    v = p[k]
+    names << k
+    values << v
+    human << %Q{<tr><th align="right">#{k}:</th><td>#{v}</td></tr>\n}
+  end
+end
+
+row1 = names.map  { |v| "<th>#{v}</th>" }.join("")
+row2 = values.map { |v| "<td>#{v}</td>" }.join("")
+
+fname  = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
+
+File.open("#{$data_dir}#{fname}.csv", "a") do |f|
+  CSV::Writer.generate(f) do |w|
+    w << [Time.now.strftime("%Y-%m-%d %H:%M:%S"), p["event"], *values]
+  end
+end
+
+
+html = %Q{
+<h1>#{p["first"]} #{p["second"]}, #{p["city"]}</h1>
+<br/>
+
+<table border="0" cellpadding="3">#{human}</table>
+<br/><br/>
+
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr>#{row1}</tr>
+  <tr>#{row2}</tr>
+</table>
 }
 
-my $row1 = join('', map { "<th>$_</th>" } @names);
-my $row2 = join('', map { "<td>$_</td>" } @values);
 
-open my $table, '>>', "../../data/event-subscribers.csv";
-my $csv = Text::CSV_XS->new({ binary => 1, eol => $/ });
-$csv->combine(scalar localtime, $q->{event}, @values);
-print $table $csv->string;
-close $table;
+m = RMail::Message.bake :to => $main, :from => "#{p["first"]} #{p["second"]} <#{p["email"]}>", :subject => "#{p["event"]} [#{p["city"]}]", :body => html
+m.send
 
-
-my $html = qq { <h1>$signature</h1> <br> <table border="1" cellspacing="0" cellpadding="2"><tr>$row1</tr><tr>$row2</tr></table> <br><br> <table>$human</table> };
-
-$msg->attach
-(
-	Type     => 'text/html; charset=utf-8',
-	Encoding => 'base64',
-	Data     =>  $html
-);
-$msg->attr('X-HTTP-User-Agent' => $ENV{HTTP_USER_AGENT});
-$msg->attr('X-Http-Remote-Addr' => $ENV{HTTP_X_FORWARDED_FOR} || $ENV{HTTP_X_REAL_IP} || $ENV{REMOTE_ADDR});
-
-$msg->send;
-
-print "Content-type: application/json\n\n";
-print '{"result": "OK", "id": 1}';
+print %Q[Content-type: application/json\n\n{"result": "OK", "id": 1}\n]

@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'barman'
+require 'lib/csv'
 
 class EventsProcessor < Barman::Processor
   
@@ -23,10 +24,17 @@ class EventsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
     prepare
     
-    # flush_html # let's use events.html
+    flush_interlinks
+    flush_html
     flush_json
+  end
+  
+  def prepare_dirs
+    FileUtils.rmtree [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
+    FileUtils.mkdir_p [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
   end
   
   def prepare
@@ -82,9 +90,9 @@ class EventsProcessor < Barman::Processor
       # warn entity
       out_html_path = Config::EVENTS_HTML_DIR + entity[:city].trans.html_name
       if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
-      bar_erb = EventTemplate.new(entity)
-      File.open(out_html_path + "/" + entity[:href].html_name + ".html", "w+") do |html|
-        html.write renderer.result(bar_erb.get_binding)
+      erb = EventTemplate.new(entity)
+      File.open(out_html_path + "/" + entity[:href].html_name, "w+") do |html|
+        html.write renderer.result(erb.get_binding)
       end
     end
   end
@@ -100,17 +108,27 @@ class EventsProcessor < Barman::Processor
     flush_json_object(@entities, Config::DB_JS)
   end
   
+  def flush_interlinks
+    hrefs = ""
+    @entities.each do |name, entity|
+      hrefs << %Q{<a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a>}
+    end
+    File.open(Config::EVENTS_HTML_DIR + "interlink.html", "w") do |f|
+      f << hrefs
+    end
+  end
+  
 private
   def parse_about src_dir
     
     yaml = YAML::load(File.open(src_dir + "/about.yaml"))
     
     # warn yaml.inspect
-    ru_date             = yaml['Дата'].split(".")
-    ru_date_obj         = Date.new(ru_date[2].to_i, ru_date[1].to_i, ru_date[0].to_i)
-    ru_date_str         = "#{ru_date_obj.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date_obj.mon].downcase} #{ru_date_obj.year}"
-    @entity[:date]      = ru_date_obj
+    ru_date             = Time.gm(*yaml['Дата'].split(".").reverse.map{|v|v.to_i})
+    ru_date_str         = "#{ru_date.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
+    @entity[:date]      = ru_date.to_i * 1000
     
+    @entity[:adate]     = yaml['Примерная дата']
     @entity[:name]      = yaml['Название']
     @entity[:header]    = yaml['Слоган']
     @entity[:target]    = yaml['Задача']
@@ -119,15 +137,16 @@ private
     @entity[:country]   = yaml['Страна']
     @entity[:href]      = yaml['Ссылка']
     @entity[:venue]     = yaml['Место']
-    @entity[:venue_link]= yaml['Ссылка на место']
     @entity[:time]      = yaml['Время']
+    @entity[:enter]     = yaml['Вход']
+    @entity[:photos]    = yaml['Ссылка на фотки']
     @entity[:fields]    = yaml['Поля формы']
-    @entity[:status]    = {'проведение' => 'holding' }[yaml['Статус']]
+    @entity[:form_hint] = yaml['Подсказка в форме']
+    @entity[:status]    = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
-    # Legacy
-    @entity[:address]   = "#{yaml['Город']} - #{yaml['Место']}, #{ru_date_str}" # TODO: delete
-    @entity[:bar]       = yaml['Ссылка на место'] # TODO: delete
-
+    @entity[:date_ru]      = ru_date_str
+    @entity[:address]   = yaml['Ссылка на место']
+    
     # @entity[:high]      = yaml['Генеральные спонсоры']
     # @entity[:medium]    = yaml['Спонсоры']
     # @entity[:low]       = yaml['При поддержке']
@@ -136,46 +155,54 @@ private
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
     
     arr = []
-    yaml['Диалоги'].each do |v|
-      arr << {:back => v[0], :popups => v[1]}
+    if yaml['Диалоги']
+      yaml['Диалоги'].each do |v|
+        arr << {:back => v[0], :popups => v[1]}
+      end
     end
     @entity[:dialogue] = arr
     
     FileUtils.mkdir_p out_images_path + "/logos/"
     
     arr = []
-    yaml['Генеральные спонсоры'].each do |v|
-      hash = {:name => v[0], :src => v[1], :href => v[2]}
-      arr << hash
-      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+    if yaml['Генеральные спонсоры']
+      yaml['Генеральные спонсоры'].each do |v|
+        hash = {:name => v[0], :src => v[1], :href => v[2]}
+        arr << hash
+        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
     end
     @entity[:high] = arr
     
     arr = []
-    yaml['Спонсоры'].each do |v|
-      hash = {:name => v[0], :src => v[1], :href => v[2]}
-      arr << hash
-      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+    if yaml['Спонсоры']
+      yaml['Спонсоры'].each do |v|
+        hash = {:name => v[0], :src => v[1], :href => v[2]}
+        arr << hash
+        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
     end
     @entity[:medium] = arr
     
     low = []
-    yaml['При поддержке'].each do |v|
-      name, logos = v['Название'], v['Логотипы']
-      arr = []
-      low << {:name => name, :logos => arr}
-	    logos.each do |sponsor|
-	      hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
-	      arr << hash
-	      FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
-	    end
-	    
-      # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+    if yaml['При поддержке']
+      yaml['При поддержке'].each do |v|
+        name, logos = v['Название'], v['Логотипы']
+        arr = []
+        low << {:name => name, :logos => arr}
+        logos.each do |sponsor|
+          hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+          arr << hash
+          FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+        end
+        
+        # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+      end
     end
     @entity[:low] = low
     
     rating = yaml['Рейтинг']
-    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить']}
+    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить'], :type => {'корпоративный' => 'corp'}[rating['Тип']]}
   end
   
   def process_rating src_dir
@@ -185,41 +212,45 @@ private
     substitute = {}
     unknown = []
     doubles = []
-    uniq = {}
+    seen = {}
+    type = @entity[:rating][:type]
     if File.exists? fname_rating and File.exists? fname_substitute
-      csv_rating = CSV::parse(File.open(fname_rating).read)
-      csv_substitute = CSV::parse(File.open(fname_substitute).read)
-      csv_substitute.each do |v|
-        substitute[v[0]] = v[1]
+      CSV.foreach_hash fname_substitute do |row, line|
+        substitute[row["value"]] = row["name"]
       end
-      csv_rating.shift
-      i = 0
-      csv_rating.each do |line|
-        i += 1
-        v = line[0]
+      CSV.foreach_hash fname_rating do |row, line|
+        email = row["email"]
+        value = row["value"]
         
-        if uniq[v]
+        if seen[email]
           doubles << "#{i}: #{v}"
           next
         end
-        uniq[v] = true
+        seen[email] = true
         
-        m = /\@(\S+)/.match v
-        if m then
-          bank = substitute[m[1]]
-          if bank then
-            unless /^\s*!\s*$/.match(bank) then
-              rating[bank] = rating[bank] ? rating[bank] + 1 : 1
-            end
+        # for corporative staff
+        if type == "corp"
+          m = /\@(\S+)/.match email
+          if m then
+            value = m[1]
           else
-            unknown << "#{i}: #{m[1]}"
+            puts "  #{i}: Не могу понять email: '#{v}'"
+            next
+          end
+        end
+        
+        name = substitute[value]
+        if name then
+          unless name == "!" then
+            rating[name] = rating[name] ? rating[name] + 1 : 1
           end
         else
-          puts "  #{i}: Не могу понять email: '#{v}'"
+          unknown << "#{line}: #{value}"
         end
+        
       end
       
-      puts "  Неизвестные банки:\n  " + unknown.join("\n  ") unless unknown.empty?
+      puts "  Неизвестные значения:\n  " + unknown.join("\n  ") unless unknown.empty?
       puts "\n  Повторяющиеся адреса:\n  " + doubles.join("\n  ") unless doubles.empty?
     end
     

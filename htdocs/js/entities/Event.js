@@ -6,6 +6,11 @@ Event =
 	initialize: function (db)
 	{
 		this.db = db
+		for (var k in db)
+		{
+			var event = db[k]
+			event.date = new Date(event.date)
+		}
 	},
 	
 	getByName: function (name)
@@ -20,14 +25,6 @@ Event =
 		return res
 	},
 	
-	getByHrefAndCity: function(href, city)
-	{
-	    for(var key in this.db) 
-	        if((this.db[key].href == href) && 
-	            (this.db[key].city.trans().htmlName() == city))
-	                return this.db[key]
-	},
-	
 	getAll: function()
 	{
 		var res = []
@@ -35,12 +32,9 @@ Event =
 		return res
 	},
 	
-	dateSort: function(a,b)
+	dateSort: function(a, b)
 	{
-	    var dateA = new Date(a.date), dateB = new Date(b.date)
-	    if(dateA > dateB) return 1
-	    else if(dateA == dateB) return 0
-	    else return -1
+		return a.date - b.date
 	}
 }
 

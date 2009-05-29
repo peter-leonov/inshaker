@@ -13,15 +13,30 @@ EventPage.view =
 		this.nodes = nodes
 		var me = this,
 			controller = this.owner.controller
+	},
+	
+	bindRaiting: function ()
+	{
+		var me = this, nodes = this.nodes,
+			controller = this.owner.controller
+		
+		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
+		
+		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
+		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
+	},
+	
+	bindFormPopup: function ()
+	{
+		var me = this, nodes = this.nodes,
+			controller = this.owner.controller
 		
 		function formPopupCloseClicked () { controller.formPopupCloseClicked() }
 		nodes.formPopupOverlay.addEventListener('click', formPopupCloseClicked, false)
 		nodes.formPopupMenu.addEventListener('click', formPopupCloseClicked, false)
 		
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
-		// nodes.getInvitation.forEach(function (v) { v.addEventListener('click', formPopupOpenClicked, false) })
-		
-		nodes.ratingShowAll.addEventListener('click', function () { controller.ratingShowAllClicked() }, false)
+		nodes.getInvitation.forEach(function (v) { if (v) v.addEventListener('click', formPopupOpenClicked, false) })
 		
 		var form = nodes.form
 		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
@@ -29,25 +44,26 @@ EventPage.view =
 		form.onsend = function (e) { return controller.formSend() }
 		form.onload = function (e) { return controller.formLoad() }
 		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
-		
-		nodes.ratingShowAll.hide = nodes.formPopupFields.hide = nodes.formPopupThanks.hide = function () { this.style.visibility = 'hidden' }
-		nodes.ratingShowAll.show = nodes.formPopupFields.show = nodes.formPopupThanks.show = function () { this.style.visibility = 'visible' }
-		new Programica.RollingImagesLite(this.nodes.previews, {animationType: 'easeOutQuad'});
-		
-	    this.fakeEvents = [
-	        {name: "Интересное событие", date: "скоро", venue: "в супер баре"},
-	    	{name: "Прекрасное событие", date: "скоро", venue: "в супер баре"},
-	        {name: "Необычное событие",  date: "скоро", venue: "в супер баре"} ]
-	    this.markerOffsets = ["144px", "360px", "576px", "792px"]
 	},
 	
-	modelChanged: function (event)
+	readEvent: function ()
+	{
+		var name = this.nodes.name.firstChild.nodeValue
+		this.owner.controller.setEventName(name)
+	},
+	
+	modelChanged: function (event, previewSet)
 	{
 		this.event = event
-		
 		this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
 		
-		this.renderMainInfo(event)
+		this.bindRaiting()
+		
+		if (event.status == 'preparing')
+			this.bindFormPopup()
+		
+		this.renderPreviews(previewSet, event)
+		
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
 		this.renderRatingHead(event.rating)
@@ -56,115 +72,112 @@ EventPage.view =
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
 		this.setFormLock(true)
-		
-		this.fixRatingHeight()
-		
-		this.renderStatus(event.status)
 	},
 	
 	renderPreviews: function(events, selectedEvent)
 	{
-		var curPoint = null
+		var surface = this.nodes.previewSurface, previews = this.nodes.previews
 		
 		events = events.sort(Event.dateSort)
 		
-		for(var i = 0; i < events.length; i++) {
-			if(i % 4 == 0) {
-				curPoint = document.createElement("li")
-				curPoint.addClassName("point")
-				this.nodes.previewSurface.appendChild(curPoint)
-			}
-			var idx = (i/4 - parseInt(i/4))*4
-			curPoint.appendChild(this.createPreviewElement(idx, events[i], selectedEvent == events[i]))
+		// find nearest
+		var now = new Date(),
+			past = [], future = []
+		for (var i = 0; i < events.length; i++)
+		{
+			var event = events[i]
+			if (event.date < now)
+				past.push(event)
+			else
+				future.push(event)
 		}
 		
-		var fakeNeeded = 4 - events.length
-		if(fakeNeeded > 0)
-		    for(var i = 0; i < fakeNeeded; i++)
-		        curPoint.appendChild(this.createFakePreviewElement(i, this.fakeEvents[i]))
-
-		this.nodes.previews.RollingImagesLite.sync()
-		this.nodes.previews.RollingImagesLite.goInit()
-	},
-	
-	createPreviewElement: function(idx, event, selected)
-	{   
-		var iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
-		var ehref = '/events.html?event=' + event.href + '&city=' + event.city.trans().htmlName()
+		surface.empty()
+		var pointNum = -1, pastDiff = 4 - past.length % 4
 		
-		var div   = N("div", "event")
-		var mini = N("div","mini")
-		mini.style.backgroundImage = "url(" + iroot + "/preview.jpg)"
-		
-		var date = N("a")
-		date.href = ehref
-	    date.innerHTML = new Date(event.date).getFormatted()
-		mini.appendChild(date)
-		div.appendChild(mini)
-		
-		var desc = N("div", "desc"), a = N("a")
-		a.href = ehref
-		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
-		desc.appendChild(a)
-					
-		desc.appendChild(N("span", "fade"))
-		div.appendChild(desc)
-		
-		if(selected) 
+		for (var i = 0; i < past.length; i++)
 		{
-		    date.style.backgroundImage = "url(/t/event/pre-mask-full-selected.png)"
-		    div.addClassName("now")
-		    this.nodes.mark.style.left = this.markerOffsets[idx]
-		    this.nodes.mark.show()
-	    }
-		return div
-	},
-	
-	createFakePreviewElement: function(idx, event)
-	{
-	    var iroot = '/i/event/fake'
-	    var div = N("div", "event")
-		
-		var mini = N("div", "mini")
-		mini.style.backgroundImage = "url(" + iroot + "/preview" + (idx + 1) + ".jpg)"
-		
-		var date = N("a")
-		date.innerHTML = event.date
-		mini.appendChild(date)
-		div.appendChild(mini)
-		
-		var desc = N("div", "desc"), a = N("a")
-		a.innerHTML = event.name + "<br/>" + event.venue + "<br/>&nbsp;"
-		desc.appendChild(a)
+			var event = past[i],
+				selected = selectedEvent == event
 			
-		desc.appendChild(N("span", "fade"))
-		div.appendChild(desc)
+			if (!point || (i + pastDiff) % 4 == 0)
+			{
+				pointNum++
+				var point = N('li', 'point past')
+				surface.appendChild(point)
+			}
+			if (selected)
+				var selectedPoint = pointNum
+				
+			point.appendChild(this.createPreviewElement(event, selected))
+		}
 		
-		div.addClassName("fake")
-		return div
-	},
 		
-	renderMainInfo: function(event)
-	{
-		this.nodes.target.innerHTML  = event.target
-		this.nodes.header.innerHTML  = event.header
-		this.nodes.name.innerHTML    = event.name
-		this.nodes.address.innerHTML = event.city + "&nbsp;-&nbsp;<a>" + event.venue + "</a>, " + new Date(event.date).getFormatted(true)
-		this.nodes.venueLink.href    = event.venue_link
+		for (var i = 0; i < future.length; i++)
+		{
+			var event = future[i],
+				selected = selectedEvent == event
+			
+			if (i % 4 == 0)
+			{
+				pointNum++
+				var point = N('li', 'point future')
+				surface.appendChild(point)
+			}
+			if (selected)
+				var selectedPoint = pointNum
+				
+			point.appendChild(this.createPreviewElement(event, selected))
+		}
 		
-		this.nodes.promoBack.style.backgroundImage = "url(" + this.iroot + "/promo-bg.png)"
+		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
 	},
 	
-	fixRatingHeight: function() 
-	{
-		var space = 0,
-			sponsorBanners = this.nodes.sponsorsMedium.childNodes
-		for(var i = 0; i < sponsorBanners.length; i++) space += sponsorBanners[i].offsetHeight
-		this.nodes.rating.style.height = parseInt((space + 40*sponsorBanners.length)/16)*16 + "px"
+	createPreviewElement: function(event, selected)
+	{   
+		var city = event.city.trans().htmlName(),
+			href = event.href,
+			iroot = '/i/event/' + city + '/' + href,
+			ehref = '/events/' + city + '/' + href,
+			main
+		
+		if (selected)
+		{
+			main = N('span', 'event selected')
+			main.appendChild(N('span', 'mark'))
+		}
+		else
+		{
+			main = N('a', 'event')
+			main.href = ehref
+		}
+		
+		var mini = N('span', 'mini')
+		mini.style.backgroundImage = 'url(' + iroot + '/preview.jpg)'
+		
+		var mask = N('span', 'mask')
+		mini.appendChild(mask)
+		main.appendChild(mini)
+		
+		var date = N('span', 'date')
+		date.appendChild(T(event.adate || event.date.getFormatted()))
+		main.appendChild(date)
+		
+		var desc = N('span', 'desc')
+		desc.appendChild(T(event.name))
+		main.appendChild(desc)
+		
+		return main
 	},
 	
 	renderLowSponsors: function (sponsorsSet)
 	{
+		if (sponsorsSet.length == 0)
+		{
+			this.nodes.sponsorsLow.hide()
+			return
+		}
+		
 		var root = this.nodes.sponsorsLowContent
 		root.empty()
 		
@@ -187,7 +200,7 @@ EventPage.view =
 		{
 			var part = sponsorsSet[i]
 			var dt = N('dt')
-	  	var a = N('a')
+			var a = N('a')
 			a.appendChild(T(part.name.replace(/\s+/g, ' ')))
 			dt.appendChild(a)
 			
@@ -274,34 +287,45 @@ EventPage.view =
 			return
 		
 		var nodes = this.nodes,
-			data = rating.data,
-			root = nodes.rating,
+			root = nodes.rating
+		
+		
+		var data = rating.data,
 			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
 			max = data[sorted[0]],
 			min = data[sorted[sorted.length-1]],
-			padding = String(max).length * 7.5,
-			k = max && min ? ((177 - padding) / (max - min + 1)  * 100) / 100 : 1
+			k = max && min ? 100 / (max - min + 1) : 1
 		
 		root.empty()
+		
+		var labels = N('div', 'labels'),
+			rates = N('div', 'rates')
+		
+		root.appendChild(labels)
+		root.appendChild(rates)
 		
 		for (var i = 0; i < sorted.length; i++)
 		{
 			var name = sorted[i],
-				count = data[name]
+				count = data[name],
+				padding = String(count).length * 3.4, // means 3.4% for a digit
+				width = Math.floor((count - min + 1) * k)
 			
-			var dt = N('dt')
-			dt.appendChild(T(name))
+			if (width < padding)
+				width = padding
 			
-			var dd = N('dd')
-			var width = String(Math.floor((count - min + 1) * k) + padding)
-			dd.animate('easeInOutQuad', {width: [padding, width]}, 1)
-			dd.appendChild(T(count))
-			// dt.addEventListener('click', function () { log(this.offsetWidth, this.scrollWidth) }, false)
-			root.appendChild(dt)
-			root.appendChild(dd)
+			var label = N('div', 'label')
+			label.appendChild(T(name))
+			labels.appendChild(label)
+			
+			var rate = N('div', 'rate')
+			rate.style.width = padding + '%'
+			rate.animate('easeInOutQuad', {width: [padding, width]}, 1, '%')
+			rate.appendChild(T(count))
+			rates.appendChild(rate)
 		}
 		
-		Humanize.adjustTextSizeOfNodes(root, 'dt')
+		Humanize.adjustTextSizeOfNodes(labels, 'div')
 		
 		if (sorted.length > rating.max)
 		{
@@ -361,8 +385,6 @@ EventPage.view =
 			ops.push(s)
 		}
 		
-		// log(ops)
-		
 		return ops
 	},
 	
@@ -421,9 +443,16 @@ EventPage.view =
 		var nodes = this.nodes
 		
 		var sponsor = sponsorsSet[0]
-		nodes.sponsorsHighTitle.innerHTML = sponsor.name
-		nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
-		nodes.sponsorsHigh.href = sponsor.href
+		if (sponsor)
+		{
+			nodes.sponsorsHighTitle.innerHTML = sponsor.name
+			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
+			nodes.sponsorsHigh.href = sponsor.href
+		}
+		else
+		{
+			nodes.sponsorsHighBlock.hide()
+		}
 	},
 	
 	renderDialogue: function (dialogue)
@@ -508,13 +537,6 @@ EventPage.view =
 		this.nodes.formPopupThanks.show()
 	},
 	
-	showFormHolding: function ()
-	{
-		this.stopFormChecker()
-		this.nodes.formPopupFields.hide()
-		this.nodes.formPopupHolding.show()
-	},
-	
 	hideFormPopupThanks: function ()
 	{
 		this.startFormChecker()
@@ -530,8 +552,10 @@ EventPage.view =
 	
 	resetForm: function ()
 	{
-		this.nodes.form.reset()
-		this.nodes.formPopupNameInput.value = this.event.name
+		var nodes = this.nodes
+		nodes.form.reset()
+		nodes.formPopupNameInput.value = this.event.name
+		nodes.formPopupHrefInput.value = this.event.href
 		this.setFormLock(true)
 	},
 	
@@ -539,20 +563,12 @@ EventPage.view =
 	{
 		var me = this
 		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { log('check'); me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
+		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()
 	{
 		clearInterval(this.formCheckTimer)
-	},
-	
-	renderStatus: function (status)
-	{
-		if (status == "holding")
-		{
-			this.showFormHolding()
-		}
 	}
 }
 
