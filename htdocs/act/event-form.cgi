@@ -35,6 +35,7 @@ row2 = values.map { |v| "<td>#{v}</td>" }.join("")
 
 fname  = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
 
+FileUtils.mkdir_p($data_dir)
 File.open("#{$data_dir}#{fname}.csv", "a") do |f|
   CSV::Writer.generate(f) do |w|
     w << [Time.now.strftime("%Y-%m-%d %H:%M:%S"), p["event"], *values]
