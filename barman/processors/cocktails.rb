@@ -101,9 +101,7 @@ class CocktailsProcessor < Barman::Processor
       to_print = Config::IMAGES_PRINT_DIR + hash[:name_eng].html_name + ".jpg"
       
       if File.exists?(from + "big.png")
-        # FileUtils.cp_r(from + "big.png", to_big, @mv_opt)
-        system(%Q{/www/inshaker/barman/pngm/pngm $'#{(from + "big.png").ansi_quote}' $'#{to_big.ansi_quote}' >/dev/null}) or
-          warn "  while pngm-ing #{from + "big.png"} -> #{to_big}"
+        flush_pngm_img(from + "big.png", to_big)
       else
         warn "Can't find big image at #{from + "big.png"}"
       end

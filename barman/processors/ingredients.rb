@@ -37,8 +37,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::INGREDS_PRINT_ROOT, Config::MERCH_ROOT, Config::INGREDS_ROOT,
-      Config::INGREDS_PRINT_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
+    FileUtils.mkdir_p [Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
   end
   
   def prepare_ingredients
@@ -117,10 +116,14 @@ class IngredientsProcessor < Barman::Processor
 
           from_big   = unbranded_dir + "i_big.png"
           to_big   = Config::INGREDS_ROOT       + ingredient.trans + ".png"
-          to_print = Config::INGREDS_PRINT_ROOT + ingredient.trans + ".jpg"
-
-          FileUtils.cp_r(from_big, to_big, opt)         unless !File.exists?(from_big)
-          flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
+          # to_print = Config::INGREDS_PRINT_ROOT + ingredient.trans + ".jpg"
+          
+          if File.exists?(from_big)
+            flush_pngm_img(from_big, to_big)
+          else
+            warn "Can't find big image at #{from_big}"
+          end
+          # flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
           
           good[:volumes].each do |vol_arr|
             vol_name   = vol_arr[0].to_s.gsub(".", "_")
@@ -153,8 +156,14 @@ class IngredientsProcessor < Barman::Processor
           to_banner = Config::BANNERS_ROOT       + good[:mark].trans + ".png"
           
           FileUtils.cp_r(from_banner, to_banner, opt)   unless !File.exists?(from_banner)
-          FileUtils.cp_r(from_big, to_big, opt)         unless !File.exists?(from_big)
-          flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
+          
+          if File.exists?(from_big)
+            flush_pngm_img(from_big, to_big)
+          else
+            warn "Can't find big image at #{from_big}"
+          end
+          
+          # flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
           
           good[:volumes].each do |vol_arr|
             vol_name   = vol_arr[0].to_s.gsub(".", "_")
