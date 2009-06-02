@@ -32,7 +32,7 @@ class CocktailsProcessor < Barman::Processor
   
   def prepare_dirs
     FileUtils.mkdir_p [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
-      Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::IMAGES_PRINT_DIR, Config::VIDEOS_DIR]
+      Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::VIDEOS_DIR]
   end
   
   def prepare_cocktails
@@ -100,11 +100,18 @@ class CocktailsProcessor < Barman::Processor
       to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
       to_print = Config::IMAGES_PRINT_DIR + hash[:name_eng].html_name + ".jpg"
       
-      FileUtils.cp_r(from + "big.png", to_big, @mv_opt)     unless !File.exists?(from + "big.png")
+      if File.exists?(from + "big.png")
+        # FileUtils.cp_r(from + "big.png", to_big, @mv_opt)
+        system(%Q{/www/inshaker/barman/pngm/pngm $'#{(from + "big.png").ansi_quote}' $'#{to_big.ansi_quote}' >/dev/null}) or
+          warn "  while pngm-ing #{from + "big.png"} -> #{to_big}"
+      else
+        warn "Can't find big image at #{from + "big.png"}"
+      end
+      
       FileUtils.cp_r(from + "small.png", to_small, @mv_opt) unless !File.exists?(from + "small.png")
       FileUtils.cp_r(from + "bg.png", to_bg, @mv_opt)       unless !File.exists?(from + "bg.png")
       
-      flush_print_img(from + "big.png", to_print, [106, 210])
+      # flush_print_img(from + "big.png", to_print, [106, 210])
       #system("/usr/local/bin/optipng " + to_small + " > /dev/null")
     end
   end
