@@ -258,14 +258,22 @@ EventPage.view =
 				point.className = 'point'
 			}
 			
-			var a = N('a')
-			a.href = logo.href
-			point.appendChild(a)
-			point.appendChild(T(' '))
+			if (logo)
+			{
+				var a = N('a')
+				a.href = logo.href
+				point.appendChild(a)
+				point.appendChild(T(' '))
+				
+				var img = N('img')
+				a.appendChild(img)
+				img.src = this.iroot + '/logos/' + logo.src
+			}
+			else
+			{
+				point.appendChild(N('b')).appendChild(T(' '))
+			}
 			
-			var img = N('img')
-			a.appendChild(img)
-			img.src = this.iroot + '/logos/' + logo.src
 			
 			
 			if (i % 5 == 4)

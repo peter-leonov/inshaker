@@ -193,9 +193,13 @@ private
         arr = []
         low << {:name => name, :logos => arr}
         logos.each do |sponsor|
-          hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+          if sponsor == "заглушка"
+            hash = nil
+          else
+            hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
+            FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+          end
           arr << hash
-          FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
         end
         
         # arr << {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
