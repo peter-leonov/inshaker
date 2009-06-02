@@ -13,7 +13,7 @@ class EventsProcessor < Barman::Processor
     
     DB_JS = HTDOCS_DIR + "db/events.js"
     
-    EVENT_ERB = Barman::TEMPLATES_DIR + "event.rhtml"
+    EVENT_TEMPLATES = Barman::TEMPLATES_DIR
   end
   
   
@@ -84,10 +84,11 @@ class EventsProcessor < Barman::Processor
   end
   
   def flush_html
-    template = File.open(Config::EVENT_ERB).read
-    renderer = ERB.new(template)
     @entities.each do |name, entity|
       # warn entity
+      template = File.open(Config::EVENT_TEMPLATES + "event.#{entity[:lang]}.rhtml").read
+      renderer = ERB.new(template)
+      
       out_html_path = Config::EVENTS_HTML_DIR + entity[:city].trans.html_name
       if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
       erb = EventTemplate.new(entity)
@@ -127,6 +128,7 @@ private
     ru_date             = Time.gm(*yaml['Дата'].split(".").reverse.map{|v|v.to_i})
     ru_date_str         = "#{ru_date.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
     @entity[:date]      = ru_date.to_i * 1000
+    @entity[:lang]      = {'английский' => 'en', nil => 'ru', 'русский' => 'ru'}[yaml['Язык']]
     
     @entity[:adate]     = yaml['Примерная дата']
     @entity[:name]      = yaml['Название']

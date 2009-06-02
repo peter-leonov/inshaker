@@ -194,7 +194,7 @@ EventPage.view =
 			for (var j = 0; j < logos.length; j++)
 				all.push(logos[j])
 		}
-		sponsorsSet.unshift({name: 'Все', logos: all})
+		sponsorsSet.unshift({name: '*', logos: all})
 		
 		for (var i = 0; i < sponsorsSet.length; i++)
 		{
