@@ -6,7 +6,7 @@
 typedef unsigned char u_char;
 typedef int fd_t;
 
-struct png_chunk_size_s
+struct net32_s
 {
 	u_char a;
 	u_char b;
@@ -14,15 +14,7 @@ struct png_chunk_size_s
 	u_char d;
 };
 
-struct png_chunk_crc_s
-{
-	u_char a;
-	u_char b;
-	u_char c;
-	u_char d;
-};
-
-#define copy_abcd(dst, src) \
+#define copy_net32(dst, src) \
 dst = 0; \
 dst += src.a; \
 dst <<= 8; \
@@ -33,8 +25,7 @@ dst <<= 8; \
 dst += src.d;
 
 
-typedef struct png_chunk_size_s png_chunk_size_t;
-typedef struct png_chunk_crc_s png_chunk_crc_t;
+typedef struct net32_s net32_t;
 
 char *png_header = "\x89PNG\x0D\x0A\x1A\x0A";
 
@@ -89,18 +80,17 @@ process (char const *srcfn, char const *dstfn)
 	
 	fwrite(header, 8, 1, dst);
 	
-	size_t i;
-	png_chunk_size_t chunk_size;
-	png_chunk_crc_t chunk_crc;
+	net32_t size_net;
+	net32_t crc_net;
 	size_t size;
 	unsigned int crc;
 	
-	for (i = 0; /*void*/; ++i)
+	for (;;)
 	{
-		if (fread(&chunk_size, sizeof(chunk_size), 1, src) < 1)
+		if (fread(&size_net, sizeof(size_net), 1, src) < 1)
 			break;
-		fwrite(&chunk_size, sizeof(chunk_size), 1, dst);
-		copy_abcd(size, chunk_size);
+		fwrite(&size_net, sizeof(size_net), 1, dst);
+		copy_net32(size, size_net);
 		
 		if (fread(name, 4, 1, src) < 1)
 			break;
@@ -109,13 +99,13 @@ process (char const *srcfn, char const *dstfn)
 		
 		copy_bytes(dst, src, size);
 		
-		if (fread(&chunk_crc, sizeof(chunk_crc), 1, src) < 1)
+		if (fread(&crc_net, sizeof(crc_net), 1, src) < 1)
 			break;
-		fwrite(&chunk_crc, sizeof(chunk_crc), 1, dst);
-		copy_abcd(crc, chunk_crc);
+		fwrite(&crc_net, sizeof(crc_net), 1, dst);
+		copy_net32(crc, crc_net);
 		
 		
-		printf("%s %-4zd (%d %d %d %d)\n", name, size, chunk_size.a, chunk_size.b, chunk_size.c, chunk_size.d);
+		printf("%s %-4zd (%d %d %d %d)\n", name, size, size_net.a, size_net.b, size_net.c, size_net.d);
 	}
 	
 	return 0;
