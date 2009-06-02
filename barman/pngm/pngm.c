@@ -14,7 +14,17 @@ struct net32_s
 	u_char d;
 };
 
-#define copy_net32(dst, src) \
+struct color48_s
+{
+	u_char r1;
+	u_char r2;
+	u_char g1;
+	u_char g2;
+	u_char b1;
+	u_char b2;
+};
+
+#define from_net32(dst, src) \
 dst = 0; \
 dst += src.a; \
 dst <<= 8; \
@@ -24,13 +34,23 @@ dst += src.c; \
 dst <<= 8; \
 dst += src.d;
 
+#define to_net32(dst, src) \
+dst.a = src & 0xF; \
+dst.b = src >> 8 & 0xF; \
+dst.c = src >> 16 & 0xF; \
+dst.d = src >> 24 & 0xF;
+
 
 typedef struct net32_s net32_t;
+typedef struct color48_s color48_t;
+
 
 char *png_header = "\x89PNG\x0D\x0A\x1A\x0A";
 
 static int process (char const *srcfn, char const *dstfn);
 static size_t copy_bytes (FILE *dst, FILE *src,  size_t n);
+unsigned long compute_crc (void *buf, int len);
+
 
 int main (int argc, char const *argv[])
 {
@@ -83,29 +103,51 @@ process (char const *srcfn, char const *dstfn)
 	net32_t size_net;
 	net32_t crc_net;
 	size_t size;
-	unsigned int crc;
+	unsigned long crc;
 	
 	for (;;)
 	{
 		if (fread(&size_net, sizeof(size_net), 1, src) < 1)
 			break;
-		fwrite(&size_net, sizeof(size_net), 1, dst);
-		copy_net32(size, size_net);
+		from_net32(size, size_net);
 		
 		if (fread(name, 4, 1, src) < 1)
 			break;
-		fwrite(name, 4, 1, dst);
 		name[4] = '\0';
 		
+		if (memcmp(name, "IDAT", 4) == 0)
+		{
+			char *bkgd_name = "bKGD";
+			color48_t bkgd_color = {0, 0, 0, 0, 0, 0};
+			
+			net32_t bkgd_size_net;
+			net32_t bkgd_crc_net;
+			size_t bkgd_size = sizeof(bkgd_color);
+			unsigned long bkgd_crc = compute_crc(&bkgd_color, 0);
+			
+			printf("+ %s size: %4zd, crc: %10lu\n", bkgd_name, bkgd_size, bkgd_crc);
+			
+			to_net32(bkgd_size_net, bkgd_size);
+			to_net32(bkgd_crc_net, bkgd_crc);
+			
+			fwrite(&bkgd_size_net, sizeof(bkgd_size_net), 1, dst);
+			fwrite(bkgd_name, 4, 1, dst);
+			fwrite(&bkgd_color, sizeof(bkgd_color), 1, dst);
+			fwrite(&bkgd_crc_net, sizeof(bkgd_crc_net), 1, dst);
+		}
+		
+		fwrite(&size_net, sizeof(size_net), 1, dst);
+		fwrite(name, 4, 1, dst);
 		copy_bytes(dst, src, size);
 		
 		if (fread(&crc_net, sizeof(crc_net), 1, src) < 1)
 			break;
 		fwrite(&crc_net, sizeof(crc_net), 1, dst);
-		copy_net32(crc, crc_net);
+		from_net32(crc, crc_net);
 		
 		
-		printf("%s %-4zd (%d %d %d %d)\n", name, size, size_net.a, size_net.b, size_net.c, size_net.d);
+		// printf("  %s size: %-4zd (%-2d %-2d %-2d %-2d), crc: %u\n", name, size, size_net.a, size_net.b, size_net.c, size_net.d, crc);
+		printf("  %s size: %4zd, crc: %10lu\n", name, size, crc);
 	}
 	
 	return 0;
@@ -196,7 +238,7 @@ update_crc (unsigned long crc, unsigned char *buf, int len)
 
 /* Return the CRC of the bytes buf[0..len-1]. */
 unsigned long
-crc (unsigned char *buf, int len)
+compute_crc (void *buf, int len)
 {
 	return update_crc(0xffffffffL, buf, len) ^ 0xffffffffL;
 }
