@@ -116,6 +116,7 @@ label{display:block;}
 .search-form dd{background-color:#89af21;cursor:pointer;margin-bottom:3px;height:auto;overflow:hidden;padding:0 0 2px;}
 .search-form span{float:left;text-decoration:underline;font-size:11px;padding-left:6px;width:100px;}
 
+#cocktail-page .body-wrapper,
 #cocktails-page .body-wrapper { overflow: hidden; }
 #cocktails-page .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
 #cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
