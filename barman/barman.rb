@@ -34,5 +34,10 @@ module Barman
     def flush_print_img(src_file, dest_file, size)
       system(%Q{convert $'#{src_file.ansi_quote}' -background white -flatten -scale #{size[0]}x#{size[1]} $'#{dest_file.ansi_quote}'}) or warn "  while converting #{src_file} -> #{dest_file}"
     end
+    
+    def flush_pngm_img(src, dst)
+      system(%Q{pngm $'#{src.ansi_quote}' $'#{dst.ansi_quote}' >/dev/null}) or
+        warn "  error while pngm #{src} -> #{dst}"
+    end
   end
 end

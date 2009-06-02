@@ -45,9 +45,9 @@ img.link { right: 40px; top: 24px;}
 .content { padding: 40px; }
 
 h1#cocktail_name { margin-bottom: 26px; }
-img#cocktail_img { height: 210px; width: 106px; float: left; }
+img#cocktail_img { height: 210px; float: left; }
 div#cocktail_ingreds { min-height: 210px; margin-left: 130px; }
-#cocktail_ingreds img { margin: 0 13px 8px 0; }
+#cocktail_ingreds img { margin: 0 13px 8px 0; width: 60px; height: 60px; }
 
 ul#receipt {
     list-style-image: url(bg/cocktail/li.png);
