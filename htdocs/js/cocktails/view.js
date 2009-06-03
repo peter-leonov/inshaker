@@ -1,6 +1,6 @@
 function CocktailsView (states, nodes, styles, decorationParams) {
 	nodes.preloader.hide();
-	document.documentElement.style.overflowY="auto";
+	
 	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
 	this.filterElems   = { tag: null, strength: null, letter: null };
