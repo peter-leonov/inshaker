@@ -68,15 +68,14 @@ function CocktailsController (states, cookies, model, view) {
         pairs.push([key, value]);
       }
     
-    var hash = '';
+    var hash = [], enc = encodeURIComponent;
     for(var i = 0; i < pairs.length; i++) {
-      hash += pairs[i][0] + "=" + pairs[i][1];
-      if(i != pairs.length - 1) hash += "&";
+      hash[i] = encode(pairs[i][0]) + "=" + encode(pairs[i][1]);
     }
-    if(hash) window.location.hash = hash;
+    if(hash) window.location.hash = hash.join('&');
   };
 	
-	this.onLetterFilter = function(letter, all) {		
+	this.onLetterFilter = function(letter, all) {
 		this.model.onLetterFilter(letter, all);
 	};
 	
