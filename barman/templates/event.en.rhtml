@@ -12,7 +12,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>Хорошие люди собираются вместе, чтобы познакомиться и повеселиться!</h1>
+			<h1>Events!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews programica-rolling-images">
@@ -42,31 +42,31 @@
 						<p class="parole"><%= @target %></p>
 						
 						<% if @status == "preparing" %>
-							<a class="sign-on"><span>Don't miss!</span> →</a>
+							<a class="sign-on"><span>Register to be there!</span> →</a>
 							<dl class="info">
 								<% if @enter %>
-									<dt>Вход:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
+									<dt>Entrance:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
 								<% end %>
 								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
 								<% end %>
 							</dl>
 						<% elsif @status == "holding" %>
 							<dl class="info">
 								<% if @enter %>
-									<dt>Вход:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
+									<dt>Entrance:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
 								<% end %>
 								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
 								<% end %>
 							</dl>
 						<% elsif @status == "archive" %>
 							<% if @photos %>
-								<a href="<%= @photos %>" class="view-photos"><span>Посмотри фото!</span> →</a>
+								<a href="<%= @photos %>" class="view-photos"><span>Event photos!</span> →</a>
 							<% end %>
 							<dl class="info">
 								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
 								<% end %>
 							</dl>
 						<% end %>
@@ -79,7 +79,7 @@
 		<div id="sidebar">
 			<div id="main-sponsors" class="column"><div class="body-wrapper">
 				<div class="b-title">
-					<h3>Генеральный партнер</h3>
+					<h3>General partner</h3>
 					<h4></h4>
 				</div>
 				<a class="banner"></a>
@@ -87,7 +87,7 @@
 			<div id="comming">
 				<h2></h2>
 				<dl class="rating"></dl>
-				<a class="list-all">Весь список</a>
+				<a class="list-all">Entire list</a>
 			</div>
 		</div>
 	</div>
@@ -95,7 +95,7 @@
 	<div id="low-sponsors" class="b-more-cocktails">
 		<div class="column"><div class="body-wrapper">
 			<div class="b-title">
-				<h3>При поддержке</h3>
+				<h3>Supported by</h3>
 			</div>
 			<div class="b-content"></div>
 		</div></div>
@@ -107,21 +107,21 @@
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
-		<p class="menu"><a class="button">X</a><a class="text">Закрыть</a></p>
+		<p class="menu"><a class="button">X</a><a class="text">Close</a></p>
 		<form action="/act/event-form.cgi" method="post" target="ajax">
 			<div class="fields">
-				<h2>Хочу посетить мероприятие!</h2>
-				<label>Мой город:<input type="text" name="city"/></label>
-				<label>Имя:<input type="text" name="first"/></label>
-				<label>Фамилия:<input type="text" name="second"/></label>
-				<label>Мой e-mail:<input type="text" name="email"/></label>
+				<h2>I want to be there!</h2>
+				<label>My city:<input type="text" name="city"/></label>
+				<label>Name:<input type="text" name="first"/></label>
+				<label>Surname:<input type="text" name="second"/></label>
+				<label>E-mail:<input type="text" name="email"/></label>
 				<div class="variable"></div>
 				<p class="limit"><%= @form_hint %> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>
-			<div class="thanks">Спасибо!</div>
-			<div class="holding">Приглашения закончились.</div>
+			<div class="thanks">Thank you!</div>
+			<div class="holding">We are fully booked.</div>
 		</form>
 	</div>
 </div>
