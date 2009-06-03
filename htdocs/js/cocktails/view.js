@@ -346,7 +346,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			li.appendChild(a);
 			this.nodeCache[id] = li;
 		}
-		return li;		
+		return li;
 	};
 	
 	this.createIngredientElement = function(name){
@@ -356,7 +356,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		a.addEventListener('click', function(e){
 			self.onIngredientRemoved(name);
 		}, false);
-		return a;	
+		return a;
 	};
 	
 	this.getNumOfPages = function(resultSet, perPage) {
