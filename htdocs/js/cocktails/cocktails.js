@@ -9,10 +9,9 @@ CocktailsPage =
 	}
 }
 
-$.onload (
+$.onload(
 	function () {
 		var nodes = {
-			preloader: $('preloader'),
 			resultsDisplay: $('results_display'),
 			resultsRoot: $('surface'),
 			pagerRoot: $('p-list'),
