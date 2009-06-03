@@ -362,13 +362,11 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.renderPager = function (numOfPages) {
 		var span = nodes.pagerRoot;
 		span.empty();
-		var pointer = 1;
-		while(pointer <= numOfPages){
+		for (var i = 1; i <= numOfPages; i++) {
 			var a = document.createElement("a");
-			a.className="button";
-			a.appendChild(document.createTextNode(pointer));
+			a.className= i >= 10 ? "button two" : "button";
+			a.appendChild(document.createTextNode(i));
 			span.appendChild(a);
-			pointer++;
 		}
 	};
 }
