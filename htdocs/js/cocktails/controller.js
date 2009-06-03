@@ -68,7 +68,7 @@ function CocktailsController (states, cookies, model, view) {
         pairs.push([key, value]);
       }
     
-    var hash = [], enc = encodeURIComponent;
+    var hash = [], encode = encodeURIComponent;
     for(var i = 0; i < pairs.length; i++) {
       hash[i] = encode(pairs[i][0]) + "=" + encode(pairs[i][1]);
     }
