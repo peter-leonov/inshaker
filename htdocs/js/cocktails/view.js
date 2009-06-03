@@ -11,7 +11,6 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	
 	this.riJustInited  = true;
 	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
-	this.IE6 = Programica.userAgentRegExps.MSIE6.test(navigator.userAgent);
 	
 	this.currentState;
 	this.stateSwitcher;
@@ -149,18 +148,14 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
 		if(expand) {
-			nodes.mainArea.style.marginLeft = 0;
+			nodes.resultsDisplay.addClassName(styles.expanded);
 			nodes.tagStrengthArea.hide();
-			viewport.addClassName(styles.expanded);
 			this.perPage = 20;
 		} else {
-			nodes.mainArea.style.marginLeft = "16em";
+			nodes.resultsDisplay.remClassName(styles.expanded);
 			nodes.tagStrengthArea.show();
-			viewport.remClassName(styles.expanded);
 			this.perPage = 16;
 		}
-		
-		if(this.IE6) nodes.resultsDisplay.style.width = viewport.offsetWidth + "px"
 		
 		nodes.ingredsView.hide();
 		nodes.searchTipIngredient.setVisible(state == states.byIngredients);
