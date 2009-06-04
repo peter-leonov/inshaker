@@ -77,4 +77,5 @@ $.onload
 <!--# include file="/js/event/model.js" -->
 <!--# include file="/js/event/controller.js" -->
 <!--# include file="/js/event/view.js" -->
+<!--# include file="/js/event/interpolate.js" -->
 

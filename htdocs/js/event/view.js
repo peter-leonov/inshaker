@@ -359,69 +359,7 @@ EventPage.view =
 		
 		var ratingHead = this.nodes.ratingHead
 		if (rating.phrase)
-			ratingHead.innerHTML = this.execPluralizer(rating.phrase, {people: totalPeople, from: totalFrom})
-	},
-	
-	parsePluralizer: function (plu)
-	{
-		var ops = []
-		
-		var strs = plu.split(/\$\{.*?\}/g)
-		if (strs[0] === '')
-			strs.shift()
-		var vars = plu.match(/\$\{.*?\}/g)
-		
-		for (var i = 0; i < strs.length; i++)
-		{
-			var s = strs[i],
-				v = vars[i]
-			
-			if (v !== undefined)
-			{
-				var m = v.match(/\$\{(.*?)(?::(.*?),(.*?),(.*?))?\}/)
-				if (m)
-				{
-					if (m[2] && m[3] && m[4])
-						ops.push([m[1], [m[2], m[3], m[4]]])
-					else
-						ops.push([m[1]])
-				}
-				else
-					reportError(v)
-			}
-			
-			ops.push(s)
-		}
-		
-		return ops
-	},
-	
-	execPluralizer: function (str, data)
-	{
-		var plural = Number.prototype.plural
-			A = Array,
-			res = '',
-			ops = this.parsePluralizer(str)
-		
-		for (var i = 0; i < ops.length; i++)
-		{
-			var op = ops[i]
-			switch (typeof op)
-			{
-				case 'string':
-					res += op
-				break
-				
-				case 'object':
-					if (op[0] !== null && typeof op[1] == 'object' && op[1].constructor == A)
-						res += plural.apply(Number(data[op[0]]), op[1])
-					else if (op[0] !== null)
-						res += Number(data[op[0]])
-				break
-			}
-		}
-		
-		return res
+			ratingHead.innerHTML = rating.phrase.interpolate({people: totalPeople, from: totalFrom})
 	},
 	
 	renderMediumSponsors: function (sponsorsSet)
