@@ -19,7 +19,7 @@ BarPage.model =
 		var bars = Bar.getByQuery(query)
 		if (!bars)
 			return []
-		log(query, bars)
+		
 		for (var i = 0; i < bars.length; i++)
 			if (bars[i].name == name)
 				return [bars[i-1], bars[i+1]]

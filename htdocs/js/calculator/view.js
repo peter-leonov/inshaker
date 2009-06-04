@@ -5,6 +5,8 @@ function CalculatorView() {
 	this.ID_CONTENTS    = 'cart_contents';
 	this.ID_TOTALS      = 'cart_totals';
 	this.ID_DROP_TARGET = 'cart_draghere';
+	this.ID_PRINT_PLAN  = 'print_plan';
+	this.ID_PRINT_PLAN_INACTIVE  = 'print_plan_inactive';
 	this.CLASS_ADD_BTN  = '.bt-want-slap';
 	this.NAME_ELEM      = 'cocktail_name';
 	
@@ -176,15 +178,17 @@ function CalculatorView() {
 	 */
 	this.modelChanged = function(cartData, init){ // model
 		var barName = Storage.get('barName')
-        this.renderCart(cartData);
+		this.renderCart(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
-        else this.initBarChanger(barName)
+		else this.initBarChanger(barName)
 	};
 	
 	this.renderCart = function(cartData){
 		if(cartData.cocktails.length > 0) {
 			$(this.ID_CONTENTS).style.display = "block";
 			$(this.ID_TOTALS).style.display = "block";
+			$(this.ID_PRINT_PLAN).style.display = "inline";
+			$(this.ID_PRINT_PLAN_INACTIVE).style.display = "none";
 			$(this.ID_DROP_TARGET).style.display = "none";
 			
 			var cocktailsParent = $(this.ID_COCKTAILS);
@@ -223,6 +227,8 @@ function CalculatorView() {
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
 			$(this.ID_TOTALS).style.display = "none";
+			$(this.ID_PRINT_PLAN).style.display = "none";
+			$(this.ID_PRINT_PLAN_INACTIVE).style.display = "inline";
 			$(this.ID_DROP_TARGET).style.display = "block";
 		}
 	};

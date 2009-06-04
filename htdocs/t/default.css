@@ -89,7 +89,7 @@ label{display:block;}
 .b-title #partner {display:block; position:absolute;right:0;bottom:8px;width:57px; height: 27px; background:transparent url(/t/icon/partner.png) no-repeat;}
 .b-title #photographer {display:block; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
 .b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
-.b-search{float:left;margin-right:2em;width:14em;}
+.b-search{position:absolute;margin-right:2em;width:14em;}
 #all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
@@ -129,7 +129,7 @@ label{display:block;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; width:520px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
-#alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png);  color: #ec118f; }
+#alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
 
 .autocomplete { font-size:12px; position:absolute; background-color:#FFFFFF; color:#000000; border:#000000 solid; border-width:0px 1px 1px 1px; padding:2px; z-index:1; display:none; }
 .autocomplete div{cursor:pointer; width: 100%;}
@@ -148,7 +148,6 @@ label{display:block;}
 #ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
 
 /*Block content*/
-#search-cocktails-page .b-content{margin-left:16em;}
 /*pager list*/
 .b-content .p-list { }
 .b-content .alphabetical{background:#efefef;font-size:110%;margin-bottom:22px;}
@@ -162,7 +161,7 @@ label{display:block;}
 .b-content ul.cocktails li img{display:block;padding-bottom:7px;margin-left:-10px;width:60px;height:80px;}
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
-.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:relative; left: 564px; top: -363px; }
+.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 565px; top: 385px; }
 .pager-big .prev,
 .pager-big .next {float:left; display:block; background: url(/t/bg/blocks/page-big-buttons.png); width: 16px; height: 14px;} 
 .pager-big .next {margin-left: 3px; background-position: 16px 14px; }
@@ -170,19 +169,24 @@ label{display:block;}
 .pager-big .dis {background:url(/t/bg/blocks/page-big-buttons-dis.png); cursor:default;}
 .pager-big .next.dis {background-position: 16px 14px; }
 
-.b-content .pager{background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;padding:17px 0 0 0;margin-top:18px;position:relative;}
-.b-content .pager .p-list a{display:block; float:left; line-height: 16px; height: 16px; width: 16px; margin-right: 2px; text-align:center;}
-.b-content .pager .p-list a.selected-button {color: #fff; background:url(/t/bg/blocks/page-hi-bg.png) no-repeat; text-decoration:none;}
+.b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
+.b-content .pager .p-list {display: inline;}
+.b-content .pager .p-list a{line-height: 18px; margin-right: 0px; padding: 1px 5px 2px; text-align:center; text-decoration:none;}
+.b-content .pager .p-list a.two{padding: 1px 2px 2px;margin-right: 5px;}
+.b-content .pager .p-list a.selected-button {color: #fff; background:url(/t/bg/blocks/page-hi-bg.png) no-repeat; cursor: default;}
 .b-content .pager .prev,
-.b-content .pager .next{text-decoration:none; font-size: 15px; height:16px; line-height:14px; float:left}
+.b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
 .b-content .pager .prev { margin-right:6px;}
 .b-content .pager .next { margin-left: 4px;}
 .b-content .pager .disabled{cursor:default; color: #c0c0c0;}
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
-.b-content .expanded{width:540px; padding-left: 23px;}
-#cocktails-page #results_display .point{height:560px;width:430px;float:left;}
-#cocktails-page #results_display .expanded .point{height:560px;width:540px;float:left;}
+#cocktails-page .b-content {width:100%;}
+#cocktails-page #results_display {padding-left: 23px;}
+#cocktails-page #results_display .viewport {width:440px;margin-left: 120px;}
+#cocktails-page #results_display.expanded .viewport {width:550px;margin-left: 10px;}
+#cocktails-page #results_display .point{height:560px;width:440px;float:left;}
+#cocktails-page #results_display.expanded .point{width:550px;}
 #cocktails-page #results_display .surface { width: 20000px; }
 #cocktails-page #search_tips { height: 14px}
 
@@ -313,10 +317,14 @@ label{display:block;}
 #b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
 #b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
 #b-bill #print_plan,
+#b-bill #print_plan_inactive,
 #b-bill #call_barmen { font-size: 11px; }
 #b-bill .print-call {margin-top: 14px; text-align: center; padding-bottom: 30px;}
-#b-bill #print_plan { background: url(button/print_plan.png) no-repeat; padding-left: 16px;}
-#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; padding-left: 16px; margin-left: 30px;}
+#b-bill #print_plan,
+#b-bill #print_plan_inactive { background: url(button/print_plan.png) no-repeat; padding-left: 16px; margin-right: 30px; }
+#b-bill #print_plan { display: none;}
+#b-bill #print_plan_inactive { color: #888; }
+#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; padding-left: 16px;}
 
 ul#cart_cocktails {margin-top: 9px;}
 
@@ -344,7 +352,6 @@ ul#cart_cocktails {margin-top: 9px;}
 .win-shop .close{background:url(icon/close.png) no-repeat 0 -10px;position:absolute;height:14px;width:14px;top:11px;right:10px;text-indent:-1000em;}
 .win-shop h3{background:url(bg/body/green-more-title.png) repeat-x 0 -19px;padding:34px 0 0 290px;font-weight:bold;font-size:180%;}
 .win-shop .main .zoom{text-align:center;margin:0 auto 37px;display:table;text-decoration:none;}
-.win-shop .main a.zoom:hover span{text-decoration:none;}
 .win-shop .main .zoom img{display:block;margin:10px auto 13px;}
 .win-shop .main .zoom span{text-decoration:underline;}
 .win-shop .main .zoom b{background:url(icon/zoom.png) no-repeat 0 center;padding-left:11px;text-decoration:none !important;}

@@ -1,18 +1,18 @@
 function CocktailsController (states, cookies, model, view) {
 	this.model = model;
-	this.view  = view;
-
-  this.hashTimeout = null;
+	this.view	= view;
+	
+	this.hashTimeout = null;
 	
 	this.initialize = function () {
 		var filters = this.filtersFromRequest();
-    var states = null;
-    var origin = "request";
-    if(!filters) {
-      filters = this.filtersFromCookie();
-      states = this.statesFromCookies();
-      origin = "cookie";
-    }
+		var states = null;
+		var origin = "request";
+		if(!filters) {
+			filters = this.filtersFromCookie();
+			states = this.statesFromCookies();
+			origin = "cookie";
+		}
 		
 		this.view.controller = this;
 		this.model.initialize(filters, states, origin);
@@ -32,51 +32,50 @@ function CocktailsController (states, cookies, model, view) {
 		} else return null;
 	};
 	
- 	this.statesFromCookies = function () {
-        var res = [];
-        var ss = Cookie.get(cookies.strengthState);
-        if(ss) res[0] = Object.parse(ss);
-        var ts = Cookie.get(cookies.tagState);
-        if(ts) res[1] = Object.parse(ts);
-        return res;
-    };
-
+	this.statesFromCookies = function () {
+		var res = [];
+		var ss = Cookie.get(cookies.strengthState);
+		if(ss) res[0] = Object.parse(ss);
+		var ts = Cookie.get(cookies.tagState);
+		if(ts) res[1] = Object.parse(ts);
+		return res;
+	};
+	
 	this.filtersFromCookie = function () {
 		var cookie = Cookie.get(cookies.filter);
 		if(cookie) return Object.parse(cookie);
-    else return null;
+		else return null;
 	};
 	
 	this.saveState = function (filters, tagState, strengthState) {
-    var self = this;
-    clearTimeout(this.hashTimeout);
-    this.hashTimeout = setTimeout(function() { 
-      self.updatePageHash(filters);
-   	
-    	Cookie.set(cookies.tagState, Object.stringify(tagState));
-      Cookie.set(cookies.strengthState, Object.stringify(strengthState));
-      Cookie.set(cookies.filter, Object.stringify(filters));
-    } , 400);
+		var self = this;
+		clearTimeout(this.hashTimeout);
+		this.hashTimeout = setTimeout(function() { 
+			self.updatePageHash(filters);
+			
+			Cookie.set(cookies.tagState, Object.stringify(tagState));
+			Cookie.set(cookies.strengthState, Object.stringify(strengthState));
+			Cookie.set(cookies.filter, Object.stringify(filters));
+		} , 400);
 	};
-
-  this.updatePageHash = function(filters) {
-    var pairs = [];
-    for(var key in filters)
-      if(filters[key] != "" || (filters[key] === 0 && key != "page")) {
-        var value = filters[key];
-        if(key == "state") value = keyForValue(states, value)
-        pairs.push([key, value]);
-      }
-    
-    var hash = '';
-    for(var i = 0; i < pairs.length; i++) {
-      hash += pairs[i][0] + "=" + pairs[i][1];
-      if(i != pairs.length - 1) hash += "&";
-    }
-    if(hash) window.location.hash = hash;
-  };
 	
-	this.onLetterFilter = function(letter, all) {		
+	this.updatePageHash = function(filters) {
+		var pairs = [];
+		for(var key in filters)
+			if(filters[key] != "" || (filters[key] === 0 && key != "page")) {
+				var value = filters[key];
+				if(key == "state") value = keyForValue(states, value)
+				pairs.push([key, value]);
+			}
+		
+		var hash = [], encode = encodeURIComponent;
+		for(var i = 0; i < pairs.length; i++) {
+			hash[i] = encode(pairs[i][0]) + "=" + encode(pairs[i][1]);
+		}
+		if(hash) window.location.hash = hash.join('&');
+	};
+	
+	this.onLetterFilter = function(letter, all) {
 		this.model.onLetterFilter(letter, all);
 	};
 	
