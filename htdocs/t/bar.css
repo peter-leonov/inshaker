@@ -38,7 +38,7 @@
 #bar-page .column-main .body-wrapper,
 #bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
 #bar-page #sidebar .parties { overflow: visible; }
-#bar-page #sidebar .parties .column { width: 30.7em; }
+#bar-page #sidebar .parties .column { width: 310px; }
 #bar-page #sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
 #bar-page #sidebar .parties .viewport .point { width: 220px; display: block; }
 #bar-page #sidebar .parties .viewport .point img { margin: 0 auto; }
@@ -61,6 +61,6 @@
 #bar-page .b-content .photos .prev,
 #bar-page .b-content .photos .next { display: block; }
 
-#bar-page .column-main .body-wrapper,
-#bar-page #sidebar .map .body-wrapper { height: 487px; }
+#sidebar {margin-left:16px;}
+#bar-page .column-main .body-wrapper { height: 511px; }
 <!--# endif -->
