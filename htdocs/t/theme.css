@@ -8,4 +8,5 @@ body {background-position:-139px -141px; background-repeat: repeat-x;}
 #bars-page body, .bars-page body { background-image:url(bg/bars/bg.png) }
 #cocktails-page body, .cocktails-page body { background-image:url(bg/cocktails/bg.png) }
 #index-page body, .index-page body, #about-page body { background-image:url(bg/index/bg.png) }
+#gifts-page body, .gifts-page body { background-image:url(bg/gifts/bg.jpg) }
 

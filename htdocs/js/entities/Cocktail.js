@@ -125,7 +125,7 @@ Object.extend(Cocktail,
 			}
 			if(good == ingredients.length) res.push(set[i]);
 		}
-		return res;
+		return res.sort(this.lessIngredientsSort);
 	},
 	
 	getByFilters: function(filters){
@@ -158,6 +158,14 @@ Object.extend(Cocktail,
   nameSort: function(a,b) {
       if(a.name > b.name) return 1;
 	  else if(a.name == b.name) return 0;
+	  else return -1;
+  },
+  
+  lessIngredientsSort: function(a,b) {
+      var ail = a.ingredients.length, bil = b.ingredients.length;
+
+      if(ail > bil) return 1;
+	  else if(ail == bil) return 0;
 	  else return -1;
   }
 })
