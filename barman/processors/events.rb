@@ -229,7 +229,7 @@ private
         value = row["value"]
         
         if seen[email]
-          doubles << "#{i}: #{v}"
+          doubles << "#{line}: #{value}"
           next
         end
         seen[email] = true
@@ -240,7 +240,7 @@ private
           if m then
             value = m[1]
           else
-            puts "  #{i}: Не могу понять email: '#{v}'"
+            puts "  #{line}: Не могу понять email: '#{value}'"
             next
           end
         end
@@ -257,7 +257,7 @@ private
       end
       
       puts "  Неизвестные значения:\n  " + unknown.join("\n  ") unless unknown.empty?
-      puts "\n  Повторяющиеся адреса:\n  " + doubles.join("\n  ") unless doubles.empty?
+      puts "\n  Повторяющиеся значения:\n  " + doubles.join("\n  ") unless doubles.empty?
     end
     
     @entity[:rating][:data] = rating
