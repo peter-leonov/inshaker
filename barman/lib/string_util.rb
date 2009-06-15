@@ -62,4 +62,8 @@ class String
   def ansi_quote
     gsub(/(['\\])/, '\\\\\1')
   end
+  
+  def quote
+    gsub(/([$"\\])/, '\\\\\1')
+  end
 end

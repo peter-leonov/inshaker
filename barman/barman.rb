@@ -36,7 +36,7 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
-      system(%Q{pngm $'#{src.ansi_quote}' $'#{dst.ansi_quote}' >/dev/null}) or
+      system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null}) or
         warn "  error while pngm #{src} -> #{dst}"
     end
   end
