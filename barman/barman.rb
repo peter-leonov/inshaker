@@ -8,6 +8,7 @@ require 'erb'
 require 'csv'
 require 'yaml'
 
+$stdout.sync = true
 $KCODE = 'u'
 
 module Barman
