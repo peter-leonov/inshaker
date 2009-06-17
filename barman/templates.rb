@@ -14,7 +14,7 @@ class CocktailTemplate
     @tools       = hash[:tools]
     @receipt     = hash[:receipt]
     @ingredients = hash[:ingredients]
-    @has_video   = hash[:has_video]
+    @video       = hash[:video]
   end
   
   def get_binding

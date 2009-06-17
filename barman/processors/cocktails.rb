@@ -31,28 +31,45 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def prepare_dirs
+    # FileUtils.rmtree [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::VIDEOS_DIR]
+    
     FileUtils.mkdir_p [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
       Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::VIDEOS_DIR]
   end
   
+  def prepare_templates
+    @cocktail_renderer = ERB.new(File.open(Config::COCKTAIL_ERB).read)
+  end
+  
   def prepare_cocktails
+    if File.exists?(Config::DB_JS)
+      @cocktails_mtime = File.mtime(Config::DB_JS)
+      @cocktails = JSON.parse(File.open(Config::DB_JS).read)
+    else
+      @cocktails_mtime = Time.at(0)
+    end
+  end
+  
+  def update_cocktails
     root = Dir.new(Config::COCKTAILS_DIR)
     
     root.each do |dir|
       cocktail_dir = root.path + dir
-      if File.ftype(cocktail_dir) == "directory" and !@excl.include?(dir)
-        
+      if File.ftype(cocktail_dir) == "directory" and !@excl.include?(dir) and File.mtime(cocktail_dir) > @cocktails_mtime
         @cocktail               = {}
         @cocktail[:tags]        = []
         @cocktail[:tools]       = []
         @cocktail[:ingredients] = []
-        @cocktail[:has_video]   = false
         
         parse_about_text  File.open(cocktail_dir + "/about.txt").read
         parse_legend_text File.open(cocktail_dir + "/legend.txt").read
         
-        if File.exists? cocktail_dir + "/video.flv" then @cocktail[:has_video] = true end
+        if File.exists? cocktail_dir + "/video.flv" then @cocktail[:video] = true end
         @cocktails[@cocktail[:name]] = @cocktail
+        
+        update_images @cocktail[:name], @cocktail
+        update_html @cocktail[:name], @cocktail
+        update_video @cocktail[:name], @cocktail
       end
     end
   end
@@ -80,56 +97,45 @@ class CocktailsProcessor < Barman::Processor
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
   end
   
-  def flush_html
-    template = File.open(Config::COCKTAIL_ERB).read
-    renderer = ERB.new(template)
-    @cocktails.each do |name, hash|
-      cocktail = CocktailTemplate.new(hash)
-      File.open(Config::COCKTAILS_HTML_DIR + hash[:name_eng].html_name + ".html", "w+") do |html|
-        html.write renderer.result(cocktail.get_binding)
-      end
+  def update_html name, hash
+    cocktail = CocktailTemplate.new(hash)
+    File.open(Config::COCKTAILS_HTML_DIR + hash[:name_eng].html_name + ".html", "w+") do |html|
+      html.write @cocktail_renderer.result(cocktail.get_binding)
     end
   end
   
-  def flush_images
-    @cocktails.each do |name, hash|
-      from = Config::COCKTAILS_DIR + hash[:name_eng] + "/"
-      
-      to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
-      to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
-      to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
-      to_print = Config::IMAGES_PRINT_DIR + hash[:name_eng].html_name + ".jpg"
-      
-      if File.exists?(from + "big.png")
-        flush_pngm_img(from + "big.png", to_big)
-      else
-        warn "Can't find big image at #{from + "big.png"}"
-      end
-      
-      FileUtils.cp_r(from + "small.png", to_small, @mv_opt) unless !File.exists?(from + "small.png")
-      FileUtils.cp_r(from + "bg.png", to_bg, @mv_opt)       unless !File.exists?(from + "bg.png")
-      
-      # flush_print_img(from + "big.png", to_print, [106, 210])
-      #system("/usr/local/bin/optipng " + to_small + " > /dev/null")
+  def update_images name, hash
+    from = Config::COCKTAILS_DIR + hash[:name_eng] + "/"
+    
+    to_big   = Config::IMAGES_BIG_DIR   + hash[:name_eng].html_name + ".png"
+    to_small = Config::IMAGES_SMALL_DIR + hash[:name_eng].html_name + ".png"
+    to_bg    = Config::IMAGES_BG_DIR    + hash[:name_eng].html_name + ".png"
+    to_print = Config::IMAGES_PRINT_DIR + hash[:name_eng].html_name + ".jpg"
+    
+    if File.exists?(from + "big.png")
+      flush_pngm_img(from + "big.png", to_big)
+    else
+      warn "Can't find big image at #{from + "big.png"}"
     end
+    
+    FileUtils.cp_r(from + "small.png", to_small, @mv_opt) unless !File.exists?(from + "small.png")
+    FileUtils.cp_r(from + "bg.png", to_bg, @mv_opt)       unless !File.exists?(from + "bg.png")
   end
   
-  def flush_videos
-    @cocktails.each do |name, hash|
-      from = Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
-      to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
-      FileUtils.cp_r(from, to, @mv_opt) unless !File.exists?(from)
-    end
+  def update_video name, hash
+    from = Config::COCKTAILS_DIR + hash[:name_eng] + "/video.flv"
+    to = Config::VIDEOS_DIR + hash[:name_eng].html_name + ".flv"
+    FileUtils.cp_r(from, to, @mv_opt) unless !File.exists?(from)
   end
   
   def run
     prepare_dirs
+    prepare_templates
     prepare_cocktails
     prepare_tags_and_strengths
     
-    flush_html
-    flush_images
-    flush_videos
+    update_cocktails
+    
     flush_json
   end  
 

@@ -8,6 +8,7 @@ require 'erb'
 require 'csv'
 require 'yaml'
 
+$stdout.sync = true
 $KCODE = 'u'
 
 module Barman
@@ -24,10 +25,9 @@ module Barman
     end
     
     def flush_json_object(object, dest_file)
-      json = object.to_json
+      json = object.to_json_expand
       File.open(dest_file, "w+") do |db|
        db.print json
-       db.close
       end
     end
     
