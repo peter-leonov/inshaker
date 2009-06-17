@@ -60,12 +60,11 @@ class CocktailsProcessor < Barman::Processor
         @cocktail[:tags]        = []
         @cocktail[:tools]       = []
         @cocktail[:ingredients] = []
-        @cocktail[:has_video]   = false
         
         parse_about_text  File.open(cocktail_dir + "/about.txt").read
         parse_legend_text File.open(cocktail_dir + "/legend.txt").read
         
-        if File.exists? cocktail_dir + "/video.flv" then @cocktail[:has_video] = true end
+        if File.exists? cocktail_dir + "/video.flv" then @cocktail[:video] = true end
         @cocktails[@cocktail[:name]] = @cocktail
         
         update_images @cocktail[:name], @cocktail
