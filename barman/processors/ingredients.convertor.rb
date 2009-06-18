@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require 'barman'
 require 'ya2yaml'
+require 'lib/stuff'
 
 class IngredientsConvertor < Barman::Processor
   
@@ -75,7 +76,7 @@ class IngredientsConvertor < Barman::Processor
     i = 0
     csv.each do |line|
       if !line[0].nil? # new drink
-        break if (i+=1) > 5
+        # break if (i+=1) > 5
         good = {}
         ingredient = line[0].to_s
         good[:brand] = line[1].to_s
@@ -96,12 +97,15 @@ class IngredientsConvertor < Barman::Processor
     
     @goods.each do |k, v|
       die "more than one element in #{k}" if v.length > 1
+      next unless group_dir = group_dir_of(k)
       v = v[0]
       yaml = {
         "Марка" => v[:mark],
         "Бренд" => v[:brand],
-        "Единица" => v[:unit]
+        "Единица" => v[:unit],
+        "Тара" => v[:volumes].map { |e| {"Объем" => e[0], "Цена" => e[1], "Наличие" => e[2] ? "есть" : "нет"} }
       }
+      File.write(Config::INGREDIENTS_DIR + group_dir + k + (v[:brand] ? "/#{v[:brand]}/" : "/") + "about.yaml", yaml.ya2yaml.gsub(/---\s+/,""))
       # about_path = Config::INGREDIENTS_DIR + group_dir_of(ingredient) + ingredient + (good[:brand] ? "/#{good[:brand]}/" : "/") + "about.txt"
       puts yaml.ya2yaml
     end
@@ -118,7 +122,7 @@ private
         return "#{i[:group]}/"
       end
     end
-    ""
+    nil
   end
 
 end
