@@ -39,5 +39,28 @@ module Barman
       system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null}) or
         warn "  error while pngm #{src} -> #{dst}"
     end
+    
+    def indent
+      @indent += 1
+      yield
+      @indent -= 1
+    end
+    
+    def indentation
+      "  " * @indent
+    end
+    
+    def say msg
+      puts "#{indentation}#{msg}"
+    end
+    
+    def error msg
+      @errors += 1
+      puts "#{indentation}\x1B[31mОшибка:\x1B[0m #{msg}"
+    end
+    
+    def done msg
+      puts "#{indentation}\x1B[32m#{msg}\x1B[0m"
+    end
   end
 end
