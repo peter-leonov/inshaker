@@ -33,91 +33,11 @@ class IngredientsProcessor < Barman::Processor
     
     update_ingredients
     
-    # flush_json
+    flush_json if @errors_count == 0
   end
   
   def prepare_dirs
     FileUtils.mkdir_p [Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
-  end
-  
-  def prepare_ingredients
-    # if File.exists?(Config::DB_JS_INGREDS)
-    #   @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
-    #   @ingredients = JSON.parse(File.open(Config::DB_JS_INGREDS).read)
-    # else
-    #   @ingredients_mtime = Time.at(0)
-    # end
-  end
-  
-  
-  def update_ingredients
-    Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
-      say group_dir.name
-      indent do
-      group_dir.each_dir do |ingredient_dir|
-        say ingredient_dir.name
-        ingredient = read_ingredient(ingredient_dir)
-        unless ingredient
-          indent do
-          ingredient_dir.each_dir do |brand_dir|
-            if ingredient = read_ingredient(brand_dir)
-              ingredient[:brand] = brand_dir.name
-              say brand_dir.name
-              break
-            end
-          end
-          end # indent
-        end
-        
-        unless ingredient
-          error "не нашел описания для ингредиента #{ingredient_dir.name} в группе #{group_dir.name}"
-          next
-        end
-        
-        @goods[ingredient_dir.name] = ingredient
-        
-        p ingredient
-      end
-      end # indent
-      # Dir.new(path + group).each do |name|
-      #   if !@excl.include?(name)
-      #     @ingredient = {}
-      #     @ingredient[:group] = group
-      #     @ingredient[:name] = name
-      #     @ingredients << @ingredient
-      #   end
-      # end
-    end
-  end
-  
-  def read_ingredient dir
-    return unless File.exists? dir.path + "/about.yaml"
-    about = YAML::load(File.open(dir.path + "/about.yaml"))
-    
-    ingredient = {}
-    branded = false
-    
-    if about["Единица"]
-      ingredient[:unit] = about["Единица"]
-    else
-      error "не указана единица"
-    end
-    
-    if about["Марка"]
-      branded = true
-      ingredient[:mark] = about["Марка"]
-    end
-    
-    if about["Тара"] and about["Тара"].length > 0
-      ingredient[:volumes] = volumes = []
-      about["Тара"].each do |v|
-        volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
-      end
-    else
-      error "тара не указана"
-    end
-    
-    return ingredient
   end
   
   def prepare_groups
@@ -130,14 +50,100 @@ class IngredientsProcessor < Barman::Processor
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
   
-  def flush_images
+  
+  def prepare_ingredients
+    if File.exists?(Config::DB_JS_INGREDS)
+      @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
+      @ingredients = JSON.parse(File.open(Config::DB_JS_INGREDS).read)
+    else
+      @ingredients_mtime = Time.at(0)
+    end
+  end
+  
+  
+  def update_ingredients
+    Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
+      say group_dir.name
+      indent do
+      group_dir.each_dir do |ingredient_dir|
+        say ingredient_dir.name
+        ingredient = process_ingredient(ingredient_dir, ingredient_dir.name)
+        unless ingredient
+          indent do
+          ingredient_dir.each_dir do |brand_dir|
+            if ingredient = process_ingredient(brand_dir, ingredient_dir.name, brand_dir.name)
+              say brand_dir.name
+              break
+            end
+          end
+          end # indent
+        end
+        
+        unless ingredient
+          warning "не нашел описания для ингредиента «#{ingredient_dir.name}» в группе «#{group_dir.name}»"
+          next
+        end
+        
+        @goods[ingredient_dir.name] = ingredient
+        
+      end
+      end # indent
+    end
+  end
+  
+  def process_ingredient dir, name, brand=nil
+    return unless File.exists? dir.path + "/about.yaml"
+    about = YAML::load(File.open(dir.path + "/about.yaml"))
+    
+    ingredient = {}
+    
+    if about["Единица"]
+      ingredient[:unit] = about["Единица"]
+    else
+      error "не указана единица"
+    end
+    
+    if brand
+      ingredient[:brand] = brand
+      
+      if about["Марка"]
+        ingredient[:mark] = about["Марка"]
+      else
+        error "не указана марка (бренд «#{brand}»)"
+      end
+    end
+    
+    if about["Тара"] and about["Тара"].length > 0
+      ingredient[:volumes] = volumes = []
+      about["Тара"].each do |v|
+        volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+      end
+    else
+      error "тара не указана"
+    end
+    
+    
+    big = dir.path + "/i_big.png"
+    if File.exists?(big)
+      flush_pngm_img(big, Config::INGREDS_ROOT + name.trans + ".png")
+    else
+      error "нет большой картинки (файл #{big})"
+    end
+    # flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
+    
+    
+    
+    return ingredient
+  end
+  
+  def update_images
     opt = {:remove_destination => true}
     @goods.each do |ingredient, arr|
       arr.each do |good|
         group_dir = "#{group_dir_of ingredient}"
         if good[:brand].empty? # unbranded
           unbranded_dir = Config::INGREDIENTS_DIR + group_dir + ingredient + "/"
-
+          
           from_big   = unbranded_dir + "i_big.png"
           to_big   = Config::INGREDS_ROOT       + ingredient.trans + ".png"
           # to_print = Config::INGREDS_PRINT_ROOT + ingredient.trans + ".jpg"
