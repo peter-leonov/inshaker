@@ -41,24 +41,59 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_ingredients
-    path = Config::INGREDIENTS_DIR
-    Dir.new(path).each do |group|
-      if !@excl.include?(group)
-        Dir.new(path + group).each do |name|
-          if !@excl.include?(name)
-            @ingredient = {}
-            @ingredient[:group] = group
-            @ingredient[:name] = name
-            @ingredients << @ingredient
+    # if File.exists?(Config::DB_JS_INGREDS)
+    #   @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
+    #   @ingredients = JSON.parse(File.open(Config::DB_JS_INGREDS).read)
+    # else
+    #   @ingredients_mtime = Time.at(0)
+    # end
+  end
+  
+  
+  def update_ingredients
+    Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
+      say group_dir.name
+      indent do
+      group_dir.each_dir do |ingredient_dir|
+        say ingredient_dir.name
+        ingredient = read_ingredient(ingredient_dir)
+        unless ingredient
+          indent do
+          ingredient_dir.each_dir do |brand_dir|
+            if ingredient = read_ingredient(brand_dir)
+              say brand_dir.name
+              break
+            end
           end
+          end # indent
         end
+        
+        unless ingredient
+          error "Не нашел описания для ингредиента #{ingredient_dir.name} в группе #{group_dir.name}"
+          next
+        end
+        
+        p ingredient
       end
+      end # indent
+      # Dir.new(path + group).each do |name|
+      #   if !@excl.include?(name)
+      #     @ingredient = {}
+      #     @ingredient[:group] = group
+      #     @ingredient[:name] = name
+      #     @ingredients << @ingredient
+      #   end
+      # end
     end
+  end
+  
+  def read_ingredient dir
+    return unless File.exists? dir.path + "/about.yaml"
+    true
   end
   
   def prepare_groups
     @ingredients_groups = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
-    p @ingredients_groups
   end
   
   def prepare_goods
