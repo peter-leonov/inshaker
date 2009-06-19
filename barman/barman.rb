@@ -24,7 +24,10 @@ module Barman
       @mv_opt = {:remove_destination => true}
       @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml"]
       @indent = 0
-      @errors = 0
+      @errors_count = 0
+      @errors_messages = []
+      @warnings_count = 0
+      @warnings_messages = []
     end
     
     def flush_json_object(object, dest_file)
@@ -58,8 +61,15 @@ module Barman
     end
     
     def error msg
-      @errors += 1
+      @errors_count += 1
+      @errors_messages << msg
       puts "#{indentation}\x1B[31mОшибка:\x1B[0m #{msg}"
+    end
+    
+    def warning msg
+      @warnings_count += 1
+      @warnings_messages << msg
+      puts "#{indentation}\x1B[33mПредупреждение:\x1B[0m #{msg}"
     end
     
     def done msg
