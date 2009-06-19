@@ -24,25 +24,13 @@ class IngredientsConvertor < Barman::Processor
   def initialize
     super
     @ingredients = []
-    @ingredients_groups = []
     @goods = {}
     @opt = {:remove_destination => true}
   end
   
   def run
-    # prepare_ingredients
     update_ingredients
-    prepare_groups
     prepare_goods_yaml
-  end
-  
-  def prepare_ingredients
-    if File.exists?(Config::DB_JS_INGREDS)
-      @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
-      @ingredients = JSON.parse(File.open(Config::DB_JS_INGREDS).read)
-    else
-      @ingredients_mtime = Time.at(0)
-    end
   end
   
   def update_ingredients
@@ -58,13 +46,6 @@ class IngredientsConvertor < Barman::Processor
           end
         end
       end
-    end
-  end
-  
-  def prepare_groups
-    order = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
-    order.each do |name, num|
-      @ingredients_groups[num-1] = name
     end
   end
   
