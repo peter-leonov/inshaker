@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 require 'barman'
 require 'ya2yaml'
-require 'lib/stuff'
 
 class IngredientsConvertor < Barman::Processor
   
