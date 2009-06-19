@@ -30,10 +30,12 @@ class IngredientsProcessor < Barman::Processor
     prepare_dirs
     prepare_ingredients
     prepare_groups
-    prepare_goods
+    # prepare_goods
     
-    flush_images
-    flush_json
+    update_ingredients
+    
+    # flush_images
+    # flush_json
   end
   
   def prepare_dirs
@@ -61,6 +63,7 @@ class IngredientsProcessor < Barman::Processor
           indent do
           ingredient_dir.each_dir do |brand_dir|
             if ingredient = read_ingredient(brand_dir)
+              ingredient[:brand] = brand_dir.name
               say brand_dir.name
               break
             end
@@ -69,9 +72,11 @@ class IngredientsProcessor < Barman::Processor
         end
         
         unless ingredient
-          error "Не нашел описания для ингредиента #{ingredient_dir.name} в группе #{group_dir.name}"
+          error "не нашел описания для ингредиента #{ingredient_dir.name} в группе #{group_dir.name}"
           next
         end
+        
+        @goods[ingredient_dir.name] = ingredient
         
         p ingredient
       end
@@ -89,7 +94,32 @@ class IngredientsProcessor < Barman::Processor
   
   def read_ingredient dir
     return unless File.exists? dir.path + "/about.yaml"
-    true
+    about = YAML::load(File.open(dir.path + "/about.yaml"))
+    
+    ingredient = {}
+    branded = false
+    
+    if about["Единица"]
+      ingredient[:unit] = about["Единица"]
+    else
+      error "не указана единица"
+    end
+    
+    if about["Марка"]
+      branded = true
+      ingredient[:mark] = about["Марка"]
+    end
+    
+    if about["Тара"] and about["Тара"].length > 0
+      ingredient[:volumes] = volumes = []
+      about["Тара"].each do |v|
+        volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+      end
+    else
+      error "тара не указана"
+    end
+    
+    return ingredient
   end
   
   def prepare_groups
