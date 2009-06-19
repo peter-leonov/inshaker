@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'lib/json'
 require 'lib/string_util'
+require 'lib/fileutils'
 require 'templates'
 require 'unicode'
 require 'fileutils'
