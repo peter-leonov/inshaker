@@ -30,11 +30,9 @@ class IngredientsProcessor < Barman::Processor
     prepare_dirs
     prepare_ingredients
     prepare_groups
-    # prepare_goods
     
     update_ingredients
     
-    # flush_images
     # flush_json
   end
   
@@ -126,43 +124,6 @@ class IngredientsProcessor < Barman::Processor
     @ingredients_groups = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
   end
   
-  def prepare_goods
-    csv = CSV::parse(File.open(Config::GOODS_CSV).read)
-    csv.shift # shifting through fields
-    goods_arr = []
-    good = {}
-    ingredient = ""
-    
-    csv.each do |line|
-      if !line[0].nil? # new drink
-        goods_arr = []
-        good = {}
-        ingredient = line[0]
-        good[:brand] = line[1].nil? ? "" : line[1]
-        good[:mark]  = line[2].nil? ? "" : line[2]
-        good[:unit] = line[3]
-        good[:volumes] = []
-        puts "..#{ingredient}"
-        about_path = Config::INGREDIENTS_DIR + group_dir_of(ingredient) + ingredient + (good[:brand] ? "/#{good[:brand]}/" : "/") + "about.txt"
-        good[:desc] = File.exists?(about_path) ? File.open(about_path).read : ""
-        goods_arr << good
-        @goods[ingredient] = goods_arr
-      elsif line[0].nil? and line[1].nil? and line[2].nil? # volumes
-        vol = line[4].nil? ? "" : line[4].zpt.to_f
-        price = line[5].to_f
-        avail = (line[6] == "есть") ? true : false
-        good[:volumes] << [vol, price, avail]
-      elsif !line[1].nil? # drink of the same ingredient
-        good = {}
-        good[:brand] = line[1].nil? ? "" : line[1]
-        good[:mark]  = line[2].nil? ? "" : line[2]
-        good[:unit]  = line[3]
-        good[:volumes] = []
-        goods_arr << good
-      end
-    end
-  end
-  
   def flush_json
     flush_json_object(@ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@goods, Config::DB_JS_GOODS)
@@ -244,15 +205,6 @@ class IngredientsProcessor < Barman::Processor
     end
   end
   
-private
-  
-  def group_dir_of(ingred)
-    res = ""
-    # unicode with its crippled "й"
-    @ingredients.each { |i| if i[:name].trans == ingred.trans then res = "#{i[:group]}/"; break end }
-    res
-  end
-
 end
 
 IngredientsProcessor.new.run
