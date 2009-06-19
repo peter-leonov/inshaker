@@ -23,6 +23,8 @@ module Barman
     def initialize
       @mv_opt = {:remove_destination => true}
       @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml"]
+      @indent = 0
+      @errors = 0
     end
     
     def flush_json_object(object, dest_file)
