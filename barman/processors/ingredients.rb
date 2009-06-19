@@ -31,7 +31,7 @@ class IngredientsProcessor < Barman::Processor
     prepare_ingredients
     prepare_groups
     
-    update_ingredients
+    update_goods
     
     flush_json if @errors_count == 0
   end
@@ -61,79 +61,98 @@ class IngredientsProcessor < Barman::Processor
   end
   
   
-  def update_ingredients
+  def update_goods
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       say group_dir.name
       indent do
-      group_dir.each_dir do |ingredient_dir|
-        say ingredient_dir.name
-        ingredient = process_ingredient(ingredient_dir, ingredient_dir.name)
-        unless ingredient
+      group_dir.each_dir do |good_dir|
+        good = process_good(good_dir, good_dir.name)
+        unless good
+          say good_dir.name
           indent do
-          ingredient_dir.each_dir do |brand_dir|
-            if ingredient = process_ingredient(brand_dir, ingredient_dir.name, brand_dir.name)
-              say brand_dir.name
+          good_dir.each_dir do |brand_dir|
+            if good = process_good(brand_dir, good_dir.name, brand_dir.name)
               break
             end
+          end
+          unless good
+            # warning "не нашел описания для ингредиента «#{good_dir.name}» в группе «#{group_dir.name}»"
+            warning "не нашел описания"
+            next
           end
           end # indent
         end
         
-        unless ingredient
-          warning "не нашел описания для ингредиента «#{ingredient_dir.name}» в группе «#{group_dir.name}»"
-          next
-        end
-        
-        @goods[ingredient_dir.name] = ingredient
-        
+        @goods[good_dir.name] = good
       end
       end # indent
     end
   end
   
-  def process_ingredient dir, name, brand=nil
+  def process_good dir, name, brand=nil
     return unless File.exists? dir.path + "/about.yaml"
+    say dir.name
+    good = {}
+    indent do
+    
+    name_trans = name.trans
+    opt = {:remove_destination => true}
+    
+    img = dir.path + "/i_big.png"
+    if File.exists?(img)
+      flush_pngm_img(img, Config::INGREDS_ROOT + name.trans + ".png")
+    else
+      error "нет большой картинки (файл #{img})"
+    end
+    
+    
     about = YAML::load(File.open(dir.path + "/about.yaml"))
     
-    ingredient = {}
-    
     if about["Единица"]
-      ingredient[:unit] = about["Единица"]
+      good[:unit] = about["Единица"]
     else
       error "не указана единица"
     end
     
     if brand
-      ingredient[:brand] = brand
+      good[:brand] = brand
       
       if about["Марка"]
-        ingredient[:mark] = about["Марка"]
+        good[:mark] = about["Марка"]
+        
+        banner = dir.path + "/banner.png"
+        if File.exists?(banner)
+          FileUtils.cp_r(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png", opt)
+        else
+          error "нет картинки банера (banner.png)"
+        end
+        
       else
         error "не указана марка (бренд «#{brand}»)"
       end
     end
     
     if about["Тара"] and about["Тара"].length > 0
-      ingredient[:volumes] = volumes = []
+      good[:volumes] = volumes = []
       about["Тара"].each do |v|
         volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+        
+        vol_name = v["Объем"].to_s.gsub(".", "_")
+        img = dir.path + "/" + vol_name + "_big.png"
+        
+        if File.exists?(img)
+          FileUtils.cp_r(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png", opt)
+        else
+          error "не могу найти каритку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
+        end
+        
       end
     else
       error "тара не указана"
     end
     
-    
-    big = dir.path + "/i_big.png"
-    if File.exists?(big)
-      flush_pngm_img(big, Config::INGREDS_ROOT + name.trans + ".png")
-    else
-      error "нет большой картинки (файл #{big})"
-    end
-    # flush_print_img(from_big, to_print, [60, 60]) unless !File.exists?(from_big)
-    
-    
-    
-    return ingredient
+    end # indent
+    return good
   end
   
   def update_images
