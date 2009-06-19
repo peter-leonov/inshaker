@@ -79,9 +79,9 @@ class IngredientsConvertor < Barman::Processor
         # break if (i+=1) > 5
         good = {}
         ingredient = line[0].to_s
-        good[:brand] = line[1].to_s
-        good[:mark]  = line[2].to_s
-        good[:unit] = line[3].to_s
+        good[:brand] = line[1]
+        good[:mark]  = line[2]
+        good[:unit] = line[3]
         good[:volumes] = []
         puts "..#{ingredient}"
         @goods[ingredient] = [good]
@@ -99,12 +99,13 @@ class IngredientsConvertor < Barman::Processor
       die "more than one element in #{k}" if v.length > 1
       next unless group_dir = group_dir_of(k)
       v = v[0]
-      yaml = {
-        "Марка" => v[:mark],
-        "Бренд" => v[:brand],
-        "Единица" => v[:unit],
-        "Тара" => v[:volumes].map { |e| {"Объем" => e[0], "Цена" => e[1], "Наличие" => e[2] ? "есть" : "нет"} }
-      }
+      
+      yaml = {}
+      yaml["Марка"] = v[:mark].to_s if v[:mark]
+      # yaml["Бренд"] = v[:brand].to_s if v[:brand]
+      yaml["Единица"] = v[:unit].to_s if v[:unit]
+      yaml["Тара"] = v[:volumes].map { |e| {"Объем" => e[0], "Цена" => e[1], "Наличие" => e[2] ? "есть" : "нет"} }
+      
       File.write(Config::INGREDIENTS_DIR + group_dir + k + (v[:brand] ? "/#{v[:brand]}/" : "/") + "about.yaml", yaml.ya2yaml.gsub(/---\s+/,""))
       # about_path = Config::INGREDIENTS_DIR + group_dir_of(ingredient) + ingredient + (good[:brand] ? "/#{good[:brand]}/" : "/") + "about.txt"
       puts yaml.ya2yaml
