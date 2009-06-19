@@ -57,10 +57,8 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_groups
-    order = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
-    order.each do |name, num|
-      @ingredients_groups[num-1] = name
-    end
+    @ingredients_groups = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
+    p @ingredients_groups
   end
   
   def prepare_goods
