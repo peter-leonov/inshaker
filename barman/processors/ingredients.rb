@@ -4,7 +4,7 @@ require 'barman'
 class IngredientsProcessor < Barman::Processor
   
   module Config
-    INGREDIENTS_DIR = Barman::BASE_DIR + "Ingredients/"
+    INGREDIENTS_DIR = Barman::BASE_DIR + "Ingredients.next/"
     HTDOCS_DIR      = Barman::HTDOCS_DIR
 
     GOODS_CSV           = INGREDIENTS_DIR + "Goods.csv"
