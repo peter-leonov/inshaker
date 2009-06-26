@@ -11,3 +11,12 @@ apache.conf
 nginx.conf
 htdocs/stat/*
 data/*
+.idea/encodings.xml
+.idea/inshaker.iml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/projectCodeStyle.xml
+.idea/vcs.xml
+.idea/workspace.xml
