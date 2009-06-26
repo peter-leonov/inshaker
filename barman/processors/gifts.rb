@@ -28,6 +28,7 @@ class GiftsProcessor < Barman::Processor
       if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
         puts city_dir
         gifts_dir = Dir.new(city_path)
+        orders = load_yaml(city_path + "/gifts.yaml") 
         gifts_dir.each do |gift_dir|
           gift_path = gifts_dir.path + "/" + gift_dir
           if File.ftype(gift_path) == "directory" and !@excl.include?(gift_dir)
@@ -40,6 +41,7 @@ class GiftsProcessor < Barman::Processor
             @gift[:name_full] = yaml["Полное название"] 
             @gift[:desc] = yaml["Описание"].split("\n")
             @gift[:places] = yaml["Где купить"]
+            @gift[:order] = orders[@gift[:name].yi]
             detect_big_images(gift_path)
             @gifts << @gift
           end
