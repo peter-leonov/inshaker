@@ -128,7 +128,7 @@ Object.extend(Cocktail,
 		return res.sort(this.lessIngredientsSort);
 	},
 	
-	getByFilters: function(filters){
+	getByFilters: function(filters, states) {
 		var res = [];
 		var filtered = false;
 		if(filters.name){
@@ -151,23 +151,30 @@ Object.extend(Cocktail,
 			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
 			filtered = true;
 		}
-        if(!filtered) res = this.cocktails.sortedBy(this.nameSort);
-		return res;
+        
+        if(!filtered) {
+            if(filters.state == states.byName) {
+                res = this.cocktails.shuffled();
+            } else {
+                res = this.cocktails.sortedBy(this.nameSort);
+		    }
+        }
+        return res;
 	},
 
-  nameSort: function(a,b) {
-      if(a.name > b.name) return 1;
-	  else if(a.name == b.name) return 0;
-	  else return -1;
-  },
+    nameSort: function(a,b) {
+        if(a.name > b.name) return 1;
+	    else if(a.name == b.name) return 0;
+	    else return -1;
+    },
   
-  lessIngredientsSort: function(a,b) {
-      var ail = a.ingredients.length, bil = b.ingredients.length;
+    lessIngredientsSort: function(a,b) {
+        var ail = a.ingredients.length, bil = b.ingredients.length;
 
-      if(ail > bil) return 1;
-	  else if(ail == bil) return 0;
-	  else return -1;
-  }
+        if(ail > bil) return 1;
+	    else if(ail == bil) return 0;
+	    else return -1;
+    }
 })
 
 Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)

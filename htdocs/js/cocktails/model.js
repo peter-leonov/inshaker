@@ -156,21 +156,21 @@ function CocktailsModel (states, view) {
 		this.applyFilters(false, true);
 	};
 
-		this.updateStates = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
-			if(letterChanged || nameChanged) {
-				this.strengthState = Cocktail.strengths;
-				this.tagState      = Cocktail.tags;
-			}
-			if(strengthChanged || ingredChanged) {
-				this.tagState = this.uniqueTags();
-			}
-			if(ingredChanged) {
-				this.strengthState = this.uniqueStrengths();
-			}
-		};
+	this.updateStates = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
+		if(letterChanged || nameChanged) {
+			this.strengthState = Cocktail.strengths;
+			this.tagState      = Cocktail.tags;
+		}
+		if(strengthChanged || ingredChanged) {
+			this.tagState = this.uniqueTags();
+		}
+		if(ingredChanged) {
+			this.strengthState = this.uniqueStrengths();
+		}
+	};
 		
 	this.applyFilters = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
-		this.resultSet = Cocktail.getByFilters(this.filters);
+		this.resultSet = Cocktail.getByFilters(this.filters, states);
 		this.updateStates(strengthChanged, ingredChanged, letterChanged, nameChanged);
 		view.onModelChanged(this.resultSet, this.filters, this.tagState, this.strengthState);
 	}
