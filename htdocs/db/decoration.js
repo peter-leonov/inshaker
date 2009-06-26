@@ -1,6 +1,6 @@
 {
-"cocktails":["Без названия","Эффектини","Летний физ","Бодрячок","Брусничный с апельсином","Чай цитрус с маракуйей","Норманди смэш","Улыбка щавеля","Фея Мария","Липовый с тимьяном","Страстный джин"],
+"cocktails":["Арбузный коблер 317","Виноградный коблер 317","Чили мартини","Дальневосточный физ","Клубничный коблер 317","Малиновый коблер 317","Манго коблер 317","Пушкин тини","Клубничный слинг","Виноградный слинг","Малиновый слинг"],
 "links":[["Коктейли с Martini Bianco","/cocktails.html#ingredients=Белый вермут"],["Коктейли с Bombay Sapphire","/cocktails.html#ingredients=Джин"],["Коктейли с Bacardi Superior","/cocktails.html#ingredients=Белый ром"]],
-"promos":[["Убойная дегустация","/bars/moskva/tema_bar.html"],["Джин","/cocktails.html#ingredients=Джин\u0026tag=миксы\u0026state=byIngredients"],["Мастер и Маргарита","/cocktails/master_and_margarita.html"],["Мохито","/cocktails.html#state=byName\u0026name=мохито"],["Победители","/bars/moskva/help.html"],["Мартини Бьянко","/cocktails.html#ingredients=Белый вермут\u0026state=byIngredients"],["Александ Кан и Бек открывают легкую миксологию","/cocktails/rum_ice-cream.html"]],
+"promos":[["Пушкин тини","/cocktails/pushkin_tini.html"],["Мохито","/cocktails.html#state=byName\u0026name=мохито"],["Убойная дегустация","/bars/moskva/tema_bar.html"],["Джин","/cocktails.html#ingredients=Джин\u0026tag=миксы\u0026state=byIngredients"],["Александ Кан и Бек открывают легкую миксологию","/cocktails/rum_ice-cream.html"],["Мартини Бьянко","/cocktails.html#ingredients=Белый вермут\u0026state=byIngredients"],["Победители","/bars/moskva/help.html"],["Мастер и Маргарита","/cocktails/master_and_margarita.html"]],
 "spotlighted":["Коктейли с белым ромом","/cocktails.html#state=byIngredients\u0026ingredients=Белый%20ром"]
 }
