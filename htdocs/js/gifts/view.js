@@ -53,13 +53,8 @@ function GiftsView (nodes, controller)
             a.className = "name"
             a.innerHTML = gifts[i].name
             
-            // var desc = document.createElement("div")
-            // desc.className = "desc"
-            // desc.appendChild(a)
-            
             div.appendChild(img)
             div.appendChild(a) 
-            // div.appendChild(desc) 
             li.appendChild(div)
             var me = this; div.addEventListener('click', function (g)
             {
@@ -81,6 +76,11 @@ function GiftsView (nodes, controller)
             img.src = gift.big_images[i]
             li.appendChild(img)
             parent.appendChild(li)
+        }
+        if(gift.big_images.length < 2)
+        {
+            nodes.promosArrows[0].addClassName("hidden")
+            nodes.promosArrows[1].addClassName("hidden")
         }
         nodes.price.src = gift.getImgSrc("-price.png")
         nodes.desc.empty()

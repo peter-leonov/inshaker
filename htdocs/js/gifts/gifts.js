@@ -17,6 +17,7 @@ $.onload (
 
             previewsSurface: cssQuery('.gifts-previews .surface')[0],
             promosSurface: cssQuery('.gift-promos .surface')[0],
+            promosArrows: cssQuery('.gift-promos a'),
             fullName: $('full-name'),
             price: $('price'),
             desc: $('desc'),
