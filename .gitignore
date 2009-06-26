@@ -11,24 +11,4 @@ apache.conf
 nginx.conf
 htdocs/stat/*
 data/*
-<<<<<<< HEAD:.gitignore
-=======
-inshaker/.idea/encodings.xml
-inshaker/.idea/inshaker.iml
-inshaker/.idea/inspectionProfiles/Project_Default.xml
-inshaker/.idea/inspectionProfiles/profiles_settings.xml
-inshaker/.idea/misc.xml
-inshaker/.idea/modules.xml
-inshaker/.idea/projectCodeStyle.xml
-inshaker/.idea/vcs.xml
-inshaker/.idea/workspace.xml
->>>>>>> f29098e... Bottom links on about.html no longer treated in a special way.:.gitignore
-.idea/encodings.xml
-.idea/inshaker.iml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/projectCodeStyle.xml
-.idea/vcs.xml
-.idea/workspace.xml
+.idea/*
