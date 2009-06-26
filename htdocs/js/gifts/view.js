@@ -21,7 +21,7 @@ function GiftsView (nodes, controller)
         var allGifts = nodes.previewsSurface.getElementsByClassName("gift")
         for (var i = 0; i < allGifts.length; i++)
         {
-            if(allGifts[i].childNodes[1].innerHTML == gift.name)
+           if(allGifts[i].childNodes[1].innerHTML == gift.name)
             {
                 allGifts[i].addClassName("selected")
                 
@@ -49,12 +49,17 @@ function GiftsView (nodes, controller)
             var img  = document.createElement("img")
             img.src  = gifts[i].getMiniImgSrc()
             
-            var span = document.createElement("span")
-            span.className = "name"
-            span.innerHTML = gifts[i].name
-             
+            var a = document.createElement("a")
+            a.className = "name"
+            a.innerHTML = gifts[i].name
+            
+            // var desc = document.createElement("div")
+            // desc.className = "desc"
+            // desc.appendChild(a)
+            
             div.appendChild(img)
-            div.appendChild(span) 
+            div.appendChild(a) 
+            // div.appendChild(desc) 
             li.appendChild(div)
             var me = this; div.addEventListener('click', function (g)
             {
@@ -107,7 +112,7 @@ function GiftsView (nodes, controller)
                 title.appendChild(tlink)
                 
                 var wname = name, l = name.length
-                if (name[l-1] == "*") 
+                if (name.substr(l-1,1) == "*") 
                 {
                     wname = name.substr(0, l-1)
                     var ast = document.createElement("span")

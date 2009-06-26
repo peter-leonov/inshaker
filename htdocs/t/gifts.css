@@ -1,7 +1,8 @@
 /* gifts-page */
 
-#gifts-page .b-title {padding-bottom:10px; margin-bottom: 20px;}
-#gifts-page .b-title a {text-decoration:none; } 
+#gifts-page .b-title { height:26px; padding-bottom:10px; margin-bottom: 20px; }
+#gifts-page .b-title a { text-decoration:none; } 
+#gifts-page .b-content { } 
 #gifts-page #top{}
 #gifts-page #main-wrapper {z-index: 1; position:relative;}
 
@@ -16,7 +17,8 @@
 
 #gifts-page .gifts-previews .gift { width: 213px; text-align: center; cursor:pointer; vertical-align:top; display:inline-block; position:relative;}
 #gifts-page .gifts-previews .gift img { display: block; margin: 0 auto -3px; }
-#gifts-page .gifts-previews .name { font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; border-bottom: dashed 1px; }
+#gifts-page .gifts-previews .desc { height:25px } 
+#gifts-page .gifts-previews .name { text-decoration:none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; border-bottom: dashed 1px; }
 #gifts-page .gifts-previews .gift.selected .name { color: #e2138a; font-weight:bold; border-bottom: none; font-style: italic; cursor: default; }
 #gifts-page .gifts-previews .gift .mark {background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:144px; left:93px;}
 
@@ -40,7 +42,7 @@ background: url(icon/strs-green.png);
 #gifts-page .gift-promos .viewport .point { float: left; width: 960px; height: 100%; }
 #gifts-page .gift-promos .viewport .surface { width: 10000px; height:100%;}
 #gifts-page .gift-promos .prev,
-#gifts-page .gift-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
+#gifts-page .gift-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/promos-buttons.png); }
 #gifts-page .gift-promos:hover .prev,
 #gifts-page .gift-promos:hover .next {display:block;}
 #gifts-page .gift-promos:hover .hidden {display:none;}
@@ -62,6 +64,29 @@ background: url(icon/strs-green.png);
 #gifts-page #places .address {display:block; }
 #gifts-page #places .time {display:block; font-weight: bold;}
 #gifts-page #places .tel {display:block; }
+#gifts-page #ask-barmen {margin-top:135px; width:600px; font-size:19px }
 
-#gifts-page #ask-barmen {width:600px; font-size:19px }
+<!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
+#gifts-page .gifts-previews .gift .mark { top:145px;} 
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
+#gifts-page .gifts-previews .name {zoom:1; } 
+#gifts-page .gifts-previews .gift { display:inline; position:relative;}
+#gifts-page #ask-barmen {margin-top:36px;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+#gifts-page .previews .body-wrapper { padding-bottom:0 } 
+#gifts-page .previews .b-content {height: 144px} 
+#gifts-page .gift-promos .disabled { background-position-y: -60px; }
+#gifts-page .gift-promos .prev { background-position-x: -60px; }
+#gifts-page .gift-promos .prev,
+#gifts-page .gift-promos .next { display: block; }
+#gifts-page .gift-promos .hidden {display:none;}
+
+#gifts-page .gifts-previews .prev { background-position-x: -52px; }
+<!--# endif -->
+
 <!--# include file="/t/theme.css" -->
