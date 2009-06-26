@@ -3,10 +3,10 @@ function GiftsView (nodes, controller)
     this.initialize = function (gifts, selectedGift)
     {
         this.renderPreviews(gifts)
-        new Programica.RollingImagesLite(nodes.previewsRoot)
+        new Programica.RollingImagesLite(nodes.previewsRoot, {animationType: 'easeInOutQuad'})
         
         this.renderGift(selectedGift)
-        new Programica.RollingImagesLite(nodes.promosRoot) 
+        new Programica.RollingImagesLite(nodes.promosRoot,{animationType: 'easeInOutQuad', duration:0.75}) 
     }
     
     this.renderGift = function (gift)
