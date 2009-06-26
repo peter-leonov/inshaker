@@ -107,7 +107,6 @@ function GiftsView (nodes, controller)
                 title.className = "title"
                 var tlink = document.createElement("a")
                 tlink.href = details[1]
-                tlink.target = "_blank"
                  
                 title.appendChild(tlink)
                 

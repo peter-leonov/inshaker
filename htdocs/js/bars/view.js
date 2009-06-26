@@ -25,8 +25,8 @@ BarsPageView.prototype =
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-        new InfoPopup(nodes.photographer, nodes.photoPopup, this.getPhotographer())
-        new NewsFormPopup(nodes.dontMiss)
+        // new InfoPopup(nodes.photographer, nodes.photoPopup, this.popupRenderer)
+        new InfoPopup(nodes.moreInfo, nodes.guidePopup, this.popupRenderer)
 	},
 	
 	checkHash: function ()
@@ -296,38 +296,7 @@ BarsPageView.prototype =
 		main.setHref = function (href) { name.href = href }
 		return main
 	},
+    
+    popupRenderer: { render: function (context) {} }
 
-    getPhotographer: function ()
-    {
-        return {
-            name: "Евгений Дробышев",
-            website: "ddefoto.com",
-            phone: "+7 (926) 584-61-21",
-            annotation: "– известный фотограф. Партнер Inshaker в Москве!",
-            header: "О фотографе",
-            desc: ["Любимчик звезд и luxary - брендов. Модный московский фотограф Евгений Дробышев старается не пропускать ни одного яркого открытия. Благодаря своему новому фотоаппарату, стоимостью отличной иномарки и новомодному световому оборудованию, в котором мы ничего не понимаем, Евгений помогает Inshaker освещать самые популярные заведения Москвы.", "В перерывах Евгений снимает рекламу для Mercedes, Mini Cooper, Absolut. Фотографирует Пашу Воля, Тимати, Ксению Собчак и Монику Белуччи..."],
-
-            render: function (context)
-            {
-                var head = context.getElementsByTagName("h1")[0]
-                head.innerHTML = this.name + " " + this.annotation
-                var body = context.getElementsByClassName("desc")[0]
-                var h2 = document.createElement("h2")
-                h2.innerHTML = this.header
-                body.appendChild(h2)
-                for(var i = 0; i < this.desc.length; i++)
-                {
-                    var p = document.createElement("p")
-                    p.innerHTML = this.desc[i]
-                    body.appendChild(p)
-                }
-                h2 = document.createElement("h2")
-                h2.innerHTML = "Контактная информация"
-                body.appendChild(h2)
-                p = document.createElement("p")
-                p.innerHTML = this.phone + " | <a target='_blank' href='http://" + this.website  + "'>"+ this.website +"</a>"
-                body.appendChild(p)
-            }
-        }
-    }
 }

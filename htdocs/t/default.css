@@ -28,6 +28,7 @@
 .border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
 .border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
 .border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
+.border-links a:hover { text-decoration:none}
 
 body,table,
 h1,h2,h3,h4,
@@ -37,8 +38,8 @@ ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none
 h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
 td{font-size:1em;vertical-align:top;}
 a{color :#0392f1;cursor :pointer;
-text-decoration :underline;}
-a:hover{text-decoration:none;}
+text-decoration:none;}
+a:hover{text-decoration:underline;}
 img{vertical-align:middle;}
 a img{border:0;}
 input,select,textarea{font:1.1em Tahoma,Arial,sans-serif;}
@@ -87,7 +88,7 @@ label{display:block;}
 .b-title h2{font-size:20px;margin-left:-1px;}
 .b-title #spotlighted { display: none; position:absolute;right:0;bottom:15px;font-size:110%; width:21px; height: 21px; background:transparent url(/t/icon/spotlighted.png) no-repeat;}
 .b-title #partner {display:block; position:absolute;right:0;bottom:8px;width:57px; height: 27px; background:transparent url(/t/icon/partner.png) no-repeat;}
-.b-title #photographer {display:block; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
+.b-title #photographer {display:none; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
 .b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 .b-search{position:absolute;margin-right:2em;width:14em;}
 #all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
@@ -103,7 +104,9 @@ label{display:block;}
 
 .b-search .groups dd { cursor: pointer; }
 .b-search .groups dd a{margin-left:10px;height:1.33em;}
-.b-search .groups dd span{margin-left: 6px; float: left; color: #0392f1; text-decoration: underline;}
+.b-search .groups dd span:hover { text-decoration: underline; }
+.b-search .groups dd.selected-button span:hover { text-decoration:none; }
+.b-search .groups dd span{margin-left: 6px; float: left; color: #0392f1; text-decoration: none;}
 .b-search .groups dd.dis span,
 .b-search .groups dd.dis a {color:#999;text-decoration:none;cursor:default;}
 
@@ -136,16 +139,13 @@ label{display:block;}
 .autocomplete div.hi{background-color:#cede97;}
 .search-error{display:none;height:12px;}
 
-#search_tip {font-size: 11px; margin-left:5px;}
-#search_example{border-bottom:1px dashed;color:#0392f1;text-decoration:none;}
+#cocktails-page .ingreds-list {width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
+#cocktails-page .ingreds-list a {color:#fff;}
+#cocktails-page .ingreds-list a:hover {text-decoration:line-through;}
 
-.ingreds-list {width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
-.ingreds-list a {color:#fff;}
-.ingreds-list a:hover {text-decoration:line-through;}
-
-.ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
-.ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
-#ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
+#cocktails-page .ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
+#cocktails-page .ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
+#cocktails-page #ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
 
 /*Block content*/
 /*pager list*/
@@ -189,6 +189,8 @@ label{display:block;}
 #cocktails-page #results_display.expanded .point{width:550px;}
 #cocktails-page #results_display .surface { width: 20000px; }
 #cocktails-page #search_tips { height: 14px}
+#cocktails-page #search_tips a:hover {text-decoration:none;}
+#cocktails-page #search_tips a {border-bottom:1px #0392F1 dashed;}
 
 /* cocktail page */
 #cocktail-page .hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
@@ -246,7 +248,6 @@ label{display:block;}
 #cocktail-page .what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
 #cocktail-page .what-need dd:last-child{background:none;}
 #cocktail-page .what-need dd a{float:left;padding-right:18px;}
-#cocktail-page .what-need dd a:hover{text-decoration:none;}
 #cocktail-page .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 /* more in cocktail */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
@@ -316,15 +317,22 @@ label{display:block;}
 #b-bill .total{padding:9px 23px 0 10px;position:relative;overflow:hidden;}
 #b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
 #b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
-#b-bill .print-call {margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
+#b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
 #b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px}
-#b-bill #buy_liquors , #b-bill #buy_syrups { padding-left: 16px; background: url(button/buy_liquors.png) no-repeat; }
-#b-bill #buy_liquors {margin-bottom:5px}
-#b-bill #print_plan,
-#b-bill #print_plan_inactive { background: url(button/print_plan.png) no-repeat; padding-left: 16px; margin: 0 49px 5px 0; }
-#b-bill #print_plan { display: none;}
+
+#b-bill .print-call .tools { width: 120px; float:left; }
+#b-bill .print-call .buy   { width: 103px; float:right; }
+
+#b-bill #buy_liquors , #b-bill #buy_syrups, #b-bill #print_plan, #b-bill #print_plan_inactive, #b-bill #call_barmen { padding-left: 16px; }
+#b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }
+#b-bill #buy_syrups  { background: url(button/buy_syrups.png) no-repeat; }
+
+#b-bill #print_plan, #b-bill #print_plan_inactive { background: url(button/print_plan.png) no-repeat; }
+#b-bill #print_plan { display: none; }
 #b-bill #print_plan_inactive { color: #888; }
-#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; margin-right: 46px; padding-left: 16px;}
+
+#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; }
+#b-bill #buy_liquors, #b-bill #call_barmen { margin-top: 3px;}
 
 ul#cart_cocktails {margin-top: 9px;}
 
@@ -341,7 +349,7 @@ ul#cart_cocktails {margin-top: 9px;}
 /* Window,Shoping */
 .win-shop{display:none;}
 .win-shop{position:fixed;top:0;left:0;width:100%;height:100%;}
-#overlay, #photo-overlay {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
+.opacity,.win-shop .opacity {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
 .win-shop .win{background:url(bg/win/win.png) no-repeat 0 100%;margin:0 auto;top:72px;position:relative;width:620px;padding:0 19px 19px;z-index:5;}
 .win-shop .win-bg{background:url(bg/win/win.png) no-repeat 0 0;position:absolute;top:-20px;width:658px;height:20px;left:0;}
 .win-shop .gadget-wrapper{position:relative;}
@@ -451,6 +459,8 @@ button.bt-del{background-position:0 -31px;height:20px;width:16px;}
 #view-advert a[href $='.cdr']{padding:1px 0 1px 21px;background:url(icon/cdr.png) no-repeat 0 center;line-height:16px;}
 #view-advert a[href $='.ai']{padding:1px 0 1px 21px;background:url(icon/ai.png) no-repeat 0 center;line-height:16px;}
 .del{background:url(icon/del.png) no-repeat 0 0;width:5px;height:5px;overflow:hidden;text-indent:-100em;display:block;}
+#bottom a { text-decoration:underline }
+#bottom a:hover {text-decoration:none }
 #bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
 #bottom .main-menu{float:right;}
 .drag_cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}

@@ -25,7 +25,7 @@
 
 #gifts-page .gifts-previews .viewport,
 #gifts-page .gifts-previews { position: relative; width: 920px; height: 159px; }
-#gifts-page .gifts-previews .viewport {width: 855px; margin-left: 34px;}
+#gifts-page .gifts-previews .viewport {width: 855px; margin-left: 42px;}
 #gifts-page .gifts-previews .viewport .point { float: left; width: 855px; height: 100%; }
 #gifts-page .gifts-previews .viewport .surface { width: 4000px; padding: 0;}
 #gifts-page .gifts-previews .prev,
@@ -38,6 +38,7 @@ background: url(icon/strs-green.png);
 #gifts-page .gifts-previews .prev.disabled { background-position: 0 -92px; cursor: default; }
 #gifts-page .gifts-previews .next.disabled { background-position: -20px -92px; cursor: default; }
 
+#gifts-page .gift-promos { margin: 5px 0 0 1px } 
 #gifts-page .gift-promos .viewport,
 #gifts-page .gift-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
 #gifts-page .gift-promos .viewport .point { float: left; width: 960px; height: 100%; }
@@ -56,6 +57,7 @@ background: url(icon/strs-green.png);
 #gifts-page #desc {font-size:14px; width: 600px;}
 #gifts-page #desc p {margin-bottom:10px}
 #gifts-page #desc a {text-decoration:none}
+#gifts-page #desc a:hover {text-decoration:underline}
 #gifts-page #price {float:right; margin-top:55px}
 #gifts-page #where-to-buy {margin-bottom: 22px; color: #E2138A; margin-top: 31px; font-size:21px}
 #gifts-page #corporate {display:none; text-decoration:none; color: #41474c; border-bottom:1px #41474c dashed; margin-left:20px}

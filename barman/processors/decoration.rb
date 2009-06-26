@@ -67,10 +67,10 @@ class DecorationProcessor < Barman::Processor
         FileUtils.mkdir_p out_dir
         FileUtils.cp_r "#{backs}/#{f}", "#{out_dir}/bg.#{$2}", @mv_opt
         
-        #File.open(Config::THEME_FILE, "a+") do |theme|
-        #  theme.puts get_theme_entry($1, $2)
-        #  theme.close
-        #end
+        File.open(Config::THEME_FILE, "a+") do |theme|
+          theme.puts get_theme_entry($1, $2)
+          theme.close
+        end
 
       end
     end
