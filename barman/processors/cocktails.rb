@@ -12,6 +12,8 @@ class CocktailsProcessor < Barman::Processor
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
+    
+    NOSCRIPT_COCKTAILS = HTDOCS_DIR + "/inc/cocktails-links.html"
 
     IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
     IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
@@ -159,6 +161,15 @@ class CocktailsProcessor < Barman::Processor
     cocktail = CocktailTemplate.new(hash)
     File.open(Config::COCKTAILS_HTML_DIR + hash["name_eng"].html_name + ".html", "w+") do |html|
       html.write @cocktail_renderer.result(cocktail.get_binding)
+    end
+    
+    # Cocktails list
+    File.open(Config::NOSCRIPT_COCKTAILS, "w+") do |links|
+      @cocktails.each do |name, hash|
+        links.print "<a href=\"/cocktails/#{hash[:name_eng].html_name}.html\">#{name}</a>"
+        links.puts " - #{hash[:name_eng]}<br/>"
+      end
+      links.close
     end
   end
   
