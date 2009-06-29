@@ -28,6 +28,7 @@ function GiftsView (nodes, controller)
                 var mark = document.createElement("span")
                 mark.className = "mark"
                 allGifts[i].insertBefore(mark, allGifts[i].childNodes[0])
+                nodes.previewsRoot.RollingImagesLite.goToNode(allGifts[i].parentNode, "directJump")
                 break
             }
         }
