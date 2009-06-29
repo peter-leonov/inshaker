@@ -95,7 +95,7 @@ class IngredientsProcessor < Barman::Processor
     good = {}
     indent do
     
-    name_trans = name.trans
+    name_trans = nil
     opt = {:remove_destination => true}
     
     img = dir.path + "/i_big.png"
@@ -130,6 +130,9 @@ class IngredientsProcessor < Barman::Processor
       else
         error "не указана марка (бренд «#{brand}»)"
       end
+      name_trans = brand.trans
+    else
+      name_trans = name.trans
     end
     
     if about["Тара"] and about["Тара"].length > 0
@@ -143,7 +146,7 @@ class IngredientsProcessor < Barman::Processor
         if File.exists?(img)
           FileUtils.cp_r(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png", opt)
         else
-          error "не могу найти каритку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
+          error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end
         
       end
