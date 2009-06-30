@@ -29,8 +29,8 @@ class IngredientsProcessor < Barman::Processor
   def run
     prepare_dirs
     # prepare_ingredients
-    # prepare_groups
     
+    update_groups
     update_goods
     
     if @errors_count == 0
@@ -50,7 +50,7 @@ class IngredientsProcessor < Barman::Processor
     FileUtils.mkdir_p [Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
   end
   
-  def prepare_groups
+  def update_groups
     @ingredients_groups = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
   end
   
