@@ -2,6 +2,7 @@ require 'rubygems'
 require 'lib/json'
 require 'lib/string_util'
 require 'lib/fileutils'
+require 'lib/saying'
 require 'templates'
 require 'unicode'
 require 'fileutils'
@@ -13,6 +14,7 @@ $stdout.sync = true
 $KCODE = 'u'
 
 module Barman
+  
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
   
@@ -20,6 +22,14 @@ module Barman
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
+    
+    if ENV['REQUEST_METHOD']
+      include Saying::HTML
+    else
+      include Saying::Console
+      warn 123
+    end
+    
     def initialize
       @mv_opt = {:remove_destination => true}
       @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml"]
@@ -63,17 +73,17 @@ module Barman
     def error msg
       @errors_count += 1
       @errors_messages << msg
-      puts "#{indentation}\x1B[31mОшибка:\x1B[0m #{msg}"
+      say_error msg
     end
     
     def warning msg
       @warnings_count += 1
       @warnings_messages << msg
-      puts "#{indentation}\x1B[33mПредупреждение:\x1B[0m #{msg}"
+      say_warning msg
     end
     
     def done msg
-      puts "#{indentation}\x1B[32m#{msg}\x1B[0m"
+      say_done msg
     end
   end
 end
