@@ -28,12 +28,15 @@ class IngredientsProcessor < Barman::Processor
   
   def run
     prepare_dirs
-    prepare_ingredients
-    prepare_groups
+    # prepare_ingredients
+    # prepare_groups
     
     update_goods
     
-    flush_json if @errors_count == 0
+    if @errors_count == 0
+      done "критических ошибок не было"
+      flush_json
+    end
   end
   
   def prepare_dirs
@@ -45,6 +48,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def flush_json
+    say "сохраняю данные об ингредиентах"
     flush_json_object(@ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@goods, Config::DB_JS_GOODS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
@@ -66,34 +70,42 @@ class IngredientsProcessor < Barman::Processor
       say group_dir.name
       indent do
       group_dir.each_dir do |good_dir|
+        say good_dir.name
+        indent do
         good = process_good(good_dir, good_dir.name)
         unless good
-          say good_dir.name
-          indent do
+          # indent do
           good_dir.each_dir do |brand_dir|
             if good = process_good(brand_dir, good_dir.name, brand_dir.name)
               break
             end
           end
-          unless good
-            # warning "не нашел описания для ингредиента «#{good_dir.name}» в группе «#{group_dir.name}»"
-            warning "не нашел описания"
-            next
-          end
-          end # indent
+          # end # indent
         end
         
-        @goods[good_dir.name] = good
+        if good
+          @goods[good_dir.name] ? @goods[good_dir.name] << good : @goods[good_dir.name] = [good]
+          @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
+          # say ({"group" => group_dir.name, "name" => good_dir.name}).to_json
+        else
+          warning "не нашел описания"
+          next
+        end
+        end # indent
       end
       end # indent
     end
   end
   
   def process_good dir, name, brand=nil
-    return unless File.exists? dir.path + "/about.yaml"
-    say dir.name
+    about = dir.path + "/about.yaml"
+    if File.exists?(about)
+      about = YAML::load(File.open(about))
+    else
+      return
+    end
+    
     good = {}
-    indent do
     
     name_trans = nil
     opt = {:remove_destination => true}
@@ -105,8 +117,13 @@ class IngredientsProcessor < Barman::Processor
       error "нет большой картинки (файл #{img})"
     end
     
+    legend = dir.path + "/about.txt"
+    if File.exists?(legend)
+      good[:desc] = File.read(legend)
+    else
+      warning "нет файла с легендой ингредиента (about.txt)"
+    end
     
-    about = YAML::load(File.open(dir.path + "/about.yaml"))
     
     if about["Единица"]
       good[:unit] = about["Единица"]
@@ -154,7 +171,6 @@ class IngredientsProcessor < Barman::Processor
       error "тара не указана"
     end
     
-    end # indent
     return good
   end
   

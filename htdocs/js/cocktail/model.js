@@ -24,7 +24,7 @@ var Model = {
 		
 		for(var i = 0; i < ingreds.length; i++){
 			var items = goods[ingreds[i][0]];
-			if(items && items[0].mark != "" && this._doesntHave(recs, items[0].mark)){
+			if(items && items[0].mark && this._doesntHave(recs, items[0].mark)){
 				var rec = {};
 				rec.mark  = items[0].mark;
 				rec.banner = items[0].mark.trans() + ".png";
