@@ -27,7 +27,6 @@ module Barman
       include Saying::HTML
     else
       include Saying::Console
-      warn 123
     end
     
     def initialize
