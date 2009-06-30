@@ -70,28 +70,24 @@ class IngredientsProcessor < Barman::Processor
       say group_dir.name
       indent do
       group_dir.each_dir do |good_dir|
-        say good_dir.name
-        indent do
         good = process_good(good_dir, good_dir.name)
         unless good
-          # indent do
+          say good_dir.name
+          indent do
           good_dir.each_dir do |brand_dir|
-            if good = process_good(brand_dir, good_dir.name, brand_dir.name)
-              break
-            end
+            break if good = process_good(brand_dir, good_dir.name, brand_dir.name)
           end
-          # end # indent
+          unless good
+            warning "не нашел описания"
+          end
+          end # indent
         end
         
         if good
           @goods[good_dir.name] ? @goods[good_dir.name] << good : @goods[good_dir.name] = [good]
           @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
           # say ({"group" => group_dir.name, "name" => good_dir.name}).to_json
-        else
-          warning "не нашел описания"
-          next
         end
-        end # indent
       end
       end # indent
     end
@@ -99,13 +95,11 @@ class IngredientsProcessor < Barman::Processor
   
   def process_good dir, name, brand=nil
     about = dir.path + "/about.yaml"
-    if File.exists?(about)
-      about = YAML::load(File.open(about))
-    else
-      return
-    end
-    
+    return unless File.exists?(about)
+    say dir.name
     good = {}
+    indent do
+    about = YAML::load(File.open(about))
     
     name_trans = nil
     opt = {:remove_destination => true}
@@ -170,7 +164,7 @@ class IngredientsProcessor < Barman::Processor
     else
       error "тара не указана"
     end
-    
+    end # indent
     return good
   end
   
