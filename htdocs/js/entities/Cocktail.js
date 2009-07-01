@@ -5,18 +5,40 @@ Cocktail = function (data)
 
 Cocktail.prototype =
 {
-    getPreviewNode: function() {
+    getRound: function() {
+        return Cocktail.rounds[this.name];
+    },
+
+    getPreviewNode: function(dropTargets) {
 		var li = document.createElement("li");
 		var a = document.createElement("a");
 		a.href = "/cocktails/" + this.name_eng.htmlName() + ".html";
 		var img = document.createElement("img");
 		img.src = "/i/cocktail/s/" + this.name_eng.htmlName() + ".png";
-		var txt = document.createTextNode(this.name);
+		if(dropTargets) new Draggable(img, this.name, dropTargets);
+        var txt = document.createTextNode(this.name);
 		a.appendChild(img);
 		a.appendChild(txt);
 		li.appendChild(a);
-		return li;		
-	}
+       	return li;		
+	},
+
+    updateRound: function(node, show) {
+        var round = this.getRound();
+        if(round == 0) round = "Ok";
+        else round = "+" + round;
+        
+        var mark = node.getElementsByClassName("round-mark")[0];
+        
+        if(!mark) {
+            if(!show) return
+            mark = document.createElement("div");
+            mark.className = "round-mark";
+            node.appendChild(mark);
+        }
+        mark.innerHTML = round;
+        mark.setVisible(show)
+    }
 }
 
 Object.extend(Cocktail,
@@ -26,6 +48,8 @@ Object.extend(Cocktail,
     letters: [],
     names: [],
     
+    rounds: {},
+
     dictNames: {},
     dictLetters: {},
 	
@@ -112,20 +136,22 @@ Object.extend(Cocktail,
 		}
 		return res;
 	},
-	
-	getByIngredients: function(ingredients, set) {
+    
+    getByIngredients: function(ingredients, set) {
+        this.rounds = {};
 		if(!set) set = this.cocktails;
 		var res = [];
 		for(var i = 0; i < set.length; i++) {
-			var good = 0;
+			var matches = 0;
 			for(var j = 0; j < set[i].ingredients.length; j++) {
 				for(var k = 0; k < ingredients.length; k++){
-					if(set[i].ingredients[j][0] == ingredients[k]) good++;
+					if(set[i].ingredients[j][0] == ingredients[k]) matches++;
 				}
 			}
-			if(good == ingredients.length) res.push(set[i]);
-		}
-		return res.sort(this.lessIngredientsSort);
+			if(matches > 0) res.push(set[i]);
+		    this.rounds[set[i].name] = set[i].ingredients.length - matches;
+        }
+		return res.sort(this.roundSort).sort(this.lessIngredientsSort);
 	},
 	
 	getByFilters: function(filters, states) {
@@ -174,6 +200,12 @@ Object.extend(Cocktail,
         if(ail > bil) return 1;
 	    else if(ail == bil) return 0;
 	    else return -1;
+    },
+
+    roundSort: function(a,b) {
+        if (a.getRound() > b.getRound()) return 1;
+        else if (a.getRound() == b.getRound()) return 0;
+        else return -1;
     }
 })
 
