@@ -1,20 +1,13 @@
 #!/usr/bin/ruby
-
 require 'rubygems'
-require 'csv'
-require 'lib/rmail_util'
+require 'lib/csv'
+require 'lib/rmail'
 require 'erb'
 
-# render = ERB.new(File.read(ARGV[1]))
-# renderer.result(bar_erb.get_binding)
-
 class Person
-  def self.init cols
-    @@cols = cols
-  end
-  def initialize vals
-    @@cols.each_with_index do |v, i|
-      instance_variable_set("@#{v}", vals[i])
+  def initialize hash
+    hash.each do |k, v|
+      instance_variable_set("@#{k}", v)
     end
   end
   def get_binding
@@ -23,13 +16,9 @@ class Person
 end
 
 render = ERB.new(File.read(ARGV[0]).gsub("\r", ''))
-csv = CSV.parse(File.read(ARGV[1]))
-Person.init csv.shift
 
-i = 0
-csv.each do |row|
-  i += 1
-  raw = render.result(Person.new(row).get_binding)
+CSV.foreach_hash(ARGV[1]) do |hash, line|
+  raw = render.result(Person.new(hash).get_binding)
   message = {}
   head, body = raw.split(/\n\n/, 2)
   head.split(/\n/).each do |v|
@@ -38,11 +27,8 @@ csv.each do |row|
   end
   message[:body] = body
   
-  status = "#{i}: " + message[:to]
-  puts status
-  warn status
+  warn "#{line}: " + message[:to]
   RMail::Message.bake(message).send
   
-  sleep 5
+  sleep 3
 end
-
