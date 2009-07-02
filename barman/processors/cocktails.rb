@@ -68,7 +68,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_cocktails
-    say "обновляю коктейли"
+    say "обрабатываю коктейли"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
       @cocktails_present[@cocktail_names_en2ru[cocktail_dir.name]] = true
@@ -83,6 +83,11 @@ class CocktailsProcessor < Barman::Processor
       parse_about_text  File.open(cocktail_dir.path + "/about.txt").read
       parse_legend_text File.open(cocktail_dir.path + "/legend.txt").read
       
+      if @cocktails[@cocktail["name"]]
+        say "обновлен"
+      else
+        say "добавлен"
+      end
       @cocktails[@cocktail["name"]] = @cocktail
       
       update_images @cocktail["name"], @cocktail
