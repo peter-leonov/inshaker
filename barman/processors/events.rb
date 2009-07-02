@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 require 'barman'
+require 'lib/string_util_1.8'
 require 'lib/csv'
+$KCODE = 'u'
 
 class EventsProcessor < Barman::Processor
   

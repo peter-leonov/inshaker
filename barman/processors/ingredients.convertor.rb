@@ -1,6 +1,9 @@
 #!/usr/bin/ruby
 require 'barman'
+require 'lib/string_util_1.8'
+require 'csv'
 require 'ya2yaml'
+$KCODE = 'u'
 
 class IngredientsConvertor < Barman::Processor
   

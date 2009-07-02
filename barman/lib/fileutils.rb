@@ -13,7 +13,7 @@ class Dir
     each do |entry|
       next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "directory"
       Dir.open("#{path}/#{entry}") do |dir|
-        dir.name = entry
+        dir.name = entry.force_encoding('UTF-8').gsub('й','й')
         yield dir
       end
     end

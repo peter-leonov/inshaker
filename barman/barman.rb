@@ -4,14 +4,11 @@ require 'lib/string_util'
 require 'lib/fileutils'
 require 'lib/saying'
 require 'templates'
-require 'unicode'
 require 'fileutils'
 require 'erb'
-require 'csv'
 require 'yaml'
 
 $stdout.sync = true
-$KCODE = 'u'
 
 module Barman
   

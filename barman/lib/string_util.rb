@@ -35,30 +35,6 @@ class String
     return res.join("")
   end
   
-  def downcase
-     Unicode::downcase(self)
-  end
-  
-  def downcase!
-    self.replace downcase
-  end
-  
-  def upcase
-    Unicode::upcase(self)
-  end
-  
-  def upcase!
-    self.replace upcase
-  end
-  
-  def capitalize
-    Unicode::capitalize(self)
-  end
-  
-  def capitalize!
-    self.replace capitalize
-  end
-  
   def ansi_quote
     gsub(/(['\\])/, '\\\\\1')
   end

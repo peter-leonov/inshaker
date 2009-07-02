@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 require 'barman'
+require 'lib/string_util_1.8'
+$KCODE = 'u'
 
 class PartiesProcessor < Barman::Processor
   

@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby1.9 -W0
+# encoding: utf-8
 require 'barman'
 
 class IngredientsProcessor < Barman::Processor
@@ -7,7 +8,6 @@ class IngredientsProcessor < Barman::Processor
     INGREDIENTS_DIR = Barman::BASE_DIR + "Ingredients/"
     HTDOCS_DIR      = Barman::HTDOCS_DIR
 
-    GOODS_CSV           = INGREDIENTS_DIR + "Goods.csv"
     MERCH_ROOT          = HTDOCS_DIR + "i/merchandise/"
     INGREDS_ROOT        = MERCH_ROOT + "ingredients/"
     INGREDS_PRINT_ROOT  = INGREDS_ROOT + "print/"

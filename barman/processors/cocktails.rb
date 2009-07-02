@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby1.9 -W0
+# encoding: utf-8
 require 'barman'
 
 class CocktailsProcessor < Barman::Processor
@@ -27,7 +28,7 @@ class CocktailsProcessor < Barman::Processor
     super    
     @cocktails = {}
     @cocktails_present = {}
-    @cocktail_names_en2ru = {}
+    # @cocktail_names_en2ru = {}
     @tags      = []
     @strengths = []
   end
@@ -62,20 +63,22 @@ class CocktailsProcessor < Barman::Processor
       @cocktails_mtime = Time.at(0)
     end
     
-    @cocktails.each do |k, v|
-      @cocktail_names_en2ru[v["name_eng"]] = k
-    end
+    # @cocktails.each do |k, v|
+    #   @cocktail_names_en2ru[v["name_eng"]] = k
+    # end
   end
   
   def update_cocktails
     say "обрабатываю коктейли"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
-      @cocktails_present[@cocktail_names_en2ru[cocktail_dir.name]] = true
-      next if File.mtime(cocktail_dir.path) <= @cocktails_mtime
-      say cocktail_dir.name
+      name = cocktail_dir.name#.yi
+      @cocktails_present[name] = true
+      next if @cocktails[name] && File.mtime(cocktail_dir.path) <= @cocktails_mtime
+      say name
       indent do
       @cocktail               = {}
+      @cocktail["name"]        = name
       @cocktail["tags"]        = []
       @cocktail["tools"]       = []
       @cocktail["ingredients"] = []
@@ -96,7 +99,10 @@ class CocktailsProcessor < Barman::Processor
       end # indent
     end
     end # indent
+    
     deleted = @cocktails.keys - @cocktails_present.keys
+    # p deleted
+    # p @cocktails.keys[2].encoding.name, @cocktails_present.keys[2].encoding.name, @cocktails.keys[2] == @cocktails_present.keys[2]
     if deleted.length > 0
       say "удаляю коктейли"
       indent do
@@ -140,11 +146,12 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_images name, hash, delete = false
-    from = Config::COCKTAILS_DIR + hash["name_eng"] + "/"
+    from = Config::COCKTAILS_DIR + name + "/"
     
-    to_big   = Config::IMAGES_BIG_DIR   + hash["name_eng"].html_name + ".png"
-    to_small = Config::IMAGES_SMALL_DIR + hash["name_eng"].html_name + ".png"
-    to_bg    = Config::IMAGES_BG_DIR    + hash["name_eng"].html_name + ".png"
+    html_name = hash["name_eng"].html_name
+    to_big   = Config::IMAGES_BIG_DIR   + html_name + ".png"
+    to_small = Config::IMAGES_SMALL_DIR + html_name + ".png"
+    to_bg    = Config::IMAGES_BG_DIR    + html_name + ".png"
     
     if delete
       FileUtils.rmtree([to_big, to_small, to_bg])
@@ -186,21 +193,24 @@ class CocktailsProcessor < Barman::Processor
 private
 
   def parse_about_text(about_text)
-    parse_title (about_text.scan /.*Название:\ *\n(.+)\n.*/)[0][0]
-    parse_teaser (about_text.scan /.*Тизер:\ (.+)\ *\n.*/)[0][0]
-    parse_strength (about_text.scan /.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
-    if (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
-      parse_tags (about_text.scan /.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
+    parse_title about_text.scan(/.*Название:\ *\n(.+)\n.*/)[0][0]
+    parse_teaser about_text.scan(/.*Тизер:\ (.+)\ *\n.*/)[0][0]
+    parse_strength about_text.scan(/.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
+    if about_text.scan(/.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
+      parse_tags about_text.scan(/.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
     else
       parse_tags ""
     end
-    parse_ingredients (about_text.scan /.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
-    parse_tools (about_text.scan /.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
-    parse_receipt (about_text.scan /.*Как приготовить:\ *\n(.+)*/m)[0][0]
+    parse_ingredients about_text.scan(/.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
+    parse_tools about_text.scan(/.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
+    parse_receipt about_text.scan(/.*Как приготовить:\ *\n(.+)*/m)[0][0]
   end
   
   def parse_title(title)
-    @cocktail["name"], @cocktail["name_eng"] = title.split("; ")
+    if title =~ /;/
+      error "неверный формат названия"
+    end
+    @cocktail["name_eng"] = title
   end
   
   def parse_teaser(teaser)
@@ -242,18 +252,21 @@ private
   end
   
   def parse_receipt(receipt)
-    res = []
-    lines = receipt.split("\n")
-    lines.each do |line|
-      letters = line.split("")
-      if(letters[0] != letters[0].downcase)
-        res.push line
-      else
-        idx = res.index res.last
-        res[idx] = res[idx] + " " + line
-      end
-    end
-    @cocktail["receipt"] = res
+    # res = []
+    # lines = receipt.split("\n")
+    # lines.each do |line|
+    #   letters = line.split("")
+    #   # p letters[0], letters[0].downcase
+    #   if(letters[0] != letters[0].downcase)
+    #     res.push line
+    #   else
+    #     error "!!!!!!"
+    #     idx = res.index res.last
+    #     res[idx] = res[idx] + " " + line
+    #   end
+    # end
+    # @cocktail["receipt"] = res
+    @cocktail["receipt"] = receipt.split("\n")
   end
   
   def parse_legend_text(text)
