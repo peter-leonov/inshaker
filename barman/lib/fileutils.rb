@@ -18,4 +18,12 @@ class Dir
       end
     end
   end
+  def each_rex rex
+    each do |entry|
+      entry = entry.force_encoding('UTF-8').gsub('й','й')
+      m = nil
+      next if @@exclude =~ entry || !(m = rex.match entry)
+        yield entry, m
+    end
+  end
 end
