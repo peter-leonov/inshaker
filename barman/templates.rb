@@ -24,17 +24,17 @@ end
 
 class BarTemplate
   def initialize(hash)
-    @name       = hash[:name]
-    @city       = hash[:city]
-    @id         = hash[:id]
-    @big_images = hash[:big_images]
-    @desc_start = hash[:desc_start].gsub(/[\n\r]/, "<br/>")
-    @desc_end   = hash[:desc_end].gsub(/[\n\r]/, "<br/>")
-    @format     = hash[:format]
-    @feel       = hash[:feel]
-    @chief      = hash[:chief]
-    @cuisine    = hash[:cuisine]
-    @entrance   = hash[:entrance]
+    @name       = hash["name"]
+    @city       = hash["city"]
+    @id         = hash["id"]
+    @big_images = hash["big_images"]
+    @desc_start = hash["desc_start"].gsub(/[\n\r]/, "<br/>")
+    @desc_end   = hash["desc_end"].gsub(/[\n\r]/, "<br/>")
+    @format     = hash["format"]
+    @feel       = hash["feel"]
+    @chief      = hash["chief"]
+    @cuisine    = hash["cuisine"]
+    @entrance   = hash["entrance"]
   end
   
   def get_binding

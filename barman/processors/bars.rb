@@ -1,7 +1,8 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
-require 'lib/string_util_1.8'
-$KCODE = 'u'
+# require 'lib/string_util_1.8'
+# $KCODE = 'u'
 
 class BarsProcessor < Barman::Processor
   
@@ -20,81 +21,90 @@ class BarsProcessor < Barman::Processor
   
   def initialize
     super   
-    @bars = {}
+    @bars = []
     @bar  = {} # currently processed bar
     @bar_points = {}
     @city_points = {}
   end
   
   def run
+    prepare_renderer
     prepare_map_points
-    prepare_bars
+    update_bars
     
-    flush_images
-    flush_html
     flush_json
   end
   
-  def prepare_bars
-    root_dir = Dir.new(Config::BARS_DIR)
-    root_dir.each do |city_dir|
-      city_path = root_dir.path + city_dir
-      if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
-        @bars[city_dir] = []
-        puts city_dir
-        bars_dir = Dir.new(city_path)
-        bars_dir.each do |bar_dir|
-          bar_path = bars_dir.path + "/" + bar_dir
-          if File.ftype(bar_path) == "directory" and !@excl.include?(bar_dir)
-            puts ".." + bar_dir
-            
-            @bar = {}
-            parse_about_text     File.open(bar_path + "/about.txt").read
-            parse_cocktails_text File.open(bar_path + "/cocktails.txt").read
-            detect_big_images bar_path
-            @bar[:point] = @bar_points[@bar[:name]] || []
-            @bars[city_dir] << @bar
+  def prepare_renderer
+    @renderer = ERB.new(File.read(Config::BAR_ERB))
+  end
+  
+  def update_bars
+    Dir.new(Config::BARS_DIR).each_dir do |city_dir|
+      say city_dir.name
+      indent do
+      Dir.new(city_dir.path).each_dir do |bar_dir|
+        say bar_dir.name
+        indent do
+        
+        @bar = {}
+        @bar["name"] = bar_dir.name
+        @bar["city"] = city_dir.name
+        parse_about_text(File.read(bar_dir.path + "/about.txt"), @bar)
+        parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), @bar)
+        
+        city_html_name = city_dir.name.trans.html_name
+        html_name = @bar["name_eng"].html_name
+        
+        
+        # картинки
+        out_images_path = Config::IMAGES_DIR + city_html_name
+        FileUtils.mkdir_p out_images_path
+        
+        mini = bar_dir.path + "/mini.jpg"
+        if File.exists?(mini)
+          if File.size(mini) > 25 * 1024
+            warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
           end
+          FileUtils.cp_r(mini, out_images_path + "/" + html_name + "-mini.jpg", @mv_opt)
+        else
+          error "не нашел маленькую картинку бара (mini.jpg)"
         end
+        
+        @bar["big_images"] = []
+        images = []
+        bar_dir.each_rex(/^big-(\d+).jpg$/) { |img, m| images << m[1].to_i }
+        if images.length > 0
+          say "нашел #{images.length} #{images.length.items("картинку", "картинки", "картинок")}"
+          images.sort.each do |i|
+            from = "#{bar_dir.path}/big-#{i}.jpg"
+            if File.size(from) > 70 * 1024
+              warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
+            end
+            FileUtils.cp_r(from, "#{out_images_path}/#{html_name}-big-#{i}.jpg", @mv_opt)
+            @bar["big_images"] << "/i/bar/#{city_html_name}/#{html_name}-big-#{i}.jpg"
+          end
+        else
+          error "не нашел ни одной фотки бара (big-N.jpg)"
+        end
+        
+        
+        # html
+        out_html_path = Config::BARS_HTML_DIR + city_html_name
+        FileUtils.mkdir_p out_html_path
+        File.write(out_html_path + "/" + html_name + ".html", @renderer.result(BarTemplate.new(@bar).get_binding))
+        
+        
+        
+        @bar["point"] = @bar_points[@bar["name"]] || []
+        
+        @bars << @bar
+        end # indent
       end
+      end # indent
     end
   end
     
-  def flush_images
-    @bars.each do |city, bars_arr|
-      bars_arr.each do |bar|
-        bar_path = Config::BARS_DIR + city + "/" + bar[:name] + "/"
-        out_images_path = Config::IMAGES_DIR + city.trans.html_name
-        if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
-        
-        if File.exists?(bar_path + "mini.jpg")
-          FileUtils.cp_r(bar_path + "mini.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-mini.jpg", @mv_opt)
-        end
-        
-        counter = 1
-        while File.exists?(bar_path + "big-#{counter}.jpg")
-          FileUtils.cp_r(bar_path + "big-#{counter}.jpg", out_images_path + "/" + bar[:name_eng].html_name + "-big-#{counter}.jpg", @mv_opt)
-          counter +=1
-        end
-      end
-    end
-  end
-  
-  def flush_html
-    template = File.open(Config::BAR_ERB).read
-    renderer = ERB.new(template)
-    @bars.each do |city, bars_arr|
-      bars_arr.each do |bar|
-        out_html_path = Config::BARS_HTML_DIR + city.trans.html_name
-        if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
-        bar_erb = BarTemplate.new(bar)
-        File.open(out_html_path + "/" + bar[:name_eng].html_name + ".html", "w+") do |html|
-          html.write renderer.result(bar_erb.get_binding)
-        end
-      end
-    end
-  end
-  
   def prepare_map_points
     rx = Regexp.new(/<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m)
     
@@ -105,56 +115,42 @@ class BarsProcessor < Barman::Processor
     
     body_str = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
     points_arrs = body_str.scan(rx)
-    points_arrs.each {|arr| @city_points[arr[0]] = {:point => [arr[2].to_f, arr[1].to_f], :zoom => 11}}
+    points_arrs.each {|arr| @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}}
   end
   
   def flush_json
-    @bars.each do |city, bars_arr|
-      bars_arr.each do |bar|
-        # YAGNI
-        bar.delete(:desc_start)
-        bar.delete(:desc_end) 
-        bar.delete(:city) 
-     end
+    @bars.each do |bar|
+      # YAGNI
+      bar.delete("desc_start")
+      bar.delete("desc_end")
     end
     
-    flush_json_object({:db => @bars, :opts => {}}, Config::DB_JS)
+    flush_json_object(@bars, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   
 private
 
-  def detect_big_images bar_path
-    @bar[:big_images] = []
-    counter = 1
-    while File.exists?(bar_path + "/big-#{counter}.jpg")
-      @bar[:big_images] << "/i/bar/" + @bar[:city].trans.html_name + "/" + @bar[:name_eng].html_name + "-big-#{counter}.jpg"
-      counter += 1
-    end
-  end
-
-  def parse_about_text(txt)
-    @bar[:name], @bar[:name_eng] = ((txt.scan /.*Название:\ *\n(.+)\n.*/)[0][0]).split("; ").map { |nm| nm = nm.yi }
-    @bar[:country]  = (txt.scan /.*Страна:\ *\n(.+)\ *\n.*/)[0][0]
-    @bar[:city]     = (txt.scan /.*Город:\ *\n(.+)\ *\n.*/)[0][0]
-    @bar[:address]  = (txt.scan /.*Адрес:\ *\n(.+)\n(.+)\n(.+)?\ *\n.*/)[0]
-    @bar[:format]   = (txt.scan /.*Тут можно:\ *\n(.+)\n\nС кем.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
-    @bar[:feel]     = (txt.scan /.*С кем:\ *\n(.+)\n\nВход.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim.downcase}
-    @bar[:entrance] = (txt.scan /.*Вход:\ (.+)\ *\n.*/)[0][0]
-    @bar[:cuisine]  = (txt.scan /.*Кухня:\ *\n(.+)\n\nГлавный бармен.*/m)[0][0].split(%r{[\n\r]})
-    @bar[:chief]    = (txt.scan /.*Главный бармен:\ *\n(.+)\ *\n.*/)[0][0]
+  def parse_about_text txt, bar
+    bar["name_eng"]   = txt.scan(/.*Название:\ *\n(.+)\n.*/)[0][0]
+    bar["country"]    = txt.scan(/.*Страна:\ *\n(.+)\ *\n.*/)[0][0]
+    bar["address"]    = txt.scan(/.*Адрес:\ *\n(.+)\n(.+)\n(.+)?\ *\n.*/)[0]
+    bar["format"]     = txt.scan(/.*Тут можно:\ *\n(.+)\n\nС кем.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim}
+    bar["feel"]       = txt.scan(/.*С кем:\ *\n(.+)\n\nВход.*/m)[0][0].split(%r{[\n\r]}).map{|e| e.trim}
+    bar["entrance"]   = txt.scan(/.*Вход:\ (.+)\ *\n.*/)[0][0]
+    bar["cuisine"]    = txt.scan(/.*Кухня:\ *\n(.+)\n\nГлавный бармен.*/m)[0][0].split(%r{[\n\r]})
+    bar["chief"]      = txt.scan(/.*Главный бармен:\ *\n(.+)\ *\n.*/)[0][0]
     
-                 desc = (txt.scan /.*О баре:\ *\n(.+)*/m)[0][0].split(%r{[\n\r]})
-    @bar[:desc_start] = desc.first
-    @bar[:desc_end]   = desc[1..-1].join "\n"
-
+    desc               = txt.scan(/.*О баре:\ *\n(.+)*/m)[0][0].split(%r{[\n\r]})
+    bar["desc_start"] = desc.first
+    bar["desc_end"]   = desc[1..-1].join("\n")
   end
   
-  def parse_cocktails_text(txt)
+  def parse_cocktails_text txt, bar
     blocks = txt.split("\n\n")
-    @bar[:recs]  = blocks[0].split(%r{[\n\r]})
-    @bar[:carte] = blocks[1].split(%r{[\n\r]})
-    @bar[:price_index] = blocks[2].split(": ")[1]
+    bar["recs"]  = blocks[0].split(%r{[\n\r]})
+    bar["carte"] = blocks[1].split(%r{[\n\r]})
+    bar["price_index"] = blocks[2].split(": ")[1]
   end
 end
 
