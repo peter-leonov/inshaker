@@ -54,12 +54,12 @@ var Controller = {
 		var menu = $('panel_cocktail');
 		
         if (Barman.getByCocktailName(name)) {
-            var a = document.createElement("a")
-            a.href = "#"
-            a.innerHTML = "<b>Автор</b>"
-            menu.appendChild(a)
-            var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name))
-            ip.addCloseListener(function () { a.remClassName('now') })
+            var a = document.createElement("a");
+            a.href = "#";
+            a.innerHTML = "<b>Автор</b>";
+            menu.appendChild(a);
+            var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+            ip.addCloseListener(function () { a.remClassName('now') });
         }
         menu.now = menu; 
 		this._initNavigationRules(menu);
@@ -125,6 +125,7 @@ var Controller = {
 		if(good.mark){ // branded
 			$('good_composition').style.display = "block";
 			$('good_mark').innerHTML = good.mark;
+            $('good_mark').href = GoodHelper.ingredientsLink(good.mark);
 			$('good_ingredient').innerHTML = ingred;
 		} else $('good_composition').style.display = "none";
 		

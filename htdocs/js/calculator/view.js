@@ -454,7 +454,12 @@ function CalculatorView() {
 		$('good_name').innerHTML = item.good.brand || name;
 		if(item.good.mark){ // branded
 			$('good_composition').style.display = "block";
+            $('good_mark').href = GoodHelper.ingredientsLink(item.good.mark);
 			$('good_mark').innerHTML = item.good.mark;
+            $('good_mark').addEventListener('click', function(e) {
+                window.location.href = this.href;
+                window.location.reload();
+            }, false);
 			$('good_ingredient').innerHTML = name;
 		} else $('good_composition').style.display = "none";
 		

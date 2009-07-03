@@ -26,6 +26,16 @@ var GoodHelper = {
         return cartData;
     },
 
+    ingredientsLink: function(mark){
+        var ingreds = [];
+        for(var ingred in goods){
+            for(var i = 0; i < goods[ingred].length; i++){
+                if(goods[ingred][i].mark == mark) ingreds.push(ingred);
+            }
+        }
+        return "/cocktails.html#state=byIngredients&ingredients=" + ingreds.join(",");                
+    },
+    
 	isBottled: function(good){
         if((good.volumes.length == 1) &&
             (good.unit == "шт") && (good.volumes[0][0] == 1)) return false;
