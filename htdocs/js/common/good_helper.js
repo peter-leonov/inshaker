@@ -26,7 +26,7 @@ var GoodHelper = {
         return cartData;
     },
 
-    ingredientsLink: function(mark){
+    ingredientsLinkByMark: function(mark){
         var ingreds = [];
         for(var ingred in goods){
             for(var i = 0; i < goods[ingred].length; i++){
@@ -36,6 +36,10 @@ var GoodHelper = {
         return "/cocktails.html#state=byIngredients&ingredients=" + ingreds.join(",");                
     },
     
+    ingredientLink: function(ingred){
+        return "/cocktails.html#state=byIngredients&ingredients=" + ingred;                
+    },
+     
 	isBottled: function(good){
         if((good.volumes.length == 1) &&
             (good.unit == "шт") && (good.volumes[0][0] == 1)) return false;
