@@ -149,6 +149,7 @@ class CocktailsProcessor < Barman::Processor
       hash.delete("desc_end")
      end
      
+     say "сохраняю данные о коктейлях, тегах и крепости"
      flush_json_object(@cocktails, Config::DB_JS)
      flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
