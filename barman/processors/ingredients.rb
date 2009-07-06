@@ -28,7 +28,7 @@ class IngredientsProcessor < Barman::Processor
   
   def run
     prepare_dirs
-    # prepare_ingredients
+    prepare_goods
     
     update_groups
     update_goods
@@ -54,48 +54,51 @@ class IngredientsProcessor < Barman::Processor
   end
   
   
-  def prepare_ingredients
-    if File.exists?(Config::DB_JS_INGREDS)
-      @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
-      @ingredients = JSON.parse(File.open(Config::DB_JS_INGREDS).read)
+  def prepare_goods
+    if File.exists?(Config::DB_JS_GOODS)
+      @goods_mtime = File.mtime(Config::DB_JS_GOODS)
+      @goods = JSON.parse(File.read(Config::DB_JS_GOODS))
     else
-      @ingredients_mtime = Time.at(0)
+      @goods_mtime = Time.at(0)
     end
   end
   
-  
   def update_goods
+    say "обновляю ингредиенты"
+    indent do
+    done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
-      say group_dir.name
-      indent do
       group_dir.each_dir do |good_dir|
-        good = process_good(good_dir, good_dir.name)
+        good = process_good(good_dir, group_dir.name, good_dir.name)
         unless good
-          say good_dir.name
-          indent do
           good_dir.each_dir do |brand_dir|
-            break if good = process_good(brand_dir, good_dir.name, brand_dir.name)
+            break if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
           end
           unless good
-            warning "не нашел описания"
+            warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
           end
-          end # indent
         end
         
         if good
-          @goods[good_dir.name] ? @goods[good_dir.name] << good : @goods[good_dir.name] = [good]
           @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
-          # say ({"group" => group_dir.name, "name" => good_dir.name}).to_json
+          if good != true
+            done += 1
+            @goods[good_dir.name] = [good]
+          end
         end
       end
-      end # indent
     end
+    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
+    end # indent
   end
   
-  def process_good dir, name, brand=nil
+  def process_good dir, group, name, brand=nil
     about = dir.path + "/about.yaml"
     return unless File.exists?(about)
-    say dir.name
+    return true if @goods[name] && File.mtime(dir.path) <= @goods_mtime
+    
+    say brand ? "#{group}: #{name} (#{brand})" : "#{group}: #{name}"
+    
     good = {}
     indent do
     about = YAML::load(File.open(about))
