@@ -62,18 +62,33 @@ class CocktailsProcessor < Barman::Processor
     else
       @cocktails_mtime = Time.at(0)
     end
-    
-    # @cocktails.each do |k, v|
-    #   @cocktail_names_en2ru[v["name_eng"]] = k
-    # end
   end
   
   def update_cocktails
+    say "собираю список коктейлей"
+    indent do
+    Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
+      @cocktails_present[cocktail_dir.name] = true
+    end
+    end # indent
+    
+    deleted = @cocktails.keys - @cocktails_present.keys
+    if deleted.length > 0
+      say "удаляю коктейли"
+      indent do
+      deleted.each do |cocktail|
+        say cocktail
+        update_images cocktail, @cocktails[cocktail], true
+        @cocktails.delete(cocktail)
+      end
+      end # indent
+    end
+    
+    
     say "обрабатываю коктейли"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
-      name = cocktail_dir.name#.yi
-      @cocktails_present[name] = true
+      name = cocktail_dir.name
       next if @cocktails[name] && File.mtime(cocktail_dir.path) <= @cocktails_mtime
       say name
       indent do
@@ -99,20 +114,6 @@ class CocktailsProcessor < Barman::Processor
       end # indent
     end
     end # indent
-    
-    deleted = @cocktails.keys - @cocktails_present.keys
-    # p deleted
-    # p @cocktails.keys[2].encoding.name, @cocktails_present.keys[2].encoding.name, @cocktails.keys[2] == @cocktails_present.keys[2]
-    if deleted.length > 0
-      say "удаляю коктейли"
-      indent do
-      deleted.each do |cocktail|
-        say cocktail
-        update_images cocktail, @cocktails[cocktail], true
-        @cocktails.delete(cocktail)
-      end
-      end # indent
-    end
   end
   
   def prepare_tags_and_strengths
