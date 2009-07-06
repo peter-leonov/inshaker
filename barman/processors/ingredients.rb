@@ -33,16 +33,8 @@ class IngredientsProcessor < Barman::Processor
     update_groups
     update_goods
     
-    if @errors_count == 0
-      if @warnings_count == 0
-        say_done "выполнено без ошибок"
-      else
-        say_warning "критических ошибок не было"
-      end
+    if summary
       flush_json
-    else
-      say_error "были критические ошибки"
-      say "часть данных не сохранена"
     end
   end
   

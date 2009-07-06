@@ -41,7 +41,9 @@ class CocktailsProcessor < Barman::Processor
     
     update_cocktails
     
-    flush_json
+    if summary
+      flush_json
+    end
   end  
   
   def prepare_dirs
