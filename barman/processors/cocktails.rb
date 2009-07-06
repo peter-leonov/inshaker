@@ -65,54 +65,67 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_cocktails
-    say "собираю список коктейлей"
+    say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
       @cocktails_present[cocktail_dir.name] = true
     end
+    say "нашел #{@cocktails_present.keys.length} #{@cocktails_present.keys.length.items("коктейль", "коктейля", "коктейлей")}"
     end # indent
     
-    deleted = @cocktails.keys - @cocktails_present.keys
-    if deleted.length > 0
-      say "удаляю коктейли"
-      indent do
-      deleted.each do |cocktail|
-        say cocktail
-        update_images cocktail, @cocktails[cocktail], true
-        @cocktails.delete(cocktail)
-      end
-      end # indent
-    end
     
-    
-    say "обрабатываю коктейли"
+    say "удаляю коктейли"
     indent do
-    Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
-      name = cocktail_dir.name
-      next if @cocktails[name] && File.mtime(cocktail_dir.path) <= @cocktails_mtime
+    deleted = @cocktails.keys - @cocktails_present.keys
+    deleted.each do |name|
       say name
-      indent do
-      @cocktail               = {}
-      @cocktail["name"]        = name
-      @cocktail["tags"]        = []
-      @cocktail["tools"]       = []
-      @cocktail["ingredients"] = []
-      
-      parse_about_text  File.open(cocktail_dir.path + "/about.txt").read
-      parse_legend_text File.open(cocktail_dir.path + "/legend.txt").read
-      
-      if @cocktails[@cocktail["name"]]
-        say "обновлен"
-      else
-        say "добавлен"
-      end
-      @cocktails[@cocktail["name"]] = @cocktail
-      
-      update_images @cocktail["name"], @cocktail
-      update_html @cocktail["name"], @cocktail
-      update_video cocktail_dir, @cocktail["name"], @cocktail
-      end # indent
+      update_images name, @cocktails[name], true
+      @cocktails.delete(name)
     end
+    say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+    
+    say "добавляю коктейли"
+    indent do
+    done = 0
+    Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+      next if @cocktails[dir.name]
+      process_cocktail dir
+      done += 1
+    end
+    say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+    
+    say "обновляю коктейли"
+    indent do
+    done = 0
+    Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+      next if @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
+      process_cocktail dir
+      done += 1
+    end
+    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+  end
+  
+  def process_cocktail dir
+    name = dir.name
+    say name
+    indent do
+    @cocktail               = {}
+    @cocktail["name"]        = name
+    @cocktail["tags"]        = []
+    @cocktail["tools"]       = []
+    @cocktail["ingredients"] = []
+    
+    parse_about_text  File.open(dir.path + "/about.txt").read
+    parse_legend_text File.open(dir.path + "/legend.txt").read
+    
+    @cocktails[@cocktail["name"]] = @cocktail
+    
+    update_images @cocktail["name"], @cocktail
+    update_html @cocktail["name"], @cocktail
+    update_video dir, @cocktail["name"], @cocktail
     end # indent
   end
   
