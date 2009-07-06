@@ -161,7 +161,7 @@ var DataFilter = {
 	
 	suitableIngredients: function(set, list){
 		var res = [];
-		var cocktails = this.cocktailsByIngredients(set, list);
+		var cocktails = Cocktail.getByIngredients(list, set);
 		for(var i = 0; i < cocktails.length; i++){
 			for(var j = 0; j < cocktails[i].ingredients.length; j++){
 				res.push(cocktails[i].ingredients[j][0]);

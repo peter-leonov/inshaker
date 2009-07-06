@@ -17,10 +17,9 @@ var Model = {
 	
 	selectedListChanged: function(selectedList){
 		this.resultSet = DataFilter.suitableIngredients(this.cocktailsSet, selectedList);
-		this.dataListener.updateSuitable(this.resultSet[1]);
 		
 		var num = this.resultSet[0];
 		if(num == this.cocktailsSet.length) num = 0;
-		this.dataListener.updateCount(num, this.resultSet[2]);
+		this.dataListener.updateCount(num, this.resultSet[2], selectedList.length);
 	}
 }

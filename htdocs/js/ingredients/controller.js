@@ -2,6 +2,7 @@ var Controller = {
 	ALPHABETICAL   : 'top-alphabetical',
 	CHOSEN_INGEREDS: 'chosen',
 	CAN_PREPARE    : 'can_prepare',
+	CAN_PREPARE_TXT: 'can_prepare_txt',
 	HOW_MANY       : 'how_many',
 	VIEW_COCKTAILS : 'view_cocktails',
 	COLUMN_CLASS   : 'col',
@@ -170,7 +171,7 @@ var Controller = {
 	selectedListChanged: function(){
 		if(this.selected.length > 0) {
 			$(this.CHOSEN_INGEREDS).innerHTML = "<strong>Вы выбрали:</strong>  ";
-		} else $(this.CHOSEN_INGEREDS).innerHTML = "<strong>Выберите что-нибудь :) </span>";
+		} else $(this.CHOSEN_INGEREDS).innerHTML = "<strong>Выберите Ваши ингредиенты :)</strong>";
 		for(var i = 0; i < this.selected.length; i++){
 			var span = document.createElement("span");
 			span.innerHTML = this.selected[i];
@@ -192,18 +193,7 @@ var Controller = {
 		Model.selectedListChanged(this.selected);
 	},
 	
-	updateSuitable: function(resultSet){
-		var nodes = $(this.ALPHABETICAL).getElementsByTagName("a");
-		for(var i = 0; i < nodes.length; i++){
-			if(resultSet.indexOf(nodes[i].innerHTML) == -1) {
-				nodes[i].addClassName(this.DISABLED_CLASS);
-			} else {
-				nodes[i].remClassName(this.DISABLED_CLASS);
-			}
-		}
-	},
-	
-	updateCount: function(num, top){
+	updateCount: function(num, top, selectedNum){
 		this.topCocktail = top;
 		this.numCanPrepare = num;
 		
@@ -212,13 +202,14 @@ var Controller = {
  			var txt = "";
 			if(this.numCanPrepare > 1) {
 				txt += this.numCanPrepare + " ";
-				txt += this.numCanPrepare.plural("коктейль", "коктейля", "коктейлей") +".";
+				txt += this.numCanPrepare.plural("коктейля", "коктейлей", "коктейлей") +".";
 				$(this.VIEW_COCKTAILS).value = "Посмотреть коктейли";
 			} else {
 				txt = this.topCocktail.name;
 				$(this.VIEW_COCKTAILS).value = "Посмотреть коктейль";
 			}
 			$(this.HOW_MANY).innerHTML = txt;
+            $(this.CAN_PREPARE_TXT).innerHTML = selectedNum.plural("Входит", "Входят", "Входят") + " в состав";
 		} else {
 			$(this.CAN_PREPARE).style.display = "none";
 		}
