@@ -278,14 +278,15 @@ var Controller = {
 	},
 	
 	_createRecommendationElement: function(rec, num){
-		var div = document.createElement("div");
-		div.className = "point";
-		div.id = "rec_"+(num+1);
+		var point = document.createElement("a");
+		point.className = "point";
+		point.id = "rec_"+(num+1);
+        point.href = GoodHelper.ingredientsLink(rec.mark);
 		var img = document.createElement("img");
 		img.src = this.PATH_MERCH + "banners/" + rec.banner;
 		img.alt = rec.mark;
-		div.appendChild(img);
-		return div;	
+		point.appendChild(img);
+		return point;	
 	},
 	
 	renderRelated: function(resultSet, perPage){
