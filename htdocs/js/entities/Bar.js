@@ -29,32 +29,19 @@ Object.extend(Bar,
 {
 	db: null, // must be defined in db-bars.js by calling initialize()
 	
-	initialize: function (store)
+	initialize: function (db)
 	{
-		var db = store.db
 		// console.time('Bar.initialize')
-		var id = 0
-		for (var k in db)
+		var id = 0, byCity = {}
+		for (var i = 0; i < db.length; i++)
 		{
-			var bars = db[k]
-			for (var i = 0; i < bars.length; i++)
-			{
-				var bar = new Bar(bars[i])
-				bars[i] = bar
-				bar.city = k
-				bar.id = ++id
-				bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
-			}
+			var bar = new Bar(db[i]), city = bar.city
+			byCity[city] ? byCity[city].push(bar) : byCity[city] = [bar]
+			bar.id = ++id
+			bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
 		}
-		
-		this.db = db
-		this.opts = store.opts
+		this.db = byCity
 		// console.timeEnd('DB.Bars.initialize')
-	},
-	
-	getOpts: function ()
-	{
-		return this.opts
 	},
 	
 	getByQuery: function (query)
