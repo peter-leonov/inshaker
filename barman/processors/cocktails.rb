@@ -41,7 +41,9 @@ class CocktailsProcessor < Barman::Processor
     
     update_cocktails
     
-    flush_json
+    if summary
+      flush_json
+    end
   end  
   
   def prepare_dirs
@@ -62,57 +64,71 @@ class CocktailsProcessor < Barman::Processor
     else
       @cocktails_mtime = Time.at(0)
     end
-    
-    # @cocktails.each do |k, v|
-    #   @cocktail_names_en2ru[v["name_eng"]] = k
-    # end
   end
   
   def update_cocktails
-    say "обрабатываю коктейли"
+    say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
-      name = cocktail_dir.name#.yi
-      @cocktails_present[name] = true
-      next if @cocktails[name] && File.mtime(cocktail_dir.path) <= @cocktails_mtime
-      say name
-      indent do
-      @cocktail               = {}
-      @cocktail["name"]        = name
-      @cocktail["tags"]        = []
-      @cocktail["tools"]       = []
-      @cocktail["ingredients"] = []
-      
-      parse_about_text  File.open(cocktail_dir.path + "/about.txt").read
-      parse_legend_text File.open(cocktail_dir.path + "/legend.txt").read
-      
-      if @cocktails[@cocktail["name"]]
-        say "обновлен"
-      else
-        say "добавлен"
-      end
-      @cocktails[@cocktail["name"]] = @cocktail
-      
-      update_images @cocktail["name"], @cocktail
-      update_html @cocktail["name"], @cocktail
-      update_video cocktail_dir, @cocktail["name"], @cocktail
-      end # indent
+      @cocktails_present[cocktail_dir.name] = true
     end
+    say "нашел #{@cocktails_present.keys.length} #{@cocktails_present.keys.length.items("коктейль", "коктейля", "коктейлей")}"
     end # indent
     
+    
+    say "удаляю коктейли"
+    indent do
     deleted = @cocktails.keys - @cocktails_present.keys
-    # p deleted
-    # p @cocktails.keys[2].encoding.name, @cocktails_present.keys[2].encoding.name, @cocktails.keys[2] == @cocktails_present.keys[2]
-    if deleted.length > 0
-      say "удаляю коктейли"
-      indent do
-      deleted.each do |cocktail|
-        say cocktail
-        update_images cocktail, @cocktails[cocktail], true
-        @cocktails.delete(cocktail)
-      end
-      end # indent
+    deleted.each do |name|
+      say name
+      update_images name, @cocktails[name], true
+      @cocktails.delete(name)
     end
+    say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+    
+    say "добавляю коктейли"
+    indent do
+    done = 0
+    Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+      next if @cocktails[dir.name]
+      process_cocktail dir
+      done += 1
+    end
+    say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+    
+    say "обновляю коктейли"
+    indent do
+    done = 0
+    Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+      next if @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
+      process_cocktail dir
+      done += 1
+    end
+    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    end # indent
+  end
+  
+  def process_cocktail dir
+    name = dir.name
+    say name
+    indent do
+    @cocktail               = {}
+    @cocktail["name"]        = name
+    @cocktail["tags"]        = []
+    @cocktail["tools"]       = []
+    @cocktail["ingredients"] = []
+    
+    parse_about_text  File.open(dir.path + "/about.txt").read
+    parse_legend_text File.open(dir.path + "/legend.txt").read
+    
+    @cocktails[@cocktail["name"]] = @cocktail
+    
+    update_images @cocktail["name"], @cocktail
+    update_html @cocktail["name"], @cocktail
+    update_video dir, @cocktail["name"], @cocktail
+    end # indent
   end
   
   def prepare_tags_and_strengths
@@ -133,6 +149,7 @@ class CocktailsProcessor < Barman::Processor
       hash.delete("desc_end")
      end
      
+     say "сохраняю данные о коктейлях, тегах и крепости"
      flush_json_object(@cocktails, Config::DB_JS)
      flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)

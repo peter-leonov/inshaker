@@ -81,5 +81,20 @@ module Barman
     def done msg
       say_done msg
     end
+    
+    def summary
+      if @errors_count == 0
+        if @warnings_count == 0
+          say_done "выполнено без ошибок"
+        else
+          say_warning "критических ошибок не было"
+        end
+        return true
+      else
+        say_error "были критические ошибки"
+        say "часть данных не сохранена"
+        return false
+      end
+    end
   end
 end
