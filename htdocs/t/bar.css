@@ -5,7 +5,7 @@
 #bar-page .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
 #bar-page .b-content { width: 100%; }
 #bar-page .b-content .about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
-#bar-page .b-content .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; }
+#bar-page .b-content .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; cursor: pointer; }
 #bar-page .b-content .info .part { margin-left: 260px; }
 #bar-page .b-content .info .part.barman a { color: #343B40 }
 #bar-page .b-content .info .part.feature,
