@@ -144,6 +144,14 @@ class BarsProcessor < Barman::Processor
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   
+  def flush_interlinks
+    hrefs = ""
+    @entities.each do |entity|
+      hrefs << %Q{<a href="/bars/#{entity["city"].dirify}/#{entity["name_eng"].html_name}.html">#{entity["name"]}</a>}
+    end
+    File.write(Config::HTML_DIR + "interlink.html", hrefs)
+  end
+  
 private
 
   def parse_about_text txt, bar
