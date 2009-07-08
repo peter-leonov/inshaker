@@ -239,11 +239,10 @@ BarPage.view =
 			this.nodes.barNext.hide()
 	},
 	
-  renderPriceIndex: function(bar)
-  {
-    this.nodes.priceIndex.innerHTML = bar.price_index + "&nbsp;р." 
-  }
-
+	renderPriceIndex: function(bar)
+	{
+		this.nodes.priceIndex.appendChild(document.createTextNode(bar.priceIndex + " р."))
+	}
 }
 
 })()}
