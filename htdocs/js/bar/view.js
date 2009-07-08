@@ -10,7 +10,7 @@ BarPage.view =
 	
 	initialize: function (nodes)
 	{
-		loadGoogleApi.delay(1000)
+		// loadGoogleApi.delay(1000)
 		
 		this.nodes = nodes
 		
