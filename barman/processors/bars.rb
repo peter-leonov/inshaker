@@ -11,16 +11,18 @@ class BarsProcessor < Barman::Processor
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     BARS_HTML_DIR = HTDOCS_DIR + "bars/"
-    IMAGES_DIR    = HTDOCS_DIR + "i/bar/"
-
+    IMAGES_DIR    = HTDOCS_DIR + "i/bar"
+    
     DB_JS        = HTDOCS_DIR  + "db/bars.js"
     DB_JS_CITIES = HTDOCS_DIR  + "db/cities.js"
-
+    
     BAR_ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
+    DECLENSIONS = Barman::BASE_DIR + "declensions.yaml"
   end
   
   def initialize
-    super   
+    super
+    @cases = {}
     @bars = []
     @bar  = {} # currently processed bar
     @bar_points = {}
@@ -28,6 +30,8 @@ class BarsProcessor < Barman::Processor
   end
   
   def run
+    prepare_dirs
+    prepare_cases
     prepare_renderer
     prepare_map_points
     update_bars
@@ -35,13 +39,22 @@ class BarsProcessor < Barman::Processor
     flush_json
   end
   
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::BARS_HTML_DIR, Config::IMAGES_DIR]
+  end
+  
   def prepare_renderer
     @renderer = ERB.new(File.read(Config::BAR_ERB))
+  end
+  
+  def prepare_cases
+    @declensions = YAML::load(File.open(Config::DECLENSIONS))
   end
   
   def update_bars
     Dir.new(Config::BARS_DIR).each_dir do |city_dir|
       say city_dir.name
+      error "нет склонений для слова «#{city_dir.name}»" unless @declensions[city_dir.name]
       indent do
       Dir.new(city_dir.path).each_dir do |bar_dir|
         say bar_dir.name
@@ -54,11 +67,12 @@ class BarsProcessor < Barman::Processor
         parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), @bar)
         
         city_html_name = city_dir.name.trans.html_name
+        city_map_name = @declensions[city_dir.name][1]
         html_name = @bar["name_eng"].html_name
         
         
         # картинки
-        out_images_path = Config::IMAGES_DIR + city_html_name
+        out_images_path = "#{Config::IMAGES_DIR}/#{city_html_name}/#{html_name}"
         FileUtils.mkdir_p out_images_path
         
         mini = bar_dir.path + "/mini.jpg"
@@ -66,7 +80,7 @@ class BarsProcessor < Barman::Processor
           if File.size(mini) > 25 * 1024
             warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
           end
-          FileUtils.cp_r(mini, out_images_path + "/" + html_name + "-mini.jpg", @mv_opt)
+          FileUtils.cp_r(mini, "#{out_images_path}/mini.jpg", @mv_opt)
         else
           error "не нашел маленькую картинку бара (mini.jpg)"
         end
@@ -81,8 +95,8 @@ class BarsProcessor < Barman::Processor
             if File.size(from) > 70 * 1024
               warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
             end
-            FileUtils.cp_r(from, "#{out_images_path}/#{html_name}-big-#{i}.jpg", @mv_opt)
-            @bar["big_images"] << "/i/bar/#{city_html_name}/#{html_name}-big-#{i}.jpg"
+            FileUtils.cp_r(from, "#{out_images_path}/photo-#{i}.jpg", @mv_opt)
+            @bar["big_images"] << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
           end
         else
           error "не нашел ни одной фотки бара (big-N.jpg)"
@@ -92,7 +106,7 @@ class BarsProcessor < Barman::Processor
         # html
         out_html_path = Config::BARS_HTML_DIR + city_html_name
         FileUtils.mkdir_p out_html_path
-        File.write(out_html_path + "/" + html_name + ".html", @renderer.result(BarTemplate.new(@bar).get_binding))
+        File.write("#{out_html_path}/#{html_name}.html", @renderer.result(BarTemplate.new(@bar, {"city_map_name" => city_map_name}).get_binding))
         
         
         
@@ -123,6 +137,7 @@ class BarsProcessor < Barman::Processor
       # YAGNI
       bar.delete("desc_start")
       bar.delete("desc_end")
+      bar.delete("big_images")
     end
     
     flush_json_object(@bars, Config::DB_JS)
