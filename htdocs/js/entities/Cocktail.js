@@ -80,6 +80,9 @@ Object.extend(Cocktail,
 		this.letters = this.letters.sort();
 	},
 	
+    getAll: function(){
+        return this.cocktails;
+    },
 	getByName: function (name){
 		for(var i = 0; i < this.cocktails.length; i++){
 			if(this.cocktails[i].name == name) return this.cocktails[i];
