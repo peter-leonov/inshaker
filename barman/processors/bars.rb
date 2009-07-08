@@ -1,30 +1,26 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
-# require 'lib/string_util_1.8'
-# $KCODE = 'u'
 
 class BarsProcessor < Barman::Processor
   
   module Config
-    BARS_DIR   = Barman::BASE_DIR + "Bars/"
-    HTDOCS_DIR = Barman::HTDOCS_DIR
+    BASE_DIR   = Barman::BASE_DIR + "Bars/"
     
-    BARS_HTML_DIR = HTDOCS_DIR + "bars/"
-    IMAGES_DIR    = HTDOCS_DIR + "i/bar"
+    HTML_DIR = Barman::HTDOCS_DIR + "bars/"
+    IMAGES_DIR    = Barman::HTDOCS_DIR + "i/bar"
     
-    DB_JS        = HTDOCS_DIR  + "db/bars.js"
-    DB_JS_CITIES = HTDOCS_DIR  + "db/cities.js"
+    DB_JS        = Barman::HTDOCS_DIR  + "db/bars.js"
+    DB_JS_CITIES = Barman::HTDOCS_DIR  + "db/cities.js"
     
-    BAR_ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
+    ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS = Barman::BASE_DIR + "declensions.yaml"
   end
   
   def initialize
     super
     @cases = {}
-    @bars = []
-    @bar  = {} # currently processed bar
+    @entities = []
     @bar_points = {}
     @city_points = {}
   end
@@ -36,15 +32,18 @@ class BarsProcessor < Barman::Processor
     prepare_map_points
     update_bars
     
-    flush_json
+    if summary
+      flush_interlinks
+      flush_json
+    end
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::BARS_HTML_DIR, Config::IMAGES_DIR]
+    FileUtils.mkdir_p [Config::HTML_DIR, Config::IMAGES_DIR]
   end
   
   def prepare_renderer
-    @renderer = ERB.new(File.read(Config::BAR_ERB))
+    @renderer = ERB.new(File.read(Config::ERB))
   end
   
   def prepare_cases
@@ -52,7 +51,7 @@ class BarsProcessor < Barman::Processor
   end
   
   def update_bars
-    Dir.new(Config::BARS_DIR).each_dir do |city_dir|
+    Dir.new(Config::BASE_DIR).each_dir do |city_dir|
       say city_dir.name
       error "нет склонений для слова «#{city_dir.name}»" unless @declensions[city_dir.name]
       indent do
@@ -60,15 +59,15 @@ class BarsProcessor < Barman::Processor
         say bar_dir.name
         indent do
         
-        @bar = {}
-        @bar["name"] = bar_dir.name
-        @bar["city"] = city_dir.name
-        parse_about_text(File.read(bar_dir.path + "/about.txt"), @bar)
-        parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), @bar)
+        bar = {}
+        bar["name"] = bar_dir.name
+        bar["city"] = city_dir.name
+        parse_about_text(File.read(bar_dir.path + "/about.txt"), bar)
+        parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), bar)
         
         city_html_name = city_dir.name.trans.html_name
         city_map_name = @declensions[city_dir.name][1]
-        html_name = @bar["name_eng"].html_name
+        html_name = bar["name_eng"].html_name
         
         
         # картинки
@@ -85,7 +84,7 @@ class BarsProcessor < Barman::Processor
           error "не нашел маленькую картинку бара (mini.jpg)"
         end
         
-        @bar["big_images"] = []
+        big_images = bar["big_images"] = []
         images = []
         bar_dir.each_rex(/^big-(\d+).jpg$/) { |img, m| images << m[1].to_i }
         if images.length > 0
@@ -96,7 +95,7 @@ class BarsProcessor < Barman::Processor
               warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
             end
             FileUtils.cp_r(from, "#{out_images_path}/photo-#{i}.jpg", @mv_opt)
-            @bar["big_images"] << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
+            big_images << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
           end
         else
           error "не нашел ни одной фотки бара (big-N.jpg)"
@@ -104,15 +103,15 @@ class BarsProcessor < Barman::Processor
         
         
         # html
-        out_html_path = Config::BARS_HTML_DIR + city_html_name
+        out_html_path = Config::HTML_DIR + city_html_name
         FileUtils.mkdir_p out_html_path
-        File.write("#{out_html_path}/#{html_name}.html", @renderer.result(BarTemplate.new(@bar, {"city_map_name" => city_map_name}).get_binding))
+        File.write("#{out_html_path}/#{html_name}.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
         
         
         
-        @bar["point"] = @bar_points[@bar["name"]] || []
+        bar["point"] = @bar_points[bar["name"]] || []
         
-        @bars << @bar
+        @entities << bar
         end # indent
       end
       end # indent
@@ -120,27 +119,28 @@ class BarsProcessor < Barman::Processor
   end
     
   def prepare_map_points
-    rx = Regexp.new(/<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m)
+    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m
     
-    body_str = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
-    points_arrs = body_str.scan(rx)
-    points_arrs.each {|arr| @bar_points[arr[0]] = [arr[2].to_f, arr[1].to_f]}
+    body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
+    body.scan(rx).each do |arr|
+      @bar_points[arr[0]] = [arr[2].to_f, arr[1].to_f]
+    end
     
-    
-    body_str = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
-    points_arrs = body_str.scan(rx)
-    points_arrs.each {|arr| @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}}
+    body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
+    body.scan(rx).each do |arr|
+      @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}
+    end
   end
   
   def flush_json
-    @bars.each do |bar|
+    @entities.each do |bar|
       # YAGNI
       bar.delete("desc_start")
       bar.delete("desc_end")
       bar.delete("big_images")
     end
     
-    flush_json_object(@bars, Config::DB_JS)
+    flush_json_object(@entities, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   
