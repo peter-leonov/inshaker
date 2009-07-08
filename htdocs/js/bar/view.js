@@ -36,11 +36,13 @@ BarPage.view =
 			}
 		}
 		
-		if(nodes.barman && Barman.getByName(nodes.barman.innerHTML)) 
-            new InfoPopup(nodes.barman, nodes.barmanInfoPopup, Barman.getByName(nodes.barman.innerHTML)) 
-        
-        var controller = this.owner.controller
-        nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
+		
+		var barman
+		if (nodes.barman && (barman = Barman.getByName(nodes.barman.innerHTML)))
+			new InfoPopup(nodes.barman, nodes.barmanInfoPopup, barman)
+		
+		var controller = this.owner.controller
+		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
 		
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
