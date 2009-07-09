@@ -41,7 +41,7 @@ background: url(icon/strs-green.png);
 #gifts-page .gift-promos { margin: 5px 0 0 1px } 
 #gifts-page .gift-promos .viewport,
 #gifts-page .gift-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
-#gifts-page .gift-promos .viewport .point { float: left; width: 960px; height: 100%; }
+#gifts-page .gift-promos .viewport .point { float: left; width: 920px; height: 100%; }
 #gifts-page .gift-promos .viewport .surface { width: 10000px; height:100%;}
 #gifts-page .gift-promos .prev,
 #gifts-page .gift-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
