@@ -323,7 +323,8 @@ label{display:block;}
 #b-bill .print-call .tools { width: 120px; float:left; }
 #b-bill .print-call .buy   { width: 103px; float:right; }
 
-#b-bill #buy_liquors , #b-bill #buy_syrups, #b-bill #print_plan, #b-bill #print_plan_inactive, #b-bill #call_barmen { padding-left: 16px; }
+#b-bill #buy_shaker, #b-bill #buy_liquors, #b-bill #buy_syrups, #b-bill #print_plan, #b-bill #print_plan_inactive, #b-bill #call_barmen { padding-left: 16px; }
+#b-bill #buy_shaker { background: url(button/buy_shaker.png) no-repeat; }
 #b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }
 #b-bill #buy_syrups  { background: url(button/buy_syrups.png) no-repeat; }
 
@@ -332,7 +333,7 @@ label{display:block;}
 #b-bill #print_plan_inactive { color: #888; }
 
 #b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; }
-#b-bill #buy_liquors, #b-bill #call_barmen { margin-top: 3px;}
+#b-bill #buy_liquors, #b-bill #buy_shaker, #b-bill #call_barmen { margin-top: 3px;}
 
 ul#cart_cocktails {margin-top: 9px;}
 
