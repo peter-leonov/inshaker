@@ -139,7 +139,7 @@ label{display:block;}
 .autocomplete div.hi{background-color:#cede97;}
 .search-error{display:none;height:12px;}
 
-#cocktails-page .ingreds-list {width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
+#cocktails-page .ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
 #cocktails-page .ingreds-list a {color:#fff;}
 #cocktails-page .ingreds-list a:hover {text-decoration:line-through;}
 

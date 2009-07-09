@@ -11,7 +11,7 @@ html{font-size :101%;}
 .gallery-nav ul li{float:none;display:inline;zoom:1;}
 .dots dl{background-position-y:1.3em;}
 .win-shop .main .zoom b{zoom:1;height:12px;}
-.win-shop .opacity{filter:alpha(opacity=75);}
+.opacity, .win-shop .opacity{filter:alpha(opacity=75);}
 .column{border:1px solid #C0C0C0;}
 .column .body-wrapper{border:1px solid #fff;}
 .b{zoom:1;}
