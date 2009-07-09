@@ -30,7 +30,8 @@ var GoodHelper = {
         var ingreds = [];
         for(var ingred in goods){
             for(var i = 0; i < goods[ingred].length; i++){
-                if(goods[ingred][i].mark == mark) ingreds.push(ingred);
+                if(goods[ingred][i].mark == mark && Cocktail.ingredients.indexOf(ingred) > -1) 
+                    ingreds.push(ingred);
             }
         }
         return "/cocktails.html#state=byIngredients&ingredients=" + ingreds.join(",");                
