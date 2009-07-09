@@ -28,9 +28,9 @@ var Model = {
 
 	selectedListChanged: function(selectedList){
 		this.resultSet = this.suitableIngredients(selectedList);
-		
-        var rounds = Ingredient.getAllRoundsByNames(selectedList);
 		this.dataListener.updateCount(this.resultSet[0], this.resultSet[2], selectedList.length);
-	    this.dataListener.updateRounds(rounds, selectedList.length > 0);
+        
+        // var rounds = Ingredient.getAllRoundsByNames(selectedList);
+	    // this.dataListener.updateRounds(rounds, selectedList.length > 0);
     }
 }
