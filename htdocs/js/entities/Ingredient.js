@@ -13,10 +13,11 @@ Ingredient.prototype =
     updateRound: function(mark, show) {
         var round = this.getRound();
 
-        if(round == 0) round = "Ok";
+        if(round == Infinity) { mark.setVisible(false); return;}
+        else if(round == 0) round = "Ok";
         else if(round) round = "+" + round;
 
-        mark.innerHTML = round || "";
+        mark.innerHTML = round;
         mark.setVisible(show)
     }
 }
@@ -51,14 +52,17 @@ Object.extend(Ingredient,
 	},
 	
     getAllRoundsByNames: function(names){
+        for(var i = 0; i < this.ingredients.length; i++) 
+            this.rounds[this.ingredients[i].name] = Infinity;
+
         var cocktails = Cocktail.getByIngredients(names);
         var cRounds = Cocktail.rounds;
 
-        for (var i = 0; i < cocktails.length; i++){
+        for(var i = 0; i < cocktails.length; i++){
             var cName    = cocktails[i].name;
             var cIngreds = cocktails[i].ingredients;
             for(var j = 0; j < cIngreds.length; j++){
-                if(!this.rounds[cIngreds[j][0]] || this.rounds[cIngreds[j][0]] > cRounds[cName])
+                if(this.rounds[cIngreds[j][0]] > cRounds[cName])
                     this.rounds[cIngreds[j][0]] = cRounds[cName];
             }
         }

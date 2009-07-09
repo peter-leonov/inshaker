@@ -198,12 +198,11 @@ var Controller = {
 				$(this.CHOSEN_INGEREDS).appendChild(document.createTextNode(", "));
 			}
 		}
-		var nodes = cssQuery(".ingred-name", $(this.ALPHABETICAL));
-		for(var i = 0; i < nodes.length; i++){
-			if(this.selected.indexOf(nodes[i].innerHTML) > -1) {
-				nodes[i].parentNode.addClassName(this.SELECTED_CLASS);
+		for(var i = 0; i < this.nameNodes.length; i++){
+			if(this.selected.indexOf(this.nameNodes[i].innerHTML) > -1) {
+				this.nameNodes[i].parentNode.addClassName(this.SELECTED_CLASS);
 			} else {
-				nodes[i].parentNode.remClassName(this.SELECTED_CLASS);
+				this.nameNodes[i].parentNode.remClassName(this.SELECTED_CLASS);
 			}
 		}
 		Model.selectedListChanged(this.selected);
@@ -211,7 +210,8 @@ var Controller = {
 	
     updateRounds: function(rounds, show) {
 		for(var i = 0; i < this.nameNodes.length; i++){
-            Ingredient.getByName(this.nameNodes[i].innerHTML).updateRound(this.markNodes[i], show);
+			var toShow = show && (this.selected.indexOf(this.nameNodes[i].innerHTML) == -1) 
+            Ingredient.getByName(this.nameNodes[i].innerHTML).updateRound(this.markNodes[i], toShow);
 		}
     },
 
