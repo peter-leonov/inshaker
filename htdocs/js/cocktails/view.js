@@ -145,17 +145,19 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		this.currentState = state;
 		this.stateSwitcher.drawSelected(state);
 		
-		var expand = (state == states.byName || state == states.byLetter);
 		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
-		if(expand) {
-			nodes.resultsDisplay.addClassName(styles.expanded);
-			nodes.tagStrengthArea.hide();
-			this.perPage = 20;
-		} else {
-			nodes.resultsDisplay.remClassName(styles.expanded);
+		var resultsDisplay = nodes.resultsDisplay
+		for (var k in states)
+			// toggleClassName(k, states[k] == state) must be used
+			states[k] == state ? resultsDisplay.addClassName(k) : resultsDisplay.remClassName(k)
+		
+		if(state == states.byIngredients) {
 			nodes.tagStrengthArea.show();
 			this.perPage = 16;
+		} else {
+			nodes.tagStrengthArea.hide();
+			this.perPage = 20;
 		}
 		
 		nodes.ingredsView.hide();

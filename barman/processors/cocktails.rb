@@ -166,8 +166,8 @@ class CocktailsProcessor < Barman::Processor
     # Cocktails list
     File.open(Config::NOSCRIPT_COCKTAILS, "w+") do |links|
       @cocktails.each do |name, hash|
-        links.print "<a href=\"/cocktails/#{hash[:name_eng].html_name}.html\">#{name}</a>"
-        links.puts " - #{hash[:name_eng]}<br/>"
+        links.print "<a href=\"/cocktails/#{hash["name_eng"].html_name}.html\">#{name}</a>"
+        links.puts " - #{hash["name_eng"]}<br/>"
       end
       links.close
     end

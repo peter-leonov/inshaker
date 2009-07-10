@@ -153,15 +153,15 @@ label{display:block;}
 .b-content .alphabetical{background:#efefef;font-size:110%;margin-bottom:22px;}
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
 .b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
-.b-content ul.cocktails{overflow:hidden;margin-right:-10px;}
+.b-content ul.cocktails{overflow:hidden;}
 /* and index */
-.b-content ul.cocktails li{float:left;width:90px;margin-right:10px;padding-left:10px;height:140px;position:relative;}
+.b-content ul.cocktails li{float:left;width:90px;padding:0 10px;height:140px;position:relative;}
 .b-content ul.cocktails li .love{background:url(icon/love.png) no-repeat 0 0;position:absolute;left:55px;top:10px;padding-left:15px;}
 .b-content ul.cocktails li a{font-size:120%;}
 .b-content ul.cocktails li img{display:block;padding-bottom:7px;margin-left:-10px;width:60px;height:80px;}
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
-.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 565px; top: 390px; }
+.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 567px; top: 390px; }
 .pager-big .prev,
 .pager-big .next {float:left; display:block; background: url(/t/bg/blocks/page-big-buttons.png); width: 16px; height: 14px;} 
 .pager-big .next {margin-left: 3px; background-position: 16px 14px; }
@@ -176,17 +176,18 @@ label{display:block;}
 .b-content .pager .p-list a.selected-button {color: #fff; background:url(/t/bg/blocks/page-hi-bg.png) no-repeat; cursor: default;}
 .b-content .pager .prev,
 .b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
-.b-content .pager .prev { margin-right:6px;}
-.b-content .pager .next { margin-left: 4px;}
+.b-content .pager .prev { margin-right:3px;}
+.b-content .pager .next { margin-left: 1px;}
 .b-content .pager .disabled{cursor:default; color: #c0c0c0;}
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 #cocktails-page .b-content {width:100%;}
-#cocktails-page #results_display {padding-left: 23px;}
-#cocktails-page #results_display .viewport {width:440px;margin-left: 120px;}
-#cocktails-page #results_display.expanded .viewport {width:550px;margin-left: 10px;}
-#cocktails-page #results_display .point{height:560px;width:440px;float:left;}
-#cocktails-page #results_display.expanded .point{width:550px;}
+#cocktails-page #b_search {z-index:10;display:none;}
+#cocktails-page #results_display {/*padding-left: 23px;*/}
+#cocktails-page #results_display .viewport {width:585px;margin-left:0px; }
+#cocktails-page #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
+#cocktails-page #results_display.byIngredients .viewport {width:440px;margin-left: 145px; }
+#cocktails-page #results_display.byIngredients .point {width:440px;padding: 0 35px 0 0;}
 #cocktails-page #results_display .surface { width: 20000px; }
 #cocktails-page #search_tips { height: 14px}
 #cocktails-page #search_tips a:hover {text-decoration:none;}
