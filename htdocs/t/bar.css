@@ -2,65 +2,65 @@
 
 .body-wrapper { overflow: hidden; }
 
-#bar-page .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
-#bar-page .b-content { width: 100%; }
-#bar-page .b-content .about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
-#bar-page .b-content .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; cursor: pointer; }
-#bar-page .b-content .info .part { margin-left: 260px; }
-#bar-page .b-content .info .part.barman a { color: #343b40; text-decoration: none; border-bottom: 1px dashed; }
-#bar-page .b-content .info .part.feature,
-#bar-page .b-content .info .part.people { width: 240px; float: left; margin-left: 0; clear: both; }
-#bar-page .b-content .info dl { font-size: 12px; }
-#bar-page .b-content .info dl dt,
-#bar-page .b-content .info dl dd { display: inline; }
-#bar-page .b-content .info dl dt { font-weight: bold; }
-#bar-page .b-content .info dl dd { line-height: 18px; }
-#bar-page .b-content .info dl dd a {  }
+.b-title .hrefs a.hidden { cursor: default; color: #ccc; }
+.b-content { width: 100%; }
+.b-content .about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
+.b-content .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; cursor: pointer; }
+.b-content .info .part { margin-left: 260px; }
+.b-content .info .part.barman a { color: #343b40; text-decoration: none; border-bottom: 1px dashed; }
+.b-content .info .part.feature,
+.b-content .info .part.people { width: 240px; float: left; margin-left: 0; clear: both; }
+.b-content .info dl { font-size: 12px; }
+.b-content .info dl dt,
+.b-content .info dl dd { display: inline; }
+.b-content .info dl dt { font-weight: bold; }
+.b-content .info dl dd { line-height: 18px; }
+.b-content .info dl dd a {  }
 
-#bar-page .b-content .photos .viewport,
-#bar-page .b-content .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
+.b-content .photos .viewport,
+.b-content .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
 /*#bar-page .b-content .photos b { position: absolute; width: 1px; height: 1px; background: #fff; opacity: 0.75; }*/
 
-#bar-page .b-content .photos .viewport .point { float: left; width: 590px; height: 100%; }
-#bar-page .b-content .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
-#bar-page .b-content .photos .prev,
-#bar-page .b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(bar/photos-buttons.png); }
-#bar-page .b-content .photos:hover .prev,
-#bar-page .b-content .photos:hover .next { display: block; }
-#bar-page .b-content .photos .prev { left: 0; background-position: -60px 0; }
-#bar-page .b-content .photos .next { right: 0; background-position: 0 0; }
-#bar-page .b-content .photos .prev.disabled { background-position: -60px -60px; cursor: default; }
-#bar-page .b-content .photos .next.disabled { background-position: 0 -60px; cursor: default; }
+.b-content .photos .viewport .point { float: left; width: 590px; height: 100%; }
+.b-content .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
+.b-content .photos .prev,
+.b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(bar/photos-buttons.png); }
+.b-content .photos:hover .prev,
+.b-content .photos:hover .next { display: block; }
+.b-content .photos .prev { left: 0; background-position: -60px 0; }
+.b-content .photos .next { right: 0; background-position: 0 0; }
+.b-content .photos .prev.disabled { background-position: -60px -60px; cursor: default; }
+.b-content .photos .next.disabled { background-position: 0 -60px; cursor: default; }
 
-#bar-page .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
-#bar-page .hrefs .prev, #bar-page .hrefs .next { font-size: 17px; text-decoration: none; }
+.hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
 
-#bar-page .column-main .body-wrapper,
-#bar-page #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
-#bar-page #sidebar .parties { overflow: visible; }
-#bar-page #sidebar .parties .column { width: 310px; }
-#bar-page #sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
-#bar-page #sidebar .parties .viewport .point { width: 220px; display: block; }
-#bar-page #sidebar .parties .viewport .point img { margin: 0 auto; }
-#bar-page .b-more-rec dt,
-#bar-page .b-more-rec dt b,
-#bar-page .b-more-cocktails dt,
-#bar-page .b-more-cocktails dt b { background: #000000 url(bg/body/black-more-title.png) repeat-x scroll 0px 0px; }
 
-#bar-page #city-name, #bar-page #bar-id { display: none; }
-#bar-page #map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
-#bar-page #price-index { padding: 36px 0 0 89px; font-size: 35px;}
+.column-main .body-wrapper,
+#sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
+#sidebar .parties { overflow: visible; }
+#sidebar .parties .column { width: 310px; }
+#sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
+#sidebar .parties .viewport .point { width: 220px; display: block; }
+#sidebar .parties .viewport .point img { margin: 0 auto; }
+.b-more-rec dt,
+.b-more-rec dt b,
+.b-more-cocktails dt,
+.b-more-cocktails dt b { background: #000000 url(bg/body/black-more-title.png) repeat-x scroll 0px 0px; }
+
+#city-name, #bar-page #bar-id { display: none; }
+#map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
+#price-index { padding: 36px 0 0 89px; font-size: 35px;}
 
 
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-#bar-page .b-content .photos .disabled { background-position-y: -60px; }
-#bar-page .b-content .photos .prev { background-position-x: -60px; }
-#bar-page .b-content .photos .next { display: block; }
-#bar-page .b-content .photos .prev,
-#bar-page .b-content .photos .next { display: block; }
+.b-content .photos .disabled { background-position-y: -60px; }
+.b-content .photos .prev { background-position-x: -60px; }
+.b-content .photos .next { display: block; }
+.b-content .photos .prev,
+.b-content .photos .next { display: block; }
 
 #sidebar {margin-left:16px;}
-#bar-page .column-main .body-wrapper { height: 511px; }
+.column-main .body-wrapper { height: 511px; }
 <!--# endif -->
