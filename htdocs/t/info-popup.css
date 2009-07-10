@@ -16,7 +16,7 @@
 .info-popup-area .close-controls .text  { float: left; color:#FFF; border-bottom:1px dashed; text-decoration:none;}
 .info-popup-area .close-controls .cross { float: right; display: block; background: url('/t/button/close_cross.png') no-repeat; height: 7px; width: 7px; margin-top:5px}
 
-.info-popup-area .hrefs .arrow {color:#000000; font-size: 200%; text-decoration:none; }
+.info-popup-area .hrefs .arrow {color:#000; font-size: 200%; text-decoration:none; }
 .info-popup-area .hrefs .arrow.disabled { cursor:default; color: #C0C0C0; }
 .info-popup-area .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
 
@@ -33,7 +33,9 @@
 
 .info-popup .rounder {background: url(/t/bg/blocks/rounder.png); position:absolute; height:281px; width:15px;}
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
+#guide-info-popup .info-popup .content .desc { padding:10px 30px; height:261px}
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 .info-popup .content .desc {top:71px;}
 .info-popup .content {margin-bottom:0}
 .info-popup .rounder { z-index:6; top:71px; left:20px; } 
@@ -48,8 +50,3 @@
 .info-popup .rounder {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 .info-popup .cocktails-list .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 <!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
-<!--# endif -->
-
-#guide-info-popup .info-popup .content .desc { padding:10px 30px; height:261px}
