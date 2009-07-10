@@ -15,7 +15,7 @@ Bar.prototype =
 	
 	smallImageHref: function ()
 	{
-		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '-mini.jpg'
+		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '/mini.jpg'
 	},
 	
 	pageHref: function ()
