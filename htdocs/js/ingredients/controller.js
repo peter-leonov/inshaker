@@ -2,6 +2,7 @@ var Controller = {
 	ALPHABETICAL   : 'top-alphabetical',
 	CHOSEN_INGEREDS: 'chosen',
 	CAN_PREPARE    : 'can_prepare',
+	CAN_PREPARE_TXT: 'can_prepare_txt',
 	HOW_MANY       : 'how_many',
 	VIEW_COCKTAILS : 'view_cocktails',
 	COLUMN_CLASS   : 'col',
@@ -20,7 +21,10 @@ var Controller = {
 	
 	topCocktail    : null,
 	numCanPrepare  : 0,
-	
+    
+    // cached nodes
+    nameNodes: [],
+    markNodes: [],	
 	
 	init: function() {
 		Model.init();
@@ -32,7 +36,7 @@ var Controller = {
 	bindEvents: function(){
 		var self = this;
 	 	$(this.ALPHABETICAL).addEventListener('click', function(e){
-			self.ingredientClicked(e);
+			self.ingredientClicked(e, true);
 		}, false);
 		
 		$(this.VIEW_COCKTAILS).addEventListener('click', function(e){
@@ -41,7 +45,7 @@ var Controller = {
 		}, false);
 		
 		$(this.CHOSEN_INGEREDS).addEventListener('click', function(e){
-			self.ingredientClicked(e);
+			self.ingredientClicked(e, false);
 		}, false);
 	},
 	
@@ -70,8 +74,18 @@ var Controller = {
 			div.appendChild(h3);
 			for(var j = 0; j < ingreds.length; j++){
 				var a = document.createElement("a");
-				a.innerHTML = ingreds[j];
-				div.appendChild(a);
+				var name = document.createElement("span");
+                name.className = "ingred-name";
+                name.innerHTML = ingreds[j];
+                var mark = document.createElement("span");
+                mark.className = "round-mark";
+				a.appendChild(name);
+                a.appendChild(mark);
+                div.appendChild(a);
+                
+                // Unnecessary caching
+                this.nameNodes.push(name);
+                this.markNodes.push(mark);
 			}
 			divs[letters[i]] = div;
 		}
@@ -149,61 +163,59 @@ var Controller = {
 		}
 	},
 	
-	ingredientClicked: function(e){
-		var a = e.target;
-		var name = "";
-		if(a.tagName == "A") { 
-			if((name = a.innerHTML) == "") name = a.parentNode.innerHTML.beforeTag();
-		} else if(a.tagName == "SPAN") name = a.innerHTML.beforeTag();
-	
-		if (name != "" && !a.hasClassName(this.DISABLED_CLASS)) {
-			var idx = -1;
-			if((idx = this.selected.indexOf(name)) == -1){
-				this.selected.push(name);
-			} else {
-				this.selected.splice(idx, 1);
-			}
-			this.selectedListChanged();
+	ingredientClicked: function(e, fromAlphabetical){
+		var a = e.target 
+        var name = "", el = null;
+        if(fromAlphabetical) { 
+            el = (a.className == "ingred-name") ? a : cssQuery(".ingred-name", a)[0];
+            if(el) name = el.innerHTML; else return;
+        } else {
+            el = (a.className == "selected-ingred") ? a : (a.parentNode.className == "selected-ingred" ? a.parentNode : null); 
+            if(el) name = el.innerHTML.beforeTag(); else return;
+        }
+
+		var idx = -1;
+		if((idx = this.selected.indexOf(name)) == -1){
+			this.selected.push(name);
+		} else {
+			this.selected.splice(idx, 1);
 		}
+		this.selectedListChanged();
 	},
 	
 	selectedListChanged: function(){
 		if(this.selected.length > 0) {
 			$(this.CHOSEN_INGEREDS).innerHTML = "<strong>Вы выбрали:</strong>  ";
-		} else $(this.CHOSEN_INGEREDS).innerHTML = "<strong>Выберите что-нибудь :) </span>";
+		} else $(this.CHOSEN_INGEREDS).innerHTML = "<strong>Выберите ингредиенты</strong>";
 		for(var i = 0; i < this.selected.length; i++){
 			var span = document.createElement("span");
 			span.innerHTML = this.selected[i];
 			var del = document.createElement("a");
 			span.appendChild(del);
+            span.className = "selected-ingred";
 			$(this.CHOSEN_INGEREDS).appendChild(span);
 			if(i < this.selected.length - 1){
 				$(this.CHOSEN_INGEREDS).appendChild(document.createTextNode(", "));
 			}
 		}
-		var nodes = $(this.ALPHABETICAL).getElementsByTagName("a");
-		for(var i = 0; i < nodes.length; i++){
-			if(this.selected.indexOf(nodes[i].innerHTML) > -1) {
-				nodes[i].addClassName(this.SELECTED_CLASS);
+		for(var i = 0; i < this.nameNodes.length; i++){
+			if(this.selected.indexOf(this.nameNodes[i].innerHTML) > -1) {
+				this.nameNodes[i].parentNode.addClassName(this.SELECTED_CLASS);
 			} else {
-				nodes[i].remClassName(this.SELECTED_CLASS);
+				this.nameNodes[i].parentNode.remClassName(this.SELECTED_CLASS);
 			}
 		}
 		Model.selectedListChanged(this.selected);
 	},
 	
-	updateSuitable: function(resultSet){
-		var nodes = $(this.ALPHABETICAL).getElementsByTagName("a");
-		for(var i = 0; i < nodes.length; i++){
-			if(resultSet.indexOf(nodes[i].innerHTML) == -1) {
-				nodes[i].addClassName(this.DISABLED_CLASS);
-			} else {
-				nodes[i].remClassName(this.DISABLED_CLASS);
-			}
+    updateRounds: function(rounds, show) {
+		for(var i = 0; i < this.nameNodes.length; i++){
+			var toShow = show && (this.selected.indexOf(this.nameNodes[i].innerHTML) == -1) 
+            Ingredient.getByName(this.nameNodes[i].innerHTML).updateRound(this.markNodes[i], toShow);
 		}
-	},
-	
-	updateCount: function(num, top){
+    },
+
+	updateCount: function(num, top, selectedNum){
 		this.topCocktail = top;
 		this.numCanPrepare = num;
 		
@@ -212,13 +224,14 @@ var Controller = {
  			var txt = "";
 			if(this.numCanPrepare > 1) {
 				txt += this.numCanPrepare + " ";
-				txt += this.numCanPrepare.plural("коктейль", "коктейля", "коктейлей") +".";
+				txt += this.numCanPrepare.plural("коктейля", "коктейлей", "коктейлей") +".";
 				$(this.VIEW_COCKTAILS).value = "Посмотреть коктейли";
 			} else {
 				txt = this.topCocktail.name;
 				$(this.VIEW_COCKTAILS).value = "Посмотреть коктейль";
 			}
 			$(this.HOW_MANY).innerHTML = txt;
+            $(this.CAN_PREPARE_TXT).innerHTML = selectedNum.plural("Входит", "Входят", "Входят") + " в состав";
 		} else {
 			$(this.CAN_PREPARE).style.display = "none";
 		}

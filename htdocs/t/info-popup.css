@@ -7,6 +7,7 @@
 .info-popup .content .desc p {margin-bottom: 15px;}
 .info-popup h2 {margin-left:-1px; padding-bottom:10px; font-size: 18px;}
 .info-popup .content {width: 924px; margin-bottom:10px;}
+.info-popup .content .desc p.contact {margin-bottom:4px}
 .info-popup .enrollment {font-size:20px; font-style:italic; color:#F22B9F; background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0; clear:both; padding:14px 0 3px 0;}
 .info-popup .cocktails-list { /* background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0;*/ clear:both; padding:0px 0 3px 0;}
 
@@ -50,3 +51,5 @@
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
 <!--# endif -->
+
+#guide-info-popup .info-popup .content .desc { padding:10px 30px; height:261px}

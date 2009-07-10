@@ -14,6 +14,8 @@ class IngredientsProcessor < Barman::Processor
     VOLUMES_ROOT        = MERCH_ROOT + "volumes/"
     BANNERS_ROOT        = MERCH_ROOT + "banners/"
 
+    NOSCRIPT_INGREDS     = HTDOCS_DIR + "/inc/ingredients-links.html"
+
     DB_JS_INGREDS        = HTDOCS_DIR + "db/ingredients.js"
     DB_JS_INGREDS_GROUPS = HTDOCS_DIR + "db/ingredients_groups.js"
     DB_JS_GOODS          = HTDOCS_DIR + "db/goods.js"
@@ -52,7 +54,6 @@ class IngredientsProcessor < Barman::Processor
     flush_json_object(@goods, Config::DB_JS_GOODS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
-  
   
   def prepare_goods
     if File.exists?(Config::DB_JS_GOODS)

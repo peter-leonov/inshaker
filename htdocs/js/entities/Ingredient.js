@@ -7,13 +7,26 @@ Ingredient = function (data)
 Ingredient.prototype =
 {
 	constructor: Ingredient,
-    listOrder: function () { return Ingredient.groups.indexOf(this.group) }
+    getRound: function() { return Ingredient.rounds[this.name] },
+    listOrder: function () { return Ingredient.groups.indexOf(this.group) },
+    
+    updateRound: function(mark, show) {
+        var round = this.getRound();
+
+        if(round == Infinity) { mark.setVisible(false); return;}
+        else if(round == 0) round = "Ok";
+        else if(round) round = "+" + round;
+
+        mark.innerHTML = round;
+        mark.setVisible(show)
+    }
 }
 
 Object.extend(Ingredient,
 {
 	ingredients: [],
 	groups: [],
+    rounds: {},
 	
 	initialize: function (db_ingreds, db_groups){
 		for(var i = 0; i < db_ingreds.length; i++){
@@ -38,6 +51,24 @@ Object.extend(Ingredient,
 		return res;
 	},
 	
+    getAllRoundsByNames: function(names){
+        for(var i = 0; i < this.ingredients.length; i++) 
+            this.rounds[this.ingredients[i].name] = Infinity;
+
+        var cocktails = Cocktail.getByIngredients(names);
+        var cRounds = Cocktail.rounds;
+
+        for(var i = 0; i < cocktails.length; i++){
+            var cName    = cocktails[i].name;
+            var cIngreds = cocktails[i].ingredients;
+            for(var j = 0; j < cIngreds.length; j++){
+                if(this.rounds[cIngreds[j][0]] > cRounds[cName])
+                    this.rounds[cIngreds[j][0]] = cRounds[cName];
+            }
+        }
+        return this.rounds;
+    },
+
 	sortByGroups: function(a, b){
 		var self = Ingredient;
         if(typeof a == 'object') { a = a[0]; b = b[0] }

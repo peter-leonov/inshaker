@@ -159,17 +159,6 @@ var DataFilter = {
 		return res.uniq().slice(0, howMany);
 	},
 	
-	suitableIngredients: function(set, list){
-		var res = [];
-		var cocktails = this.cocktailsByIngredients(set, list);
-		for(var i = 0; i < cocktails.length; i++){
-			for(var j = 0; j < cocktails[i].ingredients.length; j++){
-				res.push(cocktails[i].ingredients[j][0]);
-			}
-		}
-		return [cocktails.length, res.uniq(), cocktails[0]];
-	},
-	
 	ingredientsByLetter: function(set, letter){
 		var res = [];	
 		var reg = new RegExp("^(" + letter.toUpperCase() + ")");

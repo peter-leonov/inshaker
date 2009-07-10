@@ -56,7 +56,6 @@ $.onload(
 		var styles = {
 			selected: 'selected-button',
 			disabled: 'dis',
-			expanded: 'expanded',
 			point: 'point'
 		}
 		

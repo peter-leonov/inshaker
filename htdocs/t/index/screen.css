@@ -18,7 +18,8 @@
 #index-page .info-blocks .box { float: left; width: 221px; height: 157px; overflow: hidden; margin-right: 21px; }
 #index-page .info-blocks .last { margin-right: 0; }
 
-#index-page .info-blocks a { font-size: 11px; }
+#index-page .info-blocks a { font-size: 11px; text-decoration:none }
+#index-page .info-blocks a:hover { text-decoration:underline }
 #index-page .info-blocks dt { text-align: center; padding: 11px 0 0 0; }
 #index-page .info-blocks dt b { font-size: 14px; color: #343b40; font-family: Arial; font-weight: normal;}
 #index-page .info-blocks dd { height: 130px; width: 100%; }

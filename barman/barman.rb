@@ -11,7 +11,6 @@ require 'yaml'
 $stdout.sync = true
 
 module Barman
-  
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
   

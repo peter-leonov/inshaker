@@ -36,9 +36,10 @@ $.onload
 			feelSelect: $('bars-feel'),
 			map: $('map'),
 			
-			dontMiss: $('dont-miss'),
+			moreInfo: $('more-info'),
             photographer: $('photographer'),
-			photoPopup: $('guide-info-popup')
+			photoPopup: $('photo-info-popup'),
+			guidePopup: $('guide-info-popup')
 		}
 		
 		BarsPage.initialize(nodes)

@@ -13,7 +13,7 @@ function NewsFormPopup (opener)
   {
       form: cssQuery('#form-popup form')[0],
 	  formPopup: $('form-popup'),
-	  formPopupOverlay: cssQuery('#form-popup #overlay')[0],
+	  formPopupOverlay: cssQuery('#form-popup .opacity')[0],
 	  formPopupFields: cssQuery('#form-popup .fields')[0],
 	  formPopupThanks: cssQuery('#form-popup .thanks')[0],
 	  formPopupMenu: cssQuery('#form-popup .menu')[0],

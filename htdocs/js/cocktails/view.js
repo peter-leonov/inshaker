@@ -13,6 +13,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
 	
 	this.currentState;
+    this.currentFilters;
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
@@ -144,17 +145,19 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		this.currentState = state;
 		this.stateSwitcher.drawSelected(state);
 		
-		var expand = (state == states.byName || state == states.byLetter);
 		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
-		if(expand) {
-			nodes.resultsDisplay.addClassName(styles.expanded);
-			nodes.tagStrengthArea.hide();
-			this.perPage = 20;
-		} else {
-			nodes.resultsDisplay.remClassName(styles.expanded);
+		var resultsDisplay = nodes.resultsDisplay
+		for (var k in states)
+			// toggleClassName(k, states[k] == state) must be used
+			states[k] == state ? resultsDisplay.addClassName(k) : resultsDisplay.remClassName(k)
+		
+		if(state == states.byIngredients) {
 			nodes.tagStrengthArea.show();
 			this.perPage = 16;
+		} else {
+			nodes.tagStrengthArea.hide();
+			this.perPage = 20;
 		}
 		
 		nodes.ingredsView.hide();
@@ -176,9 +179,11 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	};
 	
 	this.onModelChanged = function(resultSet, filters, tagState, strengthState) { // model
+        this.currentFilters = filters;
+
 		this.renderAllPages(resultSet, filters.page);
-		this.renderFilters(filters, tagState, strengthState);
-		this.controller.saveState(filters, tagState, strengthState);
+		this.renderFilters(this.currentFilters, tagState, strengthState);
+		this.controller.saveState(this.currentFilters, tagState, strengthState);
 	};
 	
 	
@@ -228,7 +233,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			var ingreds = filters.ingredients;
 			for(var i = 0; i < ingreds.length; i++) {
 				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
-				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
+				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(", "));
 			}
 		}
 		
@@ -326,21 +331,12 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.createCocktailElement = function(cocktail) {
 		var id = cocktail.name_eng.htmlName();
 		var li = this.nodeCache[id];
-		
+	    	
 		if(!li) {
-			li = document.createElement("li");
-			var a = document.createElement("a");
-			a.href = "/cocktails/" + id + ".html";
-			var img = document.createElement("img");
-			img.className = "mini-illustration";
-			img.src = "/i/cocktail/s/" + id + ".png";
-			new Draggable(img, cocktail.name, this.dropTargets);
-			var txt = document.createTextNode(cocktail.name);
-			a.appendChild(img);
-			a.appendChild(txt);
-			li.appendChild(a);
-			this.nodeCache[id] = li;
+            li = cocktail.getPreviewNode(this.dropTargets);
+            this.nodeCache[id] = li;
 		}
+        // cocktail.updateRound(li, this.currentFilters.ingredients.length > 0);
 		return li;
 	};
 	

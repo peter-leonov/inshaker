@@ -454,8 +454,16 @@ function CalculatorView() {
 		$('good_name').innerHTML = item.good.brand || name;
 		if(item.good.mark){ // branded
 			$('good_composition').style.display = "block";
+            $('good_mark').href = GoodHelper.ingredientsLinkByMark(item.good.mark);
 			$('good_mark').innerHTML = item.good.mark;
+            var clicker = function(e) {
+                window.location.href = this.href;
+                window.location.reload();
+            }
+            $('good_mark').addEventListener('click', clicker, false);
 			$('good_ingredient').innerHTML = name;
+			$('good_ingredient').href = GoodHelper.ingredientLink(name);
+            $('good_ingredient').addEventListener('click', clicker, false);
 		} else $('good_composition').style.display = "none";
 		
 		$('good_desc').innerHTML = item.good.desc;

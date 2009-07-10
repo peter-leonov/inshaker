@@ -11,3 +11,4 @@ apache.conf
 nginx.conf
 htdocs/stat/*
 data/*
+.idea/*
