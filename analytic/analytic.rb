@@ -150,7 +150,7 @@ def download_reports
       File.open(Config::REPORTS_PATH + rpt + ".xml", "w+") {|out| out.write(c.body_str) }
       statuses[rpt] = true
     else
-      puts "Failed to download " + rpt + "..." 
+      warn "Failed to download " + rpt + "..." 
       statuses[rpt] = false
     end
   }
