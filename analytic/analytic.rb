@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require 'rubygems'
 require 'activesupport'
 require 'rexml/document'
@@ -156,6 +157,7 @@ def download_reports
   statuses
 end
 
+FileUtils.mkpath([Config::REPORTS_PATH])
 dates = [Config::PERIOD.days.ago, Time.now].map {|d| d.strftime("%d %B %Y")}
 puts "Trying to download reports from #{dates[0]} to #{dates[1]}"
 statuses = download_reports
