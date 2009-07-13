@@ -212,8 +212,8 @@ class CocktailsProcessor < Barman::Processor
     from = dir.path + "/video.flv"
     if File.exists? from
       say "нашел видео-ролик"
-      to = Config::VIDEOS_DIR + hash["name_eng"].html_name + ".flv"
-      FileUtils.cp_r(from, to, @mv_opt)
+      # to = Config::VIDEOS_DIR + hash["name_eng"].html_name + ".flv"
+      # FileUtils.cp_r(from, to, @mv_opt)
       hash["video"] = true
     end
   end
