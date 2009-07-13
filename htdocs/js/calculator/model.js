@@ -17,7 +17,7 @@ function CalculatorModel(view){
 		for(var name in this.cartData.goods){
 			var bottles = this.cartData.goods[name].bottles;
 			for(var id in bottles){
-				sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
+				sum += Math.roundPrecision(bottles[id].vol[1]*bottles[id].count,2);
 			}
 		}
 		return sum;

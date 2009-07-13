@@ -1,10 +1,9 @@
 /**
  * Math enhancements
  */
-Math._round = Math.round;
-Math.round = function($num, $precision) {
+Math.roundPrecision = function($num, $precision) {
 	if (isNaN($precision)) $precision = 0;
- 	return Math._round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
+ 	return Math.round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
 };
 
 /**
