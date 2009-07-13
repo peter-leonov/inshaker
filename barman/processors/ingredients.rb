@@ -1,6 +1,7 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
+require 'uri'
 
 class IngredientsProcessor < Barman::Processor
   
@@ -62,8 +63,7 @@ class IngredientsProcessor < Barman::Processor
       links.puts "<ul>"
       @goods.each do |name, entity|
         entity = entity[0]
-        # no really a link (just for now)
-        links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
+        links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
       end
       links.puts "</ul>"
     end
