@@ -5,6 +5,9 @@ var Controller = {
 	
 	ID_ILLUSTRATION : 'illustration',
 	
+	ID_AUTHOR : 'author',
+	ID_WHERE_TO_TASTE : 'where-to-taste',
+	
 	ID_RELATED : 'related',
 	ID_REL_SUR : 'rel_surface',
 	ID_REL_VPR : 'rel_viewport',
@@ -53,15 +56,23 @@ var Controller = {
 		var self = this;
 		var menu = $('panel_cocktail');
 		
-        if (Barman.getByCocktailName(name)) {
-            var a = document.createElement("a");
-            a.href = "#";
-            a.innerHTML = "<b>Автор</b>";
-            menu.appendChild(a);
-            var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
-            ip.addCloseListener(function () { a.remClassName('now') });
-        }
-        menu.now = menu; 
+		if (Barman.getByCocktailName(name)) {
+			var a = $(this.ID_AUTHOR)
+			a.style.display = "inline";
+			var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+			ip.addCloseListener(function () { a.remClassName('now') });
+		}
+		
+		var bars = Bar.getByCocktailName(name)
+		if (bars.length) {
+			var a = $(this.ID_WHERE_TO_TASTE)
+			a.style.display = "inline";
+			a.href = bars.random().pageHref()
+			// course of link.js cancels an event (#451)
+			a.addEventListener('click', function (e) { location.href = this.href }, false)
+		}
+		
+		menu.now = menu; 
 		this._initNavigationRules(menu);
 		
 		var mybar_links	= menu.getElementsByTagName('a');

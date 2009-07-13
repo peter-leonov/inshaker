@@ -116,16 +116,22 @@ Array.prototype.sortedBy = function(sortFunc) {
 }
 
 Array.prototype.shuffled = function() {
-    var array = Array.copy(this);
-    var tmp, current, top = array.length;
+	var array = Array.copy(this);
+	var tmp, current, top = array.length;
+	
+	if(top) while(--top) {
+		current = Math.floor(Math.random() * (top + 1));
+		tmp = array[current];
+		array[current] = array[top];
+		array[top] = tmp;
+	}
+	return array;
+}
 
-    if(top) while(--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = array[current];
-        array[current] = array[top];
-        array[top] = tmp;
-    }
-    return array;
+Array.prototype.random = function() {
+	var len = this.length
+	if (len)
+		return this[Math.round(Math.random() * (len - 1))]
 }
 
 

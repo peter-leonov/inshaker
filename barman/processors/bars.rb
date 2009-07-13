@@ -174,8 +174,8 @@ private
   
   def parse_cocktails_text txt, bar
     blocks = txt.split("\n\n")
-    bar["recs"]  = blocks[0].split(%r{[\n\r]})
-    bar["carte"] = blocks[1].split(%r{[\n\r]})
+    bar["carte"] = blocks[0].split(%r{[\n\r]})
+    bar["carte"] += blocks[1].split(%r{[\n\r]})
     bar["priceIndex"] = blocks[2].split(": ")[1].trim
   end
 end
