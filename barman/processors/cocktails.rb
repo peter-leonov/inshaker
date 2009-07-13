@@ -8,18 +8,18 @@ class CocktailsProcessor < Barman::Processor
     COCKTAILS_DIR = Barman::BASE_DIR + "Cocktails/"
     HTDOCS_DIR    = Barman::HTDOCS_DIR
     
-    COCKTAILS_HTML_DIR = HTDOCS_DIR + "cocktails/"
+    HTDOCS_ROOT        = HTDOCS_DIR + "cocktails/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
     
-    NOSCRIPT_COCKTAILS = HTDOCS_DIR + "/inc/cocktails-links.html"
-
-    IMAGES_DIR       = HTDOCS_DIR + "i/cocktail/"
-    IMAGES_BG_DIR    = IMAGES_DIR + "bg/"
-    IMAGES_BIG_DIR   = IMAGES_DIR + "b/"
-    IMAGES_SMALL_DIR = IMAGES_DIR + "s/"
-    IMAGES_PRINT_DIR = IMAGES_DIR + "print/"
+    
+    NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
+    IMAGES_DIR         = HTDOCS_DIR + "i/cocktail/"
+    IMAGES_BG_DIR      = IMAGES_DIR + "bg/"
+    IMAGES_BIG_DIR     = IMAGES_DIR + "b/"
+    IMAGES_SMALL_DIR   = IMAGES_DIR + "s/"
+    IMAGES_PRINT_DIR   = IMAGES_DIR + "print/"
 
     VIDEOS_DIR = HTDOCS_DIR + "v/"
 
@@ -45,13 +45,14 @@ class CocktailsProcessor < Barman::Processor
     
     if summary
       flush_json
+      flush_links
     end
   end  
   
   def prepare_dirs
-    # FileUtils.rmtree [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::VIDEOS_DIR]
+    # FileUtils.rmtree [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::VIDEOS_DIR]
     
-    FileUtils.mkdir_p [Config::COCKTAILS_HTML_DIR, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
+    FileUtils.mkdir_p [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
       Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::VIDEOS_DIR]
   end
   
@@ -157,19 +158,20 @@ class CocktailsProcessor < Barman::Processor
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
   end
   
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @cocktails.each do |name, hash|
+        links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
+      end
+      links.puts "</ul>"
+    end
+  end
+  
   def update_html name, hash
     cocktail = CocktailTemplate.new(hash)
-    File.open(Config::COCKTAILS_HTML_DIR + hash["name_eng"].html_name + ".html", "w+") do |html|
+    File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".html", "w+") do |html|
       html.write @cocktail_renderer.result(cocktail.get_binding)
-    end
-    
-    # Cocktails list
-    File.open(Config::NOSCRIPT_COCKTAILS, "w+") do |links|
-      @cocktails.each do |name, hash|
-        links.print "<a href=\"/cocktails/#{hash["name_eng"].html_name}.html\">#{name}</a>"
-        links.puts " - #{hash["name_eng"]}<br/>"
-      end
-      links.close
     end
   end
   
