@@ -90,11 +90,13 @@ class CocktailsProcessor < Barman::Processor
     say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
     end # indent
     
+    added = {}
     say "добавляю коктейли"
     indent do
     done = 0
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
       next if @cocktails[dir.name]
+      added[dir.name] = true
       process_cocktail dir
       done += 1
     end
@@ -105,7 +107,7 @@ class CocktailsProcessor < Barman::Processor
     indent do
     done = 0
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
-      next if @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
+      next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
       process_cocktail dir
       done += 1
     end
