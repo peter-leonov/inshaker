@@ -80,7 +80,7 @@ var Controller = {
 			mybar_links[i].addEventListener('click', function(e) {
 					link.open(this);
 					this.parentNode.now.remClassName('now');
-					this.addClassName('now');
+					// this.addClassName('now');
 					this.parentNode.now = this;
 					$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
@@ -90,9 +90,6 @@ var Controller = {
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
-			mybar_links[0].parentNode.now.remClassName('now');
-			mybar_links[0].addClassName('now');
-			mybar_links[0].parentNode.now = mybar_links[0];
 			link.open("view-how");
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
