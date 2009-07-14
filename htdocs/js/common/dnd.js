@@ -11,25 +11,37 @@ function Draggable(element, name, dropTargets){
 	
 	this.dragObject = null;
 	var self = this;
-	var mouseOffset = {};
+	
+	function elementWaits(e) {
+		e.preventDefault();
+		var s = self.startMouse
+		if (Math.abs(s.x - e.pageX) > 4 || Math.abs(s.y - e.pageY) > 4)
+			beginDrag(e)
+	}
 	
 	function elementMove(e){
 		e.preventDefault();
 		if(self.dragObject){
-			self.dragObject.style.display = "block";
-			self.dragObject.style.top  = (e.pageY - mouseOffset.y) + "px";
-			self.dragObject.style.left = (e.pageX - mouseOffset.x)  + "px";
+			var delta = self.delta, style = self.style
+			style.left = (e.pageX + delta.x)  + "px";
+			style.top  = (e.pageY + delta.y) + "px";
 			return false;
 		}
 	}
 	
 	element.addEventListener('mousedown', function(e){
+		self.movements = 0
+		self.startMouse = {x:e.pageX, y:e.pageY}
 		e.preventDefault()
+		document.addEventListener('mousemove', elementWaits, false);
+	}, false);
+	
+	function beginDrag(e) {
 		self.dragObject = element.cloneNode(true);
-		self.dragObject.style.position = "absolute";
-		
-		mouseOffset = self.getMouseOffset(element);
-		self.dragObject.style.display = "none";
+		self.style = self.dragObject.style
+		self.style.position = "absolute";
+		var startPos = getPosition(element)
+		self.delta = {x: startPos.x - e.pageX, y: startPos.y - e.pageY}
 		
 		document.body.appendChild(self.dragObject);
 		// document.body.addClassName(self.STYLE_CURSOR);
@@ -37,11 +49,13 @@ function Draggable(element, name, dropTargets){
 			if(dropTargets[i].onDragStart) dropTargets[i].onDragStart(element);
 		}
 		
+		document.removeEventListener('mousemove', elementWaits, false);
 		document.addEventListener('mousemove', elementMove, false);
-	}, false);
+	}
 	
 	document.addEventListener('mouseup', function(e){
 		document.removeEventListener('mousemove', elementMove, false);
+		document.removeEventListener('mousemove', elementWaits, false);
 		if(self.dragObject) {
 			document.body.removeChild(self.dragObject);
 			// document.body.remClassName(self.STYLE_CURSOR);
@@ -65,10 +79,6 @@ function Draggable(element, name, dropTargets){
 				}
 			}
 			self.dragObject = null;
-        }
-    }, false);
-
-	this.getMouseOffset = function(elem){
-		return {x:elem.offsetWidth/2, y:elem.offsetHeight/2};
-	}; 
+		}
+	}, false);
 }

@@ -413,17 +413,14 @@ function insertAfter(new_node, existing_node)
  * @return {Object} position - x,y
  */
 function getPosition(e){
-	var left = 0;
-	var top  = 0;
-
-	while (e.offsetParent){
-		left += e.offsetLeft;
-		top  += e.offsetTop;
-		e     = e.offsetParent;
+	var x = 0, y = 0
+	do
+	{
+		x += e.offsetLeft - e.scrollLeft;
+		y += e.offsetTop - e.scrollTop;
+		// log(e)
 	}
-
-	left += e.offsetLeft;
-	top  += e.offsetTop;
-
-	return {x: left, y:top};
+	while ((e = e.offsetParent))
+	
+	return {x:x, y:y};
 };
