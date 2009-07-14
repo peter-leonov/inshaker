@@ -51,6 +51,7 @@ function Draggable(element, name, dropTargets){
 		
 		document.removeEventListener('mousemove', elementWaits, false);
 		document.addEventListener('mousemove', elementMove, false);
+		elementMove.apply(this, [e])
 	}
 	
 	document.addEventListener('mouseup', function(e){
