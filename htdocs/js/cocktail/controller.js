@@ -6,6 +6,7 @@ var Controller = {
 	ID_ILLUSTRATION : 'illustration',
 	
 	ID_AUTHOR : 'author',
+	SELECTOR_AUTHOR : 'a.author',
 	ID_WHERE_TO_TASTE : 'where-to-taste',
 	
 	ID_RELATED : 'related',
@@ -56,11 +57,22 @@ var Controller = {
 		var self = this;
 		var menu = $('panel_cocktail');
 		
-		if (Barman.getByCocktailName(name)) {
+		var barman = Barman.getByCocktailName(name)
+		if (barman) {
 			var a = $(this.ID_AUTHOR)
-			a.style.display = "inline";
-			var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
-			ip.addCloseListener(function () { a.remClassName('now') });
+			if (a)
+			{
+				a.style.display = "inline";
+				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+				// ip.addCloseListener(function () { a.remClassName('now') });
+			}
+			
+			a = cssQuery(this.SELECTOR_AUTHOR)[0]
+			if (a)
+			{
+				a.addClassName('active')
+				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+			}
 		}
 		
 		var bars = Bar.getByCocktailName(name)
