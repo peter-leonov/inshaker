@@ -413,23 +413,28 @@ function insertAfter(new_node, existing_node)
 }
 
 /**
- * Get element's absolute position
+ * Get element's absolute position. Properly handles Safari's body scroll*.
  * 
  * @param e - element
  * @return {Object} position - x,y
  */
-function getPosition(e){
-	var left = 0;
-	var top  = 0;
-
-	while (e.offsetParent){
-		left += e.offsetLeft;
-		top  += e.offsetTop;
-		e     = e.offsetParent;
+function getPosition (n)
+{
+	var x = 0, y = 0, p
+	for (;;)
+	{
+		x += n.offsetLeft
+		y += n.offsetTop
+		if ((p = n.offsetParent))
+		{
+			x -= n.scrollLeft
+			y -= n.scrollTop
+			n = p
+		}
+		else
+			break
 	}
+	
+	return {x:x, y:y};
+}
 
-	left += e.offsetLeft;
-	top  += e.offsetTop;
-
-	return {x: left, y:top};
-};
