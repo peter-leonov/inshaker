@@ -3,6 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Кассинни</title>
 </head>
@@ -17,11 +18,11 @@
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
-		
 				<div class="hreview">
 					<div class="top-menu"><div class="b">
 						<p class="border-links" id="panel_cocktail">
-							<a href="#view-how"><b>Как приготовить</b></a>
+							<a id="author"><b>Автор</b></a>
+							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
 						<img src="/i/cocktail/bg/kassini.png" width="590" height="210" alt="1" id="poster"/>
@@ -100,9 +101,7 @@
 							</div>
 							<a class="close b" onclick="link.close()">закрыть видео</a>
 						</div>
-						
 					</div>
-					
 				</div>
 				
 				<div class="what-need">
@@ -133,7 +132,6 @@
 						
 					</dl>
 				</div>
-		
 			</div>
 		</div></div>
 		
@@ -173,16 +171,17 @@
 	<!--# include file="/inc/calculator.html" -->
 	<!--# include file="/inc/bottom-common.html" -->
 </div>
-	<!--# include file="/inc/barman-info-popup.html" -->
-	<!--# include file="/inc/shop-cocktail.html" -->
-	<!--# include file="/inc/shop-gadget.html" -->
-	<script type="text/javascript">window.menuItem = "cocktails.html"</script>
-	<script type="text/javascript" src="/js/compiled/common.js"></script>
-	<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
-	<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
-	<script type="text/javascript" src="/js/entities/Barman.js"></script>
-	<script type="text/javascript" src="/js/entities/Good.js"></script>
-	<script type="text/javascript" src="/js/entities/Tool.js"></script>
-	<script type="text/javascript" src="/js/cocktail/cocktail.js"></script>
+<!--# include file="/inc/barman-info-popup.html" -->
+<!--# include file="/inc/shop-cocktail.html" -->
+<!--# include file="/inc/shop-gadget.html" -->
+<script type="text/javascript">window.menuItem = "cocktails.html"</script>
+<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="/js/entities/Barman.js"></script>
+<script type="text/javascript" src="/js/entities/Good.js"></script>
+<script type="text/javascript" src="/js/entities/Tool.js"></script>
+<script type="text/javascript" src="/js/entities/Bar.js"></script>
+<script type="text/javascript" src="/js/cocktail/cocktail.js"></script>
 </body>
 </html>
