@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum status-preparing">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
+	<title>Inshaker — I Неофициальный форум коммерческой недвижимости</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	
+	<div class="timeline column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>События!</h1>
+		</div>
+		<div class="b-content">
+			<div class="previews programica-rolling-images">
+				<div class="viewport">
+					<ul class="surface"><noscript><!--# include virtual="/events/links.html" --></noscript></ul>
+				</div>
+				<a class="prev disabled" disabled="true"></a><a class="next"></a>
+			</div>
+		</div>
+	</div></div>
+	
+	<div id="both-wrapper">
+		<div class="column-main-container">
+			<div class="column column-main"><div class="body-wrapper">
+				<div class="b-title">
+					<h1 id="event-name">I Неофициальный форум коммерческой недвижимости</h1>
+					<h2>СТИВЕН О'КОНОР И РОМАН ФОТИЕВ ПРИГЛАШАЮТ!</h2>
+				</div>
+				<div class="b-content">
+					<div id="illustration"><img/></div>
+					<div class="about">
+						
+							<h2>Москва — бар уточняется, Осень 2009</h2>
+						
+						<p class="parole">Девелоперы, инвесторы, брокеры и консультанты соберутся вместе, чтобы познакомиться и повеселиться!</p>
+						
+						
+							<a class="sign-on"><span>Не пропусти!</span> →</a>
+							<dl class="info">
+								
+									<dt>Вход:</dt><dd><a id="invitations-only">только по приглашениям</a></dd>
+								
+								
+							</dl>
+						
+					</div>
+				</div>
+			</div></div>
+			<div id="medium-sponsors"></div>
+		</div>
+		
+		<div id="sidebar">
+			<div id="main-sponsors" class="column"><div class="body-wrapper">
+				<div class="b-title">
+					<h3>Генеральный партнер</h3>
+					<h4></h4>
+				</div>
+				<a class="banner"></a>
+			</div></div>
+			<div id="comming">
+				<h2></h2>
+				<dl class="rating"></dl>
+				<a class="list-all">Весь список</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="low-sponsors" class="b-more-cocktails">
+		<div class="column"><div class="body-wrapper">
+			<div class="b-title">
+				<h3>При поддержке</h3>
+			</div>
+			<div class="b-content"></div>
+		</div></div>
+	</div>
+	
+	<!--# include file="/inc/bottom-common.html" -->
+</div>
+<div id="promo-back" style="background-image:url(/i/event/moskva/realestate-forum/promo-bg.png)"></div>
+<div id="form-popup">
+	<div id="overlay"></div>
+	<div class="content">
+		<p class="menu"><a class="button">X</a><a class="text">Закрыть</a></p>
+		<form action="/act/event-form.cgi" method="post" target="ajax">
+			<div class="fields">
+				<h2>Хочу посетить мероприятие!</h2>
+				<label>Мой город:<input type="text" name="city"/></label>
+				<label>Имя:<input type="text" name="first"/></label>
+				<label>Фамилия:<input type="text" name="second"/></label>
+				<label>Мой e-mail:<input type="text" name="email"/></label>
+				<div class="variable"></div>
+				<p class="limit">*Количество приглашений лимитировано. <input type="submit" value="Внести меня в списки!"/></p>
+				<input type="hidden" name="event"/>
+				<input type="hidden" name="href"/>
+			</div>
+			<div class="thanks">Спасибо!</div>
+			<div class="holding">Приглашения закончились.</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/event/event.js"></script>
+<script type="text/javascript" src="/js/entities/Event.js"></script>
+</body>
+</html>

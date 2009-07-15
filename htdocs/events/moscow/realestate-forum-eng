@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum-eng status-preparing">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — <%= @name %></title>
+	<title>Inshaker — 1st Annual Commercial Real Estate networking gala</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -28,48 +28,26 @@
 		<div class="column-main-container">
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
-					<h1 id="event-name"><%= @name %></h1>
-					<h2><%= @header %></h2>
+					<h1 id="event-name">1st Annual Commercial Real Estate networking gala</h1>
+					<h2>HOSTED BY STEPHEN O'CONNOR & ROMAN FOTIEV!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
-						<% if @address %>
-							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @adate || @date_ru %></h2>
-						<% else %>
-							<h2><%= @city %> — <%= @venue %>, <%= @adate || @date_ru %></h2>
-						<% end %>
-						<p class="parole"><%= @target %></p>
 						
-						<% if @status == "preparing" %>
+							<h2>Moscow — venue to be confirmed later, Autumn 2009</h2>
+						
+						<p class="parole">Developers, investors, brokers and consultants will get together to get acquainted and have fun!</p>
+						
+						
 							<a class="sign-on"><span>Register to be there!</span> →</a>
 							<dl class="info">
-								<% if @enter %>
-									<dt>Entrance:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
-								<% end %>
-								<% if @address %>
-									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
-								<% end %>
+								
+									<dt>Entrance:</dt><dd><a id="invitations-only">invitation only</a></dd>
+								
+								
 							</dl>
-						<% elsif @status == "holding" %>
-							<dl class="info">
-								<% if @enter %>
-									<dt>Entrance:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
-								<% end %>
-								<% if @address %>
-									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
-								<% end %>
-							</dl>
-						<% elsif @status == "archive" %>
-							<% if @photos %>
-								<a href="<%= @photos %>" class="view-photos"><span>Event photos!</span> →</a>
-							<% end %>
-							<dl class="info">
-								<% if @address %>
-									<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
-								<% end %>
-							</dl>
-						<% end %>
+						
 					</div>
 				</div>
 			</div></div>
@@ -103,7 +81,7 @@
 	
 	<!--# include file="/inc/bottom-common.html" -->
 </div>
-<div id="promo-back" <%= @promo ? %Q{style="background-image:url(#{@imgdir}/promo-bg.png)"} : ''%>></div>
+<div id="promo-back" style="background-image:url(/i/event/moscow/realestate-forum-eng/promo-bg.png)"></div>
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
@@ -116,7 +94,7 @@
 				<label>Surname:<input type="text" name="second"/></label>
 				<label>E-mail:<input type="text" name="email"/></label>
 				<div class="variable"></div>
-				<p class="limit"><%= @form_hint %> <input type="submit" value="Register!"/></p>
+				<p class="limit">*Invitations are Limited. <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>
