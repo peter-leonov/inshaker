@@ -38,7 +38,9 @@ function CocktailsController (states, cookies, model, view) {
 		if(ss) res[0] = Object.parse(ss);
 		var ts = Cookie.get(cookies.tagState);
 		if(ts) res[1] = Object.parse(ts);
-		return res;
+		var ms = Cookie.get(cookies.methodState);
+		if(ms) res[2] = Object.parse(ms);
+        return res;
 	};
 	
 	this.filtersFromCookie = function () {
@@ -47,7 +49,7 @@ function CocktailsController (states, cookies, model, view) {
 		else return null;
 	};
 	
-	this.saveState = function (filters, tagState, strengthState) {
+	this.saveState = function (filters, tagState, strengthState, methodState) {
 		var self = this;
 		clearTimeout(this.hashTimeout);
 		this.hashTimeout = setTimeout(function() { 
@@ -55,6 +57,7 @@ function CocktailsController (states, cookies, model, view) {
 			
 			Cookie.set(cookies.tagState, Object.stringify(tagState));
 			Cookie.set(cookies.strengthState, Object.stringify(strengthState));
+			Cookie.set(cookies.methodState, Object.stringify(methodState));
 			Cookie.set(cookies.filter, Object.stringify(filters));
 		} , 400);
 	};
@@ -83,6 +86,10 @@ function CocktailsController (states, cookies, model, view) {
 		this.model.onTagFilter(tag);
 	};
 	
+    this.onMethodFilter = function(method) {
+		this.model.onMethodFilter(method);
+	};
+
 	this.onStrengthFilter = function(strength) {
 		this.model.onStrengthFilter(strength);
 	};

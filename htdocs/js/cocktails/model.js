@@ -14,6 +14,7 @@ function CocktailsModel (states, view) {
 	// current subsets of strengths and tags
 	this.strengthState = [];
 	this.tagState      = [];
+    this.methodState   = [];
 	
 	this.resultSet = [];
 	
@@ -21,9 +22,12 @@ function CocktailsModel (states, view) {
 	this.initialize = function(filters, tsStates, origin) {
 		this.strengthState = tsStates && tsStates.length ? tsStates[0] : Cocktail.strengths;
 		this.tagState      = tsStates && tsStates.length ? tsStates[1] : Cocktail.tags;
+		this.methodState   = tsStates && tsStates.length ? tsStates[2] : Cocktail.methods;
+
 		if(filters) this.filters = this.completeFilters(filters, origin);
 		
-		view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.letters, Cocktail.ingredients, this.filters.state);
+		view.initialize(Cocktail.tags, Cocktail.strengths, Cocktail.methods, 
+                        Cocktail.letters, Cocktail.ingredients, this.filters.state);
 		this.applyFilters(!tsStates && this.filters.strength, !!this.filters.ingredients.length && origin == "request");
 	};
 	
@@ -43,6 +47,7 @@ function CocktailsModel (states, view) {
 		if(!filters.letter)      filters.letter = "";
 		if(!filters.tag)         filters.tag = "";
 		if(!filters.strength)    filters.strength = "";
+		if(!filters.method)      filters.method = "";
 		if(!filters.page)        filters.page = 0;
 		if(!filters.ingredients) filters.ingredients = [];
 		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
@@ -62,6 +67,7 @@ function CocktailsModel (states, view) {
 		this.filters.letter = "";
 		this.filters.tag = "";
 		this.filters.strength = "";
+		this.filters.method = "";
 		this.filters.ingredients = [];
 		this.filters.page = 0;
 		this.filters.state = states.defaultState;
@@ -82,7 +88,15 @@ function CocktailsModel (states, view) {
 		}
 		return res.uniq();
 	};
-	
+
+	this.uniqueMethods = function(){
+		var res = [];
+		for(var i = 0; i < this.resultSet.length; i++){
+			res.push(this.resultSet[i].method);
+		}
+		return res.uniq();
+	};
+
 	this.onStateChanged = function(state){
 		this.resetFilters();
 		this.filters.state = state;
@@ -100,6 +114,7 @@ function CocktailsModel (states, view) {
 			this.filters.ingredients = [];
 			this.filters.tag         = "";
 			this.filters.strength    = "";
+			this.filters.method      = "";
 			this.filters.page        = 0;
 			
 			if(name != name_all) {
@@ -114,6 +129,7 @@ function CocktailsModel (states, view) {
 			this.filters.ingredients = [];
 			this.filters.tag         = "";
 			this.filters.strength    = "";
+			this.filters.method      = "";
 			this.filters.page        = 0;
 			this.filters.name        = name; 
 			this.applyFilters(false, false, false, true);
@@ -125,8 +141,9 @@ function CocktailsModel (states, view) {
 			this.filters.letter  = "";
 			this.filters.tag     = name; 
 		} else this.filters.tag  = "";
+		this.filters.method = "";
 		this.filters.page = 0;
-		this.applyFilters();
+		this.applyFilters(false, false, false, false, true);
 	};
 	
 	this.onStrengthFilter = function(name) {
@@ -136,14 +153,25 @@ function CocktailsModel (states, view) {
 		} else this.filters.strength = "";
 		this.filters.page = 0;
 		this.filters.tag = "";
+		this.filters.method = "";
 		this.applyFilters(true, false);
 	};
-		
+	
+    this.onMethodFilter = function(name) { 
+		if(name != this.filters.method) {
+			this.filters.letter  = "";
+			this.filters.method  = name; 
+		} else this.filters.method = "";
+		this.filters.page = 0;
+		this.applyFilters();
+	};	
+
 	this.onIngredientFilter = function(name, remove) {
 		this.filters.letter   = "";
 		this.filters.page     = 0;
 		this.filters.strength = "";
 		this.filters.tag      = "";
+		this.filters.method   = "";
 		
 		var idx = this.filters.ingredients.indexOf(name);
 		if (!name) { // removing all
@@ -156,22 +184,26 @@ function CocktailsModel (states, view) {
 		this.applyFilters(false, true);
 	};
 
-	this.updateStates = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
+	this.updateStates = function(strengthChanged, ingredChanged, letterChanged, nameChanged, tagChanged) {
 		if(letterChanged || nameChanged) {
 			this.strengthState = Cocktail.strengths;
 			this.tagState      = Cocktail.tags;
 		}
 		if(strengthChanged || ingredChanged) {
 			this.tagState = this.uniqueTags();
+            this.methodState = this.uniqueMethods();
 		}
 		if(ingredChanged) {
 			this.strengthState = this.uniqueStrengths();
 		}
+        if(tagChanged) {
+            this.methodState = this.uniqueMethods();
+        }
 	};
 		
-	this.applyFilters = function(strengthChanged, ingredChanged, letterChanged, nameChanged) {
+	this.applyFilters = function(strengthChanged, ingredChanged, letterChanged, nameChanged, tagChanged) {
 		this.resultSet = Cocktail.getByFilters(this.filters, states);
-		this.updateStates(strengthChanged, ingredChanged, letterChanged, nameChanged);
-		view.onModelChanged(this.resultSet, this.filters, this.tagState, this.strengthState);
+		this.updateStates(strengthChanged, ingredChanged, letterChanged, nameChanged, tagChanged);
+		view.onModelChanged(this.resultSet, this.filters, this.tagState, this.strengthState, this.methodState);
 	}
 }
