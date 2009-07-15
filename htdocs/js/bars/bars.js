@@ -37,8 +37,8 @@ $.onload
 			map: $('map'),
 			
 			moreInfo: $('more-info'),
-			photoPopup: $('photo-info-popup'),
-			guidePopup: $('guide-info-popup')
+			guidePopup: $('guide-info-popup'),
+			guidePopupBody: cssQuery('#guide-info-popup .info-popup')[0]
 		}
 		
 		BarsPage.initialize(nodes)
@@ -69,9 +69,4 @@ Element.prototype.show = function () { this.remClassName('hidden') }
 
 <!--# include file="/lib/Programica/Widget.js" -->
 <!--# include file="/lib/Widgets/FormPoster.js" -->
-
-<!--# include file="/js/common/autocompleter.js" -->
-<!--# include file="/js/common/newsFormPopup.js" -->
-<!--# include file="/js/common/infoPopup.js" -->
-
 

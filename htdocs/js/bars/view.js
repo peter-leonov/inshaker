@@ -19,13 +19,16 @@ BarsPageView.prototype =
 		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val) }
 		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
-		nodes.viewSwitcher.onselect = function (num) { me._setViewNum(num) }
+		nodes.viewSwitcher.onselect = function (num) { me.setViewNum(num) }
 		
 		Selecter.bind(nodes.formatSelect)
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-		new InfoPopup(nodes.moreInfo, nodes.guidePopup, {render: function (context) {}})
+		
+		nodes.moreInfo.addEventListener('click', function (e) { nodes.guidePopup.show() }, false)
+		nodes.guidePopup.addEventListener('click', function (e) { nodes.guidePopup.hide() }, false)
+		nodes.guidePopupBody.addEventListener('click', function (e) { e.stopPropagation() }, false)
 	},
 	
 	checkHash: function ()
@@ -53,7 +56,7 @@ BarsPageView.prototype =
 		this.renderBars(data)
 	},
 	
-	_setViewNum: function (num)
+	setViewNum: function (num)
 	{
 		var type = ['list','map'][num]
 		this.setViewType(type)
