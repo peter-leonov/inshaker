@@ -37,7 +37,6 @@ $.onload
 			map: $('map'),
 			
 			moreInfo: $('more-info'),
-            photographer: $('photographer'),
 			photoPopup: $('photo-info-popup'),
 			guidePopup: $('guide-info-popup')
 		}

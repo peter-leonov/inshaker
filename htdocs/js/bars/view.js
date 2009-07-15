@@ -25,8 +25,7 @@ BarsPageView.prototype =
 		Selecter.bind(nodes.feelSelect)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-        // new InfoPopup(nodes.photographer, nodes.photoPopup, this.popupRenderer)
-        new InfoPopup(nodes.moreInfo, nodes.guidePopup, this.popupRenderer)
+		new InfoPopup(nodes.moreInfo, nodes.guidePopup, {render: function (context) {}})
 	},
 	
 	checkHash: function ()
@@ -295,8 +294,5 @@ BarsPageView.prototype =
 		main.setName = function (text) { name.innerHTML = text }
 		main.setHref = function (href) { name.href = href }
 		return main
-	},
-    
-    popupRenderer: { render: function (context) {} }
-
+	}
 }
