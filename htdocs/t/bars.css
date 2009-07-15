@@ -10,7 +10,7 @@ html {overflow-y: scroll;}
 #head a:hover { border-bottom: none; }
 #head a.selected { border-bottom: none; color: inherit; cursor: default; }
 
-#sort-menu { margin: 0; padding: 0 16px; height: 40px; width: 920px; background: url(bars/select-big-back.png) no-repeat; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; }
+#sort-menu { margin: 0; padding: 0 16px; height: 40px; width: 920px; background: url(bars/select-big-back.png) no-repeat; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
 #sort-menu dl, #sort-menu dt { display: inline; }
 #sort-menu dl,
 #sort-menu dd { position: relative; }
@@ -47,6 +47,10 @@ html {overflow-y: scroll;}
 
 #sort-menu #bars-format.bars-select dd { left: 50px; }
 #sort-menu #bars-feel.bars-select dd { left: 370px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
+#sort-menu { scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(onselectstart=function(){return false})) }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
