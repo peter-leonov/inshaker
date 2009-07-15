@@ -28,9 +28,7 @@ html {overflow-y: scroll;}
 #more-info:hover { border-bottom: none }
 #bars-container { overflow: hidden; clear: both; }
 
-#map { display: none; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
-
-#map { position: relative; }
+#map { position: relative; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
 #map .loading { position: absolute; top: 40%; left: 0; padding: 40px 0 0 0; width: 100%; background: url(loader-black.gif) no-repeat center 0; text-align: center; font-size: 25px; }
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }
@@ -40,6 +38,19 @@ html {overflow-y: scroll;}
 .bar-map-popup img {width:100px;float:right;}
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
+
+
+<!--# include file="/t/news-form-popup.css" -->
+<!--# include file="/t/info-popup.css" -->
+
+.hidden { display: none !important; }
+
+.win-shop,
+.info-popup-area { display: block; }
+.info-popup-area .close-controls { top: 77px; }
+.info-popup-area .close-controls .cross { background: none; font-size: 18px; line-height: 8px; color: #fff; padding: 0 3px; text-decoration: none; }
+.info-popup .win { width: 958px; /*two pixels for borders*/ margin: 0; top: 73px; }
+
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
 #sort-menu dl,
@@ -56,7 +67,10 @@ html {overflow-y: scroll;}
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
-#dont-miss { border-bottom: 0; text-decoration:underline; top:0 }
 #sort-menu .bars-select dd ul { background: #000; }
 #switch-view a.selected { color: #333; }
 <!--# endif -->
+
+
+
+

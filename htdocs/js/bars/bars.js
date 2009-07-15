@@ -47,8 +47,11 @@ $.onload
 
 function googleApiLoaderIsLoaded ()
 {
-	google.load("maps", "2", {nocss: true, language: "ru", callback: function () { BarsPage.mapsApiIsLoaded() }})
+	google.load('maps', '2', {nocss: true, language: 'ru', callback: function () { BarsPage.mapsApiIsLoaded() }})
 }
+
+Element.prototype.hide = function () { this.addClassName('hidden') }
+Element.prototype.show = function () { this.remClassName('hidden') }
 
 
 <!--# include file="/js/bars/model.js" -->

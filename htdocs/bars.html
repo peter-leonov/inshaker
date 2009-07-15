@@ -4,24 +4,25 @@
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="t/default.css"/>
 	<link rel="stylesheet" type="text/css" href="t/bars.css"/>
-	<link rel="stylesheet" type="text/css" href="t/news-form-popup.css"/>
-	<link rel="stylesheet" type="text/css" href="t/info-popup.css"/>
-	<title>Inshaker — Гид по лучшим барам и клубам России</title>
+	<title>Inshaker — Гид по лучшим барам и клубам России</title>
 </head>
 <body> 
 <!--# include file="/inc/top-common.html" -->
 <div id="main-wrapper">
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title" id="head">
-			<h1 class="all"><a id="more-info" title="Как составляется гид">Гид</a> по лучшим барам и клубам <span id="switch-view"><a class="view-list">списком</a> или <a class="view-map">на карте</a></span></h1>
-			<h2 class="search">Где попробовать <a class="cocktail"></a> в лучших <a class="drop-cocktail">барах и клубах</a> Москвы</h2>
+			<h1>
+				<span class="all"><a id="more-info" title="Как составляется гид">Гид</a> по лучшим барам и клубам</span>
+				<span class="search">Где попробовать <a class="cocktail"></a> в лучших <a class="drop-cocktail">барах и клубах</a> Москвы</span>
+				<span id="switch-view"><a class="view-list">списком</a> или <a class="view-map">на карте</a></span>
+			</h1>
 			<a id="partner" href="/cocktails.html#ingredients=Белый%20вермут&state=byIngredients"></a>
 		</div>
 		
 		<div class="b-content" id="bars-list">
 			<div id="sort-menu">Хочу <dl class="bars-select" id="bars-format"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl></div>
 			<div id="bars-container"><noscript><!--# include file="/bars/links.html" --></noscript></div>
-			<div id="map"><p class="loading">Загружаю карту…</p></div>
+			<div id="map" class="hidden"><p class="loading">Загружаю карту…</p></div>
 		</div>
 	</div></div>
 	
@@ -29,7 +30,35 @@
 <div class="alcohol-harm"></div>
 </div>
 <!--# include file="/inc/news-form-popup.html" -->
-<!--# include file="/inc/guide-info-popup.html" -->
+
+<div id="guide-info-popup" class="win-shop info-popup-area hidden">
+	<div class="opacity"></div>
+	<div class="close-controls">
+		<a class="cross">×</a>
+		<a class="text">Закрыть</a>
+	</div>
+	<div class="info-popup">
+		<div class="win">
+			<div class="column"><div class="body-wrapper">
+				<div class="b-title"><h1>Первый независимый гид по лучшим барам и клубам.</h1></div>
+				<div class="content">
+					<div class="rounder"> </div>
+					<img class="photo" src="/i/bars/guide-info.jpg" alt="Фотки баров из Гида"/>
+					<div class="desc">
+						<p>В основе гида лежит оценка заведений по успеху, атмосфере, интерьеру, публике и ценовой политике. Однако главное внимание уделяется коктейлям и уровню сервиса бара. В гиде не рассматриваются модные заведения без признанного барным сообществом бар-менеджера.</p>
+						<p>Выбор лучших бар-менеджеров осуществляет клуб главных барменов Inshaker путем рекоммендации нового участника. Таким образом попасть в гид, также как и попасть в клуб главных барменов, возможно лишь по рекоммендации одного из членов клуба.</p>
+						<p>Заведение исключается из гида в случае ухода бар-менеджера с места работы или в случае исключения бар-менеджера из клуба главных барменов.</p>
+						<h2>Контактная информация</h2>
+						<p class="contact">+7 (495) 724-63-73 | Михаил Вихман, коктейльный друг</p>
+						<p class="contact">+7 (926) 584-61-21 | Евгений Дробышев, коктейльный фотограф | <a href="http://ddefoto.com" target="_blank">ddefoto.com</a></p>
+					</div>
+				</div>
+				<div class="enrollment">Хочу <a href="/about.html">быть в гиде и клубе</a> главных барменов</div>
+			</div></div>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript">window.menuItem = "bars.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
