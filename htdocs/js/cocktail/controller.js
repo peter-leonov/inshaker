@@ -5,6 +5,10 @@ var Controller = {
 	
 	ID_ILLUSTRATION : 'illustration',
 	
+	ID_AUTHOR : 'author',
+	SELECTOR_AUTHOR : 'a.author',
+	ID_WHERE_TO_TASTE : 'where-to-taste',
+	
 	ID_RELATED : 'related',
 	ID_REL_SUR : 'rel_surface',
 	ID_REL_VPR : 'rel_viewport',
@@ -53,15 +57,34 @@ var Controller = {
 		var self = this;
 		var menu = $('panel_cocktail');
 		
-        if (Barman.getByCocktailName(name)) {
-            var a = document.createElement("a");
-            a.href = "#";
-            a.innerHTML = "<b>Автор</b>";
-            menu.appendChild(a);
-            var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
-            ip.addCloseListener(function () { a.remClassName('now') });
-        }
-        menu.now = menu; 
+		var barman = Barman.getByCocktailName(name)
+		if (barman) {
+			var a = $(this.ID_AUTHOR)
+			if (a)
+			{
+				a.style.display = "inline";
+				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+				// ip.addCloseListener(function () { a.remClassName('now') });
+			}
+			
+			a = cssQuery(this.SELECTOR_AUTHOR)[0]
+			if (a)
+			{
+				a.addClassName('active')
+				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+			}
+		}
+		
+		var bars = Bar.getByCocktailName(name)
+		if (bars.length) {
+			var a = $(this.ID_WHERE_TO_TASTE)
+			a.style.display = "inline";
+			a.href = bars.random().pageHref()
+			// course of link.js cancels an event (#451)
+			a.addEventListener('click', function (e) { location.href = this.href }, false)
+		}
+		
+		menu.now = menu; 
 		this._initNavigationRules(menu);
 		
 		var mybar_links	= menu.getElementsByTagName('a');
@@ -69,7 +92,7 @@ var Controller = {
 			mybar_links[i].addEventListener('click', function(e) {
 					link.open(this);
 					this.parentNode.now.remClassName('now');
-					this.addClassName('now');
+					// this.addClassName('now');
 					this.parentNode.now = this;
 					$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
@@ -79,9 +102,6 @@ var Controller = {
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
-			mybar_links[0].parentNode.now.remClassName('now');
-			mybar_links[0].addClassName('now');
-			mybar_links[0].parentNode.now = mybar_links[0];
 			link.open("view-how");
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);

@@ -1,20 +1,22 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
+require 'uri'
 
 class IngredientsProcessor < Barman::Processor
   
   module Config
-    INGREDIENTS_DIR = Barman::BASE_DIR + "Ingredients/"
-    HTDOCS_DIR      = Barman::HTDOCS_DIR
+    INGREDIENTS_DIR      = Barman::BASE_DIR + "Ingredients/"
+    HTDOCS_DIR           = Barman::HTDOCS_DIR
 
-    MERCH_ROOT          = HTDOCS_DIR + "i/merchandise/"
-    INGREDS_ROOT        = MERCH_ROOT + "ingredients/"
-    INGREDS_PRINT_ROOT  = INGREDS_ROOT + "print/"
-    VOLUMES_ROOT        = MERCH_ROOT + "volumes/"
-    BANNERS_ROOT        = MERCH_ROOT + "banners/"
-
-    NOSCRIPT_INGREDS     = HTDOCS_DIR + "/inc/ingredients-links.html"
+    MERCH_ROOT           = HTDOCS_DIR + "i/merchandise/"
+    INGREDS_ROOT         = MERCH_ROOT + "ingredients/"
+    INGREDS_PRINT_ROOT   = INGREDS_ROOT + "print/"
+    VOLUMES_ROOT         = MERCH_ROOT + "volumes/"
+    BANNERS_ROOT         = MERCH_ROOT + "banners/"
+    
+    HTDOCS_ROOT          = HTDOCS_DIR + "ingredients/"
+    NOSCRIPT_LINKS       = HTDOCS_ROOT + "links.html"
 
     DB_JS_INGREDS        = HTDOCS_DIR + "db/ingredients.js"
     DB_JS_INGREDS_GROUPS = HTDOCS_DIR + "db/ingredients_groups.js"
@@ -36,12 +38,13 @@ class IngredientsProcessor < Barman::Processor
     update_goods
     
     if summary
+      flush_links
       flush_json
     end
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
+    FileUtils.mkdir_p [Config::HTDOCS_ROOT, Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
   end
   
   def update_groups
@@ -53,6 +56,17 @@ class IngredientsProcessor < Barman::Processor
     flush_json_object(@ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@goods, Config::DB_JS_GOODS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
+  end
+  
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @goods.each do |name, entity|
+        entity = entity[0]
+        links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
+      end
+      links.puts "</ul>"
+    end
   end
   
   def prepare_goods
@@ -84,6 +98,7 @@ class IngredientsProcessor < Barman::Processor
           @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
           if good != true
             done += 1
+            good["group"] = group_dir.name
             @goods[good_dir.name] = [good]
           end
         end

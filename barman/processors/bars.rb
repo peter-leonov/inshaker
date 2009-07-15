@@ -5,16 +5,17 @@ require 'barman'
 class BarsProcessor < Barman::Processor
   
   module Config
-    BASE_DIR   = Barman::BASE_DIR + "Bars/"
+    BASE_DIR       = Barman::BASE_DIR + "Bars/"
     
-    HTML_DIR = Barman::HTDOCS_DIR + "bars/"
-    IMAGES_DIR    = Barman::HTDOCS_DIR + "i/bar"
+    HTML_DIR       = Barman::HTDOCS_DIR + "bars/"
+    NOSCRIPT_LINKS = HTML_DIR + "links.html"
+    IMAGES_DIR     = Barman::HTDOCS_DIR + "i/bar"
     
-    DB_JS        = Barman::HTDOCS_DIR  + "db/bars.js"
-    DB_JS_CITIES = Barman::HTDOCS_DIR  + "db/cities.js"
+    DB_JS          = Barman::HTDOCS_DIR  + "db/bars.js"
+    DB_JS_CITIES   = Barman::HTDOCS_DIR  + "db/cities.js"
     
-    ERB = Barman::TEMPLATES_DIR + "bar.rhtml"
-    DECLENSIONS = Barman::BASE_DIR + "declensions.yaml"
+    ERB            = Barman::TEMPLATES_DIR + "bar.rhtml"
+    DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
   end
   
   def initialize
@@ -33,7 +34,7 @@ class BarsProcessor < Barman::Processor
     update_bars
     
     if summary
-      flush_interlinks
+      flush_links
       flush_json
     end
   end
@@ -144,12 +145,14 @@ class BarsProcessor < Barman::Processor
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end
   
-  def flush_interlinks
-    hrefs = ""
-    @entities.each do |entity|
-      hrefs << %Q{<a href="/bars/#{entity["city"].dirify}/#{entity["name_eng"].html_name}.html">#{entity["name"]}</a>}
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @entities.each do |entity|
+        links.puts %Q{<li><a href="/bars/#{entity["city"].dirify}/#{entity["name_eng"].html_name}.html">#{entity["name"]}</a></li>}
+      end
+      links.puts "</ul>"
     end
-    File.write(Config::HTML_DIR + "interlink.html", hrefs)
   end
   
 private
@@ -171,8 +174,8 @@ private
   
   def parse_cocktails_text txt, bar
     blocks = txt.split("\n\n")
-    bar["recs"]  = blocks[0].split(%r{[\n\r]})
-    bar["carte"] = blocks[1].split(%r{[\n\r]})
+    bar["carte"] = blocks[0].split(%r{[\n\r]})
+    bar["carte"] += blocks[1].split(%r{[\n\r]})
     bar["priceIndex"] = blocks[2].split(": ")[1].trim
   end
 end

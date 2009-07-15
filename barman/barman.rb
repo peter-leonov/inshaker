@@ -47,8 +47,9 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
-      system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null}) or
-        warn "  error while pngm #{src} -> #{dst}"
+      unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
+        error "не могу добавить белый фон (#{src} → #{dst})"
+      end
     end
     
     def indent

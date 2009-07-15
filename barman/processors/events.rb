@@ -11,6 +11,7 @@ class EventsProcessor < Barman::Processor
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     EVENTS_HTML_DIR = HTDOCS_DIR + "events/"
+    NOSCRIPT_LINKS  = EVENTS_HTML_DIR + "links.html"
     IMAGES_DIR      = HTDOCS_DIR + "i/event/"
     
     DB_JS = HTDOCS_DIR + "db/events.js"
@@ -29,7 +30,7 @@ class EventsProcessor < Barman::Processor
     prepare_dirs
     prepare
     
-    flush_interlinks
+    flush_links
     flush_html
     flush_json
   end
@@ -111,13 +112,13 @@ class EventsProcessor < Barman::Processor
     flush_json_object(@entities, Config::DB_JS)
   end
   
-  def flush_interlinks
-    hrefs = ""
-    @entities.each do |name, entity|
-      hrefs << %Q{<a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a>}
-    end
-    File.open(Config::EVENTS_HTML_DIR + "interlink.html", "w") do |f|
-      f << hrefs
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @entities.each do |name, entity|
+        links.puts %Q{<li><a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a></li>}
+      end
+      links.puts "</ul>"
     end
   end
   

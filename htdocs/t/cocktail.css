@@ -1,0 +1,5 @@
+#author,
+#where-to-taste { display: none; }
+
+a.author { text-decoration: none; color: inherit; cursor: default; }
+a.author.active { border-bottom: 1px dashed; cursor: pointer; }

@@ -1,10 +1,9 @@
 /**
  * Math enhancements
  */
-Math._round = Math.round;
-Math.round = function($num, $precision) {
+Math.roundPrecision = function($num, $precision) {
 	if (isNaN($precision)) $precision = 0;
- 	return Math._round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
+ 	return Math.round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
 };
 
 /**
@@ -117,16 +116,22 @@ Array.prototype.sortedBy = function(sortFunc) {
 }
 
 Array.prototype.shuffled = function() {
-    var array = Array.copy(this);
-    var tmp, current, top = array.length;
+	var array = Array.copy(this);
+	var tmp, current, top = array.length;
+	
+	if(top) while(--top) {
+		current = Math.floor(Math.random() * (top + 1));
+		tmp = array[current];
+		array[current] = array[top];
+		array[top] = tmp;
+	}
+	return array;
+}
 
-    if(top) while(--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = array[current];
-        array[current] = array[top];
-        array[top] = tmp;
-    }
-    return array;
+Array.prototype.random = function() {
+	var len = this.length
+	if (len)
+		return this[Math.round(Math.random() * (len - 1))]
 }
 
 
@@ -408,23 +413,28 @@ function insertAfter(new_node, existing_node)
 }
 
 /**
- * Get element's absolute position
+ * Get element's absolute position. Properly handles Safari's body scroll*.
  * 
  * @param e - element
  * @return {Object} position - x,y
  */
-function getPosition(e){
-	var left = 0;
-	var top  = 0;
-
-	while (e.offsetParent){
-		left += e.offsetLeft;
-		top  += e.offsetTop;
-		e     = e.offsetParent;
+function getPosition (n)
+{
+	var x = 0, y = 0, p
+	for (;;)
+	{
+		x += n.offsetLeft
+		y += n.offsetTop
+		if ((p = n.offsetParent))
+		{
+			x -= n.scrollLeft
+			y -= n.scrollTop
+			n = p
+		}
+		else
+			break
 	}
+	
+	return {x:x, y:y};
+}
 
-	left += e.offsetLeft;
-	top  += e.offsetTop;
-
-	return {x: left, y:top};
-};

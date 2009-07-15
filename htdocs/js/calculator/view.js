@@ -212,7 +212,7 @@ function CalculatorView() {
                 var item = cartData.goods[name];
 				var bottles = cartData.goods[name].bottles;
 				for(var id in bottles){
-					sum += Math.round(bottles[id].vol[1]*bottles[id].count,2);
+					sum += Math.roundPrecision(bottles[id].vol[1]*bottles[id].count,2);
 					var ingredElem = this._createIngredientElement(item, bottles[id], name);
 					newIngredients.push(ingredElem);
 				}
@@ -358,7 +358,7 @@ function CalculatorView() {
 			
 			if (bottle.count != input.value)
 				input.value = bottle.count;
-			txt.nodeValue = " " + spaces(Math.round(bottle.vol[1]*bottle.count,2)) + " р."
+			txt.nodeValue = " " + spaces(Math.roundPrecision(bottle.vol[1]*bottle.count,2)) + " р."
 			
 			// red/green balloon
 			if(bottle.diff){
@@ -468,7 +468,7 @@ function CalculatorView() {
 		
 		$('good_desc').innerHTML = item.good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
-		$('good_needed_vol').innerHTML = Math.round(item.dose, 2) + " " +GoodHelper.pluralTxt(item.dose, item.good.unit);
+		$('good_needed_vol').innerHTML = Math.roundPrecision(item.dose, 2) + " " +GoodHelper.pluralTxt(item.dose, item.good.unit);
 		
 		var volsNode = $('good_volumes');
 		// volsNode.innerHTML = "";
@@ -493,7 +493,7 @@ function CalculatorView() {
 		mergeNodes(volsNode, newIngredients);
 		
 		$('good_summ').innerHTML = "<i>" + spaces(summ) + " р.</i>"
-		$('good_needed_have').innerHTML = Math.round(have, 2) + " " + item.good.unit;
+		$('good_needed_have').innerHTML = Math.roundPrecision(have, 2) + " " + item.good.unit;
 		$('good_needed').remClassName(item.dose  > have ? "more" : "less");
 		$('good_needed').addClassName(item.dose <= have ? "more" : "less");
 		this.lastShownIngred = name;

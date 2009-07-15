@@ -38,10 +38,10 @@ Object.extend(Bar,
 			var bar = new Bar(db[i]), city = bar.city
 			byCity[city] ? byCity[city].push(bar) : byCity[city] = [bar]
 			bar.id = ++id
-			bar.searchKey = [':' + bar.feel.join(':') + ':', ':' + bar.format.join(':') + ':', ':' + bar.carte.join(':') + ':'].join('\n')
+			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
 		}
 		this.db = byCity
-		// console.timeEnd('DB.Bars.initialize')
+		// console.timeEnd('Bar.initialize')
 	},
 	
 	getByQuery: function (query)
@@ -64,7 +64,7 @@ Object.extend(Bar,
 			if (rex.test(bar.searchKey))
 				res.push(bar)
 		}
-		// log(res, query)
+		
 		return res
 	},
 	
@@ -94,6 +94,11 @@ Object.extend(Bar,
 			if (bars[i].name == name)
 				return bars[i]
 		return null
+	},
+	
+	getByCocktailName: function (cocktail)
+	{
+		return this.getByQuery({cocktail:cocktail})
 	},
 	
 	getPropertiesSorted: function (set, key)
