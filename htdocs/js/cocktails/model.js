@@ -33,7 +33,6 @@ function CocktailsModel (states, view) {
 	};
 	
 	this.completeFilters = function(filters){
-        logObject(filters)
         if(!filters)             filters = {};
 		if(!filters.name)        filters.name = "";
 		if(!filters.letter)      filters.letter = "";
