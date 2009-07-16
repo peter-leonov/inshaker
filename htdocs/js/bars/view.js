@@ -267,7 +267,7 @@ BarsPageView.prototype =
 			nodes.titleAll.hide()
 			nodes.titleSearch.show()
 			var nameNode = nodes.titleSearchName
-			nameNode.innerHTML = cocktail.name
+			nameNode.innerHTML = cocktail.nameVP || cocktail.name
 			nameNode.href = '/cocktails/' + cocktail.name_eng.htmlName() + '.html'
 		}
 		else

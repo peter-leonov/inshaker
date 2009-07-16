@@ -226,6 +226,7 @@ private
 
   def parse_about_text(about_text)
     parse_title about_text.scan(/.*Название:\ *\n(.+)\n.*/)[0][0]
+    parse_vp about_text.scan(/.*Винительный падеж:\ *\n(.+)\n.*/)
     parse_teaser about_text.scan(/.*Тизер:\ (.+)\ *\n.*/)[0][0]
     parse_strength about_text.scan(/.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
     if about_text.scan(/.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
@@ -243,6 +244,12 @@ private
       error "неверный формат названия"
     end
     @cocktail["name_eng"] = title
+  end
+  
+  def parse_vp(name)
+    if name[0]
+      @cocktail["nameVP"] = name[0][0]
+    end
   end
   
   def parse_teaser(teaser)
