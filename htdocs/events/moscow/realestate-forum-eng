@@ -94,7 +94,7 @@
 				<label>Surname:<input type="text" name="second"/></label>
 				<label>E-mail:<input type="text" name="email"/></label>
 				<div class="variable"></div>
-				<p class="limit">*Invitations are Limited. <input type="submit" value="Внести меня в списки!"/></p>
+				<p class="limit">*Invitations are Limited. <input type="submit" value="Register!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>

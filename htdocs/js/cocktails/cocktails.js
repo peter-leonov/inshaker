@@ -24,6 +24,7 @@ $.onload(
 			
 			tagsList: $('tags_list'),
 			strengthsList: $('strengths_list'),
+			methodsList: $('methods_list'),
 			
 			searchByName: $('search_by_name'),
 			searchByIngreds: $('search_by_ingreds'),
@@ -64,7 +65,8 @@ $.onload(
 			force: 'force',
 			
 			strengthState: 'strength_state',
-			tagState: 'tag_state'
+			tagState: 'tag_state',
+			methodState: 'method_state'
 		}
 		
 		var states = {

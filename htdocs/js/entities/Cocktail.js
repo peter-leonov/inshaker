@@ -47,20 +47,29 @@ Object.extend(Cocktail,
     ingredients: [],
     letters: [],
     names: [],
-    
+    methods: ["просто", 
+              "в шейкере", 
+              "в блендере", 
+              "давят пестиком", 
+              "укладывают слои", 
+              "миксуют в стакане", 
+              "не очень просто"],
     rounds: {},
 
     dictNames: {},
     dictLetters: {},
-	
+	dictMethods: {},
+
 	initialize: function (db){
+        for (var i = 0; i < this.methods.length; i++) this.dictMethods[this.methods[i]] = [];
+
 		var i = 0;
     
 		for (var k in db){
 			var cocktail = new Cocktail(db[k]);
 			this.names[i] = cocktail.name;
-			this.cocktails[i] = cocktail;
-			
+			this.cocktails[i] = this.processMethods(cocktail);
+            			
             var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
             var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
             this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
@@ -79,10 +88,32 @@ Object.extend(Cocktail,
 		}
 		this.letters = this.letters.sort();
 	},
+
+    processMethods: function(cocktail){
+        var itsMethods = {};
+        for (var i = 0; i < this.methods.length; i++) itsMethods[this.methods[i]] = false;
+        var itsTools = cocktail.tools;
+
+        if(itsTools.indexOf("Шейкер") > -1)  itsMethods["в шейкере"] = true;
+        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
+        if(itsTools.indexOf("Блендер") > -1 || itsTools.indexOf("Коктейльный миксер") > -1) itsMethods["в блендере"] = true;
+        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
+        if(itsTools.indexOf("Стакан для смешивания") > -1) itsMethods["миксуют в стакане"] = true;
+        if(itsTools.indexOf("Стопка") > -1 && itsTools.indexOf("Коктейльная ложка") > -1) itsMethods["укладывают слои"] = true;
+        
+        var numMethods = 0; for(var method in itsMethods) if(itsMethods[method]) numMethods++;
+
+        if(numMethods > 1) cocktail.method = "не очень просто";
+        else if(numMethods == 0) cocktail.method = "просто";
+        else for(var method in itsMethods) if(itsMethods[method]) { cocktail.method = method; break; }
+        
+        return cocktail;
+    },
 	
     getAll: function(){
         return this.cocktails;
     },
+
 	getByName: function (name){
 		for(var i = 0; i < this.cocktails.length; i++){
 			if(this.cocktails[i].name == name) return this.cocktails[i];
@@ -139,6 +170,17 @@ Object.extend(Cocktail,
 		}
 		return res;
 	},
+
+    getByMethod: function(method, set) {
+        if(!set) set = this.cocktails;
+        var res = [];
+        for(var i = 0; i < set.length; i++){
+             if(set[i].method == method) {
+                res.push(set[i]);
+             }
+        }
+        return res;
+    },
     
     getByIngredients: function(ingredients, set) {
         this.rounds = {};
@@ -175,6 +217,10 @@ Object.extend(Cocktail,
 			res = this.getByStrength(filters.strength, filtered ? res : null);
 			filtered = true;
 		}
+        if(filters.method) {
+            res = this.getByMethod(filters.method, filtered ? res: null);
+            filtered = true;
+        }
 		if(filters.ingredients && filters.ingredients.length) {
             var to_filter = [];
 			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
