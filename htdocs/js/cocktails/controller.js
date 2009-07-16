@@ -7,15 +7,10 @@ function CocktailsController (states, cookies, model, view) {
 	this.initialize = function () {
 		var filters = this.filtersFromRequest();
 		var states = null;
-		var origin = "request";
-		if(!filters) {
-			filters = this.filtersFromCookie();
-			states = this.statesFromCookies();
-			origin = "cookie";
-		}
+		if(!filters) filters = this.filtersFromCookie();
 		
 		this.view.controller = this;
-		this.model.initialize(filters, states, origin);
+		this.model.initialize(filters);
 	};
 	
 	this.filtersFromRequest = function () {
@@ -32,32 +27,17 @@ function CocktailsController (states, cookies, model, view) {
 		} else return null;
 	};
 	
-	this.statesFromCookies = function () {
-		var res = [];
-		var ss = Cookie.get(cookies.strengthState);
-		if(ss) res[0] = Object.parse(ss);
-		var ts = Cookie.get(cookies.tagState);
-		if(ts) res[1] = Object.parse(ts);
-		var ms = Cookie.get(cookies.methodState);
-		if(ms) res[2] = Object.parse(ms);
-        return res;
-	};
-	
 	this.filtersFromCookie = function () {
 		var cookie = Cookie.get(cookies.filter);
 		if(cookie) return Object.parse(cookie);
 		else return null;
 	};
 	
-	this.saveState = function (filters, tagState, strengthState, methodState) {
+	this.saveFilters = function (filters) {
 		var self = this;
 		clearTimeout(this.hashTimeout);
 		this.hashTimeout = setTimeout(function() { 
 			self.updatePageHash(filters);
-			
-			Cookie.set(cookies.tagState, Object.stringify(tagState));
-			Cookie.set(cookies.strengthState, Object.stringify(strengthState));
-			Cookie.set(cookies.methodState, Object.stringify(methodState));
 			Cookie.set(cookies.filter, Object.stringify(filters));
 		} , 400);
 	};

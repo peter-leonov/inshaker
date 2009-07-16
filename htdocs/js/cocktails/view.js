@@ -17,16 +17,19 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
-	this.initialize = function (tags, strengths, methods, cocktailsLetters, ingredsNames, state){
-		this.iAutocompleter = new Autocompleter(ingredsNames, 
+	this.initialize = function (viewData, state){
+        this.viewData = viewData;
+
+		this.iAutocompleter = new Autocompleter(this.viewData.ingredients, 
 								nodes.searchByIngreds.getElementsByTagName("input")[0],
 								nodes.searchByIngreds.getElementsByTagName("form")[0]);
 		
-		this.renderLetters(nodes.alphabetRu, cocktailsLetters);
-		this.renderSet(nodes.tagsList, tags);
-		this.renderSet(nodes.strengthsList, strengths);
-		this.renderSet(nodes.methodsList, methods);
-		this.bindEvents();
+		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
+		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
+		this.renderGroupSet(nodes.strengthsList, this.viewData.strengths);
+		this.renderGroupSet(nodes.methodsList,   this.viewData.methods);
+		
+        this.bindEvents();
 		this.turnToState(state);
 	};
 	
@@ -188,14 +191,13 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		this.controller.onIngredientFilter(name, true);
 	};
 	
-	this.onModelChanged = function(resultSet, filters, tagState, strengthState, methodState) { // model
+	this.onModelChanged = function(resultSet, filters, groupStates) { // model
         this.currentFilters = filters;
 
 		this.renderAllPages(resultSet, filters.page);
-		this.renderFilters(this.currentFilters, tagState, strengthState, methodState);
-		this.controller.saveState(this.currentFilters, tagState, strengthState, methodState);
+		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
+		this.controller.saveFilters(this.currentFilters);
 	};
-	
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
@@ -318,7 +320,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		}
 	};
 	
-	this.renderSet = function(parent, set){
+	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
 			var a = document.createElement("a");
