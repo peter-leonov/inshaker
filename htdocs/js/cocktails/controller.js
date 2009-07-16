@@ -23,6 +23,7 @@ function CocktailsController (states, cookies, model, view) {
 				var pair = params[i].split("=");
 				filters[pair[0]]=decodeURIComponent(pair[1]);
 			}
+            filters.state = states[filters.state];
 			return filters;
 		} else return null;
 	};
