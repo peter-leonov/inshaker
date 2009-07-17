@@ -1,3 +1,5 @@
+window.menuItem = "bars.html"
+
 BarsPage =
 {
 	initialize: function (nodes)
@@ -25,21 +27,21 @@ $.onload
 	{
 		var nodes =
 		{
-			titleAll: cssQuery('.b-title .all')[0],
-			titleSearch: cssQuery('.b-title .search')[0],
-			titleSearchName: cssQuery('.b-title .search a')[0],
-			titleSearchAll: cssQuery('.b-title .search a')[1],
+			titleAll: cssQuery('#head .all')[0],
+			titleSearch: cssQuery('#head .search')[0],
+			titleSearchName: cssQuery('#head .search .cocktail')[0],
+			titleSearchAll: cssQuery('#head .search .drop-cocktail')[0],
 			viewSwitcher: $('switch-view'),
-			viewSwitcherButtons: cssQuery('#switch-view a'),
+			viewSwitcherButtons: cssQuery('#switch-view .view-list, #switch-view .view-map'),
 			barsContainer: $('bars-container'),
+			citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),
 			
 			moreInfo: $('more-info'),
-            photographer: $('photographer'),
-			photoPopup: $('photo-info-popup'),
-			guidePopup: $('guide-info-popup')
+			guidePopup: $('guide-info-popup'),
+			guidePopupBody: cssQuery('#guide-info-popup .info-popup')[0]
 		}
 		
 		BarsPage.initialize(nodes)
@@ -48,8 +50,11 @@ $.onload
 
 function googleApiLoaderIsLoaded ()
 {
-	google.load("maps", "2", {nocss: true, language: "ru", callback: function () { BarsPage.mapsApiIsLoaded() }})
+	google.load('maps', '2', {nocss: true, language: 'ru', callback: function () { BarsPage.mapsApiIsLoaded() }})
 }
+
+Element.prototype.hide = function () { this.addClassName('hidden') }
+Element.prototype.show = function () { this.remClassName('hidden') }
 
 
 <!--# include file="/js/bars/model.js" -->
@@ -67,9 +72,4 @@ function googleApiLoaderIsLoaded ()
 
 <!--# include file="/lib/Programica/Widget.js" -->
 <!--# include file="/lib/Widgets/FormPoster.js" -->
-
-<!--# include file="/js/common/autocompleter.js" -->
-<!--# include file="/js/common/newsFormPopup.js" -->
-<!--# include file="/js/common/infoPopup.js" -->
-
 

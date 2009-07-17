@@ -1,15 +1,8 @@
 body {background-position:-139px -141px; background-repeat: repeat-x;}
-#bars-page #sort-menu .bars-select dt .caption { color: #74c8ff; }
-#bars-page #sort-menu .bars-select dd ul li.selected { color: #74c8ff; cursor: default; }
-#bars-page .b-title #partner {display:none;}
-#bars-page #sort-menu .bars-select dd ul li:hover { color: #74c8ff; }
 #bar-page #price-index { padding: 36px 0 0 89px; font-size: 35px; color: #F32C9F;}
 
-#bars-page body, .bars-page body { background-image:url(bg/bars/bg.png) }
 #cocktails-page body, .cocktails-page body { background-image:url(bg/cocktails/bg.png) }
 #index-page body, .index-page body, #about-page body { background-image:url(bg/index/bg.png) }
 
-#bars-page body, .bars-page body { background-image:url(bg/bars/bg.png) } 
-#cocktails-page body, .cocktails-page body { background-image:url(bg/cocktails/bg.png) } 
 #gifts-page body, .gifts-page body { background-image:url(bg/gifts/bg.png) } 
 #index-page body, .index-page body { background-image:url(bg/index/bg.png) } 
