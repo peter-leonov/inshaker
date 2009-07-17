@@ -34,6 +34,7 @@ $.onload
 			viewSwitcher: $('switch-view'),
 			viewSwitcherButtons: cssQuery('#switch-view .view-list, #switch-view .view-map'),
 			barsContainer: $('bars-container'),
+			citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),

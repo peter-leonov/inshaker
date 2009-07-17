@@ -29,6 +29,10 @@ body { background-image:url(bg/bars/bg.png); }
 #sort-menu .bars-select dd ul li:hover { color: #74c8ff; }
 #sort-menu .bars-select.open dd { display: block; }
 #sort-menu .bars-select.open dt { cursor: default; }
+
+#sort-menu #bars-city.bars-select dd { left: -7px; }
+
+
 #more-info { text-decoration: none; border-bottom: 1px #FFF dashed; }
 #more-info:hover { border-bottom: none }
 #bars-container { overflow: hidden; clear: both; }

@@ -16,11 +16,13 @@ BarsPageView.prototype =
 		
 		var me = this
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val) }
-		nodes.feelSelect.onselect	= function (val) { controller.feelSelected(val) }
+		nodes.feelSelect.onselect   = function (val) { controller.feelSelected(val) }
+		nodes.citySelect.onselect   = function (val) { controller.citySelected(val) }
 		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
 		nodes.viewSwitcher.setNames(['list', 'map'])
 		nodes.viewSwitcher.onselect = function (num) { me.setViewNum(num) }
 		
+		Selecter.bind(nodes.citySelect)
 		Selecter.bind(nodes.formatSelect)
 		Selecter.bind(nodes.feelSelect)
 		
@@ -70,9 +72,9 @@ BarsPageView.prototype =
 	
 	renderCities: function (options, selected)
 	{
-		// var node = this.nodes.citySelect
-		// node.setOptions(options)
-		// node.select(selected || 0, true)
+		var node = this.nodes.citySelect
+		node.setOptions(options)
+		node.select(selected || 0, true)
 	},
 	
 	renderFormats: function (options, selected)
