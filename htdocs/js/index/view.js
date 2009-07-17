@@ -108,12 +108,16 @@ IndexPageView.prototype =
 		var me = this, counter = 0
 		var range = this.getRange(initFrame)
 		
-		this.loadFrames(range, function ()
-		{
-			counter++
-			if (counter == range.length)
-				me.imagesLoaded = true
-		})
+		this.loadFrames
+		(
+			range,
+			function ()
+			{
+				counter++
+				if (counter == range.length)
+					me.imagesLoaded = true
+			}
+		)
 	},
 	
 	renderCocktails: function (node, set, len)
@@ -211,6 +215,8 @@ IndexPageView.prototype =
 				clearInterval(slowSwitchTimer)
 			}
 			
+			if (!initFrame)
+				initFrame = Math.round(Math.random() * (len - 1)) + 1
 			if (!this.getPromoImages()[initFrame])
 				initFrame = 1
 			
@@ -218,18 +224,17 @@ IndexPageView.prototype =
 			setTimeout(function () { ri.goToFrame(initFrame, 'directJump')  }, 100)
 			
 			// Wait for initial images to load and start switching
-			var imageLoadTimer = setInterval
+			var imageLoadTimer = setTimeout
 			(
 				function ()
 				{
 					if (me.imagesLoaded)
 					{
 						me.showButtons()
-						startSwitching(customInit)
-						me.nodes.promo.addEventListener('mousemove', function () { stopSwitching() }, false)
-						me.nodes.promo.addEventListener('mouseover', function () { stopSwitching() }, false)
-						me.nodes.promo.addEventListener('mouseout' , function () { startSwitching() }, false)
-						clearInterval(imageLoadTimer)
+						// startSwitching(customInit)
+						// me.nodes.promo.addEventListener('mousemove', function () { stopSwitching() }, false)
+						// me.nodes.promo.addEventListener('mouseover', function () { stopSwitching() }, false)
+						// me.nodes.promo.addEventListener('mouseout' , function () { startSwitching() }, false)
 					}
 				},
 				1000

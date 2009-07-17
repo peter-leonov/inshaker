@@ -11,14 +11,14 @@ IndexPageController.prototype =
 	
 	start: function ()
 	{
-		var num = 1, ci = false
+		var num, ci = false, m
 		
-		if (window.location.hash.match(/#(\d+)/))
+		if ((m = window.location.hash.match(/#(\d+)/)))
 		{
-			num = window.location.hash.match(/#(\d+)/)[1] * 1
+			num = m[1] * 1
 			ci  = true
 		}
-		this.model.setState({initFrame: num, customInit: ci })
+		this.model.setState({initFrame: num, customInit: ci})
 	},
 	
 	updateHash: function (frame)
