@@ -67,7 +67,7 @@ class BarsProcessor < Barman::Processor
         parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), bar)
         
         city_html_name = city_dir.name.trans.html_name
-        city_map_name = @declensions[city_dir.name][1]
+        city_map_name = @declensions[city_dir.name] ? @declensions[city_dir.name][1] : city_dir.name
         html_name = bar["name_eng"].html_name
         
         
