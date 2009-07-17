@@ -80,8 +80,16 @@ var Controller = {
 		{
 			var a = $(this.ID_WHERE_TO_TASTE)
 			a.style.display = 'inline';
-			// a.href = bars.random().pageHref()
-			a.href = '/bars.html#cocktail=' + encodeURIComponent(name)
+			
+			if (bars.length == 1)
+			{
+				a.href = bars.random().pageHref()
+			}
+			else
+			{
+				a.href = '/bars.html#cocktail=' + encodeURIComponent(name)
+			}
+			
 			// course of link.js cancels an event (#451)
 			a.addEventListener('click', function (e) { location.href = this.href }, false)
 		}
