@@ -125,7 +125,7 @@ end
 def download_reports
   statuses = {} # статусы успешности скачивания
   
-  dates = [(Config::PERIOD+1).days.ago, 1.days.ago].map {|d| d.strftime("%Y%m%d")}
+  dates = [(Config::PERIOD+2).days.ago, 2.days.ago].map {|d| d.strftime("%Y%m%d")}
   
   auth_url   = "https://www.google.com/accounts/ServiceLoginBoxAuth"
   report_pfx = "https://www.google.com/analytics/reporting/export?fmt=1&id=9038802&pdr=#{dates[0]}-#{dates[1]}&segkey=city&cmp=average&&rpt="
