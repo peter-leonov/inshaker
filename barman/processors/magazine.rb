@@ -5,43 +5,86 @@ require 'barman'
 class MagazineProcessor < Barman::Processor
   
   module Config
-    DECORATION_DIR = Barman::BASE_DIR + "Magazine/"
+    BASE_DIR = Barman::BASE_DIR + "Magazine/"
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     DB_JS = HTDOCS_DIR + "db/magazine.js"
   end
   
-  def run
-    about = YAML::load(File.open(Config::DECORATION_DIR + "about.yaml"))
-    
-    @params = {}
-    @params["links"]       = about['Inshaker рекомендует']
-    @params["promos"]      = about['Промо']
-    @params["cocktails"]   = about['Коктейли']
-    
-    flush_links_and_promo
-    flush_json
+  def initialize
+    super
+    @db = {}
   end
-
-  def flush_links_and_promo
-    to_copy = ["links", "promos"]
+  
+  def run
     
-    to_copy.each do |dir|
-      src_dir  = Config::DECORATION_DIR + dir
-      dest_dir = Config::HTDOCS_DIR + "i/index/" + dir
-      
-      FileUtils.mkdir_p dest_dir
-      
-      Dir.new(src_dir).each do |f|
-        if f =~ /\d+\.(png|jpg)$/
-          FileUtils.cp_r "#{src_dir}/#{f}", "#{dest_dir}/#{f}", @mv_opt 
-        end 
+    process_about
+    
+    if summary
+      flush_json
+    end
+  end
+  
+  def process_about
+    about = YAML::load(File.open(Config::BASE_DIR + "about.yaml"))
+    
+    say "обновляю коктейли"
+    indent do
+    update_cocktails(@db["cocktails"]   = about['Коктейли'])
+    end # indent
+    
+    say "обновляю промо"
+    indent do
+    update_entities(@db["promos"] = about['Промо'], "promos", "jpg")
+    end # indent
+    
+    say "обновляю линки"
+    indent do
+    update_entities(@db["links"] = about['Inshaker рекомендует'], "links", "png")
+    end # indent
+  end
+  
+  def update_cocktails entities
+    entities.each do |entity|
+      say entity
+    end
+  end
+  
+  def update_entities entities, name, ext
+    basedir = Config::BASE_DIR + name
+    htdir = Config::HTDOCS_DIR + "i/index/" + name
+    FileUtils.mkdir_p htdir
+    
+    i = 1
+    entities.each do |entity|
+      name, href = entity[0], entity[1]
+      say name
+      indent do
+      copy_image basedir, htdir, "#{i}.#{ext}", 150
+      end # indent
+      i += 1
+    end
+  end
+  
+  def copy_image src, dst, name, max_size
+    from = "#{src}/#{name}"
+    if File.exists? from
+      if File.size(from) > max_size * 1024
+        warning "картинка слишком большая (>#{max_size}Кб) #{name}"
       end
+      
+      begin
+        FileUtils.cp_r from, dst, @mv_opt
+      rescue
+        error "не удалось скопировать картинку #{name}"
+      end
+    else
+      error "нет картинки"
     end
   end
   
   def flush_json
-    flush_json_object(@params, Config::DB_JS)
+    flush_json_object(@db, Config::DB_JS)
   end
 end
 
