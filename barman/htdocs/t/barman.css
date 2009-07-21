@@ -1,0 +1,152 @@
+html { font-family: Arial,sans-serif; }
+img { display:block; }
+
+.rounded-top
+{
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+}
+
+body
+{
+	display:block;
+	width: 768px;
+	margin: 20px auto;
+}
+
+.wrapper
+{
+	width: 450px;
+	height: 180px;
+	border: 1px #E0E0E0 solid;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+.name
+{
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.logo { float:left; }
+
+a { color:#cc2f7c; }
+
+a.purple { color:#4e4799; }
+
+.go
+{
+	cursor: pointer;
+	background:#cc2f7c;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	width: 100px;
+	line-height: 40px;
+	height: 40px;
+	float: right;
+	color: #FFFFFF;
+	text-align:center;
+	margin-top: 50px;
+}
+
+.go-purple
+{
+	cursor: pointer;
+	background: #4e4799;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	width: 100px;
+	line-height: 40px;
+	height: 40px;
+	float: right;
+	color: #FFFFFF;
+	text-align:center;
+	margin-top: 50px;
+}
+
+.clicked
+{
+	cursor:default;
+	background: #E0E0E0;
+	color: #C0C0C0;
+	border: 1px #C0C0C0 solid;
+}
+
+.options
+{
+	float: left;
+	width: 195px;
+	margin-left: 25px;
+	font-size: 16px;
+}
+
+#output
+{
+	width: 503px;
+	visibility: hidden;
+	font-size: 12px;
+	margin: 20px 115px;
+	background: #EDEDED;
+	border: 1px #C0C0C0 solid;
+	height: 0px;
+	overflow: auto;
+	padding: 15px;
+}
+
+#left,
+#right
+{
+	position: absolute; 
+	top: 130px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px;
+	border: 1px #c0c0c0 solid;
+	color: #979797;
+	width: 80px;
+	text-align: center;
+}
+#right { margin-left: 673px; }
+
+#left:hover,
+#right:hover
+{
+	color: #000000;
+	border: 1px #000000 solid;
+	cursor: pointer;
+}
+
+
+div.disabled { display:none; }
+
+#ri .viewport
+{
+	margin-left: 115px;
+	width: 535px;
+	height: 295px;
+	overflow: hidden;
+	position: relative;
+}
+
+#ri .surface { width: 4000px; }
+
+#ri .point
+{
+	float: left;
+	width: 493px;
+	height: 247px;
+}
+
+form label
+{
+	display: block;
+	padding: 1px 0;
+}
+form label input
+{
+	vertical-align: bottom;
+	margin: 3px;
+}

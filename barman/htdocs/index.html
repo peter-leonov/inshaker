@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<title>InShaker — Barman</title>
+	<link rel="stylesheet" href="/t/barman.css" type="text/css"/>
+</head>
+<body id="barman-page">
+<div class="programica-rolling-images" id="ri">
+	<div class="prev" id="left"></div>
+	<div class="next" id="right"></div>
+	
+	<div class="viewport">
+		<div class="surface">
+			<div class="wrapper rounded-top point" id="point_0">
+				<div class="name">Обновление <a href="http://inshaker.barman.programica.ru" target="_blank">inshaker.barman.programica.ru</a></div>
+				<img class="logo" src="/t/barman.png"/>
+				<div class="options">
+					<form method="post" id='barman-form'>
+						<label><input type="checkbox" name="cocktails"/>Коктейли</label>
+						<label><input type="checkbox" name="ingredients"/>Ингредиенты</label>
+						<label><input type="checkbox" name="tools"/>Штучки</label>
+						<label><input type="checkbox" name="bars"/>Бары</label>
+						<label><input type="checkbox" name="events"/>События</label>
+						<!-- <label><input type="checkbox" name="parties"/>Вечеринки</label> -->
+						<label><input type="checkbox" name="barmen"/>Бармены</label>
+						<label><input type="checkbox" name="gifts"/>Подарки</label>
+						<label><input type="checkbox" name="magazine"/>Журнал</label>
+					</form>
+				</div>
+				<div id="goBarman" class="go"></div>
+			</div>
+			<div class="wrapper rounded-top point" id="point_1">
+				<div class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></div>
+				<img class="logo" src="/t/barman.png"/>
+				<div class="options">…включая код, изображения и данные.</div>
+				<div id="goUp" class="go"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<pre id="output"></pre>
+<script src="/js/barman.js" type="text/javascript"></script>
+</body>
+</html>
