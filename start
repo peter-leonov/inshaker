@@ -1,12 +1,13 @@
 #!/bin/sh
 
 NAME="inshaker"
-
 PROJ_ROOT="/www/$NAME"
-NGINX="/usr/local/nginx/sbin/nginx"
-APACHE="/usr/local/apache/sbin/httpd"
-TYPE="$SERVER_TYPE"
 
+NGINX="/usr/local/nginx/sbin/nginx"
+SPAWN_FCGI="/usr/bin/spawn-fcgi"
+CAT="/bin/cat"
+
+TYPE="$SERVER_TYPE"
 if [ "$TYPE" = "" ]; then
 	TYPE="developer"
 fi
@@ -15,4 +16,4 @@ fi
 echo "Starting $NAME as $TYPE..."
 
 $NGINX -c "$PROJ_ROOT/nginx.$TYPE.conf"
-$APACHE -f "$PROJ_ROOT/apache.$TYPE.conf"
+$SPAWN_FCGI `$CAT "$PROJ_ROOT/spawn-fcgi.$TYPE.conf"`
