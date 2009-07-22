@@ -88,7 +88,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #low-sponsors .b-content .viewport .surface { width: 10000px; }
 #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
-#low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
+#low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 500px 0 0; visibility: hidden; }
 #low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 70px; }
 #low-sponsors .b-content .prev,
 #low-sponsors .b-content .next { top: 32px; }
