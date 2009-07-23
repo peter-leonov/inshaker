@@ -74,7 +74,8 @@ class IngredientsProcessor < Barman::Processor
       links.puts "<ul>"
       @goods.each do |name, entity|
         entity = entity[0]
-        links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
+        # links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
+        links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
       end
       links.puts "</ul>"
     end
