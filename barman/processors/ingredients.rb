@@ -105,12 +105,16 @@ class IngredientsProcessor < Barman::Processor
             warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
           end
         end
+        names = read_names(good_dir, good_dir.name)
         
         if good
           @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
           if good != true
             done += 1
             good["group"] = group_dir.name
+            if names
+              good["names"] = names
+            end
             @goods[good_dir.name] = [good]
           end
         end
@@ -118,6 +122,16 @@ class IngredientsProcessor < Barman::Processor
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
     end # indent
+  end
+  
+  def read_names dir, name
+    fname = dir.path + "/names.yaml"
+    if File.exists?(fname) && File.mtime(fname) >= @goods_mtime
+      say "обновляю псевдонимы для «#{name}»"
+      YAML::load(File.open(fname))
+    else
+      nil
+    end
   end
   
   def process_good dir, group, name, brand=nil
