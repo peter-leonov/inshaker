@@ -50,7 +50,7 @@ div#cocktail_ingreds { min-height: 210px; margin-left: 130px; }
 #cocktail_ingreds img { margin: 0 13px 8px 0; width: 60px; height: 60px; }
 
 ul#receipt {
-    list-style-image: url(bg/cocktail/li.png);
+    list-style:decimal;
     font-size: 80%;
     margin-left: 20px;
     margin-top: 12px;
