@@ -2,6 +2,7 @@
 # encoding: utf-8
 require 'barman'
 require 'uri'
+require 'optparse'
 
 class IngredientsProcessor < Barman::Processor
   
@@ -31,6 +32,16 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def run
+    
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Usage: ingredients.ru [options]"
+      
+      opts.on("-f", "--force", "Force update without mtime based cache") do |v|
+        @options[:force] = v
+      end
+    end.parse!
+    
     prepare_dirs
     prepare_goods
     
@@ -70,7 +81,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_goods
-    if File.exists?(Config::DB_JS_GOODS)
+    if File.exists?(Config::DB_JS_GOODS) && !@options[:force]
       @goods_mtime = File.mtime(Config::DB_JS_GOODS)
       @goods = JSON.parse(File.read(Config::DB_JS_GOODS))
     else
