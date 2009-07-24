@@ -1,4 +1,20 @@
 require 'rutils'
+# require 'unicode'
+
+# class String
+#   def downcase
+#      Unicode::downcase(self).force_encoding("utf-8")
+#   end
+#   
+#   def upcase
+#     Unicode::upcase(self).force_encoding("utf-8")
+#   end
+#   
+#   def capitalize
+#     Unicode::capitalize(self).force_encoding("utf-8")
+#   end
+# end
+
 
 class String
   
