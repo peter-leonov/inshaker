@@ -189,21 +189,32 @@ Object.extend(Cocktail,
         return res;
     },
     
-    getByIngredients: function(ingredients, set) {
-        this.rounds = {};
-		if(!set) set = this.cocktails;
-		var res = [];
-		for(var i = 0; i < set.length; i++) {
-			var matches = 0;
-			for(var j = 0; j < set[i].ingredients.length; j++) {
-				for(var k = 0; k < ingredients.length; k++){
-					if(set[i].ingredients[j][0] == ingredients[k]) matches++;
-				}
-			}
-			if(matches > 0) res.push(set[i]);
-		    this.rounds[set[i].name] = set[i].ingredients.length - matches;
-        }
-		return res.sort(this.roundSort).sort(this.lessIngredientsSort);
+	getByIngredients: function (ingredients, cocktails)
+	{
+		this.rounds = {}
+		if (!cocktails)
+			cocktails = this.cocktails
+		
+		var ingredientsNames = {}
+		for (var i = 0; i < ingredients.length; i++)
+			ingredientsNames[ingredients[i].toLowerCase()] = true
+		
+		var res = []
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i],
+				matches = 0
+			
+			var ci = cocktail.ingredients
+			for (var j = 0, jl = ci.length; j < jl; j++)
+				if (ingredientsNames[ci[j][0].toLowerCase()])
+					matches++
+			if (matches > 0)
+				res.push(cocktail)
+			
+			this.rounds[cocktail.name] = jl - matches
+		}
+		return res.sort(this.roundSort).sort(this.lessIngredientsSort)
 	},
 	
 	getByFilters: function(filters, states) {
