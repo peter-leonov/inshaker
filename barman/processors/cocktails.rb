@@ -1,6 +1,7 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
+require 'optparse'
 
 class CocktailsProcessor < Barman::Processor
 
@@ -36,6 +37,16 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def run
+    
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Usage: cocktails.rb [options]"
+      
+      opts.on("-f", "--force", "Force update without mtime based cache") do |v|
+        @options[:force] = v
+      end
+    end.parse!
+    
     prepare_dirs
     prepare_templates
     prepare_cocktails
@@ -61,7 +72,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def prepare_cocktails
-    if File.exists?(Config::DB_JS)
+    if File.exists?(Config::DB_JS) && !@options[:force]
       @cocktails_mtime = File.mtime(Config::DB_JS)
       @cocktails = JSON.parse(File.open(Config::DB_JS).read)
     else

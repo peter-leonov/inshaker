@@ -35,7 +35,7 @@ class IngredientsProcessor < Barman::Processor
     
     @options = {}
     OptionParser.new do |opts|
-      opts.banner = "Usage: ingredients.ru [options]"
+      opts.banner = "Usage: ingredients.rb [options]"
       
       opts.on("-f", "--force", "Force update without mtime based cache") do |v|
         @options[:force] = v
