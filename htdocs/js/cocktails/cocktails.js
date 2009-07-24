@@ -28,6 +28,8 @@ $.onload(
 			
 			searchByName: $('search_by_name'),
 			searchByIngreds: $('search_by_ingreds'),
+			searchByIngredsInput: cssQuery('#search_by_ingreds input')[0],
+			searchByIngredsForm: cssQuery('#search_by_ingreds form')[0],
 			searchByLetter: $('search_by_letter'),
 			
 			tagStrengthArea: $('b_search'),
@@ -85,7 +87,10 @@ $.onload(
 )
 
 <!--# include file="/lib/Widgets/Switcher.js" -->
-<!--# include file="/js/common/autocompleter.js" -->
+<!--# include file="/js/common/nodes-shortcut.js" -->
+<!--# include file="/js/common/class.js" -->
+<!--# include file="/js/common/mvc.js" -->
+<!--# include file="/js/common/autocompleter.new.js" -->
 <!--# include file="/js/cocktails/model.js" -->
 <!--# include file="/js/cocktails/view.js" -->
 <!--# include file="/js/cocktails/controller.js" -->

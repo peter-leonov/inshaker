@@ -20,9 +20,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.initialize = function (viewData, state){
         this.viewData = viewData;
 
-		this.iAutocompleter = new Autocompleter(this.viewData.ingredients, 
-								nodes.searchByIngreds.getElementsByTagName("input")[0],
-								nodes.searchByIngreds.getElementsByTagName("form")[0]);
+		this.completer = new Autocompleter(nodes.searchByIngredsInput) // this.viewData.ingredients
 		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
@@ -89,7 +87,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			else nodes.bigPrev.remClassName(styles.disabled);
 		}
 		
-		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.iAutocompleter.force(this.innerHTML) }, false);
+		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.completer.force(this.innerHTML) }, false);
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
@@ -142,11 +140,13 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			self.controller.onStateChanged(num);
 		}
 		
-		this.iAutocompleter.changeListener = {
-			onSearchConfirmed: function (name) {
-				self.onIngredientAdded(name);
-				self.iAutocompleter.emptyField();
-		}};
+		function changeListener (e)
+		{
+			e.preventDefault()
+			self.onIngredientAdded(nodes.searchByIngredsInput.value)
+			// self.completer.emptyField()
+		}
+		nodes.searchByIngredsForm.addEventListener('submit', changeListener, false)
 		
 		nodes.spotlighted.href = decorationParams.spotlighted[1]
 		nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
