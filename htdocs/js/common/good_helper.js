@@ -22,7 +22,7 @@ var GoodHelper = {
 				var name = cartData.cocktails[i][0];
 				cartData.cocktails[i][0] = Cocktail.getByName(name);
 			}
-		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred][0];
+		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred];
         return cartData;
     },
 
@@ -94,7 +94,7 @@ var GoodHelper = {
 	},
 	
 	getIngredText: function(name){
-		var brand = goods[name][0].brand || "";
+		var brand = goods[name].brand || "";
 		if(brand.indexOf(name) > -1) name = "";
 		var gap = "";
 		if(brand && name) gap = " ";

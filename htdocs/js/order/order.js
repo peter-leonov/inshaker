@@ -86,8 +86,8 @@ $.onload(function(){
 				var bottles = _goods[name].bottles;
         	    for(id in bottles){
 					var txt = "<li>" + GoodHelper.getIngredText(name);
-					if(GoodHelper.isBottled(goods[name][0])){
-			            txt += " (" + bottles[id].vol[0] + " " + GoodHelper.pluralTxt(bottles[id].vol[0], goods[name][0].unit);
+					if(GoodHelper.isBottled(goods[name])){
+			            txt += " (" + bottles[id].vol[0] + " " + GoodHelper.pluralTxt(bottles[id].vol[0], goods[name].unit);
 			            txt += ")";
 			        }
 					txt += " - " + bottles[id].count + " " + GoodHelper.pluralTxt(bottles[id].count, "штуки");

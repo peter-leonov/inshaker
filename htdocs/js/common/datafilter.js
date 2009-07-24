@@ -17,10 +17,10 @@ var DataFilter = {
 				var ingred = cocktail.ingredients[j][0];
 				
 				if(goods[ingred]) {
-					var dose = this._parseDose(goods[ingred][0].unit, cocktail.ingredients[j][1]);
+					var dose = this._parseDose(goods[ingred].unit, cocktail.ingredients[j][1]);
 					if(!res[ingred]) {
 						res[ingred] = {};
-						res[ingred].good = goods[ingred][0];
+						res[ingred].good = goods[ingred];
 						res[ingred].bottles = {};
 						res[ingred].dose = 0;
 					}

@@ -73,8 +73,6 @@ class IngredientsProcessor < Barman::Processor
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
       @goods.each do |name, entity|
-        entity = entity[0]
-        # links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
         links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
       end
       links.puts "</ul>"
@@ -115,7 +113,7 @@ class IngredientsProcessor < Barman::Processor
             if names
               good["names"] = names
             end
-            @goods[good_dir.name] = [good]
+            @goods[good_dir.name] = good
           end
         end
       end

@@ -62,8 +62,8 @@ Object.extend(Ingredient,
             var cName    = cocktails[i].name;
             var cIngreds = cocktails[i].ingredients;
             for(var j = 0; j < cIngreds.length; j++){
-                if(this.rounds[cIngreds[j][0]] > cRounds[cName])
-                    this.rounds[cIngreds[j][0]] = cRounds[cName];
+                if(this.rounds[cIngreds[j]] > cRounds[cName])
+                    this.rounds[cIngreds[j]] = cRounds[cName];
             }
         }
         return this.rounds;

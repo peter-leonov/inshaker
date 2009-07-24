@@ -62,9 +62,10 @@ Object.extend(Cocktail,
 
 	initialize: function (db){
         for (var i = 0; i < this.methods.length; i++) this.dictMethods[this.methods[i]] = [];
-
+		
+		var ai = this.ingredients, seen = {}
+		
 		var i = 0;
-    
 		for (var k in db){
 			var cocktail = new Cocktail(db[k]);
 			this.names[i] = cocktail.name;
@@ -74,9 +75,15 @@ Object.extend(Cocktail,
             var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
             this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
             
-			var ingreds = cocktail.ingredients;
-			for(var j = 0; j < ingreds.length; j++) {
-				if(this.ingredients.indexOf(ingreds[j][0]) == -1) this.ingredients.push(ingreds[j][0])
+			var ci = cocktail.ingredients
+			for (var j = 0; j < ci.length; j++)
+			{
+				var ingr = ci[j][0]
+				if (!seen[ingr])
+				{
+					seen[ingr] = true
+					ai.push(ingr)
+				}
 			}
 			
 			var letter = cocktail.name.substr(0,1).toLowerCase();

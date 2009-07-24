@@ -202,10 +202,10 @@ var Printer = {
 		var txt = GoodHelper.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
-		if(GoodHelper.isBottled(goods[name][0])){
+		if(GoodHelper.isBottled(goods[name])){
             var span = document.createElement("span");
-            var spanTxt = "(" + GoodHelper.bottleTxt(name, goods[name][0].unit, bottle.vol[0]);
-            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], goods[name][0].unit);
+            var spanTxt = "(" + GoodHelper.bottleTxt(name, goods[name].unit, bottle.vol[0]);
+            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], goods[name].unit);
             spanTxt += ")";
             span.className = "bottle";
             span.innerHTML = spanTxt;

@@ -149,7 +149,7 @@ var Controller = {
 	},
 	
 	renderPopup: function(ingred){
-		var good = Model.goods[ingred][0];
+		var good = Model.goods[ingred];
 		
 		$('good_name').innerHTML = good.brand || ingred;
 		if(good.mark){ // branded
