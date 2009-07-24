@@ -4,7 +4,7 @@ var Model = {
 	dataListener: null,
 	
 	init: function(){
-		this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
+		// this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
 	},
 	
 	uniqueLetters: function(){
