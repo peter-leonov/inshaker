@@ -68,13 +68,13 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def prepare_templates
-    @cocktail_renderer = ERB.new(File.open(Config::COCKTAIL_ERB).read)
+    @cocktail_renderer = ERB.new(File.read(Config::COCKTAIL_ERB))
   end
   
   def prepare_cocktails
     if File.exists?(Config::DB_JS) && !@options[:force]
       @cocktails_mtime = File.mtime(Config::DB_JS)
-      @cocktails = JSON.parse(File.open(Config::DB_JS).read)
+      @cocktails = JSON.parse(File.read(Config::DB_JS))
     else
       @cocktails_mtime = Time.at(0)
     end
@@ -136,8 +136,8 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
     
-    parse_about_text  File.open(dir.path + "/about.txt").read
-    parse_legend_text File.open(dir.path + "/legend.txt").read
+    parse_about_text  File.read(dir.path + "/about.txt")
+    parse_legend_text File.read(dir.path + "/legend.txt")
     
     @cocktails[@cocktail["name"]] = @cocktail
     
