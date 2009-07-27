@@ -12,7 +12,8 @@ Me.prototype.extend
 	},
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
-	setCount: function (count) { this.model.count = count }
+	setCount: function (v) { this.model.count = v },
+	setInstant: function (v) { this.view.instant = v }
 })
 
 // Me.mixIn(EventDriven)
@@ -76,8 +77,11 @@ Me.View.prototype.extend
 				if (this.active)
 				{
 					controller.goEnter(targ.value)
-					e.preventDefault()
-					e.stopPropagation()
+					if (!this.instant)
+					{
+						e.preventDefault()
+						e.stopPropagation()
+					}
 				}
 			break
 			
