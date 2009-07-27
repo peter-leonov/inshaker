@@ -41,10 +41,8 @@ Me.View.prototype.extend
 		main.parentNode.appendChild(list)
 		
 		var me = this
-		function key (e) { me.onKeyPress(e) }
-		// main.addEventListener('keypress', key, false)
-		main.addEventListener('keydown', key, false)
 		main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
+		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
 		list.addEventListener('mousedown', function (e) { me.onMouseDown(e) }, false)
 		list.addEventListener('mousemove', function (e) { me.onMouseMove(e) }, false)
 	},
