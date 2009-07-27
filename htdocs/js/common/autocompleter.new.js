@@ -19,8 +19,8 @@ Me.prototype.extend
 
 eval(NodesShortcut())
 
-var VK_TAB = 9, VK_ENTER = 13, VK_ESC = 27, VK_PGUP = 33, VK_PGDN = 34, VK_END = 35, VK_HOME = 36,
-	VK_LEFT = 37, VK_UP = 38, VK_RIGHT = 39, VK_DOWN = 40
+var VK_TAB = 9, VK_ENTER = 13, VK_ESC = 27, VK_PGUP = 33, VK_PGDN = 34, VK_END = 35,
+	VK_HOME = 36, VK_LEFT = 37, VK_UP = 38, VK_RIGHT = 39, VK_DOWN = 40
 
 Me.View.prototype.extend
 ({
@@ -297,10 +297,11 @@ Me.Controller.prototype.extend
 
 Me.Model.prototype.extend
 ({
+	count: 10,
 	search: function (value)
 	{
 		var ds = this.dataSource
-		return ds ? ds.searchSubstr(value, this.count) : []
+		return ds ? ds.search(value, this.count) : []
 	}
 })
 
