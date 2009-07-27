@@ -86,6 +86,8 @@ $.onload(
 	}
 )
 
+Element.prototype.removeClassName = Element.prototype.remClassName
+
 <!--# include file="/lib/Widgets/Switcher.js" -->
 <!--# include file="/js/common/nodes-shortcut.js" -->
 <!--# include file="/js/common/class.js" -->
