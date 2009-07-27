@@ -16,12 +16,8 @@ ME.prototype.extend
 		controller.model = model
 		model.parent = view.parent = controller.parent = this
 		
-		this.bind.apply(this, arguments)
-		
 		return this
-	},
-	
-	bind: function () {}
+	}
 })
 
 ME.Model = Class(myName + '.Model')
@@ -30,7 +26,7 @@ ME.Controller = Class(myName + '.Controller')
 
 ME.create = function (name)
 {
-	var widget = Class(name, ME)
+	var widget = Class(name, this)
 	widget.Model = Class(name + '.Model', this.Model)
 	widget.View = Class(name + '.View', this.View)
 	widget.Controller = Class(name + '.Controller', this.Controller)
