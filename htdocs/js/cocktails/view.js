@@ -41,7 +41,9 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			}
 		}
 		
-		this.completer = new Autocompleter().bind(nodes.searchByIngredsInput).setDataSource(searcher)
+		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
+		completer.setDataSource(searcher)
+		completer.setInstant(true)
 		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
@@ -108,7 +110,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			else nodes.bigPrev.remClassName(styles.disabled);
 		}
 		
-		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.completer.force(this.innerHTML) }, false);
+		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
@@ -163,9 +165,10 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		
 		function changeListener (e)
 		{
+			var input = nodes.searchByIngredsInput
 			e.preventDefault()
-			self.onIngredientAdded(nodes.searchByIngredsInput.value)
-			// self.completer.emptyField()
+			self.onIngredientAdded(input.value)
+			input.value = ''
 		}
 		nodes.searchByIngredsForm.addEventListener('submit', changeListener, false)
 		
