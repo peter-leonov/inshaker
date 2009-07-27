@@ -134,8 +134,8 @@ label{display:block;}
 #alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
 
 .autocomplete { font-size:12px; position:absolute; background-color:#FFFFFF; color:#000000; border:#000000 solid; border-width:0px 1px 1px 1px; padding:2px; z-index:1; display:none; }
-.autocomplete div{cursor:pointer; width: 100%;}
-.autocomplete div.hi{background-color:#cede97;}
+.autocomplete .item { cursor:pointer; width: 100%; }
+.autocomplete .item.selected { background-color:#cede97; }
 .search-error{display:none;height:12px;}
 
 #cocktails-page .ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}

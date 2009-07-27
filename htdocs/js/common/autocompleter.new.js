@@ -37,7 +37,7 @@ Me.View.prototype.extend
 		main.setAttribute('autocomplete', 'off')
 		
 		var list = this.nodes.list = N('ul')
-		list.className = 'completition'
+		list.className = 'autocomplete'
 		main.parentNode.appendChild(list)
 		
 		var me = this
