@@ -17,10 +17,31 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
-	this.initialize = function (viewData, state){
-        this.viewData = viewData;
-
-		this.completer = new Autocompleter(nodes.searchByIngredsInput) // this.viewData.ingredients
+	this.initialize = function (viewData, state)
+	{
+		this.viewData = viewData
+		
+		var searcher =
+		{
+			set: viewData.ingredients,
+			search: function (substr)
+			{
+				var set = this.set, res = []
+				if (substr !== '')
+				{
+					var rex = new RegExp('(^' + substr + '.*|.+\ ' + substr + '.*(\ |$))', 'i')
+					for (var i = 0, il = set.length; i < il; i++)
+					{
+						var v = set[i]
+						if (rex.test(v))
+							res.push(v)
+					}
+				}
+				return res;
+			}
+		}
+		
+		this.completer = new Autocompleter().bind(nodes.searchByIngredsInput).setDataSource(searcher)
 		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
