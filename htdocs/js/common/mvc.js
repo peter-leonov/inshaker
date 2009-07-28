@@ -12,8 +12,8 @@ ME.prototype.extend
 			controller = this.controller = new this.constructor.Controller()
 		
 		model.view = controller.view = view
-		view.controller = controller
-		controller.model = model
+		model.controller = view.controller = controller
+		view.model = controller.model = model
 		model.parent = view.parent = controller.parent = this
 		
 		return this
