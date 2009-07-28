@@ -24,20 +24,22 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		var searcher =
 		{
 			set: viewData.ingredients,
-			search: function (substr)
+			search: function (substr, count)
 			{
 				var set = this.set, res = []
+				substr = substr.replace(/^\s+|\s+$/g, '') // trim
 				if (substr !== '')
 				{
-					var rex = new RegExp('(^' + substr + '.*|.+\ ' + substr + '.*(\ |$))', 'i')
-					for (var i = 0, il = set.length; i < il; i++)
+					var rex = new RegExp('(^|\\s)' + substr, 'i')
+					for (var i = 0, il = set.length; i < il && count > 0; i++)
 					{
 						var v = set[i]
 						if (rex.test(v))
-							res.push(v)
+							res.push(v),
+							count--
 					}
 				}
-				return res;
+				return res
 			}
 		}
 		
