@@ -240,7 +240,7 @@ Me.Controller.prototype.extend
 	
 	dispatchConfirm: function ()
 	{
-		this.parent.onconfirm({type:'confirm', data: {value:this.selectedValue, selected:this.selected, results:this.results}})
+		return this.parent.onconfirm({type:'confirm', data: {value:this.selectedValue(), selected:this.selected, results:this.results}})
 	},
 	
 	goValue: function (value)
@@ -292,8 +292,9 @@ Me.Controller.prototype.extend
 	{
 		if (this.active)
 		{
-			this.sendSelected()
-			this.dispatchConfirm()
+			if (this.dispatchConfirm() !== false)
+				this.sendSelected()
+			
 			this.end()
 			
 			return this.instant || false
@@ -320,8 +321,8 @@ Me.Controller.prototype.extend
 	itemClicked: function (num)
 	{
 		this.select(num)
-		this.sendSelected()
-		this.dispatchConfirm()
+		if (this.dispatchConfirm() !== false)
+			this.sendSelected()
 		this.end()
 	}
 })
