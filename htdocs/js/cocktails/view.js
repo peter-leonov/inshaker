@@ -45,7 +45,6 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
-		completer.setInstant(true)
 		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
@@ -169,8 +168,10 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		{
 			nodes.searchByIngredsInput.value = ''
 			self.onIngredientAdded(e.data.value)
+			return false // prevents input value blinking in FF
 		}
 		this.completer.onconfirm = changeListener
+		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
 		
 		nodes.spotlighted.href = decorationParams.spotlighted[1]
 		nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)

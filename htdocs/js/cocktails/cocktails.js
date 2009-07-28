@@ -29,6 +29,7 @@ $.onload(
 			searchByName: $('search_by_name'),
 			searchByIngreds: $('search_by_ingreds'),
 			searchByIngredsInput: cssQuery('#search_by_ingreds input')[0],
+			searchByIngredsForm: cssQuery('#search_by_ingreds form')[0],
 			searchByLetter: $('search_by_letter'),
 			
 			tagStrengthArea: $('b_search'),
