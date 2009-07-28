@@ -167,12 +167,10 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		
 		function changeListener (e)
 		{
-			var input = nodes.searchByIngredsInput
-			e.preventDefault()
-			self.onIngredientAdded(input.value)
-			input.value = ''
+			nodes.searchByIngredsInput.value = ''
+			self.onIngredientAdded(e.data.value)
 		}
-		nodes.searchByIngredsForm.addEventListener('submit', changeListener, false)
+		this.completer.onconfirm = changeListener
 		
 		nodes.spotlighted.href = decorationParams.spotlighted[1]
 		nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
