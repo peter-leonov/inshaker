@@ -224,13 +224,18 @@ Me.Controller.prototype.extend
 			return
 		
 		this.selected = num
-		this.selectedValue = num < 0 ? this.value : this.results[num]
 		this.view.selectItem(num)
 	},
 	
 	sendSelected: function ()
 	{
-		this.view.renderVariant(this.selectedValue)
+		this.view.renderVariant(this.selectedValue())
+	},
+	
+	selectedValue: function ()
+	{
+		var selected = this.selected
+		return selected < 0 ? this.value : this.results[selected]
 	},
 	
 	dispatchConfirm: function ()
