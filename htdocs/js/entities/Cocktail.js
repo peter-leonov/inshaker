@@ -93,6 +93,7 @@ Object.extend(Cocktail,
 
             i++;
 		}
+		this.ingredients = ai.sort()
 		this.letters = this.letters.sort();
 	},
 
