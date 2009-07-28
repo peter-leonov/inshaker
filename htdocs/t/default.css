@@ -133,8 +133,8 @@ label{display:block;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
 
-.autocomplete { font-size:12px; position:absolute; background-color:#FFFFFF; color:#000000; border:#000000 solid; border-width:0px 1px 1px 1px; padding:2px; z-index:1; display:none; }
-.autocomplete .item { cursor:pointer; width: 100%; }
+.autocomplete { display: none; font-size: 14px; position: absolute; background-color: #f4f7c2; opacity: 0.9; color: #000; /*border: #000 solid; border-width: 0px 1px 1px 1px;*/ z-index: 1; width: 579px; }
+.autocomplete .item { padding: 2px 0 2px 5px; cursor: pointer; width: 574px; }
 .autocomplete .item.selected { background-color:#cede97; }
 .search-error{display:none;height:12px;}
 
