@@ -14,7 +14,8 @@ Me.prototype.extend
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
 	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
-	setInstant: function (v) { this.view.instant = v }
+	setInstant: function (v) { this.controller.instant = v },
+	onconfirm: function () {}
 })
 
 // Me.mixIn(EventDriven)
@@ -42,7 +43,7 @@ Me.View.prototype.extend
 		var me = this
 		// main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
 		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
-		list.addEventListener('mousedown', function (e) { me.onMouseDown(e) }, false)
+		list.addEventListener('mouseup', function (e) { me.onMouseDown(e) }, false)
 		list.addEventListener('mousemove', function (e) { me.onMouseMove(e) }, false)
 	},
 	
@@ -53,7 +54,7 @@ Me.View.prototype.extend
 		
 		if (action)
 		{
-			if (controller[action]() === false)
+			if (controller[action](targ.value) === false)
 			{
 				e.preventDefault()
 				e.stopPropagation()
@@ -90,13 +91,11 @@ Me.View.prototype.extend
 	
 	renderResults: function (results)
 	{
-		log('renderResults', results)
 		this.updateNodes(results)
 	},
 	
 	show: function ()
 	{
-		log('show')
 		var nodes = this.nodes
 		nodes.main.addClassName('autocompleting')
 		nodes.list.show()
@@ -105,7 +104,6 @@ Me.View.prototype.extend
 	
 	hide: function ()
 	{
-		log('hide')
 		var nodes = this.nodes
 		nodes.main.removeClassName('autocompleting')
 		nodes.list.hide()
@@ -145,7 +143,7 @@ Me.View.prototype.extend
 	{
 		if (this.selected === num)
 			return
-		log('selectItem', num)
+		
 		var node, items = this.nodes.items
 		
 		if ((node = items[this.selected]))
@@ -168,7 +166,6 @@ Me.Controller.prototype.extend
 	
 	reset: function ()
 	{
-		log('results')
 		this.results = []
 		this.selected = -1
 	},
@@ -177,8 +174,8 @@ Me.Controller.prototype.extend
 	{
 		if (this.active)
 			return
-		log('begin')
-		// this.resetSelector()
+		// log('begin')
+		
 		this.active = true
 		this.view.show()
 	},
@@ -187,7 +184,8 @@ Me.Controller.prototype.extend
 	{
 		if (!this.active)
 			return
-		log('end')
+		// log('end')
+		
 		this.active = false
 		this.reset()
 		this.view.hide()
@@ -207,8 +205,6 @@ Me.Controller.prototype.extend
 	
 	selectBy: function (dir)
 	{
-		log('go', dir)
-		
 		var total = this.results.length,
 			selected = this.selected
 		
@@ -219,26 +215,28 @@ Me.Controller.prototype.extend
 		else if (selected >= total)
 			selected = -1
 		
-		log(selected)
+		this.select(selected)
+	},
+	
+	select: function (num)
+	{
+		if (this.selected === num)
+			return
 		
-		this.selected = selected
-		this.view.selectItem(selected)
-		this.sendSelected()
-		// this.updateValue(value)
+		this.selected = num
+		this.selectedValue = num < 0 ? this.value : this.results[num]
+		this.view.selectItem(num)
 	},
 	
 	sendSelected: function ()
 	{
-		var selected = this.selected
-		this.view.renderVariant(selected < 0 ? this.value : this.results[selected])
+		this.view.renderVariant(this.selectedValue)
 	},
 	
-	// updateValue: function (value)
-	// {
-	// 	this.lastValue = value
-	// 	this.view.renderVariant(value)
-	// 	// this.parent.dispatchEvent({type:'modelChanged', value:value})
-	// },
+	dispatchConfirm: function ()
+	{
+		this.parent.onconfirm({type:'confirm', data: {value:this.selectedValue, selected:this.selected, results:this.results}})
+	},
 	
 	goValue: function (value)
 	{
@@ -255,73 +253,71 @@ Me.Controller.prototype.extend
 		}
 	},
 	
-	goEscape: function ()
+	goUp: function (value)
 	{
-		// this.updateValue(this.value)
-		this.view.renderVariant(this.value)
-		this.end()
-	},
-	
-	goEnter: function ()
-	{
-		if (this.active)
-		{
-			// this.updateValue(this.results[this.selected] || this.value)
-			this.view.renderVariant(this.results[this.selected] || this.value)
-			this.end()
-			
-			return !this.instant
-		}
-	},
-	
-	goBlur: function ()
-	{
-		// this.resetSelector()
-	},
-	
-	goUp: function ()
-	{
-		log('goUp')
 		if (this.active)
 		{
 			this.selectBy(-1)
+			this.sendSelected()
 			return false // drop an event
 		}
 	},
 	
-	goDown: function ()
+	goDown: function (value)
 	{
-		log('goDown')
 		if (this.active)
 		{
 			this.selectBy(1)
+			this.sendSelected()
 		}
 		else
 		{
-			this.begin()
-			this.search()
+			this.value = value
+			if (value !== '')
+			{
+				this.begin()
+				this.search()
+			}
 		}
 		
 		return false // drop an event
 	},
 	
+	goEnter: function (value)
+	{
+		if (this.active)
+		{
+			this.sendSelected()
+			this.dispatchConfirm()
+			this.end()
+			
+			return this.instant || false
+		}
+	},
+	
+	goEscape: function (value)
+	{
+		this.view.renderVariant(this.value)
+		this.end()
+	},
+	
+	goBlur: function ()
+	{
+		this.view.renderVariant(this.value)
+		this.end()
+	},
+	
 	itemHovered: function (num)
 	{
-		if (this.selected != num)
-		{
-			this.selected = num
-			// this.value = this.results[num]
-			this.view.selectItem(num)
-		}
+		this.select(num)
 	},
 	
 	itemClicked: function (num)
 	{
-		this.selected = num
-		this.value = this.results[num]
-		// this.view.selectItem(num)
-		// this.updateValue(this.value)
-		// this.resetSelector()
+		this.select(num)
+		this.sendSelected()
+		this.dispatchConfirm()
+		this.end()
 	}
 })
 
@@ -330,7 +326,6 @@ Me.Model.prototype.extend
 	setCount: function (v) { this.count = v },
 	search: function (value)
 	{
-		// log('search')
 		var ds = this.dataSource
 		this.controller.setResults(ds ? ds.search(value, this.count) : [])
 	}
