@@ -30,7 +30,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 				substr = substr.replace(/^\s+|\s+$/g, '') // trim
 				if (substr !== '')
 				{
-					var rex = new RegExp('(^|\\s)' + substr, 'i')
+					var rex = new RegExp('(^|\\s)' + substr + '.', 'i')
 					for (var i = 0, il = set.length; i < il && count > 0; i++)
 					{
 						var v = set[i]
