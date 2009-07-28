@@ -5,14 +5,15 @@ var Me = self[myName] = MVC.create(myName)
 
 Me.prototype.extend
 ({
-	bind: function (main)
+	bind: function (main, count)
 	{
 		this.view.bind({main:main})
+		this.setCount(count === undefined ? 10 : count)
 		return this
 	},
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
-	setCount: function (v) { this.model.count = v },
+	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
 	setInstant: function (v) { this.view.instant = v }
 })
 
@@ -20,15 +21,12 @@ Me.prototype.extend
 
 eval(NodesShortcut())
 
-var VK_TAB = 9, VK_ENTER = 13, VK_ESC = 27, VK_PGUP = 33, VK_PGDN = 34, VK_END = 35,
-	VK_HOME = 36, VK_LEFT = 37, VK_UP = 38, VK_RIGHT = 39, VK_DOWN = 40
-
 Me.View.prototype.extend
 ({
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.chache = {}
+		this.keyMap = {38:'goUp', 40:'goDown', 13:'goEnter', 27:'goEscape'}
 	},
 	
 	bind: function (nodes)
@@ -42,7 +40,7 @@ Me.View.prototype.extend
 		main.parentNode.appendChild(list)
 		
 		var me = this
-		main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
+		// main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
 		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
 		list.addEventListener('mousedown', function (e) { me.onMouseDown(e) }, false)
 		list.addEventListener('mousemove', function (e) { me.onMouseMove(e) }, false)
@@ -50,44 +48,19 @@ Me.View.prototype.extend
 	
 	onKeyPress: function (e)
 	{
-		var targ = e.target
-		var controller = this.controller
+		var targ = e.target, controller = this.controller,
+			action = this.keyMap[e.keyCode]
 		
-		switch (e.keyCode)
+		if (action)
 		{
-			case VK_UP:
-				controller.goUp(targ.value)
+			if (controller[action]() === false)
+			{
 				e.preventDefault()
 				e.stopPropagation()
-			break
-			
-			case VK_DOWN:
-				controller.goDown(targ.value)
-				e.preventDefault()
-				e.stopPropagation()
-			break
-			
-			case VK_ESC:
-				controller.goEscape(targ.value)
-				e.preventDefault()
-				e.stopPropagation()
-			break
-			
-			case VK_ENTER:
-				if (this.active)
-				{
-					controller.goEnter(targ.value)
-					if (!this.instant)
-					{
-						e.preventDefault()
-						e.stopPropagation()
-					}
-				}
-			break
-			
-			default:
-				setTimeout(function () { controller.valueUpdated(targ.value) }, 1)
+			}
 		}
+		else
+			setTimeout(function () { controller.goValue(targ.value) }, 1)
 	},
 	
 	onBlur: function (e)
@@ -97,14 +70,17 @@ Me.View.prototype.extend
 	
 	onMouseMove: function (e)
 	{
-		var index = Array.copy(this.nodes.list.childNodes).indexOf(e.target)
-		this.controller.itemHovered(index)
+		this.controller.itemHovered(this.nodes.items.indexOf(e.target))
 	},
 	
 	onMouseDown: function (e)
 	{
-		var index = Array.copy(this.nodes.list.childNodes).indexOf(e.target)
-		this.controller.itemClicked(index)
+		this.controller.itemClicked(this.nodes.items.indexOf(e.target))
+	},
+	
+	setCount: function (count)
+	{
+		this.createItemsNodes(count)
 	},
 	
 	renderVariant: function (str)
@@ -112,65 +88,73 @@ Me.View.prototype.extend
 		this.nodes.main.value = str
 	},
 	
-	renderResults: function (valsSet)
+	renderResults: function (results)
 	{
-		this.updateNodes(valsSet)
-		valsSet.length ? this.show() : this.hide()
+		log('renderResults', results)
+		this.updateNodes(results)
 	},
 	
 	show: function ()
 	{
-		var main = this.nodes.main
-		var list = this.nodes.list
-		
-		list.style.top = (main.offsetTop + main.offsetHeight) + 'px'
-		list.style.width = (main.offsetWidth - 2) + 'px'
-		
-		list.show()
-		
+		log('show')
+		var nodes = this.nodes
+		nodes.main.addClassName('autocompleting')
+		nodes.list.show()
 		this.active = true
 	},
 	
 	hide: function ()
 	{
-		this.nodes.list.hide()
-		
+		log('hide')
+		var nodes = this.nodes
+		nodes.main.removeClassName('autocompleting')
+		nodes.list.hide()
 		this.active = false
 	},
 	
-	updateNodes: function (valsSet)
+	createItemsNodes: function (count)
 	{
-		var list = this.nodes.list
+		var list = this.nodes.list, items = this.nodes.items = []
 		list.empty()
-		for (var i = 0; i < valsSet.length; i++)
+		for (var i = 0; i < count; i++)
 		{
-			var val = valsSet[i]
-			var item = this.chache[val]
-			if (!item)
-			{
-				var item = N('li')
-				item.className = 'item'
-				item.appendChild(T(val))
-				this.chache[val] = item
-			}
+			var item = items[i] = N('li')
+			item.className = 'item'
+			item.hide()
 			list.appendChild(item)
 		}
-		
-		this.selectVariant()
 	},
 	
-	selectVariant: function (num)
+	updateNodes: function (results)
 	{
-		var childs, list
-		if ((list = this.nodes.list) && (childs = Array.copy(list.childNodes)))
+		var items = this.nodes.items
+		for (var i = 0; i < results.length && i < items.length; i++)
 		{
-			for (var i = 0; i < childs.length; i++)
-				childs[i].removeClassName('selected')
-			
-			var node = childs[num]
-			if (node)
-				node.addClassName('selected')
+			var r = results[i],
+				item = items[i]
+			item.empty()
+			item.appendChild(T(r))
+			item.show()
 		}
+		
+		for (; i < items.length; i++)
+			items[i].hide()
+	},
+	
+	selectItem: function (num)
+	{
+		if (this.selected === num)
+			return
+		log('selectItem', num)
+		var node, items = this.nodes.items
+		
+		if ((node = items[this.selected]))
+			node.removeClassName('selected')
+		
+		if ((node = items[num]))
+			node.addClassName('selected')
+		
+		this.selected = num
 	}
 })
 
@@ -178,105 +162,147 @@ Me.Controller.prototype.extend
 ({
 	initialize: function ()
 	{
-		this.vals = []
-		this.value = ''
+		this.reset()
+		this.value = undefined
+	},
+	
+	reset: function ()
+	{
+		log('results')
+		this.results = []
 		this.selected = -1
 	},
 	
-	resetSelector: function ()
+	begin: function ()
 	{
-		this.view.renderResults([])
-		this.vals = []
-		this.value = ''
-		this.selected = -1
+		if (this.active)
+			return
+		log('begin')
+		// this.resetSelector()
+		this.active = true
+		this.view.show()
 	},
 	
-	beginSearch: function (value)
+	end: function ()
 	{
-		this.resetSelector()
+		if (!this.active)
+			return
+		log('end')
+		this.active = false
+		this.reset()
+		this.view.hide()
+	},
+	
+	search: function ()
+	{
+		this.model.search(this.value)
+	},
+	
+	setResults: function (results)
+	{
+		this.results = results
+		this.view.renderResults(results)
+		this.view.selectItem(-1)
+	},
+	
+	selectBy: function (dir)
+	{
+		log('go', dir)
 		
-		var vals = this.model.search(value)
-		if (vals.length == 1 && vals[0] == value)
-			vals.shift()
-		this.view.renderResults(vals)
-		this.vals = vals
-		this.value = value
+		var total = this.results.length,
+			selected = this.selected
+		
+		selected += dir
+		
+		if (selected < -1)
+			selected = total - 1
+		else if (selected >= total)
+			selected = -1
+		
+		log(selected)
+		
+		this.selected = selected
+		this.view.selectItem(selected)
+		this.sendSelected()
+		// this.updateValue(value)
 	},
 	
-	valueUpdated: function (value)
+	sendSelected: function ()
 	{
-		if (this.lastValue != value)
+		var selected = this.selected
+		this.view.renderVariant(selected < 0 ? this.value : this.results[selected])
+	},
+	
+	// updateValue: function (value)
+	// {
+	// 	this.lastValue = value
+	// 	this.view.renderVariant(value)
+	// 	// this.parent.dispatchEvent({type:'modelChanged', value:value})
+	// },
+	
+	goValue: function (value)
+	{
+		if (this.value !== value)
 		{
-			this.lastValue = value
-			this.beginSearch(value)
+			this.value = value
+			if (value !== '')
+			{
+				this.begin()
+				this.search()
+			}
+			else
+				this.end()
 		}
-	},
-	
-	updateValue: function (value)
-	{
-		this.lastValue = value
-		this.view.renderVariant(value)
-		// this.parent.dispatchEvent({type:'modelChanged', value:value})
 	},
 	
 	goEscape: function ()
 	{
-		this.updateValue(this.value)
-		this.resetSelector()
+		// this.updateValue(this.value)
+		this.view.renderVariant(this.value)
+		this.end()
 	},
 	
-	goEnter: function (value)
+	goEnter: function ()
 	{
-		this.updateValue(this.vals[this.selected] || this.value)
-		this.resetSelector()
+		if (this.active)
+		{
+			// this.updateValue(this.results[this.selected] || this.value)
+			this.view.renderVariant(this.results[this.selected] || this.value)
+			this.end()
+			
+			return !this.instant
+		}
 	},
 	
 	goBlur: function ()
 	{
-		this.resetSelector()
+		// this.resetSelector()
 	},
 	
-	goUp: function (value)
+	goUp: function ()
 	{
-		if (!this.vals.length)
-		 	return// this.beginSearch(value)
-		
-		switch (--this.selected)
+		log('goUp')
+		if (this.active)
 		{
-			case -1:
-				value = this.value
-			break
-			
-			case -2:
-				this.selected = this.vals.length - 1
-			
-			default:
-				value = this.vals[this.selected]
+			this.selectBy(-1)
+			return false // drop an event
 		}
-		
-		this.view.selectVariant(this.selected)
-		this.updateValue(value)
 	},
 	
-	goDown: function (value)
+	goDown: function ()
 	{
-		if (!this.vals.length)
-			return this.beginSearch(value)
-			
-		
-		switch (++this.selected)
+		log('goDown')
+		if (this.active)
 		{
-			case this.vals.length:
-				this.selected = -1
-				value = this.value
-			break
-			
-			default:
-				value = this.vals[this.selected]
+			this.selectBy(1)
+		}
+		else
+		{
+			this.begin()
+			this.search()
 		}
 		
-		this.view.selectVariant(this.selected)
-		this.updateValue(value)
+		return false // drop an event
 	},
 	
 	itemHovered: function (num)
@@ -284,28 +310,29 @@ Me.Controller.prototype.extend
 		if (this.selected != num)
 		{
 			this.selected = num
-			this.value = this.vals[num]
-			this.view.selectVariant(num)
+			// this.value = this.results[num]
+			this.view.selectItem(num)
 		}
 	},
 	
 	itemClicked: function (num)
 	{
 		this.selected = num
-		this.value = this.vals[num]
-		this.view.selectVariant(num)
-		this.updateValue(this.value)
-		this.resetSelector()
+		this.value = this.results[num]
+		// this.view.selectItem(num)
+		// this.updateValue(this.value)
+		// this.resetSelector()
 	}
 })
 
 Me.Model.prototype.extend
 ({
-	count: 10,
+	setCount: function (v) { this.count = v },
 	search: function (value)
 	{
+		// log('search')
 		var ds = this.dataSource
-		return ds ? ds.search(value, this.count) : []
+		this.controller.setResults(ds ? ds.search(value, this.count) : [])
 	}
 })
 
