@@ -126,7 +126,7 @@ Me.View.prototype.extend
 			var r = results[i],
 				item = items[i]
 			item.empty()
-			item.appendChild(T(r))
+			item.appendChild(r[1]) // [1] means a text representing node (or DocumentFragment)
 			item.show()
 		}
 		
@@ -231,7 +231,7 @@ Me.Controller.prototype.extend
 	selectedValue: function ()
 	{
 		var selected = this.selected
-		return selected < 0 ? this.value : this.results[selected]
+		return selected < 0 ? this.value : this.results[selected][0] // [0] means a text value
 	},
 	
 	dispatchConfirm: function ()
