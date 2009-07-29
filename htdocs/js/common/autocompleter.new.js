@@ -89,11 +89,6 @@ Me.View.prototype.extend
 		this.nodes.main.value = str
 	},
 	
-	renderResults: function (results)
-	{
-		this.updateNodes(results)
-	},
-	
 	show: function ()
 	{
 		var nodes = this.nodes
@@ -123,7 +118,7 @@ Me.View.prototype.extend
 		}
 	},
 	
-	updateNodes: function (results)
+	renderResults: function (results)
 	{
 		var items = this.nodes.items
 		for (var i = 0; i < results.length && i < items.length; i++)
