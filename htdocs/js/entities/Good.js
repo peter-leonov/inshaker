@@ -7,7 +7,8 @@ Object.extend(Good,
 {
 	initialize: function (db)
 	{
-		var anames = this.names = {}
+		var anames = this.names = [],
+			byName = this.byName = {}
 		
 		for (var k in db)
 		{
@@ -16,10 +17,12 @@ Object.extend(Good,
 				
 			if (names)
 				for (var i = 0; i < names.length; i++)
-					anames[names[i]] = k
+				{
+					var name = names[i]
+					byName[name] = k
+					anames.push(name)
+				}
 		}
-		
-		log(anames)
 	}
 })
 
