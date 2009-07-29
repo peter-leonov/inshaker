@@ -94,5 +94,6 @@ Element.prototype.removeClassName = Element.prototype.remClassName
 <!--# include file="/js/common/mvc.js" -->
 <!--# include file="/js/common/autocompleter.new.js" -->
 <!--# include file="/js/cocktails/model.js" -->
+<!--# include file="/js/cocktails/searcher.js" -->
 <!--# include file="/js/cocktails/view.js" -->
 <!--# include file="/js/cocktails/controller.js" -->
