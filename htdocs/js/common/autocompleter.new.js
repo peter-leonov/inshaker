@@ -169,6 +169,7 @@ Me.Controller.prototype.extend
 	{
 		this.results = []
 		this.selected = -1
+		this.value = ''
 	},
 	
 	begin: function ()
