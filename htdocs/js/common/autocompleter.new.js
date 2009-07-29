@@ -308,14 +308,20 @@ Me.Controller.prototype.extend
 	
 	goEscape: function (value)
 	{
-		this.view.renderVariant(this.value)
-		this.end()
+		if (this.active)
+		{
+			this.view.renderVariant(this.value)
+			this.end()
+		}
 	},
 	
 	goBlur: function ()
 	{
-		this.view.renderVariant(this.value)
-		this.end()
+		if (this.active)
+		{
+			this.view.renderVariant(this.value)
+			this.end()
+		}
 	},
 	
 	itemHovered: function (num)
