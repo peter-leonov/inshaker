@@ -8,7 +8,7 @@ Me.prototype.extend
 	bind: function (main, count)
 	{
 		this.view.bind({main:main})
-		this.setCount(count === undefined ? 10 : count)
+		this.setCount(count === undefined ? 15 : count)
 		return this
 	},
 	
@@ -41,10 +41,8 @@ Me.View.prototype.extend
 		main.parentNode.appendChild(list)
 		
 		var me = this
-		// main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
+		main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
 		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
-		list.addEventListener('mouseup', function (e) { me.onMouseDown(e) }, false)
-		list.addEventListener('mousemove', function (e) { me.onMouseMove(e) }, false)
 	},
 	
 	onKeyPress: function (e)
@@ -69,14 +67,14 @@ Me.View.prototype.extend
 		this.controller.goBlur()
 	},
 	
-	onMouseMove: function (e)
+	onMouseMove: function (node, e)
 	{
-		this.controller.itemHovered(this.nodes.items.indexOf(e.target))
+		this.controller.itemHovered(node.num)
 	},
 	
-	onMouseDown: function (e)
+	onMouseDown: function (node, e)
 	{
-		this.controller.itemClicked(this.nodes.items.indexOf(e.target))
+		this.controller.itemClicked(node.num)
 	},
 	
 	setCount: function (count)
@@ -109,12 +107,20 @@ Me.View.prototype.extend
 	{
 		var list = this.nodes.list, items = this.nodes.items = []
 		list.empty()
+		
+		var me = this
+		function mouseup (e) { me.onMouseDown(this, e) }
+		function mousemove (e) { me.onMouseMove(this, e) }
+		
 		for (var i = 0; i < count; i++)
 		{
 			var item = items[i] = N('li')
 			item.className = 'item'
 			item.hide()
 			list.appendChild(item)
+			item.num = i
+			item.addEventListener('mouseup', mouseup, false)
+			item.addEventListener('mousemove', mousemove, false)
 		}
 	},
 	
