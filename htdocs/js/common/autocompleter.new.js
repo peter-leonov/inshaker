@@ -111,7 +111,7 @@ Me.View.prototype.extend
 		list.empty()
 		
 		var me = this
-		function mouseup (e) { me.onMouseDown(this, e) }
+		function mousedown (e) { me.onMouseDown(this, e) }
 		function mousemove (e) { me.onMouseMove(this, e) }
 		
 		for (var i = 0; i < count; i++)
@@ -121,7 +121,7 @@ Me.View.prototype.extend
 			item.hide()
 			list.appendChild(item)
 			item.num = i
-			item.addEventListener('mouseup', mouseup, false)
+			item.addEventListener('mousedown', mousedown, false)
 			item.addEventListener('mousemove', mousemove, false)
 		}
 	},
