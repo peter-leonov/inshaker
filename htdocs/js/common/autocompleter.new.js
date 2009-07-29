@@ -27,7 +27,7 @@ Me.View.prototype.extend
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.keyMap = {38:'goUp', 40:'goDown', 13:'goEnter', 27:'goEscape'}
+		this.keyMap = {38:'goUp', 40:'goDown', 37:false, 39:false, 16:false, 17:false, 18:false, 91:false, 13:'goEnter', 27:'goEscape'}
 	},
 	
 	bind: function (nodes)
@@ -49,8 +49,10 @@ Me.View.prototype.extend
 	{
 		var targ = e.target, controller = this.controller,
 			action = this.keyMap[e.keyCode]
-		
-		if (action)
+		// alert(e.keyCode)
+		if (action === false)
+			return
+		else if (action)
 		{
 			if (controller[action](targ.value) === false)
 			{
