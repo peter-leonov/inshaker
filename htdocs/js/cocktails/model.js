@@ -17,6 +17,8 @@ function CocktailsModel (states, view) {
 	this.initialize = function(filters) {
 		this.filters = this.completeFilters(filters);
         var viewData = copyProperties(Cocktail, ["tags", "strengths", "methods", "letters", "ingredients"]); 
+		viewData.names = Good.names
+		viewData.byName = Good.byName
 		view.initialize(viewData, this.filters.state);
 		this.applyFilters();
 	};
