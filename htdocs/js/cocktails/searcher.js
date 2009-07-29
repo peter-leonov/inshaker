@@ -32,7 +32,7 @@ Me.prototype.extend
 	searchInSet: function (set, names, substr, count)
 	{
 		var rex = new RegExp('(^|.*\\s)((' + substr + ')(.*?))(\\s.*|$)', 'i'),
-			matches = [], res = [], slen = substr.length
+			matches = [], res = []
 		
 		for (var i = 0, il = set.length; i < il; i++)
 		{
@@ -40,7 +40,8 @@ Me.prototype.extend
 			if (m = rex.exec(v))
 			{
 				// log(m)
-				matches.push([(10000 * m[2].length / slen) + (100 * m[1].length) + v.length, v, m])
+				// matches.push([(10000 * m[2].length) + (100 * m[1].length) + v.length, v, m])
+				matches.push([m[2].length, v, m])
 			}
 		}
 		
