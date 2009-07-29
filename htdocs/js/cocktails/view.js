@@ -21,22 +21,37 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	{
 		this.viewData = viewData
 		
+		eval(NodesShortcut())
+		
 		var searcher =
 		{
 			set: viewData.ingredients,
+			cache: {},
 			search: function (substr, count)
 			{
-				var set = this.set, res = []
+				var set = this.set, cache = this.cache, res = []
 				substr = substr.replace(/^\s+|\s+$/g, '') // trim
 				if (substr !== '')
 				{
-					var rex = new RegExp('(^|\\s)' + substr + '.', 'i')
-					for (var i = 0, il = set.length; i < il && count > 0; i++)
+					if (cache[substr])
+						res = cache[substr]
+					else
 					{
-						var v = set[i]
-						if (rex.test(v))
-							res.push(v),
-							count--
+						var rex = new RegExp('(^|.*\\s)(' + substr + ')(.*)', 'i')
+						for (var i = 0, il = set.length; i < il && count > 0; i++)
+						{
+							var m, v = set[i]
+							if (m = rex.exec(v))
+							{
+								var text = N('span')
+								text.appendChild(T(m[1]))
+								text.appendChild(N('span', 'substr', m[2]))
+								text.appendChild(T(m[3]))
+								res.push([v, text])
+								count--
+							}
+						}
+						cache[substr] = res
 					}
 				}
 				return res
