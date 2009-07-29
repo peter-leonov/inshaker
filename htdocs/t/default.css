@@ -135,7 +135,7 @@ label{display:block;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
 
-.autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; /*top: 22px;*/ background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
+.autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 .autocomplete .item.selected { background-color:#cede97; }
 .search-error{display:none;height:12px;}

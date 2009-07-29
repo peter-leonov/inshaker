@@ -1,5 +1,6 @@
 <!--# include file="/t/css/ie.css" -->
 .win-shop .main{zoom:1;}
+#cocktails-page .search-form {z-index:1;}
 #cocktails-page .search-form input { height: 22px; line-height: 22px; position:absolute}
 #cocktail-page .hreview button.bt-view-how{float:left;}
 #cocktail-page .b-content .entry{width:356px;}

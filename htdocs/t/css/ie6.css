@@ -48,6 +48,7 @@ body{height:100%;}
 body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
 #cocktails-page #top { left: -9px; }
+#cocktails-page .search-form {z-index:1;}
 #cocktails-page .search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
 #cocktails-page .pager-big .prev {background-position-x:-32px}
 #cocktails-page .b-content .pager .prev,
