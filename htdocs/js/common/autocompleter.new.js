@@ -198,6 +198,7 @@ Me.Controller.prototype.extend
 	
 	setResults: function (results)
 	{
+		this.selected = -1
 		this.results = results
 		this.view.renderResults(results)
 		this.view.selectItem(-1)
