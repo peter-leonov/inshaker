@@ -31,32 +31,48 @@ Me.prototype.extend
 	
 	searchInSet: function (set, names, substr, count)
 	{
-		var rex = new RegExp('(^|.*\\s)(' + substr + ')(.*)', 'i'),
-			res = []
+		var rex = new RegExp('(^|.*\\s)((' + substr + ')(.*?))(\\s.*|$)', 'i'),
+			matches = [], res = [], slen = substr.length
 		
-		for (var i = 0, il = set.length; i < il && count > 0; i++)
+		for (var i = 0, il = set.length; i < il; i++)
 		{
-			var m, name, v = set[i]
+			var m, v = set[i]
 			if (m = rex.exec(v))
 			{
-				var text = N('span')
-				text.appendChild(T(m[1]))
-				// m[2] is used instead of substr because m[2] != substr when searching with "i"
-				text.appendChild(N('span', 'substr', m[2]))
-				text.appendChild(T(m[3]))
-				var name = names[v]
-				if (name)
-				{
-					text.appendChild(T(' — это «' + name + '»'))
-					v = name
-				}
-				res.push([v, text])
-				count--
+				// log(m)
+				matches.push([(10000 * m[2].length / slen) + (100 * m[1].length) + v.length, v, m])
 			}
 		}
 		
+		matches = matches.sort(this.sortByWeight)
+		
+		for (var i = 0, il = matches.length; i < il && count-- > 0; i++)
+		{
+			var v = matches[i], m = v[2]
+			
+			var text = N('span')
+			if (m[1])
+				text.appendChild(T(m[1]))
+			// m[2] is used instead of substr because m[2] != substr when searching with "i"
+			text.appendChild(N('span', 'substr', m[3]))
+			if (m[3])
+				text.appendChild(T(m[4] + m[5]))
+			
+			v = v[1]
+			var name = names[v]
+			if (name)
+			{
+				text.appendChild(T(' — это «' + name + '»'))
+				v = name
+			}
+			
+			res[i] = [v, text]
+		}
+		
 		return res
-	}
+	},
+	
+	sortByWeight: function (a, b) { return a[0] - b[0] }
 })
 
 })();
