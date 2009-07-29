@@ -319,7 +319,7 @@ Me.Controller.prototype.extend
 	{
 		if (this.active)
 		{
-			this.view.renderVariant(this.value)
+			this.sendSelected()
 			this.end()
 		}
 	},
