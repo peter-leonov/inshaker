@@ -1,4 +1,4 @@
-#!/opt/ruby1.9/bin/ruby -W0 -E utf-8:utf-8
+#!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
 require 'uri'
