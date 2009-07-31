@@ -205,18 +205,18 @@ function CalculatorView() {
 			
 			var newIngredients = []
 			var sum = 0;
-		    
-			var inames = []; for(var name in cartData.goods) inames.push(name); inames.sort(Ingredient.sortByGroups)
+			var inames = []; for(var name in cartData.goods) inames.push(name); //inames.sort(Ingredient.sortByGroups)
             for(var i = 0; i < inames.length; i++){
 				var name = inames[i];
                 var item = cartData.goods[name];
 				var bottles = cartData.goods[name].bottles;
 				for(var id in bottles){
-					sum += Math.roundPrecision(bottles[id].vol[1]*bottles[id].count,2);
+					sum += bottles[id].vol[1] * bottles[id].count;
 					var ingredElem = this._createIngredientElement(item, bottles[id], name);
 					newIngredients.push(ingredElem);
 				}
 			}
+			sum = Math.roundPrecision(sum,2)
 			// from util.js
 			mergeIngredientsNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
