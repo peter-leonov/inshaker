@@ -8,13 +8,17 @@ Object.extend(Good,
 	initialize: function (db)
 	{
 		var anames = this.names = [],
-			byName = this.byName = {}
+			byName = this.byName = {},
+			byMark = this.byMark = {}
 		
 		for (var k in db)
 		{
 			var good = db[k],
-				names = good.names
-				
+				names = good.names,
+				mark = good.mark
+			
+			good.name = k
+			
 			if (names)
 				for (var i = 0; i < names.length; i++)
 				{
@@ -22,7 +26,29 @@ Object.extend(Good,
 					byName[name] = k
 					anames.push(name)
 				}
+			
+			if (mark)
+			{
+				var arr
+				if ((arr = byMark[mark]))
+					arr.push(good)
+				else
+					byMark[mark] = [good]
+			}
 		}
+		
+		this.db = db
+	},
+	
+	getByMark: function (mark) { return this.byMark[mark] },
+	
+	ingredientsLinkByMark: function (mark)
+	{
+		var res = [], ingreds = this.getByMark(mark)
+		for (var i = 0; i < ingreds.length; i++)
+			res[i] = encodeURIComponent(ingreds[i].name)
+		
+		return "/cocktails.html#state=byIngredients&ingredients=" + res.join(",")
 	}
 })
 
