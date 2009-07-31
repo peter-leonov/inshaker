@@ -109,8 +109,9 @@ var DataFilter = {
 		}
 		
 		for(var i = 0; i < volumes.length; i++){
-			if(answer[volumes[i][0]])
-				answer[volumes[i][0]].vol = volumes[i];
+			var volume = volumes[i], val = volume[0]
+			if(answer[val])
+				answer[val].vol = volume;
 		}
 		
 		return answer
