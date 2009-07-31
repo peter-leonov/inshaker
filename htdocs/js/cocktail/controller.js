@@ -155,7 +155,7 @@ var Controller = {
 		if(good.mark){ // branded
 			$('good_composition').style.display = "block";
 			$('good_mark').innerHTML = good.mark;
-            $('good_mark').href = GoodHelper.ingredientsLinkByMark(good.mark);
+            $('good_mark').href = Good.ingredientsLinkByMark(good.mark);
 			$('good_ingredient').innerHTML = ingred;
 			$('good_ingredient').href = GoodHelper.ingredientLink(ingred);
 		} else $('good_composition').style.display = "none";
@@ -312,7 +312,7 @@ var Controller = {
 		var point = document.createElement("a");
 		point.className = "point";
 		point.id = "rec_"+(num+1);
-        point.href = GoodHelper.ingredientsLinkByMark(rec.mark);
+        point.href = Good.ingredientsLinkByMark(rec.mark);
 		var img = document.createElement("img");
 		img.src = this.PATH_MERCH + "banners/" + rec.banner;
 		img.alt = rec.mark;

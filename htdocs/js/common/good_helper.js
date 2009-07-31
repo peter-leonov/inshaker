@@ -26,17 +26,6 @@ var GoodHelper = {
         return cartData;
     },
 
-    ingredientsLinkByMark: function(mark){
-        var ingreds = [];
-        for(var ingred in goods){
-            for(var i = 0; i < goods[ingred].length; i++){
-                if(goods[ingred][i].mark == mark && Cocktail.ingredients.indexOf(ingred) > -1) 
-                    ingreds.push(ingred);
-            }
-        }
-        return "/cocktails.html#state=byIngredients&ingredients=" + ingreds.join(",");                
-    },
-    
     ingredientLink: function(ingred){
         return "/cocktails.html#state=byIngredients&ingredients=" + ingred;                
     },
