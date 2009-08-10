@@ -449,6 +449,8 @@ EventPage.view =
 			
 			setInterval(animatePopups, 3200)
 		}
+		else
+			illustrationPopups.remove()
 	},
 	
 	renderVariableFields: function (fieldsSet)
