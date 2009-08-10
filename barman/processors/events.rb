@@ -82,7 +82,9 @@ class EventsProcessor < Barman::Processor
     @entity[:dialogue].each do |v|
       FileUtils.mkdir_p out_images_path + "/dialogues/"
       FileUtils.cp_r(src_dir + "/dialogues/" + v[:back], out_images_path + "/dialogues/" + v[:back], @mv_opt)
-      FileUtils.cp_r(src_dir + "/dialogues/" + v[:popups], out_images_path + "/dialogues/" + v[:popups], @mv_opt)
+      if v[:popups]
+        FileUtils.cp_r(src_dir + "/dialogues/" + v[:popups], out_images_path + "/dialogues/" + v[:popups], @mv_opt)
+      end
     end
   end
   
@@ -162,7 +164,7 @@ private
     arr = []
     if yaml['Диалоги']
       yaml['Диалоги'].each do |v|
-        arr << {:back => v[0], :popups => v[1]}
+        arr << {:back => v[0], :popups => v[1] == "нет" ? nil : v[1]}
       end
     end
     @entity[:dialogue] = arr

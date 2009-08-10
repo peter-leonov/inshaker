@@ -413,32 +413,36 @@ EventPage.view =
 			return illustration.remove()
 		
 		illustration.style.backgroundImage = 'url(' + this.iroot + '/dialogues/' + dialogue.back + ')'
-		illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
 		
-		illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
-		
-		function animatePopups ()
+		if (dialogue.popups)
 		{
-			illustrationPopups.animate('linearTween', {opacity: [0]}, 0.3).oncomplete =
-			function ()
+			illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
+			
+			illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
+			
+			function animatePopups ()
 			{
-				setTimeout
-				(
-					function ()
-					{ 
-					if (illustration.scrollTop + 300 >= illustration.scrollHeight)
-						illustration.scrollTop = 0
-					else
-						illustration.scrollTop += 300
+				illustrationPopups.animate('linearTween', {opacity: [0]}, 0.3).oncomplete =
+				function ()
+				{
+					setTimeout
+					(
+						function ()
+						{ 
+						if (illustration.scrollTop + 300 >= illustration.scrollHeight)
+							illustration.scrollTop = 0
+						else
+							illustration.scrollTop += 300
 				
-					illustrationPopups.animate('linearTween', {opacity: [1]}, 0.3)
-					},
-					500
-				)
+						illustrationPopups.animate('linearTween', {opacity: [1]}, 0.3)
+						},
+						500
+					)
+				}
 			}
+			
+			setInterval(animatePopups, 3200)
 		}
-		
-		setInterval(animatePopups, 3200)
 	},
 	
 	renderVariableFields: function (fieldsSet)
