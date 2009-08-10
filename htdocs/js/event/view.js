@@ -299,7 +299,7 @@ EventPage.view =
 		
 		
 		var data = rating.data,
-			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
+			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] || a.localeCompare(b) }),
 			max = data[sorted[0]],
 			min = data[sorted[sorted.length-1]],
 			k = max && min ? 100 / (max - min + 1) : 1
