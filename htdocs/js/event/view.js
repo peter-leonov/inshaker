@@ -447,6 +447,9 @@ EventPage.view =
 	
 	renderVariableFields: function (fieldsSet)
 	{
+		if (!fieldsSet)
+			return
+		
 		var root = this.nodes.variableInputs
 		
 		for (var i = 0; i < fieldsSet.length; i++)
