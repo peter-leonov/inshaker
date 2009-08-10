@@ -213,7 +213,17 @@ private
     @entity[:low] = low
     
     rating = yaml['Рейтинг']
-    @entity[:rating] = {:phrase => rating['Фраза'], :max => rating['Выводить'], :type => {'корпоративный' => 'corp'}[rating['Тип']]}
+    data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
+    @entity[:rating] = data
+    
+    type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
+    if type
+      data[:type] = type
+    end
+    
+    if rating['В обратном порядке'] == 'да'
+      data[:reverse] = true
+    end
   end
   
   def process_rating src_dir
@@ -248,6 +258,9 @@ private
             puts "  #{line}: Не могу понять email: '#{value}'"
             next
           end
+        elsif type == "comp"
+          rating[email] = value
+          next
         end
         
         name = substitute[value]

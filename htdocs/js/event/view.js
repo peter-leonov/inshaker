@@ -353,9 +353,15 @@ EventPage.view =
 	{
 		var totalPeople = 0, totalFrom = 0, data = rating.data
 		
-		for (var k in data)
-			totalPeople += data[k],
-			totalFrom++
+		if (rating.type == 'comp')
+		{
+			for (var k in data)
+				totalPeople++
+		}
+		else
+			for (var k in data)
+				totalPeople += data[k],
+				totalFrom++
 		
 		var ratingHead = this.nodes.ratingHead
 		if (rating.phrase)
