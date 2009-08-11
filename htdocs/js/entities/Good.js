@@ -46,9 +46,9 @@ Object.extend(Good,
 	{
 		var res = [], ingreds = this.getByMark(mark)
 		for (var i = 0; i < ingreds.length; i++)
-			res[i] = encodeURIComponent(ingreds[i].name)
+			res[i] = ingreds[i].name
 		
-		return "/cocktails.html#state=byIngredients&ingredients=" + res.join(",")
+		return "/cocktails.html#state=byIngredients&ingredients=" + encodeURIComponent(res.join(","))
 	}
 })
 
