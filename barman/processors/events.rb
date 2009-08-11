@@ -259,7 +259,7 @@ private
             next
           end
         elsif type == "comp"
-          rating[email] = value
+          rating[email] = value.to_f
           next
         end
         
