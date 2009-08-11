@@ -424,27 +424,22 @@ EventPage.view =
 		{
 			illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
 			
-			illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
-			
 			function animatePopups ()
 			{
-				illustrationPopups.animate('linearTween', {opacity: [0]}, 0.3).oncomplete =
-				function ()
-				{
-					setTimeout
-					(
-						function ()
-						{ 
+				illustrationPopups.addClassName('hidden')
+				setTimeout
+				(
+					function ()
+					{ 
 						if (illustration.scrollTop + 300 >= illustration.scrollHeight)
 							illustration.scrollTop = 0
 						else
 							illustration.scrollTop += 300
-				
-						illustrationPopups.animate('linearTween', {opacity: [1]}, 0.3)
-						},
-						500
-					)
-				}
+						
+						illustrationPopups.remClassName('hidden')
+					},
+					500
+				)
 			}
 			
 			setInterval(animatePopups, 3200)

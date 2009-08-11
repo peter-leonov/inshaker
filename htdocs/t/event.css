@@ -46,6 +46,7 @@ background: url(icon/strs-green.png);
 .b-title h1, .b-title h3 { font-size: 20px; }
 .b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
 #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
+#illustration .hidden { visibility: hidden; }
 #main-sponsors { margin-bottom: 24px; }
 #main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
