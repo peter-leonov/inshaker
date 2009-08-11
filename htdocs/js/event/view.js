@@ -4,6 +4,12 @@ var doc = document
 function N (name, classN) { var res = doc.createElement(name); if(classN) res.className = classN; return res; }
 function T (text) { return doc.createTextNode(text) }
 
+Number.prototype.toTime = function ()
+{
+	var m = /(\d+)(?:\.(\d+))?/.exec(this) //.oString var mins = this & -1,
+	return m[1] + ':' + (m[2] === undefined ? '00' : (m[2].length <= 1 ? '0' + m[2] : m[2]))
+}
+
 EventPage.view =
 {
 	owner: null, // must be defined before initialize
@@ -298,11 +304,24 @@ EventPage.view =
 			root = nodes.rating
 		
 		
-		var data = rating.data,
-			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] || a.localeCompare(b) }),
+		var data = rating.data, type = rating.type, sorted = Object.keys(data), max, min
+		
+		if (rating.reverse)
+		{
+			// a - b
+			sorted = sorted.sort(function (a, b) { return data[a] - data[b] || a.localeCompare(b) })
+			max = data[sorted[sorted.length-1]],
+			min = data[sorted[0]]
+		}
+		else
+		{
+			// b - a
+			sorted = sorted.sort(function (a, b) { return data[b] - data[a] || a.localeCompare(b) }),
 			max = data[sorted[0]],
-			min = data[sorted[sorted.length-1]],
-			k = max && min ? 100 / (max - min + 1) : 1
+			min = data[sorted[sorted.length-1]]
+		}
+		
+		var k = max && min ? 100 / (max - min + 1) : 1
 		
 		root.empty()
 		
@@ -316,20 +335,21 @@ EventPage.view =
 		{
 			var name = sorted[i],
 				count = data[name],
-				padding = String(count).length * 3.4, // means 3.4% for a digit
-				width = Math.floor((count - min + 1) * k)
+				text = type === 'comp' ? count.toTime() : count.toString(),
+				start = text.length * 3.4, // means 3.4% for a digit
+				width = Math.floor((count - min) * k)
 			
-			if (width < padding)
-				width = padding
+			if (width < start)
+				width = start
 			
 			var label = N('div', 'label')
 			label.appendChild(T(name))
 			labels.appendChild(label)
 			
 			var rate = N('div', 'rate')
-			rate.style.width = padding + '%'
-			rate.animate('easeInOutQuad', {width: [padding, width]}, 1, '%')
-			rate.appendChild(T(count))
+			rate.style.width = start + '%'
+			rate.animate('easeInOutQuad', {width: [start, width]}, 1, '%')
+			rate.appendChild(T(text))
 			rates.appendChild(rate)
 		}
 		
