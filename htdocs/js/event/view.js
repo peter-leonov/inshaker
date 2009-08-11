@@ -6,7 +6,7 @@ function T (text) { return doc.createTextNode(text) }
 
 Number.prototype.toTime = function ()
 {
-	var m = /(\d+)(?:\.(\d+))?/.exec(this) //.oString var mins = this & -1,
+	var m = /([+\-]?\d+)(?:\.(\d+))?/.exec(this) //.oString var mins = this & -1,
 	return m[1] + ':' + (m[2] === undefined ? '00' : (m[2].length <= 1 ? '0' + m[2] : m[2]))
 }
 
@@ -321,7 +321,7 @@ EventPage.view =
 			min = data[sorted[sorted.length-1]]
 		}
 		
-		var k = max && min ? 100 / (max - min + 1) : 1
+		var k = max > min ? 100 / (max - min) : 0 // 100 means 100%
 		
 		root.empty()
 		
