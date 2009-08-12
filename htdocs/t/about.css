@@ -1,5 +1,8 @@
+button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}
+button.bt-send-disabled {background: url(button/grey-buttons.png) no-repeat 0 -30px;height:36px;width:110px;}
+button.bt-send{background-position:0 -272px;height:38px;width:115px;}
+button.bt-send{background:url(button/n_green-buttons.png) no-repeat 0 -36px;width:155px;height:36px;cursor:pointer;}
 
-/* about page */
 .b-content .viewport { height: 450px; }
 #about-page .b-content{min-height:46em;}
 #about-page .content {display:none;}
@@ -45,6 +48,9 @@
 #b-cr-delivery textarea, 
 #b-cr-delivery input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
+
+#form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
+
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
 .b-content .content ol {padding-left:23px;}

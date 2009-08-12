@@ -1,0 +1,116 @@
+button{width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}
+
+#cocktails-page .body-wrapper { overflow: hidden; }
+#cocktails-page .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
+#cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
+#cocktails-page .b-title #spotlighted .group {display:none}
+#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
+#search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
+#search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
+
+#search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
+#letters_all{float:left; width: 40px; text-align:center;}
+#alphabetical-ru {float:right; width:540px; margin-top:2px;}
+#alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
+#alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
+
+
+.autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
+.autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
+.autocomplete .item.selected { background-color:#cede97; }
+.search-error{display:none;height:12px;}
+
+
+#cocktails-page .ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
+#cocktails-page .ingreds-list a {color:#fff;}
+#cocktails-page .ingreds-list a:hover {text-decoration:line-through;}
+
+#cocktails-page .ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
+#cocktails-page .ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
+#cocktails-page #ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
+
+
+
+
+/*Block content*/
+/*pager list*/
+.b-content .p-list { }
+.b-content .alphabetical{background:#efefef;font-size:110%;margin-bottom:22px;}
+.b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
+.b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
+.b-content ul.cocktails{overflow:hidden;}
+/* and index */
+.b-content ul.cocktails li{float:left;width:90px;padding:0 10px;height:140px;position:relative;}
+.b-content ul.cocktails li .love{background:url(icon/love.png) no-repeat 0 0;position:absolute;left:55px;top:10px;padding-left:15px;}
+.b-content ul.cocktails li a{font-size:120%;}
+.b-content ul.cocktails li img{display:block;padding-bottom:7px;padding-right:30px;margin-left:-10px;width:60px;height:80px;}
+.mini-illustration {z-index:2} /* also applied to the dragged element */
+
+
+.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 567px; top: 390px; }
+.pager-big .prev,
+.pager-big .next {float:left; display:block; background: url(/t/bg/blocks/page-big-buttons.png); width: 16px; height: 14px;} 
+.pager-big .next {margin-left: 3px; background-position: 16px 14px; }
+
+.pager-big .dis {background:url(/t/bg/blocks/page-big-buttons-dis.png); cursor:default;}
+.pager-big .next.dis {background-position: 16px 14px; }
+
+.b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
+.b-content .pager .p-list {display: inline;}
+.b-content .pager .p-list a{line-height: 18px; margin-right: 0px; padding: 1px 5px 2px; text-align:center; text-decoration:none;}
+.b-content .pager .p-list a.two{padding: 1px 2px 2px;margin-right: 5px;}
+.b-content .pager .p-list a.selected-button {color: #fff; background:url(/t/bg/blocks/page-hi-bg.png) no-repeat; cursor: default;}
+.b-content .pager .prev,
+.b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
+.b-content .pager .prev { margin-right:3px;}
+.b-content .pager .next { margin-left: 1px;}
+.b-content .pager .disabled{cursor:default; color: #c0c0c0;}
+.b-content .viewport{height:560px;overflow:hidden;position:relative;}
+.b-content .surface{padding:500px;width:10000px;}
+
+
+.search-form {position:relative;}
+.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: #f4f7c2; line-height: 18px; height:18px; border: none;}
+.search-form small{color:#f1f7b6;line-height:1.5;display:block;}
+.search-form dl{overflow:hidden;}
+.search-form dt{padding:0;font-size:92%;}
+.search-form dd{background-color:#89af21;cursor:pointer;margin-bottom:3px;height:auto;overflow:hidden;padding:0 0 2px;}
+.search-form .substr{font-weight: bold;}
+
+
+.b-search{position:absolute;margin-right:2em;width:14em;}
+#all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
+.b-search dl{font-size:120%;line-height:1.5;}
+.b-search dt{font-weight:bold;padding:16px 0 0 6px;}
+.b-search dd{line-height:1.4;margin:1px 0;height:17px;}
+.b-search dd{line-height:1.4;margin:1px 0;height:17px;}
+
+.b-search .groups dd.selected-button {background:url(/t/bg/blocks/group-selected.png) no-repeat; width: 140px; height:17px; line-height:16px; }
+.b-search .groups dd.selected-button .rem{float:right;background:url(icon/remove.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px 9px 0 0;}
+.b-search .groups dd.selected-button:hover .rem{background:url(icon/remove_hi.png);}
+.b-search .groups dd.selected-button span {color: #fff; text-decoration: none;}
+
+.b-search .groups dd { cursor: pointer; }
+.b-search .groups dd a{margin-left:10px;height:1.33em;}
+.b-search .groups dd span:hover { text-decoration: underline; }
+.b-search .groups dd.selected-button span:hover { text-decoration:none; }
+.b-search .groups dd span{margin-left: 6px; float: left; color: #0392f1; text-decoration: none;}
+.b-search .groups dd.dis span,
+.b-search .groups dd.dis a {color:#999;text-decoration:none;cursor:default;}
+
+.search-control {background:url(bg/blocks/green-line.png) no-repeat; padding:5px; color:#fff; height: 22px;}
+
+
+#cocktails-page .b-content {width:100%;}
+#cocktails-page #b_search {display:none;}
+#cocktails-page #results_display {/*padding-left: 23px;*/}
+#cocktails-page #results_display .viewport {width:585px;margin-left:0px; }
+#cocktails-page #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
+#cocktails-page #results_display.byIngredients .viewport {width:440px;margin-left: 145px; }
+#cocktails-page #results_display.byIngredients .point {width:440px;padding: 0 35px 0 0;}
+#cocktails-page #results_display .surface { width: 20000px; }
+#cocktails-page #search_tips { height: 14px}
+#cocktails-page #search_tips a:hover {text-decoration:none;}
+#cocktails-page #search_tips a {border-bottom:1px #0392F1 dashed;}
+
+#error_display{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;font-size:13px;padding:4px 0pt 0pt 35px;height:35px;}

@@ -1,4 +1,39 @@
 /* Authors: Kornilov Pavel, Vasily Mikhailitchenko, Peter Leonov */
+
+body,table,
+h1,h2,h3,h4,
+p,form,
+fieldset,legend,
+ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
+h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
+td{font-size:1em;vertical-align:top;}
+a{color :#0392f1;cursor :pointer;
+text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{vertical-align:middle;}
+a img{border:0;}
+input,select,textarea{font:1.1em Tahoma,Arial,sans-serif;}
+input[type="password"],
+input[type="text"]{height:20px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
+ul{list-style-type:none;}
+table{border:0;border-collapse:collapse;}
+table td{padding:0;}
+.to-print{display:none;}
+
+html{background:#fff url(/t/alchogol-sucks.png) no-repeat center 98.5%;}
+body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
+
+/* Image buttons */
+/*button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}*/
+
+form button{vertical-align:top;}
+form input{vertical-align:middle;}
+form p{display:inline;}
+form .b p{display:block;padding:0;}
+label{display:block;}
+
+
+
 /* dotted */
 .dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
@@ -30,28 +65,12 @@
 .border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
 .border-links a:hover { text-decoration:none}
 
-body,table,
-h1,h2,h3,h4,
-p,form,
-fieldset,legend,
-ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
-h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
-td{font-size:1em;vertical-align:top;}
-a{color :#0392f1;cursor :pointer;
-text-decoration:none;}
-a:hover{text-decoration:underline;}
-img{vertical-align:middle;}
-a img{border:0;}
-input,select,textarea{font:1.1em Tahoma,Arial,sans-serif;}
-input[type="password"],
-input[type="text"]{height:20px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
-ul{list-style-type:none;}
-table{border:0;border-collapse:collapse;}
-table td{padding:0;}
-.to-print{display:none;}
 
-html{background:#fff url(/t/alchogol-sucks.png) no-repeat center 98.5%;}
-body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
+b.lt { left: 0; top: 0; }
+b.rt { right: 0; top: 0; }
+b.lb { left: 0; bottom: 0; }
+b.rb { right: 0; bottom: 0; }
+
 
 #top{position:relative;height:65px;width:100%;font-size:12px;margin:0 auto 40px; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0;}
 #top #top-content {margin: 0 auto; width: 960px;}
@@ -64,21 +83,16 @@ body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heig
 #top .nav a:hover{background:url(bg/nav/top.png) repeat-x 0 bottom;}
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
-#top form{position:absolute;right:0;top:20px;display:none;}
-#top form input{font-size:11px;height:17px;border:1px solid #fff;border-top-color:#c9c9c9;line-height:17px;padding-top:2px;width:175px;margin-right:10px;}
-form button{vertical-align:top;}
-form input{vertical-align:middle;}
-form p{display:inline;}
-form .b p{display:block;padding:0;}
-label{display:block;}
-#main-wrapper{margin:0 auto;width:960px; position:relative;}
-.index-wrapper{position:relative;height:420px;}
-/* Index form login */
 
-.column-mini,
+#bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
+#bottom .main-menu{float:right;}
+.drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
+
+
+/* in almost all */
+#main-wrapper{margin:0 auto;width:960px; position:relative;}
 .column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;}
 .column-main{width:628px;}
-.column-mini{width:31.3em;margin-left:8px;margin-bottom:11px;}
 
 .column-main-container{width:630px;float:left;}
 .body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
@@ -89,169 +103,20 @@ label{display:block;}
 .b-title #spotlighted { display: none; position:absolute;right:0;bottom:15px;font-size:110%; width:21px; height: 21px; background:transparent url(/t/icon/spotlighted.png) no-repeat;}
 .b-title #photographer {display:none; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
 .b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
-.b-search{position:absolute;margin-right:2em;width:14em;}
-#all_list{background:url(icon/all-list.jpg) no-repeat;font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
-.b-search dl{font-size:120%;line-height:1.5;}
-.b-search dt{font-weight:bold;padding:16px 0 0 6px;}
-.b-search dd{line-height:1.4;margin:1px 0;height:17px;}
-.b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 
-.b-search .groups dd.selected-button {background:url(/t/bg/blocks/group-selected.png) no-repeat; width: 140px; height:17px; line-height:16px; }
-.b-search .groups dd.selected-button .rem{float:right;background:url(icon/remove.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px 9px 0 0;}
-.b-search .groups dd.selected-button:hover .rem{background:url(icon/remove_hi.png);}
-.b-search .groups dd.selected-button span {color: #fff; text-decoration: none;}
 
-.b-search .groups dd { cursor: pointer; }
-.b-search .groups dd a{margin-left:10px;height:1.33em;}
-.b-search .groups dd span:hover { text-decoration: underline; }
-.b-search .groups dd.selected-button span:hover { text-decoration:none; }
-.b-search .groups dd span{margin-left: 6px; float: left; color: #0392f1; text-decoration: none;}
-.b-search .groups dd.dis span,
-.b-search .groups dd.dis a {color:#999;text-decoration:none;cursor:default;}
 
-.search-control {background:url(bg/blocks/green-line.png) no-repeat; padding:5px; color:#fff; height: 22px;}
-.search-form {position:relative;}
-/*.search-form strong{font-size:120%;line-height:1;display:block;padding:12px 0 17px 0;}*/
-.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: #f4f7c2; line-height: 18px; height:18px; border: none;}
-.search-form small{color:#f1f7b6;line-height:1.5;display:block;}
-.search-form dl{overflow:hidden;}
-.search-form dt{padding:0;font-size:92%;}
-.search-form dd{background-color:#89af21;cursor:pointer;margin-bottom:3px;height:auto;overflow:hidden;padding:0 0 2px;}
-.search-form .substr{font-weight: bold;}
-/*.search-form span{float:left;text-decoration:underline;font-size:11px;padding-left:6px;width:100px;}*/
-
-#cocktail-page .body-wrapper,
-#cocktails-page .body-wrapper { overflow: hidden; }
-#cocktails-page .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
-#cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
-#cocktails-page .b-title #spotlighted .group {display:none}
-#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
-#search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
-#search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
-
-#search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
-#letters_all{float:left; width: 40px; text-align:center;}
-#alphabetical-ru {float:right; width:540px; margin-top:2px;}
-#alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
-#alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
-
-.autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
-.autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
-.autocomplete .item.selected { background-color:#cede97; }
-.search-error{display:none;height:12px;}
-
-#cocktails-page .ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
-#cocktails-page .ingreds-list a {color:#fff;}
-#cocktails-page .ingreds-list a:hover {text-decoration:line-through;}
-
-#cocktails-page .ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
-#cocktails-page .ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
-#cocktails-page #ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
-
-/*Block content*/
-/*pager list*/
-.b-content .p-list { }
-.b-content .alphabetical{background:#efefef;font-size:110%;margin-bottom:22px;}
-.b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
-.b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
-.b-content ul.cocktails{overflow:hidden;}
-/* and index */
-.b-content ul.cocktails li{float:left;width:90px;padding:0 10px;height:140px;position:relative;}
-.b-content ul.cocktails li .love{background:url(icon/love.png) no-repeat 0 0;position:absolute;left:55px;top:10px;padding-left:15px;}
-.b-content ul.cocktails li a{font-size:120%;}
-.b-content ul.cocktails li img{display:block;padding-bottom:7px;padding-right:30px;margin-left:-10px;width:60px;height:80px;}
-.mini-illustration {z-index:2} /* also applied to the dragged element */
-
-.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 567px; top: 390px; }
-.pager-big .prev,
-.pager-big .next {float:left; display:block; background: url(/t/bg/blocks/page-big-buttons.png); width: 16px; height: 14px;} 
-.pager-big .next {margin-left: 3px; background-position: 16px 14px; }
-
-.pager-big .dis {background:url(/t/bg/blocks/page-big-buttons-dis.png); cursor:default;}
-.pager-big .next.dis {background-position: 16px 14px; }
-
-.b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
-.b-content .pager .p-list {display: inline;}
-.b-content .pager .p-list a{line-height: 18px; margin-right: 0px; padding: 1px 5px 2px; text-align:center; text-decoration:none;}
-.b-content .pager .p-list a.two{padding: 1px 2px 2px;margin-right: 5px;}
-.b-content .pager .p-list a.selected-button {color: #fff; background:url(/t/bg/blocks/page-hi-bg.png) no-repeat; cursor: default;}
-.b-content .pager .prev,
-.b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
-.b-content .pager .prev { margin-right:3px;}
-.b-content .pager .next { margin-left: 1px;}
-.b-content .pager .disabled{cursor:default; color: #c0c0c0;}
-.b-content .viewport{height:560px;overflow:hidden;position:relative;}
-.b-content .surface{padding:500px;width:10000px;}
-#cocktails-page .b-content {width:100%;}
-#cocktails-page #b_search {display:none;}
-#cocktails-page #results_display {/*padding-left: 23px;*/}
-#cocktails-page #results_display .viewport {width:585px;margin-left:0px; }
-#cocktails-page #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
-#cocktails-page #results_display.byIngredients .viewport {width:440px;margin-left: 145px; }
-#cocktails-page #results_display.byIngredients .point {width:440px;padding: 0 35px 0 0;}
-#cocktails-page #results_display .surface { width: 20000px; }
-#cocktails-page #search_tips { height: 14px}
-#cocktails-page #search_tips a:hover {text-decoration:none;}
-#cocktails-page #search_tips a {border-bottom:1px #0392F1 dashed;}
-
-/* cocktail page */
-#cocktail-page .hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
+/* in cocktail and about */
 .b-content .top-menu{background:#000 url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu img{position:absolute;bottom:0;left:0;}
 .b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
-#cocktail-page .hreview .entry{padding:21px 16px 32px 218px;position:relative;}
-#cocktail-page .hreview .desc{font-size:120%;overflow:hidden;line-height:1.25;}
-#cocktail-page .hreview .desc h2{font-size:14px;font-weight:bold;padding:0 0 12px 16px;background:url(icon/love-small.png) no-repeat 0 .3em;}
-#cocktail-page .hreview .desc .description{padding-left:16px;}
-#cocktail-page .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
-#cocktail-page .hreview button{margin-right:16px;}
-#cocktail-page .illustration{ position:absolute; left:-2px; bottom:3px; z-index:2;} /* also applied to the dragged element */ 
 .popup{font-size:120%;line-height:1.67;display:none;position:absolute;top:-140px;padding:80px 0 60px 0;min-height:100%;color:#fff;margin-bottom:-102px;left:0;width:100%;background:#000;background:rgba(0,0,0,.9);}
 .popup h3{font-size:150%;font-weight:bold;margin:-52px 20px -1px;}
 .popup p{padding:20px 40px 0 20px;}
 .popup a{color:#00c0ff;}
 .popup .close{border-color:#020202 !important;position:absolute;background-color:#515152;color:#fff;text-decoration:none;text-align:center;left:50%;margin-left:-4.45em;bottom:20px;display:block;font-size:92%;width:8.91em}
-#cocktail-page #view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
-#cocktail-page #view-prepare h3{font-size:150%;margin:13px 0 10px;}
-#cocktail-page #view-prepare button{position:absolute;left:50%;margin-left:-4.45em;bottom:11px;}
-#cocktail-page #view-how{display:none;position:absolute;top:-139px;padding-top:139px;font-size:120%;left:0;width:100%;height:100%;}
-#cocktail-page #view-how h3{font-size:150%;padding:17px 0 11px 197px;}
-#cocktail-page #view-how ul {padding-left:217px;line-height:1.5;}
-#cocktail-page #view-how ul li {list-style:decimal;}
-#cocktail-page #view-how .ingredients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
-#cocktail-page #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
-#cocktail-page #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
-#cocktail-page #view-how .ingredients .surface{width:5000px;height:120px;}
-#cocktail-page #view-how .ingredients .surface img{float:left;margin-left:20px;}
-#cocktail-page #view-how .ingredients .point{width:360px;height:120px;float:left;}
-#cocktail-page #view-how .next,
-#cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;top:72px;right:19px;background:url(icon/strs-green.png) no-repeat 0 -72px;}
-#cocktail-page #view-how .next{background-position:-20px -72px;left:auto;right:19px;top:48px;}
-#cocktail-page #view-how .prev.disabled{background-position:0px -92px;cursor:default;}
-#cocktail-page #view-how .next.disabled{background-position:-20px -92px;cursor:default;}
-#cocktail-page #view-how button{bottom:15px;left:197px;position:absolute;}
-#cocktail-page #view-how .bt-print-how{left:363px;}
-#cocktail-page .view-how#main-content *{visibility:hidden;}
-#cocktail-page .view-how#main-content .illustration{visibility:visible;z-index:2;}
-#cocktail-page .view-video#main-content *{visibility:hidden;}
-#view-video.popup{background-color:#000;}
-#cocktail-page #view-video div{margin:-40px auto 0;}
 
-#view-cocktailmap h3{border-bottom:2px solid #8c8c8c;margin-top:-183px !important;padding-bottom:2px;}
-#view-cocktailmap div{overflow:hidden;margin:21px 0 0 5px;line-height:1.2;}
-#view-cocktailmap dl{float:left;width:21.67em;margin:0 15px;position:relative;border-bottom:1px solid #515152;padding:7px 0;letter-spacing:-.2px;}
-#view-cocktailmap i{font-style:normal;display:block;}
-#view-cocktailmap dd{position:absolute;right:0;top:7px;}
-
-#cocktail-page .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
-#cocktail-page .what-need dl{float:left;width:23em;margin-bottom:-1px;}
-#cocktail-page .what-need .tools{float:right;}
-#cocktail-page .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
-#cocktail-page .what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
-#cocktail-page .what-need dd:last-child{background:none;}
-#cocktail-page .what-need dd a{float:left;padding-right:18px;}
-#cocktail-page .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
-/* more in cocktail */
+/* in cocktail, bar and event */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
 .b-more .b-more-cocktails { width:398px;}
 .b-more .column{position:relative;}
@@ -259,9 +124,6 @@ label{display:block;}
 .b-more dt{background:#77a300 url(bg/body/green-more-title.png) repeat-x 0 18px;margin:-5px -10px 0;padding:0 1px;height:29px;}
 .b-more dt b{background:#77a300 url(bg/body/green-more-title.png) repeat-x 0 19px;color:#fff;padding:0 10px;position:relative;top:-1px;line-height:28px;font-weight:normal;display:block;height:31px;}
 .b-more dd{line-height:1.17;position:relative;}
-.b-more-korol dd p{padding:19px 0 11px 0;}
-.b-more-korol dd i{color:#e4146e;font-style:normal;}
-
 .b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:120px; width:330px;}
 .b-more-cocktails .surface{width:20000px;}
 .b-more-cocktails .point{height:100px;width:330px;float:left;}
@@ -278,78 +140,8 @@ label{display:block;}
 .b-more .b-more-rec .viewport{width:130px;left:21px;}
 .b-more .b-more-rec li{width:130px;}
 
-/* delivery page */
-#delivery-page .body-wrapper{height:590px;}
-#b-cr-delivery .body-wrapper{height:590px;}
-#delivery-page h4 { font-size: 12px;}
-#delivery-page ul {padding-left:20px;line-height:1.5;list-style:decimal; font-size: 12px;}
 
-/* right column */
-.column-r .b-title h2{line-height:29px;}
-/* bill (cart) */
-
-#b-bill.editing-bar-name .body-wrapper {padding: 11px 18px 14px; }
-#b-bill.editing-bar-name .b-title {padding-bottom:8px;}
-
-#b-bill .b-title h1 { display: inline; cursor:pointer}
-#b-bill .b-title h1.unnamed { border-bottom: 1px #343B40 dashed;}
-#b-bill .b-title label { font-size:20px; margin-left:-7px}
-#b-bill .b-title input { border: 1px #c0c0c0 solid; height: 26px; width: 278px; font-size: 20px; padding: 2px 0 2px 4px; color: #343B40;}
-#b-bill .b-title .tip { -moz-user-select: none; font-size: 20px; position:absolute; top:0; left:-1px; color:#BBB; padding: 3px 0; }
-
-.column-r, #b-bar, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative;}
-#b-bill h2{padding:23px 0 19px 20px;font-size:120%;background:url(bg/bill/menus.png) repeat-x 0 100%;}
-#b-bill dl{background:url(bg/bill/section.png) no-repeat; position:relative; margin-top:1px;}
-#b-bill dt{height:20px; color:#343b40; font-size:11px; line-height:19px;padding-left:7px; color: #fff}
-#b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
-#b-bill dd {font-size:120%;background:#fff; margin-left: 6px;}
-/* после калькулятора */
-#b-bill dd li{height:100%;padding:10px 0;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;}
-#b-bill dd li a{display:block;width:125px;}
-#b-bill dd li label{position:absolute;top:10px;width:110px;right:30px;white-space:nowrap;}
-#b-bill dd li b{font-weight:normal;display:block;}
-#b-bill dd li button{position:absolute;top:12px;right:8px;}
-#b-bill dd strong{display:block;padding:17px 0 8px 0;}
-#b-bill ul.money li{padding:6px 0;height:100%;}
-#b-bill ul.money li a{display:block;width:125px;}
-#b-bill ul.money label{text-align:right;}
-#b-bill ul.money input{float:left;}
-#b-bill ul input{text-align:center;padding-left:0;width:35px;font-size:11px;}
-/*TODO*/
-#b-bill .total{padding:9px 23px 0 10px;position:relative;overflow:hidden;}
-#b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
-#b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
-#b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
-#b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px}
-
-#b-bill .print-call .tools { width: 120px; float:left; }
-#b-bill .print-call .buy   { width: 103px; float:right; }
-
-#b-bill #buy_shaker, #b-bill #buy_liquors, #b-bill #buy_syrups, #b-bill #print_plan, #b-bill #print_plan_inactive, #b-bill #call_barmen { padding-left: 16px; }
-#b-bill #buy_shaker { background: url(button/buy_shaker.png) no-repeat; }
-#b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }
-#b-bill #buy_syrups  { background: url(button/buy_syrups.png) no-repeat; }
-
-#b-bill #print_plan, #b-bill #print_plan_inactive { background: url(button/print_plan.png) no-repeat; }
-#b-bill #print_plan { display: none; }
-#b-bill #print_plan_inactive { color: #888; }
-
-#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; }
-#b-bill #buy_liquors, #b-bill #buy_shaker, #b-bill #call_barmen { margin-top: 3px;}
-
-ul#cart_cocktails {margin-top: 9px;}
-
-#cart_contents{display:none;}
-#cart_totals{display:none;}
-#cart_draghere{display:none;font-weight:bold;background:transparent url(bg/bill/drag-bg.png) no-repeat 5px 24px;padding:24px 24px 0pt;font-size:12px;}
-#cart_draghere div{width:212px;padding:14px 0 10px 26px;}
-#cart_draghere b{color:#7ca527;}
-/*bar block*/
-#b-bar .body-wrapper{padding:18px 18px 19px;font-size:120%;}
-#b-bar h2{font-size:150%;font-weight:bold;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin:0 1px 9px;padding:20px 0 5px 0;}
-#b-bar .map div{border:1px solid #62b346;}
-#b-bar .map p{text-align:center;margin-top:17px;}
-/* Window,Shoping */
+/* popups-related */
 .win-shop{display:none;}
 .win-shop{position:fixed;top:0;left:0;width:100%;height:100%;}
 .opacity,.win-shop .opacity {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
@@ -384,13 +176,12 @@ ul#cart_cocktails {margin-top: 9px;}
 .win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
 .win-shop .content .sum p{float:left;text-align:left;}
 .win-shop .content .sum p small{display:block;padding-top:4px;}
-.win-shop .content .sum button{margin:6px 47px 0 0;}
+.win-shop .content .sum button{margin:8px 47px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
 .win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
 .win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
 .win-shop .content #order_note a:hover { text-decoration: none;}
 
-/* ForFuture */
 .win-shop .view-photo{position:absolute;top:0;left:0;height:100%;width:100%;}
 .win-shop .view-photo h3{padding:0;height:auto;}
 .win-shop .view-photo ul{position:absolute;bottom:21px;left:179px;margin:0;}
@@ -406,116 +197,9 @@ ul#cart_cocktails {margin-top: 9px;}
 .win-shop .b-gadget small{display:block;}
 .win-shop .b-gadget button{display:block;margin:13px 0 21px 0;}
 .win-shop .b-gadget .gallery{padding-top:0;}
-/* Ingridients page */
-.you-choise{background:#f1f7b6;}
-.you-choise p{padding:18px 20px 17px;font-size:120%;}
-.you-choise span{position:relative;padding-right:7px;cursor:pointer;}
-.you-choise a{background:url(icon/del.png) no-repeat 0 0;position:absolute;top:.3em;right:1px;padding:5px 5px 0 0;}
-.top-alphabetical{margin:0 0 0 -10px;}
-.top-alphabetical .col{float:left;margin-right:10px;}
-.top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}
-.top-alphabetical a{display:block;margin:2px 0 2px 10px;padding:0 15px 0 0;text-decoration:none;line-height:18px;}
-.top-alphabetical a:hover{text-decoration:underline;}
-.top-alphabetical .now{color:#fff;background:#ee0245 url(bg/ingredient/now.png) no-repeat 0 0;display:block;float:none;line-height:18px;text-decoration:none !important;padding-left:10px;margin-left:0;}
-.top-alphabetical .dis{color:#ccc;text-decoration:none !important;cursor:default;}
-.top-alphabetical h3{font-size:150%;font-weight:normal;margin:17px 0 6px 11px;}
-#ingredients-page .count-cocktails{background:url(bg/ingredient/fixed.png) no-repeat top left;width:153px;height:73px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
-#ingredients-page .count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 9px;}
-#ingredients-page .count-cocktails input{font-size:11px;}
-#ingredients-page .body-wrapper { overflow: hidden; }
-
-/* Image buttons */
-button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}
-button.bt-mix{background:url(button/grey-buttons.png) no-repeat 0 0;width:85px;height:30px;}
-button.bt-new-bar{background-position:0 0;height:28px;width:85px;}
-button.bt-enter{background-position:0 -28px;height:28px;width:50px;}
-button.bt-search{background-position:0 -56px;height:28px;width:50px;}
-button.bt-lost-pass{background-position:0 -146px;height:28px;width:104px;}
-button.bt-deliver{background-position:0 -297px;height:20px;width:112px;}
-button.bt-add-in-account{background-position:0 -298px;height:36px;width:112px;cursor:pointer;}
-button.bt-add-in-account2{background-position:0 -115px;height:31px;width:112px;}
-button.bt-pick-up-utensils{background-position:0 -329px;height:29px;width:116px;}
-button.bt-all-dishes{background-position:0 -358px;height:29px;width:116px;}
-button.bt-korol-vote{background-position:0 -387px;height:31px;width:112px;}
-button.bt-less,
-button.bt-del{background:url(button/red-buttons.png) no-repeat;cursor:pointer;}
-button.bt-print-how,
-button.bt-close-how,
-button.bt-want-slap,
-button.bt-view-how,
-button.bt-love-her,
-button.bt-more,
-button.bt-send,
-button.bt-close-legend{background:url(button/n_green-buttons.png) no-repeat 0 -36px;width:155px;height:36px;cursor:pointer;}
-button.bt-close-how{background-position:0 -144px;height:36px;width:145px;}
-button.bt-want-slap{background-position:0 -72px;height:36px;width:155px;}
-button.bt-view-how{background-position:0 -236px;height:36px;width:146px;}
-button.bt-love-her{display:none;background-position:0 -108px;height:36px;width:118px;}
-/* InFuture */
-button.bt-print-how{background-position:0 -180px;height:36px;width:147px;}
-button.bt-more{background-position:0 -216px;height:19px;width:16px;}
-button.bt-less{background-position:-17px -31px;height:19px;width:16px;}
-button.bt-send{background-position:0 -272px;height:38px;width:115px;}
-button.bt-send-disabled {background: url(button/grey-buttons.png) no-repeat 0 -30px;height:36px;width:110px;}
-button.bt-del{background-position:0 -31px;height:20px;width:16px;}
-.i-close{background:url(icon/close.png) no-repeat 0 0;display:block;width:10px;height:10px;}
-#view-advert a[href $='.cdr']{padding:1px 0 1px 21px;background:url(icon/cdr.png) no-repeat 0 center;line-height:16px;}
-#view-advert a[href $='.ai']{padding:1px 0 1px 21px;background:url(icon/ai.png) no-repeat 0 center;line-height:16px;}
-.del{background:url(icon/del.png) no-repeat 0 0;width:5px;height:5px;overflow:hidden;text-indent:-100em;display:block;}
-#bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
-#bottom .main-menu{float:right;}
-.drag_cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
-#error_display{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;font-size:13px;padding:4px 0pt 0pt 35px;height:35px;}
-#form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
-
-#order-page .b-content {font-size:12px; width:100%;}
-#order-page .note { background: #F1F7B6 url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
-#order-page #order_more { margin-left: 10px; background: url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
-#order-page textarea {background:#f3f3f3; border:0 solid #c9c9c9; border-width:1px 0 0 0px; margin-left:0; padding:4px 0 0 4px; overflow:auto;}
-#order-page form { font-size:100%; margin: 0; padding: 0; min-width: 500px; max-width: 600px; width: 560px; }
-#order-page form fieldset {/* clear: both; */ padding: 10px; margin: 0; }
-#order-page form fieldset legend { font-size:1.2em; font-weight: bold; padding: 12px 0;}
-#order-page form label { display: block; float: left; padding: 0; margin: 5px 0 0 10px; text-align: left; line-height: 25px;width: 120px;}
-
-#order-page form label#label_city_moscow,
-#order-page form label#label_city_mo,
-#order-page form label#label_face_phys,
-#order-page form label#label_face_legal {display: inline; float:none; margin: 0;}
-
-#order-page form input, #order-page form textarea { /* display: inline; */ width:auto; margin:5px 0 0 10px; }
-#order-page form select { /* display: inline; */ width:auto; margin:5px 0 0 0; }
-#order-page form input.text_field {
-	height: 24px; 
-	font-size: 1.2em; 
-	width: 158px; 
-	background:#f3f3f3;
-	border:0 solid #c9c9c9;
-	border-width:1px 0 0 0;
-	margin-left:0; 
-	padding:4px 0 0 4px;
-	line-height:24px;
-}
-#order-page form .radio_block input { margin: 0 5px 0 10px; }
-
-#order-page form input.error, #order-page form textarea.error { border: 0 #ec275f solid; border-width:1px 0 0 0; }
-#order-page form input#time1 { width: 50px;}
-#order-page form input#time2 { margin: 5px 0 0 2px; width: 50px; }
-#order-page form input#num_guests { width: 50px; }
-#order-page form input#phone11,
-#order-page form input#phone21 { width: 32px; }
-#order-page form input#phone12,
-#order-page form input#phone22 { margin: 5px 0 0 2px; width: 32px;}
-#order-page form input#phone13,
-#order-page form input#phone23 { margin: 5px 0 0 2px; width: 74px;}
-
-#order-page form br { clear:left; }
-#order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
 
 
-b.lt { left: 0; top: 0; }
-b.rt { right: 0; top: 0; }
-b.lb { left: 0; bottom: 0; }
-b.rb { right: 0; bottom: 0; }
+<!--# include virtual="calculator.css" -->
 
 <!--# include file="/t/theme.css" -->
 

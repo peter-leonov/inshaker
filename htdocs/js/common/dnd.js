@@ -7,7 +7,7 @@
  * @param dropTargets - массив элементов-целей, на которые можно перетаскивать
  */
 function Draggable(element, name, dropTargets){
-	this.STYLE_CURSOR = 'drag_cursor';
+	this.STYLE_CURSOR = 'drag-cursor';
 	
 	this.dragObject = null;
 	var self = this;
