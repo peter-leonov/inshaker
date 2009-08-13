@@ -13,8 +13,9 @@ var Controller = {
 	ID_REL_SUR : 'rel_surface',
 	ID_REL_VPR : 'rel_viewport',
 	
-	ID_ING     : 'ingredients',
-	ID_ING_SUR : 'ingreds_surface',
+	ID_ING       : 'ingredients',
+	ID_ING_SUR   : 'ingreds_surface',
+    ID_INGS_LIST : 'ingredients_list',
 	
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
@@ -47,6 +48,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
 		this.renderIngredients(Model.ingredients);
+        this.tidyIngredientsList();
 	},
 	
 	getCocktailName: function(){
@@ -180,7 +182,7 @@ var Controller = {
 				var dd         = document.createElement("dd");
 				var strong     = document.createElement("strong");
 				
-				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit, good.volumes[i][0]) + good.volumes[i][0] + " " + GoodHelper.pluralTxt(good.volumes[i][0], good.unit);
+				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit, good.volumes[i][0]) + GoodHelper.normalVolumeTxt(good.volumes[i][0], good.unit);
 				a.addEventListener('mousedown', function(j) { return function(e) {
 					self.setPicture(ingred, good, good.volumes[j]);
 				}}(i), false);
@@ -332,6 +334,33 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 	
+    tidyIngredientsList: function() {
+        var parent = $(this.ID_INGS_LIST);
+        var header = parent.getElementsByTagName("dt")[0];
+        parent.empty();
+        parent.appendChild(header);
+        
+        var ingreds = Model.ingredients;
+        var doses = {};
+        for(var i = 0; i < ingreds.length; i++){
+            doses[ingreds[i][0]] = GoodHelper.normalVolumeTxtParsed(ingreds[i][1]);
+        }
+        ingreds.sort(Ingredient.sortByGroups);
+        
+        for(var i = 0; i < ingreds.length; i++){
+            var dd     = document.createElement("dd")
+            var a      = document.createElement("a"); 
+            var strong = document.createElement("strong"); 
+            
+            a.innerHTML      = ingreds[i][0];
+            strong.innerHTML = doses[ingreds[i][0]];
+
+            dd.appendChild(a);
+            dd.appendChild(strong);
+            parent.appendChild(dd);
+        }
+    },
+
 	renderIngredients: function(ingredients) {
 		var perPage = 3;
 		var np = this._getNumOfPages(ingredients, perPage);

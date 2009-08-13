@@ -307,7 +307,7 @@ function CalculatorView() {
 			li.appendChild(a);
 			
 			var b = document.createElement("b");
-			b.innerHTML = bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], item.good.unit);
+			b.innerHTML = GoodHelper.normalVolumeTxt(bottle.vol[0], item.good.unit);
 			li.appendChild(b);
 			
 			var label = document.createElement("label");
@@ -395,7 +395,7 @@ function CalculatorView() {
 			img.style.height = "11px";
 			img.style.width  = "14px";
 			
-			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + volume[0] + " " + GoodHelper.pluralTxt(volume[0], item.good.unit);
+			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + GoodHelper.normalVolumeTxt(volume[0], item.good.unit);
 			strong.innerHTML = volume[1] + " р.";
 			
 			inputQuant.type  = "text";
@@ -468,7 +468,7 @@ function CalculatorView() {
 		
 		$('good_desc').innerHTML = item.good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
-		$('good_needed_vol').innerHTML = Math.roundPrecision(item.dose, 2) + " " +GoodHelper.pluralTxt(item.dose, item.good.unit);
+		$('good_needed_vol').innerHTML = GoodHelper.normalVolumeTxt(Math.roundPrecision(item.dose, 2), item.good.unit);
 		
 		var volsNode = $('good_volumes');
 		// volsNode.innerHTML = "";
@@ -493,7 +493,7 @@ function CalculatorView() {
 		mergeNodes(volsNode, newIngredients);
 		
 		$('good_summ').innerHTML = "<i>" + spaces(summ) + " р.</i>"
-		$('good_needed_have').innerHTML = Math.roundPrecision(have, 2) + " " + item.good.unit;
+		$('good_needed_have').innerHTML = GoodHelper.normalVolumeTxt(Math.roundPrecision(have, 2), item.good.unit);
 		$('good_needed').remClassName(item.dose  > have ? "more" : "less");
 		$('good_needed').addClassName(item.dose <= have ? "more" : "less");
 		this.lastShownIngred = name;
