@@ -110,22 +110,13 @@ var Controller = {
 					e.preventDefault();
 				}, false);
 		}
-		link = new Link();
+		self.link = link = new Link();
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
 			link.open("view-how");
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
-		
-		var ingreds_links = cssQuery(".b-content .ingridients dd a");
-		for (var i = 0; i < ingreds_links.length; i++){
-			var ingred = ingreds_links[i].innerHTML;
-			ingreds_links[i].addEventListener('click', function(name){ return function(e){	
-				self.renderPopup(name);
-				link.open(self.INGRED_POPUP);
-			}}(ingred), false);
-		}
 		
 		var tools_links = cssQuery(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
@@ -335,6 +326,7 @@ var Controller = {
 	},
 	
     tidyIngredientsList: function() {
+        var self   = this;
         var parent = $(this.ID_INGS_LIST);
         var header = parent.getElementsByTagName("dt")[0];
         parent.empty();
@@ -358,7 +350,12 @@ var Controller = {
             dd.appendChild(a);
             dd.appendChild(strong);
             parent.appendChild(dd);
-        }
+        
+			a.addEventListener('click', function(name){ return function(e){	
+				self.renderPopup(name);
+				self.link.open(self.INGRED_POPUP);
+			}}(ingreds[i][0]), false);
+		}
     },
 
 	renderIngredients: function(ingredients) {
