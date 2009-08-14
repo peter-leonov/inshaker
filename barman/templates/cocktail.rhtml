@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/cocktail/cocktail.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — <%= @name %></title>
 </head>
@@ -49,8 +49,8 @@
 							<a rel="tag" href="/cocktails.html#tag=<%=tag%>"><%= tag %></a><%= (@tags.last != tag) ? ", " : "."%>
 							<% end %>
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -76,8 +76,8 @@
 								<li><%= item %></li>
 								<% end %>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#<%=@name_eng.html_name%>")'></button>
+							<button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button>
+							<button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#<%=@name_eng.html_name%>")'><b>Распечатать</b></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
