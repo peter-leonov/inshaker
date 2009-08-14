@@ -12,7 +12,7 @@ text-decoration:none;}
 a:hover{text-decoration:underline;}
 img{vertical-align:middle;}
 a img{border:0;}
-input,select,textarea{font:1.1em Tahoma,Arial,sans-serif;}
+input,select,textarea,button{font:1.1em Tahoma,Arial,sans-serif;}
 input[type="password"],
 input[type="text"]{height:20px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
 ul{list-style-type:none;}
@@ -197,6 +197,24 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .b-gadget small{display:block;}
 .win-shop .b-gadget button{display:block;margin:13px 0 21px 0;}
 .win-shop .b-gadget .gallery{padding-top:0;}
+
+/* than great buttons, umh... */
+button.rounded { margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; background: url(ui.png) no-repeat; cursor: pointer; }
+button.rounded b { font-weight: inherit; text-shadow: 1px 1px 0 rgba(0,0,0,0.5); font-size: 12px; letter-spacing: 0.05em; }
+button.tiny { width: 110px; }
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+button.rounded b { filter: Shadow(Color=#444444,Direction=135,Strength=1); display: inline-block; font-size: 11px; font-weight: bold; line-height:12px; letter-spacing: 0.1px; }
+<!--# endif -->
+<!--# if expr="$HTTP_USER_AGENT = /Firefox\//" -->
+button.rounded b { position: relative; top: -3px; left: 1px; }
+<!--# endif -->
+<!--# if expr="$HTTP_USER_AGENT = /Opera\//" -->
+button.rounded b { position: relative; top: 3px; }
+<!--# endif -->
+<!--# if expr="$HTTP_USER_AGENT = /Safari\//" -->
+button.rounded b { position: relative; top: -1px; }
+<!--# endif -->
+
 
 
 <!--# include virtual="calculator.css" -->
