@@ -48,6 +48,23 @@ var GoodHelper = {
 		return unit;
 	},
 	
+    normalVolumeTxt: function(vol, unit){
+        switch(unit){
+            case "мл": if(vol >= 1000) { vol /= 1000; unit = "л";  }; break;
+            case  "л": if(vol < 1)     { vol *= 1000; unit = "мл"; }; break;
+              
+            case "гр": if(vol >= 1000) { vol /= 1000; unit = "кг"; }; break;
+            case "кг": if(vol < 1)     { vol *= 1000; unit = "гр"; }; break;
+        }
+
+        return vol + " " + unit;
+    },
+
+    normalVolumeTxtParsed: function(txt){
+		var arr  = txt.match(/^(.+)\ (.+)/);
+        return this.normalVolumeTxt(arr[1], arr[2]);
+    },
+
 	/**
 	 * Возвращает предполагаемое название емкости
 	 * для заданного ингредиента

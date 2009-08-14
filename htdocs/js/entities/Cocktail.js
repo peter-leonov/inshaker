@@ -5,6 +5,10 @@ Cocktail = function (data)
 
 Cocktail.prototype =
 {
+    getMatches: function() {
+        return Cocktail.matches[this.name];
+    },
+
     getRound: function() {
         return Cocktail.rounds[this.name];
     },
@@ -55,6 +59,7 @@ Object.extend(Cocktail,
               "миксуют в стакане", 
               "не очень просто"],
     rounds: {},
+    matches: {},
 
     dictNames: {},
     dictLetters: {},
@@ -214,8 +219,9 @@ Object.extend(Cocktail,
 				res.push(cocktail)
 			
 			this.rounds[cocktail.name] = jl - matches
+            this.matches[cocktail.name] = matches
 		}
-		return res.sort(this.roundSort).sort(this.lessIngredientsSort)
+		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
 	},
 	
 	getByFilters: function(filters, states) {
@@ -273,6 +279,12 @@ Object.extend(Cocktail,
     roundSort: function(a,b) {
         if (a.getRound() > b.getRound()) return 1;
         else if (a.getRound() == b.getRound()) return 0;
+        else return -1;
+    },
+
+    matchSort: function(a,b) {
+        if(a.getMatches() < b.getMatches()) return 1;
+        else if(a.getMatches() == b.getMatches()) return 0;
         else return -1;
     }
 })
