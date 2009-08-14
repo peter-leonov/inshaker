@@ -181,7 +181,7 @@ var Printer = {
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
-        cnt.innerHTML = pair[1];
+        cnt.innerHTML = GoodHelper.normalVolumeTxtParsed(pair[1]);
         cnt.className = "cnt";
 
         dd.appendChild(div);
@@ -205,7 +205,7 @@ var Printer = {
 		if(GoodHelper.isBottled(goods[name])){
             var span = document.createElement("span");
             var spanTxt = "(" + GoodHelper.bottleTxt(name, goods[name].unit, bottle.vol[0]);
-            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], goods[name].unit);
+            spanTxt += GoodHelper.normalVolumeTxt(bottle.vol[0], goods[name].unit);
             spanTxt += ")";
             span.className = "bottle";
             span.innerHTML = spanTxt;
