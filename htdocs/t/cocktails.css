@@ -45,13 +45,16 @@
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
 
-.pager-big {background:url(/t/bg/blocks/page-big-bg.png); width:54px; height:14px; padding: 5px; position:absolute; left: 567px; top: 390px; }
+.pager-big {width:64px; height:24px; position:absolute; left: 567px; top: 390px; }
 .pager-big .prev,
-.pager-big .next {float:left; display:block; background: url(/t/bg/blocks/page-big-buttons.png); width: 16px; height: 14px;} 
-.pager-big .next {margin-left: 3px; background-position: 16px 14px; }
+.pager-big .next {float:left; display:block; background: url(ui.png); width: 23px; height: 24px;} 
+.pager-big .prev {background-position: -150px 0; }
+.pager-big .next {background-position: -173px 0; }
 
-.pager-big .dis {background:url(/t/bg/blocks/page-big-buttons-dis.png); cursor:default;}
-.pager-big .next.dis {background-position: 16px 14px; }
+.pager-big .prev.disabled,
+.pager-big .next.disabled {cursor:default;}
+.pager-big .prev.disabled {background-position: -150px -25px; }
+.pager-big .next.disabled {background-position: -173px -25px; }
 
 .b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
 .b-content .pager .p-list {display: inline;}
