@@ -84,6 +84,7 @@ b.rb { right: 0; bottom: 0; }
 #top .nav a:hover{background:url(bg/nav/top.png) repeat-x 0 bottom;}
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
+#top .logo { width: 147px; height: 60px; background: url(ui.png) no-repeat -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 
 #bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
 #bottom .main-menu{float:right;}
