@@ -167,7 +167,8 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .alert{color:#eb1c57;}
 .win-shop .content .composition{list-style:disc inside;margin:23px 0 0 11px;min-height:4.5em;line-height:1.5;}
 .win-shop .content .desc{clear:both;padding:8px 28px 21px 0;}
-.win-shop .content .more{background:#f7f7f7 url(bg/cocktail/info.png) no-repeat 0 0;width:160px;height:47px;padding:12px 30px 0 56px;}
+.win-shop .content .more{position:relative;background-color:#f7f7f7;width:160px;height:47px;padding:12px 30px 0 56px;}
+.win-shop .content .more .icon{background:url(ui.png) no-repeat -425px 0;width:25px;height:30px;position: absolute;left:21px;top:16px;}
 .win-shop .content .more dl *{background:#f7f7f7;}
 .win-shop .content .less{background:#f7f7f7 url(bg/cocktail/info-red.png) no-repeat 0 0;width:160px;height:47px;padding:12px 30px 0 56px;}
 .win-shop .content .less dl *{background:#f7f7f7;}
