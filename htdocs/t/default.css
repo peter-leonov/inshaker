@@ -202,8 +202,8 @@ b.rb { right: 0; bottom: 0; }
 /* than great buttons, umh... */
 button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; background: url(ui.png) no-repeat; cursor: pointer; }
 button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; text-shadow: 1px 1px 0 #576d1d; }
-button.tiny { width: 110px; background-position: 0 -100px; }
-button.strong { background-position: 0 -50px; }
+button.tiny { width: 110px; background-position: 0 -50px; }
+button.strong { background-position: 0 -25px; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 button.rounded b { font-weight: bold; top: 5px; }
