@@ -177,7 +177,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
 .win-shop .content .sum p{float:left;text-align:left;}
 .win-shop .content .sum p small{display:block;padding-top:4px;}
-.win-shop .content .sum button{margin:8px 47px 0 0;}
+.win-shop .content .sum button{margin:6px 50px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
 .win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
 .win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
