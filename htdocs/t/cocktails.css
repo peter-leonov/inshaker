@@ -3,14 +3,14 @@
 #cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
 #cocktails-page .b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
-#search_tabs li { margin-right: 1px; float: left; background: url(bg/blocks/tab.png); width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
-#search_tabs li.selected {background: url(bg/blocks/tab-selected.png); cursor: default;}
+#search_tabs li { margin-right: 1px; float: left; background: url(ui.png) no-repeat -100px -75px; width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
+#search_tabs li.selected {background-position: 0 -75px; cursor: default;}
 
 #search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; width:540px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
-#alphabetical-ru a.selected-button {background:url(/t/bg/blocks/letter-hi-bg.png); cursor: default; color: #ec118f; }
+#alphabetical-ru a.selected-button {background:url(ui.png) no-repeat -200px -75px; cursor: default; color: #ec118f; }
 
 
 .autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
@@ -71,7 +71,7 @@
 
 
 .search-form {position:relative;}
-.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: #f4f7c2; line-height: 18px; height:18px; border: none;}
+.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: transparent; line-height: 18px; height:18px; border: none;}
 .search-form small{color:#f1f7b6;line-height:1.5;display:block;}
 .search-form dl{overflow:hidden;}
 .search-form dt{padding:0;font-size:92%;}
@@ -100,8 +100,8 @@
 .b-search .groups dd.dis span,
 .b-search .groups dd.dis a {color:#999;text-decoration:none;cursor:default;}
 
-.search-control {background:url(bg/blocks/green-line.png) no-repeat; padding:5px; color:#fff; height: 22px;}
-
+.search-control {background: url(ui.png) no-repeat 0 -100px; padding:5px; color:#fff; height: 22px;}
+.search-control#search_by_letter { background-position: 0 -150px; }
 
 #cocktails-page .b-content {width:100%;}
 #cocktails-page #b_search {display:none;}
