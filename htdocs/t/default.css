@@ -179,6 +179,10 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content form dl{margin:0 52px 6px 0}
 .win-shop .content form strong{font-weight:normal;padding-right:12px;}
 .win-shop .content form a{margin-left:4px;}
+.win-shop .content form dl dt { position: relative; padding-left: 14px; }
+.win-shop .content form dl dt .icon { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background: url(ui.png) no-repeat -400px -25px; }
+.win-shop .content form dl.empty dt .icon { display: none; }
+
 .win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
 .win-shop .content .sum p{float:left;text-align:left;}
 .win-shop .content .sum p small{display:block;padding-top:4px;}
