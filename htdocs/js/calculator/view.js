@@ -363,7 +363,13 @@ function CalculatorView() {
 			// red/green balloon
 			if(bottle.diff){
 				button.show()
-				button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
+				if (bottle.diff > 0) {
+					button.className = "bt-more";
+					button.title = "много";
+				} else {
+					button.className = "bt-less";
+					button.title = "мало";
+				}
 			}
 			else button.hide();
 		}
