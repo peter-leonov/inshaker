@@ -133,10 +133,11 @@ b.rb { right: 0; bottom: 0; }
 .b-more-cocktails li{width:8em;text-align:center;float:left;width:110px;}
 .b-more-cocktails img{display:block;margin:0 auto 5px;}
 .b-more-cocktails .prev,
-.b-more-cocktails .next{background:url(icon/strs-green.png) no-repeat -16px -24px;position:absolute;top:54px;right:-1px;height:14px;width:16px;z-index:2;}
-.b-more-cocktails .prev{background-position:0 -24px;left:0px;right:auto;}
-.b-more-cocktails .next.disabled{background-position:-16px -38px;cursor:default;}
-.b-more-cocktails .prev.disabled{background-position:0 -38px;cursor:default;}
+.b-more-cocktails .next{background:url(ui.png) no-repeat;position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.b-more-cocktails .prev{background-position:-500px 0;left:0px;}
+.b-more-cocktails .next{background-position:-525px 0;right:-2px;}
+.b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
+.b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
 .b-more .b-more-rec .point{width:130px; display:block}
 .b-more .b-more-rec {width:208px;margin-right:20px;}
 .b-more .b-more-rec .viewport{width:130px;left:21px;}

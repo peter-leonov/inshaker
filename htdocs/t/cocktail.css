@@ -30,10 +30,13 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #cocktail-page #view-how .ingredients .surface img{float:left;margin-left:20px;}
 #cocktail-page #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #cocktail-page #view-how .next,
-#cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;top:72px;right:19px;background:url(icon/strs-green.png) no-repeat 0 -72px;}
-#cocktail-page #view-how .next{background-position:-20px -72px;left:auto;right:19px;top:48px;}
-#cocktail-page #view-how .prev.disabled{background-position:0px -92px;cursor:default;}
-#cocktail-page #view-how .next.disabled{background-position:-20px -92px;cursor:default;}
+#cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;background:url(ui.png) no-repeat;}
+#cocktail-page #view-how .prev{background-position:-450px 0;top:72px;}
+#cocktail-page #view-how .next{background-position:-475px 0;top:48px;}
+#cocktail-page #view-how .prev.disabled,
+#cocktail-page #view-how .next.disabled{cursor:default;}
+#cocktail-page #view-how .prev.disabled{background-position:-450px -25px;}
+#cocktail-page #view-how .next.disabled{background-position:-475px -25px;}
 
 #view-how .recipe,
 #view-how .controls { margin-left: 200px; }
@@ -41,7 +44,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .recipe ul { line-height: 1.5; margin-left: 1.5em; }
 #view-how .recipe ul li { list-style: decimal; }
 #view-how .recipe dt { font-size:150%;padding:17px 0 11px 0; }
-#view-how .controls { margin-top: 22px; }
+#view-how .controls { margin-top: 30px; }
 #view-how .controls li { display: inline; }
 
 
