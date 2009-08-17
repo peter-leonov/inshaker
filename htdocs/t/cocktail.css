@@ -21,7 +21,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #cocktail-page #view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
 #cocktail-page #view-prepare h3{font-size:150%;margin:13px 0 10px;}
-#cocktail-page #view-prepare button{position:absolute;left:50%;margin-left:-4.45em;bottom:11px;}
+#cocktail-page #view-prepare button{display:block;margin:2em auto;}
 #cocktail-page #view-how{display:none;position:absolute;top:-139px;padding-top:139px;left:0;width:100%;height:100%;}
 #cocktail-page #view-how .ingredients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
 #cocktail-page #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
