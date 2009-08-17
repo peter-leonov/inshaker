@@ -37,21 +37,31 @@
 #b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
 #b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
 #b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
-#b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px}
+#b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px; position:relative;}
+
+#b-bill .print-call i { background: url(ui.png) no-repeat; height: 12px; width: 12px; position: absolute; top: 0; left: 0; }
+#b-bill #print_plan i,
+#b-bill #print_plan_inactive i { background-position: -400px -13px; }
+#b-bill #call_barmen i { background-position: -414px -13px; }
+#b-bill #buy_syrups i { background-position: -400px 0; width: 4px; left: 4px; }
+#b-bill #buy_shaker i { background-position: -410px 0; width: 6px; left: 3px; }
+
 
 #b-bill .print-call .tools { width: 120px; float:left; }
 #b-bill .print-call .buy   { width: 103px; float:right; }
 
-#b-bill #buy_shaker, #b-bill #buy_liquors, #b-bill #buy_syrups, #b-bill #print_plan, #b-bill #print_plan_inactive, #b-bill #call_barmen { padding-left: 16px; }
-#b-bill #buy_shaker { background: url(button/buy_shaker.png) no-repeat; }
-#b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }
-#b-bill #buy_syrups  { background: url(button/buy_syrups.png) no-repeat; }
+#b-bill #buy_shaker,
+#b-bill #buy_liquors,
+#b-bill #buy_syrups,
+#b-bill #print_plan,
+#b-bill #print_plan_inactive,
+#b-bill #call_barmen { padding-left: 16px; }
 
-#b-bill #print_plan, #b-bill #print_plan_inactive { background: url(button/print_plan.png) no-repeat; }
+/*#b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }*/
+
 #b-bill #print_plan { display: none; }
 #b-bill #print_plan_inactive { color: #888; }
 
-#b-bill #call_barmen { background: url(button/call_barmen.png) no-repeat; }
 #b-bill #buy_liquors, #b-bill #buy_shaker, #b-bill #call_barmen { margin-top: 3px;}
 
 ul#cart_cocktails {margin-top: 9px;}
