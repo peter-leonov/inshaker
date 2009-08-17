@@ -171,17 +171,17 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .less{position:relative;background-color:#f7f7f7;width:160px;height:47px;padding:12px 30px 0 56px;}
 .win-shop .content .more dl *,
 .win-shop .content .less dl *{background:#f7f7f7;}
-.win-shop .content .more .icon,
-.win-shop .content .less .icon { background: url(ui.png) no-repeat; width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
-.win-shop .content .more .icon { background-position: -200px -25px; }
-.win-shop .content .less .icon { background-position: -225px -25px; }
+.win-shop .content .more i,
+.win-shop .content .less i { background: url(ui.png) no-repeat; width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
+.win-shop .content .more i { background-position: -200px -25px; }
+.win-shop .content .less i { background-position: -225px -25px; }
 .win-shop .content form{padding:20px 0 12px 0;}
 .win-shop .content form dl{margin:0 52px 6px 0}
 .win-shop .content form strong{font-weight:normal;padding-right:12px;}
 .win-shop .content form a{margin-left:4px;}
 .win-shop .content form dl dt { position: relative; padding-left: 14px; }
-.win-shop .content form dl dt .icon { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background: url(ui.png) no-repeat -225px 0px; }
-.win-shop .content form dl.empty dt .icon { display: none; }
+.win-shop .content form dl dt i { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background: url(ui.png) no-repeat -225px 0px; }
+.win-shop .content form dl.empty dt i { display: none; }
 
 .win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
 .win-shop .content .sum p{float:left;text-align:left;}

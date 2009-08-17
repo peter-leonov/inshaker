@@ -388,7 +388,7 @@ function CalculatorView() {
 		{
 				dl         = document.createElement("dl");
 			var dt         = document.createElement("dt");
-			var icon       = document.createElement("span");
+			var icon       = document.createElement("i");
 			var a          = document.createElement("a");
 			var dd         = document.createElement("dd");
 			var strong     = document.createElement("strong");
