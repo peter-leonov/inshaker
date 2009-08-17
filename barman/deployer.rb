@@ -5,7 +5,7 @@ class Deployer
   
   module Config
     BASE_DIR    = Barman::HTDOCS_DIR
-    DEPLOY_DIRS = ["bars", "cocktails", "i", "events", "v"]
+    DEPLOY_DIRS = ["bars", "cocktails", "i", "events"]
   end
   
   def initialize
