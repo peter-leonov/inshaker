@@ -15,6 +15,7 @@ class DecorationProcessor < Barman::Processor
     @theme = YAML::load(File.open(Config::DECORATION_DIR + "decoration.yaml"))['Выбранная тема'] 
     @theme_dir  = Config::DECORATION_DIR + @theme + "/"
     
+    flush_spotlighted
     flush_theme_files
     flush_backgrounds
   end
@@ -37,6 +38,11 @@ class DecorationProcessor < Barman::Processor
       end
     end
   end
+  
+  def flush_spotlighted
+    FileUtils.cp_r "#{@theme_dir}/Spotlighted/icon.png", "#{Config::HTDOCS_DIR}/t/icon/spotlighted.png", @mv_opt
+  end
+  
   
   def flush_theme_files
     puts "Selected theme: #{@theme}"
