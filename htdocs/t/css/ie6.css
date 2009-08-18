@@ -95,10 +95,8 @@ body .illustration,body .mini-illustration,#poster,.b-more-cocktails .point img{
 #about-page .b-content .border-links, #delivery-page .b-content .border-links {width:581px;}
 #about-page #poster, #delivery-page #poster {position:absolute;top:42px;}
 #about-page #view-stat .stat .prev{background-position-x:0;} 
-#preloader{top:0;left:0;width:100%;height:100%;}
 
 
-#parties-page #want_popup_area{z-index: 99;position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
 #parties-page .party-photos .disabled { background-position-y: -60px; }
 #parties-page .party-photos .prev { background-position-x: -60px; }
 #parties-page .party-photos .prev,

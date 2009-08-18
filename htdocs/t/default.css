@@ -45,13 +45,6 @@ label{display:block;}
 #b-bill dd input,
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 /* small imgs */
-.gallery-nav ul{margin:0 auto;display:table;font-size:110%;line-height:2.5;}
-.gallery-nav li{text-align:center;float:left;margin:0 10px;}
-.gallery-nav li a{border:1px solid #73787b;display:block;width:38px;height:38px;overflow:hidden;}
-.gallery-nav li a:hover{border:3px solid #0392f1;width:34px;height:34px;}
-.gallery-nav li a:hover img{margin:-2px 0 0 -2px;}
-.gallery-nav li img{display:block;}
-#preloader{position:absolute;top:0;left:0;bottom:0;right:0;background:#fff url(/t/loader-black.gif) no-repeat center 200px;opacity:0.85;z-index:65535;text-align:center;padding:250px 0 0 0;color:#555;font-size:20px;}
 
 .b:before, .b:after { display: block; height: 1px; content: ''; border: 0 solid #fff; border-width: 0 1px; }
 .popup .b:before, .popup .b:after { border-color: #020202 }
