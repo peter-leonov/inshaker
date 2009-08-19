@@ -62,5 +62,4 @@
 #index-page .info-blocks .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 <!--# endif -->
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
-<!--# endif -->
+
