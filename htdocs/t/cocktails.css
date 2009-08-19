@@ -1,7 +1,7 @@
-#cocktails-page .body-wrapper { overflow: hidden; }
-#cocktails-page .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
-#cocktails-page .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
-#cocktails-page .b-title #spotlighted .group {display:none}
+.body-wrapper { overflow: hidden; }
+.b-title, #cocktail-page .b-title { padding-bottom: 11px; }
+.b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
+.b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
 #search_tabs li { margin-right: 1px; float: left; background: url(ui.png) no-repeat -100px -75px; width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0 -75px; cursor: default;}
@@ -19,13 +19,13 @@
 .search-error{display:none;height:12px;}
 
 
-#cocktails-page .ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
-#cocktails-page .ingreds-list a {color:#fff;}
-#cocktails-page .ingreds-list a:hover {text-decoration:line-through;}
+.ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(/t/bg/blocks/ingredients.png); color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
+.ingreds-list a {color:#fff;}
+.ingreds-list a:hover {text-decoration:line-through;}
 
-#cocktails-page .ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
-#cocktails-page .ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
-#cocktails-page #ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
+.ingreds-list .rem{ background:url(icon/remove_pink.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
+.ingreds-list .rem:hover {background:url(icon/remove_pink_hi.png); }
+#ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
 
 
 
@@ -105,17 +105,17 @@
 .search-control {background: url(ui.png) no-repeat 0 -100px; padding:5px; color:#fff; height: 22px;}
 .search-control#search_by_letter { background-position: 0 -150px; }
 
-#cocktails-page .b-content {width:100%;}
-#cocktails-page #b_search {display:none;}
-#cocktails-page #results_display {/*padding-left: 23px;*/}
-#cocktails-page #results_display .viewport {width:585px;margin-left:0px; }
-#cocktails-page #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
-#cocktails-page #results_display.byIngredients .viewport {width:440px;margin-left: 145px; }
-#cocktails-page #results_display.byIngredients .point {width:440px;padding: 0 35px 0 0;}
-#cocktails-page #results_display .surface { width: 20000px; }
-#cocktails-page #search_tips { height: 14px}
-#cocktails-page #search_tips a:hover {text-decoration:none;}
-#cocktails-page #search_tips a {border-bottom:1px #0392F1 dashed;}
+.b-content {width:100%;}
+#b_search {display:none;}
+#results_display {/*padding-left: 23px;*/}
+#results_display .viewport {width:585px;margin-left:0px; }
+#results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
+#results_display.byIngredients .viewport {width:440px;margin-left: 145px; }
+#results_display.byIngredients .point {width:440px;padding: 0 35px 0 0;}
+#results_display .surface { width: 20000px; }
+#search_tips { height: 14px}
+#search_tips a:hover {text-decoration:none;}
+#search_tips a {border-bottom:1px #0392F1 dashed;}
 
 #error_display{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;font-size:13px;padding:4px 0pt 0pt 35px;height:35px;}
 
@@ -129,10 +129,10 @@
 .b-content ul.cocktails img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
 
-#cocktails-page #top { left: -9px; }
-#cocktails-page .search-form {z-index:1;}
-#cocktails-page .search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
-#cocktails-page .pager-big .prev {background-position-x:-32px}
+#top { left: -9px; }
+.search-form {z-index:1;}
+.search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
+.pager-big .prev {background-position-x:-32px}
 
 .b-content ul.cocktails{zoom:1;margin-right:-20px;}
 .b-content ul.cocktails li{float:none;display:inline;zoom:1;}
@@ -150,11 +150,11 @@
 .b-search form dd span{white-space:normal;}
 .b-search form dd a{position:relative;right:-5px;background:red;}
 
-#cocktails-page #search_tabs { zoom:1}
+#search_tabs { zoom:1}
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
-#cocktails-page .search-form {z-index:1;}
-#cocktails-page .search-form input { height: 22px; line-height: 22px; position:absolute}
+.search-form {z-index:1;}
+.search-form input { height: 22px; line-height: 22px; position:absolute}
 <!--# endif -->
 
