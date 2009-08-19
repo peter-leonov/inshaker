@@ -8,35 +8,35 @@
 a.author { text-decoration: none; color: inherit; cursor: default; }
 a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
-#cocktail-page .body-wrapper { overflow: hidden; }
+.body-wrapper { overflow: hidden; }
 
-#cocktail-page .hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
-#cocktail-page .hreview .entry{padding:21px 16px 32px 218px;position:relative;}
-#cocktail-page .hreview .desc{font-size:120%;overflow:hidden;line-height:1.25;}
-#cocktail-page .hreview .desc h2{font-size:14px;font-weight:bold;padding:0 0 12px 16px;background:url(icon/love-small.png) no-repeat 0 .3em;}
-#cocktail-page .hreview .desc .description{padding-left:16px;}
-#cocktail-page .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
-#cocktail-page .hreview button { margin-right: 16px; }
-#cocktail-page .illustration{ position:absolute; left:-2px; bottom:-9px; z-index:2;} /* also applied to the dragged element */ 
+.hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
+.hreview .entry{padding:21px 16px 32px 218px;position:relative;}
+.hreview .desc{font-size:120%;overflow:hidden;line-height:1.25;}
+.hreview .desc h2{font-size:14px;font-weight:bold;padding:0 0 12px 16px;background:url(icon/love-small.png) no-repeat 0 .3em;}
+.hreview .desc .description{padding-left:16px;}
+.hreview .tags{font-size:110%;padding:29px 0 38px 0;}
+.hreview button { margin-right: 16px; }
+.illustration{ position:absolute; left:-2px; bottom:-9px; z-index:2;} /* also applied to the dragged element */ 
 
-#cocktail-page #view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
-#cocktail-page #view-prepare h3{font-size:150%;margin:13px 0 10px;}
-#cocktail-page #view-prepare button{display:block;margin:2em auto;}
-#cocktail-page #view-how{display:none;position:absolute;top:-139px;padding-top:139px;left:0;width:100%;height:100%;}
-#cocktail-page #view-how .ingredients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
-#cocktail-page #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
-#cocktail-page #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
-#cocktail-page #view-how .ingredients .surface{width:5000px;height:120px;}
-#cocktail-page #view-how .ingredients .surface img{float:left;margin-left:20px;}
-#cocktail-page #view-how .ingredients .point{width:360px;height:120px;float:left;}
-#cocktail-page #view-how .next,
-#cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;background:url(ui.png) no-repeat;}
-#cocktail-page #view-how .prev{background-position:-450px 0;top:72px;}
-#cocktail-page #view-how .next{background-position:-475px 0;top:48px;}
-#cocktail-page #view-how .prev.disabled,
-#cocktail-page #view-how .next.disabled{cursor:default;}
-#cocktail-page #view-how .prev.disabled{background-position:-450px -25px;}
-#cocktail-page #view-how .next.disabled{background-position:-475px -25px;}
+#view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
+#view-prepare h3{font-size:150%;margin:13px 0 10px;}
+#view-prepare button{display:block;margin:2em auto;}
+#view-how{display:none;position:absolute;top:-139px;padding-top:139px;left:0;width:100%;height:100%;}
+#view-how .ingredients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
+#view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
+#view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
+#view-how .ingredients .surface{width:5000px;height:120px;}
+#view-how .ingredients .surface img{float:left;margin-left:20px;}
+#view-how .ingredients .point{width:360px;height:120px;float:left;}
+#view-how .next,
+#view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;background:url(ui.png) no-repeat;}
+#view-how .prev{background-position:-450px 0;top:72px;}
+#view-how .next{background-position:-475px 0;top:48px;}
+#view-how .prev.disabled,
+#view-how .next.disabled{cursor:default;}
+#view-how .prev.disabled{background-position:-450px -25px;}
+#view-how .next.disabled{background-position:-475px -25px;}
 
 #view-how .recipe,
 #view-how .controls { margin-left: 200px; }
@@ -48,17 +48,17 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .controls li { display: inline; }
 
 
-#cocktail-page .view-how#main-content *{visibility:hidden;}
-#cocktail-page .view-how#main-content .illustration{visibility:visible;z-index:2;}
-#cocktail-page .view-video#main-content *{visibility:hidden;}
+.view-how#main-content *{visibility:hidden;}
+.view-how#main-content .illustration{visibility:visible;z-index:2;}
+.view-video#main-content *{visibility:hidden;}
 #view-video.popup{background-color:#000;}
-#cocktail-page #view-video div{margin:-40px auto 0;}
+#view-video div{margin:-40px auto 0;}
 
-#cocktail-page .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
-#cocktail-page .what-need dl{float:left;width:23em;margin-bottom:-1px;}
-#cocktail-page .what-need .tools{float:right;}
-#cocktail-page .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
-#cocktail-page .what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
-#cocktail-page .what-need dd:last-child{background:none;}
-#cocktail-page .what-need dd a{float:left;padding-right:18px;}
-#cocktail-page .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
+.what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
+.what-need dl{float:left;width:23em;margin-bottom:-1px;}
+.what-need .tools{float:right;}
+.what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
+.what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
+.what-need dd:last-child{background:none;}
+.what-need dd a{float:left;padding-right:18px;}
+.what-need strong{font-weight:normal;display:block;float:right;width:25%;}
