@@ -42,8 +42,9 @@ label{display:block;}
 /* yellow inputs */
 .win-shop .b-gadget .count input,
 .win-shop .content dd input,
-#b-bill dd input,
-.b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
+#b-bill dd input
+{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
+
 /* small imgs */
 
 .b:before, .b:after { display: block; height: 1px; content: ''; border: 0 solid #fff; border-width: 0 1px; }
@@ -227,13 +228,140 @@ button.rounded b { top: 4px; }
 button.rounded b { top: -1px; }
 <!--# endif -->
 
+/*<!-- if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#parties-page .party-teaser {width:520px;}
+<!-- endif -->*/
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+html{font-size :101%;}
+.gallery-nav ul li a,
+.you-choise span,
+.win-shop .content form{zoom:1;}
+#ingredients-page .count-coctails input{width:130px;}
+#top .nav img{padding-top:12px;}
+#top h2{top:2px;}
+#b-bill ul.money label input{position:absolute;left:0;}
+.win-shop .main .zoom{display:inline-block;}
+.gallery-nav ul{text-align:center;}
+.gallery-nav ul li{float:none;display:inline;zoom:1;}
+.dots dl{background-position-y:1.3em;}
+.win-shop .main .zoom b{zoom:1;height:12px;}
+.opacity, .win-shop .opacity{filter:alpha(opacity=75);}
+.column{border:1px solid #C0C0C0;}
+.column .body-wrapper{border:1px solid #fff;}
+.b{zoom:1;}
+#ingredients-page .count-cocktails input{width:90%;}
+.hide_control {display:none;}
+#order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
+img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
+
+
+#parties-page .party-previews .party { padding-bottom: 4px;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}
+body{height:100%;}
+#top .nav img{padding-top:12px;}
+
+#b-bill .total,#b-bill .total *,
+.b-content,
+.column,
+.body-wrapper,
+#b-bill dl,
+.b-title,
+.you-choise span a,
+.desc,.entry,
+.b-more-cocktails dd,
+.win-shop .win-bg,
+.win-shop .main .wrapper,
+.dots dl
+{zoom:1}
+
+.b-content{width:426px;overflow:hidden;}
+.you-choise span a{width:0;height:0;}
+.win-shop{position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
+.b-more dt b{margin-bottom:-2px;}
+.win{position:absolute; left:0; top:0;}
+.opacity, .win-shop .opacity{ width:100%;height:100%;position:absolute;left:0;top:0;filter:alpha(opacity=75);}
+
+
+#good_volumes.dots dt{margin-top:5px;}
+.win-shop .view-photo ul li{vertical-align:top;}
+.win-shop .gadget-wrapper{zoom:1;}
+.win-shop .view-photo{height:588px;}
+.win-shop .view-photo .bor-wr{margin-bottom:-2px;}
+.win-shop .win,.win-shop .win-bg{background-image:none;}
+#top h2 a,
+#top h1{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/inshaker.ru.png',sizingMethod='image');height:1px;width:1px;display:block;}
+#top h2 img,
+#top h1 img{display:none;}
+#ingredients-page .count-cocktails *{position:relative;z-index:2;zoom:1;}
+#ingredients-page .count-cocktails{position:absolute;top:expression(eval(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
+
+body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+
+#b-bill .body-wrapper {width:270px}
+#b-bill .b-title h1 {margin-left: 5px; }
+#b-bill .b-title label {zoom:1; position:relative; margin-left:auto;}
+#b-bill .b-title input {float:left; width: 265px; height:24px; line-height:24px; background:#FFF} 
+#b-bill .b-title .tip {scrollbar-base-color:expression(this.unselectable='on'); padding: 3px 6px; }
+
+
+#about-page #menu{/*z-index:20;position:absolute;*/ width:90%;}
+#about-page #menu a{width:1px;white-space:nowrap;}
+#about-page #menu a b{border:none;}
+#ingredients-page .b-content{width:100%;}
+#ingredients-page .count-cocktails input{width:90%;}
+#ingredients-page .you-choise a{font-size:1px;}
+#b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+#b-bill .total li a{position:relative;}
+
+/* background-position-[xy] hack */
+.b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
+#about-page .b-content, #delivery-page .b-content {width:590px;}
+#about-page .b-content .border-links, #delivery-page .b-content .border-links {width:581px;}
+#about-page #poster, #delivery-page #poster {position:absolute;top:42px;}
+#about-page #view-stat .stat .prev{background-position-x:0;} 
+
+
+#parties-page .party-photos .disabled { background-position-y: -60px; }
+#parties-page .party-photos .prev { background-position-x: -60px; }
+#parties-page .party-photos .prev,
+#parties-page .party-photos .next { display: block; }
+#parties-page .party-photos .hidden {display:none;}
+#want_link {margin: 29px 14px 0 0;}
+
+#parties-page .party-previews .prev { background-position-x: -52px; }
+
+/* label click bubbling in IE6 */
+label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}
+
+<!--# endif -->
+
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
+.win-shop .main{zoom:1;}
+
+#b-bill .b-title h1 {}
+#b-bill .b-title label { margin-left:-6px; }
+#b-bill .b-title input { height: 22px; line-height: 22px; background: #FFF; width:275px}
+#b-bill .b-title .tip { padding: 3px 0px; }
+
+input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" -->
+.column:before, .column:after { display: none; }
+#gifts-page .promos .place {padding-bottom:26px;}
+<!--# endif -->
+
 
 
 <!--# include virtual="calculator.css" -->
 
-<!--# include file="/t/theme.css" -->
 
-<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" --><!--# include file="/t/css/ff2.css" --><!--# endif -->
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" --><!--# include file="/t/css/ie6.css" --><!--# endif -->
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" --><!--# include file="/t/css/ie7.css" --><!--# endif -->
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" --><!--# include file="/t/css/ie8.css" --><!--# endif -->
+<!--# include file="/t/theme.css" -->

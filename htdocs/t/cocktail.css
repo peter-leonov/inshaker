@@ -62,3 +62,47 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .what-need dd:last-child{background:none;}
 .what-need dd a{float:left;padding-right:18px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+.hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
+.hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
+.hreview .menu p a.now b,
+.hreview .menu p a:hover b{background:#0392f1;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.hreview,
+.hreview .menu p a,
+.hreview .menu p
+{zoom:1}
+
+#poster,
+.hreview .entry .illustration {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+
+.b-content{width:590px;}
+.hreview .top-menu .b{width:100%;height:182px;overflow:hidden;}
+
+.b-content .entry{width:100%;/*background:green;*/}
+.hreview .desc{width:365px;}
+.hreview button{float:left;}
+
+#view-how .prev{background-position-x:0;}
+#view-prepare button{bottom:-50px;}
+
+#panel_cocktail{/*z-index:20;position:absolute;*/ width:90%;}
+#panel_cocktail a{width:1px;white-space:nowrap;}
+#panel_cocktail a b{border:none;}
+
+#poster{position:absolute;top:-28px;}
+
+#view-video .close{scrollbar-face-color:transparent;}
+
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
+.hreview button.bt-view-how{float:left;}
+.b-content .entry{width:356px;}
+<!--# endif -->
+
