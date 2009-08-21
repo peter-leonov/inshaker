@@ -13,7 +13,7 @@
 .column-r, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative;}
 #b-bill h2{padding:23px 0 19px 20px;font-size:120%;background:url(bg/bill/menus.png) repeat-x 0 100%;}
 #b-bill dl{position:relative; margin-top:1px;}
-#b-bill dt{ height: 20px; background:url(ui.png) no-repeat -225px -75px; color: #343b40; font-size: 11px; line-height: 19px; padding-left: 7px; color: #fff; }
+#b-bill dt{ height: 20px; background:url(common.png) no-repeat -200px -75px; color: #343b40; font-size: 11px; line-height: 19px; padding-left: 7px; color: #fff; }
 #b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
 #b-bill dd {font-size:120%;background:#fff; margin-left: 6px;}
 /* после калькулятора */
@@ -21,7 +21,7 @@
 #b-bill dd li a{display:block;width:125px;}
 #b-bill dd li label{position:absolute;top:10px;width:110px;right:30px;white-space:nowrap;}
 #b-bill dd li b{font-weight:normal;display:block;}
-#b-bill dd li button{position:absolute;top:12px;right:8px;width:16px;height:16px;border:none;padding:0;background: url(ui.png) no-repeat -500px -75px;overflow:hidden;text-indent:200px;cursor:pointer;}
+#b-bill dd li button{position:absolute;top:12px;right:8px;width:16px;height:16px;border:none;padding:0;background: url(common.png) no-repeat -500px -75px;overflow:hidden;text-indent:200px;cursor:pointer;}
 #b-bill dd li button.bt-less,
 #b-bill dd li button.bt-more { height:20px; }
 #b-bill dd li button.bt-less { background-position: -525px -75px; }
@@ -39,7 +39,7 @@
 #b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
 #b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px; position:relative;}
 
-#b-bill .print-call i { background: url(ui.png) no-repeat; height: 12px; width: 12px; position: absolute; top: 0; left: 0; }
+#b-bill .print-call i { background: url(common.png) no-repeat; height: 12px; width: 12px; position: absolute; top: 0; left: 0; }
 #b-bill #print_plan i,
 #b-bill #print_plan_inactive i { background-position: -400px -13px; }
 #b-bill #call_barmen i { background-position: -414px -13px; }

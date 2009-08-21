@@ -78,7 +78,7 @@ b.rb { right: 0; bottom: 0; }
 #top .nav a:hover{background:url(bg/nav/top.png) repeat-x 0 bottom;}
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
-#top .logo { width: 147px; height: 60px; background: url(ui.png) no-repeat -250px 0; display: block; text-indent: 200px; overflow: hidden; }
+#top .logo { width: 147px; height: 60px; background: url(common.png) no-repeat -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 
 #bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
 #bottom .main-menu{float:right;}
@@ -127,7 +127,7 @@ b.rb { right: 0; bottom: 0; }
 .b-more-cocktails li{width:8em;text-align:center;float:left;width:110px;}
 .b-more-cocktails img{display:block;margin:0 auto 5px;}
 .b-more-cocktails .prev,
-.b-more-cocktails .next{background:url(ui.png) no-repeat;position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.b-more-cocktails .next{background:url(common.png) no-repeat;position:absolute;top:54px;height:14px;width:14px;z-index:2;}
 .b-more-cocktails .prev{background-position:-500px 0;left:0px;}
 .b-more-cocktails .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
@@ -167,7 +167,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .more dl *,
 .win-shop .content .less dl *{background:#f7f7f7;}
 .win-shop .content .more i,
-.win-shop .content .less i { background: url(ui.png) no-repeat; width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
+.win-shop .content .less i { background: url(common.png) no-repeat; width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
 .win-shop .content .more i { background-position: -200px -25px; }
 .win-shop .content .less i { background-position: -225px -25px; }
 .win-shop .content form{padding:20px 0 12px 0;}
@@ -175,7 +175,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content form strong{font-weight:normal;padding-right:12px;}
 .win-shop .content form a{margin-left:4px;}
 .win-shop .content form dl dt { position: relative; padding-left: 14px; }
-.win-shop .content form dl dt i { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background: url(ui.png) no-repeat -225px 0px; }
+.win-shop .content form dl dt i { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background: url(common.png) no-repeat -225px 0px; }
 .win-shop .content form dl.empty dt i { display: none; }
 
 .win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
@@ -204,10 +204,10 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .b-gadget .gallery{padding-top:0;}
 
 /* than great buttons, umh... */
-button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; background: url(ui.png) no-repeat; cursor: pointer; }
+button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; background: url(common.png) no-repeat; cursor: pointer; }
 button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; text-shadow: 1px 1px 0 #576d1d; }
-button.tiny { width: 110px; background-position: 0 -50px; }
-button.strong { background-position: 0 -25px; }
+button.tiny { width: 110px; background-position: 0 -25px; }
+button.strong { background-position: 0 -50px; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 button.rounded b { font-weight: bold; top: 5px; }
