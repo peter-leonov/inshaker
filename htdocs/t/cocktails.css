@@ -86,18 +86,12 @@
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 
-.b-search .groups dd.selected-button {background:url(/t/bg/blocks/group-selected.png) no-repeat; width: 140px; height:17px; line-height:16px; }
-.b-search .groups dd.selected-button .rem{float:right;background:url(icon/remove.png);width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px 9px 0 0;}
-.b-search .groups dd.selected-button:hover .rem{background:url(icon/remove_hi.png);}
-.b-search .groups dd.selected-button span {color: #fff; text-decoration: none;}
 
-.b-search .groups dd { cursor: pointer; }
-.b-search .groups dd a{margin-left:10px;height:1.33em;}
-.b-search .groups dd span:hover { text-decoration: underline; }
-.b-search .groups dd.selected-button span:hover { text-decoration:none; }
-.b-search .groups dd span{margin-left: 6px; float: left; color: #0392f1; text-decoration: none;}
-.b-search .groups dd.dis span,
-.b-search .groups dd.dis a {color:#999;text-decoration:none;cursor:default;}
+.b-search .groups dd { padding-left: 6px; color: #0392f1; cursor: pointer; }
+.b-search .groups dd:hover { text-decoration: underline; }
+.b-search .groups dd.selected-button {background: url(cocktails.png) no-repeat -250px -100px; width: 140px; height:17px; line-height:16px; color: #fff; }
+.b-search .groups dd.selected-button:hover { background-position:-400px -100px; text-decoration: none; }
+.b-search .groups dd.disabled {color:#999;text-decoration:none;cursor:default;}
 
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 

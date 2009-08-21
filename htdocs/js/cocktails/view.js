@@ -53,7 +53,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onTagFilter(cssQuery("span", this)[0].innerHTML.toLowerCase());
+					self.controller.onTagFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -62,7 +62,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!strengthLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onStrengthFilter(cssQuery("span",this)[0].innerHTML.toLowerCase());
+					self.controller.onStrengthFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -71,7 +71,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < methodLinks.length; i++){
 			methodLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!methodLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onMethodFilter(cssQuery("span",this)[0].innerHTML.toLowerCase());
+					self.controller.onMethodFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -221,9 +221,10 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		} else this.filterElems.letter = nodes.lettersAll;
 		this.filterElems.letter.addClassName(styles.selected);
 		
+		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = tagElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.tag) {
 			    this.filterElems.tag = tagElems[i];
 			    this.filterElems.tag.className = styles.selected;
@@ -236,7 +237,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		
 		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
 		for(var i = 0; i < strengthElems.length; i++) {
-			var elemTxt = strengthElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.strength) {
 				this.filterElems.strength = strengthElems[i]; 
 				this.filterElems.strength.className = styles.selected;
@@ -247,9 +248,9 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			}
 		}
 		
-        var methodElems = nodes.methodsList.getElementsByTagName("dd");
+		var methodElems = nodes.methodsList.getElementsByTagName("dd");
 		for(var i = 0; i < methodElems.length; i++) {
-			var elemTxt = methodElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = methodElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.method) {
 				this.filterElems.method = methodElems[i]; 
 				this.filterElems.method.className = styles.selected;
@@ -331,13 +332,9 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
-			var a = document.createElement("a");
-			a.className = "rem";
 			var span = document.createElement("span");
 			var txt = document.createTextNode(set[i].capitalize());
-			span.appendChild(txt);
-			dd.appendChild(span);
-			dd.appendChild(a);
+			dd.appendChild(txt);
 			parent.appendChild(dd);
 		}		
 	};
