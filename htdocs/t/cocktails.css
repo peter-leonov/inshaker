@@ -19,13 +19,14 @@
 .search-error{display:none;height:12px;}
 
 
-.ingreds-list {overflow:hidden; width:574px; height: 22px; background: url(cocktails.png) no-repeat 0 -150px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;}
+.ingreds-list { position: relative; width:574px; height: 22px; background: url(cocktails.png) no-repeat 0 -150px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
+.ingreds-list .list { overflow: hidden; width:550px; white-space: nowrap; text-overflow: ellipsis; -o-text-overflow: ellipsis; }
 .ingreds-list a {color:#fff;}
 .ingreds-list a:hover {text-decoration:line-through;}
 
-.ingreds-list .rem{ background:url(cocktails.png) no-repeat 0 -175px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; float:right;}
+.ingreds-list .rem { position: absolute; top: 0; right: 0; background:url(cocktails.png) no-repeat 0 -175px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; }
 .ingreds-list .rem:hover {background-position: -14px -175px; }
-#ingredients_list {float:left; width: 550px; height:17px; line-height:15px;}
+#ingredients_list { width: 550px; height:17px; line-height:15px; }
 
 
 
