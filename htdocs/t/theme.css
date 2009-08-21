@@ -4,5 +4,7 @@ body {background-position:-139px -141px; background-repeat: repeat-x;}
 #cocktails-page body, #cocktail-page body { background-image:url(bg/cocktails/bg.png) }
 #index-page body, .index-page body, #about-page body { background-image:url(bg/index/bg.png) }
 
+#bars-page body, .bars-page body { background-image:url(bg/bars/bg.png) } 
+#cocktails-page body, .cocktails-page body { background-image:url(bg/cocktails/bg.png) } 
 #gifts-page body, .gifts-page body { background-image:url(bg/gifts/bg.png) } 
 #index-page body, .index-page body { background-image:url(bg/index/bg.png) } 
