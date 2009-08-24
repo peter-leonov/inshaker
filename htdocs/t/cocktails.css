@@ -71,7 +71,7 @@
 
 
 .search-form {position:relative;}
-.search-form input{width:575px; padding:2px 0 2px 4px;font-size:14px;text-align:left; background: transparent; line-height: 18px; height:18px; border: none;}
+.search-form input{width:559px; padding:2px 0 2px 20px;font-size:14px;text-align:left; background: transparent; line-height: 18px; height:18px; border: none;}
 .search-form small{color:#f1f7b6;line-height:1.5;display:block;}
 .search-form dl{overflow:hidden;}
 .search-form dt{padding:0;font-size:92%;}
