@@ -69,15 +69,32 @@ b.rb { right: 0; bottom: 0; }
 #top .nav{background:#000 url(bg/body/index.png) repeat-x 0 0;overflow:hidden;margin-left:190px;font-weight:bold;}
 #top .nav li{float:left;margin-right:16px;}
 #top .nav a{display:block;display:inline-block;height:44px;font-size:14px;text-decoration:none;color:#fff;border-bottom:5px solid #fff;line-height:48px;padding:8px 18px;}
-#top .nav a.now{background:url(bg/nav/top.png) repeat-x 0 19px !important;cursor:default;}
 #top .nav a:hover{border-bottom: 5px solid #8dd013;}
-#top .nav a.now:hover{border-bottom: none;}
+#cocktails-page #top .nav a.cocktails,
+#cocktail-page #top .nav a.cocktails,
+#bars-page #top .nav a.bars,
+#bar-page #top .nav a.bars,
+#gifts-page #top .nav a.gifts,
+#event-page #top .nav a.events
+{ background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
+
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
 #top .logo { width: 147px; height: 60px; background: url(common.png) no-repeat -250px 0; display: block; text-indent: 200px; overflow: hidden; }
+#index-page #top .logo { cursor: default; }
 
 #bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
 #bottom .main-menu{float:right;}
+#index-page #bottom .main-menu a.main,
+#cocktails-page #bottom .main-menu a.cocktails,
+#cocktail-page #bottom .main-menu a.cocktails,
+#bars-page #bottom .main-menu a.bars,
+#bar-page #bottom .main-menu a.bars,
+#gifts-page #bottom .main-menu a.gifts,
+#event-page #bottom .main-menu a.events
+{ color: inherit; cursor: default; text-decoration: none !important; }
+
+
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
 #alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background: url(/t/alchogol-sucks.png) no-repeat 0 0;}
 

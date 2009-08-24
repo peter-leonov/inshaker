@@ -1,5 +1,3 @@
-window.menuItem = "bars.html"
-
 BarsPage =
 {
 	initialize: function (nodes)

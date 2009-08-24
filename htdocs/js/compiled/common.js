@@ -13,8 +13,3 @@
 <!--# include file="/js/calculator/calculator.js" -->
 
 $.onload(function () { setTimeout(function () { $.include('/js/common/analytics.js') }, 1200) })
-$.onload(function () { setTimeout(function () {
-	var href = String(window.menuItem || location.pathname.split(/#/)[0]);
-	if (href != "/")
-		cssQuery('#top .nav a').forEach(function (v) { if (String(v.pathname).indexOf(href) > -1) { v.addClassName('now') } });
-}) })
