@@ -54,11 +54,6 @@ label{display:block;}
 
 .border { border-color: #c0c0c0; border-style: solid; border-width: 0 1px; height: 100%; margin-top: 1px; }
 .bor-wr { border-color: #c0c0c0; height: 100%; border-style: solid; margin: 0; position: relative; top: -1px; border-width: 1px 0; }
-/*.border>div*/ .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
-.border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
-.border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
-.border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
-.border-links a:hover { text-decoration:none}
 
 
 b.lt { left: 0; top: 0; }
@@ -322,7 +317,6 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 /* background-position-[xy] hack */
 .b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
 #about-page .b-content, #delivery-page .b-content {width:590px;}
-#about-page .b-content .border-links, #delivery-page .b-content .border-links {width:581px;}
 #about-page #poster, #delivery-page #poster {position:absolute;top:42px;}
 #about-page #view-stat .stat .prev{background-position-x:0;} 
 

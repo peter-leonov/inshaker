@@ -10,6 +10,12 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .body-wrapper { overflow: hidden; }
 
+.border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
+.border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
+.border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
+.border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
+.border-links a:hover { text-decoration:none}
+
 .hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
 .hreview .entry{padding:21px 16px 32px 218px;position:relative;}
 .hreview .desc{font-size:120%;overflow:hidden;line-height:1.25;}

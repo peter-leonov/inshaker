@@ -3,6 +3,13 @@ button.bt-send-disabled {background: url(button/grey-buttons.png) no-repeat 0 -3
 button.bt-send{background-position:0 -272px;height:38px;width:115px;}
 button.bt-send{background:url(button/n_green-buttons.png) no-repeat 0 -36px;width:155px;height:36px;cursor:pointer;}
 
+.border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
+.border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
+.border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
+.border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
+.border-links a:hover { text-decoration:none}
+
+
 .b-content .viewport { height: 450px; }
 #about-page .b-content{min-height:46em;}
 #about-page .content {display:none;}
@@ -52,6 +59,10 @@ button.bt-send{background:url(button/n_green-buttons.png) no-repeat 0 -36px;widt
 #form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.b-content .border-links {width:581px;}
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 .b-content .content ol {padding-left:23px;}
 <!--# endif -->
