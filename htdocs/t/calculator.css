@@ -42,7 +42,7 @@
 #b-bill .print-call i { background: url(common.png) no-repeat; height: 12px; width: 12px; position: absolute; top: 0; left: 0; }
 #b-bill #print_plan i,
 #b-bill #print_plan_inactive i { background-position: -400px -13px; }
-#b-bill #call_barmen i { background-position: -414px -13px; }
+#b-bill #call_barmen i { background-position: -414px -13px; width: 11px }
 #b-bill #buy_syrups i { background-position: -400px 0; width: 4px; left: 4px; }
 #b-bill #buy_shaker i { background-position: -410px 0; width: 6px; left: 3px; }
 
