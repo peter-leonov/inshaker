@@ -68,9 +68,10 @@ b.rb { right: 0; bottom: 0; }
 #top h1{float:left; position:relative; left:-9px; bottom: -3px;}
 #top .nav{background:#000 url(bg/body/index.png) repeat-x 0 0;overflow:hidden;margin-left:190px;font-weight:bold;}
 #top .nav li{float:left;margin-right:16px;}
-#top .nav a{display:block;display:inline-block;height:49px;font-size:14px;text-decoration:none;color:#fff;line-height:48px;padding:8px 18px;}
+#top .nav a{display:block;display:inline-block;height:44px;font-size:14px;text-decoration:none;color:#fff;border-bottom:5px solid #fff;line-height:48px;padding:8px 18px;}
 #top .nav a.now{background:url(bg/nav/top.png) repeat-x 0 19px !important;cursor:default;}
-#top .nav a:hover{background:url(bg/nav/top.png) repeat-x 0 bottom;}
+#top .nav a:hover{border-bottom: 5px solid #8dd013;}
+#top .nav a.now:hover{border-bottom: none;}
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
 #top .logo { width: 147px; height: 60px; background: url(common.png) no-repeat -250px 0; display: block; text-indent: 200px; overflow: hidden; }
