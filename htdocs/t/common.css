@@ -99,9 +99,6 @@ b.rb { right: 0; bottom: 0; }
 
 
 /* in cocktail and about */
-.b-content .top-menu{background:#000 url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
-.b-content .top-menu img{position:absolute;bottom:0;left:0;}
-.b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
 .popup{font-size:120%;line-height:1.67;display:none;position:absolute;top:-140px;padding:80px 0 60px 0;min-height:100%;color:#fff;margin-bottom:-102px;left:0;width:100%;background:#000;background:rgba(0,0,0,.9);}
 .popup h3{font-size:150%;font-weight:bold;margin:-52px 20px -1px;}
 .popup p{padding:20px 40px 0 20px;}
