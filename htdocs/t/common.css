@@ -22,7 +22,7 @@ table td{padding:0;}
 .to-print{display:none;}
 
 html{background-color:#fff;}
-body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 90px 0;}
+body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
 
 /* Image buttons */
 /*button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}*/
@@ -83,7 +83,7 @@ b.rb { right: 0; bottom: 0; }
 #bottom{font-size:1.1em;line-height:1.7;overflow:hidden;color:#788894;clear:both;padding-top:40px;}
 #bottom .main-menu{float:right;}
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
-#alcohol-harm {position: absolute; left: 0px; bottom: -75px; width: 960px; height: 40px; background: url(/t/alchogol-sucks.png) no-repeat 0 0;}
+#alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background: url(/t/alchogol-sucks.png) no-repeat 0 0;}
 
 
 /* in almost all */
