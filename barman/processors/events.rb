@@ -1,6 +1,6 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
-require 'lib/string_util_1.8'
 require 'lib/csv'
 $KCODE = 'u'
 
@@ -46,21 +46,23 @@ class EventsProcessor < Barman::Processor
       city_path = root_dir.path + city_dir
       if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
         # @entities[city_dir] = []
-        puts city_dir
+        say city_dir
+        indent do
         entities_dir = Dir.new(city_path)
         entities_dir.each do |entity_dir|
           entity_path = entities_dir.path + "/" + entity_dir
           if File.ftype(entity_path) == "directory" and !@excl.include?(entity_dir)
-            puts ".." + entity_dir
-            
+            say entity_dir
+            indent do
             @entity = {}
             parse_about  entity_path
             process_images entity_path
-            process_rating entity_path
             # @entities[city_dir] << @entity
             @entities[@entity[:name]] = @entity
+            end # indent
           end
         end
+        end # indent
       end
     end
   end
@@ -213,16 +215,22 @@ private
     @entity[:low] = low
     
     rating = yaml['Рейтинг']
-    data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
-    @entity[:rating] = data
-    
-    type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
-    if type
-      data[:type] = type
-    end
-    
-    if rating['В обратном порядке'] == 'да'
-      data[:reverse] = true
+    if rating
+      data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
+      @entity[:rating] = data
+      
+      type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
+      if type
+        data[:type] = type
+      end
+      
+      if rating['В обратном порядке'] == 'да'
+        data[:reverse] = true
+      end
+      
+      process_rating src_dir
+    else
+      say "без рейтинга"
     end
   end
   
