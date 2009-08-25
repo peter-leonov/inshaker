@@ -417,7 +417,8 @@ EventPage.view =
 		var sponsor = sponsorsSet[0]
 		if (sponsor)
 		{
-			nodes.sponsorsHighTitle.innerHTML = sponsor.name
+			if (nodes.sponsorsHighTitle)
+				nodes.sponsorsHighTitle.innerHTML = sponsor.name
 			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
 		}

@@ -109,6 +109,7 @@ class EventsProcessor < Barman::Processor
     @entities.each do |name, entity|
       # YAGNI
       entity.delete(:subject)
+      entity.delete(:high_head)
       entity.delete(:promo)
       entity.delete(:imgdir)
     end
@@ -156,9 +157,6 @@ private
     @entity[:date_ru]      = ru_date_str
     @entity[:address]   = yaml['Ссылка на место']
     
-    # @entity[:high]      = yaml['Генеральные спонсоры']
-    # @entity[:medium]    = yaml['Спонсоры']
-    # @entity[:low]       = yaml['При поддержке']
     @entity[:rating]    = {}
     
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
@@ -175,10 +173,14 @@ private
     
     arr = []
     if yaml['Генеральные спонсоры']
-      yaml['Генеральные спонсоры'].each do |v|
+      yaml['Генеральные спонсоры']['Баннеры'].each do |v|
         hash = {:name => v[0], :src => v[1], :href => v[2]}
         arr << hash
         FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
+      @entity[:high_head] = yaml['Генеральные спонсоры']['Заголовок']
+      if @entity[:high_head] == 'нет'
+        @entity[:high_head] = nil
       end
     end
     @entity[:high] = arr
