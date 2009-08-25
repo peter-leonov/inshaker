@@ -34,25 +34,25 @@ function CalculatorView() {
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
 	
-	var dropTargetHeight = 70;
+	var dropTarget = $(this.ID_DROP_TARGET);
 	var dragAnimation;
-	$(this.ID_DROP_TARGET).style.height = dropTargetHeight + "px";
 	
 	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
-		this.style.height = dropTargetHeight + "px";
+		dragAnimation.stop();
+		this.style.height = ''
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
 	$(this.ID_DROP_TARGET).onDragEnd = function(){
 		dragAnimation.stop();
-		this.style.height = dropTargetHeight + "px";
+		this.style.height = ''
 	};
 	
 	$(this.ID_DROP_TARGET).onDragStart = function(element){
-		var gap = 50;
-		if(this.offsetHeight < element.offsetHeight+gap && this.style.display != "none") {
-			dragAnimation = this.animate("easeInCubic", {height: element.offsetHeight+gap}, 0.15);
-		}
+		var h = element.offsetHeight + 50
+		if (h < 100)
+			h = 100
+		dragAnimation = this.animate("easeInCubic", {height: [dropTarget.offsetHeight, h]}, 0.15);
 	};
 	
 	$(this.ID_CONTENTS).onDrop = function(cocktailName){

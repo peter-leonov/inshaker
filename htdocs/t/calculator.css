@@ -66,8 +66,8 @@
 
 ul#cart_cocktails {margin-top: 9px;}
 
-#cart_contents{display:none;}
-#cart_totals{display:none;}
-#cart_draghere{display:none;font-weight:bold;background:transparent url(bg/bill/drag-bg.png) no-repeat 5px 24px;padding:24px 24px 0pt;font-size:12px;}
-#cart_draghere div{width:212px;padding:14px 0 10px 26px;}
-#cart_draghere b{color:#7ca527;}
+#cart_contents{ display: none; }
+#cart_totals { display: none; }
+#cart_draghere { display: none; position: relative; font-weight: bold; font-size: 12px; border: 1px dashed #999; width: 208px; height: 40px; margin: 24px 0px 0 5px; padding: 14px 6px 10px 45px; }
+#cart_draghere i { position: absolute; left: 15px; top: 20px; width: 16px; height: 16px; background: url(common.png) no-repeat -400px -25px; }
+#cart_draghere b { color: #7ca527; }
