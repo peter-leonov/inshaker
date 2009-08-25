@@ -126,7 +126,7 @@ b.rb { right: 0; bottom: 0; }
 .b-more .column{position:relative;}
 .b-more dl{height:163px;font-size:120%;height:11.24em;background:#fff url(bg/body/green-more-title.png) repeat-x 0 -19px;}
 .b-more dt{background:#77a300 url(cocktail.png) no-repeat 0 -20px;margin:-5px -10px 0;padding:0 1px;height:29px;}
-.b-more dt b{background:#77a300 url(cocktail.png) no-repeat 0 -19px;color:#fff;padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:14px;font-weight:normal;display:block;height:31px;}
+.b-more dt b{background:#77a300 url(cocktail.png) no-repeat 0 -19px;color:#fff;padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
 .b-more dd{line-height:1.17;position:relative;}
 .b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:120px; width:330px;}
 .b-more-cocktails .surface{width:20000px;}
