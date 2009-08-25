@@ -111,8 +111,6 @@
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px #0392F1 dashed;}
 
-#error_display{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;font-size:13px;padding:4px 0pt 0pt 35px;height:35px;}
-
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .b-search form dl,

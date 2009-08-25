@@ -24,9 +24,6 @@ table td{padding:0;}
 html{background-color:#fff;}
 body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
 
-/* Image buttons */
-/*button{background:url(button/green-buttons.png) no-repeat 0 0;width:10px;height:20px;margin:0;padding:0;border:0;overflow:hidden;text-indent:-100em;}*/
-
 form button{vertical-align:top;}
 form input{vertical-align:middle;}
 form p{display:inline;}
@@ -165,7 +162,6 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .main .zoom{text-align:center;margin:0 auto 37px;display:table;text-decoration:none;}
 .win-shop .main .zoom img{display:block;margin:10px auto 13px;}
 .win-shop .main .zoom span{text-decoration:underline;}
-.win-shop .main .zoom b{background:url(icon/zoom.png) no-repeat 0 center;padding-left:11px;text-decoration:none !important;}
 .win-shop .main .gallery{float:left;width:290px;margin-top:-20px;}
 .win-shop .main .gallery ul{margin-bottom:35px;}
 .win-shop .content{font-size:120%;float:left;width:328px;}

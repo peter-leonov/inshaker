@@ -43,5 +43,5 @@
 
 #form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
 
-button.bt-send-disabled {background: url(button/grey-buttons.png) no-repeat 0 -30px;height:36px;width:110px;}
+button.bt-send-disabled {height:36px;width:110px;}
 button.bt-send{background-position:0 -272px;height:38px;width:115px;}

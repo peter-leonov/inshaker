@@ -14,7 +14,7 @@
 .info-popup-area .body-wrapper {padding: 14px 18px 10px;}
 .info-popup-area .close-controls {clear:both; width:960px; z-index: 5; height: 10px; margin: 0 auto; position: relative; top: 41px;}
 .info-popup-area .close-controls .text  { float: left; color:#FFF; border-bottom:1px dashed; text-decoration:none;}
-.info-popup-area .close-controls .cross { float: right; display: block; background: url('/t/button/close_cross.png') no-repeat; height: 7px; width: 7px; margin-top:5px}
+.info-popup-area .close-controls .cross { float: right; display: block; background: url('/t/close.png') no-repeat; height: 7px; width: 7px; margin-top:5px}
 
 .info-popup-area .hrefs .arrow {color:#000; font-size: 200%; text-decoration:none; }
 .info-popup-area .hrefs .arrow.disabled { cursor:default; color: #C0C0C0; }

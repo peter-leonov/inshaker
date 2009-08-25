@@ -11,7 +11,6 @@
 #b-bill .b-title .tip { -moz-user-select: none; font-size: 20px; position:absolute; top:0; left:-1px; color:#BBB; padding: 3px 0; }
 
 .column-r, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative;}
-#b-bill h2{padding:23px 0 19px 20px;font-size:120%;background:url(bg/bill/menus.png) repeat-x 0 100%;}
 #b-bill dl{position:relative; margin-top:1px;}
 #b-bill dt{ height: 20px; background:url(common.png) no-repeat -200px -75px; color: #343b40; font-size: 11px; line-height: 19px; padding-left: 7px; color: #fff; }
 #b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
@@ -56,8 +55,6 @@
 #b-bill #print_plan,
 #b-bill #print_plan_inactive,
 #b-bill #call_barmen { padding-left: 16px; }
-
-/*#b-bill #buy_liquors { background: url(button/buy_liquors.png) no-repeat; }*/
 
 #b-bill #print_plan { display: none; }
 #b-bill #print_plan_inactive { color: #888; }
