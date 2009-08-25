@@ -148,7 +148,7 @@ class IngredientsProcessor < Barman::Processor
     
     img = dir.path + "/i_big.png"
     if File.exists?(img)
-      flush_pngm_img(img, Config::INGREDS_ROOT + name.trans + ".png")
+      flush_masked_optimized_pngm_img(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png") 
     else
       error "нет большой картинки (файл #{img})"
     end

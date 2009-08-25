@@ -27,7 +27,7 @@ module Barman
     
     def initialize
       @mv_opt = {:remove_destination => true}
-      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml"]
+      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml", "mask.png", "bg_mask.png"]
       @indent = 0
       @errors_count = 0
       @errors_messages = []
@@ -50,6 +50,25 @@ module Barman
       unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
         error "не могу добавить белый фон (#{src} → #{dst})"
       end
+    end
+
+    def optimize_img(src, level = 5)
+      unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
+        error "не могу оптимизировать изображение (#{src})"
+      end
+    end
+
+    def mask_img(mask, src, dst, mode)
+      unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"}) 
+        error "не могу наложить маску (#{src} → #{dst})"
+      end
+    end
+
+    def flush_masked_optimized_pngm_img(mask, src, dst, mode = "CopyOpacity")
+      tmp = "/tmp/pic.png"
+      mask_img(mask, src, tmp, mode)
+      optimize_img(tmp)
+      flush_pngm_img(tmp, dst)
     end
     
     def indent
