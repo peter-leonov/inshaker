@@ -23,6 +23,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview{background:url(bg/cocktail/bgs.png) repeat-x 0 100%;}
 .hreview .entry{padding:21px 16px 32px 218px;position:relative;}
 .hreview .desc{font-size:120%;overflow:hidden;line-height:1.25;}
+.hreview .desc h2{position:relative;font-size:14px;font-weight:bold;padding:0 0 12px 16px;}
+.hreview .desc h2 i { position: absolute; left: -5px; top: 4px; width: 16px; height: 10px; background: url(common.png) no-repeat -420px -25px; }
 .hreview .desc .description{padding-left:16px;}
 .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
 .hreview button { margin-right: 16px; }
