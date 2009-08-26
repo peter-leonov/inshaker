@@ -1,6 +1,8 @@
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
+.b-more dt{background:#77a300 url(cocktail.png) no-repeat 0 -20px;}
+.b-more dt b{background:#77a300 url(cocktail.png) no-repeat 0 -19px;color:#fff;}
 
 #author,
 #where-to-taste { display: none; }
