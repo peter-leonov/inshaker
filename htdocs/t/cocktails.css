@@ -3,14 +3,14 @@
 .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
 .b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
-#search_tabs li { margin-right: 1px; float: left; background: url(cocktails.png) no-repeat -100px -100px; width: 94px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
+#search_tabs li { margin-right: 1px; float: left; background: url(cocktails.png) no-repeat -125px -100px; width: 112px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0px -100px; cursor: default;}
 
 #search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; width:540px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
-#alphabetical-ru a.selected-button {background:url(cocktails.png) no-repeat -200px -100px; cursor: default; color: #ec118f; }
+#alphabetical-ru a.selected-button {background:url(cocktails.png) no-repeat -125px -125px; cursor: default; color: #ec118f; }
 
 
 .autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
@@ -81,7 +81,7 @@
 
 .b-search{position:absolute;margin-right:2em;width:14em;}
 #all_list{font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
-#all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background:url(cocktails.png) no-repeat -225px -100px; }
+#all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background:url(cocktails.png) no-repeat -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
