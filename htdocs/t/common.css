@@ -108,7 +108,6 @@ b.rb { right: 0; bottom: 0; }
 
 .b-title h1,
 .b-title h2{font-size:20px;margin-left:-1px;}
-.b-title #spotlighted { display: none; position:absolute;right:0;bottom:15px;font-size:110%; width:21px; height: 21px; background:transparent url(/t/icon/spotlighted.png) no-repeat;}
 .b-title #photographer {display:none; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
 .b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 

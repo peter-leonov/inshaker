@@ -29,7 +29,9 @@
 #cocktails-page .b-content .pager .p-list a.selected-button,
 #cocktails-page #all_list i,
 #cocktails-page .b-search .groups dd.selected-button,
+#cocktails-page .b-title #spotlighted,
 #cocktails-page .search-control { background-image: url(cocktails.png) }
+#cocktails-page #spotlighted { width: 34px; height: 34px; right: 0; bottom: 8px; }
 #cocktails-page #top .nav a:hover { border-bottom-color: #b72f25; }
 #cocktails-page #search_tabs li { color: #717171; text-shadow: 0 1px #fff; font-weight: bold; /*letter-spacing: 0.5px;*/ }
 #cocktails-page #search_tabs li.selected { color: #f3ede3; text-shadow: 0 1px #891408; }

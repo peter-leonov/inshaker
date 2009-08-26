@@ -27,6 +27,7 @@
 .ingreds-list .rem { position: absolute; top: 0; right: 0; background:url(cocktails.png) no-repeat 0 -175px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; }
 .ingreds-list .rem:hover {background-position: -14px -175px; }
 #ingredients_list { width: 550px; height:17px; line-height:15px; }
+#spotlighted { position: absolute; right: 0; bottom: 0; width: 0; height: 0; background: url(cocktails.png) no-repeat -550px -100px;}
 
 
 
