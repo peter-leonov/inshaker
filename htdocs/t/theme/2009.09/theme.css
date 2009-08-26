@@ -3,18 +3,21 @@
 #cocktails-page .b-more-cocktails .next,
 #cocktails-page .win-shop .content .less i,
 #cocktails-page .win-shop .content form dl dt i,
-#cocktails-page button.rounded
-{ background-image: url(common.png); }
-#cocktails-page #alcohol-harm
-{ background-image: url(alcohol-harm.png) }
-
+#cocktails-page button.rounded { background-image: url(common.png); }
+#cocktails-page #alcohol-harm { background-image: url(alcohol-harm.png) }
+#cocktails-page #branded-image { background-image: url(image.png); width: 196px; height: 528px; right: 50px; bottom: 120px; }
+#cocktails-page a { color: #231f20; }
+#cocktails-page #bottom { color: #b6a258; text-shadow: #000 0 1px; }
+#cocktails-page #bottom a { color: #f1ece3; }
 
 /* calculator.css */
 #cocktails-page #b-bill dt,
 #cocktails-page #b-bill dd li button,
 #cocktails-page #b-bill .print-call i,
-#cocktails-page #cart_draghere i
-{ background-image: url(common.png); }
+#cocktails-page #cart_draghere i { background-image: url(common.png); }
+#cocktails-page #cart_draghere b { color: #a91f12; }
+#cocktails-page #alphabetical-ru a { color: #f5efba; }
+#cocktails-page #alphabetical-ru a.selected-button { color: #a91f12; }
 
 /* cocktails.css */
 #cocktails-page #search_tabs li,
@@ -26,18 +29,31 @@
 #cocktails-page .b-content .pager .p-list a.selected-button,
 #cocktails-page #all_list i,
 #cocktails-page .b-search .groups dd.selected-button,
-#cocktails-page .search-control
-{ background-image: url(cocktails.png) }
+#cocktails-page .search-control { background-image: url(cocktails.png) }
+#cocktails-page #top .nav a:hover { border-bottom-color: #b72f25; }
+#cocktails-page #search_tabs li { color: #717171; text-shadow: 0 1px #fff; font-weight: bold; /*letter-spacing: 0.5px;*/ }
+#cocktails-page #search_tabs li.selected { color: #f3ede3; text-shadow: 0 1px #891408; }
+#cocktails-page #ingredients_list,
+#cocktails-page .ingreds-list a { color: #343b40; text-shadow: 0 1px #fff; }
+#cocktails-page .pager-big .prev,
+#cocktails-page .pager-big .next { height: 25px; }
+#cocktails-page .b-content .pager .p-list a { padding: 2px 6px 3px; }
+#cocktails-page .b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 2px; }
+#cocktails-page .b-content .pager .p-list .selected-button { color: #f3ede3; text-shadow: 0 1px #891408; }
+#cocktails-page { background: #000 url(bg.jpg) center top; right: 30px; bottom: 120px; }
+#cocktails-page #b-bill dd li b { color: #888; }
+#cocktails-page .search-form input { color: #362313; }
+#cocktails-page .b-search .groups dd { color: #231f20; }
+#cocktails-page .b-search .groups dd.selected-button { color: #f1ece3; }
+#cocktails-page .b-search .groups dd.disabled { color: #888; }
+
 
 /* cocktail.css */
 #cocktail-page .b-more dt,
-#cocktail-page .b-more dt b
-{ background-image: url(cocktail.png) }
-#cocktail-page .hreview .desc h2 i
-{ background-image: url(common.png); }
+#cocktail-page .b-more dt b { background-image: url(cocktail.png) }
+#cocktail-page .hreview .desc h2 i { background-image: url(common.png); }
 
 /* ingredients.css */
 #ingredients-page .you-choise a,
 #ingredients-page .top-alphabetical .now,
-#ingredients-page .count-cocktails
-{ background-image: url(ingredients.png) }
+#ingredients-page .count-cocktails { background-image: url(ingredients.png) }
