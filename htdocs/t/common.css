@@ -94,6 +94,7 @@ b.rb { right: 0; bottom: 0; }
 
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
 #alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background: url(/t/alcohol-harm.png) no-repeat 0 0;}
+#branded-image { position: absolute; z-index: -1; right: 0; bottom: 0; width: 0; height: 0; background: no-repeat 0 0; }
 
 
 /* in almost all */
