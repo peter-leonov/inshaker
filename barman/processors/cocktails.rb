@@ -45,6 +45,9 @@ class CocktailsProcessor < Barman::Processor
       opts.on("-f", "--force", "Force update without mtime based cache") do |v|
         @options[:force] = v
       end
+      opts.on("-t", "--text", "Text only processing (for debug)") do |v|
+        @options[:text] = v
+      end
     end.parse!
     
     prepare_dirs
@@ -95,7 +98,7 @@ class CocktailsProcessor < Barman::Processor
     deleted = @cocktails.keys - @cocktails_present.keys
     deleted.each do |name|
       say name
-      update_images name, @cocktails[name], true
+      update_images name, @cocktails[name], true unless @options[:text]
       @cocktails.delete(name)
     end
     say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
@@ -141,7 +144,7 @@ class CocktailsProcessor < Barman::Processor
     
     @cocktails[@cocktail["name"]] = @cocktail
     
-    update_images @cocktail["name"], @cocktail
+    update_images @cocktail["name"], @cocktail unless @options[:text]
     update_html @cocktail["name"], @cocktail
     update_video dir, @cocktail["name"], @cocktail
     end # indent

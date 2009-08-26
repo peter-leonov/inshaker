@@ -58,10 +58,12 @@
 		
 		<div id="sidebar">
 			<div id="main-sponsors" class="column"><div class="body-wrapper">
-				<div class="b-title">
-					<h3>Генеральный партнер</h3>
-					<h4></h4>
-				</div>
+				
+					<div class="b-title">
+						<h3>Генеральный партнер</h3>
+						<h4></h4>
+					</div>
+				
 				<a class="banner"></a>
 			</div></div>
 			<div id="comming">

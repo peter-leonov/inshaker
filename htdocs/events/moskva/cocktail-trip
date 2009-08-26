@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading cocktail-trip status-holding">
 <head>
 	<!--# include file="/inc/head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — <%= @name %></title>
+	<title>Inshaker — Неделя молекулярной миксологии</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -27,48 +28,27 @@
 		<div class="column-main-container">
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
-					<h1 id="event-name"><%= @name %></h1>
-					<h2><%= @header %></h2>
+					<h1 id="event-name">Неделя молекулярной миксологии</h1>
+					<h2>Не пропусти!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
-						<% if @address %>
-							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @adate || @date_ru %></h2>
-						<% else %>
-							<h2><%= @city %> — <%= @venue %>, <%= @adate || @date_ru %></h2>
-						<% end %>
-						<p class="parole"><%= @target %></p>
 						
-						<% if @status == "preparing" %>
-							<a class="sign-on"><span>Не пропусти!</span> →</a>
+							<h2>Москва — <a href="http://www.inshaker.ru/bars/moskva/city_space.html">Сити Спейс</a>, 16-23 cентября, 2009</h2>
+						
+						<p class="parole">Аристотель Пападополус и Бек Нарзи готовят молекулярные коктейли!</p>
+						
+						
 							<dl class="info">
-								<% if @enter %>
-									<dt>Вход:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
-								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
+								
+									<dt>Вход:</dt><dd><span id="invitations-only">+7 (495) 221-53-57</span></dd>
+								
+								
+									<dt>Адрес:</dt><dd><a href="http://www.inshaker.ru/bars/moskva/city_space.html">карта проезда</a></dd>
+								
 							</dl>
-						<% elsif @status == "holding" %>
-							<dl class="info">
-								<% if @enter %>
-									<dt>Вход:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
-								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
-						<% elsif @status == "archive" %>
-							<% if @photos %>
-								<a href="<%= @photos %>" class="view-photos"><span>Посмотри фото!</span> →</a>
-							<% end %>
-							<dl class="info">
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
-						<% end %>
+						
 					</div>
 				</div>
 			</div></div>
@@ -77,12 +57,12 @@
 		
 		<div id="sidebar">
 			<div id="main-sponsors" class="column"><div class="body-wrapper">
-				<% if @high_head %>
+				
 					<div class="b-title">
-						<h3><%= @high_head %></h3>
+						<h3>При поддержке</h3>
 						<h4></h4>
 					</div>
-				<% end %>
+				
 				<a class="banner"></a>
 			</div></div>
 			<div id="comming">
@@ -104,7 +84,7 @@
 	
 	<!--# include file="/inc/bottom-common.html" -->
 </div>
-<div id="promo-back" <%= @promo ? %Q{style="background-image:url(#{@imgdir}/promo-bg.png)"} : ''%>></div>
+<div id="promo-back" style="background-image:url(/i/event/moskva/cocktail-trip/promo-bg.png)"></div>
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
@@ -117,7 +97,7 @@
 				<label>Фамилия:<input type="text" name="second"/></label>
 				<label>Мой e-mail:<input type="text" name="email"/></label>
 				<div class="variable"></div>
-				<p class="limit"><%= @form_hint %> <input type="submit" value="Внести меня в списки!"/></p>
+				<p class="limit"> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>

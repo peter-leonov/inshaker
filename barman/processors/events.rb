@@ -1,6 +1,6 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
-require 'lib/string_util_1.8'
 require 'lib/csv'
 $KCODE = 'u'
 
@@ -46,21 +46,23 @@ class EventsProcessor < Barman::Processor
       city_path = root_dir.path + city_dir
       if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
         # @entities[city_dir] = []
-        puts city_dir
+        say city_dir
+        indent do
         entities_dir = Dir.new(city_path)
         entities_dir.each do |entity_dir|
           entity_path = entities_dir.path + "/" + entity_dir
           if File.ftype(entity_path) == "directory" and !@excl.include?(entity_dir)
-            puts ".." + entity_dir
-            
+            say entity_dir
+            indent do
             @entity = {}
             parse_about  entity_path
             process_images entity_path
-            process_rating entity_path
             # @entities[city_dir] << @entity
             @entities[@entity[:name]] = @entity
+            end # indent
           end
         end
+        end # indent
       end
     end
   end
@@ -107,6 +109,7 @@ class EventsProcessor < Barman::Processor
     @entities.each do |name, entity|
       # YAGNI
       entity.delete(:subject)
+      entity.delete(:high_head)
       entity.delete(:promo)
       entity.delete(:imgdir)
     end
@@ -154,9 +157,6 @@ private
     @entity[:date_ru]      = ru_date_str
     @entity[:address]   = yaml['Ссылка на место']
     
-    # @entity[:high]      = yaml['Генеральные спонсоры']
-    # @entity[:medium]    = yaml['Спонсоры']
-    # @entity[:low]       = yaml['При поддержке']
     @entity[:rating]    = {}
     
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
@@ -173,10 +173,14 @@ private
     
     arr = []
     if yaml['Генеральные спонсоры']
-      yaml['Генеральные спонсоры'].each do |v|
+      yaml['Генеральные спонсоры']['Баннеры'].each do |v|
         hash = {:name => v[0], :src => v[1], :href => v[2]}
         arr << hash
         FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+      end
+      @entity[:high_head] = yaml['Генеральные спонсоры']['Заголовок']
+      if @entity[:high_head] == 'нет'
+        @entity[:high_head] = nil
       end
     end
     @entity[:high] = arr
@@ -213,16 +217,22 @@ private
     @entity[:low] = low
     
     rating = yaml['Рейтинг']
-    data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
-    @entity[:rating] = data
-    
-    type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
-    if type
-      data[:type] = type
-    end
-    
-    if rating['В обратном порядке'] == 'да'
-      data[:reverse] = true
+    if rating
+      data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
+      @entity[:rating] = data
+      
+      type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
+      if type
+        data[:type] = type
+      end
+      
+      if rating['В обратном порядке'] == 'да'
+        data[:reverse] = true
+      end
+      
+      process_rating src_dir
+    else
+      say "без рейтинга"
     end
   end
   

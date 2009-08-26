@@ -37,26 +37,12 @@ class BarTemplate
 end
 
 class EventTemplate
-  def initialize(hash)
-    @name       = hash[:name]
-    @city       = hash[:city]
-    @venue      = hash[:venue]
-    @header     = hash[:header]
-    @target     = hash[:target]
-    @subject    = hash[:subject]
-    @country    = hash[:country]
-    @href       = hash[:href]
-    @date       = hash[:date]
-    @adate      = hash[:adate]
-    @date_ru    = hash[:date_ru]
-    @address    = hash[:address]
-    @fields     = hash[:fields]
-    @imgdir     = hash[:imgdir]
-    @promo      = hash[:promo]
-    @photos     = hash[:photos]
-    @enter      = hash[:enter]
-    @status      = hash[:status]
-    @form_hint  = hash[:form_hint]
+  def initialize *hashes
+    hashes.each do |hash|
+      hash.each do |k, v|
+        instance_variable_set("@#{k}", v)
+      end
+    end
   end
   
   def get_binding
