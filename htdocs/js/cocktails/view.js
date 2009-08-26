@@ -267,7 +267,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			var ingreds = filters.ingredients;
 			for(var i = 0; i < ingreds.length; i++) {
 				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
-				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(", "));
+				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
 			}
 		}
 		
