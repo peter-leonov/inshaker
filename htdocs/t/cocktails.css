@@ -3,14 +3,14 @@
 .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
 .b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
-#search_tabs li { margin-right: 1px; float: left; background: url(cocktails.png) no-repeat -125px -100px; width: 112px; height: 21px; line-height:21px; padding: 0 3px; color: #fff; font-size: 11px; text-align: center; cursor: pointer;}
+#search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 21px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0px -100px; cursor: default;}
 
 #search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; overflow:hidden; width:540px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
-#alphabetical-ru a.selected-button {background:url(cocktails.png) no-repeat -125px -125px; cursor: default; color: #ec118f; }
+#alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
 
 .autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
@@ -19,15 +19,14 @@
 .search-error{display:none;height:12px;}
 
 
-.ingreds-list { position: relative; width:574px; height: 22px; background: url(cocktails.png) no-repeat 0 -175px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
+.ingreds-list { position: relative; width:574px; height: 22px; background-position: 0 -175px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
 .ingreds-list .list { overflow: hidden; width:550px; white-space: nowrap; text-overflow: ellipsis; -o-text-overflow: ellipsis; }
-.ingreds-list a {color:#fff;}
 .ingreds-list a:hover {text-decoration:line-through;}
 
-.ingreds-list .rem { position: absolute; top: 0; right: 0; background:url(cocktails.png) no-repeat -175px -125px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; }
+.ingreds-list .rem { position: absolute; top: 0; right: 0; background-position: -175px -125px; width: 11px; height: 11px; overflow: hidden; text-indent: -100em; display: block; margin: 3px; }
 .ingreds-list .rem:hover {background-position: -189px -125px; }
 #ingredients_list { width: 550px; height:17px; line-height:15px; }
-#spotlighted { position: absolute; right: 0; bottom: 0; width: 0; height: 0; background: url(cocktails.png) no-repeat -550px -100px;}
+#spotlighted { position: absolute; right: 0; bottom: 0; width: 0; height: 0; background-position: -550px -100px;}
 
 
 
@@ -35,7 +34,7 @@
 /*Block content*/
 /*pager list*/
 .b-content .p-list { }
-.b-content .alphabetical{background:#efefef;font-size:110%;margin-bottom:22px;}
+.b-content .alphabetical{font-size:110%;margin-bottom:22px;}
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
 .b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
 .b-content ul.cocktails{overflow:hidden;}
@@ -48,7 +47,7 @@
 
 .pager-big {width:64px; height:24px; position:absolute; left: 567px; top: 390px; }
 .pager-big .prev,
-.pager-big .next {float:left; display:block; background: url(cocktails.png); width: 23px; height: 24px;} 
+.pager-big .next {float:left; display:block;}
 .pager-big .prev {background-position: -0px -125px; }
 .pager-big .next {background-position: -25px -125px; }
 
@@ -59,9 +58,8 @@
 
 .b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
 .b-content .pager .p-list {display: inline;}
-.b-content .pager .p-list a{line-height: 18px; margin-right: 0px; padding: 1px 5px 2px; text-align:center; text-decoration:none;}
-.b-content .pager .p-list a.two{padding: 1px 2px 2px;margin-right: 5px;}
-.b-content .pager .p-list a.selected-button {color: #fff; background:url(cocktails.png) no-repeat -100px -125px; cursor: default;}
+.b-content .pager .p-list a{line-height: 18px; text-align:center; text-decoration:none;}
+.b-content .pager .p-list a.selected-button { background-position: -100px -125px; cursor: default;}
 .b-content .pager .prev,
 .b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
 .b-content .pager .prev { margin-right:3px;}
@@ -82,22 +80,22 @@
 
 .b-search{position:absolute;margin-right:2em;width:14em;}
 #all_list{font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
-#all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background:url(cocktails.png) no-repeat -150px -125px; }
+#all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 
 
-.b-search .groups dd { padding-left: 6px; color: #0392f1; cursor: pointer; }
+.b-search .groups dd { padding-left: 6px; cursor: pointer; }
 .b-search .groups dd:hover { text-decoration: underline; }
-.b-search .groups dd.selected-button {background: url(cocktails.png) no-repeat -250px -100px; width: 140px; height:17px; line-height:16px; color: #fff; }
-.b-search .groups dd.selected-button:hover { background-position:-400px -100px; text-decoration: none; }
-.b-search .groups dd.disabled {color:#999;text-decoration:none;cursor:default;}
+.b-search .groups dd.selected-button {background-position: -250px -100px; width: 140px; height:17px; line-height:16px; }
+.b-search .groups dd.selected-button:hover { background-position: -400px -100px; text-decoration: none; }
+.b-search .groups dd.disabled {text-decoration:none;cursor:default;}
 
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 
-.search-control {background: url(cocktails.png) no-repeat 0px 0px; padding:5px; color:#fff; height: 22px;}
+.search-control {background-position: 0px 0px; padding:5px; color:#fff; height: 22px;}
 .search-control#search_by_letter { background-position: 0 -50px; }
 
 .b-content {width:100%;}
@@ -141,7 +139,7 @@
 
 .b-search{width:140px;overflow:hidden;}
 .b-search form dd span{white-space:normal;}
-.b-search form dd a{position:relative;right:-5px;background:red;}
+.b-search form dd a{position:relative;right:-5px;}
 
 #search_tabs { zoom:1}
 <!--# endif -->
