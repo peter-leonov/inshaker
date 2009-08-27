@@ -1,4 +1,4 @@
-body { background-image: url(/t/event/bg.png); }
+body { background: #fff url(/t/event/bg.png) repeat-x; }
 
 #overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }
 

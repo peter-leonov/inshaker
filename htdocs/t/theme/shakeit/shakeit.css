@@ -4,6 +4,7 @@
 .b-more-cocktails .next,
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
+.win-shop .content .more i,
 button.rounded { background-image: url(common.png); }
 #alcohol-harm { background-image: url(alcohol-harm.png) }
 #branded-image { display: none; }
@@ -11,7 +12,7 @@ a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #fff url(/t/bg/cocktails/bg.png) center top; }
+html { background: #fff url(/t/bg/cocktails/bg.png) repeat-x center top; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
@@ -23,6 +24,8 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 #cart_draghere b { color: #7ca527; }
 
 /* cocktails.css */
+#view-how .prev,
+#view-how .next { background-image: url(common.png) }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
@@ -63,3 +66,7 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-image: url(ingredients.png) }
+.count-cocktails strong { color: #eb1c57; }
+
+/* about.css */
+#form_success i { background-image: url(common.png); }

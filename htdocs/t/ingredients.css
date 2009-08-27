@@ -12,7 +12,7 @@
 .top-alphabetical .dis{color:#ccc;text-decoration:none !important;cursor:default;}
 .top-alphabetical h3{font-size:150%;font-weight:normal;margin:17px 0 6px 11px;}
 .count-cocktails{background-position: 0px -50px;width:153px;height:90px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
-.count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 12px;}
+.count-cocktails strong{display:block;font-size:12px;padding:4px 0 12px;}
 .count-cocktails input{font-size:11px;}
 .body-wrapper { overflow: hidden; }
 

@@ -58,7 +58,7 @@
 #b-cr-about textarea{width:266px;}
 
 #form_success{display:none;position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
-#form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background: url(common.png) no-repeat -200px -25px; }
+#form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background-position: -200px -25px; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
