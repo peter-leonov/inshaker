@@ -241,7 +241,6 @@ html{font-size :101%;}
 .gallery-nav ul li a,
 .you-choise span,
 .win-shop .content form{zoom:1;}
-#ingredients-page .count-coctails input{width:130px;}
 #top .nav img{padding-top:12px;}
 #top h2{top:2px;}
 #b-bill ul.money label input{position:absolute;left:0;}
@@ -254,7 +253,6 @@ html{font-size :101%;}
 .column{border:1px solid #C0C0C0;}
 .column .body-wrapper{border:1px solid #fff;}
 .b{zoom:1;}
-#ingredients-page .count-cocktails input{width:90%;}
 .hide_control {display:none;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
@@ -296,8 +294,6 @@ body{height:100%;}
 .win-shop .win,.win-shop .win-bg{background-image:none;}
 #top h2 img,
 #top h1 img{display:none;}
-#ingredients-page .count-cocktails *{position:relative;z-index:2;zoom:1;}
-#ingredients-page .count-cocktails{position:absolute;top:expression(eval(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
 
 body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
@@ -308,20 +304,11 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 #b-bill .b-title .tip {scrollbar-base-color:expression(this.unselectable='on'); padding: 3px 6px; }
 
 
-#about-page #menu{/*z-index:20;position:absolute;*/ width:90%;}
-#about-page #menu a{width:1px;white-space:nowrap;}
-#about-page #menu a b{border:none;}
-#ingredients-page .b-content{width:100%;}
-#ingredients-page .count-cocktails input{width:90%;}
-#ingredients-page .you-choise a{font-size:1px;}
 #b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
 
 /* background-position-[xy] hack */
 .b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
-#about-page .b-content, #delivery-page .b-content {width:590px;}
-#about-page #poster, #delivery-page #poster {position:absolute;top:42px;}
-#about-page #view-stat .stat .prev{background-position-x:0;} 
 
 
 #want_link {margin: 29px 14px 0 0;}

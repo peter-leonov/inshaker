@@ -8,6 +8,8 @@
 .b-content .viewport { height: 450px; }
 #about-page .b-content{min-height:46em;}
 #about-page .content {display:none;}
+#about-page .b-content {width:590px;}
+#about-page #poster {position:absolute;top:42px;}
 .b-content .content p, .b-content .content ol {font-size:12px;margin:1.5em 0 0;}
 .b-content .content ol {padding-left:18px;}
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
@@ -27,6 +29,7 @@
 #about-page .view-stat dl dt { font-size: 14px; padding-bottom: 4px; }
 #about-page .view-stat ul { font-size: 12px;} 
 #about-page .view-stat ul li { list-style: disc; margin: 0 20px; }
+#about-page #view-stat .stat .prev{background-position-x:0;} 
 
 #about-page .body-wrapper{min-height:505px;}
 #about-page #body_wrapper{padding-bottom: 14px;}
@@ -60,6 +63,9 @@
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .b-content .border-links {width:581px;}
+#about-page #menu{/*z-index:20;position:absolute;*/ width:90%;}
+#about-page #menu a{width:1px;white-space:nowrap;}
+#about-page #menu a b{border:none;}
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->

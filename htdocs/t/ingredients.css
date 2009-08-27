@@ -15,3 +15,18 @@
 .count-cocktails strong{display:block;color:#eb1c57;font-size:12px;padding:4px 0 12px;}
 .count-cocktails input{font-size:11px;}
 .body-wrapper { overflow: hidden; }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.b-content{width:100%;}
+.count-cocktails input{width:90%;}
+.you-choise a{font-size:1px;}
+.count-cocktails *{position:relative;z-index:2;zoom:1;}
+.count-cocktails{position:absolute;top:expression(eval(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
+
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+.count-coctails input{width:130px;}
+.count-cocktails input{width:90%;}
+<!--# endif -->
