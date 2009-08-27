@@ -108,7 +108,7 @@
 #results_display .surface { width: 20000px; }
 #search_tips { height: 14px}
 #search_tips a:hover {text-decoration:none;}
-#search_tips a {border-bottom:1px #0392F1 dashed;}
+#search_tips a {border-bottom:1px dashed;}
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
