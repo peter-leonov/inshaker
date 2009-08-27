@@ -8,6 +8,8 @@ ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none
 h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
 td{font-size:1em;vertical-align:top;}
 img{vertical-align:middle;}
+a { cursor: pointer; text-decoration: none; }
+a:hover { text-decoration: underline; }
 a img{border:0;}
 input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
 input,select,textarea{font-size:1.1em;}
@@ -208,7 +210,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .b-gadget .gallery{padding-top:0;}
 
 /* than great buttons, umh... */
-button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; }
+button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background-color: transparent; }
 button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; text-shadow: 1px 1px 0 #576d1d; }
 button.tiny { width: 110px; background-position: 0 -25px; }
 button.strong { background-position: 0 -50px; }

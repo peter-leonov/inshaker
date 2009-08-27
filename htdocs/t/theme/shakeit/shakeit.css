@@ -6,8 +6,7 @@
 button.rounded { background-image: url(common.png); }
 #alcohol-harm { background-image: url(alcohol-harm.png) }
 #branded-image { display: none; }
-a { color: #0392f1; cursor: pointer; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
 
