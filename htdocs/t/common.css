@@ -294,8 +294,6 @@ body{height:100%;}
 .win-shop .view-photo{height:588px;}
 .win-shop .view-photo .bor-wr{margin-bottom:-2px;}
 .win-shop .win,.win-shop .win-bg{background-image:none;}
-#top h2 a,
-#top h1{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/t/inshaker.ru.png',sizingMethod='image');height:1px;width:1px;display:block;}
 #top h2 img,
 #top h1 img{display:none;}
 #ingredients-page .count-cocktails *{position:relative;z-index:2;zoom:1;}
