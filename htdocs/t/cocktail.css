@@ -43,7 +43,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .surface img{float:left;margin-left:20px;}
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #view-how .next,
-#view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;background:url(ui.png) no-repeat;}
+#view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;background:url(common.png) no-repeat;}
 #view-how .prev{background-position:-450px 0;top:72px;}
 #view-how .next{background-position:-475px 0;top:48px;}
 #view-how .prev.disabled,
@@ -88,8 +88,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .hreview,
 .hreview .menu p a,
-.hreview .menu p
-{zoom:1}
+.hreview .menu p {zoom:1}
 
 #poster,
 .hreview .entry .illustration {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
@@ -101,7 +100,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .desc{width:365px;}
 .hreview button{float:left;}
 
-#view-how .prev{background-position-x:0;}
+#view-how .prev{background-position-x:-450px;}
 #view-prepare button{bottom:-50px;}
 
 #panel_cocktail{/*z-index:20;position:absolute;*/ width:90%;}
@@ -111,7 +110,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #poster{position:absolute;top:-28px;}
 
 #view-video .close{scrollbar-face-color:transparent;}
-
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->

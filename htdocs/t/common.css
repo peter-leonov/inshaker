@@ -307,8 +307,8 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 #b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
 
-/* background-position-[xy] hack */
-.b-more-rec .next,.b-more-cocktails .next{background-position-x:-16px;}
+.b-more-rec .prev,
+.b-more-cocktails .prev{background-position-x:-500px;}
 
 
 #want_link {margin: 29px 14px 0 0;}

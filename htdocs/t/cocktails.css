@@ -8,7 +8,7 @@
 
 #search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
-#alphabetical-ru {float:right; width:540px; margin-top:2px;}
+#alphabetical-ru {float:right; overflow:hidden; width:540px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background:url(cocktails.png) no-repeat -125px -125px; cursor: default; color: #ec118f; }
 
@@ -19,13 +19,13 @@
 .search-error{display:none;height:12px;}
 
 
-.ingreds-list { position: relative; width:574px; height: 22px; background: url(cocktails.png) no-repeat 0 -150px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
+.ingreds-list { position: relative; width:574px; height: 22px; background: url(cocktails.png) no-repeat 0 -175px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
 .ingreds-list .list { overflow: hidden; width:550px; white-space: nowrap; text-overflow: ellipsis; -o-text-overflow: ellipsis; }
 .ingreds-list a {color:#fff;}
 .ingreds-list a:hover {text-decoration:line-through;}
 
-.ingreds-list .rem { position: absolute; top: 0; right: 0; background:url(cocktails.png) no-repeat 0 -175px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; }
-.ingreds-list .rem:hover {background-position: -14px -175px; }
+.ingreds-list .rem { position: absolute; top: 0; right: 0; background:url(cocktails.png) no-repeat -175px -125px;width:11px;height:11px;overflow:hidden;text-indent:-100em;display:block;margin:3px; }
+.ingreds-list .rem:hover {background-position: -189px -125px; }
 #ingredients_list { width: 550px; height:17px; line-height:15px; }
 #spotlighted { position: absolute; right: 0; bottom: 0; width: 0; height: 0; background: url(cocktails.png) no-repeat -550px -100px;}
 
@@ -54,8 +54,8 @@
 
 .pager-big .prev.disabled,
 .pager-big .next.disabled {cursor:default;}
-.pager-big .prev.disabled {background-position: -50px -125px; }
-.pager-big .next.disabled {background-position: -75px -125px; }
+.pager-big .prev.disabled {background-position: -0px -150px; }
+.pager-big .next.disabled {background-position: -25px -150px; }
 
 .b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
 .b-content .pager .p-list {display: inline;}
@@ -125,7 +125,7 @@
 #top { left: -9px; }
 .search-form {z-index:1;}
 .search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
-.pager-big .prev {background-position-x:-32px}
+.pager-big .prev {background-position-x:0px}
 
 .b-content ul.cocktails{zoom:1;margin-right:-20px;}
 .b-content ul.cocktails li{float:none;display:inline;zoom:1;}
@@ -134,9 +134,9 @@
 .b-content .pager .next
 {font-size: 17px;}
 
-.b-content .pager .prev{background-position-x:0;}
+/*.b-content .pager .prev{background-position-x:0;}
 .b-content .pager .disabled{background-position-y:-12px;}
-
+*/
 
 
 .b-search{width:140px;overflow:hidden;}
