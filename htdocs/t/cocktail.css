@@ -98,6 +98,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .b-content .entry{width:100%;/*background:green;*/}
 .hreview .desc{width:365px;}
+.hreview .desc h2 i { left: -20px; }
 .hreview button{float:left;}
 
 #view-how .prev{background-position-x:-450px;}
