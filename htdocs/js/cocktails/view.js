@@ -156,9 +156,6 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		this.completer.onconfirm = changeListener
 		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
 		
-		nodes.spotlighted.href = decorationParams.spotlighted[1]
-		nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
-		
 		link = new Link();
 	};
 	
