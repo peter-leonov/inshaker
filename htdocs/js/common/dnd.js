@@ -37,13 +37,13 @@ function Draggable(element, name, dropTargets){
 	}, false);
 	
 	function beginDrag(e) {
-		self.dragObject = element.cloneNode(true);
-		self.style = self.dragObject.style
-		self.style.position = "absolute";
+		var node = self.dragObject = element.cloneNode(true);
+		self.style = node.style
+		node.addClassName("dragging-object")
 		var startPos = getPosition(element)
 		self.delta = {x: startPos.x - e.pageX, y: startPos.y - e.pageY}
 		
-		document.body.appendChild(self.dragObject);
+		document.body.appendChild(node)
 		// document.body.addClassName(self.STYLE_CURSOR);
 		for(var i = 0; i < dropTargets.length; i++){
 			if(dropTargets[i].onDragStart) dropTargets[i].onDragStart(element);

@@ -10,7 +10,7 @@
 #b-bill .b-title input { border: 1px #c0c0c0 solid; height: 26px; width: 278px; font-size: 20px; padding: 2px 0 2px 4px; color: #343B40;}
 #b-bill .b-title .tip { -moz-user-select: none; font-size: 20px; position:absolute; top:0; left:-1px; color:#BBB; padding: 3px 0; }
 
-.column-r, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative;}
+.column-r, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative; z-index:1;}
 #b-bill dl{position:relative; margin-top:1px;}
 #b-bill dt{ height: 20px; background: no-repeat -200px -75px; color: #343b40; font-size: 11px; line-height: 19px; padding-left: 7px; color: #fff; }
 #b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}

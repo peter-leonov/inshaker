@@ -92,8 +92,9 @@ b.rb { right: 0; bottom: 0; }
 
 
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
+.dragging-object{position:absolute;z-index:10;}
 #alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background-position: 0 0;}
-#branded-image { position: absolute; z-index: -1; right: 0; bottom: 0; width: 0; height: 0; background-position: 0 0; }
+#branded-image { position: absolute; z-index: 0; right: 0; bottom: 0; width: 0; height: 0; background-position: 0 0; }
 
 
 /* in almost all */
@@ -102,7 +103,7 @@ b.rb { right: 0; bottom: 0; }
 .column-main{width:628px;}
 
 .column-main-container{width:630px;float:left;}
-.body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
+.body-wrapper{position:relative;z-index:1;border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
 .b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:11px;position:relative;}
 
 .b-title h1,
