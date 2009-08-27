@@ -9,6 +9,8 @@ button.rounded { background-image: url(common.png); }
 a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
+#bottom a {}
+html { background: #fff url(/t/bg/cocktails/bg.png) center top; }
 
 /* calculator.css */
 #b-bill dt,
@@ -29,9 +31,11 @@ a { color: #0392f1; }
 .b-search .groups dd.selected-button,
 .b-title #spotlighted,
 .search-control { background-image: url(cocktails.png) }
-#alphabetical-ru a.selected-button { color: #ec118f; }
 #spotlighted { display: none; }
+#alphabetical-ru a {}
+#alphabetical-ru a.selected-button { color: #ec118f; }
 #search_tabs li { color: #fff; }
+#search_tabs li.selected {}
 #ingredients_list,
 .ingreds-list a { color: #fff; }
 .pager-big .prev,
@@ -39,6 +43,8 @@ a { color: #0392f1; }
 .b-content .pager .p-list a { margin-right: 0px; padding: 1px 5px 2px; }
 .b-content .pager .p-list a.two { padding: 1px 2px 2px; margin-right: 5px; }
 .b-content .pager .p-list a.selected-button { color: #fff; }
+#b-bill dd li b {}
+.search-form input {}
 .b-search .groups dd { color: #0392f1; }
 .b-search .groups dd.selected-button { color: #fff; }
 .b-search .groups dd.disabled { color: #999; }
