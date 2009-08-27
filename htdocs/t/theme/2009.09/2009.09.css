@@ -6,7 +6,7 @@
 #cocktails-page button.rounded { background-image: url(common.png); }
 #cocktails-page #alcohol-harm { background-image: url(alcohol-harm.png) }
 #cocktails-page #branded-image { background-image: url(image.png); width: 196px; height: 528px; right: 50px; bottom: 120px; }
-#cocktails-page a { color: #231f20; }
+#cocktails-page a { color: #231f20;  }
 #cocktails-page #bottom { color: #b6a258; text-shadow: #000 0 1px; }
 #cocktails-page #bottom a { color: #f1ece3; }
 
@@ -38,7 +38,7 @@
 #cocktails-page #ingredients_list,
 #cocktails-page .ingreds-list a { color: #343b40; text-shadow: 0 1px #fff; }
 #cocktails-page .pager-big .prev,
-#cocktails-page .pager-big .next { height: 25px; }
+#cocktails-page .pager-big .next { height: 25px; height: 24px; }
 #cocktails-page .b-content .pager .p-list a { padding: 2px 6px 3px; }
 #cocktails-page .b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 2px; }
 #cocktails-page .b-content .pager .p-list .selected-button { color: #f3ede3; text-shadow: 0 1px #891408; }
