@@ -235,9 +235,6 @@ button.rounded b { top: 4px; }
 button.rounded b { top: -1px; }
 <!--# endif -->
 
-/*<!-- if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
-#parties-page .party-teaser {width:520px;}
-<!-- endif -->*/
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 html{font-size :101%;}
@@ -261,9 +258,6 @@ html{font-size :101%;}
 .hide_control {display:none;}
 #order-page form input.text_field { padding:0 0 0 4px; height: 28px; line-height: 28px;}
 img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(title||(title="")),(this.galleryImg='no'))}
-
-
-#parties-page .party-previews .party { padding-bottom: 4px;}
 <!--# endif -->
 
 
@@ -332,14 +326,7 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 #about-page #view-stat .stat .prev{background-position-x:0;} 
 
 
-#parties-page .party-photos .disabled { background-position-y: -60px; }
-#parties-page .party-photos .prev { background-position-x: -60px; }
-#parties-page .party-photos .prev,
-#parties-page .party-photos .next { display: block; }
-#parties-page .party-photos .hidden {display:none;}
 #want_link {margin: 29px 14px 0 0;}
-
-#parties-page .party-previews .prev { background-position-x: -52px; }
 
 /* label click bubbling in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}

@@ -72,4 +72,23 @@ background: url(icon/strs-green.png);
 
 #backdrop {position:absolute; top: 65px; left:0px; width: 100%; height: 75%; background: url('/t/bg/parties/backdrop.jpg') #fff no-repeat scroll center top}
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+#parties-page .party-photos .disabled { background-position-y: -60px; }
+#parties-page .party-photos .prev { background-position-x: -60px; }
+#parties-page .party-photos .prev,
+#parties-page .party-photos .next { display: block; }
+#parties-page .party-photos .hidden {display:none;}
+#parties-page .party-previews .prev { background-position-x: -52px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+#parties-page .party-previews .party { padding-bottom: 4px;}
+<!--# endif -->
+
+
+/*<!-- if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#parties-page .party-teaser {width:520px;}
+<!-- endif -->*/
+
+
 <!--# include file="/t/theme.css" -->
