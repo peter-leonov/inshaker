@@ -89,6 +89,3 @@ background: url(icon/strs-green.png);
 /*<!-- if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
 #parties-page .party-teaser {width:520px;}
 <!-- endif -->*/
-
-
-<!--# include file="/t/theme.css" -->
