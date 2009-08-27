@@ -1,5 +1,6 @@
 /* common.css */
 #top .logo,
+.b-more-cocktails .prev,
 .b-more-cocktails .next,
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
@@ -11,6 +12,8 @@ a { color: #0392f1; }
 #bottom { color: #788894; }
 #bottom a {}
 html { background: #fff url(/t/bg/cocktails/bg.png) center top; }
+button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
+button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 /* calculator.css */
 #b-bill dt,

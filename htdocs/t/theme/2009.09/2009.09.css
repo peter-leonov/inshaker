@@ -1,5 +1,6 @@
 /* common.css */
 #top .logo,
+.b-more-cocktails .prev,
 .b-more-cocktails .next,
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
@@ -11,6 +12,8 @@ a { color: #231f20;  }
 #bottom { color: #b6a258; text-shadow: #000 0 1px; }
 #bottom a { color: #f1ece3; }
 html { background: #000 url(bg.jpg) center top; }
+button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
+button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 
 /* calculator.css */
 #b-bill dt,
@@ -53,7 +56,7 @@ html { background: #000 url(bg.jpg) center top; }
 /* cocktail.css */
 .b-more dt,
 .b-more dt b { background-image: url(cocktail.png) }
-.b-more dt b {}
+.b-more dt b { color: #f3ede3; text-shadow: 0 1px #891408; }
 .hreview .desc h2 i { background-image: url(common.png); }
 
 /* ingredients.css */
