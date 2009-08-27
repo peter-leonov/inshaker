@@ -48,7 +48,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
 		this.renderIngredients(Model.ingredients);
-        this.tidyIngredientsList();
+        this.tidyIngredientsList(Model.ingredients);
 	},
 	
 	getCocktailName: function(){
@@ -325,19 +325,17 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 	
-    tidyIngredientsList: function() {
+    tidyIngredientsList: function(ingreds) {
         var self   = this;
         var parent = $(this.ID_INGS_LIST);
         var header = parent.getElementsByTagName("dt")[0];
         parent.empty();
         parent.appendChild(header);
         
-        var ingreds = Model.ingredients;
         var doses = {};
         for(var i = 0; i < ingreds.length; i++){
             doses[ingreds[i][0]] = GoodHelper.normalVolumeTxtParsed(ingreds[i][1]);
         }
-        ingreds.sort(Ingredient.sortByGroups);
         
         for(var i = 0; i < ingreds.length; i++){
             var dd     = document.createElement("dd")

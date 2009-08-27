@@ -11,7 +11,7 @@ var Model = {
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
 		this.cocktailsSet = Cocktail.cocktails.sort(DataFilter.nameSort);
-		this.ingredients = this.cocktail.ingredients;
+		this.ingredients = this.cocktail.ingredients.sort(Ingredient.sortByGroups);
 		this.tools = Tool.tools;
 		
 		this.recs = this._findRecs(this.cocktail);
