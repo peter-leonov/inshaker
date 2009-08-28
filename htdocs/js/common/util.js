@@ -286,13 +286,12 @@ function Link()
 
 Link.prototype.open = function(a)
 {
-	if (this.element)
-		this.close()
+    if (this.element) this.close()
 	
 	this.url = (a.constructor == String) ? a : a.href.split('#')[1]
 	
 	this._url(this.url)
-	this.element	= $(this.url) 
+	this.element = $(this.url)
 
 	if (!this.element)
 	{
@@ -362,16 +361,16 @@ function checkDbRevision(){
 function mergeNodes(parentNode, nodesArray)
 {
 	for (var i = 0; i < nodesArray.length; i++)
-		if (nodesArray[i].parentNode != parentNode)
+        if (nodesArray[i].parentNode != parentNode)
 			parentNode.appendChild(nodesArray[i]);
 	
-	var childs = Array.copy(parentNode.childNodes);
-	for (var i = 0, il = childs.length; i < il; i++)
-	{
-		var node = childs[i]
-		if (node && nodesArray.indexOf(node) < 0)
-			parentNode.removeChild(node)
-	}
+    var childs = Array.copy(parentNode.childNodes);
+    for (var i = 0, il = childs.length; i < il; i++)
+    {
+        var node = childs[i]
+        if (node && nodesArray.indexOf(node) < 0)
+            parentNode.removeChild(node)
+    }
 }
 
 function mergeIngredientsNodes(parentNode, nodesArray)

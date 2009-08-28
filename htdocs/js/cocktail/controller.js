@@ -20,9 +20,9 @@ var Controller = {
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	PATH_MERCH : '/i/merchandise/',
+	PATH_MERCH   : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
-	TOOL_POPUP: 'shop-gadget',
+	TOOL_POPUP   : 'shop-gadget',
 	
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
@@ -31,16 +31,16 @@ var Controller = {
 
 	name : "",
 	relatedCount: 10,
+    currentlyShownIngred: "",
 	
 	init: function(){
-		var name = $(this.NAME_ELEM).innerHTML;
-		
+		this.name = $(this.NAME_ELEM).innerHTML;
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
-		new Draggable($(this.ID_ILLUSTRATION), name, this.DROP_TARGETS);
+		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
 	    
 		Model.dataListener = this;
-		this.bindEvents(name);
-		Model.init(name);
+		this.bindEvents(this.name);
+		Model.init(this.name);
 		var perPage = 5;
 		if(Model.recs.length > 0) {
 			this.renderRecommendations(Model.recs);
@@ -49,10 +49,6 @@ var Controller = {
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
-	},
-	
-	getCocktailName: function(){
-		return $(this.NAME_ELEM).innerHTML;
 	},
 	
 	bindEvents: function(name){
@@ -110,11 +106,11 @@ var Controller = {
 					e.preventDefault();
 				}, false);
 		}
-		self.link = link = new Link();
+		link = new Link();
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
-			link.open("view-how");
+			link.open("view-how", true);
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
@@ -123,25 +119,35 @@ var Controller = {
 			var tool = tools_links[i].innerHTML;
 			tools_links[i].addEventListener('click', function(name){ return function(e){	
 				self.renderToolPopup(name);
-				link.open(self.TOOL_POPUP);
+				$(self.TOOL_POPUP).show();
 			}}(tool), false);
 		}
 		
-		if(window.location.href.indexOf(this.TOOL_POPUP) > -1) link.close();
 		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
-			link.close();
+		    $(self.TOOL_POPUP).hide();	
 		}, false);
 		
-		$('good_cancel').addEventListener('mousedown', function(e){
+        $('tool_cancel').addEventListener('mousedown', function(e){
+			$(self.TOOL_POPUP).hide();
+		}, false);
+	
+    	$('good_cancel').addEventListener('mousedown', function(e){
 			$('order_note').hide();
 		}, false);
-	},
+	    
+        $('order_link').addEventListener('mousedown', function(e){
+			Calculator.addCocktail(self.name);
+			Calculator.showPopup(self.currentlyShownIngred);
+		}, false);
+
+    },
 	
 	setPicture: function(name, good, vol){
 		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
 	},
 	
 	renderPopup: function(ingred){
+        this.currentlyShownIngred = ingred;
 		var good = Model.goods[ingred];
 		
 		$('good_name').innerHTML = good.brand || ingred;
@@ -350,8 +356,8 @@ var Controller = {
             parent.appendChild(dd);
         
 			a.addEventListener('click', function(name){ return function(e){	
-				self.renderPopup(name);
-				self.link.open(self.INGRED_POPUP);
+	            if(Calculator.isIngredientPresent(name)) Calculator.showPopup(name);
+                else { self.renderPopup(name); $(self.INGRED_POPUP).show(); } 
 			}}(ingreds[i][0]), false);
 		}
     },
@@ -370,7 +376,8 @@ var Controller = {
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
-		var parent = $(this.ID_ING_SUR);
+		var self = this;
+        var parent = $(this.ID_ING_SUR);
 		var div = document.createElement("div");
 		div.className = "point";
 		div.id = "ing_" + pageNum;
@@ -380,6 +387,10 @@ var Controller = {
 			var img = document.createElement("img");
 			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
 			img.alt = resultSet[i][0];
+            img.addEventListener('click', function(name) { return function(){
+               if(Calculator.isIngredientPresent(name)) Calculator.showPopup(name);
+               else { self.renderPopup(name); $(self.INGRED_POPUP).show(); } 
+            }}(resultSet[i][0]), false);
 			div.appendChild(img);
 		}
 	},

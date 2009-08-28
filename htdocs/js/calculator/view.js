@@ -28,7 +28,6 @@ function CalculatorView() {
 	this.itemFromPopup = [];
 
 	
-    if(window.location.href.indexOf(this.INGRED_POPUP) > -1) link.close();
 	var self = this;
 	if(this.addBtn) this.addBtn.addEventListener('mousedown', function(e){
 		self.eventListener.addCocktail(self.cocktailName);
@@ -58,14 +57,6 @@ function CalculatorView() {
 	$(this.ID_CONTENTS).onDrop = function(cocktailName){
 		self.eventListener.addCocktail(cocktailName);
 	};
-	
-	if($('order_link')) {
-		$('order_link').addEventListener('mousedown', function(e){
-			var name = Controller.getCocktailName(); // FIXME: this anti-pattern sucks
-			if(name) self.eventListener.addCocktail(name);
-			link.close();
-		}, false);
-	}
 	
 	if($('order_button')){
 		$('order_button').addEventListener('click', function(e){
@@ -147,18 +138,18 @@ function CalculatorView() {
 	}
 	
 	$('good_cancel').addEventListener('mousedown', function(e){
-		link.close();
+		$(self.INGRED_POPUP).hide();
 	}, false);
 	
 	$('good_accept').addEventListener('mousedown', function(e){
 		var item = self.itemFromPopup[0];
 		var name = self.itemFromPopup[1];
 		self.eventListener.goodItemChanged(item, name);
-		link.close();
+		$(self.INGRED_POPUP).hide();
 	}, false);
 	
 	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
-		link.close();
+		$(self.INGRED_POPUP).hide();
 	}, false);
 	
 	$(this.INGRED_POPUP).show = function(){
@@ -170,6 +161,11 @@ function CalculatorView() {
 		this.style.display = "none";
 		if(self.popupStatusListener) self.popupStatusListener.popupHidden();
 	};
+
+    this.showPopup = function(ingred){
+        this.renderPopup(this.eventListener.getItemFromCart(ingred), ingred);
+        $(this.INGRED_POPUP).show();
+    };
 	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения
@@ -346,13 +342,13 @@ function CalculatorView() {
 			
 			a.onmousedown = function(e){
 				self.renderPopup(item, name);
-				link.open(self.INGRED_POPUP); 
+				$(self.INGRED_POPUP).show(); 
 				return false;
 			}
 			
 			button.onmousedown =  function(e){
 				self.renderPopup(item, name);
-				link.open(self.INGRED_POPUP);
+				$(self.INGRED_POPUP).show();
 			}
 			
 			

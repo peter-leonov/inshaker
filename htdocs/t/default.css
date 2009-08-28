@@ -222,7 +222,7 @@ label{display:block;}
 #cocktail-page #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
 #cocktail-page #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
 #cocktail-page #view-how .ingredients .surface{width:5000px;height:120px;}
-#cocktail-page #view-how .ingredients .surface img{float:left;margin-left:20px;}
+#cocktail-page #view-how .ingredients .surface img{float:left;margin-left:20px; cursor:pointer;}
 #cocktail-page #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #cocktail-page #view-how .next,
 #cocktail-page #view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;top:72px;right:19px;background:url(icon/strs-green.png) no-repeat 0 -72px;}

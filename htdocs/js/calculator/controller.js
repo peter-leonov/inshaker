@@ -49,6 +49,10 @@ function CalculatorController(model, view) {
 		return this.eventListener.getNewBottle(name, bottleId);
 	};
 	
+    this.getItemFromCart = function(name){
+        return this.eventListener.getItemFromCart(name);
+    };
+
 	// для синхронности
 	this.initialize();
 };
