@@ -39,6 +39,7 @@ function CalculatorView() {
 	
 	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
 		self.eventListener.addCocktail(cocktailName);
+		return true;
 	};
 	
 	$(this.ID_DROP_TARGET).onDragEnd = function(){

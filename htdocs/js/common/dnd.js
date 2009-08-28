@@ -63,7 +63,7 @@ function Draggable(element, name, dropTargets){
 			
 			// dropping
 			for(var i = 0; i < dropTargets.length; i++){
-				if(dropTargets[i].style.display != "none"){
+				if(dropTargets[i].style.display == "block"){
 					var targPos    = getPosition(dropTargets[i]); // from util.js
 					var targWidth  = parseInt(dropTargets[i].offsetWidth);
 					var targHeight = parseInt(dropTargets[i].offsetHeight);
@@ -73,7 +73,8 @@ function Draggable(element, name, dropTargets){
 						(e.pageX < (targPos.x + targWidth))  &&
 						(e.pageY > targPos.y)                &&
 						(e.pageY < (targPos.y + targHeight))){
-						dropTargets[i].onDrop(name);
+						if (dropTargets[i].onDrop(name) === true)
+							break;
 					}
 				}
 				if (dropTargets[i].onDragEnd)
