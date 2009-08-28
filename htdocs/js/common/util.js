@@ -306,7 +306,8 @@ Link.prototype.open = function(a)
 
 Link.prototype.close = function()
 {
-	this.element.hide()
+	if (this.element)
+		this.element.hide()
 	this.element = null
 	this._url('main')
 }
