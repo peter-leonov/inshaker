@@ -5,8 +5,8 @@
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
-button.rounded { background-image: url(common.png); }
-#alcohol-harm { background-image: url(alcohol-harm.png) }
+button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
@@ -20,12 +20,12 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 #b-bill dt,
 #b-bill dd li button,
 #b-bill .print-call i,
-#cart_draghere i { background-image: url(common.png); }
+#cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #cart_draghere b { color: #7ca527; }
 
 /* cocktails.css */
 #view-how .prev,
-#view-how .next { background-image: url(common.png) }
+#view-how .next { background-repeat: no-repeat; background-image: url(common.png); }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
@@ -36,7 +36,7 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 #all_list i,
 .b-search .groups dd.selected-button,
 .b-title #spotlighted,
-.search-control { background-image: url(cocktails.png) }
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #spotlighted { display: none; }
 #alphabetical-ru a {}
 #alphabetical-ru a.selected-button { color: #ec118f; }
@@ -58,18 +58,18 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 /* cocktail.css */
 .b-more dt,
-.b-more dt b { background-image: url(cocktail.png); background-color: #77a300; }
+.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); background-color: #77a300; }
 .b-more dt b { color: #fff; }
-.hreview .desc h2 i { background-image: url(common.png); }
+.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* ingredients.css */
 .you-choise a,
 .top-alphabetical .now,
-.count-cocktails { background-image: url(ingredients.png) }
+.count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
 .count-cocktails strong { color: #eb1c57; }
 
 /* about.css */
-#form_success i { background-image: url(common.png); }
+#form_success i { background-repeat: no-repeat; background-image: url(common.png); }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
@@ -80,19 +80,19 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
-button.rounded { background-image: url(common.8.png); }
-#alcohol-harm { background-image: url(alcohol-harm.8.png); }
-#branded-image { background-image: url(image.8.png); }
+button.rounded { background-repeat: no-repeat; background-image: url(common.8.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.8.png); }
+#branded-image { background-repeat: no-repeat; background-image: url(image.8.png); }
 
 /* calculator.css */
 #b-bill dt,
 #b-bill dd li button,
 #b-bill .print-call i,
-#cart_draghere i { background-image: url(common.8.png); }
+#cart_draghere i { background-repeat: no-repeat; background-image: url(common.8.png); }
 
 /* cocktails.css */
 #view-how .prev,
-#view-how .next { background-image: url(common.8.png) }
+#view-how .next { background-repeat: no-repeat; background-image: url(common.8.png); }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
@@ -103,15 +103,15 @@ button.rounded { background-image: url(common.8.png); }
 #all_list i,
 .b-search .groups dd.selected-button,
 .b-title #spotlighted,
-.search-control { background-image: url(cocktails.8.png) }
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.8.png); }
 
 /* cocktail.css */
 .b-more dt,
-.b-more dt b { background-image: url(cocktail.8.png); }
-.hreview .desc h2 i { background-image: url(common.8.png); }
+.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.8.png); }
+.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.8.png); }
 
 /* ingredients.css */
 .you-choise a,
 .top-alphabetical .now,
-.count-cocktails { background-image: url(ingredients.8.png) }
+.count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.8.png); }
 <!--# endif -->
