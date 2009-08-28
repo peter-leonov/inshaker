@@ -2,9 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Кранберини</title>
 </head>
 <body>
@@ -25,14 +23,14 @@
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/cranberryni.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/cranberryni.png" width="590" height="210" alt="Кранберини" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="/i/cocktail/b/cranberryni.png" alt="Кранберини" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary">Кранберини — Успей до рассвета!</h2>
+								<h2 class="summary"><i></i>Кранберини — Успей до рассвета!</h2>
 								<div class="description">
 									
 									<p>В конце сентября, когда на болотах созревает клюква, а ночами уже случаются первые заморозки, заблудившиеся лесники могут наблюдать завораживающую картину<a onclick="link.open('view-prepare')">…</a></p>
@@ -45,8 +43,8 @@
 							<a rel="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -54,7 +52,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>В конце сентября, когда на болотах созревает клюква, а ночами уже случаются первые заморозки, заблудившиеся лесники могут наблюдать завораживающую картину.</p><p>Гномы выбираются из своих домиков и до первых лучей солнца собирают покрытые инием ягоды, чтобы потом приготовить коктейль, заманивающий лесных нимф к ним в чащу.</p><p></p><p>(с) Авторский коктейль Александра Кана</p>
 							</div>
-							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -66,26 +64,32 @@
 									</div>
 									<a class="next"></a>
 							</div></div>
-							<h3>Как приготовить:</h3>
-							<ul>
-								
-								<li>Положи в рокс клюкву 2 чайные ложки и подави пестиком</li>
-								
-								<li>Наполни рокс дробленым льдом доверху</li>
-								
-								<li>Налей: гренадин 5 мл, розовый вермут 15 мл и джин 35 мл </li>
-								
-								<li>Выжми четвертинку лайма</li>
-								
-								<li>Размешай коктейльной ложкой</li>
-								
-								<li>Досыпь немного дробленого льда</li>
-								
-								<li>Укрась клюквой и сахарной пудрой</li>
-								
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Положи в рокс клюкву 2 чайные ложки и подави пестиком</li>
+										
+										<li>Наполни рокс дробленым льдом доверху</li>
+										
+										<li>Налей: гренадин 5 мл, розовый вермут 15 мл и джин 35 мл </li>
+										
+										<li>Выжми четвертинку лайма</li>
+										
+										<li>Размешай коктейльной ложкой</li>
+										
+										<li>Досыпь немного дробленого льда</li>
+										
+										<li>Укрась клюквой и сахарной пудрой</li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#cranberryni")'><b>Распечатать</b></button></li>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#cranberryni")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -180,7 +184,6 @@
 <!--# include file="/inc/barman-info-popup.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
 <!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

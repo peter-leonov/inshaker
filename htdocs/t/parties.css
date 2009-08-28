@@ -56,8 +56,8 @@ background: url(icon/strs-green.png);
 #want_popup { z-index:5; position: relative; top: 100px; margin:0 auto; width: 493px; height: 171px; background: url('/t/bg/parties/popup_bg.png'); font-family: Arial, sans-serif; font-style:italic; font-weight:bold; text-align:center;}
 
 #want_close {clear:both; width:493px; z-index: 5; height: 10px; margin: 0 auto; position: relative; top: 79px;}
-#want_close_text  { float: left;  display: block; background: url('/t/button/close_text.png') no-repeat;  height:10px; width: 45px;}
-#want_close_cross { float: right; display: block; background: url('/t/button/close_cross.png') no-repeat; height: 7px; width: 7px;}
+#want_close_text  { float: left;  display: block; height:10px; width: 45px;}
+#want_close_cross { float: right; display: block; background: url('/t/close.png') no-repeat; height: 7px; width: 7px;}
 
 #want_text  { color:#0392f1; font-size: 19pt; padding-top: 32px;}
 #want_phone { color:#f22b9f; font-size: 25pt; padding-top: 10px;}
@@ -72,4 +72,20 @@ background: url(icon/strs-green.png);
 
 #backdrop {position:absolute; top: 65px; left:0px; width: 100%; height: 75%; background: url('/t/bg/parties/backdrop.jpg') #fff no-repeat scroll center top}
 
-<!--# include file="/t/theme.css" -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+#parties-page .party-photos .disabled { background-position-y: -60px; }
+#parties-page .party-photos .prev { background-position-x: -60px; }
+#parties-page .party-photos .prev,
+#parties-page .party-photos .next { display: block; }
+#parties-page .party-photos .hidden {display:none;}
+#parties-page .party-previews .prev { background-position-x: -52px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+#parties-page .party-previews .party { padding-bottom: 4px;}
+<!--# endif -->
+
+
+/*<!-- if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#parties-page .party-teaser {width:520px;}
+<!-- endif -->*/

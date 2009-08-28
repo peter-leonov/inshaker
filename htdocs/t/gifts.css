@@ -25,7 +25,7 @@
 
 #gifts-page .gifts-previews .viewport,
 #gifts-page .gifts-previews { position: relative; width: 920px; height: 159px; }
-#gifts-page .gifts-previews .viewport {width: 855px; margin-left: 42px;}
+#gifts-page .gifts-previews .viewport {width: 855px; overflow:hidden; margin-left: 42px;}
 #gifts-page .gifts-previews .viewport .point { float: left; width: 855px; height: 100%; }
 #gifts-page .gifts-previews .viewport .surface { width: 4000px; padding: 0;}
 #gifts-page .gifts-previews .prev,
@@ -93,5 +93,3 @@ background: url(icon/strs-green.png);
 
 #gifts-page .gifts-previews .prev { background-position-x: -52px; }
 <!--# endif -->
-
-<!--# include file="/t/theme.css" -->

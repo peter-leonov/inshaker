@@ -2,9 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Б-52</title>
 </head>
 <body>
@@ -25,14 +23,14 @@
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/b-52.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/b-52.png" width="590" height="210" alt="Б-52" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="/i/cocktail/b/b-52.png" alt="Б-52" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary">Б-52 — Взорви танцпол!</h2>
+								<h2 class="summary"><i></i>Б-52 — Взорви танцпол!</h2>
 								<div class="description">
 									
 									<p>ЦРУ, ЦРУ, и еще раз ЦРУ. Кто же еще мог назвать коктейль в честь недостроенного бомбардировщика<a onclick="link.open('view-prepare')">…</a></p>
@@ -45,8 +43,8 @@
 							<a rel="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -54,7 +52,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>ЦРУ, ЦРУ, и еще раз ЦРУ. Кто же еще мог назвать коктейль в честь недостроенного бомбардировщика.</p><p>Легенда блещет массой загадок и тайн, но одно остается фактом. «Б-52», появившийся впервые на барной стойке Alice в Малибу, сделал недостроенный сверхсекретный бомбардировщик легендой и подарил всей Америке уверенность в завтрашнем дне.</p><p>Спустя четверть века, всемирно известный шот, горевший на каждой барной стойке, помог растопить холодную войну и стал легендой сам по себе.</p>
 							</div>
-							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -66,18 +64,24 @@
 									</div>
 									<a class="next"></a>
 							</div></div>
-							<h3>Как приготовить:</h3>
-							<ul>
-								
-								<li>Налей в стопку кофейный ликер 20 мл</li>
-								
-								<li>Используя коктейльную ложку, уложи слой бейлиса 20 мл и слой апельсинового ликера 20 мл</li>
-								
-								<li>Поджигай, вооружайся трубочками и угощай!</li>
-								
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Налей в стопку кофейный ликер 20 мл</li>
+										
+										<li>Используя коктейльную ложку, уложи слой бейлиса 20 мл и слой апельсинового ликера 20 мл</li>
+										
+										<li>Поджигай, вооружайся трубочками и угощай!</li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#b-52")'><b>Распечатать</b></button></li>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#b-52")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -162,7 +166,6 @@
 <!--# include file="/inc/barman-info-popup.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
 <!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

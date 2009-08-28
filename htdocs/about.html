@@ -2,7 +2,6 @@
 <html id="about-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/about.css" media="screen"/>
 	<title>Inshaker — Коктейльный сайт</title>
 </head>
@@ -111,9 +110,10 @@
 				<label>Мой телефон или email	<input type="text" name="address" value=""></label>
 				<label>Я из компании	<input type="text" name="company" value=""></label>
 				<label>Мое предложение или вопрос		<textarea name="text" rows="11" cols="40"></textarea></label>
-				<p>&nbsp;<button class="bt-send" type="submit">Отправить</button></p>
+				<p><button class="bt-send rounded tiny" type="submit"><b>Отправить</b></button></p>
 			</form>
 			<div id="form_success">
+				<i></i>
 				Сообщение отправлено
 				<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
 			</div>

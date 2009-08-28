@@ -2,9 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Голубая луна</title>
 </head>
 <body>
@@ -25,14 +23,14 @@
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/blue_moon.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/blue_moon.png" width="590" height="210" alt="Голубая луна" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="/i/cocktail/b/blue_moon.png" alt="Голубая луна" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary">Голубая луна — 1982</h2>
+								<h2 class="summary"><i></i>Голубая луна — 1982</h2>
 								<div class="description">
 									
 									<p>Мировое коктейльное первенство, 1982 год, Албуфейра (Португалия)<a onclick="link.open('view-prepare')">…</a></p>
@@ -47,8 +45,8 @@
 							<a rel="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -56,7 +54,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Мировое коктейльное первенство, 1982 год, Албуфейра (Португалия). </p><p></p><p>(с) Авторский коктейль Джони Джонстона (Ирландия). </p>
 							</div>
-							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -68,22 +66,28 @@
 									</div>
 									<a class="next"></a>
 							</div></div>
-							<h3>Как приготовить:</h3>
-							<ul>
-								
-								<li>Наполни слинг кубиками льда доверху</li>
-								
-								<li>Налей в шейкер: ананасовый сок 100 мл, блю курасао 10 мл, апельсиновый ликер 30 мл и джин 40 мл</li>
-								
-								<li>Наполни шейкер кубиками льда и взбей</li>
-								
-								<li>Перелей через стрейнер в слинг</li>
-								
-								<li>Укрась долькой карамболы, коктейльной вишней и ананасовым листиком</li>
-								
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Наполни слинг кубиками льда доверху</li>
+										
+										<li>Налей в шейкер: ананасовый сок 100 мл, блю курасао 10 мл, апельсиновый ликер 30 мл и джин 40 мл</li>
+										
+										<li>Наполни шейкер кубиками льда и взбей</li>
+										
+										<li>Перелей через стрейнер в слинг</li>
+										
+										<li>Укрась долькой карамболы, коктейльной вишней и ананасовым листиком</li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#blue_moon")'><b>Распечатать</b></button></li>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#blue_moon")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -178,7 +182,6 @@
 <!--# include file="/inc/barman-info-popup.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
 <!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

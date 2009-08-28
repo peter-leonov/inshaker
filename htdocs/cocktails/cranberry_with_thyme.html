@@ -2,9 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Клюква с тимьяном</title>
 </head>
 <body>
@@ -25,14 +23,14 @@
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/cranberry_with_thyme.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/cranberry_with_thyme.png" width="590" height="210" alt="Клюква с тимьяном" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="/i/cocktail/b/cranberry_with_thyme.png" alt="Клюква с тимьяном" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary">Клюква с тимьяном — Глубокий вдох!</h2>
+								<h2 class="summary"><i></i>Клюква с тимьяном — Глубокий вдох!</h2>
 								<div class="description">
 									
 									<p>Тибетские монахи пересекают леса, селятся в горных пещерах, прислушиваются к ветру и сливаются с водой<a onclick="link.open('view-prepare')">…</a></p>
@@ -45,8 +43,8 @@
 							<a rel="tag" href="/cocktails.html#tag=светские">светские</a>.
 							
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -54,7 +52,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Тибетские монахи пересекают леса, селятся в горных пещерах, прислушиваются к ветру и сливаются с водой.</p><p>Не страшась лесных зверей, острых камней и шепота ночи, каждый монах должен встретить 11 рассветов, дабы постичь суть мироздания. Однако можно пойти и более легким путем: отведать коктейль с тимьяном, в переводе на русский, коктейлем открывающим «дыхание жизни».</p><p></p><p></p><p>(с) Авторский коктейль Алексея Терехова </p>
 							</div>
-							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -66,24 +64,30 @@
 									</div>
 									<a class="next"></a>
 							</div></div>
-							<h3>Как приготовить:</h3>
-							<ul>
-								
-								<li>Положи в шейкер: клюкву 1 ч/ложку, веточку тимьяна, цветочный мед 3 ч/ложки, клюквенное варенье 1 ч/ложку</li>
-								
-								<li>Выжми четвертинку лимона</li>
-								
-								<li>Подави пестиком и налей коньяк 50 мл</li>
-								
-								<li>Наполни шейкер кубиками льда и взбей</li>
-								
-								<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
-								
-								<li>Укрась веточкой тимьяна</li>
-								
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Положи в шейкер: клюкву 1 ч/ложку, веточку тимьяна, цветочный мед 3 ч/ложки, клюквенное варенье 1 ч/ложку</li>
+										
+										<li>Выжми четвертинку лимона</li>
+										
+										<li>Подави пестиком и налей коньяк 50 мл</li>
+										
+										<li>Наполни шейкер кубиками льда и взбей</li>
+										
+										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										
+										<li>Укрась веточкой тимьяна</li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#cranberry_with_thyme")'><b>Распечатать</b></button></li>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#cranberry_with_thyme")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -178,7 +182,6 @@
 <!--# include file="/inc/barman-info-popup.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
 <!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

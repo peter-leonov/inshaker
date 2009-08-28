@@ -1,5 +1,6 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
+exit(1)
 require 'barman'
 
 class DecorationProcessor < Barman::Processor

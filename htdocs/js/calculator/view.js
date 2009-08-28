@@ -33,25 +33,25 @@ function CalculatorView() {
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
 	
-	var dropTargetHeight = 70;
+	var dropTarget = $(this.ID_DROP_TARGET);
 	var dragAnimation;
-	$(this.ID_DROP_TARGET).style.height = dropTargetHeight + "px";
 	
 	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
-		this.style.height = dropTargetHeight + "px";
+		dragAnimation.stop();
+		this.style.height = ''
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
 	$(this.ID_DROP_TARGET).onDragEnd = function(){
 		dragAnimation.stop();
-		this.style.height = dropTargetHeight + "px";
+		this.style.height = ''
 	};
 	
 	$(this.ID_DROP_TARGET).onDragStart = function(element){
-		var gap = 50;
-		if(this.offsetHeight < element.offsetHeight+gap && this.style.display != "none") {
-			dragAnimation = this.animate("easeInCubic", {height: element.offsetHeight+gap}, 0.15);
-		}
+		var h = element.offsetHeight + 50
+		if (h < 100)
+			h = 100
+		dragAnimation = this.animate("easeInCubic", {height: [dropTarget.offsetHeight, h]}, 0.15);
 	};
 	
 	$(this.ID_CONTENTS).onDrop = function(cocktailName){
@@ -266,7 +266,7 @@ function CalculatorView() {
 			var button = document.createElement("button");
 			button.className = "bt-del";
 			button.title = "Удалить";
-			button.innerHTML = "x";
+			button.innerHTML = "×";
 			li.appendChild(button);
 			
 			li.childsCache = {input: input, txt: txt};
@@ -359,7 +359,13 @@ function CalculatorView() {
 			// red/green balloon
 			if(bottle.diff){
 				button.show()
-				button.className = (bottle.diff > 0) ? "bt-more" : "bt-less";
+				if (bottle.diff > 0) {
+					button.className = "bt-more";
+					button.title = "много";
+				} else {
+					button.className = "bt-less";
+					button.title = "мало";
+				}
 			}
 			else button.hide();
 		}
@@ -378,18 +384,16 @@ function CalculatorView() {
 		{
 				dl         = document.createElement("dl");
 			var dt         = document.createElement("dt");
-			var img        = document.createElement("img");
+			var icon       = document.createElement("i");
 			var a          = document.createElement("a");
 			var dd         = document.createElement("dd");
 			var strong     = document.createElement("strong");
 			var inputQuant = document.createElement("input");
 			
 			_createPopupIngredientElementCache[cacheKey] = dl
-			dl.childsCache = {img: img, inputQuant: inputQuant, a: a};
+			dl.childsCache = {icon: icon, inputQuant: inputQuant, a: a};
 			
-			img.alt = "Добавлен";
-			img.style.height = "11px";
-			img.style.width  = "14px";
+			icon.className = 'icon'
 			
 			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + GoodHelper.normalVolumeTxt(volume[0], item.good.unit);
 			strong.innerHTML = volume[1] + " р.";
@@ -398,7 +402,7 @@ function CalculatorView() {
 			// inputQuant.id = "inputQuant_"+name.trans().htmlName() + "_" + volume[0];
 			
 			dl.appendChild(dt);
-			dt.appendChild(img);
+			dt.appendChild(icon);
 			dt.appendChild(a);
 			dl.appendChild(dd);
 			dd.appendChild(strong);
@@ -426,7 +430,7 @@ function CalculatorView() {
 				}
 			}
 			
-			img.src = bottle && bottle.count > 0 ? "/t/icon/checked.png" : "/t/border/f.png";
+			bottle && bottle.count > 0 ? dl.remClassName('empty') : dl.addClassName('empty');
 			var newValue = bottle ? bottle.count : 0;
 			if (!inputQuant.value || newValue != inputQuant.value)
 				inputQuant.value = newValue;

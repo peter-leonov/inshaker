@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html id="ingredients-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="t/default.css"/>
+	<!--# include file="/inc/head.html?uri=$URI" -->
+	<link rel="stylesheet" type="text/css" href="/t/ingredients.css"/>
 	<title>Inshaker — Коктейли</title>
 </head>
 <body>
@@ -18,13 +18,12 @@
 		<div class="b-content">
 			<div class="you-choise b"><p id="chosen"><strong>Выберите ингредиенты</strong> </p></div>
 			<div class="top-alphabetical" id="top-alphabetical"><noscript><!--# include file="/ingredients/links.html" --></noscript></div>
-			<form class="count-cocktails" id="can_prepare" style="display: none;"><span id="can_prepare_txt">Входят в состав:</span> <strong id="how_many">75 коктейлей.</strong> <input type="submit" id="view_cocktails" value="Посмотреть коктейли"/></form>
+			<form class="count-cocktails" id="can_prepare" style="display: none;"><span id="can_prepare_txt"></span> <strong id="how_many"></strong> <input type="submit" id="view_cocktails" value="Посмотреть коктейли"/></form>
 		</div>
 	</div></div>
 	
 <!--# include file="/inc/bottom-common.html" -->
 </div>
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

@@ -1,0 +1,69 @@
+.column-r .b-title h2{line-height:29px;}
+
+/* bill (cart) */
+#b-bill.editing-bar-name .body-wrapper {padding: 11px 18px 14px; }
+#b-bill.editing-bar-name .b-title {padding-bottom:8px;}
+
+#b-bill .b-title h1 { display: inline; cursor:pointer}
+#b-bill .b-title h1.unnamed { border-bottom: 1px #343B40 dashed;}
+#b-bill .b-title label { font-size:20px; margin-left:-7px}
+#b-bill .b-title input { border: 1px #c0c0c0 solid; height: 26px; width: 278px; font-size: 20px; padding: 2px 0 2px 4px; color: #343B40;}
+#b-bill .b-title .tip { -moz-user-select: none; font-size: 20px; position:absolute; top:0; left:-1px; color:#BBB; padding: 3px 0; }
+
+.column-r, #b-bill, #sidebar {float:left; width:310px; margin-left:18px; position:relative; z-index:1;}
+#b-bill dl{position:relative; margin-top:1px;}
+#b-bill dt{ height: 20px; background: no-repeat -200px -75px; color: #343b40; font-size: 11px; line-height: 19px; padding-left: 7px; color: #fff; }
+#b-bill dt span{position:absolute;top:0;right:32px;display:block;padding-right:32px;}
+#b-bill dd {font-size:120%;background:#fff; margin-left: 6px;}
+/* после калькулятора */
+#b-bill dd li{height:100%;padding:10px 0;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;}
+#b-bill dd li a{display:block;width:125px;}
+#b-bill dd li label{position:absolute;top:10px;width:110px;right:30px;white-space:nowrap;}
+#b-bill dd li b{font-weight:normal;display:block;}
+#b-bill dd li button{position:absolute;top:12px;right:8px;width:16px;height:16px;border:none;padding:0;background: no-repeat -500px -75px;overflow:hidden;text-indent:200px;cursor:pointer;}
+#b-bill dd li button.bt-less,
+#b-bill dd li button.bt-more { height:20px; }
+#b-bill dd li button.bt-less { background-position: -525px -75px; }
+#b-bill dd li button.bt-more { background-position: -550px -75px; }
+#b-bill dd strong{display:block;padding:17px 0 8px 0;}
+#b-bill ul.money li{padding:6px 0;height:100%;}
+#b-bill ul.money li a{display:block;width:125px;}
+#b-bill ul.money label{text-align:right;}
+#b-bill ul.money input{float:left;}
+#b-bill ul input{text-align:center;padding-left:0;width:35px;font-size:11px;}
+/*TODO*/
+#b-bill .total{padding:9px 23px 0 10px;position:relative;overflow:hidden;}
+#b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
+#b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
+#b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
+#b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px; position:relative;}
+
+#b-bill .print-call i { background: no-repeat; height: 12px; width: 12px; position: absolute; top: 0; left: 0; }
+#b-bill #print_plan i,
+#b-bill #print_plan_inactive i { background-position: -400px -13px; }
+#b-bill #call_barmen i { background-position: -414px -13px; width: 11px }
+#b-bill #buy_syrups i { background-position: -400px 0; width: 4px; left: 4px; }
+#b-bill #buy_shaker i { background-position: -410px 0; width: 6px; left: 3px; }
+
+
+#b-bill .print-call .tools { width: 120px; float:left; }
+#b-bill .print-call .buy   { width: 103px; float:right; }
+
+#b-bill #buy_shaker,
+#b-bill #buy_liquors,
+#b-bill #buy_syrups,
+#b-bill #print_plan,
+#b-bill #print_plan_inactive,
+#b-bill #call_barmen { padding-left: 16px; }
+
+#b-bill #print_plan { display: none; }
+#b-bill #print_plan_inactive { color: #888; }
+
+#b-bill #buy_liquors, #b-bill #buy_shaker, #b-bill #call_barmen { margin-top: 3px;}
+
+ul#cart_cocktails {margin-top: 9px;}
+
+#cart_contents{ display: none; }
+#cart_totals { display: none; }
+#cart_draghere { display: none; position: relative; font-weight: bold; font-size: 12px; border: 1px dashed #999; width: 208px; height: 40px; margin: 24px 0px 0 5px; padding: 14px 6px 10px 45px; }
+#cart_draghere i { position: absolute; left: 15px; top: 20px; width: 16px; height: 16px; background: no-repeat -400px -25px; }

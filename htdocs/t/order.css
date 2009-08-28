@@ -1,0 +1,47 @@
+#order-page .b-content {font-size:12px; width:100%;}
+#order-page .note { background: #F1F7B6 url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
+#order-page #order_more { margin-left: 10px; background: url(/t/button/info.png) no-repeat 12px; font-size:13px; padding:9px 9px 9px 47px;}
+#order-page textarea {background:#f3f3f3; border:0 solid #c9c9c9; border-width:1px 0 0 0px; margin-left:0; padding:4px 0 0 4px; overflow:auto;}
+#order-page form { font-size:100%; margin: 0; padding: 0; min-width: 500px; max-width: 600px; width: 560px; }
+#order-page form fieldset {/* clear: both; */ padding: 10px; margin: 0; }
+#order-page form fieldset legend { font-size:1.2em; font-weight: bold; padding: 12px 0;}
+#order-page form label { display: block; float: left; padding: 0; margin: 5px 0 0 10px; text-align: left; line-height: 25px;width: 120px;}
+
+#order-page form label#label_city_moscow,
+#order-page form label#label_city_mo,
+#order-page form label#label_face_phys,
+#order-page form label#label_face_legal {display: inline; float:none; margin: 0;}
+
+#order-page form input, #order-page form textarea { /* display: inline; */ width:auto; margin:5px 0 0 10px; }
+#order-page form select { /* display: inline; */ width:auto; margin:5px 0 0 0; }
+#order-page form input.text_field {
+	height: 24px; 
+	font-size: 1.2em; 
+	width: 158px; 
+	background:#f3f3f3;
+	border:0 solid #c9c9c9;
+	border-width:1px 0 0 0;
+	margin-left:0; 
+	padding:4px 0 0 4px;
+	line-height:24px;
+}
+#order-page form .radio_block input { margin: 0 5px 0 10px; }
+
+#order-page form input.error, #order-page form textarea.error { border: 0 #ec275f solid; border-width:1px 0 0 0; }
+#order-page form input#time1 { width: 50px;}
+#order-page form input#time2 { margin: 5px 0 0 2px; width: 50px; }
+#order-page form input#num_guests { width: 50px; }
+#order-page form input#phone11,
+#order-page form input#phone21 { width: 32px; }
+#order-page form input#phone12,
+#order-page form input#phone22 { margin: 5px 0 0 2px; width: 32px;}
+#order-page form input#phone13,
+#order-page form input#phone23 { margin: 5px 0 0 2px; width: 74px;}
+
+#order-page form br { clear:left; }
+#order-page #buttons_area { margin: 15px 0 0 0; width:100%; text-align:center;}
+
+#form_success{display:none;background:url(/t/button/info.png) no-repeat;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
+
+button.bt-send-disabled {height:36px;width:110px;}
+button.bt-send{background-position:0 -272px;height:38px;width:115px;}

@@ -2,9 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="/t/info-popup.css"/>
 	<title>Inshaker — Соленая мучача</title>
 </head>
 <body>
@@ -25,14 +23,14 @@
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 							
 						</p>
-						<img src="/i/cocktail/bg/salty_muchacha.png" width="590" height="210" alt="1" id="poster"/>
+						<img src="/i/cocktail/bg/salty_muchacha.png" width="590" height="210" alt="Соленая мучача" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
 							<img src="/i/cocktail/b/salty_muchacha.png" alt="Соленая мучача" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary">Соленая мучача — Облизни и выпей!</h2>
+								<h2 class="summary"><i></i>Соленая мучача — Облизни и выпей!</h2>
 								<div class="description">
 									
 									<p>Всем известно, что текилу принято пить, закусывая солью, слизанной с тела полу-обнаженной красавицы<a onclick="link.open('view-prepare')">…</a></p>
@@ -45,8 +43,8 @@
 							<a rel="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							
 							</p>
-							<button class="bt-view-how">Как приготовить</button>
-							<button class="bt-want-slap">Добавить в бар</button>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
 						</div>
 						
 						<div id="view-prepare">
@@ -54,7 +52,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Всем известно, что текилу принято пить, закусывая солью, слизанной с тела полу-обнаженной красавицы.</p><p>Вопрос каким образом пить текилу  самим полу-обнаженным красавицам до появления соленого коктейля оставался открытым. Хотя и теперь полу-обнаженные красавицы, предпочитающие слизывать соль с полу-обнаженных красавиц еще кое-где остались.</p>
 							</div>
-							<button class="bt-close-legend" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')">закрыть легенду</button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -66,26 +64,32 @@
 									</div>
 									<a class="next"></a>
 							</div></div>
-							<h3>Как приготовить:</h3>
-							<ul>
-								
-								<li>Положи в рокс: грейпфрут 2 дольки, лайм 2 дольки и мед 4 ч/ложки</li>
-								
-								<li>Добавь щепотку соли и подави пестиком</li>
-								
-								<li>Наполни рокс дробленым льдом доверху</li>
-								
-								<li>Налей серебряную текилу 50 мл</li>
-								
-								<li>Размешай коктейльной ложкой</li>
-								
-								<li>Досыпь немного дробленого льда</li>
-								
-								<li>Укрась кружком лайма с солью</li>
-								
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Положи в рокс: грейпфрут 2 дольки, лайм 2 дольки и мед 4 ч/ложки</li>
+										
+										<li>Добавь щепотку соли и подави пестиком</li>
+										
+										<li>Наполни рокс дробленым льдом доверху</li>
+										
+										<li>Налей серебряную текилу 50 мл</li>
+										
+										<li>Размешай коктейльной ложкой</li>
+										
+										<li>Досыпь немного дробленого льда</li>
+										
+										<li>Укрась кружком лайма с солью</li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#salty_muchacha")'><b>Распечатать</b></button></li>
 							</ul>
-							<button class="bt-close-how" onclick="link.close()"><!-- --></button>
-							<button class="bt-print-how" onclick='window.open("/print_cocktail.html#salty_muchacha")'></button>
 						</div>
 						<div class="popup" id="view-video">
 							<div style="width:480px;height:330px">
@@ -176,7 +180,6 @@
 <!--# include file="/inc/barman-info-popup.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
 <!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>
