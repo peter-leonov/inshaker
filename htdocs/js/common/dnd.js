@@ -74,10 +74,10 @@ function Draggable(element, name, dropTargets){
 						(e.pageY > targPos.y)                &&
 						(e.pageY < (targPos.y + targHeight))){
 						dropTargets[i].onDrop(name);
-					} else {
-						if(dropTargets[i].onDragEnd) dropTargets[i].onDragEnd();
 					}
 				}
+				if (dropTargets[i].onDragEnd)
+					dropTargets[i].onDragEnd();
 			}
 			self.dragObject = null;
 		}
