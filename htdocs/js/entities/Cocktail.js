@@ -112,7 +112,7 @@ Object.extend(Cocktail,
         if(itsTools.indexOf("Блендер") > -1 || itsTools.indexOf("Коктейльный миксер") > -1) itsMethods["в блендере"] = true;
         if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
         if(itsTools.indexOf("Стакан для смешивания") > -1) itsMethods["миксуют в стакане"] = true;
-        if(itsTools.indexOf("Стопка") > -1 && itsTools.indexOf("Коктейльная ложка") > -1) itsMethods["укладывают слои"] = true;
+        if(itsTools.indexOf("Стопка") > -1 && itsTools.indexOf("Коктейльная ложка") > -1 && itsTools.length == 2) itsMethods["укладывают слои"] = true;
         
         var numMethods = 0; for(var method in itsMethods) if(itsMethods[method]) numMethods++;
 
