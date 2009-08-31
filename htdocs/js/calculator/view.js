@@ -38,9 +38,8 @@ function CalculatorView() {
 	var dragAnimation;
 	
 	$(this.ID_DROP_TARGET).onDrop = function(cocktailName){
-		dragAnimation.stop();
-		this.style.height = ''
 		self.eventListener.addCocktail(cocktailName);
+		return true;
 	};
 	
 	$(this.ID_DROP_TARGET).onDragEnd = function(){
