@@ -119,7 +119,7 @@ var DataFilter = {
 	
 	bottleByIngredientAndVolume: function(goods, ingred, vol){
 		var res = {};
-		var volumes = goods[ingred][0].volumes;
+		var volumes = goods[ingred].volumes;
 		for(var i = 0; i < volumes.length; i++){
 			if(volumes[i][0] == vol) {
 				res.vol = volumes[i];
