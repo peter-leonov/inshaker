@@ -15,11 +15,11 @@ var Me = self[myName] =
 		var db = this.db
 		
 		var spotlighted = $('spotlighted')
-		if (spotlighted)
+		if (spotlighted && db['spotlighted'])
 			spotlighted.href = db['spotlighted'].href
 		
 		var image = $('branded-image')
-		if (image)
+		if (image && db['branded-image'])
 			image.href = db['branded-image'].href
 	}
 }
