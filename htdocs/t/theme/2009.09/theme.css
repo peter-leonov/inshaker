@@ -54,7 +54,8 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 .b-search .groups dd { color: #231f20; }
 .b-search .groups dd.selected-button { color: #f1ece3; }
 .b-search .groups dd.disabled { color: #999; }
-
+.autocomplete { left: 0; top: 21px; width: 577px; background-color: #f0e6b0; color: #000; border: solid #91241a; }
+.autocomplete .item.selected { background-color:#eabb24; }
 
 /* cocktail.css */
 .b-more dt,
