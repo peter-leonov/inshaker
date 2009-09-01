@@ -77,9 +77,12 @@ function Draggable(element, name, dropTargets){
 							break;
 					}
 				}
+			}
+			
+			for(var i = 0; i < dropTargets.length; i++)
 				if (dropTargets[i].onDragEnd)
 					dropTargets[i].onDragEnd();
-			}
+			
 			self.dragObject = null;
 		}
 	}, false);
