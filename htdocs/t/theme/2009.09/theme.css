@@ -45,7 +45,7 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 #ingredients_list,
 .ingreds-list a { color: #343b40; text-shadow: 0 1px #fff; }
 .pager-big .prev,
-.pager-big .next { height: 25px; height: 24px; }
+.pager-big .next { width: 23px; height: 25px; }
 .b-content .pager .p-list a { padding: 2px 6px 3px; }
 .b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 2px; }
 .b-content .pager .p-list .selected-button { color: #f3ede3; text-shadow: 0 1px #891408; }
