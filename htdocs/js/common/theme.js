@@ -13,13 +13,20 @@ var Me = self[myName] =
 	{
 		var db = this.db
 		
-		var spotlighted = $('spotlighted')
-		if (spotlighted && db['spotlighted'])
-			spotlighted.href = db['spotlighted'].href
-		
-		var image = $('branded-image')
-		if (image && db['branded-image'])
-			image.href = db['branded-image'].href
+		for (var k in db)
+		{
+			var item = db[k]
+			if (!item.href)
+				continue
+			
+			var node = $(k)
+			if (node)
+			{
+				node.href = item.href
+				// fix for cocktails initialization issue
+				node.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
+			}
+		}
 	}
 }
 
