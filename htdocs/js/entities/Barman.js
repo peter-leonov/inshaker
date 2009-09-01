@@ -48,7 +48,9 @@ Barman.prototype =
 				    point.className = 'point'
 				    surface.appendChild(point)
 			    }
-			    point.appendChild(Cocktail.getByName(this.cocktails[i]).getPreviewNode())
+				var cocktail = Cocktail.getByName(this.cocktails[i])
+				if (cocktail)
+					point.appendChild(cocktail.getPreviewNode())
 		    }
 		    parent.RollingImagesLite.sync()
             parent.RollingImagesLite.goInit()
