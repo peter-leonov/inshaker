@@ -47,5 +47,9 @@ var Model = {
 	
 	getRelated: function(howMany){
 		return DataFilter.relatedCocktails(this.cocktailsSet, this.cocktail, howMany);
-	}
+	},
+
+    getPreparationMethod: function(cocktailName){
+        return this.cocktail.method;
+    }
 }

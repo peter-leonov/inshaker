@@ -49,6 +49,7 @@ var Controller = {
 		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
+        this.appendPreparationMethod(Model.getPreparationMethod(name));
 	},
 	
 	getCocktailName: function(){
@@ -137,6 +138,17 @@ var Controller = {
 		}, false);
 	},
 	
+    appendPreparationMethod: function(method){
+        var firstGroup = cssQuery(".tags a")[0];
+        var methodNode = document.createElement("a");
+        methodNode.innerHTML = method;
+        methodNode.href = "/cocktails.html#method=" + method;
+        methodNode.rel = "tag"; 
+        var commaNode = document.createTextNode(", ");
+        firstGroup.parentNode.insertBefore(methodNode, firstGroup);
+        firstGroup.parentNode.insertBefore(commaNode, firstGroup); 
+    },
+
 	setPicture: function(name, good, vol){
 		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
 	},
