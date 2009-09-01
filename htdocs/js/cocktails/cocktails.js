@@ -2,8 +2,8 @@
 
 CocktailsPage =
 {
-	init: function (states, nodes, styles, cookies, decorationParams) {
-		this.view       = new CocktailsView(states, nodes, styles, decorationParams)
+	init: function (states, nodes, styles, cookies) {
+		this.view       = new CocktailsView(states, nodes, styles)
 		this.model      = new CocktailsModel(states, this.view)
 		this.controller = new CocktailsController(states, cookies, this.model, this.view)
 	}
@@ -79,10 +79,9 @@ $.onload(
 			defaultState:  0
 		}
 		
-		var decorationParams = <!--# include file="/db/decoration.js"-->
-		
-		CocktailsPage.init(states, nodes, styles, cookies, decorationParams)
+		CocktailsPage.init(states, nodes, styles, cookies)
 		Calculator.init()
+		Theme.bind()
 	}
 )
 
