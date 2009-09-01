@@ -7,7 +7,6 @@ var Me = self[myName] =
 	initialize: function (db)
 	{
 		this.db = db
-		log(db)
 	},
 	
 	bind: function ()
