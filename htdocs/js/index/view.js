@@ -216,7 +216,7 @@ IndexPageView.prototype =
 			}
 			
 			if (!initFrame)
-				initFrame = Math.round(Math.random() * (len - 1)) + 1
+				initFrame = 1//Math.round(Math.random() * (len - 1)) + 1
 			if (!this.getPromoImages()[initFrame])
 				initFrame = 1
 			
