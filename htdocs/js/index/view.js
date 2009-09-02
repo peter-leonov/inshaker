@@ -224,11 +224,12 @@ IndexPageView.prototype =
 			ri.jumpToFrame(initFrame)
 			
 			// Wait for initial images to load and start switching
+			var tries = 0
 			var imageLoadTimer = setInterval
 			(
 				function ()
 				{
-					if (me.imagesLoaded)
+					if (me.imagesLoaded || tries++ > 10)
 					{
 						clearInterval(imageLoadTimer)
 						me.showButtons()
