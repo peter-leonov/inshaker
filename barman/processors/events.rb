@@ -154,7 +154,7 @@ private
     @entity[:form_hint] = yaml['Подсказка в форме']
     @entity[:status]    = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
-    @entity[:date_ru]      = ru_date_str
+    @entity[:date_ru]   = ru_date_str
     @entity[:address]   = yaml['Ссылка на место']
     
     @entity[:rating]    = {}
