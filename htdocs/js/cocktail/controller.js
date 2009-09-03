@@ -180,11 +180,8 @@ var Controller = {
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 
 		$('good_summ').style.display = "none";
-        
-        //setTimeout(function(){
-		    $('good_needed').style.display = "none";
-		    $('good_accept').style.display = "none";
-		//}, 0);
+	    $('good_needed').style.display = "none";
+	    $('good_accept').style.display = "none";
 
 		var volsNode = $('good_volumes'); 
         volsNode.empty();
