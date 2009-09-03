@@ -216,20 +216,22 @@ IndexPageView.prototype =
 			}
 			
 			if (!initFrame)
-				initFrame = Math.round(Math.random() * (len - 1)) + 1
+				initFrame = 1//Math.round(Math.random() * (len - 1)) + 1
 			if (!this.getPromoImages()[initFrame])
 				initFrame = 1
 			
 			this.loadInitialFrames(initFrame)
-			setTimeout(function () { ri.goToFrame(initFrame, 'directJump')  }, 100)
+			ri.jumpToFrame(initFrame)
 			
 			// Wait for initial images to load and start switching
-			var imageLoadTimer = setTimeout
+			var tries = 0
+			var imageLoadTimer = setInterval
 			(
 				function ()
 				{
-					if (me.imagesLoaded)
+					if (me.imagesLoaded || tries++ > 10)
 					{
+						clearInterval(imageLoadTimer)
 						me.showButtons()
 						// startSwitching(customInit)
 						// me.nodes.promo.addEventListener('mousemove', function () { stopSwitching() }, false)
@@ -237,7 +239,7 @@ IndexPageView.prototype =
 						// me.nodes.promo.addEventListener('mouseout' , function () { startSwitching() }, false)
 					}
 				},
-				1000
+				100
 			)
 		}
 	},

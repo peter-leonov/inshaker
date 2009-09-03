@@ -13,9 +13,8 @@
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
 
-.autocomplete { display: none; font-size: 14px; position: absolute; left: -1px; top: 22px; background-color: #fff; opacity: 0.9; color: #000; border: solid #94ba0b; border-width: 0px 1px 1px 1px; z-index: 1; width: 579px; }
+.autocomplete { display: none; font-size: 14px; position: absolute; opacity: 0.9; border-width: 0px 1px 1px 1px; z-index: 1; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
-.autocomplete .item.selected { background-color:#cede97; }
 .search-error{display:none;height:12px;}
 
 

@@ -46,29 +46,21 @@
 								<% if @enter %>
 									<dt>Вход:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
 								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% elsif @status == "holding" %>
 							<dl class="info">
 								<% if @enter %>
 									<dt>Вход:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
 								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% elsif @status == "archive" %>
 							<% if @photos %>
 								<a href="<%= @photos %>" class="view-photos"><span>Посмотри фото!</span> →</a>
 							<% end %>
 							<dl class="info">
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% end %>
+							<% if @address %>
+								<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+							<% end %>
+						</dl>
 					</div>
 				</div>
 			</div></div>

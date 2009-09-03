@@ -58,13 +58,12 @@ b.lb { left: 0; bottom: 0; }
 b.rb { right: 0; bottom: 0; }
 
 
-#top{position:relative;height:65px;width:100%;font-size:12px;margin:0 auto 40px; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0;}
-#top #top-content {margin: 0 auto; width: 960px;}
-#top h2,
-#top h1{float:left; position:relative; left:-9px; bottom: -3px;}
-#top .nav{background:#000 url(bg/body/index.png) repeat-x 0 0;overflow:hidden;margin-left:190px;font-weight:bold;}
+#top { position: relative; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
+#top #top-content {position: relative; margin: 0 auto; width: 960px;}
+#top h2 { position: absolute; left: -9px; top: 3px; }
+#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; background: #000 url(bg/body/index.png) repeat-x 0 0; font-weight: bold; }
 #top .nav li{float:left;margin-right:16px;}
-#top .nav a{display:block;display:inline-block;height:44px;font-size:14px;text-decoration:none;color:#fff;border-bottom:5px solid #fff;line-height:48px;padding:8px 18px;}
+#top .nav a { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
 #top .nav a:hover{border-bottom: 5px solid;}
 #cocktails-page #top .nav a.cocktails,
 #cocktail-page #top .nav a.cocktails,
@@ -240,7 +239,6 @@ html{font-size :101%;}
 .gallery-nav ul li a,
 .you-choise span,
 .win-shop .content form{zoom:1;}
-#top .nav img{padding-top:12px;}
 #top h2{top:2px;}
 #b-bill ul.money label input{position:absolute;left:0;}
 .win-shop .main .zoom{display:inline-block;}
@@ -261,7 +259,6 @@ img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 /*html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}*/
 body{height:100%;}
-#top .nav img{padding-top:12px;}
 
 #b-bill .total,#b-bill .total *,
 .b-content,
@@ -291,8 +288,6 @@ body{height:100%;}
 .win-shop .view-photo{height:588px;}
 .win-shop .view-photo .bor-wr{margin-bottom:-2px;}
 .win-shop .win,.win-shop .win-bg{background-image:none;}
-#top h2 img,
-#top h1 img{display:none;}
 
 body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
@@ -336,8 +331,5 @@ input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
 #gifts-page .promos .place {padding-bottom:26px;}
 <!--# endif -->
 
-
-
 <!--# include virtual="calculator.css" -->
-
 <!--# include virtual="info-popup.css" -->

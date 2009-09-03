@@ -6,9 +6,10 @@
 .box .body { width: 100%; height: 100%; background: #FFFFFF url(/t/bg/body/body-wrapper.png) repeat-x scroll 0 0; overflow: hidden; }
 
 #index-page #promo { width:962px; padding: 0; background: #CCC url(/t/loader-gray.gif) no-repeat scroll center center; }
-#index-page #promo .viewport { width:962px; height:450px; }
-#index-page #promo .viewport .surface { width: 100000px; }
-#index-page #promo .point { display:block; float: left; color:#CCC; width:962px; height:450px;}
+#index-page #promo .viewport,
+#index-page #promo .point { width: 962px; height: 450px; }
+#index-page #promo .viewport .surface { width: 20000px; }
+#index-page #promo .point { float: left; color: #ccc;}
 #index-page #promo-prev,
 #index-page #promo-next { display:none; cursor:pointer; position:absolute; top:193px; width: 29px; height:64px; background: transparent url(/t/bg/index/arrows.png) no-repeat; }
 #index-page #promo-next { background-position: -29px 0; left:933px;}

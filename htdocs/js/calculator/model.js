@@ -44,14 +44,16 @@ function CalculatorModel(view){
 		if(Cocktail.getByName(name)) {
 			var cs = this.cartData.cocktails;
 			var found = false;
-			for(var i = 0; i < cs.length; i++) if(cs[i][0] == Cocktail.getByName(name)) found = true;
-			if(!found){
-				this.cartData.cocktails.push([Cocktail.getByName(name), 10]); // сразу 10
-				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
-				this.optimalGoods = cloneObject(this.cartData.goods);
-				this.dataListeners.modelChanged(this.cartData);
+			for(var i = 0; i < cs.length; i++) if(cs[i][0] == Cocktail.getByName(name)) found = cs[i];
+			if (found) {
+				found[1] += 10
+			} else {
+				cs.push([Cocktail.getByName(name), 10]); // сразу 10
 			}
+			// Оптимизируем весь набор по емкостям
+			this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+			this.optimalGoods = cloneObject(this.cartData.goods);
+			this.dataListeners.modelChanged(this.cartData);
 		}
 	};
 	

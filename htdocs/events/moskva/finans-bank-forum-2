@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading finans-bank-forum-2 status-archive">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
 	<title>Inshaker — II Неофициальный банковский форум журнала «Финанс.»</title>
 </head>
@@ -44,9 +43,9 @@
 								<a href="http://flickr.com/photos/maxibar/sets/72157608419354651/" class="view-photos"><span>Посмотри фото!</span> →</a>
 							
 							<dl class="info">
-								
-							</dl>
 						
+							
+						</dl>
 					</div>
 				</div>
 			</div></div>

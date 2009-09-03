@@ -47,7 +47,7 @@ function CocktailsModel (states, view) {
 		
 		if(!filters.state) filters.state = states.defaultState;
 		
-		if(filters.ingredients.length || filters.tag || filters.strength) {
+		if(filters.ingredients.length || filters.tag || filters.strength || filters.method) {
 			filters.state = states.byIngredients;
 		}
 		

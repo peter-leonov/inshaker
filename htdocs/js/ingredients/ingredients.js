@@ -1,5 +1,6 @@
 $.onload(function(){
 	Controller.init();
+	Theme.bind()
 })
 
 <!--# include file="/js/ingredients/model.js" -->
