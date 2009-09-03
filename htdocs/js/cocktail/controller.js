@@ -28,6 +28,7 @@ var Controller = {
 	ID_CART_FULL    : 'cart_contents',
 	
 	CLASS_VIEW_HOW_BTN : '.bt-view-how',
+    KEY_ESC: 27,
 
 	name : "",
 	relatedCount: 10,
@@ -118,11 +119,15 @@ var Controller = {
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = tools_links[i].innerHTML;
 			tools_links[i].addEventListener('click', function(name){ return function(e){	
-				self.renderToolPopup(name);
 				$(self.TOOL_POPUP).show();
+				self.renderToolPopup(name);
 			}}(tool), false);
 		}
-		
+	
+        document.documentElement.addEventListener('keyup', function(e){
+            if(e.keyCode == self.KEY_ESC) $(self.TOOL_POPUP).hide();
+        }, false);
+	
 		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
 		    $(self.TOOL_POPUP).hide();	
 		}, false);
@@ -162,11 +167,15 @@ var Controller = {
 		$('good_desc').innerHTML = good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 
-		$('good_needed').style.display = "none";
 		$('good_summ').style.display = "none";
-		$('good_accept').style.display = "none";
-		
-		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
+        
+        //setTimeout(function(){
+		    $('good_needed').style.display = "none";
+		    $('good_accept').style.display = "none";
+		//}, 0);
+
+		var volsNode = $('good_volumes'); 
+        volsNode.empty();
 		var summ = 0;
 		var have = 0;
 		var self = this;
@@ -355,11 +364,19 @@ var Controller = {
             dd.appendChild(strong);
             parent.appendChild(dd);
         
-			a.addEventListener('click', function(name){ return function(e){	
-	            if(Calculator.isIngredientPresent(name)) Calculator.showPopup(name);
-                else { self.renderPopup(name); $(self.INGRED_POPUP).show(); } 
-			}}(ingreds[i][0]), false);
+			a.addEventListener('click', function(name){ return function(e){
+                self.showPopup(name);    	
+	   		}}(ingreds[i][0]), false);
 		}
+    },
+
+    showPopup: function(ingred) {
+        if(Calculator.isIngredientPresent(ingred)) 
+            Calculator.showPopup(ingred);
+        else { 
+            $(this.INGRED_POPUP).show(); 
+            this.renderPopup(ingred); 
+        } 
     },
 
 	renderIngredients: function(ingredients) {
@@ -388,8 +405,7 @@ var Controller = {
 			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
 			img.alt = resultSet[i][0];
             img.addEventListener('click', function(name) { return function(){
-               if(Calculator.isIngredientPresent(name)) Calculator.showPopup(name);
-               else { self.renderPopup(name); $(self.INGRED_POPUP).show(); } 
+                self.showPopup(name);
             }}(resultSet[i][0]), false);
 			div.appendChild(img);
 		}

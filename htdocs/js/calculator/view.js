@@ -151,6 +151,10 @@ function CalculatorView() {
 	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		$(self.INGRED_POPUP).hide();
 	}, false);
+
+    document.documentElement.addEventListener('keyup', function(e){
+        if(e.keyCode == self.KEY_ESC) $(self.INGRED_POPUP).hide();
+    }, false);
 	
 	$(this.INGRED_POPUP).show = function(){
 		this.style.display = "block";
@@ -163,8 +167,8 @@ function CalculatorView() {
 	};
 
     this.showPopup = function(ingred){
-        this.renderPopup(this.eventListener.getItemFromCart(ingred), ingred);
         $(this.INGRED_POPUP).show();
+        this.renderPopup(this.eventListener.getItemFromCart(ingred), ingred);
     };
 	
 	/**

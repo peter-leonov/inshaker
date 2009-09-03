@@ -259,7 +259,7 @@ img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}
+/*html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}*/
 body{height:100%;}
 #top .nav img{padding-top:12px;}
 

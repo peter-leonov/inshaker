@@ -360,16 +360,18 @@ function checkDbRevision(){
 
 function mergeNodes(parentNode, nodesArray)
 {
-	for (var i = 0; i < nodesArray.length; i++)
+	for (var i = 0; i < nodesArray.length; i++) {
         if (nodesArray[i].parentNode != parentNode)
 			parentNode.appendChild(nodesArray[i]);
+    }
 	
     var childs = Array.copy(parentNode.childNodes);
     for (var i = 0, il = childs.length; i < il; i++)
     {
         var node = childs[i]
-        if (node && nodesArray.indexOf(node) < 0)
+        if (node && nodesArray.indexOf(node) < 0) {
             parentNode.removeChild(node)
+        }
     }
 }
 
