@@ -36,5 +36,13 @@ var Calculator = {
 	
 	isIngredientPresent: function(name){
 		return this.model.isIngredientPresent(name);
-	}
+	},
+
+    showPopup: function(ingredName){
+        this.view.showPopup(ingredName);
+    },
+
+    addCocktail: function(cocktailName){
+        this.controller.addCocktail(cocktailName);
+    }
 };

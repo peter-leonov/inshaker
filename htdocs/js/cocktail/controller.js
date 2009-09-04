@@ -20,27 +20,28 @@ var Controller = {
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	PATH_MERCH : '/i/merchandise/',
+	PATH_MERCH   : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
-	TOOL_POPUP: 'shop-gadget',
+	TOOL_POPUP   : 'shop-gadget',
 	
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
 	
 	CLASS_VIEW_HOW_BTN : '.bt-view-how',
+    KEY_ESC: 27,
 
 	name : "",
 	relatedCount: 10,
+    currentlyShownIngred: "",
 	
 	init: function(){
-		var name = $(this.NAME_ELEM).innerHTML;
-		
+		this.name = $(this.NAME_ELEM).innerHTML;
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
-		new Draggable($(this.ID_ILLUSTRATION), name, this.DROP_TARGETS);
+		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
 	    
 		Model.dataListener = this;
-		this.bindEvents(name);
-		Model.init(name);
+		this.bindEvents(this.name);
+		Model.init(this.name);
 		var perPage = 5;
 		if(Model.recs.length > 0) {
 			this.renderRecommendations(Model.recs);
@@ -50,10 +51,6 @@ var Controller = {
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
         this.appendPreparationMethod(Model.getPreparationMethod(name));
-	},
-	
-	getCocktailName: function(){
-		return $(this.NAME_ELEM).innerHTML;
 	},
 	
 	bindEvents: function(name){
@@ -111,11 +108,11 @@ var Controller = {
 					e.preventDefault();
 				}, false);
 		}
-		self.link = link = new Link();
+		link = new Link();
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
-			link.open("view-how");
+			link.open("view-how", true);
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
@@ -123,20 +120,33 @@ var Controller = {
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = tools_links[i].innerHTML;
 			tools_links[i].addEventListener('click', function(name){ return function(e){	
+				$(self.TOOL_POPUP).show();
 				self.renderToolPopup(name);
-				link.open(self.TOOL_POPUP);
 			}}(tool), false);
 		}
-		
-		if(window.location.href.indexOf(this.TOOL_POPUP) > -1) link.close();
+	
+        document.documentElement.addEventListener('keyup', function(e){
+            if(e.keyCode == self.KEY_ESC) $(self.TOOL_POPUP).hide();
+        }, false);
+	
 		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
-			link.close();
+		    $(self.TOOL_POPUP).hide();	
 		}, false);
 		
-		$('good_cancel').addEventListener('mousedown', function(e){
+        $('tool_cancel').addEventListener('mousedown', function(e){
+			$(self.TOOL_POPUP).hide();
+		}, false);
+	
+    	$('good_cancel').addEventListener('mousedown', function(e){
 			$('order_note').hide();
 		}, false);
-	},
+	    
+        $('order_link').addEventListener('mousedown', function(e){
+			Calculator.addCocktail(self.name);
+			Calculator.showPopup(self.currentlyShownIngred);
+		}, false);
+
+    },
 	
     appendPreparationMethod: function(method){
         var firstGroup = cssQuery(".tags a")[0];
@@ -154,6 +164,7 @@ var Controller = {
 	},
 	
 	renderPopup: function(ingred){
+        this.currentlyShownIngred = ingred;
 		var good = Model.goods[ingred];
 		
 		$('good_name').innerHTML = good.brand || ingred;
@@ -168,11 +179,12 @@ var Controller = {
 		$('good_desc').innerHTML = good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 
-		$('good_needed').style.display = "none";
 		$('good_summ').style.display = "none";
-		$('good_accept').style.display = "none";
-		
-		var volsNode = $('good_volumes'); volsNode.innerHTML = "";
+	    $('good_needed').style.display = "none";
+	    $('good_accept').style.display = "none";
+
+		var volsNode = $('good_volumes'); 
+        volsNode.empty();
 		var summ = 0;
 		var have = 0;
 		var self = this;
@@ -361,11 +373,19 @@ var Controller = {
             dd.appendChild(strong);
             parent.appendChild(dd);
         
-			a.addEventListener('click', function(name){ return function(e){	
-				self.renderPopup(name);
-				self.link.open(self.INGRED_POPUP);
-			}}(ingreds[i][0]), false);
+			a.addEventListener('click', function(name){ return function(e){
+                self.showPopup(name);    	
+	   		}}(ingreds[i][0]), false);
 		}
+    },
+
+    showPopup: function(ingred) {
+        if(Calculator.isIngredientPresent(ingred)) 
+            Calculator.showPopup(ingred);
+        else { 
+            $(this.INGRED_POPUP).show(); 
+            this.renderPopup(ingred); 
+        } 
     },
 
 	renderIngredients: function(ingredients) {
@@ -382,7 +402,8 @@ var Controller = {
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
-		var parent = $(this.ID_ING_SUR);
+		var self = this;
+        var parent = $(this.ID_ING_SUR);
 		var div = document.createElement("div");
 		div.className = "point";
 		div.id = "ing_" + pageNum;
@@ -392,6 +413,9 @@ var Controller = {
 			var img = document.createElement("img");
 			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
 			img.alt = resultSet[i][0];
+            img.addEventListener('click', function(name) { return function(){
+                self.showPopup(name);
+            }}(resultSet[i][0]), false);
 			div.appendChild(img);
 		}
 	},

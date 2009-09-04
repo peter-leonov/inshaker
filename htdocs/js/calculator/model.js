@@ -128,6 +128,10 @@ function CalculatorModel(view){
 	this.getNewBottle = function(name, bottleId){
 		return DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
 	};
+
+    this.getItemFromCart = function(name){
+        return this.cartData.goods[name];
+    };
 	
 	/**
 	 * Поменялось количество коктейля в калькуляторе
