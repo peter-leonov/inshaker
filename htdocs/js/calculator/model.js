@@ -41,14 +41,15 @@ function CalculatorModel(view){
 	};
 	
 	this.addCocktail = function(name){
-		if(Cocktail.getByName(name)) {
+		var cocktail = Cocktail.getByName(name)
+		if(cocktail) {
 			var cs = this.cartData.cocktails;
 			var found = false;
-			for(var i = 0; i < cs.length; i++) if(cs[i][0] == Cocktail.getByName(name)) found = cs[i];
+			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktail) found = cs[i];
 			if (found) {
 				found[1] += 10
 			} else {
-				cs.push([Cocktail.getByName(name), 10]); // сразу 10
+				cs.push([cocktail, 10]); // сразу 10
 			}
 			// Оптимизируем весь набор по емкостям
 			this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
