@@ -1,4 +1,8 @@
-var DataFilter = {
+;(function(){
+
+function noop () {  }
+
+self.DataFilter = {
 	good_paths: [],
 	
 	/**
@@ -41,7 +45,7 @@ var DataFilter = {
 	countOptimal: function(max_vol, volumes){
 		var vols = [], costs = [];
 		var j = 0;
-		for(var i = 0; i < volumes.length; i++) {			
+		for(var i = 0; i < volumes.length; i++) {
 			if(volumes[i][2]) {
 				vols[j] = volumes[i][0];
 				costs[j] = volumes[i][1];
@@ -109,6 +113,7 @@ var DataFilter = {
 		}
 		
 		for(var i = 0; i < volumes.length; i++){
+			noop() // for FF <= 3.5.2 with jit on
 			var volume = volumes[i], val = volume[0]
 			if(answer[val])
 				answer[val].vol = volume;
@@ -281,3 +286,5 @@ var DataFilter = {
 		return volumes[closest_idx];
 	}
 }
+
+})();
