@@ -15,4 +15,27 @@
 
 <!--# include file="/js/calculator/calculator.js" -->
 
-$.onload(function () { setTimeout(function () { $.include('/js/common/analytics.js') }, 1200) })
+$.onload
+(
+	function ()
+	{
+		setTimeout(function () { $.include('/js/common/analytics.js') }, 1200)
+		
+		// anti-yuppiebar
+		function goTop () { window.parent.location = window.location }
+		function goDefend ()
+		{
+			try
+			{
+				var as = cssQuery('a')
+				for (var i = 0; i < as.length; i++)
+					as[i].target = '_top'
+			}
+			catch (ex) {}
+			
+			setTimeout(function () { goTop() }, 60000)
+		}
+		if (window.parent !== window)
+			setTimeout(goDefend, 100)
+	}
+)
