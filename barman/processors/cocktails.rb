@@ -21,18 +21,18 @@ class CocktailsProcessor < Barman::Processor
     IMAGES_BIG_DIR     = IMAGES_DIR + "b/"
     IMAGES_SMALL_DIR   = IMAGES_DIR + "s/"
     IMAGES_PRINT_DIR   = IMAGES_DIR + "print/"
-
+    
     VIDEOS_DIR = HTDOCS_DIR + "v/"
-
+    
     COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
   end
-
+  
   def initialize
-    super    
+    super
     @cocktails = {}
     @cocktails_present = {}
     # @cocktail_names_en2ru = {}
-    @tags      = []
+    @tags = []
     @strengths = []
   end
   
