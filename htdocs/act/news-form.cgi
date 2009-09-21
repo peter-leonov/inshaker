@@ -17,7 +17,7 @@ my $signature = $q->{first} . ' [' . $q->{city} . ']';
 my $msg = MIME::Lite->new
 (
 	From    => encode_mimewords($signature . ' <' . $q->{email} . '>', Charset => 'UTF-8'),
-	To      => 'vaskas@contactmaker.ru, pl@contactmaker.ru',
+	To      => 'mail@inshaker.ru, pl@contactmaker.ru',
 	Subject =>  encode_mimewords($q->{event}, Charset => 'UTF-8'),
 	Type    => 'multipart/mixed'
 );
