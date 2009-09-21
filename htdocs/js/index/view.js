@@ -20,7 +20,6 @@ IndexPageView.prototype =
 	
 	start: function ()
 	{
-		new NewsFormPopup(this.nodes.dontMiss)
 		this.controller.start()
 	},
 	
@@ -82,7 +81,7 @@ IndexPageView.prototype =
 			}
 		}
 	},
-
+	
 	getRange: function (initFrame)
 	{
 		var range = [initFrame]
