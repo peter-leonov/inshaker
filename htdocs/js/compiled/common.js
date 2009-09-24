@@ -13,8 +13,6 @@
 <!--# include file="/js/calculator/controller.js" -->
 <!--# include file="/js/calculator/calculator.js" -->
 
-<!--# include file="/js/calculator/calculator.js" -->
-
 $.onload
 (
 	function ()
