@@ -26,7 +26,7 @@ class EventsProcessor < Barman::Processor
     @entity  = {} # currently processed bar
   end
   
-  def run
+  def job
     prepare_dirs
     prepare
     
@@ -295,4 +295,4 @@ private
   
 end
 
-EventsProcessor.new.run
+exit EventsProcessor.new.run

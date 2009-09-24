@@ -18,7 +18,7 @@ class ToolsProcessor < Barman::Processor
     @tools = []
   end
   
-  def run
+  def job
     prepare_dirs
     prepare
     flush_images
@@ -63,4 +63,4 @@ class ToolsProcessor < Barman::Processor
   end
 end
 
-ToolsProcessor.new.run
+exit ToolsProcessor.new.run

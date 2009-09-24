@@ -12,7 +12,7 @@ class BarmenProcessor < Barman::Processor
     DB_JS      = HTDOCS_DIR  + "db/barmen.js"
   end
 
-  def run
+  def job
     @barmen = []
     prepare_barmen
     flush_json
@@ -43,4 +43,4 @@ class BarmenProcessor < Barman::Processor
   end
 end 
 
-BarmenProcessor.new.run
+exit BarmenProcessor.new.run

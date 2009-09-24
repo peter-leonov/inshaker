@@ -16,8 +16,7 @@ class MagazineProcessor < Barman::Processor
     @db = {}
   end
   
-  def run
-    
+  def job
     process_about
     
     if summary
@@ -88,4 +87,4 @@ class MagazineProcessor < Barman::Processor
   end
 end
 
-MagazineProcessor.new.run
+exit MagazineProcessor.new.run

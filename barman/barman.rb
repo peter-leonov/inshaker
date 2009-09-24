@@ -13,6 +13,7 @@ $stdout.sync = true
 module Barman
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
+  LOCK_NAME = ".lock-barman"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/" 
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
@@ -115,5 +116,44 @@ module Barman
         return false
       end
     end
+    
+    def errors?
+      @errors_count != 0
+    end
+    
+    def lock
+      begin
+        Dir.mkdir("#{ROOT_DIR}/#{LOCK_NAME}")
+        true
+      rescue => e
+        false
+      end
+    end
+    
+    def unlock
+      begin
+        Dir.rmdir("#{ROOT_DIR}/#{LOCK_NAME}")
+        true
+      rescue => e
+        false
+      end
+    end
+    
+    def run
+      if lock
+        begin
+          job
+          summary
+        rescue => e
+          error "Паника: #{e}"
+        end
+        unlock or error "не могу освободить бармена (свободу барменам!)"
+      else
+        error "бармена кто-то занял"
+      end
+      
+      return @errors_count
+    end
+  
   end
 end

@@ -26,19 +26,14 @@ class BarsProcessor < Barman::Processor
     @city_points = {}
   end
   
-  def run
-    begin
-      prepare_dirs
-      prepare_cases
-      prepare_renderer
-      prepare_map_points
-      update_bars
-    rescue => e
-      error "Паника: #{e}"
-    end
+  def job
+    prepare_dirs
+    prepare_cases
+    prepare_renderer
+    prepare_map_points
+    update_bars
     
-    
-    if summary
+    unless errors?
       flush_links
       flush_json
     end
@@ -189,4 +184,4 @@ private
   end
 end
 
-BarsProcessor.new.run
+exit BarsProcessor.new.run

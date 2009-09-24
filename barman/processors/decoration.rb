@@ -12,7 +12,7 @@ class DecorationProcessor < Barman::Processor
     THEME_FILE = HTDOCS_DIR + "t/theme.css"
   end
   
-  def run
+  def job
     @theme = YAML::load(File.open(Config::DECORATION_DIR + "decoration.yaml"))['Выбранная тема'] 
     @theme_dir  = Config::DECORATION_DIR + @theme + "/"
     
@@ -58,4 +58,4 @@ private
   
 end
 
-DecorationProcessor.new.run
+exit DecorationProcessor.new.run

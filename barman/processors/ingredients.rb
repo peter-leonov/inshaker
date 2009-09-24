@@ -31,8 +31,7 @@ class IngredientsProcessor < Barman::Processor
     @goods = {}
   end
   
-  def run
-    
+  def job
     @options = {}
     OptionParser.new do |opts|
       opts.banner = "Usage: ingredients.rb [options]"
@@ -212,4 +211,4 @@ class IngredientsProcessor < Barman::Processor
   
 end
 
-IngredientsProcessor.new.run
+exit IngredientsProcessor.new.run

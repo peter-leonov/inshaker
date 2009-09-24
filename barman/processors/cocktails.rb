@@ -36,7 +36,7 @@ class CocktailsProcessor < Barman::Processor
     @strengths = []
   end
   
-  def run
+  def job
     
     @options = {}
     OptionParser.new do |opts|
@@ -336,4 +336,4 @@ private
   
 end
 
-CocktailsProcessor.new.run
+exit CocktailsProcessor.new.run
