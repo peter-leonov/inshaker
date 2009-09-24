@@ -27,9 +27,6 @@ EventPage.controller =
 			if (!hash[fields[i]])
 				return false
 		
-		if (!/\w+\@\w+\.\w+/.test(hash['email']))
-			return false
-		
 		return true
 	},
 	
