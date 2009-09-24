@@ -14,7 +14,8 @@ $stdout.sync = true
 module Barman
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
-  LOCK_NAME = ".lock-barman"
+  LOCK_FILE = ".lock-barman"
+  PID_FILE = "barman.pid"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/" 
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
@@ -124,7 +125,7 @@ module Barman
     
     def lock
       begin
-        Dir.mkdir("#{ROOT_DIR}/#{LOCK_NAME}")
+        Dir.mkdir("#{ROOT_DIR}#{LOCK_FILE}")
         true
       rescue => e
         false
@@ -133,7 +134,7 @@ module Barman
     
     def unlock
       begin
-        Dir.rmdir("#{ROOT_DIR}/#{LOCK_NAME}")
+        Dir.rmdir("#{ROOT_DIR}#{LOCK_FILE}")
         true
       rescue => e
         false
@@ -143,8 +144,10 @@ module Barman
     def run
       if lock
         begin
+          File.write("#{ROOT_DIR}#{PID_FILE}", $$)
           job
           summary
+          File.unlink("#{ROOT_DIR}#{PID_FILE}")
         rescue => e
           error "Паника: #{e}"
         end
