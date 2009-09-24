@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Saying
   module Console
     def say_error str

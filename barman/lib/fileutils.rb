@@ -1,3 +1,4 @@
+# encoding: utf-8
 class File
   def self.write file, data
     File.open(file, 'w') do |f|
