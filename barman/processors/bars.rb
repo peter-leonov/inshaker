@@ -27,11 +27,16 @@ class BarsProcessor < Barman::Processor
   end
   
   def run
-    prepare_dirs
-    prepare_cases
-    prepare_renderer
-    prepare_map_points
-    update_bars
+    begin
+      prepare_dirs
+      prepare_cases
+      prepare_renderer
+      prepare_map_points
+      update_bars
+    rescue => e
+      error "Паника: #{e}"
+    end
+    
     
     if summary
       flush_links
@@ -123,12 +128,16 @@ class BarsProcessor < Barman::Processor
     rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m
     
     body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
-    body.scan(rx).each do |arr|
+    bars = body.scan(rx)
+    raise "не удалось скачать карту баров" if bars.empty?
+    bars.each do |arr|
       @bar_points[arr[0]] = [arr[2].to_f, arr[1].to_f]
     end
     
     body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
-    body.scan(rx).each do |arr|
+    cities = body.scan(rx)
+    throw "не удалось скачать карту городов" if cities.empty?
+    cities.each do |arr|
       @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}
     end
   end
