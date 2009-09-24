@@ -149,7 +149,7 @@ module Barman
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
       else
-        error "бармена кто-то занял"
+        error "бармена кто-то занял, или прошлый запуск обрушился"
       end
       
       return @errors_count
