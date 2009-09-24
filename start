@@ -4,7 +4,7 @@ NAME="inshaker"
 
 PROJ_ROOT="/www/$NAME"
 NGINX="/usr/local/nginx/sbin/nginx"
-APACHE="/usr/local/apache/sbin/httpd"
+FCGIWRAP="/usr/bin/spawn-fcgi -u www -n -a 127.0.0.1 -p 4003 /usr/bin/fcgiwrap"
 TYPE="$SERVER_TYPE"
 
 if [ "$TYPE" = "" ]; then
@@ -15,4 +15,4 @@ fi
 echo "Starting $NAME as $TYPE..."
 
 $NGINX -c "$PROJ_ROOT/nginx.$TYPE.conf"
-$APACHE -f "$PROJ_ROOT/apache.$TYPE.conf"
+$FCGIWRAP
