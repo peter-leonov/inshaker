@@ -22,7 +22,7 @@ class Deployer < Barman::Processor
           unless system("git push >>barman.log 2>&1")
             error "не удалось залить обновления на сайт"
           else
-            say "все сохранил и залил на сайт"
+            say "готово, проверяйте сайт"
           end
         end
       end
