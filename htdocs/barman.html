@@ -255,8 +255,10 @@ $.onload(function(){
 		
 		var req = aPost("/act/launcher.cgi", fh);
 		req.onSuccess = function (){
-			$('output').innerHTML = this.responseText();
-			inflateNode($('output'));
+			var output = $('output')
+			output.innerHTML = this.responseText()
+			output.scrollTop = 10000
+			inflateNode(output)
 			goBarmanButton.setEnabled(true);
 		}
 	});
@@ -267,8 +269,10 @@ $.onload(function(){
 		squeezeNode($('output'));
 		var req = aPost("/act/deployer.cgi", {});
 		req.onSuccess = function (){
-			$('output').innerHTML = this.responseText();
-			inflateNode($('output'));
+			var output = $('output')
+			output.innerHTML = this.responseText()
+			output.scrollTop = 10000
+			inflateNode(output)
 			goUpButton.setEnabled(true);
 		}
 	});
