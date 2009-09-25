@@ -153,7 +153,17 @@ module Barman
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
       else
-        error "бармена кто-то занял, или прошлый запуск обрушился"
+        pid = File.read("#{ROOT_DIR}#{PID_FILE}").match(/\d+/).to_s.to_i
+        if `ps -A | grep #{pid}` =~ /ruby/
+          error "бармена кто-то занял"
+        else
+          error "в прошлый раз бармен обрушился"
+          say "восстанавливаю локальную версию после сбоя…"
+          system("git reset --hard >>barman.log 2>&1")
+          unlock
+          say "теперь бармена можно перезапустить"
+        end
+        
       end
       
       return @errors_count
