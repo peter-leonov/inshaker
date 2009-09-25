@@ -8,6 +8,7 @@ class Deployer < Barman::Processor
   
   def job
     Dir.chdir(Config::BASE_DIR)
+    say "синхронизуюсь с сайтом…"
     unless system("git pull >>barman.log 2>&1")
       error "не удалось синхронизироваться с сайтом"
     else
