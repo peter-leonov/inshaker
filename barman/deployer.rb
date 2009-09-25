@@ -1,40 +1,22 @@
 #!/usr/bin/ruby
 require 'barman'
 
-class Deployer
-  
+class Deployer < Barman::Processor
   module Config
     BASE_DIR    = Barman::HTDOCS_DIR
-    DEPLOY_DIRS = ["bars", "cocktails", "i", "events"]
   end
   
-  def initialize
-     git_add_all
-     git_commit_and_push
-  end
-  
-  def git_add_all
-    Config::DEPLOY_DIRS.each do |deploy_dir|
-      git_add Config::BASE_DIR + deploy_dir
+  def job
+    unless system("cd #{Config::BASE_DIR} && git commit1 -am 'content update' 2>&1")
+      error "не могу сохранить обновления в гит"
+    else
+      unless system("cd #{Config::BASE_DIR} && git push1 2>&1")
+        error "не могу залить обновления на сайт"
+      else
+        say "все сохранил и залил на сайт"
+      end
     end
   end
-  
-  def git_commit_and_push
-    begin
-      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1 && git push")
-    rescue
-      puts "Unable to perform git commit and push"
-      exit 1
-    end
-  end
-  
-private
-
-  def git_add dir
-    d = Dir.new(dir)
-    system("git add #{d.path} 2>&1")
-  end
-  
 end
 
-Deployer.new
+exit Deployer.new.run
