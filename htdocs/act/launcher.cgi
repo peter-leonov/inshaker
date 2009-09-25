@@ -1,14 +1,19 @@
 #!/usr/bin/ruby
-
+require 'barman'
 require 'rubygems'
 require 'cgi'
 $stdout.sync = true
 
-cgi = CGI.new('html4')
-
-processors = ""
-cgi.params.each{|k,v| processors += "#{k} " if k =~ /^[a-z]+$/}
-
-
 puts "Content-type: text/plain; charset=utf-8\n\n"
-system("cd /www/inshaker/barman && ./launcher.rb #{processors} 2>&1")
+
+Dir.chdir("#{Barman::ROOT_DIR}barman/")
+
+processors = []
+CGI.new.params.each do |k, v|
+  processors << k.to_s if k =~ /^[a-z]+$/
+end
+
+processors.each do |p|
+  fork { exit system("./processors/#{p}.rb") }
+  Process.wait
+end
