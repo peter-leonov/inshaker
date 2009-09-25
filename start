@@ -4,7 +4,7 @@ NAME="inshaker"
 
 PROJ_ROOT="/www/$NAME"
 NGINX="/usr/local/nginx/sbin/nginx"
-FCGIWRAP="/usr/bin/spawn-fcgi -u www -n -a 127.0.0.1 -p 4003 /usr/bin/fcgiwrap"
+FCGIWRAP="/usr/bin/spawn-fcgi -P $PROJ_ROOT/act.pid -u www -a 127.0.0.1 -p 4003 /usr/bin/fcgiwrap"
 TYPE="$SERVER_TYPE"
 
 if [ "$TYPE" = "" ]; then
