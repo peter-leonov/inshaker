@@ -3,7 +3,7 @@ require 'barman'
 
 class Deployer < Barman::Processor
   module Config
-    BASE_DIR = Barman::HTDOCS_DIR
+    ROOT_DIR = Barman::ROOT_DIR
   end
   
   def job
