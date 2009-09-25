@@ -8,17 +8,18 @@ class Deployer < Barman::Processor
   
   def job
     Dir.chdir(Config::BASE_DIR)
-    unless system("git pull")
+    unless system("git pull >>barman.log 2>&1")
       error "не удалось синхронизироваться с сайтом"
     else
       if `git status` =~ /nothing to commit/
         say "заливать нечего"
       else
-        say "начинаем процедуру…"
-        unless system("git commit -am 'content update'")
+        say "сохраняю в гит…"
+        unless system("git commit -am 'content update' >>barman.log 2>&1")
           error "не удалось сохранить обновления в гит"
         else
-          unless system("git push")
+          say "заливаю на сайт…"
+          unless system("git push >>barman.log 2>&1")
             error "не удалось залить обновления на сайт"
           else
             say "все сохранил и залил на сайт"
