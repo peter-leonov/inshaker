@@ -13,7 +13,7 @@ class Deployer < Barman::Processor
       error "не удалось синхронизироваться с сайтом"
     else
       if `git status` =~ /nothing to commit/
-        say "заливать нечего"
+        warning "заливать нечего"
       else
         say "сохраняю в гит…"
         unless system("git commit -am 'content update' >>barman.log 2>&1")
