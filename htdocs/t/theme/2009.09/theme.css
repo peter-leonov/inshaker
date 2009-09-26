@@ -7,12 +7,12 @@
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 196px; height: 528px; right: 50px; bottom: 120px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 196px; height: 528px; right: 20px; bottom: 120px; }
 a { color: #231f20;  }
 #top .nav a:hover { border-bottom-color: #b72f25; }
 #bottom { color: #b6a258; text-shadow: #000 0 1px; }
 #bottom a { color: #f1ece3; }
-html { background: #000 url(bg.jpg) center top; }
+html { background: #000 url(bg.jpg) center -430px; }
 button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
 button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 
