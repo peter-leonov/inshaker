@@ -42,7 +42,7 @@ Barman.prototype =
             parent.show()
             for (var i = 0; i < this.cocktails.length; i++)
 		    {
-			    if (i % 8 == 0)
+			    if (i % 6 === 0)
 			    {
 				    var point = document.createElement('ul')
 				    point.className = 'point'
