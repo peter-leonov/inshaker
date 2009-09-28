@@ -21,7 +21,7 @@ class Deployer < Barman::Processor
       else
         author = host_to_author(guest_host)
         say "сохраняю в гит…"
-        unless system("git commit -am 'content update' --author='#{author}' >>barman.log 2>&1")
+        unless system("git add . && git commit -am 'content update' --author='#{author}' >>barman.log 2>&1")
           error "не удалось сохранить обновления в гит"
         else
           say "заливаю на сайт…"
