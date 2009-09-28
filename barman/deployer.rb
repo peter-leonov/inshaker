@@ -7,7 +7,6 @@ class Deployer < Barman::Processor
   end
   
   def job
-    # puts ENV["X_FORWARDED_FOR"]
     Dir.chdir(Config::ROOT_DIR)
     say "синхронизуюсь с сайтом…"
     unless system("git pull >>barman.log 2>&1")
@@ -16,15 +15,16 @@ class Deployer < Barman::Processor
       if `git status` =~ /nothing to commit/
         warning "заливать нечего"
       else
+        author = host_to_author(guest_host)
         say "сохраняю в гит…"
-        unless system("git commit -am 'content update' >>barman.log 2>&1")
+        unless system("git commit -am 'content update' --author='#{author}' >>barman.log 2>&1")
           error "не удалось сохранить обновления в гит"
         else
           say "заливаю на сайт…"
           unless system("git push >>barman.log 2>&1")
             error "не удалось залить обновления на сайт"
           else
-            say "готово — проверяйте"
+            say "готово, проверяйте"
           end
         end
       end
