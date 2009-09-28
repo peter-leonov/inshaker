@@ -51,7 +51,7 @@ body { background: url(bar/bg.png) repeat-x; }
 
 #city-name, #bar-page #bar-id { display: none; }
 #map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
-#price-index { padding: 36px 0 0 89px; font-size: 35px;}
+#price-index { padding: 36px 0 0 89px; font-size: 35px; color: #ec118f; }
 
 
 
