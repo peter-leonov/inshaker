@@ -152,7 +152,6 @@ module Barman
           File.write("#{lockpath}/pid", $$)
           File.write("#{lockpath}/host", guest_host)
           File.write("#{lockpath}/job", job_name)
-          sleep 3600
           job
           summary
         rescue => e
@@ -169,7 +168,7 @@ module Barman
         else
           error "в прошлый раз бармен обрушился"
           say "восстанавливаю локальную версию после сбоя…"
-          # system("git reset --hard >>barman.log 2>&1")
+          system("git reset --hard >>barman.log 2>&1")
           unlock
           say "теперь задачу можно перезапустить"
         end
