@@ -11,7 +11,11 @@ class BarmenProcessor < Barman::Processor
     IMAGES_DIR = HTDOCS_DIR + "i/barmen/"
     DB_JS      = HTDOCS_DIR  + "db/barmen.js"
   end
-
+  
+  def job_name
+    "смешивалку барменов"
+  end
+  
   def job
     @barmen = []
     prepare_barmen

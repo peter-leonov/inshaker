@@ -16,6 +16,10 @@ class MagazineProcessor < Barman::Processor
     @db = {}
   end
   
+  def job_name
+    "смешивалку главной страницы"
+  end
+  
   def job
     process_about
     

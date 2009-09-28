@@ -18,6 +18,10 @@ class ToolsProcessor < Barman::Processor
     @tools = []
   end
   
+  def job_name
+    "смешивалку штучек"
+  end
+  
   def job
     prepare_dirs
     prepare

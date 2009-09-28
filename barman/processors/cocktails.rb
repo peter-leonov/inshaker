@@ -36,6 +36,10 @@ class CocktailsProcessor < Barman::Processor
     @strengths = []
   end
   
+  def job_name
+    "смешивалку коктейлей"
+  end
+  
   def job
     
     @options = {}

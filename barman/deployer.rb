@@ -6,6 +6,10 @@ class Deployer < Barman::Processor
     ROOT_DIR = Barman::ROOT_DIR
   end
   
+  def job_name
+    "заливалку на сайт"
+  end
+  
   def job
     Dir.chdir(Config::ROOT_DIR)
     say "синхронизуюсь с сайтом…"

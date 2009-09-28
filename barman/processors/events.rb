@@ -26,6 +26,10 @@ class EventsProcessor < Barman::Processor
     @entity  = {} # currently processed bar
   end
   
+  def job_name
+    "смешивалку событий"
+  end
+  
   def job
     prepare_dirs
     prepare

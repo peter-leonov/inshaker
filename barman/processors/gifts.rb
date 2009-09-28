@@ -12,6 +12,10 @@ class GiftsProcessor < Barman::Processor
     DB_JS = HTDOCS_DIR + "db/gifts.js"
   end
   
+  def job_name
+    "смешивалку подарков"
+  end
+  
   def job
     @gifts = []
     @gift  = {}

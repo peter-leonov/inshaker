@@ -31,6 +31,10 @@ class IngredientsProcessor < Barman::Processor
     @goods = {}
   end
   
+  def job_name
+    "смешивалку ингредиентов"
+  end
+  
   def job
     @options = {}
     OptionParser.new do |opts|

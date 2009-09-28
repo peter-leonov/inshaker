@@ -26,6 +26,10 @@ class BarsProcessor < Barman::Processor
     @city_points = {}
   end
   
+  def job_name
+    "смешивалку баров"
+  end
+  
   def job
     prepare_dirs
     prepare_cases
