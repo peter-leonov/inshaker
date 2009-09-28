@@ -50,7 +50,6 @@ Object.extend(Cocktail,
     cocktails: [],
     ingredients: [],
     letters: [],
-    names: [],
     methods: ["просто", 
               "в шейкере", 
               "в блендере", 
@@ -61,7 +60,6 @@ Object.extend(Cocktail,
     rounds: {},
     matches: {},
 
-    dictNames: {},
     dictLetters: {},
 	dictMethods: {},
 
@@ -71,15 +69,11 @@ Object.extend(Cocktail,
 		var ai = this.ingredients, seen = {}
 		
 		var i = 0;
-		for (var k in db){
+		for (var k in db)
+		{
 			var cocktail = new Cocktail(db[k]);
-			this.names[i] = cocktail.name;
 			this.cocktails[i] = this.processMethods(cocktail);
-            			
-            var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-            var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-            this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
-            
+			
 			var ci = cocktail.ingredients
 			for (var j = 0; j < ci.length; j++)
 			{
@@ -136,14 +130,33 @@ Object.extend(Cocktail,
 		}
 	},
 	
-	getBySimilarName: function (name){
-        var term = name.split(" ").map(function(v){ return v.toLowerCase() }).sort().join("");
-
-        var res = [];
-        for(var key in this.dictNames) {
-            if (key.indexOf(term) > -1) res.push(this.cocktails[this.dictNames[key]])
-        }
-        return res;
+	getBySimilarNameCache: {},
+	getBySimilarName: function (name)
+	{
+		if (this.getBySimilarNameCache[name])
+			return this.getBySimilarNameCache[name]
+			
+		var words = name.split(/\s+/),
+			res = [], cocktails = this.cocktails
+		
+		for (var i = 0; i < words.length; i++)
+			words[i] = new RegExp("(?:^|\\s)" + words[i], "i")
+		
+		var first = words[0], jl = words.length
+		SEARCH: for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i],
+				name = cocktail.name
+			
+			if (first.test(name))
+			{
+				for (var j = 1; j < jl; j++)
+					if (!words[j].test(name))
+						continue SEARCH
+				res.push(cocktail)
+			}
+		}
+		return (this.getBySimilarNameCache[name] = res)
 	},
 	
 	getByHtmlName: function(htmlName){
