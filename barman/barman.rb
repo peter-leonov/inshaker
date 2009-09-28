@@ -15,13 +15,12 @@ module Barman
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
   LOCK_FILE = ".lock-barman"
-  PID_FILE = "barman.pid"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/" 
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
-    
+    attr_reader :guest_host
     if ENV['REQUEST_METHOD']
       include Saying::HTML
     else
@@ -36,6 +35,7 @@ module Barman
       @errors_messages = []
       @warnings_count = 0
       @warnings_messages = []
+      @guest_host = get_guest_host
     end
     
     def flush_json_object(object, dest_file)
@@ -125,7 +125,7 @@ module Barman
     
     def lock
       begin
-        Dir.mkdir("#{ROOT_DIR}#{LOCK_FILE}")
+        Dir.mkdir("#{ROOT_DIR}/#{LOCK_FILE}")
         true
       rescue => e
         false
@@ -134,46 +134,55 @@ module Barman
     
     def unlock
       begin
-        Dir.rmdir("#{ROOT_DIR}#{LOCK_FILE}")
+        FileUtils.rmtree("#{ROOT_DIR}/#{LOCK_FILE}")
         true
       rescue => e
         false
       end
     end
     
+    def job_name
+      "какую-то задачу"
+    end
+    
     def run
+      lockpath = "#{ROOT_DIR}/#{LOCK_FILE}"
       if lock
         begin
-          File.write("#{ROOT_DIR}#{PID_FILE}", $$)
+          File.write("#{lockpath}/pid", $$)
+          File.write("#{lockpath}/host", guest_host)
+          File.write("#{lockpath}/job", job_name)
+          sleep 3600
           job
           summary
-          File.unlink("#{ROOT_DIR}#{PID_FILE}")
         rescue => e
           error "Паника: #{e}"
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
       else
-        pid = File.read("#{ROOT_DIR}#{PID_FILE}").match(/\d+/).to_s.to_i
-        if `ps -A | grep #{pid}` =~ /ruby/
-          error "бармена кто-то занял"
+        pid = File.exists?("#{lockpath}/pid") && File.read("#{lockpath}/pid").match(/\d+/).to_s.to_i
+        if pid && `ps -A | grep #{pid}` =~ /ruby/
+          host = File.read("#{lockpath}/host")
+          job = File.read("#{lockpath}/job")
+          host = nil if host.empty?
+          error "бармена занял #{host_to_name(host)}, запустив #{job}"
         else
           error "в прошлый раз бармен обрушился"
           say "восстанавливаю локальную версию после сбоя…"
-          system("git reset --hard >>barman.log 2>&1")
+          # system("git reset --hard >>barman.log 2>&1")
           unlock
-          say "теперь бармена можно перезапустить"
+          say "теперь задачу можно перезапустить"
         end
-        
       end
       
       return @errors_count
     end
     
-    def guest_host
+    def get_guest_host
       if ENV["X_FORWARDED_FOR"]
         ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
         if ip
-          return `nslookup #{ip}`.match(/name = (\w+)/)[1].to_s
+          return `nslookup #{ip}`.match(/name = (\w+)/)[1]
         end
       end
       nil

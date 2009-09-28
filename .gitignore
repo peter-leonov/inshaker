@@ -13,3 +13,4 @@ htdocs/v/*
 htdocs/stat/*
 data/*
 .idea/*
+.lock-barman
