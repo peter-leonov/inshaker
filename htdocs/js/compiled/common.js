@@ -30,8 +30,6 @@ $.onload
 					as[i].target = '_top'
 			}
 			catch (ex) {}
-			
-			setTimeout(function () { goTop() }, 60000)
 		}
 		if (window.parent !== window)
 			setTimeout(goDefend, 100)
