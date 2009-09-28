@@ -170,12 +170,13 @@ module Barman
     end
     
     def guest_host
-      ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
-      if ip
-        `nslookup #{ip}`.match(/name = (\w+)/)[1].to_s
-      else
-        nil
+      if ENV["X_FORWARDED_FOR"]
+        ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
+        if ip
+          return `nslookup #{ip}`.match(/name = (\w+)/)[1].to_s
+        end
       end
+      nil
     end
     
     def host_to_name host
@@ -183,7 +184,8 @@ module Barman
         "mike" => "Мишенька",
         "max" => "Максимка",
         "lena" => "Леночка",
-        "peter" => "Петенька"
+        "peter" => "Петенька",
+        nil => "Бармен"
       }[host]
     end
     
@@ -192,7 +194,8 @@ module Barman
         "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
         "max" => "Maxim Dergilev <max@inshaker.ru>",
         "lena" => "Elena Piskareva <lena@inshaker.ru>",
-        "peter" => "Peter Leonov <kungfutzu@programica.ru>"
+        "peter" => "Peter Leonov <kungfutzu@programica.ru>",
+        nil => "Barman <barman@inshaker.ru>"
       }[host]
     end
   
