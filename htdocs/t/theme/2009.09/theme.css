@@ -12,7 +12,7 @@ a { color: #231f20;  }
 #top .nav a:hover { border-bottom-color: #b72f25; }
 #bottom { color: #b6a258; text-shadow: #000 0 1px; }
 #bottom a { color: #f1ece3; }
-html { background: #000 url(bg.jpg) repeat-x center bottom; }
+html { background: #000 url(bg.jpg) repeat-y center bottom; }
 button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
 button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 
