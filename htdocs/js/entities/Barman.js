@@ -15,8 +15,8 @@ Barman.prototype =
     switchable: true,
     render: function (context)
     {
-        var head = context.getElementsByTagName("h1")[0]
-        head.innerHTML = this.name + " – клуб главных барменов Inshaker"
+        var name = context.getElementsByTagName("h1")[0].firstChild
+        name.innerHTML = this.name
         
         var img  = context.getElementsByClassName("photo")[0]
         img.src  = "/i/barmen/" + this.name_eng.htmlName() + ".jpg"
