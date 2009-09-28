@@ -55,7 +55,7 @@
 .pager-big .prev.disabled {background-position: -0px -150px; }
 .pager-big .next.disabled {background-position: -25px -150px; }
 
-.b-content .pager{padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
+.b-content .pager{height:20px;padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
 .b-content .pager .p-list {display: inline;}
 .b-content .pager .p-list a{line-height: 18px; text-align:center; text-decoration:none;}
 .b-content .pager .p-list a.selected-button { background-position: -100px -125px; cursor: default;}
