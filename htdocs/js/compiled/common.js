@@ -5,7 +5,6 @@
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/good_helper.js" -->
 <!--# include file="/js/common/datafilter.js" -->
-<!--# include file="/js/common/maps.js" -->
 <!--# include file="/js/common/theme.js" -->
 
 <!--# include file="/js/calculator/model.js" -->
