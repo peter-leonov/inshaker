@@ -1,4 +1,5 @@
 <!--# include file="/js/common/programica.js" -->
+<!--# include file="/js/common/analytics.js" -->
 <!--# include file="/js/common/rutils.js" -->
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
@@ -8,8 +9,6 @@ $.onload
 (
 	function ()
 	{
-		setTimeout(function () { $.include('/js/common/analytics.js') }, 1200)
-		
 		// anti-yuppiebar
 		function goTop () { window.parent.location = window.location }
 		function goDefend ()
