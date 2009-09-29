@@ -1,6 +1,8 @@
 <!--# include file="/js/common/programica.js" -->
-<!--# include file="/js/common/util.js" -->
+<!--# include file="/js/common/rutils.js" -->
 
+String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
+String.prototype.capitalize = function () { return this.charAt(0).toUpperCase() + this.substr(1) }
 
 $.onload
 (
@@ -24,3 +26,6 @@ $.onload
 			setTimeout(goDefend, 100)
 	}
 )
+
+// document.addEventListener('DOMContentLoaded', function (e) { $.onready.run(e) }, false)
+// document.attachEvent('contentready', function (e) { alert('contentready') })

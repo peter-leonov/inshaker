@@ -1,3 +1,5 @@
+function remClass(elem, className) { if(elem) elem.remClassName(className) };
+
 function CocktailsView (states, nodes, styles) {
 	
 	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});

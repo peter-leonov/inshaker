@@ -1,6 +1,12 @@
 /**
  * Общие функции для компонентов, работающих с товарами (уровень view)
  */
+
+Number.prototype.toFloatString = function(){
+	if(this.toString() != parseInt(this)) return this.toString();
+	return this + ".0";
+}
+
 var GoodHelper = {
 	PATH_VOLUMES : '/i/merchandise/volumes/',
     CART : 'cart',

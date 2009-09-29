@@ -2,6 +2,15 @@
 
 function noop () {  }
 
+Array.prototype.without = function(index) {
+	var tmp = [];
+	for(var i = 0; i < this.length; i++){
+		if(i != index) tmp.push(this[i]);
+	}
+	return tmp;
+}
+
+
 self.DataFilter = {
 	good_paths: [],
 	

@@ -1,3 +1,9 @@
+Array.prototype.random = function() {
+	var len = this.length
+	if (len)
+		return this[Math.round(Math.random() * (len - 1))]
+}
+
 var Controller = {
 	NAME_ELEM  : 'cocktail_name',
 	ID_REC     : 'recommendations',

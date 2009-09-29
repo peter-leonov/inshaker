@@ -1,4 +1,31 @@
 /**
+ * Get element's absolute position. Properly handles Safari's body scroll*.
+ * 
+ * @param e - element
+ * @return {Object} position - x,y
+ */
+function getPosition (n)
+{
+	var x = 0, y = 0, p
+	for (;;)
+	{
+		x += n.offsetLeft
+		y += n.offsetTop
+		if ((p = n.offsetParent))
+		{
+			x -= n.scrollLeft
+			y -= n.scrollTop
+			n = p
+		}
+		else
+			break
+	}
+	
+	return {x:x, y:y};
+}
+
+
+/**
  * Класс, который позволяет сделать элемент перетаскиваемым (создается его клон)
  * В результате перетаскивания у элемента-цели срабатывает метод onDrop(name)
  * 
@@ -64,7 +91,7 @@ function Draggable(element, name, dropTargets){
 			// dropping
 			for(var i = 0; i < dropTargets.length; i++){
 				if(dropTargets[i].style.display == "block"){
-					var targPos    = getPosition(dropTargets[i]); // from util.js
+					var targPos    = getPosition(dropTargets[i]);
 					var targWidth  = parseInt(dropTargets[i].offsetWidth);
 					var targHeight = parseInt(dropTargets[i].offsetHeight);
 					
