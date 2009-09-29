@@ -38,7 +38,8 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #spotlighted { display: none; }
-#alphabetical-ru a {}
+#letters_all,
+#alphabetical-ru a { color: #fff; }
 #alphabetical-ru a.selected-button { color: #ec118f; }
 #search_tabs li { color: #fff; }
 #search_tabs li.selected {}
