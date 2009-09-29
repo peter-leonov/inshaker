@@ -6,7 +6,7 @@
 #search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 21px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0px -100px; cursor: default;}
 
-#search_by_letter a {text-decoration:none; color:#fff; font-size: 14px;}
+#search_by_letter a {text-decoration:none; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
 #alphabetical-ru {float:right; overflow:hidden; width:540px; margin-top:2px;}
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}

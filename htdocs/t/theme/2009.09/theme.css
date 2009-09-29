@@ -38,8 +38,9 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 .b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #spotlighted { width: 34px; height: 34px; right: 0; bottom: 8px; }
-#alphabetical-ru a { color: #f5efba; }
-#alphabetical-ru a.selected-button { color: #ec118f; }
+#letters_all,
+#alphabetical-ru a { /*color: #f5efba;*/ color: #fff; }
+#alphabetical-ru a.selected-button { color: #b72f25; }
 #search_tabs li { color: #717171; text-shadow: 0 1px #fff; font-weight: bold; /*letter-spacing: 0.5px;*/ }
 #search_tabs li.selected { color: #f3ede3; text-shadow: 0 1px #891408; }
 #ingredients_list,

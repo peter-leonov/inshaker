@@ -1,3 +1,5 @@
+.b-title { z-index: 10; }
+
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
