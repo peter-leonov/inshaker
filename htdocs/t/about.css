@@ -43,18 +43,12 @@
 #about-page .b-content .view-stat { padding-top: 20px; background: none; }
 
 #b-cr-about .body-wrapper{height:505px;}
-#b-cr-about form, 
-#b-cr-delivery form {font-size:11px;line-height:2;}
-#b-cr-about p, 
-#b-cr-delivery p {display:block;}
-#b-cr-about label, 
-#b-cr-delivery label{margin-top:1em;}
-#b-cr-about button, 
-#b-cr-delivery button {margin:24px 0 10px;}
+#b-cr-about form {font-size:11px;line-height:2;}
+#b-cr-about p {display:block;}
+#b-cr-about label {margin-top:1em;}
+#b-cr-about button {margin:24px 0 10px;}
 #b-cr-about textarea,
-#b-cr-about input, 
-#b-cr-delivery textarea, 
-#b-cr-delivery input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
+#b-cr-about input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
 
 #form_success{display:none;position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
