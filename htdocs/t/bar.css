@@ -39,15 +39,12 @@ body { background: url(bar/bg.png) repeat-x; }
 
 .column-main .body-wrapper,
 #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
-#sidebar .parties { overflow: visible; }
-#sidebar .parties .column { width: 310px; }
-#sidebar .parties .viewport { width: 220px; margin: 0 0 0 9px; position: relative; top: 12px; }
-#sidebar .parties .viewport .point { width: 220px; display: block; }
-#sidebar .parties .viewport .point img { margin: 0 auto; }
 .b-more-rec dt,
 .b-more-rec dt b,
 .b-more-cocktails dt,
 .b-more-cocktails dt b { background: #000000 url(bg/body/black-more-title.png) repeat-x scroll 0px 0px; }
+.whisky-index { overflow: visible; }
+.whisky-index .column { width: 310px; }
 
 #city-name, #bar-page #bar-id { display: none; }
 #map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
