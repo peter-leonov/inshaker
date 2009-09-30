@@ -22,14 +22,11 @@
 #about-page .view-stat .stat .point { width: 510px; height: 560px; float: right;}
 #about-page .view-stat .stat a { margin-top: 140px; z-index: 1;}
 #about-page .view-stat .stat .prev,
-#about-page .view-stat .stat .next{position:absolute;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -72px;left:0;top:90px;}
-#about-page .view-stat .stat .next{background-position:-20px -72px;left:auto;right:0;}
-#about-page .view-stat .stat .disabled {background-position:0 -92px;}
-#about-page .view-stat .stat .next.disabled {background-position:-20px -92px;}
+#about-page .view-stat .stat .next{position:absolute;left:0;top:90px;}
+#about-page .view-stat .stat .next{left:auto;right:0;}
 #about-page .view-stat dl dt { font-size: 14px; padding-bottom: 4px; }
 #about-page .view-stat ul { font-size: 12px;} 
 #about-page .view-stat ul li { list-style: disc; margin: 0 20px; }
-#about-page #view-stat .stat .prev{background-position-x:0;} 
 
 #about-page .body-wrapper{min-height:505px;}
 #about-page #body_wrapper{padding-bottom: 14px;}
