@@ -22,7 +22,7 @@ $.onload
 	{
 		var nodes =
 		{
-			cocktails: cssQuery('.info-blocks .cocktails-list')[0],
+			cocktails: cssQuery('.info-blocks .cocktail-list')[0],
 			links: cssQuery('.info-blocks .links-list')[0],
 			promo: $('promo'),
 			arrows:[cssQuery('#promo-prev')[0], cssQuery('#promo-next')[0]]

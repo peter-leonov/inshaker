@@ -30,35 +30,21 @@
 
 /* more in cocktail */
 .programica-rolling-images { position: relative; }
-.programica-rolling-images .prev,
-.programica-rolling-images .next { position: absolute; z-index: 2; }
 .programica-rolling-images .viewport { overflow: hidden; position: relative; z-index: 1; }
 .programica-rolling-images .viewport .surface { padding: 0; margin: 0; }
 
-#index-page .info-blocks .prev,
-#index-page .info-blocks .next { top: 50px; background: transparent url(/t/icon/strs-green.png) no-repeat scroll; cursor: pointer; }
-#index-page .info-blocks .prev { left: 20px; background-position: 0 -24px; }
-#index-page .info-blocks .next { right: 20px; background-position: -16px -24px; }
-#index-page .info-blocks .disabled { cursor: default; }
-#index-page .info-blocks .next.disabled { background-position: -16px -38px; }
-#index-page .info-blocks .prev.disabled { background-position: 0 -38px; }
+#index-page .info-blocks .prev { left: 20px; }
+#index-page .info-blocks .next { right: 20px; }
                         
 #index-page .info-blocks .viewport { margin: 0 35px; width: 151px; }
 #index-page .info-blocks .viewport .surface { width: 10000px; }
 #index-page .info-blocks .point { float: left; width: 151px; }
 #index-page .info-blocks { width: 100%; height: 100%; }
-#index-page .info-blocks .prev,
-#index-page .info-blocks .next { width: 16px; height: 14px; }
                         
 #index-page .info-blocks .point a { display: block; text-align: center; }
 #index-page .info-blocks .point a img { display: block; margin: 8px auto; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-#index-page #promo .prev { background-position-x: 0px;}
-#index-page .info-blocks .prev { left:-16px;}
-#index-page .info-blocks .next { background-position-x: -16px !important; right:18px; }
-#index-page .info-blocks .disabled { background-position-y: -38px !important; }
-
 #index-page .info-blocks .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 <!--# endif -->
