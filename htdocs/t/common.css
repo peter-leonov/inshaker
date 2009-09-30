@@ -137,6 +137,12 @@ b.rb { right: 0; bottom: 0; }
 .b-more-cocktails .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
 .b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
+.cocktail-list .prev,
+.cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.cocktail-list .prev{background-position:-500px 0;left:0px;}
+.cocktail-list .next{background-position:-525px 0;right:-2px;}
+.cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
+.cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 .b-more .b-more-rec .point{width:130px; display:block}
 .b-more .b-more-rec {width:208px;margin-right:20px;}
 .b-more .b-more-rec .viewport{width:130px;left:21px;}
