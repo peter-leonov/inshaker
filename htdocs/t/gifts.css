@@ -1,6 +1,6 @@
 /* gifts-page */
 
-#gifts-page .b-title { height:26px; padding-bottom:10px; margin-bottom: 20px; }
+#gifts-page .b-title { height:26px; padding-bottom:10px; margin-bottom: 18px; }
 #gifts-page .b-title a { text-decoration:none; } 
 #gifts-page .b-content {}
 #gifts-page #top{}
@@ -21,7 +21,7 @@
 #gifts-page .gifts-previews .gift img { display: block; margin: 0 auto -3px; }
 #gifts-page .gifts-previews .name { text-decoration:none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; }
 #gifts-page .gifts-previews .gift.selected .name { color: #e2138a; font-weight:bold; border-bottom: none; font-style: italic; cursor: default; }
-#gifts-page .gifts-previews .gift .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:144px; left:93px;}
+#gifts-page .gifts-previews .gift .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:146px; left:93px;}
 
 #gifts-page .gifts-previews .viewport,
 #gifts-page .gifts-previews { position: relative; width: 920px; height: 159px; }
