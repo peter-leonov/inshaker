@@ -26,8 +26,8 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 #cart_draghere b { color: #0759AB; }
 
 /* cocktails.css */
-#view-how .prev,
-#view-how .next { background-repeat: no-repeat; background-image: url(common.png); }
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
@@ -95,8 +95,8 @@ button.rounded { background-image: url(common.8.png); }
 #cart_draghere i { background-image: url(common.8.png); }
 
 /* cocktails.css */
-#view-how .prev,
-#view-how .next { background-image: url(common.8.png) }
+.square-list .prev,
+.square-list .next { background-image: url(common.8.png) }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
