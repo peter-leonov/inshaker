@@ -163,16 +163,20 @@ Object.extend(Cocktail,
 		var first = words[0], jl = words.length
 		SEARCH: for (var i = 0; i < cocktails.length; i++)
 		{
-			var cocktail = cocktails[i],
-				name = cocktail.name
+			var cocktail = cocktails[i], name
 			
-			if (first.test(name))
-			{
-				for (var j = 1; j < jl; j++)
-					if (!words[j].test(name))
-						continue SEARCH
-				res.push(cocktail)
-			}
+			if (first.test(cocktail.name))
+				name = cocktail.name
+			else if (first.test(cocktail.name_eng))
+				name = cocktail.name_eng
+			else
+				continue SEARCH
+			
+			for (var j = 1; j < jl; j++)
+				if (!words[j].test(name))
+					continue SEARCH
+			
+			res.push(cocktail)
 		}
 		return (this.getBySimilarNameCache[name] = res)
 	},
