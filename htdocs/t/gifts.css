@@ -29,14 +29,9 @@
 #gifts-page .gifts-previews .viewport .point { float: left; width: 855px; height: 100%; }
 #gifts-page .gifts-previews .viewport .surface { width: 4000px; padding: 0;}
 #gifts-page .gifts-previews .prev,
-#gifts-page .gifts-previews .next {
-display:block; z-index:3; width:20px; height:20px; position:absolute; left:auto; top:41px; right:19px;
-background: url(icon/strs-green.png);
-}
-#gifts-page .gifts-previews .prev { left: 0; background-position: 0 -72px; }
-#gifts-page .gifts-previews .next { right: 0; background-position: -20px -72px; }
-#gifts-page .gifts-previews .prev.disabled { background-position: 0 -92px; cursor: default; }
-#gifts-page .gifts-previews .next.disabled { background-position: -20px -92px; cursor: default; }
+#gifts-page .gifts-previews .next { z-index:3; position:absolute; left:auto; top:41px; right:19px; }
+#gifts-page .gifts-previews .prev { left: 0; }
+#gifts-page .gifts-previews .next { right: 0; }
 
 #gifts-page .gift-promos { margin: 5px 0 0 1px } 
 #gifts-page .gift-promos .viewport,
