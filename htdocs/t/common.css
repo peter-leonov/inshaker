@@ -109,13 +109,6 @@ b.rb { right: 0; bottom: 0; }
 
 
 
-/* in cocktail and about */
-.popup{font-size:120%;line-height:1.67;display:none;position:absolute;top:-140px;padding:80px 0 60px 0;min-height:100%;color:#fff;margin-bottom:-102px;left:0;width:100%;background:#000;background:rgba(0,0,0,0.9);}
-.popup h3{font-size:150%;font-weight:bold;margin:-52px 20px -1px;}
-.popup p{padding:20px 40px 0 20px;}
-.popup a{color:#00c0ff;}
-.popup .close{border-color:#020202 !important;position:absolute;background-color:#515152;color:#fff;text-decoration:none;text-align:center;left:50%;margin-left:-4.45em;bottom:20px;display:block;font-size:92%;width:8.91em}
-
 /* in cocktail, bar and event */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
 .b-more .b-more-cocktails { width:398px;}
