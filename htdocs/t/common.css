@@ -148,6 +148,15 @@ b.rb { right: 0; bottom: 0; }
 .b-more .b-more-rec .viewport{width:130px;left:21px;}
 .b-more .b-more-rec li{width:130px;}
 
+.square-list .next,
+.square-list .prev { display: block; width: 20px; height: 20px; }
+.square-list .prev { background-position: -450px 0; }
+.square-list .next { background-position: -475px 0; }
+.square-list .prev.disabled,
+.square-list .next.disabled { cursor:default; }
+.square-list .prev.disabled { background-position: -450px -25px; }
+.square-list .next.disabled { background-position: -475px -25px; }
+
 
 /* popups-related */
 .win-shop{display:none;}
@@ -197,14 +206,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
 .win-shop .content #order_note a:hover { text-decoration: none;}
 
-.win-shop .view-photo{position:absolute;top:0;left:0;height:100%;width:100%;}
-.win-shop .view-photo h3{padding:0;height:auto;}
-.win-shop .view-photo ul{position:absolute;bottom:21px;left:179px;margin:0;}
-.win-shop .view-photo ul .next{margin-left:20px;width:20px;}
-.win-shop .view-photo ul .prev{margin-right:20px;width:20px;}
-.win-shop .view-photo ul .next a,
-.win-shop .view-photo ul .prev a{border:0 !important;padding:0 !important;margin-top:10px;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -52px;}
-.win-shop .view-photo ul .next a{background-position:-20px -52px;}
+
 .win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
 .win-shop .b-gadget .count{display:block;margin-bottom:6px;}
 .win-shop .b-gadget .count input{margin-left:6px;}
@@ -287,11 +289,9 @@ body{height:100%;}
 
 
 #good_volumes.dots dt{margin-top:5px;}
-.win-shop .view-photo ul li{vertical-align:top;}
 .win-shop .gadget-wrapper{zoom:1;}
-.win-shop .view-photo{height:588px;}
-.win-shop .view-photo .bor-wr{margin-bottom:-2px;}
-.win-shop .win,.win-shop .win-bg{background-image:none;}
+.win-shop .win,
+.win-shop .win-bg{background-image:none;}
 
 body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 

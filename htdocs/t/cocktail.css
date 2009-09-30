@@ -45,13 +45,9 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .surface img{float:left;margin-left:20px; cursor:pointer;}
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #view-how .next,
-#view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;}
-#view-how .prev{background-position:-450px 0;top:72px;}
-#view-how .next{background-position:-475px 0;top:48px;}
-#view-how .prev.disabled,
-#view-how .next.disabled{cursor:default;}
-#view-how .prev.disabled{background-position:-450px -25px;}
-#view-how .next.disabled{background-position:-475px -25px;}
+#view-how .prev{z-index:3;position:absolute;left:auto;right:19px;}
+#view-how .prev{top:72px;}
+#view-how .next{top:48px;}
 
 #view-how .recipe,
 #view-how .controls { margin-left: 200px; }
