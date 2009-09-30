@@ -14,7 +14,6 @@ function check ()
 		clearInterval(interval)
 		try
 		{
-			log('track!')
 			_gat._getTracker("UA-1635720-11")._trackPageview()
 		}
 		catch (ex) {}
