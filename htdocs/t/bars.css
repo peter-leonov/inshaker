@@ -7,8 +7,6 @@ html {overflow-y: scroll;}
 
 body { background: #fff url(bg/bars/bg.png) repeat-x; }
 
-#partner { display: none; position: absolute; right: 0; bottom: 8px; width: 57px; height: 27px; background: transparent url(/t/icon/partner.png) no-repeat; }
-
 #head a { text-decoration: none; border-bottom: 2px dashed; }
 #head a:hover { border-bottom: none; }
 #head a.selected { border-bottom: none; color: inherit; cursor: default; }
