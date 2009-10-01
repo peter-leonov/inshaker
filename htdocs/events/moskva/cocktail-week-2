@@ -80,8 +80,6 @@
 			<div class="b-content"></div>
 		</div></div>
 	</div>
-	
-	<!--# include file="/inc/bottom-common.html" -->
 </div>
 <div id="promo-back" style="background-image:url(/i/event/moskva/cocktail-week-2/promo-bg.png)"></div>
 <div id="form-popup">
@@ -105,6 +103,7 @@
 		</form>
 	</div>
 </div>
+<!--# include file="/inc/bottom-common.html" -->
 <script type="text/javascript" src="/js/compiled/common.js"></script>
 <script type="text/javascript" src="/js/event/event.js"></script>
 <script type="text/javascript" src="/js/entities/Event.js"></script>
