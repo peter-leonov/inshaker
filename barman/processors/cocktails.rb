@@ -42,6 +42,7 @@ class CocktailsProcessor < Barman::Processor
   
   def pre_job
     @options = {}
+    names = @options[:names] = {}
     OptionParser.new do |opts|
       opts.banner = "Запускайте так: cocktails.rb [опции]"
       
@@ -52,11 +53,9 @@ class CocktailsProcessor < Barman::Processor
         @options[:text] = v
       end
       opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
-        names = {}
         list.each do |v|
           names[v.yi] = true
         end
-        @options[:names] = names
       end
       opts.on("-h", "--help", "помочь") do
         puts opts
