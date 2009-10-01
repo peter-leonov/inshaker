@@ -139,9 +139,9 @@ self.DataFilter = {
 		var ingreds = [];
 		var possibleSets = [];
 		
-		for(var i = 0; i < cocktail.ingredients.length; i++) {
-			ingreds.push(cocktail.ingredients[i][0]);
-		}
+		// for(var i = 0; i < cocktail.ingredients.length; i++) {
+			ingreds.push(cocktail.ingredients[0][0]);
+		// }
 		var ingredsCopy = cloneObject(ingreds);
 		possibleSets.push([].concat(ingreds));
 		
