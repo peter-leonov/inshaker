@@ -168,7 +168,7 @@ module Barman
         else
           error "в прошлый раз бармен обрушился"
           say "восстанавливаю локальную версию после сбоя…"
-          system("git reset --hard >>barman.log 2>&1")
+          # system("git reset --hard >>barman.log 2>&1")
           unlock
           say "теперь задачу можно перезапустить"
         end
