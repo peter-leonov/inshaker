@@ -76,7 +76,7 @@ b.rb { right: 0; bottom: 0; }
 #top .logo { width: 147px; height: 60px; background-position: -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 #index-page #top .logo { cursor: default; }
 
-#bottom{font-size:1.1em;line-height:1.7;overflow:hidden;clear:both;padding-top:40px;}
+#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;overflow:hidden;clear:both;padding-top:40px;margin:0 auto;width:960px;}
 #bottom .main-menu{float:right;}
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
@@ -91,7 +91,9 @@ b.rb { right: 0; bottom: 0; }
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
 .dragging-object{position:absolute;z-index:10;}
 #alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background-position: 0 0;}
-#branded-image { position: absolute; z-index: 0; right: 0; bottom: 0; width: 0; height: 0; background-position: 0 0; }
+#branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
+#branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
+#branded-image { display: block; position: absolute; }
 
 
 /* in almost all */
