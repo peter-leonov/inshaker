@@ -50,7 +50,10 @@ body { background: url(bar/bg.png) repeat-x; }
 #map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
 #price-index { padding: 36px 0 0 89px; font-size: 35px; color: #ec118f; }
 
+<!--# include file="/t/popup.css" -->
+<!--# include file="/t/info-popup.css" -->
 
+#barman-info-popup { display: none; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
