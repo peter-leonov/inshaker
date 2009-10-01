@@ -141,11 +141,19 @@ module Barman
       end
     end
     
+    def pre_job
+    end
+    
     def job_name
       "какую-то задачу"
     end
     
+    def job
+      error "пустая задача"
+    end
+    
     def run
+      pre_job
       lockpath = "#{ROOT_DIR}/#{LOCK_FILE}"
       if lock
         begin
