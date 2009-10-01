@@ -105,6 +105,21 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_cocktails
+    names = @options[:names]
+    unless names.empty?
+      say "обновляю указанные коктейли: #{names.keys.join(", ")}"
+      indent do
+      done = 0
+      Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+        next if !names[dir.name]
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      end # indent
+      return
+    end
+    
     say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
