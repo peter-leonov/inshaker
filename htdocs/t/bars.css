@@ -46,18 +46,12 @@ body { background: #fff url(bg/bars/bg.png) repeat-x; }
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
 
-
-<!--# include file="/t/news-form-popup.css" -->
+<!--# include file="/t/popup.css" -->
 <!--# include file="/t/info-popup.css" -->
 
 .hidden { display: none !important; }
 
-.win-shop,
-.info-popup-area { display: block; }
-.info-popup-area .close-controls { top: 77px; }
-.info-popup-area .close-controls .cross { background: none; font-size: 18px; line-height: 8px; color: #fff; padding: 0 3px; text-decoration: none; }
-.info-popup .win { width: 958px; /*two pixels for borders*/ margin: 0; top: 73px; }
-
+#guide-info-popup .enrollment {font-size:20px; font-style:italic; color:#F22B9F; background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0; clear:both; padding:14px 0 3px 0;}
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
 #sort-menu dl,
