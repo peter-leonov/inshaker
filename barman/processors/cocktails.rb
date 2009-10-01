@@ -212,7 +212,8 @@ class CocktailsProcessor < Barman::Processor
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @cocktails.each do |name, hash|
+      @cocktails.keys.sort.each do |name|
+        hash = @cocktails[name]
         links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
