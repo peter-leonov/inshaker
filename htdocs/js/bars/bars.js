@@ -19,7 +19,7 @@ BarsPage =
 	}
 }
 
-$.onload
+$.onready
 (
 	function ()
 	{

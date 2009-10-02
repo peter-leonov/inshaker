@@ -20,6 +20,6 @@ function check ()
 	}
 }
 
-$.onload(function () { setTimeout(function () { load() }, 250) })
+$.onready(function () { setTimeout(function () { load() }, 250) })
 
 })();

@@ -5,7 +5,7 @@
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 String.prototype.capitalize = function () { return this.charAt(0).toUpperCase() + this.substr(1) }
 
-$.onload
+$.onready
 (
 	function ()
 	{

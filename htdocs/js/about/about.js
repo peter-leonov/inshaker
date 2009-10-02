@@ -56,7 +56,7 @@ var AboutPage = {
 	}
 };
 
-$.onload(function(){
+$.onready(function(){
 	AboutPage.init();
 	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })

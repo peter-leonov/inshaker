@@ -16,7 +16,7 @@ IndexPage =
 	}
 }
 
-$.onload
+$.onready
 (
 	function ()
 	{
