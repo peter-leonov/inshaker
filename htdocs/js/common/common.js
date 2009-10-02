@@ -25,6 +25,3 @@ $.onload
 			setTimeout(goDefend, 100)
 	}
 )
-
-// document.addEventListener('DOMContentLoaded', function (e) { $.onready.run(e) }, false)
-// document.attachEvent('contentready', function (e) { alert('contentready') })
