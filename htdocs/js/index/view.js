@@ -99,7 +99,7 @@ IndexPageView.prototype =
 		if (range.indexOf(l - 2) > -1)
 			range.push(0) // last == first (fake)
 		
-		return range.uniq()
+		return range
 	},
 	
 	loadInitialFrames: function (initFrame)

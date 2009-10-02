@@ -19,7 +19,7 @@ Barman.prototype =
         name.innerHTML = this.name
         
         var img  = context.getElementsByClassName("photo")[0]
-        img.src  = "/i/barmen/" + this.name_eng.htmlName() + ".jpg"
+        img.style.backgroundImage  = "url(/i/barmen/" + this.name_eng.htmlName() + ".jpg)"
         img.alt  = this.name
            
         var body = context.getElementsByClassName("desc")[0]

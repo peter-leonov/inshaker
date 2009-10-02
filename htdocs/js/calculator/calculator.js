@@ -1,3 +1,8 @@
+Math.roundPrecision = function($num, $precision) {
+	if (isNaN($precision)) $precision = 0;
+ 	return Math.round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);
+};
+
 var Calculator = {	
 	_MIN_CALL_BARMEN_SUM : 25000,
 	_MIN_ORDER_SUM  : 3000,

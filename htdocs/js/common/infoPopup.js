@@ -19,7 +19,7 @@ function InfoPopup (opener, popup, displayObject)
         {
             var ct = this.controller
             opener.addEventListener('click', function(e) { if(switchable) { ct.resetDisplayObject() }; popup.show() }, false)
-		    var ici = [cssQuery('.close-controls .text', popup)[0], cssQuery('.close-controls .cross', popup)[0], cssQuery('.opacity', popup)[0]]
+		    var ici = [cssQuery('.popup-controls .text', popup)[0], cssQuery('.popup-controls .cross', popup)[0], cssQuery('.popup-back', popup)[0]]
 	        for(var i = 0; i < ici.length; i++)	
                 ici[i].addEventListener('click', function(e){ me.closeListener && me.closeListener(); popup.hide() }, false)
          

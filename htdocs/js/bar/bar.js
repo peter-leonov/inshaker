@@ -18,7 +18,7 @@ BarPage =
 	}
 }
 
-$.onload
+$.onready
 (
 	function ()
 	{

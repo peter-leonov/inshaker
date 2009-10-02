@@ -45,13 +45,9 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .surface img{float:left;margin-left:20px; cursor:pointer;}
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #view-how .next,
-#view-how .prev{display:block;z-index:3;width:20px;height:20px;position:absolute;left:auto;right:19px;}
-#view-how .prev{background-position:-450px 0;top:72px;}
-#view-how .next{background-position:-475px 0;top:48px;}
-#view-how .prev.disabled,
-#view-how .next.disabled{cursor:default;}
-#view-how .prev.disabled{background-position:-450px -25px;}
-#view-how .next.disabled{background-position:-475px -25px;}
+#view-how .prev{z-index:3;position:absolute;left:auto;right:19px;}
+#view-how .prev{top:72px;}
+#view-how .next{top:48px;}
 
 #view-how .recipe,
 #view-how .controls { margin-left: 200px; }
@@ -65,9 +61,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .view-how#main-content *{visibility:hidden;}
 .view-how#main-content .illustration{visibility:visible;z-index:2;}
-.view-video#main-content *{visibility:hidden;}
-#view-video.popup{background-color:#000;}
-#view-video div{margin:-40px auto 0;}
 
 .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
@@ -78,6 +71,10 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .what-need dd a{float:left;padding-right:18px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
+<!--# include virtual="popup.css" -->
+<!--# include virtual="info-popup.css" -->
+
+#barman-info-popup { display: none; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
@@ -103,7 +100,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .desc h2 i { left: -20px; }
 .hreview button{float:left;}
 
-#view-how .prev{background-position-x:-450px;}
 #view-prepare button{bottom:-50px;}
 
 #panel_cocktail{/*z-index:20;position:absolute;*/ width:90%;}
@@ -111,8 +107,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #panel_cocktail a b{border:none;}
 
 #poster{position:absolute;top:-28px;}
-
-#view-video .close{scrollbar-face-color:transparent;}
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->

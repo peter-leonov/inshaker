@@ -9,7 +9,7 @@ CocktailsPage =
 	}
 }
 
-$.onload(
+$.onready(
 	function () {
 		var nodes = {
 			resultsDisplay: $('results_display'),

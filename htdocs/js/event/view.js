@@ -10,6 +10,13 @@ Number.prototype.toTime = function ()
 	return m[1] + ':' + (m[2] === undefined ? '00' : (m[2].length <= 1 ? '0' + m[2] : m[2]))
 }
 
+Date.prototype.getFormatted = function(withYear){
+	var weekdays = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"]
+	var months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"] 
+	return this.getDate() + " " + months[this.getMonth()] + (withYear ? " " + this.getFullYear() : ", " + weekdays[this.getDay()])
+}
+
+
 EventPage.view =
 {
 	owner: null, // must be defined before initialize

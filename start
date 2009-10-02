@@ -15,4 +15,4 @@ fi
 echo "Starting $NAME as $TYPE..."
 
 $NGINX -c "$PROJ_ROOT/nginx.$TYPE.conf"
-$FCGIWRAP
+$FCGIWRAP >/dev/null

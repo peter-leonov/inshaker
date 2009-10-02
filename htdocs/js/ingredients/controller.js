@@ -1,3 +1,10 @@
+String.prototype.beforeTag = function() {
+	var reg = new RegExp(/(.+)<.+>.*<\/.+>/);
+	if(this.match(reg)) {
+		return this.match(reg)[1]
+	} else return this;
+}
+
 var Controller = {
 	ALPHABETICAL   : 'top-alphabetical',
 	CHOSEN_INGEREDS: 'chosen',

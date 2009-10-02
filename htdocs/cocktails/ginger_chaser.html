@@ -58,7 +58,7 @@
 						</div>
 						
 						<div id="view-how">
-							<div class="ingredients"><div class="wrap programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
 									<a class="prev"></a>
 									<div class="viewport">
 										<div class="surface" id="ingreds_surface">
@@ -96,20 +96,6 @@
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
 								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#ginger_chaser")'><b>Распечатать</b></button></li>
 							</ul>
-						</div>
-						<div class="popup" id="view-video">
-							<div style="width:480px;height:330px">
-								<embed 
-								src="/player.swf" 
-								width="480" 
-								height="330"
-								menu="false"
-								allowscriptaccess="always" 
-								allowfullscreen="true" 
-								flashvars="width=480&height=330&repeat=always&file=/v/ginger_chaser.flv" 
-								/>
-							</div>
-							<a class="close b" onclick="link.close()">закрыть видео</a>
 						</div>
 					</div>
 				</div>
@@ -188,17 +174,6 @@
 	
 	<!--# include file="/inc/calculator.html" -->
 </div>
-<!--# include file="/inc/bottom-common.html" -->
-<!--# include file="/inc/barman-info-popup.html" -->
-<!--# include file="/inc/shop-cocktail.html" -->
-<!--# include file="/inc/shop-gadget.html" -->
-<script type="text/javascript" src="/js/compiled/common.js"></script>
-<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
-<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
-<script type="text/javascript" src="/js/entities/Barman.js"></script>
-<script type="text/javascript" src="/js/entities/Good.js"></script>
-<script type="text/javascript" src="/js/entities/Tool.js"></script>
-<script type="text/javascript" src="/js/entities/Bar.js"></script>
-<script type="text/javascript" src="/js/cocktail/cocktail.js"></script>
+<!--# include file="/inc/cocktail-footer.html" -->
 </body>
 </html>

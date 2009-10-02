@@ -1,3 +1,8 @@
+function keyForValue(hash, value) {
+  for(var key in hash) if(hash[key] == value) return key
+  return null
+}
+
 function CocktailsController (states, cookies, model, view) {
 	this.model = model;
 	this.view	= view;

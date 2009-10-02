@@ -34,7 +34,6 @@
 /*TODO*/
 #b-bill .total{padding:9px 23px 0 10px;position:relative;overflow:hidden;}
 #b-bill .total .money{text-align:center; font:bold 240% Georgia;padding-top:.1em; overflow:hidden;letter-spacing:-.04em;}
-#b-bill .a-deliver{display: block; background:url(button/deliver.png); width: 182px; height: 49px; margin: 14px auto 17px auto;}
 #b-bill .print-call { margin-top: 14px; text-align: center; padding-bottom: 30px; padding-left:12px;}
 #b-bill .print-call a, #b-bill .print-call span {float:left; font-size:11px; position:relative;}
 

@@ -1,4 +1,4 @@
-$.onload(function(){
+$.onready(function(){
 	var aniOpts = {animationType: 'easeInOutCubic'};
 	new Programica.RollingImagesLite($('recommendations'), aniOpts);
 	new Programica.RollingImagesLite($('related'), aniOpts);

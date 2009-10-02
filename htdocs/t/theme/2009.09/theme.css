@@ -12,7 +12,7 @@ a { color: #231f20;  }
 #top .nav a:hover { border-bottom-color: #b72f25; }
 #bottom { color: #b6a258; text-shadow: #000 0 1px; }
 #bottom a { color: #f1ece3; }
-html { background: #000 url(bg.jpg) repeat-x center bottom; }
+html { background: #000 url(bg.jpg) repeat-y center bottom; }
 button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
 button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 
@@ -24,8 +24,8 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 #cart_draghere b { color: #a91f12; }
 
 /* cocktails.css */
-#view-how .prev,
-#view-how .next { background-repeat: no-repeat; background-image: url(common.png); }
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,
@@ -93,8 +93,8 @@ button.rounded { background-image: url(common.8.png); }
 #cart_draghere i { background-image: url(common.8.png); }
 
 /* cocktails.css */
-#view-how .prev,
-#view-how .next { background-image: url(common.8.png) }
+.square-list .prev,
+.square-list .next { background-image: url(common.8.png) }
 #search_tabs li,
 #alphabetical-ru a.selected-button,
 .ingreds-list,

@@ -1,4 +1,4 @@
-$.onload(function(){
+$.onready(function(){
 	Controller.init();
 	Theme.bind()
 })

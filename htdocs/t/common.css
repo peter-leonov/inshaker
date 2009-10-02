@@ -107,17 +107,9 @@ b.rb { right: 0; bottom: 0; }
 
 .b-title h1,
 .b-title h2{font-size:20px;margin-left:-1px;}
-.b-title #photographer {display:none; position:absolute;right:0;bottom:6px;width:40px; height: 33px; background:transparent url(/t/icon/camera.png) no-repeat;}
 .b-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 
 
-
-/* in cocktail and about */
-.popup{font-size:120%;line-height:1.67;display:none;position:absolute;top:-140px;padding:80px 0 60px 0;min-height:100%;color:#fff;margin-bottom:-102px;left:0;width:100%;background:#000;background:rgba(0,0,0,0.9);}
-.popup h3{font-size:150%;font-weight:bold;margin:-52px 20px -1px;}
-.popup p{padding:20px 40px 0 20px;}
-.popup a{color:#00c0ff;}
-.popup .close{border-color:#020202 !important;position:absolute;background-color:#515152;color:#fff;text-decoration:none;text-align:center;left:50%;margin-left:-4.45em;bottom:20px;display:block;font-size:92%;width:8.91em}
 
 /* in cocktail, bar and event */
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
@@ -139,10 +131,25 @@ b.rb { right: 0; bottom: 0; }
 .b-more-cocktails .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
 .b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
+.cocktail-list .prev,
+.cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.cocktail-list .prev{background-position:-500px 0;left:0px;}
+.cocktail-list .next{background-position:-525px 0;right:-2px;}
+.cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
+.cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 .b-more .b-more-rec .point{width:130px; display:block}
 .b-more .b-more-rec {width:208px;margin-right:20px;}
 .b-more .b-more-rec .viewport{width:130px;left:21px;}
 .b-more .b-more-rec li{width:130px;}
+
+.square-list .next,
+.square-list .prev { display: block; width: 20px; height: 20px; }
+.square-list .prev { background-position: -450px 0; }
+.square-list .next { background-position: -475px 0; }
+.square-list .prev.disabled,
+.square-list .next.disabled { cursor:default; }
+.square-list .prev.disabled { background-position: -450px -25px; }
+.square-list .next.disabled { background-position: -475px -25px; }
 
 
 /* popups-related */
@@ -193,14 +200,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
 .win-shop .content #order_note a:hover { text-decoration: none;}
 
-.win-shop .view-photo{position:absolute;top:0;left:0;height:100%;width:100%;}
-.win-shop .view-photo h3{padding:0;height:auto;}
-.win-shop .view-photo ul{position:absolute;bottom:21px;left:179px;margin:0;}
-.win-shop .view-photo ul .next{margin-left:20px;width:20px;}
-.win-shop .view-photo ul .prev{margin-right:20px;width:20px;}
-.win-shop .view-photo ul .next a,
-.win-shop .view-photo ul .prev a{border:0 !important;padding:0 !important;margin-top:10px;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -52px;}
-.win-shop .view-photo ul .next a{background-position:-20px -52px;}
+
 .win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
 .win-shop .b-gadget .count{display:block;margin-bottom:6px;}
 .win-shop .b-gadget .count input{margin-left:6px;}
@@ -257,7 +257,6 @@ img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-/*html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}*/
 body{height:100%;}
 
 #b-bill .total,#b-bill .total *,
@@ -276,18 +275,18 @@ body{height:100%;}
 
 .b-content{width:426px;overflow:hidden;}
 .you-choise span a{width:0;height:0;}
-.win-shop{position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
+.win-shop{position:absolute;top:0;}
 .b-more dt b{margin-bottom:-2px;}
 .win{position:absolute; left:0; top:0;}
 .opacity, .win-shop .opacity{ width:100%;height:100%;position:absolute;left:0;top:0;filter:alpha(opacity=75);}
 
+.square-list .prev{background-position-x:-450px;}
 
 #good_volumes.dots dt{margin-top:5px;}
-.win-shop .view-photo ul li{vertical-align:top;}
 .win-shop .gadget-wrapper{zoom:1;}
-.win-shop .view-photo{height:588px;}
-.win-shop .view-photo .bor-wr{margin-bottom:-2px;}
-.win-shop .win,.win-shop .win-bg{background-image:none;}
+.win-shop .win,
+.win-shop .win-bg{background-image:none;}
+.win-shop .opacity{height:1500px;}
 
 body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
@@ -295,14 +294,16 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 #b-bill .b-title h1 {margin-left: 5px; }
 #b-bill .b-title label {zoom:1; position:relative; margin-left:auto;}
 #b-bill .b-title input {float:left; width: 265px; height:24px; line-height:24px; background:#FFF} 
-#b-bill .b-title .tip {scrollbar-base-color:expression(this.unselectable='on'); padding: 3px 6px; }
+#b-bill .b-title .tip {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(this.unselectable='on')); padding: 3px 6px; }
 
 
 #b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 #b-bill .total li a{position:relative;}
 
 .b-more-rec .prev,
-.b-more-cocktails .prev{background-position-x:-500px;}
+.b-more-cocktails .prev,
+.cocktail-list .prev{background-position-x:-500px;}
+.cocktail-list{zoom:1;}
 
 
 #want_link {margin: 29px 14px 0 0;}
@@ -332,4 +333,3 @@ input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
 <!--# endif -->
 
 <!--# include virtual="calculator.css" -->
-<!--# include virtual="info-popup.css" -->

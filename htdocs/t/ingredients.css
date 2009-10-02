@@ -20,7 +20,7 @@
 .count-cocktails input{width:90%;}
 .you-choise a{font-size:1px;}
 .count-cocktails *{position:relative;z-index:2;zoom:1;}
-.count-cocktails{position:absolute;top:expression(eval(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
+.count-cocktails{position:absolute;top:expression(String(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
 
 <!--# endif -->
 

@@ -1,3 +1,91 @@
+function spaces(num){
+	var letters = (num + "").split("");
+	var res = letters.splice(0, letters.length % 3).concat([" "]);
+	while(letters.length > 0) {
+		res = res.concat(letters.splice(0, 3));
+		if(letters.length > 0) res = res.concat([" "]);
+	}
+	return res.join("");
+}
+
+function validateNumeric(txt){
+	if(txt.match(/^\d+$/)) return true;
+	return false;
+};
+
+/**
+ * This function merges nodes from parentNode with nodes given in nodesArray.
+ * It deletes nodes those aren't in nodesArray, appends noes those are'n in parentNode
+ * and doesn't touch nodes those are in both parentNode and nodesArray
+ * @param parentNode - destination node for merging result
+ * @param nodesArray - new state of parentNode that could be made
+ */
+
+function mergeNodes(parentNode, nodesArray)
+{
+	for (var i = 0; i < nodesArray.length; i++) {
+        if (nodesArray[i].parentNode != parentNode)
+			parentNode.appendChild(nodesArray[i]);
+    }
+	
+    var childs = Array.copy(parentNode.childNodes);
+    for (var i = 0, il = childs.length; i < il; i++)
+    {
+        var node = childs[i]
+        if (node && nodesArray.indexOf(node) < 0) {
+            parentNode.removeChild(node)
+        }
+    }
+}
+
+function mergeIngredientsNodes(parentNode, nodesArray)
+{
+    var presentIngreds = cssQuery("li", parentNode).map(function(e){ return [e, Ingredient.getByName(e.getElementsByTagName("input")[1].value)]})
+    
+    for (var i = 0; i < nodesArray.length; i++)
+		if (nodesArray[i].parentNode != parentNode)
+		    insertChild(presentIngreds, parentNode, nodesArray[i]);
+	
+	var childs = Array.copy(parentNode.childNodes);
+	for (var i = 0, il = childs.length; i < il; i++)
+	{
+		var node = childs[i]
+		if (node && nodesArray.indexOf(node) < 0)
+			parentNode.removeChild(node)
+	}
+}
+
+function insertChild(presentIngreds, parentNode, node)
+{
+    var insertedIngredient = Ingredient.getByName(node.getElementsByTagName("input")[1].value)
+    var closestGap = Infinity
+    var closestNode = null
+    var sGap = null // signed
+
+    for(var i = 0; i < presentIngreds.length; i++)
+    {
+        sGap = presentIngreds[i][1].listOrder() - insertedIngredient.listOrder()
+        var gap = Math.abs(sGap)
+        if(gap < closestGap)
+        {
+            closestGap = gap
+            closestNode = presentIngreds[i][0] 
+        }
+    }
+    if(sGap < 0) parentNode.insertBefore(node, closestNode)
+    else if(closestNode) insertAfter(node, closestNode)
+    else parentNode.appendChild(node)
+}
+
+function insertAfter(new_node, existing_node) 
+{
+    if (existing_node.nextSibling) 
+        existing_node.parentNode.insertBefore(new_node, existing_node.nextSibling)
+    else existing_node.parentNode.appendChild(new_node)
+}
+
+
+
 function CalculatorView() {
 	this.ID_COCKTAILS   = 'cart_cocktails';
 	this.ID_INGREDS     = 'cart_ingredients';
@@ -199,7 +287,6 @@ function CalculatorView() {
 				var ingredElem = this._createCocktailElement(cartData.cocktails[i]);
 				newCocktails.push(ingredElem)
 			}
-			// from util.js
 			mergeNodes(cocktailsParent, newCocktails)
 			
 			var newIngredients = []
@@ -216,7 +303,6 @@ function CalculatorView() {
 				}
 			}
 			sum = Math.roundPrecision(sum,2)
-			// from util.js
 			mergeIngredientsNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
 			

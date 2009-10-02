@@ -19,7 +19,7 @@ BarsPage =
 	}
 }
 
-$.onload
+$.onready
 (
 	function ()
 	{
@@ -39,7 +39,7 @@ $.onload
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
-			guidePopupBody: cssQuery('#guide-info-popup .info-popup')[0]
+			guidePopupBody: cssQuery('#guide-info-popup .popup-window')[0]
 		}
 		
 		BarsPage.initialize(nodes)

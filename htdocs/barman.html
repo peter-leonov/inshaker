@@ -170,7 +170,6 @@
 							<label><input type="checkbox" name="tools"/>Штучки</label>
 							<label><input type="checkbox" name="bars"/>Бары</label>
 							<label><input type="checkbox" name="events"/>События</label>
-							<!-- <label><input type="checkbox" name="parties"/>Вечеринки</label> -->
 							<label><input type="checkbox" name="barmen"/>Бармены</label>
 							<label><input type="checkbox" name="gifts"/>Подарки</label>
 							<label><input type="checkbox" name="magazine"/>Журнал</label>
@@ -196,11 +195,11 @@
 
 <script type="text/javascript">
 <!--# include file="/js/common/programica.js" -->
-<!--# include file="/js/common/util.js" -->
+<!--# include file="/js/common/cookie.js" -->
 <!--# include file="/lib/Programica/Request.js" -->
 <!--# include file="/lib/Programica/Form.js" -->
 
-$.onload(function(){
+$.onready(function(){
 	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
 	
 	var inflateNode = function(node){ 

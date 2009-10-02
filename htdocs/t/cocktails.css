@@ -32,7 +32,7 @@
 
 /*Block content*/
 /*pager list*/
-.b-content .p-list { }
+.b-content { margin-top: 20px; }
 .b-content .alphabetical{font-size:110%;margin-bottom:22px;}
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
 .b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
@@ -44,7 +44,7 @@
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
 
-.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 389px; }
+.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 409px; }
 .pager-big .prev,
 .pager-big .next {float:left; display:block;}
 .pager-big .prev {background-position: -0px -125px; }
