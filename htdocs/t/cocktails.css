@@ -12,8 +12,8 @@
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
-
-.autocomplete { display: none; font-size: 14px; position: absolute; opacity: 0.9; border-width: 0px 1px 1px 1px; z-index: 1; }
+#search_by_ingreds { z-index: 10; position: relative; }
+.autocomplete { display: none; position: absolute; opacity: 0.9; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 .search-error{display:none;height:12px;}
 
@@ -44,7 +44,7 @@
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
 
-.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 567px; top: 390px; }
+.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 389px; }
 .pager-big .prev,
 .pager-big .next {float:left; display:block;}
 .pager-big .prev {background-position: -0px -125px; }
