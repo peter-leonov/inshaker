@@ -141,11 +141,19 @@ module Barman
       end
     end
     
+    def pre_job
+    end
+    
     def job_name
       "какую-то задачу"
     end
     
+    def job
+      error "пустая задача"
+    end
+    
     def run
+      pre_job
       lockpath = "#{ROOT_DIR}/#{LOCK_FILE}"
       if lock
         begin
@@ -168,7 +176,7 @@ module Barman
         else
           error "в прошлый раз бармен обрушился"
           say "восстанавливаю локальную версию после сбоя…"
-          system("git reset --hard >>barman.log 2>&1")
+          # system("git reset --hard >>barman.log 2>&1")
           unlock
           say "теперь задачу можно перезапустить"
         end

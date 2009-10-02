@@ -40,20 +40,36 @@ class CocktailsProcessor < Barman::Processor
     "смешивалку коктейлей"
   end
   
-  def job
-    
+  def pre_job
     @options = {}
+    names = @options[:names] = {}
     OptionParser.new do |opts|
-      opts.banner = "Usage: cocktails.rb [options]"
+      opts.banner = "Запускайте так: cocktails.rb [опции]"
       
-      opts.on("-f", "--force", "Force update without mtime based cache") do |v|
+      opts.on("-f", "--force", "обновлять невзирая на кеш") do |v|
         @options[:force] = v
       end
-      opts.on("-t", "--text", "Text only processing (for debug)") do |v|
+      opts.on("-t", "--text", "обрабатывать только текст") do |v|
         @options[:text] = v
+      end
+      opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
+        list.each do |v|
+          names[v.yi] = true
+        end
+      end
+      opts.on("-h", "--help", "помочь") do
+        puts opts
+        exit
       end
     end.parse!
     
+    if @options[:force] && !@options[:names].empty?
+      error "низя указывать --force и --names вместе"
+      exit
+    end
+  end
+  
+  def job
     prepare_dirs
     prepare_templates
     prepare_cocktails
@@ -61,11 +77,11 @@ class CocktailsProcessor < Barman::Processor
     
     update_cocktails
     
-    if summary
+    unless errors?
       flush_json
       flush_links
     end
-  end  
+  end
   
   def prepare_dirs
     # FileUtils.rmtree [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::VIDEOS_DIR]
@@ -88,6 +104,21 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_cocktails
+    names = @options[:names]
+    unless names.empty?
+      say "обновляю указанные коктейли: #{names.keys.join(", ")}"
+      indent do
+      done = 0
+      Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+        next if !names[dir.name]
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      end # indent
+      return
+    end
+    
     say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
@@ -181,7 +212,8 @@ class CocktailsProcessor < Barman::Processor
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @cocktails.each do |name, hash|
+      @cocktails.keys.sort.each do |name|
+        hash = @cocktails[name]
         links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
@@ -223,7 +255,8 @@ class CocktailsProcessor < Barman::Processor
       end
       
       if File.exists?(from_bg)
-        flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
+        # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
+        FileUtils.cp_r(from_bg, to_bg, @mv_opt)
       else
         error "не могу найти заставку коктейля (bg.png)"
       end
