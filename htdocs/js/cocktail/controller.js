@@ -269,27 +269,6 @@ var Controller = {
 			// Cancel fix
 			entry.style.height = "";
 		}
-
-		$('view-video').show = function()
-		{
-			this.style.display = 'block';
-			$('main-content').className = 'view-video';
-			$('poster').style.visibility = 'hidden';
-			
-			// Apply fix
-			hreview.style.height = (this.offsetHeight + 38) + "px";
-		}
-
-		$('view-video').hide = function()
-		{
-			this.style.display = 'none';
-			$('main-content').className = '';
-			$('poster').style.visibility = 'visible';
-			menu.now.remClassName('now');
-			
-			// Cancel fix
-			hreview.style.height = "";
-		}	
 	},
 	
 	renderRecommendations: function(recs){

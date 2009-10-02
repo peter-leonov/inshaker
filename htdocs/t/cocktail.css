@@ -61,9 +61,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .view-how#main-content *{visibility:hidden;}
 .view-how#main-content .illustration{visibility:visible;z-index:2;}
-.view-video#main-content *{visibility:hidden;}
-#view-video.popup{background-color:#000;}
-#view-video div{margin:-40px auto 0;}
 
 .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
@@ -111,8 +108,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #panel_cocktail a b{border:none;}
 
 #poster{position:absolute;top:-28px;}
-
-#view-video .close{scrollbar-face-color:transparent;}
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
