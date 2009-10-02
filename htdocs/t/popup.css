@@ -22,8 +22,3 @@
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 .popup .popup-back { filter: alpha(opacity=75); }
 <!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.info-popup-area {position:absolute;}
-.info-popup .rounder {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
-<!--# endif -->
