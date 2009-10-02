@@ -1,5 +1,3 @@
-body { background: #fff url(/t/event/bg.png) repeat-x; }
-
 #overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}

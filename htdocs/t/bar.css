@@ -1,7 +1,5 @@
 /* bar page */
 
-body { background: url(bar/bg.png) repeat-x; }
-
 .body-wrapper { overflow: hidden; }
 
 .b-title .hrefs a.hidden { cursor: default; color: #ccc; }

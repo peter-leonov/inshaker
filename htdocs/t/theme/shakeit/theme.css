@@ -14,7 +14,7 @@ a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #fff url(/t/bg/cocktails/bg.png) repeat-x center top; }
+html { background: #fff url(/t/grey-gradient-v.png) repeat-x center top; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
