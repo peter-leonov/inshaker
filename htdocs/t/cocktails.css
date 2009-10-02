@@ -44,7 +44,7 @@
 .mini-illustration {z-index:2} /* also applied to the dragged element */
 
 
-.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 389px; }
+.pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 409px; }
 .pager-big .prev,
 .pager-big .next {float:left; display:block;}
 .pager-big .prev {background-position: -0px -125px; }
