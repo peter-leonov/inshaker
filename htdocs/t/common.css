@@ -257,7 +257,6 @@ img{scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-/*html{filter:expression(runtimeStyle.filter='',document.execCommand('BackgroundImageCache',false,true));}*/
 body{height:100%;}
 
 #b-bill .total,#b-bill .total *,
@@ -276,7 +275,7 @@ body{height:100%;}
 
 .b-content{width:426px;overflow:hidden;}
 .you-choise span a{width:0;height:0;}
-.win-shop{position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
+.win-shop{position:absolute;top:0;}
 .b-more dt b{margin-bottom:-2px;}
 .win{position:absolute; left:0; top:0;}
 .opacity, .win-shop .opacity{ width:100%;height:100%;position:absolute;left:0;top:0;filter:alpha(opacity=75);}
@@ -293,7 +292,7 @@ body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollba
 #b-bill .b-title h1 {margin-left: 5px; }
 #b-bill .b-title label {zoom:1; position:relative; margin-left:auto;}
 #b-bill .b-title input {float:left; width: 265px; height:24px; line-height:24px; background:#FFF} 
-#b-bill .b-title .tip {scrollbar-base-color:expression(this.unselectable='on'); padding: 3px 6px; }
+#b-bill .b-title .tip {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(this.unselectable='on')); padding: 3px 6px; }
 
 
 #b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
