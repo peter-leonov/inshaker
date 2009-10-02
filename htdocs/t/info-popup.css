@@ -1,10 +1,10 @@
 .barman-info .b-title {margin-bottom:20px;}
 .barman-info .content {overflow:hidden; position:relative; width: 922px; height: 281px; margin-bottom:25px; font-size:12px;}
 .barman-info .content .photo { position: absolute; top: 0; left: 0; height: 281px; width: 357px; -moz-border-radius-topleft:10px; -moz-border-radius-bottomleft:10px; -webkit-border-top-left-radius:10px; -webkit-border-bottom-left-radius:10px;}
-.barman-info .content .desc { background:#f1f0ed; width: 502px; padding: 15px 30px; left: 357px; top: 0; height: 251px; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; position:absolute}
-.barman-info .content .desc p {margin-bottom: 1em; }
+.barman-info .content .desc { position:absolute; left: 357px; top: 0; width: 502px; height: 271px; overflow: auto; background:#f1f0ed;  padding: 10px 30px 0; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; }
+.barman-info .content .desc p {margin-bottom: 0.6em; }
 .barman-info .content .desc p,
-.barman-info .content .desc li {line-height: 17px;}
+.barman-info .content .desc li {line-height: 15px;}
 .barman-info h2 {margin-left:0px; padding-bottom:0.2em; font-size: 18px;}
 
 .barman-info .body-wrapper {padding: 14px 18px 10px;}
