@@ -100,7 +100,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .desc h2 i { left: -20px; }
 .hreview button{float:left;}
 
-#view-how .prev{background-position-x:-450px;}
 #view-prepare button{bottom:-50px;}
 
 #panel_cocktail{/*z-index:20;position:absolute;*/ width:90%;}
