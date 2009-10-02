@@ -24,7 +24,7 @@
 #gifts-page .gifts-previews .gift .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:146px; left:93px;}
 
 #gifts-page .gifts-previews .viewport,
-#gifts-page .gifts-previews { position: relative; width: 920px; height: 159px; }
+#gifts-page .gifts-previews { position: relative; width: 920px; height: 161px; }
 #gifts-page .gifts-previews .viewport {width: 855px; overflow:hidden; margin-left: 42px;}
 #gifts-page .gifts-previews .viewport .point { float: left; width: 855px; height: 100%; }
 #gifts-page .gifts-previews .viewport .surface { width: 4000px; padding: 0;}
@@ -67,7 +67,7 @@
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
 #gifts-page .promos.column .body-wrapper {overflow:visible;}
-#gifts-page .gifts-previews .gift .mark { top:145px;} 
+#gifts-page .gifts-previews .gift .mark { top:147px;} 
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
@@ -85,6 +85,4 @@
 #gifts-page .gift-promos .prev,
 #gifts-page .gift-promos .next { display: block; }
 #gifts-page .gift-promos .hidden {display:none;}
-
-#gifts-page .gifts-previews .prev { background-position-x: -52px; }
 <!--# endif -->
