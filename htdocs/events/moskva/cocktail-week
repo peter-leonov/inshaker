@@ -16,7 +16,7 @@
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
 				<div class="viewport">
-					<ul class="surface"><noscript><!--# include virtual="/events/links.html" --></noscript></ul>
+					<ul class="surface"></ul>
 				</div>
 				<a class="prev disabled" disabled="true"></a><a class="next"></a>
 			</div>
