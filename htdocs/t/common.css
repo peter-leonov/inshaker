@@ -286,6 +286,7 @@ body{height:100%;}
 .win-shop .gadget-wrapper{zoom:1;}
 .win-shop .win,
 .win-shop .win-bg{background-image:none;}
+.win-shop .opacity{height:1500px;}
 
 body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
