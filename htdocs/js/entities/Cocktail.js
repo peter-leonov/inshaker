@@ -68,30 +68,20 @@ Object.extend(Cocktail,
     cocktails: [],
     ingredients: [],
     letters: [],
-    methods: ["просто", 
-              "в шейкере", 
-              "в блендере", 
-              "давят пестиком", 
-              "укладывают слои", 
-              "миксуют в стакане", 
-              "не очень просто"],
     rounds: {},
     matches: {},
 	byName: {},
 
     dictLetters: {},
-	dictMethods: {},
-
+	
 	initialize: function (db){
-        for (var i = 0; i < this.methods.length; i++) this.dictMethods[this.methods[i]] = [];
 		
 		var ai = this.ingredients, seen = {}, byName = this.byName
 		
 		var i = 0;
 		for (var k in db)
 		{
-			var cocktail = byName[k] = new Cocktail(db[k]);
-			this.cocktails[i] = this.processMethods(cocktail);
+			var cocktail = this.cocktails[i] = byName[k] = new Cocktail(db[k]);
 			
 			var ci = cocktail.ingredients
 			for (var j = 0; j < ci.length; j++)
@@ -114,30 +104,6 @@ Object.extend(Cocktail,
 		this.ingredients = ai.sort()
 		this.letters = this.letters.sort();
 	},
-
-    processMethods: function(cocktail){
-        var itsMethods = {};
-        for (var i = 0; i < this.methods.length; i++) itsMethods[this.methods[i]] = false;
-        var itsTools = cocktail.tools;
-
-        if(itsTools.indexOf("Шейкер") > -1)  itsMethods["в шейкере"] = true;
-        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
-        if(itsTools.indexOf("Блендер") > -1 || itsTools.indexOf("Коктейльный миксер") > -1) itsMethods["в блендере"] = true;
-        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
-        if(itsTools.indexOf("Стакан для смешивания") > -1) itsMethods["миксуют в стакане"] = true;
-        if(itsTools.indexOf("Стопка") > -1 && itsTools.indexOf("Коктейльная ложка") > -1 && itsTools.indexOf("Кувшин") == -1 && 
-            (itsTools.indexOf("Трубочки") > -1 || itsTools.indexOf("Пресс для цитруса") > -1 || itsTools.indexOf("Зажигалка") > -1 || 
-            itsTools.length == 2)) 
-                itsMethods["укладывают слои"] = true;
-        
-        var numMethods = 0; for(var method in itsMethods) if(itsMethods[method]) numMethods++;
-
-        if(numMethods > 1) cocktail.method = "не очень просто";
-        else if(numMethods == 0) cocktail.method = "просто";
-        else for(var method in itsMethods) if(itsMethods[method]) { cocktail.method = method; break; }
-        
-        return cocktail;
-    },
 	
     getAll: function(){
         return this.cocktails;
@@ -327,3 +293,4 @@ Object.extend(Cocktail,
 Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)
 Cocktail.tags = <!--# include file="/db/tags.js" -->
 Cocktail.strengths = <!--# include file="/db/strengths.js" -->
+Cocktail.methods = <!--# include file="/db/methods.js" -->
