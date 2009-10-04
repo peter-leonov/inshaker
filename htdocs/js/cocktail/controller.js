@@ -330,10 +330,7 @@ var Controller = {
 		var anchors = root.getElementsByTagName('a')
 		
 		for (var i = 0; i < anchors.length; i++)
-		{
 			resultSet[i] = Model.getCocktailByName(anchors[i].firstChild.nodeValue)
-		}
-		log(resultSet)
 		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
 		var np = this._getNumOfPages(resultSet, perPage);

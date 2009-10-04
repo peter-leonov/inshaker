@@ -1,0 +1,5 @@
+<ul>
+	<% @recs[0..14].each do |cocktail| %>
+	<li><a href="/cocktails/<%= cocktail["name_eng"].html_name %>.html"><%= cocktail["name"] %></a></li>
+	<% end %>
+</ul>

@@ -32,7 +32,6 @@ class CocktailsProcessor < Barman::Processor
     super
     @cocktails = {}
     @cocktails_present = {}
-    # @cocktail_names_en2ru = {}
     @tags = []
     @strengths = []
   end
@@ -76,7 +75,7 @@ class CocktailsProcessor < Barman::Processor
     prepare_cocktails
     prepare_tags_and_strengths
     
-    # update_cocktails
+    update_cocktails
     update_recomendations
     
     unless errors?
@@ -171,7 +170,7 @@ class CocktailsProcessor < Barman::Processor
     say "обновляю рекомендации"
     indent do
       @cocktails.each do |name, hash|
-        recs = get_related hash["ingredients"].map {|v| v[0]}
+        recs = get_related name
         templ = CocktailRecomendationsTemplate.new(recs)
         File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".recomendations.html", "w+") do |html|
           html.write @recomendations_renderer.result(templ.get_binding)
@@ -181,9 +180,11 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
-  def get_related ingreds
+  def get_related one
+    ingreds = @cocktails[one]["ingredients"].map {|v| v[0]}
     weights = {}
     @cocktails.each do |name, hash|
+      next if one == name
       weight = 0
       hash["ingredients"].each do |ingred|
         weight += 1 if ingreds.index ingred[0]
