@@ -181,19 +181,22 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def get_related one
-    ingreds = @cocktails[one]["ingredients"].map {|v| v[0]}
+    cocktail = @cocktails[one]
+    ingreds = cocktail["ingredients"].map {|v| v[0]}
+    tags = cocktail["tags"]
     weights = {}
     @cocktails.each do |name, hash|
       next if one == name
       weight = 0
       hash["ingredients"].each do |ingred|
-        weight += 1 if ingreds.index ingred[0]
+        weight += 1000 if ingreds.index ingred[0]
       end
+      weight += 100 * (tags & hash["tags"]).length
+      weight += 100 - hash["ingredients"].length
       weights[name] = weight
     end
     
-    names = weights.keys
-    names = names.sort { |a, b| weights[b] - weights[a] }
+    names = weights.keys.sort { |a, b| x = weights[b] <=> weights[a]; x == 0 ? a <=> b : x }
     return names.map { |e| @cocktails[e] }
   end
   
