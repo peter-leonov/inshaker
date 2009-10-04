@@ -13,6 +13,7 @@ class CocktailsProcessor < Barman::Processor
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
+    DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
@@ -73,13 +74,14 @@ class CocktailsProcessor < Barman::Processor
     prepare_dirs
     prepare_templates
     prepare_cocktails
-    prepare_tags_and_strengths
+    prepare_tags_and_strengths_and_methods
     
     update_cocktails
     update_recomendations
     
     unless errors?
-      flush_json
+      flush_cocktails
+      flush_tags_and_strengths_and_methods
       flush_links
     end
   end
@@ -222,29 +224,28 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
-  def prepare_tags_and_strengths
-    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
-    order.each do |name, num|
-      @tags[num-1] = name
-    end
-    
-    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
-    order.each do |name, num|
-      @strengths[num-1] = name
-    end
+  def prepare_tags_and_strengths_and_methods
+    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+    @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
   end
   
-  def flush_json
+  def flush_cocktails
      @cocktails.each do |name, hash|
       hash.delete("desc_start")
       hash.delete("desc_end")
       hash.delete("recs")
      end
      
-     say "сохраняю данные о коктейлях, тегах и крепости"
+     say "сохраняю данные о коктейлях"
      flush_json_object(@cocktails, Config::DB_JS)
+  end
+  
+  def flush_tags_and_strengths_and_methods
+     say "сохраняю списки тегов, крепости и приготовления"
      flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
+     flush_json_object(@methods, Config::DB_JS_METHODS)
   end
   
   def flush_links
