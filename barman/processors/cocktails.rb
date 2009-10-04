@@ -216,11 +216,12 @@ class CocktailsProcessor < Barman::Processor
     parse_about_text  File.read(dir.path + "/about.txt")
     parse_legend_text File.read(dir.path + "/legend.txt")
     
-    @cocktails[@cocktail["name"]] = @cocktail
+    @cocktails[name] = @cocktail
     
-    update_images @cocktail["name"], @cocktail unless @options[:text]
-    update_html @cocktail["name"], @cocktail
-    update_video dir, @cocktail["name"], @cocktail
+    guess_methods @cocktail
+    update_images name, @cocktail unless @options[:text]
+    update_html name, @cocktail
+    update_video dir, name, @cocktail
     end # indent
   end
   
@@ -228,6 +229,27 @@ class CocktailsProcessor < Barman::Processor
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+  end
+  
+  def guess_methods cocktail
+    methods = {}
+    tools = cocktail["tools"]
+    
+    methods["в шейкере"] = true if tools.index("Шейкер")
+    methods["давят пестиком"] = true if tools.index("Пестик")
+    methods["в блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
+    methods["давят пестиком"] = true if tools.index("Пестик")
+    methods["миксуют в стакане"] = true if tools.index("Стакан для смешивания")
+    methods["укладывают слои"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
+    
+    num = methods.keys.length
+    if num == 0
+      cocktail["method"] = "просто"
+    elsif num == 1
+      cocktail["method"] = methods.keys[0]
+    else
+      cocktail["method"] = "не очень просто"
+    end
   end
   
   def flush_cocktails
@@ -360,6 +382,7 @@ private
     tags = tags.split("\n")
     tags.each do |tag|
       tag = tag.trim
+      next if tag.empty?
       @cocktail["tags"] << tag
       @tags << tag unless @tags.include?(tag)
     end

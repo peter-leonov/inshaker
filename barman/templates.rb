@@ -19,6 +19,16 @@ class CocktailTemplate
     @recs        = hash["recs"]
   end
   
+  def groups
+    groups = []
+    groups << ["/cocktails.html#strength=#{@strength}", @strength]
+    
+    @tags.each do |tag|
+      groups << ["/cocktails.html#tag=#{tag}", tag]
+    end
+    groups
+  end
+  
   def get_binding
     binding
   end
