@@ -53,7 +53,7 @@ var Controller = {
 			this.renderRecommendations(Model.recs);
 			perPage = 3;
 		} else this.expandRelated();
-		this.renderRelated(Model.getRelated(this.relatedCount), perPage);
+		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
         this.tidyIngredientsList(Model.ingredients);
         this.appendPreparationMethod(Model.getPreparationMethod(name));
@@ -322,8 +322,19 @@ var Controller = {
 		return point;	
 	},
 	
-	renderRelated: function(resultSet, perPage){
-		$(this.ID_REL_VPR).style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
+	renderRelated: function (perPage)
+	{
+		var resultSet = [],
+			root = $(this.ID_REL_VPR)
+		
+		var anchors = root.getElementsByTagName('a')
+		
+		for (var i = 0; i < anchors.length; i++)
+		{
+			resultSet[i] = Model.getCocktailByName(anchors[i].firstChild.nodeValue)
+		}
+		log(resultSet)
+		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
 		var np = this._getNumOfPages(resultSet, perPage);
 		for(var i = 1; i <= np; i++) {

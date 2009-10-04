@@ -77,6 +77,7 @@ Object.extend(Cocktail,
               "не очень просто"],
     rounds: {},
     matches: {},
+	byName: {},
 
     dictLetters: {},
 	dictMethods: {},
@@ -84,12 +85,12 @@ Object.extend(Cocktail,
 	initialize: function (db){
         for (var i = 0; i < this.methods.length; i++) this.dictMethods[this.methods[i]] = [];
 		
-		var ai = this.ingredients, seen = {}
+		var ai = this.ingredients, seen = {}, byName = this.byName
 		
 		var i = 0;
 		for (var k in db)
 		{
-			var cocktail = new Cocktail(db[k]);
+			var cocktail = byName[k] = new Cocktail(db[k]);
 			this.cocktails[i] = this.processMethods(cocktail);
 			
 			var ci = cocktail.ingredients
@@ -142,11 +143,7 @@ Object.extend(Cocktail,
         return this.cocktails;
     },
 
-	getByName: function (name){
-		for(var i = 0; i < this.cocktails.length; i++){
-			if(this.cocktails[i].name == name) return this.cocktails[i];
-		}
-	},
+	getByName: function (name) { return this.byName[name] },
 	
 	getBySimilarNameCache: {},
 	getBySimilarName: function (name)

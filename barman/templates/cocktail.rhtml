@@ -124,7 +124,13 @@
 							<a class="prev"></a>
 							<a class="next"></a>
 							<div class="viewport" id="rel_viewport">
-								<div class="surface" id="rel_surface"></div>
+								<div class="surface" id="rel_surface">
+									<ul>
+										<% @recs.each do |cocktail| %>
+										<li><a href="/cocktails/<%= cocktail["name_eng"] %>"><%= cocktail["name"] %></a></li>
+										<% end %>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</dd>

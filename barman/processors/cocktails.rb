@@ -173,6 +173,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["tags"]        = []
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
+    @cocktail["recs"] = []
     
     parse_about_text  File.read(dir.path + "/about.txt")
     parse_legend_text File.read(dir.path + "/legend.txt")
@@ -201,6 +202,7 @@ class CocktailsProcessor < Barman::Processor
      @cocktails.each do |name, hash|
       hash.delete("desc_start")
       hash.delete("desc_end")
+      hash.delete("recs")
      end
      
      say "сохраняю данные о коктейлях, тегах и крепости"

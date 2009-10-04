@@ -3,14 +3,12 @@ var Model = {
 	ingredients: [],
 	goods: goods,
 	
-	cocktailsSet: [],
 	dataListener: null,
 	
 	recs: [], // recommendations
 	
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
-		this.cocktailsSet = Cocktail.cocktails.sort(DataFilter.nameSort);
 		this.ingredients = this.cocktail.ingredients.sort(Ingredient.sortByGroups);
 		this.tools = Tool.tools;
 		
@@ -45,8 +43,9 @@ var Model = {
 		return true;
 	},
 	
-	getRelated: function(howMany){
-		return DataFilter.relatedCocktails(this.cocktailsSet, this.cocktail, howMany);
+	getCocktailByName: function (name)
+	{
+		return Cocktail.getByName(name)
 	},
 
     getPreparationMethod: function(cocktailName){

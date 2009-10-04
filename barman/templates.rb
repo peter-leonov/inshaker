@@ -15,6 +15,8 @@ class CocktailTemplate
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
     @video       = hash["video"]
+    
+    @recs        = hash["recs"]
   end
   
   def get_binding
