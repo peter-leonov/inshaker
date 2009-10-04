@@ -125,11 +125,7 @@
 							<a class="next"></a>
 							<div class="viewport" id="rel_viewport">
 								<div class="surface" id="rel_surface">
-									<ul>
-										<% @recs.each do |cocktail| %>
-										<li><a href="/cocktails/<%= cocktail["name_eng"] %>"><%= cocktail["name"] %></a></li>
-										<% end %>
-									</ul>
+									<!--# include file="<%= @name_eng.html_name %>.recomendations.html" -->
 								</div>
 							</div>
 						</div>

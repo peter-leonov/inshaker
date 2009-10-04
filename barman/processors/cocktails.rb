@@ -25,6 +25,7 @@ class CocktailsProcessor < Barman::Processor
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
     COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
+    RECOMENDATIONS_ERB  = Barman::TEMPLATES_DIR + "recomendations.rhtml"
   end
   
   def initialize
@@ -75,7 +76,8 @@ class CocktailsProcessor < Barman::Processor
     prepare_cocktails
     prepare_tags_and_strengths
     
-    update_cocktails
+    # update_cocktails
+    update_recomendations
     
     unless errors?
       flush_json
@@ -92,6 +94,7 @@ class CocktailsProcessor < Barman::Processor
   
   def prepare_templates
     @cocktail_renderer = ERB.new(File.read(Config::COCKTAIL_ERB))
+    @recomendations_renderer = ERB.new(File.read(Config::RECOMENDATIONS_ERB))
   end
   
   def prepare_cocktails
@@ -162,6 +165,35 @@ class CocktailsProcessor < Barman::Processor
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
     end # indent
+  end
+  
+  def update_recomendations
+    say "обновляю рекомендации"
+    indent do
+      @cocktails.each do |name, hash|
+        recs = get_related hash["ingredients"].map {|v| v[0]}
+        templ = CocktailRecomendationsTemplate.new(recs)
+        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".recomendations.html", "w+") do |html|
+          html.write @recomendations_renderer.result(templ.get_binding)
+        end
+        
+      end
+    end # indent
+  end
+  
+  def get_related ingreds
+    weights = {}
+    @cocktails.each do |name, hash|
+      weight = 0
+      hash["ingredients"].each do |ingred|
+        weight += 1 if ingreds.index ingred[0]
+      end
+      weights[name] = weight
+    end
+    
+    names = weights.keys
+    names = names.sort { |a, b| weights[b] - weights[a] }
+    return names.map { |e| @cocktails[e] }
   end
   
   def process_cocktail dir

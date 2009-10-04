@@ -24,6 +24,16 @@ class CocktailTemplate
   end
 end
 
+class CocktailRecomendationsTemplate
+  def initialize(recs)
+    @recs = recs
+  end
+  
+  def get_binding
+    binding
+  end
+end
+
 class BarTemplate
   def initialize *hashes
     hashes.each do |hash|
