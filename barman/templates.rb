@@ -8,6 +8,7 @@ class CocktailTemplate
 
     @teaser      = hash["teaser"]
     @strength    = hash["strength"]
+    @method      = hash["method"]
     @desc_start  = hash["desc_start"]
     @desc_end    = hash["desc_end"]
     @tags        = hash["tags"]
@@ -21,6 +22,7 @@ class CocktailTemplate
   
   def groups
     groups = []
+    groups << ["/cocktails.html#method=#{@method}", @method]
     groups << ["/cocktails.html#strength=#{@strength}", @strength]
     
     @tags.each do |tag|
