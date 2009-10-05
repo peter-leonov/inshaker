@@ -46,9 +46,5 @@ var Model = {
 	getCocktailByName: function (name)
 	{
 		return Cocktail.getByName(name)
-	},
-
-    getPreparationMethod: function(cocktailName){
-        return this.cocktail.method;
-    }
+	}
 }
