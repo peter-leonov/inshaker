@@ -422,12 +422,12 @@ function CalculatorView() {
 		with (li.childsCache)
 		{
 			// fires goodQuantityChanged
-			input.addEventListener('keyup', function(e){
+			input.onkeyup = function(e){
 				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 					var bottleId = bottle.vol[0];
 					self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
 				}
-			}, false);
+			}
 			
 			a.onmousedown = function(e){
 				self.renderPopup(item, name);
@@ -505,7 +505,7 @@ function CalculatorView() {
 				self.setPicture(name, item.good, volume);
 			}
 			
-			inputQuant.addEventListener('keyup', function(e){
+			inputQuant.onkeyup = function(e){
 				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 					if(item.bottles[bottleId]) {
 						item.bottles[bottleId].count = this.value;
@@ -517,7 +517,7 @@ function CalculatorView() {
 					}
 					self.renderPopup(item, name);
 				}
-			}, false);
+			}
 			
 			bottle && bottle.count > 0 ? dl.remClassName('empty') : dl.addClassName('empty');
 			var newValue = bottle ? bottle.count : 0;
