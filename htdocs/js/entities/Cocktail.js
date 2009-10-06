@@ -71,17 +71,20 @@ Object.extend(Cocktail,
     rounds: {},
     matches: {},
 	byName: {},
-
-    dictLetters: {},
 	
 	initialize: function (db){
 		
-		var ai = this.ingredients, seen = {}, byName = this.byName
+		var ai = this.ingredients, seen = {}, byName = this.byName,
+			names = []
 		
-		var i = 0;
 		for (var k in db)
+			names.push(k)
+		names.sort()
+		
+		for (var i = 0, il = names.length; i < il; i++)
 		{
-			var cocktail = this.cocktails[i] = byName[k] = new Cocktail(db[k]);
+			var name = names[i],
+				cocktail = this.cocktails[i] = byName[name] = new Cocktail(db[name])
 			
 			var ci = cocktail.ingredients
 			for (var j = 0; j < ci.length; j++)
@@ -94,15 +97,12 @@ Object.extend(Cocktail,
 				}
 			}
 			
-			var letter = cocktail.name.substr(0,1).toLowerCase();
-			if(this.letters.indexOf(letter) == -1) this.letters.push(letter);
-            if(!this.dictLetters[letter]) this.dictLetters[letter] = [];
-            this.dictLetters[letter].push(i);
-
-            i++;
+			var letter = name.charAt(0).toLowerCase()
+			if (this.letters.indexOf(letter) == -1)
+				this.letters.push(letter)
 		}
 		this.ingredients = ai.sort()
-		this.letters = this.letters.sort();
+		this.letters.sort();
 	},
 	
     getAll: function(){
@@ -150,17 +150,38 @@ Object.extend(Cocktail,
 		}
 	},
 	
-	getByLetter: function (letter){
-        letter = letter.toLowerCase();
-
-		var res = [];
-        var cNums = this.dictLetters[letter];
-    	
-		for(var i = 0; i < cNums.length; i++){
-            res[i] = this.cocktails[cNums[i]];
-        }
-
-        return res.sortedBy(this.nameSort);
+	getByLetterCache: {},
+	getByLetter: function (letter, set)
+	{
+		letter = letter.toUpperCase()
+		var res
+		if (res = this.getByLetterCache[letter])
+			return res
+		res = this.getByLetterCache[letter] = []
+		if (!set)
+			set = this.cocktails
+		
+		
+		for (var i = 0, il = set.length; i < il; i++)
+			if (set[i].name.indexOf(letter) == 0)
+			{
+				res.push(set[i])
+				break
+			}
+		
+		i++
+		for (; i < il; i++)
+		{
+			if (set[i].name.indexOf(letter) == 0)
+				res.push(set[i])
+			else
+				// as cocktails are sorted we can stop searching at the first mismatch
+				break
+		}
+		
+		
+		// cocktails is already alphabeticaly sorted
+		return res
 	},
 	
 	getByTag: function (tag, set) {
