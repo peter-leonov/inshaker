@@ -96,13 +96,24 @@ Object.extend(Cocktail,
 					ai.push(ingr)
 				}
 			}
-			
-			var letter = name.charAt(0).toLowerCase()
-			if (this.letters.indexOf(letter) == -1)
-				this.letters.push(letter)
 		}
 		this.ingredients = ai.sort()
-		this.letters.sort();
+	},
+	
+	getFirstLetters: function (set)
+	{
+		if (!set)
+			set = this.cocktails
+		
+		var seen = {}
+		for (var i = 0, il = set.length; i < il; i++)
+			seen[set[i].name.charAt(0).toLowerCase()] = true
+		
+		var letters = []
+		for (var k in seen)
+			letters.push(k)
+		
+		return letters.sort()
 	},
 	
     getAll: function(){
