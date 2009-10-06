@@ -382,7 +382,10 @@ private
     tags = tags.split("\n")
     tags.each do |tag|
       tag = tag.trim
-      next if tag.empty?
+      if tag.empty?
+        warning "пустой тег"
+        next
+      end
       @cocktail["tags"] << tag
       @tags << tag unless @tags.include?(tag)
     end
@@ -404,20 +407,6 @@ private
   end
   
   def parse_receipt(receipt)
-    # res = []
-    # lines = receipt.split("\n")
-    # lines.each do |line|
-    #   letters = line.split("")
-    #   # p letters[0], letters[0].downcase
-    #   if(letters[0] != letters[0].downcase)
-    #     res.push line
-    #   else
-    #     error "!!!!!!"
-    #     idx = res.index res.last
-    #     res[idx] = res[idx] + " " + line
-    #   end
-    # end
-    # @cocktail["receipt"] = res
     @cocktail["receipt"] = receipt.split("\n")
   end
   
