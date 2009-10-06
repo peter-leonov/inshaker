@@ -76,8 +76,9 @@ class CocktailsProcessor < Barman::Processor
     prepare_cocktails
     prepare_tags_and_strengths_and_methods
     
-    update_cocktails
-    update_recomendations
+    if update_cocktails > 0
+      update_recomendations
+    end
     
     unless errors?
       flush_cocktails
@@ -120,9 +121,10 @@ class CocktailsProcessor < Barman::Processor
       end
       say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
       end # indent
-      return
+      return done
     end
     
+    touched = 0
     say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
@@ -141,6 +143,7 @@ class CocktailsProcessor < Barman::Processor
       @cocktails.delete(name)
     end
     say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+    touched += deleted.length
     end # indent
     
     added = {}
@@ -154,6 +157,7 @@ class CocktailsProcessor < Barman::Processor
       done += 1
     end
     say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    touched += done
     end # indent
     
     say "обновляю коктейли"
@@ -165,7 +169,9 @@ class CocktailsProcessor < Barman::Processor
       done += 1
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    touched += done
     end # indent
+    return touched
   end
   
   def update_recomendations
@@ -265,7 +271,32 @@ class CocktailsProcessor < Barman::Processor
   
   def flush_tags_and_strengths_and_methods
      say "сохраняю списки тегов, крепости и приготовления"
-     flush_json_object(@tags, Config::DB_JS_TAGS)
+     
+     count = {}
+     count.default = 0
+     @cocktails.each do |name, hash|
+       hash["tags"].each { |tag| count[tag] += 1 }
+     end
+     tags = []
+     # p @tags
+     @tags.each do |tag|
+      if count[tag] == 0
+        error "нет коктейлей в группе «#{tag}»"
+      elsif count[tag] < 3
+        warning "слишком мало коктейлей (#{count[tag]}) в группе «#{tag}»"
+        indent do
+        @cocktails.each do |name, hash|
+          if hash["tags"].index tag
+            say name
+          end
+        end
+        end # indent
+      else
+        tags << tag
+      end
+     end
+     
+     flush_json_object(tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
      flush_json_object(@methods, Config::DB_JS_METHODS)
   end
@@ -383,7 +414,11 @@ private
     tags.each do |tag|
       tag = tag.trim
       if tag.empty?
-        warning "пустой тег"
+        error "пустой тег"
+        next
+      end
+      unless @tags.index tag
+        error "неизвестный тег #{tag}"
         next
       end
       @cocktail["tags"] << tag
