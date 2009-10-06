@@ -419,7 +419,12 @@ function CalculatorView() {
 			li.childsCache = {input: input, button: button, txt: txt, a: a};
 		}
 		
-		with (li.childsCache)
+		var childsCache = li.childsCache,
+			input = childsCache.input,
+			button = childsCache.button,
+			txt = childsCache.txt,
+			a = childsCache.a
+		
 		{
 			// fires goodQuantityChanged
 			input.onkeyup = function(e){
@@ -499,7 +504,11 @@ function CalculatorView() {
 			dd.appendChild(document.createTextNode(" шт."));
 		}
 		
-		with (dl.childsCache)
+		var childsCache = dl.childsCache,
+			icon = childsCache.icon,
+			inputQuant = childsCache.inputQuant,
+			a = childsCache.a
+		
 		{
 			a.onmousedown = function(e) {
 				self.setPicture(name, item.good, volume);
