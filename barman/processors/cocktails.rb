@@ -76,13 +76,12 @@ class CocktailsProcessor < Barman::Processor
     prepare_cocktails
     prepare_tags_and_strengths_and_methods
     
-    if update_cocktails > 0
-      update_recomendations
-    end
+    touched = update_cocktails
     
     unless errors?
-      flush_cocktails
+      update_recomendations if touched > 0
       flush_tags_and_strengths_and_methods
+      flush_cocktails
       flush_links
     end
   end
@@ -134,43 +133,60 @@ class CocktailsProcessor < Barman::Processor
     end # indent
     
     
-    say "удаляю коктейли"
-    indent do
     deleted = @cocktails.keys - @cocktails_present.keys
-    deleted.each do |name|
-      say name
-      update_images name, @cocktails[name], true unless @options[:text]
-      @cocktails.delete(name)
+    unless deleted.empty?
+      say "удаляю коктейли"
+      indent do
+      deleted.each do |name|
+        say name
+        update_images name, @cocktails[name], true unless @options[:text]
+        @cocktails.delete(name)
+      end
+      say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+      touched += deleted.length
+      end # indent
     end
-    say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
-    touched += deleted.length
-    end # indent
+    
     
     added = {}
-    say "добавляю коктейли"
-    indent do
-    done = 0
+    toadd = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
       next if @cocktails[dir.name]
-      added[dir.name] = true
-      process_cocktail dir
-      done += 1
+      added << dir
     end
-    say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
-    touched += done
-    end # indent
+    unless added.empty?
+      say "добавляю коктейли"
+      indent do
+      done = 0
+      toadd.each do |dir|
+        added[dir.name] = true
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      touched += done
+      end # indent
+    end
     
-    say "обновляю коктейли"
-    indent do
-    done = 0
+    
+    toupdate = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
       next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
-      process_cocktail dir
-      done += 1
+      toupdate << dir
     end
-    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
-    touched += done
-    end # indent
+    unless toupdate.empty?
+      say "обновляю коктейли"
+      indent do
+      done = 0
+      toupdate.each do |dir|
+        next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      touched += done
+      end # indent
+    end
     return touched
   end
   
