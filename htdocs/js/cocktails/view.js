@@ -365,7 +365,6 @@ function CocktailsView (states, nodes, styles) {
 			li = cocktail.getPreviewNode(this.dropTargets);
 			this.nodeCache[id] = li;
 		}
-		//cocktail.updateRound(li, this.currentFilters.ingredients.length > 0);
 		return li;
 	};
 	

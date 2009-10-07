@@ -8,18 +8,7 @@ Ingredient.prototype =
 {
 	constructor: Ingredient,
     getRound: function() { return Ingredient.rounds[this.name] },
-    listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-    
-    updateRound: function(mark, show) {
-        var round = this.getRound();
-
-        if(round == Infinity) { mark.setVisible(false); return;}
-        else if(round == 0) round = "Ok";
-        else if(round) round = "+" + round;
-
-        mark.innerHTML = round;
-        mark.setVisible(show)
-    }
+    listOrder: function () { return Ingredient.groups.indexOf(this.group) }
 }
 
 Object.extend(Ingredient,

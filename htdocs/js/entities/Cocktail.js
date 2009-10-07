@@ -43,24 +43,7 @@ Cocktail.prototype =
 		a.appendChild(txt);
 		li.appendChild(a);
        	return li;		
-	},
-
-    updateRound: function(node, show) {
-        var round = this.getRound();
-        if(round == 0) round = "Ok";
-        else round = "+" + round;
-        
-        var mark = node.getElementsByClassName("round-mark")[0];
-        
-        if(!mark) {
-            if(!show) return
-            mark = document.createElement("div");
-            mark.className = "round-mark";
-            node.appendChild(mark);
-        }
-        mark.innerHTML = round;
-        mark.setVisible(show)
-    }
+	}
 }
 
 Object.extend(Cocktail,

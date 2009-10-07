@@ -215,13 +215,6 @@ var Controller = {
 		Model.selectedListChanged(this.selected);
 	},
 	
-    updateRounds: function(rounds, show) {
-		for(var i = 0; i < this.nameNodes.length; i++){
-			var toShow = show && (this.selected.indexOf(this.nameNodes[i].innerHTML) == -1) 
-            Ingredient.getByName(this.nameNodes[i].innerHTML).updateRound(this.markNodes[i], toShow);
-		}
-    },
-
 	updateCount: function(num, top, selectedNum){
 		this.topCocktail = top;
 		this.numCanPrepare = num;
