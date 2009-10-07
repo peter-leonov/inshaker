@@ -86,13 +86,13 @@ Me.prototype.extend
 			var uri = 'https://www.google.com/analytics/feeds/data',
 				query =
 				{
-					'start-date': '2009-04-01',
-					'end-date': '2009-04-30',
+					'start-date': '2009-09-01',
+					'end-date': '2009-09-30',
 					'dimensions': 'ga:pagePath,ga:pageTitle',
 					'metrics': 'ga:pageviews',
 					'filters': 'ga:pagePath=@/cocktails/',
 					// 'sort':'-ga:pageviews',
-					'max-results': 1000,
+					'max-results': 2000,
 					'ids': 'ga:' + id
 				}
 			
@@ -104,7 +104,9 @@ Me.prototype.extend
 			'/cocktails/---_on_the_beach.html': '/cocktails/bitch_on_the_beach.html',
 			'Inshaker — ---- на пляже': 'Inshaker — Сука на пляже',
 			'/cocktails/safe_---_on_the_beach.html': '/cocktails/safe_sex_on_the_beach.html',
-			'Inshaker — Безопасный ---- на пляже': 'Inshaker — Безопасный секс на пляже'
+			'Inshaker — Безопасный ---- на пляже': 'Inshaker — Безопасный секс на пляже',
+			'/cocktails/---_on_the_beach_light.html': '/cocktails/sex_on_the_beach_light.html',
+			'Inshaker — ---- на пляже лайт': 'Inshaker — Секс на пляже лайт'
 		}
 		
 		function dxpToHash (dxp, hash)
@@ -140,7 +142,8 @@ Me.prototype.extend
 				pageviews[path] = {path: path, title: hash['ga:pageTitle'], views: hash['ga:pageviews']}
 			}
 			
-			// log(Object.stringify(pageviews))
+			log(Object.stringify(pageviews))
+			me.dataReady()
 		}
 	},
 	
@@ -155,24 +158,26 @@ Me.prototype.extend
 			pageviews = this.pageviews, output = this.nodes.output
 		
 		this.clear()
-		var sum = 0
+		var views = 0, total = 0
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i],
-				uri = cocktail.name_eng.htmlName(),
-				data = pageviews['/cocktails/' + uri + '.html']
+				uri = '/cocktails/' + cocktail.name_eng.htmlName() + '.html',
+				data = pageviews[uri]
 			
 			if (!data)
 				this.error('Нет статистики для ' + cocktail.name + ', по адресу ' + uri)
 			else
 			{
-				this.print(cocktail.name + ', ' + data.views)
-				sum += +data.views
+				this.print(cocktail.name + ' — ' + data.views)
+				views += +data.views
+				total++
 			}
 		}
 		
 		this.print('————————————————————————————————————————')
-		this.print('Всего просмотров: ' + sum)
+		this.print('Всего просмотров: ' + views)
+		this.print('Всего коктейлей: ' + total)
 	},
 	
 	clear: function ()
