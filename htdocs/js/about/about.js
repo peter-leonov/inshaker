@@ -70,5 +70,5 @@ $.onready(function(){
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 
-<!--# include file="/external/swfobject.js" -->
+<!--# include virtual="swfobject.js" -->
 
