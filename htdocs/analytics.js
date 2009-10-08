@@ -142,7 +142,7 @@ Me.prototype.extend
 				pageviews[path] = {path: path, title: hash['ga:pageTitle'], views: hash['ga:pageviews']}
 			}
 			
-			log(Object.stringify(pageviews))
+			// log(Object.stringify(pageviews))
 			me.dataReady()
 		}
 	},
@@ -219,8 +219,8 @@ function onready ()
 	}
 	
 	var an = new Analytics().bind(nodes, conf)
-	// google.load('gdata', '1.x', {packages: ['analytics'], callback: function () { an.apiLoaded(google) }})
-	an.pageviews = <!--# include file="anal.js" -->
-	an.dataReady()
+	google.load('gdata', '1.x', {packages: ['analytics'], callback: function () { an.apiLoaded(google) }})
+	// an.pageviews = <!-- include file="anal.js" -->
+	// an.dataReady()
 }
 $.onready(onready)
