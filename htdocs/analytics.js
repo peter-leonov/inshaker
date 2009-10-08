@@ -178,6 +178,7 @@ Me.prototype.extend
 		this.print('————————————————————————————————————————')
 		this.print('Всего просмотров: ' + views)
 		this.print('Всего коктейлей: ' + total)
+		this.print('Коэфициент Макса: ' + (views / 1000 / total).toFixed(2))
 	},
 	
 	clear: function ()
