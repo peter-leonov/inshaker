@@ -16,8 +16,15 @@ class Person
 end
 
 render = ERB.new(File.read(ARGV[0]).gsub("\r", ''))
+seen = {}
 
 CSV.foreach_hash(ARGV[1]) do |hash, line|
+  email = hash["email"].gsub(/\s+/, "").downcase
+  if seen[email]
+    warn "#{line}: DUPLICATE #{hash["email"]} of line #{seen[email]}"
+  end
+  seen[email] = line
+  
   raw = render.result(Person.new(hash).get_binding)
   message = {}
   head, body = raw.split(/\n\n/, 2)
