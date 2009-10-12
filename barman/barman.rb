@@ -11,6 +11,23 @@ require 'yaml'
 
 $stdout.sync = true
 
+class File
+  def self.mtime_cmp a, b
+    mtime(a) - mtime(b)
+  end
+  
+  def self.cp_if_updated src, dst, opt
+    begin
+      diff = mtime_cmp(src, dst)
+    rescue => e
+      diff = 1
+    end
+    if diff > 0
+      FileUtils.cp_r(src, dst, opt)
+    end
+  end
+end
+
 module Barman
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
@@ -72,17 +89,6 @@ module Barman
       mask_img(mask, src, tmp, mode)
       optimize_img(tmp)
       flush_pngm_img(tmp, dst)
-    end
-    
-    def cp_if_updated src, dst
-      dst_mtime = Time.at(0)
-      if File.exists?(dst)
-        dst_mtime = File.mtime(dst)
-      end
-      src_mtime = File.mtime(src)
-      if src_mtime > dst_mtime
-        FileUtils.cp_r(src, dst, @mv_opt)
-      end
     end
     
     def indent
