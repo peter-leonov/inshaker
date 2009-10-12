@@ -91,6 +91,22 @@ module Barman
       flush_pngm_img(tmp, dst)
     end
     
+    def copy_image src, dst, name="(без имени бедняжка)", max_size=25
+      if File.exists? src
+        if File.size(src) > max_size * 1024
+          warning "картинка #{name} слишком большая (>#{max_size}Кб)"
+        end
+
+        begin
+          File.cp_if_updated src, dst, @mv_opt
+        rescue
+          error "не удалось скопировать картинку #{name}"
+        end
+      else
+        error "нет картинки #{name}"
+      end
+    end
+    
     def indent
       @indent += 1
       yield
