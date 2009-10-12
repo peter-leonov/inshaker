@@ -74,6 +74,17 @@ module Barman
       flush_pngm_img(tmp, dst)
     end
     
+    def cp_if_updated src, dst
+      dst_mtime = Time.at(0)
+      if File.exists?(dst)
+        dst_mtime = File.mtime(dst)
+      end
+      src_mtime = File.mtime(src)
+      if src_mtime > dst_mtime
+        FileUtils.cp_r(src, dst, @mv_opt)
+      end
+    end
+    
     def indent
       @indent += 1
       yield
