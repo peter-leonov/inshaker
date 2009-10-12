@@ -98,9 +98,9 @@ module Barman
         end
 
         begin
-          File.cp_if_updated src, dst, @mv_opt
+          File.cp_if_updated src, dst
         rescue
-          error "не удалось скопировать картинку #{name}"
+          error "не удалось скопировать картинку #{name} (#{src} → #{dst})"
         end
       else
         error "нет картинки #{name}"
