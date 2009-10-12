@@ -16,14 +16,16 @@ class File
     mtime(a) - mtime(b)
   end
   
-  def self.cp_if_updated src, dst, opt
+  def self.cp_if_updated src, dst
     begin
       diff = mtime_cmp(src, dst)
     rescue => e
       diff = 1
     end
     if diff > 0
-      FileUtils.cp_r(src, dst, opt)
+      # puts "копирую #{src} → #{dst}"
+      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
+      # FileUtils.cp(src, dst, {:remove_destination => true, :preserve => true})
     end
   end
 end
