@@ -109,6 +109,10 @@ module Barman
       end
     end
     
+    def load_yaml src
+      YAML::load(File.open(src))
+    end
+    
     def indent
       @indent += 1
       yield
