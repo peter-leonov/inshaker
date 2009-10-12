@@ -32,6 +32,7 @@ $.onready
 	}
 )
 
+<!--# include file="/js/common/url-encode.js" -->
 <!--# include file="/js/index/model.js" -->
 <!--# include file="/js/index/controller.js" -->
 <!--# include file="/js/index/view.js" -->

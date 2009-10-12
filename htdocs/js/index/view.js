@@ -49,13 +49,13 @@ IndexPageView.prototype =
 		return li
 	},
 	
-	createPromoElement: function (promo, promos)
+	createPromoElement: function (promo)
 	{
 		var a  = document.createElement("a")
-		a.href = promo[1]
+		a.href = promo.href
 		var img = document.createElement("img")
-		img.alt = promo[0]
-		img.setAttribute("lazy", "/i/index/promos/" + (promos.indexOf(promo) + 1) + ".jpg")
+		img.alt = promo.name
+		img.setAttribute("lazy", "/i/index/promos/" + (promo.html_name) + ".jpg")
 		a.appendChild(img)
 		a.className = "point"
 		return a
@@ -131,18 +131,16 @@ IndexPageView.prototype =
 	
 	renderPromo: function (node, set, len, state)
 	{
-		var initFrame = state.initFrame, customInit = state.customInit
-		
 		var ri = node.RollingImagesLite
 		var parent = node.getElementsByClassName('surface')[0]
 		
 		parent.empty()
 		
 		// One fake before the actual series, one after
-		parent.appendChild(this.createPromoElement(set[set.length - 1], set))
+		parent.appendChild(this.createPromoElement(set[set.length - 1]))
 		for (var i = 0; i < set.length; i++)
-			parent.appendChild(this.createPromoElement(set[i], set))
-		parent.appendChild(this.createPromoElement(set[0], set))
+			parent.appendChild(this.createPromoElement(set[i]))
+		parent.appendChild(this.createPromoElement(set[0]))
 		ri.sync()
 		
 		if (set.length > 1)
@@ -187,7 +185,7 @@ IndexPageView.prototype =
 						}
 					}
 					
-					me.controller.updateHash(after)
+					me.controller.updateHash(set[after-1].name)
 					me.loadFrames(me.getRange(after))
 				}
 			}
@@ -195,24 +193,13 @@ IndexPageView.prototype =
 			this.nodes.arrows[0].addEventListener('click', function (e) { switchFrame(true)  }, false)
 			this.nodes.arrows[1].addEventListener('click', function (e) { switchFrame(false) }, false)
 			
-			var fastSwitchTimer = null, slowSwitchTimer = null
-			function startSwitching (customInit)
-			{
-				fastSwitchTimer = setTimeout
-				(
-					function ()
-					{
-						slowSwitchTimer = setInterval(function () { switchFrame(false) }, 4500)
-						switchFrame(false)
-					},
-					customInit ? 6000 : 1500
-				)
-			}
-			function stopSwitching ()
-			{
-				clearInterval(fastSwitchTimer)
-				clearInterval(slowSwitchTimer)
-			}
+			var initFrame = state.initFrame
+			for (var i = 0; i < set.length; i++)
+				if (set[i].name == initFrame)
+				{
+					initFrame = i + 1
+					break
+				}
 			
 			if (!initFrame)
 				initFrame = 1//Math.round(Math.random() * (len - 1)) + 1
@@ -232,10 +219,6 @@ IndexPageView.prototype =
 					{
 						clearInterval(imageLoadTimer)
 						me.showButtons()
-						// startSwitching(customInit)
-						// me.nodes.promo.addEventListener('mousemove', function () { stopSwitching() }, false)
-						// me.nodes.promo.addEventListener('mouseover', function () { stopSwitching() }, false)
-						// me.nodes.promo.addEventListener('mouseout' , function () { startSwitching() }, false)
 					}
 				},
 				100
