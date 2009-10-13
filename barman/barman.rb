@@ -16,13 +16,17 @@ class File
     mtime(a) - mtime(b)
   end
   
-  def self.cp_if_updated src, dst
+  def self.cmtimes_cmp a, b
+    mtime(a) == mtime(b) && ctime(a) == ctime(b)
+  end
+  
+  def self.cp_if_different src, dst
     begin
-      diff = mtime_cmp(src, dst)
+      diff = cmtimes_cmp(src, dst)
     rescue => e
-      diff = 1
+      diff = true
     end
-    if diff > 0
+    if diff
       # puts "копирую #{src} → #{dst}"
       system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
       # FileUtils.cp(src, dst, {:remove_destination => true, :preserve => true})
@@ -100,7 +104,7 @@ module Barman
         end
 
         begin
-          File.cp_if_updated src, dst
+          File.cp_if_different(src, dst)
         rescue
           error "не удалось скопировать картинку #{name} (#{src} → #{dst})"
         end
