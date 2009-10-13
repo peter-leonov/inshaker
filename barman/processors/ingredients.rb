@@ -51,7 +51,7 @@ class IngredientsProcessor < Barman::Processor
     update_groups
     update_goods
     
-    if summary
+    unless errors?
       flush_links
       flush_json
     end
