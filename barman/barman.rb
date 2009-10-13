@@ -91,6 +91,7 @@ module Barman
     end
 
     def flush_masked_optimized_pngm_img(mask, src, dst, mode = "CopyOpacity")
+      return if File.mtime_cmp(src, dst) < 0
       tmp = "/tmp/pic.png"
       mask_img(mask, src, tmp, mode)
       optimize_img(tmp)
