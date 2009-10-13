@@ -75,7 +75,8 @@ class IngredientsProcessor < Barman::Processor
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @goods.each do |name, entity|
+      @goods.keys.sort.each do |name|
+        entity = @goods[name]
         links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
       end
       links.puts "</ul>"
