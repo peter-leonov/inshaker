@@ -36,7 +36,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def job
-    @options = {}
+    @options = {:force => true}
     OptionParser.new do |opts|
       opts.banner = "Usage: ingredients.rb [options]"
       
@@ -151,6 +151,7 @@ class IngredientsProcessor < Barman::Processor
     
     img = dir.path + "/i_big.png"
     if File.exists?(img)
+      # File.cp_if_different(img, Config::INGREDS_ROOT + name.trans + ".png")
       flush_masked_optimized_pngm_img(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png") 
     else
       error "нет большой картинки (файл #{img})"
@@ -178,7 +179,7 @@ class IngredientsProcessor < Barman::Processor
         
         banner = dir.path + "/banner.png"
         if File.exists?(banner)
-          FileUtils.cp_r(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png", opt)
+          File.cp_if_different(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png")
         else
           error "нет картинки банера (banner.png)"
         end
@@ -200,7 +201,7 @@ class IngredientsProcessor < Barman::Processor
         img = dir.path + "/" + vol_name + "_big.png"
         
         if File.exists?(img)
-          FileUtils.cp_r(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png", opt)
+          File.cp_if_different(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png")
         else
           error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end
