@@ -424,18 +424,7 @@ var Controller = {
 		}
 	},
 	
-	_createCocktailElement: function(cocktail) {
-		var li = document.createElement("li");
-		var a = document.createElement("a");
-		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html";
-		var img = document.createElement("img");
-		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png";
-		var txt = document.createTextNode(cocktail.name);
-		a.appendChild(img);
-		a.appendChild(txt);
-		li.appendChild(a);
-		return li;		
-	},
+	_createCocktailElement: function(cocktail) { return cocktail.getPreviewNode() },
 	
 	expandRelated: function(){ // model
 		var recsCol = cssQuery(".column.b-more-rec")[0];

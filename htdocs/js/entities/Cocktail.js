@@ -34,9 +34,10 @@ Cocktail.prototype =
     getPreviewNode: function(dropTargets) {
 		var li = document.createElement("li");
 		var a = document.createElement("a");
-		a.href = "/cocktails/" + this.name_eng.htmlName() + ".html";
+		var path = '/cocktail/' + this.name_eng.htmlName()
+		a.href = path + '/'
 		var img = document.createElement("img");
-		img.src = "/i/cocktail/s/" + this.name_eng.htmlName() + ".png";
+		img.src = path + '/small.png'
 		if(dropTargets) new Draggable(img, this.name, dropTargets);
         var txt = document.createTextNode(this.name);
 		a.appendChild(img);

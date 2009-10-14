@@ -9,7 +9,7 @@ class CocktailsProcessor < Barman::Processor
     COCKTAILS_DIR = Barman::BASE_DIR + "Cocktails/"
     HTDOCS_DIR    = Barman::HTDOCS_DIR
     
-    HTDOCS_ROOT        = HTDOCS_DIR + "cocktails/"
+    HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
@@ -18,11 +18,6 @@ class CocktailsProcessor < Barman::Processor
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
-    IMAGES_DIR         = HTDOCS_DIR + "i/cocktail/"
-    IMAGES_BG_DIR      = IMAGES_DIR + "bg/"
-    IMAGES_BIG_DIR     = IMAGES_DIR + "b/"
-    IMAGES_SMALL_DIR   = IMAGES_DIR + "s/"
-    IMAGES_PRINT_DIR   = IMAGES_DIR + "print/"
     
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
@@ -37,6 +32,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktails_present = {}
     @tags = []
     @strengths = []
+    @local_properties = ["desc_start", "desc_end", "recs"]
   end
   
   def job_name
@@ -92,10 +88,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def prepare_dirs
-    # FileUtils.rmtree [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::VIDEOS_DIR]
-    
-    FileUtils.mkdir_p [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
-      Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::VIDEOS_DIR]
+    FileUtils.mkdir_p [Config::HTDOCS_ROOT]
   end
   
   def prepare_templates
@@ -166,7 +159,6 @@ class CocktailsProcessor < Barman::Processor
       indent do
       deleted.each do |name|
         say name
-        update_images name, @cocktails[name], true unless @options[:text]
         @cocktails.delete(name)
       end
       say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
@@ -222,7 +214,7 @@ class CocktailsProcessor < Barman::Processor
       @cocktails.each do |name, hash|
         recs = get_related name
         templ = CocktailRecomendationsTemplate.new(recs)
-        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".recomendations.html", "w+") do |html|
+        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + "/recomendations.html", "w+") do |html|
           html.write @recomendations_renderer.result(templ.get_binding)
         end
         
@@ -266,10 +258,17 @@ class CocktailsProcessor < Barman::Processor
     
     @cocktails[name] = @cocktail
     
+    html_name = @cocktail["name_eng"].html_name
+    
+    dir_path = "#{Config::HTDOCS_ROOT}/#{html_name}"
+    FileUtils.mkdir_p(dir_path)
+    root_dir = Dir.open(dir_path)
+    root_dir.name = html_name
+    
     guess_methods @cocktail
-    update_images name, @cocktail unless @options[:text]
-    update_html name, @cocktail
-    update_video dir, name, @cocktail
+    update_images dir, root_dir, @cocktail unless @options[:text]
+    update_html root_dir, @cocktail
+    update_json root_dir, @cocktail
     end # indent
   end
   
@@ -300,13 +299,49 @@ class CocktailsProcessor < Barman::Processor
     end
   end
   
+  def update_html dst, hash
+    tpl = CocktailTemplate.new(hash)
+    File.write("#{dst.path}/index.html", @cocktail_renderer.result(tpl.get_binding))
+  end
+  
+  def update_json dst, hash
+    data = {}
+    @local_properties.each do |prop|
+      data[prop] = hash.delete(prop)
+    end
+    flush_json_object(data, "#{dst.path}/data.json")
+  end
+  
+  def update_images src, dst, hash
+    to_big     = "#{dst.path}/big.png"
+    to_small   = "#{dst.path}/small.png"
+    to_bg      = "#{dst.path}/bg.png"
+    
+    from_big   = "#{src.path}/big.png"
+    from_small = "#{src.path}/small.png"
+    from_bg    = "#{src.path}/bg.png"
+    
+    if File.exists?(from_big)
+      flush_pngm_img(from_big, to_big)
+    else
+      error "не могу найти большую картинку коктейля (big.png)"
+    end
+    
+    if File.exists?(from_small)
+      File.cp_if_different(from_small, to_small)
+    else
+      error "не могу найти маленькую картинку коктейля (small.png)"
+    end
+    
+    if File.exists?(from_bg)
+      # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
+      File.cp_if_different(from_bg, to_bg)
+    else
+      error "не могу найти заставку коктейля (bg.png)"
+    end
+  end
+  
   def flush_cocktails
-     @cocktails.each do |name, hash|
-      hash.delete("desc_start")
-      hash.delete("desc_end")
-      hash.delete("recs")
-     end
-     
      say "сохраняю данные о коктейлях"
      flush_json_object(@cocktails, Config::DB_JS)
   end
@@ -351,59 +386,6 @@ class CocktailsProcessor < Barman::Processor
         links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
-    end
-  end
-  
-  def update_html name, hash
-    cocktail = CocktailTemplate.new(hash)
-    File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".html", "w+") do |html|
-      html.write @cocktail_renderer.result(cocktail.get_binding)
-    end
-  end
-  
-  def update_images name, hash, delete = false
-    from = Config::COCKTAILS_DIR + name + "/"
-    
-    html_name = hash["name_eng"].html_name
-    to_big   = Config::IMAGES_BIG_DIR   + html_name + ".png"
-    to_small = Config::IMAGES_SMALL_DIR + html_name + ".png"
-    to_bg    = Config::IMAGES_BG_DIR    + html_name + ".png"
-    
-    if delete
-      FileUtils.rmtree([to_big, to_small, to_bg])
-    else
-      from_big   = from + "big.png"
-      from_small = from + "small.png"
-      from_bg    = from + "bg.png"
-      
-      if File.exists?(from_big)
-        flush_pngm_img(from_big, to_big)
-      else
-        error "не могу найти большую картинку коктейля (big.png)"
-      end
-      
-      if File.exists?(from_small)
-        FileUtils.cp_r(from_small, to_small, @mv_opt)
-      else
-        error "не могу найти маленькую картинку коктейля (small.png)"
-      end
-      
-      if File.exists?(from_bg)
-        # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
-        FileUtils.cp_r(from_bg, to_bg, @mv_opt)
-      else
-        error "не могу найти заставку коктейля (bg.png)"
-      end
-    end
-  end
-  
-  def update_video dir, name, hash
-    from = dir.path + "/video.flv"
-    if File.exists? from
-      say "нашел видео-ролик"
-      # to = Config::VIDEOS_DIR + hash["name_eng"].html_name + ".flv"
-      # FileUtils.cp_r(from, to, @mv_opt)
-      hash["video"] = true
     end
   end
   
