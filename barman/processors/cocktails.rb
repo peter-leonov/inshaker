@@ -65,8 +65,8 @@ class CocktailsProcessor < Barman::Processor
     end.parse!
     
     if @options[:force] && !@options[:names].empty?
-      error "низя указывать --force и --names вместе"
-      exit
+      warning "--names отменяет действие --force"
+      @options[:force] = false
     end
   end
   
