@@ -81,6 +81,8 @@ class CocktailsProcessor < Barman::Processor
     
     touched = update_cocktails
     
+    check_intergity
+    
     unless errors?
       update_recomendations if touched > 0
       flush_tags_and_strengths_and_methods
@@ -105,6 +107,22 @@ class CocktailsProcessor < Barman::Processor
     if File.exists?(Config::GOODS_DB)
       @goods = load_json(Config::GOODS_DB)
     end
+  end
+  
+  def check_intergity
+    say "проверяю ингредиенты"
+    indent do
+    @cocktails.each do |name, cocktail|
+      cocktail["ingredients"].each do |ingred|
+        unless @goods[ingred[0]]
+          error "#{name}: нет такого ингредиента «#{ingred[0]}»"
+          if ingred[0].has_diacritics
+            say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+          end
+        end
+      end
+    end
+    end # indent
   end
   
   def prepare_cocktails
@@ -455,12 +473,6 @@ private
     ingredients.each do |ing|
       name, dose = ing.split(": ")
       @cocktail["ingredients"] << [name, dose.zpt]
-      unless @goods[name]
-        error "нет такого ингредиента «#{name}»"
-        if name.has_diacritics
-          say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
-        end
-      end
     end
   end
   
