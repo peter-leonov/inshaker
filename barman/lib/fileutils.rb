@@ -5,6 +5,27 @@ class File
       f.write data
     end
   end
+  
+  def self.mtime_cmp a, b
+    mtime(a) - mtime(b)
+  end
+  
+  def self.cmtimes_cmp a, b
+    mtime(a) == mtime(b) && ctime(a) == ctime(b)
+  end
+  
+  def self.cp_if_different src, dst
+    begin
+      diff = cmtimes_cmp(src, dst)
+    rescue => e
+      diff = true
+    end
+    if diff
+      # puts "копирую #{src} → #{dst}"
+      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
+      # FileUtils.cp(src, dst, {:remove_destination => true, :preserve => true})
+    end
+  end
 end
 
 class Dir

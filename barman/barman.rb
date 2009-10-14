@@ -11,29 +11,6 @@ require 'yaml'
 
 $stdout.sync = true
 
-class File
-  def self.mtime_cmp a, b
-    mtime(a) - mtime(b)
-  end
-  
-  def self.cmtimes_cmp a, b
-    mtime(a) == mtime(b) && ctime(a) == ctime(b)
-  end
-  
-  def self.cp_if_different src, dst
-    begin
-      diff = cmtimes_cmp(src, dst)
-    rescue => e
-      diff = true
-    end
-    if diff
-      # puts "копирую #{src} → #{dst}"
-      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
-      # FileUtils.cp(src, dst, {:remove_destination => true, :preserve => true})
-    end
-  end
-end
-
 module Barman
   ROOT_DIR = "/www/inshaker/"
   BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
