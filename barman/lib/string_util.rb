@@ -23,6 +23,10 @@ class String
     dirify
   end
 
+  def has_diacritics
+    index /[̆̈]/
+  end
+
   def zpt
     return self.gsub(",",".")
   end
