@@ -1,5 +1,7 @@
 # encoding: utf-8
 class File
+  attr_accessor :name
+  
   def self.write file, data
     File.open(file, 'w') do |f|
       f.write data
@@ -49,11 +51,50 @@ class Dir
     end
   end
   
+  def each_file
+    each do |entry|
+      next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "file"
+      File.open("#{path}/#{entry}") do |dir|
+        dir.name = entry
+        yield dir
+      end
+    end
+  end
+  
   def each_rex rex
     each do |entry|
       m = nil
       next if @@exclude =~ entry || !(m = rex.match entry)
         yield entry, m
     end
+  end
+  
+  def deep_times
+    stat = File.stat(path)
+    total = {}
+    # total[:ctime] = stat.ctime
+    total[:mtime] = stat.mtime
+    
+    each_file do |file|
+      stat = File.stat("#{path}/#{file.name}")
+      # if stat.ctime > total[:ctime]
+      #   total[:ctime] = stat.ctime
+      # end
+      if stat.mtime > total[:mtime]
+        total[:mtime] = stat.mtime
+      end
+    end
+    
+    each_dir do |dir|
+      sub_total = dir.deep_times
+      # if sub_total[:ctime] > total[:ctime]
+      #   total[:ctime] = sub_total[:ctime]
+      # end
+      if sub_total[:mtime] > total[:mtime]
+        total[:mtime] = sub_total[:mtime]
+      end
+    end
+    
+    return total
   end
 end
