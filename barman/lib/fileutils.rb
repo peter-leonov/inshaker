@@ -69,32 +69,22 @@ class Dir
     end
   end
   
-  def deep_times
-    stat = File.stat(path)
-    total = {}
-    # total[:ctime] = stat.ctime
-    total[:mtime] = stat.mtime
-    
-    each_file do |file|
-      stat = File.stat("#{path}/#{file.name}")
-      # if stat.ctime > total[:ctime]
-      #   total[:ctime] = stat.ctime
-      # end
-      if stat.mtime > total[:mtime]
-        total[:mtime] = stat.mtime
+  def deep_mtime
+    max = File.mtime(path)
+    each do |entry|
+      mtime = File.mtime("#{path}/#{entry}")
+      if mtime > max
+        max = mtime
       end
     end
     
     each_dir do |dir|
-      sub_total = dir.deep_times
-      # if sub_total[:ctime] > total[:ctime]
-      #   total[:ctime] = sub_total[:ctime]
-      # end
-      if sub_total[:mtime] > total[:mtime]
-        total[:mtime] = sub_total[:mtime]
+      mtime = dir.deep_mtime
+      if mtime > max
+        max = mtime
       end
     end
     
-    return total
+    return max
   end
 end
