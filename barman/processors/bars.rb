@@ -13,6 +13,7 @@ class BarsProcessor < Barman::Processor
     
     DB_JS          = Barman::HTDOCS_DIR  + "db/bars.js"
     DB_JS_CITIES   = Barman::HTDOCS_DIR  + "db/cities.js"
+    COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
     
     ERB            = Barman::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
@@ -20,6 +21,7 @@ class BarsProcessor < Barman::Processor
   
   def initialize
     super
+    @cocktails = {}
     @cases = {}
     @entities = []
     @bar_points = {}
@@ -31,6 +33,7 @@ class BarsProcessor < Barman::Processor
   end
   
   def job
+    prepare_cocktails
     prepare_dirs
     prepare_cases
     prepare_renderer
@@ -43,6 +46,12 @@ class BarsProcessor < Barman::Processor
     end
   end
   
+  def prepare_cocktails
+    if File.exists?(Config::COCKTAILS_DB)
+      @cocktails = load_json(Config::COCKTAILS_DB)
+    end
+  end
+  
   def prepare_dirs
     FileUtils.mkdir_p [Config::HTML_DIR, Config::IMAGES_DIR]
   end
@@ -52,7 +61,7 @@ class BarsProcessor < Barman::Processor
   end
   
   def prepare_cases
-    @declensions = YAML::load(File.open(Config::DECLENSIONS))
+    @declensions = load_yaml(Config::DECLENSIONS)
   end
   
   def update_bars
@@ -84,7 +93,7 @@ class BarsProcessor < Barman::Processor
           if File.size(mini) > 25 * 1024
             warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
           end
-          FileUtils.cp_r(mini, "#{out_images_path}/mini.jpg", @mv_opt)
+          File.cp_if_different(mini, "#{out_images_path}/mini.jpg")
         else
           error "не нашел маленькую картинку бара (mini.jpg)"
         end
@@ -99,7 +108,7 @@ class BarsProcessor < Barman::Processor
             if File.size(from) > 70 * 1024
               warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
             end
-            FileUtils.cp_r(from, "#{out_images_path}/photo-#{i}.jpg", @mv_opt)
+            File.cp_if_different(from, "#{out_images_path}/photo-#{i}.jpg")
             big_images << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
           end
         else
@@ -182,8 +191,18 @@ private
   
   def parse_cocktails_text txt, bar
     blocks = txt.split("\n\n")
-    bar["carte"] = blocks[0].split(%r{[\n\r]})
-    bar["carte"] += blocks[1].split(%r{[\n\r]})
+    
+    carte = blocks[0].split(%r{[\n\r]})
+    carte += blocks[1].split(%r{[\n\r]})
+    carte.each do |name|
+      unless @cocktails[name]
+        error "нет такого коктейля «#{name}»"
+        if name.has_diacritics
+          say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+        end
+      end
+    end
+    bar["carte"] = carte
     bar["priceIndex"] = blocks[2].split(": ")[1].trim
   end
 end
