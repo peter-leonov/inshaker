@@ -98,8 +98,8 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        times = good_dir.deep_times
-        if times[:mtime] > @goods_mtime
+        mtime = good_dir.deep_mtime
+        if mtime > @goods_mtime
           if good = find_good(good_dir, group_dir)
             done += 1
             good["group"] = group_dir.name
