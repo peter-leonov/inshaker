@@ -31,18 +31,26 @@ end
 class Dir
   attr_accessor :name
   @@exclude = /^\./
+  
+  alias :each_real :each
+  def each
+    each_real do |entry|
+      yield entry.force_encoding('UTF-8').gsub('й','й').gsub('Й','Й').gsub('ё','ё').gsub('Ё','Ё')
+    end
+  end
+  
   def each_dir
     each do |entry|
       next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "directory"
       Dir.open("#{path}/#{entry}") do |dir|
-        dir.name = entry.force_encoding('UTF-8').gsub('й','й')
+        dir.name = entry
         yield dir
       end
     end
   end
+  
   def each_rex rex
     each do |entry|
-      entry = entry.force_encoding('UTF-8').gsub('й','й')
       m = nil
       next if @@exclude =~ entry || !(m = rex.match entry)
         yield entry, m

@@ -55,7 +55,7 @@ class CocktailsProcessor < Barman::Processor
       end
       opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
         list.each do |v|
-          names[v.yi] = true
+          names[v] = true
         end
       end
       opts.on("-h", "--help", "помочь") do

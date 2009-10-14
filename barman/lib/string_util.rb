@@ -20,11 +20,7 @@ require 'rutils'
 class String
   
   def trans
-    gsub('й','й').dirify
-  end
-
-  def yi
-    self.gsub('й','й')
+    dirify
   end
 
   def zpt

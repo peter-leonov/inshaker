@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
 
 class GiftsProcessor < Barman::Processor
@@ -44,7 +45,7 @@ class GiftsProcessor < Barman::Processor
             @gift[:name_full] = yaml["Полное название"] 
             @gift[:desc] = yaml["Описание"].split("\n")
             @gift[:places] = yaml["Где купить"]
-            @gift[:order] = orders[@gift[:name].yi]
+            @gift[:order] = orders[@gift[:name]]
             detect_big_images(gift_path)
             @gifts << @gift
           end

@@ -16,7 +16,7 @@ class String
     '&'    =>  '\u0026'
   }
   def to_json(options = nil)
-    ('"' + gsub(/[\010\f\n\r\t"\\><&]/) { |s| ESCAPED_CHARS[s] } + '"').gsub('й','й')
+    ('"' + gsub(/[\010\f\n\r\t"\\><&]/) { |s| ESCAPED_CHARS[s] } + '"')
   end
 end
 

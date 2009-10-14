@@ -1,7 +1,6 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
-require 'lib/string_util_1.8'
-$KCODE = 'u'
 
 class ToolsProcessor < Barman::Processor
   
