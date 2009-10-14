@@ -5,6 +5,7 @@ require 'barman'
 class BarmenProcessor < Barman::Processor
 
   module Config
+    COCKTAILS_DB = Barman::HTDOCS_DIR + "db/cocktails.js"
     BARMEN_DIR = Barman::BASE_DIR + "Barmen/"
     HTDOCS_DIR = Barman::HTDOCS_DIR
     IMAGES_DIR = HTDOCS_DIR + "i/barmen/"
@@ -16,9 +17,17 @@ class BarmenProcessor < Barman::Processor
   end
   
   def job
+    @cocktails = {}
     @barmen = []
+    prepare_cocktails
     prepare_barmen
     flush_json
+  end
+  
+  def prepare_cocktails
+    if File.exists?(Config::COCKTAILS_DB)
+      @cocktails = load_json(Config::COCKTAILS_DB)
+    end
   end
   
   def prepare_barmen
@@ -33,7 +42,18 @@ class BarmenProcessor < Barman::Processor
           barman[:name] = barman_dir
           barman[:name_eng] = about["Name"]
           barman[:desc] = about["О бармене"]
-          barman[:cocktails] = about["Коктейли"]
+          if cocktails = about["Коктейли"]
+            cocktails.each do |name|
+              unless @cocktails[name]
+                error "нет такого коктейля «#{name}»"
+                if name.has_diacritics
+                  say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+                end
+              end
+            end
+            barman[:cocktails] = cocktails
+          end
+          
           @barmen << barman
           FileUtils.cp_r(barman_path + "/photo.jpg", Config::IMAGES_DIR + barman[:name_eng].html_name + ".jpg", @mv_opt)
         end
