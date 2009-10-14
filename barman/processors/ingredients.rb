@@ -122,11 +122,25 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def find_good good_dir, group_dir
+    errors = []
     good = process_good(good_dir, group_dir.name, good_dir.name)
-    unless good
-      good_dir.each_dir do |brand_dir|
-        break if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
+    if good
+      found = true
+    end
+    
+    good_dir.each_dir do |brand_dir|
+      if found
+        errors << [group_dir, good_dir, brand_dir]
+      else
+        if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
+          found = true
+        else
+          errors << [group_dir, good_dir, brand_dir]
+        end
       end
+    end
+    errors.each do |arr|
+      error "непонятная папочка #{arr[0].name}/#{arr[1].name}/#{arr[2].name}"
     end
     good
   end
