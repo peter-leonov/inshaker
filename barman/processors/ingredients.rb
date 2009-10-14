@@ -98,25 +98,23 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        good = find_good(good_dir, group_dir)
-        
-        if good
-          @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
-          done += 1
-          good["group"] = group_dir.name
-          @goods[good_dir.name] = good
-        else
-          warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
-          good = @goods[good_dir.name]
-        end
-        
-        if good
-          if names = read_names(good_dir)
-            good["names"] = names
+        times = good_dir.deep_times
+        if times[:mtime] > @goods_mtime
+          if good = find_good(good_dir, group_dir)
+            done += 1
+            good["group"] = group_dir.name
+            @goods[good_dir.name] = good
+            
+            if names = read_names(good_dir)
+              good["names"] = names
+            else
+              good.delete("names")
+            end
           else
-            good.delete("names")
+            warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
           end
         end
+        @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
       end
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
