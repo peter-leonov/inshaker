@@ -180,7 +180,7 @@ class CocktailsProcessor < Barman::Processor
     
     toupdate = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
-      next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
+      next if added[dir.name] || @cocktails[dir.name] && dir.deep_mtime <= @cocktails_mtime
       toupdate << dir
     end
     unless toupdate.empty?
@@ -188,7 +188,6 @@ class CocktailsProcessor < Barman::Processor
       indent do
       done = 0
       toupdate.each do |dir|
-        next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
         process_cocktail dir
         done += 1
       end
