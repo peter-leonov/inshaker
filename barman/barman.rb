@@ -92,7 +92,11 @@ module Barman
     end
     
     def load_yaml src
-      YAML::load(File.open(src))
+      YAML.load(File.open(src))
+    end
+    
+    def load_json src
+      JSON.parse(File.read(src))
     end
     
     def indent
