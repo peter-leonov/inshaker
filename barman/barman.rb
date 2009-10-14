@@ -188,7 +188,8 @@ module Barman
           job
           summary
         rescue => e
-          error "Паника: #{e}"
+          error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+          raise e
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
       else
