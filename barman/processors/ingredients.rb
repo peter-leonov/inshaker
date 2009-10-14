@@ -36,7 +36,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def job
-    @options = {:force => true}
+    @options = {}
     OptionParser.new do |opts|
       opts.banner = "Usage: ingredients.rb [options]"
       
@@ -98,26 +98,23 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        good = process_good(good_dir, group_dir.name, good_dir.name)
-        unless good
-          good_dir.each_dir do |brand_dir|
-            break if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
-          end
-          unless good
-            warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
-          end
-        end
-        names = read_names(good_dir, good_dir.name)
+        good = find_good(good_dir, group_dir)
         
         if good
           @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
-          if good != true
-            done += 1
-            good["group"] = group_dir.name
-            if names
-              good["names"] = names
-            end
-            @goods[good_dir.name] = good
+          done += 1
+          good["group"] = group_dir.name
+          @goods[good_dir.name] = good
+        else
+          warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
+          good = @goods[good_dir.name]
+        end
+        
+        if good
+          if names = read_names(good_dir)
+            good["names"] = names
+          else
+            good.delete("names")
           end
         end
       end
@@ -126,10 +123,20 @@ class IngredientsProcessor < Barman::Processor
     end # indent
   end
   
-  def read_names dir, name
+  def find_good good_dir, group_dir
+    good = process_good(good_dir, group_dir.name, good_dir.name)
+    unless good
+      good_dir.each_dir do |brand_dir|
+        break if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
+      end
+    end
+    good
+  end
+  
+  def read_names dir
     fname = dir.path + "/names.yaml"
-    if File.exists?(fname) && File.mtime(fname) >= @goods_mtime
-      say "обновляю псевдонимы для «#{name}»"
+    if File.exists?(fname)
+      say "обновляю псевдонимы"
       YAML::load(File.open(fname))
     else
       nil
@@ -139,7 +146,7 @@ class IngredientsProcessor < Barman::Processor
   def process_good dir, group, name, brand=nil
     about = dir.path + "/about.yaml"
     return unless File.exists?(about)
-    return true if @goods[name] && File.mtime(dir.path) <= @goods_mtime
+    # return true if @goods[name] && File.mtime(dir.path) <= @goods_mtime
     
     say brand ? "#{group}: #{name} (#{brand})" : "#{group}: #{name}"
     
