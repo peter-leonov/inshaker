@@ -152,9 +152,9 @@ class CocktailsProcessor < Barman::Processor
     toadd = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
       next if @cocktails[dir.name]
-      added << dir
+      toadd << dir
     end
-    unless added.empty?
+    unless toadd.empty?
       say "добавляю коктейли"
       indent do
       done = 0
