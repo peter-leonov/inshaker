@@ -9,7 +9,7 @@ class File
   end
   
   def self.mtime_cmp a, b
-    mtime(a) - mtime(b)
+    mtime(a) - (exists?(b) ? mtime(b) : Time.at(0))
   end
   
   def self.cmtimes_cmp a, b
