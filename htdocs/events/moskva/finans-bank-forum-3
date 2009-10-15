@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading finans-bank-forum-3 status-holding">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading finans-bank-forum-3 status-preparing">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
@@ -39,9 +39,10 @@
 						<p class="parole">Сотрудники успешных банков соберутся вместе, чтобы познакомиться и повеселиться!</p>
 						
 						
+							<a class="sign-on"><span>Не пропусти!</span> →</a>
 							<dl class="info">
 								
-									<dt>Вход:</dt><dd><span id="invitations-only"><strong style="color:red">регистрация завершена.</strong> Приглашения участникам будут отправлены в ближайшее время.</span></dd>
+									<dt>Вход:</dt><dd><a id="invitations-only">по приглашениям.</a></dd>
 								
 						
 							
