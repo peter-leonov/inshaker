@@ -43,6 +43,8 @@ Me.prototype.extend
 	
 	apiLoaded: function (api)
 	{
+		this.nodes.html.removeClassName('loading')
+		
 		this.api = api
 		var service = this.service = new api.gdata.analytics.AnalyticsService('gaExportAPI_acctSample_v1.0');
 		
@@ -149,7 +151,7 @@ Me.prototype.extend
 	
 	dataReady: function ()
 	{
-		this.nodes.html.removeClassName('loading')
+		this.nodes.query.removeClassName('loading')
 	},
 	
 	doCalculate: function (form)
@@ -210,7 +212,8 @@ function onready ()
 		login: $$('#analytics #login')[0],
 		logout: $$('#analytics #logout')[0],
 		ingredientForm: $$('#analytics #ingredient-search')[0],
-		output: $$('#analytics #output')[0]
+		output: $$('#analytics #output')[0],
+		query: $$('#analytics #query')[0]
 	}
 	
 	var conf =
