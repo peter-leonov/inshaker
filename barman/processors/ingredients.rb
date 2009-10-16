@@ -88,7 +88,7 @@ class IngredientsProcessor < Barman::Processor
       @goods_mtime = File.mtime(Config::DB_JS_GOODS)
       @goods = JSON.parse(File.read(Config::DB_JS_GOODS))
     else
-      @goods_mtime = Time.at(0)
+      @goods_mtime = nil
     end
   end
   
@@ -98,8 +98,7 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        mtime = good_dir.deep_mtime
-        if mtime > @goods_mtime
+        if !@goods_mtime || good_dir.deep_mtime > @goods_mtime
           if good = find_good(good_dir, group_dir)
             done += 1
             good["group"] = group_dir.name
@@ -158,7 +157,6 @@ class IngredientsProcessor < Barman::Processor
   def process_good dir, group, name, brand=nil
     about = dir.path + "/about.yaml"
     return unless File.exists?(about)
-    # return true if @goods[name] && File.mtime(dir.path) <= @goods_mtime
     
     say brand ? "#{group}: #{name} (#{brand})" : "#{group}: #{name}"
     

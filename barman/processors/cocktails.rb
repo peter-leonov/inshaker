@@ -130,7 +130,7 @@ class CocktailsProcessor < Barman::Processor
       @cocktails_mtime = File.mtime(Config::DB_JS)
       @cocktails = JSON.parse(File.read(Config::DB_JS))
     else
-      @cocktails_mtime = Time.at(0)
+      @cocktails_mtime = nil
     end
   end
   
@@ -198,7 +198,7 @@ class CocktailsProcessor < Barman::Processor
     
     toupdate = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
-      next if added[dir.name] || @cocktails[dir.name] && dir.deep_mtime <= @cocktails_mtime
+      next if added[dir.name] || @cocktails[dir.name] && (@cocktails_mtime && dir.deep_mtime <= @cocktails_mtime)
       toupdate << dir
     end
     unless toupdate.empty?
