@@ -36,7 +36,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def job
-    @options = {}
+    @options = {:force => true}
     OptionParser.new do |opts|
       opts.banner = "Usage: ingredients.rb [options]"
       
