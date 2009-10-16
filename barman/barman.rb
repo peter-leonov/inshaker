@@ -51,31 +51,37 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
-      return if File.mtime_cmp(src, dst) < 0
-      unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
-        error "не могу добавить белый фон (#{src} → #{dst})"
+      if File.mtime_cmp(src, dst) > 0
+        say "крашу фон"
+        unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
+          error "не могу добавить белый фон (#{src} → #{dst})"
+          return false
+        end
       end
+      true
     end
-
-    def optimize_img(src, level = 5)
-      return if File.mtime_cmp(src, dst) < 0
+    
+    def optimize_img(src, level=5)
+      say "оптимизирую изображение #{src}"
       unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
         error "не могу оптимизировать изображение (#{src})"
+        return false
       end
+      true
     end
-
+    
     def mask_img(mask, src, dst, mode)
       unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"}) 
         error "не могу наложить маску (#{src} → #{dst})"
+        return false
       end
+      true
     end
-
+    
     def flush_masked_optimized_pngm_img(mask, src, dst, mode = "CopyOpacity")
-      return if File.mtime_cmp(src, dst) < 0
+      return true if File.mtime_cmp(src, dst) <= 0
       tmp = "/tmp/pic.png"
-      mask_img(mask, src, tmp, mode)
-      optimize_img(tmp)
-      flush_pngm_img(tmp, dst)
+      mask_img(mask, src, tmp, mode) && optimize_img(tmp) && flush_pngm_img(tmp, dst)
     end
     
     def cp_if_different src, dst
