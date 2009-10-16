@@ -44,7 +44,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def pre_job
-    @options = {}
+    @options = {:force => true}
     names = @options[:names] = {}
     OptionParser.new do |opts|
       opts.banner = "Запускайте так: cocktails.rb [опции]"
@@ -383,14 +383,14 @@ class CocktailsProcessor < Barman::Processor
       end
       
       if File.exists?(from_small)
-        FileUtils.cp_r(from_small, to_small, @mv_opt)
+        File.cp_if_different(from_small, to_small)
       else
         error "не могу найти маленькую картинку коктейля (small.png)"
       end
       
       if File.exists?(from_bg)
         # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
-        FileUtils.cp_r(from_bg, to_bg, @mv_opt)
+        File.cp_if_different(from_bg, to_bg)
       else
         error "не могу найти заставку коктейля (bg.png)"
       end

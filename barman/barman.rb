@@ -50,12 +50,14 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
+      return if File.mtime_cmp(src, dst) < 0
       unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
         error "не могу добавить белый фон (#{src} → #{dst})"
       end
     end
 
     def optimize_img(src, level = 5)
+      return if File.mtime_cmp(src, dst) < 0
       unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
         error "не могу оптимизировать изображение (#{src})"
       end
