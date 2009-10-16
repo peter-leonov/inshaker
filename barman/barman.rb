@@ -1,13 +1,14 @@
 # encoding: utf-8
 require 'rubygems'
-require 'lib/json'
-require 'lib/string_util'
-require 'lib/fileutils'
-require 'lib/saying'
 require 'templates'
 require 'fileutils'
 require 'erb'
 require 'yaml'
+
+require 'lib/json'
+require 'lib/string_util'
+require 'lib/fileutils'
+require 'lib/saying'
 
 $stdout.sync = true
 
