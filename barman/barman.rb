@@ -78,14 +78,20 @@ module Barman
       flush_pngm_img(tmp, dst)
     end
     
+    def cp_if_different src, dst
+      return true if File.mtime_cmp(src, dst) <= 0
+      say "копирую #{src} → #{dst}"
+      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
+    end
+    
     def copy_image src, dst, name="(без имени бедняжка)", max_size=25
       if File.exists? src
         if File.size(src) > max_size * 1024
           warning "картинка #{name} слишком большая (>#{max_size}Кб)"
         end
-
+        
         begin
-          File.cp_if_different(src, dst)
+          cp_if_different(src, dst)
         rescue
           error "не удалось скопировать картинку #{name} (#{src} → #{dst})"
         end

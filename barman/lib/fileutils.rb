@@ -1,32 +1,21 @@
 # encoding: utf-8
+NaN = 0.0 / 0
+Infinity = 1.0 / 0
 class File
   attr_accessor :name
   
   def self.write file, data
-    File.open(file, 'w') do |f|
+    open(file, 'w') do |f|
       f.write data
     end
   end
   
   def self.mtime_cmp a, b
-    mtime(a) - (exists?(b) ? mtime(b) : Time.at(0))
+    exists?(b) ? mtime(a) - mtime(b) : Infinity
   end
   
-  def self.cmtimes_cmp a, b
-    mtime(a) == mtime(b) && ctime(a) == ctime(b)
-  end
-  
-  def self.cp_if_different src, dst
-    begin
-      diff = cmtimes_cmp(src, dst)
-    rescue => e
-      diff = true
-    end
-    if diff
-      # puts "копирую #{src} → #{dst}"
-      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
-      # FileUtils.cp(src, dst, {:remove_destination => true, :preserve => true})
-    end
+  def self.cmtimes_equal a, b
+    exists?(b) && mtime(a) == mtime(b) && ctime(a) == ctime(b)
   end
 end
 

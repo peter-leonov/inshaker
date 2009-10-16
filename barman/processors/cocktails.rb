@@ -383,14 +383,14 @@ class CocktailsProcessor < Barman::Processor
       end
       
       if File.exists?(from_small)
-        File.cp_if_different(from_small, to_small)
+        cp_if_different(from_small, to_small)
       else
         error "не могу найти маленькую картинку коктейля (small.png)"
       end
       
       if File.exists?(from_bg)
         # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
-        File.cp_if_different(from_bg, to_bg)
+        cp_if_different(from_bg, to_bg)
       else
         error "не могу найти заставку коктейля (bg.png)"
       end
