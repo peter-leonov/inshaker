@@ -215,7 +215,9 @@ module Barman
       if ENV["X_FORWARDED_FOR"]
         ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
         if ip
-          return `nslookup #{ip}`.match(/name = (\w+)/)[1]
+          if name = `nslookup #{ip}`.match(/name = (\w+)/)
+            name[1]
+          end
         end
       end
       nil

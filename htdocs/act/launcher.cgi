@@ -14,6 +14,6 @@ CGI.new.params.each do |k, v|
 end
 
 processors.each do |p|
-  fork { exit system("./processors/#{p}.rb") }
+  fork { exit system("./processors/#{p}.rb 2>../barman.log") }
   Process.wait
 end
