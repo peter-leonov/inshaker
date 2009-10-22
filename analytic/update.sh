@@ -10,11 +10,13 @@ CITIES_XML=$STAT_DIR/cities/data.xml
 # preparing date strings
 
 if date --date "1970-01-01" >/dev/null 2>&1; then
-	# based on http://www.unix.com/tips-tutorials/31944-simple-date-time-calulation-bash.html
+	# GNU date
 	stamp2date (){
+		# based on http://www.unix.com/tips-tutorials/31944-simple-date-time-calulation-bash.html
 		date --date "1970-01-01 $1 sec" "+%Y-%m-%d"
 	}
 elif date -r 0 >/dev/null 2>&1; then
+	# FreeBSD date
 	stamp2date (){
 		date -r $1 "+%Y-%m-%d"
 	}
@@ -43,21 +45,22 @@ echo downloading visits...
 VISITS_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:date&metrics=ga:visits,ga:pageviews&start-date=$START_DATE&end-date=$END_DATE&max-results=$PERIOD"
 rm -f visits.xml
 curl "$VISITS_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/visits.xml
-if ! cat data/visits.xml | grep "<?xml" >/dev/null; then
-	echo "ERROR: Can't get visits.xml" 1>&2
-	exit 1
+if cat data/visits.xml | grep "<?xml" >/dev/null; then
+	echo "  processing visits"
+	xsltproc visits.xsl data/visits.xml > $VISITS_XML
+else
+	echo "ERROR: Can't download visits.xml" 1>&2
 fi
-echo processing visits...
-xsltproc visits.xsl data/visits.xml > $VISITS_XML
 
 
 echo downloading cities...
 CITIES_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:region&metrics=ga:visits&sort=-ga:visits&start-date=$START_DATE&end-date=$END_DATE&max-results=4"
 rm -f cities.xml
 curl "$CITIES_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/cities.xml
-if ! cat data/cities.xml | grep "<?xml" >/dev/null; then
+if cat data/cities.xml | grep "<?xml" >/dev/null; then
+	echo "  processing cities"
+	xsltproc cities.xsl data/cities.xml > $CITIES_XML
+else
 	echo "ERROR: Can't get cities.xml" 1>&2
 	exit 1
 fi
-echo processing cities...
-xsltproc cities.xsl data/cities.xml > $CITIES_XML
