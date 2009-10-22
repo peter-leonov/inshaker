@@ -15,4 +15,3 @@ htdocs/stat/*
 data/*
 .idea/*
 .lock-barman
-credentials.rb

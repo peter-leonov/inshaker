@@ -3,14 +3,8 @@
 PERIOD=90
 
 PROFILE_ID=9038802
-
-TEMPLATES_DIR=/www/inshaker/barman/templates
-VIEWS_XSL=$TEMPLATES_DIR/views.xml
-CITIES_XSL=$TEMPLATES_DIR/cities.xml
-
-
 STAT_DIR=/www/inshaker/htdocs/stat
-VIEWS_XML=$STAT_DIR/visitors/data.xml
+VISITS_XML=$STAT_DIR/visitors/data.xml
 CITIES_XML=$STAT_DIR/cities/data.xml
 
 # preparing date strings
@@ -34,32 +28,36 @@ START=$(($END - $PERIOD * $DAY))
 START_DATE=$(stamp2date $START)
 END_DATE=$(stamp2date $END)
 
-# echo from $START_DATE to $END_DATE
+echo Getting stats from $START_DATE to $END_DATE
 
 
+if [ ! -f data/auth_token.txt ]; then
+	echo "ERROR: data/auth_token.txt file is missing" 1>&2
+fi
+AUTH_TOKEN=$(cat data/auth_token.txt)
+
+mkdir -p data
 
 
-AUTH_TOKEN=$(cat auth_token.txt)
-
-
-
+echo downloading visits...
 VISITS_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:date&metrics=ga:visits,ga:pageviews&start-date=$START_DATE&end-date=$END_DATE&max-results=$PERIOD"
-
 rm -f visits.xml
-curl "$VISITS_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > visits.xml
-if ! cat visits.xml | grep "<?xml" >/dev/null; then
+curl "$VISITS_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/visits.xml
+if ! cat data/visits.xml | grep "<?xml" >/dev/null; then
 	echo "ERROR: Can't get visits.xml" 1>&2
 	exit 1
 fi
+echo processing visits...
+xsltproc visits.xsl data/visits.xml > $VISITS_XML
 
 
-
+echo downloading cities...
 CITIES_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:region&metrics=ga:visits&sort=-ga:visits&start-date=$START_DATE&end-date=$END_DATE&max-results=4"
-
 rm -f cities.xml
-curl "$CITIES_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > cities.xml
-if ! cat cities.xml | grep "<?xml" >/dev/null; then
+curl "$CITIES_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/cities.xml
+if ! cat data/cities.xml | grep "<?xml" >/dev/null; then
 	echo "ERROR: Can't get cities.xml" 1>&2
 	exit 1
 fi
-
+echo processing cities...
+xsltproc cities.xsl data/cities.xml > $CITIES_XML
