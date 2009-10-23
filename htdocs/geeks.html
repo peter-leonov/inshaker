@@ -5,9 +5,7 @@
 	<title>Inshaker — Коктейльный сайт</title>
 	<style>
 	.stat{position:relative;margin:0 auto;text-align:center;}
-	.stat .viewport { width: 100%; overflow: hidden; margin-left: 20px;}
-	.stat .surface { overflow: hidden; width: 100%; height: 620px; }
-	.stat .point { }
+	.stat .viewport { width: 100%; height: 620px; overflow: hidden; }
 	.stat .prev,
 	.stat .next{position:absolute;left:0;top:90px;}
 	.stat .next{left:auto;right:0;}
@@ -25,18 +23,10 @@
 			<div class="stat square-list" id="rolling-stats">
 				<a class="prev"></a>
 				<a class="next"></a>
-				<div class="viewport">
-					<div class="surface">
-						<div class="point">
-							<h3>Посетители и просмотры за последние 90 дней</h3>
-							<div id="stat-browsers"></div>
-						</div>
-						<div class="point">
-							<h3>Посетители по регионам за последние 90 дней</h3>
-							<div id="stat-browsers-plain"></div>
-						</div>
-					</div>
-				</div>
+				<ul class="viewport">
+					<li class="point" id="stat-browsers"></li>
+					<li class="point" id="stat-browsers-plain"></li>
+				</ul>
 			</div>
 			
 		</div>
@@ -48,19 +38,21 @@
 <script>
 function onready ()
 {
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '650', '8')
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '620', '8')
 	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque');
-	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'));
-	line.addVariable('data_file', escape('/stat/browsers/data.xml'));
-	line.write('stat-browsers');
+	line.addParam('wmode', 'opaque')
+	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
+	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
+	line.write('stat-browsers')
 	
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '650', '8')
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '620', '8')
 	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque');
-	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'));
-	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'));
-	line.write('stat-browsers-plain');
+	line.addParam('wmode', 'opaque')
+	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
+	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
+	line.write('stat-browsers-plain')
+	
+	new Programica.RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
 </script>
