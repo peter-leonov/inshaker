@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="about-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<title>Inshaker — Коктейльный сайт</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	<div class="column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>Уголок радиолюбителя</h1>
+			<a class="hrefs" href="/">← на главную</a>
+		</div>
+		<div class="b-content">
+			<div id="stat_browsers"></div>
+		</div>
+	</div></div>
+</div>
+<!--# include file="/inc/bottom-common.html" -->
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/about/swfobject.js"></script>
+<script>
+function onready ()
+{
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '610', '390', '8', '#FFFFFF')
+	line.addVariable('path', '/stat/amcharts/')
+	line.addParam('wmode', 'opaque');
+	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'));
+	line.addVariable('data_file', escape('/stat/browsers/data.xml'));
+	line.write('stat_browsers');
+}
+$.onready(onready)
+</script>
+</body>
+</html>
