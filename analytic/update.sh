@@ -6,8 +6,9 @@ PROFILE_ID=9038802
 STAT_DIR=/www/inshaker/htdocs/stat
 VISITS_XML=$STAT_DIR/visitors/data.xml
 CITIES_XML=$STAT_DIR/cities/data.xml
+BROWSERS_XML=$STAT_DIR/browsers/data.xml
 
-# preparing date strings
+# dates
 
 if date --date "1970-01-01" >/dev/null 2>&1; then
 	# GNU date
@@ -26,41 +27,37 @@ NOW=$(date "+%s")
 DAY=$((3600 * 24))
 END=$(($NOW - 2 * $DAY))
 START=$(($END - $PERIOD * $DAY))
-
 START_DATE=$(stamp2date $START)
 END_DATE=$(stamp2date $END)
-
 echo Getting stats from $START_DATE to $END_DATE
 
 
+# authorization
+
 if [ ! -f data/auth_token.txt ]; then
 	echo "ERROR: data/auth_token.txt file is missing" 1>&2
+	exit
 fi
 AUTH_TOKEN=$(cat data/auth_token.txt)
 
-mkdir -p data
 
+# reports
 
-echo downloading visits...
-VISITS_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:date&metrics=ga:visits,ga:pageviews&start-date=$START_DATE&end-date=$END_DATE&max-results=$PERIOD"
-rm -f visits.xml
-curl "$VISITS_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/visits.xml
-if cat data/visits.xml | grep "<?xml" >/dev/null; then
-	echo "  processing visits"
-	xsltproc visits.xsl data/visits.xml > $VISITS_XML
-else
-	echo "ERROR: Can't download visits.xml" 1>&2
-fi
+report (){
+	echo "reporting $1"
+	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$2&start-date=$START_DATE&end-date=$END_DATE&max-results=$3"
+	rm -f $1.xml
+	echo "  downloading..."
+	mkdir -p data
+	curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$1.xml
+	if cat data/$1.xml | grep "<?xml" >/dev/null; then
+		echo "  processing..."
+		xsltproc $1.xsl data/$1.xml > $4
+	else
+		echo "ERROR: Failed downloading $1.xml" 1>&2
+	fi
+}
 
-
-echo downloading cities...
-CITIES_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&dimensions=ga:region&metrics=ga:visits&sort=-ga:visits&start-date=$START_DATE&end-date=$END_DATE&max-results=4"
-rm -f cities.xml
-curl "$CITIES_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/cities.xml
-if cat data/cities.xml | grep "<?xml" >/dev/null; then
-	echo "  processing cities"
-	xsltproc cities.xsl data/cities.xml > $CITIES_XML
-else
-	echo "ERROR: Can't get cities.xml" 1>&2
-	exit 1
-fi
+report "visits" "dimensions=ga:date&metrics=ga:visits,ga:pageviews" $PERIOD $VISITS_XML
+report "cities" "dimensions=ga:region&metrics=ga:visits&sort=-ga:visits" 4 $CITIES_XML
+report "browsers" "dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits" 2500 $BROWSERS_XML
