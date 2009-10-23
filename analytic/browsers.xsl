@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dxp='http://schemas.google.com/analytics/2009' xmlns:a='http://www.w3.org/2005/Atom'>
-<xsl:import href="exslt/regexp.test.xsl"/>
 <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 <xsl:template match="/">
 <pie>
@@ -105,7 +104,7 @@
 	<xsl:variable name="opera_mini" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera Mini']"/>
 	<xsl:variable name="opera_mini_sum" select="sum($opera_mini/dxp:metric[@name='ga:visits']/@value)"/>
 	
-	<slice title="Opera Mini" color="#88cc55">
+	<slice title="Opera Mini" color="#ff0000">
 		<xsl:value-of select="$opera_mini_sum"/>
 	</slice>
 	
