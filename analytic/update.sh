@@ -60,4 +60,4 @@ report (){
 
 report "visits" "dimensions=ga:date&metrics=ga:visits,ga:pageviews" $PERIOD $VISITS_XML
 report "cities" "dimensions=ga:region&metrics=ga:visits&sort=-ga:visits" 4 $CITIES_XML
-report "browsers" "dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits" 2500 $BROWSERS_XML
+report "browsers" "dimensions=ga:browser,ga:browserVersion&metrics=ga:visits&sort=-ga:visits" 2500 $BROWSERS_XML
