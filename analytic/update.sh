@@ -7,6 +7,7 @@ STAT_DIR=/www/inshaker/htdocs/stat
 VISITS_XML=$STAT_DIR/visitors/data.xml
 CITIES_XML=$STAT_DIR/cities/data.xml
 BROWSERS_XML=$STAT_DIR/browsers/data.xml
+BROWSERS_PLAIN_XML=$STAT_DIR/browsers-plain/data.xml
 
 # dates
 
@@ -61,3 +62,5 @@ report (){
 report "visits" "dimensions=ga:date&metrics=ga:visits,ga:pageviews" $PERIOD $VISITS_XML
 report "cities" "dimensions=ga:region&metrics=ga:visits&sort=-ga:visits" 4 $CITIES_XML
 report "browsers" "dimensions=ga:browser,ga:browserVersion&metrics=ga:visits&sort=-ga:visits" 2500 $BROWSERS_XML
+report "browsers-plain" "dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits" 6 $BROWSERS_PLAIN_XML
+# https://www.google.com/analytics/feeds/data?ids=ga:9038802&dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits&start-date=2009-07-23&end-date=2009-10-21&max-results=1000
