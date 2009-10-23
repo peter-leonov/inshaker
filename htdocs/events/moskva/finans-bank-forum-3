@@ -41,7 +41,7 @@
 						
 							<dl class="info">
 								
-									<dt>Вход:</dt><dd><span id="invitations-only"><strong style="color:red">регистрация завершена.</strong> Приглашения участникам отправлены.</span></dd>
+									<dt>Вход:</dt><dd><span id="invitations-only">по приглашения, только для банкиров</span></dd>
 								
 						
 							
