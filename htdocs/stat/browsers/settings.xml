@@ -35,7 +35,7 @@
     <show_lines/>                                 <!-- [true] (true / false) whether to show lines from slices to data labels or not -->                                                                                              
     <line_color/>                                 <!-- [#000000] (hex color code) -->
     <line_alpha/>                                 <!-- [15] (Number) -->
-    <hide_labels_percent>5</hide_labels_percent>              <!-- [0] data labels of slices less then skip_labels_percent% will be hidden (to avoid label overlapping if there are many small pie slices)-->                                       
+    <hide_labels_percent>0.8</hide_labels_percent>              <!-- [0] data labels of slices less then skip_labels_percent% will be hidden (to avoid label overlapping if there are many small pie slices)-->                                       
   </data_labels>
 
   <group>

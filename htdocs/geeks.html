@@ -4,11 +4,13 @@
 	<!--# include file="/inc/head.html" -->
 	<title>Inshaker — Коктейльный сайт</title>
 	<style>
-	.stat{position:relative;margin:0 auto;text-align:center;}
-	.stat .viewport { width: 100%; height: 620px; overflow: hidden; }
+	.stat { position: relative; margin: 20px 0 0 0; }
+	.stat .viewport { position: relative; width: 100%; height: 640px; overflow: hidden; }
 	.stat .prev,
-	.stat .next{position:absolute;left:0;top:90px;}
-	.stat .next{left:auto;right:0;}
+	.stat .next { position: absolute; top: 4px; z-index: 10; }
+	.stat .prev { left: 890px; }
+	.stat .next { right: 0px; }
+	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
 	</style>
 </head>
 <body>
@@ -17,16 +19,21 @@
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
 			<h1>Уголок радиолюбителя</h1>
-			<a class="hrefs" href="/">← на главную</a>
 		</div>
 		<div class="b-content">
-			<div class="stat square-list" id="rolling-stats">
+			<div class="stat cocktail-list" id="rolling-stats">
+				<ul class="viewport">
+					<li class="point">
+						<h3>детально</h3>
+						<div id="stat-browsers"></div>
+					</li>
+					<li class="point">
+						<h3>общо</h3>
+						<div id="stat-browsers-plain"></div>
+					</li>
+				</ul>
 				<a class="prev"></a>
 				<a class="next"></a>
-				<ul class="viewport">
-					<li class="point" id="stat-browsers"></li>
-					<li class="point" id="stat-browsers-plain"></li>
-				</ul>
 			</div>
 			
 		</div>

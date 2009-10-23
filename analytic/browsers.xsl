@@ -109,7 +109,7 @@
 	</slice>
 	
 	
-	<slice title="остальные" color="#888888">
+	<slice title="остальные" color="#999999">
 		<xsl:variable name="total" select="a:feed/dxp:aggregates/dxp:metric[@name='ga:visits']/@value"/>
 		<xsl:value-of select="$total - $opera_sum - $opera_mini_sum - $firefox_sum - $explorer_sum - $safari_sum - $chrome_sum"/>
 	</slice>
