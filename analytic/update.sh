@@ -45,7 +45,7 @@ AUTH_TOKEN=$(cat data/auth_token.txt)
 
 report (){
 	echo "reporting $1"
-	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$2&start-date=$START_DATE&end-date=$END_DATE&max-results=$3"
+	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$2&start-date=$START_DATE&end-date=$END_DATE&max-results=$3&prettyprint=true"
 	rm -f $1.xml
 	echo "  downloading..."
 	mkdir -p data
