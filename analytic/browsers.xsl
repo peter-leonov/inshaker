@@ -32,6 +32,14 @@
 	</slice>
 	
 	
+	<xsl:variable name="opera_mini" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera Mini']"/>
+	<xsl:variable name="opera_mini_sum" select="sum($opera_mini/dxp:metric[@name='ga:visits']/@value)"/>
+	
+	<slice title="Opera Mini" color="#cc8866">
+		<xsl:value-of select="$opera_mini_sum"/>
+	</slice>
+	
+	
 	<xsl:variable name="firefox" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Firefox']"/>
 	<xsl:variable name="firefox_3_6" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.6']"/>
 	<xsl:variable name="firefox_3_5" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.5']"/>
@@ -71,13 +79,13 @@
 	<xsl:variable name="explorer_7_sum" select="sum($explorer_7/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="explorer_6_sum" select="sum($explorer_6/dxp:metric[@name='ga:visits']/@value)"/>
 	
-	<slice title="IE 8" color="#4499ff">
+	<slice title="Explorer 8" color="#4499ff">
 		<xsl:value-of select="$explorer_8_sum"/>
 	</slice>
-	<slice title="IE 7" color="#55aaff">
+	<slice title="Explorer 7" color="#55aaff">
 		<xsl:value-of select="$explorer_7_sum"/>
 	</slice>
-	<slice title="IE 6" color="#66bbff">
+	<slice title="Explorer 6" color="#66bbff">
 		<xsl:value-of select="$explorer_6_sum"/>
 	</slice>
 	<slice title="другие эксплореры" color="#77ccff">
@@ -101,17 +109,9 @@
 	</slice>
 	
 	
-	<xsl:variable name="opera_mini" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera Mini']"/>
-	<xsl:variable name="opera_mini_sum" select="sum($opera_mini/dxp:metric[@name='ga:visits']/@value)"/>
-	
-	<slice title="Opera Mini" color="#ff0000">
-		<xsl:value-of select="$opera_mini_sum"/>
-	</slice>
-	
-	
 	<slice title="остальные" color="#888888">
 		<xsl:variable name="total" select="a:feed/dxp:aggregates/dxp:metric[@name='ga:visits']/@value"/>
-		<xsl:value-of select="$total - $opera_sum - $firefox_sum - $explorer_sum - $safari_sum"/>
+		<xsl:value-of select="$total - $opera_sum - $opera_mini_sum - $firefox_sum - $explorer_sum - $safari_sum - $chrome_sum"/>
 	</slice>
 </pie>
 </xsl:template>
