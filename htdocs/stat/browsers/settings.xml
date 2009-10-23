@@ -13,9 +13,9 @@
   <pie>
     <x/>
     <y/>
-    <radius>300</radius>                                       <!-- [] (Number) If left empty, will be 25% of your chart smaller side -->
+    <radius>350</radius>                                       <!-- [] (Number) If left empty, will be 25% of your chart smaller side -->
     <inner_radius>0</inner_radius>                             <!-- [0] (Number) the radius of the hole (if you want to have donut, use > 0) -->
-    <height>3</height>                                        <!-- [0] (Number) pie height (for 3D effect) -->
+    <height>5</height>                                        <!-- [0] (Number) pie height (for 3D effect) -->
     <angle>30</angle>                                          <!-- [0] (0 - 90) lean angle (for 3D effect) -->
     <outline_color/>                           <!-- [#FFFFFF] (hex color code) -->    
     <outline_alpha/>                           <!-- [0] (Number) -->
