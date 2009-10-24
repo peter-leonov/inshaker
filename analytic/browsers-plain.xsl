@@ -41,7 +41,7 @@
 	
 	<xsl:variable name="chrome" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Chrome']"/>
 	<xsl:variable name="chrome_sum" select="sum($chrome/dxp:metric[@name='ga:visits']/@value)"/>
-	<slice title="Chrome" color="#eeee33">
+	<slice title="Chrome" color="#66cc22">
 		<xsl:value-of select="$chrome_sum"/>
 	</slice>
 	
