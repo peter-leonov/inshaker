@@ -11,7 +11,6 @@ apache.stable.conf
 apache.conf
 nginx.conf
 htdocs/v/*
-htdocs/stat/*
 data/*
 .idea/*
 .lock-barman
