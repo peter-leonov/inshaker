@@ -78,7 +78,7 @@
 
 
 .b-search{position:absolute;margin-right:2em;width:14em;}
-#all_list{font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
+#all_list{ position: absolute; z-index: 25; top: 58px; right: 18px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
 #all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
