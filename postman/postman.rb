@@ -38,5 +38,5 @@ CSV.foreach_hash(ARGV[1]) do |hash, line|
   warn "#{line}: " + message[:to]
   RMail::Message.bake(message).send
   
-  sleep 15
+  sleep 3
 end
