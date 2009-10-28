@@ -13,7 +13,7 @@
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
 .search-control { z-index: 10; position: relative; }
-.autocomplete { display: none; position: absolute; opacity: 0.9; border-width: 0px 1px 1px 1px; font-size: 14px; }
+.autocomplete { display: none; position: absolute; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 .search-error{display:none;height:12px;}
 
