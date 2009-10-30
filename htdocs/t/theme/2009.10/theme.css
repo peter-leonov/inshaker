@@ -13,7 +13,7 @@ a { color: #00588b; }
 #top .nav a:hover { border-bottom-color: #0069a6; }
 #bottom { color: #000; }
 #bottom a {}
-html { background: #fff url(bg.png) repeat-x center top; }
+html { background: #fff url(bg.jpg) repeat-x center top; }
 button.rounded { color: #343B40; }
 button.rounded b { text-shadow: 1px 1px 0 #fff; }
 button.strong { color: #fff; }
@@ -24,7 +24,7 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 #b-bill dd li button,
 #b-bill .print-call i,
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
-#b-bill dt { color: #343b40; font-weight: bold; }
+#b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
 #cart_draghere b { color: #00588b; }
 
@@ -43,10 +43,10 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 .b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #results_display a {}
-#spotlighted { width: 61px; height: 28px; right: 0; bottom: 11px; }
+#spotlighted { width: 63px; height: 28px; right: 0; bottom: 11px; }
 #letters_all,
-#alphabetical-ru a { color: #000; }
-#alphabetical-ru a.selected-button { color: #fff; }
+#alphabetical-ru a { color: #fff; }
+#alphabetical-ru a.selected-button { color: #004771; }
 #search_tabs li { color: #004771; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
