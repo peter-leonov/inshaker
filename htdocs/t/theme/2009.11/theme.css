@@ -13,7 +13,7 @@ a { color: #00588b; }
 #top .nav a:hover { border-bottom-color: #0069a6; }
 #bottom { color: #000; }
 #bottom a {}
-html { background: #fff url(bg.jpg) repeat-x center top; }
+html { background: #fff url(bg.jpg) repeat center top; }
 button.rounded { color: #343B40; }
 button.rounded b { text-shadow: 1px 1px 0 #fff; }
 button.strong { color: #fff; }
