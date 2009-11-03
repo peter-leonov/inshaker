@@ -88,8 +88,8 @@ Me.prototype.extend
 			var uri = 'https://www.google.com/analytics/feeds/data',
 				query =
 				{
-					'start-date': '2009-09-01',
-					'end-date': '2009-09-30',
+					'start-date': '2009-10-01',
+					'end-date': '2009-10-31',
 					'dimensions': 'ga:pagePath,ga:pageTitle',
 					'metrics': 'ga:pageviews',
 					'filters': 'ga:pagePath=@/cocktails/',
