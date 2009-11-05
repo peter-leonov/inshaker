@@ -173,7 +173,7 @@ Me.prototype.extend
 			}
 			else
 			{
-				cocktail.views = data.views
+				cocktail.views = +data.views
 			}
 		}
 		
@@ -185,7 +185,7 @@ Me.prototype.extend
 		{
 			var cocktail = cocktails[i]
 			all.push(cocktail.name + ' — ' + cocktail.views)
-			views += +data.views
+			views += cocktail.views
 			total++
 		}
 		
