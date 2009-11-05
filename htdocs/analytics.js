@@ -108,7 +108,8 @@ Me.prototype.extend
 			'/cocktails/safe_---_on_the_beach.html': '/cocktails/safe_sex_on_the_beach.html',
 			'Inshaker — Безопасный ---- на пляже': 'Inshaker — Безопасный секс на пляже',
 			'/cocktails/---_on_the_beach_light.html': '/cocktails/sex_on_the_beach_light.html',
-			'Inshaker — ---- на пляже лайт': 'Inshaker — Секс на пляже лайт'
+			'Inshaker — ---- на пляже лайт': 'Inshaker — Секс на пляже лайт',
+			'Inshaker — Ангельские ------': 'Inshaker — Ангельские сиськи'
 		}
 		
 		function dxpToHash (dxp, hash)
@@ -159,8 +160,6 @@ Me.prototype.extend
 		var cocktails = Cocktail.getByIngredients(form.ingredients.split(/\s*,\s*/)),
 			pageviews = this.pageviews, output = this.nodes.output
 		
-		this.clear()
-		var views = 0, total = 0
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i],
@@ -168,19 +167,33 @@ Me.prototype.extend
 				data = pageviews[uri]
 			
 			if (!data)
+			{
 				this.error('Нет статистики для ' + cocktail.name + ', по адресу ' + uri)
+				cocktail.views = 0
+			}
 			else
 			{
-				this.print(cocktail.name + ' — ' + data.views)
-				views += +data.views
-				total++
+				cocktail.views = data.views
 			}
 		}
 		
-		this.print('————————————————————————————————————————')
+		cocktails.sort(function (a, b) { return b.views - a.views })
+		
+		this.clear()
+		var views = 0, total = 0, all = []
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i]
+			all.push(cocktail.name + ' — ' + cocktail.views)
+			views += +data.views
+			total++
+		}
+		
 		this.print('Всего просмотров: ' + views)
 		this.print('Всего коктейлей: ' + total)
 		this.print('Коэфициент Макса: ' + (views / 1000 / total).toFixed(2))
+		this.print(' ')
+		this.print(all)
 	},
 	
 	clear: function ()
@@ -189,6 +202,15 @@ Me.prototype.extend
 	},
 	
 	print: function (str)
+	{
+		if (typeof str === 'object' && typeof str.length === 'number')
+			for (var i = 0; i < str.length; i++)
+				this.printString(str[i])
+		else
+			this.printString(str)
+	},
+	
+	printString: function (str)
 	{
 		this.nodes.output.appendChild(document.createElement('li')).appendChild(document.createTextNode(str))
 	},
