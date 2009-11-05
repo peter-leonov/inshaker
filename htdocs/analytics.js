@@ -30,6 +30,7 @@ Me.prototype.extend
 		nodes.login.addEventListener('click', function (e) { me.doLogin() }, false)
 		nodes.logout.addEventListener('click', function (e) { me.doLogout() }, false)
 		nodes.ingredientForm.addEventListener('submit', function (e) { e.preventDefault(); me.doCalculate(e.target.toHash()) }, false)
+		nodes.rangeForm.addEventListener('submit', function (e) { e.preventDefault(); me.doRange(e.target.toHash()) }, false)
 		
 		this.handleErrorCallback = function (err) { me.handleError(err) }
 		this.handleAccountFeedCallback = function (r) { me.handleAccountFeed(r) }
@@ -38,7 +39,7 @@ Me.prototype.extend
 	
 	handleError: function (err)
 	{
-		log(err)
+		alert(err)
 	},
 	
 	apiLoaded: function (api)
@@ -49,10 +50,7 @@ Me.prototype.extend
 		var service = this.service = new api.gdata.analytics.AnalyticsService('gaExportAPI_acctSample_v1.0');
 		
 		if (api.accounts.user.checkLogin(this.scope))
-		{
 			this.nodes.main.addClassName('logged-in')
-			this.loadData()
-		}
 	},
 	
 	doLogin: function ()
@@ -66,10 +64,11 @@ Me.prototype.extend
 		location.href = location.href
 	},
 	
-	loadData: function ()
+	loadData: function (begin, end)
 	{
-		var me = this, service = this.service
+		var me = this, service = this.service, main = this.nodes.main
 		
+		main.addClassName('loading-data')
 		this.service.getAccountFeed('https://www.google.com/analytics/feeds/accounts/default?max-results=50', handleAccounts, this.handleErrorCallback)
 		function handleAccounts (result)
 		{
@@ -88,8 +87,8 @@ Me.prototype.extend
 			var uri = 'https://www.google.com/analytics/feeds/data',
 				query =
 				{
-					'start-date': '2009-10-01',
-					'end-date': '2009-10-31',
+					'start-date': begin,
+					'end-date': end,
 					'dimensions': 'ga:pagePath,ga:pageTitle',
 					'metrics': 'ga:pageviews',
 					'filters': 'ga:pagePath=@/cocktails/',
@@ -146,6 +145,7 @@ Me.prototype.extend
 			}
 			
 			// log(Object.stringify(pageviews))
+			main.removeClassName('loading-data')
 			me.dataReady()
 		}
 	},
@@ -153,10 +153,19 @@ Me.prototype.extend
 	dataReady: function ()
 	{
 		this.nodes.query.removeClassName('loading')
+		this.doCalculate(this.nodes.ingredientForm.toHash())
+	},
+	
+	doRange: function (form)
+	{
+		this.loadData(form.begin, form.end)
 	},
 	
 	doCalculate: function (form)
 	{
+		if (!form.ingredients)
+			return
+		
 		var cocktails = Cocktail.getByIngredients(form.ingredients.split(/\s*,\s*/)),
 			pageviews = this.pageviews, output = this.nodes.output
 		
@@ -233,6 +242,7 @@ function onready ()
 		main: $$('#analytics')[0],
 		login: $$('#analytics #login')[0],
 		logout: $$('#analytics #logout')[0],
+		rangeForm: $$('#analytics #range')[0],
 		ingredientForm: $$('#analytics #ingredient-search')[0],
 		output: $$('#analytics #output')[0],
 		query: $$('#analytics #query')[0]
