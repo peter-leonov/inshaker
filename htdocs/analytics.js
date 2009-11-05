@@ -193,7 +193,7 @@ Me.prototype.extend
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i]
-			all.push(cocktail.name + ' — ' + cocktail.views)
+			all.push([cocktail.name, cocktail.views])
 			views += cocktail.views
 			total++
 		}
@@ -202,7 +202,7 @@ Me.prototype.extend
 		this.print('Всего коктейлей: ' + total)
 		this.print('Коэфициент Макса: ' + (views / 1000 / total).toFixed(2))
 		this.print(' ')
-		this.print(all)
+		this.printTable(['коктейль', 'просмотры'], all)
 	},
 	
 	clear: function ()
@@ -217,6 +217,29 @@ Me.prototype.extend
 				this.printString(str[i])
 		else
 			this.printString(str)
+	},
+	
+	printTable: function (head, data)
+	{
+		var output = this.nodes.output
+		
+		var table = document.createElement('table')
+		var thead = document.createElement('thead')
+		
+		for (var i = 0; i < head.length; i++)
+			thead.appendChild(document.createElement('th')).appendChild(document.createTextNode(head[i]))
+		table.appendChild(thead)
+		
+		for (var i = 0; i < data.length; i++)
+		{
+			var row = data[i],
+				tr = document.createElement('tr')
+			for (var j = 0; j < row.length; j++)
+				tr.appendChild(document.createElement('td')).appendChild(document.createTextNode(row[j]))
+			table.appendChild(tr)
+		}
+		
+		output.appendChild(table)
 	},
 	
 	printString: function (str)
