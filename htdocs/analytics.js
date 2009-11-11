@@ -89,7 +89,7 @@ Me.prototype.extend
 				{
 					'start-date': begin,
 					'end-date': end,
-					'dimensions': 'ga:pagePath,ga:pageTitle',
+					'dimensions': 'ga:pagePath',
 					'metrics': 'ga:pageviews',
 					'filters': 'ga:pagePath=@/cocktails/',
 					// 'sort':'-ga:pageviews',
@@ -141,7 +141,7 @@ Me.prototype.extend
 				// log(hash)
 				
 				var path = hash['ga:pagePath']
-				pageviews[path] = {path: path, title: hash['ga:pageTitle'], views: hash['ga:pageviews']}
+				pageviews[path] = {path: path, views: hash['ga:pageviews']}
 			}
 			
 			// log(Object.stringify(pageviews))
