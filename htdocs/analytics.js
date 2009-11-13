@@ -17,7 +17,7 @@ Me.prototype.extend
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.pageviews = {}
+		this.stats = {}
 		this.scope = 'https://www.google.com/analytics/feeds'
 	},
 
@@ -90,14 +90,14 @@ Me.prototype.extend
 					'start-date': begin,
 					'end-date': end,
 					'dimensions': 'ga:pagePath',
-					'metrics': 'ga:pageviews',
+					'metrics': 'ga:pageviews,ga:uniquePageviews',
 					'filters': 'ga:pagePath=@/cocktails/',
 					// 'sort':'-ga:pageviews',
 					'max-results': 2000,
 					'ids': 'ga:' + id
 				}
 			
-			me.service.getAccountFeed(uri + '?' + UrlEncode.stringify(query), handleData, me.handleErrorCallback)
+			me.service.getDataFeed(uri + '?' + UrlEncode.stringify(query), handleData, me.handleErrorCallback)
 		}
 		
 		var substitute =
@@ -111,40 +111,43 @@ Me.prototype.extend
 			'Inshaker — Ангельские ------': 'Inshaker — Ангельские сиськи'
 		}
 		
-		function dxpToHash (dxp, hash)
+		function uncensor (value)
 		{
-			for (var i = 0; i < dxp.length; i++)
-				if ((pair = dxp[i]))
-				{
-					var value = pair.value
-					if (value.indexOf('---') >= 0)
-						if (substitute[value])
-							value = substitute[value]
-						else
-							alert('Изуродовано цензурой: ' + pair.value)
-					hash[pair.name] = value
-				}
+			if (value.indexOf('---') >= 0)
+				if (substitute[value])
+					value = substitute[value]
+				else
+					alert('Изуродовано цензурой: ' + value)
+			return value
 		}
+		
+		google.gdata.analytics.DataEntry.prototype.getStringValueOf = function (name)
+		{
+			return uncensor(this.getValueOf(name)) || '(empty)'
+		}
+		
+		google.gdata.analytics.DataEntry.prototype.getNumberValueOf = function (name)
+		{
+			return +(this.getValueOf(name) || 0)
+		}
+		
 		
 		function handleData (result)
 		{
 			var entries = result.feed.getEntries(),
-				pageviews = me.pageviews
+				stats = me.stats
 			
 			for (var i = 0, entry; entry = entries[i]; i++)
 			{
-				// log(entry)
-				var hash = {}, data, pair
-				dxpToHash(entry.dxp$dimension, hash)
-				dxpToHash(entry.dxp$metric, hash)
-				
-				// log(hash)
-				
-				var path = hash['ga:pagePath']
-				pageviews[path] = {path: path, views: hash['ga:pageviews']}
+				var path = entry.getStringValueOf('ga:pagePath')
+				stats[path] =
+				{
+					path: path,
+					pageviews: entry.getNumberValueOf('ga:pageviews'),
+					uniquePageviews: entry.getNumberValueOf('ga:uniquePageviews')
+				}
 			}
 			
-			// log(Object.stringify(pageviews))
 			main.removeClassName('loading-data')
 			me.dataReady()
 		}
@@ -167,42 +170,37 @@ Me.prototype.extend
 			return
 		
 		var cocktails = Cocktail.getByIngredients(form.ingredients.split(/\s*,\s*/)),
-			pageviews = this.pageviews, output = this.nodes.output
+			stats = this.stats, output = this.nodes.output
 		
-		for (var i = 0; i < cocktails.length; i++)
-		{
-			var cocktail = cocktails[i],
-				uri = '/cocktails/' + cocktail.name_eng.htmlName() + '.html',
-				data = pageviews[uri]
-			
-			if (!data)
-			{
-				this.error('Нет статистики для ' + cocktail.name + ', по адресу ' + uri)
-				cocktail.views = 0
-			}
-			else
-			{
-				cocktail.views = +data.views
-			}
-		}
-		
-		cocktails.sort(function (a, b) { return b.views - a.views })
-		
-		this.clear()
-		var views = 0, total = 0, all = []
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i]
-			all.push([cocktail.name, cocktail.views])
-			views += cocktail.views
-			total++
+			cocktail.stat = stats['/cocktails/' + cocktail.name_eng.htmlName() + '.html']
 		}
 		
-		this.print('Всего просмотров: ' + views)
+		cocktails.sort(function (a, b) { return String.localeCompare(a.name, b.name) })
+		
+		this.clear()
+		var pageviews = 0, uniquePageviews = 0, total = 0, all = []
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i], stat = cocktail.stat
+			if (stat)
+			{
+				all.push([cocktail.name, stat.pageviews, stat.uniquePageviews])
+				pageviews += stat.pageviews
+				uniquePageviews += stat.uniquePageviews
+				total++
+			}
+			else
+				this.error('Нет статистики для ' + cocktail.name + ', коктейль не защитан')
+		}
+		
+		this.print('Всего просмотров: ' + pageviews)
 		this.print('Всего коктейлей: ' + total)
-		this.print('Коэфициент Макса: ' + (views / 1000 / total).toFixed(2))
+		this.print('Коэфициент Макса: ' + (pageviews / 1000 / total).toFixed(2))
 		this.print(' ')
-		this.printTable(['коктейль', 'просмотры'], all)
+		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 	},
 	
 	clear: function ()
