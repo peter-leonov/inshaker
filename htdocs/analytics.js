@@ -17,7 +17,6 @@ Me.prototype.extend
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.stats = {}
 		this.scope = 'https://www.google.com/analytics/feeds'
 	},
 
@@ -131,11 +130,27 @@ Me.prototype.extend
 			return +(this.getValueOf(name) || 0)
 		}
 		
+		google.gdata.analytics.DataFeed.prototype.getAggregatesAsEntry = function ()
+		{
+			var metrics = this.getAggregates().getMetrics(),
+				entry = new google.gdata.analytics.DataEntry()
+			for (var i = 0; i < metrics.length; i++)
+				entry.addMetric(metrics[i])
+			return entry
+		}
+		
 		
 		function handleData (result)
 		{
 			var entries = result.feed.getEntries(),
-				stats = me.stats
+				total = result.feed.getAggregatesAsEntry(),
+				stats = me.stats = {}
+			
+			stats.total =
+			{
+				pageviews: total.getNumberValueOf('ga:pageviews'),
+				uniquePageviews: total.getNumberValueOf('ga:uniquePageviews')
+			}
 			
 			for (var i = 0, entry; entry = entries[i]; i++)
 			{
@@ -170,6 +185,7 @@ Me.prototype.extend
 			return
 		
 		var cocktails = Cocktail.getByIngredients(form.ingredients.split(/\s*,\s*/)),
+			totalCocktails = Cocktail.getAll().length,
 			stats = this.stats, output = this.nodes.output
 		
 		for (var i = 0; i < cocktails.length; i++)
@@ -196,9 +212,17 @@ Me.prototype.extend
 				this.error('Нет статистики для ' + cocktail.name + ', коктейль не защитан')
 		}
 		
-		this.print('Всего просмотров: ' + pageviews)
-		this.print('Всего коктейлей: ' + total)
-		this.print('Коэфициент Макса: ' + (pageviews / 1000 / total).toFixed(2))
+		
+		this.print('Всего просмотров (pageviews) всех коктейлей: ' + stats.total.pageviews)
+		this.print('Всего уникальных просмотров (uniquePageviews) всех коктейлей: ' + stats.total.uniquePageviews)
+		this.print('Всего коктейлей на сайте: ' + totalCocktails)
+		this.print(' ')
+		this.print('Всего просмотров (pageviews) ингрединта: ' + pageviews)
+		this.print('Всего уникальных (uniquePageviews) просмотров ингрединта: ' + uniquePageviews)
+		this.print('Всего коктейлей с ингредиентом: ' + total)
+		this.print(' ')
+		this.print('Коэффициент Макса по просмотрам: ' + ((pageviews * totalCocktails) / (total * stats.total.pageviews)).toFixed(2))
+		this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * stats.total.uniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 	},
