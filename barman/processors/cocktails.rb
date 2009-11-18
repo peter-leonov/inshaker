@@ -84,6 +84,7 @@ class CocktailsProcessor < Barman::Processor
     unless errors?
       update_recomendations if touched > 0
       
+      cleanup_cocktails
       flush_tags_and_strengths_and_methods
       flush_cocktails
       flush_links
@@ -429,6 +430,23 @@ class CocktailsProcessor < Barman::Processor
       end
       links.puts "</ul>"
     end
+  end
+  
+  def cleanup_cocktails
+    say "ищу забытые коктейли"
+    indent do
+    by_html_name = {}
+    @cocktails.each do |name, cocktail|
+      by_html_name[cocktail["name_eng"].html_name] = cocktail
+    end
+    
+    Dir.new(Config::HTDOCS_ROOT).each_dir do |dir|
+      unless by_html_name[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
   end
   
 private
