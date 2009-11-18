@@ -24,6 +24,7 @@ class CocktailsProcessor < Barman::Processor
     
     COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
     RECOMENDATIONS_ERB  = Barman::TEMPLATES_DIR + "recomendations.rhtml"
+    RECOMENDATIONS_COUNT = 14
   end
   
   def initialize
@@ -33,7 +34,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktails_present = {}
     @tags = []
     @strengths = []
-    @local_properties = ["desc_start", "desc_end", "recs"]
+    @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt"]
   end
   
   def job_name
@@ -217,10 +218,8 @@ class CocktailsProcessor < Barman::Processor
     indent do
       @cocktails.each do |name, hash|
         templ = CocktailRecomendationsTemplate.new(hash["recs"])
-        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".recomendations.html", "w+") do |html|
-          html.write @recomendations_renderer.result(templ.get_binding)
-        end
-        
+        page = @recomendations_renderer.result(templ.get_binding)
+        File.write(Config::HTDOCS_ROOT + hash["name_eng"].html_name + "/recommendations.html", page)
       end
     end # indent
   end
@@ -270,13 +269,13 @@ class CocktailsProcessor < Barman::Processor
       end
       
       pos = i * count
-      a["recs"] = nums.sort_by { |n| -weights[pos + n] }.map { |n| cocktails[n] }
+      recs = a["recs"] = nums.sort_by { |n| -weights[pos + n] }.map { |n| cocktails[n] }[0..Config::RECOMENDATIONS_COUNT]
+      
+      if recs.index(a)
+        error "кектейль #{a["name"]} встречается у себя в рекомендациях #{recs.map { |v| v["name"] }}"
+      end
       
       i += 1
-    end
-    
-    unless cocktails[0]["recs"].last == cocktails[0] && cocktails[250]["recs"].last == cocktails[250]
-      error "кектейль не идет последним у себя в рекомендациях"
     end
   end
   
@@ -302,11 +301,11 @@ class CocktailsProcessor < Barman::Processor
     FileUtils.mkdir_p(dir_path)
     root_dir = Dir.open(dir_path)
     root_dir.name = html_name
+    @cocktail["root_dir"] = root_dir
     
     guess_methods @cocktail
     update_images dir, root_dir, @cocktail unless @options[:text]
     update_html root_dir, @cocktail
-    update_json root_dir, @cocktail
     end # indent
   end
   
@@ -342,12 +341,14 @@ class CocktailsProcessor < Barman::Processor
     File.write("#{dst.path}/index.html", @cocktail_renderer.result(tpl.get_binding))
   end
   
-  def update_json dst, hash
+  def update_json cocktail
     data = {}
+    root_dir = cocktail.delete("root_dir")
     @local_properties.each do |prop|
-      data[prop] = hash.delete(prop)
+      data[prop] = cocktail.delete(prop)
     end
-    flush_json_object(data, "#{dst.path}/data.json")
+    data["recs"] = data["recs"].map { |cocktail| cocktail["name"] }
+    flush_json_object(data, "#{root_dir.path}/data.json")
   end
   
   def update_images src, dst, hash
@@ -380,8 +381,11 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def flush_cocktails
-     say "сохраняю данные о коктейлях"
-     flush_json_object(@cocktails, Config::DB_JS)
+    say "сохраняю данные о коктейлях"
+    @cocktails.each do |name, cocktail|
+      update_json cocktail
+    end
+    flush_json_object(@cocktails, Config::DB_JS)
   end
   
   def flush_tags_and_strengths_and_methods
