@@ -2,6 +2,7 @@
 # encoding: utf-8
 require 'barman'
 require 'optparse'
+# require 'benchmark'
 
 class CocktailsProcessor < Barman::Processor
 
@@ -40,7 +41,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def pre_job
-    @options = {}
+    @options = {:force => true}
     names = @options[:names] = {}
     OptionParser.new do |opts|
       opts.banner = "Запускайте так: cocktails.rb [опции]"
@@ -81,6 +82,7 @@ class CocktailsProcessor < Barman::Processor
     
     unless errors?
       update_recomendations if touched > 0
+      
       flush_tags_and_strengths_and_methods
       flush_cocktails
       flush_links
@@ -123,7 +125,7 @@ class CocktailsProcessor < Barman::Processor
       @cocktails_mtime = File.mtime(Config::DB_JS)
       @cocktails = JSON.parse(File.read(Config::DB_JS))
     else
-      @cocktails_mtime = Time.at(0)
+      @cocktails_mtime = nil
     end
   end
   
@@ -190,7 +192,7 @@ class CocktailsProcessor < Barman::Processor
     
     toupdate = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
-      next if added[dir.name] || @cocktails[dir.name] && dir.deep_mtime <= @cocktails_mtime
+      next if added[dir.name] || @cocktails[dir.name] && (@cocktails_mtime && dir.deep_mtime <= @cocktails_mtime)
       toupdate << dir
     end
     unless toupdate.empty?
@@ -210,11 +212,12 @@ class CocktailsProcessor < Barman::Processor
   
   def update_recomendations
     say "обновляю рекомендации"
+    # puts Benchmark.measure { calculate_related }
+    calculate_related
     indent do
       @cocktails.each do |name, hash|
-        recs = get_related name
-        templ = CocktailRecomendationsTemplate.new(recs)
-        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + "/recomendations.html", "w+") do |html|
+        templ = CocktailRecomendationsTemplate.new(hash["recs"])
+        File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".recomendations.html", "w+") do |html|
           html.write @recomendations_renderer.result(templ.get_binding)
         end
         
@@ -222,24 +225,84 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
-  def get_related one
-    cocktail = @cocktails[one]
-    ingreds = cocktail["ingredients"].map {|v| v[0]}
-    tags = cocktail["tags"]
-    weights = {}
-    @cocktails.each do |name, hash|
-      next if one == name
-      weight = 0
-      hash["ingredients"].each do |ingred|
-        weight += 1000 if ingreds.index ingred[0]
+  def calculate_related
+    cocktails = []
+    ingredient_hashes = []
+    tag_hashes = []
+    @cocktails.keys.sort.each do |name|
+      cocktail = @cocktails[name]
+      cocktails << cocktail
+      
+      ingredient_hashes << hash = {}
+      cocktail["ingredients"].each { |v| hash[v[0]] = true }
+      
+      tag_hashes << hash = {}
+      cocktail["tags"].each { |v| hash[v] = true }
+    end
+    count = cocktails.length
+    
+    weights = []
+    weights[count * count] = 0
+    nums = (0...count).to_a
+    
+    i = 0
+    while i < count
+      a = cocktails[i]
+      a_tags = tag_hashes[i]
+      a_ingredients = ingredient_hashes[i]
+      
+      weights[i * count + i] = 0
+      j = i + 1
+      while j < count
+        b = cocktails[j]
+        
+        weight = 0
+        b["ingredients"].each do |v|
+          weight += 10000 if a_ingredients[v[0]]
+        end
+        b["tags"].each do |v|
+          weight += 1000 if a_tags[v]
+        end
+        weight += 100 - b["ingredients"].length
+        
+        weights[i * count + j] = weights[j * count + i] = weight
+        j += 1
       end
-      weight += 100 * (tags & hash["tags"]).length
-      weight += 100 - hash["ingredients"].length
-      weights[name] = weight
+      
+      pos = i * count
+      a["recs"] = nums.sort_by { |n| -weights[pos + n] }.map { |n| cocktails[n] }
+      
+      i += 1
     end
     
-    names = weights.keys.sort { |a, b| x = weights[b] <=> weights[a]; x == 0 ? a <=> b : x }
-    return names.map { |e| @cocktails[e] }
+    unless cocktails[0]["recs"].last == cocktails[0] && cocktails[250]["recs"].last == cocktails[250]
+      error "кектейль не идет последним у себя в рекомендациях"
+    end
+  end
+  
+  def get_weight a, b
+    cocktail = a
+    ingreds = {}
+    tags = {}
+    cocktail["ingredients"].each { |v| ingreds[v[0]] = true }
+    cocktail["tags"].each { |v| tags[v] = true }
+    weights = {}
+    # @cocktails.each do |name, hash|
+      # next if one == name
+      hash = b
+      weight = 0
+      hash["ingredients"].each do |v|
+        weight += 1000 if ingreds[v[0]]
+      end
+      hash["tags"].each do |v|
+        weight += 100 if tags[v]
+      end
+      weight += 100 - hash["ingredients"].length
+      # weights[name] = weight
+    # end
+    
+    # names = weights.keys.sort { |a, b| x = weights[b] <=> weights[a]; x == 0 ? a <=> b : x }
+    # return names.map { |e| @cocktails[e] }
   end
   
   def process_cocktail dir

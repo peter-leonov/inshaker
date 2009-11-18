@@ -14,7 +14,7 @@ map { $q->{$_} = $cgi->param($_) } $cgi->param;
 $msg = MIME::Lite->new
 (
 	From    => 'mail@inshaker.ru',
-	To      => 'mail@inshaker.ru, pl@contactmaker.ru',
+	To      => 'mail@inshaker.ru',
 	Subject =>  encode_mimewords('Предложение или вопрос по иншейкеру', Charset => 'UTF-8'),
 	Type    => 'multipart/mixed'
 );

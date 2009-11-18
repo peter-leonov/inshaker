@@ -1,13 +1,14 @@
 # encoding: utf-8
 require 'rubygems'
-require 'lib/json'
-require 'lib/string_util'
-require 'lib/fileutils'
-require 'lib/saying'
 require 'templates'
 require 'fileutils'
 require 'erb'
 require 'yaml'
+
+require 'lib/json'
+require 'lib/string_util'
+require 'lib/fileutils'
+require 'lib/saying'
 
 $stdout.sync = true
 
@@ -50,30 +51,43 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
-      return if File.mtime_cmp(src, dst) < 0
-      unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
-        error "не могу добавить белый фон (#{src} → #{dst})"
+      if File.mtime_cmp(src, dst) > 0
+        say "крашу фон"
+        unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
+          error "не могу добавить белый фон (#{src} → #{dst})"
+          return false
+        end
       end
+      true
     end
-
-    def optimize_img(src, level = 5)
+    
+    def optimize_img(src, level=5)
+      say "оптимизирую изображение #{src}"
       unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
         error "не могу оптимизировать изображение (#{src})"
+        return false
       end
+      true
     end
-
+    
     def mask_img(mask, src, dst, mode)
       unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"}) 
         error "не могу наложить маску (#{src} → #{dst})"
+        return false
       end
+      true
     end
-
+    
     def flush_masked_optimized_pngm_img(mask, src, dst, mode = "CopyOpacity")
-      return if File.mtime_cmp(src, dst) < 0
+      return true if File.mtime_cmp(src, dst) <= 0
       tmp = "/tmp/pic.png"
-      mask_img(mask, src, tmp, mode)
-      optimize_img(tmp)
-      flush_pngm_img(tmp, dst)
+      mask_img(mask, src, tmp, mode) && optimize_img(tmp) && flush_pngm_img(tmp, dst)
+    end
+    
+    def cp_if_different src, dst
+      return true if File.mtime_cmp(src, dst) <= 0
+      say "копирую #{src} → #{dst}"
+      system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
     end
     
     def copy_image src, dst, name="(без имени бедняжка)", max_size=25
@@ -81,9 +95,9 @@ module Barman
         if File.size(src) > max_size * 1024
           warning "картинка #{name} слишком большая (>#{max_size}Кб)"
         end
-
+        
         begin
-          File.cp_if_different(src, dst)
+          cp_if_different(src, dst)
         rescue
           error "не удалось скопировать картинку #{name} (#{src} → #{dst})"
         end
@@ -216,7 +230,9 @@ module Barman
       if ENV["X_FORWARDED_FOR"]
         ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
         if ip
-          return `nslookup #{ip}`.match(/name = (\w+)/)[1]
+          if name = `nslookup #{ip}`.match(/name = (\w+)/)
+            name[1]
+          end
         end
       end
       nil

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum status-preparing">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum status-archive">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
@@ -28,25 +28,22 @@
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
 					<h1 id="event-name">I Неофициальный форум коммерческой недвижимости</h1>
-					<h2>СТИВЕН О'КОНОР И РОМАН ФОТИЕВ ПРИГЛАШАЮТ!</h2>
+					<h2>Уже совсем скоро!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
 						
-							<h2>Москва — <a href="/bars/moskva/pacha.html">Pacha</a>, 29 октября, 2009</h2>
+							<h2>Москва — Pacha, 29 октября, 2009</h2>
 						
-						<p class="parole">Девелоперы, инвесторы, брокеры и консультанты соберутся вместе, чтобы познакомиться и повеселиться!</p>
+						<p class="parole">Девелоперы, инвесторы, брокеры и консультанты собрались вместе, чтобы познакомиться и повеселиться!</p>
 						
-						
-							<a class="sign-on"><span>Не пропусти!</span> →</a>
-							<dl class="info">
-								
-									<dt>Вход:</dt><dd><a id="invitations-only">только по приглашениям</a></dd>
-								
 						
 							
-								<dt>Адрес:</dt><dd><a href="/bars/moskva/pacha.html">карта проезда</a></dd>
+								<a href="http://www.flickr.com/photos/31784403@N02/sets/72157622611032227/" class="view-photos"><span>Посмотри фото!</span> →</a>
+							
+							<dl class="info">
+						
 							
 						</dl>
 					</div>

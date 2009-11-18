@@ -22,6 +22,7 @@ CSV.foreach_hash(ARGV[1]) do |hash, line|
   email = hash["email"].gsub(/\s+/, "").downcase
   if seen[email]
     warn "#{line}: DUPLICATE #{hash["email"]} of line #{seen[email]}"
+    next
   end
   seen[email] = line
   

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="about-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<title>Браузеры — Inshaker</title>
+	<style>
+	.stat { position: relative; margin: 20px 0 0 0; }
+	.stat .viewport { position: relative; width: 100%; height: 620px; overflow: hidden; }
+	.stat .viewport .point { width: 100%; height: 100%; }
+	.stat .prev,
+	.stat .next { position: absolute; top: 4px; z-index: 11; }
+	.stat .prev { left: 890px; }
+	.stat .next { right: 0px; }
+	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
+	</style>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	<div class="column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>Статистика по браузерам за 90 дней</h1>
+		</div>
+		<div class="b-content">
+			<div class="stat cocktail-list" id="rolling-stats">
+				<ul class="viewport">
+					<li class="point">
+						<h3>детально</h3>
+						<div id="stat-browsers"></div>
+					</li>
+					<li class="point">
+						<h3>общо</h3>
+						<div id="stat-browsers-plain"></div>
+					</li>
+				</ul>
+				<a class="prev"></a>
+				<a class="next"></a>
+			</div>
+			
+		</div>
+	</div></div>
+</div>
+<!--# include file="/inc/bottom-common.html" -->
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/about/swfobject.js"></script>
+<script>
+function onready ()
+{
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
+	line.addVariable('path', '/stat/amcharts/')
+	line.addParam('wmode', 'opaque')
+	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
+	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
+	line.write('stat-browsers')
+	
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
+	line.addVariable('path', '/stat/amcharts/')
+	line.addParam('wmode', 'opaque')
+	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
+	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
+	line.write('stat-browsers-plain')
+	
+	new Programica.RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
+}
+$.onready(onready)
+</script>
+</body>
+</html>

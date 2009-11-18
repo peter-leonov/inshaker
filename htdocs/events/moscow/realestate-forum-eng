@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum-eng status-preparing">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum-eng status-archive">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
@@ -28,25 +28,22 @@
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
 					<h1 id="event-name">1st Annual Commercial Real Estate networking gala</h1>
-					<h2>HOSTED BY STEPHEN O'CONNOR & ROMAN FOTIEV!</h2>
+					<h2>Very soon!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
 						
-							<h2>Moscow — <a href="/bars/moskva/pacha.html">Pacha</a>, October 29th, 2009</h2>
+							<h2>Moscow — Pacha, October 29th, 2009</h2>
 						
-						<p class="parole">Developers, investors, brokers and consultants will get together to get acquainted and have fun!</p>
+						<p class="parole">Developers, investors, brokers and consultants got together to get acquainted and have fun!</p>
 						
-						
-							<a class="sign-on"><span>Register to be there!</span> →</a>
-							<dl class="info">
-								
-									<dt>Entrance:</dt><dd><a id="invitations-only">invitation only</a></dd>
-								
 						
 							
-								<dt>Address:</dt><dd><a href="/bars/moskva/pacha.html">how to get there</a></dd>
+								<a href="http://www.flickr.com/photos/31784403@N02/sets/72157622611032227/" class="view-photos"><span>Event photos!</span> →</a>
+							
+							<dl class="info">
+						
 							
 						</dl>
 					</div>

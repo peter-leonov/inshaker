@@ -93,7 +93,7 @@ class BarsProcessor < Barman::Processor
           if File.size(mini) > 25 * 1024
             warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
           end
-          File.cp_if_different(mini, "#{out_images_path}/mini.jpg")
+          cp_if_different(mini, "#{out_images_path}/mini.jpg")
         else
           error "не нашел маленькую картинку бара (mini.jpg)"
         end
@@ -108,7 +108,7 @@ class BarsProcessor < Barman::Processor
             if File.size(from) > 70 * 1024
               warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
             end
-            File.cp_if_different(from, "#{out_images_path}/photo-#{i}.jpg")
+            cp_if_different(from, "#{out_images_path}/photo-#{i}.jpg")
             big_images << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
           end
         else

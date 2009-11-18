@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-$main = "event@inshaker.ru,pl@contactmaker.ru"
+$main = "event@inshaker.ru"
 $data_dir = "/www/inshaker/data/"
 
 require "rubygems"

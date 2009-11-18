@@ -280,7 +280,7 @@
                                                               <!-- It is recommended to have graph settings here if you don't want to mix data with other params -->
                                                               <!-- copy <graph>...</graph> (including) as many times as many graphs you have and edit settings individually -->
                                                               <!-- if graph settings are defined both here and in data file, the ones from data file are used -->
-    <graph gid="1">                                           <!-- if you are using XML data file, graph "gid" must match graph "gid" in data file -->
+    <graph gid="pageviews">                                           <!-- if you are using XML data file, graph "gid" must match graph "gid" in data file -->
                                                             
       <axis>left</axis>                                       <!-- [left] (left/ right) indicates which y axis should be used -->
       <title>Просмотры</title>                                  <!-- [] (graph title) -->
@@ -314,7 +314,7 @@
       <visible_in_legend/>                 <!-- [true] (true / false) whether to show legend entry for this graph or not -->
     </graph>
     
-    <graph gid="2">                                                            
+    <graph gid="visits">                                                            
       <axis>left</axis>
       <title>Посетители</title>
       <color>#DBD5AC</color>
