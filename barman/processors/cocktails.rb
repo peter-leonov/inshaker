@@ -280,31 +280,6 @@ class CocktailsProcessor < Barman::Processor
     end
   end
   
-  def get_weight a, b
-    cocktail = a
-    ingreds = {}
-    tags = {}
-    cocktail["ingredients"].each { |v| ingreds[v[0]] = true }
-    cocktail["tags"].each { |v| tags[v] = true }
-    weights = {}
-    # @cocktails.each do |name, hash|
-      # next if one == name
-      hash = b
-      weight = 0
-      hash["ingredients"].each do |v|
-        weight += 1000 if ingreds[v[0]]
-      end
-      hash["tags"].each do |v|
-        weight += 100 if tags[v]
-      end
-      weight += 100 - hash["ingredients"].length
-      # weights[name] = weight
-    # end
-    
-    # names = weights.keys.sort { |a, b| x = weights[b] <=> weights[a]; x == 0 ? a <=> b : x }
-    # return names.map { |e| @cocktails[e] }
-  end
-  
   def process_cocktail dir
     name = dir.name
     say name
