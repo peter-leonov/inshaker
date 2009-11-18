@@ -31,20 +31,25 @@ Cocktail.prototype =
         return Cocktail.rounds[this.name];
     },
 
-    getPreviewNode: function(dropTargets) {
-		var li = document.createElement("li");
-		var a = document.createElement("a");
-		var htmlName = this.name_eng.htmlName()
-		var path = '/cocktail/' + htmlName
+	getPreviewNode: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var li = document.createElement("li")
+		
+		var a = document.createElement("a")
 		a.href = path + '/'
-		var img = document.createElement("img");
+		li.appendChild(a)
+		
+		var img = li.img = document.createElement("img")
 		img.src = path + '/' + htmlName + '-small.png'
-		if(dropTargets) new Draggable(img, this.name, dropTargets);
-        var txt = document.createTextNode(this.name);
-		a.appendChild(img);
-		a.appendChild(txt);
-		li.appendChild(a);
-       	return li;		
+		a.appendChild(img)
+		
+		var txt = document.createTextNode(this.name)
+		a.appendChild(txt)
+		
+		return li
 	}
 }
 

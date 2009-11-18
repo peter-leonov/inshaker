@@ -362,7 +362,8 @@ function CocktailsView (states, nodes, styles) {
 		var li = this.nodeCache[id];
 		
 		if(!li) {
-			li = cocktail.getPreviewNode(this.dropTargets);
+			li = cocktail.getPreviewNode()
+			new Draggable(li.img, cocktail.name, this.dropTargets)
 			this.nodeCache[id] = li;
 		}
 		return li;
