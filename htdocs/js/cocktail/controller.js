@@ -424,7 +424,12 @@ var Controller = {
 		}
 	},
 	
-	_createCocktailElement: function(cocktail) { return cocktail.getPreviewNode() },
+	_createCocktailElement: function (cocktail)
+	{
+		var node = cocktail.getPreviewNode()
+		new Draggable(node.img, cocktail.name, this.DROP_TARGETS)
+		return node
+	},
 	
 	expandRelated: function(){ // model
 		var recsCol = cssQuery(".column.b-more-rec")[0];
