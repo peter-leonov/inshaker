@@ -34,7 +34,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktails_present = {}
     @tags = []
     @strengths = []
-    @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt"]
+    @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
   
   def job_name
@@ -295,7 +295,7 @@ class CocktailsProcessor < Barman::Processor
     
     @cocktails[name] = @cocktail
     
-    html_name = @cocktail["name_eng"].html_name
+    html_name = @cocktail["html_name"] = @cocktail["name_eng"].html_name
     
     dir_path = "#{Config::HTDOCS_ROOT}/#{html_name}"
     FileUtils.mkdir_p(dir_path)
@@ -351,10 +351,10 @@ class CocktailsProcessor < Barman::Processor
     flush_json_object(data, "#{root_dir.path}/data.json")
   end
   
-  def update_images src, dst, hash
-    to_big     = "#{dst.path}/big.png"
-    to_small   = "#{dst.path}/small.png"
-    to_bg      = "#{dst.path}/bg.png"
+  def update_images src, dst, cocktail
+    to_big     = "#{dst.path}/#{cocktail["html_name"]}-big.png"
+    to_small   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_bg      = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
     
     from_big   = "#{src.path}/big.png"
     from_small = "#{src.path}/small.png"

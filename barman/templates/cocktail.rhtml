@@ -22,12 +22,12 @@
 							<a id="author"><b>Автор</b></a>
 							<a id="where-to-taste"><b>Где попробовать</b></a>
 						</p>
-						<img src="bg.png" width="590" height="210" alt="<%= @name %>" id="poster"/>
+						<img src="<%=@name_html%>-bg.png" width="590" height="210" alt="<%= @name %>" id="poster"/>
 					</div></div>
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="big.png" alt="<%=@name%>" id="illustration" class="illustration"/>
+							<img src="<%=@name_html%>-big.png" alt="<%=@name%>" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
 								<div class="description">
@@ -74,7 +74,7 @@
 							</dl>
 							<ul class="controls">
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#<%=@name_eng.html_name%>")'><b>Распечатать</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#<%=@name_html%>")'><b>Распечатать</b></button></li>
 							</ul>
 						</div>
 					</div>
