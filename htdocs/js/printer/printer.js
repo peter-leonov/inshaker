@@ -10,7 +10,6 @@ var Printer = {
     ID_COCKTAIL_IMG   : 'cocktail_img',
     ID_INGREDS_IMGS   : 'cocktail_ingreds',
 
-    IMG_COCKTAIL_PRFX : '/i/cocktail/b/',
     IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
     IMG_MARKER        : '/t/print/li.png',
 
@@ -39,6 +38,7 @@ var Printer = {
     cocktailInit: function(param){
         this.preloadImages();
         var cocktail = Cocktail.getByHtmlName(param);
+		cocktail.loadData()
   		this.renderCocktail(cocktail);
     },  
 
@@ -50,7 +50,7 @@ var Printer = {
 
        document.title = "Inshaker —  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
-       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";     
+       $(this.ID_COCKTAIL_IMG).src = cocktail.getBigImageSrc()
        for(var i = 0; i < cocktail.receipt.length; i++){
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }

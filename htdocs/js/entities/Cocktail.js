@@ -30,7 +30,24 @@ Cocktail.prototype =
     getRound: function() {
         return Cocktail.rounds[this.name];
     },
-
+	
+	loadData: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var data = eval('(' + sGet(path + '/data.json').responseText() + ')')
+		Object.extend(this, data)
+	},
+	
+	getBigImageSrc: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		return path + '/' + htmlName + '-big.png'
+	},
+	
 	getPreviewNode: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
