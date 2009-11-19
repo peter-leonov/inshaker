@@ -514,6 +514,9 @@ function CalculatorView() {
 			dd.appendChild(strong);
 			dd.appendChild(inputQuant);
 			dd.appendChild(document.createTextNode(" шт."));
+			
+			inputQuant.addEventListener('focus', function (e) { dl.focused = true }, false)
+			inputQuant.addEventListener('blur', function (e) { dl.focused = false }, false)
 		}
 		
 		var childsCache = dl.childsCache,
