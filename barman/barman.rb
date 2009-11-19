@@ -51,12 +51,13 @@ module Barman
     end
     
     def flush_pngm_img(src, dst)
-      if File.mtime_cmp(src, dst) > 0
+      if File.mtime_cmp(src, dst) != 0
         say "крашу фон"
         unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
           error "не могу добавить белый фон (#{src} → #{dst})"
           return false
         end
+        File.mtime_cp(src, dst)
       end
       true
     end
@@ -85,7 +86,7 @@ module Barman
     end
     
     def cp_if_different src, dst
-      return true if File.mtime_cmp(src, dst) <= 0
+      return true if File.mtime_cmp(src, dst) == 0
       say "копирую #{src} → #{dst}"
       system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
     end
