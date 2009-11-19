@@ -22,14 +22,29 @@ var GoodHelper = {
         return cd;
     },
 
-    deSerializeCartData: function(cartData){
-    	for(var i = 0; i < cartData.cocktails.length; i++){
-				 // name -> cocktail
-				var name = cartData.cocktails[i][0];
-				cartData.cocktails[i][0] = Cocktail.getByName(name);
+	deSerializeCartData: function (cartData)
+	{
+		var dataCocktails = cartData.cocktails,
+			cocktails = []
+		for (var i = 0; i < dataCocktails.length; i++)
+		{
+			var cocktail = Cocktail.getByName(dataCocktails[i][0])
+			if (cocktail)
+				cocktails.push([cocktail, dataCocktails[i][1]])
+		}
+		
+		var gds = {}
+		for (var name in cartData.goods)
+		{
+			var good = goods[name]
+			if (good)
+			{
+				gds[name] = cartData.goods[name]
+				gds[name].good = good
 			}
-		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred];
-        return cartData;
+		}
+		
+		return {cocktails: cocktails, goods: gds}
     },
 
     ingredientLink: function(ingred){
