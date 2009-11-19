@@ -291,17 +291,22 @@ function CalculatorView() {
 			}
 			mergeNodes(cocktailsParent, newCocktails)
 			
-			var newIngredients = []
-			var sum = 0;
-			var inames = []; for(var name in cartData.goods) inames.push(name); //inames.sort(Ingredient.sortByGroups)
-            for(var i = 0; i < inames.length; i++){
-				var name = inames[i];
-                var item = cartData.goods[name];
-				var bottles = cartData.goods[name].bottles;
-				for(var id in bottles){
-					sum += bottles[id].vol[1] * bottles[id].count;
-					var ingredElem = this._createIngredientElement(item, bottles[id], name);
-					newIngredients.push(ingredElem);
+			var newIngredients = [], sum = 0, items = []
+			for (var name in cartData.goods)
+				items.push(cartData.goods[name])
+			
+			var compareByGroup = Ingredient.compareByGroup
+			items.sort(function (a, b) { return compareByGroup(a.good, b.good) })
+			for(var i = 0; i < items.length; i++)
+			{
+				var item = items[i],
+					bottles = item.bottles
+				
+				for (var id in bottles)
+				{
+					var bottle = bottles[id]
+					sum += bottle.vol[1] * bottle.count
+					newIngredients.push(this._createIngredientElement(item, bottle, item.good.name))
 				}
 			}
 			sum = Math.roundPrecision(sum,2)
