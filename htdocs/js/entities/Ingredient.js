@@ -1,4 +1,6 @@
-Ingredient = function (data)
+;(function(){
+
+var Me = self.Ingredient = function (data)
 {
 	for (var k in data)
 		this[k] = data[k]
@@ -65,7 +67,16 @@ Object.extend(Ingredient,
 		if(self.groups.indexOf(self.getByName(a).group) > 
 			self.groups.indexOf(self.getByName(b).group)) return 1;
 		else return -1;
+	},
+	
+	compareByGroup: function (a, b)
+	{
+		var groups = Me.groups
+		return groups.indexOf(a.group) - groups.indexOf(b.group)
 	}
 })
 
+
 Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->)
+
+})();
