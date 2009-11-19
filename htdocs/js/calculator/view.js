@@ -21,37 +21,39 @@ function validateNumeric(txt){
  * @param nodesArray - new state of parentNode that could be made
  */
 
-function mergeNodes(parentNode, nodesArray)
+function mergeNodes(parent, nodes)
 {
-	for (var i = 0; i < nodesArray.length; i++) {
-        if (nodesArray[i].parentNode != parentNode)
-			parentNode.appendChild(nodesArray[i]);
-    }
-	
-    var childs = Array.copy(parentNode.childNodes);
-    for (var i = 0, il = childs.length; i < il; i++)
-    {
-        var node = childs[i]
-        if (node && nodesArray.indexOf(node) < 0) {
-            parentNode.removeChild(node)
-        }
-    }
-}
-
-function mergeIngredientsNodes(parentNode, nodesArray)
-{
-    var presentIngreds = cssQuery("li", parentNode).map(function(e){ return [e, Ingredient.getByName(e.getElementsByTagName("input")[1].value)]})
-    
-    for (var i = 0; i < nodesArray.length; i++)
-		if (nodesArray[i].parentNode != parentNode)
-		    insertChild(presentIngreds, parentNode, nodesArray[i]);
-	
-	var childs = Array.copy(parentNode.childNodes);
-	for (var i = 0, il = childs.length; i < il; i++)
+	var focused, children = Array.copy(parent.childNodes)
+	for (var i = 0; i < children.length; i++)
 	{
-		var node = childs[i]
-		if (node && nodesArray.indexOf(node) < 0)
-			parentNode.removeChild(node)
+		var child = children[i]
+		if (child.focused)
+			focused = child
+		else
+			parent.removeChild(child)
+	}
+	
+	var i = 0
+	if (focused)
+	{
+		for (; i < nodes.length; i++)
+		{
+			var node = nodes[i]
+			if (node == focused)
+			{
+				i++
+				break
+			}
+			parent.insertBefore(node, focused)
+		}
+	}
+	
+	for (; i < nodes.length; i++)
+	{
+		var node = nodes[i]
+		if (node == focused)
+			break
+		parent.appendChild(node)
 	}
 }
 
@@ -303,7 +305,7 @@ function CalculatorView() {
 				}
 			}
 			sum = Math.roundPrecision(sum,2)
-			mergeIngredientsNodes(ingredsParent, newIngredients);
+			mergeNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
 			
 			if(cartData.goods[this.lastShownIngred]) {
@@ -369,6 +371,8 @@ function CalculatorView() {
 					self.eventListener.cocktailQuantityChanged(cocktail, parseInt(this.value));
 				}
 			}, false);
+			input.addEventListener('focus', function (e) { li.focused = true }, false)
+			input.addEventListener('blur', function (e) { li.focused = false }, false)
 		}
 		
 		if(input.value != quantity)
@@ -415,6 +419,9 @@ function CalculatorView() {
 			button.hide();
 			button.innerHTML = "i";
 			li.appendChild(button);
+			
+			input.addEventListener('focus', function (e) { li.focused = true }, false)
+			input.addEventListener('blur', function (e) { li.focused = false }, false)
 			
 			li.childsCache = {input: input, button: button, txt: txt, a: a};
 		}
