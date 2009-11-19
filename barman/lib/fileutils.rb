@@ -17,6 +17,11 @@ class File
   def self.cmtimes_equal a, b
     exists?(b) && mtime(a) == mtime(b) && ctime(a) == ctime(b)
   end
+  
+  def self.mtime_cp a, b
+    time = mtime(a)
+    system(%Q{touch -t #{time.strftime("%Y%m%d%H%M.%S")} "#{b.quote}"})
+  end
 end
 
 class Dir
