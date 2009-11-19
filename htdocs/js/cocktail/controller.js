@@ -321,6 +321,7 @@ var Controller = {
 			resultSet[i] = Model.getCocktailByName(anchors[i].firstChild.nodeValue)
 		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
+		$(this.ID_REL_SUR).empty()
 		var np = this._getNumOfPages(resultSet, perPage);
 		for(var i = 1; i <= np; i++) {
 			var selectedSet = resultSet.slice((i-1)*perPage, i*perPage);
