@@ -21,37 +21,39 @@ function validateNumeric(txt){
  * @param nodesArray - new state of parentNode that could be made
  */
 
-function mergeNodes(parentNode, nodesArray)
+function mergeNodes(parent, nodes)
 {
-	for (var i = 0; i < nodesArray.length; i++) {
-        if (nodesArray[i].parentNode != parentNode)
-			parentNode.appendChild(nodesArray[i]);
-    }
-	
-    var childs = Array.copy(parentNode.childNodes);
-    for (var i = 0, il = childs.length; i < il; i++)
-    {
-        var node = childs[i]
-        if (node && nodesArray.indexOf(node) < 0) {
-            parentNode.removeChild(node)
-        }
-    }
-}
-
-function mergeIngredientsNodes(parentNode, nodesArray)
-{
-    var presentIngreds = cssQuery("li", parentNode).map(function(e){ return [e, Ingredient.getByName(e.getElementsByTagName("input")[1].value)]})
-    
-    for (var i = 0; i < nodesArray.length; i++)
-		if (nodesArray[i].parentNode != parentNode)
-		    insertChild(presentIngreds, parentNode, nodesArray[i]);
-	
-	var childs = Array.copy(parentNode.childNodes);
-	for (var i = 0, il = childs.length; i < il; i++)
+	var focused, children = Array.copy(parent.childNodes)
+	for (var i = 0; i < children.length; i++)
 	{
-		var node = childs[i]
-		if (node && nodesArray.indexOf(node) < 0)
-			parentNode.removeChild(node)
+		var child = children[i]
+		if (child.focused)
+			focused = child
+		else
+			parent.removeChild(child)
+	}
+	
+	var i = 0
+	if (focused)
+	{
+		for (; i < nodes.length; i++)
+		{
+			var node = nodes[i]
+			if (node == focused)
+			{
+				i++
+				break
+			}
+			parent.insertBefore(node, focused)
+		}
+	}
+	
+	for (; i < nodes.length; i++)
+	{
+		var node = nodes[i]
+		if (node == focused)
+			break
+		parent.appendChild(node)
 	}
 }
 
@@ -289,21 +291,26 @@ function CalculatorView() {
 			}
 			mergeNodes(cocktailsParent, newCocktails)
 			
-			var newIngredients = []
-			var sum = 0;
-			var inames = []; for(var name in cartData.goods) inames.push(name); //inames.sort(Ingredient.sortByGroups)
-            for(var i = 0; i < inames.length; i++){
-				var name = inames[i];
-                var item = cartData.goods[name];
-				var bottles = cartData.goods[name].bottles;
-				for(var id in bottles){
-					sum += bottles[id].vol[1] * bottles[id].count;
-					var ingredElem = this._createIngredientElement(item, bottles[id], name);
-					newIngredients.push(ingredElem);
+			var newIngredients = [], sum = 0, items = []
+			for (var name in cartData.goods)
+				items.push(cartData.goods[name])
+			
+			var compareByGroup = Ingredient.compareByGroup
+			items.sort(function (a, b) { return compareByGroup(a.good, b.good) })
+			for(var i = 0; i < items.length; i++)
+			{
+				var item = items[i],
+					bottles = item.bottles
+				
+				for (var id in bottles)
+				{
+					var bottle = bottles[id]
+					sum += bottle.vol[1] * bottle.count
+					newIngredients.push(this._createIngredientElement(item, bottle, item.good.name))
 				}
 			}
 			sum = Math.roundPrecision(sum,2)
-			mergeIngredientsNodes(ingredsParent, newIngredients);
+			mergeNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
 			
 			if(cartData.goods[this.lastShownIngred]) {
@@ -369,6 +376,8 @@ function CalculatorView() {
 					self.eventListener.cocktailQuantityChanged(cocktail, parseInt(this.value));
 				}
 			}, false);
+			input.addEventListener('focus', function (e) { li.focused = true }, false)
+			input.addEventListener('blur', function (e) { li.focused = false }, false)
 		}
 		
 		if(input.value != quantity)
@@ -431,6 +440,9 @@ function CalculatorView() {
 			}
 			a.addEventListener('mousedown', showPopup, false)
 			button.addEventListener('mousedown', showPopup, false)
+			
+			input.addEventListener('focus', function (e) { li.focused = true }, false)
+			input.addEventListener('blur', function (e) { li.focused = false }, false)
 			
 			li.childsCache = {input: input, button: button, txt: txt, a: a};
 		}
@@ -518,6 +530,9 @@ function CalculatorView() {
 					self.renderPopup(item, name);
 				}
 			}, false)
+			
+			inputQuant.addEventListener('focus', function (e) { dl.focused = true }, false)
+			inputQuant.addEventListener('blur', function (e) { dl.focused = false }, false)
 		}
 		
 		var childsCache = dl.childsCache,
