@@ -416,6 +416,22 @@ function CalculatorView() {
 			button.innerHTML = "i";
 			li.appendChild(button);
 			
+			// fires goodQuantityChanged
+			input.addEventListener('keyup', function(e){
+				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
+					var bottleId = bottle.vol[0];
+					self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
+				}
+			}, false)
+			
+			function showPopup (e)
+			{
+				self.renderPopup(item, name);
+				$(self.INGRED_POPUP).show();
+			}
+			a.addEventListener('mousedown', showPopup, false)
+			button.addEventListener('mousedown', showPopup, false)
+			
 			li.childsCache = {input: input, button: button, txt: txt, a: a};
 		}
 		
@@ -426,24 +442,6 @@ function CalculatorView() {
 			a = childsCache.a
 		
 		{
-			// fires goodQuantityChanged
-			input.onkeyup = function(e){
-				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-					var bottleId = bottle.vol[0];
-					self.eventListener.goodQuantityChanged(name, bottleId, parseInt(this.value));
-				}
-			}
-			
-			a.onmousedown = function(e){
-				self.renderPopup(item, name);
-				$(self.INGRED_POPUP).show(); 
-				return false;
-			}
-			
-			button.onmousedown =  function(e){
-				self.renderPopup(item, name);
-				$(self.INGRED_POPUP).show();
-			}
 			
 			
 			if (bottle.count != input.value)
@@ -502,19 +500,12 @@ function CalculatorView() {
 			dd.appendChild(strong);
 			dd.appendChild(inputQuant);
 			dd.appendChild(document.createTextNode(" шт."));
-		}
-		
-		var childsCache = dl.childsCache,
-			icon = childsCache.icon,
-			inputQuant = childsCache.inputQuant,
-			a = childsCache.a
-		
-		{
+			
 			a.onmousedown = function(e) {
 				self.setPicture(name, item.good, volume);
 			}
 			
-			inputQuant.onkeyup = function(e){
+			inputQuant.addEventListener('keyup', function(e){
 				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
 					if(item.bottles[bottleId]) {
 						item.bottles[bottleId].count = this.value;
@@ -526,8 +517,15 @@ function CalculatorView() {
 					}
 					self.renderPopup(item, name);
 				}
-			}
-			
+			}, false)
+		}
+		
+		var childsCache = dl.childsCache,
+			icon = childsCache.icon,
+			inputQuant = childsCache.inputQuant,
+			a = childsCache.a
+		
+		{
 			bottle && bottle.count > 0 ? dl.remClassName('empty') : dl.addClassName('empty');
 			var newValue = bottle ? bottle.count : 0;
 			if (!inputQuant.value || newValue != inputQuant.value)
