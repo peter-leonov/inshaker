@@ -29,8 +29,12 @@
 					<!-- <b class="lt"></b><b class="rt"></b><b class="lb"></b><b class="rb"></b> -->
 				</div>
 				<div class="about">
-					<h2 class="show-more"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><% if @desc_end != "" %><a>…</a><% end %></h2>
-					<p class="more"><%= @desc_end.gsub(/[\n\r]/, "<br/>") %></p>
+					<% unless @desc_end.empty? %>
+						<h2 class="show-more"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><% if @desc_end != "" %><a>…</a><% end %></h2>
+						<p class="more"><%= @desc_end.gsub(/[\n\r]/, "<br/>") %></p>
+					<% else %>
+						<h2 class="show-more empty"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><% if @desc_end != "" %><a>…</a><% end %></h2>
+					<% end %>
 					
 					<div class="info">
 						<dl class="part feature">
