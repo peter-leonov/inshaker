@@ -210,8 +210,8 @@ class IngredientsProcessor < Barman::Processor
     end
     
     if about["Тара"] and about["Тара"].length > 0
-      good[:volumes] = volumes = []
-      about["Тара"].each do |v|
+      volumes = []
+      about["Тара"].each_with_index do |v, i|
         if v["Объем"] <= 0
           warning "нулевой или отрицательный объем (номер #{i+1})"
           next
@@ -232,8 +232,9 @@ class IngredientsProcessor < Barman::Processor
         else
           error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end
-        
       end
+      # increment sort by cost per litre
+      good[:volumes] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
     else
       error "тара не указана"
     end
