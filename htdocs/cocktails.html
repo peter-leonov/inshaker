@@ -1,16 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html id="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"> 
 <head>
-	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css"/>
+	<!--# include file="/inc/head-cocktails.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/cocktails.css"/>
 	<title>Inshaker — Коктейли</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
 <div id="main-wrapper">	
 	
-	<div class="column column-main">
-	<div class="body-wrapper">
+	<div class="column column-main"><div class="body-wrapper">
 		<div class="b-title">
 			<h1>Коктейли</h1>
 			<a id="spotlighted"></a>
@@ -21,19 +20,19 @@
 				<li>По алфавиту</li>
 				<li class="selected">По ингредиенту</li>
 			</ul>
-			<p id="all_list"><a href="ingredients.html">Вcе коктейльные ингредиенты</a></p>
+			<a id="all_list" href="ingredients.html"><i></i>Вcе коктейльные ингредиенты</a>
 		</div>
 		<div id="search_by_name" style="display:none" class="search-control">
-			<form class="search-form"><input type="text" name="text" autocomplete="off"/></form>
+			<form class="search-form"><input type="text" name="text"/></form>
 		</div>
 		<div id="search_by_letter" style="display:none" class="search-control">
 			<a id="letters_all" class="selected-button">все</a>
 			<div id="alphabetical-ru"></div>
 		</div>
 		<div id="search_by_ingreds" class="search-control">
-			<form class="search-form"><input type="text" name="text" autocomplete="off"/></form>
+			<form class="search-form"><input type="text" name="text"/></form>
 		</div>
-		<div class="ingreds-list" style="display:none"><div id="ingredients_list"></div><a class="rem"></a></div>
+		<div class="ingreds-list" style="display:none"><div id="ingredients_list" class="list"></div><a class="rem"></a></div>
 		<div id="search_tips">
 			<div class="search-tip" id="search_tip_name" style="display:none">Например, <a id="search_example_name"></a> или <a id="search_example_name_eng"></a></div>
 			<div class="search-tip" id="search_tip_ingredient" style="display:none">Например, <a id="search_example_ingredient">Виски</a></div>
@@ -64,26 +63,21 @@
 					<a class="next">→</a>
 				</div>
 			</div>
-            <noscript><!--# include file="/cocktails/links.html" --></noscript>
-			<div id="error_display">Такого сочетания пока нет. Попробуйте другое.</div>
 		</div>
-	
-	</div>
-	
-	<div class="pager-big">
-		<a class="prev"></a>
-		<a class="next"></a>
-	</div>
-	
-	</div>
+		
+		<div class="pager-big">
+			<a class="prev"></a>
+			<a class="next"></a>
+		</div>
+		
+	</div></div>
 	
 	<!--# include file="/inc/calculator.html" -->
-	<!--# include file="/inc/bottom-common.html" -->
 </div>
-
+<!--# include file="/inc/bottom-common.html" -->
 <!--# include file="/inc/shop-cocktail.html" -->
-<script type="text/javascript">window.menuItem = "cocktails.html"</script>
-<script type="text/javascript" src="/js/compiled/common.js"></script>
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/common/cocktails.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>
 <script type="text/javascript" src="/js/entities/Good.js"></script>

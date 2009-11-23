@@ -3,6 +3,7 @@
 NAME="inshaker"
 
 PROJ_ROOT="/www/$NAME"
+NGINX="/usr/local/nginx/sbin/nginx"
 TYPE="$SERVER_TYPE"
 
 if [ "$TYPE" = "" ]; then
@@ -18,8 +19,9 @@ else
 	echo "nginx was not started (no pid file found)"
 fi
 
-if [ -f $PROJ_ROOT/spawn-fcgi.pid ]; then
-	kill -INT `cat $PROJ_ROOT/spawn-fcgi.pid`
+if [ -f $PROJ_ROOT/act.pid ]; then
+	kill -2 `cat $PROJ_ROOT/act.pid`
+	rm -f $PROJ_ROOT/act.pid
 else
-	echo "spawn-fcgi was not started (no pid file found)"
+	echo "act was not started (no pid file found)"
 fi

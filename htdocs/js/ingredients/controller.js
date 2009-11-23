@@ -1,3 +1,10 @@
+String.prototype.beforeTag = function() {
+	var reg = new RegExp(/(.+)<.+>.*<\/.+>/);
+	if(this.match(reg)) {
+		return this.match(reg)[1]
+	} else return this;
+}
+
 var Controller = {
 	ALPHABETICAL   : 'top-alphabetical',
 	CHOSEN_INGEREDS: 'chosen',
@@ -208,13 +215,6 @@ var Controller = {
 		Model.selectedListChanged(this.selected);
 	},
 	
-    updateRounds: function(rounds, show) {
-		for(var i = 0; i < this.nameNodes.length; i++){
-			var toShow = show && (this.selected.indexOf(this.nameNodes[i].innerHTML) == -1) 
-            Ingredient.getByName(this.nameNodes[i].innerHTML).updateRound(this.markNodes[i], toShow);
-		}
-    },
-
 	updateCount: function(num, top, selectedNum){
 		this.topCocktail = top;
 		this.numCanPrepare = num;

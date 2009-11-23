@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-$main = "event@inshaker.ru,pl@contactmaker.ru"
+$main = "event@inshaker.ru"
 $data_dir = "/www/inshaker/data/"
 
 require "rubygems"
@@ -33,7 +33,7 @@ end
 row1 = names.map  { |v| "<th>#{v}</th>" }.join("")
 row2 = values.map { |v| "<td>#{v}</td>" }.join("")
 
-fname  = p["href"].to_s.dirify.gsub(/[^a-zA-Z\-]/, '')
+fname  = p["href"].to_s.dirify.gsub(/[^a-zA-Z0-9\-]/, '')
 
 FileUtils.mkdir_p($data_dir)
 File.open("#{$data_dir}#{fname}.csv", "a") do |f|

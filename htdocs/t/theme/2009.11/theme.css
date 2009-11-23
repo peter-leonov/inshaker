@@ -1,0 +1,124 @@
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 553px; height: 524px; left: 160px; bottom: -790px; }
+#branded-image-holder { height: 800px; }
+a { color: #00588b; }
+#top .nav a:hover { border-bottom-color: #0069a6; }
+#bottom { color: #000; }
+#bottom a {}
+html { background: #fff url(bg.jpg) repeat center top; }
+button.rounded { color: #343B40; }
+button.rounded b { text-shadow: 1px 1px 0 #fff; }
+button.strong { color: #fff; }
+button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
+
+/* calculator.css */
+#b-bill dt,
+#b-bill dd li button,
+#b-bill .print-call i,
+#cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
+#b-bill dt { color: #fff; font-weight: bold; }
+#b-bill dd input { background-color: #eee; }
+#cart_draghere b { color: #00588b; }
+
+/* cocktails.css */
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
+#search_tabs li,
+#alphabetical-ru a.selected-button,
+.ingreds-list,
+.ingreds-list .rem,
+.pager-big .prev,
+.pager-big .next,
+.b-content .pager .p-list a.selected-button,
+#all_list i,
+.b-search .groups dd.selected-button,
+.b-title #spotlighted,
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
+#results_display a {}
+#spotlighted { width: 63px; height: 28px; right: 0; bottom: 11px; }
+#letters_all,
+#alphabetical-ru a { color: #fff; }
+#alphabetical-ru a.selected-button { color: #004771; }
+#search_tabs li { color: #004771; }
+#search_tabs li.selected { color: #fff; }
+.ingreds-list a { color: #fff; }
+.pager-big .prev,
+.pager-big .next { width: 23px; height: 25px; }
+.b-content .pager .p-list a { padding: 2px 6px 3px; margin-right: -3px; }
+.b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 0; }
+.b-content .pager .p-list .selected-button { color: #fff; }
+#b-bill dd li b { color: #888; }
+.search-form input { color: #362313; }
+.b-search .groups dd { color: #231f20; }
+.b-search .groups dd.selected-button { color: #fff; }
+.b-search .groups dd.disabled { color: #999; }
+.autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #004771; }
+.autocomplete .item.selected { background-color: #a5c8dc; }
+
+/* cocktail.css */
+.b-more dt,
+.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); }
+.b-more dt b { color: #fff; }
+.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* ingredients.css */
+.you-choise a,
+.top-alphabetical .now,
+.count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
+.count-cocktails strong { color: #0759AB; }
+
+/* about.css */
+#form_success i { background-repeat: no-repeat; background-image: url(common.png); }
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-image: url(common.8.png); }
+#alcohol-harm { background-image: url(alcohol-harm.8.png); }
+#branded-image { background-image: url(image.8.png); }
+
+/* calculator.css */
+#b-bill dt,
+#b-bill dd li button,
+#b-bill .print-call i,
+#cart_draghere i { background-image: url(common.8.png); }
+
+/* cocktails.css */
+.square-list .prev,
+.square-list .next { background-image: url(common.8.png) }
+#search_tabs li,
+#alphabetical-ru a.selected-button,
+.ingreds-list,
+.ingreds-list .rem,
+.pager-big .prev,
+.pager-big .next,
+.b-content .pager .p-list a.selected-button,
+#all_list i,
+.b-search .groups dd.selected-button,
+.b-title #spotlighted,
+.search-control { background-image: url(cocktails.8.png) }
+
+/* cocktail.css */
+.b-more dt,
+.b-more dt b { background-image: url(cocktail.8.png); }
+.hreview .desc h2 i { background-image: url(common.8.png); }
+
+/* ingredients.css */
+.you-choise a,
+.top-alphabetical .now,
+.count-cocktails { background-image: url(ingredients.8.png) }
+<!--# endif -->

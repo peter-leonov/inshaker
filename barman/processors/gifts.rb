@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
 
 class GiftsProcessor < Barman::Processor
@@ -12,15 +13,18 @@ class GiftsProcessor < Barman::Processor
     DB_JS = HTDOCS_DIR + "db/gifts.js"
   end
   
-  def run
+  def job_name
+    "смешивалку подарков"
+  end
+  
+  def job
     @gifts = []
     @gift  = {}
     prepare_gifts
     flush_images
-    #debug
     flush_json 
   end
-
+  
   def prepare_gifts
     root_dir = Dir.new(Config::GIFTS_DIR)
     root_dir.each do |city_dir|
@@ -41,7 +45,7 @@ class GiftsProcessor < Barman::Processor
             @gift[:name_full] = yaml["Полное название"] 
             @gift[:desc] = yaml["Описание"].split("\n")
             @gift[:places] = yaml["Где купить"]
-            @gift[:order] = orders[@gift[:name].yi]
+            @gift[:order] = orders[@gift[:name]]
             detect_big_images(gift_path)
             @gifts << @gift
           end
@@ -49,13 +53,9 @@ class GiftsProcessor < Barman::Processor
       end
     end
   end
-
+  
   def load_yaml filename
     YAML::load(File.open(filename))
-  end
-
-  def debug
-    puts @gifts.inspect
   end
   
   def detect_big_images gift_path
@@ -66,8 +66,8 @@ class GiftsProcessor < Barman::Processor
       counter += 1
     end
   end
-
- 
+  
+  
   def flush_images
     @gifts.each do |gift|
       gift_path = Config::GIFTS_DIR + gift[:city] + "/" + gift[:name] + "/"
@@ -89,12 +89,12 @@ class GiftsProcessor < Barman::Processor
         end
     end
    
-  end  
-
+  end
+  
   def flush_json
-    flush_json_object(@gifts, Config::DB_JS) 
+    flush_json_object(@gifts, Config::DB_JS)
   end
   
 end
 
-GiftsProcessor.new.run
+exit GiftsProcessor.new.run

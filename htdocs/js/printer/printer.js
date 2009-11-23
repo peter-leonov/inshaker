@@ -10,7 +10,6 @@ var Printer = {
     ID_COCKTAIL_IMG   : 'cocktail_img',
     ID_INGREDS_IMGS   : 'cocktail_ingreds',
 
-    IMG_COCKTAIL_PRFX : '/i/cocktail/b/',
     IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
     IMG_MARKER        : '/t/print/li.png',
 
@@ -39,6 +38,7 @@ var Printer = {
     cocktailInit: function(param){
         this.preloadImages();
         var cocktail = Cocktail.getByHtmlName(param);
+		cocktail.loadData()
   		this.renderCocktail(cocktail);
     },  
 
@@ -50,7 +50,7 @@ var Printer = {
 
        document.title = "Inshaker —  " + cocktail.name;
        $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
-       $(this.ID_COCKTAIL_IMG).src = this.IMG_COCKTAIL_PRFX + cocktail.name_eng.htmlName() + ".png";     
+       $(this.ID_COCKTAIL_IMG).src = cocktail.getBigImageSrc()
        for(var i = 0; i < cocktail.receipt.length; i++){
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
@@ -181,7 +181,7 @@ var Printer = {
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
-        cnt.innerHTML = pair[1];
+        cnt.innerHTML = GoodHelper.normalVolumeTxtParsed(pair[1]);
         cnt.className = "cnt";
 
         dd.appendChild(div);
@@ -202,10 +202,10 @@ var Printer = {
 		var txt = GoodHelper.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
-		if(GoodHelper.isBottled(goods[name][0])){
+		if(GoodHelper.isBottled(goods[name])){
             var span = document.createElement("span");
-            var spanTxt = "(" + GoodHelper.bottleTxt(name, goods[name][0].unit, bottle.vol[0]);
-            spanTxt += bottle.vol[0] + " " + GoodHelper.pluralTxt(bottle.vol[0], goods[name][0].unit);
+            var spanTxt = "(" + GoodHelper.bottleTxt(name, goods[name].unit, bottle.vol[0]);
+            spanTxt += GoodHelper.normalVolumeTxt(bottle.vol[0], goods[name].unit);
             spanTxt += ")";
             span.className = "bottle";
             span.innerHTML = spanTxt;

@@ -7,7 +7,7 @@ var GiftsPage = {
 	}
 };
 
-$.onload (
+$.onready (
 	function ()
     {		
 		var nodes = 

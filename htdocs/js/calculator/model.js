@@ -41,17 +41,20 @@ function CalculatorModel(view){
 	};
 	
 	this.addCocktail = function(name){
-		if(Cocktail.getByName(name)) {
+		var cocktail = Cocktail.getByName(name)
+		if(cocktail) {
 			var cs = this.cartData.cocktails;
 			var found = false;
-			for(var i = 0; i < cs.length; i++) if(cs[i][0] == Cocktail.getByName(name)) found = true;
-			if(!found){
-				this.cartData.cocktails.push([Cocktail.getByName(name), 10]); // сразу 10
-				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
-				this.optimalGoods = cloneObject(this.cartData.goods);
-				this.dataListeners.modelChanged(this.cartData);
+			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktail) found = cs[i];
+			if (found) {
+				found[1] += 10
+			} else {
+				cs.push([cocktail, 10]); // сразу 10
 			}
+			// Оптимизируем весь набор по емкостям
+			this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+			this.optimalGoods = cloneObject(this.cartData.goods);
+			this.dataListeners.modelChanged(this.cartData);
 		}
 	};
 	
@@ -125,6 +128,10 @@ function CalculatorModel(view){
 	this.getNewBottle = function(name, bottleId){
 		return DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
 	};
+
+    this.getItemFromCart = function(name){
+        return this.cartData.goods[name];
+    };
 	
 	/**
 	 * Поменялось количество коктейля в калькуляторе

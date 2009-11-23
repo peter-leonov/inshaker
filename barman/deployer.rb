@@ -1,40 +1,39 @@
 #!/usr/bin/ruby
 require 'barman'
 
-class Deployer
-  
+class Deployer < Barman::Processor
   module Config
-    BASE_DIR    = Barman::HTDOCS_DIR
-    DEPLOY_DIRS = ["bars", "cocktails", "i", "events", "v"]
+    ROOT_DIR = Barman::ROOT_DIR
   end
   
-  def initialize
-     git_add_all
-     git_commit_and_push
+  def job_name
+    "заливалку на сайт"
   end
   
-  def git_add_all
-    Config::DEPLOY_DIRS.each do |deploy_dir|
-      git_add Config::BASE_DIR + deploy_dir
+  def job
+    Dir.chdir(Config::ROOT_DIR)
+    say "синхронизуюсь с сайтом…"
+    unless system("git pull >>barman.log 2>&1")
+      error "не удалось синхронизироваться с сайтом"
+    else
+      if `git status` =~ /nothing to commit/
+        warning "заливать нечего"
+      else
+        author = host_to_author(guest_host)
+        say "сохраняю в гит…"
+        unless system("git add . && git commit -am 'content update' --author='#{author}' >>barman.log 2>&1")
+          error "не удалось сохранить обновления в гит"
+        else
+          say "заливаю на сайт…"
+          unless system("git push >>barman.log 2>&1")
+            error "не удалось залить обновления на сайт"
+          else
+            say "готово, проверяйте"
+          end
+        end
+      end
     end
   end
-  
-  def git_commit_and_push
-    begin
-      system("cd #{Config::BASE_DIR} && git commit -a -m 'content updated from WEB on #{Time.now}' 2>&1 && git push")
-    rescue
-      puts "Unable to perform git commit and push"
-      exit 1
-    end
-  end
-  
-private
-
-  def git_add dir
-    d = Dir.new(dir)
-    system("git add #{d.path} 2>&1")
-  end
-  
 end
 
-Deployer.new
+exit Deployer.new.run

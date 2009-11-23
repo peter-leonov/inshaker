@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %>">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
 	<title>Inshaker — <%= @name %></title>
 </head>
@@ -15,9 +14,9 @@
 			<h1>События!</h1>
 		</div>
 		<div class="b-content">
-			<div class="previews programica-rolling-images">
+			<div class="previews square-list programica-rolling-images">
 				<div class="viewport">
-					<ul class="surface"><noscript><!--# include virtual="/events/links.html" --></noscript></ul>
+					<ul class="surface"></ul>
 				</div>
 				<a class="prev disabled" disabled="true"></a><a class="next"></a>
 			</div>
@@ -47,29 +46,21 @@
 								<% if @enter %>
 									<dt>Вход:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
 								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% elsif @status == "holding" %>
 							<dl class="info">
 								<% if @enter %>
 									<dt>Вход:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
 								<% end %>
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% elsif @status == "archive" %>
 							<% if @photos %>
 								<a href="<%= @photos %>" class="view-photos"><span>Посмотри фото!</span> →</a>
 							<% end %>
 							<dl class="info">
-								<% if @address %>
-									<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
-								<% end %>
-							</dl>
 						<% end %>
+							<% if @address %>
+								<dt>Адрес:</dt><dd><a href="<%= @address %>">карта проезда</a></dd>
+							<% end %>
+						</dl>
 					</div>
 				</div>
 			</div></div>
@@ -78,10 +69,12 @@
 		
 		<div id="sidebar">
 			<div id="main-sponsors" class="column"><div class="body-wrapper">
-				<div class="b-title">
-					<h3>Генеральный партнер</h3>
-					<h4></h4>
-				</div>
+				<% if @high_head %>
+					<div class="b-title">
+						<h3><%= @high_head %></h3>
+						<h4></h4>
+					</div>
+				<% end %>
 				<a class="banner"></a>
 			</div></div>
 			<div id="comming">
@@ -100,8 +93,6 @@
 			<div class="b-content"></div>
 		</div></div>
 	</div>
-	
-	<!--# include file="/inc/bottom-common.html" -->
 </div>
 <div id="promo-back" <%= @promo ? %Q{style="background-image:url(#{@imgdir}/promo-bg.png)"} : ''%>></div>
 <div id="form-popup">
@@ -125,8 +116,6 @@
 		</form>
 	</div>
 </div>
-<script type="text/javascript" src="/js/compiled/common.js"></script>
-<script type="text/javascript" src="/js/event/event.js"></script>
-<script type="text/javascript" src="/js/entities/Event.js"></script>
+<!--# include file="/inc/event-footer.html" -->
 </body>
 </html>

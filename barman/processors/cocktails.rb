@@ -1,6 +1,8 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
+require 'optparse'
+# require 'benchmark'
 
 class CocktailsProcessor < Barman::Processor
 
@@ -8,68 +10,144 @@ class CocktailsProcessor < Barman::Processor
     COCKTAILS_DIR = Barman::BASE_DIR + "Cocktails/"
     HTDOCS_DIR    = Barman::HTDOCS_DIR
     
-    HTDOCS_ROOT        = HTDOCS_DIR + "cocktails/"
+    HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
+    DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
+    GOODS_DB           = HTDOCS_DIR + "db/goods.js"
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
-    IMAGES_DIR         = HTDOCS_DIR + "i/cocktail/"
-    IMAGES_BG_DIR      = IMAGES_DIR + "bg/"
-    IMAGES_BIG_DIR     = IMAGES_DIR + "b/"
-    IMAGES_SMALL_DIR   = IMAGES_DIR + "s/"
-    IMAGES_PRINT_DIR   = IMAGES_DIR + "print/"
-
+    
     VIDEOS_DIR = HTDOCS_DIR + "v/"
-
+    
     COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
+    RECOMENDATIONS_ERB  = Barman::TEMPLATES_DIR + "recomendations.rhtml"
+    RECOMENDATIONS_COUNT = 14
   end
-
+  
   def initialize
-    super    
+    super
+    @goods = {}
     @cocktails = {}
     @cocktails_present = {}
-    # @cocktail_names_en2ru = {}
-    @tags      = []
+    @tags = []
     @strengths = []
+    @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
   
-  def run
+  def job_name
+    "смешивалку коктейлей"
+  end
+  
+  def pre_job
+    @options = {:force => true}
+    names = @options[:names] = {}
+    OptionParser.new do |opts|
+      opts.banner = "Запускайте так: cocktails.rb [опции]"
+      
+      opts.on("-f", "--force", "обновлять невзирая на кеш") do |v|
+        @options[:force] = v
+      end
+      opts.on("-t", "--text", "обрабатывать только текст") do |v|
+        @options[:text] = v
+      end
+      opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
+        list.each do |v|
+          names[v] = true
+        end
+      end
+      opts.on("-h", "--help", "помочь") do
+        puts opts
+        exit
+      end
+    end.parse!
+    
+    if @options[:force] && !@options[:names].empty?
+      warning "--names отменяет действие --force"
+      @options[:force] = false
+    end
+  end
+  
+  def job
     prepare_dirs
     prepare_templates
+    prepare_goods
     prepare_cocktails
-    prepare_tags_and_strengths
+    prepare_tags_and_strengths_and_methods
     
-    update_cocktails
+    touched = update_cocktails
     
-    if summary
-      flush_json
+    check_intergity
+    
+    unless errors?
+      update_recomendations if touched > 0
+      
+      cleanup_cocktails
+      flush_tags_and_strengths_and_methods
+      flush_cocktails
       flush_links
     end
-  end  
+  end
   
   def prepare_dirs
-    # FileUtils.rmtree [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::VIDEOS_DIR]
-    
-    FileUtils.mkdir_p [Config::HTDOCS_ROOT, Config::IMAGES_DIR, Config::IMAGES_BG_DIR,
-      Config::IMAGES_BIG_DIR, Config::IMAGES_SMALL_DIR, Config::VIDEOS_DIR]
+    FileUtils.mkdir_p [Config::HTDOCS_ROOT]
   end
   
   def prepare_templates
-    @cocktail_renderer = ERB.new(File.open(Config::COCKTAIL_ERB).read)
+    @cocktail_renderer = ERB.new(File.read(Config::COCKTAIL_ERB))
+    @recomendations_renderer = ERB.new(File.read(Config::RECOMENDATIONS_ERB))
+  end
+  
+  def prepare_goods
+    if File.exists?(Config::GOODS_DB)
+      @goods = load_json(Config::GOODS_DB)
+    end
+  end
+  
+  def check_intergity
+    say "проверяю ингредиенты"
+    indent do
+    @cocktails.each do |name, cocktail|
+      cocktail["ingredients"].each do |ingred|
+        unless @goods[ingred[0]]
+          error "#{name}: нет такого ингредиента «#{ingred[0]}»"
+          if ingred[0].has_diacritics
+            say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+          end
+        end
+      end
+    end
+    end # indent
   end
   
   def prepare_cocktails
-    if File.exists?(Config::DB_JS)
+    if File.exists?(Config::DB_JS) && !@options[:force]
       @cocktails_mtime = File.mtime(Config::DB_JS)
-      @cocktails = JSON.parse(File.open(Config::DB_JS).read)
+      @cocktails = JSON.parse(File.read(Config::DB_JS))
     else
-      @cocktails_mtime = Time.at(0)
+      @cocktails_mtime = nil
     end
   end
   
   def update_cocktails
+    names = @options[:names]
+    unless names.empty?
+      say "обновляю указанные коктейли: #{names.keys.join(", ")}"
+      indent do
+      done = 0
+      Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
+        next if !names[dir.name]
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      end # indent
+      return done
+    end
+    
+    touched = 0
     say "собираю список"
     indent do
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
@@ -79,40 +157,127 @@ class CocktailsProcessor < Barman::Processor
     end # indent
     
     
-    say "удаляю коктейли"
-    indent do
     deleted = @cocktails.keys - @cocktails_present.keys
-    deleted.each do |name|
-      say name
-      update_images name, @cocktails[name], true
-      @cocktails.delete(name)
+    unless deleted.empty?
+      say "удаляю коктейли"
+      indent do
+      deleted.each do |name|
+        say name
+        @cocktails.delete(name)
+      end
+      say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+      touched += deleted.length
+      end # indent
     end
-    say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
-    end # indent
+    
     
     added = {}
-    say "добавляю коктейли"
-    indent do
-    done = 0
+    toadd = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
       next if @cocktails[dir.name]
-      added[dir.name] = true
-      process_cocktail dir
-      done += 1
+      toadd << dir
     end
-    say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
-    end # indent
+    unless toadd.empty?
+      say "добавляю коктейли"
+      indent do
+      done = 0
+      toadd.each do |dir|
+        added[dir.name] = true
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      touched += done
+      end # indent
+    end
     
-    say "обновляю коктейли"
-    indent do
-    done = 0
+    
+    toupdate = []
     Dir.new(Config::COCKTAILS_DIR).each_dir do |dir|
-      next if added[dir.name] || @cocktails[dir.name] && File.mtime(dir.path) <= @cocktails_mtime
-      process_cocktail dir
-      done += 1
+      next if added[dir.name] || @cocktails[dir.name] && (@cocktails_mtime && dir.deep_mtime <= @cocktails_mtime)
+      toupdate << dir
     end
-    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+    unless toupdate.empty?
+      say "обновляю коктейли"
+      indent do
+      done = 0
+      toupdate.each do |dir|
+        process_cocktail dir
+        done += 1
+      end
+      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      touched += done
+      end # indent
+    end
+    return touched
+  end
+  
+  def update_recomendations
+    say "обновляю рекомендации"
+    # puts Benchmark.measure { calculate_related }
+    calculate_related
+    indent do
+      @cocktails.each do |name, hash|
+        templ = CocktailRecomendationsTemplate.new(hash["recs"])
+        page = @recomendations_renderer.result(templ.get_binding)
+        File.write(Config::HTDOCS_ROOT + hash["name_eng"].html_name + "/recommendations.html", page)
+      end
     end # indent
+  end
+  
+  def calculate_related
+    cocktails = []
+    ingredient_hashes = []
+    tag_hashes = []
+    @cocktails.keys.sort.each do |name|
+      cocktail = @cocktails[name]
+      cocktails << cocktail
+      
+      ingredient_hashes << hash = {}
+      cocktail["ingredients"].each { |v| hash[v[0]] = true }
+      
+      tag_hashes << hash = {}
+      cocktail["tags"].each { |v| hash[v] = true }
+    end
+    count = cocktails.length
+    
+    weights = []
+    weights[count * count] = 0
+    nums = (0...count).to_a
+    
+    i = 0
+    while i < count
+      a = cocktails[i]
+      a_tags = tag_hashes[i]
+      a_ingredients = ingredient_hashes[i]
+      
+      weights[i * count + i] = 0
+      j = i + 1
+      while j < count
+        b = cocktails[j]
+        
+        weight = 0
+        b["ingredients"].each do |v|
+          weight += 10000 if a_ingredients[v[0]]
+        end
+        b["tags"].each do |v|
+          weight += 1000 if a_tags[v]
+        end
+        weight += 100 - b["ingredients"].length
+        
+        weights[i * count + j] = weights[j * count + i] = weight
+        j += 1
+      end
+      
+      pos = i * count
+      recs = a["recs"] = nums.sort_by { |n| -weights[pos + n] }.map { |n| cocktails[n] }[0..Config::RECOMENDATIONS_COUNT]
+      
+      if recs.index(a)
+        error "кектейль #{a["name"]} встречается у себя в рекомендациях #{recs.map { |v| v["name"] }}"
+      end
+      
+      i += 1
+    end
   end
   
   def process_cocktail dir
@@ -124,102 +289,164 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["tags"]        = []
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
+    @cocktail["recs"] = []
     
-    parse_about_text  File.open(dir.path + "/about.txt").read
-    parse_legend_text File.open(dir.path + "/legend.txt").read
+    parse_about_text  File.read(dir.path + "/about.txt")
+    parse_legend_text File.read(dir.path + "/legend.txt")
     
-    @cocktails[@cocktail["name"]] = @cocktail
+    @cocktails[name] = @cocktail
     
-    update_images @cocktail["name"], @cocktail
-    update_html @cocktail["name"], @cocktail
-    update_video dir, @cocktail["name"], @cocktail
+    html_name = @cocktail["html_name"] = @cocktail["name_eng"].html_name
+    
+    dir_path = "#{Config::HTDOCS_ROOT}/#{html_name}"
+    FileUtils.mkdir_p(dir_path)
+    root_dir = Dir.open(dir_path)
+    root_dir.name = html_name
+    @cocktail["root_dir"] = root_dir
+    
+    guess_methods @cocktail
+    update_images dir, root_dir, @cocktail unless @options[:text]
+    update_html root_dir, @cocktail
     end # indent
   end
   
-  def prepare_tags_and_strengths
-    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
-    order.each do |name, num|
-      @tags[num-1] = name
-    end
+  def prepare_tags_and_strengths_and_methods
+    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+    @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+  end
+  
+  def guess_methods cocktail
+    methods = {}
+    tools = cocktail["tools"]
     
-    order = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
-    order.each do |name, num|
-      @strengths[num-1] = name
+    methods["в шейкере"] = true if tools.index("Шейкер")
+    methods["давят пестиком"] = true if tools.index("Пестик")
+    methods["в блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
+    methods["давят пестиком"] = true if tools.index("Пестик")
+    methods["миксуют в стакане"] = true if tools.index("Стакан для смешивания")
+    methods["укладывают слои"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
+    
+    num = methods.keys.length
+    if num == 0
+      cocktail["method"] = "просто"
+    elsif num == 1
+      cocktail["method"] = methods.keys[0]
+    else
+      cocktail["method"] = "не очень просто"
     end
   end
   
-  def flush_json
+  def update_html dst, hash
+    tpl = CocktailTemplate.new(hash)
+    File.write("#{dst.path}/index.html", @cocktail_renderer.result(tpl.get_binding))
+  end
+  
+  def update_json cocktail
+    data = {}
+    root_dir = cocktail.delete("root_dir")
+    @local_properties.each do |prop|
+      data[prop] = cocktail.delete(prop)
+    end
+    data["recs"] = data["recs"].map { |cocktail| cocktail["name"] }
+    flush_json_object(data, "#{root_dir.path}/data.json")
+  end
+  
+  def update_images src, dst, cocktail
+    to_big     = "#{dst.path}/#{cocktail["html_name"]}-big.png"
+    to_small   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_bg      = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
+    
+    from_big   = "#{src.path}/big.png"
+    from_small = "#{src.path}/small.png"
+    from_bg    = "#{src.path}/bg.png"
+    
+    if File.exists?(from_big)
+      flush_pngm_img(from_big, to_big)
+    else
+      error "не могу найти большую картинку коктейля (big.png)"
+    end
+    
+    if File.exists?(from_small)
+      cp_if_different(from_small, to_small)
+    else
+      error "не могу найти маленькую картинку коктейля (small.png)"
+    end
+    
+    if File.exists?(from_bg)
+      # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
+      cp_if_different(from_bg, to_bg)
+    else
+      error "не могу найти заставку коктейля (bg.png)"
+    end
+  end
+  
+  def flush_cocktails
+    say "сохраняю данные о коктейлях"
+    @cocktails.each do |name, cocktail|
+      update_json cocktail
+    end
+    flush_json_object(@cocktails, Config::DB_JS)
+  end
+  
+  def flush_tags_and_strengths_and_methods
+     say "сохраняю списки тегов, крепости и приготовления"
+     
+     count = {}
+     count.default = 0
      @cocktails.each do |name, hash|
-      hash.delete("desc_start")
-      hash.delete("desc_end")
+       hash["tags"].each { |tag| count[tag] += 1 }
+     end
+     tags = []
+     # p @tags
+     @tags.each do |tag|
+      if count[tag] == 0
+        error "нет коктейлей в группе «#{tag}»"
+      elsif count[tag] < 3
+        warning "слишком мало коктейлей (#{count[tag]}) в группе «#{tag}»"
+        indent do
+        @cocktails.each do |name, hash|
+          if hash["tags"].index tag
+            say name
+          end
+        end
+        end # indent
+      else
+        tags << tag
+      end
      end
      
-     say "сохраняю данные о коктейлях, тегах и крепости"
-     flush_json_object(@cocktails, Config::DB_JS)
-     flush_json_object(@tags, Config::DB_JS_TAGS)
+     flush_json_object(tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
+     flush_json_object(@methods, Config::DB_JS_METHODS)
   end
   
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @cocktails.each do |name, hash|
+      @cocktails.keys.sort.each do |name|
+        hash = @cocktails[name]
         links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
     end
   end
   
-  def update_html name, hash
-    cocktail = CocktailTemplate.new(hash)
-    File.open(Config::HTDOCS_ROOT + hash["name_eng"].html_name + ".html", "w+") do |html|
-      html.write @cocktail_renderer.result(cocktail.get_binding)
+  def cleanup_cocktails
+    say "ищу забытые коктейли"
+    indent do
+    by_html_name = {}
+    @cocktails.each do |name, cocktail|
+      by_html_name[cocktail["name_eng"].html_name] = cocktail
     end
-  end
-  
-  def update_images name, hash, delete = false
-    from = Config::COCKTAILS_DIR + name + "/"
     
-    html_name = hash["name_eng"].html_name
-    to_big   = Config::IMAGES_BIG_DIR   + html_name + ".png"
-    to_small = Config::IMAGES_SMALL_DIR + html_name + ".png"
-    to_bg    = Config::IMAGES_BG_DIR    + html_name + ".png"
-    
-    if delete
-      FileUtils.rmtree([to_big, to_small, to_bg])
-    else
-      from_big   = from + "big.png"
-      from_small = from + "small.png"
-      from_bg    = from + "bg.png"
-      
-      if File.exists?(from_big)
-        flush_pngm_img(from_big, to_big)
-      else
-        error "не могу найти большую картинку коктейля (big.png)"
-      end
-      
-      if File.exists?(from_small)
-        FileUtils.cp_r(from_small, to_small, @mv_opt)
-      else
-        error "не могу найти маленькую картинку коктейля (small.png)"
-      end
-      
-      if File.exists?(from_bg)
-        FileUtils.cp_r(from_bg, to_bg, @mv_opt)
-      else
-        error "не могу найти заставку коктейля (bg.png)"
+    Dir.new(Config::HTDOCS_ROOT).each_dir do |dir|
+      unless by_html_name[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
       end
     end
-  end
-  
-  def update_video dir, name, hash
-    from = dir.path + "/video.flv"
-    if File.exists? from
-      say "нашел видео-ролик"
-      # to = Config::VIDEOS_DIR + hash["name_eng"].html_name + ".flv"
-      # FileUtils.cp_r(from, to, @mv_opt)
-      hash["video"] = true
-    end
+    end # indent
   end
   
 private
@@ -270,6 +497,14 @@ private
     tags = tags.split("\n")
     tags.each do |tag|
       tag = tag.trim
+      if tag.empty?
+        error "пустой тег"
+        next
+      end
+      unless @tags.index tag
+        error "неизвестный тег #{tag}"
+        next
+      end
       @cocktail["tags"] << tag
       @tags << tag unless @tags.include?(tag)
     end
@@ -291,20 +526,6 @@ private
   end
   
   def parse_receipt(receipt)
-    # res = []
-    # lines = receipt.split("\n")
-    # lines.each do |line|
-    #   letters = line.split("")
-    #   # p letters[0], letters[0].downcase
-    #   if(letters[0] != letters[0].downcase)
-    #     res.push line
-    #   else
-    #     error "!!!!!!"
-    #     idx = res.index res.last
-    #     res[idx] = res[idx] + " " + line
-    #   end
-    # end
-    # @cocktail["receipt"] = res
     @cocktail["receipt"] = receipt.split("\n")
   end
   
@@ -322,4 +543,4 @@ private
   
 end
 
-CocktailsProcessor.new.run
+exit CocktailsProcessor.new.run

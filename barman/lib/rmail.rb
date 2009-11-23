@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'rmail'
 require 'base64'
 
@@ -38,7 +39,7 @@ class RMail::Message
   end
   
   def send
-    IO.popen '/usr/sbin/sendmail -t -i -f pl@contactmaker.ru > /dev/null', 'w' do |f|
+    IO.popen '/usr/sbin/sendmail -t -i > /dev/null', 'w' do |f|
       f.print to_s
     end
   end

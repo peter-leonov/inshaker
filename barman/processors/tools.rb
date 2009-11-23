@@ -1,7 +1,6 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'barman'
-require 'lib/string_util_1.8'
-$KCODE = 'u'
 
 class ToolsProcessor < Barman::Processor
   
@@ -18,7 +17,11 @@ class ToolsProcessor < Barman::Processor
     @tools = []
   end
   
-  def run
+  def job_name
+    "смешивалку штучек"
+  end
+  
+  def job
     prepare_dirs
     prepare
     flush_images
@@ -63,4 +66,4 @@ class ToolsProcessor < Barman::Processor
   end
 end
 
-ToolsProcessor.new.run
+exit ToolsProcessor.new.run

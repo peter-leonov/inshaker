@@ -1,8 +1,15 @@
+.border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
+.border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
+.border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
+.border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
+.border-links a:hover { text-decoration:none}
 
-/* about page */
+
 .b-content .viewport { height: 450px; }
 #about-page .b-content{min-height:46em;}
 #about-page .content {display:none;}
+#about-page .b-content {width:590px;}
+#about-page #poster {position:absolute;top:42px;}
 .b-content .content p, .b-content .content ol {font-size:12px;margin:1.5em 0 0;}
 .b-content .content ol {padding-left:18px;}
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
@@ -15,16 +22,17 @@
 #about-page .view-stat .stat .point { width: 510px; height: 560px; float: right;}
 #about-page .view-stat .stat a { margin-top: 140px; z-index: 1;}
 #about-page .view-stat .stat .prev,
-#about-page .view-stat .stat .next{position:absolute;width:20px;height:20px;background:url(icon/strs-green.png) no-repeat 0 -72px;left:0;top:90px;}
-#about-page .view-stat .stat .next{background-position:-20px -72px;left:auto;right:0;}
-#about-page .view-stat .stat .disabled {background-position:0 -92px;}
-#about-page .view-stat .stat .next.disabled {background-position:-20px -92px;}
+#about-page .view-stat .stat .next{position:absolute;left:0;top:90px;}
+#about-page .view-stat .stat .next{left:auto;right:0;}
 #about-page .view-stat dl dt { font-size: 14px; padding-bottom: 4px; }
 #about-page .view-stat ul { font-size: 12px;} 
 #about-page .view-stat ul li { list-style: disc; margin: 0 20px; }
 
 #about-page .body-wrapper{min-height:505px;}
 #about-page #body_wrapper{padding-bottom: 14px;}
+.b-content .top-menu{background:#000 url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
+.b-content .top-menu img{position:absolute;bottom:0;left:0;}
+.b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
 #about-page .b-content .top-menu p { margin-bottom: 0; padding-bottom: 10px; }
 #about-page .b-content .top-menu .b:after { display: none; }
 #about-page .b-content .content h3 { margin-top: 0; }
@@ -32,20 +40,25 @@
 #about-page .b-content .view-stat { padding-top: 20px; background: none; }
 
 #b-cr-about .body-wrapper{height:505px;}
-#b-cr-about form, 
-#b-cr-delivery form {font-size:11px;line-height:2;}
-#b-cr-about p, 
-#b-cr-delivery p {display:block;}
-#b-cr-about label, 
-#b-cr-delivery label{margin-top:1em;}
-#b-cr-about button, 
-#b-cr-delivery button {margin:24px 0 10px;}
+#b-cr-about form {font-size:11px;line-height:2;}
+#b-cr-about p {display:block;}
+#b-cr-about label {margin-top:1em;}
+#b-cr-about button {margin:24px 0 10px;}
 #b-cr-about textarea,
-#b-cr-about input, 
-#b-cr-delivery textarea, 
-#b-cr-delivery input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
+#b-cr-about input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE (6|7)/" -->
+#form_success{display:none;position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
+#form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background-position: -200px -25px; }
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.b-content .border-links {width:581px;}
+#about-page #menu{/*z-index:20;position:absolute;*/ width:90%;}
+#about-page #menu a{width:1px;white-space:nowrap;}
+#about-page #menu a b{border:none;}
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 .b-content .content ol {padding-left:23px;}
 <!--# endif -->

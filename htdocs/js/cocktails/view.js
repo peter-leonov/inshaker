@@ -1,4 +1,6 @@
-function CocktailsView (states, nodes, styles, decorationParams) {
+function remClass(elem, className) { if(elem) elem.remClassName(className) };
+
+function CocktailsView (states, nodes, styles) {
 	
 	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
@@ -13,23 +15,28 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
 	
 	this.currentState;
-    this.currentFilters;
+	this.currentFilters;
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
-	this.initialize = function (viewData, state){
-        this.viewData = viewData;
-
-		this.iAutocompleter = new Autocompleter(this.viewData.ingredients, 
-								nodes.searchByIngreds.getElementsByTagName("input")[0],
-								nodes.searchByIngreds.getElementsByTagName("form")[0]);
+	this.initialize = function (viewData, state)
+	{
+		this.viewData = viewData
+		
+		var set = viewData.ingredients.slice()
+		set.push.apply(set, viewData.names)
+		set = set.sort()
+		
+		var searcher = new IngredientsSearcher(set, viewData.byName)
+		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
+		completer.setDataSource(searcher)
 		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
 		this.renderGroupSet(nodes.strengthsList, this.viewData.strengths);
 		this.renderGroupSet(nodes.methodsList,   this.viewData.methods);
 		
-        this.bindEvents();
+		this.bindEvents();
 		this.turnToState(state);
 	};
 	
@@ -48,7 +55,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onTagFilter(cssQuery("span", this)[0].innerHTML.toLowerCase());
+					self.controller.onTagFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -57,7 +64,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!strengthLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onStrengthFilter(cssQuery("span",this)[0].innerHTML.toLowerCase());
+					self.controller.onStrengthFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -66,7 +73,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		for(var i = 0; i < methodLinks.length; i++){
 			methodLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!methodLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onMethodFilter(cssQuery("span",this)[0].innerHTML.toLowerCase());
+					self.controller.onMethodFilter(this.innerHTML.toLowerCase());
 				}
 			}}(i), false);
 		}
@@ -89,7 +96,7 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			else nodes.bigPrev.remClassName(styles.disabled);
 		}
 		
-		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.iAutocompleter.force(this.innerHTML) }, false);
+		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
@@ -142,14 +149,14 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			self.controller.onStateChanged(num);
 		}
 		
-		this.iAutocompleter.changeListener = {
-			onSearchConfirmed: function (name) {
-				self.onIngredientAdded(name);
-				self.iAutocompleter.emptyField();
-		}};
-		
-		nodes.spotlighted.href = decorationParams.spotlighted[1]
-		nodes.spotlighted.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
+		function changeListener (e)
+		{
+			nodes.searchByIngredsInput.value = ''
+			self.onIngredientAdded(e.data.value)
+			return false // prevents input value blinking in FF
+		}
+		this.completer.onconfirm = changeListener
+		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
 		
 		link = new Link();
 	};
@@ -192,8 +199,8 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	};
 	
 	this.onModelChanged = function(resultSet, filters, groupStates) { // model
-        this.currentFilters = filters;
-
+		this.currentFilters = filters;
+		
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
 		this.controller.saveFilters(this.currentFilters);
@@ -213,22 +220,23 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 		} else this.filterElems.letter = nodes.lettersAll;
 		this.filterElems.letter.addClassName(styles.selected);
 		
+		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = tagElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.tag) {
-			    this.filterElems.tag = tagElems[i];
-			    this.filterElems.tag.className = styles.selected;
+				this.filterElems.tag = tagElems[i];
+				this.filterElems.tag.className = styles.selected;
 			} else if(tagState.indexOf(elemTxt) == -1) {
-				  tagElems[i].className = styles.disabled;
+				tagElems[i].className = styles.disabled;
 			} else {
-				  tagElems[i].className = "";
+				tagElems[i].className = "";
 			}
 		}
 		
 		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
 		for(var i = 0; i < strengthElems.length; i++) {
-			var elemTxt = strengthElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.strength) {
 				this.filterElems.strength = strengthElems[i]; 
 				this.filterElems.strength.className = styles.selected;
@@ -239,9 +247,9 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			}
 		}
 		
-        var methodElems = nodes.methodsList.getElementsByTagName("dd");
+		var methodElems = nodes.methodsList.getElementsByTagName("dd");
 		for(var i = 0; i < methodElems.length; i++) {
-			var elemTxt = methodElems[i].getElementsByTagName("span")[0].innerHTML.toLowerCase();
+			var elemTxt = methodElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.method) {
 				this.filterElems.method = methodElems[i]; 
 				this.filterElems.method.className = styles.selected;
@@ -252,13 +260,13 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			}
 		}
 		
-        var ingredientsParent = nodes.searchesList;
+		var ingredientsParent = nodes.searchesList;
 		ingredientsParent.empty();
 		if(filters.ingredients.length > 0) {
 			var ingreds = filters.ingredients;
 			for(var i = 0; i < ingreds.length; i++) {
 				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
-				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(", "));
+				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
 			}
 		}
 		
@@ -271,8 +279,11 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
 		}
 		
-		if(filters.name) {
-			cssQuery("input", nodes.searchByName)[0].value = filters.name;
+		if (filters.name)
+		{
+			var input = cssQuery("input", nodes.searchByName)[0]
+			if (input.value != filters.name)
+				input.value = filters.name
 		}
 	},
 	
@@ -323,13 +334,9 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
-			var a = document.createElement("a");
-			a.className = "rem";
 			var span = document.createElement("span");
 			var txt = document.createTextNode(set[i].capitalize());
-			span.appendChild(txt);
-			dd.appendChild(span);
-			dd.appendChild(a);
+			dd.appendChild(txt);
 			parent.appendChild(dd);
 		}		
 	};
@@ -356,12 +363,12 @@ function CocktailsView (states, nodes, styles, decorationParams) {
 	this.createCocktailElement = function(cocktail) {
 		var id = cocktail.name_eng.htmlName();
 		var li = this.nodeCache[id];
-	    	
+		
 		if(!li) {
-            li = cocktail.getPreviewNode(this.dropTargets);
-            this.nodeCache[id] = li;
+			li = cocktail.getPreviewNode()
+			new Draggable(li.img, cocktail.name, this.dropTargets)
+			this.nodeCache[id] = li;
 		}
-        // cocktail.updateRound(li, this.currentFilters.ingredients.length > 0);
 		return li;
 	};
 	

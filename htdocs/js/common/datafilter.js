@@ -1,4 +1,17 @@
-var DataFilter = {
+;(function(){
+
+function noop () {  }
+
+Array.prototype.without = function(index) {
+	var tmp = [];
+	for(var i = 0; i < this.length; i++){
+		if(i != index) tmp.push(this[i]);
+	}
+	return tmp;
+}
+
+
+self.DataFilter = {
 	good_paths: [],
 	
 	/**
@@ -17,10 +30,10 @@ var DataFilter = {
 				var ingred = cocktail.ingredients[j][0];
 				
 				if(goods[ingred]) {
-					var dose = this._parseDose(goods[ingred][0].unit, cocktail.ingredients[j][1]);
+					var dose = this._parseDose(goods[ingred].unit, cocktail.ingredients[j][1]);
 					if(!res[ingred]) {
 						res[ingred] = {};
-						res[ingred].good = goods[ingred][0];
+						res[ingred].good = goods[ingred];
 						res[ingred].bottles = {};
 						res[ingred].dose = 0;
 					}
@@ -41,7 +54,7 @@ var DataFilter = {
 	countOptimal: function(max_vol, volumes){
 		var vols = [], costs = [];
 		var j = 0;
-		for(var i = 0; i < volumes.length; i++) {			
+		for(var i = 0; i < volumes.length; i++) {
 			if(volumes[i][2]) {
 				vols[j] = volumes[i][0];
 				costs[j] = volumes[i][1];
@@ -109,8 +122,10 @@ var DataFilter = {
 		}
 		
 		for(var i = 0; i < volumes.length; i++){
-			if(answer[volumes[i][0]])
-				answer[volumes[i][0]].vol = volumes[i];
+			noop() // for FF <= 3.5.2 with jit on
+			var volume = volumes[i], val = volume[0]
+			if(answer[val])
+				answer[val].vol = volume;
 		}
 		
 		return answer
@@ -118,7 +133,7 @@ var DataFilter = {
 	
 	bottleByIngredientAndVolume: function(goods, ingred, vol){
 		var res = {};
-		var volumes = goods[ingred][0].volumes;
+		var volumes = goods[ingred].volumes;
 		for(var i = 0; i < volumes.length; i++){
 			if(volumes[i][0] == vol) {
 				res.vol = volumes[i];
@@ -126,37 +141,6 @@ var DataFilter = {
 			}
 		}
 		return res;
-	},
-	
-	relatedCocktails: function(set, cocktail, howMany) {
-		var res = [];
-		var ingreds = [];
-		var possibleSets = [];
-		
-		for(var i = 0; i < cocktail.ingredients.length; i++) {
-			ingreds.push(cocktail.ingredients[i][0]);
-		}
-		var ingredsCopy = cloneObject(ingreds);
-		possibleSets.push([].concat(ingreds));
-		
-		while(ingreds.length > 1) {
-			var spliced = ingreds.length-1;
-			while(spliced >= 0){
-				possibleSets.push(ingreds.without(spliced));
-				spliced--;
-			}
-			ingreds.splice(ingreds.length-1, 1);
-		}
-		
-		for(var i = 0; i < ingredsCopy.length; i++) possibleSets.push([].concat(ingredsCopy[i]));
-		
-		for(var i = 0; i < possibleSets.length; i++){
-			var cocktails = this.cocktailsByIngredients(set, possibleSets[i]);
-			cocktails.splice(cocktails.indexOf(cocktail), 1);
-			res = res.concat(cocktails.sort(this.nameSort));
-			if(res.uniq().length >= howMany) break;
-		}
-		return res.uniq().slice(0, howMany);
 	},
 	
 	ingredientsByLetter: function(set, letter){
@@ -280,3 +264,5 @@ var DataFilter = {
 		return volumes[closest_idx];
 	}
 }
+
+})();

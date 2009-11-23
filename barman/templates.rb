@@ -8,6 +8,7 @@ class CocktailTemplate
 
     @teaser      = hash["teaser"]
     @strength    = hash["strength"]
+    @method      = hash["method"]
     @desc_start  = hash["desc_start"]
     @desc_end    = hash["desc_end"]
     @tags        = hash["tags"]
@@ -15,6 +16,29 @@ class CocktailTemplate
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
     @video       = hash["video"]
+    
+    @recs        = hash["recs"]
+  end
+  
+  def groups
+    groups = []
+    groups << ["/cocktails.html#method=#{@method}", @method]
+    groups << ["/cocktails.html#strength=#{@strength}", @strength]
+    
+    @tags.each do |tag|
+      groups << ["/cocktails.html#tag=#{tag}", tag]
+    end
+    groups
+  end
+  
+  def get_binding
+    binding
+  end
+end
+
+class CocktailRecomendationsTemplate
+  def initialize(recs)
+    @recs = recs
   end
   
   def get_binding
@@ -37,26 +61,12 @@ class BarTemplate
 end
 
 class EventTemplate
-  def initialize(hash)
-    @name       = hash[:name]
-    @city       = hash[:city]
-    @venue      = hash[:venue]
-    @header     = hash[:header]
-    @target     = hash[:target]
-    @subject    = hash[:subject]
-    @country    = hash[:country]
-    @href       = hash[:href]
-    @date       = hash[:date]
-    @adate      = hash[:adate]
-    @date_ru    = hash[:date_ru]
-    @address    = hash[:address]
-    @fields     = hash[:fields]
-    @imgdir     = hash[:imgdir]
-    @promo      = hash[:promo]
-    @photos     = hash[:photos]
-    @enter      = hash[:enter]
-    @status      = hash[:status]
-    @form_hint  = hash[:form_hint]
+  def initialize *hashes
+    hashes.each do |hash|
+      hash.each do |k, v|
+        instance_variable_set("@#{k}", v)
+      end
+    end
   end
   
   def get_binding

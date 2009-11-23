@@ -4,6 +4,19 @@ var doc = document
 function N (name, classN) { var res = doc.createElement(name); if(classN) res.className = classN; return res; }
 function T (text) { return doc.createTextNode(text) }
 
+Number.prototype.toTime = function ()
+{
+	var m = /([+\-]?\d+)(?:\.(\d+))?/.exec(this) //.oString var mins = this & -1,
+	return m[1] + ':' + (m[2] === undefined ? '00' : (m[2].length <= 1 ? '0' + m[2] : m[2]))
+}
+
+Date.prototype.getFormatted = function(withYear){
+	var weekdays = ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"]
+	var months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"] 
+	return this.getDate() + " " + months[this.getMonth()] + (withYear ? " " + this.getFullYear() : ", " + weekdays[this.getDay()])
+}
+
+
 EventPage.view =
 {
 	owner: null, // must be defined before initialize
@@ -298,11 +311,24 @@ EventPage.view =
 			root = nodes.rating
 		
 		
-		var data = rating.data,
-			sorted = Object.keys(data).sort(function (a, b) { return data[b] - data[a] }),
+		var data = rating.data, type = rating.type, sorted = Object.keys(data), max, min
+		
+		if (rating.reverse)
+		{
+			// a - b
+			sorted = sorted.sort(function (a, b) { return data[a] - data[b] || a.localeCompare(b) })
+			max = data[sorted[sorted.length-1]],
+			min = data[sorted[0]]
+		}
+		else
+		{
+			// b - a
+			sorted = sorted.sort(function (a, b) { return data[b] - data[a] || a.localeCompare(b) }),
 			max = data[sorted[0]],
-			min = data[sorted[sorted.length-1]],
-			k = max && min ? 100 / (max - min + 1) : 1
+			min = data[sorted[sorted.length-1]]
+		}
+		
+		var k = max > min ? 100 / (max - min) : 0 // 100 means 100%
 		
 		root.empty()
 		
@@ -316,20 +342,21 @@ EventPage.view =
 		{
 			var name = sorted[i],
 				count = data[name],
-				padding = String(count).length * 3.4, // means 3.4% for a digit
-				width = Math.floor((count - min + 1) * k)
+				text = type === 'comp' ? count.toTime() : count.toString(),
+				start = text.length * 3.4, // means 3.4% for a digit
+				width = Math.floor((count - min) * k)
 			
-			if (width < padding)
-				width = padding
+			if (width < start)
+				width = start
 			
 			var label = N('div', 'label')
 			label.appendChild(T(name))
 			labels.appendChild(label)
 			
 			var rate = N('div', 'rate')
-			rate.style.width = padding + '%'
-			rate.animate('easeInOutQuad', {width: [padding, width]}, 1, '%')
-			rate.appendChild(T(count))
+			rate.style.width = start + '%'
+			rate.animate('easeInOutQuad', {width: [start, width]}, 1, '%')
+			rate.appendChild(T(text))
 			rates.appendChild(rate)
 		}
 		
@@ -353,9 +380,15 @@ EventPage.view =
 	{
 		var totalPeople = 0, totalFrom = 0, data = rating.data
 		
-		for (var k in data)
-			totalPeople += data[k],
-			totalFrom++
+		if (rating.type == 'comp')
+		{
+			for (var k in data)
+				totalPeople++
+		}
+		else
+			for (var k in data)
+				totalPeople += data[k],
+				totalFrom++
 		
 		var ratingHead = this.nodes.ratingHead
 		if (rating.phrase)
@@ -391,7 +424,8 @@ EventPage.view =
 		var sponsor = sponsorsSet[0]
 		if (sponsor)
 		{
-			nodes.sponsorsHighTitle.innerHTML = sponsor.name
+			if (nodes.sponsorsHighTitle)
+				nodes.sponsorsHighTitle.innerHTML = sponsor.name
 			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
 		}
@@ -413,36 +447,40 @@ EventPage.view =
 			return illustration.remove()
 		
 		illustration.style.backgroundImage = 'url(' + this.iroot + '/dialogues/' + dialogue.back + ')'
-		illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
 		
-		illustrationPopups.animate('linearTween', {opacity: [0]}, 0.01)
-		
-		function animatePopups ()
+		if (dialogue.popups)
 		{
-			illustrationPopups.animate('linearTween', {opacity: [0]}, 0.3).oncomplete =
-			function ()
+			illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
+			
+			function animatePopups ()
 			{
+				illustrationPopups.addClassName('hidden')
 				setTimeout
 				(
 					function ()
 					{ 
-					if (illustration.scrollTop + 300 >= illustration.scrollHeight)
-						illustration.scrollTop = 0
-					else
-						illustration.scrollTop += 300
-				
-					illustrationPopups.animate('linearTween', {opacity: [1]}, 0.3)
+						if (illustration.scrollTop + 300 >= illustration.scrollHeight)
+							illustration.scrollTop = 0
+						else
+							illustration.scrollTop += 300
+						
+						illustrationPopups.remClassName('hidden')
 					},
 					500
 				)
 			}
+			
+			setInterval(animatePopups, 3200)
 		}
-		
-		setInterval(animatePopups, 3200)
+		else
+			illustrationPopups.remove()
 	},
 	
 	renderVariableFields: function (fieldsSet)
 	{
+		if (!fieldsSet)
+			return
+		
 		var root = this.nodes.variableInputs
 		
 		for (var i = 0; i < fieldsSet.length; i++)

@@ -1,5 +1,3 @@
-body { background-image: url(/t/event/bg.png); }
-
 #overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }
 
 .timeline {width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}
@@ -14,14 +12,9 @@ body { background-image: url(/t/event/bg.png); }
 .previews .viewport .point { float: left; width: 848px; }
 .previews .viewport .point.past { text-align: right; }
 .previews .prev,
-.previews .next {
-display:block; z-index:3; width:20px; height:20px; position:absolute; left:auto; top:41px; right:19px;
-background: url(icon/strs-green.png);
-}
-.previews .prev { left: 0; background-position: 0 -72px; }
-.previews .next { right: 0; background-position: -20px -72px; }
-.previews .prev.disabled { background-position: 0 -92px; cursor: default; }
-.previews .next.disabled { background-position: -20px -92px; cursor: default; }
+.previews .next { z-index: 3; position: absolute; top: 41px; right:19px; }
+.previews .prev { left: 0; }
+.previews .next { right: 0; }
 
 
 .previews .event { position: relative; width: 180px; display: inline-block; vertical-align: top; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; font-size: 12px; font-family: Arial, sans-serif; }
@@ -46,12 +39,12 @@ background: url(icon/strs-green.png);
 .b-title h1, .b-title h3 { font-size: 20px; }
 .b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
 #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
+#illustration .hidden { visibility: hidden; }
 #main-sponsors { margin-bottom: 24px; }
 #main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 
 .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
-.about h2 a { text-decoration: none; }
-.about .parole { font-family: Arial; font-size: 20px; color: #bc0000; font-style: italic; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
+.about .parole { font-family: Arial; font-size: 15px; color: #000; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
 .about .info { margin: 23px 0 0 0; font-size: 11px; line-height: 16px; }
 .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
 .about .view-photos,
@@ -88,7 +81,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #low-sponsors .b-content .viewport .surface { width: 10000px; }
 #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
-#low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 250px 0 0; visibility: hidden; }
+#low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 500px 0 0; visibility: hidden; }
 #low-sponsors .b-content .viewport .point { width: 835px; height: 120px; padding: 0 10 0 0px; margin: 0 30px; text-align: justify; line-height: 70px; }
 #low-sponsors .b-content .prev,
 #low-sponsors .b-content .next { top: 32px; }
@@ -136,7 +129,6 @@ html.empire-open-cinema #form-popup .content form label input { right: -300px; }
 
 .previews .event .mark,
 .timeline .body-wrapper {overflow: hidden;}
-.timeline .previews .prev { background-position-x: -52px; }
 .b-content { width:100%; }
 
 #both-wrapper { zoom: 1; }

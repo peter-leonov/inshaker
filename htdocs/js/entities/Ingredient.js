@@ -1,4 +1,6 @@
-Ingredient = function (data)
+;(function(){
+
+var Me = self.Ingredient = function (data)
 {
 	for (var k in data)
 		this[k] = data[k]
@@ -8,18 +10,7 @@ Ingredient.prototype =
 {
 	constructor: Ingredient,
     getRound: function() { return Ingredient.rounds[this.name] },
-    listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-    
-    updateRound: function(mark, show) {
-        var round = this.getRound();
-
-        if(round == Infinity) { mark.setVisible(false); return;}
-        else if(round == 0) round = "Ok";
-        else if(round) round = "+" + round;
-
-        mark.innerHTML = round;
-        mark.setVisible(show)
-    }
+    listOrder: function () { return Ingredient.groups.indexOf(this.group) }
 }
 
 Object.extend(Ingredient,
@@ -62,8 +53,8 @@ Object.extend(Ingredient,
             var cName    = cocktails[i].name;
             var cIngreds = cocktails[i].ingredients;
             for(var j = 0; j < cIngreds.length; j++){
-                if(this.rounds[cIngreds[j][0]] > cRounds[cName])
-                    this.rounds[cIngreds[j][0]] = cRounds[cName];
+                if(this.rounds[cIngreds[j]] > cRounds[cName])
+                    this.rounds[cIngreds[j]] = cRounds[cName];
             }
         }
         return this.rounds;
@@ -76,7 +67,16 @@ Object.extend(Ingredient,
 		if(self.groups.indexOf(self.getByName(a).group) > 
 			self.groups.indexOf(self.getByName(b).group)) return 1;
 		else return -1;
+	},
+	
+	compareByGroup: function (a, b)
+	{
+		var groups = Me.groups
+		return groups.indexOf(a.group) - groups.indexOf(b.group)
 	}
 })
 
+
 Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->)
+
+})();

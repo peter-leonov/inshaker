@@ -4,7 +4,7 @@ var Model = {
 	dataListener: null,
 	
 	init: function(){
-		this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
+		// this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
 	},
 	
 	uniqueLetters: function(){
@@ -29,8 +29,5 @@ var Model = {
 	selectedListChanged: function(selectedList){
 		this.resultSet = this.suitableIngredients(selectedList);
 		this.dataListener.updateCount(this.resultSet[0], this.resultSet[2], selectedList.length);
-        
-        // var rounds = Ingredient.getAllRoundsByNames(selectedList);
-	    // this.dataListener.updateRounds(rounds, selectedList.length > 0);
     }
 }

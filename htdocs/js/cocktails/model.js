@@ -16,7 +16,10 @@ function CocktailsModel (states, view) {
 	
 	this.initialize = function(filters) {
 		this.filters = this.completeFilters(filters);
-        var viewData = copyProperties(Cocktail, ["tags", "strengths", "methods", "letters", "ingredients"]); 
+		var viewData = copyProperties(Cocktail, ["tags", "strengths", "methods", "ingredients"]);
+		viewData.letters = Cocktail.getFirstLetters()
+		viewData.names = Good.names
+		viewData.byName = Good.byName
 		view.initialize(viewData, this.filters.state);
 		this.applyFilters();
 	};
@@ -33,7 +36,7 @@ function CocktailsModel (states, view) {
 	};
 	
 	this.completeFilters = function(filters){
-        if(!filters)             filters = {};
+		if(!filters)             filters = {};
 		if(!filters.name)        filters.name = "";
 		if(!filters.letter)      filters.letter = "";
 		if(!filters.tag)         filters.tag = "";
@@ -45,7 +48,7 @@ function CocktailsModel (states, view) {
 		
 		if(!filters.state) filters.state = states.defaultState;
 		
-		if(filters.ingredients.length || filters.tag || filters.strength) {
+		if(filters.ingredients.length || filters.tag || filters.strength || filters.method) {
 			filters.state = states.byIngredients;
 		}
 		
@@ -62,16 +65,16 @@ function CocktailsModel (states, view) {
 		this.filters.page = 0;
 		this.filters.state = states.defaultState;
 	};
-
-    this.filtersAreEmpty = function(){
-        return (!this.filters.name && !this.filters.letter &&
-                !this.filters.tag && !this.filters.strength &&
-                !this.filters.method && !this.filters.ingredients.length)
-    };
 	
-    
+	this.filtersAreEmpty = function(){
+		return (!this.filters.name && !this.filters.letter &&
+				!this.filters.tag && !this.filters.strength &&
+				!this.filters.method && !this.filters.ingredients.length)
+	};
+	
+	
 	this.uniqueTags = function(set){
-        var res = [];
+		var res = [];
 		for(var i = 0; i < set.length; i++){ res = res.concat(set[i].tags) }
 		return res.uniq();
 	};
@@ -99,7 +102,7 @@ function CocktailsModel (states, view) {
 		view.controller.saveFilters(this.filters);
 	};
 	
-	this.onLetterFilter = function(name, name_all) { 
+	this.onLetterFilter = function(name, name_all) {
 		if(name != this.filters.letter) {
 			this.filters.ingredients = [];
 			this.filters.tag         = "";
@@ -121,15 +124,15 @@ function CocktailsModel (states, view) {
 			this.filters.strength    = "";
 			this.filters.method      = "";
 			this.filters.page        = 0;
-			this.filters.name        = name; 
+			this.filters.name        = name;
 			this.applyFilters();
 		}
 	}
 	
-	this.onTagFilter = function(name) { 
+	this.onTagFilter = function(name) {
 		if(name != this.filters.tag) {
 			this.filters.letter  = "";
-			this.filters.tag     = name; 
+			this.filters.tag     = name;
 		} else this.filters.tag  = "";
 		this.filters.method = "";
 		this.filters.page = 0;
@@ -147,10 +150,10 @@ function CocktailsModel (states, view) {
 		this.applyFilters();
 	};
 	
-    this.onMethodFilter = function(name) { 
+	this.onMethodFilter = function(name) {
 		if(name != this.filters.method) {
 			this.filters.letter  = "";
-			this.filters.method  = name; 
+			this.filters.method  = name;
 		} else this.filters.method = "";
 		this.filters.page = 0;
 		this.applyFilters();
@@ -173,31 +176,31 @@ function CocktailsModel (states, view) {
 		} else return; // duplicate entry
 		this.applyFilters();
 	};
-    
-    // get states by current filters
-    this.getGroupStates = function(){
-        var set = [], groupStates = {};
-        
-        if(this.filtersAreEmpty()) return copyProperties(Cocktail, ["strengths", "tags", "methods"]);  
-         
-        // strengths state - depends only on ingredients
-        var rFilters = cloneObject(this.filters); 
-        rFilters.strength = "", rFilters.tag  = "", rFilters.method = "";
-        groupStates.strengths = this.uniqueStrengths(Cocktail.getByFilters(rFilters, states));
-        
-        // tags state - depends on ingredients and strength
-        rFilters = cloneObject(this.filters);
-        rFilters.tag = "", rFilters.method = "";
-        groupStates.tags = this.uniqueTags(Cocktail.getByFilters(rFilters, states));         
-            
-        // methods state - depends on ingredients, strength and tag
-        rFilters = cloneObject(this.filters);
-        rFilters.method = "";
-        groupStates.methods = this.uniqueMethods(Cocktail.getByFilters(rFilters, states));
-            
-        return groupStates; 
-    };
-    	
+	
+	// get states by current filters
+	this.getGroupStates = function(){
+		var set = [], groupStates = {};
+		
+		if(this.filtersAreEmpty()) return copyProperties(Cocktail, ["strengths", "tags", "methods"]);
+		
+		// strengths state - depends only on ingredients
+		var rFilters = cloneObject(this.filters);
+		rFilters.strength = "", rFilters.tag  = "", rFilters.method = "";
+		groupStates.strengths = this.uniqueStrengths(Cocktail.getByFilters(rFilters, states));
+		
+		// tags state - depends on ingredients and strength
+		rFilters = cloneObject(this.filters);
+		rFilters.tag = "", rFilters.method = "";
+		groupStates.tags = this.uniqueTags(Cocktail.getByFilters(rFilters, states));
+		
+		// methods state - depends on ingredients, strength and tag
+		rFilters = cloneObject(this.filters);
+		rFilters.method = "";
+		groupStates.methods = this.uniqueMethods(Cocktail.getByFilters(rFilters, states));
+		
+		return groupStates;
+	};
+	
 	this.applyFilters = function() {
 		view.onModelChanged(Cocktail.getByFilters(this.filters, states), this.filters, this.getGroupStates());
 	};

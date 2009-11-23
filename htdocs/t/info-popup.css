@@ -1,52 +1,24 @@
-.info-popup-area { display:none; width: 100%; height: 100%; left:0; top: 0; position: fixed; z-index:2;}
-.info-popup { z-index:5; margin: 22px auto 0; width: 960px;}
-.info-popup .win { padding:0; width: 960px; top:46px; }
-.info-popup .b-title {margin-bottom:20px;}
-.info-popup .content .photo { display:block; height: 281px; width: 357px; float:left;}
-.info-popup .content .desc { overflow:hidden; background:#f1f0ed; width: 502px; padding: 22px 30px; margin-left: 357px; height: 237px; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; position:absolute}
-.info-popup .content .desc p {margin-bottom: 15px;}
-.info-popup h2 {margin-left:-1px; padding-bottom:10px; font-size: 18px;}
-.info-popup .content {width: 924px; margin-bottom:10px;}
-.info-popup .content .desc p.contact {margin-bottom:4px}
-.info-popup .enrollment {font-size:20px; font-style:italic; color:#F22B9F; background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0; clear:both; padding:14px 0 3px 0;}
-.info-popup .cocktails-list { /* background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0;*/ clear:both; padding:0px 0 3px 0;}
+.barman-info .b-title {margin-bottom:20px;}
+.barman-info .content {overflow:hidden; position:relative; width: 922px; height: 281px; margin-bottom:25px; font-size:12px;}
+.barman-info .content .photo { position: absolute; top: 0; left: 0; height: 281px; width: 357px; -moz-border-radius-topleft:10px; -moz-border-radius-bottomleft:10px; -webkit-border-top-left-radius:10px; -webkit-border-bottom-left-radius:10px;}
+.barman-info .content .desc { position:absolute; left: 357px; top: 0; width: 502px; height: 271px; overflow: auto; background:#f1f0ed;  padding: 10px 30px 0; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; }
+.barman-info .content .desc p {margin-bottom: 0.6em; }
+.barman-info .content .desc p,
+.barman-info .content .desc li {line-height: 15px;}
+.barman-info h2 {margin-left:0px; padding-bottom:0.2em; font-size: 18px;}
 
-.info-popup-area .body-wrapper {padding: 14px 18px 10px;}
-.info-popup-area .close-controls {clear:both; width:960px; z-index: 5; height: 10px; margin: 0 auto; position: relative; top: 41px;}
-.info-popup-area .close-controls .text  { float: left; color:#FFF; border-bottom:1px dashed; text-decoration:none;}
-.info-popup-area .close-controls .cross { float: right; display: block; background: url('/t/button/close_cross.png') no-repeat; height: 7px; width: 7px; margin-top:5px}
+.barman-info .body-wrapper {padding: 14px 18px 10px;}
+.barman-info .hrefs .arrow {color:#000; font-size: 200%; text-decoration:none; }
+.barman-info .hrefs .arrow.disabled { cursor:default; color: #C0C0C0; }
+.barman-info .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
 
-.info-popup-area .hrefs .arrow {color:#000; font-size: 200%; text-decoration:none; }
-.info-popup-area .hrefs .arrow.disabled { cursor:default; color: #C0C0C0; }
-.info-popup-area .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
-
-.info-popup .cocktails-list .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:120px; width:891px;}
-.info-popup .cocktails-list .surface{width:20000px;}
-.info-popup .cocktails-list .point{height:100px;width:891px;float:left; font-size:120%;}
-.info-popup .cocktails-list li{width:8em;text-align:center;float:left;width:110px;}
-.info-popup .cocktails-list img{display:block;margin:0 auto 5px;}
-.info-popup .cocktails-list .prev,
-.info-popup .cocktails-list .next{background:url(icon/strs-green.png) no-repeat -16px -24px;position:absolute; top: 415px; right:18px; height:14px; width:16px; z-index:2;}
-.info-popup .cocktails-list .prev{background-position:0 -24px; right:auto;}
-.info-popup .cocktails-list .next.disabled{background-position:-16px -38px; cursor:default;}
-.info-popup .cocktails-list .prev.disabled{background-position:0 -38px; cursor:default;}
-
-.info-popup .rounder {background: url(/t/bg/blocks/rounder.png); position:absolute; height:281px; width:15px;}
-
-#guide-info-popup .info-popup .content .desc { padding:10px 30px; height:261px}
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-.info-popup .content .desc {top:71px;}
-.info-popup .content {margin-bottom:0}
-.info-popup .rounder { z-index:6; top:71px; left:20px; } 
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.info-popup .cocktails-list .prev,
-.info-popup .cocktails-list .next { left:18px }
-.info-popup .cocktails-list .next { left:auto; background-position-x: -16px; }
-.info-popup .cocktails-list .disabled {background-position-y: -38px !important; }
-.info-popup-area {position:absolute;top:expression(String(document.documentElement.scrollTop)+'px');}
-.info-popup .rounder {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
-.info-popup .cocktails-list .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
-<!--# endif -->
+.barman-info .cocktails-list {padding:0px 0 3px 0;}
+.barman-info .cocktails-list .viewport{overflow:hidden;position:relative;left:10px;top:2px;height:123px; width:900px;}
+.barman-info .cocktails-list .surface{width:30000px;}
+.barman-info .cocktails-list .point{height:100px;width:900px;float:left; font-size:120%;}
+.barman-info .cocktails-list li{width:8em;text-align:center;float:left;width:150px;}
+.barman-info .cocktails-list img{display:block;margin:0 auto 5px;}
+.barman-info .cocktails-list .prev,
+.barman-info .cocktails-list .next { top: 425px; }
+.barman-info .cocktails-list .prev { left: 20px; }
+.barman-info .cocktails-list .next { right: 20px; }

@@ -1,4 +1,31 @@
 /**
+ * Get element's absolute position. Properly handles Safari's body scroll*.
+ * 
+ * @param e - element
+ * @return {Object} position - x,y
+ */
+function getPosition (n)
+{
+	var x = 0, y = 0, p
+	for (;;)
+	{
+		x += n.offsetLeft
+		y += n.offsetTop
+		if ((p = n.offsetParent))
+		{
+			x -= n.scrollLeft
+			y -= n.scrollTop
+			n = p
+		}
+		else
+			break
+	}
+	
+	return {x:x, y:y};
+}
+
+
+/**
  * Класс, который позволяет сделать элемент перетаскиваемым (создается его клон)
  * В результате перетаскивания у элемента-цели срабатывает метод onDrop(name)
  * 
@@ -7,7 +34,7 @@
  * @param dropTargets - массив элементов-целей, на которые можно перетаскивать
  */
 function Draggable(element, name, dropTargets){
-	this.STYLE_CURSOR = 'drag_cursor';
+	this.STYLE_CURSOR = 'drag-cursor';
 	
 	this.dragObject = null;
 	var self = this;
@@ -37,13 +64,13 @@ function Draggable(element, name, dropTargets){
 	}, false);
 	
 	function beginDrag(e) {
-		self.dragObject = element.cloneNode(true);
-		self.style = self.dragObject.style
-		self.style.position = "absolute";
+		var node = self.dragObject = element.cloneNode(true);
+		self.style = node.style
+		node.addClassName("dragging-object")
 		var startPos = getPosition(element)
 		self.delta = {x: startPos.x - e.pageX, y: startPos.y - e.pageY}
 		
-		document.body.appendChild(self.dragObject);
+		document.body.appendChild(node)
 		// document.body.addClassName(self.STYLE_CURSOR);
 		for(var i = 0; i < dropTargets.length; i++){
 			if(dropTargets[i].onDragStart) dropTargets[i].onDragStart(element);
@@ -63,8 +90,8 @@ function Draggable(element, name, dropTargets){
 			
 			// dropping
 			for(var i = 0; i < dropTargets.length; i++){
-				if(dropTargets[i].style.display != "none"){
-					var targPos    = getPosition(dropTargets[i]); // from util.js
+				if(dropTargets[i].style.display == "block"){
+					var targPos    = getPosition(dropTargets[i]);
 					var targWidth  = parseInt(dropTargets[i].offsetWidth);
 					var targHeight = parseInt(dropTargets[i].offsetHeight);
 					
@@ -73,12 +100,16 @@ function Draggable(element, name, dropTargets){
 						(e.pageX < (targPos.x + targWidth))  &&
 						(e.pageY > targPos.y)                &&
 						(e.pageY < (targPos.y + targHeight))){
-						dropTargets[i].onDrop(name);
-					} else {
-						if(dropTargets[i].onDragEnd) dropTargets[i].onDragEnd();
+						if (dropTargets[i].onDrop(name) === true)
+							break;
 					}
 				}
 			}
+			
+			for(var i = 0; i < dropTargets.length; i++)
+				if (dropTargets[i].onDragEnd)
+					dropTargets[i].onDragEnd();
+			
 			self.dragObject = null;
 		}
 	}, false);

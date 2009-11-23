@@ -1,13 +1,14 @@
+# encoding: utf-8
 require 'rutils'
 
 class String
   
   def trans
-    gsub('й','й').dirify
+    dirify
   end
 
-  def yi
-    self.gsub('й','й')
+  def has_diacritics
+    index /[̆̈]/
   end
 
   def zpt

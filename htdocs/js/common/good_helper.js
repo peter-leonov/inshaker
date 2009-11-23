@@ -1,6 +1,12 @@
 /**
  * Общие функции для компонентов, работающих с товарами (уровень view)
  */
+
+Number.prototype.toFloatString = function(){
+	if(this.toString() != parseInt(this)) return this.toString();
+	return this + ".0";
+}
+
 var GoodHelper = {
 	PATH_VOLUMES : '/i/merchandise/volumes/',
     CART : 'cart',
@@ -16,27 +22,31 @@ var GoodHelper = {
         return cd;
     },
 
-    deSerializeCartData: function(cartData){
-    	for(var i = 0; i < cartData.cocktails.length; i++){
-				 // name -> cocktail
-				var name = cartData.cocktails[i][0];
-				cartData.cocktails[i][0] = Cocktail.getByName(name);
+	deSerializeCartData: function (cartData)
+	{
+		var dataCocktails = cartData.cocktails,
+			cocktails = []
+		for (var i = 0; i < dataCocktails.length; i++)
+		{
+			var cocktail = Cocktail.getByName(dataCocktails[i][0])
+			if (cocktail)
+				cocktails.push([cocktail, dataCocktails[i][1]])
+		}
+		
+		var gds = {}
+		for (var name in cartData.goods)
+		{
+			var good = goods[name]
+			if (good)
+			{
+				gds[name] = cartData.goods[name]
+				gds[name].good = good
 			}
-		for(ingred in cartData.goods) cartData.goods[ingred].good = goods[ingred][0];
-        return cartData;
+		}
+		
+		return {cocktails: cocktails, goods: gds}
     },
 
-    ingredientsLinkByMark: function(mark){
-        var ingreds = [];
-        for(var ingred in goods){
-            for(var i = 0; i < goods[ingred].length; i++){
-                if(goods[ingred][i].mark == mark && Cocktail.ingredients.indexOf(ingred) > -1) 
-                    ingreds.push(ingred);
-            }
-        }
-        return "/cocktails.html#state=byIngredients&ingredients=" + ingreds.join(",");                
-    },
-    
     ingredientLink: function(ingred){
         return "/cocktails.html#state=byIngredients&ingredients=" + ingred;                
     },
@@ -59,6 +69,23 @@ var GoodHelper = {
 		return unit;
 	},
 	
+    normalVolumeTxt: function(vol, unit){
+        switch(unit){
+            case "мл": if(vol >= 1000) { vol /= 1000; unit = "л";  }; break;
+            case  "л": if(vol < 1)     { vol *= 1000; unit = "мл"; }; break;
+              
+            case "гр": if(vol >= 1000) { vol /= 1000; unit = "кг"; }; break;
+            case "кг": if(vol < 1)     { vol *= 1000; unit = "гр"; }; break;
+        }
+
+        return vol + " " + unit;
+    },
+
+    normalVolumeTxtParsed: function(txt){
+		var arr  = txt.match(/^(.+)\ (.+)/);
+        return this.normalVolumeTxt(arr[1], arr[2]);
+    },
+
 	/**
 	 * Возвращает предполагаемое название емкости
 	 * для заданного ингредиента
@@ -94,7 +121,7 @@ var GoodHelper = {
 	},
 	
 	getIngredText: function(name){
-		var brand = goods[name][0].brand || "";
+		var brand = goods[name].brand || "";
 		if(brand.indexOf(name) > -1) name = "";
 		var gap = "";
 		if(brand && name) gap = " ";

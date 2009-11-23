@@ -2,6 +2,7 @@
 # encoding: utf-8
 require 'barman'
 require 'uri'
+require 'optparse'
 
 class IngredientsProcessor < Barman::Processor
   
@@ -30,14 +31,27 @@ class IngredientsProcessor < Barman::Processor
     @goods = {}
   end
   
-  def run
+  def job_name
+    "смешивалку ингредиентов"
+  end
+  
+  def job
+    @options = {:force => true}
+    OptionParser.new do |opts|
+      opts.banner = "Usage: ingredients.rb [options]"
+      
+      opts.on("-f", "--force", "Force update without mtime based cache") do |v|
+        @options[:force] = v
+      end
+    end.parse!
+    
     prepare_dirs
     prepare_goods
     
     update_groups
     update_goods
     
-    if summary
+    unless errors?
       flush_links
       flush_json
     end
@@ -61,20 +75,20 @@ class IngredientsProcessor < Barman::Processor
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @goods.each do |name, entity|
-        entity = entity[0]
-        links.puts %Q{<li><a href="/cocktails.html#state=byIngredients&ingredients=#{URI.escape(name)}">#{name}</a> — #{entity["group"]}</li>}
+      @goods.keys.sort.each do |name|
+        entity = @goods[name]
+        links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
       end
       links.puts "</ul>"
     end
   end
   
   def prepare_goods
-    if File.exists?(Config::DB_JS_GOODS)
+    if File.exists?(Config::DB_JS_GOODS) && !@options[:force]
       @goods_mtime = File.mtime(Config::DB_JS_GOODS)
       @goods = JSON.parse(File.read(Config::DB_JS_GOODS))
     else
-      @goods_mtime = Time.at(0)
+      @goods_mtime = nil
     end
   end
   
@@ -84,34 +98,65 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        good = process_good(good_dir, group_dir.name, good_dir.name)
-        unless good
-          good_dir.each_dir do |brand_dir|
-            break if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
-          end
-          unless good
+        if !@goods_mtime || good_dir.deep_mtime > @goods_mtime
+          if good = find_good(good_dir, group_dir)
+            done += 1
+            good["group"] = group_dir.name
+            @goods[good_dir.name] = good
+            
+            if names = read_names(good_dir)
+              good["names"] = names
+            else
+              good.delete("names")
+            end
+          else
             warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
           end
         end
-        
-        if good
-          @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
-          if good != true
-            done += 1
-            good["group"] = group_dir.name
-            @goods[good_dir.name] = [good]
-          end
-        end
+        @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
       end
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
     end # indent
   end
   
+  def find_good good_dir, group_dir
+    errors = []
+    good = process_good(good_dir, group_dir.name, good_dir.name)
+    if good
+      found = true
+    end
+    
+    good_dir.each_dir do |brand_dir|
+      if found
+        errors << [group_dir, good_dir, brand_dir]
+      else
+        if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
+          found = true
+        else
+          errors << [group_dir, good_dir, brand_dir]
+        end
+      end
+    end
+    errors.each do |arr|
+      error "непонятная папочка #{arr[0].name}/#{arr[1].name}/#{arr[2].name}"
+    end
+    good
+  end
+  
+  def read_names dir
+    fname = dir.path + "/names.yaml"
+    if File.exists?(fname)
+      say "обновляю псевдонимы"
+      YAML::load(File.open(fname))
+    else
+      nil
+    end
+  end
+  
   def process_good dir, group, name, brand=nil
     about = dir.path + "/about.yaml"
     return unless File.exists?(about)
-    return true if @goods[name] && File.mtime(dir.path) <= @goods_mtime
     
     say brand ? "#{group}: #{name} (#{brand})" : "#{group}: #{name}"
     
@@ -124,7 +169,7 @@ class IngredientsProcessor < Barman::Processor
     
     img = dir.path + "/i_big.png"
     if File.exists?(img)
-      flush_pngm_img(img, Config::INGREDS_ROOT + name.trans + ".png")
+      flush_masked_optimized_pngm_img(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png") 
     else
       error "нет большой картинки (файл #{img})"
     end
@@ -151,7 +196,7 @@ class IngredientsProcessor < Barman::Processor
         
         banner = dir.path + "/banner.png"
         if File.exists?(banner)
-          FileUtils.cp_r(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png", opt)
+          cp_if_different(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png")
         else
           error "нет картинки банера (banner.png)"
         end
@@ -165,20 +210,31 @@ class IngredientsProcessor < Barman::Processor
     end
     
     if about["Тара"] and about["Тара"].length > 0
-      good[:volumes] = volumes = []
-      about["Тара"].each do |v|
+      volumes = []
+      about["Тара"].each_with_index do |v, i|
+        if v["Объем"] <= 0
+          warning "нулевой или отрицательный объем (номер #{i+1})"
+          next
+        end
+        
+        if v["Цена"] <= 0
+          warning "нулевая или отрицательная цена (номер #{i+1})"
+          next
+        end
+        
         volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
         
         vol_name = v["Объем"].to_s.gsub(".", "_")
         img = dir.path + "/" + vol_name + "_big.png"
         
         if File.exists?(img)
-          FileUtils.cp_r(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png", opt)
+          cp_if_different(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png")
         else
           error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end
-        
       end
+      # increment sort by cost per litre
+      good[:volumes] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
     else
       error "тара не указана"
     end
@@ -188,4 +244,4 @@ class IngredientsProcessor < Barman::Processor
   
 end
 
-IngredientsProcessor.new.run
+exit IngredientsProcessor.new.run

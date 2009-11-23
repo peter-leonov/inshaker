@@ -56,7 +56,7 @@ var AboutPage = {
 	}
 };
 
-$.onload(function(){
+$.onready(function(){
 	AboutPage.init();
 	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
@@ -70,5 +70,5 @@ $.onload(function(){
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 
-<!--# include file="/external/swfobject.js" -->
+<!--# include virtual="swfobject.js" -->
 

@@ -18,9 +18,9 @@ EventPage =
 	}
 }
 
-$.onload(function () { document.documentElement.remClassName('loading') })
+$.onready(function () { document.documentElement.remClassName('loading') })
 
-$.onload
+$.onready
 (
 	function ()
 	{

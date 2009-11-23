@@ -6,10 +6,11 @@ update_stats.sh
 *.log
 *.tmp
 *.pid
+*.htpasswd
 apache.stable.conf
 apache.conf
 nginx.conf
 htdocs/v/*
-htdocs/stat/*
 data/*
 .idea/*
+.lock-barman

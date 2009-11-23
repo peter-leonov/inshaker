@@ -3,7 +3,7 @@
 
 <!--# include virtual="uibutton.js" -->
 
-$.onload(function(){
+$.onready(function(){
 	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
 	
 	var inflateNode = function(node){ 
@@ -40,20 +40,24 @@ $.onload(function(){
 		
 		var req = aPost("/act/launcher.cgi", fh);
 		req.onSuccess = function (){
-			$('output').innerHTML = this.responseText();
-			inflateNode($('output'));
+			var output = $('output')
+			output.innerHTML = this.responseText()
+			output.scrollTop = 10000
+			inflateNode(output)
 			goBarmanButton.setEnabled(true);
 		}
 	});
 	
-	var goUpButton = new UIButton($('goUp'), 'clicked', 'Обновить', 'Подожди...', function(e){
+	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e){
 		goUpButton.setEnabled(false);
 		
 		squeezeNode($('output'));
 		var req = aPost("/act/deployer.cgi", {});
 		req.onSuccess = function (){
-			$('output').innerHTML = this.responseText();
-			inflateNode($('output'));
+			var output = $('output')
+			output.innerHTML = this.responseText()
+			output.scrollTop = 10000
+			inflateNode(output)
 			goUpButton.setEnabled(true);
 		}
 	});

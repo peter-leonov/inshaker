@@ -20,22 +20,24 @@ BarPage.view =
 		
 		
 		var barMore = nodes.barMore
-		barMore.maximize = function () { this.animate('easeOutQuad', {height: this.scrollHeight}, 1) }
-		barMore.minimize = function () { this.animate('easeOutQuad', {height: 1}, 1) }
-		barMore.toggleHeight = function ()
+		if (barMore)
 		{
-			if (this.isMaximized)
+			barMore.maximize = function () { this.animate('easeOutQuad', {height: this.scrollHeight}, 1) }
+			barMore.minimize = function () { this.animate('easeOutQuad', {height: 1}, 1) }
+			barMore.toggleHeight = function ()
 			{
-				this.minimize()
-				return this.isMaximized = false
-			}
-			else
-			{
-				this.maximize()
-				return this.isMaximized = true
+				if (this.isMaximized)
+				{
+					this.minimize()
+					return this.isMaximized = false
+				}
+				else
+				{
+					this.maximize()
+					return this.isMaximized = true
+				}
 			}
 		}
-		
 		
 		var barman
 		if (nodes.barman && (barman = Barman.getByName(nodes.barman.innerHTML)))
@@ -59,8 +61,8 @@ BarPage.view =
 		this.renderCocktails(nodes.carte, data.carte, 3)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
-
-    this.renderPriceIndex(data.bar)
+		
+		this.renderPriceIndex(data.bar)
 	},
 	
 	readBarCityNames: function ()
@@ -83,8 +85,12 @@ BarPage.view =
 	
 	toggleMore: function ()
 	{
-		var miximized = this.nodes.barMore.toggleHeight()
-		this.owner.controller[miximized ? 'moreIsMaximized' : 'moreIsMinimized']()
+		var barMore = this.nodes.barMore
+		if (barMore)
+		{
+			var miximized = barMore.toggleHeight()
+			this.owner.controller[miximized ? 'moreIsMaximized' : 'moreIsMinimized']()
+		}
 	},
 	
 	initMap: function (bar)
@@ -208,19 +214,7 @@ BarPage.view =
 		node.RollingImagesLite.sync()
 	},
 	
-	_createCocktailElement: function (cocktail)
-	{
-		var li = document.createElement("li")
-		var a = document.createElement("a")
-		a.href = "/cocktails/" + cocktail.name_eng.htmlName() + ".html"
-		var img = document.createElement("img")
-		img.src = "/i/cocktail/s/" + cocktail.name_eng.htmlName() + ".png"
-		var txt = document.createTextNode(cocktail.name)
-		a.appendChild(img)
-		a.appendChild(txt)
-		li.appendChild(a)
-		return li
-	},
+	_createCocktailElement: function (cocktail) { return cocktail.getPreviewNode() },
 	
 	renderPrevNext: function (prevNext)
 	{

@@ -1,3 +1,21 @@
+Array.prototype.sortedBy = function(sortFunc) {
+    return Array.copy(this).sort(sortFunc);
+}
+
+Array.prototype.shuffled = function() {
+	var array = Array.copy(this);
+	var tmp, current, top = array.length;
+	
+	if(top) while(--top) {
+		current = Math.floor(Math.random() * (top + 1));
+		tmp = array[current];
+		array[current] = array[top];
+		array[top] = tmp;
+	}
+	return array;
+}
+
+
 Cocktail = function (data)
 {
 	for (var k in data) this[k] = data[k];
@@ -5,40 +23,51 @@ Cocktail = function (data)
 
 Cocktail.prototype =
 {
+    getMatches: function() {
+        return Cocktail.matches[this.name];
+    },
+
     getRound: function() {
         return Cocktail.rounds[this.name];
     },
-
-    getPreviewNode: function(dropTargets) {
-		var li = document.createElement("li");
-		var a = document.createElement("a");
-		a.href = "/cocktails/" + this.name_eng.htmlName() + ".html";
-		var img = document.createElement("img");
-		img.src = "/i/cocktail/s/" + this.name_eng.htmlName() + ".png";
-		if(dropTargets) new Draggable(img, this.name, dropTargets);
-        var txt = document.createTextNode(this.name);
-		a.appendChild(img);
-		a.appendChild(txt);
-		li.appendChild(a);
-       	return li;		
+	
+	loadData: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var data = eval('(' + sGet(path + '/data.json').responseText() + ')')
+		Object.extend(this, data)
 	},
-
-    updateRound: function(node, show) {
-        var round = this.getRound();
-        if(round == 0) round = "Ok";
-        else round = "+" + round;
-        
-        var mark = node.getElementsByClassName("round-mark")[0];
-        
-        if(!mark) {
-            if(!show) return
-            mark = document.createElement("div");
-            mark.className = "round-mark";
-            node.appendChild(mark);
-        }
-        mark.innerHTML = round;
-        mark.setVisible(show)
-    }
+	
+	getBigImageSrc: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		return path + '/' + htmlName + '-big.png'
+	},
+	
+	getPreviewNode: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var li = document.createElement("li")
+		
+		var a = document.createElement("a")
+		a.href = path + '/'
+		li.appendChild(a)
+		
+		var img = li.img = document.createElement("img")
+		img.src = path + '/' + htmlName + '-small.png'
+		a.appendChild(img)
+		
+		var txt = document.createTextNode(this.name)
+		a.appendChild(txt)
+		
+		return li
+	}
 }
 
 Object.extend(Cocktail,
@@ -46,88 +75,91 @@ Object.extend(Cocktail,
     cocktails: [],
     ingredients: [],
     letters: [],
-    names: [],
-    methods: ["просто", 
-              "в шейкере", 
-              "в блендере", 
-              "давят пестиком", 
-              "укладывают слои", 
-              "миксуют в стакане", 
-              "не очень просто"],
     rounds: {},
-
-    dictNames: {},
-    dictLetters: {},
-	dictMethods: {},
-
+    matches: {},
+	byName: {},
+	
 	initialize: function (db){
-        for (var i = 0; i < this.methods.length; i++) this.dictMethods[this.methods[i]] = [];
-
-		var i = 0;
-    
-		for (var k in db){
-			var cocktail = new Cocktail(db[k]);
-			this.names[i] = cocktail.name;
-			this.cocktails[i] = this.processMethods(cocktail);
-            			
-            var nameWords = cocktail.name.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-            var nameEngWords = cocktail.name_eng.split(" ").map(function(v){ return v.toLowerCase() }).sort();
-            this.dictNames[nameWords.join("") + nameEngWords.join("")] = i;
-            
-			var ingreds = cocktail.ingredients;
-			for(var j = 0; j < ingreds.length; j++) {
-				if(this.ingredients.indexOf(ingreds[j][0]) == -1) this.ingredients.push(ingreds[j][0])
-			}
+		
+		var ai = this.ingredients, seen = {}, byName = this.byName,
+			names = []
+		
+		for (var k in db)
+			names.push(k)
+		names.sort()
+		
+		for (var i = 0, il = names.length; i < il; i++)
+		{
+			var name = names[i],
+				cocktail = this.cocktails[i] = byName[name] = new Cocktail(db[name])
 			
-			var letter = cocktail.name.substr(0,1).toLowerCase();
-			if(this.letters.indexOf(letter) == -1) this.letters.push(letter);
-            if(!this.dictLetters[letter]) this.dictLetters[letter] = [];
-            this.dictLetters[letter].push(i);
-
-            i++;
+			var ci = cocktail.ingredients
+			for (var j = 0; j < ci.length; j++)
+			{
+				var ingr = ci[j][0]
+				if (!seen[ingr])
+				{
+					seen[ingr] = true
+					ai.push(ingr)
+				}
+			}
 		}
-		this.letters = this.letters.sort();
+		this.ingredients = ai.sort()
 	},
-
-    processMethods: function(cocktail){
-        var itsMethods = {};
-        for (var i = 0; i < this.methods.length; i++) itsMethods[this.methods[i]] = false;
-        var itsTools = cocktail.tools;
-
-        if(itsTools.indexOf("Шейкер") > -1)  itsMethods["в шейкере"] = true;
-        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
-        if(itsTools.indexOf("Блендер") > -1 || itsTools.indexOf("Коктейльный миксер") > -1) itsMethods["в блендере"] = true;
-        if(itsTools.indexOf("Пестик") > -1)  itsMethods["давят пестиком"] = true;
-        if(itsTools.indexOf("Стакан для смешивания") > -1) itsMethods["миксуют в стакане"] = true;
-        if(itsTools.indexOf("Стопка") > -1 && itsTools.indexOf("Коктейльная ложка") > -1) itsMethods["укладывают слои"] = true;
-        
-        var numMethods = 0; for(var method in itsMethods) if(itsMethods[method]) numMethods++;
-
-        if(numMethods > 1) cocktail.method = "не очень просто";
-        else if(numMethods == 0) cocktail.method = "просто";
-        else for(var method in itsMethods) if(itsMethods[method]) { cocktail.method = method; break; }
-        
-        return cocktail;
-    },
+	
+	getFirstLetters: function (set)
+	{
+		if (!set)
+			set = this.cocktails
+		
+		var seen = {}
+		for (var i = 0, il = set.length; i < il; i++)
+			seen[set[i].name.charAt(0).toLowerCase()] = true
+		
+		var letters = []
+		for (var k in seen)
+			letters.push(k)
+		
+		return letters.sort()
+	},
 	
     getAll: function(){
         return this.cocktails;
     },
 
-	getByName: function (name){
-		for(var i = 0; i < this.cocktails.length; i++){
-			if(this.cocktails[i].name == name) return this.cocktails[i];
-		}
-	},
+	getByName: function (name) { return this.byName[name] },
 	
-	getBySimilarName: function (name){
-        var term = name.split(" ").map(function(v){ return v.toLowerCase() }).sort().join("");
-
-        var res = [];
-        for(var key in this.dictNames) {
-            if (key.indexOf(term) > -1) res.push(this.cocktails[this.dictNames[key]])
-        }
-        return res;
+	getBySimilarNameCache: {},
+	getBySimilarName: function (name)
+	{
+		if (this.getBySimilarNameCache[name])
+			return this.getBySimilarNameCache[name]
+			
+		var words = name.split(/\s+/),
+			res = [], cocktails = this.cocktails
+		
+		for (var i = 0; i < words.length; i++)
+			words[i] = new RegExp("(?:^|\\s)" + words[i], "i")
+		
+		var first = words[0], jl = words.length
+		SEARCH: for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i], name
+			
+			if (first.test(cocktail.name))
+				name = cocktail.name
+			else if (first.test(cocktail.name_eng))
+				name = cocktail.name_eng
+			else
+				continue SEARCH
+			
+			for (var j = 1; j < jl; j++)
+				if (!words[j].test(name))
+					continue SEARCH
+			
+			res.push(cocktail)
+		}
+		return (this.getBySimilarNameCache[name] = res)
 	},
 	
 	getByHtmlName: function(htmlName){
@@ -136,17 +168,38 @@ Object.extend(Cocktail,
 		}
 	},
 	
-	getByLetter: function (letter){
-        letter = letter.toLowerCase();
-
-		var res = [];
-        var cNums = this.dictLetters[letter];
-    	
-		for(var i = 0; i < cNums.length; i++){
-            res[i] = this.cocktails[cNums[i]];
-        }
-
-        return res.sortedBy(this.nameSort);
+	getByLetterCache: {},
+	getByLetter: function (letter, set)
+	{
+		letter = letter.toUpperCase()
+		var res
+		if (res = this.getByLetterCache[letter])
+			return res
+		res = this.getByLetterCache[letter] = []
+		if (!set)
+			set = this.cocktails
+		
+		
+		for (var i = 0, il = set.length; i < il; i++)
+			if (set[i].name.indexOf(letter) == 0)
+			{
+				res.push(set[i])
+				break
+			}
+		
+		i++
+		for (; i < il; i++)
+		{
+			if (set[i].name.indexOf(letter) == 0)
+				res.push(set[i])
+			else
+				// as cocktails are sorted we can stop searching at the first mismatch
+				break
+		}
+		
+		
+		// cocktails is already alphabeticaly sorted
+		return res
 	},
 	
 	getByTag: function (tag, set) {
@@ -182,21 +235,33 @@ Object.extend(Cocktail,
         return res;
     },
     
-    getByIngredients: function(ingredients, set) {
-        this.rounds = {};
-		if(!set) set = this.cocktails;
-		var res = [];
-		for(var i = 0; i < set.length; i++) {
-			var matches = 0;
-			for(var j = 0; j < set[i].ingredients.length; j++) {
-				for(var k = 0; k < ingredients.length; k++){
-					if(set[i].ingredients[j][0] == ingredients[k]) matches++;
-				}
-			}
-			if(matches > 0) res.push(set[i]);
-		    this.rounds[set[i].name] = set[i].ingredients.length - matches;
-        }
-		return res.sort(this.roundSort).sort(this.lessIngredientsSort);
+	getByIngredients: function (ingredients, cocktails)
+	{
+		this.rounds = {}
+		if (!cocktails)
+			cocktails = this.cocktails
+		
+		var ingredientsNames = {}
+		for (var i = 0; i < ingredients.length; i++)
+			ingredientsNames[ingredients[i].toLowerCase()] = true
+		
+		var res = []
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i],
+				matches = 0
+			
+			var ci = cocktail.ingredients
+			for (var j = 0, jl = ci.length; j < jl; j++)
+				if (ingredientsNames[ci[j][0].toLowerCase()])
+					matches++
+			if (matches > 0)
+				res.push(cocktail)
+			
+			this.rounds[cocktail.name] = jl - matches
+            this.matches[cocktail.name] = matches
+		}
+		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
 	},
 	
 	getByFilters: function(filters, states) {
@@ -255,9 +320,16 @@ Object.extend(Cocktail,
         if (a.getRound() > b.getRound()) return 1;
         else if (a.getRound() == b.getRound()) return 0;
         else return -1;
+    },
+
+    matchSort: function(a,b) {
+        if(a.getMatches() < b.getMatches()) return 1;
+        else if(a.getMatches() == b.getMatches()) return 0;
+        else return -1;
     }
 })
 
 Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)
 Cocktail.tags = <!--# include file="/db/tags.js" -->
 Cocktail.strengths = <!--# include file="/db/strengths.js" -->
+Cocktail.methods = <!--# include file="/db/methods.js" -->

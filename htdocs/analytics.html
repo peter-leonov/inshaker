@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="analytics-page" class="loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<title>Inshaker — Коктейли</title>
+	<style>
+	#branded-image { display: none; }
+	#loading { display: none; }
+	html.loading #loading { display: block; }
+	html.loading #analytics { display: none; }
+	
+	#logout { position: absolute; right: 20px; top: 20px; }
+	#logout { display: none; }
+	#analytics.logged-in #logout { display: block; }
+	#analytics.logged-in #login { display: none; }
+	
+	#query { display: none; }
+	#analytics.logged-in #query { display: block; }
+	#query.loading #ingredient-search { display: none; }
+	
+	#query #loading { display: none; }
+	#query.loading #loading { display: block; }
+	
+	#output { font-size: 12px; }
+	#output .error { color: #f44; }
+	
+	#loading-data { display: none; }
+	#analytics.loading-data #loading-data { display: block; }
+	
+	#ingredient-search input { width: 500px; }
+	
+	#range { margin: 0 0 2em 0; }
+	
+	table td { padding: 2px 13px 0 0; }
+	table thead th { text-align: left; padding: 0 20px 0 0; }
+	</style>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	<div class="column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>Аналитика для ребят</h1>
+		</div>
+		<div class="b-content">
+			<div id="loading">
+				Загружаю гугловский апи…
+			</div>
+			<div id="analytics">
+				<button id="login">Войти</button>
+				<button id="logout">Выйти</button>
+				<p><form id="range"><input name="begin" value="2009-10-01"/> — <input name="end" value="2009-10-31"/> <button type="submit">Загрузить…</button></form></p>
+				<div id="query" class="loading">
+					<div id="loading-data">
+						Загружаю статистику…
+					</div>
+					
+					<form id="ingredient-search">
+						<input name="ingredients" type="text" value="Водка"></input>
+						<button type="submit">Посчитать</button>
+					</form>
+				
+					<ul id="output"></ul>
+				</div>
+			</div>
+		</div>
+	</div></div>
+	<img src="dummy.gif" style="display:none" alt="required for Google Data"/>
+</div>
+<!--# include file="/inc/bottom-common.html" -->
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/analytics.js"></script>
+</body>
+</html>

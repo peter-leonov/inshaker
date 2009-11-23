@@ -15,11 +15,11 @@ Barman.prototype =
     switchable: true,
     render: function (context)
     {
-        var head = context.getElementsByTagName("h1")[0]
-        head.innerHTML = this.name + " – клуб главных барменов Inshaker"
+        var name = context.getElementsByTagName("h1")[0].firstChild
+        name.innerHTML = this.name
         
         var img  = context.getElementsByClassName("photo")[0]
-        img.src  = "/i/barmen/" + this.name_eng.htmlName() + ".jpg"
+        img.style.backgroundImage  = "url(/i/barmen/" + this.name_eng.htmlName() + ".jpg)"
         img.alt  = this.name
            
         var body = context.getElementsByClassName("desc")[0]
@@ -42,13 +42,15 @@ Barman.prototype =
             parent.show()
             for (var i = 0; i < this.cocktails.length; i++)
 		    {
-			    if (i % 8 == 0)
+			    if (i % 6 === 0)
 			    {
 				    var point = document.createElement('ul')
 				    point.className = 'point'
 				    surface.appendChild(point)
 			    }
-			    point.appendChild(Cocktail.getByName(this.cocktails[i]).getPreviewNode())
+				var cocktail = Cocktail.getByName(this.cocktails[i])
+				if (cocktail)
+					point.appendChild(cocktail.getPreviewNode())
 		    }
 		    parent.RollingImagesLite.sync()
             parent.RollingImagesLite.goInit()

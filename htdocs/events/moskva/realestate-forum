@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum status-preparing">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading realestate-forum status-archive">
 <head>
 	<!--# include file="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/default.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
 	<title>Inshaker — I Неофициальный форум коммерческой недвижимости</title>
 </head>
@@ -15,9 +14,9 @@
 			<h1>События!</h1>
 		</div>
 		<div class="b-content">
-			<div class="previews programica-rolling-images">
+			<div class="previews square-list programica-rolling-images">
 				<div class="viewport">
-					<ul class="surface"><noscript><!--# include virtual="/events/links.html" --></noscript></ul>
+					<ul class="surface"></ul>
 				</div>
 				<a class="prev disabled" disabled="true"></a><a class="next"></a>
 			</div>
@@ -29,25 +28,24 @@
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
 					<h1 id="event-name">I Неофициальный форум коммерческой недвижимости</h1>
-					<h2>СТИВЕН О'КОНОР И РОМАН ФОТИЕВ ПРИГЛАШАЮТ!</h2>
+					<h2>Уже совсем скоро!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
 						
-							<h2>Москва — бар уточняется, Осень 2009</h2>
+							<h2>Москва — Pacha, 29 октября, 2009</h2>
 						
-						<p class="parole">Девелоперы, инвесторы, брокеры и консультанты соберутся вместе, чтобы познакомиться и повеселиться!</p>
+						<p class="parole">Девелоперы, инвесторы, брокеры и консультанты собрались вместе, чтобы познакомиться и повеселиться!</p>
 						
 						
-							<a class="sign-on"><span>Не пропусти!</span> →</a>
+							
+								<a href="http://www.flickr.com/photos/31784403@N02/sets/72157622611032227/" class="view-photos"><span>Посмотри фото!</span> →</a>
+							
 							<dl class="info">
-								
-									<dt>Вход:</dt><dd><a id="invitations-only">только по приглашениям</a></dd>
-								
-								
-							</dl>
 						
+							
+						</dl>
 					</div>
 				</div>
 			</div></div>
@@ -56,10 +54,12 @@
 		
 		<div id="sidebar">
 			<div id="main-sponsors" class="column"><div class="body-wrapper">
-				<div class="b-title">
-					<h3>Генеральный партнер</h3>
-					<h4></h4>
-				</div>
+				
+					<div class="b-title">
+						<h3>Музыкальный партнер</h3>
+						<h4></h4>
+					</div>
+				
 				<a class="banner"></a>
 			</div></div>
 			<div id="comming">
@@ -78,8 +78,6 @@
 			<div class="b-content"></div>
 		</div></div>
 	</div>
-	
-	<!--# include file="/inc/bottom-common.html" -->
 </div>
 <div id="promo-back" style="background-image:url(/i/event/moskva/realestate-forum/promo-bg.png)"></div>
 <div id="form-popup">
@@ -103,8 +101,6 @@
 		</form>
 	</div>
 </div>
-<script type="text/javascript" src="/js/compiled/common.js"></script>
-<script type="text/javascript" src="/js/event/event.js"></script>
-<script type="text/javascript" src="/js/entities/Event.js"></script>
+<!--# include file="/inc/event-footer.html" -->
 </body>
 </html>
