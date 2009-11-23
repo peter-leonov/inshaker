@@ -1,3 +1,4 @@
+.b-title { width: 100%; }
 .b-title h1 { position: relative; }
 .b-title h1,
 .b-title .hrefs { z-index: 10; }
