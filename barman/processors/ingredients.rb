@@ -212,6 +212,16 @@ class IngredientsProcessor < Barman::Processor
     if about["Тара"] and about["Тара"].length > 0
       good[:volumes] = volumes = []
       about["Тара"].each do |v|
+        if v["Объем"] <= 0
+          warning "нулевой или отрицательный объем (номер #{i+1})"
+          next
+        end
+        
+        if v["Цена"] <= 0
+          warning "нулевая или отрицательная цена (номер #{i+1})"
+          next
+        end
+        
         volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
         
         vol_name = v["Объем"].to_s.gsub(".", "_")
