@@ -279,8 +279,11 @@ function CocktailsView (states, nodes, styles) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
 		}
 		
-		if(filters.name) {
-			cssQuery("input", nodes.searchByName)[0].value = filters.name;
+		if (filters.name)
+		{
+			var input = cssQuery("input", nodes.searchByName)[0]
+			if (input.value != filters.name)
+				input.value = filters.name
 		}
 	},
 	
