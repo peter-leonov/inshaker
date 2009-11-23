@@ -13,15 +13,17 @@ class Deployer < Barman::Processor
   def job
     Dir.chdir(Config::ROOT_DIR)
     say "синхронизуюсь с сайтом…"
-    unless system("git pull >>barman.log 2>&1")
+    unless system("git pull 2>&1")
       error "не удалось синхронизироваться с сайтом"
     else
       if `git status` =~ /nothing to commit/
         warning "заливать нечего"
       else
-        author = host_to_author(guest_host)
+        author = login_to_author(user_login)
         say "сохраняю в гит…"
-        unless system("git add . && git commit -am 'content update' --author='#{author}' >>barman.log 2>&1")
+        say author
+        return
+        unless system(%Q{git add . && git commit -am "content update" --author="#{author.quote}" >>barman.log 2>&1})
           error "не удалось сохранить обновления в гит"
         else
           say "заливаю на сайт…"
