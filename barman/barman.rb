@@ -4,6 +4,7 @@ require 'templates'
 require 'fileutils'
 require 'erb'
 require 'yaml'
+require "base64"
 
 require 'lib/json'
 require 'lib/string_util'
@@ -21,7 +22,7 @@ module Barman
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
-    attr_reader :guest_host
+    attr_reader :user_login
     if ENV['REQUEST_METHOD']
       include Saying::HTML
     else
@@ -36,7 +37,7 @@ module Barman
       @errors_messages = []
       @warnings_count = 0
       @warnings_messages = []
-      @guest_host = get_guest_host
+      @user_login = get_user_login
     end
     
     def flush_json_object(object, dest_file)
@@ -199,7 +200,7 @@ module Barman
       if lock
         begin
           File.write("#{lockpath}/pid", $$)
-          File.write("#{lockpath}/host", guest_host)
+          File.write("#{lockpath}/login", user_login)
           File.write("#{lockpath}/job", job_name)
           job
           summary
@@ -211,10 +212,9 @@ module Barman
       else
         pid = File.exists?("#{lockpath}/pid") && File.read("#{lockpath}/pid").match(/\d+/).to_s.to_i
         if pid && `ps -A | grep #{pid}` =~ /ruby/
-          host = File.read("#{lockpath}/host")
+          login = File.read("#{lockpath}/login")
           job = File.read("#{lockpath}/job")
-          host = nil if host.empty?
-          error "бармена занял #{host_to_name(host)}, запустив #{job}"
+          error "бармена #{login_to_name(login)}, запустив #{job}"
         else
           error "в прошлый раз бармен обрушился"
           # say "восстанавливаю локальную версию после сбоя…"
@@ -227,36 +227,34 @@ module Barman
       return @errors_count
     end
     
-    def get_guest_host
-      if ENV["X_FORWARDED_FOR"]
-        ip = ENV["X_FORWARDED_FOR"].match(/^\d+\.\d+\.\d+\.\d+/)
-        if ip
-          if name = `nslookup #{ip}`.match(/name = (\w+)/)
-            name[1]
-          end
-        end
+    def get_user_login
+      if auth = ENV["HTTP_AUTHORIZATION"].to_s.match(/Basic (.+)/)
+        Base64.decode64(auth[1]).split(':')[0]
+      else
+        "unknown"
       end
-      nil
     end
     
-    def host_to_name host
+    def login_to_name login
       {
-        "mike" => "Мишенька",
-        "max" => "Максимка",
-        "lena" => "Леночка",
-        "peter" => "Петенька",
-        nil => "Бармен"
-      }[host]
+        "mike" => "занял Мишенька",
+        "max" => "занял Максимка",
+        "lena" => "заняла Леночка",
+        "julia" => "заняла Юлечка",
+        "peter" => "занял Петечка",
+        nil => "занял Совершенно Неизвестный Человек"
+      }[login]
     end
     
-    def host_to_author host
+    def login_to_author login
       {
         "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
         "max" => "Maxim Dergilev <max@inshaker.ru>",
         "lena" => "Elena Piskareva <lena@inshaker.ru>",
-        "peter" => "Peter Leonov <kungfutzu@programica.ru>",
-        nil => "Barman <barman@inshaker.ru>"
-      }[host]
+        "julia" => "Julia Gordeeva <julia@inshaker.ru>",
+        "peter" => "Peter Leonov <pl@inshaker.ru>",
+        "" => "Barman <barman@inshaker.ru>"
+      }[login]
     end
   
   end
