@@ -165,7 +165,7 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .main .wrapper2{position:relative;}
 .win-shop .close{background:url(icon/close.png) no-repeat 0 -10px;position:absolute;height:14px;width:14px;top:11px;right:10px;text-indent:-1000em;}
 .win-shop h3{background:url(bg/body/green-more-title.png) repeat-x 0 -19px;padding:34px 0 0 290px;font-weight:bold;font-size:180%;}
-.win-shop .main .zoom{text-align:center;margin:0 auto 37px;display:table;text-decoration:none;}
+.win-shop .main .zoom{display:block;overflow:hidden;width:280px;text-align:center;margin:0 auto 37px;text-decoration:none;}
 .win-shop .main .zoom img{display:block;margin:10px auto 13px;}
 .win-shop .main .zoom span{text-decoration:underline;}
 .win-shop .main .gallery{float:left;width:290px;margin-top:-20px;}
