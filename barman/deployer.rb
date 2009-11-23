@@ -21,8 +21,6 @@ class Deployer < Barman::Processor
       else
         author = login_to_author(user_login)
         say "сохраняю в гит…"
-        say author
-        return
         unless system(%Q{git add . && git commit -am "content update" --author="#{author.quote}" >>barman.log 2>&1})
           error "не удалось сохранить обновления в гит"
         else
