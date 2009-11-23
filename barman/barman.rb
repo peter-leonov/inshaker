@@ -176,9 +176,11 @@ module Barman
     
     def unlock
       begin
-        FileUtils.rmtree("#{ROOT_DIR}/#{LOCK_FILE}")
+        # FileUtils.rmtree("#{ROOT_DIR}/#{LOCK_FILE}")
+        system(%Q{rm -rf #{"#{ROOT_DIR}/#{LOCK_FILE}".quote}})
         true
       rescue => e
+        error "Паника: #{e.to_s.force_encoding('UTF-8')}"
         false
       end
     end
