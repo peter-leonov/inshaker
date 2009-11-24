@@ -1,3 +1,5 @@
+;(function(){
+
 /**
  * Get element's absolute position. Properly handles Safari's body scroll*.
  * 
@@ -24,6 +26,17 @@ function getPosition (n)
 	return {x:x, y:y};
 }
 
+function hook (e)
+{
+	var node = e.target
+	if (node.__draggable)
+	{
+		var opts = node.__draggable
+		node.__draggable = null
+		new Me(node, opts[0], opts[1]).dispatch(e)
+	}
+}
+document.addEventListener('mousedown', hook, false)
 
 /**
  * Класс, который позволяет сделать элемент перетаскиваемым (создается его клон)
@@ -33,7 +46,7 @@ function getPosition (n)
  * @param name - имя или идентификатор этого элемента (или любые данные)
  * @param dropTargets - массив элементов-целей, на которые можно перетаскивать
  */
-function Draggable(element, name, dropTargets){
+var Me = self.Draggable = function (element, name, dropTargets){
 	this.STYLE_CURSOR = 'drag-cursor';
 	
 	this.dragObject = null;
@@ -56,12 +69,15 @@ function Draggable(element, name, dropTargets){
 		}
 	}
 	
-	element.addEventListener('mousedown', function(e){
+	function mouseDown (e)
+	{
 		self.movements = 0
 		self.startMouse = {x:e.pageX, y:e.pageY}
 		e.preventDefault()
 		document.addEventListener('mousemove', elementWaits, false);
-	}, false);
+	}
+	element.addEventListener('mousedown', mouseDown, false)
+	this.dispatch = mouseDown
 	
 	function beginDrag(e) {
 		var node = self.dragObject = element.cloneNode(true);
@@ -114,3 +130,5 @@ function Draggable(element, name, dropTargets){
 		}
 	}, false);
 }
+
+})();

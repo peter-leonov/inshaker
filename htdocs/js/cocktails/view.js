@@ -355,7 +355,7 @@ function CocktailsView (states, nodes, styles) {
 				if (!(cocktail = cocktails[i]))
 					continue
 				node = cache[i] = cocktail.getPreviewNode()
-				new Draggable(node.img, cocktail.name, dropTargets)
+				node.img.__draggable = [cocktail.name, dropTargets]
 			}
 			parent.appendChild(node)
 		}
