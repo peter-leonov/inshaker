@@ -292,6 +292,7 @@ function CocktailsView (states, nodes, styles) {
 		nodes.resultsRoot.empty();
 		
 		this.renderedPages = {}
+		this.nodeCache     = []
 		this.renderSkeleton(this.np);
 		this.renderNearbyPages(pageNum);
 		
