@@ -1,11 +1,7 @@
 /**
  * Переход по хэш-ссылкам, открытие поп-апов
  */
-function Link()
-{
-	if(location.hash)
-		this.open(location.hash.substr(1))
-}
+function Link () {}
 
 Link.prototype.open = function(a)
 {
@@ -51,17 +47,4 @@ Link.prototype.go = function(a)
 	this.element.show()
 }
 
-Link.prototype._url = function (url)
-{
-	//if(safari)
-	//{
-	//	var x = document.getElementById('safari') || document.createElement('form');
-	//	x.id = 'safari';
-	//	x.action = '#' + url;
-	//	x.submit();
-	//}
-	//else
-	//{
-		window.location.hash = '#'+url
-	//}
-}
+Link.prototype._url = function (url) {}
