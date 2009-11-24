@@ -1,3 +1,5 @@
+<!--# include virtual="/js/common/link.js" -->
+
 Array.prototype.random = function() {
 	var len = this.length
 	if (len)

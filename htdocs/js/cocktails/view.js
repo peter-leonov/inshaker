@@ -157,8 +157,6 @@ function CocktailsView (states, nodes, styles) {
 		}
 		this.completer.onconfirm = changeListener
 		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
-		
-		link = new Link();
 	};
 	
 	this.turnToState = function(state){

@@ -31,7 +31,6 @@ Array.prototype.uniq = function(){
 <!--# include file="/js/common/storage.js" -->
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
-<!--# include file="/js/common/link.js" -->
 <!--# include file="/js/common/theme.js" -->
 
 <!--# include file="/js/calculator/model.js" -->
