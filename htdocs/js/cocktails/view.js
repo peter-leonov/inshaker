@@ -7,8 +7,8 @@ function CocktailsView (states, nodes, styles) {
 	this.filterElems   = { tag: null, strength: null, method: null, letter: null };
 	this.perPage       = 16;
 	this.np            = -1;
-	this.renderedPages = [];
-	this.nodeCache     = {};
+	this.renderedPages = {}
+	this.nodeCache     = []
 	
 	
 	this.riJustInited  = true;
@@ -86,7 +86,7 @@ function CocktailsView (states, nodes, styles) {
 		ril.onselect = function (node, num) {
 			if (!self.riJustInited) {
 				self.controller.onPageChanged(num);
-				self.renderNearbyPages(num);
+				self.renderNearbyPages(num, 0)
 			} else { self.riJustInited = false }
 			
 			// big pager buttons
@@ -291,7 +291,7 @@ function CocktailsView (states, nodes, styles) {
 		
 		nodes.resultsRoot.empty();
 		
-		this.renderedPages = [];
+		this.renderedPages = {}
 		this.renderSkeleton(this.np);
 		this.renderNearbyPages(pageNum);
 		
@@ -300,34 +300,27 @@ function CocktailsView (states, nodes, styles) {
 		nodes.resultsDisplay.RollingImagesLite.goInit();
 	};
 	
-	this.renderSkeleton = function(np){
-		var parent = nodes.resultsRoot;
-		
-		for(var i = 0; i < np; i++) {
-			var page = document.createElement("div");
-			page.id = "page_" + i;
-			page.className = styles.point;
-			parent.appendChild(page);
-			if(this.currentState == states.byName ||
-				this.currentState == states.byLetter){
-					page.addClassName(styles.expanded);
-				}
-			
-			var ul = document.createElement("ul");
-			ul.id = "ul_" + i;
-			ul.className = "cocktails";
-			page.appendChild(ul);
+	this.renderSkeleton = function (count)
+	{
+		var parent = nodes.resultsRoot, pages = nodes.pages = []
+		for (var i = 0; i < count; i++)
+		{
+			var page = pages[i] = document.createElement('ul')
+			page.id = 'page_' + i
+			page.className = 'point cocktails';
+			parent.appendChild(page)
 		}
 	}
 	
-	this.renderNearbyPages = function(pageNum) {
-		var pagesToRender = [pageNum - 1, pageNum, pageNum + 1];
+	this.renderNearbyPages = function (num, delta)
+	{
+		if (delta === undefined)
+			delta = 1
 		
-		for(var i = 0; i < pagesToRender.length; i++) {
-			var j = pagesToRender[i];
-			if((j >= 0) && (j < this.np) && (this.renderedPages.indexOf(j) == -1)) this.renderPage(j);
-		}
-	};
+		for (var i = num - delta; i <= num + delta; i++)
+			if(i >= 0 && i < this.np && !this.renderedPages[i])
+				this.renderPage(i)
+	}
 	
 	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
@@ -347,27 +340,27 @@ function CocktailsView (states, nodes, styles) {
 		}
 	},
 	
-	this.renderPage = function (pageNum) {
-		this.renderedPages.push(pageNum);
-		var selectedSet = this.resultSet.slice(pageNum*this.perPage, (pageNum+1)*this.perPage);
+	this.renderPage = function (num)
+	{
+		var cocktails = this.resultSet,
+			node, cocktail, cache = this.nodeCache,
+			parent = nodes.pages[num],
+			end = (num + 1) * this.perPage,
+			dropTargets = this.dropTargets
 		
-		var ul = $('ul_' + pageNum);
-		
-		for (var i = 0; i < selectedSet.length; i++) {
-			ul.appendChild(this.createCocktailElement(selectedSet[i]));
+		for (var i = num * this.perPage; i < end; i++)
+		{
+			if (!(node = cache[i]))
+			{
+				if (!(cocktail = cocktails[i]))
+					continue
+				node = cache[i] = cocktail.getPreviewNode()
+				new Draggable(node.img, cocktail.name, dropTargets)
+			}
+			parent.appendChild(node)
 		}
-	};
-	
-	this.createCocktailElement = function(cocktail) {
-		var id = cocktail.name_eng.htmlName();
-		var li = this.nodeCache[id];
 		
-		if(!li) {
-			li = cocktail.getPreviewNode()
-			new Draggable(li.img, cocktail.name, this.dropTargets)
-			this.nodeCache[id] = li;
-		}
-		return li;
+		this.renderedPages[num] = true
 	};
 	
 	this.createIngredientElement = function(name){
