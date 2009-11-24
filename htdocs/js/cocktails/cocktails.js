@@ -12,6 +12,7 @@ CocktailsPage =
 $.onready(
 	function () {
 		var nodes = {
+			bodyWrapper: cssQuery('#main-wrapper .body-wrapper')[0],
 			resultsDisplay: $('results_display'),
 			resultsRoot: $('surface'),
 			pagerRoot: $('p-list'),

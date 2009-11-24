@@ -165,10 +165,10 @@ function CocktailsView (states, nodes, styles) {
 		
 		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
-		var resultsDisplay = nodes.resultsDisplay
+		var bodyWrapper = nodes.bodyWrapper
 		for (var k in states)
 			// toggleClassName(k, states[k] == state) must be used
-			states[k] == state ? resultsDisplay.addClassName(k) : resultsDisplay.remClassName(k)
+			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.remClassName(k)
 		
 		if(state == states.byIngredients) {
 			nodes.tagStrengthArea.show();
