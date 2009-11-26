@@ -2,6 +2,16 @@
 <!--# include file="/js/common/analytics.js" -->
 <!--# include file="/js/common/rutils.js" -->
 
+;(function(){ try {
+	var m = /\btheme=(\d\d\d\d\.\d\d)/.exec(location.hash)
+	if (m)
+	{
+		$('theme-stylesheet').href = '/t/theme/' + m[1] + '/theme.css'
+		document.cookie = 'theme=' + m[1]// + '; expires=' + new Date()
+	}
+} catch (ex) {} })();
+
+
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 String.prototype.capitalize = function () { return this.charAt(0).toUpperCase() + this.substr(1) }
 
