@@ -90,7 +90,7 @@ Me.prototype.extend
 					'end-date': end,
 					'dimensions': 'ga:pagePath',
 					'metrics': 'ga:pageviews,ga:uniquePageviews',
-					'filters': 'ga:pagePath=@/cocktails/',
+					'filters': 'ga:pagePath=@/cocktail/,ga:pagePath=@/cocktails/',
 					// 'sort':'-ga:pageviews',
 					'max-results': 2000,
 					'ids': 'ga:' + id
@@ -154,13 +154,21 @@ Me.prototype.extend
 			
 			for (var i = 0, entry; entry = entries[i]; i++)
 			{
-				var path = entry.getStringValueOf('ga:pagePath')
-				stats[path] =
+				var path = entry.getStringValueOf('ga:pagePath'),
+					m = /^\/cocktails\/(.+?)\.html|\/cocktail\/(.+?)\/$/.exec(path)
+				
+				if (m)
 				{
-					path: path,
-					pageviews: entry.getNumberValueOf('ga:pageviews'),
-					uniquePageviews: entry.getNumberValueOf('ga:uniquePageviews')
+					var name = m[1] || m[2], stat
+					
+					if (!(stat = stats[name]))
+					 	stat = stats[name] = {pageviews: 0, uniquePageviews: 0}
+					
+					stat.pageviews += entry.getNumberValueOf('ga:pageviews')
+					stat.uniquePageviews += entry.getNumberValueOf('ga:uniquePageviews')
 				}
+				else
+					me.error('Can`t parse cocktail name out of path "' + path + '"')
 			}
 			
 			main.removeClassName('loading-data')
@@ -191,7 +199,7 @@ Me.prototype.extend
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i]
-			cocktail.stat = stats['/cocktails/' + cocktail.name_eng.htmlName() + '.html']
+			cocktail.stat = stats[cocktail.name_eng.htmlName()]
 		}
 		
 		cocktails.sort(function (a, b) { return String.localeCompare(a.name, b.name) })
