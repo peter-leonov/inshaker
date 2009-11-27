@@ -65,13 +65,6 @@ Object.extend(Gift,
             if(this.gifts[i].city == city) return true
         }
         return false
-    },
-
-    orderSort: function (a, b)
-    {
-        if (a.order > b.order) return 1
-        else if (a.order == b.order) return 0
-        else return -1
     }
 })
 
