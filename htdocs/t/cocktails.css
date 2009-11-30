@@ -2,9 +2,9 @@
 .b-title, #cocktail-page .b-title { padding-bottom: 11px; }
 .b-title h1, #cocktail-page .b-title h1 {font-size:20px } 
 .b-title #spotlighted .group {display:none}
-#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; }
-#search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 21px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
-#search_tabs li.selected {background-position: 0px -100px; cursor: default;}
+#search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; z-index: 15; }
+#search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 20px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
+#search_tabs li.selected {background-position: 0px -100px; cursor: default; height: 21px;}
 
 #search_by_letter a {text-decoration:none; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
@@ -12,8 +12,8 @@
 #alphabetical-ru a {margin-right: 1px; float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
-#search_by_ingreds { z-index: 10; position: relative; }
-.autocomplete { display: none; position: absolute; opacity: 0.9; border-width: 0px 1px 1px 1px; font-size: 14px; }
+.search-control { z-index: 10; position: relative; }
+.autocomplete { display: none; position: absolute; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 .search-error{display:none;height:12px;}
 
@@ -78,7 +78,7 @@
 
 
 .b-search{position:absolute;margin-right:2em;width:14em;}
-#all_list{font-size:1.1em;padding:0 0 0 20px; margin-top: -22px; position:relative; float:right; height:19px;}
+#all_list{ position: absolute; z-index: 25; top: 58px; right: 18px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
 #all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
