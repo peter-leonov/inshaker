@@ -29,11 +29,11 @@
 					<!-- <b class="lt"></b><b class="rt"></b><b class="lb"></b><b class="rb"></b> -->
 				</div>
 				<div class="about">
-					<% unless @desc_end.empty? %>
-						<h2 class="show-more"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><% if @desc_end != "" %><a>…</a><% end %></h2>
+					<% if @desc_end && !@desc_end.empty? %>
+						<h2 class="show-more"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><a>…</a></h2>
 						<p class="more"><%= @desc_end.gsub(/[\n\r]/, "<br/>") %></p>
 					<% else %>
-						<h2 class="show-more empty"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %><% if @desc_end != "" %><a>…</a><% end %></h2>
+						<h2 class="show-more empty"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %></h2>
 					<% end %>
 					
 					<div class="info">
