@@ -75,10 +75,64 @@ class BarsProcessor < Barman::Processor
         indent do
         
         bar = {}
-        bar["name"] = bar_dir.name
-        bar["city"] = city_dir.name
         parse_about_text(File.read(bar_dir.path + "/about.txt"), bar)
         parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), bar)
+        
+        bar["address"] ||= []
+        
+        # puts bar.to_yaml.unescape_yaml
+        yaml =
+        {
+          "По-английски" => bar["name_eng"],
+          "Страна" => bar["country"],
+          "Контакты" =>
+          {
+            "Адрес" => bar["address"][0],
+            "Телефон" => bar["address"][1],
+            "Сайт" => bar["address"][2],
+          },
+          "Тут можно" => bar["format"],
+          "В компании" => bar["feel"],
+          "Вход" => bar["entrance"],
+          "Кухня" => bar["cuisine"],
+          "Главный бармен" => bar["chief"],
+          "О баре" =>
+          {
+            "Заголовок" => bar["desc_start"],
+            "Текст" => bar["desc_end"]
+          },
+          "Коктейльная карта" => bar["carte"],
+          "Индекс Виски-Кола" => bar["priceIndex"].to_i
+        }
+        # p yaml["О баре"]["Текст"]
+        File.write(bar_dir.path + "/about.yaml", yaml.to_yaml.unescape_yaml.gsub(/"/, ""))
+        
+        yaml = load_yaml(bar_dir.path + "/about.yaml")
+        
+        bar =
+        {
+          "name_eng" => yaml["По-английски"].to_s,
+          "country" => yaml["Страна"],
+          "address" => yaml["Контакты"]["Адрес"] ?
+          [
+            yaml["Контакты"]["Адрес"],
+            yaml["Контакты"]["Телефон"],
+            yaml["Контакты"]["Сайт"]
+          ] : nil,
+          "format" => yaml["Тут можно"],
+          "feel" => yaml["В компании"],
+          "entrance" => yaml["Вход"],
+          "cuisine" => yaml["Кухня"],
+          "chief" => yaml["Главный бармен"],
+          "desc_start" => yaml["О баре"]["Заголовок"],
+          "desc_end" => yaml["О баре"]["Текст"],
+          "carte" => yaml["Коктейльная карта"],
+          "priceIndex" => yaml["Индекс Виски-Кола"].to_s
+        }
+        
+        bar["name"] = bar_dir.name
+        bar["city"] = city_dir.name
+        
         
         city_html_name = city_dir.name.trans.html_name
         city_map_name = @declensions[city_dir.name] ? @declensions[city_dir.name][1] : city_dir.name
