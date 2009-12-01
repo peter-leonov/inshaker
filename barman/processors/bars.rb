@@ -107,7 +107,16 @@ class BarsProcessor < Barman::Processor
         # p yaml["О баре"]["Текст"]
         File.write(bar_dir.path + "/about.yaml", yaml.to_yaml.unescape_yaml.gsub(/"/, ""))
         
-        yaml = load_yaml(bar_dir.path + "/about.yaml")
+        begin
+          yaml = load_yaml(bar_dir.path + "/about.yaml")
+        rescue ArgumentError => e
+          if m = (/line (\d+)/).match(e.message)
+            error "ошибка в файле about.yaml на строке " + m[1]
+            next
+          else
+            raise e
+          end
+        end
         
         bar =
         {
