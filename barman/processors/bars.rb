@@ -67,9 +67,10 @@ class BarsProcessor < Barman::Processor
   def update_bars
     Dir.new(Config::BASE_DIR).each_dir do |city_dir|
       say city_dir.name
-      error "нет склонений для слова «#{city_dir.name}»" unless @declensions[city_dir.name]
       indent do
-      Dir.new(city_dir.path).each_dir do |bar_dir|
+      error "нет склонений для слова «#{city_dir.name}»" unless @declensions[city_dir.name]
+      error "нет точки корода на карте" unless @city_points[city_dir.name]
+      city_dir.each_dir do |bar_dir|
         say bar_dir.name
         indent do
         
