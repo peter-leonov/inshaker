@@ -74,39 +74,6 @@ class BarsProcessor < Barman::Processor
         say bar_dir.name
         indent do
         
-        bar = {}
-        parse_about_text(File.read(bar_dir.path + "/about.txt"), bar)
-        parse_cocktails_text(File.read(bar_dir.path + "/cocktails.txt"), bar)
-        
-        bar["address"] ||= []
-        
-        # puts bar.to_yaml.unescape_yaml
-        yaml =
-        {
-          "По-английски" => bar["name_eng"],
-          "Страна" => bar["country"],
-          "Контакты" =>
-          {
-            "Адрес" => bar["address"][0],
-            "Телефон" => bar["address"][1],
-            "Сайт" => bar["address"][2],
-          },
-          "Тут можно" => bar["format"],
-          "В компании" => bar["feel"],
-          "Вход" => bar["entrance"],
-          "Кухня" => bar["cuisine"],
-          "Главный бармен" => bar["chief"],
-          "О баре" =>
-          {
-            "Заголовок" => bar["desc_start"],
-            "Текст" => bar["desc_end"]
-          },
-          "Коктейльная карта" => bar["carte"],
-          "Индекс Виски-Кола" => bar["priceIndex"].to_i
-        }
-        # p yaml["О баре"]["Текст"]
-        File.write(bar_dir.path + "/about.yaml", yaml.to_yaml.unescape_yaml.gsub(/"/, ""))
-        
         begin
           yaml = load_yaml(bar_dir.path + "/about.yaml")
         rescue ArgumentError => e
