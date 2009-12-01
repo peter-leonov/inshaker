@@ -123,7 +123,10 @@ class BarsProcessor < Barman::Processor
         
         
         
-        bar["point"] = @bar_points[bar["name"]] || []
+        unless bar["point"] = @bar_points[bar["name"]]
+          error "не нашел точку на карте"
+          bar["point"] = []
+        end
         
         @entities << bar
         end # indent
