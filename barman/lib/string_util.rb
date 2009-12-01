@@ -43,4 +43,8 @@ class String
   def quote
     gsub(/([$"\\])/, '\\\\\1')
   end
+  
+  def unescape_yaml
+    eval(inspect.gsub(/\\\\x(\w\w)\\\\x(\w\w)/) { "\\x#{$1}\\x#{$2}" })
+  end
 end
