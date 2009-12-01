@@ -137,7 +137,7 @@ class BarsProcessor < Barman::Processor
   end
     
   def prepare_map_points
-    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(\d+\.\d+),(\d+\.\d+)/m
+    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
     
     body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
     bars = body.scan(rx)
