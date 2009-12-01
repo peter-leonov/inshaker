@@ -190,20 +190,24 @@ private
   end
   
   def parse_cocktails_text txt, bar
-    blocks = txt.split("\n\n")
-    
-    carte = blocks[0].split(%r{[\n\r]})
-    carte += blocks[1].split(%r{[\n\r]})
-    carte.each do |name|
-      unless @cocktails[name]
-        error "нет такого коктейля «#{name}»"
-        if name.has_diacritics
-          say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+    begin
+      blocks = txt.split("\n\n")
+
+      carte = blocks[0].split(%r{[\n\r]})
+      carte += blocks[1].split(%r{[\n\r]})
+      carte.each do |name|
+        unless @cocktails[name]
+          error "нет такого коктейля «#{name}»"
+          if name.has_diacritics
+            say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+          end
         end
       end
+      bar["carte"] = carte
+      bar["priceIndex"] = blocks[2].split(": ")[1].trim
+    rescue Exception => e
+      error "ошибка в формате списка коктейлей"
     end
-    bar["carte"] = carte
-    bar["priceIndex"] = blocks[2].split(": ")[1].trim
   end
 end
 
