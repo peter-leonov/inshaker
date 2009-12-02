@@ -24,7 +24,7 @@ var Me = self[myName] =
 			{
 				node.href = item.href
 				// fix for cocktails initialization issue
-				node.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
+				// node.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
 			}
 		}
 	}
