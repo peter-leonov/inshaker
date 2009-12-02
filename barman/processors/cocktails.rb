@@ -374,7 +374,7 @@ class CocktailsProcessor < Barman::Processor
     end
     
     if File.exists?(from_bg)
-      # flush_masked_optimized_pngm_img(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
+      # flush_masked_optimized(Config::COCKTAILS_DIR + "bg_mask.png", from_bg, to_bg, "DstIn")
       cp_if_different(from_bg, to_bg)
     else
       error "не могу найти заставку коктейля (bg.png)"
