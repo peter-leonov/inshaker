@@ -25,6 +25,11 @@
 #b-bill dd li button.bt-more { height:20px; }
 #b-bill dd li button.bt-less { background-position: -525px -75px; }
 #b-bill dd li button.bt-more { background-position: -550px -75px; }
+
+#b-bill dd input
+{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
+
+
 #b-bill dd strong{display:block;padding:17px 0 8px 0;}
 #b-bill ul.money li{padding:6px 0;height:100%;}
 #b-bill ul.money li a{display:block;width:125px;}
@@ -66,3 +71,34 @@ ul#cart_cocktails {margin-top: 9px;}
 #cart_totals { display: none; }
 #cart_draghere { display: none; position: relative; font-weight: bold; font-size: 12px; border: 1px dashed #999; width: 208px; height: 40px; margin: 24px 0px 0 5px; padding: 14px 6px 10px 45px; }
 #cart_draghere i { position: absolute; left: 15px; top: 20px; width: 16px; height: 16px; background: no-repeat -400px -25px; }
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+
+#b-bill .total,#b-bill .total *,
+#b-bill dl,
+{zoom:1}
+
+#b-bill .body-wrapper {width:270px}
+#b-bill .b-title h1 {margin-left: 5px; }
+#b-bill .b-title label {zoom:1; position:relative; margin-left:auto;}
+#b-bill .b-title input {float:left; width: 265px; height:24px; line-height:24px; background:#FFF}
+#b-bill .b-title .tip {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(this.unselectable='on')); padding: 3px 6px; }
+
+
+#b-bill .total li {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=scale)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
+#b-bill .total li a{position:relative;}
+
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
+#b-bill .b-title h1 {}
+#b-bill .b-title label { margin-left:-6px; }
+#b-bill .b-title input { height: 22px; line-height: 22px; background: #FFF; width:275px}
+#b-bill .b-title .tip { padding: 3px 0px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+#b-bill ul.money label input{position:absolute;left:0;}
+<!--# endif -->
