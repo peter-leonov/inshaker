@@ -36,6 +36,12 @@ var Controller = {
 	init: function() {
 		Model.init();
 		Model.dataListener = this;
+		
+		if (/\bview=images\b/.test(window.location.hash))
+			this.getIngredientNode = this.getIngredientImageNode
+		else
+			this.getIngredientNode = this.getIngredientTextNode
+		
 		this.renderIngredients(Model.ingredients);
 		this.bindEvents();
 	},
@@ -54,6 +60,43 @@ var Controller = {
 		$(this.CHOSEN_INGEREDS).addEventListener('click', function(e){
 			self.ingredientClicked(e, false);
 		}, false);
+	},
+	
+	getIngredientTextNode: function (ingred)
+	{
+		var a = document.createElement("a");
+		var name = document.createElement("span");
+		name.className = "ingred-name";
+		name.innerHTML = ingred;
+		var mark = document.createElement("span");
+		mark.className = "round-mark";
+		a.appendChild(name);
+		a.appendChild(mark);
+		
+		// Unnecessary caching
+		this.nameNodes.push(name);
+		this.markNodes.push(mark);
+		
+		return a
+	},
+	
+	getIngredientImageNode: function (ingred)
+	{
+		var a = document.createElement("a");
+		var img = document.createElement("img");
+		img.className = "ingred-image";
+		img.title = ingred;
+		img.src = Ingredient.getByName(ingred).getMiniImageSrc();
+		var mark = document.createElement("span");
+		mark.className = "round-mark";
+		a.appendChild(img);
+		a.appendChild(mark);
+		
+		// Unnecessary caching
+		this.nameNodes.push(img);
+		this.markNodes.push(mark);
+		
+		return a
 	},
 	
 	renderIngredients: function(ingredients){
@@ -79,20 +122,10 @@ var Controller = {
 			var h3       = document.createElement("h3");
 			h3.innerHTML = letters[i];
 			div.appendChild(h3);
-			for(var j = 0; j < ingreds.length; j++){
-				var a = document.createElement("a");
-				var name = document.createElement("span");
-                name.className = "ingred-name";
-                name.innerHTML = ingreds[j];
-                var mark = document.createElement("span");
-                mark.className = "round-mark";
-				a.appendChild(name);
-                a.appendChild(mark);
-                div.appendChild(a);
-                
-                // Unnecessary caching
-                this.nameNodes.push(name);
-                this.markNodes.push(mark);
+			for (var j = 0; j < ingreds.length; j++)
+			{
+				var a = this.getIngredientNode(ingreds[j])
+				div.appendChild(a);
 			}
 			divs[letters[i]] = div;
 		}
