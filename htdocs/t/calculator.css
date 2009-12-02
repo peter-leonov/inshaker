@@ -1,5 +1,6 @@
 .column-r .b-title h2{line-height:29px;}
 
+#b-bill {position:relative;z-index:1}
 /* bill (cart) */
 #b-bill.editing-bar-name .body-wrapper {padding: 11px 18px 14px; }
 #b-bill.editing-bar-name .b-title {padding-bottom:8px;}
