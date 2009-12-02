@@ -17,7 +17,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .body-wrapper { overflow: hidden; }
 
-.b-content .top-menu{background:#000 url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
+.b-content .top-menu{background:url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu #poster{position:absolute;bottom:0;left:0;}
 .b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
 
