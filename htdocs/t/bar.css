@@ -35,16 +35,20 @@
 
 .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
 
+.b-more dl { height: 160px; }
 
 .column-main .body-wrapper,
-#sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
+#sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
 #carte.single .prev,
 #carte.single .next { display: none; }
 #carte.single .viewport { left: 0; }
 #carte.single .viewport,
-#carte.single .point { width: 590px; }
+#carte.single .point { width: 590px; height: 140px; }
 #carte.single .point li { width: 118px; }
+.b-more-cocktails .prev,
+.b-more-cocktails .next { top: 68px; }
 .b-more .b-more-cocktails { width: 628px; }
+.b-more .b-more-cocktails .viewport { top: 20px; }
 .b-more .b-more-cocktails .viewport,
 .b-more .b-more-cocktails .point { width: 560px; }
 .b-more-rec dt,
@@ -55,8 +59,8 @@
 .whisky-index .column { width: 310px; }
 
 #city-name, #bar-page #bar-id { display: none; }
-#map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
-#price-index { padding: 36px 0 0 89px; font-size: 35px; color: #ec118f; }
+#map { width: 100%; height: 480px; position: relative; overflow: hidden; border: 1px solid #888; }
+#price-index { padding: 53px 0 0 89px; font-size: 35px; color: #ec118f; }
 
 #map .bar-map-popup h2 { margin-bottom: 0.25em; }
 
