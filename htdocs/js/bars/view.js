@@ -250,15 +250,14 @@ BarsPageView.prototype =
 	
 	showBarMapPopup: function (bar)
 	{
-		var address = ''
-		if (bar.address)
+		var contacts, body = ''
+		if ((contacts = bar.contacts))
 		{
-			address = bar.address[0] + '<br/>' + bar.address[1]
-			if (bar.address[2])
-				address += '<br/><a href="http://' + bar.address[2] + '">' + bar.address[2] + '</a>'
+			body = contacts.address
+			if (contacts.tel)
+				body += '<br/>' + contacts.tel + '</a>'
 		}
-		
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + address + '</p><a href="' + bar.pageHref() + '">Посмотреть бар…</a></div>')
+		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2><a href="' + bar.pageHref() + '">' + bar.name + '</a></h2><p>' + body + '</p></div>')
 	},
 	
 	renderTitle: function (cocktail)
