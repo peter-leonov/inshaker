@@ -41,6 +41,9 @@
 #carte.single .prev,
 #carte.single .next { display: none; }
 #carte.single .viewport { left: 0; }
+#carte.single .viewport,
+#carte.single .point { width: 590px; }
+#carte.single .point li { width: 118px; }
 .b-more .b-more-cocktails { width: 628px; }
 .b-more .b-more-cocktails .viewport,
 .b-more .b-more-cocktails .point { width: 560px; }
