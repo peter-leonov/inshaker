@@ -56,7 +56,7 @@ BarPage.view =
 		this.bar = data.bar
 		
 		// cocktails
-		this.renderCocktails(nodes.carte, data.carte, 5)
+		this.renderCocktails(nodes.carte, data.carte, 4)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
 		
