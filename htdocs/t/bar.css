@@ -55,6 +55,8 @@
 #map { width: 100%; height: 465px; position: relative; overflow: hidden; border: 1px solid #888; }
 #price-index { padding: 36px 0 0 89px; font-size: 35px; color: #ec118f; }
 
+#map .bar-map-popup h2 { margin-bottom: 0.25em; }
+
 <!--# include file="/t/popup.css" -->
 <!--# include file="/t/info-popup.css" -->
 

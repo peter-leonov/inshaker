@@ -60,10 +60,6 @@
 							<dd><a><%=@chief%></a></dd>
 						</dl>
 						<% end %>
-						<dl class="part entrance">
-							<dt>Вход:</dt>
-							<dd><%= @entrance%></dd>
-						</dl>
 						<dl class="part cookery">
 							<dt>Кухня:</dt>
 							<dd>
@@ -72,6 +68,55 @@
 								<% end %>
 							</dd>
 						</dl>
+						
+						<% if @contacts %>
+						<div class="contacts">
+							<% if v = @contacts["address"] %>
+							<dl class="part address">
+								<dt>Адрес:</dt>
+								<dd>
+									<%= v %>
+								</dd>
+							</dl>
+							<% end %>
+							
+							<% if v = @contacts["hours"] %>
+							<dl class="part hours">
+								<dt>Часы работы:</dt>
+								<dd>
+									<%= v %>
+								</dd>
+							</dl>
+							<% end %>
+							
+							<% if v = @contacts["entrance"] %>
+							<dl class="part entrance">
+								<dt>Вход:</dt>
+								<dd>
+									<%= v %>
+								</dd>
+							</dl>
+							<% end %>
+							
+							<% if v = @contacts["tel"] %>
+							<dl class="part telephone">
+								<dt>Телефон:</dt>
+								<dd>
+									<%= v %>
+								</dd>
+							</dl>
+							<% end %>
+							
+							<% if v = @contacts["site"] %>
+							<dl class="part site">
+								<dt>Сайт:</dt>
+								<dd>
+									<a href="http://<%= v %>/"><%= v %></a>
+								</dd>
+							</dl>
+							<% end %>
+						</div>
+						<% end %>
 					</div>
 					
 				</div>

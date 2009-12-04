@@ -89,12 +89,6 @@ class BarsProcessor < Barman::Processor
         {
           "name_eng" => yaml["По-английски"].to_s,
           "country" => yaml["Страна"],
-          "address" => yaml["Контакты"]["Адрес"] ?
-          [
-            yaml["Контакты"]["Адрес"],
-            yaml["Контакты"]["Телефон"],
-            yaml["Контакты"]["Сайт"]
-          ] : nil,
           "format" => yaml["Тут можно"],
           "feel" => yaml["В компании"],
           "entrance" => yaml["Вход"],
@@ -105,6 +99,17 @@ class BarsProcessor < Barman::Processor
           "carte" => yaml["Коктейльная карта"],
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
+        
+        if yaml["Контакты"]
+          bar["contacts"] =
+          {
+            "address" => yaml["Контакты"]["Адрес"],
+            "tel" => yaml["Контакты"]["Телефон"],
+            "site" => yaml["Контакты"]["Сайт"],
+            "hours" => yaml["Контакты"]["Часы работы"],
+            "entrance" => yaml["Контакты"]["Вход"]
+          }
+        end
         
         bar["name"] = bar_dir.name
         bar["city"] = city_dir.name
