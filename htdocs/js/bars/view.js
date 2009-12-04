@@ -136,6 +136,13 @@ BarsPageView.prototype =
 				lng = parseFloat(state.lng)
 				zoom = parseInt(state.zoom) || 10
 			}
+			else if (state.bar)
+			{
+				var point = state.bar.point
+				lat = point[0]
+				lng = point[1]
+				zoom = 13
+			}
 			else
 			{
 				var point = city.point
@@ -155,6 +162,8 @@ BarsPageView.prototype =
 			if (!bar.gMarker)
 				bar.gMarker = this.getGMarker(bar)
 			map.addOverlay(bar.gMarker)
+			if (bar == state.bar)
+				this.showBarMapPopup(bar)
 		}
 	},
 	

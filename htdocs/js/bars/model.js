@@ -17,6 +17,9 @@ BarsPageModel.prototype =
 		if (!state.city)
 			state.city = cities[0]
 		
+		if (state.bar)
+			state.bar = Bar.getByCityName(state.city, state.bar)
+		
 		var barsSet = Bar.getByQuery(state)
 		
 		var city = City.getByName(state.city)

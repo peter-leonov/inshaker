@@ -30,7 +30,12 @@ BarsPageController.prototype =
 	
 	gMarkerClicked: function (gMarker)
 	{
-		this.view.showBarMapPopup(gMarker.bar)
+		var state = this.state,
+			bar = gMarker.bar
+		
+		state.bar = bar.name
+		this.view.showBarMapPopup(bar)
+		this.view.setHash(state)
 	},
 	
 	gMapMoveEnd: function (ll, zoom)

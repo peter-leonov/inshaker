@@ -71,15 +71,6 @@
 						
 						<% if @contacts %>
 						<div class="contacts">
-							<% if v = @contacts["address"] %>
-							<dl class="part address">
-								<dt>Адрес:</dt>
-								<dd>
-									<%= v %>
-								</dd>
-							</dl>
-							<% end %>
-							
 							<% if v = @contacts["hours"] %>
 							<dl class="part hours">
 								<dt>Часы работы:</dt>
@@ -103,6 +94,15 @@
 								<dt>Телефон:</dt>
 								<dd>
 									<%= v %>
+								</dd>
+							</dl>
+							<% end %>
+							
+							<% if v = @contacts["address"] %>
+							<dl class="part address">
+								<dt>Адрес:</dt>
+								<dd>
+									<a href="/bars.html#view=map&amp;city=<%= URI.escape(@city) %>&amp;bar=<%= URI.escape(@name) %>"><%= v %></a>
 								</dd>
 							</dl>
 							<% end %>
