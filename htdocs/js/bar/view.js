@@ -15,7 +15,6 @@ BarPage.view =
 		this.nodes = nodes
 		
 		new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
-		new Programica.RollingImagesLite(nodes.recommendations)
 		new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
 		
 		
@@ -57,8 +56,7 @@ BarPage.view =
 		this.bar = data.bar
 		
 		// cocktails
-		this.renderCocktails(nodes.recommendations, data.recommendations, 1)
-		this.renderCocktails(nodes.carte, data.carte, 3)
+		this.renderCocktails(nodes.carte, data.carte, 5)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
 		

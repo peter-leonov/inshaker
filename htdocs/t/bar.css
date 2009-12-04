@@ -38,6 +38,9 @@
 
 .column-main .body-wrapper,
 #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 520px; }
+.b-more .b-more-cocktails { width: 628px; }
+.b-more .b-more-cocktails .viewport,
+.b-more .b-more-cocktails .point { width: 560px; }
 .b-more-rec dt,
 .b-more-rec dt b,
 .b-more-cocktails dt,

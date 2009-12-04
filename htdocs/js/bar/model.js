@@ -35,7 +35,6 @@ BarPage.model =
 			var data =
 			{
 				bar: bar,
-				recommendations: this.getCocktailsByNames([bar.carte.shift()]),
 				carte: this.getCocktailsByNames(bar.carte),
 				otherBarsSet: Bar.getAllByCity(query.city),
 				prevNext: this.getPrevNext(query.name, {city: query.city, format: query.format, feel: query.feel})

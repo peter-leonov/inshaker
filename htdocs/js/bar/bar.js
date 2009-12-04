@@ -25,7 +25,6 @@ $.onready
 		var nodes =
 		{
 			photos: cssQuery('.b-content .photos')[0],
-			recommendations: $('recommendations'),
             priceIndex: $('price-index'),
 			carte: $('carte'),
 			barName: $('bar-name'),
