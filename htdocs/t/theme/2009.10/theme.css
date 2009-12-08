@@ -69,7 +69,7 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 .b-more dt b { color: #343B40; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
-/* ingredients.css */
+/* matching.css */
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
@@ -117,7 +117,7 @@ button.rounded { background-image: url(common.8.png); }
 .b-more dt b { background-image: url(cocktail.8.png); }
 .hreview .desc h2 i { background-image: url(common.8.png); }
 
-/* ingredients.css */
+/* matching.css */
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-image: url(ingredients.8.png) }
