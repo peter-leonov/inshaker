@@ -63,6 +63,7 @@ b.rb { right: 0; bottom: 0; }
 #top .nav a:hover{border-bottom: 5px solid;}
 #cocktails-page #top .nav a.cocktails,
 #cocktail-page #top .nav a.cocktails,
+#matching-page #top .nav a.cocktails,
 #bars-page #top .nav a.bars,
 #bar-page #top .nav a.bars,
 #gifts-page #top .nav a.gifts,
