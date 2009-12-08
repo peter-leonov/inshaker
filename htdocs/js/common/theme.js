@@ -1,4 +1,3 @@
-// Class
 ;(function(){
 
 var myName = 'Theme'
@@ -38,3 +37,12 @@ Me.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" -->)
 <!--# endif -->
 
 })();
+
+;(function(){ try {
+	var m = /\btheme=(\d\d\d\d\.\d\d)/.exec(location.hash)
+	if (m)
+	{
+		$('theme-stylesheet').href = '/t/theme/' + m[1] + '/theme.css'
+		document.cookie = 'theme=' + m[1]// + '; expires=' + new Date()
+	}
+} catch (ex) {} })();
