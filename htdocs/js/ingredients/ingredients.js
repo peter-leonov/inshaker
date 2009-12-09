@@ -1,13 +1,13 @@
 ;(function(){
 
-var myName = 'WidgetName',
-	Me = self[myName] = MVC(myName)
+var myName = 'IngredientsPage',
+	Me = self[myName] = MVC.create(myName)
 
 // Me.mixIn(EventDriven)
 // eval(NodesShortcut())
 
-Me.prototype.extend
-({
+var myProto =
+{
 	initialize: function ()
 	{
 		this.nodes = {}
@@ -20,6 +20,8 @@ Me.prototype.extend
 		
 		return this
 	}
-})
+}
+
+Object.extend(Me.prototype, myProto)
 
 })();
