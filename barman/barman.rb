@@ -81,8 +81,9 @@ module Barman
     end
     
     def flush_masked_optimized(mask, src, dst, mode="CopyOpacity")
-      return true if File.mtime_cmp(src, dst) <= 0
+      return true if File.mtime_cmp(src, dst) == 0
       mask_img(mask, src, dst, mode) && optimize_img(dst)
+      File.mtime_cp(src, dst)
     end
     
     def cp_if_different src, dst
