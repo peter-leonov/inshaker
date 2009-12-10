@@ -18,8 +18,8 @@ function CocktailsModel (states, view) {
 		this.filters = this.completeFilters(filters);
 		var viewData = copyProperties(Cocktail, ["tags", "strengths", "methods", "ingredients"]);
 		viewData.letters = Cocktail.getFirstLetters()
-		viewData.names = Good.names
-		viewData.byName = Good.byName
+		viewData.names = Ingredient.getAllSecondNames()
+		viewData.byName = Ingredient.getNameBySecondNameHash()
 		view.initialize(viewData, this.filters.state);
 		this.applyFilters();
 	};
