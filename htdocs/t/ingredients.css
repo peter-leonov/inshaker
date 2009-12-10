@@ -1,0 +1,4 @@
+#output .group .head { font-size: 24px; margin: 30px 0 15px 0; }
+#output .group .list { overflow: hidden; }
+#output .group .list .item { float: left; margin: 0 15px 15px 0; }
+#output .group .list .item .ingredient .image { width: 100px; height: 100px; }
