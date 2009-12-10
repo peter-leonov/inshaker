@@ -101,6 +101,7 @@ class IngredientsProcessor < Barman::Processor
           if good = find_good(good_dir, group_dir)
             done += 1
             good["group"] = group_dir.name
+            good["dir"] = good_dir.name.dirify
             @goods[good_dir.name] = good
             
             if names = read_names(good_dir)

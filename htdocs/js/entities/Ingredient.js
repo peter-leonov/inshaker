@@ -11,7 +11,7 @@ Ingredient.prototype =
 	constructor: Ingredient,
     getRound: function() { return Ingredient.rounds[this.name] },
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.name.trans() + ".png" }
+	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" }
 }
 
 Object.extend(Ingredient,
