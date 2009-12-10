@@ -1,6 +1,6 @@
 ;(function(){
 
-var myName = 'WidgetName',
+var myName = 'IngredientsPage',
 	Me = self[myName] = MVC.create(myName)
 
 // Me.mixIn(EventDriven)
@@ -28,73 +28,26 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
+
 
 ;(function(){
 
-var Papa = WidgetName, Me = Papa.View
-
-// eval(NodesShortcut())
-
-var myProto =
+function onready ()
 {
-	initialize: function ()
+	var nodes =
 	{
-		this.nodes = {}
-	},
-
-	bind: function (nodes)
-	{
-		this.nodes = nodes
-		
-		
-		return this
-	},
+		main: $$('.b-content')[0],
+		output: $('output')
+	}
 	
-	modelChanged: function (data)
-	{
-		
-	}
+	var widget = new IngredientsPage()
+	widget.bind(nodes, {ingredient:Ingredient}, {groupBy: 'group', sortBy: 'alphabet'})
 }
 
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-;(function(){
-
-var Papa = WidgetName, Me = Papa.Controller
-
-var myProto =
-{
-	initialize: function ()
-	{
-		this.state = {}
-	},
-	
-	bind: function (state)
-	{
-		this.state = state
-	}
-}
-
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-;(function(){
-
-var Papa = WidgetName, Me = Papa.Model
-
-var myProto =
-{
-	initialize: function ()
-	{
-		this.sources = {}
-	}
-}
-
-Object.extend(Me.prototype, myProto)
+$.onready(onready)
 
 })();
