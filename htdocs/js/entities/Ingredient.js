@@ -28,6 +28,16 @@ Object.extend(Ingredient,
 		this.groups = db_groups;
 	},
 	
+	getAll: function ()
+	{
+		return this.ingredients
+	},
+	
+	getGroups: function ()
+	{
+		return this.groups
+	},
+	
 	getByName: function (name){
 		for(var i = 0; i < this.ingredients.length; i++){
 			if(this.ingredients[i].name.toLowerCase() == name.toLowerCase())
