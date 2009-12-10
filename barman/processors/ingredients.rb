@@ -27,7 +27,6 @@ class IngredientsProcessor < Barman::Processor
     super
     @ingredients = []
     @ingredients_groups = []
-    @goods = {}
   end
   
   def job_name
@@ -67,16 +66,19 @@ class IngredientsProcessor < Barman::Processor
   def flush_json
     say "сохраняю данные об ингредиентах"
     flush_json_object(@ingredients, Config::DB_JS_INGREDS)
-    flush_json_object(@goods, Config::DB_JS_GOODS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
   
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
-      @goods.keys.sort.each do |name|
-        entity = @goods[name]
-        links.puts %Q{<li>#{name} — #{entity["group"]}</li>}
+      group = ""
+      @ingredients.each do |ingred|
+        if group != ingred["group"]
+          group = ingred["group"]
+          links.puts %Q{<li><b>#{group}</b></li>}
+        end
+        links.puts %Q{<li>#{ingred["name"]}</li>}
       end
       links.puts "</ul>"
     end
@@ -84,10 +86,10 @@ class IngredientsProcessor < Barman::Processor
   
   def prepare_goods
     if File.exists?(Config::DB_JS_GOODS) && !@options[:force]
-      @goods_mtime = File.mtime(Config::DB_JS_GOODS)
-      @goods = JSON.parse(File.read(Config::DB_JS_GOODS))
+      @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
+      @ingredients = JSON.parse(File.read(Config::DB_JS_INGREDS))
     else
-      @goods_mtime = nil
+      @ingredients_mtime = nil
     end
   end
   
@@ -97,12 +99,13 @@ class IngredientsProcessor < Barman::Processor
     done = 0
     Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
       group_dir.each_dir do |good_dir|
-        if !@goods_mtime || good_dir.deep_mtime > @goods_mtime
+        if !@ingredients_mtime || good_dir.deep_mtime > @ingredients_mtime
           if good = find_good(good_dir, group_dir)
             done += 1
             good["group"] = group_dir.name
+            good["name"] = good_dir.name
             good["dir"] = good_dir.name.dirify
-            @goods[good_dir.name] = good
+            @ingredients << good
             
             if names = read_names(good_dir)
               good["names"] = names
@@ -113,7 +116,6 @@ class IngredientsProcessor < Barman::Processor
             warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
           end
         end
-        @ingredients << {"group" => group_dir.name, "name" => good_dir.name}
       end
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
