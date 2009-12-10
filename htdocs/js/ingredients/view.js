@@ -61,7 +61,8 @@ var myProto =
 		var image = N('img', 'image');
 		// image.title = ingred.name
 		image.src = ingred.getMiniImageSrc()
-		node.appendChild(img)
+		node.appendChild(image)
+		return node
 	}
 }
 
