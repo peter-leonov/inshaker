@@ -2,7 +2,7 @@
 
 var Papa = IngredientsPage, Me = Papa.View
 
-eval(NodesShortcut())
+eval(NodesShortcut.include())
 
 var myProto =
 {
@@ -24,29 +24,30 @@ var myProto =
 	{
 		var output = this.nodes.output
 		output.empty()
+		// console.time('render')
 		for (var i = 0; i < data.length; i++)
 		{
 			var group = this.renderGroup(data[i])
 			output.appendChild(group)
 		}
+		// console.timeEnd('render')
 	},
 	
 	renderGroup: function (group)
 	{
-		var root = N('dl', 'group')
+		var root = Nc('dl', 'group')
 		
-		var head = N('dt', 'head', group.name)
+		var head = Nct('dt', 'head', group.name)
 		root.appendChild(head)
 		
-		
-		var body = N('dt', 'body')
+		var body = Nc('dt', 'body')
 		root.appendChild(body)
 		
-		var list = N('ul', 'list')
+		var list = Nc('ul', 'list')
 		var ingreds = group.list
 		for (var i = 0; i < ingreds.length; i++)
 		{
-			var item = N('li', 'item')
+			var item = Nc('li', 'item')
 			item.appendChild(this.getIngredientNode(ingreds[i]))
 			list.appendChild(item)
 		}
@@ -57,8 +58,8 @@ var myProto =
 	
 	getIngredientNode: function (ingred)
 	{
-		var node = N('a', 'ingredient')
-		var image = N('img', 'image');
+		var node = Nc('a', 'ingredient')
+		var image = Nc('img', 'image')
 		// image.title = ingred.name
 		image.src = ingred.getMiniImageSrc()
 		node.appendChild(image)
