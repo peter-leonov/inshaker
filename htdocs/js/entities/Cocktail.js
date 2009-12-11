@@ -72,31 +72,31 @@ Cocktail.prototype =
 
 Object.extend(Cocktail,
 {
-    cocktails: [],
     letters: [],
     rounds: {},
     matches: {},
-	byName: {},
 	
-	initialize: function (db, tags, strengths, methods)
+	initialize: function (hash, tags, strengths, methods)
 	{
 		this.tags = tags
 		this.strengths = strengths
 		this.methods = methods
 		
-		var byName = this.byName,
-			cocktails = this.cocktails,
+		var byName = this.byName = {},
 			names = []
 		
-		for (var k in db)
+		for (var k in hash)
 			names.push(k)
 		names.sort()
 		
+		var db = []
 		for (var i = 0, il = names.length; i < il; i++)
 		{
 			var name = names[i]
-			cocktails[i] = byName[name] = new Cocktail(db[name])
+			db[i] = byName[name] = new Cocktail(hash[name])
 		}
+		
+		this.db = db
 	},
 	
 	getTags: function () { return this.tags },
@@ -106,7 +106,7 @@ Object.extend(Cocktail,
 	getFirstLetters: function (set)
 	{
 		if (!set)
-			set = this.cocktails
+			set = this.db
 		
 		var seen = {}
 		for (var i = 0, il = set.length; i < il; i++)
@@ -120,7 +120,7 @@ Object.extend(Cocktail,
 	},
 	
     getAll: function(){
-        return this.cocktails;
+        return this.db;
     },
 
 	getByName: function (name) { return this.byName[name] },
@@ -134,15 +134,15 @@ Object.extend(Cocktail,
 			return this.getBySimilarNameCache[name]
 			
 		var words = name.split(/\s+/),
-			res = [], cocktails = this.cocktails
+			res = [], db = this.db
 		
 		for (var i = 0; i < words.length; i++)
 			words[i] = new RegExp("(?:^|\\s)" + words[i], "i")
 		
 		var first = words[0], jl = words.length
-		SEARCH: for (var i = 0; i < cocktails.length; i++)
+		SEARCH: for (var i = 0; i < db.length; i++)
 		{
-			var cocktail = cocktails[i], name
+			var cocktail = db[i], name
 			
 			if (first.test(cocktail.name))
 				name = cocktail.name
@@ -161,8 +161,8 @@ Object.extend(Cocktail,
 	},
 	
 	getByHtmlName: function(htmlName){
-		for(var i = 0; i < this.cocktails.length; i++){
-			if(this.cocktails[i].name_eng.htmlName() == htmlName) return this.cocktails[i];
+		for(var i = 0; i < this.db.length; i++){
+			if(this.db[i].name_eng.htmlName() == htmlName) return this.db[i];
 		}
 	},
 	
@@ -175,7 +175,7 @@ Object.extend(Cocktail,
 			return res
 		res = this.getByLetterCache[letter] = []
 		if (!set)
-			set = this.cocktails
+			set = this.db
 		
 		
 		for (var i = 0, il = set.length; i < il; i++)
@@ -201,7 +201,7 @@ Object.extend(Cocktail,
 	},
 	
 	getByTag: function (tag, set) {
-		if(!set) set = this.cocktails;
+		if(!set) set = this.db;
 		var res = [];
 		for(var i = 0; i < set.length; i++){
 			if(set[i].tags.indexOf(tag) > -1){
@@ -212,7 +212,7 @@ Object.extend(Cocktail,
 	},
 	
 	getByStrength: function(strength, set) {
-		if(!set) set = this.cocktails;
+		if(!set) set = this.db;
 		var res = [];
 		for(var i = 0; i < set.length; i++){
 			if(set[i].strength == strength) {
@@ -223,7 +223,7 @@ Object.extend(Cocktail,
 	},
 
     getByMethod: function(method, set) {
-        if(!set) set = this.cocktails;
+        if(!set) set = this.db;
         var res = [];
         for(var i = 0; i < set.length; i++){
              if(set[i].method == method) {
@@ -233,20 +233,20 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, cocktails)
+	getByIngredients: function (ingredients, db)
 	{
 		this.rounds = {}
-		if (!cocktails)
-			cocktails = this.cocktails
+		if (!db)
+			db = this.db
 		
 		var ingredientsNames = {}
 		for (var i = 0; i < ingredients.length; i++)
 			ingredientsNames[ingredients[i].toLowerCase()] = true
 		
 		var res = []
-		for (var i = 0; i < cocktails.length; i++)
+		for (var i = 0; i < db.length; i++)
 		{
-			var cocktail = cocktails[i],
+			var cocktail = db[i],
 				matches = 0
 			
 			var ci = cocktail.ingredients
@@ -292,9 +292,9 @@ Object.extend(Cocktail,
         
         if(!filtered) {
             if(filters.state == states.byName) {
-                res = this.cocktails.shuffled();
+                res = this.db.shuffled();
             } else {
-                res = this.cocktails.sortedBy(this.nameSort);
+                res = this.db.sortedBy(this.nameSort);
 		    }
         }
         return res;
