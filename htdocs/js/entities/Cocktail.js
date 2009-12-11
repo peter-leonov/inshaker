@@ -262,6 +262,34 @@ Object.extend(Cocktail,
 		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
 	},
 	
+	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
+	getCocktailsByIngredientNameHash: function ()
+	{
+		if (this._byIngredientName)
+			return this._byIngredientName
+		
+		var cache = this._byIngredientName = {},
+			db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var cocktail = db[i],
+				ingredients = cocktail.ingredients
+			
+			for (var j = 0, jl = ingredients.length; j < jl; j++)
+			{
+				var arr, name = ingredients[j][0]
+				
+				if ((arr = cache[name]))
+					arr.push(cocktail)
+				else
+					cache[name] = [cocktail]
+			}
+		}
+		
+		return cache
+	},
+	
 	getByFilters: function(filters, states) {
 		var res = [];
 		var filtered = false;
