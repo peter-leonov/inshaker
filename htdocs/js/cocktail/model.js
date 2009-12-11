@@ -1,7 +1,7 @@
 var Model = {
 	cocktail: null,
 	ingredients: [],
-	goods: Ingredient.getAll(),
+	goods: Ingredient.getAllByNameHash(),
 	
 	dataListener: null,
 	

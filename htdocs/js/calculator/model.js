@@ -1,5 +1,5 @@
 function CalculatorModel(view){
-	var allGoods = Ingredient.getAll()
+	var allGoods = Ingredient.getAllByNameHash()
 	this.cartData = {};
 	
 	this.optimalGoods = {};
