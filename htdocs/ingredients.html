@@ -12,7 +12,39 @@
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
 			<h1>Все коктейльные ингредиенты</h1>
-			<a class="hrefs" href="/cocktails.html"> ← к списку коктейлей</a>
+			<!-- <a class="hrefs" href="/cocktails.html"> ← к списку коктейлей</a> -->
+			
+			<div id="menu">
+				<dl class="tweaker" id="group-by">
+					<dt class="head">Сгруппировать:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item" value="none">в кучу</li>
+							<li class="item selected" value="byGroup">по группам</li>
+							<li class="item" value="byColor">по цвету</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="tweaker" id="sort-by">
+					<dt class="head">Отсортировать:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item" value="byAlphabet">по алфавиту</li>
+							<li class="item selected" value="byUsage">по популярности</li>
+							<li class="item" value="byMark">по марке</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="tweaker" id="draw-by">
+					<dt class="head">Выводить:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item selected" value="byAlphabet">картинки</li>
+							<li class="item" value="byUsage">с подписями</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
 		</div>
 		
 		<div class="b-content">
@@ -24,6 +56,7 @@
 <!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/programica/fixes/trident3.js"></script><![endif]-->
 <!--[if gte IE 8]><script type="text/javascript" src="/lib-0.3/programica/fixes/trident4.js"></script><![endif]-->
 <script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/lib-0.3/widgets/tab-switcher.js"></script>
 <script type="text/javascript" src="/js/common/cocktails.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

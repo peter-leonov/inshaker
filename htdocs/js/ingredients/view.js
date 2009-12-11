@@ -15,7 +15,7 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		
+		var sortBy = new TabSwitcher()
 		
 		return this
 	},

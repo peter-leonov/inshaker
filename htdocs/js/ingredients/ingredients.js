@@ -41,11 +41,17 @@ function onready ()
 	var nodes =
 	{
 		main: $$('.b-content')[0],
-		output: $('output')
+		output: $('output'),
+		
+		groupBy: $('group-by'),
+		groupByItems: $$('#group-by .item'),
+		
+		sortBy: $('sort-by'),
+		sortByItems: $$('#sort-by .item')
 	}
 	
 	var widget = new IngredientsPage()
-	widget.bind(nodes, {ingredient:Ingredient}, {groupBy: 'group', sortBy: 'alphabet'})
+	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage'})
 }
 
 $.onready(onready)

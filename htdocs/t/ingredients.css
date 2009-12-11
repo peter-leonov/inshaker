@@ -1,3 +1,24 @@
+.b-title { height: 57px; }
+.b-title .hrefs { top: 8px; bottom: auto; }
+
+#menu .tweaker { position: absolute; top: 35px; font-size: 12px; }
+
+#menu #group-by { left: 0; }
+#menu #sort-by { left: 310px; }
+#menu #draw-by { left: 700px; }
+
+#menu .tweaker .head,
+#menu .tweaker .body,
+#menu .tweaker .list,
+#menu .tweaker .list .item { display: inline-block; }
+
+#menu .tweaker .head { color: #888; }
+
+#menu .tweaker .list {  }
+#menu .tweaker .list .item { background-color: #eee; cursor: pointer; padding: 1px 6px 2px; margin: 0 2px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+#menu .tweaker .list .item:hover { background-color: #ccc; }
+#menu .tweaker .list .item.selected { background-color: #4a0; color: #fff; cursor: default; }
+
 #output .group .head { font-size: 24px; margin: 30px 0 15px 0; }
 #output .group .list { overflow: hidden; }
 #output .group .list .item { float: left; margin: 0 15px 15px 0; }
