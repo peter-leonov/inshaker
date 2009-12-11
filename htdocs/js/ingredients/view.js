@@ -37,8 +37,8 @@ var myProto =
 	{
 		var root = Nc('dl', 'group')
 		
-		var head = Nct('dt', 'head', group.name)
-		root.appendChild(head)
+		if ('name' in group)
+			root.appendChild(Nct('dt', 'head', group.name))
 		
 		var body = Nc('dt', 'body')
 		root.appendChild(body)
