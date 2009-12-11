@@ -59,6 +59,7 @@ var myProto =
 	getIngredientNode: function (ingred)
 	{
 		var node = Nc('a', 'ingredient')
+		node.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(ingred.name)
 		var image = Nc('img', 'image')
 		// image.title = ingred.name
 		image.src = ingred.getMiniImageSrc()
