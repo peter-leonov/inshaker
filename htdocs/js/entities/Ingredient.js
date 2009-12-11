@@ -71,6 +71,18 @@ Object.extend(Ingredient,
 		return res;
 	},
 	
+	calculateEachIngredientUsage: function ()
+	{
+		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
+			db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingred = db[i]
+			ingred.cocktails = cocktails[ingred.name] || []
+		}
+	},
+	
     getAllRoundsByNames: function(names){
         for(var i = 0; i < this.db.length; i++) 
             this.rounds[this.db[i].name] = Infinity;
