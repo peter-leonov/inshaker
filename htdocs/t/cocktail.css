@@ -35,7 +35,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .desc .description{padding-left:16px;}
 .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
 .hreview button { margin-right: 16px; }
-.illustration{ position:absolute; left:-2px; bottom:-9px; z-index:2;} /* also applied to the dragged element */ 
+.illustration{ position:absolute; left:-2px; bottom:-9px; z-index:100;} /* also applied to the dragged element */
 
 #view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
 #view-prepare h3{font-size:150%;margin:13px 0 10px;}
