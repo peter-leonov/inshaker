@@ -39,12 +39,12 @@ Object.extend(Ingredient,
 		return this.groups
 	},
 	
-	getByName: function (name){
-		for(var i = 0; i < this.db.length; i++){
-			log(this.db[i])
-			if(this.db[i].name.toLowerCase() == name.toLowerCase())
-                return this.db[i];
-		}
+	getByName: function (name)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		return this._byName[name]
 	},
 	
 	getByGroup: function(group){
@@ -85,39 +85,50 @@ Object.extend(Ingredient,
 	_updateByNameIndex: function ()
 	{
 		var db = this.db,
-			secondNames = this._secondNames = [],
-			nameBySecondName = this._nameBySecondName = {},
 			byName = this._byName = {}
 		
 		for (var i = 0; i < db.length; i++)
 		{
+			var ingred = db[i]
+			byName[ingred.name] = ingred
+		}
+	},
+	
+	_updateBySecondNameIndex: function ()
+	{
+		var db = this.db,
+			secondNames = this._secondNames = [],
+			nameBySecondName = this._nameBySecondName = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
 			var ingred = db[i],
-				name = ingred.name,
 				snames = ingred.names
 			
-			byName[name] = ingred
-			
 			if (snames)
+			{
+				var name = ingred.name
 				for (var j = 0; j < snames.length; j++)
 				{
 					var sn = snames[j]
 					nameBySecondName[sn] = name
 					secondNames.push(sn)
 				}
+			}
 		}
 	},
 	
 	getNameBySecondNameHash: function ()
 	{
 		if (!this._nameBySecondName)
-			this._updateByNameIndex()
+			this._updateBySecondNameIndex()
 		return this._nameBySecondName
 	},
 	
 	getAllSecondNames: function ()
 	{
 		if (!this._secondNames)
-			this._updateByNameIndex()
+			this._updateBySecondNameIndex()
 		return this._secondNames
 	},
 	
