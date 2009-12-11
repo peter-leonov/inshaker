@@ -1,5 +1,5 @@
 var Model = {
-	ingredients: Cocktail.ingredients,
+	ingredients: Ingredient.getAllNames(),
 	resultSet: [],
 	dataListener: null,
 	

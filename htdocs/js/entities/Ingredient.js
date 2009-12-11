@@ -47,6 +47,14 @@ Object.extend(Ingredient,
 		return this._byName[name]
 	},
 	
+	getAllNames: function (name)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		return Object.keys(this._byName)
+	},
+	
 	getByGroup: function(group){
 		var res = [];
 		for(var i = 0; i < this.db.length; i++){

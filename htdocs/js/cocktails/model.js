@@ -16,7 +16,13 @@ function CocktailsModel (states, view) {
 	
 	this.initialize = function(filters) {
 		this.filters = this.completeFilters(filters);
-		var viewData = copyProperties(Cocktail, ["tags", "strengths", "methods", "ingredients"]);
+		var viewData = {}
+		
+		viewData.ingredients = Ingredient.getAllNames()
+		viewData.tags = Cocktail.getTags()
+		viewData.strengths = Cocktail.getStrengths()
+		viewData.methods = Cocktail.getMethods()
+		
 		viewData.letters = Cocktail.getFirstLetters()
 		viewData.names = Ingredient.getAllSecondNames()
 		viewData.byName = Ingredient.getNameBySecondNameHash()
@@ -25,8 +31,9 @@ function CocktailsModel (states, view) {
 	};
 	
 	this.randomIngredient = function(){
-		var num = Math.floor((Cocktail.ingredients.length)*Math.random());
-		return Cocktail.ingredients[num];
+		var allNames = Cocktail.getAllNames()
+		var num = Math.floor((allNames.length)*Math.random());
+		return allNames[num];
 	};
 	
 	this.randomCocktailNames = function(){
@@ -181,7 +188,13 @@ function CocktailsModel (states, view) {
 	this.getGroupStates = function(){
 		var set = [], groupStates = {};
 		
-		if(this.filtersAreEmpty()) return copyProperties(Cocktail, ["strengths", "tags", "methods"]);
+		if (this.filtersAreEmpty())
+		{
+			var res = {}
+			res.tags = Cocktail.getTags()
+			res.strengths = Cocktail.getStrengths()
+			res.methods = Cocktail.getMethods()
+		}
 		
 		// strengths state - depends only on ingredients
 		var rFilters = cloneObject(this.filters);

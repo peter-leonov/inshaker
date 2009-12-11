@@ -73,15 +73,19 @@ Cocktail.prototype =
 Object.extend(Cocktail,
 {
     cocktails: [],
-    ingredients: [],
     letters: [],
     rounds: {},
     matches: {},
 	byName: {},
 	
-	initialize: function (db){
+	initialize: function (db, tags, strengths, methods)
+	{
+		this.tags = tags
+		this.strengths = strengths
+		this.methods = methods
 		
-		var ai = this.ingredients, seen = {}, byName = this.byName,
+		var byName = this.byName,
+			cocktails = this.cocktails,
 			names = []
 		
 		for (var k in db)
@@ -90,22 +94,14 @@ Object.extend(Cocktail,
 		
 		for (var i = 0, il = names.length; i < il; i++)
 		{
-			var name = names[i],
-				cocktail = this.cocktails[i] = byName[name] = new Cocktail(db[name])
-			
-			var ci = cocktail.ingredients
-			for (var j = 0; j < ci.length; j++)
-			{
-				var ingr = ci[j][0]
-				if (!seen[ingr])
-				{
-					seen[ingr] = true
-					ai.push(ingr)
-				}
-			}
+			var name = names[i]
+			cocktails[i] = byName[name] = new Cocktail(db[name])
 		}
-		this.ingredients = ai.sort()
 	},
+	
+	getTags: function () { return this.tags },
+	getStrengths: function () { return this.strengths },
+	getMethods: function () { return this.methods },
 	
 	getFirstLetters: function (set)
 	{
@@ -128,6 +124,8 @@ Object.extend(Cocktail,
     },
 
 	getByName: function (name) { return this.byName[name] },
+	
+	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getBySimilarNameCache: {},
 	getBySimilarName: function (name)
@@ -329,7 +327,10 @@ Object.extend(Cocktail,
     }
 })
 
-Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)
-Cocktail.tags = <!--# include file="/db/tags.js" -->
-Cocktail.strengths = <!--# include file="/db/strengths.js" -->
-Cocktail.methods = <!--# include file="/db/methods.js" -->
+Cocktail.initialize
+(
+	<!--# include file="/db/cocktails.js" -->,
+	<!--# include file="/db/tags.js" -->,
+	<!--# include file="/db/strengths.js" -->,
+	<!--# include file="/db/methods.js" -->
+)
