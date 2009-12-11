@@ -15,16 +15,38 @@ var myProto =
 		this.ds = ds
 		this.all = ds.ingredient.getAll()
 		this.groups = this.ds.ingredient.getGroups()
+		Ingredient.calculateEachIngredientUsage()
 	},
 	
 	setState: function (state)
 	{
 		this.state = state
 		
-		var all = this.all,
-			data = this.data = []
+		var data, all = this.all
 		
 		if (state.groupBy == 'group')
+			data = this.groupByGroup(all)
+		else
+			data = [{list: all}]
+		
+		
+		var func
+		if (state.sortBy == 'usage')
+			func = this.sortByUsage
+		// ingredients are already alphabetically sorted
+		// else if (state.sortBy == 'alphabet')
+		// 	func = this.sortByAlphabet
+		
+		if (func)
+			this.sortBy(data, func)
+		
+		this.data = data
+		this.view.modelChanged(data)
+	},
+	
+	groupByGroup: function (all)
+	{
+		var data = []
 		{
 			var slices = {}, groups = this.groups
 			for (var i = 0; i < groups.length; i++)
@@ -40,9 +62,19 @@ var myProto =
 				slices[ingred.group].push(ingred)
 			}
 		}
-		
-		this.view.modelChanged(data)
-	}
+		return data
+	},
+	
+	sortBy: function (data, func)
+	{
+		for (var i = 0; i < data.length; i++)
+			data[i].list.sort(func)
+	},
+	
+	sortByAlphabet: function (a, b) { return a.name.localeCompare(b.name) },
+	
+	// this is possible only after Ingredient.calculateEachIngredientUsage()
+	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length }
 }
 
 Object.extend(Me.prototype, myProto)
