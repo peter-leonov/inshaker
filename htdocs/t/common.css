@@ -33,9 +33,6 @@ label{display:block;}
 .dots dl{background:url(bg/cocktail/dots.png) repeat-x 0 1em;clear:both;overflow:hidden;line-height:1.45;font-size:92%;}
 .dots dt{float:left;background:#fff;padding-right:3px;}
 .dots dd{float:right;background:#fff;padding-left:3px;}
-/* yellow inputs */
-.win-shop .b-gadget .count input,
-.win-shop .content dd input,
 
 /* small imgs */
 
@@ -149,6 +146,10 @@ b.rb { right: 0; bottom: 0; }
 .square-list .prev.disabled { background-position: -450px -25px; }
 .square-list .next.disabled { background-position: -475px -25px; }
 
+/* yellow inputs */
+.win-shop .b-gadget .count input,
+.win-shop .content dd input
+{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 
 /* popups-related */
 .win-shop{display:none;}
