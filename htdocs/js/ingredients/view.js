@@ -15,12 +15,24 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		var sortBy = new TabSwitcher()
+		var controller = this.controller
+		
+		var groupBy = this.groupBySwitcher = new TabSwitcher()
+		groupBy.bind({tabs: nodes.groupByItems, sections:[]})
+		groupBy.addEventListener('select', function (e) { e.preventDefault(); controller.groupBySelected(e.data.value) }, false)
+		
+		var sortBy = this.sortBySwitcher = new TabSwitcher()
+		sortBy.bind({tabs: nodes.sortByItems, sections:[]})
+		sortBy.addEventListener('select', function (e) { e.preventDefault(); controller.sortBySelected(e.data.value) }, false)
+		
+		var drawBy = this.drawBySwitcher = new TabSwitcher()
+		drawBy.bind({tabs: nodes.drawByItems, sections:[]})
+		drawBy.addEventListener('select', function (e) { e.preventDefault(); controller.drawBySelected(e.data.value) }, false)
 		
 		return this
 	},
 	
-	modelChanged: function (data)
+	listChanged: function (data)
 	{
 		var output = this.nodes.output
 		output.empty()
@@ -31,6 +43,26 @@ var myProto =
 			output.appendChild(group)
 		}
 		// console.timeEnd('render')
+	},
+	
+	groupByChanged: function (type)
+	{
+		this.groupBySwitcher.renderSelected(type)
+	},
+	
+	sortByChanged: function (type)
+	{
+		this.sortBySwitcher.renderSelected(type)
+	},
+	
+	drawByChanged: function (type)
+	{
+		var output = this.nodes.output,
+			names = this.drawBySwitcher.getNames()
+		for (var i = 0; i < names.length; i++)
+			output.toggleClassName(names[i], names[i] === type)
+		
+		this.drawBySwitcher.renderSelected(type)
 	},
 	
 	renderGroup: function (group)

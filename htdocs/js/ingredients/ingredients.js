@@ -47,11 +47,14 @@ function onready ()
 		groupByItems: $$('#group-by .item'),
 		
 		sortBy: $('sort-by'),
-		sortByItems: $$('#sort-by .item')
+		sortByItems: $$('#sort-by .item'),
+		
+		drawBy: $('draw-by'),
+		drawByItems: $$('#draw-by .item')
 	}
 	
 	var widget = new IngredientsPage()
-	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage'})
+	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage', drawBy: 'with-text'})
 }
 
 $.onready(onready)

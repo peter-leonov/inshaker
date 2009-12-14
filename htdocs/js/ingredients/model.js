@@ -13,7 +13,8 @@ var myProto =
 	bind: function (ds)
 	{
 		this.ds = ds
-		this.all = ds.ingredient.getAll()
+		// we will mess this.all, so better make a copy
+		this.all = Array.copy(ds.ingredient.getAll())
 		this.groups = this.ds.ingredient.getGroups()
 		Ingredient.calculateEachIngredientUsage()
 	},
@@ -33,15 +34,36 @@ var myProto =
 		var func
 		if (state.sortBy == 'usage')
 			func = this.sortByUsage
-		// ingredients are already alphabetically sorted
-		// else if (state.sortBy == 'alphabet')
-		// 	func = this.sortByAlphabet
+		else if (state.sortBy == 'alphabet')
+			func = this.sortByAlphabet
 		
 		if (func)
 			this.sortBy(data, func)
 		
+		
 		this.data = data
-		this.view.modelChanged(data)
+		this.view.groupByChanged(state.groupBy)
+		this.view.sortByChanged(state.sortBy)
+		this.view.drawByChanged(state.drawBy)
+		this.view.listChanged(data)
+	},
+	
+	setGroupBy: function (type)
+	{
+		this.state.groupBy = type
+		this.setState(this.state)
+	},
+	
+	setSortBy: function (type)
+	{
+		this.state.sortBy = type
+		this.setState(this.state)
+	},
+	
+	setDrawBy: function (type)
+	{
+		this.state.drawBy = type
+		this.setState(this.state)
 	},
 	
 	groupByGroup: function (all)
