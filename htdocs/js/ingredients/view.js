@@ -64,6 +64,10 @@ var myProto =
 		// image.title = ingred.name
 		image.src = ingred.getMiniImageSrc()
 		node.appendChild(image)
+		
+		var name = Nct('span', 'name', ingred.name)
+		node.appendChild(name)
+		
 		return node
 	}
 }
