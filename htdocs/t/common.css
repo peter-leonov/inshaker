@@ -95,6 +95,7 @@ b.rb { right: 0; bottom: 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
+#spotlighted { position: absolute; background-position: -450px -125px;}
 
 /* in almost all */
 #main-wrapper{margin:0 auto;width:960px;}
