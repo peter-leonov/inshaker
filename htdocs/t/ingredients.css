@@ -10,7 +10,7 @@
 #menu .tweaker .head,
 #menu .tweaker .body,
 #menu .tweaker .list,
-#menu .tweaker .list .item { display: inline-block; }
+#menu .tweaker .list .item { display: inline; display: inline-block; }
 
 #menu .tweaker .head { color: #888; }
 
