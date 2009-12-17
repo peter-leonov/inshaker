@@ -54,7 +54,7 @@ function onready ()
 	}
 	
 	var widget = new IngredientsPage()
-	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage', drawBy: 'with-text'})
+	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage', drawBy: 'images'})
 }
 
 $.onready(onready)
