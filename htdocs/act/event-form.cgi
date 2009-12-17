@@ -7,7 +7,7 @@ require "rubygems"
 require "cgi"
 require "csv"
 require "rutils"
-require "/www/lib/ruby/pmc/rmail"
+require "/www/inshaker/barman/lib/rmail"
 
 p = CGI.new.params
 
