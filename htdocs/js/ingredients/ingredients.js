@@ -28,6 +28,7 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+<!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
