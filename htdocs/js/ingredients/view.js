@@ -29,7 +29,29 @@ var myProto =
 		drawBy.bind({tabs: nodes.drawByItems, sections:[]})
 		drawBy.addEventListener('select', function (e) { e.preventDefault(); controller.drawBySelected(e.data.value) }, false)
 		
+		var me = this
+		nodes.output.addEventListener('click', function (e) { me.mayBeIngredintCLicked(e.target) }, false)
+		
 		return this
+	},
+	
+	mayBeIngredintCLicked: function (target)
+	{
+		var output = this.nodes.output, ingredient
+		
+		for (var node = target; node != output; node = node.parentNode)
+			if (node.ingredient)
+			{
+				ingredient = node.ingredient
+				break
+			}
+		
+		this.controller.ingredientSelected(ingredient)
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		log(ingredient)
 	},
 	
 	listChanged: function (data)
@@ -88,17 +110,19 @@ var myProto =
 		return root
 	},
 	
-	getIngredientNode: function (ingred)
+	getIngredientNode: function (ingredient)
 	{
 		var node = Nc('a', 'ingredient')
-		node.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(ingred.name)
+		// node.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(ingredient.name)
 		var image = Nc('img', 'image')
-		// image.title = ingred.name
-		image.src = ingred.getMiniImageSrc()
+		// image.title = ingredient.name
+		image.src = ingredient.getMiniImageSrc()
 		node.appendChild(image)
 		
-		var name = Nct('span', 'name', ingred.name)
+		var name = Nct('span', 'name', ingredient.name)
 		node.appendChild(name)
+		
+		node.ingredient = ingredient
 		
 		return node
 	}

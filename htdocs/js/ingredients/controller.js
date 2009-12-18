@@ -27,6 +27,11 @@ var myProto =
 	drawBySelected: function (type)
 	{
 		this.model.setDrawBy(type)
+	},
+	
+	ingredientSelected: function (ingredient)
+	{
+		this.model.selectIngredient(ingredient)
 	}
 }
 

@@ -48,6 +48,11 @@ var myProto =
 		this.view.listChanged(data)
 	},
 	
+	selectIngredient: function (ingredient)
+	{
+		this.view.showIngredient(ingredient)
+	},
+	
 	setGroupBy: function (type)
 	{
 		this.state.groupBy = type
