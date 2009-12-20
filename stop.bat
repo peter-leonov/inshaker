@@ -1,0 +1,1 @@
+C:\usr\local\nginx\nginx.exe -p c:/usr/local/nginx/ -c C:/www/inshaker/nginx.windows.conf -s quit

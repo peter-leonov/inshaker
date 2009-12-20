@@ -1,0 +1,7 @@
+.DS_Store
+.TemporaryItems
+*.log
+*.tmp
+*.pid
+.idea/*
+Thumbs.db

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="about-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/about.css" media="screen"/>
+	<title>Inshaker — Коктейльный сайт</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	
+	<div class="column-main-container">
+		<div class="column column-main"><div class="body-wrapper" id="body_wrapper">
+			<div class="b-title">
+				<h1>Коктейльный сайт Inshaker</h1>
+				<a class="hrefs" href="/index.html">← на главную</a>
+			</div>
+			<div class="b-content">
+					<div class="top-menu"><div class="b">
+						<p class="border-links" id="menu">
+							<a href="#view-about"><b>О проекте</b></a>
+							<a href="#view-stat"><b>Cтатистика</b></a>
+						</p>
+						<!-- <img src="/t/bg/about/poster.jpg" width="590" height="140" id="poster"/> -->
+					</div></div>
+					<div class="view-about content">
+						<h3>О проекте</h3>
+						<ol>
+							<li>Первый удобный сайт о коктейльной и барной культуре на русском языке.</li>
+							<li>Независимый гид по лучшим барам и клубам — составляется экспертами и ведется в реальном времени.</li>
+							<li>Проверенные коктейльные рецепты предоставлены признанными профессионалами барной индустрии.</li>
+							<li>Интересный журнал об уникальных событиях, необычных возможностях и безграничных идеях.</li>
+							<li>100% аудитории сайта — люди, влюбленные в барную и коктейльную культуру.</li>
+						</ol>
+					</div>
+					<div class="view-stat content">
+						<div class="note">Статистика по данным <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a></div>
+						<div class="stat square-list" id="rolling_stats">
+							<a class="prev"></a>
+							<a class="next"></a>
+							<div class="viewport">
+								<div class="surface">
+									<div class="point">
+										<h3>Посетители и просмотры за последние 90 дней</h3>
+										<div id="stat_visits"></div>
+									</div>
+									<div class="point">
+										<h3>Посетители по регионам за последние 90 дней</h3>
+										<div id="stat_cities"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3>Коктейльная культура — главный тренд!</h3>
+						<p>
+							<dl>
+								<dt>100% качественной аудитории:</dt>
+								<dd>
+									<ul>
+										<li>просматривают более 7 страниц</li>
+										<li>проводят более 15 минут на сайте</li>
+										<li>5–10% распечатывают «Как приготовить коктейль»</li>
+										<li>2–5% распечатывают «План покупок»</li>
+										<li>пишут о сайте положительные отзывы, советуют друзьям и рекомендуют коллегам</li>
+									</ul>
+								</dd>
+							</dl>
+						</p>
+					</div>
+			</div>
+		</div></div>
+	</div>
+	
+	
+	<div id="b-cr-about" class="column column-r">
+		<div class="body-wrapper">
+			<div class="b-title">
+				<h2>Быстросвязь</h2>
+			</div>
+			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="AboutPage.formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуй еще раз.')" id='feedback_form'>
+				<label>Меня зовут		<input type="text" name="name" value=""></label>
+				<label>Мой телефон или email	<input type="text" name="address" value=""></label>
+				<label>Я из компании	<input type="text" name="company" value=""></label>
+				<label>Мое предложение или вопрос		<textarea name="text" rows="11" cols="40"></textarea></label>
+				<p><button class="bt-send rounded tiny" type="submit"><b>Отправить</b></button></p>
+			</form>
+			<div id="form_success">
+				<i></i>
+				Сообщение отправлено
+				<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--# include file="/inc/bottom-common.html" -->
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/about/about.js"></script>
+</body>
+</html>
