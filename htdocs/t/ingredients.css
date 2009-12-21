@@ -29,3 +29,18 @@
 .images#output .group .list .item .ingredient .name { display: none; }
 .images#output .group .list .item .ingredient { text-decoration: none; }
 .images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; bottom: 0; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
+
+.ingredient-window { width: 700px; min-height: 200px; padding: 30px 20px; margin: 0 auto; -moz-border-radius: 20px; -webkit-border-radius: 20px; background-color: #fff; }
+.ingredient-window .description { overflow: hidden; }
+.ingredient-window .photo { float: left; width: 290px; padding: 35px 10px 0 0; text-align: center; }
+.ingredient-window .about { margin: 0 25px 0 300px;  }
+.ingredient-window .about .name { font-size: 20px; margin-bottom: 10px; }
+.ingredient-window .about .text { font-size: 12px; }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px;  }
+
+<!--# include virtual="popup.css" -->
+
+.popup .popup-controls .cross { right: 94px; top: 9px; z-index: 200; }
+.popup .popup-front { width: 958px; }
+.wide-popup .popup-controls,
+.wide-popup .popup-window { width: 960px; }
