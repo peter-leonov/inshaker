@@ -1,6 +1,8 @@
 .b-title { height: 57px; }
 .b-title .hrefs { top: 8px; bottom: auto; }
 
+.hidden { display: none;  }
+
 #menu .tweaker { position: absolute; top: 35px; font-size: 12px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 
 #menu #group-by { left: 0; }
