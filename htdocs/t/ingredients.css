@@ -30,7 +30,7 @@
 .images#output .group .list .item .ingredient { text-decoration: none; }
 .images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; bottom: 0; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
 
-.ingredient-window { width: 700px; min-height: 200px; padding: 30px 20px; margin: 0 auto; -moz-border-radius: 20px; -webkit-border-radius: 20px; background-color: #fff; }
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; background-color: #fff; }
 .ingredient-window .description { overflow: hidden; }
 .ingredient-window .photo { float: left; width: 290px; padding: 35px 10px 0 0; text-align: center; }
 .ingredient-window .about { margin: 0 25px 0 300px;  }
@@ -38,9 +38,16 @@
 .ingredient-window .about .text { font-size: 12px; }
 .ingredient-window .about .text p { margin: 0px 0px 15px 0px;  }
 
+.ingredient-window .cocktail-list { position: relative; height: 130px; margin-top: 20px; }
+.ingredient-window .cocktail-list .next { right: 0; }
+
 <!--# include virtual="popup.css" -->
 
-.popup .popup-controls .cross { right: 94px; top: 9px; z-index: 200; }
-.popup .popup-front { width: 958px; }
-.wide-popup .popup-controls,
-.wide-popup .popup-window { width: 960px; }
+.popup .popup-controls,
+.popup .popup-window { width: 700px; margin: 0 auto; top: 95px; position: relative; }
+.popup .popup-controls { height: 10px; }
+.popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
+.popup .popup-controls .cross { right: 0px; top: -14px; }
+<!--# endif -->
