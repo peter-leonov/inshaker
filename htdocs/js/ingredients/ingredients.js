@@ -51,7 +51,17 @@ function onready ()
 		sortByItems: $$('#sort-by .item'),
 		
 		drawBy: $('draw-by'),
-		drawByItems: $$('#draw-by .item')
+		drawByItems: $$('#draw-by .item'),
+		
+		ingredientPopup:
+		{
+			root: $('ingredient-info-popup'),
+			window: $$('#ingredient-info-popup .popup-window')[0],
+			image: $$('#ingredient-info-popup .description .image')[0],
+			name: $$('#ingredient-info-popup .description .about .name')[0],
+			text: $$('#ingredient-info-popup .description .about .text')[0],
+			cocktails: $$('#ingredient-info-popup .cocktail-list .surface')[0]
+		}
 	}
 	
 	var widget = new IngredientsPage()
