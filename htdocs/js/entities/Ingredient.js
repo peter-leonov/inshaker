@@ -6,12 +6,23 @@ var Me = self.Ingredient = function (data)
 		this[k] = data[k]
 }
 
-Ingredient.prototype =
+Me.prototype =
 {
 	constructor: Ingredient,
+	volumesRootPath: '/i/merchandise/volumes/',
+	
     getRound: function() { return Ingredient.rounds[this.name] },
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" }
+	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
+	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
+	
+	getVolumeImage: function (vol)
+	{
+		var v = vol[0],
+			name = this.brand ? this.brand_dir : this.dir
+		
+		return this.volumesRootPath + name + "_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + "_big.png"
+	}
 }
 
 Object.extend(Ingredient,
