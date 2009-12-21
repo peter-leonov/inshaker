@@ -28,6 +28,9 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+
+<!--# include virtual="/lib-0.3/modules/child-indexed-path.js" -->
+<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
