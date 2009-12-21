@@ -18,6 +18,7 @@ Me.prototype =
 		
 		var me = this
 		nodes.root.addEventListener('click', function (e) { me.hide() }, false)
+		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
 		
 		return this
 	},
