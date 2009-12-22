@@ -63,6 +63,16 @@ var myProto =
 		
 		nodes.image.src = ingredient.getMainImageSrc()
 		
+		var surface = nodes.cocktailsSurface
+		surface.empty()
+		
+		var cocktails = ingredient.cocktails, point
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			if (i % 5 == 0)
+				point = surface.appendChild(Nc('ul', 'point'))
+			point.appendChild(cocktails[i].getPreviewNode())
+		}
 		
 		popup.show()
 	},
