@@ -51,17 +51,18 @@ var myProto =
 	
 	showIngredient: function (ingredient)
 	{
-		var ingredientPopup = this.nodes.ingredientPopup
+		var nodes = this.nodes.ingredientPopup
 		var popup = new Popup()
-		popup.bind({root: ingredientPopup.root, window: ingredientPopup.window})
+		popup.bind({root: nodes.root, window: nodes.window})
 		
-		var name = ingredientPopup.name
+		var name = nodes.name
 		name.empty()
 		name.appendChild(T(ingredient.name))
 		
-		ingredientPopup.text.innerHTML = ingredient.desc
+		nodes.text.innerHTML = ingredient.desc
 		
-		ingredientPopup.image.src = ingredient.getMainImageSrc()
+		nodes.image.src = ingredient.getMainImageSrc()
+		
 		
 		popup.show()
 	},
