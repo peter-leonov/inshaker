@@ -63,7 +63,8 @@ function onready ()
 			image: $$('#ingredient-info-popup .description .image')[0],
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
-			cocktails: $$('#ingredient-info-popup .cocktail-list .surface')[0]
+			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
+			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0]
 		}
 	}
 	
