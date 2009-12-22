@@ -30,7 +30,9 @@ Me.prototype =
 	
 	show: function ()
 	{
-		this.nodes.root.show()
+		var nodes = this.nodes
+		nodes.root.show()
+		nodes.front.style.top = (document.documentElement.scrollTop || document.body.scrollTop) + 'px'
 	}
 }
 
