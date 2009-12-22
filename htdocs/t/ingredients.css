@@ -55,7 +55,7 @@
 <!--# include virtual="popup.css" -->
 
 .popup .popup-controls,
-.popup .popup-window { width: 700px; margin: 0 auto; top: 95px; position: relative; }
+.popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
 .popup .popup-controls { height: 10px; }
 .popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 

@@ -53,7 +53,7 @@ var myProto =
 	{
 		var nodes = this.nodes.ingredientPopup
 		var popup = new Popup()
-		popup.bind({root: nodes.root, window: nodes.window})
+		popup.bind({root: nodes.root, window: nodes.window, front: nodes.front})
 		
 		var name = nodes.name
 		name.empty()

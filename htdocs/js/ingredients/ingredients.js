@@ -60,6 +60,7 @@ function onready ()
 		{
 			root: $('ingredient-info-popup'),
 			window: $$('#ingredient-info-popup .popup-window')[0],
+			front: $$('#ingredient-info-popup .popup-front')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
