@@ -1,4 +1,4 @@
-.b-title { height: 57px; }
+.b-title { height: 55px; margin-bottom: 15px;  }
 .b-title .hrefs { top: 8px; bottom: auto; }
 
 .hidden { display: none;  }
@@ -19,9 +19,10 @@
 #menu .tweaker .list {  }
 #menu .tweaker .list .item { background-color: #eee; cursor: pointer; padding: 1px 6px 2px; margin: 0 2px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #menu .tweaker .list .item:hover { background-color: #ccc; }
-#menu .tweaker .list .item.selected { background-color: #4a0; color: #fff; cursor: default; }
+#menu .tweaker .list .item.selected { /*background-color: #4a0;*/ background-color: #888; color: #fff; cursor: default; }
 
-#output .group .head { font-size: 24px; margin: 30px 0 15px 0; }
+#output .group { margin: 0 0 25px; }
+#output .group .head { font-size: 24px; margin: 0 0 15px 0; }
 #output .group .list { overflow: hidden; }
 #output .group .list .item { float: left; position: relative; margin: 0 15px 15px 0; width: 100px; height: 140px; }
 #output .group .list .item .ingredient .image { width: 100px; height: 100px; }
@@ -40,13 +41,13 @@
 .ingredient-window .about .text { font-size: 12px; }
 .ingredient-window .about .text p { margin: 0px 0px 15px 0px;  }
 
-.ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 0; border-top: 1px solid #ccc; }
+.ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
 .ingredient-window .cocktail-list .prev,
 .ingredient-window .cocktail-list .next { top: 75px; }
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
-.ingredient-window .cocktail-list .viewport { width: 625px; height: 123px; margin: 0 auto;  position: relative; overflow: hidden; }
-.ingredient-window .cocktail-list .viewport .surface { width: 10000px; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport .surface { width: 15000px; }
 .ingredient-window .cocktail-list .point { float: left; width: 625px;  }
 
 .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
