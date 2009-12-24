@@ -10,3 +10,4 @@
 <!--# include virtual="/lib-0.3/modules/element.js" -->
 <!--# include virtual="/lib-0.3/modules/nodes.js" -->
 <!--# include virtual="/lib-0.3/modules/event-driven.js" -->
+<!--# include virtual="/lib-0.3/modules/motion.js" -->

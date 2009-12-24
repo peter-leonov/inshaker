@@ -46,7 +46,8 @@ var myProto =
 				break
 			}
 		
-		this.controller.ingredientSelected(ingredient)
+		if (ingredient)
+			this.controller.ingredientSelected(ingredient)
 	},
 	
 	showIngredient: function (ingredient)
@@ -63,18 +64,29 @@ var myProto =
 		
 		nodes.image.src = ingredient.getMainImageSrc()
 		
-		var surface = nodes.cocktailsSurface
+		popup.show()
+		
+		var me = this
+		setTimeout(function () { me.renderCocktails(nodes.cocktailsViewport, nodes.cocktailsSurface, ingredient.cocktails) }, 50)
+	},
+	
+	renderCocktails: function (viewport, surface, cocktails)
+	{
 		surface.empty()
 		
-		var cocktails = ingredient.cocktails, point
+		var point, count = 0
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			if (i % 5 == 0)
+			{
 				point = surface.appendChild(Nc('ul', 'point'))
+				count++
+			}
 			point.appendChild(cocktails[i].getPreviewNode())
 		}
-		
-		popup.show()
+		log(point.clientWidth, count)
+		surface.appendChild(surface.firstChild.cloneNode(true))
+		var is = new InfiniteScroller().bind(viewport, point.clientWidth * count)
 	},
 	
 	listChanged: function (data)
