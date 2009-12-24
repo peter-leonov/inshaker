@@ -23,8 +23,6 @@ var Me = self[myName] =
 			if (node)
 			{
 				node.href = item.href
-				// fix for cocktails initialization issue
-				// node.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
 			}
 		}
 	}
