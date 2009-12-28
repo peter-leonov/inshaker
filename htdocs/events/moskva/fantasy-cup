@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading inshaker-fantasy-cup status-preparing">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading fantasy-cup status-preparing">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Inshaker fantasy cup by Olmeca & Havana Club</title>
+	<title>Inshaker — Fantasy Cup</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -27,8 +27,8 @@
 		<div class="column-main-container">
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
-					<h1 id="event-name">Inshaker fantasy cup by Olmeca & Havana Club</h1>
-					<h2>Идея Дмитрия Соколова</h2>
+					<h1 id="event-name">Fantasy Cup</h1>
+					<h2>Прими участие и выйграй!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
@@ -36,7 +36,7 @@
 						
 							<h2>Москва — <a href="/bars/moskva/dream_bar.html">Дрим бар</a>, 1 февраля, 2010</h2>
 						
-						<p class="parole">Коктейльный сайт приглашает всех креативных барменов побороться за главный приз в первом конкурсе коктейльной импровизации.<br/><br/><i>Главные судьи: Сальваторе Калабрезе и Питер Дорелли.<br/>Техническое жюри: Алексей Шапошников, Сейран Геворкян, Дмитрий Соколов.<br/>Дегустационное жюри: Игорь Сердюк, Эркин Тузмухамедов, Сергей Фомичёв.<br/>Ведущий: Владимир Журавлёв</i></p>
+						<p class="parole">Olmeca и Havana Club приглашают всех креативных барменов побороться за главный приз в первом конкурсе коктейльной импровизации.<br/><br/><i>Главные судьи: Сальваторе Калабрезе и Питер Дорелли.<br/>Техническое жюри: Алексей Шапошников, Сейран Геворкян, Дмитрий Соколов.<br/>Дегустационное жюри: Игорь Сердюк, Эркин Тузмухамедов, Сергей Фомичёв.<br/>Ведущий: Владимир Журавлёв</i></p>
 						
 						
 							<a class="sign-on"><span>Не пропусти!</span> →</a>
@@ -82,7 +82,7 @@
 		</div></div>
 	</div>
 </div>
-<div id="promo-back" style="background-image:url(/i/event/moskva/inshaker-fantasy-cup/promo-bg.png)"></div>
+<div id="promo-back" style="background-image:url(/i/event/moskva/fantasy-cup/promo-bg.png)"></div>
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
