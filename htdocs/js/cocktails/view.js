@@ -55,7 +55,7 @@ function CocktailsView (states, nodes, styles) {
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onTagFilter(this.innerHTML.toLowerCase());
+					self.controller.onTagFilter(this.value)
 				}
 			}}(i), false);
 		}
@@ -221,7 +221,7 @@ function CocktailsView (states, nodes, styles) {
 		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].innerHTML.toLowerCase();
+			var elemTxt = tagElems[i].value
 			if(elemTxt == filters.tag) {
 				this.filterElems.tag = tagElems[i];
 				this.filterElems.tag.className = styles.selected;
@@ -326,6 +326,7 @@ function CocktailsView (states, nodes, styles) {
 	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
+			dd.value = set[i]
 			var span = document.createElement("span");
 			var txt = document.createTextNode(set[i].capitalize());
 			dd.appendChild(txt);
