@@ -74,19 +74,25 @@ var myProto =
 	{
 		surface.empty()
 		
-		var point, count = 0
-		for (var i = 0; i < cocktails.length; i++)
+		var preview
+		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			if (i % 5 == 0)
-			{
-				point = surface.appendChild(Nc('ul', 'point'))
-				count++
-			}
-			point.appendChild(cocktails[i].getPreviewNode())
+			preview = cocktails[i].getPreviewNode()
+			surface.appendChild(preview)
 		}
-		log(point.clientWidth, count)
-		surface.appendChild(surface.firstChild.cloneNode(true))
-		var is = new InfiniteScroller().bind(viewport, point.clientWidth * count)
+		
+		for (var j = 0; j < 5; j++)
+		{
+			log(j)
+			preview = cocktails[j].getPreviewNode()
+			surface.appendChild(preview)
+		}
+		
+		
+		// if (i % 5 == 0)
+		
+		log(preview.clientWidth, i)
+		var is = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
 	},
 	
 	listChanged: function (data)
