@@ -30,12 +30,12 @@ var myProto =
 		drawBy.addEventListener('select', function (e) { e.preventDefault(); controller.drawBySelected(e.data.value) }, false)
 		
 		var me = this
-		nodes.output.addEventListener('click', function (e) { me.mayBeIngredintCLicked(e.target) }, false)
+		nodes.output.addEventListener('click', function (e) { me.mayBeIngredintClicked(e.target) }, false)
 		
 		return this
 	},
 	
-	mayBeIngredintCLicked: function (target)
+	mayBeIngredintClicked: function (target)
 	{
 		var output = this.nodes.output, ingredient
 		
