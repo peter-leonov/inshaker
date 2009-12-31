@@ -1,5 +1,7 @@
-.b-title { height: 57px; }
+.b-title { height: 55px; margin-bottom: 15px;  }
 .b-title .hrefs { top: 8px; bottom: auto; }
+
+.hidden { display: none;  }
 
 #menu .tweaker { position: absolute; top: 35px; font-size: 12px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 
@@ -17,9 +19,10 @@
 #menu .tweaker .list {  }
 #menu .tweaker .list .item { background-color: #eee; cursor: pointer; padding: 1px 6px 2px; margin: 0 2px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #menu .tweaker .list .item:hover { background-color: #ccc; }
-#menu .tweaker .list .item.selected { background-color: #4a0; color: #fff; cursor: default; }
+#menu .tweaker .list .item.selected { /*background-color: #4a0;*/ background-color: #888; color: #fff; cursor: default; }
 
-#output .group .head { font-size: 24px; margin: 30px 0 15px 0; }
+#output .group { margin: 0 0 25px; }
+#output .group .head { font-size: 24px; margin: 0 0 15px 0; }
 #output .group .list { overflow: hidden; }
 #output .group .list .item { float: left; position: relative; margin: 0 15px 15px 0; width: 100px; height: 140px; }
 #output .group .list .item .ingredient .image { width: 100px; height: 100px; }
@@ -29,3 +32,34 @@
 .images#output .group .list .item .ingredient .name { display: none; }
 .images#output .group .list .item .ingredient { text-decoration: none; }
 .images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; bottom: 0; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
+
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 10px; -moz-border-radius: 20px; -webkit-border-radius: 20px; background-color: #fff; }
+.ingredient-window .description { overflow: hidden; }
+.ingredient-window .photo { float: left; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
+.ingredient-window .about { margin: 0 45px 0 300px;  }
+.ingredient-window .about .name { font-size: 20px; margin-bottom: 10px; }
+.ingredient-window .about .text { font-size: 12px; }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px;  }
+
+.ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
+.ingredient-window .cocktail-list .prev,
+.ingredient-window .cocktail-list .next { top: 70px; }
+.ingredient-window .cocktail-list .prev { left: 15px; }
+.ingredient-window .cocktail-list .next { right: 15px; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport .surface { width: 15000px; }
+.ingredient-window .cocktail-list .point { float: left; width: 625px;  }
+
+.cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
+.cocktail-preview .image { display: block; margin: 0 auto 5px;  }
+
+<!--# include virtual="popup.css" -->
+
+.popup .popup-controls,
+.popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.popup .popup-controls { height: 10px; }
+.popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
+.popup .popup-controls .cross { right: 0px; top: -14px; }
+<!--# endif -->

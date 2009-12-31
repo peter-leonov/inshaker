@@ -28,6 +28,12 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+<!--# include virtual="/lib-0.3/modules/moveable.js" -->
+
+// <!-- include virtual="/lib-0.3/modules/child-indexed-path.js" -->
+<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
+<!--# include virtual="/lib-0.3/widgets/infinite-scroller.js" -->
+
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
@@ -51,7 +57,20 @@ function onready ()
 		sortByItems: $$('#sort-by .item'),
 		
 		drawBy: $('draw-by'),
-		drawByItems: $$('#draw-by .item')
+		drawByItems: $$('#draw-by .item'),
+		
+		ingredientPopup:
+		{
+			root: $('ingredient-info-popup'),
+			window: $$('#ingredient-info-popup .popup-window')[0],
+			front: $$('#ingredient-info-popup .popup-front')[0],
+			image: $$('#ingredient-info-popup .description .image')[0],
+			name: $$('#ingredient-info-popup .description .about .name')[0],
+			text: $$('#ingredient-info-popup .description .about .text')[0],
+			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
+			cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
+			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0]
+		}
 	}
 	
 	var widget = new IngredientsPage()

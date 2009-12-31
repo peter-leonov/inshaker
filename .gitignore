@@ -14,3 +14,4 @@ htdocs/v/*
 data/*
 .idea/*
 .lock-barman
+yandex_*

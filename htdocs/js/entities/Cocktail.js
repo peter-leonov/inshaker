@@ -53,13 +53,16 @@ Cocktail.prototype =
 		var htmlName = this.name_eng.htmlName(),
 			path = '/cocktail/' + htmlName
 		
-		var li = document.createElement("li")
+		var li = document.createElement('li')
+		li.className = 'cocktail-preview'
 		
-		var a = document.createElement("a")
+		var a = document.createElement('a')
+		a.className = 'anchor'
 		a.href = path + '/'
 		li.appendChild(a)
 		
 		var img = li.img = document.createElement("img")
+		img.className = 'image'
 		img.src = path + '/' + htmlName + '-small.png'
 		a.appendChild(img)
 		
