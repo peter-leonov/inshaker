@@ -10,7 +10,7 @@
 .b-more dt b{background-position: 0 -19px;}
 
 #author,
-#where-to-taste { display: none; }
+#where-to-taste { display: none; position: relative; z-index: 5;  }
 
 a.author { text-decoration: none; color: inherit; cursor: default; }
 a.author.active { border-bottom: 1px dashed; cursor: pointer; }
@@ -19,7 +19,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .b-content .top-menu{background:url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu #poster{position:absolute;bottom:0;left:0;}
-.b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
+.b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative;}
 
 .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
 .border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
@@ -35,7 +35,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .desc .description{padding-left:16px;}
 .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
 .hreview button { margin-right: 16px; }
-.illustration{ position:absolute; left:-2px; bottom:-9px; z-index:100;} /* also applied to the dragged element */
+.illustration{ position:absolute; left:-2px; bottom:-9px;} /* also applied to the dragged element */ 
 
 #view-prepare{display:none;position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
 #view-prepare h3{font-size:150%;margin:13px 0 10px;}
