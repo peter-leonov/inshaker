@@ -43,7 +43,7 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 .b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #results_display a {}
-#spotlighted { width: 62px; height: 29px; right: 0; bottom: 11px; }
+#spotlighted { width: 62px; height: 29px; right: 0; top: 0; }
 #letters_all,
 #alphabetical-ru a { color: #000; }
 #alphabetical-ru a.selected-button { color: #fff; }
