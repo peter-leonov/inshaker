@@ -37,8 +37,9 @@ function CocktailsModel (states, view) {
 	};
 	
 	this.randomCocktailNames = function(){
-		var num = Math.floor((Cocktail.cocktails.length)*Math.random());
-		var cocktail = Cocktail.cocktails[num];
+		var cocktails = Cocktail.getAll()
+		var num = Math.floor((cocktails.length)*Math.random());
+		var cocktail = cocktails[num];
 		return [cocktail.name, cocktail.name_eng];
 	};
 	
