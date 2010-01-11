@@ -6,8 +6,8 @@
 #menu .tweaker { position: absolute; top: 35px; font-size: 12px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 
 #menu #group-by { left: 0; }
-#menu #sort-by { left: 310px; }
-#menu #draw-by { left: 690px; }
+#menu #sort-by { left: 235px; }
+#menu #draw-by { left: 580px; }
 
 #menu .tweaker .head,
 #menu .tweaker .body,
@@ -31,7 +31,7 @@
 .images#output .group .list .item { width: 100px; height: 100px; }
 .images#output .group .list .item .ingredient .name { display: none; }
 .images#output .group .list .item .ingredient { text-decoration: none; }
-.images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; bottom: 0; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
+.images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; bottom: 0; color: #000; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
 
 .ingredient-window { position: relative; min-height: 200px; padding: 30px 0 10px; -moz-border-radius: 20px; -webkit-border-radius: 20px; background-color: #fff; }
 .ingredient-window .description { overflow: hidden; }
