@@ -102,12 +102,12 @@ Me.prototype.extend
 		var substitute =
 		{
 			'/cocktails/---_on_the_beach.html': '/cocktails/bitch_on_the_beach.html',
-			'/cocktail/---_on_the_beach.html': '/cocktail/bitch_on_the_beach.html',
+			'/cocktail/---_on_the_beach/': '/cocktail/bitch_on_the_beach.html',
 			'Inshaker — ---- на пляже': 'Inshaker — Сука на пляже',
 			'/cocktails/safe_---_on_the_beach.html': '/cocktails/safe_sex_on_the_beach.html',
 			'Inshaker — Безопасный ---- на пляже': 'Inshaker — Безопасный секс на пляже',
 			'/cocktails/---_on_the_beach_light.html': '/cocktails/sex_on_the_beach_light.html',
-			'/cocktail/---_on_the_beach_light.html': '/cocktail/sex_on_the_beach_light.html',
+			'/cocktail/---_on_the_beach_light/': '/cocktail/sex_on_the_beach_light.html',
 			'Inshaker — ---- на пляже лайт': 'Inshaker — Секс на пляже лайт',
 			'Inshaker — Ангельские ------': 'Inshaker — Ангельские сиськи'
 		}
