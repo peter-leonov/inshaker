@@ -70,27 +70,10 @@ var myProto =
 		setTimeout(function () { me.renderCocktails(nodes.cocktailsViewport, nodes.cocktailsSurface, ingredient.cocktails) }, 50)
 	},
 	
-	renderCocktails: function (viewport, surface, cocktails, onPage)
+	renderCocktails: function (viewport, surface, cocktails)
 	{
-		if (!onPage)
-			onPage = 5
-		surface.empty()
-		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var preview = cocktails[i].getPreviewNode()
-			surface.appendChild(preview)
-		}
-		
-		if (cocktails.length >= onPage)
-		{
-			for (var j = 0; j < onPage; j++)
-			{
-				var preview = cocktails[j].getPreviewNode()
-				surface.appendChild(preview)
-			}
-			var is = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
-		}
+		var cl = new CocktailList()
+		cl.bind(viewport, surface, cocktails, 5)
 	},
 	
 	listChanged: function (data)
