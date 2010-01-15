@@ -29,6 +29,7 @@ Object.extend(Me.prototype, myProto)
 })();
 
 <!--# include virtual="/lib-0.3/modules/moveable.js" -->
+<!--# include virtual="/lib-0.3/modules/array-randomize.js" -->
 
 // <!-- include virtual="/lib-0.3/modules/child-indexed-path.js" -->
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->

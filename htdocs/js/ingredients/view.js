@@ -72,6 +72,8 @@ var myProto =
 	
 	renderCocktails: function (viewport, surface, cocktails)
 	{
+		cocktails = cocktails.slice().randomize()
+		
 		var cl = new CocktailList()
 		cl.bind(viewport, surface, cocktails, 5)
 	},
