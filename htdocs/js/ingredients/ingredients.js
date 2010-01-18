@@ -74,7 +74,9 @@ function onready ()
 			text: $$('#ingredient-info-popup .description .about .text')[0],
 			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
 			cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
-			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0]
+			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
+			cocktailsPrev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
+			cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0]
 		}
 	}
 	

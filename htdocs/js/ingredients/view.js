@@ -67,15 +67,22 @@ var myProto =
 		popup.show()
 		
 		var me = this
-		setTimeout(function () { me.renderCocktails(nodes.cocktailsViewport, nodes.cocktailsSurface, ingredient.cocktails) }, 50)
+		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 50)
 	},
 	
-	renderCocktails: function (viewport, surface, cocktails)
+	renderCocktails: function (popupNodes, cocktails)
 	{
 		cocktails = cocktails.slice().randomize()
 		
 		var cl = new CocktailList()
-		cl.bind(viewport, surface, cocktails, 5)
+		var nodes =
+		{
+			viewport: popupNodes.cocktailsViewport,
+			surface: popupNodes.cocktailsSurface,
+			prev: popupNodes.cocktailsPrev,
+			next: popupNodes.cocktailsNext
+		}
+		cl.bind(nodes, cocktails, 5)
 	},
 	
 	listChanged: function (data)

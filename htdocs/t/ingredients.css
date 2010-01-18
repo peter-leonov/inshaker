@@ -43,7 +43,7 @@
 
 .ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
 .ingredient-window .cocktail-list .prev,
-.ingredient-window .cocktail-list .next { top: 70px; display: none; }
+.ingredient-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }

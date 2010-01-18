@@ -12,13 +12,14 @@ Me.className = 'CocktailList'
 
 Me.prototype =
 {
-	bind: function (viewport, surface, cocktails, page)
+	bind: function (nodes, cocktails, page)
 	{
-		this.nodes = {viewport: viewport, surface: surface}
+		this.nodes = nodes
 		this.data = {cocktails: cocktails}
 		this.page = page
 		
 		this.render()
+		this.navigate()
 		
 		return this
 	},
@@ -43,8 +44,29 @@ Me.prototype =
 				var preview = cocktails[j].getPreviewNode()
 				surface.appendChild(preview)
 			}
-			var is = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
+			this.scroller = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
 		}
+	},
+	
+	navigate: function ()
+	{
+		var nodes = this.nodes
+		
+		var me = this
+		nodes.prev.addEventListener('click', function (e) { me.goPrev() }, false)
+		nodes.next.addEventListener('click', function (e) { me.goNext() }, false)
+	},
+	
+	goPrev: function ()
+	{
+		this.scroller.setVelocity(-36.6, 0)
+		this.scroller.run()
+	},
+	
+	goNext: function ()
+	{
+		this.scroller.setVelocity(36.6, 0)
+		this.scroller.run()
 	}
 }
 
