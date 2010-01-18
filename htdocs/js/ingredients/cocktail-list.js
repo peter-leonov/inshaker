@@ -12,6 +12,8 @@ Me.className = 'CocktailList'
 
 Me.prototype =
 {
+	pageVelocity: 38,
+	
 	bind: function (nodes, cocktails, page)
 	{
 		this.nodes = nodes
@@ -59,13 +61,13 @@ Me.prototype =
 	
 	goPrev: function ()
 	{
-		this.scroller.setVelocity(-36.6, 0)
+		this.scroller.setVelocity(-this.pageVelocity, 0)
 		this.scroller.run()
 	},
 	
 	goNext: function ()
 	{
-		this.scroller.setVelocity(36.6, 0)
+		this.scroller.setVelocity(this.pageVelocity, 0)
 		this.scroller.run()
 	}
 }
