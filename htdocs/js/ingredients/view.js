@@ -9,6 +9,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
+		this.popupCache = {}
 	},
 	
 	bind: function (nodes)
@@ -32,6 +33,9 @@ var myProto =
 		var me = this
 		nodes.output.addEventListener('click', function (e) { me.mayBeIngredintClicked(e.target) }, false)
 		
+		var popupCloner = this.popupCloner = new Cloner()
+		popupCloner.bind(this.nodes.ingredientPopupRoot, this.nodes.ingredientPopup)
+		
 		return this
 	},
 	
@@ -52,9 +56,18 @@ var myProto =
 	
 	showIngredient: function (ingredient)
 	{
-		var nodes = this.nodes.ingredientPopup
+		var popup = this.popupCache[ingredient.name]
+		
+		if (popup)
+			return popup.show()
+		
+		var popupClone = this.popupCloner.create()
+		document.body.appendChild(popupClone.root)
+		
+		var nodes = popupClone.nodes
 		var popup = new Popup()
-		popup.bind({root: nodes.root, window: nodes.window, front: nodes.front})
+		this.popupCache[ingredient.name] = popup
+		popup.bind({root: popupClone.root, window: nodes.window, front: nodes.front})
 		
 		var name = nodes.name
 		name.empty()
@@ -64,10 +77,10 @@ var myProto =
 		
 		nodes.image.src = ingredient.getMainImageSrc()
 		
-		popup.show()
-		
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 50)
+		
+		return popup.show()
 	},
 	
 	renderCocktails: function (popupNodes, cocktails)

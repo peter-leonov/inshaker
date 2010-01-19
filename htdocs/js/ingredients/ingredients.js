@@ -31,7 +31,10 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/moveable.js" -->
 <!--# include virtual="/lib-0.3/modules/array-randomize.js" -->
 
-// <!-- include virtual="/lib-0.3/modules/child-indexed-path.js" -->
+<!--# include virtual="/lib-0.3/core/prototype.js" -->
+<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
+<!--# include virtual="/lib-0.3/modules/cloner.js"-->
+
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 <!--# include virtual="/lib-0.3/widgets/infinite-scroller.js" -->
 
@@ -64,9 +67,9 @@ function onready ()
 		drawBy: $('draw-by'),
 		drawByItems: $$('#draw-by .item'),
 		
+		ingredientPopupRoot: $('ingredient-info-popup'),
 		ingredientPopup:
 		{
-			root: $('ingredient-info-popup'),
 			window: $$('#ingredient-info-popup .popup-window')[0],
 			front: $$('#ingredient-info-popup .popup-front')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
