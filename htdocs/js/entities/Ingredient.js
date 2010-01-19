@@ -15,6 +15,7 @@ Me.prototype =
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
+	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	
 	getVolumeImage: function (vol)
 	{

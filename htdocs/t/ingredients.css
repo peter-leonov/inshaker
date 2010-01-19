@@ -39,7 +39,8 @@
 .ingredient-window .about { margin: 0 45px 0 300px;  }
 .ingredient-window .about .name { font-size: 20px; margin-bottom: 10px; }
 .ingredient-window .about .text { font-size: 12px; }
-.ingredient-window .about .text p { margin: 0px 0px 15px 0px;  }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px; }
+.ingredient-window .about .all-cocktails { margin-top: 1em; font-size: 12px; }
 
 .ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
 .ingredient-window .cocktail-list .prev,
