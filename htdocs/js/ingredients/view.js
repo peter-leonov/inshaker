@@ -93,6 +93,7 @@ var myProto =
 		var cl = new CocktailList()
 		var nodes =
 		{
+			root: popupNodes.cocktails,
 			viewport: popupNodes.cocktailsViewport,
 			surface: popupNodes.cocktailsSurface,
 			prev: popupNodes.cocktailsPrev,

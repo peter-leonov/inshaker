@@ -48,6 +48,10 @@ Me.prototype =
 			}
 			this.scroller = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
 		}
+		else
+			nodes.root.addClassName('single')
+		
+		nodes.root.show()
 	},
 	
 	navigate: function ()
