@@ -72,8 +72,8 @@ var myProto =
 		var name = ingredient.brand || ingredient.name
 		nodes.name.appendChild(T(name))
 		
-		if (ingredient.nameTP)
-			nodes.allLink.appendChild(T(' ' + ingredient.nameTP))
+		if (ingredient.decls)
+			nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
 		nodes.allLink.href = ingredient.cocktailsLink()
 		
 		nodes.text.innerHTML = ingredient.desc

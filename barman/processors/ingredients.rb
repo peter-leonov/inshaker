@@ -190,6 +190,10 @@ class IngredientsProcessor < Barman::Processor
       error "не указана единица"
     end
     
+    if about["Падежи"]
+      good["decls"] = {"t" => about["Падежи"]["Творительный"]}
+    end
+    
     if brand
       good[:brand] = brand
       good[:brand_dir] = brand.dirify
