@@ -74,7 +74,7 @@ var myProto =
 		
 		var len = ingredient.cocktails.length
 		if (len)
-			nodes.allLink.appendChild(T(' ' + len + ' ' +len.plural('коктейль', 'коктейля', 'коктейлей')))
+			nodes.allLink.appendChild(T(' ' + (len > 1 ? len + ' ' : '') + len.plural('коктейль', 'коктейля', 'коктейлей')))
 		
 		if (ingredient.decls)
 			nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
