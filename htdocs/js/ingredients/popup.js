@@ -21,7 +21,7 @@ Me.prototype =
 		var me = this
 		nodes.root.addEventListener('click', function (e) { me.hide() }, false)
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
-		document.addEventListener('keypress', function (e) { e.keyCode == 27 && me.hide() }, false)
+		document.addEventListener('keydown', function (e) { e.keyCode == 27 && me.hide() }, false)
 		
 		return this
 	},
