@@ -10,6 +10,7 @@ var myProto =
 	{
 		this.nodes = {}
 		this.popupCache = {}
+		this.ingredientCache = {}
 	},
 	
 	bind: function (nodes)
@@ -164,10 +165,11 @@ var myProto =
 	
 	getIngredientNode: function (ingredient)
 	{
+		if ((node = this.ingredientCache[ingredient.name]))
+			return node
+		
 		var node = Nc('a', 'ingredient')
-		// node.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(ingredient.name)
 		var image = Nc('img', 'image')
-		// image.title = ingredient.name
 		image.src = ingredient.getMiniImageSrc()
 		node.appendChild(image)
 		
@@ -176,7 +178,7 @@ var myProto =
 		
 		node.ingredient = ingredient
 		
-		return node
+		return this.ingredientCache[ingredient.name] = node
 	}
 }
 
