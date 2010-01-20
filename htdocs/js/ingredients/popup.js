@@ -36,6 +36,7 @@ Me.prototype =
 		this.nodes.root.hide()
 		this.visible = false
 		
+		var me = this
 		setTimeout(function () { me.unbindListeners() }, 0)
 	},
 	
