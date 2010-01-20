@@ -87,6 +87,8 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 #top .logo,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
