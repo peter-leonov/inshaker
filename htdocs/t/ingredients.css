@@ -1,4 +1,5 @@
-.b-title { height: 55px; margin-bottom: 15px;  }
+.b-content { width: 100%; }
+.b-title { height: 55px; margin-bottom: 15px; }
 .b-title .hrefs { top: 8px; bottom: auto; }
 
 .hidden { visibility: hidden; position: absolute; }
@@ -23,7 +24,7 @@
 
 #output .group { margin: 0 0 25px; }
 #output .group .head { font-size: 24px; margin: 0 0 15px 0; }
-#output .group .list { overflow: hidden; }
+#output .group .list { overflow: hidden; zoom: 1; }
 #output .group .list .item { float: left; position: relative; margin: 0 15px 15px 0; width: 100px; height: 140px; }
 #output .group .list .item .ingredient .image { width: 100px; height: 100px; }
 #output .group .list .item .ingredient .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
@@ -63,6 +64,9 @@
 .popup .popup-controls { height: 10px; }
 .popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
+#output .group .list { zoom: 1; }
+<!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
 .popup .popup-controls .cross { right: 0px; top: -14px; }
 <!--# endif -->
