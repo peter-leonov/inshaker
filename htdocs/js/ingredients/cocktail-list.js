@@ -30,6 +30,9 @@ Me.prototype =
 	{
 		var nodes = this.nodes, surface = nodes.surface, viewport = nodes.viewport,
 			cocktails = this.data.cocktails
+		
+		nodes.root.show()
+		
 		surface.empty()
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
@@ -50,8 +53,6 @@ Me.prototype =
 		}
 		else
 			nodes.root.addClassName('single')
-		
-		nodes.root.show()
 	},
 	
 	navigate: function ()

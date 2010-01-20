@@ -69,6 +69,7 @@ var myProto =
 		var popup = new Popup()
 		this.popupCache[ingredient.name] = popup
 		popup.bind({root: popupClone.root, window: nodes.window, front: nodes.front})
+		popup.show()
 		
 		var name = ingredient.brand || ingredient.name
 		nodes.name.appendChild(T(name))
@@ -86,9 +87,7 @@ var myProto =
 		nodes.image.src = ingredient.getMainImageSrc()
 		
 		var me = this
-		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 50)
-		
-		return popup.show()
+		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
 	},
 	
 	renderCocktails: function (popupNodes, cocktails)
