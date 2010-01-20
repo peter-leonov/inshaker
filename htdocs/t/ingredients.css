@@ -64,20 +64,23 @@
 .popup .popup-controls { height: 10px; }
 .popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-.hidden { display: none; }
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 .images#output .group .list .item:hover .ingredient .name { background-color: #fff; }
 #menu .tweaker .head,
 #menu .tweaker .body,
 #menu .tweaker .list,
 #menu .tweaker .list .item { display: inline; zoom: 1; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
+.hidden { display: none; }
 <!--# else -->
 .hidden { visibility: hidden; position: absolute; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
 #output .group .list { zoom: 1; }
-/*.popup .window { zoom: 1; }*/
+.popup .window { zoom: 1; }
 <!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
 .popup .popup-controls .cross { right: 0px; top: -14px; }
