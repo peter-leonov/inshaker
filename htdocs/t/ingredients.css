@@ -67,6 +67,10 @@
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 .hidden { display: none; }
 .images#output .group .list .item:hover .ingredient .name { background-color: #fff; }
+#menu .tweaker .head,
+#menu .tweaker .body,
+#menu .tweaker .list,
+#menu .tweaker .list .item { display: inline; zoom: 1; }
 <!--# else -->
 .hidden { visibility: hidden; position: absolute; }
 <!--# endif -->
