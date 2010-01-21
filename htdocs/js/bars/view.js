@@ -104,8 +104,7 @@ BarsPageView.prototype =
 	renderBarsList: function (data)
 	{
 		var parent = this.nodes.barsContainer,
-			bars = data.bars,
-			state = data.state
+			bars = data.bars
 		
 		parent.empty()
 		for (var i = 0; i < bars.length; i++)
@@ -293,6 +292,15 @@ BarsPageView.prototype =
 		main.setName(bar.name)
 		main.setImage(bar.smallImageHref())
 		main.setHref(bar.pageHref())
+		
+		if (bar.labelType)
+		{
+			var label = document.createElement('div')
+			label.className = 'label'
+			main.addClassName(bar.labelType)
+			main.appendChild(label)
+		}
+		
 		return main
 	},
 	
