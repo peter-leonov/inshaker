@@ -15,7 +15,7 @@ class CocktailsProcessor < Barman::Processor
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
     DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
-    GOODS_DB           = HTDOCS_DIR + "db/goods.js"
+    DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
@@ -29,7 +29,7 @@ class CocktailsProcessor < Barman::Processor
   
   def initialize
     super
-    @goods = {}
+    @all_ingredients = {}
     @cocktails = {}
     @cocktails_present = {}
     @tags = []
@@ -101,8 +101,10 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def prepare_goods
-    if File.exists?(Config::GOODS_DB)
-      @goods = load_json(Config::GOODS_DB)
+    if File.exists?(Config::DB_JS_INGREDS)
+      load_json(Config::DB_JS_INGREDS).each do |ingred|
+        @all_ingredients[ingred["name"]] = ingred
+      end
     end
   end
   
@@ -111,7 +113,7 @@ class CocktailsProcessor < Barman::Processor
     indent do
     @cocktails.each do |name, cocktail|
       cocktail["ingredients"].each do |ingred|
-        unless @goods[ingred[0]]
+        unless @all_ingredients[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
           if ingred[0].has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"

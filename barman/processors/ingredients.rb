@@ -20,7 +20,6 @@ class IngredientsProcessor < Barman::Processor
 
     DB_JS_INGREDS        = HTDOCS_DIR + "db/ingredients.js"
     DB_JS_INGREDS_GROUPS = HTDOCS_DIR + "db/ingredients_groups.js"
-    DB_JS_GOODS          = HTDOCS_DIR + "db/goods.js"
   end
   
   def initialize
@@ -85,7 +84,7 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_goods
-    if File.exists?(Config::DB_JS_GOODS) && !@options[:force]
+    if File.exists?(Config::DB_JS_INGREDS) && !@options[:force]
       @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
       @ingredients = JSON.parse(File.read(Config::DB_JS_INGREDS))
     else
