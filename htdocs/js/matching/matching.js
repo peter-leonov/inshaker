@@ -1,5 +1,6 @@
 $.onready(function(){
-	Controller.init();
+	Model.init(Controller)
+	Controller.init()
 	Theme.bind()
 })
 

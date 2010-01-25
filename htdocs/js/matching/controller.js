@@ -33,12 +33,10 @@ var Controller = {
     nameNodes: [],
     markNodes: [],	
 	
-	init: function() {
-		Model.init();
-		Model.dataListener = this;
-		
+	init: function ()
+	{
 		this.renderIngredients()
-		this.bindEvents();
+		this.bindEvents()
 	},
 	
 	bindEvents: function(){
@@ -62,7 +60,7 @@ var Controller = {
 		var a = document.createElement("a");
 		var name = document.createElement("span");
 		name.className = "ingred-name";
-		name.innerHTML = ingred;
+		name.innerHTML = ingred.name
 		var mark = document.createElement("span");
 		mark.className = "round-mark";
 		a.appendChild(name);
@@ -88,7 +86,7 @@ var Controller = {
 		}
 		
 		// finding unique letters
-		var letters = Model.uniqueLetters();
+		var letters = Model.uniqueLetters().sort()
 		
 		// creating divs with heading and ingredients
 		var divs = {};

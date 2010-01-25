@@ -211,6 +211,20 @@ Object.extend(Ingredient,
 		return "/cocktails.html#state=byIngredients&ingredients=" + encodeURIComponent(res.join(","))
 	},
 	
+	getByFirstLetter: function (letter)
+	{
+		var db = this.db, res = []
+		letter = letter.toUpperCase()
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingred = db[i]
+			if (ingred.name.indexOf(letter) == 0)
+				res.push(ingred)
+		}
+		
+		return res
+	},
 	
 	compareByGroup: function (a, b)
 	{

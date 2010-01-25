@@ -1,33 +1,53 @@
-var Model = {
-	ingredients: Ingredient.getAllNames(),
-	resultSet: [],
+var Model =
+{
 	dataListener: null,
 	
-	init: function(){
-		// this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
+	init: function (listener)
+	{
+		this.dataListener = listener
 	},
 	
-	uniqueLetters: function(){
-		return DataFilter.firstLetters(this.ingredients, false);
-	},
-	
-	ingredientsOn: function(letter) {
-		return DataFilter.ingredientsByLetter(this.ingredients, letter);
-	},
-	
-    suitableIngredients: function(list){
-		var res = [];
-		var cocktails = Cocktail.getByIngredients(list);
-		for(var i = 0; i < cocktails.length; i++){
-			for(var j = 0; j < cocktails[i].ingredients.length; j++){
-				res.push(cocktails[i].ingredients[j][0]);
+	uniqueLetters: function ()
+	{
+		var names = Ingredient.getAllNames(),
+			seen = {}, res = []
+		
+		for (var i = 0, il = names.length; i < il; i++)
+		{
+			var letter = names[i].charAt(0)
+			if (!seen[letter])
+			{
+				res.push(letter)
+				seen[letter] = true
 			}
 		}
-		return [cocktails.length, res.uniq(), cocktails[0]];
+		
+		return res
 	},
-
-	selectedListChanged: function(selectedList){
-		this.resultSet = this.suitableIngredients(selectedList);
-		this.dataListener.updateCount(this.resultSet[0], this.resultSet[2], selectedList.length);
-    }
+	
+	ingredientsOn: function (letter)
+	{
+		return Ingredient.getByFirstLetter(letter);
+	},
+	
+	suitableIngredients: function (list)
+	{
+		var res = [],
+			cocktails = Cocktail.getByIngredients(list)
+		
+		for (var i = 0; i < cocktails.length; i++)
+		{
+			var cocktail = cocktails[i]
+			for (var j = 0; j < cocktail.ingredients.length; j++)
+				res.push(cocktail.ingredients[j][0]) // [0] is an ingredient name
+		}
+		
+		return {ingredients: res.uniq(), cocktails: cocktails}
+	},
+	
+	selectedListChanged: function (selectedList)
+	{
+		var set = this.suitableIngredients(selectedList)
+		this.dataListener.updateCount(set.cocktails.length, set.ingredients, selectedList.length)
+	}
 }
