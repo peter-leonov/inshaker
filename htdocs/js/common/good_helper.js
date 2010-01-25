@@ -36,7 +36,7 @@ var GoodHelper = {
 		var gds = {}
 		for (var name in cartData.goods)
 		{
-			var good = goods[name]
+			var good = Ingredient.getByName(name)
 			if (good)
 			{
 				gds[name] = cartData.goods[name]
@@ -121,7 +121,7 @@ var GoodHelper = {
 	},
 	
 	getIngredText: function(name){
-		var brand = goods[name].brand || "";
+		var brand = Ingredient.getByName(name).brand || "";
 		if(brand.indexOf(name) > -1) name = "";
 		var gap = "";
 		if(brand && name) gap = " ";

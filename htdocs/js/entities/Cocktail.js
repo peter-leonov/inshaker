@@ -53,13 +53,16 @@ Cocktail.prototype =
 		var htmlName = this.name_eng.htmlName(),
 			path = '/cocktail/' + htmlName
 		
-		var li = document.createElement("li")
+		var li = document.createElement('li')
+		li.className = 'cocktail-preview'
 		
-		var a = document.createElement("a")
+		var a = document.createElement('a')
+		a.className = 'anchor'
 		a.href = path + '/'
 		li.appendChild(a)
 		
 		var img = li.img = document.createElement("img")
+		img.className = 'image'
 		img.src = path + '/' + htmlName + '-small.png'
 		a.appendChild(img)
 		
@@ -72,45 +75,41 @@ Cocktail.prototype =
 
 Object.extend(Cocktail,
 {
-    cocktails: [],
-    ingredients: [],
     letters: [],
     rounds: {},
     matches: {},
-	byName: {},
 	
-	initialize: function (db){
+	initialize: function (hash, tags, strengths, methods)
+	{
+		this.tags = tags
+		this.strengths = strengths
+		this.methods = methods
 		
-		var ai = this.ingredients, seen = {}, byName = this.byName,
+		var byName = this.byName = {},
 			names = []
 		
-		for (var k in db)
+		for (var k in hash)
 			names.push(k)
 		names.sort()
 		
+		var db = []
 		for (var i = 0, il = names.length; i < il; i++)
 		{
-			var name = names[i],
-				cocktail = this.cocktails[i] = byName[name] = new Cocktail(db[name])
-			
-			var ci = cocktail.ingredients
-			for (var j = 0; j < ci.length; j++)
-			{
-				var ingr = ci[j][0]
-				if (!seen[ingr])
-				{
-					seen[ingr] = true
-					ai.push(ingr)
-				}
-			}
+			var name = names[i]
+			db[i] = byName[name] = new Cocktail(hash[name])
 		}
-		this.ingredients = ai.sort()
+		
+		this.db = db
 	},
+	
+	getTags: function () { return this.tags },
+	getStrengths: function () { return this.strengths },
+	getMethods: function () { return this.methods },
 	
 	getFirstLetters: function (set)
 	{
 		if (!set)
-			set = this.cocktails
+			set = this.db
 		
 		var seen = {}
 		for (var i = 0, il = set.length; i < il; i++)
@@ -124,10 +123,12 @@ Object.extend(Cocktail,
 	},
 	
     getAll: function(){
-        return this.cocktails;
+        return this.db;
     },
 
 	getByName: function (name) { return this.byName[name] },
+	
+	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getBySimilarNameCache: {},
 	getBySimilarName: function (name)
@@ -136,15 +137,15 @@ Object.extend(Cocktail,
 			return this.getBySimilarNameCache[name]
 			
 		var words = name.split(/\s+/),
-			res = [], cocktails = this.cocktails
+			res = [], db = this.db
 		
 		for (var i = 0; i < words.length; i++)
 			words[i] = new RegExp("(?:^|\\s)" + words[i], "i")
 		
 		var first = words[0], jl = words.length
-		SEARCH: for (var i = 0; i < cocktails.length; i++)
+		SEARCH: for (var i = 0; i < db.length; i++)
 		{
-			var cocktail = cocktails[i], name
+			var cocktail = db[i], name
 			
 			if (first.test(cocktail.name))
 				name = cocktail.name
@@ -163,8 +164,8 @@ Object.extend(Cocktail,
 	},
 	
 	getByHtmlName: function(htmlName){
-		for(var i = 0; i < this.cocktails.length; i++){
-			if(this.cocktails[i].name_eng.htmlName() == htmlName) return this.cocktails[i];
+		for(var i = 0; i < this.db.length; i++){
+			if(this.db[i].name_eng.htmlName() == htmlName) return this.db[i];
 		}
 	},
 	
@@ -177,7 +178,7 @@ Object.extend(Cocktail,
 			return res
 		res = this.getByLetterCache[letter] = []
 		if (!set)
-			set = this.cocktails
+			set = this.db
 		
 		
 		for (var i = 0, il = set.length; i < il; i++)
@@ -203,7 +204,7 @@ Object.extend(Cocktail,
 	},
 	
 	getByTag: function (tag, set) {
-		if(!set) set = this.cocktails;
+		if(!set) set = this.db;
 		var res = [];
 		for(var i = 0; i < set.length; i++){
 			if(set[i].tags.indexOf(tag) > -1){
@@ -214,7 +215,7 @@ Object.extend(Cocktail,
 	},
 	
 	getByStrength: function(strength, set) {
-		if(!set) set = this.cocktails;
+		if(!set) set = this.db;
 		var res = [];
 		for(var i = 0; i < set.length; i++){
 			if(set[i].strength == strength) {
@@ -225,7 +226,7 @@ Object.extend(Cocktail,
 	},
 
     getByMethod: function(method, set) {
-        if(!set) set = this.cocktails;
+        if(!set) set = this.db;
         var res = [];
         for(var i = 0; i < set.length; i++){
              if(set[i].method == method) {
@@ -235,20 +236,20 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, cocktails)
+	getByIngredients: function (ingredients, db)
 	{
 		this.rounds = {}
-		if (!cocktails)
-			cocktails = this.cocktails
+		if (!db)
+			db = this.db
 		
 		var ingredientsNames = {}
 		for (var i = 0; i < ingredients.length; i++)
 			ingredientsNames[ingredients[i].toLowerCase()] = true
 		
 		var res = []
-		for (var i = 0; i < cocktails.length; i++)
+		for (var i = 0; i < db.length; i++)
 		{
-			var cocktail = cocktails[i],
+			var cocktail = db[i],
 				matches = 0
 			
 			var ci = cocktail.ingredients
@@ -262,6 +263,34 @@ Object.extend(Cocktail,
             this.matches[cocktail.name] = matches
 		}
 		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
+	},
+	
+	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
+	getCocktailsByIngredientNameHash: function ()
+	{
+		if (this._byIngredientName)
+			return this._byIngredientName
+		
+		var cache = this._byIngredientName = {},
+			db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var cocktail = db[i],
+				ingredients = cocktail.ingredients
+			
+			for (var j = 0, jl = ingredients.length; j < jl; j++)
+			{
+				var arr, name = ingredients[j][0]
+				
+				if ((arr = cache[name]))
+					arr.push(cocktail)
+				else
+					cache[name] = [cocktail]
+			}
+		}
+		
+		return cache
 	},
 	
 	getByFilters: function(filters, states) {
@@ -294,9 +323,9 @@ Object.extend(Cocktail,
         
         if(!filtered) {
             if(filters.state == states.byName) {
-                res = this.cocktails.shuffled();
+                res = this.db.shuffled();
             } else {
-                res = this.cocktails.sortedBy(this.nameSort);
+                res = this.db.sortedBy(this.nameSort);
 		    }
         }
         return res;
@@ -329,7 +358,10 @@ Object.extend(Cocktail,
     }
 })
 
-Cocktail.initialize(<!--# include file="/db/cocktails.js" -->)
-Cocktail.tags = <!--# include file="/db/tags.js" -->
-Cocktail.strengths = <!--# include file="/db/strengths.js" -->
-Cocktail.methods = <!--# include file="/db/methods.js" -->
+Cocktail.initialize
+(
+	<!--# include file="/db/cocktails.js" -->,
+	<!--# include file="/db/tags.js" -->,
+	<!--# include file="/db/strengths.js" -->,
+	<!--# include file="/db/methods.js" -->
+)

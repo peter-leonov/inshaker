@@ -16,6 +16,16 @@ function CocktailsController (states, cookies, model, view) {
 		
 		this.view.controller = this;
 		this.model.initialize(filters);
+		
+		// fix for cocktails initialization issue
+		this.currentHash = window.location.hash
+		var me = this
+		function checkHash ()
+		{
+			if (me.currentHash != window.location.hash)
+				window.location.reload(true)
+		}
+		setInterval(checkHash, 250)
 	};
 	
 	this.filtersFromRequest = function () {
@@ -61,7 +71,11 @@ function CocktailsController (states, cookies, model, view) {
 		for(var i = 0; i < pairs.length; i++) {
 			hash[i] = encode(pairs[i][0]) + "=" + encode(pairs[i][1]);
 		}
-		if(hash) window.location.hash = hash.join('&');
+		if (hash)
+		{
+			window.location.hash = hash.join('&')
+			this.currentHash = window.location.hash
+		}
 	};
 	
 	this.onLetterFilter = function(letter, all) {

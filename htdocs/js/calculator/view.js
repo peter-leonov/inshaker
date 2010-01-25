@@ -565,7 +565,7 @@ function CalculatorView() {
 		$('good_name').innerHTML = item.good.brand || name;
 		if(item.good.mark){ // branded
 			$('good_composition').style.display = "block";
-            $('good_mark').href = Good.ingredientsLinkByMark(item.good.mark);
+            $('good_mark').href = Ingredient.ingredientsLinkByMark(item.good.mark);
 			$('good_mark').innerHTML = item.good.mark;
             var clicker = function(e) {
                 window.location.href = this.href;
