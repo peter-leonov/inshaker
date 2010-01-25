@@ -23,14 +23,6 @@ Cocktail = function (data)
 
 Cocktail.prototype =
 {
-    getMatches: function() {
-        return Cocktail.matches[this.name];
-    },
-
-    getRound: function() {
-        return Cocktail.rounds[this.name];
-    },
-	
 	loadData: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
@@ -76,8 +68,6 @@ Cocktail.prototype =
 Object.extend(Cocktail,
 {
     letters: [],
-    rounds: {},
-    matches: {},
 	
 	initialize: function (hash, tags, strengths, methods)
 	{
@@ -238,7 +228,6 @@ Object.extend(Cocktail,
     
 	getByIngredients: function (ingredients, db)
 	{
-		this.rounds = {}
 		if (!db)
 			db = this.db
 		
@@ -258,11 +247,8 @@ Object.extend(Cocktail,
 					matches++
 			if (matches > 0)
 				res.push(cocktail)
-			
-			this.rounds[cocktail.name] = jl - matches
-            this.matches[cocktail.name] = matches
 		}
-		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
+		return res.sort(this.lessIngredientsSort)
 	},
 	
 	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
@@ -343,18 +329,6 @@ Object.extend(Cocktail,
         if(ail > bil) return 1;
 	    else if(ail == bil) return 0;
 	    else return -1;
-    },
-
-    roundSort: function(a,b) {
-        if (a.getRound() > b.getRound()) return 1;
-        else if (a.getRound() == b.getRound()) return 0;
-        else return -1;
-    },
-
-    matchSort: function(a,b) {
-        if(a.getMatches() < b.getMatches()) return 1;
-        else if(a.getMatches() == b.getMatches()) return 0;
-        else return -1;
     }
 })
 

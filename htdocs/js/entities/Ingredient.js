@@ -11,7 +11,6 @@ Me.prototype =
 	constructor: Ingredient,
 	volumesRootPath: '/i/merchandise/volumes/',
 	
-    getRound: function() { return Ingredient.rounds[this.name] },
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
@@ -29,7 +28,6 @@ Me.prototype =
 Object.extend(Ingredient,
 {
 	groups: [],
-    rounds: {},
 	
 	initialize: function (db, groups)
 	{
