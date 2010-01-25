@@ -18,7 +18,8 @@ Array.prototype.shuffled = function() {
 
 Cocktail = function (data)
 {
-	for (var k in data) this[k] = data[k];
+	for (var k in data)
+		this[k] = data[k]
 }
 
 Cocktail.prototype =
@@ -231,24 +232,29 @@ Object.extend(Cocktail,
 		if (!db)
 			db = this.db
 		
-		var ingredientsNames = {}
-		for (var i = 0; i < ingredients.length; i++)
-			ingredientsNames[ingredients[i].toLowerCase()] = true
+		// caching names and count of requested ingredients
+		var ingredientsNames = {}, count = ingredients.length
+		for (var i = 0; i < count; i++)
+			ingredientsNames[ingredients[i]] = true
 		
 		var res = []
-		for (var i = 0; i < db.length; i++)
+		for (var i = 0, il = db.length; i < il; i++)
 		{
 			var cocktail = db[i],
 				matches = 0
 			
 			var ci = cocktail.ingredients
 			for (var j = 0, jl = ci.length; j < jl; j++)
-				if (ingredientsNames[ci[j][0].toLowerCase()])
-					matches++
-			if (matches > 0)
-				res.push(cocktail)
+				if (ingredientsNames[ci[j][0]])
+					if (++matches == count)
+					{
+						// ta-da we'v found one
+						res.push(cocktail)
+						break
+					}
+			// here if cocktail does not pass
 		}
-		return res.sort(this.lessIngredientsSort)
+		return res.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 	},
 	
 	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
@@ -320,14 +326,6 @@ Object.extend(Cocktail,
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
-	    else return -1;
-    },
-  
-    lessIngredientsSort: function(a,b) {
-        var ail = a.ingredients.length, bil = b.ingredients.length;
-
-        if(ail > bil) return 1;
-	    else if(ail == bil) return 0;
 	    else return -1;
     }
 })
