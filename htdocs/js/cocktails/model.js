@@ -200,22 +200,77 @@ function CocktailsModel (states, view) {
 		// strengths state - depends only on ingredients
 		var rFilters = cloneObject(this.filters);
 		rFilters.strength = "", rFilters.tag  = "", rFilters.method = "";
-		groupStates.strengths = this.uniqueStrengths(Cocktail.getByFilters(rFilters, states));
+		groupStates.strengths = this.uniqueStrengths(this.getCocktailsByFilters(rFilters, states));
 		
 		// tags state - depends on ingredients and strength
 		rFilters = cloneObject(this.filters);
 		rFilters.tag = "", rFilters.method = "";
-		groupStates.tags = this.uniqueTags(Cocktail.getByFilters(rFilters, states));
+		groupStates.tags = this.uniqueTags(this.getCocktailsByFilters(rFilters, states));
 		
 		// methods state - depends on ingredients, strength and tag
 		rFilters = cloneObject(this.filters);
 		rFilters.method = "";
-		groupStates.methods = this.uniqueMethods(Cocktail.getByFilters(rFilters, states));
+		groupStates.methods = this.uniqueMethods(this.getCocktailsByFilters(rFilters, states));
 		
 		return groupStates;
 	};
 	
-	this.applyFilters = function() {
-		view.onModelChanged(Cocktail.getByFilters(this.filters, states), this.filters, this.getGroupStates());
+	this.getCocktailsByFilters = function (filters, states)
+	{
+		var res = null
+		
+		if (filters.name)
+			return Cocktail.getBySimilarName(filters.name)
+		
+		if (filters.letter)
+			return Cocktail.getByLetter(filters.letter)
+		
+		if (filters.tag)
+			res = Cocktail.getByTag(filters.tag)
+		
+		if (filters.strength)
+			res = Cocktail.getByStrength(filters.strength, res)
+		
+		if (filters.method)
+			res = Cocktail.getByMethod(filters.method, res)
+		
+		// if (filters.marks && filters.marks.length)
+		// 	res = Cocktail.getByMarks(filters.marks, res)
+		
+		if (filters.ingredients && filters.ingredients.length)
+			res = Cocktail.getByIngredients(filters.ingredients, res)
+		
+		if (!res)
+		{
+			if (filters.state == states.byName)
+				res = Cocktail.getAll().shuffled()
+			else
+				res = Cocktail.getAll().sortedBy(Cocktail.nameSort)
+		}
+		
+		return res
+	}
+	
+	
+	this.applyFilters = function()
+	{
+		var filters = this.filters
+		
+		var names = filters.ingredients
+		if (names)
+		{
+			var plain = [], marks = [], markToken = 'марка '
+			for (var i = 0; i < names.length; i++)
+			{
+				var name = names[i]
+				if (name.indexOf(markToken) == 0)
+					marks.push(name.substr(markToken.length))
+				else
+					plain.push(name)
+			}
+			filters.ingredients = plain
+			filters.marks = marks
+		}
+		view.onModelChanged(this.getCocktailsByFilters(filters, states), filters, this.getGroupStates());
 	};
 }

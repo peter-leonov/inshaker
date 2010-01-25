@@ -288,44 +288,6 @@ Object.extend(Cocktail,
 		return cache
 	},
 	
-	getByFilters: function(filters, states) {
-		var res = [];
-		var filtered = false;
-		if(filters.name){
-			return this.getBySimilarName(filters.name);
-		}
-		if(filters.letter){
-			return this.getByLetter(filters.letter);
-		}
-		if(filters.tag) {
-			res = this.getByTag(filters.tag);
-			filtered = true;
-		}
-		if(filters.strength) {
-			var to_filter = [];
-			res = this.getByStrength(filters.strength, filtered ? res : null);
-			filtered = true;
-		}
-        if(filters.method) {
-            res = this.getByMethod(filters.method, filtered ? res: null);
-            filtered = true;
-        }
-		if(filters.ingredients && filters.ingredients.length) {
-            var to_filter = [];
-			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
-			filtered = true;
-		}
-        
-        if(!filtered) {
-            if(filters.state == states.byName) {
-                res = this.db.shuffled();
-            } else {
-                res = this.db.sortedBy(this.nameSort);
-		    }
-        }
-        return res;
-	},
-
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
