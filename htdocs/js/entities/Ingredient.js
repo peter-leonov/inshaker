@@ -95,24 +95,6 @@ Object.extend(Ingredient,
 		}
 	},
 	
-    getAllRoundsByNames: function(names){
-        for(var i = 0; i < this.db.length; i++) 
-            this.rounds[this.db[i].name] = Infinity;
-
-        var cocktails = Cocktail.getByIngredients(names);
-        var cRounds = Cocktail.rounds;
-
-        for(var i = 0; i < cocktails.length; i++){
-            var cName    = cocktails[i].name;
-            var cIngreds = cocktails[i].db;
-            for(var j = 0; j < cIngreds.length; j++){
-                if(this.rounds[cIngreds[j]] > cRounds[cName])
-                    this.rounds[cIngreds[j]] = cRounds[cName];
-            }
-        }
-        return this.rounds;
-    },
-
 	sortByGroups: function(a, b){
 		var self = Ingredient;
         if(typeof a == 'object') { a = a[0]; b = b[0] }
