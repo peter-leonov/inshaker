@@ -227,14 +227,17 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, db)
+	getByIngredients: function (ingredients, db, count)
 	{
 		if (!db)
 			db = this.db
 		
-		// caching names and count of requested ingredients
-		var ingredientsNames = {}, count = ingredients.length
-		for (var i = 0; i < count; i++)
+		if (!count)
+			count = ingredients.length
+		
+		// caching names of requested ingredients
+		var ingredientsNames = {}
+		for (var i = 0; i < ingredients.length; i++)
 			ingredientsNames[ingredients[i]] = true
 		
 		var res = []
