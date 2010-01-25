@@ -37,12 +37,7 @@ var Controller = {
 		Model.init();
 		Model.dataListener = this;
 		
-		if (/\bview=images\b/.test(window.location.hash))
-			this.getIngredientNode = this.getIngredientImageNode
-		else
-			this.getIngredientNode = this.getIngredientTextNode
-		
-		this.renderIngredients(Model.ingredients);
+		this.renderIngredients()
 		this.bindEvents();
 	},
 	
@@ -62,7 +57,7 @@ var Controller = {
 		}, false);
 	},
 	
-	getIngredientTextNode: function (ingred)
+	getIngredientNode: function (ingred)
 	{
 		var a = document.createElement("a");
 		var name = document.createElement("span");
@@ -80,26 +75,7 @@ var Controller = {
 		return a
 	},
 	
-	getIngredientImageNode: function (ingred)
-	{
-		var a = document.createElement("a");
-		var img = document.createElement("img");
-		img.className = "ingred-image";
-		img.title = ingred;
-		img.src = Ingredient.getByName(ingred).getMiniImageSrc();
-		var mark = document.createElement("span");
-		mark.className = "round-mark";
-		a.appendChild(img);
-		a.appendChild(mark);
-		
-		// Unnecessary caching
-		this.nameNodes.push(img);
-		this.markNodes.push(mark);
-		
-		return a
-	},
-	
-	renderIngredients: function(ingredients){
+	renderIngredients: function(){
 		var parent = $(this.ALPHABETICAL);
 		
 		// creating columns
