@@ -234,8 +234,18 @@ function CocktailsModel (states, view) {
 		if (filters.method)
 			res = Cocktail.getByMethod(filters.method, res)
 		
-		// if (filters.marks && filters.marks.length)
-		// 	res = Cocktail.getByMarks(filters.marks, res)
+		if (filters.marks && filters.marks.length)
+		{
+			var marks = filters.marks, ingredients = []
+			for (var i = 0; i < marks.length; i++)
+				ingredients.push(Ingredient.getByMark(marks[i]))
+			
+			// concat all the ingredients in one native operation just like SIMD ;)
+			ingredients = Array.prototype.concat.apply([], ingredients)
+			log(ingredients)
+			res = Cocktail.getByIngredients(ingredients, res, 1)
+			log(res)
+		}
 		
 		if (filters.ingredients && filters.ingredients.length)
 			res = Cocktail.getByIngredientNames(filters.ingredients, res)

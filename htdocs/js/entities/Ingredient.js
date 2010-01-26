@@ -184,11 +184,7 @@ Object.extend(Ingredient,
 	
 	ingredientsLinkByMark: function (mark)
 	{
-		var res = [], ingreds = this.getByMark(mark)
-		for (var i = 0; i < ingreds.length; i++)
-			res[i] = ingreds[i].name
-		
-		return "/cocktails.html#state=byIngredients&ingredients=" + encodeURIComponent(res.join(","))
+		return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent('марка ' + mark)
 	},
 	
 	getByFirstLetter: function (letter)
