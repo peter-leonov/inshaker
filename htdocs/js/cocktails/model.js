@@ -51,8 +51,14 @@ function CocktailsModel (states, view) {
 		if(!filters.strength)    filters.strength = "";
 		if(!filters.method)      filters.method = "";
 		if(!filters.page)        filters.page = 0;
+		
 		if(!filters.ingredients) filters.ingredients = [];
 		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
+		
+		if (!filters.marks)
+			filters.marks = []
+		else if (filters.marks.split)
+			filters.marks = filters.marks.split(',')
 		
 		if(!filters.state) filters.state = states.defaultState;
 		
@@ -174,6 +180,14 @@ function CocktailsModel (states, view) {
 		this.filters.tag      = "";
 		this.filters.method   = "";
 		
+		var idx = this.filters.marks.indexOf(name)
+		if (idx >= 0)
+		{
+			this.filters.marks.splice(idx, 1)
+			this.applyFilters()
+			return
+		}
+		
 		var idx = this.filters.ingredients.indexOf(name);
 		if (!name) { // removing all
 			this.filters.ingredients = [];
@@ -242,9 +256,7 @@ function CocktailsModel (states, view) {
 			
 			// concat all the ingredients in one native operation just like SIMD ;)
 			ingredients = Array.prototype.concat.apply([], ingredients)
-			log(ingredients)
 			res = Cocktail.getByIngredients(ingredients, res, 1)
-			log(res)
 		}
 		
 		if (filters.ingredients && filters.ingredients.length)
@@ -266,21 +278,21 @@ function CocktailsModel (states, view) {
 	{
 		var filters = this.filters
 		
-		var names = filters.ingredients
-		if (names)
-		{
-			var plain = [], marks = [], markToken = 'марка '
-			for (var i = 0; i < names.length; i++)
-			{
-				var name = names[i]
-				if (name.indexOf(markToken) == 0)
-					marks.push(name.substr(markToken.length))
-				else
-					plain.push(name)
-			}
-			filters.ingredients = plain
-			filters.marks = marks
-		}
+		// var names = filters.ingredients
+		// if (names)
+		// {
+		// 	var plain = [], marks = [], markToken = 'марка '
+		// 	for (var i = 0; i < names.length; i++)
+		// 	{
+		// 		var name = names[i]
+		// 		if (name.indexOf(markToken) == 0)
+		// 			marks.push(name.substr(markToken.length))
+		// 		else
+		// 			plain.push(name)
+		// 	}
+		// 	filters.ingredients = plain
+		// 	filters.marks = marks
+		// }
 		view.onModelChanged(this.getCocktailsByFilters(filters, states), filters, this.getGroupStates());
 	};
 }

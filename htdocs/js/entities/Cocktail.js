@@ -232,7 +232,7 @@ Object.extend(Cocktail,
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
-		log(names)
+		
 		return this.getByIngredientNames(names, db, count)
 	},
 	

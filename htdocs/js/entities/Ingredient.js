@@ -184,7 +184,7 @@ Object.extend(Ingredient,
 	
 	ingredientsLinkByMark: function (mark)
 	{
-		return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent('марка ' + mark)
+		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
 	},
 	
 	getByFirstLetter: function (letter)
