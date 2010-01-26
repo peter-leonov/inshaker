@@ -229,16 +229,25 @@ Object.extend(Cocktail,
     
 	getByIngredients: function (ingredients, db, count)
 	{
+		var names = []
+		for (var i = 0, il = ingredients.length; i < il; i++)
+			names.push(ingredients[i].name)
+		log(names)
+		return this.getByIngredientNames(names, db, count)
+	},
+	
+	getByIngredientNames: function (names, db, count)
+	{
 		if (!db)
 			db = this.db
 		
 		if (!count)
-			count = ingredients.length
+			count = names.length
 		
 		// caching names of requested ingredients
-		var ingredientsNames = {}
-		for (var i = 0; i < ingredients.length; i++)
-			ingredientsNames[ingredients[i]] = true
+		var hash = {}
+		for (var i = 0; i < names.length; i++)
+			hash[names[i]] = true
 		
 		var res = []
 		for (var i = 0, il = db.length; i < il; i++)
@@ -248,14 +257,14 @@ Object.extend(Cocktail,
 			
 			var ci = cocktail.ingredients
 			for (var j = 0, jl = ci.length; j < jl; j++)
-				if (ingredientsNames[ci[j][0]])
+				if (hash[ci[j][0]]) // [0] for ingredient name
 					if (++matches == count)
 					{
 						// ta-da we'v found one
 						res.push(cocktail)
 						break
 					}
-			// here if cocktail does not pass
+			// here when cocktail does not pass
 		}
 		return res.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 	},

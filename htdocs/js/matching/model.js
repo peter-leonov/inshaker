@@ -33,7 +33,7 @@ var Model =
 	suitableIngredients: function (list)
 	{
 		var res = [],
-			cocktails = Cocktail.getByIngredients(list)
+			cocktails = Cocktail.getByIngredientNames(list)
 		
 		for (var i = 0; i < cocktails.length; i++)
 		{

@@ -238,7 +238,7 @@ function CocktailsModel (states, view) {
 		// 	res = Cocktail.getByMarks(filters.marks, res)
 		
 		if (filters.ingredients && filters.ingredients.length)
-			res = Cocktail.getByIngredients(filters.ingredients, res)
+			res = Cocktail.getByIngredientNames(filters.ingredients, res)
 		
 		if (!res)
 		{
