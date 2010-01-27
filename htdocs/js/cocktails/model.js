@@ -180,6 +180,14 @@ function CocktailsModel (states, view) {
 		this.filters.tag      = "";
 		this.filters.method   = "";
 		
+		if (!name) // removing all
+		{
+			this.filters.ingredients = []
+			this.filters.marks = []
+			this.applyFilters()
+			return
+		}
+		
 		var idx = this.filters.marks.indexOf(name)
 		if (idx >= 0)
 		{
@@ -189,9 +197,7 @@ function CocktailsModel (states, view) {
 		}
 		
 		var idx = this.filters.ingredients.indexOf(name);
-		if (!name) { // removing all
-			this.filters.ingredients = [];
-		} else if (remove) {
+		if (remove) {
 			this.filters.ingredients.splice(idx, 1);
 		} else if (idx == -1){
 			this.filters.ingredients.push(name);
