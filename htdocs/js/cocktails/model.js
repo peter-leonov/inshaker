@@ -205,6 +205,17 @@ function CocktailsModel (states, view) {
 		this.applyFilters();
 	};
 	
+	this.onMarkAddFilter = function (name)
+	{
+		var idx = this.filters.marks.indexOf(name)
+		if (idx < 0)
+		{
+			this.filters.marks.push(name)
+			this.applyFilters()
+			return
+		}
+	}
+	
 	// get states by current filters
 	this.getGroupStates = function(){
 		var set = [], groupStates = {};
@@ -283,22 +294,6 @@ function CocktailsModel (states, view) {
 	this.applyFilters = function()
 	{
 		var filters = this.filters
-		
-		// var names = filters.ingredients
-		// if (names)
-		// {
-		// 	var plain = [], marks = [], markToken = 'марка '
-		// 	for (var i = 0; i < names.length; i++)
-		// 	{
-		// 		var name = names[i]
-		// 		if (name.indexOf(markToken) == 0)
-		// 			marks.push(name.substr(markToken.length))
-		// 		else
-		// 			plain.push(name)
-		// 	}
-		// 	filters.ingredients = plain
-		// 	filters.marks = marks
-		// }
 		view.onModelChanged(this.getCocktailsByFilters(filters, states), filters, this.getGroupStates());
 	};
 }

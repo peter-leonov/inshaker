@@ -188,9 +188,14 @@ function CocktailsView (states, nodes, styles) {
 		this.controller.onIngredientFilter();
 	};
 	
-	this.onIngredientAdded = function(name) {
-		this.controller.onIngredientFilter(name, false);
-	};
+	this.onIngredientAdded = function(name)
+	{
+		var markToken = 'марка '
+		if (name.indexOf(markToken) == 0)
+			this.controller.onMarkAddFilter(name.substr(markToken.length), false)
+		else
+			this.controller.onIngredientFilter(name, false)
+	}
 	
 	this.onIngredientRemoved = function(name) {
 		this.controller.onIngredientFilter(name, true);
