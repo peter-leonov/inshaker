@@ -17,11 +17,33 @@ var myProto =
 		this.data.allIngredients = this.sources.ingredient.getAll()
 	},
 	
+	toggleIngredient: function (ingredient)
+	{
+		var selected = this.state.selected,
+			name = ingredient.name
+		if (selected[name])
+			delete selected[name]
+		else
+			selected[name] = ingredient
+		
+		this.sendState()
+	},
+	
 	setState: function (state)
 	{
 		this.state = state
-		
-		this.view.modelChanged({ingredients: this.data.allIngredients, selected: []})
+		this.sendState()
+	},
+	
+	sendState: function ()
+	{
+		var data = {selected: Object.values(this.state.selected)}
+		this.view.modelChanged(data)
+	},
+	
+	init: function ()
+	{
+		this.view.renderIngredientsField(this.data.allIngredients)
 	}
 }
 

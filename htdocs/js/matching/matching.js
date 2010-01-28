@@ -20,6 +20,8 @@ var myProto =
 		this.view.bind(nodes)
 		this.controller.bind(state)
 		
+		this.model.init()
+		
 		return this
 	}
 }
@@ -49,7 +51,7 @@ function onready ()
 		viewCocktails:       $('view-cocktails')
 	}
 	var widget = new MatchingPage()
-	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {})
+	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {selected:{}})
 }
 
 $.onready(onready)

@@ -12,6 +12,11 @@ var myProto =
 	bind: function (state)
 	{
 		this.model.setState(state)
+	},
+	
+	toggleIngredient: function (ingredient)
+	{
+		this.model.toggleIngredient(ingredient)
 	}
 }
 

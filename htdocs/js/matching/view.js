@@ -16,14 +16,25 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		
+		this.bindEvents()
 		
 		return this
 	},
 	
+	bindEvents: function ()
+	{
+		var me = this
+		this.nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+	},
+	
+	ingredientClicked: function (e)
+	{
+		this.controller.toggleIngredient(e.target.ingredient)
+	},
+	
 	modelChanged: function (data)
 	{
-		this.renderIngredientsField(data.ingredients)
+		log(data.selected)
 	},
 	
 	renderIngredientsField: function (ingredients)
