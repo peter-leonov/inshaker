@@ -68,7 +68,8 @@ class IngredientsProcessor < Barman::Processor
   
   def flush_json
     say "сохраняю данные об ингредиентах"
-    flush_json_object(@ingredients, Config::DB_JS_INGREDS)
+    ingredients = @ingredients.sort { |a, b| a["name"] <=> b["name"] }
+    flush_json_object(ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
   
