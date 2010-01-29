@@ -68,11 +68,57 @@ var myProto =
 		var byLetter = this.splitIngredientsByLetter(ingredients),
 			letters = Object.keys(byLetter)
 		
+		var heights = [], boxes = []
 		for (var i = 0; i < letters.length; i++)
 		{
-			var letter = letters[i]
-			root.appendChild(this.createLetterBox(letter, byLetter[letter]))
+			var letter = letters[i],
+				ingredients = byLetter[letter]
+			
+			heights[i] = ingredients.length
+			boxes[i] = this.createLetterBox(letter, ingredients)
 		}
+		
+		// var optimum = this.floatColumns(heights, 5)
+		var optimum = this.floatColumns([1,1,1,1,1], 3)
+	},
+	
+	floatColumns: function (boxes, width)
+	{
+		var len = boxes.length, iterations = 100,
+			path = [], min = Infinity, minPath
+		
+		if (width === 0 || len === 0)
+			return []
+		
+		if (width === 1 || len === 1)
+			return [len]
+		
+		// at start: my > 1, w > 1, m = 0
+		function walk (my, w, m)
+		{
+			if (!iterations--)
+				throw 'too slow'
+			
+			var s = boxes[len - my]
+			for (var i = 1; i < my; i++)
+			{
+				path[width - w] = i
+				walk(my - i, w - 1, s > m ? s : m)
+				s += boxes[len - my + i]
+			}
+			
+			// do not walk for last column
+			// to prevent recalculation of s
+			if (w === 1)
+			{
+				path[width - w] = my
+				log(path, m)
+				return
+			}
+			
+		}
+		
+		walk(len, width, 0)
 	},
 	
 	splitIngredientsByLetter: function (ingredients)
