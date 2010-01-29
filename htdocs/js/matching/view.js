@@ -11,6 +11,7 @@ var myProto =
 		this.nodes = {}
 		this.cache = {ingredients: {}}
 		this.selected = {}
+		this.disabled = {}
 	},
 	
 	bind: function (nodes)
@@ -37,18 +38,26 @@ var myProto =
 	
 	modelChanged: function (data)
 	{
+		this.mergeIngredientClassNameStates(this.selected, data.selected, 'selected')
+		this.selected = Object.copy(data.selected) // flat copying
+		
+		this.mergeIngredientClassNameStates(this.disabled, data.disabled, 'disabled')
+		this.disabled = Object.copy(data.disabled) // flat copying
+	},
+	
+	mergeIngredientClassNameStates: function (a, b, cn)
+	{
+		var cache = this.cache.ingredients
+		
 		// just an experiment with diff to reduce className usage
 		// please see http://kung-fu-tzu.ru/posts/2009/04/03/fabulously-slow-classname/
-		var diff = this.diffObjects(this.selected, data.selected),
-			cache = this.cache.ingredients
+		var diff = this.diffObjects(a, b)
 		
 		for (var k in diff.add)
-			cache[k].addClassName('selected')
+			cache[k].addClassName(cn)
 		
 		for (var k in diff.remove)
-			cache[k].removeClassName('selected')
-		
-		this.selected = Object.copy(data.selected) // flat copying
+			cache[k].removeClassName(cn)
 	},
 	
 	renderIngredientsField: function (ingredients)
