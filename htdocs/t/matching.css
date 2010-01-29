@@ -3,13 +3,13 @@
 .you-choise span{position:relative;padding-right:7px;cursor:pointer;}
 .you-choise span:hover{text-decoration:line-through;}
 .you-choise a{background-position: 0 -175px;position:absolute;top:0.2em;right:1px;padding:5px 5px 0 0;}
-.top-alphabetical { font-size: 12px; overflow: hidden; }
+.top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; }
 .top-alphabetical .col{float:left;margin-right:10px;}
 .top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}
 .top-alphabetical .item { margin-bottom: 2px; padding: 0 15px 0 0; line-height: 18px; }
-.top-alphabetical a .ingred-image{width: 100px; height: 100px;}
-.top-alphabetical a:hover{text-decoration:underline;}
-.top-alphabetical .now{color:#fff;background-position: 0 0;display:block;float:none;line-height:18px;text-decoration:none !important;padding-left:10px;margin-left:0;}
+.top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
+.top-alphabetical .item .name { display: block; }
+.top-alphabetical .item.selected .name { padding-left: 10px; }
 .top-alphabetical .dis{color:#ccc;text-decoration:none !important;cursor:default;}
 .top-alphabetical .letter-box .letter { font-size: 18px; margin: 17px 0 6px 1px; }
 .count-cocktails{background-position: 0px -50px;width:153px;height:90px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}

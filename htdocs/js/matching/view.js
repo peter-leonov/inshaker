@@ -10,6 +10,7 @@ var myProto =
 	{
 		this.nodes = {}
 		this.cache = {ingredients: {}}
+		this.selected = {}
 	},
 	
 	bind: function (nodes)
@@ -29,12 +30,25 @@ var myProto =
 	
 	ingredientClicked: function (e)
 	{
-		this.controller.toggleIngredient(e.target.ingredient)
+		var ingredient = e.target.ingredient
+		if (ingredient)
+			this.controller.toggleIngredient(ingredient)
 	},
 	
 	modelChanged: function (data)
 	{
-		log(data.selected)
+		// just an experiment with diff to reduce className usage
+		// please see http://kung-fu-tzu.ru/posts/2009/04/03/fabulously-slow-classname/
+		var diff = this.diffObjects(this.selected, data.selected),
+			cache = this.cache.ingredients
+		
+		for (var k in diff.add)
+			cache[k].addClassName('selected')
+		
+		for (var k in diff.remove)
+			cache[k].removeClassName('selected')
+		
+		this.selected = Object.copy(data.selected) // flat copying
 	},
 	
 	renderIngredientsField: function (ingredients)
@@ -102,6 +116,26 @@ var myProto =
 		}
 		
 		return box
+	},
+	
+	diffObjects: function (a, b)
+	{
+		var add = {}, change = {}, remove = {}
+		
+		for (var k in b)
+			if (k in a)
+			{
+				if (a[k] !== b[k])
+					change[k] = b[k]
+			}
+			else
+				add[k] = b[k]
+		
+		for (var k in a)
+			if (!(k in b))
+				remove[k] = a[k]
+		
+		return {add: add, change: change, remove: remove}
 	}
 }
 

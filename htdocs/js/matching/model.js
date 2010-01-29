@@ -37,7 +37,7 @@ var myProto =
 	
 	sendState: function ()
 	{
-		var data = {selected: Object.values(this.state.selected)}
+		var data = {selected: this.state.selected}
 		this.view.modelChanged(data)
 	},
 	
