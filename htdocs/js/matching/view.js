@@ -77,14 +77,15 @@ var myProto =
 			heights[i] = ingredients.length
 			boxes[i] = this.createLetterBox(letter, ingredients)
 		}
-		
-		// var optimum = this.floatColumns(heights, 5)
-		var optimum = this.floatColumns([1,1,1,1,1], 3)
+		console.time('float')
+		var optimum = this.floatColumns(heights, 5)
+		// var optimum = this.floatColumns([1,10,1,1,1,3,1,1,1,1,1], 3)
+		console.timeEnd('float')
 	},
 	
 	floatColumns: function (boxes, width)
 	{
-		var len = boxes.length, iterations = 100,
+		var len = boxes.length, iterations = 0,
 			path = [], min = Infinity, minPath
 		
 		if (width === 0 || len === 0)
@@ -96,29 +97,42 @@ var myProto =
 		// at start: my > 1, w > 1, m = 0
 		function walk (my, w, m)
 		{
-			if (!iterations--)
+			if (++iterations > 1000)
 				throw 'too slow'
+			
+			if (w === 1)
+			{
+				path[width - w] = my
+				
+				var s = 0
+				for (var i = 0; i < my; i++)
+					s += boxes[len - my + i]
+				
+				m = s > m ? s : m
+				if (m < min)
+				{
+					min = m
+					minPath = path
+					// log(iterations, path, m)
+				}
+				// log(path, m)
+				return
+			}
 			
 			var s = boxes[len - my]
 			for (var i = 1; i < my; i++)
 			{
+				if (s > min)
+					continue
 				path[width - w] = i
 				walk(my - i, w - 1, s > m ? s : m)
 				s += boxes[len - my + i]
 			}
-			
-			// do not walk for last column
-			// to prevent recalculation of s
-			if (w === 1)
-			{
-				path[width - w] = my
-				log(path, m)
-				return
-			}
-			
 		}
 		
 		walk(len, width, 0)
+		// log(iterations)
+		log(iterations, path)
 	},
 	
 	splitIngredientsByLetter: function (ingredients)
