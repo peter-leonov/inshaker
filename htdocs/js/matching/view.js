@@ -74,25 +74,71 @@ var myProto =
 			var letter = letters[i],
 				ingredients = byLetter[letter]
 			
-			heights[i] = ingredients.length
-			boxes[i] = this.createLetterBox(letter, ingredients)
+			var box = boxes[i] = this.createLetterBox(letter, ingredients)
+			// fast but approximated heights in lines
+			heights[i] = ingredients.length + 2 // for letter name
+			
+			// // slow but precise heights in pixels
+			// root.appendChild(box)
+			// heights[i] = box.offsetHeight
+			// log(box.offsetHeight)
 		}
-		console.time('float')
+		// console.time('float')
 		var optimum = this.floatColumns(heights, 5)
 		// var optimum = this.floatColumns([1,10,1,1,1,3,1,1,1,1,1], 3)
-		console.timeEnd('float')
+		// console.timeEnd('float')
+		
+		root.empty()
+		var cur = 0
+		for (var i = 0; i < optimum.length; i++)
+		{
+			var col = Nc('div', 'col')
+			for (var j = 0, jl = optimum[i]; j < jl; j++)
+				col.appendChild(boxes[cur++])
+			root.appendChild(col)
+		}
+		
 	},
 	
-	floatColumns: function (boxes, width)
+	floatColumns: function (heights, width)
 	{
-		var len = boxes.length, iterations = 0,
-			path = [], min = Infinity, minPath
+		var len = heights.length, iterations = 0,
+			path = [], min = Infinity, minPath = []
 		
 		if (width === 0 || len === 0)
 			return []
 		
 		if (width === 1 || len === 1)
 			return [len]
+		
+		
+		// precalculate approximated minumum
+		// this block can be simply commented out
+		{
+			var med = (len / width) << 0,
+				rem = len % width
+			// log(med * width + rem, len)
+			
+			for (var i = 0; i < width; i++)
+				minPath[i] = med
+			
+			for (var i = 0; i < rem; i++)
+				minPath[i]++
+			
+			var cur = 0, min = 0
+			for (var i = 0; i < width; i++)
+			{
+				var s = 0
+				
+				for (var j = 0, jl = minPath[i]; j < jl; j++)
+					s += heights[cur++]
+				
+				if (s > min)
+					min = s
+			}
+			
+			// log(0, minPath, min)
+		}
 		
 		// at start: my > 1, w > 1, m = 0
 		function walk (my, w, m)
@@ -106,7 +152,7 @@ var myProto =
 				
 				var s = 0
 				for (var i = 0; i < my; i++)
-					s += boxes[len - my + i]
+					s += heights[len - my + i]
 				
 				m = s > m ? s : m
 				if (m < min)
@@ -119,20 +165,21 @@ var myProto =
 				return
 			}
 			
-			var s = boxes[len - my]
+			var s = heights[len - my]
 			for (var i = 1; i < my; i++)
 			{
 				if (s > min)
 					continue
 				path[width - w] = i
 				walk(my - i, w - 1, s > m ? s : m)
-				s += boxes[len - my + i]
+				s += heights[len - my + i]
 			}
 		}
 		
 		walk(len, width, 0)
-		// log(iterations)
-		log(iterations, path)
+		// log(iterations, minPath)
+		
+		return minPath
 	},
 	
 	splitIngredientsByLetter: function (ingredients)

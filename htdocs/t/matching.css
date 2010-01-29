@@ -5,8 +5,8 @@
 .you-choise a{background-position: 0 -175px;position:absolute;top:0.2em;right:1px;padding:5px 5px 0 0;}
 
 .top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; }
-.top-alphabetical .col{float:left;margin-right:10px;}
-.top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}
+.top-alphabetical .col { float: left; width: 184px; }
+/*.top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}*/
 .top-alphabetical .letter-box .letter { font-size: 18px; margin: 17px 0 6px 1px; }
 
 .top-alphabetical .item { margin-bottom: 2px; padding: 0 15px 0 0; line-height: 18px; }
