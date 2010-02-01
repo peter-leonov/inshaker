@@ -43,6 +43,28 @@ var myProto =
 		
 		this.mergeIngredientClassNameStates(this.disabled, data.disabled, 'disabled')
 		this.disabled = Object.copy(data.disabled) // flat copying
+		
+		this.nodes.main.toggleClassName('selecting-ingredients', !Object.isEmpty(this.selected))
+		
+		this.renderCocktails()
+	},
+	
+	renderCocktails: function (cocktails)
+	{
+		var listNodes = this.nodes.cocktails
+		
+		cocktails = cocktails.slice().randomize()
+		
+		var cl = new CocktailList()
+		var nodes =
+		{
+			root: listNodes.cocktails,
+			viewport: listNodes.cocktailsViewport,
+			surface: listNodes.cocktailsSurface,
+			prev: listNodes.cocktailsPrev,
+			next: listNodes.cocktailsNext
+		}
+		cl.bind(nodes, cocktails, 5)
 	},
 	
 	mergeIngredientClassNameStates: function (a, b, cn)
@@ -140,10 +162,12 @@ var myProto =
 			// log(0, minPath, min)
 		}
 		
+		miterations = width * 500
+		
 		// at start: my > 1, w > 1, m = 0
 		function walk (my, w, m)
 		{
-			if (++iterations > 1000)
+			if (++iterations > miterations)
 				throw 'too slow'
 			
 			if (w === 1)

@@ -42,12 +42,22 @@ function onready ()
 {
 	var nodes =
 	{
+		main:                $$('.body-wrapper')[0],
 		alphabetical:        $('top-alphabetical'),
 		chosenIngeredients:  $('chosen'),
 		canPrepare:          $('can-prepare'),
 		canPrepareTxt:       $('can-prepare-txt'),
 		howMany:             $('how-many'),
-		viewCocktails:       $('view-cocktails')
+		viewCocktails:       $('view-cocktails'),
+		
+		listNodes:
+		{
+			root:            $$('.results .cocktail-list')[0],
+			viewport:        $$('.results .cocktail-list .viewport')[0],
+			surface:         $$('.results .cocktail-list .surface')[0],
+			prev:            $$('.results .cocktail-list .prev')[0],
+			next:            $$('.results .cocktail-list .next')[0]
+		}
 	}
 	var widget = new MatchingPage()
 	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail})
