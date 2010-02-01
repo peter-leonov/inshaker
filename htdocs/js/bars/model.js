@@ -24,11 +24,12 @@ BarsPageModel.prototype =
 		
 		var now = new Date(), hYearMs = 3600 * 24 * (366 / 2) * 1000,
 			neo = [], alphabical = [], future = []
+
 		
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
 			var bar = barsSet[i]
-			var openDate = now - new Date(bar.openDate || 0) // 0 is for Unix epoch begin
+			var openDate = (bar.openDate == undefined || bar.openDate == '') ? -1 : (now - new Date(bar.openDate)) // 0 is for Unix epoch begin
 			if (openDate < 0) //// fill bars what opened in future
 			{
 				bar.labelType = 'future'
@@ -44,7 +45,6 @@ BarsPageModel.prototype =
 				alphabical.push(bar)
 			}
 		}
-		
 		barsSet = neo.concat(alphabical, future)
 		
 		

@@ -247,6 +247,9 @@ BarsPageView.prototype =
 	{
 		var gPoint = new GLatLng(bar.point[0], bar.point[1])
 		// var mkey = bar.point[0] + ':' + bar.point[1]
+		
+		this.gIcon.image = bar.labelType ? ('/t/bars/bar-icon-' + bar.labelType +'.png') : '/t/bars/bar-icon.png';
+		
 		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
 		var me = this
 		function click () { me.controller.gMarkerClicked(gMarker) }
@@ -292,15 +295,6 @@ BarsPageView.prototype =
 		main.setName(bar.name)
 		main.setImage(bar.smallImageHref())
 		main.setHref(bar.pageHref())
-		
-		if (bar.labelType)
-		{
-			var label = document.createElement('div')
-			label.className = 'label'
-			main.addClassName(bar.labelType)
-			main.appendChild(label)
-		}
-		
 		return main
 	},
 	
@@ -314,6 +308,15 @@ BarsPageView.prototype =
 		main.setImage = function (src) { main.style.backgroundImage = 'url('+src+')' }
 		main.setName = function (text) { name.innerHTML = text }
 		main.setHref = function (href) { name.href = href }
+		
+		if (bar.labelType)
+		{
+			var label = document.createElement('div')
+			label.className = 'label'
+			main.addClassName(bar.labelType)
+			main.appendChild(label)
+		}
+		
 		return main
 	}
 }
