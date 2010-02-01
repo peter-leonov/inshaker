@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head-cocktails.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/matching.css"/>
-	<title>Поиск коктейлей по сочетанию — Inshaker</title>
+	<title>Поиск коктейлей по сочетанию ингредиентов — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,19 +11,38 @@
 	
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>Поиск коктейлей по сочетанию или <a href="/ingredients.html">все коктейльные ингредиенты</a></h1>
+			<!--<h1>Поиск коктейлей по сочетанию ингредиентов или <a href="/ingredients.html">все коктейльные ингредиенты </a></h1>-->
+			<h1>С чем смешать?</h1>
 			<a id="spotlighted"></a>
 		</div>
 		
 		<div class="b-content">
-			<div class="you-choise b"><p id="chosen"><strong>Выберите ингредиенты</strong> </p></div>
-			<div class="top-alphabetical" id="top-alphabetical"></div>
-			<form class="count-cocktails" id="can_prepare" style="display: none;"><span id="can_prepare_txt"></span> <strong id="how_many"></strong> <input type="submit" id="view_cocktails" value="Посмотреть коктейли"/></form>
+			<div id="results">
+				<div class="lets-choose">
+					Выберите сочетание каких-нибудь ингредиентов, например
+					<a class="for-expmle">Водка цитрон + Апельсиновый сок с мякотью</a>
+				</div>
+				<div class="chosen"><a>Водка цитрон</a> + <a>Апельсиновый сок с мякотью</a> =</div>
+				<div class="cocktails">
+					<span class="notice">Здесь появится список котейлей с выбранными ингредиентами.</span>
+					<div class="cocktail-list">
+						<a class="prev"></a>
+						<a class="next"></a>
+						<div class="viewport">
+							<div class="surface"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="top-alphabetical"></div>
 		</div>
 	</div></div>
 </div>
 <!--# include file="/inc/bottom-common.html" -->
-<script type="text/javascript" src="/js/common/common.js"></script>
+<!--[if lte IE 6]><script type="text/javascript" src="/lib-0.3/core/fixes/timed-redraw.js"></script><![endif]-->
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script><![endif]-->
+<!--[if gte IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/common/cocktails.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

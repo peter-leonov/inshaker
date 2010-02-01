@@ -43,7 +43,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/theme.js" -->
 Theme.bind()
 
-<!--# include virtual="cocktail-list.js" -->
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
@@ -87,7 +86,7 @@ function onready ()
 	}
 	
 	var widget = new IngredientsPage()
-	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage', drawBy: 'images'})
+	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {groupBy: 'group', sortBy: 'usage', drawBy: 'with-text'})
 }
 
 $.onready(onready)

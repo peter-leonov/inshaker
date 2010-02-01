@@ -143,17 +143,6 @@ self.DataFilter = {
 		return res;
 	},
 	
-	ingredientsByLetter: function(set, letter){
-		var res = [];	
-		var reg = new RegExp("^(" + letter.toUpperCase() + ")");
-		for(var i = 0; i < set.length; i++) {
-			if(set[i].match(reg)){
-				res.push(set[i]);
-			}
-		}
-		return res;		
-	},
-		
 	cocktailsByLetter: function (set, letter){
 		var res = [];	
 		var reg = new RegExp("^(" + letter.toUpperCase() + ")");
@@ -197,17 +186,6 @@ self.DataFilter = {
 			if(good == ingredients.length) res.push(set[i]);
 		}
 		return res;
-	},
-	
-	firstLetters: function(set, lowerCase){
-		var letters = [];
-		for(var i = 0; i < set.length; i++){
-			var letter = set[i].substr(0,1);
-			if(lowerCase) letter = letter.toLowerCase();
-			letters.push(letter);
-		}
-		letters = letters.uniq().sort();
-		return letters;	
 	},
 	
 	nameSort: function(a, b){

@@ -98,6 +98,10 @@ function CocktailsController (states, cookies, model, view) {
 		this.model.onIngredientFilter(name, remove);
 	};
 	
+	this.onMarkAddFilter = function(name, remove) {
+		this.model.onMarkAddFilter(name, remove);
+	};
+	
 	this.onNameFilter = function(name){
 		this.model.onNameFilter(name);
 	};
