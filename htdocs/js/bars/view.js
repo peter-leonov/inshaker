@@ -194,8 +194,7 @@ BarsPageView.prototype =
 	
 	initMap: function ()
 	{
-		var me = this,
-		gIcon
+		var me = this
 		if (!this.gMap)
 		{
 			var mapNode = this.nodes.map
@@ -211,14 +210,20 @@ BarsPageView.prototype =
 			this.gMap = map
 		}
 		
+		var
+			gIcon,
+			iconAnchor = new GPoint(12, 34),
+			infoWindowAnchor = new GPoint(16, 0),
+			infoShadowAnchor = new GPoint(18, 25);
+					
 		if (!this.gIcon)
 		{
 			gIcon = new GIcon()
 			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			gIcon.iconAnchor = iconAnchor
+			gIcon.infoWindowAnchor = infoWindowAnchor
+			gIcon.infoShadowAnchor = infoWindowAnchor
 			this.gIcon = gIcon	
 		}
 		if (!this.gIconNew)
@@ -226,9 +231,9 @@ BarsPageView.prototype =
 			gIcon = new GIcon()
 			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon-new.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			gIcon.iconAnchor = iconAnchor
+			gIcon.infoWindowAnchor = infoWindowAnchor
+			gIcon.infoShadowAnchor = infoWindowAnchor
 			this.gIconNew = gIcon	
 		}
 		if (!this.gIconFuture)
@@ -236,9 +241,9 @@ BarsPageView.prototype =
 			gIcon = new GIcon()
 			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon-future.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			gIcon.iconAnchor = iconAnchor
+			gIcon.infoWindowAnchor = infoWindowAnchor
+			gIcon.infoShadowAnchor = infoWindowAnchor
 			this.gIconFuture = gIcon	
 		}
 	},
