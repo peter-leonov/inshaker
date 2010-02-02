@@ -1,7 +1,6 @@
 .body-wrapper { overflow: hidden; }
 .b-title { padding-bottom: 11px; }
 .b-title h1 {font-size:20px } 
-.b-title #spotlighted .group {display:none}
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; z-index: 15; }
 #search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 20px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0px -100px; cursor: default; height: 21px;}
@@ -25,7 +24,7 @@
 .ingreds-list .rem { position: absolute; top: 0; right: 0; background-position: -175px -125px; width: 11px; height: 11px; overflow: hidden; text-indent: -100em; display: block; margin: 3px; }
 .ingreds-list .rem:hover {background-position: -189px -125px; }
 #ingredients_list { width: 550px; height:17px; line-height:15px; }
-#spotlighted { position: absolute; background-position: -450px -125px;}
+
 
 
 

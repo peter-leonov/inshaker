@@ -2,6 +2,8 @@
 #top .logo,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
@@ -43,7 +45,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; }
 .b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #results_display a {}
-#spotlighted { width: 104px; height: 28px; right: 0; bottom: 11px; }
+#spotlighted { width: 104px; height: 28px; right: 0; top: 0px; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
 #alphabetical-ru a.selected-button { color: #000; }
@@ -67,7 +69,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
-/* ingredients.css */
+/* matching.css */
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
@@ -115,7 +117,7 @@ button.rounded { background-image: url(common.8.png); }
 .b-more dt b { background-image: url(cocktail.8.png); }
 .hreview .desc h2 i { background-image: url(common.8.png); }
 
-/* ingredients.css */
+/* matching.css */
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-image: url(ingredients.8.png) }

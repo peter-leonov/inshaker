@@ -1,4 +1,5 @@
 function CalculatorModel(view){
+	var allGoods = Ingredient.getAllByNameHash()
 	this.cartData = {};
 	
 	this.optimalGoods = {};
@@ -36,7 +37,7 @@ function CalculatorModel(view){
 			this.cartData.cocktails = [];
 			this.cartData.goods = {};
 		}		
-		this.optimalGoods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+		this.optimalGoods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
 		this.dataListeners.modelChanged(this.cartData, true);
 	};
 	
@@ -52,7 +53,7 @@ function CalculatorModel(view){
 				cs.push([cocktail, 10]); // сразу 10
 			}
 			// Оптимизируем весь набор по емкостям
-			this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+			this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
 			this.optimalGoods = cloneObject(this.cartData.goods);
 			this.dataListeners.modelChanged(this.cartData);
 		}
@@ -64,7 +65,7 @@ function CalculatorModel(view){
 			if(cs[i][0] == cocktail){
 				this.cartData.cocktails.splice(i,1);
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+				this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
@@ -77,7 +78,7 @@ function CalculatorModel(view){
 		if(this.cartData.goods[name].bottles[bottleId]){
 			bottle = this.cartData.goods[name].bottles[bottleId];
 		} else { // дополнительная бутылка
-			bottle = DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
+			bottle = DataFilter.bottleByIngredientAndVolume(allGoods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
 		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
@@ -126,7 +127,7 @@ function CalculatorModel(view){
 	};
 	
 	this.getNewBottle = function(name, bottleId){
-		return DataFilter.bottleByIngredientAndVolume(goods, name, bottleId);
+		return DataFilter.bottleByIngredientAndVolume(allGoods, name, bottleId);
 	};
 
     this.getItemFromCart = function(name){
@@ -144,7 +145,7 @@ function CalculatorModel(view){
 			if((cs[i][0] == cocktail) && (cs[i][1] != quantity)) {
 				this.cartData.cocktails[i][1] = quantity;
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(goods, this.cartData.cocktails);
+				this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;

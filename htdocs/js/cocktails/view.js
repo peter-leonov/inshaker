@@ -55,7 +55,7 @@ function CocktailsView (states, nodes, styles) {
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
-					self.controller.onTagFilter(this.innerHTML.toLowerCase());
+					self.controller.onTagFilter(this.value)
 				}
 			}}(i), false);
 		}
@@ -188,9 +188,14 @@ function CocktailsView (states, nodes, styles) {
 		this.controller.onIngredientFilter();
 	};
 	
-	this.onIngredientAdded = function(name) {
-		this.controller.onIngredientFilter(name, false);
-	};
+	this.onIngredientAdded = function(name)
+	{
+		var markToken = 'марка '
+		if (name.indexOf(markToken) == 0)
+			this.controller.onMarkAddFilter(name.substr(markToken.length), false)
+		else
+			this.controller.onIngredientFilter(name, false)
+	}
 	
 	this.onIngredientRemoved = function(name) {
 		this.controller.onIngredientFilter(name, true);
@@ -221,7 +226,7 @@ function CocktailsView (states, nodes, styles) {
 		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].innerHTML.toLowerCase();
+			var elemTxt = tagElems[i].value
 			if(elemTxt == filters.tag) {
 				this.filterElems.tag = tagElems[i];
 				this.filterElems.tag.className = styles.selected;
@@ -260,17 +265,18 @@ function CocktailsView (states, nodes, styles) {
 		
 		var ingredientsParent = nodes.searchesList;
 		ingredientsParent.empty();
-		if(filters.ingredients.length > 0) {
-			var ingreds = filters.ingredients;
-			for(var i = 0; i < ingreds.length; i++) {
-				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
-				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
-			}
+		
+		var words = filters.marks.concat(filters.ingredients)
+		for (var i = 0, il = words.length; i < il; i++)
+		{
+			ingredientsParent.appendChild(this.createIngredientElement(words[i]));
+			if (i != (il-1))
+				ingredientsParent.appendChild(document.createTextNode(" + "));
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
-			nodes.ingredsView.setVisible(filters.ingredients.length > 0)
+			nodes.searchTipIngredient.setVisible(words.length == 0)
+			nodes.ingredsView.setVisible(words.length > 0)
 		}
 		
 		if(filters.page > 0) {
@@ -326,6 +332,7 @@ function CocktailsView (states, nodes, styles) {
 	this.renderGroupSet = function(parent, set){
 		for(var i = 0; i < set.length; i++) {
 			var dd = document.createElement("dd");
+			dd.value = set[i]
 			var span = document.createElement("span");
 			var txt = document.createTextNode(set[i].capitalize());
 			dd.appendChild(txt);

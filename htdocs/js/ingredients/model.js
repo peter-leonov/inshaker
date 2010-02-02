@@ -1,33 +1,109 @@
-var Model = {
-	ingredients: Cocktail.ingredients,
-	resultSet: [],
-	dataListener: null,
-	
-	init: function(){
-		// this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
+;(function(){
+
+var Papa = IngredientsPage, Me = Papa.Model
+
+var myProto =
+{
+	initialize: function ()
+	{
+		this.sources = {}
+		this.state = {}
 	},
 	
-	uniqueLetters: function(){
-		return DataFilter.firstLetters(this.ingredients, false);
+	bind: function (ds)
+	{
+		this.ds = ds
+		// we will mess this.all, so better make a copy
+		this.all = Array.copy(ds.ingredient.getAll())
+		this.groups = this.ds.ingredient.getGroups()
+		Ingredient.calculateEachIngredientUsage()
 	},
 	
-	ingredientsOn: function(letter) {
-		return DataFilter.ingredientsByLetter(this.ingredients, letter);
+	setState: function (state)
+	{
+		this.state = state
+		
+		var data, all = this.all
+		
+		if (state.groupBy == 'group')
+			data = this.groupByGroup(all)
+		else
+			data = [{list: all}]
+		
+		
+		var func
+		if (state.sortBy == 'usage')
+			func = this.sortByUsage
+		else if (state.sortBy == 'alphabet')
+			func = this.sortByAlphabet
+		
+		if (func)
+			this.sortBy(data, func)
+		
+		
+		this.data = data
+		this.view.groupByChanged(state.groupBy)
+		this.view.sortByChanged(state.sortBy)
+		this.view.drawByChanged(state.drawBy)
+		this.view.listChanged(data)
 	},
 	
-    suitableIngredients: function(list){
-		var res = [];
-		var cocktails = Cocktail.getByIngredients(list);
-		for(var i = 0; i < cocktails.length; i++){
-			for(var j = 0; j < cocktails[i].ingredients.length; j++){
-				res.push(cocktails[i].ingredients[j][0]);
+	selectIngredient: function (ingredient)
+	{
+		this.view.showIngredient(ingredient)
+	},
+	
+	setGroupBy: function (type)
+	{
+		this.state.groupBy = type
+		this.setState(this.state)
+	},
+	
+	setSortBy: function (type)
+	{
+		this.state.sortBy = type
+		this.setState(this.state)
+	},
+	
+	setDrawBy: function (type)
+	{
+		this.state.drawBy = type
+		this.setState(this.state)
+	},
+	
+	groupByGroup: function (all)
+	{
+		var data = []
+		{
+			var slices = {}, groups = this.groups
+			for (var i = 0; i < groups.length; i++)
+			{
+				var list = [], name = groups[i]
+				slices[name] = list
+				data.push({name: name, list: list})
+			}
+			
+			for (var i = 0; i < all.length; i++)
+			{
+				var ingred = all[i]
+				slices[ingred.group].push(ingred)
 			}
 		}
-		return [cocktails.length, res.uniq(), cocktails[0]];
+		return data
 	},
-
-	selectedListChanged: function(selectedList){
-		this.resultSet = this.suitableIngredients(selectedList);
-		this.dataListener.updateCount(this.resultSet[0], this.resultSet[2], selectedList.length);
-    }
+	
+	sortBy: function (data, func)
+	{
+		for (var i = 0; i < data.length; i++)
+			data[i].list.sort(func)
+	},
+	
+	sortByAlphabet: function (a, b) { return a.name.localeCompare(b.name) },
+	
+	// this is possible only after Ingredient.calculateEachIngredientUsage()
+	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length }
 }
+
+Object.extend(Me.prototype, myProto)
+
+})();
