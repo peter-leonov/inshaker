@@ -194,7 +194,8 @@ BarsPageView.prototype =
 	
 	initMap: function ()
 	{
-		var me = this
+		var me = this,
+		gIcon
 		if (!this.gMap)
 		{
 			var mapNode = this.nodes.map
@@ -212,13 +213,33 @@ BarsPageView.prototype =
 		
 		if (!this.gIcon)
 		{
-			var gIcon = new GIcon()
+			gIcon = new GIcon()
 			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon.png'
 			gIcon.iconAnchor = new GPoint(12, 34)
 			gIcon.infoWindowAnchor = new GPoint(16, 0)
 			gIcon.infoShadowAnchor = new GPoint(18, 25)
 			this.gIcon = gIcon	
+		}
+		if (!this.gIconNew)
+		{
+			gIcon = new GIcon()
+			// gIcon.shadow = '/t/bars/bar-icon.png'
+			gIcon.image = '/t/bars/bar-icon-new.png'
+			gIcon.iconAnchor = new GPoint(12, 34)
+			gIcon.infoWindowAnchor = new GPoint(16, 0)
+			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			this.gIconNew = gIcon	
+		}
+		if (!this.gIconFuture)
+		{
+			gIcon = new GIcon()
+			// gIcon.shadow = '/t/bars/bar-icon.png'
+			gIcon.image = '/t/bars/bar-icon-future.png'
+			gIcon.iconAnchor = new GPoint(12, 34)
+			gIcon.infoWindowAnchor = new GPoint(16, 0)
+			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			this.gIconFuture = gIcon	
 		}
 	},
 	
@@ -245,12 +266,17 @@ BarsPageView.prototype =
 	
 	getGMarker: function (bar)
 	{
-		var gPoint = new GLatLng(bar.point[0], bar.point[1])
+		var gPoint = new GLatLng(bar.point[0], bar.point[1]),
+		gIcon = this.gIcon;
 		// var mkey = bar.point[0] + ':' + bar.point[1]
 		
-		this.gIcon.image = bar.labelType ? ('/t/bars/bar-icon-' + bar.labelType +'.png') : '/t/bars/bar-icon.png';
+		if (bar.labelType == 'new'){
+			gIcon = this.gIconNew;
+		} else if (bar.labelType == 'future'){
+			gIcon = this.gIconFuture;
+		}
 		
-		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
+		var gMarker = new GMarker(gPoint, {icon: gIcon})
 		var me = this
 		function click () { me.controller.gMarkerClicked(gMarker) }
 		GEvent.addListener(gMarker, 'click', click)
