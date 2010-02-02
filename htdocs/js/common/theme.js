@@ -1,4 +1,3 @@
-// Class
 ;(function(){
 
 var myName = 'Theme'
@@ -23,8 +22,6 @@ var Me = self[myName] =
 			if (node)
 			{
 				node.href = item.href
-				// fix for cocktails initialization issue
-				// node.addEventListener('click', function() { window.location.href = this.href; window.location.reload(true)}, false)
 			}
 		}
 	}
@@ -38,3 +35,12 @@ Me.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" -->)
 <!--# endif -->
 
 })();
+
+;(function(){ try {
+	var m = /\btheme=(\d\d\d\d\.\d\d)/.exec(location.hash)
+	if (m)
+	{
+		$('theme-stylesheet').href = '/t/theme/' + m[1] + '/theme.css'
+		document.cookie = 'theme=' + m[1]// + '; expires=' + new Date()
+	}
+} catch (ex) {} })();

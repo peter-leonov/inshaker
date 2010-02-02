@@ -9,14 +9,6 @@ function lengthOf(obj){
 	return length;
 }
 
-function copyProperties(obj, propsList){
-    var ret = {};
-    for(var i = 0; i < propsList.length; i++){
-        ret[propsList[i]] = obj[propsList[i]];
-    }
-    return ret;
-}
-
 Array.prototype.uniq = function(){
 	var tmp = [];
 	for(var i = 0; i < this.length; i++){

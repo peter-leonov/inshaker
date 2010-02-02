@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head-cocktails.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/ingredients.css"/>
-	<title>Inshaker — Коктейли</title>
+	<title>Все коктейльные ингредиенты — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,19 +11,85 @@
 	
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>Подбор коктейлей по ингредиентам</h1>
-			<a class="hrefs" href="cocktails.html"> ← к списку коктейлей</a>
+			<h1>Все коктейльные ингредиенты или <a href="/matching.html">поиск коктейлей по сочетанию</a></h1>
+			<a id="spotlighted"></a>
+			<!-- <a class="hrefs" href="/cocktails.html"> ← к списку коктейлей</a> -->
+			
+			<div id="menu">
+				<dl class="tweaker" id="group-by">
+					<dt class="head">Разбить:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item" data-tab-name="group">по группам</li>
+							<li class="item" data-tab-name="none">в кучу</li>
+							<!-- <li class="item" data-tab-name="color">по цвету</li> -->
+						</ul>
+					</dd>
+				</dl>
+				<dl class="tweaker" id="sort-by">
+					<dt class="head">Отсортировать:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item" data-tab-name="usage">по популярности</li>
+							<li class="item" data-tab-name="alphabet">по алфавиту</li>
+							<!-- <li class="item" data-tab-name="mark">по марке</li> -->
+						</ul>
+					</dd>
+				</dl>
+				<dl class="tweaker" id="draw-by">
+					<dt class="head">Вывести:</dt>
+					<dd class="body">
+						<ul class="list">
+							<li class="item" data-tab-name="with-text">с подписями</li>
+							<li class="item" data-tab-name="images">картинками</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
 		</div>
 		
 		<div class="b-content">
-			<div class="you-choise b"><p id="chosen"><strong>Выберите ингредиенты</strong> </p></div>
-			<div class="top-alphabetical" id="top-alphabetical"></div>
-			<form class="count-cocktails" id="can_prepare" style="display: none;"><span id="can_prepare_txt"></span> <strong id="how_many"></strong> <input type="submit" id="view_cocktails" value="Посмотреть коктейли"/></form>
+			<div id="output"><div class="loading">Загружаю много картинок ингредиентов…</div></div>
 		</div>
 	</div></div>
 </div>
+
+
+<div id="ingredient-info-popup" class="popup hidden">
+	<div class="popup-back"></div>
+	<div class="popup-front">
+		<div class="popup-controls">
+			<a class="cross">×</a>
+		</div>
+		<div class="popup-window">
+			<div class="ingredient-window">
+				<div class="description">
+					<div class="photo"><img class="image" src=""/></div>
+					<dl class="about">
+						<dt class="name"></dt>
+						<dd class="text"></dd>
+						<dd class="all-cocktails">Посмотри <a></a>.</dd>
+					</dl>
+				</div>
+				
+				<div class="cocktail-list hidden">
+					<a class="prev"></a>
+					<a class="next"></a>
+					<div class="viewport">
+						<div class="surface"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!--# include file="/inc/bottom-common.html" -->
-<script type="text/javascript" src="/js/common/common.js"></script>
+<!--[if lte IE 6]><script type="text/javascript" src="/lib-0.3/core/fixes/timed-redraw.js"></script><![endif]-->
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script><![endif]-->
+<!--[if gte IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/common/cocktails.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

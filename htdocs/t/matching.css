@@ -1,0 +1,30 @@
+.you-choise{background:#f1f7b6;}
+.you-choise p{padding:18px 20px 17px;font-size:120%;}
+.you-choise span{position:relative;padding-right:7px;cursor:pointer;}
+.you-choise span:hover{text-decoration:line-through;}
+.you-choise a{background-position: 0 -175px;position:absolute;top:0.2em;right:1px;padding:5px 5px 0 0;}
+
+#results .cocktails { height: 120px; }
+#results .chosen { display: none; }
+
+.selecting-ingredients .lets-choose,
+.selecting-ingredients .notice { display: none; }
+.selecting-ingredients .chosen { display: block; }
+
+#top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; }
+#top-alphabetical .col { float: left; width: 184px; }
+#top-alphabetical .letter-box .letter { color: #555; font-size: 18px; margin: 17px 0 6px 1px; }
+
+#top-alphabetical .item { margin-bottom: 2px; padding: 0 15px 0 0; line-height: 18px; }
+#top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
+#top-alphabetical .item .name { display: block; }
+#top-alphabetical .item.selected .name { padding-left: 10px; }
+#top-alphabetical .item.disabled .name { color: #ccc; text-decoration: none; cursor: default; }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.b-content{width:100%;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+<!--# endif -->

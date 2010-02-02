@@ -6,61 +6,93 @@ var Me = self.Ingredient = function (data)
 		this[k] = data[k]
 }
 
-Ingredient.prototype =
+Me.prototype =
 {
 	constructor: Ingredient,
-    getRound: function() { return Ingredient.rounds[this.name] },
+	volumesRootPath: '/i/merchandise/volumes/',
+	
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.name.trans() + ".png" }
+	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
+	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
+	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
+	
+	getVolumeImage: function (vol)
+	{
+		var v = vol[0],
+			name = this.brand ? this.brand_dir : this.dir
+		
+		return this.volumesRootPath + name + "_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + "_big.png"
+	}
 }
 
 Object.extend(Ingredient,
 {
-	ingredients: [],
 	groups: [],
-    rounds: {},
 	
-	initialize: function (db_ingreds, db_groups){
-		for(var i = 0; i < db_ingreds.length; i++){
-			var ingred = new Ingredient(db_ingreds[i]);
-			this.ingredients.push(ingred);
-		}
-		this.groups = db_groups;
+	initialize: function (db, groups)
+	{
+		var I = Ingredient
+		for (var i = 0, il = db.length; i < il; i++)
+			db[i] = new I(db[i])
+		
+		this.db = db
+		this.groups = groups
 	},
 	
-	getByName: function (name){
-		for(var i = 0; i < this.ingredients.length; i++){
-			if(this.ingredients[i].name.toLowerCase() == name.toLowerCase())
-                return this.ingredients[i];
-		}
+	getAll: function ()
+	{
+		return this.db
+	},
+	
+	getGroups: function ()
+	{
+		return this.groups
+	},
+	
+	getByName: function (name)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		return this._byName[name]
+	},
+	
+	getAllNames: function (name)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		return Object.keys(this._byName)
+	},
+	
+	getAllByNameHash: function ()
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		return this._byName
 	},
 	
 	getByGroup: function(group){
 		var res = [];
-		for(var i = 0; i < this.ingredients.length; i++){
-			if(this.ingredients[i].group == group) res.push(this.ingredients[i]);
+		for(var i = 0; i < this.db.length; i++){
+			if(this.db[i].group == group) res.push(this.db[i]);
 		}
 		return res;
 	},
 	
-    getAllRoundsByNames: function(names){
-        for(var i = 0; i < this.ingredients.length; i++) 
-            this.rounds[this.ingredients[i].name] = Infinity;
-
-        var cocktails = Cocktail.getByIngredients(names);
-        var cRounds = Cocktail.rounds;
-
-        for(var i = 0; i < cocktails.length; i++){
-            var cName    = cocktails[i].name;
-            var cIngreds = cocktails[i].ingredients;
-            for(var j = 0; j < cIngreds.length; j++){
-                if(this.rounds[cIngreds[j]] > cRounds[cName])
-                    this.rounds[cIngreds[j]] = cRounds[cName];
-            }
-        }
-        return this.rounds;
-    },
-
+	calculateEachIngredientUsage: function ()
+	{
+		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
+			db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingred = db[i]
+			ingred.cocktails = cocktails[ingred.name] || []
+		}
+	},
+	
 	sortByGroups: function(a, b){
 		var self = Ingredient;
         if(typeof a == 'object') { a = a[0]; b = b[0] }
@@ -68,6 +100,106 @@ Object.extend(Ingredient,
 		if(self.groups.indexOf(self.getByName(a).group) > 
 			self.groups.indexOf(self.getByName(b).group)) return 1;
 		else return -1;
+	},
+	
+	_updateByNameIndex: function ()
+	{
+		var db = this.db,
+			byName = this._byName = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
+			var ingred = db[i]
+			byName[ingred.name] = ingred
+		}
+	},
+	
+	_updateBySecondNameIndex: function ()
+	{
+		var db = this.db,
+			secondNames = this._secondNames = [],
+			nameBySecondName = this._nameBySecondName = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
+			var ingred = db[i],
+				snames = ingred.names
+			
+			if (snames)
+			{
+				var name = ingred.name
+				for (var j = 0; j < snames.length; j++)
+				{
+					var sn = snames[j]
+					nameBySecondName[sn] = name
+					secondNames.push(sn)
+				}
+			}
+		}
+	},
+	
+	getNameBySecondNameHash: function ()
+	{
+		if (!this._nameBySecondName)
+			this._updateBySecondNameIndex()
+		return this._nameBySecondName
+	},
+	
+	getAllSecondNames: function ()
+	{
+		if (!this._secondNames)
+			this._updateBySecondNameIndex()
+		return this._secondNames
+	},
+	
+	_updateByMarkIndex: function ()
+	{
+		var db = this.db,
+			byMark = this._byMark = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
+			var ingred = db[i],
+				mark = ingred.mark
+			
+			if (mark)
+			{
+				var arr
+				if ((arr = byMark[mark]))
+					arr.push(ingred)
+				else
+					byMark[mark] = [ingred]
+			}
+		}
+	},
+	
+	
+	getByMark: function (mark)
+	{
+		if (!this._byMark)
+			this._updateByMarkIndex()
+		
+		return this._byMark[mark]
+	},
+	
+	ingredientsLinkByMark: function (mark)
+	{
+		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
+	},
+	
+	getByFirstLetter: function (letter)
+	{
+		var db = this.db, res = []
+		letter = letter.toUpperCase()
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingred = db[i]
+			if (ingred.name.indexOf(letter) == 0)
+				res.push(ingred)
+		}
+		
+		return res
 	},
 	
 	compareByGroup: function (a, b)

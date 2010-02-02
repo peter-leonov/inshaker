@@ -51,7 +51,7 @@ b.lb { left: 0; bottom: 0; }
 b.rb { right: 0; bottom: 0; }
 
 
-#top { position: relative; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
+#top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
 #top #top-content {position: relative; margin: 0 auto; width: 960px;}
 #top h2 { position: absolute; left: -9px; top: 3px; }
 #top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; background: #000 url(bg/body/index.png) repeat-x 0 0; font-weight: bold; }
@@ -60,6 +60,8 @@ b.rb { right: 0; bottom: 0; }
 #top .nav a:hover{border-bottom: 5px solid;}
 #cocktails-page #top .nav a.cocktails,
 #cocktail-page #top .nav a.cocktails,
+#matching-page #top .nav a.cocktails,
+#ingredients-page #top .nav a.ingredients,
 #bars-page #top .nav a.bars,
 #bar-page #top .nav a.bars,
 #gifts-page #top .nav a.gifts,
@@ -90,6 +92,7 @@ b.rb { right: 0; bottom: 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
+#spotlighted { position: absolute; background-position: -450px -125px;}
 
 /* in almost all */
 #main-wrapper{margin:0 auto;width:960px;}
@@ -284,7 +287,11 @@ body{height:100%;}
 .win-shop .win-bg{background-image:none;}
 .win-shop .opacity{height:1500px;}
 
-body .illustration,body .mini-illustration,.b-more-cocktails .point img{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
+body .illustration,
+body .mini-illustration,
+.b-more-cocktails .point img,
+.cocktail-list .cocktail-preview img
+{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 
 .b-more-rec .prev,
 .b-more-cocktails .prev,
