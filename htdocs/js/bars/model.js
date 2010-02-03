@@ -23,7 +23,7 @@ BarsPageModel.prototype =
 		var barsSet = Bar.getByQuery(state)
 		
 		var now = new Date(), hYearMs = 3600 * 24 * (366 / 2) * 1000,
-			neo = [], alphabical = [], future = []
+			neo = [], normal = [], future = []
 		
 		
 		for (var i = 0, il = barsSet.length; i < il; i++)
@@ -42,10 +42,10 @@ BarsPageModel.prototype =
 			}
 			else //// other bars are neither 'new' nor 'future'
 			{
-				alphabical.push(bar)
+				normal.push(bar)
 			}
 		}
-		barsSet = neo.concat(alphabical, future)
+		barsSet = neo.concat(normal, future)
 		
 		
 		var city = City.getByName(state.city)
