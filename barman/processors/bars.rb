@@ -207,6 +207,7 @@ class BarsProcessor < Barman::Processor
       bar.delete("desc_start")
       bar.delete("desc_end")
       bar.delete("big_images")
+      bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
     end
     
     flush_json_object(@entities, Config::DB_JS)
