@@ -219,7 +219,6 @@ BarsPageView.prototype =
 		if (!this.gIcon)
 		{
 			gIcon = new GIcon()
-			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon.png'
 			gIcon.iconAnchor = iconAnchor
 			gIcon.infoWindowAnchor = infoWindowAnchor
@@ -229,7 +228,6 @@ BarsPageView.prototype =
 		if (!this.gIconNew)
 		{
 			gIcon = new GIcon()
-			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon-new.png'
 			gIcon.iconAnchor = iconAnchor
 			gIcon.infoWindowAnchor = infoWindowAnchor
@@ -239,7 +237,6 @@ BarsPageView.prototype =
 		if (!this.gIconFuture)
 		{
 			gIcon = new GIcon()
-			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon-future.png'
 			gIcon.iconAnchor = iconAnchor
 			gIcon.infoWindowAnchor = infoWindowAnchor
