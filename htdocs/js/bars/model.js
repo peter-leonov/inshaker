@@ -24,7 +24,7 @@ BarsPageModel.prototype =
 		
 		var now = new Date(), hYearMs = 3600 * 24 * (366 / 2) * 1000,
 			neo = [], alphabical = [], future = []
-
+		
 		
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
