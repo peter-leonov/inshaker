@@ -51,14 +51,8 @@ function CocktailsModel (states, view) {
 		if(!filters.strength)    filters.strength = "";
 		if(!filters.method)      filters.method = "";
 		if(!filters.page)        filters.page = 0;
-		
 		if(!filters.ingredients) filters.ingredients = [];
 		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
-		
-		if (!filters.marks)
-			filters.marks = []
-		else if (filters.marks.split)
-			filters.marks = filters.marks.split(',')
 		
 		if(!filters.state) filters.state = states.defaultState;
 		
@@ -180,41 +174,16 @@ function CocktailsModel (states, view) {
 		this.filters.tag      = "";
 		this.filters.method   = "";
 		
-		if (!name) // removing all
-		{
-			this.filters.ingredients = []
-			this.filters.marks = []
-			this.applyFilters()
-			return
-		}
-		
-		var idx = this.filters.marks.indexOf(name)
-		if (idx >= 0)
-		{
-			this.filters.marks.splice(idx, 1)
-			this.applyFilters()
-			return
-		}
-		
 		var idx = this.filters.ingredients.indexOf(name);
-		if (remove) {
+		if (!name) { // removing all
+			this.filters.ingredients = [];
+		} else if (remove) {
 			this.filters.ingredients.splice(idx, 1);
 		} else if (idx == -1){
 			this.filters.ingredients.push(name);
 		} else return; // duplicate entry
 		this.applyFilters();
 	};
-	
-	this.onMarkAddFilter = function (name)
-	{
-		var idx = this.filters.marks.indexOf(name)
-		if (idx < 0)
-		{
-			this.filters.marks.push(name)
-			this.applyFilters()
-			return
-		}
-	}
 	
 	// get states by current filters
 	this.getGroupStates = function(){
@@ -231,69 +200,22 @@ function CocktailsModel (states, view) {
 		// strengths state - depends only on ingredients
 		var rFilters = cloneObject(this.filters);
 		rFilters.strength = "", rFilters.tag  = "", rFilters.method = "";
-		groupStates.strengths = this.uniqueStrengths(this.getCocktailsByFilters(rFilters, states));
+		groupStates.strengths = this.uniqueStrengths(Cocktail.getByFilters(rFilters, states));
 		
 		// tags state - depends on ingredients and strength
 		rFilters = cloneObject(this.filters);
 		rFilters.tag = "", rFilters.method = "";
-		groupStates.tags = this.uniqueTags(this.getCocktailsByFilters(rFilters, states));
+		groupStates.tags = this.uniqueTags(Cocktail.getByFilters(rFilters, states));
 		
 		// methods state - depends on ingredients, strength and tag
 		rFilters = cloneObject(this.filters);
 		rFilters.method = "";
-		groupStates.methods = this.uniqueMethods(this.getCocktailsByFilters(rFilters, states));
+		groupStates.methods = this.uniqueMethods(Cocktail.getByFilters(rFilters, states));
 		
 		return groupStates;
 	};
 	
-	this.getCocktailsByFilters = function (filters, states)
-	{
-		var res = null
-		
-		if (filters.name)
-			return Cocktail.getBySimilarName(filters.name)
-		
-		if (filters.letter)
-			return Cocktail.getByLetter(filters.letter)
-		
-		if (filters.tag)
-			res = Cocktail.getByTag(filters.tag)
-		
-		if (filters.strength)
-			res = Cocktail.getByStrength(filters.strength, res)
-		
-		if (filters.method)
-			res = Cocktail.getByMethod(filters.method, res)
-		
-		if (filters.marks && filters.marks.length)
-		{
-			var marks = filters.marks, ingredients = []
-			for (var i = 0; i < marks.length; i++)
-				ingredients.push(Ingredient.getByMark(marks[i]))
-			
-			// concat all the ingredients in one native operation just like SIMD ;)
-			ingredients = Array.prototype.concat.apply([], ingredients)
-			res = Cocktail.getByIngredients(ingredients, res, 1)
-		}
-		
-		if (filters.ingredients && filters.ingredients.length)
-			res = Cocktail.getByIngredientNames(filters.ingredients, res)
-		
-		if (!res)
-		{
-			if (filters.state == states.byName)
-				res = Cocktail.getAll().shuffled()
-			else
-				res = Cocktail.getAll().sortedBy(Cocktail.nameSort)
-		}
-		
-		return res
-	}
-	
-	
-	this.applyFilters = function()
-	{
-		var filters = this.filters
-		view.onModelChanged(this.getCocktailsByFilters(filters, states), filters, this.getGroupStates());
+	this.applyFilters = function() {
+		view.onModelChanged(Cocktail.getByFilters(this.filters, states), this.filters, this.getGroupStates());
 	};
 }

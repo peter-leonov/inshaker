@@ -18,12 +18,19 @@ Array.prototype.shuffled = function() {
 
 Cocktail = function (data)
 {
-	for (var k in data)
-		this[k] = data[k]
+	for (var k in data) this[k] = data[k];
 }
 
 Cocktail.prototype =
 {
+    getMatches: function() {
+        return Cocktail.matches[this.name];
+    },
+
+    getRound: function() {
+        return Cocktail.rounds[this.name];
+    },
+	
 	loadData: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
@@ -69,6 +76,8 @@ Cocktail.prototype =
 Object.extend(Cocktail,
 {
     letters: [],
+    rounds: {},
+    matches: {},
 	
 	initialize: function (hash, tags, strengths, methods)
 	{
@@ -227,46 +236,33 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, db, count)
+	getByIngredients: function (ingredients, db)
 	{
-		var names = []
-		for (var i = 0, il = ingredients.length; i < il; i++)
-			names.push(ingredients[i].name)
-		
-		return this.getByIngredientNames(names, db, count)
-	},
-	
-	getByIngredientNames: function (names, db, count)
-	{
+		this.rounds = {}
 		if (!db)
 			db = this.db
 		
-		if (!count)
-			count = names.length
-		
-		// caching names of requested ingredients
-		var hash = {}
-		for (var i = 0; i < names.length; i++)
-			hash[names[i]] = true
+		var ingredientsNames = {}
+		for (var i = 0; i < ingredients.length; i++)
+			ingredientsNames[ingredients[i].toLowerCase()] = true
 		
 		var res = []
-		for (var i = 0, il = db.length; i < il; i++)
+		for (var i = 0; i < db.length; i++)
 		{
 			var cocktail = db[i],
 				matches = 0
 			
 			var ci = cocktail.ingredients
 			for (var j = 0, jl = ci.length; j < jl; j++)
-				if (hash[ci[j][0]]) // [0] for ingredient name
-					if (++matches == count)
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						break
-					}
-			// here when cocktail does not pass
+				if (ingredientsNames[ci[j][0].toLowerCase()])
+					matches++
+			if (matches > 0)
+				res.push(cocktail)
+			
+			this.rounds[cocktail.name] = jl - matches
+            this.matches[cocktail.name] = matches
 		}
-		return res.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		return res.sort(this.roundSort).sort(this.lessIngredientsSort).sort(this.matchSort)
 	},
 	
 	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
@@ -297,10 +293,68 @@ Object.extend(Cocktail,
 		return cache
 	},
 	
+	getByFilters: function(filters, states) {
+		var res = [];
+		var filtered = false;
+		if(filters.name){
+			return this.getBySimilarName(filters.name);
+		}
+		if(filters.letter){
+			return this.getByLetter(filters.letter);
+		}
+		if(filters.tag) {
+			res = this.getByTag(filters.tag);
+			filtered = true;
+		}
+		if(filters.strength) {
+			var to_filter = [];
+			res = this.getByStrength(filters.strength, filtered ? res : null);
+			filtered = true;
+		}
+        if(filters.method) {
+            res = this.getByMethod(filters.method, filtered ? res: null);
+            filtered = true;
+        }
+		if(filters.ingredients && filters.ingredients.length) {
+            var to_filter = [];
+			res = this.getByIngredients(filters.ingredients, filtered ? res : null);
+			filtered = true;
+		}
+        
+        if(!filtered) {
+            if(filters.state == states.byName) {
+                res = this.db.shuffled();
+            } else {
+                res = this.db.sortedBy(this.nameSort);
+		    }
+        }
+        return res;
+	},
+
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
 	    else return -1;
+    },
+  
+    lessIngredientsSort: function(a,b) {
+        var ail = a.ingredients.length, bil = b.ingredients.length;
+
+        if(ail > bil) return 1;
+	    else if(ail == bil) return 0;
+	    else return -1;
+    },
+
+    roundSort: function(a,b) {
+        if (a.getRound() > b.getRound()) return 1;
+        else if (a.getRound() == b.getRound()) return 0;
+        else return -1;
+    },
+
+    matchSort: function(a,b) {
+        if(a.getMatches() < b.getMatches()) return 1;
+        else if(a.getMatches() == b.getMatches()) return 0;
+        else return -1;
     }
 })
 

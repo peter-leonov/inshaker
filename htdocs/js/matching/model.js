@@ -1,96 +1,33 @@
-;(function(){
-
-var Papa = MatchingPage, Me = Papa.Model
-
-var myProto =
-{
-	initialize: function ()
-	{
-		this.sources = {}
-		this.state = {selected: {}, disabled: {}}
-		this.data = {}
+var Model = {
+	ingredients: Ingredient.getAllNames(),
+	resultSet: [],
+	dataListener: null,
+	
+	init: function(){
+		// this.cocktailsSet = Cocktail.getAll().sort(Cocktail.nameSort);
 	},
 	
-	bind: function (sources)
-	{
-		this.sources = sources
-		var ingredients = this.data.allIngredients = this.sources.ingredient.getAll()
+	uniqueLetters: function(){
+		return DataFilter.firstLetters(this.ingredients, false);
 	},
 	
-	toggleIngredient: function (ingredient)
-	{
-		var state = this.state, selected = state.selected,
-			name = ingredient.name
-		
-		// do nothing with disabled ingredient
-		if (state.disabled[name])
-			return
-		
-		// toggle selected ingredients
-		if (selected[name])
-			delete selected[name]
-		else
-			selected[name] = ingredient
-		
-		if (Object.isEmpty(selected))
-		{
-			state.cocktails = []
-			state.disabled = {}
-		}
-		else // make all those calculations only if there is selected ingredients
-		{
-			// find all suitable cocktails and those ingredients
-			var set = this.suitableIngredients(Object.values(selected))
-			
-			// find out what ingredients must be disable (all - suitable)
-			var all = this.data.allIngredients, suitable = set.ingredients,
-				disabled = {}
-			for (var i = 0, il = all.length; i < il; i++)
-			{
-				var ingred = all[i]
-				if (!suitable[ingred.name])
-					disabled[ingred.name] = ingred
+	ingredientsOn: function(letter) {
+		return DataFilter.ingredientsByLetter(this.ingredients, letter);
+	},
+	
+    suitableIngredients: function(list){
+		var res = [];
+		var cocktails = Cocktail.getByIngredients(list);
+		for(var i = 0; i < cocktails.length; i++){
+			for(var j = 0; j < cocktails[i].ingredients.length; j++){
+				res.push(cocktails[i].ingredients[j][0]);
 			}
-			
-			state.cocktails = set.cocktails
-			state.disabled = disabled
 		}
-		
-		this.sendState()
+		return [cocktails.length, res.uniq(), cocktails[0]];
 	},
-	
-	suitableIngredients: function (ingredients)
-	{
-		var res = {},
-			cocktails = this.sources.cocktail.getByIngredients(ingredients)
-		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var recipe = cocktails[i].ingredients
-			for (var j = 0; j < recipe.length; j++)
-				res[recipe[j][0]] = true // [0] is an ingredient name
-		}
-		
-		return {ingredients: res, cocktails: cocktails}
-	},
-	
-	setState: function (state)
-	{
-		this.state = state
-		this.sendState()
-	},
-	
-	sendState: function ()
-	{
-		this.view.modelChanged(this.state)
-	},
-	
-	init: function ()
-	{
-		this.view.renderIngredientsField(this.data.allIngredients)
-	}
+
+	selectedListChanged: function(selectedList){
+		this.resultSet = this.suitableIngredients(selectedList);
+		this.dataListener.updateCount(this.resultSet[0], this.resultSet[2], selectedList.length);
+    }
 }
-
-Object.extend(Me.prototype, myProto)
-
-})();
