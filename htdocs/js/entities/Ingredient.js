@@ -11,6 +11,7 @@ Me.prototype =
 	constructor: Ingredient,
 	volumesRootPath: '/i/merchandise/volumes/',
 	
+    getRound: function() { return Ingredient.rounds[this.name] },
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
@@ -28,6 +29,7 @@ Me.prototype =
 Object.extend(Ingredient,
 {
 	groups: [],
+    rounds: {},
 	
 	initialize: function (db, groups)
 	{
@@ -93,6 +95,24 @@ Object.extend(Ingredient,
 		}
 	},
 	
+    getAllRoundsByNames: function(names){
+        for(var i = 0; i < this.db.length; i++) 
+            this.rounds[this.db[i].name] = Infinity;
+
+        var cocktails = Cocktail.getByIngredients(names);
+        var cRounds = Cocktail.rounds;
+
+        for(var i = 0; i < cocktails.length; i++){
+            var cName    = cocktails[i].name;
+            var cIngreds = cocktails[i].db;
+            for(var j = 0; j < cIngreds.length; j++){
+                if(this.rounds[cIngreds[j]] > cRounds[cName])
+                    this.rounds[cIngreds[j]] = cRounds[cName];
+            }
+        }
+        return this.rounds;
+    },
+
 	sortByGroups: function(a, b){
 		var self = Ingredient;
         if(typeof a == 'object') { a = a[0]; b = b[0] }
@@ -184,23 +204,13 @@ Object.extend(Ingredient,
 	
 	ingredientsLinkByMark: function (mark)
 	{
-		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
+		var res = [], ingreds = this.getByMark(mark)
+		for (var i = 0; i < ingreds.length; i++)
+			res[i] = ingreds[i].name
+		
+		return "/cocktails.html#state=byIngredients&ingredients=" + encodeURIComponent(res.join(","))
 	},
 	
-	getByFirstLetter: function (letter)
-	{
-		var db = this.db, res = []
-		letter = letter.toUpperCase()
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingred = db[i]
-			if (ingred.name.indexOf(letter) == 0)
-				res.push(ingred)
-		}
-		
-		return res
-	},
 	
 	compareByGroup: function (a, b)
 	{
