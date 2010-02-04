@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading cocktail-week-6 status-holding">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading cocktail-week-7 status-holding">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Неделя профессора Творога</title>
+	<title>Inshaker — Неделя итальянской миксологии</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -27,16 +27,16 @@
 		<div class="column-main-container">
 			<div class="column column-main"><div class="body-wrapper">
 				<div class="b-title">
-					<h1 id="event-name">Неделя профессора Творога</h1>
+					<h1 id="event-name">Неделя итальянской миксологии</h1>
 					<h2>Не пропусти!</h2>
 				</div>
 				<div class="b-content">
 					<div id="illustration"><img/></div>
 					<div class="about">
 						
-							<h2>Москва — <a href="/bars/moskva/city_space.html">Сити Спейс</a>, 25-31 января, 2010</h2>
+							<h2>Москва — <a href="/bars/moskva/dream_bar.html">Сити Спейс</a>, 23-27 февраля, 2010</h2>
 						
-						<p class="parole">Профессор Творог, мастер молекулярной миксологии, провел серию индивидуальных коктейльных спектаклей.</p>
+						<p class="parole">Аго Перрони, Бек Нарзи и Сантино Сиссиари проведут неделю итальянской миксологии.</p>
 						
 						
 							<dl class="info">
@@ -45,7 +45,7 @@
 								
 						
 							
-								<dt>Адрес:</dt><dd><a href="/bars/moskva/city_space.html">карта проезда</a></dd>
+								<dt>Адрес:</dt><dd><a href="/bars/moskva/dream_bar.html">карта проезда</a></dd>
 							
 						</dl>
 					</div>
@@ -81,7 +81,7 @@
 		</div></div>
 	</div>
 </div>
-<div id="promo-back" style="background-image:url(/i/event/moskva/cocktail-week-6/promo-bg.png)"></div>
+<div id="promo-back" style="background-image:url(/i/event/moskva/cocktail-week-7/promo-bg.png)"></div>
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
