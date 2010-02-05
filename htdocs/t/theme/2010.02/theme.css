@@ -71,11 +71,9 @@ button.strong b { text-shadow: 1px 1px 0 #cbb; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
-/* ingredients.css */
-.you-choise a,
-.top-alphabetical .now,
-.count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
-.count-cocktails strong { color: #890814; }
+/* matching.css */
+#top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
+#top-alphabetical .item.selected .name { color: #fff; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
@@ -122,7 +120,5 @@ button.rounded { background-image: url(common.8.png); }
 .hreview .desc h2 i { background-image: url(common.8.png); }
 
 /* ingredients.css */
-.you-choise a,
-.top-alphabetical .now,
-.count-cocktails { background-image: url(ingredients.8.png) }
+#top-alphabetical .item.selected { background-image: url(ingredients.8.png) }
 <!--# endif -->

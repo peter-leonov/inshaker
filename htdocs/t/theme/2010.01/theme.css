@@ -73,9 +73,8 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 #cocktail-page #branded-image { bottom: -550px; }
 
 /* ingredients.css */
-.you-choise a,
-.top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
-.top-alphabetical .item.selected .name { color: #fff; }
+#top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
+#top-alphabetical .item.selected .name { color: #fff; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
@@ -122,6 +121,5 @@ button.rounded { background-image: url(common.8.png); }
 .hreview .desc h2 i { background-image: url(common.8.png); }
 
 /* matching.css */
-.you-choise a,
-.top-alphabetical .item.selected { background-image: url(ingredients.8.png) }
+#top-alphabetical .item.selected { background-image: url(ingredients.8.png) }
 <!--# endif -->
