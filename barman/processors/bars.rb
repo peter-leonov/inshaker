@@ -112,6 +112,17 @@ class BarsProcessor < Barman::Processor
           }
         end
         
+        if yaml["Дата открытия"]
+          begin
+            bar["openDate"] = Time.gm(*yaml['Дата открытия'].split(".").reverse.map{|v|v.to_i})
+          rescue => e
+            error "не могу понять дату «#{yaml["Дата открытия"]}»"
+          end
+        else
+          warning "не указана дата открытия (ставлю 01.01.1970)"
+          bar["openDate"] = Time.gm(1970, 1, 1)
+        end
+        
         bar["name"] = bar_dir.name
         bar["city"] = city_dir.name
         
@@ -196,6 +207,7 @@ class BarsProcessor < Barman::Processor
       bar.delete("desc_start")
       bar.delete("desc_end")
       bar.delete("big_images")
+      bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
     end
     
     flush_json_object(@entities, Config::DB_JS)
