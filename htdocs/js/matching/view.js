@@ -46,7 +46,22 @@ var myProto =
 		
 		this.nodes.main.toggleClassName('selecting-ingredients', !Object.isEmpty(this.selected))
 		
-		this.renderCocktails()
+		this.renderExample(data.randomIngredients)
+		// this.renderCocktails()
+	},
+	
+	renderExample: function (ingredients)
+	{
+		if (!ingredients)
+			return
+		
+		var text = []
+		for (var i = 0; i < ingredients.length; i++)
+			text[i] = ingredients[i].name
+		
+		var example = this.nodes.forExample
+		example.firstChild.nodeValue = text.join(' + ')
+		example.ingredients = ingredients
 	},
 	
 	renderCocktails: function (cocktails)

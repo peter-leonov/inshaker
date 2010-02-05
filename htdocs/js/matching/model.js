@@ -82,12 +82,30 @@ var myProto =
 	
 	sendState: function ()
 	{
-		this.view.modelChanged(this.state)
+		var state = this.state
+		
+		if (state.cocktails && state.cocktails.length)
+			state.randomIngredients = null
+		else
+		{
+			var ingredient = this.sources.ingredient,
+				ingredients = this.sources.cocktail.getAll().random(1)[0].ingredients.random(3)
+			
+			for (var i = 0; i < ingredients.length; i++)
+				ingredients[i] = ingredient.getByName(ingredients[i][0])
+			
+			ingredients.sort(ingredient.compareByGroup)
+			
+			state.randomIngredients = ingredients
+		}
+		
+		this.view.modelChanged(state)
 	},
 	
 	init: function ()
 	{
 		this.view.renderIngredientsField(this.data.allIngredients)
+		this.sendState()
 	}
 }
 

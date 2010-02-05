@@ -30,6 +30,7 @@ Object.extend(Me.prototype, myProto)
 })();
 
 <!--# include virtual="/lib-0.3/modules/plural.js"-->
+<!--# include virtual="/lib-0.3/modules/array-randomize.js"-->
 
 <!--# include file="/js/matching/model.js" -->
 <!--# include file="/js/matching/view.js" -->
@@ -44,11 +45,10 @@ function onready ()
 	{
 		main:                $$('.body-wrapper')[0],
 		alphabetical:        $('top-alphabetical'),
-		chosenIngeredients:  $('chosen'),
-		canPrepare:          $('can-prepare'),
-		canPrepareTxt:       $('can-prepare-txt'),
-		howMany:             $('how-many'),
-		viewCocktails:       $('view-cocktails'),
+		
+		forExample:          $$('#results .lets-choose .for-example')[0],
+		chosenIngeredients:  $$('#results .chosen')[0],
+		
 		
 		listNodes:
 		{

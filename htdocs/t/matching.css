@@ -4,7 +4,8 @@
 .you-choise span:hover{text-decoration:line-through;}
 .you-choise a{background-position: 0 -175px;position:absolute;top:0.2em;right:1px;padding:5px 5px 0 0;}
 
-#results .cocktails { height: 120px; }
+#results .cocktails { height: 117px; overflow: hidden; }
+#results .cocktails .lets-choose { font-size: 20px; margin: 35px 0; }
 #results .chosen { display: none; }
 
 .selecting-ingredients .lets-choose,
