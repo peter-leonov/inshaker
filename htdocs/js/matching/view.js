@@ -55,7 +55,7 @@ var myProto =
 		this.nodes.main.toggleClassName('selecting-ingredients', !Object.isEmpty(this.selected))
 		
 		this.renderExample(data.randomIngredients)
-		// this.renderCocktails()
+		this.renderCocktails(data.cocktails)
 	},
 	
 	renderExample: function (ingredients)
@@ -74,6 +74,9 @@ var myProto =
 	
 	renderCocktails: function (cocktails)
 	{
+		if (!cocktails)
+			return
+		
 		var listNodes = this.nodes.cocktails
 		
 		cocktails = cocktails.slice().randomize()
@@ -81,13 +84,13 @@ var myProto =
 		var cl = new CocktailList()
 		var nodes =
 		{
-			root: listNodes.cocktails,
-			viewport: listNodes.cocktailsViewport,
-			surface: listNodes.cocktailsSurface,
-			prev: listNodes.cocktailsPrev,
-			next: listNodes.cocktailsNext
+			root: listNodes.root,
+			viewport: listNodes.viewport,
+			surface: listNodes.surface,
+			prev: listNodes.prev,
+			next: listNodes.next
 		}
-		cl.bind(nodes, cocktails, 5)
+		cl.bind(nodes, cocktails, 7)
 	},
 	
 	mergeIngredientClassNameStates: function (a, b, cn)

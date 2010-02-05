@@ -50,13 +50,13 @@ function onready ()
 		chosenIngeredients:  $$('#results .chosen')[0],
 		
 		
-		listNodes:
+		cocktails:
 		{
-			root:            $$('.results .cocktail-list')[0],
-			viewport:        $$('.results .cocktail-list .viewport')[0],
-			surface:         $$('.results .cocktail-list .surface')[0],
-			prev:            $$('.results .cocktail-list .prev')[0],
-			next:            $$('.results .cocktail-list .next')[0]
+			root:            $$('#results .cocktail-list')[0],
+			viewport:        $$('#results .cocktail-list .viewport')[0],
+			surface:         $$('#results .cocktail-list .surface')[0],
+			prev:            $$('#results .cocktail-list .prev')[0],
+			next:            $$('#results .cocktail-list .next')[0]
 		}
 	}
 	var widget = new MatchingPage()

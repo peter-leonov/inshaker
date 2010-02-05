@@ -17,6 +17,21 @@
 #top-alphabetical .item.selected .name { padding-left: 10px; text-decoration: none; }
 #top-alphabetical .item.disabled .name { color: #ccc; text-decoration: none; cursor: default; }
 
+.cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
+.cocktail-preview .image { display: block; margin: 0 auto 5px;  }
+
+#results .cocktail-list { position: relative; }
+#results .cocktail-list .prev,
+#results .cocktail-list .next { top: 45px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+#results .cocktail-list.single .prev,
+#results .cocktail-list.single .next { display: none; }
+#results .cocktail-list .prev { left: 10px; }
+#results .cocktail-list .next { right: 10px; }
+#results .cocktail-list .viewport { width: 875px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+#results .cocktail-list .viewport .surface { width: 19000px; }
+#results .cocktail-list .point { float: left; width: 625px;  }
+
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .b-content{width:100%;}
 <!--# endif -->
