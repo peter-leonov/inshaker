@@ -17,23 +17,31 @@ var myProto =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
-		
 		this.bindEvents()
-		
 		return this
 	},
 	
 	bindEvents: function ()
 	{
-		var me = this
-		this.nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		var nodes = this.nodes,
+			me = this
+		
+		nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		nodes.forExample.addEventListener('click', function (e) { me.forExampleClicked(e) }, false)
+	},
+	
+	forExampleClicked: function (e)
+	{
+		var ingredients = e.target.ingredients
+		if (ingredients)
+			this.controller.toggleIngredients(ingredients)
 	},
 	
 	ingredientClicked: function (e)
 	{
 		var ingredient = e.target.ingredient
 		if (ingredient)
-			this.controller.toggleIngredient(ingredient)
+			this.controller.toggleIngredients([ingredient])
 	},
 	
 	modelChanged: function (data)

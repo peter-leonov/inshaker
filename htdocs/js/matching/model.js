@@ -17,20 +17,32 @@ var myProto =
 		var ingredients = this.data.allIngredients = this.sources.ingredient.getAll()
 	},
 	
-	toggleIngredient: function (ingredient)
+	toggleIngredients: function (ingredients)
 	{
-		var state = this.state, selected = state.selected,
-			name = ingredient.name
+		var state = this.state,
+			selected = state.selected, disabled = state.disabled
 		
-		// do nothing with disabled ingredient
-		if (state.disabled[name])
+		var changed = 0
+		for (var i = 0; i < ingredients.length; i++)
+		{
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			// do nothing with disabled ingredient
+			if (state.disabled[name])
+				continue
+			
+			// toggle selected ingredients
+			if (selected[name])
+				delete selected[name]
+			else
+				selected[name] = ingredient
+			
+			changed++
+		}
+		
+		if (!changed)
 			return
-		
-		// toggle selected ingredients
-		if (selected[name])
-			delete selected[name]
-		else
-			selected[name] = ingredient
 		
 		if (Object.isEmpty(selected))
 		{
@@ -47,9 +59,9 @@ var myProto =
 				disabled = {}
 			for (var i = 0, il = all.length; i < il; i++)
 			{
-				var ingred = all[i]
-				if (!suitable[ingred.name])
-					disabled[ingred.name] = ingred
+				var ingredient = all[i]
+				if (!suitable[ingredient.name])
+					disabled[ingredient.name] = ingredient
 			}
 			
 			state.cocktails = set.cocktails

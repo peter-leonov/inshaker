@@ -9,9 +9,9 @@ var myProto =
 		this.state = {}
 	},
 	
-	toggleIngredient: function (ingredient)
+	toggleIngredients: function (ingredients)
 	{
-		this.model.toggleIngredient(ingredient)
+		this.model.toggleIngredients(ingredients)
 	}
 }
 
