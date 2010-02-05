@@ -1,4 +1,4 @@
-#results .cocktails { height: 117px; overflow: hidden; }
+#results .cocktails { height: 117px; overflow: hidden; margin: 30px 0 5px; }
 #results .cocktails .lets-choose { font-size: 20px; margin: 35px 0; }
 #results .cocktails .lets-choose .for-example { text-decoration: none; border-bottom: 0.1em dashed; }
 #results .chosen { display: none; }
@@ -25,8 +25,8 @@
 #results .cocktail-list .next { top: 45px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 #results .cocktail-list.single .prev,
 #results .cocktail-list.single .next { display: none; }
-#results .cocktail-list .prev { left: 10px; }
-#results .cocktail-list .next { right: 10px; }
+#results .cocktail-list .prev { left: 5px; }
+#results .cocktail-list .next { right: 5px; }
 #results .cocktail-list .viewport { width: 875px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
 #results .cocktail-list .viewport .surface { width: 19000px; }
 #results .cocktail-list .point { float: left; width: 625px;  }
