@@ -10,3 +10,7 @@
 <!--# include virtual="/lib-0.3/modules/event-driven.js" -->
 <!--# include virtual="/lib-0.3/modules/global-timer.js" -->
 <!--# include virtual="/lib-0.3/modules/kinematics.js" -->
+<!--# include virtual="/lib-0.3/modules/moveable.js" -->
+<!--# include virtual="/lib-0.3/modules/plural.js"-->
+
+<!--# include virtual="/lib-0.3/widgets/infinite-scroller.js" -->
