@@ -113,10 +113,11 @@ Object.extend(Cocktail,
 		return letters.sort()
 	},
 	
-    getAll: function(){
-        return this.db;
-    },
-
+	getAll: function()
+	{
+		return this.db
+	},
+	
 	getByName: function (name) { return this.byName[name] },
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
