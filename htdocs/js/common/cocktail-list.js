@@ -50,8 +50,9 @@ Me.prototype =
 				surface.appendChild(preview)
 			}
 			this.scroller = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
+			nodes.root.removeClassName('single')
 		}
-		else
+		else if (cocktails.length)
 			nodes.root.addClassName('single')
 	},
 	
