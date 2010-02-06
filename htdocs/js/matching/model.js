@@ -101,7 +101,7 @@ var myProto =
 		else
 		{
 			var ingredient = this.sources.ingredient,
-				ingredients = this.sources.cocktail.getAll().random(1)[0].ingredients.random(3)
+				ingredients = this.sources.cocktail.getAll().random(1)[0].ingredients.random(1)
 			
 			for (var i = 0; i < ingredients.length; i++)
 				ingredients[i] = ingredient.getByName(ingredients[i][0])
