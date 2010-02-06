@@ -91,6 +91,7 @@ var myProto =
 			next: listNodes.next
 		}
 		cl.bind(nodes, cocktails, 7)
+		cl.pageVelocity = 42
 	},
 	
 	mergeIngredientClassNameStates: function (a, b, cn)
