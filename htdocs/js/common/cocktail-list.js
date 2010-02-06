@@ -15,14 +15,30 @@ Me.prototype =
 {
 	pageVelocity: 38,
 	pageLength: 3,
+	friction: 60,
+	soft: 7,
 	
 	bind: function (nodes, cocktails)
 	{
 		this.nodes = nodes
 		
+		this.bindScroller()
 		this.navigate()
 		
 		return this
+	},
+	
+	bindScroller: function ()
+	{
+		var nodes = this.nodes,
+			surface = nodes.surface, viewport = nodes.viewport
+		
+		var scroller = this.scroller = new InfiniteScroller()
+		scroller.bind(viewport)
+		
+		var space = scroller.space
+		space.add(new Kinematics.Friction(this.friction))
+		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
 	},
 	
 	setCocktails: function (cocktails)
@@ -40,6 +56,8 @@ Me.prototype =
 		
 		surface.empty()
 		
+		this.scroller.reset()
+		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var preview = cocktails[i].getPreviewNode()
@@ -54,8 +72,11 @@ Me.prototype =
 				var preview = cocktails[j].getPreviewNode()
 				surface.appendChild(preview)
 			}
-			this.scroller = new InfiniteScroller().bind(viewport, preview.clientWidth * i, preview.clientWidth)
 			nodes.root.removeClassName('single')
+			
+			var clientWidth = preview.clientWidth
+			this.scroller.setWidth(clientWidth * i)
+			this.wave.setup(clientWidth, this.soft, this.friction)
 		}
 		else if (cocktails.length)
 			nodes.root.addClassName('single')
