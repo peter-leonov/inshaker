@@ -17,8 +17,29 @@ var myProto =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		this.bindCocktailList()
 		this.bindEvents()
 		return this
+	},
+	
+	bindCocktailList: function ()
+	{
+		var listNodes = this.nodes.cocktails
+		
+		var clNodes =
+		{
+			root: listNodes.root,
+			viewport: listNodes.viewport,
+			surface: listNodes.surface,
+			prev: listNodes.prev,
+			next: listNodes.next
+		}
+		
+		var cl = this.cocktailList = new CocktailList()
+		cl.bind(clNodes)
+		cl.pageLength = 7
+		cl.pageVelocity = 42
 	},
 	
 	bindEvents: function ()
@@ -77,21 +98,9 @@ var myProto =
 		if (!cocktails)
 			return
 		
-		var listNodes = this.nodes.cocktails
-		
 		cocktails = cocktails.slice().randomize()
 		
-		var cl = new CocktailList()
-		var nodes =
-		{
-			root: listNodes.root,
-			viewport: listNodes.viewport,
-			surface: listNodes.surface,
-			prev: listNodes.prev,
-			next: listNodes.next
-		}
-		cl.bind(nodes, cocktails, 7)
-		cl.pageVelocity = 42
+		this.cocktailList.setCocktails(cocktails)
 	},
 	
 	mergeIngredientClassNameStates: function (a, b, cn)

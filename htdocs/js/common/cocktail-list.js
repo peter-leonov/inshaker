@@ -4,6 +4,7 @@ function Me ()
 {
 	this.nodes = {}
 	this.constructor = Me
+	this.data = {cocktails:[]}
 }
 
 Me.className = 'CocktailList'
@@ -13,17 +14,21 @@ Me.className = 'CocktailList'
 Me.prototype =
 {
 	pageVelocity: 38,
+	pageLength: 3,
 	
-	bind: function (nodes, cocktails, page)
+	bind: function (nodes, cocktails)
 	{
 		this.nodes = nodes
-		this.data = {cocktails: cocktails}
-		this.page = page
 		
-		this.render()
 		this.navigate()
 		
 		return this
+	},
+	
+	setCocktails: function (cocktails)
+	{
+		this.data.cocktails = cocktails
+		this.render()
 	},
 	
 	render: function ()
@@ -41,7 +46,7 @@ Me.prototype =
 			surface.appendChild(preview)
 		}
 		
-		var page = this.page
+		var page = this.pageLength
 		if (cocktails.length >= page)
 		{
 			for (var j = 0; j < page; j++)
