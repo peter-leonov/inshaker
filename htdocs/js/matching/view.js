@@ -98,7 +98,7 @@ var myProto =
 		if (!cocktails)
 			return
 		
-		cocktails = cocktails.slice().randomize()
+		// cocktails = cocktails.slice().randomize()
 		
 		this.cocktailList.setCocktails(cocktails)
 	},
