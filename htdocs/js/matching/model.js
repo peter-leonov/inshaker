@@ -7,7 +7,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.sources = {}
-		this.state = {selected: {}, disabled: {}}
+		this.state = {selected: {}, disabled: {}, ingredients: [], cocktails: []}
 		this.data = {}
 	},
 	
@@ -46,10 +46,11 @@ var myProto =
 		
 		if (Object.isEmpty(selected))
 		{
+			state.ingredients = []
 			state.cocktails = []
 			state.disabled = {}
 		}
-		else // make all those calculations only if there is selected ingredients
+		else // make all these calculations only if some ingredients were selected
 		{
 			// find all suitable cocktails and those ingredients
 			var set = this.suitableIngredients(Object.values(selected))
@@ -63,6 +64,8 @@ var myProto =
 				if (!suitable[ingredient.name])
 					disabled[ingredient.name] = ingredient
 			}
+			
+			state.ingredients = Object.values(selected).sort(this.sources.ingredient.compareByGroup)
 			
 			state.cocktails = set.cocktails
 			state.disabled = disabled

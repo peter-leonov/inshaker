@@ -47,8 +47,8 @@ function onready ()
 		alphabetical:        $('top-alphabetical'),
 		
 		forExample:          $$('#results .lets-choose .for-example')[0],
-		chosenIngeredients:  $$('#results .chosen')[0],
-		
+		chosenIngeredients:  $$('#results .chosen .ingredients')[0],
+		chosenCocktails:     $$('#results .chosen .cocktails-count')[0],
 		
 		cocktails:
 		{

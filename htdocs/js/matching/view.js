@@ -76,7 +76,30 @@ var myProto =
 		this.nodes.main.toggleClassName('selecting-ingredients', !Object.isEmpty(this.selected))
 		
 		this.renderExample(data.randomIngredients)
+		this.renderChosen(data.ingredients, data.cocktails)
 		this.renderCocktails(data.cocktails)
+	},
+	
+	renderChosen: function (ingredients, cocktails)
+	{
+		var nodes = this.nodes
+		
+		var inames = []
+		for (var i = 0; i < ingredients.length; i++)
+			inames.push(ingredients[i].name)
+		
+		var chosenIngeredients = nodes.chosenIngeredients
+		chosenIngeredients.empty()
+		chosenIngeredients.appendChild(T(inames.join(' + ')))
+		
+		var chosenCocktails = nodes.chosenCocktails, count = cocktails.length
+		chosenCocktails.empty()
+		var viewAll = N('a')
+		viewAll.appendChild(T(count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')))
+		viewAll.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(inames.join(','))
+		chosenCocktails.appendChild(viewAll)
+		
+		log(ingredients, cocktails)
 	},
 	
 	renderExample: function (ingredients)
