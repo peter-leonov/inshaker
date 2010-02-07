@@ -48,6 +48,7 @@ var myProto =
 			me = this
 		
 		nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		nodes.chosenIngeredients.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
 		nodes.forExample.addEventListener('click', function (e) { me.forExampleClicked(e) }, false)
 	},
 	
@@ -84,22 +85,43 @@ var myProto =
 	{
 		var nodes = this.nodes
 		
-		var inames = []
+		var inames = [], ilinks = []
 		for (var i = 0; i < ingredients.length; i++)
-			inames.push(ingredients[i].name)
+		{
+			var ingredient = ingredients[i]
+			
+			var name = inames[i] = ingredient.name
+			var link = ilinks[i] = Nct('a', 'ingredient', name)
+			link.ingredient = ingredient
+		}
 		
 		var chosenIngeredients = nodes.chosenIngeredients
 		chosenIngeredients.empty()
-		chosenIngeredients.appendChild(T(inames.join(' + ')))
+		var mess = this.joinNodes(ilinks, T(' + '))
+		for (var i = 0, il = mess.length; i < il; i++)
+			chosenIngeredients.appendChild(mess[i])
 		
 		var chosenCocktails = nodes.chosenCocktails, count = cocktails.length
 		chosenCocktails.empty()
-		var viewAll = N('a')
+		var viewAll = Nc('a', 'link')
 		viewAll.appendChild(T(count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')))
 		viewAll.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(inames.join(','))
 		chosenCocktails.appendChild(viewAll)
+	},
+	
+	joinNodes: function (arr, node)
+	{
+		var res = [],
+			len = arr.length
+		if (len)
+		{
+			for (var i = 0, il = len - 1; i < il; i++)
+				res.push(arr[i]),
+				res.push(node.cloneNode(true))
+			res.push(arr[i])
+		}
 		
-		log(ingredients, cocktails)
+		return res
 	},
 	
 	renderExample: function (ingredients)

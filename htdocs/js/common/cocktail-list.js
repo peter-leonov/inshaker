@@ -56,7 +56,8 @@ Me.prototype =
 		
 		surface.empty()
 		
-		this.scroller.reset()
+		var scroller = this.scroller
+		scroller.reset()
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
@@ -77,9 +78,13 @@ Me.prototype =
 			var clientWidth = preview.clientWidth
 			this.scroller.setWidth(clientWidth * i)
 			this.wave.setup(clientWidth, this.soft, this.friction)
+			scroller.setMovable(true)
 		}
 		else if (cocktails.length)
+		{
 			nodes.root.addClassName('single')
+			scroller.setMovable(false)
+		}
 	},
 	
 	navigate: function ()
