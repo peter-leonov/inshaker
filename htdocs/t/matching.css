@@ -1,4 +1,4 @@
-#results .cocktails { height: 117px; overflow: hidden; margin: 30px 0 5px; padding: 0 0 10px; border-bottom: 2px solid transparent }
+#results .cocktails { height: 117px; overflow: hidden; margin: 30px 0 5px; padding: 0 0 10px; border-bottom: 2px solid #eee }
 #results .cocktails .lets-choose { font-size: 22px; margin: 5px 0 35px; }
 #results .cocktails .lets-choose .for-example { text-decoration: none; border-bottom: 0.1em dashed; }
 #results .chosen { visibility: hidden; font-size: 14px; margin: 15px 0; }
@@ -9,7 +9,7 @@
 .selecting-ingredients #results .lets-choose,
 .selecting-ingredients #results .notice { display: none; }
 .selecting-ingredients #results .chosen { visibility: visible; }
-.selecting-ingredients #results .cocktails { border-bottom-color: #eee }
+/*.selecting-ingredients #results .cocktails { border-bottom-color: #eee }*/
 
 #top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; }
 #top-alphabetical .col { float: left; width: 184px; }
