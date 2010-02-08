@@ -15,7 +15,7 @@
 #top-alphabetical .col { float: left; width: 184px; }
 #top-alphabetical .letter-box .letter { color: #555; font-size: 18px; margin: 17px 0 6px 1px; }
 
-#top-alphabetical .item { margin-bottom: 2px; padding: 0 15px 0 0; line-height: 18px; }
+#top-alphabetical .item { width: 170px; margin-bottom: 2px; padding: 0 15px 0 0; line-height: 18px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
 #top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
 #top-alphabetical .item .name { display: block; }
 #top-alphabetical .item.selected .name { padding-left: 10px; text-decoration: none; }
