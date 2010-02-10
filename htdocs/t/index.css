@@ -9,7 +9,7 @@
 #index-page #promo .viewport,
 #index-page #promo .point { width: 962px; height: 450px; background: #CCC url(/t/loader-gray.gif) no-repeat scroll center center; }
 #index-page #promo .viewport { z-index: 1; }
-#index-page #promo .viewport .surface { width: 30000px; }
+#index-page #promo .viewport .surface { width: 32000px; }
 #index-page #promo .point { float: left; color: #ccc;}
 #index-page #promo-prev,
 #index-page #promo-next { display:none; cursor:pointer; position:absolute; top:193px; width: 29px; height:64px; background: transparent url(/t/bg/index/arrows.png) no-repeat; }
