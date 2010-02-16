@@ -48,7 +48,7 @@
 .about .info { margin: 23px 0 0 0; font-size: 11px; line-height: 16px; }
 .about .info dt { font-weight: bold; letter-spacing: 0.8px; float: left; margin: 0 2px 0 0; }
 .about .view-photos,
-.about .sign-on { font-size: 24px; color: #f32c9f; margin: 18px 0; float: right; text-decoration: none; }
+.about .sign-on { font-size: 24px; color: #f32c9f; position: absolute; right: 20px; bottom: 20px; text-decoration: none; }
 .about .view-photos span,
 .about .sign-on span { margin: 0 2px; }
 .about .view-photos span { text-decoration: underline; }
