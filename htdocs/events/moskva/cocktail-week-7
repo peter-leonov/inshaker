@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Неделя итальянской миксологии</title>
+	<title>Неделя итальянской миксологии — Коктейльные события — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,7 +11,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>События!</h1>
+			<h1>Коктейльные события!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
@@ -34,9 +34,9 @@
 					<div id="illustration"><img/></div>
 					<div class="about">
 						
-							<h2>Москва — <a href="/bars/moskva/dream_bar.html">Сити Спейс</a>, 23-27 февраля, 2010</h2>
+							<h2>Москва — <a href="/bars/moskva/city_space.html">Сити Спейс</a>, 23-27 февраля, 2010</h2>
 						
-						<p class="parole">Аго Перрони, Бек Нарзи и Сантино Сиссиари проведут неделю итальянской миксологии.</p>
+						<p class="parole">Аго Перрони, Бек Нарзи и Сантино Сиссиари представляют неделю итальянской миксологии.</p>
 						
 						
 							<dl class="info">
@@ -45,7 +45,7 @@
 								
 						
 							
-								<dt>Адрес:</dt><dd><a href="/bars/moskva/dream_bar.html">карта проезда</a></dd>
+								<dt>Адрес:</dt><dd><a href="/bars/moskva/city_space.html">карта проезда</a></dd>
 							
 						</dl>
 					</div>
