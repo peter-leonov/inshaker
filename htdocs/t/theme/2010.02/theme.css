@@ -14,7 +14,7 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 a { color: #000; }
 #top .nav a:hover { border-bottom-color: #840813; }
 #bottom { color: #000; }
-#bottom a {}
+#bottom a { color: #890814; }
 html { background: #fff url(bg.jpg) repeat center top; }
 button.rounded { color: #fff; }
 button.rounded b { text-shadow: 1px 1px 0 #a55; }
