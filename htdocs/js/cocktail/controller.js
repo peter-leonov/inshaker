@@ -148,10 +148,10 @@ var Controller = {
 			$('order_note').hide();
 		}, false);
 	    
-        $('order_link').addEventListener('mousedown', function(e){
+/*        $('order_link').addEventListener('mousedown', function(e){
 			Calculator.addCocktail(self.name);
 			Calculator.showPopup(self.currentlyShownIngred);
-		}, false);
+		}, false);*/
 
     },
 	

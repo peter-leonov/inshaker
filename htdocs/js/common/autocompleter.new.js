@@ -202,8 +202,35 @@ Me.Controller.prototype.extend
 	
 	setResults: function (results)
 	{
+				
+		var
+			i,
+			j,
+			unsearchArray = this.view.nodes.main.unsearchArray,
+			uLength = unsearchArray.length,
+			rLength = results.length,
+			filteredResults = new Array(),
+			toFRflag;
+		
+		if (uLength > 0){
+			for (i = 0; i < rLength; i++){
+				toFRflag = true;
+				for (j = 0; j < uLength; j++){
+					if (results[i][0] == unsearchArray[j]){
+						toFRflag = false;
+						break;
+					}
+				}
+				if (toFRflag){
+					filteredResults.push(results[i]);
+				}
+			}
+			results = filteredResults;
+		}
+		
 		this.selected = -1
 		this.results = results
+		
 		this.view.renderResults(results)
 		this.view.selectItem(-1)
 	},

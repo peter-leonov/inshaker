@@ -28,6 +28,9 @@ function CocktailsView (states, nodes, styles) {
 		set = set.sort()
 		
 		var searcher = new IngredientsSearcher(set, viewData.byName)
+		
+		nodes.searchByIngredsInput.unsearchArray = new Array();
+		
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
 		
@@ -267,6 +270,7 @@ function CocktailsView (states, nodes, styles) {
 		ingredientsParent.empty();
 		
 		var words = filters.marks.concat(filters.ingredients)
+		nodes.searchByIngredsInput.unsearchArray = words;
 		for (var i = 0, il = words.length; i < il; i++)
 		{
 			ingredientsParent.appendChild(this.createIngredientElement(words[i]));

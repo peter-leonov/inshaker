@@ -43,6 +43,7 @@ button.strong b { text-shadow: 1px 1px 0 #cbb; }
 #all_list i,
 .b-search .groups dd.selected-button,
 .b-title #spotlighted,
+.b-content .pager .next, .b-content .pager .prev,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #results_display a {}
 #spotlighted { width: 175px; height: 40px; right: 0; top: -10px; }

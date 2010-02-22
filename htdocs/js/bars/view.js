@@ -331,8 +331,10 @@ BarsPageView.prototype =
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('div')
-		var name = document.createElement('a')
+		var 
+			main = document.createElement('div'),
+			name = document.createElement('a');
+		
 		main.appendChild(name)
 		
 		main.className = 'bar-mini'
@@ -342,10 +344,18 @@ BarsPageView.prototype =
 		
 		if (bar.labelType)
 		{
-			var label = document.createElement('div')
-			label.className = 'label'
+			//var label = document.createElement('div')
+			//label.className = 'label'
 			main.addClassName(bar.labelType)
-			main.appendChild(label)
+			name.addEventListener('mouseover', function(){
+				if (bar.labelType == 'future'){
+					name.innerHTML = 'Недавно открылся, заходи посмотреть!';
+				}
+			}, false);
+			name.addEventListener('mouseout', function(){
+				name.innerHTML = bar.name;
+			}, false);
+			//main.appendChild(label)
 		}
 		
 		return main
