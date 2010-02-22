@@ -348,7 +348,7 @@ BarsPageView.prototype =
 			//label.className = 'label'
 			main.addClassName(bar.labelType)
 			name.addEventListener('mouseover', function(){
-				if (bar.labelType == 'future'){
+				if (bar.labelType == 'new'){
 					name.innerHTML = 'Недавно открылся, заходи посмотреть!';
 				}
 			}, false);
