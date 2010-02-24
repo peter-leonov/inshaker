@@ -9,7 +9,7 @@
 #index-page #promo .viewport,
 #index-page #promo .point { width: 962px; height: 450px; background: #CCC url(/t/loader-gray.gif) no-repeat scroll center center; }
 #index-page #promo .viewport { z-index: 1; }
-#index-page #promo .viewport .surface { width: 32000px; }
+#index-page #promo .viewport .surface { width: 50000px; }
 #index-page #promo .point { float: left; color: #ccc;}
 #index-page #promo-prev,
 #index-page #promo-next { display:none; cursor:pointer; position:absolute; top:193px; width: 29px; height:64px; background: transparent url(/t/bg/index/arrows.png) no-repeat; }
@@ -36,16 +36,19 @@
 
 #index-page .info-blocks .prev { left: 20px; }
 #index-page .info-blocks .next { right: 20px; }
-                        
+
 #index-page .info-blocks .viewport { margin: 0 35px; width: 151px; }
 #index-page .info-blocks .viewport .surface { width: 10000px; }
 #index-page .info-blocks .point { float: left; width: 151px; }
 #index-page .info-blocks { width: 100%; height: 100%; }
-                        
+
 #index-page .info-blocks .point a { display: block; text-align: center; }
 #index-page .info-blocks .point a img { display: block; margin: 8px auto; }
 
 
+<!--# if expr="$HTTP_USER_AGENT = /Opera\/(9|10)\./" -->
+#index-page #promo .viewport .surface { width: 32000px; }
+<!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 #index-page .info-blocks .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
 <!--# endif -->
