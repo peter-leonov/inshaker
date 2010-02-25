@@ -11,6 +11,7 @@ var myProto =
 		this.nodes = {}
 		this.popupCache = {}
 		this.ingredientCache = {}
+		this.itemCache = [] // just a plain list
 	},
 	
 	bind: function (nodes)
@@ -110,6 +111,9 @@ var myProto =
 	{
 		var output = this.nodes.output
 		output.empty()
+		
+		this.itemCache = []
+		
 		// console.time('render')
 		for (var i = 0; i < data.length; i++)
 		{
@@ -150,10 +154,11 @@ var myProto =
 		root.appendChild(body)
 		
 		var list = Nc('ul', 'list')
-		var ingreds = group.list
+		var ingreds = group.list, itemCache = this.itemCache
 		for (var i = 0; i < ingreds.length; i++)
 		{
 			var item = Nc('li', 'item')
+			itemCache.push(item)
 			item.appendChild(this.getIngredientNode(ingreds[i]))
 			list.appendChild(item)
 		}
