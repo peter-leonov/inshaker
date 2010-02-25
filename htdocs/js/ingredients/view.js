@@ -157,9 +157,31 @@ var myProto =
 				x: left,
 				y: top,
 				w: width,
-				h: height
+				h: height,
+				node: node
 			}
 		}
+		
+		var frame = new VisibilityFrame()
+		frame.setFrame(1000, 1000)
+		frame.setStep(500, 500)
+		frame.setBoxes(boxes)
+		
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < hide.length; i++)
+				hide[i].node.removeClassName('visible')
+			
+			for (var i = 0; i < show.length; i++)
+				show[i].node.addClassName('visible')
+		}
+		
+		function onscroll ()
+		{
+			frame.moveTo(window.pageXOffset, window.pageYOffset)
+		}
+		window.addEventListener('scroll', onscroll, false)
+		onscroll()
 	},
 	
 	groupByChanged: function (type)
