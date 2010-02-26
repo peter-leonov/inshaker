@@ -174,9 +174,13 @@ var myProto =
 		{
 			for (var i = 0; i < show.length; i++)
 			{
-				var image = show[i].node.ingredientNode.ingredientImage
-				if (image)
+				var node = show[i].node,
+					image = node.ingredientNode.ingredientImage
+				if (!image.src)
+				{
 					image.src = image.lazySrc
+					node.removeClassName('invisible')
+				}
 			}
 		}
 		
@@ -223,7 +227,7 @@ var myProto =
 		var ingreds = group.list, itemCache = this.itemCache
 		for (var i = 0; i < ingreds.length; i++)
 		{
-			var item = Nc('li', 'item')
+			var item = Nc('li', 'item invisible')
 			itemCache.push(item)
 			var ingredientNode = this.getIngredientNode(ingreds[i])
 			item.appendChild(ingredientNode)
