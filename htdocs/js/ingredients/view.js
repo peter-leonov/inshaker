@@ -163,17 +163,18 @@ var myProto =
 		}
 		
 		var frame = new VisibilityFrame()
-		frame.setFrame(1000, 1000)
+		frame.setFrame(4000, 1500) // hardcoded for now
 		frame.setStep(500, 500)
 		frame.setBoxes(boxes)
 		
 		frame.onmove = function (show, hide)
 		{
-			for (var i = 0; i < hide.length; i++)
-				hide[i].node.removeClassName('visible')
-			
 			for (var i = 0; i < show.length; i++)
-				show[i].node.addClassName('visible')
+			{
+				var image = show[i].node.ingredientNode.ingredientImage
+				if (image)
+					image.src = image.lazySrc
+			}
 		}
 		
 		function onscroll ()
@@ -220,7 +221,9 @@ var myProto =
 		{
 			var item = Nc('li', 'item')
 			itemCache.push(item)
-			item.appendChild(this.getIngredientNode(ingreds[i]))
+			var ingredientNode = this.getIngredientNode(ingreds[i])
+			item.appendChild(ingredientNode)
+			item.ingredientNode = ingredientNode
 			list.appendChild(item)
 		}
 		body.appendChild(list)
@@ -235,13 +238,14 @@ var myProto =
 		
 		var node = Nc('a', 'ingredient')
 		var image = Nc('img', 'image')
-		image.src = ingredient.getMiniImageSrc()
+		image.lazySrc = ingredient.getMiniImageSrc()
 		node.appendChild(image)
 		
 		var name = Nct('span', 'name', ingredient.name)
 		node.appendChild(name)
 		
 		node.ingredient = ingredient
+		node.ingredientImage = image
 		
 		return this.ingredientCache[ingredient.name] = node
 	}
