@@ -104,7 +104,10 @@ var myProto =
 			prev: popupNodes.cocktailsPrev,
 			next: popupNodes.cocktailsNext
 		}
-		cl.bind(nodes, cocktails, 5)
+		cl.bind(nodes)
+		cl.pageLength = 7
+		cl.pageVelocity = 42
+		cl.setCocktails(cocktails)
 	},
 	
 	listChanged: function (data)
