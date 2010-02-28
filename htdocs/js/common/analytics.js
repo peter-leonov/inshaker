@@ -12,12 +12,6 @@ _gaq.push(function ()
 	tracker._trackPageview()
 })
 
-_gaq.push(function ()
-{
-	var tracker = window._gaq._getAsyncTracker('tracker')
-	tracker._trackPageview()
-})
-
 // async loading of async ga.js :)
 function load ()
 {
