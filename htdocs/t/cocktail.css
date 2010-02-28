@@ -79,7 +79,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #barman-info-popup { display: none; }
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
 .hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
 .hreview .menu p a.now b,
@@ -87,7 +87,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 <!--# endif -->
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
 .hreview,
 .hreview .menu p a,
 .hreview .menu p {zoom:1}
@@ -112,7 +112,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #poster{position:absolute;top:-28px;}
 <!--# endif -->
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
 .hreview button.bt-view-how{float:left;}
 .b-content .entry{width:356px;}
 <!--# endif -->
