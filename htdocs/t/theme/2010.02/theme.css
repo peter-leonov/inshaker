@@ -11,24 +11,24 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 378px; height: 418px; left: 150px; bottom: -760px; }
 #branded-image-holder { height: 900px; }
-a { color: #890814;  }
+a { color: #000; }
 #top .nav a:hover { border-bottom-color: #840813; }
 #bottom { color: #000; }
 #bottom a {}
 html { background: #fff url(bg.jpg) repeat center top; }
-button.rounded { color: #343B40; }
-button.rounded b { text-shadow: 1px 1px 0 #fff; }
-button.strong { color: #fff; }
-button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
+button.rounded { color: #fff; }
+button.rounded b { text-shadow: 1px 1px 0 #a55; }
+button.strong { color: #890814; }
+button.strong b { text-shadow: 1px 1px 0 #cbb; }
 
 /* calculator.css */
 #b-bill dt,
 #b-bill dd li button,
 #b-bill .print-call i,
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
-#b-bill dt { color: #343b40; font-weight: bold; }
+#b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b { color: #0759AB; }
+#cart_draghere b { color: #890814; }
 
 /* cocktails.css */
 .square-list .prev,
@@ -49,7 +49,7 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
 #alphabetical-ru a.selected-button { color: #890814; }
-#search_tabs li { color: #890814; }
+#search_tabs li { color: #000; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
 .pager-big .prev,
@@ -68,14 +68,14 @@ button.strong b { text-shadow: 1px 1px 0 #5a8bbd; }
 /* cocktail.css */
 .b-more dt,
 .b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); }
-.b-more dt b { color: #343B40; }
+.b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* ingredients.css */
 .you-choise a,
 .top-alphabetical .now,
 .count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
-.count-cocktails strong { color: #0759AB; }
+.count-cocktails strong { color: #890814; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
