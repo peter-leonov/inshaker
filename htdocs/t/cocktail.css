@@ -79,6 +79,10 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #barman-info-popup { display: none; }
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
+#panel_cocktail * { display: none !important; }
+<!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
 .hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
 .hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
