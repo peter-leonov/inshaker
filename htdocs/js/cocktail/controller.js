@@ -169,10 +169,6 @@ var Controller = {
 		$('good_desc').innerHTML = good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 
-		$('good_summ').style.display = "none";
-	    $('good_needed').style.display = "none";
-	    $('good_accept').style.display = "none";
-
 		var volsNode = $('good_volumes'); 
         volsNode.empty();
 		var summ = 0;
