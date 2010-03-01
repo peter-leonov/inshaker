@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Empire Open Cinema</title>
+	<title>Empire Open Cinema — Коктейльные события — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,7 +11,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>События!</h1>
+			<h1>Коктейльные события!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">

@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading master-class status-holding">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading master-class status-archive">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Мастер-класс по гостеприимству в баре</title>
+	<title>Мастер-класс по гостеприимству в баре — Коктейльные события — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,7 +11,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>События!</h1>
+			<h1>Коктейльные события!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
@@ -36,13 +36,11 @@
 						
 							<h2>Москва — <a href="/bars/moskva/dream_bar.html">Дрим бар</a>, 8 февраля, 2010</h2>
 						
-						<p class="parole">Сальваторе Калабрезе и Питер Дорелли прочтут мастер-класс о гостеприимстве в баре.</p>
+						<p class="parole">Сальваторе Калабрезе и Питер Дорелли прочли мастер-класс о гостеприимстве в баре.</p>
 						
 						
+							
 							<dl class="info">
-								
-									<dt>Вход:</dt><dd><span id="invitations-only">в 12:00 только для профессионалов и СМИ</span></dd>
-								
 						
 							
 								<dt>Адрес:</dt><dd><a href="/bars/moskva/dream_bar.html">карта проезда</a></dd>
