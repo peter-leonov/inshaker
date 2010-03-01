@@ -147,12 +147,6 @@ var Controller = {
     	$('good_cancel').addEventListener('mousedown', function(e){
 			$('order_note').hide();
 		}, false);
-	    
-        $('order_link').addEventListener('mousedown', function(e){
-			Calculator.addCocktail(self.name);
-			Calculator.showPopup(self.currentlyShownIngred);
-		}, false);
-
     },
 	
 	setPicture: function(name, good, vol){

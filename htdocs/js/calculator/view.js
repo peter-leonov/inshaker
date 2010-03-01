@@ -230,13 +230,6 @@ function CalculatorView() {
 		$(self.INGRED_POPUP).hide();
 	}, false);
 	
-	$('good_accept').addEventListener('mousedown', function(e){
-		var item = self.itemFromPopup[0];
-		var name = self.itemFromPopup[1];
-		self.eventListener.goodItemChanged(item, name);
-		$(self.INGRED_POPUP).hide();
-	}, false);
-	
 	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		$(self.INGRED_POPUP).hide();
 	}, false);
@@ -438,8 +431,8 @@ function CalculatorView() {
 				self.renderPopup(item, name);
 				$(self.INGRED_POPUP).show();
 			}
-			a.addEventListener('mousedown', showPopup, false)
-			button.addEventListener('mousedown', showPopup, false)
+			a.addEventListener('click', showPopup, false)
+			button.addEventListener('click', showPopup, false)
 			
 			input.addEventListener('focus', function (e) { li.focused = true }, false)
 			input.addEventListener('blur', function (e) { li.focused = false }, false)
@@ -492,59 +485,20 @@ function CalculatorView() {
 			var a          = document.createElement("a");
 			var dd         = document.createElement("dd");
 			var strong     = document.createElement("strong");
-			var inputQuant = document.createElement("input");
 			
 			_createPopupIngredientElementCache[cacheKey] = dl
-			dl.childsCache = {icon: icon, inputQuant: inputQuant, a: a};
 			
 			icon.className = 'icon'
 			
 			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + GoodHelper.normalVolumeTxt(volume[0], item.good.unit);
 			strong.innerHTML = volume[1] + " р.";
 			
-			inputQuant.type  = "text";
-			// inputQuant.id = "inputQuant_"+name.trans().htmlName() + "_" + volume[0];
 			
 			dl.appendChild(dt);
 			dt.appendChild(icon);
 			dt.appendChild(a);
 			dl.appendChild(dd);
 			dd.appendChild(strong);
-			dd.appendChild(inputQuant);
-			dd.appendChild(document.createTextNode(" шт."));
-			
-			a.onmousedown = function(e) {
-				self.setPicture(name, item.good, volume);
-			}
-			
-			inputQuant.addEventListener('keyup', function(e){
-				if(self.checkKey(e.keyCode) && self.validateNumeric(this.value)) {
-					if(item.bottles[bottleId]) {
-						item.bottles[bottleId].count = this.value;
-					} else { // новая бутылка
-						var bottle = self.eventListener.needNewBottle(name, bottleId);
-						bottle.count = this.value;
-						log('new bottle')
-						item.bottles[bottleId] = bottle;
-					}
-					self.renderPopup(item, name);
-				}
-			}, false)
-			
-			inputQuant.addEventListener('focus', function (e) { dl.focused = true }, false)
-			inputQuant.addEventListener('blur', function (e) { dl.focused = false }, false)
-		}
-		
-		var childsCache = dl.childsCache,
-			icon = childsCache.icon,
-			inputQuant = childsCache.inputQuant,
-			a = childsCache.a
-		
-		{
-			bottle && bottle.count > 0 ? dl.remClassName('empty') : dl.addClassName('empty');
-			var newValue = bottle ? bottle.count : 0;
-			if (!inputQuant.value || newValue != inputQuant.value)
-				inputQuant.value = newValue;
 		}
 		
 		return dl;
@@ -558,9 +512,6 @@ function CalculatorView() {
 		this.itemFromPopup = [cloneObject(item), name];
 		item = cloneObject(item);
 		
-		$('good_needed').style.display = "block";
-		$('good_summ').style.display   = "block";
-		$('good_accept').style.display = "inline";
 		
 		$('good_name').innerHTML = item.good.brand || name;
 		if(item.good.mark){ // branded
@@ -579,37 +530,11 @@ function CalculatorView() {
 		
 		$('good_desc').innerHTML = item.good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
-		$('good_needed_vol').innerHTML = GoodHelper.normalVolumeTxt(Math.roundPrecision(item.dose, 2), item.good.unit);
 		
-		var volsNode = $('good_volumes');
-		// volsNode.innerHTML = "";
 		var summ = 0;
 		var have = 0;
 		
-		var newIngredients = [];
-		for(var i = 0; i < item.good.volumes.length; i++){
-			if(item.good.volumes[i][2]) {
-				var bottleId = item.good.volumes[i][0];
-				var bottle = item.bottles[bottleId]
-				var volume = item.good.volumes[i]
-				var ingredElem = this._createPopupIngredientElement(item, bottle, volume, name, bottleId)
-				newIngredients.push(ingredElem)
-				
-				var val = (bottle ? bottle.count : 0)
-				if(val > 0) summ += volume[1] * val;
-				
-				if(bottle) have += volume[0] * bottle.count;
-			}
-		}
-		mergeNodes(volsNode, newIngredients);
-		
-		$('good_summ').innerHTML = "<i>" + spaces(summ) + " р.</i>"
-		$('good_needed_have').innerHTML = GoodHelper.normalVolumeTxt(Math.roundPrecision(have, 2), item.good.unit);
-		$('good_needed').remClassName(item.dose  > have ? "more" : "less");
-		$('good_needed').addClassName(item.dose <= have ? "more" : "less");
 		this.lastShownIngred = name;
-		
-		$('order_note').hide();
 	};
 	
 	this.checkKey = function(keyCode){

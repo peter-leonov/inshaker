@@ -336,12 +336,7 @@ BarsPageView.prototype =
 		main.setHref = function (href) { name.href = href }
 		
 		if (bar.labelType)
-		{
-			var label = document.createElement('div')
-			label.className = 'label'
 			main.addClassName(bar.labelType)
-			main.appendChild(label)
-		}
 		
 		return main
 	}
