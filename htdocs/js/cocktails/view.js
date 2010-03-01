@@ -388,6 +388,7 @@ function CocktailsView (states, nodes, styles) {
 			a.className= i >= 10 ? "button two" : "button";
 			a.appendChild(document.createTextNode(i));
 			span.appendChild(a);
+			span.appendChild(document.createTextNode(' '))
 		}
 	};
 }
