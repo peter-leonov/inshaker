@@ -22,7 +22,7 @@ BarsPageModel.prototype =
 		
 		var barsSet = Bar.getByQuery(state)
 		
-		var now = new Date(), hYearMs = 3600 * 24 * (366 / 2) * 1000,
+		var now = new Date(), hYearMs = 3600 * 24 * (366 / 4) * 1000,
 			neo = [], normal = [], future = []
 		
 		
