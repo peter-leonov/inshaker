@@ -9,7 +9,7 @@ html {overflow-y: scroll;}
 .bar-mini.new .label { background-position: 0px 0px; }
 .bar-mini.future .label { background-position: -53px 0px; }*/
 
-.bar-mini a {display:block;position:absolute;left:0;top:0;width:290px;height:50px;padding:158px 0 0 10px;background:url(bars/pre-mask-full.png) 0 0;line-height:40px;color:#fff;font-size:13px;text-decoration:none;font-weight:bold;}
+.bar-mini a {display:block;position:absolute;left:0;top:0;width:290px;height:50px;padding:158px 0 0 15px;background:url(bars/pre-mask-full.png) 0 0;line-height:40px;color:#fff;font-size:13px;}
 .bar-mini.new a { background-position: 0px -200px; }
 
 #head a { text-decoration: none; border-bottom: 2px dashed; }
