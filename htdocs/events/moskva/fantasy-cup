@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Fantasy Cup</title>
+	<title>Fantasy Cup — Коктейльные события — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,7 +11,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>События!</h1>
+			<h1>Коктейльные события!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
@@ -36,9 +36,11 @@
 						
 							<h2>Москва — <a href="/bars/moskva/dream_bar.html">Дрим бар</a>, 8 февраля, 2010</h2>
 						
-						<p class="parole">Olmeca и Havana Club приглашают всех креативных барменов побороться за главный приз в первом конкурсе коктейльной импровизации.<br/><br/>Впервые каждому участнику предстоит придумать коктейль из ингредиентов в черном ящике всего за 30 минут. <a href="http://inshaker.livejournal.com/8674.html">Подробности и правила участия.</a><br/><br/><i>Главные судьи: Сальваторе Калабрезе и Питер Дорелли.<br/>Техническое жюри: Алексей Шапошников, Сейран Геворкян, Дмитрий Соколов.<br/>Ведущий: Владимир Журавлёв<br/><br/>Идея конкурса: Дмитрий Соколов</i><br/><br/>Регистрация закрыта.</p>
+						<p class="parole">Olmeca и Havana Club пригласили всех креативных барменов побороться за главный приз в первом конкурсе коктейльной импровизации.<br/><br/>Впервые каждому участнику предстояло придумать коктейль из ингредиентов в черном ящике всего за 30 минут. <a href="http://inshaker.livejournal.com/8674.html"></a><br/><br/><i>Главные судьи: Сальваторе Калабрезе и Питер Дорелли.<br/>Техническое жюри: Алексей Шапошников, Сейран Геворкян, Дмитрий Соколов.<br/>Ведущий: Владимир Журавлёв<br/><br/>Идея конкурса: Дмитрий Соколов<br/><br/>1ое место поделили: Константин Комаров и Виталий Скрипчинский</i><br/><br/></p>
 						
 						
+							
+								<a href="http://www.flickr.com/photos/31784403@N02/sets/72157623408150558/" class="view-photos"><span>Посмотри фото!</span> →</a>
 							
 							<dl class="info">
 						

@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
-	<title>Inshaker — Неделя профессора Творога</title>
+	<title>Неделя профессора Творога — Коктейльные события — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,7 +11,7 @@
 	
 	<div class="timeline column"><div class="body-wrapper">
 		<div class="b-title">
-			<h1>События!</h1>
+			<h1>Коктейльные события!</h1>
 		</div>
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
@@ -36,7 +36,7 @@
 						
 							<h2>Москва — <a href="/bars/moskva/city_space.html">Сити Спейс</a>, 25-31 января, 2010</h2>
 						
-						<p class="parole">Профессор Творог, мастер молекулярной миксологии, проведет серию индивидуальных коктейльных спектаклей.</p>
+						<p class="parole">Профессор Творог, мастер молекулярной миксологии, провел серию индивидуальных коктейльных спектаклей.</p>
 						
 						
 							<dl class="info">
