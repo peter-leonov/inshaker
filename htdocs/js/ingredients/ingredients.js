@@ -43,7 +43,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/theme.js" -->
 Theme.bind()
 
-<!--# include virtual="cocktail-list.js" -->
+<!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
