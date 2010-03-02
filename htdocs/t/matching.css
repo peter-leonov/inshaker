@@ -17,8 +17,8 @@
 
 #top-alphabetical .item { width: 185px; margin-bottom: 2px; line-height: 18px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
 #top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
-#top-alphabetical .item .name { display: block; }
-#top-alphabetical .item.selected .name { padding-left: 10px; text-decoration: none; }
+#top-alphabetical .item .name { display: block; padding-right: 20px; }
+#top-alphabetical .item.selected .name { padding-left: 10px; padding-right: 10px; text-decoration: none; }
 #top-alphabetical .item.disabled .name { color: #ccc; text-decoration: none; cursor: default; }
 
 .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
