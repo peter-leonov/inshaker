@@ -34,8 +34,27 @@ Me.prototype =
 		var nodes = this.nodes,
 			surface = nodes.surface, viewport = nodes.viewport
 		
+		var frame = this.frame = new VisibilityFrame()
+		frame.setFrame(4000, 1500) // hardcoded for now
+		frame.setStep(500, 500)
+		
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < show.length; i++)
+			{
+				var node = show[i].node,
+					image = node.img
+				if (!image.src)
+				{
+					image.src = image.lazySrc
+					node.removeClassName('lazy')
+				}
+			}
+		}
+		
 		var scroller = this.scroller = new InfiniteScroller()
 		scroller.bind(viewport)
+		scroller.onscroll = function (x, realX) { frame.moveTo(realX, 0) }
 		
 		var space = scroller.space
 		space.add(new Kinematics.Friction(this.friction))
