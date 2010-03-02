@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.previewsCache = {}
 	this.constructor = Me
 	this.data = {cocktails:[]}
 }
@@ -47,6 +48,18 @@ Me.prototype =
 		this.render()
 	},
 	
+	getCocktailPreviewNode: function (cocktail)
+	{
+		var name = cocktail.name,
+			previewsCache = this.previewsCache
+		
+		var preview = previewsCache[name]
+		if (!preview)
+			preview = previewsCache[name] = cocktail.getPreviewNode(true)
+		
+		return preview
+	},
+	
 	render: function ()
 	{
 		var nodes = this.nodes, surface = nodes.surface, viewport = nodes.viewport,
@@ -61,7 +74,7 @@ Me.prototype =
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var preview = cocktails[i].getPreviewNode()
+			var preview = this.getCocktailPreviewNode(cocktails[i])
 			surface.appendChild(preview)
 		}
 		
@@ -70,7 +83,7 @@ Me.prototype =
 		{
 			for (var j = 0; j < page; j++)
 			{
-				var preview = cocktails[j].getPreviewNode()
+				var preview = cocktails[j].getPreviewNode(true)
 				surface.appendChild(preview)
 			}
 			nodes.root.removeClassName('single')
