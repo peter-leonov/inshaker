@@ -32,8 +32,6 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
-<!--# include virtual="/lib-0.3/modules/gridder.js"-->
-<!--# include virtual="/lib-0.3/modules/visibility-frame.js"-->
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
