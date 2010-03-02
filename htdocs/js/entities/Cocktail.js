@@ -50,7 +50,7 @@ Cocktail.prototype =
 		li.className = 'cocktail-preview'
 		
 		var a = document.createElement('a')
-		a.className = 'anchor'
+		a.className = 'link'
 		a.href = path + '/'
 		li.appendChild(a)
 		
