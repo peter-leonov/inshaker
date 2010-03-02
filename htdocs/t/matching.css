@@ -32,7 +32,7 @@
 #results .cocktail-list .prev { left: 5px; }
 #results .cocktail-list .next { right: 5px; }
 #results .cocktail-list .viewport { width: 875px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
-#results .cocktail-list .viewport .surface { width: 19000px; }
+#results .cocktail-list .viewport .surface { width: 100000px; }
 #results .cocktail-list .point { float: left; width: 625px;  }
 
 
@@ -41,5 +41,6 @@
 <!--# endif -->
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+<!--# if expr="$HTTP_USER_AGENT = /Opera/(9|10)\./" -->
+#results .cocktail-list .viewport .surface { width: 30000px; }
 <!--# endif -->
