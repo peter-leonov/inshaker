@@ -71,7 +71,9 @@ function onready ()
 		{
 			window: $$('#ingredient-info-popup .popup-window')[0],
 			front: $$('#ingredient-info-popup .popup-front')[0],
+			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
+			mark: $$('#ingredient-info-popup .description .about .mark')[0],
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
 			allLink: $$('#ingredient-info-popup .description .about .all-cocktails a')[0],

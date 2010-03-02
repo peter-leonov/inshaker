@@ -72,8 +72,14 @@ var myProto =
 		popup.bind({root: popupClone.root, window: nodes.window, front: nodes.front})
 		popup.show()
 		
-		var name = ingredient.brand || ingredient.name
-		nodes.name.appendChild(T(name))
+		var brand = ingredient.brand
+		if (brand)
+		{
+			nodes.mark.appendChild(T(ingredient.brand))
+			nodes.ingredientWindow.addClassName('branded')
+		}
+		
+		nodes.name.appendChild(T(ingredient.name))
 		
 		var len = ingredient.cocktails.length
 		if (len)
