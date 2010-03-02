@@ -47,7 +47,7 @@ Cocktail.prototype =
 			path = '/cocktail/' + htmlName
 		
 		var li = document.createElement('li')
-		li.className = 'cocktail-preview'
+		li.className = lazy ? 'cocktail-preview lazy' : 'cocktail-preview'
 		
 		var a = document.createElement('a')
 		a.className = 'link'
