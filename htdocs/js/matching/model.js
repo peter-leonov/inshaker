@@ -29,7 +29,7 @@ var myProto =
 				name = ingredient.name
 			
 			// do nothing with disabled ingredient
-			if (state.disabled[name])
+			if (disabled[name])
 				continue
 			
 			// toggle selected ingredients
@@ -60,9 +60,9 @@ var myProto =
 				disabled = {}
 			for (var i = 0, il = all.length; i < il; i++)
 			{
-				var ingredient = all[i]
-				if (!suitable[ingredient.name])
-					disabled[ingredient.name] = ingredient
+				var ingredient = all[i], name = ingredient.name
+				if (!selected[name] && !suitable[name])
+					disabled[name] = ingredient
 			}
 			
 			state.ingredients = Object.values(selected).sort(this.sources.ingredient.compareByGroup)
