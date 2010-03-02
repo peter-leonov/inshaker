@@ -2,15 +2,10 @@
 
 var account = 'UA-1635720-11'
 
-var _gaq = window._gaq
-if (!_gaq)
-	_gaq = window._gaq = []
+if (!window._gaq)
+	window._gaq = []
 
-_gaq.push(function ()
-{
-	var tracker = window._gaq._createAsyncTracker(account, 'tracker')
-	tracker._trackPageview()
-})
+window._gaq.push(['_trackPageview'])
 
 // async loading of async ga.js :)
 function load ()
