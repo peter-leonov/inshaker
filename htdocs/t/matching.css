@@ -11,11 +11,11 @@
 .selecting-ingredients #results .chosen { visibility: visible; }
 /*.selecting-ingredients #results .cocktails { border-bottom-color: #eee }*/
 
-#top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; }
+#top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; margin-top: -10px;  }
 #top-alphabetical .col { float: left; width: 184px; }
-#top-alphabetical .letter-box .letter { color: #555; font-size: 18px; margin: 17px 0 6px 1px; }
+#top-alphabetical .letter-box .letter { color: #555; font-size: 18px; margin: 25px 0 6px 1px; }
 
-#top-alphabetical .item { width: 185px; margin-bottom: 2px; line-height: 18px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+#top-alphabetical .item { width: 185px; margin-bottom: 7px; line-height: 18px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
 #top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
 #top-alphabetical .item .name { display: block; padding-right: 20px; }
 #top-alphabetical .item.selected .name { padding-left: 10px; padding-right: 10px; text-decoration: none; }
