@@ -180,12 +180,16 @@ var myProto =
 		{
 			for (var i = 0; i < show.length; i++)
 			{
-				var node = show[i].node,
-					image = node.ingredientNode.ingredientImage
-				if (!image.src)
+				var box = show[i]
+				if (!box.loaded)
 				{
+					var node = box.node,
+						image = node.ingredientNode.ingredientImage
+					
 					image.src = image.lazySrc
 					node.removeClassName('lazy')
+					
+					box.loaded = true
 				}
 			}
 		}
