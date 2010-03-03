@@ -60,8 +60,9 @@ Me.prototype =
 		var timer
 		scroller.onscroll = function (x, realX)
 		{
-			clearTimeout(timer)
-			timer = setTimeout(function () { frame.moveTo(realX, 0) }, 100)
+			frame.moveTo(realX, 0)
+			// clearTimeout(timer)
+			// timer = setTimeout(function () { frame.moveTo(realX, 0) }, 100)
 		}
 		
 		var space = scroller.space
