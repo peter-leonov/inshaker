@@ -81,12 +81,16 @@ Me.prototype =
 	
 	render: function ()
 	{
-		var nodes = this.nodes, surface = nodes.surface, viewport = nodes.viewport,
+		
+		var nodes = this.nodes, root = nodes.root, surface = nodes.surface, viewport = nodes.viewport,
 			cocktails = this.data.cocktails
 		
-		nodes.root.show()
-		
+		root.show()
 		surface.empty()
+		
+		console.time('render')
+		
+		var nodes = []
 		
 		var scroller = this.scroller
 		scroller.reset()
@@ -95,6 +99,7 @@ Me.prototype =
 		{
 			var preview = this.getCocktailPreviewNode(cocktails[i])
 			surface.appendChild(preview)
+			nodes.push(preview)
 		}
 		
 		var page = this.pageLength
@@ -104,8 +109,9 @@ Me.prototype =
 			{
 				var preview = cocktails[j].getPreviewNode(true)
 				surface.appendChild(preview)
+				nodes.push(preview)
 			}
-			nodes.root.removeClassName('single')
+			root.removeClassName('single')
 			
 			var clientWidth = preview.clientWidth
 			this.scroller.setWidth(clientWidth * i)
@@ -114,9 +120,43 @@ Me.prototype =
 		}
 		else if (cocktails.length)
 		{
-			nodes.root.addClassName('single')
+			root.addClassName('single')
 			scroller.setMovable(false)
 		}
+		
+		this.setupVisibilityFrame(root, nodes)
+		
+		console.timeEnd('render')
+	},
+	
+	setupVisibilityFrame: function (root, nodes)
+	{
+		var first = nodes[0]
+		
+		if (!first)
+			return
+		
+		var width = first.offsetWidth,
+			height = first.offsetHeight
+		
+		var boxes = []
+		for (var i = 0, il = nodes.length; i < il; i++)
+		{
+			boxes[i] =
+			{
+				x: width * i,
+				y: 0,
+				w: width,
+				h: height,
+				node: nodes[i]
+			}
+		}
+		
+		var frame = this.frame
+		frame.setFrame(root.offsetWidth, root.offsetHeight)
+		frame.setStep(500, 500)
+		frame.setBoxes(boxes)
+		frame.moveTo(0, 0)
 	},
 	
 	navigate: function ()
