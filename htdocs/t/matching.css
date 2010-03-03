@@ -23,7 +23,7 @@
 
 .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
 .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
-.cocktail-preview.lazy .image { border: 1px solid #ddd; }
+.cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
 #results .cocktail-list { position: relative; }
 #results .cocktail-list .prev,
