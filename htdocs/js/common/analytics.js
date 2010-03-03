@@ -5,6 +5,7 @@ var account = 'UA-1635720-11'
 if (!window._gaq)
 	window._gaq = []
 
+window._gaq.push(['_setAccount', account])
 window._gaq.push(['_trackPageview'])
 
 // async loading of async ga.js :)
