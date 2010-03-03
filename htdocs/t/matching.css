@@ -38,7 +38,8 @@
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.b-content{width:100%;}
+.b-content {width:101%;}
+#top-alphabetical .item.selected { margin-left: 0; }
 <!--# endif -->
 
 
