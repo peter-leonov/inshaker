@@ -370,7 +370,7 @@ class CocktailsProcessor < Barman::Processor
     end
     
     if File.exists?(from_small)
-      cp_if_different(from_small, to_small)
+      flush_pngm_img(from_small, to_small)
     else
       error "не могу найти маленькую картинку коктейля (small.png)"
     end
