@@ -143,7 +143,7 @@ var myProto =
 		if (!cocktails)
 			return
 		
-		// cocktails = cocktails.slice().randomize()
+		cocktails = cocktails.slice().sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 		
 		this.cocktailList.setCocktails(cocktails)
 	},
