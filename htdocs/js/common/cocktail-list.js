@@ -35,7 +35,6 @@ Me.prototype =
 			surface = nodes.surface, viewport = nodes.viewport
 		
 		var frame = this.frame = new VisibilityFrame()
-		frame.setFrame(4000, 1500) // hardcoded for now
 		frame.setStep(500, 500)
 		
 		frame.onmove = function (show, hide)
@@ -127,7 +126,7 @@ Me.prototype =
 			this.wave.setup(clientWidth, this.soft, this.friction)
 			scroller.setMovable(true)
 		}
-		else if (cocktails.length)
+		else
 		{
 			root.addClassName('single')
 			scroller.setMovable(false)
@@ -140,30 +139,29 @@ Me.prototype =
 	
 	setupVisibilityFrame: function (root, nodes)
 	{
+		var frame = this.frame,
+			boxes = []
+		
 		var first = nodes[0]
-		
-		if (!first)
-			return
-		
-		var width = first.offsetWidth,
-			height = first.offsetHeight
-		
-		var boxes = []
-		for (var i = 0, il = nodes.length; i < il; i++)
+		if (first)
 		{
-			boxes[i] =
+			var width = first.offsetWidth,
+				height = first.offsetHeight
+			
+			for (var i = 0, il = nodes.length; i < il; i++)
 			{
-				x: width * i,
-				y: 0,
-				w: width,
-				h: height,
-				node: nodes[i]
+				boxes[i] =
+				{
+					x: width * i,
+					y: 0,
+					w: width,
+					h: height,
+					node: nodes[i]
+				}
 			}
 		}
 		
-		var frame = this.frame
 		frame.setFrame(root.offsetWidth, root.offsetHeight)
-		frame.setStep(500, 500)
 		frame.setBoxes(boxes)
 		frame.moveTo(0, 0)
 	},
