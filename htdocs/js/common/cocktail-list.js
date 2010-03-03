@@ -115,9 +115,11 @@ Me.prototype =
 		{
 			for (var j = 0; j < page; j++)
 			{
-				var preview = cocktails[j].getPreviewNode(true)
+				// we can't use getCocktailPreviewNode() here
+				// because it returns the same node in every call
+				// but we need a copy
+				var preview = cocktails[j].getPreviewNode()
 				surface.appendChild(preview)
-				nodes.push(preview)
 			}
 			root.removeClassName('single')
 			
