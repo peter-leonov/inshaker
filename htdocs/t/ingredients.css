@@ -58,7 +58,7 @@
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
-.ingredient-window .cocktail-list .viewport .surface { width: 16000px; }
+.ingredient-window .cocktail-list .viewport .surface { width: 100000px; }
 .ingredient-window .cocktail-list .point { float: left; width: 625px;  }
 
 .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
@@ -92,4 +92,7 @@
 <!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
 .popup .popup-controls .cross { right: 0px; top: -14px; }
+<!--# endif -->
+<!--# if expr="$HTTP_USER_AGENT = /Opera/(9|10)\./" -->
+.ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
 <!--# endif -->
