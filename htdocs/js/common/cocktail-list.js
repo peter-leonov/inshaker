@@ -42,12 +42,16 @@ Me.prototype =
 		{
 			for (var i = 0; i < show.length; i++)
 			{
-				var node = show[i].node,
-					image = node.img
-				if (!image.src)
+				var box = show[i]
+				if (!box.loaded)
 				{
+					var node = box.node,
+						image = node.img
+					
 					image.src = image.lazySrc
 					node.removeClassName('lazy')
+					
+					box.loaded = true
 				}
 			}
 		}
