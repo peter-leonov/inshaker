@@ -54,7 +54,12 @@ Me.prototype =
 		
 		var scroller = this.scroller = new InfiniteScroller()
 		scroller.bind(viewport)
-		scroller.onscroll = function (x, realX) { frame.moveTo(realX, 0) }
+		var timer
+		scroller.onscroll = function (x, realX)
+		{
+			clearTimeout(timer)
+			timer = setTimeout(function () { frame.moveTo(realX, 0) }, 100)
+		}
 		
 		var space = scroller.space
 		space.add(new Kinematics.Friction(this.friction))
