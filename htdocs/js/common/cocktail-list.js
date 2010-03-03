@@ -14,8 +14,8 @@ Me.className = 'CocktailList'
 
 Me.prototype =
 {
-	pageVelocity: 38,
-	pageLength: 3,
+	pageVelocity: 20,
+	pageLength: 1,
 	friction: 60,
 	soft: 7,
 	
