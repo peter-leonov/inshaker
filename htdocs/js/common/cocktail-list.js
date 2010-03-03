@@ -57,13 +57,6 @@ Me.prototype =
 		
 		var scroller = this.scroller = new InfiniteScroller()
 		scroller.bind(viewport)
-		var timer
-		scroller.onscroll = function (x, realX)
-		{
-			frame.moveTo(realX, 0)
-			// clearTimeout(timer)
-			// timer = setTimeout(function () { frame.moveTo(realX, 0) }, 100)
-		}
 		
 		var space = scroller.space
 		space.add(new Kinematics.Friction(this.friction))
@@ -164,7 +157,17 @@ Me.prototype =
 			}
 		}
 		
-		frame.setFrame(root.offsetWidth, root.offsetHeight)
+		var frameWidth = root.offsetWidth
+		
+		var timer
+		this.scroller.onscroll = function (x, realX)
+		{
+			// frame.moveTo(realX, 0)
+			clearTimeout(timer)
+			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, 100)
+		}
+		
+		frame.setFrame(frameWidth * 3, root.offsetHeight)
 		frame.setBoxes(boxes)
 		frame.moveTo(0, 0)
 	},
