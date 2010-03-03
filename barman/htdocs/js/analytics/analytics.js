@@ -194,7 +194,7 @@ Me.prototype.extend
 		if (!form.ingredients)
 			return
 		
-		var cocktails = Cocktail.getByIngredients(form.ingredients.split(/\s*,\s*/)),
+		var cocktails = Cocktail.getByIngredientNames(form.ingredients.split(/\s*,\s*/)),
 			totalCocktails = Cocktail.getAll().length,
 			stats = this.stats, output = this.nodes.output
 		

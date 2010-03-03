@@ -1,32 +1,47 @@
-.you-choise{background:#f1f7b6;}
-.you-choise p{padding:18px 20px 17px;font-size:120%;}
-.you-choise span{position:relative;padding-right:7px;cursor:pointer;}
-.you-choise span:hover{text-decoration:line-through;}
-.you-choise a{background-position: 0 -175px;position:absolute;top:0.2em;right:1px;padding:5px 5px 0 0;}
-.top-alphabetical{margin:0 0 0 -10px;overflow: hidden;}
-.top-alphabetical .col{float:left;margin-right:10px;}
-.top-alphabetical .col div{width:162px;overflow:hidden;clear:left;font-size:120%;}
-.top-alphabetical a{display:block;margin:2px 0 2px 10px;padding:0 15px 0 0;text-decoration:none;line-height:18px;}
-.top-alphabetical a .ingred-image{width: 100px; height: 100px;}
-.top-alphabetical a:hover{text-decoration:underline;}
-.top-alphabetical .now{color:#fff;background-position: 0 0;display:block;float:none;line-height:18px;text-decoration:none !important;padding-left:10px;margin-left:0;}
-.top-alphabetical .dis{color:#ccc;text-decoration:none !important;cursor:default;}
-.top-alphabetical h3{font-size:150%;font-weight:normal;margin:17px 0 6px 11px;}
-.count-cocktails{background-position: 0px -50px;width:153px;height:90px;padding:15px 0 0 15px;font-size:11px;position:fixed;right:36px;top:297px;}
-.count-cocktails strong{display:block;font-size:12px;padding:4px 0 12px;}
-.count-cocktails input{font-size:11px;}
+#results .cocktails { height: 117px; overflow: hidden; margin: 30px 0 5px; padding: 0 0 10px; border-bottom: 2px solid #eee }
+#results .cocktails .lets-choose { font-size: 22px; margin: 5px 0 35px; }
+#results .cocktails .lets-choose .for-example { text-decoration: none; border-bottom: 0.1em dashed; }
+#results .chosen { visibility: hidden; font-size: 14px; margin: 15px 0; }
+#results .chosen .equals { margin: 0 5px; color: #888; }
+#results .chosen .ingredients a { text-decoration: none; }
+#results .chosen .ingredients a:hover { text-decoration: line-through; }
+
+.selecting-ingredients #results .lets-choose,
+.selecting-ingredients #results .notice { display: none; }
+.selecting-ingredients #results .chosen { visibility: visible; }
+/*.selecting-ingredients #results .cocktails { border-bottom-color: #eee }*/
+
+#top-alphabetical { font-size: 12px; overflow: hidden; padding-left: 10px; margin-left: -10px; margin-top: -10px;  }
+#top-alphabetical .col { float: left; width: 184px; }
+#top-alphabetical .letter-box .letter { color: #555; font-size: 18px; margin: 25px 0 7px 1px; }
+
+#top-alphabetical .item { width: 185px; margin-bottom: 6px; line-height: 18px; padding-bottom: 1px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+#top-alphabetical .item.selected { background-position: 0 0; margin-left: -10px; }
+#top-alphabetical .item .name { display: block; padding-right: 20px; }
+#top-alphabetical .item.selected .name { padding-left: 10px; padding-right: 10px; text-decoration: none; }
+#top-alphabetical .item.disabled .name { color: #ccc; text-decoration: none; cursor: default; }
+
+.cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
+.cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
+#results .cocktail-list { position: relative; }
+#results .cocktail-list .prev,
+#results .cocktail-list .next { top: 40px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+#results .cocktail-list.single .prev,
+#results .cocktail-list.single .next { display: none; }
+#results .cocktail-list .prev { left: 5px; }
+#results .cocktail-list .next { right: 5px; }
+#results .cocktail-list .viewport { width: 875px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+#results .cocktail-list .viewport .surface { width: 100000px; }
+#results .cocktail-list .point { float: left; width: 625px;  }
+
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.b-content{width:100%;}
-.count-cocktails input{width:90%;}
-.you-choise a{font-size:1px;}
-.count-cocktails *{position:relative;z-index:2;zoom:1;}
-.count-cocktails{position:absolute;top:expression(String(document.documentElement.scrollTop+297)+"px");background:#fafafa;border:1px #ddd solid;}
-
+.b-content {width:101%;}
 <!--# endif -->
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
-.count-coctails input{width:130px;}
-.count-cocktails input{width:90%;}
+<!--# if expr="$HTTP_USER_AGENT = /Opera/(9|10)\./" -->
+#results .cocktail-list .viewport .surface { width: 30000px; }
 <!--# endif -->

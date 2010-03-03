@@ -40,6 +40,10 @@ class IngredientsProcessor < Barman::Processor
       opts.on("-f", "--force", "Force update without mtime based cache") do |v|
         @options[:force] = v
       end
+      
+      opts.on("-t", "--text", "Text updates only") do |v|
+        @options[:text] = v
+      end
     end.parse!
     
     prepare_dirs
@@ -64,7 +68,8 @@ class IngredientsProcessor < Barman::Processor
   
   def flush_json
     say "сохраняю данные об ингредиентах"
-    flush_json_object(@ingredients, Config::DB_JS_INGREDS)
+    ingredients = @ingredients.sort { |a, b| a["name"] <=> b["name"] }
+    flush_json_object(ingredients, Config::DB_JS_INGREDS)
     flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
   end
   
@@ -170,7 +175,7 @@ class IngredientsProcessor < Barman::Processor
     
     img = dir.path + "/i_big.png"
     if File.exists?(img)
-      flush_masked_optimized(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png")
+      flush_masked_optimized(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png") unless @options[:text]
     else
       error "нет большой картинки (файл #{img})"
     end
@@ -202,7 +207,7 @@ class IngredientsProcessor < Barman::Processor
         
         banner = dir.path + "/banner.png"
         if File.exists?(banner)
-          cp_if_different(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png")
+          cp_if_different(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png") unless @options[:text]
         else
           error "нет картинки банера (banner.png)"
         end
@@ -234,7 +239,7 @@ class IngredientsProcessor < Barman::Processor
         img = dir.path + "/" + vol_name + "_big.png"
         
         if File.exists?(img)
-          cp_if_different(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png")
+          cp_if_different(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png") unless @options[:text]
         else
           error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end

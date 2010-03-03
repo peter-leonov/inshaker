@@ -11,6 +11,7 @@ var myProto =
 		this.nodes = {}
 		this.popupCache = {}
 		this.ingredientCache = {}
+		this.itemCache = [] // just a plain list
 	},
 	
 	bind: function (nodes)
@@ -71,8 +72,14 @@ var myProto =
 		popup.bind({root: popupClone.root, window: nodes.window, front: nodes.front})
 		popup.show()
 		
-		var name = ingredient.brand || ingredient.name
-		nodes.name.appendChild(T(name))
+		var brand = ingredient.brand
+		if (brand)
+		{
+			nodes.mark.appendChild(T(ingredient.brand))
+			nodes.ingredientWindow.addClassName('branded')
+		}
+		
+		nodes.name.appendChild(T(ingredient.name))
 		
 		var len = ingredient.cocktails.length
 		if (len)
@@ -104,8 +111,8 @@ var myProto =
 			next: popupNodes.cocktailsNext
 		}
 		cl.bind(nodes)
-		cl.pageLength = 7
-		cl.pageVelocity = 42
+		cl.pageLength = 5
+		cl.pageVelocity = 38
 		cl.setCocktails(cocktails)
 	},
 	
@@ -113,6 +120,9 @@ var myProto =
 	{
 		var output = this.nodes.output
 		output.empty()
+		
+		this.itemCache = []
+		
 		// console.time('render')
 		for (var i = 0; i < data.length; i++)
 		{
@@ -120,6 +130,77 @@ var myProto =
 			output.appendChild(group)
 		}
 		// console.timeEnd('render')
+		
+		this.setupVisibilityFrame(this.itemCache)
+	},
+	
+	setupVisibilityFrame: function (nodes)
+	{
+		var begin = new Date()
+		
+		if (!nodes.length)
+			return
+		
+		var node = nodes[0]
+		
+		var width = node.offsetWidth,
+			height = node.offsetHeight
+		
+		var lastParent, position, boxes = []
+		for (var i = 0, il = nodes.length; i < il; i++)
+		{
+			var node = nodes[i],
+				parent = node.offsetParent
+			
+			if (parent !== lastParent)
+			{
+				lastParent = parent
+				position = parent.offsetPosition()
+			}
+			
+			var left = node.offsetLeft + position.left,
+				top = node.offsetTop + position.top
+			
+			boxes[i] =
+			{
+				x: left,
+				y: top,
+				w: width,
+				h: height,
+				node: node
+			}
+		}
+		
+		var frame = new VisibilityFrame()
+		frame.setFrame(4000, 1500) // hardcoded for now
+		frame.setStep(500, 500)
+		frame.setBoxes(boxes)
+		
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < show.length; i++)
+			{
+				var box = show[i]
+				if (!box.loaded)
+				{
+					var node = box.node,
+						image = node.ingredientNode.ingredientImage
+					
+					image.src = image.lazySrc
+					node.removeClassName('lazy')
+					
+					box.loaded = true
+				}
+			}
+		}
+		
+		function onscroll ()
+		{
+			frame.moveTo(window.pageXOffset, window.pageYOffset)
+		}
+		var timer
+		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 200) }, false)
+		onscroll()
 	},
 	
 	groupByChanged: function (type)
@@ -153,11 +234,14 @@ var myProto =
 		root.appendChild(body)
 		
 		var list = Nc('ul', 'list')
-		var ingreds = group.list
+		var ingreds = group.list, itemCache = this.itemCache
 		for (var i = 0; i < ingreds.length; i++)
 		{
-			var item = Nc('li', 'item')
-			item.appendChild(this.getIngredientNode(ingreds[i]))
+			var item = Nc('li', 'item lazy')
+			itemCache.push(item)
+			var ingredientNode = this.getIngredientNode(ingreds[i])
+			item.appendChild(ingredientNode)
+			item.ingredientNode = ingredientNode
 			list.appendChild(item)
 		}
 		body.appendChild(list)
@@ -172,13 +256,14 @@ var myProto =
 		
 		var node = Nc('a', 'ingredient')
 		var image = Nc('img', 'image')
-		image.src = ingredient.getMiniImageSrc()
+		image.lazySrc = ingredient.getMiniImageSrc()
 		node.appendChild(image)
 		
 		var name = Nct('span', 'name', ingredient.name)
 		node.appendChild(name)
 		
 		node.ingredient = ingredient
+		node.ingredientImage = image
 		
 		return this.ingredientCache[ingredient.name] = node
 	}
