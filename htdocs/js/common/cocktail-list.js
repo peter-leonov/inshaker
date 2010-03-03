@@ -93,7 +93,7 @@ Me.prototype =
 		root.show()
 		surface.empty()
 		
-		console.time('render')
+		// console.time('render')
 		
 		var nodes = []
 		
@@ -131,7 +131,7 @@ Me.prototype =
 		
 		this.setupVisibilityFrame(root, nodes)
 		
-		console.timeEnd('render')
+		// console.timeEnd('render')
 	},
 	
 	setupVisibilityFrame: function (root, nodes)
