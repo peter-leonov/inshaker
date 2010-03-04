@@ -21,6 +21,7 @@ Oops.maybeEnable()
 
 
 <!--# include file="/js/common/analytics.js" -->
+<!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/cocktail-list.js" -->
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
