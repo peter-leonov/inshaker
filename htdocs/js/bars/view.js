@@ -333,29 +333,28 @@ BarsPageView.prototype =
 	{
 		var 
 			main = document.createElement('div'),
-			name = document.createElement('a');
+			nameCont = document.createElement('a'),
+			name = document.createElement('span');
 		
-		main.appendChild(name)
+		name.className = 'bar-name';
+		name.innerHTML = bar.name;
+		
+		nameCont.appendChild(name);
+		main.appendChild(nameCont);
 		
 		main.className = 'bar-mini'
 		main.setImage = function (src) { main.style.backgroundImage = 'url('+src+')' }
 		main.setName = function (text) { name.innerHTML = text }
-		main.setHref = function (href) { name.href = href }
+		main.setHref = function (href) { nameCont.href = href }
 		
-		if (bar.labelType)
-		{
-			//var label = document.createElement('div')
-			//label.className = 'label'
-			main.addClassName(bar.labelType)
-			name.addEventListener('mouseover', function(){
-				if (bar.labelType == 'new'){
-					name.innerHTML = 'Недавно открылся, заходи посмотреть!';
-				}
-			}, false);
-			name.addEventListener('mouseout', function(){
-				name.innerHTML = bar.name;
-			}, false);
-			//main.appendChild(label)
+		if (bar.labelType && bar.labelType == 'new'){
+			var
+				label = document.createElement('span');
+			
+			label.className = 'label';
+			label.innerHTML = 'Недавно открылся, заходи посмотреть!';
+			nameCont.appendChild(label)
+			main.addClassName(bar.labelType);
 		}
 		
 		return main

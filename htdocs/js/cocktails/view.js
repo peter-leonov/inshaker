@@ -27,10 +27,7 @@ function CocktailsView (states, nodes, styles) {
 		set.push.apply(set, viewData.names)
 		set = set.sort()
 		
-		var searcher = new IngredientsSearcher(set, viewData.byName)
-		
-		nodes.searchByIngredsInput.unsearchArray = new Array();
-		
+		var searcher = this.searcher = new IngredientsSearcher(set, viewData.byName)
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
 		
@@ -191,14 +188,9 @@ function CocktailsView (states, nodes, styles) {
 		this.controller.onIngredientFilter();
 	};
 	
-	this.onIngredientAdded = function(name)
-	{
-		var markToken = 'марка '
-		if (name.indexOf(markToken) == 0)
-			this.controller.onMarkAddFilter(name.substr(markToken.length), false)
-		else
-			this.controller.onIngredientFilter(name, false)
-	}
+	this.onIngredientAdded = function(name) {
+		this.controller.onIngredientFilter(name, false);
+	};
 	
 	this.onIngredientRemoved = function(name) {
 		this.controller.onIngredientFilter(name, true);
@@ -210,6 +202,17 @@ function CocktailsView (states, nodes, styles) {
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
 		this.controller.saveFilters(this.currentFilters);
+		
+		var
+			i,
+			withouts = this.searcher.withouts = {},
+			cfIngredients = filters.ingredients,
+			ingLength = cfIngredients.length;
+		for (i = 0; i < ingLength; i ++){
+			withouts[cfIngredients[i]] = true;
+		}
+		
+		
 	};
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
@@ -268,19 +271,17 @@ function CocktailsView (states, nodes, styles) {
 		
 		var ingredientsParent = nodes.searchesList;
 		ingredientsParent.empty();
-		
-		var words = filters.marks.concat(filters.ingredients)
-		nodes.searchByIngredsInput.unsearchArray = words;
-		for (var i = 0, il = words.length; i < il; i++)
-		{
-			ingredientsParent.appendChild(this.createIngredientElement(words[i]));
-			if (i != (il-1))
-				ingredientsParent.appendChild(document.createTextNode(" + "));
+		if(filters.ingredients.length > 0) {
+			var ingreds = filters.ingredients;
+			for(var i = 0; i < ingreds.length; i++) {
+				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
+				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
+			}
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(words.length == 0)
-			nodes.ingredsView.setVisible(words.length > 0)
+			nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
+			nodes.ingredsView.setVisible(filters.ingredients.length > 0)
 		}
 		
 		if(filters.page > 0) {

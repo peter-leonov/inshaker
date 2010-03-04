@@ -11,6 +11,7 @@ Me.prototype.extend
 		this.ingredients = ingredients || []
 		this.names = names || {}
 		this.cache = {}
+		this.withouts = {}
 	},
 	
 	search: function (substr, count)
@@ -22,8 +23,25 @@ Me.prototype.extend
 			res = []
 		else
 		{
-			if (!(res = cache[substr]))
-				res = cache[substr] = this.searchInSet(this.ingredients, this.names, substr, count)
+			if (!(res = cache[substr])){
+				res = cache[substr] = this.searchInSet(this.ingredients, this.names, substr, count);
+			}
+
+			var
+				withouts = this.withouts,
+				i,
+				resLength = res.length,
+				resElem,
+				filtered = [];
+			
+			for (i = 0; i < resLength; i ++){
+				resElem = res[i];
+				if (!withouts[resElem[0]]){
+					filtered.push(resElem);
+				}				
+			}
+			res = filtered;
+			
 		}
 		
 		return res
