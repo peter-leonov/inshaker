@@ -212,7 +212,6 @@ function CocktailsView (states, nodes, styles) {
 			withouts[cfIngredients[i]] = true;
 		}
 		
-		
 	};
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){

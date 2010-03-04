@@ -41,7 +41,6 @@ Me.prototype.extend
 				}				
 			}
 			res = filtered;
-			
 		}
 		
 		return res

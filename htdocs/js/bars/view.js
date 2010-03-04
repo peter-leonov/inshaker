@@ -350,7 +350,6 @@ BarsPageView.prototype =
 		if (bar.labelType && bar.labelType == 'new'){
 			var
 				label = document.createElement('span');
-			
 			label.className = 'label';
 			label.innerHTML = 'Недавно открылся, заходи посмотреть!';
 			nameCont.appendChild(label)
