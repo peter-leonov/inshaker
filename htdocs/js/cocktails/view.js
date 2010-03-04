@@ -208,6 +208,7 @@ function CocktailsView (states, nodes, styles) {
 			withouts = this.searcher.withouts = {},
 			cfIngredients = filters.ingredients,
 			ingLength = cfIngredients.length;
+		
 		for (i = 0; i < ingLength; i ++){
 			withouts[cfIngredients[i]] = true;
 		}

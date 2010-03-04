@@ -40,7 +40,9 @@ Me.prototype.extend
 					filtered.push(resElem);
 				}				
 			}
+			
 			res = filtered;
+			
 		}
 		
 		return res
