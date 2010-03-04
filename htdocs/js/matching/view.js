@@ -62,6 +62,7 @@ var myProto =
 	ingredientClicked: function (e)
 	{
 		var ingredient = e.target.ingredient
+		Statistics.ingredientClicked(ingredient)
 		if (ingredient)
 			this.controller.toggleIngredients([ingredient])
 	},

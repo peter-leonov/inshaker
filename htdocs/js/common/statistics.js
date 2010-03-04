@@ -9,6 +9,11 @@ var Me =
 		this.track('ingredient-popup', ingredient.name)
 	},
 	
+	ingredientClicked: function (ingredient)
+	{
+		this.track('ingredient-clicked', ingredient.name)
+	},
+	
 	track: function (action, label, value)
 	{
 		setTimeout(function () { Tracker.track('statistics', action, label, value) }, 500)
