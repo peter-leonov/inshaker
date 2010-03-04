@@ -95,6 +95,8 @@ var myProto =
 		
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
+		
+		Statistics.ingredientPopupOpened(ingredient)
 	},
 	
 	renderCocktails: function (popupNodes, cocktails)
