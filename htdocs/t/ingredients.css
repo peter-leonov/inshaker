@@ -83,16 +83,19 @@
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
 .hidden { display: none; }
 <!--# else -->
-.hidden { visibility: hidden; position: absolute; }
+.hidden { visibility: hidden; position: absolute; top: -20000px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
 #output .group .list { zoom: 1; }
 .popup .window { zoom: 1; }
+#ingredient-info-popup.popup .popup-back { height: 10000px; }
 <!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
 .popup .popup-controls .cross { right: 0px; top: -14px; }
 <!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /Opera/(9|10)\./" -->
 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
 <!--# endif -->
