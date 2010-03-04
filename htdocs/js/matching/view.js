@@ -62,14 +62,15 @@ var myProto =
 	ingredientClicked: function (e)
 	{
 		var ingredient = e.target.ingredient
-		Statistics.ingredientClicked(ingredient)
 		if (ingredient)
 			this.controller.toggleIngredients([ingredient])
 	},
 	
 	modelChanged: function (data)
 	{
-		this.mergeIngredientClassNameStates(this.selected, data.selected, 'selected')
+		var add = this.mergeIngredientClassNameStates(this.selected, data.selected, 'selected').add
+		for (var k in add)
+			Statistics.ingredientSelected(add[k])
 		this.selected = Object.copy(data.selected) // flat copying
 		
 		this.mergeIngredientClassNameStates(this.disabled, data.disabled, 'disabled')
@@ -162,6 +163,8 @@ var myProto =
 		
 		for (var k in diff.remove)
 			cache[k].removeClassName(cn)
+		
+		return diff
 	},
 	
 	renderIngredientsField: function (ingredients)

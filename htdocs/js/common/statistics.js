@@ -9,9 +9,9 @@ var Me =
 		this.track('ingredient-popup', ingredient.name)
 	},
 	
-	ingredientClicked: function (ingredient)
+	ingredientSelected: function (ingredient)
 	{
-		this.track('ingredient-clicked', ingredient.name)
+		this.track('ingredient-selected', ingredient.name)
 	},
 	
 	track: function (action, label, value)
