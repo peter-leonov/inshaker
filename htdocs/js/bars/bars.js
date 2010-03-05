@@ -1,3 +1,7 @@
+// fix for FF 1.5 ;)
+if (!Array.copy)
+	Array.copy = function (src) { return Array.prototype.slice.call(src) }
+
 BarsPage =
 {
 	initialize: function (nodes)
