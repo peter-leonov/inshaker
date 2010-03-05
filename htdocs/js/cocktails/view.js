@@ -27,7 +27,7 @@ function CocktailsView (states, nodes, styles) {
 		set.push.apply(set, viewData.names)
 		set = set.sort()
 		
-		var searcher = new IngredientsSearcher(set, viewData.byName)
+		var searcher = this.searcher = new IngredientsSearcher(set, viewData.byName)
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
 		
@@ -207,6 +207,13 @@ function CocktailsView (states, nodes, styles) {
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
 		this.controller.saveFilters(this.currentFilters);
+		
+		var withouts = this.searcher.withouts = {},
+			ingredients = filters.ingredients;
+		
+		for (var i = 0, il = ingredients.length; i < il; i ++){
+			withouts[ingredients[i]] = true;
+		}
 	};
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
