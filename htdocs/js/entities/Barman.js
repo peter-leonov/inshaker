@@ -15,6 +15,7 @@ Barman.prototype =
     switchable: true,
     render: function (context)
     {
+		Statistics.barmanPopupViewed(this)
         var name = context.getElementsByTagName("h1")[0].firstChild
         name.innerHTML = this.name
         

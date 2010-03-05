@@ -34,7 +34,6 @@
 .b-content { margin-top: 20px; }
 .b-content .alphabetical{font-size:110%;margin-bottom:22px;}
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
-.b-content .alphabetical .p-list a{margin:0 -1px 0px 0px;text-decoration:none;}
 .b-content ul.cocktails{overflow:hidden;}
 /* and index */
 .b-content ul.cocktails li { float: left; position: relative; overflow: hidden; width: 90px; height: 140px; padding: 0 10px; }
@@ -54,24 +53,15 @@
 .pager-big .prev.disabled {background-position: -0px -150px; }
 .pager-big .next.disabled {background-position: -25px -150px; }
 
-.b-content .pager{height:20px;padding:17px 0 0 0;margin-top:18px;position:relative;background:url(bg/body/hr-repeat.png) repeat-x 0 0;font-size:110%;text-align:center;}
-.b-content .pager .p-list {display: inline;}
-.byIngredients .b-content .pager .p-list {display: block; width: 620px; margin-left: -17px;}
-.b-content .pager .p-list a{line-height: 18px; text-align:center; text-decoration:none;}
-.b-content .pager .p-list a.selected-button { background-position: -100px -125px; cursor: default;}
-.b-content .pager .p-list a { padding: 2px 6px 3px; margin-right: -3px; }
-.b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 2px; }
-.byIngredients .b-content .pager .p-list a.two { margin-right: 1px; }
-.b-content .pager .prev,
-.b-content .pager .next{text-decoration:none; font-size: 15px; line-height:14px;}
-.b-content .pager .prev { margin-right:3px;}
-.b-content .pager .next { margin-left: 1px;}
-.b-content .pager .disabled{cursor:default; color: #c0c0c0;}
+.b-content .pager { height: 40px; padding: 15px 0 0; margin-top: 18px; position: relative; background: url(bg/body/hr-repeat.png) repeat-x 0 0; font-size: 110%; }
+.b-content .pager .p-list { width: 590px; margin-left: 7px; }
+.b-content .pager .p-list a { line-height: 22px; text-decoration:none; margin-right: 2px; }
+.b-content .pager .p-list a.selected-button { background-position: -75px -125px; cursor: default;}
+.b-content .pager .p-list a.two.selected-button { background-position: -100px -125px; }
+.b-content .pager .p-list a { padding: 2px 6px 3px; }
+.b-content .pager .p-list a.two { padding: 2px 4px 3px; margin-right: 0; }
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
-
-.byIngredients #results_display .pager .prev,
-.byIngredients #results_display .pager .next { display: none; }
 
 
 .search-form {position:relative;}

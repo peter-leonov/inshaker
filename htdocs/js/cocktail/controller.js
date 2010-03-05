@@ -119,6 +119,7 @@ var Controller = {
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
+			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
@@ -162,6 +163,7 @@ var Controller = {
 	renderPopup: function(ingred){
         this.currentlyShownIngred = ingred;
 		var good = Ingredient.getByName(ingred)
+		Statistics.ingredientPopupOpened(good)
 		
 		$('good_name').innerHTML = good.brand || ingred;
 		if(good.mark){ // branded
@@ -212,6 +214,7 @@ var Controller = {
 	
 	renderToolPopup: function(name){
 		var tool = Tool.getByName(name);
+		Statistics.toolPopupOpened(tool)
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
 		$('tool_picture').src = tool.imgSrc();
