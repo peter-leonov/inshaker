@@ -4,6 +4,11 @@ var myName = 'Statistics'
 
 var Me =
 {
+	barmanPopupViewed: function (barman)
+	{
+		this.track('barman-popup-viewed', barman.name)
+	},
+	
 	cocktailsFilterSelected: function (name)
 	{
 		this.track('cocktails-filter-selected', name)
