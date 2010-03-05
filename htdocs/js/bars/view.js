@@ -104,8 +104,7 @@ BarsPageView.prototype =
 	renderBarsList: function (data)
 	{
 		var parent = this.nodes.barsContainer,
-			bars = data.bars,
-			state = data.state
+			bars = data.bars
 		
 		parent.empty()
 		for (var i = 0; i < bars.length; i++)
@@ -298,14 +297,30 @@ BarsPageView.prototype =
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('div')
-		var name = document.createElement('a')
-		main.appendChild(name)
+		var main = document.createElement('div'),
+			nameCont = document.createElement('a'),
+			name = document.createElement('span')
+		
+		name.className = 'bar-name'
+		name.innerHTML = bar.name
+		
+		nameCont.appendChild(name)
+		main.appendChild(nameCont)
 		
 		main.className = 'bar-mini'
 		main.setImage = function (src) { main.style.backgroundImage = 'url('+src+')' }
 		main.setName = function (text) { name.innerHTML = text }
-		main.setHref = function (href) { name.href = href }
+		main.setHref = function (href) { nameCont.href = href }
+		
+		if (bar.labelType == 'new')
+		{
+			var label = document.createElement('span')
+			label.className = 'label'
+			label.innerHTML  = 'Бар недавно открылся, заходи посмотреть!'
+			nameCont.appendChild(label)
+			main.addClassName(bar.labelType)
+		}
+		
 		return main
 	}
 }

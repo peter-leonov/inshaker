@@ -13,5 +13,6 @@ nginx.conf
 htdocs/v/*
 data/*
 .idea/*
+Thumbs.db
 .lock-barman
 yandex_*
