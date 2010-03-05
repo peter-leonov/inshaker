@@ -1,3 +1,7 @@
+<!--# include virtual="/lib-0.3/modules/tracker-ga.js" -->
+<!--# include virtual="/lib-0.3/modules/oops.js" -->
+Oops.maybeEnable()
+
 <!--# include file="/lib/Programica/Init.js" -->
 <!--# include file="/lib/Programica/Fixes.js" -->
 <!--# include file="/lib/Programica/OnReady.js" -->
