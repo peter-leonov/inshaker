@@ -25,7 +25,6 @@ BarsPageModel.prototype =
 		var now = new Date(), hYearMs = 3600 * 24 * (366 / 4) * 1000,
 			neo = [], normal = [], future = []
 		
-		
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
 			var bar = barsSet[i]
@@ -46,7 +45,6 @@ BarsPageModel.prototype =
 			}
 		}
 		barsSet = neo.concat(normal, future)
-		
 		
 		var city = City.getByName(state.city)
 		var view = this.view

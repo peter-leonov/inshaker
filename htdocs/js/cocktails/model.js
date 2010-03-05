@@ -76,6 +76,7 @@ function CocktailsModel (states, view) {
 		this.filters.strength = "";
 		this.filters.method = "";
 		this.filters.ingredients = [];
+		this.filters.marks = []
 		this.filters.page = 0;
 		this.filters.state = states.defaultState;
 	};

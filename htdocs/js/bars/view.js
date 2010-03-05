@@ -210,36 +210,15 @@ BarsPageView.prototype =
 			this.gMap = map
 		}
 		
-		var iconAnchor = new GPoint(12, 34),
-			infoWindowAnchor = new GPoint(16, 0),
-			infoShadowAnchor = new GPoint(18, 25)
-		
 		if (!this.gIcon)
 		{
 			var gIcon = new GIcon()
+			// gIcon.shadow = '/t/bars/bar-icon.png'
 			gIcon.image = '/t/bars/bar-icon.png'
-			gIcon.iconAnchor = iconAnchor
-			gIcon.infoWindowAnchor = infoWindowAnchor
-			gIcon.infoShadowAnchor = infoWindowAnchor
-			this.gIcon = gIcon
-		}
-		if (!this.gIconNew)
-		{
-			var gIcon = new GIcon()
-			gIcon.image = '/t/bars/bar-icon-new.png'
-			gIcon.iconAnchor = iconAnchor
-			gIcon.infoWindowAnchor = infoWindowAnchor
-			gIcon.infoShadowAnchor = infoWindowAnchor
-			this.gIconNew = gIcon
-		}
-		if (!this.gIconFuture)
-		{
-			var gIcon = new GIcon()
-			gIcon.image = '/t/bars/bar-icon-future.png'
-			gIcon.iconAnchor = iconAnchor
-			gIcon.infoWindowAnchor = infoWindowAnchor
-			gIcon.infoShadowAnchor = infoWindowAnchor
-			this.gIconFuture = gIcon
+			gIcon.iconAnchor = new GPoint(12, 34)
+			gIcon.infoWindowAnchor = new GPoint(16, 0)
+			gIcon.infoShadowAnchor = new GPoint(18, 25)
+			this.gIcon = gIcon	
 		}
 	},
 	
@@ -266,17 +245,9 @@ BarsPageView.prototype =
 	
 	getGMarker: function (bar)
 	{
-		var gPoint = new GLatLng(bar.point[0], bar.point[1]),
-			gIcon = this.gIcon
+		var gPoint = new GLatLng(bar.point[0], bar.point[1])
 		// var mkey = bar.point[0] + ':' + bar.point[1]
-		
-		if (bar.labelType == 'new')
-			gIcon = this.gIconNew
-		else if (bar.labelType == 'future')
-			gIcon = this.gIconFuture
-		
-		
-		var gMarker = new GMarker(gPoint, {icon: gIcon})
+		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
 		var me = this
 		function click () { me.controller.gMarkerClicked(gMarker) }
 		GEvent.addListener(gMarker, 'click', click)
@@ -345,7 +316,7 @@ BarsPageView.prototype =
 		{
 			var label = document.createElement('span')
 			label.className = 'label'
-			label.innerHTML  = 'Недавно открылся, заходи посмотреть!'
+			label.innerHTML  = 'Бар недавно открылся, заходи посмотреть!'
 			nameCont.appendChild(label)
 			main.addClassName(bar.labelType)
 		}
