@@ -126,6 +126,7 @@ function CocktailsModel (states, view) {
 			
 			if(name != name_all) {
 				this.filters.letter    = name;
+				Statistics.cocktailsFilterSelected(name)
 			} else this.filters.letter = "";
 			this.applyFilters();
 		}
@@ -147,6 +148,7 @@ function CocktailsModel (states, view) {
 		if(name != this.filters.tag) {
 			this.filters.letter  = "";
 			this.filters.tag     = name;
+			Statistics.cocktailsFilterSelected(name)
 		} else this.filters.tag  = "";
 		this.filters.method = "";
 		this.filters.page = 0;
@@ -157,6 +159,7 @@ function CocktailsModel (states, view) {
 		if(name != this.filters.strength) {
 			this.filters.letter      = "";
 			this.filters.strength    = name;
+			Statistics.cocktailsFilterSelected(name)
 		} else this.filters.strength = "";
 		this.filters.page = 0;
 		this.filters.tag = "";
@@ -168,6 +171,7 @@ function CocktailsModel (states, view) {
 		if(name != this.filters.method) {
 			this.filters.letter  = "";
 			this.filters.method  = name;
+			Statistics.cocktailsFilterSelected(name)
 		} else this.filters.method = "";
 		this.filters.page = 0;
 		this.applyFilters();
