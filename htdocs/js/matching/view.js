@@ -18,27 +18,59 @@ var myProto =
 	{
 		this.nodes = nodes
 		
+		this.bindCocktailList()
 		this.bindEvents()
-		
 		return this
+	},
+	
+	bindCocktailList: function ()
+	{
+		var listNodes = this.nodes.cocktails
+		
+		var clNodes =
+		{
+			root: listNodes.root,
+			viewport: listNodes.viewport,
+			surface: listNodes.surface,
+			prev: listNodes.prev,
+			next: listNodes.next
+		}
+		
+		var cl = this.cocktailList = new CocktailList()
+		cl.bind(clNodes)
+		cl.pageLength = 7
+		cl.pageVelocity = 42
 	},
 	
 	bindEvents: function ()
 	{
-		var me = this
-		this.nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		var nodes = this.nodes,
+			me = this
+		
+		nodes.alphabetical.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		nodes.chosenIngeredients.addEventListener('click', function (e) { me.ingredientClicked(e) }, false)
+		nodes.forExample.addEventListener('click', function (e) { me.forExampleClicked(e) }, false)
+	},
+	
+	forExampleClicked: function (e)
+	{
+		var ingredients = e.target.ingredients
+		if (ingredients)
+			this.controller.toggleIngredients(ingredients)
 	},
 	
 	ingredientClicked: function (e)
 	{
 		var ingredient = e.target.ingredient
 		if (ingredient)
-			this.controller.toggleIngredient(ingredient)
+			this.controller.toggleIngredients([ingredient])
 	},
 	
 	modelChanged: function (data)
 	{
-		this.mergeIngredientClassNameStates(this.selected, data.selected, 'selected')
+		var add = this.mergeIngredientClassNameStates(this.selected, data.selected, 'selected').add
+		for (var k in add)
+			Statistics.ingredientSelected(add[k])
 		this.selected = Object.copy(data.selected) // flat copying
 		
 		this.mergeIngredientClassNameStates(this.disabled, data.disabled, 'disabled')
@@ -46,25 +78,76 @@ var myProto =
 		
 		this.nodes.main.toggleClassName('selecting-ingredients', !Object.isEmpty(this.selected))
 		
-		this.renderCocktails()
+		this.renderExample(data.randomIngredients)
+		this.renderChosen(data.ingredients, data.cocktails)
+		this.renderCocktails(data.cocktails)
+	},
+	
+	renderChosen: function (ingredients, cocktails)
+	{
+		var nodes = this.nodes
+		
+		var inames = [], ilinks = []
+		for (var i = 0; i < ingredients.length; i++)
+		{
+			var ingredient = ingredients[i]
+			
+			var name = inames[i] = ingredient.name
+			var link = ilinks[i] = Nct('a', 'ingredient', name)
+			link.ingredient = ingredient
+		}
+		
+		var chosenIngeredients = nodes.chosenIngeredients
+		chosenIngeredients.empty()
+		var mess = this.joinNodes(ilinks, T(' + '))
+		for (var i = 0, il = mess.length; i < il; i++)
+			chosenIngeredients.appendChild(mess[i])
+		
+		var chosenCocktails = nodes.chosenCocktails, count = cocktails.length
+		chosenCocktails.empty()
+		var viewAll = Nc('a', 'link')
+		viewAll.appendChild(T(count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')))
+		viewAll.href = '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(inames.join(','))
+		chosenCocktails.appendChild(viewAll)
+	},
+	
+	joinNodes: function (arr, node)
+	{
+		var res = [],
+			len = arr.length
+		if (len)
+		{
+			for (var i = 0, il = len - 1; i < il; i++)
+				res.push(arr[i]),
+				res.push(node.cloneNode(true))
+			res.push(arr[i])
+		}
+		
+		return res
+	},
+	
+	renderExample: function (ingredients)
+	{
+		if (!ingredients)
+			return
+		
+		var text = []
+		for (var i = 0; i < ingredients.length; i++)
+			text[i] = ingredients[i].name
+		
+		var example = this.nodes.forExample
+		example.firstChild.nodeValue = text.join(' + ')
+		example.ingredients = ingredients
 	},
 	
 	renderCocktails: function (cocktails)
 	{
-		var listNodes = this.nodes.cocktails
+		if (!cocktails)
+			return
 		
-		cocktails = cocktails.slice().randomize()
+		cocktails = cocktails.slice().sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 		
-		var cl = new CocktailList()
-		var nodes =
-		{
-			root: listNodes.cocktails,
-			viewport: listNodes.cocktailsViewport,
-			surface: listNodes.cocktailsSurface,
-			prev: listNodes.cocktailsPrev,
-			next: listNodes.cocktailsNext
-		}
-		cl.bind(nodes, cocktails, 5)
+		this.cocktailList.setCocktails(cocktails)
 	},
 	
 	mergeIngredientClassNameStates: function (a, b, cn)
@@ -80,6 +163,8 @@ var myProto =
 		
 		for (var k in diff.remove)
 			cache[k].removeClassName(cn)
+		
+		return diff
 	},
 	
 	renderIngredientsField: function (ingredients)

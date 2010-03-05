@@ -188,9 +188,14 @@ function CocktailsView (states, nodes, styles) {
 		this.controller.onIngredientFilter();
 	};
 	
-	this.onIngredientAdded = function(name) {
-		this.controller.onIngredientFilter(name, false);
-	};
+	this.onIngredientAdded = function(name)
+	{
+		var markToken = 'марка '
+		if (name.indexOf(markToken) == 0)
+			this.controller.onMarkAddFilter(name.substr(markToken.length), false)
+		else
+			this.controller.onIngredientFilter(name, false)
+	}
 	
 	this.onIngredientRemoved = function(name) {
 		this.controller.onIngredientFilter(name, true);
@@ -260,17 +265,18 @@ function CocktailsView (states, nodes, styles) {
 		
 		var ingredientsParent = nodes.searchesList;
 		ingredientsParent.empty();
-		if(filters.ingredients.length > 0) {
-			var ingreds = filters.ingredients;
-			for(var i = 0; i < ingreds.length; i++) {
-				ingredientsParent.appendChild(this.createIngredientElement(ingreds[i]));
-				if(i != (ingreds.length-1)) ingredientsParent.appendChild(document.createTextNode(" + "));
-			}
+		
+		var words = filters.marks.concat(filters.ingredients)
+		for (var i = 0, il = words.length; i < il; i++)
+		{
+			ingredientsParent.appendChild(this.createIngredientElement(words[i]));
+			if (i != (il-1))
+				ingredientsParent.appendChild(document.createTextNode(" + "));
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(filters.ingredients.length == 0)
-			nodes.ingredsView.setVisible(filters.ingredients.length > 0)
+			nodes.searchTipIngredient.setVisible(words.length == 0)
+			nodes.ingredsView.setVisible(words.length > 0)
 		}
 		
 		if(filters.page > 0) {

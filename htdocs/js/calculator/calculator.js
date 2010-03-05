@@ -30,10 +30,6 @@ var Calculator = {
 		this.model.addDataListener(listener);
 	},
 	
-	setPopupStatusListener: function(listener){
-		this.view.popupStatusListener = listener;
-	},
-	
 	getMinSum: function(context){
 		var value = "_MIN_" + context.toUpperCase() + "_SUM";
 		return this[value] || 0;

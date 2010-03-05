@@ -43,6 +43,7 @@ function CalculatorModel(view){
 	
 	this.addCocktail = function(name){
 		var cocktail = Cocktail.getByName(name)
+		Statistics.cocktailAddedToCalculator(cocktail)
 		if(cocktail) {
 			var cs = this.cartData.cocktails;
 			var found = false;

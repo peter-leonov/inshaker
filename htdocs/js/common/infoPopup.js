@@ -71,7 +71,6 @@ function InfoPopup (opener, popup, displayObject)
         this.initialize = function ()
         {
             view.initialize()
-            model.setDisplayObject(displayObject)
         }
         this.initialize()
     }

@@ -110,7 +110,6 @@ function CalculatorView() {
 	this.IGNORED_KEYS = [this.KEY_LEFT, this.KEY_RIGHT, this.KEY_ESC, this.KEY_ENTER, this.KEY_TAB];
 	
 	this.eventListener = null; // controller
-	this.popupStatusListener = null; // external
 	
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
@@ -238,16 +237,6 @@ function CalculatorView() {
         if(e.keyCode == self.KEY_ESC) $(self.INGRED_POPUP).hide();
     }, false);
 	
-	$(this.INGRED_POPUP).show = function(){
-		this.style.display = "block";
-		if(self.popupStatusListener) self.popupStatusListener.popupShown();
-	};
-	
-	$(this.INGRED_POPUP).hide = function(){
-		this.style.display = "none";
-		if(self.popupStatusListener) self.popupStatusListener.popupHidden();
-	};
-
     this.showPopup = function(ingred){
         $(this.INGRED_POPUP).show();
         this.renderPopup(this.eventListener.getItemFromCart(ingred), ingred);
@@ -509,6 +498,7 @@ function CalculatorView() {
 	};
 	
 	this.renderPopup = function(item, name){
+		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
 		this.itemFromPopup = [cloneObject(item), name];
 		item = cloneObject(item);
 		
