@@ -101,7 +101,13 @@ var Me = self.Draggable = function (element, name, dropTargets){
 		document.removeEventListener('mousemove', elementMove, false);
 		document.removeEventListener('mousemove', elementWaits, false);
 		if(self.dragObject) {
-			document.body.removeChild(self.dragObject);
+			try
+			{
+				// self.dragObject may be not appended to body,
+				// am not going to fix it so suppressing an exception
+				document.body.removeChild(self.dragObject);
+			}
+			catch (ex) {}
 			// document.body.remClassName(self.STYLE_CURSOR);
 			
 			// dropping
