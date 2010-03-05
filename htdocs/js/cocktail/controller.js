@@ -213,6 +213,7 @@ var Controller = {
 	
 	renderToolPopup: function(name){
 		var tool = Tool.getByName(name);
+		Statistics.toolPopupOpened(tool)
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
 		$('tool_picture').src = tool.imgSrc();
