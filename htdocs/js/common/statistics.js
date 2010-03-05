@@ -4,6 +4,11 @@ var myName = 'Statistics'
 
 var Me =
 {
+	cocktailViewRecipe: function (cocktail)
+	{
+		this.track('cocktail-view-recipe', cocktail.name)
+	},
+	
 	cocktailAddedToCalculator: function (cocktail)
 	{
 		this.track('cocktail-added-to-calculator', cocktail.name)

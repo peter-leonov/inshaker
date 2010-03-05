@@ -119,6 +119,7 @@ var Controller = {
 		
 		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
+			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
 			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
 		}, false);
