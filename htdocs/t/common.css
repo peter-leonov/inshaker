@@ -198,10 +198,6 @@ b.rb { right: 0; bottom: 0; }
 .win-shop .content .sum p small{display:block;padding-top:4px;}
 .win-shop .content .sum button{margin:6px 50px 0 0;}
 .win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
-.win-shop .content #order_note {display: none; color: #ec118f; font-family:Georgia,serif; font-size: 14px; margin-top: 25px;}
-.win-shop .content #order_note a { color: #ec118f; text-decoration: none; border-bottom: 1px #ec118f dashed;}
-.win-shop .content #order_note a:hover { text-decoration: none;}
-
 
 .win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
 .win-shop .b-gadget .count{display:block;margin-bottom:6px;}
@@ -281,7 +277,6 @@ body{height:100%;}
 
 .square-list .prev{background-position-x:-450px;}
 
-#good_volumes.dots dt{margin-top:5px;}
 .win-shop .gadget-wrapper{zoom:1;}
 .win-shop .win,
 .win-shop .win-bg{background-image:none;}

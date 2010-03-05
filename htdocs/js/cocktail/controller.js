@@ -144,10 +144,6 @@ var Controller = {
         $('tool_cancel').addEventListener('mousedown', function(e){
 			$(self.TOOL_POPUP).hide();
 		}, false);
-	
-    	$('good_cancel').addEventListener('mousedown', function(e){
-			$('order_note').hide();
-		}, false);
     },
 	
 	setPicture: function(name, good, vol){
@@ -170,36 +166,6 @@ var Controller = {
 		
 		$('good_desc').innerHTML = good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
-
-		var volsNode = $('good_volumes'); 
-        volsNode.empty();
-		var summ = 0;
-		var have = 0;
-		var self = this;
-		
-		for(var i = 0; i < good.volumes.length; i++){
-			if(good.volumes[i][2]) {
-				var dl         = document.createElement("dl");
-				var dt         = document.createElement("dt");
-				var a          = document.createElement("a");
-				var dd         = document.createElement("dd");
-				var strong     = document.createElement("strong");
-				
-				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit, good.volumes[i][0]) + GoodHelper.normalVolumeTxt(good.volumes[i][0], good.unit);
-				a.addEventListener('mousedown', function(j) { return function(e) {
-					self.setPicture(ingred, good, good.volumes[j]);
-				}}(i), false);
-				
-				strong.innerHTML = good.volumes[i][1] + " р.";            	
-				dl.appendChild(dt);
-				dt.appendChild(a);
-				dl.appendChild(dd);
-				dd.appendChild(strong);
-				volsNode.appendChild(dl);
-			}
-		}
-		if(!Calculator.isIngredientPresent(ingred)) $('order_note').show();
-		else $('order_note').hide();
 	},
 	
 	renderToolPopup: function(name){
