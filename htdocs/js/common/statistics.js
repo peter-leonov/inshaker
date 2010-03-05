@@ -6,7 +6,7 @@ var Me =
 {
 	barmanPopupViewed: function (barman)
 	{
-		this.track('barman-popup-viewed', barman.name)
+		this.track('barman-popup-viewed', barman && barman.name)
 	},
 	
 	cocktailsFilterSelected: function (name)
@@ -16,27 +16,27 @@ var Me =
 	
 	cocktailViewRecipe: function (cocktail)
 	{
-		this.track('cocktail-view-recipe', cocktail.name)
+		this.track('cocktail-view-recipe', cocktail && cocktail.name)
 	},
 	
 	cocktailAddedToCalculator: function (cocktail)
 	{
-		this.track('cocktail-added-to-calculator', cocktail.name)
+		this.track('cocktail-added-to-calculator', cocktail && cocktail.name)
 	},
 	
 	toolPopupOpened: function (tool)
 	{
-		this.track('tool-popup', tool.name)
+		this.track('tool-popup', tool && tool.name)
 	},
 	
 	ingredientPopupOpened: function (ingredient)
 	{
-		this.track('ingredient-popup', ingredient.name)
+		this.track('ingredient-popup', ingredient && ingredient.name)
 	},
 	
 	ingredientSelected: function (ingredient)
 	{
-		this.track('ingredient-selected', ingredient.name)
+		this.track('ingredient-selected', ingredient && ingredient.name)
 	},
 	
 	track: function (action, label, value)
