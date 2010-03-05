@@ -15,6 +15,7 @@ Oops.maybeEnable()
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 
 <!--# include file="/js/common/analytics.js" -->
+<!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/rutils.js" -->
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }

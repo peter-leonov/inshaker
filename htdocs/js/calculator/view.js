@@ -544,6 +544,7 @@ function CalculatorView() {
 	};
 	
 	this.renderPopup = function(item, name){
+		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
 		this.itemFromPopup = [cloneObject(item), name];
 		item = cloneObject(item);
 		

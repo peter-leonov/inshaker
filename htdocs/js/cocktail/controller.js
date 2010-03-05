@@ -162,6 +162,7 @@ var Controller = {
 	renderPopup: function(ingred){
         this.currentlyShownIngred = ingred;
 		var good = Ingredient.getByName(ingred)
+		Statistics.ingredientPopupOpened(good)
 		
 		$('good_name').innerHTML = good.brand || ingred;
 		if(good.mark){ // branded
