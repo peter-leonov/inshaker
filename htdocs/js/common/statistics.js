@@ -41,7 +41,7 @@ var Me =
 	
 	track: function (action, label, value)
 	{
-		setTimeout(function () { Tracker.track('statistics', action, label, value) }, 500)
+		setTimeout(function () { Tracker.track('UserAction', action, label, value) }, 500)
 	}
 }
 
