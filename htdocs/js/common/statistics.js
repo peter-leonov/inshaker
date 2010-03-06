@@ -4,6 +4,11 @@ var myName = 'Statistics'
 
 var Me =
 {
+	magazinePromoViewed: function (promo)
+	{
+		this.track('magazine-promo-viewed', promo && promo.name)
+	},
+	
 	barmanPopupViewed: function (barman)
 	{
 		this.track('barman-popup-viewed', barman && barman.name)

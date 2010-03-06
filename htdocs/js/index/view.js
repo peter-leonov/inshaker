@@ -185,7 +185,9 @@ IndexPageView.prototype =
 						}
 					}
 					
-					me.controller.updateHash(set[after-1].name)
+					var promo = set[after-1]
+					Statistics.magazinePromoViewed(promo)
+					me.controller.updateHash(promo.name)
 					me.loadFrames(me.getRange(after))
 				}
 			}
