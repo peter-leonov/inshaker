@@ -130,7 +130,12 @@ var Controller = {
 		
 		var tools_links = cssQuery(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
-			var tool = tools_links[i].innerHTML;
+			var tool = Tool.getByName(tools_links[i].innerHTML)
+			if (!tool)
+			{
+				tools_links[i].parentNode.hide()
+				continue
+			}
 			tools_links[i].addEventListener('click', function(name){ return function(e){	
 				$(self.TOOL_POPUP).show();
 				self.renderToolPopup(name);
@@ -172,8 +177,7 @@ var Controller = {
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
 	},
 	
-	renderToolPopup: function(name){
-		var tool = Tool.getByName(name);
+	renderToolPopup: function(tool){
 		Statistics.toolPopupOpened(tool)
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
