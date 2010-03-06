@@ -111,7 +111,9 @@ var Controller = {
 					this.parentNode.now.remClassName('now');
 					// this.addClassName('now');
 					this.parentNode.now = this;
-					$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
+					var ri = $(self.ID_ING).RollingImagesLite
+					if (ri)
+						ri.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
 				}, false);
 		}
@@ -121,7 +123,9 @@ var Controller = {
 		viewHowBtn.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
-			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
+			var ri = $(self.ID_ING).RollingImagesLite
+			if (ri)
+				ri.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
 		var tools_links = cssQuery(".b-content .tools dd a");
