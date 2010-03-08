@@ -131,6 +131,8 @@ var Controller = {
 		var tools_links = cssQuery(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = Tool.getByName(tools_links[i].innerHTML)
+			// FIXME: dirty fix for invalid tool name
+			// was cached in html while js had been updated
 			if (!tool)
 			{
 				tools_links[i].parentNode.hide()

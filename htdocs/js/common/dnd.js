@@ -103,8 +103,7 @@ var Me = self.Draggable = function (element, name, dropTargets){
 		if(self.dragObject) {
 			try
 			{
-				// self.dragObject may be not appended to body,
-				// am not going to fix it so suppressing an exception
+				// FIXME: self.dragObject may be not appended to body
 				document.body.removeChild(self.dragObject);
 			}
 			catch (ex) {}

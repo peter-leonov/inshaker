@@ -255,6 +255,7 @@ function CalculatorView() {
 	};
 	
 	this.renderCart = function(cartData){
+		// FIXME: dirty fix for too early call for renderCart()
 		if (!$(this.ID_CONTENTS).style)
 			return
 		
