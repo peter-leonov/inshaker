@@ -255,6 +255,9 @@ function CalculatorView() {
 	};
 	
 	this.renderCart = function(cartData){
+		if (!$(this.ID_CONTENTS).style)
+			return
+		
 		if(cartData.cocktails.length > 0) {
 			$(this.ID_CONTENTS).style.display = "block";
 			$(this.ID_TOTALS).style.display = "block";
