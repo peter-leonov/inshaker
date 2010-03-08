@@ -263,7 +263,7 @@ function CocktailsModel (states, view) {
 			res = [], db = allCocktails
 		
 		for (var i = 0; i < words.length; i++)
-			words[i] = new RegExp('(?:^|\\s|-)' + words[i], 'i')
+			words[i] = new RegExp('(?:^|\\s|-)' + RegExp.escape(words[i]), 'i')
 		
 		var first = words[0], jl = words.length
 		SEARCH: for (var i = 0; i < db.length; i++)
