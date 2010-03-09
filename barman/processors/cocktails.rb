@@ -2,6 +2,7 @@
 # encoding: utf-8
 require 'barman'
 require 'optparse'
+require 'uri'
 # require 'benchmark'
 
 class CocktailsProcessor < Barman::Processor

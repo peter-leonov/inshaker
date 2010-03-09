@@ -122,12 +122,6 @@ Object.extend(Cocktail,
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
-	getByHtmlName: function(htmlName){
-		for(var i = 0; i < this.db.length; i++){
-			if(this.db[i].name_eng.htmlName() == htmlName) return this.db[i];
-		}
-	},
-	
 	getByLetterCache: {},
 	getByLetter: function (letter, set)
 	{

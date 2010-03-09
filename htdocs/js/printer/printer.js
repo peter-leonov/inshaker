@@ -40,9 +40,9 @@ var Printer = {
         }
     },
 
-    cocktailInit: function(param){
+    cocktailInit: function(name){
         this.preloadImages();
-        var cocktail = Cocktail.getByHtmlName(param);
+		var cocktail = Cocktail.getByName(name)
 		cocktail.loadData()
   		this.renderCocktail(cocktail);
     },  
