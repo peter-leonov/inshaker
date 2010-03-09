@@ -18,12 +18,17 @@ var Printer = {
     wannaPrint: false,
     cartData : {},
 
-    init: function(context, param) {
-		var self = this;
-		Storage.init(function(){
-			if(self[context+"Init"]) self[context+"Init"](param);
-		});
-    },
+	initCart: function (param)
+	{
+		var me = this
+		Storage.init(function () { me.cartInit(param) })
+	},
+	
+	initCocktail: function (param)
+	{
+		var me = this
+		Storage.init(function () { me.cocktailInit(param) })
+	},
 
 
     preloadImages: function(){

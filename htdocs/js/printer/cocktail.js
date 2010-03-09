@@ -5,7 +5,7 @@
 function pageLoad ()
 {
     var name = window.location.hash.substr(1)
-    Printer.init("cocktail", name)
+    Printer.initCocktail(name)
 };
 $.onload(pageLoad)
 
