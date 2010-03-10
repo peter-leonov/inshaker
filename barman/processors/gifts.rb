@@ -27,32 +27,29 @@ class GiftsProcessor < Barman::Processor
   
   def prepare_gifts
     root_dir = Dir.new(Config::GIFTS_DIR)
-    root_dir.each do |city_dir|
-      city_path = root_dir.path + city_dir
-      if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
-        puts city_dir
-        city_gifts = []
-        gifts_dir = Dir.new(city_path)
-        orders = load_yaml(city_path + "/gifts.yaml") 
-        gifts_dir.each do |gift_dir|
-          gift_path = gifts_dir.path + "/" + gift_dir
-          if File.ftype(gift_path) == "directory" and !@excl.include?(gift_dir)
-            puts ".." + gift_dir
-            
-            @gift = {}
-            yaml = load_yaml(gift_path + "/about.txt")
-            @gift[:city] = city_dir
-            @gift[:name] = gift_dir
-            @gift[:name_full] = yaml["Полное название"] 
-            @gift[:desc] = yaml["Описание"].split("\n")
-            @gift[:places] = yaml["Где купить"]
-            detect_big_images(gift_path)
-            city_gifts << @gift
-          end
-        end
+    root_dir.each_dir do |city_dir|
+      # city_path = root_dir.path + city_dir
+      say city_dir.name
+      indent do
+      city_gifts = []
+      orders = load_yaml(city_dir.path + "/gifts.yaml") 
+      city_dir.each_dir do |gift_dir|
+        indent do
+        say gift_dir.name
         
-        @gifts += city_gifts.sort { |a, b| (orders.index(a[:name]) || 100) - (orders.index(b[:name]) || 100) }
+        @gift = {}
+        yaml = load_yaml(gift_dir.path + "/about.txt")
+        @gift[:city] = city_dir.name
+        @gift[:name] = gift_dir.name
+        @gift[:name_full] = yaml["Полное название"] 
+        @gift[:desc] = yaml["Описание"].split("\n")
+        @gift[:places] = yaml["Где купить"]
+        detect_big_images(gift_dir)
+        city_gifts << @gift
+        end # indent
       end
+      @gifts += city_gifts.sort { |a, b| (orders.index(a[:name]) || 100) - (orders.index(b[:name]) || 100) }
+      end # indent
     end
   end
   
@@ -60,10 +57,10 @@ class GiftsProcessor < Barman::Processor
     YAML::load(File.open(filename))
   end
   
-  def detect_big_images gift_path
+  def detect_big_images gift_dir
     @gift[:big_images] = []
     counter = 1
-    while File.exists?(gift_path + "/big-#{counter}.jpg")
+    while File.exists?(gift_dir.path + "/big-#{counter}.jpg")
       @gift[:big_images] << "/i/gift/" + @gift[:city].trans.html_name + "/" + @gift[:name].trans.html_name + "-big-#{counter}.jpg"
       counter += 1
     end
