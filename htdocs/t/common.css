@@ -64,7 +64,7 @@ b.rb { right: 0; bottom: 0; }
 #ingredients-page #top .nav a.ingredients,
 #bars-page #top .nav a.bars,
 #bar-page #top .nav a.bars,
-#gifts-page #top .nav a.gifts,
+#good-page #top .nav a.goods,
 #event-page #top .nav a.events
 { background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
@@ -80,7 +80,7 @@ b.rb { right: 0; bottom: 0; }
 #cocktail-page #bottom .main-menu a.cocktails,
 #bars-page #bottom .main-menu a.bars,
 #bar-page #bottom .main-menu a.bars,
-#gifts-page #bottom .main-menu a.gifts,
+#good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events
 { color: inherit; cursor: default; text-decoration: none !important; }
 
@@ -311,7 +311,6 @@ input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" -->
 .column:before, .column:after { display: none; }
-#gifts-page .promos .place {padding-bottom:26px;}
 <!--# endif -->
 
 <!--# include virtual="calculator.css" -->

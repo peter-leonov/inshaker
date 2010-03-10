@@ -1,0 +1,90 @@
+.b-title { height:26px; padding-bottom:10px; margin-bottom: 18px; }
+.b-title a { text-decoration:none; } 
+.b-content {}
+#top{}
+#main-wrapper {z-index: 1; position:relative;}
+
+.b-title h1,
+.b-title h2{font-size:20px;margin-left:-1px;}
+.b-title h2 a {cursor:default}
+
+.previews.column { margin-bottom: 32px; } 
+.previews.column .body-wrapper { overflow:visible; height: 200px; padding-bottom:0}
+.previews.column .gradient {height:32px; width: 958px; position:absolute; top:182px; left:2px; margin:0; border:none; background:url(/t/bg/body/body-bottom.png); }
+
+.promos.column {}
+.promos.column .body-wrapper {overflow:hidden; padding:14px 18px 26px}
+
+.goods-previews .good { width: 213px; text-align: center; cursor:pointer; vertical-align:top; display:inline-block; position:relative;}
+.goods-previews .good img { display: block; margin: 0 auto -3px; }
+.goods-previews .name { text-decoration:none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; }
+.goods-previews .good.selected .name { color: #e2138a; font-weight:bold; border-bottom: none; font-style: italic; cursor: default; }
+.goods-previews .good .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:146px; left:93px;}
+
+.goods-previews .viewport,
+.goods-previews { position: relative; width: 920px; height: 161px; }
+.goods-previews .viewport {width: 855px; overflow:hidden; margin-left: 42px;}
+.goods-previews .viewport .point { float: left; width: 855px; height: 100%; }
+.goods-previews .viewport .surface { width: 4000px; padding: 0;}
+.goods-previews .prev,
+.goods-previews .next { z-index:3; position:absolute; left:auto; top:41px; right:19px; }
+.goods-previews .prev { left: 0; }
+.goods-previews .next { right: 0; }
+
+.good-promos { margin: 5px 0 0 1px } 
+.good-promos .viewport,
+.good-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
+.good-promos .viewport .point { float: left; width: 920px; height: 100%; }
+.good-promos .viewport .surface { width: 10000px; height:100%;}
+.good-promos .prev,
+.good-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
+.good-promos:hover .prev,
+.good-promos:hover .next {display:block;}
+.good-promos:hover .hidden {display:none;}
+.good-promos .prev { left: 0; background-position: -60px 0; display:none;}
+.good-promos .next { right: 0; background-position: 0 0; display:none;}
+.good-promos .prev.disabled { background-position: -60px -60px; cursor: default; }
+.good-promos .next.disabled { background-position: 0 -60px; cursor: default; }
+
+#full-name {font-size:21px; margin: 18px 0 10px 0}
+#desc {font-size:14px; width: 600px;}
+#desc p {margin-bottom:10px}
+#desc a {text-decoration:none}
+#desc a:hover {text-decoration:underline}
+#price {float:right; margin-top:55px}
+#where-to-buy {margin-bottom: 22px; color: #E2138A; margin-top: 31px; font-size:21px}
+#corporate {display:none; text-decoration:none; color: #41474c; border-bottom:1px #41474c dashed; margin-left:20px}
+#places {width:600px}
+#places .place {font-size: 12px; width:300px; float:left; margin-bottom:10px; }
+#places .title {font-size:19px; }
+.ast {font-size:14px; position:relative; top:-4px;}
+#places .address {display:block; }
+#places .time {display:block; font-weight: bold;}
+#places .tel {display:block; }
+#ask-barmen {margin-top:120px; width:600px; font-size:19px }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
+.promos.column .body-wrapper {overflow:visible;}
+.goods-previews .good .mark { top:147px;} 
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
+.goods-previews .name {zoom:1; } 
+.goods-previews .good { display:inline; position:relative;}
+#ask-barmen {margin-top:36px;}
+<!--# endif -->
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+.previews .body-wrapper { padding-bottom:0 } 
+.previews .b-content {height: 144px} 
+.good-promos .disabled { background-position-y: -60px; }
+.good-promos .prev { background-position-x: -60px; }
+.good-promos .prev,
+.good-promos .next { display: block; }
+.good-promos .hidden {display:none;}
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" -->
+.promos .place {padding-bottom:26px;}
+<!--# endif -->
