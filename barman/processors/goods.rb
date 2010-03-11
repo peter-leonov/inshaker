@@ -56,7 +56,24 @@ class GoodsProcessor < Barman::Processor
       
       good["name_full"] = yaml["Полное название"]
       good["desc"] = yaml["Описание"].to_s.gsub(/\n/, "<br/><br/>")
-      good["places"] = yaml["Где купить"]
+      good["places"] = yaml["Где купить"] || []
+      
+      all_places = []
+      good["places"].each do |types|
+        types.each do |name, list|
+          places = []
+          all_places << {"name" => name, "places" => places}
+          list.each do |place|
+            place.each do |name, desc|
+              places << {
+                "name" => name,
+                "address" => desc["Адрес"]
+              }
+            end
+          end
+        end
+      end
+      good["places"] = all_places
       
       full_path = Config::HTDOCS_ROOT + '/' + path
       FileUtils.mkdir_p [full_path]
