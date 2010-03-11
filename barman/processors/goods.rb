@@ -96,7 +96,7 @@ class GoodsProcessor < Barman::Processor
     end
     
     order = load_yaml(root_dir.path + "/order.yaml")
-    @goods = @goods.sort { |a, b| (order.index(a[:name]) || 100) - (order.index(b[:name]) || 100) }
+    @goods = @goods.sort { |a, b| (order.index(a["name"]) || 100) - (order.index(b["name"]) || 100) }
   end
   
   def update_images src, dst
