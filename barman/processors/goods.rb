@@ -68,8 +68,10 @@ class GoodsProcessor < Barman::Processor
   
   def update_images src, dst
     counter = 0
-    while File.exists?(src.path + "/big-#{counter+1}.jpg")
-      cp_if_different src.path + "/big-#{counter+1}.jpg", dst.path + "/big-#{counter+1}.jpg"
+    while 1
+      name = "big-#{counter+1}.jpg"
+      break unless File.exists? src.path + '/' + name
+      cp_if_different src.path + '/' + name, dst.path + "/" + name
       counter += 1
     end
     counter
