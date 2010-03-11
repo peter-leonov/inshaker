@@ -10,6 +10,7 @@ require 'lib/json'
 require 'lib/string_util'
 require 'lib/fileutils'
 require 'lib/saying'
+require 'lib/plural'
 
 $stdout.sync = true
 
