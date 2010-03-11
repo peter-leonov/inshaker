@@ -8,7 +8,6 @@
 <body>
 <!--# include file="/inc/top-common.html" -->
 <div id="main-wrapper">	
-
 	<div class="previews column"><div class="body-wrapper">
 		<div class="b-title">
 			<h2>Москва — лучшие коктейльные покупки сезона!</h2>
@@ -34,12 +33,32 @@
 					<% end %>
 				</ul>
 			</div>
-			<a class="prev disabled" disabled="true"></a><a class="next"></a>
+			<a class="prev"></a>
+			<a class="next"></a>
 		</div>
-		<h2 id="full-name"><%= @name_full %></h2>
-		<div id="desc"><%= @desc %></div>
-		<h2 id="where-to-buy">Где купить этот подарок? <a id="corporate">Корпоративным клиентам</a></h2>
-		<div id="places"></div>
+		<div id="desc">
+			<h2 class="full-name"><%= @name_full %></h2>
+			<%= @desc %>
+		</div>
+		<div id="places">
+			<% @places.each do |type| %>
+				<dl class="type">
+					<dt class="type-title"><%= type["name"] %></dt>
+					<dd>
+						<% type["places"].each do |place| %>
+							<dl class="place">
+								<dt class="title"><a href="<%= place["link"] %>"><%= place["name"] %></a></dt>
+								<dd class="body">
+									<span class="address"><%= place["address"] %></span>
+									<span class="phone"><%= place["phone"] %></span>
+									<span class="hours"><%= place["hours"] %></span>
+								</dd>
+							</dl>
+						<% end %>
+					</dd>
+				</dl>
+			<% end %>
+		</div>
 	</div></div>
 </div>
 </body>

@@ -46,21 +46,18 @@
 .good-promos .prev.disabled { background-position: -60px -60px; cursor: default; }
 .good-promos .next.disabled { background-position: 0 -60px; cursor: default; }
 
-#full-name {font-size:21px; margin: 18px 0 10px 0}
-#desc {font-size:14px; width: 600px;}
-#desc p {margin-bottom:10px}
-#desc a {text-decoration:none}
-#desc a:hover {text-decoration:underline}
-#price {float:right; margin-top:55px}
-#where-to-buy {margin-bottom: 22px; color: #E2138A; margin-top: 31px; font-size:21px}
-#corporate {display:none; text-decoration:none; color: #41474c; border-bottom:1px #41474c dashed; margin-left:20px}
-#places {width:600px}
-#places .place {font-size: 12px; width:300px; float:left; margin-bottom:10px; }
-#places .title {font-size:19px; }
-.ast {font-size:14px; position:relative; top:-4px;}
+.full-name,
+.type-title {font-size:21px; margin: 20px 0 10px 0}
+
+#desc { font-size: 14px; width: 600px; margin-bottom: 10px; }
+
+#places {width:700px}
+#places .type { overflow: hidden; }
+#places .place { font-size: 12px; width: 320px; float: left; margin-bottom: 15px; }
+#places .title { font-size: 18px; }
 #places .address {display:block; }
-#places .time {display:block; font-weight: bold;}
-#places .tel {display:block; }
+#places .hours {display:block;}
+#places .phone {display:block; }
 #ask-barmen {margin-top:120px; width:600px; font-size:19px }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->

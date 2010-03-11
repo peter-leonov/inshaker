@@ -67,7 +67,10 @@ class GoodsProcessor < Barman::Processor
             place.each do |name, desc|
               places << {
                 "name" => name,
-                "address" => desc["Адрес"]
+                "address" => desc["Адрес"],
+                "link" => desc["Ссылка"],
+                "hours" => desc["Часы работы"],
+                "phone" => desc["Телефон"]
               }
             end
           end
