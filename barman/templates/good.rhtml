@@ -3,7 +3,7 @@
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/good.css" media="screen"/>
-	<title>Inshaker — Подарки</title>
+	<title><%= @name %> — Inshaker</title>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -11,35 +11,36 @@
 
 	<div class="previews column"><div class="body-wrapper">
 		<div class="b-title">
-			<h2><a>Москва</a> — лучшие коктейльные подарки сезона!</h2>
+			<h2>Москва — лучшие коктейльные покупки сезона!</h2>
 		</div>
 		<div class="b-content">
 			<div class="goods-previews square-list programica-rolling-images">
 				<div class="viewport">
-					<ul class="surface"> 
+					<ul class="surface">
+						<!--# include virtual="/good/links.html" -->
 					</ul>
 				</div>
 				<a class="prev disabled" disabled="true"></a><a class="next"></a>
 			</div>
 		</div>
-        <!--<div class="gradient"></div>-->
 	</div></div>
-
-    <div class="promos column"><div class="body-wrapper">
-	    <div class="good-promos programica-rolling-images">
-		    <div class="viewport">
-			    <ul class="surface">
-			    </ul>
-		    </div>
-		    <a class="prev disabled" disabled="true"></a><a class="next"></a>
-	    </div>
-        <img id="price"/>
-        <h2 id="full-name"></h2>
-        <div id="desc"></div>
-        <h2 id="where-to-buy">Где купить этот подарок? <a id="corporate">Корпоративным клиентам</a></h2>
-        <div id="places"></div>
-        <!--<div id="ask-barmen">В продаже с 15 июля!</div>-->
-    </div></div>
+	
+	<div class="promos column"><div class="body-wrapper">
+		<div class="good-promos programica-rolling-images">
+			<div class="viewport">
+				<ul class="surface">
+					<% @images.times do |n| %>
+						<li class="point"><img src="big-<%= n + 1 %>.jpg"/></li>
+					<% end %>
+				</ul>
+			</div>
+			<a class="prev disabled" disabled="true"></a><a class="next"></a>
+		</div>
+		<h2 id="full-name"><%= @name_full %></h2>
+		<div id="desc"><%= @desc %></div>
+		<h2 id="where-to-buy">Где купить этот подарок? <a id="corporate">Корпоративным клиентам</a></h2>
+		<div id="places"></div>
+	</div></div>
 </div>
 </body>
 <!--# include file="/inc/bottom-common.html" -->
