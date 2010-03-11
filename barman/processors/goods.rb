@@ -5,7 +5,7 @@ require 'barman'
 class GoodsProcessor < Barman::Processor
   
   module Config
-    GIFTS_DIR  = Barman::BASE_DIR + "Goods/"
+    GOODS_DIR  = Barman::BASE_DIR + "Goods/"
     HTDOCS_DIR = Barman::HTDOCS_DIR
     
     IMAGES_DIR = HTDOCS_DIR + "i/good/"
@@ -26,7 +26,7 @@ class GoodsProcessor < Barman::Processor
   end
   
   def prepare_goods
-    root_dir = Dir.new(Config::GIFTS_DIR)
+    root_dir = Dir.new(Config::GOODS_DIR)
     root_dir.each_dir do |city_dir|
       # city_path = root_dir.path + city_dir
       say city_dir.name
@@ -69,7 +69,7 @@ class GoodsProcessor < Barman::Processor
   
   def flush_images
     @goods.each do |good|
-      good_path = Config::GIFTS_DIR + good[:city] + "/" + good[:name] + "/"
+      good_path = Config::GOODS_DIR + good[:city] + "/" + good[:name] + "/"
         out_images_path = Config::IMAGES_DIR + good[:city].trans.html_name
         if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
         
