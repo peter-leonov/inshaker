@@ -61,10 +61,18 @@ class GoodsProcessor < Barman::Processor
       all_places = []
       good["places"].each do |types|
         types.each do |name, list|
+          unless list
+            error "нет описания для типа «#{name}»"
+            next
+          end
           places = []
           all_places << {"name" => name, "places" => places}
           list.each do |place|
             place.each do |name, desc|
+              unless desc
+                error "нет описания для места «#{name}»"
+                next
+              end
               places << {
                 "name" => name,
                 "address" => desc["Адрес"],
