@@ -4,8 +4,8 @@
 
 function pageLoad ()
 {
-    var name = window.location.hash.substr(1)
-    Printer.initCocktail(name)
+	var name = decodeURIComponent(window.location.hash.substr(1))
+	Printer.initCocktail(name)
 };
 $.onload(pageLoad)
 
