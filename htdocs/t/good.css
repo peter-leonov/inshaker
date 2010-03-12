@@ -30,6 +30,7 @@
 .goods-previews .next { z-index:3; position:absolute; left:auto; top:41px; right:19px; }
 .goods-previews .prev { left: 0; }
 .goods-previews .next { right: 0; }
+html.loading .goods-previews .viewport { display: none; }
 
 .good-promos { margin: 5px 0 0 1px } 
 .good-promos .viewport,
