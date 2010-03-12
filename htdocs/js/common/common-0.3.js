@@ -24,4 +24,8 @@ Oops.maybeEnable()
 <!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/cocktail-list.js" -->
 
+<!--# include virtual="/js/common/theme.js" -->
+$.onready(function () { Theme.bind() })
+
+
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }

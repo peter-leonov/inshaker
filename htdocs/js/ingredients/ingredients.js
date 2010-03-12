@@ -36,9 +36,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
 
-<!--# include virtual="/js/common/theme.js" -->
-Theme.bind()
-
 <!--# include virtual="popup.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
