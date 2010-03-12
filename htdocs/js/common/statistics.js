@@ -39,6 +39,11 @@ var Me =
 		this.track('ingredient-popup', ingredient ? ingredient.name : ('' + ingredient))
 	},
 	
+	ingredientTypedIn: function (ingredient)
+	{
+		this.track('ingredient-typed-in', ingredient ? ingredient.name : ('' + ingredient))
+	},
+	
 	ingredientSelected: function (ingredient)
 	{
 		this.track('ingredient-selected', ingredient ? ingredient.name : ('' + ingredient))
