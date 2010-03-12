@@ -206,7 +206,7 @@ function CocktailsModel (states, view) {
 			this.filters.ingredients.splice(idx, 1);
 		} else if (idx == -1){
 			this.filters.ingredients.push(name);
-			Statistics.ingredientSelected(Ingredient.getByName(name))
+			Statistics.ingredientTypedIn(Ingredient.getByName(name))
 		} else return; // duplicate entry
 		this.applyFilters();
 	};
