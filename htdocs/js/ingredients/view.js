@@ -77,6 +77,8 @@ var myProto =
 		{
 			nodes.mark.appendChild(T(ingredient.brand))
 			nodes.ingredientWindow.addClassName('branded')
+			nodes.brand.appendChild(T(ingredient.mark))
+			nodes.brand.href = Ingredient.ingredientsLinkByMark(ingredient.mark)
 		}
 		
 		nodes.name.appendChild(T(ingredient.name))
