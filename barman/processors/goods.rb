@@ -1,6 +1,7 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require 'barman'
+require 'optparse'
 
 class GoodsProcessor < Barman::Processor
   
@@ -20,6 +21,15 @@ class GoodsProcessor < Barman::Processor
   end
   
   def job
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Usage: ingredients.rb [options]"
+      
+      opts.on("-t", "--text", "Text updates only") do |v|
+        @options[:text] = v
+      end
+    end.parse!
+    
     @goods = []
     
     prepare_dirs
@@ -134,6 +144,13 @@ class GoodsProcessor < Barman::Processor
   end
   
   def update_images src, dst
+    name = "mini.png"
+    if File.exists? src.path + '/' + name
+      flush_masked_optimized(Config::GOODS_DIR + "/mask.png", src.path + '/' + name, dst.path + "/" + name) unless @options[:text]
+    else
+      error "нету маленькой картинки"
+    end
+    
     counter = 0
     while 1
       name = "big-#{counter+1}.jpg"
