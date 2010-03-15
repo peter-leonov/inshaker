@@ -19,7 +19,7 @@ var myProto =
 	modelChanged: function (data)
 	{
 		for (var i = 0; i < data.length; i++)
-			this.nodes.previewsSurface.appendChild(T(data[i].name))
+			this.nodes.previewsSurface.appendChild(data[i].getPreviewNode())
 		
 	}
 }

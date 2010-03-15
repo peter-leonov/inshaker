@@ -2,6 +2,8 @@
 
 var myName = 'Good'
 
+eval(NodesShortcut.include())
+
 function Me (data)
 {
 	for (var k in data)
@@ -13,7 +15,9 @@ Me.prototype =
 {
 	getPreviewNode: function (lazy)
 	{
-		
+		var img = N('img')
+		img.src = '/good/' + this.path + '/mini.png'
+		return img
 	}
 }
 
