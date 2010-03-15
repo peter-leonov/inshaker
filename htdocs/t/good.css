@@ -51,7 +51,7 @@ html.loading .goods-previews .viewport { display: none; }
 .type-title {font-size:21px; margin: 20px 0 10px 0}
 
 #price { position: absolute; right: 20px; top: 395px; font-size: 21px; text-align: right;  }
-#price .number { display: block; font-size: 50px; color: #e2138a; font-weight: bold; }
+#price .number { display: block; font-size: 50px; color: #e2138a; }
 
 #desc { font-size: 14px; width: 600px; margin-bottom: 10px; }
 

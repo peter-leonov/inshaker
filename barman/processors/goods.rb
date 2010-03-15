@@ -54,6 +54,7 @@ class GoodsProcessor < Barman::Processor
       good["name_eng"] = yaml["По-английски"]
       path = good["path"] = good["name_eng"].dirify
       
+      good["price"] = yaml["Цена"]
       good["name_full"] = yaml["Полное название"]
       good["desc"] = yaml["Описание"].to_s.gsub(/\n/, "<br/><br/>")
       good["places"] = yaml["Где купить"] || []
@@ -126,6 +127,7 @@ class GoodsProcessor < Barman::Processor
       good.delete("places")
       good.delete("name_full")
       good.delete("images")
+      good.delete("price")
     end
     
     flush_json_object(@goods, Config::DB_JS)

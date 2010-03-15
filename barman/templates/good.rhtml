@@ -37,7 +37,9 @@
 			<a class="prev"></a>
 			<a class="next"></a>
 		</div>
-		<div id="price">Рекомендованная цена: <span class="number">25 500 р.</span></div>
+		<% if @price %>
+		<div id="price">Рекомендованная цена: <span class="number"><%= @price %></span></div>
+		<% end %>
 		<div id="desc">
 			<h2 class="full-name"><%= @name_full %></h2>
 			<%= @desc %>
