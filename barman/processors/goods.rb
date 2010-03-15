@@ -54,7 +54,32 @@ class GoodsProcessor < Barman::Processor
       good["name_eng"] = yaml["По-английски"]
       path = good["path"] = good["name_eng"].dirify
       
-      good["price"] = yaml["Цена"]
+      if yaml["Цена"]
+        price = good["price"] = {}
+        
+        if yaml["Цена"]["Числом"]
+          price["number"] = yaml["Цена"]["Числом"].to_i
+        else
+          error "нету цены числом"
+        end
+        
+        if yaml["Цена"]["Прописью"]
+          price["text"] = yaml["Цена"]["Прописью"]
+        else
+          error "нету цены прописью"
+        end
+        
+        if yaml["Цена"]["Фраза"]
+          price["phrase"] = yaml["Цена"]["Фраза"]
+        else
+          error "нету фразы для цены"
+        end
+        
+        if price["text"] && price["number"] && price["text"].to_s.gsub(/\D/, '').to_i != price["number"]
+          warning "цена прописью (#{price["text"]}) не похожа на цену числом (#{price["number"]})"
+        end
+      end
+      
       good["name_full"] = yaml["Полное название"]
       good["desc"] = yaml["Описание"].to_s.gsub(/\n/, "<br/><br/>")
       good["places"] = yaml["Где купить"] || []

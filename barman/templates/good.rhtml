@@ -38,7 +38,7 @@
 			<a class="next"></a>
 		</div>
 		<% if @price %>
-		<div id="price">Рекомендованная цена: <span class="number"><%= @price %></span></div>
+		<div id="price"><%= @price["phrase"] %> <span class="number"><%= @price["text"] %></span></div>
 		<% end %>
 		<div id="desc">
 			<h2 class="full-name"><%= @name_full %></h2>
