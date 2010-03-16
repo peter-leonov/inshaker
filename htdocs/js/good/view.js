@@ -28,11 +28,15 @@ var myProto =
 		{
 			var good = goods[i]
 			
-			var item = N('li')
+			var item = Nc('li', 'item')
 			root.appendChild(item)
 			
-			var preview = previewsCache[good.name] = good.getPreviewNode()
+			item.appendChild(Nc('div', 'mark'))
+			
+			var preview = good.getPreviewNode()
 			item.appendChild(preview)
+			
+			previewsCache[good.name] = item
 		}
 	},
 	
@@ -41,9 +45,9 @@ var myProto =
 		var previewsCache = this.cache.previews
 		if (previewsCache)
 		{
-			var preview = previewsCache[good.name]
-			if (preview)
-				preview.addClassName('selected')
+			var item = previewsCache[good.name]
+			if (item)
+				item.addClassName('selected')
 		}
 	}
 }
