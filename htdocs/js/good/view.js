@@ -9,28 +9,42 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
+		this.cache = {}
 	},
 	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		this.controller.selectGoodByName(this.nodes.name.firstChild.nodeValue)
 	},
 	
-	modelChanged: function (data)
+	renderPreviews: function (goods)
 	{
 		var root = this.nodes.previewsSurface
-		
 		root.empty()
 		
-		for (var i = 0; i < data.length; i++)
+		var previewsCache = this.cache.previews = {}
+		for (var i = 0; i < goods.length; i++)
 		{
+			var good = goods[i]
+			
 			var item = N('li')
-			var preview = data[i].getPreviewNode()
-			item.appendChild(preview)
 			root.appendChild(item)
+			
+			var preview = previewsCache[good.name] = good.getPreviewNode()
+			item.appendChild(preview)
 		}
-		
-		preview.addClassName('selected')
+	},
+	
+	selectGoodPreview: function (good)
+	{
+		var previewsCache = this.cache.previews
+		if (previewsCache)
+		{
+			var preview = previewsCache[good.name]
+			if (preview)
+				preview.addClassName('selected')
+		}
 	}
 }
 

@@ -52,6 +52,7 @@ html.loading .goods-previews .viewport { display: none; }
 #price .number { display: block; font-size: 50px; color: #e2138a; }
 
 #desc { font-size: 14px; width: 600px; margin-bottom: 10px; }
+#desc .name { display: none; }
 
 #places {width:700px}
 #places .type { overflow: hidden; }

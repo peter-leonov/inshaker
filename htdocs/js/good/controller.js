@@ -9,10 +9,12 @@ var myProto =
 		
 	},
 	
-	bind: function (state)
+	selectGoodByName: function (name)
 	{
-		this.model.setState(state)
-	}
+		this.model.selectGoodByName(name)
+	},
+	
+	bind: function () {}
 }
 
 Object.extend(Me.prototype, myProto)

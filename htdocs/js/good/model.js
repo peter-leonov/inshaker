@@ -15,10 +15,12 @@ var myProto =
 		this.sources = sources
 	},
 	
-	setState: function (state)
+	selectGoodByName: function (name)
 	{
-		this.state = state
-		this.view.modelChanged(this.sources.good.getAll())
+		var Good = this.sources.good
+		
+		this.view.renderPreviews(Good.getAll())
+		this.view.selectGoodPreview(Good.getByName(name))
 	}
 }
 

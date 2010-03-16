@@ -38,6 +38,7 @@ function onready ()
 {
 	var nodes =
 	{
+		name: $$('#desc .name')[0],
 		previewsRoot: $$('.goods-previews')[0],
 		previewsPrev: $$('.goods-previews .prev')[0],
 		previewsNext: $$('.goods-previews .next')[0],

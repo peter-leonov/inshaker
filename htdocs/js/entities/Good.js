@@ -32,6 +32,25 @@ var staticMethods =
 		this.db = db
 	},
 	
+	byNameIndex: null,
+	getByName: function (name)
+	{
+		var index = this.byNameIndex
+		if (!index)
+		{
+			index = this.byNameIndex = {}
+			
+			var db = this.db
+			for (var i = 0, il = db.length; i < il; i++)
+			{
+				var item = db[i]
+				index[item.name] = item
+			}
+		}
+		
+		return index[name]
+	},
+	
 	getAll: function ()
 	{
 		// save the db from corruption with copying
