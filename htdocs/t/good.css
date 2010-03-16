@@ -15,15 +15,13 @@
 .promos.column {}
 .promos.column .body-wrapper {overflow:hidden; padding:14px 18px 26px}
 
-.goods-previews .good { width: 213px; text-align: center; cursor:pointer; vertical-align:top; display:inline-block; position:relative;}
-.goods-previews .good img { display: block; margin: 0 auto -3px; }
-.goods-previews .name { text-decoration:none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; }
-.goods-previews .good.selected .name { color: #e2138a; font-weight:bold; border-bottom: none; font-style: italic; cursor: default; }
-.goods-previews .good .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:146px; left:93px;}
+.goods-previews .good-preview { display: block; float: left; width: 180px; height: 30px; padding-top: 110px; margin-right: 32px;  text-align: center; position: relative; text-decoration: none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; background: 0 0 no-repeat; }
+.goods-previews .good-preview.selected { color: #e2138a; font-weight: bold; font-style: italic; cursor: default; }
+/*.goods-previews .good .mark {z-index:1; background:url(/t/event/mark.png); width: 25px; height:14px; position:absolute; top:146px; left:93px;}*/
 
 .goods-previews .viewport,
 .goods-previews { position: relative; width: 920px; height: 161px; }
-.goods-previews .viewport {width: 855px; overflow:hidden; margin-left: 42px;}
+.goods-previews .viewport { width: 855px; overflow: hidden; margin-left: 52px; }
 .goods-previews .viewport .point { float: left; width: 855px; height: 100%; }
 .goods-previews .viewport .surface { width: 4000px; padding: 0;}
 .goods-previews .prev,
@@ -63,7 +61,7 @@ html.loading .goods-previews .viewport { display: none; }
 #places .hours {display:block;}
 #places .phone {display:block; }
 #ask-barmen {margin-top:120px; width:600px; font-size:19px }
-
+/*
 <!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
 .promos.column .body-wrapper {overflow:visible;}
 .goods-previews .good .mark { top:147px;} 
@@ -89,3 +87,4 @@ html.loading .goods-previews .viewport { display: none; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 8/" -->
 .promos .place {padding-bottom:26px;}
 <!--# endif -->
+*/

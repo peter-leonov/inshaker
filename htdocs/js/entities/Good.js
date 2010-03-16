@@ -15,9 +15,10 @@ Me.prototype =
 {
 	getPreviewNode: function (lazy)
 	{
-		var img = N('img')
-		img.src = '/good/' + this.path + '/mini.png'
-		return img
+		var link = Nct('a', lazy ? 'good-preview lazy' : 'good-preview', this.name)
+		link.href = '/good/' + this.path + '/'
+		link.style.backgroundImage = 'url(/good/' + this.path + '/mini.png)'
+		return link
 	}
 }
 

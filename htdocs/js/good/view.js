@@ -18,9 +18,19 @@ var myProto =
 	
 	modelChanged: function (data)
 	{
-		for (var i = 0; i < data.length; i++)
-			this.nodes.previewsSurface.appendChild(data[i].getPreviewNode())
+		var root = this.nodes.previewsSurface
 		
+		root.empty()
+		
+		for (var i = 0; i < data.length; i++)
+		{
+			var item = N('li')
+			var preview = data[i].getPreviewNode()
+			item.appendChild(preview)
+			root.appendChild(item)
+		}
+		
+		preview.addClassName('selected')
 	}
 }
 
