@@ -115,8 +115,7 @@ var myProto =
 			next: popupNodes.cocktailsNext
 		}
 		cl.bind(nodes)
-		cl.pageLength = 5
-		cl.pageVelocity = 38
+		cl.configure({pageLength: 5, pageVelocity: 38})
 		cl.setCocktails(cocktails)
 	},
 	

@@ -3,6 +3,27 @@
 function Me ()
 {
 	this.nodes = {}
+	this.conf =
+	{
+		// precalculated velocity that must be applied to go to the next page
+		pageVelocity: 20,
+		
+		// nodes on one page, list becomes active or inactive (single) relying on this
+		pageLength: 1,
+		
+		// just a friction to be set in the scroller space
+		friction: 60,
+		
+		// how much soften will wave be
+		soft: 7,
+		
+		// steps of the gridder, defaults are nive enough
+		stepX: 500,
+		stepY: 500,
+		
+		// the time to wait the next onscroll event before take any actions
+		throttle: 100
+	}
 	this.constructor = Me
 }
 
@@ -10,27 +31,13 @@ Me.className = 'LazyList'
 
 Me.prototype =
 {
-	// precalculated velocity that must be applied to go to the next page
-	pageVelocity: 20,
-	
-	// nodes on one page, list becomes active or inactive (single) relying on this
-	pageLength: 1,
-	
-	// just a friction to be set in the scroller space
-	friction: 60,
-	
-	// how much soften will wave be
-	soft: 7,
-	
-	// steps of the gridder, defaults are nive enough
-	stepX: 500,
-	stepY: 500,
-	
-	// the time to wait the next onscroll event before take any actions
-	throttle: 100,
-	
 	// a callback for nodes must be loaded
 	load: function () {},
+	
+	configure: function (conf)
+	{
+		Object.extend(this.conf, conf)
+	},
 	
 	bind: function (nodes, cocktails)
 	{
@@ -48,7 +55,7 @@ Me.prototype =
 			surface = nodes.surface, viewport = nodes.viewport
 		
 		var frame = this.frame = new VisibilityFrame()
-		frame.setStep(this.stepX, this.stepY)
+		frame.setStep(this.conf.stepX, this.conf.stepY)
 		
 		var me = this
 		frame.onmove = function (show, hide)
@@ -71,13 +78,14 @@ Me.prototype =
 		scroller.bind(viewport)
 		
 		var space = scroller.space
-		space.add(new Kinematics.Friction(this.friction))
+		space.add(new Kinematics.Friction(this.conf.friction))
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
 	},
 	
 	setNodes: function (nodes, realCount)
 	{
-		var n = this.nodes, root = n.root, surface = n.surface, viewport = n.viewport
+		var n = this.nodes, root = n.root, surface = n.surface, viewport = n.viewport,
+			conf = this.conf
 		
 		var boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
@@ -87,7 +95,7 @@ Me.prototype =
 		this.scroller.onscroll = function (x, realX)
 		{
 			clearTimeout(timer)
-			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, this.throttle)
+			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, conf.throttle)
 		}
 		
 		frame.setFrame(frameWidth * 3, viewport.offsetHeight)
@@ -100,14 +108,13 @@ Me.prototype =
 		var scroller = this.scroller
 		scroller.reset()
 		
-		
-		if (boxes.length >= this.pageLength)
+		if (boxes.length >= conf.pageLength)
 		{
 			root.removeClassName('single')
 			
 			var last = boxes[realCount - 1]
 			this.scroller.setWidth(last.x + last.w)
-			this.wave.setup(last.w, this.soft, this.friction)
+			this.wave.setup(last.w, conf.soft, conf.friction)
 			scroller.setMovable(true)
 		}
 		else
@@ -128,13 +135,13 @@ Me.prototype =
 	
 	goPrev: function ()
 	{
-		this.scroller.setVelocity(-this.pageVelocity, 0)
+		this.scroller.setVelocity(-this.conf.pageVelocity, 0)
 		this.scroller.run()
 	},
 	
 	goNext: function ()
 	{
-		this.scroller.setVelocity(this.pageVelocity, 0)
+		this.scroller.setVelocity(this.conf.pageVelocity, 0)
 		this.scroller.run()
 	}
 }

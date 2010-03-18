@@ -38,8 +38,7 @@ var myProto =
 		
 		var cl = this.cocktailList = new CocktailList()
 		cl.bind(clNodes)
-		cl.pageLength = 7
-		cl.pageVelocity = 42
+		cl.configure({pageLength: 7, pageVelocity: 42})
 	},
 	
 	bindEvents: function ()

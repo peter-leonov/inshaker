@@ -4,6 +4,7 @@ function Me ()
 {
 	this.list = new LazyList()
 	this.nodes = {}
+	this.conf = {pageLength: 1}
 	this.previewsCache = {}
 	this.constructor = Me
 	this.data = {cocktails:[]}
@@ -13,12 +14,19 @@ Me.className = 'CocktailList'
 
 Me.prototype =
 {
+	configure: function (conf)
+	{
+		this.conf = conf
+		this.list.configure(conf)
+	},
+	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
-		this.list.bind(nodes)
-		this.list.load = function (nodes)
+		var list = this.list
+		list.bind(nodes)
+		list.load = function (nodes)
 		{
 			for (var i = 0, il = nodes.length; i < il; i++)
 			{
@@ -68,7 +76,7 @@ Me.prototype =
 			nodes.push(preview)
 		}
 		
-		var page = this.pageLength
+		var page = this.conf.pageLength
 		if (cocktails.length >= page)
 		{
 			for (var j = 0; j < page; j++)
