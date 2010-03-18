@@ -50,6 +50,7 @@ Me.prototype =
 		var frame = this.frame = new VisibilityFrame()
 		frame.setStep(this.stepX, this.stepY)
 		
+		var me = this
 		frame.onmove = function (show, hide)
 		{
 			var load = []
@@ -63,7 +64,7 @@ Me.prototype =
 				}
 			}
 			
-			this.load(load)
+			me.load(load)
 		}
 		
 		var scroller = this.scroller = new InfiniteScroller()
@@ -95,7 +96,6 @@ Me.prototype =
 		
 		
 		root.show()
-		surface.empty()
 		
 		var scroller = this.scroller
 		scroller.reset()
@@ -139,7 +139,6 @@ Me.prototype =
 	}
 }
 
-// Me.mixIn(EventDriven)
 self[Me.className] = Me
 
 })();
