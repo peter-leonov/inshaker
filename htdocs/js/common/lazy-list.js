@@ -10,13 +10,26 @@ Me.className = 'LazyList'
 
 Me.prototype =
 {
+	// precalculated velocity that must be applied to go to the next page
 	pageVelocity: 20,
+	
+	// nodes on one page, list becomes active or inactive (single) relying on this
 	pageLength: 1,
+	
+	// just a friction to be set in the scroller space
 	friction: 60,
+	
+	// how much soften will wave be
 	soft: 7,
+	
+	// steps of the gridder, defaults are nive enough
 	stepX: 500,
 	stepY: 500,
+	
+	// the time to wait the next onscroll event before take any actions
 	throttle: 100,
+	
+	// a callback for nodes must be loaded
 	load: function () {},
 	
 	bind: function (nodes, cocktails)
