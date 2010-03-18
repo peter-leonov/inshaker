@@ -3,14 +3,10 @@
 function Me ()
 {
 	this.nodes = {}
-	this.previewsCache = {}
 	this.constructor = Me
-	this.data = {cocktails:[]}
 }
 
-Me.className = 'CocktailList'
-
-// eval(NodesShortcut())
+Me.className = 'LazyList'
 
 Me.prototype =
 {
@@ -18,6 +14,10 @@ Me.prototype =
 	pageLength: 1,
 	friction: 60,
 	soft: 7,
+	stepX: 500,
+	stepY: 500,
+	throttle: 100,
+	load: function () {},
 	
 	bind: function (nodes, cocktails)
 	{
@@ -35,24 +35,22 @@ Me.prototype =
 			surface = nodes.surface, viewport = nodes.viewport
 		
 		var frame = this.frame = new VisibilityFrame()
-		frame.setStep(500, 500)
+		frame.setStep(this.stepX, this.stepY)
 		
 		frame.onmove = function (show, hide)
 		{
+			var load = []
 			for (var i = 0; i < show.length; i++)
 			{
 				var box = show[i]
 				if (!box.loaded)
 				{
-					var node = box.node,
-						image = node.img
-					
-					image.src = image.lazySrc
-					node.removeClassName('lazy')
-					
+					load.push(box.node)
 					box.loaded = true
 				}
 			}
+			
+			this.load(load)
 		}
 		
 		var scroller = this.scroller = new InfiniteScroller()
@@ -63,63 +61,40 @@ Me.prototype =
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
 	},
 	
-	setCocktails: function (cocktails)
+	setNodes: function (nodes, realCount)
 	{
-		this.data.cocktails = cocktails
-		this.render()
-	},
-	
-	getCocktailPreviewNode: function (cocktail)
-	{
-		var name = cocktail.name,
-			previewsCache = this.previewsCache
+		var n = this.nodes, root = n.root, surface = n.surface, viewport = n.viewport
 		
-		var preview = previewsCache[name]
-		if (!preview)
-			preview = previewsCache[name] = cocktail.getPreviewNode(true)
+		var boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
-		return preview
-	},
-	
-	render: function ()
-	{
+		var frame = this.frame,
+			frameWidth = viewport.offsetWidth,
+			timer
+		this.scroller.onscroll = function (x, realX)
+		{
+			clearTimeout(timer)
+			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, this.throttle)
+		}
 		
-		var nodes = this.nodes, root = nodes.root, surface = nodes.surface, viewport = nodes.viewport,
-			cocktails = this.data.cocktails
+		frame.setFrame(frameWidth * 3, viewport.offsetHeight)
+		frame.setBoxes(boxes)
+		frame.moveTo(0, 0)
+		
 		
 		root.show()
 		surface.empty()
 		
-		// console.time('render')
-		
-		var nodes = []
-		
 		var scroller = this.scroller
 		scroller.reset()
 		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var preview = this.getCocktailPreviewNode(cocktails[i])
-			surface.appendChild(preview)
-			nodes.push(preview)
-		}
 		
-		var page = this.pageLength
-		if (cocktails.length >= page)
+		if (boxes.length >= this.pageLength)
 		{
-			for (var j = 0; j < page; j++)
-			{
-				// we can't use getCocktailPreviewNode() here
-				// because it returns the same node in every call
-				// but we need a copy
-				var preview = cocktails[j].getPreviewNode()
-				surface.appendChild(preview)
-			}
 			root.removeClassName('single')
 			
-			var clientWidth = preview.clientWidth
-			this.scroller.setWidth(clientWidth * i)
-			this.wave.setup(clientWidth, this.soft, this.friction)
+			var last = boxes[realCount - 1]
+			this.scroller.setWidth(last.x + last.w)
+			this.wave.setup(last.w, this.soft, this.friction)
 			scroller.setMovable(true)
 		}
 		else
@@ -127,29 +102,6 @@ Me.prototype =
 			root.addClassName('single')
 			scroller.setMovable(false)
 		}
-		
-		this.setupVisibilityFrame(root, nodes)
-		
-		// console.timeEnd('render')
-	},
-	
-	setupVisibilityFrame: function (root, nodes)
-	{
-		
-		var boxes = Boxer.sameNodesToBoxes(nodes, root)
-		
-		var frame = this.frame,
-			frameWidth = root.offsetWidth,
-			timer
-		this.scroller.onscroll = function (x, realX)
-		{
-			clearTimeout(timer)
-			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, 100)
-		}
-		
-		frame.setFrame(frameWidth * 3, root.offsetHeight)
-		frame.setBoxes(boxes)
-		frame.moveTo(0, 0)
 	},
 	
 	navigate: function ()
