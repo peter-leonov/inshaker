@@ -140,40 +140,10 @@ var myProto =
 	
 	setupVisibilityFrame: function (nodes)
 	{
-		var begin = new Date()
-		
 		if (!nodes.length)
 			return
 		
-		var node = nodes[0]
-		
-		var width = node.offsetWidth,
-			height = node.offsetHeight
-		
-		var lastParent, position, boxes = []
-		for (var i = 0, il = nodes.length; i < il; i++)
-		{
-			var node = nodes[i],
-				parent = node.offsetParent
-			
-			if (parent !== lastParent)
-			{
-				lastParent = parent
-				position = parent.offsetPosition()
-			}
-			
-			var left = node.offsetLeft + position.left,
-				top = node.offsetTop + position.top
-			
-			boxes[i] =
-			{
-				x: left,
-				y: top,
-				w: width,
-				h: height,
-				node: node
-			}
-		}
+		var boxes = Boxer.sameNodesToBoxes(nodes)
 		
 		var frame = new VisibilityFrame()
 		frame.setFrame(4000, 1500) // hardcoded for now

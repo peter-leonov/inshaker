@@ -135,34 +135,14 @@ Me.prototype =
 	
 	setupVisibilityFrame: function (root, nodes)
 	{
+		
+		var boxes = Boxer.sameNodesToBoxes(nodes, root)
+		
 		var frame = this.frame,
-			boxes = []
-		
-		var first = nodes[0]
-		if (first)
-		{
-			var width = first.offsetWidth,
-				height = first.offsetHeight
-			
-			for (var i = 0, il = nodes.length; i < il; i++)
-			{
-				boxes[i] =
-				{
-					x: width * i,
-					y: 0,
-					w: width,
-					h: height,
-					node: nodes[i]
-				}
-			}
-		}
-		
-		var frameWidth = root.offsetWidth
-		
-		var timer
+			frameWidth = root.offsetWidth,
+			timer
 		this.scroller.onscroll = function (x, realX)
 		{
-			// frame.moveTo(realX, 0)
 			clearTimeout(timer)
 			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, 100)
 		}

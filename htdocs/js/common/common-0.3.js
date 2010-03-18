@@ -18,6 +18,7 @@ Oops.maybeEnable()
 <!--# include virtual="/lib-0.3/widgets/infinite-scroller.js" -->
 <!--# include virtual="/lib-0.3/modules/gridder.js"-->
 <!--# include virtual="/lib-0.3/modules/visibility-frame.js"-->
+<!--# include virtual="/lib-0.3/modules/boxer.js"-->
 
 
 <!--# include file="/js/common/analytics.js" -->
