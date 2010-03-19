@@ -62,7 +62,7 @@ var myProto =
 				var item = Nc('li', 'item')
 				surface.appendChild(item)
 				
-				var preview = good.getPreviewNode(true)
+				var preview = good.getPreviewNode()
 				item.appendChild(preview)
 				
 				item.appendChild(Nc('div', 'mark'))
@@ -105,7 +105,7 @@ var myProto =
 		{
 			for (var i = 0; i < page; i++)
 			{
-				var promo = good.getPromoNode(i, true)
+				var promo = good.getPromoNode(i)
 				surface.appendChild(promo)
 				nodes.push(promo)
 			}
