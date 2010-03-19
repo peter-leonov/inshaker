@@ -32,15 +32,16 @@ var myProto =
 		{
 			var good = goods[i]
 			
-			var item = nodes[i] = Nc('li', 'item')
+			var item = Nc('li', 'item')
 			surface.appendChild(item)
+			
+			var preview = good.getPreviewNode(true)
+			item.appendChild(preview)
 			
 			item.appendChild(Nc('div', 'mark'))
 			
-			var preview = good.getPreviewNode()
-			item.appendChild(preview)
-			
 			previewsCache[good.name] = item
+			nodes.push(item)
 		}
 		
 		var page = this.previewsPageLength,
@@ -54,12 +55,13 @@ var myProto =
 				var item = Nc('li', 'item')
 				surface.appendChild(item)
 				
-				item.appendChild(Nc('div', 'mark'))
-				
-				var preview = good.getPreviewNode()
+				var preview = good.getPreviewNode(true)
 				item.appendChild(preview)
 				
+				item.appendChild(Nc('div', 'mark'))
+				
 				previewsGhostsCache[good.name] = item
+				nodes.push(item)
 			}
 		}
 		
@@ -67,6 +69,13 @@ var myProto =
 		var list = new LazyList()
 		list.bind(previews)
 		list.configure({pageLength: 4, pageVelocity: 42})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
+			{
+				nodes[i].firstChild.lazyLoad()
+			}
+		}
 		list.setNodes(nodes, goods.length)
 	},
 	

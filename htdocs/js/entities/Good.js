@@ -11,13 +11,31 @@ function Me (data)
 	this.constructor = Me
 }
 
+function lazyLoad ()
+{
+	var url = this.lazyBackgroundImage
+	if (url)
+	{
+		this.lazyBackgroundImage = null
+		this.style.backgroundImage = url
+		this.removeClassName('lazy')
+	}
+}
+
 Me.prototype =
 {
 	getPreviewNode: function (lazy)
 	{
 		var link = Nct('a', lazy ? 'good-preview lazy' : 'good-preview', this.name)
 		link.href = '/good/' + this.path + '/'
-		link.style.backgroundImage = 'url(/good/' + this.path + '/mini.png)'
+		var backgroundImage = 'url(/good/' + this.path + '/mini.png)'
+		if (lazy)
+			link.lazyBackgroundImage = backgroundImage
+		else
+			link.style.backgroundImage = backgroundImage
+		
+		link.lazyLoad = lazyLoad
+		
 		return link
 	}
 }
