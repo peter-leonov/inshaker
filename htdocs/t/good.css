@@ -32,7 +32,7 @@
 .goods-previews .next { right: 0; }
 html.loading .goods-previews .viewport { display: none; }
 
-.good-promos { margin: 5px 0 0 1px } 
+.good-promos { margin: 5px 0 0 1px; -moz-user-select: none; -webkit-user-select: none; user-select: none; } 
 .good-promos .viewport,
 .good-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
 .good-promos .viewport .point { float: left; width: 920px; height: 100%; }

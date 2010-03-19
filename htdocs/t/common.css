@@ -141,7 +141,7 @@ b.rb { right: 0; bottom: 0; }
 .b-more .b-more-rec li{width:130px;}
 
 .square-list .next,
-.square-list .prev { display: block; width: 20px; height: 20px; }
+.square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 .square-list .prev { background-position: -450px 0; }
 .square-list .next { background-position: -475px 0; }
 .square-list .prev.disabled,
