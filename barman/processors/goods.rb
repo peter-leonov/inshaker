@@ -126,7 +126,7 @@ class GoodsProcessor < Barman::Processor
       FileUtils.mkdir_p [full_path]
       dst_dir = Dir.new(full_path)
       
-      count = good["images"] = update_images(good_dir, dst_dir)
+      count = good["promos"] = update_images(good_dir, dst_dir)
       if count == 0
         error "не нашел ни одной большой картинки (начал искать с big-1.jpg)"
       else
@@ -153,7 +153,7 @@ class GoodsProcessor < Barman::Processor
     
     counter = 0
     while 1
-      name = "big-#{counter+1}.jpg"
+      name = "promo-#{counter+1}.jpg"
       break unless File.exists? src.path + '/' + name
       cp_if_different src.path + '/' + name, dst.path + "/" + name
       counter += 1
@@ -168,7 +168,6 @@ class GoodsProcessor < Barman::Processor
       good.delete("desc")
       good.delete("places")
       good.delete("name_full")
-      good.delete("images")
       good.delete("price")
     end
     

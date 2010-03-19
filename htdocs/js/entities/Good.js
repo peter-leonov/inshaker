@@ -11,13 +11,24 @@ function Me (data)
 	this.constructor = Me
 }
 
-function lazyLoad ()
+function lazyLoadPreview ()
 {
 	var url = this.lazyBackgroundImage
 	if (url)
 	{
 		this.lazyBackgroundImage = null
 		this.style.backgroundImage = url
+		this.removeClassName('lazy')
+	}
+}
+
+function lazyLoadPromo ()
+{
+	var url = this.lazySrc
+	if (url)
+	{
+		this.lazySrc = null
+		this.src = url
 		this.removeClassName('lazy')
 	}
 }
@@ -34,9 +45,20 @@ Me.prototype =
 		else
 			link.style.backgroundImage = backgroundImage
 		
-		link.lazyLoad = lazyLoad
+		link.lazyLoad = lazyLoadPreview
 		
 		return link
+	},
+	
+	getPromoNode: function (num, lazy)
+	{
+		var image = Nc('img', lazy ? 'good-promo lazy' : 'good-promo')
+		
+		image[lazy ? 'lazySrc' : 'src'] = '/good/' + this.path + '/promo-' + (num + 1) + '.jpg'
+		
+		image.lazyLoad = lazyLoadPromo
+		
+		return image
 	}
 }
 

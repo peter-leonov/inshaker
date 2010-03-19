@@ -48,6 +48,14 @@ function onready ()
 			next: $$('.goods-previews .next')[0],
 			viewport: $$('.goods-previews .viewport')[0],
 			surface: $$('.goods-previews .surface')[0]
+		},
+		promos:
+		{
+			root: $$('.good-promos')[0],
+			prev: $$('.good-promos .prev')[0],
+			next: $$('.good-promos .next')[0],
+			viewport: $$('.good-promos .viewport')[0],
+			surface: $$('.good-promos .surface')[0]
 		}
 	}
 	

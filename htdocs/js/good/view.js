@@ -7,6 +7,7 @@ eval(NodesShortcut.include())
 var myProto =
 {
 	previewsPageLength: 4,
+	promosPageLength: 1,
 	
 	initialize: function ()
 	{
@@ -18,6 +19,12 @@ var myProto =
 	{
 		this.nodes = nodes
 		this.controller.selectGoodByName(this.nodes.name.firstChild.nodeValue)
+	},
+	
+	selectGood: function (good)
+	{
+		this.selectGoodPreview(good)
+		this.renderPromos(good)
 	},
 	
 	renderPreviews: function (goods)
@@ -48,9 +55,9 @@ var myProto =
 			previewsGhostsCache = this.cache.previewsGhosts
 		if (goods.length >= page)
 		{
-			for (var j = 0; j < page; j++)
+			for (var i = 0; i < page; i++)
 			{
-				var good = goods[j]
+				var good = goods[i]
 				
 				var item = Nc('li', 'item')
 				surface.appendChild(item)
@@ -77,6 +84,44 @@ var myProto =
 			}
 		}
 		list.setNodes(nodes, goods.length)
+	},
+	
+	renderPromos: function (good)
+	{
+		var promos = this.nodes.promos, surface = promos.surface, viewport = promos.viewport
+		
+		surface.empty()
+		
+		var nodes = []
+		for (var i = 0, il = good.promos; i < il; i++)
+		{
+			var promo = good.getPromoNode(i, true)
+			surface.appendChild(promo)
+			nodes.push(promo)
+		}
+		
+		var page = this.promosPageLength
+		if (good.promos >= page)
+		{
+			for (var i = 0; i < page; i++)
+			{
+				var promo = good.getPromoNode(i, true)
+				surface.appendChild(promo)
+				nodes.push(promo)
+			}
+		}
+		
+		var list = new LazyList()
+		list.bind(promos)
+		list.configure({pageLength: 1, friction: 12, pageVelocity: 62, soft: 10})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
+			{
+				nodes[i].lazyLoad()
+			}
+		}
+		list.setNodes(nodes, good.promos)
 	},
 	
 	selectGoodPreview: function (good)

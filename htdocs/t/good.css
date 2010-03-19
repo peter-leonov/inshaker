@@ -24,7 +24,6 @@
 .goods-previews,
 .goods-previews .viewport { position: relative; width: 920px; height: 161px; }
 .goods-previews .viewport { width: 816px; overflow: hidden; margin-left: 52px; }
-.goods-previews .viewport .point { float: left; width: 855px; height: 100%; }
 .goods-previews .viewport .surface { width: 4000px; padding: 0;}
 .goods-previews .prev,
 .goods-previews .next { z-index:3; position:absolute; left:auto; top:41px; right:19px; }
@@ -32,10 +31,10 @@
 .goods-previews .next { right: 0; }
 html.loading .goods-previews .viewport { display: none; }
 
+.good-promos .good-promo { float: left; width: 920px; height: 100%; }
 .good-promos { margin: 5px 0 0 1px; -moz-user-select: none; -webkit-user-select: none; user-select: none; } 
 .good-promos .viewport,
 .good-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
-.good-promos .viewport .point { float: left; width: 920px; height: 100%; }
 .good-promos .viewport .surface { width: 10000px; height:100%;}
 .good-promos .prev,
 .good-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
