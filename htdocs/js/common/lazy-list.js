@@ -114,7 +114,7 @@ Me.prototype =
 			
 			var last = boxes[realCount - 1]
 			this.scroller.setWidth(last.x + last.w)
-			this.wave.setup(last.w, conf.soft, conf.min || conf.friction)
+			this.wave.setup(last.w, conf.soft, conf.min !== undefined ? conf.min : conf.friction)
 			scroller.setMovable(true)
 		}
 		else

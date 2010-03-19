@@ -113,7 +113,7 @@ var myProto =
 		
 		var list = new LazyList()
 		list.bind(promos)
-		list.configure({pageLength: 1, friction: 100, pageVelocity: 43, soft: 100, min: 25})
+		list.configure({pageLength: 1, friction: 100, pageVelocity: 43.396, soft: Infinity, min: 0})
 		list.load = function (nodes)
 		{
 			for (var i = 0, il = nodes.length; i < il; i++)
