@@ -16,7 +16,7 @@ Array.prototype.shuffled = function() {
 }
 
 
-Cocktail = function (data)
+var Cocktail = function (data)
 {
 	for (var k in data)
 		this[k] = data[k]
