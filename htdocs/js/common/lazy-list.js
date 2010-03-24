@@ -37,6 +37,10 @@ Me.prototype =
 	configure: function (conf)
 	{
 		Object.extend(this.conf, conf)
+		
+		conf = this.conf
+		if (conf.min === undefined)
+			conf.min = conf.friction
 	},
 	
 	bind: function (nodes, cocktails)
@@ -114,7 +118,7 @@ Me.prototype =
 			
 			var last = boxes[realCount - 1]
 			this.scroller.setWidth(last.x + last.w)
-			this.wave.setup(last.w, conf.soft, conf.min !== undefined ? conf.min : conf.friction)
+			this.wave.setup(last.w, conf.soft, conf.min)
 			scroller.setMovable(true)
 		}
 		else
