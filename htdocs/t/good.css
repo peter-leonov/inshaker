@@ -64,6 +64,9 @@ html.loading .goods-previews .viewport { display: none; }
 #places .phone {display:block; }
 #ask-barmen {margin-top:120px; width:600px; font-size:19px }
 
+.good-promos .viewport,
+.goods-previews .viewport { cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE/" -->
 .goods-previews .item.selected .mark { top: 147px;}
 <!--# endif -->
