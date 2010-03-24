@@ -15,7 +15,7 @@ function Me ()
 		friction: 60,
 		
 		// how much soften will wave be
-		soft: 7,
+		soft: 10,
 		
 		// steps of the gridder, defaults are nive enough
 		stepX: 500,
@@ -40,7 +40,7 @@ Me.prototype =
 		
 		conf = this.conf
 		if (conf.min === undefined)
-			conf.min = conf.friction
+			conf.min = conf.friction * 2
 	},
 	
 	bind: function (nodes, cocktails)
