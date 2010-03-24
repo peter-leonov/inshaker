@@ -13,6 +13,7 @@ var myProto =
 	{
 		this.nodes = {}
 		this.cache = {previews: {}, previewsGhosts: {}}
+		this.previewsList = new LazyList()
 	},
 	
 	bind: function (nodes)
@@ -73,7 +74,7 @@ var myProto =
 		}
 		
 		
-		var list = new LazyList()
+		var list = this.previewsList
 		list.bind(previews)
 		list.configure({pageLength: 4, pageVelocity: 45})
 		list.load = function (nodes)
@@ -128,7 +129,10 @@ var myProto =
 	{
 		var item = this.cache.previews[good.name]
 		if (item)
+		{
 			item.addClassName('selected')
+			this.previewsList.jumpToNode(item)
+		}
 		
 		var item = this.cache.previewsGhosts[good.name]
 		if (item)
