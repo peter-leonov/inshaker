@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.boxes = []
 	this.conf =
 	{
 		// precalculated velocity that must be applied to go to the next page
@@ -91,7 +92,7 @@ Me.prototype =
 		var n = this.nodes, root = n.root, surface = n.surface, viewport = n.viewport,
 			conf = this.conf
 		
-		var boxes = Boxer.sameNodesToBoxes(nodes, viewport)
+		var boxes = this.boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
 		var frame = this.frame,
 			frameWidth = viewport.offsetWidth,
@@ -112,7 +113,7 @@ Me.prototype =
 		var scroller = this.scroller
 		scroller.reset()
 		
-		if (boxes.length >= conf.pageLength)
+		if (realCount >= conf.pageLength)
 		{
 			root.removeClassName('single')
 			
@@ -147,6 +148,25 @@ Me.prototype =
 	{
 		this.scroller.setVelocity(this.conf.pageVelocity, 0)
 		this.scroller.run()
+	},
+	
+	jumpToNode: function (node)
+	{
+		var boxes = this.boxes
+		SEARCH:
+		{
+			for (var i = 0, il = boxes.length; i < il; i++)
+			{
+				var box = boxes[i]
+				if (box.node == node)
+					break SEARCH
+			}
+			return
+		}
+		
+		var box = boxes[i - i % this.conf.pageLength]
+		if (box)
+			this.scroller.setX(box.x)
 	}
 }
 
