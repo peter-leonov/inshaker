@@ -12,7 +12,7 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 600px; height: 520px; left: 35px; bottom: -735px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #840813; }
+#top .nav a:hover { border-bottom-color: #8b6; }
 #bottom { color: #888; }
 #bottom a { color: #000; }
 html { background: #fff url(bg.png) repeat-x center top; }
@@ -28,7 +28,7 @@ button.strong b { text-shadow: 1px 1px 0 #bbb; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b { color: #890814; }
+#cart_draghere b { color: #684; }
 
 /* cocktails.css */
 .square-list .prev,
