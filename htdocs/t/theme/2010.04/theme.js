@@ -1,4 +1,4 @@
 {
-	"spotlighted":{"href":"/cocktails.html#state=byIngredients&marks=Angostura"},
-	"branded-image":{"href":"/cocktails.html#state=byIngredients&marks=Angostura"}
+	"spotlighted":{"href":"/cocktail/vodka_with_pears/"},
+	"branded-image":{"href":"/cocktail/vodka_with_pears/"}
 }
