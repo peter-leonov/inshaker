@@ -489,9 +489,9 @@ EventPage.view =
 			var label = N('label')
 			var input = N('input')
 			input.type = 'text'
-			input.name = field
+			input.name = field.name || field.label
 			
-			label.appendChild(T(field + ':'))
+			label.appendChild(T(field.label + ':'))
 			label.appendChild(input)
 			
 			root.appendChild(label)

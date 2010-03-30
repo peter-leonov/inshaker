@@ -163,6 +163,18 @@ private
     
     @entity[:rating]    = {}
     
+    fields = []
+    if @entity[:fields]
+      @entity[:fields].each do |label|
+        if label.match(/(.*)\s+@(\w+)\s*$/)
+          fields << {"label" => $1, "name" => $2}
+        else
+          fields << {"label" => label}
+        end
+      end
+    end
+    @entity[:fields] = fields
+    
     out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
     
     arr = []
