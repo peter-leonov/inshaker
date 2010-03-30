@@ -85,14 +85,10 @@
 <div id="form-popup">
 	<div id="overlay"></div>
 	<div class="content">
-		<p class="menu"><a class="button">X</a><a class="text">Закрыть</a></p>
+		<p class="menu"><a class="button">×</a><a class="text">Закрыть</a></p>
 		<form action="/act/event-form.cgi" method="post" target="ajax">
 			<div class="fields">
 				<h2>Хочу посетить мероприятие!</h2>
-				<label>Мой город:<input type="text" name="city"/></label>
-				<label>Имя:<input type="text" name="first"/></label>
-				<label>Фамилия:<input type="text" name="second"/></label>
-				<label>Мой e-mail:<input type="text" name="email"/></label>
 				<div class="variable"></div>
 				<p class="limit"> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
