@@ -201,12 +201,16 @@ function CocktailsModel (states, view) {
 			return
 		}
 		
-		var idx = this.filters.ingredients.indexOf(name);
+		var ingredient = Ingredient.getByNameCI(name)
+		if (!ingredient)
+			return
+		
+		var idx = this.filters.ingredients.indexOf(ingredient.name);
 		if (remove) {
 			this.filters.ingredients.splice(idx, 1);
 		} else if (idx == -1){
-			this.filters.ingredients.push(name);
-			Statistics.ingredientTypedIn(Ingredient.getByName(name))
+			this.filters.ingredients.push(ingredient.name);
+			Statistics.ingredientTypedIn(ingredient)
 		} else return; // duplicate entry
 		this.applyFilters();
 	};
