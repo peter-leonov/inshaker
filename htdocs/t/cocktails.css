@@ -96,6 +96,8 @@
 .b-content {width:100%;}
 #b_search {display:none;}
 #results_display {/*padding-left: 23px;*/}
+#results_display .empty-result { display: none; position: absolute; left: 200px; top: 158px; width: 230px; text-align: center; font-size: 15px; }
+#results_display.empty .empty-result { display: block; }
 #results_display .viewport {width:585px;margin-left:0px; }
 #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
 .byIngredients #results_display .viewport {width:440px;margin-left: 145px; }
