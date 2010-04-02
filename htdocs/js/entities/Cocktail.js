@@ -16,7 +16,7 @@ Array.prototype.shuffled = function() {
 }
 
 
-Cocktail = function (data)
+var Cocktail = function (data)
 {
 	for (var k in data)
 		this[k] = data[k]
@@ -121,45 +121,6 @@ Object.extend(Cocktail,
 	getByName: function (name) { return this.byName[name] },
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
-	
-	getBySimilarNameCache: {},
-	getBySimilarName: function (name)
-	{
-		if (this.getBySimilarNameCache[name])
-			return this.getBySimilarNameCache[name]
-			
-		var words = name.split(/\s+/),
-			res = [], db = this.db
-		
-		for (var i = 0; i < words.length; i++)
-			words[i] = new RegExp("(?:^|\\s)" + words[i], "i")
-		
-		var first = words[0], jl = words.length
-		SEARCH: for (var i = 0; i < db.length; i++)
-		{
-			var cocktail = db[i], name
-			
-			if (first.test(cocktail.name))
-				name = cocktail.name
-			else if (first.test(cocktail.name_eng))
-				name = cocktail.name_eng
-			else
-				continue SEARCH
-			
-			for (var j = 1; j < jl; j++)
-				if (!words[j].test(name))
-					continue SEARCH
-			
-			res.push(cocktail)
-		}
-		return (this.getBySimilarNameCache[name] = res)
-	},
-	
-	getByHtmlName: function(htmlName){
-		for(var i = 0; i < this.db.length; i++){
-			if(this.db[i].name_eng.htmlName() == htmlName) return this.db[i];
-		}
-	},
 	
 	getByLetterCache: {},
 	getByLetter: function (letter, set)

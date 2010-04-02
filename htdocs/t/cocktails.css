@@ -7,8 +7,8 @@
 
 #search_by_letter a {text-decoration:none; font-size: 14px;}
 #letters_all{float:left; width: 40px; text-align:center;}
-#alphabetical-ru {float:right; overflow:hidden; width:535px; margin-top:2px;}
-#alphabetical-ru a {float:left; display:block; width:18px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
+#alphabetical-ru { overflow: hidden; position: absolute; right: 8px; top: 6px; }
+#alphabetical-ru a {float:left; display:block; width:17px; height: 18px; line-height:15px; text-align:center; padding-left:1px;}
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
 .search-control { z-index: 10; position: relative; }
@@ -96,6 +96,10 @@
 .b-content {width:100%;}
 #b_search {display:none;}
 #results_display {/*padding-left: 23px;*/}
+#results_display .empty-result-by-ingredients,
+#results_display .empty-result-by-name { display: none; position: absolute; left: 200px; top: 158px; width: 230px; text-align: center; font-size: 15px; }
+.byIngredients #results_display.empty .empty-result-by-ingredients { display: block; }
+.byName #results_display.empty .empty-result-by-name { display: block; }
 #results_display .viewport {width:585px;margin-left:0px; }
 #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
 .byIngredients #results_display .viewport {width:440px;margin-left: 145px; }

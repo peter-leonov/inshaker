@@ -75,6 +75,10 @@ button.strong b { text-shadow: 1px 1px 0 #cbb; }
 #top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
 #top-alphabetical .item.selected .name { color: #fff; }
 
+/* ingredients.css */
+#menu .tweaker .list .item.selected,
+#menu .tweaker .list .item.selected:hover { background-color: #888; }
+
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
 

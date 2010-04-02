@@ -255,6 +255,10 @@ function CalculatorView() {
 	};
 	
 	this.renderCart = function(cartData){
+		// FIXME: dirty fix for too early call for renderCart()
+		if (!$(this.ID_CONTENTS).style)
+			return
+		
 		if(cartData.cocktails.length > 0) {
 			$(this.ID_CONTENTS).style.display = "block";
 			$(this.ID_TOTALS).style.display = "block";

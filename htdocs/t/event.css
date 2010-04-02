@@ -100,19 +100,19 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 /*#templates { position: absolute; left: 0; top: 0; z-index: 10; }*/
 
 #form-popup { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
-#form-popup .content { position: relative; z-index: 10; width: 495px; margin: 0 auto; top: 64px; }
+#form-popup .content { position: relative; z-index: 10; width: 600px; margin: 0 auto; top: 64px; }
 #form-popup .content form .thanks,
 #form-popup .content form .holding,
-#form-popup .content h2 { font-size: 27px; color: #f22b9f; font-style: italic; font-weight: bold; }
-#form-popup .content h2 { margin: 0 0 32px; }
+#form-popup .content h2 { font-size: 27px; color: #f22b9f; font-weight: bold; }
+#form-popup .content h2 { margin: 0 0 20px; }
 #form-popup .content .menu { margin: 0 0 20px 0; }
 #form-popup .content .menu .text,
 #form-popup .content .menu .button { color: #fff; text-decoration: none; }
 #form-popup .content .menu .text { border-bottom: 1px dashed; }
-#form-popup .content .menu .button { float: right; padding: 6px; margin: 0 -6px 0 0; cursor: pointer; }
-#form-popup .content form { position: relative; font-family: Arial; display: block; padding: 18px 30px 30px; background: #fff; border: #8fdaec solid 5px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
+#form-popup .content .menu .button { float: right; padding: 6px; margin: -6px -9px 0 0; font-size: 18px; cursor: pointer; }
+#form-popup .content form { position: relative; font-family: Arial; display: block; padding: 23px 40px 35px; background: #fff; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
 #form-popup .content form.sending .fields { opacity: 0.75; }
-#form-popup .content form label { position: relative; width: 180px; margin: 0 0 17px; font-size: 18px; color: #333; font-style: italic; font-weight: bold; }
+#form-popup .content form label { position: relative; width: 280px; margin: 0 0 17px; font-size: 18px; color: #333; font-weight: bold; }
 #form-popup .content form label input { position: absolute; width: 280px; right: -240px; font-size: 16px; padding: 0px 6px 3px; }
 #form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
 #form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }

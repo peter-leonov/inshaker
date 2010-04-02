@@ -68,10 +68,3 @@ Element.prototype.show = function () { this.remClassName('hidden') }
 <!--# include file="/lib/Programica/WindowName.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 <!--# include file="/lib/Widgets/Selecter.js" -->
-
-<!--# include file="/lib/Programica/Request.js" -->
-<!--# include file="/lib/Programica/Form.js" -->
-
-<!--# include file="/lib/Programica/Widget.js" -->
-<!--# include file="/lib/Widgets/FormPoster.js" -->
-

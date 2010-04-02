@@ -111,7 +111,9 @@ var Controller = {
 					this.parentNode.now.remClassName('now');
 					// this.addClassName('now');
 					this.parentNode.now = this;
-					$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
+					var ri = $(self.ID_ING).RollingImagesLite
+					if (ri)
+						ri.goInit(); // Work-around for RI: FIXME
 					e.preventDefault();
 				}, false);
 		}
@@ -121,12 +123,21 @@ var Controller = {
 		viewHowBtn.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
-			$(self.ID_ING).RollingImagesLite.goInit(); // Work-around for RI: FIXME
+			var ri = $(self.ID_ING).RollingImagesLite
+			if (ri)
+				ri.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
 		var tools_links = cssQuery(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
-			var tool = tools_links[i].innerHTML;
+			var tool = Tool.getByName(tools_links[i].innerHTML)
+			// FIXME: dirty fix for invalid tool name
+			// was cached in html while js had been updated
+			if (!tool)
+			{
+				tools_links[i].parentNode.hide()
+				continue
+			}
 			tools_links[i].addEventListener('click', function(name){ return function(e){	
 				$(self.TOOL_POPUP).show();
 				self.renderToolPopup(name);
@@ -143,10 +154,6 @@ var Controller = {
 		
         $('tool_cancel').addEventListener('mousedown', function(e){
 			$(self.TOOL_POPUP).hide();
-		}, false);
-	
-    	$('good_cancel').addEventListener('mousedown', function(e){
-			$('order_note').hide();
 		}, false);
     },
 	
@@ -170,40 +177,9 @@ var Controller = {
 		
 		$('good_desc').innerHTML = good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
-
-		var volsNode = $('good_volumes'); 
-        volsNode.empty();
-		var summ = 0;
-		var have = 0;
-		var self = this;
-		
-		for(var i = 0; i < good.volumes.length; i++){
-			if(good.volumes[i][2]) {
-				var dl         = document.createElement("dl");
-				var dt         = document.createElement("dt");
-				var a          = document.createElement("a");
-				var dd         = document.createElement("dd");
-				var strong     = document.createElement("strong");
-				
-				a.innerHTML = GoodHelper.bottleTxt(ingred, good.unit, good.volumes[i][0]) + GoodHelper.normalVolumeTxt(good.volumes[i][0], good.unit);
-				a.addEventListener('mousedown', function(j) { return function(e) {
-					self.setPicture(ingred, good, good.volumes[j]);
-				}}(i), false);
-				
-				strong.innerHTML = good.volumes[i][1] + " р.";            	
-				dl.appendChild(dt);
-				dt.appendChild(a);
-				dl.appendChild(dd);
-				dd.appendChild(strong);
-				volsNode.appendChild(dl);
-			}
-		}
-		if(!Calculator.isIngredientPresent(ingred)) $('order_note').show();
-		else $('order_note').hide();
 	},
 	
-	renderToolPopup: function(name){
-		var tool = Tool.getByName(name);
+	renderToolPopup: function(tool){
 		Statistics.toolPopupOpened(tool)
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;

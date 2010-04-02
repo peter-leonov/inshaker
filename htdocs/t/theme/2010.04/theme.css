@@ -1,0 +1,128 @@
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 600px; height: 520px; left: 35px; bottom: -735px; }
+#branded-image-holder { height: 900px; }
+a { color: #000; }
+#top .nav a:hover { border-bottom-color: #8b6; }
+#bottom { color: #888; }
+#bottom a { color: #000; }
+html { background: #fff url(bg.png) repeat-x center top; }
+button.rounded { color: #fff; }
+button.rounded b { text-shadow: 1px 1px 0 #897; }
+button.strong { color: #444; }
+button.strong b { text-shadow: 1px 1px 0 #bbb; }
+
+/* calculator.css */
+#b-bill dt,
+#b-bill dd li button,
+#b-bill .print-call i,
+#cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
+#b-bill dt { color: #fff; font-weight: bold; }
+#b-bill dd input { background-color: #eee; }
+#cart_draghere b { color: #684; }
+
+/* cocktails.css */
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
+#search_tabs li,
+#alphabetical-ru a.selected-button,
+.ingreds-list,
+.ingreds-list .rem,
+.pager-big .prev,
+.pager-big .next,
+.b-content .pager .p-list a.selected-button,
+#all_list i,
+.b-search .groups dd.selected-button,
+.b-title #spotlighted,
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
+#results_display a {}
+#spotlighted { width: 83px; height: 38px; right: 0; top: -8px; }
+#letters_all,
+#alphabetical-ru a { color: #fff; }
+#alphabetical-ru a.selected-button { color: #684; }
+#search_tabs li { color: #000; }
+#search_tabs li.selected { color: #fff; }
+.ingreds-list a { color: #fff; }
+.pager-big .prev,
+.pager-big .next { width: 23px; height: 25px; }
+.b-content .pager .p-list a { padding: 2px 6px 3px; }
+.b-content .pager .p-list a.two { padding: 2px 3px 3px; }
+.b-content .pager .p-list .selected-button { color: #fff; }
+#b-bill dd li b { color: #888; }
+.search-form input { color: #362313; }
+.b-search .groups dd { color: #231f20; }
+.b-search .groups dd.selected-button { color: #f1ece3; }
+.b-search .groups dd.disabled { color: #999; }
+.autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #570709; }
+.autocomplete .item.selected { background-color: #d2d2d2; }
+
+/* cocktail.css */
+.b-more dt,
+.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); }
+.b-more dt b { color: #fff; }
+.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* matching.css */
+#top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
+#top-alphabetical .item.selected .name { color: #fff; }
+
+/* ingredients.css */
+#menu .tweaker .list .item.selected,
+#menu .tweaker .list .item.selected:hover { background-color: #8c2; }
+
+/* about.css */
+#form_success i { background-repeat: no-repeat; background-image: url(common.png); }
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-image: url(common.8.png); }
+#alcohol-harm { background-image: url(alcohol-harm.8.png); }
+#branded-image { background-image: url(image.8.png); }
+
+/* calculator.css */
+#b-bill dt,
+#b-bill dd li button,
+#b-bill .print-call i,
+#cart_draghere i { background-image: url(common.8.png); }
+
+/* cocktails.css */
+.square-list .prev,
+.square-list .next { background-image: url(common.8.png) }
+#search_tabs li,
+#alphabetical-ru a.selected-button,
+.ingreds-list,
+.ingreds-list .rem,
+.pager-big .prev,
+.pager-big .next,
+.b-content .pager .p-list a.selected-button,
+#all_list i,
+.b-search .groups dd.selected-button,
+.b-title #spotlighted,
+.search-control { background-image: url(cocktails.8.png) }
+
+/* cocktail.css */
+.b-more dt,
+.b-more dt b { background-image: url(cocktail.8.png); }
+.hreview .desc h2 i { background-image: url(common.8.png); }
+
+/* matching.css */
+#top-alphabetical .item.selected { background-image: url(ingredients.8.png) }
+<!--# endif -->

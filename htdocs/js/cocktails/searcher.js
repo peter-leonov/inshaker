@@ -44,7 +44,7 @@ Me.prototype.extend
 	
 	searchInSet: function (set, names, substr, count)
 	{
-		var rex = new RegExp('(^|.*\\s)((' + substr + ')(.*?))(\\s.*|$)', 'i'),
+		var rex = new RegExp('(^|.*\\s)((' + RegExp.escape(substr) + ')(.*?))(\\s.*|$)', 'i'),
 			matches = [], res = []
 		
 		for (var i = 0, il = set.length; i < il; i++)
