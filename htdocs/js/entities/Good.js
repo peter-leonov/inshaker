@@ -72,6 +72,41 @@ var staticMethods =
 		this.db = db
 	},
 	
+	bySellIndex: null,
+	getBySellName: function (name)
+	{
+		var index = this.bySellIndex
+		if (!index)
+		{
+			index = this.bySellIndex = {}
+			
+			var db = this.db
+			
+			for (var i = 0, il = db.length; i < il; i++)
+			{
+				var item = db[i],
+					sell = item.sell
+				
+				if (!sell)
+					continue
+				
+				for (var j = 0, jl = sell.length; j < jl; j++)
+				{
+					var v = sell[j]
+					
+					var arr = index[v]
+					if (arr)
+						arr.push(item)
+					else
+						index[v] = [item]
+				}
+				index[item.name] = item
+			}
+		}
+		
+		return index[name] || []
+	},
+	
 	byNameIndex: null,
 	getByName: function (name)
 	{
