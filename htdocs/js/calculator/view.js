@@ -506,6 +506,7 @@ function CalculatorView() {
 		this.itemFromPopup = [cloneObject(item), name];
 		item = cloneObject(item);
 		
+		var good = Good.getBySellName(name)[0]
 		
 		$('good_name').innerHTML = item.good.brand || name;
 		if(item.good.mark){ // branded
@@ -521,6 +522,15 @@ function CalculatorView() {
 			$('good_ingredient').href = GoodHelper.ingredientLink(name);
             $('good_ingredient').addEventListener('click', clicker, false);
 		} else $('good_composition').style.display = "none";
+		
+		if (good)
+		{
+			$('good_buy').parentNode.show()
+			$('good_buy').href = good.getHref()
+			$('good_buy').innerHTML = good.name
+		}
+		else
+			$('good_buy').parentNode.hide()
 		
 		$('good_desc').innerHTML = item.good.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
