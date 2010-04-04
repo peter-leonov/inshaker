@@ -14,6 +14,8 @@ Oops.maybeEnable()
 <!--# include file="/lib/Programica/Sizzle.js" -->
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 
+<!--# include virtual="/lib-0.3/modules/nodes.js" -->
+
 <!--# include file="/js/common/analytics.js" -->
 <!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/rutils.js" -->
