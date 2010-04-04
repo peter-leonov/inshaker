@@ -91,7 +91,7 @@ class GoodsProcessor < Barman::Processor
       path = good["path"] = good["name_eng"].dirify
       
       if yaml["Что продается"]
-        for_sale = good["sales"] = []
+        for_sale = good["sell"] = []
         yaml["Что продается"].each do |v|
           if @all_ingredients[v] || @all_tools[v]
             for_sale << v
