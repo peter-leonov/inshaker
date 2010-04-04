@@ -1,3 +1,7 @@
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
 Math.roundPrecision = function($num, $precision) {
 	if (isNaN($precision)) $precision = 0;
  	return Math.round(($num * Math.pow(10, $precision))) / Math.pow(10, $precision);

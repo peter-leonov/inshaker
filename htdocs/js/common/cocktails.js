@@ -24,9 +24,3 @@ Array.prototype.uniq = function(){
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
 <!--# include file="/js/common/theme.js" -->
-
-<!--# include file="/js/calculator/model.js" -->
-<!--# include file="/js/calculator/view.js" -->
-<!--# include file="/js/calculator/controller.js" -->
-<!--# include file="/js/calculator/calculator.js" -->
-
