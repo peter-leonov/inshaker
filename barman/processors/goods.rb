@@ -13,7 +13,15 @@ class GoodsProcessor < Barman::Processor
     HTDOCS_ROOT    = HTDOCS_DIR + "good/"
     NOSCRIPT_LINKS = HTDOCS_ROOT + "links.html"
     
-    DB_JS = HTDOCS_DIR + "db/goods.js"
+    DB_JS              = HTDOCS_DIR + "db/goods.js"
+    DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_TOOLS        = HTDOCS_DIR + "db/tools.js"
+  end
+  
+  def initialize
+    super
+    @all_ingredients = {}
+    @all_tools = {}
   end
   
   def job_name
@@ -34,12 +42,30 @@ class GoodsProcessor < Barman::Processor
     
     prepare_dirs
     prepare_renderer
+    prepare_ingredients
+    prepare_tools
     
     process_goods
     
     unless errors?
       flush_links
       flush_json
+    end
+  end
+  
+  def prepare_ingredients
+    if File.exists?(Config::DB_JS_INGREDS)
+      load_json(Config::DB_JS_INGREDS).each do |ingred|
+        @all_ingredients[ingred["name"]] = ingred
+      end
+    end
+  end
+  
+  def prepare_tools
+    if File.exists?(Config::DB_JS_TOOLS)
+      load_json(Config::DB_JS_TOOLS).each do |tool|
+        @all_tools[tool["name"]] = tool
+      end
     end
   end
   
@@ -63,6 +89,18 @@ class GoodsProcessor < Barman::Processor
       good["name"] = good_dir.name
       good["name_eng"] = yaml["По-английски"]
       path = good["path"] = good["name_eng"].dirify
+      
+      if yaml["Что продается"]
+        for_sale = good["sales"] = []
+        yaml["Что продается"].each do |v|
+          if @all_ingredients[v] || @all_tools[v]
+            for_sale << v
+          else
+            error %Q{нет такого ингредиента или штучки "#{v}"}
+          end
+        end
+        say "продается #{for_sale.length} #{for_sale.length.plural("всячина", "всячины", "всячин")}"
+      end
       
       if yaml["Цена"]
         price = good["price"] = {}
