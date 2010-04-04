@@ -97,8 +97,20 @@ var myProto =
 		
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
+		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
 		
 		Statistics.ingredientPopupOpened(ingredient)
+	},
+	
+	renderWhereToBuy: function (popupNodes, ingredient)
+	{
+		var good = Good.getBySellName(ingredient.name)[0]
+		if (good)
+		{
+			popupNodes.ingredientWindow.addClassName('can-buy')
+			popupNodes.buy.appendChild(T(good.name))
+			popupNodes.buy.href = good.getHref()
+		}
 	},
 	
 	renderCocktails: function (popupNodes, cocktails)

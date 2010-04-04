@@ -70,6 +70,7 @@ function onready ()
 			image: $$('#ingredient-info-popup .description .image')[0],
 			mark: $$('#ingredient-info-popup .description .about .mark')[0],
 			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
+			buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
 			allLink: $$('#ingredient-info-popup .description .about .all-cocktails .link')[0],
