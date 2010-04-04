@@ -74,7 +74,7 @@ class CocktailsProcessor < Barman::Processor
   def job
     prepare_dirs
     prepare_templates
-    prepare_goods
+    prepare_ingredients
     prepare_cocktails
     prepare_tags_and_strengths_and_methods
     
@@ -101,7 +101,7 @@ class CocktailsProcessor < Barman::Processor
     @recomendations_renderer = ERB.new(File.read(Config::RECOMENDATIONS_ERB))
   end
   
-  def prepare_goods
+  def prepare_ingredients
     if File.exists?(Config::DB_JS_INGREDS)
       load_json(Config::DB_JS_INGREDS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
