@@ -166,6 +166,8 @@ var Controller = {
 		var ingredient = Ingredient.getByName(name)
 		Statistics.ingredientPopupOpened(ingredient)
 		
+		var good = Good.getBySellName(name)[0]
+		
 		$('good_name').innerHTML = ingredient.brand || name;
 		if(ingredient.mark){ // branded
 			$('good_composition').style.display = "block";
@@ -174,6 +176,15 @@ var Controller = {
 			$('good_ingredient').innerHTML = name;
 			$('good_ingredient').href = GoodHelper.ingredientLink(name);
 		} else $('good_composition').style.display = "none";
+		
+		if (good)
+		{
+			$('good_buy').parentNode.show()
+			$('good_buy').href = good.getHref()
+			$('good_buy').innerHTML = good.name
+		}
+		else
+			$('good_buy').parentNode.hide()
 		
 		$('good_desc').innerHTML = ingredient.desc;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, ingredient);
