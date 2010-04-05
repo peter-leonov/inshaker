@@ -192,6 +192,18 @@ var Controller = {
 	
 	renderToolPopup: function(tool){
 		Statistics.toolPopupOpened(tool)
+		var good = Good.getBySellName(tool.name)[0]
+		
+		if (good)
+		{
+			$('tool_buy').parentNode.show()
+			$('tool_buy').href = good.getHref()
+			$('tool_buy').innerHTML = good.name
+		}
+		else
+			$('tool_buy').parentNode.hide()
+		
+		
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
 		$('tool_picture').src = tool.imgSrc();
