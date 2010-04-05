@@ -34,22 +34,24 @@ class ToolsProcessor < Barman::Processor
   
   def prepare
     path = Config::TOOLS_DIR
-    Dir.new(path).each do |group|
-      if !@excl.include?(group)
-        Dir.new("#{path}/#{group}").each do |name|
-          if !@excl.include?(name)
-            @tool = {}
-            @tool[:group] = group
-            @tool[:name] = name
-            if File.exists?("#{Config::TOOLS_DIR}/#{group}/#{name}/about.txt")
-              @tool[:desc] = File.open("#{Config::TOOLS_DIR}/#{group}/#{name}/about.txt").read.html_paragraphs
-            else
-              @tool[:desc] = ""
-            end
-            @tools << @tool
-          end
+    Dir.new(path).each_dir do |group_dir|
+      say group_dir.name
+      indent do
+      group_dir.each_dir do |tool_dir|
+        say tool_dir.name
+        indent do
+        @tool = {}
+        @tool["group"] = group_dir.name
+        @tool["name"] = tool_dir.name
+        if File.exists?("#{tool_dir.path}/about.txt")
+          @tool[:desc] = File.open("#{tool_dir.path}/about.txt").read.html_paragraphs
+        else
+          @tool[:desc] = ""
         end
+        @tools << @tool
+        end # indent
       end
+      end # indent
     end
   end
   
@@ -59,8 +61,8 @@ class ToolsProcessor < Barman::Processor
   
   def flush_images
     @tools.each do |t|
-      from = "#{Config::TOOLS_DIR}/#{t[:group]}/#{t[:name]}/image.png"
-      to   = "#{Config::TOOLS_ROOT}/#{t[:name].trans}.png"
+      from = "#{Config::TOOLS_DIR}/#{t["group"]}/#{t["name"]}/image.png"
+      to   = "#{Config::TOOLS_ROOT}/#{t["name"].trans}.png"
       FileUtils.cp_r(from, to, @mv_opt) unless !File.exists?(from)
     end
   end
