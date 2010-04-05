@@ -105,7 +105,6 @@ var staticMethods =
 					else
 						index[v] = [item]
 				}
-				index[item.name] = item
 			}
 		}
 		
