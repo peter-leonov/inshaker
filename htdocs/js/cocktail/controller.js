@@ -161,26 +161,49 @@ var Controller = {
 		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
 	},
 	
-	renderPopup: function(ingred){
-        this.currentlyShownIngred = ingred;
-		var good = Ingredient.getByName(ingred)
-		Statistics.ingredientPopupOpened(good)
+	renderPopup: function(name){
+        this.currentlyShownIngred = name
+		var ingredient = Ingredient.getByName(name)
+		Statistics.ingredientPopupOpened(ingredient)
 		
-		$('good_name').innerHTML = good.brand || ingred;
-		if(good.mark){ // branded
+		var good = Good.getBySellName(name)[0]
+		
+		$('good_name').innerHTML = ingredient.brand || name;
+		if(ingredient.mark){ // branded
 			$('good_composition').style.display = "block";
-			$('good_mark').innerHTML = good.mark;
-            $('good_mark').href = Ingredient.ingredientsLinkByMark(good.mark);
-			$('good_ingredient').innerHTML = ingred;
-			$('good_ingredient').href = GoodHelper.ingredientLink(ingred);
+			$('good_mark').innerHTML = ingredient.mark;
+            $('good_mark').href = Ingredient.ingredientsLinkByMark(ingredient.mark);
+			$('good_ingredient').innerHTML = name;
+			$('good_ingredient').href = GoodHelper.ingredientLink(name);
 		} else $('good_composition').style.display = "none";
 		
-		$('good_desc').innerHTML = good.desc;
-		$('good_picture').src = GoodHelper.goodPicSrc(ingred, good); 
+		if (good)
+		{
+			$('good_buy').parentNode.show()
+			$('good_buy').href = good.getHref()
+			$('good_buy').innerHTML = good.name
+		}
+		else
+			$('good_buy').parentNode.hide()
+		
+		$('good_desc').innerHTML = ingredient.desc;
+		$('good_picture').src = GoodHelper.goodPicSrc(name, ingredient);
 	},
 	
 	renderToolPopup: function(tool){
 		Statistics.toolPopupOpened(tool)
+		var good = Good.getBySellName(tool.name)[0]
+		
+		if (good)
+		{
+			$('tool_buy').parentNode.show()
+			$('tool_buy').href = good.getHref()
+			$('tool_buy').innerHTML = good.name
+		}
+		else
+			$('tool_buy').parentNode.hide()
+		
+		
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
 		$('tool_picture').src = tool.imgSrc();

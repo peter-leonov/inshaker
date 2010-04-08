@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head-cocktails.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
+	<title>Ма шери — Коктейли — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	
+	<div class="column-main-container">
+		<div class="column column-main"><div class="body-wrapper">
+			<div class="b-title">
+				<h1 id="cocktail_name">Ма шери</h1>
+				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+			</div>
+			<div class="b-content">
+				<div class="hreview">
+					<div class="top-menu"><div class="b">
+						<p class="border-links" id="panel_cocktail">
+							<a id="author"><b>Авторская подача</b></a>
+							<a id="where-to-taste"><b>Где попробовать</b></a>
+						</p>
+						<img src="ma_cherie-bg.png" width="590" height="210" alt="Коктейль «Ма шери»" id="poster"/>
+					</div></div>
+					
+					<div class="entry">
+						<div id="main-content">
+							<img src="ma_cherie-big.png" alt="Ма шери" id="illustration" class="illustration"/>
+							<div class="desc">
+								<h2 class="summary"><i></i>Ма шери — Найди свою фею!</h2>
+								<div class="description">
+									
+									<p>«Последний поэт романтической эпохи» Генрих Гейне говорил: «Парижанки являются на свет со всеми пороками, но чудная фея придает всякому пороку прелесть и чары»<a onclick="link.open('view-prepare')">…</a></p>
+									
+								</div>
+							</div>
+							<div class="tags"><b>Группы:</b>
+							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							</div>
+							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
+						</div>
+						
+						<div id="view-prepare">
+							<div id="view-prepare-text">
+								<h3>Легенда коктейля</h3>
+								<p>«Последний поэт романтической эпохи» Генрих Гейне говорил: «Парижанки являются на свет со всеми пороками, но чудная фея придает всякому пороку прелесть и чары».</p><p>От себя добавим, что феей иногда может быть просто коктейль, наполненный чувствами.</p>
+							</div>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+						</div>
+						
+						<div id="view-how">
+							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+									<a class="prev"></a>
+									<div class="viewport">
+										<div class="surface" id="ingreds_surface">
+										</div>
+									</div>
+									<a class="next"></a>
+							</div></div>
+							<dl class="recipe">
+								<dt>Как приготовить:</dt>
+								<dd>
+									<ul>
+										
+										<li>Положи в охлажденную чашу цветок гибискуса и налей сироп 15 мл</li>
+										
+										<li>Долей игристое вино сухое доверху </li>
+										
+									</ul>
+								</dd>
+							</dl>
+							<ul class="controls">
+								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#%D0%9C%D0%B0%20%D1%88%D0%B5%D1%80%D0%B8")'><b>Распечатать</b></button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="what-need">
+					<dl id="ingredients_list">
+						<dt>Необходимые ингредиенты</dt>
+						
+						<dd><a>Игристое вино сухое</a> <strong>100 мл</strong></dd>
+						
+						<dd><a>Гибискус в сиропе</a> <strong>15 мл</strong></dd>
+						
+					</dl>
+					<dl class="tools">
+						<dt>Необходимые штучки</dt>
+						
+						<dd><a>Чаша</a></dd>
+						
+					</dl>
+				</div>
+			</div>
+		</div></div>
+		
+		<div class="b-more">
+			<div class="column b-more-cocktails b-more-rec">
+				<dl class="body-wrapper">
+					<dt><b>Inshaker рекомендует</b></dt>
+					<dd>
+						<div class="programica-rolling-images" id="recommendations">
+							<a class="prev"></a>
+							<a class="next"></a>
+							<div class="viewport">
+								<div class="surface" id="rec_surface"></div>
+							</div>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			
+			<div class="column b-more-cocktails">	
+				<dl class="body-wrapper">
+					<dt><b>Вам также могут понравиться</b></dt>
+					<dd>
+						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+							<a class="prev"></a>
+							<a class="next"></a>
+							<div class="viewport" id="rel_viewport">
+								<div class="surface" id="rel_surface">
+									<!--# include file="recommendations.html" -->
+								</div>
+							</div>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	
+	<!--# include file="/inc/calculator.html" -->
+</div>
+<!--# include file="/inc/cocktail-footer.html" -->
+</body>
+</html>

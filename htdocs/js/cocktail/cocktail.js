@@ -9,5 +9,6 @@ $.onready(function(){
 })
 
 <!--# include file="/js/common/infoPopup.js" -->
+<!--# include file="/js/calculator/calculator.js" -->
 <!--# include file="/js/cocktail/model.js" -->
 <!--# include file="/js/cocktail/controller.js" -->

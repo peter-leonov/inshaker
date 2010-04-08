@@ -35,10 +35,15 @@ function lazyLoadPromo ()
 
 Me.prototype =
 {
+	getHref: function ()
+	{
+		return '/good/' + this.path + '/'
+	},
+	
 	getPreviewNode: function (lazy)
 	{
 		var link = Nct('a', lazy ? 'good-preview lazy' : 'good-preview', this.name)
-		link.href = '/good/' + this.path + '/'
+		link.href = this.getHref()
 		var backgroundImage = 'url(/good/' + this.path + '/mini.png)'
 		if (lazy)
 			link.lazyBackgroundImage = backgroundImage
@@ -70,6 +75,40 @@ var staticMethods =
 			db[i] = new Me(db[i])
 		
 		this.db = db
+	},
+	
+	bySellIndex: null,
+	getBySellName: function (name)
+	{
+		var index = this.bySellIndex
+		if (!index)
+		{
+			index = this.bySellIndex = {}
+			
+			var db = this.db
+			
+			for (var i = 0, il = db.length; i < il; i++)
+			{
+				var item = db[i],
+					sell = item.sell
+				
+				if (!sell)
+					continue
+				
+				for (var j = 0, jl = sell.length; j < jl; j++)
+				{
+					var v = sell[j]
+					
+					var arr = index[v]
+					if (arr)
+						arr.push(item)
+					else
+						index[v] = [item]
+				}
+			}
+		}
+		
+		return index[name] || []
 	},
 	
 	byNameIndex: null,
