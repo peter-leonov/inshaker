@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading lawyer-forum-eng status-preparing">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
+	<title>1st Annual Legal Networking Gala — Cocktail events — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	
+	<div class="timeline column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>Cocktail events!</h1>
+		</div>
+		<div class="b-content">
+			<div class="previews square-list programica-rolling-images">
+				<div class="viewport">
+					<ul class="surface"></ul>
+				</div>
+				<a class="prev disabled" disabled="true"></a><a class="next"></a>
+			</div>
+		</div>
+	</div></div>
+	
+	<div id="both-wrapper">
+		<div class="column-main-container">
+			<div class="column column-main"><div class="body-wrapper">
+				<div class="b-title">
+					<h1 id="event-name">1st Annual Legal Networking Gala</h1>
+					<h2>Don't Miss!</h2>
+				</div>
+				<div class="b-content">
+					<div id="illustration"><img/></div>
+					<div class="about">
+						
+							<h2>Moscow — <a href="">venue to be confirmed</a>, May 20th, 2010</h2>
+						
+						<p class="parole">Lawyers from Russia's leading law firms and legal counsel of prominent Russian businesses will get together to socialize and have fun.</p>
+						
+						
+							<a class="sign-on"><span>Register to be there!</span> →</a>
+							<dl class="info">
+								
+									<dt>Entrance:</dt><dd><a id="invitations-only">Invitations only</a></dd>
+								
+						
+							
+								<dt>Address:</dt><dd><a href="">how to get there</a></dd>
+							
+						</dl>
+					</div>
+				</div>
+			</div></div>
+			<div id="medium-sponsors"></div>
+		</div>
+		
+		<div id="sidebar">
+			<div id="main-sponsors" class="column"><div class="body-wrapper">
+				
+					<div class="b-title">
+						<h3>General partner</h3>
+						<h4></h4>
+					</div>
+				
+				<a class="banner"></a>
+			</div></div>
+			<div id="comming">
+				<h2></h2>
+				<dl class="rating"></dl>
+				<a class="list-all">Entire list</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="low-sponsors" class="b-more-cocktails">
+		<div class="column"><div class="body-wrapper">
+			<div class="b-title">
+				<h3>Supported by</h3>
+			</div>
+			<div class="b-content"></div>
+		</div></div>
+	</div>
+</div>
+<div id="promo-back" style="background-image:url(/i/event/moscow/lawyer-forum-eng/promo-bg.png)"></div>
+<div id="form-popup">
+	<div id="overlay"></div>
+	<div class="content">
+		<p class="menu"><a class="button">×</a><a class="text">Close</a></p>
+		<form action="/act/event-form.cgi" method="post" target="ajax">
+			<div class="fields">
+				<h2>I want to be there!</h2>
+				<div class="variable"></div>
+				<p class="limit">*Necessary for sending invitation! <input type="submit" value="Register!"/></p>
+				<input type="hidden" name="event"/>
+				<input type="hidden" name="href"/>
+			</div>
+			<div class="thanks">Thank you!</div>
+			<div class="holding">We are fully booked.</div>
+		</form>
+	</div>
+</div>
+<!--# include file="/inc/event-footer.html" -->
+</body>
+</html>
