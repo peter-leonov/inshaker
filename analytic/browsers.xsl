@@ -4,6 +4,7 @@
 <xsl:template match="/">
 <pie>
 	<xsl:variable name="opera" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera']"/>
+	<xsl:variable name="opera_10_5" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.5']"/>
 	<xsl:variable name="opera_10_1" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.1']"/>
 	<xsl:variable name="opera_10_0" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.0']"/>
 	<xsl:variable name="opera_9_8" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '9.8']"/>
@@ -12,6 +13,7 @@
 	<xsl:variable name="opera_9_2" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '9.2']"/>
 	
 	<xsl:variable name="opera_sum" select="sum($opera/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="opera_10_5_sum" select="sum($opera_10_5/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_1_sum" select="sum($opera_10_1/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_0_sum" select="sum($opera_10_0/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_9_8_sum" select="sum($opera_9_8/dxp:metric[@name='ga:visits']/@value)"/>
@@ -19,6 +21,9 @@
 	<xsl:variable name="opera_9_5_sum" select="sum($opera_9_5/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_9_2_sum" select="sum($opera_9_2/dxp:metric[@name='ga:visits']/@value)"/>
 	
+	<slice title="Opera 10.5" color="#cc2200" label_radius="70">
+		<xsl:value-of select="$opera_10_5_sum"/>
+	</slice>
 	<slice title="Opera 10.1" color="#cc2200">
 		<xsl:value-of select="$opera_10_1_sum"/>
 	</slice>
@@ -38,7 +43,7 @@
 		<xsl:value-of select="$opera_9_2_sum"/>
 	</slice>
 	<slice title="другие оперы" color="#cc7755">
-		<xsl:value-of select="$opera_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_8_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
+		<xsl:value-of select="$opera_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_8_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
 	</slice>
 	
 	
