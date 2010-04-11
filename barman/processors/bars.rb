@@ -224,6 +224,9 @@ class BarsProcessor < Barman::Processor
       # YAGNI
       bar.delete("desc_start")
       bar.delete("desc_end")
+      bar.delete("entrance")
+      bar.delete("photos")
+      bar.delete("priceIndex")
       bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
     end
     
