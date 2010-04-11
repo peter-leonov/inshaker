@@ -20,8 +20,8 @@
 				<div class="photos programica-rolling-images">
 					<div class="viewport">
 						<ul class="surface">
-						<% @big_images.each do |src| %>
-							<li class="point"><img src='<%= src%>'/></li>
+						<% (1..@photos).each do |i| %>
+							<li class="point"><img src="photo-<%= i %>.jpg"/></li>
 						<% end %>
 						</ul>
 					</div>

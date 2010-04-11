@@ -8,9 +8,9 @@ class BarsProcessor < Barman::Processor
   module Config
     BASE_DIR       = Barman::BASE_DIR + "Bars/"
     
-    HTML_DIR       = Barman::HTDOCS_DIR + "bars/"
-    NOSCRIPT_LINKS = HTML_DIR + "links.html"
-    IMAGES_DIR     = Barman::HTDOCS_DIR + "i/bar"
+    HT_ROOT        = Barman::HTDOCS_DIR + "bar/"
+    
+    NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
     DB_JS          = Barman::HTDOCS_DIR  + "db/bars.js"
     DB_JS_CITIES   = Barman::HTDOCS_DIR  + "db/cities.js"
@@ -25,6 +25,7 @@ class BarsProcessor < Barman::Processor
     @cocktails = {}
     @cases = {}
     @entities = []
+    @entities_names = {}
     @bar_points = {}
     @city_points = {}
   end
@@ -54,7 +55,7 @@ class BarsProcessor < Barman::Processor
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::HTML_DIR, Config::IMAGES_DIR]
+    FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
   def prepare_renderer
@@ -125,51 +126,24 @@ class BarsProcessor < Barman::Processor
         
         bar["name"] = bar_dir.name
         bar["city"] = city_dir.name
-        
+        seen = @entities_names[bar["name"]]
+        if seen
+          error "бар с таким имемем уже есть в городе #{seen["city"]}"
+        else
+          @entities_names[bar["name"]] = bar
+        end
         
         city_html_name = city_dir.name.trans.html_name
-        city_map_name = @declensions[city_dir.name] ? @declensions[city_dir.name][1] : city_dir.name
         html_name = bar["name_eng"].html_name
+        bar["path"] = html_name
         
+        ht_path = Config::HT_ROOT + html_name
+        FileUtils.mkdir_p([ht_path])
+        ht_dir = Dir.new(ht_path)
         
-        # картинки
-        out_images_path = "#{Config::IMAGES_DIR}/#{city_html_name}/#{html_name}"
-        FileUtils.mkdir_p out_images_path
+        update_images bar, bar_dir, ht_dir
         
-        mini = bar_dir.path + "/mini.jpg"
-        if File.exists?(mini)
-          if File.size(mini) > 25 * 1024
-            warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
-          end
-          cp_if_different(mini, "#{out_images_path}/mini.jpg")
-        else
-          error "не нашел маленькую картинку бара (mini.jpg)"
-        end
-        
-        big_images = bar["big_images"] = []
-        images = []
-        bar_dir.each_rex(/^big-(\d+).jpg$/) { |img, m| images << m[1].to_i }
-        if images.length > 0
-          say "нашел #{images.length} #{images.length.items("картинку", "картинки", "картинок")}"
-          images.sort.each do |i|
-            from = "#{bar_dir.path}/big-#{i}.jpg"
-            if File.size(from) > 70 * 1024
-              warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
-            end
-            cp_if_different(from, "#{out_images_path}/photo-#{i}.jpg")
-            big_images << "/i/bar/#{city_html_name}/#{html_name}/photo-#{i}.jpg"
-          end
-        else
-          error "не нашел ни одной фотки бара (big-N.jpg)"
-        end
-        
-        
-        # html
-        out_html_path = Config::HTML_DIR + city_html_name
-        FileUtils.mkdir_p out_html_path
-        File.write("#{out_html_path}/#{html_name}.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
-        
-        
+        update_html bar, ht_dir
         
         unless bar["point"] = @bar_points[bar["name"]]
           error "не нашел точку на карте"
@@ -182,7 +156,51 @@ class BarsProcessor < Barman::Processor
       end # indent
     end
   end
+  
+  def update_html bar, dst
+    decl = @declensions[bar["city"]]
+    city_map_name = decl ? decl[1] : bar["city"]
+    File.write("#{dst.path}/index.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
+  end
+  
+  def update_images bar, src, dst
+    mini = src.path + "/mini.jpg"
+    if File.exists?(mini)
+      if File.size(mini) > 25 * 1024
+        warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
+      end
+      cp_if_different(mini, "#{dst.path}/mini.jpg")
+    else
+      error "не нашел маленькую картинку бара (mini.jpg)"
+    end
     
+    images = []
+    src.each_rex(/^big-(\d+).jpg$/) { |img, m| images << m[1].to_i }
+    
+    if images.length > 0
+      say "нашел #{images.length} #{images.length.items("картинку", "картинки", "картинок")}"
+      
+      images.sort!
+      count = images[0]
+      images.each do |v|
+        error "большие картинки идут не по порядку" if count != v
+        count += 1
+      end
+      
+      images.each do |i|
+        from = "#{src.path}/big-#{i}.jpg"
+        if File.size(from) > 70 * 1024
+          warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
+        end
+        cp_if_different(from, "#{dst.path}/photo-#{i}.jpg")
+      end
+      
+      bar["photos"] = images.length
+    else
+      error "не нашел ни одной фотки бара (big-N.jpg)"
+    end
+  end
+  
   def prepare_map_points
     rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
     
@@ -206,7 +224,6 @@ class BarsProcessor < Barman::Processor
       # YAGNI
       bar.delete("desc_start")
       bar.delete("desc_end")
-      bar.delete("big_images")
       bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
     end
     

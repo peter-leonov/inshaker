@@ -15,12 +15,12 @@ Bar.prototype =
 	
 	smallImageHref: function ()
 	{
-		return '/i/bar/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '/mini.jpg'
+		return '/bar/' + this.path + '/mini.jpg'
 	},
 	
 	pageHref: function ()
 	{
-		return '/bars/' + this.city.trans().htmlName() + '/' + this.name_eng.htmlName() + '.html'
+		return '/bar/' + this.path + '/'
 	}
 }
 
