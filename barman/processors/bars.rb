@@ -26,6 +26,7 @@ class BarsProcessor < Barman::Processor
     @cases = {}
     @entities = []
     @entities_names = {}
+    @entities_names_eng = {}
     @bar_points = {}
     @city_points = {}
   end
@@ -126,11 +127,12 @@ class BarsProcessor < Barman::Processor
         
         bar["name"] = bar_dir.name
         bar["city"] = city_dir.name
-        seen = @entities_names[bar["name"]]
+        seen = @entities_names[bar["name"]] || @entities_names_eng[bar["name_eng"]]
         if seen
           error "бар с таким имемем уже есть в городе #{seen["city"]}"
         else
           @entities_names[bar["name"]] = bar
+          @entities_names_eng[bar["name_eng"]] = bar
         end
         
         city_html_name = city_dir.name.trans.html_name
