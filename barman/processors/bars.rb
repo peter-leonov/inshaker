@@ -9,14 +9,13 @@ class BarsProcessor < Barman::Processor
     BASE_DIR       = Barman::BASE_DIR + "Bars/"
     
     HT_ROOT        = Barman::HTDOCS_DIR + "bar/"
-    
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
-    DB_JS          = Barman::HTDOCS_DIR  + "db/bars.js"
-    DB_JS_CITIES   = Barman::HTDOCS_DIR  + "db/cities.js"
+    DB_JS          = Barman::HTDOCS_DIR + "db/bars.js"
+    DB_JS_CITIES   = Barman::HTDOCS_DIR + "db/cities.js"
     COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
     
-    ERB            = Barman::TEMPLATES_DIR + "bar.rhtml"
+    TEMPLATE       = Barman::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
   end
   
@@ -61,7 +60,7 @@ class BarsProcessor < Barman::Processor
   end
   
   def prepare_renderer
-    @renderer = ERB.new(File.read(Config::ERB))
+    @renderer = ERB.new(File.read(Config::TEMPLATE))
   end
   
   def prepare_cases
