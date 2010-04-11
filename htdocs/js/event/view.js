@@ -68,7 +68,7 @@ EventPage.view =
 	modelChanged: function (event, previewSet)
 	{
 		this.event = event
-		this.iroot = '/i/event/' + event.city.trans().htmlName() + '/' + event.href
+		this.root = event.pageHref()
 		
 		this.bindRaiting()
 		
@@ -148,11 +148,7 @@ EventPage.view =
 	
 	createPreviewElement: function(event, selected)
 	{   
-		var city = event.city.trans().htmlName(),
-			href = event.href,
-			iroot = '/i/event/' + city + '/' + href,
-			ehref = '/events/' + city + '/' + href,
-			main
+		var main
 		
 		if (selected)
 		{
@@ -162,11 +158,11 @@ EventPage.view =
 		else
 		{
 			main = N('a', 'event')
-			main.href = ehref
+			main.href = event.pageHref()
 		}
 		
 		var mini = N('span', 'mini')
-		mini.style.backgroundImage = 'url(' + iroot + '/preview.jpg)'
+		mini.style.backgroundImage = 'url(' + event.pageHref() + '/preview.jpg)'
 		
 		var mask = N('span', 'mask')
 		mini.appendChild(mask)
@@ -280,7 +276,7 @@ EventPage.view =
 				
 				var img = N('img')
 				a.appendChild(img)
-				img.src = this.iroot + '/logos/' + logo.src
+				img.src = this.root + '/logos/' + logo.src
 			}
 			else
 			{
@@ -409,7 +405,7 @@ EventPage.view =
 			a.href = sponsor.href
 			
 			var img = N('img')
-			img.src = this.iroot + '/logos/' + sponsor.src
+			img.src = this.root + '/logos/' + sponsor.src
 			img.alt = sponsor.name
 			a.appendChild(img)
 			
@@ -426,7 +422,7 @@ EventPage.view =
 		{
 			if (nodes.sponsorsHighTitle)
 				nodes.sponsorsHighTitle.innerHTML = sponsor.name
-			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.iroot + '/logos/' + sponsor.src + ')'
+			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.root + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
 		}
 		else
@@ -446,11 +442,11 @@ EventPage.view =
 		if (!dialogue)
 			return illustration.remove()
 		
-		illustration.style.backgroundImage = 'url(' + this.iroot + '/dialogues/' + dialogue.back + ')'
+		illustration.style.backgroundImage = 'url(' + this.root + '/dialogues/' + dialogue.back + ')'
 		
 		if (dialogue.popups)
 		{
-			illustrationPopups.src = this.iroot + '/dialogues/' + dialogue.popups
+			illustrationPopups.src = this.root + '/dialogues/' + dialogue.popups
 			
 			function animatePopups ()
 			{

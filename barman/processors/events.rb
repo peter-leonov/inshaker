@@ -2,21 +2,18 @@
 # encoding: utf-8
 require 'barman'
 require 'lib/csv'
-$KCODE = 'u'
 
 class EventsProcessor < Barman::Processor
   
   module Config
-    EVENTS_DIR = Barman::BASE_DIR + "Events/"
-    HTDOCS_DIR = Barman::HTDOCS_DIR
+    BASE_DIR       = Barman::BASE_DIR + "Events/"
     
-    EVENTS_HTML_DIR = HTDOCS_DIR + "events/"
-    NOSCRIPT_LINKS  = EVENTS_HTML_DIR + "links.html"
-    IMAGES_DIR      = HTDOCS_DIR + "i/event/"
+    HT_ROOT        = Barman::HTDOCS_DIR + "event/"
+    NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
-    DB_JS = HTDOCS_DIR + "db/events.js"
+    DB_JS          = Barman::HTDOCS_DIR + "db/events.js"
     
-    EVENT_TEMPLATES = Barman::TEMPLATES_DIR
+    TEMPLATES      = Barman::TEMPLATES_DIR
   end
   
   
@@ -32,109 +29,37 @@ class EventsProcessor < Barman::Processor
   
   def job
     prepare_dirs
-    prepare
     
-    flush_links
-    flush_html
-    flush_json
+    update_events
+    
+    unless errors?
+      flush_links
+      flush_json
+    end
   end
   
   def prepare_dirs
-    FileUtils.rmtree [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
-    FileUtils.mkdir_p [Config::EVENTS_HTML_DIR, Config::IMAGES_DIR]
+    FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
-  def prepare
-    root_dir = Dir.new(Config::EVENTS_DIR)
-    root_dir.each do |city_dir|
-      city_path = root_dir.path + city_dir
-      if File.ftype(city_path) == "directory" and !@excl.include?(city_dir)
-        # @entities[city_dir] = []
-        say city_dir
-        indent do
-        entities_dir = Dir.new(city_path)
-        entities_dir.each do |entity_dir|
-          entity_path = entities_dir.path + "/" + entity_dir
-          if File.ftype(entity_path) == "directory" and !@excl.include?(entity_dir)
-            say entity_dir
-            indent do
-            @entity = {}
-            parse_about  entity_path
-            process_images entity_path
-            # @entities[city_dir] << @entity
-            @entities[@entity[:name]] = @entity
-            end # indent
-          end
-        end
-        end # indent
+  def update_events
+    Dir.new(Config::BASE_DIR).each_dir do |city_dir|
+      say city_dir.name
+      indent do
+      city_dir.each_dir do |entity_dir|
+        process_entity entity_dir
       end
+      end # indent
     end
   end
   
-  def process_images src_dir
-    @entity[:imgdir] = '/i/event/' + @entity[:city].trans.html_name + "/" + @entity[:href]
-    out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
-    if !File.exists? out_images_path then FileUtils.mkdir_p out_images_path end
+  def process_entity src_dir
+    say src_dir.name
+    indent do
     
-    if File.exists?(src_dir + "/promo-bg.png")
-      @entity[:promo] = 1
-      FileUtils.cp_r(src_dir + "/promo-bg.png", out_images_path + "/promo-bg.png", @mv_opt)
-    end
+    @entity = {}
     
-    if File.exists?(src_dir + "/preview.jpg")
-      FileUtils.cp_r(src_dir + "/preview.jpg", out_images_path + "/preview.jpg", @mv_opt)
-    end
-    
-    @entity[:dialogue].each do |v|
-      FileUtils.mkdir_p out_images_path + "/dialogues/"
-      FileUtils.cp_r(src_dir + "/dialogues/" + v[:back], out_images_path + "/dialogues/" + v[:back], @mv_opt)
-      if v[:popups]
-        FileUtils.cp_r(src_dir + "/dialogues/" + v[:popups], out_images_path + "/dialogues/" + v[:popups], @mv_opt)
-      end
-    end
-  end
-  
-  def flush_html
-    @entities.each do |name, entity|
-      # warn entity
-      template = File.open(Config::EVENT_TEMPLATES + "event.#{entity[:lang]}.rhtml").read
-      renderer = ERB.new(template)
-      
-      out_html_path = Config::EVENTS_HTML_DIR + entity[:city].trans.html_name
-      if !File.exists? out_html_path then FileUtils.mkdir_p out_html_path end
-      erb = EventTemplate.new(entity)
-      File.open(out_html_path + "/" + entity[:href].html_name, "w+") do |html|
-        html.write renderer.result(erb.get_binding)
-      end
-    end
-  end
-  
-  def flush_json
-    @entities.each do |name, entity|
-      # YAGNI
-      entity.delete(:subject)
-      entity.delete(:high_head)
-      entity.delete(:promo)
-      entity.delete(:imgdir)
-    end
-    
-    flush_json_object(@entities, Config::DB_JS)
-  end
-  
-  def flush_links
-    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      links.puts "<ul>"
-      @entities.each do |name, entity|
-        links.puts %Q{<li><a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a></li>}
-      end
-      links.puts "</ul>"
-    end
-  end
-  
-private
-  def parse_about src_dir
-    
-    yaml = YAML::load(File.open(src_dir + "/about.yaml"))
+    yaml = YAML::load(File.open(src_dir.path + "/about.yaml"))
     
     # warn yaml.inspect
     ru_date             = Time.gm(*yaml['Дата'].split(".").reverse.map{|v|v.to_i})
@@ -175,7 +100,9 @@ private
     end
     @entity[:fields] = fields
     
-    out_images_path = Config::IMAGES_DIR + @entity[:city].trans.html_name + "/" + @entity[:href]
+    ht_path = Config::HT_ROOT + @entity[:href]
+    FileUtils.mkdir_p ht_path
+    ht_dir = Dir.new(ht_path)
     
     arr = []
     if yaml['Диалоги']
@@ -185,14 +112,14 @@ private
     end
     @entity[:dialogue] = arr
     
-    FileUtils.mkdir_p out_images_path + "/logos/"
+    FileUtils.mkdir_p ht_dir.path + "/logos/"
     
     arr = []
     if yaml['Генеральные спонсоры']
       yaml['Генеральные спонсоры']['Баннеры'].each do |v|
         hash = {:name => v[0], :src => v[1], :href => v[2]}
         arr << hash
-        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+        FileUtils.cp_r(src_dir.path + "/logos/" + hash[:src], ht_dir.path + "/logos/" + hash[:src], @mv_opt)
       end
       @entity[:high_head] = yaml['Генеральные спонсоры']['Заголовок']
       if @entity[:high_head] == 'нет'
@@ -206,7 +133,7 @@ private
       yaml['Спонсоры'].each do |v|
         hash = {:name => v[0], :src => v[1], :href => v[2]}
         arr << hash
-        FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+        FileUtils.cp_r(src_dir.path + "/logos/" + hash[:src], ht_dir.path + "/logos/" + hash[:src], @mv_opt)
       end
     end
     @entity[:medium] = arr
@@ -222,7 +149,7 @@ private
             hash = nil
           else
             hash = {:name => sponsor[0], :src => sponsor[1], :href => sponsor[2]}
-            FileUtils.cp_r(src_dir + "/logos/" + hash[:src], out_images_path + "/logos/" + hash[:src], @mv_opt)
+            FileUtils.cp_r(src_dir.path + "/logos/" + hash[:src], ht_dir.path + "/logos/" + hash[:src], @mv_opt)
           end
           arr << hash
         end
@@ -250,11 +177,17 @@ private
     else
       say "без рейтинга"
     end
+    
+    update_images src_dir, ht_dir
+    update_html @entity, ht_dir
+    end # indent
+    
+    @entities[@entity[:name]] = @entity
   end
   
   def process_rating src_dir
-    fname_rating      = src_dir + "/rating.csv"
-    fname_substitute  = src_dir + "/substitute.csv"
+    fname_rating      = src_dir.path + "/rating.csv"
+    fname_substitute  = src_dir.path + "/substitute.csv"
     rating = {}
     substitute = {}
     unknown = []
@@ -309,6 +242,53 @@ private
     # warn @entity[:rating].inspect
   end
   
+  def update_images src_dir, dst_dir
+    if File.exists?(src_dir.path + "/promo-bg.png")
+      @entity[:promo] = 1
+      FileUtils.cp_r(src_dir.path + "/promo-bg.png", dst_dir.path + "/promo-bg.png", @mv_opt)
+    end
+    
+    if File.exists?(src_dir.path + "/preview.jpg")
+      FileUtils.cp_r(src_dir.path + "/preview.jpg", dst_dir.path + "/preview.jpg", @mv_opt)
+    end
+    
+    @entity[:dialogue].each do |v|
+      FileUtils.mkdir_p dst_dir.path + "/dialogues/"
+      FileUtils.cp_r(src_dir.path + "/dialogues/" + v[:back], dst_dir.path + "/dialogues/" + v[:back], @mv_opt)
+      if v[:popups]
+        FileUtils.cp_r(src_dir.path + "/dialogues/" + v[:popups], dst_dir.path + "/dialogues/" + v[:popups], @mv_opt)
+      end
+    end
+  end
+  
+  def update_html entity, dst
+    template = File.open(Config::TEMPLATES + "event.#{entity[:lang]}.rhtml").read
+    renderer = ERB.new(template)
+    
+    File.write("#{dst.path}/index.html", renderer.result(EventTemplate.new(entity).get_binding))
+  end
+  
+  def flush_json
+    @entities.each do |name, entity|
+      # YAGNI
+      entity.delete(:subject)
+      entity.delete(:high_head)
+      entity.delete(:promo)
+      entity.delete(:imgdir)
+    end
+    
+    flush_json_object(@entities, Config::DB_JS)
+  end
+  
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @entities.each do |name, entity|
+        links.puts %Q{<li><a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a></li>}
+      end
+      links.puts "</ul>"
+    end
+  end
 end
 
 exit EventsProcessor.new.run
