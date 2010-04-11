@@ -44,6 +44,7 @@ class BarsProcessor < Barman::Processor
     update_bars
     
     unless errors?
+      cleanup_bars
       flush_links
       flush_json
     end
@@ -219,6 +220,23 @@ class BarsProcessor < Barman::Processor
     cities.each do |arr|
       @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}
     end
+  end
+  
+  def cleanup_bars
+    say "ищу забытые бары"
+    indent do
+    by_html_name = {}
+    @entities.each do |entity|
+      by_html_name[entity["name_eng"].html_name] = entity
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless by_html_name[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
   end
   
   def flush_json
