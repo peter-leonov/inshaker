@@ -222,15 +222,15 @@ class BarsProcessor < Barman::Processor
   end
   
   def cleanup_deleted
-    say "ищу забытые бары"
+    say "ищу удаленные"
     indent do
-    by_html_name = {}
+    index = {}
     @entities.each do |entity|
-      by_html_name[entity["name_eng"].html_name] = entity
+      index[entity["name_eng"].html_name] = entity
     end
     
     Dir.new(Config::HT_ROOT).each_dir do |dir|
-      unless by_html_name[dir.name]
+      unless index[dir.name]
         say "удаляю #{dir.name}"
         FileUtils.rmtree(dir.path)
       end

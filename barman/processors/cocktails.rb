@@ -435,15 +435,15 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def cleanup_deleted
-    say "ищу забытые коктейли"
+    say "ищу удаленные"
     indent do
-    by_html_name = {}
+    index = {}
     @cocktails.each do |name, cocktail|
-      by_html_name[cocktail["name_eng"].html_name] = cocktail
+      index[cocktail["name_eng"].html_name] = cocktail
     end
     
     Dir.new(Config::HTDOCS_ROOT).each_dir do |dir|
-      unless by_html_name[dir.name]
+      unless index[dir.name]
         say "удаляю #{dir.name}"
         FileUtils.rmtree(dir.path)
       end

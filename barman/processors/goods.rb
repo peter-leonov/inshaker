@@ -223,7 +223,7 @@ class GoodsProcessor < Barman::Processor
   end
   
   def cleanup_deleted
-    say "ищу забытые товары"
+    say "ищу удаленные"
     indent do
     index = {}
     @goods.each do |entity|

@@ -294,15 +294,15 @@ class EventsProcessor < Barman::Processor
   end
   
   def cleanup_deleted
-    say "ищу забытые события"
+    say "ищу удаленные"
     indent do
-    by_href = {}
+    index = {}
     @entities_array.each do |entity|
-      by_href[entity[:href]] = entity
+      index[entity[:href]] = entity
     end
     
     Dir.new(Config::HT_ROOT).each_dir do |dir|
-      unless by_href[dir.name]
+      unless index[dir.name]
         say "удаляю #{dir.name}"
         FileUtils.rmtree(dir.path)
       end
