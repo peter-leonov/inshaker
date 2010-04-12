@@ -59,8 +59,6 @@ BarPage.view =
 		this.renderCocktails(nodes.carte, data.carte, 4)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
-		
-		this.renderPriceIndex(data.bar)
 	},
 	
 	readBarCityNames: function ()
@@ -231,11 +229,6 @@ BarPage.view =
 		}
 		else
 			this.nodes.barNext.hide()
-	},
-	
-	renderPriceIndex: function(bar)
-	{
-		this.nodes.priceIndex.appendChild(document.createTextNode(bar.priceIndex + " р."))
 	}
 }
 

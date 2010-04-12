@@ -1,5 +1,21 @@
 // TODO: Wrap it in those cute objects like you did with other entities
-Event =
+function Event (data)
+{
+	for (var k in data)
+		this[k] = data[k]
+	
+	this.date = new Date(data.date)
+}
+
+Event.prototype =
+{
+	pageHref: function ()
+	{
+		return '/event/' + this.href + '/'
+	}
+}
+
+Object.extend(Event,
 {
 	db: null, // must be defined in db-events.js by calling initialize()
 	
@@ -7,10 +23,7 @@ Event =
 	{
 		this.db = db
 		for (var k in db)
-		{
-			var event = db[k]
-			event.date = new Date(event.date)
-		}
+			db[k] = new Event(db[k])
 	},
 	
 	getByName: function (name)
@@ -36,6 +49,6 @@ Event =
 	{
 		return a.date - b.date
 	}
-}
+})
 
 Event.initialize(<!--# include file="/db/events.js" -->)

@@ -16,6 +16,7 @@
 .previews .prev { left: 0; }
 .previews .next { right: 0; }
 
+html.loading .previews .viewport .surface { display: none; }
 
 .previews .event { position: relative; width: 180px; display: inline-block; vertical-align: top; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; font-size: 12px; font-family: Arial, sans-serif; }
 .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
