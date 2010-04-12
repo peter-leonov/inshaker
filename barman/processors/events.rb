@@ -311,11 +311,9 @@ class EventsProcessor < Barman::Processor
   
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      links.puts "<ul>"
       @entities.each do |name, entity|
-        links.puts %Q{<li><a href="/events/#{entity[:city].dirify}/#{entity[:href]}">#{entity[:name]}</a></li>}
+        links.puts %Q{<li><a href="/event/#{entity[:href]}/">#{entity[:name]}</a></li>}
       end
-      links.puts "</ul>"
     end
   end
 end

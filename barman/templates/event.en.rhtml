@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %>">
 <head>
-	<!--# include file="/inc/head.html" -->
+	<!--# include virtual="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
 	<title><%= @name %> — Cocktail events — Inshaker</title>
 </head>
 <body>
-<!--# include file="/inc/top-common.html" -->
+<!--# include virtual="/inc/top-common.html" -->
 <div id="main-wrapper">
 	
 	<div class="timeline column"><div class="body-wrapper">
@@ -16,7 +16,7 @@
 		<div class="b-content">
 			<div class="previews square-list programica-rolling-images">
 				<div class="viewport">
-					<ul class="surface"></ul>
+					<ul class="surface"><!--# include virtual="/event/links.html" --></ul>
 				</div>
 				<a class="prev disabled" disabled="true"></a><a class="next"></a>
 			</div>
@@ -112,6 +112,6 @@
 		</form>
 	</div>
 </div>
-<!--# include file="/inc/event-footer.html" -->
+<!--# include virtual="/inc/event-footer.html" -->
 </body>
 </html>
