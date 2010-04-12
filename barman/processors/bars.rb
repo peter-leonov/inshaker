@@ -43,7 +43,7 @@ class BarsProcessor < Barman::Processor
     update_bars
     
     unless errors?
-      cleanup_bars
+      cleanup_deleted
       flush_links
       flush_json
     end
@@ -221,7 +221,7 @@ class BarsProcessor < Barman::Processor
     end
   end
   
-  def cleanup_bars
+  def cleanup_deleted
     say "ищу забытые бары"
     indent do
     by_html_name = {}

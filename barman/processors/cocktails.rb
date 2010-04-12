@@ -85,7 +85,7 @@ class CocktailsProcessor < Barman::Processor
     unless errors?
       update_recomendations if touched > 0
       
-      cleanup_cocktails
+      cleanup_deleted
       flush_tags_and_strengths_and_methods
       flush_cocktails
       flush_links
@@ -434,7 +434,7 @@ class CocktailsProcessor < Barman::Processor
     end
   end
   
-  def cleanup_cocktails
+  def cleanup_deleted
     say "ищу забытые коктейли"
     indent do
     by_html_name = {}
