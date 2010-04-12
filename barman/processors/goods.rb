@@ -47,6 +47,7 @@ class GoodsProcessor < Barman::Processor
     process_goods
     
     unless errors?
+      cleanup_deleted
       flush_links
       flush_json
     end
@@ -221,6 +222,22 @@ class GoodsProcessor < Barman::Processor
     end
   end
   
+  def cleanup_deleted
+    say "ищу забытые товары"
+    indent do
+    index = {}
+    @goods.each do |entity|
+      index[entity["path"]] = entity
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless index[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
+  end
 end
 
 class GoodTemplate
