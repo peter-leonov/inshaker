@@ -21,6 +21,7 @@ class EventsProcessor < Barman::Processor
   def initialize
     super
     @entities = {}
+    @entities_array = []
     @entities_hrefs = {}
     @entity  = {} # currently processed bar
   end
@@ -36,6 +37,7 @@ class EventsProcessor < Barman::Processor
     update_main
     
     unless errors?
+      cleanup_deleted
       flush_links
       flush_json
     end
@@ -202,6 +204,7 @@ class EventsProcessor < Barman::Processor
     end # indent
     
     @entities[@entity[:name]] = @entity
+    @entities_array << @entity
   end
   
   def update_main
@@ -288,6 +291,23 @@ class EventsProcessor < Barman::Processor
     renderer = ERB.new(template)
     
     File.write("#{dst.path}/index.html", renderer.result(EventTemplate.new(entity).get_binding))
+  end
+  
+  def cleanup_deleted
+    say "ищу забытые события"
+    indent do
+    by_href = {}
+    @entities_array.each do |entity|
+      by_href[entity[:href]] = entity
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless by_href[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
   end
   
   def flush_json
