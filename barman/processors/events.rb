@@ -181,6 +181,7 @@ class EventsProcessor < Barman::Processor
     
     rating = yaml['Рейтинг']
     if rating
+      say "нашел рейтинг"
       data = {:phrase => rating['Фраза'], :max => rating['Выводить']}
       @entity[:rating] = data
       
@@ -194,8 +195,6 @@ class EventsProcessor < Barman::Processor
       end
       
       process_rating src_dir
-    else
-      say "без рейтинга"
     end
     
     update_images src_dir, ht_dir
@@ -218,8 +217,6 @@ class EventsProcessor < Barman::Processor
     fname_substitute  = src_dir.path + "/substitute.csv"
     rating = {}
     substitute = {}
-    unknown = []
-    doubles = []
     seen = {}
     type = @entity[:rating][:type]
     if File.exists? fname_rating and File.exists? fname_substitute
@@ -231,7 +228,7 @@ class EventsProcessor < Barman::Processor
         value = row["value"]
         
         if seen[email]
-          doubles << "#{line}: #{value}"
+          warning %Q{#{line + 1}: повторяется "#{email}"}
           next
         end
         seen[email] = true
@@ -242,7 +239,7 @@ class EventsProcessor < Barman::Processor
           if m then
             value = m[1]
           else
-            puts "  #{line}: Не могу понять email: '#{value}'"
+            error %Q{#{line + 1}: не могу понять email: "#{value}"}
             next
           end
         elsif type == "comp"
@@ -256,13 +253,10 @@ class EventsProcessor < Barman::Processor
             rating[name] = rating[name] ? rating[name] + 1 : 1
           end
         else
-          unknown << "#{line}: #{value}"
+          warning %Q{#{line + 1}: неизвестное "#{value}"}
         end
         
       end
-      
-      puts "  Неизвестные значения:\n  " + unknown.join("\n  ") unless unknown.empty?
-      puts "\n  Повторяющиеся значения:\n  " + doubles.join("\n  ") unless doubles.empty?
     end
     
     @entity[:rating][:data] = rating
