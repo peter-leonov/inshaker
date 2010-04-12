@@ -20,6 +20,7 @@ class EventsProcessor < Barman::Processor
   def initialize
     super
     @entities = {}
+    @entities_hrefs = {}
     @entity  = {} # currently processed bar
   end
   
@@ -99,6 +100,13 @@ class EventsProcessor < Barman::Processor
       end
     end
     @entity[:fields] = fields
+    
+    seen = @entities_hrefs[@entity[:href]]
+    if seen
+      error %Q{событие с такой ссылкой уже существует: "#{seen[:name]}"}
+    else
+      @entities_hrefs[@entity[:href]] = @entity
+    end
     
     ht_path = Config::HT_ROOT + @entity[:href]
     FileUtils.mkdir_p ht_path
