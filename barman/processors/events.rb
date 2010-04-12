@@ -10,6 +10,7 @@ class EventsProcessor < Barman::Processor
     
     HT_ROOT        = Barman::HTDOCS_DIR + "event/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
+    MAIN_LINK      = HT_ROOT + "main.html"
     
     DB_JS          = Barman::HTDOCS_DIR + "db/events.js"
     
@@ -32,6 +33,7 @@ class EventsProcessor < Barman::Processor
     prepare_dirs
     
     update_events
+    update_main
     
     unless errors?
       flush_links
@@ -68,6 +70,8 @@ class EventsProcessor < Barman::Processor
     @entity[:date]      = ru_date.to_i * 1000
     @entity[:lang]      = {'английский' => 'en', nil => 'ru', 'русский' => 'ru'}[yaml['Язык']]
     
+    @entity[:main]      = {'да' => true}[yaml['Главное событие']]
+    
     @entity[:adate]     = yaml['Примерная дата']
     @entity[:name]      = yaml['Название']
     @entity[:header]    = yaml['Слоган']
@@ -88,6 +92,14 @@ class EventsProcessor < Barman::Processor
     @entity[:address]   = yaml['Ссылка на место']
     
     @entity[:rating]    = {}
+    
+    if @entity[:main]
+      if @main_event
+        error %Q{главным событием уже назначено "#{@main_event[:name]}"}
+      else
+        @main_event = @entity
+      end
+    end
     
     fields = []
     if @entity[:fields]
@@ -193,6 +205,14 @@ class EventsProcessor < Barman::Processor
     @entities[@entity[:name]] = @entity
   end
   
+  def update_main
+    if @main_event
+      File.write(Config::MAIN_LINK, %Q{/event/#{@main_event[:href]}/})
+    else
+      error "ни одно событие не назначено главным"
+    end
+  end
+  
   def process_rating src_dir
     fname_rating      = src_dir.path + "/rating.csv"
     fname_substitute  = src_dir.path + "/substitute.csv"
@@ -283,6 +303,7 @@ class EventsProcessor < Barman::Processor
       entity.delete(:high_head)
       entity.delete(:promo)
       entity.delete(:imgdir)
+      entity.delete(:main)
     end
     
     flush_json_object(@entities, Config::DB_JS)
