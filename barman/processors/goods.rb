@@ -6,16 +6,15 @@ require 'optparse'
 class GoodsProcessor < Barman::Processor
   
   module Config
-    GOODS_DIR   = Barman::BASE_DIR + "Goods/"
-    HTDOCS_DIR  = Barman::HTDOCS_DIR
-    ERB         = Barman::TEMPLATES_DIR + "good.rhtml"
+    GOODS_DIR          = Barman::BASE_DIR + "Goods/"
+    ERB                = Barman::TEMPLATES_DIR + "good.rhtml"
     
-    HTDOCS_ROOT    = HTDOCS_DIR + "good/"
-    NOSCRIPT_LINKS = HTDOCS_ROOT + "links.html"
+    HT_ROOT            = Barman::HTDOCS_DIR + "good/"
+    NOSCRIPT_LINKS     = HT_ROOT + "links.html"
     
-    DB_JS              = HTDOCS_DIR + "db/goods.js"
-    DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_TOOLS        = HTDOCS_DIR + "db/tools.js"
+    DB_JS              = Barman::HTDOCS_DIR + "db/goods.js"
+    DB_JS_INGREDS      = Barman::HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_TOOLS        = Barman::HTDOCS_DIR + "db/tools.js"
   end
   
   def initialize
@@ -70,7 +69,7 @@ class GoodsProcessor < Barman::Processor
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::HTDOCS_ROOT]
+    FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
   def prepare_renderer
@@ -160,7 +159,7 @@ class GoodsProcessor < Barman::Processor
       end
       good["places"] = all_places
       
-      full_path = Config::HTDOCS_ROOT + '/' + path
+      full_path = Config::HT_ROOT + '/' + path
       FileUtils.mkdir_p [full_path]
       dst_dir = Dir.new(full_path)
       
