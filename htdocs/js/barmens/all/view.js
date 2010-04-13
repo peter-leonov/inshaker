@@ -24,16 +24,12 @@
 			};
 		},
 		renderBarmensPhoto: function(barmens) {
-			var barman, li, div, tmp = document.createDocumentFragment();
-
-			//this.nodes.barmanListItems = [];
+			var li, div, tmp = document.createDocumentFragment();
 
 			for (var i = 0, ii = barmens.length; i < ii; i++) {
-				barman = barmens[i];
 				li = document.createElement('li');
 				li.className = 'item';
 				div = document.createElement('div');
-				div.style.image = 'url(' + Barman.getPhoto(barman) + ')';
 
 				li.appendChild(div);
 				tmp.appendChild(li);
@@ -68,16 +64,15 @@
 	function lazyLoadingImages(clientVisibleHeight, pageYOffset) {
 		clientVisibleHeight = clientVisibleHeight || document.documentElement.clientHeight;
 		pageYOffset = pageYOffset || 0;
-		//var currentWindowOffsetTop = e.currentTarget.innerHeight + e.currentTarget.pageYOffset;
+
 		var currentWindowOffsetTop = clientVisibleHeight + pageYOffset;
-		var nodes = $$('li.item div');
+		var barmans = Barman.barmen;
 
 		for (var i = 0, ii = this.nodes.barmanListItems.length; i < ii; i++) {
 			var barmanListNode = this.nodes.barmanListItems[i];
-			//console.log(barmanListNode.offsetTop < currentWindowOffsetTop, !barmanListNode.style.background);
+
 			if (barmanListNode.offsetTop <= currentWindowOffsetTop) {
-				barmanListNode.innerHTML = 'ololol ' + barmanListNode.style.image;
-				//barmanListNode.style.background = barmanListNode.style.image;
+				barmanListNode.style.background = 'url(' + Barman.getPhoto(barmans[i]) + ')';
 			}
 		}
 	}
