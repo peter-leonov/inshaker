@@ -35,8 +35,8 @@ var myProto =
 	
 	renderNextAndPrevBarmensLinks: function (barman)
 	{
-		this.nodes.nextBarman.href = '/barman/' + barman.next().path + '/index.html'
-		this.nodes.prevBarman.href = '/barman/' + barman.prev().path + '/index.html'
+		this.nodes.nextBarman.href = barman.next().pageHref()
+		this.nodes.prevBarman.href = barman.prev().pageHref()
 	}
 };
 
