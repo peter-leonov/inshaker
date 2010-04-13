@@ -9,12 +9,17 @@ function Barman (data)
 	else
 		for (var i = 0, il = cocktails.length; i < il; i++)
 			cocktails[i] = Cocktail.getByName(cocktails[i])
+	
+	this.constructor = Barman
 }
 
 Barman.prototype =
 {
-	constructor: Barman,
-    
+	pageHref: function ()
+	{
+		return '/barman/' + this.path + '/'
+	},
+	
     switchable: true,
     render: function (context)
     {
@@ -62,8 +67,8 @@ Barman.prototype =
         else parent.hide()
     },
 
-    next: function () { return Barman.barmen[Barman.barmen.indexOf(this) + 1] },
-    prev: function () { return Barman.barmen[Barman.barmen.indexOf(this) - 1] }
+    next: function () { return Barman.db[Barman.db.indexOf(this) + 1] },
+    prev: function () { return Barman.db[Barman.db.indexOf(this) - 1] }
 }
 
 Object.extend(Barman,
