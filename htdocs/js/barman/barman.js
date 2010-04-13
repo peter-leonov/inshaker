@@ -45,11 +45,10 @@ $.onready(function ()
 {
 	var nodes =
 	{
-		ajaxLoadingImage: $$('.loading')[0],
-		barmanNameNode: $$('h1[data-barman-name]')[0],
-		barmanCocktailsList: $$('ul.point')[0],
-		nextBarman: $$('a.arrow.next')[0],
-		prevBarman: $$('a.arrow.prev')[0]
+		barmanName: $$('.b-title .name')[0],
+		cocktailList: $$('.b-content .cocktails')[0],
+		prevBarman: $$('.b-title .arrow.prev')[0],
+		nextBarman: $$('.b-title .arrow.next')[0]
 	}
 	var sources =
 	{
