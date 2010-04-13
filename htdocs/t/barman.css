@@ -120,3 +120,19 @@
 .hidden {
 	display: none;
 }
+
+#barmen-page ul.list {
+	width: 110%;
+}
+
+#barmen-page ul.list li.item {
+	float: left;
+}
+
+#barmen-page ul.list li.item div {
+	/*height: 281px;*/
+	/*width: 357px;*/
+	height: 190px;
+	width: 210px;
+	margin: 0 27px 27px 0;
+}

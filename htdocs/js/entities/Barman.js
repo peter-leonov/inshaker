@@ -91,7 +91,10 @@ Object.extend(Barman,
                 return this.barmen[i]
         }
         return null
-    }
+    },
+	 getPhoto: function(barman) {
+		 return '/i/barmen/' + barman.name_eng.htmlName() + '.jpg';
+	 }
 })
 
 Barman.initialize(<!--# include file="/db/barmen.js"-->)

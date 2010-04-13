@@ -18,6 +18,9 @@
 			this.controller.bind(state);
 
 			return this;
+		},
+		setBarmensPhoto: function() {
+			this.controller.setBarmensPhoto();
 		}
 	};
 
@@ -25,13 +28,17 @@
 
 	$.onready(function () {
 		var nodes = {
+			loadingNode: $$('div.loading')[0],
+			barmensList: $$('ul.list')[0]
 		};
 		var sources = {
+			barmens: Barman.barmen
 		};
 
 		var page = new AllBarmensPage();
 
 		page.bind(nodes, sources);
+		page.setBarmensPhoto();
 
 		/* ---- DEBUG INFO ---- */
 		/* ---- DEBUG INFO ---- */
