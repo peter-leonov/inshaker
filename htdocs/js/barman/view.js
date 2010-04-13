@@ -15,7 +15,17 @@ var myProto =
 		this.nodes = nodes
 	},
 	
-	modelChanged: function (data) {},
+	modelChanged: function (barman)
+	{
+		this.renderBarmanCocktails(barman.cocktails)
+		this.renderNextAndPrevBarmensLinks(barman)
+	},
+	
+	findBarmanName: function ()
+	{
+		var name = this.nodes.barmanName.getAttribute('data-barman-name')
+		this.controller.barmanNameFound(name)
+	},
 	
 	renderBarmanCocktails: function (cocktails)
 	{
@@ -24,13 +34,14 @@ var myProto =
 		for (var i = 0, ii = cocktails.length; i < ii; i++)
 		{
 			var cocktail = cocktails[i]
-			var li = Cocktail.getByName(cocktail).getPreviewNode()
+			var li = cocktail.getPreviewNode()
 			
 			tmp.appendChild(li)
 		}
 		
-		this.nodes.ajaxLoadingImage.hide()
-		this.nodes.barmanCocktailsList.appendChild(tmp)
+		var cocktailList = this.nodes.cocktailList
+		cocktailList.empty()
+		cocktailList.appendChild(tmp)
 	},
 	
 	renderNextAndPrevBarmensLinks: function (barman)

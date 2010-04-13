@@ -5,24 +5,13 @@ var Me = Papa.Controller
 
 var myProto =
 {
-	initialize: function ()
-	{
-		this.state = {}
-	},
+	initialize: function () { },
 	
-	bind: function (state)
-	{
-		this.model.setState(state)
-	},
+	bind: function () {},
 	
-	setCocktails: function ()
+	barmanNameFound: function (name)
 	{
-		this.view.renderBarmanCocktails(this.model.sources.barman.cocktails)
-	},
-	
-	setNextAndPrevBarmens: function ()
-	{
-		this.view.renderNextAndPrevBarmensLinks(this.model.sources.barman)
+		this.model.setBarmanByName(name)
 	}
 }
 

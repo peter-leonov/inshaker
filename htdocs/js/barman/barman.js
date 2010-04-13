@@ -23,6 +23,8 @@ var myProto =
 		this.view.bind(nodes)
 		this.controller.bind(state)
 		
+		this.view.findBarmanName()
+		
 		return this
 	},
 	
@@ -50,16 +52,15 @@ $.onready(function ()
 		prevBarman: $$('.b-title .arrow.prev')[0],
 		nextBarman: $$('.b-title .arrow.next')[0]
 	}
+	
 	var sources =
 	{
-		barman: Barman.getByName(nodes.barmanNameNode.getAttribute('data-barman-name'))
+		barman: Barman
 	}
 	
 	var page = new BarmensPage()
 	
 	page.bind(nodes, sources)
-	page.setCocktails()
-	page.setNextAndPrevBarmens()
 })
 
 
