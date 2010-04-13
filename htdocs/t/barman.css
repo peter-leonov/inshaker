@@ -35,17 +35,17 @@
 	font-weight: bold;
 }
 
-.content
+.about
 {
 	overflow: hidden;
 	position: relative;
 	width: 922px;
 	height: 281px;
-	margin-bottom: 25px;
+	margin-bottom: 40px;
 	font-size: 12px;
 }
 
-.content .photo
+.about .photo
 {
 	position: absolute;
 	top: 0;
@@ -58,7 +58,7 @@
 	-webkit-border-bottom-left-radius: 10px;
 }
 
-.content .desc
+.about .desc
 {
 	position: absolute;
 	left: 357px;
@@ -74,64 +74,32 @@
 	-webkit-border-bottom-right-radius: 10px;
 }
 
-.content .desc p
+.about .desc p
 {
 	margin-bottom: 0.6em;
-}
-
-.content .desc p,
-.barman-info .content .desc li
-{
 	line-height: 15px;
 }
 
-.cocktails-list
-{
-	padding: 0px 0 3px 0;
-}
-
-.cocktails-list .viewport
+.b-content .cocktails
 {
 	overflow: hidden;
-	position: relative;
-	left: 10px;
-	top: 2px;
-	height: auto;
 	width: 900px;
 }
 
-.cocktails-list .surface
-{
-	width: 100%;
-}
-
-.cocktails-list .point
-{
-	width: 900px;
-	float: left;
-	font-size: 120%;
-}
-
-.cocktails-list li
+.b-content .cocktails .cocktail-preview
 {
 	width: 8em;
 	text-align: center;
 	float: left;
-	margin: 0 0 20px 0;
+	margin: 20px 0 0 0;
 	height: 140px;
 	width: 150px;
 }
 
-.cocktails-list img
+.b-content .cocktails .cocktail-preview .image
 {
 	display: block;
 	margin: 0 auto 5px;
-}
-
-.loading
-{
-	font-size: 20px;
-	text-align:center;
 }
 
 .hidden
