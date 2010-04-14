@@ -2,6 +2,7 @@
 # encoding: utf-8
 require 'barman'
 require 'uri'
+require 'lib/array'
 
 class BarsProcessor < Barman::Processor
   
@@ -14,6 +15,7 @@ class BarsProcessor < Barman::Processor
     DB_JS          = Barman::HTDOCS_DIR + "db/bars.js"
     DB_JS_CITIES   = Barman::HTDOCS_DIR + "db/cities.js"
     COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
+    BARMEN_JS      = Barman::HTDOCS_DIR + "db/barmen.js"
     
     TEMPLATE       = Barman::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
@@ -22,6 +24,8 @@ class BarsProcessor < Barman::Processor
   def initialize
     super
     @cocktails = {}
+    @barmen = []
+    @barmen_by_name = {}
     @cases = {}
     @entities = []
     @entities_names = {}
@@ -36,6 +40,7 @@ class BarsProcessor < Barman::Processor
   
   def job
     prepare_cocktails
+    prepare_barmen
     prepare_dirs
     prepare_cases
     prepare_renderer
@@ -54,6 +59,13 @@ class BarsProcessor < Barman::Processor
     if File.exists?(Config::COCKTAILS_DB)
       @cocktails = load_json(Config::COCKTAILS_DB)
     end
+  end
+  
+  def prepare_barmen
+    if File.exists?(Config::BARMEN_JS)
+      @barmen = load_json(Config::BARMEN_JS)
+    end
+    @barmen_by_name = @barmen.hash_index("name")
   end
   
   def prepare_dirs
@@ -103,6 +115,13 @@ class BarsProcessor < Barman::Processor
           "carte" => yaml["Коктейльная карта"],
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
+        
+        chief = @barmen_by_name[bar["chief"]]
+        if chief
+          bar["chief"] = chief
+        else
+          error %Q{нет такого бармена с именем "bar["chief"]"}
+        end
         
         if yaml["Контакты"]
           bar["contacts"] =
@@ -248,6 +267,7 @@ class BarsProcessor < Barman::Processor
       bar.delete("photos")
       bar.delete("priceIndex")
       bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
+      bar["chief"] = bar["chief"]["name"]
     end
     
     flush_json_object(@entities, Config::DB_JS)
