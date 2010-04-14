@@ -40,6 +40,7 @@ class BarsProcessor < Barman::Processor
     prepare_cases
     prepare_renderer
     prepare_map_points
+    
     update_bars
     
     unless errors?
