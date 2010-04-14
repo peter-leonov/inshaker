@@ -33,7 +33,7 @@ class BarmenProcessor < Barman::Processor
     process_barmen
     
     unless errors?
-      # cleanup_deleted
+      cleanup_deleted
       # flush_links
       flush_json
     end
@@ -100,6 +100,23 @@ class BarmenProcessor < Barman::Processor
     render_erb "#{dst_dir.path}/index.html", @barman
     
     @entities << @barman
+    end # indent
+  end
+  
+  def cleanup_deleted
+    say "ищу удаленные"
+    indent do
+    index = {}
+    @entities.each do |entity|
+      index[entity["path"]] = entity
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless index[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
     end # indent
   end
   
