@@ -62,6 +62,8 @@
 	line-height: 15px;
 }
 
+html.loading .b-content .cocktails { display: none; }
+
 .b-content .cocktails
 {
 	overflow: hidden;

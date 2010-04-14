@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="barman-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"> 
+<html id="barman-page" class="loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"> 
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/barman.css"/>
@@ -28,7 +28,13 @@
 						<% end %>
 					</div>
 				</div>
-				<div class="cocktails">Загружаю много коктейлей…</div>
+				<ul class="cocktails">
+					<% if @cocktails %>
+						<% @cocktails.each do |cocktail| %>
+							<li><a href="/cocktail/<%= cocktail["name_eng"].html_name %>/"><%= cocktail["name"] %></a></li>
+						<% end %>
+					<% end %>
+				</ul>
 			</div>
 		</div>
 	</div>

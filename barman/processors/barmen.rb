@@ -74,9 +74,13 @@ class BarmenProcessor < Barman::Processor
     dst_dir = Dir.create("#{Config::HT_ROOT}#{ht_name}")
     @barman["path"] = ht_name
     
-    if cocktails = about["Коктейли"]
-      cocktails.each do |name|
-        unless @cocktails[name]
+    if names = about["Коктейли"]
+      cocktails = []
+      names.each do |name|
+        cocktail = @cocktails[name]
+        if cocktail
+          cocktails << cocktail
+        else
           error "нет такого коктейля «#{name}»"
           if name.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
@@ -103,6 +107,9 @@ class BarmenProcessor < Barman::Processor
     @entities.each do |entity|
       # YAGNI
       entity.delete("about")
+      if entity["cocktails"]
+        entity["cocktails"].map! { |e| e["name"] }
+      end
     end
     
     flush_json_object(@entities, Config::DB_JS)

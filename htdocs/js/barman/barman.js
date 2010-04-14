@@ -45,6 +45,8 @@ Object.extend(Me.prototype, myProto)
 
 $.onready(function ()
 {
+	document.documentElement.removeClassName('loading')
+	
 	var nodes =
 	{
 		barmanName: $$('.b-title .name')[0],
