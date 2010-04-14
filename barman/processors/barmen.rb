@@ -70,7 +70,7 @@ class BarmenProcessor < Barman::Processor
     @barman["name_eng"] = about["Name"]
     @barman["about"] = about["О бармене"]
     
-    ht_name = @barman["name_eng"].html_name
+    ht_name = @barman["name_eng"].dirify
     dst_dir = Dir.create("#{Config::HT_ROOT}#{ht_name}")
     @barman["path"] = ht_name
     
