@@ -28,6 +28,7 @@ class BarmenProcessor < Barman::Processor
   
   def job
     prepare_cocktails
+    prepare_renderer
     
     process_barmen
     
@@ -42,6 +43,10 @@ class BarmenProcessor < Barman::Processor
     if File.exists?(Config::COCKTAILS_DB)
       @cocktails = load_json(Config::COCKTAILS_DB)
     end
+  end
+  
+  def prepare_renderer
+    @renderer = ERB.new(File.read(Config::TEMPLATE))
   end
   
   def process_barmen
@@ -80,13 +85,15 @@ class BarmenProcessor < Barman::Processor
       end
       @barman["cocktails"] = cocktails
     end
-    
+  
     photo_path = "#{src_dir.path}/photo.jpg"
     if File.exists?(photo_path)
       FileUtils.cp_r(photo_path, "#{dst_dir.path}/photo.jpg", @mv_opt)
     else
       error "нету фотки бармена"
     end
+    
+    render_erb "#{dst_dir.path}/index.html", @barman
     
     @entities << @barman
     end # indent
@@ -99,6 +106,20 @@ class BarmenProcessor < Barman::Processor
     end
     
     flush_json_object(@entities, Config::DB_JS)
+  end
+  
+  class Template
+    def initialize *hashes
+      hashes.each do |hash|
+        hash.each do |k, v|
+          instance_variable_set("@#{k}", v)
+        end
+      end
+    end
+
+    def get_binding
+      binding
+    end
   end
 end 
 
