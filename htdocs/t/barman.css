@@ -78,6 +78,7 @@ html.loading .b-content .cocktails { display: none; }
 	margin: 20px 0 0 0;
 	height: 140px;
 	width: 150px;
+	font-size: 12px;
 }
 
 .b-content .cocktails .cocktail-preview .image
