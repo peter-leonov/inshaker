@@ -29,6 +29,9 @@ var myProto =
 	
 	renderBarmanCocktails: function (cocktails)
 	{
+		cocktails = cocktails.slice()
+		cocktails.sort(function (a, b) { return a.name.localeCompare(b.name) })
+		
 		var tmp = document.createDocumentFragment()
 		
 		for (var i = 0, ii = cocktails.length; i < ii; i++)
