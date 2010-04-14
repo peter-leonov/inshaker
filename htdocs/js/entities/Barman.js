@@ -95,18 +95,26 @@ Object.extend(Barman,
 		return null
 	},
 	
+	byCocktailName: null,
 	getByCocktailName: function (name)
 	{
-		var db = this.db
-		
-		for (var i = 0, il = db.length; i < il; i++)
+		var index = this.byCocktailName
+		if (!index)
 		{
-			var barman = db[i]
-			if (barman.cocktails.indexOf(name) != -1)
-				return barman
+			index = this.byCocktailName = {}
+			
+			var db = this.db
+			for (var i = 0, il = db.length; i < il; i++)
+			{
+				var item = db[i],
+					cocktails = item.cocktails
+				
+				for (var j = 0, jl = cocktails.length; j < jl; j++)
+					index[cocktails[j].name] = item
+			}
 		}
 		
-		return null
+		return index[name]
 	}
 })
 
