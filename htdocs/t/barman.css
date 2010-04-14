@@ -8,31 +8,13 @@
 	margin-bottom: 15px;
 }
 
-.b-title .hrefs
-{
-	top: 0;
-	bottom: auto;
-}
+.b-title .hrefs .arrow { text-decoration: none; }
 
-.hrefs .arrow
-{
-	color: #000;
-	font-size: 200%;
-	text-decoration: none;
-}
-
-.hrefs .arrow.disabled
-{
-	cursor: default;
-	color: #C0C0C0;
-}
-
-.hrefs li
+.b-title .hrefs li
 {
 	display: inline;
 	margin: 0 4px;
 	vertical-align: middle;
-	font-weight: bold;
 }
 
 .about
