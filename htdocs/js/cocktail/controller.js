@@ -65,20 +65,27 @@ var Controller = {
 		var menu = $('panel_cocktail');
 		
 		var barman = Barman.getByCocktailName(name)
-		if (barman) {
+		if (barman)
+		{
 			var a = $(this.ID_AUTHOR)
 			if (a)
 			{
 				a.style.display = "inline";
-				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
-				// ip.addCloseListener(function () { a.remClassName('now') });
+				a.href = barman.pageHref()
+				
+				// course of link.js cancels an event (#451)
+				a.addEventListener('click', function (e) { location.href = this.href }, false)
 			}
+			
 			
 			a = cssQuery(this.SELECTOR_AUTHOR)[0]
 			if (a)
 			{
 				a.addClassName('active')
-				var ip = new InfoPopup(a, $('barman-info-popup'), Barman.getByCocktailName(name));
+				a.href = barman.pageHref()
+				
+				// course of link.js cancels an event (#451)
+				a.addEventListener('click', function (e) { location.href = this.href }, false)
 			}
 		}
 		

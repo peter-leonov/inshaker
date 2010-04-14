@@ -48,6 +48,10 @@ module Barman
       end
     end
     
+    def render_erb path, *opts
+      File.write(path, @renderer.result(self.class::Template.new(*opts).get_binding))
+    end
+    
     def flush_print_img(src_file, dest_file, size)
       system(%Q{convert $'#{src_file.ansi_quote}' -background white -flatten -scale #{size[0]}x#{size[1]} $'#{dest_file.ansi_quote}'}) or warn "  while converting #{src_file} -> #{dest_file}"
     end
