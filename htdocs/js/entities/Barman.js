@@ -18,10 +18,7 @@ Barman.prototype =
 	pageHref: function ()
 	{
 		return '/barman/' + this.path + '/'
-	},
-	
-    next: function () { return Barman.db[Barman.db.indexOf(this) + 1] },
-    prev: function () { return Barman.db[Barman.db.indexOf(this) - 1] }
+	}
 }
 
 Object.extend(Barman,
@@ -68,6 +65,18 @@ Object.extend(Barman,
 		}
 		
 		return index[name]
+	},
+	
+	getPrevNext: function (barman)
+	{
+		var db = this.db,
+			l = db.length
+		
+		var index = db.indexOf(barman)
+		var prev = index <= 0 ? db[l - 1] : db[index - 1]
+		var next = index >= l - 1 ? db[0] : db[index + 1]
+		
+		return {previous: prev, next: next}
 	}
 })
 

@@ -18,10 +18,13 @@ var myProto =
 	
 	setBarmanByName: function (name)
 	{
-		var barman = this.sources.barman.getByName(name)
+		var Barman = this.sources.barman
 		
+		var barman = Barman.getByName(name)
 		this.barman = barman
-		this.view.modelChanged(barman)
+		
+		var neighbours = Barman.getPrevNext(barman)
+		this.view.modelChanged(barman, neighbours)
 	}
 }
 

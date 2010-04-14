@@ -15,10 +15,10 @@ var myProto =
 		this.nodes = nodes
 	},
 	
-	modelChanged: function (barman)
+	modelChanged: function (barman, neighbours)
 	{
 		this.renderBarmanCocktails(barman.cocktails)
-		this.renderNextAndPrevBarmensLinks(barman)
+		this.renderNextAndPrevBarmensLinks(neighbours)
 	},
 	
 	findBarmanName: function ()
@@ -47,10 +47,10 @@ var myProto =
 		cocktailList.appendChild(tmp)
 	},
 	
-	renderNextAndPrevBarmensLinks: function (barman)
+	renderNextAndPrevBarmensLinks: function (neighbours)
 	{
-		this.nodes.nextBarman.href = barman.next().pageHref()
-		this.nodes.prevBarman.href = barman.prev().pageHref()
+		this.nodes.prevBarman.href = neighbours.previous.pageHref()
+		this.nodes.nextBarman.href = neighbours.next.pageHref()
 	}
 };
 
