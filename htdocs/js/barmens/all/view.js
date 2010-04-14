@@ -23,13 +23,20 @@
 				lazyLoadingImages.call(view, e.currentTarget.innerHeight, e.currentTarget.pageYOffset);
 			};
 		},
-		renderBarmensPhoto: function(barmens) {
-			var li, div, tmp = document.createDocumentFragment();
+		renderBarmensPhoto: function(barmen) {
+			var li, div, a, span, text, tmp = document.createDocumentFragment();
 
-			for (var i = 0, ii = barmens.length; i < ii; i++) {
+			for (var i = 0, ii = barmen.length; i < ii; i++) {
 				li = document.createElement('li');
 				li.className = 'item';
 				div = document.createElement('div');
+				a = document.createElement('a');
+				a.href = barmen[i].path;
+				span = document.createElement('span');
+				text = document.createTextNode(barmen[i].name);
+				span.appendChild(text);
+				a.appendChild(span);
+				div.appendChild(a);
 
 				li.appendChild(div);
 				tmp.appendChild(li);
@@ -76,6 +83,21 @@
 			}
 		}
 	}
+
+//	function newlazyLoadingImages(clientVisibleHeight, pageYOffset, elements, callback) {
+//		clientVisibleHeight = clientVisibleHeight || document.documentElement.clientHeight;
+//		pageYOffset = pageYOffset || 0;
+//
+//		var currentWindowOffsetTop = clientVisibleHeight + pageYOffset;
+//
+//		for (var i = 0, ii = elements.length; i < ii; i++) {
+//			var node = elements[i];
+//
+//			if (node.offsetTop <= currentWindowOffsetTop) {
+//				callback(node);
+//			}
+//		}
+//	}
 
 
 	Object.extend(Me.prototype, myProto);

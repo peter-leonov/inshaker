@@ -136,3 +136,23 @@
 	width: 210px;
 	margin: 0 27px 27px 0;
 }
+
+#barmen-page ul.list li.item a {
+	position:absolute;
+	width:208px;
+	height:25px;
+	/*border:1px solid red;*/
+	padding:163px 0 0 0;
+}
+
+#barmen-page ul.list li.item a span {
+	background:#000;
+	position:absolute;
+	/*border:1px solid blue;*/
+	width:195px;
+	height:24px;
+	padding:3px 0 0 15px;
+	opacity:0.5;
+	font-size:13px;
+	line-height:17px;
+}
