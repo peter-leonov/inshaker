@@ -54,10 +54,10 @@
 							</dd>
 						</dl>
 						
-						<% if @chief != "нет" %>
+						<% if @chief %>
 						<dl class="part barman">
 							<dt>Главный бармен:</dt>
-							<dd><a><%=@chief%></a></dd>
+							<dd><a href="/barman/<%= @chief["name_eng"].dirify %>/"><%= @chief["name"] %></a></dd>
 						</dl>
 						<% end %>
 						<dl class="part cookery">

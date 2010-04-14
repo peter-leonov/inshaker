@@ -38,10 +38,6 @@ BarPage.view =
 			}
 		}
 		
-		var barman
-		if (nodes.barman && (barman = Barman.getByName(nodes.barman.innerHTML)))
-			new InfoPopup(nodes.barman, nodes.barmanInfoPopup, barman)
-		
 		var controller = this.owner.controller
 		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
 		
