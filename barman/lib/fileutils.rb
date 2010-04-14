@@ -28,6 +28,11 @@ class Dir
   attr_accessor :name
   @@exclude = /^\./
   
+  def self.create path
+    FileUtils.mkdir_p path
+    new path
+  end
+  
   alias :each_real :each
   def each
     each_real do |entry|
