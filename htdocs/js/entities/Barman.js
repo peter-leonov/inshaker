@@ -1,17 +1,25 @@
-Barman = function (data)
+function Barman (data)
 {
 	for (var k in data)
 		this[k] = data[k]
+	
+	var cocktails = this.cocktails
+	if (!cocktails)
+		this.cocktails = []
+	else
+		for (var i = 0, il = cocktails.length; i < il; i++)
+			cocktails[i] = Cocktail.getByName(cocktails[i])
+	
+	this.constructor = Barman
 }
-/**
- * Каждый экземпляр соответствует интерфейсу displayObject в InfoPopup
- *
- * @see "/js/common/infoPopup.js"
- */
+
 Barman.prototype =
 {
-	constructor: Barman,
-    
+	pageHref: function ()
+	{
+		return '/barman/' + this.path + '/'
+	},
+	
     switchable: true,
     render: function (context)
     {
@@ -59,39 +67,47 @@ Barman.prototype =
         else parent.hide()
     },
 
-    next: function () { return Barman.barmen[Barman.barmen.indexOf(this) + 1] },
-    prev: function () { return Barman.barmen[Barman.barmen.indexOf(this) - 1] }
+    next: function () { return Barman.db[Barman.db.indexOf(this) + 1] },
+    prev: function () { return Barman.db[Barman.db.indexOf(this) - 1] }
 }
 
 Object.extend(Barman,
 {
-    barmen: [],
-
-    initialize: function (db) 
-    {
-        for(var i = 0; i < db.length; i++)
-        {
-			this.barmen.push(new Barman(db[i]))
-		}      
-    },
-
-    getByName: function (name)
-    {
-        for(var i = 0; i < this.barmen.length; i++)
-            if (this.barmen[i].name == name) return this.barmen[i]
-        return null
-    },
-
-    getByCocktailName: function (cocktailName)
-    {
-        for(var i = 0; i < this.barmen.length; i++)
-        {
-            if(this.barmen[i].cocktails && 
-                    this.barmen[i].cocktails.indexOf(cocktailName) > -1)
-                return this.barmen[i]
-        }
-        return null
-    }
+	initialize: function (db)
+	{
+		for(var i = 0; i < db.length; i++)
+			db[i] = new Barman(db[i])
+		
+		this.db = db
+	},
+	
+	getByName: function (name)
+	{
+		var db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var barman = db[i]
+			if (barman.name == name)
+				return barman
+		}
+		
+		return null
+	},
+	
+	getByCocktailName: function (name)
+	{
+		var db = this.db
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var barman = db[i]
+			if (barman.cocktails.indexOf(name) != -1)
+				return barman
+		}
+		
+		return null
+	}
 })
 
 Barman.initialize(<!--# include file="/db/barmen.js"-->)
