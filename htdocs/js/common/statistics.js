@@ -9,11 +9,6 @@ var Me =
 		this.track('magazine-promo-viewed', promo ? promo.name : ('' + promo))
 	},
 	
-	barmanPopupViewed: function (barman)
-	{
-		this.track('barman-popup-viewed', barman ? barman.name : ('' + barman))
-	},
-	
 	cocktailsFilterSelected: function (name)
 	{
 		this.track('cocktails-filter-selected', name)
