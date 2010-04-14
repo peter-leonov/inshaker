@@ -74,10 +74,6 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .what-need dd a{float:left;padding-right:18px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
-<!--# include virtual="popup.css" -->
-<!--# include virtual="info-popup.css" -->
-
-#barman-info-popup { display: none; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 #panel_cocktail * { display: none !important; }
