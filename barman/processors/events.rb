@@ -34,9 +34,9 @@ class EventsProcessor < Barman::Processor
     prepare_dirs
     
     update_events
-    update_main
     
     unless errors?
+      update_main
       cleanup_deleted
       flush_links
       flush_json
@@ -209,7 +209,8 @@ class EventsProcessor < Barman::Processor
   
   def update_main
     if @main_event
-      File.write(Config::MAIN_LINK, %Q{/event/#{@main_event[:href]}/})
+      say %Q{главное событие: "#{@main_event["name"]}"}
+      File.write(Config::MAIN_LINK, %Q{/event/#{@main_event["href"]}/})
     else
       error "ни одно событие не назначено главным"
     end
