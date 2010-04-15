@@ -23,14 +23,16 @@
 				lazyLoadingImages.call(view, e.currentTarget.innerHeight, e.currentTarget.pageYOffset);
 			};
 		},
-		renderBarmensPhoto: function(barmen) {
+		renderBarmenPhoto: function(barmen) {
 			var li, div, a, span, text, tmp = document.createDocumentFragment();
+			var liClassName = 'item';
+			var divBackgroundColor = '#eee';
 
 			for (var i = 0, ii = barmen.length; i < ii; i++) {
 				li = document.createElement('li');
-				li.className = 'item';
+				li.className = liClassName;
 				div = document.createElement('div');
-				div.style.background = '#eee';
+				div.style.background = divBackgroundColor;
 				a = document.createElement('a');
 				a.href = barmen[i].path;
 				span = document.createElement('span');

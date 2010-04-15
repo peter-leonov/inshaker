@@ -17,33 +17,30 @@
 			this.view.bind(nodes);
 			this.controller.bind(state);
 
+			this.controller.setBarmenPhoto();
 			return this;
-		},
-		setBarmensPhoto: function() {
-			this.controller.setBarmensPhoto();
 		}
 	};
 
 	Object.extend(Me.prototype, myProto);
-
-	$.onready(function () {
-		var nodes = {
-			loadingNode: $$('div.loading')[0],
-			barmensList: $$('ul.list')[0]
-		};
-		var sources = {
-			barmens: Barman.barmen
-		};
-
-		var page = new AllBarmensPage();
-
-		page.bind(nodes, sources);
-		page.setBarmensPhoto();
-
-		/* ---- DEBUG INFO ---- */
-		/* ---- DEBUG INFO ---- */
-	});
 })();
+
+$.onready(function () {
+	var nodes = {
+		loadingNode: $$('div.loading')[0],
+		barmensList: $$('ul.list')[0]
+	};
+	var sources = {
+		barmens: Barman.barmen
+	};
+
+	var page = new AllBarmensPage();
+
+	page.bind(nodes, sources);
+
+	/* ---- DEBUG INFO ---- */
+	/* ---- DEBUG INFO ---- */
+});
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->

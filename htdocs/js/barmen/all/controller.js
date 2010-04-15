@@ -9,8 +9,8 @@
 		bind: function(state) {
 			this.model.setState(state);
 		},
-		setBarmensPhoto: function() {
-			this.view.renderBarmensPhoto(this.model.sources.barmens);
+		setBarmenPhoto: function() {
+			this.view.renderBarmenPhoto(this.model.sources.barmens);
 		}
 	};
 
