@@ -297,6 +297,8 @@ class CocktailsProcessor < Barman::Processor
     parse_about_text  File.read(dir.path + "/about.txt")
     parse_legend_text File.read(dir.path + "/legend.txt")
     
+    # File.write(dir.path + "/about.yaml", @cocktail.to_yaml.unescape_yaml)
+    
     @cocktails[name] = @cocktail
     
     html_name = @cocktail["html_name"] = @cocktail["name_eng"].html_name
