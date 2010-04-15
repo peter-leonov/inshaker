@@ -30,6 +30,7 @@
 				li = document.createElement('li');
 				li.className = 'item';
 				div = document.createElement('div');
+				div.style.background = '#eee';
 				a = document.createElement('a');
 				a.href = barmen[i].path;
 				span = document.createElement('span');
@@ -78,8 +79,9 @@
 		for (var i = 0, ii = this.nodes.barmanListItems.length; i < ii; i++) {
 			var barmanListNode = this.nodes.barmanListItems[i];
 
-			if (barmanListNode.offsetTop <= currentWindowOffsetTop) {
+			if (barmanListNode.offsetTop <= currentWindowOffsetTop && !barmanListNode.loaded) {
 				barmanListNode.style.background = 'url(' + Barman.getPhoto(barmans[i]) + ')';
+				barmanListNode.loaded = true;
 			}
 		}
 	}

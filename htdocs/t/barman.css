@@ -146,13 +146,13 @@
 }
 
 #barmen-page ul.list li.item a span {
-	background:#000;
+	background:rgba(0,0,0,0.5);
+	color: #fff;
 	position:absolute;
 	/*border:1px solid blue;*/
 	width:195px;
 	height:24px;
 	padding:3px 0 0 15px;
-	opacity:0.5;
 	font-size:13px;
 	line-height:17px;
 }
