@@ -87,7 +87,7 @@ class CocktailsProcessor < Barman::Processor
       
       cleanup_deleted
       flush_tags_and_strengths_and_methods
-      flush_cocktails
+      flush_json
       flush_links
     end
   end
@@ -383,7 +383,7 @@ class CocktailsProcessor < Barman::Processor
     end
   end
   
-  def flush_cocktails
+  def flush_json
     say "сохраняю данные о коктейлях"
     @cocktails.each do |name, cocktail|
       update_json cocktail
