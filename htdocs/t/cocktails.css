@@ -61,7 +61,7 @@
 .b-content .pager .p-list a { padding: 2px 6px 3px; }
 .b-content .pager .p-list a.two { padding: 2px 4px 3px; margin-right: 0; }
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
-.b-content .surface{padding:500px;width:10000px;}
+.b-content .surface{padding:500px;}
 
 
 .search-form {position:relative;}
@@ -104,7 +104,7 @@
 #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
 .byIngredients #results_display .viewport {width:440px;margin-left: 145px; }
 .byIngredients #results_display .point {width:440px;padding: 0 35px 0 0;}
-#results_display .surface { width: 20000px; }
+#results_display .surface { width: 30000px; }
 #search_tips { height: 14px}
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px dashed;}
