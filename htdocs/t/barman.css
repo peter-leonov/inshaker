@@ -1,0 +1,93 @@
+.b-content
+{
+	width: 100%;
+}
+
+.b-title
+{
+	margin-bottom: 15px;
+}
+
+.b-title .hrefs .arrow { text-decoration: none; }
+
+.b-title .hrefs li
+{
+	display: inline;
+	margin: 0 4px;
+	vertical-align: middle;
+}
+
+.about
+{
+	overflow: hidden;
+	position: relative;
+	width: 922px;
+	height: 281px;
+	margin-bottom: 40px;
+	font-size: 12px;
+}
+
+.about .photo
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 281px;
+	width: 357px;
+	-moz-border-radius: 10px 0 0 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	border-radius: 10px 0 0 10px;
+}
+
+.about .desc
+{
+	position: absolute;
+	left: 357px;
+	top: 0;
+	width: 502px;
+	height: 271px;
+	overflow: auto;
+	background: #f1f0ed;
+	padding: 10px 30px 0;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+.about .desc p
+{
+	margin-bottom: 0.6em;
+	line-height: 15px;
+}
+
+html.loading .b-content .cocktails { display: none; }
+
+.b-content .cocktails
+{
+	overflow: hidden;
+	width: 900px;
+}
+
+.b-content .cocktails .cocktail-preview
+{
+	width: 8em;
+	text-align: center;
+	float: left;
+	margin: 20px 0 0 0;
+	height: 140px;
+	width: 150px;
+	font-size: 12px;
+}
+
+.b-content .cocktails .cocktail-preview .image
+{
+	display: block;
+	margin: 0 auto 5px;
+}
+
+.hidden
+{
+	display: none;
+}
