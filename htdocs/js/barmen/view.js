@@ -10,7 +10,6 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.bindEvents()
 	},
 	
 	bind: function (nodes)
@@ -21,16 +20,7 @@ var myProto =
 	modelChanged: function (data)
 	{
 		
-	},
-	
-	bindEvents: function ()
-	{
-		var view = this
-		window.onscroll = function (e)
-		{
-			lazyLoadingImages.call(view, e.currentTarget.innerHeight, e.currentTarget.pageYOffset)
-		}
-	},
+	}
 	
 	renderBarmenPhoto: function (barmen)
 	{
@@ -43,7 +33,7 @@ var myProto =
 			li = document.createElement('li')
 			li.className = liClassName
 			div = document.createElement('div')
-			div.style.background = divBackgroundColor
+			div.style.backgroundImage = 'url(' + barmen[i].getPhoto() + ')'
 			a = document.createElement('a')
 			a.href = barmen[i].path
 			span = document.createElement('span')
@@ -60,42 +50,6 @@ var myProto =
 		this.nodes.barmensList.appendChild(tmp)
 		
 		this.nodes.barmanListItems = $$('li.item div')
-		lazyLoadingImages.call(this)
-	}
-}
-
-function getOffsetRect(elem) {
-	var box = elem.getBoundingClientRect();
-
-	var body = document.body;
-	var docElem = document.documentElement;
-
-	var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
-	var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
-
-	var clientTop = docElem.clientTop || body.clientTop || 0;
-	var clientLeft = docElem.clientLeft || body.clientLeft || 0;
-
-	var top = box.top + scrollTop - clientTop;
-	var left = box.left + scrollLeft - clientLeft;
-
-	return { top: Math.round(top), left: Math.round(left) };
-}
-
-function lazyLoadingImages(clientVisibleHeight, pageYOffset) {
-	clientVisibleHeight = clientVisibleHeight || document.documentElement.clientHeight;
-	pageYOffset = pageYOffset || 0;
-
-	var currentWindowOffsetTop = clientVisibleHeight + pageYOffset;
-	var barmans = Barman.db;
-
-	for (var i = 0, ii = this.nodes.barmanListItems.length; i < ii; i++) {
-		var barmanListNode = this.nodes.barmanListItems[i];
-
-		if (barmanListNode.offsetTop <= currentWindowOffsetTop && !barmanListNode.loaded) {
-			barmanListNode.style.background = 'url(' + Barman.getPhoto(barmans[i]) + ')';
-			barmanListNode.loaded = true;
-		}
 	}
 }
 
