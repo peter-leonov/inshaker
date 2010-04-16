@@ -7,6 +7,8 @@
 	overflow: hidden; 
 }
 
+html.loading .barmen-list { font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
+
 .barmen-list .item
 {
 	float: left;

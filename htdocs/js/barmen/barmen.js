@@ -29,6 +29,8 @@ Object.extend(Me.prototype, myProto)
 
 $.onready(function ()
 {
+	document.documentElement.removeClassName('loading')
+	
 	var nodes =
 	{
 		barmensList: $$('.barmen-list')[0]
