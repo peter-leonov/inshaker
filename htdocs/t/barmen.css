@@ -53,3 +53,7 @@ html.loading .barmen-list { font-size: 16px; margin: 0; padding: 20px 0; text-al
 	-moz-border-radius: 0 0 10px 10px;
 	border-radius: 0 0 10px 10px;
 }
+
+.please-wait { display: none; }
+html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
+
