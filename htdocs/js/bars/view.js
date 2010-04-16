@@ -297,7 +297,7 @@ BarsPageView.prototype =
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('div'),
+		var main = document.createElement('li'),
 			nameCont = document.createElement('a'),
 			name = document.createElement('span')
 		
