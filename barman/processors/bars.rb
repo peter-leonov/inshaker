@@ -276,11 +276,9 @@ class BarsProcessor < Barman::Processor
   
   def flush_links
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      links.puts "<ul>"
       @entities.each do |entity|
-        links.puts %Q{<li><a href="/bars/#{entity["city"].dirify}/#{entity["name_eng"].html_name}.html">#{entity["name"]}</a></li>}
+        links.puts %Q{<li><a href="/bar/#{entity["path"]}/">#{entity["name"]}</a></li>}
       end
-      links.puts "</ul>"
     end
   end
 end
