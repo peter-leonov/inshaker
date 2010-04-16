@@ -18,7 +18,7 @@ var myProto =
 	modelChanged: function (barman, neighbours)
 	{
 		this.renderBarmanCocktails(barman.cocktails)
-		this.renderNextAndPrevBarmensLinks(neighbours)
+		this.renderNextAndPrevBarmenLinks(neighbours)
 	},
 	
 	findBarmanName: function ()
@@ -47,7 +47,7 @@ var myProto =
 		cocktailList.appendChild(tmp)
 	},
 	
-	renderNextAndPrevBarmensLinks: function (neighbours)
+	renderNextAndPrevBarmenLinks: function (neighbours)
 	{
 		this.nodes.prevBarman.href = neighbours.previous.pageHref()
 		this.nodes.nextBarman.href = neighbours.next.pageHref()

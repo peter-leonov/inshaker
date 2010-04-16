@@ -33,9 +33,9 @@ var myProto =
 		this.controller.setCocktails()
 	},
 	
-	setNextAndPrevBarmens: function ()
+	setNextAndPrevBarmen: function ()
 	{
-		this.controller.setNextAndPrevBarmens()
+		this.controller.setNextAndPrevBarmen()
 	}
 }
 
