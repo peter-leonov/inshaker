@@ -1,11 +1,6 @@
-/**
- * dependencies:
- *    Barman.js
- *    Cocktail.js
- */
 ;(function(){
 
-var myName = 'BarmanPage'
+var myName = 'AllBarmensPage'
 var Me = self[myName] = MVC.create(myName)
 
 var myProto =
@@ -23,19 +18,8 @@ var myProto =
 		this.view.bind(nodes)
 		this.controller.bind(state)
 		
-		this.view.findBarmanName()
-		
+		this.controller.loadBarmen()
 		return this
-	},
-	
-	setCocktails: function ()
-	{
-		this.controller.setCocktails()
-	},
-	
-	setNextAndPrevBarmen: function ()
-	{
-		this.controller.setNextAndPrevBarmen()
 	}
 }
 
@@ -49,10 +33,7 @@ $.onready(function ()
 	
 	var nodes =
 	{
-		barmanName: $$('.b-title .name')[0],
-		cocktailList: $$('.b-content .cocktails')[0],
-		prevBarman: $$('.b-title .arrow.prev')[0],
-		nextBarman: $$('.b-title .arrow.next')[0]
+		barmensList: $$('.barmen-list')[0]
 	}
 	
 	var sources =
@@ -60,11 +41,10 @@ $.onready(function ()
 		barman: Barman
 	}
 	
-	var page = new BarmanPage()
+	var page = new AllBarmensPage()
 	
 	page.bind(nodes, sources)
 })
-
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->

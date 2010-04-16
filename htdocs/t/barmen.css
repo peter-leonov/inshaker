@@ -1,0 +1,55 @@
+.b-content { width: 100%; }
+
+.barmen-list
+{
+	width: 103%;
+	margin: 17px 0 -17px 0;
+	overflow: hidden; 
+}
+
+html.loading .barmen-list { font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
+
+.barmen-list .item,
+.barmen-list .barman-preview
+{
+	width: 216px;
+	height: 240px;
+}
+
+.barmen-list .item
+{
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.barmen-list .barman-preview
+{
+	overflow: hidden;
+	position: relative;
+	display: block;
+	
+	color: #fff;
+	background: center center;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.barmen-list .barman-preview .name
+{
+	position: absolute;
+	top: 209px;
+	width: 201px;
+	height: 24px;
+	padding: 7px 0 0 15px;
+	
+	font-size: 13px;
+	line-height: 17px;
+	
+	background: #222;
+	background: rgba(0, 0, 0, 0.7);
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+}
