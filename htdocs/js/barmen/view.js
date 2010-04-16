@@ -20,36 +20,31 @@ var myProto =
 	modelChanged: function (data)
 	{
 		
-	}
+	},
 	
-	renderBarmenPhoto: function (barmen)
+	renderBarmen: function (barmen)
 	{
-		var li, div, a, span, text, tmp = document.createDocumentFragment()
-		var liClassName = 'item'
-		var divBackgroundColor = '#eee'
+		var tmp = document.createDocumentFragment()
 		
 		for (var i = 0, il = barmen.length; i < il; i++)
 		{
-			li = document.createElement('li')
-			li.className = liClassName
-			div = document.createElement('div')
-			div.style.backgroundImage = 'url(' + barmen[i].getPhoto() + ')'
-			a = document.createElement('a')
-			a.href = barmen[i].path
-			span = document.createElement('span')
-			text = document.createTextNode(barmen[i].name)
-			span.appendChild(text)
-			a.appendChild(span)
+			var barman = barmen[i]
+			
+			var li = Nc('li', 'item')
+			var div = N('div')
+			div.style.backgroundImage = 'url(' + barman.getPhoto() + ')'
+			var a = N('a')
+			a.href = barman.pageHref()
+			a.appendChild(Nct('span', 'name', barman.name))
 			div.appendChild(a)
 			
 			li.appendChild(div)
 			tmp.appendChild(li)
 		}
 		
-		this.nodes.loadingNode.hide()
-		this.nodes.barmensList.appendChild(tmp)
-		
-		this.nodes.barmanListItems = $$('li.item div')
+		var list = this.nodes.barmensList
+		list.empty()
+		list.appendChild(tmp)
 	}
 }
 

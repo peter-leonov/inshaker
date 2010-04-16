@@ -31,7 +31,6 @@ $.onready(function ()
 {
 	var nodes =
 	{
-		loadingNode: $$('div.loading')[0],
 		barmensList: $$('ul.list')[0]
 	}
 	

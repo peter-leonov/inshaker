@@ -17,7 +17,7 @@ var myProto =
 	
 	setBarmenPhoto: function ()
 	{
-		this.view.renderBarmenPhoto(this.model.sources.barmens)
+		this.view.renderBarmen(this.model.sources.barmens)
 	}
 }
 
