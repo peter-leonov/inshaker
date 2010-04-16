@@ -6,8 +6,7 @@
 	margin: 17px 0 -17px 0;
 	overflow: hidden; 
 }
-
-html.loading .barmen-list { font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
+html.loading .barmen-list { display: none; }
 
 .barmen-list .item,
 .barmen-list .barman-preview

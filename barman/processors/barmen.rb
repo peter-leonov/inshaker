@@ -34,7 +34,7 @@ class BarmenProcessor < Barman::Processor
     
     unless errors?
       cleanup_deleted
-      # flush_links
+      flush_links
       flush_json
     end
   end
@@ -118,6 +118,16 @@ class BarmenProcessor < Barman::Processor
       end
     end
     end # indent
+  end
+  
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      @entities.each do |entity|
+        links.puts %Q{<li><a href="/barman/#{entity["path"]}/">#{entity["name"]}</a></li>}
+      end
+      links.puts "</ul>"
+    end
   end
   
   def flush_json
