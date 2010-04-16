@@ -24,6 +24,8 @@ var myProto =
 	
 	renderBarmen: function (barmen)
 	{
+		barmen.randomize()
+		
 		var tmp = document.createDocumentFragment()
 		
 		for (var i = 0, il = barmen.length; i < il; i++)
