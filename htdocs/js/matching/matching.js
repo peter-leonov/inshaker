@@ -29,9 +29,6 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/modules/plural.js"-->
-<!--# include virtual="/lib-0.3/modules/array-randomize.js"-->
-
 <!--# include file="/js/matching/model.js" -->
 <!--# include file="/js/matching/view.js" -->
 <!--# include file="/js/matching/controller.js" -->
