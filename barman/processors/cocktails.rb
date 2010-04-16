@@ -297,7 +297,16 @@ class CocktailsProcessor < Barman::Processor
     parse_about_text  File.read(dir.path + "/about.txt")
     parse_legend_text File.read(dir.path + "/legend.txt")
     
-    # File.write(dir.path + "/about.yaml", @cocktail.to_yaml.unescape_yaml)
+    yaml = %Q{Name: #{@cocktail["name_eng"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Тизер: #{@cocktail["teaser"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Крепость: #{@cocktail["strength"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Группы: #{@cocktail["tags"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Ингредиенты: #{@cocktail["ingredients"].map { |e| {e[0] => e[1]} }.to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Штучки: #{@cocktail["tools"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+Как приготовить: #{@cocktail["receipt"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+}
+    
+    File.write(dir.path + "/about.yaml", yaml)
     
     @cocktails[name] = @cocktail
     
