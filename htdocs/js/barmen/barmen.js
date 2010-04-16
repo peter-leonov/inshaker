@@ -18,7 +18,7 @@ var myProto =
 		this.view.bind(nodes)
 		this.controller.bind(state)
 		
-		this.controller.setBarmenPhoto()
+		this.controller.loadBarmen()
 		return this
 	}
 }
@@ -38,7 +38,7 @@ $.onready(function ()
 	
 	var sources =
 	{
-		barmens: Barman.db
+		barman: Barman
 	}
 	
 	var page = new AllBarmensPage()

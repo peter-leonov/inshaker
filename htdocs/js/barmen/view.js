@@ -17,9 +17,9 @@ var myProto =
 		this.nodes = nodes
 	},
 	
-	modelChanged: function (data)
+	modelChanged: function (barmen)
 	{
-		
+		this.renderBarmen(barmen)
 	},
 	
 	renderBarmen: function (barmen)

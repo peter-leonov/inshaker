@@ -16,9 +16,11 @@ var myProto =
 		this.sources = sources
 	},
 	
-	setState: function (state)
+	loadBarmen: function ()
 	{
-		this.state = state
+		var barmen = this.sources.barman.getAll()
+		this.barmen = barmen
+		this.view.modelChanged(barmen)
 	}
 }
 

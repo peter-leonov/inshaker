@@ -10,14 +10,11 @@ var myProto =
 		this.state = {}
 	},
 	
-	bind: function (state)
-	{
-		this.model.setState(state)
-	},
+	bind: function (state) {},
 	
-	setBarmenPhoto: function ()
+	loadBarmen: function ()
 	{
-		this.view.renderBarmen(this.model.sources.barmens)
+		this.model.loadBarmen()
 	}
 }
 

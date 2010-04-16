@@ -82,6 +82,11 @@ Object.extend(Barman,
 		var next = index >= l - 1 ? db[0] : db[index + 1]
 		
 		return {previous: prev, next: next}
+	},
+	
+	getAll: function ()
+	{
+		return this.db.slice()
 	}
 })
 
