@@ -56,3 +56,6 @@ html.loading .barmen-list { display: none; }
 .please-wait { display: none; }
 html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
+.barmen-list { margin: 5px 0 5px 0; }
+<!--# endif -->
