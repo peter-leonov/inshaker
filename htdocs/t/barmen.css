@@ -1,0 +1,36 @@
+ul.list
+{
+	width: 110%;
+}
+
+ul.list li.item
+{
+	float: left;
+}
+
+ul.list li.item div
+{
+	height: 190px;
+	width: 210px;
+	margin: 0 27px 27px 0;
+}
+
+ul.list li.item a
+{
+	position:absolute;
+	width:208px;
+	height:25px;
+	padding:163px 0 0 0;
+}
+
+ul.list li.item a span
+{
+	background:rgba(0,0,0,0.5);
+	color: #fff;
+	position:absolute;
+	width:195px;
+	height:24px;
+	padding:3px 0 0 15px;
+	font-size:13px;
+	line-height:17px;
+}

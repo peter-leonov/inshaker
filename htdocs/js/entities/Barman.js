@@ -77,6 +77,11 @@ Object.extend(Barman,
 		var next = index >= l - 1 ? db[0] : db[index + 1]
 		
 		return {previous: prev, next: next}
+	},
+	
+	getPhoto: function (barman)
+	{
+		return '/i/barmen/' + barman.name_eng.htmlName() + '.jpg'
 	}
 })
 
