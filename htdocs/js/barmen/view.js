@@ -30,16 +30,15 @@ var myProto =
 		{
 			var barman = barmen[i]
 			
-			var li = Nc('li', 'item')
-			var div = N('div')
-			div.style.backgroundImage = 'url(' + barman.getPhoto() + ')'
-			var a = N('a')
-			a.href = barman.pageHref()
-			a.appendChild(Nct('span', 'name', barman.name))
-			div.appendChild(a)
+			var item = Nc('li', 'item')
+			tmp.appendChild(item)
 			
-			li.appendChild(div)
-			tmp.appendChild(li)
+			var preview = Nc('a', 'barman-preview')
+			preview.style.backgroundImage = 'url(' + barman.getPhoto() + ')'
+			preview.href = barman.pageHref()
+			item.appendChild(preview)
+			
+			preview.appendChild(Nct('span', 'name', barman.name))
 		}
 		
 		var list = this.nodes.barmensList

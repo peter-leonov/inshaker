@@ -1,36 +1,44 @@
-ul.list
+.b-content { width: 100%; }
+
+.barmen-list
 {
-	width: 110%;
+	width: 103%;
+	margin: 20px 0 -20px 0;
+	overflow: hidden; 
 }
 
-ul.list li.item
+.barmen-list .item
 {
 	float: left;
-}
-
-ul.list li.item div
-{
-	height: 190px;
 	width: 210px;
+	height: 190px;
 	margin: 0 27px 27px 0;
 }
 
-ul.list li.item a
+.barmen-list .barman-preview
 {
-	position:absolute;
-	width:208px;
-	height:25px;
-	padding:163px 0 0 0;
+	overflow: hidden; 
+	position: relative;
+	display: block;
+	height: 190px;
+	width: 210px;
+	
+	color: #fff;
+	background: center center;
+	-webkit-border-radius: 10px;
 }
 
-ul.list li.item a span
+.barmen-list .barman-preview .name
 {
-	background:rgba(0,0,0,0.5);
-	color: #fff;
-	position:absolute;
-	width:195px;
-	height:24px;
-	padding:3px 0 0 15px;
-	font-size:13px;
-	line-height:17px;
+	position: absolute;
+	top: 163px;
+	width: 195px;
+	height: 24px;
+	padding: 3px 0 0 15px;
+	
+	font-size: 13px;
+	line-height: 17px;
+	
+	background: rgba(0,0,0,0.5);
+	-webkit-border-radius: 10px;
 }

@@ -31,7 +31,7 @@ $.onready(function ()
 {
 	var nodes =
 	{
-		barmensList: $$('ul.list')[0]
+		barmensList: $$('.barmen-list')[0]
 	}
 	
 	var sources =
