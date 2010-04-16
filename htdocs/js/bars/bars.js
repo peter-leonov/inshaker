@@ -27,6 +27,8 @@ $.onready
 (
 	function ()
 	{
+		document.documentElement.remClassName('loading')
+		
 		var nodes =
 		{
 			titleAll: cssQuery('#head .all')[0],
