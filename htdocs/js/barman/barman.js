@@ -5,7 +5,7 @@
  */
 ;(function(){
 
-var myName = 'BarmensPage'
+var myName = 'BarmanPage'
 var Me = self[myName] = MVC.create(myName)
 
 var myProto =
@@ -60,7 +60,7 @@ $.onready(function ()
 		barman: Barman
 	}
 	
-	var page = new BarmensPage()
+	var page = new BarmanPage()
 	
 	page.bind(nodes, sources)
 })

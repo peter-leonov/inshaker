@@ -1,6 +1,6 @@
 ;(function(){
 
-var Papa = BarmensPage
+var Papa = BarmanPage
 var Me = Papa.View
 
 var myProto =
