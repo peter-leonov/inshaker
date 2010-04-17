@@ -40,7 +40,8 @@ html.loading #bars-container { display: none; }
 .please-wait { display: none; }
 html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
 
-#map { position: relative; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; overflow: hidden; }
+#map { position: relative; height: 500px; clear: both; margin: 20px 25px 0 0; background: #eee; overflow: hidden; }
+#map .surface { width: 100%; height: 100%; }
 #map .loading { position: absolute; top: 40%; left: 0; padding: 40px 0 0 0; width: 100%; background: url(loader-black.gif) no-repeat center 0; text-align: center; font-size: 25px; }
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }

@@ -42,6 +42,7 @@ $.onready
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),
+			mapSurface: cssQuery('#map .surface')[0],
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
