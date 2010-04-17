@@ -49,6 +49,8 @@ $.onready
 			guidePopupBody: cssQuery('#guide-info-popup .popup-window')[0]
 		}
 		
+		RoundedCorners.round(nodes.map)
+		
 		BarsPage.initialize(nodes)
 	}
 )

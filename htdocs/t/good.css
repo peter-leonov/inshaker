@@ -38,7 +38,6 @@ html.loading .goods-previews .viewport { display: none; }
 .good-promos .viewport,
 .good-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
 .good-promos .viewport .surface { width: 10000px; height:100%;}
-.good-promos .mask { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(good/mask.png); }
 .good-promos .prev,
 .good-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(bar/photos-buttons.png); }
 .good-promos:hover .prev,
@@ -79,5 +78,4 @@ html.loading .goods-previews .viewport { display: none; }
 .promos .body-wrapper { overflow: visible; }
 .good-promos .prev,
 .good-promos .next { display: block; }
-.good-promos .mask { display: none; }
 <!--# endif -->

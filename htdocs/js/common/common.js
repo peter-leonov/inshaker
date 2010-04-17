@@ -19,6 +19,7 @@ Oops.maybeEnable()
 <!--# include file="/js/common/analytics.js" -->
 <!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/rutils.js" -->
+<!--# include file="/js/common/rounded-corners.js" -->
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 String.prototype.capitalize = function () { return this.charAt(0).toUpperCase() + this.substr(1) }
