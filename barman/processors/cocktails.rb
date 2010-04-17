@@ -294,20 +294,21 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["ingredients"] = []
     @cocktail["recs"] = []
     
-    parse_about_text  File.read(dir.path + "/about.txt")
     parse_legend_text File.read(dir.path + "/legend.txt")
     
-    yaml = %Q{Name: #{@cocktail["name_eng"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-#{@cocktail["nameVP"] ? "Винительный падеж: #{@cocktail["nameVP"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}" : ""}
-Тизер: #{@cocktail["teaser"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-Крепость: #{@cocktail["strength"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-Группы: #{@cocktail["tags"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-Ингредиенты: #{@cocktail["ingredients"].map { |e| {e[0] => e[1]} }.to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-Штучки: #{@cocktail["tools"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-Как приготовить: #{@cocktail["receipt"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
-}
+    about = load_yaml("#{dir.path}/about.yaml")
     
-    File.write(dir.path + "/about.yaml", yaml)
+    @cocktail["name_eng"] = about["Name"]
+    @cocktail["teaser"] = about["Тизер"]
+    @cocktail["strength"] = about["Крепость"]
+    @cocktail["tags"] = about["Группы"]
+    @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["tools"] = about["Штучки"]
+    @cocktail["receipt"] = about["Как приготовить"]
+    
+    if about["Винительный падеж"]
+      @cocktail["nameVP"] = about["Винительный падеж"]
+    end
     
     @cocktails[name] = @cocktail
     
