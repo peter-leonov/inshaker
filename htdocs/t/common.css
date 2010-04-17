@@ -307,6 +307,12 @@ body .mini-illustration,
 /* label click bubbling in IE6 */
 label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}
 
+.rounding-corners .lt,
+.rounding-corners .rt,
+.rounding-corners .lb,
+.rounding-corners .rb { background-image: url(rounded-corners-10px.8.png); }
+.rounding-corners .lb,
+.rounding-corners .rb { bottom: -2px; }
 <!--# endif -->
 
 
