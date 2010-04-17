@@ -70,7 +70,7 @@
 .b-content .photos .prev { background-position-x: -60px; }
 .b-content .photos .next { display: block; }
 .b-content .photos .prev,
-.b-content .photos .next { display: block; }
+.b-content .photos .next { display: block; background-image: url(bar/photos-buttons.8.png); }
 
 #sidebar {margin-left:16px;}
 .column-main .body-wrapper { height: 511px; }

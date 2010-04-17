@@ -4,7 +4,8 @@ Oops.maybeEnable()
 
 <!--# include virtual="/lib-0.3/core/prototype.js" -->
 <!--# include virtual="/lib-0.3/modules/log.js" -->
-<!--# include virtual="/lib-0.3/modules/plural.js" -->
+<!--# include virtual="/lib-0.3/modules/plural.js"-->
+<!--# include virtual="/lib-0.3/modules/array-randomize.js"-->
 <!--# include virtual="/lib-0.3/modules/mvc.js" -->
 <!--# include virtual="/lib-0.3/modules/cosy.js" -->
 <!--# include virtual="/lib-0.3/modules/require.js" -->
@@ -26,6 +27,7 @@ Oops.maybeEnable()
 <!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/lazy-list.js" -->
 <!--# include file="/js/common/cocktail-list.js" -->
+<!--# include file="/js/common/rounded-corners.js" -->
 
 <!--# include virtual="/js/common/theme.js" -->
 $.onready(function () { Theme.bind() })

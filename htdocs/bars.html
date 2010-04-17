@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="bars-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html id="bars-page" class="loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<!--# include file="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/bars.css"/>
@@ -20,8 +20,12 @@
 		<div class="b-content" id="bars-list">
 			<div id="sort-menu">
 				<dl class="bars-select" id="bars-city"><dt class="button"><span class="caption">Москва</span><small></small></dt><dd><ul class="options"></ul></dd></dl>: куда пойти <dl class="bars-select" id="bars-format"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"><span class="caption"></span><small></small></dt><dd><ul class="options"></ul></dd></dl></div>
-			<div id="bars-container"></div>
-			<div id="map" class="hidden"><p class="loading">Загружаю карту…</p></div>
+			<div class="please-wait">Загружаю много баров…</div>
+			<ul id="bars-container"><!--# include file="/bar/links.html" --></ul>
+			<div id="map" class="hidden">
+				<p class="loading">Загружаю карту…</p>
+				<div class="surface"></div>
+			</div>
 		</div>
 	</div></div>
 	

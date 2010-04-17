@@ -197,12 +197,7 @@ BarsPageView.prototype =
 		var me = this
 		if (!this.gMap)
 		{
-			var mapNode = this.nodes.map
-			// var isVisible = mapNode.visible()
-			// mapNode.show()
-			var map = new GMap2(mapNode)
-			// if (!isVisible)
-				// mapNode.hide()
+			var map = new GMap2(this.nodes.mapSurface)
 			map.addControl(new GSmallMapControl())
 			map.enableContinuousZoom()
 			map.enableScrollWheelZoom()
@@ -297,7 +292,7 @@ BarsPageView.prototype =
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('div'),
+		var main = document.createElement('li'),
 			nameCont = document.createElement('a'),
 			name = document.createElement('span')
 		

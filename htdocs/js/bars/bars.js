@@ -27,6 +27,8 @@ $.onready
 (
 	function ()
 	{
+		document.documentElement.remClassName('loading')
+		
 		var nodes =
 		{
 			titleAll: cssQuery('#head .all')[0],
@@ -40,11 +42,14 @@ $.onready
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),
+			mapSurface: cssQuery('#map .surface')[0],
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
 			guidePopupBody: cssQuery('#guide-info-popup .popup-window')[0]
 		}
+		
+		RoundedCorners.round(nodes.map)
 		
 		BarsPage.initialize(nodes)
 	}
