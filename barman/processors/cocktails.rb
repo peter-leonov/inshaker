@@ -298,6 +298,7 @@ class CocktailsProcessor < Barman::Processor
     parse_legend_text File.read(dir.path + "/legend.txt")
     
     yaml = %Q{Name: #{@cocktail["name_eng"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
+#{@cocktail["nameVP"] ? "Винительный падеж: #{@cocktail["nameVP"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}" : ""}
 Тизер: #{@cocktail["teaser"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
 Крепость: #{@cocktail["strength"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
 Группы: #{@cocktail["tags"].to_yaml.unescape_yaml.gsub(/ *--- */, '')}
