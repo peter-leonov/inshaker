@@ -77,5 +77,5 @@ html.loading .goods-previews .viewport { display: none; }
 .previews .body-wrapper { height: 170px; overflow: hidden; }
 .promos .body-wrapper { overflow: visible; }
 .good-promos .prev,
-.good-promos .next { display: block; }
+.good-promos .next { display: block; background-image: url(bar/photos-buttons.8.png); }
 <!--# endif -->
