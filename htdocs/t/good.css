@@ -79,4 +79,5 @@ html.loading .goods-previews .viewport { display: none; }
 .promos .body-wrapper { overflow: visible; }
 .good-promos .prev,
 .good-promos .next { display: block; }
+.good-promos .mask { display: none; }
 <!--# endif -->
