@@ -18,7 +18,7 @@ class IngredientsProcessor < Barman::Processor
   def initialize
     super
     @local_properties = ["about"]
-    @ingredients = []
+    @entities = []
     @ingredients_groups = []
   end
   
@@ -69,7 +69,7 @@ class IngredientsProcessor < Barman::Processor
   def prepare_ingredients
     if File.exists?(Config::DB_JS) && !@options[:force]
       @ingredients_mtime = File.mtime(Config::DB_JS)
-      @ingredients = JSON.parse(File.read(Config::DB_JS))
+      @entities = JSON.parse(File.read(Config::DB_JS))
     else
       @ingredients_mtime = nil
     end
@@ -89,7 +89,7 @@ class IngredientsProcessor < Barman::Processor
             good["group"] = group_dir.name
             good["name"] = good_dir.name
             good["dir"] = good_dir.name.dirify
-            @ingredients << good
+            @entities << good
             
             if names = read_names(good_dir)
               good["names"] = names
@@ -234,7 +234,7 @@ class IngredientsProcessor < Barman::Processor
   
   def flush_json
     say "сохраняю данные об ингредиентах"
-    ingredients = @ingredients.sort { |a, b| a["name"] <=> b["name"] }
+    ingredients = @entities.sort { |a, b| a["name"] <=> b["name"] }
     ingredients.each do |entity|
       update_json entity
     end
@@ -256,15 +256,32 @@ class IngredientsProcessor < Barman::Processor
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       links.puts "<ul>"
       group = ""
-      @ingredients.each do |ingred|
-        if group != ingred["group"]
-          group = ingred["group"]
+      @entities.each do |entity|
+        if group != entity["group"]
+          group = entity["group"]
           links.puts %Q{<li><b>#{group}</b></li>}
         end
-        links.puts %Q{<li>#{ingred["name"]}</li>}
+        links.puts %Q{<li>#{entity["name"]}</li>}
       end
       links.puts "</ul>"
     end
+  end
+  
+  def cleanup_deleted
+    say "ищу удаленные"
+    indent do
+    index = {}
+    @cocktails.each do |name, cocktail|
+      index[cocktail["name_eng"].html_name] = cocktail
+    end
+    
+    Dir.new(Config::HTDOCS_ROOT).each_dir do |dir|
+      unless index[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
   end
   
 end
