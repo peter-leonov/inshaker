@@ -36,7 +36,7 @@ module Barman
     end
     
     def initialize
-      @options = {}
+      @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
       @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml", "mask.png", "bg_mask.png"]
       @indent = 0
@@ -75,6 +75,7 @@ module Barman
     end
     
     def optimize_img(src, level=5)
+      return true unless @options[:optimize_images]
       say "оптимизирую изображение #{src}"
       unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
         error "не могу оптимизировать изображение (#{src})"
