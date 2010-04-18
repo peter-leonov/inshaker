@@ -193,7 +193,7 @@ var Controller = {
 		else
 			$('good_buy').parentNode.hide()
 		
-		$('good_desc').innerHTML = ingredient.desc;
+		$('good_desc').innerHTML = ingredient.about;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, ingredient);
 	},
 	

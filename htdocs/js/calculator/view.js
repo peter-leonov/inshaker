@@ -532,7 +532,7 @@ function CalculatorView() {
 		else
 			$('good_buy').parentNode.hide()
 		
-		$('good_desc').innerHTML = item.good.desc;
+		$('good_desc').innerHTML = item.good.about;
 		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
 		
 		var summ = 0;
