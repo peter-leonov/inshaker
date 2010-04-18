@@ -46,11 +46,8 @@ module Barman
       @user_login = get_user_login
     end
     
-    def flush_json_object(object, dest_file)
-      json = object.to_json_expand
-      File.open(dest_file, "w+") do |db|
-       db.print json
-      end
+    def flush_json_object(object, dest_file, wrap="%s")
+      File.write(dest_file, wrap % object.to_json_expand)
     end
     
     def render_erb path, *opts
