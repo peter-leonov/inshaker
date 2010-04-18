@@ -8,7 +8,6 @@ Number.prototype.toFloatString = function(){
 }
 
 var GoodHelper = {
-	PATH_VOLUMES : '/i/merchandise/volumes/',
     CART : 'cart',
 
     serializeCartData: function(cd) {
@@ -117,7 +116,7 @@ var GoodHelper = {
 			while(!good.volumes[i][2]) i++;
 			vol = good.volumes[i];
 		}
-		return this.PATH_VOLUMES + (good.brand ? good.brand.trans() : name.trans()) + "_" + vol[0].toFloatString().replace(".", "_") + "_big.png";
+		return good.getVolumeImage(vol)
 	},
 	
 	getIngredText: function(name){

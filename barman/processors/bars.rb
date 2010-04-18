@@ -1,8 +1,6 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
-require 'uri'
-require 'lib/array'
+require "barman"
 
 class BarsProcessor < Barman::Processor
   

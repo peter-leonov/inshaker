@@ -1,25 +1,30 @@
 # encoding: utf-8
-require 'rubygems'
-require 'templates'
-require 'fileutils'
-require 'erb'
-require 'yaml'
+require "rubygems"
+require "templates"
+require "fileutils"
+require "erb"
+require "yaml"
 require "base64"
+require "uri"
+require "optparse"
 
-require 'lib/json'
-require 'lib/string_util'
-require 'lib/fileutils'
-require 'lib/saying'
-require 'lib/plural'
+require "lib/json"
+require "lib/string_util"
+require "lib/fileutils"
+require "lib/saying"
+require "lib/plural"
+require "lib/array"
 
 $stdout.sync = true
 
+Infinity = 1.0 / 0
+
 module Barman
-  ROOT_DIR = "/www/inshaker/"
-  BASE_DIR = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
-  LOCK_FILE = ".lock-barman"
+  ROOT_DIR      = "/www/inshaker/"
+  BASE_DIR      = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
+  LOCK_FILE     = ".lock-barman"
   
-  TEMPLATES_DIR = ROOT_DIR + "barman/templates/" 
+  TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
@@ -31,8 +36,8 @@ module Barman
     end
     
     def initialize
+      @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml", "mask.png", "bg_mask.png"]
       @indent = 0
       @errors_count = 0
       @errors_messages = []
@@ -41,11 +46,8 @@ module Barman
       @user_login = get_user_login
     end
     
-    def flush_json_object(object, dest_file)
-      json = object.to_json_expand
-      File.open(dest_file, "w+") do |db|
-       db.print json
-      end
+    def flush_json_object(object, dest_file, wrap="%s")
+      File.write(dest_file, wrap % object.to_json_expand)
     end
     
     def render_erb path, *opts
@@ -69,6 +71,7 @@ module Barman
     end
     
     def optimize_img(src, level=5)
+      return true unless @options[:optimize_images]
       say "оптимизирую изображение #{src}"
       unless system(%Q{optipng -q -o#{level.to_s} "#{src.quote}"})
         error "не могу оптимизировать изображение (#{src})"

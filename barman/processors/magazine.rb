@@ -1,8 +1,6 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
-
-Infinity = 1.0 / 0
+require "barman"
 
 class MagazineProcessor < Barman::Processor
   
