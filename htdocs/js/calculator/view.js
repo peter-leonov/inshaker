@@ -114,7 +114,6 @@ function CalculatorView() {
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
 	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
-	this.itemFromPopup = [];
 
 	
 	var self = this;
@@ -497,13 +496,8 @@ function CalculatorView() {
 		return dl;
 	};
 	
-	this.setPicture = function(name, good, vol){
-		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
-	};
-	
 	this.renderPopup = function(item, name){
 		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
-		this.itemFromPopup = [cloneObject(item), name];
 		item = cloneObject(item);
 		
 		var good = Good.getBySellName(name)[0]

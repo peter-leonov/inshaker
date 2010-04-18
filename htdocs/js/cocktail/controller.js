@@ -164,10 +164,6 @@ var Controller = {
 		}, false);
     },
 	
-	setPicture: function(name, good, vol){
-		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
-	},
-	
 	renderPopup: function(name){
         this.currentlyShownIngred = name
 		var ingredient = Ingredient.getByName(name)
