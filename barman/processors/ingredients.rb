@@ -17,7 +17,7 @@ class IngredientsProcessor < Barman::Processor
   
   def initialize
     super
-    @local_properties = ["about"]
+    @local_properties = []
     @entities = []
     @ingredients_groups = []
   end
