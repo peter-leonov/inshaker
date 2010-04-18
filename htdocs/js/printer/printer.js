@@ -166,7 +166,7 @@ var Printer = {
     },
     
     createIngredImage: function(name){
-       var img = new Image();
+       var img = document.createElement('img')
        img.src = Ingredient.getByName(name).getMiniImageSrc()
        return img;
     },
