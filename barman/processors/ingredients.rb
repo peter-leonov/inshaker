@@ -88,7 +88,6 @@ class IngredientsProcessor < Barman::Processor
             done += 1
             good["group"] = group_dir.name
             good["name"] = good_dir.name
-            good["dir"] = good_dir.name.dirify
             @entities << good
             
             if names = read_names(good_dir)
