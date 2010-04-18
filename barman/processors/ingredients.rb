@@ -1,29 +1,23 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
-require 'optparse'
+require "barman"
 
 class IngredientsProcessor < Barman::Processor
   
   module Config
-    INGREDIENTS_DIR      = Barman::BASE_DIR + "Ingredients/"
-    HTDOCS_DIR           = Barman::HTDOCS_DIR
-
-    MERCH_ROOT           = HTDOCS_DIR + "i/merchandise/"
-    INGREDS_ROOT         = MERCH_ROOT + "ingredients/"
-    INGREDS_PRINT_ROOT   = INGREDS_ROOT + "print/"
-    VOLUMES_ROOT         = MERCH_ROOT + "volumes/"
-    BANNERS_ROOT         = MERCH_ROOT + "banners/"
+    BASE_DIR       = Barman::BASE_DIR + "Ingredients/"
     
-    HTDOCS_ROOT          = HTDOCS_DIR + "ingredients/"
-    NOSCRIPT_LINKS       = HTDOCS_ROOT + "links.html"
-
-    DB_JS_INGREDS        = HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_INGREDS_GROUPS = HTDOCS_DIR + "db/ingredients_groups.js"
+    HT_ROOT        = Barman::HTDOCS_DIR + "ingredient/"
+    HT_MARKS_ROOT  = Barman::HTDOCS_DIR + "mark/"
+    NOSCRIPT_LINKS = HT_ROOT + "links.html"
+    
+    DB_JS          = Barman::HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_GROUPS   = Barman::HTDOCS_DIR + "db/ingredients_groups.js"
   end
   
   def initialize
     super
+    @local_properties = ["about"]
     @ingredients = []
     @ingredients_groups = []
   end
@@ -32,8 +26,8 @@ class IngredientsProcessor < Barman::Processor
     "смешивалку ингредиентов"
   end
   
-  def job
-    @options = {:force => true}
+  def pre_job
+    @options[:force] = true
     OptionParser.new do |opts|
       opts.banner = "Usage: ingredients.rb [options]"
       
@@ -44,13 +38,19 @@ class IngredientsProcessor < Barman::Processor
       opts.on("-t", "--text", "Text updates only") do |v|
         @options[:text] = v
       end
+      
+      opts.on("-O", "--dont-optimize", "Turn off all image optiomisations") do |v|
+        @options[:optimize_images] = false
+      end
     end.parse!
-    
+  end
+  
+  def job
     prepare_dirs
-    prepare_goods
+    prepare_ingredients
     
     update_groups
-    update_goods
+    process_ingredients
     
     unless errors?
       flush_links
@@ -59,49 +59,29 @@ class IngredientsProcessor < Barman::Processor
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::HTDOCS_ROOT, Config::MERCH_ROOT, Config::INGREDS_ROOT, Config::VOLUMES_ROOT, Config::BANNERS_ROOT]
+    FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
   def update_groups
-    @ingredients_groups = YAML::load(File.open("#{Config::INGREDIENTS_DIR}/groups.yaml"))
+    @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
   end
   
-  def flush_json
-    say "сохраняю данные об ингредиентах"
-    ingredients = @ingredients.sort { |a, b| a["name"] <=> b["name"] }
-    flush_json_object(ingredients, Config::DB_JS_INGREDS)
-    flush_json_object(@ingredients_groups, Config::DB_JS_INGREDS_GROUPS)
-  end
-  
-  def flush_links
-    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      links.puts "<ul>"
-      group = ""
-      @ingredients.each do |ingred|
-        if group != ingred["group"]
-          group = ingred["group"]
-          links.puts %Q{<li><b>#{group}</b></li>}
-        end
-        links.puts %Q{<li>#{ingred["name"]}</li>}
-      end
-      links.puts "</ul>"
-    end
-  end
-  
-  def prepare_goods
-    if File.exists?(Config::DB_JS_INGREDS) && !@options[:force]
-      @ingredients_mtime = File.mtime(Config::DB_JS_INGREDS)
-      @ingredients = JSON.parse(File.read(Config::DB_JS_INGREDS))
+  def prepare_ingredients
+    if File.exists?(Config::DB_JS) && !@options[:force]
+      @ingredients_mtime = File.mtime(Config::DB_JS)
+      @ingredients = JSON.parse(File.read(Config::DB_JS))
     else
       @ingredients_mtime = nil
     end
   end
   
-  def update_goods
+  def process_ingredients
     say "обновляю ингредиенты"
     indent do
     done = 0
-    Dir.new(Config::INGREDIENTS_DIR).each_dir do |group_dir|
+    Dir.new(Config::BASE_DIR).each_dir do |group_dir|
+      say group_dir.name
+      indent do
       group_dir.each_dir do |good_dir|
         if !@ingredients_mtime || good_dir.deep_mtime > @ingredients_mtime
           if good = find_good(good_dir, group_dir)
@@ -121,6 +101,7 @@ class IngredientsProcessor < Barman::Processor
           end
         end
       end
+      end # indent
     end
     say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
     end # indent
@@ -128,7 +109,7 @@ class IngredientsProcessor < Barman::Processor
   
   def find_good good_dir, group_dir
     errors = []
-    good = process_good(good_dir, group_dir.name, good_dir.name)
+    good = process_good(good_dir, good_dir.name)
     if good
       found = true
     end
@@ -137,7 +118,7 @@ class IngredientsProcessor < Barman::Processor
       if found
         errors << [group_dir, good_dir, brand_dir]
       else
-        if good = process_good(brand_dir, group_dir.name, good_dir.name, brand_dir.name)
+        if good = process_good(brand_dir, good_dir.name, brand_dir.name)
           found = true
         else
           errors << [group_dir, good_dir, brand_dir]
@@ -160,29 +141,29 @@ class IngredientsProcessor < Barman::Processor
     end
   end
   
-  def process_good dir, group, name, brand=nil
+  def process_good dir, name, brand=nil
     about = dir.path + "/about.yaml"
     return unless File.exists?(about)
     
-    say brand ? "#{group}: #{name} (#{brand})" : "#{group}: #{name}"
+    say brand ? "#{name} (#{brand})" : name
     
     good = {}
     indent do
     about = YAML::load(File.open(about))
     
-    name_trans = nil
-    opt = {:remove_destination => true}
+    ht_dir = Dir.create("#{Config::HT_ROOT}#{name.dirify}")
+    good["ht_dir"] = ht_dir
     
-    img = dir.path + "/i_big.png"
+    img = "#{dir.path}/i_big.png"
     if File.exists?(img)
-      flush_masked_optimized(Config::INGREDIENTS_DIR + "mask.png", img, Config::INGREDS_ROOT + name.trans + ".png") unless @options[:text]
+      flush_masked_optimized(Config::BASE_DIR + "mask.png", img, "#{ht_dir.path}/preview.png") unless @options[:text]
     else
       error "нет большой картинки (файл #{img})"
     end
     
     legend = dir.path + "/about.txt"
     if File.exists?(legend)
-      good[:desc] = File.read(legend)
+      good["about"] = File.read(legend)
     else
       warning "нет файла с легендой ингредиента (about.txt)"
     end
@@ -207,7 +188,8 @@ class IngredientsProcessor < Barman::Processor
         
         banner = dir.path + "/banner.png"
         if File.exists?(banner)
-          cp_if_different(banner, Config::BANNERS_ROOT + about["Марка"].trans + ".png") unless @options[:text]
+          ht_mark = Dir.create("#{Config::HT_MARKS_ROOT}#{about["Марка"].dirify}")
+          cp_if_different(banner, "#{ht_mark.path}/banner.png") unless @options[:text]
         else
           error "нет картинки банера (banner.png)"
         end
@@ -215,9 +197,6 @@ class IngredientsProcessor < Barman::Processor
       else
         error "не указана марка (бренд «#{brand}»)"
       end
-      name_trans = brand.trans
-    else
-      name_trans = name.trans
     end
     
     if about["Тара"] and about["Тара"].length > 0
@@ -239,7 +218,7 @@ class IngredientsProcessor < Barman::Processor
         img = dir.path + "/" + vol_name + "_big.png"
         
         if File.exists?(img)
-          cp_if_different(img, Config::VOLUMES_ROOT + name_trans + "_" + vol_name + "_big.png") unless @options[:text]
+          cp_if_different(img, "#{ht_dir.path}/vol_#{vol_name}.png") unless @options[:text]
         else
           error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
         end
@@ -251,6 +230,41 @@ class IngredientsProcessor < Barman::Processor
     end
     end # indent
     return good
+  end
+  
+  def flush_json
+    say "сохраняю данные об ингредиентах"
+    ingredients = @ingredients.sort { |a, b| a["name"] <=> b["name"] }
+    ingredients.each do |entity|
+      update_json entity
+    end
+    flush_json_object(ingredients, Config::DB_JS)
+    flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
+  end
+  
+  def update_json entity
+    data = {}
+    ht_dir = entity.delete("ht_dir")
+    entity["path"] = ht_dir.name
+    @local_properties.each do |prop|
+      data[prop] = entity.delete(prop)
+    end
+    flush_json_object(data, "#{ht_dir.path}/data.json", "require.loaded(%s)")
+  end
+  
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
+      links.puts "<ul>"
+      group = ""
+      @ingredients.each do |ingred|
+        if group != ingred["group"]
+          group = ingred["group"]
+          links.puts %Q{<li><b>#{group}</b></li>}
+        end
+        links.puts %Q{<li>#{ingred["name"]}</li>}
+      end
+      links.puts "</ul>"
+    end
   end
   
 end
