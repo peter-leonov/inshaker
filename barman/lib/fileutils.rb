@@ -30,7 +30,10 @@ class Dir
   
   def self.create path
     FileUtils.mkdir_p path
-    new path
+    m = /([^\/]+)\/?$/.match(path)
+    dir = new path
+    dir.name = m ? m[1] : ""
+    return dir
   end
   
   alias :each_real :each
