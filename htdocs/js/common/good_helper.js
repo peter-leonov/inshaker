@@ -8,7 +8,6 @@ Number.prototype.toFloatString = function(){
 }
 
 var GoodHelper = {
-	PATH_VOLUMES : '/i/merchandise/volumes/',
     CART : 'cart',
 
     serializeCartData: function(cd) {

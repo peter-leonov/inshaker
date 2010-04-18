@@ -10,7 +10,6 @@ var Printer = {
     ID_COCKTAIL_IMG   : 'cocktail_img',
     ID_INGREDS_IMGS   : 'cocktail_ingreds',
 
-    IMG_INGRED_PRFX   : '/i/merchandise/ingredients/',
     IMG_MARKER        : '/t/print/li.png',
 
     ST_BAR_NAME   : 'barName',
@@ -168,7 +167,7 @@ var Printer = {
     
     createIngredImage: function(name){
        var img = new Image();
-       img.src = this.IMG_INGRED_PRFX + name.trans() + ".png";
+       img.src = Ingredient.getByName(name).getMiniImageSrc()
        return img;
     },
 

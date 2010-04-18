@@ -28,7 +28,6 @@ var Controller = {
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	PATH_MERCH   : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
 	TOOL_POPUP   : 'shop-gadget',
 	
@@ -388,13 +387,15 @@ var Controller = {
 		div.id = "ing_" + pageNum;
 		parent.appendChild(div);
 		
-		for(var i = 0; i < resultSet.length; i++){
+		for (var i = 0; i < resultSet.length; i++)
+		{
+			var ingredient = Ingredient.getByName(resultSet[i][0])
 			var img = document.createElement("img");
-			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
-			img.alt = resultSet[i][0];
+			img.src = ingredient.getMiniImageSrc()
+			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
                 self.showPopup(name);
-            }}(resultSet[i][0]), false);
+            }}(ingredient.name), false);
 			div.appendChild(img);
 		}
 	},
