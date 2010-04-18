@@ -38,7 +38,6 @@ module Barman
     def initialize
       @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      @excl = [".", "..", ".svn", ".TemporaryItems", ".DS_Store", "Goods.csv", "groups.yaml", "tags.yaml", "strengths.yaml", "._groups.yaml", "mask.png", "bg_mask.png"]
       @indent = 0
       @errors_count = 0
       @errors_messages = []
