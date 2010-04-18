@@ -55,6 +55,7 @@ class IngredientsProcessor < Barman::Processor
     unless errors?
       flush_links
       flush_json
+      cleanup_deleted
     end
   end
   
@@ -269,16 +270,19 @@ class IngredientsProcessor < Barman::Processor
   def cleanup_deleted
     say "ищу удаленные"
     indent do
-    index = {}
-    @cocktails.each do |name, cocktail|
-      index[cocktail["name_eng"].html_name] = cocktail
-    end
-    
-    Dir.new(Config::HTDOCS_ROOT).each_dir do |dir|
+    index = @entities.hash_index("path")
+    deleted = 0
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
       unless index[dir.name]
         say "удаляю #{dir.name}"
         FileUtils.rmtree(dir.path)
+        deleted += 1
       end
+    end
+    if deleted == 0
+      say "ничего не удалил"
+    else
+      warning "удалил #{deleted} #{deleted.plural("штуку", "штуки", "штук")}"
     end
     end # indent
   end
