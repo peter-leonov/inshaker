@@ -1,11 +1,11 @@
-function IndexPageView ()
+function MagazinePageView ()
 {
-	IndexPageView.name = "IndexPageView"
-	this.constructor = IndexPageView
+	MagazinePageView.name = "MagazinePageView"
+	this.constructor = MagazinePageView
 	this.initialize.apply(this, arguments)
 }
 
-IndexPageView.prototype =
+MagazinePageView.prototype =
 {
 	initialize: function (nodes)
 	{

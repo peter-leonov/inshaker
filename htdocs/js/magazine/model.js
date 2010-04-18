@@ -1,11 +1,11 @@
-function IndexPageModel ()
+function MagazinePageModel ()
 {
-	IndexPageModel.name = "IndexPageModel"
-	this.constructor = IndexPageModel
+	MagazinePageModel.name = "MagazinePageModel"
+	this.constructor = MagazinePageModel
 	this.initialize.apply(this, arguments)
 }
 
-IndexPageModel.prototype =
+MagazinePageModel.prototype =
 {
 	initialize: function (params)
 	{

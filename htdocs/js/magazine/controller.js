@@ -1,11 +1,11 @@
-function IndexPageController ()
+function MagazinePageController ()
 {
-	IndexPageController.name = "IndexPageController"
-	this.constructor = IndexPageController
+	MagazinePageController.name = "MagazinePageController"
+	this.constructor = MagazinePageController
 	this.initialize.apply(this, arguments)
 }
 
-IndexPageController.prototype =
+MagazinePageController.prototype =
 {
 	initialize: function () {},
 	
