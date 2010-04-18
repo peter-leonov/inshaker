@@ -41,7 +41,7 @@ MagazinePageView.prototype =
 		var a  = document.createElement("a")
 		a.href = link[1]
 		var img = document.createElement("img")
-		img.src = "/i/index/links/" + (links.indexOf(link) + 1) + ".png"
+		img.src = "/magazine/links/" + (links.indexOf(link) + 1) + ".png"
 		var txt = document.createTextNode(link[0])
 		a.appendChild(img)
 		a.appendChild(txt)
@@ -55,7 +55,7 @@ MagazinePageView.prototype =
 		a.href = promo.href
 		var img = document.createElement("img")
 		img.alt = promo.name
-		img.setAttribute("lazy", "/i/index/promos/" + (promo.html_name) + ".jpg")
+		img.setAttribute("lazy", "/magazine/promos/" + (promo.html_name) + ".jpg")
 		a.appendChild(img)
 		a.className = "point"
 		return a

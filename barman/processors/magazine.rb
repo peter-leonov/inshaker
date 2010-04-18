@@ -5,13 +5,13 @@ require "barman"
 class MagazineProcessor < Barman::Processor
   
   module Config
-    BASE_DIR = Barman::BASE_DIR + "Magazine/"
-    PROMOS_DIR = BASE_DIR + "promos/"
-    HTDOCS_DIR = Barman::HTDOCS_DIR
+    BASE_DIR       = Barman::BASE_DIR + "Magazine/"
+    BASE_DIR_PROMO = BASE_DIR + "promos/"
     
-    DB_JS = HTDOCS_DIR + "db/magazine.js"
-    # PROMOS_LIST = HTDOCS_DIR + "promos-list.html"
-    PROMOS_IMAGES = "i/index/promos/"
+    HT_ROOT        = Barman::HTDOCS_DIR + "magazine/"
+    HT_ROOT_PROMOS = HT_ROOT + "promos/"
+    
+    DB_JS          = Barman::HTDOCS_DIR + "db/magazine.js"
   end
   
   def initialize
@@ -25,6 +25,8 @@ class MagazineProcessor < Barman::Processor
   end
   
   def job
+    prepare_dirs
+    
     process_about
     process_promos
     
@@ -33,22 +35,25 @@ class MagazineProcessor < Barman::Processor
     end
   end
   
+  def prepare_dirs
+    FileUtils.mkdir_p [Config::HT_ROOT, Config::HT_ROOT + "promos", Config::HT_ROOT + "links"]
+  end
+  
   def process_promos
     say "обрабатываю промо"
     indent do
     promos = []
-    Dir.new(Config::PROMOS_DIR).each_dir do |promo_dir|
+    Dir.new(Config::BASE_DIR_PROMO).each_dir do |promo_dir|
       name = promo_dir.name
       say name
       indent do
       about = load_yaml("#{promo_dir.path}/about.yaml")
-      html_name = name.translify.html_name
-      path = "#{Config::PROMOS_IMAGES}/#{html_name}.jpg"
-      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HTDOCS_DIR}/#{path}", "промо", 150)
+      html_name = name.dirify
+      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HT_ROOT}/promos/#{html_name}.jpg", "промо", 150)
       promos << {"name" => name, "html_name" => html_name, "href" => about["Ссылка"]}
       end # indent
     end
-    order = load_yaml("#{Config::PROMOS_DIR}/_order.yaml")
+    order = load_yaml("#{Config::BASE_DIR_PROMO}/_order.yaml")
     @db["promos"] = promos.sort do |a, b|
       (order.index(a["name"]) || Infinity) - (order.index(b["name"]) || Infinity)
     end
@@ -77,7 +82,7 @@ class MagazineProcessor < Barman::Processor
   
   def update_entities entities, name, ext, kind,
     basedir = Config::BASE_DIR + name
-    htdir = Config::HTDOCS_DIR + "i/index/" + name
+    htdir = Config::HT_ROOT + name
     FileUtils.mkdir_p htdir
     
     i = 1
