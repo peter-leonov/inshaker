@@ -190,7 +190,7 @@ var Controller = {
 			$('good_buy').parentNode.hide()
 		
 		$('good_desc').innerHTML = ingredient.about;
-		$('good_picture').src = GoodHelper.goodPicSrc(name, ingredient);
+		$('good_picture').src = ingredient.getMainImageSrc()
 	},
 	
 	renderToolPopup: function(tool){

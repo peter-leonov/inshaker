@@ -9,19 +9,17 @@ var Me = self.Ingredient = function (data)
 Me.prototype =
 {
 	constructor: Ingredient,
-	volumesRootPath: '/i/merchandise/volumes/',
 	
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
-	getMiniImageSrc: function () { return "/i/merchandise/ingredients/" + this.dir + ".png" },
+	pageHref: function () { return '/ingredient/' + this.path + '/' },
+	getMiniImageSrc: function () { return this.pageHref() + "preview.png" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	
 	getVolumeImage: function (vol)
 	{
-		var v = vol[0],
-			name = this.brand ? this.brand_dir : this.dir
-		
-		return this.volumesRootPath + name + "_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + "_big.png"
+		var v = vol[0]
+		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
 	}
 }
 

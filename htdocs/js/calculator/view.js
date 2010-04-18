@@ -498,7 +498,6 @@ function CalculatorView() {
 	
 	this.renderPopup = function(item, name){
 		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
-		item = cloneObject(item);
 		
 		var good = Good.getBySellName(name)[0]
 		
@@ -527,7 +526,7 @@ function CalculatorView() {
 			$('good_buy').parentNode.hide()
 		
 		$('good_desc').innerHTML = item.good.about;
-		$('good_picture').src = GoodHelper.goodPicSrc(name, item.good); 
+		$('good_picture').src = item.good.getMainImageSrc()
 		
 		var summ = 0;
 		var have = 0;
