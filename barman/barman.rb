@@ -1,18 +1,23 @@
 # encoding: utf-8
-require 'rubygems'
-require 'templates'
-require 'fileutils'
-require 'erb'
-require 'yaml'
+require "rubygems"
+require "templates"
+require "fileutils"
+require "erb"
+require "yaml"
 require "base64"
+require "uri"
+require "optparse"
 
-require 'lib/json'
-require 'lib/string_util'
-require 'lib/fileutils'
-require 'lib/saying'
-require 'lib/plural'
+require "lib/json"
+require "lib/string_util"
+require "lib/fileutils"
+require "lib/saying"
+require "lib/plural"
+require "lib/array"
 
 $stdout.sync = true
+
+Infinity = 1.0 / 0
 
 module Barman
   ROOT_DIR = "/www/inshaker/"

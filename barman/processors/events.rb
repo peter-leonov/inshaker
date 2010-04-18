@@ -1,7 +1,7 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
-require 'lib/csv'
+require "barman"
+require "lib/csv"
 
 class EventsProcessor < Barman::Processor
   

@@ -1,9 +1,6 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
-require 'optparse'
-require 'uri'
-# require 'benchmark'
+require "barman"
 
 class CocktailsProcessor < Barman::Processor
 
