@@ -301,7 +301,7 @@ var Controller = {
 		point.id = "rec_"+(num+1);
         point.href = Ingredient.ingredientsLinkByMark(rec.mark);
 		var img = document.createElement("img");
-		img.src = this.PATH_MERCH + "banners/" + rec.banner;
+		img.src = '/mark/' + rec.mark.trans() + '/banner.png';
 		img.alt = rec.mark;
 		point.appendChild(img);
 		return point;	
