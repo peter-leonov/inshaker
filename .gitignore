@@ -5,3 +5,7 @@
 *.pid
 .idea/*
 Thumbs.db
+nginx.windows-anton.conf
+startc.bat
+stopc.bat
+htdocs/t/theme/2009.04
