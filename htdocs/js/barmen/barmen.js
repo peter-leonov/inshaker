@@ -46,8 +46,6 @@ $.onready(function ()
 	page.bind(nodes, sources)
 })
 
-
-
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
