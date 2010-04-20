@@ -26,8 +26,7 @@ var myProto =
 	{
 		var tmp = document.createDocumentFragment()
 		
-		this.itemCache = []
-		
+		var previews = []
 		for (var i = 0, il = barmen.length; i < il; i++)
 		{
 			var barman = barmen[i]
@@ -35,20 +34,19 @@ var myProto =
 			var item = Nc('li', 'item')
 			tmp.appendChild(item)
 			
-			var preview = Nc('a', 'barman-preview')
+			var preview = previews[i] = Nc('a', 'barman-preview')
 			preview.barmanImageSrc = 'url(' + barman.getPhoto() + ')'
 			preview.href = barman.pageHref()
 			item.appendChild(preview)
 			
 			preview.appendChild(Nct('span', 'name', barman.name))
-			this.itemCache.push(preview)
 		}
 		
 		var list = this.nodes.barmensList
 		list.empty()
 		list.appendChild(tmp)
 		
-		this.setupVisibilityFrame(this.itemCache)
+		this.setupVisibilityFrame(previews)
 	},
 	
 	setupVisibilityFrame: function (nodes)
