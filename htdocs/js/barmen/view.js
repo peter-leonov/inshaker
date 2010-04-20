@@ -34,7 +34,7 @@ var myProto =
 			var item = Nc('li', 'item')
 			tmp.appendChild(item)
 			
-			var preview = previews[i] = Nc('a', 'barman-preview')
+			var preview = previews[i] = Nc('a', 'barman-preview lazy')
 			preview.barmanImageSrc = 'url(' + barman.getPhoto() + ')'
 			preview.href = barman.pageHref()
 			item.appendChild(preview)
