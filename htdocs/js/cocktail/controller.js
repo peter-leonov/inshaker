@@ -28,7 +28,6 @@ var Controller = {
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	PATH_MERCH   : '/i/merchandise/',
 	INGRED_POPUP : 'shop-cocktail',
 	TOOL_POPUP   : 'shop-gadget',
 	
@@ -164,10 +163,6 @@ var Controller = {
 		}, false);
     },
 	
-	setPicture: function(name, good, vol){
-		$('good_picture').src = GoodHelper.goodPicSrc(name, good, vol);
-	},
-	
 	renderPopup: function(name){
         this.currentlyShownIngred = name
 		var ingredient = Ingredient.getByName(name)
@@ -193,8 +188,8 @@ var Controller = {
 		else
 			$('good_buy').parentNode.hide()
 		
-		$('good_desc').innerHTML = ingredient.desc;
-		$('good_picture').src = GoodHelper.goodPicSrc(name, ingredient);
+		$('good_desc').innerHTML = ingredient.about;
+		$('good_picture').src = ingredient.getMainImageSrc()
 	},
 	
 	renderToolPopup: function(tool){
@@ -305,7 +300,7 @@ var Controller = {
 		point.id = "rec_"+(num+1);
         point.href = Ingredient.ingredientsLinkByMark(rec.mark);
 		var img = document.createElement("img");
-		img.src = this.PATH_MERCH + "banners/" + rec.banner;
+		img.src = '/mark/' + rec.mark.trans() + '/banner.png';
 		img.alt = rec.mark;
 		point.appendChild(img);
 		return point;	
@@ -392,13 +387,15 @@ var Controller = {
 		div.id = "ing_" + pageNum;
 		parent.appendChild(div);
 		
-		for(var i = 0; i < resultSet.length; i++){
+		for (var i = 0; i < resultSet.length; i++)
+		{
+			var ingredient = Ingredient.getByName(resultSet[i][0])
 			var img = document.createElement("img");
-			img.src = this.PATH_MERCH + "ingredients/" + resultSet[i][0].trans() + ".png";
-			img.alt = resultSet[i][0];
+			img.src = ingredient.getMiniImageSrc()
+			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
                 self.showPopup(name);
-            }}(resultSet[i][0]), false);
+            }}(ingredient.name), false);
 			div.appendChild(img);
 		}
 	},

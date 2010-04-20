@@ -59,6 +59,8 @@ function onready ()
 		}
 	}
 	
+	RoundedCorners.round(nodes.promos.root)
+	
 	var widget = new GoodPage()
 	widget.bind(nodes, {good:Good})
 }

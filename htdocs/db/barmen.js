@@ -38,6 +38,6 @@
 {"cocktails":["Капрезе мартини","Руж","Салерс мартини","Японский космополитен","Японский сайдкар","Гоголь-моголь","Лакричный сауэр","Вишня и вишня"],"name":"Сергей Чесноков","name_eng":"Sergei Chesnokov","path":"sergei-chesnokov"},
 {"cocktails":["Пача Москва","Пача Ибица","Пача Монако","Пача Монте-Карло","Пача Сан-Паулу","Пача Нью-Йорк"],"name":"Сергей Чибисов","name_eng":"Sergey Chibisov","path":"sergey-chibisov"},
 {"cocktails":["Русская тропическая радуга","Церемония","Японский трюфель","Топ скуп"],"name":"Хидецугу Уэно","name_eng":"Ueno Hidetsugu","path":"ueno-hidetsugu"},
-{"name":"Энди Пирсон","name_eng":"Andy Pearson","path":"andy-pearson"},
+{"cocktails":["Эспрессо мартини","Граф"],"name":"Энди Пирсон","name_eng":"Andy Pearson","path":"andy-pearson"},
 {"cocktails":["Сука на пляже","Горько-сладкая симфония","Лав ми ду","Сатисфекшн"],"name":"Юрий Яковлев","name_eng":"Yura Yakovlev","path":"yura-yakovlev"}
 ]

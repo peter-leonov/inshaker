@@ -91,7 +91,7 @@ var myProto =
 			nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
 		nodes.allLink.href = ingredient.cocktailsLink()
 		
-		nodes.text.innerHTML = ingredient.desc
+		nodes.text.innerHTML = ingredient.about
 		
 		nodes.image.src = ingredient.getMainImageSrc()
 		

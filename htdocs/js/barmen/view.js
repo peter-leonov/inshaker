@@ -38,6 +38,8 @@ var myProto =
 			preview.href = barman.pageHref()
 			item.appendChild(preview)
 			
+			preview.appendChild(Nc('span', 'mask'))
+			
 			preview.appendChild(Nct('span', 'name', barman.name))
 		}
 		

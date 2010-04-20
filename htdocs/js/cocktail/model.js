@@ -25,7 +25,6 @@ var Model = {
 			if(items && items.mark && this._doesntHave(recs, items.mark)){
 				var rec = {};
 				rec.mark  = items.mark;
-				rec.banner = items.mark.trans() + ".png";
 				recs.push(rec);
 			}
 		}

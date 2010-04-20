@@ -34,6 +34,7 @@ $.onready
 			barPrev: cssQuery('.b-title .hrefs .prev')[0],
 			barNext: cssQuery('.b-title .hrefs .next')[0]
 		}
+		RoundedCorners.round(nodes.photos)
 		BarPage.initialize(nodes, Bar, Cocktail)
 	}
 )
