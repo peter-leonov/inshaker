@@ -79,7 +79,8 @@ var myProto =
 		{
 			frame.moveTo(window.pageXOffset, window.pageYOffset)
 		}
-		window.addEventListener('scroll', function () { onscroll() }, false)
+		var timer
+		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 100) }, false)
 		onscroll()
 	}
 }
