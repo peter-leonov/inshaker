@@ -42,6 +42,8 @@ html.loading .barmen-list { display: none; }
 	background-image: url(barmen/mask.png);
 }
 
+.barmen-list .barman-preview.lazy { background-color: #eee; }
+
 .barmen-list .barman-preview .name
 {
 	position: absolute;
