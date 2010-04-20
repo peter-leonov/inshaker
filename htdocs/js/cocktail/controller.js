@@ -294,15 +294,24 @@ var Controller = {
 		ri.goInit();
 	},
 	
-	_createRecommendationElement: function(rec, num){
+	_createRecommendationElement: function (rec, num)
+	{
 		var point = document.createElement("a");
 		point.className = "point";
 		point.id = "rec_"+(num+1);
         point.href = Ingredient.ingredientsLinkByMark(rec.mark);
-		var img = document.createElement("img");
-		img.src = '/mark/' + rec.mark.trans() + '/banner.png';
-		img.alt = rec.mark;
-		point.appendChild(img);
+		
+		var mark = Mark.getByName(rec.mark)
+		if (mark)
+		{
+			var banner = document.createElement('img')
+			banner.src = mark.getBannerSrc()
+			banner.alt = mark.name
+			point.appendChild(banner)
+		}
+		else
+			point.appendChild(document.createTextNode(rec.mark))
+		
 		return point;	
 	},
 	
