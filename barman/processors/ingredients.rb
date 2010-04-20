@@ -8,11 +8,11 @@ class IngredientsProcessor < Barman::Processor
     BASE_DIR       = Barman::BASE_DIR + "Ingredients/"
     
     HT_ROOT        = Barman::HTDOCS_DIR + "ingredient/"
-    HT_MARKS_ROOT  = Barman::HTDOCS_DIR + "mark/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
     DB_JS          = Barman::HTDOCS_DIR + "db/ingredients.js"
     DB_JS_GROUPS   = Barman::HTDOCS_DIR + "db/ingredients_groups.js"
+    DB_JS_MARKS    = Barman::HTDOCS_DIR + "db/marks.js"
   end
   
   def initialize
@@ -20,6 +20,7 @@ class IngredientsProcessor < Barman::Processor
     @local_properties = []
     @entities = []
     @ingredients_groups = []
+    @marks = {}
   end
   
   def job_name
@@ -48,6 +49,7 @@ class IngredientsProcessor < Barman::Processor
   def job
     prepare_dirs
     prepare_ingredients
+    prepare_marks
     
     update_groups
     process_ingredients
@@ -73,6 +75,12 @@ class IngredientsProcessor < Barman::Processor
       @entities = JSON.parse(File.read(Config::DB_JS))
     else
       @ingredients_mtime = nil
+    end
+  end
+  
+  def prepare_marks
+    if File.exists?(Config::DB_JS_MARKS)
+      @marks = JSON.parse(File.read(Config::DB_JS_MARKS)).to_a.hash_index("name")
     end
   end
   
@@ -184,16 +192,11 @@ class IngredientsProcessor < Barman::Processor
       good[:brand_dir] = brand.dirify
       
       if about["Марка"]
-        good[:mark] = about["Марка"]
-        
-        banner = dir.path + "/banner.png"
-        if File.exists?(banner)
-          ht_mark = Dir.create("#{Config::HT_MARKS_ROOT}#{about["Марка"].dirify}")
-          cp_if_different(banner, "#{ht_mark.path}/banner.png") unless @options[:text]
+        if @marks[about["Марка"]]
+          good[:mark] = about["Марка"]
         else
-          error "нет картинки банера (banner.png)"
+          error "нет такой марки «#{about["Марка"]}»"
         end
-        
       else
         error "не указана марка (бренд «#{brand}»)"
       end
