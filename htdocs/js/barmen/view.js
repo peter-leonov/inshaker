@@ -53,7 +53,7 @@ var myProto =
 	{
 		var boxes = Boxer.sameNodesToBoxes(nodes)
 		var frame = new VisibilityFrame()
-		frame.setFrame(window.innerWidth, window.innerHeight)
+		frame.setFrame(4000, 1500)
 		frame.setStep(500, 500)
 		frame.setBoxes(boxes)
 		
