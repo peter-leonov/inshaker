@@ -35,6 +35,8 @@ html.loading .barmen-list { font-size: 16px; margin: 0; padding: 20px 0; text-al
 	border-radius: 10px;
 }
 
+.barmen-list .barman-preview.lazy { background-color: #eee; }
+
 .barmen-list .barman-preview .name
 {
 	position: absolute;
