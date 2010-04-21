@@ -1,6 +1,4 @@
 # encoding: utf-8
-NaN = 0.0 / 0
-Infinity = 1.0 / 0
 class File
   attr_accessor :name
   

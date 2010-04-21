@@ -8,6 +8,9 @@ require "base64"
 require "uri"
 require "optparse"
 
+NaN = 0.0 / 0
+Infinity = 1.0 / 0
+
 require "lib/json"
 require "lib/string_util"
 require "lib/fileutils"
@@ -16,8 +19,6 @@ require "lib/plural"
 require "lib/array"
 
 $stdout.sync = true
-
-Infinity = 1.0 / 0
 
 module Barman
   ROOT_DIR      = "/www/inshaker/"
