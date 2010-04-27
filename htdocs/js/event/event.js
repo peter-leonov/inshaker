@@ -46,6 +46,7 @@ $.onready
 			form: cssQuery('#form-popup form')[0],
 			formPopup: $('form-popup'),
 			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
+			formPopupContent: cssQuery('#form-popup .content')[0],
 			formPopupMenu: cssQuery('#form-popup .menu')[0],
 			formPopupFields: cssQuery('#form-popup .fields')[0],
 			formPopupThanks: cssQuery('#form-popup .thanks')[0],

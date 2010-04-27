@@ -501,6 +501,7 @@ EventPage.view =
 	{
 		this.startFormChecker()
 		this.nodes.formPopup.show()
+		this.nodes.formPopupContent.style.top = (document.documentElement.scrollTop || document.body.scrollTop) + 'px'
 		// this.hideFormPopupThanks()
 	},
 	
