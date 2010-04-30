@@ -12,8 +12,8 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 190px; height: 500px; left: 240px; bottom: -735px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #8b6; }
-#bottom { color: #888; }
+#top .nav a:hover { border-bottom-color: #c89a0e; }
+#bottom { color: #555; }
 #bottom a { color: #000; }
 html { background: #fff url(bg.jpg) center 8px; }
 button.rounded { color: #fff; }
@@ -28,7 +28,7 @@ button.strong b { text-shadow: 1px 1px 0 #bbb; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b { color: #684; }
+#cart_draghere b { color: #c89a0e; }
 
 /* cocktails.css */
 .square-list .prev,
@@ -48,7 +48,7 @@ button.strong b { text-shadow: 1px 1px 0 #bbb; }
 #spotlighted { width: 77px; height: 42px; right: 0; top: -11px; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
-#alphabetical-ru a.selected-button { color: #684; }
+#alphabetical-ru a.selected-button { color: #840; }
 #search_tabs li { color: #000; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
@@ -77,7 +77,7 @@ button.strong b { text-shadow: 1px 1px 0 #bbb; }
 
 /* ingredients.css */
 #menu .tweaker .list .item.selected,
-#menu .tweaker .list .item.selected:hover { background-color: #8c2; }
+#menu .tweaker .list .item.selected:hover { background-color: #c89a0e; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
