@@ -334,7 +334,7 @@ class CocktailsProcessor < Barman::Processor
     tools = cocktail["tools"]
     
     methods["в шейкере"] = true if tools.index("Шейкер")
-    methods["давят пестиком"] = true if tools.index("Пестик")
+    methods["давят мадлером"] = true if tools.index("Мадлер")
     methods["в блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
     methods["давят пестиком"] = true if tools.index("Пестик")
     methods["миксуют в стакане"] = true if tools.index("Стакан для смешивания")
