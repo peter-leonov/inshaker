@@ -71,7 +71,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
 .what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
 .what-need dd:last-child{background:none;}
-.what-need dd a{float:left;padding-right:18px;}
+.what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
 
