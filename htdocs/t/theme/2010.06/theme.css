@@ -9,7 +9,7 @@
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 615px; left: 110px; bottom: -785px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 630px; left: 130px; bottom: -785px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #top .nav a:hover { border-bottom-color: #840813; }
