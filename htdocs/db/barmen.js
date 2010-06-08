@@ -7,7 +7,7 @@
 {"cocktails":["Роял фламбе","Роял лимонад","Мятный лимонад","Малиновый лимонад","Мандариновый лимонад","Арбузный лимонад","Клубничный лимонад","Ягодный лимонад","Роял дрим"],"name":"Алексей Наумов","name_eng":"Aleksei Naumov","path":"aleksei-naumov"},
 {"cocktails":["Цитрусовый бурбон","Черносмородиновый","Фруточино грейпфрутовый","Александра","Шоколадный мед"],"name":"Алексей Перекатов","name_eng":"Alexey Perekatov","path":"alexey-perekatov"},
 {"cocktails":["Клюква с тимьяном","Сладкий перец с клубникой","Яблоко с кардамоном","Калина мартини"],"name":"Алексей Терехов","name_eng":"Aleksei Terekhov","path":"aleksei-terekhov"},
-{"cocktails":["Собака ру"],"name":"Алексей Шапошников","name_eng":"Aleksei Shaposhnikov","path":"aleksei-shaposhnikov"},
+{"cocktails":["Собака ру","Облепиховый дайкири","Огуречный кулер"],"name":"Алексей Шапошников","name_eng":"Aleksei Shaposhnikov","path":"aleksei-shaposhnikov"},
 {"name":"Андрей Голубев","name_eng":"Andrey Golubev","path":"andrey-golubev"},
 {"cocktails":["Облепиховый гринго","Шелковое сердце","Бочонок с медом","Кабальеро"],"name":"Андрей Разоков","name_eng":"Andrey Razokov","path":"andrey-razokov"},
 {"cocktails":["Розовый гимлет","Кленовый сауэр","Крем-брюле","Лесные фрукты","Имбирно-виноградный мартини","Выше облаков","Большой яблочный мартини"],"name":"Аристотелис Пападопоулос","name_eng":"Aristotelis Papadopoulos","path":"aristotelis-papadopoulos"},
