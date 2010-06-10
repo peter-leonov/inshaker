@@ -11,7 +11,7 @@ EventPage.model =
 	{
 		var db = this.eventsDB,
 			event = db.getByName(state.name)[0],
-			all = db.getAll()
+			all = db.getByType(event.type)
 		
 		this.owner.view.modelChanged(event, all)
 	}
