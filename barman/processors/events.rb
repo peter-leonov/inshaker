@@ -10,7 +10,7 @@ class EventsProcessor < Barman::Processor
     
     HT_ROOT        = Barman::HTDOCS_DIR + "event/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    MAIN_LINK      = HT_ROOT + "main.html"
+    MAIN_LINK      = HT_ROOT + "main-%s.html"
     
     DB_JS          = Barman::HTDOCS_DIR + "db/events.js"
     
@@ -24,6 +24,8 @@ class EventsProcessor < Barman::Processor
     @entities_array = []
     @entities_hrefs = {}
     @entity  = {} # currently processed bar
+    @type_names = {'amateur' => 'для любителей', 'pro' => 'для профессионалов'}
+    @type_main = {}
   end
   
   def job_name
@@ -72,7 +74,9 @@ class EventsProcessor < Barman::Processor
     @entity["date"]      = ru_date.to_i * 1000
     @entity["lang"]      = {'английский' => 'en', nil => 'ru', 'русский' => 'ru'}[yaml['Язык']]
     
-    @entity["main"]      = {'да' => true}[yaml['Главное событие']]
+    if yaml['Главное событие'] == "да"
+      @entity["main"] = true
+    end
     
     @entity["adate"]     = yaml['Примерная дата']
     @entity["name"]      = yaml['Название']
@@ -95,11 +99,17 @@ class EventsProcessor < Barman::Processor
     
     @entity["rating"]    = {}
     
+    @entity["type"]      = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
+    unless @entity["type"]
+      error %Q{непонятный тип события «#{yaml['Тип']}»}
+    end
+    
     if @entity["main"]
-      if @main_event
-        error %Q{главным событием уже назначено "#{@main_event["name"]}"}
+      main_event = @type_main[@entity["type"]]
+      if main_event
+        error %Q{главным событием #{@type_names[@entity["type"]]} уже назначено "#{main_event["name"]}"}
       else
-        @main_event = @entity
+        @type_main[@entity["type"]] = @entity
       end
     end
     
@@ -206,11 +216,14 @@ class EventsProcessor < Barman::Processor
   end
   
   def update_main
-    if @main_event
-      say %Q{главное событие: "#{@main_event["name"]}"}
-      File.write(Config::MAIN_LINK, %Q{/event/#{@main_event["href"]}/})
-    else
-      error "ни одно событие не назначено главным"
+    @type_names.each do |k, v|
+      main_event = @type_main[k]
+      if main_event
+        say %Q{главное событие #{v}: "#{main_event["name"]}"}
+        File.write(Config::MAIN_LINK % k, %Q{/event/#{main_event["href"]}/})
+      else
+        error "ни одно событие #{v} не назначено главным"
+      end
     end
   end
   

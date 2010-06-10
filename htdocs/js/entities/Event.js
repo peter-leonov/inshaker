@@ -18,34 +18,75 @@ Event.prototype =
 Object.extend(Event,
 {
 	db: null, // must be defined in db-events.js by calling initialize()
+	indices: {},
 	
-	initialize: function (db)
+	initialize: function (hash)
 	{
+		var db = []
+		
+		for (var k in hash)
+			db.push(new Event(hash[k]))
+		
 		this.db = db
-		for (var k in db)
-			db[k] = new Event(db[k])
 	},
 	
+	indexBy: function (prop)
+	{
+		if (this.indices[prop])
+			return
+		
+		var db = this.db,
+			index = {}
+		
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var entity = db[i],
+				val = entity[prop]
+			
+			var arr = index[val]
+			if (arr)
+				arr.push(entity)
+			else
+				index[val] = [entity]
+		}
+		
+		this.indices[prop] = index
+	},
+	
+	getByNameIndexed: function (name)
+	{
+		return this.indices.name[name]
+	},
 	getByName: function (name)
 	{
-		return this.db[name]
+		this.indexBy('name')
+		this.getByName = this.getByNameIndexed
+		return this.getByName(name)
 	},
 	
-	getNames: function()
+	getNames: function ()
 	{
-		var res = []
-		for(var key in this.db) res.push(key)
+		var db = this.db,
+			res = []
+		
+		for (var i = 0, il = db.length; i < il; i++)
+			res.push(db[i].name)
+		
 		return res
 	},
 	
-	getAll: function()
+	getAll: function ()
 	{
-		var res = []
-		for(var key in this.db) res.push(this.db[key])
-		return res
+		return this.db.slice()
 	},
 	
-	dateSort: function(a, b)
+	getByType: function (type)
+	{
+		this.indexBy('type')
+		return this.indices.type[type]
+	},
+	
+	dateSort: function (a, b)
 	{
 		return a.date - b.date
 	}
