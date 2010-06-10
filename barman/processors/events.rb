@@ -10,7 +10,7 @@ class EventsProcessor < Barman::Processor
     
     HT_ROOT        = Barman::HTDOCS_DIR + "event/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    MAIN_LINK      = HT_ROOT + "main.html"
+    MAIN_LINK      = HT_ROOT + "main-%s.html"
     
     DB_JS          = Barman::HTDOCS_DIR + "db/events.js"
     
@@ -220,7 +220,7 @@ class EventsProcessor < Barman::Processor
       main_event = @type_main[k]
       if main_event
         say %Q{главное событие #{v}: "#{main_event["name"]}"}
-        File.write(Config::MAIN_LINK, %Q{/event/#{main_event["href"]}/})
+        File.write(Config::MAIN_LINK % k, %Q{/event/#{main_event["href"]}/})
       else
         error "ни одно событие #{v} не назначено главным"
       end
