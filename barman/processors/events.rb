@@ -95,6 +95,11 @@ class EventsProcessor < Barman::Processor
     
     @entity["rating"]    = {}
     
+    @entity["type"]      = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
+    unless @entity["type"]
+      error %Q{непонятный тип события «#{yaml['Тип']}»}
+    end
+    
     if @entity["main"]
       if @main_event
         error %Q{главным событием уже назначено "#{@main_event["name"]}"}
