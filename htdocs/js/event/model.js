@@ -10,7 +10,7 @@ EventPage.model =
 	setState: function (state)
 	{
 		var db = this.eventsDB,
-			event = db.getByName(state.name),
+			event = db.getByName(state.name)[0],
 			all = db.getAll()
 		
 		this.owner.view.modelChanged(event, all)
