@@ -65,6 +65,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
+		this.cache = {cocktails:{}}
 	},
 	
 	bind: function (nodes)
@@ -79,20 +80,27 @@ var myProto =
 		
 		var list = N('ul')
 		
+		var cache = this.cache.cocktails
 		for (var i = 0, il = rows.length; i < il; i++)
 		{
+			var row = rows[i],
+				cocktail = row.cocktail,
+				name = cocktail.name
+			
+			var node = cache[name]
+			if (!node)
+				node = cache[name] = this.renderCocktail(cocktail, row.ingredients)
+			
 			var item = Nc('li', 'row')
-			item.appendChild(this.renderCocktail(rows[i]))
+			item.appendChild(node)
 			list.appendChild(item)
 		}
 		
 		main.appendChild(list)
 	},
 	
-	renderCocktail: function (row)
+	renderCocktail: function (cocktail, ingredients)
 	{
-		var cocktail = row.cocktail
-		
 		var root = N('dl')
 		
 		var head = root.appendChild(Nc('dt', 'head'))
@@ -101,8 +109,7 @@ var myProto =
 		
 		var body = root.appendChild(Nc('dd', 'body'))
 		
-		var ingredients = row.ingredients,
-			inodes = []
+		var inodes = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			inodes[i] = ingredients[i].getPreviewNode()
 		
