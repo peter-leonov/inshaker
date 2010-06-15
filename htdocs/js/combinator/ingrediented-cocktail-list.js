@@ -1,7 +1,11 @@
 ;(function(){
 
+var Papa
+
+;(function(){
+
 var myName = 'IngredientedCocktailList',
-	Me = self[myName] = MVC.create(myName)
+	Me = Papa = self[myName] = MVC.create(myName)
 
 // Me.mixIn(EventDriven)
 
@@ -34,7 +38,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Papa = IngredientedCocktailList, Me = Papa.View
+var Me = Papa.View
 
 eval(NodesShortcut.include())
 
@@ -77,7 +81,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Papa = IngredientedCocktailList, Me = Papa.Controller
+var Me = Papa.Controller
 
 var myProto =
 {
@@ -91,7 +95,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Papa = IngredientedCocktailList, Me = Papa.Model
+var Me = Papa.Model
 
 var myProto =
 {
@@ -103,5 +107,8 @@ var myProto =
 }
 
 Object.extend(Me.prototype, myProto)
+
+})();
+
 
 })();
