@@ -29,6 +29,7 @@ var myProto =
 	getValue: function ()
 	{
 		var input = this.nodes.ingredientInput
+		input.focus()
 		this.searchValueChanged(input.value)
 	},
 	
