@@ -26,6 +26,12 @@ var myProto =
 		return this
 	},
 	
+	getValue: function ()
+	{
+		var input = this.nodes.ingredientInput
+		this.searchValueChanged(input.value)
+	},
+	
 	searchValueChanged: function (value)
 	{
 		if (this.lastValue === value)

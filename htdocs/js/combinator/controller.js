@@ -9,10 +9,7 @@ var myProto =
 		this.state = {}
 	},
 	
-	bind: function (state)
-	{
-		this.model.setState(state)
-	},
+	bind: function () {},
 	
 	setIngredientsNames: function (add, remove)
 	{

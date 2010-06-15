@@ -20,6 +20,8 @@ var myProto =
 		this.view.bind(nodes)
 		this.controller.bind(state)
 		
+		this.view.getValue()
+		
 		return this
 	}
 }
