@@ -38,10 +38,14 @@ var myProto =
 			if (!m[2])
 				continue
 			
+			var name = m[2].replace(/^\s+|\s+$/g, '')
+			if (!name)
+				continue
+			
 			if (m[1] == '+')
-				add.push(m[2])
+				add.push(name)
 			else if (m[1] == '-')
-				remove.push(m[2])
+				remove.push(name)
 		}
 		
 		this.controller.setIngredientsNames(add, remove)
