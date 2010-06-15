@@ -97,17 +97,16 @@ var myProto =
 		
 		var head = root.appendChild(Nc('dt', 'head'))
 		head.appendChild(cocktail.getPreviewNode())
-		head.appendChild(Nct('span', 'equals', '='))
+		head.appendChild(Nct('span', 'operator', '='))
 		
 		var body = root.appendChild(Nc('dd', 'body'))
 		
-		var ingredients = row.ingredients
+		var ingredients = row.ingredients,
+			inodes = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
-		{
-			var ingredient = ingredients[i]
-			
-			body.appendChild(ingredient.getPreviewNode())
-		}
+			inodes[i] = ingredients[i].getPreviewNode()
+		
+		body.appendChild(joinWithNodeToFragment(inodes, Nct('span', 'operator', '+')))
 		
 		return root
 	}
