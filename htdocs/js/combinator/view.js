@@ -28,17 +28,23 @@ var myProto =
 	
 	searchValueChanged: function (value)
 	{
-		var parts = value.replace(/^\s+|\s+$/g, '').split(/\s*\+\s*/)
+		var value = '+' + value.replace(/^\s+|\s+$/g, '')
 		
-		var names = []
-		for (var i = 0, il = parts.length; i < il; i++)
+		var m, lexer = /\s*([+-])\s*([^+-]*)/g
+		
+		var add = [], remove = []
+		while ((m = lexer.exec(value)))
 		{
-			var part = parts[i]
-			if (part)
-				names.push(part)
+			if (!m[2])
+				continue
+			
+			if (m[1] == '+')
+				add.push(m[2])
+			else if (m[1] == '-')
+				remove.push(m[2])
 		}
 		
-		log(names)
+		this.controller.setIngredientsNames(add, remove)
 	},
 	
 	renderCocktails: function (cocktails)

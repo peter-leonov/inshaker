@@ -12,6 +12,11 @@ var myProto =
 	bind: function (state)
 	{
 		this.model.setState(state)
+	},
+	
+	setIngredientsNames: function (add, remove)
+	{
+		this.model.setIngredientsNames(add, remove)
 	}
 }
 
