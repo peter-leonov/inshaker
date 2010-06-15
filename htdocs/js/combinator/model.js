@@ -19,7 +19,9 @@ var myProto =
 	{
 		this.state = state
 		
-		this.view.renderCocktails(this.ds.cocktail.getByStrength('безалкогольные'))
+		var cocktails = this.ds.cocktail.getByIngredientNames(['Малина'])
+		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		this.view.renderCocktails(cocktails)
 	}
 }
 
