@@ -25,16 +25,16 @@
 #output .group .head { font-size: 24px; margin: 0 0 15px 0; }
 #output .group .list { overflow: hidden; zoom: 1; }
 #output .group .list .item { float: left; position: relative; margin: 0 15px 15px 0; width: 100px; height: 140px; }
-#output .group .list .item .ingredient { display: block; }
-#output .group .list .item .ingredient,
-#output .group .list .item .ingredient .image { display: block; width: 100px; height: 100px; }
-#output .group .list .item.lazy .ingredient .image { color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
-#output .group .list .item .ingredient .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
+#output .group .list .item .ingredient-preview { display: block; }
+#output .group .list .item .ingredient-preview,
+#output .group .list .item .ingredient-preview .image { display: block; width: 100px; height: 100px; }
+#output .group .list .item.lazy .ingredient-preview .image { color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
+#output .group .list .item .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
 .images#output .group .list .item { width: 100px; height: 100px; }
-.images#output .group .list .item .ingredient .name { display: none; }
-.images#output .group .list .item .ingredient { text-decoration: none; }
-.images#output .group .list .item:hover .ingredient .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; left: 0; bottom: 0; color: #000; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
+.images#output .group .list .item .ingredient-preview .name { display: none; }
+.images#output .group .list .item .ingredient-preview { text-decoration: none; }
+.images#output .group .list .item:hover .ingredient-preview .name { display: block; position: absolute; z-index: 1; width: 100%; padding: 3px 0 5px; left: 0; bottom: 0; color: #000; background-color: #fff; background-color: rgba(255,255,255,0.8); text-shadow: #fff 1px 1px 1px, #fff 1px -1px 1px, #fff -1px 1px 1px, #fff -1px -1px 1px, #fff 0 0 5px, #fff 0 0 5px; }
 
 .ingredient-window { position: relative; min-height: 200px; padding: 30px 0 10px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
 .ingredient-window .description { overflow: hidden; }

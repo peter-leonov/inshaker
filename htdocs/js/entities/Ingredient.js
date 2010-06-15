@@ -1,5 +1,7 @@
 ;(function(){
 
+eval(NodesShortcut.include())
+
 var Me = self.Ingredient = function (data)
 {
 	for (var k in data)
@@ -20,6 +22,22 @@ Me.prototype =
 	{
 		var v = vol[0]
 		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
+	},
+	
+	getPreviewNode: function (lazy)
+	{
+		var node = Nc('a', lazy ? 'ingredient-preview lazy' : 'ingredient-preview')
+		var image = Nc('img', 'image')
+		image[lazy ? 'lazySrc' : 'src'] = this.getMiniImageSrc()
+		node.appendChild(image)
+		
+		var name = Nct('span', 'name', this.name)
+		node.appendChild(name)
+		
+		node.ingredient = this
+		node.ingredientImage = image
+		
+		return node
 	}
 }
 

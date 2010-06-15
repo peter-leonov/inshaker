@@ -239,18 +239,7 @@ var myProto =
 		if ((node = this.ingredientCache[ingredient.name]))
 			return node
 		
-		var node = Nc('a', 'ingredient')
-		var image = Nc('img', 'image')
-		image.lazySrc = ingredient.getMiniImageSrc()
-		node.appendChild(image)
-		
-		var name = Nct('span', 'name', ingredient.name)
-		node.appendChild(name)
-		
-		node.ingredient = ingredient
-		node.ingredientImage = image
-		
-		return this.ingredientCache[ingredient.name] = node
+		return this.ingredientCache[ingredient.name] = ingredient.getPreviewNode(true)
 	}
 }
 
