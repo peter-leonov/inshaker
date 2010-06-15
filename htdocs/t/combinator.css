@@ -1,4 +1,10 @@
+.b-title { height: 35px; }
+.b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
+
+#search-box { position: absolute; top: 3px; left: 165px; }
+#search-box .ingredient { font-size: 20px; padding: 2px; color: inherit; width: 555px; }
+
 
 #output {  }
 #output .row { margin: 60px 0 55px; position: relative; }
