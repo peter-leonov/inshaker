@@ -42,6 +42,24 @@ var Me = Papa.View
 
 eval(NodesShortcut.include())
 
+function joinWithNodeToFragment (arr, node)
+{
+	var len = arr.length,
+		res = document.createDocumentFragment()
+	
+	if (!len)
+		return res
+	
+	for (var i = 0, il = len - 1; i < il; i++)
+	{
+		res.appendChild(arr[i])
+		res.appendChild(node.cloneNode(true))
+	}
+	res.appendChild(arr[i])
+	
+	return res
+}
+
 var myProto =
 {
 	initialize: function ()
