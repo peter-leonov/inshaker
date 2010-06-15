@@ -41,7 +41,7 @@ Cocktail.prototype =
 		return path + '/' + htmlName + '-big.png'
 	},
 	
-	getPreviewNode: function (lazy)
+	getPreviewNode: function (lazy, big)
 	{
 		var htmlName = this.name_eng.htmlName(),
 			path = '/cocktail/' + htmlName
@@ -56,7 +56,7 @@ Cocktail.prototype =
 		
 		var img = li.img = document.createElement("img")
 		img.className = 'image'
-		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + '-small.png'
+		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
 		a.appendChild(img)
 		
 		var txt = document.createTextNode(this.name)

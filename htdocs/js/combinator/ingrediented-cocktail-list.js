@@ -96,7 +96,7 @@ var myProto =
 		var root = N('dl')
 		
 		var head = root.appendChild(Nc('dt', 'head'))
-		head.appendChild(cocktail.getPreviewNode())
+		head.appendChild(cocktail.getPreviewNode(false, true))
 		head.appendChild(Nct('span', 'operator', '='))
 		
 		var body = root.appendChild(Nc('dd', 'body'))
