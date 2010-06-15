@@ -15,7 +15,16 @@ var myProto =
 	{
 		this.nodes = nodes
 		
+		var inco = this.inco = new IngredientedCocktailList()
+		inco.bind({main: nodes.output})
+		
+		
 		return this
+	},
+	
+	renderCocktails: function (cocktails)
+	{
+		this.inco.setCocktails(cocktails)
 	}
 }
 

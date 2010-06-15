@@ -18,6 +18,8 @@ var myProto =
 	setState: function (state)
 	{
 		this.state = state
+		
+		this.view.renderCocktails(this.ds.cocktail.getByStrength('безалкогольные'))
 	}
 }
 

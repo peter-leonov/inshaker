@@ -34,6 +34,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
 
+<!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
@@ -46,6 +47,7 @@ function onready ()
 {
 	var nodes =
 	{
+		output: $('output')
 	}
 	
 	var widget = new CombinatorPage()
