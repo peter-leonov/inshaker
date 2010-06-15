@@ -28,7 +28,11 @@ var myProto =
 	
 	searchValueChanged: function (value)
 	{
-		var value = '+' + value.replace(/^\s+|\s+$/g, '')
+		if (this.lastValue === value)
+			return
+		this.lastValue = value
+		
+		value = '+' + value.replace(/^\s+|\s+$/g, '')
 		
 		var m, lexer = /\s*([+-])\s*([^+-]*)/g
 		

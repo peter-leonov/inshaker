@@ -16,6 +16,7 @@ var myProto =
 	{
 		this.ds = {}
 		this.state = {}
+		this.searcheCache = {}
 	},
 	
 	bind: function (ds)
@@ -25,22 +26,36 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
-		var cocktails = this.searchCocktails(add, remove)
+		add = this.filtRealIngredients(add)
+		remove = this.filtRealIngredients(remove)
 		
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		var key = add.join(':') + '::' + remove.join(':')
+		
+		// do not redraw the same set
+		if (this.lastKey == key)
+			return
+		this.lastKey = key
+		
+		// look up the cache
+		var cocktails = this.searcheCache[key]
+		if (!cocktails)
+		{
+			cocktails = this.searcheCache[key] = this.searchCocktails(add, remove)
+			cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		}
+		
+		// oowf, need to update the view
 		this.view.renderCocktails(cocktails)
 	},
 	
 	searchCocktails: function (add, remove)
 	{
-		var add = this.filtRealIngredients(add)
-		
 		var set = this.ds.cocktail.getByIngredientNames(add)
 		
 		if (!remove.length)
 			return set
 		
-		var remove = this.filtRealIngredients(remove).hashValues()
+		remove = remove.hashValues()
 		
 		var cocktails = []
 		cocktails: for (var i = 0, il = set.length; i < il; i++)
