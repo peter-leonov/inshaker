@@ -65,7 +65,7 @@ var myProto =
 			
 			for (var j = 0, jl = recipe.length; j < jl; j++)
 			{
-				if (remove[recipe[j]])
+				if (remove[recipe[j][0]])
 					continue cocktails
 			}
 			
