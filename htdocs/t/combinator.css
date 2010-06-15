@@ -3,13 +3,13 @@
 #output {  }
 #output .row { margin: 60px 0 55px; position: relative; }
 
-#output .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #777; }
+#output .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
 
 #output .row .head { width: 200px; position: absolute; }
 #output .row .head .operator { margin: 0; }
 
 #output .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
-#output .row .body .operator { color: #aaa; }
+#output .row .body .operator { color: #ccc; }
 
 
 
