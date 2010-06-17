@@ -73,30 +73,65 @@ var myProto =
 		this.nodes = nodes
 	},
 	
+	setupVisibilityFrame: function (nodes)
+	{
+		if (!nodes.length)
+			return
+		
+		var boxes = Boxer.nodesToBoxes(nodes)
+		
+		var frame = new VisibilityFrame()
+		frame.setFrame(4000, 1500) // hardcoded for now
+		frame.setStep(500, 500)
+		frame.setBoxes(boxes)
+		
+		var me = this
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < show.length; i++)
+			{
+				var box = show[i]
+				if (!box.loaded)
+				{
+					var node = box.node,
+						row = node['data-row']
+					
+					node.appendChild(me.getCocktailNode(row.cocktail, row.ingredients))
+					node.removeClassName('lazy')
+					
+					box.loaded = true
+				}
+			}
+		}
+		
+		function onscroll ()
+		{
+			frame.moveTo(window.pageXOffset, window.pageYOffset)
+		}
+		var timer
+		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 200) }, false)
+		onscroll()
+	},
+	
 	renderRows: function (rows)
 	{
 		var main = this.nodes.main
 		main.empty()
 		
-		var me = this
-		function render (e)
-		{
-			var item = e.target,
-				row = item['data-row']
-			item.appendChild(me.getCocktailNode(row.cocktail, row.ingredients))
-		}
-		
-		var list = N('ul')
+		var list = N('ul'),
+			items = []
 		for (var i = 0, il = rows.length; i < il; i++)
 		{
-			var row = rows[i]
+			var row = rows[i],
+				ingredients = row.ingredients
 			
-			var item = Nc('li', 'row')
+			var item = items[i] = Nc('li', 'row lazy lines-' + ((((ingredients.length - 1) / 5) >> 0) + 1))
 			item['data-row'] = row
-			item.addEventListener('click', render, false)
 			list.appendChild(item)
 		}
 		main.appendChild(list)
+		
+		this.setupVisibilityFrame(items)
 	},
 	
 	getCocktailNode: function (cocktail, ingredients)
