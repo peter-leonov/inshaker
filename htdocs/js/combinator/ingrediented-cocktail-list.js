@@ -78,18 +78,24 @@ var myProto =
 		var main = this.nodes.main
 		main.empty()
 		
+		var me = this
+		function render (e)
+		{
+			var item = e.target,
+				row = item['data-row']
+			item.appendChild(me.getCocktailNode(row.cocktail, row.ingredients))
+		}
+		
 		var list = N('ul')
-		
-		
 		for (var i = 0, il = rows.length; i < il; i++)
 		{
 			var row = rows[i]
 			
 			var item = Nc('li', 'row')
-			item.appendChild(this.getCocktailNode(row.cocktail, row.ingredients))
+			item['data-row'] = row
+			item.addEventListener('click', render, false)
 			list.appendChild(item)
 		}
-		
 		main.appendChild(list)
 	},
 	
