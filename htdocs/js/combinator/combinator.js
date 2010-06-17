@@ -32,9 +32,12 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
+<!--# include virtual="/js/common/autocompleter.new.js" -->
+<!--# include virtual="/js/cocktails/searcher.js" -->
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="throttler.js" -->

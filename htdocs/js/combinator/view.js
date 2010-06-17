@@ -18,10 +18,10 @@ var myProto =
 		var inco = this.inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.output})
 		
-		var me = this
+		var searcher = this.searcher = new IngredientsSearcher(Ingredient.getAll(), {})
+		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
+		completer.setDataSource(searcher)
 		
-		function keypress (e) { setTimeout(function () { me.searchValueChanged(e.target.value) }, 1) }
-		nodes.ingredientInput.addEventListener('keypress', keypress, false)
 		
 		return this
 	},
