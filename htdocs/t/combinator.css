@@ -6,8 +6,13 @@
 #search-box .ingredient { font-size: 20px; padding: 2px; color: inherit; width: 555px; }
 
 
-#output {  }
 #output .row { margin: 50px 0 0 0; position: relative; }
+#output .row:hover { background: red; }
+#output .row.lines-1 { height: 155px; }
+#output .row.lines-2 { height: 310px; }
+#output .row.lines-3 { height: 465px; }
+#output .row.lines-4 { height: 620px; }
+#output .row.lines-5 { height: 775px; }
 
 #output .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
 
