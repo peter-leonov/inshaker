@@ -9,6 +9,14 @@ var myName = 'Autocompleter',
 
 var myProto =
 {
+	initialize: function ()
+	{
+		this.model.initialize()
+		this.view.initialize()
+		this.controller.initialize()
+		this.model.controller = this.controller
+	},
+	
 	bind: function (main, count)
 	{
 		this.view.bind({main:main})
