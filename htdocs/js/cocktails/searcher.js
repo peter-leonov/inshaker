@@ -1,19 +1,19 @@
 ;(function(){
 
-var myName = 'IngredientsSearcher', Me = self[myName] = Class(myName)
+var myName = 'IngredientsSearcher'
 
-eval(NodesShortcut())
+function Me (ingredients, names)
+{
+	this.ingredients = ingredients || []
+	this.names = names || {}
+	this.cache = {}
+	this.withouts = {}
+}
 
-Me.prototype.extend
-({
-	initialize: function (ingredients, names)
-	{
-		this.ingredients = ingredients || []
-		this.names = names || {}
-		this.cache = {}
-		this.withouts = {}
-	},
-	
+eval(NodesShortcut.include())
+
+Me.prototype =
+{
 	search: function (substr, count)
 	{
 		var cache = this.cache, res
@@ -87,6 +87,9 @@ Me.prototype.extend
 	},
 	
 	sortByWeight: function (a, b) { return a[0] - b[0] }
-})
+}
+
+Me.className = myName
+self[Me.className] = Me
 
 })();

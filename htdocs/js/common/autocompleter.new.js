@@ -1,10 +1,14 @@
 ;(function(){
 
-var myName = 'Autocompleter'
-var Me = self[myName] = MVC.create(myName)
+var Papa
 
-Me.prototype.extend
-({
+;(function(){
+
+var myName = 'Autocompleter',
+	Me = Papa = self[myName] = MVC.create(myName)
+
+var myProto =
+{
 	bind: function (main, count)
 	{
 		this.view.bind({main:main})
@@ -17,14 +21,21 @@ Me.prototype.extend
 	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
 	setInstant: function (v) { this.controller.instant = v },
 	onconfirm: function () {}
-})
+}
 
-// Me.mixIn(EventDriven)
+Object.extend(Me.prototype, myProto)
 
-eval(NodesShortcut())
+})();
 
-Me.View.prototype.extend
-({
+
+;(function(){
+
+var Me = Papa.View
+
+eval(NodesShortcut.include())
+
+var myProto =
+{
 	valueFilter: function (node) { return node.value },
 	
 	initialize: function ()
@@ -168,10 +179,19 @@ Me.View.prototype.extend
 		
 		this.selected = num
 	}
-})
+}
 
-Me.Controller.prototype.extend
-({
+Object.extend(Me.prototype, myProto)
+
+})();
+
+
+;(function(){
+
+var Me = Papa.Controller
+
+var myProto =
+{
 	initialize: function ()
 	{
 		this.reset()
@@ -347,16 +367,30 @@ Me.Controller.prototype.extend
 			this.sendSelected()
 		this.end()
 	}
-})
+}
 
-Me.Model.prototype.extend
-({
+Object.extend(Me.prototype, myProto)
+
+})();
+
+
+;(function(){
+
+var Me = Papa.Model
+
+var myProto =
+{
 	setCount: function (v) { this.count = v },
 	search: function (value)
 	{
 		var ds = this.dataSource
 		this.controller.setResults(ds ? ds.search(value, this.count) : [])
 	}
-})
+}
+
+Object.extend(Me.prototype, myProto)
+
+})();
+
 
 })();
