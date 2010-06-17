@@ -13,6 +13,7 @@ Me.prototype.extend
 	},
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
+	setValueFilter: function (f) { this.view.valueFilter = f },
 	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
 	setInstant: function (v) { this.controller.instant = v },
 	onconfirm: function () {}
@@ -24,6 +25,8 @@ eval(NodesShortcut())
 
 Me.View.prototype.extend
 ({
+	valueFilter: function (node) { return node.value },
+	
 	initialize: function ()
 	{
 		this.nodes = {}
@@ -61,7 +64,15 @@ Me.View.prototype.extend
 			}
 		}
 		else
-			setTimeout(function () { controller.goValue(targ.value) }, 1)
+		{
+			var me = this
+			setTimeout(function () { me.onValue(targ) }, 1)
+		}
+	},
+	
+	onValue: function (node)
+	{
+		this.controller.goValue(this.valueFilter(node))
 	},
 	
 	onBlur: function (e)
