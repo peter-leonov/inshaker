@@ -7,8 +7,6 @@ var Papa
 var myName = 'IngredientedCocktailList',
 	Me = Papa = self[myName] = MVC.create(myName)
 
-// Me.mixIn(EventDriven)
-
 var myProto =
 {
 	initialize: function ()
