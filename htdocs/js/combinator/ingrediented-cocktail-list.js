@@ -73,30 +73,31 @@ var myProto =
 		this.nodes = nodes
 	},
 	
-	renderCocktails: function (rows)
+	renderRows: function (rows)
 	{
 		var main = this.nodes.main
 		main.empty()
 		
 		var list = N('ul')
 		
-		var cache = this.cache.cocktails
+		
 		for (var i = 0, il = rows.length; i < il; i++)
 		{
-			var row = rows[i],
-				cocktail = row.cocktail,
-				name = cocktail.name
-			
-			var node = cache[name]
-			if (!node)
-				node = cache[name] = this.renderCocktail(cocktail, row.ingredients)
+			var row = rows[i]
 			
 			var item = Nc('li', 'row')
-			item.appendChild(node)
+			item.appendChild(this.getCocktailNode(row.cocktail, row.ingredients))
 			list.appendChild(item)
 		}
 		
 		main.appendChild(list)
+	},
+	
+	getCocktailNode: function (cocktail, ingredients)
+	{
+		var cache = this.cache.cocktails,
+			name = cocktail.name
+		return cache[name] || (cache[name] = this.renderCocktail(cocktail, ingredients))
 	},
 	
 	renderCocktail: function (cocktail, ingredients)
@@ -170,7 +171,7 @@ var myProto =
 			
 		}
 		
-		this.view.renderCocktails(rows)
+		this.view.renderRows(rows)
 	}
 }
 
