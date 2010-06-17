@@ -68,7 +68,7 @@ Me.prototype =
 			if (m[1])
 				text.appendChild(T(m[1]))
 			// m[2] is used instead of substr because m[2] != substr when searching with "i"
-			text.appendChild(N('span', 'substr', m[3]))
+			text.appendChild(Nct('span', 'substr', m[3]))
 			if (m[3])
 				text.appendChild(T(m[4] + m[5]))
 			
