@@ -9,8 +9,6 @@ function Me ()
 	this.constructor = Me
 }
 
-// eval(NodesShortcut())
-
 Me.prototype =
 {
 	visible: false,

@@ -13,9 +13,6 @@ function Me ()
 	this.scope = 'https://www.google.com/analytics/feeds'
 }
 
-// Me.mixIn(EventDriven)
-// eval(NodesShortcut())
-
 Me.prototype =
 {
 	initialize: function ()
