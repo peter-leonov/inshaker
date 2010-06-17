@@ -7,7 +7,7 @@
 
 
 #output .row { margin: 50px 0 0 0; position: relative; }
-#output .row.lazy { background: #eee; }
+#output .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
 #output .row.lines-0 { height: 155px; }
 #output .row.lines-1 { height: 155px; }
 #output .row.lines-2 { height: 310px; }
