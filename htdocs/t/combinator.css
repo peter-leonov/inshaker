@@ -1,3 +1,4 @@
+html { overflow-y: scroll;  }
 .hidden { display: none; }
 
 .b-title { height: 35px; }
