@@ -26,7 +26,7 @@
 
 
 .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
-.cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.cocktail-preview .image { display: block; margin: 0 auto -10px; width: 91px; height: 170px; }
 .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
 .ingredient-preview { display: block; float: left; margin: 0 15px 55px 15px; }
