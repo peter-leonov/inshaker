@@ -16,8 +16,8 @@ var myProto =
 
 	bind: function (nodes, sources, state)
 	{
-		this.model.bind(sources)
 		this.view.bind(nodes)
+		this.model.bind(sources)
 		this.controller.bind(state)
 		
 		this.view.getValue()

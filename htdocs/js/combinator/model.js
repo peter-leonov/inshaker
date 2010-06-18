@@ -22,6 +22,15 @@ var myProto =
 	bind: function (ds)
 	{
 		this.ds = ds
+		
+		var ingredients = ds.ingredient.getAll()
+		
+		var names = []
+		for (var i = 0, il = ingredients.length; i < il; i++)
+			names[i] = ingredients[i].name
+		
+		var searcher = new IngredientsSearcher(names, {})
+		this.view.setCompleterDataSource(searcher)
 	},
 	
 	setIngredientsNames: function (add, remove)

@@ -18,12 +18,15 @@ var myProto =
 		var inco = this.inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.output})
 		
-		var searcher = this.searcher = new IngredientsSearcher(Ingredient.getAll(), {})
-		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
-		completer.setDataSource(searcher)
 		
+		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
 		
 		return this
+	},
+	
+	setCompleterDataSource: function (ds)
+	{
+		this.completer.setDataSource(ds)
 	},
 	
 	getValue: function ()
