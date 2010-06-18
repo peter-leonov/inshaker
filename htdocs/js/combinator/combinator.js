@@ -20,7 +20,7 @@ var myProto =
 		this.model.bind(sources)
 		this.controller.bind(state)
 		
-		this.view.getValue()
+		// this.view.getValue()
 		
 		return this
 	}

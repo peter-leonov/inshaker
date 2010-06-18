@@ -18,15 +18,23 @@ var myProto =
 		var inco = this.inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.output})
 		
+		var me = this
+		// nodes.ingredientInput.addEventListener('keypress', function (e) { me.searchValueChanged(e.target.value) }, false)
+		// nodes.ingredientInput.addEventListener('click', function (e) { setTimeout(function () { alert(e.target.selectionStart) }, 1) }, false)
 		
-		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
+		// var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
+		
+		nodes.ingredientInput.value = 'Клубника'
+		nodes.ingredientInput.focus()
+		nodes.ingredientInput.selectionStart = 2
+		nodes.ingredientInput.selectionEnd = 4
 		
 		return this
 	},
 	
 	setCompleterDataSource: function (ds)
 	{
-		this.completer.setDataSource(ds)
+		// this.completer.setDataSource(ds)
 	},
 	
 	getValue: function ()
