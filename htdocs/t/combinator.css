@@ -4,11 +4,15 @@
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
 
-#search-box { position: absolute; top: 3px; left: 165px; }
+#search-box { position: absolute; z-index: 100; top: 3px; left: 165px; }
 #search-box .ingredient { font-size: 20px; padding: 2px; color: inherit; width: 555px; }
 
-#search-box .autocomplete { position: absolute; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 14px; }
+#search-box .autocomplete { width: 559px; background: #fff; border: solid #bbb; }
+#search-box .autocomplete { position: absolute; top: 25px; left: 1px; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 20px; }
 #search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
+#search-box .autocomplete .item.selected { background-color: #d2d2d2; }
+#search-box .autocomplete .item .substr { font-weight: bold; }
+
 
 #output .row { margin: 50px 0 0 0; position: relative; }
 #output .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
