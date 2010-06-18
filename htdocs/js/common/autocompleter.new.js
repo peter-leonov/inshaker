@@ -26,6 +26,7 @@ var myProto =
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
 	setValueFilter: function (f) { this.view.valueFilter = f },
+	setValueSetter: function (f) { this.view.valueSetter = f },
 	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
 	setInstant: function (v) { this.controller.instant = v },
 	onconfirm: function () {}
@@ -45,6 +46,7 @@ eval(NodesShortcut.include())
 var myProto =
 {
 	valueFilter: function (node) { return node.value },
+	valueSetter: function (node, value) { node.value = value },
 	
 	initialize: function ()
 	{
@@ -116,7 +118,7 @@ var myProto =
 	
 	renderVariant: function (str)
 	{
-		this.nodes.main.value = str
+		this.valueSetter(this.nodes.main, str)
 	},
 	
 	show: function ()
