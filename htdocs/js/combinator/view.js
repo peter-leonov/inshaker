@@ -19,15 +19,8 @@ var myProto =
 		inco.bind({main: nodes.output})
 		
 		var me = this
-		// nodes.ingredientInput.addEventListener('keypress', function (e) { me.searchValueChanged(e.target.value) }, false)
-		// nodes.ingredientInput.addEventListener('click', function (e) { setTimeout(function () { alert(e.target.selectionStart) }, 1) }, false)
-		
-		// var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
-		
-		nodes.ingredientInput.value = 'Клубника'
-		nodes.ingredientInput.focus()
-		nodes.ingredientInput.selectionStart = 2
-		nodes.ingredientInput.selectionEnd = 4
+		function show (node) { $('status').innerHTML = node.selectionStart + ':' + node.selectionEnd }
+		nodes.ingredientInput.addEventListener('keypress', function () { var me = this; setTimeout(function () { show(me) }, 1) }, false)
 		
 		return this
 	},
