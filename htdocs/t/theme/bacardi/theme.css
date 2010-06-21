@@ -1,0 +1,7 @@
+html { background: #000 url(bars/bg.jpg) center 0 no-repeat; }
+a { color: #c9011d; }
+.bar-mini a { background-image: url(bars/pre-mask-full.png); }
+
+#sort-menu .bars-select dt .caption { color: #f43f3f; }
+#sort-menu .bars-select dd ul li.selected { color: #f43f3f; }
+#sort-menu .bars-select dd ul li:hover { color: #f43f3f; }
