@@ -9,8 +9,8 @@
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 750px; height: 50px; left: -370px; bottom: -730px; }
-#branded-image-holder { height: 900px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 750px; height: 50px; left: -370px; bottom: -50px; }
+#branded-image-holder { height: 50px; bottom: 175px; z-index: 1;  }
 a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; padding-top: 130px; }
