@@ -34,7 +34,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include file="/js/matching/controller.js" -->
 
 <!--# include virtual="/js/common/theme.js" -->
-Theme.bind()
+<!--# config timefmt="%Y.%m" -->
+Theme.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" -->)
 
 function onready ()
 {
