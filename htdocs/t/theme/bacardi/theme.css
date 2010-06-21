@@ -1,7 +1,44 @@
-html { background: #000 url(bars/bg.jpg) center 0 no-repeat; }
-a { color: #c9011d; }
-.bar-mini a { background-image: url(bars/pre-mask-full.png); }
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 750px; height: 50px; left: -370px; bottom: -730px; }
+#branded-image-holder { height: 900px; }
+a { color: #0392f1; }
+#top .nav a:hover { border-bottom-color: #8dd013; }
+#bottom { color: #788894; padding-top: 130px; }
+#bottom a { color: #fff; }
+html { background: #fff url(/t/grey-gradient-v.png) repeat-x center top; }
+button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
+button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
+/* bars.css */
+html { background: #000 url(bg.jpg) center 0 no-repeat; }
+a { color: #c9011d; }
+.bar-mini a { background-image: url(pre-mask-full.png); }
 #sort-menu .bars-select dt .caption { color: #f43f3f; }
 #sort-menu .bars-select dd ul li.selected { color: #f43f3f; }
 #sort-menu .bars-select dd ul li:hover { color: #f43f3f; }
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
+/* common.css */
+#top .logo,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+.win-shop .content .less i,
+.win-shop .content form dl dt i,
+.win-shop .content .more i,
+button.rounded { background-repeat: no-repeat; background-image: url(common.8.png); }
+#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.8.png); }
+#branded-image { background-repeat: no-repeat; background-image: url(image.8.png); }
+<!--# endif -->
