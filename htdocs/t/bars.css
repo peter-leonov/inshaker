@@ -16,10 +16,8 @@ html {overflow-y: scroll;}
 #sort-menu dl,
 #sort-menu dd { position: relative; }
 
-#sort-menu .bars-select dt { cursor: pointer; }
-#sort-menu .bars-select dt .caption { border-bottom: 1px dashed; }
-#sort-menu .bars-select.single dt { cursor: default; }
-#sort-menu .bars-select.single dt .caption { border-bottom: none; color: inherit; }
+#sort-menu .bars-select dt { cursor: pointer; border-bottom: 1px dashed; }
+#sort-menu .bars-select.single dt { cursor: default; border-bottom: none; color: inherit; }
 #sort-menu .bars-select dd { display: none; position: absolute; top: 33px; /*left: 50%;*/ left: -14px; }
 #sort-menu .bars-select dd ul { position: relative; /*left: -50%;*/ padding: 10px 15px; width: 260px; background: url(bars/select-dropdown.png) 0 bottom; color: #fff; }
 #sort-menu .bars-select dd ul li { font-size: 14px; line-height: 20px; cursor: pointer; }
