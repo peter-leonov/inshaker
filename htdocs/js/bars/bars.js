@@ -63,13 +63,12 @@ function googleApiLoaderIsLoaded ()
 Element.prototype.hide = function () { this.addClassName('hidden') }
 Element.prototype.show = function () { this.removeClassName('hidden') }
 
+<!--# include virtual="/js/bars/model.js" -->
+<!--# include virtual="/js/bars/controller.js" -->
+<!--# include virtual="/js/bars/view.js" -->
 
-<!--# include file="/js/bars/model.js" -->
-<!--# include file="/js/bars/controller.js" -->
-<!--# include file="/js/bars/view.js" -->
-
-<!--# include file="/lib/Programica/UrlEncode.js" -->
-<!--# include file="/lib/Programica/LocationHash.js" -->
-<!--# include file="/lib/Programica/WindowName.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
-<!--# include file="/lib/Widgets/Selecter.js" -->
+<!--# include virtual="/lib/Programica/UrlEncode.js" -->
+<!--# include virtual="/lib/Programica/LocationHash.js" -->
+<!--# include virtual="/lib/Programica/WindowName.js" -->
+<!--# include virtual="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/lib/Widgets/Selecter.js" -->
