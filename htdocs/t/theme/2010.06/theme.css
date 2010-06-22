@@ -19,7 +19,7 @@ a { color: #000; }
 #bottom a { color: #890814; }
 html { background: #e8d579 url(bg.jpg) repeat center top; }
 button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
-button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
+button.strong b { text-shadow: 1px 1px 0 #dbacaa; color: #7b2c2a; }
 
 /* calculator.css */
 #b-bill dt,
