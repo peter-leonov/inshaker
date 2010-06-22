@@ -31,22 +31,22 @@ $.onready
 		
 		var nodes =
 		{
-			titleAll: cssQuery('#head .all')[0],
-			titleSearch: cssQuery('#head .search')[0],
-			titleSearchName: cssQuery('#head .search .cocktail')[0],
-			titleSearchAll: cssQuery('#head .search .drop-cocktail')[0],
+			titleAll: $$('#head .all')[0],
+			titleSearch: $$('#head .search')[0],
+			titleSearchName: $$('#head .search .cocktail')[0],
+			titleSearchAll: $$('#head .search .drop-cocktail')[0],
 			viewSwitcher: $('switch-view'),
-			viewSwitcherButtons: cssQuery('#switch-view .view-list, #switch-view .view-map'),
+			viewSwitcherButtons: $$('#switch-view .view-list, #switch-view .view-map'),
 			barsContainer: $('bars-container'),
 			citySelect: $('bars-city'),
 			formatSelect: $('bars-format'),
 			feelSelect: $('bars-feel'),
 			map: $('map'),
-			mapSurface: cssQuery('#map .surface')[0],
+			mapSurface: $$('#map .surface')[0],
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
-			guidePopupBody: cssQuery('#guide-info-popup .popup-window')[0]
+			guidePopupBody: $$('#guide-info-popup .popup-window')[0]
 		}
 		
 		RoundedCorners.round(nodes.map)
