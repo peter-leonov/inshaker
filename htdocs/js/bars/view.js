@@ -79,21 +79,30 @@ BarsPageView.prototype =
 	{
 		var s = this.citySelecter
 		s.setOptions(options)
-		s.select(selected || 0)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderFormats: function (options, selected)
 	{
 		var s = this.formatSelecter
 		s.setOptions(options)
-		s.select(selected || 0)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderFeels: function (options, selected)
 	{
 		var s = this.feelSelecter
 		s.setOptions(options)
-		s.select(selected || 0)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderBars: function (data)

@@ -38,9 +38,24 @@ $.onready
 			viewSwitcher: $('switch-view'),
 			viewSwitcherButtons: $$('#switch-view .view-list, #switch-view .view-map'),
 			barsContainer: $('bars-container'),
-			citySelect: $('bars-city'),
-			formatSelect: $('bars-format'),
-			feelSelect: $('bars-feel'),
+			citySelecter:
+			{
+				main: $('bars-city'),
+				button: $$('#bars-city .button')[0],
+				options: $$('#bars-city .options')[0]
+			},
+			formatSelecter:
+			{
+				main: $('bars-format'),
+				button: $$('#bars-format .button')[0],
+				options: $$('#bars-format .options')[0]
+			},
+			feelSelecter:
+			{
+				main: $('bars-feel'),
+				button: $$('#bars-feel .button')[0],
+				options: $$('#bars-feel .options')[0]
+			},
 			map: $('map'),
 			mapSurface: $$('#map .surface')[0],
 			
