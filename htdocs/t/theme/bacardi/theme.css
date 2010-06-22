@@ -20,6 +20,7 @@ a { color: #0392f1; }
 html { background: #fff url(/t/grey-gradient-v.png) repeat-x center top; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
+.b-more dt b { color: #fff; }
 
 /* bars.css */
 html { background: #000 url(bg.jpg) center 0 no-repeat; }
