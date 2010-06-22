@@ -7,7 +7,7 @@ html {overflow-y: scroll;}
 .bar-mini.new:hover .bar-name { display: none; }
 .bar-mini.new:hover .label { display: block; }
 
-#head a { text-decoration: none; border-bottom: 2px dashed; }
+#head h1 a { text-decoration: none; border-bottom: 2px dashed; }
 #head a:hover { border-bottom: none; }
 #head a.selected { border-bottom: none; color: inherit; cursor: default; }
 

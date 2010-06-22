@@ -1,5 +1,6 @@
 /* common.css */
 #top .logo,
+.b-title #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -11,6 +12,7 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 750px; height: 50px; left: -370px; bottom: -50px; }
 #branded-image-holder { height: 50px; bottom: 175px; z-index: 1;  }
+#spotlighted { width: 110px; height: 34px; right: 0; bottom: 8px; }
 a { color: #0392f1; }
 #top .nav a:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; padding-top: 130px; }
