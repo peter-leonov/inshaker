@@ -101,7 +101,7 @@ b.rb { right: 0; bottom: 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
-#spotlighted { position: absolute; background-position: -450px -125px;}
+#spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
 /* in almost all */
 #main-wrapper{margin:0 auto;width:960px;}
