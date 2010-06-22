@@ -27,7 +27,7 @@ $.onready
 (
 	function ()
 	{
-		document.documentElement.remClassName('loading')
+		document.documentElement.removeClassName('loading')
 		
 		var nodes =
 		{
@@ -61,7 +61,7 @@ function googleApiLoaderIsLoaded ()
 }
 
 Element.prototype.hide = function () { this.addClassName('hidden') }
-Element.prototype.show = function () { this.remClassName('hidden') }
+Element.prototype.show = function () { this.removeClassName('hidden') }
 
 
 <!--# include file="/js/bars/model.js" -->
