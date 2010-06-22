@@ -20,12 +20,17 @@ BarsPageView.prototype =
 		ts.bind({tabs: nodes.viewSwitcherButtons, sections:[this.nodes.barsContainer, this.nodes.map]})
 		ts.addEventListener('select', function (e) { me.setViewNum(e.data.value) }, false)
 		
-		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val) }
-		nodes.feelSelect.onselect   = function (val) { controller.feelSelected(val) }
-		nodes.citySelect.onselect   = function (val) { controller.citySelected(val) }
-		Selecter.bind(nodes.citySelect)
-		Selecter.bind(nodes.formatSelect)
-		Selecter.bind(nodes.feelSelect)
+		var s = this.formatSelecter = new Selecter()
+		s.bind(nodes.formatSelecter)
+		s.addEventListener('select', function (e) { controller.formatSelected(e.data.value) }, false)
+		
+		var s = this.feelSelecter = new Selecter()
+		s.bind(nodes.feelSelecter)
+		s.addEventListener('select', function (e) { controller.feelSelected(e.data.value) }, false)
+		
+		var s = this.citySelecter = new Selecter()
+		s.bind(nodes.citySelecter)
+		s.addEventListener('select', function (e) { controller.citySelected(e.data.value) }, false)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
 		
@@ -72,23 +77,23 @@ BarsPageView.prototype =
 	
 	renderCities: function (options, selected)
 	{
-		var node = this.nodes.citySelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.citySelecter
+		s.setOptions(options)
+		s.select(selected || 0)
 	},
 	
 	renderFormats: function (options, selected)
 	{
-		var node = this.nodes.formatSelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.formatSelecter
+		s.setOptions(options)
+		s.select(selected || 0)
 	},
 	
 	renderFeels: function (options, selected)
 	{
-		var node = this.nodes.feelSelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.feelSelecter
+		s.setOptions(options)
+		s.select(selected || 0)
 	},
 	
 	renderBars: function (data)
