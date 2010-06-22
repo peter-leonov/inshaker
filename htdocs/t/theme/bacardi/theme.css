@@ -37,6 +37,7 @@ a { color: #c9011d; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 /* common.css */
 #top .logo,
+.b-title #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
