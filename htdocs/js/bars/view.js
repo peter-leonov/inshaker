@@ -15,9 +15,10 @@ BarsPageView.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
-		nodes.viewSwitcher.setNames(['list', 'map'])
-		nodes.viewSwitcher.onselect = function (num) { me.setViewNum(num) }
+		
+		var ts = this.viewTypeSwitcher = new TabSwitcher()
+		ts.bind({tabs: nodes.viewSwitcherButtons, sections:[this.nodes.barsContainer, this.nodes.map]})
+		ts.addEventListener('select', function (e) { me.setViewNum(e.data.value) }, false)
 		
 		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val) }
 		nodes.feelSelect.onselect   = function (val) { controller.feelSelected(val) }
@@ -58,16 +59,15 @@ BarsPageView.prototype =
 		this.renderBars(data)
 	},
 	
-	setViewNum: function (num)
+	setViewNum: function (type)
 	{
-		var type = ['list','map'][num]
 		this.setViewType(type)
 		this.controller.viewTypeSwitched(type)
 	},
 	
 	setViewType: function (type)
 	{
-		this.nodes.viewSwitcher.drawSelected(type)
+		this.viewTypeSwitcher.renderSelected(type)
 	},
 	
 	renderCities: function (options, selected)
