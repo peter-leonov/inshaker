@@ -30,6 +30,9 @@ a { color: #c9011d; }
 #sort-menu .bars-select dd ul li:hover { color: #f43f3f; }
 
 
+/* bar.css */
+#price-index { color: #c9011d; }
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 /* common.css */
 #top .logo,

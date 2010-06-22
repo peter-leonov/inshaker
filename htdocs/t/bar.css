@@ -1,5 +1,3 @@
-/* bar page */
-
 .body-wrapper { overflow: hidden; }
 
 .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
@@ -60,7 +58,7 @@
 
 #city-name, #bar-page #bar-id { display: none; }
 #map { width: 100%; height: 480px; position: relative; overflow: hidden; border: 1px solid #888; }
-#price-index { padding: 53px 0 0 89px; font-size: 35px; color: #ec118f; }
+#price-index { padding: 53px 0 0 89px; font-size: 35px; }
 
 #map .bar-map-popup h2 { margin-bottom: 0.25em; }
 
