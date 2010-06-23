@@ -4,6 +4,7 @@ var myName = 'BarPoint'
 
 function Me (bar)
 {
+	this.bar = bar
 	this.latlng = {lat: bar.point[0], lng: bar.point[1]}
 	this.nodes = {}
 	this.id = ++BarPoint.count
@@ -31,7 +32,7 @@ Me.prototype =
 		var title = nodes.title = main.appendChild(Nc('div', 'title'))
 		var name = nodes.name = title.appendChild(Nc('span', 'point-name', name))
 		nodes.nameText = name.appendChild(T(''))
-		nodes.titleText = title.appendChild(T(this.address))
+		nodes.titleText = title.appendChild(T(this.bar.name))
 		
 		return main
 	}
