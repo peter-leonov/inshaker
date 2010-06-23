@@ -31,8 +31,11 @@ Me.prototype =
 		nodes.icon = main.appendChild(Nc('div', 'icon'))
 		var title = nodes.title = main.appendChild(Nc('div', 'title'))
 		var name = nodes.name = title.appendChild(Nc('span', 'point-name', name))
-		nodes.nameText = name.appendChild(T(''))
-		nodes.titleText = title.appendChild(T(this.bar.name))
+		nodes.nameText = name.appendChild(T(this.bar.name))
+		
+		var contacts = this.bar.contacts
+		if (contacts)
+			nodes.titleText = title.appendChild(T(contacts.address + ', ' + contacts.tel))
 		
 		return main
 	}
