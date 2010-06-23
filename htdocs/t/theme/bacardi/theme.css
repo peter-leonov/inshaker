@@ -29,6 +29,7 @@ a { color: #c9011d; }
 #sort-menu .bars-select dt { color: #f43f3f; }
 #sort-menu .bars-select dd ul li.selected { color: #f43f3f; }
 #sort-menu .bars-select dd ul li:hover { color: #f43f3f; }
+#map .point .icon,
 #map .position-control { background-image: url(bars-common.png); }
 
 
