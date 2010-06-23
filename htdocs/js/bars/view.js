@@ -135,10 +135,8 @@ BarsPageView.prototype =
 			state = data.state,
 			city = data.city
 		
-		if (!this.isGMapLoaded())
-			return this.waitGMap(arguments.callee.bind(this, arguments))
-		else
-			this.initMap()
+		this.initMap()
+		var map = this.map
 		
 		if (this.lastCity != state.city)
 		{
@@ -164,10 +162,11 @@ BarsPageView.prototype =
 				zoom = city.zoom || 10
 			}
 			
-			this.gMapMove(lat, lng, zoom)
+			
+			map.setCenter({lat: lat, lng: lng}, zoom)
 			this.lastCity = state.city
 		}
-		var map = this.gMap
+		
 		map.clearOverlays()
 		for (var i = 0; i < bars.length; i++)
 		{
@@ -177,17 +176,6 @@ BarsPageView.prototype =
 			map.addOverlay(bar.gMarker)
 			if (bar == state.bar)
 				this.showBarMapPopup(bar)
-		}
-	},
-	
-	gMapMove: function (lat, lng, zoom)
-	{
-		// log('gMapMove', lat, lng, zoom)
-		var map = this.gMap
-		if (map)
-		{
-			// if (this.checkLatLngZoom(lat, lng, zoom))
-				map.setCenter(new GLatLng(lat, lng), zoom)
 		}
 	},
 	
@@ -208,27 +196,10 @@ BarsPageView.prototype =
 	
 	initMap: function ()
 	{
-		var me = this
-		if (!this.gMap)
-		{
-			var map = new GMap2(this.nodes.mapSurface)
-			map.addControl(new GSmallMapControl())
-			map.enableContinuousZoom()
-			map.enableScrollWheelZoom()
-			GEvent.addListener(map, 'moveend', function () { me.controller.gMapMoveEnd(map.getCenter(), map.getZoom()) })
-			this.gMap = map
-		}
-		
-		if (!this.gIcon)
-		{
-			var gIcon = new GIcon()
-			// gIcon.shadow = '/t/bars/bar-icon.png'
-			gIcon.image = '/t/bars/bar-icon.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
-			this.gIcon = gIcon	
-		}
+		var map = this.map = new Map()
+		map.bind(this.nodes.mapSurface)
+		map.setMode(1)
+		map.addEventListener('pointInvoked', function (e) { log(e) }, false)
 	},
 	
 	waitGMap: function (f)

@@ -76,9 +76,14 @@ function googleApiLoaderIsLoaded ()
 }
 
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 <!--# include virtual="/lib-0.3/widgets/selecter.js" -->
+<!--# include virtual="/lib-0.3/widgets/map.js" -->
+<!--# include virtual="/lib-0.3/widgets/map-light-marker.js" -->
+
+<!--# include virtual="/js/common/google.js" -->
 
 <!--# include virtual="/js/bars/model.js" -->
 <!--# include virtual="/js/bars/controller.js" -->
