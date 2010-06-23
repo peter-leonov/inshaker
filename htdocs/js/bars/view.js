@@ -167,16 +167,13 @@ BarsPageView.prototype =
 			this.lastCity = state.city
 		}
 		
-		map.clearOverlays()
+		var points = []
 		for (var i = 0; i < bars.length; i++)
-		{
-			var bar = bars[i]
-			if (!bar.gMarker)
-				bar.gMarker = this.getGMarker(bar)
-			map.addOverlay(bar.gMarker)
-			if (bar == state.bar)
-				this.showBarMapPopup(bar)
-		}
+			points[i] = this.getBarPoint(bars[i])
+		map.setPoints(points)
+		
+		// if (state.bar)
+		// 	this.showBarMapPopup(state.bar)
 	},
 	
 	checkLatLngZoom: function (nlat, nlng, nzoom)
@@ -202,17 +199,9 @@ BarsPageView.prototype =
 		map.addEventListener('pointInvoked', function (e) { log(e) }, false)
 	},
 	
+	getBarPoint: function (bar)
 	{
-	getGMarker: function (bar)
-		var gPoint = new GLatLng(bar.point[0], bar.point[1])
-		// var mkey = bar.point[0] + ':' + bar.point[1]
-		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
-		var me = this
-		function click () { me.controller.gMarkerClicked(gMarker) }
-		GEvent.addListener(gMarker, 'click', click)
-		gMarker.bar = bar
-		bar.gMarker = gMarker
-		return gMarker
+		return new BarPoint(bar)//{latlng: {lat: bar.point[0], lng: bar.point[1]}}
 	},
 	
 	showBarMapPopup: function (bar)

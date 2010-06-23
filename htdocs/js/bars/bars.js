@@ -85,6 +85,7 @@ function googleApiLoaderIsLoaded ()
 
 <!--# include virtual="/js/common/google.js" -->
 
+<!--# include virtual="/js/bars/point.js" -->
 <!--# include virtual="/js/bars/model.js" -->
 <!--# include virtual="/js/bars/controller.js" -->
 <!--# include virtual="/js/bars/view.js" -->
