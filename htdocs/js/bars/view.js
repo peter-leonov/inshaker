@@ -202,29 +202,8 @@ BarsPageView.prototype =
 		map.addEventListener('pointInvoked', function (e) { log(e) }, false)
 	},
 	
-	waitGMap: function (f)
 	{
-		if (f)
-			loadGoogleApi()
-		this.waitGMapFunction = f
-	},
-	
-	loadedGMap: function ()
-	{
-		if (this.waitGMapFunction)
-		{
-			this.waitGMapFunction()
-			this.waitGMapFunction = null
-		}
-	},
-	
-	isGMapLoaded: function ()
-	{
-		return !!window.GLatLng
-	},
-	
 	getGMarker: function (bar)
-	{
 		var gPoint = new GLatLng(bar.point[0], bar.point[1])
 		// var mkey = bar.point[0] + ':' + bar.point[1]
 		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
