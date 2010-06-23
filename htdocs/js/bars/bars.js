@@ -75,9 +75,6 @@ function googleApiLoaderIsLoaded ()
 	google.load('maps', '2', {nocss: true, language: 'ru', callback: function () { BarsPage.mapsApiIsLoaded() }})
 }
 
-Element.prototype.hide = function () { this.addClassName('hidden') }
-Element.prototype.show = function () { this.removeClassName('hidden') }
-
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
