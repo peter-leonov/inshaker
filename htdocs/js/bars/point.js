@@ -13,6 +13,8 @@ Me.prototype = new MapLightMarker()
 
 eval(NodesShortcut.include())
 
+function stopPropagation (e) { e.stopPropagation() }
+
 var myProto =
 {
 	ll: {lat: 0, lng: 0},
@@ -31,6 +33,7 @@ var myProto =
 		var title = nodes.title = main.appendChild(Nc('div', 'title'))
 		var name = nodes.name = title.appendChild(Nc('span', 'point-name', name))
 		nodes.nameText = name.appendChild(T(this.bar.name))
+		main.addEventListener('mousedown', stopPropagation, false)
 		
 		var contacts = this.bar.contacts
 		if (contacts)
