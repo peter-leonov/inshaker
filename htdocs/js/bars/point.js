@@ -5,25 +5,24 @@ var myName = 'BarPoint'
 function Me (bar)
 {
 	this.bar = bar
-	this.latlng = {lat: bar.point[0], lng: bar.point[1]}
+	this.ll = {lat: bar.point[0], lng: bar.point[1]}
 	this.nodes = {}
-	this.id = ++BarPoint.count
 }
 
-Me.count = 0
+Me.prototype = new MapLightMarker()
 
 eval(NodesShortcut.include())
 
-Me.prototype =
+var myProto =
 {
-	latlng: {lat: 0, lng: 0},
+	ll: {lat: 0, lng: 0},
 	
 	createNode: function ()
 	{
-		return this.node || (this.node = this.render())
+		return this.node || (this.node = this.getNode())
 	},
 	
-	render: function ()
+	getNode: function ()
 	{
 		var nodes = this.nodes
 		
@@ -40,6 +39,8 @@ Me.prototype =
 		return main
 	}
 }
+
+Object.extend(Me.prototype, myProto)
 
 Me.className = myName
 self[myName] = Me
