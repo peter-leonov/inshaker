@@ -193,6 +193,9 @@ BarsPageView.prototype =
 	
 	initMap: function ()
 	{
+		if (this.map)
+			return
+		
 		var map = this.map = new Map(),
 			nodes = this.nodes
 		
