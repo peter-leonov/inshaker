@@ -200,7 +200,6 @@ BarsPageView.prototype =
 			nodes = this.nodes
 		
 		map.bind({main: nodes.mapSurface, wrapper: nodes.map, control: nodes.positionControl})
-		map.addEventListener('pointInvoked', function (e) { log(e) }, false)
 	},
 	
 	getBarPoint: function (bar)

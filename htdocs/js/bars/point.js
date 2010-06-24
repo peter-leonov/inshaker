@@ -26,18 +26,25 @@ var myProto =
 	
 	getNode: function ()
 	{
-		var nodes = this.nodes
+		var nodes = this.nodes,
+			bar = this.bar
 		
 		var main = nodes.main = Nc('div', 'point')
-		nodes.icon = main.appendChild(Nc('div', 'icon'))
-		var title = nodes.title = main.appendChild(Nc('div', 'title'))
-		var name = nodes.name = title.appendChild(Nc('span', 'point-name', name))
-		nodes.nameText = name.appendChild(T(this.bar.name))
 		main.addEventListener('mousedown', stopPropagation, false)
 		
-		var contacts = this.bar.contacts
+		var icon = nodes.icon = main.appendChild(Nc('a', 'icon'))
+		icon.href = this.bar.pageHref()
+		
+		var title = nodes.title = main.appendChild(Nc('dl', 'title'))
+		
+		var name = nodes.name = title.appendChild(Nct('dt', 'point-name', bar.name))
+		
+		var contacts = bar.contacts
 		if (contacts)
-			nodes.titleText = title.appendChild(T(contacts.address + ', ' + contacts.tel))
+		{
+			nodes.address = title.appendChild(Nct('dd', 'address', contacts.address))
+			nodes.tel = title.appendChild(Nct('dd', 'tel', contacts.tel))
+		}
 		
 		return main
 	}
