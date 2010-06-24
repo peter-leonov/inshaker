@@ -193,9 +193,10 @@ BarsPageView.prototype =
 	
 	initMap: function ()
 	{
-		var map = this.map = new Map()
-		map.bind(this.nodes.mapSurface)
-		map.setMode(1)
+		var map = this.map = new Map(),
+			nodes = this.nodes
+		
+		map.bind({main: nodes.mapSurface, wrapper: nodes.map, control: nodes.positionControl})
 		map.addEventListener('pointInvoked', function (e) { log(e) }, false)
 	},
 	

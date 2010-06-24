@@ -58,6 +58,7 @@ $.onready
 			},
 			map: $('map'),
 			mapSurface: $$('#map .surface')[0],
+			positionControl: $$('.position-control')[0],
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
