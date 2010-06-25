@@ -115,6 +115,7 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
 #sort-menu { scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(onselectstart=function(){return false})) }
+#map .point:hover { zoom: 1; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
