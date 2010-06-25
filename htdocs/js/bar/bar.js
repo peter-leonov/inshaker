@@ -20,7 +20,14 @@ $.onready
 		var nodes =
 		{
 			photos: $$('.b-content .photos')[0],
-			carte: $('carte'),
+			carte:
+			{
+				root:            $$('#carte')[0],
+				viewport:        $$('#carte .viewport')[0],
+				surface:         $$('#carte .surface')[0],
+				prev:            $$('#carte .prev')[0],
+				next:            $$('#carte .next')[0]
+			},
 			barName: $('bar-name'),
 			cityName: $('city-name'),
 			showMore: $$('.about .show-more')[0],

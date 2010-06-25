@@ -13,7 +13,6 @@ BarPage.view =
 		this.nodes = nodes
 		
 		// new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
-		// new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
 		
 		
 		var barMore = nodes.barMore
@@ -50,7 +49,7 @@ BarPage.view =
 		this.bar = data.bar
 		
 		// cocktails
-		this.renderCocktails(nodes.carte, data.carte, 4)
+		this.renderCocktails(data.carte)
 		this.renderMap(data.bar, data.otherBarsSet)
 		this.renderPrevNext(data.prevNext)
 	},
@@ -104,25 +103,24 @@ BarPage.view =
 		map.setCenter({lat: bar.point[0], lng: bar.point[1]}, 13)
 	},
 	
-	renderCocktails: function (node, set, len)
+	renderCocktails: function (cocktails)
 	{
-		var parent = node.getElementsByClassName('surface')[0]
-		parent.empty()
-		for (var i = 0; i < set.length; i++)
+		var listNodes = this.nodes.carte
+		
+		var clNodes =
 		{
-			if (i % len == 0)
-			{
-				var point = document.createElement('ul')
-				point.className = 'point'
-				parent.appendChild(point)
-			}
-			if (set[i])
-			point.appendChild(this._createCocktailElement(set[i]))
+			root: listNodes.root,
+			viewport: listNodes.viewport,
+			surface: listNodes.surface,
+			prev: listNodes.prev,
+			next: listNodes.next
 		}
-		// node.RollingImagesLite.sync()
+
+		var cl = new CocktailList()
+		cl.bind(clNodes)
+		cl.configure({pageLength: 5, pageVelocity: 35.5})
+		cl.setCocktails(cocktails)
 	},
-	
-	_createCocktailElement: function (cocktail) { return cocktail.getPreviewNode() },
 	
 	renderPrevNext: function (prevNext)
 	{
