@@ -76,10 +76,10 @@ $.onready
 
 <!--# include virtual="/js/common/google.js" -->
 
-<!--# include virtual="/js/bars/point.js" -->
-<!--# include virtual="/js/bars/model.js" -->
-<!--# include virtual="/js/bars/controller.js" -->
-<!--# include virtual="/js/bars/view.js" -->
+<!--# include virtual="point.js" -->
+<!--# include virtual="model.js" -->
+<!--# include virtual="controller.js" -->
+<!--# include virtual="view.js" -->
 
 
 <!--# include virtual="/lib/Programica/LocationHash.js" -->
