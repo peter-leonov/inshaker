@@ -59,14 +59,9 @@ BarPage.view =
 	{
 		var nodes = this.nodes,
 			barName = nodes.barName.innerHTML,
-			cityName = nodes.cityName.innerHTML,
-			winStr, state
+			cityName = nodes.cityName.innerHTML
 		
-		if (winStr = WindowName.get('bars:state'))
-			state = UrlEncode.parse(winStr)
-		else
-			state = {}
-		
+		var state = {}
 		state.name = barName
 		state.city = cityName
 		

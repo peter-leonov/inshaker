@@ -48,5 +48,3 @@ $.onready
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="view.js" -->
-
-<!--# include virtual="/lib/Programica/WindowName.js" -->
