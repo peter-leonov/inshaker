@@ -7,12 +7,11 @@ function BarsPageView ()
 
 BarsPageView.prototype =
 {
-	cache: {barNode:{}},
-	
 	initialize: function (controller, nodes)
 	{
 		this.controller = controller
 		this.nodes = nodes
+		this.cache = {barNode: {}, points: {}}
 		
 		var me = this
 		
@@ -171,9 +170,6 @@ BarsPageView.prototype =
 		for (var i = 0; i < bars.length; i++)
 			points[i] = this.getBarPoint(bars[i])
 		map.setPoints(points)
-		
-		// if (state.bar)
-		// 	this.showBarMapPopup(state.bar)
 	},
 	
 	checkLatLngZoom: function (nlat, nlng, nzoom)
@@ -206,19 +202,13 @@ BarsPageView.prototype =
 	
 	getBarPoint: function (bar)
 	{
-		return new BarPoint(bar)//{latlng: {lat: bar.point[0], lng: bar.point[1]}}
-	},
-	
-	showBarMapPopup: function (bar)
-	{
-		var contacts, body = ''
-		if ((contacts = bar.contacts))
-		{
-			body = contacts.address
-			if (contacts.tel)
-				body += '<br/>' + contacts.tel + '</a>'
-		}
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2><a href="' + bar.pageHref() + '">' + bar.name + '</a></h2><p>' + body + '</p></div>')
+		var cache = this.cache.points
+		
+		var point = cache[bar.name]
+		if (point)
+			return point
+		
+		return cache[bar.name] = new BarPoint(bar)
 	},
 	
 	renderTitle: function (cocktail)

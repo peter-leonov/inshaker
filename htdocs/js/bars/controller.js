@@ -28,16 +28,6 @@ BarsPageController.prototype =
 		this.model.setState(state)
 	},
 	
-	gMarkerClicked: function (gMarker)
-	{
-		var state = this.state,
-			bar = gMarker.bar
-		
-		state.bar = bar.name
-		this.view.showBarMapPopup(bar)
-		this.view.setHash(state)
-	},
-	
 	mapMoved: function (ll, zoom)
 	{
 		var state = this.state
