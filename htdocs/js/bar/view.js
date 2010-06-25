@@ -10,12 +10,10 @@ BarPage.view =
 	
 	initialize: function (nodes)
 	{
-		loadGoogleApi.delay(1000)
-		
 		this.nodes = nodes
 		
-		new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
-		new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
+		// new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
+		// new Programica.RollingImagesLite(nodes.carte, {animationType: 'easeInOutCubic'})
 		
 		
 		var barMore = nodes.barMore
@@ -87,105 +85,28 @@ BarPage.view =
 	
 	initMap: function (bar)
 	{
-		if (!this.gMap)
-		{
-			var map = this.gMap = new GMap2(this.nodes.map)
-			map.addControl(new GSmallMapControl(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT))
-			map.enableContinuousZoom()
-			// map.enableScrollWheelZoom()
-		}
+		if (this.map)
+			return
 		
-		if (!this.gIcon)
-		{
-			var gIcon = new GIcon()
-			gIcon.image = '/t/bars/bar-icon.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
-			this.gIcon = gIcon	
-		}
-	},
-	
-	waitGMap: function (f)
-	{
-		this.waitGMapFunction = f
-	},
-	
-	loadedGMap: function ()
-	{
-		if (this.waitGMapFunction)
-		{
-			this.waitGMapFunction()
-			this.waitGMapFunction = null
-		}
-	},
-	
-	isGMapLoaded: function ()
-	{
-		return !!window.GLatLng
-	},
-	
-	renderMap: function (bar, otherBarsSet)
-	{
-		if (!this.isGMapLoaded())
-			return this.waitGMap(arguments.callee.bind(this, arguments))
-		else
-			this.initMap()
+		var map = this.map = new Map(),
+			nodes = this.nodes
 		
-		var map = this.gMap
-		
-		var ll = new GLatLng(bar.point[0], bar.point[1])
-		var zoom = 13
-		var gMarker = this.getGMarker(bar)
-		
-		map.setCenter(ll, zoom)
-		map.addOverlay(gMarker)
-		
-		for (var i = 0; i < otherBarsSet.length; i++)
-		{
-			var otherBar = otherBarsSet[i]
-			var gMarker = this.getGMarker(otherBar)
-			map.addOverlay(gMarker)
-		}
-		
-		this.showMainBarMapPopup(bar)
+		map.bind({main: this.nodes.map, control: nodes.positionControl})
 	},
 	
-	getGMarker: function (bar)
+	renderMap: function (bar, bars)
 	{
-		var gPoint = new GLatLng(bar.point[0], bar.point[1])
-		// var mkey = bar.point[0] + ':' + bar.point[1]
-		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
-		var me = this
-		function click () { me.owner.controller.gMarkerClicked(this) }
-		GEvent.addListener(gMarker, 'click', click)
-		gMarker.bar = bar
-		bar.gMarker = gMarker
-		return gMarker
-	},
-	
-	showMainBarMapPopup: function (bar)
-	{
-		var contacts, body = ''
-		if ((contacts = bar.contacts))
-		{
-			body = contacts.address
-			if (contacts.tel)
-				body += '<br/>' + contacts.tel + '</a>'
-		}
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2>' + bar.name + '</h2><p>' + body + '</p></div>')
-	},
-	
-	showBarMapPopup: function (bar)
-	{
-		var contacts, body = ''
-		if ((contacts = bar.contacts))
-		{
-			body = contacts.address
-			if (contacts.tel)
-				body += '<br/>' + contacts.tel + '</a>'
-		}
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2><a href="' + bar.pageHref() + '">' + bar.name + '</a></h2><p>' + body + '</p></div>')
+		this.initMap()
+		
+		var map = this.map
+		
+		var points = []
+		for (var i = 0; i < bars.length; i++)
+			points[i] = new BarPoint(bars[i])
+		map.setPoints(points)
+		
+		
+		map.setCenter({lat: bar.point[0], lng: bar.point[1]}, 13)
 	},
 	
 	renderCocktails: function (node, set, len)
@@ -203,7 +124,7 @@ BarPage.view =
 			if (set[i])
 			point.appendChild(this._createCocktailElement(set[i]))
 		}
-		node.RollingImagesLite.sync()
+		// node.RollingImagesLite.sync()
 	},
 	
 	_createCocktailElement: function (cocktail) { return cocktail.getPreviewNode() },
