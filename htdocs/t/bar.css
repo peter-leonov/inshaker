@@ -38,17 +38,14 @@
 #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
 #carte.single .prev,
 #carte.single .next { display: none; }
-#carte.single .viewport { left: 0; }
-#carte.single .viewport,
-#carte.single .point { width: 590px; height: 140px; }
-#carte.single .point li { width: 147px; }
+#carte.single .viewport { left: 16px; }
 .b-more-cocktails .prev,
 .b-more-cocktails .next { top: 68px; }
 .b-more .b-more-cocktails { width: 628px; }
-.b-more .b-more-cocktails .viewport { top: 24px; }
+.b-more .b-more-cocktails .viewport { top: 30px; }
 .b-more .b-more-cocktails .viewport,
 .b-more .b-more-cocktails .point { width: 560px; }
-.b-more .b-more-cocktails .point li { width: 140px; }
+.b-more .b-more-cocktails .cocktail-preview { width: 140px; }
 .b-more-rec dt,
 .b-more-rec dt b,
 .b-more-cocktails dt,
