@@ -11,7 +11,7 @@ BarsPageView.prototype =
 	{
 		this.controller = controller
 		this.nodes = nodes
-		this.cache = {barNode: {}, points: {}}
+		this.cache = {barNode: {}}
 		
 		var me = this
 		
@@ -137,6 +137,19 @@ BarsPageView.prototype =
 		this.initMap()
 		var map = this.map
 		
+		
+		var points = []
+		for (var i = 0; i < bars.length; i++)
+		{
+			var bar = bars[i]
+			bar.mapPoint = points[i] = new BarPoint(bar)
+		}
+		map.setPoints(points)
+		
+		var current = state.bar
+		var node = current.mapPoint.createNode()
+		node.addClassName('selected')
+		
 		if (this.lastCity != state.city)
 		{
 			var lat, lng, zoom
@@ -146,9 +159,9 @@ BarsPageView.prototype =
 				lng = parseFloat(state.lng)
 				zoom = parseInt(state.zoom) || 10
 			}
-			else if (state.bar)
+			else if (current)
 			{
-				var point = state.bar.point
+				var point = current.point
 				lat = point[0]
 				lng = point[1]
 				zoom = 17
@@ -161,15 +174,9 @@ BarsPageView.prototype =
 				zoom = city.zoom || 10
 			}
 			
-			
 			map.setCenter({lat: lat, lng: lng}, zoom)
 			this.lastCity = state.city
 		}
-		
-		var points = []
-		for (var i = 0; i < bars.length; i++)
-			points[i] = this.getBarPoint(bars[i])
-		map.setPoints(points)
 	},
 	
 	checkLatLngZoom: function (nlat, nlng, nzoom)
@@ -198,17 +205,6 @@ BarsPageView.prototype =
 		map.bind({main: nodes.mapSurface, wrapper: nodes.map, control: nodes.positionControl})
 		var controller = this.controller
 		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
-	},
-	
-	getBarPoint: function (bar)
-	{
-		var cache = this.cache.points
-		
-		var point = cache[bar.name]
-		if (point)
-			return point
-		
-		return cache[bar.name] = new BarPoint(bar)
 	},
 	
 	renderTitle: function (cocktail)

@@ -112,7 +112,7 @@ BarPage.view =
 		map.bind({main: this.nodes.map, control: nodes.positionControl})
 	},
 	
-	renderMap: function (bar, bars)
+	renderMap: function (current, bars)
 	{
 		this.initMap()
 		
@@ -120,11 +120,15 @@ BarPage.view =
 		
 		var points = []
 		for (var i = 0; i < bars.length; i++)
-			points[i] = new BarPoint(bars[i])
+		{
+			var bar = bars[i]
+			bar.mapPoint = points[i] = new BarPoint(bar)
+		}
 		map.setPoints(points)
 		
-		
-		map.setCenter({lat: bar.point[0], lng: bar.point[1]}, 13)
+		var node = current.mapPoint.createNode()
+		node.addClassName('selected')
+		map.setCenter({lat: current.point[0], lng: current.point[1]}, 13)
 	},
 	
 	renderCocktails: function (cocktails)
