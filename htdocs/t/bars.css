@@ -117,6 +117,10 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 #sort-menu { scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(onselectstart=function(){return false})) }
 <!--# endif -->
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
+#map .point .title { filter: alpha(opacity=85); }
+<!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
