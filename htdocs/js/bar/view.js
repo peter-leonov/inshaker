@@ -56,12 +56,13 @@ BarPage.view =
 		{
 			for (var i = 0, il = nodes.length; i < il; i++)
 			{
-				var node = nodes[i]
-				if (!node.src)
-					node.src = node.getAttribute('data-lazy-src')
+				// buggy in Firefox
+				// var image = nodes[i].firstChild
+				// if (!image.src)
+				// 	image.src = image.getAttribute('data-lazy-src')
 			}
 		}
-		list.setNodes(items, items.length)
+		list.setNodes(items, total)
 	},
 	
 	modelChanged: function (data)
