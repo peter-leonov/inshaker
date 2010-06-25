@@ -200,6 +200,8 @@ BarsPageView.prototype =
 			nodes = this.nodes
 		
 		map.bind({main: nodes.mapSurface, wrapper: nodes.map, control: nodes.positionControl})
+		var controller = this.controller
+		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
 	},
 	
 	getBarPoint: function (bar)

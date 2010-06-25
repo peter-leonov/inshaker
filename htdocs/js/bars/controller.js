@@ -38,12 +38,12 @@ BarsPageController.prototype =
 		this.view.setHash(state)
 	},
 	
-	gMapMoveEnd: function (ll, zoom)
+	mapMoved: function (ll, zoom)
 	{
 		var state = this.state
 		state.zoom = zoom
-		state.lat = Math.round(ll.lat() * 10000) / 10000
-		state.lng = Math.round(ll.lng() * 10000) / 10000
+		state.lat = Math.round(ll.lat * 10000) / 10000
+		state.lng = Math.round(ll.lng * 10000) / 10000
 		this.view.setHash(state)
 	},
 	
