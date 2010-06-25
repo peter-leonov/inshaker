@@ -15,11 +15,6 @@ BarsPage =
 		controller.model = model
 		
 		view.checkHash()
-	},
-	
-	mapsApiIsLoaded: function ()
-	{
-		this.view.loadedGMap()
 	}
 }
 
@@ -70,11 +65,6 @@ $.onready
 		BarsPage.initialize(nodes)
 	}
 )
-
-function googleApiLoaderIsLoaded ()
-{
-	google.load('maps', '2', {nocss: true, language: 'ru', callback: function () { BarsPage.mapsApiIsLoaded() }})
-}
 
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
