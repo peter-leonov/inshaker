@@ -12,8 +12,7 @@ BarPage.view =
 	{
 		this.nodes = nodes
 		
-		// new Programica.RollingImagesLite(nodes.photos, {animationType: 'easeOutQuad'})
-		
+		this.renderPhotos()
 		
 		var barMore = nodes.barMore
 		if (barMore)
@@ -39,6 +38,29 @@ BarPage.view =
 		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
 		
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
+	},
+	
+	renderPhotos: function ()
+	{
+		var photos = this.nodes.photos,
+			items = photos.items
+		
+		var total = items.length
+		if (total > 1)
+			photos.surface.appendChild(items[0].cloneNode(true))
+		
+		var list = new LazyList()
+		list.bind(photos)
+		list.configure({pageLength: 1, friction: 100, pageVelocity: 37.5, soft: Infinity, min: 75, max: 100})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
+			{
+				var node = nodes[i]
+				
+			}
+		}
+		list.setNodes(items, items.length)
 	},
 	
 	modelChanged: function (data)

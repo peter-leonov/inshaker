@@ -19,7 +19,15 @@ $.onready
 	{
 		var nodes =
 		{
-			photos: $$('.b-content .photos')[0],
+			photos:
+			{
+				root:            $$('.b-content .photos')[0],
+				viewport:        $$('.b-content .photos .viewport')[0],
+				surface:         $$('.b-content .photos .surface')[0],
+				prev:            $$('.b-content .photos .prev')[0],
+				next:            $$('.b-content .photos .next')[0],
+				items:           $$('.b-content .photos .point')
+			},
 			carte:
 			{
 				root:            $$('#carte')[0],
@@ -37,7 +45,7 @@ $.onready
 			barPrev: $$('.b-title .hrefs .prev')[0],
 			barNext: $$('.b-title .hrefs .next')[0]
 		}
-		RoundedCorners.round(nodes.photos)
+		RoundedCorners.round(nodes.photos.root)
 		BarPage.initialize(nodes, Bar, Cocktail)
 	}
 )
