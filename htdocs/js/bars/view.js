@@ -151,7 +151,7 @@ BarsPageView.prototype =
 				var point = state.bar.point
 				lat = point[0]
 				lng = point[1]
-				zoom = 13
+				zoom = 17
 			}
 			else
 			{
