@@ -21,7 +21,7 @@
 					<div class="viewport">
 						<ul class="surface">
 						<% (1..@photos).each do |i| %>
-							<li class="point"><img src="photo-<%= i %>.jpg"/></li>
+							<li class="point"><img data-lazy-src="photo-<%= i %>.jpg"/></li>
 						<% end %>
 						</ul>
 					</div>
