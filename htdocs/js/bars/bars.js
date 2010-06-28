@@ -15,11 +15,6 @@ BarsPage =
 		controller.model = model
 		
 		view.checkHash()
-	},
-	
-	mapsApiIsLoaded: function ()
-	{
-		this.view.loadedGMap()
 	}
 }
 
@@ -27,26 +22,42 @@ $.onready
 (
 	function ()
 	{
-		document.documentElement.remClassName('loading')
+		document.documentElement.removeClassName('loading')
 		
 		var nodes =
 		{
-			titleAll: cssQuery('#head .all')[0],
-			titleSearch: cssQuery('#head .search')[0],
-			titleSearchName: cssQuery('#head .search .cocktail')[0],
-			titleSearchAll: cssQuery('#head .search .drop-cocktail')[0],
+			titleAll: $$('#head .all')[0],
+			titleSearch: $$('#head .search')[0],
+			titleSearchName: $$('#head .search .cocktail')[0],
+			titleSearchAll: $$('#head .search .drop-cocktail')[0],
 			viewSwitcher: $('switch-view'),
-			viewSwitcherButtons: cssQuery('#switch-view .view-list, #switch-view .view-map'),
+			viewSwitcherButtons: $$('#switch-view .view-list, #switch-view .view-map'),
 			barsContainer: $('bars-container'),
-			citySelect: $('bars-city'),
-			formatSelect: $('bars-format'),
-			feelSelect: $('bars-feel'),
+			citySelecter:
+			{
+				main: $('bars-city'),
+				button: $$('#bars-city .button')[0],
+				options: $$('#bars-city .options')[0]
+			},
+			formatSelecter:
+			{
+				main: $('bars-format'),
+				button: $$('#bars-format .button')[0],
+				options: $$('#bars-format .options')[0]
+			},
+			feelSelecter:
+			{
+				main: $('bars-feel'),
+				button: $$('#bars-feel .button')[0],
+				options: $$('#bars-feel .options')[0]
+			},
 			map: $('map'),
-			mapSurface: cssQuery('#map .surface')[0],
+			mapSurface: $$('#map .surface')[0],
+			positionControl: $$('.position-control')[0],
 			
 			moreInfo: $('more-info'),
 			guidePopup: $('guide-info-popup'),
-			guidePopupBody: cssQuery('#guide-info-popup .popup-window')[0]
+			guidePopupBody: $$('#guide-info-popup .popup-window')[0]
 		}
 		
 		RoundedCorners.round(nodes.map)
@@ -55,21 +66,21 @@ $.onready
 	}
 )
 
-function googleApiLoaderIsLoaded ()
-{
-	google.load('maps', '2', {nocss: true, language: 'ru', callback: function () { BarsPage.mapsApiIsLoaded() }})
-}
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
 
-Element.prototype.hide = function () { this.addClassName('hidden') }
-Element.prototype.show = function () { this.remClassName('hidden') }
+<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
+<!--# include virtual="/lib-0.3/widgets/selecter.js" -->
+<!--# include virtual="/lib-0.3/widgets/map.js" -->
+<!--# include virtual="/lib-0.3/widgets/map-light-marker.js" -->
+
+<!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="point.js" -->
+<!--# include virtual="model.js" -->
+<!--# include virtual="controller.js" -->
+<!--# include virtual="view.js" -->
 
 
-<!--# include file="/js/bars/model.js" -->
-<!--# include file="/js/bars/controller.js" -->
-<!--# include file="/js/bars/view.js" -->
-
-<!--# include file="/lib/Programica/UrlEncode.js" -->
-<!--# include file="/lib/Programica/LocationHash.js" -->
-<!--# include file="/lib/Programica/WindowName.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
-<!--# include file="/lib/Widgets/Selecter.js" -->
+<!--# include virtual="/lib/Programica/LocationHash.js" -->
+<!--# include virtual="/lib/Programica/WindowName.js" -->

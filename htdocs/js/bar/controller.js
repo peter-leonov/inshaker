@@ -14,15 +14,6 @@ BarPage.controller =
 		this.owner.model.setQuery(state)
 	},
 	
-	gMarkerClicked: function (gMarker)
-	{
-		var view = this.owner.view
-		if (gMarker.bar.city == this.cityName && gMarker.bar.name == this.barName)
-			view.showMainBarMapPopup(gMarker.bar)
-		else
-			view.showBarMapPopup(gMarker.bar)
-	},
-	
 	toggleMoreClicked: function ()
 	{
 		this.owner.view.toggleMore()

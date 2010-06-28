@@ -7,24 +7,29 @@ function BarsPageView ()
 
 BarsPageView.prototype =
 {
-	cache: {barNode:{}},
-	
 	initialize: function (controller, nodes)
 	{
 		this.controller = controller
 		this.nodes = nodes
+		this.cache = {barNode: {}}
 		
 		var me = this
-		nodes.formatSelect.onselect = function (val) { controller.formatSelected(val) }
-		nodes.feelSelect.onselect   = function (val) { controller.feelSelected(val) }
-		nodes.citySelect.onselect   = function (val) { controller.citySelected(val) }
-		Switcher.bind(nodes.viewSwitcher, nodes.viewSwitcherButtons, [this.nodes.barsContainer, this.nodes.map])
-		nodes.viewSwitcher.setNames(['list', 'map'])
-		nodes.viewSwitcher.onselect = function (num) { me.setViewNum(num) }
 		
-		Selecter.bind(nodes.citySelect)
-		Selecter.bind(nodes.formatSelect)
-		Selecter.bind(nodes.feelSelect)
+		var ts = this.viewTypeSwitcher = new TabSwitcher()
+		ts.bind({tabs: nodes.viewSwitcherButtons, sections:[this.nodes.barsContainer, this.nodes.map]})
+		ts.addEventListener('select', function (e) { me.setViewNum(e.data.value) }, false)
+		
+		var s = this.formatSelecter = new Selecter()
+		s.bind(nodes.formatSelecter)
+		s.addEventListener('select', function (e) { controller.formatSelected(e.data.value) }, false)
+		
+		var s = this.feelSelecter = new Selecter()
+		s.bind(nodes.feelSelecter)
+		s.addEventListener('select', function (e) { controller.feelSelected(e.data.value) }, false)
+		
+		var s = this.citySelecter = new Selecter()
+		s.bind(nodes.citySelecter)
+		s.addEventListener('select', function (e) { controller.citySelected(e.data.value) }, false)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
 		
@@ -58,37 +63,45 @@ BarsPageView.prototype =
 		this.renderBars(data)
 	},
 	
-	setViewNum: function (num)
+	setViewNum: function (type)
 	{
-		var type = ['list','map'][num]
 		this.setViewType(type)
 		this.controller.viewTypeSwitched(type)
 	},
 	
 	setViewType: function (type)
 	{
-		this.nodes.viewSwitcher.drawSelected(type)
+		this.viewTypeSwitcher.renderSelected(type)
 	},
 	
 	renderCities: function (options, selected)
 	{
-		var node = this.nodes.citySelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.citySelecter
+		s.setOptions(options)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderFormats: function (options, selected)
 	{
-		var node = this.nodes.formatSelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.formatSelecter
+		s.setOptions(options)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderFeels: function (options, selected)
 	{
-		var node = this.nodes.feelSelect
-		node.setOptions(options)
-		node.select(selected || 0, true)
+		var s = this.feelSelecter
+		s.setOptions(options)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
 	},
 	
 	renderBars: function (data)
@@ -121,10 +134,24 @@ BarsPageView.prototype =
 			state = data.state,
 			city = data.city
 		
-		if (!this.isGMapLoaded())
-			return this.waitGMap(arguments.callee.bind(this, arguments))
-		else
-			this.initMap()
+		this.initMap()
+		var map = this.map
+		
+		
+		var points = []
+		for (var i = 0; i < bars.length; i++)
+		{
+			var bar = bars[i]
+			bar.mapPoint = points[i] = new BarPoint(bar)
+		}
+		map.setPoints(points)
+		
+		var current = state.bar
+		if (current && current.mapPoint)
+		{
+			var node = current.mapPoint.createNode()
+			node.addClassName('selected')
+		}
 		
 		if (this.lastCity != state.city)
 		{
@@ -135,12 +162,12 @@ BarsPageView.prototype =
 				lng = parseFloat(state.lng)
 				zoom = parseInt(state.zoom) || 10
 			}
-			else if (state.bar)
+			else if (current)
 			{
-				var point = state.bar.point
+				var point = current.point
 				lat = point[0]
 				lng = point[1]
-				zoom = 13
+				zoom = 17
 			}
 			else
 			{
@@ -150,117 +177,22 @@ BarsPageView.prototype =
 				zoom = city.zoom || 10
 			}
 			
-			this.gMapMove(lat, lng, zoom)
+			map.setCenter({lat: lat, lng: lng}, zoom)
 			this.lastCity = state.city
 		}
-		var map = this.gMap
-		map.clearOverlays()
-		for (var i = 0; i < bars.length; i++)
-		{
-			var bar = bars[i]
-			if (!bar.gMarker)
-				bar.gMarker = this.getGMarker(bar)
-			map.addOverlay(bar.gMarker)
-			if (bar == state.bar)
-				this.showBarMapPopup(bar)
-		}
-	},
-	
-	gMapMove: function (lat, lng, zoom)
-	{
-		// log('gMapMove', lat, lng, zoom)
-		var map = this.gMap
-		if (map)
-		{
-			// if (this.checkLatLngZoom(lat, lng, zoom))
-				map.setCenter(new GLatLng(lat, lng), zoom)
-		}
-	},
-	
-	checkLatLngZoom: function (nlat, nlng, nzoom)
-	{
-		var map = this.gMap,
-			ll = map.getCenter()
-		
-		if (!ll)
-			return true
-		
-		var lat = ll.lat(),
-			lng = ll.lng(),
-			zoom = map.getZoom()
-		
-		return !(nlat == lat && nlng == lng && nzoom == zoom)
 	},
 	
 	initMap: function ()
 	{
-		var me = this
-		if (!this.gMap)
-		{
-			var map = new GMap2(this.nodes.mapSurface)
-			map.addControl(new GSmallMapControl())
-			map.enableContinuousZoom()
-			map.enableScrollWheelZoom()
-			GEvent.addListener(map, 'moveend', function () { me.controller.gMapMoveEnd(map.getCenter(), map.getZoom()) })
-			this.gMap = map
-		}
+		if (this.map)
+			return
 		
-		if (!this.gIcon)
-		{
-			var gIcon = new GIcon()
-			// gIcon.shadow = '/t/bars/bar-icon.png'
-			gIcon.image = '/t/bars/bar-icon.png'
-			gIcon.iconAnchor = new GPoint(12, 34)
-			gIcon.infoWindowAnchor = new GPoint(16, 0)
-			gIcon.infoShadowAnchor = new GPoint(18, 25)
-			this.gIcon = gIcon	
-		}
-	},
-	
-	waitGMap: function (f)
-	{
-		if (f)
-			loadGoogleApi()
-		this.waitGMapFunction = f
-	},
-	
-	loadedGMap: function ()
-	{
-		if (this.waitGMapFunction)
-		{
-			this.waitGMapFunction()
-			this.waitGMapFunction = null
-		}
-	},
-	
-	isGMapLoaded: function ()
-	{
-		return !!window.GLatLng
-	},
-	
-	getGMarker: function (bar)
-	{
-		var gPoint = new GLatLng(bar.point[0], bar.point[1])
-		// var mkey = bar.point[0] + ':' + bar.point[1]
-		var gMarker = new GMarker(gPoint, {icon: this.gIcon})
-		var me = this
-		function click () { me.controller.gMarkerClicked(gMarker) }
-		GEvent.addListener(gMarker, 'click', click)
-		gMarker.bar = bar
-		bar.gMarker = gMarker
-		return gMarker
-	},
-	
-	showBarMapPopup: function (bar)
-	{
-		var contacts, body = ''
-		if ((contacts = bar.contacts))
-		{
-			body = contacts.address
-			if (contacts.tel)
-				body += '<br/>' + contacts.tel + '</a>'
-		}
-		bar.gMarker.openInfoWindowHtml('<div class="bar-map-popup"><h2><a href="' + bar.pageHref() + '">' + bar.name + '</a></h2><p>' + body + '</p></div>')
+		var map = this.map = new Map(),
+			nodes = this.nodes
+		
+		map.bind({main: nodes.mapSurface, wrapper: nodes.map, control: nodes.positionControl})
+		var controller = this.controller
+		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
 	},
 	
 	renderTitle: function (cocktail)
