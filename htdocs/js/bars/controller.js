@@ -28,22 +28,12 @@ BarsPageController.prototype =
 		this.model.setState(state)
 	},
 	
-	gMarkerClicked: function (gMarker)
-	{
-		var state = this.state,
-			bar = gMarker.bar
-		
-		state.bar = bar.name
-		this.view.showBarMapPopup(bar)
-		this.view.setHash(state)
-	},
-	
-	gMapMoveEnd: function (ll, zoom)
+	mapMoved: function (ll, zoom)
 	{
 		var state = this.state
 		state.zoom = zoom
-		state.lat = Math.round(ll.lat() * 10000) / 10000
-		state.lng = Math.round(ll.lng() * 10000) / 10000
+		state.lat = Math.round(ll.lat * 10000) / 10000
+		state.lng = Math.round(ll.lng * 10000) / 10000
 		this.view.setHash(state)
 	},
 	
@@ -70,6 +60,7 @@ BarsPageController.prototype =
 	citySelected: function (val)
 	{
 		var state = this.state
+		delete state.bar
 		state.city = val
 		state.format = undefined
 		state.feel = undefined

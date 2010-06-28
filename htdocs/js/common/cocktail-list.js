@@ -47,18 +47,6 @@ Me.prototype =
 		this.render()
 	},
 	
-	getCocktailPreviewNode: function (cocktail)
-	{
-		var name = cocktail.name,
-			previewsCache = this.previewsCache
-		
-		var preview = previewsCache[name]
-		if (!preview)
-			preview = previewsCache[name] = cocktail.getPreviewNode(true)
-		
-		return preview
-	},
-	
 	render: function ()
 	{
 		
@@ -71,7 +59,7 @@ Me.prototype =
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var preview = this.getCocktailPreviewNode(cocktails[i])
+			var preview = cocktails[i].getPreviewNode(true)
 			surface.appendChild(preview)
 			nodes.push(preview)
 		}
@@ -81,9 +69,6 @@ Me.prototype =
 		{
 			for (var j = 0; j < page; j++)
 			{
-				// we can't use getCocktailPreviewNode() here
-				// because it returns the same node in every call
-				// but we need a copy
 				var preview = cocktails[j].getPreviewNode()
 				surface.appendChild(preview)
 			}

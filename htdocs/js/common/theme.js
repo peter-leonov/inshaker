@@ -27,13 +27,6 @@ var Me = self[myName] =
 	}
 }
 
-<!--# if expr="$cookie_theme" -->
-Me.initialize(<!--# include virtual="/t/theme/$cookie_theme/theme.js" -->)
-<!--# else -->
-<!--# config timefmt="%Y.%m" -->
-Me.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" -->)
-<!--# endif -->
-
 })();
 
 ;(function(){ try {

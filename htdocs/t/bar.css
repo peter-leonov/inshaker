@@ -1,5 +1,3 @@
-/* bar page */
-
 .body-wrapper { overflow: hidden; }
 
 .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
@@ -40,17 +38,14 @@
 #sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
 #carte.single .prev,
 #carte.single .next { display: none; }
-#carte.single .viewport { left: 0; }
-#carte.single .viewport,
-#carte.single .point { width: 590px; height: 140px; }
-#carte.single .point li { width: 147px; }
+#carte.single .viewport { left: 16px; }
 .b-more-cocktails .prev,
 .b-more-cocktails .next { top: 68px; }
 .b-more .b-more-cocktails { width: 628px; }
-.b-more .b-more-cocktails .viewport { top: 24px; }
+.b-more .b-more-cocktails .viewport { top: 30px; }
 .b-more .b-more-cocktails .viewport,
 .b-more .b-more-cocktails .point { width: 560px; }
-.b-more .b-more-cocktails .point li { width: 140px; }
+.b-more .b-more-cocktails .cocktail-preview { width: 140px; }
 .b-more-rec dt,
 .b-more-rec dt b,
 .b-more-cocktails dt,
@@ -60,9 +55,35 @@
 
 #city-name, #bar-page #bar-id { display: none; }
 #map { width: 100%; height: 480px; position: relative; overflow: hidden; border: 1px solid #888; }
-#price-index { padding: 53px 0 0 89px; font-size: 35px; color: #ec118f; }
+#price-index { padding: 53px 0 0 89px; font-size: 35px; }
 
 #map .bar-map-popup h2 { margin-bottom: 0.25em; }
+
+#map .point { position: absolute; }
+#map .point.selected { z-index: 4; }
+#map .point:hover { z-index: 5; }
+#map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; cursor: pointer; }
+#map .point.selected .icon { width: 30px; height: 30px; background-position: -75px -25px; cursor: default; }
+#map .point .title { display: none; position: absolute; z-index: 10; left: -94px; top: 10px; min-width: 170px; padding: 10px; font-size: 13px; line-height: 17px; color: #fff; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
+#map .point:hover .title { display: block; }
+#map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; color: #f43f3f; }
+#map .point.selected .point-name { color: #f47901; }
+
+
+.position-control { display: none; }
+#map .position-control { display: block; position: absolute; right: 10px; bottom: 20px; width: 61px; height: 106px; background-position: 0 0; }
+#map .position-control .to-top,
+#map .position-control .to-right,
+#map .position-control .to-bottom,
+#map .position-control .to-left,
+#map .position-control .to-plus,
+#map .position-control .to-minus { position: absolute; width: 15px; height: 15px; cursor: pointer; }
+#map .position-control .to-top { left: 23px; top: 8px; }
+#map .position-control .to-right { left: 32px; top: 26px; }
+#map .position-control .to-bottom { left: 23px; top: 44px; }
+#map .position-control .to-left { left: 14px; top: 26px; }
+#map .position-control .to-plus { left: 23px; top: 62px; }
+#map .position-control .to-minus { left: 23px; top: 80px; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->

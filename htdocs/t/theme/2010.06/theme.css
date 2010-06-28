@@ -1,5 +1,6 @@
 /* common.css */
 #top .logo,
+.b-title #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -8,6 +9,7 @@
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+#spotlighted { width: 35px; height: 40px; right: 0; top: -5px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 630px; left: 130px; bottom: -785px; }
 #branded-image-holder { height: 900px; }
@@ -17,7 +19,7 @@ a { color: #000; }
 #bottom a { color: #890814; }
 html { background: #e8d579 url(bg.jpg) repeat center top; }
 button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
-button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
+button.strong b { text-shadow: 1px 1px 0 #dbacaa; color: #7b2c2a; }
 
 /* calculator.css */
 #b-bill dt,
@@ -40,10 +42,8 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 .b-content .pager .p-list a.selected-button,
 #all_list i,
 .b-search .groups dd.selected-button,
-.b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #results_display a {}
-#spotlighted { width: 35px; height: 40px; right: 0; top: -5px; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
 #alphabetical-ru a.selected-button { color: #890814; }
@@ -80,6 +80,7 @@ button.strong b { text-shadow: 1px 1px 0 #7b2c2a; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 /* common.css */
 #top .logo,
+.b-title #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -109,7 +110,6 @@ button.rounded { background-image: url(common.8.png); }
 .b-content .pager .p-list a.selected-button,
 #all_list i,
 .b-search .groups dd.selected-button,
-.b-title #spotlighted,
 .search-control { background-image: url(cocktails.8.png) }
 
 /* cocktail.css */
