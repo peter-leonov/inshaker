@@ -146,7 +146,7 @@ BarPage.view =
 
 		var cl = new CocktailList()
 		cl.bind(clNodes)
-		cl.configure({pageLength: 5, pageVelocity: 35.5})
+		cl.configure({pageLength: 5, pageVelocity: 36.5})
 		cl.setCocktails(cocktails)
 	},
 	
