@@ -179,21 +179,6 @@ BarsPageView.prototype =
 		}
 	},
 	
-	checkLatLngZoom: function (nlat, nlng, nzoom)
-	{
-		var map = this.gMap,
-			ll = map.getCenter()
-		
-		if (!ll)
-			return true
-		
-		var lat = ll.lat(),
-			lng = ll.lng(),
-			zoom = map.getZoom()
-		
-		return !(nlat == lat && nlng == lng && nzoom == zoom)
-	},
-	
 	initMap: function ()
 	{
 		if (this.map)
