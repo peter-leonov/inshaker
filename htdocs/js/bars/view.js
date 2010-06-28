@@ -147,8 +147,11 @@ BarsPageView.prototype =
 		map.setPoints(points)
 		
 		var current = state.bar
-		var node = current.mapPoint.createNode()
-		node.addClassName('selected')
+		if (current && current.mapPoint)
+		{
+			var node = current.mapPoint.createNode()
+			node.addClassName('selected')
+		}
 		
 		if (this.lastCity != state.city)
 		{
