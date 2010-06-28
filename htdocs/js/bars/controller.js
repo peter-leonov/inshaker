@@ -60,6 +60,7 @@ BarsPageController.prototype =
 	citySelected: function (val)
 	{
 		var state = this.state
+		delete state.bar
 		state.city = val
 		state.format = undefined
 		state.feel = undefined
