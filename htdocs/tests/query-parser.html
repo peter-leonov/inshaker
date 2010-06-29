@@ -34,9 +34,58 @@ Tests.test(function (t)
 	
 	test
 	(
+		'spaces in value', t,
+		'+  a    b    c -x',
+		'+[1]  {a    b    c} [15]-[16]{x}[17]'
+	)
+	
+	test
+	(
 		'spaces only', t,
 		'+            ',
 		'+[1]            {}[13]'
+	)
+	
+	test
+	(
+		'long spacy end', t,
+		'+x            ',
+		'+[1]{x}            [14]'
+	)
+	
+	test
+	(
+		'long spacy begin', t,
+		'+            x',
+		'+[1]            {x}[14]'
+	)
+	
+	test
+	(
+		'no spaces', t,
+		'+a-b+c-d',
+		'+[1]{a}[2]-[3]{b}[4]+[5]{c}[6]-[7]{d}[8]'
+	)
+	
+	test
+	(
+		'pluses only', t,
+		'++++',
+		'+[1]{}[1]+[2]{}[2]+[3]{}[3]+[4]{}[4]'
+	)
+	
+	test
+	(
+		'minuses only', t,
+		'----',
+		'-[1]{}[1]-[2]{}[2]-[3]{}[3]-[4]{}[4]'
+	)
+	
+	test
+	(
+		'only mixed pluses and minuses', t,
+		'-+-+-',
+		'-[1]{}[1]+[2]{}[2]-[3]{}[3]+[4]{}[4]-[5]{}[5]'
 	)
 })
 </script>
