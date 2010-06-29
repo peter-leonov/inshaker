@@ -13,7 +13,7 @@ Me.parse = function (string)
 	{
 		var op = m[1], body = m[2]
 		
-		var begin = tokenizer.lastIndex, end = begin + body.length
+		var end = tokenizer.lastIndex, begin = end - body.length
 		
 		m = /^\s*/.exec(body)
 		var before = m ? m[0] : ''
@@ -45,8 +45,8 @@ Me.debug = function (tokens)
 	
 	for (var i = 0, il = tokens.length; i < il; i++)
 	{
-		var token = tokens[i]
-		string += token.op + token.before + '{' + token.value + '}' + token.after
+		var t = tokens[i]
+		string += t.op + '[' + t.begin + ']' + t.before + '{' + t.value + '}' + t.after + '[' + t.end + ']'
 	}
 	
 	return string
