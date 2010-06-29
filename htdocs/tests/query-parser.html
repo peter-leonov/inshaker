@@ -14,6 +14,15 @@
 <script type="text/javascript">
 Tests.test(function (t)
 {
+	t.test('change', function (t)
+	{
+		var tokens = QueryParser.parse('+  a aaaa a   - bbb')
+		tokens[0].value = 'xxx'
+		tokens[1].value = 'yyyyyy'
+		t.eq(QueryParser.stringify(tokens), '+  xxx   - yyyyyy', 'stringify')
+	})
+	
+	
 	function test (name, t, string, debug)
 	{
 		t.test(name, function (t)
