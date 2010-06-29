@@ -39,6 +39,19 @@ Me.parse = function (string)
 	return tokens
 }
 
+Me.stringify = function (tokens)
+{
+	var string = ''
+	
+	for (var i = 0, il = tokens.length; i < il; i++)
+	{
+		var t = tokens[i]
+		string += t.op + t.before + t.value + t.after
+	}
+	
+	return string
+}
+
 Me.debug = function (tokens)
 {
 	var string = ''
