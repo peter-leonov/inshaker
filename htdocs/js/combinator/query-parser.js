@@ -39,7 +39,7 @@ Me.parse = function (string)
 	return tokens
 }
 
-Me.stringify = function (tokens)
+Me.debug = function (tokens)
 {
 	var string = ''
 	
