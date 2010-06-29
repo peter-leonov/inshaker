@@ -14,12 +14,30 @@
 <script type="text/javascript">
 Tests.test(function (t)
 {
-	var string = '+-++Малина + клубника + мед  -a  +-+    В      ',
-		debug = '+[1]{}[1]-[2]{}[2]+[3]{}[3]+[4]{Малина} [11]+[12] {клубника} [22]+[23] {мед}  [29]-[30]{a}  [33]+[34]{}[34]-[35]{}[35]+[36]    {В}      [47]'
+	function test (name, t, string, debug)
+	{
+		t.test(name, function (t)
+		{
+			var tokens = QueryParser.parse(string)
+			
+			t.eq(QueryParser.debug(tokens), debug, 'debug')
+			t.eq(QueryParser.stringify(tokens), string, 'stringify')
+		})
+	}
 	
-	var tokens = QueryParser.parse(string)
-	t.eq(QueryParser.debug(tokens), debug, 'debug')
-	t.eq(QueryParser.stringify(tokens), string, 'stringify')
+	test
+	(
+		'mess', t,
+		'+-++Малина + клубника + мед  -a  +-+    В      ',
+		'+[1]{}[1]-[2]{}[2]+[3]{}[3]+[4]{Малина} [11]+[12] {клубника} [22]+[23] {мед}  [29]-[30]{a}  [33]+[34]{}[34]-[35]{}[35]+[36]    {В}      [47]'
+	)
+	
+	test
+	(
+		'spaces only', t,
+		'+            ',
+		'+[1]            {}[13]'
+	)
 })
 </script>
 </body>

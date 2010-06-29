@@ -6,7 +6,9 @@ function Me () {}
 
 Me.parse = function (string)
 {
-	var tokenizer = /([+-])([^+-]*)/g
+	var tokenizer = /([+-])([^+-]*)/g,
+		beforeRex = /^\s*/g,
+		afterRex = /\s*$/g
 	
 	var m, tokens = []
 	while ((m = tokenizer.exec(string)))
@@ -15,10 +17,12 @@ Me.parse = function (string)
 		
 		var end = tokenizer.lastIndex, begin = end - body.length
 		
-		m = /^\s*/.exec(body)
+		beforeRex.lastIndex = 0
+		m = beforeRex.exec(body)
 		var before = m ? m[0] : ''
 		
-		m = /\s*$/.exec(body)
+		afterRex.lastIndex = beforeRex.lastIndex
+		m = afterRex.exec(body)
 		var after = m ? m[0] : ''
 		
 		var value = body.substring(before.length, body.length - after.length)
