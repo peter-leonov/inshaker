@@ -41,6 +41,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="throttler.js" -->
+<!--# include virtual="query-parser.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->

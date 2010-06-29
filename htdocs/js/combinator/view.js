@@ -20,6 +20,8 @@ var myProto =
 		
 		var me = this
 		
+		nodes.ingredientInput.addEventListener('keypress', function () { setTimeout(function () { me.getValue() }, 0) }, false)
+		
 		return this
 	},
 	
@@ -32,35 +34,33 @@ var myProto =
 	{
 		var input = this.nodes.ingredientInput
 		input.focus()
-		this.searchValueChanged(input.value)
+		this.searchValueMayBeChanged(input.value, input.selectionStart)
 	},
 	
-	searchValueChanged: function (value)
+	searchValueMayBeChanged: function (value, pos)
 	{
 		if (this.lastValue === value)
 			return
 		this.lastValue = value
 		
-		value = '+' + value.replace(/^\s+|\s+$/g, '')
+		// trim
+		value = value.replace(/^\s+|\s+$/g, '')
 		
-		var m, lexer = /\s*([+-])\s*([^+-]*)/g
+		// prepare for clean parsing
+		value = '+' + value
+		pos++
+		
+		var tokens = QueryParser.parse(value)
 		
 		var add = [], remove = []
-		while ((m = lexer.exec(value)))
+		for (var i = 0, il = tokens.length; i < il; i++)
 		{
-			if (!m[2])
-				continue
-			
-			var name = m[2].replace(/^\s+|\s+$/g, '')
-			if (!name)
-				continue
-			
-			if (m[1] == '+')
-				add.push(name)
-			else if (m[1] == '-')
-				remove.push(name)
+			var t = tokens[i]
+			if (t.op == '+')
+				add.push(t.value)
+			else if (t.op == '-')
+				remove.push(t.value)
 		}
-		
 		this.controller.setIngredientsNames(add, remove)
 	},
 	
