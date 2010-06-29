@@ -20,8 +20,8 @@ var myProto =
 		inco.bind({main: nodes.output})
 		
 		var me = this
-		
 		nodes.ingredientInput.addEventListener('keypress', function () { setTimeout(function () { me.getValue() }, 0) }, false)
+		nodes.ingredientInput.focus()
 		
 		return this
 	},
@@ -34,7 +34,6 @@ var myProto =
 	getValue: function ()
 	{
 		var input = this.nodes.ingredientInput
-		input.focus()
 		this.searchValueMayBeChanged(input.value, input.selectionStart)
 	},
 	
