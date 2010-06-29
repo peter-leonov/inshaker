@@ -9,6 +9,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
+		this.tokens = []
 	},
 	
 	bind: function (nodes)
@@ -37,31 +38,41 @@ var myProto =
 		this.searchValueMayBeChanged(input.value, input.selectionStart)
 	},
 	
-	searchValueMayBeChanged: function (value, pos)
+	searchValueMayBeChanged: function (value, cursor)
 	{
-		if (this.lastValue === value)
-			return
-		this.lastValue = value
-		
-		// trim
-		value = value.replace(/^\s+|\s+$/g, '')
-		
 		// prepare for clean parsing
 		value = '+' + value
-		pos++
+		cursor++
 		
-		var tokens = QueryParser.parse(value)
+		var tokens
+		if (this.lastValue === value)
+		{
+			tokens = this.tokens
+		}
+		{
+			tokens = this.tokens = QueryParser.parse(value)
+			this.lastValue = value
+		}
 		
-		var add = [], remove = []
+		var add = [], remove = [], active = -1
 		for (var i = 0, il = tokens.length; i < il; i++)
 		{
 			var t = tokens[i]
-			if (t.op == '+')
+			
+			var op = t.op
+			if (op == '+')
 				add.push(t.value)
-			else if (t.op == '-')
+			else if (op == '-')
 				remove.push(t.value)
+			
+			if (t.begin <= cursor && cursor <= t.end)
+				active = i
 		}
+		
+		tokens.active = tokens[active]
+		
 		this.controller.setIngredientsNames(add, remove)
+		// this.controller.setIngredientsNames([tokens.active.value], [])
 	},
 	
 	renderCocktails: function (cocktails)
