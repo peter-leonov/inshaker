@@ -19,8 +19,6 @@ var myProto =
 		inco.bind({main: nodes.output})
 		
 		var me = this
-		function show (node) { $('status').innerHTML = node.selectionStart + ':' + node.selectionEnd }
-		nodes.ingredientInput.addEventListener('keypress', function () { var me = this; setTimeout(function () { show(me) }, 1) }, false)
 		
 		return this
 	},
