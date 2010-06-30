@@ -10,6 +10,7 @@ var myProto =
 	{
 		this.nodes = {}
 		this.tokens = []
+		this.tokens.active = {}
 	},
 	
 	bind: function (nodes)
@@ -20,6 +21,11 @@ var myProto =
 		inco.bind({main: nodes.output})
 		
 		var me = this
+		
+		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
+		completer.setValueGetter(function () { return me.getActiveQueryValue() })
+		completer.setValueSetter(function (node, value) { return me.setActiveQueryValue(node, value) })
+		
 		nodes.ingredientInput.addEventListener('keypress', function () { setTimeout(function () { me.getValue() }, 0) }, false)
 		nodes.ingredientInput.focus()
 		
@@ -28,7 +34,7 @@ var myProto =
 	
 	setCompleterDataSource: function (ds)
 	{
-		// this.completer.setDataSource(ds)
+		this.completer.setDataSource(ds)
 	},
 	
 	getValue: function ()
@@ -72,6 +78,21 @@ var myProto =
 		
 		this.controller.setIngredientsNames(add, remove)
 		// this.controller.setIngredientsNames([tokens.active.value], [])
+	},
+	
+	getActiveQueryValue: function (node)
+	{
+		return this.tokens.active.value
+	},
+	
+	setActiveQueryValue: function (node, value)
+	{
+		var tokens = this.tokens,
+			input = this.nodes.ingredientInput
+		
+		tokens.active.value = value
+		input.value = QueryParser.stringify(tokens).substr(1)
+		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
 	},
 	
 	renderCocktails: function (cocktails)

@@ -25,7 +25,7 @@ var myProto =
 	},
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
-	setValueFilter: function (f) { this.view.valueFilter = f },
+	setValueGetter: function (f) { this.view.valueGetter = f },
 	setValueSetter: function (f) { this.view.valueSetter = f },
 	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
 	setInstant: function (v) { this.controller.instant = v },
@@ -45,7 +45,7 @@ eval(NodesShortcut.include())
 
 var myProto =
 {
-	valueFilter: function (node) { return node.value },
+	valueGetter: function (node) { return node.value },
 	valueSetter: function (node, value) { node.value = value },
 	
 	initialize: function ()
@@ -93,7 +93,7 @@ var myProto =
 	
 	onValue: function (node)
 	{
-		this.controller.goValue(this.valueFilter(node))
+		this.controller.goValue(this.valueGetter(node))
 	},
 	
 	onBlur: function (e)
