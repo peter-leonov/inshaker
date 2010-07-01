@@ -22,7 +22,8 @@ var myProto =
 		
 		var me = this
 		
-		var completer = this.completer = new Autocompleter().bind(nodes.ingredientInput)
+		var completer = this.completer = new Autocompleter()
+		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
 		// completer.setValueGetter(function () { return me.getActiveQueryValue() })
 		// completer.setValueSetter(function (node, value) { return me.setActiveQueryValue(node, value) })
 		

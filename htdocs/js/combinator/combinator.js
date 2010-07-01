@@ -55,7 +55,8 @@ function onready ()
 	var nodes =
 	{
 		output: $('output'),
-		ingredientInput: $$('#search-box .ingredient')[0]
+		ingredientInput: $$('#search-box .ingredient')[0],
+		ingredientComplete: $$('#search-box .autocomplete')[0]
 	}
 	
 	var widget = new CombinatorPage()

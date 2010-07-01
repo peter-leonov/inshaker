@@ -17,9 +17,9 @@ var myProto =
 		this.model.controller = this.controller
 	},
 	
-	bind: function (main, count)
+	bind: function (nodes, count)
 	{
-		this.view.bind({main:main})
+		this.view.bind(nodes)
 		this.setCount(count === undefined ? 15 : count)
 		return this
 	},
@@ -58,11 +58,6 @@ var myProto =
 	{
 		this.nodes = nodes
 		var main = nodes.main
-		main.setAttribute('autocomplete', 'off')
-		
-		var list = this.nodes.list = N('ul')
-		list.className = 'autocomplete'
-		main.parentNode.appendChild(list)
 		
 		var me = this
 		main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
