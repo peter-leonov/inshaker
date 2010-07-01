@@ -36,7 +36,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
-<!--# include virtual="/js/common/autocompleter.new.js" -->
+<!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/cocktails/searcher.js" -->
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
