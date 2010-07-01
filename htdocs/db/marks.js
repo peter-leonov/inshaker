@@ -4,6 +4,7 @@
 {"name":"Antica","path":"antica"},
 {"name":"Bacardi","path":"bacardi"},
 {"name":"Barline","path":"barline"},
+{"name":"Beefeater","path":"beefeater"},
 {"name":"Black Bottle","path":"black-bottle"},
 {"name":"Bombay Sapphire","path":"bombay-sapphire"},
 {"name":"Coors","path":"coors"},
