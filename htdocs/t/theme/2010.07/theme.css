@@ -17,7 +17,7 @@ a { color: #000; }
 #top .nav a:hover { border-bottom-color: #840813; }
 #bottom { color: #fff; }
 #bottom a { color: #ccc; background-color: #000; }
-html { background: #e8d579 url(bg.jpg) repeat center top; }
+html { background: #111 url(bg.jpg) repeat center top; }
 button.rounded b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 button.strong b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
 
