@@ -76,21 +76,13 @@ var myProto =
 	
 	onAction: function (action)
 	{
-		var v = this.nodes.main.value
+		var v = this.nodes.main.value,
+			controller = this.controller
 		
-		log(action, v)
-		if (!action)
-			this.controller.goValue(v)
-	},
-	
-	onMouseMove: function (node, e)
-	{
-		this.controller.itemHovered(node.num)
-	},
-	
-	onMouseDown: function (node, e)
-	{
-		this.controller.itemClicked(node.num)
+		if (action)
+			controller[action]()
+		else
+			controller.goValue(v)
 	},
 	
 	renderVariant: function (str)
@@ -120,8 +112,8 @@ var myProto =
 		list.empty()
 		
 		var me = this
-		function mousedown (e) { me.onMouseDown(this, e) }
-		function mousemove (e) { me.onMouseMove(this, e) }
+		function mousemove (e) { me.onMouseMove(this) }
+		function mousedown (e) { me.onMouseDown(this) }
 		
 		for (var i = 0; i < count; i++)
 		{
@@ -129,10 +121,20 @@ var myProto =
 			item.className = 'item'
 			item.hide()
 			list.appendChild(item)
-			item.num = i
-			item.addEventListener('mousedown', mousedown, false)
+			item.setAttribute('data-autocompleter-num', i)
 			item.addEventListener('mousemove', mousemove, false)
+			item.addEventListener('mousedown', mousedown, false)
 		}
+	},
+	
+	onMouseMove: function (node)
+	{
+		this.controller.goSelect(node.getAttribute('data-autocompleter-num'))
+	},
+	
+	onMouseDown: function (node)
+	{
+		this.controller.goAccept(node.getAttribute('data-autocompleter-num'))
 	},
 	
 	renderResults: function (results)
@@ -194,12 +196,12 @@ var myProto =
 		this.model.selectBy(1)
 	},
 	
-	itemHovered: function (num)
+	goSelect: function (num)
 	{
 		this.model.select(num)
 	},
 	
-	itemClicked: function (num)
+	goAccept: function (num)
 	{
 		this.model.accept(num)
 	}
