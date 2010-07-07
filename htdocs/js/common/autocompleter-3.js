@@ -90,22 +90,6 @@ var myProto =
 		this.nodes.main.value = str
 	},
 	
-	show: function ()
-	{
-		var nodes = this.nodes
-		nodes.main.addClassName('autocompleting')
-		nodes.list.show()
-		this.active = true
-	},
-	
-	hide: function ()
-	{
-		var nodes = this.nodes
-		nodes.main.removeClassName('autocompleting')
-		nodes.list.hide()
-		this.active = false
-	},
-	
 	createItemsNodes: function (count)
 	{
 		var list = this.nodes.list, items = this.nodes.items = []
@@ -239,28 +223,6 @@ var myProto =
 		this.value = ''
 	},
 	
-	begin: function ()
-	{
-		if (this.active)
-			return
-		// log('begin')
-		
-		this.active = true
-		this.view.show()
-	},
-	
-	end: function ()
-	{
-		if (!this.active)
-			return
-		// log('end')
-		
-		this.active = false
-		this.reset()
-		this.view.hide()
-	},
-	
-	
 	setResults: function (results)
 	{
 		this.selected = -1
@@ -295,39 +257,7 @@ var myProto =
 	
 	accept: function (num)
 	{
-		if (this.selected === num)
-			return
-		
-		this.selected = num
-		this.view.selectItem(num)
 	},
-	
-	sendSelected: function ()
-	{
-		this.view.renderVariant(this.selectedValue())
-	},
-	
-	selectedValue: function ()
-	{
-		var selected = this.selected
-		return selected < 0 ? this.value : this.results[selected][0] // [0] means a text value
-	},
-	
-	goValue: function (value)
-	{
-		if (this.value !== value)
-		{
-			this.value = value
-			if (value !== '')
-			{
-				this.begin()
-				this.search()
-			}
-			else
-				this.end()
-		}
-	},
-	
 	
 	search: function (value)
 	{
