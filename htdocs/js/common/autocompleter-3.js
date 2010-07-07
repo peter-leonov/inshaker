@@ -230,6 +230,7 @@ var myProto =
 		
 		selected += dir
 		
+		// -1 is a special case means “nothing selected”
 		if (selected < -1)
 			selected = total - 1
 		else if (selected >= total)
