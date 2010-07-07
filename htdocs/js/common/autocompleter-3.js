@@ -44,7 +44,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.keyMap = {38:'goUp', 40:'goDown', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false}
+		this.keyMap = {38:'prev', 40:'next', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false}
 	},
 	
 	bind: function (nodes)
@@ -82,7 +82,7 @@ var myProto =
 		if (action)
 			controller[action]()
 		else
-			controller.goValue(v)
+			controller.search(v)
 	},
 	
 	renderVariant: function (str)
@@ -113,12 +113,12 @@ var myProto =
 	
 	onMouseMove: function (node)
 	{
-		this.controller.goSelect(node.getAttribute('data-autocompleter-num'))
+		this.controller.select(node.getAttribute('data-autocompleter-num'))
 	},
 	
 	onMouseDown: function (node)
 	{
-		this.controller.goAccept(node.getAttribute('data-autocompleter-num'))
+		this.controller.accept(node.getAttribute('data-autocompleter-num'))
 	},
 	
 	renderResults: function (results)
@@ -165,27 +165,27 @@ var Me = Papa.Controller
 
 var myProto =
 {
-	goValue: function (v)
+	search: function (v)
 	{
 		this.model.search(v)
 	},
 	
-	goUp: function ()
+	prev: function ()
 	{
 		this.model.selectBy(-1)
 	},
 	
-	goDown: function ()
+	next: function ()
 	{
 		this.model.selectBy(1)
 	},
 	
-	goSelect: function (num)
+	select: function (num)
 	{
 		this.model.select(num)
 	},
 	
-	goAccept: function (num)
+	accept: function (num)
 	{
 		this.model.accept(num)
 	}
