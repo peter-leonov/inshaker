@@ -20,16 +20,12 @@ var myProto =
 	bind: function (nodes, count)
 	{
 		this.view.bind(nodes)
-		this.setCount(count === undefined ? 15 : count)
+		this.setCount(count || 10)
 		return this
 	},
 	
 	setDataSource: function (ds) { this.model.dataSource = ds },
-	setValueGetter: function (f) { this.view.valueGetter = f },
-	setValueSetter: function (f) { this.view.valueSetter = f },
-	setCount: function (v) { this.model.setCount(v); this.view.setCount(v) },
-	setInstant: function (v) { this.controller.instant = v },
-	onconfirm: function () {}
+	setCount: function (v) { this.model.setCount(v) }
 }
 
 Object.extend(Me.prototype, myProto)
@@ -45,13 +41,10 @@ eval(NodesShortcut.include())
 
 var myProto =
 {
-	valueGetter: function (node) { return node.value },
-	valueSetter: function (node, value) { node.value = value },
-	
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.keyMap = {38:'goUp', 40:'goDown', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:'goEnter', 27:'goEscape'}
+		this.keyMap = {38:'goUp', 40:'goDown', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false}
 	},
 	
 	bind: function (nodes)
@@ -60,40 +53,34 @@ var myProto =
 		var main = nodes.main
 		
 		var me = this
-		main.addEventListener('blur', function (e) { me.onBlur(e) }, false)
 		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
 	},
 	
 	onKeyPress: function (e)
 	{
-		var targ = e.target, controller = this.controller,
-			action = this.keyMap[e.keyCode]
 		// alert(e.keyCode)
+		var action = this.keyMap[e.keyCode]
+		
 		if (action === false)
 			return
-		else if (action)
+		
+		if (action)
 		{
-			if (controller[action](targ.value) === false)
-			{
-				e.preventDefault()
-				e.stopPropagation()
-			}
+			e.preventDefault()
+			e.stopPropagation()
 		}
-		else
-		{
-			var me = this
-			setTimeout(function () { me.onValue(targ) }, 1)
-		}
+		
+		var me = this
+		setTimeout(function () { me.onAction(action) }, 1)
 	},
 	
-	onValue: function (node)
+	onAction: function (action)
 	{
-		this.controller.goValue(this.valueGetter(node))
-	},
-	
-	onBlur: function (e)
-	{
-		this.controller.goBlur()
+		var v = this.nodes.main.value
+		
+		log(action, v)
+		if (!action)
+			this.controller.goValue(v)
 	},
 	
 	onMouseMove: function (node, e)
@@ -106,14 +93,9 @@ var myProto =
 		this.controller.itemClicked(node.num)
 	},
 	
-	setCount: function (count)
-	{
-		this.createItemsNodes(count)
-	},
-	
 	renderVariant: function (str)
 	{
-		this.valueSetter(this.nodes.main, str)
+		this.nodes.main.value = str
 	},
 	
 	show: function ()
@@ -197,10 +179,55 @@ var Me = Papa.Controller
 
 var myProto =
 {
+	goValue: function (v)
+	{
+		this.model.search(v)
+	},
+	
+	goUp: function ()
+	{
+		this.model.selectBy(-1)
+	},
+	
+	goDown: function ()
+	{
+		this.model.selectBy(1)
+	},
+	
+	itemHovered: function (num)
+	{
+		this.model.select(num)
+	},
+	
+	itemClicked: function (num)
+	{
+		this.model.accept(num)
+	}
+}
+
+Object.extend(Me.prototype, myProto)
+
+})();
+
+
+;(function(){
+
+var Me = Papa.Model
+
+var myProto =
+{
+	dataSource: {search: function () { return [] }},
+	
 	initialize: function ()
 	{
 		this.reset()
 		this.value = undefined
+	},
+	
+	setCount: function (count)
+	{
+		this.count = count
+		this.view.createItemsNodes(count)
 	},
 	
 	reset: function ()
@@ -231,10 +258,6 @@ var myProto =
 		this.view.hide()
 	},
 	
-	search: function ()
-	{
-		this.model.search(this.value)
-	},
 	
 	setResults: function (results)
 	{
@@ -268,6 +291,15 @@ var myProto =
 		this.view.selectItem(num)
 	},
 	
+	accept: function (num)
+	{
+		if (this.selected === num)
+			return
+		
+		this.selected = num
+		this.view.selectItem(num)
+	},
+	
 	sendSelected: function ()
 	{
 		this.view.renderVariant(this.selectedValue())
@@ -277,11 +309,6 @@ var myProto =
 	{
 		var selected = this.selected
 		return selected < 0 ? this.value : this.results[selected][0] // [0] means a text value
-	},
-	
-	dispatchConfirm: function ()
-	{
-		return this.parent.onconfirm({type:'confirm', data: {value:this.selectedValue(), selected:this.selected, results:this.results}})
 	},
 	
 	goValue: function (value)
@@ -299,97 +326,11 @@ var myProto =
 		}
 	},
 	
-	goUp: function (value)
-	{
-		if (this.active)
-		{
-			this.selectBy(-1)
-			this.sendSelected()
-			return false // drop an event
-		}
-	},
 	
-	goDown: function (value)
-	{
-		if (this.active)
-		{
-			this.selectBy(1)
-			this.sendSelected()
-		}
-		else
-		{
-			this.value = value
-			if (value !== '')
-			{
-				this.begin()
-				this.search()
-			}
-		}
-		
-		return false // drop an event
-	},
-	
-	goEnter: function (value)
-	{
-		if (this.active)
-		{
-			if (this.dispatchConfirm() !== false)
-				this.sendSelected()
-			
-			this.end()
-			
-			return this.instant || false
-		}
-	},
-	
-	goEscape: function (value)
-	{
-		if (this.active)
-		{
-			this.view.renderVariant(this.value)
-			this.end()
-		}
-	},
-	
-	goBlur: function ()
-	{
-		if (this.active)
-		{
-			this.sendSelected()
-			this.end()
-		}
-	},
-	
-	itemHovered: function (num)
-	{
-		this.select(num)
-	},
-	
-	itemClicked: function (num)
-	{
-		this.select(num)
-		if (this.dispatchConfirm() !== false)
-			this.sendSelected()
-		this.end()
-	}
-}
-
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-;(function(){
-
-var Me = Papa.Model
-
-var myProto =
-{
-	setCount: function (v) { this.count = v },
 	search: function (value)
 	{
-		var ds = this.dataSource
-		this.controller.setResults(ds ? ds.search(value, this.count) : [])
+		var res = this.dataSource.search(value, this.count)
+		this.setResults(res)
 	}
 }
 
