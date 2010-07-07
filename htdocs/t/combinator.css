@@ -4,6 +4,7 @@ html { overflow-y: scroll;  }
 .b-title { height: 35px; }
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
+.body-wrapper { z-index: 2; }
 
 #search-box { position: absolute; z-index: 100; top: 3px; left: 165px; }
 #search-box .ingredient { font-size: 20px; padding: 2px; color: inherit; width: 555px; }
