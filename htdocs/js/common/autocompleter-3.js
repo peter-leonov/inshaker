@@ -223,14 +223,6 @@ var myProto =
 		this.value = ''
 	},
 	
-	setResults: function (results)
-	{
-		this.selected = -1
-		this.results = results
-		this.view.renderResults(results)
-		this.view.selectItem(-1)
-	},
-	
 	selectBy: function (dir)
 	{
 		var total = this.results.length,
@@ -263,6 +255,14 @@ var myProto =
 	{
 		var res = this.dataSource.search(value, this.count)
 		this.setResults(res)
+	},
+	
+	setResults: function (results)
+	{
+		this.selected = -1
+		this.results = results
+		this.view.renderResults(results)
+		this.view.selectItem(-1)
 	}
 }
 
