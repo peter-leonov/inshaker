@@ -101,8 +101,7 @@ var myProto =
 		for (var i = 0; i < count; i++)
 		{
 			var item = items[i] = N('li')
-			item.className = 'item'
-			item.hide()
+			item.className = 'item hidden'
 			list.appendChild(item)
 			item.setAttribute('data-autocompleter-num', i)
 			item.addEventListener('mousemove', mousemove, false)
@@ -129,11 +128,11 @@ var myProto =
 				item = items[i]
 			item.empty()
 			item.appendChild(r[1]) // [1] means a text representing node (or DocumentFragment)
-			item.show()
+			item.removeClassName('hidden')
 		}
 		
 		for (; i < items.length; i++)
-			items[i].hide()
+			items[i].addClassName('hidden')
 	},
 	
 	selectItem: function (num)
