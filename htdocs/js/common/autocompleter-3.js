@@ -27,6 +27,8 @@ var myProto =
 	setCount: function (v) { this.model.setCount(v) }
 }
 
+Me.mixIn(EventDriven)
+
 Object.extend(Me.prototype, myProto)
 
 })();
@@ -140,12 +142,14 @@ var myProto =
 		if (this.selected === num)
 			return
 		
-		var node, items = this.nodes.items
+		var items = this.nodes.items
 		
-		if ((node = items[this.selected]))
+		var node = items[this.selected]
+		if (node)
 			node.removeClassName('selected')
 		
-		if ((node = items[num]))
+		var node = items[num]
+		if (node)
 			node.addClassName('selected')
 		
 		this.selected = num
@@ -242,12 +246,27 @@ var myProto =
 		if (this.selected === num)
 			return
 		
+		var res = this.results[num]
+		if (!res)
+			return
+		
+		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res[0]}))
+			return
+		
 		this.selected = num
 		this.view.selectItem(num)
 	},
 	
 	accept: function (num)
 	{
+		var res = this.results[num]
+		if (!res)
+			return
+		
+		if (!this.parent.dispatchEvent({type: 'accept', num: num, value: res[0]}))
+			return
+		
+		this.selected = num
 	},
 	
 	search: function (value)
