@@ -85,10 +85,6 @@ var myProto =
 		else
 			controller.search(v)
 	},
-	
-	renderVariant: function (str)
-	{
-		this.nodes.main.value = str
 	},
 	
 	createItemsNodes: function (count)
