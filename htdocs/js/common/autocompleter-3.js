@@ -14,7 +14,6 @@ var myProto =
 		this.model.initialize()
 		this.view.initialize()
 		this.controller.initialize()
-		this.model.controller = this.controller
 	},
 	
 	bind: function (nodes, count)
