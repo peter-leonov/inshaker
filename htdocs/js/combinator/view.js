@@ -22,12 +22,8 @@ var myProto =
 		
 		var me = this
 		
-		var completer = this.completer = new Autocompleter()
+		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
-		// completer.setValueGetter(function () { return me.getActiveQueryValue() })
-		// completer.setValueSetter(function (node, value) { return me.setActiveQueryValue(node, value) })
-		
-		// nodes.ingredientInput.addEventListener('keypress', function () { setTimeout(function () { me.getValue() }, 0) }, false)
 		nodes.ingredientInput.focus()
 		
 		return this
