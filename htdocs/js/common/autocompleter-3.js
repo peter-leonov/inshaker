@@ -272,10 +272,7 @@ var myProto =
 			return
 		
 		var res = this.results[num]
-		if (!res)
-			return
-		
-		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res[0]}))
+		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res ? res[0] : res}))
 			return
 		
 		this.selected = num
