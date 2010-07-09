@@ -115,12 +115,12 @@ var myProto =
 	
 	onMouseMove: function (node)
 	{
-		this.controller.select(node.getAttribute('data-autocompleter-num'))
+		this.controller.select(+node.getAttribute('data-autocompleter-num'))
 	},
 	
 	onMouseDown: function (node)
 	{
-		this.controller.accept(node.getAttribute('data-autocompleter-num'))
+		this.controller.accept(+node.getAttribute('data-autocompleter-num'))
 	},
 	
 	render: function (results)
