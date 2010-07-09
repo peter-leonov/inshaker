@@ -9,7 +9,8 @@ html { overflow-y: scroll;  }
 #search-box { position: absolute; z-index: 100; top: 3px; left: 165px; }
 #search-box .ingredient { font-size: 20px; padding: 2px; color: inherit; width: 555px; }
 
-#search-box .autocomplete { width: 559px; background: #fff; border: solid #bbb; }
+#search-box .autocomplete { display: none; width: 559px; background: #fff; border: solid #bbb; }
+#search-box .autocomplete.focused { display: block; }
 #search-box .autocomplete { position: absolute; top: 25px; left: 1px; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 20px; }
 #search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 #search-box .autocomplete .item.selected { background-color: #d2d2d2; }
