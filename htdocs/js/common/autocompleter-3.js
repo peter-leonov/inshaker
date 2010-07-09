@@ -53,11 +53,11 @@ var myProto =
 		this.nodes = nodes
 		
 		var me = this
-		this.listeners.onkeypress = function (e) { return me.onkeypress(e) }
+		this.listeners.keypress = function (e) { return me.onKeyPress(e) }
 	},
 	
 	keyMap: {38: 'prev', 40: 'next', 27: 'reset', 13: 'accept'},
-	onkeypress: function (e)
+	onKeyPress: function (e)
 	{
 		// log(e.keyCode)
 		var action = this.keyMap[e.keyCode]
@@ -80,7 +80,7 @@ var myProto =
 		this.focused = true
 		
 		this.nodes.list.addClassName('focused')
-		document.addEventListener('keypress', this.listeners.onkeypress, true)
+		document.addEventListener('keypress', this.listeners.keypress, true)
 	},
 	
 	blur: function ()
@@ -91,7 +91,7 @@ var myProto =
 		this.focused = false
 		
 		this.nodes.list.removeClassName('focused')
-		document.removeEventListener('keypress', this.listeners.onkeypress, true)
+		document.removeEventListener('keypress', this.listeners.keypress, true)
 	},
 	
 	createItemsNodes: function (count)
