@@ -62,7 +62,12 @@ Me.prototype =
 		if (action)
 			controller[action]()
 		else
-			controller.search(v)
+		{
+			if (v === '')
+				this.completer.reset()
+			else
+				controller.search(v)
+		}
 	},
 	
 	setDataSource: function (ds)
