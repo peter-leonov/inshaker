@@ -272,8 +272,8 @@ var myProto =
 			return
 		
 		var res = this.results[num]
-		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res ? res[0] : res}))
-			return
+		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res ? res[0] : null}))
+			return false
 		
 		this.selected = num
 		this.view.selectItem(num)
@@ -283,11 +283,12 @@ var myProto =
 	{
 		if (num === undefined)
 			num = this.selected
-		else
-			this.selected = num
+		
+		if (this.select(num) === false)
+			return false
 		
 		var res = this.results[num]
-		this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : res})
+		return this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : null})
 	},
 	
 	search: function (value)
