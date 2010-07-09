@@ -97,7 +97,6 @@ var myProto =
 	createItemsNodes: function (count)
 	{
 		var list = this.nodes.list, items = this.nodes.items = []
-		list.empty()
 		
 		var me = this
 		function mousemove (e) { me.onMouseMove(this) }
@@ -139,7 +138,7 @@ var myProto =
 	renderItems: function (results)
 	{
 		var items = this.nodes.items
-		for (var i = 0; i < results.length && i < items.length; i++)
+		for (var i = 0, il = items.length, rl = results.length; i < rl && i < il; i++)
 		{
 			var r = results[i],
 				item = items[i]
@@ -150,6 +149,8 @@ var myProto =
 		
 		for (; i < items.length; i++)
 			items[i].addClassName('hidden')
+		
+		this.nodes.list.toggleClassName('empty', rl == 0)
 	},
 	
 	selectItem: function (num)
