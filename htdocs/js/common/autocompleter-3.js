@@ -45,46 +45,53 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.keyMap = {38:'prev', 40:'next', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false}
+		this.listeners = {}
 	},
 	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
-		var main = nodes.main
 		
 		var me = this
-		main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
+		this.listeners.onkeypress = function (e) { return me.onkeypress(e) }
 	},
 	
-	onKeyPress: function (e)
+	keyMap: {38: 'prev', 40: 'next', 27: 'reset', 13: 'accept'},
+	onkeypress: function (e)
 	{
-		// alert(e.keyCode)
+		// log(e.keyCode)
 		var action = this.keyMap[e.keyCode]
 		
-		if (action === false)
+		if (!action)
 			return
 		
-		if (action)
-		{
-			e.preventDefault()
-			e.stopPropagation()
-		}
+		e.preventDefault()
+		e.stopPropagation()
 		
-		var me = this
-		setTimeout(function () { me.onAction(action) }, 1)
+		var controller = this.controller
+		setTimeout(function () { controller.action(action) }, 0)
 	},
 	
-	onAction: function (action)
+	focus: function ()
 	{
-		var v = this.nodes.main.value,
-			controller = this.controller
+		log('focus')
+		if (this.focused)
+			return
+		this.focused = true
 		
-		if (action)
-			controller[action]()
-		else
-			controller.search(v)
+		this.nodes.list.addClassName('focused')
+		document.addEventListener('keypress', this.listeners.onkeypress, true)
 	},
+	
+	blur: function ()
+	{
+		log('blur')
+		if (!this.focused)
+			return
+		this.focused = false
+		
+		this.nodes.list.removeClassName('focused')
+		document.removeEventListener('keypress', this.listeners.onkeypress, true)
 	},
 	
 	createItemsNodes: function (count)
@@ -198,7 +205,12 @@ var myProto =
 	accept: function (num)
 	{
 		this.model.accept(num)
-	}
+	},
+	
+	action: function (action)
+	{
+		this[action]()
+	},
 }
 
 Object.extend(Me.prototype, myProto)
