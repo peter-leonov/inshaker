@@ -288,7 +288,10 @@ var myProto =
 			return false
 		
 		var res = this.results[num]
-		return this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : null})
+		if (!this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : null}))
+			return false
+		
+		this.reset()
 	},
 	
 	search: function (value)
