@@ -23,6 +23,7 @@ var myProto =
 		return this
 	},
 	
+	reset: function () { this.model.reset() },
 	setDataSource: function (ds) { this.model.dataSource = ds },
 	setCount: function (v) { this.model.setCount(v) }
 }
