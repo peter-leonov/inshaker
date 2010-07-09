@@ -12,6 +12,8 @@ function Me ()
 
 Me.prototype =
 {
+	keyMap: {38:'prev', 40:'next', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
+	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -22,8 +24,39 @@ Me.prototype =
 		completer.addEventListener('accept', function (e) { log('accept', e.value) }, false)
 		completer.addEventListener('select', function (e) { log('select', e.value) }, false)
 		
+		var me = this
+		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
 		
 		return this
+	},
+	
+	onKeyPress: function (e)
+	{
+		// alert(e.keyCode)
+		var action = this.keyMap[e.keyCode]
+		
+		if (action === false)
+			return
+		
+		if (action)
+		{
+			e.preventDefault()
+			e.stopPropagation()
+		}
+		
+		var me = this
+		setTimeout(function () { me.onAction(action) }, 1)
+	},
+	
+	onAction: function (action)
+	{
+		var v = this.nodes.main.value,
+			controller = this.completer.controller
+		
+		if (action)
+			controller[action]()
+		else
+			controller.search(v)
 	},
 	
 	setDataSource: function (ds)
