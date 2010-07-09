@@ -26,6 +26,7 @@ Me.prototype =
 		
 		var me = this
 		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
+		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
 		
 		return this
 	},
@@ -46,6 +47,11 @@ Me.prototype =
 		
 		var me = this
 		setTimeout(function () { me.onAction(action) }, 1)
+	},
+	
+	onBlur: function ()
+	{
+		this.completer.reset()
 	},
 	
 	onAction: function (action)
