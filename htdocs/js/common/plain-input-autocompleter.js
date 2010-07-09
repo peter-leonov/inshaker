@@ -21,8 +21,8 @@ Me.prototype =
 		var completer = this.completer = new Autocompleter()
 		completer.bind(nodes)
 		
-		completer.addEventListener('accept', function (e) { log('accept', e.value) }, false)
-		completer.addEventListener('select', function (e) { log('select', e.value) }, false)
+		completer.addEventListener('accept', function (e) { me.accept(e.value, e.source) }, false)
+		completer.addEventListener('select', function (e) { me.select(e.value, e.source) }, false)
 		
 		var me = this
 		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
@@ -68,6 +68,16 @@ Me.prototype =
 			else
 				controller.search(v)
 		}
+	},
+	
+	select: function (value, source)
+	{
+		this.nodes.main.value = value != null ? value : source
+	},
+	
+	accept: function (value, source)
+	{
+		this.select(value, source)
 	},
 	
 	setDataSource: function (ds)
