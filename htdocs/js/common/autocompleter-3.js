@@ -117,7 +117,19 @@ var myProto =
 		this.controller.accept(node.getAttribute('data-autocompleter-num'))
 	},
 	
-	renderResults: function (results)
+	render: function (results)
+	{
+		if (!results)
+		{
+			this.blur()
+			return
+		}
+		
+		this.focus()
+		this.renderItems(results)
+	},
+	
+	renderItems: function (results)
 	{
 		var items = this.nodes.items
 		for (var i = 0; i < results.length && i < items.length; i++)
@@ -204,8 +216,8 @@ var myProto =
 	
 	initialize: function ()
 	{
-		this.reset()
-		this.value = undefined
+		this.results = null
+		this.selected = -1
 	},
 	
 	setCount: function (count)
@@ -216,14 +228,19 @@ var myProto =
 	
 	reset: function ()
 	{
-		this.results = []
+		this.results = null
 		this.selected = -1
-		this.value = ''
+		this.view.render(null)
 	},
 	
 	selectBy: function (dir)
 	{
-		var total = this.results.length,
+		var results = this.results
+		
+		if (!results)
+			return
+		
+		var total = results.length,
 			selected = this.selected
 		
 		selected += dir
@@ -255,14 +272,13 @@ var myProto =
 	
 	accept: function (num)
 	{
+		if (num === undefined)
+			num = this.selected
+		else
+			this.selected = num
+		
 		var res = this.results[num]
-		if (!res)
-			return
-		
-		if (!this.parent.dispatchEvent({type: 'accept', num: num, value: res[0]}))
-			return
-		
-		this.selected = num
+		this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : res})
 	},
 	
 	search: function (value)
@@ -275,7 +291,7 @@ var myProto =
 	{
 		this.selected = -1
 		this.results = results
-		this.view.renderResults(results)
+		this.view.render(results)
 		this.view.selectItem(-1)
 	}
 }
