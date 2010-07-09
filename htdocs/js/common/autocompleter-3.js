@@ -231,6 +231,7 @@ var myProto =
 	{
 		this.results = null
 		this.selected = -1
+		this.value = null
 	},
 	
 	setCount: function (count)
@@ -241,8 +242,7 @@ var myProto =
 	
 	reset: function ()
 	{
-		this.results = null
-		this.selected = -1
+		this.initialize()
 		this.view.render(null)
 	},
 	
@@ -273,7 +273,7 @@ var myProto =
 			return
 		
 		var res = this.results[num]
-		if (!this.parent.dispatchEvent({type: 'select', num: num, value: res ? res[0] : null}))
+		if (!this.parent.dispatchEvent({type: 'select', source: this.value, num: num, value: res ? res[0] : null}))
 			return false
 		
 		this.selected = num
@@ -289,7 +289,7 @@ var myProto =
 			return false
 		
 		var res = this.results[num]
-		if (!this.parent.dispatchEvent({type: 'accept', num: num, value: res ? res[0] : null}))
+		if (!this.parent.dispatchEvent({type: 'accept', source: this.value, num: num, value: res ? res[0] : null}))
 			return false
 		
 		this.reset()
@@ -297,6 +297,7 @@ var myProto =
 	
 	search: function (value)
 	{
+		this.value = value
 		var res = this.dataSource.search(value, this.count)
 		this.setResults(res)
 	},
