@@ -10,7 +10,9 @@ function Me ()
 
 Me.prototype =
 {
-	keyMap: {38:false, 40:'down', 33:false, 34:false, 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
+	// ignore “non-content” keycodes
+	suppressKeys: {9:1, 13:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1},
+	actionKeys: {40:'down'},
 	
 	bind: function (nodes)
 	{
@@ -31,13 +33,13 @@ Me.prototype =
 	
 	onKeyPress: function (e)
 	{
-		// alert(e.keyCode)
-		var action = this.keyMap[e.keyCode]
+		var keyCode = e.keyCode
+		// log(keyCode)
 		
-		// ignore “non-content” keycodes
-		if (action === false)
+		if (this.suppressKeys[keyCode])
 			return
 		
+		var action = this.actionKeys[keyCode]
 		if (action)
 		{
 			e.preventDefault()
