@@ -8,11 +8,9 @@ function Me ()
 	this.constructor = Me
 }
 
-// eval(NodesShortcut.include())
-
 Me.prototype =
 {
-	keyMap: {38:false, 40:'down', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
+	keyMap: {38:false, 40:'down', 33:false, 34:false, 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
 	
 	bind: function (nodes)
 	{
@@ -82,6 +80,7 @@ Me.prototype =
 	accept: function (value, source)
 	{
 		this.select(value, source)
+		this.dispatchEvent({type: 'accept', source: source, value: value})
 	},
 	
 	setDataSource: function (ds)
@@ -90,7 +89,7 @@ Me.prototype =
 	},
 }
 
-// Me.mixIn(EventDriven)
+Me.mixIn(EventDriven)
 Me.className = myName
 self[myName] = Me
 
