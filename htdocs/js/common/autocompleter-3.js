@@ -23,7 +23,8 @@ var myProto =
 		return this
 	},
 	
-	reset: function () { this.model.reset() },
+	reset: function () { this.controller.reset() },
+	search: function (v) { this.controller.search(v) },
 	setDataSource: function (ds) { this.model.dataSource = ds },
 	setCount: function (v) { this.model.setCount(v) }
 }
@@ -207,6 +208,11 @@ var myProto =
 	accept: function (num)
 	{
 		this.model.accept(num)
+	},
+	
+	reset: function (num)
+	{
+		this.model.reset(num)
 	},
 	
 	action: function (action)

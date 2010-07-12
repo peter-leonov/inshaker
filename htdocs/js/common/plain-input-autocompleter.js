@@ -12,7 +12,7 @@ function Me ()
 
 Me.prototype =
 {
-	keyMap: {38:'prev', 40:'next', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
+	keyMap: {38:false, 40:'down', 37:false, 39:false, 9:false, 16:false, 17:false, 18:false, 91:false, 13:false, 27:false},
 	
 	bind: function (nodes)
 	{
@@ -36,6 +36,7 @@ Me.prototype =
 		// alert(e.keyCode)
 		var action = this.keyMap[e.keyCode]
 		
+		// ignore “non-content” keycodes
 		if (action === false)
 			return
 		
@@ -46,7 +47,7 @@ Me.prototype =
 		}
 		
 		var me = this
-		setTimeout(function () { me.onAction(action) }, 1)
+		setTimeout(function () { me.action(action) }, 1)
 	},
 	
 	onBlur: function ()
@@ -54,20 +55,23 @@ Me.prototype =
 		this.completer.reset()
 	},
 	
-	onAction: function (action)
+	action: function (action)
 	{
 		var v = this.nodes.main.value,
-			controller = this.completer.controller
+			completer = this.completer
 		
 		if (action)
-			controller[action]()
+			return this[action](v)
+		
+		if (v === '')
+			completer.reset()
 		else
-		{
-			if (v === '')
-				this.completer.reset()
-			else
-				controller.search(v)
-		}
+			completer.search(v)
+	},
+	
+	down: function (v)
+	{
+		this.completer.search(v)
 	},
 	
 	select: function (value, source)
