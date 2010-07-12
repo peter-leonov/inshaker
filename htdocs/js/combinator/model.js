@@ -23,13 +23,15 @@ var myProto =
 	{
 		this.ds = ds
 		
-		var ingredients = ds.ingredient.getAll()
+		var ingredients = ds.ingredient.getAllNames(),
+			secondNames = ds.ingredient.getAllSecondNames(),
+			secondNamesHash = ds.ingredient.getNameBySecondNameHash()
 		
-		var names = []
-		for (var i = 0, il = ingredients.length; i < il; i++)
-			names[i] = ingredients[i].name
+		var set = ingredients.slice()
+		set.push.apply(set, secondNames)
+		set.sort()
 		
-		var searcher = new IngredientsSearcher(names, {})
+		var searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
 	},
 	
