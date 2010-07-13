@@ -1,7 +1,7 @@
 html {overflow-y: scroll;}
 .body-wrapper { overflow: hidden; }
 .bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:20px 25px 0 0;background:no-repeat 0 0;}
-.bar-mini a {display:block;position:absolute;left:0;top:0;width:290px;height:50px;padding:158px 0 0 15px;background:url(bars/pre-mask-full.png) 0 0;line-height:40px;color:#fff;font-size:13px;}
+.bar-mini a { display:block; position: absolute; left: 0; top: 0; width: 290px; height: 50px; padding: 158px 0 0 15px; background-position: 0 0; line-height: 40px; color: #fff; font-size: 13px; }
 .bar-mini.new a { background-position: 0px -200px; }
 .bar-mini.new .label,
 .bar-mini.new:hover .bar-name { display: none; }
