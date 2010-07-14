@@ -60,13 +60,13 @@ Me.prototype =
 		var v = this.nodes.main.value,
 			completer = this.completer
 		
+		if (v === '')
+			return completer.reset()
+		
 		if (action)
 			return this[action](v)
 		
-		if (v === '')
-			completer.reset()
-		else
-			completer.search(v)
+		completer.search(v)
 	},
 	
 	down: function (v)
