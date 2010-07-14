@@ -22,7 +22,7 @@ var myProto =
 		
 		var me = this
 		
-		var completer = this.completer = new PlainInputAutocompleter()
+		var completer = this.completer = new AddingInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.getValue() }, false)
 		nodes.ingredientInput.focus()
