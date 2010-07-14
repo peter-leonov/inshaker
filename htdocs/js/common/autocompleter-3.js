@@ -76,7 +76,6 @@ var myProto =
 	
 	focus: function ()
 	{
-		log('focus')
 		if (this.focused)
 			return
 		this.focused = true
@@ -87,7 +86,6 @@ var myProto =
 	
 	blur: function ()
 	{
-		log('blur')
 		if (!this.focused)
 			return
 		this.focused = false
