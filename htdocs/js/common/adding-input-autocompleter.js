@@ -85,6 +85,16 @@ Me.prototype =
 		this.search(v, cursor)
 	},
 	
+	cursor: function (v, cursor)
+	{
+		var tokens = this.tokens
+
+		var active = tokens.active
+		this.updateTokens(v, cursor)
+		if (active != tokens.active)
+			this.reset()
+	},
+	
 	select: function (value, source)
 	{
 		if (value == null)
