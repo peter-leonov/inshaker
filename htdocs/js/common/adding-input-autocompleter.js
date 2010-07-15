@@ -111,7 +111,7 @@ Me.prototype =
 		cursor++
 		
 		var tokens
-		if (this.lastValue === value && this.lastCursor === cursor)
+		if (this.lastValue === value)
 		{
 			tokens = this.tokens
 		}
@@ -119,8 +119,11 @@ Me.prototype =
 		{
 			tokens = this.tokens = QueryParser.parse(value)
 			this.lastValue = value
-			this.lastCursor = cursor
 		}
+		
+		if (this.lastCursor === cursor)
+			return
+		this.lastCursor = cursor
 		
 		var add = [], remove = [], active = -1
 		for (var i = 0, il = tokens.length; i < il; i++)
