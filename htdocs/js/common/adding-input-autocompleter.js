@@ -31,6 +31,19 @@ Me.prototype =
 		return this
 	},
 	
+	search: function (v, cursor)
+	{
+		log(v, cursor)
+		this.searchValueMayBeChanged(v, cursor)
+		this.completer.search(this.tokens.active.value)
+	},
+	
+	reset: function ()
+	{
+		log('reset')
+		// this.completer.reset()
+	},
+	
 	onKeyPress: function (e)
 	{
 		var keyCode = e.keyCode
@@ -52,31 +65,40 @@ Me.prototype =
 	
 	onBlur: function ()
 	{
-		this.completer.reset()
+		this.reset()
 	},
 	
 	action: function (action)
 	{
-		var v = this.nodes.main.value,
-			completer = this.completer
+		var main = this.nodes.main,
+			v = main.value,
+			cursor = main.selectionStart
 		
 		if (v === '')
-			return completer.reset()
+			return this.reset()
 		
 		if (action)
-			return this[action](v)
+			return this[action](v, cursor)
 		
-		completer.search(v)
+		this.search(v, cursor)
 	},
 	
-	down: function (v)
+	down: function (v, cursor)
 	{
-		this.completer.search(v)
+		this.search(v, cursor)
 	},
 	
 	select: function (value, source)
 	{
-		this.nodes.main.value = value != null ? value : source
+		if (value == null)
+			value = source
+		
+		var tokens = this.tokens,
+			input = this.nodes.main
+		
+		tokens.active.value = value
+		input.value = QueryParser.stringify(tokens).substr(1)
+		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
 	},
 	
 	accept: function (value, source)
@@ -85,10 +107,46 @@ Me.prototype =
 		this.dispatchEvent({type: 'accept', source: source, value: value})
 	},
 	
+	searchValueMayBeChanged: function (value, cursor)
+	{
+		// prepare for clean parsing
+		value = '+' + value
+		cursor++
+		
+		var tokens
+		if (this.lastValue === value && this.lastCursor === cursor)
+		{
+			tokens = this.tokens
+		}
+		else
+		{
+			tokens = this.tokens = QueryParser.parse(value)
+			this.lastValue = value
+			this.lastCursor = cursor
+		}
+		
+		var add = [], remove = [], active = -1
+		for (var i = 0, il = tokens.length; i < il; i++)
+		{
+			var t = tokens[i]
+			
+			var op = t.op
+			if (op == '+')
+				add.push(t.value)
+			else if (op == '-')
+				remove.push(t.value)
+			
+			if (t.begin <= cursor && cursor <= t.end)
+				active = i
+		}
+		
+		tokens.active = tokens[active]
+	},
+	
 	setDataSource: function (ds)
 	{
 		return this.completer.setDataSource(ds)
-	},
+	}
 }
 
 Me.mixIn(EventDriven)

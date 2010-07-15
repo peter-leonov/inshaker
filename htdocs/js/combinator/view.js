@@ -24,7 +24,7 @@ var myProto =
 		
 		var completer = this.completer = new AddingInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
-		completer.addEventListener('accept', function (e) { me.getValue() }, false)
+		completer.addEventListener('update', function (e) { me.queryUpdated(e.add, e.remove) }, false)
 		nodes.ingredientInput.focus()
 		
 		return this
@@ -35,58 +35,11 @@ var myProto =
 		this.completer.setDataSource(ds)
 	},
 	
+	queryUpdated: function (add, remove)
 	{
-	searchValueMayBeChanged: function (value, cursor)
-	{
-		// prepare for clean parsing
-		value = '+' + value
-		cursor++
-		
-		var tokens
-		if (this.lastValue === value)
-		{
-			tokens = this.tokens
-		}
-		{
-			tokens = this.tokens = QueryParser.parse(value)
-			this.lastValue = value
-		}
-		
-		var add = [], remove = [], active = -1
-		for (var i = 0, il = tokens.length; i < il; i++)
-		{
-			var t = tokens[i]
-			
-			var op = t.op
-			if (op == '+')
-				add.push(t.value)
-			else if (op == '-')
-				remove.push(t.value)
-			
-			if (t.begin <= cursor && cursor <= t.end)
-				active = i
-		}
-		
-		tokens.active = tokens[active]
-		
 		this.controller.setIngredientsNames(add, remove)
-		// this.controller.setIngredientsNames([tokens.active.value], [])
 	},
 	
-	getActiveQueryValue: function (node)
-	{
-		return this.tokens.active.value
-	},
-	
-	setActiveQueryValue: function (node, value)
-	{
-		var tokens = this.tokens,
-			input = this.nodes.ingredientInput
-		
-		tokens.active.value = value
-		input.value = QueryParser.stringify(tokens).substr(1)
-		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
-	},
 	
 	renderCocktails: function (cocktails)
 	{
