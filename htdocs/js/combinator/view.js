@@ -35,12 +35,7 @@ var myProto =
 		this.completer.setDataSource(ds)
 	},
 	
-	getValue: function ()
 	{
-		var input = this.nodes.ingredientInput
-		this.searchValueMayBeChanged(input.value, input.selectionStart)
-	},
-	
 	searchValueMayBeChanged: function (value, cursor)
 	{
 		// prepare for clean parsing
