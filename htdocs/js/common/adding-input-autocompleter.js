@@ -11,8 +11,9 @@ function Me ()
 Me.prototype =
 {
 	// ignore “non-content” keycodes
-	suppressKeys: {9:1, 13:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1},
-	actionKeys: {40:'down'},
+	ignoreKeys: {9:1, 13:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1},
+	preventKeys: {40:1},
+	actionKeys: {37:'cursor', 39:'cursor', 40:'search'},
 	
 	bind: function (nodes)
 	{
@@ -33,15 +34,18 @@ Me.prototype =
 	
 	search: function (v, cursor)
 	{
-		log(v, cursor)
-		this.searchValueMayBeChanged(v, cursor)
-		this.completer.search(this.tokens.active.value)
+		this.updateTokens(v, cursor)
+		
+		var value = this.tokens.active.value
+		if (value === '')
+			return this.reset()
+		
+		this.completer.search(value)
 	},
 	
 	reset: function ()
 	{
-		log('reset')
-		// this.completer.reset()
+		this.completer.reset()
 	},
 	
 	onKeyPress: function (e)
@@ -49,15 +53,16 @@ Me.prototype =
 		var keyCode = e.keyCode
 		// log(keyCode)
 		
-		if (this.suppressKeys[keyCode])
+		if (this.ignoreKeys[keyCode])
 			return
 		
-		var action = this.actionKeys[keyCode]
-		if (action)
+		if (this.preventKeys[keyCode])
 		{
 			e.preventDefault()
 			e.stopPropagation()
 		}
+		
+		var action = this.actionKeys[keyCode]
 		
 		var me = this
 		setTimeout(function () { me.action(action) }, 1)
@@ -74,17 +79,9 @@ Me.prototype =
 			v = main.value,
 			cursor = main.selectionStart
 		
-		if (v === '')
-			return this.reset()
-		
 		if (action)
 			return this[action](v, cursor)
 		
-		this.search(v, cursor)
-	},
-	
-	down: function (v, cursor)
-	{
 		this.search(v, cursor)
 	},
 	
@@ -107,7 +104,7 @@ Me.prototype =
 		this.dispatchEvent({type: 'accept', source: source, value: value})
 	},
 	
-	searchValueMayBeChanged: function (value, cursor)
+	updateTokens: function (value, cursor)
 	{
 		// prepare for clean parsing
 		value = '+' + value
