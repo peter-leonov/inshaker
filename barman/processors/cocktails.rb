@@ -381,6 +381,11 @@ class CocktailsProcessor < Barman::Processor
     end
     
     if File.exists?(from_small)
+      unless check_img_geometry_cached(from_small, to_small) { |w, h| w == 60 && h == 80 }
+        error "маленькая картинка не подходит по размеру (должна быть 60 x 80)"
+        return
+      end
+      
       flush_pngm_img(from_small, to_small)
     else
       error "не могу найти маленькую картинку коктейля (small.png)"
