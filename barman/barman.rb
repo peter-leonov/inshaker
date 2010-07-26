@@ -55,6 +55,24 @@ module Barman
       File.write(path, @renderer.result(self.class::Template.new(*opts).get_binding))
     end
     
+    def get_img_geometry(src)
+      m = `identify -format "%[fx:w]x%[fx:h]" "#{src.quote}"`.match(/^(\d+)x(\d+)$/)
+      unless m
+        error "не могу определить геометрию кртинки #{src}"
+        return {:w => 0, :h => 0}
+      end
+      
+      return {:w => m[1].to_i, :h => m[2].to_i}
+    end
+    
+    def check_img_geometry_cached(src, dst)
+      if File.mtime_cmp(src, dst) == 0
+        return true
+      end
+      geometry = get_img_geometry(src)
+      yield geometry[:w], geometry[:h]
+    end
+    
     def flush_print_img(src_file, dest_file, size)
       system(%Q{convert $'#{src_file.ansi_quote}' -background white -flatten -scale #{size[0]}x#{size[1]} $'#{dest_file.ansi_quote}'}) or warn "  while converting #{src_file} -> #{dest_file}"
     end
