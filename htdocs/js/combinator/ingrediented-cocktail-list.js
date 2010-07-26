@@ -80,7 +80,7 @@ var myProto =
 	{
 		var frame = this.frame
 		if (frame)
-			frame.moveTo(window.pageXOffset, window.pageYOffset)
+			frame.moveTo(window.pageXOffset, window.pageYOffset - 3000)
 	},
 	
 	setupVisibilityFrame: function (nodes)
@@ -91,7 +91,7 @@ var myProto =
 		var boxes = Boxer.nodesToBoxes(nodes)
 		
 		var frame = this.frame = new VisibilityFrame()
-		frame.setFrame(4000, 1500) // hardcoded for now
+		frame.setFrame(4000, 6000) // hardcoded for now
 		frame.setStep(500, 500)
 		frame.setBoxes(boxes)
 		
