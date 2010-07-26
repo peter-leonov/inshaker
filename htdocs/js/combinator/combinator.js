@@ -20,6 +20,12 @@ var myProto =
 		this.model.bind(sources)
 		this.controller.bind(state)
 		
+		var all = Cocktail.getAll()
+		all.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		// all.randomize()
+		
+		this.view.renderCocktails(all)
+		
 		return this
 	}
 }
