@@ -92,7 +92,7 @@ var myProto =
 		
 		var frame = this.frame = new VisibilityFrame()
 		frame.setFrame(4000, 6000) // hardcoded for now
-		frame.setStep(500, 500)
+		frame.setStep(4000, 3000)
 		frame.setBoxes(boxes)
 		
 		var me = this
