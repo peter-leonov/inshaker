@@ -36,7 +36,7 @@
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
 .b-content ul.cocktails{overflow:hidden;}
 /* and index */
-.b-content ul.cocktails li { float: left; position: relative; overflow: hidden; width: 90px; height: 140px; padding: 0 10px; }
+.b-content ul.cocktails li { float: left; position: relative; width: 90px; height: 140px; padding: 0 10px; }
 .b-content ul.cocktails li a{font-size:120%;}
 .b-content ul.cocktails li img{display:block;padding-bottom:7px;padding-right:30px;margin-left:-10px;width:60px;height:80px;}
 .mini-illustration {z-index:2} /* also applied to the dragged element */
