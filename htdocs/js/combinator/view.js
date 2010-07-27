@@ -24,7 +24,7 @@ var myProto =
 		
 		var completer = this.completer = new AddingInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
-		completer.addEventListener('update', function (e) { me.queryUpdated(e.add, e.remove) }, false)
+		completer.addEventListener('accept', function (e) { me.queryUpdated(e.add, e.remove) }, false)
 		nodes.ingredientInput.focus()
 		
 		return this
