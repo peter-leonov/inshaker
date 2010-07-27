@@ -189,22 +189,20 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, db, count, searchGarnish)
+	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names, db, count, searchGarnish)
+		return this.getByIngredientNames(names, opts)
 	},
 	
-	getByIngredientNames: function (names, db, count, searchGarnish)
+	getByIngredientNames: function (names, opts)
 	{
-		if (!db)
-			db = this.db
-		
-		if (!count)
-			count = names.length
+		var db = opts.db || this.db
+		var count = opts.count || names.length
+		var searchGarnish = opts.searchGarnish
 		
 		// caching names of requested ingredients
 		var hash = {}
