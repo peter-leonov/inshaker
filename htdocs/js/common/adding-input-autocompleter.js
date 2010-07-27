@@ -77,7 +77,7 @@ Me.prototype =
 	{
 		var main = this.nodes.main,
 			v = main.value,
-			cursor = main.selectionStart
+			cursor = main.selectionEnd
 		
 		if (action)
 			return this[action](v, cursor)
