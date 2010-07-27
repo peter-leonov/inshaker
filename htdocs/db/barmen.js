@@ -29,7 +29,7 @@
 {"cocktails":["Капункаа","Парижский мартини","Сохо мартини"],"name":"Константин Корнев","name_eng":"Konstantin Kornev","path":"konstantin-kornev"},
 {"cocktails":["Ореховый микс","Яблочный тини","Смородиновая свежесть","Новый взгляд"],"name":"Константин Пильберг","name_eng":"Konstantin Pilberg","path":"konstantin-pilberg"},
 {"cocktails":["Виски Тай","Брис оф Бали","НотинМи","БерриМиАп"],"name":"Ладо Прангишвили","name_eng":"Lado Prangishvili","path":"lado-prangishvili"},
-{"cocktails":["Нежный чай","Черный флип","Сеньор Сазерак"],"name":"Лидия Райсмюллер","name_eng":"Lydia Reissmueller","path":"lydia-reissmueller"},
+{"cocktails":["Нежный чай","Черный флип","Сеньор Сазерак","Тлеющий физ"],"name":"Лидия Райсмюллер","name_eng":"Lydia Reissmueller","path":"lydia-reissmueller"},
 {"cocktails":["Гранатовый тини"],"name":"Марат Саддаров","name_eng":"Marat Saddarov","path":"marat-saddarov"},
 {"cocktails":["Клуб Пегу","Лакомый кусочек","Рио браво","Палома","Восток встречает Запад","Валенсия","Мартинез","Бренди круста","Никербокер","Сазерак","Френч 75","Писко сауэр"],"name":"Мариан Беке","name_eng":"Marion Beke","path":"marion-beke"},
 {"cocktails":["Французская Гвиана","Сейдж романс","Березовый кулер","Розмари физ","Имбирная страсть","Баба Таня","Квесто саксессо","Морс мартини"],"name":"Михаил Калачев","name_eng":"Mikhail Kalachev","path":"mikhail-kalachev"},
