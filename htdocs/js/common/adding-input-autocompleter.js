@@ -135,7 +135,23 @@ Me.prototype =
 			return
 		this.lastCursor = cursor
 		
-		var add = [], remove = [], active = -1
+		var active = -1
+		for (var i = 0, il = tokens.length; i < il; i++)
+		{
+			var t = tokens[i]
+			
+			if (t.begin <= cursor && cursor <= t.end)
+				active = i
+		}
+		
+		tokens.active = tokens[active]
+	},
+	
+	getParts: function ()
+	{
+		var tokens = this.tokens
+		
+		var add = [], remove = []
 		for (var i = 0, il = tokens.length; i < il; i++)
 		{
 			var t = tokens[i]
@@ -145,12 +161,9 @@ Me.prototype =
 				add.push(t.value)
 			else if (op == '-')
 				remove.push(t.value)
-			
-			if (t.begin <= cursor && cursor <= t.end)
-				active = i
 		}
 		
-		tokens.active = tokens[active]
+		return {add: add, remove: remove}
 	},
 	
 	setDataSource: function (ds)
