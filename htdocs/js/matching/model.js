@@ -77,7 +77,7 @@ var myProto =
 	suitableIngredients: function (ingredients)
 	{
 		var res = {},
-			cocktails = this.sources.cocktail.getByIngredients(ingredients)
+			cocktails = this.sources.cocktail.getByIngredients(ingredients, null, undefined, true) // oh, my…
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{

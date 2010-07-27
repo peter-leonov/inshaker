@@ -318,11 +318,11 @@ function CocktailsModel (states, view) {
 			
 			// concat all the ingredients in one native operation just like SIMD ;)
 			ingredients = Array.prototype.concat.apply([], ingredients)
-			res = Cocktail.getByIngredients(ingredients, res, 1)
+			res = Cocktail.getByIngredients(ingredients, res, 1, true)
 		}
 		
 		if (filters.ingredients && filters.ingredients.length)
-			res = Cocktail.getByIngredientNames(filters.ingredients, res)
+			res = Cocktail.getByIngredientNames(filters.ingredients, res, undefined, true)
 		
 		if (!res)
 		{
