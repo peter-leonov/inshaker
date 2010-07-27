@@ -83,7 +83,7 @@
 				<div class="what-need">
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
-						<% @ingredients.each do |name, dose| %>
+						<% (@ingredients + @garnish).each do |name, dose| %>
 						<dd><a><%= name %></a> <strong><%= dose %></strong></dd>
 						<% end %>
 					</dl>
