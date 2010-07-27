@@ -56,7 +56,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
-        this.tidyIngredientsList(Model.cocktail.ingredients.concat(Model.cocktail.garnish));
+		this.tidyIngredientsList(Model.ingredients);
 	},
 	
 	bindEvents: function(name){
