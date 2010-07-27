@@ -111,7 +111,9 @@ Me.prototype =
 	accept: function (value, source)
 	{
 		this.select(value, source)
-		this.dispatchEvent({type: 'accept', source: source, value: value})
+		
+		var parts = this.getParts()
+		this.dispatchEvent({type: 'accept', source: source, value: value, add: parts.add, remove: parts.remove})
 	},
 	
 	updateTokens: function (value, cursor)
