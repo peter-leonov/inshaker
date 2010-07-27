@@ -25,12 +25,13 @@ self.DataFilter = {
 		for(var i = 0; i < cocktailsAndQuant.length; i++){
 			var cocktail = cocktailsAndQuant[i][0];
 			var quantity = cocktailsAndQuant[i][1];
-			for(var j = 0; j < cocktail.ingredients.length; j++){
+			var ingredients = cocktail.ingredients.concat(cocktail.garnish)
+			for(var j = 0; j < ingredients.length; j++){
 				
-				var ingred = cocktail.ingredients[j][0];
+				var ingred = ingredients[j][0];
 				
 				if(goods[ingred]) {
-					var dose = this._parseDose(goods[ingred].unit, cocktail.ingredients[j][1]);
+					var dose = this._parseDose(goods[ingred].unit, ingredients[j][1]);
 					if(!res[ingred]) {
 						res[ingred] = {};
 						res[ingred].good = goods[ingred];
