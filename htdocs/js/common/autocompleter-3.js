@@ -115,7 +115,7 @@ var myProto =
 	
 	onMouseMove: function (node)
 	{
-		this.controller.select(+node.getAttribute('data-autocompleter-num'))
+		this.controller.suggest(+node.getAttribute('data-autocompleter-num'))
 	},
 	
 	onMouseDown: function (node)
@@ -203,6 +203,11 @@ var myProto =
 		this.model.select(num)
 	},
 	
+	suggest: function (num)
+	{
+		this.model.suggest(num)
+	},
+	
 	accept: function (num)
 	{
 		this.model.accept(num)
@@ -281,6 +286,12 @@ var myProto =
 		if (!this.parent.dispatchEvent({type: 'select', source: this.value, num: num, value: res ? res[0] : null}))
 			return false
 		
+		this.selected = num
+		this.view.selectItem(num)
+	},
+	
+	suggest: function (num)
+	{
 		this.selected = num
 		this.view.selectItem(num)
 	},
