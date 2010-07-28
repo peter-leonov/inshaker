@@ -25,7 +25,7 @@ self.DataFilter = {
 		for(var i = 0; i < cocktailsAndQuant.length; i++){
 			var cocktail = cocktailsAndQuant[i][0];
 			var quantity = cocktailsAndQuant[i][1];
-			var ingredients = cocktail.ingredients.concat(cocktail.garnish)
+			var ingredients = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
 			for(var j = 0; j < ingredients.length; j++){
 				
 				var ingred = ingredients[j][0];
