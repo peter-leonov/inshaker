@@ -12,6 +12,7 @@
 {"name":"Franciacorta","path":"franciacorta"},
 {"name":"Frapin","path":"frapin"},
 {"name":"Hakushika Ginjo Namachozo","path":"hakushika-ginjo-namachozo"},
+{"name":"Malibu","path":"malibu"},
 {"name":"Martini","path":"martini"},
 {"name":"Monin","path":"monin"},
 {"name":"Nonino","path":"nonino"},
