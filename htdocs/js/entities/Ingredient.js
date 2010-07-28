@@ -220,6 +220,45 @@ Object.extend(Ingredient,
 		return res
 	},
 	
+	mergeIngredientSets: function ()
+	{
+		var volumes = {},
+			units = {}
+		
+		for (var i = 0, il = arguments.length; i < il; i++)
+		{
+			var set = arguments[i]
+			
+			for (var j = 0, jl = set.length; j < jl; j++)
+			{
+				var part = set[j],
+					name = part[0]
+				
+				var vol = volumes[name]
+				if (vol)
+					vol[1] += parseInt(part[1])
+				else
+				{
+					var am = part[1],
+						intam = parseInt(am)
+					
+					volumes[name] = [name, intam]
+					units[name] = am.substr((intam + '').length + 1)
+				}
+			}
+		}
+		
+		var res = []
+		for (var k in volumes)
+		{
+			var vol = volumes[k]
+			vol[1] = vol[1] + ' ' + units[k]
+			res.push(vol)
+		}
+		
+		return res
+	},
+	
 	compareByGroup: function (a, b)
 	{
 		var groups = Me.groups
