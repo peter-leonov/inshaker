@@ -27,8 +27,8 @@ Me.prototype =
 		{
 			var parts = substr.split(/ +/)
 			
-			var rows = this.searchInSet(this.ingredients, parts)
-			res = cache[substr] = this.renderRows(rows, parts, this.names, count)
+			var values = this.searchInSet(this.ingredients, parts, count)
+			res = cache[substr] = this.renderRows(values, parts, this.names)
 		}
 		
 		var withouts = this.withouts,
@@ -44,7 +44,7 @@ Me.prototype =
 		return filtered
 	},
 	
-	searchInSet: function (set, parts)
+	searchInSet: function (set, parts, count)
 	{
 		parts = parts.slice()
 		// first search for the most lengthy part
@@ -82,16 +82,20 @@ Me.prototype =
 		
 		rows.sort(this.sortByWeight)
 		
-		return rows
+		var res = []
+		for (var i = 0, il = rows.length; i < il && i < count; i++)
+			res[i] = rows[i][1]
+		
+		return res
 	},
 	
-	renderRows: function (rows, parts, names, count)
+	renderRows: function (values, parts, names)
 	{
 		var res = []
 		
-		for (var i = 0, il = rows.length; i < il && count-- > 0; i++)
+		for (var i = 0, il = values.length; i < il; i++)
 		{
-			var v = rows[i]//, m = v[2]
+			var v = values[i]
 			
 			var text = N('span')
 			// if (m[1])
@@ -101,7 +105,6 @@ Me.prototype =
 			// if (m[3])
 			// 	text.appendChild(T(m[4] + m[5]))
 			
-			v = v[1]
 			text.appendChild(T(v))
 			var name = names[v]
 			if (name)
