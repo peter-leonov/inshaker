@@ -200,6 +200,9 @@ Object.extend(Cocktail,
 	
 	getByIngredientNames: function (names, opts)
 	{
+		if (!opts)
+			opts = {}
+		
 		var db = opts.db || this.db
 		var count = opts.count || names.length
 		var searchGarnish = opts.searchGarnish
