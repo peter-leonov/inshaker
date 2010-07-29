@@ -105,6 +105,7 @@ Me.prototype =
 		{
 			var v = values[i]
 			
+			
 			// find all sun-matches
 			var matches = []
 			for (var j = 0, jl = rexes.length; j < jl; j++)
@@ -119,6 +120,7 @@ Me.prototype =
 				var begin = rex.lastIndex - m[1].length
 				matches.push([begin, begin + rex.part.length])
 			}
+			
 			
 			// sort sub-matches so as the nearest left and biggest will be first
 			function byPositionAndLength (a, b)
