@@ -189,22 +189,20 @@ Object.extend(Cocktail,
         return res;
     },
     
-	getByIngredients: function (ingredients, db, count)
+	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names, db, count)
+		return this.getByIngredientNames(names, opts)
 	},
 	
-	getByIngredientNames: function (names, db, count)
+	getByIngredientNames: function (names, opts)
 	{
-		if (!db)
-			db = this.db
-		
-		if (!count)
-			count = names.length
+		var db = opts.db || this.db
+		var count = opts.count || names.length
+		var searchGarnish = opts.searchGarnish
 		
 		// caching names of requested ingredients
 		var hash = {}
@@ -217,16 +215,33 @@ Object.extend(Cocktail,
 			var cocktail = db[i],
 				matches = 0
 			
-			var ci = cocktail.ingredients
-			for (var j = 0, jl = ci.length; j < jl; j++)
-				if (hash[ci[j][0]]) // [0] for ingredient name
-					if (++matches == count)
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						break
-					}
-			// here when cocktail does not pass
+			// always search trough ingredients field
+			{
+				var set = cocktail.ingredients
+				for (var j = 0, jl = set.length; j < jl; j++)
+					if (hash[set[j][0]]) // [0] for ingredient name
+						if (++matches == count)
+						{
+							// ta-da we'v found one
+							res.push(cocktail)
+							break
+						}
+			}
+			// here if cocktail does not pass by ingredients
+			
+			if (searchGarnish)
+			{
+				var set = cocktail.garnish
+				for (var j = 0, jl = set.length; j < jl; j++)
+					if (hash[set[j][0]]) // [0] for ingredient name
+						if (++matches == count)
+						{
+							// ta-da we'v found one
+							res.push(cocktail)
+							break
+						}
+			}
+			// here if cocktail does not pass at all
 		}
 		return res.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 	},

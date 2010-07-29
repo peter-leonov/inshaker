@@ -9,7 +9,7 @@ var Model = {
 	
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
-		this.ingredients = this.cocktail.ingredients.sort(Ingredient.sortByGroups);
+		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
 		this.tools = Tool.tools;
 		
 		this.recs = this._findRecs(this.cocktail);

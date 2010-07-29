@@ -56,7 +56,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
-        this.tidyIngredientsList(Model.ingredients);
+		this.tidyIngredientsList(Model.ingredients);
 	},
 	
 	bindEvents: function(name){

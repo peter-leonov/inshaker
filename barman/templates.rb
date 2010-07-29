@@ -15,6 +15,7 @@ class CocktailTemplate
     @tools       = hash["tools"]
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
+    @garnish     = hash["garnish"]
     @video       = hash["video"]
     
     @recs        = hash["recs"]

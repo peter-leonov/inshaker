@@ -120,6 +120,20 @@ class CocktailsProcessor < Barman::Processor
       end
     end
     end # indent
+    
+    say "проверяю украшения"
+    indent do
+    @cocktails.each do |name, cocktail|
+      cocktail["garnish"].each do |ingred|
+        unless @all_ingredients[ingred[0]]
+          error "#{name}: нет такого ингредиента «#{ingred[0]}»"
+          if ingred[0].has_diacritics
+            say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+          end
+        end
+      end
+    end
+    end # indent
   end
   
   def prepare_cocktails
@@ -300,6 +314,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["strength"] = about["Крепость"]
     @cocktail["tags"] = about["Группы"]
     @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
