@@ -16,36 +16,36 @@ Me.prototype =
 {
 	search: function (substr, count)
 	{
-		var cache = this.cache, res
+		var cache = this.cache
 		
 		substr = substr.trim()
 		if (substr === '')
-			res = []
-		else
+			return []
+		
+		var res
+		if (!(res = cache[substr]))
 		{
-			if (!(res = cache[substr]))
-				res = cache[substr] = this.searchInSet(this.ingredients, this.names, substr, count)
-			
-			var withouts = this.withouts,
-				filtered = []
-			
-			for (var i = 0, il = res.length; i < il; i ++)
-			{
-				var row = res[i]
-				if (!withouts[row[0]])
-					filtered.push(row)
-			}
-			
-			res = filtered
+			var matches = this.searchInSet(this.ingredients, substr)
+			res = cache[substr] = this.renderMatches(matches, this.names, substr, count)
 		}
 		
-		return res
+		var withouts = this.withouts,
+			filtered = []
+		
+		for (var i = 0, il = res.length; i < il; i ++)
+		{
+			var row = res[i]
+			if (!withouts[row[0]])
+				filtered.push(row)
+		}
+		
+		return filtered
 	},
 	
-	searchInSet: function (set, names, substr, count)
+	searchInSet: function (set, substr)
 	{
 		var rex = new RegExp('(^|.*[ \\-])((' + RegExp.escape(substr) + ')(.*?))([ \\-].*|$)', 'i'),
-			matches = [], res = []
+			matches = []
 		
 		for (var i = 0, il = set.length; i < il; i++)
 		{
@@ -59,7 +59,14 @@ Me.prototype =
 			}
 		}
 		
-		matches = matches.sort(this.sortByWeight)
+		matches.sort(this.sortByWeight)
+		
+		return matches
+	},
+	
+	renderMatches: function (matches, names, substr, count)
+	{
+		var res = []
 		
 		for (var i = 0, il = matches.length; i < il && count-- > 0; i++)
 		{
