@@ -128,6 +128,19 @@ Me.prototype =
 			
 			matches.sort(byPositionAndLength)
 			
+			
+			// filt-out overlays
+			var last = 0, filtered = []
+			for (var j = 0, jl = matches.length; j < jl; j++)
+			{
+				var m = matches[j]
+				if (m[0] < last)
+					continue
+				
+				filtered.push(m)
+				last = m[1]
+			}
+			matches = filtered
 			var text = N('span')
 			// if (m[1])
 			// 	text.appendChild(T(m[1]))
