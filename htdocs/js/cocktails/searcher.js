@@ -141,15 +141,30 @@ Me.prototype =
 				last = m[1]
 			}
 			matches = filtered
-			var text = N('span')
-			// if (m[1])
-			// 	text.appendChild(T(m[1]))
-			// // m[2] is used instead of substr because m[2] != substr when searching with "i"
-			// text.appendChild(Nct('span', 'substr', m[3]))
-			// if (m[3])
-			// 	text.appendChild(T(m[4] + m[5]))
 			
-			text.appendChild(T(v))
+			
+			// split value into row of nodes
+			var text = N('span')
+			
+			var pos = 0
+			for (var j = 0, jl = matches.length; j < jl; j++)
+			{
+				var m = matches[j],
+					begin = m[0],
+					end = m[1]
+				
+				if (pos != begin)
+					text.appendChild(T(v.substring(pos, begin)))
+				
+				text.appendChild(Nct('span', 'substr', v.substring(begin, end)))
+				
+				pos = end
+			}
+			
+			if (pos < v.length)
+				text.appendChild(T(v.substring(pos)))
+			
+			
 			var name = names[v]
 			if (name)
 			{
