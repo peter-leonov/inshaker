@@ -18,7 +18,7 @@ Me.prototype =
 	{
 		var cache = this.cache, res
 		
-		substr = substr.replace(/^\s+|\s+$/g, '') // trim
+		substr = substr.trim()
 		if (substr === '')
 			res = []
 		else
