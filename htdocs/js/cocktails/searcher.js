@@ -27,8 +27,8 @@ Me.prototype =
 		{
 			var parts = substr.split(/ +/)
 			
-			var matches = this.searchInSet(this.ingredients, parts)
-			res = cache[substr] = this.renderMatches(matches, parts, this.names, count)
+			var rows = this.searchInSet(this.ingredients, parts)
+			res = cache[substr] = this.renderRows(rows, parts, this.names, count)
 		}
 		
 		var withouts = this.withouts,
@@ -58,7 +58,7 @@ Me.prototype =
 			rexes[i] = new RegExp('(^|.*[ \\-])(' + RegExp.escape(parts[i]) + '[^ \\-]*)', 'i')
 		
 		
-		var matches = [], rl = rexes.length
+		var rows = [], rl = rexes.length
 		set: for (var i = 0, il = set.length; i < il; i++)
 		{
 			var v = set[i]
@@ -77,21 +77,21 @@ Me.prototype =
 				weight += (10000 * m[2].length) + m[1].length
 			}
 			
-			matches.push([weight, v])
+			rows.push([weight, v])
 		}
 		
-		matches.sort(this.sortByWeight)
+		rows.sort(this.sortByWeight)
 		
-		return matches
+		return rows
 	},
 	
-	renderMatches: function (matches, parts, names, count)
+	renderRows: function (rows, parts, names, count)
 	{
 		var res = []
 		
-		for (var i = 0, il = matches.length; i < il && count-- > 0; i++)
+		for (var i = 0, il = rows.length; i < il && count-- > 0; i++)
 		{
-			var v = matches[i]//, m = v[2]
+			var v = rows[i]//, m = v[2]
 			
 			var text = N('span')
 			// if (m[1])
