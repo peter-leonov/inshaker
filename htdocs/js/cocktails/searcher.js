@@ -25,8 +25,10 @@ Me.prototype =
 		var res
 		if (!(res = cache[substr]))
 		{
-			var matches = this.searchInSet(this.ingredients, substr)
-			res = cache[substr] = this.renderMatches(matches, this.names, substr, count)
+			var parts = substr.split(/ +/)
+			
+			var matches = this.searchInSet(this.ingredients, parts)
+			res = cache[substr] = this.renderMatches(matches, parts, this.names, count)
 		}
 		
 		var withouts = this.withouts,
@@ -42,21 +44,40 @@ Me.prototype =
 		return filtered
 	},
 	
-	searchInSet: function (set, substr)
+	searchInSet: function (set, parts)
 	{
-		var rex = new RegExp('(^|.*[ \\-])((' + RegExp.escape(substr) + ')(.*?))([ \\-].*|$)', 'i'),
-			matches = []
+		parts = parts.slice()
+		// first search for the most lengthy part
+		parts.sort(this.sortByLength)
 		
-		for (var i = 0, il = set.length; i < il; i++)
+		// lightweight rex for initial filtering
+		var filter = new RegExp('(?:^|[ \\-])' + RegExp.escape(parts[0]), 'i')
+		
+		var rexes = []
+		for (var i = 0, il = parts.length; i < il; i++)
+			rexes[i] = new RegExp('(^|.*[ \\-])(' + RegExp.escape(parts[i]) + '[^ \\-]*)', 'i')
+		
+		
+		var matches = [], rl = rexes.length
+		set: for (var i = 0, il = set.length; i < il; i++)
 		{
-			var m, v = set[i]
-			if (m = rex.exec(v))
+			var v = set[i]
+			
+			if (!filter.test(v))
+				continue set
+			
+			var weight = 0
+			for (var j = 0; j < rl; j++)
 			{
-				// log(m)
-				// matches.push([(10000 * m[2].length) + (100 * m[1].length) + v.length, v, m])
-				// matches.push([1000 * m[2].length + v.length, v, m])
-				matches.push([m[2].length, v, m])
+				var m = rexes[j].exec(v)
+				if (!m)
+					continue set
+				
+				// weight += (10000 * m[2].length) + (100 * m[1].length) + v.length
+				weight += (10000 * m[2].length) + m[1].length
 			}
+			
+			matches.push([weight, v])
 		}
 		
 		matches.sort(this.sortByWeight)
@@ -64,23 +85,24 @@ Me.prototype =
 		return matches
 	},
 	
-	renderMatches: function (matches, names, substr, count)
+	renderMatches: function (matches, parts, names, count)
 	{
 		var res = []
 		
 		for (var i = 0, il = matches.length; i < il && count-- > 0; i++)
 		{
-			var v = matches[i], m = v[2]
+			var v = matches[i]//, m = v[2]
 			
 			var text = N('span')
-			if (m[1])
-				text.appendChild(T(m[1]))
-			// m[2] is used instead of substr because m[2] != substr when searching with "i"
-			text.appendChild(Nct('span', 'substr', m[3]))
-			if (m[3])
-				text.appendChild(T(m[4] + m[5]))
+			// if (m[1])
+			// 	text.appendChild(T(m[1]))
+			// // m[2] is used instead of substr because m[2] != substr when searching with "i"
+			// text.appendChild(Nct('span', 'substr', m[3]))
+			// if (m[3])
+			// 	text.appendChild(T(m[4] + m[5]))
 			
 			v = v[1]
+			text.appendChild(T(v))
 			var name = names[v]
 			if (name)
 			{
@@ -94,7 +116,8 @@ Me.prototype =
 		return res
 	},
 	
-	sortByWeight: function (a, b) { return a[0] - b[0] }
+	sortByWeight: function (a, b) { return a[0] - b[0] },
+	sortByLength: function (a, b) { return b.length - a.length }
 }
 
 Me.className = myName
