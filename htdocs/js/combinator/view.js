@@ -43,6 +43,17 @@ var myProto =
 	
 	renderCocktails: function (cocktails)
 	{
+		var output = this.nodes.output
+		
+		output.removeClassName('initial-state')
+		output.removeClassName('result-state')
+		output.removeClassName('empty-state')
+		
+		if (cocktails.length)
+			output.addClassName('result-state')
+		else
+			output.addClassName('empty-state')
+		
 		this.inco.setCocktails(cocktails)
 	}
 }
