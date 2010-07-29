@@ -18,23 +18,30 @@ html { overflow-y: scroll;  }
 #search-box .autocomplete .item.selected { background-color: #d2d2d2; }
 #search-box .autocomplete .item .substr { font-weight: bold; }
 
+#output .initial-block,
+#output .result-block,
+#output .empty-block { display: none; }
 
-#output .row { margin: 50px 0 0 0; position: relative; }
-#output .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
-#output .row.lines-0 { height: 155px; }
-#output .row.lines-1 { height: 155px; }
-#output .row.lines-2 { height: 310px; }
-#output .row.lines-3 { height: 465px; }
-#output .row.lines-4 { height: 620px; }
-#output .row.lines-5 { height: 775px; }
+#output.initial-state .initial-block { display: block; }
+#output.result-state .result-block { display: block; }
+#output.empty-state .empty-block { display: block; }
 
-#output .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
+.ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; }
+.ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
+.ingrediented-cocktail-list .row.lines-0 { height: 155px; }
+.ingrediented-cocktail-list .row.lines-1 { height: 155px; }
+.ingrediented-cocktail-list .row.lines-2 { height: 310px; }
+.ingrediented-cocktail-list .row.lines-3 { height: 465px; }
+.ingrediented-cocktail-list .row.lines-4 { height: 620px; }
+.ingrediented-cocktail-list .row.lines-5 { height: 775px; }
 
-#output .row .head { width: 200px; position: absolute; }
-#output .row .head .operator { margin: 0; }
+.ingrediented-cocktail-list .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
 
-#output .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
-#output .row .body .operator { color: #ccc; }
+.ingrediented-cocktail-list .row .head { width: 200px; position: absolute; }
+.ingrediented-cocktail-list .row .head .operator { margin: 0; }
+
+.ingrediented-cocktail-list .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
+.ingrediented-cocktail-list .row .body .operator { color: #ccc; }
 
 
 
@@ -47,7 +54,3 @@ html { overflow-y: scroll;  }
 .ingredient-preview .image { width: 100px; height: 100px; }
 .ingredient-preview .image { display: block; color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
-
-
-
-.ingrediented-cocktail-list {  }

@@ -18,7 +18,7 @@ var myProto =
 		this.nodes = nodes
 		
 		var inco = this.inco = new IngredientedCocktailList()
-		inco.bind({main: nodes.output})
+		inco.bind({main: nodes.cocktailList})
 		
 		var me = this
 		

@@ -54,6 +54,7 @@ function onready ()
 	var nodes =
 	{
 		output: $('output'),
+		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		ingredientInput: $$('#search-box .ingredient')[0],
 		ingredientComplete: $$('#search-box .autocomplete')[0]
 	}
