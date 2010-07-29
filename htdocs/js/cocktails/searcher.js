@@ -93,10 +93,32 @@ Me.prototype =
 	{
 		var res = []
 		
+		var rexes = []
+		for (var i = 0, il = parts.length; i < il; i++)
+		{
+			var p = parts[i]
+			var rex = rexes[i] = new RegExp('(?:^|.*[ \\-])(' + RegExp.escape(p) + '[^ \\-]*)', 'gi')
+			rex.part = p
+		}
+		
 		for (var i = 0, il = values.length; i < il; i++)
 		{
 			var v = values[i]
 			
+			// find all sun-matches
+			var matches = []
+			for (var j = 0, jl = rexes.length; j < jl; j++)
+			{
+				var rex = rexes[j]
+				
+				rex.lastIndex = 0
+				var m = rex.exec(v)
+				if (!m)
+					continue
+				
+				var begin = rex.lastIndex - m[1].length
+				matches.push([begin, begin + rex.part.length])
+			}
 			var text = N('span')
 			// if (m[1])
 			// 	text.appendChild(T(m[1]))
