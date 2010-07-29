@@ -119,6 +119,15 @@ Me.prototype =
 				var begin = rex.lastIndex - m[1].length
 				matches.push([begin, begin + rex.part.length])
 			}
+			
+			// sort sub-matches so as the nearest left and biggest will be first
+			function byPositionAndLength (a, b)
+			{
+				return a[0] - b[0] || (b[1] - b[0]) - (a[1] - a[0])
+			}
+			
+			matches.sort(byPositionAndLength)
+			
 			var text = N('span')
 			// if (m[1])
 			// 	text.appendChild(T(m[1]))
