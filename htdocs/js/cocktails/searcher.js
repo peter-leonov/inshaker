@@ -54,6 +54,7 @@ Me.prototype =
 			{
 				// log(m)
 				// matches.push([(10000 * m[2].length) + (100 * m[1].length) + v.length, v, m])
+				// matches.push([1000 * m[2].length + v.length, v, m])
 				matches.push([m[2].length, v, m])
 			}
 		}
