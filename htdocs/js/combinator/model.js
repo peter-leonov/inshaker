@@ -37,6 +37,12 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
+		if (!add || !remove)
+		{
+			this.view.renderCocktails(null)
+			return
+		}
+		
 		add = this.filtRealIngredients(add)
 		remove = this.filtRealIngredients(remove)
 		
