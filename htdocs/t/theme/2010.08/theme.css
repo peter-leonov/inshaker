@@ -69,6 +69,12 @@ button.strong b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
+/* ingredients */
+#menu .tweaker .list .item { background-color: #eee; }
+#menu .tweaker .list .item:hover { background-color: #ccc; }
+#menu .tweaker .list .item.selected { background-color: #999; color: #fff; }
+
+
 /* matching.css */
 #top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
 #top-alphabetical .item.selected .name { color: #fff; }
