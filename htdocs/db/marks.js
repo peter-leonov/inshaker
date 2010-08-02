@@ -18,5 +18,6 @@
 {"name":"Nonino","path":"nonino"},
 {"name":"Olmeca","path":"olmeca"},
 {"name":"Olmeca Altos","path":"olmeca-altos"},
+{"name":"Pere Magloire","path":"pere-magloire"},
 {"name":"Simple","path":"simple"}
 ]
