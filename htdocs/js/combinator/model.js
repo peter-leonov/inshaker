@@ -37,7 +37,7 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
-		if (!add || !remove)
+		if (!add.length && !remove.length)
 		{
 			this.view.renderCocktails(null)
 			return

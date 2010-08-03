@@ -162,6 +162,9 @@ Me.prototype =
 		{
 			var t = tokens[i]
 			
+			if (!t.value)
+				continue
+			
 			var op = t.op
 			if (op == '+')
 				add.push(t.value)
