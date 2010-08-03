@@ -5,7 +5,6 @@ var myName = 'AddingInputAutocompleter'
 function Me ()
 {
 	this.nodes = {}
-	this.tokens = {active:{}}
 	this.constructor = Me
 }
 
@@ -29,6 +28,8 @@ Me.prototype =
 		var me = this
 		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
 		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
+		
+		this.updateTokens(nodes.main.value, nodes.main.selectionEnd)
 		
 		return this
 	},
