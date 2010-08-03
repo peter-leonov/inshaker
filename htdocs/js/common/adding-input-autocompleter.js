@@ -5,6 +5,7 @@ var myName = 'AddingInputAutocompleter'
 function Me ()
 {
 	this.nodes = {}
+	this.tokens = {active:{}}
 	this.constructor = Me
 }
 
