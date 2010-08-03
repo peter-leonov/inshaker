@@ -13,7 +13,7 @@ Me.prototype =
 	// ignore “non-content” keycodes
 	ignoreKeys: {9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 38:1, 18:1, 91:1},
 	preventKeys: {40:1},
-	actionKeys: {37:'cursor', 39:'cursor', 40:'search', 13:'accept'},
+	actionKeys: {37:'cursor', 39:'cursor', 40:'search', 13:'apply'},
 	
 	bind: function (nodes)
 	{
@@ -95,6 +95,11 @@ Me.prototype =
 		this.updateTokens(v, cursor)
 		if (active != tokens.active)
 			this.reset()
+	},
+	
+	apply: function (v, cursor)
+	{
+		this.accept(v)
 	},
 	
 	select: function (value)
