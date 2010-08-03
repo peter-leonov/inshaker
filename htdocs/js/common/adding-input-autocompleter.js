@@ -23,8 +23,8 @@ Me.prototype =
 		var completer = this.completer = new Autocompleter()
 		completer.bind(nodes)
 		
-		completer.addEventListener('accept', function (e) { me.accept(e.value, e.source) }, false)
-		completer.addEventListener('select', function (e) { me.select(e.value, e.source) }, false)
+		completer.addEventListener('accept', function (e) { me.accept(e.value) }, false)
+		completer.addEventListener('select', function (e) { me.select(e.value) }, false)
 		
 		var me = this
 		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
@@ -96,11 +96,8 @@ Me.prototype =
 			this.reset()
 	},
 	
-	select: function (value, source)
+	select: function (value)
 	{
-		if (value == null)
-			value = source
-		
 		var tokens = this.tokens,
 			input = this.nodes.main
 		
@@ -109,12 +106,12 @@ Me.prototype =
 		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
 	},
 	
-	accept: function (value, source)
+	accept: function (value)
 	{
-		this.select(value, source)
+		this.select(value)
 		
 		var parts = this.getParts()
-		this.dispatchEvent({type: 'accept', source: source, value: value, add: parts.add, remove: parts.remove})
+		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
 	},
 	
 	updateTokens: function (value, cursor)
