@@ -89,7 +89,7 @@ Me.prototype =
 	cursor: function (v, cursor)
 	{
 		var tokens = this.tokens
-
+		
 		var active = tokens.active
 		this.updateTokens(v, cursor)
 		if (active != tokens.active)
