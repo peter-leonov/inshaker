@@ -282,8 +282,18 @@ var myProto =
 		if (this.selected === num)
 			return
 		
-		var res = this.results[num]
-		if (!this.parent.dispatchEvent({type: 'select', source: this.value, num: num, value: res ? res[0] : null}))
+		var v, res = this.results[num]
+		if (res)
+		{
+			v = res[0]
+		}
+		else
+		{
+			v = new String(this.value)
+			v.source = true
+		}
+			
+		if (!this.parent.dispatchEvent({type: 'select', num: num, value: v}))
 			return false
 		
 		this.selected = num
@@ -304,8 +314,18 @@ var myProto =
 		if (this.select(num) === false)
 			return false
 		
-		var res = this.results[num]
-		if (!this.parent.dispatchEvent({type: 'accept', source: this.value, num: num, value: res ? res[0] : null}))
+		var v, res = this.results[num]
+		if (res)
+		{
+			v = res[0]
+		}
+		else
+		{
+			v = new String(this.value)
+			v.source = true
+		}
+		
+		if (!this.parent.dispatchEvent({type: 'accept', num: num, value: v}))
 			return false
 		
 		this.reset()
