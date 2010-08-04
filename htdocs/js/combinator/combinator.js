@@ -20,6 +20,8 @@ var myProto =
 		this.model.bind(sources)
 		this.controller.bind(state)
 		
+		this.view.searchButtonClicked()
+		
 		return this
 	}
 }
