@@ -97,9 +97,10 @@ Me.prototype =
 			this.reset()
 	},
 	
-	apply: function (value, cursor)
+	apply: function (value)
 	{
 		var parts = this.getParts()
+		this.completer.reset()
 		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
 	},
 	
