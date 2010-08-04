@@ -59,7 +59,8 @@ function onready ()
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		ingredientInput: $$('#search-box .ingredient')[0],
 		searchButton: $$('#search-box .search')[0],
-		ingredientComplete: $$('#search-box .autocomplete')[0]
+		ingredientComplete: $$('#search-box .autocomplete')[0],
+		totalCocktails: $$('#output .result-block .total-cocktails .count')[0]
 	}
 	
 	var widget = new CombinatorPage()

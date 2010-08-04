@@ -28,6 +28,8 @@ html { overflow-y: scroll;  }
 #output.result-state .result-block { display: block; }
 #output.empty-state .empty-block { display: block; }
 
+#output .result-block .head { font-size: 14px; }
+
 .ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; }
 .ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
 .ingrediented-cocktail-list .row.lines-0 { height: 155px; }
