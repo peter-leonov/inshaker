@@ -78,6 +78,7 @@ var myProto =
 		output.addClassName('result-state')
 		inco.setCocktails(cocktails)
 		
+		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 	}
 }
 
