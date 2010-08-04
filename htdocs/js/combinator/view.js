@@ -29,6 +29,19 @@ var myProto =
 		
 		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
 		
+		var s = this.sortbySelect = new Selecter()
+		s.bind(nodes.sortbySelect)
+		s.addEventListener('select', function (e) { log(e.data.value) }, false)
+		
+		this.renderSortby
+		([
+			'от простых к сложным',
+			'от сложных к простым',
+			'по алфавиту',
+			'по группам',
+			'по дате размещения'
+		])
+		
 		return this
 	},
 	
@@ -47,6 +60,15 @@ var myProto =
 		this.controller.setIngredientsNames(add, remove)
 	},
 	
+	renderSortby: function (options, selected)
+	{
+		var s = this.sortbySelect
+		s.setOptions(options)
+		if (selected)
+			s.renderSelectedValue(selected)
+		else
+			s.renderSelected(0)
+	},
 	
 	renderCocktails: function (cocktails)
 	{

@@ -34,7 +34,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
 
-<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
+<!--# include virtual="/lib-0.3/widgets/selecter.js" -->
 
 <!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
@@ -60,7 +60,14 @@ function onready ()
 		ingredientInput: $$('#search-box .ingredient')[0],
 		searchButton: $$('#search-box .search')[0],
 		ingredientComplete: $$('#search-box .autocomplete')[0],
-		totalCocktails: $$('#output .result-block .total-cocktails .count')[0]
+		totalCocktails: $$('#output .result-block .total-cocktails .count')[0],
+		
+		sortbySelect:
+		{
+			main: $('sortby-select'),
+			button: $$('#sortby-select .button')[0],
+			options: $$('#sortby-select .options')[0]
+		}
 	}
 	
 	var widget = new CombinatorPage()

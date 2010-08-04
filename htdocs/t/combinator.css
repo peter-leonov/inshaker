@@ -29,6 +29,24 @@ html { overflow-y: scroll;  }
 #output.empty-state .empty-block { display: block; }
 
 #output .result-block .head { font-size: 14px; }
+#output .result-block .head .total-cocktails .count { font-style: normal; font-weight: bold; }
+
+.dropdown-select { z-index: 1; }
+.dropdown-select,
+.dropdown-select .button { display: inline; position: relative; }
+
+.dropdown-select .button { position: relative; z-index: 1; cursor: pointer; border-bottom: 1px dashed; }
+.dropdown-select.single .button { cursor: default; color: inherit; }
+.dropdown-select .body { display: none; position: absolute; left: -17px; top: -9px; }
+.dropdown-select .body .options { position: relative; padding: 25px 15px 10px; background-color: #fff; border: 2px solid #ccc; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
+.dropdown-select .body .options .option.selected { display: none; }
+.dropdown-select .body .options .option:hover {}
+.dropdown-select.open .body { display: block; }
+.dropdown-select.open .button { cursor: default; }
+
+
+
 
 .ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; }
 .ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
