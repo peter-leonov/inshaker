@@ -96,12 +96,20 @@ var myProto =
 	{
 		var Ingredient = this.ds.ingredient
 		
-		var res = []
+		var res = [], seen = {}
 		for (var i = 0, il = arr.length; i < il; i++)
 		{
 			var ingredient = Ingredient.getByNameCI(arr[i])
-			if (ingredient)
-				res.push(ingredient.name)
+			if (!ingredient)
+				continue
+			
+			var name = ingredient.name
+			if (seen[name])
+				continue
+			
+			seen[name] = true
+			
+			res.push(name)
 		}
 		return res
 	},
