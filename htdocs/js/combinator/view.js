@@ -50,24 +50,34 @@ var myProto =
 	
 	renderCocktails: function (cocktails)
 	{
-		var output = this.nodes.output
+		var nodes = this.nodes,
+			output = nodes.output
 		
 		output.removeClassName('initial-state')
 		output.removeClassName('result-state')
 		output.removeClassName('empty-state')
 		
+		var inco = this.inco
+		
 		if (!cocktails)
 		{
 			output.addClassName('initial-state')
+			inco.setCocktails([])
 			return
 		}
 		
-		if (cocktails.length)
-			output.addClassName('result-state')
-		else
-			output.addClassName('empty-state')
+		var total = cocktails.length
 		
-		this.inco.setCocktails(cocktails)
+		if (total == 0)
+		{
+			output.addClassName('empty-state')
+			inco.setCocktails(cocktails)
+			return
+		}
+		
+		output.addClassName('result-state')
+		inco.setCocktails(cocktails)
+		
 	}
 }
 
