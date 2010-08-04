@@ -25,10 +25,16 @@ var myProto =
 		var completer = this.completer = new AddingInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryUpdated(e.add, e.remove) }, false)
-		// completer.addEventListener('empty', function (e) { me.queryUpdated(null, null) }, false)
 		nodes.ingredientInput.focus()
 		
+		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
+		
 		return this
+	},
+	
+	searchButtonClicked: function ()
+	{
+		this.completer.apply(this.nodes.ingredientInput.value)
 	},
 	
 	setCompleterDataSource: function (ds)
