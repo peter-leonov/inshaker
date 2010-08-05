@@ -6,8 +6,8 @@ html { overflow-y: scroll;  }
 .b-content { width: 100%; }
 .body-wrapper { z-index: 2; }
 
-#search-box { position: absolute; z-index: 100; top: 3px; left: 165px; }
-#search-box .ingredient { padding: 2px; color: inherit; width: 555px; }
+#search-box { position: absolute; z-index: 100; top: 3px; left: 0px; }
+#search-box .ingredient { padding: 2px; color: inherit; width: 755px; }
 #search-box .ingredient,
 #search-box .search { font-size: 20px; vertical-align: middle; }
 
