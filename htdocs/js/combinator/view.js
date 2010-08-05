@@ -29,9 +29,11 @@ var myProto =
 		
 		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
 		
+		var controller = this.controller
+		
 		var s = this.sortbySelect = new Selecter()
 		s.bind(nodes.sortbySelect)
-		s.addEventListener('select', function (e) { log(e.data.value) }, false)
+		s.addEventListener('select', function (e) { controller.setSortBy(+e.data.num) }, false)
 		
 		return this
 	},

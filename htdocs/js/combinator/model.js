@@ -17,6 +17,26 @@ var myProto =
 		this.ds = {}
 		this.state = {}
 		this.searcheCache = {}
+		
+		this.sortByNames =
+		[
+			'от простых к сложным',
+			'от сложных к простым',
+			'по алфавиту',
+			'по группам'
+			// 'по дате размещения'
+		]
+		
+		this.sortTypeByNum =
+		[
+			'increasing-complexity',
+			'decreasing-complexity',
+			'alphabetically',
+			'by-group'
+			// 'by-date'
+		]
+		
+		this.sortBy = 'increasing-complexity'
 	},
 	
 	bind: function (ds)
@@ -34,45 +54,102 @@ var myProto =
 		var searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
 		
-		this.view.renderSortby
-		([
-			'от простых к сложным',
-			'от сложных к простым',
-			'по алфавиту',
-			'по группам',
-			'по дате размещения'
-		])
-		
+		this.view.renderSortby(this.sortByNames)
 	},
 	
-	setIngredientsNames: function (add, remove)
+	updateData: function ()
 	{
+		var add = this.add,
+			remove = this.remove
+		
+		
 		if (!add.length && !remove.length)
 		{
 			this.view.renderCocktails(null)
 			return
 		}
 		
+		var cocktails = this.getCocktailsByIngredients(add, remove)
+		
+		var sorted
+		switch (this.sortBy)
+		{
+			case 'increasing-complexity':
+				sorted = this.sortByIncreasingComplexity(cocktails)
+			break
+			
+			case 'decreasing-complexity':
+				sorted = this.sortByDecreasingComplexity(cocktails)
+			break
+			
+			case 'alphabetically':
+				sorted = this.sortAlphabetically(cocktails)
+			break
+			
+			case 'by-group':
+				sorted = this.sortByGroup(cocktails)
+			break
+		}
+		
+		// oowf, need to update the view
+		this.view.renderCocktails(sorted)
+	},
+	
+	sortByIncreasingComplexity: function (cocktails)
+	{
+		cocktails = cocktails.slice()
+		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		return [{name: 'от простых к сложным', cocktails: cocktails}]
+	},
+	
+	sortByDecreasingComplexity: function (cocktails)
+	{
+		cocktails = cocktails.slice()
+		cocktails.sort(function (a, b) { return b.ingredients.length - a.ingredients.length })
+		return [{cocktails: cocktails}]
+	},
+	
+	sortAlphabetically: function (cocktails)
+	{
+		cocktails.sort(function (a, b) { return a.name.localeCompare(b.name) })
+		return [{cocktails: cocktails}]
+	},
+	
+	sortByGroup: function (cocktails)
+	{
+		
+		return [{name: 'по группам', cocktails: cocktails}]
+	},
+	
+	setIngredientsNames: function (add, remove)
+	{
 		add = this.filtRealIngredients(add)
 		remove = this.filtRealIngredients(remove)
 		
-		var key = add.join(':') + '::' + remove.join(':')
+		this.add = add
+		this.remove = remove
 		
-		// do not redraw the same set
-		if (this.lastKey == key)
-			return
-		this.lastKey = key
+		this.updateData()
+	},
+	
+	setSortBy: function (typeNum)
+	{
+		this.sortBy = this.sortTypeByNum[typeNum]
+		
+		this.updateData()
+	},
+	
+	
+	getCocktailsByIngredients: function (add, remove)
+	{
+		var key = add.join(':') + '::' + remove.join(':')
 		
 		// look up the cache
 		var cocktails = this.searcheCache[key]
 		if (!cocktails)
-		{
 			cocktails = this.searcheCache[key] = this.searchCocktails(add, remove)
-			cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
-		}
 		
-		// oowf, need to update the view
-		this.view.renderCocktails(cocktails)
+		return cocktails
 	},
 	
 	searchCocktails: function (add, remove)
