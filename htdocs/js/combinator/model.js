@@ -136,9 +136,21 @@ var myProto =
 			}
 		}
 		
+		var tags = this.ds.cocktail.tags,
+			sorted = []
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			if (byTag[tag])
+				sorted.push(tag)
+		}
+		
 		var groups = []
-		for (var k in byTag)
-			groups.push({name: k, cocktails: byTag[k]})
+		for (var i = 0, il = sorted.length; i < il; i++)
+		{
+			var tag = sorted[i]
+			groups.push({name: tag, cocktails: byTag[tag]})
+		}
 		
 		return groups
 	},
