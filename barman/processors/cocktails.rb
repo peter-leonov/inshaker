@@ -310,11 +310,6 @@ class CocktailsProcessor < Barman::Processor
     
     about = load_yaml("#{dir.path}/about.yaml")
     
-    # @cocktail["added"] = File.ctime(legend_path)
-    # yaml = File.read("#{dir.path}/about.yaml")
-    # yaml << %Q{\n\nДобавлен: #{@cocktail["added"].strftime("%d.%m.%Y")}}
-    # File.write("#{dir.path}/about.yaml", yaml)
-    
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
