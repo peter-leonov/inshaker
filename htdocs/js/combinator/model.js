@@ -54,7 +54,8 @@ var myProto =
 		var searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
 		
-		this.view.renderSortby(this.sortByNames)
+		this.view.renderSortbyOptions(this.sortByNames)
+		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
 	},
 	
 	updateData: function ()

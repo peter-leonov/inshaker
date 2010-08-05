@@ -53,14 +53,16 @@ var myProto =
 		this.controller.setIngredientsNames(add, remove)
 	},
 	
-	renderSortby: function (options, selected)
+	renderSortbyOptions: function (options)
 	{
 		var s = this.sortbySelect
 		s.setOptions(options)
-		if (selected)
-			s.renderSelectedValue(selected)
-		else
-			s.renderSelected(0)
+		s.renderSelected(0)
+	},
+	
+	renderSortby: function (selected)
+	{
+		this.sortbySelect.renderSelected(selected)
 	},
 	
 	renderCocktails: function (cocktails, total)
