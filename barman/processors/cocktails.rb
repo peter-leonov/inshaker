@@ -324,6 +324,12 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
+    if about["Добавлен"]
+      @cocktail["added"] = Time.gm(*about["Добавлен"].split(".").reverse.map{|v|v.to_i})
+    else
+      error "не могу найти дату доавления коктейля"
+    end
+    
     if about["Винительный падеж"]
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
@@ -377,6 +383,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_json cocktail
+    cocktail["added"] = cocktail["added"].strftime("%a, %d %b %Y %H:%M:%S GMT")
     data = {}
     root_dir = cocktail.delete("root_dir")
     @local_properties.each do |prop|
