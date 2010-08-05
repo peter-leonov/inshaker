@@ -99,7 +99,7 @@ var myProto =
 	{
 		cocktails = cocktails.slice()
 		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
-		return [{name: 'от простых к сложным', cocktails: cocktails}]
+		return [{cocktails: cocktails}]
 	},
 	
 	sortByDecreasingComplexity: function (cocktails)
