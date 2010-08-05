@@ -305,9 +305,15 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["ingredients"] = []
     @cocktail["recs"] = []
     
-    parse_legend_text File.read(dir.path + "/legend.txt")
+    legend_path = dir.path + "/legend.txt"
+    parse_legend_text File.read(legend_path)
     
     about = load_yaml("#{dir.path}/about.yaml")
+    
+    # @cocktail["added"] = File.ctime(legend_path)
+    # yaml = File.read("#{dir.path}/about.yaml")
+    # yaml << %Q{\n\nДобавлен: #{@cocktail["added"].strftime("%d.%m.%Y")}}
+    # File.write("#{dir.path}/about.yaml", yaml)
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
