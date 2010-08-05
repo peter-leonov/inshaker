@@ -117,8 +117,30 @@ var myProto =
 	
 	sortByGroup: function (cocktails)
 	{
+		var byTag = {}
 		
-		return [{name: 'по группам', cocktails: cocktails}]
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+			{
+				var tag = tags[j]
+				
+				var arr = byTag[tag]
+				if (arr)
+					arr.push(cocktail)
+				else
+					byTag[tag] = [cocktail]
+			}
+		}
+		
+		var groups = []
+		for (var k in byTag)
+			groups.push({name: k, cocktails: byTag[k]})
+		
+		return groups
 	},
 	
 	setIngredientsNames: function (add, remove)
