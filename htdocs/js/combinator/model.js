@@ -23,8 +23,8 @@ var myProto =
 			'от простых к сложным',
 			'от сложных к простым',
 			'по алфавиту',
-			'по группам'
-			// 'по дате размещения'
+			'по группам',
+			'по дате размещения'
 		]
 		
 		this.sortTypeByNum =
@@ -32,11 +32,11 @@ var myProto =
 			'increasing-complexity',
 			'decreasing-complexity',
 			'alphabetically',
-			'by-group'
-			// 'by-date'
+			'by-group',
+			'by-date'
 		]
 		
-		this.sortBy = 'increasing-complexity'
+		this.sortBy = 'by-date'
 	},
 	
 	bind: function (ds)
@@ -89,6 +89,10 @@ var myProto =
 			
 			case 'by-group':
 				sorted = this.sortByGroup(cocktails)
+			break
+			
+			case 'by-date':
+				sorted = this.sortByDate(cocktails)
 			break
 		}
 		
@@ -154,6 +158,12 @@ var myProto =
 		}
 		
 		return groups
+	},
+	
+	sortByDate: function (cocktails)
+	{
+		cocktails.sort(function (a, b) { return b.added - a.added })
+		return [{cocktails: cocktails}]
 	},
 	
 	setIngredientsNames: function (add, remove)
