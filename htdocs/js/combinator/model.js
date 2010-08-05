@@ -238,10 +238,6 @@ var myProto =
 	setState: function (state)
 	{
 		this.state = state
-		
-		// var cocktails = this.ds.cocktail.getByIngredientNames(['Малина'])
-		// cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
-		// this.view.renderCocktails(cocktails)
 	}
 }
 
