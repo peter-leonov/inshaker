@@ -92,7 +92,7 @@ var myProto =
 		}
 		
 		// oowf, need to update the view
-		this.view.renderCocktails(sorted)
+		this.view.renderCocktails(sorted, cocktails.length)
 	},
 	
 	sortByIncreasingComplexity: function (cocktails)

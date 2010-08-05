@@ -63,7 +63,7 @@ var myProto =
 			s.renderSelected(0)
 	},
 	
-	renderCocktails: function (cocktails)
+	renderCocktails: function (cocktails, total)
 	{
 		var nodes = this.nodes,
 			output = nodes.output
@@ -81,9 +81,7 @@ var myProto =
 			return
 		}
 		
-		var total = cocktails.length
-		
-		if (total == 0)
+		if (cocktails.length == 0)
 		{
 			output.addClassName('empty-state')
 			inco.setCocktails(cocktails)
