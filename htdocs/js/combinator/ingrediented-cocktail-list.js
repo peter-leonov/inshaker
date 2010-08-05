@@ -117,23 +117,34 @@ var myProto =
 		this.onscroll()
 	},
 	
-	renderRows: function (rows)
+	renderGroups: function (groups)
 	{
 		var main = this.nodes.main
 		main.empty()
 		
-		var list = N('ul'),
-			items = []
-		for (var i = 0, il = rows.length; i < il; i++)
+		for (var i = 0, il = groups.length; i < il; i++)
 		{
-			var row = rows[i],
-				ingredients = row.ingredients
+			var group = groups[i]
 			
-			var item = items[i] = Nc('li', 'row lazy lines-' + ((((ingredients.length - 1) / 5) >> 0) + 1))
-			item['data-row'] = row
-			list.appendChild(item)
+			var list = Nc('dl', 'group')
+			
+			var name = group.name
+			if (name)
+				list.appendChild(Nct('dt', 'group-name', name))
+			
+			var rows = group.rows,
+				items = []
+			for (var i = 0, il = rows.length; i < il; i++)
+			{
+				var row = rows[i],
+					ingredients = row.ingredients
+				
+				var item = items[i] = Nc('li', 'row lazy lines-' + ((((ingredients.length - 1) / 5) >> 0) + 1))
+				item['data-row'] = row
+				list.appendChild(item)
+			}
+			main.appendChild(list)
 		}
-		main.appendChild(list)
 		
 		this.setupVisibilityFrame(items)
 	},
@@ -196,27 +207,40 @@ var myProto =
 		this.state = {}
 	},
 	
-	setCocktails: function (cocktails)
+	setCocktails: function (groups)
 	{
-		this.cocktails = cocktails
+		this.groups = groups
 		
-		var rows = []
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		var res = []
+		
+		for (var i = 0, il = groups.length; i < il; i++)
 		{
-			var cocktail = cocktails[i]
+			var group = groups[i]
 			
-			var row = rows[i] = {}
-			row.cocktail = cocktail
+			var cocktails = group.cocktails
 			
-			var ingredients = row.ingredients = []
+			var rows = []
+			for (var j = 0, jl = cocktails.length; j < jl; j++)
+			{
+				var cocktail = cocktails[j]
 			
-			var recipe = cocktail.ingredients
-			for (var j = 0, jl = recipe.length; j < jl; j++)
-				ingredients[j] = Ingredient.getByName(recipe[j][0])
+				var row = rows[j] = {}
+				row.cocktail = cocktail
 			
+				var ingredients = row.ingredients = []
+			
+				var recipe = cocktail.ingredients
+				for (var k = 0, kl = recipe.length; k < kl; k++)
+					ingredients[k] = Ingredient.getByName(recipe[k][0])
+			}
+			
+			res[i] =
+			{
+				name: group.name,
+				rows: rows
+			}
 		}
-		
-		this.view.renderRows(rows)
+		this.view.renderGroups(res)
 	}
 }
 
