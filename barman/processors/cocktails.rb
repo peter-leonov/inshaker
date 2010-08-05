@@ -378,7 +378,7 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_json cocktail
-    cocktail["added"] = cocktail["added"].strftime("%a, %d %b %Y %H:%M:%S GMT")
+    cocktail["added"] = cocktail["added"].to_i
     data = {}
     root_dir = cocktail.delete("root_dir")
     @local_properties.each do |prop|
