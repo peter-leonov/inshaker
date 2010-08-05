@@ -122,6 +122,7 @@ var myProto =
 		var main = this.nodes.main
 		main.empty()
 		
+		var items = []
 		for (var i = 0, il = groups.length; i < il; i++)
 		{
 			var group = groups[i]
@@ -132,14 +133,14 @@ var myProto =
 			if (name)
 				list.appendChild(Nct('dt', 'group-name', name))
 			
-			var rows = group.rows,
-				items = []
-			for (var i = 0, il = rows.length; i < il; i++)
+			var rows = group.rows
+			for (var j = 0, jl = rows.length; j < jl; j++)
 			{
-				var row = rows[i],
+				var row = rows[j],
 					ingredients = row.ingredients
 				
-				var item = items[i] = Nc('li', 'row lazy lines-' + ((((ingredients.length - 1) / 5) >> 0) + 1))
+				var item = Nc('li', 'row lazy lines-' + ((((ingredients.length - 1) / 5) >> 0) + 1))
+				items.push(item)
 				item['data-row'] = row
 				list.appendChild(item)
 			}
