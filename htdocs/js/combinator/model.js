@@ -33,6 +33,16 @@ var myProto =
 		
 		var searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
+		
+		this.view.renderSortby
+		([
+			'от простых к сложным',
+			'от сложных к простым',
+			'по алфавиту',
+			'по группам',
+			'по дате размещения'
+		])
+		
 	},
 	
 	setIngredientsNames: function (add, remove)

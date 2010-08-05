@@ -33,15 +33,6 @@ var myProto =
 		s.bind(nodes.sortbySelect)
 		s.addEventListener('select', function (e) { log(e.data.value) }, false)
 		
-		this.renderSortby
-		([
-			'от простых к сложным',
-			'от сложных к простым',
-			'по алфавиту',
-			'по группам',
-			'по дате размещения'
-		])
-		
 		return this
 	},
 	
