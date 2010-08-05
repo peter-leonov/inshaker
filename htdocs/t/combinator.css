@@ -41,9 +41,9 @@ html { overflow-y: scroll;  }
 .dropdown-select .body .options { position: relative; padding: 25px 15px 10px; background-color: #fff; border: 2px solid #ccc; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
 .dropdown-select .body .options .option.selected { display: none; }
-.dropdown-select .body .options .option:hover {}
+.dropdown-select .body .options .option:hover { color: #f84; }
 .dropdown-select.open .body { display: block; }
-.dropdown-select.open .button { cursor: default; }
+.dropdown-select.open .button { cursor: default; border: none; color: #aaa; }
 
 
 
