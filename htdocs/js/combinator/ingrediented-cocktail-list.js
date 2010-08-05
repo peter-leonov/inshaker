@@ -154,7 +154,9 @@ var myProto =
 	{
 		var cache = this.cache.cocktails,
 			name = cocktail.name
-		return cache[name] || (cache[name] = this.renderCocktail(cocktail, ingredients))
+			
+		var node = cache[name] || (cache[name] = this.renderCocktail(cocktail, ingredients))
+		return node.cloneNode(true)
 	},
 	
 	renderCocktail: function (cocktail, ingredients)
