@@ -14,7 +14,14 @@ class Processor < Barman::Processor
   
   def job
     
-    commits = File.read("#{Config::ROOT}/commits.txt").scan(/^(\w{40}) (\d+)/).reverse
+    ignore = {
+      "Peter Leonov" => true,
+      "Uncle JorJ" => true,
+      "UncleJorJ" => true,
+      "Anton Byrna" => true
+    }
+    
+    commits = File.read("#{Config::ROOT}/commits.txt").scan(/^(\w{40}) (\d+) '([^']+)'/).reverse
     
     seen = {}
     
