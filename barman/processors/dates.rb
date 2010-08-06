@@ -26,6 +26,12 @@ class Processor < Barman::Processor
     seen = {}
     
     commits.each do |c|
+      
+      author = c[2]
+      if ignore[author]
+        next
+      end
+      
       hash = c[0]
       
       db_path = "#{Config::ROOT}/db/#{hash}-cocktails.js"
