@@ -36,7 +36,7 @@ class Processor < Barman::Processor
       begin
         db = load_json(db_path)
       rescue Exception => e
-        warning "кривой json в коммите #{hash}"
+        # warning "кривой json в коммите #{hash}"
         next
       end
       
