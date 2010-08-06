@@ -49,7 +49,7 @@ class Processor < Barman::Processor
         end
         seen[name] = time
         
-        say "#{name}, #{time.strftime("%d.%m.%Y")}"
+        say "#{name}, #{time.strftime("%d.%m.%Y")}, #{hash}"
       end
     end
     
