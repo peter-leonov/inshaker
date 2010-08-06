@@ -16,10 +16,34 @@ class Processor < Barman::Processor
     
     commits = File.read("#{Config::ROOT}/commits.txt").scan(/^(\w{40}) (\d+)/).reverse
     
+    seen = {}
+    
     commits.each do |c|
       hash = c[0]
-      date = Time.at(c[1].to_i)
-      say "#{date.strftime("%d.%m.%Y")} (#{hash})"
+      
+      db_path = "#{Config::ROOT}/db/#{hash}-cocktails.js"
+      unless File.exists?(db_path)
+        next
+      end
+      
+      begin
+        db = load_json(db_path)
+      rescue Exception => e
+        warning "кривой json в коммите #{hash}"
+        next
+      end
+      
+      time = Time.at(c[1].to_i)
+      
+      db.each do |name, cocktail|
+        name = name.strip
+        if seen[name]
+          next
+        end
+        seen[name] = time
+        
+        say "#{name}, #{time.strftime("%d.%m.%Y")}"
+      end
     end
     
   end
