@@ -46,7 +46,7 @@ class Processor < Barman::Processor
         next
       end
       
-      time = Time.at(c[1].to_i)
+      time = c[1].to_i
       
       db.each do |name, cocktail|
         name = name.strip
@@ -55,9 +55,11 @@ class Processor < Barman::Processor
         end
         seen[name] = time
         
-        say "#{name}, #{time.strftime("%d.%m.%Y")}, #{hash}"
+        say "#{name}, #{Time.at(time).strftime("%d.%m.%Y")}, #{hash}"
       end
     end
+    
+    flush_json_object(seen, "#{Config::ROOT}/date-by-cocktail.json")
     
   end
 end
