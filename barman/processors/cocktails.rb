@@ -69,8 +69,6 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def job
-    @cocktail_by_date = load_json("/Users/peter/Desktop/dates/date-by-cocktail.json")
-    
     prepare_dirs
     prepare_templates
     prepare_ingredients
@@ -311,11 +309,6 @@ class CocktailsProcessor < Barman::Processor
     parse_legend_text File.read(legend_path)
     
     about = load_yaml("#{dir.path}/about.yaml")
-    
-    added = Time.at(@cocktail_by_date[name])
-    yaml = File.read("#{dir.path}/about.yaml")
-    yaml << %Q{\n\nДобавлен: #{added.strftime("%d.%m.%Y")}}
-    File.write("#{dir.path}/about.yaml", yaml)
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
