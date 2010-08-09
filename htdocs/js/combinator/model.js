@@ -36,7 +36,7 @@ var myProto =
 			'by-date'
 		]
 		
-		this.sortBy = 'by-date'
+		this.sortBy = this.sortTypeByNum[0]
 	},
 	
 	bind: function (ds)
