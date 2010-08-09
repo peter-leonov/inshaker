@@ -163,7 +163,29 @@ var myProto =
 	sortByDate: function (cocktails)
 	{
 		cocktails.sort(function (a, b) { return b.added - a.added })
-		return [{cocktails: cocktails}]
+		
+		var groups = []
+		
+		var currentKey = 0, month = null
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			var added = new Date(cocktail.added * 1000)
+			
+			var key = added.getFullYear() * 100 + added.getMonth()
+			if (key == currentKey)
+			{
+				month.push(cocktail)
+				continue
+			}
+			
+			currentKey = key
+			month = [cocktail]
+			groups.push({date: added, cocktails: month})
+		}
+		
+		return groups
 	},
 	
 	setIngredientsNames: function (add, remove)
