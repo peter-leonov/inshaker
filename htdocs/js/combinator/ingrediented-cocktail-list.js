@@ -58,6 +58,8 @@ function joinWithNodeToFragment (arr, node)
 	return res
 }
 
+var months = ["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"]
+
 var myProto =
 {
 	initialize: function ()
@@ -132,6 +134,12 @@ var myProto =
 			var name = group.name
 			if (name)
 				list.appendChild(Nct('dt', 'group-name', name))
+			else
+			{
+				var date = group.date
+				if (date)
+					list.appendChild(Nct('dt', 'group-name', months[date.getMonth()] + ' ' + date.getFullYear()))
+			}
 			
 			var rows = group.rows
 			for (var j = 0, jl = rows.length; j < jl; j++)
@@ -240,6 +248,7 @@ var myProto =
 			res[i] =
 			{
 				name: group.name,
+				date: group.date,
 				rows: rows
 			}
 		}
