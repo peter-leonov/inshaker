@@ -23,7 +23,8 @@ var myProto =
 			'от простых к сложным',
 			'по алфавиту',
 			'по группам',
-			'по дате размещения'
+			'по дате размещения',
+			'по количеству ингредиента'
 		]
 		
 		this.sortTypeByNum =
@@ -31,10 +32,11 @@ var myProto =
 			'increasing-complexity',
 			'alphabetically',
 			'by-group',
-			'by-date'
+			'by-date',
+			'by-strength'
 		]
 		
-		this.sortBy = this.sortTypeByNum[0]
+		this.sortBy = 'by-strength' //this.sortTypeByNum[0]
 	},
 	
 	bind: function (ds)
@@ -87,6 +89,10 @@ var myProto =
 			
 			case 'by-date':
 				sorted = this.sortByDate(cocktails)
+			break
+			
+			case 'by-strength':
+				sorted = this.sortByStrength(cocktails, add)
 			break
 		}
 		
@@ -173,6 +179,48 @@ var myProto =
 		}
 		
 		return groups
+	},
+	
+	sortByStrength: function (cocktails, add)
+	{
+		var kByIngredient = {}
+		for (var i = 0, il = add.length; i < il; i++)
+			kByIngredient[add[i]] = 1 / (i * 1000 + 1)
+		
+		console.time('aaa')
+		
+		var weightByName = {}
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			var weight = 0, total = 0
+			
+			var parts = cocktail.ingredients
+			for (var j = 0, jl = parts.length; j < jl; j++)
+			{
+				var part = parts[j]
+				
+				var volume = parseFloat(part[1])
+				total += volume
+				
+				var k = kByIngredient[part[0]]
+				if (!k)
+					continue
+				
+				weight += k * parseFloat(part[1])
+			}
+			
+			log(cocktail.name, weight / total)
+			
+			weightByName[cocktail.name] = weight / total
+		}
+		
+		console.timeEnd('aaa')
+		
+		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
+		
+		return [{cocktails: cocktails}]
 	},
 	
 	setIngredientsNames: function (add, remove)
