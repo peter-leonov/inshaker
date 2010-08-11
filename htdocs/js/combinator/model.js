@@ -97,6 +97,7 @@ var myProto =
 	sortByIncreasingComplexity: function (cocktails)
 	{
 		cocktails = cocktails.slice()
+		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length || a.tools.length - b.tools.length || a.name.localeCompare(b.name) })
 		return [{cocktails: cocktails}]
 	},
 	
