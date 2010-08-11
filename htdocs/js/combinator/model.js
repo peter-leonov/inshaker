@@ -187,14 +187,12 @@ var myProto =
 		for (var i = 0, il = add.length; i < il; i++)
 			kByIngredient[add[i]] = 1 / (i * 1000 + 1)
 		
-		console.time('aaa')
-		
 		var weightByName = {}
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cocktail = cocktails[i]
 			
-			var weight = 0, total = 0
+			var weight = 0// , total = 0
 			
 			var parts = cocktail.ingredients
 			for (var j = 0, jl = parts.length; j < jl; j++)
@@ -202,7 +200,7 @@ var myProto =
 				var part = parts[j]
 				
 				var volume = parseFloat(part[1])
-				total += volume
+				// total += volume
 				
 				var k = kByIngredient[part[0]]
 				if (!k)
@@ -211,12 +209,8 @@ var myProto =
 				weight += k * parseFloat(part[1])
 			}
 			
-			log(cocktail.name, weight / total)
-			
-			weightByName[cocktail.name] = weight / total
+			weightByName[cocktail.name] = weight // / total
 		}
-		
-		console.timeEnd('aaa')
 		
 		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
 		
