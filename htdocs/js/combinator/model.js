@@ -21,7 +21,6 @@ var myProto =
 		this.sortByNames =
 		[
 			'от простых к сложным',
-			'от сложных к простым',
 			'по алфавиту',
 			'по группам',
 			'по дате размещения'
@@ -30,7 +29,6 @@ var myProto =
 		this.sortTypeByNum =
 		[
 			'increasing-complexity',
-			'decreasing-complexity',
 			'alphabetically',
 			'by-group',
 			'by-date'
@@ -79,10 +77,6 @@ var myProto =
 				sorted = this.sortByIncreasingComplexity(cocktails)
 			break
 			
-			case 'decreasing-complexity':
-				sorted = this.sortByDecreasingComplexity(cocktails)
-			break
-			
 			case 'alphabetically':
 				sorted = this.sortAlphabetically(cocktails)
 			break
@@ -103,14 +97,6 @@ var myProto =
 	sortByIncreasingComplexity: function (cocktails)
 	{
 		cocktails = cocktails.slice()
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
-		return [{cocktails: cocktails}]
-	},
-	
-	sortByDecreasingComplexity: function (cocktails)
-	{
-		cocktails = cocktails.slice()
-		cocktails.sort(function (a, b) { return b.ingredients.length - a.ingredients.length })
 		return [{cocktails: cocktails}]
 	},
 	
