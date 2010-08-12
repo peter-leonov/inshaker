@@ -256,7 +256,7 @@ var myProto =
 	
 	searchCocktails: function (add, remove)
 	{
-		var set = this.ds.cocktail.getByIngredientNames(add)
+		var set = this.complexSearchIngredients(add)
 		
 		if (!remove.length)
 			return set
@@ -277,6 +277,42 @@ var myProto =
 			
 			cocktails.push(cocktail)
 		}
+		
+		return cocktails
+	},
+	
+	complexSearchIngredients: function (set)
+	{
+		var Cocktail = this.ds.cocktail,
+			cocktails
+		
+		var groups = [], ingredients = []
+		for (var i = 0, il = set.length; i < il; i++)
+		{
+			var item = set[i]
+			
+			if (item.constructor == Array)
+				groups.push(item)
+			else
+				ingredients.push(item)
+		}
+		
+		var firstGroup = 0
+		if (ingredients.length)
+		{
+			// reduce cocktails set by raw ingredients
+			cocktails = Cocktail.getByIngredientNames(ingredients)
+		}
+		else if (groups.length)
+		{
+			// reduce cocktails set by first ingredients group
+			cocktails = Cocktail.getByIngredientNames(group[0], {count: 1})
+			firstGroup = 1
+		}
+		
+		// step by step reducing with other groups
+		for (var i = firstGroup, il = groups.length; i < il; i++)
+			cocktails = Cocktail.getByIngredientNames(groups[i], {db: cocktails, count: 1})
 		
 		return cocktails
 	},
