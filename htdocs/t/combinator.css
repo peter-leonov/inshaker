@@ -15,7 +15,7 @@ html { overflow-y: scroll;  }
 #search-box .autocomplete.focused { display: block; }
 #search-box .autocomplete .empty-message { display: none; }
 #search-box .autocomplete.empty .empty-message { display: block; }
-#search-box .autocomplete { position: absolute; top: 25px; left: 1px; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 20px; }
+#search-box .autocomplete { position: absolute; top: 28px; left: 1px; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 20px; }
 #search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 #search-box .autocomplete .item.selected { background-color: #d2d2d2; }
 #search-box .autocomplete .item .substr { font-weight: bold; }
