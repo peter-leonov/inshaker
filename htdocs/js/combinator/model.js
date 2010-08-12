@@ -45,10 +45,12 @@ var myProto =
 		
 		var ingredients = ds.ingredient.getAllNames(),
 			secondNames = ds.ingredient.getAllSecondNames(),
-			secondNamesHash = ds.ingredient.getNameBySecondNameHash()
+			secondNamesHash = ds.ingredient.getNameBySecondNameHash(),
+			tags = ds.ingredient.getTags()
 		
 		var set = ingredients.slice()
 		set.push.apply(set, secondNames)
+		set.push.apply(set, tags)
 		set.sort()
 		
 		var searcher = new IngredientsSearcher(set, secondNamesHash)
