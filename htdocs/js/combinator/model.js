@@ -8,6 +8,20 @@ Array.prototype.hashValues = function ()
 	return hash
 }
 
+Array.prototype.flatten = function ()
+{
+	var res = [], push = this.push
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var item = this[i]
+		if (item.constructor == Array)
+			push.apply(res, item.flatten())
+		else
+			res.push(item)
+	}
+	return res
+}
+
 var Papa = CombinatorPage, Me = Papa.Model
 
 var myProto =
@@ -261,7 +275,7 @@ var myProto =
 		if (!remove.length)
 			return set
 		
-		remove = remove.hashValues()
+		remove = remove.flatten().hashValues()
 		
 		var cocktails = []
 		cocktails: for (var i = 0, il = set.length; i < il; i++)
