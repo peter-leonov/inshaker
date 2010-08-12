@@ -58,6 +58,10 @@ var myProto =
 		
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
+		
+		var tagsHash = this.tagsHash = {}
+		for (var i = 0, il = tags.length; i < il; i++)
+			tagsHash[tags[i].toLowerCase()] = true
 	},
 	
 	updateData: function ()
@@ -221,8 +225,8 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
-		add = this.filtRealIngredients(add)
-		remove = this.filtRealIngredients(remove)
+		add = this.expandIngredients(add)
+		remove = this.expandIngredients(remove)
 		
 		this.add = add
 		this.remove = remove
@@ -277,14 +281,21 @@ var myProto =
 		return cocktails
 	},
 	
-	filtRealIngredients: function (arr)
+	expandIngredients: function (arr)
 	{
 		var Ingredient = this.ds.ingredient
 		
-		var res = [], seen = {}
+		var res = [], seen = {}, tagsHash = this.tagsHash
 		for (var i = 0, il = arr.length; i < il; i++)
 		{
-			var ingredient = Ingredient.getByNameCI(arr[i])
+			var name = arr[i]
+			if (tagsHash[name.toLowerCase()])
+			{
+				log('tag', name)
+				continue
+			}
+			
+			var ingredient = Ingredient.getByNameCI(name)
 			if (!ingredient)
 				continue
 			
