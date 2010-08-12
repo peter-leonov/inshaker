@@ -45,7 +45,7 @@ Object.extend(Ingredient,
 {
 	groups: [],
 	
-	initialize: function (db, groups)
+	initialize: function (db, groups, tags)
 	{
 		var I = Ingredient
 		for (var i = 0, il = db.length; i < il; i++)
@@ -53,6 +53,7 @@ Object.extend(Ingredient,
 		
 		this.db = db
 		this.groups = groups
+		this.tags = tags
 	},
 	
 	getAll: function ()
@@ -63,6 +64,11 @@ Object.extend(Ingredient,
 	getGroups: function ()
 	{
 		return this.groups
+	},
+	
+	getTags: function ()
+	{
+		return this.tags
 	},
 	
 	getByName: function (name)
@@ -285,6 +291,6 @@ Object.extend(Ingredient,
 })
 
 
-Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->)
+Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->,<!--# include file="/db/ingredients_tags.js"-->)
 
 })();
