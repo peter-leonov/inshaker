@@ -12,6 +12,7 @@ class IngredientsProcessor < Barman::Processor
     
     DB_JS          = Barman::HTDOCS_DIR + "db/ingredients.js"
     DB_JS_GROUPS   = Barman::HTDOCS_DIR + "db/ingredients_groups.js"
+    DB_JS_TAGS     = Barman::HTDOCS_DIR + "db/ingredients_tags.js"
     DB_JS_MARKS    = Barman::HTDOCS_DIR + "db/marks.js"
   end
   
@@ -21,6 +22,7 @@ class IngredientsProcessor < Barman::Processor
     @entities = []
     @ingredients_groups = []
     @marks = {}
+    @ingredients_tags = {}
   end
   
   def job_name
@@ -187,6 +189,11 @@ class IngredientsProcessor < Barman::Processor
       good["decls"] = {"t" => about["Падежи"]["Творительный"]}
     end
     
+    good["tags"] = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
+    good["tags"].each do |e|
+      @ingredients_tags[e] = true
+    end
+    
     if brand
       good[:brand] = brand
       good[:brand_dir] = brand.dirify
@@ -243,6 +250,7 @@ class IngredientsProcessor < Barman::Processor
     end
     flush_json_object(ingredients, Config::DB_JS)
     flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
+    flush_json_object(@ingredients_tags.keys, Config::DB_JS_TAGS)
   end
   
   def update_json entity
