@@ -36,7 +36,7 @@ var myProto =
 			'by-strength'
 		]
 		
-		this.sortBy = 'by-strength' //this.sortTypeByNum[0]
+		this.sortBy = this.sortTypeByNum[0]
 	},
 	
 	bind: function (ds)
