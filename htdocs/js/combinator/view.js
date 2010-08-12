@@ -50,6 +50,12 @@ var myProto =
 	
 	queryUpdated: function (add, remove)
 	{
+		for (var i = 0, il = add.length; i < il; i++)
+			add[i] = add[i].trim().replace(/\s+/g, ' ')
+		
+		for (var i = 0, il = remove.length; i < il; i++)
+			remove[i] = remove[i].trim().replace(/\s+/g, ' ')
+		
 		this.controller.setIngredientsNames(add, remove)
 	},
 	
