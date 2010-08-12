@@ -306,7 +306,7 @@ var myProto =
 		else if (groups.length)
 		{
 			// reduce cocktails set by first ingredients group
-			cocktails = Cocktail.getByIngredientNames(group[0], {count: 1})
+			cocktails = Cocktail.getByIngredientNames(groups[0], {count: 1})
 			firstGroup = 1
 		}
 		
