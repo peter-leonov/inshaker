@@ -246,7 +246,7 @@ Object.extend(Cocktail,
 			}
 			// here if cocktail does not pass at all
 		}
-		return res.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		return res//.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 	},
 	
 	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
