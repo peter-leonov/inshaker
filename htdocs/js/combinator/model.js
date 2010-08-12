@@ -286,12 +286,27 @@ var myProto =
 		var Ingredient = this.ds.ingredient
 		
 		var res = [], seen = {}, tagsHash = this.tagsHash
-		for (var i = 0, il = arr.length; i < il; i++)
+		for (var i = 0; i < arr.length; i++)
 		{
 			var name = arr[i]
+			
 			if (tagsHash[name.toLowerCase()])
 			{
-				log('tag', name)
+				var group = Ingredient.getByTagCI(name)
+				
+				var names = []
+				for (var j = 0, jl = group.length; j < jl; j++)
+				{
+					var n = group[j].name
+					
+					if (seen[n])
+						continue
+					seen[n] = true
+					
+					names.push(n)
+				}
+				
+				res.push(names)
 				continue
 			}
 			
@@ -302,11 +317,11 @@ var myProto =
 			var name = ingredient.name
 			if (seen[name])
 				continue
-			
 			seen[name] = true
 			
 			res.push(name)
 		}
+		
 		return res
 	},
 	
