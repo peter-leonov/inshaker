@@ -38,6 +38,9 @@ Me.prototype =
 	{
 		this.updateTokens(v, cursor)
 		
+		if (!this.tokens.active)
+			return
+		
 		var value = this.tokens.active.value
 		if (value === '')
 			return this.reset()
