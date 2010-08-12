@@ -87,6 +87,14 @@ Object.extend(Ingredient,
 		return this._byNameCI[name.toLowerCase()]
 	},
 	
+	getByTagCI: function (name)
+	{
+		if (!this._byTagCI)
+			this._updateByTagCIIndex()
+		
+		return this._byTagCI[name.toLowerCase()]
+	},
+	
 	getAllNames: function (name)
 	{
 		if (!this._byName)
@@ -153,6 +161,29 @@ Object.extend(Ingredient,
 		{
 			var ingred = db[i]
 			byNameCI[ingred.name.toLowerCase()] = ingred
+		}
+	},
+	
+	_updateByTagCIIndex: function ()
+	{
+		var db = this.db,
+			index = this._byTagCI = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
+			var ingred = db[i]
+			
+			var tags = ingred.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+			{
+				var tag = tags[j]
+				
+				var arr = index[tag]
+				if (arr)
+					arr.push(ingred)
+				else
+					index[tag] = [ingred]
+			}
 		}
 	},
 	
