@@ -253,16 +253,31 @@ var myProto =
 	
 	setDuplicates: function (add, remove)
 	{
-		var duplicates = this.searcher.duplicates = {}
-		
-		add.hashValues(duplicates)
-		remove.hashValues(duplicates)
-		
 		add = this.expandIngredients(add)
 		remove = this.expandIngredients(remove)
 		
-		add.flatten().hashValues(duplicates)
-		remove.flatten().hashValues(duplicates)
+		var duplicates = this.searcher.duplicates = {}
+		this.hashDuplicates(add, duplicates)
+		this.hashDuplicates(remove, duplicates)
+	},
+	
+	hashDuplicates: function (arr, hash)
+	{
+		for (var i = 0, il = arr.length; i < il; i++)
+		{
+			var item = arr[i]
+			
+			if (item.constructor != Array)
+			{
+				hash[item] = true
+				continue
+			}
+			
+			var tag = item.tag
+			hash[tag] = true
+			for (var j = 0, jl = item.length; j < jl; j++)
+				hash[item[j]] = tag
+		}
 	},
 	
 	setSortBy: function (typeNum)
@@ -372,6 +387,8 @@ var myProto =
 					
 					names.push(n)
 				}
+				
+				names.tag = name
 				
 				res.push(names)
 				continue
