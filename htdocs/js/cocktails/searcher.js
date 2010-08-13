@@ -30,13 +30,20 @@ Me.prototype =
 		var withouts = this.withouts,
 			filtered = []
 		
+		for (var i = 0, il = rows.length; i < il; i ++)
+		{
+			var row = rows[i]
+			if (!withouts[row[1]])
+				row[0] /= 100000
+		}
+		
 		rows.sort(this.sortByWeight)
 		
 		var res = []
 		for (var i = 0, il = rows.length; i < il && i < count; i++)
 		{
 			var v = rows[i][1]
-			if (!withouts[v])
+			// if (!withouts[v])
 				res.push(v)
 		}
 		
