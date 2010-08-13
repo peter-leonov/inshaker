@@ -177,7 +177,7 @@ Me.prototype =
 				if (duplicate === true)
 					text.appendChild(Nct('span', 'hint', ' (уже выбрано)'))
 				else
-					text.appendChild(Nct('span', 'hint', ' (уже выбрано как «' + duplicate + '»)'))
+					text.appendChild(Nct('span', 'hint', ' (уже в группе «' + duplicate + '»)'))
 			}
 			
 			res[i] = [value, text]
