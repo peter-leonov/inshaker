@@ -1,8 +1,9 @@
 ;(function(){
 
-Array.prototype.hashValues = function ()
+Array.prototype.hashValues = function (hash)
 {
-	var hash = {}
+	if (!hash)
+		hash = {}
 	for (var i = 0, il = this.length; i < il; i++)
 		hash[this[i]] = true
 	return hash
@@ -67,7 +68,7 @@ var myProto =
 		set.push.apply(set, tags)
 		set.sort()
 		
-		var searcher = new IngredientsSearcher(set, secondNamesHash)
+		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
 		
 		this.view.renderSortbyOptions(this.sortByNames)
@@ -239,6 +240,8 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
+		this.setWithouts(add, remove)
+		
 		add = this.expandIngredients(add)
 		remove = this.expandIngredients(remove)
 		
@@ -246,6 +249,20 @@ var myProto =
 		this.remove = remove
 		
 		this.updateData()
+	},
+	
+	setWithouts: function (add, remove)
+	{
+		var withouts = this.searcher.withouts = {}
+		
+		add.hashValues(withouts)
+		remove.hashValues(withouts)
+		
+		add = this.expandIngredients(add)
+		remove = this.expandIngredients(remove)
+		
+		add.flatten().hashValues(withouts)
+		remove.flatten().hashValues(withouts)
 	},
 	
 	setSortBy: function (typeNum)

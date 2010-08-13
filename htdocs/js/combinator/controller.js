@@ -16,6 +16,11 @@ var myProto =
 		this.model.setIngredientsNames(add, remove)
 	},
 	
+	setWithouts: function (add, remove)
+	{
+		this.model.setWithouts(add, remove)
+	},
+	
 	setSortBy: function (type)
 	{
 		this.model.setSortBy(type)

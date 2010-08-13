@@ -38,6 +38,9 @@ Me.prototype =
 	{
 		this.updateTokens(v, cursor)
 		
+		var parts = this.getParts()
+		this.dispatchEvent({type: 'changed', add: parts.add, remove: parts.remove})
+		
 		if (!this.tokens.active)
 			return
 		
