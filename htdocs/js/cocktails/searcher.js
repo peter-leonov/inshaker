@@ -7,7 +7,7 @@ function Me (ingredients, names)
 	this.ingredients = ingredients || []
 	this.names = names || {}
 	this.cache = {}
-	this.withouts = {}
+	this.duplicates = {}
 }
 
 eval(NodesShortcut.include())
@@ -27,13 +27,13 @@ Me.prototype =
 		if (!rows)
 			rows = cache[substr] = this.searchInSet(this.ingredients, parts)
 		
-		var withouts = this.withouts,
+		var duplicates = this.duplicates,
 			filtered = []
 		
 		for (var i = 0, il = rows.length; i < il; i ++)
 		{
 			var row = rows[i]
-			if (!withouts[row[1]])
+			if (!duplicates[row[1]])
 				row[0] /= 100000
 		}
 		
@@ -41,13 +41,9 @@ Me.prototype =
 		
 		var res = []
 		for (var i = 0, il = rows.length; i < il && i < count; i++)
-		{
-			var v = rows[i][1]
-			// if (!withouts[v])
-				res.push(v)
-		}
+			res[i] = rows[i][1]
 		
-		return this.renderRows(res, parts, this.names)
+		return this.renderRows(res, parts, this.names, this.duplicates)
 	},
 	
 	searchInSet: function (set, parts)
@@ -89,7 +85,7 @@ Me.prototype =
 		return rows
 	},
 	
-	renderRows: function (values, parts, names)
+	renderRows: function (values, parts, names, duplicates)
 	{
 		var res = []
 		
@@ -166,15 +162,25 @@ Me.prototype =
 			if (pos < v.length)
 				text.appendChild(T(v.substring(pos)))
 			
+			var value = v
 			
 			var name = names[v]
 			if (name)
 			{
 				text.appendChild(T(' — это «' + name + '»'))
-				v = name
+				value = name
 			}
 			
-			res[i] = [v, text]
+			var duplicate = duplicates[v]
+			if (duplicate)
+			{
+				if (duplicate === true)
+					text.appendChild(Nct('span', 'hint', ' (уже выбрано)'))
+				else
+					text.appendChild(Nct('span', 'hint', ' (уже выбрано как «' + duplicate + '»)'))
+			}
+			
+			res[i] = [value, text]
 		}
 		
 		return res

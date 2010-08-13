@@ -62,7 +62,7 @@ var myProto =
 	
 	searchInputValueChanged: function (add, remove)
 	{
-		this.controller.setWithouts(add, remove)
+		this.controller.setDuplicates(add, remove)
 	},
 	
 	renderSortbyOptions: function (options)

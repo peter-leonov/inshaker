@@ -240,7 +240,7 @@ var myProto =
 	
 	setIngredientsNames: function (add, remove)
 	{
-		this.setWithouts(add, remove)
+		this.setDuplicates(add, remove)
 		
 		add = this.expandIngredients(add)
 		remove = this.expandIngredients(remove)
@@ -251,18 +251,18 @@ var myProto =
 		this.updateData()
 	},
 	
-	setWithouts: function (add, remove)
+	setDuplicates: function (add, remove)
 	{
-		var withouts = this.searcher.withouts = {}
+		var duplicates = this.searcher.duplicates = {}
 		
-		add.hashValues(withouts)
-		remove.hashValues(withouts)
+		add.hashValues(duplicates)
+		remove.hashValues(duplicates)
 		
 		add = this.expandIngredients(add)
 		remove = this.expandIngredients(remove)
 		
-		add.flatten().hashValues(withouts)
-		remove.flatten().hashValues(withouts)
+		add.flatten().hashValues(duplicates)
+		remove.flatten().hashValues(duplicates)
 	},
 	
 	setSortBy: function (typeNum)

@@ -19,6 +19,7 @@ html { overflow-y: scroll;  }
 #search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 #search-box .autocomplete .item.selected { background-color: #d2d2d2; }
 #search-box .autocomplete .item .substr { font-weight: bold; }
+#search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 
 #output .initial-block,
 #output .result-block,
