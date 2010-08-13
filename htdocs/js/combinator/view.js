@@ -26,7 +26,7 @@ var myProto =
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryUpdated(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.searchInputValueChanged(e.add, e.remove) }, false)
-		// nodes.ingredientInput.focus()
+		nodes.ingredientInput.focus()
 		
 		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
 		
