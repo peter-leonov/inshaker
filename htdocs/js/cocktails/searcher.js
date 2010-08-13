@@ -16,35 +16,34 @@ Me.prototype =
 {
 	search: function (substr, count)
 	{
-		var cache = this.cache
-		
 		substr = substr.trim()
 		if (substr === '')
 			return []
 		
-		var res
-		if (!(res = cache[substr]))
-		{
-			var parts = substr.split(/ +/)
-			
-			var values = this.searchInSet(this.ingredients, parts, count)
-			res = cache[substr] = this.renderRows(values, parts, this.names)
-		}
+		var parts = substr.split(/ +/)
+		
+		var cache = this.cache
+		var rows = cache[substr]
+		if (!rows)
+			rows = cache[substr] = this.searchInSet(this.ingredients, parts)
 		
 		var withouts = this.withouts,
 			filtered = []
 		
-		for (var i = 0, il = res.length; i < il; i ++)
+		rows.sort(this.sortByWeight)
+		
+		var res = []
+		for (var i = 0, il = rows.length; i < il && i < count; i++)
 		{
-			var row = res[i]
-			if (!withouts[row[0]])
-				filtered.push(row)
+			var v = rows[i][1]
+			if (!withouts[v])
+				res.push(v)
 		}
 		
-		return filtered
+		return this.renderRows(res, parts, this.names)
 	},
 	
-	searchInSet: function (set, parts, count)
+	searchInSet: function (set, parts)
 	{
 		parts = parts.slice()
 		// first search for the most lengthy part
@@ -80,13 +79,7 @@ Me.prototype =
 			rows.push([weight, v])
 		}
 		
-		rows.sort(this.sortByWeight)
-		
-		var res = []
-		for (var i = 0, il = rows.length; i < il && i < count; i++)
-			res[i] = rows[i][1]
-		
-		return res
+		return rows
 	},
 	
 	renderRows: function (values, parts, names)
