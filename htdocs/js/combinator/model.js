@@ -77,6 +77,8 @@ var myProto =
 		var tagsHash = this.tagsHash = {}
 		for (var i = 0, il = tags.length; i < il; i++)
 			tagsHash[tags[i].toLowerCase()] = true
+		
+		searcher.favorites = tagsHash
 	},
 	
 	updateData: function ()

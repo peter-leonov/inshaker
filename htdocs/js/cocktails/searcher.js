@@ -8,6 +8,7 @@ function Me (ingredients, names)
 	this.names = names || {}
 	this.cache = {}
 	this.duplicates = {}
+	this.favorites = {}
 }
 
 eval(NodesShortcut.include())
@@ -27,14 +28,16 @@ Me.prototype =
 		if (!rows)
 			rows = cache[substr] = this.searchInSet(this.ingredients, parts)
 		
-		var duplicates = this.duplicates,
+		var duplicates = this.duplicates, favorites = this.favorites,
 			filtered = []
 		
 		for (var i = 0, il = rows.length; i < il; i ++)
 		{
 			var row = rows[i]
-			if (!duplicates[row[1]])
-				row[0] /= 100000
+			if (duplicates[row[1]])
+				row[0] *= 100000
+			else if (favorites[row[1]])
+				row[0] *= 0.000001
 		}
 		
 		rows.sort(this.sortByWeight)
