@@ -31,7 +31,7 @@ html { overflow-y: scroll;  }
 #output .result-block .head { font-size: 14px; }
 #output .result-block .head .total-cocktails .count { font-style: normal; font-weight: bold; }
 
-.dropdown-select { z-index: 200; }
+.dropdown-select { }
 .dropdown-select,
 .dropdown-select .button { display: inline; position: relative; }
 
@@ -42,6 +42,7 @@ html { overflow-y: scroll;  }
 .dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
 .dropdown-select .body .options .option.selected { visibility: hidden; }
 .dropdown-select .body .options .option:hover { color: #f84; }
+.dropdown-select.open { z-index: 200; }
 .dropdown-select.open .body { display: block; }
 .dropdown-select.open .button { cursor: default; border: none; color: #aaa; }
 .dropdown-select.selected-option-0 .body { top: -13px; }
