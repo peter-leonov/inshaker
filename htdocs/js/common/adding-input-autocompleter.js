@@ -38,7 +38,7 @@ Me.prototype =
 	{
 		this.updateTokens(v, cursor)
 		
-		var parts = this.getParts()
+		var parts = this.getParts(true)
 		this.dispatchEvent({type: 'changed', add: parts.add, remove: parts.remove})
 		
 		if (!this.tokens.active)
@@ -161,14 +161,18 @@ Me.prototype =
 		tokens.active = tokens[active]
 	},
 	
-	getParts: function ()
+	getParts: function (exceptActive)
 	{
 		var tokens = this.tokens
 		
-		var add = [], remove = []
+		var active = exceptActive ? tokens.active : null,
+			add = [], remove = []
 		for (var i = 0, il = tokens.length; i < il; i++)
 		{
 			var t = tokens[i]
+			
+			if (t == active)
+				continue
 			
 			if (!t.value)
 				continue
