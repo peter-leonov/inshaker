@@ -133,7 +133,26 @@ var myProto =
 	sortAlphabetically: function (cocktails)
 	{
 		cocktails.sort(function (a, b) { return a.name.localeCompare(b.name) })
-		return [{cocktails: cocktails}]
+		
+		var letter, group, res = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			var l = cocktail.name.charAt(0)
+			
+			if (l == letter)
+			{
+				group.push(cocktail)
+				continue
+			}
+			
+			letter = l
+			group = [cocktail]
+			res.push({cocktails: group, name: letter})
+		}
+		
+		return res
 	},
 	
 	sortByGroup: function (cocktails)
