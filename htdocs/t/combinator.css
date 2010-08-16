@@ -1,12 +1,12 @@
 html { overflow-y: scroll;  }
 .hidden { display: none; }
 
-.b-title { height: 35px; }
+.b-title { height: 55px; background: none; }
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
 .body-wrapper { z-index: 2; }
 
-#search-box { position: absolute; z-index: 100; top: 3px; left: 0px; }
+#search-box { position: relative; z-index: 100; }
 #search-box .ingredient { padding: 2px; color: inherit; width: 755px; }
 #search-box .ingredient,
 #search-box .search { font-size: 20px; vertical-align: middle; }
@@ -29,8 +29,10 @@ html { overflow-y: scroll;  }
 #output.result-state .result-block { display: block; }
 #output.empty-state .empty-block { display: block; }
 
+#output .sort-line { font-size: 14px; margin-top: 6px; }
+#output .sort-line .cocktail-count { font-style: normal; font-weight: bold; }
+
 #output .result-block { font-size: 14px; }
-#output .result-block .sort-line .cocktail-count { font-style: normal; font-weight: bold; }
 
 .dropdown-select { }
 .dropdown-select,

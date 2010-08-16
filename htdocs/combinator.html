@@ -9,7 +9,7 @@
 <!--# include file="/inc/top-common.html" -->
 <div id="main-wrapper">
 	
-	<div class="column"><div class="body-wrapper">
+	<div class="column"><div class="body-wrapper" id="output">
 		<div class="b-title">
 			<!-- <h1>Сочетайзер</h1> -->
 			<div id="search-box">
@@ -17,17 +17,17 @@
 				<button class="search">Найти!</button>
 				<ul class="autocomplete"><li class="item empty-message">такого ингредиента сочетайзер пока не знает</li></ul>
 			</div>
+			<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->:</div>
 			<a id="spotlighted"></a>
 		</div>
 		
 		<div class="b-content">
-			<div id="output" class="initial-state">
+			<div>
 				<div class="initial-block">
 					Сочетайзер — это опупеть как опупенно!
 				</div>
 				
 				<div class="result-block">
-					<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->.</li>
 					<div class="ingrediented-cocktail-list"></div>
 				</div>
 				
