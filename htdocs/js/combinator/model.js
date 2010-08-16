@@ -31,7 +31,7 @@ var myProto =
 	{
 		this.ds = {}
 		this.state = {}
-		this.searcheCache = {}
+		this.searchCache = {}
 		
 		this.sortByNames =
 		[
@@ -314,9 +314,9 @@ var myProto =
 		var key = add.join(':') + '::' + remove.join(':')
 		
 		// look up the cache
-		var cocktails = this.searcheCache[key]
+		var cocktails = this.searchCache[key]
 		if (!cocktails)
-			cocktails = this.searcheCache[key] = this.searchCocktails(add, remove)
+			cocktails = this.searchCache[key] = this.searchCocktails(add, remove)
 		
 		return cocktails
 	},
