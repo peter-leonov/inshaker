@@ -106,6 +106,7 @@ var myProto =
 		inco.setCocktails(cocktails)
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
+		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
 	}
 }
 

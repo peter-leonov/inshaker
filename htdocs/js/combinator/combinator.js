@@ -60,7 +60,8 @@ function onready ()
 		ingredientInput: $$('#search-box .ingredient')[0],
 		searchButton: $$('#search-box .search')[0],
 		ingredientComplete: $$('#search-box .autocomplete')[0],
-		totalCocktails: $$('#output .result-block .total-cocktails .count')[0],
+		totalCocktails: $$('#output .result-block .sort-line .cocktail-count')[0],
+		sortedWord: $$('#output .result-block .sort-line .sorted-word')[0],
 		
 		sortbySelect:
 		{

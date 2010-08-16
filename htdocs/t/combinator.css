@@ -29,8 +29,8 @@ html { overflow-y: scroll;  }
 #output.result-state .result-block { display: block; }
 #output.empty-state .empty-block { display: block; }
 
-#output .result-block .head { font-size: 14px; }
-#output .result-block .head .total-cocktails .count { font-style: normal; font-weight: bold; }
+#output .result-block { font-size: 14px; }
+#output .result-block .sort-line .cocktail-count { font-style: normal; font-weight: bold; }
 
 .dropdown-select { }
 .dropdown-select,
