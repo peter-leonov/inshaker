@@ -273,6 +273,14 @@ var myProto =
 		// this.updateData()
 	},
 	
+	quickQueryChange: function (add, remove)
+	{
+		add = this.expandQueryNames(add)
+		remove = this.expandQueryNames(remove)
+		
+		this.setDuplicates(add, remove)
+	},
+	
 	setDuplicates: function (add, remove)
 	{
 		var duplicates = this.searcher.duplicates = {}
