@@ -11,7 +11,7 @@ class CocktailTemplate
     @method      = hash["method"]
     @desc_start  = hash["desc_start"]
     @desc_end    = hash["desc_end"]
-    @groups        = hash["groups"]
+    @groups      = hash["groups"]
     @tools       = hash["tools"]
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
