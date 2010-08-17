@@ -182,7 +182,7 @@ Object.extend(Cocktail,
 			hash[tags[i]] = true
 		
 		var res = [], c = 0
-		cocktails:
+		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
 			var cocktail = db[i]
@@ -192,7 +192,7 @@ Object.extend(Cocktail,
 				if (hash[tags[j]] && ++c >= count)
 				{
 					res.push(cocktail)
-					continue cocktails
+					continue db
 				}
 		}
 		return res;
