@@ -169,17 +169,17 @@ Object.extend(Cocktail,
 		return res;
 	},
 	
-	getByTags: function (tags, db, count)
+	getByTags: function (tags, opts)
 	{
+		if (!opts)
+			opts = {}
+		
+		var db = opts.db || this.db
+		var count = opts.count || tags.length
+		
 		var hash = {}
 		for (var i = 0, il = tags.length; i < il; i++)
 			hash[tags[i]] = true
-		
-		if (!db)
-			db = this.db
-		
-		if (!count)
-			count = tags.length
 		
 		var res = [], c = 0
 		cocktails:
