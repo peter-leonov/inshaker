@@ -61,11 +61,13 @@ var myProto =
 		var ingredients = ds.ingredient.getAllNames(),
 			secondNames = ds.ingredient.getAllSecondNames(),
 			secondNamesHash = ds.ingredient.getNameBySecondNameHash(),
-			ingredientsTags = ds.ingredient.getTags()
+			ingredientsTags = ds.ingredient.getTags(),
+			cocktailsTags = ds.cocktail.getTags()
 		
 		var set = ingredients.slice()
 		set.push.apply(set, secondNames)
 		set.push.apply(set, ingredientsTags)
+		set.push.apply(set, cocktailsTags)
 		set.sort()
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
@@ -74,11 +76,23 @@ var myProto =
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
 		
+		var favorites = searcher.favorites = {}
+		
 		var ingredientsTagsHash = this.ingredientsTagsHash = {}
 		for (var i = 0, il = ingredientsTags.length; i < il; i++)
-			ingredientsTagsHash[ingredientsTags[i].toLowerCase()] = true
+		{
+			var tag = ingredientsTags[i]
+			ingredientsTagsHash[tag.toLowerCase()] = true
+			favorites[tag] = true
+		}
 		
-		searcher.favorites = ingredientsTagsHash
+		var cocktailsTagsHash = this.cocktailsTagsHash = {}
+		for (var i = 0, il = cocktailsTags.length; i < il; i++)
+		{
+			var tag = cocktailsTags[i]
+			cocktailsTagsHash[tag.toLowerCase()] = true
+			favorites[tag] = true
+		}
 	},
 	
 	updateData: function ()
