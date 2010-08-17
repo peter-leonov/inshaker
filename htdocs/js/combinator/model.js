@@ -61,11 +61,11 @@ var myProto =
 		var ingredients = ds.ingredient.getAllNames(),
 			secondNames = ds.ingredient.getAllSecondNames(),
 			secondNamesHash = ds.ingredient.getNameBySecondNameHash(),
-			tags = ds.ingredient.getTags()
+			ingredientsTags = ds.ingredient.getTags()
 		
 		var set = ingredients.slice()
 		set.push.apply(set, secondNames)
-		set.push.apply(set, tags)
+		set.push.apply(set, ingredientsTags)
 		set.sort()
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
@@ -75,8 +75,8 @@ var myProto =
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
 		
 		var ingredientsTagsHash = this.ingredientsTagsHash = {}
-		for (var i = 0, il = tags.length; i < il; i++)
-			ingredientsTagsHash[tags[i].toLowerCase()] = true
+		for (var i = 0, il = ingredientsTags.length; i < il; i++)
+			ingredientsTagsHash[ingredientsTags[i].toLowerCase()] = true
 		
 		searcher.favorites = ingredientsTagsHash
 	},
