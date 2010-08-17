@@ -261,22 +261,20 @@ var myProto =
 	
 	setQuery: function (add, remove)
 	{
+		add = this.expandQueryNames(add)
+		remove = this.expandQueryNames(remove)
+		
 		this.setDuplicates(add, remove)
 		
-		add = this.expandIngredients(add)
-		remove = this.expandIngredients(remove)
 		
 		this.add = add
 		this.remove = remove
 		
-		this.updateData()
+		// this.updateData()
 	},
 	
 	setDuplicates: function (add, remove)
 	{
-		add = this.expandIngredients(add)
-		remove = this.expandIngredients(remove)
-		
 		var duplicates = this.searcher.duplicates = {}
 		this.hashDuplicates(add, duplicates)
 		this.hashDuplicates(remove, duplicates)
@@ -286,18 +284,22 @@ var myProto =
 	{
 		for (var i = 0, il = arr.length; i < il; i++)
 		{
-			var item = arr[i]
+			var item = arr[i],
+				type = item.type
 			
-			if (item.constructor != Array)
+			if (type == 'ingredient')
 			{
 				hash[item] = true
 				continue
 			}
 			
-			var tag = item.tag
-			hash[tag] = true
-			for (var j = 0, jl = item.length; j < jl; j++)
-				hash[item[j]] = tag
+			if (type == 'ingredient-tag')
+			{
+				var tag = item.tag
+				hash[tag] = true
+				for (var j = 0, jl = item.length; j < jl; j++)
+					hash[item[j]] = tag
+			}
 		}
 	},
 	
@@ -323,6 +325,7 @@ var myProto =
 	
 	searchCocktails: function (add, remove)
 	{
+		return []
 		var set = this.complexSearchIngredients(add)
 		
 		if (!remove.length)
@@ -384,49 +387,44 @@ var myProto =
 		return cocktails
 	},
 	
-	expandIngredients: function (arr)
+	expandQueryNames: function (arr)
 	{
 		var Ingredient = this.ds.ingredient
 		
-		var res = [], seen = {}, ingredientsTagsHash = this.ingredientsTagsHash
+		var ingredientsTagsHash = this.ingredientsTagsHash
+		
+		var res = [], seen = {}
 		for (var i = 0; i < arr.length; i++)
 		{
-			var name = arr[i]
+			var item = arr[i]
 			
-			if (ingredientsTagsHash[name.toLowerCase()])
+			if (seen[item])
+				continue
+			seen[item] = true
+			
+			if (ingredientsTagsHash[item.toLowerCase()])
 			{
-				var group = Ingredient.getByTagCI(name)
-				
 				var names = []
-				for (var j = 0, jl = group.length; j < jl; j++)
-				{
-					var n = group[j].name
-					
-					if (seen[n])
-						continue
-					seen[n] = true
-					
-					names.push(n)
-				}
+				names.type = 'ingredient-tag'
+				names.tag = item
 				
-				names.tag = name
+				var group = Ingredient.getByTagCI(item)
+				for (var j = 0, jl = group.length; j < jl; j++)
+					names[j] = group[j].name
 				
 				res.push(names)
 				continue
 			}
 			
-			var ingredient = Ingredient.getByNameCI(name)
-			if (!ingredient)
+			var ingredient = Ingredient.getByNameCI(item)
+			if (ingredient)
+			{
+				var name = new String(ingredient.name)
+				name.type = 'ingredient'
+				res.push(name)
 				continue
-			
-			var name = ingredient.name
-			if (seen[name])
-				continue
-			seen[name] = true
-			
-			res.push(name)
+			}
 		}
-		
 		return res
 	},
 	
