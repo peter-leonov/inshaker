@@ -376,7 +376,8 @@ var myProto =
 	{
 		var Ingredient = this.ds.ingredient
 		
-		var ingredientsTagsHash = this.ingredientsTagsHash
+		var ingredientsTagsHash = this.ingredientsTagsHash,
+			cocktailsTagsHash = this.cocktailsTagsHash
 		
 		var res = [], seen = {}
 		for (var i = 0; i < arr.length; i++)
@@ -398,6 +399,14 @@ var myProto =
 					names[j] = group[j].name
 				
 				res.push(names)
+				continue
+			}
+			
+			if (cocktailsTagsHash[item.toLowerCase()])
+			{
+				var name = new String(item)
+				name.type = 'cocktail-tag'
+				res.push(name)
 				continue
 			}
 			
