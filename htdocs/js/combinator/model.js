@@ -367,6 +367,12 @@ var myProto =
 				cocktails = Cocktail.getByIngredientNames(item, {db: cocktails, count: 1})
 				continue
 			}
+			
+			if (type == 'cocktail-tag')
+			{
+				cocktails = Cocktail.getByTags([item], {db: cocktails, count: 1})
+				continue
+			}
 		}
 		
 		return cocktails
