@@ -74,11 +74,11 @@ var myProto =
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
 		
-		var tagsHash = this.tagsHash = {}
+		var ingredientsTagsHash = this.ingredientsTagsHash = {}
 		for (var i = 0, il = tags.length; i < il; i++)
-			tagsHash[tags[i].toLowerCase()] = true
+			ingredientsTagsHash[tags[i].toLowerCase()] = true
 		
-		searcher.favorites = tagsHash
+		searcher.favorites = ingredientsTagsHash
 	},
 	
 	updateData: function ()
@@ -388,12 +388,12 @@ var myProto =
 	{
 		var Ingredient = this.ds.ingredient
 		
-		var res = [], seen = {}, tagsHash = this.tagsHash
+		var res = [], seen = {}, ingredientsTagsHash = this.ingredientsTagsHash
 		for (var i = 0; i < arr.length; i++)
 		{
 			var name = arr[i]
 			
-			if (tagsHash[name.toLowerCase()])
+			if (ingredientsTagsHash[name.toLowerCase()])
 			{
 				var group = Ingredient.getByTagCI(name)
 				
