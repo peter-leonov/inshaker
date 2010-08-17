@@ -70,11 +70,12 @@ Object.extend(Cocktail,
 {
     letters: [],
 	
-	initialize: function (hash, groups, strengths, methods)
+	initialize: function (hash, groups, strengths, methods, tags)
 	{
 		this.groups = groups
 		this.strengths = strengths
 		this.methods = methods
+		this.tags = tags
 		
 		var byName = this.byName = {},
 			names = []
@@ -96,6 +97,7 @@ Object.extend(Cocktail,
 	getGroups: function () { return this.groups },
 	getStrengths: function () { return this.strengths },
 	getMethods: function () { return this.methods },
+	getTags: function () { return this.tags.slice() },
 	
 	getFirstLetters: function (set)
 	{
@@ -167,17 +169,17 @@ Object.extend(Cocktail,
 		return res;
 	},
 	
-	getByTags2: function (tags2, db, count)
+	getByTags: function (tags, db, count)
 	{
 		var hash = {}
-		for (var i = 0, il = tags2.length; i < il; i++)
-			hash[tags2[i]] = true
+		for (var i = 0, il = tags.length; i < il; i++)
+			hash[tags[i]] = true
 		
 		if (!db)
 			db = this.db
 		
 		if (!count)
-			count = tags2.length
+			count = tags.length
 		
 		var res = [], c = 0
 		cocktails:
@@ -185,9 +187,9 @@ Object.extend(Cocktail,
 		{
 			var cocktail = db[i]
 			
-			var tags2 = cocktail.tags2
-			for (var j = 0, jl = tags2.length; j < jl; j++)
-				if (hash[tags2[j]] && ++c >= count)
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+				if (hash[tags[j]] && ++c >= count)
 				{
 					res.push(cocktail)
 					continue cocktails
@@ -318,5 +320,6 @@ Cocktail.initialize
 	<!--# include file="/db/cocktails.js" -->,
 	<!--# include file="/db/groups.js" -->,
 	<!--# include file="/db/strengths.js" -->,
-	<!--# include file="/db/methods.js" -->
+	<!--# include file="/db/methods.js" -->,
+	<!--# include file="/db/tags.js" -->
 )
