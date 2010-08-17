@@ -181,11 +181,12 @@ Object.extend(Cocktail,
 		for (var i = 0, il = tags.length; i < il; i++)
 			hash[tags[i]] = true
 		
-		var res = [], matches = 0
+		var res = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
-			var cocktail = db[i]
+			var cocktail = db[i],
+				matches = 0
 			
 			var tags = cocktail.tags
 			for (var j = 0, jl = tags.length; j < jl; j++)
