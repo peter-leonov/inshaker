@@ -375,6 +375,31 @@ var myProto =
 			}
 		}
 		
+		// yes, needs refactoring
+		for (var i = 0, il = remove.length; i < il; i++)
+		{
+			var item = remove[i],
+				type = item.type
+			
+			if (type == 'ingredient')
+			{
+				cocktails = Cocktail.getByIngredientNames([item.valueOf()], {db: cocktails}).rest
+				continue
+			}
+			
+			if (type == 'ingredient-tag')
+			{
+				cocktails = Cocktail.getByIngredientNames(item, {db: cocktails, count: 1}).rest
+				continue
+			}
+			
+			if (type == 'cocktail-tag')
+			{
+				cocktails = Cocktail.getByTags([item], {db: cocktails, count: 1}).rest
+				continue
+			}
+		}
+		
 		return cocktails
 	},
 	
