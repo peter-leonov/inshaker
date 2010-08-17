@@ -167,6 +167,35 @@ Object.extend(Cocktail,
 		return res;
 	},
 	
+	getByTags2: function (tags2, db, count)
+	{
+		var hash = {}
+		for (var i = 0, il = tags2.length; i < il; i++)
+			hash[tags2[i]] = true
+		
+		if (!db)
+			db = this.db
+		
+		if (!count)
+			count = tags2.length
+		
+		var res = [], c = 0
+		cocktails:
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var cocktail = db[i]
+			
+			var tags2 = cocktail.tags2
+			for (var j = 0, jl = tags2.length; j < jl; j++)
+				if (hash[tags2[j]] && ++c >= count)
+				{
+					res.push(cocktail)
+					continue cocktails
+				}
+		}
+		return res;
+	},
+	
 	getByStrength: function(strength, set) {
 		if(!set) set = this.db;
 		var res = [];
