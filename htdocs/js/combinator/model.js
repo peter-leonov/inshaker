@@ -270,7 +270,7 @@ var myProto =
 		this.add = add
 		this.remove = remove
 		
-		// this.updateData()
+		this.updateData()
 	},
 	
 	quickQueryChange: function (add, remove)
@@ -333,64 +333,27 @@ var myProto =
 	
 	searchCocktails: function (add, remove)
 	{
-		return []
-		var set = this.complexSearchIngredients(add)
+		var Cocktail = this.ds.cocktail
 		
-		if (!remove.length)
-			return set
+		var cocktails = Cocktail.getAll()
 		
-		remove = remove.flatten().hashValues()
-		
-		var cocktails = []
-		cocktails: for (var i = 0, il = set.length; i < il; i++)
+		for (var i = 0, il = add.length; i < il; i++)
 		{
-			var cocktail = set[i],
-				recipe = cocktail.ingredients
+			var item = add[i],
+				type = item.type
 			
-			for (var j = 0, jl = recipe.length; j < jl; j++)
+			if (type == 'ingredient')
 			{
-				if (remove[recipe[j][0]])
-					continue cocktails
+				cocktails = Cocktail.getByIngredientNames([item.valueOf()], {db: cocktails})
+				continue
 			}
 			
-			cocktails.push(cocktail)
+			if (type == 'ingredient-tag')
+			{
+				cocktails = Cocktail.getByIngredientNames(item, {db: cocktails, count: 1})
+				continue
+			}
 		}
-		
-		return cocktails
-	},
-	
-	complexSearchIngredients: function (set)
-	{
-		var Cocktail = this.ds.cocktail,
-			cocktails
-		
-		var groups = [], ingredients = []
-		for (var i = 0, il = set.length; i < il; i++)
-		{
-			var item = set[i]
-			
-			if (item.constructor == Array)
-				groups.push(item)
-			else
-				ingredients.push(item)
-		}
-		
-		var firstGroup = 0
-		if (ingredients.length)
-		{
-			// reduce cocktails set by raw ingredients
-			cocktails = Cocktail.getByIngredientNames(ingredients)
-		}
-		else if (groups.length)
-		{
-			// reduce cocktails set by first ingredients group
-			cocktails = Cocktail.getByIngredientNames(groups[0], {count: 1})
-			firstGroup = 1
-		}
-		
-		// step by step reducing with other groups
-		for (var i = firstGroup, il = groups.length; i < il; i++)
-			cocktails = Cocktail.getByIngredientNames(groups[i], {db: cocktails, count: 1})
 		
 		return cocktails
 	},
