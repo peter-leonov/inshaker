@@ -181,7 +181,7 @@ Object.extend(Cocktail,
 		for (var i = 0, il = tags.length; i < il; i++)
 			hash[tags[i]] = true
 		
-		var res = [], c = 0
+		var res = [], matches = 0
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -189,7 +189,7 @@ Object.extend(Cocktail,
 			
 			var tags = cocktail.tags
 			for (var j = 0, jl = tags.length; j < jl; j++)
-				if (hash[tags[j]] && ++c >= count)
+				if (hash[tags[j]] && ++matches >= count)
 				{
 					res.push(cocktail)
 					continue db
