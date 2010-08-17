@@ -11,6 +11,7 @@ class CocktailsProcessor < Barman::Processor
     HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
     DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
+    DB_JS_GROUPS       = HTDOCS_DIR + "db/groups.js"
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
     DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
     DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
@@ -30,7 +31,8 @@ class CocktailsProcessor < Barman::Processor
     @all_ingredients = {}
     @cocktails = {}
     @cocktails_present = {}
-    @tags = []
+    @groups = []
+    @tags = {}
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
@@ -73,7 +75,7 @@ class CocktailsProcessor < Barman::Processor
     prepare_templates
     prepare_ingredients
     prepare_cocktails
-    prepare_tags_and_strengths_and_methods
+    prepare_groups_and_strengths_and_methods
     
     touched = update_cocktails
     
@@ -83,7 +85,7 @@ class CocktailsProcessor < Barman::Processor
       update_recomendations if touched > 0
       
       cleanup_deleted
-      flush_tags_and_strengths_and_methods
+      flush_groups_and_strengths_and_methods
       flush_json
       flush_links
     end
@@ -242,7 +244,7 @@ class CocktailsProcessor < Barman::Processor
   def calculate_related
     cocktails = []
     ingredient_hashes = []
-    tag_hashes = []
+    group_hashes = []
     @cocktails.keys.sort.each do |name|
       cocktail = @cocktails[name]
       cocktails << cocktail
@@ -250,8 +252,8 @@ class CocktailsProcessor < Barman::Processor
       ingredient_hashes << hash = {}
       cocktail["ingredients"].each { |v| hash[v[0]] = true }
       
-      tag_hashes << hash = {}
-      cocktail["tags"].each { |v| hash[v] = true }
+      group_hashes << hash = {}
+      cocktail["groups"].each { |v| hash[v] = true }
     end
     count = cocktails.length
     
@@ -262,7 +264,7 @@ class CocktailsProcessor < Barman::Processor
     i = 0
     while i < count
       a = cocktails[i]
-      a_tags = tag_hashes[i]
+      a_groups = group_hashes[i]
       a_ingredients = ingredient_hashes[i]
       
       weights[i * count + i] = 0
@@ -274,8 +276,8 @@ class CocktailsProcessor < Barman::Processor
         b["ingredients"].each do |v|
           weight += 10000 if a_ingredients[v[0]]
         end
-        b["tags"].each do |v|
-          weight += 1000 if a_tags[v]
+        b["groups"].each do |v|
+          weight += 1000 if a_groups[v]
         end
         weight += 100 - b["ingredients"].length
         
@@ -298,12 +300,11 @@ class CocktailsProcessor < Barman::Processor
     name = dir.name
     say name
     indent do
-    @cocktail               = {}
+    @cocktail                = {}
     @cocktail["name"]        = name
-    @cocktail["tags"]        = []
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
-    @cocktail["recs"] = []
+    @cocktail["recs"]        = []
     
     legend_path = dir.path + "/legend.txt"
     parse_legend_text File.read(legend_path)
@@ -313,7 +314,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
-    @cocktail["tags"] = about["Группы"]
+    @cocktail["groups"] = about["Группы"]
     @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
     @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
     @cocktail["tools"] = about["Штучки"]
@@ -327,6 +328,11 @@ class CocktailsProcessor < Barman::Processor
     
     if about["Винительный падеж"]
       @cocktail["nameVP"] = about["Винительный падеж"]
+    end
+    
+    @cocktail["tags"] = about["Теги"] || []
+    @cocktail["tags"].each do |tag|
+      @tags[tag] = true
     end
     
     @cocktails[name] = @cocktail
@@ -345,8 +351,8 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
-  def prepare_tags_and_strengths_and_methods
-    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+  def prepare_groups_and_strengths_and_methods
+    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
   end
@@ -429,34 +435,35 @@ class CocktailsProcessor < Barman::Processor
     flush_json_object(@cocktails, Config::DB_JS)
   end
   
-  def flush_tags_and_strengths_and_methods
+  def flush_groups_and_strengths_and_methods
      say "сохраняю списки тегов, крепости и приготовления"
      
      count = {}
      count.default = 0
      @cocktails.each do |name, hash|
-       hash["tags"].each { |tag| count[tag] += 1 }
+       hash["groups"].each { |group| count[group] += 1 }
      end
-     tags = []
-     # p @tags
-     @tags.each do |tag|
-      if count[tag] == 0
-        error "нет коктейлей в группе «#{tag}»"
-      elsif count[tag] < 3
-        warning "слишком мало коктейлей (#{count[tag]}) в группе «#{tag}»"
+     groups = []
+     # p @groups
+     @groups.each do |group|
+      if count[group] == 0
+        error "нет коктейлей в группе «#{group}»"
+      elsif count[group] < 3
+        warning "слишком мало коктейлей (#{count[group]}) в группе «#{group}»"
         indent do
         @cocktails.each do |name, hash|
-          if hash["tags"].index tag
+          if hash["groups"].index group
             say name
           end
         end
         end # indent
       else
-        tags << tag
+        groups << group
       end
      end
      
-     flush_json_object(tags, Config::DB_JS_TAGS)
+     flush_json_object(groups, Config::DB_JS_GROUPS)
+     flush_json_object(@tags.keys, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
      flush_json_object(@methods, Config::DB_JS_METHODS)
   end
