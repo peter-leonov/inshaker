@@ -19,7 +19,7 @@ function CocktailsModel (states, view) {
 		var viewData = {}
 		
 		viewData.ingredients = Ingredient.getAllNames()
-		viewData.tags = Cocktail.getTags()
+		viewData.tags = Cocktail.getGroups()
 		viewData.strengths = Cocktail.getStrengths()
 		viewData.methods = Cocktail.getMethods()
 		
@@ -90,7 +90,7 @@ function CocktailsModel (states, view) {
 	
 	this.uniqueTags = function(set){
 		var res = [];
-		for(var i = 0; i < set.length; i++){ res = res.concat(set[i].tags) }
+		for(var i = 0; i < set.length; i++){ res = res.concat(set[i].groups) }
 		return res.uniq();
 	};
 	
@@ -233,7 +233,7 @@ function CocktailsModel (states, view) {
 		if (this.filtersAreEmpty())
 		{
 			var res = {}
-			res.tags = Cocktail.getTags()
+			res.tags = Cocktail.getGroups()
 			res.strengths = Cocktail.getStrengths()
 			res.methods = Cocktail.getMethods()
 		}
@@ -302,7 +302,7 @@ function CocktailsModel (states, view) {
 			return Cocktail.getByLetter(filters.letter)
 		
 		if (filters.tag)
-			res = Cocktail.getByTag(filters.tag)
+			res = Cocktail.getByGroup(filters.tag)
 		
 		if (filters.strength)
 			res = Cocktail.getByStrength(filters.strength, res)

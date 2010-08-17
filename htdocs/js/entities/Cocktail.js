@@ -70,9 +70,9 @@ Object.extend(Cocktail,
 {
     letters: [],
 	
-	initialize: function (hash, tags, strengths, methods)
+	initialize: function (hash, groups, strengths, methods)
 	{
-		this.tags = tags
+		this.groups = groups
 		this.strengths = strengths
 		this.methods = methods
 		
@@ -93,7 +93,7 @@ Object.extend(Cocktail,
 		this.db = db
 	},
 	
-	getTags: function () { return this.tags },
+	getGroups: function () { return this.groups },
 	getStrengths: function () { return this.strengths },
 	getMethods: function () { return this.methods },
 	
@@ -156,11 +156,11 @@ Object.extend(Cocktail,
 		return res
 	},
 	
-	getByTag: function (tag, set) {
+	getByGroup: function (group, set) {
 		if(!set) set = this.db;
 		var res = [];
 		for(var i = 0; i < set.length; i++){
-			if(set[i].tags.indexOf(tag) > -1){
+			if(set[i].groups.indexOf(group) > -1){
 				res.push(set[i]);
 			}
 		}
@@ -316,7 +316,7 @@ Object.extend(Cocktail,
 Cocktail.initialize
 (
 	<!--# include file="/db/cocktails.js" -->,
-	<!--# include file="/db/tags.js" -->,
+	<!--# include file="/db/groups.js" -->,
 	<!--# include file="/db/strengths.js" -->,
 	<!--# include file="/db/methods.js" -->
 )
