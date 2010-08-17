@@ -93,7 +93,7 @@ var myProto =
 			return
 		}
 		
-		var cocktails = this.getCocktailsByIngredients(add, remove)
+		var cocktails = this.getCocktailsByQuery(add, remove)
 		
 		var sorted
 		switch (this.sortBy)
@@ -309,7 +309,7 @@ var myProto =
 	},
 	
 	
-	getCocktailsByIngredients: function (add, remove)
+	getCocktailsByQuery: function (add, remove)
 	{
 		var key = add.join(':') + '::' + remove.join(':')
 		
