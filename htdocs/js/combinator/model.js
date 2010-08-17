@@ -38,8 +38,8 @@ var myProto =
 			'от простых к сложным',
 			'по алфавиту',
 			'по группам',
-			'по дате размещения',
-			'по количеству ингредиента'
+			'по дате размещения'
+			// 'по количеству ингредиента'
 		]
 		
 		this.sortTypeByNum =
@@ -47,8 +47,8 @@ var myProto =
 			'increasing-complexity',
 			'alphabetically',
 			'by-group',
-			'by-date',
-			'by-strength'
+			'by-date'
+			// 'by-strength'
 		]
 		
 		this.sortBy = this.sortTypeByNum[0]
