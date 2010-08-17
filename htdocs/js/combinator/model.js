@@ -157,39 +157,39 @@ var myProto =
 	
 	sortByGroup: function (cocktails)
 	{
-		var byTag = {}
+		var byGroup = {}
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cocktail = cocktails[i]
 			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
+			var groups = cocktail.groups
+			for (var j = 0, jl = groups.length; j < jl; j++)
 			{
-				var tag = tags[j]
+				var group = groups[j]
 				
-				var arr = byTag[tag]
+				var arr = byGroup[group]
 				if (arr)
 					arr.push(cocktail)
 				else
-					byTag[tag] = [cocktail]
+					byGroup[group] = [cocktail]
 			}
 		}
 		
-		var tags = this.ds.cocktail.tags,
+		var groups = this.ds.cocktail.getGroups(),
 			sorted = []
-		for (var i = 0, il = tags.length; i < il; i++)
+		for (var i = 0, il = groups.length; i < il; i++)
 		{
-			var tag = tags[i]
-			if (byTag[tag])
-				sorted.push(tag)
+			var group = groups[i]
+			if (byGroup[group])
+				sorted.push(group)
 		}
 		
 		var groups = []
 		for (var i = 0, il = sorted.length; i < il; i++)
 		{
-			var tag = sorted[i]
-			groups.push({name: tag, cocktails: byTag[tag]})
+			var group = sorted[i]
+			groups.push({name: group, cocktails: byGroup[group]})
 		}
 		
 		return groups
