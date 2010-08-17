@@ -57,7 +57,7 @@ var myProto =
 		for (var i = 0, il = remove.length; i < il; i++)
 			remove[i] = remove[i].trim().replace(/\s+/g, ' ')
 		
-		this.controller.setIngredientsNames(add, remove)
+		this.controller.setQuery(add, remove)
 	},
 	
 	searchInputValueChanged: function (add, remove)

@@ -259,7 +259,7 @@ var myProto =
 		return [{cocktails: cocktails}]
 	},
 	
-	setIngredientsNames: function (add, remove)
+	setQuery: function (add, remove)
 	{
 		this.setDuplicates(add, remove)
 		

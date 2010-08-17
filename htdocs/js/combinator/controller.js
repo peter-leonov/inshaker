@@ -11,9 +11,9 @@ var myProto =
 	
 	bind: function () {},
 	
-	setIngredientsNames: function (add, remove)
+	setQuery: function (add, remove)
 	{
-		this.model.setIngredientsNames(add, remove)
+		this.model.setQuery(add, remove)
 	},
 	
 	setDuplicates: function (add, remove)
