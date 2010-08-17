@@ -181,7 +181,7 @@ Object.extend(Cocktail,
 		for (var i = 0, il = tags.length; i < il; i++)
 			hash[tags[i]] = true
 		
-		var res = []
+		var res = [], rest = res.rest = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -195,6 +195,8 @@ Object.extend(Cocktail,
 					res.push(cocktail)
 					continue db
 				}
+			
+			rest.push(cocktail)
 		}
 		return res;
 	},
@@ -244,7 +246,8 @@ Object.extend(Cocktail,
 		for (var i = 0; i < names.length; i++)
 			hash[names[i]] = true
 		
-		var res = []
+		var res = [],
+			rest = res.rest = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -276,6 +279,8 @@ Object.extend(Cocktail,
 					}
 			}
 			// here if cocktail does not pass at all
+			
+			rest.push(cocktail)
 		}
 		return res
 	},
