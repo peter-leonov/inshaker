@@ -23,7 +23,7 @@ html { overflow-y: scroll;  }
 
 #output .empty-block { font-size: 15px; }
 #output .empty-block .share-recipe { font-size: 20px; }
-#output .empty-block .suggestions { margin: 20px 0;  }
+#output .empty-block .suggestions { margin: 10px 0;  }
 #output .empty-block .suggestions.empty { display: none; }
 #output .empty-block .suggestions .list { margin: 0.2em 0; }
 #output .empty-block .suggestions .list .item { margin: 10px 0 0 20px; }
@@ -33,11 +33,13 @@ html { overflow-y: scroll;  }
 #output .initial-block,
 #output .result-block,
 #output .empty-block,
+#output.result-state .sort-line.empty,
 #output .sort-line { display: none; }
 
-#output.initial-state .initial-block { display: block; }
+#output.initial-state .initial-block,
 #output.result-state .result-block,
-#output.result-state .sort-line { display: block; }
+#output.result-state .sort-line,
+#output.empty-state .sort-line.empty,
 #output.empty-state .empty-block { display: block; }
 
 #output .sort-line { font-size: 14px; margin-top: 6px; }
