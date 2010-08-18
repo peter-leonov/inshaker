@@ -36,6 +36,8 @@ var myProto =
 		s.bind(nodes.sortbySelect)
 		s.addEventListener('select', function (e) { controller.setSortBy(+e.data.num) }, false)
 		
+		nodes.suggestionsList.addEventListener('click', function (e) { me.suggestionClicked(e.target) }, false)
+		
 		return this
 	},
 	
@@ -132,14 +134,24 @@ var myProto =
 			var item = Nc('li', 'item')
 			
 			var link = Nct('a', 'link', s.add.join(' + '))
+			link['data-query'] = s.add
 			item.appendChild(link)
 			
 			item.appendChild(Nct('span', 'count', ' (' + s.count + ' ' + s.count.plural('коктейль', 'коктейля', 'коктейлей') + ')'))
 			
 			list.appendChild(item)
 		}
+	},
+	
+	suggestionClicked: function (node)
+	{
+		var query = node['data-query']
 		
-		log(nodes.suggestions)
+		if (!query)
+			return
+		
+		this.nodes.ingredientInput.value = query.join(' + ')
+		this.queryUpdated(query, [])
 	}
 }
 
