@@ -107,6 +107,39 @@ var myProto =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
+	},
+	
+	renderSuggestions: function (suggestions)
+	{
+		var nodes = this.nodes,
+			root = nodes.suggestions,
+			list = nodes.suggestionsList
+		
+		list.empty()
+		
+		if (suggestions.length == 0)
+		{
+			root.toggleClassName('empty', true)
+			return
+		}
+		
+		root.toggleClassName('empty', false)
+		
+		for (var i = 0, il = suggestions.length; i < il; i++)
+		{
+			var s = suggestions[i]
+			
+			var item = Nc('li', 'item')
+			
+			var link = Nct('a', 'link', s.add.join(' + '))
+			item.appendChild(link)
+			
+			item.appendChild(Nct('span', 'count', ' (' + s.count + ' ' + s.count.plural('коктейль', 'коктейля', 'коктейлей') + ')'))
+			
+			list.appendChild(item)
+		}
+		
+		log(nodes.suggestions)
 	}
 }
 
