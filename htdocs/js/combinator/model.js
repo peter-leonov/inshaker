@@ -324,7 +324,7 @@ var myProto =
 		var combinatios = this.combine(add)
 		combinatios.sort(function (a, b) { return b.length - a.length })
 		
-		for (var i = 0, il = combinatios.length -1 ; i < il; i++)
+		for (var i = 0, il = combinatios.length; i < il && i < 250; i++)
 		{
 			var query = combinatios[i]
 			
