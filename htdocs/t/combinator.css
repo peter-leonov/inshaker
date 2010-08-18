@@ -21,6 +21,9 @@ html { overflow-y: scroll;  }
 #search-box .autocomplete .item .substr { font-weight: bold; }
 #search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 
+#output .empty-block .share-recipe { font-size: 20px; }
+#output .empty-block .suggestions.empty { display: none; }
+
 #output .initial-block,
 #output .result-block,
 #output .empty-block,

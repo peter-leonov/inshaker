@@ -62,6 +62,8 @@ function onready ()
 		ingredientComplete: $$('#search-box .autocomplete')[0],
 		totalCocktails: $$('#output .sort-line .cocktail-count')[0],
 		sortedWord: $$('#output .sort-line .sorted-word')[0],
+		suggestions: $$('#output .empty-block .suggestions')[0],
+		suggestionsList: $$('#output .empty-block .suggestions .list')[0],
 		
 		sortbySelect:
 		{
