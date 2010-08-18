@@ -112,6 +112,7 @@ var myProto =
 		if (cocktails.length == 0)
 		{
 			this.view.renderCocktails(cocktails, 0)
+			this.suggestSome(add, remove)
 			return
 		}
 		
@@ -277,6 +278,27 @@ var myProto =
 		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
 		
 		return [{cocktails: cocktails}]
+	},
+	
+	suggestSome: function (add, remove)
+	{
+		var suggestions = [],
+			query, set
+		
+		query = add
+		set = this.getCocktailsByQuery(query, [])
+		if (set.length)
+			suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+		
+		for (var i = 0, il = add.length -1 ; i < il; i++)
+		{
+			query = add.slice(0, il - i)
+			set = this.getCocktailsByQuery(query, [])
+			if (set.length)
+				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+		}
+		
+		this.view.renderSuggestions(suggestions)
 	},
 	
 	setQuery: function (add, remove)
