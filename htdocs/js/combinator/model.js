@@ -337,18 +337,15 @@ var myProto =
 			var item = arr[i],
 				type = item.type
 			
-			if (type == 'ingredient')
-			{
-				hash[item] = true
-				continue
-			}
+			hash[item] = true
 			
 			if (type == 'ingredient-tag')
 			{
-				var tag = item.tag
-				hash[tag] = true
-				for (var j = 0, jl = item.length; j < jl; j++)
-					hash[item[j]] = tag
+				var tag = item.valueOf(),
+					names = item.names
+				for (var j = 0, jl = names.length; j < jl; j++)
+					hash[names[j]] = tag
+				continue
 			}
 		}
 	},
@@ -392,7 +389,7 @@ var myProto =
 			
 			if (type == 'ingredient-tag')
 			{
-				cocktails = Cocktail.getByIngredientNames(item, {db: cocktails, count: 1})
+				cocktails = Cocktail.getByIngredientNames(item.names, {db: cocktails, count: 1})
 				continue
 			}
 			
@@ -417,7 +414,7 @@ var myProto =
 			
 			if (type == 'ingredient-tag')
 			{
-				cocktails = Cocktail.getByIngredientNames(item, {db: cocktails, count: 1}).rest
+				cocktails = Cocktail.getByIngredientNames(item.names, {db: cocktails, count: 1}).rest
 				continue
 			}
 			
@@ -436,28 +433,7 @@ var myProto =
 		var names = []
 		
 		for (var i = 0, il = arr.length; i < il; i++)
-		{
-			var item = arr[i],
-				type = item.type
-			
-			if (type == 'ingredient')
-			{
-				names.push(item.valueOf())
-				continue
-			}
-			
-			if (type == 'ingredient-tag')
-			{
-				names.push(item.tag)
-				continue
-			}
-			
-			if (type == 'cocktail-tag')
-			{
-				names.push(item.valueOf())
-				continue
-			}
-		}
+			names[i] = arr[i].valueOf()
 		
 		return names
 	},
@@ -480,9 +456,9 @@ var myProto =
 			
 			if (ingredientsTagsHash[item.toLowerCase()])
 			{
-				var names = []
-				names.type = 'ingredient-tag'
-				names.tag = item
+				var name = new String(item)
+				name.type = 'ingredient-tag'
+				var names = name.names = []
 				
 				var group = Ingredient.getByTagCI(item)
 				for (var j = 0, jl = group.length; j < jl; j++)
