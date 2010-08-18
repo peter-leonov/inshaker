@@ -109,6 +109,12 @@ var myProto =
 		
 		var cocktails = this.getCocktailsByQuery(add, remove)
 		
+		if (cocktails.length == 0)
+		{
+			this.view.renderCocktails(cocktails, 0)
+			return
+		}
+		
 		var sorted
 		switch (this.sortBy)
 		{
