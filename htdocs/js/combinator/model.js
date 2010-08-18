@@ -409,6 +409,37 @@ var myProto =
 		return cocktails
 	},
 	
+	collapseQueryObjects: function (arr)
+	{
+		var names = []
+		
+		for (var i = 0, il = arr.length; i < il; i++)
+		{
+			var item = arr[i],
+				type = item.type
+			
+			if (type == 'ingredient')
+			{
+				names.push(item.valueOf())
+				continue
+			}
+			
+			if (type == 'ingredient-tag')
+			{
+				names.push(item.tag)
+				continue
+			}
+			
+			if (type == 'cocktail-tag')
+			{
+				names.push(item.valueOf())
+				continue
+			}
+		}
+		
+		return names
+	},
+	
 	expandQueryNames: function (arr)
 	{
 		var Ingredient = this.ds.ingredient
