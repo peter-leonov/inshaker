@@ -21,8 +21,14 @@ html { overflow-y: scroll;  }
 #search-box .autocomplete .item .substr { font-weight: bold; }
 #search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 
+#output .empty-block { font-size: 15px; }
 #output .empty-block .share-recipe { font-size: 20px; }
+#output .empty-block .suggestions { margin: 20px 0;  }
 #output .empty-block .suggestions.empty { display: none; }
+#output .empty-block .suggestions .list { margin: 0.2em 0; }
+#output .empty-block .suggestions .list .item { margin: 10px 0 0 20px; }
+#output .empty-block .suggestions .list .item .link { text-decoration: none; border-bottom: 1px dashed; font-size: 17px; }
+#output .empty-block .suggestions .list .item .count { font-size: 13px; color: #888; }
 
 #output .initial-block,
 #output .result-block,
