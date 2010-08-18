@@ -282,18 +282,16 @@ var myProto =
 	
 	suggestSome: function (add, remove)
 	{
-		var suggestions = [],
-			query, set
+		var suggestions = []
 		
-		query = add
-		set = this.getCocktailsByQuery(query, [])
-		if (set.length)
-			suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+		var combinatios = this.combine(add)
+		combinatios.sort(function (a, b) { return b.length - a.length })
 		
-		for (var i = 0, il = add.length -1 ; i < il; i++)
+		for (var i = 0, il = combinatios.length -1 ; i < il; i++)
 		{
-			query = add.slice(0, il - i)
-			set = this.getCocktailsByQuery(query, [])
+			var query = combinatios[i]
+			
+			var set = this.getCocktailsByQuery(query, [])
 			if (set.length)
 				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
 		}
