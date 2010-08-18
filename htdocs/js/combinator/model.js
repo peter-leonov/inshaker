@@ -464,7 +464,7 @@ var myProto =
 				for (var j = 0, jl = group.length; j < jl; j++)
 					names[j] = group[j].name
 				
-				res.push(names)
+				res.push(name)
 				continue
 			}
 			
