@@ -324,13 +324,17 @@ var myProto =
 		var combinatios = this.combine(add)
 		combinatios.sort(function (a, b) { return b.length - a.length })
 		
-		for (var i = 0, il = combinatios.length; i < il && i < 250; i++)
+		var begin = +new Date()
+		for (var i = 0, il = combinatios.length; i < il; i++)
 		{
 			var query = combinatios[i]
 			
 			var set = this.getCocktailsByQuery(query, [])
 			if (set.length)
 				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+			
+			if (i % 25 == 0 && new Date - begin > 250)
+				break
 		}
 		
 		this.view.renderSuggestions(suggestions)
