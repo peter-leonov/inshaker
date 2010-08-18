@@ -280,6 +280,43 @@ var myProto =
 		return [{cocktails: cocktails}]
 	},
 	
+	combine: function (arr)
+	{
+		var res = [], seen = {}, total = 0
+		
+		res.push(arr.slice())
+		if (arr.length == 1)
+			return res
+		
+		function walk (a)
+		{
+			total++
+			
+			for (var i = a.length - 1; i >= 0; i--)
+			{
+				
+				var v = a.slice()
+				v.splice(i, 1)
+				
+				var s = ''+v
+				if (seen[s])
+					continue
+				seen[s] = true
+				
+				res.push(v)
+				
+				if (v.length == 1)
+					continue
+				
+				walk(v)
+			}
+		}
+		
+		walk(arr)
+		
+		return res
+	},
+	
 	suggestSome: function (add, remove)
 	{
 		var suggestions = []
