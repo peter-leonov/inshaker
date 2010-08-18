@@ -23,10 +23,12 @@ html { overflow-y: scroll;  }
 
 #output .initial-block,
 #output .result-block,
-#output .empty-block { display: none; }
+#output .empty-block,
+#output .sort-line { display: none; }
 
 #output.initial-state .initial-block { display: block; }
-#output.result-state .result-block { display: block; }
+#output.result-state .result-block,
+#output.result-state .sort-line { display: block; }
 #output.empty-state .empty-block { display: block; }
 
 #output .sort-line { font-size: 14px; margin-top: 6px; }
