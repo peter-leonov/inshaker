@@ -24,6 +24,11 @@ var myProto =
 	setSortBy: function (type)
 	{
 		this.model.setSortBy(type)
+	},
+	
+	updateInitialBlock: function ()
+	{
+		this.model.updateAllIngredients()
 	}
 }
 

@@ -530,6 +530,43 @@ var myProto =
 	setState: function (state)
 	{
 		this.state = state
+	},
+	
+	updateAllIngredients: function ()
+	{
+		var ingredients = this.allIngredients
+		
+		// check if ingredients are already rendered
+		if (ingredients)
+			return
+		
+		ingredients = this.allIngredients = this.ds.ingredient.getAll()
+		var groups = this.groupByGroup(ingredients)
+		this.view.renderInitialBlock(groups)
+	},
+	
+	
+	groupByGroup: function (all)
+	{
+		var groups = this.ds.ingredient.getGroups()
+		
+		var data = []
+		{
+			var slices = {}
+			for (var i = 0; i < groups.length; i++)
+			{
+				var list = [], name = groups[i]
+				slices[name] = list
+				data.push({name: name, list: list})
+			}
+			
+			for (var i = 0; i < all.length; i++)
+			{
+				var ingred = all[i]
+				slices[ingred.group].push(ingred)
+			}
+		}
+		return data
 	}
 }
 

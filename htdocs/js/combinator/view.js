@@ -20,6 +20,9 @@ var myProto =
 		var inco = this.inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.cocktailList})
 		
+		var inli = this.inli = new IngredientsList()
+		inli.bind({main: nodes.ingredientsList})
+		
 		var me = this
 		
 		var completer = this.completer = new AddingInputAutocompleter()
@@ -94,6 +97,7 @@ var myProto =
 		{
 			output.addClassName('initial-state')
 			inco.setCocktails([])
+			this.controller.updateInitialBlock()
 			return
 		}
 		
@@ -109,6 +113,11 @@ var myProto =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
+	},
+	
+	renderInitialBlock: function (groups)
+	{
+		log(groups)
 	},
 	
 	renderSuggestions: function (suggestions)
