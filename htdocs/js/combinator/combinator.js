@@ -41,6 +41,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/cocktails/searcher.js" -->
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
+<!--# include virtual="ingredients-list.js" -->
 <!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
 <!--# include virtual="model.js" -->
@@ -64,6 +65,7 @@ function onready ()
 		sortedWord: $$('#output .sort-line .sorted-word')[0],
 		suggestions: $$('#output .empty-block .suggestions')[0],
 		suggestionsList: $$('#output .empty-block .suggestions .list')[0],
+		ingredientsList: $$('#output .initial-block .ingredients-list')[0],
 		
 		sortbySelect:
 		{
