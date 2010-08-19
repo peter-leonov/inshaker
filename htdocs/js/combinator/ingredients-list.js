@@ -51,6 +51,18 @@ var myProto =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		var me = this
+		
+		var t = new Throttler(function () { me.onscroll() }, 100, 500)
+		window.addEventListener('scroll', function () { t.call() }, false)
+	},
+	
+	onscroll: function ()
+	{
+		var frame = this.frame
+		if (frame)
+			frame.moveTo(window.pageXOffset, window.pageYOffset - 3000)
 	},
 	
 	renderIngredients: function (groups)
@@ -78,9 +90,9 @@ var myProto =
 		
 		var boxes = Boxer.sameNodesToBoxes(nodes)
 		
-		var frame = new VisibilityFrame()
-		frame.setFrame(4000, 1500) // hardcoded for now
-		frame.setStep(500, 500)
+		var frame = this.frame = new VisibilityFrame()
+		frame.setFrame(4000, 6000) // hardcoded for now
+		frame.setStep(4000, 3000)
 		frame.setBoxes(boxes)
 		
 		frame.onmove = function (show, hide)
@@ -101,13 +113,7 @@ var myProto =
 			}
 		}
 		
-		function onscroll ()
-		{
-			frame.moveTo(window.pageXOffset, window.pageYOffset)
-		}
-		var timer
-		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 200) }, false)
-		onscroll()
+		this.onscroll()
 	},
 	
 	
