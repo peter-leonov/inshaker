@@ -535,16 +535,19 @@ var myProto =
 	updateAllIngredients: function ()
 	{
 		var ingredients = this.allIngredients
-		
-		// check if ingredients are already rendered
 		if (ingredients)
 			return
 		
-		ingredients = this.allIngredients = this.ds.ingredient.getAll()
+		var Ingredient = this.ds.ingredient
+		
+		Ingredient.calculateEachIngredientUsage()
+		ingredients = this.allIngredients = Ingredient.getAll()
+		
 		var groups = this.groupByGroup(ingredients)
+		this.sortGoupsBy(groups, this.sortByUsage)
+		
 		this.view.renderInitialBlock(groups)
 	},
-	
 	
 	groupByGroup: function (all)
 	{
@@ -567,7 +570,15 @@ var myProto =
 			}
 		}
 		return data
-	}
+	},
+	
+	sortGoupsBy: function (data, func)
+	{
+		for (var i = 0; i < data.length; i++)
+			data[i].list.sort(func)
+	},
+	
+	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length }
 }
 
 Object.extend(Me.prototype, myProto)
