@@ -45,6 +45,7 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
+		this.ingredientCache = {}
 	},
 	
 	bind: function (nodes)
@@ -54,7 +55,94 @@ var myProto =
 	
 	renderIngredients: function (groups)
 	{
-		log(groups)
+		var main = this.nodes.main
+		main.empty()
+		
+		this.itemCache = []
+		
+		// console.time('render')
+		for (var i = 0; i < groups.length; i++)
+		{
+			var group = this.renderGroup(groups[i])
+			main.appendChild(group)
+		}
+		// console.timeEnd('render')
+		
+		this.setupVisibilityFrame(this.itemCache)
+	},
+	
+	setupVisibilityFrame: function (nodes)
+	{
+		if (!nodes.length)
+			return
+		
+		var boxes = Boxer.sameNodesToBoxes(nodes)
+		
+		var frame = new VisibilityFrame()
+		frame.setFrame(4000, 1500) // hardcoded for now
+		frame.setStep(500, 500)
+		frame.setBoxes(boxes)
+		
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < show.length; i++)
+			{
+				var box = show[i]
+				if (!box.loaded)
+				{
+					var node = box.node,
+						image = node.ingredientNode.ingredientImage
+					
+					image.src = image.lazySrc
+					node.removeClassName('lazy')
+					
+					box.loaded = true
+				}
+			}
+		}
+		
+		function onscroll ()
+		{
+			frame.moveTo(window.pageXOffset, window.pageYOffset)
+		}
+		var timer
+		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 200) }, false)
+		onscroll()
+	},
+	
+	
+	renderGroup: function (group)
+	{
+		var root = Nc('dl', 'group')
+		
+		if ('name' in group)
+			root.appendChild(Nct('dt', 'head', group.name))
+		
+		var body = Nc('dt', 'body')
+		root.appendChild(body)
+		
+		var list = Nc('ul', 'list')
+		var ingreds = group.list, itemCache = this.itemCache
+		for (var i = 0; i < ingreds.length; i++)
+		{
+			var item = Nc('li', 'item lazy')
+			itemCache.push(item)
+			var ingredientNode = this.getIngredientNode(ingreds[i])
+			item.appendChild(ingredientNode)
+			item.ingredientNode = ingredientNode
+			list.appendChild(item)
+		}
+		body.appendChild(list)
+		
+		return root
+	},
+	
+	getIngredientNode: function (ingredient)
+	{
+		if ((node = this.ingredientCache[ingredient.name]))
+			return node
+		
+		return this.ingredientCache[ingredient.name] = ingredient.getPreviewNode(true)
 	}
 }
 
@@ -88,7 +176,7 @@ var myProto =
 		this.groups = []
 	},
 	
-	setState: function (groups)
+	setIngredients: function (groups)
 	{
 		this.groups = groups
 		this.view.renderIngredients(groups)

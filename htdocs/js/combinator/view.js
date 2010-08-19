@@ -117,7 +117,7 @@ var myProto =
 	
 	renderInitialBlock: function (groups)
 	{
-		log(groups)
+		this.inli.setIngredients(groups)
 	},
 	
 	renderSuggestions: function (suggestions)
