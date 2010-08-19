@@ -58,7 +58,7 @@ Object.extend(Ingredient,
 	
 	getAll: function ()
 	{
-		return this.db
+		return this.db.slice()
 	},
 	
 	getGroups: function ()
