@@ -78,12 +78,7 @@ html { overflow-y: scroll;  }
 .ingredients-list .group .head { font-size: 24px; margin: 0 0 15px 0; }
 .ingredients-list .group .list { overflow: hidden; zoom: 1; }
 .ingredients-list .group .list .item { float: left; position: relative; margin: 0 15px 15px 0; width: 100px; height: 140px; }
-.ingredients-list .group .list .item .ingredient-preview { display: block; }
-.ingredients-list .group .list .item .ingredient-preview,
-.ingredients-list .group .list .item .ingredient-preview .image { display: block; width: 100px; height: 100px; }
-.ingredients-list .group .list .item.lazy .ingredient-preview .image { color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
-.ingredients-list .group .list .item .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
-
+.ingredients-list .group .list .item .ingredient-preview {  }
 
 
 
@@ -108,6 +103,7 @@ html { overflow-y: scroll;  }
 
 .ingrediented-cocktail-list .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
 .ingrediented-cocktail-list .row .body .operator { color: #ccc; }
+.ingrediented-cocktail-list .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
 
 
 
@@ -115,7 +111,7 @@ html { overflow-y: scroll;  }
 .cocktail-preview .image { display: block; margin: 0 auto -10px; width: 91px; height: 170px; }
 .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
-.ingredient-preview { display: block; float: left; margin: 0 15px 55px 15px; }
+.ingredient-preview { display: block; float: left; }
 .ingredient-preview,
 .ingredient-preview .image { width: 100px; height: 100px; }
 .ingredient-preview .image { display: block; color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
