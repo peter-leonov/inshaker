@@ -23,6 +23,7 @@ class IngredientsProcessor < Barman::Processor
     @ingredients_groups = []
     @marks = {}
     @ingredients_tags = {}
+    @hidden_ingredients_tags = {}
   end
   
   def job_name
@@ -53,7 +54,7 @@ class IngredientsProcessor < Barman::Processor
     prepare_ingredients
     prepare_marks
     
-    update_groups
+    update_groups_and_tags
     process_ingredients
     
     unless errors?
@@ -67,8 +68,9 @@ class IngredientsProcessor < Barman::Processor
     FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
-  def update_groups
+  def update_groups_and_tags
     @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @hidden_ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml")).hash_index
   end
   
   def prepare_ingredients
@@ -191,6 +193,9 @@ class IngredientsProcessor < Barman::Processor
     
     good["tags"] = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
     good["tags"].each do |e|
+      if @hidden_ingredients_tags[e]
+        next
+      end
       @ingredients_tags[e] = true
     end
     
