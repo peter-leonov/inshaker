@@ -62,7 +62,7 @@ var myProto =
 	{
 		var frame = this.frame
 		if (frame)
-			frame.moveTo(window.pageXOffset, window.pageYOffset - 3000)
+			frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
 	},
 	
 	renderIngredients: function (groups)
@@ -91,7 +91,7 @@ var myProto =
 		var boxes = Boxer.sameNodesToBoxes(nodes)
 		
 		var frame = this.frame = new VisibilityFrame()
-		frame.setFrame(4000, 6000) // hardcoded for now
+		frame.setFrame(4000, 5000) // hardcoded for now
 		frame.setStep(4000, 3000)
 		frame.setBoxes(boxes)
 		
