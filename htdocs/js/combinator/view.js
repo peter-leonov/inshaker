@@ -91,22 +91,29 @@ var myProto =
 		output.removeClassName('result-state')
 		output.removeClassName('empty-state')
 		
-		var inco = this.inco
+		var inco = this.inco, inli = this.inli
 		
 		if (!cocktails)
 		{
 			output.addClassName('initial-state')
 			inco.setCocktails([])
+			inco.sleep()
+			inli.wake()
 			this.controller.updateInitialBlock()
 			return
 		}
 		
 		if (cocktails.length == 0)
 		{
+			inco.sleep()
+			inli.sleep()
 			output.addClassName('empty-state')
 			inco.setCocktails(cocktails)
 			return
 		}
+		
+		inco.wake()
+		inli.sleep()
 		
 		output.addClassName('result-state')
 		inco.setCocktails(cocktails)
