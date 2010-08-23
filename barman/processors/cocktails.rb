@@ -33,6 +33,7 @@ class CocktailsProcessor < Barman::Processor
     @cocktails_present = {}
     @groups = []
     @tags = {}
+    @hidden_tags = {}
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
@@ -332,6 +333,9 @@ class CocktailsProcessor < Barman::Processor
     
     @cocktail["tags"] = about["Теги"] || []
     @cocktail["tags"].each do |tag|
+      if @hidden_tags[tag]
+        next
+      end
       @tags[tag] = true
     end
     
@@ -355,6 +359,7 @@ class CocktailsProcessor < Barman::Processor
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+    @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml")).hash_index
   end
   
   def guess_methods cocktail
