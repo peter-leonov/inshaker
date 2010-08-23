@@ -26,6 +26,16 @@ var myProto =
 	setIngredients: function (ingredients)
 	{
 		this.model.setIngredients(ingredients)
+	},
+	
+	wake: function ()
+	{
+		this.view.wake()
+	},
+	
+	sleep: function ()
+	{
+		this.view.sleep()
 	}
 }
 
@@ -55,7 +65,19 @@ var myProto =
 		var me = this
 		
 		var t = new Throttler(function () { me.onscroll() }, 100, 500)
-		window.addEventListener('scroll', function () { t.call() }, false)
+		this.onscrollListener = function () { t.call() }
+		
+		this.wake()
+	},
+	
+	wake: function ()
+	{
+		window.addEventListener('scroll', this.onscrollListener, false)
+	},
+	
+	sleep: function ()
+	{
+		window.removeEventListener('scroll', this.onscrollListener, false)
 	},
 	
 	onscroll: function ()
