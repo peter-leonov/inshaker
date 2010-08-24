@@ -39,7 +39,7 @@ var myProto =
 		s.bind(nodes.sortbySelect)
 		s.addEventListener('select', function (e) { controller.setSortBy(+e.data.num) }, false)
 		
-		nodes.suggestionsList.addEventListener('click', function (e) { me.suggestionClicked(e.target) }, false)
+		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		
 		return this
 	},
@@ -159,7 +159,7 @@ var myProto =
 		}
 	},
 	
-	suggestionClicked: function (node)
+	maybeSuggestionClicked: function (node)
 	{
 		var query = node['data-query']
 		
