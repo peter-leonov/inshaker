@@ -31,8 +31,7 @@ var myProto =
 		completer.addEventListener('changed', function (e) { me.searchInputValueChanged(e.add, e.remove) }, false)
 		nodes.ingredientInput.focus()
 		
-		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
-		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.searchButtonClicked() }, false)
+		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
 		var controller = this.controller
 		
@@ -46,7 +45,7 @@ var myProto =
 		return this
 	},
 	
-	searchButtonClicked: function ()
+	searchFormSubmitted: function ()
 	{
 		this.completer.apply(this.nodes.ingredientInput.value)
 	},
@@ -126,7 +125,7 @@ var myProto =
 	
 	renderInitialBlock: function (groups)
 	{
-		this.inli.setIngredients(groups)
+		// this.inli.setIngredients(groups)
 	},
 	
 	renderExamples: function (examples)
