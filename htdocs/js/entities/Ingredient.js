@@ -92,7 +92,7 @@ Object.extend(Ingredient,
 		if (!this._byTagCI)
 			this._updateByTagCIIndex()
 		
-		return this._byTagCI[name.toLowerCase()]
+		return this._byTagCI[name.toLowerCase()] || []
 	},
 	
 	getAllNames: function (name)
