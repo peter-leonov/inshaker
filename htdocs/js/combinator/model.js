@@ -583,6 +583,20 @@ var myProto =
 	updateExamples: function ()
 	{
 		this.view.renderExamples([['Малибу'], ['Малибу', 'сок']])
+	},
+	
+	chooseExampleIngredient: function ()
+	{
+		var Ingredient = this.ds.ingredient
+		
+		var ingredients = Ingredient.getByTagCI('сочетайзер')
+		if (ingredients.length)
+			return ingredients.random(1)
+		
+		var ingredients = Ingredient.getByGroup('Крепкий алкоголь')
+		Ingredient.calculateEachIngredientUsage()
+		ingredients.sort(this.sortByUsage)
+		return ingredients.slice(0, 8).random(1)
 	}
 }
 
