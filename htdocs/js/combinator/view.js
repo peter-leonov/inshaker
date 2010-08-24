@@ -127,6 +127,18 @@ var myProto =
 		this.inli.setIngredients(groups)
 	},
 	
+	renderExamples: function (examples)
+	{
+		log(examples)
+		
+		var nodes = this.nodes,
+			s = nodes.hintSingle,
+			d = nodes.hintDouble
+		
+		s.firstChild.nodeValue = examples[0][0]
+		d.firstChild.nodeValue = examples[1].join(' + ')
+	},
+	
 	renderSuggestions: function (suggestions)
 	{
 		var nodes = this.nodes,
