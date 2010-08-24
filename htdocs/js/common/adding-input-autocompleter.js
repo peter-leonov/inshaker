@@ -26,7 +26,9 @@ Me.prototype =
 		completer.addEventListener('select', function (e) { me.select(e.value) }, false)
 		
 		var me = this
-		nodes.main.addEventListener('keypress', function (e) { me.onKeyPress(e) }, false)
+		function onupdate (e) { me.onUpdate(e) }
+		nodes.main.addEventListener('keypress', onupdate, false)
+		nodes.main.addEventListener('click', onupdate, false)
 		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
 		
 		this.updateTokens(nodes.main.value, nodes.main.selectionEnd)
@@ -56,7 +58,7 @@ Me.prototype =
 		this.completer.reset()
 	},
 	
-	onKeyPress: function (e)
+	onUpdate: function (e)
 	{
 		var keyCode = e.keyCode
 		// log(keyCode)
