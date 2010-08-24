@@ -40,6 +40,7 @@ var myProto =
 		s.addEventListener('select', function (e) { controller.setSortBy(+e.data.num) }, false)
 		
 		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
+		nodes.helpLine.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		
 		return this
 	},
@@ -136,7 +137,9 @@ var myProto =
 			d = nodes.hintDouble
 		
 		s.firstChild.nodeValue = examples[0][0]
+		s['data-query'] = examples[0]
 		d.firstChild.nodeValue = examples[1].join(' + ')
+		d['data-query'] = examples[1]
 	},
 	
 	renderSuggestions: function (suggestions)

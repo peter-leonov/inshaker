@@ -66,6 +66,7 @@ function onready ()
 		suggestions: $$('#output .empty-block .suggestions')[0],
 		suggestionsList: $$('#output .empty-block .suggestions .list')[0],
 		ingredientsList: $$('#output .initial-block .ingredients-list')[0],
+		helpLine: $$('#output .help-line')[0],
 		hintSingle: $$('#output .help-line .hint.single')[0],
 		hintDouble: $$('#output .help-line .hint.double')[0],
 		
