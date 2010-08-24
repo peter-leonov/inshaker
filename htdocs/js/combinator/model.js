@@ -582,15 +582,19 @@ var myProto =
 	
 	updateExamples: function ()
 	{
+		var examples = this.guessExamples() || [['водка'], ['водка', 'сок']]
+		this.view.renderExamples(examples)
+	},
+	
+	guessExamples: function ()
+	{
 		var base = this.chooseExampleIngredient(),
 			baseName = base.name
 		
 		var cocktails = this.ds.cocktail.getByIngredients([base])
 		if (cocktails.length == 0)
-		{
-			this.view.renderExamples([['водка'], ['водка', 'сок']])
 			return
-		}
+		
 		var cocktail = cocktails.random(1)[0]
 		
 		var parts = cocktail.ingredients, name
@@ -603,16 +607,13 @@ var myProto =
 		}
 		
 		if (!name)
-		{
-			this.view.renderExamples([['водка'], ['водка', 'сок']])
 			return
-		}
 		
 		var ingredient = this.ds.ingredient.getByName(name)
 		
 		var second = ingredient.tags[0] || ingredient.name
 		
-		this.view.renderExamples([[baseName], [baseName, second]])
+		return [[baseName], [baseName, second]]
 	},
 	
 	chooseExampleIngredient: function ()
