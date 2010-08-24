@@ -582,7 +582,37 @@ var myProto =
 	
 	updateExamples: function ()
 	{
-		this.view.renderExamples([['Малибу'], ['Малибу', 'сок']])
+		var base = this.chooseExampleIngredient(),
+			baseName = base.name
+		
+		var cocktails = this.ds.cocktail.getByIngredients([base])
+		if (cocktails.length == 0)
+		{
+			this.view.renderExamples([['водка'], ['водка', 'сок']])
+			return
+		}
+		var cocktail = cocktails.random(1)[0]
+		
+		var parts = cocktail.ingredients, name
+		for (var i = 0, il = parts.length; i < il; i++)
+		{
+			name = parts[i][0]
+			if (name != baseName)
+				break
+			name = false
+		}
+		
+		if (!name)
+		{
+			this.view.renderExamples([['водка'], ['водка', 'сок']])
+			return
+		}
+		
+		var ingredient = this.ds.ingredient.getByName(name)
+		
+		var second = ingredient.tags[0] || ingredient.name
+		
+		this.view.renderExamples([[baseName], [baseName, second]])
 	},
 	
 	chooseExampleIngredient: function ()
