@@ -125,7 +125,7 @@ var myProto =
 	
 	renderInitialBlock: function (groups)
 	{
-		// this.inli.setIngredients(groups)
+		this.inli.setIngredients(groups)
 	},
 	
 	renderExamples: function (examples)
