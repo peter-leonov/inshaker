@@ -32,6 +32,7 @@ var myProto =
 		nodes.ingredientInput.focus()
 		
 		nodes.searchButton.addEventListener('click', function (e) { me.searchButtonClicked() }, false)
+		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.searchButtonClicked() }, false)
 		
 		var controller = this.controller
 		
