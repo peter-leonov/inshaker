@@ -29,6 +29,7 @@ var myProto =
 	updateInitialBlock: function ()
 	{
 		this.model.updateAllIngredients()
+		this.model.updateExamples()
 	}
 }
 

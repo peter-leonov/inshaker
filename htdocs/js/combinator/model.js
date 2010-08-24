@@ -578,7 +578,12 @@ var myProto =
 			data[i].list.sort(func)
 	},
 	
-	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length }
+	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length },
+	
+	updateExamples: function ()
+	{
+		this.view.renderExamples([['Малибу'], ['Малибу', 'сок']])
+	}
 }
 
 Object.extend(Me.prototype, myProto)
