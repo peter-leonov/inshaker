@@ -121,6 +121,10 @@ Object.extend(Ingredient,
 	
 	calculateEachIngredientUsage: function ()
 	{
+		if (this.eachIngredientUsageCalculated)
+			return
+		this.eachIngredientUsageCalculated = true
+		
 		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
 			db = this.db
 		
