@@ -130,8 +130,6 @@ var myProto =
 	
 	renderExamples: function (examples)
 	{
-		log(examples)
-		
 		var nodes = this.nodes,
 			s = nodes.hintSingle,
 			d = nodes.hintDouble
