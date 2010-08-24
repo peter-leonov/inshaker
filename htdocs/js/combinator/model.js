@@ -591,12 +591,12 @@ var myProto =
 		
 		var ingredients = Ingredient.getByTagCI('сочетайзер')
 		if (ingredients.length)
-			return ingredients.random(1)
+			return ingredients.random(1)[0]
 		
 		var ingredients = Ingredient.getByGroup('Крепкий алкоголь')
 		Ingredient.calculateEachIngredientUsage()
 		ingredients.sort(this.sortByUsage)
-		return ingredients.slice(0, 8).random(1)
+		return ingredients.slice(0, 8).random(1)[0]
 	}
 }
 
