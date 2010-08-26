@@ -30,6 +30,11 @@ var myProto =
 	{
 		this.model.updateAllIngredients()
 		this.model.updateExamples()
+	},
+	
+	ingredientSelected: function (ingredient)
+	{
+		this.model.selectIngredient(ingredient)
 	}
 }
 

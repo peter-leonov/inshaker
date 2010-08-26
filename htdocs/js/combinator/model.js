@@ -628,6 +628,11 @@ var myProto =
 		Ingredient.calculateEachIngredientUsage()
 		ingredients.sort(this.sortByUsage)
 		return ingredients.slice(0, 8).random(1)[0]
+	},
+	
+	selectIngredient: function (ingredient)
+	{
+		this.view.showIngredient(ingredient)
 	}
 }
 

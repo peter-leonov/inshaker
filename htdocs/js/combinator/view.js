@@ -197,6 +197,11 @@ var myProto =
 		
 		if (ingredient)
 			this.controller.ingredientSelected(ingredient)
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		log(ingredient)
 	}
 }
 
