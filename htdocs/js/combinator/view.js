@@ -41,6 +41,7 @@ var myProto =
 		
 		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		nodes.helpLine.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
+		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredintClicked(e.target) }, false)
 		
 		return this
 	},
@@ -181,6 +182,21 @@ var myProto =
 		
 		this.nodes.ingredientInput.value = query.join(' + ')
 		this.queryUpdated(query, [])
+	},
+	
+	maybeIngredintClicked: function (target)
+	{
+		var output = this.nodes.output, ingredient
+		
+		for (var node = target; node != output; node = node.parentNode)
+			if (node.ingredient)
+			{
+				ingredient = node.ingredient
+				break
+			}
+		
+		if (ingredient)
+			this.controller.ingredientSelected(ingredient)
 	}
 }
 
