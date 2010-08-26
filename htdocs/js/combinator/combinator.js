@@ -42,6 +42,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
+<!--# include virtual="ingredient-popup.js" -->
 <!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
 <!--# include virtual="model.js" -->
@@ -81,6 +82,30 @@ function onready ()
 	
 	var widget = new CombinatorPage()
 	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {})
+	
+	var nodes =
+	{
+		root: document.body,
+		popupMain: $('ingredient-info-popup'),
+		popupParts:
+		{
+			window: $$('#ingredient-info-popup .popup-window')[0],
+			front: $$('#ingredient-info-popup .popup-front')[0],
+			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
+			image: $$('#ingredient-info-popup .description .image')[0],
+			mark: $$('#ingredient-info-popup .description .about .mark')[0],
+			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
+			buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
+			name: $$('#ingredient-info-popup .description .about .name')[0],
+			text: $$('#ingredient-info-popup .description .about .text')[0],
+			allLink: $$('#ingredient-info-popup .description .about .all-cocktails .link')[0],
+			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
+			cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
+			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
+			cocktailsPrev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
+			cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0]
+		}
+	}
 }
 
 $.onready(onready)
