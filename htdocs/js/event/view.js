@@ -61,7 +61,7 @@ EventPage.view =
 	
 	readEvent: function ()
 	{
-		var name = this.nodes.name.firstChild.nodeValue
+		var name = this.nodes.name.getAttribute('data-name')
 		this.owner.controller.setEventName(name)
 	},
 	
