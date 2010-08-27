@@ -130,7 +130,7 @@ var myProto =
 					var node = box.node,
 						row = node['data-row']
 					
-					node.appendChild(me.getCocktailNode(row.cocktail, row.ingredients))
+					node.appendChild(me.renderCocktail(row.cocktail, row.ingredients))
 					node.removeClassName('lazy')
 					
 					box.loaded = true
