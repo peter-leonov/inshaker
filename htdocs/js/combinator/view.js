@@ -42,6 +42,7 @@ var myProto =
 		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		nodes.helpLine.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
+		nodes.cocktailList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		
 		return this
 	},
