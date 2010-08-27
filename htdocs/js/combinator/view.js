@@ -208,7 +208,7 @@ var myProto =
 	
 	showIngredient: function (ingredient)
 	{
-		log(ingredient)
+		IngredientPopup.show(ingredient)
 	}
 }
 
