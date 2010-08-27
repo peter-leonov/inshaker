@@ -121,3 +121,67 @@ html { overflow-y: scroll;  }
 .ingredient-preview .image { width: 100px; height: 100px; }
 .ingredient-preview .image { display: block; color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
+
+
+
+
+
+
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 10px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
+.ingredient-window .description { overflow: hidden; }
+.ingredient-window .photo { float: left; position: relative; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
+.ingredient-window .about { margin: 0 45px 0 0; width: 320px; overflow: hidden; font-size: 12px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .name { font-size: 20px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .brand { display: none; }
+.ingredient-window .about .name { margin-bottom: 10px; }
+.ingredient-window.branded .about .mark,
+.ingredient-window.branded .about .brand { display: block; }
+.ingredient-window.branded .about .name { font-size: 12px; margin: 10px 0 0 0; }
+.ingredient-window.branded .about .brand { margin: 0 0 10px 0; }
+.ingredient-window .about .text { font-size: 12px; }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px; }
+.ingredient-window .about .all-cocktails { margin-top: 1em; font-size: 12px; }
+.ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
+.ingredient-window.can-buy .about .where-to-buy { display: block; }
+
+.ingredient-window .cocktail-list { position: relative; margin-top: 30px; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
+.ingredient-window .cocktail-list .prev,
+.ingredient-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.ingredient-window .cocktail-list.single .prev,
+.ingredient-window .cocktail-list.single .next { display: none; }
+.ingredient-window .cocktail-list .prev { left: 15px; }
+.ingredient-window .cocktail-list .next { right: 15px; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport .surface { width: 100000px; }
+.ingredient-window .cocktail-list .point { float: left; width: 625px;  }
+
+
+<!--# include virtual="popup.css" -->
+
+.popup .popup-controls,
+.popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.popup .popup-controls { height: 10px; }
+.popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
+.hidden { display: none; }
+<!--# else -->
+.hidden { visibility: hidden; position: absolute; top: -20000px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
+.popup .window { zoom: 1; }
+#ingredient-info-popup.popup .popup-back { height: 10000px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
+.popup .popup-controls .cross { right: 0px; top: -14px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /Opera/(9|10)\./" -->
+.ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
+<!--# endif -->
