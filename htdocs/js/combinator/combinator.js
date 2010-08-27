@@ -42,6 +42,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
+<!--# include virtual="popup.js" -->
 <!--# include virtual="ingredient-popup.js" -->
 <!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
@@ -106,6 +107,10 @@ function onready ()
 			cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0]
 		}
 	}
+	
+	IngredientPopup.setup(nodes)
+	
+	Ingredient.calculateEachIngredientUsage()
 }
 
 $.onready(onready)
