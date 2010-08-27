@@ -46,9 +46,9 @@ var myProto =
 		var output = this.nodes.output, ingredient
 		
 		for (var node = target; node != output; node = node.parentNode)
-			if (node.ingredient)
+			if (node['data-ingredient'])
 			{
-				ingredient = node.ingredient
+				ingredient = node['data-ingredient']
 				break
 			}
 		
