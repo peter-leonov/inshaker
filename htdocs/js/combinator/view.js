@@ -184,16 +184,22 @@ var myProto =
 		this.queryUpdated(query, [])
 	},
 	
+	findIngredientInParents: function (node)
+	{
+		do
+		{
+			var ingredient = node['data-ingredient']
+			if (ingredient)
+				return ingredient
+		}
+		while ((node = node.parentNode))
+		
+		return null
+	},
+	
 	maybeIngredintClicked: function (target)
 	{
-		var output = this.nodes.output, ingredient
-		
-		for (var node = target; node != output; node = node.parentNode)
-			if (node.ingredient)
-			{
-				ingredient = node.ingredient
-				break
-			}
+		var ingredient = this.findIngredientInParents(target)
 		
 		if (ingredient)
 			this.controller.ingredientSelected(ingredient)
