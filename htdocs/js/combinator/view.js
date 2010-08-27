@@ -41,7 +41,7 @@ var myProto =
 		
 		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		nodes.helpLine.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
-		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredintClicked(e.target) }, false)
+		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		
 		return this
 	},
@@ -197,7 +197,7 @@ var myProto =
 		return null
 	},
 	
-	maybeIngredintClicked: function (target)
+	maybeIngredientClicked: function (target)
 	{
 		var ingredient = this.findIngredientInParents(target)
 		
