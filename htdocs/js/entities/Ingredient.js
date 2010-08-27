@@ -34,7 +34,7 @@ Me.prototype =
 		var name = Nct('span', 'name', this.name)
 		node.appendChild(name)
 		
-		node.ingredient = this
+		node['data-ingredient'] = this
 		node.ingredientImage = image
 		
 		return node
