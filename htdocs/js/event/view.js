@@ -482,13 +482,22 @@ EventPage.view =
 		for (var i = 0; i < fieldsSet.length; i++)
 		{
 			var field = fieldsSet[i]
+			
 			var label = N('label')
+			label.appendChild(T(field.label + ':'))
+			
 			var input = N('input')
 			input.type = 'text'
 			input.name = field.name || field.label
-			
-			label.appendChild(T(field.label + ':'))
 			label.appendChild(input)
+			
+			var h = field.hint
+			if (h)
+			{
+				var hint = N('span', 'hint')
+				hint.appendChild(T(h))
+				label.appendChild(hint)
+			}
 			
 			root.appendChild(label)
 		}

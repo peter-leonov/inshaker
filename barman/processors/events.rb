@@ -117,11 +117,13 @@ class EventsProcessor < Barman::Processor
     if @entity["fields"]
       @entity["fields"].each do |label|
         if label.class == Hash
-          …
-        if label.match(/(.*)\s+@(\w+)\s*$/)
-          fields << {"label" => $1, "name" => $2}
+          field = {"label" => label["Название"]}
+          if label["Подсказка"]
+            field["hint"] = label["Подсказка"]
+          end
+          fields << field
         else
-          fields << {"label" => label}
+          fields << {"label" => label.to_s}
         end
       end
     end
