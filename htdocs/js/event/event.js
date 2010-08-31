@@ -74,9 +74,12 @@ $.onready
 <!--# include file="/lib/Widgets/FormPoster.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 
+<!--# include file="/lib-0.3/widgets/input-tip.js" -->
+
 
 <!--# include file="/js/event/model.js" -->
 <!--# include file="/js/event/controller.js" -->
 <!--# include file="/js/event/view.js" -->
 <!--# include file="/js/event/interpolate.js" -->
 
+Element.prototype.removeClassName = Element.prototype.remClassName

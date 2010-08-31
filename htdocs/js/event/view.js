@@ -479,6 +479,7 @@ EventPage.view =
 		
 		var root = this.nodes.variableInputs
 		
+		var inputs = []
 		for (var i = 0; i < fieldsSet.length; i++)
 		{
 			var field = fieldsSet[i]
@@ -486,7 +487,7 @@ EventPage.view =
 			var label = N('label')
 			label.appendChild(T(field.label + ':'))
 			
-			var input = N('input')
+			var input = inputs[i] = N('input')
 			input.type = 'text'
 			input.name = field.name || field.label
 			label.appendChild(input)
@@ -495,12 +496,16 @@ EventPage.view =
 			if (h)
 			{
 				var hint = N('span', 'hint')
-				hint.appendChild(T(h))
+				hint.innerHTML = h
+				// hint.appendChild(T(h))
 				label.appendChild(hint)
+				label.addClassName('hinted')
 			}
 			
 			root.appendChild(label)
 		}
+		
+		new InputTip().bind(inputs)
 		
 		this.nodes.form.variableFields = fieldsSet
 		this.resetForm()
