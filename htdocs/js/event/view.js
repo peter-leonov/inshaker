@@ -84,6 +84,7 @@ EventPage.view =
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
+		this.showFormPopup()
 		this.setFormLock(true)
 	},
 	
@@ -495,7 +496,7 @@ EventPage.view =
 			var t = field.tip
 			if (t)
 			{
-				input.value = t
+				setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
 				var tip = N('span', 'tip')
 				tip.appendChild(T(t))
 				label.appendChild(tip)
