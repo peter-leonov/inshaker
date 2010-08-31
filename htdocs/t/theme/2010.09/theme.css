@@ -11,12 +11,12 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 65px; height: 41px; right: -2px; top: -8px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 600px; height: 520px; left: 65px; bottom: -770px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 600px; height: 570px; left: 65px; bottom: -770px; }
 #branded-image-holder { height: 900px; }
-a { color: #5d1502; }
-#top .nav a:hover { border-bottom-color: #840813; }
+a { color: #000; }
+#top .nav a:hover { border-bottom-color: #c00; }
 #bottom { color: #888; }
-#bottom a { color: #000; background-color: #fff; }
+#bottom a { color: #d5b269; background-color: #000; }
 html { background: #000 url(bg.png) repeat-x center 60px; }
 button.rounded b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
@@ -28,7 +28,7 @@ button.strong b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b { color: #890814; }
+#cart_draghere b { color: #000; }
 
 /* cocktails.css */
 .square-list .prev,
