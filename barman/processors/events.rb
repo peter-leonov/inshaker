@@ -119,7 +119,7 @@ class EventsProcessor < Barman::Processor
         if label.class == Hash
           field = {"label" => label["Название"]}
           if label["Подсказка"]
-            field["hint"] = label["Подсказка"]
+            field["tip"] = label["Подсказка"]
           end
           fields << field
         else

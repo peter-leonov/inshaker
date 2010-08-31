@@ -492,14 +492,13 @@ EventPage.view =
 			input.name = field.name || field.label
 			label.appendChild(input)
 			
-			var h = field.hint
-			if (h)
+			var t = field.tip
+			if (t)
 			{
-				var hint = N('span', 'hint')
-				hint.innerHTML = h
-				// hint.appendChild(T(h))
-				label.appendChild(hint)
-				label.addClassName('hinted')
+				input.value = t
+				var tip = N('span', 'tip')
+				tip.appendChild(T(t))
+				label.appendChild(tip)
 			}
 			
 			root.appendChild(label)
