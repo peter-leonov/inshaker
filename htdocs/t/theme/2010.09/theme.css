@@ -18,8 +18,8 @@ a { color: #000; }
 #bottom { color: #888; }
 #bottom a { color: #d5b269; background-color: #000; }
 html { background: #000 url(bg.png) repeat-x center 60px; }
-button.rounded b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
-button.strong b { text-shadow: 1px 1px 0 #c54248; color: #fff; }
+button.rounded b { text-shadow: 1px 1px 0 #9b7c3d; color: #fff; }
+button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 
 /* calculator.css */
 #b-bill dt,
