@@ -114,6 +114,10 @@ class BarsProcessor < Barman::Processor
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
         
+        unless bar["name_eng"].match(/\S/)
+          error "пустое имя бара: «#{bar["name_eng"]}»"
+        end
+        
         chief = @barmen_by_name[bar["chief"]]
         if chief
           bar["chief"] = chief
