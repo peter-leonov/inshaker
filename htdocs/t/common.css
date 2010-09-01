@@ -105,11 +105,11 @@ b.rb { right: 0; bottom: 0; }
 
 /* in almost all */
 #main-wrapper{margin:0 auto;width:960px;}
-.column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;}
+.column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;position: relative;z-index: 1; }
 .column-main{width:628px;}
 
 .column-main-container{position:relative;z-index:1;width:630px;float:left;}
-.body-wrapper{position:relative;z-index:1;border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
+.body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
 .b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:11px;position:relative;}
 
 .b-title h1,
