@@ -161,7 +161,7 @@ var Controller = {
 			$(self.TOOL_POPUP).hide();
 		}, false);
 		
-		$(self.ID_INGS_LIST).addEventListener('mousedown', function (e) { self.mayBeIngredientClicked(e.target) }, false)
+		$(self.ID_INGS_LIST).addEventListener('click', function (e) { self.mayBeIngredientClicked(e.target) }, false)
     },
 	
 	mayBeIngredientClicked: function (node)
