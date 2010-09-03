@@ -14,6 +14,7 @@ class CocktailsProcessor < Barman::Processor
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
     DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
     DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_INGRED_GROUPS= HTDOCS_DIR + "db/ingredients_groups.js"
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
@@ -28,6 +29,8 @@ class CocktailsProcessor < Barman::Processor
   def initialize
     super
     @all_ingredients = {}
+    @ingredient_groups = []
+    @ingredient_weight_by_group = {}
     @cocktails = {}
     @cocktails_present = {}
     @tags = []
@@ -102,6 +105,21 @@ class CocktailsProcessor < Barman::Processor
     if File.exists?(Config::DB_JS_INGREDS)
       load_json(Config::DB_JS_INGREDS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
+      end
+    end
+    
+    if File.exists?(Config::DB_JS_INGRED_GROUPS)
+      @ingredient_groups = load_json(Config::DB_JS_INGRED_GROUPS)
+      
+      hash = {}
+      i = 1
+      @ingredient_groups.each do |v|
+        hash[v] = i
+        i += 1
+      end
+      
+      @all_ingredients.each do |name, ingredient|
+        @ingredient_weight_by_group[ingredient["name"]] = hash[ingredient["group"]]
       end
     end
   end
@@ -481,6 +499,11 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
+  def sort_parts_by_group arr
+    arr.sort do |a, b|
+      @ingredient_weight_by_group[a[0]] - @ingredient_weight_by_group[b[0]]
+    end
+  end
   
   def merge_parts *args
     volumes = {}
