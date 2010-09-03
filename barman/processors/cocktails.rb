@@ -18,7 +18,7 @@ class CocktailsProcessor < Barman::Processor
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
-    SITEMAP_LINKS      = HTDOCS_ROOT + "map.txt"
+    SITEMAP_LINKS      = HTDOCS_ROOT + "sitemap.txt"
     
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
