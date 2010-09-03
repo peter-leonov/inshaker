@@ -18,6 +18,7 @@ class CocktailsProcessor < Barman::Processor
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
+    SITEMAP_LINKS      = HTDOCS_ROOT + "map.txt"
     
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
@@ -483,6 +484,12 @@ class CocktailsProcessor < Barman::Processor
         links.puts %Q{<li><a href="/cocktail/#{hash["name_eng"].html_name}/">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
+    end
+    
+    File.open(Config::SITEMAP_LINKS, "w+") do |links|
+      @cocktails.each do |name, hash|
+        links.puts %Q{http://#{Barman::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
+      end
     end
   end
   
