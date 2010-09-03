@@ -16,7 +16,7 @@
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
-				<div class="hreview">
+				<div class="hreview hrecipe">
 					<div class="top-menu"><div class="b">
 						<p class="border-links" id="panel_cocktail">
 							<a id="author"><b>Авторская подача</b></a>
@@ -29,7 +29,7 @@
 						<div id="main-content">
 							<img src="<%=@name_html%>-big.png" alt="<%=@name%>" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
+								<h2 class="summary"><i></i><span class="fn"><%= @name %></span> — <%= @teaser %></h2>
 								<div class="description">
 									<% if @desc_end.empty? %>
 									<%= @desc_start.html_paragraphs %>
@@ -65,7 +65,7 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										<% @receipt.each do |item| %>
 										<li><%= item %></li>
 										<% end %>
@@ -83,8 +83,11 @@
 				<div class="what-need">
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
-						<dd><a><%= name %></a> <strong><%= dose %></strong></dd>
-						<% @sorted_parts.each do |name, dose| %>
+						<% parts do |name, amount, type| %>
+						<dd class="ingredient">
+							<a class="name"><%= name %></a>
+							<strong><span class="amount"><%= amount %></span> <span class="type"><%= type %></span></strong>
+						</dd>
 						<% end %>
 					</dl>
 					<dl class="tools">
