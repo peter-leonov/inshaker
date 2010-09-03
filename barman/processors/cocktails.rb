@@ -336,6 +336,8 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
+    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
+    
     if about["Винительный падеж"]
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
@@ -389,6 +391,8 @@ class CocktailsProcessor < Barman::Processor
   end
   
   def update_json cocktail
+    cocktail.delete("sorted_parts")
+    
     data = {}
     root_dir = cocktail.delete("root_dir")
     @local_properties.each do |prop|
