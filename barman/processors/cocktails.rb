@@ -481,6 +481,35 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
+  
+  def merge_parts *args
+    volumes = {}
+    units = {}
+    
+    args.each do |set|
+      set.each do |part|
+        name = part[0]
+        
+        vol = volumes[name]
+        if vol
+          vol[1] += part[1].to_f
+        else
+          am = part[1]
+          
+          volumes[name] = [name, am.to_f]
+          units[name] = am.match(/\d+(?:\.\d+)?\s*(.+)\s*/)[1]
+        end
+      end
+    end
+    
+    res = []
+    volumes.each do |k, v|
+      v[1] = "#{v[1] % 1 == 0 ? v[1].to_i : v[1]} #{units[k]}"
+      res << v
+    end
+    
+    return res
+  end
 private
 
   def parse_about_text(about_text)
