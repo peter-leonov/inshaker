@@ -10,13 +10,13 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name"><%= @name %></h1>
+				<h1 id="cocktail_name" class="fn"><%= @name %></h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
-				<div class="hreview hrecipe">
+				<div class="hreview">
 					<div class="top-menu"><div class="b">
 						<p class="border-links" id="panel_cocktail">
 							<a id="author"><b>Авторская подача</b></a>
@@ -29,7 +29,7 @@
 						<div id="main-content">
 							<img src="<%=@name_html%>-big.png" alt="Коктейль «<%= @name %>»" id="illustration" class="illustration"/>
 							<div class="desc">
-								<h2 class="summary"><i></i><span class="fn"><%= @name %></span> — <%= @teaser %></h2>
+								<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
 								<div class="description">
 									<% if @desc_end.empty? %>
 									<%= @desc_start.html_paragraphs %>
@@ -39,6 +39,7 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
+							<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
 							<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>

@@ -31,7 +31,6 @@ class CocktailTemplate
   
   def groups
     groups = []
-    groups << ["/cocktails.html#method=#{@method}", @method]
     groups << ["/cocktails.html#strength=#{@strength}", @strength]
     
     @tags.each do |tag|
