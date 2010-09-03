@@ -86,7 +86,7 @@
 						<dt>Необходимые ингредиенты</dt>
 						<% parts do |name, amount, type| %>
 						<dd class="ingredient">
-							<a class="name"><%= name %></a>
+							<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
 							<strong><span class="amount"><%= amount %></span> <span class="type"><%= type %></span></strong>
 						</dd>
 						<% end %>

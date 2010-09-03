@@ -160,7 +160,16 @@ var Controller = {
         $('tool_cancel').addEventListener('mousedown', function(e){
 			$(self.TOOL_POPUP).hide();
 		}, false);
+		
+		$(self.ID_INGS_LIST).addEventListener('mousedown', function (e) { self.mayBeIngredientClicked(e.target) }, false)
     },
+	
+	mayBeIngredientClicked: function (node)
+	{
+		var name = node.getAttribute('data-ingredient-name')
+		if (name)
+			this.showPopup(name)
+	},
 	
 	renderPopup: function(name){
         this.currentlyShownIngred = name
