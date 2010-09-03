@@ -22,6 +22,13 @@ class CocktailTemplate
     @recs        = hash["recs"]
   end
   
+  def parts
+    @sorted_parts.each do |name, dose|
+      m = dose.match(/(\d+(?:\.\d+)?)\s*(.+)\s*/)
+      yield name, m[1], m[2]
+    end
+  end
+  
   def groups
     groups = []
     groups << ["/cocktails.html#method=#{@method}", @method]
