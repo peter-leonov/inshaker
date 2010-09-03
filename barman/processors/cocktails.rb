@@ -480,7 +480,7 @@ class CocktailsProcessor < Barman::Processor
       links.puts "<ul>"
       @cocktails.keys.sort.each do |name|
         hash = @cocktails[name]
-        links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
+        links.puts %Q{<li><a href="/cocktail/#{hash["name_eng"].html_name}/">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
     end
