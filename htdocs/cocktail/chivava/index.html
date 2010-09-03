@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Чивава</h1>
+				<h1 id="cocktail_name" class="fn">Чивава</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="chivava-big.png" alt="Чивава" id="illustration" class="illustration"/>
+							<img src="chivava-big.png" alt="Коктейль «Чивава»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Чивава — Гав-гав!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=укладывают слои">укладывают слои</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>, <a class="tag" href="/cocktails.html#tag=ритуалы">ритуалы</a>.
+							<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>, <a class="tag" href="/cocktails.html#tag=ритуалы">ритуалы</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стопку серебрянную текилу 20 мл</li>
+										<li class="instruction">Налей в стопку серебрянную текилу 20 мл</li>
 										
-										<li>Используя коктейльную ложку, уложи слой апельсинового ликера 20 мл</li>
+										<li class="instruction">Используя коктейльную ложку, уложи слой апельсинового ликера 20 мл</li>
 										
-										<li>Подожги коктейль</li>
+										<li class="instruction">Подожги коктейль</li>
 										
-										<li>Используя вилку, растопи тростниковый сахар над огнем так, чтобы капли карамели падали в стопку</li>
+										<li class="instruction">Используя вилку, растопи тростниковый сахар над огнем так, чтобы капли карамели падали в стопку</li>
 										
-										<li>Потуши огонь, когда весь сахар растает</li>
+										<li class="instruction">Потуши огонь, когда весь сахар растает</li>
 										
-										<li>Не дай стопке долго гореть, а то лопнет</li>
+										<li class="instruction">Не дай стопке долго гореть, а то лопнет</li>
 										
-										<li>Перед употреблением проведи по краям стопки кубиком льда</li>
+										<li class="instruction">Перед употреблением проведи по краям стопки кубиком льда</li>
 										
 									</ul>
 								</dd>
@@ -94,13 +95,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Тростниковый сахар</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Тростниковый сахар</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

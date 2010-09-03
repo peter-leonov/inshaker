@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Дымный шотландец</h1>
+				<h1 id="cocktail_name" class="fn">Дымный шотландец</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="smoking_scot-big.png" alt="Дымный шотландец" id="illustration" class="illustration"/>
+							<img src="smoking_scot-big.png" alt="Коктейль «Дымный шотландец»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Дымный шотландец — Найди путь в страну эльфов!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер четвертинку апельсина и подави мадлером</li>
+										<li class="instruction">Положи в шейкер четвертинку апельсина и подави мадлером</li>
 										
-										<li>Налей: яичный белок, ванильный сироп 15 мл и виски 55 мл</li>
+										<li class="instruction">Налей: яичный белок, ванильный сироп 15 мл и виски 55 мл</li>
 										
-										<li>Выжми четвертинку лимона и добавь веточку тимьяна</li>
+										<li class="instruction">Выжми четвертинку лимона и добавь веточку тимьяна</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась веточкой тимьяна</li>
+										<li class="instruction">Укрась веточкой тимьяна</li>
 										
 									</ul>
 								</dd>
@@ -92,21 +93,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Виски</a> <strong>55 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Виски</a>
+							<strong><span class="amount">55</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ванильный сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ванильный сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Тимьян</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Тимьян</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Тимьян</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

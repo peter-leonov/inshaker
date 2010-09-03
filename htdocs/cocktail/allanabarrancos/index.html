@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Бодрячок</h1>
+				<h1 id="cocktail_name" class="fn">Бодрячок</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="allanabarrancos-big.png" alt="Бодрячок" id="illustration" class="illustration"/>
+							<img src="allanabarrancos-big.png" alt="Коктейль «Бодрячок»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Бодрячок — Мы бодры! Веселы!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в блендер: мед 4 ч/ложки, ежевику 4 ягоды, клубнику 3 ягоды и малину 6 ягод</li>
+										<li class="instruction">Положи в блендер: мед 4 ч/ложки, ежевику 4 ягоды, клубнику 3 ягоды и малину 6 ягод</li>
 										
-										<li>Налей клюквенный морс 150 мл</li>
+										<li class="instruction">Налей клюквенный морс 150 мл</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в хайбол</li>
+										<li class="instruction">Перелей в хайбол</li>
 										
 									</ul>
 								</dd>
@@ -88,17 +89,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Клюквенный морс</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клюквенный морс</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мед</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Малина</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ежевика</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ежевика</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Клубника</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клубника</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Малина</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мед</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

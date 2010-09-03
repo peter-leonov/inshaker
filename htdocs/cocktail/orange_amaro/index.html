@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Апельсиноввый амаро</h1>
+				<h1 id="cocktail_name" class="fn">Апельсиноввый амаро</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="orange_amaro-big.png" alt="Апельсиноввый амаро" id="illustration" class="illustration"/>
+							<img src="orange_amaro-big.png" alt="Коктейль «Апельсиноввый амаро»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Апельсиноввый амаро — Защищай свою свободу!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс кубиками льда доверху</li>
+										<li class="instruction">Наполни рокс кубиками льда доверху</li>
 										
-										<li>Налей амаро 50 мл и воду 30 мл</li>
+										<li class="instruction">Налей амаро 50 мл и воду 30 мл</li>
 										
-										<li>Добавь ангостуру биттер 1 каплю</li>
+										<li class="instruction">Добавь ангостуру биттер 1 каплю</li>
 										
-										<li>Выжми в коктейль цедру апельсина</li>
+										<li class="instruction">Выжми в коктейль цедру апельсина</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась апельсиновой цедрой</li>
+										<li class="instruction">Укрась апельсиновой цедрой</li>
 										
 									</ul>
 								</dd>
@@ -92,15 +93,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Амаро</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаро</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>1 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ангостура биттер</a>
+							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Вода</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

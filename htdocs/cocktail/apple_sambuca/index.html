@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Яблочная самбука</h1>
+				<h1 id="cocktail_name" class="fn">Яблочная самбука</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="apple_sambuca-big.png" alt="Яблочная самбука" id="illustration" class="illustration"/>
+							<img src="apple_sambuca-big.png" alt="Коктейль «Яблочная самбука»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Яблочная самбука — Загадай желание!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=ритуалы">ритуалы</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=ритуалы">ритуалы</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Сделай дырку на салфетке и вставь туда трубочку</li>
+										<li class="instruction">Сделай дырку на салфетке и вставь туда трубочку</li>
 										
-										<li>Налей в коньячный бокал яблочную самбуку 50 мл</li>
+										<li class="instruction">Налей в коньячный бокал яблочную самбуку 50 мл</li>
 										
-										<li>Положи в рокс яблоко зеленое 3 маленькие дольки и посыпь молотой корицей</li>
+										<li class="instruction">Положи в рокс яблоко зеленое 3 маленькие дольки и посыпь молотой корицей</li>
 										
-										<li>Поставь бокал на рокс и подожги самбуку</li>
+										<li class="instruction">Поставь бокал на рокс и подожги самбуку</li>
 										
-										<li>Пока самбука горит, крути коньячный бокал</li>
+										<li class="instruction">Пока самбука горит, крути коньячный бокал</li>
 										
-										<li>Через 30 секунд перелей самбуку в рокс</li>
+										<li class="instruction">Через 30 секунд перелей самбуку в рокс</li>
 										
-										<li>Поставь коньячный бокал вверх дном на салфетку с трубочкой</li>
+										<li class="instruction">Поставь коньячный бокал вверх дном на салфетку с трубочкой</li>
 										
-										<li>Выпей, закуси яблоком и вдохни пары через трубочку </li>
+										<li class="instruction">Выпей, закуси яблоком и вдохни пары через трубочку </li>
 										
 									</ul>
 								</dd>
@@ -96,11 +97,20 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Самбука яблочная</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Самбука яблочная</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблоко зеленое</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица молотая</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Корица молотая</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

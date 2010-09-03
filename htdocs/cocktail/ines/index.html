@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Инес</h1>
+				<h1 id="cocktail_name" class="fn">Инес</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="ines-big.png" alt="Инес" id="illustration" class="illustration"/>
+							<img src="ines-big.png" alt="Коктейль «Инес»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Инес — 1982</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: розовый вермут 30 мл, сухой вермут 20 мл, амаретто ликер 10 мл и джин 30 мл</li>
+										<li class="instruction">Налей в шейкер: розовый вермут 30 мл, сухой вермут 20 мл, амаретто ликер 10 мл и джин 30 мл</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась половинкой кружка киви, коктейльной вишней и листиком ананаса </li>
+										<li class="instruction">Укрась половинкой кружка киви, коктейльной вишней и листиком ананаса </li>
 										
 									</ul>
 								</dd>
@@ -88,21 +89,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Джин</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сухой вермут</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаретто ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Розовый вермут</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сухой вермут</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Амаретто ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Розовый вермут</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Киви</a>
+							<strong><span class="amount">6</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Киви</a> <strong>6 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовые листья</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананасовые листья</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

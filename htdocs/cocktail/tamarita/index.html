@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Тамарита</h1>
+				<h1 id="cocktail_name" class="fn">Тамарита</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="tamarita-big.png" alt="Тамарита" id="illustration" class="illustration"/>
+							<img src="tamarita-big.png" alt="Коктейль «Тамарита»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Тамарита — Правильный выбор!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Сделай на бокале окоемку из смеси черного и красного перцев</li>
+										<li class="instruction">Сделай на бокале окоемку из смеси черного и красного перцев</li>
 										
-										<li>Налей в шейкер: соус тамаринд 25 мл, апельсиновый ликер 25 мл, серебряную текилу 50 мл</li>
+										<li class="instruction">Налей в шейкер: соус тамаринд 25 мл, апельсиновый ликер 25 мл, серебряную текилу 50 мл</li>
 										
-										<li>Выжми половинку лайма</li>
+										<li class="instruction">Выжми половинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденную маргариту</li>
+										<li class="instruction">Перелей через стрейнер в охлажденную маргариту</li>
 										
-										<li>Укрась долькой лайма</li>
+										<li class="instruction">Укрась долькой лайма</li>
 										
 									</ul>
 								</dd>
@@ -92,21 +93,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Тамаринд соус</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">50</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>35 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Тамаринд соус</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Перец черный молотый</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Перец черный молотый</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Перец красный молотый</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Перец красный молотый</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Лайм</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

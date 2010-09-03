@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Зеленая фея</h1>
+				<h1 id="cocktail_name" class="fn">Зеленая фея</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="green_fairy-big.png" alt="Зеленая фея" id="illustration" class="illustration"/>
+							<img src="green_fairy-big.png" alt="Коктейль «Зеленая фея»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Зеленая фея — Выбирай не хочу!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни слинг кубиками льда доверху</li>
+										<li class="instruction">Наполни слинг кубиками льда доверху</li>
 										
-										<li>Налей: блю курасао ликер 10 мл, дынный ликер 30 мл, белый ром 15 мл, водку 15 мл, серебряную текилу 15 мл и абсент 15 мл</li>
+										<li class="instruction">Налей: блю курасао ликер 10 мл, дынный ликер 30 мл, белый ром 15 мл, водку 15 мл, серебряную текилу 15 мл и абсент 15 мл</li>
 										
-										<li>Выжми половинку лимона</li>
+										<li class="instruction">Выжми половинку лимона</li>
 										
-										<li>Размешай коктейльной ложкой и долей ред булл доверху</li>
+										<li class="instruction">Размешай коктейльной ложкой и долей ред булл доверху</li>
 										
-										<li>Укрась коктейльными вишнями на шпажке и цедрой лимона</li>
+										<li class="instruction">Укрась коктейльными вишнями на шпажке и цедрой лимона</li>
 										
 									</ul>
 								</dd>
@@ -90,27 +91,55 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Белый ром</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Белый ром</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Серебряная текила</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Абсент</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Абсент</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Дынный ликер</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Блю Курасао ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Блю Курасао ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Дынный ликер</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ред булл</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ред булл</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">75</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Коктейльная вишня красная</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>0 гр</strong></dd>
-						
-						<dd><a>Коктейльная вишня красная</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

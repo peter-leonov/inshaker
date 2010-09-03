@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Королевское искушение</h1>
+				<h1 id="cocktail_name" class="fn">Королевское искушение</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="royal_temptation-big.png" alt="Королевское искушение" id="illustration" class="illustration"/>
+							<img src="royal_temptation-big.png" alt="Коктейль «Королевское искушение»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Королевское искушение — 1993 </h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: сливки 30 мл, дынный ликер 10 мл, кофейный ликер 20 мл и амаретто ликер 20 мл</li>
+										<li class="instruction">Налей в шейкер: сливки 30 мл, дынный ликер 10 мл, кофейный ликер 20 мл и амаретто ликер 20 мл</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась порошком какао</li>
+										<li class="instruction">Укрась порошком какао</li>
 										
 									</ul>
 								</dd>
@@ -88,17 +89,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Амаретто ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаретто ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кофейный ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кофейный ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Дынный ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Дынный ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сливки</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Какао порошок</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Какао порошок</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сливки</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

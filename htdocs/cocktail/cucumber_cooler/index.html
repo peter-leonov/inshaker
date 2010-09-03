@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Огуречный кулер</h1>
+				<h1 id="cocktail_name" class="fn">Огуречный кулер</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="cucumber_cooler-big.png" alt="Огуречный кулер" id="illustration" class="illustration"/>
+							<img src="cucumber_cooler-big.png" alt="Коктейль «Огуречный кулер»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Огуречный кулер — Найди пропажу!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,25 +64,25 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни слинг дробленым льдом наполовину и положи 5 листиков мяты</li>
+										<li class="instruction">Наполни слинг дробленым льдом наполовину и положи 5 листиков мяты</li>
 										
-										<li>Досыпь кубики льда доверху</li>
+										<li class="instruction">Досыпь кубики льда доверху</li>
 										
-										<li>Положи в шейкер порезанную четвертинку огурца и подави мадлером</li>
+										<li class="instruction">Положи в шейкер порезанную четвертинку огурца и подави мадлером</li>
 										
-										<li>Налей: сахарный сироп 10 мл, ликер личи 15 мл, лимончелло 15 мл и джин 45 мл</li>
+										<li class="instruction">Налей: сахарный сироп 10 мл, ликер личи 15 мл, лимончелло 15 мл и джин 45 мл</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в слинг</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в слинг</li>
 										
-										<li>Распыли над коктейлем немного содовой</li>
+										<li class="instruction">Распыли над коктейлем немного содовой</li>
 										
-										<li>Укрась долькой лайма и полоской огурца</li>
+										<li class="instruction">Укрась долькой лайма и полоской огурца</li>
 										
 									</ul>
 								</dd>
@@ -98,29 +99,55 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>45 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Джин</a>
+							<strong><span class="amount">45</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимончелло</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимончелло</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер личи</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ликер личи</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Содовая</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Содовая</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">35</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Огурец</a> <strong>70 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Огурец</a>
+							<strong><span class="amount">85</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мята</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>250 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">250</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>100 гр</strong></dd>
-						
-						<dd><a>Лайм</a> <strong>15 гр</strong></dd>
-						
-						<dd><a>Огурец</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед дробленый</a>
+							<strong><span class="amount">100</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

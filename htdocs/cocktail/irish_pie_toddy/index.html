@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Ирландский пирог Тодди</h1>
+				<h1 id="cocktail_name" class="fn">Ирландский пирог Тодди</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="irish_pie_toddy-big.png" alt="Ирландский пирог Тодди" id="illustration" class="illustration"/>
+							<img src="irish_pie_toddy-big.png" alt="Коктейль «Ирландский пирог Тодди»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Ирландский пирог Тодди — О, Мак!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в питчер: ванильный сироп 20 мл, яблочный сок 125 мл и виски 40 мл</li>
+										<li class="instruction">Налей в питчер: ванильный сироп 20 мл, яблочный сок 125 мл и виски 40 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Подогрей и перелей в бокал для ирландского кофе </li>
+										<li class="instruction">Подогрей и перелей в бокал для ирландского кофе </li>
 										
-										<li>Добавь палочку корицы</li>
+										<li class="instruction">Добавь палочку корицы</li>
 										
-										<li>Выжми цедру апельсина и положи ее в бокал</li>
+										<li class="instruction">Выжми цедру апельсина и положи ее в бокал</li>
 										
-										<li>Укрась кружком яблока </li>
+										<li class="instruction">Укрась кружком яблока </li>
 										
 									</ul>
 								</dd>
@@ -92,19 +93,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Виски</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Виски</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ванильный сироп</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ванильный сироп</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яблочный сок</a> <strong>125 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблочный сок</a>
+							<strong><span class="amount">125</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица в палочках</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблоко зеленое</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Корица в палочках</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

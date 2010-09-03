@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Яблочный Ро мартини</h1>
+				<h1 id="cocktail_name" class="fn">Яблочный Ро мартини</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="apple_ro_martini-big.png" alt="Яблочный Ро мартини" id="illustration" class="illustration"/>
+							<img src="apple_ro_martini-big.png" alt="Коктейль «Яблочный Ро мартини»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Яблочный Ро мартини — Гармония вкуса.</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер порезанную половину зеленого яблока и веточку розмарина</li>
+										<li class="instruction">Положи в шейкер порезанную половину зеленого яблока и веточку розмарина</li>
 										
-										<li>Подави мадлером</li>
+										<li class="instruction">Подави мадлером</li>
 										
-										<li>Налей в шейкер: яблочный сироп 15 мл, яблочный сок 15 мл и водку 40 мл</li>
+										<li class="instruction">Налей в шейкер: яблочный сироп 15 мл, яблочный сок 15 мл и водку 40 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась дольками желтого яблока</li>
+										<li class="instruction">Укрась дольками желтого яблока</li>
 										
 									</ul>
 								</dd>
@@ -94,21 +95,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яблочный сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблочный сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яблочный сок</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблочный сок</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>120 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблоко зеленое</a>
+							<strong><span class="amount">120</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Розмарин</a> <strong>3 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблоко желтое</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Розмарин</a>
+							<strong><span class="amount">3</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко желтое</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

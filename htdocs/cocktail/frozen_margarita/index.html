@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Маргарита замороженная</h1>
+				<h1 id="cocktail_name" class="fn">Маргарита замороженная</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="frozen_margarita-big.png" alt="Маргарита замороженная" id="illustration" class="illustration"/>
+							<img src="frozen_margarita-big.png" alt="Коктейль «Маргарита замороженная»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Маргарита замороженная — Любовь есть!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Сделай на бокале соленую окаемку </li>
+										<li class="instruction">Сделай на бокале соленую окаемку </li>
 										
-										<li>Налей в блендер серебряную текилу 50 мл и апельсиновый ликер 30 мл </li>
+										<li class="instruction">Налей в блендер серебряную текилу 50 мл и апельсиновый ликер 30 мл </li>
 										
-										<li>Выжми половинку лайма</li>
+										<li class="instruction">Выжми половинку лайма</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в охлажденный бокал для маргариты</li>
+										<li class="instruction">Перелей в охлажденный бокал для маргариты</li>
 										
-										<li>Укрась долькой лайма</li>
+										<li class="instruction">Укрась долькой лайма</li>
 										
 									</ul>
 								</dd>
@@ -92,17 +93,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>35 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">50</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Соль</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Соль</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
-						
-						<dd><a>Лайм</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

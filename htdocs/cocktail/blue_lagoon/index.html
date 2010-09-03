@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Голубая лагуна</h1>
+				<h1 id="cocktail_name" class="fn">Голубая лагуна</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="blue_lagoon-big.png" alt="Голубая лагуна" id="illustration" class="illustration"/>
+							<img src="blue_lagoon-big.png" alt="Коктейль «Голубая лагуна»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Голубая лагуна — Ныряй глубже!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни харрикейн кубиками льда доверху</li>
+										<li class="instruction">Наполни харрикейн кубиками льда доверху</li>
 										
-										<li>Налей водку 50 мл, ликер блю курасао 20 мл и спрайт доверху</li>
+										<li class="instruction">Налей водку 50 мл, ликер блю курасао 20 мл и спрайт доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась долькой ананаса</li>
+										<li class="instruction">Укрась долькой ананаса</li>
 										
 									</ul>
 								</dd>
@@ -88,15 +89,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Блю Курасао ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Блю Курасао ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Спрайт</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Спрайт</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананас</a>
+							<strong><span class="amount">25</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ананас</a> <strong>25 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

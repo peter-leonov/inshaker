@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Кровавый Джозеф</h1>
+				<h1 id="cocktail_name" class="fn">Кровавый Джозеф</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="bloody_joseph-big.png" alt="Кровавый Джозеф" id="illustration" class="illustration"/>
+							<img src="bloody_joseph-big.png" alt="Коктейль «Кровавый Джозеф»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Кровавый Джозеф — Порадуй отца!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Налей: виски 50 мл, томатный сок 125 мл и винный уксус 10 мл</li>
+										<li class="instruction">Налей: виски 50 мл, томатный сок 125 мл и винный уксус 10 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Добавь: щепотку соли, щепотку черного молотого перца и 3 капли красного соуса табаско</li>
+										<li class="instruction">Добавь: щепотку соли, щепотку черного молотого перца и 3 капли красного соуса табаско</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась кружком лимона</li>
+										<li class="instruction">Укрась кружком лимона</li>
 										
 									</ul>
 								</dd>
@@ -92,23 +93,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Виски</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Виски</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Томатный сок</a> <strong>125 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Томатный сок</a>
+							<strong><span class="amount">125</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Уксус винный</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Табаско соус красный</a> <strong>3 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Уксус винный</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Соль</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Табаско соус красный</a>
+							<strong><span class="amount">3</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Перец черный молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Перец черный молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Соль</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Лимон</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

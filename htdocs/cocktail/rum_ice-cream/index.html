@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Ром мороженое</h1>
+				<h1 id="cocktail_name" class="fn">Ром мороженое</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="rum_ice-cream-big.png" alt="Ром мороженое" id="illustration" class="illustration"/>
+							<img src="rum_ice-cream-big.png" alt="Коктейль «Ром мороженое»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Ром мороженое — Создай настроение!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс кубиками льда доверху</li>
+										<li class="instruction">Наполни рокс кубиками льда доверху</li>
 										
-										<li>Положи в блендер ванильное мороженое 10 ст/ложки</li>
+										<li class="instruction">Положи в блендер ванильное мороженое 10 ст/ложки</li>
 										
-										<li>Налей темный ром 50 мл</li>
+										<li class="instruction">Налей темный ром 50 мл</li>
 										
-										<li>Взбей и перелей в рокс</li>
+										<li class="instruction">Взбей и перелей в рокс</li>
 										
-										<li>Укрась шоколадной крошкой</li>
+										<li class="instruction">Укрась шоколадной крошкой</li>
 										
 									</ul>
 								</dd>
@@ -90,13 +91,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Темный ром</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Темный ром</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ванильное мороженое</a> <strong>150 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ванильное мороженое</a>
+							<strong><span class="amount">150</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Шоколад черный</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Шоколад черный</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

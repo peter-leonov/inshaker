@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Горько-сладкая симфония</h1>
+				<h1 id="cocktail_name" class="fn">Горько-сладкая симфония</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="bitter-sweet_symphony-big.png" alt="Горько-сладкая симфония" id="illustration" class="illustration"/>
+							<img src="bitter-sweet_symphony-big.png" alt="Коктейль «Горько-сладкая симфония»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Горько-сладкая симфония — I can't change my mold!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс кубиками льда доверху</li>
+										<li class="instruction">Наполни рокс кубиками льда доверху</li>
 										
-										<li>Положи в шейкер красную смородину 3 ст/ложки</li>
+										<li class="instruction">Положи в шейкер красную смородину 3 ст/ложки</li>
 										
-										<li>Подави мадлером</li>
+										<li class="instruction">Подави мадлером</li>
 										
-										<li>Налей в шейкер: малиновый сироп 5 мл, амаретто ликер 10 мл, бурбон 40 мл и гранд марнье 10 мл</li>
+										<li class="instruction">Налей в шейкер: малиновый сироп 5 мл, амаретто ликер 10 мл, бурбон 40 мл и гранд марнье 10 мл</li>
 										
-										<li>Выжми четвертинку лимона </li>
+										<li class="instruction">Выжми четвертинку лимона </li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в рокс</li>
+										<li class="instruction">Перелей через стрейнер в рокс</li>
 										
-										<li>Укрась веточкой красной смородины</li>
+										<li class="instruction">Укрась веточкой красной смородины</li>
 										
 									</ul>
 								</dd>
@@ -96,21 +97,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Бурбон</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Бурбон</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Амаретто ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаретто ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Гранд Марнье</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Гранд Марнье</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Малиновый сироп</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Малиновый сироп</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Смородина красная</a> <strong>50 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Смородина красная</a>
+							<strong><span class="amount">65</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>360 гр</strong></dd>
-						
-						<dd><a>Смородина красная</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">360</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Французский десерт</h1>
+				<h1 id="cocktail_name" class="fn">Французский десерт</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="french_desert-big.png" alt="Французский десерт" id="illustration" class="illustration"/>
+							<img src="french_desert-big.png" alt="Коктейль «Французский десерт»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Французский десерт — Глоток истории!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в блендер черную смородину 4 ст/ложки</li>
+										<li class="instruction">Положи в блендер черную смородину 4 ст/ложки</li>
 										
-										<li>Налей: сливки 15 мл, кленовый сироп 20 мл, медовый сироп 20 мл и кальвадос 40 мл</li>
+										<li class="instruction">Налей: сливки 15 мл, кленовый сироп 20 мл, медовый сироп 20 мл и кальвадос 40 мл</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась веточкой мяты и долькой кумквата</li>
+										<li class="instruction">Укрась веточкой мяты и долькой кумквата</li>
 										
 									</ul>
 								</dd>
@@ -90,21 +91,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Кальвадос</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кальвадос</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кленовый сироп</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кленовый сироп</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Медовый сироп</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Медовый сироп</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сливки</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сливки</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Смородина черная</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кумкват</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Смородина черная</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мята</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Кумкват</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Водка мартини</h1>
+				<h1 id="cocktail_name" class="fn">Водка мартини</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="vodka_martini-big.png" alt="Водка мартини" id="illustration" class="illustration"/>
+							<img src="vodka_martini-big.png" alt="Коктейль «Водка мартини»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Водка мартини — И целого мира мало.</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни стакан для смешивания кубиками льда</li>
+										<li class="instruction">Наполни стакан для смешивания кубиками льда</li>
 										
-										<li>Размешай лед коктейльной ложкой и слей воду</li>
+										<li class="instruction">Размешай лед коктейльной ложкой и слей воду</li>
 										
-										<li>Налей сухой вермут 15 мл и водку 75 мл </li>
+										<li class="instruction">Налей сухой вермут 15 мл и водку 75 мл </li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась зеленой оливкой</li>
+										<li class="instruction">Укрась зеленой оливкой</li>
 										
 									</ul>
 								</dd>
@@ -92,13 +93,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>75 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">75</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сухой вермут</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сухой вермут</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Оливки</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Оливки</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

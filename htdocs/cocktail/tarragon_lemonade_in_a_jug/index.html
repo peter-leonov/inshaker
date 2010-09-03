@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Лимонад тархун в кувшине</h1>
+				<h1 id="cocktail_name" class="fn">Лимонад тархун в кувшине</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="tarragon_lemonade_in_a_jug-big.png" alt="Лимонад тархун в кувшине" id="illustration" class="illustration"/>
+							<img src="tarragon_lemonade_in_a_jug-big.png" alt="Коктейль «Лимонад тархун в кувшине»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Лимонад тархун в кувшине — Получай удовольствие!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=на компанию">на компанию</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=на компанию">на компанию</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни кувшин кубиками льда на 2/3</li>
+										<li class="instruction">Наполни кувшин кубиками льда на 2/3</li>
 										
-										<li>Налей сироп тархун 100 мл и содовую доверху</li>
+										<li class="instruction">Налей сироп тархун 100 мл и содовую доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась веточками эстрагона</li>
+										<li class="instruction">Укрась веточками эстрагона</li>
 										
 									</ul>
 								</dd>
@@ -88,13 +89,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Сироп тархун</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сироп тархун</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Содовая</a> <strong>400 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Содовая</a>
+							<strong><span class="amount">400</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Эстрагон</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Эстрагон</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>600 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">600</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

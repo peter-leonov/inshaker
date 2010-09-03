@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Топ скуп</h1>
+				<h1 id="cocktail_name" class="fn">Топ скуп</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="top_scoop-big.png" alt="Топ скуп" id="illustration" class="illustration"/>
+							<img src="top_scoop-big.png" alt="Коктейль «Топ скуп»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Топ скуп — Встречайтесь чаще!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: ананасовый сок 30 мл, кампари 5 мл, дынный ликер 10 мл и водку 30 мл</li>
+										<li class="instruction">Налей в шейкер: ананасовый сок 30 мл, кампари 5 мл, дынный ликер 10 мл и водку 30 мл</li>
 										
-										<li>Добавь грейпфрутовый биттер 2 капли</li>
+										<li class="instruction">Добавь грейпфрутовый биттер 2 капли</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась ягодой физалиса  </li>
+										<li class="instruction">Укрась ягодой физалиса  </li>
 										
 									</ul>
 								</dd>
@@ -92,21 +93,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Дынный ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Дынный ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кампари</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кампари</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовый сок</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Грейпфрутовый биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Грейпфрутовый биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананасовый сок</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Физалис</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Физалис</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

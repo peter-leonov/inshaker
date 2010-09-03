@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Клубничный милкшейк</h1>
+				<h1 id="cocktail_name" class="fn">Клубничный милкшейк</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="strawberry_milkshake-big.png" alt="Клубничный милкшейк" id="illustration" class="illustration"/>
+							<img src="strawberry_milkshake-big.png" alt="Коктейль «Клубничный милкшейк»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Клубничный милкшейк — Верь в сказку!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в стакан для коктейльного миксера клубнику 6 ягод и клубничное мороженое 200 гр</li>
+										<li class="instruction">Положи в стакан для коктейльного миксера клубнику 6 ягод и клубничное мороженое 200 гр</li>
 										
-										<li>Налей молоко 80 мл</li>
+										<li class="instruction">Налей молоко 80 мл</li>
 										
-										<li>Взбей и перелей в хайбол</li>
+										<li class="instruction">Взбей и перелей в хайбол</li>
 										
-										<li>Укрась ягодами клубники</li>
+										<li class="instruction">Укрась ягодами клубники</li>
 										
 									</ul>
 								</dd>
@@ -88,13 +89,20 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Молоко</a> <strong>80 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Молоко</a>
+							<strong><span class="amount">80</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Клубничное мороженое</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клубничное мороженое</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Клубника</a> <strong>90 гр</strong></dd>
-						
-						<dd><a>Клубника</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клубника</a>
+							<strong><span class="amount">105</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Вечнозеленый физ</h1>
+				<h1 id="cocktail_name" class="fn">Вечнозеленый физ</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="evergreen_fizz-big.png" alt="Вечнозеленый физ" id="illustration" class="illustration"/>
+							<img src="evergreen_fizz-big.png" alt="Коктейль «Вечнозеленый физ»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Вечнозеленый физ — Найди свой цвет!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: яичный белок 1 шт, дынный ликер 20 мл и джин 50 мл</li>
+										<li class="instruction">Налей в шейкер: яичный белок 1 шт, дынный ликер 20 мл и джин 50 мл</li>
 										
-										<li>Добавь блю курасао ликер 5 мл и выжми четвертинку лимона</li>
+										<li class="instruction">Добавь блю курасао ликер 5 мл и выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей вместе со льдом в охлажденный хайбол</li>
+										<li class="instruction">Перелей вместе со льдом в охлажденный хайбол</li>
 										
-										<li>Долей содовую доверху</li>
+										<li class="instruction">Долей содовую доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась двумя дольками лимона</li>
+										<li class="instruction">Укрась двумя дольками лимона</li>
 										
 									</ul>
 								</dd>
@@ -94,23 +95,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Джин</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Дынный ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Дынный ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Блю Курасао ликер</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Блю Курасао ликер</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Содовая</a> <strong>130 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Содовая</a>
+							<strong><span class="amount">130</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Сахарная пудра</a> <strong>3 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахарная пудра</a>
+							<strong><span class="amount">3</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Лимон</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

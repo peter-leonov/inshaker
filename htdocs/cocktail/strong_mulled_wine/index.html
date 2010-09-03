@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Крепкий глинтвейн</h1>
+				<h1 id="cocktail_name" class="fn">Крепкий глинтвейн</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="strong_mulled_wine-big.png" alt="Крепкий глинтвейн" id="illustration" class="illustration"/>
+							<img src="strong_mulled_wine-big.png" alt="Коктейль «Крепкий глинтвейн»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Крепкий глинтвейн — На здоровье!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Нарежь мелкими кубиками: четвертинку апельсина, четвертинку лимона и пол-яблока</li>
+										<li class="instruction">Нарежь мелкими кубиками: четвертинку апельсина, четвертинку лимона и пол-яблока</li>
 										
-										<li>Положи фрукты в питчер</li>
+										<li class="instruction">Положи фрукты в питчер</li>
 										
-										<li>Налей вино красное сухое 150 мл и коньяк 50 мл</li>
+										<li class="instruction">Налей вино красное сухое 150 мл и коньяк 50 мл</li>
 										
-										<li>Положи мед 2 ст/ложки</li>
+										<li class="instruction">Положи мед 2 ст/ложки</li>
 										
-										<li>Подогрей и положи гвоздику 2 штучки, щепотку корицы молотой, щепотку молотого мускатного ореха и щепотку перца черного молотого</li>
+										<li class="instruction">Подогрей и положи гвоздику 2 штучки, щепотку корицы молотой, щепотку молотого мускатного ореха и щепотку перца черного молотого</li>
 										
-										<li>Размешай коктейльной ложкой и перелей в бокал для ирландского кофе</li>
+										<li class="instruction">Размешай коктейльной ложкой и перелей в бокал для ирландского кофе</li>
 										
-										<li>Укрась дольками яблока и коктейльной вишней на шпажке</li>
+										<li class="instruction">Укрась дольками яблока и коктейльной вишней на шпажке</li>
 										
 									</ul>
 								</dd>
@@ -94,29 +95,60 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Красное вино сухое</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Коньяк</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Коньяк</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Красное вино сухое</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мед</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>120 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яблоко зеленое</a>
+							<strong><span class="amount">140</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица молотая</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мед</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Гвоздика</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мускатный орех молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мускатный орех молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Корица молотая</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Перец черный молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Перец черный молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>20 гр</strong></dd>
-						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Гвоздика</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

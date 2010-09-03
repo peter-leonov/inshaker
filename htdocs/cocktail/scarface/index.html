@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Лицо со шрамом</h1>
+				<h1 id="cocktail_name" class="fn">Лицо со шрамом</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="scarface-big.png" alt="Лицо со шрамом" id="illustration" class="illustration"/>
+							<img src="scarface-big.png" alt="Коктейль «Лицо со шрамом»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Лицо со шрамом — Смотри кино!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни слинг кубиками льда доверху</li>
+										<li class="instruction">Наполни слинг кубиками льда доверху</li>
 										
-										<li>Положи в шейкер очищенные личи без косточек 6 шт и подави пестиком</li>
+										<li class="instruction">Положи в шейкер очищенные личи без косточек 6 шт и подави пестиком</li>
 										
-										<li>Налей: ликер личи 20 мл, мятный ликер зеленый 20 мл, арбузный ликер 40 мл и водку 20 мл</li>
+										<li class="instruction">Налей: ликер личи 20 мл, мятный ликер зеленый 20 мл, арбузный ликер 40 мл и водку 20 мл</li>
 										
-										<li>Добавь кружок чили перца и выжми четвертинку лимона</li>
+										<li class="instruction">Добавь кружок чили перца и выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в слинг</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в слинг</li>
 										
-										<li>Укрась кусочком арбуза на шпажке и веточкой мяты</li>
+										<li class="instruction">Укрась кусочком арбуза на шпажке и веточкой мяты</li>
 										
 									</ul>
 								</dd>
@@ -94,25 +95,55 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Арбузный ликер</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Арбузный ликер</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мятный ликер зеленый</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мятный ликер зеленый</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер личи</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ликер личи</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Личи</a>
+							<strong><span class="amount">90</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Личи</a> <strong>90 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Перец чили</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Арбуз</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>400 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Перец чили</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Арбуз</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мята</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">400</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

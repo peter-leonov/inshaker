@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Перевернутый абрикосовый кир</h1>
+				<h1 id="cocktail_name" class="fn">Перевернутый абрикосовый кир</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="apricot_kir_reverse-big.png" alt="Перевернутый абрикосовый кир" id="illustration" class="illustration"/>
+							<img src="apricot_kir_reverse-big.png" alt="Коктейль «Перевернутый абрикосовый кир»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Перевернутый абрикосовый кир — Деньги будут!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в охлажденный коктейльный бокал просекко 120 мл</li>
+										<li class="instruction">Налей в охлажденный коктейльный бокал просекко 120 мл</li>
 										
-										<li>Налей в сифон для сливок яичный белок 1 шт и абрикосовый ликер 20 мл</li>
+										<li class="instruction">Налей в сифон для сливок яичный белок 1 шт и абрикосовый ликер 20 мл</li>
 										
-										<li>Закрой сифон и взбей 3-4 раза</li>
+										<li class="instruction">Закрой сифон и взбей 3-4 раза</li>
 										
-										<li>Укрась коктейль слоем абрикосовых сливок из сифона и веточкой мяты</li>
+										<li class="instruction">Укрась коктейль слоем абрикосовых сливок из сифона и веточкой мяты</li>
 										
 									</ul>
 								</dd>
@@ -88,13 +89,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Просекко</a> <strong>120 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Абрикосовый ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Абрикосовый ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Просекко</a>
+							<strong><span class="amount">120</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мята</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

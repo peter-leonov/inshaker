@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Текила вишня ананас</h1>
+				<h1 id="cocktail_name" class="fn">Текила вишня ананас</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="tequila_cherry_pineapple-big.png" alt="Текила вишня ананас" id="illustration" class="illustration"/>
+							<img src="tequila_cherry_pineapple-big.png" alt="Коктейль «Текила вишня ананас»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Текила вишня ананас — Накачайся!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Налей: серебряную текилу 50 мл, медовый сироп 15 мл, ананасовый сок 50 мл и вишневый сок 25 мл</li>
+										<li class="instruction">Налей: серебряную текилу 50 мл, медовый сироп 15 мл, ананасовый сок 50 мл и вишневый сок 25 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась кусочками ананаса на шпажке</li>
+										<li class="instruction">Укрась кусочками ананаса на шпажке</li>
 										
 									</ul>
 								</dd>
@@ -90,19 +91,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Медовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Медовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вишневый сок</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Вишневый сок</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовый сок</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананасовый сок</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананас</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ананас</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

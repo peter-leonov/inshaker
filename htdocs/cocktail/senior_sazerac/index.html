@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Сеньор Сазерак</h1>
+				<h1 id="cocktail_name" class="fn">Сеньор Сазерак</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="senior_sazerac-big.png" alt="Сеньор Сазерак" id="illustration" class="illustration"/>
+							<img src="senior_sazerac-big.png" alt="Коктейль «Сеньор Сазерак»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Сеньор Сазерак — Будь первым!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Обрызгай охлажденный рокс серебряной текилой с внешней и внутренней стороны</li>
+										<li class="instruction">Обрызгай охлажденный рокс серебряной текилой с внешней и внутренней стороны</li>
 										
-										<li>Налей в стакан для смешивания сироп агавы 7 мл и серебряную текилу 60 мл</li>
+										<li class="instruction">Налей в стакан для смешивания сироп агавы 7 мл и серебряную текилу 60 мл</li>
 										
-										<li>Добавь по 2 капли пишо, апельсинового и грейпфрутового биттеров</li>
+										<li class="instruction">Добавь по 2 капли пишо, апельсинового и грейпфрутового биттеров</li>
 										
-										<li>Наполни стакан кубиками льда и размешай коктейльной ложкой</li>
+										<li class="instruction">Наполни стакан кубиками льда и размешай коктейльной ложкой</li>
 										
-										<li>Перелей через стрейнер в рокс</li>
+										<li class="instruction">Перелей через стрейнер в рокс</li>
 										
-										<li>Подай на блюдце с цедрой апельсина и грейпфрута</li>
+										<li class="instruction">Подай на блюдце с цедрой апельсина и грейпфрута</li>
 										
 									</ul>
 								</dd>
@@ -92,21 +93,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>90 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">90</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сироп агавы</a> <strong>7 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Пишо биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Пишо биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Грейпфрутовый биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Грейпфрутовый биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сироп агавы</a>
+							<strong><span class="amount">7</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">7</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Грейпфрут</a> <strong>7 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Грейпфрут</a>
+							<strong><span class="amount">7</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>7 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

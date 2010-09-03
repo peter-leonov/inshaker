@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Лонг айленд во френч-прессе</h1>
+				<h1 id="cocktail_name" class="fn">Лонг айленд во френч-прессе</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="long_island_in_a_french_press-big.png" alt="Лонг айленд во френч-прессе" id="illustration" class="illustration"/>
+							<img src="long_island_in_a_french_press-big.png" alt="Коктейль «Лонг айленд во френч-прессе»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Лонг айленд во френч-прессе — Кипяточку?</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=необычная подача">необычная подача</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=необычная подача">необычная подача</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни френч-пресс кубиками льда доверху</li>
+										<li class="instruction">Наполни френч-пресс кубиками льда доверху</li>
 										
-										<li>Налей: сахарный сироп 10 мл, апельсиновый ликер 20 мл, белый ром 20 мл, серебряную текилу 20 мл, джин 20 мл и водку 20 мл</li>
+										<li class="instruction">Налей: сахарный сироп 10 мл, апельсиновый ликер 20 мл, белый ром 20 мл, серебряную текилу 20 мл, джин 20 мл и водку 20 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Долей колы доверху</li>
+										<li class="instruction">Долей колы доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
 									</ul>
 								</dd>
@@ -90,23 +91,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Джин</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Джин</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Серебряная текила</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Белый ром</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Белый ром</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кола</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Кола</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>400 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">400</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Айвовый краш</h1>
+				<h1 id="cocktail_name" class="fn">Айвовый краш</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="quince_crush-big.png" alt="Айвовый краш" id="illustration" class="illustration"/>
+							<img src="quince_crush-big.png" alt="Коктейль «Айвовый краш»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Айвовый краш — Не скучай в дороге!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс дробленым льдом доверху</li>
+										<li class="instruction">Наполни рокс дробленым льдом доверху</li>
 										
-										<li>Положи в шейкер айвовое варенье 4 ч/ложки</li>
+										<li class="instruction">Положи в шейкер айвовое варенье 4 ч/ложки</li>
 										
-										<li>Налей апельсиновый сок 30 мл и водку малиновую 40 мл</li>
+										<li class="instruction">Налей апельсиновый сок 30 мл и водку малиновую 40 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в рокс</li>
+										<li class="instruction">Перелей через стрейнер в рокс</li>
 										
-										<li>Досыпь немного дробленого льда</li>
+										<li class="instruction">Досыпь немного дробленого льда</li>
 										
-										<li>Укрась кусочком айвы на шпажке</li>
+										<li class="instruction">Укрась кусочком айвы на шпажке</li>
 										
 									</ul>
 								</dd>
@@ -96,19 +97,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка малиновая</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка малиновая</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый сок</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый сок</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Варенье айвовое</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Айва</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Варенье айвовое</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Айва</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед дробленый</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

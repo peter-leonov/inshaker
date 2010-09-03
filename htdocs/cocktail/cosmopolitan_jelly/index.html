@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Космополитен желе</h1>
+				<h1 id="cocktail_name" class="fn">Космополитен желе</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="cosmopolitan_jelly-big.png" alt="Космополитен желе" id="illustration" class="illustration"/>
+							<img src="cosmopolitan_jelly-big.png" alt="Коктейль «Космополитен желе»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Космополитен желе — Дай ему шанс!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=необычная подача">необычная подача</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=необычная подача">необычная подача</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,27 +64,27 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в блендер клюкву 2 ст/ложки и взбей</li>
+										<li class="instruction">Положи в блендер клюкву 2 ст/ложки и взбей</li>
 										
-										<li>Положи в стакан для смешивания половинку клубники, ежевику 4 ягоды и перелей клюквенное пюре из блендера</li>
+										<li class="instruction">Положи в стакан для смешивания половинку клубники, ежевику 4 ягоды и перелей клюквенное пюре из блендера</li>
 										
-										<li>Налей: сахарный сироп 5 мл, апельсиновый ликер 20 мл и водку 40 мл</li>
+										<li class="instruction">Налей: сахарный сироп 5 мл, апельсиновый ликер 20 мл и водку 40 мл</li>
 										
-										<li>Выжми дольку лайма</li>
+										<li class="instruction">Выжми дольку лайма</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Налей 1/3 получившегося коктейля в питчер и добавь желатин 1/3 ч/ложки</li>
+										<li class="instruction">Налей 1/3 получившегося коктейля в питчер и добавь желатин 1/3 ч/ложки</li>
 										
-										<li>Размешай коктейльной ложкой и долей оставшуюся часть коктейля</li>
+										<li class="instruction">Размешай коктейльной ложкой и долей оставшуюся часть коктейля</li>
 										
-										<li>Помешивая нагрей, не доводя до кипения</li>
+										<li class="instruction">Помешивая нагрей, не доводя до кипения</li>
 										
-										<li>Дай немного остыть и перелей в охлажденный коктейльный бокал</li>
+										<li class="instruction">Дай немного остыть и перелей в охлажденный коктейльный бокал</li>
 										
-										<li>Подержи коктейль в холодильнике, чтобы желе застыло</li>
+										<li class="instruction">Подержи коктейль в холодильнике, чтобы желе застыло</li>
 										
 									</ul>
 								</dd>
@@ -100,21 +101,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Водка</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахарный сироп</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Клюква</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клюква</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Клубника</a> <strong>7 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клубника</a>
+							<strong><span class="amount">7</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ежевика</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ежевика</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Желатин</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Желатин</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

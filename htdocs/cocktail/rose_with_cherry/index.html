@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Розе с вишней</h1>
+				<h1 id="cocktail_name" class="fn">Розе с вишней</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="rose_with_cherry-big.png" alt="Розе с вишней" id="illustration" class="illustration"/>
+							<img src="rose_with_cherry-big.png" alt="Коктейль «Розе с вишней»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Розе с вишней — Получи желаемое!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,13 +64,13 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Налей в хайбол: амаретто ликер 10 мл, розовый вермут 50 мл и вишневый сок 150 мл</li>
+										<li class="instruction">Налей в хайбол: амаретто ликер 10 мл, розовый вермут 50 мл и вишневый сок 150 мл</li>
 										
-										<li>Размешай и укрась коктейльной вишней</li>
+										<li class="instruction">Размешай и укрась коктейльной вишней</li>
 										
 									</ul>
 								</dd>
@@ -86,15 +87,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Розовый вермут</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаретто ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Амаретто ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Розовый вермут</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вишневый сок</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Вишневый сок</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

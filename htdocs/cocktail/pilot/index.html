@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Пилот</h1>
+				<h1 id="cocktail_name" class="fn">Пилот</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="pilot-big.png" alt="Пилот" id="illustration" class="illustration"/>
+							<img src="pilot-big.png" alt="Коктейль «Пилот»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Пилот — Выпил и пошел на взлет.</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,9 +64,9 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шот пополам сначала абсент потом ред булл</li>
+										<li class="instruction">Налей в шот пополам сначала абсент потом ред булл</li>
 										
 									</ul>
 								</dd>
@@ -82,9 +83,15 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Абсент</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Абсент</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ред булл</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ред булл</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Розовый ром</h1>
+				<h1 id="cocktail_name" class="fn">Розовый ром</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="pink_rum-big.png" alt="Розовый ром" id="illustration" class="illustration"/>
+							<img src="pink_rum-big.png" alt="Коктейль «Розовый ром»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Розовый ром — Танцуй диско!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Налей в хайбол: белый ром 50 мл, клюквенный морс 75 мл и ананасовый сок 75 мл</li>
+										<li class="instruction">Налей в хайбол: белый ром 50 мл, клюквенный морс 75 мл и ананасовый сок 75 мл</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась четырьмя ягодами малины</li>
+										<li class="instruction">Укрась четырьмя ягодами малины</li>
 										
 									</ul>
 								</dd>
@@ -88,15 +89,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Белый ром</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Белый ром</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовый сок</a> <strong>75 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ананасовый сок</a>
+							<strong><span class="amount">75</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Клюквенный морс</a> <strong>75 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Клюквенный морс</a>
+							<strong><span class="amount">75</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Малина</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Малина</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

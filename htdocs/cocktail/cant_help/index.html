@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Не помочь</h1>
+				<h1 id="cocktail_name" class="fn">Не помочь</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="cant_help-big.png" alt="Не помочь" id="illustration" class="illustration"/>
+							<img src="cant_help-big.png" alt="Коктейль «Не помочь»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Не помочь — Помощь близка!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=укладывают слои">укладывают слои</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стопку самбуку черную 10 мл</li>
+										<li class="instruction">Налей в стопку самбуку черную 10 мл</li>
 										
-										<li>Используя коктейльную ложку, уложи слоями: амаро 10 мл, апельсиновый ликер 15 мл, серебряную текилу 10 мл и абсент 10 мл</li>
+										<li class="instruction">Используя коктейльную ложку, уложи слоями: амаро 10 мл, апельсиновый ликер 15 мл, серебряную текилу 10 мл и абсент 10 мл</li>
 										
-										<li>Укрась маленькой долькой апельсина</li>
+										<li class="instruction">Укрась маленькой долькой апельсина</li>
 										
-										<li>Выпей шот и заверши его апельсином</li>
+										<li class="instruction">Выпей шот и заверши его апельсином</li>
 										
 									</ul>
 								</dd>
@@ -88,17 +89,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Абсент</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Абсент</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Самбука черная</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Серебряная текила</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Серебряная текила</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Самбука черная</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсиновый ликер</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Амаро</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Амаро</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

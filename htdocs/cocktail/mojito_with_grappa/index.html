@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мохито с граппой</h1>
+				<h1 id="cocktail_name" class="fn">Мохито с граппой</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="mojito_with_grappa-big.png" alt="Мохито с граппой" id="illustration" class="illustration"/>
+							<img src="mojito_with_grappa-big.png" alt="Коктейль «Мохито с граппой»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Мохито с граппой — Перевоплотись в себя!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=давят мадлером">давят мадлером</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в слинг мяту 12 листьев и подави мадлером</li>
+										<li class="instruction">Положи в слинг мяту 12 листьев и подави мадлером</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни слинг кубиками льда доверху</li>
+										<li class="instruction">Наполни слинг кубиками льда доверху</li>
 										
-										<li>Налей: граппу 40 мл, сахарный сироп 15 мл и виноградный сок светлый 30 мл</li>
+										<li class="instruction">Налей: граппу 40 мл, сахарный сироп 15 мл и виноградный сок светлый 30 мл</li>
 										
-										<li>Добавь ангостуру биттер 2 капли</li>
+										<li class="instruction">Добавь ангостуру биттер 2 капли</li>
 										
-										<li>Долей содовую доверху</li>
+										<li class="instruction">Долей содовую доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась веточкой мяты</li>
+										<li class="instruction">Укрась веточкой мяты</li>
 										
 									</ul>
 								</dd>
@@ -96,23 +97,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Граппа</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Граппа</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Ангостура биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахарный сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Виноградный сок светлый</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Виноградный сок светлый</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Содовая</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Содовая</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>2  гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мята</a>
+							<strong><span class="amount">3</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Мята</a> <strong>1  гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

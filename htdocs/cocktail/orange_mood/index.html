@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Оранжевое настроение</h1>
+				<h1 id="cocktail_name" class="fn">Оранжевое настроение</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="orange_mood-big.png" alt="Оранжевое настроение" id="illustration" class="illustration"/>
+							<img src="orange_mood-big.png" alt="Коктейль «Оранжевое настроение»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Оранжевое настроение — Вспомни детство!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,27 +64,27 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Положи в соковыжималку очищенные мандарины 5 шт</li>
+										<li class="instruction">Положи в соковыжималку очищенные мандарины 5 шт</li>
 										
-										<li>Сделай сок и перелей в хайбол</li>
+										<li class="instruction">Сделай сок и перелей в хайбол</li>
 										
-										<li>Положи в соковыжималку очищенную морковь 1 шт</li>
+										<li class="instruction">Положи в соковыжималку очищенную морковь 1 шт</li>
 										
-										<li>Сделай сок и перелей в хайбол</li>
+										<li class="instruction">Сделай сок и перелей в хайбол</li>
 										
-										<li>Положи в питчер барбарисовые леденцы 3 шт и налей воду 15 мл</li>
+										<li class="instruction">Положи в питчер барбарисовые леденцы 3 шт и налей воду 15 мл</li>
 										
-										<li>Помешивая нагревай, пока леденцы не растворятся</li>
+										<li class="instruction">Помешивая нагревай, пока леденцы не растворятся</li>
 										
-										<li>Дай остыть и налей в хайбол получившийся барбарисовый сироп 20 мл</li>
+										<li class="instruction">Дай остыть и налей в хайбол получившийся барбарисовый сироп 20 мл</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась долькой апельсина и ломтиком моркови</li>
+										<li class="instruction">Укрась долькой апельсина и ломтиком моркови</li>
 										
 									</ul>
 								</dd>
@@ -100,19 +101,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Вода</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Вода</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мандарин</a> <strong>375 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мандарин</a>
+							<strong><span class="amount">375</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Морковь</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Леденцы барбарисовые</a> <strong>6 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Морковь</a>
+							<strong><span class="amount">95</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Леденцы барбарисовые</a>
+							<strong><span class="amount">6</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Морковь</a> <strong>20 гр</strong></dd>
-						
-						<dd><a>Апельсин</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

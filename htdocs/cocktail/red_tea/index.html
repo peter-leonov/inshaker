@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Красный чай</h1>
+				<h1 id="cocktail_name" class="fn">Красный чай</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="red_tea-big.png" alt="Красный чай" id="illustration" class="illustration"/>
+							<img src="red_tea-big.png" alt="Коктейль «Красный чай»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Красный чай — Взойди на престол!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=давят мадлером">давят мадлером</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в питчер по одной порезанной четвертинке лимона и апельсина</li>
+										<li class="instruction">Положи в питчер по одной порезанной четвертинке лимона и апельсина</li>
 										
-										<li>Слегка подави мадлером</li>
+										<li class="instruction">Слегка подави мадлером</li>
 										
-										<li>Добавь гвоздику 2 штучки и по щепотке мускатного ореха молотого, корицы молотой и ванильного сахара</li>
+										<li class="instruction">Добавь гвоздику 2 штучки и по щепотке мускатного ореха молотого, корицы молотой и ванильного сахара</li>
 										
-										<li>Долей воду 150 мл</li>
+										<li class="instruction">Долей воду 150 мл</li>
 										
-										<li>Помешивая нагрей, не доводя до кипения</li>
+										<li class="instruction">Помешивая нагрей, не доводя до кипения</li>
 										
-										<li>Перелей в бокал для ирландского кофе </li>
+										<li class="instruction">Перелей в бокал для ирландского кофе </li>
 										
 									</ul>
 								</dd>
@@ -92,21 +93,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Гренадин</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Гренадин</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Вода</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Апельсин</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Гвоздика</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Гвоздика</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мускатный орех молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Мускатный орех молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица молотая</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Корица молотая</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Сахар ванильный</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name">Сахар ванильный</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">
