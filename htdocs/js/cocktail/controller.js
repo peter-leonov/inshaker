@@ -56,7 +56,6 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
-		this.tidyIngredientsList(Model.ingredients);
 	},
 	
 	bindEvents: function(name){
@@ -335,36 +334,6 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.sync();
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
-	
-    tidyIngredientsList: function(ingreds) {
-        var self   = this;
-        var parent = $(this.ID_INGS_LIST);
-        var header = parent.getElementsByTagName("dt")[0];
-        parent.empty();
-        parent.appendChild(header);
-        
-        var doses = {};
-        for(var i = 0; i < ingreds.length; i++){
-            doses[ingreds[i][0]] = GoodHelper.normalVolumeTxtParsed(ingreds[i][1]);
-        }
-        
-        for(var i = 0; i < ingreds.length; i++){
-            var dd     = document.createElement("dd")
-            var a      = document.createElement("a"); 
-            var strong = document.createElement("strong"); 
-            
-            a.innerHTML      = ingreds[i][0];
-            strong.innerHTML = doses[ingreds[i][0]];
-
-            dd.appendChild(a);
-            dd.appendChild(strong);
-            parent.appendChild(dd);
-        
-			a.addEventListener('click', function(name){ return function(e){
-                self.showPopup(name);    	
-	   		}}(ingreds[i][0]), false);
-		}
-    },
 
     showPopup: function(ingred) {
         if(Calculator.isIngredientPresent(ingred)) 
