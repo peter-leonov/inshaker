@@ -331,8 +331,8 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
     @cocktail["tags"] = about["Группы"]
-    @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
-    @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
+    @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
