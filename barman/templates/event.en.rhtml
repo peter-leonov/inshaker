@@ -107,7 +107,13 @@
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>
-			<div class="thanks">Thank you!</div>
+			<div class="thanks">
+				<% if @form_message_en %>
+					<%=@form_message_en%>
+				<% else %>
+					<h2>Thank you!</h2>
+				<% end %>
+			</div>
 			<div class="holding">We are fully booked.</div>
 		</form>
 	</div>

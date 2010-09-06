@@ -110,7 +110,13 @@
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>
-			<div class="thanks"><%= @form_message || "Спасибо!" %></div>
+			<div class="thanks">
+				<% if @form_message %>
+					<%=@form_message%>
+				<% else %>
+					<h2>Спасибо!</h2>
+				<% end %>
+			</div>
 			<div class="holding">Приглашения закончились.</div>
 		</form>
 	</div>
