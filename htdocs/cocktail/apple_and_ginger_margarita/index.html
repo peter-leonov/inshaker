@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Яблочно-имбирная маргарита</h1>
+				<h1 id="cocktail_name" class="fn">Яблочно-имбирная маргарита</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="apple_and_ginger_margarita-big.png" alt="Яблочно-имбирная маргарита" id="illustration" class="illustration"/>
+							<img src="apple_and_ginger_margarita-big.png" alt="Коктейль «Яблочно-имбирная маргарита»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Яблочно-имбирная маргарита — Любовь есть!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: яблочный сок 25 мл, имбирный сироп 15 мл и серебряную текилу 50 мл</li>
+										<li class="instruction">Налей в шейкер: яблочный сок 25 мл, имбирный сироп 15 мл и серебряную текилу 50 мл</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась веером из яблока</li>
+										<li class="instruction">Укрась веером из яблока</li>
 										
 									</ul>
 								</dd>
@@ -90,17 +91,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Серебряная текила</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Серебряная текила">Серебряная текила</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Имбирный сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Имбирный сироп">Имбирный сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Яблочный сок</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яблочный сок">Яблочный сок</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яблоко зеленое">Яблоко зеленое</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

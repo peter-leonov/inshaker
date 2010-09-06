@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Кровавая маленькая Маша</h1>
+				<h1 id="cocktail_name" class="fn">Кровавая маленькая Маша</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="little_bloody_masha-big.png" alt="Кровавая маленькая Маша" id="illustration" class="illustration"/>
+							<img src="little_bloody_masha-big.png" alt="Коктейль «Кровавая маленькая Маша»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Кровавая маленькая Маша — Всё или ничего!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=укладывают слои">укладывают слои</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стопку томатный сок 30 мл</li>
+										<li class="instruction">Налей в стопку томатный сок 30 мл</li>
 										
-										<li>Добавь по капле: лимонный сок, табаско соус красный и ворчестер соус</li>
+										<li class="instruction">Добавь по капле: лимонный сок, табаско соус красный и ворчестер соус</li>
 										
-										<li>Добавь маленькую щепотку соли и черного молотого перца</li>
+										<li class="instruction">Добавь маленькую щепотку соли и черного молотого перца</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Используя коктейльную ложку, уложи слой перечной водки 20 мл</li>
+										<li class="instruction">Используя коктейльную ложку, уложи слой перечной водки 20 мл</li>
 										
-										<li>Укрась соленым огурцом с медом</li>
+										<li class="instruction">Укрась соленым огурцом с медом</li>
 										
-										<li>Выпей шот и заверши его огурцом</li>
+										<li class="instruction">Выпей шот и заверши его огурцом</li>
 										
 									</ul>
 								</dd>
@@ -94,23 +95,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка перечная</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка перечная">Водка перечная</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Томатный сок</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Томатный сок">Томатный сок</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Соленый огурец</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Соленый огурец">Соленый огурец</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мед</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мед">Мед</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Соль</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ворчестер соус">Ворчестер соус</a>
+							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Перец черный молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Табаско соус красный">Табаско соус красный</a>
+							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Табаско соус красный</a> <strong>1 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Перец черный молотый">Перец черный молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ворчестер соус</a> <strong>1 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Соль">Соль</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

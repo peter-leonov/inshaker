@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Летний вечер в Гаграх</h1>
+				<h1 id="cocktail_name" class="fn">Летний вечер в Гаграх</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="summer_evening_in_gagra-big.png" alt="Летний вечер в Гаграх" id="illustration" class="illustration"/>
+							<img src="summer_evening_in_gagra-big.png" alt="Коктейль «Летний вечер в Гаграх»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Летний вечер в Гаграх — Иди к цели!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер мякоть арбуза 1 ст/ложку и ежевику 2 ягоды</li>
+										<li class="instruction">Положи в шейкер мякоть арбуза 1 ст/ложку и ежевику 2 ягоды</li>
 										
-										<li>Подави мадлером</li>
+										<li class="instruction">Подави мадлером</li>
 										
-										<li>Налей сироп маракуйя 15 мл и водку черносмородиновую 40 мл</li>
+										<li class="instruction">Налей сироп маракуйя 15 мл и водку черносмородиновую 40 мл</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в охлажденный флюте</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в охлажденный флюте</li>
 										
-										<li>Укрась шариком из арбуза на шпажке</li>
+										<li class="instruction">Укрась шариком из арбуза на шпажке</li>
 										
 									</ul>
 								</dd>
@@ -94,19 +95,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка черносмородиновая</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка черносмородиновая">Водка черносмородиновая</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сироп маракуйя</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сироп маракуйя">Сироп маракуйя</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Арбуз</a> <strong>80 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Арбуз">Арбуз</a>
+							<strong><span class="amount">90</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ежевика</a> <strong>14 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ежевика">Ежевика</a>
+							<strong><span class="amount">14</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Арбуз</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

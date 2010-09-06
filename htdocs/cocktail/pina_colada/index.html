@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Пина Колада</h1>
+				<h1 id="cocktail_name" class="fn">Пина Колада</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="pina_colada-big.png" alt="Пина Колада" id="illustration" class="illustration"/>
+							<img src="pina_colada-big.png" alt="Коктейль «Пина Колада»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Пина Колада — Воскреси легенду!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в блендер ананасовый сок 100 мл, кокосовый сироп 50 мл, темный ром 15 мл и белый ром 60 мл</li>
+										<li class="instruction">Налей в блендер ананасовый сок 100 мл, кокосовый сироп 50 мл, темный ром 15 мл и белый ром 60 мл</li>
 										
-										<li>Выжми дольку лайма</li>
+										<li class="instruction">Выжми дольку лайма</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в кубок</li>
+										<li class="instruction">Перелей в кубок</li>
 										
-										<li>Укрась кружком ананаса и ананасовым листом</li>
+										<li class="instruction">Укрась кружком ананаса и ананасовым листом</li>
 										
 									</ul>
 								</dd>
@@ -90,21 +91,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Белый ром</a> <strong>60 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Белый ром">Белый ром</a>
+							<strong><span class="amount">60</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Темный ром</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Темный ром">Темный ром</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кокосовый сироп</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кокосовый сироп">Кокосовый сироп</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовый сок</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ананасовый сок">Ананасовый сок</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ананас">Ананас</a>
+							<strong><span class="amount">80</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ананас</a> <strong>80 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ананасовые листья">Ананасовые листья</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовые листья</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

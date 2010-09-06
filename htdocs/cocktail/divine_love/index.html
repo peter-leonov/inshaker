@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Неземная любовь</h1>
+				<h1 id="cocktail_name" class="fn">Неземная любовь</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="divine_love-big.png" alt="Неземная любовь" id="illustration" class="illustration"/>
+							<img src="divine_love-big.png" alt="Коктейль «Неземная любовь»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Неземная любовь — Не гневи богиню!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни слинг кубиками льда доверху</li>
+										<li class="instruction">Наполни слинг кубиками льда доверху</li>
 										
-										<li>Положи в шейкер манго 2 дольки и веточку тимьяна</li>
+										<li class="instruction">Положи в шейкер манго 2 дольки и веточку тимьяна</li>
 										
-										<li>Подави пестиком</li>
+										<li class="instruction">Подави пестиком</li>
 										
-										<li>Налей: березовый сок 30 мл, сироп корицы 5 мл, медовый сироп 15 мл, апельсиновый ликер 20 мл и белый ром 50 мл</li>
+										<li class="instruction">Налей: березовый сок 30 мл, сироп корицы 5 мл, медовый сироп 15 мл, апельсиновый ликер 20 мл и белый ром 50 мл</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в слинг</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в слинг</li>
 										
-										<li>Укрась долькой манго и веточкой тимьяна</li>
+										<li class="instruction">Укрась долькой манго и веточкой тимьяна</li>
 										
 									</ul>
 								</dd>
@@ -96,27 +97,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Белый ром</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Белый ром">Белый ром</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсиновый ликер">Апельсиновый ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Медовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Медовый сироп">Медовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сироп корицы</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сироп корицы">Сироп корицы</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Березовый сок</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Березовый сок">Березовый сок</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Манго</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Манго">Манго</a>
+							<strong><span class="amount">90</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Тимьян</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Тимьян">Тимьян</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>400 гр</strong></dd>
-						
-						<dd><a>Манго</a> <strong>30 гр</strong></dd>
-						
-						<dd><a>Тимьян</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">400</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

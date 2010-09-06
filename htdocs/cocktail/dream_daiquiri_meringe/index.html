@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Дрим дайкири меренги</h1>
+				<h1 id="cocktail_name" class="fn">Дрим дайкири меренги</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="dream_daiquiri_meringe-big.png" alt="Дрим дайкири меренги" id="illustration" class="illustration"/>
+							<img src="dream_daiquiri_meringe-big.png" alt="Коктейль «Дрим дайкири меренги»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Дрим дайкири меренги — Включи солнце!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,27 +64,27 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: сахарный сироп 15 мл, ликер личи 5 мл, лимончелло 15 мл и золотой ром 25 мл</li>
+										<li class="instruction">Налей в шейкер: сахарный сироп 15 мл, ликер личи 5 мл, лимончелло 15 мл и золотой ром 25 мл</li>
 										
-										<li>Выжми дольку лайма</li>
+										<li class="instruction">Выжми дольку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Положи в блендер клюкву 4 ч/ложки и взбей</li>
+										<li class="instruction">Положи в блендер клюкву 4 ч/ложки и взбей</li>
 										
-										<li>Перелей клюквенное пюре в шейкер</li>
+										<li class="instruction">Перелей клюквенное пюре в шейкер</li>
 										
-										<li>Добавь яичный белок 1 шт и ванильный сахар 1 ч/ложку</li>
+										<li class="instruction">Добавь яичный белок 1 шт и ванильный сахар 1 ч/ложку</li>
 										
-										<li>Взбей венчиком до образования пены</li>
+										<li class="instruction">Взбей венчиком до образования пены</li>
 										
-										<li>Укрась получившейся пеной коктейль</li>
+										<li class="instruction">Укрась получившейся пеной коктейль</li>
 										
-										<li>Посыпь сверху ванильным сахаром и несколько раз проведи пламенем, чтобы сахар карамелизировался</li>
+										<li class="instruction">Посыпь сверху ванильным сахаром и несколько раз проведи пламенем, чтобы сахар карамелизировался</li>
 										
 									</ul>
 								</dd>
@@ -100,23 +101,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Золотой ром</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Золотой ром">Золотой ром</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимончелло</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимончелло">Лимончелло</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер личи</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер личи">Ликер личи</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Клюква</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Клюква">Клюква</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Сахар ванильный</a> <strong>6 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахар ванильный">Сахар ванильный</a>
+							<strong><span class="amount">6</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

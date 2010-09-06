@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Облака</h1>
+				<h1 id="cocktail_name" class="fn">Облака</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="clouds-big.png" alt="Облака" id="illustration" class="illustration"/>
+							<img src="clouds-big.png" alt="Коктейль «Облака»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Облака — Белогривые лошадки!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=укладывают слои">укладывают слои</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стопку самбуку светлую 20 мл</li>
+										<li class="instruction">Налей в стопку самбуку светлую 20 мл</li>
 										
-										<li>Затем серебрянную текилу 20 мл</li>
+										<li class="instruction">Затем серебрянную текилу 20 мл</li>
 										
-										<li>Аккуратно налей из трубочки по 3 капли айриш крим и блю курасао</li>
+										<li class="instruction">Аккуратно налей из трубочки по 3 капли айриш крим и блю курасао</li>
 										
-										<li>Используя коктейльную ложку уложи слой абсента 10 мл</li>
+										<li class="instruction">Используя коктейльную ложку уложи слой абсента 10 мл</li>
 										
 									</ul>
 								</dd>
@@ -88,15 +89,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Самбука светлая</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Абсент">Абсент</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Серебряная текила</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Серебряная текила">Серебряная текила</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Абсент</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Самбука светлая">Самбука светлая</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Блю Курасао ликер</a> <strong>3 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Блю Курасао ликер">Блю Курасао ликер</a>
+							<strong><span class="amount">3</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Айриш крим</a> <strong>3 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Айриш крим">Айриш крим</a>
+							<strong><span class="amount">3</span> <span class="type">мл</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

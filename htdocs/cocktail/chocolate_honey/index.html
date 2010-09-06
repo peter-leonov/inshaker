@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Шоколадный мед</h1>
+				<h1 id="cocktail_name" class="fn">Шоколадный мед</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="chocolate_honey-big.png" alt="Шоколадный мед" id="illustration" class="illustration"/>
+							<img src="chocolate_honey-big.png" alt="Коктейль «Шоколадный мед»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Шоколадный мед — Это всё из-за пчел!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: ликер какао коричневый 50 мл, драмбуи 25 мл и самбуку черную 20 мл</li>
+										<li class="instruction">Налей в шейкер: ликер какао коричневый 50 мл, драмбуи 25 мл и самбуку черную 20 мл</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась тертым шоколадом</li>
+										<li class="instruction">Укрась тертым шоколадом</li>
 										
 									</ul>
 								</dd>
@@ -88,15 +89,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Самбука черная</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Самбука черная">Самбука черная</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Драмбуи</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Драмбуи">Драмбуи</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер какао коричневый</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер какао коричневый">Ликер какао коричневый</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Шоколад черный">Шоколад черный</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Шоколад черный</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

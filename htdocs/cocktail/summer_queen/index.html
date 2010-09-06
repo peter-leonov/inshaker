@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Летняя королева</h1>
+				<h1 id="cocktail_name" class="fn">Летняя королева</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="summer_queen-big.png" alt="Летняя королева" id="illustration" class="illustration"/>
+							<img src="summer_queen-big.png" alt="Коктейль «Летняя королева»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Летняя королева — 2001</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в блендер клубнику 1 ягоду</li>
+										<li class="instruction">Положи в блендер клубнику 1 ягоду</li>
 										
-										<li>Налей: кокосовый сироп 15 мл, апельсиновый ликер 10 мл, айриш крим 10 мл и ежевичный ликер 20 мл</li>
+										<li class="instruction">Налей: кокосовый сироп 15 мл, апельсиновый ликер 10 мл, айриш крим 10 мл и ежевичный ликер 20 мл</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась зернами граната, коктейльной вишней и долькой карамболы</li>
+										<li class="instruction">Укрась зернами граната, коктейльной вишней и долькой карамболы</li>
 										
 									</ul>
 								</dd>
@@ -90,23 +91,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Айриш крим</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Айриш крим">Айриш крим</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ежевичный ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ежевичный ликер">Ежевичный ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсиновый ликер">Апельсиновый ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кокосовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кокосовый сироп">Кокосовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Клубника</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Карамбола">Карамбола</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Гранат">Гранат</a>
+							<strong><span class="amount">7</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Гранат</a> <strong>7 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Клубника">Клубника</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Коктейльная вишня красная">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Карамбола</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

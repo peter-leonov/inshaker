@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Английская девственница</h1>
+				<h1 id="cocktail_name" class="fn">Английская девственница</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="english_virgin-big.png" alt="Английская девственница" id="illustration" class="illustration"/>
+							<img src="english_virgin-big.png" alt="Коктейль «Английская девственница»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Английская девственница — Служи народу!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни бокал для вина кубиками льда доверху</li>
+										<li class="instruction">Наполни бокал для вина кубиками льда доверху</li>
 										
-										<li>Положи в шейкер зерна половинки граната и подави мадлером</li>
+										<li class="instruction">Положи в шейкер зерна половинки граната и подави мадлером</li>
 										
-										<li>Налей сахарный сироп 10 мл и джин 50 мл</li>
+										<li class="instruction">Налей сахарный сироп 10 мл и джин 50 мл</li>
 										
-										<li>Выжми дольку лимона</li>
+										<li class="instruction">Выжми дольку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в бокал для вина</li>
+										<li class="instruction">Перелей через стрейнер в бокал для вина</li>
 										
-										<li>Укрась долькой граната </li>
+										<li class="instruction">Укрась долькой граната </li>
 										
 									</ul>
 								</dd>
@@ -94,17 +95,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Джин">Джин</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Гранат</a> <strong>250 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Гранат">Гранат</a>
+							<strong><span class="amount">280</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>360 гр</strong></dd>
-						
-						<dd><a>Гранат</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">360</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

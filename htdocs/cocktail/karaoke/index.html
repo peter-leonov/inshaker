@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Караоке</h1>
+				<h1 id="cocktail_name" class="fn">Караоке</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="karaoke-big.png" alt="Караоке" id="illustration" class="illustration"/>
+							<img src="karaoke-big.png" alt="Коктейль «Караоке»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Караоке — Пей и пой!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в блендере">в блендере</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в блендер ванильное мороженое 5 ст/ложек</li>
+										<li class="instruction">Положи в блендер ванильное мороженое 5 ст/ложек</li>
 										
-										<li>Налей: кленовый сироп 15 мл, сливовое вино 40 мл и саке 40 мл</li>
+										<li class="instruction">Налей: кленовый сироп 15 мл, сливовое вино 40 мл и саке 40 мл</li>
 										
-										<li>Добавь в блендер немного льда и взбей</li>
+										<li class="instruction">Добавь в блендер немного льда и взбей</li>
 										
-										<li>Перелей в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась стручком ванили</li>
+										<li class="instruction">Укрась стручком ванили</li>
 										
 									</ul>
 								</dd>
@@ -90,17 +91,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Саке</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Саке">Саке</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сливовое вино</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сливовое вино">Сливовое вино</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кленовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кленовый сироп">Кленовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ванильное мороженое</a> <strong>80 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ванильное мороженое">Ванильное мороженое</a>
+							<strong><span class="amount">80</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ваниль в стручках</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ваниль в стручках">Ваниль в стручках</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>160 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
+							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

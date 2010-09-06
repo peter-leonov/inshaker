@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мартинез 2</h1>
+				<h1 id="cocktail_name" class="fn">Мартинез 2</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="martinez_2-big.png" alt="Мартинез 2" id="illustration" class="illustration"/>
+							<img src="martinez_2-big.png" alt="Коктейль «Мартинез 2»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Мартинез 2 — Создавай классику!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс кубиками льда доверху</li>
+										<li class="instruction">Наполни рокс кубиками льда доверху</li>
 										
-										<li>Налей: сироп кислая вишня 15 мл, ликер кислая вишня 10 мл, красный вермут 25 мл и джин 50 мл</li>
+										<li class="instruction">Налей: сироп кислая вишня 15 мл, ликер кислая вишня 10 мл, красный вермут 25 мл и джин 50 мл</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Укрась цедрой апельсина и коктейльной вишней</li>
+										<li class="instruction">Укрась цедрой апельсина и коктейльной вишней</li>
 										
 									</ul>
 								</dd>
@@ -88,19 +89,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Джин">Джин</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Красный вермут</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер кислая вишня">Ликер кислая вишня</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер кислая вишня</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Красный вермут">Красный вермут</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сироп кислая вишня</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сироп кислая вишня">Сироп кислая вишня</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсин">Апельсин</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Коктейльная вишня красная">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

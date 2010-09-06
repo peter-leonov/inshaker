@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Феструс</h1>
+				<h1 id="cocktail_name" class="fn">Феструс</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="festrus-big.png" alt="Феструс" id="illustration" class="illustration"/>
+							<img src="festrus-big.png" alt="Коктейль «Феструс»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Феструс — 1973</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>, <a class="tag" href="/cocktails.html#tag=победители">победители</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в стакан для смешивания мяту 8 листьев и подави мадлером</li>
+										<li class="instruction">Положи в стакан для смешивания мяту 8 листьев и подави мадлером</li>
 										
-										<li>Налей: мятный ликер светлый 10 мл, апельсиновый ликер 30 мл, кампари 20 мл и водку 30 мл</li>
+										<li class="instruction">Налей: мятный ликер светлый 10 мл, апельсиновый ликер 30 мл, кампари 20 мл и водку 30 мл</li>
 										
-										<li>Наполни стакан для смешивания кубиками льда</li>
+										<li class="instruction">Наполни стакан для смешивания кубиками льда</li>
 										
-										<li>Размешай коктейльной ложкой</li>
+										<li class="instruction">Размешай коктейльной ложкой</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась цедрой апельсина, маленькой долькой яблока и листиком красного базилика</li>
+										<li class="instruction">Укрась цедрой апельсина, маленькой долькой яблока и листиком красного базилика</li>
 										
 									</ul>
 								</dd>
@@ -92,23 +93,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка">Водка</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кампари</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсиновый ликер">Апельсиновый ликер</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый ликер</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мятный ликер светлый">Мятный ликер светлый</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мятный ликер светлый</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кампари">Кампари</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>2 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яблоко зеленое">Яблоко зеленое</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр </strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсин">Апельсин</a>
+							<strong><span class="amount">3</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>3 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мята">Мята</a>
+							<strong><span class="amount">2</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Базилик красный">Базилик красный</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Базилик красный</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр </span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

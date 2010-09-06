@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Черный русский</h1>
+				<h1 id="cocktail_name" class="fn">Черный русский</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="black_russian-big.png" alt="Черный русский" id="illustration" class="illustration"/>
+							<img src="black_russian-big.png" alt="Коктейль «Черный русский»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Черный русский — Будь благородным!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,13 +64,13 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни рокс кубиками льда наполовину</li>
+										<li class="instruction">Наполни рокс кубиками льда наполовину</li>
 										
-										<li>Налей водку 40 мл и кофейный ликер 40 мл</li>
+										<li class="instruction">Налей водку 40 мл и кофейный ликер 40 мл</li>
 										
-										<li>Размешай коктейльной ложкой </li>
+										<li class="instruction">Размешай коктейльной ложкой </li>
 										
 									</ul>
 								</dd>
@@ -86,11 +87,20 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка">Водка</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кофейный ликер</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кофейный ликер">Кофейный ликер</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>100 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">100</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

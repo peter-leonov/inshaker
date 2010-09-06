@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Топ банана</h1>
+				<h1 id="cocktail_name" class="fn">Топ банана</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="top_banana-big.png" alt="Топ банана" id="illustration" class="illustration"/>
+							<img src="top_banana-big.png" alt="Коктейль «Топ банана»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Топ банана — Проверь статистику!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=укладывают слои">укладывают слои</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,13 +64,13 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стопку банановый сироп 15 мл</li>
+										<li class="instruction">Налей в стопку банановый сироп 15 мл</li>
 										
-										<li>Используя коктейльную ложку, уложи слоями: кофейный ликер 10 мл, ликер какао светлый 10 мл и водку 15 мл</li>
+										<li class="instruction">Используя коктейльную ложку, уложи слоями: кофейный ликер 10 мл, ликер какао светлый 10 мл и водку 15 мл</li>
 										
-										<li>Подожги и быстро выпей через трубочку</li>
+										<li class="instruction">Подожги и быстро выпей через трубочку</li>
 										
 									</ul>
 								</dd>
@@ -86,13 +87,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка">Водка</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кофейный ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кофейный ликер">Кофейный ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер какао светлый</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер какао светлый">Ликер какао светлый</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Банановый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Банановый сироп">Банановый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

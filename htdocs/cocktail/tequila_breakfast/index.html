@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Завтрак с текилой</h1>
+				<h1 id="cocktail_name" class="fn">Завтрак с текилой</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="tequila_breakfast-big.png" alt="Завтрак с текилой" id="illustration" class="illustration"/>
+							<img src="tequila_breakfast-big.png" alt="Коктейль «Завтрак с текилой»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Завтрак с текилой — Не проспи утро!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер апельсиновый джем 1 ч/ложку и белок яйца 1 ч/ложку</li>
+										<li class="instruction">Положи в шейкер апельсиновый джем 1 ч/ложку и белок яйца 1 ч/ложку</li>
 										
-										<li>Налей грейпфрутовый сок 20 мл и золотую текилу 20 мл</li>
+										<li class="instruction">Налей грейпфрутовый сок 20 мл и золотую текилу 20 мл</li>
 										
-										<li>Выжми четвертинку лайма</li>
+										<li class="instruction">Выжми четвертинку лайма</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный флюте</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный флюте</li>
 										
-										<li>Добавь 2 капли ангостуры биттер</li>
+										<li class="instruction">Добавь 2 капли ангостуры биттер</li>
 										
 									</ul>
 								</dd>
@@ -92,19 +93,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Золотая текила</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Золотая текила">Золотая текила</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Грейпфрутовый сок</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ангостура биттер">Ангостура биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Грейпфрутовый сок">Грейпфрутовый сок</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Джем апельсиновый</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Джем апельсиновый">Джем апельсиновый</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

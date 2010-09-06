@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">ММ'с</h1>
+				<h1 id="cocktail_name" class="fn">ММ'с</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="m_m_s-big.png" alt="ММ'с" id="illustration" class="illustration"/>
+							<img src="m_m_s-big.png" alt="Коктейль «ММ'с»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>ММ'с — Вместе веселее!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в соковыжималку стакан ягод облепихи и сделай сок</li>
+										<li class="instruction">Положи в соковыжималку стакан ягод облепихи и сделай сок</li>
 										
-										<li>Налей в питчер: бурбон 50 мл, облепиховый сок 100 мл и воду 50 мл</li>
+										<li class="instruction">Налей в питчер: бурбон 50 мл, облепиховый сок 100 мл и воду 50 мл</li>
 										
-										<li>Выжми дольку лайма</li>
+										<li class="instruction">Выжми дольку лайма</li>
 										
-										<li>Помешивая, нагрей, не доводя до кипения</li>
+										<li class="instruction">Помешивая, нагрей, не доводя до кипения</li>
 										
-										<li>Перелей в разогретую чашку</li>
+										<li class="instruction">Перелей в разогретую чашку</li>
 										
-										<li>Подай с яблоком, курагой и черносливом, залитыми медом, в тарталетке</li>
+										<li class="instruction">Подай с яблоком, курагой и черносливом, залитыми медом, в тарталетке</li>
 										
 									</ul>
 								</dd>
@@ -92,23 +93,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Бурбон</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Бурбон">Бурбон</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вода">Вода</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Облепиха</a> <strong>250 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яблоко зеленое">Яблоко зеленое</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Тарталетка</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Облепиха">Облепиха</a>
+							<strong><span class="amount">250</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Курага</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мед">Мед</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Чернослив</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Чернослив">Чернослив</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яблоко зеленое</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Курага">Курага</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мед</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Тарталетка">Тарталетка</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

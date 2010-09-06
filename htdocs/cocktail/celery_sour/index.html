@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Сельдереевый сауэр</h1>
+				<h1 id="cocktail_name" class="fn">Сельдереевый сауэр</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="celery_sour-big.png" alt="Сельдереевый сауэр" id="illustration" class="illustration"/>
+							<img src="celery_sour-big.png" alt="Коктейль «Сельдереевый сауэр»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Сельдереевый сауэр — Накопи капитал!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: яичный белок 1 шт, сельдереевый биттер 5 мл, ананасовый сок 12 мл, сахарный сироп 12 мл и джин 50 мл</li>
+										<li class="instruction">Налей в шейкер: яичный белок 1 шт, сельдереевый биттер 5 мл, ананасовый сок 12 мл, сахарный сироп 12 мл и джин 50 мл</li>
 										
-										<li>Выжми половинку лимона</li>
+										<li class="instruction">Выжми половинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась полоской сельдерея</li>
+										<li class="instruction">Укрась полоской сельдерея</li>
 										
 									</ul>
 								</dd>
@@ -90,21 +91,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Джин</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Джин">Джин</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сельдереевый биттер</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сельдереевый биттер">Сельдереевый биттер</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>12 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">12</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ананасовый сок</a> <strong>12 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ананасовый сок">Ананасовый сок</a>
+							<strong><span class="amount">12</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">75</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сельдерей">Сельдерей</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Сельдерей</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

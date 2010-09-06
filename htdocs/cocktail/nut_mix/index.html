@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Ореховый микс</h1>
+				<h1 id="cocktail_name" class="fn">Ореховый микс</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="nut_mix-big.png" alt="Ореховый микс" id="illustration" class="illustration"/>
+							<img src="nut_mix-big.png" alt="Коктейль «Ореховый микс»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Ореховый микс — Крепкий орешек!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в шейкер: перепелиное яйцо 1 шт, сахарный сироп 10 мл, ореховый ликер 50 мл, амаретто ликер 50 мл и добавь ангостуру биттер 2 капли</li>
+										<li class="instruction">Налей в шейкер: перепелиное яйцо 1 шт, сахарный сироп 10 мл, ореховый ликер 50 мл, амаретто ликер 50 мл и добавь ангостуру биттер 2 капли</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденную рюмку для граппы</li>
+										<li class="instruction">Перелей через стрейнер в охлажденную рюмку для граппы</li>
 										
-										<li>Укрась коктейльной вишней</li>
+										<li class="instruction">Укрась коктейльной вишней</li>
 										
 									</ul>
 								</dd>
@@ -90,21 +91,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Амаретто ликер</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Амаретто ликер">Амаретто ликер</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ореховый ликер</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ореховый ликер">Ореховый ликер</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ангостура биттер">Ангостура биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яйцо перепелиное">Яйцо перепелиное</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо перепелиное</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Коктейльная вишня красная">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

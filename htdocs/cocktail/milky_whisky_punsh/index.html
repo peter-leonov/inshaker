@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Молочный виски пунш</h1>
+				<h1 id="cocktail_name" class="fn">Молочный виски пунш</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="milky_whisky_punsh-big.png" alt="Молочный виски пунш" id="illustration" class="illustration"/>
+							<img src="milky_whisky_punsh-big.png" alt="Коктейль «Молочный виски пунш»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Молочный виски пунш — Стань избранным!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=в шейкере">в шейкере</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни бокал для вина кубиками льда доверху</li>
+										<li class="instruction">Наполни бокал для вина кубиками льда доверху</li>
 										
-										<li>Налей в шейкер: сливки 25 мл, молоко 25 мл, медовый сироп 25 мл и виски 50 мл</li>
+										<li class="instruction">Налей в шейкер: сливки 25 мл, молоко 25 мл, медовый сироп 25 мл и виски 50 мл</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в бокал для вина</li>
+										<li class="instruction">Перелей через стрейнер в бокал для вина</li>
 										
-										<li>Укрась цедрой лимона</li>
+										<li class="instruction">Укрась цедрой лимона</li>
 										
 									</ul>
 								</dd>
@@ -90,17 +91,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Виски</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Виски">Виски</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Медовый сироп</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Медовый сироп">Медовый сироп</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Молоко</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сливки">Сливки</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сливки</a> <strong>25 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Молоко">Молоко</a>
+							<strong><span class="amount">25</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>360 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">360</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

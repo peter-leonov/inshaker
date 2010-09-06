@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Ежевичный коблер</h1>
+				<h1 id="cocktail_name" class="fn">Ежевичный коблер</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="blackberry_cobler-big.png" alt="Ежевичный коблер" id="illustration" class="illustration"/>
+							<img src="blackberry_cobler-big.png" alt="Коктейль «Ежевичный коблер»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Ежевичный коблер — Уладь конфликт!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,15 +64,15 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни хайбол кубиками льда доверху</li>
+										<li class="instruction">Наполни хайбол кубиками льда доверху</li>
 										
-										<li>Налей в хайбол: вишневый сок 50 мл, ежевичный сироп 20 мл, драмбуи 30 мл и игристое вино сухое доверху</li>
+										<li class="instruction">Налей в хайбол: вишневый сок 50 мл, ежевичный сироп 20 мл, драмбуи 30 мл и игристое вино сухое доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась дольками апельсина и ягодами ежевики</li>
+										<li class="instruction">Укрась дольками апельсина и ягодами ежевики</li>
 										
 									</ul>
 								</dd>
@@ -88,19 +89,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Игристое вино сухое</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Драмбуи">Драмбуи</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Драмбуи</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ежевичный сироп</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ежевичный сироп">Ежевичный сироп</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вишневый сок</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вишневый сок">Вишневый сок</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсин">Апельсин</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ежевика">Ежевика</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ежевика</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">
