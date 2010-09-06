@@ -12,7 +12,7 @@ a img{border:0;}
 input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
 input,select,textarea{font-size:1.1em;}
 input[type="password"],
-input[type="text"]{height:20px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
+input[type="text"]{margin:0;}
 ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
