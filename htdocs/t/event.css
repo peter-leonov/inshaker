@@ -122,7 +122,6 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-weight: bold; }
 #form-popup .content form label input,
 #form-popup .content form label .tip { position: absolute; width: 280px; right: 0; font-size: 16px; font-weight: normal; font-family: Tahoma,Arial,sans-serif; padding: 1px 2px; height: 18px; }
-#form-popup .content form label input { border: 1px solid #ccc; }
 #form-popup .content form label .tip { cursor: text; }
 #form-popup .content form label .label { display: inline-block; width: 240px; }
 #form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
