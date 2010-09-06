@@ -496,7 +496,7 @@ EventPage.view =
 			var t = field.tip
 			if (t)
 			{
-				setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
+				// setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
 				var tip = N('span', 'tip')
 				tip.appendChild(T(t))
 				label.appendChild(tip)
