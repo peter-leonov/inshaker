@@ -23,7 +23,6 @@ body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heig
 
 form button{vertical-align:top;}
 form input{vertical-align:middle;}
-form p{display:inline;}
 form .b p{display:block;padding:0;}
 label{display:block;}
 
