@@ -23,7 +23,19 @@ $.onready(function ()
 	var de = document.documentElement
 	de.remClassName('loading')
 	de.addClassName(guessBrowser(navigator.userAgent).join(' '))
+	de.addClassName(guessOS(navigator.userAgent).join(' '))
 })
+
+function guessOS (ua)
+{
+	var m = /Windows/.exec(ua)
+	if (m)
+		return ['win']
+	
+	var m = /Macintosh|Mac OS/.exec(ua)
+	if (m)
+		return ['mac']
+}
 
 function guessBrowser (ua)
 {
