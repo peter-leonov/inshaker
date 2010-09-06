@@ -18,7 +18,36 @@ EventPage =
 	}
 }
 
-$.onready(function () { document.documentElement.remClassName('loading') })
+$.onready(function ()
+{
+	var d = document.documentElement
+	d.remClassName('loading')
+	
+	var classes = guessBrowser(navigator.userAgent)
+	d.innerHTML = classes.join(' ')
+})
+
+function guessBrowser (ua)
+{
+	function classes (n, a, b, c)
+	{
+		return [n, n + '-' + a, n + '-' + a + '-' + b, n + '-' + a + '-' + b + '-' + c]
+	}
+	
+	var m = /Firefox\/(\d+)\.(\d+)\.(\d+)/.exec(ua)
+	if (m)
+		return classes('firefox', m[1], m[2], m[3])
+	
+	var m = /Version\/(\d+)\.(\d+)\.(\d+) Safari\/\d+/.exec(ua)
+	if (m)
+		return classes('safari', m[1], m[2], m[3])
+	
+	var m = /Chrome\/(\d+)\.(\d+)\.(\d+)/.exec(ua)
+	if (m)
+		return classes('chrome', m[1], m[2], m[3])
+	
+	return []
+}
 
 $.onready
 (
