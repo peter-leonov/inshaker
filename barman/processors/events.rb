@@ -92,6 +92,7 @@ class EventsProcessor < Barman::Processor
     @entity["photos"]            = yaml['Ссылка на фотки']
     @entity["fields"]            = yaml['Поля формы']
     @entity["form_hint"]         = yaml['Подсказка в форме']
+    @entity["form_message"]      = yaml['Сообщение в форме после отправки']
     @entity["status"]            = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
     @entity["date_ru"]           = ru_date_str
@@ -332,6 +333,7 @@ class EventsProcessor < Barman::Processor
       entity.delete("promo")
       entity.delete("imgdir")
       entity.delete("main")
+      entity.delete("form_message")
     end
     
     flush_json_object(@entities, Config::DB_JS)
