@@ -486,7 +486,7 @@ EventPage.view =
 			var field = fieldsSet[i]
 			
 			var label = N('label')
-			label.appendChild(T(field.label + ':'))
+			label.appendChild(N('span', 'label')).appendChild(T(field.label + ':'))
 			
 			var input = inputs[i] = N('input')
 			input.type = 'text'
