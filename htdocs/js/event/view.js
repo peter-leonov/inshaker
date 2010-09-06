@@ -84,7 +84,8 @@ EventPage.view =
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
-		this.showFormPopup()
+		// this.showFormPopup()
+		// this.showFormPopupThanks()
 		this.setFormLock(true)
 	},
 	
