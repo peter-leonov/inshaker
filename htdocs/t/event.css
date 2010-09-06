@@ -133,7 +133,9 @@ html.empire-open-cinema #form-popup .content { width: 550px; }
 html.empire-open-cinema #form-popup .content form label input { right: -300px; }
 
 html.firefox #form-popup .content form label .tip { right: 2px; top: 4px; }
-html.safari.win #form-popup .content form label .tip { right: 1px; top: 3px; }
+html.firefox.win #form-popup .content form label .tip { right: 1px; top: 3px; }
+html.safari.win #form-popup .content form label .tip,
+html.chrome.win #form-popup .content form label .tip { right: 1px; top: 3px; }
 html.opera #form-popup .content form label .tip { right: 3px; top: 3px; }
 html.msie #form-popup .content form label .tip { right: 3px; top: 3px; }
 html.msie-7 #form-popup .content form label .tip { right: 2px; top: 3px; }
