@@ -20,11 +20,9 @@ EventPage =
 
 $.onready(function ()
 {
-	var d = document.documentElement
-	d.remClassName('loading')
-	
-	var classes = guessBrowser(navigator.userAgent)
-	d.innerHTML = classes.join(' ')
+	var de = document.documentElement
+	de.remClassName('loading')
+	de.addClassName(guessBrowser(navigator.userAgent).join(' '))
 })
 
 function guessBrowser (ua)
