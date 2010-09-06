@@ -78,28 +78,28 @@ class EventsProcessor < Barman::Processor
       @entity["main"] = true
     end
     
-    @entity["adate"]     = yaml['Примерная дата']
-    @entity["name"]      = yaml['Название']
-    @entity["header"]    = yaml['Слоган']
-    @entity["target"]    = yaml['Задача']
-    @entity["subject"]   = yaml['Задача']
-    @entity["city"]      = yaml['Город']
-    @entity["country"]   = yaml['Страна']
-    @entity["href"]      = yaml['Ссылка']
-    @entity["venue"]     = yaml['Место']
-    @entity["time"]      = yaml['Время']
-    @entity["enter"]     = yaml['Вход']
-    @entity["photos"]    = yaml['Ссылка на фотки']
-    @entity["fields"]    = yaml['Поля формы']
-    @entity["form_hint"] = yaml['Подсказка в форме']
-    @entity["status"]    = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
+    @entity["adate"]             = yaml['Примерная дата']
+    @entity["name"]              = yaml['Название']
+    @entity["header"]            = yaml['Слоган']
+    @entity["target"]            = yaml['Задача']
+    @entity["subject"]           = yaml['Задача']
+    @entity["city"]              = yaml['Город']
+    @entity["country"]           = yaml['Страна']
+    @entity["href"]              = yaml['Ссылка']
+    @entity["venue"]             = yaml['Место']
+    @entity["time"]              = yaml['Время']
+    @entity["enter"]             = yaml['Вход']
+    @entity["photos"]            = yaml['Ссылка на фотки']
+    @entity["fields"]            = yaml['Поля формы']
+    @entity["form_hint"]         = yaml['Подсказка в форме']
+    @entity["status"]            = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
-    @entity["date_ru"]   = ru_date_str
-    @entity["address"]   = yaml['Ссылка на место']
+    @entity["date_ru"]           = ru_date_str
+    @entity["address"]           = yaml['Ссылка на место']
     
-    @entity["rating"]    = {}
+    @entity["rating"]            = {}
     
-    @entity["type"]      = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
+    @entity["type"]              = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
     unless @entity["type"]
       error %Q{непонятный тип события «#{yaml['Тип']}»}
     end
