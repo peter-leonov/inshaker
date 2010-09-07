@@ -12,7 +12,7 @@ require "/www/inshaker/barman/lib/rmail"
 p = CGI.new.params
 
 
-filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true}
+filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true, "sent-message" => true}
 names = ['Имя', 'Фамилия', 'Город', 'E-mail']
 values = [p["first"], p["second"], p["city"], p["email"]]
 human = ""
