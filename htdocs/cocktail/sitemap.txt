@@ -149,6 +149,7 @@ http://www.inshaker.ru/cocktail/around_the_world/
 http://www.inshaker.ru/cocktail/sunday_lemonade/
 http://www.inshaker.ru/cocktail/east_meets_west/
 http://www.inshaker.ru/cocktail/east_honey/
+http://www.inshaker.ru/cocktail/orient_express/
 http://www.inshaker.ru/cocktail/above_the_clouds/
 http://www.inshaker.ru/cocktail/galileo/
 http://www.inshaker.ru/cocktail/galliano_hot_shot/
