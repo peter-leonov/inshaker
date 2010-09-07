@@ -479,7 +479,9 @@ EventPage.view =
 		if (!fieldsSet)
 			return
 		
-		var root = this.nodes.variableInputs
+		var nodes = this.nodes
+		
+		var root = nodes.variableInputs
 		
 		var inputs = []
 		for (var i = 0; i < fieldsSet.length; i++)
@@ -508,7 +510,7 @@ EventPage.view =
 		
 		new InputTip().bind(inputs)
 		
-		this.nodes.form.variableFields = fieldsSet
+		nodes.form.variableFields = fieldsSet
 		this.resetForm()
 	},
 	
