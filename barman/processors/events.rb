@@ -123,6 +123,9 @@ class EventsProcessor < Barman::Processor
           if label["Подсказка"]
             field["tip"] = label["Подсказка"]
           end
+          if label["Столбец"]
+            field["name"] = label["Столбец"]
+          end
           fields << field
         else
           fields << {"label" => label.to_s}
