@@ -64,7 +64,7 @@ m.send
 
 sent_message = p["sent-message"]
 if sent_message
-  m = RMail::Message.bake :to => who, :from => $main, :subject => subject, :body => sent_message.to_s
+  m = RMail::Message.bake :to => who, :from => "Коктейльные события <#{$main}>", :subject => subject, :body => sent_message.to_s
   m.send
 end
 
