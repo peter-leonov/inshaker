@@ -510,6 +510,17 @@ EventPage.view =
 		
 		new InputTip().bind(inputs)
 		
+		var thanks = nodes.formPopupThanks
+		if (!thanks.hasClassName('default'))
+		{
+			var input = inputs[i] = N('input')
+			input.type = 'hidden'
+			input.name = 'sent-message'
+			input.value = thanks.innerHTML
+			
+			root.appendChild(input)
+		}
+		
 		nodes.form.variableFields = fieldsSet
 		this.resetForm()
 	},
