@@ -153,7 +153,7 @@ html { overflow-y: scroll;  }
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
-.ingredient-window .cocktail-list .viewport .surface { width: 100000px; }
+.ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
 .ingredient-window .cocktail-list .point { float: left; width: 625px;  }
 
 .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
