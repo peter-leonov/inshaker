@@ -78,28 +78,30 @@ class EventsProcessor < Barman::Processor
       @entity["main"] = true
     end
     
-    @entity["adate"]     = yaml['Примерная дата']
-    @entity["name"]      = yaml['Название']
-    @entity["header"]    = yaml['Слоган']
-    @entity["target"]    = yaml['Задача']
-    @entity["subject"]   = yaml['Задача']
-    @entity["city"]      = yaml['Город']
-    @entity["country"]   = yaml['Страна']
-    @entity["href"]      = yaml['Ссылка']
-    @entity["venue"]     = yaml['Место']
-    @entity["time"]      = yaml['Время']
-    @entity["enter"]     = yaml['Вход']
-    @entity["photos"]    = yaml['Ссылка на фотки']
-    @entity["fields"]    = yaml['Поля формы']
-    @entity["form_hint"] = yaml['Подсказка в форме']
-    @entity["status"]    = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
+    @entity["adate"]             = yaml['Примерная дата']
+    @entity["name"]              = yaml['Название']
+    @entity["header"]            = yaml['Слоган']
+    @entity["target"]            = yaml['Задача']
+    @entity["subject"]           = yaml['Задача']
+    @entity["city"]              = yaml['Город']
+    @entity["country"]           = yaml['Страна']
+    @entity["href"]              = yaml['Ссылка']
+    @entity["venue"]             = yaml['Место']
+    @entity["time"]              = yaml['Время']
+    @entity["enter"]             = yaml['Вход']
+    @entity["photos"]            = yaml['Ссылка на фотки']
+    @entity["fields"]            = yaml['Поля формы']
+    @entity["form_hint"]         = yaml['Подсказка в форме']
+    @entity["sent_message"]      = yaml['Сообщение в форме после отправки']
+    @entity["sent_message_en"]   = yaml['Сообщение в форме после отправки (англ.)']
+    @entity["status"]            = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
-    @entity["date_ru"]   = ru_date_str
-    @entity["address"]   = yaml['Ссылка на место']
+    @entity["date_ru"]           = ru_date_str
+    @entity["address"]           = yaml['Ссылка на место']
     
-    @entity["rating"]    = {}
+    @entity["rating"]            = {}
     
-    @entity["type"]      = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
+    @entity["type"]              = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
     unless @entity["type"]
       error %Q{непонятный тип события «#{yaml['Тип']}»}
     end
@@ -116,10 +118,17 @@ class EventsProcessor < Barman::Processor
     fields = []
     if @entity["fields"]
       @entity["fields"].each do |label|
-        if label.match(/(.*)\s+@(\w+)\s*$/)
-          fields << {"label" => $1, "name" => $2}
+        if label.class == Hash
+          field = {"label" => label["Название"]}
+          if label["Подсказка"]
+            field["tip"] = label["Подсказка"]
+          end
+          if label["Столбец"]
+            field["name"] = label["Столбец"]
+          end
+          fields << field
         else
-          fields << {"label" => label}
+          fields << {"label" => label.to_s}
         end
       end
     end
@@ -328,6 +337,8 @@ class EventsProcessor < Barman::Processor
       entity.delete("promo")
       entity.delete("imgdir")
       entity.delete("main")
+      entity.delete("sent_message")
+      entity.delete("sent_message_en")
     end
     
     flush_json_object(@entities, Config::DB_JS)

@@ -44,7 +44,7 @@ html.loading .previews .viewport .surface { display: none; }
 #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
 #illustration .hidden { visibility: hidden; }
 #main-sponsors { margin-bottom: 24px; }
-#main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
+#main-sponsors .banner { display: block; width: 259px; height: 179px; margin: 18px auto 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; }
 
 .about h2 { font-size: 20px; color: #000; margin: 11px 0 0 0; }
 .about .parole { font-family: Arial; font-size: 15px; color: #000; line-height: 18px; letter-spacing: 0.2px; margin: 6px 0 0 0; }
@@ -78,7 +78,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming .rating .label,
 #comming .rating .rate { margin: 1px 0 2px 0; }
 #comming .rating .label { width: 112px; white-space: nowrap; overflow: hidden; }
-#comming .rating .rate { width: 6%; padding: 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#comming .rating .rate { width: 6%; padding: 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; }
 #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
 #low-sponsors { margin: 27px 0 0 0; }
@@ -107,9 +107,11 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 /*#templates { position: absolute; left: 0; top: 0; z-index: 10; }*/
 
 #form-popup { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
-#form-popup .content { position: relative; z-index: 10; width: 600px; margin: 0 auto; padding-top: 64px; }
+#form-popup .content { position: relative; z-index: 10; width: 620px; margin: 0 auto; padding-top: 64px; }
+#form-popup .content form .thanks { font-size: 17px; }
+#form-popup .content form .thanks p { margin-bottom: 0.5em;  }
 #form-popup .content form .thanks,
-#form-popup .content form .holding,
+#form-popup .content form .holding { position: absolute; left: 0; top: 0; padding: 23px 40px 35px; visibility: hidden; }
 #form-popup .content h2 { font-size: 27px; color: #f22b9f; font-weight: bold; }
 #form-popup .content h2 { margin: 0 0 20px; }
 #form-popup .content .menu { margin: 0 0 20px 0; }
@@ -117,18 +119,28 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #form-popup .content .menu .button { color: #fff; text-decoration: none; }
 #form-popup .content .menu .text { border-bottom: 1px dashed; }
 #form-popup .content .menu .button { float: right; padding: 6px; margin: -6px -9px 0 0; font-size: 18px; cursor: pointer; }
-#form-popup .content form { position: relative; font-family: Arial; display: block; padding: 23px 40px 35px; background: #fff; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px; }
+#form-popup .content form { position: relative; font-family: Arial; display: block; padding: 23px 40px 35px; background: #fff; -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius: 15px; }
 #form-popup .content form.sending .fields { opacity: 0.75; }
-#form-popup .content form label { position: relative; width: 280px; margin: 0 0 17px; font-size: 18px; color: #333; font-weight: bold; }
-#form-popup .content form label input { position: absolute; width: 280px; right: -240px; font-size: 16px; padding: 0px 6px 3px; }
+#form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-weight: bold; }
+#form-popup .content form label input,
+#form-popup .content form label .tip { position: absolute; width: 280px; right: 0; font-size: 16px; font-weight: normal; font-family: Tahoma,Arial,sans-serif; padding-left: 2px; }
+#form-popup .content form label .label { display: inline-block; width: 240px; }
+#form-popup .content form label .tip { cursor: text; right: 2px; top: 3px; color: #aaa; }
+#form-popup .content form label.focused .tip,
+#form-popup .content form label.filled .tip { display: none; }
 #form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
 #form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }
-#form-popup .content form .thanks,
-#form-popup .content form .holding { position: absolute; left: 0; top: 47%; width: 100%; text-align: center; visibility: hidden; }
 
 html.empire-open-cinema #form-popup .content { width: 550px; }
 html.empire-open-cinema #form-popup .content form label input { right: -300px; }
 
+html.firefox #form-popup .content form label .tip { right: 2px; top: 4px; }
+html.firefox.win #form-popup .content form label .tip { right: 1px; top: 3px; }
+html.safari.win #form-popup .content form label .tip,
+html.chrome.win #form-popup .content form label .tip { right: 1px; top: 3px; }
+html.opera #form-popup .content form label .tip { right: 3px; top: 3px; }
+html.msie #form-popup .content form label .tip { right: 3px; top: 3px; }
+html.msie-7 #form-popup .content form label .tip { right: 2px; top: 3px; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->

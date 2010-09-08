@@ -12,7 +12,7 @@ a img{border:0;}
 input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
 input,select,textarea{font-size:1.1em;}
 input[type="password"],
-input[type="text"]{height:20px;margin-left:0;padding:4px 0 0 4px;line-height:24px;}
+input[type="text"]{margin:0;}
 ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
@@ -23,7 +23,6 @@ body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heig
 
 form button{vertical-align:top;}
 form input{vertical-align:middle;}
-form p{display:inline;}
 form .b p{display:block;padding:0;}
 label{display:block;}
 
@@ -107,11 +106,11 @@ b.rb { right: 0; bottom: 0; }
 
 /* in almost all */
 #main-wrapper{margin:0 auto;width:960px;}
-.column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;}
+.column{border:0 solid #c0c0c0;border-width:0 1px;background:#fff;float:left;width:100%;position: relative;z-index: 1; }
 .column-main{width:628px;}
 
 .column-main-container{position:relative;z-index:1;width:630px;float:left;}
-.body-wrapper{position:relative;z-index:1;border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
+.body-wrapper{border:0 solid #fff;border-width:0 1px;background:#fff url(bg/body/body-wrapper.png) repeat-x 0 0;padding:14px 18px;}
 .b-title{background:url(bg/body/hr-repeat.png) repeat-x 0 100%;margin-bottom:9px;padding-bottom:11px;position:relative;}
 
 .b-title h1,
@@ -320,6 +319,9 @@ label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transpar
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
+/* label click bubbling in IE6 */
+label{scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent"),attachEvent('onclick',function(){try{var n=(getElementsByTagName('input')[0]||getElementsByTagName('textarea')[0]||getElementsByTagName('select')[0]);if(n){n.click();n.focus()}}catch(ex){self.log&&self.log(ex.message)}}))}
+
 .win-shop .main{zoom:1;}
 
 input[type="password"],input[type="text"]{padding:0 0 0 4px;line-height:20px;}

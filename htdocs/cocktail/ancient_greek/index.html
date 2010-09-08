@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Древнегреческий</h1>
+				<h1 id="cocktail_name" class="fn">Древнегреческий</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="ancient_greek-big.png" alt="Древнегреческий" id="illustration" class="illustration"/>
+							<img src="ancient_greek-big.png" alt="Коктейль «Древнегреческий»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Древнегреческий — Станцуй сиртаки!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=миксы">миксы</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=миксы">миксы</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,11 +64,11 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в бокал для вина красное вино сухое 100 мл</li>
+										<li class="instruction">Налей в бокал для вина красное вино сухое 100 мл</li>
 										
-										<li>Аккуратно разбавь водой 50 мл</li>
+										<li class="instruction">Аккуратно разбавь водой 50 мл</li>
 										
 									</ul>
 								</dd>
@@ -84,9 +85,15 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Красное вино сухое</a> <strong>100 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Красное вино сухое">Красное вино сухое</a>
+							<strong><span class="amount">100</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вода">Вода</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

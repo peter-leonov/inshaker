@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Северный человек</h1>
+				<h1 id="cocktail_name" class="fn">Северный человек</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="north_man-big.png" alt="Северный человек" id="illustration" class="illustration"/>
+							<img src="north_man-big.png" alt="Коктейль «Северный человек»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Северный человек — Останешься на ночь?</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=миксуют в стакане">миксуют в стакане</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Налей в стакан для смешивания: ликер кислая вишня 5 мл, вишневый ликер 10 мл, сухой вермут 10 мл и водку 15 мл</li>
+										<li class="instruction">Налей в стакан для смешивания: ликер кислая вишня 5 мл, вишневый ликер 10 мл, сухой вермут 10 мл и водку 15 мл</li>
 										
-										<li>Добавь по капле апельсинового биттера и воды из цветков апельсина</li>
+										<li class="instruction">Добавь по капле апельсинового биттера и воды из цветков апельсина</li>
 										
-										<li>Наполни стакан кубиками льда и размешай коктейльной ложкой</li>
+										<li class="instruction">Наполни стакан кубиками льда и размешай коктейльной ложкой</li>
 										
-										<li>Перелей через стрейнер в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный коктейльный бокал</li>
 										
-										<li>Проведи по краю бокала долькой лайма и укрась лаймовой цедрой</li>
+										<li class="instruction">Проведи по краю бокала долькой лайма и укрась лаймовой цедрой</li>
 										
 									</ul>
 								</dd>
@@ -90,23 +91,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка">Водка</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сухой вермут</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер кислая вишня">Ликер кислая вишня</a>
+							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вишневый ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вишневый ликер">Вишневый ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер кислая вишня</a> <strong>5 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сухой вермут">Сухой вермут</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода из цветков апельсина</a> <strong>1 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсиновый биттер">Апельсиновый биттер</a>
+							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсиновый биттер</a> <strong>1 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вода из цветков апельсина">Вода из цветков апельсина</a>
+							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Лайм</a> <strong>0 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

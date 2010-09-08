@@ -18,7 +18,58 @@ EventPage =
 	}
 }
 
-$.onready(function () { document.documentElement.remClassName('loading') })
+$.onready(function ()
+{
+	var de = document.documentElement
+	de.remClassName('loading')
+	de.addClassName(guessBrowser(navigator.userAgent).join(' '))
+	de.addClassName(guessOS(navigator.userAgent).join(' '))
+})
+
+function guessOS (ua)
+{
+	var m = /Windows/.exec(ua)
+	if (m)
+		return ['win']
+	
+	var m = /Macintosh|Mac OS/.exec(ua)
+	if (m)
+		return ['mac']
+}
+
+function guessBrowser (ua)
+{
+	function classes (n, a, b, c)
+	{
+		return [n, n + '-' + a, n + '-' + a + '-' + b, n + '-' + a + '-' + b + '-' + c]
+	}
+	
+	var m = /Firefox\/(\d+)\.(\d+)\.(\d+)/.exec(ua)
+	if (m)
+		return classes('firefox', m[1], m[2], m[3])
+	
+	var m = /Opera\/\d+.+Version\/(\d+)\.(\d)(\d)/.exec(ua)
+	if (m)
+		return classes('opera', m[1], m[2], m[3])
+	
+	var m = /Opera\/(\d+)\.(\d)(\d)/.exec(ua)
+	if (m)
+		return classes('opera', m[1], m[2], m[3])
+	
+	var m = /MSIE (\d+)\./.exec(ua)
+	if (m)
+		return ['msie', 'msie-' + m[1]]
+	
+	var m = /Version\/(\d+)\.(\d+)\.(\d+) Safari\/\d+/.exec(ua)
+	if (m)
+		return classes('safari', m[1], m[2], m[3])
+	
+	var m = /Chrome\/(\d+)\.(\d+)\.(\d+)/.exec(ua)
+	if (m)
+		return classes('chrome', m[1], m[2], m[3])
+	
+	return []
+}
 
 $.onready
 (
@@ -74,9 +125,12 @@ $.onready
 <!--# include file="/lib/Widgets/FormPoster.js" -->
 <!--# include file="/lib/Widgets/Switcher.js" -->
 
+<!--# include file="/lib-0.3/widgets/input-tip.js" -->
+
 
 <!--# include file="/js/event/model.js" -->
 <!--# include file="/js/event/controller.js" -->
 <!--# include file="/js/event/view.js" -->
 <!--# include file="/js/event/interpolate.js" -->
 
+Element.prototype.removeClassName = Element.prototype.remClassName

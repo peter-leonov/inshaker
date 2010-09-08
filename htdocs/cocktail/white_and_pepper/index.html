@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Белый и перечный</h1>
+				<h1 id="cocktail_name" class="fn">Белый и перечный</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="white_and_pepper-big.png" alt="Белый и перечный" id="illustration" class="illustration"/>
+							<img src="white_and_pepper-big.png" alt="Коктейль «Белый и перечный»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Белый и перечный — Сдавайся!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Наполни слинг кубиками льда доверху</li>
+										<li class="instruction">Наполни слинг кубиками льда доверху</li>
 										
-										<li>Положи в блендер очищенные личи без косточек 5 шт и сделай пюре</li>
+										<li class="instruction">Положи в блендер очищенные личи без косточек 5 шт и сделай пюре</li>
 										
-										<li>Положи в шейкер пюре личи из блендера 3 ст/ложки</li>
+										<li class="instruction">Положи в шейкер пюре личи из блендера 3 ст/ложки</li>
 										
-										<li>Налей: яичный белок 1 шт, сахарный сироп 10 мл, ликер личи 20 мл и водку 40 мл</li>
+										<li class="instruction">Налей: яичный белок 1 шт, сахарный сироп 10 мл, ликер личи 20 мл и водку 40 мл</li>
 										
-										<li>Выжми половинку лимона</li>
+										<li class="instruction">Выжми половинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и тщательно взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и тщательно взбей</li>
 										
-										<li>Перелей через стрейнер в слинг</li>
+										<li class="instruction">Перелей через стрейнер в слинг</li>
 										
-										<li>Укрась очищенной личи, малинкой и щепоткой черного молотого перца</li>
+										<li class="instruction">Укрась очищенной личи, малинкой и щепоткой черного молотого перца</li>
 										
 									</ul>
 								</dd>
@@ -96,27 +97,50 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка">Водка</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер личи</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер личи">Ликер личи</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
+							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+						</dd>
 						
-						<dd><a>Личи</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Личи">Личи</a>
+							<strong><span class="amount">90</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Малина</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">75</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Яйцо</a> <strong>1 шт</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Малина">Малина</a>
+							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Перец черный молотый</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Перец черный молотый">Перец черный молотый</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>400 гр</strong></dd>
-						
-						<dd><a>Личи</a> <strong>15 гр</strong></dd>
-						
-						<dd><a>Малина</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">400</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

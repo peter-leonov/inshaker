@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мятный глинтвейн</h1>
+				<h1 id="cocktail_name" class="fn">Мятный глинтвейн</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="minty_mulled_wine-big.png" alt="Мятный глинтвейн" id="illustration" class="illustration"/>
+							<img src="minty_mulled_wine-big.png" alt="Коктейль «Мятный глинтвейн»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Мятный глинтвейн — На здоровье!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=давят мадлером">давят мадлером</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,25 +64,25 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в питчер по 2 ягоды: клубнику, малину и ежевику</li>
+										<li class="instruction">Положи в питчер по 2 ягоды: клубнику, малину и ежевику</li>
 										
-										<li>Добавь мяту 6 листьев и мед 2 ч/ложки</li>
+										<li class="instruction">Добавь мяту 6 листьев и мед 2 ч/ложки</li>
 										
-										<li>Подави мадлером</li>
+										<li class="instruction">Подави мадлером</li>
 										
-										<li>Налей: красное вино сухое 150 мл, черносмородиновый ликер 10 мл и ангостуру биттер 2 капли</li>
+										<li class="instruction">Налей: красное вино сухое 150 мл, черносмородиновый ликер 10 мл и ангостуру биттер 2 капли</li>
 										
-										<li>Добавь гвоздику 4 штучки и поставь на огонь</li>
+										<li class="instruction">Добавь гвоздику 4 штучки и поставь на огонь</li>
 										
-										<li>Нагрей, не доводя до кипения</li>
+										<li class="instruction">Нагрей, не доводя до кипения</li>
 										
-										<li>Перелей через ситечко в бокал для ирландского кофе</li>
+										<li class="instruction">Перелей через ситечко в бокал для ирландского кофе</li>
 										
-										<li>Воткни в палочку корицы шпажку и надень на нее ягоды малина и ежевики</li>
+										<li class="instruction">Воткни в палочку корицы шпажку и надень на нее ягоды малина и ежевики</li>
 										
-										<li>Полей ягоды медом и сверху добавь листик мяты</li>
+										<li class="instruction">Полей ягоды медом и сверху добавь листик мяты</li>
 										
 									</ul>
 								</dd>
@@ -98,33 +99,55 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Красное вино сухое</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Черносмородиновый ликер">Черносмородиновый ликер</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Черносмородиновый ликер</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ангостура биттер">Ангостура биттер</a>
+							<strong><span class="amount">2</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>2 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Красное вино сухое">Красное вино сухое</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Клубника</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Клубника">Клубника</a>
+							<strong><span class="amount">30</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Малина</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Малина">Малина</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Ежевика</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ежевика">Ежевика</a>
+							<strong><span class="amount">22</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мед</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мята">Мята</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица в палочках</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мед">Мед</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>4 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Корица в палочках">Корица в палочках</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Гвоздика</a> <strong>4 гр</strong></dd>
-						
-						<dd><a>Малина</a> <strong>5 гр</strong></dd>
-						
-						<dd><a>Ежевика</a> <strong>7 гр</strong></dd>
-						
-						<dd><a>Мед</a> <strong>5 гр</strong></dd>
-						
-						<dd><a>Мята</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Гвоздика">Гвоздика</a>
+							<strong><span class="amount">4</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -21,6 +21,7 @@ require "lib/array"
 $stdout.sync = true
 
 module Barman
+  DOMAIN        = "www.inshaker.ru"
   ROOT_DIR      = "/www/inshaker/"
   BASE_DIR      = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
   LOCK_FILE     = ".lock-barman"

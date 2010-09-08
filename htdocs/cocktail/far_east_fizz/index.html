@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Дальневосточный физ</h1>
+				<h1 id="cocktail_name" class="fn">Дальневосточный физ</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="far_east_fizz-big.png" alt="Дальневосточный физ" id="illustration" class="illustration"/>
+							<img src="far_east_fizz-big.png" alt="Коктейль «Дальневосточный физ»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Дальневосточный физ — Встречай рассвет!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,23 +64,23 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер мякоть дыни 1,5 ст/ложки и подави мадлером</li>
+										<li class="instruction">Положи в шейкер мякоть дыни 1,5 ст/ложки и подави мадлером</li>
 										
-										<li>Налей: сахарный сироп 10 мл, жасминовый сироп 15 мл и дынный ликер 20 мл</li>
+										<li class="instruction">Налей: сахарный сироп 10 мл, жасминовый сироп 15 мл и дынный ликер 20 мл</li>
 										
-										<li>Выжми четвертинку лимона</li>
+										<li class="instruction">Выжми четвертинку лимона</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер в охлажденный флюте</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный флюте</li>
 										
-										<li>Долей игристое вино сухое доверху</li>
+										<li class="instruction">Долей игристое вино сухое доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Укрась кусочком дыни</li>
+										<li class="instruction">Укрась кусочком дыни</li>
 										
 									</ul>
 								</dd>
@@ -96,21 +97,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Игристое вино сухое</a> <strong>70 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Дынный ликер">Дынный ликер</a>
+							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Дынный ликер</a> <strong>20 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">70</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Жасминовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Жасминовый сироп">Жасминовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сахарный сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сахарный сироп">Сахарный сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Дыня</a> <strong>50 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Дыня">Дыня</a>
+							<strong><span class="amount">55</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Дыня</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

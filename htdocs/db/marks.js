@@ -19,5 +19,6 @@
 {"name":"Olmeca","path":"olmeca"},
 {"name":"Olmeca Altos","path":"olmeca-altos"},
 {"name":"Pere Magloire","path":"pere-magloire"},
+{"name":"Sagatiba","path":"sagatiba"},
 {"name":"Simple","path":"simple"}
 ]

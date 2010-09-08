@@ -16,14 +16,21 @@ class CocktailTemplate
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
     @garnish     = hash["garnish"]
+    @sorted_parts= hash["sorted_parts"]
     @video       = hash["video"]
     
     @recs        = hash["recs"]
   end
   
+  def parts
+    @sorted_parts.each do |name, dose|
+      m = dose.match(/(\d+(?:\.\d+)?)\s*(.+)\s*/)
+      yield name, m[1], m[2]
+    end
+  end
+  
   def groups
     groups = []
-    groups << ["/cocktails.html#method=#{@method}", @method]
     groups << ["/cocktails.html#strength=#{@strength}", @strength]
     
     @groups.each do |group|

@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Маленький хаммер</h1>
+				<h1 id="cocktail_name" class="fn">Маленький хаммер</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="little_hummer-big.png" alt="Маленький хаммер" id="illustration" class="illustration"/>
+							<img src="little_hummer-big.png" alt="Коктейль «Маленький хаммер»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Маленький хаммер — Не замечай преград!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=давят мадлером">давят мадлером</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
+							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,13 +64,13 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в креманку ягоды красной смородины 1 ст/ложку и подави мадлером</li>
+										<li class="instruction">Положи в креманку ягоды красной смородины 1 ст/ложку и подави мадлером</li>
 										
-										<li>Положи в стопку получившееся пюре красной смородины</li>
+										<li class="instruction">Положи в стопку получившееся пюре красной смородины</li>
 										
-										<li>Используя коктейльную ложку, уложи слоями: сливовый джин 15 мл, игристое вино сухое 10 мл и абсент 10 мл</li>
+										<li class="instruction">Используя коктейльную ложку, уложи слоями: сливовый джин 15 мл, игристое вино сухое 10 мл и абсент 10 мл</li>
 										
 									</ul>
 								</dd>
@@ -86,13 +87,25 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Абсент</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Абсент">Абсент</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Игристое вино сухое</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Сливовый джин">Сливовый джин</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Сливовый джин</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Смородина красная</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Смородина красная">Смородина красная</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

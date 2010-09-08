@@ -15,9 +15,11 @@ class CocktailsProcessor < Barman::Processor
     DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
     DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
     DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
+    DB_JS_INGRED_GROUPS= HTDOCS_DIR + "db/ingredients_groups.js"
     
     
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
+    SITEMAP_LINKS      = HTDOCS_ROOT + "sitemap.txt"
     
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
@@ -29,6 +31,8 @@ class CocktailsProcessor < Barman::Processor
   def initialize
     super
     @all_ingredients = {}
+    @ingredient_groups = []
+    @ingredient_weight_by_group = {}
     @cocktails = {}
     @cocktails_present = {}
     @groups = []
@@ -105,6 +109,21 @@ class CocktailsProcessor < Barman::Processor
     if File.exists?(Config::DB_JS_INGREDS)
       load_json(Config::DB_JS_INGREDS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
+      end
+    end
+    
+    if File.exists?(Config::DB_JS_INGRED_GROUPS)
+      @ingredient_groups = load_json(Config::DB_JS_INGRED_GROUPS)
+      
+      hash = {}
+      i = 1
+      @ingredient_groups.each do |v|
+        hash[v] = i
+        i += 1
+      end
+      
+      @all_ingredients.each do |name, ingredient|
+        @ingredient_weight_by_group[ingredient["name"]] = hash[ingredient["group"]]
       end
     end
   end
@@ -316,8 +335,9 @@ class CocktailsProcessor < Barman::Processor
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
     @cocktail["groups"] = about["Группы"]
-    @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
-    @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
+    @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
+    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
@@ -390,6 +410,8 @@ class CocktailsProcessor < Barman::Processor
   
   def update_json cocktail
     cocktail["added"] = cocktail["added"].to_i
+    cocktail.delete("sorted_parts")
+    
     data = {}
     root_dir = cocktail.delete("root_dir")
     @local_properties.each do |prop|
@@ -478,9 +500,15 @@ class CocktailsProcessor < Barman::Processor
       links.puts "<ul>"
       @cocktails.keys.sort.each do |name|
         hash = @cocktails[name]
-        links.puts %Q{<li><a href="/cocktails/#{hash["name_eng"].html_name}.html">#{name} (#{hash["name_eng"]})</a></li>}
+        links.puts %Q{<li><a href="/cocktail/#{hash["name_eng"].html_name}/">#{name} (#{hash["name_eng"]})</a></li>}
       end
       links.puts "</ul>"
+    end
+    
+    File.open(Config::SITEMAP_LINKS, "w+") do |links|
+      @cocktails.each do |name, hash|
+        links.puts %Q{http://#{Barman::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
+      end
     end
   end
   
@@ -501,6 +529,40 @@ class CocktailsProcessor < Barman::Processor
     end # indent
   end
   
+  def sort_parts_by_group arr
+    arr.sort do |a, b|
+      @ingredient_weight_by_group[a[0]] - @ingredient_weight_by_group[b[0]]
+    end
+  end
+  
+  def merge_parts *args
+    volumes = {}
+    units = {}
+    
+    args.each do |set|
+      set.each do |part|
+        name = part[0]
+        
+        vol = volumes[name]
+        if vol
+          vol[1] += part[1].to_f
+        else
+          am = part[1]
+          
+          volumes[name] = [name, am.to_f]
+          units[name] = am.match(/\d+(?:\.\d+)?\s*(.+)\s*/)[1]
+        end
+      end
+    end
+    
+    res = []
+    volumes.each do |k, v|
+      v[1] = "#{v[1] % 1 == 0 ? v[1].to_i : v[1]} #{units[k]}"
+      res << v
+    end
+    
+    return res
+  end
 private
   
   def parse_legend_text(text)

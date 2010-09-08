@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Старомодный</h1>
+				<h1 id="cocktail_name" class="fn">Старомодный</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="old_fashioned-big.png" alt="Старомодный" id="illustration" class="illustration"/>
+							<img src="old_fashioned-big.png" alt="Коктейль «Старомодный»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Старомодный — Возьми своё!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=давят мадлером">давят мадлером</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в рокс 1 кубик тростникового сахара, порезанные дольки апельсина и лимона и коктейльную вишню</li>
+										<li class="instruction">Положи в рокс 1 кубик тростникового сахара, порезанные дольки апельсина и лимона и коктейльную вишню</li>
 										
-										<li>Добавь ангостуру 3 капли</li>
+										<li class="instruction">Добавь ангостуру 3 капли</li>
 										
-										<li>Слегка подави мадлером</li>
+										<li class="instruction">Слегка подави мадлером</li>
 										
-										<li>Наполни бокал дробленым льдом доверху</li>
+										<li class="instruction">Наполни бокал дробленым льдом доверху</li>
 										
-										<li>Налей виски 50 мл</li>
+										<li class="instruction">Налей виски 50 мл</li>
 										
-										<li>Размешай мадлером и подай вместе с ним</li>
+										<li class="instruction">Размешай мадлером и подай вместе с ним</li>
 										
 									</ul>
 								</dd>
@@ -92,19 +93,40 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Виски</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Виски">Виски</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ангостура биттер</a> <strong>3 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ангостура биттер">Ангостура биттер</a>
+							<strong><span class="amount">3</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Тростниковый сахар</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>15 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсин">Апельсин</a>
+							<strong><span class="amount">15</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Коктейльная вишня красная">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Тростниковый сахар">Тростниковый сахар</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед дробленый</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

@@ -84,6 +84,8 @@ EventPage.view =
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
 		this.renderVariableFields(event.fields)
+		// this.showFormPopup()
+		// this.showFormPopupThanks()
 		this.setFormLock(true)
 	},
 	
@@ -477,23 +479,49 @@ EventPage.view =
 		if (!fieldsSet)
 			return
 		
-		var root = this.nodes.variableInputs
+		var nodes = this.nodes
 		
+		var root = nodes.variableInputs
+		
+		var inputs = []
 		for (var i = 0; i < fieldsSet.length; i++)
 		{
 			var field = fieldsSet[i]
+			
 			var label = N('label')
-			var input = N('input')
+			label.appendChild(N('span', 'label')).appendChild(T(field.label + ':'))
+			
+			var input = inputs[i] = N('input')
 			input.type = 'text'
 			input.name = field.name || field.label
-			
-			label.appendChild(T(field.label + ':'))
 			label.appendChild(input)
+			
+			var t = field.tip
+			if (t)
+			{
+				// setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
+				var tip = N('span', 'tip')
+				tip.appendChild(T(t))
+				label.appendChild(tip)
+			}
 			
 			root.appendChild(label)
 		}
 		
-		this.nodes.form.variableFields = fieldsSet
+		new InputTip().bind(inputs)
+		
+		var thanks = nodes.formPopupThanks
+		if (!thanks.hasClassName('default'))
+		{
+			var input = inputs[i] = N('input')
+			input.type = 'hidden'
+			input.name = 'sent-message'
+			input.value = thanks.innerHTML
+			
+			root.appendChild(input)
+		}
+		
+		nodes.form.variableFields = fieldsSet
 		this.resetForm()
 	},
 	

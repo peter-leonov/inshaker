@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Душа капитана улетает в рай</h1>
+				<h1 id="cocktail_name" class="fn">Душа капитана улетает в рай</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="captain_s_soul_goes_to_heaven-big.png" alt="Душа капитана улетает в рай" id="illustration" class="illustration"/>
+							<img src="captain_s_soul_goes_to_heaven-big.png" alt="Коктейль «Душа капитана улетает в рай»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Душа капитана улетает в рай — Спаси капитана!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер базилик красный 7 листиков</li>
+										<li class="instruction">Положи в шейкер базилик красный 7 листиков</li>
 										
-										<li>Выжми четвертинку лайма и подави мадлером</li>
+										<li class="instruction">Выжми четвертинку лайма и подави мадлером</li>
 										
-										<li>Налей в шейкер: медовый сироп 15 мл, ликер мангалор 15 мл и золотой ром 40 мл</li>
+										<li class="instruction">Налей в шейкер: медовый сироп 15 мл, ликер мангалор 15 мл и золотой ром 40 мл</li>
 										
-										<li>Наполни шейкер кубиками льда и взбей</li>
+										<li class="instruction">Наполни шейкер кубиками льда и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
 										
-										<li>Укрась физалисом и двумя маленькими дольками яблока </li>
+										<li class="instruction">Укрась физалисом и двумя маленькими дольками яблока </li>
 										
 									</ul>
 								</dd>
@@ -92,17 +93,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Золотой ром</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Золотой ром">Золотой ром</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Ликер мангалор</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Ликер мангалор">Ликер мангалор</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Медовый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Медовый сироп">Медовый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Базилик красный</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Базилик красный">Базилик красный</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

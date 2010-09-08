@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мандариновый чай со смородиной</h1>
+				<h1 id="cocktail_name" class="fn">Мандариновый чай со смородиной</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="mandarin_tea_with_currant-big.png" alt="Мандариновый чай со смородиной" id="illustration" class="illustration"/>
+							<img src="mandarin_tea_with_currant-big.png" alt="Коктейль «Мандариновый чай со смородиной»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Мандариновый чай со смородиной — Возроди любовь!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в соковыжималку очищенные мандарины 3 шт и сделай сок</li>
+										<li class="instruction">Положи в соковыжималку очищенные мандарины 3 шт и сделай сок</li>
 										
-										<li>Положи в питчер по четвертинке лайма, мандарина и грейпфрута</li>
+										<li class="instruction">Положи в питчер по четвертинке лайма, мандарина и грейпфрута</li>
 										
-										<li>Налей: черносмородиновый сироп 15 мл, мандариновый сок 100 мл и воду 150 мл</li>
+										<li class="instruction">Налей: черносмородиновый сироп 15 мл, мандариновый сок 100 мл и воду 150 мл</li>
 										
-										<li>Помешивая нагрей, не доводя до кипения</li>
+										<li class="instruction">Помешивая нагрей, не доводя до кипения</li>
 										
-										<li>Перелей в чайник</li>
+										<li class="instruction">Перелей в чайник</li>
 										
-										<li>Подавай на подставке со свечкой, чтобы коктейль не остывал</li>
+										<li class="instruction">Подавай на подставке со свечкой, чтобы коктейль не остывал</li>
 										
 									</ul>
 								</dd>
@@ -92,17 +93,35 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Черносмородиновый сироп</a> <strong>15 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Черносмородиновый сироп">Черносмородиновый сироп</a>
+							<strong><span class="amount">15</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Вода</a> <strong>150 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Вода">Вода</a>
+							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мандарин</a> <strong>320 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мандарин">Мандарин</a>
+							<strong><span class="amount">320</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Грейпфрут</a> <strong>75 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Грейпфрут">Грейпфрут</a>
+							<strong><span class="amount">75</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Корица в палочках</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Корица в палочках">Корица в палочках</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

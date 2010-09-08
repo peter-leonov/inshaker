@@ -12,7 +12,7 @@ require "/www/inshaker/barman/lib/rmail"
 p = CGI.new.params
 
 
-filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true}
+filter = {"first" => true, "second" => true, "city" => true, "email" => true, "event" => true, "href" => true, "sent-message" => true}
 names = ['Имя', 'Фамилия', 'Город', 'E-mail']
 values = [p["first"], p["second"], p["city"], p["email"]]
 human = ""
@@ -56,8 +56,15 @@ html = %Q{
 </table>
 }
 
+who = "#{p["first"]} #{p["second"]} <#{p["email"]}>"
 
-m = RMail::Message.bake :to => $main, :from => "#{p["first"]} #{p["second"]} <#{p["email"]}>", :subject => "#{p["event"]} [#{p["city"]}]", :body => html
+m = RMail::Message.bake :to => $main, :from => who, :subject => "#{p["event"]} [#{p["city"]}]", :body => html
 m.send
+
+sent_message = p["sent-message"]
+if sent_message
+  m = RMail::Message.bake :to => who, :from => "Коктейльные события <#{$main}>", :subject => "#{p["event"]}", :body => sent_message.to_s
+  m.send
+end
 
 print %Q[Content-type: application/json\n\n{"result": "OK", "id": 1}\n]

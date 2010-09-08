@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Баба Таня</h1>
+				<h1 id="cocktail_name" class="fn">Баба Таня</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="baba_tanya-big.png" alt="Баба Таня" id="illustration" class="illustration"/>
+							<img src="baba_tanya-big.png" alt="Коктейль «Баба Таня»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Баба Таня — Положь трубку!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,21 +64,21 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в шейкер киви 1/2 шт и выжми четвертинку лайма</li>
+										<li class="instruction">Положи в шейкер киви 1/2 шт и выжми четвертинку лайма</li>
 										
-										<li>Подави мадлером</li>
+										<li class="instruction">Подави мадлером</li>
 										
-										<li>Налей: кленовый сироп 10 мл, белое сухое вино 40 мл и ванильную водку 40 мл</li>
+										<li class="instruction">Налей: кленовый сироп 10 мл, белое сухое вино 40 мл и ванильную водку 40 мл</li>
 										
-										<li>Наполни шейкер кубиками льда</li>
+										<li class="instruction">Наполни шейкер кубиками льда</li>
 										
-										<li>Положи на лед листик мяты и взбей</li>
+										<li class="instruction">Положи на лед листик мяты и взбей</li>
 										
-										<li>Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
+										<li class="instruction">Перелей через стрейнер и ситечко в охлажденный коктейльный бокал</li>
 										
-										<li>Аккуратно долей доверху слой игристого сухого вина</li>
+										<li class="instruction">Аккуратно долей доверху слой игристого сухого вина</li>
 										
 									</ul>
 								</dd>
@@ -94,21 +95,45 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Водка ванильная</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Водка ванильная">Водка ванильная</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Белое вино сухое</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Белое вино сухое">Белое вино сухое</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Игристое вино сухое</a> <strong>40 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кленовый сироп</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кленовый сироп">Кленовый сироп</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Киви</a> <strong>50 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Киви">Киви</a>
+							<strong><span class="amount">50</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Мята</a> <strong>1 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Мята">Мята</a>
+							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

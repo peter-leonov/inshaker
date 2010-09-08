@@ -9,6 +9,7 @@ class BarmenProcessor < Barman::Processor
     
     HT_ROOT        = Barman::HTDOCS_DIR + "barman/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
+    SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
     
     DB_JS          = Barman::HTDOCS_DIR + "db/barmen.js"
     COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
@@ -124,6 +125,12 @@ class BarmenProcessor < Barman::Processor
     File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
       @entities.each do |entity|
         links.puts %Q{<li><a href="/barman/#{entity["path"]}/">#{entity["name"]}</a></li>}
+      end
+    end
+    
+    File.open(Config::SITEMAP_LINKS, "w+") do |links|
+      @entities.each do |entity|
+        links.puts %Q{http://#{Barman::DOMAIN}/barman/#{entity["path"]}/}
       end
     end
   end

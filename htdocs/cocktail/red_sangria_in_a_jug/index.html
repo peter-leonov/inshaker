@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Красная сангрия в кувшине</h1>
+				<h1 id="cocktail_name" class="fn">Красная сангрия в кувшине</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="red_sangria_in_a_jug-big.png" alt="Красная сангрия в кувшине" id="illustration" class="illustration"/>
+							<img src="red_sangria_in_a_jug-big.png" alt="Коктейль «Красная сангрия в кувшине»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Красная сангрия в кувшине — Вкус Испании!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=просто">просто</a>, <a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=на компанию">на компанию</a>.
+							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+							<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=на компанию">на компанию</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,17 +64,17 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Положи в кувшин коктейльную вишню и по одной порезанной дольке апельсина, лимона и лайма</li>
+										<li class="instruction">Положи в кувшин коктейльную вишню и по одной порезанной дольке апельсина, лимона и лайма</li>
 										
-										<li>Наполни кувшин кубиками льда на 2/3</li>
+										<li class="instruction">Наполни кувшин кубиками льда на 2/3</li>
 										
-										<li>Налей: гренадин 30 мл, черносмородиновый ликер 50 мл, белый ром 50 мл и красное вино сухое 200 мл</li>
+										<li class="instruction">Налей: гренадин 30 мл, черносмородиновый ликер 50 мл, белый ром 50 мл и красное вино сухое 200 мл</li>
 										
-										<li>Долей игристое вино сухое доверху</li>
+										<li class="instruction">Долей игристое вино сухое доверху</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
 									</ul>
 								</dd>
@@ -90,25 +91,55 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Белый ром</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Белый ром">Белый ром</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Красное вино сухое</a> <strong>200 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Черносмородиновый ликер">Черносмородиновый ликер</a>
+							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Игристое вино сухое</a> <strong>70 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">70</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Черносмородиновый ликер</a> <strong>50 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Красное вино сухое">Красное вино сухое</a>
+							<strong><span class="amount">200</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Гренадин</a> <strong>30 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Гренадин">Гренадин</a>
+							<strong><span class="amount">30</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Апельсин</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Апельсин">Апельсин</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лимон</a> <strong>40 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лимон">Лимон</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лайм</a> <strong>20 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лайм">Лайм</a>
+							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Коктейльная вишня красная</a> <strong>5 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Коктейльная вишня красная">Коктейльная вишня красная</a>
+							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>600 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">600</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

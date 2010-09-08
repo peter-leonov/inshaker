@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper hrecipe">
 			<div class="b-title">
-				<h1 id="cocktail_name">Мулен Руж</h1>
+				<h1 id="cocktail_name" class="fn">Мулен Руж</h1>
 				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 			</div>
 			<div class="b-content">
@@ -27,7 +27,7 @@
 					
 					<div class="entry">
 						<div id="main-content">
-							<img src="moulin_rouge-big.png" alt="Мулен Руж" id="illustration" class="illustration"/>
+							<img src="moulin_rouge-big.png" alt="Коктейль «Мулен Руж»" id="illustration" class="illustration"/>
 							<div class="desc">
 								<h2 class="summary"><i></i>Мулен Руж — Станцуй кан-кан!</h2>
 								<div class="description">
@@ -37,7 +37,8 @@
 								</div>
 							</div>
 							<div class="tags"><b>Группы:</b>
-							<a class="tag" href="/cocktails.html#method=не очень просто">не очень просто</a>, <a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
+							<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
+							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 							</div>
 							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
 							<button class="rounded bt-want-slap"><b>Добавить в бар</b></button>
@@ -63,19 +64,19 @@
 							<dl class="recipe">
 								<dt>Как приготовить:</dt>
 								<dd>
-									<ul>
+									<ul class="instructions">
 										
-										<li>Взбей в блендере малину 6 ягод и очищенные личи без косточек 4 ягоды</li>
+										<li class="instruction">Взбей в блендере малину 6 ягод и очищенные личи без косточек 4 ягоды</li>
 										
-										<li>Налей в стакан для смешивания: игристое вино сухое 75 мл, кальвадос 10 мл и ягодное пюре из блендера</li>
+										<li class="instruction">Налей в стакан для смешивания: игристое вино сухое 75 мл, кальвадос 10 мл и ягодное пюре из блендера</li>
 										
-										<li>Наполни стакан для смешивания кубиками льда</li>
+										<li class="instruction">Наполни стакан для смешивания кубиками льда</li>
 										
-										<li>Аккуратно размешай коктейльной ложкой</li>
+										<li class="instruction">Аккуратно размешай коктейльной ложкой</li>
 										
-										<li>Перелей через стрейнер в охлажденный флюте</li>
+										<li class="instruction">Перелей через стрейнер в охлажденный флюте</li>
 										
-										<li>Укрась малиной на шпажке</li>
+										<li class="instruction">Укрась малиной на шпажке</li>
 										
 									</ul>
 								</dd>
@@ -92,17 +93,30 @@
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
 						
-						<dd><a>Игристое вино сухое</a> <strong>75 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Кальвадос">Кальвадос</a>
+							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Кальвадос</a> <strong>10 мл</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Игристое вино сухое">Игристое вино сухое</a>
+							<strong><span class="amount">75</span> <span class="type">мл</span></strong>
+						</dd>
 						
-						<dd><a>Малина</a> <strong>30 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Личи">Личи</a>
+							<strong><span class="amount">60</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Личи</a> <strong>60 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Малина">Малина</a>
+							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+						</dd>
 						
-						<dd><a>Лед в кубиках</a> <strong>200 гр</strong></dd>
-						
-						<dd><a>Малина</a> <strong>10 гр</strong></dd>
+						<dd class="ingredient">
+							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+						</dd>
 						
 					</dl>
 					<dl class="tools">

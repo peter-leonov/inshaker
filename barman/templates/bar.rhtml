@@ -10,9 +10,9 @@
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper">
+		<div class="column column-main"><div class="body-wrapper vcard">
 			<div class="b-title">
-				<h1 id="bar-name"><%= @name %></h1>
+				<h1 id="bar-name" class="fn org"><%= @name %></h1>
 				<h2 id="city-name"><%= @city%></h2>
 				<ul class="hrefs"><li><a class="prev">←</a></li><li><a href="/bars.html">все бары</a></li><li><a class="next">→</a></li></ul>
 			</div>
@@ -101,7 +101,7 @@
 							<dl class="part address">
 								<dt>Адрес:</dt>
 								<dd>
-									<a href="/bars.html#view=map&amp;city=<%= URI.escape(@city) %>&amp;bar=<%= URI.escape(@name) %>"><%= v %></a>
+									<a class="adr" href="/bars.html#view=map&amp;city=<%= URI.escape(@city) %>&amp;bar=<%= URI.escape(@name) %>"><span class="locality"><%=@city%></span>, <span class="street-address"><%= v %></span></a>
 								</dd>
 							</dl>
 							<% end %>
@@ -110,7 +110,7 @@
 							<dl class="part site">
 								<dt>Сайт:</dt>
 								<dd>
-									<a href="http://<%= v %>/"><%= v %></a>
+									<a class="url" href="http://<%= v %>/"><%= v %></a>
 								</dd>
 							</dl>
 							<% end %>
