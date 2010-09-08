@@ -1,0 +1,5 @@
+ul { margin: 0.25em 0; }
+ul, li { list-style: disc; }
+ul li { margin-left: 1.5em; }
+.b-content { font-size: 14px; }
+.b-content p { margin: 0 0 1em 0;  }
