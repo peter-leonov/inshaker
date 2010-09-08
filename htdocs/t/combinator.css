@@ -156,6 +156,10 @@ html { overflow-y: scroll;  }
 .ingredient-window .cocktail-list .viewport .surface { width: 100000px; }
 .ingredient-window .cocktail-list .point { float: left; width: 625px;  }
 
+.cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px;  }
+.cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
 
 <!--# include virtual="popup.css" -->
 
