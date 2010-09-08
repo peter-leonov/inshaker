@@ -1,7 +1,7 @@
 .b-title h1 { font-size: 24px; }
-ul { margin: 0.25em 0; }
-ul, li { list-style: disc; }
-ul li { margin-left: 1.5em; }
+.b-content ul { margin: 0.25em 0; }
+.b-content ul, .b-content li { list-style: disc; }
+.b-content ul li { margin-left: 1.5em; }
 .b-content { font-size: 16px; }
 .b-content h2 { font-size: 20px; margin: 0 0 0.1em 0; }
 .b-content p { margin: 0 0 1em 0;  }
