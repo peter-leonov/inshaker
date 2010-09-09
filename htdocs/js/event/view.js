@@ -483,7 +483,9 @@ EventPage.view =
 		
 		var root = nodes.variableInputs
 		
-		var inputs = [], variableFields = []
+		var variableFields = nodes.form.variableFields = []
+		
+		var inputs = []
 		for (var i = 0; i < fieldsSet.length; i++)
 		{
 			var field = fieldsSet[i]
@@ -522,7 +524,6 @@ EventPage.view =
 			root.appendChild(input)
 		}
 		
-		nodes.form.variableFields = variableFields
 		this.resetForm()
 	},
 	
