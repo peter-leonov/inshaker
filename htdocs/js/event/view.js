@@ -83,7 +83,7 @@ EventPage.view =
 		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
-		this.renderVariableFields(event.fields)
+		this.setupForm(event)
 		// this.showFormPopup()
 		// this.showFormPopupThanks()
 		this.setFormLock(true)
@@ -474,14 +474,17 @@ EventPage.view =
 			illustrationPopups.remove()
 	},
 	
-	renderVariableFields: function (fieldsSet)
+	setupForm: function (event)
 	{
+		var fieldsSet = event.fields
 		if (!fieldsSet)
 			return
 		
 		var nodes = this.nodes
 		
 		var root = nodes.variableInputs
+		
+		var variableFields = nodes.form.variableFields = []
 		
 		var inputs = []
 		for (var i = 0; i < fieldsSet.length; i++)
@@ -494,12 +497,13 @@ EventPage.view =
 			var input = inputs[i] = N('input')
 			input.type = 'text'
 			input.name = field.name || field.label
+			variableFields.push(input.name)
 			label.appendChild(input)
 			
 			var t = field.tip
 			if (t)
 			{
-				// setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
+				// input.value = t
 				var tip = N('span', 'tip')
 				tip.appendChild(T(t))
 				label.appendChild(tip)
@@ -521,8 +525,8 @@ EventPage.view =
 			root.appendChild(input)
 		}
 		
-		nodes.form.variableFields = fieldsSet
-		this.resetForm()
+		nodes.formPopupNameInput.value = event.name
+		nodes.formPopupHrefInput.value = event.href
 	},
 	
 	showFormPopup: function ()
@@ -557,15 +561,6 @@ EventPage.view =
 	{
 		var button = this.nodes.formPopupSubmit
 		status ? button.disable() : button.enable()
-	},
-	
-	resetForm: function ()
-	{
-		var nodes = this.nodes
-		nodes.form.reset()
-		nodes.formPopupNameInput.value = this.event.name
-		nodes.formPopupHrefInput.value = this.event.href
-		this.setFormLock(true)
 	},
 	
 	startFormChecker: function ()
