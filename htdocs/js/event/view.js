@@ -83,7 +83,7 @@ EventPage.view =
 		this.renderLowSponsors(event.low)
 		this.renderMediumSponsors(event.medium)
 		this.renderHighSponsors(event.high)
-		this.renderVariableFields(event.fields)
+		this.setupForm(event)
 		// this.showFormPopup()
 		// this.showFormPopupThanks()
 		this.setFormLock(true)
@@ -474,8 +474,9 @@ EventPage.view =
 			illustrationPopups.remove()
 	},
 	
-	renderVariableFields: function (fieldsSet)
+	setupForm: function (event)
 	{
+		var fieldsSet = event.fields
 		if (!fieldsSet)
 			return
 		
@@ -525,6 +526,8 @@ EventPage.view =
 		}
 		
 		this.resetForm()
+		nodes.formPopupNameInput.value = event.name
+		nodes.formPopupHrefInput.value = event.href
 	},
 	
 	showFormPopup: function ()
