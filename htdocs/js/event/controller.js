@@ -19,11 +19,11 @@ EventPage.controller =
 		this.owner.view.showFormPopup()
 	},
 	
-	checkTheForm: function (hash)
+	checkTheForm: function (hash, fields)
 	{
-		// for (var k in hash)
-		// 	if (!/\S/.test(hash[k]))
-		// 		return false
+		for (var i = 0, il = fields.length; i < il; i++)
+			if (!/\S/.test(hash[fields[i]]))
+				return false
 		
 		return true
 	},

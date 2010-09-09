@@ -483,7 +483,7 @@ EventPage.view =
 		
 		var root = nodes.variableInputs
 		
-		var inputs = []
+		var inputs = [], variableFields = []
 		for (var i = 0; i < fieldsSet.length; i++)
 		{
 			var field = fieldsSet[i]
@@ -494,6 +494,7 @@ EventPage.view =
 			var input = inputs[i] = N('input')
 			input.type = 'text'
 			input.name = field.name || field.label
+			variableFields.push(input.name)
 			label.appendChild(input)
 			
 			var t = field.tip
@@ -521,7 +522,7 @@ EventPage.view =
 			root.appendChild(input)
 		}
 		
-		nodes.form.variableFields = fieldsSet
+		nodes.form.variableFields = variableFields
 		this.resetForm()
 	},
 	
