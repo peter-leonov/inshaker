@@ -53,7 +53,6 @@ EventPage.controller =
 	{
 		var view = this.owner.view
 		view.showFormPopupThanks()
-		view.resetForm()
 		// setTimeout(function () { view.hideFormPopup() }, 10000)
 	},
 	

@@ -503,7 +503,7 @@ EventPage.view =
 			var t = field.tip
 			if (t)
 			{
-				// setTimeout((function (input, t) { return function () { input.value = t } })(input, t), 1)
+				// input.value = t
 				var tip = N('span', 'tip')
 				tip.appendChild(T(t))
 				label.appendChild(tip)
@@ -525,7 +525,6 @@ EventPage.view =
 			root.appendChild(input)
 		}
 		
-		this.resetForm()
 		nodes.formPopupNameInput.value = event.name
 		nodes.formPopupHrefInput.value = event.href
 	},
@@ -562,15 +561,6 @@ EventPage.view =
 	{
 		var button = this.nodes.formPopupSubmit
 		status ? button.disable() : button.enable()
-	},
-	
-	resetForm: function ()
-	{
-		var nodes = this.nodes
-		nodes.form.reset()
-		nodes.formPopupNameInput.value = this.event.name
-		nodes.formPopupHrefInput.value = this.event.href
-		this.setFormLock(true)
 	},
 	
 	startFormChecker: function ()
