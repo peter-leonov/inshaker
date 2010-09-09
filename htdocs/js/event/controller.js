@@ -21,9 +21,9 @@ EventPage.controller =
 	
 	checkTheForm: function (hash)
 	{
-		for (var k in hash)
-			if (!/\S/.test(hash[k]))
-				return false
+		// for (var k in hash)
+		// 	if (!/\S/.test(hash[k]))
+		// 		return false
 		
 		return true
 	},
