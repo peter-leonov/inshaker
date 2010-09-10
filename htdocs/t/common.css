@@ -89,7 +89,9 @@ b.rb { right: 0; bottom: 0; }
 #bars-page #bottom .main-menu a.bars,
 #bar-page #bottom .main-menu a.bars,
 #good-page #bottom .main-menu a.goods,
-#event-page #bottom .main-menu a.events
+#event-page #bottom .main-menu a.events,
+html.job-page #bottom a.job,
+html.about-page #bottom a.about
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 
