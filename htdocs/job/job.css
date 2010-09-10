@@ -1,6 +1,6 @@
 .b-title h1 { font-size: 24px; }
-.b-content ul { margin: 0.25em 0 0.25em 1em; }
-.b-content ul li { list-style: disc inside; }
+.b-content ul { margin: 0.5em 0 1.5em 1em; }
+.b-content ul li { list-style: disc inside; margin: 0.4em 0; }
 .b-content { font-size: 16px; }
 .b-content h2 { font-size: 20px; margin: 0 0 0.1em 0; }
 .b-content p { margin: 0 0 1em 0; }
