@@ -3,5 +3,9 @@
 .b-content ul li { list-style: disc inside; }
 .b-content { font-size: 16px; }
 .b-content h2 { font-size: 20px; margin: 0 0 0.1em 0; }
-.b-content p { margin: 0 0 1em 0;  }
+.b-content p { margin: 0 0 1em 0; }
 .b-content .section { margin: 1.5em 0; }
+
+.faq h3 { font-size: 18px; font-weight: bold; }
+.faq p { margin: 0.5em 0; }
+.faq .question { margin-bottom: 1.5em; }
