@@ -213,6 +213,7 @@ Object.extend(Cocktail,
 			hash[names[i]] = true
 		
 		var res = []
+		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
 			var cocktail = db[i],
@@ -227,7 +228,7 @@ Object.extend(Cocktail,
 						{
 							// ta-da we'v found one
 							res.push(cocktail)
-							break
+							continue db
 						}
 			}
 			// here if cocktail does not pass by ingredients
@@ -241,7 +242,7 @@ Object.extend(Cocktail,
 						{
 							// ta-da we'v found one
 							res.push(cocktail)
-							break
+							continue db
 						}
 			}
 			// here if cocktail does not pass at all
