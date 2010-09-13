@@ -11,3 +11,6 @@ html { overflow-y: scroll; }
 .faq h3 { font-size: 18px; font-weight: bold; }
 .faq p { margin: 0.5em 0; }
 .faq .question { margin-bottom: 1.5em; }
+
+#sidebar .who .photo { width: 270px; height: 270px; border-radius: 10px; }
+#sidebar .who .fn { font-size: 16px; text-align: center; padding-top: 0.5em; }
