@@ -13,4 +13,4 @@ html { overflow-y: scroll; }
 .faq .question { margin-bottom: 1.5em; }
 
 #sidebar .who { display: block; font-size: 16px; text-align: center; }
-#sidebar .who .photo { display: block; width: 270px; height: 270px; border-radius: 10px; margin-bottom: 0.5em; }
+#sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin-bottom: 0.5em; }
