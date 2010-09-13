@@ -192,6 +192,7 @@ class IngredientsProcessor < Barman::Processor
     end
     
     good["tags"] = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
+    good["tags"] << "любой ингредиент"
     good["tags"].each do |e|
       if @hidden_ingredients_tags[e]
         next
