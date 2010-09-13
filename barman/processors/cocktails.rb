@@ -352,7 +352,7 @@ class CocktailsProcessor < Barman::Processor
     end
     
     @cocktail["tags"] = about["Теги"] || []
-    @cocktail["tags"] << "Все коктейли"
+    @cocktail["tags"] << "все коктейли"
     @cocktail["tags"].each do |tag|
       if @hidden_tags[tag]
         next
