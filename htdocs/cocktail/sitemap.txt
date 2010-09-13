@@ -393,7 +393,7 @@ http://www.inshaker.ru/cocktail/scarface/
 http://www.inshaker.ru/cocktail/long_island_iced_tea/
 http://www.inshaker.ru/cocktail/long_island_in_a_french_press/
 http://www.inshaker.ru/cocktail/london_minty_swizzle/
-http://www.inshaker.ru/cocktail/horse_s_neck/
+http://www.inshaker.ru/cocktail/horse_s_neck_in_a_siphon/
 http://www.inshaker.ru/cocktail/ma_cherie/
 http://www.inshaker.ru/cocktail/madam/
 http://www.inshaker.ru/cocktail/madam_coffee/
@@ -667,6 +667,7 @@ http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
 http://www.inshaker.ru/cocktail/sweet_kiss/
 http://www.inshaker.ru/cocktail/sweet_bite/
 http://www.inshaker.ru/cocktail/sweet_apple_dry/
+http://www.inshaker.ru/cocktail/dream_cream/
 http://www.inshaker.ru/cocktail/creamy_whisky/
 http://www.inshaker.ru/cocktail/smile/
 http://www.inshaker.ru/cocktail/currant_caipirinha/

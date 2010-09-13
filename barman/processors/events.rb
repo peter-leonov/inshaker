@@ -251,11 +251,12 @@ class EventsProcessor < Barman::Processor
         email = row["email"]
         value = row["value"]
         
-        if seen[email]
+        email_key = email.gsub(/\s/, "").downcase
+        if seen[email_key]
           warning %Q{#{line + 1}: повторяется "#{email}"}
           next
         end
-        seen[email] = true
+        seen[email_key] = line
         
         # for corporative staff
         if type == "corp"
