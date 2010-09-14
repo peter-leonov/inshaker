@@ -1,4 +1,5 @@
 html { overflow-y: scroll; }
+a.local { text-decoration: none; border-bottom: dashed 1px; }
 #main-wrapper .column { width: 628px; }
 .b-title h1 { font-size: 20px; }
 .b-content ul { margin: 0.5em 0 1.5em 1em; }
@@ -13,4 +14,4 @@ html { overflow-y: scroll; }
 .faq .question { margin-bottom: 1.5em; }
 
 #sidebar .who { display: block; font-size: 16px; text-align: center; }
-#sidebar .who .photo { display: block; width: 270px; height: 270px; border-radius: 10px; margin-bottom: 0.5em; }
+#sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin-bottom: 0.5em; }
