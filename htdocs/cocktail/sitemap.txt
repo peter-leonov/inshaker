@@ -763,6 +763,7 @@ http://www.inshaker.ru/cocktail/fruit_blazer/
 http://www.inshaker.ru/cocktail/grapefruit_frutoccino/
 http://www.inshaker.ru/cocktail/fusion_crush/
 http://www.inshaker.ru/cocktail/fusion_peach/
+http://www.inshaker.ru/cocktail/hulk/
 http://www.inshaker.ru/cocktail/harvey_ball_banger/
 http://www.inshaker.ru/cocktail/help_espresso/
 http://www.inshaker.ru/cocktail/hemingway_daiquiri/
