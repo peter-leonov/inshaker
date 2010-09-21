@@ -16,7 +16,6 @@ http://www.inshaker.ru/bar/noor/
 http://www.inshaker.ru/bar/o2_lounge/
 http://www.inshaker.ru/bar/all_time_bar/
 http://www.inshaker.ru/bar/rolling_stone/
-http://www.inshaker.ru/bar/royal_bar/
 http://www.inshaker.ru/bar/secret_bar/
 http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/

@@ -84,6 +84,7 @@ http://www.inshaker.ru/cocktail/brichmula/
 http://www.inshaker.ru/cocktail/bronx/
 http://www.inshaker.ru/cocktail/vaccinieas_with_orange/
 http://www.inshaker.ru/cocktail/booze_fizz/
+http://www.inshaker.ru/cocktail/bourbon_infused_on_cherries/
 http://www.inshaker.ru/cocktail/bucharest/
 http://www.inshaker.ru/cocktail/fast_vanilla_shot/
 http://www.inshaker.ru/cocktail/bianco_orange/
@@ -215,6 +216,7 @@ http://www.inshaker.ru/cocktail/jimmy-jimmy/
 http://www.inshaker.ru/cocktail/gin_bitter_lemon/
 http://www.inshaker.ru/cocktail/gin_garden/
 http://www.inshaker.ru/cocktail/gin_mule/
+http://www.inshaker.ru/cocktail/gin_infused_on_blackcurrant/
 http://www.inshaker.ru/cocktail/gin_peach_tea/
 http://www.inshaker.ru/cocktail/gin_tonic/
 http://www.inshaker.ru/cocktail/gin_fizz/
@@ -506,7 +508,6 @@ http://www.inshaker.ru/cocktail/minty_tea_with_rum/
 http://www.inshaker.ru/cocktail/nano-mojito/
 http://www.inshaker.ru/cocktail/naomi/
 http://www.inshaker.ru/cocktail/our_mary/
-http://www.inshaker.ru/cocktail/cant_help/
 http://www.inshaker.ru/cocktail/just_as_well/
 http://www.inshaker.ru/cocktail/innocent_sex/
 http://www.inshaker.ru/cocktail/negroni/
@@ -615,6 +616,7 @@ http://www.inshaker.ru/cocktail/rum_and_sprite/
 http://www.inshaker.ru/cocktail/rum_cranberry/
 http://www.inshaker.ru/cocktail/rum_collins/
 http://www.inshaker.ru/cocktail/rum_ice-cream/
+http://www.inshaker.ru/cocktail/rum_infused_on_cherries/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
 http://www.inshaker.ru/cocktail/rossini/
 http://www.inshaker.ru/cocktail/rosso_pomegranate/
