@@ -107,7 +107,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 /*#templates { position: absolute; left: 0; top: 0; z-index: 10; }*/
 
 #form-popup { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
-#form-popup .content { position: relative; z-index: 10; width: 620px; margin: 0 auto; padding-top: 64px; }
+#form-popup .content { position: relative; z-index: 10; width: 620px; margin: 64px auto 0; }
 #form-popup .content form .thanks { font-size: 17px; }
 #form-popup .content form .thanks p { margin-bottom: 0.5em;  }
 #form-popup .content form .thanks,
