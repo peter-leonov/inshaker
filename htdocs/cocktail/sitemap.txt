@@ -216,6 +216,8 @@ http://www.inshaker.ru/cocktail/jimmy-jimmy/
 http://www.inshaker.ru/cocktail/gin_bitter_lemon/
 http://www.inshaker.ru/cocktail/gin_garden/
 http://www.inshaker.ru/cocktail/gin_mule/
+http://www.inshaker.ru/cocktail/gin_infused_on_redcurrant/
+http://www.inshaker.ru/cocktail/gin_infused_on_raspberries/
 http://www.inshaker.ru/cocktail/gin_infused_on_blackcurrant/
 http://www.inshaker.ru/cocktail/gin_peach_tea/
 http://www.inshaker.ru/cocktail/gin_tonic/
@@ -295,6 +297,7 @@ http://www.inshaker.ru/cocktail/strawberry_caipirinha/
 http://www.inshaker.ru/cocktail/caipiroska/
 http://www.inshaker.ru/cocktail/arrowwood_martini/
 http://www.inshaker.ru/cocktail/kalinka-malinka/
+http://www.inshaker.ru/cocktail/calvados_infused_on_plums/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
 http://www.inshaker.ru/cocktail/caprese_martini/
 http://www.inshaker.ru/cocktail/capri/
