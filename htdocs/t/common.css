@@ -91,6 +91,8 @@ b.rb { right: 0; bottom: 0; }
 #bar-page #bottom .main-menu a.bars,
 #good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events,
+html.job-page #bottom a.job,
+html.about-page #bottom a.about,
 #combinator-page #bottom .main-menu a.combinator
 { color: inherit; cursor: default; text-decoration: none !important; }
 

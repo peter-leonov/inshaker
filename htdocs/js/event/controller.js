@@ -19,10 +19,10 @@ EventPage.controller =
 		this.owner.view.showFormPopup()
 	},
 	
-	checkTheForm: function (hash)
+	checkTheForm: function (hash, fields)
 	{
-		for (var k in hash)
-			if (!/\S/.test(hash[k]))
+		for (var i = 0, il = fields.length; i < il; i++)
+			if (!/\S/.test(hash[fields[i]]))
 				return false
 		
 		return true
@@ -53,7 +53,6 @@ EventPage.controller =
 	{
 		var view = this.owner.view
 		view.showFormPopupThanks()
-		view.resetForm()
 		// setTimeout(function () { view.hideFormPopup() }, 10000)
 	},
 	
