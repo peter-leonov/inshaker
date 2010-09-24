@@ -776,6 +776,7 @@ http://www.inshaker.ru/cocktail/hemingway_daiquiri/
 http://www.inshaker.ru/cocktail/hiroshima/
 http://www.inshaker.ru/cocktail/bread_and_salt/
 http://www.inshaker.ru/cocktail/hokku/
+http://www.inshaker.ru/cocktail/cold_coffee_orgeat/
 http://www.inshaker.ru/cocktail/colors_of_autumn/
 http://www.inshaker.ru/cocktail/ceremony/
 http://www.inshaker.ru/cocktail/citron_shot/
