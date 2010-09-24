@@ -126,6 +126,9 @@ class EventsProcessor < Barman::Processor
           if label["Столбец"]
             field["name"] = label["Столбец"]
           end
+          if label["Тип"]
+            field["type"] = {'много текста' => 'textarea'}[label["Тип"]]
+          end
           fields << field
         else
           fields << {"label" => label.to_s}

@@ -494,8 +494,20 @@ EventPage.view =
 			var label = N('label')
 			label.appendChild(N('span', 'label')).appendChild(T(field.label + ':'))
 			
-			var input = inputs[i] = N('input')
-			input.type = 'text'
+			var input
+			if (field.type == 'textarea')
+			{
+				input = N('textarea')
+				label.addClassName('big')
+			}
+			else
+			{
+				input = N('input')
+				input.type = 'text'
+			}
+			
+			inputs[i] = input
+			
 			input.name = field.name || field.label
 			variableFields.push(input.name)
 			label.appendChild(input)
