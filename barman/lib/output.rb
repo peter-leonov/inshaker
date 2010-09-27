@@ -93,40 +93,39 @@ module Output
       @errors_count != 0
     end
   end
-  
-  
-  
-  $output_worker = Worker.new
-  
-  def indent &block
-    $output_worker.indent block
-  end
-  
-  def say *args
-    $output_worker.say *args
-  end
-  
-  def error *args
-    $output_worker.error *args
-  end
-  
-  def warning *args
-    $output_worker.warning *args
-  end
-  
-  def done *args
-    $output_worker.done *args
-  end
-  
-  def summary *args
-    $output_worker.summary *args
-  end
-  
-  def errors? *args
-    $output_worker.errors? *args
-  end
-  
-  def errors_count *args
-    $output_worker.errors_count *args
-  end
 end
+
+$output_worker = Output::Worker.new
+
+def indent &block
+  $output_worker.indent block
+end
+
+def say *args
+  $output_worker.say *args
+end
+
+def error *args
+  $output_worker.error *args
+end
+
+def warning *args
+  $output_worker.warning *args
+end
+
+def done *args
+  $output_worker.done *args
+end
+
+def summary *args
+  $output_worker.summary *args
+end
+
+def errors? *args
+  $output_worker.errors? *args
+end
+
+def errors_count *args
+  $output_worker.errors_count *args
+end
+

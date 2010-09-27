@@ -30,8 +30,6 @@ module Inshaker
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
-    include Output
-    
     attr_reader :user_login
     
     def initialize
