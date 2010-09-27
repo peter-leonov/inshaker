@@ -34,6 +34,8 @@ module Output
       include Saying::Console
     end
     
+    attr_reader :errors_count
+    
     def initialize
       @indent = 0
       @errors_count = 0
@@ -122,5 +124,9 @@ module Output
   
   def errors? *args
     $output_worker.errors? *args
+  end
+  
+  def errors_count *args
+    $output_worker.errors_count *args
   end
 end

@@ -198,7 +198,7 @@ module Inshaker
         end
       end
       
-      return @errors_count
+      return errors_count
     end
     
     def get_user_login
