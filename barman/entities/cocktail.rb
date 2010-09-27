@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Cocktail
+class Cocktail < Inshaker::Entity
   module Config
     COCKTAILS_DIR = Inshaker::BASE_DIR + "Cocktails/"
     HTDOCS_DIR    = Inshaker::HTDOCS_DIR

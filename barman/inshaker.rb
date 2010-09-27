@@ -29,6 +29,12 @@ module Inshaker
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
+  class Entity
+    def self.init
+      
+    end
+  end
+  
   class Processor
     attr_reader :user_login
     

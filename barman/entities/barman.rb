@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Barman
+class Barman < Inshaker::Entity
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Barmen/"
     
