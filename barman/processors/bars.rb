@@ -1,23 +1,23 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
 
-class BarsProcessor < Barman::Processor
+class BarsProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Bars/"
+    BASE_DIR       = Inshaker::BASE_DIR + "Bars/"
     
-    HT_ROOT        = Barman::HTDOCS_DIR + "bar/"
+    HT_ROOT        = Inshaker::HTDOCS_DIR + "bar/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
     
-    DB_JS          = Barman::HTDOCS_DIR + "db/bars.js"
-    DB_JS_CITIES   = Barman::HTDOCS_DIR + "db/cities.js"
-    COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
-    BARMEN_JS      = Barman::HTDOCS_DIR + "db/barmen.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/bars.js"
+    DB_JS_CITIES   = Inshaker::HTDOCS_DIR + "db/cities.js"
+    COCKTAILS_DB   = Inshaker::HTDOCS_DIR + "db/cocktails.js"
+    BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen.js"
     
-    TEMPLATE       = Barman::TEMPLATES_DIR + "bar.rhtml"
-    DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
+    TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"
+    DECLENSIONS    = Inshaker::BASE_DIR + "declensions.yaml"
   end
   
   def initialize
@@ -286,7 +286,7 @@ class BarsProcessor < Barman::Processor
     
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @entities.each do |entity|
-        links.puts %Q{http://#{Barman::DOMAIN}/bar/#{entity["path"]}/}
+        links.puts %Q{http://#{Inshaker::DOMAIN}/bar/#{entity["path"]}/}
       end
     end
   end

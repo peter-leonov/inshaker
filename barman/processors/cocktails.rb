@@ -1,12 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
 
-class CocktailsProcessor < Barman::Processor
+class CocktailsProcessor < Inshaker::Processor
 
   module Config
-    COCKTAILS_DIR = Barman::BASE_DIR + "Cocktails/"
-    HTDOCS_DIR    = Barman::HTDOCS_DIR
+    COCKTAILS_DIR = Inshaker::BASE_DIR + "Cocktails/"
+    HTDOCS_DIR    = Inshaker::HTDOCS_DIR
     
     HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
     DB_JS              = HTDOCS_DIR + "db/cocktails.js"
@@ -22,8 +22,8 @@ class CocktailsProcessor < Barman::Processor
     
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
-    COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
-    RECOMENDATIONS_ERB  = Barman::TEMPLATES_DIR + "recomendations.rhtml"
+    COCKTAIL_ERB  = Inshaker::TEMPLATES_DIR + "cocktail.rhtml"
+    RECOMENDATIONS_ERB  = Inshaker::TEMPLATES_DIR + "recomendations.rhtml"
     RECOMENDATIONS_COUNT = 14
   end
   
@@ -489,7 +489,7 @@ class CocktailsProcessor < Barman::Processor
     
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @cocktails.each do |name, hash|
-        links.puts %Q{http://#{Barman::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
+        links.puts %Q{http://#{Inshaker::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
       end
     end
   end

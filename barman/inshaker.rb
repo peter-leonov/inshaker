@@ -20,11 +20,11 @@ require "lib/array"
 
 $stdout.sync = true
 
-module Barman
+module Inshaker
   DOMAIN        = "www.inshaker.ru"
   ROOT_DIR      = "/www/inshaker/"
-  BASE_DIR      = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
-  LOCK_FILE     = ".lock-barman"
+  BASE_DIR      = ENV['INSHAKER_BASE_DIR'] || (ROOT_DIR + "barman/base/")
+  LOCK_FILE     = ".lock-inshaker"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
@@ -248,7 +248,7 @@ module Barman
         else
           error "в прошлый раз бармен обрушился"
           # say "восстанавливаю локальную версию после сбоя…"
-          # system("git reset --hard >>barman.log 2>&1")
+          # system("git reset --hard >>inshaker.log 2>&1")
           unlock
           say "теперь задачу можно перезапустить"
         end

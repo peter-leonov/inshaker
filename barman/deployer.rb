@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require 'barman'
+require 'inshaker'
 
 class Deployer < Barman::Processor
   module Config
@@ -21,11 +21,11 @@ class Deployer < Barman::Processor
       else
         author = login_to_author(user_login)
         say "сохраняю в гит…"
-        unless system(%Q{git add . && git commit -am "content update" --author="#{author.quote}" >>barman.log 2>&1})
+        unless system(%Q{git add . && git commit -am "content update" --author="#{author.quote}" >>inshaker.log 2>&1})
           error "не удалось сохранить обновления в гит"
         else
           say "заливаю на сайт…"
-          unless system("git push >>barman.log 2>&1")
+          unless system("git push >>inshaker.log 2>&1")
             error "не удалось залить обновления на сайт"
           else
             say "готово, проверяйте"
