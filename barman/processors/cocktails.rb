@@ -32,6 +32,7 @@ class CocktailsProcessor < Barman::Processor
     @all_ingredients = {}
     @ingredient_groups = []
     @ingredient_weight_by_group = {}
+    @ingredient_weight_by_group.default = -1
     @cocktails = {}
     @cocktails_present = {}
     @tags = []
