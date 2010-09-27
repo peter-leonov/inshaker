@@ -2,6 +2,7 @@
 # encoding: utf-8
 require "inshaker"
 require "entities/barman"
+require "entities/cocktail"
 
 class BarmenProcessor < Inshaker::Processor
 
@@ -11,7 +12,6 @@ class BarmenProcessor < Inshaker::Processor
   
   def initialize
     super
-    @cocktails = {}
     @entities = []
   end
   
@@ -33,9 +33,7 @@ class BarmenProcessor < Inshaker::Processor
   end
   
   def prepare_cocktails
-    if File.exists?(Config::COCKTAILS_DB)
-      @cocktails = load_json(Config::COCKTAILS_DB)
-    end
+    Cocktail.init
   end
   
   def prepare_renderer
@@ -70,7 +68,7 @@ class BarmenProcessor < Inshaker::Processor
     if names = about["Коктейли"]
       cocktails = []
       names.each do |name|
-        cocktail = @cocktails[name]
+        cocktail = Cocktail[name]
         if cocktail
           cocktails << cocktail
         else

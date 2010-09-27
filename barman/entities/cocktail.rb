@@ -22,4 +22,16 @@ class Cocktail
     RECOMENDATIONS_ERB  = Inshaker::TEMPLATES_DIR + "recomendations.rhtml"
     RECOMENDATIONS_COUNT = 14
   end
+  
+  def self.init
+    if File.exists?(Config::DB_JS)
+      @cocktails = JSON.parse(File.read(Config::DB_JS))
+    else
+      @cocktails = {}
+    end
+  end
+  
+  def self.[] name
+    @cocktails[name]
+  end
 end
