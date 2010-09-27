@@ -14,7 +14,7 @@ Infinity = 1.0 / 0
 require "lib/json"
 require "lib/string_util"
 require "lib/fileutils"
-require "lib/saying"
+require "lib/output"
 require "lib/plural"
 require "lib/array"
 
@@ -30,21 +30,13 @@ module Inshaker
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
   class Processor
+    include Output
+    
     attr_reader :user_login
-    if ENV['REQUEST_METHOD']
-      include Saying::HTML
-    else
-      include Saying::Console
-    end
     
     def initialize
       @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      @indent = 0
-      @errors_count = 0
-      @errors_messages = []
-      @warnings_count = 0
-      @warnings_messages = []
       @user_login = get_user_login
     end
     
@@ -142,55 +134,6 @@ module Inshaker
     
     def load_json src
       JSON.parse(File.read(src))
-    end
-    
-    def indent
-      @indent += 1
-      yield
-      @indent -= 1
-    end
-    
-    def indentation
-      "  " * @indent
-    end
-    
-    def say msg
-      puts "#{indentation}#{msg}"
-    end
-    
-    def error msg
-      @errors_count += 1
-      @errors_messages << msg
-      say_error msg
-    end
-    
-    def warning msg
-      @warnings_count += 1
-      @warnings_messages << msg
-      say_warning msg
-    end
-    
-    def done msg
-      say_done msg
-    end
-    
-    def summary
-      if @errors_count == 0
-        if @warnings_count == 0
-          say_done "выполнено без ошибок"
-        else
-          say_warning "критических ошибок не было"
-        end
-        return true
-      else
-        say_error "были критические ошибки"
-        say "часть данных не сохранена"
-        return false
-      end
-    end
-    
-    def errors?
-      @errors_count != 0
     end
     
     def lock
