@@ -236,6 +236,7 @@ module Inshaker
           summary
         rescue => e
           error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+          say e.backtrace.join("\n")
           raise e
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
