@@ -31,7 +31,9 @@ module Inshaker
   
   class Entity
     def self.init
-      
+    end
+    
+    def self.check_integrity
     end
   end
   

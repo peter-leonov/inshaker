@@ -1,4 +1,5 @@
 # encoding: utf-8
+require "entities/cocktail"
 class Barman < Inshaker::Entity
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Barmen/"
@@ -10,5 +11,41 @@ class Barman < Inshaker::Entity
     DB_JS          = Inshaker::HTDOCS_DIR + "db/barmen.js"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "barman.rhtml"
+  end
+  
+  def self.init
+    return if @inited
+    @inited = true
+    
+    Cocktail.init
+    
+    if File.exists?(Config::DB_JS)
+      @db = JSON.parse(File.read(Config::DB_JS))
+    else
+      @db = []
+    end
+  end
+  
+  def self.check_integrity
+    say "проверяю связность данных барменов"
+    indent do
+    @db.each do |barman|
+      next unless barman["cocktails"]
+      
+      errors = []
+      barman["cocktails"].each do |cocktail_name|
+        unless Cocktail[cocktail_name]
+          errors << cocktail_name
+        end
+      end
+      
+      unless errors.empty?
+        say barman["name"]
+        indent do
+        error "#{errors.length.plural("нет такого коктейля", "нет таких коктейлей", "нет таких коктейлей")}: #{errors.join(", ")}"
+        end # indent
+      end
+    end
+    end #indent
   end
 end

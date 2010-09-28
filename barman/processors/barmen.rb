@@ -20,12 +20,14 @@ class BarmenProcessor < Inshaker::Processor
   end
   
   def job
+    Barman.init
     prepare_cocktails
     prepare_renderer
     
     process_barmen
     
     unless errors?
+      Barman.check_integrity
       cleanup_deleted
       flush_links
       flush_json
