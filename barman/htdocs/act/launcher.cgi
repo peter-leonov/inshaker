@@ -6,7 +6,7 @@ $stdout.sync = true
 
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
-Dir.chdir("#{Barman::ROOT_DIR}barman/")
+Dir.chdir("#{Inshaker::ROOT_DIR}barman/")
 
 processors = []
 CGI.new.params.each do |k, v|
