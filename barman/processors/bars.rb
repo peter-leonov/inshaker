@@ -118,7 +118,7 @@ class BarsProcessor < Inshaker::Processor
         if chief
           bar["chief"] = chief
         else
-          error %Q{нет такого бармена с именем "bar["chief"]"}
+          error %Q{нет такого бармена с именем «#{bar["chief"]}»}
         end
         
         if yaml["Контакты"]
