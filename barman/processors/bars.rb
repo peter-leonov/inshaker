@@ -1,23 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require "inshaker"
+require "entities/bar"
 
 class BarsProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Inshaker::BASE_DIR + "Bars/"
-    
-    HT_ROOT        = Inshaker::HTDOCS_DIR + "bar/"
-    NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
-    
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/bars.js"
-    DB_JS_CITIES   = Inshaker::HTDOCS_DIR + "db/cities.js"
-    COCKTAILS_DB   = Inshaker::HTDOCS_DIR + "db/cocktails.js"
-    BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen.js"
-    
-    TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"
-    DECLENSIONS    = Inshaker::BASE_DIR + "declensions.yaml"
+    include Bar::Config
   end
   
   def initialize
