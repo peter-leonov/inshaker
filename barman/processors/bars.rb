@@ -97,7 +97,6 @@ class BarsProcessor < Inshaker::Processor
           "feel" => yaml["В компании"],
           "entrance" => yaml["Вход"],
           "cuisine" => yaml["Кухня"],
-          "chief" => yaml["Главный бармен"],
           "desc_start" => yaml["О баре"]["Заголовок"],
           "desc_end" => yaml["О баре"]["Текст"],
           "carte" => yaml["Коктейльная карта"],
@@ -114,11 +113,11 @@ class BarsProcessor < Inshaker::Processor
           error "пустое имя бара: «#{bar["name_eng"]}»"
         end
         
-        chief = @barmen_by_name[bar["chief"]]
+        chief = @barmen_by_name[yaml["Главный бармен"]]
         if chief
           bar["chief"] = chief
         else
-          error %Q{нет такого бармена с именем «#{bar["chief"]}»}
+          error %Q{нет такого бармена с именем «#{yaml["Главный бармен"]}»}
         end
         
         if yaml["Контакты"]
