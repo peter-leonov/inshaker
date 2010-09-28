@@ -6,24 +6,17 @@ require "entities/cocktail"
 require "entities/barman"
 require "entities/bar"
 
-
-class IntegrityProcessor < Inshaker::Processor
-
-  def job_name
-    "проверялку всецелостности"
-  end
-  
-  def job
+class Checker
+  def self.init
     Ingredient.init
     Cocktail.init
     Barman.init
     Bar.init
-    
+  end
+  def self.check
     Ingredient.check_integrity
     Cocktail.check_integrity
     Barman.check_integrity
     Bar.check_integrity
   end
-end 
-
-exit IntegrityProcessor.new.run
+end
