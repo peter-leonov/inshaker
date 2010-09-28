@@ -104,6 +104,12 @@ class BarsProcessor < Inshaker::Processor
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
         
+        bar["carte"].each do |cocktail|
+          unless @cocktails[cocktail]
+            error %Q{нет такого коктейля #{cocktail}}
+          end
+        end
+        
         unless bar["name_eng"].match(/\S/)
           error "пустое имя бара: «#{bar["name_eng"]}»"
         end
