@@ -42,12 +42,15 @@ module Output
       @errors_messages = []
       @warnings_count = 0
       @warnings_messages = []
+      @headers = []
     end
     
-    def indent block
+    def indent block, header=nil
+      @headers << header && "#{indentation}#{header}"
       @indent += 1
       block.call
       @indent -= 1
+      @headers.pop
     end
     
     def indentation
@@ -55,6 +58,13 @@ module Output
     end
     
     def say msg
+      unless @headers.empty?
+        @headers.each do |header|
+          puts header if header
+        end
+        @headers.clear
+      end
+      
       puts "#{indentation}#{msg}"
     end
     
@@ -97,12 +107,16 @@ end
 
 $output_worker = Output::Worker.new
 
-def indent &block
-  $output_worker.indent block
+def indent *args, &block
+  $output_worker.indent block, *args
 end
 
 def say *args
   $output_worker.say *args
+end
+
+def say_header *args
+  $output_worker.say_header *args
 end
 
 def error *args
