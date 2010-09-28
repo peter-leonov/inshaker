@@ -34,14 +34,23 @@ class Bar < Inshaker::Entity
     say "проверяю связность данных баров"
     indent do
     @db.each do |bar|
-      next unless bar["chief"]
+      indent bar["name"] do
       
       unless Barman[bar["chief"]]
-        say bar["name"]
-        indent do
         error "нет бармена с таким именем «#{bar["chief"]}»"
-        end # indent
       end
+      
+      errors = []
+      bar["carte"].each do |cocktail_name|
+        unless Cocktail[cocktail_name]
+          errors << cocktail_name
+        end
+      end
+      
+      unless errors.empty?
+        error "#{errors.length.plural("нет такого коктейля", "нет таких коктейлей", "нет таких коктейлей")}: #{errors.join(", ")}"
+      end
+      end # indent
     end
     end #indent
   end
