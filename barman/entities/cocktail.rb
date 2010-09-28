@@ -28,13 +28,13 @@ class Cocktail < Inshaker::Entity
     @inited = true
     
     if File.exists?(Config::DB_JS)
-      @cocktails = JSON.parse(File.read(Config::DB_JS))
+      @db = JSON.parse(File.read(Config::DB_JS))
     else
-      @cocktails = {}
+      @db = {}
     end
   end
   
   def self.[] name
-    @cocktails[name]
+    @db[name]
   end
 end
