@@ -1,9 +1,9 @@
 #!/usr/bin/ruby
 require 'inshaker'
 
-class Deployer < Barman::Processor
+class Deployer < Inshaker::Processor
   module Config
-    ROOT_DIR = Barman::ROOT_DIR
+    ROOT_DIR = Inshaker::ROOT_DIR
   end
   
   def job_name
