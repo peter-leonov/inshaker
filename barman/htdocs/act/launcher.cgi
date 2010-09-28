@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require 'barman'
+require 'inshaker'
 require 'rubygems'
 require 'cgi'
 $stdout.sync = true
@@ -14,6 +14,6 @@ CGI.new.params.each do |k, v|
 end
 
 processors.each do |p|
-  fork { exit system("./processors/#{p}.rb 2>>../barman.log") }
+  fork { exit system("./processors/#{p}.rb 2>>../inshaker.log") }
   Process.wait
 end

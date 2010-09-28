@@ -1,25 +1,17 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
+require "entities/barman"
+require "entities/cocktail"
 
-class BarmenProcessor < Barman::Processor
+class BarmenProcessor < Inshaker::Processor
 
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Barmen/"
-    
-    HT_ROOT        = Barman::HTDOCS_DIR + "barman/"
-    NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
-    
-    DB_JS          = Barman::HTDOCS_DIR + "db/barmen.js"
-    COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
-    
-    TEMPLATE       = Barman::TEMPLATES_DIR + "barman.rhtml"
+    include Barman::Config
   end
   
   def initialize
     super
-    @cocktails = {}
     @entities = []
   end
   
@@ -28,6 +20,7 @@ class BarmenProcessor < Barman::Processor
   end
   
   def job
+    Barman.init
     prepare_cocktails
     prepare_renderer
     
@@ -37,13 +30,13 @@ class BarmenProcessor < Barman::Processor
       cleanup_deleted
       flush_links
       flush_json
+      
+      Barman.check_integrity
     end
   end
   
   def prepare_cocktails
-    if File.exists?(Config::COCKTAILS_DB)
-      @cocktails = load_json(Config::COCKTAILS_DB)
-    end
+    Cocktail.init
   end
   
   def prepare_renderer
@@ -78,7 +71,7 @@ class BarmenProcessor < Barman::Processor
     if names = about["Коктейли"]
       cocktails = []
       names.each do |name|
-        cocktail = @cocktails[name]
+        cocktail = Cocktail[name]
         if cocktail
           cocktails << cocktail
         else
@@ -130,7 +123,7 @@ class BarmenProcessor < Barman::Processor
     
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @entities.each do |entity|
-        links.puts %Q{http://#{Barman::DOMAIN}/barman/#{entity["path"]}/}
+        links.puts %Q{http://#{Inshaker::DOMAIN}/barman/#{entity["path"]}/}
       end
     end
   end

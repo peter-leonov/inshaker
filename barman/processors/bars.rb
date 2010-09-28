@@ -1,23 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
+require "entities/bar"
 
-class BarsProcessor < Barman::Processor
+class BarsProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Bars/"
-    
-    HT_ROOT        = Barman::HTDOCS_DIR + "bar/"
-    NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
-    
-    DB_JS          = Barman::HTDOCS_DIR + "db/bars.js"
-    DB_JS_CITIES   = Barman::HTDOCS_DIR + "db/cities.js"
-    COCKTAILS_DB   = Barman::HTDOCS_DIR + "db/cocktails.js"
-    BARMEN_JS      = Barman::HTDOCS_DIR + "db/barmen.js"
-    
-    TEMPLATE       = Barman::TEMPLATES_DIR + "bar.rhtml"
-    DECLENSIONS    = Barman::BASE_DIR + "declensions.yaml"
+    include Bar::Config
   end
   
   def initialize
@@ -108,22 +97,27 @@ class BarsProcessor < Barman::Processor
           "feel" => yaml["В компании"],
           "entrance" => yaml["Вход"],
           "cuisine" => yaml["Кухня"],
-          "chief" => yaml["Главный бармен"],
           "desc_start" => yaml["О баре"]["Заголовок"],
           "desc_end" => yaml["О баре"]["Текст"],
           "carte" => yaml["Коктейльная карта"],
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
         
+        bar["carte"].each do |cocktail|
+          unless @cocktails[cocktail]
+            error %Q{нет такого коктейля #{cocktail}}
+          end
+        end
+        
         unless bar["name_eng"].match(/\S/)
           error "пустое имя бара: «#{bar["name_eng"]}»"
         end
         
-        chief = @barmen_by_name[bar["chief"]]
+        chief = @barmen_by_name[yaml["Главный бармен"]]
         if chief
           bar["chief"] = chief
         else
-          error %Q{нет такого бармена с именем "bar["chief"]"}
+          error %Q{нет такого бармена с именем «#{yaml["Главный бармен"]}»}
         end
         
         if yaml["Контакты"]
@@ -286,7 +280,7 @@ class BarsProcessor < Barman::Processor
     
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @entities.each do |entity|
-        links.puts %Q{http://#{Barman::DOMAIN}/bar/#{entity["path"]}/}
+        links.puts %Q{http://#{Inshaker::DOMAIN}/bar/#{entity["path"]}/}
       end
     end
   end

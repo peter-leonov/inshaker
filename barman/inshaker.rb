@@ -14,37 +14,35 @@ Infinity = 1.0 / 0
 require "lib/json"
 require "lib/string_util"
 require "lib/fileutils"
-require "lib/saying"
+require "lib/output"
 require "lib/plural"
 require "lib/array"
 
 $stdout.sync = true
 
-module Barman
+module Inshaker
   DOMAIN        = "www.inshaker.ru"
   ROOT_DIR      = "/www/inshaker/"
-  BASE_DIR      = ENV['BARMAN_BASE_DIR'] || (ROOT_DIR + "barman/base/")
-  LOCK_FILE     = ".lock-barman"
+  BASE_DIR      = ENV['INSHAKER_BASE_DIR'] || (ROOT_DIR + "barman/base/")
+  LOCK_FILE     = ".lock-inshaker"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
   
+  class Entity
+    def self.init
+    end
+    
+    def self.check_integrity
+    end
+  end
+  
   class Processor
     attr_reader :user_login
-    if ENV['REQUEST_METHOD']
-      include Saying::HTML
-    else
-      include Saying::Console
-    end
     
     def initialize
       @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      @indent = 0
-      @errors_count = 0
-      @errors_messages = []
-      @warnings_count = 0
-      @warnings_messages = []
       @user_login = get_user_login
     end
     
@@ -144,55 +142,6 @@ module Barman
       JSON.parse(File.read(src))
     end
     
-    def indent
-      @indent += 1
-      yield
-      @indent -= 1
-    end
-    
-    def indentation
-      "  " * @indent
-    end
-    
-    def say msg
-      puts "#{indentation}#{msg}"
-    end
-    
-    def error msg
-      @errors_count += 1
-      @errors_messages << msg
-      say_error msg
-    end
-    
-    def warning msg
-      @warnings_count += 1
-      @warnings_messages << msg
-      say_warning msg
-    end
-    
-    def done msg
-      say_done msg
-    end
-    
-    def summary
-      if @errors_count == 0
-        if @warnings_count == 0
-          say_done "выполнено без ошибок"
-        else
-          say_warning "критических ошибок не было"
-        end
-        return true
-      else
-        say_error "были критические ошибки"
-        say "часть данных не сохранена"
-        return false
-      end
-    end
-    
-    def errors?
-      @errors_count != 0
-    end
-    
     def lock
       begin
         Dir.mkdir("#{ROOT_DIR}/#{LOCK_FILE}")
@@ -236,6 +185,7 @@ module Barman
           summary
         rescue => e
           error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+          say e.backtrace.join("\n")
           raise e
         end
         unlock or error "не могу освободить бармена (свободу барменам!)"
@@ -248,13 +198,13 @@ module Barman
         else
           error "в прошлый раз бармен обрушился"
           # say "восстанавливаю локальную версию после сбоя…"
-          # system("git reset --hard >>barman.log 2>&1")
+          # system("git reset --hard >>inshaker.log 2>&1")
           unlock
           say "теперь задачу можно перезапустить"
         end
       end
       
-      return @errors_count
+      return errors_count
     end
     
     def get_user_login
