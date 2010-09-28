@@ -19,11 +19,17 @@ class Barman < Inshaker::Entity
     
     Cocktail.init
     
+    @db = []
+    @by_name = {}
+    
     if File.exists?(Config::DB_JS)
       @db = JSON.parse(File.read(Config::DB_JS))
-    else
-      @db = []
+      @by_name = @db.hash_index("name")
     end
+  end
+  
+  def self.[] name
+    @by_name[name]
   end
   
   def self.check_integrity
