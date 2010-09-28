@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'inshaker'
+require "lib/checker"
 
 class Deployer < Inshaker::Processor
   module Config
@@ -11,6 +12,12 @@ class Deployer < Inshaker::Processor
   end
   
   def job
+    Checker.init
+    Checker.check
+    if errors?
+      return 1
+    end
+    
     Dir.chdir(Config::ROOT_DIR)
     
     say "синхронизуюсь с сайтом…"
