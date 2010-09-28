@@ -24,6 +24,9 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.init
+    return if @inited
+    @inited = true
+    
     if File.exists?(Config::DB_JS)
       @cocktails = JSON.parse(File.read(Config::DB_JS))
     else
