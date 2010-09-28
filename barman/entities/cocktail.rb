@@ -1,4 +1,5 @@
 # encoding: utf-8
+require "entities/ingredient"
 class Cocktail < Inshaker::Entity
   module Config
     COCKTAILS_DIR = Inshaker::BASE_DIR + "Cocktails/"
@@ -27,6 +28,8 @@ class Cocktail < Inshaker::Entity
     return if @inited
     @inited = true
     
+    Ingredient.init
+    
     @db = []
     @by_name = {}
     
@@ -40,5 +43,24 @@ class Cocktail < Inshaker::Entity
   
   def self.[] name
     @by_name[name]
+  end
+  
+  def self.check_integrity
+    say "проверяю связность данных коктейлей"
+    indent do
+    @db.each do |cocktail|
+      indent cocktail["name"] do
+      cocktail["ingredients"].each do |part|
+        errors = []
+        unless Ingredient[part[0]]
+          errors << part[0]
+        end
+        unless errors.empty?
+          error "#{errors.length.plural("нет такого ингредиента", "нет таких ингредиентов", "нет таких ингредиентов")}: #{errors.join(", ")}"
+        end
+      end
+      end # indent
+    end
+    end #indent
   end
 end
