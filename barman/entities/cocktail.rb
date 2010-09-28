@@ -27,14 +27,18 @@ class Cocktail < Inshaker::Entity
     return if @inited
     @inited = true
     
+    @db = []
+    @by_name = {}
+    
     if File.exists?(Config::DB_JS)
-      @db = JSON.parse(File.read(Config::DB_JS))
-    else
-      @db = {}
+      JSON.parse(File.read(Config::DB_JS)).each do |name, cocktail|
+        @db << cocktail
+        @by_name = @db.hash_index("name")
+      end
     end
   end
   
   def self.[] name
-    @db[name]
+    @by_name[name]
   end
 end
