@@ -165,7 +165,7 @@ http://www.inshaker.ru/cocktail/gimlet/
 http://www.inshaker.ru/cocktail/mulled_wine/
 http://www.inshaker.ru/cocktail/mulled_wine_5_stars/
 http://www.inshaker.ru/cocktail/mulled_wine_cardinal/
-http://www.inshaker.ru/cocktail/classical_mulled_wine/
+http://www.inshaker.ru/cocktail/mulled_wine_mandrin_and_rosemary/
 http://www.inshaker.ru/cocktail/gloria/
 http://www.inshaker.ru/cocktail/gogol-mogol/
 http://www.inshaker.ru/cocktail/gold_on_ice/
@@ -328,12 +328,14 @@ http://www.inshaker.ru/cocktail/mapple_sour/
 http://www.inshaker.ru/cocktail/pegu_club/
 http://www.inshaker.ru/cocktail/strawberry_night/
 http://www.inshaker.ru/cocktail/strawberry_mulled_wine/
+http://www.inshaker.ru/cocktail/strawberry_mulled_wine_317/
 http://www.inshaker.ru/cocktail/strawberry_cobler_317/
 http://www.inshaker.ru/cocktail/strawberry_lemonade/
 http://www.inshaker.ru/cocktail/strawberry_milkshake/
 http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
 http://www.inshaker.ru/cocktail/cranberry_with_thyme/
+http://www.inshaker.ru/cocktail/cranberry-raspberry_mulled_wine/
 http://www.inshaker.ru/cocktail/cosa_nostra/
 http://www.inshaker.ru/cocktail/coconut_cranberries/
 http://www.inshaker.ru/cocktail/coconut_cola/
