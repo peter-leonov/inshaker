@@ -165,6 +165,7 @@ http://www.inshaker.ru/cocktail/gimlet/
 http://www.inshaker.ru/cocktail/mulled_wine/
 http://www.inshaker.ru/cocktail/mulled_wine_5_stars/
 http://www.inshaker.ru/cocktail/mulled_wine_cardinal/
+http://www.inshaker.ru/cocktail/classical_mulled_wine/
 http://www.inshaker.ru/cocktail/gloria/
 http://www.inshaker.ru/cocktail/gogol-mogol/
 http://www.inshaker.ru/cocktail/gold_on_ice/
