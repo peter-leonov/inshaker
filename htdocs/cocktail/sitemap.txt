@@ -1,5 +1,6 @@
 http://www.inshaker.ru/cocktail/911/
 http://www.inshaker.ru/cocktail/apricot_margarita_with_pepper/
+http://www.inshaker.ru/cocktail/apricot_mulled_wine_with_cognac/
 http://www.inshaker.ru/cocktail/absinthe_without_leave/
 http://www.inshaker.ru/cocktail/absinth_in_a_fountain/
 http://www.inshaker.ru/cocktail/absinthe_sour/
@@ -53,9 +54,11 @@ http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
 http://www.inshaker.ru/cocktail/snow_white/
 http://www.inshaker.ru/cocktail/white_poetry/
+http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
 http://www.inshaker.ru/cocktail/white_cuban/
 http://www.inshaker.ru/cocktail/white_lemon_mulled_wine/
+http://www.inshaker.ru/cocktail/white_camomile_mulled_wine/
 http://www.inshaker.ru/cocktail/white_russian/
 http://www.inshaker.ru/cocktail/birch_cooler/
 http://www.inshaker.ru/cocktail/berrymeup/
