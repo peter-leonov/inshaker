@@ -534,6 +534,7 @@ http://www.inshaker.ru/cocktail/notingme/
 http://www.inshaker.ru/cocktail/a_night_in_tunisia/
 http://www.inshaker.ru/cocktail/eau_de_vie/
 http://www.inshaker.ru/cocktail/clouds/
+http://www.inshaker.ru/cocktail/sea-buckthorn_mulled_wine/
 http://www.inshaker.ru/cocktail/buckthorn_gringo/
 http://www.inshaker.ru/cocktail/buckthorn_daiquiri/
 http://www.inshaker.ru/cocktail/sea-buckthom_toddy/
@@ -831,6 +832,7 @@ http://www.inshaker.ru/cocktail/southern_sea_breeze/
 http://www.inshaker.ru/cocktail/universal/
 http://www.inshaker.ru/cocktail/apple_with_cardamon/
 http://www.inshaker.ru/cocktail/apple_sambuca/
+http://www.inshaker.ru/cocktail/apple-vanilla_mulled_wine/
 http://www.inshaker.ru/cocktail/apple_and_ginger_margarita/
 http://www.inshaker.ru/cocktail/apple-ginger_mojito/
 http://www.inshaker.ru/cocktail/apple_temptation/
