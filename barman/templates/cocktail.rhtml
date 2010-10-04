@@ -84,10 +84,10 @@
 				<div class="what-need">
 					<dl id="ingredients_list">
 						<dt>Необходимые ингредиенты</dt>
-						<% parts do |name, amount, type| %>
+						<% parts do |name, amount, unit| %>
 						<dd class="ingredient">
 							<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
-							<strong><span class="amount"><%= amount %></span> <span class="type"><%= type %></span></strong>
+							<strong><span class="amount"><%= amount %></span> <span class="type"><%= unit %></span></strong>
 						</dd>
 						<% end %>
 					</dl>

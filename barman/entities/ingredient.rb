@@ -31,4 +31,32 @@ class Ingredient < Inshaker::Entity
   def self.check_integrity
     say "проверяю связность данных ингредиентов"
   end
+  
+  @normals = {
+    'мл' => {1000 => 'л'},
+    'г' => {1000 => 'кг', 1000000 => 'т'},
+    'гр' => {1000 => 'кг', 1000000 => 'т'}
+  }
+  def self.normalize_volume vol, unit
+    vol = vol.to_f
+    normal = @normals[unit]
+    return [vol.may_be_to_i, unit] unless normal
+    
+    normal.keys.sort.reverse.each do |v|
+      next if vol < v
+      
+      vol /= v
+      
+      return [vol.may_be_to_i, normal[v]]
+    end
+    
+    [vol.may_be_to_i, unit]
+  end
+end
+
+class Float
+  def may_be_to_i
+    i = to_i
+    i == self ? i : self
+  end
 end
