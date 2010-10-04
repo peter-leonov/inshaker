@@ -236,11 +236,11 @@ Object.extend(Ingredient,
 				
 				var vol = volumes[name]
 				if (vol)
-					vol[1] += parseInt(part[1])
+					vol[1] += parseFloat(part[1])
 				else
 				{
 					var am = part[1],
-						intam = parseInt(am)
+						intam = parseFloat(am)
 					
 					volumes[name] = [name, intam]
 					units[name] = am.substr((intam + '').length + 1)
