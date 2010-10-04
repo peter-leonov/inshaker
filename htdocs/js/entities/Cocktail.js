@@ -282,7 +282,9 @@ Object.extend(Cocktail,
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
 	    else return -1;
-    }
+    },
+	
+	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
 })
 
 Cocktail.initialize
