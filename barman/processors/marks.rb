@@ -1,16 +1,16 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
 
-class MarksProcessor < Barman::Processor
+class MarksProcessor < Inshaker::Processor
 
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Marks/"
+    BASE_DIR       = Inshaker::BASE_DIR + "Marks/"
     
-    HT_ROOT        = Barman::HTDOCS_DIR + "mark/"
+    HT_ROOT        = Inshaker::HTDOCS_DIR + "mark/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
-    DB_JS          = Barman::HTDOCS_DIR + "db/marks.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/marks.js"
   end
   
   def initialize

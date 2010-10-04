@@ -328,6 +328,8 @@ function CocktailsModel (states, view) {
 		{
 			if (filters.state == states.byName)
 				res = Cocktail.getAll().shuffled()
+			else if (filters.state == states.byIngredients)
+				res = Cocktail.getAll().sortedBy(Cocktail.complexitySort)
 			else
 				res = Cocktail.getAll().sortedBy(Cocktail.nameSort)
 		}

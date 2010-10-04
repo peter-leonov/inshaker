@@ -107,7 +107,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 /*#templates { position: absolute; left: 0; top: 0; z-index: 10; }*/
 
 #form-popup { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; display: none; }
-#form-popup .content { position: relative; z-index: 10; width: 620px; margin: 0 auto; padding-top: 64px; }
+#form-popup .content { position: relative; z-index: 10; width: 620px; margin: 64px auto 0; }
 #form-popup .content form .thanks { font-size: 17px; }
 #form-popup .content form .thanks p { margin-bottom: 0.5em;  }
 #form-popup .content form .thanks,
@@ -122,13 +122,16 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #form-popup .content form { position: relative; font-family: Arial; display: block; padding: 23px 40px 35px; background: #fff; -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius: 15px; }
 #form-popup .content form.sending .fields { opacity: 0.75; }
 #form-popup .content form label { position: relative; margin: 0 0 17px; font-size: 18px; color: #333; font-weight: bold; }
+#form-popup .content form label.big { height: 140px; }
 #form-popup .content form label input,
+#form-popup .content form label textarea,
 #form-popup .content form label .tip { position: absolute; width: 280px; right: 0; font-size: 16px; font-weight: normal; font-family: Tahoma,Arial,sans-serif; padding-left: 2px; }
+#form-popup .content form label textarea { height: 143px; }
 #form-popup .content form label .label { display: inline-block; width: 240px; }
 #form-popup .content form label .tip { cursor: text; right: 2px; top: 3px; color: #aaa; }
 #form-popup .content form label.focused .tip,
 #form-popup .content form label.filled .tip { display: none; }
-#form-popup .content form .limit { display: block; margin: 32px 0 0 0; font-style: italic; font-size: 12px; line-height: 22px; }
+#form-popup .content form .limit { display: block; width: 350px; margin: 32px 0 0 0; font-size: 10px; line-height: 15px; }
 #form-popup .content form .limit input { font-style: italic; font-size: 12px; position: absolute; right: 30px; }
 
 html.empire-open-cinema #form-popup .content { width: 550px; }

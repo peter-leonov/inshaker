@@ -1,31 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
+require "entities/cocktail"
 
-class CocktailsProcessor < Barman::Processor
+class CocktailsProcessor < Inshaker::Processor
 
   module Config
-    COCKTAILS_DIR = Barman::BASE_DIR + "Cocktails/"
-    HTDOCS_DIR    = Barman::HTDOCS_DIR
-    
-    HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
-    DB_JS              = HTDOCS_DIR + "db/cocktails.js"
-    DB_JS_TAGS         = HTDOCS_DIR + "db/tags.js"
-    DB_JS_GROUPS       = HTDOCS_DIR + "db/groups.js"
-    DB_JS_STRENGTHS    = HTDOCS_DIR + "db/strengths.js"
-    DB_JS_METHODS      = HTDOCS_DIR + "db/methods.js"
-    DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_INGRED_GROUPS= HTDOCS_DIR + "db/ingredients_groups.js"
-    
-    
-    NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
-    SITEMAP_LINKS      = HTDOCS_ROOT + "sitemap.txt"
-    
-    VIDEOS_DIR = HTDOCS_DIR + "v/"
-    
-    COCKTAIL_ERB  = Barman::TEMPLATES_DIR + "cocktail.rhtml"
-    RECOMENDATIONS_ERB  = Barman::TEMPLATES_DIR + "recomendations.rhtml"
-    RECOMENDATIONS_COUNT = 14
+    include Cocktail::Config
   end
   
   def initialize
@@ -33,6 +14,7 @@ class CocktailsProcessor < Barman::Processor
     @all_ingredients = {}
     @ingredient_groups = []
     @ingredient_weight_by_group = {}
+    @ingredient_weight_by_group.default = -1
     @cocktails = {}
     @cocktails_present = {}
     @groups = []
@@ -508,7 +490,7 @@ class CocktailsProcessor < Barman::Processor
     
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @cocktails.each do |name, hash|
-        links.puts %Q{http://#{Barman::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
+        links.puts %Q{http://#{Inshaker::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
       end
     end
   end

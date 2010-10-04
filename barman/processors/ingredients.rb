@@ -1,19 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
+require "entities/ingredient"
 
-class IngredientsProcessor < Barman::Processor
+class IngredientsProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Ingredients/"
-    
-    HT_ROOT        = Barman::HTDOCS_DIR + "ingredient/"
-    NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    
-    DB_JS          = Barman::HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_GROUPS   = Barman::HTDOCS_DIR + "db/ingredients_groups.js"
-    DB_JS_TAGS     = Barman::HTDOCS_DIR + "db/ingredients_tags.js"
-    DB_JS_MARKS    = Barman::HTDOCS_DIR + "db/marks.js"
+    include Ingredient::Config
   end
   
   def initialize

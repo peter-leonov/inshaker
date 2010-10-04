@@ -1,12 +1,12 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require 'barman'
+require 'inshaker'
 
-class ToolsProcessor < Barman::Processor
+class ToolsProcessor < Inshaker::Processor
   
   module Config
-    TOOLS_DIR  = Barman::BASE_DIR + "Tools" 
-    HTDOCS_DIR = Barman::HTDOCS_DIR
+    TOOLS_DIR  = Inshaker::BASE_DIR + "Tools" 
+    HTDOCS_DIR = Inshaker::HTDOCS_DIR
     
     TOOLS_ROOT = HTDOCS_DIR + "i/merchandise/tools/"
     DB_JS      = HTDOCS_DIR + "db/tools.js"

@@ -14,5 +14,5 @@ htdocs/v/*
 data/*
 .idea/*
 Thumbs.db
-.lock-barman
+.lock-inshaker
 yandex_*

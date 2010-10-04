@@ -1,19 +1,32 @@
 #!/usr/bin/ruby
-require 'barman'
+
+# redirect all output to stdout and make it unbuferred
+$stderr = $stdout
+$stdout.sync = true
+
+require 'inshaker'
 require 'rubygems'
 require 'cgi'
-$stdout.sync = true
+
 
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
-Dir.chdir("#{Barman::ROOT_DIR}barman/")
+puts "Запускаюсь…"
+
+Dir.chdir("#{Inshaker::ROOT_DIR}barman/")
 
 processors = []
 CGI.new.params.each do |k, v|
   processors << k.to_s if k =~ /^[a-z]+$/
 end
 
+if processors.empty?
+  puts "Нечего запускать."
+  exit 1
+end
+
 processors.each do |p|
-  fork { exit system("./processors/#{p}.rb 2>>../barman.log") }
+  puts "Запускаю #{p}"
+  fork { exit system("./processors/#{p}.rb") }
   Process.wait
 end

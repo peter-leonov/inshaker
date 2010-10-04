@@ -1,20 +1,20 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
 require "lib/csv"
 
-class EventsProcessor < Barman::Processor
+class EventsProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Events/"
+    BASE_DIR       = Inshaker::BASE_DIR + "Events/"
     
-    HT_ROOT        = Barman::HTDOCS_DIR + "event/"
+    HT_ROOT        = Inshaker::HTDOCS_DIR + "event/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     MAIN_LINK      = HT_ROOT + "main-%s.html"
     
-    DB_JS          = Barman::HTDOCS_DIR + "db/events.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/events.js"
     
-    TEMPLATES      = Barman::TEMPLATES_DIR
+    TEMPLATES      = Inshaker::TEMPLATES_DIR
   end
   
   
@@ -125,6 +125,9 @@ class EventsProcessor < Barman::Processor
           end
           if label["Столбец"]
             field["name"] = label["Столбец"]
+          end
+          if label["Тип"]
+            field["type"] = {'много текста' => 'textarea'}[label["Тип"]]
           end
           fields << field
         else

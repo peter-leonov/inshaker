@@ -1,17 +1,17 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
-require "barman"
+require "inshaker"
 
-class MagazineProcessor < Barman::Processor
+class MagazineProcessor < Inshaker::Processor
   
   module Config
-    BASE_DIR       = Barman::BASE_DIR + "Magazine/"
+    BASE_DIR       = Inshaker::BASE_DIR + "Magazine/"
     BASE_DIR_PROMO = BASE_DIR + "promos/"
     
-    HT_ROOT        = Barman::HTDOCS_DIR + "magazine/"
+    HT_ROOT        = Inshaker::HTDOCS_DIR + "magazine/"
     HT_ROOT_PROMOS = HT_ROOT + "promos/"
     
-    DB_JS          = Barman::HTDOCS_DIR + "db/magazine.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
   end
   
   def initialize

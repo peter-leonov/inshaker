@@ -42,7 +42,7 @@ $.onready(function(){
 		req.onSuccess = function (){
 			var output = $('output')
 			output.innerHTML = this.responseText()
-			output.scrollTop = 10000
+			output.scrollTop = 20000
 			inflateNode(output)
 			goBarmanButton.setEnabled(true);
 		}

@@ -26,4 +26,5 @@ Array.prototype.uniq = function(){
 
 <!--# include file="/js/common/theme.js" -->
 <!--# config timefmt="%Y.%m" -->
-Theme.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" -->)
+<!--# block name="themejs" --><!--# endblock -->
+Theme.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" stub="themejs" -->)
