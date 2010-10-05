@@ -185,8 +185,11 @@ class BarsProcessor < Inshaker::Processor
   def update_images bar, src, dst
     mini = src.path + "/mini.jpg"
     if File.exists?(mini)
-      if File.size(mini) > 25 * 1024
-        warning "слишком большая (>25Кб) маленькая картинка (mini.jpg)"
+      size = File.size(mini) / 1024
+      if size > 25
+        warning "маленькая картинка (mini.jpg) великовата (#{size}КБ > 25Кб)"
+      elsif size > 70
+        warning "маленькая картинка (mini.jpg) огромна (#{size}КБ > 70Кб)"
       end
       cp_if_different(mini, "#{dst.path}/mini.jpg")
     else
@@ -208,8 +211,11 @@ class BarsProcessor < Inshaker::Processor
       
       images.each do |i|
         from = "#{src.path}/big-#{i}.jpg"
-        if File.size(from) > 70 * 1024
-          warning "слишком большая (>70Кб) фотка №#{i} (big-#{i}.jpg)"
+        size = File.size(from) / 1024
+        if size > 120
+          error "фотка №#{i} (big-#{i}.jpg) огромна (#{size}КБ > 120Кб)"
+        elsif size > 70
+          warning "фотка №#{i} (big-#{i}.jpg) великовата (#{size}КБ > 70Кб)"
         end
         cp_if_different(from, "#{dst.path}/photo-#{i}.jpg")
       end
