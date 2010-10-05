@@ -7,9 +7,9 @@ html {overflow-y: scroll;}
 .bar-mini.new:hover .bar-name { display: none; }
 .bar-mini.new:hover .label { display: block; }
 
-#head h1 a { text-decoration: none; border-bottom: 2px dashed; }
-#head a:hover { border-bottom: none; }
-#head a.selected { border-bottom: none; color: inherit; cursor: default; }
+#head h1 #switch-view a { text-decoration: none; border-bottom: 2px dashed; }
+#head h1 #switch-view a:hover { border-bottom: none; }
+#head h1 #switch-view a.selected { border-bottom: none; color: inherit; cursor: default; }
 
 #sort-menu { margin: 0; padding: 0 16px; height: 40px; width: 920px; background: url(bars/select-big-back.png) no-repeat; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
 #sort-menu dl, #sort-menu dt { display: inline; }
@@ -28,9 +28,6 @@ html {overflow-y: scroll;}
 
 #sort-menu #bars-city.bars-select dd { left: -7px; }
 
-
-#more-info { text-decoration: none; border-bottom: 1px #FFF dashed; }
-#more-info:hover { border-bottom: none }
 #bars-container { overflow: hidden; clear: both; }
 
 html.loading #bars-container { display: none; }
@@ -77,36 +74,7 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
 
-.barman-info .b-title {margin-bottom:20px;}
-.barman-info .content {overflow:hidden; position:relative; width: 922px; height: 281px; margin-bottom:25px; font-size:12px;}
-.barman-info .content .photo { position: absolute; top: 0; left: 0; height: 281px; width: 357px; -moz-border-radius-topleft:10px; -moz-border-radius-bottomleft:10px; -webkit-border-top-left-radius:10px; -webkit-border-bottom-left-radius:10px;}
-.barman-info .content .desc { position:absolute; left: 357px; top: 0; width: 502px; height: 271px; overflow: auto; background:#f1f0ed;  padding: 10px 30px 0; -moz-border-radius-topright:10px; -moz-border-radius-bottomright:10px; -webkit-border-top-right-radius:10px; -webkit-border-bottom-right-radius:10px; }
-.barman-info .content .desc p {margin-bottom: 0.6em; }
-.barman-info .content .desc p,
-.barman-info .content .desc li {line-height: 15px;}
-.barman-info h2 {margin-left:0px; padding-bottom:0.2em; font-size: 18px;}
-
-.barman-info .body-wrapper {padding: 14px 18px 10px;}
-.barman-info .hrefs .arrow {color:#000; font-size: 200%; text-decoration:none; }
-.barman-info .hrefs .arrow.disabled { cursor:default; color: #C0C0C0; }
-.barman-info .hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
-
-.barman-info .cocktails-list {padding:0px 0 3px 0;}
-.barman-info .cocktails-list .viewport{overflow:hidden;position:relative;left:10px;top:2px;height:123px; width:900px;}
-.barman-info .cocktails-list .surface{width:30000px;}
-.barman-info .cocktails-list .point{height:100px;width:900px;float:left; font-size:120%;}
-.barman-info .cocktails-list li{width:8em;text-align:center;float:left;width:150px;}
-.barman-info .cocktails-list img{display:block;margin:0 auto 5px;}
-.barman-info .cocktails-list .prev,
-.barman-info .cocktails-list .next { top: 425px; }
-.barman-info .cocktails-list .prev { left: 20px; }
-.barman-info .cocktails-list .next { right: 20px; }
-
 .hidden { display: none !important; }
-
-#guide-info-popup .enrollment {font-size:20px; font-style:italic; color:#F22B9F; background:transparent url(bg/body/hr-repeat.png) repeat-x scroll 0 0; clear:both; padding:14px 0 3px 0;}
-
-<!--# include file="/t/popup.css" -->
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
 #sort-menu dl,
