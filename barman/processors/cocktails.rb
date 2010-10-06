@@ -19,7 +19,7 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktails_present = {}
     @groups = []
     @tags = {}
-    @hidden_tags = {}
+    @hidden_tags = []
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
@@ -336,10 +336,8 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["tags"] = about["Теги"] || []
     @cocktail["tags"] << "все коктейли"
     @cocktail["tags"].each do |tag|
-      if @hidden_tags[tag]
-        next
-      end
-      @tags[tag] = true
+      next if @tags[tag]
+      error "незнакомый тег «#{tag}»"
     end
     
     @cocktails[name] = @cocktail
@@ -362,7 +360,8 @@ class CocktailsProcessor < Inshaker::Processor
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
-    @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml")).hash_index
+    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml")).hash_index
+    @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
   
   def guess_methods cocktail
@@ -470,6 +469,11 @@ class CocktailsProcessor < Inshaker::Processor
       else
         groups << group
       end
+     end
+     
+     # hide hidden tags ;)
+     @hidden_tags.each do |v|
+      @tags.delete(v)
      end
      
      flush_json_object(groups, Config::DB_JS_GROUPS)
