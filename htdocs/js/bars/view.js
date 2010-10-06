@@ -32,10 +32,6 @@ BarsPageView.prototype =
 		s.addEventListener('select', function (e) { controller.citySelected(e.data.value) }, false)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
-		
-		nodes.moreInfo.addEventListener('click', function (e) { nodes.guidePopup.show() }, false)
-		nodes.guidePopup.addEventListener('click', function (e) { nodes.guidePopup.hide() }, false)
-		nodes.guidePopupBody.addEventListener('click', function (e) { e.stopPropagation() }, false)
 	},
 	
 	checkHash: function ()
