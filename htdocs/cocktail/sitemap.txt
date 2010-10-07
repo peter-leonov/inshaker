@@ -580,6 +580,8 @@ http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
 http://www.inshaker.ru/cocktail/pisco_sour/
+http://www.inshaker.ru/cocktail/pliny_the_younger/
+http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
 http://www.inshaker.ru/cocktail/fire_in_texas/
 http://www.inshaker.ru/cocktail/lost/
@@ -632,6 +634,7 @@ http://www.inshaker.ru/cocktail/rum_collins/
 http://www.inshaker.ru/cocktail/rum_ice-cream/
 http://www.inshaker.ru/cocktail/rum_infused_on_cherries/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
+http://www.inshaker.ru/cocktail/romul/
 http://www.inshaker.ru/cocktail/rossini/
 http://www.inshaker.ru/cocktail/rosso_pomegranate/
 http://www.inshaker.ru/cocktail/rosso_berry_crush/
@@ -671,6 +674,7 @@ http://www.inshaker.ru/cocktail/sex_on_the_beach/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_light/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_special/
 http://www.inshaker.ru/cocktail/celery_sour/
+http://www.inshaker.ru/cocktail/seneca/
 http://www.inshaker.ru/cocktail/senior_sazerac/
 http://www.inshaker.ru/cocktail/senhorita/
 http://www.inshaker.ru/cocktail/silver_bullet/
