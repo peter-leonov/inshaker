@@ -110,6 +110,7 @@ http://www.inshaker.ru/cocktail/vanilla_breeze/
 http://www.inshaker.ru/cocktail/vanilla_shot/
 http://www.inshaker.ru/cocktail/bubble_bath_martini/
 http://www.inshaker.ru/cocktail/varekai/
+http://www.inshaker.ru/cocktail/varro/
 http://www.inshaker.ru/cocktail/velvet_daiquiri/
 http://www.inshaker.ru/cocktail/heathy_tea/
 http://www.inshaker.ru/cocktail/spring_punch/
