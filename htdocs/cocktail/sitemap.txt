@@ -67,6 +67,7 @@ http://www.inshaker.ru/cocktail/b-black/
 http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/black_jack/
 http://www.inshaker.ru/cocktail/black_sabbath/
+http://www.inshaker.ru/cocktail/god_mars/
 http://www.inshaker.ru/cocktail/bohemian_iced_tea/
 http://www.inshaker.ru/cocktail/allanabarrancos/
 http://www.inshaker.ru/cocktail/boca_chica/
@@ -228,6 +229,7 @@ http://www.inshaker.ru/cocktail/gin_tonic/
 http://www.inshaker.ru/cocktail/gin_fizz/
 http://www.inshaker.ru/cocktail/wild_land/
 http://www.inshaker.ru/cocktail/wild_karaoke/
+http://www.inshaker.ru/cocktail/dioscorides/
 http://www.inshaker.ru/cocktail/kind_coconut/
 http://www.inshaker.ru/cocktail/home_lebowski/
 http://www.inshaker.ru/cocktail/home_marmalade/
