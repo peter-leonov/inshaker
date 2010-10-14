@@ -132,8 +132,9 @@ Me.prototype =
 	
 	set: function (value)
 	{
-		this.nodes.main.value = value
-		this.nodes.main.selectionEnd = value.length
+		var input = this.nodes.main
+		input.value = value
+		input.selectionStart = input.selectionEnd = value.length
 		this.updateTokens(value, value.length)
 		this.apply()
 	},
