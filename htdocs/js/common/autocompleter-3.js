@@ -259,7 +259,6 @@ var myProto =
 	selectBy: function (dir)
 	{
 		var results = this.results
-		
 		if (!results)
 			return
 		
@@ -282,7 +281,11 @@ var myProto =
 		if (this.selected === num)
 			return
 		
-		var v, res = this.results[num]
+		var results = this.results
+		if (!results)
+			return
+		
+		var v, res = results[num]
 		if (res)
 		{
 			v = res[0]
@@ -308,13 +311,17 @@ var myProto =
 	
 	accept: function (num)
 	{
+		var results = this.results
+		if (!results)
+			return
+		
 		if (num === undefined)
 			num = this.selected
 		
 		if (this.select(num) === false)
 			return false
 		
-		var v, res = this.results[num]
+		var v, res = results[num]
 		if (res)
 		{
 			v = res[0]
