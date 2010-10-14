@@ -130,6 +130,14 @@ Me.prototype =
 		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
 	},
 	
+	set: function (value)
+	{
+		this.nodes.main.value = value
+		this.nodes.main.selectionEnd = value.length
+		this.updateTokens(value, value.length)
+		this.apply()
+	},
+	
 	updateTokens: function (value, cursor)
 	{
 		// prepare for clean parsing

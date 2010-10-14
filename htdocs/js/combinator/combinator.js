@@ -33,6 +33,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/location-hash.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/selecter.js" -->
