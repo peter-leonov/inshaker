@@ -3,7 +3,7 @@ html { overflow-y: scroll;  }
 .b-title { height: 55px; background: none; }
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
-.body-wrapper { z-index: 2; }
+.column { z-index: 2; }
 
 #search-box { position: relative; z-index: 100; }
 #search-box .ingredient { padding: 2px; color: inherit; width: 755px; }
