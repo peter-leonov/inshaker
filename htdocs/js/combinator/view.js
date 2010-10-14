@@ -146,9 +146,9 @@ var myProto =
 			d = nodes.hintDouble
 		
 		s.firstChild.nodeValue = examples[0][0]
-		s['data-query'] = examples[0]
+		s['data-query-add'] = examples[0]
 		d.firstChild.nodeValue = examples[1].join(' + ')
-		d['data-query'] = examples[1]
+		d['data-query-add'] = examples[1]
 	},
 	
 	renderSuggestions: function (suggestions)
@@ -174,7 +174,7 @@ var myProto =
 			var item = Nc('li', 'item')
 			
 			var link = Nct('a', 'link', s.add.join(' + '))
-			link['data-query'] = s.add
+			link['data-query-add'] = s.add
 			item.appendChild(link)
 			
 			item.appendChild(Nct('span', 'count', ' (' + s.count + ' ' + s.count.plural('коктейль', 'коктейля', 'коктейлей') + ')'))
@@ -185,13 +185,14 @@ var myProto =
 	
 	maybeSuggestionClicked: function (node)
 	{
-		var query = node['data-query']
+		var add = node['data-query-add']
 		
-		if (!query)
+		if (!add)
 			return
 		
-		this.nodes.ingredientInput.value = query.join(' + ')
-		this.queryAccepted(query, [])
+		var query = add.join(' + ')
+		this.nodes.ingredientInput.value = query
+		this.queryAccepted(add, [])
 	},
 	
 	findIngredientInParents: function (node)
