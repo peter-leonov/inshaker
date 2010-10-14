@@ -114,6 +114,7 @@ http://www.inshaker.ru/cocktail/bubble_bath_martini/
 http://www.inshaker.ru/cocktail/varekai/
 http://www.inshaker.ru/cocktail/varro/
 http://www.inshaker.ru/cocktail/velvet_daiquiri/
+http://www.inshaker.ru/cocktail/vergilius/
 http://www.inshaker.ru/cocktail/heathy_tea/
 http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/spring_set/
@@ -181,6 +182,7 @@ http://www.inshaker.ru/cocktail/goldfinger/
 http://www.inshaker.ru/cocktail/blue_lagoon/
 http://www.inshaker.ru/cocktail/blue_moon/
 http://www.inshaker.ru/cocktail/blue_temptation/
+http://www.inshaker.ru/cocktail/horatius/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
 http://www.inshaker.ru/cocktail/hot_gold/
 http://www.inshaker.ru/cocktail/hot_apple/
