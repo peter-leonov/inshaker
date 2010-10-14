@@ -27,8 +27,8 @@ var myProto =
 		
 		var completer = this.completer = new AddingInputAutocompleter()
 		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
-		completer.addEventListener('accept', function (e) { me.queryUpdated(e.add, e.remove) }, false)
-		completer.addEventListener('changed', function (e) { me.searchInputValueChanged(e.add, e.remove) }, false)
+		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
+		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
 		nodes.ingredientInput.focus()
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
@@ -66,7 +66,7 @@ var myProto =
 		this.completer.setDataSource(ds)
 	},
 	
-	queryUpdated: function (add, remove)
+	queryAccepted: function (add, remove)
 	{
 		for (var i = 0, il = add.length; i < il; i++)
 			add[i] = add[i].trim().replace(/\s+/g, ' ')
@@ -77,9 +77,9 @@ var myProto =
 		this.controller.setQuery(add, remove)
 	},
 	
-	searchInputValueChanged: function (add, remove)
+	queryChanged: function (add, remove)
 	{
-		this.controller.quickQueryChange(add, remove)
+		this.controller.queryChanged(add, remove)
 	},
 	
 	renderSortbyOptions: function (options)
@@ -191,7 +191,7 @@ var myProto =
 			return
 		
 		this.nodes.ingredientInput.value = query.join(' + ')
-		this.queryUpdated(query, [])
+		this.queryAccepted(query, [])
 	},
 	
 	findIngredientInParents: function (node)

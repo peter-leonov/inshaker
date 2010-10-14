@@ -354,7 +354,7 @@ var myProto =
 		this.updateData()
 	},
 	
-	quickQueryChange: function (add, remove)
+	queryChanged: function (add, remove)
 	{
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)

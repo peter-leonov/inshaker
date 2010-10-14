@@ -16,9 +16,9 @@ var myProto =
 		this.model.setQuery(add, remove)
 	},
 	
-	quickQueryChange: function (add, remove)
+	queryChanged: function (add, remove)
 	{
-		this.model.quickQueryChange(add, remove)
+		this.model.queryChanged(add, remove)
 	},
 	
 	setSortBy: function (type)
