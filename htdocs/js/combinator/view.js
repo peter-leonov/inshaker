@@ -52,7 +52,8 @@ var myProto =
 	
 	locationHashUpdated: function ()
 	{
-		log(this.locationHash.get())
+		var hash = UrlEncode.parse(this.locationHash.get())
+		this.completer.set(hash.s)
 	},
 	
 	searchFormSubmitted: function ()
