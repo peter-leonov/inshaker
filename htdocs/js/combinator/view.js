@@ -44,7 +44,15 @@ var myProto =
 		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		nodes.cocktailList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		
+		var lh = this.locationHash = new LocationHash().bind(window)
+		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
+		
 		return this
+	},
+	
+	locationHashUpdated: function ()
+	{
+		log(this.locationHash.get())
 	},
 	
 	searchFormSubmitted: function ()
