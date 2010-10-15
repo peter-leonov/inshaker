@@ -79,7 +79,7 @@ var myProto =
 		for (var i = 0, il = remove.length; i < il; i++)
 			remove[i] = remove[i].trim().replace(/\s+/g, ' ')
 		
-		this.controller.setQuery(add, remove)
+		this.controller.setQuery(add, remove, this.nodes.queryInput.value)
 	},
 	
 	queryChanged: function (add, remove)

@@ -340,7 +340,7 @@ var myProto =
 		this.view.renderSuggestions(suggestions)
 	},
 	
-	setQuery: function (add, remove)
+	setQuery: function (add, remove, value)
 	{
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
@@ -352,6 +352,7 @@ var myProto =
 		this.remove = remove
 		
 		this.updateData()
+		this.view.setBookmark({s:value})
 	},
 	
 	queryChanged: function (add, remove)

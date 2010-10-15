@@ -11,9 +11,9 @@ var myProto =
 	
 	bind: function () {},
 	
-	setQuery: function (add, remove)
+	setQuery: function (add, remove, value)
 	{
-		this.model.setQuery(add, remove)
+		this.model.setQuery(add, remove, value)
 	},
 	
 	queryChanged: function (add, remove)
