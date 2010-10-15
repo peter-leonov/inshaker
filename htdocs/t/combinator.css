@@ -6,10 +6,10 @@ html { overflow-y: scroll;  }
 .column { z-index: 2; }
 
 #search-box { position: relative; z-index: 100; }
-#search-box .ingredient { padding: 2px; color: inherit; width: 755px; }
-#search-box .ingredient,
+#search-box .query { padding: 2px; color: inherit; width: 755px; }
+#search-box .query,
 #search-box .search { font-size: 20px; vertical-align: middle; }
-#search-box .ingredient { padding: 0; }
+#search-box .query { padding: 0; }
 
 #search-box .autocomplete { display: none; width: 559px; background: #fff; border: solid #bbb; }
 #search-box .autocomplete.focused { display: block; }

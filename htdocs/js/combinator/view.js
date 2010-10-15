@@ -26,10 +26,10 @@ var myProto =
 		var me = this
 		
 		var completer = this.completer = new AddingInputAutocompleter()
-		completer.bind({main: nodes.ingredientInput, list: nodes.ingredientComplete})
+		completer.bind({main: nodes.queryInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
-		nodes.ingredientInput.focus()
+		nodes.queryInput.focus()
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
@@ -56,9 +56,14 @@ var myProto =
 		this.completer.set(hash.s || '')
 	},
 	
+	setBookmark: function (hash)
+	{
+		this.locationHash.set(UrlEncode.stringify(hash))
+	},
+	
 	searchFormSubmitted: function ()
 	{
-		this.completer.apply(this.nodes.ingredientInput.value)
+		this.completer.apply(this.nodes.queryInput.value)
 	},
 	
 	setCompleterDataSource: function (ds)
@@ -191,7 +196,7 @@ var myProto =
 			return
 		
 		var query = add.join(' + ')
-		this.nodes.ingredientInput.value = query
+		this.nodes.queryInput.value = query
 		this.queryAccepted(add, [])
 	},
 	
