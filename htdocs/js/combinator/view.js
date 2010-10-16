@@ -53,12 +53,29 @@ var myProto =
 	locationHashUpdated: function ()
 	{
 		var hash = UrlEncode.parse(this.locationHash.get())
-		this.completer.set(hash.s || '')
+		
+		var query = hash.q
+		
+		var parts = QueryParser.getParts(QueryParser.parse(query))
+		
+		this.controller.setState({add: parts.add, remove: parts.remove, query: query})
+	},
+	
+	renderQuery: function (query)
+	{
+		this.completer.reset()
+		this.nodes.queryInput.value = query
 	},
 	
 	setBookmark: function (hash)
 	{
-		this.locationHash.set(UrlEncode.stringify(hash))
+		for (var k in hash)
+		{
+			if (!hash[k])
+				delete hash[k]
+		}
+		// log(UrlEncode.stringify(hash))
+		// this.locationHash.setRaw(UrlEncode.stringify(hash))
 	},
 	
 	searchFormSubmitted: function ()

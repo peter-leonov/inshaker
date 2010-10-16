@@ -340,7 +340,23 @@ var myProto =
 		this.view.renderSuggestions(suggestions)
 	},
 	
-	setQuery: function (add, remove, value)
+	setState: function (state)
+	{
+		var add = this.expandQueryNames(state.add)
+		var remove = this.expandQueryNames(state.remove)
+		
+		this.setDuplicates(add, remove)
+		
+		
+		this.add = add
+		this.remove = remove
+		
+		this.updateData()
+		
+		this.view.renderQuery(state.query)
+	},
+	
+	setQuery: function (add, remove, query)
 	{
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
@@ -352,7 +368,13 @@ var myProto =
 		this.remove = remove
 		
 		this.updateData()
-		this.view.setBookmark({s:value})
+		
+		
+		var bookmark = {query:query}
+		// send bookmark for the second time
+		if (this.bookmark)
+			this.view.setBookmark(bookmark)
+		this.bookmark = bookmark
 	},
 	
 	queryChanged: function (add, remove)
@@ -526,11 +548,6 @@ var myProto =
 			}
 		}
 		return res
-	},
-	
-	setState: function (state)
-	{
-		this.state = state
 	},
 	
 	updateAllIngredients: function ()

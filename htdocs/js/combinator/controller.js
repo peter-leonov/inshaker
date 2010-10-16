@@ -11,9 +11,14 @@ var myProto =
 	
 	bind: function () {},
 	
-	setQuery: function (add, remove, value)
+	setState: function (state)
 	{
-		this.model.setQuery(add, remove, value)
+		this.model.setState(state)
+	},
+	
+	setQuery: function (add, remove, query)
+	{
+		this.model.setQuery(add, remove, query)
 	},
 	
 	queryChanged: function (add, remove)
