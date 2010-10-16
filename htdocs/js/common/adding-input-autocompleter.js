@@ -173,28 +173,7 @@ Me.prototype =
 	
 	getParts: function (exceptActive)
 	{
-		var tokens = this.tokens
-		
-		var active = exceptActive ? tokens.active : null,
-			add = [], remove = []
-		for (var i = 0, il = tokens.length; i < il; i++)
-		{
-			var t = tokens[i]
-			
-			if (t == active)
-				continue
-			
-			if (!t.value)
-				continue
-			
-			var op = t.op
-			if (op == '+')
-				add.push(t.value)
-			else if (op == '-')
-				remove.push(t.value)
-		}
-		
-		return {add: add, remove: remove}
+		return QueryParser.getParts(this.tokens, {exceptActive: exceptActive})
 	},
 	
 	setDataSource: function (ds)

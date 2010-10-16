@@ -56,6 +56,33 @@ Me.stringify = function (tokens)
 	return string
 }
 
+Me.getParts = function (tokens, opts)
+{
+	if (!opts)
+		opts = {}
+	
+	var active = opts.exceptActive ? tokens.active : null,
+		add = [], remove = []
+	for (var i = 0, il = tokens.length; i < il; i++)
+	{
+		var t = tokens[i]
+		
+		if (t == active)
+			continue
+		
+		if (!t.value)
+			continue
+		
+		var op = t.op
+		if (op == '+')
+			add.push(t.value)
+		else if (op == '-')
+			remove.push(t.value)
+	}
+	
+	return {add: add, remove: remove}
+}
+
 Me.debug = function (tokens)
 {
 	var string = ''
