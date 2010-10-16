@@ -140,8 +140,6 @@ Me.prototype =
 	
 	updateTokens: function (value, cursor)
 	{
-		// prepare for clean parsing
-		value = '+' + value
 		cursor++
 		
 		var tokens

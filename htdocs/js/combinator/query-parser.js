@@ -10,6 +10,13 @@ Me.parse = function (string)
 		beforeRex = /^\s*/g,
 		afterRex = /\s*$/g
 	
+	if (!string)
+		return []
+	
+	string = '' + string
+	if (string.charAt(0) != '+')
+		string = '+' + string
+	
 	var m, tokens = []
 	while ((m = tokenizer.exec(string)))
 	{
