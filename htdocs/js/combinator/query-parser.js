@@ -29,6 +29,7 @@ Me.parse = function (string)
 		
 		var token =
 		{
+			num: tokens.length,
 			begin: begin,
 			op: op,
 			before: before,
