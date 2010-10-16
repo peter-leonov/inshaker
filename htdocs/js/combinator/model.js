@@ -370,11 +370,7 @@ var myProto =
 		this.updateData()
 		
 		
-		var bookmark = {query:query}
-		// send bookmark for the second time
-		if (this.bookmark)
-			this.view.setBookmark(bookmark)
-		this.bookmark = bookmark
+		this.view.setBookmark({query:query})
 	},
 	
 	queryChanged: function (add, remove)

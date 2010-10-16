@@ -69,13 +69,16 @@ var myProto =
 	
 	setBookmark: function (hash)
 	{
-		for (var k in hash)
+		var bookmark = {q: hash.query}
+		
+		for (var k in bookmark)
 		{
-			if (!hash[k])
+			var v = bookmark[k]
+			if (!v && v !== 0)
 				delete hash[k]
 		}
-		// log(UrlEncode.stringify(hash))
-		// this.locationHash.setRaw(UrlEncode.stringify(hash))
+		
+		this.locationHash.setRaw(UrlEncode.stringify(bookmark))
 	},
 	
 	searchFormSubmitted: function ()
