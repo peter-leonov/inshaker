@@ -54,7 +54,7 @@ var myProto =
 	{
 		var hash = UrlEncode.parse(this.locationHash.get())
 		
-		var query = hash.q
+		var query = hash.q || ''
 		
 		var parts = QueryParser.getParts(QueryParser.parse(query))
 		
