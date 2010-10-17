@@ -37,17 +37,7 @@ var methods =
 		popup.bind({root: clone.root, window: nodes.window, front: nodes.front})
 		popup.show()
 		
-		function dontHideIfNavigatedOut ()
-		{
-			function afterRedrawLag ()
-			{
-				var start = +new Date()
-				setTimeout(function () { if (new Date() - start <= 500) popup.hide() }, 50)
-			}
-			setTimeout(afterRedrawLag, 50)
-		}
-		
-		nodes.allLink.addEventListener('click', dontHideIfNavigatedOut, false)
+		nodes.allLink.addEventListener('click', function () { popup.hide() }, false)
 		
 		var brand = ingredient.brand
 		if (brand)
