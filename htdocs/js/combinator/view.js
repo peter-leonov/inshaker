@@ -69,6 +69,12 @@ var myProto =
 	
 	setBookmark: function (hash)
 	{
+		if (!hash.query)
+		{
+			this.locationHash.setRaw('')
+			return
+		}
+		
 		var bookmark = {q: hash.query}
 		
 		for (var k in bookmark)
