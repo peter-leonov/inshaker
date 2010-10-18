@@ -67,15 +67,15 @@ var myProto =
 		this.nodes.queryInput.value = query
 	},
 	
-	setBookmark: function (hash)
+	setBookmark: function (state)
 	{
-		if (!hash.query)
+		if (!state.query)
 		{
 			this.locationHash.setRaw('')
 			return
 		}
 		
-		var bookmark = {q: hash.query}
+		var bookmark = {q: state.query}
 		
 		for (var k in bookmark)
 		{
