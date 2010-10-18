@@ -81,7 +81,7 @@ var myProto =
 		{
 			var v = bookmark[k]
 			if (!v && v !== 0)
-				delete hash[k]
+				delete bookmark[k]
 		}
 		
 		this.locationHash.setRaw(UrlEncode.stringify(bookmark))
