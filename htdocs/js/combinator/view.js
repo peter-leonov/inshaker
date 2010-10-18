@@ -52,13 +52,21 @@ var myProto =
 	
 	locationHashUpdated: function ()
 	{
-		var hash = UrlEncode.parse(this.locationHash.get())
+		var bookmark = UrlEncode.parse(this.locationHash.get())
 		
-		var query = hash.q || ''
+		var query = bookmark.q || ''
 		
 		var parts = QueryParser.getParts(QueryParser.parse(query))
 		
-		this.controller.setState({add: parts.add, remove: parts.remove, query: query})
+		var state =
+		{
+			add: parts.add,
+			remove: parts.remove,
+			query: query,
+			sortBy: bookmark.s
+		}
+		
+		this.controller.setState(state)
 	},
 	
 	renderQuery: function (query)
@@ -75,7 +83,11 @@ var myProto =
 			return
 		}
 		
-		var bookmark = {q: state.query}
+		var bookmark =
+		{
+			q: state.query,
+			s: state.sortBy
+		}
 		
 		for (var k in bookmark)
 		{

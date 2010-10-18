@@ -355,6 +355,7 @@ var myProto =
 		this.setDuplicates(add, remove)
 		
 		var state = this.state = new this.DefaultState()
+		state.sortBy = newState.sortBy
 		state.query = newState.query
 		state.add = add
 		state.remove = remove
@@ -418,8 +419,11 @@ var myProto =
 	
 	setSortBy: function (typeNum)
 	{
-		this.state.sortBy = this.sortTypeByNum[typeNum]
+		var state = this.state
 		
+		state.sortBy = this.sortTypeByNum[typeNum]
+		
+		this.view.setBookmark(state)
 		this.updateData()
 	},
 	
