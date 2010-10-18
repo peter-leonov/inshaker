@@ -30,7 +30,6 @@ var myProto =
 	initialize: function ()
 	{
 		this.ds = {}
-		this.state = {}
 		this.searchCache = {}
 		
 		this.sortByNames =
@@ -51,7 +50,14 @@ var myProto =
 			// 'by-strength'
 		]
 		
-		this.sortBy = this.sortTypeByNum[0]
+		function DefaultState () {}
+		DefaultState.prototype =
+		{
+			sortBy: this.sortTypeByNum[0]
+		}
+		this.DefaultState = DefaultState
+		
+		this.state = new DefaultState()
 	},
 	
 	bind: function (ds)
@@ -74,7 +80,7 @@ var myProto =
 		this.view.setCompleterDataSource(searcher)
 		
 		this.view.renderSortbyOptions(this.sortByNames)
-		this.view.renderSortby(this.sortTypeByNum.indexOf(this.sortBy))
+		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
 		
 		var favorites = searcher.favorites = {}
 		
@@ -97,8 +103,9 @@ var myProto =
 	
 	updateData: function ()
 	{
-		var add = this.add,
-			remove = this.remove
+		var state = this.state,
+			add = state.add,
+			remove = state.remove
 		
 		
 		if (!add.length && !remove.length)
@@ -117,7 +124,7 @@ var myProto =
 		}
 		
 		var sorted
-		switch (this.sortBy)
+		switch (state.sortBy)
 		{
 			case 'increasing-complexity':
 				sorted = this.sortByIncreasingComplexity(cocktails)
@@ -340,16 +347,17 @@ var myProto =
 		this.view.renderSuggestions(suggestions)
 	},
 	
-	setState: function (state)
+	setState: function (newState)
 	{
-		var add = this.expandQueryNames(state.add)
-		var remove = this.expandQueryNames(state.remove)
+		var add = this.expandQueryNames(newState.add)
+		var remove = this.expandQueryNames(newState.remove)
 		
 		this.setDuplicates(add, remove)
 		
-		
-		this.add = add
-		this.remove = remove
+		var state = this.state = new this.DefaultState()
+		state.query = newState.query
+		state.add = add
+		state.remove = remove
 		
 		this.updateData()
 		
@@ -363,14 +371,14 @@ var myProto =
 		
 		this.setDuplicates(add, remove)
 		
-		
-		this.add = add
-		this.remove = remove
+		var state = this.state
+		state.add = add
+		state.remove = remove
+		state.query = query
 		
 		this.updateData()
 		
-		
-		this.view.setBookmark({query:query})
+		this.view.setBookmark(state)
 	},
 	
 	queryChanged: function (add, remove)
@@ -410,7 +418,7 @@ var myProto =
 	
 	setSortBy: function (typeNum)
 	{
-		this.sortBy = this.sortTypeByNum[typeNum]
+		this.state.sortBy = this.sortTypeByNum[typeNum]
 		
 		this.updateData()
 	},
