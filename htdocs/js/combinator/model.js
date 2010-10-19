@@ -57,24 +57,6 @@ var myProto =
 		this.ds = {}
 		this.searchCache = {}
 		
-		this.sortByNames =
-		[
-			'от простых к сложным',
-			'по алфавиту',
-			'по группам',
-			'по дате размещения'
-			// 'по количеству ингредиента'
-		]
-		
-		this.sortTypeByNum =
-		[
-			'increasing-complexity',
-			'alphabetically',
-			'by-group',
-			'by-date'
-			// 'by-strength'
-		]
-		
 		this.state = new DefaultState()
 	},
 	
