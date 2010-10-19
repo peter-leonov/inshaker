@@ -101,7 +101,7 @@ Me.prototype =
 		
 		var active = tokens.active
 		this.updateTokens(v, cursor)
-		if (active.num != tokens.active.num)
+		if (active && active.num != tokens.active.num)
 			this.reset()
 	},
 	
