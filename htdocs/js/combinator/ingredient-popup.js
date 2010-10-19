@@ -37,7 +37,7 @@ var methods =
 		popup.bind({root: clone.root, window: nodes.window, front: nodes.front})
 		popup.show()
 		
-		nodes.allLink.addEventListener('click', function () { popup.hide() }, false)
+		
 		
 		var brand = ingredient.brand
 		if (brand)
@@ -50,13 +50,15 @@ var methods =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		var len = ingredient.cocktails.length
-		if (len)
-			nodes.allLink.appendChild(T(' ' + len + ' ' + len.plural('коктейль', 'коктейля', 'коктейлей')))
+		// nodes.combinations.addEventListener('click', function () { popup.hide() }, false)
 		
-		if (ingredient.decls)
-			nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
-		nodes.allLink.href = ingredient.combinatorLink()
+		// var len = ingredient.cocktails.length
+		// if (len)
+		// 	nodes.allLink.appendChild(T(' ' + len + ' ' + len.plural('коктейль', 'коктейля', 'коктейлей')))
+		// 
+		// if (ingredient.decls)
+		// 	nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
+		// nodes.allLink.href = ingredient.combinatorLink()
 		
 		nodes.text.innerHTML = ingredient.about
 		
