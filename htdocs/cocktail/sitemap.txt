@@ -138,6 +138,7 @@ http://www.inshaker.ru/cocktail/whisky_with_apple_juice/
 http://www.inshaker.ru/cocktail/vitamin/
 http://www.inshaker.ru/cocktail/vitamins_set/
 http://www.inshaker.ru/cocktail/cherry_sambuca/
+http://www.inshaker.ru/cocktail/cherry_liqueur_and_grapefruit/
 http://www.inshaker.ru/cocktail/cherry_sour/
 http://www.inshaker.ru/cocktail/cherry_and_cherry/
 http://www.inshaker.ru/cocktail/vaudeville/
