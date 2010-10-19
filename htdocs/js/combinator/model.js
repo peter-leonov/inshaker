@@ -25,8 +25,33 @@ Array.prototype.flatten = function ()
 
 var Papa = CombinatorPage, Me = Papa.Model
 
+function DefaultState () {}
+DefaultState.prototype =
+{
+	sortBy: 'increasing-complexity'
+}
+Me.DefaultState = DefaultState
+
 var myProto =
 {
+	sortByNames:
+	[
+		'от простых к сложным',
+		'по алфавиту',
+		'по группам',
+		'по дате размещения'
+		// 'по количеству ингредиента'
+	],
+	
+	sortTypeByNum:
+	[
+		'increasing-complexity',
+		'alphabetically',
+		'by-group',
+		'by-date'
+		// 'by-strength'
+	],
+	
 	initialize: function ()
 	{
 		this.ds = {}
@@ -49,13 +74,6 @@ var myProto =
 			'by-date'
 			// 'by-strength'
 		]
-		
-		function DefaultState () {}
-		DefaultState.prototype =
-		{
-			sortBy: this.sortTypeByNum[0]
-		}
-		this.DefaultState = DefaultState
 		
 		this.state = new DefaultState()
 	},
@@ -354,9 +372,9 @@ var myProto =
 		
 		this.setDuplicates(add, remove)
 		
-		var state = this.state = new this.DefaultState()
 		state.sortBy = newState.sortBy
 		state.query = newState.query
+		var state = this.state = new DefaultState()
 		state.add = add
 		state.remove = remove
 		
