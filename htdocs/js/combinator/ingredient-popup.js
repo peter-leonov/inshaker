@@ -50,7 +50,24 @@ var methods =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		// nodes.combinations.addEventListener('click', function () { popup.hide() }, false)
+		var queries = [ingredient.name, ingredient.name + ' + сок', ingredient.name + ' + водка', ingredient.name + ' + лайм']
+		
+		nodes.combinations.addEventListener('click', function (e) { if (e.target.href) popup.hide() }, false)
+		
+		var list = nodes.combinationsList
+		for (var i = 0; i < queries.length; i++)
+		{
+			var query = queries[i]
+			
+			var item = Nc('li', 'combination')
+			list.appendChild(item)
+			
+			var a = Nct('a', 'link', query)
+			a.href = '/combinator.html#q=' + encodeURIComponent(query)
+			item.appendChild(a)
+			// nodes.combinationsList.appendChild(T(query))
+		}
+		
 		
 		// var len = ingredient.cocktails.length
 		// if (len)

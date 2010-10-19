@@ -76,6 +76,7 @@ function onready ()
 			name: $$('#ingredient-info-popup .description .about .name')[0],
 			text: $$('#ingredient-info-popup .description .about .text')[0],
 			combinations: $$('#ingredient-info-popup .description .about .combinations')[0],
+			combinationsList: $$('#ingredient-info-popup .description .about .combinations .list')[0],
 			cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
 			cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
 			cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
