@@ -538,6 +538,7 @@ http://www.inshaker.ru/cocktail/negroni/
 http://www.inshaker.ru/cocktail/negroni_amaro/
 http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
+http://www.inshaker.ru/cocktail/nero/
 http://www.inshaker.ru/cocktail/knickerbocker/
 http://www.inshaker.ru/cocktail/new_look/
 http://www.inshaker.ru/cocktail/new_new_york/
