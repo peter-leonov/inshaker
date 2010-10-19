@@ -25,7 +25,15 @@ Array.prototype.flatten = function ()
 
 var Papa = CombinatorPage, Me = Papa.Model
 
-function DefaultState () {}
+function DefaultState (state)
+{
+	for (var k in state)
+	{
+		var v = state[k]
+		if (v !== undefined)
+			this[k] = v
+	}
+}
 DefaultState.prototype =
 {
 	sortBy: 'increasing-complexity'
@@ -106,7 +114,6 @@ var myProto =
 		var state = this.state,
 			add = state.add,
 			remove = state.remove
-		
 		
 		if (!add.length && !remove.length)
 		{
@@ -354,9 +361,7 @@ var myProto =
 		
 		this.setDuplicates(add, remove)
 		
-		state.sortBy = newState.sortBy
-		state.query = newState.query
-		var state = this.state = new DefaultState()
+		var state = this.state = new DefaultState(newState)
 		state.add = add
 		state.remove = remove
 		
