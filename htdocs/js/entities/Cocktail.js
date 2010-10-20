@@ -313,6 +313,38 @@ Object.extend(Cocktail,
 		return cache
 	},
 	
+	getSupplementByIngredientName: function (ingredientName)
+	{
+		var cocktails = this.getByIngredientNames([ingredientName])
+		
+		var score = {}
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var parts = cocktails[i].ingredients,
+				len = parts.length
+			
+			var weight = 1 / len
+			
+			for (var j = 0, jl = len; j < jl; j++)
+			{
+				var ingredient = parts[j][0]
+				
+				var subscore = score[ingredient]
+				if (!subscore)
+					score[ingredient] = weight
+				else
+					score[ingredient] = subscore + weight
+			}
+		}
+		
+		delete score[ingredientName]
+		
+		var ingredients = Object.keys(score)
+		ingredients.sort(function (a, b) { return score[b] - score[a] })
+		return ingredients
+	},
+	
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
