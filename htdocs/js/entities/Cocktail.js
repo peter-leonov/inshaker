@@ -313,7 +313,7 @@ Object.extend(Cocktail,
 		return cache
 	},
 	
-	getSupplementByIngredientName: function (ingredientName)
+	getSupplementByIngredientName: function (ingredientName, coefficients)
 	{
 		var cocktails = this.getByIngredientNames([ingredientName])
 		
@@ -339,6 +339,9 @@ Object.extend(Cocktail,
 		}
 		
 		delete score[ingredientName]
+		
+		for (var k in coefficients)
+			score[k] *= coefficients[k]
 		
 		var ingredients = Object.keys(score)
 		ingredients.sort(function (a, b) { return score[b] - score[a] })
