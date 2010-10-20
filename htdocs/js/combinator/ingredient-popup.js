@@ -50,7 +50,13 @@ var methods =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		var supplements = Cocktail.getSupplementByIngredientName(ingredient.name)
+		var minor = Ingredient.getByGroups(['Лед'])
+		var coefficients = {}
+		for (var i = 0, il = minor.length; i < il; i++)
+			coefficients[minor[i].name] = 0.001
+		
+		
+		var supplements = Cocktail.getSupplementByIngredientName(ingredient.name, coefficients)
 		
 		nodes.combinations.addEventListener('click', function (e) { if (e.target.href) popup.hide() }, false)
 		
