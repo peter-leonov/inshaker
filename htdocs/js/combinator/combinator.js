@@ -87,7 +87,7 @@ function onready ()
 	
 	IngredientPopup.setup(nodes)
 	
-	// Ingredient.calculateEachIngredientUsage()
+	Ingredient.calculateEachIngredientUsage()
 	
 	
 	var nodes =
