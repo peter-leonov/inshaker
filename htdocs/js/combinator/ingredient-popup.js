@@ -50,24 +50,25 @@ var methods =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		var queries = [ingredient.name, ingredient.name + ' + сок', ingredient.name + ' + водка', ingredient.name + ' + лайм']
+		var supplements = Cocktail.getSupplementByIngredientName(ingredient.name)
 		
 		nodes.combinations.addEventListener('click', function (e) { if (e.target.href) popup.hide() }, false)
 		
+		
 		var list = nodes.combinationsList
-		for (var i = 0; i < queries.length; i++)
+		for (var i = 0, il = supplements.length; i < il && i < 7; i++)
 		{
-			var query = queries[i]
+			var supplement = supplements[i]
 			
 			var item = Nc('li', 'combination')
 			list.appendChild(item)
 			
+			var query = ingredient.name + ' + ' + supplement
 			var a = Nct('a', 'link', query)
 			a.href = '/combinator.html#q=' + encodeURIComponent(query)
 			item.appendChild(a)
 			// nodes.combinationsList.appendChild(T(query))
 		}
-		
 		
 		// var len = ingredient.cocktails.length
 		// if (len)
