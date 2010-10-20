@@ -117,6 +117,9 @@ Me.prototype =
 		var tokens = this.tokens,
 			input = this.nodes.main
 		
+		if (!tokens.active)
+			return
+		
 		tokens.active.value = value
 		input.value = QueryParser.stringify(tokens).substr(1)
 		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
