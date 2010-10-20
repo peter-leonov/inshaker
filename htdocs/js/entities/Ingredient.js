@@ -120,6 +120,24 @@ Object.extend(Ingredient,
 		return res;
 	},
 	
+	getByGroups: function (groups)
+	{
+		var hash = {}
+		for (var i = 0, il = groups.length; i < il; i++)
+			hash[groups[i]] = true
+		
+		var db = this.db,
+			res = []
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingredient = db[i]
+			if (hash[ingredient.group])
+				res.push(ingredient)
+		}
+		
+		return res
+	},
+	
 	calculateEachIngredientUsage: function ()
 	{
 		if (this.eachIngredientUsageCalculated)
