@@ -66,6 +66,7 @@ http://www.inshaker.ru/cocktail/birch_cooler/
 http://www.inshaker.ru/cocktail/berrymeup/
 http://www.inshaker.ru/cocktail/insomnia/
 http://www.inshaker.ru/cocktail/b-black/
+http://www.inshaker.ru/cocktail/bitter_melon/
 http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/black_jack/
 http://www.inshaker.ru/cocktail/black_sabbath/
@@ -300,6 +301,7 @@ http://www.inshaker.ru/cocktail/irony_of_destiny/
 http://www.inshaker.ru/cocktail/isaev_martini/
 http://www.inshaker.ru/cocktail/spanish_egg-nog/
 http://www.inshaker.ru/cocktail/spanish_hot_gold/
+http://www.inshaker.ru/cocktail/perfect_passion/
 http://www.inshaker.ru/cocktail/italiano_collins/
 http://www.inshaker.ru/cocktail/italian_pear/
 http://www.inshaker.ru/cocktail/italian_honey/
@@ -357,6 +359,8 @@ http://www.inshaker.ru/cocktail/coconut_pineapple/
 http://www.inshaker.ru/cocktail/coconut_banana/
 http://www.inshaker.ru/cocktail/coconut_breeze/
 http://www.inshaker.ru/cocktail/coconut_sprite/
+http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
+http://www.inshaker.ru/cocktail/cola_and_grapefruit_liqueur/
 http://www.inshaker.ru/cocktail/hummingbird/
 http://www.inshaker.ru/cocktail/conca_d_oro/
 http://www.inshaker.ru/cocktail/connaught_martini/
@@ -411,6 +415,8 @@ http://www.inshaker.ru/cocktail/summer_evening_in_gagra/
 http://www.inshaker.ru/cocktail/summer_set/
 http://www.inshaker.ru/cocktail/summer_fizz/
 http://www.inshaker.ru/cocktail/summer_queen/
+http://www.inshaker.ru/cocktail/liqueur_mango_and_orange/
+http://www.inshaker.ru/cocktail/liqueur_mango_and_cranberries/
 http://www.inshaker.ru/cocktail/liki/
 http://www.inshaker.ru/cocktail/tarragon_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/tarragon_with_sea-buckthorn_lemonade_in_a_siphon/
@@ -489,6 +495,7 @@ http://www.inshaker.ru/cocktail/mexican_astronaut/
 http://www.inshaker.ru/cocktail/mexican_lemonade/
 http://www.inshaker.ru/cocktail/mexican_mule/
 http://www.inshaker.ru/cocktail/mexican_pie/
+http://www.inshaker.ru/cocktail/melonic/
 http://www.inshaker.ru/cocktail/mixet/
 http://www.inshaker.ru/cocktail/milano_breeze/
 http://www.inshaker.ru/cocktail/milano_spritzer/
@@ -590,6 +597,8 @@ http://www.inshaker.ru/cocktail/pelican/
 http://www.inshaker.ru/cocktail/first_jeans/
 http://www.inshaker.ru/cocktail/apricot_kir_reverse/
 http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
+http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
+http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
@@ -799,6 +808,7 @@ http://www.inshaker.ru/cocktail/fusion_crush/
 http://www.inshaker.ru/cocktail/fusion_peach/
 http://www.inshaker.ru/cocktail/hulk/
 http://www.inshaker.ru/cocktail/harvey_ball_banger/
+http://www.inshaker.ru/cocktail/help_special_flip/
 http://www.inshaker.ru/cocktail/help_espresso/
 http://www.inshaker.ru/cocktail/hemingway_daiquiri/
 http://www.inshaker.ru/cocktail/hiroshima/
