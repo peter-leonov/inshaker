@@ -729,6 +729,7 @@ http://www.inshaker.ru/cocktail/sunlight/
 http://www.inshaker.ru/cocktail/malted_gold/
 http://www.inshaker.ru/cocktail/soho_martini/
 http://www.inshaker.ru/cocktail/spice_girls/
+http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/old_fashioned/
 http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
 http://www.inshaker.ru/cocktail/old_fashioned_with_rum/
