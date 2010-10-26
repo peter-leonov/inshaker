@@ -52,7 +52,9 @@ var myProto =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		this.renderSupplements(ingredient)
+		var cocktailCount = Cocktail.getByIngredientNames([ingredient.name]).length
+		
+		this.renderSupplements(ingredient, cocktailCount)
 		
 		// var len = ingredient.cocktails.length
 		// if (len)
@@ -71,9 +73,15 @@ var myProto =
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
 	},
 	
-	renderSupplements: function (ingredient)
+	renderSupplements: function (ingredient, cocktailCount)
 	{
 		var nodes = this.nodes
+		
+		if (cocktailCount < 6)
+		{
+			nodes.combinations.hide()
+			return
+		}
 		
 		var minor = Ingredient.getByGroups(['Лед'])
 		var coefficients = {}
