@@ -66,18 +66,23 @@ var myProto =
 	
 	renderAllCocktailsLink: function (ingredient)
 	{
-		if (ingredient.cocktails.length == 0)
+		var nodes = this.nodes
+		
+		var count = ingredient.cocktails.length
+		if (count == 0)
 		{
-			
+			nodes.allCocktails.hide()
 			return
 		}
-		// var len = ingredient.cocktails.length
-		// if (len)
-		// 	nodes.allLink.appendChild(T(' ' + len + ' ' + len.plural('коктейль', 'коктейля', 'коктейлей')))
-		// 
-		// if (ingredient.decls)
-		// 	nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
-		// nodes.allLink.href = ingredient.combinatorLink()
+		
+		nodes.allCocktails.show()
+		
+		var link = nodes.allCocktailsLink
+		link.href = ingredient.combinatorLink()
+		
+		link.appendChild(T(' ' + count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')))
+		if (ingredient.decls)
+			link.appendChild(T(' ' + ingredient.decls.t))
 	},
 	
 	renderSupplements: function (ingredient)
