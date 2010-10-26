@@ -2,42 +2,40 @@
 
 var myName = 'IngredientPopup'
 
-function Me () {}
-
 eval(NodesShortcut.include())
 
-var methods =
+var Super = Popup,
+	superProto = Super.prototype
+
+function Me ()
 {
-	setup: function (nodes)
+	Super.apply(this)
+}
+
+Me.prototype = new Super()
+
+var myProto =
+{
+	setIngredient: function (ingredient)
 	{
-		this.cache = {}
-		this.nodes = nodes
-		
-		var cloner = this.cloner = new Cloner()
-		cloner.bind(nodes.popupMain, nodes.popupParts)
+		this.ingredient = ingredient
+		this.render()
 	},
 	
-	show: function (ingredient)
+	render: function ()
 	{
+		var ingredient = this.ingredient
+		
 		Statistics.ingredientPopupOpened(ingredient)
 		
-		var popup = this.cache[ingredient.name]
-		if (popup)
-		{
-			popup.show()
-			return
-		}
-		
 		var clone = this.cloner.create()
-		this.nodes.root.appendChild(clone.root)
+		this.popupRoot.appendChild(clone.root)
 		
 		var nodes = clone.nodes
-		var popup = new Popup()
-		this.cache[ingredient.name] = popup
-		popup.bind({root: clone.root, window: nodes.window, front: nodes.front})
-		popup.show()
+		nodes.root = clone.root
 		
-		
+		// implies this.nodes = nodes
+		this.bind(nodes)
 		
 		var brand = ingredient.brand
 		if (brand)
@@ -123,7 +121,40 @@ var methods =
 	}
 }
 
-Object.extend(Me, methods)
+Object.extend(Me.prototype, myProto)
+
+var myStatic =
+{
+	setup: function (nodes)
+	{
+		this.cache = {}
+		
+		var proto = this.prototype
+		
+		proto.popupRoot = nodes.root
+		
+		var cloner = proto.cloner = new Cloner()
+		cloner.bind(nodes.popupMain, nodes.popupParts)
+	},
+	
+	show: function (ingredient)
+	{
+		var popup = this.cache[ingredient.name]
+		if (popup)
+		{
+			popup.show()
+			return
+		}
+		
+		var popup = new this()
+		popup.setIngredient(ingredient)
+		popup.show()
+		
+		this.cache[ingredient.name] = popup
+	}
+}
+
+Object.extend(Me, myStatic)
 
 Me.className = myName
 self[myName] = Me
