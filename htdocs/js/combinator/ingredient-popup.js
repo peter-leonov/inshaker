@@ -100,29 +100,29 @@ var myProto =
 		}
 	},
 	
-	renderWhereToBuy: function (popupNodes, ingredient)
+	renderWhereToBuy: function (nodes, ingredient)
 	{
 		var good = Good.getBySellName(ingredient.name)[0]
 		if (good)
 		{
-			popupNodes.ingredientWindow.addClassName('can-buy')
-			popupNodes.buy.appendChild(T(good.name))
-			popupNodes.buy.href = good.getHref()
+			nodes.ingredientWindow.addClassName('can-buy')
+			nodes.buy.appendChild(T(good.name))
+			nodes.buy.href = good.getHref()
 		}
 	},
 	
-	renderCocktails: function (popupNodes, cocktails)
+	renderCocktails: function (nodes, cocktails)
 	{
 		cocktails = cocktails.slice().randomize()
 		
 		var cl = new CocktailList()
 		var nodes =
 		{
-			root: popupNodes.cocktails,
-			viewport: popupNodes.cocktailsViewport,
-			surface: popupNodes.cocktailsSurface,
-			prev: popupNodes.cocktailsPrev,
-			next: popupNodes.cocktailsNext
+			root: nodes.cocktails,
+			viewport: nodes.cocktailsViewport,
+			surface: nodes.cocktailsSurface,
+			prev: nodes.cocktailsPrev,
+			next: nodes.cocktailsNext
 		}
 		cl.bind(nodes)
 		cl.configure({pageLength: 5, pageVelocity: 38})
