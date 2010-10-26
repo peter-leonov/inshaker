@@ -150,6 +150,7 @@ html { overflow-y: scroll;  }
 .ingredient-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
 .ingredient-window .cocktail-list.single .prev,
 .ingredient-window .cocktail-list.single .next { display: none; }
+.ingredient-window .cocktail-list.empty { display: none; }
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
