@@ -96,6 +96,20 @@ Object.extend(Ingredient,
 		return this._byTagCI[name.toLowerCase()] || []
 	},
 	
+	getByNames: function (names)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		var res = []
+		
+		var byName = this._byName
+		for (var i = 0, il = names.length; i < il; i++)
+			res[i] = byName[names[i]]
+		
+		return res
+	},
+	
 	getAllNames: function (name)
 	{
 		if (!this._byName)
