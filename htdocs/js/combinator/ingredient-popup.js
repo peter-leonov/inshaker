@@ -52,9 +52,6 @@ var myProto =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		var cocktailCount = Cocktail.getByIngredientNames([ingredient.name]).length
-		
-		this.renderSupplements(ingredient, cocktailCount)
 		
 		// var len = ingredient.cocktails.length
 		// if (len)
@@ -63,6 +60,7 @@ var myProto =
 		// if (ingredient.decls)
 		// 	nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
 		// nodes.allLink.href = ingredient.combinatorLink()
+		this.renderSupplements(ingredient)
 		
 		nodes.text.innerHTML = ingredient.about
 		
@@ -73,11 +71,11 @@ var myProto =
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
 	},
 	
-	renderSupplements: function (ingredient, cocktailCount)
+	renderSupplements: function (ingredient)
 	{
 		var nodes = this.nodes
 		
-		if (cocktailCount < 6)
+		if (ingredient.cocktails.length < 6)
 		{
 			nodes.combinations.hide()
 			return
