@@ -22,11 +22,15 @@ var myProto =
 		this.render()
 	},
 	
+	show: function ()
+	{
+		Statistics.ingredientPopupOpened(this.ingredient)
+		return superProto.show.apply(this, arguments)
+	},
+	
 	render: function ()
 	{
 		var ingredient = this.ingredient
-		
-		Statistics.ingredientPopupOpened(ingredient)
 		
 		var clone = this.cloner.create()
 		this.popupRoot.appendChild(clone.root)
