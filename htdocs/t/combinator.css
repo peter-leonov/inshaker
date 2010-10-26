@@ -143,6 +143,7 @@ html { overflow-y: scroll;  }
 .ingredient-window .about .text p { margin: 0px 0px 15px 0px; }
 .ingredient-window .about .all-cocktails,
 .ingredient-window .about .combinations { margin-top: 1em; font-size: 12px; }
+.ingredient-window .about .combinations .list { margin: 0.2em 0 0 1em; }
 .ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
 .ingredient-window.can-buy .about .where-to-buy { display: block; }
 
