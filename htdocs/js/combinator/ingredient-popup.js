@@ -101,10 +101,7 @@ var myProto =
 		for (var i = 0, il = major.length; i < il; i++)
 			coefficients[major[i].name] = 1
 		
-		var minor = Ingredient.getByGroups(['Лед'])
-		minor.push(Ingredient.getByName('Сахарный сироп'))
-		minor.push(Ingredient.getByName('Лайм'))
-		minor.push(Ingredient.getByName('Лимон'))
+		var minor = Ingredient.getByGroups(['Лед']).concat(Ingredient.getByNames(['Сахарный сироп', 'Лайм', 'Лимон']))
 		for (var i = 0, il = minor.length; i < il; i++)
 			coefficients[minor[i].name] = 0.001
 		
