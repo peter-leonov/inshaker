@@ -52,14 +52,7 @@ var myProto =
 		
 		nodes.name.appendChild(T(ingredient.name))
 		
-		
-		// var len = ingredient.cocktails.length
-		// if (len)
-		// 	nodes.allLink.appendChild(T(' ' + len + ' ' + len.plural('коктейль', 'коктейля', 'коктейлей')))
-		// 
-		// if (ingredient.decls)
-		// 	nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
-		// nodes.allLink.href = ingredient.combinatorLink()
+		this.renderAllCocktailsLink(ingredient)
 		this.renderSupplements(ingredient)
 		
 		nodes.text.innerHTML = ingredient.about
@@ -69,6 +62,22 @@ var myProto =
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
+	},
+	
+	renderAllCocktailsLink: function (ingredient)
+	{
+		if (ingredient.cocktails.length == 0)
+		{
+			
+			return
+		}
+		// var len = ingredient.cocktails.length
+		// if (len)
+		// 	nodes.allLink.appendChild(T(' ' + len + ' ' + len.plural('коктейль', 'коктейля', 'коктейлей')))
+		// 
+		// if (ingredient.decls)
+		// 	nodes.allLink.appendChild(T(' ' + ingredient.decls.t))
+		// nodes.allLink.href = ingredient.combinatorLink()
 	},
 	
 	renderSupplements: function (ingredient)
