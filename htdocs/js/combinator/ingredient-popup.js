@@ -95,8 +95,16 @@ var myProto =
 			return
 		}
 		
-		var minor = Ingredient.getByGroups(['Лед'])
 		var coefficients = {}
+		
+		var major = Ingredient.getByGroups(['Соки и морсы', 'Вода и напитки'])
+		for (var i = 0, il = major.length; i < il; i++)
+			coefficients[major[i].name] = 1
+		
+		var minor = Ingredient.getByGroups(['Лед'])
+		minor.push(Ingredient.getByName('Сахарный сироп'))
+		minor.push(Ingredient.getByName('Лайм'))
+		minor.push(Ingredient.getByName('Лимон'))
 		for (var i = 0, il = minor.length; i < il; i++)
 			coefficients[minor[i].name] = 0.001
 		
@@ -106,7 +114,7 @@ var myProto =
 		
 		
 		var list = nodes.combinationsList
-		for (var i = 0, il = supplements.length; i < il && i < 7; i++)
+		for (var i = 0, il = supplements.length; i < il && i < 5; i++)
 		{
 			var supplement = supplements[i]
 			
