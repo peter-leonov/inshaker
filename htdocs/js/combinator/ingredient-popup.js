@@ -107,9 +107,6 @@ var myProto =
 		
 		var supplements = Cocktail.getSupplementByIngredientName(ingredient.name, coefficients)
 		
-		nodes.combinations.addEventListener('click', function (e) { if (e.target.href) popup.hide() }, false)
-		
-		
 		var list = nodes.combinationsList
 		for (var i = 0, il = supplements.length; i < il && i < 5; i++)
 		{
@@ -173,18 +170,27 @@ var myStatic =
 	
 	show: function (ingredient)
 	{
+		this.hide()
+		
 		var popup = this.cache[ingredient.name]
-		if (popup)
+		if (!popup)
 		{
-			popup.show()
-			return
+			popup = this.cache[ingredient.name] = new this()
+			popup.setIngredient(ingredient)
 		}
 		
-		var popup = new this()
-		popup.setIngredient(ingredient)
 		popup.show()
+		this.popup = popup
+	},
+	
+	hide: function ()
+	{
+		var popup = this.popup
+		if (!popup)
+			return
 		
-		this.cache[ingredient.name] = popup
+		popup.hide()
+		this.popup = null
 	}
 }
 
