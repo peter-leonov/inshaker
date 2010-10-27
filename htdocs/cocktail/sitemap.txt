@@ -448,6 +448,7 @@ http://www.inshaker.ru/cocktail/raspberry_milkshake/
 http://www.inshaker.ru/cocktail/raspberry_sling/
 http://www.inshaker.ru/cocktail/raspberry_cheesecake/
 http://www.inshaker.ru/cocktail/raspberry_shot/
+http://www.inshaker.ru/cocktail/mango_daiquiri/
 http://www.inshaker.ru/cocktail/mango_cobler_317/
 http://www.inshaker.ru/cocktail/mango_rum_collins/
 http://www.inshaker.ru/cocktail/mango_sling/
