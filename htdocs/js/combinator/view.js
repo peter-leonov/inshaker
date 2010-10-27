@@ -47,6 +47,9 @@ var myProto =
 		var lh = this.locationHash = new LocationHash().bind(window)
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
+		var t = new Throttler(function () { me.controller.windowScrolled(document.documentElement.scrollTop || document.body.scrollTop) }, 100, 500)
+		window.addEventListener('scroll', function () { t.call() }, false)
+		
 		return this
 	},
 	
@@ -64,7 +67,8 @@ var myProto =
 			remove: parts.remove,
 			query: query,
 			sortBy: bookmark.s,
-			ingredientPopup: bookmark.i
+			ingredientPopup: bookmark.i,
+			scrollTop: bookmark.y
 		}
 		
 		this.controller.setState(state)
@@ -88,7 +92,8 @@ var myProto =
 		{
 			q: state.query,
 			s: state.sortBy,
-			i: state.ingredientPopup
+			i: state.ingredientPopup,
+			y: state.scrollTop
 		}
 		
 		for (var k in bookmark)
@@ -267,6 +272,11 @@ var myProto =
 			IngredientPopup.show(ingredient)
 		else
 			IngredientPopup.hide()
+	},
+	
+	scrollTo: function (top)
+	{
+		window.scrollTo(0, top)
 	}
 }
 

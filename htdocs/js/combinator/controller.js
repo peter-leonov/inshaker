@@ -40,6 +40,11 @@ var myProto =
 	ingredientSelected: function (ingredient)
 	{
 		this.model.selectIngredient(ingredient)
+	},
+	
+	windowScrolled: function (v)
+	{
+		this.model.setScrollTop(v)
 	}
 }
 

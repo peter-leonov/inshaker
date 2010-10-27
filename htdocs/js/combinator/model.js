@@ -369,6 +369,13 @@ var myProto =
 		
 		this.view.renderQuery(state.query)
 		
+		var scrollTop = newState.scrollTop
+		if (scrollTop != undefined)
+		{
+			state.scrollTop = scrollTop
+			this.view.scrollTo(scrollTop)
+		}
+		
 		var ingredientPopup = newState.ingredientPopup
 		if (ingredientPopup)
 		{
@@ -680,6 +687,11 @@ var myProto =
 		this.view.setBookmark(state)
 		
 		this.view.showIngredient(ingredient)
+	},
+	
+	setScrollTop: function (v)
+	{
+		this.state.scrollTop = v
 	}
 }
 
