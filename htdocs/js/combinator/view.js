@@ -175,6 +175,8 @@ var myProto =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
+		
+		IngredientPopup.hide()
 	},
 	
 	renderInitialBlock: function (groups)
