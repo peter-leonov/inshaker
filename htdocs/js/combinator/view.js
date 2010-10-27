@@ -63,7 +63,8 @@ var myProto =
 			add: parts.add,
 			remove: parts.remove,
 			query: query,
-			sortBy: bookmark.s
+			sortBy: bookmark.s,
+			ingredientPopup: bookmark.i
 		}
 		
 		this.controller.setState(state)
@@ -86,7 +87,8 @@ var myProto =
 		var bookmark =
 		{
 			q: state.query,
-			s: state.sortBy
+			s: state.sortBy,
+			i: state.ingredientPopup
 		}
 		
 		for (var k in bookmark)
@@ -175,8 +177,6 @@ var myProto =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
-		
-		IngredientPopup.hide()
 	},
 	
 	renderInitialBlock: function (groups)
@@ -263,7 +263,10 @@ var myProto =
 	
 	showIngredient: function (ingredient)
 	{
-		IngredientPopup.show(ingredient)
+		if (ingredient)
+			IngredientPopup.show(ingredient)
+		else
+			IngredientPopup.hide()
 	}
 }
 

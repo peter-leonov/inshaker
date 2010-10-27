@@ -368,6 +368,16 @@ var myProto =
 		this.updateData()
 		
 		this.view.renderQuery(state.query)
+		
+		var ingredientPopup = newState.ingredientPopup
+		if (ingredientPopup)
+		{
+			var ingredient = Ingredient.getByName(ingredientPopup)
+			state.ingredientPopup = ingredientPopup
+			this.view.showIngredient(ingredient)
+		}
+		else
+			this.view.showIngredient(null)
 	},
 	
 	setQuery: function (add, remove, query)
@@ -663,6 +673,12 @@ var myProto =
 	
 	selectIngredient: function (ingredient)
 	{
+		var state = this.state
+		
+		state.ingredientPopup = ingredient.name
+		
+		this.view.setBookmark(state)
+		
 		this.view.showIngredient(ingredient)
 	}
 }
