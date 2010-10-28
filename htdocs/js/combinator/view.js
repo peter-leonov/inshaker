@@ -271,7 +271,11 @@ var myProto =
 	showIngredient: function (ingredient)
 	{
 		if (ingredient)
-			IngredientPopup.show(ingredient)
+		{
+			var popup = IngredientPopup.show(ingredient)
+			var controller = this.controller
+			popup.onhide = function () { controller.ingredientSelected(null) }
+		}
 		else
 			IngredientPopup.hide()
 	},

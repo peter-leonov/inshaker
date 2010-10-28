@@ -682,11 +682,18 @@ var myProto =
 	{
 		var state = this.state
 		
-		state.ingredientPopup = ingredient.name
+		if (ingredient)
+		{
+			state.ingredientPopup = ingredient.name
+			this.view.showIngredient(ingredient)
+		}
+		else
+		{
+			delete state.ingredientPopup
+			this.view.showIngredient(null)
+		}
 		
 		this.view.setBookmark(state)
-		
-		this.view.showIngredient(ingredient)
 	},
 	
 	setScrollTop: function (v)

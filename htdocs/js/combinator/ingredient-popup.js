@@ -181,6 +181,7 @@ var myStatic =
 		
 		popup.show()
 		this.popup = popup
+		return popup
 	},
 	
 	hide: function ()
