@@ -181,6 +181,7 @@ http://www.inshaker.ru/cocktail/gold_royale/
 http://www.inshaker.ru/cocktail/golden_rico/
 http://www.inshaker.ru/cocktail/golden_fizz/
 http://www.inshaker.ru/cocktail/goldfinger/
+http://www.inshaker.ru/cocktail/dutch_courage/
 http://www.inshaker.ru/cocktail/blue_lagoon/
 http://www.inshaker.ru/cocktail/blue_moon/
 http://www.inshaker.ru/cocktail/blue_temptation/
