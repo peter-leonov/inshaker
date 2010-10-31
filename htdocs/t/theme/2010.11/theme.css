@@ -13,11 +13,11 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 640px; left: 140px; bottom: -815px; }
 #branded-image-holder { height: 900px; }
-a { color: #2e63c1; }
-#top .nav a:hover { border-bottom-color: #2e63c1; }
-#bottom { color: #888; }
-#bottom a { color: #2e63c1; }
-html { background: #fff url(bg.png) repeat-x center 60px; }
+a { color: #000; }
+#top .nav a:hover { border-bottom-color: #ce222c; }
+#bottom { color: #fff; }
+#bottom a { color: #d6ad4a; }
+html { background: #fff url(bg.png) center 60px; }
 button.rounded b { text-shadow: 1px 1px 0 #000; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 
@@ -28,7 +28,7 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b { color: #2e63c1; }
+#cart_draghere b { color: #ce222c; }
 
 /* cocktails.css */
 .square-list .prev,
