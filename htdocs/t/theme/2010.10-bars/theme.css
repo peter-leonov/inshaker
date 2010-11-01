@@ -86,7 +86,7 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 /* bars.css */
 html { background: #000 url(bg.jpg) center 0 no-repeat; }
 a { color: #c9011d; }
-.bar-mini a { background-image: url(pre-mask-full.png); }
+.bar-mini a { background-image: url(bars-mask-full.png); }
 #sort-menu .bars-select dt { color: #f9593b; }
 #sort-menu .bars-select dd ul li.selected { color: #f43f3f; }
 #sort-menu .bars-select dd ul li:hover { color: #f43f3f; }
