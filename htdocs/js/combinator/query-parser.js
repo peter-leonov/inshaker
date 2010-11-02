@@ -6,16 +6,12 @@ function Me () {}
 
 Me.parse = function (string)
 {
-	var tokenizer = /([+-])([^+-]*)/g,
+	var tokenizer = /([+-]|^)([^+-]*)/g,
 		beforeRex = /^\s*/g,
 		afterRex = /\s*$/g
 	
 	if (!string)
 		return []
-	
-	string = '' + string
-	if (string.charAt(0) != '+')
-		string = '+' + string
 	
 	var m, tokens = []
 	while ((m = tokenizer.exec(string)))
@@ -103,7 +99,6 @@ Me.debug = function (tokens)
 	
 	return string
 }
-
 
 Me.className = myName
 self[myName] = Me

@@ -18,8 +18,8 @@ Me.prototype =
 			return
 		
 		tokens.active.value = value
-		input.value = QueryParser.stringify(tokens).substr(1)
-		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
+		input.value = QueryParser.stringify(tokens)
+		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length
 	},
 	
 	getCurrentValue: function ()
@@ -39,8 +39,6 @@ Me.prototype =
 		var input = this.input,
 			value = input.value,
 			cursor = input.selectionEnd
-		
-		cursor++
 		
 		var tokens
 		if (this.lastValue === value)
