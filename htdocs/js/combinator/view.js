@@ -9,8 +9,6 @@ var myProto =
 	initialize: function ()
 	{
 		this.nodes = {}
-		this.tokens = []
-		this.tokens.active = {}
 	},
 	
 	bind: function (nodes)
