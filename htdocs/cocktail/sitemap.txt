@@ -181,6 +181,7 @@ http://www.inshaker.ru/cocktail/gold_royale/
 http://www.inshaker.ru/cocktail/golden_rico/
 http://www.inshaker.ru/cocktail/golden_fizz/
 http://www.inshaker.ru/cocktail/goldfinger/
+http://www.inshaker.ru/cocktail/dutch_courage/
 http://www.inshaker.ru/cocktail/blue_lagoon/
 http://www.inshaker.ru/cocktail/blue_moon/
 http://www.inshaker.ru/cocktail/blue_temptation/
@@ -448,6 +449,7 @@ http://www.inshaker.ru/cocktail/raspberry_milkshake/
 http://www.inshaker.ru/cocktail/raspberry_sling/
 http://www.inshaker.ru/cocktail/raspberry_cheesecake/
 http://www.inshaker.ru/cocktail/raspberry_shot/
+http://www.inshaker.ru/cocktail/mango_daiquiri/
 http://www.inshaker.ru/cocktail/mango_cobler_317/
 http://www.inshaker.ru/cocktail/mango_rum_collins/
 http://www.inshaker.ru/cocktail/mango_sling/
@@ -515,6 +517,7 @@ http://www.inshaker.ru/cocktail/milky_brandy_punch/
 http://www.inshaker.ru/cocktail/milky_whisky_punsh/
 http://www.inshaker.ru/cocktail/monk/
 http://www.inshaker.ru/cocktail/montpensier/
+http://www.inshaker.ru/cocktail/carrot_chaser-aphrodisiac/
 http://www.inshaker.ru/cocktail/mors_martini/
 http://www.inshaker.ru/cocktail/sea_breeze/
 http://www.inshaker.ru/cocktail/moscow_lights/
@@ -627,6 +630,7 @@ http://www.inshaker.ru/cocktail/rastafarai/
 http://www.inshaker.ru/cocktail/raul_and_fidel/
 http://www.inshaker.ru/cocktail/reanimator/
 http://www.inshaker.ru/cocktail/rubarb_ruban/
+http://www.inshaker.ru/cocktail/rubarb_liqueur_and_soda/
 http://www.inshaker.ru/cocktail/rhubarb-butterscotch_sour/
 http://www.inshaker.ru/cocktail/red_basil_smash/
 http://www.inshaker.ru/cocktail/red_dress/
@@ -687,12 +691,14 @@ http://www.inshaker.ru/cocktail/sangrita/
 http://www.inshaker.ru/cocktail/sangrita_carlitos/
 http://www.inshaker.ru/cocktail/sangrita_in_russian/
 http://www.inshaker.ru/cocktail/satisfaction/
+http://www.inshaker.ru/cocktail/beet_chaser-aphrodisiac/
 http://www.inshaker.ru/cocktail/traffic_lights/
 http://www.inshaker.ru/cocktail/raging_bull/
 http://www.inshaker.ru/cocktail/sweet_heart/
 http://www.inshaker.ru/cocktail/northern_lights/
 http://www.inshaker.ru/cocktail/north_man/
 http://www.inshaker.ru/cocktail/ceviche_mary/
+http://www.inshaker.ru/cocktail/ceviche_chaser-aphrodisiac/
 http://www.inshaker.ru/cocktail/sage_romance/
 http://www.inshaker.ru/cocktail/sex_on_the_beach/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_light/
@@ -729,6 +735,7 @@ http://www.inshaker.ru/cocktail/sunlight/
 http://www.inshaker.ru/cocktail/malted_gold/
 http://www.inshaker.ru/cocktail/soho_martini/
 http://www.inshaker.ru/cocktail/spice_girls/
+http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/old_fashioned/
 http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
 http://www.inshaker.ru/cocktail/old_fashioned_with_rum/
@@ -768,6 +775,7 @@ http://www.inshaker.ru/cocktail/soft_fire/
 http://www.inshaker.ru/cocktail/smoldering_fizz/
 http://www.inshaker.ru/cocktail/toddy_grog/
 http://www.inshaker.ru/cocktail/tom_and_jerry/
+http://www.inshaker.ru/cocktail/tom_yam_chaser-aphrodisiac/
 http://www.inshaker.ru/cocktail/tommy_d_sour/
 http://www.inshaker.ru/cocktail/top_banana/
 http://www.inshaker.ru/cocktail/top_billing/
