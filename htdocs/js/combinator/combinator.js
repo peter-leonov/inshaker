@@ -50,6 +50,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="ingredient-popup.js" -->
 <!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
+<!--# include virtual="tokenizer.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->

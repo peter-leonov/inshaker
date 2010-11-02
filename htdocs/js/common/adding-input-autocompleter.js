@@ -31,22 +31,19 @@ Me.prototype =
 		nodes.main.addEventListener('click', onupdate, false)
 		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
 		
-		this.updateTokens(nodes.main.value, nodes.main.selectionEnd)
+		this.tokenizer = new Tokenizer(nodes.main)
 		
 		return this
 	},
 	
 	search: function (v, cursor)
 	{
-		this.updateTokens(v, cursor)
+		var tokenizer = this.tokenizer
 		
-		var parts = this.getParts(true)
+		var parts = tokenizer.getParts(true)
 		this.dispatchEvent({type: 'changed', add: parts.add, remove: parts.remove})
 		
-		if (!this.tokens.active)
-			return
-		
-		var value = this.tokens.active.value
+		var value = tokenizer.getCurrentValue()
 		if (value === '')
 			return this.reset()
 		
@@ -97,39 +94,32 @@ Me.prototype =
 	
 	cursor: function (v, cursor)
 	{
-		var tokens = this.tokens
-		
-		var active = tokens.active
-		this.updateTokens(v, cursor)
-		if (active && active.num != tokens.active.num)
+		var num = this.tokenizer.getCurrentNum()
+		log(num)
+		if (num != this.lastCurrentTokenNum)
+		{
+			this.lastCurrentTokenNum = num
 			this.reset()
+		}
 	},
 	
 	apply: function (value)
 	{
-		var parts = this.getParts()
+		var parts = this.tokenizer.getParts()
 		this.completer.reset()
 		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
 	},
 	
 	select: function (value)
 	{
-		var tokens = this.tokens,
-			input = this.nodes.main
-		
-		if (!tokens.active)
-			return
-		
-		tokens.active.value = value
-		input.value = QueryParser.stringify(tokens).substr(1)
-		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length - 1
+		this.tokenizer.setCurrentValue(value)
 	},
 	
 	accept: function (value)
 	{
 		this.select(value)
 		
-		var parts = this.getParts()
+		var parts = this.tokenizer.getParts()
 		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
 	},
 	
@@ -137,45 +127,9 @@ Me.prototype =
 	{
 		var input = this.nodes.main
 		input.value = value
-		this.updateTokens(value, value.length)
 		this.apply()
 	},
 	
-	updateTokens: function (value, cursor)
-	{
-		cursor++
-		
-		var tokens
-		if (this.lastValue === value)
-		{
-			tokens = this.tokens
-		}
-		else
-		{
-			tokens = this.tokens = QueryParser.parse(value)
-			this.lastValue = value
-		}
-		
-		if (this.lastCursor === cursor)
-			return
-		this.lastCursor = cursor
-		
-		var active = -1
-		for (var i = 0, il = tokens.length; i < il; i++)
-		{
-			var t = tokens[i]
-			
-			if (t.begin <= cursor && cursor <= t.end)
-				active = i
-		}
-		
-		tokens.active = tokens[active]
-	},
-	
-	getParts: function (exceptActive)
-	{
-		return QueryParser.getParts(this.tokens, {exceptActive: exceptActive})
-	},
 	
 	setDataSource: function (ds)
 	{
