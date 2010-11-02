@@ -82,12 +82,6 @@ var myProto =
 	
 	setBookmark: function (state)
 	{
-		if (!state.query)
-		{
-			this.locationHash.setRaw('')
-			return
-		}
-		
 		var bookmark =
 		{
 			q: state.query,
