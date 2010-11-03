@@ -45,18 +45,18 @@ var myProto =
 	sortByNames:
 	[
 		'от простых к сложным',
-		'по алфавиту',
 		'по группам',
-		'по дате размещения'
+		'по дате размещения',
+		'по алфавиту'
 		// 'по количеству ингредиента'
 	],
 	
 	sortTypeByNum:
 	[
 		'increasing-complexity',
-		'alphabetically',
 		'by-group',
-		'by-date'
+		'by-date',
+		'alphabetically'
 		// 'by-strength'
 	],
 	
