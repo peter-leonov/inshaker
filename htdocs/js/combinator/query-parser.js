@@ -10,15 +10,19 @@ Me.parse = function (string)
 		beforeRex = /^\s*/g,
 		afterRex = /\s*$/g
 	
-	if (!string)
-		return []
-	
-	var m, tokens = []
+	var m, tokens = [], steps = 0, lastBegin = -1
 	while ((m = tokenizer.exec(string)))
 	{
+		if (steps++ > 50)
+			break
+		
 		var op = m[1], body = m[2]
 		
 		var end = tokenizer.lastIndex, begin = end - body.length
+		
+		if (begin <= lastBegin)
+			break
+		lastBegin = begin
 		
 		beforeRex.lastIndex = 0
 		m = beforeRex.exec(body)
