@@ -369,25 +369,15 @@ var myProto =
 		
 		this.view.renderQuery(state.query)
 		
-		var sortBy = newState.sortBy
-		if (sortBy)
-		{
-			state.sortBy = sortBy
-			this.view.renderSortby(this.sortTypeByNum.indexOf(sortBy))
-		}
+		if (state.sortBy)
+			this.view.renderSortby(this.sortTypeByNum.indexOf(state.sortBy))
 		
-		var scrollTop = newState.scrollTop
-		if (scrollTop != undefined)
-		{
-			state.scrollTop = scrollTop
-			this.view.scrollTo(scrollTop)
-		}
+		if (state.scrollTop)
+			this.view.scrollTo(state.scrollTop)
 		
-		var ingredientPopup = newState.ingredientPopup
-		if (ingredientPopup)
+		if (state.ingredientPopup)
 		{
-			var ingredient = Ingredient.getByName(ingredientPopup)
-			state.ingredientPopup = ingredientPopup
+			var ingredient = Ingredient.getByName(state.ingredientPopup)
 			this.view.showIngredient(ingredient)
 		}
 		else
