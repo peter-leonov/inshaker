@@ -18,9 +18,6 @@ Me.prototype =
 		// to be able to ask it for a length
 		value = '' + value
 		
-		if (!tokens.active)
-			return
-		
 		tokens.active.value = value
 		input.value = QueryParser.stringify(tokens)
 		input.selectionStart = input.selectionEnd = tokens.active.begin + tokens.active.before.length + value.length
@@ -28,14 +25,12 @@ Me.prototype =
 	
 	getCurrentValue: function ()
 	{
-		var tokens = this.getTokens()
-		return tokens.active ? tokens.active.value : ''
+		return this.getTokens().active.value
 	},
 	
 	getCurrentNum: function ()
 	{
-		var tokens = this.getTokens()
-		return tokens.active ? tokens.active.num : -1
+		return this.getTokens().active.num
 	},
 	
 	getTokens: function ()
