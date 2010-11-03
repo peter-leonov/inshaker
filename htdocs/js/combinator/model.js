@@ -369,6 +369,13 @@ var myProto =
 		
 		this.view.renderQuery(state.query)
 		
+		var sortBy = newState.sortBy
+		if (sortBy)
+		{
+			state.sortBy = sortBy
+			this.view.renderSortby(this.sortTypeByNum.indexOf(sortBy))
+		}
+		
 		var scrollTop = newState.scrollTop
 		if (scrollTop != undefined)
 		{
