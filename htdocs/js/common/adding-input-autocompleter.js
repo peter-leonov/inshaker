@@ -37,7 +37,7 @@ Me.prototype =
 		return this
 	},
 	
-	search: function (v, cursor)
+	search: function ()
 	{
 		var tokenizer = this.tokenizer
 		
@@ -90,10 +90,10 @@ Me.prototype =
 		if (action)
 			return this[action](v, cursor)
 		
-		this.search(v, cursor)
+		this.search()
 	},
 	
-	cursor: function (v, cursor)
+	cursor: function ()
 	{
 		var num = this.tokenizer.getCurrentNum()
 		log(num)
