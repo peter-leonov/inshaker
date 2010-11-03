@@ -44,6 +44,8 @@ Me.prototype =
 		var parts = tokenizer.getParts(true)
 		this.dispatchEvent({type: 'changed', add: parts.add, remove: parts.remove})
 		
+		this.lastCurrentTokenNum = this.tokenizer.getCurrentNum()
+		
 		var value = tokenizer.getCurrentValue()
 		if (value === '')
 			return this.reset()
@@ -96,7 +98,7 @@ Me.prototype =
 	cursor: function ()
 	{
 		var num = this.tokenizer.getCurrentNum()
-		log(num)
+		
 		if (num != this.lastCurrentTokenNum)
 		{
 			this.lastCurrentTokenNum = num
