@@ -46,7 +46,7 @@ Me.prototype =
 		
 		var tokens = this.tokens = QueryParser.parse(value)
 		
-		var active = -1
+		var active = 0
 		for (var i = 0, il = tokens.length; i < il; i++)
 		{
 			var t = tokens[i]
