@@ -40,20 +40,7 @@ Me.prototype =
 			value = input.value,
 			cursor = input.selectionEnd
 		
-		var tokens
-		if (this.lastValue === value)
-		{
-			tokens = this.tokens
-		}
-		else
-		{
-			tokens = this.tokens = QueryParser.parse(value)
-			this.lastValue = value
-		}
-		
-		if (this.lastCursor === cursor)
-			return tokens
-		this.lastCursor = cursor
+		var tokens = this.tokens = QueryParser.parse(value)
 		
 		var active = -1
 		for (var i = 0, il = tokens.length; i < il; i++)
