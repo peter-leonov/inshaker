@@ -14,6 +14,10 @@ Me.prototype =
 		var tokens = this.getTokens(),
 			input = this.input
 		
+		// make the value a string
+		// to be able to ask it for a length
+		value = '' + value
+		
 		if (!tokens.active)
 			return
 		
