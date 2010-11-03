@@ -82,7 +82,7 @@ Me.getParts = function (tokens, opts)
 			continue
 		
 		var op = t.op
-		if (op == '+')
+		if (op == '+' || op == '')
 			add.push(t.value)
 		else if (op == '-')
 			remove.push(t.value)
