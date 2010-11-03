@@ -1,6 +1,8 @@
 html { overflow-y: scroll; min-height: 100%; position: relative; }
 body { position: static; min-height: 100%; }
 
+#branded-image-holder { display: none; }
+
 .b-title { height: 55px; background: none; }
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
