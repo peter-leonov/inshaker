@@ -32,6 +32,7 @@ Me.prototype =
 		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
 		
 		this.tokenizer = new Tokenizer(nodes.main)
+		this.lastCurrentTokenNum = this.tokenizer.getCurrentNum()
 		
 		return this
 	},
