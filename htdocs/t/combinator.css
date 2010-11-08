@@ -167,6 +167,8 @@ body { position: static; min-height: 100%; }
 .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
 .cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
+.cocktail-list .prev .spacer,
+.cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
 
 <!--# include virtual="popup.css" -->
 
