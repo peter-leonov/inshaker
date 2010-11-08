@@ -120,8 +120,8 @@ body { position: static; min-height: 100%; }
 
 .ingredient-preview { display: block; float: left; }
 .ingredient-preview,
-.ingredient-preview .image { width: 100px; height: 100px; }
-.ingredient-preview .image { display: block; color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
+.ingredient-preview .image { display: block; width: 100px; height: 100px; }
+.ingredient-preview.lazy .image { color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
 

@@ -125,10 +125,11 @@ var myProto =
 				if (!box.loaded)
 				{
 					var node = box.node,
-						image = node.ingredientNode.ingredientImage
+						ingredientNode = node.ingredientNode,
+						image = ingredientNode.ingredientImage
 					
 					image.src = image.lazySrc
-					node.removeClassName('lazy')
+					ingredientNode.removeClassName('lazy')
 					
 					box.loaded = true
 				}
