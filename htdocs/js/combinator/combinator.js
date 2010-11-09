@@ -31,6 +31,7 @@ Object.extend(Me.prototype, myProto)
 })();
 
 <!--# include virtual="/lib-0.3/core/fixes/onhashchange.js"-->
+<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->

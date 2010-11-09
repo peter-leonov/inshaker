@@ -61,7 +61,7 @@ Me.prototype =
 	onUpdate: function (e)
 	{
 		var keyCode = e.keyCode
-		// log(keyCode)
+		log(keyCode)
 		
 		if (this.ignoreKeys[keyCode])
 			return
