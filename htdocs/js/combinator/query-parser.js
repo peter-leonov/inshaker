@@ -10,6 +10,21 @@ Me.parse = function (string)
 		beforeRex = /^\s*/g,
 		afterRex = /\s*$/g
 	
+	if (string === '')
+	{
+		var empty =
+		{
+			num: 0,
+			begin: 0,
+			op: '',
+			before: '',
+			value: '',
+			after: '',
+			end: 0
+		}
+		return [empty]
+	}
+	
 	var m, tokens = [], steps = 0, lastBegin = -1
 	while ((m = tokenizer.exec(string)))
 	{
