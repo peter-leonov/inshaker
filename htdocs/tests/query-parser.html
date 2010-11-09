@@ -22,6 +22,17 @@ Tests.test(function (t)
 		t.eq(QueryParser.stringify(tokens), '+  xxx   - yyyyyy', 'stringify')
 	})
 	
+	t.test('regexp', function (t)
+	{
+		var rex = /([+-]|^)([^+-]*)/
+		rex.exec('')
+		t.eq(rex.lastIndex, 0, 'lastIndex on empty string')
+		
+		var rex = /^/
+		rex.exec('')
+		t.eq(rex.lastIndex, 0, 'lastIndex on empty string')
+	})
+	
 	
 	function test (name, t, string, debug)
 	{
