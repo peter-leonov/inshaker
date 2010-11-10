@@ -150,13 +150,13 @@ http://www.inshaker.ru/cocktail/vodka_pomegranate_juice/
 http://www.inshaker.ru/cocktail/vodka_mandarin/
 http://www.inshaker.ru/cocktail/vodka_martini/
 http://www.inshaker.ru/cocktail/vodka_minty_tea/
-http://www.inshaker.ru/cocktail/vodka_red_bull/
-http://www.inshaker.ru/cocktail/vodka_red_bull_mini/
 http://www.inshaker.ru/cocktail/vodka_pear_and_pomegranate/
 http://www.inshaker.ru/cocktail/vodka_smash/
 http://www.inshaker.ru/cocktail/vodka_sprite/
 http://www.inshaker.ru/cocktail/vodka_tonic/
 http://www.inshaker.ru/cocktail/vodka_citron_tonic/
+http://www.inshaker.ru/cocktail/vodka_energy_drink/
+http://www.inshaker.ru/cocktail/vodka_energy_drink_mini/
 http://www.inshaker.ru/cocktail/around_the_world/
 http://www.inshaker.ru/cocktail/sunday_lemonade/
 http://www.inshaker.ru/cocktail/east_meets_west/
@@ -183,6 +183,7 @@ http://www.inshaker.ru/cocktail/golden_rico/
 http://www.inshaker.ru/cocktail/golden_fizz/
 http://www.inshaker.ru/cocktail/goldfinger/
 http://www.inshaker.ru/cocktail/dutch_courage/
+http://www.inshaker.ru/cocktail/dutch_basil_smash/
 http://www.inshaker.ru/cocktail/blue_lagoon/
 http://www.inshaker.ru/cocktail/blue_moon/
 http://www.inshaker.ru/cocktail/blue_temptation/
@@ -202,6 +203,7 @@ http://www.inshaker.ru/cocktail/grand_sazerac/
 http://www.inshaker.ru/cocktail/grapinia/
 http://www.inshaker.ru/cocktail/grappa_verde/
 http://www.inshaker.ru/cocktail/count/
+http://www.inshaker.ru/cocktail/grapefruit_splash/
 http://www.inshaker.ru/cocktail/green_hope/
 http://www.inshaker.ru/cocktail/grog/
 http://www.inshaker.ru/cocktail/pear_breeze/

@@ -1,7 +1,4 @@
-http://www.inshaker.ru/barman/bartenders-brothers/
 http://www.inshaker.ru/barman/inshaker/
-http://www.inshaker.ru/barman/russian-cocktail-club/
-http://www.inshaker.ru/barman/the-united-bartenders/
 http://www.inshaker.ru/barman/agostino-perrone/
 http://www.inshaker.ru/barman/alexander-kan/
 http://www.inshaker.ru/barman/alexey-kopirin/
@@ -46,7 +43,6 @@ http://www.inshaker.ru/barman/salvatore-calabrese/
 http://www.inshaker.ru/barman/seyran-gevorkyan/
 http://www.inshaker.ru/barman/sergey-zaharov/
 http://www.inshaker.ru/barman/sergei-chesnokov/
-http://www.inshaker.ru/barman/sergey-chibisov/
 http://www.inshaker.ru/barman/fernando-castellon/
 http://www.inshaker.ru/barman/ueno-hidetsugu/
 http://www.inshaker.ru/barman/andy-pearson/
