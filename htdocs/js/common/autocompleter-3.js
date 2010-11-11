@@ -221,7 +221,7 @@ var myProto =
 	action: function (action)
 	{
 		this[action]()
-	},
+	}
 }
 
 Object.extend(Me.prototype, myProto)
