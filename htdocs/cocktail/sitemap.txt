@@ -715,6 +715,7 @@ http://www.inshaker.ru/cocktail/silver_bullet/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
 http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/simple_white/
+http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/lilac_plum/
 http://www.inshaker.ru/cocktail/lilac_mist/
 http://www.inshaker.ru/cocktail/sweet_memories/
