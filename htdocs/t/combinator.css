@@ -10,7 +10,7 @@ body { position: static; min-height: 100%; }
 .b-content { width: 100%; }
 .column { z-index: 2; }
 
-#search-box { position: relative; z-index: 100; }
+#search-box { position: relative; z-index: 10; width: 850px; }
 #search-box .query { padding: 2px; color: inherit; width: 755px; }
 #search-box .query,
 #search-box .search { font-size: 20px; vertical-align: middle; }
