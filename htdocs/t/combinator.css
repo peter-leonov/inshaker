@@ -3,7 +3,7 @@ body { position: static; min-height: 100%; }
 
 #branded-image-holder { display: none; }
 
-.b-title { height: 55px; background: none; }
+.b-title { height: 55px; background: none; z-index: 1; }
 .b-title h1 { font-size: 24px; }
 .b-content { width: 100%; }
 .column { z-index: 2; }
