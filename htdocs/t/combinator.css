@@ -84,7 +84,7 @@ body { position: static; min-height: 100%; }
 
 .ingredients-list .group { margin: 0 0 25px; width: 940px; }
 .ingredients-list .group .head { font-size: 24px; margin: 0 0 15px 0; }
-.ingredients-list .group .list { overflow: hidden; zoom: 1; }
+.ingredients-list .group .list { overflow: hidden; }
 .ingredients-list .group .list .item { float: left; position: relative; margin: 0 17px 15px 0; width: 100px; height: 140px; }
 
 
@@ -188,6 +188,10 @@ body { position: static; min-height: 100%; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
 .popup .window { zoom: 1; }
 #ingredient-info-popup.popup .popup-back { height: 10000px; }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
+.ingredients-list .group .list { zoom: 1; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
