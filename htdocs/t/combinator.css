@@ -181,6 +181,7 @@ body { position: static; min-height: 100%; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
 .hidden { display: none; }
+body { position: relative; }
 <!--# else -->
 .hidden { visibility: hidden; position: absolute; top: -20000px; }
 <!--# endif -->
