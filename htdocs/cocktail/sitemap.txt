@@ -372,6 +372,7 @@ http://www.inshaker.ru/cocktail/connaught_martini/
 http://www.inshaker.ru/cocktail/head_shot/
 http://www.inshaker.ru/cocktail/cognac_infused_on_sweet_cherries/
 http://www.inshaker.ru/cocktail/french_cinnamon/
+http://www.inshaker.ru/cocktail/royal_rhubarb/
 http://www.inshaker.ru/cocktail/royal_temptation/
 http://www.inshaker.ru/cocktail/royal_apple/
 http://www.inshaker.ru/cocktail/short_honey_moon/
@@ -394,6 +395,7 @@ http://www.inshaker.ru/cocktail/little_bloody_masha/
 http://www.inshaker.ru/cocktail/bloody_mashka/
 http://www.inshaker.ru/cocktail/bloody_mary/
 http://www.inshaker.ru/cocktail/bloody_joseph/
+http://www.inshaker.ru/cocktail/blood_and_sand/
 http://www.inshaker.ru/cocktail/cuba_libre/
 http://www.inshaker.ru/cocktail/cucumber/
 http://www.inshaker.ru/cocktail/cool_sweet_heart/
