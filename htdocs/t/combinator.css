@@ -158,7 +158,7 @@ body { position: static; min-height: 100%; }
 .ingredient-window .cocktail-list.empty { display: none; }
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
-.ingredient-window .cocktail-list .viewport { width: 625px; height: 117px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
 .ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
 
 .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
