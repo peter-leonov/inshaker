@@ -324,6 +324,9 @@ Object.extend(Cocktail,
 			var parts = cocktails[i].ingredients,
 				len = parts.length
 			
+			if (len == 0)
+				continue
+			
 			var weight = 1 / len
 			
 			for (var j = 0, jl = len; j < jl; j++)
@@ -341,7 +344,8 @@ Object.extend(Cocktail,
 		delete score[ingredientName]
 		
 		for (var k in coefficients)
-			score[k] *= coefficients[k]
+			if (score[k])
+				score[k] *= coefficients[k]
 		
 		var ingredients = Object.keys(score)
 		ingredients.sort(function (a, b) { return score[b] - score[a] })
