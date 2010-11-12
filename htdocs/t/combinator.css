@@ -192,6 +192,7 @@ body { position: static; min-height: 100%; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 .ingredients-list .group .list { zoom: 1; }
+.ingrediented-cocktail-list .row .body { padding-bottom: 35px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
