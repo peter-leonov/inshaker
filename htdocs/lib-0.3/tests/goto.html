@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>GOTO tests (not for the evil)</title>
+	<script src="tests.common.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+Tests.test(function (t)
+{
+	t.log('This test had been written to check if its possibile to emulate some kind of “goto” in JS. It would be useful in the yarv2js project.')
+	t.test('an old dirty loop', function (t)
+	{
+		var i = 0
+		A: for (;;) // continue needs “for (;;)”
+		{
+			if (i == 5)
+				break A // goto B
+			
+			i++
+			continue A // goto A
+			
+			t.fail('continue does not work')
+			break A // goto B (never reached)
+		}
+		// here is B:
+		
+		t.eq(i, 5, 'loop index is ok')
+	})
+	
+	t.test('external jump', function (t)
+	{
+		var i = 0
+		A:
+		{
+			
+			for (var i = 0; i < 10; i++)
+				if (i == 5)
+					break A
+		}
+		
+		t.eq(i, 5, 'loop index is ok')
+	})
+	
+	t.test('nested jumps', function (t)
+	{
+		var i = 0
+		A:
+		{
+			B:
+			{
+				C:
+				{
+					break B
+					i++
+				}
+				i++
+			}
+			i++
+			break A
+			i++
+		}
+		
+		
+		t.eq(i, 1, 'index is ok')
+	})
+})
+</script>
+</body>
+</html>
