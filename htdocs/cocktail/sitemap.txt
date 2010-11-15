@@ -334,7 +334,7 @@ http://www.inshaker.ru/cocktail/carribean_jewel/
 http://www.inshaker.ru/cocktail/carin/
 http://www.inshaker.ru/cocktail/kassini/
 http://www.inshaker.ru/cocktail/questo_successo/
-http://www.inshaker.ru/cocktail/capecoder/
+http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/chinese_raspberry/
@@ -584,6 +584,7 @@ http://www.inshaker.ru/cocktail/spicey_tropicana/
 http://www.inshaker.ru/cocktail/from_alice/
 http://www.inshaker.ru/cocktail/screwdriver/
 http://www.inshaker.ru/cocktail/dreadlock_holiday/
+http://www.inshaker.ru/cocktail/hunter/
 http://www.inshaker.ru/cocktail/ocha_karai/
 http://www.inshaker.ru/cocktail/mesmerized/
 http://www.inshaker.ru/cocktail/paloma/
@@ -617,6 +618,7 @@ http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
 http://www.inshaker.ru/cocktail/fire_in_texas/
+http://www.inshaker.ru/cocktail/last_word/
 http://www.inshaker.ru/cocktail/lost/
 http://www.inshaker.ru/cocktail/kisses_and_warm_hugs/
 http://www.inshaker.ru/cocktail/practically_cherry_daiquiri/
@@ -903,3 +905,4 @@ http://www.inshaker.ru/cocktail/japanese_daiquiri/
 http://www.inshaker.ru/cocktail/japanese_cosmopolitan/
 http://www.inshaker.ru/cocktail/japanese_sidecar/
 http://www.inshaker.ru/cocktail/japanese_truffle/
+http://www.inshaker.ru/cocktail/japanese_harvest/
