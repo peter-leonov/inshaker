@@ -214,6 +214,8 @@ http://www.inshaker.ru/cocktail/guav-berry_martini/
 http://www.inshaker.ru/cocktail/good_time_girl/
 http://www.inshaker.ru/cocktail/guus_booze/
 http://www.inshaker.ru/cocktail/daiquiri/
+http://www.inshaker.ru/cocktail/daiquiri_2/
+http://www.inshaker.ru/cocktail/harry_s_daiquiri/
 http://www.inshaker.ru/cocktail/pomegranate_daiquiri/
 http://www.inshaker.ru/cocktail/mayas_dauiquiri/
 http://www.inshaker.ru/cocktail/daiquiri_raspberry/
