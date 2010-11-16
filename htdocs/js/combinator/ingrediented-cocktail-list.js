@@ -153,14 +153,24 @@ var myProto =
 			
 			var list = Nc('dl', 'group')
 			
+			var head
+			
 			var name = group.name
 			if (name)
-				list.appendChild(Nct('dt', 'group-name', name))
+				head = name
 			else
 			{
 				var date = group.date
 				if (date)
-					list.appendChild(Nct('dt', 'group-name', months[date.getMonth()] + ' ' + date.getFullYear()))
+					head = months[date.getMonth()] + ' ' + date.getFullYear()
+			}
+			
+			if (head)
+			{
+				var nameNode = list.appendChild(Nct('dt', 'group-name', head))
+				nameNode.appendChild(Nct('span', 'count', '(' + group.rows.length + ')'))
+				nameNode.addEventListener('click', this.onclickGroupName, false)
+				nameNode['data-group-num'] = i
 			}
 			
 			var rows = group.rows
