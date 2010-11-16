@@ -45,8 +45,9 @@ var myProto =
 	sortByNames:
 	[
 		'от простых к сложным',
-		'по группам',
 		'по дате размещения',
+		'по группам',
+		'по методу приготовления',
 		'по алфавиту'
 		// 'по количеству ингредиента'
 	],
@@ -54,8 +55,9 @@ var myProto =
 	sortTypeByNum:
 	[
 		'increasing-complexity',
-		'by-group',
 		'by-date',
+		'by-group',
+		'by-method',
 		'alphabetically'
 		// 'by-strength'
 	],
@@ -145,6 +147,10 @@ var myProto =
 				sorted = this.sortByGroup(cocktails)
 			break
 			
+			case 'by-method':
+				sorted = this.sortByMethod(cocktails)
+			break
+			
 			case 'by-date':
 				sorted = this.sortByDate(cocktails)
 			break
@@ -225,6 +231,41 @@ var myProto =
 		{
 			var group = sorted[i]
 			groups.push({name: group, cocktails: byGroup[group]})
+		}
+		
+		return groups
+	},
+	
+	sortByMethod: function (cocktails)
+	{
+		var byMethod = {}
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i],
+				method = cocktail.method
+			
+			var arr = byMethod[method]
+			if (arr)
+				arr.push(cocktail)
+			else
+				byMethod[method] = [cocktail]
+		}
+		
+		var methods = this.ds.cocktail.getMethods(),
+			sorted = []
+		for (var i = 0, il = methods.length; i < il; i++)
+		{
+			var method = methods[i]
+			if (byMethod[method])
+				sorted.push(method)
+		}
+		
+		var groups = []
+		for (var i = 0, il = sorted.length; i < il; i++)
+		{
+			var method = sorted[i]
+			groups.push({name: method, cocktails: byMethod[method]})
 		}
 		
 		return groups
