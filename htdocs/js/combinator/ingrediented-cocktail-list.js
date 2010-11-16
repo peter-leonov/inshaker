@@ -117,7 +117,7 @@ var myProto =
 		var frame = this.frame = new VisibilityFrame()
 		frame.setFrame(4000, 5000) // hardcoded for now
 		frame.setStep(4000, 3000)
-		frame.setBoxes(boxes)
+		frame.moveTo(0, -2500)
 		
 		var me = this
 		frame.onmove = function (show, hide)
@@ -138,7 +138,7 @@ var myProto =
 			}
 		}
 		
-		this.onscroll()
+		frame.setBoxes(boxes)
 	},
 	
 	renderGroups: function (groups)
