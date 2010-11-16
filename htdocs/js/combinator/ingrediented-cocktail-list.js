@@ -84,6 +84,8 @@ var myProto =
 		
 		var me = this
 		
+		this.onclickGroupName = function () { me.groupNameClicked(this['data-group-num']) }
+		
 		var t = new Throttler(function () { me.onscroll() }, 100, 500)
 		this.onscrollListener = function () { t.call() }
 		
@@ -141,6 +143,11 @@ var myProto =
 		frame.setBoxes(boxes)
 	},
 	
+	groupNameClicked: function (num)
+	{
+		this.controller.groupNameClicked(num)
+	},
+	
 	renderGroups: function (groups)
 	{
 		var main = this.nodes.main
@@ -152,6 +159,7 @@ var myProto =
 			var group = groups[i]
 			
 			var list = Nc('dl', 'group')
+			main.appendChild(list)
 			
 			var head
 			
@@ -173,6 +181,14 @@ var myProto =
 				nameNode['data-group-num'] = i
 			}
 			
+			if (group.collapsed)
+			{
+				list.addClassName('collapsed')
+				continue
+			}
+			else
+				list.removeClassName('collapsed')
+			
 			var rows = group.rows
 			for (var j = 0, jl = rows.length; j < jl; j++)
 			{
@@ -184,7 +200,6 @@ var myProto =
 				item['data-row'] = row
 				list.appendChild(item)
 			}
-			main.appendChild(list)
 		}
 		
 		this.setupVisibilityFrame(items)
@@ -230,7 +245,9 @@ var Me = Papa.Controller
 
 var myProto =
 {
-	initialize: function () {}
+	initialize: function () {},
+	
+	groupNameClicked: function (num) { this.model.toggleGroupCollapsedility(num) }
 }
 
 Object.extend(Me.prototype, myProto)
@@ -244,15 +261,11 @@ var Me = Papa.Model
 
 var myProto =
 {
-	initialize: function ()
-	{
-		this.sources = {}
-		this.state = {}
-	},
+	initialize: function () {},
 	
 	setCocktails: function (groups)
 	{
-		this.groups = groups
+		this.rawGroups = groups
 		
 		var res = []
 		
@@ -284,7 +297,22 @@ var myProto =
 				rows: rows
 			}
 		}
+		
+		this.groups = res
 		this.view.renderGroups(res)
+	},
+	
+	toggleGroupCollapsedility: function (num)
+	{
+		var groups = this.groups
+		
+		var group = groups[num]
+		if (!group)
+			return
+		
+		group.collapsed = !group.collapsed
+		
+		this.view.renderGroups(groups)
 	}
 }
 
