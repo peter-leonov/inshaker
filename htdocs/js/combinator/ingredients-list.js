@@ -102,7 +102,9 @@ var myProto =
 		}
 		// console.timeEnd('render')
 		
+		// console.time('setupVisibilityFrame')
 		this.setupVisibilityFrame(this.itemCache)
+		// console.timeEnd('setupVisibilityFrame')
 	},
 	
 	setupVisibilityFrame: function (nodes)
