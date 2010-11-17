@@ -120,7 +120,7 @@ body { position: static; min-height: 100%; }
 
 
 .ingrediented-cocktail-list .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
-.ingrediented-cocktail-list .cocktail-preview .image { display: block; margin: 0 auto -10px; width: 91px; height: 170px; }
+.ingrediented-cocktail-list .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
 .ingrediented-cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
 .ingredient-preview { display: block; float: left; }
