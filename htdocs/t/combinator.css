@@ -15,6 +15,7 @@ body { position: static; min-height: 100%; }
 #search-box .query,
 #search-box .button { font-size: 20px; vertical-align: middle; }
 #search-box .query { padding: 0; }
+#search-box .reset { display: none; position: absolute; left: 693px; top: 4px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 
 #search-box .autocomplete { display: none; width: 559px; background: #fff; border: solid #bbb; }
 #search-box .autocomplete.focused { display: block; }
@@ -46,6 +47,7 @@ body { position: static; min-height: 100%; }
 #output.initial-state .help-line,
 #output.result-state .result-block,
 #output.result-state .sort-line,
+#output.result-state .reset,
 #output.empty-state .sort-line.empty,
 #output.empty-state .empty-block { display: block; }
 
