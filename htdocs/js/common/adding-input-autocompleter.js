@@ -11,9 +11,9 @@ function Me ()
 Me.prototype =
 {
 	// ignore “non-content” keycodes
-	ignoreKeys: {9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 38:1, 18:1, 91:1},
+	ignoreKeys: {9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 38:1, 18:1, 91:1, 13:1},
 	preventKeys: {40:1},
-	actionKeys: {37:'cursor', 39:'cursor', 40:'search', 13:'apply'},
+	actionKeys: {37:'cursor', 39:'cursor', 40:'search'},
 	
 	bind: function (nodes)
 	{
