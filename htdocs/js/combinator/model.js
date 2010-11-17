@@ -198,6 +198,8 @@ var myProto =
 	
 	sortByGroup: function (cocktails)
 	{
+		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		
 		var byGroup = {}
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
@@ -238,6 +240,8 @@ var myProto =
 	
 	sortByMethod: function (cocktails)
 	{
+		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		
 		var byMethod = {}
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
