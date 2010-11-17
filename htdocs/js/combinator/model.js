@@ -409,6 +409,7 @@ var myProto =
 		this.updateData()
 		
 		this.view.renderQuery(state.query)
+		this.lastQuery = state.query
 		
 		if (state.sortBy)
 			this.view.renderSortby(this.sortTypeByNum.indexOf(state.sortBy))
@@ -427,6 +428,10 @@ var myProto =
 	
 	setQuery: function (add, remove, query)
 	{
+		if (query === this.lastQuery)
+			return
+		this.lastQuery = query
+		
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
 		
