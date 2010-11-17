@@ -397,6 +397,8 @@ var myProto =
 	
 	setState: function (newState)
 	{
+		this.statView(newState.add, newState.remove)
+		
 		var add = this.expandQueryNames(newState.add)
 		var remove = this.expandQueryNames(newState.remove)
 		
@@ -431,6 +433,9 @@ var myProto =
 		if (query === this.lastQuery)
 			return
 		this.lastQuery = query
+		
+		this.statSearch(query)
+		this.statView(add, remove)
 		
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
@@ -742,6 +747,34 @@ var myProto =
 	setScrollTop: function (v)
 	{
 		this.state.scrollTop = v
+	},
+	
+	statSearch: function (query)
+	{
+		if (/\S/.test(query))
+			Statistics.combinatorQueryRaw(query)
+	},
+	
+	statView: function (add, remove)
+	{
+		if (!add.length && !remove.length)
+			return
+		
+		var lowerAdd = []
+		for (var i = 0, il = add.length; i < il; i++)
+			lowerAdd[i] = add[i].toLowerCase()
+		lowerAdd.sort()
+		
+		var lowerRemove = []
+		for (var i = 0, il = remove.length; i < il; i++)
+			lowerRemove[i] = remove[i].toLowerCase()
+		lowerRemove.sort()
+		
+		var query = lowerAdd.join(' + ')
+		if (lowerRemove.length)
+			query += ' - ' + lowerRemove.join(' - ')
+		
+		Statistics.combinatorQueryViewed(query)
 	}
 }
 
