@@ -1,7 +1,7 @@
 html { overflow-y: scroll; min-height: 100%; position: relative; }
 body { position: static; min-height: 100%; }
 
-.hidden { visibility: hidden; position: absolute; top: -20000px; }
+.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
 #branded-image-holder { display: none; }
 
