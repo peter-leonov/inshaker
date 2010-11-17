@@ -32,6 +32,13 @@ Oops.maybeEnable()
 <!--# include virtual="/js/common/theme.js" -->
 $.onready(function () { Theme.bind() })
 
+$.onready(function ()
+{
+	var year = $$('#copyright .year')[0]
+	if (year)
+		year.firstChild.nodeValue = new Date().getFullYear()
+})
+
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
