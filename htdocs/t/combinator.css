@@ -201,6 +201,11 @@ body { position: relative; }
 .ingrediented-cocktail-list .cocktail-preview .image { width: 100px; }
 <!--# endif -->
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
+#search-box .button { font-size: 16px; margin: 0 -5px 0 7px; }
+#search-box .reset { top: 3px; }
+<!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]|Opera/(9|10)\./" -->
 .popup .popup-controls .cross { right: 0px; top: -14px; }
 <!--# endif -->
