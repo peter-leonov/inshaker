@@ -58,7 +58,10 @@ var myProto =
 		
 		this.completer.reset()
 		
-		input.value = input.value.replace(/\s*$/, ' + ')
+		var value = input.value
+		if (/\S/.test(value))
+			input.value = value.replace(/\s*$/, ' + ')
+		
 		input.focus()
 	},
 	
