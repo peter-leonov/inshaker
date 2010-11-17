@@ -186,6 +186,7 @@ body { position: static; min-height: 100%; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
 body { position: relative; }
+.ingrediented-cocktail-list .cocktail-preview .image { width: 100px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
