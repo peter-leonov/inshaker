@@ -37,8 +37,6 @@ var myProto =
 		s.bind(nodes.sortbySelect)
 		s.addEventListener('select', function (e) { controller.setSortBy(+e.data.num) }, false)
 		
-		nodes.suggestionsList.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
-		nodes.helpLine.addEventListener('click', function (e) { me.maybeSuggestionClicked(e.target) }, false)
 		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		nodes.cocktailList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		
@@ -190,9 +188,11 @@ var myProto =
 			d = nodes.hintDouble
 		
 		s.firstChild.nodeValue = examples[0][0]
-		s['data-query-add'] = examples[0]
-		d.firstChild.nodeValue = examples[1].join(' + ')
-		d['data-query-add'] = examples[1]
+		s.href = '#q=' + encodeURIComponent(examples[0])
+		
+		var pair = examples[1].join(' + ')
+		d.firstChild.nodeValue = pair
+		d.href = '#q=' + encodeURIComponent(pair)
 	},
 	
 	renderSuggestions: function (suggestions)
@@ -217,26 +217,15 @@ var myProto =
 			
 			var item = Nc('li', 'item')
 			
-			var link = Nct('a', 'link', s.add.join(' + '))
-			link['data-query-add'] = s.add
+			var query = s.add.join(' + ')
+			var link = Nct('a', 'link', query)
+			link.href= '#q=' + encodeURIComponent(query)
 			item.appendChild(link)
 			
 			item.appendChild(Nct('span', 'count', ' (' + s.count + ' ' + s.count.plural('коктейль', 'коктейля', 'коктейлей') + ')'))
 			
 			list.appendChild(item)
 		}
-	},
-	
-	maybeSuggestionClicked: function (node)
-	{
-		var add = node['data-query-add']
-		
-		if (!add)
-			return
-		
-		var query = add.join(' + ')
-		this.nodes.queryInput.value = query
-		this.queryAccepted(add, [])
 	},
 	
 	findIngredientInParents: function (node)
