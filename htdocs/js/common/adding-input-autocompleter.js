@@ -85,12 +85,8 @@ Me.prototype =
 	
 	action: function (action)
 	{
-		var main = this.nodes.main,
-			v = main.value,
-			cursor = main.selectionEnd
-		
 		if (action)
-			return this[action](v, cursor)
+			return this[action]()
 		
 		this.search()
 	},
@@ -110,7 +106,7 @@ Me.prototype =
 	{
 		var parts = this.tokenizer.getParts()
 		this.completer.reset()
-		this.dispatchEvent({type: 'accept', value: value, add: parts.add, remove: parts.remove})
+		this.dispatchEvent({type: 'accept', add: parts.add, remove: parts.remove})
 	},
 	
 	select: function (value)
