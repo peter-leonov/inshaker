@@ -100,7 +100,7 @@ function onready ()
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		queryInput: $$('#search-box .query')[0],
 		searchForm: $$('#search-box form')[0],
-		searchButton: $$('#search-box .search')[0],
+		plusButton: $$('#search-box .plus')[0],
 		ingredientComplete: $$('#search-box .autocomplete')[0],
 		totalCocktails: $$('#output .sort-line .cocktail-count')[0],
 		sortedWord: $$('#output .sort-line .sorted-word')[0],

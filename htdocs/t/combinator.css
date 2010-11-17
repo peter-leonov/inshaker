@@ -13,7 +13,7 @@ body { position: static; min-height: 100%; }
 #search-box { position: relative; z-index: 10; width: 850px; }
 #search-box .query { padding: 2px; color: inherit; width: 715px; }
 #search-box .query,
-#search-box .search { font-size: 20px; vertical-align: middle; }
+#search-box .button { font-size: 20px; vertical-align: middle; }
 #search-box .query { padding: 0; }
 
 #search-box .autocomplete { display: none; width: 559px; background: #fff; border: solid #bbb; }

@@ -31,6 +31,8 @@ var myProto =
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
+		nodes.plusButton.addEventListener('click', function (e) { me.plusButtonClicked() }, false)
+		
 		var controller = this.controller
 		
 		var s = this.sortbySelect = new Selecter()
@@ -47,6 +49,16 @@ var myProto =
 		window.addEventListener('scroll', function () { t.call() }, false)
 		
 		return this
+	},
+	
+	plusButtonClicked: function ()
+	{
+		var input = this.nodes.queryInput
+		
+		this.completer.reset()
+		
+		input.value = input.value.replace(/\s*$/, ' + ')
+		input.focus()
 	},
 	
 	locationHashUpdated: function ()
