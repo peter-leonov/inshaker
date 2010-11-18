@@ -17,8 +17,7 @@ MagazinePageModel.prototype =
 	{
 		var data =
 		{
-			cocktails: this.cocktails.map(function (v) { return Cocktail.getByName(v) }),
-			links: this.links,
+			cocktails: this.cocktails.map(function (x) { return x.map(function(v){return Cocktail.getByName(v)}) }),
 			promos: this.promos
 		}
 		
