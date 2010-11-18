@@ -49,7 +49,7 @@ class MagazineProcessor < Inshaker::Processor
       indent do
       about = load_yaml("#{promo_dir.path}/about.yaml")
       html_name = name.dirify
-      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HT_ROOT}/promos/#{html_name}.jpg", "промо", 150)
+      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HT_ROOT}/promos/#{html_name}.jpg", "промо", 200, 450)
       promos << {"name" => name, "html_name" => html_name, "href" => about["Ссылка"]}
       end # indent
     end
