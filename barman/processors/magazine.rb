@@ -1,6 +1,9 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require "inshaker"
+require "entities/cocktail"
+
+Cocktail.init
 
 class MagazineProcessor < Inshaker::Processor
   
@@ -12,6 +15,8 @@ class MagazineProcessor < Inshaker::Processor
     HT_ROOT_PROMOS = HT_ROOT + "promos/"
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
+    
+    BLOCK_NAMES = ["Коктейльная классика", "Самые популярные", "Авторские хиты", "Специальные серии"]
   end
   
   def initialize
@@ -65,14 +70,23 @@ class MagazineProcessor < Inshaker::Processor
     
     say "обновляю коктейли"
     indent do
-    update_cocktails(@db["cocktails"] = about['Коктейли'])
-    end # indent
-  end
-  
-  def update_cocktails entities
-    entities.each do |entity|
-      say entity
+    @db["cocktails"] = []
+    Config::BLOCK_NAMES.each do |name|
+      say name
+      indent do
+      set = []
+      about[name].each do |cocktail|
+        say cocktail
+        unless Cocktail[cocktail]
+          error "нет такого коктейля «#{cocktail}»"
+          next
+        end
+        set << cocktail
+      end
+      @db["cocktails"] << set
+      end # indent
     end
+    end # indent
   end
   
   def flush_json
