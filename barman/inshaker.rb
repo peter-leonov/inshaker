@@ -118,10 +118,13 @@ module Inshaker
       system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
     end
     
-    def copy_image src, dst, name="(без имени бедняжка)", max_size=25
+    def copy_image src, dst, name="(без имени бедняжка)", soft, hard
       if File.exists? src
-        if File.size(src) > max_size * 1024
-          warning "картинка #{name} слишком большая (>#{max_size}Кб)"
+        size = File.size(src) / 1024
+        if size > hard
+          error "картинка (mini.jpg) огромна (#{size}КБ > #{hard}Кб)"
+        elsif size > soft
+          warning "картинка (mini.jpg) великовата (#{size}КБ > #{soft}Кб)"
         end
         
         begin
