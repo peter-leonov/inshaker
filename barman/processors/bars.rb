@@ -186,10 +186,10 @@ class BarsProcessor < Inshaker::Processor
     mini = src.path + "/mini.jpg"
     if File.exists?(mini)
       size = File.size(mini) / 1024
-      if size > 25
+      if size > 70
+        error "маленькая картинка (mini.jpg) огромна (#{size}КБ > 70Кб)"
+      elsif size > 25
         warning "маленькая картинка (mini.jpg) великовата (#{size}КБ > 25Кб)"
-      elsif size > 70
-        warning "маленькая картинка (mini.jpg) огромна (#{size}КБ > 70Кб)"
       end
       cp_if_different(mini, "#{dst.path}/mini.jpg")
     else
