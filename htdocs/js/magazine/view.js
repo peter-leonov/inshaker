@@ -15,7 +15,7 @@ MagazinePageView.prototype =
 		
 		new Programica.RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
 		for(var i=0; i<nodes.cocktails.length; i++)
-		new Programica.RollingImagesLite(nodes.cocktails[i], {animationType: 'easeOutQuad'})
+			new Programica.RollingImagesLite(nodes.cocktails[i], {animationType: 'easeOutQuad'})
 	},
 	
 	start: function ()
@@ -27,7 +27,7 @@ MagazinePageView.prototype =
 	{
 		this.renderPromo(this.nodes.promo, data.promos, 1, state)
 		for(var i=0; i<this.nodes.cocktails.length; i++)
-		this.renderCocktails(this.nodes.cocktails[i], data.cocktails[i], 1)
+			this.renderCocktails(this.nodes.cocktails[i], data.cocktails[i], 1)
 	},
 	
 	_createCocktailElement: function (cocktail)
