@@ -16,7 +16,12 @@ class MagazineProcessor < Inshaker::Processor
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
     
-    BLOCK_NAMES = ["Коктейльная классика", "Самые популярные", "Авторские хиты", "Специальные серии"]
+    BLOCK_NAMES = {
+      "Коктейльная классика" => "classic",
+      "Самые популярные" => "pop",
+      "Авторские хиты" => "author",
+      "Коктейли месяца" => "special"
+    }
   end
   
   def initialize
@@ -70,23 +75,36 @@ class MagazineProcessor < Inshaker::Processor
     
     say "обновляю коктейли"
     indent do
-    @db["cocktails"] = []
-    Config::BLOCK_NAMES.each do |name|
+    @db["cocktails"] = {}
+    Config::BLOCK_NAMES.each do |name, prop|
+      set = @db["cocktails"][prop] = []
+      
+      cocktails = about[name] || []
       say name
       indent do
-      set = []
-      about[name].each do |cocktail|
-        say cocktail
-        unless Cocktail[cocktail]
-          error "нет такого коктейля «#{cocktail}»"
-          next
-        end
-        set << cocktail
-      end
-      @db["cocktails"] << set
+      set << check_cocktails(cocktails)
+      end # indent
+      
+      cocktails = about["#{name} (вперемешку)"] || []
+      say "#{name} (вперемешку)"
+      indent do
+      set << check_cocktails(cocktails)
       end # indent
     end
     end # indent
+  end
+  
+  def check_cocktails cocktails
+    res = []
+    cocktails.each do |cocktail|
+      say cocktail
+      unless Cocktail[cocktail]
+        error "нет такого коктейля «#{cocktail}»"
+        next
+      end
+      res << cocktail
+    end
+    return res
   end
   
   def flush_json
