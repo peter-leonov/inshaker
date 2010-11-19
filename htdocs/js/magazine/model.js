@@ -15,9 +15,15 @@ MagazinePageModel.prototype =
 	
 	setState: function (state)
 	{
+		var blocks = this.cocktails,
+			cocktails = {}
+		
+		for (var k in blocks)
+			cocktails[k] = blocks[k].map(function (v) { return Cocktail.getByName(v) })
+		
 		var data =
 		{
-			cocktails: this.cocktails.map(function (x) { return x.map(function(v){return Cocktail.getByName(v)}) }),
+			cocktails: cocktails,
 			promos: this.promos
 		}
 		

@@ -16,7 +16,12 @@ class MagazineProcessor < Inshaker::Processor
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
     
-    BLOCK_NAMES = ["Коктейльная классика", "Самые популярные", "Авторские хиты", "Специальные серии"]
+    BLOCK_NAMES = {
+      "Коктейльная классика" => "classic",
+      "Самые популярные" => "pop",
+      "Авторские хиты" => "author",
+      "Коктейли месяца" => "special"
+    }
   end
   
   def initialize
@@ -70,8 +75,8 @@ class MagazineProcessor < Inshaker::Processor
     
     say "обновляю коктейли"
     indent do
-    @db["cocktails"] = []
-    Config::BLOCK_NAMES.each do |name|
+    @db["cocktails"] = {}
+    Config::BLOCK_NAMES.each do |name, prop|
       say name
       indent do
       set = []
@@ -83,7 +88,7 @@ class MagazineProcessor < Inshaker::Processor
         end
         set << cocktail
       end
-      @db["cocktails"] << set
+      @db["cocktails"][prop] = set
       end # indent
     end
     end # indent
