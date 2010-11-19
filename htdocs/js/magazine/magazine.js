@@ -32,6 +32,7 @@ $.onready
 )
 
 <!--# include virtual="/js/common/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/array-randomize.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="view.js" -->

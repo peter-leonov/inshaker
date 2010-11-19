@@ -19,7 +19,12 @@ MagazinePageModel.prototype =
 			cocktails = {}
 		
 		for (var k in blocks)
-			cocktails[k] = blocks[k].map(function (v) { return Cocktail.getByName(v) })
+		{
+			var block = blocks[k]
+			
+			var all = block[0].concat(block[1].slice().randomize())
+			cocktails[k] = all.map(function (v) { return Cocktail.getByName(v) })
+		}
 		
 		var data =
 		{

@@ -77,21 +77,34 @@ class MagazineProcessor < Inshaker::Processor
     indent do
     @db["cocktails"] = {}
     Config::BLOCK_NAMES.each do |name, prop|
+      set = @db["cocktails"][prop] = []
+      
+      cocktails = about[name] || []
       say name
       indent do
-      set = []
-      about[name].each do |cocktail|
-        say cocktail
-        unless Cocktail[cocktail]
-          error "нет такого коктейля «#{cocktail}»"
-          next
-        end
-        set << cocktail
-      end
-      @db["cocktails"][prop] = set
+      set << check_cocktails(cocktails)
+      end # indent
+      
+      cocktails = about["#{name} (вперемешку)"] || []
+      say "#{name} (вперемешку)"
+      indent do
+      set << check_cocktails(cocktails)
       end # indent
     end
     end # indent
+  end
+  
+  def check_cocktails cocktails
+    res = []
+    cocktails.each do |cocktail|
+      say cocktail
+      unless Cocktail[cocktail]
+        error "нет такого коктейля «#{cocktail}»"
+        next
+      end
+      res << cocktail
+    end
+    return res
   end
   
   def flush_json
