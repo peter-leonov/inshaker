@@ -73,7 +73,8 @@ b.rb { right: 0; bottom: 0; }
 #bars-page #top .nav a.bars,
 #bar-page #top .nav a.bars,
 #good-page #top .nav a.goods,
-#event-page #top .nav a.events
+#event-page #top .nav a.events,
+#academy-page #top .nav a.academy
 { background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
@@ -90,6 +91,7 @@ b.rb { right: 0; bottom: 0; }
 #bar-page #bottom .main-menu a.bars,
 #good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events,
+#academy-page #bottom .main-menu a.academy,
 html.job-page #bottom a.job,
 html.about-page #bottom a.about
 { color: inherit; cursor: default; text-decoration: none !important; }
