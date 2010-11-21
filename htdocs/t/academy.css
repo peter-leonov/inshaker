@@ -9,3 +9,7 @@
 
 .cocktail-list .cocktail-preview { width: 120px; float: left; text-align: center; font-size: 12px;  }
 .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+
+<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
+#branded-image-holder { position: fixed; top: 85px; bottom: auto; }
+<!--# endif -->
