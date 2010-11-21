@@ -48,7 +48,7 @@ function onready ()
 	
 	var nodes =
 	{
-		page: $('academy-page'),
+		pageFooter: $('bottom'),
 		brandedImageHolder: $('branded-image-holder'),
 		entries: $$('.entry')
 	}

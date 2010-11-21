@@ -17,8 +17,7 @@ var myProto =
 		
 		var me = this
 		
-		this.scrolledStartY = nodes.brandedImageHolder.offsetTop
-		window.addEventListener('scroll', function (e) { me.onBrandingScroll() }, false)
+		this.bindBrandingScroller()
 		
 		for (var i = 0; i < nodes.entries.length; i++)
 			RoundedCorners.round(nodes.entries[i].firstChild)
@@ -26,17 +25,39 @@ var myProto =
 		return this
 	},
 	
+	bindBrandingScroller: function ()
+	{
+		var nodes = this.nodes
+		
+		this.fixedStartY = nodes.brandedImageHolder.offsetTop
+		this.fixedEndY = nodes.pageFooter.offsetTop
+		
+		var me = this
+		window.addEventListener('scroll', function (e) { me.onBrandingScroll() }, false)
+		this.onBrandingScroll()
+	},
+	
 	onBrandingScroll: function ()
 	{
-		var page = this.nodes.page
+		var nodes = this.nodes,
+			holder = nodes.brandedImageHolder
 		
-		var scrolled = window.pageYOffset > this.scrolledStartY
-		if (this.brandingScrolled == scrolled)
-			return
-		this.brandingScrolled = scrolled
+		var stickTop = window.pageYOffset <= this.fixedStartY
+		var stickBottom = window.pageYOffset + holder.offsetHeight >= this.fixedEndY
 		
-		log('toggle')
-		page.toggleClassName('scrolled', scrolled)
+		holder.removeClassName('stick-top')
+		holder.removeClassName('stick-bottom')
+		holder.removeClassName('float-fixed')
+		
+		if (stickBottom)
+		{
+			// log('stick-bottom')
+			holder.addClassName('stick-bottom')
+		}
+		else if (stickTop)
+			holder.addClassName('stick-top')
+		else
+			holder.addClassName('float-fixed')
 	}
 }
 
