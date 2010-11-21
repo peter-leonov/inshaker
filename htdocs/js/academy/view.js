@@ -56,7 +56,7 @@ var myProto =
 		var nodes = this.nodes
 		
 		this.fixedStartY = nodes.brandedImageHolder.offsetTop
-		this.fixedEndY = nodes.page.offsetHeight
+		this.fixedEndY = nodes.page.scrollHeight
 		
 		if (nodes.brandedImageHolder.offsetHeight >= this.fixedEndY - this.fixedStartY)
 			return
