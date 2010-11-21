@@ -30,7 +30,7 @@ var myProto =
 		var nodes = this.nodes
 		
 		this.fixedStartY = nodes.brandedImageHolder.offsetTop
-		this.fixedEndY = nodes.pageFooter.offsetTop
+		this.fixedEndY = nodes.page.offsetHeight
 		
 		if (nodes.brandedImageHolder.offsetHeight >= this.fixedEndY - this.fixedStartY)
 			return
