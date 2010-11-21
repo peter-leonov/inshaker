@@ -1,10 +1,15 @@
 ;(function(){
 
+var C = Cocktail
+
 function Me (data)
 {
 	this.name = data.name
 	this.movie = data.movie
-	this.cocktails = data.cocktails
+	var cocktails = this.cocktails = data.cocktails
+	
+	for (var i = 0, il = cocktails.length; i < il; i++)
+		cocktails[i] = C.getByName(cocktails[i])
 }
 
 Me.prototype =
