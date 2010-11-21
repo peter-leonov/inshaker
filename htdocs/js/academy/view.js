@@ -32,6 +32,9 @@ var myProto =
 		this.fixedStartY = nodes.brandedImageHolder.offsetTop
 		this.fixedEndY = nodes.pageFooter.offsetTop
 		
+		if (nodes.brandedImageHolder.offsetHeight >= this.fixedEndY - this.fixedStartY)
+			return
+		
 		var me = this
 		window.addEventListener('scroll', function (e) { me.onBrandingScroll() }, false)
 		this.onBrandingScroll()
