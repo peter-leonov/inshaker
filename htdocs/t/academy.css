@@ -1,3 +1,5 @@
 #video-box { width: 639px; }
 
-.entry { height: 600px; }
+#video-blocks .entry { height: 400px; position: relative; }
+#video-blocks .entry .video { width: 600px; height: 338px; position: relative; }
+#video-blocks .entry .video .player { width: 600px; height: 338px; border: none; }

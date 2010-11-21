@@ -20,6 +20,9 @@ var myProto =
 		this.scrolledStartY = nodes.brandedImageHolder.offsetTop
 		window.addEventListener('scroll', function (e) { me.onBrandingScroll() }, false)
 		
+		for (var i = 0; i < nodes.entries.length; i++)
+			RoundedCorners.round(nodes.entries[i].firstChild)
+		
 		return this
 	},
 	

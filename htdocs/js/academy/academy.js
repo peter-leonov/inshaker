@@ -44,10 +44,13 @@ Object.extend(Me.prototype, myProto)
 
 function onready ()
 {
+	RoundedCorners.init()
+	
 	var nodes =
 	{
 		page: $('academy-page'),
-		brandedImageHolder: $('branded-image-holder')
+		brandedImageHolder: $('branded-image-holder'),
+		entries: $$('.entry')
 	}
 	
 	var widget = new AcademyPage()
