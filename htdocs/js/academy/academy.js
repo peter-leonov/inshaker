@@ -22,6 +22,8 @@ var myProto =
 	{
 		this.view.bind(nodes)
 		
+		this.model.setState()
+		
 		return this
 	}
 }
@@ -49,7 +51,7 @@ function onready ()
 	{
 		page: $('academy-page'),
 		brandedImageHolder: $('branded-image-holder'),
-		entries: $$('.entry')
+		videoBlocks: $('video-blocks')
 	}
 	
 	var widget = new AcademyPage()

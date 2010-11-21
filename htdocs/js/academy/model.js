@@ -12,6 +12,8 @@ var myProto =
 	setState: function (state)
 	{
 		this.state = state
+		
+		this.view.renderVideos(Video.getAll())
 	}
 }
 

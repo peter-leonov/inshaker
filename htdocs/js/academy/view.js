@@ -19,10 +19,40 @@ var myProto =
 		
 		this.bindBrandingScroller()
 		
-		for (var i = 0; i < nodes.entries.length; i++)
-			RoundedCorners.round(nodes.entries[i].firstChild)
-		
 		return this
+	},
+	
+	renderVideos: function (videos)
+	{
+		var root = this.nodes.videoBlocks
+		
+		root.empty()
+		
+		for (var i = 0, il = videos.length; i < il; i++)
+		{
+			var v = videos[i]
+			
+			var item = Nc('li', 'item')
+			
+			var video = Nc('div', 'video')
+			item.appendChild(video)
+			
+			RoundedCorners.round(video)
+			
+			var player = Nc('iframe', 'player')
+			video.appendChild(player)
+			player.src = '/404.html'//v.movie
+			
+			var cocktailList = Nc('ul', 'cocktail-list')
+			item.appendChild(cocktailList)
+			
+			var cocktails = v.cocktails
+			log(cocktails)
+			for (var j = 0, jl = cocktails.length; j < jl; j++)
+				cocktailList.appendChild(cocktails[j].getPreviewNode())
+			
+			root.appendChild(item)
+		}
 	},
 	
 	bindBrandingScroller: function ()
