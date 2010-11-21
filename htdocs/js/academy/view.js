@@ -48,19 +48,38 @@ var myProto =
 		var stickTop = window.pageYOffset <= this.fixedStartY
 		var stickBottom = window.pageYOffset + holder.offsetHeight >= this.fixedEndY
 		
-		holder.removeClassName('stick-top')
-		holder.removeClassName('stick-bottom')
-		holder.removeClassName('float-fixed')
-		
+		var state
 		if (stickBottom)
-		{
-			// log('stick-bottom')
-			holder.addClassName('stick-bottom')
-		}
+			state = 'stick-bottom'
 		else if (stickTop)
-			holder.addClassName('stick-top')
+			state = 'stick-top'
 		else
-			holder.addClassName('float-fixed')
+			state = 'float-fixed'
+		
+		if (this.lastState == state)
+			return
+		this.lastState = state
+		
+		switch (state)
+		{
+			case 'stick-top':
+			holder.removeClassName('float-fixed')
+			holder.removeClassName('stick-bottom')
+			break
+			
+			case 'float-fixed':
+			holder.removeClassName('stick-top')
+			holder.removeClassName('stick-bottom')
+			break
+			
+			case 'stick-bottom':
+			holder.removeClassName('stick-top')
+			holder.removeClassName('float-fixed')
+			break
+		}
+		
+		// log(state)
+		holder.addClassName(state)
 	}
 }
 
