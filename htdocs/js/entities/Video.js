@@ -9,6 +9,11 @@ function Me (data)
 
 Me.prototype =
 {
+	
+}
+
+var myStatic =
+{
 	initialize: function (db)
 	{
 		for (var i = 0, il = db.length; i < il; i++)
@@ -22,6 +27,8 @@ Me.prototype =
 		return this.db.slice()
 	}
 }
+
+Object.extend(Me, myStatic)
 
 Me.initialize(<!--# include file="/db/video.js" -->)
 
