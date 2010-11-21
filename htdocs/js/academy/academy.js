@@ -24,6 +24,8 @@ var myProto =
 		
 		this.model.setState()
 		
+		this.view.bindBrandingScroller()
+		
 		return this
 	}
 }

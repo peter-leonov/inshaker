@@ -15,10 +15,6 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		var me = this
-		
-		this.bindBrandingScroller()
-		
 		return this
 	},
 	
@@ -47,7 +43,6 @@ var myProto =
 			item.appendChild(cocktailList)
 			
 			var cocktails = v.cocktails
-			log(cocktails)
 			for (var j = 0, jl = cocktails.length; j < jl; j++)
 				cocktailList.appendChild(cocktails[j].getPreviewNode())
 			
