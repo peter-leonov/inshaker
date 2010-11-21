@@ -30,9 +30,9 @@ var myStatic =
 
 Object.extend(Me, myStatic)
 
-Me.initialize(<!--# include file="/db/video.js" -->)
-
 Me.className = 'Video'
 self[Me.className] = Me
+
+Me.initialize(<!--# include file="/db/video.js" -->)
 
 })();
