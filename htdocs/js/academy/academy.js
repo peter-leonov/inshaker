@@ -46,7 +46,8 @@ function onready ()
 {
 	var nodes =
 	{
-		
+		page: $('academy-page'),
+		brandedImageHolder: $('branded-image-holder')
 	}
 	
 	var widget = new AcademyPage()
