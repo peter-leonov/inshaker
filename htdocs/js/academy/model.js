@@ -9,11 +9,6 @@ var myProto =
 		this.state = {}
 	},
 	
-	bind: function ()
-	{
-		
-	},
-	
 	setState: function (state)
 	{
 		this.state = state

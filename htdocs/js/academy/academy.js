@@ -20,7 +20,6 @@ var myProto =
 
 	bind: function (nodes, sources, state)
 	{
-		this.model.bind(sources)
 		this.view.bind(nodes)
 		
 		return this
