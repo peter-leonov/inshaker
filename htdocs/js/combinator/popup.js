@@ -47,7 +47,7 @@ Me.prototype =
 		
 		var nodes = this.nodes
 		nodes.root.show()
-		nodes.front.style.top = (document.documentElement.scrollTop || document.body.scrollTop) + 'px'
+		nodes.front.style.top = window.pageYOffset + 'px'
 		this.visible = true
 		
 		var me = this
