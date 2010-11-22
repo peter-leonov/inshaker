@@ -30,6 +30,9 @@ var myProto =
 			
 			var item = Nc('li', 'item')
 			
+			var head = Nct('h2', 'head', v.name)
+			item.appendChild(head)
+			
 			var video = Nc('div', 'video')
 			item.appendChild(video)
 			

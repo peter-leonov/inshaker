@@ -1,7 +1,8 @@
 #video-box { width: 639px; }
 
-#video-blocks .item { height: 510px; position: relative; margin: 0 0 40px 0; border-bottom: 1px dashed #aaa; }
-#video-blocks .item:last-child { height: 490px; margin-bottom: 0; border-bottom: none; }
+#video-blocks .item { height: 520px; position: relative; margin: 20px 0 10px 0; border-bottom: 1px dashed #aaa; }
+#video-blocks .item:last-child { height: 490px; margin-bottom: 25px; border-bottom: none; }
+#video-blocks .item .head { font-size: 18px; margin: 0 0 6px 0; }
 #video-blocks .item .video { width: 600px; height: 338px; margin: 0 0 30px 0; position: relative; }
 #video-blocks .item .video .player { width: 600px; height: 338px; border: none; }
 
