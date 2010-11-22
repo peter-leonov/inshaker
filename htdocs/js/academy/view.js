@@ -78,8 +78,9 @@ var myProto =
 		var nodes = this.nodes,
 			holder = nodes.brandedImageHolder
 		
-		var stickTop = window.pageYOffset <= this.fixedStartY
-		var stickBottom = window.pageYOffset + holder.offsetHeight >= this.fixedEndY
+		var pageYOffset = window.pageYOffset
+		var stickTop = pageYOffset <= this.fixedStartY
+		var stickBottom = pageYOffset + holder.offsetHeight >= this.fixedEndY
 		
 		var state
 		if (stickBottom)
