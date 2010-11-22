@@ -5,6 +5,7 @@ var C = Cocktail
 function Me (data)
 {
 	this.name = data.name
+	this.example = data.example
 	this.movie = data.movie
 	var cocktails = this.cocktails = data.cocktails
 	

@@ -33,6 +33,10 @@ var myProto =
 			var head = Nct('h2', 'head', v.name)
 			item.appendChild(head)
 			
+			var example = v.example
+			if (example)
+				head.appendChild(Nct('span', 'example', example))
+			
 			var video = Nc('div', 'video')
 			item.appendChild(video)
 			
