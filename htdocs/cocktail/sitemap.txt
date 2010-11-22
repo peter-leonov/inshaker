@@ -126,6 +126,7 @@ http://www.inshaker.ru/cocktail/evening_with_vaikule/
 http://www.inshaker.ru/cocktail/evergreen_fizz/
 http://www.inshaker.ru/cocktail/broken_brain/
 http://www.inshaker.ru/cocktail/grape_cobler_317/
+http://www.inshaker.ru/cocktail/grape_mojito/
 http://www.inshaker.ru/cocktail/grape_sling/
 http://www.inshaker.ru/cocktail/grape_shot/
 http://www.inshaker.ru/cocktail/violetta/
@@ -539,6 +540,7 @@ http://www.inshaker.ru/cocktail/mojito_strawberry/
 http://www.inshaker.ru/cocktail/mojito_royal/
 http://www.inshaker.ru/cocktail/mojito_raspberry/
 http://www.inshaker.ru/cocktail/mojito_with_grappa/
+http://www.inshaker.ru/cocktail/mojito_sangria/
 http://www.inshaker.ru/cocktail/cinful_mule/
 http://www.inshaker.ru/cocktail/mulata_daisy/
 http://www.inshaker.ru/cocktail/moulin_rouge/

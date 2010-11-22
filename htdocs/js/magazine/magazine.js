@@ -22,8 +22,7 @@ $.onready
 	{
 		var nodes =
 		{
-			cocktails: cssQuery('.info-blocks .cocktail-list')[0],
-			links: cssQuery('.info-blocks .links-list')[0],
+			cocktails: cssQuery('.info-blocks .cocktail-list'),
 			promo: $('promo'),
 			arrows:[cssQuery('#promo-prev')[0], cssQuery('#promo-next')[0]]
 		}
@@ -33,6 +32,7 @@ $.onready
 )
 
 <!--# include virtual="/js/common/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/array-randomize.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="view.js" -->

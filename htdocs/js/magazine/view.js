@@ -12,10 +12,13 @@ MagazinePageView.prototype =
 		this.nodes = nodes
 		this.imagesLoaded = false
 		this.switchBlock = false
+		this.blockNames = ['special', 'pop', 'author', 'classic']
 		
 		new Programica.RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
-		new Programica.RollingImagesLite(nodes.links, {animationType: 'easeOutQuad'})
-		new Programica.RollingImagesLite(nodes.cocktails, {animationType: 'easeOutQuad'})
+		
+		var cocktails = nodes.cocktails
+		for(var i = 0; i < cocktails.length; i++)
+			new Programica.RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
 	},
 	
 	start: function ()
@@ -26,8 +29,13 @@ MagazinePageView.prototype =
 	modelChanged: function (data, state)
 	{
 		this.renderPromo(this.nodes.promo, data.promos, 1, state)
-		this.renderLinks(this.nodes.links, data.links, 1)
-		this.renderCocktails(this.nodes.cocktails, data.cocktails, 1)
+		
+		var cocktailNodes = this.nodes.cocktails,
+			blockNames = this.blockNames,
+			blocks = data.cocktails
+		
+		for (var i = 0, il = blockNames.length; i < il; i++)
+			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
 	},
 	
 	_createCocktailElement: function (cocktail)

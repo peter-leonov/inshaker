@@ -1,6 +1,9 @@
 #!/opt/ruby1.9/bin/ruby -W0
 # encoding: utf-8
 require "inshaker"
+require "entities/cocktail"
+
+Cocktail.init
 
 class MagazineProcessor < Inshaker::Processor
   
@@ -12,6 +15,13 @@ class MagazineProcessor < Inshaker::Processor
     HT_ROOT_PROMOS = HT_ROOT + "promos/"
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
+    
+    BLOCK_NAMES = {
+      "Коктейльная классика" => "classic",
+      "Самые популярные" => "pop",
+      "Авторские хиты" => "author",
+      "Коктейли месяца" => "special"
+    }
   end
   
   def initialize
@@ -49,7 +59,7 @@ class MagazineProcessor < Inshaker::Processor
       indent do
       about = load_yaml("#{promo_dir.path}/about.yaml")
       html_name = name.dirify
-      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HT_ROOT}/promos/#{html_name}.jpg", "промо", 150)
+      copy_image("#{promo_dir.path}/image.jpg", "#{Config::HT_ROOT}/promos/#{html_name}.jpg", "промо", 250, 350)
       promos << {"name" => name, "html_name" => html_name, "href" => about["Ссылка"]}
       end # indent
     end
@@ -65,36 +75,36 @@ class MagazineProcessor < Inshaker::Processor
     
     say "обновляю коктейли"
     indent do
-    update_cocktails(@db["cocktails"] = about['Коктейли'])
-    end # indent
-    
-    say "обновляю линки"
-    indent do
-    update_entities @db["links"] = about['Inshaker рекомендует'], "links", "png", "линка"
-    end # indent
-  end
-  
-  def update_cocktails entities
-    entities.each do |entity|
-      say entity
-    end
-  end
-  
-  def update_entities entities, name, ext, kind,
-    basedir = Config::BASE_DIR + name
-    htdir = Config::HT_ROOT + name
-    FileUtils.mkdir_p htdir
-    
-    i = 1
-    entities.each do |entity|
-      name, href = entity[0], entity[1]
+    @db["cocktails"] = {}
+    Config::BLOCK_NAMES.each do |name, prop|
+      set = @db["cocktails"][prop] = []
+      
+      cocktails = about[name] || []
       say name
       indent do
-      fname = "#{i}.#{ext}"
-      copy_image "#{basedir}/#{fname}", "#{htdir}/#{fname}", kind, 150
+      set << check_cocktails(cocktails)
       end # indent
-      i += 1
+      
+      cocktails = about["#{name} (вперемешку)"] || []
+      say "#{name} (вперемешку)"
+      indent do
+      set << check_cocktails(cocktails)
+      end # indent
     end
+    end # indent
+  end
+  
+  def check_cocktails cocktails
+    res = []
+    cocktails.each do |cocktail|
+      say cocktail
+      unless Cocktail[cocktail]
+        error "нет такого коктейля «#{cocktail}»"
+        next
+      end
+      res << cocktail
+    end
+    return res
   end
   
   def flush_json
