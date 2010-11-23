@@ -75,7 +75,7 @@ EventPage.view =
 		if (event.status == 'preparing')
 			this.bindFormPopup()
 		
-		this.renderPreviews(previewSet, event)
+		//this.renderPreviews(previewSet, event)
 		
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
