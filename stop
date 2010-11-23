@@ -1,27 +1,17 @@
 #!/bin/sh
 
-NAME="inshaker"
+PROJ_ROOT="/www/inshaker"
 
-PROJ_ROOT="/www/$NAME"
-NGINX="/usr/local/nginx/sbin/nginx"
-TYPE="$SERVER_TYPE"
-
-if [ "$TYPE" = "" ]; then
-	TYPE="developer"
-fi
-
-
-echo "Stopping $NAME as $TYPE..."
-# sending INT signal
+# stopping nginx
 if [ -f $PROJ_ROOT/nginx.pid ]; then
-	kill -INT `cat $PROJ_ROOT/nginx.pid`
+	kill -INT $(cat $PROJ_ROOT/nginx.pid)
 else
-	echo "nginx was not started (no pid file found)"
+	echo "nginx wasn't started (no pid file found)"
 fi
 
-if [ -f $PROJ_ROOT/act.pid ]; then
-	kill -2 `cat $PROJ_ROOT/act.pid`
-	rm -f $PROJ_ROOT/act.pid
+# stopping mini_httpd
+if [ -f $PROJ_ROOT/mini_httpd.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/mini_httpd.pid)
 else
-	echo "act was not started (no pid file found)"
+	echo "mini_httpd wasn't started (no pid file found)"
 fi

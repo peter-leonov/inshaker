@@ -1,19 +1,8 @@
 #!/bin/sh
 
-NAME="inshaker"
-PROJ_ROOT="/www/$NAME"
+PROJ_ROOT="/www/inshaker"
+NGINX="nginx"
+MINI_HTTPD="mini_httpd"
 
-NGINX="/usr/local/nginx/sbin/nginx"
-FCGIWRAP="/usr/bin/spawn-fcgi -F 4 -P $PROJ_ROOT/act.pid -u www -a 127.0.0.1 -p 4003 /usr/bin/fcgiwrap"
-TYPE="$SERVER_TYPE"
-
-TYPE="$SERVER_TYPE"
-if [ "$TYPE" = "" ]; then
-	TYPE="developer"
-fi
-
-
-echo "Starting $NAME as $TYPE..."
-
-$NGINX -c "$PROJ_ROOT/nginx.$TYPE.conf"
-$FCGIWRAP >/dev/null
+$NGINX -c "$PROJ_ROOT/nginx.developer.conf"
+$MINI_HTTPD -C "$PROJ_ROOT/mini_httpd.developer.conf"
