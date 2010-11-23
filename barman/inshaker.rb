@@ -118,7 +118,7 @@ module Inshaker
       system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
     end
     
-    def copy_image src, dst, name="(без имени бедняжка)", soft, hard
+    def copy_image src, dst, name, soft, hard
       if File.exists? src
         size = File.size(src) / 1024
         if size > hard
