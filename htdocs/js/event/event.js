@@ -88,6 +88,7 @@ $.onready
 			ratingHead: cssQuery('#comming h2')[0],
 			ratingShowAll: cssQuery('#comming .list-all')[0],
 			ratingFrom: cssQuery('#comming .from')[0],
+			sidebar: $('sidebar'),
 			sponsorsLow: $('low-sponsors'),
 			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],
 			sponsorsMedium: $('medium-sponsors'),
