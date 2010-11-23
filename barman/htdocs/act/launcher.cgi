@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
 
 # redirect all output to stdout and make it unbuferred
-$stderr = $stdout
 $stdout.sync = true
+$stderr.reopen($stdout)
 
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
