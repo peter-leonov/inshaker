@@ -4,12 +4,11 @@
 $stderr = $stdout
 $stdout.sync = true
 
+puts "Content-type: text/plain; charset=utf-8\n\n"
+
 require 'inshaker'
 require 'rubygems'
 require 'cgi'
-
-
-puts "Content-type: text/plain; charset=utf-8\n\n"
 
 puts "Запускаюсь…"
 
