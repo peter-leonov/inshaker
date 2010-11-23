@@ -2,5 +2,7 @@
 
 PROJ_ROOT="/www/inshaker"
 NGINX="nginx"
+MINI_HTTPD="mini_httpd"
 
 $NGINX -c "$PROJ_ROOT/nginx.developer.conf"
+$MINI_HTTPD -C "$PROJ_ROOT/mini_httpd.developer.conf"
