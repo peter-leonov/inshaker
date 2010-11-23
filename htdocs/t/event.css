@@ -36,7 +36,7 @@ html.loading .previews .viewport .surface { display: none; }
 .column-main-container {  }
 .column-main { width:606px; }
 .column-main .body-wrapper { padding: 14px 18px; }
-#sidebar { background: none; margin-left:20px; width: 308px;}
+#sidebar { display: none; background: none; margin-left:20px; width: 308px;}
 #sidebar .body-wrapper { padding: 14px 18px 11px; }
 .b-title { padding-bottom: 13px; font-family: Tahoma; }
 .b-title h1, .b-title h3 { font-size: 20px; }
@@ -81,7 +81,7 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 #comming .rating .rate { width: 6%; padding: 0 8px; color: #fff; background: #e4146e; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; }
 #comming .list-all { font-size: 11px; text-decoration: none; border-bottom: 1px dashed; visibility: hidden; }
 
-#low-sponsors { margin: 27px 0 0 0; }
+#low-sponsors { display: none; margin: 27px 0 0 0; }
 #low-sponsors .b-title { padding: 0 0 7px 0; }
 #low-sponsors .b-content { position: relative; width: 100%; }
 #low-sponsors .b-content .viewport { width: 852px; margin: 0 0 0 27px; }
