@@ -46,13 +46,15 @@ $.onready(function(){
 			
 			// data + load
 			if (readyState >= 3)
+			{
 				output.innerHTML = r.responseText
+				output.scrollTop = 20000
+			}
 			
 			// load
 			if (readyState == 4)
 			{
 				output.innerHTML = r.responseText
-				output.scrollTop = 20000
 				goBarmanButton.setEnabled(true);
 			}
 		}
