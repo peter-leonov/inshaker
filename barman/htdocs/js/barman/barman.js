@@ -42,6 +42,11 @@ $.onready(function(){
 		
 		r.onreadystatechange = function (e)
 		{
+			if (this.status != 200)
+				output.addClassName('server-errror')
+			else
+				output.remClassName('server-errror')
+			
 			var readyState = this.readyState
 			
 			// data + load
