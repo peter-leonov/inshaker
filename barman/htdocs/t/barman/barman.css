@@ -39,7 +39,6 @@ a.purple { color:#4e4799; }
 .go
 {
 	cursor: pointer;
-	background:#cc2f7c;
 	border: 1px transparent solid;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -47,8 +46,10 @@ a.purple { color:#4e4799; }
 	line-height: 40px;
 	height: 40px;
 	float: right;
-	color: #FFFFFF;
 	text-align:center;
+	background: #cc2f7c;
+	border-color: #cc2f7c;
+	color: #fff;
 }
 
 .go.small { height: 25px; line-height: 25px; }
@@ -62,9 +63,9 @@ a.purple { color:#4e4799; }
 }
 
 #goBarman,
-#goUp { border-color: #cc2f7c; margin-top: 50px; }
+#goUp { margin-top: 50px; }
 
-#view-status { position: absolute; left: 35px; top: 220px; height: 25px; line-height: 25px; background: #4c4; opacity: 0.4; }
+#view-status { position: absolute; left: 35px; top: 220px; height: 25px; line-height: 25px; opacity: 0.2; }
 #view-status:hover { opacity: 1; }
 
 #goBarman.clicked,
