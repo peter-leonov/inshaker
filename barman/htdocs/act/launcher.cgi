@@ -7,11 +7,11 @@ $stderr.reopen($stdout)
 
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
+puts "Запускаюсь…"
+
 require 'inshaker'
 require 'rubygems'
 require 'cgi'
-
-puts "Запускаюсь…"
 
 Dir.chdir("#{Inshaker::ROOT_DIR}barman/")
 
