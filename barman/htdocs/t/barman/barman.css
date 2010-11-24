@@ -85,15 +85,15 @@ a.purple { color:#4e4799; }
 #output
 {
 	width: 503px;
-	visibility: hidden;
 	font-size: 12px;
 	margin: 20px 115px;
 	background: #EDEDED;
 	border: 1px #C0C0C0 solid;
-	height: 0px;
 	overflow: auto;
+	height: 300px;
 	padding: 15px;
 }
+#output h { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 
 #left,
 #right

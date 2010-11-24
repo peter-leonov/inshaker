@@ -12,21 +12,10 @@ $.onready(function(){
 	
 	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
 	
-	var inflateNode = function(node){ 
-		node.style.visibility="visible"; 
-		var ht = (node.scrollHeight > 300) ? 300 : node.scrollHeight;
-		node.animate("easeInCubic", {height: ht}, 0.15) 
-	};
-	var squeezeNode = function(node){ 
-		node.animate("easeInCubic", {height: 0}, 0.15);
-		node.style.visibility="hidden";
-	};
-	
 	var labels = ["Бармен", "Сайт"];
 	ri.onselect = function(node, num){
 		if(labels[num-1]) $('left').innerHTML  = "← " + labels[num-1];
 		if(labels[num+1]) $('right').innerHTML = labels[num+1] + " →";
-		squeezeNode($('output'))
 	}
 	
 	var memory = Object.parse(Cookie.get('barman-memory'));
@@ -42,7 +31,6 @@ $.onready(function(){
 		Cookie.set('barman-memory', Object.stringify(fh));
 		
 		goBarmanButton.setEnabled(false);
-		squeezeNode($('output'));
 		
 		var r = new XMLHttpRequest()
 		r.open('POST', "/act/launcher.cgi", true)
@@ -64,7 +52,6 @@ $.onready(function(){
 			{
 				output.innerHTML = r.responseText
 				output.scrollTop = 20000
-				inflateNode(output)
 				goBarmanButton.setEnabled(true);
 			}
 		}
@@ -73,13 +60,11 @@ $.onready(function(){
 	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e){
 		goUpButton.setEnabled(false);
 		
-		squeezeNode($('output'));
 		var req = aPost("/act/deployer.cgi", {});
 		req.onSuccess = function (){
 			var output = $('output')
 			output.innerHTML = this.responseText()
 			output.scrollTop = 10000
-			inflateNode(output)
 			goUpButton.setEnabled(true);
 		}
 	});
