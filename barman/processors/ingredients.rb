@@ -1,4 +1,4 @@
-#!/opt/ruby1.9/bin/ruby -W0
+#!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
 require "entities/ingredient"
