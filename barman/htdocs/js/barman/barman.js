@@ -37,10 +37,11 @@ $.onready(function(){
 		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		r.send(Programica.Request.urlEncode(fh))
 		
+		var output = $('output')
+		output.innerHTML = ''
+		
 		r.onreadystatechange = function (e)
 		{
-			var output = $('output')
-			
 			var readyState = this.readyState
 			
 			// data + load
