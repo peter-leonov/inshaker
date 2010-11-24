@@ -74,73 +74,21 @@ $.onready(function(){
 		
 		goBarmanButton.setEnabled(false);
 		
-		var r = new XMLHttpRequest()
-		r.open('POST', "/act/launcher.cgi", true)
-		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-		r.send(Programica.Request.urlEncode(fh))
-		
-		var output = $('output')
-		output.innerHTML = ''
-		
-		r.onreadystatechange = function (e)
+		function done ()
 		{
-			if (this.status != 200)
-				output.addClassName('server-error')
-			else
-				output.remClassName('server-error')
-			
-			var readyState = this.readyState
-			
-			// data + load
-			if (readyState >= 3)
-			{
-				output.innerHTML = r.responseText
-				output.scrollTop = 20000
-			}
-			
-			// load
-			if (readyState == 4)
-			{
-				output.innerHTML = r.responseText
-				goBarmanButton.setEnabled(true);
-			}
+			goBarmanButton.setEnabled(true)
 		}
+		run('/act/launcher.cgi', fh, done)
 	});
 	
 	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e){
 		goUpButton.setEnabled(false);
 		
-		var r = new XMLHttpRequest()
-		r.open('POST', "/act/deployer.cgi", true)
-		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-		r.send('')
-		
-		var output = $('output')
-		output.innerHTML = ''
-		
-		r.onreadystatechange = function (e)
+		function done ()
 		{
-			if (this.status != 200)
-				output.addClassName('server-error')
-			else
-				output.remClassName('server-error')
-			
-			var readyState = this.readyState
-			
-			// data + load
-			if (readyState >= 3)
-			{
-				output.innerHTML = r.responseText
-				output.scrollTop = 20000
-			}
-			
-			// load
-			if (readyState == 4)
-			{
-				output.innerHTML = r.responseText
-				goUpButton.setEnabled(true)
-			}
+			goUpButton.setEnabled(true)
 		}
+		run('/act/deployer.cgi', {}, done)
 	});
 	
 	ri.goToFrame(0); ri.onselect($('point_0'), 0);
