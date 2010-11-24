@@ -51,21 +51,6 @@ a.purple { color:#4e4799; }
 	margin-top: 50px;
 }
 
-.go-purple
-{
-	cursor: pointer;
-	background: #4e4799;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	width: 100px;
-	line-height: 40px;
-	height: 40px;
-	float: right;
-	color: #FFFFFF;
-	text-align:center;
-	margin-top: 50px;
-}
-
 .clicked
 {
 	cursor:default;
