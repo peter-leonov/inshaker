@@ -5,6 +5,48 @@
 
 $.onready(function(){
 	
+	var output = $('output')
+	
+	var running = false
+	function run (path, hash, callback)
+	{
+		if (running)
+			return
+		running = true
+		
+		var r = new XMLHttpRequest()
+		r.open('POST', path, true)
+		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		r.send(Programica.Request.urlEncode(hash))
+		
+		output.innerHTML = ''
+		
+		r.onreadystatechange = function (e)
+		{
+			if (this.status != 200)
+				output.addClassName('server-error')
+			else
+				output.remClassName('server-error')
+			
+			var readyState = this.readyState
+			
+			// data + load
+			if (readyState >= 3)
+			{
+				output.innerHTML = r.responseText
+				output.scrollTop = 20000
+			}
+			
+			// load
+			if (readyState == 4)
+			{
+				output.innerHTML = r.responseText
+				running = false
+				callback()
+			}
+		}
+	}
+	
 	var host = location.host.replace(/^m\./, '')
 	var parentLink = $('parent-link')
 	parentLink.href = '//' + host + '/'
