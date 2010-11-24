@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby1.9
+# encoding: utf-8
 
 # redirect all output to stdout and make it unbuferred
 $stderr = $stdout
