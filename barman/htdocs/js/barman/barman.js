@@ -95,5 +95,16 @@ $.onready(function(){
 			goUpButton.setEnabled(false)
 	});
 	
+	var goStatusButton = new UIButton($('view-status'), 'clicked', $('view-status').innerHTML, 'Подожди...', function(e)
+	{
+		function done ()
+		{
+			goStatusButton.setEnabled(true)
+		}
+		
+		if (run('/act/launcher.cgi', {status: 'on'}, done))
+			goStatusButton.setEnabled(false)
+	});
+	
 	ri.goToFrame(0); ri.onselect($('point_0'), 0);
 })
