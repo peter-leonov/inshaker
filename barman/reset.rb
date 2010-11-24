@@ -14,11 +14,13 @@ class ResetState < Inshaker::Processor
   
   def job
     
-    system("git reset --hard")
-    system("git clean -df")
+    say "сбрасываю все изменения…"
     system("git fetch")
-    system("git checkout -f toaster/master")
-    system("git branch -f master")
+    system("git reset --hard toaster/master")
+    system("git clean -df")
+    
+    say "проверяю состояние…"
+    system("git status")
     
     say "связность данных"
     Checker.init
