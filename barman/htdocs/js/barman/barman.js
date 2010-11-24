@@ -4,6 +4,12 @@
 <!--# include virtual="uibutton.js" -->
 
 $.onready(function(){
+	
+	var host = location.host.replace(/^m\./, '')
+	var parentLink = $('parent-link')
+	parentLink.href = '//' + host + '/'
+	parentLink.firstChild.nodeValue = host
+	
 	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
 	
 	var inflateNode = function(node){ 
