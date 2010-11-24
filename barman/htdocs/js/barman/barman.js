@@ -11,7 +11,7 @@ $.onready(function(){
 	function run (path, hash, callback)
 	{
 		if (running)
-			return
+			return false
 		running = true
 		
 		var r = new XMLHttpRequest()
@@ -45,6 +45,8 @@ $.onready(function(){
 				callback()
 			}
 		}
+		
+		return true
 	}
 	
 	var host = location.host.replace(/^m\./, '')
@@ -68,27 +70,29 @@ $.onready(function(){
 		}
 	}
 	
-	var goBarmanButton = new UIButton($('goBarman'), 'clicked', 'Смешать', 'Подожди...', function(e){
+	var goBarmanButton = new UIButton($('goBarman'), 'clicked', 'Смешать', 'Подожди...', function(e)
+	{
 		var fh = $('barman-form').toHash();
 		Cookie.set('barman-memory', Object.stringify(fh));
-		
-		goBarmanButton.setEnabled(false);
 		
 		function done ()
 		{
 			goBarmanButton.setEnabled(true)
 		}
-		run('/act/launcher.cgi', fh, done)
+		
+		if (run('/act/launcher.cgi', fh, done))
+			goBarmanButton.setEnabled(false)
 	});
 	
-	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e){
-		goUpButton.setEnabled(false);
-		
+	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e)
+	{
 		function done ()
 		{
 			goUpButton.setEnabled(true)
 		}
-		run('/act/deployer.cgi', {}, done)
+		
+		if (run('/act/deployer.cgi', {}, done))
+			goUpButton.setEnabled(false)
 	});
 	
 	ri.goToFrame(0); ri.onselect($('point_0'), 0);
