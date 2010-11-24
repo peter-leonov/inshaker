@@ -48,7 +48,6 @@ a.purple { color:#4e4799; }
 	float: right;
 	color: #FFFFFF;
 	text-align:center;
-	margin-top: 50px;
 }
 
 .clicked
@@ -66,6 +65,9 @@ a.purple { color:#4e4799; }
 	margin-left: 25px;
 	font-size: 16px;
 }
+
+#goBarman,
+#goUp { margin-top: 50px; }
 
 #output
 {
