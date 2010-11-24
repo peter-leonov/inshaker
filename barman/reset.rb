@@ -14,8 +14,11 @@ class ResetState < Inshaker::Processor
   
   def job
     
-    say "что говорит git"
-    system("git diff-files --name-only")
+    system("git reset --hard")
+    system("git clean -df")
+    system("git fetch")
+    system("git checkout -f toaster/master")
+    system("git branch -f master")
     
     say "связность данных"
     Checker.init
