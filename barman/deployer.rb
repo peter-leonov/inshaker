@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/opt/ruby1.9/bin/ruby -W0
+# encoding: utf-8
 require 'inshaker'
 require "lib/checker"
 

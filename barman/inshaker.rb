@@ -235,9 +235,8 @@ module Inshaker
         "max" => "Maxim Dergilev <max@inshaker.ru>",
         "lena" => "Elena Piskareva <lena@inshaker.ru>",
         "julia" => "Julia Gordeeva <julia@inshaker.ru>",
-        "peter" => "Peter Leonov <pl@inshaker.ru>",
-        "" => "Barman <barman@inshaker.ru>"
-      }[login]
+        "peter" => "Peter Leonov <pl@inshaker.ru>"
+      }[login] || "Barman <barman@inshaker.ru>"
     end
   
   end
