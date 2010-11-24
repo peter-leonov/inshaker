@@ -34,6 +34,7 @@ CGI.new.params.each do |k, v|
   script = scripts[k]
   unless script
     puts "неизвестное действие #{k}"
+    exit(1)
   end
   processors[k] = script
 end
