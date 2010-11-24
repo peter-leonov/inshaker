@@ -99,6 +99,10 @@ a.purple { color:#4e4799; }
 
 #output.server-error { background: #aa0000; color: #000; border-color: #400; }
 
+#output .error { color: #d40; }
+#output .warning { color: #e80; }
+#output .done { color: #082; }
+
 #left,
 #right
 {

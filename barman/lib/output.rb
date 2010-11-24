@@ -16,13 +16,13 @@ module Output
 
     module HTML
       def say_error str
-        say %Q{<span style="color:#d40">#{str}</span>}
+        say %Q{<span class="error">#{str}</span>}
       end
       def say_warning str
-        say %Q{<span style="color:#e80">#{str}</span>}
+        say %Q{<span class="warning">#{str}</span>}
       end
       def say_done str
-        say %Q{<span style="color:#082">#{str}</span>}
+        say %Q{<span class="done">#{str}</span>}
       end
     end
   end
