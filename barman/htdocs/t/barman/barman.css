@@ -89,8 +89,8 @@ a.purple { color:#4e4799; }
 	margin: 20px 115px;
 	background: #EDEDED;
 	border: 1px #C0C0C0 solid;
-	overflow: auto;
 	height: 300px;
+	overflow-y: scroll;
 	padding: 15px;
 	white-space: pre;
 	white-space: pre-line;
