@@ -27,7 +27,8 @@ scripts =
   "goods" => ["./processors/goods.rb", "Покупки"],
   "magazine" => ["./processors/magazine.rb", "Журнал"],
   "deployer" => ["./deployer.rb", "Заливалку"],
-  "status" => ["./status.rb", "Статус"]
+  "status" => ["./status.rb", "Статус"],
+  "reset" => ["./reset.rb", "Сброс"]
 }
 
 processors = {}

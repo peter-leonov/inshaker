@@ -106,5 +106,16 @@ $.onready(function(){
 			goStatusButton.setEnabled(false)
 	});
 	
+	var goResetButton = new UIButton($('reset-state'), 'clicked', $('reset-state').innerHTML, 'Подожди...', function(e)
+	{
+		function done ()
+		{
+			goResetButton.setEnabled(true)
+		}
+		
+		if (run('/act/launcher.cgi', {reset: 'on'}, done))
+			goResetButton.setEnabled(false)
+	});
+	
 	ri.goToFrame(0); ri.onselect($('point_0'), 0);
 })
