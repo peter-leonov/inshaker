@@ -44,13 +44,29 @@ $.onready(function(){
 		goBarmanButton.setEnabled(false);
 		squeezeNode($('output'));
 		
-		var req = aPost("/act/launcher.cgi", fh);
-		req.onSuccess = function (){
+		var r = new XMLHttpRequest()
+		r.open('POST', "/act/launcher.cgi", true)
+		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		r.send(Programica.Request.urlEncode(fh))
+		
+		r.onreadystatechange = function (e)
+		{
 			var output = $('output')
-			output.innerHTML = this.responseText()
-			output.scrollTop = 20000
-			inflateNode(output)
-			goBarmanButton.setEnabled(true);
+			
+			var readyState = this.readyState
+			
+			// data + load
+			if (readyState >= 3)
+				output.innerHTML = r.responseText
+			
+			// load
+			if (readyState == 4)
+			{
+				output.innerHTML = r.responseText
+				output.scrollTop = 20000
+				inflateNode(output)
+				goBarmanButton.setEnabled(true);
+			}
 		}
 	});
 	
