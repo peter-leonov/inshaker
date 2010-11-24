@@ -43,9 +43,9 @@ $.onready(function(){
 		r.onreadystatechange = function (e)
 		{
 			if (this.status != 200)
-				output.addClassName('server-errror')
+				output.addClassName('server-error')
 			else
-				output.remClassName('server-errror')
+				output.remClassName('server-error')
 			
 			var readyState = this.readyState
 			
@@ -79,9 +79,9 @@ $.onready(function(){
 		r.onreadystatechange = function (e)
 		{
 			if (this.status != 200)
-				output.addClassName('server-errror')
+				output.addClassName('server-error')
 			else
-				output.remClassName('server-errror')
+				output.remClassName('server-error')
 			
 			var readyState = this.readyState
 			

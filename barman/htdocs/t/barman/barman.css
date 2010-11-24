@@ -97,7 +97,7 @@ a.purple { color:#4e4799; }
 }
 #output h { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 
-#output.server-errror { background: #aa0000; color: #000; border-color: #400; }
+#output.server-error { background: #aa0000; color: #000; border-color: #400; }
 
 #left,
 #right
