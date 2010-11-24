@@ -40,6 +40,7 @@ a.purple { color:#4e4799; }
 {
 	cursor: pointer;
 	background:#cc2f7c;
+	border: 1px transparent solid;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	width: 100px;
@@ -50,13 +51,7 @@ a.purple { color:#4e4799; }
 	text-align:center;
 }
 
-.clicked
-{
-	cursor:default;
-	background: #E0E0E0;
-	color: #C0C0C0;
-	border: 1px #C0C0C0 solid;
-}
+.go.small { height: 25px; line-height: 25px; }
 
 .options
 {
@@ -67,7 +62,21 @@ a.purple { color:#4e4799; }
 }
 
 #goBarman,
-#goUp { margin-top: 50px; }
+#goUp { border-color: #cc2f7c; margin-top: 50px; }
+
+#view-status { position: absolute; left: 35px; top: 220px; height: 25px; line-height: 25px; background: #4c4; opacity: 0.4; }
+#view-status:hover { opacity: 1; }
+
+#goBarman.clicked,
+#goUp.clicked,
+#view-status.clicked
+{
+	cursor: default;
+	background: #eee;
+	color: #bbb;
+	border-color: #ccc;
+}
+
 
 #output
 {
