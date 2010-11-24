@@ -65,8 +65,14 @@ a.purple { color:#4e4799; }
 #goBarman,
 #goUp { margin-top: 50px; }
 
-#view-status { position: absolute; left: 35px; top: 220px; height: 25px; line-height: 25px; opacity: 0.2; }
+#view-status,
+#reset-state { position: absolute; left: 35px; height: 25px; line-height: 25px; opacity: 0.2; }
+#reset-state:hover,
 #view-status:hover { opacity: 1; }
+
+#view-status { top: 220px; }
+#reset-state { top: 255px; }
+
 
 #goBarman.clicked,
 #goUp.clicked,
