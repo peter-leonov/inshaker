@@ -108,6 +108,9 @@ $.onready(function(){
 	
 	var goResetButton = new UIButton($('reset-state'), 'clicked', $('reset-state').innerHTML, 'Подожди...', function(e)
 	{
+		if (!window.confirm('Сброшу состояние бармена до состояния сайта.\nЭто не больно.'))
+			return
+		
 		function done ()
 		{
 			goResetButton.setEnabled(true)
