@@ -91,7 +91,7 @@ $.onready(function(){
 			goUpButton.setEnabled(true)
 		}
 		
-		if (run('/act/deployer.cgi', {}, done))
+		if (run('/act/launcher.cgi', {deployer: 'on'}, done))
 			goUpButton.setEnabled(false)
 	});
 	
