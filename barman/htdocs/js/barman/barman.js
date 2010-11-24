@@ -68,12 +68,36 @@ $.onready(function(){
 	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e){
 		goUpButton.setEnabled(false);
 		
-		var req = aPost("/act/deployer.cgi", {});
-		req.onSuccess = function (){
-			var output = $('output')
-			output.innerHTML = this.responseText()
-			output.scrollTop = 10000
-			goUpButton.setEnabled(true);
+		var r = new XMLHttpRequest()
+		r.open('POST', "/act/deployer.cgi", true)
+		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		r.send('')
+		
+		var output = $('output')
+		output.innerHTML = ''
+		
+		r.onreadystatechange = function (e)
+		{
+			if (this.status != 200)
+				output.addClassName('server-errror')
+			else
+				output.remClassName('server-errror')
+			
+			var readyState = this.readyState
+			
+			// data + load
+			if (readyState >= 3)
+			{
+				output.innerHTML = r.responseText
+				output.scrollTop = 20000
+			}
+			
+			// load
+			if (readyState == 4)
+			{
+				output.innerHTML = r.responseText
+				goUpButton.setEnabled(true)
+			}
 		}
 	});
 	
