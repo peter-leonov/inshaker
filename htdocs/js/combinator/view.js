@@ -50,7 +50,7 @@ var myProto =
 		var lh = this.locationHash = new LocationHash().bind(window)
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
-		var t = new Throttler(function () { me.controller.windowScrolled(document.documentElement.scrollTop || document.body.scrollTop) }, 100, 500)
+		var t = new Throttler(function () { me.controller.windowScrolled(window.pageYOffset) }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
 		
 		return this
