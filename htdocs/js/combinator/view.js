@@ -4,6 +4,10 @@ var Papa = CombinatorPage, Me = Papa.View
 
 eval(NodesShortcut.include())
 
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
+
 var myProto =
 {
 	initialize: function ()
@@ -75,7 +79,7 @@ var myProto =
 	
 	locationHashUpdated: function ()
 	{
-		var bookmark = UrlEncode.parse(this.locationHash.get())
+		var bookmark = UrlEncodeLight.parse(this.locationHash.get())
 		
 		var query = bookmark.q || ''
 		
@@ -117,7 +121,7 @@ var myProto =
 				delete bookmark[k]
 		}
 		
-		this.locationHash.setRaw(UrlEncode.stringify(bookmark))
+		this.locationHash.set(UrlEncodeLight.stringify(bookmark))
 	},
 	
 	searchFormSubmitted: function ()
