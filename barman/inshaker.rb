@@ -118,7 +118,7 @@ module Inshaker
       system(%Q{cp -a "#{src.quote}" "#{dst.quote}" >/dev/null})
     end
     
-    def copy_image src, dst, name="(без имени бедняжка)", soft, hard
+    def copy_image src, dst, name, soft, hard
       if File.exists? src
         size = File.size(src) / 1024
         if size > hard
@@ -235,9 +235,8 @@ module Inshaker
         "max" => "Maxim Dergilev <max@inshaker.ru>",
         "lena" => "Elena Piskareva <lena@inshaker.ru>",
         "julia" => "Julia Gordeeva <julia@inshaker.ru>",
-        "peter" => "Peter Leonov <pl@inshaker.ru>",
-        "" => "Barman <barman@inshaker.ru>"
-      }[login]
+        "peter" => "Peter Leonov <pl@inshaker.ru>"
+      }[login] || "Barman <barman@inshaker.ru>"
     end
   
   end

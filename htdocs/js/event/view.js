@@ -75,7 +75,7 @@ EventPage.view =
 		if (event.status == 'preparing')
 			this.bindFormPopup()
 		
-		this.renderPreviews(previewSet, event)
+		//this.renderPreviews(previewSet, event)
 		
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
@@ -185,7 +185,6 @@ EventPage.view =
 	{
 		if (sponsorsSet.length == 0)
 		{
-			this.nodes.sponsorsLow.hide()
 			return
 		}
 		
@@ -240,6 +239,8 @@ EventPage.view =
 		
 		Switcher.bind(main, buttons, tabs)
 		main.select(0)
+		
+		this.nodes.sponsorsLow.addClassName('visible')
 	},
 	
 	createLowSponsorNode: function (logosSet)
@@ -365,6 +366,8 @@ EventPage.view =
 			root.style.height = rating.max * 18 + 'px'
 			this.nodes.ratingShowAll.show()
 		}
+		
+		nodes.sidebar.addClassName('visible')
 	},
 	
 	showAllRating: function ()
@@ -426,6 +429,7 @@ EventPage.view =
 				nodes.sponsorsHighTitle.innerHTML = sponsor.name
 			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.root + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
+			nodes.sidebar.addClassName('visible')
 		}
 		else
 		{

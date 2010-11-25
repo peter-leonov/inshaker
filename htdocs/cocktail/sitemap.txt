@@ -335,6 +335,7 @@ http://www.inshaker.ru/cocktail/carribean_coffee/
 http://www.inshaker.ru/cocktail/caribbean_apple_pie/
 http://www.inshaker.ru/cocktail/carribean_jewel/
 http://www.inshaker.ru/cocktail/carin/
+http://www.inshaker.ru/cocktail/carnival_fizz/
 http://www.inshaker.ru/cocktail/kassini/
 http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
@@ -616,6 +617,7 @@ http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
+http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
 http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/pliny_the_younger/
