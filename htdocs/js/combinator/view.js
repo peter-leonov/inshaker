@@ -167,8 +167,6 @@ var myProto =
 		var nodes = this.nodes,
 			output = nodes.output
 		
-		this.scrollTo(0)
-		
 		output.removeClassName('initial-state')
 		output.removeClassName('result-state')
 		output.removeClassName('empty-state')

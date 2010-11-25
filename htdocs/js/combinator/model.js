@@ -420,8 +420,7 @@ var myProto =
 		if (state.sortBy)
 			this.view.renderSortby(this.sortTypeByNum.indexOf(state.sortBy))
 		
-		if (state.scrollTop)
-			this.view.scrollTo(state.scrollTop)
+		this.view.scrollTo(+state.scrollTop || 0)
 		
 		if (state.ingredientPopup)
 		{
@@ -450,6 +449,9 @@ var myProto =
 		state.add = add
 		state.remove = remove
 		state.query = query
+		
+		state.scrollTop = 0
+		this.view.scrollTo(state.scrollTop)
 		
 		this.updateData()
 		
