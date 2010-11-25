@@ -15,7 +15,8 @@ class ViewStatus < Inshaker::Processor
   def job
     
     say "что говорит git"
-    system("git diff-files --name-only")
+    system("git status")
+    # system("git diff-files --name-only")
     
     say "связность данных"
     Checker.init
