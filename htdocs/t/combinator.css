@@ -207,6 +207,13 @@ html.msie-6 .ingrediented-cocktail-list .cocktail-preview .image,
 html.msie-7 .ingrediented-cocktail-list .cocktail-preview .image,
 html.msie-8 .ingrediented-cocktail-list .cocktail-preview .image { width: 100px; }
 
+
+html.mac.opera-9 #search-box .autocomplete,
+html.mac.opera-10-0 #search-box .autocomplete,
+html.mac.opera-10-1 #search-box .autocomplete { top: 28px; left: 1px; border-color: #eee; }
+html.mac.opera-10-5 #search-box .autocomplete,
+html.mac.opera-10-6 #search-box .autocomplete,
+html.mac.opera-11 #search-box .autocomplete { top: 27px; left: 1px; border-color: #ccc; }
 html.msie-6 .popup .popup-controls .cross,
 html.msie-7 .popup .popup-controls .cross,
 html.msie-8 .popup .popup-controls .cross,
