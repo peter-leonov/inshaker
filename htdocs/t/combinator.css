@@ -217,6 +217,8 @@ html.mac.opera-11 #search-box .autocomplete { top: 27px; left: 1px; border-color
 
 html.mac.firefox #search-box .autocomplete { top: 28px; left: 1px; width: 712px; border-color: #ddd; }
 
+html.win.opera #search-box .autocomplete { left: 0; top: 28px; width: 712px; border-color: #aab; }
+
 html.msie #search-box .autocomplete { left: 0; width: 712px; }
 html.msie-6 #search-box .autocomplete,
 html.msie-7 #search-box .autocomplete { top: 28px; border-color: #aab; }
