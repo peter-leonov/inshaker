@@ -38,6 +38,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/selecter.js" -->
 
@@ -62,6 +63,8 @@ Object.extend(Me.prototype, myProto)
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
+	
 	var nodes =
 	{
 		root: document.body,
