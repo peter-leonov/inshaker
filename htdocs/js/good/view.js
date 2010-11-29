@@ -76,7 +76,7 @@ var myProto =
 		
 		var list = this.previewsList
 		list.bind(previews)
-		list.configure({pageLength: 4, pageVelocity: 45})
+		list.configure({pageLength: 4, pageVelocity: 28})
 		list.load = function (nodes)
 		{
 			for (var i = 0, il = nodes.length; i < il; i++)
