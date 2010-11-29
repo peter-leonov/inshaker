@@ -1,5 +1,5 @@
 [
-{"name":"Коктейльный магазин","name_eng":"Cocktail-shop","path":"cocktail-shop","promos":3},
+{"name":"Коктейльный магазин","name_eng":"Cocktail-shop","path":"cocktail-shop","promos":5},
 {"name":"Шейкер","name_eng":"Shaker","path":"shaker","promos":4},
 {"name":"Коктейльная ложка","name_eng":"cocktail-spoon","path":"cocktail-spoon","promos":2},
 {"name":"Мадлер","name_eng":"mudler","path":"mudler","promos":1},
