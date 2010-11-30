@@ -6,7 +6,7 @@ function Me () {}
 
 Me.parse = function (string)
 {
-	var tokenizer = /([+-]|^)([^+-]*)/g,
+	var tokenizer = /([+]|^)([^+]*)/g,
 		beforeRex = /^\s*/g,
 		afterRex = /\s*$/g
 	
