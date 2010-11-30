@@ -12,6 +12,7 @@ fi
 # stopping mini_httpd
 if [ -f $PROJ_ROOT/mini_httpd.pid ]; then
 	kill -INT $(cat $PROJ_ROOT/mini_httpd.pid)
+	rm -f $PROJ_ROOT/mini_httpd.pid
 else
 	echo "mini_httpd wasn't started (no pid file found)"
 fi

@@ -4,6 +4,7 @@ http://www.inshaker.ru/bar/green_and_red/
 http://www.inshaker.ru/bar/the_connaught/
 http://www.inshaker.ru/bar/lounge_bohemia/
 http://www.inshaker.ru/bar/317/
+http://www.inshaker.ru/bar/bamboo/
 http://www.inshaker.ru/bar/sideboard/
 http://www.inshaker.ru/bar/delicatessen/
 http://www.inshaker.ru/bar/denis_simachev_shop_and_bar/
@@ -11,7 +12,7 @@ http://www.inshaker.ru/bar/dream_bar/
 http://www.inshaker.ru/bar/ketama/
 http://www.inshaker.ru/bar/cuba_libre/
 http://www.inshaker.ru/bar/manon/
-http://www.inshaker.ru/bar/mayak/
+http://www.inshaker.ru/bar/lighthouse/
 http://www.inshaker.ru/bar/noor/
 http://www.inshaker.ru/bar/o2_lounge/
 http://www.inshaker.ru/bar/all_time_bar/
@@ -32,6 +33,7 @@ http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/daiquiri_bar/
+http://www.inshaker.ru/bar/house_of_consumer_services/
 http://www.inshaker.ru/bar/sevensky/
 http://www.inshaker.ru/bar/happiness/
 http://www.inshaker.ru/bar/high_five/
