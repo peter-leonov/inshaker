@@ -1,23 +1,22 @@
 <!--# include file="/lib/Programica/Form.js" -->
-<!--# include file="/js/common/class.js" -->
 <!--# include file="/js/common/url-encode.js" -->
 $$ = cssQuery
 Element.prototype.removeClassName = Element.prototype.remClassName
 
 ;(function(){
 
-var myName = 'Analytics',
-	Me = self[myName] = Class(myName)
+var myName = 'Analytics'
 
-// Me.mixIn(EventDriven)
-// eval(NodesShortcut())
+function Me ()
+{
+	this.nodes = {}
+	this.scope = 'https://www.google.com/analytics/feeds'
+}
 
-Me.prototype.extend
-({
+Me.prototype =
+{
 	initialize: function ()
 	{
-		this.nodes = {}
-		this.scope = 'https://www.google.com/analytics/feeds'
 	},
 
 	bind: function (nodes, conf)
@@ -285,7 +284,10 @@ Me.prototype.extend
 		li.className = 'error'
 		li.appendChild(document.createTextNode(str))
 	}
-})
+}
+
+Me.className = myName
+self[Me.className] = Me
 
 })();
 

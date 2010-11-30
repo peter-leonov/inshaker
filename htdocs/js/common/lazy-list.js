@@ -116,15 +116,23 @@ Me.prototype =
 		if (realCount >= conf.pageLength)
 		{
 			root.removeClassName('single')
+			root.removeClassName('empty')
 			
 			var last = boxes[realCount - 1]
 			this.scroller.setWidth(last.x + last.w)
 			this.wave.setup(last.w, conf.soft, conf.min)
 			scroller.setMovable(true)
 		}
+		else if (realCount == 0)
+		{
+			root.removeClassName('single')
+			root.addClassName('empty')
+			scroller.setMovable(false)
+		}
 		else
 		{
 			root.addClassName('single')
+			root.removeClassName('empty')
 			scroller.setMovable(false)
 		}
 	},

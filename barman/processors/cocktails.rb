@@ -17,7 +17,10 @@ class CocktailsProcessor < Inshaker::Processor
     @ingredient_weight_by_group.default = -1
     @cocktails = {}
     @cocktails_present = {}
+    @groups = []
     @tags = []
+    @tags_ci = {}
+    @hidden_tags = []
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
@@ -60,7 +63,7 @@ class CocktailsProcessor < Inshaker::Processor
     prepare_templates
     prepare_ingredients
     prepare_cocktails
-    prepare_tags_and_strengths_and_methods
+    prepare_groups_and_strengths_and_methods
     
     touched = update_cocktails
     
@@ -70,7 +73,7 @@ class CocktailsProcessor < Inshaker::Processor
       update_recomendations if touched > 0
       
       cleanup_deleted
-      flush_tags_and_strengths_and_methods
+      flush_groups_and_strengths_and_methods
       flush_json
       flush_links
     end
@@ -244,7 +247,7 @@ class CocktailsProcessor < Inshaker::Processor
   def calculate_related
     cocktails = []
     ingredient_hashes = []
-    tag_hashes = []
+    group_hashes = []
     @cocktails.keys.sort.each do |name|
       cocktail = @cocktails[name]
       cocktails << cocktail
@@ -252,8 +255,8 @@ class CocktailsProcessor < Inshaker::Processor
       ingredient_hashes << hash = {}
       cocktail["ingredients"].each { |v| hash[v[0]] = true }
       
-      tag_hashes << hash = {}
-      cocktail["tags"].each { |v| hash[v] = true }
+      group_hashes << hash = {}
+      cocktail["groups"].each { |v| hash[v] = true }
     end
     count = cocktails.length
     
@@ -264,7 +267,7 @@ class CocktailsProcessor < Inshaker::Processor
     i = 0
     while i < count
       a = cocktails[i]
-      a_tags = tag_hashes[i]
+      a_groups = group_hashes[i]
       a_ingredients = ingredient_hashes[i]
       
       weights[i * count + i] = 0
@@ -276,8 +279,8 @@ class CocktailsProcessor < Inshaker::Processor
         b["ingredients"].each do |v|
           weight += 10000 if a_ingredients[v[0]]
         end
-        b["tags"].each do |v|
-          weight += 1000 if a_tags[v]
+        b["groups"].each do |v|
+          weight += 1000 if a_groups[v]
         end
         weight += 100 - b["ingredients"].length
         
@@ -300,30 +303,47 @@ class CocktailsProcessor < Inshaker::Processor
     name = dir.name
     say name
     indent do
-    @cocktail               = {}
+    @cocktail                = {}
     @cocktail["name"]        = name
-    @cocktail["tags"]        = []
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
-    @cocktail["recs"] = []
+    @cocktail["recs"]        = []
     
-    parse_legend_text File.read(dir.path + "/legend.txt")
+    legend_path = dir.path + "/legend.txt"
+    parse_legend_text File.read(legend_path)
     
     about = load_yaml("#{dir.path}/about.yaml")
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
-    @cocktail["tags"] = about["Группы"]
+    @cocktail["groups"] = about["Группы"]
     @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
     @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
+    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
-    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
+    if about["Добавлен"]
+      @cocktail["added"] = Time.gm(*about["Добавлен"].split(".").reverse.map{|v|v.to_i})
+    else
+      error "не могу найти дату доавления коктейля"
+    end
     
     if about["Винительный падеж"]
       @cocktail["nameVP"] = about["Винительный падеж"]
+    end
+    
+    cocktail_tags = @cocktail["tags"] = []
+    tags = about["Теги"] || []
+    tags << "все коктейли"
+    tags.each do |tag_candidate|
+      tag = @tags_ci[tag_candidate.ci_index]
+      unless tag
+        error "незнакомый тег «#{tag_candidate}»"
+      end
+      
+      cocktail_tags << tag
     end
     
     @cocktails[name] = @cocktail
@@ -342,10 +362,14 @@ class CocktailsProcessor < Inshaker::Processor
     end # indent
   end
   
-  def prepare_tags_and_strengths_and_methods
-    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+  def prepare_groups_and_strengths_and_methods
+    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
+    @tags_ci = @tags.hash_ci_index
+    
+    @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
   
   def guess_methods cocktail
@@ -375,6 +399,7 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def update_json cocktail
+    cocktail["added"] = cocktail["added"].to_i
     cocktail.delete("sorted_parts")
     
     data = {}
@@ -427,34 +452,38 @@ class CocktailsProcessor < Inshaker::Processor
     flush_json_object(@cocktails, Config::DB_JS)
   end
   
-  def flush_tags_and_strengths_and_methods
+  def flush_groups_and_strengths_and_methods
      say "сохраняю списки тегов, крепости и приготовления"
      
      count = {}
      count.default = 0
      @cocktails.each do |name, hash|
-       hash["tags"].each { |tag| count[tag] += 1 }
+       hash["groups"].each { |group| count[group] += 1 }
      end
-     tags = []
-     # p @tags
-     @tags.each do |tag|
-      if count[tag] == 0
-        error "нет коктейлей в группе «#{tag}»"
-      elsif count[tag] < 3
-        warning "слишком мало коктейлей (#{count[tag]}) в группе «#{tag}»"
+     groups = []
+     # p @groups
+     @groups.each do |group|
+      if count[group] == 0
+        error "нет коктейлей в группе «#{group}»"
+      elsif count[group] < 3
+        warning "слишком мало коктейлей (#{count[group]}) в группе «#{group}»"
         indent do
         @cocktails.each do |name, hash|
-          if hash["tags"].index tag
+          if hash["groups"].index group
             say name
           end
         end
         end # indent
       else
-        tags << tag
+        groups << group
       end
      end
      
-     flush_json_object(tags, Config::DB_JS_TAGS)
+     # hide hidden tags ;)
+     @tags -= @hidden_tags
+     
+     flush_json_object(groups, Config::DB_JS_GROUPS)
+     flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
      flush_json_object(@methods, Config::DB_JS_METHODS)
   end
@@ -528,84 +557,6 @@ class CocktailsProcessor < Inshaker::Processor
     return res
   end
 private
-
-  def parse_about_text(about_text)
-    parse_title about_text.scan(/.*Название:\ *\n(.+)\n.*/)[0][0]
-    parse_vp about_text.scan(/.*Винительный падеж:\ *\n(.+)\n.*/)
-    parse_teaser about_text.scan(/.*Тизер:\ (.+)\ *\n.*/)[0][0]
-    parse_strength about_text.scan(/.*Крепость:\ *\n(.+)\ *\n.*/)[0][0]
-    if about_text.scan(/.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m) != [] # empty
-      parse_tags about_text.scan(/.*Группы:\ *\n(.+)\n\nИнгредиенты.*/m)[0][0]
-    else
-      parse_tags ""
-    end
-    parse_ingredients about_text.scan(/.*Ингредиенты:\ *\n(.+)\n\nШтучки.*/m)[0][0]
-    parse_tools about_text.scan(/.*Штучки:\ *\n(.+)\n\nКак приготовить.*/m)[0][0]
-    parse_receipt about_text.scan(/.*Как приготовить:\ *\n(.+)*/m)[0][0]
-  end
-  
-  def parse_title(title)
-    if title =~ /;/
-      error "неверный формат названия"
-    end
-    @cocktail["name_eng"] = title
-  end
-  
-  def parse_vp(name)
-    if name[0]
-      @cocktail["nameVP"] = name[0][0]
-    end
-  end
-  
-  def parse_teaser(teaser)
-    @cocktail["teaser"] = teaser
-  end
-  
-  def parse_strength(strength)
-    strength = strength.trim
-    @cocktail["strength"] = strength
-    if(!@strengths.include?(strength)) then @strengths << strength end
-  end
-  
-  def parse_tags(tags)
-    if tags == ""
-      @cocktail["tags"] = []
-      return
-    end
-    tags = tags.split("\n")
-    tags.each do |tag|
-      tag = tag.trim
-      if tag.empty?
-        error "пустой тег"
-        next
-      end
-      unless @tags.index tag
-        error "неизвестный тег #{tag}"
-        next
-      end
-      @cocktail["tags"] << tag
-      @tags << tag unless @tags.include?(tag)
-    end
-  end
-  
-  def parse_ingredients(ingredients)
-    ingredients = ingredients.split("\n")
-    ingredients.each do |ing|
-      name, dose = ing.split(": ")
-      @cocktail["ingredients"] << [name, dose.zpt]
-    end
-  end
-  
-  def parse_tools(tools)
-    tools = tools.split("\n")
-    tools.each do |tool|
-      @cocktail["tools"] << tool
-    end
-  end
-  
-  def parse_receipt(receipt)
-    @cocktail["receipt"] = receipt.split("\n")
-  end
   
   def parse_legend_text(text)
     if text.slice(0,1) == "#"

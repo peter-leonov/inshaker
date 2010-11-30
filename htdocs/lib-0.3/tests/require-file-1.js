@@ -1,0 +1,1 @@
+window.veryGlobalVaiable = true

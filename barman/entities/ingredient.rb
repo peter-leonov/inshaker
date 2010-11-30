@@ -8,6 +8,7 @@ class Ingredient < Inshaker::Entity
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/ingredients.js"
     DB_JS_GROUPS   = Inshaker::HTDOCS_DIR + "db/ingredients_groups.js"
+    DB_JS_TAGS     = Inshaker::HTDOCS_DIR + "db/ingredients_tags.js"
     DB_JS_MARKS    = Inshaker::HTDOCS_DIR + "db/marks.js"
   end
   

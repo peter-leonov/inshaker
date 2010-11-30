@@ -44,6 +44,16 @@ var Me =
 		this.track('ingredient-selected', ingredient ? ingredient.name : ('' + ingredient))
 	},
 	
+	combinatorQueryRaw: function (query)
+	{
+		this.track('combinator-query-raw', query)
+	},
+	
+	combinatorQueryViewed: function (query)
+	{
+		this.track('combinator-query', query)
+	},
+	
 	track: function (action, label, value)
 	{
 		setTimeout(function () { Tracker.track('UserAction', action, label, value) }, 500)

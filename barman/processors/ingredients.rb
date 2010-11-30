@@ -15,6 +15,9 @@ class IngredientsProcessor < Inshaker::Processor
     @entities = []
     @ingredients_groups = []
     @marks = {}
+    @ingredients_tags = []
+    @ingredients_tags_ci = {}
+    @hidden_ingredients_tags = []
   end
   
   def job_name
@@ -45,7 +48,7 @@ class IngredientsProcessor < Inshaker::Processor
     prepare_ingredients
     prepare_marks
     
-    update_groups
+    update_groups_and_tags
     process_ingredients
     
     unless errors?
@@ -59,8 +62,11 @@ class IngredientsProcessor < Inshaker::Processor
     FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
-  def update_groups
+  def update_groups_and_tags
     @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
+    @ingredients_tags_ci = @ingredients_tags.hash_ci_index
+    @hidden_ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
   end
   
   def prepare_ingredients
@@ -181,6 +187,18 @@ class IngredientsProcessor < Inshaker::Processor
       good["decls"] = {"t" => about["Падежи"]["Творительный"]}
     end
     
+    good_tags = good["tags"] = []
+    tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
+    tags << "любой ингредиент"
+    tags.each do |tag_candidate|
+      tag = @ingredients_tags_ci[tag_candidate.ci_index]
+      unless tag
+        error "незнакомый тег «#{tag_candidate}»"
+      end
+      
+      good_tags << tag
+    end
+    
     if brand
       good[:brand] = brand
       good[:brand_dir] = brand.dirify
@@ -237,6 +255,9 @@ class IngredientsProcessor < Inshaker::Processor
     end
     flush_json_object(ingredients, Config::DB_JS)
     flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
+    
+    @ingredients_tags -= @hidden_ingredients_tags
+    flush_json_object(@ingredients_tags, Config::DB_JS_TAGS)
   end
   
   def update_json entity

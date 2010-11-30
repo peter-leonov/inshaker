@@ -1,5 +1,7 @@
 ;(function(){
 
+eval(NodesShortcut.include())
+
 var Me = self.Ingredient = function (data)
 {
 	for (var k in data)
@@ -15,11 +17,28 @@ Me.prototype =
 	getMiniImageSrc: function () { return this.pageHref() + "preview.png" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
+	combinatorLink: function () { return '/combinator.html#q=' + encodeURIComponent(this.name) },
 	
 	getVolumeImage: function (vol)
 	{
 		var v = vol[0]
 		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
+	},
+	
+	getPreviewNode: function (lazy)
+	{
+		var node = Nc('a', lazy ? 'ingredient-preview lazy' : 'ingredient-preview')
+		var image = Nc('img', 'image')
+		image[lazy ? 'lazySrc' : 'src'] = this.getMiniImageSrc()
+		node.appendChild(image)
+		
+		var name = Nct('span', 'name', this.name)
+		node.appendChild(name)
+		
+		node['data-ingredient'] = this
+		node.ingredientImage = image
+		
+		return node
 	}
 }
 
@@ -27,7 +46,7 @@ Object.extend(Ingredient,
 {
 	groups: [],
 	
-	initialize: function (db, groups)
+	initialize: function (db, groups, tags)
 	{
 		var I = Ingredient
 		for (var i = 0, il = db.length; i < il; i++)
@@ -35,16 +54,22 @@ Object.extend(Ingredient,
 		
 		this.db = db
 		this.groups = groups
+		this.tags = tags
 	},
 	
 	getAll: function ()
 	{
-		return this.db
+		return this.db.slice()
 	},
 	
 	getGroups: function ()
 	{
 		return this.groups
+	},
+	
+	getTags: function ()
+	{
+		return this.tags
 	},
 	
 	getByName: function (name)
@@ -61,6 +86,28 @@ Object.extend(Ingredient,
 			this._updateByNameCIIndex()
 		
 		return this._byNameCI[name.toLowerCase()]
+	},
+	
+	getByTagCI: function (name)
+	{
+		if (!this._byTagCI)
+			this._updateByTagCIIndex()
+		
+		return this._byTagCI[name.toLowerCase()] || []
+	},
+	
+	getByNames: function (names)
+	{
+		if (!this._byName)
+			this._updateByNameIndex()
+		
+		var res = []
+		
+		var byName = this._byName
+		for (var i = 0, il = names.length; i < il; i++)
+			res[i] = byName[names[i]]
+		
+		return res
 	},
 	
 	getAllNames: function (name)
@@ -87,8 +134,30 @@ Object.extend(Ingredient,
 		return res;
 	},
 	
+	getByGroups: function (groups)
+	{
+		var hash = {}
+		for (var i = 0, il = groups.length; i < il; i++)
+			hash[groups[i]] = true
+		
+		var db = this.db,
+			res = []
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingredient = db[i]
+			if (hash[ingredient.group])
+				res.push(ingredient)
+		}
+		
+		return res
+	},
+	
 	calculateEachIngredientUsage: function ()
 	{
+		if (this.eachIngredientUsageCalculated)
+			return
+		this.eachIngredientUsageCalculated = true
+		
 		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
 			db = this.db
 		
@@ -129,6 +198,29 @@ Object.extend(Ingredient,
 		{
 			var ingred = db[i]
 			byNameCI[ingred.name.toLowerCase()] = ingred
+		}
+	},
+	
+	_updateByTagCIIndex: function ()
+	{
+		var db = this.db,
+			index = this._byTagCI = {}
+		
+		for (var i = 0; i < db.length; i++)
+		{
+			var ingred = db[i]
+			
+			var tags = ingred.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+			{
+				var tag = tags[j].toLowerCase()
+				
+				var arr = index[tag]
+				if (arr)
+					arr.push(ingred)
+				else
+					index[tag] = [ingred]
+			}
 		}
 	},
 	
@@ -267,6 +359,6 @@ Object.extend(Ingredient,
 })
 
 
-Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->)
+Ingredient.initialize(<!--# include file="/db/ingredients.js"-->,<!--# include file="/db/ingredients_groups.js"-->,<!--# include file="/db/ingredients_tags.js"-->)
 
 })();

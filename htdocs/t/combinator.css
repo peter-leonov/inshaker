@@ -1,0 +1,237 @@
+html { overflow-y: scroll; min-height: 100%; position: relative; }
+body { position: static; min-height: 100%; }
+
+.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+
+#branded-image-holder { display: none; }
+
+.b-title { height: 55px; background: none; z-index: 1; }
+.b-title h1 { font-size: 24px; }
+.b-content { width: 100%; }
+.column { z-index: 2; }
+
+#search-box { position: relative; z-index: 10; width: 850px; }
+#search-box .query { padding: 2px; color: inherit; width: 710px; }
+#search-box .query,
+#search-box .button { font-size: 20px; vertical-align: middle; }
+#search-box .button.plus { width: 30px; }
+#search-box .button.search { width: 80px; }
+#search-box .query { padding: 0; }
+#search-box .reset { display: none; position: absolute; left: 690px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
+
+#search-box .autocomplete { display: none; position: absolute; top: 28px; left: 1px; width: 710px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
+#search-box .autocomplete.focused { display: block; }
+#search-box .autocomplete .empty-message { display: none; }
+#search-box .autocomplete.empty .empty-message { display: block; }
+#search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
+#search-box .autocomplete .item.selected { background-color: #d2d2d2; }
+#search-box .autocomplete .item .substr { font-weight: bold; }
+#search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
+
+#output .empty-block { font-size: 15px; }
+#output .empty-block .share-recipe { font-size: 20px; }
+#output .empty-block .suggestions { margin: 10px 0;  }
+#output .empty-block .suggestions.empty { display: none; }
+#output .empty-block .suggestions .list { margin: 0.2em 0; }
+#output .empty-block .suggestions .list .item { margin: 10px 0 0 20px; }
+#output .empty-block .suggestions .list .item .link { text-decoration: none; border-bottom: 1px dashed; font-size: 17px; }
+#output .empty-block .suggestions .list .item .count { font-size: 13px; color: #888; }
+
+#output .initial-block,
+#output .result-block,
+#output .empty-block,
+#output.result-state .sort-line.empty,
+#output .sort-line,
+#output .help-line { display: none; }
+
+#output.initial-state .initial-block,
+#output.initial-state .help-line,
+#output.result-state .result-block,
+#output.result-state .sort-line,
+#output.result-state .reset,
+#output.empty-state .sort-line.empty,
+#output.empty-state .empty-block { display: block; }
+
+#output .sort-line,
+#output .help-line { font-size: 14px; margin-top: 6px; }
+#output .sort-line .cocktail-count,
+#output .help-line .hint { font-style: normal; font-weight: bold; }
+#output .help-line .hint { text-decoration: none; border-bottom: 1px dashed; }
+
+#output .result-block { font-size: 14px; }
+
+.dropdown-select { }
+.dropdown-select,
+.dropdown-select .button { display: inline; position: relative; }
+
+.dropdown-select .button { position: relative; z-index: 2; cursor: pointer; border-bottom: 1px dashed; }
+.dropdown-select.single .button { cursor: default; color: inherit; }
+.dropdown-select .body { display: none; position: absolute; z-index: 1; left: -17px; top: -9px; }
+.dropdown-select .body .options { position: relative; padding: 10px 15px; background-color: #fff; border: 2px solid #ccc; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
+.dropdown-select .body .options .option.selected { visibility: hidden; }
+.dropdown-select .body .options .option:hover { color: #f84; }
+.dropdown-select.open { z-index: 200; }
+.dropdown-select.open .body { display: block; }
+.dropdown-select.open .button { cursor: default; border: none; color: #aaa; }
+.dropdown-select.selected-option-0 .body { top: -13px; }
+.dropdown-select.selected-option-1 .body { top: -33px; }
+.dropdown-select.selected-option-2 .body { top: -53px; }
+.dropdown-select.selected-option-3 .body { top: -73px; }
+.dropdown-select.selected-option-4 .body { top: -93px; }
+.dropdown-select.selected-option-5 .body { top: -113px; }
+.dropdown-select.selected-option-6 .body { top: -133px; }
+.dropdown-select.selected-option-7 .body { top: -153px; }
+.dropdown-select.selected-option-8 .body { top: -173px; }
+
+
+
+
+.ingredients-list .group { margin: 0 0 25px; width: 940px; }
+.ingredients-list .group .head { font-size: 24px; margin: 0 0 15px 0; }
+.ingredients-list .group .list { overflow: hidden; }
+.ingredients-list .group .list .item { float: left; position: relative; margin: 0 17px 15px 0; width: 100px; height: 140px; }
+
+
+
+
+
+.ingrediented-cocktail-list .group { margin: 0 0 50px 0; }
+.ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
+.ingrediented-cocktail-list .group.collapsed .row { display: none; }
+.ingrediented-cocktail-list .group .group-name { font-size: 35px; }
+.ingrediented-cocktail-list .group .group-name:first-letter { text-transform: uppercase; }
+.ingrediented-cocktail-list .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
+
+.ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; }
+.ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
+.ingrediented-cocktail-list .row.lines-0 { height: 155px; }
+.ingrediented-cocktail-list .row.lines-1 { height: 155px; }
+.ingrediented-cocktail-list .row.lines-2 { height: 310px; }
+.ingrediented-cocktail-list .row.lines-3 { height: 465px; }
+.ingrediented-cocktail-list .row.lines-4 { height: 620px; }
+.ingrediented-cocktail-list .row.lines-5 { height: 775px; }
+
+.ingrediented-cocktail-list .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
+
+.ingrediented-cocktail-list .row .head { width: 200px; position: absolute; }
+.ingrediented-cocktail-list .row .head .operator { margin: 0; }
+
+.ingrediented-cocktail-list .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
+.ingrediented-cocktail-list .row .body .operator { color: #ccc; }
+.ingrediented-cocktail-list .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
+
+
+
+.ingrediented-cocktail-list .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
+.ingrediented-cocktail-list .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.ingrediented-cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
+.ingredient-preview { display: block; float: left; }
+.ingredient-preview,
+.ingredient-preview .image { display: block; width: 100px; height: 100px; }
+.ingredient-preview.lazy .image { color: #eee; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px;  border-radius: 10px; }
+.ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
+
+
+
+
+
+
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
+.ingredient-window .description { overflow: hidden; }
+.ingredient-window .photo { float: left; position: relative; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
+.ingredient-window .about { margin: 0 45px 0 0; width: 320px; overflow: hidden; font-size: 12px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .name { font-size: 20px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .brand { display: none; }
+.ingredient-window .about .name { margin-bottom: 10px; }
+.ingredient-window.branded .about .mark,
+.ingredient-window.branded .about .brand { display: block; }
+.ingredient-window.branded .about .name { font-size: 12px; margin: 10px 0 0 0; }
+.ingredient-window.branded .about .brand { margin: 0 0 10px 0; }
+.ingredient-window .about .text { font-size: 12px; }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px; }
+.ingredient-window .about .all-cocktails,
+.ingredient-window .about .combinations { margin-top: 1em; font-size: 12px; }
+.ingredient-window .about .combinations .list { margin: 0.2em 0 0 1em; }
+.ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
+.ingredient-window.can-buy .about .where-to-buy { display: block; }
+
+.ingredient-window .cocktail-list { position: relative; margin: 30px 0 -20px 0; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
+.ingredient-window .cocktail-list .prev,
+.ingredient-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.ingredient-window .cocktail-list.single .prev,
+.ingredient-window .cocktail-list.single .next { display: none; }
+.ingredient-window .cocktail-list.empty { display: none; }
+.ingredient-window .cocktail-list .prev { left: 15px; }
+.ingredient-window .cocktail-list .next { right: 15px; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
+
+.cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
+.cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
+.cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
+.cocktail-list .prev .spacer,
+.cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
+
+<!--# include virtual="popup.css" -->
+
+.popup .popup-controls,
+.popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.popup .popup-controls { height: 10px; }
+.popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+
+
+html.msie-7 body { position: relative; }
+
+html.msie-6 .popup .window { zoom: 1; }
+html.msie-6 #ingredient-info-popup.popup .popup-back { height: 10000px; }
+
+html.msie-6 .ingredients-list .group .list,
+html.msie-7 .ingredients-list .group .list { zoom: 1; }
+html.msie-6 .ingrediented-cocktail-list .row .body,
+html.msie-7 .ingrediented-cocktail-list .row .body { padding-bottom: 35px; }
+
+html.msie-6 #search-box .button,
+html.msie-7 #search-box .button,
+html.msie-8 #search-box .button { font-size: 16px; margin: 0 -5px 0 7px; }
+html.msie-6 #search-box .reset,
+html.msie-7 #search-box .reset,
+html.msie-8 #search-box .reset { top: 3px; }
+html.msie-6 .ingrediented-cocktail-list .cocktail-preview .image,
+html.msie-7 .ingrediented-cocktail-list .cocktail-preview .image,
+html.msie-8 .ingrediented-cocktail-list .cocktail-preview .image { width: 100px; }
+
+
+html.mac #search-box .autocomplete { left: 1px; }
+html.mac.opera-9 #search-box .autocomplete,
+html.mac.opera-10-0 #search-box .autocomplete,
+html.mac.opera-10-1 #search-box .autocomplete { top: 28px; border-color: #eee; }
+html.mac.opera-10-5 #search-box .autocomplete,
+html.mac.opera-10-6 #search-box .autocomplete,
+html.mac.opera-11 #search-box .autocomplete { top: 27px; border-color: #ccc; }
+html.mac.firefox #search-box .autocomplete { top: 28px; width: 712px; border-color: #ddd; }
+
+html.win #search-box .autocomplete { left: 0; width: 712px; }
+html.win.opera #search-box .autocomplete { top: 28px; border-color: #aab; }
+html.win.firefox #search-box .autocomplete { top: 28px; border-color: #aab; }
+html.win.chrome #search-box .autocomplete { top: 29px; border-color: #ca8; }
+html.msie-6 #search-box .autocomplete,
+html.msie-7 #search-box .autocomplete { top: 28px; border-color: #aab; }
+html.msie-8 #search-box .autocomplete { top: 27px; border-color: #aab; }
+html.msie-9 #search-box .autocomplete { top: 28px; border-color: #bcd; }
+
+
+html.msie-6 .popup .popup-controls .cross,
+html.msie-7 .popup .popup-controls .cross,
+html.msie-8 .popup .popup-controls .cross,
+html.opera-9 .popup .popup-controls .cross,
+html.opera-10 .popup .popup-controls .cross { right: 0px; top: -14px; }
+
+html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
+html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }

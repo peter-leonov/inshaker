@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="combinator-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head-cocktails.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/combinator.css"/>
+	<title>Сочетайзер — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	
+	<div class="column"><div class="body-wrapper" id="output">
+		<div class="b-title">
+			<!-- <h1>Сочетайзер</h1> -->
+			<div id="search-box">
+				<form>
+					<input class="query" name="query" autocomplete="off" value=""/>
+					<button class="button plus" type="button">+</button>
+					<div class="reset">×</div>
+					<button class="button search" type="submit">Найти!</button>
+				</form>
+				<ul class="autocomplete"><li class="item empty-message">такого ингредиента сочетайзер пока не знает</li></ul>
+			</div>
+			<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->:</div>
+			<div class="sort-line empty"><em class="cocktail-count">0 коктейлей</em> с таким сочетанием. <a href="mailto:combinator-recipe@inshaker.ru">Возможно, ты знаешь рецепт?</a></div>
+			<div class="help-line">Узнай, с чем смешать любимые ингредиенты, например: <a class="hint single"> </a> или <a class="hint double"> </a> </div>
+			<a id="spotlighted"></a>
+		</div>
+		
+		<div class="b-content">
+			<div class="initial-block">
+				<div class="ingredients-list"></div>
+			</div>
+			
+			<div class="result-block">
+				<div class="ingrediented-cocktail-list"></div>
+			</div>
+			
+			<div class="empty-block">
+				<dl class="suggestions empty">
+					<dt>Посмотри другие сочетания:</dt>
+					<dd>
+						<ul class="list"></ul>
+					</dd>
+				</dl>
+				
+			</div>
+		</div>
+	</div></div>
+</div>
+
+
+<div id="ingredient-info-popup" class="popup hidden">
+	<div class="popup-back"></div>
+	<div class="popup-front">
+		<div class="popup-controls">
+			<a class="cross">×</a>
+		</div>
+		<div class="popup-window">
+			<div class="ingredient-window">
+				<div class="description">
+					<div class="photo"><img class="image" src=""/></div>
+					<dl class="about">
+						<dt class="mark"></dt>
+						<dt class="name"></dt>
+						<dt class="brand">Марка: <a class="link"></a></dt>
+						<dd class="text"></dd>
+						<dd class="all-cocktails">Посмотри <a class="link"></a>.</dd>
+						<dd class="combinations">
+							Хорошо сочетаются:
+							<ul class="list"></ul>
+						</dd>
+						<dd class="where-to-buy">Где купить: <a class="link"></a>.</dd>
+					</dl>
+				</div>
+				
+				<div class="cocktail-list hidden">
+					<a class="prev"><span class="spacer"></span></a>
+					<a class="next"><span class="spacer"></span></a>
+					<div class="viewport">
+						<div class="surface"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--# include file="/inc/bottom-common.html" -->
+<!--[if lte IE 6]><script type="text/javascript" src="/lib-0.3/core/fixes/timed-redraw.js"></script><![endif]-->
+<!--[if lte IE 7]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/common/cocktails.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="/js/combinator/combinator.js"></script>
+</body>
+</html>

@@ -60,8 +60,8 @@ button.strong b { text-shadow: 1px 1px 0 #dbacaa; color: #7b2c2a; }
 .b-search .groups dd { color: #231f20; }
 .b-search .groups dd.selected-button { color: #f1ece3; }
 .b-search .groups dd.disabled { color: #999; }
-.autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #570709; }
-.autocomplete .item.selected { background-color: #d2d2d2; }
+#search_by_ingreds .autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #570709; }
+#search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
 
 /* cocktail.css */
 .b-more dt,

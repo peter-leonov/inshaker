@@ -11,7 +11,7 @@ class CocktailTemplate
     @method      = hash["method"]
     @desc_start  = hash["desc_start"]
     @desc_end    = hash["desc_end"]
-    @tags        = hash["tags"]
+    @groups      = hash["groups"]
     @tools       = hash["tools"]
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
@@ -39,8 +39,8 @@ class CocktailTemplate
     groups = []
     groups << ["/cocktails.html#strength=#{@strength}", @strength]
     
-    @tags.each do |tag|
-      groups << ["/cocktails.html#tag=#{tag}", tag]
+    @groups.each do |group|
+      groups << ["/cocktails.html#tag=#{group}", group]
     end
     groups
   end
