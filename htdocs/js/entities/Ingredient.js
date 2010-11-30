@@ -213,7 +213,7 @@ Object.extend(Ingredient,
 			var tags = ingred.tags
 			for (var j = 0, jl = tags.length; j < jl; j++)
 			{
-				var tag = tags[j]
+				var tag = tags[j].toLowerCase()
 				
 				var arr = index[tag]
 				if (arr)
