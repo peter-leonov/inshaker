@@ -188,7 +188,7 @@ class IngredientsProcessor < Inshaker::Processor
     end
     
     good_tags = good["tags"] = []
-    tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
+    tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
     tags << "любой ингредиент"
     tags.each do |tag_candidate|
       tag = @ingredients_tags_ci[tag_candidate.ci_index]
