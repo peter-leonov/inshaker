@@ -15,8 +15,9 @@ class IngredientsProcessor < Inshaker::Processor
     @entities = []
     @ingredients_groups = []
     @marks = {}
-    @ingredients_tags = {}
-    @hidden_ingredients_tags = {}
+    @ingredients_tags = []
+    @ingredients_tags_ci = {}
+    @hidden_ingredients_tags = []
   end
   
   def job_name
@@ -63,7 +64,9 @@ class IngredientsProcessor < Inshaker::Processor
   
   def update_groups_and_tags
     @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
-    @hidden_ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml")).hash_index
+    @ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
+    @ingredients_tags_ci = @ingredients_tags.hash_ci_index
+    @hidden_ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
   end
   
   def prepare_ingredients
@@ -184,13 +187,16 @@ class IngredientsProcessor < Inshaker::Processor
       good["decls"] = {"t" => about["Падежи"]["Творительный"]}
     end
     
-    good["tags"] = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
-    good["tags"] << "любой ингредиент"
-    good["tags"].each do |e|
-      if @hidden_ingredients_tags[e]
-        next
+    good_tags = good["tags"] = []
+    tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/).map { |e| e.strip; e.gsub(/\s+/, " ") } : []
+    tags << "любой ингредиент"
+    tags.each do |tag_candidate|
+      tag = @ingredients_tags_ci[tag_candidate.ci_index]
+      unless tag
+        error "незнакомый тег «#{tag_candidate}»"
       end
-      @ingredients_tags[e] = true
+      
+      good_tags << tag
     end
     
     if brand
@@ -249,7 +255,9 @@ class IngredientsProcessor < Inshaker::Processor
     end
     flush_json_object(ingredients, Config::DB_JS)
     flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
-    flush_json_object(@ingredients_tags.keys, Config::DB_JS_TAGS)
+    
+    @ingredients_tags -= @hidden_ingredients_tags
+    flush_json_object(@ingredients_tags, Config::DB_JS_TAGS)
   end
   
   def update_json entity
