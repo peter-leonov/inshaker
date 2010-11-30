@@ -1,22 +1,35 @@
 # encoding: utf-8
 require 'rutils'
+require "unicode_utils"
 
 class String
   
   def trans
     dirify
   end
-
+  
   def has_diacritics
     index /[̆̈]/
   end
-
+  
   def zpt
     return self.gsub(",",".")
   end
   
   def trim
     return self.gsub(/\s+$/,"")
+  end
+  
+  def u_downcase
+    UnicodeUtils.downcase(self)
+  end
+  
+  def u_upcase
+    UnicodeUtils.upcase(self)
+  end
+  
+  def ci_index
+    return self.gsub(/\s+/," ").gsub(/^ | $/,"").u_downcase
   end
   
   def html_name
