@@ -367,8 +367,7 @@ class CocktailsProcessor < Inshaker::Processor
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
-    @tags_ci = {}
-    @tags.each { |e| @tags_ci[e.ci_index] = e }
+    @tags_ci = @tags.hash_ci_index
     
     @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end

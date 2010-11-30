@@ -14,4 +14,17 @@ class Array
     end
     return index
   end
+  def hash_ci_index key=nil
+    index = {}
+    if key
+      each do |v|
+        index[v[key].ci_index] = v
+      end
+    else
+      each do |v|
+        index[v.ci_index] = v
+      end
+    end
+    return index
+  end
 end
