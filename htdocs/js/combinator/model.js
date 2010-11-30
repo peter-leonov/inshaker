@@ -392,7 +392,7 @@ var myProto =
 			if (set.length)
 				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
 			
-			if (i % 25 == 0 && new Date - begin > 250)
+			if (i % 25 == 0 && new Date() - begin > 250)
 				break
 		}
 		
