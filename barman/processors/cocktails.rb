@@ -18,7 +18,8 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktails = {}
     @cocktails_present = {}
     @groups = []
-    @tags = {}
+    @tags = []
+    @tags_ci = {}
     @hidden_tags = []
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
@@ -333,11 +334,16 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
-    @cocktail["tags"] = about["Теги"] || []
-    @cocktail["tags"] << "все коктейли"
-    @cocktail["tags"].each do |tag|
-      next if @tags[tag]
-      error "незнакомый тег «#{tag}»"
+    cocktail_tags = @cocktail["tags"] = []
+    tags = about["Теги"] || []
+    tags << "все коктейли"
+    tags.each do |tag_candidate|
+      tag = @tags_ci[tag_candidate.ci_index]
+      unless tag
+        error "незнакомый тег «#{tag_candidate}»"
+      end
+      
+      cocktail_tags << tag
     end
     
     @cocktails[name] = @cocktail
@@ -360,7 +366,10 @@ class CocktailsProcessor < Inshaker::Processor
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
-    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml")).hash_index
+    @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
+    @tags_ci = {}
+    @tags.each { |e| @tags_ci[e.ci_index] = e }
+    
     @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
   
@@ -472,12 +481,10 @@ class CocktailsProcessor < Inshaker::Processor
      end
      
      # hide hidden tags ;)
-     @hidden_tags.each do |v|
-      @tags.delete(v)
-     end
+     @tags -= @hidden_tags
      
      flush_json_object(groups, Config::DB_JS_GROUPS)
-     flush_json_object(@tags.keys, Config::DB_JS_TAGS)
+     flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
      flush_json_object(@methods, Config::DB_JS_METHODS)
   end
