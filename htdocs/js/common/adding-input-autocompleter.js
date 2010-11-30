@@ -28,7 +28,6 @@ Me.prototype =
 		var me = this
 		function onupdate (e) { me.onUpdate(e) }
 		nodes.main.addEventListener('keypress', onupdate, false)
-		nodes.main.addEventListener('click', onupdate, false)
 		nodes.main.addEventListener('blur', function (e) { me.onBlur() }, false)
 		
 		this.tokenizer = new Tokenizer(nodes.main)
