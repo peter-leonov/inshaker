@@ -95,7 +95,8 @@ var myProto =
 			return
 		}
 		
-		var supplements = Cocktail.getSupplementNamesByIngredientName(ingredient.name, Ingredient.getSupplementCoefficients())
+		var coefficients = Ingredient.defaultSupplementCoefficients()
+		var supplements = Cocktail.getSupplementNamesByIngredientName(ingredient.name, coefficients)
 		
 		var list = nodes.combinationsList
 		for (var i = 0, il = supplements.length; i < il && i < 5; i++)

@@ -357,7 +357,7 @@ Object.extend(Ingredient,
 		return groups.indexOf(a.group) - groups.indexOf(b.group)
 	},
 	
-	getSupplementCoefficients: function ()
+	defaultSupplementCoefficients: function ()
 	{
 		// try to use cached coefficients
 		var coefficients = this._supplementCoefficients
