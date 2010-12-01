@@ -685,26 +685,15 @@ var myProto =
 		var base = this.chooseExampleIngredient(),
 			baseName = base.name
 		
-		var cocktails = Cocktail.getByIngredients([base])
-		if (cocktails.length == 0)
+		var supplements = Cocktail.getSupplementByIngredientName(baseName)
+		if (supplements.length == 0)
 			return
 		
-		var cocktail = cocktails.random(1)[0]
+		// take 7 first
+		supplements = supplements.slice(0, 7)
 		
-		var parts = cocktail.ingredients, name
-		for (var i = 0, il = parts.length; i < il; i++)
-		{
-			name = parts[i][0]
-			if (name != baseName)
-				break
-			name = false
-		}
-		
-		if (!name)
-			return
-		
-		var ingredient = Ingredient.getByName(name)
-		
+		var ingredient = Ingredient.getByName(supplements.random(1)[0])
+		log(ingredient, ingredient.tags[0])
 		var second = ingredient.tags[0] || ingredient.name
 		
 		return [[baseName], [baseName, second]]
