@@ -8,6 +8,7 @@
 	margin-bottom: 15px;
 }
 
+.b-title .hrefs { display: none; }
 .b-title .hrefs .arrow { text-decoration: none; }
 
 .b-title .hrefs li
