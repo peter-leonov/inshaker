@@ -313,7 +313,7 @@ Object.extend(Cocktail,
 		return cache
 	},
 	
-	getSupplementByIngredientName: function (ingredientName, coefficients)
+	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
 	{
 		var cocktails = this.getByIngredientNames([ingredientName])
 		

@@ -74,6 +74,7 @@ var myProto =
 		var input = this.nodes.queryInput
 		
 		input.value = ''
+		input.focus()
 		this.controller.setQuery([], [], '')
 	},
 	
