@@ -57,7 +57,6 @@ var myProto =
 		var frame = new VisibilityFrame()
 		frame.setFrame(4000, 1500)
 		frame.setStep(500, 500)
-		frame.setBoxes(boxes)
 		
 		frame.onmove = function (show, hide)
 		{
@@ -76,6 +75,8 @@ var myProto =
 				}
 			}
 		}
+		
+		frame.setBoxes(boxes)
 		
 		function onscroll ()
 		{
