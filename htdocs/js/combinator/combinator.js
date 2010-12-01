@@ -18,7 +18,6 @@ var myProto =
 	{
 		this.view.bind(nodes)
 		this.model.bind(sources)
-		this.controller.bind(state)
 		
 		this.view.locationHashUpdated()
 		
