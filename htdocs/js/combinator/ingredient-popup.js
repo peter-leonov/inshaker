@@ -105,7 +105,7 @@ var myProto =
 		for (var i = 0, il = minor.length; i < il; i++)
 			coefficients[minor[i].name] = 0.001
 		
-		var supplements = Cocktail.getSupplementByIngredientName(ingredient.name, coefficients)
+		var supplements = Cocktail.getSupplementNamesByIngredientName(ingredient.name, coefficients)
 		
 		var list = nodes.combinationsList
 		for (var i = 0, il = supplements.length; i < il && i < 5; i++)
