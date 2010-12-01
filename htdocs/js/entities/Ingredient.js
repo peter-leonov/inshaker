@@ -355,6 +355,28 @@ Object.extend(Ingredient,
 	{
 		var groups = Me.groups
 		return groups.indexOf(a.group) - groups.indexOf(b.group)
+	},
+	
+	getSupplementCoefficients: function ()
+	{
+		// try to use cached coefficients
+		var coefficients = this._supplementCoefficients
+		if (coefficients)
+			return coefficients
+		
+		// need to compute new ones
+		coefficients = this._supplementCoefficients = {}
+		
+		// you can see hard-coded values, sorry
+		var major = this.getByGroups(['Соки и морсы', 'Вода и напитки'])
+		for (var i = 0, il = major.length; i < il; i++)
+			coefficients[major[i].name] = 1
+		
+		var minor = this.getByGroups(['Лед']).concat(this.getByNames(['Сахарный сироп', 'Лайм', 'Лимон']))
+		for (var i = 0, il = minor.length; i < il; i++)
+			coefficients[minor[i].name] = 0.001
+		
+		return coefficients
 	}
 })
 

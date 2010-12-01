@@ -95,17 +95,7 @@ var myProto =
 			return
 		}
 		
-		var coefficients = {}
-		
-		var major = Ingredient.getByGroups(['Соки и морсы', 'Вода и напитки'])
-		for (var i = 0, il = major.length; i < il; i++)
-			coefficients[major[i].name] = 1
-		
-		var minor = Ingredient.getByGroups(['Лед']).concat(Ingredient.getByNames(['Сахарный сироп', 'Лайм', 'Лимон']))
-		for (var i = 0, il = minor.length; i < il; i++)
-			coefficients[minor[i].name] = 0.001
-		
-		var supplements = Cocktail.getSupplementNamesByIngredientName(ingredient.name, coefficients)
+		var supplements = Cocktail.getSupplementNamesByIngredientName(ingredient.name, Ingredient.getSupplementCoefficients())
 		
 		var list = nodes.combinationsList
 		for (var i = 0, il = supplements.length; i < il && i < 5; i++)
