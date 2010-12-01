@@ -689,8 +689,8 @@ var myProto =
 		if (supplements.length == 0)
 			return
 		
-		// take 7 first
-		supplements = supplements.slice(0, 7)
+		// take 11 first
+		supplements = supplements.slice(0, 11)
 		
 		var ingredient = Ingredient.getByName(supplements.random(1)[0])
 		log(ingredient, ingredient.tags[0])
