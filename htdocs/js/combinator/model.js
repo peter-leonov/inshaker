@@ -685,17 +685,26 @@ var myProto =
 		var base = this.chooseExampleIngredient(),
 			baseName = base.name
 		
-		var supplements = Cocktail.getSupplementByIngredientName(baseName)
+		var coefficients = Ingredient.defaultSupplementCoefficients()
+		var supplements = Ingredient.getByNames(Cocktail.getSupplementNamesByIngredientName(baseName, coefficients))
 		if (supplements.length == 0)
 			return
 		
-		// take 11 first
-		supplements = supplements.slice(0, 11)
+		var names = []
 		
-		var ingredient = Ingredient.getByName(supplements.random(1)[0])
-		log(ingredient, ingredient.tags[0])
-		var second = ingredient.tags[0] || ingredient.name
+		// collect “main” tags from all ingredients
+		for (var i = 0, il = supplements.length; i < il; i++)
+		{
+			var supplement = supplements[i]
+			
+			// names.push(supplement.name)
+			
+			var tags = supplement.tags
+			if (tags.length >= 2)
+				names.push(tags[0])
+		}
 		
+		var second = names.random(1)[0]
 		return [[baseName], [baseName, second]]
 	},
 	
