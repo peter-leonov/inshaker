@@ -14,10 +14,10 @@ var myProto =
 		this.controller.initialize()
 	},
 
-	bind: function (nodes, sources, state)
+	bind: function (nodes)
 	{
 		this.view.bind(nodes)
-		this.model.bind(sources)
+		this.model.bind()
 		
 		this.view.locationHashUpdated()
 		
@@ -123,7 +123,7 @@ function onready ()
 	}
 	
 	var widget = new CombinatorPage()
-	widget.bind(nodes, {ingredient:Ingredient, cocktail:Cocktail}, {})
+	widget.bind(nodes)
 }
 
 $.onready(onready)

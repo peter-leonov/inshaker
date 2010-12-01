@@ -70,15 +70,13 @@ var myProto =
 		this.state = new DefaultState()
 	},
 	
-	bind: function (ds)
+	bind: function ()
 	{
-		this.ds = ds
-		
-		var ingredients = ds.ingredient.getAllNames(),
-			secondNames = ds.ingredient.getAllSecondNames(),
-			secondNamesHash = ds.ingredient.getNameBySecondNameHash(),
-			ingredientsTags = ds.ingredient.getTags(),
-			cocktailsTags = ds.cocktail.getTags()
+		var ingredients = Ingredient.getAllNames(),
+			secondNames = Ingredient.getAllSecondNames(),
+			secondNamesHash = Ingredient.getNameBySecondNameHash(),
+			ingredientsTags = Ingredient.getTags(),
+			cocktailsTags = Cocktail.getTags()
 		
 		var set = ingredients.slice()
 		set.push.apply(set, secondNames)
@@ -219,7 +217,7 @@ var myProto =
 			}
 		}
 		
-		var groups = this.ds.cocktail.getGroups(),
+		var groups = Cocktail.getGroups(),
 			sorted = []
 		for (var i = 0, il = groups.length; i < il; i++)
 		{
@@ -256,7 +254,7 @@ var myProto =
 				byMethod[method] = [cocktail]
 		}
 		
-		var methods = this.ds.cocktail.getMethods(),
+		var methods = Cocktail.getMethods(),
 			sorted = []
 		for (var i = 0, il = methods.length; i < il; i++)
 		{
@@ -518,8 +516,6 @@ var myProto =
 	
 	searchCocktails: function (add, remove)
 	{
-		var Cocktail = this.ds.cocktail
-		
 		var cocktails = Cocktail.getAll()
 		
 		for (var i = 0, il = add.length; i < il; i++)
@@ -586,8 +582,6 @@ var myProto =
 	
 	expandQueryNames: function (arr)
 	{
-		var Ingredient = this.ds.ingredient
-		
 		var ingredientsTagsHash = this.ingredientsTagsHash,
 			cocktailsTagsHash = this.cocktailsTagsHash
 		
@@ -640,8 +634,6 @@ var myProto =
 		if (ingredients)
 			return
 		
-		var Ingredient = this.ds.ingredient
-		
 		Ingredient.calculateEachIngredientUsage()
 		ingredients = this.allIngredients = Ingredient.getAll()
 		
@@ -653,7 +645,7 @@ var myProto =
 	
 	groupByGroup: function (all)
 	{
-		var groups = this.ds.ingredient.getGroups()
+		var groups = Ingredient.getGroups()
 		
 		var data = []
 		{
@@ -693,7 +685,7 @@ var myProto =
 		var base = this.chooseExampleIngredient(),
 			baseName = base.name
 		
-		var cocktails = this.ds.cocktail.getByIngredients([base])
+		var cocktails = Cocktail.getByIngredients([base])
 		if (cocktails.length == 0)
 			return
 		
@@ -711,7 +703,7 @@ var myProto =
 		if (!name)
 			return
 		
-		var ingredient = this.ds.ingredient.getByName(name)
+		var ingredient = Ingredient.getByName(name)
 		
 		var second = ingredient.tags[0] || ingredient.name
 		
@@ -720,8 +712,6 @@ var myProto =
 	
 	chooseExampleIngredient: function ()
 	{
-		var Ingredient = this.ds.ingredient
-		
 		var ingredients = Ingredient.getByTagCI('сочетайзер')
 		if (ingredients.length)
 			return ingredients.random(1)[0]
