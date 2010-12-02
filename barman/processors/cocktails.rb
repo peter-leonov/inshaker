@@ -90,14 +90,14 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def prepare_ingredients
-    if File.exists?(Config::DB_JS_INGREDS)
-      load_json(Config::DB_JS_INGREDS).each do |ingred|
+    if File.exists?(Ingredient::Config::DB_JS)
+      load_json(Ingredient::Config::DB_JS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
       end
     end
     
-    if File.exists?(Config::DB_JS_INGRED_GROUPS)
-      @ingredient_groups = load_json(Config::DB_JS_INGRED_GROUPS)
+    if File.exists?(Ingredient::Config::DB_JS_GROUPS)
+      @ingredient_groups = load_json(Ingredient::Config::DB_JS_GROUPS)
       
       hash = {}
       i = 1
