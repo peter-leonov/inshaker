@@ -39,6 +39,6 @@ Object.extend(Me, myStatic)
 Me.className = 'Video'
 self[Me.className] = Me
 
-Me.initialize(<!--# include file="/db/videos.js" -->)
+Me.initialize(<!--# include file="/db/videos/videos.json" -->)
 
 })();

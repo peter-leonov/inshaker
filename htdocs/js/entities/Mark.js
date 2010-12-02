@@ -59,6 +59,6 @@ Object.extend(Me, staticMethods)
 Me.className = myName
 self[myName] = Me
 
-Me.initialize(<!--# include file="/db/marks.js"-->)
+Me.initialize(<!--# include file="/db/ingredients/marks.json"-->)
 
 })();

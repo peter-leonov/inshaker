@@ -8,7 +8,7 @@ class Barman < Inshaker::Entity
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
     
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/barmen.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/barmen/barmen.json"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "barman.rhtml"
   end

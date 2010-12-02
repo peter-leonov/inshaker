@@ -12,7 +12,7 @@ class EventsProcessor < Inshaker::Processor
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     MAIN_LINK      = HT_ROOT + "main-%s.html"
     
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/events.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/events/events.json"
     
     TEMPLATES      = Inshaker::TEMPLATES_DIR
   end

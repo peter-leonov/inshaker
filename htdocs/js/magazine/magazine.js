@@ -2,7 +2,7 @@ MagazinePage =
 {
 	initialize: function (nodes)
 	{
-		var params = <!--# include file="/db/magazine.js"-->
+		var params = <!--# include file="/db/magazine/magazine.json"-->
 		var model       = this.model         = new MagazinePageModel(params)
 		var controller  = this.controller    = new MagazinePageController()
 		var view        = this.view          = new MagazinePageView(nodes)

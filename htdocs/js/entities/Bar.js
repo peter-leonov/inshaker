@@ -27,8 +27,6 @@ Bar.prototype =
 
 Object.extend(Bar,
 {
-	db: null, // must be defined in db-bars.js by calling initialize()
-	
 	initialize: function (db)
 	{
 		// console.time('Bar.initialize')
@@ -132,4 +130,4 @@ Object.extend(Bar,
 	getFeels: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') }
 })
 
-Bar.initialize(<!--# include file="/db/bars.js" -->)
+Bar.initialize(<!--# include file="/db/bars/bars.json" -->)

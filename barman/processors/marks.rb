@@ -10,7 +10,7 @@ class MarksProcessor < Inshaker::Processor
     HT_ROOT        = Inshaker::HTDOCS_DIR + "mark/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/marks.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/ingredients/marks.json"
   end
   
   def initialize

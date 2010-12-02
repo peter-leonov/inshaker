@@ -9,7 +9,7 @@ class ToolsProcessor < Inshaker::Processor
     HTDOCS_DIR = Inshaker::HTDOCS_DIR
     
     TOOLS_ROOT = HTDOCS_DIR + "i/merchandise/tools/"
-    DB_JS      = HTDOCS_DIR + "db/tools.js"
+    DB_JS      = HTDOCS_DIR + "db/tools/tools.json"
   end
   
   def initialize

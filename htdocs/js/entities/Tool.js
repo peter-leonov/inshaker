@@ -31,4 +31,4 @@ Object.extend(Tool,
 	}
 });
 
-Tool.initialize(<!--# include file="/db/tools.js" -->)
+Tool.initialize(<!--# include file="/db/tools/tools.json" -->)

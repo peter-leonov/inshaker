@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/ingredient"
 
 class GoodsProcessor < Inshaker::Processor
   
@@ -11,9 +12,8 @@ class GoodsProcessor < Inshaker::Processor
     HT_ROOT            = Inshaker::HTDOCS_DIR + "good/"
     NOSCRIPT_LINKS     = HT_ROOT + "links.html"
     
-    DB_JS              = Inshaker::HTDOCS_DIR + "db/goods.js"
-    DB_JS_INGREDS      = Inshaker::HTDOCS_DIR + "db/ingredients.js"
-    DB_JS_TOOLS        = Inshaker::HTDOCS_DIR + "db/tools.js"
+    DB_JS              = Inshaker::HTDOCS_DIR + "db/goods/goods.json"
+    DB_JS_TOOLS        = Inshaker::HTDOCS_DIR + "db/tools/tools.json"
   end
   
   def initialize
@@ -53,8 +53,8 @@ class GoodsProcessor < Inshaker::Processor
   end
   
   def prepare_ingredients
-    if File.exists?(Config::DB_JS_INGREDS)
-      load_json(Config::DB_JS_INGREDS).each do |ingred|
+    if File.exists?(Ingredient::Config::DB_JS)
+      load_json(Ingredient::Config::DB_JS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
       end
     end

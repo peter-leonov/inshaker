@@ -1,7 +1,5 @@
 City =
 {
-	db: null, // must be defined in db-bars.js by calling initialize()
-	
 	initialize: function (db)
 	{
 		this.db = db
@@ -13,4 +11,4 @@ City =
 	}
 }
 
-City.initialize(<!--# include file="/db/cities.js" -->)
+City.initialize(<!--# include file="/db/bars/cities.json" -->)
