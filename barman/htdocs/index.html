@@ -5,8 +5,8 @@
 	<link rel="stylesheet" href="/t/barman/barman.css" type="text/css"/>
 </head>
 <body>
-<div class="page shaker">
-	<div class="name">Обновление полигона <a id="parent-link">barman</a></div>
+<div class="page shaker hidden">
+	<h2 class="name">Обновление полигона <a id="parent-link">barman</a></h2>
 	<div class="logo"></div>
 	<button class="view-status small">Статус</button>
 	<button class="reset-state small">Сброс</button>
@@ -22,18 +22,14 @@
 		<label><input type="checkbox" name="magazine"/>Журнал</label>
 		<button class="shake">Смешать</button>
 	</form>
-	
-	<div id="right"></div>
 </div>
-<div class="page updater">
-	<div class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></div>
+<div class="page uploader">
+	<h2 class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></h2>
 	<div class="logo"></div>
-	<div class="options">…включая код, изображения и данные.</div>
-	<div id="goUp" class="go"></div>
-	
-	<div id="left"></div>
+	<div class="comment">…включая код, изображения и данные.</div>
+	<button class="upload">Залить</button>
 </div>
-<div id="output"><h>Вам как всегда?</h></div>
+<div id="output"><h class="welcome">Вам как всегда?</h></div>
 <script src="/js/barman/barman.js" type="text/javascript"></script>
 </body>
 </html>

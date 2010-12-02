@@ -1,115 +1,48 @@
 html, button { font-family: Arial,sans-serif; }
 body { padding: 0; margin: 0; }
 
+.hidden { display: none; }
+
 a { color:#cc2f7c; }
 
-button
-{
-	cursor: pointer;
-	border: 1px transparent solid;
-	border-radius: 10px;
-	width: 100px;
-	line-height: 40px;
-	height: 40px;
-	text-align:center;
-	background: #cc2f7c;
-	border-color: #cc2f7c;
-	color: #fff;
-	padding: 0;
-	font-size: 16px;
-}
-
+button { cursor: pointer; border: 1px transparent solid; border-radius: 10px; width: 100px; line-height: 40px; height: 40px; text-align: center; background: #cc2f7c; border-color: #cc2f7c; color: #fff; padding: 0; font-size: 16px; }
 button.small { height: 27px; line-height: 25px; opacity: 0.2; }
 button.small:hover { line-height: 25px; opacity: 1; }
+button.disabled { cursor: default; background: #eee; color: #bbb; border-color: #ccc; }
 
-button.disabled
-{
-	cursor: default;
-	background: #eee;
-	color: #bbb;
-	border-color: #ccc;
-}
-
-
-
-.page
-{
-	position: relative;
-	width: 500px;
-	height: 250px;
-	border: 1px solid #e0e0e0;
-	margin: 25px auto;
-	padding: 20px;
-	border-radius: 10px;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-.page .name
-{
-	font-size: 18px;
-	margin-bottom: 20px;
-}
-
+.page { position: relative; width: 500px; height: 250px; border: 1px solid #e0e0e0; margin: 25px auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.page .name { font-size: 18px; font-weight: normal; margin: 0 0 20px 0; }
 .page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); }
 
 
-
-
-.page.shaker form
-{
-	position: absolute;
-	left: 175px;
-	width: 195px;
-	font-size: 16px;
-}
-
-.page.shaker form label
-{
-	display: block;
-	padding: 1px 0;
-}
-.page.shaker form label input
-{
-	vertical-align: bottom;
-	margin: 3px;
-}
-
-
+.page.shaker form { position: absolute; left: 175px; width: 195px; font-size: 16px; }
+.page.shaker form label { display: block; padding: 1px 0; }
+.page.shaker form label input { vertical-align: bottom; margin: 3px; }
 .page.shaker .shake { position: absolute; left: 245px; top: 50px; }
-
-
 .page.shaker .view-status,
 .page.shaker .reset-state { position: absolute; left: 35px;  }
-
 .page.shaker .view-status { top: 200px; }
 .page.shaker .reset-state { top: 235px; }
 
-#output
-{
-	width: 503px;
-	font-size: 12px;
-	margin: 20px 115px;
-	background: #EDEDED;
-	border: 1px #C0C0C0 solid;
-	height: 300px;
-	overflow-y: scroll;
-	padding: 15px;
-	white-space: pre;
-	white-space: pre-line;
-}
-#output h { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 
+.page.uploader .comment { position: absolute; left: 175px; width: 200px; }
+.page.uploader .upload { position: absolute; right: 20px; top: 110px; }
+
+
+
+#output { width: 503px; font-size: 12px; margin: 20px 115px; background: #ededed; border: 1px solid #c0c0c0; height: 300px; overflow-y: scroll; padding: 15px; white-space: pre; white-space: pre-line; }
+#output .welcome { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 #output.server-error { background: #aa0000; color: #000; border-color: #400; }
-
 #output .error { color: #d40; }
 #output .warning { color: #e80; }
 #output .done { color: #082; }
 
+
+
 #left,
 #right
 {
-	position: absolute; 
+	position: absolute;
 	top: 130px;
 	border-radius: 5px;
 	padding: 5px;
