@@ -20,6 +20,7 @@ class CocktailsProcessor < Inshaker::Processor
     @groups = []
     @tags = []
     @tags_ci = {}
+    @tags_used = {}
     @hidden_tags = []
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
@@ -343,6 +344,7 @@ class CocktailsProcessor < Inshaker::Processor
         error "незнакомый тег «#{tag_candidate}»"
       end
       
+      @tags_used[tag] = true
       cocktail_tags << tag
     end
     
@@ -461,7 +463,7 @@ class CocktailsProcessor < Inshaker::Processor
        hash["groups"].each { |group| count[group] += 1 }
      end
      groups = []
-     # p @groups
+     
      @groups.each do |group|
       if count[group] == 0
         error "нет коктейлей в группе «#{group}»"
@@ -478,6 +480,16 @@ class CocktailsProcessor < Inshaker::Processor
         groups << group
       end
      end
+     
+     unused_tags = @tags - @tags_used.keys
+     
+     # warn about unused tags
+     unless unused_tags.empty?
+       warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
+     end
+     
+     # delete unused tags
+     @tags -= unused_tags
      
      # hide hidden tags ;)
      @tags -= @hidden_tags
