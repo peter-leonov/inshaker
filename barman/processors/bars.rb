@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/cocktail"
 require "entities/bar"
 
 class BarsProcessor < Inshaker::Processor
@@ -11,7 +12,6 @@ class BarsProcessor < Inshaker::Processor
   
   def initialize
     super
-    @cocktails = {}
     @barmen = []
     @barmen_by_name = {}
     @cases = {}
@@ -27,7 +27,8 @@ class BarsProcessor < Inshaker::Processor
   end
   
   def job
-    prepare_cocktails
+    Cocktail.init
+    
     prepare_barmen
     prepare_dirs
     prepare_cases
@@ -40,12 +41,6 @@ class BarsProcessor < Inshaker::Processor
       cleanup_deleted
       flush_links
       flush_json
-    end
-  end
-  
-  def prepare_cocktails
-    if File.exists?(Config::COCKTAILS_DB)
-      @cocktails = load_json(Config::COCKTAILS_DB)
     end
   end
   
@@ -104,7 +99,7 @@ class BarsProcessor < Inshaker::Processor
         }
         
         bar["carte"].each do |cocktail|
-          unless @cocktails[cocktail]
+          unless Cocktail[cocktail]
             error %Q{нет такого коктейля #{cocktail}}
           end
         end
