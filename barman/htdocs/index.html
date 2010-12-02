@@ -1,46 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-	<title>InShaker — Barman</title>
-	<link rel="stylesheet" href="/t/barman/barman.css" type="text/css"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>Barman — Inshaker</title>
+	<link href="/t/barman/barman.css" rel="stylesheet"/>
 </head>
-<body id="barman-page">
-<div class="programica-rolling-images" id="ri">
-	<div class="prev" id="left"></div>
-	<div class="next" id="right"></div>
+<body>
+<div class="page shaker">
+	<h2 class="name">Обновление полигона <a id="parent-link">barman</a></h2>
+	<div class="logo"></div>
+	<button class="view-status action small"><span class="n">Статус</span><span class="a">Смотрю…</span></button>
+	<button class="reset-state action small"><span class="n">Сброс</span><span class="a">Бросаю…</span></button>
+	<form class="processors-list">
+		<label><input type="checkbox" name="cocktails"/>Коктейли</label>
+		<label><input type="checkbox" name="ingredients"/>Ингредиенты</label>
+		<label><input type="checkbox" name="marks"/>Марки</label>
+		<label><input type="checkbox" name="tools"/>Штучки</label>
+		<label><input type="checkbox" name="bars"/>Бары</label>
+		<label><input type="checkbox" name="events"/>События</label>
+		<label><input type="checkbox" name="barmen"/>Бармены</label>
+		<label><input type="checkbox" name="goods"/>Покупки</label>
+		<label><input type="checkbox" name="magazine"/>Журнал</label>
+	</form>
+	<button class="action shake"><span class="n">Смешать</span><span class="a">Мешаю…</span></button>
 	
-	<div class="viewport">
-		<div class="surface">
-			<div class="wrapper rounded-top point" id="point_0">
-				<div class="name">Обновление полигона <a id="parent-link">barman</a></div>
-				<img class="logo" src="/t/barman/barman.png"/>
-				<div id="view-status" class="go small">Статус</div>
-				<div id="reset-state" class="go small">Сброс</div>
-				<div class="options">
-					<form method="post" id="barman-form">
-						<label><input type="checkbox" name="cocktails"/>Коктейли</label>
-						<label><input type="checkbox" name="ingredients"/>Ингредиенты</label>
-						<label><input type="checkbox" name="marks"/>Марки</label>
-						<label><input type="checkbox" name="tools"/>Штучки</label>
-						<label><input type="checkbox" name="bars"/>Бары</label>
-						<label><input type="checkbox" name="events"/>События</label>
-						<label><input type="checkbox" name="barmen"/>Бармены</label>
-						<label><input type="checkbox" name="goods"/>Покупки</label>
-						<label><input type="checkbox" name="magazine"/>Журнал</label>
-					</form>
-				</div>
-				<div id="goBarman" class="go"></div>
-			</div>
-			<div class="wrapper rounded-top point" id="point_1">
-				<div class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></div>
-				<img class="logo" src="/t/barman/barman.png"/>
-				<div class="options">…включая код, изображения и данные.</div>
-				<div id="goUp" class="go"></div>
-			</div>
-		</div>
-	</div>
+	<button class="navigation goto-uploader">Сайт →</button>
 </div>
-<div id="output"><h>Вам как всегда?</h></div>
+
+<div class="page uploader hidden">
+	<h2 class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></h2>
+	<div class="logo"></div>
+	<div class="comment">…включая код, изображения и данные.</div>
+	<button class="action upload"><span class="n">Залить</span><span class="a">Лью…</span></button>
+	
+	<button class="navigation goto-shaker">← Бармен</button>
+</div>
+
+<div id="output"><h class="welcome">Вам как всегда?</h></div>
+
 <script src="/js/barman/barman.js" type="text/javascript"></script>
 </body>
 </html>
