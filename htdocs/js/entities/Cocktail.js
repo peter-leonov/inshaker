@@ -363,9 +363,9 @@ Object.extend(Cocktail,
 
 Cocktail.initialize
 (
-	<!--# include file="/db/cocktails.js" -->,
-	<!--# include file="/db/cocktails_groups.js" -->,
-	<!--# include file="/db/cocktails_strengths.js" -->,
-	<!--# include file="/db/cocktails_methods.js" -->,
-	<!--# include file="/db/cocktails_tags.js" -->
+	<!--# include file="/db/cocktails/cocktails.js" -->,
+	<!--# include file="/db/cocktails/groups.js" -->,
+	<!--# include file="/db/cocktails/strengths.js" -->,
+	<!--# include file="/db/cocktails/methods.js" -->,
+	<!--# include file="/db/cocktails/tags.js" -->
 )

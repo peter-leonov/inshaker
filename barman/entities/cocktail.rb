@@ -6,11 +6,11 @@ class Cocktail < Inshaker::Entity
     HTDOCS_DIR    = Inshaker::HTDOCS_DIR
     
     HTDOCS_ROOT        = HTDOCS_DIR + "cocktail/"
-    DB_JS              = HTDOCS_DIR + "db/cocktails.js"
-    DB_JS_TAGS         = HTDOCS_DIR + "db/cocktails_tags.js"
-    DB_JS_GROUPS       = HTDOCS_DIR + "db/cocktails_groups.js"
-    DB_JS_STRENGTHS    = HTDOCS_DIR + "db/cocktails_strengths.js"
-    DB_JS_METHODS      = HTDOCS_DIR + "db/cocktails_methods.js"
+    DB_JS              = HTDOCS_DIR + "db/cocktails/cocktails.js"
+    DB_JS_TAGS         = HTDOCS_DIR + "db/cocktails/tags.js"
+    DB_JS_GROUPS       = HTDOCS_DIR + "db/cocktails/groups.js"
+    DB_JS_STRENGTHS    = HTDOCS_DIR + "db/cocktails/strengths.js"
+    DB_JS_METHODS      = HTDOCS_DIR + "db/cocktails/methods.js"
     DB_JS_INGREDS      = HTDOCS_DIR + "db/ingredients.js"
     DB_JS_INGRED_GROUPS= HTDOCS_DIR + "db/ingredients_groups.js"
     
