@@ -17,6 +17,7 @@ class IngredientsProcessor < Inshaker::Processor
     @marks = {}
     @tags = []
     @tags_ci = {}
+    @tags_used = {}
     @tags_hidden = []
   end
   
@@ -50,6 +51,8 @@ class IngredientsProcessor < Inshaker::Processor
     
     update_groups_and_tags
     process_ingredients
+    
+    check_intergity
     
     unless errors?
       flush_links
@@ -196,6 +199,7 @@ class IngredientsProcessor < Inshaker::Processor
         error "незнакомый тег «#{tag_candidate}»"
       end
       
+      @tags_used[tag] = true
       good_tags << tag
     end
     
@@ -247,15 +251,30 @@ class IngredientsProcessor < Inshaker::Processor
     return good
   end
   
+  def check_intergity
+    say "проверяю теги"
+    
+    unused_tags = @tags - @tags_used.keys
+    
+    # warn about unused tags
+    unless unused_tags.empty?
+      warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
+    end
+    
+    # delete unused tags
+    @tags -= unused_tags
+  end
+  
   def flush_json
     say "сохраняю данные об ингредиентах"
+    
     ingredients = @entities.sort { |a, b| a["name"] <=> b["name"] }
     ingredients.each do |entity|
       update_json entity
     end
     flush_json_object(ingredients, Config::DB_JS)
     flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
-    
+    # hide hidden tags
     @tags -= @tags_hidden
     flush_json_object(@tags, Config::DB_JS_TAGS)
   end
