@@ -90,4 +90,4 @@ Object.extend(Barman,
 	}
 })
 
-Barman.initialize(<!--# include file="/db/barmen.js"-->)
+Barman.initialize(<!--# include file="/db/barmen/barmen.json"-->)

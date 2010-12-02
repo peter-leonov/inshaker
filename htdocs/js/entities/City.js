@@ -11,4 +11,4 @@ City =
 	}
 }
 
-City.initialize(<!--# include file="/db/cities.js" -->)
+City.initialize(<!--# include file="/db/bars/cities.json" -->)

@@ -14,7 +14,7 @@ class MagazineProcessor < Inshaker::Processor
     HT_ROOT        = Inshaker::HTDOCS_DIR + "magazine/"
     HT_ROOT_PROMOS = HT_ROOT + "promos/"
     
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/magazine/magazine.json"
     
     BLOCK_NAMES = {
       "Коктейльная классика" => "classic",

@@ -12,8 +12,8 @@ class GoodsProcessor < Inshaker::Processor
     HT_ROOT            = Inshaker::HTDOCS_DIR + "good/"
     NOSCRIPT_LINKS     = HT_ROOT + "links.html"
     
-    DB_JS              = Inshaker::HTDOCS_DIR + "db/goods.js"
-    DB_JS_TOOLS        = Inshaker::HTDOCS_DIR + "db/tools.js"
+    DB_JS              = Inshaker::HTDOCS_DIR + "db/goods/goods.json"
+    DB_JS_TOOLS        = Inshaker::HTDOCS_DIR + "db/tools/tools.json"
   end
   
   def initialize

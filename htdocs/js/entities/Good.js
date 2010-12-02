@@ -142,6 +142,6 @@ Object.extend(Me, staticMethods)
 Me.className = myName
 self[myName] = Me
 
-Me.initialize(<!--# include file="/db/goods.js"-->)
+Me.initialize(<!--# include file="/db/goods/goods.json"-->)
 
 })();

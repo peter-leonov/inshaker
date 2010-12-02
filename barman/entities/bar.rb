@@ -8,10 +8,10 @@ class Bar < Inshaker::Entity
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     SITEMAP_LINKS  = HT_ROOT + "sitemap.txt"
     
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/bars.js"
-    DB_JS_CITIES   = Inshaker::HTDOCS_DIR + "db/cities.js"
+    DB_JS          = Inshaker::HTDOCS_DIR + "db/bars/bars.json"
+    DB_JS_CITIES   = Inshaker::HTDOCS_DIR + "db/bars/cities.json"
     COCKTAILS_DB   = Inshaker::HTDOCS_DIR + "db/cocktails.js"
-    BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen.js"
+    BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen/barmen.json"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS    = Inshaker::BASE_DIR + "declensions.yaml"

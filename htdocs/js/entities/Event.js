@@ -91,4 +91,4 @@ Object.extend(Event,
 	}
 })
 
-Event.initialize(<!--# include file="/db/events.js" -->)
+Event.initialize(<!--# include file="/db/events/events.json" -->)
