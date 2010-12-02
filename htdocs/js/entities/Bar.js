@@ -27,8 +27,6 @@ Bar.prototype =
 
 Object.extend(Bar,
 {
-	db: null, // must be defined in db-bars.js by calling initialize()
-	
 	initialize: function (db)
 	{
 		// console.time('Bar.initialize')

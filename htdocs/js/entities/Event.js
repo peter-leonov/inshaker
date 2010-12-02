@@ -17,7 +17,6 @@ Event.prototype =
 
 Object.extend(Event,
 {
-	db: null, // must be defined in db-events.js by calling initialize()
 	indices: {},
 	
 	initialize: function (hash)
