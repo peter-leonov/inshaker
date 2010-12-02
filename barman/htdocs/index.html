@@ -6,7 +6,7 @@
 	<link href="/t/barman/barman.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="page shaker">
+<div class="page shaker hidden">
 	<h2 class="name">Обновление полигона <a id="parent-link">barman</a></h2>
 	<div class="logo"></div>
 	<button class="view-status action small">Статус</button>
@@ -27,11 +27,13 @@
 	<button class="navigation goto-uploader">Сайт →</button>
 </div>
 
-<div class="page uploader hidden">
+<div class="page uploader">
 	<h2 class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></h2>
 	<div class="logo"></div>
 	<div class="comment">…включая код, изображения и данные.</div>
-	<button class="upload">Залить</button>
+	<button class="upload action">Залить</button>
+	
+	<button class="navigation goto-shaker">← Бармен</button>
 </div>
 
 <div id="output"><h class="welcome">Вам как всегда?</h></div>
