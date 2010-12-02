@@ -6,12 +6,12 @@
 	<link href="/t/barman/barman.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="page shaker hidden">
+<div class="page shaker">
 	<h2 class="name">Обновление полигона <a id="parent-link">barman</a></h2>
 	<div class="logo"></div>
 	<button class="view-status action small">Статус</button>
 	<button class="reset-state action small">Сброс</button>
-	<form>
+	<form class="processors-list">
 		<label><input type="checkbox" name="cocktails"/>Коктейли</label>
 		<label><input type="checkbox" name="ingredients"/>Ингредиенты</label>
 		<label><input type="checkbox" name="marks"/>Марки</label>
@@ -21,17 +21,17 @@
 		<label><input type="checkbox" name="barmen"/>Бармены</label>
 		<label><input type="checkbox" name="goods"/>Покупки</label>
 		<label><input type="checkbox" name="magazine"/>Журнал</label>
-		<button class="action shake">Смешать</button>
 	</form>
+	<button class="action shake">Смешать</button>
 	
 	<button class="navigation goto-uploader">Сайт →</button>
 </div>
 
-<div class="page uploader">
+<div class="page uploader hidden">
 	<h2 class="name">Обновление сайта <a href="http://www.inshaker.ru" target="_blank">www.inshaker.ru</a></h2>
 	<div class="logo"></div>
 	<div class="comment">…включая код, изображения и данные.</div>
-	<button class="upload action">Залить</button>
+	<button class="action upload">Залить</button>
 	
 	<button class="navigation goto-shaker">← Бармен</button>
 </div>

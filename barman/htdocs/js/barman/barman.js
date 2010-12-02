@@ -5,12 +5,26 @@
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/cookie.js" -->
 <!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/selectors.js" -->
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
 
 <!--# include virtual="uibutton.js" -->
 
-$.onready(function(){
-	
-	var output = $('output')
+$.onready(function()
+{
+	var nodes =
+	{
+		shake: $$('.shaker .shake')[0],
+		processorsList: $$('.shaker .processors-list')[0],
+		viewStatus: $$('.shaker .view-status')[0],
+		resetState: $$('.shaker .reset-state')[0],
+		gotoUploader: $$('.goto-uploader')[0],
+		
+		upload: $$('.uploader .upload')[0],
+		gotoShaker: $$('.goto-shaker')[0],
+		
+		output: $('output')
+	}
 	
 	var running = false
 	function run (path, hash, callback)
@@ -18,6 +32,8 @@ $.onready(function(){
 		if (running)
 			return false
 		running = true
+		
+		var output = nodes.output
 		
 		var r = new XMLHttpRequest()
 		r.open('POST', path, true)
@@ -60,60 +76,49 @@ $.onready(function(){
 	parentLink.firstChild.nodeValue = host
 	
 	var memory = JSON.parse(Cookie.get('barman-memory'));
-	if (memory){
-		var inputs = $('barman-form').getElementsByTagName('input')
+	if (memory)
+	{
+		var inputs = nodes.processorsList.getElementsByTagName('input')
 		for (var i = 0; i < inputs.length; i++){
 			inputs[i].checked = memory[inputs[i].name] ? 'checked' : ''
 		}
 	}
 	
-	var goBarmanButton = new UIButton($('shake'), 'disabled', 'Смешать', 'Подожди...', function(e)
+	new UIButton(nodes.shake).onaction = function (e)
 	{
-		var fh = $('barman-form').toHash();
-		Cookie.set('barman-memory', JSON.stringify(fh));
+		var button = this
 		
-		function done ()
-		{
-			goBarmanButton.setEnabled(true)
-		}
+		var fh = FormHelper.toHash(nodes.processorsList)
+		Cookie.set('barman-memory', JSON.stringify(fh))
 		
-		if (run('/act/launcher.cgi', fh, done))
-			goBarmanButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', fh, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goUpButton = new UIButton($('goUp'), 'disabled', 'Залить', 'Подожди...', function(e)
+	new UIButton(nodes.upload).onaction = function (e)
 	{
-		function done ()
-		{
-			goUpButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {deployer: 'on'}, done))
-			goUpButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', {deployer: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goStatusButton = new UIButton($('view-status'), 'disabled', $('view-status').innerHTML, 'Подожди...', function(e)
+	new UIButton(nodes.viewStatus).onaction = function (e)
 	{
-		function done ()
-		{
-			goStatusButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {status: 'on'}, done))
-			goStatusButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', {status: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goResetButton = new UIButton($('reset-state'), 'disabled', $('reset-state').innerHTML, 'Подожди...', function(e)
+	new UIButton(nodes.resetState).onaction = function (e)
 	{
 		if (!window.confirm('Сброшу состояние бармена до состояния сайта.\nЭто не больно.'))
 			return
 		
-		function done ()
-		{
-			goResetButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {reset: 'on'}, done))
-			goResetButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', {reset: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 })
