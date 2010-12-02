@@ -1,5 +1,5 @@
 html, button { font-family: Arial,sans-serif; }
-body { padding: 0; margin: 0; }
+body { padding: 25px 0 0 0; margin: 0; }
 
 .hidden { display: none; }
 
@@ -14,7 +14,7 @@ button.small:hover { line-height: 25px; opacity: 1; }
 button.disabled { cursor: default; background: #eee; color: #bbb; border-color: #ccc; }
 
 
-.page { position: relative; width: 500px; height: 250px; border: 1px solid #e0e0e0; margin: 25px auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.page { position: relative; width: 500px; height: 250px; border: 1px solid #e0e0e0; margin: 0 auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .page .name { font-size: 18px; font-weight: normal; margin: 0 0 20px 0; }
 .page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); }
 
@@ -36,7 +36,7 @@ button.disabled { cursor: default; background: #eee; color: #bbb; border-color: 
 
 
 
-#output { width: 503px; font-size: 12px; margin: 20px 115px; background: #ededed; border: 1px solid #c0c0c0; height: 300px; overflow-y: scroll; padding: 15px; white-space: pre; white-space: pre-line; }
+#output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; white-space: pre-line; }
 #output .welcome { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 #output.server-error { background: #aa0000; color: #000; border-color: #400; }
 #output .error { color: #d40; }
