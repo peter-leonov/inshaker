@@ -140,6 +140,52 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     end # indent
+    
+    say "проверяю группы"
+    indent do
+    
+    count = {}
+    count.default = 0
+    @cocktails.each do |name, hash|
+      hash["groups"].each { |group| count[group] += 1 }
+    end
+    groups = []
+    
+    @groups.each do |group|
+     if count[group] == 0
+       error "нет коктейлей в группе «#{group}»"
+     elsif count[group] < 3
+       warning "слишком мало коктейлей (#{count[group]}) в группе «#{group}»"
+       indent do
+       @cocktails.each do |name, hash|
+         if hash["groups"].index group
+           say name
+         end
+       end
+       end # indent
+     else
+       groups << group
+     end
+    end
+    
+    @groups = groups
+    
+    end # indent
+    
+    
+    say "проверяю теги"
+    indent do
+    
+    unused_tags = @tags - @tags_used.keys
+    # warn about unused tags
+    unless unused_tags.empty?
+      warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
+    end
+    
+    # delete unused tags
+    @tags -= unused_tags
+    
+    end # indent
   end
   
   def prepare_cocktails
@@ -457,44 +503,10 @@ class CocktailsProcessor < Inshaker::Processor
   def flush_groups_and_strengths_and_methods
      say "сохраняю списки тегов, крепости и приготовления"
      
-     count = {}
-     count.default = 0
-     @cocktails.each do |name, hash|
-       hash["groups"].each { |group| count[group] += 1 }
-     end
-     groups = []
-     
-     @groups.each do |group|
-      if count[group] == 0
-        error "нет коктейлей в группе «#{group}»"
-      elsif count[group] < 3
-        warning "слишком мало коктейлей (#{count[group]}) в группе «#{group}»"
-        indent do
-        @cocktails.each do |name, hash|
-          if hash["groups"].index group
-            say name
-          end
-        end
-        end # indent
-      else
-        groups << group
-      end
-     end
-     
-     unused_tags = @tags - @tags_used.keys
-     
-     # warn about unused tags
-     unless unused_tags.empty?
-       warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
-     end
-     
-     # delete unused tags
-     @tags -= unused_tags
-     
      # hide hidden tags ;)
      @tags -= @tags_hidden
      
-     flush_json_object(groups, Config::DB_JS_GROUPS)
+     flush_json_object(@groups, Config::DB_JS_GROUPS)
      flush_json_object(@tags, Config::DB_JS_TAGS)
      flush_json_object(@strengths, Config::DB_JS_STRENGTHS)
      flush_json_object(@methods, Config::DB_JS_METHODS)
