@@ -5,10 +5,14 @@ body { padding: 0; margin: 0; }
 
 a { color:#cc2f7c; }
 
-button { cursor: pointer; border: 1px transparent solid; border-radius: 10px; width: 100px; line-height: 40px; height: 40px; text-align: center; background: #cc2f7c; border-color: #cc2f7c; color: #fff; padding: 0; font-size: 16px; }
+button { cursor: pointer; border: 1px transparent solid; border-radius: 10px;  text-align: center; padding: 0; font-size: 16px; }
+button.action { width: 100px; height: 40px; line-height: 40px; background-color: #cc2f7c; border-color: #cc2f7c; color: #fff; }
+button.navigation { width: 90px; height: 30px; line-height: 28px; background-color: #fff; border-color: #c0c0c0; border-radius: 5px; color: #979797; }
+button.navigation:hover { border-color: #000; color: #000; }
 button.small { height: 27px; line-height: 25px; opacity: 0.2; }
 button.small:hover { line-height: 25px; opacity: 1; }
 button.disabled { cursor: default; background: #eee; color: #bbb; border-color: #ccc; }
+
 
 .page { position: relative; width: 500px; height: 250px; border: 1px solid #e0e0e0; margin: 25px auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .page .name { font-size: 18px; font-weight: normal; margin: 0 0 20px 0; }
@@ -23,6 +27,7 @@ button.disabled { cursor: default; background: #eee; color: #bbb; border-color: 
 .page.shaker .reset-state { position: absolute; left: 35px;  }
 .page.shaker .view-status { top: 200px; }
 .page.shaker .reset-state { top: 235px; }
+.page.shaker .goto-uploader { position: absolute; top: 100px; right: -115px; }
 
 
 .page.uploader .comment { position: absolute; left: 175px; width: 200px; }
