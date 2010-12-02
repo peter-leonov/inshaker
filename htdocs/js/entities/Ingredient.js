@@ -383,9 +383,9 @@ Object.extend(Ingredient,
 
 Ingredient.initialize
 (
-	<!--# include file="/db/ingredients.js"-->,
-	<!--# include file="/db/ingredients_groups.js"-->,
-	<!--# include file="/db/ingredients_tags.js"-->
+	<!--# include file="/db/ingredients/ingredients.js"-->,
+	<!--# include file="/db/ingredients/groups.js"-->,
+	<!--# include file="/db/ingredients/tags.js"-->
 )
 
 })();
