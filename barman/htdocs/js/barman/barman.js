@@ -7,6 +7,9 @@
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/selectors.js" -->
 <!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/event-driven.js" -->
+
+<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
 <!--# include virtual="uibutton.js" -->
 
@@ -14,17 +17,34 @@ $.onready(function()
 {
 	var nodes =
 	{
+		shakerPage: $$('.page.shaker')[0],
 		shake: $$('.shaker .shake')[0],
 		processorsList: $$('.shaker .processors-list')[0],
 		viewStatus: $$('.shaker .view-status')[0],
 		resetState: $$('.shaker .reset-state')[0],
 		gotoUploader: $$('.goto-uploader')[0],
 		
+		uploaderPage: $$('.page.uploader')[0],
 		upload: $$('.uploader .upload')[0],
 		gotoShaker: $$('.goto-shaker')[0],
 		
 		output: $('output')
 	}
+	
+	;(function(){
+		
+		var tsNodes =
+		{
+			tabs: [nodes.gotoShaker, nodes.gotoUploader],
+			sections: [nodes.shakerPage, nodes.uploaderPage]
+		}
+		
+		var tabSwitcher = new TabSwitcher()
+		tabSwitcher.bind(tsNodes)
+		
+	})();
+	
+	
 	
 	var running = false
 	function run (path, hash, callback)
