@@ -29,14 +29,12 @@ http://www.inshaker.ru/cocktail/orange_cinnamon_chaser/
 http://www.inshaker.ru/cocktail/apri_cot/
 http://www.inshaker.ru/cocktail/apri_smash/
 http://www.inshaker.ru/cocktail/aravika/
-http://www.inshaker.ru/cocktail/celery_mix/
 http://www.inshaker.ru/cocktail/watermelon_margarita/
 http://www.inshaker.ru/cocktail/watermelon_cobler_317/
 http://www.inshaker.ru/cocktail/watermelon_lemonade/
 http://www.inshaker.ru/cocktail/watermelon_sling/
 http://www.inshaker.ru/cocktail/watermelon_thai_sling/
 http://www.inshaker.ru/cocktail/watermelon_ale/
-http://www.inshaker.ru/cocktail/african_passion/
 http://www.inshaker.ru/cocktail/aztec/
 http://www.inshaker.ru/cocktail/b-52/
 http://www.inshaker.ru/cocktail/baba_tanya/
@@ -56,7 +54,6 @@ http://www.inshaker.ru/cocktail/baja_bocana/
 http://www.inshaker.ru/cocktail/no_name_drink/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
-http://www.inshaker.ru/cocktail/snow_white/
 http://www.inshaker.ru/cocktail/white_poetry/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
@@ -122,7 +119,6 @@ http://www.inshaker.ru/cocktail/heathy_tea/
 http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/spring_set/
 http://www.inshaker.ru/cocktail/vesper/
-http://www.inshaker.ru/cocktail/evening_with_vaikule/
 http://www.inshaker.ru/cocktail/evergreen_fizz/
 http://www.inshaker.ru/cocktail/broken_brain/
 http://www.inshaker.ru/cocktail/grape_cobler_317/
@@ -229,7 +225,6 @@ http://www.inshaker.ru/cocktail/awol/
 http://www.inshaker.ru/cocktail/awol_2/
 http://www.inshaker.ru/cocktail/decade/
 http://www.inshaker.ru/cocktail/delissia/
-http://www.inshaker.ru/cocktail/arboretum/
 http://www.inshaker.ru/cocktail/all_day_long/
 http://www.inshaker.ru/cocktail/wooden_jack/
 http://www.inshaker.ru/cocktail/jumbo/
@@ -263,12 +258,10 @@ http://www.inshaker.ru/cocktail/smoking_scot/
 http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
-http://www.inshaker.ru/cocktail/e_shan/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_cobler/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
 http://www.inshaker.ru/cocktail/yellow_mix/
-http://www.inshaker.ru/cocktail/iron_health/
 http://www.inshaker.ru/cocktail/liquid_cheesecake/
 http://www.inshaker.ru/cocktail/jokers_breakfast/
 http://www.inshaker.ru/cocktail/tequila_breakfast/
@@ -284,7 +277,6 @@ http://www.inshaker.ru/cocktail/winter_cherry/
 http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/
 http://www.inshaker.ru/cocktail/gold_bottom/
-http://www.inshaker.ru/cocktail/golden_spirit/
 http://www.inshaker.ru/cocktail/gold_gingery_rum/
 http://www.inshaker.ru/cocktail/golden_kick/
 http://www.inshaker.ru/cocktail/zombie/
@@ -292,7 +284,6 @@ http://www.inshaker.ru/cocktail/zombie_2/
 http://www.inshaker.ru/cocktail/yodji_tini/
 http://www.inshaker.ru/cocktail/isabella/
 http://www.inshaker.ru/cocktail/izcaragua/
-http://www.inshaker.ru/cocktail/gingery_grenade/
 http://www.inshaker.ru/cocktail/ginger_passion/
 http://www.inshaker.ru/cocktail/ginger-grape_martini/
 http://www.inshaker.ru/cocktail/ginger_whisky/
@@ -320,13 +311,10 @@ http://www.inshaker.ru/cocktail/blackberry_caipirinha/
 http://www.inshaker.ru/cocktail/strawberry_caipirinha/
 http://www.inshaker.ru/cocktail/caipiroska/
 http://www.inshaker.ru/cocktail/caligula/
-http://www.inshaker.ru/cocktail/arrowwood_martini/
-http://www.inshaker.ru/cocktail/kalinka-malinka/
 http://www.inshaker.ru/cocktail/calvados_infused_on_plums/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
 http://www.inshaker.ru/cocktail/caprese_martini/
 http://www.inshaker.ru/cocktail/capri/
-http://www.inshaker.ru/cocktail/kapunkaa/
 http://www.inshaker.ru/cocktail/karaoke/
 http://www.inshaker.ru/cocktail/cardicas/
 http://www.inshaker.ru/cocktail/caribbean_touch/
@@ -357,7 +345,6 @@ http://www.inshaker.ru/cocktail/strawberry_lemonade/
 http://www.inshaker.ru/cocktail/strawberry_milkshake/
 http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
-http://www.inshaker.ru/cocktail/cranberry_with_thyme/
 http://www.inshaker.ru/cocktail/cranberry-raspberry_mulled_wine/
 http://www.inshaker.ru/cocktail/cosa_nostra/
 http://www.inshaker.ru/cocktail/coconut_cranberries/
@@ -370,7 +357,6 @@ http://www.inshaker.ru/cocktail/coconut_breeze/
 http://www.inshaker.ru/cocktail/coconut_sprite/
 http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
 http://www.inshaker.ru/cocktail/cola_and_grapefruit_liqueur/
-http://www.inshaker.ru/cocktail/hummingbird/
 http://www.inshaker.ru/cocktail/conca_d_oro/
 http://www.inshaker.ru/cocktail/connaught_martini/
 http://www.inshaker.ru/cocktail/head_shot/
@@ -384,7 +370,6 @@ http://www.inshaker.ru/cocktail/cosmo_passion_tea_/
 http://www.inshaker.ru/cocktail/cosmo_tea/
 http://www.inshaker.ru/cocktail/cosmopolitan/
 http://www.inshaker.ru/cocktail/cosmopolitan_jelly/
-http://www.inshaker.ru/cocktail/coffee_orientally_on_milk/
 http://www.inshaker.ru/cocktail/cranberryni/
 http://www.inshaker.ru/cocktail/red_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/red-skinned_macho/
@@ -401,9 +386,7 @@ http://www.inshaker.ru/cocktail/bloody_mary/
 http://www.inshaker.ru/cocktail/bloody_joseph/
 http://www.inshaker.ru/cocktail/blood_and_sand/
 http://www.inshaker.ru/cocktail/cuba_libre/
-http://www.inshaker.ru/cocktail/cucumber/
 http://www.inshaker.ru/cocktail/cool_sweet_heart/
-http://www.inshaker.ru/cocktail/cumquat_comfort/
 http://www.inshaker.ru/cocktail/kurant_bitter_lemon/
 http://www.inshaker.ru/cocktail/kurant_shot/
 http://www.inshaker.ru/cocktail/courtesan/
@@ -521,7 +504,6 @@ http://www.inshaker.ru/cocktail/m_m_s/
 http://www.inshaker.ru/cocktail/fashion_orgasm/
 http://www.inshaker.ru/cocktail/mocha_chocolata_yaya/
 http://www.inshaker.ru/cocktail/rejuvenating_apple/
-http://www.inshaker.ru/cocktail/young_raisins/
 http://www.inshaker.ru/cocktail/milk_and_honey/
 http://www.inshaker.ru/cocktail/milky_brandy_punch/
 http://www.inshaker.ru/cocktail/milky_whisky_punsh/
@@ -598,7 +580,6 @@ http://www.inshaker.ru/cocktail/paloma_chaser/
 http://www.inshaker.ru/cocktail/palma_de_pear/
 http://www.inshaker.ru/cocktail/daddy/
 http://www.inshaker.ru/cocktail/paris/
-http://www.inshaker.ru/cocktail/paris_martini/
 http://www.inshaker.ru/cocktail/pasteque/
 http://www.inshaker.ru/cocktail/pacha_ibiza/
 http://www.inshaker.ru/cocktail/pacha_monaco/
@@ -609,7 +590,6 @@ http://www.inshaker.ru/cocktail/pacha_san-paolo/
 http://www.inshaker.ru/cocktail/pedro_manhatten/
 http://www.inshaker.ru/cocktail/pedro_punsh/
 http://www.inshaker.ru/cocktail/pelican/
-http://www.inshaker.ru/cocktail/first_jeans/
 http://www.inshaker.ru/cocktail/apricot_kir_reverse/
 http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
@@ -730,8 +710,6 @@ http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/lilac_plum/
 http://www.inshaker.ru/cocktail/lilac_mist/
 http://www.inshaker.ru/cocktail/sweet_memories/
-http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
-http://www.inshaker.ru/cocktail/sweet_kiss/
 http://www.inshaker.ru/cocktail/sweet_bite/
 http://www.inshaker.ru/cocktail/sweet_apple_dry/
 http://www.inshaker.ru/cocktail/dream_cream/
@@ -750,7 +728,6 @@ http://www.inshaker.ru/cocktail/salty_russian/
 http://www.inshaker.ru/cocktail/sunny_dream/
 http://www.inshaker.ru/cocktail/sunlight/
 http://www.inshaker.ru/cocktail/malted_gold/
-http://www.inshaker.ru/cocktail/soho_martini/
 http://www.inshaker.ru/cocktail/spice_girls/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/old_fashioned/
@@ -885,7 +862,6 @@ http://www.inshaker.ru/cocktail/southern_hospitality/
 http://www.inshaker.ru/cocktail/southern_melon_sling/
 http://www.inshaker.ru/cocktail/southern_sea_breeze/
 http://www.inshaker.ru/cocktail/universal/
-http://www.inshaker.ru/cocktail/apple_with_cardamon/
 http://www.inshaker.ru/cocktail/apple_sambuca/
 http://www.inshaker.ru/cocktail/apple-vanilla_mulled_wine/
 http://www.inshaker.ru/cocktail/apple_and_ginger_margarita/
@@ -893,7 +869,6 @@ http://www.inshaker.ru/cocktail/apple-ginger_mojito/
 http://www.inshaker.ru/cocktail/apple_temptation/
 http://www.inshaker.ru/cocktail/apple_joy/
 http://www.inshaker.ru/cocktail/apple_martini/
-http://www.inshaker.ru/cocktail/apple_no_mulled_wine/
 http://www.inshaker.ru/cocktail/apple_pie/
 http://www.inshaker.ru/cocktail/apple_ro_martini/
 http://www.inshaker.ru/cocktail/apple_rum_cooler/
