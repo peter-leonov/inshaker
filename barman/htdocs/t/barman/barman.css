@@ -22,7 +22,7 @@ button.disabled { cursor: default; background: #eee; color: #bbb; border-color: 
 .page.shaker form { position: absolute; left: 175px; width: 195px; font-size: 16px; }
 .page.shaker form label { display: block; padding: 1px 0; }
 .page.shaker form label input { vertical-align: bottom; margin: 3px; }
-.page.shaker .shake { position: absolute; right: 20px; top: 110px; }
+.page.shaker .shake { position: absolute; right: 20px; top: 120px; }
 .page.shaker .view-status,
 .page.shaker .reset-state { position: absolute; left: 35px;  }
 .page.shaker .view-status { top: 200px; }
@@ -31,7 +31,7 @@ button.disabled { cursor: default; background: #eee; color: #bbb; border-color: 
 
 
 .page.uploader .comment { position: absolute; left: 175px; width: 200px; }
-.page.uploader .upload { position: absolute; right: 20px; top: 110px; }
+.page.uploader .upload { position: absolute; right: 20px; top: 120px; }
 .page.uploader .goto-shaker { position: absolute; left: -115px; top: 110px; }
 
 
