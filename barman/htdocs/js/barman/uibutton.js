@@ -32,12 +32,12 @@ UIButton.prototype =
 		
 		if (enabled)
 		{
-			node.removeClassName('disabled')
+			node.removeClassName('active')
 			node.addEventListener('click', conf.onclick, false)
 		}
 		else
 		{
-			node.addClassName('disabled')
+			node.addClassName('active')
 			node.removeEventListener('click', conf.onclick, false)
 		}
 	},

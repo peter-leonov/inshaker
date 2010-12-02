@@ -11,7 +11,10 @@ button.navigation { width: 90px; height: 30px; line-height: 28px; background-col
 button.navigation:hover { border-color: #000; color: #000; }
 button.small { height: 27px; line-height: 25px; opacity: 0.2; }
 button.small:hover { line-height: 25px; opacity: 1; }
-button.disabled { cursor: default; background: #eee; color: #bbb; border-color: #ccc; }
+button.active { cursor: default; background: #eee; color: #bbb; border-color: #ccc; }
+button .a { display: none; }
+button.active .n { display: none; }
+button.active .a { display: inline; }
 
 
 .page { position: relative; width: 500px; height: 250px; border: 1px solid #e0e0e0; margin: 0 auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
