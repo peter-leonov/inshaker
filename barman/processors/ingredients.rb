@@ -2,6 +2,7 @@
 # encoding: utf-8
 require "inshaker"
 require "entities/ingredient"
+require "entities/mark"
 
 class IngredientsProcessor < Inshaker::Processor
   
@@ -82,8 +83,8 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def prepare_marks
-    if File.exists?(Config::DB_JS_MARKS)
-      @marks = JSON.parse(File.read(Config::DB_JS_MARKS)).to_a.hash_index("name")
+    if File.exists?(Mark::Config::DB_JS)
+      @marks = JSON.parse(File.read(Mark::Config::DB_JS)).to_a.hash_index("name")
     end
   end
   

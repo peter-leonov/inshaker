@@ -1,16 +1,12 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/mark"
 
 class MarksProcessor < Inshaker::Processor
-
+  
   module Config
-    BASE_DIR       = Inshaker::BASE_DIR + "Marks/"
-    
-    HT_ROOT        = Inshaker::HTDOCS_DIR + "mark/"
-    NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    
-    DB_JS          = Inshaker::HTDOCS_DIR + "db/ingredients/marks.json"
+    include Mark::Config
   end
   
   def initialize
