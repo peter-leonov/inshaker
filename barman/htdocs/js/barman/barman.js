@@ -1,5 +1,10 @@
-<!--# include virtual="programica.js" -->
-// <!-- include virtual="util.js" -->
+<!--# include virtual="/lib-0.3/core/prototype.js" -->
+<!--# include virtual="/lib-0.3/modules/element.js" -->
+<!--# include virtual="/lib-0.3/modules/cosy.js" -->
+<!--# include virtual="/lib-0.3/modules/onready.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/cookie.js" -->
+<!--# include virtual="/lib-0.3/modules/json.js" -->
 
 <!--# include virtual="uibutton.js" -->
 
@@ -17,7 +22,7 @@ $.onready(function(){
 		var r = new XMLHttpRequest()
 		r.open('POST', path, true)
 		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-		r.send(Programica.Request.urlEncode(hash))
+		r.send(UrlEncode.stringify(hash))
 		
 		output.innerHTML = ''
 		
@@ -26,7 +31,7 @@ $.onready(function(){
 			if (this.status != 200)
 				output.addClassName('server-error')
 			else
-				output.remClassName('server-error')
+				output.removeClassName('server-error')
 			
 			var readyState = this.readyState
 			
@@ -54,15 +59,7 @@ $.onready(function(){
 	parentLink.href = '//' + host + '/'
 	parentLink.firstChild.nodeValue = host
 	
-	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
-	
-	var labels = ["Бармен", "Сайт"];
-	ri.onselect = function(node, num){
-		if(labels[num-1]) $('left').innerHTML  = "← " + labels[num-1];
-		if(labels[num+1]) $('right').innerHTML = labels[num+1] + " →";
-	}
-	
-	var memory = Object.parse(Cookie.get('barman-memory'));
+	var memory = JSON.parse(Cookie.get('barman-memory'));
 	if (memory){
 		var inputs = $('barman-form').getElementsByTagName('input')
 		for (var i = 0; i < inputs.length; i++){
@@ -73,7 +70,7 @@ $.onready(function(){
 	var goBarmanButton = new UIButton($('goBarman'), 'clicked', 'Смешать', 'Подожди...', function(e)
 	{
 		var fh = $('barman-form').toHash();
-		Cookie.set('barman-memory', Object.stringify(fh));
+		Cookie.set('barman-memory', JSON.stringify(fh));
 		
 		function done ()
 		{
@@ -119,6 +116,4 @@ $.onready(function(){
 		if (run('/act/launcher.cgi', {reset: 'on'}, done))
 			goResetButton.setEnabled(false)
 	});
-	
-	ri.goToFrame(0); ri.onselect($('point_0'), 0);
 })
