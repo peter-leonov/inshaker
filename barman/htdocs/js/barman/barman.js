@@ -67,7 +67,7 @@ $.onready(function(){
 		}
 	}
 	
-	var goBarmanButton = new UIButton($('goBarman'), 'clicked', 'Смешать', 'Подожди...', function(e)
+	var goBarmanButton = new UIButton($('shake'), 'disabled', 'Смешать', 'Подожди...', function(e)
 	{
 		var fh = $('barman-form').toHash();
 		Cookie.set('barman-memory', JSON.stringify(fh));
@@ -81,7 +81,7 @@ $.onready(function(){
 			goBarmanButton.setEnabled(false)
 	});
 	
-	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e)
+	var goUpButton = new UIButton($('goUp'), 'disabled', 'Залить', 'Подожди...', function(e)
 	{
 		function done ()
 		{
@@ -92,7 +92,7 @@ $.onready(function(){
 			goUpButton.setEnabled(false)
 	});
 	
-	var goStatusButton = new UIButton($('view-status'), 'clicked', $('view-status').innerHTML, 'Подожди...', function(e)
+	var goStatusButton = new UIButton($('view-status'), 'disabled', $('view-status').innerHTML, 'Подожди...', function(e)
 	{
 		function done ()
 		{
@@ -103,7 +103,7 @@ $.onready(function(){
 			goStatusButton.setEnabled(false)
 	});
 	
-	var goResetButton = new UIButton($('reset-state'), 'clicked', $('reset-state').innerHTML, 'Подожди...', function(e)
+	var goResetButton = new UIButton($('reset-state'), 'disabled', $('reset-state').innerHTML, 'Подожди...', function(e)
 	{
 		if (!window.confirm('Сброшу состояние бармена до состояния сайта.\nЭто не больно.'))
 			return
