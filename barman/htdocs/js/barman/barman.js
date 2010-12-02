@@ -1,11 +1,50 @@
-<!--# include virtual="programica.js" -->
-// <!-- include virtual="util.js" -->
+<!--# include virtual="/lib-0.3/core/prototype.js" -->
+<!--# include virtual="/lib-0.3/modules/element.js" -->
+<!--# include virtual="/lib-0.3/modules/cosy.js" -->
+<!--# include virtual="/lib-0.3/modules/onready.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/cookie.js" -->
+<!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/selectors.js" -->
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/event-driven.js" -->
+
+<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
 
 <!--# include virtual="uibutton.js" -->
 
-$.onready(function(){
+$.onready(function()
+{
+	var nodes =
+	{
+		shakerPage: $$('.page.shaker')[0],
+		shake: $$('.shaker .shake')[0],
+		processorsList: $$('.shaker .processors-list')[0],
+		viewStatus: $$('.shaker .view-status')[0],
+		resetState: $$('.shaker .reset-state')[0],
+		gotoUploader: $$('.goto-uploader')[0],
+		
+		uploaderPage: $$('.page.uploader')[0],
+		upload: $$('.uploader .upload')[0],
+		gotoShaker: $$('.goto-shaker')[0],
+		
+		output: $('output')
+	}
 	
-	var output = $('output')
+	;(function(){
+		
+		var tsNodes =
+		{
+			tabs: [nodes.gotoShaker, nodes.gotoUploader],
+			sections: [nodes.shakerPage, nodes.uploaderPage]
+		}
+		
+		var tabSwitcher = new TabSwitcher()
+		tabSwitcher.bind(tsNodes)
+		
+	})();
+	
+	
 	
 	var running = false
 	function run (path, hash, callback)
@@ -14,10 +53,12 @@ $.onready(function(){
 			return false
 		running = true
 		
+		var output = nodes.output
+		
 		var r = new XMLHttpRequest()
 		r.open('POST', path, true)
 		r.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-		r.send(Programica.Request.urlEncode(hash))
+		r.send(UrlEncode.stringify(hash))
 		
 		output.innerHTML = ''
 		
@@ -26,7 +67,7 @@ $.onready(function(){
 			if (this.status != 200)
 				output.addClassName('server-error')
 			else
-				output.remClassName('server-error')
+				output.removeClassName('server-error')
 			
 			var readyState = this.readyState
 			
@@ -54,71 +95,50 @@ $.onready(function(){
 	parentLink.href = '//' + host + '/'
 	parentLink.firstChild.nodeValue = host
 	
-	var ri = new Programica.RollingImagesLite($('ri'), {animationType: 'directJump'});
-	
-	var labels = ["Бармен", "Сайт"];
-	ri.onselect = function(node, num){
-		if(labels[num-1]) $('left').innerHTML  = "← " + labels[num-1];
-		if(labels[num+1]) $('right').innerHTML = labels[num+1] + " →";
-	}
-	
-	var memory = Object.parse(Cookie.get('barman-memory'));
-	if (memory){
-		var inputs = $('barman-form').getElementsByTagName('input')
+	var memory = JSON.parse(Cookie.get('barman-memory'));
+	if (memory)
+	{
+		var inputs = nodes.processorsList.getElementsByTagName('input')
 		for (var i = 0; i < inputs.length; i++){
 			inputs[i].checked = memory[inputs[i].name] ? 'checked' : ''
 		}
 	}
 	
-	var goBarmanButton = new UIButton($('goBarman'), 'clicked', 'Смешать', 'Подожди...', function(e)
+	new UIButton(nodes.shake).onaction = function (e)
 	{
-		var fh = $('barman-form').toHash();
-		Cookie.set('barman-memory', Object.stringify(fh));
+		var button = this
 		
-		function done ()
-		{
-			goBarmanButton.setEnabled(true)
-		}
+		var fh = FormHelper.toHash(nodes.processorsList)
+		Cookie.set('barman-memory', JSON.stringify(fh))
 		
-		if (run('/act/launcher.cgi', fh, done))
-			goBarmanButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', fh, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goUpButton = new UIButton($('goUp'), 'clicked', 'Залить', 'Подожди...', function(e)
+	new UIButton(nodes.upload).onaction = function (e)
 	{
-		function done ()
-		{
-			goUpButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {deployer: 'on'}, done))
-			goUpButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', {deployer: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goStatusButton = new UIButton($('view-status'), 'clicked', $('view-status').innerHTML, 'Подожди...', function(e)
+	new UIButton(nodes.viewStatus).onaction = function (e)
 	{
-		function done ()
-		{
-			goStatusButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {status: 'on'}, done))
-			goStatusButton.setEnabled(false)
-	});
+		if (run('/act/launcher.cgi', {status: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 	
-	var goResetButton = new UIButton($('reset-state'), 'clicked', $('reset-state').innerHTML, 'Подожди...', function(e)
+	new UIButton(nodes.resetState).onaction = function (e)
 	{
 		if (!window.confirm('Сброшу состояние бармена до состояния сайта.\nЭто не больно.'))
 			return
 		
-		function done ()
-		{
-			goResetButton.setEnabled(true)
-		}
+		var button = this
 		
-		if (run('/act/launcher.cgi', {reset: 'on'}, done))
-			goResetButton.setEnabled(false)
-	});
-	
-	ri.goToFrame(0); ri.onselect($('point_0'), 0);
+		if (run('/act/launcher.cgi', {reset: 'on'}, function () { button.enable() }))
+			button.disable()
+	}
 })
