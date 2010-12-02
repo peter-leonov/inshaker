@@ -21,7 +21,7 @@ class CocktailsProcessor < Inshaker::Processor
     @tags = []
     @tags_ci = {}
     @tags_used = {}
-    @hidden_tags = []
+    @tags_hidden = []
     @strengths = []
     @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
   end
@@ -371,7 +371,7 @@ class CocktailsProcessor < Inshaker::Processor
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     
-    @hidden_tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
+    @tags_hidden = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
   
   def guess_methods cocktail
@@ -492,7 +492,7 @@ class CocktailsProcessor < Inshaker::Processor
      @tags -= unused_tags
      
      # hide hidden tags ;)
-     @tags -= @hidden_tags
+     @tags -= @tags_hidden
      
      flush_json_object(groups, Config::DB_JS_GROUPS)
      flush_json_object(@tags, Config::DB_JS_TAGS)

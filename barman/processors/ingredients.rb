@@ -15,9 +15,9 @@ class IngredientsProcessor < Inshaker::Processor
     @entities = []
     @ingredients_groups = []
     @marks = {}
-    @ingredients_tags = []
-    @ingredients_tags_ci = {}
-    @hidden_ingredients_tags = []
+    @tags = []
+    @tags_ci = {}
+    @tags_hidden = []
   end
   
   def job_name
@@ -64,9 +64,9 @@ class IngredientsProcessor < Inshaker::Processor
   
   def update_groups_and_tags
     @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
-    @ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
-    @ingredients_tags_ci = @ingredients_tags.hash_ci_index
-    @hidden_ingredients_tags = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
+    @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
+    @tags_ci = @tags.hash_ci_index
+    @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
   end
   
   def prepare_ingredients
@@ -191,7 +191,7 @@ class IngredientsProcessor < Inshaker::Processor
     tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
     tags << "любой ингредиент"
     tags.each do |tag_candidate|
-      tag = @ingredients_tags_ci[tag_candidate.ci_index]
+      tag = @tags_ci[tag_candidate.ci_index]
       unless tag
         error "незнакомый тег «#{tag_candidate}»"
       end
@@ -256,8 +256,8 @@ class IngredientsProcessor < Inshaker::Processor
     flush_json_object(ingredients, Config::DB_JS)
     flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
     
-    @ingredients_tags -= @hidden_ingredients_tags
-    flush_json_object(@ingredients_tags, Config::DB_JS_TAGS)
+    @tags -= @tags_hidden
+    flush_json_object(@tags, Config::DB_JS_TAGS)
   end
   
   def update_json entity
