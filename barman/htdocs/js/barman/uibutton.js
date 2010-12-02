@@ -1,23 +1,36 @@
-function UIButton (e, disabledStyle, enabledText, disabledText, clickListener)
+function UIButton (node, disabledStyle, enabledText, disabledText, clickListener)
 {
-	this.e = e
-	
-	this.setEnabled = function (enabled)
+	this.node = node
+	this.conf =
 	{
-		this.enabled = enabled
-		if (!enabled)
-		{
-			this.e.innerHTML = disabledText
-			this.e.addClassName(disabledStyle)
-			this.e.removeEventListener('click', clickListener, false)
-		}
-		else
-		{
-			this.e.innerHTML = enabledText
-			this.e.remClassName(disabledStyle)
-			this.e.addEventListener('click', clickListener, false)
-		}
+		disabledStyle: disabledStyle,
+		enabledText: enabledText,
+		disabledText: disabledText,
+		clickListener: clickListener
 	}
 	
 	this.setEnabled(true)
+}
+
+UIButton.prototype =
+{
+	setEnabled: function (enabled)
+	{
+		var node = this.node,
+			conf = this.conf
+		
+		this.enabled = enabled
+		if (enabled)
+		{
+			node.innerHTML = conf.enabledText
+			node.removeClassName(conf.disabledStyle)
+			node.addEventListener('click', conf.clickListener, false)
+		}
+		else
+		{
+			node.innerHTML = conf.disabledText
+			node.addClassName(conf.disabledStyle)
+			node.removeEventListener('click', conf.clickListener, false)
+		}
+	}
 }
