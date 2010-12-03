@@ -281,7 +281,6 @@ http://www.inshaker.ru/cocktail/gold_gingery_rum/
 http://www.inshaker.ru/cocktail/golden_kick/
 http://www.inshaker.ru/cocktail/zombie/
 http://www.inshaker.ru/cocktail/zombie_2/
-http://www.inshaker.ru/cocktail/yodji_tini/
 http://www.inshaker.ru/cocktail/isabella/
 http://www.inshaker.ru/cocktail/izcaragua/
 http://www.inshaker.ru/cocktail/ginger_passion/
@@ -329,7 +328,6 @@ http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kir_royal/
-http://www.inshaker.ru/cocktail/chinese_raspberry/
 http://www.inshaker.ru/cocktail/clubland/
 http://www.inshaker.ru/cocktail/claudius_galenus/
 http://www.inshaker.ru/cocktail/clover_club/
@@ -396,7 +394,6 @@ http://www.inshaker.ru/cocktail/lavander_creme_brulle/
 http://www.inshaker.ru/cocktail/avalanche/
 http://www.inshaker.ru/cocktail/titbit/
 http://www.inshaker.ru/cocktail/liquorice_sour/
-http://www.inshaker.ru/cocktail/latte_shot/
 http://www.inshaker.ru/cocktail/easily_satisfied/
 http://www.inshaker.ru/cocktail/lady_killer/
 http://www.inshaker.ru/cocktail/lady_scarlett/
@@ -411,7 +408,6 @@ http://www.inshaker.ru/cocktail/summer_fizz/
 http://www.inshaker.ru/cocktail/summer_queen/
 http://www.inshaker.ru/cocktail/liqueur_mango_and_orange/
 http://www.inshaker.ru/cocktail/liqueur_mango_and_cranberries/
-http://www.inshaker.ru/cocktail/liki/
 http://www.inshaker.ru/cocktail/tarragon_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/tarragon_with_sea-buckthorn_lemonade_in_a_siphon/
 http://www.inshaker.ru/cocktail/lime_flower_tea_with_thyme/
@@ -427,7 +423,6 @@ http://www.inshaker.ru/cocktail/mai_tai/
 http://www.inshaker.ru/cocktail/mai_tai_2/
 http://www.inshaker.ru/cocktail/mai_tai_3/
 http://www.inshaker.ru/cocktail/mallorca/
-http://www.inshaker.ru/cocktail/makke-martini/
 http://www.inshaker.ru/cocktail/malecon/
 http://www.inshaker.ru/cocktail/little_salty_russian/
 http://www.inshaker.ru/cocktail/little_hummer/
@@ -555,7 +550,6 @@ http://www.inshaker.ru/cocktail/clouds/
 http://www.inshaker.ru/cocktail/sea-buckthorn_mulled_wine/
 http://www.inshaker.ru/cocktail/buckthorn_gringo/
 http://www.inshaker.ru/cocktail/buckthorn_daiquiri/
-http://www.inshaker.ru/cocktail/sea-buckthom_toddy/
 http://www.inshaker.ru/cocktail/fire_of_the_cuillins/
 http://www.inshaker.ru/cocktail/cucumber_cooler/
 http://www.inshaker.ru/cocktail/cucumber_lemonade/
@@ -668,7 +662,6 @@ http://www.inshaker.ru/cocktail/royal_flambe/
 http://www.inshaker.ru/cocktail/royal_flush/
 http://www.inshaker.ru/cocktail/royal_shot/
 http://www.inshaker.ru/cocktail/ruby/
-http://www.inshaker.ru/cocktail/ruby_cubies/
 http://www.inshaker.ru/cocktail/rouge/
 http://www.inshaker.ru/cocktail/ruccolino/
 http://www.inshaker.ru/cocktail/russian_tropical_rainbow/
