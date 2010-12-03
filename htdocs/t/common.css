@@ -179,6 +179,7 @@ html.about-page #bottom a.about,
 .win-shop .main .wrapper{position:relative;overflow:hidden; border: 1px #c0c0c0 solid;}
 .win-shop .main .wrapper2{position:relative;}
 .win-shop .close{background:url(icon/close.png) no-repeat 0 -10px;position:absolute;height:14px;width:14px;top:11px;right:10px;text-indent:-1000em;}
+.win-shop h3{padding:34px 0 0 290px;font-weight:bold;font-size:180%;}
 .win-shop .main .zoom{display:block;overflow:hidden;width:280px;text-align:center;margin:0 auto 37px;text-decoration:none;}
 .win-shop .main .zoom img{display:block;margin:10px auto 13px;}
 .win-shop .main .zoom span{text-decoration:underline;}
