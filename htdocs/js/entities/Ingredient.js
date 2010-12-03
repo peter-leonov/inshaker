@@ -88,12 +88,12 @@ Object.extend(Ingredient,
 		return this._byNameCI[name.toLowerCase()]
 	},
 	
-	getByTagCI: function (name)
+	getByTag: function (name)
 	{
-		if (!this._byTagCI)
-			this._updateByTagCIIndex()
+		if (!this._byTag)
+			this._updateByTagIndex()
 		
-		return this._byTagCI[name.toLowerCase()] || []
+		return this._byTag[name] || []
 	},
 	
 	getByNames: function (names)
@@ -201,10 +201,10 @@ Object.extend(Ingredient,
 		}
 	},
 	
-	_updateByTagCIIndex: function ()
+	_updateByTagIndex: function ()
 	{
 		var db = this.db,
-			index = this._byTagCI = {}
+			index = this._byTag = {}
 		
 		for (var i = 0; i < db.length; i++)
 		{
@@ -213,7 +213,7 @@ Object.extend(Ingredient,
 			var tags = ingred.tags
 			for (var j = 0, jl = tags.length; j < jl; j++)
 			{
-				var tag = tags[j].toLowerCase()
+				var tag = tags[j]
 				
 				var arr = index[tag]
 				if (arr)

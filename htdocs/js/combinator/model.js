@@ -96,7 +96,7 @@ var myProto =
 		for (var i = 0, il = ingredientsTags.length; i < il; i++)
 		{
 			var tag = ingredientsTags[i]
-			ingredientsTagsHash[tag.toLowerCase()] = true
+			ingredientsTagsHash[tag.toLowerCase()] = tag
 			favorites[tag] = true
 		}
 		
@@ -104,7 +104,7 @@ var myProto =
 		for (var i = 0, il = cocktailsTags.length; i < il; i++)
 		{
 			var tag = cocktailsTags[i]
-			cocktailsTagsHash[tag.toLowerCase()] = true
+			cocktailsTagsHash[tag.toLowerCase()] = tag
 			favorites[tag] = true
 		}
 	},
@@ -594,13 +594,14 @@ var myProto =
 				continue
 			seen[item] = true
 			
-			if (ingredientsTagsHash[item.toLowerCase()])
+			var tag = ingredientsTagsHash[item.toLowerCase()]
+			if (tag)
 			{
-				var name = new String(item)
+				var name = new String(tag)
 				name.type = 'ingredient-tag'
 				var names = name.names = []
 				
-				var group = Ingredient.getByTagCI(item)
+				var group = Ingredient.getByTag(tag)
 				for (var j = 0, jl = group.length; j < jl; j++)
 					names[j] = group[j].name
 				
@@ -608,9 +609,10 @@ var myProto =
 				continue
 			}
 			
-			if (cocktailsTagsHash[item.toLowerCase()])
+			var tag = cocktailsTagsHash[item.toLowerCase()]
+			if (tag)
 			{
-				var name = new String(item)
+				var name = new String(tag)
 				name.type = 'cocktail-tag'
 				res.push(name)
 				continue
@@ -710,7 +712,7 @@ var myProto =
 	
 	chooseExampleIngredient: function ()
 	{
-		var ingredients = Ingredient.getByTagCI('сочетайзер')
+		var ingredients = Ingredient.getByTag('Сочетайзер')
 		if (ingredients.length)
 			return ingredients.random(1)[0]
 		
