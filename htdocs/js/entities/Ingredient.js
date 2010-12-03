@@ -28,8 +28,8 @@ Me.prototype =
 	getPreviewNode: function (lazy)
 	{
 		var node = Nc('a', lazy ? 'ingredient-preview lazy' : 'ingredient-preview')
-		var image = Nc('img', 'image')
-		image[lazy ? 'lazySrc' : 'src'] = this.getMiniImageSrc()
+		var image = Nc('div', 'image')
+		image.style.backgroundImage = 'url(' + this.getMiniImageSrc() + ')'
 		node.appendChild(image)
 		
 		var name = Nct('span', 'name', this.name)
