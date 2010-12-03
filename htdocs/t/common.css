@@ -62,7 +62,7 @@ b.rb { right: 0; bottom: 0; }
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
 #top #top-content {position: relative; margin: 0 auto; width: 960px;}
 #top h2 { position: absolute; left: -9px; top: 3px; }
-#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; background: #000 url(bg/body/index.png) repeat-x 0 0; font-weight: bold; }
+#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; font-weight: bold; }
 #top .nav li{float:left;margin-right:16px;}
 #top .nav a { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
 #top .nav a:hover{border-bottom: 5px solid;}
@@ -127,7 +127,6 @@ html.about-page #bottom a.about,
 .b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
 .b-more .b-more-cocktails { width:398px;}
 .b-more .column{position:relative;}
-.b-more dl{height:163px;font-size:120%;height:11.24em;background:#fff url(bg/body/green-more-title.png) repeat-x 0 -19px;}
 .b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
 .b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
 .b-more dd{line-height:1.17;position:relative;}
