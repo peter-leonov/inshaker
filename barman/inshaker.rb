@@ -99,7 +99,7 @@ module Inshaker
     end
     
     def mask_img(mask, src, dst, mode)
-      unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"}) 
+      unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"})
         error "не могу наложить маску (#{src} → #{dst})"
         return false
       end
