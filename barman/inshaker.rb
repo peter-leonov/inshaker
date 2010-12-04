@@ -112,7 +112,7 @@ module Inshaker
       File.mtime_cp(src, dst)
     end
     
-    def convert_image(src, dst, quality=90)
+    def convert_image(src, dst, quality, width, height)
       return true if File.mtime_cmp(src, dst) == 0
       unless system(%Q{convert "#{src.quote}" -quality "#{quality.to_s.quote}" "#{dst.quote}"})
         error "не могу преобразовать картинку (#{src} → #{dst})"
