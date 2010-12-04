@@ -114,6 +114,10 @@ module Inshaker
     
     def convert_image(src, dst, quality, width, height)
       return true if File.mtime_cmp(src, dst) == 0
+      w, h = get_img_geometry(src)
+      unless w == width && h == height
+        warning "неверный размер картинки: #{w}x#{h}, нужен: #{width}x#{height}"
+      end
       unless system(%Q{convert "#{src.quote}" -resize "#{width.to_s.quote}x#{height.to_s.quote}!" -quality "#{quality.to_s.quote}" "#{dst.quote}"})
         error "не могу преобразовать картинку (#{src} → #{dst})"
         return false
