@@ -58,18 +58,18 @@ module Inshaker
       m = `identify -format "%[fx:w]x%[fx:h]" "#{src.quote}"`.match(/^(\d+)x(\d+)$/)
       unless m
         error "не могу определить геометрию кртинки #{src}"
-        return {:w => 0, :h => 0}
+        return 0, 0
       end
       
-      return {:w => m[1].to_i, :h => m[2].to_i}
+      return m[1].to_i, m[2].to_i
     end
     
     def check_img_geometry_cached(src, dst)
       if File.mtime_cmp(src, dst) == 0
         return true
       end
-      geometry = get_img_geometry(src)
-      yield geometry[:w], geometry[:h]
+      w, h = get_img_geometry(src)
+      yield w, h
     end
     
     def flush_print_img(src_file, dest_file, size)
