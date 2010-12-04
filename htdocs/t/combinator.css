@@ -133,6 +133,10 @@ body { position: static; min-height: 100%; }
 .ingredient-preview.lazy .image { color: #eee; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
+html.opera-9 .ingredient-preview .image:before,
+html.opera-10-0 .ingredient-preview .image:before,
+html.opera-10-1 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+
 
 
 
