@@ -169,7 +169,7 @@ class IngredientsProcessor < Inshaker::Processor
     img = "#{dir.path}/i_big.png"
     if File.exists?(img)
       # flush_masked_optimized(Config::BASE_DIR + "mask.png", img, "#{ht_dir.path}/preview.png") unless @options[:text]
-      cp_if_different(img, "#{ht_dir.path}/preview.png") unless @options[:text]
+      convert_image(img, "#{ht_dir.path}/preview.jpg") unless @options[:text]
     else
       error "нет большой картинки (файл #{img})"
     end

@@ -112,6 +112,15 @@ module Inshaker
       File.mtime_cp(src, dst)
     end
     
+    def convert_image(src, dst, quality=90)
+      return true if File.mtime_cmp(src, dst) == 0
+      unless system(%Q{convert "#{src.quote}" -quality "#{quality.to_s.quote}" "#{dst.quote}"})
+        error "не могу преобразовать картинку (#{src} → #{dst})"
+        return false
+      end
+      File.mtime_cp(src, dst)
+    end
+    
     def cp_if_different src, dst
       return true if File.mtime_cmp(src, dst) == 0
       say "копирую #{src} → #{dst}"
