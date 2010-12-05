@@ -138,6 +138,9 @@ html.opera-10-0 .ingredient-preview .image:before,
 html.opera-10-1 .ingredient-preview .image:before,
 html.msie-8 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 
+html.msie-6 .ingredient-preview .image,
+html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
+
 
 
 
