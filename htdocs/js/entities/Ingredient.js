@@ -14,7 +14,7 @@ Me.prototype =
 	
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	pageHref: function () { return '/ingredient/' + this.path + '/' },
-	getMiniImageSrc: function () { return this.pageHref() + "preview.png" },
+	getMiniImageSrc: function () { return this.pageHref() + "preview.jpg" },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	combinatorLink: function () { return '/combinator.html#q=' + encodeURIComponent(this.name) },
@@ -25,18 +25,38 @@ Me.prototype =
 		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
 	},
 	
-	getPreviewNode: function (lazy)
+	getPreviewNode: function ()
 	{
-		var node = Nc('a', lazy ? 'ingredient-preview lazy' : 'ingredient-preview')
-		var image = Nc('img', 'image')
-		image[lazy ? 'lazySrc' : 'src'] = this.getMiniImageSrc()
+		var node = Nc('a', 'ingredient-preview')
+		var image = Nc('div', 'image')
+		image.style.backgroundImage = 'url(' + this.getMiniImageSrc() + ')'
 		node.appendChild(image)
 		
 		var name = Nct('span', 'name', this.name)
 		node.appendChild(name)
 		
 		node['data-ingredient'] = this
-		node.ingredientImage = image
+		
+		return node
+	},
+	
+	getPreviewNodeLazy: function ()
+	{
+		var node = Nc('a', 'ingredient-preview lazy')
+		var image = Nc('div', 'image')
+		node.appendChild(image)
+		
+		var name = Nct('span', 'name', this.name)
+		node.appendChild(name)
+		
+		node['data-ingredient'] = this
+		
+		var ingredient = this
+		node.unLazy = function ()
+		{
+			image.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
+			this.removeClassName('lazy')
+		}
 		
 		return node
 	}

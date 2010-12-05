@@ -58,18 +58,18 @@ module Inshaker
       m = `identify -format "%[fx:w]x%[fx:h]" "#{src.quote}"`.match(/^(\d+)x(\d+)$/)
       unless m
         error "не могу определить геометрию кртинки #{src}"
-        return {:w => 0, :h => 0}
+        return 0, 0
       end
       
-      return {:w => m[1].to_i, :h => m[2].to_i}
+      return m[1].to_i, m[2].to_i
     end
     
     def check_img_geometry_cached(src, dst)
       if File.mtime_cmp(src, dst) == 0
         return true
       end
-      geometry = get_img_geometry(src)
-      yield geometry[:w], geometry[:h]
+      w, h = get_img_geometry(src)
+      yield w, h
     end
     
     def flush_print_img(src_file, dest_file, size)
@@ -99,7 +99,7 @@ module Inshaker
     end
     
     def mask_img(mask, src, dst, mode)
-      unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"}) 
+      unless system(%Q{composite -compose #{mode} "#{mask.quote}" "#{src.quote}" "#{dst.quote}"})
         error "не могу наложить маску (#{src} → #{dst})"
         return false
       end
@@ -109,6 +109,19 @@ module Inshaker
     def flush_masked_optimized(mask, src, dst, mode="CopyOpacity")
       return true if File.mtime_cmp(src, dst) == 0
       mask_img(mask, src, dst, mode) && optimize_img(dst)
+      File.mtime_cp(src, dst)
+    end
+    
+    def convert_image(src, dst, quality, width, height)
+      return true if File.mtime_cmp(src, dst) == 0
+      w, h = get_img_geometry(src)
+      unless w == width && h == height
+        warning "неверный размер картинки: #{w}x#{h}, нужен: #{width}x#{height}"
+      end
+      unless system(%Q{convert "#{src.quote}" -resize "#{width.to_s.quote}x#{height.to_s.quote}!" -quality "#{quality.to_s.quote}" "#{dst.quote}"})
+        error "не могу преобразовать картинку (#{src} → #{dst})"
+        return false
+      end
       File.mtime_cp(src, dst)
     end
     

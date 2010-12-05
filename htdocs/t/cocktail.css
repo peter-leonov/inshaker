@@ -45,7 +45,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
 #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
 #view-how .ingredients .surface{width:5000px;height:120px;}
-#view-how .ingredients .surface img{float:left;margin-left:20px; cursor:pointer;}
+#view-how .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #view-how .next,
 #view-how .prev{z-index:3;position:absolute;left:auto;right:19px;}
@@ -77,6 +78,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 #panel_cocktail * { display: none !important; }
+#view-how .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
@@ -110,6 +112,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #panel_cocktail a b{border:none;}
 
 #poster{position:absolute;top:-28px;}
+
+#view-how .ingredients .surface .image { margin-left: 15px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
@@ -117,3 +121,14 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .b-content .entry{width:356px;}
 <!--# endif -->
 
+<!--# if expr="$HTTP_USER_AGENT = /MSIE 8\./" -->
+#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.[256]/" -->
+#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+<!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.8.*Version\/10\.[01]/" -->
+#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+<!--# endif -->

@@ -377,8 +377,9 @@ var Controller = {
 		for (var i = 0; i < resultSet.length; i++)
 		{
 			var ingredient = Ingredient.getByName(resultSet[i][0])
-			var img = document.createElement("img");
-			img.src = ingredient.getMiniImageSrc()
+			var img = document.createElement("div");
+			img.className = 'image'
+			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
 			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
                 self.showPopup(name);
