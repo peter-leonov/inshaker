@@ -25,9 +25,9 @@ Me.prototype =
 		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
 	},
 	
-	getPreviewNode: function (lazy)
+	getPreviewNode: function ()
 	{
-		var node = Nc('a', lazy ? 'ingredient-preview lazy' : 'ingredient-preview')
+		var node = Nc('a', 'ingredient-preview')
 		var image = Nc('div', 'image')
 		image.style.backgroundImage = 'url(' + this.getMiniImageSrc() + ')'
 		node.appendChild(image)
@@ -36,7 +36,27 @@ Me.prototype =
 		node.appendChild(name)
 		
 		node['data-ingredient'] = this
-		node.ingredientImage = image
+		
+		return node
+	},
+	
+	getPreviewNodeLazy: function ()
+	{
+		var node = Nc('a', 'ingredient-preview lazy')
+		var image = Nc('div', 'image')
+		node.appendChild(image)
+		
+		var name = Nct('span', 'name', this.name)
+		node.appendChild(name)
+		
+		node['data-ingredient'] = this
+		
+		var ingredient = this
+		node.unLazy = function ()
+		{
+			image.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
+			this.removeClassName('lazy')
+		}
 		
 		return node
 	}
