@@ -45,7 +45,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
 #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
 #view-how .ingredients .surface{width:5000px;height:120px;}
-#view-how .ingredients .surface img{float:left;margin-left:20px; cursor:pointer;}
+#view-how .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
 #view-how .next,
 #view-how .prev{z-index:3;position:absolute;left:auto;right:19px;}
