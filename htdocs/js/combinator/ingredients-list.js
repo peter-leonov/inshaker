@@ -126,13 +126,7 @@ var myProto =
 				var box = show[i]
 				if (!box.loaded)
 				{
-					var node = box.node,
-						ingredientNode = node.ingredientNode,
-						image = ingredientNode.ingredientImage
-					
-					image.src = image.lazySrc
-					ingredientNode.removeClassName('lazy')
-					
+					box.node.ingredientNode.unLazy()
 					box.loaded = true
 				}
 			}
@@ -173,7 +167,7 @@ var myProto =
 		if ((node = this.ingredientCache[ingredient.name]))
 			return node
 		
-		return this.ingredientCache[ingredient.name] = ingredient.getPreviewNode(true)
+		return this.ingredientCache[ingredient.name] = ingredient.getPreviewNodeLazy()
 	}
 }
 
