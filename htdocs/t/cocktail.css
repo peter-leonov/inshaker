@@ -112,6 +112,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #panel_cocktail a b{border:none;}
 
 #poster{position:absolute;top:-28px;}
+
+#view-how .ingredients .surface .image { margin-left: 15px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
