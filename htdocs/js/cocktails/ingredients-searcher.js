@@ -17,7 +17,7 @@ Me.prototype =
 {
 	search: function (substr, count)
 	{
-		substr = substr.trim()
+		substr = ('' + substr).trim()
 		if (substr === '')
 			return []
 		
