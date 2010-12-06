@@ -122,6 +122,17 @@ Object.extend(Cocktail,
 	
 	getByName: function (name) { return this.byName[name] },
 	
+	getByNames: function (names)
+	{
+		var byName = this.byName
+		
+		var res = []
+		for (var i = 0, il = names.length; i < il; i++)
+			res[i] = byName[names[i]]
+		
+		return res
+	},
+	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getByLetterCache: {},
