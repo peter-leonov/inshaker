@@ -7,7 +7,7 @@ function Me (data)
 	this.name = data.name
 	this.example = data.example
 	this.movie = data.movie
-	var cocktails = this.cocktails = data.cocktails
+	var cocktails = this.cocktails = C.getByNames(data.cocktails)
 	
 	for (var i = 0, il = cocktails.length; i < il; i++)
 		cocktails[i] = C.getByName(cocktails[i])
