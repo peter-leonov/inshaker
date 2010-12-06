@@ -9,8 +9,10 @@ function Me (data)
 	this.movie = data.movie
 	var cocktails = this.cocktails = C.getByNames(data.cocktails)
 	
+	// clean up deleted cocktails
 	for (var i = 0, il = cocktails.length; i < il; i++)
-		cocktails[i] = C.getByName(cocktails[i])
+		if (!cocktails[i])
+			cocktails.splice(i, 1)
 }
 
 Me.prototype =
