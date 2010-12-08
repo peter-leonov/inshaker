@@ -1,6 +1,7 @@
 [
 {"name":"Коктейльный магазин","name_eng":"Cocktail-shop","path":"cocktail-shop","promos":6},
 {"name":"Шейкер","name_eng":"Shaker","path":"shaker","promos":4},
+{"name":"Б-52","name_eng":"b-52","path":"b-52","promos":1,"sell":[]},
 {"name":"Мохито","name_eng":"Mojito","path":"mojito","promos":2,"sell":[]},
 {"name":"Коктейльная ложка","name_eng":"cocktail-spoon","path":"cocktail-spoon","promos":2},
 {"name":"Мадлер","name_eng":"mudler","path":"mudler","promos":1},
