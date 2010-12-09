@@ -5,7 +5,7 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 html.loading .b-content{display: none;}
 
 .b-title { background: none; z-index: 1; top: 7px; }
-.b-content dt.title { font-size: 24px; }
+.b-content dt.title { font-size: 24px; margin-bottom: 15px;}
 .b-content { width: 100%; }
 
 #search-box .query { padding: 2px; color: inherit; width: 680px; }
@@ -35,4 +35,16 @@ html.loading .b-content{display: none;}
 #output .list li{font-size: 12px;
     text-align: center;}
 
-#output dl.ingredients-block{width: 940px;}
+#output .ingredients-block{width: 940px;}
+
+#output .ingredients-block .list li a{display: block;}
+
+.ingredient-preview, .ingredient-preview .image {
+    height: 100px;
+    width: 100px;
+}
+
+.ingredient-preview .image {
+    -moz-border-radius: 10px 10px 10px 10px;
+    background-color: #EEEEEE;
+}

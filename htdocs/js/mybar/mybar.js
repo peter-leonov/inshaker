@@ -28,7 +28,8 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	var nodes = {
-		cocktailsList : $$('#output .cocktails-block .list')[0]
+		cocktailsList : $$('#output .cocktails-block .list')[0],
+		ingredientsList : $$('#output .ingredients-block .list')[0]
 	}
 	
 	var widget = new MyBar()
