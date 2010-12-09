@@ -5,9 +5,9 @@ var myName = 'MyBar',
 
 var myProto =
 {
-	bind: function ()
+	bind: function (nodes)
 	{
-		this.view.bind()
+		this.view.bind(nodes)
 		this.model.bind()
 		this.controller.bind()
 	}
@@ -27,10 +27,14 @@ Object.extend(Me.prototype, myProto)
 
 function onready ()
 {
-	var nodes = {}
+	var nodes = {
+		cocktailsList : $$('#output .cocktails-block .list')[0]
+	}
 	
 	var widget = new MyBar()
 	widget.bind(nodes)
+	
+	document.documentElement.removeClassName('loading')
 }
 
 $.onready(onready)

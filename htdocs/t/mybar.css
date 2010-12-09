@@ -29,7 +29,8 @@ html.loading .b-content{display: none;}
 #output .list li a:hover{text-decoration: none;}
 #output .list li a:hover .name{text-decoration: underline;}
 #output .list li .name{display: block; margin-top: 5px;}
-#output .cocktails-block .list li .image{ height: 150px;}
+#output .cocktails-block .list li .image{ height: 150px; display: block;}
+#output .cocktails-block .list li a:hover {text-decoration: underline;}
 
 #output .list li{font-size: 12px;
     text-align: center;}

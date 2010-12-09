@@ -6,7 +6,7 @@ var myProto =
 {
 	bind : function ()
 	{
-
+		this.view.renderCocktails(Cocktail.getAll().slice(50,55))
 	}
 }
 
