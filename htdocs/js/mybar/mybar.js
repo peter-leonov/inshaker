@@ -27,7 +27,9 @@ Object.extend(Me.prototype, myProto)
 
 function onready ()
 {
-	var widget = new Widget()
+	var nodes = {}
+	
+	var widget = new MyBar()
 	widget.bind(nodes)
 }
 

@@ -1,0 +1,37 @@
+#output .cocktails-block{margin: 35px 0;}
+
+.please-wait { display: none; }
+html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0 50px; text-align: center; color: #888; }
+html.loading .b-content{display: none;}
+
+.b-title { background: none; z-index: 1; top: 7px; }
+.b-content dt.title { font-size: 24px; }
+.b-content { width: 100%; }
+
+#search-box .query { padding: 2px; color: inherit; width: 680px; }
+#search-box .query,
+#search-box .button { font-size: 20px; vertical-align: middle; }
+#search-box .button.search {}
+
+#output .ingredients-block .list li, #output .cocktails-block .list li{
+	float: left;
+    margin: 0 17px 15px 0;
+    position: relative;
+    width: 100px;
+}
+
+#output .ingredients-block .list li{
+	height: 140px;
+}
+
+#output .list {overflow: hidden;}
+#output .list li a {display: block;}
+#output .list li a:hover{text-decoration: none;}
+#output .list li a:hover .name{text-decoration: underline;}
+#output .list li .name{display: block; margin-top: 5px;}
+#output .cocktails-block .list li .image{ height: 150px;}
+
+#output .list li{font-size: 12px;
+    text-align: center;}
+
+#output dl.ingredients-block{width: 940px;}
