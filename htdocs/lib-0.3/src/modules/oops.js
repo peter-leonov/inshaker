@@ -4,8 +4,6 @@
 
 function log (str) { try { console.log('Oops: ' + str) } catch (ex) {} }
 
-var myName = 'Oops'
-
 var Me =
 {
 	enabled: false,
@@ -16,9 +14,10 @@ var Me =
 	{
 		try
 		{
+			// forward masking mode with return
 			return Me.onerror.apply(Me, arguments)
 		}
-		catch (ex) { log('error on error reporting') }
+		catch (ex) { log('error on reporting') }
 	},
 	
 	onerror: function (message, uri, line)
@@ -33,11 +32,12 @@ var Me =
 		{
 			// cutting out current page uri prefix
 			if (typeof uri == 'string')
-				uri = uri.replace('^' + location.protocol + '//' + location.hostname, '')
+				uri = uri.replace(location.protocol + '//' + location.hostname, '')
 			
 			this.report('error', message + ' at ' + uri + ':' + line)
 		}
 		
+		// prevent error message from appearing in the browser console
 		return this.masking
 	},
 	
@@ -49,7 +49,7 @@ var Me =
 		}
 		catch (ex)
 		{
-			log('could not report')
+			log('could not report an error')
 		}
 		
 		return true
@@ -97,7 +97,7 @@ var Me =
 	}
 }
 
-self.className = Me
-self[myName] = Me
+Me.className = 'Oops'
+self[Me.className] = Me
 
 })();

@@ -1,7 +1,3 @@
-<!--# include virtual="/lib-0.3/modules/tracker-ga.js" -->
-<!--# include virtual="/lib-0.3/modules/oops.js" -->
-Oops.maybeEnable()
-
 <!--# include virtual="/lib-0.3/core/prototype.js" -->
 <!--# include virtual="/lib-0.3/modules/log.js" -->
 <!--# include virtual="/lib-0.3/modules/plural.js"-->
