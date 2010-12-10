@@ -6,6 +6,11 @@ eval(NodesShortcut.include())
 
 var myProto =
 {
+	initialize : function()
+	{
+		
+	},
+	
 	bind : function (nodes)
 	{
 		this.nodes = nodes
@@ -43,6 +48,11 @@ var myProto =
 	renderIfIngredientsEmpty : function(label)
 	{
 		with(this.nodes.ingredientsList) { empty(); appendChild(Nct('div', 'empty', label)) }
+	},
+	
+	renderIfBarEmpty : function()
+	{
+		
 	}
 }
 

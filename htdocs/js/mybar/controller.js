@@ -4,6 +4,11 @@ var Papa = MyBar, Me = Papa.Controller
 
 var myProto =
 {
+	initialize : function()
+	{
+		
+	},
+	
 	bind : function()
 	{
 		
