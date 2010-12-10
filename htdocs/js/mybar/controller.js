@@ -4,14 +4,14 @@ var Papa = MyBar, Me = Papa.Controller
 
 var myProto =
 {
-	initialize : function()
+	bind : function()
 	{
 		
 	},
 	
-	bind : function()
+	searchQuerySubmit : function()
 	{
-		
+		this.model.handleSearchQuery()
 	}
 }
 

@@ -34,7 +34,9 @@ function onready ()
 {
 	var nodes = {
 		cocktailsList : $$('#output .cocktails-block .list')[0],
-		ingredientsList : $$('#output .ingredients-block .list')[0]
+		ingredientsList : $$('#output .ingredients-block .list')[0],
+		searchForm : $$('#search-box form')[0],
+		queryInput : $$('#search-box form .query')[0]
 	}
 	
 	var widget = new MyBar()

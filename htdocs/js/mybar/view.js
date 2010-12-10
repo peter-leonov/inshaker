@@ -14,6 +14,10 @@ var myProto =
 	bind : function (nodes)
 	{
 		this.nodes = nodes
+		
+		var me = this
+		
+		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.searchQuerySubmit(me.nodes.queryInput.value); }, false)
 	},
 	
 	renderCocktails : function(cocktails)

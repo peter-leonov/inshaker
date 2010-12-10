@@ -64,6 +64,11 @@ var myProto =
 		}
 		
 		ingredients = this.fetchIngredints(cocktails, bar.ingredients)
+	},
+	
+	handleSearchQuery : function()
+	{
+		
 	}
 }
 
