@@ -6,7 +6,7 @@ var Me =
 {
 	magazinePromoViewed: function (promo)
 	{
-		this.track('magazine-promo-viewed', promo ? promo.name : ('' + promo))
+		this.track('magazine-promo-viewed', promo && promo.name)
 	},
 	
 	cocktailsFilterSelected: function (name)
@@ -16,32 +16,32 @@ var Me =
 	
 	cocktailViewRecipe: function (cocktail)
 	{
-		this.track('cocktail-view-recipe', cocktail ? cocktail.name : ('' + cocktail))
+		this.track('cocktail-view-recipe', cocktail && cocktail.name)
 	},
 	
 	cocktailAddedToCalculator: function (cocktail)
 	{
-		this.track('cocktail-added-to-calculator', cocktail ? cocktail.name : ('' + cocktail))
+		this.track('cocktail-added-to-calculator', cocktail && cocktail.name)
 	},
 	
 	toolPopupOpened: function (tool)
 	{
-		this.track('tool-popup', tool ? tool.name : ('' + tool))
+		this.track('tool-popup', tool && tool.name)
 	},
 	
 	ingredientPopupOpened: function (ingredient)
 	{
-		this.track('ingredient-popup', ingredient ? ingredient.name : ('' + ingredient))
+		this.track('ingredient-popup', ingredient && ingredient.name)
 	},
 	
 	ingredientTypedIn: function (ingredient)
 	{
-		this.track('ingredient-typed-in', ingredient ? ingredient.name : ('' + ingredient))
+		this.track('ingredient-typed-in', ingredient && ingredient.name)
 	},
 	
 	ingredientSelected: function (ingredient)
 	{
-		this.track('ingredient-selected', ingredient ? ingredient.name : ('' + ingredient))
+		this.track('ingredient-selected', ingredient && ingredient.name)
 	},
 	
 	combinatorQueryRaw: function (query)
