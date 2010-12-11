@@ -9,9 +9,14 @@ var myProto =
 		
 	},
 	
-	searchQuerySubmit : function()
+	cocktailQuerySubmit : function(query)
 	{
-		this.model.handleSearchQuery()
+		this.model.handleCocktailQuery(query)
+	},
+	
+	ingrQuerySubmit : function(query)
+	{
+		this.model.handleIngrQuery(query)
 	}
 }
 

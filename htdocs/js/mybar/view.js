@@ -17,7 +17,8 @@ var myProto =
 		
 		var me = this
 		
-		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.searchQuerySubmit(me.nodes.queryInput.value); }, false)
+		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
+		nodes.cocktailSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.cocktailQuerySubmit(me.nodes.cocktailQueryInput.value); }, false)
 	},
 	
 	renderCocktails : function(cocktails)
@@ -27,7 +28,8 @@ var myProto =
 		for(var i = 0, ul = N('ul'), l = cocktails.length; i < l; i++)
 			ul.appendChild(cocktails[i].getPreviewNode(false, true))
 
-		with(this.nodes.cocktailsList) { empty(); appendChild(ul) }
+		this.nodes.cocktailsList.empty()
+		this.nodes.cocktailsList.appendChild(ul)
 	},
 	
 	renderIngredients : function(ingredients)
@@ -41,17 +43,20 @@ var myProto =
 			ul.appendChild(li)
 		}
 
-		with(this.nodes.ingredientsList) { empty(); appendChild(ul) }
+		this.nodes.ingredientsList.empty();
+		this.nodes.ingredientsList.appendChild(ul)
 	},
 	
 	renderIfCocktailsEmpty : function(label)
 	{
-		with(this.nodes.cocktailsList) { empty(); appendChild(Nct('div', 'empty', label)) }
+		this.nodes.cocktailsList.empty()
+		this.nodes.cocktailsList.appendChild(Nct('div', 'empty', label))
 	},
 	
 	renderIfIngredientsEmpty : function(label)
 	{
-		with(this.nodes.ingredientsList) { empty(); appendChild(Nct('div', 'empty', label)) }
+		this.nodes.ingredientsList.empty()
+		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
 	},
 	
 	renderIfBarEmpty : function()

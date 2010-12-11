@@ -20,9 +20,9 @@ Object.extend(Me.prototype, myProto)
 })();
 
 
-<!--# include file="/lib-0.3/modules/json.js" -->
-<!--# include file="/lib/Programica/UA.js" -->
-<!--# include file="/js/common/storage.js" -->
+<!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
+<!--# include virtual="/js/common/storage.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
@@ -35,8 +35,10 @@ function onready ()
 	var nodes = {
 		cocktailsList : $$('#output .cocktails-block .list')[0],
 		ingredientsList : $$('#output .ingredients-block .list')[0],
-		searchForm : $$('#search-box form')[0],
-		queryInput : $$('#search-box form .query')[0]
+		cocktailSearchForm : $$('#output .cocktails-block .search-box form')[0],
+		cocktailQueryInput : $$('#output .cocktails-block .search-box form .query')[0],
+		ingrSearchForm : $$('#output .ingredients-block .search-box form')[0],
+		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0]
 	}
 	
 	var widget = new MyBar()
