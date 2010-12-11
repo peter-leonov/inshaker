@@ -8,10 +8,10 @@ html.loading .b-content{display: none;}
 .b-content dt.title { font-size: 24px; margin-bottom: 15px;}
 .b-content { width: 100%; }
 
-#search-box .query { padding: 2px; color: inherit; width: 680px; }
-#search-box .query,
-#search-box .button { font-size: 20px; vertical-align: middle; }
-#search-box .button.search {}
+.search-box .query { padding: 2px; color: inherit; width: 680px; }
+.search-box .query,
+.search-box .button { font-size: 20px; vertical-align: middle; }
+.search-box .button.search {}
 
 #output .ingredients-block .list li, #output .cocktails-block .list li{
 	float: left;
@@ -31,6 +31,12 @@ html.loading .b-content{display: none;}
 #output .list li .name{display: block; margin-top: 5px;}
 #output .cocktails-block .list li .image{ height: 150px; display: block;}
 #output .cocktails-block .list li a:hover {text-decoration: underline;}
+
+#output .cocktails-block .empty, #output .ingredients-block .empty{ 
+	color: #DDDDDD;
+    font-size: 16px;
+    margin: 9px 0;
+}
 
 #output .list li{font-size: 12px;
     text-align: center;}
