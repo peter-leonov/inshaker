@@ -9,7 +9,7 @@ var myProto =
 		Storage.init(function(){})
 
 		//bar contains only string names for cocktail and ingredients. NOT OBJECTS!!!		
-		this.bar = JSON.parse(Storage.get('mybar')) || { cocktails : {}, ingredients : {} }
+		this.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
 		
 		//there we take cocktails and ingredients objects
 		this.initBarFromStorage(this.bar)
@@ -27,11 +27,11 @@ var myProto =
 		this.view.renderIngredients(this.ingredients)
 	},
 	
-	fetchIngredints : function(cocktails, ingredsInBar)
+	fetchIngredints : function(cocktails, ingrNames)
 	{
 		if(!cocktails.length) return []
-		var ingr = {}
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		//collect ingrdients from cocktails
+		for (var i = 0, il = cocktails.length, ingr = {}; i < il; i++)
 		{
 			var cocktailIngr = cocktails[i].ingredients.slice().map(function(a){ return a[0] })
 			for( var j = 0; j < cocktailIngr.length; j++ )
@@ -39,10 +39,19 @@ var myProto =
 		}
 		
 		var ingredients = []
+		
+		for (var i = 0, il = ingrNames.length; i < il; i++) 
+		{
+			var ingredient = Ingredient.getByName(ingrNames[i])
+			ingredient.inBar = true
+			ingredients.push(ingredient)
+			ingr[ingrNames[i]] = null
+		}
+		
 		for( i in ingr )
 		{
-			var ingredient = Ingredient.getByNwame(i)
-			ingredient.inBar = ingredsInBar[i] ? true : false
+			var ingredient = Ingredient.getByName(i)
+			ingredient.inBar =  false
 			ingredients.push(ingredient)
 		}
 			
@@ -59,14 +68,20 @@ var myProto =
 		var cocktails = this.cocktails = []
 		var ingredients = this.ingredients = []
 				
-		for (var i in bar.cocktails) {
-			cocktails.push(Cocktail.getByName(i))
+		for (var i = 0, il = bar.cocktails.length; i < il; i++) 
+		{
+			cocktails.push(Cocktail.getByName(bar.cocktails[i]))
 		}
-		
+
 		ingredients = this.fetchIngredints(cocktails, bar.ingredients)
 	},
 	
-	handleSearchQuery : function()
+	handleCocktailQuery : function(query)
+	{
+		
+	},
+	
+	handleIngrQuery : function(query)
 	{
 		
 	}
