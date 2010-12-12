@@ -30,7 +30,6 @@ var AboutPage = {
 		
 		// var hrefs = ['view-about', 'view-cocktail-friend', 'view-stat']
 		var hrefs = tabs.map(function (v) { return String(v.className).split(/\s+/)[0] })
-		log(hrefs)
 		
 		var sw = Switcher.bind(main, buttons, tabs)
 		var selected = hrefs.indexOf(name)
