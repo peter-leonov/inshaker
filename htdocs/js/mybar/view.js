@@ -54,10 +54,15 @@ var myProto =
 				ingrNode = ingr.getPreviewNode(), 
 				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
 				ctrl = ingr.inBar ? Nct('span', 'remove', 'x') : Nct('span', 'add', '+')
-				ctrl.style.opacity = 0
 				
-			if( !ingr.inBar ) ctrl.setAttribute('title', 'У меня это есть') 
-			else ctrl.setAttribute('title', 'У меня этого нет')
+			ctrl.style.opacity = 0
+			if( !ingr.inBar ) 
+				ctrl.setAttribute('title', 'У меня это есть') 
+			else 
+			{
+				ctrl.setAttribute('title', 'У меня этого нет')
+				ingrNode.appendChild(Nc('div', 'tick'))
+			}
 			li.appendChild(ctrl)
 			li.appendChild(ingrNode)
 			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, false)

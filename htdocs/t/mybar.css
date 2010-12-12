@@ -19,8 +19,6 @@ html.loading .b-content { display: none; }
 	width: 100px;
 }
 
-
-
 #output .list { overflow: hidden; }
 #output .list li { position: relative; font-size: 12px; text-align: center; }
 #output .list li a { display: block; }
@@ -28,7 +26,8 @@ html.loading .b-content { display: none; }
 #output .list li a:hover .name { text-decoration: underline; }
 #output .list li .name { display: block; margin-top: 5px; }
 
-#output .cocktails-block .list li .image { height: 150px; display: block; margin: 0 auto; }
+#output .cocktails-block .list li {height: 216px; width: 114px;}
+#output .cocktails-block .list li .image { height: 200px; display: block; margin: 0 auto; }
 #output .cocktails-block .list li a:hover { text-decoration: underline; }
 #output .cocktails-block .list li .remove {
 	color: #A2210E;
@@ -83,8 +82,18 @@ html.loading .b-content { display: none; }
 #output .ingredients-block .ingredient-preview, #output .ingredients-block .ingredient-preview .image {
 	height: 100px;
 	width: 100px;
+	position: relative;
 }
 #output .ingredients-block .ingredient-preview .image {
 	-moz-border-radius: 10px 10px 10px 10px;
 	background-color: #EEEEEE;
+}
+
+#output .ingredients-block .tick {    
+	background: url("/t/mybar/tick.png") no-repeat scroll left top transparent;
+	height: 35px;
+	left: 65px;
+	position: absolute;
+	top: 65px;
+	width: 35px;
 }
