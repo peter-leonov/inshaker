@@ -68,6 +68,9 @@ if (!Function.prototype.delay)
 if (!Function.prototype.bind)
 	Function.prototype.bind = function (inv, args) { var me = this; return function () { me.apply(inv, args || arguments) } }
 
+if (!String.prototype.trim)
+	String.prototype.trim = function () { return this.replace(/^\s+|\s+$/g, '') }
+
 
 function $   (id)   { return document.getElementById(id) }
 function $E  (type, props)
