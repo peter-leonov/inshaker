@@ -40,17 +40,17 @@ var myProto =
 		
 		var ingredients = []
 		
-		for (var i = 0, il = ingrNames.length; i < il; i++) 
+		for (var i = 0, il = ingrNames.length, ingredient; i < il; i++) 
 		{
-			var ingredient = Ingredient.getByName(ingrNames[i])
+			ingredient = Ingredient.getByName(ingrNames[i])
 			ingredient.inBar = true
 			ingredients.push(ingredient)
-			ingr[ingrNames[i]] = null
+			delete ingr[ingrNames[i]] 
 		}
 		
 		for( i in ingr )
 		{
-			var ingredient = Ingredient.getByName(i)
+			ingredient = Ingredient.getByName(i)
 			ingredient.inBar =  false
 			ingredients.push(ingredient)
 		}
@@ -58,31 +58,49 @@ var myProto =
 		return ingredients.sort(function(a,b){ return a.name > b.name ? 1 : -1 })	
 	},
 	
-	saveToStorage : function(bar)
+	saveStorage : function()
 	{
-		Storage.put('mybar', JSON.stringify(bar))
+		Storage.put('mybar', JSON.stringify(this.bar))
 	},
 	
 	initBarFromStorage : function(bar)
 	{
-		var cocktails = this.cocktails = []
-		var ingredients = this.ingredients = []
+		this.cocktails = []
+		this.ingredients = []
 				
 		for (var i = 0, il = bar.cocktails.length; i < il; i++) 
 		{
-			cocktails.push(Cocktail.getByName(bar.cocktails[i]))
+			this.cocktails.push(Cocktail.getByName(bar.cocktails[i]))
 		}
 
-		ingredients = this.fetchIngredints(cocktails, bar.ingredients)
+		this.ingredients = this.fetchIngredints(this.cocktails, bar.ingredients)
 	},
 	
 	handleCocktailQuery : function(query)
 	{
+		var cocktail = Cocktail.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
+		if (!cocktail || this.bar.cocktails.indexOf(cocktail.name) != -1) return
 		
+		this.bar.cocktails.push(cocktail.name)
+		this.cocktails.push(cocktail)
+		this.saveStorage()
+		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		
+		this.view.renderCocktails(this.cocktails)
+		this.view.renderIngredients(this.ingredients)
 	},
 	
 	handleIngrQuery : function(query)
 	{
+		var ingredient = Ingredient.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
+		if(!ingredient || this.bar.ingredients.indexOf(ingredient.name) != -1) return
+		
+		this.bar.ingredients.push(ingredient.name)
+		this.ingredients.push(ingredient)
+		this.saveStorage()
+		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		
+		this.view.renderIngredients(this.ingredients)
 		
 	}
 }
