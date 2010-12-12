@@ -125,6 +125,11 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 <!--# endif -->
 
+<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+#view-how .ingredients .surface .image { -moz-border-radius: 0; }
+<!--# endif -->
+
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.[256]/" -->
 #view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 <!--# endif -->
