@@ -99,3 +99,7 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 #sort-menu .bars-select dd ul { background: #000; }
 #switch-view a.selected { color: #333; }
 <!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#main-wrapper { position: relative; z-index: 1; }
+<!--# endif -->

@@ -96,3 +96,7 @@
 #sidebar {margin-left:16px;}
 .column-main .body-wrapper { height: 511px; }
 <!--# endif -->
+
+<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
+#main-wrapper { position: relative; z-index: 1; }
+<!--# endif -->
