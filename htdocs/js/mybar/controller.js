@@ -17,6 +17,16 @@ var myProto =
 	ingrQuerySubmit : function(query)
 	{
 		this.model.handleIngrQuery(query)
+	},
+	
+	addIngredientToBar : function(ingredient)
+	{
+		this.model.addIngredientToBar(ingredient)
+	},
+	
+	removeIngredientFromBar : function(ingredient)
+	{
+		this.model.removeIngredientFromBar(ingredient)
 	}
 }
 

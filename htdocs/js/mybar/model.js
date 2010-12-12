@@ -102,6 +102,25 @@ var myProto =
 		
 		this.view.renderIngredients(this.ingredients)
 		
+	},
+	
+	addIngredientToBar : function(ingredient)
+	{
+		this.bar.ingredients.push(ingredient.name)
+		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		this.saveStorage()
+		
+		this.view.renderIngredients(this.ingredients)
+
+	},
+	
+	removeIngredientFromBar : function(ingredient)
+	{
+		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredient.name), 1)
+		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		this.saveStorage()
+		
+		this.view.renderIngredients(this.ingredients)
 	}
 }
 

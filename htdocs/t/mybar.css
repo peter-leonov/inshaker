@@ -29,7 +29,7 @@ html.loading .b-content { display: none; }
 #output .cocktails-block .list li {height: 216px; width: 114px;}
 #output .cocktails-block .list li .image { height: 200px; display: block; margin: 0 auto; }
 #output .cocktails-block .list li a:hover { text-decoration: underline; }
-#output .cocktails-block .list li .remove {
+#output .cocktails-block .list li .remove-cocktail {
 	color: #A2210E;
 	font-family: Verdana;
 	font-size: 17px;
@@ -57,7 +57,7 @@ html.loading .b-content { display: none; }
 	margin: 9px 0;
 }
 
-#output .ingredients-block .list li .remove, #output .ingredients-block .list li .add{
+#output .ingredients-block .list li .remove-ingredient, #output .ingredients-block .list li .add-ingredient{
 	cursor: pointer;
 	font-family: verdana;
 	font-size: 17px;
@@ -68,12 +68,12 @@ html.loading .b-content { display: none; }
 }
 
 
-#output .ingredients-block .list .in-bar .remove
+#output .ingredients-block .list .in-bar .remove-ingredient
 {
 	color: #A2210E;
 	right: -1px;
 }
-#output .ingredients-block .list .not-in-bar .add
+#output .ingredients-block .list .not-in-bar .add-ingredient
 {
 	color: #8dd013;
 	font-weight: bold;

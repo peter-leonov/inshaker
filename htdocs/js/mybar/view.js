@@ -29,7 +29,7 @@ var myProto =
 		{
 			(function(){
 			var li = cocktails[i].getPreviewNode(false, true), 
-				rmv = Nct('span', 'remove', 'x')
+				rmv = Nct('span', 'remove-cocktail', 'x')
 			
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
@@ -53,7 +53,7 @@ var myProto =
 			var ingr = ingredients[i],
 				ingrNode = ingr.getPreviewNode(), 
 				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
-				ctrl = ingr.inBar ? Nct('span', 'remove', 'x') : Nct('span', 'add', '+')
+				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', 'x') : Nct('span', 'add-ingredient', '+')
 				
 			ctrl.style.opacity = 0
 			if( !ingr.inBar ) 
@@ -70,7 +70,10 @@ var myProto =
 			ul.appendChild(li)
 			})()
 		}
-
+		
+		var me = this
+		ul.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		
 		this.nodes.ingredientsList.empty();
 		this.nodes.ingredientsList.appendChild(ul)
 	},
@@ -90,6 +93,15 @@ var myProto =
 	renderIfBarEmpty : function()
 	{
 		
+	},
+	
+	handleIngredientClick : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('add-ingredient')) 
+			this.controller.addIngredientToBar(node.nextSibling['data-ingredient'])
+		else if(node.hasClassName('remove-ingredient'))
+			this.controller.removeIngredientFromBar(node.nextSibling['data-ingredient'])
 	}
 }
 
