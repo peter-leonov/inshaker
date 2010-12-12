@@ -38,8 +38,8 @@ var myProto =
 		
 		for(var i = 0, ul = N('ul'), l = ingredients.length; i < l; i++)
 		{
-			var li = N('li')
-			li.appendChild(ingredients[i].getPreviewNode())
+			var ingr = ingredients[i], li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar')
+			li.appendChild(ingr.getPreviewNode())
 			ul.appendChild(li)
 		}
 
