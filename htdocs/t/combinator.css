@@ -245,3 +245,5 @@ html.opera-10 .popup .popup-controls .cross { right: 0px; top: -14px; }
 
 html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
 html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
+
+html.firefox-2 body { position: relative; height: none; }
