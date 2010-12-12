@@ -1,4 +1,4 @@
-if (/Firefox\/3\.5/.test(navigator.userAgent))
+if (/Firefox\//.test(navigator.userAgent))
 (function(){
 
 if (self.console && self.console.log && self.console.error)
