@@ -26,8 +26,14 @@ var myProto =
 		if(cocktails.length == 0) { this.renderIfCocktailsEmpty('Пусто!'); return }
 		
 		for(var i = 0, ul = N('ul'), l = cocktails.length; i < l; i++)
-			ul.appendChild(cocktails[i].getPreviewNode(false, true))
+		{
+			var li = cocktails[i].getPreviewNode(false, true), 
+				rmv = Nct('span', 'remove', 'x')
 
+			rmv.setAttribute('title', 'Убрать из бара')
+			li.appendChild(rmv)
+			ul.appendChild(li)
+		}
 		this.nodes.cocktailsList.empty()
 		this.nodes.cocktailsList.appendChild(ul)
 	},
@@ -38,9 +44,20 @@ var myProto =
 		
 		for(var i = 0, ul = N('ul'), l = ingredients.length; i < l; i++)
 		{
-			var ingr = ingredients[i], li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar')
-			li.appendChild(ingr.getPreviewNode())
+			(function(){
+			var ingr = ingredients[i]
+				ingrNode = ingr.getPreviewNode(), 
+				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
+				ctrl = ingr.inBar ? Nct('span', 'remove', 'x') : Nct('span', 'add', '+')
+				ctrl.style.opacity = 0
+				
+			//(ingr.inBar) ? ctrl.setAttribute('title', 'У меня это есть') : ctrl.setAttribute('title', 'У меня этого нет')
+			li.appendChild(ctrl)
+			li.appendChild(ingrNode)
+			li.addEventListener('mouseover', function(){ ctrl.animate(false, { 'opacity' : 100 }, 0.6) }, false)
+			li.addEventListener('mouseout', function(){ ctrl.animate(false, { 'opacity' : 0 }, 0.6) }, false)
 			ul.appendChild(li)
+			})()
 		}
 
 		this.nodes.ingredientsList.empty();

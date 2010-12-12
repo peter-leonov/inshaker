@@ -21,6 +21,9 @@ Object.extend(Me.prototype, myProto)
 
 
 <!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
 //Sorry for old lib. It's needed for Storage (hard code in it)
 <!--# include virtual="/lib/Programica/UA.js" -->
 <!--# include virtual="/js/common/storage.js" -->
