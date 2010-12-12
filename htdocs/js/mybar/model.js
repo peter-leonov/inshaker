@@ -29,7 +29,6 @@ var myProto =
 	
 	fetchIngredints : function(cocktails, ingrNames)
 	{
-		if(!cocktails.length) return []
 		//collect ingrdients from cocktails
 		for (var i = 0, il = cocktails.length, ingr = {}; i < il; i++)
 		{
@@ -104,22 +103,31 @@ var myProto =
 		
 	},
 	
-	addIngredientToBar : function(ingredient)
+	addIngredientToBar : function(ingredientName)
 	{
-		this.bar.ingredients.push(ingredient.name)
+		this.bar.ingredients.push(ingredientName)
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
 		this.saveStorage()
 		
 		this.view.renderIngredients(this.ingredients)
-
 	},
 	
-	removeIngredientFromBar : function(ingredient)
+	removeIngredientFromBar : function(ingredientName)
 	{
-		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredient.name), 1)
+		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredientName), 1)
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
 		this.saveStorage()
 		
+		this.view.renderIngredients(this.ingredients)
+	},
+	
+	removeCocktailFromBar : function(cocktailName)
+	{
+		this.bar.cocktails.splice(this.bar.cocktails.indexOf(cocktailName), 1)
+		this.initBarFromStorage(this.bar)
+		this.saveStorage()
+		
+		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
 	}
 }

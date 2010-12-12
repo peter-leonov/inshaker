@@ -19,14 +19,19 @@ var myProto =
 		this.model.handleIngrQuery(query)
 	},
 	
-	addIngredientToBar : function(ingredient)
+	addIngredientToBar : function(ingredientName)
 	{
-		this.model.addIngredientToBar(ingredient)
+		this.model.addIngredientToBar(ingredientName)
 	},
 	
-	removeIngredientFromBar : function(ingredient)
+	removeIngredientFromBar : function(ingredientName)
 	{
-		this.model.removeIngredientFromBar(ingredient)
+		this.model.removeIngredientFromBar(ingredientName)
+	},
+	
+	removeCocktailFromBar : function(cocktailName)
+	{
+		this.model.removeCocktailFromBar(cocktailName)
 	}
 }
 

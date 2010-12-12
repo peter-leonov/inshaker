@@ -33,12 +33,17 @@ var myProto =
 			
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
+			rmv.removingCocktailName = cocktails[i].name
 			li.appendChild(rmv)
 			li.addEventListener('mouseover', function(){ rmv.animate(false, { opacity : 1 }, 0.25) }, false)
 			li.addEventListener('mouseout', function(){ rmv.animate(false, { opacity : 0 }, 0.25) }, false)
 			ul.appendChild(li)
 			})()
 		}
+		
+		var me = this
+		ul.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
+		
 		this.nodes.cocktailsList.empty()
 		this.nodes.cocktailsList.appendChild(ul)
 	},
@@ -56,13 +61,18 @@ var myProto =
 				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', 'x') : Nct('span', 'add-ingredient', '+')
 				
 			ctrl.style.opacity = 0
-			if( !ingr.inBar ) 
-				ctrl.setAttribute('title', 'У меня это есть') 
+			if( !ingr.inBar )
+			{
+				ctrl.setAttribute('title', 'У меня это есть')
+				ctrl.addingIngredientName = ingr.name
+			}
 			else 
 			{
 				ctrl.setAttribute('title', 'У меня этого нет')
 				ingrNode.appendChild(Nc('div', 'tick'))
+				ctrl.removingIngredientName = ingr.name
 			}
+
 			li.appendChild(ctrl)
 			li.appendChild(ingrNode)
 			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, false)
@@ -98,10 +108,17 @@ var myProto =
 	handleIngredientClick : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('add-ingredient')) 
-			this.controller.addIngredientToBar(node.nextSibling['data-ingredient'])
-		else if(node.hasClassName('remove-ingredient'))
-			this.controller.removeIngredientFromBar(node.nextSibling['data-ingredient'])
+		if(node.addingIngredientName) 
+			this.controller.addIngredientToBar(node.addingIngredientName)
+		else if(node.removingIngredientName)
+			this.controller.removeIngredientFromBar(node.removingIngredientName)
+	},
+	
+	handleCocktailClick	: function(e)
+	{
+		var node = e.target
+		if(node.removingCocktailName)
+			this.controller.removeCocktailFromBar(node.removingCocktailName)
 	}
 }
 
