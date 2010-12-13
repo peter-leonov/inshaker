@@ -28,12 +28,13 @@ var myProto =
 		for(var i = 0, ul = N('ul'), l = cocktails.length; i < l; i++)
 		{
 			(function(){
-			var li = cocktails[i].getPreviewNode(false, true), 
+			var cocktail = cocktails[i],
+				li = cocktail.getPreviewNode(false, true), 
 				rmv = Nct('span', 'remove-cocktail', 'x')
 			
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
-			rmv.removingCocktailName = cocktails[i].name
+			rmv.removingCocktailName = cocktail.name
 			li.appendChild(rmv)
 			li.addEventListener('mouseover', function(){ rmv.animate(false, { opacity : 1 }, 0.25) }, true)
 			li.addEventListener('mouseout', function(){ rmv.animate(false, { opacity : 0 }, 0.25) }, true)
@@ -120,8 +121,22 @@ var myProto =
 			
 			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++) 
 			{
-				ul.appendChild(cocktails[i].getPreviewNode(false, true))	
+				(function(){
+				var cocktail = cocktails[i],
+					li = cocktail.getPreviewNode(false, true),
+					add = Nct('span', 'add-cocktail', '+')
+				
+				add.style.opacity = 0
+				add.setAttribute('title', 'Добавить в бар')
+				add.addingCocktailName = cocktail.name
+				li.appendChild(add)
+				li.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
+				li.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
+				ul.appendChild(li)
+				})()	
 			}
+			
+			ul.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
 			
 			switch(j)
 			{
@@ -160,6 +175,8 @@ var myProto =
 		var node = e.target
 		if(node.removingCocktailName)
 			this.controller.removeCocktailFromBar(node.removingCocktailName)
+		if(node.addingCocktailName)
+			this.controller.addCocktailToBar(node.addingCocktailName)
 	}
 }
 

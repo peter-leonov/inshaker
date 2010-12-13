@@ -32,7 +32,12 @@ var myProto =
 	removeCocktailFromBar : function(cocktailName)
 	{
 		this.model.removeCocktailFromBar(cocktailName)
-	}
+	},
+	
+	addCocktailToBar : function(cocktailName)
+	{
+		this.model.addCocktailToBar(cocktailName)
+	},
 }
 
 Object.extend(Me.prototype, myProto)

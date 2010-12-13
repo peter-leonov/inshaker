@@ -146,6 +146,18 @@ var myProto =
 		this.view.renderRecommends(this.recommends)
 	},
 	
+	addCocktailToBar : function(cocktailName)
+	{
+		this.bar.cocktails.push(cocktailName)
+		this.initBarFromStorage(this.bar)
+		this.saveStorage()
+		this.recommends = this.computeRecommends(this.bar)
+		
+		this.view.renderCocktails(this.cocktails)
+		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
+	},
+	
 	computeRecommends : function(bar)
 	{
 		return Cocktail.getForRecommends(bar.ingredients, 3, bar.cocktails.toHash())  

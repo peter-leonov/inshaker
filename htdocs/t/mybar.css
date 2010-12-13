@@ -28,15 +28,26 @@ html.loading .b-content { display: none; }
 
 #output .cocktails-block .list li .image { height: 200px; display: block; margin: 0 auto; }
 #output .cocktails-block .list li a:hover { text-decoration: underline; }
-#output .cocktails-block .list li .remove-cocktail {
-	color: #A2210E;
+#output .cocktails-block .list li .remove-cocktail, #output .recommends-block .list li .add-cocktail {
 	font-family: Verdana;
 	font-size: 17px;
 	position: absolute;
-	right: 9px;
+	right: 10px;
 	top: 8px;
 	cursor: pointer;
 	background-color: #fff;
+}
+
+#output .cocktails-block .list li .remove-cocktail
+{
+	color: #A2210E;
+	right: -1px;
+}
+
+#output .recommends-block .list li .add-cocktail
+{
+	color: #8dd013;
+	font-weight: bold;
 }
 
 #output .ingredients-block { width: 940px; margin-top: 35px; }
