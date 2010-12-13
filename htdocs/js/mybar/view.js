@@ -35,8 +35,8 @@ var myProto =
 			rmv.setAttribute('title', 'Убрать из бара')
 			rmv.removingCocktailName = cocktails[i].name
 			li.appendChild(rmv)
-			li.addEventListener('mouseover', function(){ rmv.animate(false, { opacity : 1 }, 0.25) }, false)
-			li.addEventListener('mouseout', function(){ rmv.animate(false, { opacity : 0 }, 0.25) }, false)
+			li.addEventListener('mouseover', function(){ rmv.animate(false, { opacity : 1 }, 0.25) }, true)
+			li.addEventListener('mouseout', function(){ rmv.animate(false, { opacity : 0 }, 0.25) }, true)
 			ul.appendChild(li)
 			})()
 		}
@@ -75,8 +75,8 @@ var myProto =
 
 			li.appendChild(ctrl)
 			li.appendChild(ingrNode)
-			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, false)
-			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.25) }, false)
+			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, true)
+			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.25) }, true)
 			ul.appendChild(li)
 			})()
 		}
@@ -100,11 +100,50 @@ var myProto =
 		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
 	},
 	
-	renderIfBarEmpty : function()
+	renderIfRecommendsEmpty : function(label)
 	{
-		
+		this.nodes.recommendsWrapper.empty()
+		this.nodes.recommendsWrapper.appendChild(Nct('div', 'empty', label))
 	},
 	
+	renderRecommends : function(recommends)
+	{
+		if(recommends.length == 0) this.renderIfRecommendsEmpty('Пусто!')
+		
+		var df = document.createDocumentFragment(), me=this
+		for( var j = 0, f = true; j < recommends.length; j++)
+		{
+			(function(){
+			var cocktails = recommends[j]
+			if(cocktails.length == 0 && f) { me.renderIfRecommendsEmpty('Пусто!'); return }
+			else{f=false}
+			
+			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++) 
+			{
+				ul.appendChild(cocktails[i].getPreviewNode(false, true))	
+			}
+			
+			switch(j)
+			{
+				case 0: var label = 'Можешь точно приготовить'; break;
+				case 1: var label = 'Можешь приготовить, добавив 1 ингредиент'; break;
+				case 2: var label = 'Можешь приготовить, добавив 2 ингредиента'; break;
+			}
+			
+			var dl = N('dl'),
+				dt = Nct('dt', 'title', label),
+				dd = Nc('dl', 'list')
+				
+			dd.appendChild(ul)
+			dl.appendChild(dt)
+			dl.appendChild(dd)
+			df.appendChild(dl)
+			})()
+		}
+		this.nodes.recommendsWrapper.empty()
+		this.nodes.recommendsWrapper.appendChild(df)
+	},
+
 	handleIngredientClick : function(e)
 	{
 		var node = e.target

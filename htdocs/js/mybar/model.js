@@ -1,4 +1,14 @@
 ;(function(){
+	
+Array.prototype.toHash = function()
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++) 
+	{
+		hash[this[i]] = true
+	}
+	return hash
+}
 
 var Papa = MyBar, Me = Papa.Model
 
@@ -13,18 +23,14 @@ var myProto =
 		
 		//there we take cocktails and ingredients objects
 		this.initBarFromStorage(this.bar)
+		this.recommends = this.computeRecommends(this.bar)
 	},
 	
 	bind : function ()
 	{
-		if(!this.ingredients.length)
-		{
-			this.view.renderIfBarEmpty()
-			return
-		}
-
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
 	},
 	
 	fetchIngredints : function(cocktails, ingrNames)
@@ -84,9 +90,11 @@ var myProto =
 		this.cocktails.push(cocktail)
 		this.saveStorage()
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		this.recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
 	},
 	
 	handleIngrQuery : function(query)
@@ -98,9 +106,10 @@ var myProto =
 		this.ingredients.push(ingredient)
 		this.saveStorage()
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		this.recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderIngredients(this.ingredients)
-		
+		this.view.renderRecommends(this.recommends)
 	},
 	
 	addIngredientToBar : function(ingredientName)
@@ -108,8 +117,10 @@ var myProto =
 		this.bar.ingredients.push(ingredientName)
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
 		this.saveStorage()
+		this.recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
 	},
 	
 	removeIngredientFromBar : function(ingredientName)
@@ -117,8 +128,10 @@ var myProto =
 		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredientName), 1)
 		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
 		this.saveStorage()
+		this.recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
 	},
 	
 	removeCocktailFromBar : function(cocktailName)
@@ -126,9 +139,16 @@ var myProto =
 		this.bar.cocktails.splice(this.bar.cocktails.indexOf(cocktailName), 1)
 		this.initBarFromStorage(this.bar)
 		this.saveStorage()
+		this.recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(this.recommends)
+	},
+	
+	computeRecommends : function(bar)
+	{
+		return Cocktail.getForRecommends(bar.ingredients, 3, bar.cocktails.toHash())  
 	}
 }
 
