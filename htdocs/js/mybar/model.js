@@ -19,14 +19,22 @@ var myProto =
 		var me = this
 		Storage.init(function(){
 			//bar contains only string names for cocktail and ingredients. NOT OBJECTS!!!		
-			me.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
-			if(!me.bar.cocktails) me.bar.cocktails = []
-			if(!me.bar.ingredients) me.bar.cingredients = []
+			try{
+				me.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
+			}
+			catch(e){
+				me.bar = { cocktails : [], ingredients : [] }
+			}
 			//there we take cocktails and ingredients objects
 			me.initBarFromStorage(me.bar)
 			me.recommends = me.computeRecommends(me.bar)
-			if(me.view) me.bind()
-			else setTimeout(function(){me.bind()}, 1)
+			try{
+			me.bind()
+			}
+			catch(e){
+				setTimeout(function(){me.bind()}, 1)
+			}
+			
 		})
 	},
 	
