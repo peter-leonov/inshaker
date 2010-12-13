@@ -108,15 +108,15 @@ var myProto =
 	
 	renderRecommends : function(recommends)
 	{
-		if(recommends.length == 0) this.renderIfRecommendsEmpty('Пусто!')
+		if(recommends.length == 0) { this.renderIfRecommendsEmpty('Пусто!'); return }
 		
 		var df = document.createDocumentFragment(), me=this
-		for( var j = 0, f = true; j < recommends.length; j++)
+		for( var j = 0, f = 0; j < recommends.length; j++)
 		{
 			(function(){
 			var cocktails = recommends[j]
-			if(cocktails.length == 0 && f) { me.renderIfRecommendsEmpty('Пусто!'); return }
-			else{f=false}
+			if(cocktails.length == 0) return;
+			f++
 			
 			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++) 
 			{
@@ -140,6 +140,8 @@ var myProto =
 			df.appendChild(dl)
 			})()
 		}
+		if(f==0){ this.renderIfRecommendsEmpty('Пусто!'); return }
+		
 		this.nodes.recommendsWrapper.empty()
 		this.nodes.recommendsWrapper.appendChild(df)
 	},
