@@ -16,14 +16,18 @@ var myProto =
 {
 	initialize : function()
 	{
-		Storage.init(function(){})
-
-		//bar contains only string names for cocktail and ingredients. NOT OBJECTS!!!		
-		this.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
-		
-		//there we take cocktails and ingredients objects
-		this.initBarFromStorage(this.bar)
-		this.recommends = this.computeRecommends(this.bar)
+		var me = this
+		Storage.init(function(){
+			//bar contains only string names for cocktail and ingredients. NOT OBJECTS!!!		
+			me.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
+			if(!me.bar.cocktails) me.bar.cocktails = []
+			if(!me.bar.ingredients) me.bar.cingredients = []
+			//there we take cocktails and ingredients objects
+			me.initBarFromStorage(me.bar)
+			me.recommends = me.computeRecommends(me.bar)
+			if(me.view) me.bind()
+			else setTimeout(function(){me.bind()}, 1)
+		})
 	},
 	
 	bind : function ()

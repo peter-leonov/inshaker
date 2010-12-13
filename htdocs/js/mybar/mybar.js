@@ -8,7 +8,7 @@ var myProto =
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
-		this.model.bind()
+		//this.model.bind()
 		this.controller.bind()
 		
 		return this
