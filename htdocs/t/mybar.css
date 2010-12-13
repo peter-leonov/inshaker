@@ -96,6 +96,8 @@ html.loading .b-content { display: none; }
 }
 #output .ingredients-block .ingredient-preview .image {
 	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
 	background-color: #EEEEEE;
 }
 
