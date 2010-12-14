@@ -17,24 +17,23 @@ var myProto =
 	initialize : function()
 	{
 		var me = this
-		Storage.init(function(){
-			//bar contains only string names for cocktail and ingredients. NOT OBJECTS!!!		
+		Storage.init(function(){	
 			try{
 				me.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
 			}
 			catch(e){
 				me.bar = { cocktails : [], ingredients : [] }
 			}
-			//there we take cocktails and ingredients objects
+
 			me.initBarFromStorage(me.bar)
 			me.recommends = me.computeRecommends(me.bar)
+			
 			try{
-			me.bind()
+				me.bind()
 			}
 			catch(e){
 				setTimeout(function(){me.bind()}, 1)
 			}
-			
 		})
 	},
 	
@@ -57,7 +56,7 @@ var myProto =
 		
 		var ingredients = []
 		
-		for (var i = 0, il = ingrNames.length, ingredient; i < il; i++) 
+		for (var i = 0, il = ingrNames.length, ingredient; i < il; i++)
 		{
 			ingredient = Ingredient.getByName(ingrNames[i])
 			ingredient.inBar = true
@@ -68,11 +67,11 @@ var myProto =
 		for( i in ingr )
 		{
 			ingredient = Ingredient.getByName(i)
-			ingredient.inBar =  false
+			ingredient.inBar = false
 			ingredients.push(ingredient)
 		}
 			
-		return ingredients.sort(function(a,b){ return a.name > b.name ? 1 : -1 })	
+		return ingredients.sort(function(a,b){ return a.name > b.name ? 1 : -1 })
 	},
 	
 	saveStorage : function()
@@ -84,8 +83,8 @@ var myProto =
 	{
 		this.cocktails = []
 		this.ingredients = []
-				
-		for (var i = 0, il = bar.cocktails.length; i < il; i++) 
+		
+		for (var i = 0, il = bar.cocktails.length; i < il; i++)
 		{
 			this.cocktails.push(Cocktail.getByName(bar.cocktails[i]))
 		}
@@ -172,7 +171,7 @@ var myProto =
 	
 	computeRecommends : function(bar)
 	{
-		return Cocktail.getForRecommends(bar.ingredients, 3, bar.cocktails.toHash())  
+		return Cocktail.getForRecommends(bar.ingredients, 3, bar.cocktails.toHash())
 	}
 }
 
