@@ -3,7 +3,7 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 html.loading .b-content { display: none; }
 
 .b-title { background: none; z-index: 1; top: 7px; }
-.b-content dt.title { font-size: 24px; margin-bottom: 15px;}
+.b-content dt.title { font-size: 24px; margin-bottom: 15px; }
 .b-content { width: 100%; }
 
 .search-box {margin-bottom: 15px;}
@@ -52,22 +52,24 @@ html.loading .b-content { display: none; }
 
 #output .ingredients-block { width: 940px; margin-top: 35px; }
 #output .ingredients-block .list { padding-top: 15px; }
-#output .ingredients-block .list li{
+#output .ingredients-block .list li
+{
 	height: 140px;
 	margin-bottom: 0;
 	padding-top: 15px;
 }
 #output .ingredients-block .list li a { display: block; }
-
 #output .ingredients-block .not-in-bar .image { opacity: 0.5 }
 
-#output .empty{ 
+#output .empty
+{
 	color: #DDDDDD;
 	font-size: 16px;
 	margin: 9px 0;
 }
 
-#output .ingredients-block .list li .remove-ingredient, #output .ingredients-block .list li .add-ingredient{
+#output .ingredients-block .list li .remove-ingredient, #output .ingredients-block .list li .add-ingredient
+{
 	cursor: pointer;
 	font-family: verdana;
 	font-size: 17px;
@@ -76,7 +78,6 @@ html.loading .b-content { display: none; }
 	top: -5px;
 	background-color: #fff;
 }
-
 
 #output .ingredients-block .list .in-bar .remove-ingredient
 {
@@ -88,20 +89,22 @@ html.loading .b-content { display: none; }
 	color: #8dd013;
 	font-weight: bold;
 }
-
-#output .ingredients-block .ingredient-preview, #output .ingredients-block .ingredient-preview .image {
+#output .ingredients-block .ingredient-preview, #output .ingredients-block .ingredient-preview .image
+{
 	height: 100px;
 	width: 100px;
 	position: relative;
 }
-#output .ingredients-block .ingredient-preview .image {
+#output .ingredients-block .ingredient-preview .image 
+{
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 	background-color: #EEEEEE;
 }
 
-#output .ingredients-block .tick {    
+#output .ingredients-block .tick 
+{    
 	background: url("/t/mybar/tick.png") no-repeat scroll left top transparent;
 	height: 35px;
 	left: 65px;

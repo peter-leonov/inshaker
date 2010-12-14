@@ -29,7 +29,7 @@ var myProto =
 		{
 			(function(){
 			var cocktail = cocktails[i],
-				li = cocktail.getPreviewNode(false, true), 
+				li = cocktail.getPreviewNode(false, true),
 				rmv = Nct('span', 'remove-cocktail', 'x')
 			
 			rmv.style.opacity = 0
@@ -57,7 +57,7 @@ var myProto =
 		{
 			(function(){
 			var ingr = ingredients[i],
-				ingrNode = ingr.getPreviewNode(), 
+				ingrNode = ingr.getPreviewNode(),
 				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
 				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', 'x') : Nct('span', 'add-ingredient', '+')
 				
@@ -67,7 +67,7 @@ var myProto =
 				ctrl.setAttribute('title', 'У меня это есть')
 				ctrl.addingIngredientName = ingr.name
 			}
-			else 
+			else
 			{
 				ctrl.setAttribute('title', 'У меня этого нет')
 				ingrNode.appendChild(Nc('div', 'tick'))
@@ -85,26 +85,8 @@ var myProto =
 		var me = this
 		ul.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
-		this.nodes.ingredientsList.empty();
-		this.nodes.ingredientsList.appendChild(ul)
-	},
-	
-	renderIfCocktailsEmpty : function(label)
-	{
-		this.nodes.cocktailsList.empty()
-		this.nodes.cocktailsList.appendChild(Nct('div', 'empty', label))
-	},
-	
-	renderIfIngredientsEmpty : function(label)
-	{
 		this.nodes.ingredientsList.empty()
-		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
-	},
-	
-	renderIfRecommendsEmpty : function(label)
-	{
-		this.nodes.recommendsWrapper.empty()
-		this.nodes.recommendsWrapper.appendChild(Nct('div', 'empty', label))
+		this.nodes.ingredientsList.appendChild(ul)
 	},
 	
 	renderRecommends : function(recommends)
@@ -119,7 +101,7 @@ var myProto =
 			if(cocktails.length == 0) return;
 			f++
 			
-			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++) 
+			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++)
 			{
 				(function(){
 				var cocktail = cocktails[i],
@@ -164,7 +146,7 @@ var myProto =
 	handleIngredientClick : function(e)
 	{
 		var node = e.target
-		if(node.addingIngredientName) 
+		if(node.addingIngredientName)
 			this.controller.addIngredientToBar(node.addingIngredientName)
 		else if(node.removingIngredientName)
 			this.controller.removeIngredientFromBar(node.removingIngredientName)
@@ -177,6 +159,24 @@ var myProto =
 			this.controller.removeCocktailFromBar(node.removingCocktailName)
 		if(node.addingCocktailName)
 			this.controller.addCocktailToBar(node.addingCocktailName)
+	},
+	
+	renderIfCocktailsEmpty : function(label)
+	{
+		this.nodes.cocktailsList.empty()
+		this.nodes.cocktailsList.appendChild(Nct('div', 'empty', label))
+	},
+	
+	renderIfIngredientsEmpty : function(label)
+	{
+		this.nodes.ingredientsList.empty()
+		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
+	},
+	
+	renderIfRecommendsEmpty : function(label)
+	{
+		this.nodes.recommendsWrapper.empty()
+		this.nodes.recommendsWrapper.appendChild(Nct('div', 'empty', label))
 	}
 }
 
