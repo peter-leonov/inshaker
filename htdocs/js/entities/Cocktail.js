@@ -24,6 +24,16 @@ var Cocktail = function (data)
 
 Cocktail.prototype =
 {
+	getPath: function ()
+	{
+		var path = this._path
+		if (path)
+			return path
+		
+		path = this._path = '/cocktail/' + this.name_eng.htmlName() + '/'
+		return path
+	},
+	
 	// this dirty synchronous json loading
 	// is needed for printer.js only
 	loadData: function ()
