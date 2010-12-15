@@ -78,7 +78,7 @@ var myProto =
 			ingredients.push(ingredient)
 		}
 			
-		return ingredients.sort(String.localeCompare)
+		return ingredients.sort(function(a,b){ return String.localeCompare(a.name, b.name) })
 	},
 	
 	saveStorage : function()
