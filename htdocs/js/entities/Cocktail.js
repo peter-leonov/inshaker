@@ -24,6 +24,8 @@ var Cocktail = function (data)
 
 Cocktail.prototype =
 {
+	// this dirty synchronous json loading
+	// is needed for printer.js only
 	loadData: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
