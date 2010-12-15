@@ -16,31 +16,37 @@ var myProto =
 {
 	initialize : function()
 	{
-		var me = this
-		Storage.init(function(){	
-			try{
-				me.bar = JSON.parse(Storage.get('mybar')) || { cocktails : [], ingredients : [] }
-			}
-			catch(e){
-				me.bar = { cocktails : [], ingredients : [] }
-			}
-
-			me.initBarFromStorage(me.bar)
-			me.recommends = me.computeRecommends(me.bar)
-			
-			try{
-				me.bind()
-			}
-			catch(e){
-				setTimeout(function(){me.bind()}, 1)
-			}
-		})
+		this.cocktails = []
+		this.ingredients = []
+		this.bar = { cocktails : [], ingredients : [] }
 	},
 	
 	bind : function ()
 	{
+		var me = this
+	
+		Storage.init(function(){
+			var bar = JSON.parse(Storage.get('mybar'))
+			Object.extend(me.bar, bar)	
+			me.getBarFromStorage(me.bar)
+			me.recommends = me.computeRecommends(me.bar)
+			
+			me.parent.setBar()
+		})
+	},
+	
+	setCocktails : function()
+	{
 		this.view.renderCocktails(this.cocktails)
+	},
+	
+	setIngredients : function()
+	{
 		this.view.renderIngredients(this.ingredients)
+	},
+	
+	setRecommends : function()
+	{
 		this.view.renderRecommends(this.recommends)
 	},
 	
@@ -49,23 +55,24 @@ var myProto =
 		//collect ingrdients from cocktails
 		for (var i = 0, il = cocktails.length, ingr = {}; i < il; i++)
 		{
-			var cocktailIngr = cocktails[i].ingredients.slice().map(function(a){ return a[0] })
+			var cocktailIngr = cocktails[i].ingredients.map(function(a){ return a[0] })
 			for( var j = 0; j < cocktailIngr.length; j++ )
 				ingr[cocktailIngr[j]] = true
 		}
 		
 		var ingredients = []
 		
-		for (var i = 0, il = ingrNames.length, ingredient; i < il; i++)
+		for (var i = 0, il = ingrNames.length; i < il; i++)
 		{
-			ingredient = Ingredient.getByName(ingrNames[i])
+			var ingredient = Ingredient.getByName(ingrNames[i])
 			ingredient.inBar = true
 			ingredients.push(ingredient)
-			delete ingr[ingrNames[i]] 
+			ingr[ingrNames[i]] = null 
 		}
 		
 		for( i in ingr )
 		{
+			if(!ingr[i]) continue
 			ingredient = Ingredient.getByName(i)
 			ingredient.inBar = false
 			ingredients.push(ingredient)
@@ -79,7 +86,7 @@ var myProto =
 		Storage.put('mybar', JSON.stringify(this.bar))
 	},
 	
-	initBarFromStorage : function(bar)
+	getBarFromStorage : function(bar)
 	{
 		this.cocktails = []
 		this.ingredients = []
@@ -148,7 +155,7 @@ var myProto =
 	removeCocktailFromBar : function(cocktailName)
 	{
 		this.bar.cocktails.splice(this.bar.cocktails.indexOf(cocktailName), 1)
-		this.initBarFromStorage(this.bar)
+		this.getBarFromStorage(this.bar)
 		this.saveStorage()
 		this.recommends = this.computeRecommends(this.bar)
 		
@@ -160,7 +167,7 @@ var myProto =
 	addCocktailToBar : function(cocktailName)
 	{
 		this.bar.cocktails.push(cocktailName)
-		this.initBarFromStorage(this.bar)
+		this.getBarFromStorage(this.bar)
 		this.saveStorage()
 		this.recommends = this.computeRecommends(this.bar)
 		

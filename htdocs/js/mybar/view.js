@@ -8,7 +8,7 @@ var myProto =
 {
 	initialize : function()
 	{
-		
+		this.nodes = {}
 	},
 	
 	bind : function (nodes)
@@ -30,7 +30,7 @@ var myProto =
 			(function(){
 			var cocktail = cocktails[i],
 				li = cocktail.getPreviewNode(false, true),
-				rmv = Nct('span', 'remove-cocktail', 'x')
+				rmv = Nct('span', 'remove-cocktail', '×')
 			
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
@@ -59,7 +59,7 @@ var myProto =
 			var ingr = ingredients[i],
 				ingrNode = ingr.getPreviewNode(),
 				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
-				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', 'x') : Nct('span', 'add-ingredient', '+')
+				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', '×') : Nct('span', 'add-ingredient', '+')
 				
 			ctrl.style.opacity = 0
 			if( !ingr.inBar )
@@ -157,7 +157,7 @@ var myProto =
 		var node = e.target
 		if(node.removingCocktailName)
 			this.controller.removeCocktailFromBar(node.removingCocktailName)
-		if(node.addingCocktailName)
+		else if(node.addingCocktailName)
 			this.controller.addCocktailToBar(node.addingCocktailName)
 	},
 	

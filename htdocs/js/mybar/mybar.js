@@ -5,13 +5,36 @@ var myName = 'MyBar',
 
 var myProto =
 {
-	bind: function (nodes)
+	bind : function (nodes)
 	{
 		this.view.bind(nodes)
-		//this.model.bind()
+		this.model.bind()
 		this.controller.bind()
 		
 		return this
+	},
+	
+	setCocktails : function()
+	{
+		this.model.setCocktails()
+		return this
+	},
+	
+	setIngredients : function()
+	{
+		this.model.setIngredients()
+		return this
+	},
+	
+	setRecommends : function()
+	{
+		this.model.setRecommends()
+		return this
+	},
+	
+	setBar : function()
+	{
+		return this.setCocktails().setIngredients().setRecommends()
 	}
 }
 
