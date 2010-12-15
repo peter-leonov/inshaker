@@ -24,13 +24,14 @@ var Cocktail = function (data)
 
 Cocktail.prototype =
 {
-	loadData: function ()
+	getPath: function ()
 	{
-		var htmlName = this.name_eng.htmlName(),
-			path = '/cocktail/' + htmlName
+		var path = this._path
+		if (path)
+			return path
 		
-		var data = eval('(' + sGet(path + '/data.json').responseText() + ')')
-		Object.extend(this, data)
+		path = this._path = '/cocktail/' + this.name_eng.htmlName() + '/'
+		return path
 	},
 	
 	getBigImageSrc: function ()
