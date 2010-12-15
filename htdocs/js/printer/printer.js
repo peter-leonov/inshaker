@@ -42,10 +42,18 @@ var Printer = {
     cocktailInit: function(name){
         this.preloadImages();
 		var cocktail = Cocktail.getByName(name)
-		cocktail.loadData()
+		this.loadData(cocktail)
   		this.renderCocktail(cocktail);
     },  
-
+	
+	// dirty synchronous json loading
+	loadData: function (cocktail)
+	{
+		var data = eval('(' + sGet(cocktail.getPath() + 'data.json').responseText() + ')')
+		Object.extend(cocktail, data)
+	},
+	
+	
 	renderCocktail: function(cocktail){
 	   var receiptRoot   = $(this.ID_RECEIPT);
        var ingredsRoot   = $(this.ID_INGREDS_LIST);
