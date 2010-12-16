@@ -29,7 +29,7 @@ var myProto =
 			var bar = JSON.parse(Storage.get('mybar'))
 			Object.extend(me.bar, bar)	
 			me.getBarFromStorage(me.bar)
-			me.recommends = me.computeRecommends(me.bar)
+			me.recommends = me.computeRecommends()
 			
 			me.parent.setBar()
 		})
@@ -109,7 +109,7 @@ var myProto =
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
 		var haveIngredients = this.bar.ingredients.toHash()
-		var recommends = this.computeRecommends(this.bar)
+		var recommends = this.computeRecommends()
 		
 		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
@@ -126,7 +126,7 @@ var myProto =
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
 		var haveIngredients = this.bar.ingredients.toHash()
-		var recommends = this.computeRecommends(this.bar)
+		var recommends = this.computeRecommends()
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients, haveIngredients)
@@ -141,7 +141,7 @@ var myProto =
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
 		var haveIngredients = this.bar.ingredients.toHash()
-		var recommends = this.computeRecommends(this.bar)
+		var recommends = this.computeRecommends()
 		
 		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
@@ -157,17 +157,38 @@ var myProto =
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
 		var haveIngredients = this.bar.ingredients.toHash()
-		var recommends = this.computeRecommends(this.bar)
+		var recommends = this.computeRecommends()
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
 	},
 	
-	computeRecommends : function(bar)
+	computeRecommends : function()
 	{
-		return Cocktail.getForRecommends(bar.ingredients, 3, bar.cocktails.toHash())
-	}
+		if(this.bar.ingredients.length == 0) return []
+		
+		var cocktails = Cocktail.getByIngredientNames(this.bar.ingredients, {count : 1}),
+			ingredientsHash = this.bar.ingredients.toHash(),
+			excludes = this.bar.cocktails.toHash(),
+			recommends = [[],[],[]]
+		
+		ck:
+		for ( var i = 0, il = cocktails.length; i < il; i++ ) 
+		{
+			var cocktail = cocktails[i]
+			if(excludes[cocktail.name]) continue 
+			var ing = cocktail.ingredients, rl = recommends.length, r
+			for (var j = 0, t = -1, jl = ing.length; j < jl; j++) 
+			{
+				if(ingredientsHash[ing[j][0]]) t++
+				r = j - t //на сколько ингредиентов различаются список ингредиентов(ingredientsHash) с ингредиентами коктейля
+				if(r>2) continue ck
+			}
+			recommends[r].push(cocktail)
+		}
+		return recommends
+	},
 }
 
 Object.extend(Me.prototype, myProto)

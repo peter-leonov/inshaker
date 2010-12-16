@@ -369,35 +369,6 @@ Object.extend(Cocktail,
 	    else if(a.name == b.name) return 0;
 	    else return -1;
     },
-    
-    getForRecommends : function(ingredientNames, countGroups, excludes)
-    {
-    	if(ingredientNames.length == 0) return []
-    	if(!excludes) excludes = {}
-    	var hash = {}
-		for ( var i = 0; i < ingredientNames.length; i++ )
-			hash[ingredientNames[i]] = true
-			
-		var db = this.db, recommends = []
-		for ( i = 0; i < countGroups; i++ ) 
-			recommends.push([])
-		
-		db:
-		for ( i = 0, il = db.length; i < il; i++ ) 
-		{
-			var cocktail = db[i]
-			if(excludes[cocktail.name]) continue 
-			var ing = cocktail.ingredients, rl = recommends.length, r
-			for (var j = 0, t = -1, jl = ing.length; j < jl; j++) 
-			{
-				if(hash[ing[j][0]]) t++
-				r = j - t //на сколько ингредиентов различаются список ингредиентов(ingredientNames) с ингредиентами коктейля
-				if(r >= rl || r*2 > jl /*если различаются больше чем вполовину - выбрасываем, а то много очень*/ ) continue db
-			}
-			recommends[r].push(cocktail)
-		}
-		return recommends
-    },
 	
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
 })
