@@ -53,7 +53,7 @@ var myProto =
 		this.nodes.cocktailsList.appendChild(ul)
 	},
 	
-	renderIngredients : function(ingredients)
+	renderIngredients : function(ingredients, haveIngredients)
 	{
 		if(ingredients.length == 0)
 		{
@@ -66,11 +66,12 @@ var myProto =
 			(function(){
 			var ingr = ingredients[i],
 				ingrNode = ingr.getPreviewNode(),
-				li = Nc('li', ingr.inBar ? 'in-bar' : 'not-in-bar'),
-				ctrl = ingr.inBar ? Nct('span', 'remove-ingredient', '×') : Nct('span', 'add-ingredient', '+')
+				inBar = haveIngredients[ingr.name] || false,
+				li = Nc('li', inBar ? 'in-bar' : 'not-in-bar'),
+				ctrl = inBar ? Nct('span', 'remove-ingredient', '×') : Nct('span', 'add-ingredient', '+')
 				
 			ctrl.style.opacity = 0
-			if( !ingr.inBar )
+			if( !inBar )
 			{
 				ctrl.setAttribute('title', 'У меня это есть')
 				ctrl.addingIngredient = ingr

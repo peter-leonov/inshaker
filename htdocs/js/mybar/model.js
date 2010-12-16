@@ -42,7 +42,8 @@ var myProto =
 	
 	setIngredients : function()
 	{
-		this.view.renderIngredients(this.ingredients)
+		var haveIngredients = this.bar.ingredients.toHash()
+		this.view.renderIngredients(this.ingredients, haveIngredients)
 	},
 	
 	setRecommends : function()
@@ -52,8 +53,9 @@ var myProto =
 	
 	fetchIngredients : function(cocktails, ingrNames)
 	{
-		//collect ingrdients from cocktails
-		for (var i = 0, il = cocktails.length, ingr = {}; i < il; i++)
+		var ingr = {}
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cocktailIngr = cocktails[i].ingredients.map(function(a){ return a[0] })
 			for( var j = 0; j < cocktailIngr.length; j++ )
@@ -65,7 +67,6 @@ var myProto =
 		for (var i = 0, il = ingrNames.length; i < il; i++)
 		{
 			var ingredient = Ingredient.getByName(ingrNames[i])
-			ingredient.inBar = true
 			ingredients.push(ingredient)
 			ingr[ingrNames[i]] = null 
 		}
@@ -74,7 +75,6 @@ var myProto =
 		{
 			if(!ingr[k]) continue
 			ingredient = Ingredient.getByName(k)
-			ingredient.inBar = false
 			ingredients.push(ingredient)
 		}
 			
@@ -108,9 +108,10 @@ var myProto =
 		this.saveStorage()
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var haveIngredients = this.bar.ingredients.toHash()
 		var recommends = this.computeRecommends(this.bar)
 		
-		this.view.renderIngredients(this.ingredients)
+		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
 	},
 	
@@ -124,10 +125,11 @@ var myProto =
 		this.saveStorage()
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var haveIngredients = this.bar.ingredients.toHash()
 		var recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
-		this.view.renderIngredients(this.ingredients)
+		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
 	},
 	
@@ -138,9 +140,10 @@ var myProto =
 		this.saveStorage()
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var haveIngredients = this.bar.ingredients.toHash()
 		var recommends = this.computeRecommends(this.bar)
 		
-		this.view.renderIngredients(this.ingredients)
+		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
 	},
 	
@@ -153,10 +156,11 @@ var myProto =
 		this.saveStorage()
 		
 		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var haveIngredients = this.bar.ingredients.toHash()
 		var recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
-		this.view.renderIngredients(this.ingredients)
+		this.view.renderIngredients(this.ingredients, haveIngredients)
 		this.view.renderRecommends(recommends)
 	},
 	
