@@ -23,7 +23,11 @@ var myProto =
 	
 	renderCocktails : function(cocktails)
 	{
-		if(cocktails.length == 0) { this.renderIfCocktailsEmpty('Пусто!'); return }
+		if(cocktails.length == 0)
+		{
+			this.renderIfCocktailsEmpty('Пусто!')
+			return
+		}
 		
 		for(var i = 0, ul = N('ul'), l = cocktails.length; i < l; i++)
 		{
@@ -34,7 +38,7 @@ var myProto =
 			
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
-			rmv.removingCocktailName = cocktail.name
+			rmv.removingCocktail = cocktail
 			li.appendChild(rmv)
 			li.addEventListener('mouseover', function(){ rmv.animate(false, { opacity : 1 }, 0.25) }, true)
 			li.addEventListener('mouseout', function(){ rmv.animate(false, { opacity : 0 }, 0.25) }, true)
@@ -51,7 +55,11 @@ var myProto =
 	
 	renderIngredients : function(ingredients)
 	{
-		if(ingredients.length == 0) { this.renderIfIngredientsEmpty('Пусто!'); return }
+		if(ingredients.length == 0)
+		{
+			this.renderIfIngredientsEmpty('Пусто!')
+			return
+		}
 		
 		for(var i = 0, ul = N('ul'), l = ingredients.length; i < l; i++)
 		{
@@ -65,13 +73,13 @@ var myProto =
 			if( !ingr.inBar )
 			{
 				ctrl.setAttribute('title', 'У меня это есть')
-				ctrl.addingIngredientName = ingr.name
+				ctrl.addingIngredient = ingr
 			}
 			else
 			{
 				ctrl.setAttribute('title', 'У меня этого нет')
 				ingrNode.appendChild(Nc('div', 'tick'))
-				ctrl.removingIngredientName = ingr.name
+				ctrl.removingIngredient = ingr
 			}
 
 			li.appendChild(ctrl)
@@ -91,7 +99,11 @@ var myProto =
 	
 	renderRecommends : function(recommends)
 	{
-		if(recommends.length == 0) { this.renderIfRecommendsEmpty('Пусто!'); return }
+		if(recommends.length == 0)
+		{
+			this.renderIfRecommendsEmpty('Пусто!')
+			return
+		}
 		
 		var df = document.createDocumentFragment(), me=this
 		for( var j = 0, f = 0; j < recommends.length; j++)
@@ -110,7 +122,7 @@ var myProto =
 				
 				add.style.opacity = 0
 				add.setAttribute('title', 'Добавить в бар')
-				add.addingCocktailName = cocktail.name
+				add.addingCocktail = cocktail
 				li.appendChild(add)
 				li.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
 				li.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
@@ -137,28 +149,15 @@ var myProto =
 			df.appendChild(dl)
 			})()
 		}
-		if(f==0){ this.renderIfRecommendsEmpty('Пусто!'); return }
+		
+		if(f == 0)
+		{
+			this.renderIfRecommendsEmpty('Пусто!')
+			return
+		}
 		
 		this.nodes.recommendsWrapper.empty()
 		this.nodes.recommendsWrapper.appendChild(df)
-	},
-
-	handleIngredientClick : function(e)
-	{
-		var node = e.target
-		if(node.addingIngredientName)
-			this.controller.addIngredientToBar(node.addingIngredientName)
-		else if(node.removingIngredientName)
-			this.controller.removeIngredientFromBar(node.removingIngredientName)
-	},
-	
-	handleCocktailClick	: function(e)
-	{
-		var node = e.target
-		if(node.removingCocktailName)
-			this.controller.removeCocktailFromBar(node.removingCocktailName)
-		else if(node.addingCocktailName)
-			this.controller.addCocktailToBar(node.addingCocktailName)
 	},
 	
 	renderIfCocktailsEmpty : function(label)
@@ -177,6 +176,24 @@ var myProto =
 	{
 		this.nodes.recommendsWrapper.empty()
 		this.nodes.recommendsWrapper.appendChild(Nct('div', 'empty', label))
+	},
+
+	handleIngredientClick : function(e)
+	{
+		var node = e.target
+		if(node.addingIngredient)
+			this.controller.addIngredientToBar(node.addingIngredient)
+		else if(node.removingIngredient)
+			this.controller.removeIngredientFromBar(node.removingIngredient)
+	},
+	
+	handleCocktailClick	: function(e)
+	{
+		var node = e.target
+		if(node.removingCocktail)
+			this.controller.removeCocktailFromBar(node.removingCocktail)
+		else if(node.addingCocktail)
+			this.controller.addCocktailToBar(node.addingCocktail)
 	}
 }
 

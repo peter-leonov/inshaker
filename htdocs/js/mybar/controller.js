@@ -11,32 +11,36 @@ var myProto =
 	
 	cocktailQuerySubmit : function(query)
 	{
-		this.model.handleCocktailQuery(query)
+		var cocktail = Cocktail.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
+		if(!cocktail) return
+		this.model.addCocktailToBar(cocktail)
 	},
 	
 	ingrQuerySubmit : function(query)
 	{
-		this.model.handleIngrQuery(query)
+		var ingredient = Ingredient.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
+		if(!ingredient) return
+		this.model.addIngredientToBar(ingredient)
 	},
 	
-	addIngredientToBar : function(ingredientName)
+	addIngredientToBar : function(ingredient)
 	{
-		this.model.addIngredientToBar(ingredientName)
+		this.model.addIngredientToBar(ingredient)
 	},
 	
-	removeIngredientFromBar : function(ingredientName)
+	removeIngredientFromBar : function(ingredient)
 	{
-		this.model.removeIngredientFromBar(ingredientName)
+		this.model.removeIngredientFromBar(ingredient)
 	},
 		
-	addCocktailToBar : function(cocktailName)
+	addCocktailToBar : function(cocktail)
 	{
-		this.model.addCocktailToBar(cocktailName)
+		this.model.addCocktailToBar(cocktail)
 	},
 	
-	removeCocktailFromBar : function(cocktailName)
+	removeCocktailFromBar : function(cocktail)
 	{
-		this.model.removeCocktailFromBar(cocktailName)
+		this.model.removeCocktailFromBar(cocktail)
 	}
 }
 
