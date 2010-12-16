@@ -50,7 +50,7 @@ var myProto =
 		this.view.renderRecommends(this.recommends)
 	},
 	
-	fetchIngredints : function(cocktails, ingrNames)
+	fetchIngredients : function(cocktails, ingrNames)
 	{
 		//collect ingrdients from cocktails
 		for (var i = 0, il = cocktails.length, ingr = {}; i < il; i++)
@@ -70,10 +70,10 @@ var myProto =
 			ingr[ingrNames[i]] = null 
 		}
 		
-		for( i in ingr )
+		for( var k in ingr )
 		{
-			if(!ingr[i]) continue
-			ingredient = Ingredient.getByName(i)
+			if(!ingr[k]) continue
+			ingredient = Ingredient.getByName(k)
 			ingredient.inBar = false
 			ingredients.push(ingredient)
 		}
@@ -96,84 +96,68 @@ var myProto =
 			this.cocktails.push(Cocktail.getByName(bar.cocktails[i]))
 		}
 
-		this.ingredients = this.fetchIngredints(this.cocktails, bar.ingredients)
+		this.ingredients = this.fetchIngredients(this.cocktails, bar.ingredients)
 	},
 	
-	handleCocktailQuery : function(query)
+	addIngredientToBar : function(ingredient)
 	{
-		var cocktail = Cocktail.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
-		if (!cocktail || this.bar.cocktails.indexOf(cocktail.name) != -1) return
+		if(this.bar.ingredients.indexOf(ingredient.name) != -1) return
+		
+		this.bar.ingredients.push(ingredient.name)
+		
+		this.saveStorage()
+		
+		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var recommends = this.computeRecommends(this.bar)
+		
+		this.view.renderIngredients(this.ingredients)
+		this.view.renderRecommends(recommends)
+	},
+	
+	addCocktailToBar : function(cocktail)
+	{
+		if(this.bar.cocktails.indexOf(cocktail.name) != -1) return
 		
 		this.bar.cocktails.push(cocktail.name)
 		this.cocktails.push(cocktail)
+		
 		this.saveStorage()
-		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
-		this.recommends = this.computeRecommends(this.bar)
+		
+		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
+		this.view.renderRecommends(recommends)
 	},
 	
-	handleIngrQuery : function(query)
+	removeIngredientFromBar : function(ingredient)
 	{
-		var ingredient = Ingredient.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
-		if(!ingredient || this.bar.ingredients.indexOf(ingredient.name) != -1) return
+		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredient.name), 1)
 		
-		this.bar.ingredients.push(ingredient.name)
-		this.ingredients.push(ingredient)
 		this.saveStorage()
-		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
-		this.recommends = this.computeRecommends(this.bar)
+		
+		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
+		this.view.renderRecommends(recommends)
 	},
 	
-	addIngredientToBar : function(ingredientName)
+	removeCocktailFromBar : function(cocktail)
 	{
-		this.bar.ingredients.push(ingredientName)
-		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
+		var pos = this.bar.cocktails.indexOf(cocktail.name)
+		this.bar.cocktails.splice(pos, 1)
+		this.cocktails.splice(pos, 1)
+
 		this.saveStorage()
-		this.recommends = this.computeRecommends(this.bar)
 		
-		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
-	},
-	
-	removeIngredientFromBar : function(ingredientName)
-	{
-		this.bar.ingredients.splice(this.bar.ingredients.indexOf(ingredientName), 1)
-		this.ingredients = this.fetchIngredints(this.cocktails, this.bar.ingredients)
-		this.saveStorage()
-		this.recommends = this.computeRecommends(this.bar)
-		
-		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
-	},
-	
-	removeCocktailFromBar : function(cocktailName)
-	{
-		this.bar.cocktails.splice(this.bar.cocktails.indexOf(cocktailName), 1)
-		this.getBarFromStorage(this.bar)
-		this.saveStorage()
-		this.recommends = this.computeRecommends(this.bar)
+		this.ingredients = this.fetchIngredients(this.cocktails, this.bar.ingredients)
+		var recommends = this.computeRecommends(this.bar)
 		
 		this.view.renderCocktails(this.cocktails)
 		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
-	},
-	
-	addCocktailToBar : function(cocktailName)
-	{
-		this.bar.cocktails.push(cocktailName)
-		this.getBarFromStorage(this.bar)
-		this.saveStorage()
-		this.recommends = this.computeRecommends(this.bar)
-		
-		this.view.renderCocktails(this.cocktails)
-		this.view.renderIngredients(this.ingredients)
-		this.view.renderRecommends(this.recommends)
+		this.view.renderRecommends(recommends)
 	},
 	
 	computeRecommends : function(bar)
