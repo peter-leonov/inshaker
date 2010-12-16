@@ -44,7 +44,7 @@ var myProto =
 			
 			var player = Nc('iframe', 'player')
 			video.appendChild(player)
-			player.src = v.movie
+			player.src = v.movie + '?title=0&byline=0&portrait=0&color=ffffff'
 			player.frameBorder = 0
 			
 			var cocktailList = Nc('ul', 'cocktail-list')
