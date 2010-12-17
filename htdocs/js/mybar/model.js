@@ -110,41 +110,6 @@ var myProto =
 	{
 		var inBar = Array.toHash(ingredientNames), me = this
 		
-		function fetchIngredients(cocktails, inBar)
-		{
-			var ingr = {}
-			for (var i = 0, il = cocktails.length; i < il; i++)
-			{
-				var cocktailIngr = cocktails[i].ingredients.map(function(a){ return a[0] })
-				for( var j = 0; j < cocktailIngr.length; j++ )
-				{
-					var n = cocktailIngr[j]
-					if(!ingr[n])
-						ingr[n] = 2
-					else
-						ingr[n]++
-				}		
-			}
-			
-			var ingredients = [], hash = {}
-			for( var k in ingr )
-			{	
-				ingredients.push(Ingredient.getByName(k))
-				hash[k] = ingr[k]
-			}
-			for( var k in inBar )
-			{
-				if(!inBar[k] || ingr[k]) continue
-				
-				ingredients.push(Ingredient.getByName(k))
-				hash[k] = 1
-			}
-			
-			ingredients.hash = hash
-			
-			return ingredients.sort(function(a,b){ return ingrSorting(a, b, ingredients.hash) })
-		}
-		
 		var ingredients = fetchIngredients(cocktails, inBar)
 		ingredients.inBar = inBar
 		ingredients.inBarNames = ingredientNames
@@ -153,7 +118,7 @@ var myProto =
 		{
 			if(this.inBar[ingredient.name])
 				return false
-
+				
 			if(!this.hash[ingredient.name])
 			{
 				this.hash[ingredient.name] = 1
@@ -178,6 +143,38 @@ var myProto =
 			Object.extend(this, fetchIngredients(me.cocktails, this.inBar))
 			
 			return this
+		}
+		
+		function fetchIngredients(cocktails, inBar)
+		{
+			var ingr = {}
+			for (var i = 0, il = cocktails.length; i < il; i++)
+			{
+				var cocktailIngr = cocktails[i].ingredients.map(function(a){ return a[0] })
+				for( var j = 0; j < cocktailIngr.length; j++ )
+				{
+					var n = cocktailIngr[j]
+					if(!ingr[n])
+						ingr[n] = 2
+					else
+						ingr[n]++
+				}		
+			}
+			var ingredients = [], hash = {}
+			for( var k in ingr )
+			{	
+				ingredients.push(Ingredient.getByName(k))
+				hash[k] = ingr[k]
+			}
+			for( var k in inBar )
+			{
+				if(!inBar[k] || ingr[k]) continue
+				
+				ingredients.push(Ingredient.getByName(k))
+				hash[k] = 1
+			}
+			ingredients.hash = hash
+			return ingredients.sort(function(a,b){ return ingrSorting(a, b, ingredients.hash) })
 		}
 		
 		function ingrSorting(a, b, iHash)
