@@ -19,6 +19,9 @@ var myProto =
 		
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.cocktailSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.cocktailQuerySubmit(me.nodes.cocktailQueryInput.value); }, false)
+		nodes.ingredientsList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
+		nodes.cocktailsList.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
 	},
 	
 	renderCocktails : function(cocktails)
@@ -46,9 +49,6 @@ var myProto =
 			})()
 		}
 		
-		var me = this
-		ul.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
-		
 		this.nodes.cocktailsList.empty()
 		this.nodes.cocktailsList.appendChild(ul)
 	},
@@ -61,7 +61,9 @@ var myProto =
 			return
 		}
 		
-		for(var i = 0, ul = N('ul'), l = ingredients.length; i < l; i++)
+		var ulNotInBar = N('ul'), ulInBar = N('ul')
+		
+		for(var i = 0, l = ingredients.length; i < l; i++)
 		{
 			(function(){
 			var ingr = ingredients[i],
@@ -87,15 +89,17 @@ var myProto =
 			li.appendChild(ingrNode)
 			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, true)
 			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.25) }, true)
-			ul.appendChild(li)
+			
+			if(inBar) 
+				ulInBar.appendChild(li)
+			else
+				ulNotInBar.appendChild(li)
 			})()
 		}
 		
-		var me = this
-		ul.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		
 		this.nodes.ingredientsList.empty()
-		this.nodes.ingredientsList.appendChild(ul)
+		this.nodes.ingredientsList.appendChild(ulInBar)
+		this.nodes.ingredientsList.appendChild(ulNotInBar)
 	},
 	
 	renderRecommends : function(recommends)
@@ -106,7 +110,7 @@ var myProto =
 			return
 		}
 		
-		var df = document.createDocumentFragment(), me=this
+		var df = document.createDocumentFragment()
 		for( var j = 0, f = 0; j < recommends.length; j++)
 		{
 			(function(){
@@ -130,8 +134,6 @@ var myProto =
 				ul.appendChild(li)
 				})()	
 			}
-			
-			ul.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
 			
 			switch(j)
 			{

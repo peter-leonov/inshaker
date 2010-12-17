@@ -52,6 +52,7 @@ html.loading .b-content { display: none; }
 
 #output .ingredients-block { width: 940px; margin-top: 35px; }
 #output .ingredients-block .list { padding-top: 15px; }
+#output .ingredients-block .list ul { overflow: hidden; }
 #output .ingredients-block .list li
 {
 	height: 140px;
