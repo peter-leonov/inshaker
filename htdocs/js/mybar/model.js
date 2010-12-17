@@ -117,27 +117,32 @@ var myProto =
 			{
 				var cocktailIngr = cocktails[i].ingredients.map(function(a){ return a[0] })
 				for( var j = 0; j < cocktailIngr.length; j++ )
-					ingr[cocktailIngr[j]] = true
+				{
+					var n = cocktailIngr[j]
+					if(!ingr[n])
+						ingr[n] = 2
+					else
+						ingr[n]++
+				}		
 			}
 			
 			var ingredients = [], hash = {}
 			for( var k in ingr )
-			{
-				if(inBar[k]) continue
-				
+			{	
 				ingredients.push(Ingredient.getByName(k))
-				hash[k] = true
+				hash[k] = ingr[k]
 			}
 			for( var k in inBar )
 			{
-				if(!inBar[k]) continue
+				if(!inBar[k] || ingr[k]) continue
 				
 				ingredients.push(Ingredient.getByName(k))
-				hash[k] = true
+				hash[k] = 1
 			}
 			
 			ingredients.hash = hash
-			return ingredients.sort(function(a,b){ return String.localeCompare(a.name, b.name) })
+			
+			return ingredients.sort(function(a,b){ return ingrSorting(a, b, ingredients.hash) })
 		}
 		
 		var ingredients = fetchIngredients(cocktails, inBar)
@@ -151,9 +156,11 @@ var myProto =
 
 			if(!this.hash[ingredient.name])
 			{
-				this.hash[ingredient.name] = true
+				this.hash[ingredient.name] = 1
 				this.push(ingredient)
-				this.sort(function(a,b){ return String.localeCompare(a.name, b.name) })
+				
+				var me = this
+				me.sort(function(a,b){ return ingrSorting(a, b, me.hash) })
 			}
 			
 			this.inBar[ingredient.name] = true
@@ -171,6 +178,15 @@ var myProto =
 			Object.extend(this, fetchIngredients(me.cocktails, this.inBar))
 			
 			return this
+		}
+		
+		function ingrSorting(a, b, iHash)
+		{
+			return a.group == b.group ?
+				iHash[a.name] == iHash[b.name] ?
+						String.localeCompare(a.name, b.name)
+							: iHash[a.name] < iHash[b.name] ? 1 : -1
+				: Ingredient.sortByGroups(a.name, b.name)			
 		}
 		
 		return ingredients
