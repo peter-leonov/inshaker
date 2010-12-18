@@ -24,7 +24,7 @@ var myProto =
 		nodes.cocktailsList.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
 	},
 	
-	renderCocktails : function(cocktails)
+	renderCocktails : function(cocktails, ingredsInBar)
 	{
 		if(cocktails.length == 0)
 		{
@@ -37,8 +37,24 @@ var myProto =
 			(function(){
 			var cocktail = cocktails[i],
 				li = cocktail.getPreviewNode(false, true),
-				rmv = Nct('span', 'remove-cocktail', '×')
+				rmv = Nct('span', 'remove-cocktail', '×'),
+				t = 0,
+				needIngr = []
+				
+			for (var j = 0, jl = cocktail.ingredients.length; j < jl; j++) 
+			{
+				if(ingredsInBar[cocktail.ingredients[j][0]])
+					t++
+				else
+					needIngr.push(cocktail.ingredients[j][0]) 
+			}
 			
+			
+			var img = li.getElementsByTagName('img')[0], k = t/jl
+			img.style.opacity = t == 0 || k < 0.1 ? 0.1 : k
+			if(needIngr.length != 0)
+				img.setAttribute('title', 'Не хватает ингридиентов: ' + needIngr.join(', '))
+					
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
 			rmv.removingCocktail = cocktail
@@ -101,6 +117,7 @@ var myProto =
 		if(this.nodes.ingrSearchBox.hasClassName('hidden'))
 		{
 			var plus = Nct('li', 'add','+'), me = this
+			plus.setAttribute('title', 'Добавить ингредиент')
 			plus.addEventListener('click', function(){ this.hide(); me.nodes.ingrSearchBox.show() }, false)
 			ulNotInBar.appendChild(plus)
 		}

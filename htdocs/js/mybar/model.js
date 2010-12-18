@@ -57,7 +57,7 @@ var myProto =
 	
 	setCocktails : function()
 	{
-		this.view.renderCocktails(this.cocktails)
+		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 	},
 	
 	setIngredients : function()
@@ -182,7 +182,7 @@ var myProto =
 			return a.group == b.group ?
 				iHash[a.name] == iHash[b.name] ?
 						String.localeCompare(a.name, b.name)
-							: iHash[a.name] < iHash[b.name] ? 1 : -1
+						: iHash[a.name] < iHash[b.name] ? 1 : -1
 				: Ingredient.sortByGroups(a.name, b.name)			
 		}
 		
@@ -227,6 +227,7 @@ var myProto =
 		
 		var recommends = this.computeRecommends(this.cocktails, this.ingredients)
 		
+		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderRecommends(recommends)
 	},
@@ -240,7 +241,7 @@ var myProto =
 		this.ingredients = this.getIngredients(this.cocktails, this.ingredients.inBarNames)
 		var recommends = this.computeRecommends(this.cocktails, this.ingredients)
 		
-		this.view.renderCocktails(this.cocktails)
+		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderRecommends(recommends)
 	},
@@ -253,6 +254,7 @@ var myProto =
 		
 		var recommends = this.computeRecommends(this.cocktails, this.ingredients)
 		
+		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderRecommends(recommends)
 	},
@@ -266,7 +268,7 @@ var myProto =
 		this.ingredients = this.getIngredients(this.cocktails, this.ingredients.inBarNames)
 		var recommends = this.computeRecommends(this.cocktails, this.ingredients)
 		
-		this.view.renderCocktails(this.cocktails)
+		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderRecommends(recommends)
 	}
