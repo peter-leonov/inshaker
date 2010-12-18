@@ -228,7 +228,7 @@ MagazinePageView.prototype =
 					if (me.imagesLoaded || tries++ > 10)
 					{
 						clearInterval(imageLoadTimer)
-						me.showButtons()
+						// me.showButtons()
 					}
 				},
 				100
