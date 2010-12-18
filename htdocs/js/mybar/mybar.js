@@ -65,6 +65,7 @@ function onready ()
 		cocktailSearchForm : $$('#output .cocktails-block .search-box form')[0],
 		cocktailQueryInput : $$('#output .cocktails-block .search-box form .query')[0],
 		ingrSearchForm : $$('#output .ingredients-block .search-box form')[0],
+		ingrSearchBox : $$('#output .ingredients-block .search-box')[0],
 		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0],
 		recommendsBlock : $$('#output .recommends-block')[0],
 		recommendsWrapper : $$('#output .recommends-block .wrapper')[0]

@@ -97,6 +97,13 @@ var myProto =
 			})()
 		}
 		
+		
+		if(this.nodes.ingrSearchBox.hasClassName('hidden'))
+		{
+			var plus = Nct('li', 'add','+'), me = this
+			plus.addEventListener('click', function(){ this.hide(); me.nodes.ingrSearchBox.show() }, false)
+			ulNotInBar.appendChild(plus)
+		}
 		this.nodes.ingredientsList.empty()
 		this.nodes.ingredientsList.appendChild(ulInBar)
 		this.nodes.ingredientsList.appendChild(ulNotInBar)

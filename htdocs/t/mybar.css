@@ -105,7 +105,7 @@ html.loading .b-content { display: none; }
 }
 
 #output .ingredients-block .tick 
-{    
+{
 	background: url("/t/mybar/tick.png") no-repeat scroll left top transparent;
 	height: 35px;
 	left: 65px;
@@ -113,6 +113,22 @@ html.loading .b-content { display: none; }
 	top: 65px;
 	width: 35px;
 }
+
+#output .ingredients-block .search-box { margin-top: 20px; }
+#output .ingredients-block .search-box.hidden { display: none; }
+#output .ingredients-block .add
+{
+	color: #3C40E6;
+	cursor: pointer;
+	font-size: 90px;
+	height: 100px;
+	line-height: 90px;
+	overflow: hidden;
+	text-align: center;
+	width: 100px;
+}
+
+#output .ingredients-block .add.hidden { display: none; }
 
 #output .recommends-block { margin:35px 0; }
 #output .recommends-block .wrapper .title { font-size: 20px; margin-bottom: 0; }
