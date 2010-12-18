@@ -226,23 +226,11 @@ MagazinePageView.prototype =
 				function ()
 				{
 					if (me.imagesLoaded || tries++ > 10)
-					{
 						clearInterval(imageLoadTimer)
-						// me.showButtons()
-					}
 				},
 				100
 			)
 		}
-	},
-	
-	showButtons: function ()
-	{
-		var prev = this.nodes.arrows[0], next = this.nodes.arrows[1]
-		prev.show()
-		next.show()
-		prev.animate('easeOutBounce', {left: -29}, 0.6)
-		next.animate('easeOutBounce', {left: 962}, 0.6)
 	},
 	
 	renderSet: function (node, set, len, renderFunction)
