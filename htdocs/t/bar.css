@@ -22,7 +22,7 @@
 .b-content .photos .viewport .point { float: left; width: 590px; height: 100%; }
 .b-content .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
 .b-content .photos .prev,
-.b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(bar/photos-buttons.png); }
+.b-content .photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(common/photos-buttons.png); }
 .b-content .photos:hover .prev,
 .b-content .photos:hover .next { display: block; }
 .b-content .photos .prev { left: 0; background-position: -60px 0; }
@@ -91,7 +91,7 @@
 .b-content .photos .prev { background-position-x: -60px; }
 .b-content .photos .next { display: block; }
 .b-content .photos .prev,
-.b-content .photos .next { display: block; background-image: url(bar/photos-buttons.8.png); }
+.b-content .photos .next { display: block; background-image: url(common/photos-buttons.8.png); }
 
 #sidebar {margin-left:16px;}
 .column-main .body-wrapper { height: 511px; }
