@@ -49,6 +49,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/animation.js" -->
 //Sorry for old lib. It's needed for Storage (hard code in it)
 <!--# include virtual="/lib/Programica/UA.js" -->
+<!--# include virtual="/js/combinator/throttler.js" -->
+<!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="/js/common/storage.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
@@ -68,7 +70,8 @@ function onready ()
 		ingrSearchBox : $$('#output .ingredients-block .search-box')[0],
 		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0],
 		recommendsBlock : $$('#output .recommends-block')[0],
-		recommendsWrapper : $$('#output .recommends-block .wrapper')[0]
+		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
+		recommendsEmpty : $$('#output .recommends-block .empty')[0],
 	}
 	
 	var widget = new MyBar()

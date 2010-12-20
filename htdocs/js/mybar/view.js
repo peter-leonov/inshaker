@@ -15,6 +15,9 @@ var myProto =
 	{
 		this.nodes = nodes
 		
+		this.incl = new IngredientedCocktailList()
+		this.incl.bind({main: nodes.recommendsWrapper})
+		
 		var me = this
 		
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
@@ -130,10 +133,18 @@ var myProto =
 	{
 		if(recommends.length == 0)
 		{
-			this.renderIfRecommendsEmpty('Пусто!')
+			this.renderIfRecommendsEmpty()
 			return
 		}
 		
+		if(!this.nodes.recommendsEmpty.hasClassName('hidden'))
+			this.nodes.recommendsEmpty.hide()
+		
+		var me = this
+		
+		setTimeout(function(){ me.incl.setCocktails(recommends) }, 1)		
+
+		/*
 		var df = document.createDocumentFragment()
 		for( var j = 0, f = 0; j < recommends.length; j++)
 		{
@@ -185,6 +196,7 @@ var myProto =
 		
 		this.nodes.recommendsWrapper.empty()
 		this.nodes.recommendsWrapper.appendChild(df)
+		*/
 	},
 	
 	renderIfCocktailsEmpty : function(label)
@@ -199,10 +211,10 @@ var myProto =
 		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
 	},
 	
-	renderIfRecommendsEmpty : function(label)
+	renderIfRecommendsEmpty : function()
 	{
-		this.nodes.recommendsWrapper.empty()
-		this.nodes.recommendsWrapper.appendChild(Nct('div', 'empty', label))
+		this.nodes.recommendsWrapper.hide()
+		this.nodes.recommendsEmpty.show()
 	},
 
 	handleIngredientClick : function(e)

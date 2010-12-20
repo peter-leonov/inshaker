@@ -211,7 +211,17 @@ var myProto =
 			}
 			recommends[r].push(cocktail)
 		}
-		return recommends
+		
+		var groups = []
+		if(recommends[0].length != 0)
+			groups.push({ name : 'Можешь точно приготовить', cocktails : recommends[0] })
+		
+		if(recommends[1].length != 0)
+			groups.push({ name : 'Можешь приготовить, добавив 1 ингредиент', cocktails : recommends[1] })
+			
+		if(recommends[2].length != 0) groups.push({ name : 'Можешь приготовить, добавив 2 ингредиента', cocktails : recommends[2] })
+		
+		return groups
 	},
 	
 	saveStorage : function()
