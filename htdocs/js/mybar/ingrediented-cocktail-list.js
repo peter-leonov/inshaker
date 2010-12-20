@@ -23,9 +23,9 @@ var myProto =
 		return this
 	},
 	
-	setCocktails: function (cocktails)
+	setCocktails: function (cocktails, inBar)
 	{
-		this.model.setCocktails(cocktails)
+		this.model.setCocktails(cocktails, inBar)
 	},
 	
 	wake: function ()
@@ -148,8 +148,9 @@ var myProto =
 		this.controller.groupNameClicked(num)
 	},
 	
-	renderGroups: function (groups)
+	renderGroups: function (groups, inBar)
 	{
+		this.inBar = inBar
 		var main = this.nodes.main
 		main.empty()
 		
@@ -234,10 +235,20 @@ var myProto =
 		
 		var body = root.appendChild(Nc('dd', 'body'))
 		
-		var inodes = []
-		for (var i = 0, il = ingredients.length; i < il; i++)
-			inodes[i] = ingredients[i].getPreviewNode()
+		var inodes = [], inBar = this.inBar
 		
+		ingredients.sort(function(a, b){ return !inBar[a.name] && inBar[b.name] ? 1 : -1 })
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var cn = ingredients[i].getPreviewNode()
+			if(!inBar[ingredients[i].name]) 
+				cn.addClassName('not-in-bar')
+			else
+				cn.appendChild(Nc('div', 'tick'))
+			
+			inodes[i] = cn
+		}
 		body.appendChild(joinWithNodeToFragment(inodes, Nct('span', 'operator', '+')))
 		
 		return root
@@ -273,7 +284,7 @@ var myProto =
 {
 	initialize: function () {},
 	
-	setCocktails: function (groups)
+	setCocktails: function (groups, inBar)
 	{
 		this.rawGroups = groups
 		
@@ -309,7 +320,7 @@ var myProto =
 		}
 		
 		this.groups = res
-		this.view.renderGroups(res)
+		this.view.renderGroups(res, inBar)
 	},
 	
 	toggleGroupCollapsedility: function (num)

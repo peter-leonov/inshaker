@@ -129,7 +129,7 @@ var myProto =
 		this.nodes.ingredientsList.appendChild(ulNotInBar)
 	},
 	
-	renderRecommends : function(recommends)
+	renderRecommends : function(recommends, inBar)
 	{
 		if(recommends.length == 0)
 		{
@@ -142,63 +142,10 @@ var myProto =
 		
 		var me = this
 		
-		setTimeout(function(){  me.incl.setCocktails(recommends); window.scrollBy(0,1);window.scrollBy(0,-1)}, 1)
+		//OMG!!! o_0
+		setTimeout(function(){  me.incl.setCocktails(recommends, inBar); window.scrollBy(0,1); window.scrollBy(0,-1)}, 1)
 		
-		this.nodes.recommendsWrapper.show()		
-
-		/*
-		var df = document.createDocumentFragment()
-		for( var j = 0, f = 0; j < recommends.length; j++)
-		{
-			(function(){
-			var cocktails = recommends[j]
-			if(cocktails.length == 0) return;
-			f++
-			
-			for (var i = 0, ul = N('ul'), il = cocktails.length; i < il; i++)
-			{
-				(function(){
-				var cocktail = cocktails[i],
-					li = cocktail.getPreviewNode(false, true),
-					add = Nct('span', 'add-cocktail', '+')
-				
-				add.style.opacity = 0
-				add.setAttribute('title', 'Добавить в бар')
-				add.addingCocktail = cocktail
-				li.appendChild(add)
-				li.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
-				li.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
-				ul.appendChild(li)
-				})()	
-			}
-			
-			switch(j)
-			{
-				case 0: var label = 'Можешь точно приготовить'; break;
-				case 1: var label = 'Можешь приготовить, добавив 1 ингредиент'; break;
-				case 2: var label = 'Можешь приготовить, добавив 2 ингредиента'; break;
-			}
-			
-			var dl = N('dl'),
-				dt = Nct('dt', 'title', label),
-				dd = Nc('dl', 'list')
-				
-			dd.appendChild(ul)
-			dl.appendChild(dt)
-			dl.appendChild(dd)
-			df.appendChild(dl)
-			})()
-		}
-		
-		if(f == 0)
-		{
-			this.renderIfRecommendsEmpty('Пусто!')
-			return
-		}
-		
-		this.nodes.recommendsWrapper.empty()
-		this.nodes.recommendsWrapper.appendChild(df)
-		*/
+		this.nodes.recommendsWrapper.show()
 	},
 	
 	renderIfCocktailsEmpty : function(label)

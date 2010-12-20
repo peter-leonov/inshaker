@@ -67,7 +67,7 @@ var myProto =
 	
 	setRecommends : function()
 	{
-		this.view.renderRecommends(this.recommends)
+		this.view.renderRecommends(this.recommends, this.ingredients.inBar)
 	},
 	
 	getCocktails : function(cocktailNames)
@@ -239,7 +239,7 @@ var myProto =
 		
 		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends)
+		this.view.renderRecommends(recommends, this.ingredients.inBar)
 	},
 	
 	addCocktailToBar : function(cocktail)
@@ -253,7 +253,7 @@ var myProto =
 		
 		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends)
+		this.view.renderRecommends(recommends, this.ingredients.inBar)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -266,7 +266,7 @@ var myProto =
 		
 		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends)
+		this.view.renderRecommends(recommends, this.ingredients.inBar)
 	},
 	
 	removeCocktailFromBar : function(cocktail)
@@ -280,7 +280,7 @@ var myProto =
 		
 		this.view.renderCocktails(this.cocktails, this.ingredients.inBar)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends)
+		this.view.renderRecommends(recommends, this.ingredients.inBar)
 	}
 }
 
