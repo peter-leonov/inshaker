@@ -53,7 +53,7 @@ var myProto =
 			}
 			
 			
-			var img = li.getElementsByTagName('img')[0], k = t/jl
+			var img = li.firstChild.firstChild, k = t/jl
 			img.style.opacity = t == 0 || k < 0.1 ? 0.1 : k
 			if(needIngr.length != 0)
 				img.setAttribute('title', 'Не хватает ингридиентов: ' + needIngr.join(', '))
@@ -142,7 +142,9 @@ var myProto =
 		
 		var me = this
 		
-		setTimeout(function(){ me.incl.setCocktails(recommends) }, 1)		
+		setTimeout(function(){  me.incl.setCocktails(recommends); window.scrollBy(0,1);window.scrollBy(0,-1)}, 1)
+		
+		this.nodes.recommendsWrapper.show()		
 
 		/*
 		var df = document.createDocumentFragment()
@@ -208,7 +210,16 @@ var myProto =
 	renderIfIngredientsEmpty : function(label)
 	{
 		this.nodes.ingredientsList.empty()
-		this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
+		
+		if(this.nodes.ingrSearchBox.hasClassName('hidden'))
+		{
+			var plus = Nct('div', 'add','+'), me = this
+			plus.setAttribute('title', 'Добавить ингредиент')
+			plus.addEventListener('click', function(){ this.hide(); me.nodes.ingrSearchBox.show() }, false)
+			this.nodes.ingredientsList.appendChild(plus)
+		}
+		else
+			this.nodes.ingredientsList.appendChild(Nct('div', 'empty', label))
 	},
 	
 	renderIfRecommendsEmpty : function()

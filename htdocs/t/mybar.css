@@ -26,7 +26,7 @@ html.loading .b-content { display: none; }
 
 #output .cocktails-block .list li .image { height: 200px; display: block; margin: 0 auto; }
 #output .cocktails-block .list li a:hover { text-decoration: underline; }
-#output .cocktails-block .list li .remove-cocktail, #output .recommends-block .list li .add-cocktail {
+#output .remove-cocktail, #output .add-cocktail {
 	font-family: Verdana;
 	font-size: 17px;
 	position: absolute;
@@ -36,13 +36,13 @@ html.loading .b-content { display: none; }
 	background-color: #fff;
 }
 
-#output .cocktails-block .list li .remove-cocktail
+#output .remove-cocktail
 {
 	color: #A2210E;
 	right: -1px;
 }
 
-#output .recommends-block .list li .add-cocktail
+#output .add-cocktail
 {
 	color: #8dd013;
 	font-weight: bold;
@@ -158,6 +158,6 @@ html.loading .b-content { display: none; }
 
 
 
-.recommends-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
+.recommends-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
 .recommends-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
 .recommends-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
