@@ -53,5 +53,7 @@
 <!--# endif -->
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 #index-page .info-blocks .point a img {scrollbar-base-color:expression((runtimeStyle.scrollbarBaseColor="transparent")&&(offsetWidth?(runtimeStyle.width=offsetWidth+'px'):1)&&(offsetHeight?(runtimeStyle.height=offsetHeight+'px'):1)&&(runtimeStyle.filter=(runtimeStyle.filter?runtimeStyle.filter+';':'')+'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+src+'",sizingMethod="image")')&&(src='/t/0.png'));}
-#index-page #promo-next { background-image: url(common/photos-buttons.8.png); }
+#index-page #promo #promo-prev,
+#index-page #promo #promo-next { display: block; background-image: url(common/photos-buttons.8.png); }
+
 <!--# endif -->
