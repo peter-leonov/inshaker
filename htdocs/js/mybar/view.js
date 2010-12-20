@@ -56,7 +56,7 @@ var myProto =
 			var img = li.firstChild.firstChild, k = t/jl
 			img.style.opacity = t == 0 || k < 0.1 ? 0.1 : k
 			if(needIngr.length != 0)
-				img.setAttribute('title', 'Не хватает ингридиентов: ' + needIngr.join(', '))
+				img.setAttribute('title', 'Не хватает ингредиентов: ' + needIngr.join(', '))
 					
 			rmv.style.opacity = 0
 			rmv.setAttribute('title', 'Убрать из бара')
