@@ -241,9 +241,21 @@ var myProto =
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
-			var cn = ingredients[i].getPreviewNode()
-			if(!inBar[ingredients[i].name]) 
+			var ingredient = ingredients[i]
+				cn = ingredient.getPreviewNode()
+			if(!inBar[ingredient.name])
+			{
+				(function(){
 				cn.addClassName('not-in-bar')
+				var add = Nct('span', 'add-ingredient', '+')
+				add.addingIngredient = ingredient
+				add.setAttribute('title', 'Добавить ингредиент')
+				add.style.opacity = 0
+				cn.appendChild(add)
+				cn.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
+				cn.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
+				}())
+			}
 			else
 				cn.appendChild(Nc('div', 'tick'))
 			

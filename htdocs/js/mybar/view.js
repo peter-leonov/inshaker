@@ -23,7 +23,7 @@ var myProto =
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.cocktailSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.cocktailQuerySubmit(me.nodes.cocktailQueryInput.value); }, false)
 		nodes.ingredientsList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
+		nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleCocktailClick(e); me.handleIngredientClick(e) }, false)
 		nodes.cocktailsList.addEventListener('click', function(e){ me.handleCocktailClick(e) }, false)
 	},
 	

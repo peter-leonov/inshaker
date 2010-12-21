@@ -152,12 +152,13 @@ html.loading .b-content { display: none; }
 .recommends-block .row .head { width: 200px; position: absolute; }
 .recommends-block .row .head .operator { margin: 0; }
 
-.recommends-block .row .body { overflow: hidden; width: 800px; left: 150px; position: relative; }
+.recommends-block .row .body { overflow: visible; width: 800px; left: 150px; position: relative; }
 .recommends-block .row .body .operator { color: #ccc; }
 .recommends-block .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
 
-
-
+#output .recommends-block .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
+#output .recommends-block .row .body .ingredient-preview:hover { text-decoration: none; }
+#output .recommends-block .row .body .ingredient-preview:hover .name { text-decoration: underline; }
 .recommends-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
 .recommends-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
 .recommends-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
