@@ -44,12 +44,12 @@ var myProto =
 				t = 0,
 				needIngr = []
 				
-			for (var j = 0, jl = cocktail.ingredients.length; j < jl; j++) 
+			for (var j = 0, jl = cocktail.ingredients.length; j < jl; j++)
 			{
 				if(ingredsInBar[cocktail.ingredients[j][0]])
 					t++
 				else
-					needIngr.push(cocktail.ingredients[j][0]) 
+					needIngr.push(cocktail.ingredients[j][0])
 			}
 			
 			
@@ -109,7 +109,7 @@ var myProto =
 			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, true)
 			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.25) }, true)
 			
-			if(inBar) 
+			if(inBar)
 				ulInBar.appendChild(li)
 			else
 				ulNotInBar.appendChild(li)
@@ -143,7 +143,12 @@ var myProto =
 		var me = this
 		
 		//OMG!!! o_0
-		setTimeout(function(){  me.incl.setCocktails(recommends, inBar); window.scrollBy(0,1); window.scrollBy(0,-1)}, 1)
+		setTimeout(function()
+		{
+			me.incl.setCocktails(recommends, inBar)
+			window.scrollBy(0, 1)
+			window.scrollBy(0, -1)
+		}, 1)
 		
 		this.nodes.recommendsWrapper.show()
 	},

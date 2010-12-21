@@ -3,7 +3,7 @@
 Array.toHash = function(arr)
 {
 	var hash = {}
-	for (var i = 0, il = arr.length; i < il; i++) 
+	for (var i = 0, il = arr.length; i < il; i++)
 		hash[arr[i]] = true
 	
 	return hash
@@ -198,15 +198,15 @@ var myProto =
 			recommends = [[],[],[]]
 			
 		ck:
-		for ( var i = 0, il = needCocktails.length; i < il; i++ ) 
+		for ( var i = 0, il = needCocktails.length; i < il; i++ )
 		{
 			var cocktail = needCocktails[i]
-			if(excludes[cocktail.name]) continue 
+			if(excludes[cocktail.name]) continue
 			var ing = cocktail.ingredients, rl = recommends.length, r
-			for (var j = 0, t = -1, jl = ing.length; j < jl; j++) 
+			for (var j = 0, t = -1, jl = ing.length; j < jl; j++)
 			{
 				if(ingredients.inBar[ing[j][0]]) t++
-				r = j - t //на сколько ингредиентов различаются список ингредиентов(ingredientsHash) с ингредиентами коктейля
+				r = j - t
 				if(r>2) continue ck
 			}
 			recommends[r].push(cocktail)
