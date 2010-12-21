@@ -35,6 +35,7 @@ http://www.inshaker.ru/cocktail/watermelon_lemonade/
 http://www.inshaker.ru/cocktail/watermelon_sling/
 http://www.inshaker.ru/cocktail/watermelon_thai_sling/
 http://www.inshaker.ru/cocktail/watermelon_ale/
+http://www.inshaker.ru/cocktail/arnaud/
 http://www.inshaker.ru/cocktail/aztec/
 http://www.inshaker.ru/cocktail/b-52/
 http://www.inshaker.ru/cocktail/baba_tanya/
@@ -593,6 +594,7 @@ http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
+http://www.inshaker.ru/cocktail/pink_brazilian/
 http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
