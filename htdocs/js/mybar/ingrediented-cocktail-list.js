@@ -150,7 +150,7 @@ var myProto =
 	
 	renderGroups: function (groups, inBar)
 	{
-		this.inBar = inBar
+		if(inBar) this.inBar = inBar
 		var main = this.nodes.main
 		main.empty()
 		
