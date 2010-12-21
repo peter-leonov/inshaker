@@ -57,6 +57,7 @@ http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
 http://www.inshaker.ru/cocktail/white_poetry/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
+http://www.inshaker.ru/cocktail/white_cargo/
 http://www.inshaker.ru/cocktail/white_and_pepper/
 http://www.inshaker.ru/cocktail/white_cuban/
 http://www.inshaker.ru/cocktail/white_lemon_mulled_wine/
@@ -505,7 +506,7 @@ http://www.inshaker.ru/cocktail/milky_brandy_punch/
 http://www.inshaker.ru/cocktail/milky_whisky_punsh/
 http://www.inshaker.ru/cocktail/monk/
 http://www.inshaker.ru/cocktail/montpensier/
-http://www.inshaker.ru/cocktail/carrot_chaser-aphrodisiac/
+http://www.inshaker.ru/cocktail/carrot_chaser/
 http://www.inshaker.ru/cocktail/mors_martini/
 http://www.inshaker.ru/cocktail/sea_breeze/
 http://www.inshaker.ru/cocktail/moscow_lights/
@@ -680,14 +681,14 @@ http://www.inshaker.ru/cocktail/sangrita/
 http://www.inshaker.ru/cocktail/sangrita_carlitos/
 http://www.inshaker.ru/cocktail/sangrita_in_russian/
 http://www.inshaker.ru/cocktail/satisfaction/
-http://www.inshaker.ru/cocktail/beet_chaser-aphrodisiac/
+http://www.inshaker.ru/cocktail/beet_chaser/
 http://www.inshaker.ru/cocktail/traffic_lights/
 http://www.inshaker.ru/cocktail/raging_bull/
 http://www.inshaker.ru/cocktail/sweet_heart/
 http://www.inshaker.ru/cocktail/northern_lights/
 http://www.inshaker.ru/cocktail/north_man/
 http://www.inshaker.ru/cocktail/ceviche_mary/
-http://www.inshaker.ru/cocktail/ceviche_chaser-aphrodisiac/
+http://www.inshaker.ru/cocktail/ceviche_chaser/
 http://www.inshaker.ru/cocktail/sage_romance/
 http://www.inshaker.ru/cocktail/sex_on_the_beach/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_light/
@@ -755,6 +756,7 @@ http://www.inshaker.ru/cocktail/tequila_toreador/
 http://www.inshaker.ru/cocktail/tequila_espresso/
 http://www.inshaker.ru/cocktail/tequila_apple_cowberry/
 http://www.inshaker.ru/cocktail/ten_opener/
+http://www.inshaker.ru/cocktail/tennessee_coffee_cup/
 http://www.inshaker.ru/cocktail/warm_apple/
 http://www.inshaker.ru/cocktail/tic_tac/
 http://www.inshaker.ru/cocktail/tiki_margarita/
@@ -763,7 +765,7 @@ http://www.inshaker.ru/cocktail/soft_fire/
 http://www.inshaker.ru/cocktail/smoldering_fizz/
 http://www.inshaker.ru/cocktail/toddy_grog/
 http://www.inshaker.ru/cocktail/tom_and_jerry/
-http://www.inshaker.ru/cocktail/tom_yam_chaser-aphrodisiac/
+http://www.inshaker.ru/cocktail/tom_yam_chaser/
 http://www.inshaker.ru/cocktail/tommy_d_sour/
 http://www.inshaker.ru/cocktail/top_banana/
 http://www.inshaker.ru/cocktail/top_billing/
