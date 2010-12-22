@@ -19,7 +19,7 @@ class Cocktail < Inshaker::Entity
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
     COCKTAIL_ERB  = Inshaker::TEMPLATES_DIR + "cocktail.rhtml"
-    RECOMENDATIONS_ERB  = Inshaker::TEMPLATES_DIR + "recomendations.rhtml"
+    RECOMENDATIONS_ERB  = Inshaker::TEMPLATES_DIR + "recommendations.rhtml"
     RECOMENDATIONS_COUNT = 14
   end
   

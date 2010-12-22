@@ -350,6 +350,11 @@ class CocktailsProcessor < Inshaker::Processor
     name = dir.name
     say name
     indent do
+    
+    if name.cs_index != name
+      error "в названии коктейля есть лишние символы (обычно, это пробелы)"
+    end
+    
     @cocktail                = {}
     @cocktail["name"]        = name
     @cocktail["tools"]       = []

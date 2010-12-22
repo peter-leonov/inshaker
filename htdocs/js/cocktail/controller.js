@@ -42,7 +42,7 @@ var Controller = {
     currentlyShownIngred: "",
 	
 	init: function(){
-		this.name = $(this.NAME_ELEM).innerHTML;
+		this.name = $(this.NAME_ELEM).getAttribute('data-cocktail-name');
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
 		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
 	    
@@ -331,7 +331,7 @@ var Controller = {
 		var anchors = root.getElementsByTagName('a')
 		
 		for (var i = 0; i < anchors.length; i++)
-			resultSet[i] = Model.getCocktailByName(anchors[i].firstChild.nodeValue)
+			resultSet[i] = Model.getCocktailByName(anchors[i].getAttribute('data-cocktail-name'))
 		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
 		$(this.ID_REL_SUR).empty()
