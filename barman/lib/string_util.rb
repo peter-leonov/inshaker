@@ -32,8 +32,12 @@ class String
     UnicodeUtils.upcase(self)
   end
   
+  def cs_index
+    return self.gsub(/\s+/," ").gsub(/^ | $/,"")
+  end
+  
   def ci_index
-    return self.gsub(/\s+/," ").gsub(/^ | $/,"").u_downcase
+    return cs_index.u_downcase
   end
   
   def html_name
