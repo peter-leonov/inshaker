@@ -37,7 +37,7 @@ class Dir
   alias :each_real :each
   def each
     each_real do |entry|
-      yield entry.force_encoding('UTF-8').gsub('й','й').gsub('Й','Й').gsub('ё','ё').gsub('Ё','Ё')
+      yield entry.force_encoding('UTF-8').iy
     end
   end
   

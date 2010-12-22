@@ -16,6 +16,10 @@ class String
     return self.gsub(",",".")
   end
   
+  def iy
+    gsub('й','й').gsub('Й','Й').gsub('ё','ё').gsub('Ё','Ё')
+  end
+  
   def trim
     return self.gsub(/\s+$/,"")
   end
