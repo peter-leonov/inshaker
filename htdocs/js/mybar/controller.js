@@ -1,12 +1,9 @@
 ;(function(){
-
 var Papa = MyBar, Me = Papa.Controller
-
 var myProto =
 {
 	bind : function()
 	{
-		
 	},
 	
 	cocktailQuerySubmit : function(query)
@@ -32,7 +29,7 @@ var myProto =
 	{
 		this.model.removeIngredientFromBar(ingredient)
 	},
-		
+	
 	addCocktailToBar : function(cocktail)
 	{
 		this.model.addCocktailToBar(cocktail)
@@ -43,7 +40,5 @@ var myProto =
 		this.model.removeCocktailFromBar(cocktail)
 	}
 }
-
 Object.extend(Me.prototype, myProto)
-
 })();
