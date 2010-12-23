@@ -88,7 +88,7 @@ Me.prototype =
 	setDataSource: function (ds)
 	{
 		return this.completer.setDataSource(ds)
-	},
+	}
 }
 
 Me.mixIn(EventDriven)
