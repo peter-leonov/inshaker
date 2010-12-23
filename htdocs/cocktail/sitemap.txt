@@ -67,6 +67,7 @@ http://www.inshaker.ru/cocktail/birch_cooler/
 http://www.inshaker.ru/cocktail/berrymeup/
 http://www.inshaker.ru/cocktail/insomnia/
 http://www.inshaker.ru/cocktail/b-black/
+http://www.inshaker.ru/cocktail/bikini_tini/
 http://www.inshaker.ru/cocktail/bitter_melon/
 http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/black_jack/
@@ -82,6 +83,7 @@ http://www.inshaker.ru/cocktail/borodinsky/
 http://www.inshaker.ru/cocktail/boston_tea/
 http://www.inshaker.ru/cocktail/bowling_in_tu-154/
 http://www.inshaker.ru/cocktail/keg_with_honey/
+http://www.inshaker.ru/cocktail/brazilian_fizz/
 http://www.inshaker.ru/cocktail/brazilian/
 http://www.inshaker.ru/cocktail/brandy_alexander/
 http://www.inshaker.ru/cocktail/brandy_buck/
@@ -672,6 +674,7 @@ http://www.inshaker.ru/cocktail/russian_national/
 http://www.inshaker.ru/cocktail/ryazanov/
 http://www.inshaker.ru/cocktail/near_fidel/
 http://www.inshaker.ru/cocktail/sazerac/
+http://www.inshaker.ru/cocktail/sazerac_with_cachasa/
 http://www.inshaker.ru/cocktail/sidecar/
 http://www.inshaker.ru/cocktail/salers_martini/
 http://www.inshaker.ru/cocktail/world_fasted_bloody_mary/
@@ -704,6 +707,7 @@ http://www.inshaker.ru/cocktail/simple_white/
 http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/lilac_plum/
 http://www.inshaker.ru/cocktail/lilac_mist/
+http://www.inshaker.ru/cocktail/sweet_heat/
 http://www.inshaker.ru/cocktail/sweet_memories/
 http://www.inshaker.ru/cocktail/sweet_bite/
 http://www.inshaker.ru/cocktail/sweet_apple_dry/
