@@ -45,7 +45,7 @@ Object.extend(Me.prototype, myProto)
 //Sorry for old lib. It's needed for Storage (hard code in it)
 <!--# include virtual="/lib/Programica/UA.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
-<!--# include virtual="ingrediented-cocktail-list.js" -->
+<!--# include virtual="/js/combinator/ingrediented-cocktail-list.js" -->
 <!--# include virtual="/js/common/storage.js" -->
 
 <!--# include virtual="/js/common/autocompleter-3.js" -->

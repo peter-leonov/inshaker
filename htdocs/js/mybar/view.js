@@ -70,7 +70,29 @@ var myProto =
 		}
 		if(!this.nodes.recommendsEmpty.hasClassName('hidden'))
 			this.nodes.recommendsEmpty.hide()
-		var me = this
+		
+		var me = this		
+		
+		var getPreviewNodeOriginal = Ingredient.prototype.getPreviewNode
+		
+		Ingredient.prototype.getPreviewNode = function()
+		{
+			var ingr = getPreviewNodeOriginal.call(this)
+			if(inBar && !inBar[this.name])
+			{
+				ingr.addClassName('not-in-bar')
+				var add = Nct('span', 'add-ingredient', '+')
+				add.addingIngredient = this
+				add.setAttribute('title', 'Добавить ингредиент')
+				add.style.opacity = 0
+				ingr.appendChild(add)
+				ingr.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.2) }, true)
+				ingr.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.2) }, true)
+			}
+			return ingr
+		}	
+			
+		
 		//OMG!!! o_0
 		setTimeout(function()
 		{
