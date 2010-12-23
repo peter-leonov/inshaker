@@ -1,54 +1,35 @@
+h1.mybar { font-size: 24px; }
 .please-wait { display: none; }
 html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0 50px; text-align: center; color: #888; }
 html.loading .b-content { display: none; }
-
-.b-title { background: none; z-index: 1; top: 7px; }
+#mybar-page .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
 .b-content dt.title { font-size: 24px; margin-bottom: 15px; }
 .b-content { width: 100%; }
-
-.search-box {margin-bottom: 15px;}
+.search-box {margin-bottom: 15px; position: relative;}
 .search-box .query { padding: 2px; color: inherit; width: 680px; }
 .search-box .query, .search-box .button { font-size: 20px; vertical-align: middle; }
-
 #output .hidden { display: none !important; }
-
 #output .ingredients-block .list li, #output .list .cocktail-preview {
 	float: left;
 	margin: 0 17px 15px 0;
 	position: relative;
 	width: 100px;
 }
-
 #output .list { overflow: hidden; }
 #output .ingredient-preview .name { display: block; margin-top: 5px; }
 #output .list .cocktail-preview { height: 216px; width: 114px; font-size: 12px; text-align: center;}
 #output .list .cocktail-preview .image { height: 200px; display: block; margin: 0 auto; }
-
-#output .cocktails-block .list li .image { height: 200px; display: block; margin: 0 auto; }
-#output .cocktails-block .list li a:hover { text-decoration: underline; }
-#output .remove-cocktail, #output .add-cocktail {
-	font-family: Verdana;
-	font-size: 17px;
-	position: absolute;
-	right: 10px;
-	top: 8px;
-	cursor: pointer;
-	background-color: #fff;
-}
-
 #output .remove-cocktail
 {
 	color: #A2210E;
 	right: -1px;
 }
-
 #output .add-cocktail
 {
 	color: #8dd013;
 	font-weight: bold;
 }
-
-#output .ingredients-block { width: 940px; margin-top: 35px; }
+#output .ingredients-block { width: 940px; margin-top: 5px; }
 #output .ingredients-block .list { padding-top: 15px; }
 #output .ingredients-block .list ul { overflow: hidden; }
 #output .ingredients-block .list li
@@ -58,15 +39,13 @@ html.loading .b-content { display: none; }
 	padding-top: 15px;
 }
 #output .ingredient-preview { display: block; font-size: 12px; text-align: center;}
-#output .not-in-bar .image { opacity: 0.5 }
-
+#output .not-in-bar .image { opacity: 0.4 }
 #output .empty
 {
 	color: #DDDDDD;
 	font-size: 16px;
 	margin: 9px 0;
 }
-
 #output .remove-ingredient, #output .add-ingredient
 {
 	cursor: pointer;
@@ -77,7 +56,6 @@ html.loading .b-content { display: none; }
 	top: -5px;
 	background-color: #fff;
 }
-
 #output .remove-ingredient
 {
 	color: #A2210E;
@@ -94,15 +72,14 @@ html.loading .b-content { display: none; }
 	width: 100px;
 	position: relative;
 }
-#output .ingredient-preview .image 
+#output .ingredient-preview .image
 {
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 	background-color: #EEEEEE;
 }
-
-#output .ingredient-preview .tick 
+#output .ingredient-preview .tick
 {
 	background: url("/t/mybar/tick.png") no-repeat scroll left top transparent;
 	height: 35px;
@@ -111,8 +88,7 @@ html.loading .b-content { display: none; }
 	top: 65px;
 	width: 35px;
 }
-
-#output .ingredients-block .search-box { margin-top: 20px; }
+#output .ingredients-block .search-box { margin-top: 30px; }
 #output .ingredients-block .search-box.hidden { display: none; }
 #output .ingredients-block .add
 {
@@ -125,19 +101,15 @@ html.loading .b-content { display: none; }
 	text-align: center;
 	width: 100px;
 }
-
 #output .ingredients-block .add.hidden { display: none; }
-
 #output .recommends-block { margin:35px 0; }
-
 .recommends-block .ingredient-preview { float: left; }
 .recommends-block .group { margin: 0 0 50px 0; }
 .recommends-block .group.collapsed { margin: 0 0 20px 0; }
 .recommends-block .group.collapsed .row { display: none; }
-.recommends-block .group .group-name { font-size: 20px; }
+.recommends-block .group .group-name { font-size: 24px; }
 .recommends-block .group .group-name:first-letter { text-transform: uppercase; }
 .recommends-block .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
-
 .recommends-block .row { margin: 50px 0 0 0; position: relative; }
 .recommends-block .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
 .recommends-block .row.lines-0 { height: 155px; }
@@ -146,19 +118,26 @@ html.loading .b-content { display: none; }
 .recommends-block .row.lines-3 { height: 465px; }
 .recommends-block .row.lines-4 { height: 620px; }
 .recommends-block .row.lines-5 { height: 775px; }
-
 .recommends-block .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
-
 .recommends-block .row .head { width: 200px; position: absolute; }
 .recommends-block .row .head .operator { margin: 0; }
-
 .recommends-block .row .body { overflow: visible; width: 800px; left: 150px; position: relative; }
 .recommends-block .row .body .operator { color: #ccc; }
 .recommends-block .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
-
 #output .recommends-block .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
 #output .recommends-block .row .body .ingredient-preview:hover { text-decoration: none; }
 #output .recommends-block .row .body .ingredient-preview:hover .name { text-decoration: underline; }
 .recommends-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
 .recommends-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
 .recommends-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+.search-box .reset { display: none; position: absolute; left: 660px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
+.search-box .reset:hover { color: #000; }
+.search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 28px; left: 1px; width: 680px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
+.search-box .autocomplete.focused { display: block; }
+.search-box .autocomplete .empty-message { display: none; }
+.search-box .autocomplete.empty .empty-message { display: block; }
+.search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
+.search-box .autocomplete .item.selected { background-color: #d2d2d2; }
+.search-box .autocomplete .item .substr { font-weight: bold; }
+.search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
+.search-box  .autocomplete .empty-message { display: none; color: #000;}
