@@ -593,8 +593,8 @@ http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
-http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
+http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pink_brazilian/
 http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/pliny_the_younger/
@@ -758,6 +758,7 @@ http://www.inshaker.ru/cocktail/tequila_apple_cowberry/
 http://www.inshaker.ru/cocktail/ten_opener/
 http://www.inshaker.ru/cocktail/tennessee_coffee_cup/
 http://www.inshaker.ru/cocktail/warm_apple/
+http://www.inshaker.ru/cocktail/tiberius/
 http://www.inshaker.ru/cocktail/tic_tac/
 http://www.inshaker.ru/cocktail/tiki_margarita/
 http://www.inshaker.ru/cocktail/tiramisu_martini/
