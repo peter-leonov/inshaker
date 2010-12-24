@@ -3,15 +3,17 @@ var Papa = MyBar, Me = Papa.View
 eval(NodesShortcut.include())
 var myProto =
 {
+	getPreviewNodeOriginal : Ingredient.prototype.getPreviewNode,
+	
 	initialize : function()
 	{
 		this.nodes = {}
 		
-		var getPreviewNodeOriginal = Ingredient.prototype.getPreviewNode, me = this
+		var me = this
 		
 		Ingredient.prototype.getPreviewNode = function()
 		{
-			var ingr = getPreviewNodeOriginal.call(this)
+			var ingr = me.getPreviewNodeOriginal.call(this)
 			if(me.inBar && !me.inBar[this.name])
 			{
 				ingr.addClassName('not-in-bar')
