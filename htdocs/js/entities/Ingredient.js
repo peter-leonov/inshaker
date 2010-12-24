@@ -21,8 +21,7 @@ Me.prototype =
 	
 	getVolumeImage: function (vol)
 	{
-		var v = vol[0]
-		return this.pageHref() + "vol_" + (v === Math.round(v) ? v + '.0' : v + '').replace(".", "_") + ".png"
+		return this.pageHref() + "image.png"
 	},
 	
 	getPreviewNode: function ()
