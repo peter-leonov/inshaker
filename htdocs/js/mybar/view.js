@@ -6,6 +6,8 @@ var myProto =
 	initialize : function()
 	{
 		this.nodes = {}
+		
+		this.getPreviewNodeOriginal = Ingredient.prototype.getPreviewNode
 	},
 	
 	bind : function (nodes)
@@ -73,11 +75,9 @@ var myProto =
 		
 		var me = this		
 		
-		var getPreviewNodeOriginal = Ingredient.prototype.getPreviewNode
-		
 		Ingredient.prototype.getPreviewNode = function()
 		{
-			var ingr = getPreviewNodeOriginal.call(this)
+			var ingr = me.getPreviewNodeOriginal.call(this)
 			if(inBar && !inBar[this.name])
 			{
 				ingr.addClassName('not-in-bar')
