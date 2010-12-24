@@ -166,10 +166,18 @@ class IngredientsProcessor < Inshaker::Processor
     ht_dir = Dir.create("#{Config::HT_ROOT}#{name.dirify}")
     good["ht_dir"] = ht_dir
     
-    img = "#{dir.path}/i_big.png"
+    img = "#{dir.path}/preview.png"
     if File.exists?(img)
       # flush_masked_optimized(Config::BASE_DIR + "mask.png", img, "#{ht_dir.path}/preview.png") unless @options[:text]
       convert_image(img, "#{ht_dir.path}/preview.jpg", 90, 100, 100) unless @options[:text]
+    else
+      error "нет картинки-превьюшки (файл #{img})"
+    end
+    
+    img = "#{dir.path}/image.png"
+    if File.exists?(img)
+      # flush_masked_optimized(Config::BASE_DIR + "mask.png", img, "#{ht_dir.path}/preview.png") unless @options[:text]
+      cp_if_different(img, "#{ht_dir.path}/image.png") unless @options[:text]
     else
       error "нет большой картинки (файл #{img})"
     end
@@ -234,15 +242,6 @@ class IngredientsProcessor < Inshaker::Processor
         end
         
         volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
-        
-        vol_name = v["Объем"].to_s.gsub(".", "_")
-        img = dir.path + "/" + vol_name + "_big.png"
-        
-        if File.exists?(img)
-          cp_if_different(img, "#{ht_dir.path}/vol_#{vol_name}.png") unless @options[:text]
-        else
-          error "не могу найти картинку для объема «#{v["Объем"]}» (#{vol_name}_big.png)"
-        end
       end
       # increment sort by cost per litre
       good[:volumes] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
