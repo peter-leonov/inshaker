@@ -17,7 +17,7 @@ a { color: #000; }
 #top .nav a:hover { border-bottom-color: #982026; }
 #bottom { color: #bbb; }
 #bottom a { color: #e75930; }
-html { background: #fff url(/t/common/grey-gradient-v.png) repeat-x center 65px; }
+html { background: #fff url(bg.png) repeat-x center 65px; }
 button.rounded b { text-shadow: 1px 1px 0 #777; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 
