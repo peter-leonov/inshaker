@@ -102,6 +102,8 @@ http://www.inshaker.ru/cocktail/bourbon_infused_on_strawberries/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_cranberries/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_dried_apricots/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_raspberries/
+http://www.inshaker.ru/cocktail/bourbon_infused_on_sea-buckthorn/
+http://www.inshaker.ru/cocktail/bourbon_infused_on_prunes/
 http://www.inshaker.ru/cocktail/bucharest/
 http://www.inshaker.ru/cocktail/fast_vanilla_shot/
 http://www.inshaker.ru/cocktail/bianco_orange/
@@ -716,6 +718,7 @@ http://www.inshaker.ru/cocktail/senior_sazerac/
 http://www.inshaker.ru/cocktail/senhorita/
 http://www.inshaker.ru/cocktail/silver_bullet/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
+http://www.inshaker.ru/cocktail/siberian_grog/
 http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/simple_white/
 http://www.inshaker.ru/cocktail/symphony/
@@ -736,6 +739,8 @@ http://www.inshaker.ru/cocktail/dog_ru/
 http://www.inshaker.ru/cocktail/seducer/
 http://www.inshaker.ru/cocktail/warming_orient_honey/
 http://www.inshaker.ru/cocktail/soda_and_peachtree_liqueur/
+http://www.inshaker.ru/cocktail/soda_and_ginger/
+http://www.inshaker.ru/cocktail/soda_and_cucumber/
 http://www.inshaker.ru/cocktail/salty_muchacha/
 http://www.inshaker.ru/cocktail/salty_dog/
 http://www.inshaker.ru/cocktail/salty_russian/
@@ -858,6 +863,7 @@ http://www.inshaker.ru/cocktail/champagne_cocktail/
 http://www.inshaker.ru/cocktail/champagne_fresh/
 http://www.inshaker.ru/cocktail/rustle/
 http://www.inshaker.ru/cocktail/silk_heart/
+http://www.inshaker.ru/cocktail/whisper/
 http://www.inshaker.ru/cocktail/chocolate_curant/
 http://www.inshaker.ru/cocktail/chocolate-orange_martini/
 http://www.inshaker.ru/cocktail/chocolate_manhattan/
@@ -866,6 +872,7 @@ http://www.inshaker.ru/cocktail/chocolate_honey/
 http://www.inshaker.ru/cocktail/chocolate_milkshake/
 http://www.inshaker.ru/cocktail/hullabaloo/
 http://www.inshaker.ru/cocktail/transition/
+http://www.inshaker.ru/cocktail/evolution/
 http://www.inshaker.ru/cocktail/abc/
 http://www.inshaker.ru/cocktail/exotic_grog/
 http://www.inshaker.ru/cocktail/extra_crush/
