@@ -127,6 +127,7 @@ http://www.inshaker.ru/cocktail/vanilla_shot/
 http://www.inshaker.ru/cocktail/bubble_bath_martini/
 http://www.inshaker.ru/cocktail/varekai/
 http://www.inshaker.ru/cocktail/varro/
+http://www.inshaker.ru/cocktail/great_wall_shooter/
 http://www.inshaker.ru/cocktail/velvet_daiquiri/
 http://www.inshaker.ru/cocktail/vergilius/
 http://www.inshaker.ru/cocktail/heathy_tea/
@@ -607,6 +608,7 @@ http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
+http://www.inshaker.ru/cocktail/pijjekker/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
