@@ -441,7 +441,7 @@ http://www.inshaker.ru/cocktail/mai_tai/
 http://www.inshaker.ru/cocktail/mai_tai_2/
 http://www.inshaker.ru/cocktail/mai_tai_3/
 http://www.inshaker.ru/cocktail/mallorca/
-http://www.inshaker.ru/cocktail/malevich_shooters/
+http://www.inshaker.ru/cocktail/malevich_shooter/
 http://www.inshaker.ru/cocktail/malecon/
 http://www.inshaker.ru/cocktail/little_salty_russian/
 http://www.inshaker.ru/cocktail/little_hummer/
@@ -453,6 +453,7 @@ http://www.inshaker.ru/cocktail/raspberry_cobler_317/
 http://www.inshaker.ru/cocktail/raspberry_lemonade/
 http://www.inshaker.ru/cocktail/raspberry_lemonade_junior/
 http://www.inshaker.ru/cocktail/raspberry_milkshake/
+http://www.inshaker.ru/cocktail/raspberry_jacket_shooter/
 http://www.inshaker.ru/cocktail/raspberry_sling/
 http://www.inshaker.ru/cocktail/raspberry_cheesecake/
 http://www.inshaker.ru/cocktail/raspberry_shot/
@@ -608,7 +609,6 @@ http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
-http://www.inshaker.ru/cocktail/pijjekker/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
@@ -664,7 +664,7 @@ http://www.inshaker.ru/cocktail/pink/
 http://www.inshaker.ru/cocktail/rose_gimlet/
 http://www.inshaker.ru/cocktail/pink_ginger/
 http://www.inshaker.ru/cocktail/pink_rum/
-http://www.inshaker.ru/cocktail/rockefeller_shooters/
+http://www.inshaker.ru/cocktail/rockefeller_shooter/
 http://www.inshaker.ru/cocktail/rum_orange/
 http://www.inshaker.ru/cocktail/gold_rum_and_pineapple/
 http://www.inshaker.ru/cocktail/rum_and_sprite/
