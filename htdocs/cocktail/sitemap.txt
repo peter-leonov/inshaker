@@ -253,7 +253,7 @@ http://www.inshaker.ru/cocktail/gin_infused_on_blackcurrant/
 http://www.inshaker.ru/cocktail/gin_peach_tea/
 http://www.inshaker.ru/cocktail/gin_tonic/
 http://www.inshaker.ru/cocktail/gin_fizz/
-http://www.inshaker.ru/cocktail/giokonda_shooter/
+http://www.inshaker.ru/cocktail/gioconda_shooter/
 http://www.inshaker.ru/cocktail/wild_land/
 http://www.inshaker.ru/cocktail/wild_karaoke/
 http://www.inshaker.ru/cocktail/dioscorides/
