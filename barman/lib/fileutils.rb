@@ -24,7 +24,7 @@ end
 
 class Dir
   attr_accessor :name
-  @@exclude = /^\./
+  @@exclude = /^[.@]/
   
   def self.create path
     FileUtils.mkdir_p path
