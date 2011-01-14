@@ -10,6 +10,8 @@
 
 .body-wrapper { background-position: 0px -10px; }
 
+.previews { display: none; }
+
 .previews.column { margin-bottom: 32px; } 
 .previews.column .body-wrapper { overflow:visible; height: 200px; padding-bottom:0}
 .previews.column .gradient {height:32px; width: 958px; position:absolute; top:182px; left:2px; margin:0; border:none; background:url(/t/bg/body/body-bottom.png); }

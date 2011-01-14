@@ -19,7 +19,7 @@ var myProto =
 	{
 		var Good = this.sources.good
 		
-		this.view.renderPreviews(Good.getAll())
+		// this.view.renderPreviews(Good.getAll())
 		this.view.selectGood(Good.getByName(name))
 	}
 }
