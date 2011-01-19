@@ -34,11 +34,11 @@ var myProto =
 	{
 		this.nodes = nodes
 		this.incl = new IngredientedCocktailList()
-		this.incl.bind({main: nodes.recommendsWrapper})
+		this.incl.bind({main: nodes.cocktailsWrapper})
 		
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
-		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		//nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		//nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
@@ -51,7 +51,7 @@ var myProto =
 		this.completer.setDataSource(ds)
 	},
 	
-	renderIngredients : function(ingredients, haveIngredients)
+	renderIngredients : function(ingredients /*, haveIngredients*/)
 	{
 		if(ingredients.length == 0)
 		{
@@ -65,7 +65,7 @@ var myProto =
 			(function(){
 			var ingr = ingredients[i],
 				ingrNode = ingr.getPreviewNode(),
-				inBar = haveIngredients[ingr.name] || false,
+				//inBar = haveIngredients[ingr.name] || false,
 				li = Nc('li','in-bar'),
 				ctrl = Nct('span', 'remove-ingredient', '×')
 				
@@ -83,6 +83,32 @@ var myProto =
 		this.nodes.ingrList.appendChild(ul)
 	},
 	
+	renderCocktails : function(cocktails, showPhotos)
+	{
+		if(cocktails.length == 0)
+		{
+			this.renderIfCocktailsEmpty()
+			return
+		}
+		
+		if(!this.nodes.cocktailsEmpty.hasClassName('hidden'))
+			this.nodes.cocktailsEmpty.hide()
+			
+		if(showPhotos)
+		{
+			
+		}
+		else
+		{
+			setTimeout(function()
+			{
+				me.incl.setCocktails(cocktails)
+			}, 1)
+			this.nodes.recommendsWrapper.show()		
+		}
+	},
+	
+	/*
 	renderRecommends : function(recommends, inBar)
 	{
 		if(recommends.length == 0)
@@ -103,7 +129,7 @@ var myProto =
 		}, 1)
 		this.nodes.recommendsWrapper.show()
 	},
-	
+	*/
 	renderIfIngredientsEmpty : function()
 	{
 		this.nodes.ingrList.empty()

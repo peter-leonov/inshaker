@@ -20,15 +20,23 @@ var myProto =
 		return this
 	},
 
+	/*
 	setRecommends : function()
 	{
 		this.model.setRecommends()
 		return this
 	},
+	*/
+	
+	setCocktails : function()
+	{
+		this.model.setCocktails()
+		return this
+	},
 
 	setBar : function()
 	{
-		return this.setIngredients().setRecommends()
+		return this.setIngredients().setCocktails()
 	}
 }
 
