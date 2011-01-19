@@ -38,8 +38,10 @@ var myProto =
 		
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
-		//nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		//nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		
+		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleSwitcherClick(e) }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })
@@ -107,7 +109,6 @@ var myProto =
 		}
 		else
 		{
-			alert(cocktails)
 			var me = this
 			setTimeout(function()
 			{
@@ -158,6 +159,22 @@ var myProto =
 			this.controller.addIngredientToBar(node.addingIngredient)
 		else if(node.removingIngredient)
 			this.controller.removeIngredientFromBar(node.removingIngredient)
+	},
+
+	handleSwitcherClick : function()
+	{
+		var node = e.target
+		if(node.hasClassName('link'))
+		{
+			if(node.getAttribute('id') == 'sw-photos')
+			{
+				this.controller.switchCocktailsView(true)
+			}
+			else
+			{
+				this.controller.switchCocktailsView(false)
+			}
+		}
 	}
 }
 Object.extend(Me.prototype, myProto)
