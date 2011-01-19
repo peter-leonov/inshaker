@@ -3,7 +3,7 @@ h1.mybar { font-size: 24px; }
 html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0 50px; text-align: center; color: #888; }
 html.loading .b-content { display: none; }
 #mybar-page .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
-.b-content dt.title { font-size: 24px; margin-bottom: 15px; }
+.b-content dt.title { font-size: 20px; margin-bottom: 15px; }
 .b-content { width: 100%; }
 .search-box {margin-bottom: 15px; position: relative;}
 .search-box .query { padding: 2px; color: inherit; width: 680px; }
@@ -102,34 +102,34 @@ html.loading .b-content { display: none; }
 	width: 100px;
 }
 #output .ingredients-block .add.hidden { display: none; }
-#output .recommends-block { margin:35px 0; }
-.recommends-block .ingredient-preview { float: left; }
-.recommends-block .group { margin: 0 0 50px 0; }
-.recommends-block .group.collapsed { margin: 0 0 20px 0; }
-.recommends-block .group.collapsed .row { display: none; }
-.recommends-block .group .group-name { font-size: 24px; }
-.recommends-block .group .group-name:first-letter { text-transform: uppercase; }
-.recommends-block .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
-.recommends-block .row { margin: 50px 0 0 0; position: relative; }
-.recommends-block .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
-.recommends-block .row.lines-0 { height: 155px; }
-.recommends-block .row.lines-1 { height: 155px; }
-.recommends-block .row.lines-2 { height: 310px; }
-.recommends-block .row.lines-3 { height: 465px; }
-.recommends-block .row.lines-4 { height: 620px; }
-.recommends-block .row.lines-5 { height: 775px; }
-.recommends-block .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
-.recommends-block .row .head { width: 200px; position: absolute; }
-.recommends-block .row .head .operator { margin: 0; }
-.recommends-block .row .body { overflow: visible; width: 800px; left: 150px; position: relative; }
-.recommends-block .row .body .operator { color: #ccc; }
-.recommends-block .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
-#output .recommends-block .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
-#output .recommends-block .row .body .ingredient-preview:hover { text-decoration: none; }
-#output .recommends-block .row .body .ingredient-preview:hover .name { text-decoration: underline; }
-.recommends-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
-.recommends-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
-.recommends-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+#output .cocktails-block { margin:35px 0 0; }
+.cocktails-block .ingredient-preview { float: left; }
+.cocktails-block .group { margin: 0; }
+.cocktails-block .group.collapsed { margin: 0 0 20px 0; }
+.cocktails-block .group.collapsed .row { display: none; }
+.cocktails-block .group .group-name { font-size: 24px; }
+.cocktails-block .group .group-name:first-letter { text-transform: uppercase; }
+.cocktails-block .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
+.cocktails-block .row { margin: 50px 0 0 0; position: relative; }
+.cocktails-block .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
+.cocktails-block .row.lines-0 { height: 155px; }
+.cocktails-block .row.lines-1 { height: 155px; }
+.cocktails-block .row.lines-2 { height: 310px; }
+.cocktails-block .row.lines-3 { height: 465px; }
+.cocktails-block .row.lines-4 { height: 620px; }
+.cocktails-block .row.lines-5 { height: 775px; }
+.cocktails-block .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
+.cocktails-block .row .head { width: 200px; position: absolute; }
+.cocktails-block .row .head .operator { margin: 0; }
+.cocktails-block .row .body { overflow: visible; width: 800px; left: 150px; position: relative; }
+.cocktails-block .row .body .operator { color: #ccc; }
+.cocktails-block .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
+#output .cocktails-block .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
+#output .cocktails-block .row .body .ingredient-preview:hover { text-decoration: none; }
+#output .cocktails-block .row .body .ingredient-preview:hover .name { text-decoration: underline; }
+.cocktails-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
+.cocktails-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.cocktails-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 .search-box .reset { display: none; position: absolute; left: 660px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 .search-box .reset:hover { color: #000; }
 .search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 28px; left: 1px; width: 680px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
@@ -141,3 +141,18 @@ html.loading .b-content { display: none; }
 .search-box .autocomplete .item .substr { font-weight: bold; }
 .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 .search-box  .autocomplete .empty-message { display: none; color: #000;}
+
+
+#output .switcher
+{
+	float: right;
+	font-size: 13px;
+    position: relative;
+    top: 3px;
+}
+
+#output .switcher .link
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
