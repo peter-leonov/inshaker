@@ -38,8 +38,10 @@ var myProto =
 			{
 			}
 			
-			me.ingredients = me.getIngredients( bar.ingredients)
-			me.recommends = me.computeRecommends( me.ingredients)
+			me.ingredients = me.getIngredients(bar.ingredients)
+			//me.recommends = me.computeRecommends( me.ingredients)
+			me.cocktails = me.computeCocktails(me.ingredients)
+			log(me.cocktails)	
 			me.parent.setBar()
 			
 			var ingredients = Ingredient.getAllNames(),
@@ -57,7 +59,7 @@ var myProto =
 	
 	setIngredients : function()
 	{
-		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
+		this.view.renderIngredients(this.ingredients /*, this.ingredients.inBar*/)
 	},
 	
 	setRecommends : function()
@@ -65,12 +67,17 @@ var myProto =
 		//this.view.renderRecommends(this.recommends, this.ingredients.inBar)
 	},
 	
+	setCocktails : function()
+	{
+		this.view.renderCocktails(this.cocktails)
+	},
+	
 	getIngredients : function(ingredientNames)
 	{
-		var inBar = Array.toHash(ingredientNames), me = this
+		var /*inBar = Array.toHash(ingredientNames), */me = this
 		var ingredients = fetchIngredients(ingredientNames)
-		ingredients.inBar = inBar
-		ingredients.inBarNames = ingredientNames
+		ingredients.inBar = Array.toHash(ingredientNames)
+		//ingredients.inBarNames = ingredientNames
 		
 		ingredients.add = function(ingredient)
 		{
@@ -79,16 +86,18 @@ var myProto =
 			this.push(ingredient)
 			this.sort(function(a,b){ return Ingredient.sortByGroups(a.name, b.name) })
 			this.inBar[ingredient.name] = true
+			/*
 			this.inBarNames.push(ingredient.name)
+			*/
 			return this
 		}
 		
 		ingredients.remove = function(ingredient)
 		{
 			this.inBar[ingredient.name] = null
-			this.inBarNames = Object.toArray(this.inBar)
+			//this.inBarNames = Object.toArray(this.inBar)
 			this.length = 0
-			Object.extend(this, fetchIngredients(this.inBarNames))
+			Object.extend(this, fetchIngredients(Object.toArray(this.inBar)))
 			return this
 		}
 		
@@ -99,11 +108,35 @@ var myProto =
 			{
 				ingredients.push(Ingredient.getByName(ingredientNames[i]))
 			}
-			return ingredients.sort(function(a,b){ return Ingredient.sortByGroups(a.name, b.name) })
+			return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
 		}
 		return ingredients
 	},
 	
+	computeCocktails : function(ingredients)
+	{
+		if(Object.isEmpty(ingredients.inBar)) return []
+		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.inBar), {count : 1}),
+			cocktails = []
+
+		ck:
+		for ( var i = 0, il = needCocktails.length; i < il; i++ )
+		{
+			var cocktail = needCocktails[i]
+			var ing = cocktail.ingredients
+			for (var j = 0, jl = ing.length; j < jl; j++)
+			{
+				if(!ingredients.inBar[ing[j][0]]) 
+					continue ck
+			}
+			cocktails.push(cocktail)
+		}
+		
+		return cocktails.sort(function(a,b){
+			return a.ingredients.length - b.ingredients.length
+		})
+	},
+	/*
 	computeRecommends : function(ingredients)
 	{
 		if(Object.isEmpty(ingredients.inBar)) return []
@@ -136,17 +169,17 @@ var myProto =
 			return a.ingredients.length > b.ingredients.length ? 1 : -1
 		}
 	},
-	
+	*/
 	saveStorage : function()
 	{
-		Storage.put('mybar', JSON.stringify({ ingredients : this.ingredients.inBarNames }))
+		Storage.put('mybar', JSON.stringify({ ingredients : Object.toArray(this.ingredients.inBar) }))
 	},
 	
 	addIngredientToBar : function(ingredient)
 	{
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
-		var recommends = this.computeRecommends(this.ingredients)
+		//var recommends = this.computeRecommends(this.ingredients)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		//this.view.renderRecommends(recommends, this.ingredients.inBar)
 	},
@@ -155,7 +188,7 @@ var myProto =
 	{
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
-		var recommends = this.computeRecommends(this.ingredients)
+		//var recommends = this.computeRecommends(this.ingredients)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		//this.view.renderRecommends(recommends, this.ingredients.inBar)
 	}
