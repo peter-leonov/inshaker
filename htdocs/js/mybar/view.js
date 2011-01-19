@@ -87,6 +87,9 @@ var myProto =
 	
 	renderCocktails : function(cocktails, showPhotos)
 	{
+		var cl = cocktails.length
+		this.nodes.cocktails.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
+		
 		if(cocktails.length == 0)
 		{
 			this.renderIfCocktailsEmpty()
@@ -98,7 +101,10 @@ var myProto =
 			
 		if(showPhotos)
 		{
-			var ul = N('ul')
+			this.nodes.cocktails.swPhotos.removeClassName('link')
+			this.nodes.cocktails.swCombs.addClassName('link')
+			
+			var ul = Nc('ul', 'photos-list')
 			for (var i = 0, il = cocktails.length; i < il; i++) 
 			{
 				var cNode = cocktails[i].getPreviewNode()
@@ -106,16 +112,28 @@ var myProto =
 			}
 			this.nodes.cocktails.wrapper.empty()
 			this.nodes.cocktails.wrapper.appendChild(ul)
+			
+			this.nodes.cocktails.wrapper.show()
 		}
 		else
 		{
+			this.nodes.cocktails.swCombs.removeClassName('link')
+			this.nodes.cocktails.swPhotos.addClassName('link')
+			
 			var me = this
 			setTimeout(function()
 			{
 				me.incl.setCocktails([{cocktails : cocktails}])
 			}, 1)
-			this.nodes.cocktails.wrapper.show()		
+			
+			this.nodes.cocktails.wrapper.show()
 		}
+	},
+	
+	renderIfCocktailsEmpty : function()
+	{
+		this.nodes.cocktails.wrapper.hide()
+		this.nodes.cocktails.empty.show()
 	},
 	
 	/*
@@ -161,12 +179,12 @@ var myProto =
 			this.controller.removeIngredientFromBar(node.removingIngredient)
 	},
 
-	handleSwitcherClick : function()
+	handleSwitcherClick : function(e)
 	{
 		var node = e.target
 		if(node.hasClassName('link'))
 		{
-			if(node.getAttribute('id') == 'sw-photos')
+			if(node.hasClassName('photos'))
 			{
 				this.controller.switchCocktailsView(true)
 			}
