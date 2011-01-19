@@ -69,7 +69,7 @@ var myProto =
 	
 	setCocktails : function()
 	{
-		this.view.renderCocktails(this.cocktails)
+		this.view.renderCocktails(this.cocktails, false)
 	},
 	
 	getIngredients : function(ingredientNames)
@@ -179,18 +179,20 @@ var myProto =
 	{
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
-		//var recommends = this.computeRecommends(this.ingredients)
+		var cocktails = this.computeCocktails(this.ingredients)
+		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		//this.view.renderRecommends(recommends, this.ingredients.inBar)
+		this.view.renderCocktails(cocktails)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
 	{
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
-		//var recommends = this.computeRecommends(this.ingredients)
+		var cocktails = this.computeCocktails(this.ingredients)
+		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		//this.view.renderRecommends(recommends, this.ingredients.inBar)
+		this.view.renderCocktails(cocktails)
 	}
 }
 Object.extend(Me.prototype, myProto)
