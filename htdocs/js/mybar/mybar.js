@@ -78,7 +78,15 @@ function onready ()
 		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0],
 		ingrResetButton: $$('#output .ingredients-block .search-box .reset')[0],
 		ingrComplete: $$('#output .ingredients-block .search-box .autocomplete')[0],
-		ingrEmpty : $$('#output .ingredients-block .empty')[0]
+		ingrEmpty : $$('#output .ingredients-block .empty')[0],
+		
+		cocktails : {
+			block : $$('#output .cocktails-block')[0],
+			amount : $$('#output .title .amount')[0],
+			switcher : $$('#output .switcher')[0],
+			wrapper : $$('#output .wrapper')[0],
+			empty : $$('#output .empty')[0]
+		}	
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
 		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
