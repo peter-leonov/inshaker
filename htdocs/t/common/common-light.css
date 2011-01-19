@@ -88,3 +88,8 @@ html.about-page #bottom a.about,
 #spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
 /* really common rules */
+#common-main-wrapper { margin: 0 auto; width: 960px; }
+.common-box {  }
+.common-box .common-title { background:url(header-dots-v.png) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 11px; }
+.common-box .common-title h { font-size: 20px; margin-left: -1px; }
+.common-box .common-content { padding: 14px 18px; background: #fff url(content-gradient-v.png) repeat-x 0 0; }
