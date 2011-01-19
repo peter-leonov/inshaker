@@ -127,9 +127,9 @@ html.loading .b-content { display: none; }
 #output .cocktails-block .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
 #output .cocktails-block .row .body .ingredient-preview:hover { text-decoration: none; }
 #output .cocktails-block .row .body .ingredient-preview:hover .name { text-decoration: underline; }
-.cocktails-block .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
-.cocktails-block .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
-.cocktails-block .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+.cocktails-block .row .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
+.cocktails-block .row .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.cocktails-block .row .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 .search-box .reset { display: none; position: absolute; left: 660px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 .search-box .reset:hover { color: #000; }
 .search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 28px; left: 1px; width: 680px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
@@ -142,13 +142,32 @@ html.loading .b-content { display: none; }
 .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 .search-box  .autocomplete .empty-message { display: none; color: #000;}
 
+.cocktails-block .photos-list { overflow: hidden; margin-top: 40px; }
+.cocktails-block .photos-list .cocktail-preview {
+	float: left;
+	height: 140px;
+	padding: 0 10px;
+	position: relative;
+	width: 90px;
+}
+
+.cocktails-block .photos-list .cocktail-preview img {
+	display: block;
+	height: 80px;
+	margin-left: -10px;
+	padding-bottom: 7px;
+	padding-right: 30px;
+	width: 60px;
+}
+
+.cocktails-block .photos-list .cocktail-preview a { font-size: 120%; }
 
 #output .switcher
 {
 	float: right;
 	font-size: 13px;
-    position: relative;
-    top: 3px;
+	position: relative;
+	top: 3px;
 }
 
 #output .switcher .link
