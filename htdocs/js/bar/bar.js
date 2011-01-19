@@ -21,12 +21,12 @@ $.onready
 		{
 			photos:
 			{
-				root:            $$('.b-content .photos')[0],
-				viewport:        $$('.b-content .photos .viewport')[0],
-				surface:         $$('.b-content .photos .surface')[0],
-				prev:            $$('.b-content .photos .prev')[0],
-				next:            $$('.b-content .photos .next')[0],
-				items:           $$('.b-content .photos .point')
+				root:            $$('.photos')[0],
+				viewport:        $$('.photos .viewport')[0],
+				surface:         $$('.photos .surface')[0],
+				prev:            $$('.photos .prev')[0],
+				next:            $$('.photos .next')[0],
+				items:           $$('.photos .point')
 			},
 			carte:
 			{
