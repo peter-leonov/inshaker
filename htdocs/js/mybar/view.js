@@ -34,7 +34,7 @@ var myProto =
 	{
 		this.nodes = nodes
 		this.incl = new IngredientedCocktailList()
-		this.incl.bind({main: nodes.cocktailsWrapper})
+		this.incl.bind({main: nodes.cocktails.wrapper})
 		
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
@@ -91,20 +91,29 @@ var myProto =
 			return
 		}
 		
-		if(!this.nodes.cocktailsEmpty.hasClassName('hidden'))
-			this.nodes.cocktailsEmpty.hide()
+		if(!this.nodes.cocktails.empty.hasClassName('hidden'))
+			this.nodes.cocktails.empty.hide()
 			
 		if(showPhotos)
 		{
-			
+			var ul = N('ul')
+			for (var i = 0, il = cocktails.length; i < il; i++) 
+			{
+				var cNode = cocktails[i].getPreviewNode()
+				ul.appendChild(cNode)
+			}
+			this.nodes.cocktails.wrapper.empty()
+			this.nodes.cocktails.wrapper.appendChild(ul)
 		}
 		else
 		{
+			alert(cocktails)
+			var me = this
 			setTimeout(function()
 			{
-				me.incl.setCocktails(cocktails)
+				me.incl.setCocktails([{cocktails : cocktails}])
 			}, 1)
-			this.nodes.recommendsWrapper.show()		
+			this.nodes.cocktails.wrapper.show()		
 		}
 	},
 	
