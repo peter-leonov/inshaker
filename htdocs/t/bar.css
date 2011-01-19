@@ -1,4 +1,5 @@
 .body-wrapper { overflow: hidden; }
+.column-main-container { float: none; }
 
 .b-title .hrefs a.hidden { cursor: default; color: #ccc; }
 .b-content { width: 100%; }
@@ -35,7 +36,7 @@
 .b-more dl { height: 160px; }
 
 .column-main .body-wrapper,
-#sidebar .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
+#bar-on-map .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
 #carte.single .prev,
 #carte.single .next { display: none; }
 #carte.single .viewport { left: 16px; }
