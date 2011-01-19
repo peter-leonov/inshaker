@@ -62,7 +62,7 @@ var myProto =
 	
 	setRecommends : function()
 	{
-		this.view.renderRecommends(this.recommends, this.ingredients.inBar)
+		//this.view.renderRecommends(this.recommends, this.ingredients.inBar)
 	},
 	
 	getIngredients : function(ingredientNames)
@@ -148,7 +148,7 @@ var myProto =
 		this.saveStorage()
 		var recommends = this.computeRecommends(this.ingredients)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends, this.ingredients.inBar)
+		//this.view.renderRecommends(recommends, this.ingredients.inBar)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -157,7 +157,7 @@ var myProto =
 		this.saveStorage()
 		var recommends = this.computeRecommends(this.ingredients)
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderRecommends(recommends, this.ingredients.inBar)
+		//this.view.renderRecommends(recommends, this.ingredients.inBar)
 	}
 }
 Object.extend(Me.prototype, myProto)

@@ -39,7 +39,7 @@ var myProto =
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		//nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })

@@ -70,10 +70,12 @@ function onready ()
 		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0],
 		ingrResetButton: $$('#output .ingredients-block .search-box .reset')[0],
 		ingrComplete: $$('#output .ingredients-block .search-box .autocomplete')[0],
-		ingrEmpty : $$('#output .ingredients-block .empty')[0],
+		ingrEmpty : $$('#output .ingredients-block .empty')[0]
+		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
 		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
 		recommendsEmpty : $$('#output .recommends-block .empty')[0]
+		*/
 	}
 
 	var widget = new MyBar()
