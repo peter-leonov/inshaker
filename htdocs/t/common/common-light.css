@@ -31,6 +31,12 @@ body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heig
 .rounding-corners .lb { left: 0; bottom: 0; background-position: -9px 0; }
 .rounding-corners .rb { right: 0; bottom: 0; background-position: 0 0; }
 
+html.msie-6 .rounding-corners .lt,
+html.msie-6 .rounding-corners .rt,
+html.msie-6 .rounding-corners .lb,
+html.msie-6 .rounding-corners .rb { background-image: url(rounded-corners-10px.8.png) no-repeat; }
+html.msie-6 .rounding-corners .lb,
+html.msie-6 .rounding-corners .rb { bottom: -2px; }
 
 /* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
