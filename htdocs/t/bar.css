@@ -34,8 +34,6 @@
 
 .b-more dl { height: 160px; }
 
-.column-main .body-wrapper,
-#bar-on-map .map .body-wrapper { background: url(bar/content-bg.png) left bottom repeat-x; border-bottom: 1px solid #fff; min-height: 530px; }
 #carte.single .prev,
 #carte.single .next { display: none; }
 #carte.single .viewport { left: 16px; }
