@@ -34,9 +34,15 @@ var myProto =
 		return this
 	},
 
+	setBarName : function()
+	{
+		this.model.setBarName()
+		return this
+	},
+
 	setBar : function()
 	{
-		return this.setIngredients().setCocktails()
+		return this.setBarName().setIngredients().setCocktails()
 	}
 }
 
@@ -72,6 +78,17 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	var nodes = {
+		
+		barName : {
+			wrapper : $('bar-name'),
+			tip : $$('#bar-name .tip')[0],
+			title : $$('#bar-name h2')[0],
+			help : $$('#bar-name h2 .help')[0],
+			bName : $$('#bar-name h2 .name')[0],
+			form : $$('#bar-name .change-name')[0],
+			input : $$('#bar-name .change-name .new-bar-name')[0]
+		},
+		
 		ingrList : $$('#output .ingredients-block .list')[0],
 		ingrSearchForm : $$('#output .ingredients-block .search-box form')[0],
 		ingrSearchBox : $$('#output .ingredients-block .search-box')[0],
@@ -82,12 +99,12 @@ function onready ()
 		
 		cocktails : {
 			block : $$('#output .cocktails-block')[0],
-			amount : $$('#output .title .amount')[0],
-			switcher : $$('#output .switcher')[0],
-			swPhotos : $$('#output .switcher .photos')[0],
-			swCombs : $$('#output .switcher .combs')[0],
-			wrapper : $$('#output .wrapper')[0],
-			empty : $$('#output .empty')[0]
+			amount : $$('#output .cocktails-block .title .amount')[0],
+			switcher : $$('#output .cocktails-block .switcher')[0],
+			swPhotos : $$('#output .cocktails-block .switcher .photos')[0],
+			swCombs : $$('#output .cocktails-block .switcher .combs')[0],
+			wrapper : $$('#output .cocktails-block .wrapper')[0],
+			empty : $$('#output .cocktails-block .empty')[0]
 		}	
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
