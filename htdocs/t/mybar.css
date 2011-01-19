@@ -5,9 +5,15 @@ html.loading .b-content { display: none; }
 #mybar-page .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
 .b-content dt.title { font-size: 20px; margin-bottom: 15px; }
 .b-content { width: 100%; }
-.search-box {margin-bottom: 15px; position: relative;}
-.search-box .query { padding: 2px; color: inherit; width: 680px; }
-.search-box .query, .search-box .button { font-size: 20px; vertical-align: middle; }
+
+.search-box .query {
+	color: inherit;
+	margin: 5px;
+	padding: 2px;
+	width: 905px;
+	border: 1px solid #ccc;
+}
+.search-box .query, .search-box .button { font-size: 15px; vertical-align: middle; }
 #output .hidden { display: none !important; }
 #output .ingredients-block .list li, #output .list .cocktail-preview {
 	float: left;
@@ -40,7 +46,7 @@ html.loading .b-content { display: none; }
 }
 #output .ingredient-preview { display: block; font-size: 12px; text-align: center;}
 #output .not-in-bar .image { opacity: 0.4 }
-#output .empty
+#output div.empty
 {
 	color: #DDDDDD;
 	font-size: 16px;
@@ -88,7 +94,18 @@ html.loading .b-content { display: none; }
 	top: 65px;
 	width: 35px;
 }
-#output .ingredients-block .search-box { margin-top: 30px; }
+#output .ingredients-block .search-box {
+	width: 922px;
+	margin-top: 30px; 
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#f1f1f1));
+	background: -moz-linear-gradient(top, #ebebeb, #f1f1f1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#f1f1f1');
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #e3e3e3;
+	position: relative;
+}
 #output .ingredients-block .search-box.hidden { display: none; }
 #output .ingredients-block .add
 {
@@ -132,7 +149,7 @@ html.loading .b-content { display: none; }
 .cocktails-block .row .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 .search-box .reset { display: none; position: absolute; left: 660px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 .search-box .reset:hover { color: #000; }
-.search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 28px; left: 1px; width: 680px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
+.search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 29px; left: 5px; width: 909px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 15px; }
 .search-box .autocomplete.focused { display: block; }
 .search-box .autocomplete .empty-message { display: none; }
 .search-box .autocomplete.empty .empty-message { display: block; }
@@ -174,4 +191,42 @@ html.loading .b-content { display: none; }
 {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+#bar-name
+{
+	border-bottom: 1px dotted #ddd;
+	height: 31px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+#bar-name .help, #bar-name .title{
+	font-size: 24px;
+	text-decoration: underline;
+}
+
+#bar-name h2 { cursor: pointer; }
+
+#bar-name form.change-name {
+	font-size: 24px;
+	left: -6px;
+	position: relative;
+	top: -5px;
+	width: 300px;
+}
+
+#bar-name form.change-name input.new-bar-name {
+	font-size: 1em;
+	position: relative;
+	z-index: 1;
+	background-color: transparent;
+	border: 1px solid #C0C0C0;
+	padding: 2px 2px;
+}
+#bar-name form.change-name .tip {
+	left: 4px;
+	position: absolute;
+	top: 4px;
+	color: #BBBBBB;
 }
