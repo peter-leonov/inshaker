@@ -39,7 +39,7 @@ html.msie-6 .rounding-corners .lb,
 html.msie-6 .rounding-corners .rb { bottom: -2px; }
 
 /* navigation.css */
-#top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
+#top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000 url(top-gradient-v.png) repeat-x scroll 0 0; }
 #top #top-content {position: relative; margin: 0 auto; width: 960px;}
 #top h2 { position: absolute; left: -9px; top: 3px; }
 #top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; font-weight: bold; }
@@ -56,7 +56,7 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 #event-page #top .nav a.events,
 #academy-page #top .nav a.academy,
 #combinator-page #top .nav a.combinator
-{ background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
+{ background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
 #top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
