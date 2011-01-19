@@ -32,6 +32,7 @@ body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heig
 .rounding-corners .rb { right: 0; bottom: 0; background-position: 0 0; }
 
 
+/* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 40px; border-bottom: 5px solid #fff; background: #000000 url(bg/body/index.png) repeat-x scroll 0 0; }
 #top #top-content {position: relative; margin: 0 auto; width: 960px;}
 #top h2 { position: absolute; left: -9px; top: 3px; }
@@ -72,6 +73,7 @@ html.about-page #bottom a.about,
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 
+/* branding.css */
 #alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background-position: 0 0;}
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
@@ -79,3 +81,4 @@ html.about-page #bottom a.about,
 
 #spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
+/* really common rules */
