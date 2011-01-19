@@ -28,7 +28,7 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [] }
+		var me = this, bar = {  ingredients : [], showPhotos : true }
 		Storage.init(function(){
 			try
 			{
@@ -37,6 +37,8 @@ var myProto =
 			catch(e)
 			{
 			}
+			
+			me.showPhotos = bar.showPhotos
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
@@ -69,7 +71,7 @@ var myProto =
 	
 	setCocktails : function()
 	{
-		this.view.renderCocktails(this.cocktails, false)
+		this.view.renderCocktails(this.cocktails, this.showPhotos)
 	},
 	
 	getIngredients : function(ingredientNames)
@@ -172,27 +174,37 @@ var myProto =
 	*/
 	saveStorage : function()
 	{
-		Storage.put('mybar', JSON.stringify({ ingredients : Object.toArray(this.ingredients.inBar) }))
+		Storage.put('mybar', JSON.stringify({ 
+			ingredients : Object.toArray(this.ingredients.inBar), showPhotos : this.showPhotos 
+		}))
 	},
 	
 	addIngredientToBar : function(ingredient)
 	{
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
-		var cocktails = this.computeCocktails(this.ingredients)
+		this.cocktails = this.computeCocktails(this.ingredients)
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderCocktails(cocktails)
+		this.view.renderCocktails(this.cocktails, this.showPhotos)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
 	{
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
-		var cocktails = this.computeCocktails(this.ingredients)
+		this.cocktails = this.computeCocktails(this.ingredients)
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
-		this.view.renderCocktails(cocktails)
+		this.view.renderCocktails(this.cocktails, this.showPhotos)
+	},
+	
+	switchCocktailsView : function(showPhotos)
+	{
+		this.showPhotos = showPhotos
+		this.saveStorage()
+		
+		this.view.renderCocktails(this.cocktails, showPhotos)
 	}
 }
 Object.extend(Me.prototype, myProto)

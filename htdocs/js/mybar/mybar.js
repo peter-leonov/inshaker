@@ -84,6 +84,8 @@ function onready ()
 			block : $$('#output .cocktails-block')[0],
 			amount : $$('#output .title .amount')[0],
 			switcher : $$('#output .switcher')[0],
+			swPhotos : $$('#output .switcher .photos')[0],
+			swCombs : $$('#output .switcher .combs')[0],
 			wrapper : $$('#output .wrapper')[0],
 			empty : $$('#output .empty')[0]
 		}	

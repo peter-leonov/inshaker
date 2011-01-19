@@ -38,6 +38,11 @@ var myProto =
 	removeCocktailFromBar : function(cocktail)
 	{
 		this.model.removeCocktailFromBar(cocktail)
+	},
+	
+	switchCocktailsView : function(showPhotos)
+	{
+		this.model.switchCocktailsView(showPhotos)
 	}
 }
 Object.extend(Me.prototype, myProto)
