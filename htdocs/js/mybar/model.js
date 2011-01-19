@@ -28,7 +28,7 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true }
+		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '' }
 		Storage.init(function(){
 			try
 			{
@@ -38,7 +38,9 @@ var myProto =
 			{
 			}
 			
+			
 			me.showPhotos = bar.showPhotos
+			me.barName = bar.barName
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
@@ -72,6 +74,11 @@ var myProto =
 	setCocktails : function()
 	{
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
+	},
+	
+	setBarName : function()
+	{
+		this.view.renderBarName(this.barName)
 	},
 	
 	getIngredients : function(ingredientNames)
@@ -175,7 +182,9 @@ var myProto =
 	saveStorage : function()
 	{
 		Storage.put('mybar', JSON.stringify({ 
-			ingredients : Object.toArray(this.ingredients.inBar), showPhotos : this.showPhotos 
+			ingredients : Object.toArray(this.ingredients.inBar),
+			showPhotos : this.showPhotos,
+			barName : this.barName 
 		}))
 	},
 	
@@ -205,6 +214,13 @@ var myProto =
 		this.saveStorage()
 		
 		this.view.renderCocktails(this.cocktails, showPhotos)
+	},
+	
+	setNewBarName : function(barName)
+	{
+		this.barName = barName
+		this.saveStorage()
+		this.view.renderBarName(barName)
 	}
 }
 Object.extend(Me.prototype, myProto)

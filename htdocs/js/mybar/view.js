@@ -43,14 +43,57 @@ var myProto =
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleSwitcherClick(e) }, false)
 		
+		nodes.barName.wrapper.addEventListener('click', function(e){ me.handleBarNameClick(e) }, false)
+		document.body.addEventListener('click', function(e){ me.barNameChanging(e) }, true)
+		nodes.barName.form.addEventListener('submit', function(e){ me.handleNewBarName(e) }, false)		
+		nodes.barName.input.addEventListener('keypress', function(e)
+		{
+			var tip = nodes.barName.tip
+			setTimeout(function(){
+				if(e.target.value == '')
+					tip.show()
+				else
+					tip.hide()
+			}, 1)
+		}, false)
+		nodes.barName.input.bName = true
+		nodes.barName.title.bTitle = true
+		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
+		
+		
 	},
 	
 	setCompleterDataSource: function (ds)
 	{
 		this.completer.setDataSource(ds)
+	},
+	
+	renderBarName : function(barName)
+	{
+		var nodes = this.nodes.barName
+		
+		if(barName)
+		{
+			this.nodes.barName.bName.innerHTML = barName
+			
+			nodes.help.hide()
+			nodes.bName.show()
+		}	
+		else
+		{
+			nodes.help.show()
+			nodes.bName.hide()
+		}
+		
+		if(this.barIsChanging)
+		{
+			this.barIsChanging = false
+			nodes.title.show()
+			nodes.form.hide()
+		}
 	},
 	
 	renderIngredients : function(ingredients /*, haveIngredients*/)
@@ -99,6 +142,8 @@ var myProto =
 		if(!this.nodes.cocktails.empty.hasClassName('hidden'))
 			this.nodes.cocktails.empty.hide()
 			
+		this.nodes.cocktails.switcher.show()
+			
 		if(showPhotos)
 		{
 			this.nodes.cocktails.swPhotos.removeClassName('link')
@@ -132,7 +177,12 @@ var myProto =
 	
 	renderIfCocktailsEmpty : function()
 	{
-		this.nodes.cocktails.wrapper.hide()
+		if(!this.nodes.cocktails.wrapper.hasClassName('hidden'))
+			this.nodes.cocktails.wrapper.hide()
+		
+		if(!this.nodes.cocktails.switcher.hasClassName('hidden'))
+			this.nodes.cocktails.switcher.hide()
+		
 		this.nodes.cocktails.empty.show()
 	},
 	
@@ -193,6 +243,45 @@ var myProto =
 				this.controller.switchCocktailsView(false)
 			}
 		}
+	},
+	
+	handleBarNameClick : function(e)
+	{
+		var node = e.target,
+			nodes = this.nodes.barName
+		if(node.parentNode.bTitle)
+		{
+			nodes.title.hide()
+			nodes.form.show()
+			
+			if(nodes.input.value == '')
+				nodes.tip.show()
+			else
+				nodes.tip.hide()
+			
+			this.barIsChanging = true
+			nodes.input.focus()
+		}
+	},
+	
+	barNameChanging : function(e)
+	{
+		if(!this.barIsChanging) return
+		if(e.target.bName) return
+		
+		this.handleNewBarName()
+	},
+	
+	handleNewBarName : function(e)
+	{
+		if(e)
+			e.preventDefault()
+		var input = this.nodes.barName.input,
+			notEmpty = /\S/.test(input.value)
+		
+		if(!notEmpty) input.value = ''
+		
+		this.controller.setNewBarName(notEmpty ? input.value : this.nodes.barName.tip.innerHTML)
 	}
 }
 Object.extend(Me.prototype, myProto)
