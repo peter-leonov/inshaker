@@ -3,7 +3,11 @@
 .body-wrapper { overflow: hidden; }
 .column-main-container { float: none; }
 
-.b-title .hrefs a.hidden { cursor: default; color: #ccc; }
+#main-column .common-title { position: relative; }
+#main-column .common-title .navigation { position: absolute; right: 0; bottom: 15px; font-size: 11px; }
+#main-column .common-title .navigation a.hidden { cursor: default; color: #ccc; }
+#main-column .common-title .navigation li { display: inline; margin: 0 4px; vertical-align: middle; }
+
 .about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
 .about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; cursor: pointer; }
 .about h2.empty { cursor: default; margin: 20px 0 20px; }
@@ -31,7 +35,6 @@
 .photos .prev.disabled { background-position: -60px -60px; cursor: default; }
 .photos .next.disabled { background-position: 0 -60px; cursor: default; }
 
-.hrefs li { display: inline; margin: 0 4px; vertical-align: middle; }
 
 .b-more dl { height: 160px; }
 
