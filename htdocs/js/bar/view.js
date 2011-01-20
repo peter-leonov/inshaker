@@ -14,29 +14,6 @@ BarPage.view =
 		
 		this.renderPhotos()
 		
-		var barMore = nodes.barMore
-		if (barMore)
-		{
-			barMore.maximize = function () { this.animate('easeOutQuad', {height: this.scrollHeight}, 1) }
-			barMore.minimize = function () { this.animate('easeOutQuad', {height: 1}, 1) }
-			barMore.toggleHeight = function ()
-			{
-				if (this.isMaximized)
-				{
-					this.minimize()
-					return this.isMaximized = false
-				}
-				else
-				{
-					this.maximize()
-					return this.isMaximized = true
-				}
-			}
-		}
-		
-		var controller = this.owner.controller
-		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
-		
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
@@ -89,16 +66,6 @@ BarPage.view =
 		state.city = cityName
 		
 		this.owner.controller.barCityNamesLoaded(state)
-	},
-	
-	toggleMore: function ()
-	{
-		var barMore = this.nodes.barMore
-		if (barMore)
-		{
-			var miximized = barMore.toggleHeight()
-			this.owner.controller[miximized ? 'moreIsMaximized' : 'moreIsMinimized']()
-		}
 	},
 	
 	initMap: function (bar)

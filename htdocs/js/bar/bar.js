@@ -38,8 +38,6 @@ $.onready
 			},
 			barName: $('bar-name'),
 			cityName: $('city-name'),
-			showMore: $$('.about .show-more')[0],
-			barMore: $$('.about .more')[0],
 			map: $('map'),
 			positionControl: $$('.position-control')[0],
 			barPrev: $$('.b-title .hrefs .prev')[0],
