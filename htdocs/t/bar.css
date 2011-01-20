@@ -8,13 +8,18 @@
 #main-column .common-title .navigation a.hidden { cursor: default; color: #ccc; }
 #main-column .common-title .navigation li { display: inline; margin: 0 4px; vertical-align: middle; }
 
-.about .more { overflow: hidden; height: 1px; font-size: 13px; margin: 0 0 15px 0; }
-.about h2 { font-size: 18px; margin: 20px 0 5px 0; line-height: 18px; cursor: pointer; }
-.about h2.empty { cursor: default; margin: 20px 0 20px; }
 #main-column .description { font-size: 14px; margin: 10px 0 15px 0; line-height: 18px; }
+
+#main-column .atmosphere { overflow: hidden; margin-top: 12px; }
+#main-column .atmosphere .part { width: 250px; float: left; font-size: 13px; }
+#main-column .atmosphere .part dt,
+#main-column .atmosphere .part dd { display: inline; }
+#main-column .atmosphere .people { margin-left: 80px; }
+
+.info { display: none; }
 .info .part { margin-left: 260px; }
 .info .part.feature,
-.info .part.people { width: 240px; float: left; margin-left: 0; clear: both; }
+.info .part.people {  float: left; margin-left: 0; clear: both; }
 .info dl { font-size: 12px; }
 .info dl dt,
 .info dl dd { display: inline; }
