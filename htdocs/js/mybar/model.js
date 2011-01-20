@@ -45,7 +45,8 @@ var myProto =
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
-			log(me.cocktails)	
+			me.ingredients.sort(me.sortByUsage)
+				
 			me.parent.setBar()
 			
 			var ingredients = Ingredient.getAllNames(),
@@ -59,6 +60,13 @@ var myProto =
 			var searcher = me.searcher = new IngredientsSearcher(set, secondNamesHash)
 			me.view.setCompleterDataSource(searcher)
 		})
+	},
+	
+	sortByUsage : function(a, b)
+	{
+		if(a.group == b.group)
+			return 0
+		
 	},
 	
 	setIngredients : function()
