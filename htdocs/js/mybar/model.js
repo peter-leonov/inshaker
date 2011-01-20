@@ -45,7 +45,7 @@ var myProto =
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
-			me.ingredients.sort(me.sortByUsage)
+			me.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 				
 			me.parent.setBar()
 			
@@ -64,9 +64,12 @@ var myProto =
 	
 	sortByUsage : function(a, b)
 	{
-		if(a.group == b.group)
+		if(a.group != b.group)
 			return 0
 		
+		var u = this.ingredients.usage
+
+		return (u[b.name] || 0) - (u[a.name] || 0)
 	},
 	
 	setIngredients : function()
@@ -135,6 +138,8 @@ var myProto =
 		if(Object.isEmpty(ingredients.inBar)) return []
 		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.inBar), {count : 1}),
 			cocktails = []
+			
+		ingredients.usage = {}
 
 		ck:
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )
@@ -146,9 +151,20 @@ var myProto =
 				if(!ingredients.inBar[ing[j][0]]) 
 					continue ck
 			}
+
+			for (var k = 0, kl = ing.length; k < kl; k++) 
+			{
+				var ingr = ing[k][0]
+				if(!ingredients.usage[ingr])
+					ingredients.usage[ingr] = 1
+				else
+					ingredients.usage[ingr]++
+			}
+			
 			cocktails.push(cocktail)
 		}
 		
+
 		return cocktails.sort(function(a,b){
 			return a.ingredients.length - b.ingredients.length
 		})
@@ -202,6 +218,9 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		
+		var me = this
+		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 	},
@@ -211,6 +230,9 @@ var myProto =
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		
+		var me = this
+		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
