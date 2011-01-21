@@ -1,3 +1,5 @@
+#common-main-wrapper { position: relative; z-index: 1; }
+
 #main-column { width: 628px; }
 .body-wrapper { overflow: hidden; }
 .column-main-container { float: none; }
