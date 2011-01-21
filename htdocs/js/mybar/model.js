@@ -92,6 +92,11 @@ var myProto =
 		this.view.renderBarName(this.barName)
 	},
 	
+	getBarName : function()
+	{
+		return this.barName
+	},
+	
 	getIngredients : function(ingredientNames)
 	{
 		var /*inBar = Array.toHash(ingredientNames), */me = this

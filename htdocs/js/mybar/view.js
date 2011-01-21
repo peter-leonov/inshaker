@@ -254,7 +254,9 @@ var myProto =
 			nodes.title.hide()
 			nodes.form.show()
 			
-			if(nodes.input.value == '')
+			nodes.input.value = this.controller.getBarName()
+			
+			if(!nodes.input.value)
 				nodes.tip.show()
 			else
 				nodes.tip.hide()
