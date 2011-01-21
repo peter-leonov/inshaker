@@ -16,19 +16,21 @@
 #main-column .atmosphere .part { width: 250px; float: left; }
 #main-column .atmosphere .part dt,
 #main-column .atmosphere .part dd { display: inline; }
-#main-column .atmosphere .people { margin-left: 80px; }
+#main-column .atmosphere .feature { margin-left: 10px; }
+#main-column .atmosphere .people { margin-left: 75px; }
 
 #main-column .info { overflow: hidden; margin-top: 25px; }
-#main-column .info .block { float: left; width: 250px; }
-#main-column .info .block .block-header { height: 31px; padding: 0 10px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+#main-column .info .block { float: left; width: 265px; }
+#main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+#main-column .info .block .body { padding: 0 10px; }
 
-#main-column .info .about { margin-left: 75px; }
+#main-column .info .about { margin-left: 60px; }
 #main-column .info .about dl dt,
 #main-column .info .about dl dd { display: inline; }
 #main-column .info .about dl dt { font-weight: bold; }
 #main-column .info .about dl dd { line-height: 18px; }
 #main-column .info .about .contacts { margin-top: 1em; }
-#main-column .info .about .index { font-size: 48px; margin: 15px 0 20px 0; }
+#main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 .photos .viewport,
 .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
