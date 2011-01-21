@@ -1,5 +1,4 @@
-#main-column,
-#bar-on-map { width: 628px; }
+#main-column { width: 628px; }
 .body-wrapper { overflow: hidden; }
 .column-main-container { float: none; }
 
@@ -31,6 +30,9 @@
 #main-column .info .about dl dd { line-height: 18px; }
 #main-column .info .about .contacts { margin-top: 1em; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
+
+#bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
+#bar-on-map .head { height: 31px; padding: 0 10px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 
 .photos .viewport,
 .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
@@ -69,10 +71,9 @@
 .whisky-index .column { width: 310px; }
 
 #city-name, #bar-page #bar-id { display: none; }
-#map { width: 100%; height: 480px; position: relative; overflow: hidden; border: 1px solid #888; }
 #price-index { padding: 53px 0 0 89px; font-size: 35px; }
 
-#map .bar-map-popup h2 { margin-bottom: 0.25em; }
+#map { height: 480px; position: relative; overflow: hidden; background-color: gray !important; }
 
 #map .point { position: absolute; }
 #map .point.selected { z-index: 4; }
