@@ -25,6 +25,10 @@
 #main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 #main-column .info .block .body { padding: 0 10px; }
 
+#main-column .info .hit .cocktail-preview { width: 200px; height: 400px; margin: 0 auto; }
+#main-column .info .hit .cocktail-preview .link { display: block; text-align: center; }
+#main-column .info .hit .cocktail-preview .link .image { display: block; }
+
 #main-column .info .about { margin-left: 60px; }
 #main-column .info .about dl dt,
 #main-column .info .about dl dd { display: inline; }

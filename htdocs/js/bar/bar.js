@@ -28,14 +28,7 @@ $.onready
 				next:            $$('.photos .next')[0],
 				items:           $$('.photos .point')
 			},
-			carte:
-			{
-				root:            $$('#carte')[0],
-				viewport:        $$('#carte .viewport')[0],
-				surface:         $$('#carte .surface')[0],
-				prev:            $$('#carte .prev')[0],
-				next:            $$('#carte .next')[0]
-			},
+			hitBox: $$('#main-column .info .hit .body')[0],
 			barName: $('bar-name'),
 			cityName: $('city-name'),
 			map: $('map'),

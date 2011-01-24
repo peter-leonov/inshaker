@@ -100,21 +100,7 @@ BarPage.view =
 	
 	renderCocktails: function (cocktails)
 	{
-		var listNodes = this.nodes.carte
-		
-		var clNodes =
-		{
-			root: listNodes.root,
-			viewport: listNodes.viewport,
-			surface: listNodes.surface,
-			prev: listNodes.prev,
-			next: listNodes.next
-		}
-
-		var cl = new CocktailList()
-		cl.bind(clNodes)
-		cl.configure({pageLength: 5, pageVelocity: 36.5})
-		cl.setCocktails(cocktails)
+		this.nodes.hitBox.appendChild(cocktails[0].getPreviewNode(false, true))
 	},
 	
 	renderPrevNext: function (prevNext)
