@@ -40,8 +40,8 @@ $.onready
 			cityName: $('city-name'),
 			map: $('map'),
 			positionControl: $$('.position-control')[0],
-			barPrev: $$('.b-title .hrefs .prev')[0],
-			barNext: $$('.b-title .hrefs .next')[0]
+			barPrev: $$('#main-column .common-title .navigation .prev')[0],
+			barNext: $$('#main-column .common-title .navigation .next')[0]
 		}
 		RoundedCorners.round(nodes.photos.root)
 		BarPage.initialize(nodes, Bar, Cocktail)
