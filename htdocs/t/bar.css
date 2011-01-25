@@ -79,7 +79,7 @@
 #city-name, #bar-page #bar-id { display: none; }
 #price-index { padding: 53px 0 0 89px; font-size: 35px; }
 
-#map { height: 480px; position: relative; overflow: hidden; background-color: gray !important; }
+#map { height: 330px; position: relative; overflow: hidden; background-color: gray !important; }
 
 #map .point { position: absolute; }
 #map .point.selected { z-index: 4; }
