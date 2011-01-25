@@ -219,8 +219,9 @@ html.loading .b-content { display: none; }
 	position: relative;
 	z-index: 1;
 	background-color: transparent;
-	border: 1px solid #C0C0C0;
+	border: none;
 	padding: 2px 2px;
+	width: 100%;
 }
 #bar-name form.change-name .tip {
 	left: 4px;
@@ -229,6 +230,7 @@ html.loading .b-content { display: none; }
 	color: #BBBBBB;
 }
 
-.firefox #bar-name form.change-name input.new-bar-name { left: 1px; top: 2px; }
-.safari #bar-name form.change-name input.new-bar-name { left: -1px; top: 0px; }
-.chrome #bar-name form.change-name input.new-bar-name { left: -1px; top: 0px; }
+.firefox #bar-name form.change-name input.new-bar-name { left: 2px; top: 2px; }
+.safari #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
+.chrome #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
+#bar-name form.change-name input.new-bar-name:focus { outline: none; }

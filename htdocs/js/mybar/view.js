@@ -251,12 +251,12 @@ var myProto =
 			nodes.form.show()
 			
 			var currBarName = this.controller.getBarName()
-			var l = currBarName.length
+			//var l = currBarName.length
 			
-			l = l < 30 ? 30 : l > 30 ? l*1.1 : l
+			//l = l < 30 ? 30 : l > 30 ? l*1.1 : l
 			
 			nodes.input.value = currBarName
-			nodes.input.setAttribute('size', l)
+			//nodes.input.setAttribute('size', l)
 			
 			if(!nodes.input.value)
 				nodes.tip.show()
