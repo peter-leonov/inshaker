@@ -36,7 +36,10 @@
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
-#bar-on-map .head { height: 31px; padding: 0 10px 0 30px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+#bar-on-map .head { height: 31px; padding: 0 30px; position: relative; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+#bar-on-map .head .taxi { position: absolute; right: 30px; }
+#bar-on-map .head .taxi .name { color: #e6d408; }
+#bar-on-map .head .taxi .code { color: #999; }
 
 .photos .viewport,
 .photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
