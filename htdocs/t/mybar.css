@@ -204,16 +204,14 @@ html.loading .b-content { display: none; }
 #bar-name .help, #bar-name .title{
 	font-size: 24px;
 	text-decoration: underline;
+	cursor: pointer;
 }
-
-#bar-name h2 { cursor: pointer; }
 
 #bar-name form.change-name {
 	font-size: 24px;
 	left: -6px;
 	position: relative;
 	top: -5px;
-	width: 300px;
 }
 
 #bar-name form.change-name input.new-bar-name {
@@ -230,3 +228,7 @@ html.loading .b-content { display: none; }
 	top: 4px;
 	color: #BBBBBB;
 }
+
+.firefox #bar-name form.change-name input.new-bar-name { left: 1px; top: 2px; }
+.safari #bar-name form.change-name input.new-bar-name { left: -1px; top: 0px; }
+.chrome #bar-name form.change-name input.new-bar-name { left: -1px; top: 0px; }

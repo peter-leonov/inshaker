@@ -72,11 +72,14 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
 
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 ;(function(){
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
+	
 	var nodes = {
 		
 		barName : {
