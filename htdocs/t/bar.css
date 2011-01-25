@@ -28,9 +28,10 @@
 #main-column .info .hit .cocktail-preview .link .image { display: block; }
 
 #main-column .info .about { margin-left: 60px; }
+#main-column .info .about dl { margin-bottom: 1em; }
 #main-column .info .about dl dt,
 #main-column .info .about dl dd { display: inline; }
-#main-column .info .about dl dt { font-weight: bold; }
+#main-column .info .about dl dt { font-weight: bold; display: block; }
 #main-column .info .about dl dd { line-height: 18px; }
 #main-column .info .about .contacts { margin-top: 1em; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
