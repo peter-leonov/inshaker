@@ -20,7 +20,7 @@
 
 #main-column .info { overflow: hidden; margin-top: 25px; }
 #main-column .info .block { float: left; width: 265px; }
-#main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+#main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 28px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 #main-column .info .block .body { padding: 0 10px; }
 
 #main-column .info .hit .cocktail-preview { width: 200px; height: 400px; margin: 0 auto; }
@@ -36,7 +36,7 @@
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
-#bar-on-map .head { height: 31px; padding: 0 30px; position: relative; line-height: 30px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+#bar-on-map .head { height: 31px; padding: 0 30px; position: relative; line-height: 28px; color: #fff; background: #222 url(bar/block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 #bar-on-map .head .taxi { position: absolute; right: 30px; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(bar/chequered-pattern.png); }
 #bar-on-map .head .taxi .name { color: #e6d408; }
