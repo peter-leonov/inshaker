@@ -46,24 +46,15 @@ var myProto =
 		nodes.barName.wrapper.addEventListener('click', function(e){ me.handleBarNameClick(e) }, false)
 		document.body.addEventListener('click', function(e){ me.barNameChanging(e) }, true)
 		nodes.barName.form.addEventListener('submit', function(e){ me.handleNewBarName(e) }, false)		
-		nodes.barName.input.addEventListener('keypress', function(e)
-		{
-			var tip = nodes.barName.tip
-			setTimeout(function(){
-				if(e.target.value == '')
-					tip.show()
-				else
-					tip.hide()
-			}, 1)
-		}, false)
+		nodes.barName.input.addEventListener('keypress', function(e){ me.handleBarNameKeypress(e) }, false)
+		
 		nodes.barName.input.bName = true
 		nodes.barName.title.bTitle = true
+		nodes.ingrResetButton.addEventListener('click', function(){ me.clearInput() }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
-		
-		
 	},
 	
 	setCompleterDataSource: function (ds)
@@ -220,6 +211,11 @@ var myProto =
 		this.nodes.recommendsEmpty.show()
 	},
 	
+	clearInput : function()
+	{
+		this.nodes.ingrQueryInput.value = ''
+	},
+	
 	handleIngredientClick : function(e)
 	{
 		var node = e.target
@@ -254,7 +250,13 @@ var myProto =
 			nodes.title.hide()
 			nodes.form.show()
 			
-			nodes.input.value = this.controller.getBarName()
+			var currBarName = this.controller.getBarName()
+			var l = currBarName.length
+			
+			l = l < 30 ? 30 : l > 30 ? l*1.1 : l
+			
+			nodes.input.value = currBarName
+			nodes.input.setAttribute('size', l)
 			
 			if(!nodes.input.value)
 				nodes.tip.show()
@@ -284,6 +286,17 @@ var myProto =
 		if(!notEmpty) input.value = ''
 		
 		this.controller.setNewBarName(notEmpty ? input.value : this.nodes.barName.tip.innerHTML)
+	},
+	
+	handleBarNameKeypress : function(e)
+	{
+			var tip = this.nodes.barName.tip
+			setTimeout(function(){
+				if(e.target.value == '')
+					tip.show()
+				else
+					tip.hide()
+			}, 1)
 	}
 }
 Object.extend(Me.prototype, myProto)
