@@ -81,7 +81,8 @@ Me.prototype =
 	
 	accept: function (value, source)
 	{
-		this.select(value, source)
+		//this.select(value, source)
+		this.select('', source)
 		this.dispatchEvent({type: 'accept', source: source, value: value})
 	},
 	
