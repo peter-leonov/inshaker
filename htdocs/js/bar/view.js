@@ -58,8 +58,8 @@ BarPage.view =
 	readBarCityNames: function ()
 	{
 		var nodes = this.nodes,
-			barName = nodes.barName.innerHTML,
-			cityName = nodes.cityName.innerHTML
+			barName = nodes.barName.getAttribute('data-value'),
+			cityName = nodes.cityName.getAttribute('data-value')
 		
 		var state = {}
 		state.name = barName
