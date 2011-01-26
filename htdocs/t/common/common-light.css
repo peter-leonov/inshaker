@@ -19,7 +19,7 @@ table td{padding:0;}
 .to-print{display:none;}
 
 html{background-color:#fff;}
-body{font:62.5% Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
+body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
 
 /* 0px to 10px rounded corners */
 .rounding-corners .lt,
