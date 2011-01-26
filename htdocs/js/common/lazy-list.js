@@ -23,7 +23,8 @@ function Me ()
 		stepY: 500,
 		
 		// the time to wait the next onscroll event before take any actions
-		throttle: 100
+		throttleSoft: 100,
+		throttleHard: 500
 	}
 	this.constructor = Me
 }
@@ -95,13 +96,10 @@ Me.prototype =
 		var boxes = this.boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
 		var frame = this.frame,
-			frameWidth = viewport.offsetWidth,
-			timer
-		this.scroller.onscroll = function (x, realX)
-		{
-			clearTimeout(timer)
-			timer = setTimeout(function () { frame.moveTo(realX - frameWidth, 0) }, conf.throttle)
-		}
+			frameWidth = viewport.offsetWidth
+		
+		var t = new Throttler(function (x, realX) { frame.moveTo(realX - frameWidth, 0) }, conf.throttleSoft, conf.throttleHard)
+		this.scroller.onscroll = function (x, realX) { t.call(x, realX) }
 		
 		frame.setFrame(frameWidth * 3, viewport.offsetHeight)
 		frame.setBoxes(boxes)

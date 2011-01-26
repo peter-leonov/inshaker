@@ -22,9 +22,9 @@ BarPage.view =
 		var photos = this.nodes.photos,
 			items = photos.items
 		
-		var total = items.length
+		var total = items.length, last
 		if (total > 1)
-			photos.surface.appendChild(items[0].cloneNode(true))
+			last = photos.surface.appendChild(items[0].cloneNode(true))
 		
 		var list = new LazyList()
 		list.bind(photos)
@@ -34,12 +34,13 @@ BarPage.view =
 			for (var i = 0, il = nodes.length; i < il; i++)
 			{
 				// buggy in Firefox
-				// var image = nodes[i].firstChild
-				// if (!image.src)
-				// 	image.src = image.getAttribute('data-lazy-src')
+				var image = nodes[i].firstChild
+				if (!image.src)
+					image.src = image.getAttribute('data-lazy-src')
 			}
 		}
 		list.setNodes(items, total)
+		list.load([last])
 	},
 	
 	modelChanged: function (data)

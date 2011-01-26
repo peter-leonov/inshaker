@@ -19,10 +19,10 @@
 <!--# include virtual="/lib-0.3/modules/boxer.js"-->
 
 
-<!--# include file="/js/common/statistics.js" -->
-<!--# include file="/js/common/lazy-list.js" -->
-<!--# include file="/js/common/cocktail-list.js" -->
-<!--# include file="/js/common/rounded-corners.js" -->
+<!--# include virtual="/js/combinator/throttler.js" -->
+<!--# include virtual="/js/common/lazy-list.js" -->
+<!--# include virtual="/js/common/cocktail-list.js" -->
+<!--# include virtual="/js/common/rounded-corners.js" -->
 
 $.onready(function () { setTimeout(function () { GoogleAnalytics.trackPageview() }, 250) })
 
