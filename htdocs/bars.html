@@ -1,34 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html id="bars-page" class="loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<!--# include file="/inc/head-bars.html" -->
+	<!--# include file="/inc/bars-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/bars.css"/>
 	<title>Inshaker — Гид по лучшим коктейльным барам России</title>
 </head>
 <body> 
 <!--# include file="/inc/top-common.html" -->
-<div id="main-wrapper">
-	<div class="column"><div class="body-wrapper">
-		<div class="b-title" id="head">
-			<h1>
-				<span class="all"><a href="/about.html#view-about">Гид</a> по лучшим коктейльным барам</span>
-				<span class="search hidden">Где попробовать <a class="cocktail"></a> в лучших <a class="drop-cocktail">барах</a></span>
-				<span id="switch-view"><a class="view-list" data-tab-name="list">списком</a> или <a class="view-map" data-tab-name="map">на карте</a></span>
-			</h1>
-			<a id="spotlighted"></a>
+<div id="common-main-wrapper">
+
+<div id="main-column" class="common-box"><div class="common-content">
+	<div class="common-title" id="head">
+		<h1>
+			<span class="all"><a href="/about.html#view-about">Гид</a> по лучшим коктейльным барам</span>
+			<span class="search hidden">Где попробовать <a class="cocktail"></a> в лучших <a class="drop-cocktail">барах</a></span>
+			<span id="switch-view"><a class="view-list" data-tab-name="list">списком</a> или <a class="view-map" data-tab-name="map">на карте</a></span>
+		</h1>
+		<a id="spotlighted"></a>
+	</div>
+	
+	<div id="bars-list">
+		<div id="sort-menu">
+			<dl class="bars-select" id="bars-city"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>: куда пойти <dl class="bars-select" id="bars-format"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl></div>
+		<div class="please-wait">Загружаю много баров…</div>
+		<ul id="bars-container"><!--# include file="/bar/links.html" --></ul>
+		<div id="map" class="hidden">
+			<p class="please-wait-map">Загружаю карту…</p>
+			<div class="surface"></div>
 		</div>
-		
-		<div class="b-content" id="bars-list">
-			<div id="sort-menu">
-				<dl class="bars-select" id="bars-city"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>: куда пойти <dl class="bars-select" id="bars-format"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl></div>
-			<div class="please-wait">Загружаю много баров…</div>
-			<ul id="bars-container"><!--# include file="/bar/links.html" --></ul>
-			<div id="map" class="hidden">
-				<p class="please-wait-map">Загружаю карту…</p>
-				<div class="surface"></div>
-			</div>
-		</div>
-	</div></div>
+	</div>
+</div></div><!-- /common-box /common-content -->
+
 </div>
 
 <!--# include file="/inc/bottom-common.html" -->
