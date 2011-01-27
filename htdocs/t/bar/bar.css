@@ -23,7 +23,7 @@
 #main-column .info { overflow: hidden; margin-top: 25px; }
 #main-column .info .block { float: left; width: 265px; }
 #main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
-#main-column .info .block .body { padding: 0 10px; }
+#main-column .info .block .body { padding: 0; position: relative; height: 390px; }
 
 #main-column .info .hit .cocktail-preview { width: 200px; height: 400px; margin: 0 auto; }
 #main-column .info .hit .cocktail-preview .link { display: block; text-align: center; }
@@ -35,7 +35,7 @@
 #main-column .info .about dl dd { display: inline; }
 #main-column .info .about dl dt { font-weight: bold; display: block; }
 #main-column .info .about dl dd { line-height: 18px; }
-#main-column .info .about .contacts { margin-top: 1em; }
+#main-column .info .about .contacts { position: absolute; bottom: 0; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }

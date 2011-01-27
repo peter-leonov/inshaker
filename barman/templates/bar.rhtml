@@ -61,23 +61,24 @@
 			<dd class="body">
 				<div class="index"><%= @priceIndex %> руб.</div>
 				
-				<% if @chief %>
-				<dl class="part barman">
-					<dt>Главный бармен:</dt>
-					<dd><a href="/barman/<%= @chief["name_eng"].dirify %>/"><%= @chief["name"] %></a></dd>
-				</dl>
-				<% end %>
-				<dl class="part cookery">
-					<dt>Кухня:</dt>
-					<dd>
-						<% @cuisine.each do |e| %>
-						<%= e %><%= "," unless e == @cuisine.last %>
-						<% end %>
-					</dd>
-				</dl>
-				
-				<% if @contacts %>
 				<div class="contacts">
+					<% if @chief %>
+					<dl class="part barman">
+						<dt>Главный бармен:</dt>
+						<dd><a href="/barman/<%= @chief["name_eng"].dirify %>/"><%= @chief["name"] %></a></dd>
+					</dl>
+					<% end %>
+					<dl class="part cookery">
+						<dt>Кухня:</dt>
+						<dd>
+							<% @cuisine.each do |e| %>
+							<%= e %><%= "," unless e == @cuisine.last %>
+							<% end %>
+						</dd>
+					</dl>
+					
+					<% if @contacts %>
+					
 					<% if v = @contacts["hours"] %>
 					<dl class="part hours">
 						<dt>Часы работы:</dt>
@@ -122,8 +123,9 @@
 						</dd>
 					</dl>
 					<% end %>
-				</div>
-				<% end %>
+					
+					<% end %>
+				</div><!-- /contacts -->
 			</dd>
 		</dl>
 	</div>
