@@ -15,35 +15,35 @@
 		<span id="city-name" data-value="<%= @city %>"><%= @city %></span>
 		<ul class="navigation"><li><a class="prev">←</a></li><li><a href="/bars.html">все бары</a></li><li><a class="next">→</a></li></ul>
 	</div>
-
+	
 	<div class="description"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %></div>
-
+	
 	<div class="photos programica-rolling-images">
 		<div class="viewport">
 			<ul class="surface">
 				<% (1..@photos).each do |i| %>
-					<li class="point"><img data-lazy-src="photo-<%= i %>.jpg"/></li>
+				<li class="point"><img data-lazy-src="photo-<%= i %>.jpg"/></li>
 				<% end %>
 			</ul>
 		</div>
 		<a class="prev"></a><a class="next"></a>
 	</div>
-
+	
 	<div class="atmosphere">
 		<dl class="part feature">
 			<dt>Тут можно:</dt>
 			<dd>
-				<% @format.collect do |e| %>
-				<a href="/bars.html#format=<%= e %>"><%= e %></a>
-				<% end.join(", ") %>
+				<% @format.each do |e| %>
+				<a href="/bars.html#format=<%= e %>"><%= e %></a><%= "," unless e == @format.last %>
+				<% end %>
 			</dd>
 		</dl>
 		<dl class="part people">
 			<dt>В компании:</dt>
 			<dd>
-				<% @feel.collect do |e| %>
-				<a href="/bars.html#feel=<%= e %>"><%= e %></a>
-				<% end.join(", ") %>
+				<% @feel.each do |e| %>
+				<a href="/bars.html#feel=<%= e %>"><%= e %></a><%= "," unless e == @feel.last %>
+				<% end %>
 			</dd>
 		</dl>
 	</div>
@@ -54,9 +54,9 @@
 			<dt class="head"><a href="/combinator.html#q=%D0%90%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%B8%D0%BA%D0%B5%20%D1%85%D0%B8%D1%82%D1%8B">Коктейльный хит</a> в этом баре</dt>
 			<dd class="body"></dd>
 		</dl>
-
+		
 		<dl class="block about">
-
+			
 			<dt class="head block-header">Индекс <a href="/cocktail/whisky_cola/">Виски Кола</a> в этом баре</dt>
 			<dd class="body">
 				<div class="index"><%= @priceIndex %> руб.</div>
@@ -70,9 +70,9 @@
 				<dl class="part cookery">
 					<dt>Кухня:</dt>
 					<dd>
-						<% @cuisine.collect do |e| %>
-						<%= e %>
-						<% end.join(", ") %>
+						<% @cuisine.each do |e| %>
+						<%= e %><%= "," unless e == @cuisine.last %>
+						<% end %>
 					</dd>
 				</dl>
 				
