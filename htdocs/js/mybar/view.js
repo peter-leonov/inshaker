@@ -174,7 +174,7 @@ var myProto =
 	{
 		var inYourBar = groups.ingrInYourBar
 		
-		if(inYourBar)
+		if(inYourBar && inYourBar.length)
 		{
 			var ul = N('ul')
 			for (var i = 0, il = 3; i < il; i++)
@@ -184,7 +184,7 @@ var myProto =
 			}
 			this.nodes.recommends.inYourBarList.empty()
 			this.nodes.recommends.inYourBarList.appendChild(ul)
-			this.nodes.recommends.inGoodBar.show()
+			this.nodes.recommends.inYourBar.show()
 		}
 		else
 			this.nodes.recommends.inYourBar.hide()
@@ -193,7 +193,7 @@ var myProto =
 
 		var inGoodBar = groups.ingrInGoodBar
 
-		if(inGoodBar)
+		if(inGoodBar && inGoodBar.length)
 		{
 			var ul = N('ul')
 			for (var i = 0, il = 3; i < il; i++)
@@ -211,7 +211,7 @@ var myProto =
 
 		var ingrOfMonth = groups.ingrOfMonth
 		
-		if(ingrOfMonth)
+		if(ingrOfMonth && ingrOfMonth.length)
 		{
 			var ul = N('ul')
 			for (var i = 0, il = 1; i < il; i++)
