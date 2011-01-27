@@ -208,11 +208,11 @@ var myProto =
 			{
 				var ing = set[j][0]
 				
-				if(rih[ing])
+				if(rih[ing] && !ingHash[ing])
 					t.push(ing)
 				else if(!ingHash[ing])
 					a++
-					
+
 				//if (a>3) continue ck
 			}
 			
@@ -249,11 +249,14 @@ var myProto =
 		
 		for (var k in groups) 
 		{
-			groups[k].sort(function(a,b) { return megasort(a,b) } )
-			for (var i = 0, il = groups[k].length; i < il; i++) 
-				groups[k][i] = Ingredient.getByName(groups[k][i].name) || null
+			var group = groups[k]
+			group.sort(function(a,b) { return megasort(a,b) } )
+			
+			log(group)
+			
+			for (var i = 0, il = group.length; i < il; i++) 
+				group[i] = Ingredient.getByName(group[i].name) || null
 		}
-		log(groups)
 		
 		function megasort(a, b)
 		{
