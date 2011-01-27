@@ -11,21 +11,39 @@ var myProto =
 		
 		var me = this
 		
-		Ingredient.prototype.getPreviewNode = function()
+		Ingredient.prototype.getPreviewNode = function(addFlag, removeFlag)
 		{
 			var ingr = me.getPreviewNodeOriginal.call(this)
-			if(me.inBar && !me.inBar[this.name])
+			
+			if(!addFlag && !removeFlag) return ingr
+			
+			var li = N('li')
+			
+			if(addFlag)
 			{
 				ingr.addClassName('not-in-bar')
-				var add = Nct('span', 'add-ingredient', '+')
-				add.addingIngredient = this
-				add.setAttribute('title', 'Добавить ингредиент')
-				add.style.opacity = 0
-				ingr.appendChild(add)
-				ingr.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.2) }, true)
-				ingr.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.2) }, true)
+				var ctrl = Nct('span', 'add-ingredient', '+')
+				ctrl.addingIngredient = this
+				ctrl.setAttribute('title', 'Добавить')
 			}
-			return ingr
+			
+			else if(removeFlag)
+			{
+				ingr.addClassName('in-bar')
+				var ctrl = Nct('span', 'remove-ingredient', '×')
+				ctrl.removingIngredient = this
+				ctrl.setAttribute('title', 'Удалить ингредиент')				
+			}
+			
+			ctrl.style.opacity = 0
+			
+			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.2) }, true)
+			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.2) }, true)
+			
+			li.appendChild(ctrl)
+			li.appendChild(ingr)
+			
+			return li
 		}
 		
 	},
@@ -39,6 +57,7 @@ var myProto =
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.recommends.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		//nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleSwitcherClick(e) }, false)
@@ -98,22 +117,7 @@ var myProto =
 		var ul = N('ul')
 		for(var i = 0, l = ingredients.length; i < l; i++)
 		{
-			(function(){
-			var ingr = ingredients[i],
-				ingrNode = ingr.getPreviewNode(),
-				//inBar = haveIngredients[ingr.name] || false,
-				li = Nc('li','in-bar'),
-				ctrl = Nct('span', 'remove-ingredient', '×')
-				
-			ctrl.style.opacity = 0
-			ctrl.setAttribute('title', 'Убрать')
-			ctrl.removingIngredient = ingr
-			li.appendChild(ctrl)
-			li.appendChild(ingrNode)
-			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.25) }, true)
-			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.25) }, true)
-			ul.appendChild(li)
-			})()
+			ul.appendChild(ingredients[i].getPreviewNode(false, true))
 		}
 		this.nodes.ingrList.empty()
 		this.nodes.ingrList.appendChild(ul)
@@ -164,6 +168,64 @@ var myProto =
 			
 			this.nodes.cocktails.wrapper.show()
 		}
+	},
+	
+	renderRecommIngr : function(groups)
+	{
+		var inYourBar = groups.ingrInYourBar
+		
+		if(inYourBar)
+		{
+			var ul = N('ul')
+			for (var i = 0, il = 3; i < il; i++)
+			{
+				if(!inYourBar[i]) break
+				ul.appendChild(inYourBar[i].getPreviewNode(true))
+			}
+			this.nodes.recommends.inYourBarList.empty()
+			this.nodes.recommends.inYourBarList.appendChild(ul)
+			this.nodes.recommends.inGoodBar.show()
+		}
+		else
+			this.nodes.recommends.inYourBar.hide()
+		
+
+
+		var inGoodBar = groups.ingrInGoodBar
+
+		if(inGoodBar)
+		{
+			var ul = N('ul')
+			for (var i = 0, il = 3; i < il; i++)
+			{
+				if(!inGoodBar[i]) break
+				ul.appendChild(inGoodBar[i].getPreviewNode(true))
+			}
+			this.nodes.recommends.inGoodBarList.empty()
+			this.nodes.recommends.inGoodBarList.appendChild(ul)
+			this.nodes.recommends.inGoodBar.show()
+		}
+		else
+			this.nodes.recommends.inGoodBar.hide()
+
+
+		var ingrOfMonth = groups.ingrOfMonth
+		
+		if(ingrOfMonth)
+		{
+			var ul = N('ul')
+			for (var i = 0, il = 1; i < il; i++)
+			{
+				if(!ingrOfMonth[i]) break
+				ul.appendChild(ingrOfMonth[i].getPreviewNode(true))
+			}
+			
+			this.nodes.recommends.ingrOfMonthList.empty()
+			this.nodes.recommends.ingrOfMonthList.appendChild(ul)
+			this.nodes.recommends.ingrOfMonth.show()
+		}
+		else
+			this.nodes.recommends.ingrOfMonth.hide()
 	},
 	
 	renderIfCocktailsEmpty : function()
