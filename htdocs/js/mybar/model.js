@@ -51,8 +51,11 @@ var myProto =
 			me.allRecommIngHash = me.cAllRecommIngrHash(<!--# include virtual="/db/mybar/ingredients.js" -->)
 			me.recommIngr = me.computeRecommIngr(me.allRecommIngHash)
 			
+			log(me.recommIngr)
+			
 			me.parent.setBar()
 			
+			//ingr searcher
 			var ingredients = Ingredient.getAllNames(),
 				secondNames = Ingredient.getAllSecondNames(),
 				secondNamesHash = Ingredient.getNameBySecondNameHash()
@@ -184,13 +187,13 @@ var myProto =
 		})
 	},
 	
-	computeRecommIngr : function(recIngHash)
+	computeRecommIngr : function(rih)
 	{
 		var cocktails = Cocktail.getAll(),
 			ingHash = this.ingredients.inBar,
 			cocktailsHash = Array.toHash(this.cocktails)
 
-			
+		ck:
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
 			var cocktail = cocktails[i]
@@ -203,12 +206,14 @@ var myProto =
 			
 			for (var j = 0, jl = set.length; j < jl; j++) 
 			{
-				var ingr = set[j]
+				var ing = set[j][0]
 				
-				if(recIngHash[ingr])
-					t.push(ingr)
-				else if(!ingHash[ingr])
+				if(rih[ing])
+					t.push(ing)
+				else if(!ingHash[ing])
 					a++
+					
+				//if (a>3) continue ck
 			}
 			
 			if(a + t.length == jl)
@@ -216,34 +221,77 @@ var myProto =
 			
 			for (var k = 0, kl = t.length; k < kl; k++) 
 			{
-				var ci = t[k]
-				if(!recIngHash[ci]['weight'])
-					recIngHash[ci]['weight'] = []
+				var ing = rih[t[k]]
+				if(!ing['weight'])
+					ing['weight'] = []
 				
-				if(!recIngHash[ci]['weight'][a])
-					recIngHash[ci]['weight'][a] = 1
+				if(!ing['weight'][a])
+					ing['weight'][a] = 1
 				else
-					recIngHash[ci]['weight'][a]++
+					ing['weight'][a]++
 			}
 		}
 		
-		
 		//brake on groups
-		return recIngHash
+		groups = {}
+		for (var k in rih) 
+		{
+			if(this.ingredients.inBar[k]) continue
+			
+			var ing = rih[k]
+			var	g = ing.group
+			
+			if(!groups[g])
+				groups[g] = []
+			
+			groups[g].push({ name : k, weight : ing.weight })
+		}
+		
+		for (var k in groups) 
+		{
+			groups[k].sort(function(a,b) { return megasort(a,b) } )
+			for (var i = 0, il = groups[k].length; i < il; i++) 
+				groups[k][i] = Ingredient.getByName(groups[k][i].name) || null
+		}
+		log(groups)
+		
+		function megasort(a, b)
+		{
+			var aw = a.weight || [],
+				bw = b.weight || [],
+				l = aw.length > bw.length ? aw.length : bw.length
+			
+			for (var i = 0; i < l; i++) 
+			{
+				aw[i] = aw[i] || 0
+				bw[i] = bw[i] || 0
+				if (aw[i] == bw[i])
+					continue
+				
+				return bw[i] - aw[i]
+			}
+			
+			if(Ingredient.getByName(a.name) && Ingredient.getByName(b.name))
+				return Ingredient.sortByGroups(a.name, b.name)
+			
+			return 0
+		}
+		
+		return groups
 	},
 	
 	cAllRecommIngrHash : function(groups)
 	{
-		var allRecomm = {}
+		var rih = {}
 		for (var k in groups) 
 		{
 			var group = groups[k]
-			for (var i = 0, il = group.length; i < il; i++) 
+			for (var j = 0, jl = group.length; j < jl; j++) 
 			{
-				allRecomm[group[i]] = k
+				rih[group[j]] = {group : k}
 			}
 		}
-		return allRecomm		
+		return rih		
 	},
 	
 	/*
@@ -294,12 +342,14 @@ var myProto =
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.recommIngr = this.computeRecommIngr(this.allRecommIngHash)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderRecommIngr(this.recommIngr)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -307,12 +357,14 @@ var myProto =
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.recommIngr = this.computeRecommIngr(this.allRecommIngHash)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderRecommIngr(this.recommIngr)
 	},
 	
 	switchCocktailsView : function(showPhotos)
