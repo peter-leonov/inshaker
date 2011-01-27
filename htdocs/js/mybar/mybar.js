@@ -114,7 +114,17 @@ function onready ()
 			swCombs : $$('#output .cocktails-block .switcher .combs')[0],
 			wrapper : $$('#output .cocktails-block .wrapper')[0],
 			empty : $$('#output .cocktails-block .empty')[0]
-		}	
+		},
+		
+		recommends : {
+			wrapper : $$('#output .recommend-ingredients')[0],
+			inYourBar : $$('#output .recommend-ingredients .ingr-in-your-bar')[0],
+			inGoodBar : $$('#output .recommend-ingredients .ingr-in-good-bar')[0],
+			ingrOfMonth : $$('#output .recommend-ingredients .ingr-of-month')[0],
+			inYourBarList : $$('#output .recommend-ingredients .ingr-in-your-bar .list')[0],
+			inGoodBarList : $$('#output .recommend-ingredients .ingr-in-good-bar .list')[0],
+			ingrOfMonthList : $$('#output .recommend-ingredients .ingr-of-month .list')[0]
+		}
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
 		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
