@@ -39,10 +39,16 @@ var myProto =
 		this.model.setBarName()
 		return this
 	},
+	
+	setRecommIngr : function()
+	{
+		this.model.setRecommIngr()
+		return this
+	},
 
 	setBar : function()
 	{
-		return this.setBarName().setIngredients().setCocktails()
+		return this.setBarName().setIngredients().setCocktails().setRecommIngr()
 	}
 }
 
@@ -56,6 +62,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
 <!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
+
 //Sorry for old lib. It's needed for Storage (hard code in it)
 <!--# include virtual="/lib/Programica/UA.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
@@ -71,8 +79,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
-
-<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 ;(function(){
 

@@ -24,6 +24,7 @@ var myProto =
 	{
 		this.ingredients = []
 		this.recommends = []
+		this.recommIngr = []
 	},
 	
 	bind : function ()
@@ -46,7 +47,10 @@ var myProto =
 			//me.recommends = me.computeRecommends( me.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
 			me.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
-				
+
+			me.allRecommIngHash = me.cAllRecommIngrHash(<!--# include virtual="/db/mybar/ingredients.js" -->)
+			me.recommIngr = me.computeRecommIngr(me.allRecommIngHash)
+			
 			me.parent.setBar()
 			
 			var ingredients = Ingredient.getAllNames(),
@@ -85,6 +89,11 @@ var myProto =
 	setCocktails : function()
 	{
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
+	},
+	
+	setRecommIngr : function()
+	{
+		this.view.renderRecommIngr(this.recommIngr)
 	},
 	
 	setBarName : function()
@@ -174,6 +183,69 @@ var myProto =
 			return a.ingredients.length - b.ingredients.length
 		})
 	},
+	
+	computeRecommIngr : function(recIngHash)
+	{
+		var cocktails = Cocktail.getAll(),
+			ingHash = this.ingredients.inBar,
+			cocktailsHash = Array.toHash(this.cocktails)
+
+			
+		for (var i = 0, il = cocktails.length; i < il; i++) 
+		{
+			var cocktail = cocktails[i]
+			
+			if(cocktailsHash[cocktail.name])
+				continue
+			
+			var set = cocktail.ingredients
+			var t = [], a = 0
+			
+			for (var j = 0, jl = set.length; j < jl; j++) 
+			{
+				var ingr = set[j]
+				
+				if(recIngHash[ingr])
+					t.push(ingr)
+				else if(!ingHash[ingr])
+					a++
+			}
+			
+			if(a + t.length == jl)
+				continue
+			
+			for (var k = 0, kl = t.length; k < kl; k++) 
+			{
+				var ci = t[k]
+				if(!recIngHash[ci]['weight'])
+					recIngHash[ci]['weight'] = []
+				
+				if(!recIngHash[ci]['weight'][a])
+					recIngHash[ci]['weight'][a] = 1
+				else
+					recIngHash[ci]['weight'][a]++
+			}
+		}
+		
+		
+		//brake on groups
+		return recIngHash
+	},
+	
+	cAllRecommIngrHash : function(groups)
+	{
+		var allRecomm = {}
+		for (var k in groups) 
+		{
+			var group = groups[k]
+			for (var i = 0, il = group.length; i < il; i++) 
+			{
+				allRecomm[group[i]] = k
+			}
+		}
+		return allRecomm		
+	},
+	
 	/*
 	computeRecommends : function(ingredients)
 	{
