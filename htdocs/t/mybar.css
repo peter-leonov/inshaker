@@ -234,3 +234,29 @@ html.loading .b-content { display: none; }
 .safari #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
 .chrome #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
 #bar-name form.change-name input.new-bar-name:focus { outline: none; }
+
+
+/*recommend ingredients*/
+
+.recommend-ingredients { 
+	border-top: 1px dotted #DDDDDD;
+	margin-top: 20px;
+	overflow: hidden;
+	padding-top: 20px;
+}
+.recommend-ingredients .ingr-in-your-bar {
+	float: left;
+	width: 320px;
+}
+
+.recommend-ingredients .ingr-in-good-bar {
+	float: left;
+	width: 320px;
+}
+
+.recommend-ingredients .ingr-of-month {
+	float: left;
+	width: 280px;
+}
+
+.recommend-ingredients h3 { font-size: 24px; }
