@@ -48,8 +48,8 @@ var myProto =
 			me.cocktails = me.computeCocktails(me.ingredients)
 			me.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 
-			me.allRecommIngHash = me.cAllRecommIngrHash(<!--# include virtual="/db/mybar/ingredients.js" -->)
-			me.recommIngr = me.computeRecommIngr(me.allRecommIngHash)
+			me.recommGroups = <!--# include virtual="/db/mybar/ingredients.js" -->
+			me.recommIngr = me.computeRecommIngr(me.recommGroups)
 			
 			log(me.recommIngr)
 			
@@ -187,11 +187,13 @@ var myProto =
 		})
 	},
 	
-	computeRecommIngr : function(rih)
+	computeRecommIngr : function(recommGroups)
 	{
 		var cocktails = Cocktail.getAll(),
 			ingHash = this.ingredients.inBar,
-			cocktailsHash = Array.toHash(this.cocktails)
+			cocktailsHash = Array.toHash(this.cocktails),
+			rih = this.cAllRecommIngrHash(recommGroups)
+
 
 		ck:
 		for (var i = 0, il = cocktails.length; i < il; i++) 
@@ -291,7 +293,7 @@ var myProto =
 			var group = groups[k]
 			for (var j = 0, jl = group.length; j < jl; j++) 
 			{
-				rih[group[j]] = {group : k}
+				rih[group[j]] = { group : k }
 			}
 		}
 		return rih		
@@ -345,7 +347,7 @@ var myProto =
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		this.recommIngr = this.computeRecommIngr(this.allRecommIngHash)
+		this.recommIngr = this.computeRecommIngr(this.recommGroups)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
@@ -360,7 +362,7 @@ var myProto =
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		this.recommIngr = this.computeRecommIngr(this.allRecommIngHash)
+		this.recommIngr = this.computeRecommIngr(this.recommGroups)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
