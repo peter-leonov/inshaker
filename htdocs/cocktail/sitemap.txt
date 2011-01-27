@@ -284,6 +284,7 @@ http://www.inshaker.ru/cocktail/tequila_breakfast/
 http://www.inshaker.ru/cocktail/forbidden_fruit/
 http://www.inshaker.ru/cocktail/zaharoff_forest/
 http://www.inshaker.ru/cocktail/green_fairy/
+http://www.inshaker.ru/cocktail/greeny_light/
 http://www.inshaker.ru/cocktail/green_pathes/
 http://www.inshaker.ru/cocktail/green_bean/
 http://www.inshaker.ru/cocktail/zempole/
