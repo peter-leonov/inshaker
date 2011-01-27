@@ -15,7 +15,7 @@ html.loading .b-content { display: none; }
 }
 .search-box .query, .search-box .button { font-size: 15px; vertical-align: middle; }
 #output .hidden { display: none !important; }
-#output .ingredients-block .list li, #output .list .cocktail-preview {
+#output .ingredients-block .list li, #output .list .cocktail-preview, #output .recommend-ingredients .list li {
 	float: left;
 	margin: 0 17px 15px 0;
 	position: relative;
@@ -38,14 +38,14 @@ html.loading .b-content { display: none; }
 #output .ingredients-block { width: 940px; margin-top: 5px; }
 #output .ingredients-block .list { padding-top: 15px; }
 #output .ingredients-block .list ul { overflow: hidden; }
-#output .ingredients-block .list li
+#output .ingredients-block .list li, #output .recommend-ingredients .list li
 {
 	height: 140px;
 	margin-bottom: 0;
 	padding-top: 15px;
 }
 #output .ingredient-preview { display: block; font-size: 12px; text-align: center;}
-#output .not-in-bar .image { opacity: 0.4 }
+#output .not-in-bar .image { /*opacity: 0.4*/ }
 #output div.empty
 {
 	color: #DDDDDD;
@@ -246,17 +246,17 @@ html.loading .b-content { display: none; }
 }
 .recommend-ingredients .ingr-in-your-bar {
 	float: left;
-	width: 320px;
+	width: 360px;
 }
 
 .recommend-ingredients .ingr-in-good-bar {
 	float: left;
-	width: 320px;
+	width: 360px;
 }
 
 .recommend-ingredients .ingr-of-month {
 	float: left;
-	width: 280px;
+	width: 200px;
 }
 
 .recommend-ingredients h3 { font-size: 24px; }
