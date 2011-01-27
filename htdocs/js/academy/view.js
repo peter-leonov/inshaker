@@ -62,58 +62,8 @@ var myProto =
 	{
 		var nodes = this.nodes
 		
-		this.fixedStartY = nodes.brandedImageHolder.offsetTop
-		this.fixedEndY = nodes.page.scrollHeight
-		
-		if (nodes.brandedImageHolder.offsetHeight >= this.fixedEndY - this.fixedStartY)
-			return
-		
-		var me = this
-		window.addEventListener('scroll', function (e) { me.onBrandingScroll() }, false)
-		this.onBrandingScroll()
-	},
-	
-	onBrandingScroll: function ()
-	{
-		var nodes = this.nodes,
-			holder = nodes.brandedImageHolder
-		
-		var pageYOffset = window.pageYOffset
-		var stickTop = pageYOffset <= this.fixedStartY
-		var stickBottom = pageYOffset + holder.offsetHeight >= this.fixedEndY
-		
-		var state
-		if (stickBottom)
-			state = 'stick-bottom'
-		else if (stickTop)
-			state = 'stick-top'
-		else
-			state = 'float-fixed'
-		
-		if (this.lastState == state)
-			return
-		this.lastState = state
-		
-		switch (state)
-		{
-			case 'stick-top':
-			holder.removeClassName('float-fixed')
-			holder.removeClassName('stick-bottom')
-			break
-			
-			case 'float-fixed':
-			holder.removeClassName('stick-top')
-			holder.removeClassName('stick-bottom')
-			break
-			
-			case 'stick-bottom':
-			holder.removeClassName('stick-top')
-			holder.removeClassName('float-fixed')
-			break
-		}
-		
-		// log(state)
-		holder.addClassName(state)
+		var bs = new BrandingScroller()
+		bs.bind({holder: nodes.brandedImageHolder, page: nodes.page})
 	}
 }
 

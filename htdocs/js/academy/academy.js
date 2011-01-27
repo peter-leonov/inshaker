@@ -35,6 +35,7 @@ Object.extend(Me.prototype, myProto)
 })();
 
 
+<!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
