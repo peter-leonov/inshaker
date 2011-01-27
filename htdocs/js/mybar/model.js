@@ -191,7 +191,7 @@ var myProto =
 	{
 		var cocktails = Cocktail.getAll(),
 			ingHash = this.ingredients.inBar,
-			cocktailsHash = Array.toHash(this.cocktails),
+			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
 			rih = this.cAllRecommIngrHash(recommGroups)
 
 
@@ -204,16 +204,17 @@ var myProto =
 				continue
 			
 			var set = cocktail.ingredients
-			var t = [], a = 0
+			var t = [], a = -1
 			
 			for (var j = 0, jl = set.length; j < jl; j++) 
 			{
-				var ing = set[j][0]
+				var item = set[j][0]
 				
-				if(rih[ing] && !ingHash[ing])
-					t.push(ing)
-				else if(!ingHash[ing])
+				if(!ingHash[item])
+				{
+					if(rih[item]) t.push(item)
 					a++
+				}
 
 				//if (a>3) continue ck
 			}
@@ -223,14 +224,14 @@ var myProto =
 			
 			for (var k = 0, kl = t.length; k < kl; k++) 
 			{
-				var ing = rih[t[k]]
-				if(!ing['weight'])
-					ing['weight'] = []
+				var item = rih[t[k]]
+				if(!item['weight'])
+					item['weight'] = []
 				
-				if(!ing['weight'][a])
-					ing['weight'][a] = 1
+				if(!item['weight'][a])
+					item['weight'][a] = 1
 				else
-					ing['weight'][a]++
+					item['weight'][a]++
 			}
 		}
 		
@@ -240,15 +241,16 @@ var myProto =
 		{
 			if(this.ingredients.inBar[k]) continue
 			
-			var ing = rih[k]
-			var	g = ing.group
+			var item = rih[k]
+			var	g = item.group
 			
 			if(!groups[g])
 				groups[g] = []
 			
-			groups[g].push({ name : k, weight : ing.weight })
+			groups[g].push({ name : k, weight : item.weight })
 		}
 		
+		//sort
 		for (var k in groups) 
 		{
 			var group = groups[k]
@@ -256,8 +258,13 @@ var myProto =
 			
 			log(group)
 			
-			for (var i = 0, il = group.length; i < il; i++) 
-				group[i] = Ingredient.getByName(group[i].name) || null
+			var g = []
+			for (var i = 0, il = group.length; i < il; i++)
+			{
+				var item = Ingredient.getByName(group[i].name)
+				if(item) g.push(item)
+			}
+			groups[k] = g
 		}
 		
 		function megasort(a, b)
