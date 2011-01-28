@@ -57,10 +57,10 @@ var myProto =
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.recommends.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		//nodes.recommendsWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.recommBlocks.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		//nodes.recommBlocksWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
-		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleSwitcherClick(e) }, false)
+		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailSwitcherClick(e) }, false)
 		
 		nodes.barName.wrapper.addEventListener('click', function(e){ me.handleBarNameClick(e) }, false)
 		document.body.addEventListener('click', function(e){ me.barNameChanging(e) }, true)
@@ -170,7 +170,7 @@ var myProto =
 		}
 	},
 	
-	renderRecommIngr : function(groups)
+	renderRecommBlocks : function(groups)
 	{
 		var inYourBar = groups.ingrInYourBar
 		
@@ -182,15 +182,13 @@ var myProto =
 				if(!inYourBar[i]) break
 				ul.appendChild(inYourBar[i].getPreviewNode(true))
 			}
-			this.nodes.recommends.inYourBarList.empty()
-			this.nodes.recommends.inYourBarList.appendChild(ul)
-			this.nodes.recommends.inYourBar.show()
+			this.nodes.recommBlocks.inYourBarList.empty()
+			this.nodes.recommBlocks.inYourBarList.appendChild(ul)
+			this.nodes.recommBlocks.inYourBar.show()
 		}
 		else
-			this.nodes.recommends.inYourBar.hide()
+			this.nodes.recommBlocks.inYourBar.hide()
 		
-
-
 		var inGoodBar = groups.ingrInGoodBar
 
 		if(inGoodBar && inGoodBar.length)
@@ -201,13 +199,12 @@ var myProto =
 				if(!inGoodBar[i]) break
 				ul.appendChild(inGoodBar[i].getPreviewNode(true))
 			}
-			this.nodes.recommends.inGoodBarList.empty()
-			this.nodes.recommends.inGoodBarList.appendChild(ul)
-			this.nodes.recommends.inGoodBar.show()
+			this.nodes.recommBlocks.inGoodBarList.empty()
+			this.nodes.recommBlocks.inGoodBarList.appendChild(ul)
+			this.nodes.recommBlocks.inGoodBar.show()
 		}
 		else
-			this.nodes.recommends.inGoodBar.hide()
-
+			this.nodes.recommBlocks.inGoodBar.hide()
 
 		var ingrOfMonth = groups.ingrOfMonth
 		
@@ -220,12 +217,17 @@ var myProto =
 				ul.appendChild(ingrOfMonth[i].getPreviewNode(true))
 			}
 			
-			this.nodes.recommends.ingrOfMonthList.empty()
-			this.nodes.recommends.ingrOfMonthList.appendChild(ul)
-			this.nodes.recommends.ingrOfMonth.show()
+			this.nodes.recommBlocks.ingrOfMonthList.empty()
+			this.nodes.recommBlocks.ingrOfMonthList.appendChild(ul)
+			this.nodes.recommBlocks.ingrOfMonth.show()
 		}
 		else
-			this.nodes.recommends.ingrOfMonth.hide()
+			this.nodes.recommBlocks.ingrOfMonth.hide()
+	},
+	
+	renderBottomOutput : function()
+	{
+		
 	},
 	
 	renderIfCocktailsEmpty : function()
@@ -239,6 +241,7 @@ var myProto =
 		this.nodes.cocktails.empty.show()
 	},
 	
+	
 	/*
 	renderRecommends : function(recommends, inBar)
 	{
@@ -247,8 +250,8 @@ var myProto =
 			this.renderIfRecommendsEmpty()
 			return
 		}
-		if(!this.nodes.recommendsEmpty.hasClassName('hidden'))
-			this.nodes.recommendsEmpty.hide()
+		if(!this.nodes.recommBlocksEmpty.hasClassName('hidden'))
+			this.nodes.recommBlocksEmpty.hide()
 		
 		var me = this
 		this.inBar = inBar
@@ -258,7 +261,7 @@ var myProto =
 		{
 			me.incl.setCocktails(recommends, inBar)
 		}, 1)
-		this.nodes.recommendsWrapper.show()
+		this.nodes.recommBlocksWrapper.show()
 	},
 	*/
 	renderIfIngredientsEmpty : function()
@@ -269,8 +272,8 @@ var myProto =
 	
 	renderIfRecommendsEmpty : function()
 	{
-		this.nodes.recommendsWrapper.hide()
-		this.nodes.recommendsEmpty.show()
+		this.nodes.recommBlocksWrapper.hide()
+		this.nodes.recommBlocksEmpty.show()
 	},
 	
 	clearInput : function()
@@ -287,7 +290,7 @@ var myProto =
 			this.controller.removeIngredientFromBar(node.removingIngredient)
 	},
 
-	handleSwitcherClick : function(e)
+	handleCocktailSwitcherClick : function(e)
 	{
 		var node = e.target
 		if(node.hasClassName('link'))
