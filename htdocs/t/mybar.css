@@ -261,12 +261,12 @@ html.loading .b-content { display: none; }
 
 .recommend-blocks h3 { font-size: 24px; }
 
-/*recommend output*/
+/*bottom output*/
 
-.recommend-output {
+.bottom-output {
 	border-top: 1px dotted #DDDDDD;
 	margin-top: 20px;
 	padding-top: 20px;	
 }
 
-.recommend-output .title span { color: #0392F1; }
+.bottom-output .title span { color: #0392F1; }
