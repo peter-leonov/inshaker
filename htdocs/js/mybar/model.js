@@ -51,8 +51,6 @@ var myProto =
 			me.recommGroups = <!--# include virtual="/db/mybar/ingredients.js" -->
 			me.recommIngr = me.computeRecommIngr(me.recommGroups)
 			
-			log(me.recommIngr)
-			
 			me.parent.setBar()
 			
 			//ingr searcher
@@ -96,7 +94,7 @@ var myProto =
 	
 	setRecommIngr : function()
 	{
-		this.view.renderRecommIngr(this.recommIngr)
+		this.view.renderRecommBlocks(this.recommIngr)
 	},
 	
 	setBarName : function()
@@ -192,27 +190,33 @@ var myProto =
 		var cocktails = Cocktail.getAll(),
 			ingHash = this.ingredients.inBar,
 			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
-			rih = this.cAllRecommIngrHash(recommGroups)
-
+			rih = this.cAllRecommIngrHash(recommGroups),
+			bo = {} //bottom output
+			this.bottomOutput = bo
 
 		ck:
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
 			var cocktail = cocktails[i]
-			
+
 			if(cocktailsHash[cocktail.name])
 				continue
-			
+
 			var set = cocktail.ingredients
-			var t = [], a = -1
-			
+			var t = [], a = -1, oi = null
+
 			for (var j = 0, jl = set.length; j < jl; j++) 
 			{
 				var item = set[j][0]
-				
+
 				if(!ingHash[item])
 				{
-					if(rih[item]) t.push(item)
+					if(rih[item])
+						t.push(item)
+					
+					//collect items for bottom output
+					oi = item
+					
 					a++
 				}
 
@@ -222,6 +226,15 @@ var myProto =
 			if(a + t.length == jl)
 				continue
 			
+			if(a == 0)
+			{
+				if(!bo[oi])
+					bo[oi] = []
+				
+				bo[oi].push(cocktail)
+			}
+			//
+				
 			for (var k = 0, kl = t.length; k < kl; k++) 
 			{
 				var item = rih[t[k]]
@@ -240,10 +253,10 @@ var myProto =
 		for (var k in rih) 
 		{
 			if(this.ingredients.inBar[k]) continue
-			
+
 			var item = rih[k]
 			var	g = item.group
-			
+
 			if(!groups[g])
 				groups[g] = []
 			
@@ -288,7 +301,7 @@ var myProto =
 			
 			return 0
 		}
-		
+
 		return groups
 	},
 	
@@ -304,6 +317,11 @@ var myProto =
 			}
 		}
 		return rih		
+	},
+	
+	bottomOutput2Array : function(bottomOutput, sortType)
+	{
+		
 	},
 	
 	/*
@@ -361,7 +379,7 @@ var myProto =
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
-		this.view.renderRecommIngr(this.recommIngr)
+		this.view.renderRecommBlocks(this.recommIngr)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -376,7 +394,7 @@ var myProto =
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
-		this.view.renderRecommIngr(this.recommIngr)
+		this.view.renderRecommBlocks(this.recommIngr)
 	},
 	
 	switchCocktailsView : function(showPhotos)
