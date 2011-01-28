@@ -116,14 +116,21 @@ function onready ()
 			empty : $$('#output .cocktails-block .empty')[0]
 		},
 		
-		recommends : {
-			wrapper : $$('#output .recommend-ingredients')[0],
-			inYourBar : $$('#output .recommend-ingredients .ingr-in-your-bar')[0],
-			inGoodBar : $$('#output .recommend-ingredients .ingr-in-good-bar')[0],
-			ingrOfMonth : $$('#output .recommend-ingredients .ingr-of-month')[0],
-			inYourBarList : $$('#output .recommend-ingredients .ingr-in-your-bar .list')[0],
-			inGoodBarList : $$('#output .recommend-ingredients .ingr-in-good-bar .list')[0],
-			ingrOfMonthList : $$('#output .recommend-ingredients .ingr-of-month .list')[0]
+		recommBlocks : {
+			wrapper : $$('#output .recommend-blocks')[0],
+			inYourBar : $$('#output .recommend-blocks .ingr-in-your-bar')[0],
+			inGoodBar : $$('#output .recommend-blocks .ingr-in-good-bar')[0],
+			ingrOfMonth : $$('#output .recommend-blocks .ingr-of-month')[0],
+			inYourBarList : $$('#output .recommend-blocks .ingr-in-your-bar .list')[0],
+			inGoodBarList : $$('#output .recommend-blocks .ingr-in-good-bar .list')[0],
+			ingrOfMonthList : $$('#output .recommend-blocks .ingr-of-month .list')[0]
+		},
+		
+		bottomOutput : {
+			output : $$('#output .bottom-output')[0],
+			title : $$('#output .bottom-output .title')[0],
+			wrapper : $$('#output .bottom-output .wrapper')[0],
+			empty : $$('#output .bottom-output .empty')[0]
 		}
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
