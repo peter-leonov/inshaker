@@ -300,6 +300,7 @@ http://www.inshaker.ru/cocktail/zombie/
 http://www.inshaker.ru/cocktail/zombie_2/
 http://www.inshaker.ru/cocktail/isabella/
 http://www.inshaker.ru/cocktail/izcaragua/
+http://www.inshaker.ru/cocktail/gingery_grenade/
 http://www.inshaker.ru/cocktail/ginger_passion/
 http://www.inshaker.ru/cocktail/ginger-grape_martini/
 http://www.inshaker.ru/cocktail/ginger_whisky/
