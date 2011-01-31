@@ -17,7 +17,7 @@ var myProto =
 			
 			if(!addFlag && !removeFlag) return ingr
 			
-			var li = N('li')
+			var li = Nc('li', 'ingredient')
 			
 			if(addFlag)
 			{
@@ -58,7 +58,8 @@ var myProto =
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.recommBlocks.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		//nodes.recommBlocksWrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.bottomOutput.title.addEventListener('click', function(e){ me.handleBoTitleClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailSwitcherClick(e) }, false)
 		
@@ -126,7 +127,9 @@ var myProto =
 	renderCocktails : function(cocktails, showPhotos)
 	{
 		var cl = cocktails.length
-		this.nodes.cocktails.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
+		var c = this.nodes.cocktails
+		
+		c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		
 		if(cocktails.length == 0)
 		{
@@ -134,15 +137,15 @@ var myProto =
 			return
 		}
 		
-		if(!this.nodes.cocktails.empty.hasClassName('hidden'))
-			this.nodes.cocktails.empty.hide()
+		if(!c.empty.hasClassName('hidden'))
+			c.empty.hide()
 			
-		this.nodes.cocktails.switcher.show()
+		c.switcher.show()
 			
 		if(showPhotos)
 		{
-			this.nodes.cocktails.swPhotos.removeClassName('link')
-			this.nodes.cocktails.swCombs.addClassName('link')
+			c.swPhotos.removeClassName('link')
+			c.swCombs.addClassName('link')
 			
 			var ul = Nc('ul', 'photos-list')
 			for (var i = 0, il = cocktails.length; i < il; i++) 
@@ -150,15 +153,15 @@ var myProto =
 				var cNode = cocktails[i].getPreviewNode()
 				ul.appendChild(cNode)
 			}
-			this.nodes.cocktails.wrapper.empty()
-			this.nodes.cocktails.wrapper.appendChild(ul)
+			c.wrapper.empty()
+			c.wrapper.appendChild(ul)
 			
-			this.nodes.cocktails.wrapper.show()
+			c.wrapper.show()
 		}
 		else
 		{
-			this.nodes.cocktails.swCombs.removeClassName('link')
-			this.nodes.cocktails.swPhotos.addClassName('link')
+			c.swCombs.removeClassName('link')
+			c.swPhotos.addClassName('link')
 			
 			var me = this
 			setTimeout(function()
@@ -166,13 +169,14 @@ var myProto =
 				me.incl.setCocktails([{cocktails : cocktails}])
 			}, 1)
 			
-			this.nodes.cocktails.wrapper.show()
+			c.wrapper.show()
 		}
 	},
 	
 	renderRecommBlocks : function(groups)
 	{
-		var inYourBar = groups.ingrInYourBar
+		var inYourBar = groups.ingrInYourBar,
+			rb = this.nodes.recommBlocks
 		
 		if(inYourBar && inYourBar.length)
 		{
@@ -182,12 +186,12 @@ var myProto =
 				if(!inYourBar[i]) break
 				ul.appendChild(inYourBar[i].getPreviewNode(true))
 			}
-			this.nodes.recommBlocks.inYourBarList.empty()
-			this.nodes.recommBlocks.inYourBarList.appendChild(ul)
-			this.nodes.recommBlocks.inYourBar.show()
+			rb.inYourBarList.empty()
+			rb.inYourBarList.appendChild(ul)
+			rb.inYourBar.show()
 		}
 		else
-			this.nodes.recommBlocks.inYourBar.hide()
+			rb.inYourBar.hide()
 		
 		var inGoodBar = groups.ingrInGoodBar
 
@@ -199,12 +203,12 @@ var myProto =
 				if(!inGoodBar[i]) break
 				ul.appendChild(inGoodBar[i].getPreviewNode(true))
 			}
-			this.nodes.recommBlocks.inGoodBarList.empty()
-			this.nodes.recommBlocks.inGoodBarList.appendChild(ul)
-			this.nodes.recommBlocks.inGoodBar.show()
+			rb.inGoodBarList.empty()
+			rb.inGoodBarList.appendChild(ul)
+			rb.inGoodBar.show()
 		}
 		else
-			this.nodes.recommBlocks.inGoodBar.hide()
+			rb.inGoodBar.hide()
 
 		var ingrOfMonth = groups.ingrOfMonth
 		
@@ -217,28 +221,104 @@ var myProto =
 				ul.appendChild(ingrOfMonth[i].getPreviewNode(true))
 			}
 			
-			this.nodes.recommBlocks.ingrOfMonthList.empty()
-			this.nodes.recommBlocks.ingrOfMonthList.appendChild(ul)
-			this.nodes.recommBlocks.ingrOfMonth.show()
+			rb.ingrOfMonthList.empty()
+			rb.ingrOfMonthList.appendChild(ul)
+			rb.ingrOfMonth.show()
 		}
 		else
-			this.nodes.recommBlocks.ingrOfMonth.hide()
+			rb.ingrOfMonth.hide()
 	},
 	
-	renderBottomOutput : function()
+	renderBottomOutput : function(boItems, showByCocktails)
 	{
+		if(showByCocktails)
+		{
+			this.renderBoByCocktails(boItems)
+		}
+		else
+		{
+			this.renderBoEasyToMake(boItems.cocktails, boItems.notInBar)
+		}
+	},
+	
+	renderBoEasyToMake : function(cocktails, notInBar)
+	{
+		bo = this.nodes.bottomOutput
 		
+		bo.swIngreds.removeClassName('link')
+		bo.swCocktails.addClassName('link')
+		
+		var div = Nc('div', 'ing-list')
+		
+		setTimeout(function()
+		{
+				var incl = new IngredientedCocktailList()
+				incl.bind({ main : div })
+				incl.setCocktails([{ cocktails : cocktails, notInBar : notInBar }])
+		}, 1)
+
+		bo.wrapper.empty()
+		bo.wrapper.appendChild(div)	
+	},
+	
+	renderBoByCocktails : function(groups)
+	{
+		bo = this.nodes.bottomOutput
+		
+		bo.swCocktails.removeClassName('link')
+		bo.swIngreds.addClassName('link')
+		
+		var dl = Nc('dl', 'show-by-cocktails')
+		
+		for (var i = 0, il = groups.length; i < il; i++) 
+		{
+			(function(){
+			var ingredient = groups[i].ingredient,
+				cocktails = groups[i].cocktails,
+				cl = cocktails.length
+			
+			var dt = Nc('dt', 'title-label') 
+			var dd = N('dd')
+			
+			dt.innerHTML = 'Если в твоем баре будет ' + ingredient.name + ', сможешь приготовить ' + cl + ' ' + cl.plural('новый коктейль', 'новых коктейля', 'новых коктейлей')
+				
+			var ing = ingredient.getPreviewNode(true, false)
+			var eq = Nct('li', 'eq', '=')
+			
+			var head = Nc('ul', 'head')
+			
+			head.appendChild(ing)
+			head.appendChild(eq)
+			
+			dd.appendChild(head)
+			
+			var body = Nc('ul', 'body')
+			
+			for (var j = 0; j < cl; j++)
+				body.appendChild(cocktails[j].getPreviewNode())
+			
+			dd.appendChild(body)			
+			dl.appendChild(dt)
+			dl.appendChild(dd)
+			
+			})()
+		}
+		
+		bo.wrapper.empty()
+		bo.wrapper.appendChild(dl)	
 	},
 	
 	renderIfCocktailsEmpty : function()
 	{
-		if(!this.nodes.cocktails.wrapper.hasClassName('hidden'))
-			this.nodes.cocktails.wrapper.hide()
+		var c = this.nodes.cocktails
 		
-		if(!this.nodes.cocktails.switcher.hasClassName('hidden'))
-			this.nodes.cocktails.switcher.hide()
+		if(!c.wrapper.hasClassName('hidden'))
+			c.wrapper.hide()
 		
-		this.nodes.cocktails.empty.show()
+		if(!c.switcher.hasClassName('hidden'))
+			c.switcher.hide()
+		
+		c.empty.show()
 	},
 	
 	
@@ -362,6 +442,18 @@ var myProto =
 				else
 					tip.hide()
 			}, 1)
+	},
+	
+	handleBoTitleClick : function(e)
+	{
+		var target = e.target
+		if(target.hasClassName('link'))
+		{
+			if(target.hasClassName('easy-to-make'))
+				this.controller.switchBoShowType(false)
+			else
+				this.controller.switchBoShowType(true)
+		}
 	}
 }
 Object.extend(Me.prototype, myProto)
