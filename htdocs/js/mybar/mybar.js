@@ -46,9 +46,19 @@ var myProto =
 		return this
 	},
 
+	setBottomOutput : function()
+	{
+		this.model.setBottomOutput()
+	},
+
 	setBar : function()
 	{
-		return this.setBarName().setIngredients().setCocktails().setRecommIngr()
+		return this.
+				setBarName().
+				setIngredients().
+				setCocktails().
+				setRecommIngr().
+				setBottomOutput()
 	}
 }
 
@@ -130,7 +140,9 @@ function onready ()
 			output : $$('#output .bottom-output')[0],
 			title : $$('#output .bottom-output .title')[0],
 			wrapper : $$('#output .bottom-output .wrapper')[0],
-			empty : $$('#output .bottom-output .empty')[0]
+			empty : $$('#output .bottom-output .empty')[0],
+			swCocktails : $$('#output .bottom-output .number-of-cocktails')[0],
+			swIngreds : $$('#output .bottom-output .easy-to-make')[0]
 		}
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
