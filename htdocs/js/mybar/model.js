@@ -29,7 +29,7 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '' }
+		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true }
 		Storage.init(function(){
 			try
 			{
@@ -42,14 +42,17 @@ var myProto =
 			
 			me.showPhotos = bar.showPhotos
 			me.barName = bar.barName
+			me.showByCocktails = bar.showByCocktails
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
-			me.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+			me.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
 
 			me.recommGroups = <!--# include virtual="/db/mybar/ingredients.js" -->
-			me.recommIngr = me.computeRecommIngr(me.recommGroups)
+			me.recommIngr = me.computeRecommIngr(me.recommGroups) //compute bottomOutput
+			
+			me.boItems = me.computeBoItems(me.bottomOutput, me.showByCocktails)
 			
 			me.parent.setBar()
 			
@@ -95,6 +98,11 @@ var myProto =
 	setRecommIngr : function()
 	{
 		this.view.renderRecommBlocks(this.recommIngr)
+	},
+	
+	setBottomOutput : function()
+	{
+		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},
 	
 	setBarName : function()
@@ -179,10 +187,36 @@ var myProto =
 			cocktails.push(cocktail)
 		}
 		
+		return cocktails.sort(this.sortCocktails)
+	},
+	
+	sortCocktails : function(a, b)
+	{	
+		var t = a.ingredients.length - b.ingredients.length
+		if(t)
+			return t
+		
+		var ai = a.ingredients,
+			bi = b.ingredients,
+			al = ai.length,
+			bl = bi.length,
+			lc = 0
+		
+		for (var i = 0, il = al < bl ? al : bl; i < il; i++) 
+		{
+			var aa = Ingredient.getByName(ai[i][0]),
+				bb = Ingredient.getByName(bi[i][0])
+			
+			if(aa.group != bb.group)
+				return Ingredient.sortByGroups(aa.name, bb.name)
+			//log(a.name, ai[i][0], b.name, bi[i][0], i, r)
+			//if(r > 0)
 
-		return cocktails.sort(function(a,b){
-			return a.ingredients.length - b.ingredients.length
-		})
+			lc = aa.name.localeCompare(bb.name)
+			if(lc)
+				return lc
+		}
+		return lc
 	},
 	
 	computeRecommIngr : function(recommGroups)
@@ -319,9 +353,44 @@ var myProto =
 		return rih		
 	},
 	
-	bottomOutput2Array : function(bottomOutput, sortType)
-	{
+	computeBoItems : function(bottomOutput, showByCocktails)
+	{	
+		if(showByCocktails)
+		{
+			var t = []
+			for (var k in bottomOutput)
+				t.push({ ingredient: Ingredient.getByName(k), cocktails : bottomOutput[k].sort(this.sortCocktails) })
 		
+			return t.sort(function(a,b){
+				var r = b.cocktails.length - a.cocktails.length
+				if(r) 
+					return r
+	
+				var an = a.ingredient.name,
+					bn = b.ingredient.name
+				
+				if(a.ingredient.group == b.ingredient.group)
+					return an.localeCompare(bn)
+				
+				return Ingredient.sortByGroups(an, bn)	
+			})
+		}
+		
+		else
+		{
+			var notInBar = [], t = []
+			
+			for (var k in bottomOutput)
+			{
+				t = t.concat(bottomOutput[k])
+				notInBar.push(k)
+			}
+			
+			t.sort(this.sortCocktails)
+			
+			
+			return { cocktails : t, notInBar : notInBar }
+		}
 	},
 	
 	/*
@@ -363,7 +432,8 @@ var myProto =
 		Storage.put('mybar', JSON.stringify({ 
 			ingredients : Object.toArray(this.ingredients.inBar),
 			showPhotos : this.showPhotos,
-			barName : this.barName 
+			barName : this.barName,
+			showByCocktails : this.showByCocktails
 		}))
 	},
 	
@@ -373,6 +443,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.recommIngr = this.computeRecommIngr(this.recommGroups)
+		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
@@ -380,6 +451,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		this.view.renderRecommBlocks(this.recommIngr)
+		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -388,6 +460,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.recommIngr = this.computeRecommIngr(this.recommGroups)
+		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
@@ -395,6 +468,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		this.view.renderRecommBlocks(this.recommIngr)
+		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},
 	
 	switchCocktailsView : function(showPhotos)
@@ -410,6 +484,19 @@ var myProto =
 		this.barName = barName
 		this.saveStorage()
 		this.view.renderBarName(barName)
+	},
+	
+	switchBoShowType : function(showByCocktails)
+	{
+		if(showByCocktails)
+			this.showByCocktails = true
+		else
+			this.showByCocktails = false
+			
+		this.saveStorage()
+		
+		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
+		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	}
 }
 Object.extend(Me.prototype, myProto)
