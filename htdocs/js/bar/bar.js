@@ -10,6 +10,8 @@ BarPage =
 		this.model.initialize(barsDB, cocktailsDB)
 		
 		this.view.readBarCityNames()
+		
+		this.view.bindBrandingScroller()
 	}
 }
 
@@ -50,6 +52,7 @@ $.onready
 <!--# include virtual="/lib-0.3/widgets/map-light-marker.js" -->
 
 <!--# include virtual="/js/common/google.js" -->
+<!--# include virtual="/js/common/branding-scroller.js" -->
 
 
 <!--# include virtual="/js/bars/point.js" -->
