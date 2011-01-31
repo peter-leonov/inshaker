@@ -42,6 +42,9 @@ $.onready
 		}
 		RoundedCorners.round(nodes.photos.root)
 		BarPage.initialize(nodes, Bar, Cocktail)
+		
+		Theme.initialize({"spotlighted":{"href":"/cocktail/b-black/"},"branded-image":{"href":"/cocktail/b-black/"}
+		})
 	}
 )
 
@@ -53,7 +56,7 @@ $.onready
 
 <!--# include virtual="/js/common/google.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
-
+<!--# include virtual="/js/common/theme.js" -->
 
 <!--# include virtual="/js/bars/point.js" -->
 <!--# include virtual="model.js" -->
