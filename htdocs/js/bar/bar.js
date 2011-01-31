@@ -19,6 +19,8 @@ $.onready
 	{
 		var nodes =
 		{
+			page: $('bar-page'),
+			brandedImageHolder: $('branded-image-holder'),
 			photos:
 			{
 				root:            $$('.photos')[0],
