@@ -53,6 +53,11 @@ var myProto =
 	getBarName : function()
 	{
 		return this.model.getBarName()
+	},
+	
+	switchBoShowType : function(showByCocktails)
+	{
+		this.model.switchBoShowType(showByCocktails)
 	}
 }
 Object.extend(Me.prototype, myProto)
