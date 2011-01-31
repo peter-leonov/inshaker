@@ -1,3 +1,4 @@
+http://www.inshaker.ru/cocktail/48_drops/
 http://www.inshaker.ru/cocktail/911/
 http://www.inshaker.ru/cocktail/apricot_margarita_with_pepper/
 http://www.inshaker.ru/cocktail/apricot_mulled_wine_with_cognac/
@@ -235,6 +236,7 @@ http://www.inshaker.ru/cocktail/daiquiri_with_grapefruit_juice/
 http://www.inshaker.ru/cocktail/daiquiri_with_honey_and_basil/
 http://www.inshaker.ru/cocktail/far_east_fizz/
 http://www.inshaker.ru/cocktail/dark_side/
+http://www.inshaker.ru/cocktail/double_pleasure/
 http://www.inshaker.ru/cocktail/debutante/
 http://www.inshaker.ru/cocktail/awol/
 http://www.inshaker.ru/cocktail/awol_2/
@@ -300,6 +302,7 @@ http://www.inshaker.ru/cocktail/zombie/
 http://www.inshaker.ru/cocktail/zombie_2/
 http://www.inshaker.ru/cocktail/isabella/
 http://www.inshaker.ru/cocktail/izcaragua/
+http://www.inshaker.ru/cocktail/gingery_grenade/
 http://www.inshaker.ru/cocktail/ginger_passion/
 http://www.inshaker.ru/cocktail/ginger-grape_martini/
 http://www.inshaker.ru/cocktail/ginger_whisky/
