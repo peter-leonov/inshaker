@@ -11,8 +11,10 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 45px; height: 43px; right: -2px; top: -11px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 60px; left: -245px; bottom: -640px; }
-#branded-image-holder { height: 800px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 630px; top: 30px; left: 140px; }
+#branded-image-holder { height: 810px; position: absolute; top: 85px; bottom: auto; }
+#branded-image-holder.float-fixed { position: fixed; top: 0; bottom: auto; }
+#branded-image-holder.stick-bottom { top: auto; bottom: 0; }
 a { color: #f9593b; }
 #top .nav a:hover { border-bottom-color: #ba5622; }
 #bottom { color: #bbb; padding-top: 0; margin-top: 120px; }
@@ -20,7 +22,6 @@ a { color: #f9593b; }
 html { background: #000 url(bg.jpg) no-repeat center 65px; }
 button.rounded b { text-shadow: 1px 1px 0 #000; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
-#main-wrapper { overflow: hidden; }
 
 /* calculator.css */
 #b-bill dt,
