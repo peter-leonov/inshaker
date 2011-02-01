@@ -61,6 +61,7 @@ html.loading .b-content { display: none; }
 	right: -3px;
 	top: -5px;
 	background-color: #fff;
+	z-index: 1;
 }
 #output .remove-ingredient
 {
