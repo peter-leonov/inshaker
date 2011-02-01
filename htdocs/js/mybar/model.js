@@ -378,16 +378,28 @@ var myProto =
 		
 		else
 		{
-			var notInBar = [], t = []
+			var notInBar = [], t = [], p = {}, me = this
 			
 			for (var k in bottomOutput)
 			{
 				t = t.concat(bottomOutput[k])
-				notInBar.push(k)
+				notInBar[k] = true
+				bottomOutput[k].map(function(a){ p[a.name] = k })
 			}
 			
-			t.sort(this.sortCocktails)
-			
+			t.sort(function(a,b){
+				var r = a.ingredients.length - b.ingredients.length
+				if(r)
+					return r
+					
+				var ai = Ingredient.getByName(p[a.name]),
+					bi = Ingredient.getByName(p[b.name])
+					
+				if(ai.group != bi.group)
+					return Ingredient.sortByGroups(p[a.name], p[b.name])
+					
+				return me.sortCocktails(a, b)
+			})
 			
 			return { cocktails : t, notInBar : notInBar }
 		}
