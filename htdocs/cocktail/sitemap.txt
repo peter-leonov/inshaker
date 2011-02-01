@@ -177,6 +177,7 @@ http://www.inshaker.ru/cocktail/east_meets_west/
 http://www.inshaker.ru/cocktail/oriental_tea_party/
 http://www.inshaker.ru/cocktail/east_honey/
 http://www.inshaker.ru/cocktail/orient_express/
+http://www.inshaker.ru/cocktail/all_fall_dawn/
 http://www.inshaker.ru/cocktail/above_the_clouds/
 http://www.inshaker.ru/cocktail/galileo/
 http://www.inshaker.ru/cocktail/galliano_hot_shot/
@@ -552,6 +553,7 @@ http://www.inshaker.ru/cocktail/minty_mulled_wine/
 http://www.inshaker.ru/cocktail/minty_lemonade/
 http://www.inshaker.ru/cocktail/minty_mix/
 http://www.inshaker.ru/cocktail/minty_tea_with_rum/
+http://www.inshaker.ru/cocktail/nights/
 http://www.inshaker.ru/cocktail/nano-mojito/
 http://www.inshaker.ru/cocktail/naomi/
 http://www.inshaker.ru/cocktail/our_mary/
