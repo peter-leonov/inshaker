@@ -256,7 +256,7 @@ var myProto =
 				bo.wrapper.appendChild(div)
 				var incl = new IngredientedCocktailList()
 				incl.bind({ main : div })
-				incl.setCocktails([{ cocktails : cocktails, notInBar : notInBar }])	
+				incl.setCocktails([{ cocktails : cocktails }], notInBar)	
 		}, 1)
 	},
 	
