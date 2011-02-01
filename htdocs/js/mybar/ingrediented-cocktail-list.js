@@ -23,9 +23,9 @@ var myProto =
 		return this
 	},
 	
-	setCocktails: function (cocktails)
+	setCocktails: function (cocktails, notInBar)
 	{
-		this.model.setCocktails(cocktails)
+		this.model.setCocktails(cocktails, notInBar)
 	},
 	
 	wake: function ()
@@ -148,9 +148,9 @@ var myProto =
 		this.controller.groupNameClicked(num)
 	},
 	
-	renderGroups: function (groups)
+	renderGroups: function (groups, notInBar)
 	{
-		//if(inBar) this.inBar = inBar
+		if(notInBar) this.notInBar = notInBar
 		var main = this.nodes.main
 		main.empty()
 		
@@ -220,31 +220,23 @@ var myProto =
 		var root = N('dl')
 		
 		var head = root.appendChild(Nc('dt', 'head')),
-			li = cocktail.getPreviewNode(false, true),
-			add = Nct('span', 'add-cocktail', '+')
-		
-		add.style.opacity = 0
-		add.setAttribute('title', 'Добавить в бар')
-		add.addingCocktail = cocktail		
-		li.appendChild(add)
-		li.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
-		li.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
+			li = cocktail.getPreviewNode(false, true)
 				
 		head.appendChild(li)
 		head.appendChild(Nct('span', 'operator', '='))
 		
 		var body = root.appendChild(Nc('dd', 'body'))
 		
-		var inodes = []//, inBar = this.inBar
+		var inodes = [], notInBar = this.notInBar || {}
 		
-		ingredients.sort(function(a, b){ return !inBar[a.name] && inBar[b.name] ? 1 : -1 })
+		ingredients.sort(function(a, b){ return !notInBar[a.name] && notInBar[b.name] ? 1 : -1 })
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
-			var ingredient = ingredients[i]
+			var ingredient = ingredients[i],
 				cn = ingredient.getPreviewNode()
-			/*
-			if(!inBar[ingredient.name])
+			
+			if(notInBar[ingredient.name])
 			{
 				(function(){
 				cn.addClassName('not-in-bar')
@@ -257,11 +249,10 @@ var myProto =
 				cn.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
 				}())
 			}
-			else
-				cn.appendChild(Nc('div', 'tick'))
+			//else
+			//	cn.appendChild(Nc('div', 'tick'))
 			
 			inodes[i] = cn
-			*/
 		}
 		body.appendChild(joinWithNodeToFragment(inodes, Nct('span', 'operator', '+')))
 		
@@ -298,7 +289,7 @@ var myProto =
 {
 	initialize: function () {},
 	
-	setCocktails: function (groups)
+	setCocktails: function (groups, notInBar)
 	{
 		this.rawGroups = groups
 		
@@ -334,7 +325,7 @@ var myProto =
 		}
 		
 		this.groups = res
-		this.view.renderGroups(res)
+		this.view.renderGroups(res, notInBar)
 	},
 	
 	toggleGroupCollapsedility: function (num)
