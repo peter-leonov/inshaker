@@ -252,13 +252,12 @@ var myProto =
 		
 		setTimeout(function()
 		{
+				bo.wrapper.empty()
+				bo.wrapper.appendChild(div)
 				var incl = new IngredientedCocktailList()
 				incl.bind({ main : div })
-				incl.setCocktails([{ cocktails : cocktails, notInBar : notInBar }])
+				incl.setCocktails([{ cocktails : cocktails, notInBar : notInBar }])	
 		}, 1)
-
-		bo.wrapper.empty()
-		bo.wrapper.appendChild(div)	
 	},
 	
 	renderBoByCocktails : function(groups)
