@@ -22,7 +22,8 @@ Me.prototype =
 	onscroll: function ()
 	{
 		var nodes = this.nodes,
-			holder = nodes.holder
+			holder = nodes.holder,
+			page = nodes.page
 		
 		var pageYOffset = window.pageYOffset
 		var stickTop = pageYOffset <= this.fixedStartY
@@ -43,23 +44,23 @@ Me.prototype =
 		switch (state)
 		{
 			case 'stick-top':
-			holder.removeClassName('float-fixed')
-			holder.removeClassName('stick-bottom')
+			page.removeClassName('float-fixed')
+			page.removeClassName('stick-bottom')
 			break
 			
 			case 'float-fixed':
-			holder.removeClassName('stick-top')
-			holder.removeClassName('stick-bottom')
+			page.removeClassName('stick-top')
+			page.removeClassName('stick-bottom')
 			break
 			
 			case 'stick-bottom':
-			holder.removeClassName('stick-top')
-			holder.removeClassName('float-fixed')
+			page.removeClassName('stick-top')
+			page.removeClassName('float-fixed')
 			break
 		}
 		
 		// log(state)
-		holder.addClassName(state)
+		page.addClassName(state)
 	}
 }
 
