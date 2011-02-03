@@ -682,6 +682,7 @@ http://www.inshaker.ru/cocktail/rum_cranberry/
 http://www.inshaker.ru/cocktail/rum_collins/
 http://www.inshaker.ru/cocktail/rum_ice-cream/
 http://www.inshaker.ru/cocktail/rum_infused_on_cherries/
+http://www.inshaker.ru/cocktail/romantic_daiquiri/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
 http://www.inshaker.ru/cocktail/romul/
 http://www.inshaker.ru/cocktail/rossini/
@@ -872,6 +873,7 @@ http://www.inshaker.ru/cocktail/black_flip/
 http://www.inshaker.ru/cocktail/chivava/
 http://www.inshaker.ru/cocktail/chile_martini/
 http://www.inshaker.ru/cocktail/pure_passion/
+http://www.inshaker.ru/cocktail/feeling/
 http://www.inshaker.ru/cocktail/champagne_cocktail/
 http://www.inshaker.ru/cocktail/champagne_fresh/
 http://www.inshaker.ru/cocktail/rustle/
