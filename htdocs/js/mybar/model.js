@@ -29,7 +29,7 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true }
+		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {} }
 		Storage.init(function(){
 			try
 			{
@@ -43,6 +43,7 @@ var myProto =
 			me.showPhotos = bar.showPhotos
 			me.barName = bar.barName
 			me.showByCocktails = bar.showByCocktails
+			me.notAvailableCocktails = bar.notAvailableCocktails
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
 			//me.recommends = me.computeRecommends( me.ingredients)
@@ -209,8 +210,6 @@ var myProto =
 			
 			if(aa.group != bb.group)
 				return Ingredient.sortByGroups(aa.name, bb.name)
-			//log(a.name, ai[i][0], b.name, bi[i][0], i, r)
-			//if(r > 0)
 
 			lc = aa.name.localeCompare(bb.name)
 			if(lc)
@@ -273,7 +272,7 @@ var myProto =
 			{
 				var item = rih[t[k]]
 				if(!item['weight'])
-					item['weight'] = []
+					item['weight'] = [0]
 				
 				if(!item['weight'][a])
 					item['weight'][a] = 1
@@ -297,13 +296,16 @@ var myProto =
 			groups[g].push({ name : k, weight : item.weight })
 		}
 		
+		//each ingr usage
+		Ingredient.calculateEachIngredientUsage()
+		
 		//sort
 		for (var k in groups) 
 		{
 			var group = groups[k]
 			group.sort(function(a,b) { return megasort(a,b) } )
 			
-			log(group)
+			group.map(function(a){ log(a.name, a.weight) })
 			
 			var g = []
 			for (var i = 0, il = group.length; i < il; i++)
@@ -316,10 +318,19 @@ var myProto =
 		
 		function megasort(a, b)
 		{
+			//by group
+			var ai = Ingredient.getByName(a.name)
+			var bi = Ingredient.getByName(b.name)
+			
+			if(ai.group != bi.group)
+				return Ingredient.sortByGroups(a.name, b.name)
+				
+			return bi.cocktails.length - ai.cocktails.length
+			/*
 			var aw = a.weight || [],
 				bw = b.weight || [],
 				l = aw.length > bw.length ? aw.length : bw.length
-			
+				
 			for (var i = 0; i < l; i++) 
 			{
 				aw[i] = aw[i] || 0
@@ -329,10 +340,15 @@ var myProto =
 				
 				return bw[i] - aw[i]
 			}
+			*/
+			//---
 			
+
+			//---
+			/*
 			if(Ingredient.getByName(a.name) && Ingredient.getByName(b.name))
 				return Ingredient.sortByGroups(a.name, b.name)
-			
+			*/
 			return 0
 		}
 
@@ -362,17 +378,18 @@ var myProto =
 				t.push({ ingredient: Ingredient.getByName(k), cocktails : bottomOutput[k].sort(this.sortCocktails) })
 		
 			return t.sort(function(a,b){
+				var ai = a.ingredient,
+					bi = b.ingredient
+					
+				if(ai.group != bi.group)
+					return Ingredient.sortByGroups(bi.name, ai.name)
+				
+				
 				var r = b.cocktails.length - a.cocktails.length
 				if(r) 
 					return r
-	
-				var an = a.ingredient.name,
-					bn = b.ingredient.name
-				
-				if(a.ingredient.group == b.ingredient.group)
-					return an.localeCompare(bn)
-				
-				return Ingredient.sortByGroups(an, bn)	
+					
+				return ai.name.localeCompare(bi.name)
 			})
 		}
 		
@@ -445,7 +462,8 @@ var myProto =
 			ingredients : Object.toArray(this.ingredients.inBar),
 			showPhotos : this.showPhotos,
 			barName : this.barName,
-			showByCocktails : this.showByCocktails
+			showByCocktails : this.showByCocktails,
+			notAvailableCocktails : this.notAvailableCocktails
 		}))
 	},
 	
