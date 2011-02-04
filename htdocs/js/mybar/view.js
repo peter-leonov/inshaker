@@ -181,7 +181,7 @@ var myProto =
 		if(inYourBar && inYourBar.length)
 		{
 			var ul = N('ul')
-			for (var i = 0, il = 3; i < il; i++)
+			for (var i = 0, il = inYourBar.length; i < il; i++)
 			{
 				if(!inYourBar[i]) break
 				ul.appendChild(inYourBar[i].getPreviewNode(true))
