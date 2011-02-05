@@ -173,7 +173,7 @@ class BarsProcessor < Inshaker::Processor
   
   def update_html bar, dst
     decl = @declensions[bar["city"]]
-    city_map_name = decl ? decl[0] : bar["city"]
+    city_map_name = decl ? decl[1] : bar["city"]
     File.write("#{dst.path}/index.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
   end
   
