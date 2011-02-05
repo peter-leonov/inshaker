@@ -28,6 +28,7 @@ class BarsProcessor < Inshaker::Processor
   
   def job
     Cocktail.init
+    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index
     
     prepare_barmen
     prepare_dirs
@@ -36,6 +37,8 @@ class BarsProcessor < Inshaker::Processor
     prepare_map_points
     
     update_bars
+    
+    check_intergity
     
     unless errors?
       cleanup_deleted
@@ -61,6 +64,18 @@ class BarsProcessor < Inshaker::Processor
   
   def prepare_cases
     @declensions = load_yaml(Config::DECLENSIONS)
+  end
+  
+  def check_intergity
+    say "проверяю хиты"
+    indent do
+    bar_hits = @entities.map { |e| e["carte"] }
+    
+    (@cocktail_hits.keys - bar_hits).each do |name|
+      error "коктейль «#{name}» не является хитом ни в одном баре"
+    end
+    
+    end # indent
   end
   
   def update_bars
@@ -102,6 +117,12 @@ class BarsProcessor < Inshaker::Processor
           unless Cocktail[cocktail]
             error %Q{нет такого коктейля #{cocktail}}
           end
+        end
+        
+        # use only one cocktail, the cocktail hit!
+        cocktail_hit = bar["carte"] = bar["carte"][0]
+        unless @cocktail_hits[cocktail_hit]
+          error "коктейль «#{cocktail_hit}» не отмечен тегом «Авторские хиты»"
         end
         
         unless bar["name_eng"].match(/\S/)
