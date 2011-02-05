@@ -17,6 +17,7 @@
 <!--# include virtual="/lib-0.3/modules/gridder.js"-->
 <!--# include virtual="/lib-0.3/modules/visibility-frame.js"-->
 <!--# include virtual="/lib-0.3/modules/boxer.js"-->
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 
 <!--# include virtual="/js/common/statistics.js" -->
