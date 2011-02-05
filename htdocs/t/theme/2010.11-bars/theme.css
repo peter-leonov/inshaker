@@ -20,8 +20,8 @@ a { color: #f9593b; }
 #bottom { color: #bbb; padding-top: 0; margin-top: 120px; }
 #bottom a { color: #9b562d; }
 html { background: #000 url(bg.jpg) no-repeat center 0px; }
-html.float-fixed { background-attachment: fixed; background-position: center -85px; }
-html.stick-bottom { background-position: center 740px; }
+html.float-fixed,
+html.stick-bottom { background-attachment: fixed; background-position: center -85px; }
 html#bars-page { background-attachment: fixed; background-position: center 0; }
 button.rounded b { text-shadow: 1px 1px 0 #000; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
