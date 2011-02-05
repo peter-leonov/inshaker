@@ -19,6 +19,8 @@ $.onready
 (
 	function ()
 	{
+		UserAgent.setupDocumentElementClassNames()
+		
 		var nodes =
 		{
 			page: $('bar-page'),
