@@ -1,4 +1,5 @@
 #common-main-wrapper { position: relative; width: 628px; left: -166px; z-index: 1; font-size: 13px; }
+html.msie-6 #common-main-wrapper { width: 630px; overflow: hidden; }
 
 #city-name { display: none; }
 
