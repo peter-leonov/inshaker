@@ -19,6 +19,7 @@
 <!--# include virtual="/lib-0.3/modules/boxer.js"-->
 
 
+<!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
