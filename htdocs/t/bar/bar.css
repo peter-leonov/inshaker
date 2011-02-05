@@ -1,10 +1,9 @@
-#common-main-wrapper { position: relative; width: 625px; left: -166px; z-index: 1; font-size: 13px; }
+#common-main-wrapper { position: relative; width: 628px; left: -166px; z-index: 1; font-size: 13px; }
 
 #city-name { display: none; }
 
 #main-column { width: 628px; }
-.body-wrapper { overflow: hidden; }
-.column-main-container { float: none; }
+.common-box .common-content { overflow: hidden; }
 
 #main-column .common-title { position: relative; }
 #main-column .common-title .navigation { position: absolute; right: 0; bottom: 15px; font-size: 11px; }
