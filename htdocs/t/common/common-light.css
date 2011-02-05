@@ -34,7 +34,7 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 html.msie-6 .rounding-corners .lt,
 html.msie-6 .rounding-corners .rt,
 html.msie-6 .rounding-corners .lb,
-html.msie-6 .rounding-corners .rb { background-image: url(rounded-corners-10px.8.png) no-repeat; }
+html.msie-6 .rounding-corners .rb { overflow: hidden; background-image: url(rounded-corners-10px.8.png); }
 html.msie-6 .rounding-corners .lb,
 html.msie-6 .rounding-corners .rb { bottom: -2px; }
 
