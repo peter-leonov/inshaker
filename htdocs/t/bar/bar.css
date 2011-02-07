@@ -95,10 +95,8 @@ html.msie-6 #common-main-wrapper { width: 630px; overflow: hidden; }
 html.msie-6 #main-column .atmosphere { zoom: 1; }
 html.msie-6 #main-column .atmosphere .part { width: 240px; }
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.photos .disabled { background-position-y: -60px; }
-.photos .prev { background-position-x: -60px; }
-.photos .next { display: block; }
-.photos .prev,
-.photos .next { display: block; background-image: url(../common/photos-buttons.8.png); }
-<!--# endif -->
+html.msie-6 .photos .disabled { background-position-y: -60px; }
+html.msie-6 .photos .prev { background-position-x: -60px; }
+html.msie-6 .photos .next { display: block; }
+html.msie-6 .photos .prev,
+html.msie-6 .photos .next { display: block; background-image: url(../common/photos-buttons.8.png); }
