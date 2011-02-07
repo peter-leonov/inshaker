@@ -69,7 +69,7 @@ class BarsProcessor < Inshaker::Processor
   def check_intergity
     say "проверяю хиты"
     indent do
-    bar_hits = @entities.map { |e| e["carte"] }
+    bar_hits = @entities.map { |e| e["carte"][0] }
     
     (@cocktail_hits.keys - bar_hits).each do |name|
       error "коктейль «#{name}» не является хитом ни в одном баре"
@@ -120,7 +120,8 @@ class BarsProcessor < Inshaker::Processor
         end
         
         # use only one cocktail, the cocktail hit!
-        cocktail_hit = bar["carte"] = bar["carte"][0]
+        cocktail_hit = bar["carte"][0]
+        bar["carte"] = [cocktail_hit]
         unless @cocktail_hits[cocktail_hit]
           error "коктейль «#{cocktail_hit}» не отмечен тегом «Авторские хиты»"
         end
