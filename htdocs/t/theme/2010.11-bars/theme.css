@@ -1,6 +1,6 @@
 /* common.css */
 #top .logo,
-.b-title #spotlighted,
+#spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -104,7 +104,7 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 /* common.css */
 #top .logo,
-.b-title #spotlighted,
+#spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
