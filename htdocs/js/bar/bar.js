@@ -45,8 +45,8 @@ $.onready
 		RoundedCorners.round(nodes.photos.root)
 		BarPage.initialize(nodes, Bar, Cocktail)
 		
-		Theme.initialize({"spotlighted":{"href":"/cocktail/b-black/"},"branded-image":{"href":"/cocktail/b-black/"}
-		})
+		Theme.initialize({"spotlighted":{"href":"/cocktail/b-black/"},"branded-image":{"href":"/cocktail/b-black/"}})
+		Theme.bind()
 	}
 )
 
