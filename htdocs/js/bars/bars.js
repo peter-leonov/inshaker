@@ -23,6 +23,7 @@ $.onready
 	function ()
 	{
 		document.documentElement.removeClassName('loading')
+		UserAgent.setupDocumentElementClassNames()
 		
 		var nodes =
 		{
