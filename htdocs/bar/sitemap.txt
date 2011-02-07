@@ -1,8 +1,3 @@
-http://www.inshaker.ru/bar/lebensstern/
-http://www.inshaker.ru/bar/artesian/
-http://www.inshaker.ru/bar/green_and_red/
-http://www.inshaker.ru/bar/the_connaught/
-http://www.inshaker.ru/bar/lounge_bohemia/
 http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/bamboo/
 http://www.inshaker.ru/bar/sideboard/
@@ -27,7 +22,6 @@ http://www.inshaker.ru/bar/tommy_d/
 http://www.inshaker.ru/bar/free_bar/
 http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/gull/
-http://www.inshaker.ru/bar/banquet/
 http://www.inshaker.ru/bar/48_chairs/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
@@ -36,4 +30,3 @@ http://www.inshaker.ru/bar/daiquiri_bar/
 http://www.inshaker.ru/bar/house_of_consumer_services/
 http://www.inshaker.ru/bar/sevensky/
 http://www.inshaker.ru/bar/happiness/
-http://www.inshaker.ru/bar/high_five/
