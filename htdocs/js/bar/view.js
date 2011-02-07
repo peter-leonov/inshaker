@@ -96,7 +96,7 @@ BarPage.view =
 		
 		var node = current.mapPoint.createNode()
 		node.addClassName('selected')
-		map.setCenter({lat: current.point[0], lng: current.point[1]}, 13)
+		map.setCenter({lat: current.point[0], lng: current.point[1]}, 15)
 	},
 	
 	renderCocktails: function (cocktails)
