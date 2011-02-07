@@ -30,18 +30,27 @@ class Cocktail < Inshaker::Entity
     Ingredient.init
     
     @db = []
-    @by_name = {}
-    
     if File.exists?(Config::DB_JS)
       JSON.parse(File.read(Config::DB_JS)).each do |name, cocktail|
         @db << cocktail
-        @by_name = @db.hash_index("name")
       end
     end
+    
+    @by_tag = Hash.new { |h, k| h[k] = [] }
+    @db.each do |cocktail|
+      cocktail["tags"].each do |tag|
+        @by_tag[tag.ci_index] << cocktail
+      end
+    end
+    @by_name = @db.hash_index("name")
   end
   
   def self.[] name
     @by_name[name]
+  end
+  
+  def self.get_by_tag tag
+    @by_tag[tag.ci_index]
   end
   
   def self.check_integrity

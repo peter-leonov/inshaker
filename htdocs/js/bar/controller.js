@@ -14,11 +14,6 @@ BarPage.controller =
 		this.owner.model.setQuery(state)
 	},
 	
-	toggleMoreClicked: function ()
-	{
-		this.owner.view.toggleMore()
-	},
-	
 	moreIsMaximized: function () {  },
 	moreIsMinimized: function () {  }
 }

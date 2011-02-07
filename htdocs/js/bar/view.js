@@ -14,29 +14,6 @@ BarPage.view =
 		
 		this.renderPhotos()
 		
-		var barMore = nodes.barMore
-		if (barMore)
-		{
-			barMore.maximize = function () { this.animate('easeOutQuad', {height: this.scrollHeight}, 1) }
-			barMore.minimize = function () { this.animate('easeOutQuad', {height: 1}, 1) }
-			barMore.toggleHeight = function ()
-			{
-				if (this.isMaximized)
-				{
-					this.minimize()
-					return this.isMaximized = false
-				}
-				else
-				{
-					this.maximize()
-					return this.isMaximized = true
-				}
-			}
-		}
-		
-		var controller = this.owner.controller
-		nodes.showMore.addEventListener('click', function () { controller.toggleMoreClicked() }, false)
-		
 		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
@@ -45,9 +22,9 @@ BarPage.view =
 		var photos = this.nodes.photos,
 			items = photos.items
 		
-		var total = items.length
+		var total = items.length, last
 		if (total > 1)
-			photos.surface.appendChild(items[0].cloneNode(true))
+			last = photos.surface.appendChild(items[0].cloneNode(true))
 		
 		var list = new LazyList()
 		list.bind(photos)
@@ -57,12 +34,13 @@ BarPage.view =
 			for (var i = 0, il = nodes.length; i < il; i++)
 			{
 				// buggy in Firefox
-				// var image = nodes[i].firstChild
-				// if (!image.src)
-				// 	image.src = image.getAttribute('data-lazy-src')
+				var image = nodes[i].firstChild
+				if (!image.src)
+					image.src = image.getAttribute('data-lazy-src')
 			}
 		}
 		list.setNodes(items, total)
+		list.load([last])
 	},
 	
 	modelChanged: function (data)
@@ -81,24 +59,14 @@ BarPage.view =
 	readBarCityNames: function ()
 	{
 		var nodes = this.nodes,
-			barName = nodes.barName.innerHTML,
-			cityName = nodes.cityName.innerHTML
+			barName = nodes.barName.getAttribute('data-value'),
+			cityName = nodes.cityName.getAttribute('data-value')
 		
 		var state = {}
 		state.name = barName
 		state.city = cityName
 		
 		this.owner.controller.barCityNamesLoaded(state)
-	},
-	
-	toggleMore: function ()
-	{
-		var barMore = this.nodes.barMore
-		if (barMore)
-		{
-			var miximized = barMore.toggleHeight()
-			this.owner.controller[miximized ? 'moreIsMaximized' : 'moreIsMinimized']()
-		}
 	},
 	
 	initMap: function (bar)
@@ -133,21 +101,7 @@ BarPage.view =
 	
 	renderCocktails: function (cocktails)
 	{
-		var listNodes = this.nodes.carte
-		
-		var clNodes =
-		{
-			root: listNodes.root,
-			viewport: listNodes.viewport,
-			surface: listNodes.surface,
-			prev: listNodes.prev,
-			next: listNodes.next
-		}
-
-		var cl = new CocktailList()
-		cl.bind(clNodes)
-		cl.configure({pageLength: 5, pageVelocity: 36.5})
-		cl.setCocktails(cocktails)
+		this.nodes.hitBox.appendChild(cocktails[0].getPreviewNode(false, true))
 	},
 	
 	renderPrevNext: function (prevNext)
@@ -167,6 +121,14 @@ BarPage.view =
 		}
 		else
 			this.nodes.barNext.hide()
+	},
+	
+	bindBrandingScroller: function ()
+	{
+		var nodes = this.nodes
+		
+		var bs = new BrandingScroller()
+		bs.bind({holder: nodes.brandedImageHolder, page: nodes.page})
 	}
 }
 

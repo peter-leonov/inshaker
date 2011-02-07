@@ -30,17 +30,17 @@ BarPage.model =
 	setQuery: function (query)
 	{
 		var bar = Bar.getByCityName(query.city, query.name)
-		if (bar)
+		if (!bar)
+			return
+		
+		var data =
 		{
-			var data =
-			{
-				bar: bar,
-				carte: this.getCocktailsByNames(bar.carte),
-				otherBarsSet: Bar.getAllByCity(query.city),
-				prevNext: this.getPrevNext(query.name, {city: query.city, format: query.format, feel: query.feel})
-			}
-			
-			this.owner.view.modelChanged(data)
+			bar: bar,
+			carte: this.getCocktailsByNames(bar.carte),
+			otherBarsSet: Bar.getAllByCity(query.city),
+			prevNext: this.getPrevNext(query.name, {city: query.city, format: query.format, feel: query.feel})
 		}
+		
+		this.owner.view.modelChanged(data)
 	}
 }

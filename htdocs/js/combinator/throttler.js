@@ -2,11 +2,12 @@
 
 var myName = 'Throttler'
 
-function Me (callback, delay, timeout)
+function Me (callback, delay, timeout, invocant)
 {
 	this.callback = callback
 	this.delay = delay
 	this.timeout = timeout
+	this.invocant = invocant || self
 	this.delayTimer = 0
 	this.timeoutTimer = 0
 	
@@ -19,6 +20,8 @@ Me.prototype =
 {
 	call: function ()
 	{
+		this.args = arguments
+		
 		clearTimeout(this.delayTimer)
 		this.delayTimer = setTimeout(this.timerCallback, this.delay)
 		
@@ -42,9 +45,7 @@ Me.prototype =
 			this.timeoutTimer = 0
 		}
 		
-		// trick to avoid this.callback.call(window)
-		var callback = this.callback
-		callback()
+		this.callback.apply(this.invocant, this.args)
 	}
 }
 

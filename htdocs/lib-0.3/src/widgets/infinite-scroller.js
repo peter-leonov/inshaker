@@ -90,6 +90,7 @@ Me.prototype =
 	{
 		this.space.stop()
 		this.startX = this.globalX
+		this.nodes.root.addClassName('grabbing')
 	},
 	
 	onmoveabout: function ()
@@ -108,22 +109,22 @@ Me.prototype =
 	
 	onmoveend: function (e)
 	{
-		var ms = e.data.movements.reverse()
+		this.nodes.root.removeClassName('grabbing')
 		
-		if (ms[3]) // got at least five movements
-		{
-			
-			var root = this.nodes.root,
-				// approximating last movements
-				vx = ((ms[1].dx - ms[0].dx) + (ms[2].dx - ms[1].dx) + (ms[3].dx - ms[2].dx)) / 3// + (ms[4].dx - ms[3].dx) + (ms[5].dx - ms[4].dx)) / 5
-			
-			if (Math.abs(vx) > this.maxInertia)
-				vx = (vx < 0 ? -1 : 1) * this.maxInertia
-			
-			this.point.x = this.globalX
-			this.setVelocity(vx ? vx * this.power : 0, 0)
-			this.run()
-		}
+		var ms = e.data.movements.reverse()
+		if (!ms[3])
+			return
+		
+		var root = this.nodes.root,
+			// approximating last movements
+			vx = ((ms[1].dx - ms[0].dx) + (ms[2].dx - ms[1].dx) + (ms[3].dx - ms[2].dx)) / 3// + (ms[4].dx - ms[3].dx) + (ms[5].dx - ms[4].dx)) / 5
+		
+		if (Math.abs(vx) > this.maxInertia)
+			vx = (vx < 0 ? -1 : 1) * this.maxInertia
+		
+		this.point.x = this.globalX
+		this.setVelocity(vx ? vx * this.power : 0, 0)
+		this.run()
 	},
 	
 	addVelocity: function (x, y)

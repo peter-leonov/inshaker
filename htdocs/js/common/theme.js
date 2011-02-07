@@ -28,12 +28,3 @@ var Me = self[myName] =
 }
 
 })();
-
-;(function(){ try {
-	var m = /\btheme=(\d\d\d\d\.\d\d)/.exec(location.hash)
-	if (m)
-	{
-		$('theme-stylesheet').href = '/t/theme/' + m[1] + '/theme.css'
-		document.cookie = 'theme=' + m[1]// + '; expires=' + new Date()
-	}
-} catch (ex) {} })();
