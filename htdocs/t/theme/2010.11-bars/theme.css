@@ -19,7 +19,7 @@ html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; 
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #f9593b; }
 #top .nav a:hover { border-bottom-color: #ba5622; }
-#bottom { color: #bbb; padding-top: 0; margin-top: 120px; }
+#bottom { color: #bbb; padding-top: 0; margin-top: 40px; }
 #bottom a { color: #9b562d; }
 html { background: #000 url(bg.jpg) no-repeat center 0px; }
 html.float-fixed,
