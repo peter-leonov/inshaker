@@ -30,6 +30,7 @@
 
 #main-column .info .about { margin-left: 60px; }
 #main-column .info .about .part { margin-bottom: 1em; }
+#main-column .info .about .part:last-child { margin-bottom: 0; }
 #main-column .info .about .part dt,
 #main-column .info .about .part dd { display: inline; }
 #main-column .info .about .part dt { font-weight: bold; display: block; }
