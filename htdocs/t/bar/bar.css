@@ -35,7 +35,7 @@
 #main-column .info .about .part dd { display: inline; }
 #main-column .info .about .part dt { font-weight: bold; display: block; }
 #main-column .info .about .part dd { line-height: 18px; }
-#main-column .info .about .contacts { position: absolute; bottom: 0; }
+#main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
