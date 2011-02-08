@@ -19,27 +19,28 @@
 #main-column .atmosphere .feature { margin-left: 10px; }
 #main-column .atmosphere .people { margin-left: 75px; }
 
-#main-column .info { overflow: hidden; margin-top: 25px; }
+#main-column .info { overflow: hidden; margin-top: 25px; position: relative; }
 #main-column .info .block { float: left; width: 265px; }
 #main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
-#main-column .info .block .body { padding: 0 10px; position: relative; height: 390px; }
+#main-column .info .block .body { padding: 0 10px; }
 
-#main-column .info .hit .cocktail-preview { width: 200px; height: 400px; margin: 0 auto; }
+#main-column .info .hit .cocktail-preview { width: 200px; min-height: 390px; margin: 0 auto; }
 #main-column .info .hit .cocktail-preview .link { display: block; text-align: center; }
 #main-column .info .hit .cocktail-preview .link .image { display: block; }
 
 #main-column .info .about { margin-left: 60px; }
-#main-column .info .about dl { margin-bottom: 1em; }
-#main-column .info .about dl dt,
-#main-column .info .about dl dd { display: inline; }
-#main-column .info .about dl dt { font-weight: bold; display: block; }
-#main-column .info .about dl dd { line-height: 18px; }
-#main-column .info .about .contacts { position: absolute; bottom: 0; }
+#main-column .info .about .part { margin-bottom: 1em; }
+#main-column .info .about .part:last-child { margin-bottom: 0; }
+#main-column .info .about .part dt,
+#main-column .info .about .part dd { display: inline; }
+#main-column .info .about .part dt { font-weight: bold; display: block; }
+#main-column .info .about .part dd { line-height: 18px; }
+#main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
 #bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-#bar-on-map .head .taxi { position: absolute; right: 20px; }
+#bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }
 #bar-on-map .head .taxi .name { color: #e6d408; }
 #bar-on-map .head .taxi .code { color: #999; }
@@ -92,10 +93,14 @@
 #map .position-control .to-minus { left: 23px; top: 80px; }
 
 html.msie-6 #common-main-wrapper { width: 630px; overflow: hidden; }
-html.msie-6 #main-column .atmosphere { zoom: 1; }
+html.msie-6 #main-column .atmosphere,
+html.msie-6 #main-column .info { zoom: 1; }
 html.msie-6 #main-column .atmosphere .part { width: 240px; }
 html.msie-6 .photos .disabled { background-position-y: -60px; }
 html.msie-6 .photos .prev { background-position-x: -60px; }
 html.msie-6 .photos .next { display: block; }
 html.msie-6 .photos .prev,
 html.msie-6 .photos .next { display: block; background-image: url(../common/photos-buttons.8.png); }
+
+html.msie-7 #main-column .info .about .contacts,
+html.msie-8 #main-column .info .about .contacts { bottom: -1em; }
