@@ -40,7 +40,7 @@
 
 #bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
 #bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-#bar-on-map .head .taxi { position: absolute; right: 20px; }
+#bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }
 #bar-on-map .head .taxi .name { color: #e6d408; }
 #bar-on-map .head .taxi .code { color: #999; }
