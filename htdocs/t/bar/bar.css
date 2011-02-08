@@ -19,12 +19,12 @@
 #main-column .atmosphere .feature { margin-left: 10px; }
 #main-column .atmosphere .people { margin-left: 75px; }
 
-#main-column .info { overflow: hidden; margin-top: 25px; }
+#main-column .info { overflow: hidden; margin-top: 25px; position: relative; }
 #main-column .info .block { float: left; width: 265px; }
 #main-column .info .block .head { height: 31px; padding: 0 10px; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
-#main-column .info .block .body { padding: 0 10px; position: relative; height: 390px; }
+#main-column .info .block .body { padding: 0 10px; }
 
-#main-column .info .hit .cocktail-preview { width: 200px; height: 400px; margin: 0 auto; }
+#main-column .info .hit .cocktail-preview { width: 200px; margin: 0 auto; }
 #main-column .info .hit .cocktail-preview .link { display: block; text-align: center; }
 #main-column .info .hit .cocktail-preview .link .image { display: block; }
 
