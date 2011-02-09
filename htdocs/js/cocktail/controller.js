@@ -249,7 +249,7 @@ var Controller = {
 			$('poster').style.visibility = 'hidden';
 			
 			// Apply fix
-			if(ul.offsetHeight > 125) entry.style.height = (ul.offsetHeight + 60) + "px";
+			if(ul.offsetHeight > 100) entry.style.height = (ul.offsetHeight + 80) + "px";
 		}
 		$('view-how').hide = function()
 		{
