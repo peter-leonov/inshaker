@@ -158,8 +158,10 @@ var myProto =
 			break
 		}
 		
+		var stats = this.calculateStats(cocktails)
+		
 		// oowf, need to update the view
-		this.view.renderCocktails(sorted, cocktails.length)
+		this.view.renderCocktails(sorted, cocktails.length, stats)
 	},
 	
 	sortByIncreasingComplexity: function (cocktails)
@@ -335,6 +337,42 @@ var myProto =
 		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
 		
 		return [{cocktails: cocktails}]
+	},
+	
+	calculateStats: function (cocktails)
+	{
+		var rating = {}
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var parts = cocktails[i].ingredients
+			for (var j = 0, jl = parts.length; j < jl; j++)
+			{
+				var name = parts[j][0]
+				var count = rating[name]
+				if (count)
+					rating[name]++
+				else
+					rating[name] = 1
+			}
+		}
+		
+		var all = Object.keys(rating)
+		all.sort(function (a, b) { return rating[b] - rating[a] })
+		all = all.slice(0, 7)
+		
+		var top = []
+		for (var i = 0, il = all.length; i < il; i++)
+		{
+			var name = all[i]
+			
+			top[i] =
+			{
+				ingredient: Ingredient.getByName(name),
+				rating: rating[name]
+			}
+		}
+		
+		return {top: top}
 	},
 	
 	combine: function (arr)
