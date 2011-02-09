@@ -2,6 +2,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 body { position: static; min-height: 100%; }
 
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+.popup.hidden .popup-front { top: 0 !important; }
 
 #branded-image-holder { display: none; }
 
@@ -60,6 +61,8 @@ body { position: static; min-height: 100%; }
 #output .help-line .hint { text-decoration: none; border-bottom: 1px dashed; }
 
 #output .result-block { font-size: 14px; }
+
+#output .result-block .stats { font-size: 12px; color: #ccc; text-align: center; display: none; }
 
 .dropdown-select { }
 .dropdown-select,

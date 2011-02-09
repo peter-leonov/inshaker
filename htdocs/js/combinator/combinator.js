@@ -99,6 +99,7 @@ function onready ()
 	{
 		output: $('output'),
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
+		stats: $$('#output .result-block .stats')[0],
 		queryInput: $$('#search-box .query')[0],
 		searchForm: $$('#search-box form')[0],
 		plusButton: $$('#search-box .plus')[0],
