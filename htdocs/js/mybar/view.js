@@ -75,6 +75,8 @@ var myProto =
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
+		
+		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
 	},
 	
 	setCompleterDataSource: function (ds)
@@ -139,6 +141,9 @@ var myProto =
 		
 		if(!c.empty.hasClassName('hidden'))
 			c.empty.hide()
+		
+		if(!this.nodes.menuLink.hasClassName('active'))
+			this.nodes.menuLink.addClassName('active')
 			
 		c.switcher.show()
 			
@@ -279,7 +284,7 @@ var myProto =
 			var dt = Nc('dt', 'title-label') 
 			var dd = N('dd')
 			
-			dt.innerHTML = 'Если в твоем баре будет ' + ingredient.name + ', сможешь приготовить ' + cl + ' ' + cl.plural('новый коктейль', 'новых коктейля', 'новых коктейлей')
+			dt.innerHTML = 'Если в твоем баре будет ' + ingredient.name + ', сможешь приготовить ' + cl + ' ' + cl.plural('новый коктейль', 'новых коктейля', 'новых коктейлей') + ':'
 				
 			var ing = ingredient.getPreviewNode(true, false)
 			var eq = Nct('li', 'eq', '=')
@@ -318,6 +323,8 @@ var myProto =
 			c.switcher.hide()
 		
 		c.empty.show()
+		
+		this.nodes.menuLink.removeClassName('active')
 	},
 	
 	

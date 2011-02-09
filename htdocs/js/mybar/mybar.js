@@ -143,7 +143,9 @@ function onready ()
 			empty : $$('#output .bottom-output .empty')[0],
 			swCocktails : $$('#output .bottom-output .number-of-cocktails')[0],
 			swIngreds : $$('#output .bottom-output .easy-to-make')[0]
-		}
+		},
+		
+		menuLink : $$('#output .b-title a.bar-link')[0]
 		/*,
 		recommendsBlock : $$('#output .recommends-block')[0],
 		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
