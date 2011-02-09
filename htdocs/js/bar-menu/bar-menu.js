@@ -16,6 +16,7 @@ var myProto =
 	{
 		this.model.setBarMenu()
 		this.model.setBarName()
+		this.model.setIngredients()
 		return this
 	}
 	
@@ -53,9 +54,15 @@ function onready ()
 			form : $$('#bar-name .change-name')[0],
 			input : $$('#bar-name .change-name .new-bar-name')[0]
 		},
+		
 		barMenu : {
 			wrapper : $$('#output .b-content .menu-block .wrapper')[0],
 			empty : $$('#output .b-content .empty-menu')[0]
+		},
+		
+		ingredients : {
+			main : $$('#output .b-content .ingredients-block')[0],
+			wrapper : $$('#output .b-content .ingredients-block .wrapper')[0]
 		}
 	}
 	

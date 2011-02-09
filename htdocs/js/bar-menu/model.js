@@ -40,7 +40,12 @@ var myProto =
 			ingredients.push(Ingredient.getByName(ingredientNames[i]))
 			ingredients.inBar[ingredientNames[i]] = true
 		}
-		return ingredients
+		return ingredients.sort(function(a, b){
+			if(a.group != b.group)
+				return Ingredient.sortByGroups(a.name, b.name)
+				
+			return a.name.localeCompare(b.name)
+		})
 	},
 	
 	computeCocktails : function(ingredients)
@@ -96,6 +101,11 @@ var myProto =
 	setBarMenu : function()
 	{
 		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails)
+	},
+	
+	setIngredients : function()
+	{
+		this.view.renderIngredients(this.ingredients)
 	},
 	
 	setBarName : function()

@@ -142,6 +142,24 @@ var myProto =
 		this.nodes.barMenu.wrapper.appendChild(dl)
 	},
 	
+	renderIngredients : function(ingredients)
+	{
+		var inode = this.nodes.ingredients
+		if(ingredients.length == 0)
+			inode.main.hide()
+	
+		inode.main.show()
+		
+		var ul = N('ul')
+		for (var i = 0, il = ingredients.length; i < il; i++) 
+		{
+			ul.appendChild(Nct('li', 'ing-name', ingredients[i].name))
+		}
+		
+		inode.wrapper.empty()
+		inode.wrapper.appendChild(ul)
+	},
+	
 	handleBarMenuClick : function(e)
 	{
 		var target = e.target
