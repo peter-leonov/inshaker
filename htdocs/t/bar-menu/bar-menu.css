@@ -60,7 +60,7 @@ html.loading .b-content { display: none; }
 	top: 0;
 }
 
-#output .b-content .menu-block .title {
+#output .b-content h3.title {
 	font-size: 24px;
 }
 
@@ -90,3 +90,7 @@ html.loading .b-content { display: none; }
 	color: #ccc;
 	margin: 10px 0px;
 }
+
+#output .b-content .ingredients-block { margin: 20px 0px 10px; }
+
+#output .b-content .ingredients-block .ing-name { font-size: 14px; margin: 10px 0px 0px; }

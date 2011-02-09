@@ -6,3 +6,5 @@
 #bar-name .help, #bar-name .title { font-size: 30px; }
 
 #output .b-content .menu-block .not-available { display: none; }
+
+#output .b-content .ingredients-block { display: none; }
