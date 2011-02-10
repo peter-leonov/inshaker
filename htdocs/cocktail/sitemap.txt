@@ -7,6 +7,7 @@ http://www.inshaker.ru/cocktail/absinth_in_a_fountain/
 http://www.inshaker.ru/cocktail/absinthe_sour/
 http://www.inshaker.ru/cocktail/iq/
 http://www.inshaker.ru/cocktail/quince_crush/
+http://www.inshaker.ru/cocktail/island_blossom/
 http://www.inshaker.ru/cocktail/aki/
 http://www.inshaker.ru/cocktail/alexander/
 http://www.inshaker.ru/cocktail/alexandra/
@@ -397,6 +398,7 @@ http://www.inshaker.ru/cocktail/red_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/red-skinned_macho/
 http://www.inshaker.ru/cocktail/red/
 http://www.inshaker.ru/cocktail/red_dog/
+http://www.inshaker.ru/cocktail/red_sour/
 http://www.inshaker.ru/cocktail/red_tea/
 http://www.inshaker.ru/cocktail/creme_de_le_creme/
 http://www.inshaker.ru/cocktail/creme_brulle/
@@ -452,6 +454,7 @@ http://www.inshaker.ru/cocktail/malecon/
 http://www.inshaker.ru/cocktail/little_salty_russian/
 http://www.inshaker.ru/cocktail/little_hummer/
 http://www.inshaker.ru/cocktail/petit_fleur/
+http://www.inshaker.ru/cocktail/raspberry_sunset/
 http://www.inshaker.ru/cocktail/raspberry_sambuca/
 http://www.inshaker.ru/cocktail/raspberry_voyage/
 http://www.inshaker.ru/cocktail/raspberry_ambitious/
