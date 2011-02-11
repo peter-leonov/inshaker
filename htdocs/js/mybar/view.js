@@ -57,9 +57,7 @@ var myProto =
 		var me = this
 		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
 		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.recommBlocks.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.bottomOutput.title.addEventListener('click', function(e){ me.handleBoTitleClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailSwitcherClick(e) }, false)
 		
@@ -77,6 +75,7 @@ var myProto =
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
 		
 		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
+		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
 	},
 	
 	setCompleterDataSource: function (ds)
@@ -138,9 +137,11 @@ var myProto =
 			this.renderIfCocktailsEmpty()
 			return
 		}
+		/*
+				if(!c.empty.hasClassName('hidden'))
+					c.empty.hide()*/
 		
-		if(!c.empty.hasClassName('hidden'))
-			c.empty.hide()
+		c.block.show()
 		
 		if(!this.nodes.menuLink.hasClassName('active'))
 			this.nodes.menuLink.addClassName('active')
@@ -178,100 +179,99 @@ var myProto =
 		}
 	},
 	
-	renderRecommBlocks : function(groups)
+	renderBottomOutput : function(mustHave, boItems, showPackages, havingIngredients, havingCocktails)
 	{
-		var inYourBar = groups.ingrInYourBar,
-			rb = this.nodes.recommBlocks
-		
-		if(inYourBar && inYourBar.length)
+		//mustHave render		
+		if(showPackages)
 		{
-			var ul = N('ul')
-			for (var i = 0, il = inYourBar.length; i < il; i++)
+			var i = 0
+			for (var k in havingIngredients) 
 			{
-				if(!inYourBar[i]) break
-				ul.appendChild(inYourBar[i].getPreviewNode(true))
+				if(havingIngredients[k]) i++
 			}
-			rb.inYourBarList.empty()
-			rb.inYourBarList.appendChild(ul)
-			rb.inYourBar.show()
+			if(i == 0) boItems = []
+			this.renderBoPackages(boItems, havingIngredients)
 		}
 		else
-			rb.inYourBar.hide()
-		
-		var inGoodBar = groups.ingrInGoodBar
-
-		if(inGoodBar && inGoodBar.length)
-		{
-			var ul = N('ul')
-			for (var i = 0, il = 3; i < il; i++)
-			{
-				if(!inGoodBar[i]) break
-				ul.appendChild(inGoodBar[i].getPreviewNode(true))
-			}
-			rb.inGoodBarList.empty()
-			rb.inGoodBarList.appendChild(ul)
-			rb.inGoodBar.show()
-		}
-		else
-			rb.inGoodBar.hide()
-
-		var ingrOfMonth = groups.ingrOfMonth
-		
-		if(ingrOfMonth && ingrOfMonth.length)
-		{
-			var ul = N('ul')
-			for (var i = 0, il = 1; i < il; i++)
-			{
-				if(!ingrOfMonth[i]) break
-				ul.appendChild(ingrOfMonth[i].getPreviewNode(true))
-			}
-			
-			rb.ingrOfMonthList.empty()
-			rb.ingrOfMonthList.appendChild(ul)
-			rb.ingrOfMonth.show()
-		}
-		else
-			rb.ingrOfMonth.hide()
-	},
-	
-	renderBottomOutput : function(boItems, showByCocktails)
-	{
-		if(showByCocktails)
 		{
 			this.renderBoByCocktails(boItems)
 		}
-		else
-		{
-			this.renderBoEasyToMake(boItems.cocktails, boItems.notInBar)
-		}
+		
+		this.mustHaveRender(mustHave)
 	},
 	
-	renderBoEasyToMake : function(cocktails, notInBar)
+	mustHaveRender : function(mustHave)
 	{
-		bo = this.nodes.bottomOutput
-		
-		bo.swIngreds.removeClassName('link')
-		bo.swCocktails.addClassName('link')
-		
-		var div = Nc('div', 'ing-list')
-		
-		setTimeout(function()
+		var mh = {}, mustHaveUl = N('ul')
+		for (var i = 0, il = mustHave.length; i < il; i++) 
 		{
-				bo.wrapper.empty()
-				bo.wrapper.appendChild(div)
-				var incl = new IngredientedCocktailList()
-				incl.bind({ main : div })
-				incl.setCocktails([{ cocktails : cocktails }], notInBar)	
-		}, 1)
+			var mh = mustHave[i]
+			var li = Nc('li', 'row')
+			
+			var bigPlus = Nct('div', 'big-plus', '+')
+			bigPlus.ingredients = [mh.ingredient]
+			
+			var ing = Nc('div', 'ingredient')
+			ing.appendChild(mh.ingredient.getPreviewNode())
+			
+			li.appendChild(bigPlus)
+			li.appendChild(ing)
+			
+			var desc = Nc('p', 'description')
+			desc.innerHTML = mh.description
+			li.appendChild(desc)
+			mustHaveUl.appendChild(li)
+		}
+		var main = this.nodes.bottomOutput.mustHave
+		main.empty()
+		main.appendChild(mustHaveUl)
+	},
+	
+	renderBoPackages : function(cocktails, havingIngredients)
+	{
+		var main = this.nodes.bottomOutput.recommends
+		
+		var ul = Nc('ul', 'packages')
+		
+		for (var i = 0, il = cocktails.length; i < il; i++) 
+		{
+			var cocktail = cocktails[i],
+				li = Nc('li', 'package'),
+				ingDiv = Nc('ul', 'ingredients list'),
+				cocktailDiv = Nc('div', 'cocktail')
+				
+			cocktailDiv.appendChild(cocktail.getPreviewNode())
+			
+			for (var j = 0, jl = cocktail.ingredients.length; j < jl; j++) 
+			{
+				var ingName = cocktail.ingredients[j][0]
+				if(!havingIngredients[ingName])
+				{					
+					var item = Nc('li', 'ingredient')
+					item.appendChild(Ingredient.getByName(ingName).getPreviewNode())
+					ingDiv.appendChild(item)
+				}
+			}
+			
+			var bigPlus = Nct('div', 'big-plus', '+')
+			bigPlus.ingredients = cocktail.ingredients.map(function(a){ return Ingredient.getByName(a[0]) })
+			
+			li.appendChild(bigPlus)
+			li.appendChild(ingDiv)
+			li.appendChild(Nct('div', 'eq', '='))
+			li.appendChild(cocktailDiv)
+			
+			ul.appendChild(li)
+		}
+		
+		main.empty()
+		main.appendChild(ul)
 	},
 	
 	renderBoByCocktails : function(groups)
 	{
-		bo = this.nodes.bottomOutput
-		
-		bo.swCocktails.removeClassName('link')
-		bo.swIngreds.addClassName('link')
-		
+		var main = this.nodes.bottomOutput.recommends
+	
 		var dl = Nc('dl', 'show-by-cocktails')
 		
 		for (var i = 0, il = groups.length; i < il; i++) 
@@ -282,15 +282,16 @@ var myProto =
 				cl = cocktails.length
 			
 			var dt = Nc('dt', 'title-label') 
-			var dd = N('dd')
+				dd = N('dd'),	
+				ing = Nc('li', 'ingredient'),
+				eq = Nct('li', 'eq', '='),
+				head = Nc('ul', 'head'),
+				bigPlus = Nct('li', 'big-plus', '+')
 			
-			dt.innerHTML = 'Если в твоем баре будет ' + ingredient.name + ', сможешь приготовить ' + cl + ' ' + cl.plural('новый коктейль', 'новых коктейля', 'новых коктейлей') + ':'
-				
-			var ing = ingredient.getPreviewNode(true, false)
-			var eq = Nct('li', 'eq', '=')
+			bigPlus.ingredients = [ingredient]
+			ing.appendChild(ingredient.getPreviewNode())
 			
-			var head = Nc('ul', 'head')
-			
+			head.appendChild(bigPlus)
 			head.appendChild(ing)
 			head.appendChild(eq)
 			
@@ -302,54 +303,22 @@ var myProto =
 				body.appendChild(cocktails[j].getPreviewNode())
 			
 			dd.appendChild(body)			
-			dl.appendChild(dt)
 			dl.appendChild(dd)
 			
 			})()
 		}
 		
-		bo.wrapper.empty()
-		bo.wrapper.appendChild(dl)	
+		main.empty()
+		main.appendChild(dl)	
 	},
 	
 	renderIfCocktailsEmpty : function()
 	{
 		var c = this.nodes.cocktails
 		
-		if(!c.wrapper.hasClassName('hidden'))
-			c.wrapper.hide()
-		
-		if(!c.switcher.hasClassName('hidden'))
-			c.switcher.hide()
-		
-		c.empty.show()
-		
-		this.nodes.menuLink.removeClassName('active')
+		c.block.hide()
 	},
-	
-	
-	/*
-	renderRecommends : function(recommends, inBar)
-	{
-		if(recommends.length == 0)
-		{
-			this.renderIfRecommendsEmpty()
-			return
-		}
-		if(!this.nodes.recommBlocksEmpty.hasClassName('hidden'))
-			this.nodes.recommBlocksEmpty.hide()
-		
-		var me = this
-		this.inBar = inBar
-			
-		//OMG!!! o_0
-		setTimeout(function()
-		{
-			me.incl.setCocktails(recommends, inBar)
-		}, 1)
-		this.nodes.recommBlocksWrapper.show()
-	},
-	*/
+
 	renderIfIngredientsEmpty : function()
 	{
 		this.nodes.ingrList.empty()
@@ -459,6 +428,15 @@ var myProto =
 				this.controller.switchBoShowType(false)
 			else
 				this.controller.switchBoShowType(true)
+		}
+	},
+	
+	handleBottomOutputClick : function(e)
+	{
+		var target = e.target
+		if(target.ingredients)
+		{
+			this.controller.addIngredientsFromBo(target.ingredients)
 		}
 	}
 }
