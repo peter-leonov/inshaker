@@ -2,8 +2,8 @@ html { overflow-y: scroll; }
 a[href^="#"] { text-decoration: none; border-bottom: dashed 1px; }
 #main-wrapper .column { width: 628px; }
 .b-title h1 { font-size: 20px; }
-.b-content ul { margin: 0.5em 0 1.5em 1em; }
-.b-content ul li { list-style: disc inside; margin: 0.4em 0; }
+.b-content ul { margin: 0.5em 0 1.5em 2em; }
+.b-content ul li { list-style: disc outside; margin: 0.4em 0; }
 .b-content { font-size: 14px; }
 .b-content h2 { font-size: 20px; margin: 0 0 0.1em 0; }
 .b-content p { margin: 0 0 1em 0; }
