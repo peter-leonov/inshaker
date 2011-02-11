@@ -5,7 +5,7 @@ var Papa
 ;(function(){
 
 var myName = 'PartyPage',
-	Me = Papa = self[myName] = MVC.create(myName)
+	Me = Papa = MVC.create(myName)
 
 var myProto =
 {
@@ -25,6 +25,9 @@ var myProto =
 }
 
 Object.extend(Me.prototype, myProto)
+
+Me.className = myName
+self[Me.className] = Me
 
 })();
 
