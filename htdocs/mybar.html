@@ -11,7 +11,6 @@
 
 	<div class="column"><div class="body-wrapper" id="output">
 		<div class="b-title">
-			<a class="bar-link" href="/bar-menu.html">Меню бара</a>
 			<div id="bar-name">
 				<h2>
 					<span class="help hidden title">Придумай название своего бара</span>
@@ -26,20 +25,6 @@
 		</div>
 
 		<div class="b-content">
-			<div class="recommend-blocks">
-				<dl class="ingr-in-your-bar">
-					<dt class="title">Скорее всего в твоем баре есть!</dt>
-					<dd class="list"></dd>
-				</dl>
-				<dl class="ingr-in-good-bar">
-					<dt class="title">В хорошем баре всегда есть!</dt>
-					<dd class="list"></dd>
-				</dl>
-				<dl class="ingr-of-month">
-					<dt class="title">Ингредиент месяца!</dt>
-					<dd class="list"></dd>
-				</dl>
-			</div>
 			<dl class="ingredients-block">
 				<dt class="title">Ингредиенты и штучки в моем баре</dt>
 				<dd>
@@ -58,7 +43,7 @@
 			</dl>
 			<dl class="cocktails-block ing-list">
 				<dt class="title">
-					В моем баре есть всё необоходимое для приготовления <span class="amount"></span>
+					В моем баре есть всё необоходимое для приготовления <span class="amount"></span> <span class="bar-link">(<a href="/bar-menu.html">распечатать меню</a>)</span>
 					<div class="switcher">
 						<span class="photos">фото</span> | <span class="combs">сочетания</span>
 					</div>
@@ -69,9 +54,12 @@
 				</dd>
 			</dl>
 			<dl class="bottom-output">
-				<dt class="title">Рекомендации ингредиентов и штучек <span class="number-of-cocktails">по количеству коктейлей</span> или <span class="easy-to-make">по простоте приготовления</span></dt>
+				<dt class="title">Рекомендации <!-- ингредиентов и штучек <span class="number-of-cocktails">по количеству коктейлей</span> или <span class="easy-to-make">по простоте приготовления</span> --></dt>
 				<dd>
-					<div class="wrapper"></div>
+					<div class="wrapper">
+						<div class="recommends"></div>
+						<div class="must-have"></div>
+					</div>
 					<div class="empty hidden">Добавьте еще ингредиентов.</div>					
 				</dd>
 			</dl>
