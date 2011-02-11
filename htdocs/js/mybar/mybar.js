@@ -39,12 +39,6 @@ var myProto =
 		this.model.setBarName()
 		return this
 	},
-	
-	setRecommIngr : function()
-	{
-		this.model.setRecommIngr()
-		return this
-	},
 
 	setBottomOutput : function()
 	{
@@ -57,7 +51,6 @@ var myProto =
 				setBarName().
 				setIngredients().
 				setCocktails().
-				setRecommIngr().
 				setBottomOutput()
 	}
 }
@@ -126,31 +119,16 @@ function onready ()
 			empty : $$('#output .cocktails-block .empty')[0]
 		},
 		
-		recommBlocks : {
-			wrapper : $$('#output .recommend-blocks')[0],
-			inYourBar : $$('#output .recommend-blocks .ingr-in-your-bar')[0],
-			inGoodBar : $$('#output .recommend-blocks .ingr-in-good-bar')[0],
-			ingrOfMonth : $$('#output .recommend-blocks .ingr-of-month')[0],
-			inYourBarList : $$('#output .recommend-blocks .ingr-in-your-bar .list')[0],
-			inGoodBarList : $$('#output .recommend-blocks .ingr-in-good-bar .list')[0],
-			ingrOfMonthList : $$('#output .recommend-blocks .ingr-of-month .list')[0]
-		},
-		
 		bottomOutput : {
 			output : $$('#output .bottom-output')[0],
 			title : $$('#output .bottom-output .title')[0],
 			wrapper : $$('#output .bottom-output .wrapper')[0],
 			empty : $$('#output .bottom-output .empty')[0],
-			swCocktails : $$('#output .bottom-output .number-of-cocktails')[0],
-			swIngreds : $$('#output .bottom-output .easy-to-make')[0]
+			recommends : $$('#output .bottom-output .recommends')[0],
+			mustHave : $$('#output .bottom-output .must-have')[0]
 		},
 		
-		menuLink : $$('#output .b-title a.bar-link')[0]
-		/*,
-		recommendsBlock : $$('#output .recommends-block')[0],
-		recommendsWrapper : $$('#output .recommends-block .wrapper')[0],
-		recommendsEmpty : $$('#output .recommends-block .empty')[0]
-		*/
+		menuLink : $$('#output .cocktails-block .bar-link')[0]
 	}
 
 	var widget = new MyBar()
