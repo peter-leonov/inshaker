@@ -58,6 +58,11 @@ var myProto =
 	switchBoShowType : function(showByCocktails)
 	{
 		this.model.switchBoShowType(showByCocktails)
+	},
+	
+	addIngredientsFromBo : function(ingredients)
+	{
+		this.model.addIngredientsFromBo(ingredients)
 	}
 }
 Object.extend(Me.prototype, myProto)
