@@ -1,12 +1,10 @@
 ;(function(){
 
-var Me = Papa.Controller
-
-var myProto =
+function Me ()
 {
 	
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();

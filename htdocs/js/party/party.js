@@ -4,19 +4,22 @@ var Papa
 
 ;(function(){
 
-var myName = 'PartyPage',
-	Me = Papa = MVC.create(myName)
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
 
-	bind: function (nodes, sources, state)
+Me.prototype =
+{
+	bind: function (nodes)
 	{
 		this.view.bind(nodes)
 		
@@ -24,10 +27,8 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
-
-Me.className = myName
-self[Me.className] = Me
+Me.className = 'PartyPage'
+self[Me.className] = Papa = Me
 
 })();
 
