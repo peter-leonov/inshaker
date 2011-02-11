@@ -46,14 +46,14 @@ var myProto =
 			me.notAvailableCocktails = bar.notAvailableCocktails
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
-			//me.recommends = me.computeRecommends( me.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
 			me.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
 
-			me.recommGroups = <!--# include virtual="/db/mybar/ingredients.js" -->
-			me.recommIngr = me.computeRecommIngr(me.recommGroups) //compute bottomOutput
+			me.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
+			me.recommIngr = me.computeRecommIngr(me.mustHave) //compute bottomOutput
 			
-			me.boItems = me.computeBoItems(me.bottomOutput, me.showByCocktails)
+			me.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
+			me.boItems = me.computeBoItems(me.bottomOutput, me.packageCocktails)
 			
 			me.parent.setBar()
 			
@@ -96,14 +96,9 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 	},
 	
-	setRecommIngr : function()
-	{
-		this.view.renderRecommBlocks(this.recommIngr)
-	},
-	
 	setBottomOutput : function()
 	{
-		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
+		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	},
 	
 	setBarName : function()
@@ -118,7 +113,7 @@ var myProto =
 	
 	getIngredients : function(ingredientNames)
 	{
-		var /*inBar = Array.toHash(ingredientNames), */me = this
+		var me = this
 		var ingredients = fetchIngredients(ingredientNames)
 		ingredients.inBar = Array.toHash(ingredientNames)
 		//ingredients.inBarNames = ingredientNames
@@ -161,7 +156,8 @@ var myProto =
 	{
 		if(Object.isEmpty(ingredients.inBar)) return []
 		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.inBar), {count : 1}),
-			cocktails = []
+			cocktails = [],
+			hash = {}
 			
 		ingredients.usage = {}
 
@@ -186,8 +182,10 @@ var myProto =
 			}
 			
 			cocktails.push(cocktail)
+			hash[cocktail.name] = true
 		}
 		
+		cocktails.hash = hash
 		return cocktails.sort(this.sortCocktails)
 	},
 	
@@ -218,14 +216,15 @@ var myProto =
 		return lc
 	},
 	
-	computeRecommIngr : function(recommGroups)
+	computeRecommIngr : function(mustHave)
 	{
 		var cocktails = Cocktail.getAll(),
 			ingHash = this.ingredients.inBar,
 			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
-			rih = this.cAllRecommIngrHash(recommGroups),
 			bo = {} //bottom output
-			this.bottomOutput = bo
+			this.bottomOutput = bo //showBy Cocktails
+			
+			var  t = {}
 
 		ck:
 		for (var i = 0, il = cocktails.length; i < il; i++) 
@@ -236,147 +235,65 @@ var myProto =
 				continue
 
 			var set = cocktail.ingredients
-			var t = [], a = -1, oi = null
+			var a = -1, oi = null
 
 			for (var j = 0, jl = set.length; j < jl; j++) 
 			{
-				var item = set[j][0]
+				var ingName = set[j][0]
 
-				if(!ingHash[item])
+				if(!ingHash[ingName])
 				{
-					if(rih[item])
-						t.push(item)
-					
+					if(mustHave[ingName] && t[ingName] !== false)
+						t[ingName] = mustHave[ingName]
+
 					//collect items for bottom output
-					oi = item
-					
+					oi = ingName	
 					a++
 				}
-
-				//if (a>3) continue ck
 			}
-			
-			if(a + t.length == jl)
-				continue
 			
 			if(a == 0)
 			{
-				if(!bo[oi])
+				if(oi && !bo[oi])
 					bo[oi] = []
 				
 				bo[oi].push(cocktail)
+				t[oi] = false
 			}
-			//
-				
-			for (var k = 0, kl = t.length; k < kl; k++) 
-			{
-				var item = rih[t[k]]
-				if(!item['weight'])
-					item['weight'] = [0]
-				
-				if(!item['weight'][a])
-					item['weight'][a] = 1
-				else
-					item['weight'][a]++
-			}
-		}
-		
-		//brake on groups
-		groups = {}
-		for (var k in rih) 
-		{
-			if(this.ingredients.inBar[k]) continue
-
-			var item = rih[k]
-			var	g = item.group
-
-			if(!groups[g])
-				groups[g] = []
-			
-			groups[g].push({ name : k, weight : item.weight })
 		}
 		
 		//each ingr usage
 		Ingredient.calculateEachIngredientUsage()
 		
-		//sort
-		for (var k in groups) 
+		var mustHaveArr = []
+		for (var k in t) 
 		{
-			var group = groups[k]
-			group.sort(function(a,b) { return megasort(a,b) } )
-			
-			group.map(function(a){ log(a.name, a.weight) })
-			
-			var g = []
-			for (var i = 0, il = group.length; i < il; i++)
-			{
-				var item = Ingredient.getByName(group[i].name)
-				if(item) g.push(item)
-			}
-			groups[k] = g
+			if(t[k])
+				mustHaveArr.push({ ingredient : Ingredient.getByName(k), description : t[k] })
 		}
 		
-		function megasort(a, b)
+		return mustHaveArr.sort(function(a, b)
 		{
-			//by group
-			var ai = Ingredient.getByName(a.name)
-			var bi = Ingredient.getByName(b.name)
-			
+			var ai = a.ingredient,
+				bi = b.ingredient
+				
 			if(ai.group != bi.group)
-				return Ingredient.sortByGroups(a.name, b.name)
+				return Ingredient.sortByGroups(bi.name, ai.name)
 				
 			return bi.cocktails.length - ai.cocktails.length
-			/*
-			var aw = a.weight || [],
-				bw = b.weight || [],
-				l = aw.length > bw.length ? aw.length : bw.length
-				
-			for (var i = 0; i < l; i++) 
-			{
-				aw[i] = aw[i] || 0
-				bw[i] = bw[i] || 0
-				if (aw[i] == bw[i])
-					continue
-				
-				return bw[i] - aw[i]
-			}
-			*/
-			//---
-			
-
-			//---
-			/*
-			if(Ingredient.getByName(a.name) && Ingredient.getByName(b.name))
-				return Ingredient.sortByGroups(a.name, b.name)
-			*/
-			return 0
-		}
-
-		return groups
+		})
 	},
-	
-	cAllRecommIngrHash : function(groups)
-	{
-		var rih = {}
-		for (var k in groups) 
-		{
-			var group = groups[k]
-			for (var j = 0, jl = group.length; j < jl; j++) 
-			{
-				rih[group[j]] = { group : k }
-			}
-		}
-		return rih		
-	},
-	
-	computeBoItems : function(bottomOutput, showByCocktails)
+
+	computeBoItems : function(bottomOutput, packageCocktails)
 	{	
-		if(showByCocktails)
-		{
-			var t = []
-			for (var k in bottomOutput)
-				t.push({ ingredient: Ingredient.getByName(k), cocktails : bottomOutput[k].sort(this.sortCocktails) })
+		var t = []
+		for (var k in bottomOutput)
+			t.push({ ingredient : Ingredient.getByName(k), cocktails : bottomOutput[k].sort(this.sortCocktails) })
 		
+		if(t.length)
+		{	
+			this.showPackages = false
+			
 			return t.sort(function(a,b){
 				var ai = a.ingredient,
 					bi = b.ingredient
@@ -393,69 +310,37 @@ var myProto =
 			})
 		}
 		
-		else
-		{
-			var notInBar = [], t = [], p = {}, me = this
+		this.showPackages = true
+		var packages = packageCocktails.map(function(a){ return Cocktail.getByName(a) })
+		
+		var me = this
+		return packages.sort(function(a, b){
+			var ai = a.ingredients,
+				bi = b.ingredients,
+				inBar = me.ingredients.inBar
+				
+			var l = ai.length > bi.length ? ai.length : bi.length
 			
-			for (var k in bottomOutput)
+			for (var i = aj = bj = 0; i < l; i++) 
 			{
-				t = t.concat(bottomOutput[k])
-				notInBar[k] = true
-				bottomOutput[k].map(function(a){ p[a.name] = k })
+				var aii = ai[i] ? ai[i][0] : false,
+					bii = bi[i] ? bi[i][0] : false
+					
+				if(!inBar[aii] && !inBar[bii] || inBar[aii] && inBar[bii])
+					continue
+					
+				if(inBar[aii])
+					aj++
+				else if(inBar[bii])
+					bj++	
 			}
 			
-			t.sort(function(a,b){
-				var r = a.ingredients.length - b.ingredients.length
-				if(r)
-					return r
-					
-				var ai = Ingredient.getByName(p[a.name]),
-					bi = Ingredient.getByName(p[b.name])
-					
-				if(ai.group != bi.group)
-					return Ingredient.sortByGroups(p[a.name], p[b.name])
-					
-				return me.sortCocktails(a, b)
-			})
-			
-			return { cocktails : t, notInBar : notInBar }
-		}
+			if(aj != bj)
+				return bj - aj
+			return ai.length - bi.length
+		})
 	},
 	
-	/*
-	computeRecommends : function(ingredients)
-	{
-		if(Object.isEmpty(ingredients.inBar)) return []
-		var needCocktails = Cocktail.getByIngredientNames(ingredients.inBarNames, {count : 1}),
-			recommends = [[],[],[]]
-		ck:
-		for ( var i = 0, il = needCocktails.length; i < il; i++ )
-		{
-			var cocktail = needCocktails[i]
-			var ing = cocktail.ingredients, rl = recommends.length, r
-			for (var j = 0, t = -1, jl = ing.length; j < jl; j++)
-			{
-				if(ingredients.inBar[ing[j][0]]) t++
-				r = j - t
-				if(r>2) continue ck
-			}
-			recommends[r].push(cocktail)
-		}
-		
-		var groups = []
-		if(recommends[0].length != 0)
-			groups.push({ name : 'У тебя есть все, чтобы приготовить', cocktails : recommends[0].sort(sortByLength) })
-		if(recommends[1].length != 0)
-			groups.push({ name : 'Добавь один ингредиент', cocktails : recommends[1].sort(sortByLength) })
-		if(recommends[2].length != 0) groups.push({ name : 'Добавь два ингредиента', cocktails : recommends[2].sort(sortByLength) })
-		return groups
-		
-		function sortByLength(a, b)
-		{
-			return a.ingredients.length > b.ingredients.length ? 1 : -1
-		}
-	},
-	*/
 	saveStorage : function()
 	{
 		Storage.put('mybar', JSON.stringify({ 
@@ -472,16 +357,15 @@ var myProto =
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		this.recommIngr = this.computeRecommIngr(this.recommGroups)
-		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
+		this.recommIngr = this.computeRecommIngr(this.mustHave)
+		this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
-		this.view.renderRecommBlocks(this.recommIngr)
-		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
+		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -489,16 +373,15 @@ var myProto =
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		this.recommIngr = this.computeRecommIngr(this.recommGroups)
-		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
+		this.recommIngr = this.computeRecommIngr(this.mustHave)
+		this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
-		this.view.renderRecommBlocks(this.recommIngr)
-		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
+		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	},
 	
 	switchCocktailsView : function(showPhotos)
@@ -527,6 +410,26 @@ var myProto =
 		
 		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
 		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
+	},
+	
+	addIngredientsFromBo : function(ingredients)
+	{
+		for (var i = 0, il = ingredients.length; i < il; i++) 
+		{
+			this.ingredients.add(ingredients[i])
+		}
+		
+		this.saveStorage()
+		this.cocktails = this.computeCocktails(this.ingredients)
+		this.recommIngr = this.computeRecommIngr(this.mustHave)
+		this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
+		
+		var me = this
+		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+		
+		this.view.renderIngredients(this.ingredients, this.ingredients.inBar)
+		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	}
 }
 Object.extend(Me.prototype, myProto)
