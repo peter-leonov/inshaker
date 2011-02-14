@@ -408,7 +408,7 @@ var myProto =
 		this.showIngByGroups = byGroups
 		this.saveStorage()
 
-		this.view.renderIngredients(this.ingredients, byGroups)
+		this.view.renderIngredients(this.ingredients, byGroups, this.tipIngredient)
 	},
 	
 	switchCocktailsView : function(showPhotos)
@@ -454,7 +454,7 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups)
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	}
