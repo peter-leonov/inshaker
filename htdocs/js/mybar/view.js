@@ -55,6 +55,9 @@ var myProto =
 		this.incl.bind({main: nodes.cocktails.wrapper})
 		
 		var me = this
+		
+		nodes.ingredients.tipIngredient.addEventListener('click', function(e){ me.controller.addIngredientToBar(this.ingredient) }, false)
+		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
@@ -109,9 +112,12 @@ var myProto =
 		}
 	},
 	
-	renderIngredients : function(ingredients, showByGroups)
+	renderIngredients : function(ingredients, showByGroups, tipIngredient)
 	{
 		var ingr = this.nodes.ingredients
+		
+		ingr.tipIngredient.innerHTML = tipIngredient.name
+		ingr.tipIngredient.ingredient = tipIngredient
 		
 		if(ingredients.length == 0)
 		{

@@ -50,6 +50,8 @@ var myProto =
 			me.cocktails = me.computeCocktails(me.ingredients)
 			me.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
 
+			me.tipIngredient = me.computeTipIngr()
+
 			me.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
 			me.recommIngr = me.computeRecommIngr(me.mustHave) //compute bottomOutput
 			
@@ -84,7 +86,7 @@ var myProto =
 	
 	setIngredients : function()
 	{
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups)
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 	},
 	
 	setCocktails : function()
@@ -210,6 +212,24 @@ var myProto =
 				return lc
 		}
 		return lc
+	},
+	
+	computeTipIngr : function()
+	{
+		var ingrds = Ingredient.getByGroup('Крепкий алкоголь')
+		var l = ingrds.length
+		while(1)
+		{
+			var j = Math.floor(Math.random() * l)
+			if(this.ingredients.inBar[ingrds[j].name])
+			{
+				ingrds.splice(j, 1)
+				if(--l == 1)
+					return ingrds[0]
+			}
+			else
+				return ingrds[j]
+		}
 	},
 	
 	computeRecommIngr : function(mustHave)
@@ -353,6 +373,7 @@ var myProto =
 	{
 		if(!this.ingredients.add(ingredient)) return
 		this.saveStorage()
+		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.recommIngr = this.computeRecommIngr(this.mustHave)
 		this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
@@ -360,7 +381,7 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups)
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	},
@@ -369,6 +390,7 @@ var myProto =
 	{
 		this.ingredients.remove(ingredient)
 		this.saveStorage()
+		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.recommIngr = this.computeRecommIngr(this.mustHave)
 		this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
@@ -376,7 +398,7 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups)
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 	},
