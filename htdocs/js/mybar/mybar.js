@@ -99,6 +99,9 @@ function onready ()
 			queryInput : $$('#output .ingredients-block .search-box form .query')[0],
 			resetButton: $$('#output .ingredients-block .search-box .reset')[0],
 			complete: $$('#output .ingredients-block .search-box .autocomplete')[0],
+			switcher : $$('#output .ingredients-block .switcher')[0],
+			swList : $$('#output .ingredients-block .switcher .by-list')[0],
+			swGroups : $$('#output .ingredients-block .switcher .by-groups')[0],			
 			empty : $$('#output .ingredients-block .empty')[0]
 		},
 		

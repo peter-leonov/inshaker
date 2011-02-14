@@ -116,18 +116,22 @@ var myProto =
 		{
 			ingr.list.empty()
 			ingr.empty.show()
+			ingr.switcher.hide()
 			return
 		}
 		
 		ingr.empty.hide()
+		ingr.switcher.show()
 		
 		if(showByGroups)
 		{
-			
+			ingr.swList.addClassName('link')
+			ingr.swGroups.removeClassName('link')
 		}
 		else
 		{
-			
+			ingr.swGroups.addClassName('link')
+			ingr.swList.removeClassName('link')			
 		}
 		var ul = N('ul')
 		for(var i = 0, l = ingredients.length; i < l; i++)
