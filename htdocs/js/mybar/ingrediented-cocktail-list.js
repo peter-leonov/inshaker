@@ -229,7 +229,7 @@ var myProto =
 		
 		var inodes = [], notInBar = this.notInBar || {}
 		
-		ingredients.sort(function(a, b){ return !notInBar[a.name] && notInBar[b.name] ? 1 : -1 })
+		//ingredients.sort(function(a, b){ return !notInBar[a.name] && notInBar[b.name] ? 1 : -1 })
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
