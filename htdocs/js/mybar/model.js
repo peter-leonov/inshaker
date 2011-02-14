@@ -85,7 +85,7 @@ var myProto =
 	setIngredients : function()
 	{
 		this.view.renderIngredients(this.ingredients)
-	}
+	},
 	
 	setCocktails : function()
 	{
