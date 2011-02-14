@@ -19,14 +19,6 @@ var myProto =
 		this.model.setIngredients()
 		return this
 	},
-
-	/*
-	setRecommends : function()
-	{
-		this.model.setRecommends()
-		return this
-	},
-	*/
 	
 	setCocktails : function()
 	{
@@ -101,13 +93,14 @@ function onready ()
 			input : $$('#bar-name .change-name .new-bar-name')[0]
 		},
 		
-		ingrList : $$('#output .ingredients-block .list')[0],
-		ingrSearchForm : $$('#output .ingredients-block .search-box form')[0],
-		ingrSearchBox : $$('#output .ingredients-block .search-box')[0],
-		ingrQueryInput : $$('#output .ingredients-block .search-box form .query')[0],
-		ingrResetButton: $$('#output .ingredients-block .search-box .reset')[0],
-		ingrComplete: $$('#output .ingredients-block .search-box .autocomplete')[0],
-		ingrEmpty : $$('#output .ingredients-block .empty')[0],
+		ingredients : {
+			list : $$('#output .ingredients-block .list')[0],
+			searchForm : $$('#output .ingredients-block .search-box form')[0],
+			queryInput : $$('#output .ingredients-block .search-box form .query')[0],
+			resetButton: $$('#output .ingredients-block .search-box .reset')[0],
+			complete: $$('#output .ingredients-block .search-box .autocomplete')[0],
+			empty : $$('#output .ingredients-block .empty')[0]
+		},
 		
 		cocktails : {
 			block : $$('#output .cocktails-block')[0],

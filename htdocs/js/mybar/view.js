@@ -55,8 +55,8 @@ var myProto =
 		this.incl.bind({main: nodes.cocktails.wrapper})
 		
 		var me = this
-		nodes.ingrSearchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(me.nodes.ingrQueryInput.value); }, false)
-		nodes.ingrList.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
+		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailSwitcherClick(e) }, false)
@@ -68,10 +68,10 @@ var myProto =
 		
 		nodes.barName.input.bName = true
 		nodes.barName.title.bTitle = true
-		nodes.ingrResetButton.addEventListener('click', function(){ me.clearInput() }, false)
+		nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
-		completer.bind({ main : nodes.ingrQueryInput, list : nodes.ingrComplete })
+		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
 		
 		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
@@ -108,21 +108,35 @@ var myProto =
 		}
 	},
 	
-	renderIngredients : function(ingredients /*, haveIngredients*/)
+	renderIngredients : function(ingredients, showByGroups)
 	{
+		var ingr = this.nodes.ingredients
+		
 		if(ingredients.length == 0)
 		{
-			this.renderIfIngredientsEmpty()
+			ingr.list.empty()
+			ingr.empty.show()
 			return
 		}
-		this.nodes.ingrEmpty.hide()
+		
+		ingr.empty.hide()
+		
+		if(showByGroups)
+		{
+			
+		}
+		else
+		{
+			
+		}
 		var ul = N('ul')
 		for(var i = 0, l = ingredients.length; i < l; i++)
 		{
 			ul.appendChild(ingredients[i].getPreviewNode(false, true))
 		}
-		this.nodes.ingrList.empty()
-		this.nodes.ingrList.appendChild(ul)
+		
+		ingr.list.empty()
+		ingr.list.appendChild(ul)
 	},
 	
 	renderCocktails : function(cocktails, showPhotos)
@@ -143,8 +157,7 @@ var myProto =
 		
 		c.block.show()
 		
-		if(!this.nodes.menuLink.hasClassName('active'))
-			this.nodes.menuLink.addClassName('active')
+		this.nodes.menuLink.addClassName('active')
 			
 		c.switcher.show()
 			
@@ -318,22 +331,10 @@ var myProto =
 		
 		c.block.hide()
 	},
-
-	renderIfIngredientsEmpty : function()
-	{
-		this.nodes.ingrList.empty()
-		this.nodes.ingrEmpty.show()
-	},
-	
-	renderIfRecommendsEmpty : function()
-	{
-		this.nodes.recommBlocksWrapper.hide()
-		this.nodes.recommBlocksEmpty.show()
-	},
 	
 	clearInput : function()
 	{
-		this.nodes.ingrQueryInput.value = ''
+		this.nodes.ingredients.queryInput.value = ''
 	},
 	
 	handleIngredientClick : function(e)
