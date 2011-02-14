@@ -102,7 +102,8 @@ function onready ()
 			switcher : $$('#output .ingredients-block .switcher')[0],
 			swList : $$('#output .ingredients-block .switcher .by-list')[0],
 			swGroups : $$('#output .ingredients-block .switcher .by-groups')[0],			
-			empty : $$('#output .ingredients-block .empty')[0]
+			empty : $$('#output .ingredients-block .empty')[0],
+			tipIngredient : $$('#output .ingredients-block .tip-ingr')[0]
 		},
 		
 		cocktails : {
