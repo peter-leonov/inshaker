@@ -51,7 +51,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 #output .not-in-bar .image { /*opacity: 0.4*/ }
 #output div.empty
 {
-	color: #DDDDDD;
+	color: #ccc;
 	font-size: 16px;
 	margin: 9px 0;
 }
@@ -98,6 +98,8 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	top: 65px;
 	width: 35px;
 }
+
+#output .ingredients-block .title .switcher { margin-right: 20px; }
 #output .ingredients-block .search-box {
 	width: 922px;
 	margin-top: 30px; 
@@ -207,7 +209,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 
 #bar-name .help, #bar-name .title{
 	font-size: 24px;
-	text-decoration: underline;
+	border-bottom: 2px dashed;
 	cursor: pointer;
 }
 
