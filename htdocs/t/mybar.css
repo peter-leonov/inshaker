@@ -99,6 +99,8 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	width: 35px;
 }
 
+#output .ingredients-block dd.group { overflow: hidden; }
+#output .ingredients-block dt.group-name { font-size: 18px; margin-top: 5px; }
 #output .ingredients-block .title .switcher { margin-right: 20px; }
 #output .ingredients-block .search-box {
 	width: 922px;

@@ -59,7 +59,8 @@ var myProto =
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
-		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailSwitcherClick(e) }, false)
+		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
+		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
 		nodes.barName.wrapper.addEventListener('click', function(e){ me.handleBarNameClick(e) }, false)
 		document.body.addEventListener('click', function(e){ me.barNameChanging(e) }, true)
@@ -127,20 +128,48 @@ var myProto =
 		{
 			ingr.swList.addClassName('link')
 			ingr.swGroups.removeClassName('link')
+			
+			var dl = N('dl')
+			for(var i = 0, l = ingredients.length, groupName = ''; i < l; i++)
+			{
+				var ingredient = ingredients[i]
+				if(groupName != ingredient.group)
+				{
+					groupName = ingredient.group
+					
+					if(i != 0)
+					{
+						dl.appendChild(dt)
+						dl.appendChild(dd)
+					}
+					
+					var dt = Nct('dt', 'group-name', groupName)
+					var dd = Nc('dd', 'group')
+				}
+				
+				dd.appendChild(ingredients[i].getPreviewNode(false, true))
+			}
+			
+			dl.appendChild(dt)
+			dl.appendChild(dd)			
+			
+			ingr.list.empty()
+			ingr.list.appendChild(dl)			
 		}
 		else
 		{
 			ingr.swGroups.addClassName('link')
-			ingr.swList.removeClassName('link')			
+			ingr.swList.removeClassName('link')
+			
+			var ul = N('ul')
+			for(var i = 0, l = ingredients.length; i < l; i++)
+			{
+				ul.appendChild(ingredients[i].getPreviewNode(false, true))
+			}
+			
+			ingr.list.empty()
+			ingr.list.appendChild(ul)
 		}
-		var ul = N('ul')
-		for(var i = 0, l = ingredients.length; i < l; i++)
-		{
-			ul.appendChild(ingredients[i].getPreviewNode(false, true))
-		}
-		
-		ingr.list.empty()
-		ingr.list.appendChild(ul)
 	},
 	
 	renderCocktails : function(cocktails, showPhotos)
@@ -350,7 +379,7 @@ var myProto =
 			this.controller.removeIngredientFromBar(node.removingIngredient)
 	},
 
-	handleCocktailSwitcherClick : function(e)
+	handleCocktailsSwitcherClick : function(e)
 	{
 		var node = e.target
 		if(node.hasClassName('link'))
@@ -364,6 +393,22 @@ var myProto =
 				this.controller.switchCocktailsView(false)
 			}
 		}
+	},
+	
+	handleIngredientsSwitcherClick : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('link'))
+		{
+			if(node.hasClassName('by-groups'))
+			{
+				this.controller.switchIngredientsView(true)
+			}
+			else
+			{
+				this.controller.switchIngredientsView(false)
+			}
+		}		
 	},
 	
 	handleBarNameClick : function(e)

@@ -45,6 +45,11 @@ var myProto =
 		this.model.switchCocktailsView(showPhotos)
 	},
 	
+	switchIngredientsView : function(byGroups)
+	{
+		this.model.switchIngredientsView(byGroups)
+	},
+	
 	setNewBarName : function(barName)
 	{
 		this.model.setNewBarName(barName)
