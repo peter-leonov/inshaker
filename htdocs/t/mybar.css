@@ -241,8 +241,11 @@ html.loading .b-content, html.loading .b-title { display: none; }
 }
 
 .firefox #bar-name form.change-name input.new-bar-name { left: 2px; top: 2px; }
-.safari #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
-.chrome #bar-name form.change-name input.new-bar-name { left: 2px; top: 1px; }
+.safari #bar-name form.change-name input.new-bar-name, .chrome #bar-name form.change-name input.new-bar-name
+{ left: 2px; top: 1px; }
+
+.safari #bar-name form.change-name .tip, .chrome #bar-name form.change-name .tip { left: 5px; top: 5px; }
+
 #bar-name form.change-name input.new-bar-name:focus { outline: none; }
 
 
