@@ -29,7 +29,7 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {} }
+		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {}, showIngByGroups : false }
 		Storage.init(function(){
 			try
 			{
@@ -44,6 +44,7 @@ var myProto =
 			me.barName = bar.barName
 			me.showByCocktails = bar.showByCocktails
 			me.notAvailableCocktails = bar.notAvailableCocktails
+			me.showIngByGroups = bar.showIngByGroups
 			
 			me.ingredients = me.getIngredients(bar.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
@@ -348,7 +349,8 @@ var myProto =
 			showPhotos : this.showPhotos,
 			barName : this.barName,
 			showByCocktails : this.showByCocktails,
-			notAvailableCocktails : this.notAvailableCocktails
+			notAvailableCocktails : this.notAvailableCocktails,
+			showIngByGroups : this.showIngByGroups
 		}))
 	},
 	
