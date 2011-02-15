@@ -77,11 +77,13 @@ var myProto =
 	sortByUsage : function(a, b)
 	{
 		if(a.group != b.group)
-			return 0
+			return Ingredient.sortByGroups(a.name, b.name)
 		
 		var u = this.ingredients.usage
+		
+		var r = (u[b.name] || 0) - (u[a.name] || 0)
 
-		return (u[b.name] || 0) - (u[a.name] || 0)
+		return r != 0 ? r : a.name.localeCompare(b.name)
 	},
 	
 	setIngredients : function()
