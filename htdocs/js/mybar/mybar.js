@@ -35,6 +35,7 @@ var myProto =
 	setBottomOutput : function()
 	{
 		this.model.setBottomOutput()
+		return this
 	},
 
 	setBar : function()
