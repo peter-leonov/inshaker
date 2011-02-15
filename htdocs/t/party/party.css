@@ -7,7 +7,9 @@
 
 #main-column .description { font-size: 14px; margin: 10px 0 15px 0; line-height: 18px; }
 
-.photos .viewport .point { float: left; width: 590px; height: 242px; }
+#plan { margin: 15px 0; }
+#plan .head { font-size: 22px; }
+#plan .head .people .count { display: inline; width: 60px; font-size: 25px; color: #000; font-style: italic; text-decoration: underline; text-align: center; border: none; background: none; }
 
 
 html.msie-6 .photos .disabled { background-position-y: -60px; }
