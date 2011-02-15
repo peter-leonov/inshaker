@@ -15,7 +15,7 @@ Me.prototype =
 		
 		nodes.count.addEventListener('keydown', function (e) { if (e.keyCode == 13) { this.blur(); e.preventDefault() } }, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
-		nodes.count.addEventListener('blur', function (e) { this.removeClassName('focused') }, false)
+		nodes.count.addEventListener('blur', function (e) { this.removeClassName('focused'); if (!this.firstChild || !this.firstChild.nodeValue) this.innerHTML = 0 }, false)
 		
 		return this
 	}
