@@ -53,10 +53,11 @@ var myProto =
 			me.tipIngredient = me.computeTipIngr()
 
 			me.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
-			me.recommIngr = me.computeRecommIngr(me.mustHave) //compute bottomOutput
+			//me.recommIngr = me.computeRecommIngr(me.mustHave) //compute bottomOutput
+			me.computeRecommIngr(me.mustHave)
 			
-			me.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
-			me.boItems = me.computeBoItems(me.bottomOutput, me.packageCocktails)
+			//me.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
+			//me.boItems = me.computeBoItems(me.bottomOutput, me.packageCocktails)
 			
 			me.parent.setBar()
 			
@@ -237,12 +238,11 @@ var myProto =
 	computeRecommIngr : function(mustHave)
 	{
 		var cocktails = Cocktail.getAll(),
-			ingHash = this.ingredients.inBar,
 			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
 			bo = {} //bottom output
-			this.bottomOutput = bo //showBy Cocktails
+			this.bottomOutput = bo
 			
-			var  t = {}
+		var groups = []
 
 		ck:
 		for (var i = 0, il = cocktails.length; i < il; i++) 
@@ -253,30 +253,73 @@ var myProto =
 				continue
 
 			var set = cocktail.ingredients
-			var a = -1, oi = null
+			var a = -1, oi = false
+			var notMatched = {}
+			var nm = -1
 
 			for (var j = 0, jl = set.length; j < jl; j++) 
 			{
 				var ingName = set[j][0]
 
-				if(!ingHash[ingName])
+				if(!this.ingredients.inBar[ingName])
 				{
-					if(mustHave[ingName] && t[ingName] !== false)
-						t[ingName] = mustHave[ingName]
-
-					//collect items for bottom output
-					oi = ingName	
-					a++
+					notMatched[ingName] = true
+					nm++
 				}
 			}
 			
-			if(a == 0)
+			if(!groups[nm])
 			{
-				if(oi && !bo[oi])
-					bo[oi] = []
-				
-				bo[oi].push(cocktail)
-				t[oi] = false
+				groups[nm] = [{ ingredients : notMatched, cocktails : [cocktail] }]
+			}
+			else
+			{
+				for (var k = 0, kl = groups[nm].length; k < kl; k++) 
+				{
+					var ingredients = groups[nm][k].ingredients
+					var f = true
+					for (var kk in ingredients) 
+					{
+						if(!notMatched[kk])
+						{
+							f = false
+							break
+						} 
+					}
+					if(f)
+					{
+						groups[nm][k].cocktails.push(cocktail)
+						break
+					}
+				}
+				if(!f)
+				{
+					groups[nm].push({ ingredients : notMatched, cocktails : [cocktail] })
+				}
+			}
+		}
+		
+		var recommends = this.recommends = []
+		var notMustHave = {}
+		
+		for (var i = 0, il = groups.length; i < il; i++) 
+		{
+			if(groups[i])
+			{
+				for (var j = 0, jl = groups[i].length; j < jl; j++) 
+				{
+					var item = groups[i][j]
+					var ingredientNames = item.ingredients
+					var ingredients = []
+					for (var k = 0, kl = ingredientNames.length; k < kl; k++) 
+					{
+						var name = ingredientNames[k]
+						notMustHave[name] = true
+						ingredients.push(Ingredient.getByName(name))
+					}
+					recommends.push({ ingredients : ingredients, cocktails : item.cocktails })
+				}
+				break
 			}
 		}
 		
@@ -284,13 +327,13 @@ var myProto =
 		Ingredient.calculateEachIngredientUsage()
 		
 		var mustHaveArr = []
-		for (var k in t) 
+		for (var k in mustHave) 
 		{
-			if(t[k])
-				mustHaveArr.push({ ingredient : Ingredient.getByName(k), description : t[k] })
+			if(!notMustHave[k])
+				mustHaveArr.push({ ingredient : Ingredient.getByName(k), description : mustHave[k] })
 		}
 		
-		return mustHaveArr.sort(function(a, b)
+		this.mustHaveRecommends = mustHaveArr.sort(function(a, b)
 		{
 			var ai = a.ingredient,
 				bi = b.ingredient
