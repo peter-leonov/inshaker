@@ -231,6 +231,7 @@ var myProto =
 		}
 	},
 	
+/*
 	renderBottomOutput : function(mustHave, boItems, showPackages, havingIngredients, havingCocktails)
 	{
 		//mustHave render		
@@ -250,6 +251,60 @@ var myProto =
 		}
 		
 		this.mustHaveRender(mustHave)
+	},
+*/	
+	renderBottomOutput : function(mustHaveRecommends, recommends)
+	{
+		//this.renderBoByCocktails(recommends)
+		this.bottomRecommendsRender(recommends)
+		this.mustHaveRender(mustHaveRecommends)
+	},
+	
+	bottomRecommendsRender : function(groups)
+	{
+		var main = this.nodes.bottomOutput.recommends
+	
+		var dl = Nc('dl', 'show-by-cocktails')
+		
+		for (var i = 0, il = groups.length; i < il; i++) 
+		{
+			(function(){
+			var ingredients = groups[i].ingredients,
+				cocktails = groups[i].cocktails,
+				cl = cocktails.length
+			
+			var dt = Nc('dt', 'title-label') 
+				dd = N('dd'),	
+				eq = Nct('li', 'eq', '='),
+				head = Nc('ul', 'head'),
+				bigPlus = Nct('li', 'big-plus', '+')
+			
+			bigPlus.ingredients = ingredients
+			
+			head.appendChild(bigPlus)
+			for (var j = 0, jl = ingredients.length; j < jl; j++)
+			{
+				var ing = Nc('li', 'ingredient')
+				ing.appendChild(ingredients[j].getPreviewNode())
+				head.appendChild(ing)
+			}
+			
+			head.appendChild(eq)		
+			dd.appendChild(head)
+			
+			var body = Nc('ul', 'body')
+			
+			for (var j = 0, jl = cocktails.length; j < jl; j++)
+				body.appendChild(cocktails[j].getPreviewNode())
+			
+			dd.appendChild(body)			
+			dl.appendChild(dd)
+			
+			})()
+		}
+		
+		main.empty()
+		main.appendChild(dl)		
 	},
 	
 	mustHaveRender : function(mustHave)
