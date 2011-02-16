@@ -236,7 +236,7 @@ module Inshaker
         "mike" => "занял Мишенька",
         "max" => "занял Максимка",
         "lena" => "заняла Леночка",
-        "julia" => "заняла Юлечка",
+        "viola" => "заняла Виолочка",
         "peter" => "занял Петечка",
         nil => "занял Совершенно Неизвестный Человек"
       }[login]
@@ -247,7 +247,7 @@ module Inshaker
         "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
         "max" => "Maxim Dergilev <max@inshaker.ru>",
         "lena" => "Elena Piskareva <lena@inshaker.ru>",
-        "julia" => "Julia Gordeeva <julia@inshaker.ru>",
+        "viola" => "Viola Kostina <viola@inshaker.ru>",
         "peter" => "Peter Leonov <pl@inshaker.ru>"
       }[login] || "Barman <barman@inshaker.ru>"
     end
