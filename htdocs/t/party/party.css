@@ -9,8 +9,8 @@
 
 #plan { margin: 15px 0; }
 #plan .head { font-size: 22px; }
-#plan .head .people .count { display: inline-block; min-width: 10px; min-height: 1em; font-size: 25px; color: #000; font-style: italic; border-bottom: 2px solid; text-align: center; cursor: pointer; vertical-align: baseline; }
-#plan .head .people .count.focused { border-color: transparent; cursor: default; }
+#plan .head .people .count { display: inline-block; min-width: 10px; min-height: 1em; font-size: 25px; color: #000; border-bottom: 2px solid; text-align: center; cursor: pointer; vertical-align: baseline; }
+#plan .head .people .count.focused { border-color: transparent; cursor: default; outline: none; }
 
 
 html.msie-6 .photos .disabled { background-position-y: -60px; }
