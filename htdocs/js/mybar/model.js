@@ -80,7 +80,7 @@ var myProto =
 		if(a.group != b.group)
 			return Ingredient.sortByGroups(a.name, b.name)
 
-		var u = this.ingredients.usage || {}
+		var u = this.ingredients.usage
 		
 		var r = (u[b.name] || 0) - (u[a.name] || 0)
 
@@ -320,12 +320,14 @@ var myProto =
 					var ingredients = []
 					for (var name in ingredientNames) 
 					{
-						notMustHave[name] = true
+						if(i == 0)
+							notMustHave[name] = true
 						ingredients.push(Ingredient.getByName(name))
 					}
 					recommends.push({ ingredients : ingredients, cocktails : item.cocktails })
 				}
-				break
+				if(i > 1)
+					break
 			}
 		}
 		
@@ -338,7 +340,25 @@ var myProto =
 			recommends[i].cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })
 		}
 		
-		recommends.sort(function(a, b){ return a.cocktails.length - b.cocktails.length })
+		recommends.sort(function(a, b){
+			var ai = a.ingredients
+			var bi = b.ingredients
+			var r = ai.length - bi.length || b.cocktails.length - a.cocktails.length
+			if(r)
+				return r
+			
+			for (var i = 0, il = ai.length; i < il; i++) 
+			{
+				var ia = ai[i]
+				var ib = bi[i]
+				if(ia.name == ib.name)
+					continue
+				if(ia.group != ib.group)
+					return -Ingredient.sortByGroups(ia.name, ib.name)
+				return ia.name.localeCompare(ib.name)
+			}
+			
+		})
 		
 		//each ingr usage
 		Ingredient.calculateEachIngredientUsage()
@@ -346,7 +366,7 @@ var myProto =
 		var mustHaveArr = this.mustHaveRecommends = []
 		for (var k in mustHave) 
 		{
-			if(!notMustHave[k])
+			if(!notMustHave[k] && !this.ingredients.inBar[k])
 				mustHaveArr.push({ ingredient : Ingredient.getByName(k), description : mustHave[k] })
 		}
 		
