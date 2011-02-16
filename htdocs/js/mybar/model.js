@@ -79,8 +79,8 @@ var myProto =
 	{
 		if(a.group != b.group)
 			return Ingredient.sortByGroups(a.name, b.name)
-		
-		var u = this.ingredients.usage
+
+		var u = this.ingredients.usage || {}
 		
 		var r = (u[b.name] || 0) - (u[a.name] || 0)
 
@@ -151,6 +151,7 @@ var myProto =
 			}
 			return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
 		}
+
 		return ingredients
 	},
 	
@@ -270,6 +271,9 @@ var myProto =
 					}
 				}
 				
+				if(nm == jl - 1)
+					continue
+				
 				if(!groups[nm])
 				{
 					groups[nm] = [{ ingredients : notMatched, cocktails : [cocktail] }]
@@ -314,9 +318,8 @@ var myProto =
 					var item = groups[i][j]
 					var ingredientNames = item.ingredients
 					var ingredients = []
-					for (var k = 0, kl = ingredientNames.length; k < kl; k++) 
+					for (var name in ingredientNames) 
 					{
-						var name = ingredientNames[k]
 						notMustHave[name] = true
 						ingredients.push(Ingredient.getByName(name))
 					}
@@ -326,10 +329,13 @@ var myProto =
 			}
 		}
 		
+		log(this.ingredients)
+		
+		var me = this
 		for (var i = 0, il = recommends.length; i < il; i++) 
 		{
-			recommends[i].ingredients.sort(sortByUsage)
-			recommends[i].cocktails.sort(sortCocktails)
+			recommends[i].ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
+			recommends[i].cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })
 		}
 		
 		recommends.sort(function(a, b){ return a.cocktails.length - b.cocktails.length })
@@ -436,7 +442,7 @@ var myProto =
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
-		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
@@ -455,7 +461,7 @@ var myProto =
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
-		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
@@ -513,7 +519,7 @@ var myProto =
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
-		this.ingredients.sort(function(a ,b){ return me.sortByUsage(a, b) })
+		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
