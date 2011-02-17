@@ -1,3 +1,5 @@
+<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
+
 ;(function(){
 
 <!--# include virtual="party.js" -->
