@@ -15,6 +15,7 @@ Me.prototype =
 		
 		function keypress (e)
 		{
+			setTimeout(function () { nodes.body.firstChild.nodeValue = nodes.count.innerHTML }, 1)
 			if (e.keyCode == 13)
 			{
 				this.blur()
@@ -33,6 +34,7 @@ Me.prototype =
 			this.innerHTML = isNaN(v) ? 0 : v
 		}
 		
+		nodes.count.addEventListener('click', function (e) { this.blur(); this.focus() }, false)
 		nodes.count.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
