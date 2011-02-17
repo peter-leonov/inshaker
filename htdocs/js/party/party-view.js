@@ -18,7 +18,9 @@ Me.prototype =
 			setTimeout(function () { nodes.body.firstChild.nodeValue = nodes.count.innerHTML }, 1)
 			if (e.keyCode == 13)
 			{
-				this.blur()
+				nodes.count.blur()
+				nodes.count.focus()
+				nodes.count.blur()
 				e.preventDefault()
 			}
 		}
@@ -34,8 +36,8 @@ Me.prototype =
 			this.innerHTML = isNaN(v) ? 0 : v
 		}
 		
-		nodes.count.addEventListener('click', function (e) { this.blur(); this.focus() }, false)
-		nodes.count.addEventListener('keypress', keypress, false)
+		// nodes.count.parentNode.addEventListener('click', function (e) { nodes.count.focus() }, false)
+		document.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
 		
