@@ -56,7 +56,6 @@ http://www.inshaker.ru/cocktail/baja_bocana/
 http://www.inshaker.ru/cocktail/no_name_drink/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
-http://www.inshaker.ru/cocktail/white_poetry/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_cargo/
 http://www.inshaker.ru/cocktail/white_and_pepper/
@@ -323,8 +322,6 @@ http://www.inshaker.ru/cocktail/spanish_egg-nog/
 http://www.inshaker.ru/cocktail/spanish_hot_gold/
 http://www.inshaker.ru/cocktail/perfect_passion/
 http://www.inshaker.ru/cocktail/italiano_collins/
-http://www.inshaker.ru/cocktail/italian_pear/
-http://www.inshaker.ru/cocktail/italian_honey/
 http://www.inshaker.ru/cocktail/italian_spritz_punch/
 http://www.inshaker.ru/cocktail/caballero/
 http://www.inshaker.ru/cocktail/caipirinha/
@@ -426,7 +423,6 @@ http://www.inshaker.ru/cocktail/lazy_man_flip/
 http://www.inshaker.ru/cocktail/lexus/
 http://www.inshaker.ru/cocktail/lena/
 http://www.inshaker.ru/cocktail/fruits_of_the_forest/
-http://www.inshaker.ru/cocktail/forest_berries/
 http://www.inshaker.ru/cocktail/summer_evening_in_gagra/
 http://www.inshaker.ru/cocktail/summer_set/
 http://www.inshaker.ru/cocktail/summer_fizz/
@@ -635,6 +631,7 @@ http://www.inshaker.ru/cocktail/fire_in_texas/
 http://www.inshaker.ru/cocktail/last_word/
 http://www.inshaker.ru/cocktail/lost/
 http://www.inshaker.ru/cocktail/kisses_and_warm_hugs/
+http://www.inshaker.ru/cocktail/kiss_of_the_devil/
 http://www.inshaker.ru/cocktail/practically_cherry_daiquiri/
 http://www.inshaker.ru/cocktail/pret-a-porter/
 http://www.inshaker.ru/cocktail/primavera/
@@ -735,9 +732,7 @@ http://www.inshaker.ru/cocktail/silver_bullet/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
 http://www.inshaker.ru/cocktail/siberian_grog/
 http://www.inshaker.ru/cocktail/silver_hound_cobler/
-http://www.inshaker.ru/cocktail/simple_white/
 http://www.inshaker.ru/cocktail/symphony/
-http://www.inshaker.ru/cocktail/lilac_plum/
 http://www.inshaker.ru/cocktail/lilac_mist/
 http://www.inshaker.ru/cocktail/sweet_heat/
 http://www.inshaker.ru/cocktail/sweet_memories/
