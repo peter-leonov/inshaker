@@ -81,6 +81,7 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
+	document.documentElement.removeClassName('loading')
 	
 	var nodes = {
 		
@@ -131,8 +132,6 @@ function onready ()
 
 	var widget = new MyBar()
 	widget.bind(nodes)
-
-	document.documentElement.removeClassName('loading')
 }
 
 $.onready(onready)
