@@ -80,9 +80,25 @@ var myProto =
 		
 		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
 		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
+		
+		//suspended rendering
+		var t = new Throttler(onscroll, 100, 500)
+		window.addEventListener('scroll', function () { t.call() }, false)
+		
+		function onscroll()
+		{
+			var frame = me.recommendsFrame
+			if(frame)
+				frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
+		}
 	},
 	
-	setCompleterDataSource: function (ds)
+	renderRecommendIngredient : function(node)
+	{
+		
+	},
+	
+	setCompleterDataSource : function (ds)
 	{
 		this.completer.setDataSource(ds)
 	},
@@ -253,85 +269,149 @@ var myProto =
 		this.mustHaveRender(mustHave)
 	},
 */	
+	setupRecommendsVisibilityFrame : function(nodes)
+	{
+		if (!nodes.length)
+			return
+		
+		var boxes = Boxer.nodesToBoxes(nodes)
+		
+		var frame = this.recommendsFrame = new VisibilityFrame()
+		frame.setFrame(4000, 5000) // hardcoded for now
+		frame.setStep(4000, 3000)
+		frame.moveTo(0, -2500)
+		
+		var me = this
+		frame.onmove = function (show, hide)
+		{
+			for (var i = 0; i < show.length; i++)
+			{
+				var box = show[i]
+				if (!box.loaded)
+				{
+					var node = box.node
+						
+					if(node.mustHaveIngredient)
+						node.appendChild(me.rendernOneMustHaveRecommend(node.mustHaveIngredient))
+					
+					else if(node.group)
+						node.appendChild(me.renderOneRecommend(node.group))
+						
+					node.removeClassName('lazy')
+					
+					box.loaded = true
+				}
+			}
+		}
+		
+		frame.setBoxes(boxes)		
+	},
+
 	renderBottomOutput : function(mustHaveRecommends, recommends)
 	{
 		//this.renderBoByCocktails(recommends)
-		this.bottomRecommendsRender(recommends)
-		this.mustHaveRender(mustHaveRecommends)
+		var items = []
+		items = items.concat(this.bottomRecommendsRender(recommends))
+		items = items.concat(this.mustHaveRender(mustHaveRecommends))
+		
+		this.setupRecommendsVisibilityFrame(items)
+		
+		window.scrollBy(0, -1)
+		window.scrollBy(0, 1)
+	},
+	
+	rendernOneMustHaveRecommend : function(mustHaveIngredient)
+	{
+			var df = document.createDocumentFragment()
+			
+			var bigPlus = Nct('div', 'big-plus', '+')
+			bigPlus.ingredients = [mustHaveIngredient.ingredient]
+			
+			var ing = Nc('div', 'ingredient')
+			ing.appendChild(mustHaveIngredient.ingredient.getPreviewNode())
+			
+			df.appendChild(bigPlus)
+			df.appendChild(ing)
+			
+			var desc = Nc('p', 'description')
+			desc.innerHTML = mustHaveIngredient.description
+			df.appendChild(desc)
+			
+			return df
+	},
+
+	renderOneRecommend : function(group)
+	{
+		var df = document.createDocumentFragment()
+		var ingredients = group.ingredients,
+			cocktails = group.cocktails,
+			cl = cocktails.length
+		
+		var dd = N('dd'),	
+			eq = Nct('li', 'eq', '='),
+			head = Nc('ul', 'head'),
+			bigPlus = Nct('li', 'big-plus', '+')
+		
+		bigPlus.ingredients = ingredients
+		
+		head.appendChild(bigPlus)
+		for (var j = 0, jl = ingredients.length; j < jl; j++)
+		{
+			var ing = Nc('li', 'ingredient')
+			ing.appendChild(ingredients[j].getPreviewNode())
+			head.appendChild(ing)
+		}
+		
+		head.appendChild(eq)		
+		df.appendChild(head)
+		
+		var body = Nc('ul', 'body')
+		
+		for (var j = 0, jl = cocktails.length; j < jl; j++)
+			body.appendChild(cocktails[j].getPreviewNode())
+		
+		df.appendChild(body)			
+		
+		return df	
 	},
 	
 	bottomRecommendsRender : function(groups)
-	{
-		var main = this.nodes.bottomOutput.recommends
-	
+	{	
 		var dl = Nc('dl', 'show-by-cocktails')
+		var items = []
 		
 		for (var i = 0, il = groups.length; i < il; i++) 
 		{
-			(function(){
-			var ingredients = groups[i].ingredients,
-				cocktails = groups[i].cocktails,
-				cl = cocktails.length
-			
-			var dt = Nc('dt', 'title-label') 
-				dd = N('dd'),	
-				eq = Nct('li', 'eq', '='),
-				head = Nc('ul', 'head'),
-				bigPlus = Nct('li', 'big-plus', '+')
-			
-			bigPlus.ingredients = ingredients
-			
-			head.appendChild(bigPlus)
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
-			{
-				var ing = Nc('li', 'ingredient')
-				ing.appendChild(ingredients[j].getPreviewNode())
-				head.appendChild(ing)
-			}
-			
-			head.appendChild(eq)		
-			dd.appendChild(head)
-			
-			var body = Nc('ul', 'body')
-			
-			for (var j = 0, jl = cocktails.length; j < jl; j++)
-				body.appendChild(cocktails[j].getPreviewNode())
-			
-			dd.appendChild(body)			
+			var dd = Nc('dd', 'lazy')
+			items.push(dd)
+			dd.group = groups[i]
 			dl.appendChild(dd)
-			
-			})()
 		}
 		
+		var main = this.nodes.bottomOutput.recommends
 		main.empty()
-		main.appendChild(dl)		
+		main.appendChild(dl)
+		
+		return items	
 	},
 	
 	mustHaveRender : function(mustHave)
 	{
-		var mh = {}, mustHaveUl = N('ul')
+		var mustHaveUl = N('ul')
+		var items = []
 		for (var i = 0, il = mustHave.length; i < il; i++) 
 		{
-			var mh = mustHave[i]
-			var li = Nc('li', 'row')
-			
-			var bigPlus = Nct('div', 'big-plus', '+')
-			bigPlus.ingredients = [mh.ingredient]
-			
-			var ing = Nc('div', 'ingredient')
-			ing.appendChild(mh.ingredient.getPreviewNode())
-			
-			li.appendChild(bigPlus)
-			li.appendChild(ing)
-			
-			var desc = Nc('p', 'description')
-			desc.innerHTML = mh.description
-			li.appendChild(desc)
+			var li = Nc('li', 'row lazy')	
+			li.mustHaveIngredient = mustHave[i]
+			items.push(li)
 			mustHaveUl.appendChild(li)
 		}
+		
 		var main = this.nodes.bottomOutput.mustHave
 		main.empty()
 		main.appendChild(mustHaveUl)
+		
+		return items
 	},
 	
 	renderBoPackages : function(cocktails, havingIngredients)
