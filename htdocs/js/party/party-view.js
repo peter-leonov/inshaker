@@ -36,7 +36,7 @@ Me.prototype =
 			this.innerHTML = isNaN(v) ? 0 : v
 		}
 		
-		// nodes.count.parentNode.addEventListener('click', function (e) { nodes.count.focus() }, false)
+		// listen at document level to fix Opera 9
 		document.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
