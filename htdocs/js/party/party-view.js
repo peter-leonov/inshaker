@@ -37,7 +37,7 @@ Me.prototype =
 		}
 		
 		// nodes.count.parentNode.addEventListener('click', function (e) { nodes.count.focus() }, false)
-		nodes.count.addEventListener('keypress', keypress, false)
+		document.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
 		
