@@ -41,47 +41,6 @@ Me.prototype =
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
 		
-		function fixEditable (e)
-		{
-			// var pairs = []
-			// 
-			// alert(e.srcElement)
-			// 
-			// for (var k in e)
-			// 	// pairs.push(k + ' = ' + e.target[k])
-			// 	pairs.push(k)
-			// 
-			// alert(pairs.join(', '))
-			
-			// if (e.srcElement.contentEditable)
-			// 	alert(e.srcElement)
-			
-			if (e.__liby__fakeKeypressEventForContentEditable)
-				return
-			
-			var target = e.srcElement
-			
-			if (!target.contentEditable)
-				return
-			
-			var ne = document.createEvent('Event')
-			ne.initEvent('keypress', true, true)
-
-			// copying valueable data
-			ne.altKey = e.altKey
-			ne.ctrlKey = e.ctrlKey
-			ne.metaKey = e.metaKey
-			ne.charCode = e.charCode
-			ne.keyCode = e.keyCode
-			ne.__liby__fakeKeypressEventForContentEditable = true
-			
-			e.stopPropagation()
-			
-			if (!target.dispatchEvent(ne))
-				e.preventDefault()
-		}
-		
-		document.addEventListener('keypress', fixEditable, true)
 		
 		return this
 	}
