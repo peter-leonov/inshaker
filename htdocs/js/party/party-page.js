@@ -6,6 +6,8 @@
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
+	
 	var nodes =
 	{
 		count: $$('#plan .head .people .count')[0],
