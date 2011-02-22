@@ -14,7 +14,7 @@ class IngredientsProcessor < Inshaker::Processor
     super
     @local_properties = []
     @entities = []
-    @ingredients_groups = []
+    @groups = []
     @marks = {}
     @tags = []
     @tags_ci = {}
@@ -67,7 +67,7 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def update_groups_and_tags
-    @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
     @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
@@ -274,7 +274,7 @@ class IngredientsProcessor < Inshaker::Processor
       update_json entity
     end
     flush_json_object(ingredients, Config::DB_JS)
-    flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
+    flush_json_object(@groups, Config::DB_JS_GROUPS)
     # hide hidden tags
     @tags -= @tags_hidden
     flush_json_object(@tags, Config::DB_JS_TAGS)
