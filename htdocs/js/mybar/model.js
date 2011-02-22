@@ -331,8 +331,6 @@ var myProto =
 			}
 		}
 		
-		log(this.ingredients)
-		
 		var me = this
 		for (var i = 0, il = recommends.length; i < il; i++) 
 		{
