@@ -253,25 +253,28 @@ class IngredientsProcessor < Inshaker::Processor
   def check_intergity
     
     tags_used = {}
+    groups_used = {}
     
     @entities.each do |ingredient|
       ingredient["tags"].each do |tag|
         tags_used[tag] = true
       end
+      
+      groups_used[ingredient["group"]] = true
     end
     
     
     say "проверяю теги"
+    indent do
+      unused = @tags - tags_used.keys
     
-    unused_tags = @tags - tags_used.keys
+      unless unused.empty?
+        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+      end
     
-    # warn about unused tags
-    unless unused_tags.empty?
-      warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
+      # delete unused tags
+      @tags -= unused
     end
-    
-    # delete unused tags
-    @tags -= unused_tags
     
   end
   
