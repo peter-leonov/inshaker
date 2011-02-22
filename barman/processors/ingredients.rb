@@ -14,11 +14,11 @@ class IngredientsProcessor < Inshaker::Processor
     super
     @local_properties = []
     @entities = []
-    @ingredients_groups = []
+    @groups = []
+    @groups_i = {}
     @marks = {}
     @tags = []
     @tags_ci = {}
-    @tags_used = {}
     @tags_hidden = []
   end
   
@@ -67,7 +67,8 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def update_groups_and_tags
-    @ingredients_groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @groups_i = @groups.hash_index
     @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
@@ -93,13 +94,19 @@ class IngredientsProcessor < Inshaker::Processor
     indent do
     done = 0
     Dir.new(Config::BASE_DIR).each_dir do |group_dir|
-      say group_dir.name
+      group_name = group_dir.name
+      say group_name
+      unless @groups_i[group_name]
+        error "нкизвестная группа «#{group_name}»"
+        next
+      end
+      
       indent do
       group_dir.each_dir do |good_dir|
         if !@ingredients_mtime || good_dir.deep_mtime > @ingredients_mtime
           if good = find_good(good_dir, group_dir)
             done += 1
-            good["group"] = group_dir.name
+            good["group"] = group_name
             good["name"] = good_dir.name
             @entities << good
             
@@ -109,7 +116,7 @@ class IngredientsProcessor < Inshaker::Processor
               good.delete("names")
             end
           else
-            warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
+            warning "#{group_name}: #{good_dir.name} не нашел описания"
           end
         end
       end
@@ -209,7 +216,6 @@ class IngredientsProcessor < Inshaker::Processor
         error "незнакомый тег «#{tag_candidate}»"
       end
       
-      @tags_used[tag] = true
       good_tags << tag
     end
     
@@ -253,17 +259,43 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def check_intergity
-    say "проверяю теги"
     
-    unused_tags = @tags - @tags_used.keys
+    tags_used = {}
+    groups_used = {}
     
-    # warn about unused tags
-    unless unused_tags.empty?
-      warning "нет коктейлей с #{unused_tags.length.plural("тегом", "тегами", "тегами")} #{unused_tags.map{|v| "«#{v}»"}.join(", ")}"
+    @entities.each do |ingredient|
+      ingredient["tags"].each do |tag|
+        tags_used[tag] = true
+      end
+      
+      groups_used[ingredient["group"]] = true
     end
     
-    # delete unused tags
-    @tags -= unused_tags
+    
+    say "проверяю теги"
+    indent do
+      unused = @tags - tags_used.keys
+    
+      unless unused.empty?
+        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+      end
+    
+      # delete unused tags
+      @tags -= unused
+    end
+    
+    say "проверяю группы"
+    indent do
+      unused = @groups - groups_used.keys
+    
+      unless unused.empty?
+        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+      end
+    
+      # delete unused tags
+      @groups -= unused
+    end
+    
   end
   
   def flush_json
@@ -274,7 +306,7 @@ class IngredientsProcessor < Inshaker::Processor
       update_json entity
     end
     flush_json_object(ingredients, Config::DB_JS)
-    flush_json_object(@ingredients_groups, Config::DB_JS_GROUPS)
+    flush_json_object(@groups, Config::DB_JS_GROUPS)
     # hide hidden tags
     @tags -= @tags_hidden
     flush_json_object(@tags, Config::DB_JS_TAGS)
