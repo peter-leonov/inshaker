@@ -111,35 +111,45 @@ var myProto =
 		
 		this.nodes.barMenu.empty.hide()
 		
-		var dl =  Nc('dl', 'list')
+		var ul =  Nc('ul', 'list')
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
 			var c = cocktails[i]
-			var dt = Nct('dt', 'name', c.name)
+			var li = Nc('li', 'cocktail')
 			
-			dt.cocktail = c
+			var img = new Image()
+			img.src = c.getBigImageSrc()
+			img.addClassName('cocktail-image')
+			li.appendChild(img)
+			
+			var h3 = Nct('h3', 'cocktail-name', c.name)
+			h3.cocktail = c
+			li.appendChild(h3)
+			
+			
 
 			var recipe = []
 			for (var j = 0, jl = c.ingredients.length; j < jl; j++) 
 			{
 				var ing = c.ingredients[j]
-				recipe.push(ing[0] + ' ' + ing[1])
+				var brand = Ingredient.getByName(ing[0]).brand
+				recipe.push(ing[0] + (brand ? ' ' + brand : '') + ' ' + ing[1])
 			}
 			
-			var dd = Nct('dd', 'recipe', '(' + recipe.join(', ') + ')')
+			var p = Nct('p', 'cocktail-recipe', '(' + recipe.join(', ') + ')')
+			li.appendChild(p)
 			
 			if(notAvailableCocktails[c.name])
 			{
-				dt.addClassName('not-available')
-				dd.addClassName('not-available')
+				h3.notAvailable = true
+				li.addClassName('not-available')
 			}
 			
-			dl.appendChild(dt)
-			dl.appendChild(dd)
+			ul.appendChild(li)
 		}
 		
 		this.nodes.barMenu.wrapper.empty()
-		this.nodes.barMenu.wrapper.appendChild(dl)
+		this.nodes.barMenu.wrapper.appendChild(ul)
 	},
 	
 	renderIngredients : function(ingredients)
@@ -165,7 +175,7 @@ var myProto =
 		var target = e.target
 		if(target.cocktail)
 		{
-			if(target.hasClassName('not-available'))
+			if(target.notAvailable)
 			{
 				this.controller.addCocktailToBarMenu(target.cocktail.name)
 			}
