@@ -68,6 +68,11 @@ var myProto =
 	addIngredientsFromBo : function(ingredients)
 	{
 		this.model.addIngredientsFromBo(ingredients)
+	},
+	
+	ingredientSelected : function(ingredient)
+	{
+		this.model.selectIngredient(ingredient)
 	}
 }
 Object.extend(Me.prototype, myProto)

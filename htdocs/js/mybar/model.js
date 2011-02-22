@@ -543,6 +543,11 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+	},
+	
+	selectIngredient : function(ingredient)
+	{
+		this.view.showIngredient(ingredient)
 	}
 }
 Object.extend(Me.prototype, myProto)

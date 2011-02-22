@@ -81,6 +81,8 @@ var myProto =
 		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
 		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
 		
+		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
+		
 		//suspended rendering
 		var t = new Throttler(onscroll, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
@@ -414,6 +416,7 @@ var myProto =
 		return items
 	},
 	
+	/*
 	renderBoPackages : function(cocktails, havingIngredients)
 	{
 		var main = this.nodes.bottomOutput.recommends
@@ -498,11 +501,10 @@ var myProto =
 		main.empty()
 		main.appendChild(dl)	
 	},
-	
+	*/
 	renderIfCocktailsEmpty : function()
 	{
 		var c = this.nodes.cocktails
-		
 		c.block.hide()
 	},
 	
@@ -629,6 +631,25 @@ var myProto =
 		{
 			this.controller.addIngredientsFromBo(target.ingredients)
 		}
+	},
+	
+	maybeIngredientClicked : function(target)
+	{
+		var ingredient = target.parentNode['data-ingredient']
+		if(ingredient)
+			this.controller.ingredientSelected(ingredient)
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		if (ingredient)
+		{
+			var popup = IngredientPopup.show(ingredient)
+			var controller = this.controller
+			popup.onhide = function () { controller.ingredientSelected(null) }
+		}
+		else
+			IngredientPopup.hide()
 	}
 }
 Object.extend(Me.prototype, myProto)
