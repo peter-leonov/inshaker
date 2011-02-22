@@ -16,7 +16,7 @@ var myProto =
 	{
 		this.model.setBarMenu()
 		this.model.setBarName()
-		this.model.setIngredients()
+		//this.model.setIngredients()
 		return this
 	}
 	
@@ -43,7 +43,7 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	
+	document.documentElement.removeClassName('loading')
 	var nodes = {
 		barName : {
 			wrapper : $('bar-name'),
@@ -58,18 +58,18 @@ function onready ()
 		barMenu : {
 			wrapper : $$('#output .b-content .menu-block .wrapper')[0],
 			empty : $$('#output .b-content .empty-menu')[0]
-		},
-		
+		}
+		/*,
+			
 		ingredients : {
 			main : $$('#output .b-content .ingredients-block')[0],
 			wrapper : $$('#output .b-content .ingredients-block .wrapper')[0]
-		}
+		}*/
+		
 	}
 	
 	var widget = new BarMenu()
 	widget.bind(nodes)
-	
-	document.documentElement.removeClassName('loading')
 }
 
 $.onready(onready)
