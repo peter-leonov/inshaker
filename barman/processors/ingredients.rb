@@ -18,7 +18,6 @@ class IngredientsProcessor < Inshaker::Processor
     @marks = {}
     @tags = []
     @tags_ci = {}
-    @tags_used = {}
     @tags_hidden = []
   end
   
@@ -209,7 +208,6 @@ class IngredientsProcessor < Inshaker::Processor
         error "незнакомый тег «#{tag_candidate}»"
       end
       
-      @tags_used[tag] = true
       good_tags << tag
     end
     
@@ -253,9 +251,19 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def check_intergity
+    
+    tags_used = {}
+    
+    @entities.each do |ingredient|
+      ingredient["tags"].each do |tag|
+        tags_used[tag] = true
+      end
+    end
+    
+    
     say "проверяю теги"
     
-    unused_tags = @tags - @tags_used.keys
+    unused_tags = @tags - tags_used.keys
     
     # warn about unused tags
     unless unused_tags.empty?
@@ -264,6 +272,7 @@ class IngredientsProcessor < Inshaker::Processor
     
     # delete unused tags
     @tags -= unused_tags
+    
   end
   
   def flush_json
