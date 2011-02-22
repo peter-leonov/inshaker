@@ -276,6 +276,18 @@ class IngredientsProcessor < Inshaker::Processor
       @tags -= unused
     end
     
+    say "проверяю группы"
+    indent do
+      unused = @groups - groups_used.keys
+    
+      unless unused.empty?
+        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+      end
+    
+      # delete unused tags
+      @groups -= unused
+    end
+    
   end
   
   def flush_json
