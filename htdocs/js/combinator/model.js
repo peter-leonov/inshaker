@@ -700,9 +700,7 @@ var myProto =
 			for (var i = 0; i < all.length; i++)
 			{
 				var ingred = all[i]
-				var group = slices[ingred.group]
-				if (group)
-					group.push(ingred)
+				slices[ingred.group].push(ingred)
 			}
 		}
 		return data
