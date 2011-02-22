@@ -92,13 +92,15 @@ class IngredientsProcessor < Inshaker::Processor
     indent do
     done = 0
     Dir.new(Config::BASE_DIR).each_dir do |group_dir|
-      say group_dir.name
+      group_name = group_dir.name
+      say group_name
+      
       indent do
       group_dir.each_dir do |good_dir|
         if !@ingredients_mtime || good_dir.deep_mtime > @ingredients_mtime
           if good = find_good(good_dir, group_dir)
             done += 1
-            good["group"] = group_dir.name
+            good["group"] = group_name
             good["name"] = good_dir.name
             @entities << good
             
@@ -108,7 +110,7 @@ class IngredientsProcessor < Inshaker::Processor
               good.delete("names")
             end
           else
-            warning "#{group_dir.name}: #{good_dir.name} не нашел описания"
+            warning "#{group_name}: #{good_dir.name} не нашел описания"
           end
         end
       end
