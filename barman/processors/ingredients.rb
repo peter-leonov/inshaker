@@ -15,6 +15,7 @@ class IngredientsProcessor < Inshaker::Processor
     @local_properties = []
     @entities = []
     @groups = []
+    @groups_i = {}
     @marks = {}
     @tags = []
     @tags_ci = {}
@@ -67,6 +68,7 @@ class IngredientsProcessor < Inshaker::Processor
   
   def update_groups_and_tags
     @groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
+    @groups_i = @groups.hash_index
     @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
@@ -94,6 +96,10 @@ class IngredientsProcessor < Inshaker::Processor
     Dir.new(Config::BASE_DIR).each_dir do |group_dir|
       group_name = group_dir.name
       say group_name
+      unless @groups_i[group_name]
+        error "нкизвестная группа «#{group_name}»"
+        next
+      end
       
       indent do
       group_dir.each_dir do |good_dir|
