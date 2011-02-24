@@ -132,8 +132,9 @@ var myProto =
 			for (var j = 0, jl = c.ingredients.length; j < jl; j++) 
 			{
 				var ing = c.ingredients[j]
-				var brand = Ingredient.getByName(ing[0]).brand
-				recipe.push(ing[0] + (brand ? ' ' + brand : '') + ' ' + ing[1])
+				var ingObj = Ingredient.getByName(ing[0])
+				var brand = ingObj.brand
+				recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 8 ? ' ' + ing[1] : ''))
 			}
 			
 			var p = Nct('p', 'cocktail-recipe', '(' + recipe.join(', ') + ')')
