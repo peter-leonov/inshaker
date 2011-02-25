@@ -121,7 +121,8 @@ Git
 UpStart
 ---
 
-Проверяем, есть ли он:
+В Debian 6+ и Ubuntu 6.10+ он уже есть.
+Проверим, есть ли он у нас:
 
 	dpkg --get-selections | grep upstart
 	#>> upstart      hold
