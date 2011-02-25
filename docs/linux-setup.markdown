@@ -84,3 +84,7 @@
 	curl http://localhost/
 	sudo nginx -s quit
 
+Чтобы не ругался при запуске не от рута:
+
+	sudo chmod a+w /usr/local/nginx/logs/error.log
+	sudo chmod a+w /usr/local/nginx/logs/access.log
