@@ -51,6 +51,9 @@ APT
 	mkdir -p /home/www/.ssh/
 	touch /home/www/.ssh/authorized_keys
 
+Сгенерим пользователю собственный ключ:
+
+	ssh-keygen
 
 Софт
 ====
