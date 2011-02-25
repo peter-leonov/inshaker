@@ -118,5 +118,64 @@ Git
 	git config --global user.email "admin@server.net"
 
 
+UpStart
+---
+
+Проверяем, есть ли он:
+
+	dpkg --get-selections | grep upstart
+	#>> upstart      hold
+	
+	sudo initctl list
+	#>> rc stop/waiting
+	#>> openvz stop/waiting
+	#>> ssh start/running, process 30215
+	#>> rcS stop/waiting
+	#>> rc-sysinit stop/waiting
+	#>> hostname stop/waiting
+	#>> network-interface stop/waiting
+	#>> network-interface-security (networking) start/running
+	#>> networking stop/waiting
+
+Конфиг для энжинкса (кладем в `/etc/init/`):
+
+	description "nginx http daemon"
+	
+	start on runlevel [2345]
+	stop on runlevel [!2345]
+	
+	exec /usr/local/nginx/sbin/nginx -g "daemon off;" -c /path/to/nginx.conf
+	
+	respawn
+	respawn limit 60000 1
+
+Проверяем:
+
+	sudo initctl list | grep nginx
+	#>> nginx stop/waiting
+	
+	sudo initctl start nginx
+	#>> nginx start/running, process 23577
+	sudo initctl start nginx
+	#>> initctl: Job is already running: nginx
+	sudo initctl list | grep nginx
+	nginx start/running, process 23577
+
+Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
+
+
+Конфиг для апача 2.2:
+
+	description "apache 2.2 http daemon"
+	
+	start on runlevel [2345]
+	stop on runlevel [!2345]
+	
+	exec apache2 -D FOREGROUND -f /path/to/apache.conf
+	
+	respawn
+	respawn limit 60000 1
+
+Проверять нужно точно так же, как и энжинкс.
 
 
