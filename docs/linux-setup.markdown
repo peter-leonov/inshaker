@@ -161,6 +161,11 @@ UpStart
 	#>> initctl: Job is already running: nginx
 	sudo initctl list | grep nginx
 	nginx start/running, process 23577
+	
+	curl http://localhost/
+	
+	sudo initctl stop nginx
+	#>> nginx stop/waiting
 
 Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
 
