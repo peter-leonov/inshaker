@@ -82,5 +82,5 @@
 	nginx -V
 	sudo nginx
 	curl http://localhost/
-	killall nginx
+	sudo nginx -s quit
 
