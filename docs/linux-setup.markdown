@@ -2,21 +2,23 @@
 Система
 =======
 
-Первым делом ключи в `/root/.ssh/authorized_keys`.
+В репозиториях `/etc/apt/sources.list` меняем сервер на `ru.archive.ubuntu.com`.
+Результат выглядит примерно так:
 
-Репозитории `/etc/apt/sources.list`:
-
-	deb http://ru.archive.ubuntu.com/ubuntu lucid main restricted universe
-	deb http://ru.archive.ubuntu.com/ubuntu lucid-updates main restricted universe
-	deb http://ru.archive.ubuntu.com/ubuntu lucid-security main restricted universe
-
+	deb http://ru.archive.ubuntu.com/ubuntu/ lucid main universe multiverse
+	deb http://ru.archive.ubuntu.com/ubuntu/ lucid-security main universe multiverse
 
 Обновляем систему:
 
-	apt-get update
-	apt-get upgrade
+	apt-get update && apt-get upgrade
 
 на вопросы отвечаем `y` то есть “install the package maintainer's version”.
+
+Перезагружаемся:
+
+	reboot
+
+Кладем свои ключи в `/root/.ssh/authorized_keys`.
 
 Создаем пользователя, под которым будем работать дальше:
 
