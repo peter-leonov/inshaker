@@ -94,3 +94,29 @@ APT
 
 	sudo chmod a+w /usr/local/nginx/logs/error.log
 	sudo chmod a+w /usr/local/nginx/logs/access.log
+
+
+Git
+---
+
+
+Ставим:
+
+	curl -O http://kernel.org/pub/software/scm/git/git-1.7.4.1.tar.bz2
+	tar xjf git-1.7.4.1.tar.bz2
+	cd git-1.7.4.1
+	./configure --without-tcltk && make && sudo make install
+
+Тестим:
+
+	git --version
+
+Тюним:
+
+	git config --global gc.auto 0
+	git config --global user.name "server"
+	git config --global user.email "admin@server.net"
+
+
+
+
