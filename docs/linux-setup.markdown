@@ -36,6 +36,10 @@
 	su www
 	cd
 
+Протестим могущество:
+
+	sudo id
+
 Кладем свои ключи в `/home/www/.ssh/authorized_keys`:
 
 	mkdir -p /home/www/.ssh/
