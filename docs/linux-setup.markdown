@@ -18,7 +18,10 @@
 
 	reboot
 
-Кладем свои ключи в `/root/.ssh/authorized_keys`.
+Кладем свои ключи в `/root/.ssh/authorized_keys`:
+
+	mkdir -p /root/.ssh/
+	touch /root/.ssh/authorized_keys
 
 Создаем пользователя, под которым будем работать дальше:
 
@@ -32,6 +35,12 @@
 
 	su www
 	cd
+
+Кладем свои ключи в `/home/www/.ssh/authorized_keys`:
+
+	mkdir -p /home/www/.ssh/
+	touch /home/www/.ssh/authorized_keys
+
 
 Софт
 ====
