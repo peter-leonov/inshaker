@@ -29,51 +29,49 @@ var myProto =
 	
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {}, showIngByGroups : false }
-		Storage.init(function(){
-			try
-			{
-				Object.extend(bar, JSON.parse(Storage.get('mybar')))
-			}
-			catch(e)
-			{
-			}
-			
-			
-			me.showPhotos = bar.showPhotos
-			me.barName = bar.barName
-			me.showByCocktails = bar.showByCocktails
-			me.notAvailableCocktails = bar.notAvailableCocktails
-			me.showIngByGroups = bar.showIngByGroups
-			
-			me.ingredients = me.getIngredients(bar.ingredients)
-			me.cocktails = me.computeCocktails(me.ingredients)
-			me.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
-
-			me.tipIngredient = me.computeTipIngr()
-
-			me.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
-			//me.recommIngr = me.computeRecommIngr(me.mustHave) //compute bottomOutput
-			me.computeRecommIngr(me.mustHave)
-			
-			//me.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
-			//me.boItems = me.computeBoItems(me.bottomOutput, me.packageCocktails)
-			
-			me.parent.setBar()
-			
-			//ingr searcher
-			var ingredients = Ingredient.getAllNames(),
-				secondNames = Ingredient.getAllSecondNames(),
-				secondNamesHash = Ingredient.getNameBySecondNameHash()
-				
-			var set = ingredients.slice()
-			set.push.apply(set, secondNames)
-			set.sort()
-			
-			var searcher = me.searcher = new IngredientsSearcher(set, secondNamesHash)
-			me.view.setCompleterDataSource(searcher)
-		})
+		var me = this
+		this.storage = new barStorage()
+		this.storage.getBar(function(bar){ me.setMainState(bar) })
 	},
+	
+	setMainState : function(bar)
+	{
+		var me = this
+		this.showPhotos = bar.showPhotos
+		this.barNathis = bar.barNathis
+		this.showByCocktails = bar.showByCocktails
+		this.notAvailableCocktails = bar.notAvailableCocktails
+		this.showIngByGroups = bar.showIngByGroups
+
+		this.ingredients = this.getIngredients(bar.ingredients)
+		this.cocktails = this.computeCocktails(this.ingredients)
+		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
+
+		this.tipIngredient = this.computeTipIngr()
+
+		this.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
+		//this.recommIngr = this.computeRecommIngr(this.mustHave) //compute bottomOutput
+		this.computeRecommIngr(this.mustHave)
+		
+		//this.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
+		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
+		
+		this.parent.setBar()
+		
+		//ingr searcher
+		var ingredients = Ingredient.getAllNames(),
+			secondNames = Ingredient.getAllSecondNames(),
+			secondNamesHash = Ingredient.getNameBySecondNameHash()
+			
+		var set = ingredients.slice()
+		set.push.apply(set, secondNames)
+		set.sort()
+		
+		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
+		this.view.setCompleterDataSource(searcher)		
+	},
+	
+	
 	
 	sortByUsage : function(a, b)
 	{
@@ -439,14 +437,14 @@ var myProto =
 	
 	saveStorage : function()
 	{
-		Storage.put('mybar', JSON.stringify({ 
+		this.storage.saveBar({ 
 			ingredients : Object.toArray(this.ingredients.inBar),
 			showPhotos : this.showPhotos,
 			barName : this.barName,
 			showByCocktails : this.showByCocktails,
 			notAvailableCocktails : this.notAvailableCocktails,
 			showIngByGroups : this.showIngByGroups
-		}))
+		})
 	},
 	
 	addIngredientToBar : function(ingredient)
