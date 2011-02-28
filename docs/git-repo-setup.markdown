@@ -24,3 +24,10 @@ Git repo
 	cd ..
 	git checkout -f' > .git/hooks/post-receive
 	chmod +x .git/hooks/post-receive
+
+Переходим на локальную машину и заливаем `master` на сервер:
+
+	git remote add server ssh://www@server/www/project
+	git push server master:master
+	#>> * [new branch]      master -> master
+
