@@ -282,6 +282,7 @@ http://www.inshaker.ru/cocktail/zempole/
 http://www.inshaker.ru/cocktail/winter/
 http://www.inshaker.ru/cocktail/winter_set/
 http://www.inshaker.ru/cocktail/winter_cherry/
+http://www.inshaker.ru/cocktail/gold_margarita/
 http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/
 http://www.inshaker.ru/cocktail/gold_bottom/
@@ -879,5 +880,6 @@ http://www.inshaker.ru/cocktail/berry_pimms/
 http://www.inshaker.ru/cocktail/berry_twist/
 http://www.inshaker.ru/cocktail/jamaican_mule/
 http://www.inshaker.ru/cocktail/yankee/
+http://www.inshaker.ru/cocktail/japanese_sidecar/
 http://www.inshaker.ru/cocktail/japanese_truffle/
 http://www.inshaker.ru/cocktail/japanese_harvest/
