@@ -78,6 +78,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 
+<!--# include virtual="barStorage.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
