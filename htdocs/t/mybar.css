@@ -322,4 +322,4 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .wrapper .must-have .description { float: left; font-size: 14px; margin: 12px 10px 0 20px; width: 700px; }
 
 /*Popup*/
-<!--# include virtual="/t/popup-full.css" -->
+<!--# include virtual="/t/ingredient-popup.css" -->
