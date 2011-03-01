@@ -467,7 +467,6 @@ http://www.inshaker.ru/cocktail/marcus_licinius_crassus/
 http://www.inshaker.ru/cocktail/marmalade_margarita/
 http://www.inshaker.ru/cocktail/moroccan_smash/
 http://www.inshaker.ru/cocktail/martinez/
-http://www.inshaker.ru/cocktail/martinez_2/
 http://www.inshaker.ru/cocktail/martini_mojitato/
 http://www.inshaker.ru/cocktail/martini_royale/
 http://www.inshaker.ru/cocktail/martini_fizz/
@@ -570,6 +569,7 @@ http://www.inshaker.ru/cocktail/from_alice/
 http://www.inshaker.ru/cocktail/screwdriver/
 http://www.inshaker.ru/cocktail/dreadlock_holiday/
 http://www.inshaker.ru/cocktail/hunter/
+http://www.inshaker.ru/cocktail/ocha_karai/
 http://www.inshaker.ru/cocktail/mesmerized/
 http://www.inshaker.ru/cocktail/paloma/
 http://www.inshaker.ru/cocktail/paloma_light/
@@ -598,7 +598,6 @@ http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
 http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pink_floyd/
 http://www.inshaker.ru/cocktail/pyramid_shooter/
-http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
@@ -880,6 +879,7 @@ http://www.inshaker.ru/cocktail/berry_pimms/
 http://www.inshaker.ru/cocktail/berry_twist/
 http://www.inshaker.ru/cocktail/jamaican_mule/
 http://www.inshaker.ru/cocktail/yankee/
+http://www.inshaker.ru/cocktail/japanese_cosmopolitan/
 http://www.inshaker.ru/cocktail/japanese_sidecar/
 http://www.inshaker.ru/cocktail/japanese_truffle/
 http://www.inshaker.ru/cocktail/japanese_harvest/
