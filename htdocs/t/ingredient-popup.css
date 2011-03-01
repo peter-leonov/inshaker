@@ -45,7 +45,7 @@
 .cocktail-list .prev .spacer,
 .cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
 
-.ingredient-window .inBar {  }
-.ingredient-window .inBar .add, .ingredient-window .inBar .remove { display: none; cursor: pointer; }
+.ingredient-window .inBar { margin-bottom: 10px; }
+.ingredient-window .inBar .add, .ingredient-window .inBar .remove { display: none; cursor: pointer; border-bottom: 1px dashed; }
 .ingredient-window .inBar.have .remove{ display: inline; }
 .ingredient-window .inBar.no-have .add { display: inline; }
