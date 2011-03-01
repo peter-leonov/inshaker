@@ -32,12 +32,12 @@ var myProto =
 		
 		BarStorage.addIngredient = function(ingredientName)
 		{
-			me.addIngredientToBar(Ingredient.getByName(ingredientName))
+			return me.addIngredientToBar(Ingredient.getByName(ingredientName))
 		}
 		
 		BarStorage.removeIngredient = function(ingredientName)
 		{
-			me.removeIngredientFromBar(Ingredient.getByName(ingredientName))
+			return me.removeIngredientFromBar(Ingredient.getByName(ingredientName))
 		}
 		
 	},
@@ -45,7 +45,7 @@ var myProto =
 	bind : function ()
 	{
 		var me = this
-		BarStorage.getBar(function(bar){ me.setMainState(bar) })
+		BarStorage.initBar(function(bar){ me.setMainState(bar) })
 	},
 	
 	setMainState : function(bar)
@@ -148,7 +148,6 @@ var myProto =
 		ingredients.remove = function(ingredient)
 		{
 			this.inBar[ingredient.name] = null
-			//this.inBarNames = Object.toArray(this.inBar)
 			this.length = 0
 			Object.extend(this, fetchIngredients(Object.toArray(this.inBar)))
 			return this
@@ -463,7 +462,8 @@ var myProto =
 	
 	addIngredientToBar : function(ingredient)
 	{
-		if(!this.ingredients.add(ingredient)) return
+		if(!this.ingredients.add(ingredient))
+			return false
 		this.saveStorage()
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
@@ -478,6 +478,8 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+		return true
 	},
 	
 	removeIngredientFromBar : function(ingredient)
@@ -497,6 +499,8 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+		return true
 	},
 	
 	switchIngredientsView : function(byGroups)
