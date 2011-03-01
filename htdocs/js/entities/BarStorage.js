@@ -25,8 +25,14 @@ Object.extend(Me,
 		}
 	},
 	
-	getBar : function(callback)
+	initBar : function(callback)
 	{
+		if(this.inited)
+		{
+			callback(this.bar)
+			return
+		}
+		
 		var me = this
 		Storage.init(function(){
 			try
@@ -39,7 +45,9 @@ Object.extend(Me,
 			}
 				
 			if(callback)
-				callback(me.bar)	
+				callback(me.bar)
+				
+			me.inited = true
 		})
 	},
 	
@@ -70,8 +78,12 @@ Object.extend(Me,
 		var ings = this.bar.ingredients
 		if(ings.indexOf(ingredientName) == -1)
 			ings.push(ingredientName)
-			
+		else
+			return false
+		
+		log(this.bar)	
 		this.saveBar()
+		return true
 	},
 	
 	removeIngredient : function(ingredientName)
@@ -80,8 +92,11 @@ Object.extend(Me,
 		var pos = ings.indexOf(ingredientName)
 		if(pos != -1)
 			ings.splice(pos, 1)
+		else
+			return false
 			
 		this.saveBar()
+		return true
 	},
 	
 	haveIngredient : function(ingredientName)
