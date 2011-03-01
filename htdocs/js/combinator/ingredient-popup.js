@@ -54,6 +54,7 @@ var myProto =
 		
 		this.renderAllCocktailsLink(ingredient)
 		this.renderSupplements(ingredient)
+		this.renderMybarButton(ingredient)
 		
 		nodes.text.innerHTML = ingredient.about
 		
@@ -111,6 +112,40 @@ var myProto =
 			a.href = '/combinator.html#q=' + encodeURIComponent(query)
 			item.appendChild(a)
 		}
+	},
+	
+	renderMybarButton : function(ingredient)
+	{
+		var b = this.nodes.inBar
+		if(BarStorage.haveIngredient(this.ingredient.name))
+		{
+			b.addClassName('have')
+		}
+		else
+		{
+			b.addClassName('no-have')
+		}
+		
+		var me = this
+		b.addEventListener('click', function(e){ me.myBarButtonClick(e) }, false)
+	},
+	
+	myBarButtonClick : function(e)
+	{
+		var b = this.nodes.inBar
+		
+		if(b.hasClassName('no-have'))
+			{
+				BarStorage.addIngredient(this.ingredient.name)
+				b.removeClassName('no-have')
+				b.addClassName('have')
+			}
+		else
+			{
+				BarStorage.removeIngredient(this.ingredient.name)
+				b.removeClassName('have')
+				b.addClassName('no-have')
+			}
 	},
 	
 	renderWhereToBuy: function (nodes, ingredient)
