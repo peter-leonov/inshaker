@@ -64,8 +64,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 
-//Sorry for old lib. It's needed for Storage (hard code in it)
-<!--# include virtual="/lib/Programica/UA.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/combinator/popup.js" -->
 <!--# include virtual="/js/combinator/ingredient-popup.js" -->
@@ -78,7 +76,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 
-<!--# include virtual="barStorage.js" -->
+<!--# include virtual="/js/entities/BarStorage.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
@@ -100,6 +98,7 @@ function onready ()
 			front: $$('#ingredient-info-popup .popup-front')[0],
 			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
+			inBar : $$('#ingredient-info-popup .description .about .inBar')[0],
 			mark: $$('#ingredient-info-popup .description .about .mark')[0],
 			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
 			buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
