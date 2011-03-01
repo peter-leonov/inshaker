@@ -1,4 +1,4 @@
 {
-	"spotlighted":{"href":"/cocktail/gold_margarita/"},
-	"branded-image":{"href":"/cocktail/gold_margarita/"}
+	"spotlighted":{"href":"/cocktail/golden_margarita/"},
+	"branded-image":{"href":"/cocktail/golden_margarita/"}
 }
