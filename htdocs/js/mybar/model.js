@@ -25,20 +25,34 @@ var myProto =
 		this.ingredients = []
 		this.recommends = []
 		this.recommIngr = []
+		
+		var originAdd = BarStorage.addIngredient
+		var originRem = BarStorage.removeIngredient
+		var me = this
+		
+		BarStorage.addIngredient = function(ingredientName)
+		{
+			me.addIngredientToBar(Ingredient.getByName(ingredientName))
+		}
+		
+		BarStorage.removeIngredient = function(ingredientName)
+		{
+			me.removeIngredientFromBar(Ingredient.getByName(ingredientName))
+		}
+		
 	},
 	
 	bind : function ()
 	{
 		var me = this
-		this.storage = new barStorage()
-		this.storage.getBar(function(bar){ me.setMainState(bar) })
+		BarStorage.getBar(function(bar){ me.setMainState(bar) })
 	},
 	
 	setMainState : function(bar)
 	{
 		var me = this
 		this.showPhotos = bar.showPhotos
-		this.barNathis = bar.barNathis
+		this.barName = bar.barName
 		this.showByCocktails = bar.showByCocktails
 		this.notAvailableCocktails = bar.notAvailableCocktails
 		this.showIngByGroups = bar.showIngByGroups
@@ -437,7 +451,7 @@ var myProto =
 	
 	saveStorage : function()
 	{
-		this.storage.saveBar({ 
+		BarStorage.saveBar({ 
 			ingredients : Object.toArray(this.ingredients.inBar),
 			showPhotos : this.showPhotos,
 			barName : this.barName,
