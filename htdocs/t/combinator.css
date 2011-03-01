@@ -247,3 +247,7 @@ html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
 html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
 
 html.firefox-2 body { position: relative; height: none; }
+
+
+/*Popup*/
+<!--# include virtual="/t/ingredient-popup.css" -->
