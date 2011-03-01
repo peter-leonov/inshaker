@@ -13,9 +13,10 @@ Git repo
 	cd /www/project
 	git init
 
-Разрешим затирать текущую ветку:
+Подтюним:
 
 	git config receive.denyCurrentBranch ignore
+	git config core.packedGitLimit 16m
 
 Настроим автоматический чекаут по обновлении:
 
