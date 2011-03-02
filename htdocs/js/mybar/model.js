@@ -337,7 +337,7 @@ var myProto =
 					}
 					recommends.push({ ingredients : ingredients, cocktails : item.cocktails })
 				}
-				if(i > 1)
+				if(i == 2 && ingredients.length)
 					break
 			}
 		}
