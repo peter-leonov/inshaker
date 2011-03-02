@@ -371,7 +371,24 @@ var myProto =
 					r = t
 			}
 			
-			return -r || b.cocktails.length - a.cocktails.length
+			if(r)
+				return -r
+				
+			var r = b.cocktails.length - a.cocktails.length
+			
+			if(r)
+				return b.cocktails.length - a.cocktails.length
+				
+			var ai = a.ingredients
+			var bi = b.ingredients
+			
+			var r = 0
+			for (var i = 0, il = ai.length; i < il; i++) 
+			{
+				r = ai[i].cocktails.length - bi[i].cocktails.length
+				if(r)
+					return r
+			}
 			/*
 							var ai = a.ingredients
 							var bi = b.ingredients
