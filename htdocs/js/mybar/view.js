@@ -415,7 +415,7 @@ var myProto =
 				{						
 					if(ingredients[j])
 					{
-						if(ti[ri] + tc[ri] == perRow || li && ti[ri] == li)
+						if(ti[ri] + tc[rc] == perRow || li && ti[ri] == li)
 						{
 							var li = li || ti[ri]
 							ri++
@@ -427,7 +427,7 @@ var myProto =
 					
 					if(cocktails[j])
 					{
-						if(ti[rc] + tc[rc] == perRow || lc && tc[rc] == lc)
+						if(ti[rc] + tc[ri] == perRow || lc && tc[rc] == lc)
 						{
 							var lc = lc || tc[rc]
 							rc++
