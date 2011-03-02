@@ -385,7 +385,7 @@ var myProto =
 			var r = 0
 			for (var i = 0, il = ai.length; i < il; i++) 
 			{
-				r = ai[i].cocktails.length - bi[i].cocktails.length
+				r = bi[i].cocktails.length - ai[i].cocktails.length
 				if(r)
 					return r
 			}
