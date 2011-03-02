@@ -262,8 +262,9 @@ var myProto =
 			for (var i = 0, il = cocktails.length; i < il; i++) 
 			{
 				var cocktail = cocktails[i]
-	
-				if(cocktailsHash[cocktail.name])
+				var name = cocktail.name
+				
+				if(cocktailsHash[name])
 					continue
 	
 				var set = cocktail.ingredients
@@ -282,71 +283,106 @@ var myProto =
 					}
 				}
 				
+				//all ings not in Bar. it's no recommend
 				if(nm == jl - 1)
 					continue
-				
+					
 				if(!groups[nm])
+					groups[nm] = []
+				
 				{
-					groups[nm] = [{ ingredients : notMatched, cocktails : [cocktail] }]
-				}
-				else
-				{
-					for (var k = 0, kl = groups[nm].length; k < kl; k++) 
+					var currCocktails = {}
+						currCocktails[name] = true
+						
+					var noLessExtends = false
+					for (var k = groups.length - 1; k >= 0; k--) 
 					{
-						var ingredients = groups[nm][k].ingredients
-						var f = true
-						for (var kk in ingredients) 
+						if(!groups[k])
+							groups[k] = []
+							
+						
+						
+						ck:
+						for (var j = 0, jl = groups[k].length; j < jl; j++) 
 						{
-							if(!notMatched[kk])
+							var f1 = f2 = true
+							
+							var g = groups[k][j]
+							var ings = g.ingredients
+							var gCocktails = g.cocktails
+							
+							if(f1 && !gCocktails[name])
+								groups[k]
+							
+							
+							//more groups
+							for (var kk in notMatched) 
 							{
-								f = false
+								if(!ings[kk])
+									f1 = false
+							}							
+							
+							if(f1)
+							{
+								gCocktails[name] = true
+								
+								if(nm == k)
+									noLessExtends = true
+							
 								break
-							} 
+							}
+							
+							//if(noLessExtends)
+							//	continue ck
+							
+							//less groups
+							for (var kk in ings) 
+							{
+								if(!notMatched[kk])
+									f2 = false
+							}
+							
+							if(f2)
+							{
+								Object.extend(currCocktails, gCocktails)
+							}
 						}
-						if(f)
-						{
-							groups[nm][k].cocktails.push(cocktail)
-							break
-						}
-					}
-					if(!f)
-					{
-						groups[nm].push({ ingredients : notMatched, cocktails : [cocktail] })
+						
+						if(nm == k && !noLessExtends)
+							groups[k].push({ ingredients : notMatched, cocktails : currCocktails })
 					}
 				}
 			}
 		}
+		
+		log(groups)
 		
 		var recommends = this.recommends = []
 		var notMustHave = {}
 		
 		for (var i = 0, il = groups.length; i < il; i++) 
 		{
-			if(groups[i])
+			for (var j = 0, jl = groups[i].length; j < jl; j++) 
 			{
-				for (var j = 0, jl = groups[i].length; j < jl; j++) 
+				var item = groups[i][j]
+				var ingredientNames = item.ingredients
+				var ingredients = []
+				ingredients.weights = []
+				
+				for (var name in ingredientNames) 
 				{
-					var item = groups[i][j]
-					var ingredientNames = item.ingredients
-					var ingredients = []
-					ingredients.weights = []
-					for (var name in ingredientNames) 
-					{
-						if(i == 0)
-							notMustHave[name] = true
+					if(i == 0)
+						notMustHave[name] = true
 
-						var ingredient = Ingredient.getByName(name)
-						var w = Ingredient.groups.indexOf(ingredient.group)
-						ingredients.push(ingredient)
-						ingredients.weights[w] = ingredients.weights[w] + 1 || 1
-						
-						
-					}
-					recommends.push({ ingredients : ingredients, cocktails : item.cocktails })
+					var ingredient = Ingredient.getByName(name)
+					var w = Ingredient.groups.indexOf(ingredient.group)
+					ingredients.push(ingredient)
+					ingredients.weights[w] = ingredients.weights[w] + 1 || 1	
 				}
-				if(i == 2 && ingredients.length)
-					break
+				recommends.push({ ingredients : ingredients, cocktails : Object.toArray(item.cocktails).map(function(a){ return Cocktail.getByName(a) }) })
 			}
+			if(i == 2 && ingredients.length)
+				break
 		}
 		
 		Ingredient.calculateEachIngredientUsage()
