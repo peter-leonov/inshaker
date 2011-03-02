@@ -356,7 +356,8 @@ var myProto =
 			
 		var bigPlus = Nct('div', 'big-plus', '+'),
 			eq = Nct('div', 'eq', '='),
-			head = Nc('ul', 'head columns-' + group.iColumns)
+			head = Nc('ul', 'head')
+			head.style.width = group.iColumns * 117 + 'px'
 		
 		
 		bigPlus.ingredients = ingredients
@@ -373,7 +374,8 @@ var myProto =
 		df.appendChild(head)
 		df.appendChild(eq)
 		
-		var body = Nc('ul', 'body columns-' + group.cColumns)
+		var body = Nc('ul', 'body')
+		body.style.width = group.cColumns * 117 + 'px'
 		
 		for (var i = 0, cl = cocktails.length; i < cl; i++)
 			body.appendChild(cocktails[i].getPreviewNode())
@@ -455,7 +457,8 @@ var myProto =
 			}
 			
 			
-			var dd = Nc('dd', 'lazy rows-' + rows)
+			var dd = Nc('dd', 'lazy')
+			dd.style.height = rows * 155 + 'px'
 			g.iColumns = iColumns
 			g.cColumns = cColumns
 			items.push(dd)
