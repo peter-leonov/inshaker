@@ -115,6 +115,10 @@ class BarsProcessor < Inshaker::Processor
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
         
+        unless bar["feel"].index("друзей")
+          error "в этом баре нельзя выпить в компании друзей!"
+        end
+        
         bar["carte"].each do |cocktail|
           unless Cocktail[cocktail]
             error %Q{нет такого коктейля #{cocktail}}
