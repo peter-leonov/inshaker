@@ -349,28 +349,34 @@ var myProto =
 			cocktails = group.cocktails,
 			cl = cocktails.length
 		
-		var dd = N('dd'),	
-			eq = Nct('li', 'eq', '='),
-			head = Nc('ul', 'head'),
-			bigPlus = Nct('li', 'big-plus', '+')
+		var il = ingredients.length,
+			cl = cocktails.length,
+			tl = il + cl,
+			perRow = 7
+			
+		var bigPlus = Nct('div', 'big-plus', '+'),
+			eq = Nct('div', 'eq', '='),
+			head = Nc('ul', 'head columns-' + group.iColumns)
+		
 		
 		bigPlus.ingredients = ingredients
 		
-		head.appendChild(bigPlus)
-		for (var j = 0, jl = ingredients.length; j < jl; j++)
+		df.appendChild(bigPlus)
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ing = Nc('li', 'ingredient')
-			ing.appendChild(ingredients[j].getPreviewNode())
+			ing.appendChild(ingredients[i].getPreviewNode())
 			head.appendChild(ing)
 		}
 		
-		head.appendChild(eq)		
 		df.appendChild(head)
+		df.appendChild(eq)
 		
-		var body = Nc('ul', 'body')
+		var body = Nc('ul', 'body columns-' + group.cColumns)
 		
-		for (var j = 0, jl = cocktails.length; j < jl; j++)
-			body.appendChild(cocktails[j].getPreviewNode())
+		for (var i = 0, cl = cocktails.length; i < cl; i++)
+			body.appendChild(cocktails[i].getPreviewNode())
 		
 		df.appendChild(body)			
 		
@@ -382,11 +388,78 @@ var myProto =
 		var dl = Nc('dl', 'show-by-cocktails')
 		var items = []
 		
-		for (var i = 0, il = groups.length; i < il; i++) 
+		for (var i = 0, l = groups.length; i < l; i++) 
 		{
-			var dd = Nc('dd', 'lazy')
+			var g = groups[i]
+			var ingredients = g.ingredients
+			var cocktails = g.cocktails
+			var il = ingredients.length
+			var cl = cocktails.length
+			var tl = il + cl
+			var perRow = 7
+			if(tl <= perRow)
+			{
+				var rows = 1
+				var iColumns = il
+				var cColumns = cl
+			}
+			else
+			{
+				var len = il > cl ? il : cl
+				var ti = [0]
+				var tc = [0]
+				var ri = rc = 0
+				for (var j = 0; j < len; j++) 
+				{						
+					if(ingredients[j])
+					{
+						if(ti[ri] + tc[ri] == perRow || li && ti[ri] == li)
+						{
+							var li = li || ti[ri]
+							ri++
+						}
+						
+						ti[ri] = ti[ri] || 0
+						ti[ri]++
+					}
+					
+					if(cocktails[j])
+					{
+						if(ti[rc] + tc[rc] == perRow || lc && tc[rc] == lc)
+						{
+							var lc = lc || tc[rc]
+							rc++
+						}
+						
+						tc[rc] = tc[rc] || 0
+						tc[rc]++
+					}
+					
+					var rows = ti.length > tc.length ? ti.length : tc.length
+					if(rows - ti.length > 1 && ti[0] > 1)
+					{
+						ti = relocation(ti, ti[0] - 1)
+						tc = relocation(tc, tc[0] + 1)
+					}
+					else if(rows - tc.length > 1 && tc[0] > 1)
+					{
+						ti = relocation(ti, ti[0] + 1)
+						tc = relocation(tc, tc[0] - 1)
+					}
+					
+					log('ti', ti, 'tc', tc)
+				}
+				
+				var iColumns = ti[0]
+				var cColumns = tc[0]
+			}
+			
+			
+			var dd = Nc('dd', 'lazy rows-' + rows)
+			g.iColumns = iColumns
+			g.cColumns = cColumns
 			items.push(dd)
-			dd.group = groups[i]
+			dd.group = g
 			dl.appendChild(dd)
 		}
 		
@@ -394,7 +467,33 @@ var myProto =
 		main.empty()
 		main.appendChild(dl)
 		
-		return items	
+		return items
+		
+		function relocation(tarr, cols)
+			{
+				var sum = 0						
+				for (var k = 0; k < tarr.length; k++) 
+				{
+					sum += tarr[k]
+				}
+				
+				rows = 0
+				var arr = []
+				while(sum)
+				{
+					for (var k = 0; k < cols; i++) 
+					{
+						sum--
+						arr[rows] = ++arr[rows] || 1
+						
+						if(!sum)
+							break;
+					}
+					rows++
+				}
+				
+				return arr
+			}
 	},
 	
 	mustHaveRender : function(mustHave)
