@@ -410,10 +410,10 @@ var myProto =
 			if(r)
 				return -r
 				
-			var r = b.cocktails.length - a.cocktails.length
+			var r = a.cocktails.length - b.cocktails.length
 			
 			if(r)
-				return b.cocktails.length - a.cocktails.length
+				return r
 				
 			var ai = a.ingredients
 			var bi = b.ingredients
