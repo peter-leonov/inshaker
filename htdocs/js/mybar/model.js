@@ -329,11 +329,18 @@ var myProto =
 					var item = groups[i][j]
 					var ingredientNames = item.ingredients
 					var ingredients = []
+					ingredients.weights = []
 					for (var name in ingredientNames) 
 					{
 						if(i == 0)
 							notMustHave[name] = true
-						ingredients.push(Ingredient.getByName(name))
+
+						var ingredient = Ingredient.getByName(name)
+						var w = Ingredient.groups.indexOf(ingredient.group)
+						ingredients.push(ingredient)
+						ingredients.weights[w] = ingredients.weights[w] + 1 || 1
+						
+						
 					}
 					recommends.push({ ingredients : ingredients, cocktails : item.cocktails })
 				}
@@ -342,6 +349,8 @@ var myProto =
 			}
 		}
 		
+		Ingredient.calculateEachIngredientUsage()
+		
 		var me = this
 		for (var i = 0, il = recommends.length; i < il; i++) 
 		{
@@ -349,28 +358,40 @@ var myProto =
 			recommends[i].cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })
 		}
 		
-		recommends.sort(function(a, b){
-			var ai = a.ingredients
-			var bi = b.ingredients
-			var r = ai.length - bi.length || b.cocktails.length - a.cocktails.length
-			if(r)
-				return r
+		recommends.sort(function(a, b)
+		{
+			var aw = a.ingredients.weights
+			var bw = b.ingredients.weights
 			
-			for (var i = 0, il = ai.length; i < il; i++) 
+			var r = 0
+			for (var i = Ingredient.groups.length - 1; i >= 0; i--) 
 			{
-				var ia = ai[i]
-				var ib = bi[i]
-				if(ia.name == ib.name)
-					continue
-				if(ia.group != ib.group)
-					return -Ingredient.sortByGroups(ia.name, ib.name)
-				return ia.name.localeCompare(ib.name)
+				var t = (aw[i] || 0) - (bw[i] || 0)
+				if(t != 0)
+					r = t
 			}
 			
+			return -r || b.cocktails.length - a.cocktails.length
+			/*
+							var ai = a.ingredients
+							var bi = b.ingredients
+							var r = ai.length - bi.length || b.cocktails.length - a.cocktails.length
+							if(r)
+								return r
+							
+							for (var i = 0, il = ai.length; i < il; i++) 
+							{
+								var ia = ai[i]
+								var ib = bi[i]
+								if(ia.name == ib.name)
+									continue
+								if(ia.group != ib.group)
+									return -Ingredient.sortByGroups(ia.name, ib.name)
+								return ia.name.localeCompare(ib.name)
+							}
+			*/
+			
 		})
-		
-		//each ingr usage
-		Ingredient.calculateEachIngredientUsage()
 		
 		var mustHaveArr = this.mustHaveRecommends = []
 		for (var k in mustHave) 
