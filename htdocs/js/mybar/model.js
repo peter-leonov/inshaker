@@ -421,7 +421,7 @@ var myProto =
 			var r = 0
 			for (var i = 0, il = ai.length; i < il; i++) 
 			{
-				r = bi[i].cocktails.length - ai[i].cocktails.length
+				r = ai[i].cocktails.length - bi[i].cocktails.length
 				if(r)
 					return r
 			}
@@ -444,7 +444,7 @@ var myProto =
 							}
 			*/
 			
-		})
+		}).reverse()
 		
 		var mustHaveArr = this.mustHaveRecommends = []
 		for (var k in mustHave) 
