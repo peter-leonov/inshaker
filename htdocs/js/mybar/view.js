@@ -411,6 +411,7 @@ var myProto =
 				var ti = [0]
 				var tc = [0]
 				var ri = rc = 0
+				var li = lc = null
 				for (var j = 0; j < len; j++) 
 				{						
 					if(ingredients[j])
@@ -427,7 +428,7 @@ var myProto =
 					
 					if(cocktails[j])
 					{
-						if(ti[rc] + tc[ri] == perRow || lc && tc[rc] == lc)
+						if(ti[ri] + tc[rc] == perRow || lc && tc[rc] == lc)
 						{
 							var lc = lc || tc[rc]
 							rc++
@@ -448,8 +449,6 @@ var myProto =
 						ti = relocation(ti, ti[0] + 1)
 						tc = relocation(tc, tc[0] - 1)
 					}
-					
-					log('ti', ti, 'tc', tc)
 				}
 				
 				var iColumns = ti[0]
