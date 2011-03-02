@@ -315,9 +315,9 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .show-by-cocktails .head li { float: left; }
 
 .bottom-output .show-by-cocktails .head .ingredient { position: relative; width: 100px; height: 140px; }
-.bottom-output .eq { width: 29px; float: left; position: relative; font-size: 40px; color: #999; margin: 39px 4px 0 20px; }
+.bottom-output .eq { width: 29px; float: left; position: relative; font-size: 40px; color: #999; margin: 24px 4px 0 20px; }
 /*.bottom-output .show-by-cocktails .body { width: 662px; }*/
-.bottom-output .show-by-cocktails .body li { height: 140px; padding-top: 15px; }
+.bottom-output .show-by-cocktails .body li { height: 140px; }
 .bottom-output .wrapper .title-label { font-size: 18px; margin: 30px 0 10px; }
 
 .bottom-output .title .link { cursor: pointer; border-bottom: 2px dashed; }
