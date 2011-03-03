@@ -73,6 +73,11 @@ var myProto =
 	ingredientSelected : function(ingredient)
 	{
 		this.model.selectIngredient(ingredient)
+	},
+	
+	showTagRecommends : function(tag)
+	{
+		this.model.showTagRecommends(tag)
 	}
 }
 Object.extend(Me.prototype, myProto)

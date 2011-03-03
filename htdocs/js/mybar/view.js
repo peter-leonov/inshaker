@@ -82,6 +82,7 @@ var myProto =
 		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
 		
 		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
+		this.nodes.bottomOutput.selectTag.addEventListener('change', function(e){ me.selectOtherTag(e) }, false)
 		
 		//suspended rendering
 		var t = new Throttler(onscroll, 100, 500)
@@ -93,11 +94,6 @@ var myProto =
 			if(frame)
 				frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
 		}
-	},
-	
-	renderRecommendIngredient : function(node)
-	{
-		
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -517,6 +513,35 @@ var myProto =
 		return items
 	},
 	
+	renderTagsSelect : function(tags, currentTag)
+	{
+		var node = this.nodes.bottomOutput.selectTag,
+			tagForm = this.nodes.bottomOutput.tagForm
+		
+		if(!tags.length)
+		{
+			tagForm.hide()
+			return
+		}
+			
+		var fragment = document.createDocumentFragment()
+		
+		for (var i = 0, il = tags.length; i < il; i++) 
+		{
+			var tag = tags[i]
+			var option = N('option')
+			option.innerHTML = tag
+			if(tag.localeCompare(currentTag) == 0)
+				option.setAttribute('selected', 'selected')
+				
+			fragment.appendChild(option)
+		}
+		
+		node.empty()
+		node.appendChild(fragment)
+		tagForm.show()
+	},
+	
 	/*
 	renderBoPackages : function(cocktails, havingIngredients)
 	{
@@ -751,6 +776,11 @@ var myProto =
 		}
 		else
 			IngredientPopup.hide()
+	},
+	
+	selectOtherTag : function(e)
+	{
+		this.controller.showTagRecommends(e.target.value)
 	}
 }
 Object.extend(Me.prototype, myProto)
