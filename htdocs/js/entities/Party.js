@@ -27,6 +27,19 @@ Me.prototype =
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
 
+function bakeFirstRun (me, name)
+{
+	me[name + 'SecondRun'] = me[name]
+	me[name] = function ()
+	{
+		var firstRun = me[name + 'FirstRun']
+		firstRun.apply(me, arguments)
+		
+		var secondRun = me[name] = me[name + 'SecondRun']
+		return secondRun.apply(me, arguments)
+	}
+}
+
 Me.className = 'Party'
 self[Me.className] = Me
 
