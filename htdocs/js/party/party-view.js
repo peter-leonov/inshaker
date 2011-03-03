@@ -13,9 +13,23 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		function getNumberValue (v)
+		{
+			// to string
+			v = '' + v
+			// clean up all non-digital chars
+			v = v.replace(/[^0-9\-]+/g, '')
+			// convert to number base 10
+			v = parseInt(v, 10)
+			// convert NaN to 0
+			v = isNaN(v) ? 0 : v
+			
+			return v
+		}
+		
 		function keypress (e)
 		{
-			setTimeout(function () { nodes.body.firstChild.nodeValue = nodes.count.innerHTML }, 1)
+			setTimeout(function () { nodes.body.firstChild.nodeValue = getNumberValue(nodes.count.innerHTML) }, 1)
 			if (e.keyCode == 13)
 			{
 				nodes.count.blur()
@@ -28,12 +42,6 @@ Me.prototype =
 		function blur (e)
 		{
 			this.removeClassName('focused')
-			
-			var v = (this.firstChild && this.firstChild.nodeValue) || ''
-			
-			v = parseInt(v.replace(/\D|^0+/g, ''))
-			
-			this.innerHTML = isNaN(v) ? 0 : v
 		}
 		
 		// listen at document level to fix Opera 9
