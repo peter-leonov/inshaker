@@ -127,13 +127,13 @@ var myProto =
 	
 	saveStorage : function()
 	{
-		Storage.put('mybar', JSON.stringify({ 
+		BarStorage.saveBar({ 
 			ingredients : this.ingredients.inBarNames,
 			showPhotos : this.showPhotos,
 			barName : this.barName,
 			showByCocktails : this.showByCocktails,
 			notAvailableCocktails : this.notAvailableCocktails
-		}))
+		})
 	},
 	
 	addCocktailToBarMenu : function(cocktailName)
