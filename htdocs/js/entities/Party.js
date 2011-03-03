@@ -15,10 +15,26 @@ Me.staticMethods =
 			db[i] = new Me(db[i])
 		
 		this.db = db
+	},
+	
+	getByName: function (name)
+	{
+		return this._byNameIndex[name]
+	},
+	
+	getByNameFirstRun: function (name)
+	{
+		this.indexByName()
+	},
+	
+	indexByName: function ()
+	{
+		this._byNameIndex = {}
 	}
 }
 
 Object.extend(Me, Me.staticMethods)
+bakeFirstRun(Me, 'getByName')
 
 Me.prototype =
 {
