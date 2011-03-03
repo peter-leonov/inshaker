@@ -513,7 +513,7 @@ var myProto =
 		return items
 	},
 	
-	renderTagsSelect : function(tags, currentTag)
+	renderTagsSelect : function(tags, currentTag, tagsAmount)
 	{
 		var node = this.nodes.bottomOutput.selectTag,
 			tagForm = this.nodes.bottomOutput.tagForm
@@ -530,7 +530,8 @@ var myProto =
 		{
 			var tag = tags[i]
 			var option = N('option')
-			option.innerHTML = tag
+			option.innerHTML = tag + ' (' + tagsAmount[tag] + ')'
+			option.value = tag
 			if(tag.localeCompare(currentTag) == 0)
 				option.setAttribute('selected', 'selected')
 				

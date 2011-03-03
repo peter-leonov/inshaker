@@ -122,7 +122,7 @@ var myProto =
 	setBottomOutput : function()
 	{
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 	},
 	
@@ -327,23 +327,33 @@ var myProto =
 		var hash = {}
 		var cocktails = recommends.map(function(a){ return a.cocktail })
 		
+		this.tagsAmount = {}
+		
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
 			var tags = cocktails[i].tags
 			for (var j = 0, jl = tags.length; j < jl; j++) 
 			{
-				hash[tags[j]] = true
+				var t = tags[j]
+				
+				hash[t] = true
+				
+				if(!this.tagsAmount[t])
+					this.tagsAmount[t] = 0
+				this.tagsAmount[t]++
 			}
 		}
-		
-		
+			
 		var tags = []
 
 		for (var i = 0, il = allTags.length; i < il; i++) 
 		{
 			var tag = allTags[i]
 			if(hash[tag])
+			{
+				tag.amount = hash[tag]
 				tags.push(tag)
+			}
 		}
 		
 		return tags
@@ -389,7 +399,6 @@ var myProto =
 					recommends[i] = null
 			}
 		}
-		
 		
 		var groups = []
 		
@@ -777,7 +786,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 		
 		return true
@@ -799,7 +808,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 		
 		return true
@@ -860,7 +869,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 	},
 	
@@ -877,7 +886,7 @@ var myProto =
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 		
-		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
 	}
 }
