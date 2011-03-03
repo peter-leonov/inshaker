@@ -20,6 +20,8 @@ class BarsProcessor < Inshaker::Processor
     @entities_names_eng = {}
     @bar_points = {}
     @city_points = {}
+    @cocktail_hits = {}
+    @cocktail_hits_seen_first = {}
   end
   
   def job_name
@@ -113,6 +115,10 @@ class BarsProcessor < Inshaker::Processor
           "priceIndex" => yaml["Индекс Виски-Кола"].to_s
         }
         
+        unless bar["feel"].index("друзей")
+          error "в этом баре нельзя выпить в компании друзей!"
+        end
+        
         bar["carte"].each do |cocktail|
           unless Cocktail[cocktail]
             error %Q{нет такого коктейля #{cocktail}}
@@ -125,6 +131,10 @@ class BarsProcessor < Inshaker::Processor
         unless @cocktail_hits[cocktail_hit]
           error "коктейль «#{cocktail_hit}» не отмечен тегом «Авторские хиты»"
         end
+        if @cocktail_hits_seen_first[cocktail_hit]
+          error "коктейль «#{cocktail_hit}» уже является хитом в баре «#{@cocktail_hits_seen_first[cocktail_hit]}»"
+        end
+        @cocktail_hits_seen_first[cocktail_hit] = bar_dir.name
         
         unless bar["name_eng"].match(/\S/)
           error "пустое имя бара: «#{bar["name_eng"]}»"
