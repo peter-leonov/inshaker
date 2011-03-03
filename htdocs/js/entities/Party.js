@@ -2,13 +2,18 @@
 
 function Me (data)
 {
-	this.data = data
+	this.name = data.name
+	this.path = data.path
+	this.cocktails = data.cocktails
 }
 
 Me.staticMethods =
 {
 	initialize: function (db)
 	{
+		for (var i = 0, il = db.length; i < il; i++)
+			db[i] = new Me(db[i])
+		
 		this.db = db
 	}
 }
