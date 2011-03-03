@@ -51,6 +51,9 @@ var myProto =
 	setMainState : function(bar)
 	{
 		var me = this
+		
+		this.bar = bar
+		
 		this.showPhotos = bar.showPhotos
 		this.barName = bar.barName
 		this.showByCocktails = bar.showByCocktails
@@ -62,13 +65,11 @@ var myProto =
 		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
 
 		this.tipIngredient = this.computeTipIngr()
-
-		this.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
-		//this.recommIngr = this.computeRecommIngr(this.mustHave) //compute bottomOutput
-		this.computeRecommIngr(this.mustHave)
 		
-		//this.packageCocktails = <!--# include virtual="/db/mybar/packages.js" -->
-		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
+		this.allTags = Cocktail.getTags()
+		
+		this.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
+		this.computeRecommendsBlock()
 		
 		this.parent.setBar()
 		
@@ -83,6 +84,15 @@ var myProto =
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)		
+	},
+	
+	computeRecommendsBlock : function()
+	{
+		this.allRecommends = this.computeAllRecommends(this.ingredients.inBar)
+		this.tags = this.getTags(this.allRecommends, this.allTags)	
+		this.currentTag = this.getCurrentTag(this.tags, this.bar.currentTag)
+		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
+		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 	},
 	
 	
@@ -112,6 +122,7 @@ var myProto =
 	setBottomOutput : function()
 	{
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
+		this.view.renderTagsSelect(this.tags, this.currentTag)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 	},
 	
@@ -248,41 +259,251 @@ var myProto =
 		}
 	},
 	
-	computeRecommIngr : function(mustHave)
+	computeAllRecommends : function(inBar)
 	{
 		var cocktails = Cocktail.getAll(),
 			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
-			bo = {} //bottom output
-			this.bottomOutput = bo
+			recommends = []
 			
-		var groups = []
-
-		if(this.ingredients.length)
+		var limit = false,
+			lim = 3
+		
+		if(this.ingredients.length == 0)
+			return []
+		
+		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
-			for (var i = 0, il = cocktails.length; i < il; i++) 
-			{
 				var cocktail = cocktails[i]
 				var name = cocktail.name
+				var notMatched = {}
 				
 				if(cocktailsHash[name])
 					continue
-	
+				
 				var set = cocktail.ingredients
-				var a = -1, oi = false
-				var notMatched = {}
-				var nm = -1
-	
-				for (var j = 0, jl = set.length; j < jl; j++) 
+				
+				for (var j = 0, t = 0, jl = set.length; j < jl; j++) 
 				{
 					var ingName = set[j][0]
 	
-					if(!this.ingredients.inBar[ingName])
+					if(!inBar[ingName])
 					{
 						notMatched[ingName] = true
-						nm++
+						t++
 					}
 				}
 				
+				if(t < j)
+				{
+					if(t <= lim)
+						limit = true
+					
+					if(limit && t > lim)
+						continue
+					
+					var h = {}
+					h[name] = true
+					recommends.push({ cocktails : h, ingredients : notMatched, len : t, cocktail : cocktail })
+				}
+		}
+
+		if(limit)
+		{
+			var nr = []
+			for (var i = 0, il = recommends.length; i < il; i++) 
+			{
+				var r = recommends[i]
+				if(r.len <= lim)
+					nr.push(r)
+			}
+			return nr
+		}
+
+		return recommends
+	},
+	
+	getTags : function(recommends, allTags)
+	{
+		var hash = {}
+		var cocktails = recommends.map(function(a){ return a.cocktail })
+		
+		for (var i = 0, il = cocktails.length; i < il; i++) 
+		{
+			var tags = cocktails[i].tags
+			for (var j = 0, jl = tags.length; j < jl; j++) 
+			{
+				hash[tags[j]] = true
+			}
+		}
+		
+		
+		var tags = []
+
+		for (var i = 0, il = allTags.length; i < il; i++) 
+		{
+			var tag = allTags[i]
+			if(hash[tag])
+				tags.push(tag)
+		}
+		
+		return tags
+	},
+	
+	getCurrentTag : function(tags, currentTag)
+	{
+		if(tags.indexOf(currentTag) == -1 || !currentTag)
+			return tags[0]
+		
+		return currentTag
+	},
+	
+	computeRecommends : function(allRecommends, tag)
+	{
+		var recommends = []
+		for (var i = 0, il = allRecommends.length; i < il; i++) 
+		{
+			var r = allRecommends[i]
+			if(r.cocktail.tags.indexOf(tag) !== -1)
+				recommends.push(r)
+		}
+		
+		recommends.sort(function(a, b){ return a.len - b.len })
+
+		var t = []
+		
+		for (var i = 0, il = recommends.length; i < il; i++) 
+		{
+			var curr = recommends[i]
+			ck:
+			for (var j = i + 1; j < il; j++) 
+			{
+				var r = recommends[j]
+				for (var k in curr.ingredients) 
+				{
+					if(!r.ingredients[k])
+						continue ck	
+					}
+				
+				Object.extend(r.cocktails, curr.cocktails)
+				if(curr.len == r.len)
+					recommends[i] = null
+			}
+		}
+		
+		
+		var groups = []
+		
+		Ingredient.calculateEachIngredientUsage()
+		
+		this.exclusions = {}
+		var me = this
+		
+		for (var i = 0, il = recommends.length; i < il; i++) 
+		{
+			var r = recommends[i]
+			
+			if(!r)
+				continue
+			
+			if(r.len == 1)
+				Object.extend(this.exclusions, r.ingredients)
+			
+			var ingredients = Object.toArray(r.ingredients).map(function(a){ return Ingredient.getByName(a) })
+			ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
+			
+			var weights = []
+			for (var j = 0, jl = ingredients.length; j < jl; j++) 
+			{
+				var ingredient = ingredients[j]
+				var w = Ingredient.groups.indexOf(ingredient.group)
+				
+				weights[w] = weights[w] + 1 || 1
+			}
+			
+			ingredients.weights = weights
+			
+			var cocktails = Object.toArray(r.cocktails).map(function(a){ return Cocktail.getByName(a) })
+			cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })
+			
+			groups.push({ ingredients : ingredients, cocktails : cocktails })
+		}
+		
+		return groups
+	},
+	
+	sortRecommends : function(a, b)
+	{
+		var aw = a.ingredients.weights
+		var bw = b.ingredients.weights
+			
+		var r = 0
+		for (var i = Ingredient.groups.length - 1; i >= 0; i--) 
+		{
+			var t = (aw[i] || 0) - (bw[i] || 0)
+			if(t != 0)
+				r = t
+		}
+		
+		if(r)
+			return -r
+			
+		var r = a.cocktails.length - b.cocktails.length
+		
+		if(r)
+			return r
+			
+		var ai = a.ingredients
+		var bi = b.ingredients
+		
+		var r = 0
+		for (var i = 0, il = ai.length; i < il; i++) 
+		{
+			r = ai[i].cocktails.length - bi[i].cocktails.length
+			if(r)
+				return r
+		}
+		/*
+						var ai = a.ingredients
+						var bi = b.ingredients
+						var r = ai.length - bi.length || b.cocktails.length - a.cocktails.length
+						if(r)
+							return r
+						
+						for (var i = 0, il = ai.length; i < il; i++) 
+						{
+							var ia = ai[i]
+							var ib = bi[i]
+							if(ia.name == ib.name)
+								continue
+							if(ia.group != ib.group)
+								return -Ingredient.sortByGroups(ia.name, ib.name)
+							return ia.name.localeCompare(ib.name)
+						}
+		*/	
+	},
+	
+	
+	computeMustHave : function(mustHave)
+	{
+		var mustHaveRecommends = []
+		for (var k in mustHave) 
+		{
+			if(!this.exclusions[k] && !this.ingredients.inBar[k])
+				mustHaveRecommends.push({ ingredient : Ingredient.getByName(k), description : mustHave[k] })
+		}
+		
+		return mustHaveRecommends.sort(function(a, b)
+		{
+			var ai = a.ingredient,
+				bi = b.ingredient
+				
+			if(ai.group != bi.group)
+				return Ingredient.sortByGroups(bi.name, ai.name)
+				
+			return bi.cocktails.length - ai.cocktails.length
+		})		
+	},
+		/*	
 				//all ings not in Bar. it's no recommend
 				if(nm == jl - 1)
 					continue
@@ -442,7 +663,7 @@ var myProto =
 									return -Ingredient.sortByGroups(ia.name, ib.name)
 								return ia.name.localeCompare(ib.name)
 							}
-			*/
+			
 			
 		}).reverse()
 		
@@ -463,8 +684,11 @@ var myProto =
 				
 			return bi.cocktails.length - ai.cocktails.length
 		})
+		
 	},
-
+	*/
+	
+	/*
 	computeBoItems : function(bottomOutput, packageCocktails)
 	{	
 		var t = []
@@ -521,6 +745,7 @@ var myProto =
 			return ai.length - bi.length
 		})
 	},
+	*/
 	
 	saveStorage : function()
 	{
@@ -530,7 +755,8 @@ var myProto =
 			barName : this.barName,
 			showByCocktails : this.showByCocktails,
 			notAvailableCocktails : this.notAvailableCocktails,
-			showIngByGroups : this.showIngByGroups
+			showIngByGroups : this.showIngByGroups,
+			currentTag : this.currentTag
 		})
 	},
 	
@@ -542,7 +768,7 @@ var myProto =
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		//this.recommIngr = this.computeRecommIngr(this.mustHave)
-		this.computeRecommIngr(this.mustHave)
+		this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
@@ -551,6 +777,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
+		this.view.renderTagsSelect(this.tags, this.currentTag)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 		
 		return true
@@ -563,7 +790,7 @@ var myProto =
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		//this.recommIngr = this.computeRecommIngr(this.mustHave)
-		this.computeRecommIngr(this.mustHave)
+		this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
@@ -572,6 +799,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
+		this.view.renderTagsSelect(this.tags, this.currentTag)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 		
 		return true
@@ -623,7 +851,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		//this.recommIngr = this.computeRecommIngr(this.mustHave)
-		this.computeRecommIngr(this.mustHave)
+		this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
@@ -632,12 +860,25 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showPhotos)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
+		this.view.renderTagsSelect(this.tags, this.currentTag)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 	},
 	
 	selectIngredient : function(ingredient)
 	{
 		this.view.showIngredient(ingredient)
+	},
+	
+	showTagRecommends : function(tag)
+	{
+		this.currentTag = tag
+		this.saveStorage()
+		
+		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
+		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
+		
+		this.view.renderTagsSelect(this.tags, this.currentTag)
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
 	}
 }
 Object.extend(Me.prototype, myProto)
