@@ -360,7 +360,9 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	width: 100px;
 }
 
-
+/*select tags*/
+.bottom-output form.select-tag { float: right; font-size: 14px; }
+.bottom-output form.select-tag select {  }
 
 /*Popup*/
 <!--# include virtual="/t/ingredient-popup.css" -->
