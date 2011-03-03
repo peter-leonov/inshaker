@@ -51,6 +51,12 @@ Me.prototype =
 		
 		
 		return this
+	},
+	
+	guessParty: function ()
+	{
+		var name = this.nodes.partyName.getAttribute('data-value')
+		this.controller.partyNameGuessed(name)
 	}
 }
 

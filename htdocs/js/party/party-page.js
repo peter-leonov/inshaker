@@ -10,6 +10,7 @@ function onready ()
 	
 	var nodes =
 	{
+		partyName: $('party-name'),
 		count: $$('#plan .head .people .count')[0],
 		body: $$('#plan .body')[0]
 	}
