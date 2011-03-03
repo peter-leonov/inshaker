@@ -21,7 +21,8 @@ Object.extend(Me,
 			barName : '',
 			showByCocktails : true,
 			notAvailableCocktails : {},
-			showIngByGroups : false
+			showIngByGroups : false,
+			currentTag : ''
 		}
 	},
 	
@@ -56,7 +57,7 @@ Object.extend(Me,
 		if(!bar)
 			bar = this.bar
 		else
-			this.bar = bar
+			Object.extend(this.bar, bar)
 			
 			for (var k in Storage) 
 			{
@@ -65,7 +66,7 @@ Object.extend(Me,
 			
 		try
 		{
-			Storage.put('mybar', JSON.stringify(bar))
+			Storage.put('mybar', JSON.stringify(this.bar))
 		}
 		catch(e)
 		{
