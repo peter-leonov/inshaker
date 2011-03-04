@@ -72,20 +72,19 @@ var Model = {
 			var names = cocktail.ingredients
 			for (var j = 0, jl = names.length; j < jl; j++)
 				if (namesHash[names[j][0]])
-					weight += 10000
+					weight += 15000
+				else
+					weight -= 2500
 			
 			// forget it if there are no common ingredients
-			if (!weight)
+			if (weight <= 0)
 				continue
 			
 			// weight by tags
 			var tags = cocktail.tags
 			for (var j = 0, jl = tags.length; j < jl; j++)
 				if (tagsHash[tags[j]])
-					weight += 1000
-			
-			// weight by ingredients count
-			weight += 100 - names.length
+					weight += 5000
 			
 			match.push(cocktail)
 			weights[cocktail.name] = weight
