@@ -41,17 +41,61 @@ var Model = {
 		return recs;
 	},
 	
-	_findRelated: function (cocktail)
+	_findRelated: function (source)
 	{
 		var res = []
 		
 		console.time('_findRelated')
 		
+		// poorly based on Cocktail.getByIngredientNames()
 		
+		var namesHash = source.getIngredientNames().hashIndex(),
+			tagsHash = source.tags.hashIndex()
+		
+		log(tagsHash)
+		
+		var match = [],
+			weights = {}
+		
+		var all = Cocktail.getAll()
+		for (var i = 0, il = all.length; i < il; i++)
+		{
+			var cocktail = all[i]
+			
+			// kick out the source cocktail :)
+			if (cocktail == source)
+				continue
+			
+			var weight = 0
+			
+			// weight by ingredients
+			var names = cocktail.ingredients
+			for (var j = 0, jl = names.length; j < jl; j++)
+				if (namesHash[names[j][0]])
+					weight += 10000
+			
+			// forget it if there are no common ingredients
+			if (!weight)
+				continue
+			
+			// weight by tags
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+				if (tagsHash[tags[j]])
+					weight += 1000
+			
+			// weight by ingredients count
+			weight += 100 - names.length
+			
+			match.push(cocktail)
+			weights[cocktail.name] = weight
+		}
+		
+		match.sort(function (a, b) { return weights[b.name] - weights[a.name] })
 		
 		console.timeEnd('_findRelated')
 		
-		
+		log(match.map(function (e) { return e.name }))
 		
 		// ['Красный пес', 'Облака', 'Свирепый бык', 'Самбука', 'Форсаж', 'Текила бум', 'Тик так', 'Лексус', 'Контрольный выстрел', 'Мексиканский космонавт', 'Потерянный', 'Серебряная пуля', 'От Алисы', 'Таракан', 'Краснокожий мачо']
 		
