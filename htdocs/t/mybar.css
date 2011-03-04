@@ -180,10 +180,10 @@ html.loading .b-content, html.loading .b-title { display: none; }
 }
 
 .cocktails-block .photos-list .cocktail-preview img{
-    display: block;
-    height: 80px;
-    margin: 0 auto;
-    padding-bottom: 7px;
+	display: block;
+	height: 80px;
+	margin: 0 auto;
+	padding-bottom: 7px;
 }
 
 .cocktails-block .photos-list .cocktail-preview a, .bottom-output .cocktail-preview a {
@@ -193,10 +193,35 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	width: 100px;
 }
 
+/*recipes*/
+
+.cocktails-block .recipes-list li.cocktail {
+	overflow: hidden;
+	margin-top: 13px;
+}
+
+.cocktails-block .recipes-list .cocktail-image {
+	width: 40px;
+	float: left;
+}
+
+.cocktails-block .recipes-list .cocktail-name {
+	font-size: 17px;
+	margin-top: 26px;
+	/*cursor: pointer;*/
+	margin-left: 65px;
+}
+
+.cocktails-block .recipes-list .cocktail-recipe {
+	font-size: 11px;
+	margin-top: 2px;
+	margin-left: 65px;
+}
+
 #output .switcher
 {
 	float: right;
-	font-size: 13px;
+	font-size: 12px;
 	position: relative;
 	top: 3px;
 }
@@ -323,11 +348,13 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .title .link { cursor: pointer; border-bottom: 2px dashed; }
 .bottom-output .not-in-bar { padding-top: 15px; top: -15px; margin-bottom: 40px; }
 
-.cocktails-block .bar-link {
-	font-size: 13px;
-	margin-left: 5px;
+.cocktails-block .bar-menu-link {
+	font-size: 12px;
+	margin-left: 3px;
+	position: relative;
+	top: -4px;
 }
-.cocktails-block .bar-link a { text-decoration: underline; }
+.cocktails-block .bar-menu-link a { text-decoration: underline; }
 
 .bottom-output .wrapper .big-plus { width: 44px; font-size: 60px; color: #8dd013; cursor: pointer; margin: 14px 19px 0 0; float: left; }
 
@@ -346,10 +373,10 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .wrapper .must-have .description { float: left; font-size: 14px; margin: 12px 10px 0 20px; width: 700px; }
 
 .bottom-output .cocktail-preview img {
-    display: block;
-    height: 80px;
-    margin: 0 auto;
-    padding-bottom: 7px;
+	display: block;
+	height: 80px;
+	margin: 0 auto;
+	padding-bottom: 7px;
 }
 
 .bottom-output .cocktail-preview{
