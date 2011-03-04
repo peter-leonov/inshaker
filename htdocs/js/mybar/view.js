@@ -374,8 +374,10 @@ var myProto =
 		body.style.width = group.cColumns * 117 + 'px'
 		
 		for (var i = 0, cl = cocktails.length; i < cl; i++)
-			body.appendChild(cocktails[i].getPreviewNode())
-		
+		{
+			var n = cocktails[i].getPreviewNode()
+			body.appendChild(n)
+		}
 		df.appendChild(body)			
 		
 		return df	

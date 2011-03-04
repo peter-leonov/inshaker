@@ -373,11 +373,16 @@ var myProto =
 		for (var i = 0, il = allRecommends.length; i < il; i++) 
 		{
 			var r = allRecommends[i]
-			if(r.cocktail.tags.indexOf(tag) !== -1)
+			var c = r.cocktail
+			r.cocktails = {}
+			r.cocktails[c.name] = true
+			if(c.tags.indexOf(tag) !== -1)
 				recommends.push(r)
 		}
 		
 		recommends.sort(function(a, b){ return a.len - b.len })
+
+		log(recommends.map(function(a){ return a.cocktails }))
 
 		var t = []
 		
@@ -399,6 +404,8 @@ var myProto =
 					recommends[i] = null
 			}
 		}
+		
+		log(recommends.map(function(a){ if(a) return a.cocktails }))
 		
 		var groups = []
 		
