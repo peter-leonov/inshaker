@@ -192,7 +192,7 @@ var myProto =
 		}
 	},
 	
-	renderCocktails : function(cocktails, showPhotos)
+	renderCocktails : function(cocktails, showCocktailsType)
 	{
 		var cl = cocktails.length
 		var c = this.nodes.cocktails
@@ -214,34 +214,91 @@ var myProto =
 			
 		c.switcher.show()
 			
-		if(showPhotos)
+		switch(showCocktailsType)
 		{
-			c.swPhotos.removeClassName('link')
-			c.swCombs.addClassName('link')
+
+			case 'сочетания':
+				c.swCombs.removeClassName('link')
+				c.swPhotos.addClassName('link')
+				c.swText.addClassName('link')
+				
+				var me = this
+				setTimeout(function()
+				{
+					me.incl.setCocktails([{cocktails : cocktails}])
+				}, 1)
+				
+				c.wrapper.show()
+				break;
 			
-			var ul = Nc('ul', 'photos-list')
-			for (var i = 0, il = cocktails.length; i < il; i++) 
-			{
-				var cNode = cocktails[i].getPreviewNode()
-				ul.appendChild(cNode)
-			}
-			c.wrapper.empty()
-			c.wrapper.appendChild(ul)
+			case 'текст':
+				c.swText.removeClassName('link')
+				c.swPhotos.addClassName('link')
+				c.swCombs.addClassName('link')
+				
+				var ul =  Nc('ul', 'recipes-list')
+				for (var i = 0, il = cocktails.length; i < il; i++) 
+				{
+					var cocktail = cocktails[i]
+					var li = Nc('li', 'cocktail')
+					
+					var img = new Image()
+					img.src = cocktail.getBigImageSrc()
+					img.addClassName('cocktail-image')
+					li.appendChild(img)
+					
+					var h3 = Nct('h3', 'cocktail-name', cocktail.name)
+					h3.cocktail = cocktail
+					li.appendChild(h3)
+					
+					
+		
+					var recipe = []
+					for (var j = 0, jl = cocktail.ingredients.length; j < jl; j++) 
+					{
+						var ing = cocktail.ingredients[j]
+						var ingObj = Ingredient.getByName(ing[0])
+						var brand = ingObj.brand
+						recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 8 ? ' ' + ing[1] : ''))
+					}
+					
+					var p = Nct('p', 'cocktail-recipe', '(' + recipe.join(', ') + ')')
+					li.appendChild(p)
+					
+					/*
+										if(notAvailableCocktails[c.name])
+										{
+											h3.notAvailable = true
+											li.addClassName('not-available')
+										}
+										*/
+					
+					ul.appendChild(li)
+				}
+				
+				c.wrapper.empty()
+				c.wrapper.appendChild(ul)
+				
+				c.wrapper.show()
+				break;
 			
-			c.wrapper.show()
-		}
-		else
-		{
-			c.swCombs.removeClassName('link')
-			c.swPhotos.addClassName('link')
-			
-			var me = this
-			setTimeout(function()
-			{
-				me.incl.setCocktails([{cocktails : cocktails}])
-			}, 1)
-			
-			c.wrapper.show()
+			case 'фото':
+			default:
+				c.swPhotos.removeClassName('link')
+				c.swCombs.addClassName('link')
+				c.swText.addClassName('link')
+				
+				var ul = Nc('ul', 'photos-list')
+				for (var i = 0, il = cocktails.length; i < il; i++) 
+				{
+					var cNode = cocktails[i].getPreviewNode()
+					ul.appendChild(cNode)
+				}
+				c.wrapper.empty()
+				c.wrapper.appendChild(ul)
+				
+				c.wrapper.show()
+				break;
 		}
 	},
 	
@@ -656,14 +713,7 @@ var myProto =
 		var node = e.target
 		if(node.hasClassName('link'))
 		{
-			if(node.hasClassName('photos'))
-			{
-				this.controller.switchCocktailsView(true)
-			}
-			else
-			{
-				this.controller.switchCocktailsView(false)
-			}
+			this.controller.switchCocktailsView(node.innerHTML)
 		}
 	},
 	

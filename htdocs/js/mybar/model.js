@@ -54,7 +54,7 @@ var myProto =
 		
 		this.bar = bar
 		
-		this.showPhotos = bar.showPhotos
+		this.showCocktailsType = bar.showCocktailsType
 		this.barName = bar.barName
 		this.showByCocktails = bar.showByCocktails
 		this.notAvailableCocktails = bar.notAvailableCocktails
@@ -116,7 +116,7 @@ var myProto =
 	
 	setCocktails : function()
 	{
-		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 	},
 	
 	setBottomOutput : function()
@@ -767,7 +767,7 @@ var myProto =
 	{
 		BarStorage.saveBar({ 
 			ingredients : Object.toArray(this.ingredients.inBar),
-			showPhotos : this.showPhotos,
+			showCocktailsType : this.showCocktailsType,
 			barName : this.barName,
 			showByCocktails : this.showByCocktails,
 			notAvailableCocktails : this.notAvailableCocktails,
@@ -791,7 +791,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
@@ -813,7 +813,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
@@ -829,12 +829,12 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, byGroups, this.tipIngredient)
 	},
 	
-	switchCocktailsView : function(showPhotos)
+	switchCocktailsView : function(showCocktailsType)
 	{
-		this.showPhotos = showPhotos
+		this.showCocktailsType = showCocktailsType
 		this.saveStorage()
 		
-		this.view.renderCocktails(this.cocktails, showPhotos)
+		this.view.renderCocktails(this.cocktails, showCocktailsType)
 	},
 	
 	setNewBarName : function(barName)
@@ -874,7 +874,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showPhotos)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
