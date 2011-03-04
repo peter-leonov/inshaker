@@ -71,8 +71,6 @@ class CocktailsProcessor < Inshaker::Processor
     check_intergity
     
     unless errors?
-      update_recomendations if touched > 0
-      
       cleanup_deleted
       flush_groups_and_strengths_and_methods
       flush_json
@@ -86,7 +84,6 @@ class CocktailsProcessor < Inshaker::Processor
   
   def prepare_templates
     @cocktail_renderer = ERB.new(File.read(Config::COCKTAIL_ERB))
-    @recomendations_renderer = ERB.new(File.read(Config::RECOMENDATIONS_ERB))
   end
   
   def prepare_ingredients
@@ -276,74 +273,6 @@ class CocktailsProcessor < Inshaker::Processor
       end # indent
     end
     return touched
-  end
-  
-  def update_recomendations
-    say "обновляю рекомендации"
-    # puts Benchmark.measure { calculate_related }
-    calculate_related
-    indent do
-      @cocktails.each do |name, hash|
-        templ = CocktailRecomendationsTemplate.new(hash["recs"])
-        page = @recomendations_renderer.result(templ.get_binding)
-        File.write(Config::HTDOCS_ROOT + hash["name_eng"].html_name + "/recommendations.html", page)
-      end
-    end # indent
-  end
-  
-  def calculate_related
-    cocktails = []
-    ingredient_hashes = []
-    group_hashes = []
-    @cocktails.keys.sort.each do |name|
-      cocktail = @cocktails[name]
-      cocktails << cocktail
-      
-      ingredient_hashes << hash = {}
-      cocktail["ingredients"].each { |v| hash[v[0]] = true }
-      
-      group_hashes << hash = {}
-      cocktail["groups"].each { |v| hash[v] = true }
-    end
-    count = cocktails.length
-    
-    weights = []
-    weights[count * count] = 0
-    nums = (0...count).to_a
-    
-    i = 0
-    while i < count
-      a = cocktails[i]
-      a_groups = group_hashes[i]
-      a_ingredients = ingredient_hashes[i]
-      
-      weights[i * count + i] = 0
-      j = i + 1
-      while j < count
-        b = cocktails[j]
-        
-        weight = 0
-        b["ingredients"].each do |v|
-          weight += 10000 if a_ingredients[v[0]]
-        end
-        b["groups"].each do |v|
-          weight += 1000 if a_groups[v]
-        end
-        weight += 100 - b["ingredients"].length
-        
-        weights[i * count + j] = weights[j * count + i] = weight
-        j += 1
-      end
-      
-      pos = i * count
-      recs = a["recs"] = nums.sort_by { |n| -weights[pos + n] }.map { |n| cocktails[n] }[0..Config::RECOMENDATIONS_COUNT]
-      
-      if recs.index(a)
-        error "кектейль #{a["name"]} встречается у себя в рекомендациях #{recs.map { |v| v["name"] }}"
-      end
-      
-      i += 1
-    end
   end
   
   def process_cocktail dir
