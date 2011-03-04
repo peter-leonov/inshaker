@@ -22,6 +22,20 @@ var Model = {
 		
 		this.related = this._findRelated(this.cocktail).slice(0, 15)
 		
+		// var all = Cocktail.getAll()
+		// var max = 0
+		// for (var i = 0, il = all.length; i < il; i++)
+		// {
+		// 	var begin = new Date()
+		// 	this._findRelated(all[i])
+		// 	var diff = new Date() - begin
+		// 	if (diff > max)
+		// 	{
+		// 		max = diff
+		// 		log(all[i].name, diff)
+		// 	}
+		// }
+		
 		this.recs = this._findRecs(this.cocktail);
 		if(this.recs.length == 0) this.dataListener.expandRelated();
 	},
