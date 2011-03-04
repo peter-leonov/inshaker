@@ -43,16 +43,10 @@ var Model = {
 	
 	_findRelated: function (source)
 	{
-		var res = []
-		
-		console.time('_findRelated')
-		
-		// poorly based on Cocktail.getByIngredientNames()
+		// console.time('_findRelated')
 		
 		var namesHash = source.getIngredientNames().hashIndex(),
 			tagsHash = source.tags.hashIndex()
-		
-		log(tagsHash)
 		
 		var match = []
 		
@@ -91,9 +85,9 @@ var Model = {
 		
 		match.sort(function (a, b) { return b.__relatedWeight - a.__relatedWeight })
 		
-		console.timeEnd('_findRelated')
+		// console.timeEnd('_findRelated')
 		
-		return res
+		return match
 	},
 	
 	/**
