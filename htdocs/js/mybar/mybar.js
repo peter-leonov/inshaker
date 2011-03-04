@@ -151,6 +151,7 @@ function onready ()
 			switcher : $$('#output .cocktails-block .switcher')[0],
 			swPhotos : $$('#output .cocktails-block .switcher .photos')[0],
 			swCombs : $$('#output .cocktails-block .switcher .combs')[0],
+			swText : $$('#output .cocktails-block .switcher .text')[0],
 			wrapper : $$('#output .cocktails-block .wrapper')[0],
 			empty : $$('#output .cocktails-block .empty')[0]
 		},
@@ -166,7 +167,7 @@ function onready ()
 			mustHave : $$('#output .bottom-output .must-have')[0]
 		},
 		
-		menuLink : $$('#output .cocktails-block .bar-link')[0],
+		menuLink : $$('#output .cocktails-block .bar-menu-link')[0],
 		output : $('output')
 	}
 
