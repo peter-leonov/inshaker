@@ -12,6 +12,8 @@ var Model = {
 		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
 		this.tools = Tool.tools;
 		
+		this.related = this._findRelated(this.cocktail)
+		
 		this.recs = this._findRecs(this.cocktail);
 		if(this.recs.length == 0) this.dataListener.expandRelated();
 	},
@@ -29,6 +31,23 @@ var Model = {
 			}
 		}
 		return recs;
+	},
+	
+	_findRelated: function (cocktail)
+	{
+		var res = []
+		
+		console.time('_findRelated')
+		
+		
+		
+		console.timeEnd('_findRelated')
+		
+		
+		
+		
+		
+		return res
 	},
 	
 	/**
