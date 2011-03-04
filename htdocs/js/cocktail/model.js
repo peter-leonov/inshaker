@@ -54,8 +54,7 @@ var Model = {
 		
 		log(tagsHash)
 		
-		var match = [],
-			weights = {}
+		var match = []
 		
 		var all = Cocktail.getAll()
 		for (var i = 0, il = all.length; i < il; i++)
@@ -87,10 +86,10 @@ var Model = {
 					weight += 2
 			
 			match.push(cocktail)
-			weights[cocktail.name] = weight
+			cocktail.__relatedWeight = weight
 		}
 		
-		match.sort(function (a, b) { return weights[b.name] - weights[a.name] })
+		match.sort(function (a, b) { return b.__relatedWeight - a.__relatedWeight })
 		
 		console.timeEnd('_findRelated')
 		
