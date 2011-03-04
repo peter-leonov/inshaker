@@ -23,7 +23,7 @@ class CocktailsProcessor < Inshaker::Processor
     @tags_used = {}
     @tags_hidden = []
     @strengths = []
-    @local_properties = ["desc_start", "desc_end", "recs", "teaser", "receipt", "html_name"]
+    @local_properties = ["desc_start", "desc_end", "teaser", "receipt", "html_name"]
   end
   
   def job_name
@@ -288,7 +288,6 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["name"]        = name
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
-    @cocktail["recs"]        = []
     
     legend_path = dir.path + "/legend.txt"
     parse_legend_text File.read(legend_path)
@@ -389,7 +388,7 @@ class CocktailsProcessor < Inshaker::Processor
     @local_properties.each do |prop|
       data[prop] = cocktail.delete(prop)
     end
-    data["recs"] = data["recs"].map { |cocktail| cocktail["name"] }
+    
     flush_json_object(data, "#{root_dir.path}/data.json")
   end
   
