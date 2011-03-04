@@ -122,6 +122,10 @@ class MagazineProcessor < Inshaker::Processor
       error "коктейль «#{name}» не является хитом ни в одном баре"
     end
     
+    (@cocktail_hits.keys - bar_hits).each do |name|
+      warning "хитовый коктейль «#{name}» не добавлен в группу «Авторские хиты»"
+    end
+    
     end # indent
   end
   
