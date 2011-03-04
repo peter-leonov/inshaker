@@ -444,7 +444,7 @@ var myProto =
 			groups.push({ ingredients : ingredients, cocktails : cocktails })
 		}
 		
-		return groups
+		return groups.sort(function(a,b){ return me.sortRecommends(a,b) }).reverse()
 	},
 	
 	sortRecommends : function(a, b)
