@@ -67,7 +67,7 @@ var Model = {
 				if (namesHash[names[j][0]])
 					weight += 6
 				else
-					weight -= 1
+					weight -= 2
 			
 			// forget it if there are no common ingredients
 			if (weight <= 0)
