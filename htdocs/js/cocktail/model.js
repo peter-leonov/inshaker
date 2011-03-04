@@ -83,6 +83,7 @@ var Model = {
 			cocktail.__relatedWeight = weight
 		}
 		
+		// if you serach the bottleneck in IE, here it is:
 		match.sort(function (a, b) { return b.__relatedWeight - a.__relatedWeight })
 		
 		// console.timeEnd('_findRelated')
