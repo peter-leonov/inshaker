@@ -538,7 +538,7 @@ var myProto =
 			fragment.appendChild(option)
 		}
 		
-		node.empty()
+		node.innerHTML = ''
 		node.appendChild(fragment)
 		tagForm.show()
 	},
