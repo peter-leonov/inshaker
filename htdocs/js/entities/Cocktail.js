@@ -64,6 +64,17 @@ Cocktail.prototype =
 		a.appendChild(txt)
 		
 		return li
+	},
+	
+	getIngredientNames: function ()
+	{
+		var names = []
+		
+		var parts = this.ingredients
+		for (var i = 0, il = parts.length; i < il; i++)
+			names[i] = parts[i][0]
+		
+		return names
 	}
 }
 

@@ -1,3 +1,11 @@
+Array.prototype.hashIndex = function ()
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++)
+		hash[this[i]] = true
+	return hash
+}
+
 var Model = {
 	cocktail: null,
 	ingredients: [],
@@ -11,6 +19,8 @@ var Model = {
 		this.cocktail = Cocktail.getByName(name);
 		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
 		this.tools = Tool.tools;
+		
+		this.related = this._findRelated(this.cocktail).slice(0, 15)
 		
 		this.recs = this._findRecs(this.cocktail);
 		if(this.recs.length == 0) this.dataListener.expandRelated();
@@ -29,6 +39,56 @@ var Model = {
 			}
 		}
 		return recs;
+	},
+	
+	_findRelated: function (source)
+	{
+		// console.time('_findRelated')
+		
+		var namesHash = source.getIngredientNames().hashIndex(),
+			tagsHash = source.tags.hashIndex()
+		
+		var match = []
+		
+		var all = Cocktail.getAll()
+		for (var i = 0, il = all.length; i < il; i++)
+		{
+			var cocktail = all[i]
+			
+			// kick out the source cocktail :)
+			if (cocktail == source)
+				continue
+			
+			var weight = 0
+			
+			// weight by ingredients
+			var names = cocktail.ingredients
+			for (var j = 0, jl = names.length; j < jl; j++)
+				if (namesHash[names[j][0]])
+					weight += 6
+				else
+					weight -= 1
+			
+			// forget it if there are no common ingredients
+			if (weight <= 0)
+				continue
+			
+			// weight by tags
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+				if (tagsHash[tags[j]])
+					weight += 2
+			
+			match.push(cocktail)
+			cocktail.__relatedWeight = weight
+		}
+		
+		// if you serach the bottleneck in IE, here it is:
+		match.sort(function (a, b) { return b.__relatedWeight - a.__relatedWeight })
+		
+		// console.timeEnd('_findRelated')
+		
+		return match
 	},
 	
 	/**

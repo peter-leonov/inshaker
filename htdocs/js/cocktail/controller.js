@@ -325,13 +325,9 @@ var Controller = {
 	
 	renderRelated: function (perPage)
 	{
-		var resultSet = [],
+		var resultSet = Model.related,
 			root = $(this.ID_REL_VPR)
 		
-		var anchors = root.getElementsByTagName('a')
-		
-		for (var i = 0; i < anchors.length; i++)
-			resultSet[i] = Model.getCocktailByName(anchors[i].getAttribute('data-cocktail-name'))
 		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
 		$(this.ID_REL_SUR).empty()
