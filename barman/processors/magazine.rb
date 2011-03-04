@@ -35,10 +35,14 @@ class MagazineProcessor < Inshaker::Processor
   end
   
   def job
+    Cocktail.init
+    
     prepare_dirs
     
     process_about
     process_promos
+    
+    check_intergity
     
     unless errors?
       flush_json
@@ -105,6 +109,20 @@ class MagazineProcessor < Inshaker::Processor
       res << cocktail
     end
     return res
+  end
+  
+  def check_intergity
+    say "проверяю хиты"
+    indent do
+    bar_hits = @db["cocktails"]["author"].flatten
+    
+    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index
+    
+    (bar_hits - @cocktail_hits.keys).each do |name|
+      error "коктейль «#{name}» не является хитом ни в одном баре"
+    end
+    
+    end # indent
   end
   
   def flush_json
