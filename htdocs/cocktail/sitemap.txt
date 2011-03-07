@@ -215,7 +215,6 @@ http://www.inshaker.ru/cocktail/pear_hit/
 http://www.inshaker.ru/cocktail/pears_shot/
 http://www.inshaker.ru/cocktail/guav-berry_martini/
 http://www.inshaker.ru/cocktail/good_time_girl/
-http://www.inshaker.ru/cocktail/guus_booze/
 http://www.inshaker.ru/cocktail/daiquiri/
 http://www.inshaker.ru/cocktail/daiquiri_2/
 http://www.inshaker.ru/cocktail/harry_s_daiquiri/
@@ -329,6 +328,7 @@ http://www.inshaker.ru/cocktail/carribean_jewel/
 http://www.inshaker.ru/cocktail/carin/
 http://www.inshaker.ru/cocktail/carnival_fizz/
 http://www.inshaker.ru/cocktail/kassini/
+http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kir_royal/
