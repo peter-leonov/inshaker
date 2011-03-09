@@ -30,5 +30,5 @@ Git repo
 
 	git remote add server ssh://www@server/www/project
 	git push server master:master
-	#>> * [new branch]      master -> master
+	#>>> * [new branch]      master -> master
 

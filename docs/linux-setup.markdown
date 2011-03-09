@@ -114,7 +114,7 @@ Git
 Тестим:
 
 	git --version
-	#>> git version 1.7.4.1
+	#>>> git version 1.7.4.1
 
 Тюним:
 
@@ -130,18 +130,18 @@ UpStart
 Проверим, есть ли он у нас:
 
 	dpkg --get-selections | grep upstart
-	#>> upstart      hold
+	#>>> upstart      hold
 	
 	sudo initctl list
-	#>> rc stop/waiting
-	#>> openvz stop/waiting
-	#>> ssh start/running, process 30215
-	#>> rcS stop/waiting
-	#>> rc-sysinit stop/waiting
-	#>> hostname stop/waiting
-	#>> network-interface stop/waiting
-	#>> network-interface-security (networking) start/running
-	#>> networking stop/waiting
+	#>>> rc stop/waiting
+	#>>> openvz stop/waiting
+	#>>> ssh start/running, process 30215
+	#>>> rcS stop/waiting
+	#>>> rc-sysinit stop/waiting
+	#>>> hostname stop/waiting
+	#>>> network-interface stop/waiting
+	#>>> network-interface-security (networking) start/running
+	#>>> networking stop/waiting
 
 Конфиг для энжинкса (кладем в `/etc/init/`):
 
@@ -158,19 +158,19 @@ UpStart
 Проверяем:
 
 	sudo initctl list | grep nginx
-	#>> nginx stop/waiting
+	#>>> nginx stop/waiting
 	
 	sudo initctl start nginx
-	#>> nginx start/running, process 23577
+	#>>> nginx start/running, process 23577
 	sudo initctl start nginx
-	#>> initctl: Job is already running: nginx
+	#>>> initctl: Job is already running: nginx
 	sudo initctl list | grep nginx
 	nginx start/running, process 23577
 	
 	curl http://localhost/
 	
 	sudo initctl stop nginx
-	#>> nginx stop/waiting
+	#>>> nginx stop/waiting
 
 Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
 
