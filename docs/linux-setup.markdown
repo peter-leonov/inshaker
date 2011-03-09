@@ -114,6 +114,7 @@ Git
 Тестим:
 
 	git --version
+	#>> git version 1.7.4.1
 
 Тюним:
 
