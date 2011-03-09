@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Host: www.inshaker.ru
 Sitemap: http://www.inshaker.ru/cocktail/sitemap.txt
 Sitemap: http://www.inshaker.ru/bar/sitemap.txt
 Sitemap: http://www.inshaker.ru/barman/sitemap.txt

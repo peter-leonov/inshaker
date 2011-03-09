@@ -50,6 +50,7 @@ APT
 
 	mkdir -p /home/www/.ssh/
 	touch /home/www/.ssh/authorized_keys
+	sudo cat /root/.ssh/authorized_keys > /home/www/.ssh/authorized_keys
 
 Сгенерим пользователю собственный ключ:
 
@@ -113,6 +114,7 @@ Git
 Тестим:
 
 	git --version
+	#>> git version 1.7.4.1
 
 Тюним:
 
