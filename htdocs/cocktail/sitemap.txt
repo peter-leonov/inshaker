@@ -744,6 +744,7 @@ http://www.inshaker.ru/cocktail/t-55/
 http://www.inshaker.ru/cocktail/tamarita/
 http://www.inshaker.ru/cocktail/cockroach/
 http://www.inshaker.ru/cocktail/tverskaya_street/
+http://www.inshaker.ru/cocktail/damn_it/
 http://www.inshaker.ru/cocktail/tequila_batanga/
 http://www.inshaker.ru/cocktail/tequila_cowberry_orange/
 http://www.inshaker.ru/cocktail/tequila_slammer/
