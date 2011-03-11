@@ -98,7 +98,7 @@ function onready ()
 			front: $$('#ingredient-info-popup .popup-front')[0],
 			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
-			inBar : $$('#ingredient-info-popup .description .about .inBar')[0],
+			inBar : $$('#ingredient-info-popup .description .about .in-bar')[0],
 			mark: $$('#ingredient-info-popup .description .about .mark')[0],
 			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
 			buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
