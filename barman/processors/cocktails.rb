@@ -376,7 +376,7 @@ class CocktailsProcessor < Inshaker::Processor
   
   def update_html dst, hash
     tpl = CocktailTemplate.new(hash)
-    File.write("#{dst.path}/index.html", @cocktail_renderer.result(tpl.get_binding))
+    File.write("#{dst.path}/#{dst.name}.html", @cocktail_renderer.result(tpl.get_binding))
   end
   
   def update_json cocktail
