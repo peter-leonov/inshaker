@@ -1,3 +1,5 @@
+<!--# include virtual="/js/mybar/mybar-button.js" -->
+
 ;(function(){
 
 var myName = 'IngredientPopup'
@@ -37,6 +39,10 @@ var myProto =
 		
 		var nodes = clone.nodes
 		nodes.root = clone.root
+		
+		this.mybarButton = new MybarButton()
+		this.mybarButton.bind({ inBar : nodes.inBar })	
+		this.mybarButton.setState(ingredient)
 		
 		// implies this.nodes = nodes
 		this.bind(nodes)

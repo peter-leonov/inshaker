@@ -81,14 +81,15 @@ Me.prototype =
 	
 	accept: function (value, source)
 	{
-		this.select(value, source)
+		//this.select(value, source)
+		this.select('', source)
 		this.dispatchEvent({type: 'accept', source: source, value: value})
 	},
 	
 	setDataSource: function (ds)
 	{
 		return this.completer.setDataSource(ds)
-	},
+	}
 }
 
 Me.mixIn(EventDriven)

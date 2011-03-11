@@ -75,7 +75,8 @@ b.rb { right: 0; bottom: 0; }
 #good-page #top .nav a.goods,
 #event-page #top .nav a.events,
 #academy-page #top .nav a.academy,
-#combinator-page #top .nav a.combinator
+#combinator-page #top .nav a.combinator,
+#mybar-page #top .nav a.mybar
 { background: url(bg/nav/top.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}

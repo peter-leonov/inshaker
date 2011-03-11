@@ -44,6 +44,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 
+<!--# include virtual="/js/entities/BarStorage.js" -->
+
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
 <!--# include virtual="popup.js" -->
@@ -73,6 +75,7 @@ function onready ()
 			front: $$('#ingredient-info-popup .popup-front')[0],
 			ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
 			image: $$('#ingredient-info-popup .description .image')[0],
+			inBar : $$('#ingredient-info-popup .description .about .inBar')[0],
 			mark: $$('#ingredient-info-popup .description .about .mark')[0],
 			brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
 			buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
