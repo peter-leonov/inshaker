@@ -35,7 +35,8 @@ Object.extend(Me,
 		}
 		
 		var me = this
-		Storage.init(function(){
+		
+		var f = function(){
 			try
 			{
 				Object.extend(me.bar, JSON.parse(Storage.get('mybar')))
@@ -49,7 +50,12 @@ Object.extend(Me,
 				callback(me.bar)
 				
 			me.inited = true
-		})
+		}
+		
+		if(!Storage.get)
+			Storage.init(f)
+		else
+			f()
 	},
 	
 	saveBar : function(bar)
