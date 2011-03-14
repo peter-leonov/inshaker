@@ -66,9 +66,9 @@ var myProto =
 
 		this.tipIngredient = this.computeTipIngr()
 		
-		this.allTags = Cocktail.getTags()
-		
+		this.allTags = <!--# include virtual="/db/mybar/tags.js" -->
 		this.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
+		
 		this.computeRecommendsBlock()
 		
 		this.parent.setBar()
