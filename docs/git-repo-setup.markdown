@@ -18,6 +18,10 @@ Git repo
 	git config receive.denyCurrentBranch ignore
 	git config core.packedGitLimit 16m
 
+Если это просто хранилище, то:
+
+	git config core.bare true
+
 Настроим автоматический чекаут по обновлении:
 
 	echo '#!/bin/sh
