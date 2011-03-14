@@ -56,6 +56,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
+		this.renderIngrMybarStates();
 	},
 	
 	bindEvents: function(name){
@@ -168,7 +169,26 @@ var Controller = {
 	{
 		var name = node.getAttribute('data-ingredient-name')
 		if (name)
+		{
 			this.showPopup(name)
+			return
+		}
+		
+		if(node.inMyBarName)
+		{
+			var name = node.inMyBarName
+			var have = node.have
+			
+			if(!node.have)
+				BarStorage.addIngredient(name)
+			else
+				BarStorage.removeIngredient(name)
+				
+			node.have = !have
+			node.className = have ? 'in-my-bar not-have' : 'in-my-bar have'
+			node.setAttribute('title', !have ? 'Есть в Моем Баре' : 'Добавить в Мой Бар')
+		}
+		
 	},
 	
 	renderPopup: function(name){
@@ -360,6 +380,34 @@ var Controller = {
 		
 		$(this.ID_ING).RollingImagesLite.sync();
 		$(this.ID_ING).RollingImagesLite.goInit();
+	},
+	
+	renderIngrMybarStates : function()
+	{
+		collection = $(this.ID_INGS_LIST).getElementsByTagName('dd')
+		
+		var f = function()
+		{
+			for (var i = 0, il = collection.length; i < il; i++) 
+			{
+				var dd = collection[i]
+				var a = dd.getElementsByClassName('name')[0]
+				var name = a.innerHTML
+				
+				var inMyBar = document.createElement('div')
+				
+				var have = BarStorage.haveIngredient(name) 
+				inMyBar.className = have ? 'in-my-bar have' : 'in-my-bar not-have'
+				inMyBar.setAttribute('title', have ? 'Есть в Моем Баре' : 'Добавить в Мой Бар')
+				
+				inMyBar.inMyBarName = name
+				inMyBar.have = have ? true : false
+				
+				dd.appendChild(inMyBar)
+			}
+		}
+		
+		setTimeout(function(){ BarStorage.initBar(f) }, 0)
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
