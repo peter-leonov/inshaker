@@ -6,15 +6,39 @@
  */
 
 Storage = {
-    swfUrl: "/js/common/storage.swf",    
-    init: function(onready) {                
+    swfUrl: "/js/common/storage.swf",
+    init: function(callback) {    	
+    	if(!this.inited)
+    	{
+    		this.inited = true
+    		Object.extend(this, new EventDriven())
+    		
+    		
+    		var me = this
+	    	var onready = function()
+	    	{
+				callback()
+		    	me.dispatchEvent({ type : 'loaded' })
+	    		
+		    	me.init = function(callback)
+		    	{
+		    		callback()
+		    	}
+	    	}
+    	}
+    	else
+    	{
+    		this.addEventListener('loaded', callback, false)
+    		return
+    	}
+    	
        	var browser = navigator.userAgent;
 		var rx = Programica.userAgentRegExps;
 		if(rx.Gecko.test(browser)) this.globalStorage(onready);
 		else if(rx.MSIE.test(browser)) this.userData(onready);
-		else this.flash8(onready); 
+		else this.flash8(onready);
     }
-};
+}
 
 /**
  * HTML5 standard
@@ -22,7 +46,8 @@ Storage = {
  */
 Storage.globalStorage = function(onready) {
     var storage = globalStorage[location.hostname];
-    Storage = {
+    
+    Object.extend(this, {
         get:    function(key)        { return storage[key] ? String(storage[key]) : null; },
         put:    function(key, value) { storage[key] = value; },
         remove: function(key)        { delete storage[key]; },    
@@ -33,7 +58,8 @@ Storage.globalStorage = function(onready) {
             for(i in storage) res.push(i);
             return res;
         }
-    }
+    })
+
     onready();
 };
 
@@ -41,7 +67,8 @@ Storage.globalStorage = function(onready) {
  * @browsers MSIE 5+
  */
 Storage.userData = function(onready) {
-    var namespace = "data";
+    var me = this;
+	var namespace = "data";
 
     if (!document.body.addBehavior) {            
         throw new Error("No addBehavior available");
@@ -59,7 +86,7 @@ Storage.userData = function(onready) {
 		var storage = iframe.contentWindow.document.getElementById('storageElement');
 		storage.load(namespace);
 
-	    Storage = {
+	    Object.extend(me, {
 	        get: function(key) {
 	            return storage.getAttribute(key);
 	        },
@@ -88,7 +115,8 @@ Storage.userData = function(onready) {
 	            for(var i = 0; i < attrs.length; i++) res.push(attrs[i].name);
 	            return res;
 	        }
-	    }
+	    })
+	    
 	    onready();
 	}, false);
 };
@@ -106,7 +134,7 @@ Storage.flash8 = function(onready) {
 	var swfUrl = Storage.swfUrl;
     
     // first setup storage, make it ready to accept back async call
-    Storage = {       
+    Object.extend(this, {       
         get:    function(key)        { return movie.get(key)},
 		put:    function(key, value) { movie.put(key, value); },
         remove: function(key)        { movie.remove(key); },
@@ -120,7 +148,7 @@ Storage.flash8 = function(onready) {
             movie = document[swfId];
             onready();
         }
-    }
+    })
     
     // embed flash into document
     var protocol = window.location.protocol == 'https' ? 'https' : 'http';
