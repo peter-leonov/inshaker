@@ -318,9 +318,8 @@ var myProto =
 		
 		this.setupRecommendsVisibilityFrame(items)
 		
+		window.scrollBy(0, 1)
 		window.scrollBy(0, -1)
-		if(document.documentElement.scrollTop)
-			window.scrollBy(0, 1)
 	},
 	
 	rendernOneMustHaveRecommend : function(mustHaveIngredient)
