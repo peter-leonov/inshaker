@@ -100,7 +100,7 @@ var myProto =
 			}, 1)
 	},
 		
-	renderBarMenu : function(cocktails, notAvailableCocktails)
+	renderBarMenu : function(cocktails, notAvailableCocktails, alcoholCocktails)
 	{
 		if(!cocktails.length)
 		{
@@ -111,46 +111,85 @@ var myProto =
 		
 		this.nodes.barMenu.empty.hide()
 		
-		var ul =  Nc('ul', 'list')
-		for (var i = 0, il = cocktails.length; i < il; i++) 
+		function renderList(showAlcohol)
 		{
-			var c = cocktails[i]
-			var li = Nc('li', 'cocktail')
-			
-			var img = new Image()
-			img.src = c.getBigImageSrc()
-			img.addClassName('cocktail-image')
-			li.appendChild(img)
-			
-			var h3 = Nct('h3', 'cocktail-name', c.name)
-			h3.cocktail = c
-			li.appendChild(h3)
-			
-			
-
-			var recipe = []
-			for (var j = 0, jl = c.ingredients.length; j < jl; j++) 
+			var ul =  Nc('ul', 'list')
+			var title = Nct('h3', 'cocktails-type', showAlcohol ? 'Алкогольные' : 'Безалкогольные')
+			for (var i = 0, j = 0, il = cocktails.length; i < il; i++) 
 			{
-				var ing = c.ingredients[j]
-				var ingObj = Ingredient.getByName(ing[0])
-				var brand = ingObj.brand
-				recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 8 ? ' ' + ing[1] : ''))
+				var c = cocktails[i]
+				
+				if(showAlcohol && !alcoholCocktails[c.name] || !showAlcohol && alcoholCocktails[c.name])
+					continue
+					
+				j++
+				
+				var li = Nc('li', 'cocktail')
+				
+				var img = new Image()
+				img.src = c.getBigImageSrc()
+				img.addClassName('cocktail-image')
+				
+				var path = '/cocktail/' + c.name_eng.htmlName()
+				var a = N('a')
+				a.href = path + '/'
+				a.className = 'link'
+				
+				a.appendChild(img)
+				
+				li.appendChild(a)
+				
+				var h3 = Nct('h3', 'cocktail-name', c.name)
+				h3.cocktail = c
+				li.appendChild(h3)
+				
+				
+	
+				var recipe = []
+				for (var j = 0, jl = c.ingredients.length; j < jl; j++) 
+				{
+					var ing = c.ingredients[j]
+					var ingObj = Ingredient.getByName(ing[0])
+					var brand = ingObj.brand
+					recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 8 ? ' ' + ing[1] : ''))
+				}
+				
+				var p = Nct('p', 'cocktail-recipe', '(' + recipe.join(', ') + ')')
+				li.appendChild(p)
+				
+				if(notAvailableCocktails[c.name])
+				{
+					h3.notAvailable = true
+					li.addClassName('not-available')
+				}
+				
+				ul.appendChild(li)
 			}
 			
-			var p = Nct('p', 'cocktail-recipe', '(' + recipe.join(', ') + ')')
-			li.appendChild(p)
+			if(!j)
+				return false
 			
-			if(notAvailableCocktails[c.name])
-			{
-				h3.notAvailable = true
-				li.addClassName('not-available')
-			}
+			var wrapper = Nc('div', 'list-wrapper ' + (showAlcohol ? 'alcohol' : 'no-alcohol'))
 			
-			ul.appendChild(li)
+			wrapper.appendChild(title)
+			wrapper.appendChild(ul)
+			return wrapper
 		}
 		
+		var df = document.createDocumentFragment()
+		
+		//alcohol
+		var alcohol = renderList(true)
+		if(alcohol)
+			df.appendChild(alcohol)
+		
+		//no-alcohol
+		var noAlcohol = renderList(false)
+		if(noAlcohol)
+			df.appendChild(noAlcohol)
+		
 		this.nodes.barMenu.wrapper.empty()
-		this.nodes.barMenu.wrapper.appendChild(ul)
+		this.nodes.barMenu.wrapper.appendChild(df)
 	},
 	
 	renderIngredients : function(ingredients)
