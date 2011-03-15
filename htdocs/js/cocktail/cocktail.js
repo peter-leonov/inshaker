@@ -8,7 +8,6 @@ $.onready(function(){
 	Theme.bind()
 })
 
-<!--# include virtual="/lib-0.3/modules/event-driven.js" -->
 <!--# include virtual="/js/entities/BarStorage.js" -->
 
 <!--# include file="/js/calculator/calculator.js" -->

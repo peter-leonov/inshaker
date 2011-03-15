@@ -6,19 +6,23 @@
  */
 
 Storage = {
-    swfUrl: "/js/common/storage.swf",
+    chain : [],
+	swfUrl: "/js/common/storage.swf",
     init: function(callback) {    	
     	if(!this.inited)
     	{
     		this.inited = true
-    		Object.extend(this, new EventDriven())
+    		//Object.extend(this, new EventDriven())
     		
+    		this.chain.push(callback)
     		
     		var me = this
 	    	var onready = function()
 	    	{
-				callback()
-		    	me.dispatchEvent({ type : 'loaded' })
+				while(me.chain.length)
+				{
+					(me.chain.pop())()
+				}
 	    		
 		    	me.init = function(callback)
 		    	{
@@ -28,7 +32,7 @@ Storage = {
     	}
     	else
     	{
-    		this.addEventListener('loaded', callback, false)
+    		this.chain.push(callback)
     		return
     	}
     	
