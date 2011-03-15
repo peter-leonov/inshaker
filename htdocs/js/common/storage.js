@@ -36,9 +36,9 @@ Storage = {
 		var rx = Programica.userAgentRegExps;
 		if(rx.Gecko.test(browser)) this.globalStorage(onready);
 		else if(rx.MSIE.test(browser)) this.userData(onready);
-		else this.flash8(onready);
+		else this.flash8(onready); 
     }
-}
+};
 
 /**
  * HTML5 standard

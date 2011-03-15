@@ -7,16 +7,7 @@ var myProto =
 	bind : function ()
 	{
 		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {} }
-		Storage.init(function(){
-			try
-			{
-				Object.extend(bar, JSON.parse(Storage.get('mybar')))
-			}
-			catch(e)
-			{
-			}
-			
-			
+		BarStorage.initBar(function(bar){
 			me.showPhotos = bar.showPhotos
 			me.barName = bar.barName
 			me.showByCocktails = bar.showByCocktails
@@ -53,6 +44,8 @@ var myProto =
 		if(Object.isEmpty(ingredients.inBar)) return []
 		var needCocktails = Cocktail.getByIngredientNames(ingredients.inBarNames, {count : 1}),
 			cocktails = []
+			
+		var al = this.alcoholCocktails = {}
 
 		ck:
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )
@@ -66,6 +59,9 @@ var myProto =
 			}
 
 			cocktails.push(cocktail)
+			
+			if(cocktail.tags.indexOf('Алкогольные') != -1)
+				al[cocktail.name] = true
 		}
 		
 		return cocktails.sort(this.sortCocktails)
@@ -100,7 +96,7 @@ var myProto =
 	
 	setBarMenu : function()
 	{
-		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails)
+		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails, this.alcoholCocktails)
 	},
 	
 	setIngredients : function()
@@ -140,14 +136,14 @@ var myProto =
 	{
 		this.notAvailableCocktails[cocktailName] = null
 		this.saveStorage()
-		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails)
+		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails, this.alcoholCocktails)
 	},
 	
 	removeCocktailFromBarMenu : function(cocktailName)
 	{
 		this.notAvailableCocktails[cocktailName] = true
 		this.saveStorage()
-		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails)
+		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails, this.alcoholCocktails)
 	}
 }
 
