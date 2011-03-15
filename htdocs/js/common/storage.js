@@ -44,8 +44,8 @@ Storage = {
  * HTML5 standard
  * @browsers Firefox 2+, MSIE 8
  */
-Storage.globalStorage = function(onready) {
-    var storage = globalStorage[location.hostname];
+Storage.webStorage = function(onready) {
+    var storage = window.localStorage || window.globalStorage[location.hostname];
     
     Object.extend(this, {
         get:    function(key)        { return storage[key] ? String(storage[key]) : null; },
