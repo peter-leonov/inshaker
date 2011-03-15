@@ -52,10 +52,7 @@ Object.extend(Me,
 			me.inited = true
 		}
 		
-		if(!Storage.get)
-			Storage.init(f)
-		else
-			f()
+		Storage.init(f)
 	},
 	
 	saveBar : function(bar)
