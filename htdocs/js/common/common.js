@@ -11,6 +11,7 @@
 <!--# include file="/lib/Widgets/RollingImagesLite.js" -->
 
 <!--# include virtual="/lib-0.3/modules/nodes.js" -->
+<!--# include virtual="/lib-0.3/modules/event-driven.js" -->
 
 <!--# include file="/js/common/statistics.js" -->
 <!--# include file="/js/common/rutils.js" -->
