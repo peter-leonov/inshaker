@@ -1,3 +1,5 @@
+html { min-height: 100%; overflow-y: scroll; position: relative; }
+
 #output { color: #000; }
 
 h1.mybar { font-size: 24px; }
