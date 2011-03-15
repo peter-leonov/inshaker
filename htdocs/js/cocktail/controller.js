@@ -384,7 +384,7 @@ var Controller = {
 	
 	renderIngrMybarStates : function()
 	{
-		collection = $(this.ID_INGS_LIST).getElementsByTagName('dd')
+		var collection = $(this.ID_INGS_LIST).getElementsByTagName('dd')
 		
 		var f = function()
 		{
@@ -407,7 +407,7 @@ var Controller = {
 			}
 		}
 		
-		setTimeout(function(){ BarStorage.initBar(f) }, 0)
+		BarStorage.initBar(f)
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
