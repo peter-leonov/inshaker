@@ -64,6 +64,10 @@ html.loading .b-content { display: none; }
 	font-size: 24px;
 }
 
+#output .b-content .menu-block .list-wrapper { padding: 20px 0px; }
+
+#output .b-content .menu-block .list-wrapper .cocktails-type { font-size: 18px; }
+
 #output .b-content .menu-block li.cocktail {
 	overflow: hidden;
 	margin-top: 13px;
