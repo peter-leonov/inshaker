@@ -32,11 +32,12 @@ Storage = {
     		return
     	}
     	
-       	var browser = navigator.userAgent;
-		var rx = Programica.userAgentRegExps;
-		if(rx.Gecko.test(browser)) this.globalStorage(onready);
-		else if(rx.MSIE.test(browser)) this.userData(onready);
-		else this.flash8(onready); 
+		if (window.localStorage || window.globalStorage)
+			this.webStorage(onready)
+		else if (document.body.addBehavior)
+			this.userData(onready)
+		else
+			this.flash8(onready)
     }
 };
 
@@ -44,8 +45,8 @@ Storage = {
  * HTML5 standard
  * @browsers Firefox 2+, MSIE 8
  */
-Storage.globalStorage = function(onready) {
-    var storage = globalStorage[location.hostname];
+Storage.webStorage = function(onready) {
+    var storage = window.localStorage || window.globalStorage[location.hostname];
     
     Object.extend(this, {
         get:    function(key)        { return storage[key] ? String(storage[key]) : null; },
@@ -69,10 +70,6 @@ Storage.globalStorage = function(onready) {
 Storage.userData = function(onready) {
     var me = this;
 	var namespace = "data";
-
-    if (!document.body.addBehavior) {            
-        throw new Error("No addBehavior available");
-    }
 
 	var e = document.createElement("iframe");
 	e.setAttribute('id', 'storageFrame');
