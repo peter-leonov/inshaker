@@ -82,18 +82,19 @@ var myProto =
 		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
 		
 		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
-		this.nodes.bottomOutput.selectTag.addEventListener('change', function(e){ me.selectOtherTag(e) }, false)
+		nodes.bottomOutput.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
 		
 		//suspended rendering
-		var t = new Throttler(onscroll, 100, 500)
+		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
-		
-		function onscroll()
-		{
-			var frame = me.recommendsFrame
-			if(frame)
-				frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
-		}
+	},
+	
+	onscroll : function()
+	{
+		log(this)
+		var frame = this.recommendsFrame
+		if(frame)
+			frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)		
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -318,8 +319,7 @@ var myProto =
 		
 		this.setupRecommendsVisibilityFrame(items)
 		
-		window.scrollBy(0, 1)
-		window.scrollBy(0, -1)
+		this.onscroll()
 	},
 	
 	rendernOneMustHaveRecommend : function(mustHaveIngredient)
@@ -521,32 +521,44 @@ var myProto =
 	
 	renderTagsSelect : function(tags, currentTag, tagsAmount)
 	{
-		var node = this.nodes.bottomOutput.selectTag,
-			tagForm = this.nodes.bottomOutput.tagForm
+		
+		var node = this.nodes.bottomOutput.tagsCloud
+			//node = this.nodes.bottomOutput.selectTag,
+			//tagForm = this.nodes.bottomOutput.tagForm
+			
+			
+		
 		
 		if(!tags.length)
 		{
-			tagForm.hide()
+			node.hide()
 			return
 		}
 			
-		var fragment = document.createDocumentFragment()
+		var df = document.createDocumentFragment()
 		
 		for (var i = 0, il = tags.length; i < il; i++) 
 		{
 			var tag = tags[i]
-			var option = N('option')
-			option.innerHTML = tag + ' (' + tagsAmount[tag] + ')'
-			option.value = tag
+			var div = Nc('div', 'wrap-tag')
+			var span = Nct('span', 'tag', tag + ' (' + tagsAmount[tag] + ')')
+			//option.innerHTML = tag + ' (' + tagsAmount[tag] + ')'
+			//option.value = tag
+			span.tagValue = tag
 			if(tag.localeCompare(currentTag) == 0)
-				option.setAttribute('selected', 'selected')
-				
-			fragment.appendChild(option)
+				div.addClassName('current')
+				//option.setAttribute('selected', 'selected')
+			
+			div.appendChild(span)
+			df.appendChild(div)
 		}
 		
-		node.innerHTML = ''
-		node.appendChild(fragment)
-		tagForm.show()
+		//node.innerHTML = ''
+		//node.appendChild(fragment)
+		//tagForm.show()
+		node.empty()
+		node.appendChild(df)
+		node.show()
 	},
 	
 	/*
@@ -761,6 +773,9 @@ var myProto =
 	
 	maybeIngredientClicked : function(target)
 	{
+		if(!target.parentNode)
+			return
+		
 		var ingredient = target.parentNode['data-ingredient']
 		if(ingredient)
 			this.controller.ingredientSelected(ingredient)
@@ -780,7 +795,11 @@ var myProto =
 	
 	selectOtherTag : function(e)
 	{
-		this.controller.showTagRecommends(e.target.value)
+		var target = e.target
+		if(target.tagValue && !target.parentNode.hasClassName('current'))
+		{
+			this.controller.showTagRecommends(target.tagValue)
+		}
 	}
 }
 Object.extend(Me.prototype, myProto)
