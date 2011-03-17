@@ -205,9 +205,6 @@ var myProto =
 			this.renderIfCocktailsEmpty()
 			return
 		}
-		/*
-				if(!c.empty.hasClassName('hidden'))
-					c.empty.hide()*/
 		
 		c.block.show()
 		
@@ -217,7 +214,6 @@ var myProto =
 			
 		switch(showCocktailsType)
 		{
-
 			case 'сочетания':
 				c.swCombs.removeClassName('link')
 				c.swPhotos.addClassName('link')
@@ -329,8 +325,11 @@ var myProto =
 			var bigPlus = Nct('div', 'big-plus', '+')
 			bigPlus.ingredients = [mustHaveIngredient.ingredient]
 			
-			var ing = Nc('div', 'ingredient')
-			ing.appendChild(mustHaveIngredient.ingredient.getPreviewNode())
+			var ing = mustHaveIngredient.ingredient.getPreviewNode(true)
+			//ing.appendChild(mustHaveIngredient.ingredient.getPreviewNode(true))
+			
+			//var ing = Nc('div', 'ingredient')
+			//ing.appendChild(mustHaveIngredient.ingredient.getPreviewNode())
 			
 			df.appendChild(bigPlus)
 			df.appendChild(ing)
@@ -366,8 +365,8 @@ var myProto =
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
-			var ing = Nc('li', 'ingredient')
-			ing.appendChild(ingredients[i].getPreviewNode())
+			var ing = ingredients[i].getPreviewNode(true)
+			//ing.appendChild(ingredients[i].getPreviewNode(true))
 			head.appendChild(ing)
 		}
 		
