@@ -2,12 +2,7 @@
 
 var myName = 'BarStorage'
 
-function Me ()
-{
-
-}
-
-Object.extend(Me, 
+Me =  
 {
 	initialize : function()
 	{
@@ -34,15 +29,18 @@ Object.extend(Me,
 		var me = this
 		
 		var f = function(){
+			var json = ''
 			try
 			{
-				Object.extend(me.bar, JSON.parse(Storage.get('mybar')))
+				json = Storage.get('mybar')
 			}
 			catch(e)
 			{
-				
+				log('Can\'t get mybar object.', e)
 			}
-				
+			
+			Object.extend(me.bar, JSON.parse(json))
+			
 			if(callback)
 				callback(me.bar)
 				
@@ -58,19 +56,16 @@ Object.extend(Me,
 			bar = this.bar
 		else
 			Object.extend(this.bar, bar)
-			
-			for (var k in Storage) 
-			{
-				log(k, Storage[k])
-			}
+
+		var json = JSON.stringify(this.bar)
 			
 		try
 		{
-			Storage.put('mybar', JSON.stringify(this.bar))
+			Storage.put('mybar', json)
 		}
 		catch(e)
 		{
-			
+			log('Can\'t put mybar object.', e)
 		}
 	},
 	
@@ -81,8 +76,7 @@ Object.extend(Me,
 			ings.push(ingredientName)
 		else
 			return false
-		
-		log(this.bar)	
+			
 		this.saveBar()
 		return true
 	},
@@ -107,9 +101,8 @@ Object.extend(Me,
 			
 		return false
 	}
-})
+}
 
-// Me.mixIn(EventDriven)
 Me.className = myName
 self[myName] = Me
 
