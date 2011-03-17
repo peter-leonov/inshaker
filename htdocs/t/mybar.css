@@ -417,7 +417,6 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .tags-cloud .wrap-tag.current
 {
 	color: #0392F1;
-	cursor: default;
 	background-color: #eee;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -427,6 +426,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .tags-cloud .wrap-tag.current .tag
 {
 	border-color: #eee;
+	cursor: default;
 }
 
 /*Popup*/
