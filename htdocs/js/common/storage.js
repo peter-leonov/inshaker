@@ -11,9 +11,7 @@ Storage = {
     init: function(callback) {    	
     	if(!this.inited)
     	{
-    		this.inited = true
-    		//Object.extend(this, new EventDriven())
-    		
+    		this.inited = true    		
     		this.chain.push(callback)
     		
     		var me = this

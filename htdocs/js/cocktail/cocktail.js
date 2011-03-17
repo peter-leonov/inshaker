@@ -8,7 +8,7 @@ $.onready(function(){
 	Theme.bind()
 })
 
-<!--# include virtual="/js/entities/BarStorage.js" -->
+<!--# include virtual="/js/common/bar-storage.js" -->
 
 <!--# include file="/js/calculator/calculator.js" -->
 <!--# include file="/js/cocktail/model.js" -->

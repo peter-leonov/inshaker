@@ -1,6 +1,3 @@
-//Sorry for old lib. It's needed for Storage (hard code in it)
-<!--# include virtual="/lib/Programica/UA.js" -->
-
 ;(function(){
 
 var myName = 'BarStorage'

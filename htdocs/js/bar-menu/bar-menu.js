@@ -29,11 +29,9 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
-//Sorry for old lib. It's needed for Storage (hard code in it)
-<!--# include virtual="/lib/Programica/UA.js" -->
 <!--# include virtual="/js/common/storage.js" -->
+<!--# include virtual="/js/common/bar-storage.js" -->
 
-<!--# include virtual="/js/entities/BarStorage.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
