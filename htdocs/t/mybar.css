@@ -393,5 +393,38 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output form.select-tag { float: right; font-size: 14px; }
 .bottom-output form.select-tag select {  }
 
+/*tags-cloud*/
+.bottom-output .tags-cloud { font-size: 14px; overflow: hidden; padding-bottom: 6px;}
+
+.bottom-output .tags-cloud .wrap-tag
+{
+	float: left;
+	margin: 7px 20px 0px 0px;
+	padding: 3px 4px;
+	overflow: hidden;
+}
+
+.bottom-output .tags-cloud .tag
+{
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.bottom-output .tags-cloud .wrap-tag.current
+{
+	color: #0392F1;
+	cursor: default;
+	background-color: #eee;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.bottom-output .tags-cloud .wrap-tag.current .tag
+{
+	border-color: #eee;
+}
+
 /*Popup*/
 <!--# include virtual="/t/ingredient-popup.css" -->
