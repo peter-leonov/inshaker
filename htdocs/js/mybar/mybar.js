@@ -157,7 +157,8 @@ function onready ()
 		
 		bottomOutput : {
 			output : $$('#output .bottom-output')[0],
-			tagForm : $$('#output .bottom-output .select-tag')[0],
+			//tagForm : $$('#output .bottom-output .select-tag')[0],
+			tagsCloud : $$('#output .bottom-output .tags-cloud')[0],
 			selectTag : $$('#output .bottom-output .select-tag .tags')[0],
 			title : $$('#output .bottom-output .title')[0],
 			wrapper : $$('#output .bottom-output .wrapper')[0],
