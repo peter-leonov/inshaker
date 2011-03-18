@@ -27,6 +27,7 @@ if (!clientStorage)
 <!--# include file="/js/common/datafilter.js" -->
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
+<!--# include file="/js/common/rutils.js" -->
 
 <!--# include file="/js/common/theme.js" -->
 <!--# config timefmt="%Y.%m" -->
