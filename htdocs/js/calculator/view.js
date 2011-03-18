@@ -247,7 +247,7 @@ function CalculatorView() {
 	 * @param init - true, если это первый проход по MVC
 	 */
 	this.modelChanged = function(cartData, init){ // model
-		var barName = Storage.get('barName')
+		var barName = clientStorage.get('barName')
 		this.renderCart(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
 		else this.initBarChanger(barName)

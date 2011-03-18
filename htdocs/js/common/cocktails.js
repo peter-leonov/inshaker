@@ -17,10 +17,13 @@ Array.prototype.uniq = function(){
 	return tmp;
 }
 
+<!--# include file="/lib-0.3/modules/client-storage.js" -->
+var clientStorage = ClientStorage.guess()
+if (!clientStorage)
+	throw new Error('no client storge was found')
 
 <!--# include file="/js/common/good_helper.js" -->
 <!--# include file="/js/common/datafilter.js" -->
-<!--# include file="/js/common/storage.js" -->
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
 
