@@ -1,4 +1,5 @@
 function remClass(elem, className) { if(elem) elem.removeClassName(className) };
+function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
 function CocktailsView (states, nodes, styles) {
 	
@@ -179,8 +180,8 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		nodes.ingredsView.hide();
-		nodes.searchTipIngredient.setVisible(state == states.byIngredients);
-		nodes.searchTipName.setVisible(state == states.byName);
+		setVisible(nodes.searchTipIngredient, state == states.byIngredients)
+		setVisible(nodes.searchTipName, state == states.byName)
 		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
 	};
 	
@@ -282,8 +283,8 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(words.length == 0)
-			nodes.ingredsView.setVisible(words.length > 0)
+			setVisible(nodes.searchTipIngredient, words.length == 0)
+			setVisible(nodes.ingredsView, words.length > 0)
 		}
 		
 		if(filters.page > 0) {
