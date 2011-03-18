@@ -104,7 +104,7 @@
 #results_display .point{height:560px;width:550px;padding: 0 0 0 35px;float:left;}
 .byIngredients #results_display .viewport {width:440px;margin-left: 145px; }
 .byIngredients #results_display .point {width:440px;padding: 0 35px 0 0;}
-#results_display .surface { width: 30000px; padding: 0px; }
+#results_display .surface { width: 30000px; height: 560px; padding: 0px; }
 #search_tips { height: 14px}
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px dashed;}
