@@ -197,7 +197,7 @@ function CalculatorView() {
         }
 
         function checkEmptiness(){ setTimeout(function(){ 
-          nodes.tip.setVisible(!nodes.input.value.length)
+          nodes.input.value.length ? nodes.tip.hide() : nodes.tip.show()
         }, 1) }
 
         nodes.input.addEventListener('keypress', checkEmptiness, false)
