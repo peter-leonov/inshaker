@@ -39,6 +39,7 @@ function CocktailsController (states, cookies, model, view) {
 				filters[pair[0]]=decodeURIComponent(pair[1]);
 			}
             filters.state = states[filters.state];
+			filters.page = +filters.page
 			return filters;
 		} else return null;
 	};
