@@ -14,9 +14,8 @@
 #alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
 
 .search-control { z-index: 10; position: relative; }
-.autocomplete { display: none; position: absolute; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 14px; }
+.autocomplete { position: absolute; opacity: 0.95; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
-.search-error{display:none;height:12px;}
 
 
 .ingreds-list { position: relative; width:574px; height: 22px; background-position: 0 -175px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
@@ -96,7 +95,6 @@
 .search-control#search_by_letter { background-position: 0 -50px; }
 
 .b-content {width:100%;}
-#b_search {display:none;}
 #results_display {/*padding-left: 23px;*/}
 #results_display .empty-result-by-ingredients,
 #results_display .empty-result-by-name { display: none; position: absolute; left: 200px; top: 158px; width: 230px; text-align: center; font-size: 15px; }
