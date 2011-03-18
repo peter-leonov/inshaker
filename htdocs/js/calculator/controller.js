@@ -6,7 +6,7 @@ function CalculatorController(model, view) {
 		var self = this;
 		clientStorage.ready(function(){
 			if(clientStorage.get(GoodHelper.CART)){
-				self.eventListener.initialize(Object.parse(clientStorage.get(GoodHelper.CART)));
+				self.eventListener.initialize(JSON.parse(clientStorage.get(GoodHelper.CART)));
 			} else self.eventListener.initialize(null);
 		});
 	};
@@ -41,7 +41,7 @@ function CalculatorController(model, view) {
 	this.saveCartData = function(cartData){
 		var cd = cloneObject(cartData);
 	    cd = GoodHelper.serializeCartData(cd);	
-		clientStorage.set(GoodHelper.CART, Object.stringify(cd));
+		clientStorage.set(GoodHelper.CART, JSON.stringify(cd));
 	};
 	
 	this.needNewBottle = function(name, bottleId){
