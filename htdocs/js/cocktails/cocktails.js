@@ -86,8 +86,6 @@ $.onready(
 	}
 )
 
-Element.prototype.removeClassName = Element.prototype.remClassName
-
 <!--# include file="/lib-0.3/modules/regexp-escape.js" -->
 <!--# include file="/js/common/switcher.js" -->
 <!--# include file="/js/common/nodes-shortcut.js" -->

@@ -1,4 +1,4 @@
-function remClass(elem, className) { if(elem) elem.remClassName(className) };
+function remClass(elem, className) { if(elem) elem.removeClassName(className) };
 
 function CocktailsView (states, nodes, styles) {
 	
@@ -91,9 +91,9 @@ function CocktailsView (states, nodes, styles) {
 			
 			// big pager buttons
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName(styles.disabled);
-			else nodes.bigNext.remClassName(styles.disabled);
+			else nodes.bigNext.removeClassName(styles.disabled);
 			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName(styles.disabled);
-			else nodes.bigPrev.remClassName(styles.disabled);
+			else nodes.bigPrev.removeClassName(styles.disabled);
 		}
 		
 		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
@@ -168,7 +168,7 @@ function CocktailsView (states, nodes, styles) {
 		var bodyWrapper = nodes.bodyWrapper
 		for (var k in states)
 			// toggleClassName(k, states[k] == state) must be used
-			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.remClassName(k)
+			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.removeClassName(k)
 		
 		if(state == states.byIngredients) {
 			nodes.tagStrengthArea.show();
@@ -305,7 +305,7 @@ function CocktailsView (states, nodes, styles) {
 		nodes.resultsRoot.empty();
 		
 		if (resultSet.length)
-			nodes.resultsDisplay.remClassName('empty')
+			nodes.resultsDisplay.removeClassName('empty')
 		else
 			nodes.resultsDisplay.addClassName('empty')
 			
