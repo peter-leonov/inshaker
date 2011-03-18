@@ -23,6 +23,13 @@ var clientStorage = ClientStorage.guess()
 if (!clientStorage)
 	throw new Error('no client storge was found')
 
+<!--# include file="/lib-0.3/modules/motion.js" -->
+<!--# include file="/lib-0.3/modules/motion-types.js" -->
+<!--# include file="/lib-0.3/modules/animation.js" -->
+<!--# include file="/js/common/rolling-images.js" -->
+
+<!--# include file="/js/calculator/calculator.js" -->
+
 <!--# include file="/js/common/good_helper.js" -->
 <!--# include file="/js/common/datafilter.js" -->
 <!--# include file="/js/common/dnd.js" -->
