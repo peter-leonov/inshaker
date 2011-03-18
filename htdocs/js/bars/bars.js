@@ -64,6 +64,7 @@ $.onready
 )
 
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/window-name.js" -->
 <!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
@@ -80,4 +81,4 @@ $.onready
 
 
 <!--# include virtual="/lib/Programica/LocationHash.js" -->
-<!--# include virtual="/lib/Programica/WindowName.js" -->
+
