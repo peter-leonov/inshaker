@@ -2,7 +2,7 @@ function remClass(elem, className) { if(elem) elem.remClassName(className) };
 
 function CocktailsView (states, nodes, styles) {
 	
-	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
+	new RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
 	this.filterElems   = { tag: null, strength: null, method: null, letter: null };
 	this.perPage       = 16;
