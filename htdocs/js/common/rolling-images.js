@@ -97,7 +97,12 @@ RollingImagesLite.prototype =
 		return this.animateTo(node.offsetLeft, node.offsetTop, anim, dur)
 	},
 	
-	animateTo: function (left, top, anim, dur) { return this.viewport.animate(anim || this.conf.animationType, {scrollLeft: left, scrollTop: top}, dur || this.conf.duration) },
+	animateTo: function (left, top, anim, dur)
+	{
+		if (this.animation)
+			this.animation.stop()
+		return this.animation = this.viewport.animate(anim || this.conf.animationType, {scrollLeft: left, scrollTop: top}, dur || this.conf.duration)
+	},
 	
 	jumpTo: function (left, top) { this.viewport.scrollLeft = left; this.viewport.scrollTop = top },
 	jumpToFrame: function (n)
