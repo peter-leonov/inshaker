@@ -113,17 +113,27 @@ RollingImagesLite.prototype =
 	updateNavigation: function ()
 	{
 		for (var i = 0, il = this.buttons.length; i < il; i++)
-			this.buttons[i].remClassName('selected-button')
+			this.buttons[i].removeClassName('selected-button')
 		
 		var button = this.buttons[this.current]
 		if (button)
 			button.addClassName('selected-button')
 		
 		if (this.aPrev)
-			this.current > 0 ? this.aPrev.enable() : this.aPrev.disable()
+		{
+			if (this.current > 0)
+				this.aPrev.removeClassName('disabled')
+			else
+				this.aPrev.addClassName('disabled')
+		}
 		
 		if (this.aNext)
-			this.current < this.points.length - 1 ? this.aNext.enable() : this.aNext.disable()
+		{
+			if (this.current < this.points.length - 1)
+				this.aPrev.removeClassName('disabled')
+			else
+				this.aPrev.addClassName('disabled')
+		}
 	},
 	
 	setCurrent: function (num)
