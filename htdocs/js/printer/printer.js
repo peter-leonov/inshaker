@@ -95,7 +95,7 @@ var Printer = {
             $(this.ID_PLAN_TITLE).innerHTML = "План покупок " + (barName ? "для " + barName : ""); 
             this.preloadImages();
             this.cartData = clientStorage.get(GoodHelper.CART);
-            this.cartData = GoodHelper.deSerializeCartData(Object.parse(this.cartData));
+            this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
         } else {

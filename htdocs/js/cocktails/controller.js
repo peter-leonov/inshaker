@@ -45,7 +45,7 @@ function CocktailsController (states, cookies, model, view) {
 	
 	this.filtersFromCookie = function () {
 		var cookie = Cookie.get(cookies.filter);
-		if(cookie) return Object.parse(cookie);
+		if(cookie) return JSON.parse(cookie);
 		else return null;
 	};
 	
@@ -54,7 +54,7 @@ function CocktailsController (states, cookies, model, view) {
 		clearTimeout(this.hashTimeout);
 		this.hashTimeout = setTimeout(function() { 
 			self.updatePageHash(filters);
-			Cookie.set(cookies.filter, Object.stringify(filters));
+			Cookie.set(cookies.filter, JSON.stringify(filters));
 		} , 400);
 	};
 	
