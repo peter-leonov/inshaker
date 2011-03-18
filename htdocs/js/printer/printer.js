@@ -20,13 +20,13 @@ var Printer = {
 	initCart: function (param)
 	{
 		var me = this
-		Storage.init(function () { me.cartInit(param) })
+		clientStorage.ready(function () { me.cartInit(param) })
 	},
 	
 	initCocktail: function (param)
 	{
 		var me = this
-		Storage.init(function () { me.cocktailInit(param) })
+		clientStorage.ready(function () { me.cocktailInit(param) })
 	},
 
 
@@ -90,11 +90,11 @@ var Printer = {
 	},
 
     cartInit: function(){
-        if(Storage.get(GoodHelper.CART)){
-            var barName = Storage.get(this.ST_BAR_NAME);
+        if(clientStorage.get(GoodHelper.CART)){
+            var barName = clientStorage.get(this.ST_BAR_NAME);
             $(this.ID_PLAN_TITLE).innerHTML = "План покупок " + (barName ? "для " + barName : ""); 
             this.preloadImages();
-            this.cartData = Storage.get(GoodHelper.CART);
+            this.cartData = clientStorage.get(GoodHelper.CART);
             this.cartData = GoodHelper.deSerializeCartData(Object.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
