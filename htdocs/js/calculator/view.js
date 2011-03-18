@@ -188,8 +188,8 @@ function CalculatorView() {
 
         function finishEditing(){
           nodes.edit.hide()
-          nodes.bill.remClassName(styles.editing)
-          nodes.name.remClassName(styles.unnamed)
+          nodes.bill.removeClassName(styles.editing)
+          nodes.name.removeClassName(styles.unnamed)
           nodes.name.innerHTML = nodes.input.value || nodes.tip.innerHTML
           nodes.name.show()
           editing = false
