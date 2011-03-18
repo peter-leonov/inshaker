@@ -1,3 +1,5 @@
+.hidden { display: none !important; }
+
 .body-wrapper { overflow: hidden; }
 .b-title { padding-bottom: 11px; }
 .b-title h1 {font-size:20px } 
