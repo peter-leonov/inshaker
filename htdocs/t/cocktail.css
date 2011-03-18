@@ -1,3 +1,5 @@
+.hidden { display: none !important; }
+
 .b-title { width: 100%; }
 .b-title h1 { position: relative; }
 .b-title h1,
