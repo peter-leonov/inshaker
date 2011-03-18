@@ -113,7 +113,7 @@ var Controller = {
 		for (var i = mybar_links.length - 1; i >= 0; i--) {
 			mybar_links[i].addEventListener('click', function(e) {
 					link.open(this);
-					this.parentNode.now.remClassName('now');
+					this.parentNode.now.removeClassName('now');
 					// this.addClassName('now');
 					this.parentNode.now = this;
 					var ri = $(self.ID_ING).RollingImagesLite
@@ -256,7 +256,7 @@ var Controller = {
 			this.style.display = 'none';
 			$('main-content').className = '';
 			$('poster').style.visibility = 'visible';
-			menu.now.remClassName('now');
+			menu.now.removeClassName('now');
 			
 			// Cancel fix
 			entry.style.height = "";
