@@ -113,7 +113,7 @@ function CalculatorView() {
 	
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
-	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
+	this.addBtn = $$(this.CLASS_ADD_BTN) ? $$(this.CLASS_ADD_BTN)[0] : null;
 
 	
 	var self = this;
@@ -156,10 +156,10 @@ function CalculatorView() {
   this.initBarChanger = function(barName) {
     var editing = false
     var nodes  = { bill: $('b-bill'), 
-                   name: cssQuery("#b-bill .b-title h1")[0], 
-                   edit: cssQuery("#b-bill .b-title label")[0], 
-                   tip:  cssQuery("#b-bill .b-title small")[0],
-                   input:cssQuery("#b-bill .b-title input")[0] } 
+                   name: $$("#b-bill .b-title h1")[0], 
+                   edit: $$("#b-bill .b-title label")[0], 
+                   tip:  $$("#b-bill .b-title small")[0],
+                   input:$$("#b-bill .b-title input")[0] } 
 
     var styles = { editing: 'editing-bar-name', unnamed: 'unnamed' }
 
@@ -228,7 +228,7 @@ function CalculatorView() {
 		$(self.INGRED_POPUP).hide();
 	}, false);
 	
-	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
+	$$("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		$(self.INGRED_POPUP).hide();
 	}, false);
 

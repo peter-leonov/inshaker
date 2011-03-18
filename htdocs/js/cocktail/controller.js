@@ -76,7 +76,7 @@ var Controller = {
 			}
 			
 			
-			a = cssQuery(this.SELECTOR_AUTHOR)[0]
+			a = $$(this.SELECTOR_AUTHOR)[0]
 			if (a)
 			{
 				a.addClassName('active')
@@ -124,7 +124,7 @@ var Controller = {
 		}
 		link = new Link();
 		
-		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
+		var viewHowBtn = $$(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
@@ -133,7 +133,7 @@ var Controller = {
 				ri.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
-		var tools_links = cssQuery(".b-content .tools dd a");
+		var tools_links = $$(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = Tool.getByName(tools_links[i].innerHTML)
 			// FIXME: dirty fix for invalid tool name
@@ -153,7 +153,7 @@ var Controller = {
             if(e.keyCode == self.KEY_ESC) $(self.TOOL_POPUP).hide();
         }, false);
 	
-		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
+		$$("#shop-gadget .opacity")[0].addEventListener('click', function(e){
 		    $(self.TOOL_POPUP).hide();	
 		}, false);
 		
@@ -221,9 +221,9 @@ var Controller = {
 	
 	_initNavigationRules: function(menu){
 		// TODO: remove UI fixes from Controller
-		var entry = cssQuery("#cocktail-page .hreview .entry")[0];
-		var ul = cssQuery("#cocktail-page #view-how ul")[0];
-		var hreview = cssQuery("#cocktail-page .hreview")[0]; 
+		var entry = $$("#cocktail-page .hreview .entry")[0];
+		var ul = $$("#cocktail-page #view-how ul")[0];
+		var hreview = $$("#cocktail-page .hreview")[0]; 
 		var desc = $('view-prepare-text');
 
 		$('view-prepare').show = function()
@@ -415,8 +415,8 @@ var Controller = {
 	},
 	
 	expandRelated: function(){ // model
-		var recsCol = cssQuery(".column.b-more-rec")[0];
-		var relCol  = cssQuery(".column.b-more-cocktails")[1];
+		var recsCol = $$(".column.b-more-rec")[0];
+		var relCol  = $$(".column.b-more-cocktails")[1];
 		recsCol.style.display = "none";
 		relCol.style.width = "62.8em";
 	}
