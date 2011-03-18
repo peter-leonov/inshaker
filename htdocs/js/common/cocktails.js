@@ -1,6 +1,6 @@
-// deep copy using JSON-like lib ;-)
+// deep copy using JSON lib ;-)
 function cloneObject(obj){
-	return Object.parse(Object.stringify(obj));
+	return JSON.parse(JSON.stringify(obj));
 }
 
 function lengthOf(obj){
@@ -17,12 +17,24 @@ Array.prototype.uniq = function(){
 	return tmp;
 }
 
+<!--# include file="/lib-0.3/modules/json.js" -->
+<!--# include file="/lib-0.3/modules/client-storage.js" -->
+var clientStorage = ClientStorage.guess()
+if (!clientStorage)
+	throw new Error('no client storge was found')
+
+<!--# include file="/lib-0.3/modules/motion.js" -->
+<!--# include file="/lib-0.3/modules/motion-types.js" -->
+<!--# include file="/lib-0.3/modules/animation.js" -->
+<!--# include file="/js/common/rolling-images.js" -->
+
+<!--# include file="/js/calculator/calculator.js" -->
 
 <!--# include file="/js/common/good_helper.js" -->
 <!--# include file="/js/common/datafilter.js" -->
-<!--# include file="/js/common/storage.js" -->
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
+<!--# include file="/js/common/rutils.js" -->
 
 <!--# include file="/js/common/theme.js" -->
 <!--# config timefmt="%Y.%m" -->

@@ -1,8 +1,9 @@
-function remClass(elem, className) { if(elem) elem.remClassName(className) };
+function remClass(elem, className) { if(elem) elem.removeClassName(className) };
+function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
 function CocktailsView (states, nodes, styles) {
 	
-	new Programica.RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
+	new RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
 	this.filterElems   = { tag: null, strength: null, method: null, letter: null };
 	this.perPage       = 16;
@@ -43,7 +44,7 @@ function CocktailsView (states, nodes, styles) {
 	this.bindEvents = function () {
 		var self = this;
 		
-		var letterLinks = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
+		var letterLinks = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 		for(var i = 0; i < letterLinks.length; i++){
 			letterLinks[i].addEventListener('mousedown', function(e){
 				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), 
@@ -51,7 +52,7 @@ function CocktailsView (states, nodes, styles) {
 			}, false);
 		}
 		
-		var tagLinks = cssQuery("dd", nodes.tagsList);
+		var tagLinks = $$("dd", nodes.tagsList);
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
@@ -60,7 +61,7 @@ function CocktailsView (states, nodes, styles) {
 			}}(i), false);
 		}
 		
-		var strengthLinks = cssQuery("dd", nodes.strengthsList);
+		var strengthLinks = $$("dd", nodes.strengthsList);
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!strengthLinks[num].hasClassName(styles.disabled)) {
@@ -69,7 +70,7 @@ function CocktailsView (states, nodes, styles) {
 			}}(i), false);
 		}
 
-		var methodLinks = cssQuery("dd", nodes.methodsList);
+		var methodLinks = $$("dd", nodes.methodsList);
 		for(var i = 0; i < methodLinks.length; i++){
 			methodLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!methodLinks[num].hasClassName(styles.disabled)) {
@@ -91,9 +92,9 @@ function CocktailsView (states, nodes, styles) {
 			
 			// big pager buttons
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName(styles.disabled);
-			else nodes.bigNext.remClassName(styles.disabled);
+			else nodes.bigNext.removeClassName(styles.disabled);
 			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName(styles.disabled);
-			else nodes.bigPrev.remClassName(styles.disabled);
+			else nodes.bigPrev.removeClassName(styles.disabled);
 		}
 		
 		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
@@ -168,7 +169,7 @@ function CocktailsView (states, nodes, styles) {
 		var bodyWrapper = nodes.bodyWrapper
 		for (var k in states)
 			// toggleClassName(k, states[k] == state) must be used
-			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.remClassName(k)
+			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.removeClassName(k)
 		
 		if(state == states.byIngredients) {
 			nodes.tagStrengthArea.show();
@@ -179,9 +180,9 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		nodes.ingredsView.hide();
-		nodes.searchTipIngredient.setVisible(state == states.byIngredients);
-		nodes.searchTipName.setVisible(state == states.byName);
-		if(state != states.byName) cssQuery("input", nodes.searchByName)[0].value = "";
+		setVisible(nodes.searchTipIngredient, state == states.byIngredients)
+		setVisible(nodes.searchTipName, state == states.byName)
+		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
 	};
 	
 	this.onAllIngredientsRemoved = function () {
@@ -219,7 +220,7 @@ function CocktailsView (states, nodes, styles) {
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
 		if(filters.letter != "") {
-			var letterElems = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
+			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 			
 			for(var i = 0; i < letterElems.length; i++) {
 				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
@@ -282,8 +283,8 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		if(this.currentState == states.byIngredients){
-			nodes.searchTipIngredient.setVisible(words.length == 0)
-			nodes.ingredsView.setVisible(words.length > 0)
+			setVisible(nodes.searchTipIngredient, words.length == 0)
+			setVisible(nodes.ingredsView, words.length > 0)
 		}
 		
 		if(filters.page > 0) {
@@ -292,7 +293,7 @@ function CocktailsView (states, nodes, styles) {
 		
 		if (filters.name)
 		{
-			var input = cssQuery("input", nodes.searchByName)[0]
+			var input = $$("input", nodes.searchByName)[0]
 			if (input.value != filters.name)
 				input.value = filters.name
 		}
@@ -305,7 +306,7 @@ function CocktailsView (states, nodes, styles) {
 		nodes.resultsRoot.empty();
 		
 		if (resultSet.length)
-			nodes.resultsDisplay.remClassName('empty')
+			nodes.resultsDisplay.removeClassName('empty')
 		else
 			nodes.resultsDisplay.addClassName('empty')
 			

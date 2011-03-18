@@ -169,7 +169,6 @@ html.about-page #bottom a.about,
 {border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 
 /* popups-related */
-.win-shop{display:none;}
 .win-shop{position:fixed;z-index:50;top:0;left:0;width:100%;height:100%;}
 .opacity,.win-shop .opacity {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
 .win-shop .win{background:url(bg/win/win.png) no-repeat 0 100%;margin:0 auto;top:72px;position:relative;width:620px;padding:0 19px 19px;z-index:5;}

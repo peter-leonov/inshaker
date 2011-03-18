@@ -113,7 +113,7 @@ function CalculatorView() {
 	
 	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
-	this.addBtn = cssQuery(this.CLASS_ADD_BTN) ? cssQuery(this.CLASS_ADD_BTN)[0] : null;
+	this.addBtn = $$(this.CLASS_ADD_BTN) ? $$(this.CLASS_ADD_BTN)[0] : null;
 
 	
 	var self = this;
@@ -156,10 +156,10 @@ function CalculatorView() {
   this.initBarChanger = function(barName) {
     var editing = false
     var nodes  = { bill: $('b-bill'), 
-                   name: cssQuery("#b-bill .b-title h1")[0], 
-                   edit: cssQuery("#b-bill .b-title label")[0], 
-                   tip:  cssQuery("#b-bill .b-title small")[0],
-                   input:cssQuery("#b-bill .b-title input")[0] } 
+                   name: $$("#b-bill .b-title h1")[0], 
+                   edit: $$("#b-bill .b-title label")[0], 
+                   tip:  $$("#b-bill .b-title small")[0],
+                   input:$$("#b-bill .b-title input")[0] } 
 
     var styles = { editing: 'editing-bar-name', unnamed: 'unnamed' }
 
@@ -188,8 +188,8 @@ function CalculatorView() {
 
         function finishEditing(){
           nodes.edit.hide()
-          nodes.bill.remClassName(styles.editing)
-          nodes.name.remClassName(styles.unnamed)
+          nodes.bill.removeClassName(styles.editing)
+          nodes.name.removeClassName(styles.unnamed)
           nodes.name.innerHTML = nodes.input.value || nodes.tip.innerHTML
           nodes.name.show()
           editing = false
@@ -197,7 +197,7 @@ function CalculatorView() {
         }
 
         function checkEmptiness(){ setTimeout(function(){ 
-          nodes.tip.setVisible(!nodes.input.value.length)
+          nodes.input.value.length ? nodes.tip.hide() : nodes.tip.show()
         }, 1) }
 
         nodes.input.addEventListener('keypress', checkEmptiness, false)
@@ -228,7 +228,7 @@ function CalculatorView() {
 		$(self.INGRED_POPUP).hide();
 	}, false);
 	
-	cssQuery("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
+	$$("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
 		$(self.INGRED_POPUP).hide();
 	}, false);
 
@@ -247,7 +247,7 @@ function CalculatorView() {
 	 * @param init - true, если это первый проход по MVC
 	 */
 	this.modelChanged = function(cartData, init){ // model
-		var barName = Storage.get('barName')
+		var barName = clientStorage.get('barName')
 		this.renderCart(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
 		else this.initBarChanger(barName)
