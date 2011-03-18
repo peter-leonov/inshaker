@@ -12,13 +12,13 @@ CocktailsPage =
 $.onready(
 	function () {
 		var nodes = {
-			bodyWrapper: cssQuery('#main-wrapper .body-wrapper')[0],
+			bodyWrapper: $$('#main-wrapper .body-wrapper')[0],
 			resultsDisplay: $('results_display'),
 			resultsRoot: $('surface'),
 			pagerRoot: $('p-list'),
 			
-			bigNext: cssQuery(".pager-big .next")[0],
-			bigPrev: cssQuery(".pager-big .prev")[0],
+			bigNext: $$(".pager-big .next")[0],
+			bigPrev: $$(".pager-big .prev")[0],
 			
 			alphabetRu: $('alphabetical-ru'),
 			lettersAll: $('letters_all'),
@@ -29,16 +29,16 @@ $.onready(
 			
 			searchByName: $('search_by_name'),
 			searchByIngreds: $('search_by_ingreds'),
-			searchByIngredsInput: cssQuery('#search_by_ingreds input')[0],
-			searchByIngredsForm: cssQuery('#search_by_ingreds form')[0],
+			searchByIngredsInput: $$('#search_by_ingreds input')[0],
+			searchByIngredsForm: $$('#search_by_ingreds form')[0],
 			searchByLetter: $('search_by_letter'),
 			
 			tagStrengthArea: $('b_search'),
 			mainArea: $('b_content'),
 			
 			searchTabs: $('search_tabs'),
-			ingredsView: cssQuery(".ingreds-list")[0],
-			removeAllIngreds: cssQuery(".ingreds-list .rem")[0],
+			ingredsView: $$(".ingreds-list")[0],
+			removeAllIngreds: $$(".ingreds-list .rem")[0],
 			searchesList: $('ingredients_list'),
 			searchTips: $('search_tips'),
 			

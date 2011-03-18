@@ -43,7 +43,7 @@ function CocktailsView (states, nodes, styles) {
 	this.bindEvents = function () {
 		var self = this;
 		
-		var letterLinks = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
+		var letterLinks = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 		for(var i = 0; i < letterLinks.length; i++){
 			letterLinks[i].addEventListener('mousedown', function(e){
 				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), 
@@ -51,7 +51,7 @@ function CocktailsView (states, nodes, styles) {
 			}, false);
 		}
 		
-		var tagLinks = cssQuery("dd", nodes.tagsList);
+		var tagLinks = $$("dd", nodes.tagsList);
 		for(var i = 0; i < tagLinks.length; i++){
 			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!tagLinks[num].hasClassName(styles.disabled)) {
@@ -60,7 +60,7 @@ function CocktailsView (states, nodes, styles) {
 			}}(i), false);
 		}
 		
-		var strengthLinks = cssQuery("dd", nodes.strengthsList);
+		var strengthLinks = $$("dd", nodes.strengthsList);
 		for(var i = 0; i < strengthLinks.length; i++){
 			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!strengthLinks[num].hasClassName(styles.disabled)) {
@@ -69,7 +69,7 @@ function CocktailsView (states, nodes, styles) {
 			}}(i), false);
 		}
 
-		var methodLinks = cssQuery("dd", nodes.methodsList);
+		var methodLinks = $$("dd", nodes.methodsList);
 		for(var i = 0; i < methodLinks.length; i++){
 			methodLinks[i].addEventListener('mousedown', function(num){ return function(){
 				if(!methodLinks[num].hasClassName(styles.disabled)) {
@@ -181,7 +181,7 @@ function CocktailsView (states, nodes, styles) {
 		nodes.ingredsView.hide();
 		nodes.searchTipIngredient.setVisible(state == states.byIngredients);
 		nodes.searchTipName.setVisible(state == states.byName);
-		if(state != states.byName) cssQuery("input", nodes.searchByName)[0].value = "";
+		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
 	};
 	
 	this.onAllIngredientsRemoved = function () {
@@ -219,7 +219,7 @@ function CocktailsView (states, nodes, styles) {
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
 		if(filters.letter != "") {
-			var letterElems = cssQuery("a", nodes.alphabetRu).concat(nodes.lettersAll);
+			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 			
 			for(var i = 0; i < letterElems.length; i++) {
 				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
@@ -292,7 +292,7 @@ function CocktailsView (states, nodes, styles) {
 		
 		if (filters.name)
 		{
-			var input = cssQuery("input", nodes.searchByName)[0]
+			var input = $$("input", nodes.searchByName)[0]
 			if (input.value != filters.name)
 				input.value = filters.name
 		}
