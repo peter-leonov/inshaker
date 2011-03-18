@@ -122,17 +122,17 @@ RollingImagesLite.prototype =
 		if (this.aPrev)
 		{
 			if (this.current > 0)
-				this.aPrev.removeClassName('disabled')
-			else
 				this.aPrev.addClassName('disabled')
+			else
+				this.aPrev.removeClassName('disabled')
 		}
 		
 		if (this.aNext)
 		{
 			if (this.current < this.points.length - 1)
-				this.aPrev.removeClassName('disabled')
-			else
 				this.aPrev.addClassName('disabled')
+			else
+				this.aPrev.removeClassName('disabled')
 		}
 	},
 	
