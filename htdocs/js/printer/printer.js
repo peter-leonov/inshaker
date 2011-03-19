@@ -49,7 +49,7 @@ var Printer = {
 	// dirty synchronous json loading
 	loadData: function (cocktail)
 	{
-		var data = eval('(' + sGet(cocktail.getPath() + 'data.json').responseText() + ')')
+		var data = eval('(' + Request.get(cocktail.getPath() + 'data.json', null, null, true).responseText + ')')
 		Object.extend(cocktail, data)
 	},
 	
