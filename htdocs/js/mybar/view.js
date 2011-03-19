@@ -91,10 +91,10 @@ var myProto =
 	
 	onscroll : function()
 	{
-		log(this)
-		var frame = this.recommendsFrame
-		if(frame)
-			frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)		
+		this.suspendedRenderFrame.checkout()
+		//var frame = this.recommendsFrame
+		//if(frame)
+		//	frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)		
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -309,11 +309,19 @@ var myProto =
 	renderBottomOutput : function(mustHaveRecommends, recommends)
 	{
 		//this.renderBoByCocktails(recommends)
-		var items = []
-		items = items.concat(this.bottomRecommendsRender(recommends))
-		items = items.concat(this.mustHaveRender(mustHaveRecommends))
+		//var items = []
+		//items = items.concat(this.bottomRecommendsRender(recommends))
+		//items = items.concat(this.mustHaveRender(mustHaveRecommends))
 		
-		this.setupRecommendsVisibilityFrame(items)
+		var mainNode = this.nodes.bottomOutput.recommends
+		var dl = Nc('dl', 'show-by-cocktails')
+		
+		mainNode.empty()
+		mainNode.appendChild(dl)
+		
+		this.suspendedRenderFrame = new SuspendRenderFrame(dl, recommends, this.renderOneRecommend)
+		
+		//this.setupRecommendsVisibilityFrame(items)
 		
 		this.onscroll()
 	},
@@ -342,48 +350,161 @@ var myProto =
 	},
 
 	renderOneRecommend : function(group)
-	{
-		var df = document.createDocumentFragment()
+	{	
 		var ingredients = group.ingredients,
 			cocktails = group.cocktails,
+			havingIngredients = group.havingIngredients,
 			cl = cocktails.length
 		
 		var il = ingredients.length,
 			cl = cocktails.length,
 			tl = il + cl,
 			perRow = 7
-			
-		var bigPlus = Nct('div', 'big-plus', '+'),
-			eq = Nct('div', 'eq', '='),
-			head = Nc('ul', 'head')
-			head.style.width = group.iColumns * 117 + 'px'
 		
+		/*-------------------------------*/
+		if(tl <= perRow)
+		{
+			var rows = 1
+			var iColumns = il
+			var cColumns = cl
+		}
+		else
+		{
+			var len = il > cl ? il : cl
+			var ti = [0]
+			var tc = [0]
+			var ri = rc = 0
+			var li = lc = null
+			for (var j = 0; j < len; j++) 
+			{						
+				if(ingredients[j])
+				{
+					if(ti[ri] + tc[rc] == perRow || li && ti[ri] == li)
+					{
+						var li = li || ti[ri]
+						ri++
+					}
+					
+						ti[ri] = ti[ri] || 0
+						ti[ri]++
+				}
+					
+				if(cocktails[j])
+				{
+					if(ti[ri] + tc[rc] == perRow || lc && tc[rc] == lc)
+					{
+						var lc = lc || tc[rc]
+						rc++
+					}
+					
+					tc[rc] = tc[rc] || 0
+					tc[rc]++
+				}
+				
+				var rows = ti.length > tc.length ? ti.length : tc.length
+				if(rows - ti.length > 1 && ti[0] > 1)
+				{
+					ti = relocation(ti, ti[0] - 1)
+					tc = relocation(tc, tc[0] + 1)
+				}
+				else if(rows - tc.length > 1 && tc[0] > 1)
+				{
+					ti = relocation(ti, ti[0] + 1)
+					tc = relocation(tc, tc[0] - 1)
+				}
+			}
+				
+			var iColumns = ti[0]
+			var cColumns = tc[0]
+		}
+		
+		var df = document.createDocumentFragment()
+		
+		var dd = Nc('dd')
+		dd.style.height = rows * 155 + 'px'
+		
+		var bigPlus = Nct('div', 'big-plus', '+')
+		
+		var head = Nc('ul', 'head')
+		head.style.width = group.iColumns * 117 + 'px'
+		
+		var	eq = Nct('div', 'eq', '=')
+		
+		var body = Nc('ul', 'body')
+		body.style.width = cColumns * 117 + 'px'
+		/*-------------------------------*/
 		
 		bigPlus.ingredients = ingredients
 		
-		df.appendChild(bigPlus)
+		dd.appendChild(bigPlus)
 		
-		for (var i = 0, il = ingredients.length; i < il; i++)
+		for (var i = 0; i < il; i++)
 		{
 			var ing = ingredients[i].getPreviewNode(true)
 			//ing.appendChild(ingredients[i].getPreviewNode(true))
 			head.appendChild(ing)
 		}
 		
-		df.appendChild(head)
-		df.appendChild(eq)
+		dd.appendChild(head)
+		dd.appendChild(eq)
 		
-		var body = Nc('ul', 'body')
-		body.style.width = group.cColumns * 117 + 'px'
+
 		
-		for (var i = 0, cl = cocktails.length; i < cl; i++)
+		for (var i = 0; i < cl; i++)
 		{
 			var n = cocktails[i].getPreviewNode()
 			body.appendChild(n)
 		}
-		df.appendChild(body)			
+		dd.appendChild(body)			
 		
-		return df	
+		var dt = Nc('dt', 'advice')
+		
+		var hs = createTextFromArr(havingIngredients)
+		var is = createTextFromArr(ingredients, true)
+		var cs = createTextFromArr(cocktails, true)
+		
+		var text = 'В твоем баре уже есть ' + hs + '. ' + 'Если будет ' + is + ', сможешь приготовить ' + cl.plural('коктейль','коктейли','коктейли') + ' ' + cs + '.'
+		
+		dt.appendChild(document.createTextNode(text))
+		df.appendChild(dt)
+		df.appendChild(dd)
+		
+		return df
+		
+		function createTextFromArr(arr, names)
+		{
+			if(names)
+				arr = arr.map(function(a){ return a.name })
+			var last = arr.pop()
+			var s = arr.join(', ')
+			return s ? s + ' и ' + last : last
+		}
+		
+		function relocation(tarr, cols)
+		{
+			var sum = 0						
+			for (var k = 0; k < tarr.length; k++) 
+			{
+				sum += tarr[k]
+			}
+			
+			rows = 0
+			var arr = []
+			while(sum)
+			{
+				for (var k = 0; k < cols; i++) 
+				{
+					sum--
+					arr[rows] = ++arr[rows] || 1
+					
+					if(!sum)
+						break;
+				}
+				rows++
+			}
+			
+			return arr
+		}
 	},
 	
 	bottomRecommendsRender : function(groups)
@@ -456,13 +577,14 @@ var myProto =
 				var cColumns = tc[0]
 			}
 			
-			
 			var dd = Nc('dd', 'lazy')
+			
 			dd.style.height = rows * 155 + 'px'
 			g.iColumns = iColumns
 			g.cColumns = cColumns
 			items.push(dd)
 			dd.group = g
+			
 			dl.appendChild(dd)
 		}
 		
