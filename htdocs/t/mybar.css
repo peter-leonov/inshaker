@@ -366,7 +366,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 
 .bottom-output .wrapper .recommends .package, .bottom-output .wrapper .must-have .row { overflow: hidden; height: 150px; margin-bottom: 5px; position: relative; }
 .bottom-output .wrapper .recommends .show-by-cocktails { width: 940px; }
-.bottom-output .wrapper .recommends .show-by-cocktails .advice { font-size: 16px; padding: 10px 10px 10px 0px; }
+.bottom-output .wrapper .recommends .show-by-cocktails .advice { font-size: 14px; padding: 10px 10px 10px 0px; }
 .bottom-output .wrapper .recommends .show-by-cocktails .big-plus { margin-top: 28px; }
 #output .bottom-output .wrapper .recommends .package .ingredients { float: left; overflow: visible; }
 .bottom-output .wrapper .recommends .package .eq { float: left; margin-top: 27px; }
