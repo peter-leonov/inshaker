@@ -319,7 +319,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 .bottom-output .title span { color: #0392F1; }
 
 .bottom-output .show-by-cocktails ul { float: left; }
-.bottom-output .show-by-cocktails dd { overflow: hidden; position: relative; height: 155px; }
+.bottom-output .show-by-cocktails dd { overflow: hidden; position: relative; height: 155px; padding-bottom: 20px; }
 
 .bottom-output .show-by-cocktails dd.rows-1 { height: 155px; }
 .bottom-output .show-by-cocktails dd.rows-2 { height: 310px; }
@@ -366,6 +366,7 @@ html.loading .b-content, html.loading .b-title { display: none; }
 
 .bottom-output .wrapper .recommends .package, .bottom-output .wrapper .must-have .row { overflow: hidden; height: 150px; margin-bottom: 5px; position: relative; }
 .bottom-output .wrapper .recommends .show-by-cocktails { width: 940px; }
+.bottom-output .wrapper .recommends .show-by-cocktails .advice { font-size: 16px; padding: 10px 10px 10px 0px; }
 .bottom-output .wrapper .recommends .show-by-cocktails .big-plus { margin-top: 28px; }
 #output .bottom-output .wrapper .recommends .package .ingredients { float: left; overflow: visible; }
 .bottom-output .wrapper .recommends .package .eq { float: left; margin-top: 27px; }
@@ -428,6 +429,8 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	border-color: #eee;
 	cursor: default;
 }
+
+
 
 /*Popup*/
 <!--# include virtual="/t/ingredient-popup.css" -->
