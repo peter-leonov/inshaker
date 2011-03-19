@@ -33,6 +33,12 @@ BarsPageController.prototype =
 	{
 		var state = this.state
 		state.view = type
+		if (type == 'list')
+		{
+			delete state.zoom
+			delete state.lat
+			delete state.lng
+		}
 		this.view.setHash(state)
 		this.model.setState(state)
 	},
