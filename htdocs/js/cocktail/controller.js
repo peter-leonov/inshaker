@@ -35,6 +35,7 @@ var Controller = {
 	ID_CART_FULL    : 'cart_contents',
 	
 	CLASS_VIEW_HOW_BTN : '.bt-view-how',
+	CLASS_PRINT_RECIPE : '.bt-print-how',
     KEY_ESC: 27,
 
 	name : "",
@@ -131,6 +132,12 @@ var Controller = {
 			var ri = $(self.ID_ING).RollingImagesLite
 			if (ri)
 				ri.goInit(); // Work-around for RI: FIXME
+		}, false);
+		
+		var printRecipe = $$(this.CLASS_PRINT_RECIPE)[0]
+		printRecipe.addEventListener('click', function (e)
+		{
+			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
 		}, false);
 		
 		var tools_links = $$(".b-content .tools dd a");
