@@ -2,26 +2,13 @@ function BarsPageController ()
 {
 	BarsPageController.name = "BarsPageController"
 	this.constructor = BarsPageController
-	this.initialize.apply(this, arguments)
 }
 
 BarsPageController.prototype =
 {
-	state: {city: undefined, format: undefined, feel: undefined},
-	
-	initialize: function (state)
-	{
-		this.state = Object.copy(state)
-		this.emptyState = Object.copy(state)
-	},
-	
 	hashUpdated: function (hash)
 	{
-		var state = this.state
-		if (hash)
-			Object.extend(state, hash)
-		else
-			state = this.state = Object.copy(this.emptyState)
+		var state = this.state = hash
 		
 		this.view.setHash(state)
 		this.view.setViewType(state.view)
