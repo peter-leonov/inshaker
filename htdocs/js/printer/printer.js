@@ -35,7 +35,8 @@ var Printer = {
         var self = this;
         img.src = this.IMG_MARKER;
         img.onload = function(e){
-            if(self.wannaPrint) setTimeout("print()", 500);
+            if (self.wannaPrint)
+                setTimeout(function () { window.print() }, 1000)
         }
     },
 
@@ -84,7 +85,8 @@ var Printer = {
             imgsRoot.appendChild(img);
             img.onload = function(e){
                 imgCounter++;
-                if(imgCounter == cocktail.ingredients.length) print();
+                if(imgCounter == cocktail.ingredients.length)
+                    setTimeout(function () { window.print() }, 1000)
             }
        }
 	},
