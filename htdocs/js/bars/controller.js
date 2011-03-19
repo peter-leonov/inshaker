@@ -31,9 +31,10 @@ BarsPageController.prototype =
 	
 	viewTypeSwitched: function (type)
 	{
-		this.state.view = type
-		this.view.setHash(this.state)
-		this.model.setState(this.state)
+		var state = this.state
+		state.view = type
+		this.view.setHash(state)
+		this.model.setState(state)
 	},
 	
 	cocktailSelected: function (val)
@@ -49,8 +50,8 @@ BarsPageController.prototype =
 		var state = this.state
 		delete state.bar
 		state.city = val
-		state.format = undefined
-		state.feel = undefined
+		delete state.format
+		delete state.feel
 		this.view.setHash(state)
 		this.model.setState(state)
 	},
@@ -58,7 +59,7 @@ BarsPageController.prototype =
 	{
 		var state = this.state
 		state.format = val
-		state.feel = undefined
+		delete state.feel
 		this.view.setHash(state)
 		this.model.setState(state)
 	},
