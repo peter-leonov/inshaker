@@ -385,8 +385,8 @@ var myProto =
 						ri++
 					}
 					
-						ti[ri] = ti[ri] || 0
-						ti[ri]++
+					ti[ri] = ti[ri] || 0
+					ti[ri]++
 				}
 					
 				if(cocktails[j])
@@ -402,31 +402,42 @@ var myProto =
 				}
 				
 				var rows = ti.length > tc.length ? ti.length : tc.length
-				if(rows - ti.length > 1 && ti[0] > 1)
+				if(rows - ti.length > 2 && ti[0] > 2)
 				{
 					ti = relocation(ti, ti[0] - 1)
 					tc = relocation(tc, tc[0] + 1)
+					ri = ti.length - 1
+					rc = tc.length - 1
+					li = ri[0]
+					lc = rc[0]
 				}
-				else if(rows - tc.length > 1 && tc[0] > 1)
+				else if(rows - tc.length > 2 && tc[0] > 2)
 				{
 					ti = relocation(ti, ti[0] + 1)
 					tc = relocation(tc, tc[0] - 1)
+					ri = ti.length - 1
+					rc = tc.length - 1
+					li = ri[0]
+					lc = rc[0]
 				}
 			}
 				
 			var iColumns = ti[0]
-			var cColumns = tc[0]
+			var cColumns = tc[0]	
+			rows = ti.length > tc.length ? ti.length : tc.length
 		}
 		
 		var df = document.createDocumentFragment()
 		
-		var dd = Nc('dd')
+		var dd = N('dd')
 		dd.style.height = rows * 155 + 'px'
+		
+		dd.setAttribute('rows', rows)
 		
 		var bigPlus = Nct('div', 'big-plus', '+')
 		
 		var head = Nc('ul', 'head')
-		head.style.width = group.iColumns * 117 + 'px'
+		head.style.width = iColumns * 117 + 'px'
 		
 		var	eq = Nct('div', 'eq', '=')
 		
@@ -482,17 +493,21 @@ var myProto =
 		
 		function relocation(tarr, cols)
 		{
+			log('ingredient', ingredients.map(function(a){ return a.name }))
+			log('tarr', tarr, 'cols', cols)
 			var sum = 0						
 			for (var k = 0; k < tarr.length; k++) 
 			{
-				sum += tarr[k]
+				if(tarr[k])
+					sum += tarr[k]
 			}
 			
 			rows = 0
 			var arr = []
+			log('sum', sum)
 			while(sum)
 			{
-				for (var k = 0; k < cols; i++) 
+				for (var k = 0; k < cols; k++) 
 				{
 					sum--
 					arr[rows] = ++arr[rows] || 1
@@ -502,7 +517,8 @@ var myProto =
 				}
 				rows++
 			}
-			
+			log('return arr', arr)
+			log('-------------------------------------------------------------------')
 			return arr
 		}
 	},
