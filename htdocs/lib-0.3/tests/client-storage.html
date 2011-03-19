@@ -8,6 +8,13 @@
 	
 	<script type="text/javascript" src="../src/core/prototype.js"></script>
 	<script type="text/javascript" src="../src/modules/client-storage.js"></script>
+	<script type="text/javascript" src="../src/modules/client-storage/local-storage.js"></script>
+	<script type="text/javascript" src="../src/modules/client-storage/global-storage.js"></script>
+	<script type="text/javascript" src="../src/modules/client-storage/user-data.js"></script>
+	<script type="text/javascript" src="../src/modules/client-storage/flash-9.js"></script>
+	<script type="text/javascript" src="../src/modules/client-storage/window-name.js"></script>
+	<script type="text/javascript" src="../src/modules/url-encode.js"></script>
+	<script type="text/javascript" src="../src/modules/window-name.js"></script>
 	
 	<style>.client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }</style>
 </head>
@@ -30,6 +37,7 @@ Tests.test(function (t)
 		t.ok(storage && storage.constructor.className, 'guess()')
 	})
 	
+	var iframeCounter = 0
 	
 	function run (t, S)
 	{
@@ -70,7 +78,7 @@ Tests.test(function (t)
 					
 					t.eq(storage.remove('b'), null, 'remove b after remove')
 					
-					t.like(storage.clear().sort(), ['a', 'c'], 'clear')
+					storage.clear()
 					t.eq(storage.get('a'), null, 'get a after clear')
 					t.eq(storage.get('b'), null, 'get b after clear')
 					t.eq(storage.get('c'), null, 'get c after clear')
@@ -94,7 +102,7 @@ Tests.test(function (t)
 					[
 						null, undefined, false, true, 1, 4.5,
 						new Date(), [], {}, window,
-						'key', 'removeItem', 'contentEditable', 'parentNode', 'bottomMargin',
+						'key', 'removeItem', 'contentEditable', 'parentNode', 'bottomMargin', 'toString', 'prototype',
 						'\\', 'aa aa', 'xx:yuyu',
 						'Юникод', 'Unicode的'
 					]
@@ -127,12 +135,14 @@ Tests.test(function (t)
 					t.eq(storage.set('persistent', 'old'), 'old', 'set persistent key')
 					t.eq(storage.get('persistent'), 'old', 'get persistent key')
 					
+					var id = 'helper-' + ++iframeCounter
 					var iframe = document.createElement('iframe')
+					iframe.id = id
 					iframe.className = 'storage-helper'
 					document.body.appendChild(iframe)
 					
 					var prefix = /^(.+\/)/.exec(window.location.href)[0]
-					iframe.src = prefix + 'client-storage/client-storage-helper.html?' + S.className + ':persistent:new'
+					iframe.src = prefix + 'client-storage/client-storage-helper.html?' + S.className + ':persistent:new:' + id
 					
 					function check ()
 					{
@@ -141,18 +151,7 @@ Tests.test(function (t)
 						t.done()
 					}
 					
-					iframe.onreadystatechange = function ()
-					{
-						if (iframe.readyState != 'complete')
-							return
-						
-						setTimeout(check, 500)
-					}
-					
-					iframe.onload = function ()
-					{
-						setTimeout(check, 500)
-					}
+					iframe.onready = t.wrap(check)
 				}
 				
 				storage.ready(t.wrap(ready))

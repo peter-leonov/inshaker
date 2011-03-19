@@ -11,31 +11,42 @@ var Me =
 		var decode = this.decode
 		var res = {}
 		
-		var parts = String(string).split(this.paramDelimiterRex || this.paramDelimiter)
+		var parts = String(string).split(this.paramDelimiter)
 		for (var i = 0; i < parts.length; i++)
 		{
 			var pair = parts[i].split('='),
-				name = decode(pair[0]),
-				val = decode(pair[1] || '')
+				k = pair[0],
+				v = pair[1]
+			
+			if (v === undefined)
+			{
+				if (k == '')
+					continue
+			}
+			else
+				v = decode(v)
+			
+			k = decode(k)
 			
 			if (forceArray)
 			{
-				if (res[name])
-					res[name].push(val)
+				if (res[k])
+					res[k].push(v)
 				else
-					res[name] = [val]
+					res[k] = [v]
 			}
 			else
 			{
-				if (res[name])
+				var a = res[k]
+				if (a)
 				{
-					if (typeof res[name] == 'array')
-						res[name].push(val)
+					if (typeof res[k] == 'object')
+						res[k].push(v)
 					else
-						res[name] = [res[name], val]
+						res[k] = [res[k], v]
 				}
 				else
-					res[name] = val
+					res[k] = v
 			}
 		}
 		
@@ -44,50 +55,24 @@ var Me =
 	
 	stringify: function (data)
 	{
-		var pd = this.paramDelimiter,
-			encode = this.encode
+		var encode = this.encode, A = Array,
+			pairs = []
 		
-		if (!data)
-			return ''
-		
-		if (typeof data.toUrlEncode == 'function')
-			return data.toUrlEncode()
-		
-		switch (data.constructor)
+		for (var k in data)
 		{
-			case Array:
-				var arr = []
-				for (var j = 0, jl = data.length; j < jl; j++)
-					arr.push(encode(data[j]))
-				return arr.join(pd)
+			var v = data[k]
 			
-			case Object:
-				var arr = []
-				for (var i in data)
-					if (i !== undefined && i != '')
-					{
-						var val = data[i]
-						var enci = encode(i)
-						if (val !== undefined && val !== null)
-							switch (val.constructor)
-							{
-								case Array:
-									for (var j = 0, jl = val.length; j < jl; j++)
-										arr.push(enci + "=" + encode(val[j]))
-									break
-								case Object:
-									arr.push(enci + "=" + encode('[object]'))
-									break
-								default:
-									arr.push(enci + "=" + encode(val))
-									break
-							}
-					}
-				return arr.join(pd)
-			
-			default:
-				return encode(data)
+			k = encode(k)
+			if (v && v.constructor == A)
+			{
+				for (var i = 0, il = v.length; i < il; i++)
+					pairs.push(k + '=' + encode(v[i]))
+			}
+			else
+				pairs.push(k + '=' + encode(v))
 		}
+		
+		return pairs.join(this.paramDelimiter)
 	}
 }
 
