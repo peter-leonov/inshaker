@@ -382,8 +382,6 @@ var myProto =
 		
 		recommends.sort(function(a, b){ return a.len - b.len })
 
-		log(recommends.map(function(a){ return a.cocktails }))
-
 		var t = []
 		
 		for (var i = 0, il = recommends.length; i < il; i++) 
@@ -404,8 +402,6 @@ var myProto =
 					recommends[i] = null
 			}
 		}
-		
-		log(recommends.map(function(a){ if(a) return a.cocktails }))
 		
 		var groups = []
 		
@@ -441,7 +437,25 @@ var myProto =
 			var cocktails = Object.toArray(r.cocktails).map(function(a){ return Cocktail.getByName(a) })
 			cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })
 			
-			groups.push({ ingredients : ingredients, cocktails : cocktails })
+			var inBar = this.ingredients.inBar,
+				havingIngredients = {}
+			
+			
+			for (var ci = 0, cil = cocktails.length; ci < cil; ci++) 
+			{
+				var set = cocktails[ci].ingredients
+				for (var s = 0, sl = set.length; s < sl; s++) 
+				{
+								var ingr = set[s][0]
+								if(inBar[ingr])
+									havingIngredients[ingr] = true
+							}
+						}
+			
+			
+			havingIngredients = Object.toArray(havingIngredients).sort(Ingredient.sortByGroups)
+			
+			groups.push({ ingredients : ingredients, cocktails : cocktails, havingIngredients : havingIngredients })
 		}
 		
 		return groups.sort(function(a,b){ return me.sortRecommends(a,b) }).reverse()
