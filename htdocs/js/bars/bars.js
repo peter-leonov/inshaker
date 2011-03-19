@@ -25,6 +25,8 @@ $.onready
 		document.documentElement.removeClassName('loading')
 		UserAgent.setupDocumentElementClassNames()
 		
+		WindowName.init()
+		
 		var nodes =
 		{
 			titleAll: $$('#head .all')[0],
