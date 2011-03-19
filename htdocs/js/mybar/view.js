@@ -91,7 +91,8 @@ var myProto =
 	
 	onscroll : function()
 	{
-		this.suspendedRenderFrame.checkout()
+		this.suspendedRecommendsFrame.checkout()
+		this.suspendedMustHaveRecommendsFrame.checkout()
 		//var frame = this.recommendsFrame
 		//if(frame)
 		//	frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)		
@@ -313,22 +314,27 @@ var myProto =
 		//items = items.concat(this.bottomRecommendsRender(recommends))
 		//items = items.concat(this.mustHaveRender(mustHaveRecommends))
 		
-		var mainNode = this.nodes.bottomOutput.recommends
+		var recommendsNode = this.nodes.bottomOutput.recommends
 		var dl = Nc('dl', 'show-by-cocktails')
+		recommendsNode.empty()
+		recommendsNode.appendChild(dl)
 		
-		mainNode.empty()
-		mainNode.appendChild(dl)
+		var mustHaveNode = this.nodes.bottomOutput.mustHave
+		var ul = N('ul')
+		mustHaveNode.empty()
+		mustHaveNode.appendChild(ul)
 		
-		this.suspendedRenderFrame = new SuspendRenderFrame(dl, recommends, this.renderOneRecommend)
+		this.suspendedRecommendsFrame = new SuspendRenderFrame(dl, recommends, this.renderOneRecommend)
+		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(ul, mustHaveRecommends, this.renderOneMustHaveRecommend)
 		
 		//this.setupRecommendsVisibilityFrame(items)
 		
 		this.onscroll()
 	},
 	
-	rendernOneMustHaveRecommend : function(mustHaveIngredient)
+	renderOneMustHaveRecommend : function(mustHaveIngredient)
 	{
-			var df = document.createDocumentFragment()
+			var li = Nc('li', 'row')
 			
 			var bigPlus = Nct('div', 'big-plus', '+')
 			bigPlus.ingredients = [mustHaveIngredient.ingredient]
@@ -339,14 +345,14 @@ var myProto =
 			//var ing = Nc('div', 'ingredient')
 			//ing.appendChild(mustHaveIngredient.ingredient.getPreviewNode())
 			
-			df.appendChild(bigPlus)
-			df.appendChild(ing)
+			li.appendChild(bigPlus)
+			li.appendChild(ing)
 			
 			var desc = Nc('p', 'description')
 			desc.innerHTML = mustHaveIngredient.description
-			df.appendChild(desc)
+			li.appendChild(desc)
 			
-			return df
+			return li
 	},
 
 	renderOneRecommend : function(group)
