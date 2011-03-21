@@ -23,8 +23,8 @@ String.prototype.capitalize = function () { return this.charAt(0).toUpperCase() 
 
 ;(function(){
 
-var year = cssQuery('#copyright .year')[0]
+var year = cssQuery('#copyright .year')
 if (year)
-	year.innerHTML = new Date().getFullYear()
+	year[0].innerHTML = new Date().getFullYear()
 
 })();

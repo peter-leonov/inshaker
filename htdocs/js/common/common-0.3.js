@@ -33,9 +33,9 @@ $.onready(function () { Theme.bind() })
 
 $.onready(function ()
 {
-	var year = $$('#copyright .year')[0]
+	var year = $$('#copyright .year')
 	if (year)
-		year.firstChild.nodeValue = new Date().getFullYear()
+		year[0].firstChild.nodeValue = new Date().getFullYear()
 })
 
 
