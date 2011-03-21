@@ -1,3 +1,5 @@
+.hidden { display: none !important; }
+
 .b-title { width: 100%; }
 .b-title h1 { position: relative; }
 .b-title h1,
@@ -43,7 +45,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-how .ingredients{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:139px;margin-top:-140px;padding:0 1px;}
 #view-how .ingredients .wrap{background:url(bg/cocktail/how-bg.png) repeat-x 0 0;height:140px;position:relative;}
 #view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
-#view-how .ingredients .surface{width:5000px;height:120px;}
+#view-how .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-how .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 
 #view-how .ingredients .point{width:360px;height:120px;float:left;}
@@ -77,6 +79,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .what-need dd .in-my-bar.not-have { background-position: left top; }
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
+.client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 #panel_cocktail * { display: none !important; }

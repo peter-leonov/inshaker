@@ -47,11 +47,11 @@ var sup = Super.prototype,
 		this.supercall('start', [delay])
 	},
 	
-	exec: function (f)
+	exec: function (f, args)
 	{
 		try
 		{
-			f(this.tool)
+			f.apply(null, args)
 		}
 		catch (ex)
 		{
@@ -61,7 +61,7 @@ var sup = Super.prototype,
 	
 	job: function ()
 	{
-		this.exec(this.callback)
+		this.exec(this.callback, [this.tool])
 	},
 	
 	oncomplete: function ()
@@ -196,6 +196,8 @@ var sup = Super.prototype,
 		this.results.push({status: 'passed', message: m, description: d})
 		if (m || d)
 			this.reporter.pass(m, d)
+		
+		return true
 	},
 	
 	fail: function (m, d)
@@ -203,6 +205,8 @@ var sup = Super.prototype,
 		this.results.push({status: 'failed', message: m, description: d})
 		if (m || d)
 			this.reporter[this.conf.mayFail ? 'warn' : 'fail'](m, d)
+		
+		return false
 	},
 	
 	setStatus: function (s)

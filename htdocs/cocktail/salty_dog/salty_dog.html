@@ -49,7 +49,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Техасский покер — самая популярная разновидность клубного покера, был первой карточной игрой штата Техас. Однажды в штат приехали русские моряки и привезли с собой много водки. </p><p>Ковбои предпочитали пить крепкие напитки, смешивая их с грейпфрутовым соком, а моряки, чтобы не терять дух моря, добавили к нему соли. Так получился морской коктейль, воодушевляющий на великие свершения. Игра продолжалась до захода солнца, и, когда завыли койоты, веселые игроки дружно крикнули: «Эй, бармен! Налей-ка нам еще "Соленной собаки"».</p>
 							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -81,7 +81,7 @@
 							</dl>
 							<ul class="controls">
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#%D0%A1%D0%BE%D0%BB%D0%B5%D0%BD%D0%B0%D1%8F%20%D1%81%D0%BE%D0%B1%D0%B0%D0%BA%D0%B0")'><b>Распечатать</b></button></li>
+								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 							</ul>
 						</div>
 					</div>

@@ -36,13 +36,14 @@ BarsPageView.prototype =
 	
 	checkHash: function ()
 	{
-		var hash = null,
-			hashStr, winStr
+		var hash, str
 		
-		if (hashStr = location.hash.substr(1))
-			hash = UrlEncode.parse(hashStr)
-		else if (winStr = WindowName.get('bars:state'))
-			hash = UrlEncode.parse(winStr)
+		if (str = location.hash.substr(1))
+			hash = UrlEncode.parse(str)
+		else if (str = WindowName.get('bars:state'))
+			hash = UrlEncode.parse(str)
+		else
+			hash = {view: 'list'}
 		
 		this.controller.hashUpdated(hash)
 	},

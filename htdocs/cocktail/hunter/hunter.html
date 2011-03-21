@@ -49,7 +49,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>1500 лет минуло с тех пор, как в императорский дворец залетел дикий сокол.</p><p>Долго стражники не могли усмирить напуганную птицу. Но стоило юной служанке войти в зал с новым напитком для императора и сокол смиренно опустился на ее плечо. С того самого дня гордые птицы повинуются женщинам и помогают в охоте мужчинами.</p>
 							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -77,7 +77,7 @@
 							</dl>
 							<ul class="controls">
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#%D0%9E%D1%85%D0%BE%D1%82%D0%BD%D0%B8%D0%BA")'><b>Распечатать</b></button></li>
+								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 							</ul>
 						</div>
 					</div>

@@ -49,7 +49,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Придуманный Льюисом Эппинджером в конце XIX века коктейль с более чем вековой историей в мгновение ока разлетелся по Америке.</p><p>Рожденный соответствовать вкусам высокопоставленных гостей Гранд Отеля в Йокогаме, он увековечил своего создателя в мировой коктейльной истории и был опубликован в справочнике лучших отелей и кафе Бродвея.</p>
 							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -79,7 +79,7 @@
 							</dl>
 							<ul class="controls">
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#%D0%91%D0%B0%D0%BC%D0%B1%D1%83%202")'><b>Распечатать</b></button></li>
+								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 							</ul>
 						</div>
 					</div>

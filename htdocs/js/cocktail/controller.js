@@ -35,6 +35,7 @@ var Controller = {
 	ID_CART_FULL    : 'cart_contents',
 	
 	CLASS_VIEW_HOW_BTN : '.bt-view-how',
+	CLASS_PRINT_RECIPE : '.bt-print-how',
     KEY_ESC: 27,
 
 	name : "",
@@ -77,7 +78,7 @@ var Controller = {
 			}
 			
 			
-			a = cssQuery(this.SELECTOR_AUTHOR)[0]
+			a = $$(this.SELECTOR_AUTHOR)[0]
 			if (a)
 			{
 				a.addClassName('active')
@@ -114,7 +115,7 @@ var Controller = {
 		for (var i = mybar_links.length - 1; i >= 0; i--) {
 			mybar_links[i].addEventListener('click', function(e) {
 					link.open(this);
-					this.parentNode.now.remClassName('now');
+					this.parentNode.now.removeClassName('now');
 					// this.addClassName('now');
 					this.parentNode.now = this;
 					var ri = $(self.ID_ING).RollingImagesLite
@@ -125,7 +126,7 @@ var Controller = {
 		}
 		link = new Link();
 		
-		var viewHowBtn = cssQuery(this.CLASS_VIEW_HOW_BTN)[0];
+		var viewHowBtn = $$(this.CLASS_VIEW_HOW_BTN)[0];
 		viewHowBtn.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
 			link.open("view-how", true);
@@ -134,7 +135,13 @@ var Controller = {
 				ri.goInit(); // Work-around for RI: FIXME
 		}, false);
 		
-		var tools_links = cssQuery(".b-content .tools dd a");
+		var printRecipe = $$(this.CLASS_PRINT_RECIPE)[0]
+		printRecipe.addEventListener('click', function (e)
+		{
+			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
+		}, false);
+		
+		var tools_links = $$(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = Tool.getByName(tools_links[i].innerHTML)
 			// FIXME: dirty fix for invalid tool name
@@ -154,7 +161,7 @@ var Controller = {
             if(e.keyCode == self.KEY_ESC) $(self.TOOL_POPUP).hide();
         }, false);
 	
-		cssQuery("#shop-gadget .opacity")[0].addEventListener('click', function(e){
+		$$("#shop-gadget .opacity")[0].addEventListener('click', function(e){
 		    $(self.TOOL_POPUP).hide();	
 		}, false);
 		
@@ -241,9 +248,9 @@ var Controller = {
 	
 	_initNavigationRules: function(menu){
 		// TODO: remove UI fixes from Controller
-		var entry = cssQuery("#cocktail-page .hreview .entry")[0];
-		var ul = cssQuery("#cocktail-page #view-how ul")[0];
-		var hreview = cssQuery("#cocktail-page .hreview")[0]; 
+		var entry = $$("#cocktail-page .hreview .entry")[0];
+		var ul = $$("#cocktail-page #view-how ul")[0];
+		var hreview = $$("#cocktail-page .hreview")[0]; 
 		var desc = $('view-prepare-text');
 
 		$('view-prepare').show = function()
@@ -276,7 +283,7 @@ var Controller = {
 			this.style.display = 'none';
 			$('main-content').className = '';
 			$('poster').style.visibility = 'visible';
-			menu.now.remClassName('now');
+			menu.now.removeClassName('now');
 			
 			// Cancel fix
 			entry.style.height = "";
@@ -463,8 +470,8 @@ var Controller = {
 	},
 	
 	expandRelated: function(){ // model
-		var recsCol = cssQuery(".column.b-more-rec")[0];
-		var relCol  = cssQuery(".column.b-more-cocktails")[1];
+		var recsCol = $$(".column.b-more-rec")[0];
+		var relCol  = $$(".column.b-more-cocktails")[1];
 		recsCol.style.display = "none";
 		relCol.style.width = "62.8em";
 	}

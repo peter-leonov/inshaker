@@ -49,7 +49,7 @@
 								<h3>Легенда коктейля</h3>
 								<p>Согласно старинной легенде, правителем магического Ворштолха может стать только тот, в чьих руках вода покраснеет.</p><p>Прожив без короля более сотни лет ворштолхцы сами избрали правителя и начали подавать при дворе красный коктейль, дабы монаршая власть больше никогда не пошатнулась.</p>
 							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].remClassName('now')"><b>Закрыть легенду</b></button>
+							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
 						</div>
 						
 						<div id="view-how">
@@ -83,7 +83,7 @@
 							</dl>
 							<ul class="controls">
 								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how" onclick='window.open("/print_cocktail.html#%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D1%87%D0%B0%D0%B9")'><b>Распечатать</b></button></li>
+								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 							</ul>
 						</div>
 					</div>
