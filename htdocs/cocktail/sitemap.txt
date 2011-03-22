@@ -322,6 +322,7 @@ http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
 http://www.inshaker.ru/cocktail/caprese_martini/
 http://www.inshaker.ru/cocktail/capri/
 http://www.inshaker.ru/cocktail/cardicas/
+http://www.inshaker.ru/cocktail/karel_gott/
 http://www.inshaker.ru/cocktail/caribbean_touch/
 http://www.inshaker.ru/cocktail/caribbean_breeze/
 http://www.inshaker.ru/cocktail/carribean_coffee/
@@ -560,6 +561,7 @@ http://www.inshaker.ru/cocktail/cucumber_cooler/
 http://www.inshaker.ru/cocktail/cucumber_lemonade/
 http://www.inshaker.ru/cocktail/cucumber_tini/
 http://www.inshaker.ru/cocktail/augustus/
+http://www.inshaker.ru/cocktail/oldboy/
 http://www.inshaker.ru/cocktail/ole/
 http://www.inshaker.ru/cocktail/orange_bitter/
 http://www.inshaker.ru/cocktail/orange_soul/
