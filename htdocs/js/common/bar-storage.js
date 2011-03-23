@@ -16,7 +16,10 @@ Me =
 			showByCocktails : true,
 			notAvailableCocktails : {},
 			showIngByGroups : false,
-			currentTag : ''
+			currentTag : '',
+			purchasePlanNotes : {},
+			purchasePlanVolumes : {},
+			purchasePlanExcludes : {}
 		}
 		
 		if(!Storage)
