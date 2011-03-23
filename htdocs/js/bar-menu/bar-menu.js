@@ -14,8 +14,8 @@ var myProto =
 	
 	setBarMenu : function()
 	{
-		this.model.setBarMenu()
 		this.model.setBarName()
+		this.model.setBarMenu()
 		//this.model.setIngredients()
 		return this
 	}
@@ -25,15 +25,6 @@ var myProto =
 Object.extend(Me.prototype, myProto)
 
 })();
-
-<!--# include virtual="/lib-0.3/modules/json.js" -->
-<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
-
-<!--# include virtual="/js/common/bar-storage.js" -->
-
-<!--# include virtual="model.js" -->
-<!--# include virtual="view.js" -->
-<!--# include virtual="controller.js" -->
 
 
 ;(function(){
