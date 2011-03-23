@@ -1,3 +1,5 @@
+<!--# include virtual="/js/common/storage.js" -->
+
 ;(function(){
 
 var myName = 'BarStorage'
@@ -16,6 +18,9 @@ Me =
 			showIngByGroups : false,
 			currentTag : ''
 		}
+		
+		if(!Storage)
+			Storage = new ClientStorage()
 	},
 	
 	initBar : function(callback)
