@@ -106,7 +106,6 @@ var myProto =
 	{
 		BarStorage.saveBar({ 
 			ingredients : this.ingredients.inBarNames,
-			barName : this.barName,
 			notAvailableCocktails : this.notAvailableCocktails
 		})
 	},

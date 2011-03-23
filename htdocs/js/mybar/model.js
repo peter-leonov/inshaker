@@ -765,9 +765,7 @@ var myProto =
 		BarStorage.saveBar({ 
 			ingredients : Object.toArray(this.ingredients.inBar),
 			showCocktailsType : this.showCocktailsType,
-			barName : this.barName,
 			showByCocktails : this.showByCocktails,
-			notAvailableCocktails : this.notAvailableCocktails,
 			showIngByGroups : this.showIngByGroups,
 			currentTag : this.currentTag
 		})
