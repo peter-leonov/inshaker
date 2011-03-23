@@ -8,7 +8,7 @@ var myProto =
 	{
 		var me = this
 		BarStorage.initBar(function(bar){
-			me.barName = bar.barName		
+			me.barName = bar.barName
 			me.notAvailableCocktails = bar.notAvailableCocktails		
 			me.ingredients = me.getIngredients(bar.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
@@ -91,31 +91,15 @@ var myProto =
 		return lc
 	},
 	
-	setBarMenu : function()
+	setMainState : function()
 	{
+		this.view.renderBarName(this.barName)
 		this.view.renderBarMenu(this.cocktails, this.notAvailableCocktails, this.alcoholCocktails)
 	},
 	
 	setIngredients : function()
 	{
 		this.view.renderIngredients(this.ingredients)
-	},
-	
-	setBarName : function()
-	{
-		this.view.renderBarName(this.barName)
-	},
-	
-	setNewBarName : function(barName)
-	{
-		this.barName = barName
-		this.saveStorage()
-		this.view.renderBarName(barName)
-	},
-	
-	getBarName : function()
-	{
-		return this.barName
 	},
 	
 	saveStorage : function()

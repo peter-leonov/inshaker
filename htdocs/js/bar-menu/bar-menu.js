@@ -14,9 +14,7 @@ var myProto =
 	
 	setMainState : function()
 	{
-		this.model.setBarName()
-		this.model.setBarMenu()
-		//this.model.setIngredients()
+		this.model.setMainState()
 		return this
 	}
 	
@@ -30,6 +28,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
+<!--# include virtual="/js/common/mybar-name.js" -->
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->

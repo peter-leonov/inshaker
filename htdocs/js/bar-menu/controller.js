@@ -9,16 +9,6 @@ var myProto =
 		
 	},
 	
-	setNewBarName : function(barName)
-	{
-		this.model.setNewBarName(barName)
-	},
-	
-	getBarName : function()
-	{
-		return this.model.getBarName()
-	},
-	
 	addCocktailToBarMenu : function(cocktailName)
 	{
 		this.model.addCocktailToBarMenu(cocktailName)
