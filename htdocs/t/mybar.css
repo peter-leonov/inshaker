@@ -1,7 +1,5 @@
 <!--# include virtual="/t/mybar/common.css" -->
 
-html { min-height: 100%; overflow-y: scroll; position: relative; }
-
 #output .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
 .b-content dt.title { font-size: 20px; margin-bottom: 15px; }
 .b-content { width: 100%; }
