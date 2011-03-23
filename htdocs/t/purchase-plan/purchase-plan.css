@@ -1,1 +1,7 @@
 <!--# include virtual="/t/mybar/common.css" -->
+
+#output .b-content .purchase-plan-block .empty {
+	font-size: 14px;
+	color: #ccc;
+	margin: 10px 0px;
+}
