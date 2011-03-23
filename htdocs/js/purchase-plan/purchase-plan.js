@@ -5,11 +5,18 @@ var myName = 'PurchasePlan',
 
 var myProto =
 {
-	bind: function ()
+	bind : function (nodes)
 	{
-		this.view.bind()
+		this.view.bind(nodes)
 		this.model.bind()
 		this.controller.bind()
+	},
+	
+	setBarMenu : function()
+	{
+		this.model.setBarName()
+		this.model.setPurchasePlan()
+		return this
 	}
 }
 
@@ -17,59 +24,43 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+<!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
-/*View*/
+<!--# include virtual="/js/common/bar-storage.js" -->
+
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
 
 ;(function(){
 
-var Me = PurchasePlan.View
-
-var myProto =
+function onready ()
 {
-	bind : function ()
-	{
+	UserAgent.setupDocumentElementClassNames()
+	document.documentElement.removeClassName('loading')
+	var nodes = {
+		barName : {
+			wrapper : $('bar-name'),
+			tip : $$('#bar-name .tip')[0],
+			title : $$('#bar-name h2')[0],
+			help : $$('#bar-name h2 .help')[0],
+			bName : $$('#bar-name h2 .name')[0],
+			form : $$('#bar-name .change-name')[0],
+			input : $$('#bar-name .change-name .new-bar-name')[0]
+		},
+		
+		purchasePlan : {
+			wrapper : $$('#output .b-content .purchase-plan-block .wrapper')[0],
+			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
+		}
 		
 	}
+	
+	var widget = new PurchasePlan()
+	widget.bind(nodes)
 }
 
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-/*Model*/
-
-;(function(){
-
-var Me = PurchasePlan.Model
-
-var myProto =
-{
-	bind : function ()
-	{
-
-	}
-}
-
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-/*Controller*/
-
-;(function(){
-
-var Me = PurchasePlan.Controller
-
-var myProto =
-{
-	bind : function()
-	{
-		
-	}
-}
-
-Object.extend(Me.prototype, myProto)
+$.onready(onready)
 
 })();
