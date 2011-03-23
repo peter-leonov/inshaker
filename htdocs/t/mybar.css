@@ -1,11 +1,7 @@
+<!--# include virtual="/t/mybar/common.css" -->
+
 html { min-height: 100%; overflow-y: scroll; position: relative; }
 
-#output { color: #000; }
-
-h1.mybar { font-size: 24px; }
-.please-wait { display: none; }
-html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 50px 0 50px; text-align: center; color: #888; }
-html.loading .b-content, html.loading .b-title { display: none; }
 #output .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
 .b-content dt.title { font-size: 20px; margin-bottom: 15px; }
 .b-content { width: 100%; }
@@ -18,8 +14,6 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	border: 1px solid #ccc;
 }
 .search-box .query, .search-box .button { font-size: 15px; vertical-align: middle; }
-
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
 #output .ingredients-block .list li, #output .list .cocktail-preview, #output .bottom-output .ingredient {
 	float: left;
@@ -236,52 +230,6 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	text-decoration: underline;
 	cursor: pointer;
 }
-
-#bar-name
-{
-	border-bottom: 1px dotted #ddd;
-	height: 31px;
-	margin-bottom: 24px;
-	padding-bottom: 20px;
-}
-
-#bar-name .help, #bar-name .title{
-	font-size: 24px;
-	border-bottom: 2px dashed;
-	cursor: pointer;
-}
-
-#bar-name form.change-name {
-	font-size: 24px;
-	left: -6px;
-	position: relative;
-	top: -5px;
-}
-
-#bar-name form.change-name input.new-bar-name {
-	font-size: 1em;
-	position: relative;
-	z-index: 1;
-	background-color: transparent;
-	border: none;
-	padding: 2px 2px;
-	width: 100%;
-}
-#bar-name form.change-name .tip {
-	left: 4px;
-	position: absolute;
-	top: 4px;
-	color: #BBBBBB;
-}
-
-.firefox #bar-name form.change-name input.new-bar-name { left: 2px; top: 2px; }
-.safari #bar-name form.change-name input.new-bar-name, .chrome #bar-name form.change-name input.new-bar-name
-{ left: 2px; top: 1px; }
-
-.safari #bar-name form.change-name .tip, .chrome #bar-name form.change-name .tip { left: 5px; top: 5px; }
-
-#bar-name form.change-name input.new-bar-name:focus { outline: none; }
-
 
 /*recommend blocks*/
 
