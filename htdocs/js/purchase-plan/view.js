@@ -17,7 +17,16 @@ var myProto =
 		this.barName.setMainState(barName)
 	},
 	
-	renderPurchasePlan : function()
+	renderPurchasePlan : function(ingredients, volumes, notes, excludes)
+	{
+		if(!ingredients.length)
+		{
+			this.renderIfEmpty()
+			return
+		}
+	},
+	
+	renderIfEmpty : function()
 	{
 		
 	}
