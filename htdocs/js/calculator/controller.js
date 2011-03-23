@@ -4,15 +4,15 @@ function CalculatorController(model, view) {
   
 	this.initialize = function(){
 		var self = this;
-		Storage.init(function(){
-			if(Storage.get(GoodHelper.CART)){
-				self.eventListener.initialize(Object.parse(Storage.get(GoodHelper.CART)));
+		clientStorage.ready(function(){
+			if(clientStorage.get(GoodHelper.CART)){
+				self.eventListener.initialize(JSON.parse(clientStorage.get(GoodHelper.CART)));
 			} else self.eventListener.initialize(null);
 		});
 	};
 
   this.setBarName = function(name){
-    Storage.put('barName', name)
+    clientStorage.set('barName', name)
   };
 	
 	this.addCocktail = function(name){
@@ -41,7 +41,7 @@ function CalculatorController(model, view) {
 	this.saveCartData = function(cartData){
 		var cd = cloneObject(cartData);
 	    cd = GoodHelper.serializeCartData(cd);	
-		Storage.put(GoodHelper.CART, Object.stringify(cd));
+		clientStorage.set(GoodHelper.CART, JSON.stringify(cd));
 	};
 	
 	this.needNewBottle = function(name, bottleId){

@@ -186,6 +186,7 @@ class BarsProcessor < Inshaker::Processor
         ht_path = Config::HT_ROOT + html_name
         FileUtils.mkdir_p([ht_path])
         ht_dir = Dir.new(ht_path)
+        ht_dir.name = html_name
         
         update_images bar, bar_dir, ht_dir
         
@@ -206,7 +207,7 @@ class BarsProcessor < Inshaker::Processor
   def update_html bar, dst
     decl = @declensions[bar["city"]]
     city_map_name = decl ? decl[1] : bar["city"]
-    File.write("#{dst.path}/index.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
+    File.write("#{dst.path}/#{dst.name}.html", @renderer.result(BarTemplate.new(bar, {"city_map_name" => city_map_name}).get_binding))
   end
   
   def update_images bar, src, dst

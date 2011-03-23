@@ -20,13 +20,13 @@ var Printer = {
 	initCart: function (param)
 	{
 		var me = this
-		Storage.init(function () { me.cartInit(param) })
+		clientStorage.ready(function () { me.cartInit(param) })
 	},
 	
 	initCocktail: function (param)
 	{
 		var me = this
-		Storage.init(function () { me.cocktailInit(param) })
+		clientStorage.ready(function () { me.cocktailInit(param) })
 	},
 
 
@@ -35,7 +35,8 @@ var Printer = {
         var self = this;
         img.src = this.IMG_MARKER;
         img.onload = function(e){
-            if(self.wannaPrint) setTimeout("print()", 500);
+            if (self.wannaPrint)
+                setTimeout(function () { window.print() }, 1000)
         }
     },
 
@@ -49,7 +50,7 @@ var Printer = {
 	// dirty synchronous json loading
 	loadData: function (cocktail)
 	{
-		var data = eval('(' + sGet(cocktail.getPath() + 'data.json').responseText() + ')')
+		var data = eval('(' + Request.get(cocktail.getPath() + 'data.json', null, null, true).responseText + ')')
 		Object.extend(cocktail, data)
 	},
 	
@@ -84,18 +85,19 @@ var Printer = {
             imgsRoot.appendChild(img);
             img.onload = function(e){
                 imgCounter++;
-                if(imgCounter == cocktail.ingredients.length) print();
+                if(imgCounter == cocktail.ingredients.length)
+                    setTimeout(function () { window.print() }, 1000)
             }
        }
 	},
 
     cartInit: function(){
-        if(Storage.get(GoodHelper.CART)){
-            var barName = Storage.get(this.ST_BAR_NAME);
+        if(clientStorage.get(GoodHelper.CART)){
+            var barName = clientStorage.get(this.ST_BAR_NAME);
             $(this.ID_PLAN_TITLE).innerHTML = "План покупок " + (barName ? "для " + barName : ""); 
             this.preloadImages();
-            this.cartData = Storage.get(GoodHelper.CART);
-            this.cartData = GoodHelper.deSerializeCartData(Object.parse(this.cartData));
+            this.cartData = clientStorage.get(GoodHelper.CART);
+            this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
         } else {

@@ -2,26 +2,13 @@ function BarsPageController ()
 {
 	BarsPageController.name = "BarsPageController"
 	this.constructor = BarsPageController
-	this.initialize.apply(this, arguments)
 }
 
 BarsPageController.prototype =
 {
-	state: {city: undefined, format: undefined, feel: undefined},
-	
-	initialize: function (state)
-	{
-		this.state = Object.copy(state)
-		this.emptyState = Object.copy(state)
-	},
-	
 	hashUpdated: function (hash)
 	{
-		var state = this.state
-		if (hash)
-			Object.extend(state, hash)
-		else
-			state = this.state = Object.copy(this.emptyState)
+		var state = this.state = hash
 		
 		this.view.setHash(state)
 		this.view.setViewType(state.view)
@@ -44,9 +31,16 @@ BarsPageController.prototype =
 	
 	viewTypeSwitched: function (type)
 	{
-		this.state.view = type
-		this.view.setHash(this.state)
-		this.model.setState(this.state)
+		var state = this.state
+		state.view = type
+		if (type == 'list')
+		{
+			delete state.zoom
+			delete state.lat
+			delete state.lng
+		}
+		this.view.setHash(state)
+		this.model.setState(state)
 	},
 	
 	cocktailSelected: function (val)
@@ -62,8 +56,8 @@ BarsPageController.prototype =
 		var state = this.state
 		delete state.bar
 		state.city = val
-		state.format = undefined
-		state.feel = undefined
+		delete state.format
+		delete state.feel
 		this.view.setHash(state)
 		this.model.setState(state)
 	},
@@ -71,7 +65,7 @@ BarsPageController.prototype =
 	{
 		var state = this.state
 		state.format = val
-		state.feel = undefined
+		delete state.feel
 		this.view.setHash(state)
 		this.model.setState(state)
 	},
