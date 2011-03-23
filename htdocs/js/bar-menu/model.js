@@ -6,7 +6,7 @@ var myProto =
 {
 	bind : function ()
 	{
-		var me = this, bar = {  ingredients : [], showPhotos : true, barName : '', showByCocktails : true, notAvailableCocktails : {} }
+		var me = this
 		BarStorage.initBar(function(bar){
 			me.showPhotos = bar.showPhotos
 			me.barName = bar.barName
