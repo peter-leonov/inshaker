@@ -52,6 +52,7 @@ function onready ()
 		
 		purchasePlan : {
 			wrapper : $$('#output .b-content .purchase-plan-block .wrapper')[0],
+			body : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tbody')[0],
 			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
 		}
 		
