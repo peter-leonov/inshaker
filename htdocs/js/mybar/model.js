@@ -45,10 +45,10 @@ var myProto =
 	bind : function ()
 	{
 		var me = this
-		BarStorage.initBar(function(bar){ me.setMainState(bar) })
+		BarStorage.initBar(function(bar){ me.setBar(bar) })
 	},
 	
-	setMainState : function(bar)
+	setBar : function(bar)
 	{
 		var me = this
 		
@@ -71,7 +71,7 @@ var myProto =
 		
 		this.computeRecommendsBlock()
 		
-		this.parent.setBar()
+		this.parent.setMainState()
 		
 		//ingr searcher
 		var ingredients = Ingredient.getAllNames(),
@@ -86,6 +86,16 @@ var myProto =
 		this.view.setCompleterDataSource(searcher)		
 	},
 	
+	setMainState : function()
+	{
+		this.view.renderBarName(this.barName)
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+	},
+	
 	computeRecommendsBlock : function()
 	{
 		this.allRecommends = this.computeAllRecommends(this.ingredients.inBar)
@@ -94,8 +104,6 @@ var myProto =
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 	},
-	
-	
 	
 	sortByUsage : function(a, b)
 	{
@@ -107,28 +115,6 @@ var myProto =
 		var r = (u[b.name] || 0) - (u[a.name] || 0)
 
 		return r != 0 ? r : a.name.localeCompare(b.name)
-	},
-	
-	setIngredients : function()
-	{
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-	},
-	
-	setCocktails : function()
-	{
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-	},
-	
-	setBottomOutput : function()
-	{
-		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
-	},
-	
-	setBarName : function()
-	{
-		this.view.renderBarName(this.barName)
 	},
 	
 	getBarName : function()

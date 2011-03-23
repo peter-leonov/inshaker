@@ -14,37 +14,9 @@ var myProto =
 		return this
 	},
 
-	setIngredients : function()
+	setMainState : function()
 	{
-		this.model.setIngredients()
-		return this
-	},
-	
-	setCocktails : function()
-	{
-		this.model.setCocktails()
-		return this
-	},
-
-	setBarName : function()
-	{
-		this.model.setBarName()
-		return this
-	},
-
-	setBottomOutput : function()
-	{
-		this.model.setBottomOutput()
-		return this
-	},
-
-	setBar : function()
-	{
-		return this.
-				setBarName().
-				setIngredients().
-				setCocktails().
-				setBottomOutput()
+		this.model.setMainState()
 	}
 }
 
@@ -69,6 +41,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/combinator/ingredient-popup.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
+<!--# include virtual="/js/common/mybar-name.js" -->
 
 <!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/common/plain-input-autocompleter.js" -->
