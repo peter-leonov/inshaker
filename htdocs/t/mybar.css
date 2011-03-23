@@ -43,6 +43,8 @@ html.loading .b-content, html.loading .b-title { display: none; }
 	font-weight: bold;
 }
 #output .ingredients-block { width: 940px; margin-top: 5px; }
+#output .ingredients-block .title .purchase-plan-link { font-size: 12px; margin-left: 3px; position: relative; top: -2px; }
+#output .ingredients-block .title .purchase-plan-link a { text-decoration: underline; }
 #output .ingredients-block .list { padding-top: 15px; }
 #output .ingredients-block .list ul { overflow: hidden; }
 #output .ingredients-block .list li, #output .recommend-blocks .list li
