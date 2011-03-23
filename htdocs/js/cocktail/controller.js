@@ -78,9 +78,10 @@ var Controller = {
 			}
 			
 			
-			a = $$(this.SELECTOR_AUTHOR)[0]
+			a = $$(this.SELECTOR_AUTHOR, false)
 			if (a)
 			{
+				a = a[0]
 				a.addClassName('active')
 				a.href = barman.pageHref()
 				
