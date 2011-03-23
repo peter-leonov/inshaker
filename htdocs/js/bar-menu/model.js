@@ -8,15 +8,12 @@ var myProto =
 	{
 		var me = this
 		BarStorage.initBar(function(bar){
-			me.showPhotos = bar.showPhotos
-			me.barName = bar.barName
-			me.showByCocktails = bar.showByCocktails
-			me.notAvailableCocktails = bar.notAvailableCocktails
-			
+			me.barName = bar.barName		
+			me.notAvailableCocktails = bar.notAvailableCocktails		
 			me.ingredients = me.getIngredients(bar.ingredients)
 			me.cocktails = me.computeCocktails(me.ingredients)
 			
-			me.parent.setBarMenu()
+			me.parent.setMainState()
 		})
 	},
 	
@@ -125,9 +122,7 @@ var myProto =
 	{
 		BarStorage.saveBar({ 
 			ingredients : this.ingredients.inBarNames,
-			showPhotos : this.showPhotos,
 			barName : this.barName,
-			showByCocktails : this.showByCocktails,
 			notAvailableCocktails : this.notAvailableCocktails
 		})
 	},

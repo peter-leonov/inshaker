@@ -12,7 +12,7 @@ var myProto =
 		this.controller.bind()
 	},
 	
-	setBarMenu : function()
+	setMainState : function()
 	{
 		this.model.setBarName()
 		this.model.setBarMenu()
