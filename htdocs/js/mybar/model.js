@@ -310,7 +310,7 @@ var myProto =
 		if(limit)
 		{
 			var nr = []
-			for (var i = 0, il = recommends.length; i < il; i++) 
+			for (var i = 0, il = recommends.length; i < il; i++)
 			{
 				var r = recommends[i]
 				if(r.len <= lim)
@@ -492,6 +492,8 @@ var myProto =
 			if(r)
 				return r
 		}
+		
+		return 0
 		/*
 						var ai = a.ingredients
 						var bi = b.ingredients
