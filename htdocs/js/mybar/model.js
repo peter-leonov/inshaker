@@ -66,8 +66,8 @@ var myProto =
 
 		this.tipIngredient = this.computeTipIngr()
 		
-		this.allTags = <!--# include virtual="/db/mybar/tags.js" -->
-		this.mustHave = <!--# include virtual="/db/mybar/musthave.js" -->
+		this.allTags = <!--# include virtual="/db/mybar/tags.json" -->
+		this.mustHave = <!--# include virtual="/db/mybar/musthave.json" -->
 		
 		this.computeRecommendsBlock()
 		
