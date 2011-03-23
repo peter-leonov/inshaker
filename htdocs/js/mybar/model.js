@@ -117,11 +117,6 @@ var myProto =
 		return r != 0 ? r : a.name.localeCompare(b.name)
 	},
 	
-	getBarName : function()
-	{
-		return this.barName
-	},
-	
 	getIngredients : function(ingredientNames)
 	{
 		var me = this
@@ -837,13 +832,6 @@ var myProto =
 		this.saveStorage()
 		
 		this.view.renderCocktails(this.cocktails, showCocktailsType)
-	},
-	
-	setNewBarName : function(barName)
-	{
-		this.barName = barName
-		this.saveStorage()
-		this.view.renderBarName(barName)
 	},
 	
 	switchBoShowType : function(showByCocktails)

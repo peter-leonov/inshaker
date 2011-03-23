@@ -50,16 +50,6 @@ var myProto =
 		this.model.switchIngredientsView(byGroups)
 	},
 	
-	setNewBarName : function(barName)
-	{
-		this.model.setNewBarName(barName)
-	},
-	
-	getBarName : function()
-	{
-		return this.model.getBarName()
-	},
-	
 	switchBoShowType : function(showByCocktails)
 	{
 		this.model.switchBoShowType(showByCocktails)
