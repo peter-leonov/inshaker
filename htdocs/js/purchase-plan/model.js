@@ -145,9 +145,16 @@ var myProto =
 		return price
 	},
 	
+	editPlanItem : function(ingredient, exclude)
+	{
+		this.excludes[ingredient.name] = !exclude
+		this.save()
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notes, this.excludes, this.totalPrice)
+	},
+	
 	save : function()
 	{
-		BarStorage.saveBar({ purchasePlanNotes : me.notes, purchasePlanVolumes : me.volumes, purchasePlanExcludes : me.excludes })
+		BarStorage.saveBar({ purchasePlanNotes : this.notes, purchasePlanVolumes :this.volumes, purchasePlanExcludes : this.excludes })
 	}
 	
 	

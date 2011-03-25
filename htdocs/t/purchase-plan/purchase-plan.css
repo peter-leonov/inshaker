@@ -24,6 +24,8 @@
 
 .purchase-plan-block .plan-table .tbody tr:hover td { background-color: #efefef; }
 
+.purchase-plan-block .plan-table tr.odd td { background-color: #F9F9F9; }
+
 .purchase-plan-block .plan-table .edit-item .edit { cursor: pointer; }
 
 .purchase-plan-block .plan-table .item-name { text-align: left; width: 350px; }
@@ -31,6 +33,8 @@
 .purchase-plan-block .plan-table .item-volume .volume-unit { padding-left: 2px; }
 .purchase-plan-block .plan-table .item-price { text-align: center; width: 170px; }
 .purchase-plan-block .plan-table .item-notice { text-align: center; width: 200px; }
+.purchase-plan-block .plan-table .item-notice .notice-text { min-height:17px; height:auto !important; height:17px; cursor: text; }
+.purchase-plan-block .plan-table .item-notice .notice-text:focus { background-color: #fff; }
 
 .purchase-plan-block .plan-table .total-price .total-label { text-align: center; font-style: italic; }
 .purchase-plan-block .plan-table .total-price .total { text-align: center; font-style: italic; font-size: 15px; font-weight: bold; }
@@ -38,3 +42,6 @@
 .purchase-plan-block .plan-table .total-price td { padding-top: 5px; }
 
 .purchase-plan-block .plan-table td, .purchase-plan-block .plan-table th { padding: 3px; }
+
+.purchase-plan-block .plan-table .included .edit-item { color: #A2210E; }
+.purchase-plan-block .plan-table .excluded .edit-item { color: #8DD013; }

@@ -11,6 +11,19 @@ var myProto =
 		
 		this.barName = new MyBarName()
 		this.barName.bind(nodes.barName)
+		
+		var me = this
+		
+		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.maybeEditPlanItem(e) }, false)
+	},
+	
+	maybeEditPlanItem : function(e)
+	{
+		var target = e.target
+		if(target.editableItem)
+		{
+			this.controller.editPlanItem(target.editableItem, target.exclude)
+		}
 	},
 	
 	renderBarName : function(barName)
@@ -35,12 +48,12 @@ var myProto =
 			var name = ingredient.name
 			
 			exclude = excludes[name]
-			var tr = Nc('tr', exclude ? 'excluded' : 'included')
+			var tr = Nc('tr', (exclude ? 'excluded' : 'included') + ' ' + (i % 2 ? 'odd' : 'even'))
 			
 			//edit item
 			{
 				var editTd = Nc('td', 'edit-item')
-				var edit = Nc('div', 'edit')
+				var edit = Nct('div', 'edit', exclude ? '+' : '×')
 				edit.editableItem = ingredient
 				edit.exclude = exclude
 				
@@ -62,6 +75,7 @@ var myProto =
 			{
 				var volumeTd = Nc('td', 'item-volume')
 				var volume = Nct('span', 'volume-value', volumes[name].volume)
+				volume.setAttribute('contenteditable', true)
 				volume.volumeIngredient = ingredient
 				var unit = Nct('span', 'volume-unit', ingredient.unit)
 				volumeTd.appendChild(volume)
@@ -79,9 +93,9 @@ var myProto =
 			//item notice
 			{
 				var noticeTd = Nc('td', 'item-notice')
-				var notice = Nct('span', 'notice-text', notes[name] || '')
+				var notice = Nct('div', 'notice-text', notes[name] || '')
 				notice.noticeIngredient = ingredient
-				
+				notice.setAttribute('contenteditable', true)
 				noticeTd.appendChild(notice)
 				tr.appendChild(noticeTd)
 			}
@@ -97,11 +111,11 @@ var myProto =
 			
 			var totalLabel = Nct('td', 'total-label', 'Итого')
 			var total = Nct('td', 'total', totalPrice)
-			total.setAttribute('colspan', 2)
 			
 			tr.appendChild(td)
 			tr.appendChild(totalLabel)
 			tr.appendChild(total)
+			tr.appendChild(N('td'))
 			
 			df.appendChild(tr)
 		}
