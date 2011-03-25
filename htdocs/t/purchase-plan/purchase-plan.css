@@ -31,9 +31,10 @@
 .purchase-plan-block .plan-table .item-name { text-align: left; width: 350px; }
 .purchase-plan-block .plan-table .item-volume { text-align: center; width: 170px; }
 .purchase-plan-block .plan-table .item-volume .volume-unit { padding-left: 2px; }
+.purchase-plan-block .plan-table .item-volume .volume-value {  display: inline-block; }
 .purchase-plan-block .plan-table .item-price { text-align: center; width: 170px; }
 .purchase-plan-block .plan-table .item-notice { text-align: center; width: 200px; }
-.purchase-plan-block .plan-table .item-notice .notice-text { min-height:17px; height:auto !important; height:17px; cursor: text; }
+.purchase-plan-block .plan-table .item-notice .notice-text { min-height:17px; height:auto !important; height:17px; cursor: text; display: inline-block;  width: 100%; }
 .purchase-plan-block .plan-table .item-notice .notice-text:focus { background-color: #fff; }
 
 .purchase-plan-block .plan-table .total-price .total-label { text-align: center; font-style: italic; }
