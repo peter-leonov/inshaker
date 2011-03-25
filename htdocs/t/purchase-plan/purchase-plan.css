@@ -1,7 +1,40 @@
 <!--# include virtual="/t/mybar/common.css" -->
 
+#output .b-content .purchase-plan-block .wrapper { margin : 10px 0px; }
+
+#output .b-content .purchase-plan-block.empty .wrapper { display: none; }
+#output .b-content .purchase-plan-block.empty .empty { display: block !important; }
+
+
 #output .b-content .purchase-plan-block .empty {
 	font-size: 14px;
 	color: #ccc;
 	margin: 10px 0px;
 }
+
+.purchase-plan-block .plan-table {
+	font-size: 14px;
+	width: 100%;
+}
+
+.purchase-plan-block .plan-table .thead th { background-color: yellow; font-size: 14px; }
+.purchase-plan-block .plan-table .thead th.edit-item { background: none; }
+
+.purchase-plan-block .plan-table .edit-item { width: 20px; }
+
+.purchase-plan-block .plan-table .tbody tr:hover td { background-color: #efefef; }
+
+.purchase-plan-block .plan-table .edit-item .edit { cursor: pointer; }
+
+.purchase-plan-block .plan-table .item-name { text-align: left; width: 350px; }
+.purchase-plan-block .plan-table .item-volume { text-align: center; width: 170px; }
+.purchase-plan-block .plan-table .item-volume .volume-unit { padding-left: 2px; }
+.purchase-plan-block .plan-table .item-price { text-align: center; width: 170px; }
+.purchase-plan-block .plan-table .item-notice { text-align: center; width: 200px; }
+
+.purchase-plan-block .plan-table .total-price .total-label { text-align: center; font-style: italic; }
+.purchase-plan-block .plan-table .total-price .total { text-align: center; font-style: italic; font-size: 15px; font-weight: bold; }
+
+.purchase-plan-block .plan-table .total-price td { padding-top: 5px; }
+
+.purchase-plan-block .plan-table td, .purchase-plan-block .plan-table th { padding: 3px; }
