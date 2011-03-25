@@ -22,6 +22,11 @@ var myProto =
 	setNotice : function(ingredient, notice)
 	{
 		this.model.setNotice(ingredient, notice)
+	},
+	
+	reRender : function()
+	{
+		this.model.setPurchasePlan()
 	}
 }
 

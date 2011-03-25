@@ -23,6 +23,12 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
+		this.setPurchasePlan()
+		
+	},
+	
+	setPurchasePlan : function()
+	{
 		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 	},
 	

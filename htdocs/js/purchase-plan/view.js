@@ -181,12 +181,13 @@ var myProto =
 		}
 		
 		node.addEventListener('keypress', function(e){ keypress(e) }, false)
+		node.addEventListener('blur', function(){ me.controller.reRender() }, false)
 	},
 	
 	appendEventsToNoticeField : function(node)
 	{
 		var me = this
-		var suppressKeys = {9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1}
+		var suppressKeys = { 9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1 }
 		var keypress = function(e)
 		{
 			var charCode = e.charCode
