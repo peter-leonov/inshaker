@@ -45,5 +45,5 @@
 
 .purchase-plan-block .plan-table .included .edit-item { color: #A2210E; }
 .purchase-plan-block .plan-table .excluded .edit-item { color: #8DD013; }
-.purchase-plan-block .plan-table .excluded td .item-name { text-decoration: line-through; }
+.purchase-plan-block .plan-table .excluded .item-name { text-decoration: line-through; }
 .purchase-plan-block .plan-table .excluded td { opacity: 0.25; background-color: #fff; }
