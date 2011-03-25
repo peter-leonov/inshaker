@@ -10,7 +10,7 @@ var myProto =
 		BarStorage.initBar(function(bar){
 			me.barName = bar.barName
 			me.ingredients = me.getIngredients(bar.ingredients)
-			me.notes = bar.purchasePlanNotes
+			me.notices = bar.purchasePlanNotices
 			me.volumes = me.getVolumes(bar.purchasePlanVolumes)
 			me.excludes = bar.purchasePlanExcludes
 			
@@ -23,7 +23,7 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
-		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notes, this.excludes, this.totalPrice)
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 	},
 	
 	getIngredients : function(ingredientNames)
@@ -76,9 +76,31 @@ var myProto =
 	setVolume : function(ingredient, v)
 	{
 		var name = ingredient.name
-		this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v)}
+		v = parseFloat(v)
+		if(!v)
+		{
+			this.excludes[name] = true
+			this.totalPrice = this.calculateTotalPrice(this.volumes)
+			this.save()
+			this.view.renderNewPrice(0)
+			this.view.renderTotalPrice(this.totalPrice)
+			return
+		}
+		
+		this.excludes[name] = null
+		this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v) }
+		this.totalPrice = this.calculateTotalPrice(this.volumes)
 		this.save()
-	},	
+		this.view.renderNewPrice(this.volumes[name].price)
+		this.view.renderTotalPrice(this.totalPrice)
+	},
+	
+	setNotice : function(ingredient, notice)
+	{
+		var name = ingredient.name
+		this.notices[name] = notice
+		this.save()
+	},
 	
 	findCheapestPrice : function(ingredient, v)
 	{		
@@ -139,7 +161,8 @@ var myProto =
 		var price = 0
 		for (var k in volumes) 
 		{
-			price += volumes[k].price
+			if(!this.excludes[k])
+				price += volumes[k].price
 		}
 		
 		return price
@@ -147,14 +170,15 @@ var myProto =
 	
 	editPlanItem : function(ingredient, exclude)
 	{
-		this.excludes[ingredient.name] = !exclude
+		var name = ingredient.name
+		this.excludes[name] = !exclude
 		this.save()
-		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notes, this.excludes, this.totalPrice)
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 	},
 	
 	save : function()
 	{
-		BarStorage.saveBar({ purchasePlanNotes : this.notes, purchasePlanVolumes :this.volumes, purchasePlanExcludes : this.excludes })
+		BarStorage.saveBar({ purchasePlanNotices : this.notices, purchasePlanVolumes :this.volumes, purchasePlanExcludes : this.excludes })
 	}
 	
 	
