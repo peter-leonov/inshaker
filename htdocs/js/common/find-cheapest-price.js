@@ -58,4 +58,4 @@ var ingredient = { volumes : [[3, 4], [2, 3], [1, 2]] }
 
 var res = findCheapestPrice(ingredient, 13)
 
-console.log(res)
+// console.log(res)
