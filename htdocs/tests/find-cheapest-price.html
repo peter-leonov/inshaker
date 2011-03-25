@@ -20,7 +20,7 @@ Tests.test(function (t)
 		if (!volumes.length)
 			return {}
 		
-		if (!max)
+		if (max <= 0)
 			return {}
 		
 		return findCheapestPrice({volumes: volumes}, max)
@@ -30,6 +30,7 @@ Tests.test(function (t)
 	{
 		t.like(f([], 10), {}, 'empty volumes')
 		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
+		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
 	})
 })
 </script>
