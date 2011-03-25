@@ -23,7 +23,23 @@ Tests.test(function (t)
 		if (max <= 0)
 			return {}
 		
-		return findCheapestPrice({volumes: volumes}, max)
+		var res = findCheapestPrice({volumes: volumes}, max)
+		
+		var h = {}
+		
+		if (res.addingBottles.amount)
+			h[res.addingBottles.vol] = res.addingBottles.amount
+		
+		for (var i = 0; i < res.bottles.length; i++)
+		{
+			var v = res.bottles[i][0]
+			if (h[v])
+				h[v]++
+			else
+				h[v] = 1
+		}
+		
+		return h
 	}
 	
 	t.test('corner cases', function (t)
