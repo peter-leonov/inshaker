@@ -54,6 +54,7 @@ function onready ()
 			main : $$('#output .b-content .purchase-plan-block')[0],
 			wrapper : $$('#output .b-content .purchase-plan-block .wrapper')[0],
 			body : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tbody')[0],
+			totalPrice : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tfoot .total-price .total')[0],
 			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
 		}
 		
