@@ -17,13 +17,19 @@ Tests.test(function (t)
 	
 	function f (volumes, max)
 	{
+		if (!volumes.length)
+			return {}
+		
+		if (!max)
+			return {}
+		
 		return findCheapestPrice({volumes: volumes}, max)
 	}
 	
 	t.test('corner cases', function (t)
 	{
-		t.like(f([1], 0), [1], 'zero volume')
-		t.like(f([], 10), [], 'empty volumes')
+		t.like(f([], 10), {}, 'empty volumes')
+		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
 	})
 })
 </script>
