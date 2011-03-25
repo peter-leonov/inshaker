@@ -42,6 +42,26 @@ Tests.test(function (t)
 		return h
 	}
 	
+	t.test('real life examples', function (t)
+	{
+		t.test('Bacardi Superior', function (t)
+		{
+			var volumes = [[0.5, 641], [0.75, 991]]
+			t.log(volumes)
+			t.like(f(volumes, 0.4), {0.5: 1}, '0.4')
+			t.like(f(volumes, 0.5), {0.5: 1}, '0.5')
+			t.like(f(volumes, 0.51), {0.75: 1}, '0.51')
+			t.like(f(volumes, 0.75), {0.75: 1}, '0.75')
+			t.like(f(volumes, 0.76), {0.5: 2}, '0.76')
+			t.like(f(volumes, 1.0), {0.5: 2}, '1.0')
+			t.like(f(volumes, 1.5), {0.5: 3}, '1.5')
+			t.like(f(volumes, 1.75), {0.5: 2, 0.75: 1}, '1.75')
+			t.like(f(volumes, 2.25), {0.5: 3, 0.75: 1}, '2.25')
+			t.like(f(volumes, 3.0), {0.5: 6}, '3.0')
+			t.like(f(volumes, 37.5), {0.5: 75}, '37.5')
+		})
+	})
+	
 	t.test('corner cases', function (t)
 	{
 		t.like(f([], 10), {}, 'empty volumes')
