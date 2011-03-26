@@ -35,10 +35,12 @@ var myProto =
 	getIngredients : function(ingredientNames)
 	{
 		var ingredients = []
-		
+		ingredients.inBar = {}
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
-			ingredients.push(Ingredient.getByName(ingredientNames[i]))
+			var name = ingredientNames[i]
+			ingredients.push(Ingredient.getByName(name))
+			ingredients.inBar[name] = true
 		}
 		return ingredients.sort(function(a, b){
 			if(a.group != b.group)
@@ -167,7 +169,7 @@ var myProto =
 		var price = 0
 		for (var k in volumes) 
 		{
-			if(!this.excludes[k])
+			if(!this.excludes[k] && this.ingredients.inBar[k])
 				price += volumes[k].price
 		}
 		
