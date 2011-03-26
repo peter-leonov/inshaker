@@ -8,12 +8,24 @@
 	
 	<script type="text/javascript" src="/lib-0.3/core/prototype.js"></script>
 	<script type="text/javascript" src="/js/common/find-cheapest-price.js"></script>
+	<script type="text/javascript" src="/js/common/datafilter.js"></script>
 </head>
 <body>
 <script type="text/javascript">
 Tests.test(function (t)
 {
 	t.ok(findCheapestPrice, 'findCheapestPrice')
+	
+	function old (volumes, max)
+	{
+		for (var i = 0, il = volumes.length; i < il; i++)
+			volumes[i][2] = true
+		
+		var res = DataFilter.countOptimal(max, volumes)
+		for (var k in res)
+			res[k] = res[k].count
+		return res
+	}
 	
 	function f (volumes, max)
 	{
