@@ -132,6 +132,8 @@ Tests.test(function (t)
 	
 	t.test('bottles count matters', function (t)
 	{
+		t.mayFail()
+		
 		var bottles = [[1.0, 1], [2.0, 2], [3.0, 3]]
 		
 		t.like(f(bottles, 2.0), {2.0: 1}, '2.0')
