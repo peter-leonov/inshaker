@@ -186,6 +186,7 @@ var myProto =
 		var name = ingredient.name
 		this.excludes[name] = !exclude
 		this.save()
+		this.totalPrice = this.calculateTotalPrice(this.volumes)
 		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 	},
 	
