@@ -77,4 +77,4 @@ var ingredient = { volumes : [[0.5, 37.90], [1.0, 52.90], [2.0, 56.90]]
 
 var res = findCheapestPrice(ingredient, 2.5)
 
-console.log(res)
+// console.log(res)
