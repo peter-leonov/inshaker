@@ -129,6 +129,15 @@ Tests.test(function (t)
 		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
 		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
 	})
+	
+	t.test('bottles count matters', function (t)
+	{
+		var bottles = [[1.0, 1], [2.0, 2], [3.0, 3]]
+		
+		t.like(f(bottles, 2.0), {2.0: 1}, '2.0')
+		t.like(f(bottles, 3.0), {3.0: 1}, '3.0')
+		t.like(f(bottles, 6.0), {3.0: 2}, '6.0')
+	})
 })
 </script>
 </body>
