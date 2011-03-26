@@ -17,7 +17,7 @@ Me =
 			notAvailableCocktails : {},
 			showIngByGroups : false,
 			currentTag : '',
-			purchasePlanNotes : {},
+			purchasePlanNotices : {},
 			purchasePlanVolumes : {},
 			purchasePlanExcludes : {}
 		}

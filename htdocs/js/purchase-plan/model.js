@@ -10,7 +10,7 @@ var myProto =
 		BarStorage.initBar(function(bar){
 			me.barName = bar.barName
 			me.ingredients = me.getIngredients(bar.ingredients)
-			me.notes = bar.purchasePlanNotes
+			me.notices = bar.purchasePlanNotices
 			me.volumes = me.getVolumes(bar.purchasePlanVolumes)
 			me.excludes = bar.purchasePlanExcludes
 			
@@ -23,16 +23,24 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
-		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notes, this.excludes, this.totalPrice)
+		this.setPurchasePlan()
+		
+	},
+	
+	setPurchasePlan : function()
+	{
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 	},
 	
 	getIngredients : function(ingredientNames)
 	{
 		var ingredients = []
-		
+		ingredients.inBar = {}
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
-			ingredients.push(Ingredient.getByName(ingredientNames[i]))
+			var name = ingredientNames[i]
+			ingredients.push(Ingredient.getByName(name))
+			ingredients.inBar[name] = true
 		}
 		return ingredients.sort(function(a, b){
 			if(a.group != b.group)
@@ -76,25 +84,51 @@ var myProto =
 	setVolume : function(ingredient, v)
 	{
 		var name = ingredient.name
-		this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v)}
+		v = parseFloat(v)
+		if(!v)
+		{
+			this.excludes[name] = true
+			this.totalPrice = this.calculateTotalPrice(this.volumes)
+			this.save()
+			this.view.renderNewPrice(0)
+			this.view.renderTotalPrice(this.totalPrice)
+			return
+		}
+		
+		this.excludes[name] = null
+		this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v) }
+		this.totalPrice = this.calculateTotalPrice(this.volumes)
 		this.save()
-	},	
+		this.view.renderNewPrice(this.volumes[name].price)
+		this.view.renderTotalPrice(this.totalPrice)
+	},
+	
+	setNotice : function(ingredient, notice)
+	{
+		var name = ingredient.name
+		this.notices[name] = notice
+		this.save()
+	},
 	
 	findCheapestPrice : function(ingredient, v)
 	{		
 		var ingredientVolumes = ingredient.volumes
 		ingredientVolumes.map(function(a){ a.nominalPrice = a[1]/a[0] })
-		ingredientVolumes.sort(function(a, b){ return a.nominalPrice - b.nominalPrice })
+		ingredientVolumes.sort(function(a, b){ return b.nominalPrice - a.nominalPrice })
 		
-		var bottleVolume = ingredientVolumes[0][0]
+		var last = ingredientVolumes.length - 1
+		
+		var minNominal = ingredientVolumes[0].nominalPrice
+		
+		var bottleVolume = ingredientVolumes[last][0]
 		var bottles = Math.ceil(v / bottleVolume)
-		var pricePerBottle = ingredientVolumes[0][1]
+		var pricePerBottle = ingredientVolumes[last][1]
 		var volume = bottles * bottleVolume
 		var totalPrice = bottles * pricePerBottle
 		var minPrice = totalPrice
-		
+			
 		appendBottles(volume, minPrice, 0, [], bottles)
-	
+		
 		function appendBottles(currentVolume, currentPrice, start, bottles, addingBottles)
 		{
 			for (var i = start, il = ingredientVolumes.length; i < il; i++) 
@@ -104,15 +138,15 @@ var myProto =
 				var tbottles = addingBottles
 				var temporyPrice = currentPrice
 				
-				while(i !=  0 && tbottles > 0 && v - vol < volumeObj[0])
+				while(tbottles > 0 && v - vol <= volumeObj[0] && i != last )
 				{
 					vol -= bottleVolume
 					tbottles--
 					temporyPrice -= pricePerBottle
+					
 				}
 				
 				var tprice = temporyPrice + volumeObj[1]
-				
 				
 				if(tprice < minPrice)
 				{
@@ -131,6 +165,7 @@ var myProto =
 				}
 			}
 		}
+		
 		return minPrice
 	},
 	
@@ -139,15 +174,25 @@ var myProto =
 		var price = 0
 		for (var k in volumes) 
 		{
-			price += volumes[k].price
+			if(!this.excludes[k] && this.ingredients.inBar[k])
+				price += volumes[k].price
 		}
 		
 		return price
 	},
 	
+	editPlanItem : function(ingredient, exclude)
+	{
+		var name = ingredient.name
+		this.excludes[name] = !exclude
+		this.save()
+		this.totalPrice = this.calculateTotalPrice(this.volumes)
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
+	},
+	
 	save : function()
 	{
-		BarStorage.saveBar({ purchasePlanNotes : me.notes, purchasePlanVolumes : me.volumes, purchasePlanExcludes : me.excludes })
+		BarStorage.saveBar({ purchasePlanNotices : this.notices, purchasePlanVolumes :this.volumes, purchasePlanExcludes : this.excludes })
 	}
 	
 	

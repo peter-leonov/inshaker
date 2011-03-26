@@ -12,7 +12,7 @@
 
 	<div class="column"><div class="body-wrapper" id="output">
 		<div class="b-title">
-			<a class="bar-link" href="/mybar.html">План покупок</a>
+			<a class="bar-link" href="/mybar.html">Мой бар</a>
 			<div id="bar-name">
 				<h2>
 					<span class="help hidden title">Придумай название своего бара</span>
@@ -43,6 +43,11 @@
 						<tbody class="tbody">
 							
 						</tbody>
+						<tfoot class="tfoot">
+							<tr class="total-price">
+								<td colspan="2"></td><td class="total-label">Итого</td><td class="total"></td><td></td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 				<div class="empty hidden">Добавьте еще ингредиентов</div>
@@ -54,6 +59,14 @@
 <!--# include file="/inc/bottom-common.html" -->
 
 <script type="text/javascript" src="/js/common/oops.js"></script>
+<!--[if lte IE 7]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script>
+<![endif]-->
 <script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>

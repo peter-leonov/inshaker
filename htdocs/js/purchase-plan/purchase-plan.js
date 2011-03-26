@@ -23,6 +23,8 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
+<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
+
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
@@ -54,6 +56,7 @@ function onready ()
 			main : $$('#output .b-content .purchase-plan-block')[0],
 			wrapper : $$('#output .b-content .purchase-plan-block .wrapper')[0],
 			body : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tbody')[0],
+			totalPrice : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tfoot .total-price .total')[0],
 			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
 		}
 		
