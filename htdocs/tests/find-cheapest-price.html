@@ -48,10 +48,33 @@ Tests.test(function (t)
 		{
 			t.log(bottles)
 			
+			var price = {}
+			for (var i = 0, il = bottles.length; i < il; i++)
+				price[bottles[i][0]] = bottles[i][1]
+			
 			for (var i = 0, il = volumes.length; i < il; i++)
 			{
 				var v = volumes[i]
-				t.like(f(bottles, v[0]), v[1], v[0])
+				
+				var min = v[1]
+				v = v[0]
+				
+				var suggestion = f(bottles, v)
+				if (!t.like(suggestion, min, v))
+				{
+					var sum1 = 0
+					for (var k in suggestion)
+						sum1 += price[k] * suggestion[k]
+					
+					var sum2 = 0
+					for (var k in min)
+						sum2 += price[k] * min[k]
+					
+					if (sum1 <= sum2)
+						t.warn('robo is right: ' + sum1 + ' <= ' + sum2)
+					else
+						t.warn('robo is wrong: ' + sum1 + ' > ' + sum2)
+				}
 			}
 		}
 		
