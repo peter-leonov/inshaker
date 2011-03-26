@@ -138,6 +138,20 @@ Tests.test(function (t)
 		t.like(f(bottles, 3.0), {3.0: 1}, '3.0')
 		t.like(f(bottles, 6.0), {3.0: 2}, '6.0')
 	})
+	
+	t.test('performance', function (t)
+	{
+		var bottles = [[1.0, 1.5], [2.0, 2.5], [3.0, 3.5], [4.0, 4.5], [5.0, 5.5], [6.0, 6.5], [7.0, 7.5]]
+		
+		// warm up
+		t.speed(function () { f(bottles, 10000) })
+		
+		var a = t.speed(function () { f(bottles, 10) })
+		t.gt(Math.round(a), 500, 'solve more than 500 times per second')
+		
+		var b = t.speed(function () { f(bottles, 100000) })
+		t.peq(b / a, 1, 0.3, 'same timings')
+	})
 })
 </script>
 </body>
