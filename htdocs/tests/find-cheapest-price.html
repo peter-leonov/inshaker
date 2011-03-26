@@ -164,8 +164,8 @@ Tests.test(function (t)
 		var a = t.speed(function () { f(bottles, 10) })
 		t.gt(Math.round(a), 500, 'solve more than 500 times per second')
 		
-		var b = t.speed(function () { f(bottles, 100000) })
-		t.peq(b / a, 1, 0.3, 'same timings')
+		var b = t.speed(function () { f(bottles, 1000) })
+		t.peq(a / b, 1, 0.5, 'same timings')
 	})
 })
 </script>
