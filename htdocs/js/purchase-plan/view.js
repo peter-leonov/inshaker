@@ -157,9 +157,10 @@ var myProto =
 		var availableKeyCodes = { 8:1, 37:1, 39:1 }
 		var keypress = function(e)
 		{
-			var charCode = e.charCode
-			var keyCode = e.keyCode
+			var charCode = e.charCode || e.keyCode
+			var keyCode = e.keyCode || e.charCode
 			
+			//alert('charCode ' + charCode + ', keyCode ' + keyCode)
 			
 			if(keyCode == 13)
 			{
