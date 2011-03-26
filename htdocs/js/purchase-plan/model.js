@@ -114,17 +114,21 @@ var myProto =
 	{		
 		var ingredientVolumes = ingredient.volumes
 		ingredientVolumes.map(function(a){ a.nominalPrice = a[1]/a[0] })
-		ingredientVolumes.sort(function(a, b){ return a.nominalPrice - b.nominalPrice })
+		ingredientVolumes.sort(function(a, b){ return b.nominalPrice - a.nominalPrice })
 		
-		var bottleVolume = ingredientVolumes[0][0]
+		var last = ingredientVolumes.length - 1
+		
+		var minNominal = ingredientVolumes[0].nominalPrice
+		
+		var bottleVolume = ingredientVolumes[last][0]
 		var bottles = Math.ceil(v / bottleVolume)
-		var pricePerBottle = ingredientVolumes[0][1]
+		var pricePerBottle = ingredientVolumes[last][1]
 		var volume = bottles * bottleVolume
 		var totalPrice = bottles * pricePerBottle
 		var minPrice = totalPrice
-		
+			
 		appendBottles(volume, minPrice, 0, [], bottles)
-	
+		
 		function appendBottles(currentVolume, currentPrice, start, bottles, addingBottles)
 		{
 			for (var i = start, il = ingredientVolumes.length; i < il; i++) 
@@ -134,15 +138,15 @@ var myProto =
 				var tbottles = addingBottles
 				var temporyPrice = currentPrice
 				
-				while(i !=  0 && tbottles > 0 && v - vol < volumeObj[0])
+				while(tbottles > 0 && v - vol <= volumeObj[0] && i != last )
 				{
 					vol -= bottleVolume
 					tbottles--
 					temporyPrice -= pricePerBottle
+					
 				}
 				
 				var tprice = temporyPrice + volumeObj[1]
-				
 				
 				if(tprice < minPrice)
 				{
@@ -161,6 +165,7 @@ var myProto =
 				}
 			}
 		}
+		
 		return minPrice
 	},
 	
