@@ -143,6 +143,21 @@ Tests.test(function (t)
 		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
 	})
 	
+	t.test('same factor', function (t)
+	{
+		var bottles = [[1, 1], [2, 2]]
+		
+		t.time('10')
+		f(bottles, 10)
+		var a = t.timeEnd('10')
+		
+		t.time('2000')
+		f(bottles, 2000)
+		var b = t.timeEnd('2000')
+		
+		t.peq((a + 1) / (b + 1), 1, 0.5, 'same timings')
+	})
+	
 	t.test('performance', function (t)
 	{
 		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
