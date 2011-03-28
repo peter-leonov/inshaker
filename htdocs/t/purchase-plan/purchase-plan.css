@@ -54,4 +54,4 @@
 
 /*Popup*/
 <!--# include virtual="/t/ingredient-popup.css" -->
-
+.popup .popup-back { position: fixed; }
