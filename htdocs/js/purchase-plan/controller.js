@@ -27,6 +27,11 @@ var myProto =
 	reRender : function()
 	{
 		this.model.setPurchasePlan()
+	},
+	
+	ingredientSelected : function(ingredient)
+	{
+		this.model.selectIngredient(ingredient)
 	}
 }
 

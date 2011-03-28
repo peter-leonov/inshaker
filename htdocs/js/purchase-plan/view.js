@@ -219,12 +219,43 @@ var myProto =
 		if(target.editableItem)
 		{
 			this.controller.editPlanItem(target.editableItem, target.exclude)
+			return
+		}
+		
+		var ingredient = target['data-ingredient']
+		if(ingredient)
+		{
+			this.controller.ingredientSelected(ingredient)
 		}
 	},	
 	
 	renderIfEmpty : function()
 	{
 		this.nodes.purchasePlan.main.addClassName('empty')
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		if (ingredient)
+		{
+			var popup = IngredientPopup.show(ingredient)
+			var controller = this.controller
+			popup.onhide = function () { controller.ingredientSelected(null) }
+		}
+		else
+			IngredientPopup.hide()
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		if (ingredient)
+		{
+			var popup = IngredientPopup.show(ingredient)
+			var controller = this.controller
+			popup.onhide = function () { controller.ingredientSelected(null) }
+		}
+		else
+			IngredientPopup.hide()
 	}
 }
 

@@ -29,6 +29,8 @@
 .purchase-plan-block .plan-table .edit-item .edit { cursor: pointer; }
 
 .purchase-plan-block .plan-table .item-name { text-align: left; width: 350px; }
+.purchase-plan-block .plan-table .item-name .link-to-popup { cursor: pointer; }
+.purchase-plan-block .plan-table .item-name .link-to-popup:hover { text-decoration: underline; }
 .purchase-plan-block .plan-table .item-volume { text-align: center; width: 170px; }
 .purchase-plan-block .plan-table .item-volume .volume-unit { padding-left: 2px; }
 .purchase-plan-block .plan-table .item-volume .volume-value {  display: inline-block; }
@@ -48,3 +50,8 @@
 .purchase-plan-block .plan-table .excluded .edit-item { color: #8DD013; }
 .purchase-plan-block .plan-table .excluded .item-name { text-decoration: line-through; }
 .purchase-plan-block .plan-table .excluded td { opacity: 0.25; background-color: #fff; }
+
+
+/*Popup*/
+<!--# include virtual="/t/ingredient-popup.css" -->
+

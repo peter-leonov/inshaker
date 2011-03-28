@@ -193,6 +193,11 @@ var myProto =
 	save : function()
 	{
 		BarStorage.saveBar({ purchasePlanNotices : this.notices, purchasePlanVolumes :this.volumes, purchasePlanExcludes : this.excludes })
+	},
+	
+	selectIngredient : function(ingredient)
+	{
+		this.view.showIngredient(ingredient)
 	}
 	
 	
