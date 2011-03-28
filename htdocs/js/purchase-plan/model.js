@@ -4,6 +4,33 @@ var Me = PurchasePlan.Model
 
 var myProto =
 {
+	initialize : function()
+	{
+		var me = this
+		
+		var addIngredient = BarStorage.addIngredient
+		
+		BarStorage.addIngredient = function(ingredientName)
+		{
+			var r = addIngredient.call(BarStorage, ingredientName)
+			me.ingredients = me.getIngredients(BarStorage.bar.ingredients)
+			me.totalPrice = me.calculateTotalPrice(me.volumes)
+			me.view.renderPurchasePlan(me.ingredients, me.volumes, me.notices, me.excludes, me.totalPrice)
+			return r
+		}
+		
+		var removeIngredient = BarStorage.removeIngredient
+		
+		BarStorage.removeIngredient = function(ingredientName)
+		{
+			var r = removeIngredient.call(BarStorage, ingredientName)
+			me.ingredients = me.getIngredients(BarStorage.bar.ingredients)
+			me.totalPrice = me.calculateTotalPrice(me.volumes)
+			me.view.renderPurchasePlan(me.ingredients, me.volumes, me.notices, me.excludes, me.totalPrice)
+			return r
+		}
+	},
+	
 	bind : function ()
 	{
 		var me = this
