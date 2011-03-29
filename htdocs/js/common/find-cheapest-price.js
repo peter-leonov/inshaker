@@ -1,5 +1,5 @@
 var findCheapestPrice = function(ingredient, v)
-{		
+{
 	var ingredientVolumes = ingredient.volumes
 	ingredientVolumes.map(function(a){ a.nominalPrice = a[1]/a[0] })
 	ingredientVolumes.sort(function(a, b){ return b.nominalPrice - a.nominalPrice })
@@ -27,12 +27,11 @@ var findCheapestPrice = function(ingredient, v)
 			var tbottles = addingBottles
 			var temporyPrice = currentPrice
 			
-			while(tbottles > 0 && v - vol <= volumeObj[0] && i != last )
+			while(tbottles > 0 && v - vol < volumeObj[0] && i != last)
 			{
 				vol -= bottleVolume
 				tbottles--
 				temporyPrice -= pricePerBottle
-				
 			}
 			
 			var tprice = temporyPrice + volumeObj[1]
@@ -58,7 +57,3 @@ var findCheapestPrice = function(ingredient, v)
 	
 	return returnObj
 }
-
-var ingredient = { volumes : [[0.5, 37.90], [1.0, 52.90], [2.0, 56.90]] }
-
-var res = findCheapestPrice(ingredient, 2.5)
