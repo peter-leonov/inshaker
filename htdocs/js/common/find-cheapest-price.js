@@ -1,4 +1,5 @@
-var findCheapestPrice = function(ingredient, v)
+(function(){
+var f = function(ingredient, v)
 {
 	var ingredientVolumes = ingredient.volumes
 	ingredientVolumes.map(function(a){ a.nominalPrice = a[1]/a[0] })
@@ -65,3 +66,5 @@ var findCheapestPrice = function(ingredient, v)
 	
 	return returnObj
 }
+window['findCheapestPrice'] = f
+})()
