@@ -1,4 +1,4 @@
-(function(){
+;(function(){
 var f = function(ingredient, v)
 {
 	var ingredientVolumes = ingredient.volumes
