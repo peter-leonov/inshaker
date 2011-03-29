@@ -16,10 +16,16 @@ var findCheapestPrice = function(ingredient, v)
 	var minPrice = totalPrice
 	var returnObj = { bottles : [], price : minPrice, addingBottles : { amount : bottles, vol : bottleVolume, pricePerBottle : pricePerBottle } }
 	
-	appendBottles(volume, minPrice, 0, [], bottles)
 	
-	function appendBottles(currentVolume, currentPrice, start, bottles, addingBottles)
+	var entries = 0
+	var ahtung = function(){ throw new Error('Too long finding cheapest price for volume ' + v + ' with ingredientVolumes: ' + ingredientVolumes.toSource()) }
+	
+	var appendBottles = function (currentVolume, currentPrice, start, bottles, addingBottles)
 	{
+		//set restriction for recurtion
+		if(entries++ === 100)
+			setTimeout(ahtung, 0)
+		
 		for (var i = start, il = ingredientVolumes.length; i < il; i++) 
 		{
 			var volumeObj = ingredientVolumes[i]
@@ -54,6 +60,8 @@ var findCheapestPrice = function(ingredient, v)
 			}
 		}
 	}
+	
+	appendBottles(volume, minPrice, 0, [], bottles)
 	
 	return returnObj
 }
