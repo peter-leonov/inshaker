@@ -158,7 +158,22 @@ Tests.test(function (t)
 		t.peq((a + 10) / (b + 10), 1, 0.5, 'same timings')
 	})
 	
-	t.test('performance', function (t)
+	t.test('very close factor', function (t)
+	{
+		var bottles = [[1, 1], [2, 1.99999999]]
+		
+		t.time('10')
+		f(bottles, 10)
+		var a = t.timeEnd('10')
+		
+		t.time('20000')
+		f(bottles, 20000)
+		var b = t.timeEnd('20000')
+		
+		t.peq((a + 10) / (b + 10), 1, 0.5, 'same timings')
+	})
+	
+	t.test('performance (equal factor)', function (t)
 	{
 		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
 		
