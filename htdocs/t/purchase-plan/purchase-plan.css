@@ -28,12 +28,20 @@
 
 .purchase-plan-block .plan-table .edit-item .edit { cursor: pointer; }
 
+.purchase-plan-block .plan-table td { vertical-align: middle; }
 .purchase-plan-block .plan-table .item-name { text-align: left; width: 550px; }
 .purchase-plan-block .plan-table .item-name .link-to-popup { cursor: pointer; }
 .purchase-plan-block .plan-table .item-name .link-to-popup:hover { text-decoration: underline; }
-.purchase-plan-block .plan-table .item-volume { text-align: center; width: 170px; }
+.purchase-plan-block .plan-table .item-volume { text-align: left; width: 170px; }
 .purchase-plan-block .plan-table .item-volume .volume-unit { padding-left: 2px; }
-.purchase-plan-block .plan-table .item-volume .volume-value {  display: inline-block; }
+.purchase-plan-block .plan-table .item-volume .volume-value
+{
+	margin-left: 11px;
+	margin-right: 5px;
+	text-align: center;
+	width: 50px;
+	font-size: 14px;
+}
 .purchase-plan-block .plan-table .item-price { text-align: center; width: 170px; }
 
 /*
@@ -42,7 +50,12 @@
 .purchase-plan-block .plan-table .item-notice .notice-text:focus { background-color: #fff; }
 */
 
-.purchase-plan-block .plan-table .total-price .total-label { text-align: center; font-style: italic; }
+.purchase-plan-block .plan-table .total-price .total-label
+{
+	font-style: italic;
+	padding-left: 24px;
+	text-align: left;
+}
 .purchase-plan-block .plan-table .total-price .total { text-align: center; font-style: italic; font-size: 15px; font-weight: bold; }
 
 .purchase-plan-block .plan-table .total-price td { padding-top: 5px; }
