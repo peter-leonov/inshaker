@@ -248,6 +248,7 @@ http://www.inshaker.ru/cocktail/gin_infused_on_raspberries/
 http://www.inshaker.ru/cocktail/gin_infused_on_blackcurrant/
 http://www.inshaker.ru/cocktail/gin_peach_tea/
 http://www.inshaker.ru/cocktail/gin_tonic/
+http://www.inshaker.ru/cocktail/gin_tonic_24/
 http://www.inshaker.ru/cocktail/gin_tonic_with_cucumber/
 http://www.inshaker.ru/cocktail/gin_fizz/
 http://www.inshaker.ru/cocktail/gioconda_shooter/
@@ -271,6 +272,7 @@ http://www.inshaker.ru/cocktail/smoking_scot/
 http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
+http://www.inshaker.ru/cocktail/e-sencha-l/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_cobler/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
@@ -294,6 +296,7 @@ http://www.inshaker.ru/cocktail/gold_bottom/
 http://www.inshaker.ru/cocktail/gold_gingery_rum/
 http://www.inshaker.ru/cocktail/zombie/
 http://www.inshaker.ru/cocktail/zombie_2/
+http://www.inshaker.ru/cocktail/shifting_sands/
 http://www.inshaker.ru/cocktail/isabella/
 http://www.inshaker.ru/cocktail/izcaragua/
 http://www.inshaker.ru/cocktail/gingery_grenade/
@@ -352,6 +355,7 @@ http://www.inshaker.ru/cocktail/strawberry_mulled_wine/
 http://www.inshaker.ru/cocktail/strawberry_mulled_wine_317/
 http://www.inshaker.ru/cocktail/strawberry_cobler_317/
 http://www.inshaker.ru/cocktail/strawberry_lemonade/
+http://www.inshaker.ru/cocktail/strawberry_malarky/
 http://www.inshaker.ru/cocktail/strawberry_milkshake/
 http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
@@ -691,6 +695,7 @@ http://www.inshaker.ru/cocktail/sangrita/
 http://www.inshaker.ru/cocktail/sangrita_carlitos/
 http://www.inshaker.ru/cocktail/sangrita_in_russian/
 http://www.inshaker.ru/cocktail/satisfaction/
+http://www.inshaker.ru/cocktail/sour_24/
 http://www.inshaker.ru/cocktail/beet_chaser/
 http://www.inshaker.ru/cocktail/traffic_lights/
 http://www.inshaker.ru/cocktail/raging_bull/
