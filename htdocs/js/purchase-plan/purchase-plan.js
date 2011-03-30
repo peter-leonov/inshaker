@@ -33,6 +33,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/js/combinator/popup.js" -->
 <!--# include virtual="/js/combinator/ingredient-popup.js" -->
+<!--# include virtual="/js/combinator/throttler.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/mybar-name.js" -->
