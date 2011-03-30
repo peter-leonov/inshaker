@@ -18,12 +18,13 @@ var f = function(ingredient, v)
 	var returnObj = { bottles : [], price : minPrice, addingBottles : { amount : bottles, vol : bottleVolume, pricePerBottle : pricePerBottle } }
 	
 	
-	var entries = 0
+	var entries = 0,
+		maxEntries = f.maxEntries
 	
 	var appendBottles = function (currentVolume, currentPrice, start, bottles, addingBottles)
 	{
 		//set restriction for recursion
-		if (++entries >= 100)
+		if (++entries >= maxEntries)
 			throw new Error('Too long finding cheapest price for volume ' + v + ' with ingredientVolumes: ' + ingredientVolumes.toSource())
 		
 		for (var i = start, il = ingredientVolumes.length; i < il; i++) 
