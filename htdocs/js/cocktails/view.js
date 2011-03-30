@@ -103,9 +103,9 @@ function CocktailsView (states, nodes, styles) {
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
 		
+		nodes.searchTipName.realShow = nodes.searchTipName.show
 		nodes.searchTipName.show = function () {
-			this.style.display = "block";
-			this.style.visibility = "visible";
+			this.realShow()
 			var names = self.controller.needRandomCocktailNames();
 			nodes.searchExampleName.innerHTML = names[0];
 			nodes.searchExampleNameEng.innerHTML = names[1];
@@ -115,21 +115,21 @@ function CocktailsView (states, nodes, styles) {
 				self.onAllIngredientsRemoved();
 			}, false);
 		
+		nodes.searchTipIngredient.realShow = nodes.searchTipIngredient.show
 		nodes.searchTipIngredient.show = function () {
-			this.style.display = "block";
-			this.style.visibility = "visible";
+			this.realShow()
 			nodes.searchExampleIngredient.innerHTML = self.controller.needRandomIngredient();
 		};
 		
+		nodes.ingredsView.realShow = nodes.ingredsView.show
 		nodes.ingredsView.show = function(){
-			this.style.display = "block";
-			this.style.visibility = "visible";
+			this.realShow()
 			nodes.searchTips.hide();
 		}
 		
+		nodes.ingredsView.realHide = nodes.ingredsView.hide
 		nodes.ingredsView.hide = function(){
-			this.style.visibility = "hidden";
-			this.style.display = "none";
+			this.realHide()
 			nodes.searchTips.show();
 		}
 		
