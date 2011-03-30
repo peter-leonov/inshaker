@@ -25,7 +25,7 @@ var f = function(ingredient, v)
 	{
 		//set restriction for recursion
 		if (++entries >= maxEntries)
-			throw new Error('Too long finding cheapest price for volume ' + v + ' with ingredientVolumes: ' + ingredientVolumes.join(', '))
+			throw new Error('More than ' + entries + ' entries while finding cheapest price for volume ' + v + ' with bottles: ' + ingredientVolumes.join(', '))
 		
 		for (var i = start, il = ingredientVolumes.length; i < il; i++) 
 		{
