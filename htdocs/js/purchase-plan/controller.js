@@ -16,18 +16,20 @@ var myProto =
 	
 	setVolume : function(ingredient, v)
 	{
-		this.model.setVolume(ingredient, v.replace(',', '.'))
+		this.model.setVolume(ingredient, v.replace(/[\.\,]+/, '.').replace(/[^0-9\.]+/, ''))
 	},
+	/*
+		setNotice : function(ingredient, notice)
+		{
+			this.model.setNotice(ingredient, notice)
+		},
+		*/
 	
-	setNotice : function(ingredient, notice)
-	{
-		this.model.setNotice(ingredient, notice)
-	},
-	
-	reRender : function()
+/*	reRender : function()
 	{
 		this.model.setPurchasePlan()
-	},
+	},*/
+
 	
 	ingredientSelected : function(ingredient)
 	{

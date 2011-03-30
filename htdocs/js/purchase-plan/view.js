@@ -66,10 +66,12 @@ var myProto =
 			//item volume
 			{
 				var volumeTd = Nc('td', 'item-volume')
-				var volume = Nct('span', 'volume-value', exclude ? 0 : volumes[name].volume)
+				var volume = Nc('input', 'volume-value')
+				volume.value = exclude ? 0 : volumes[name].volume
 				//if(!exclude)
 				{
-					volume.setAttribute('contenteditable', true)
+					volume.setAttribute('type', 'text')
+					volume.setAttribute('name', 'volume-value')
 					volume.ingredient = ingredient
 					volume.row = tr
 					volume.editNode = edit
@@ -150,70 +152,95 @@ var myProto =
 		priceNode.appendChild(T(price))
 	},
 	
-	currentEditingField : null,
+	renderFilteredVolume : function(volume)
+	{
+		var input = this.currentEditingField
+		var start = input.selectionStart
+		
+		input.value = volume
+		
+		input.selectionStart = input.selectionEnd = input.value.length - input.selPos
+		input.selPos = input.selectionStart
+		input.prevValue = input.value
+	},
 	
 	appendEventsToVolumeField : function(node)
 	{
-		var me = this
-		var availableCharCodes = { 48:1, 49:1, 50:1, 51:1, 52:1, 53:1, 54:1, 55:1, 56:1, 57:1, 46:1, 44:1 }
-		var availableKeyCodes = { 8:1, 37:1, 39:1 }
+		var me = this/*
+				var availableCharCodes = { 48:1, 49:1, 50:1, 51:1, 52:1, 53:1, 54:1, 55:1, 56:1, 57:1, 46:1, 44:1 }
+				var availableKeyCodes = { 8:1, 37:1, 39:1 }*/
+		
 		var keypress = function(e)
 		{
-			var charCode = e.charCode || e.keyCode
-			var keyCode = e.keyCode || e.charCode
+			//var charCode = e.charCode || e.keyCode
+			//var keyCode = e.keyCode || e.charCode
 			
 			//alert('charCode ' + charCode + ', keyCode ' + keyCode)
+			/*
+						if(keyCode == 13)
+						{
+							e.target.blur()
+							e.preventDefault()
+							return
+						}
+						*/
+			/*
+						if(!availableCharCodes[charCode] && !availableKeyCodes[keyCode])
+						{
+							e.preventDefault()
+							return
+						}*/
 			
-			if(keyCode == 13)
-			{
-				e.target.blur()
-				e.preventDefault()
-				return
-			}
-			
-			if(!availableCharCodes[charCode] && !availableKeyCodes[keyCode])
-			{
-				e.preventDefault()
-				return
-			}
 			
 			var target = e.target
 			me.currentEditingField = target
+			
 			var ingredient = target.ingredient
-			setTimeout(function(){ me.controller.setVolume(ingredient, target.innerHTML) }, 0)
+			var value = target.value
+			
+			if(target.prevValue == value)
+			{
+				target.selPos = value.length - target.selectionStart
+				return
+			}
+			
+			me.controller.setVolume(ingredient, value)
 		}
 		
-		node.addEventListener('keypress', function(e){ keypress(e) }, false)
-		node.addEventListener('blur', function(){ me.controller.reRender() }, false)
+		var t = new Throttler(keypress, 100, 500)
+		node.addEventListener('keypress', function(e){ t.call(e) }, false)
+		node.addEventListener('focus', function(){ this.selPos = this.value.length - this.selectionStart; this.prevValue = this.value }, false)
+		node.addEventListener('blur', function(){ this.value = parseFloat(this.value) || 0 }, false)
 	},
 	
-	appendEventsToNoticeField : function(node)
-	{
-		var me = this
-		var suppressKeys = { 9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1 }
-		var keypress = function(e)
+	/*appendEventsToNoticeField : function(node)
 		{
-			var charCode = e.charCode
-			
-			if(charCode == 13)
+			var me = this
+			var suppressKeys = { 9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1 }
+			var keypress = function(e)
 			{
-				e.target.blur()
-				e.preventDefault()
-				return
-			}
-			if(suppressKeys[charCode])
-			{
-				e.preventDefault()
-				return
+				var charCode = e.charCode
+				
+				if(charCode == 13)
+				{
+					e.target.blur()
+					e.preventDefault()
+					return
+				}
+				if(suppressKeys[charCode])
+				{
+					e.preventDefault()
+					return
+				}
+				
+				var target = e.target
+				var ingredient = target.ingredient
+				setTimeout(function(){ me.controller.setNotice(ingredient, target.innerHTML) }, 0)
 			}
 			
-			var target = e.target
-			var ingredient = target.ingredient
-			setTimeout(function(){ me.controller.setNotice(ingredient, target.innerHTML) }, 0)
+			node.addEventListener('keypress', function(e){ keypress(e) }, false)	
 		}
-		
-		node.addEventListener('keypress', function(e){ keypress(e) }, false)	
-	},
+	,*/
 	
 	handleTableClicks : function(e)
 	{

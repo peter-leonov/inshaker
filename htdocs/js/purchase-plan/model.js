@@ -50,14 +50,15 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
-		this.setPurchasePlan()
+		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
 		
 	},
-	
+/*	
 	setPurchasePlan : function()
 	{
 		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.notices, this.excludes, this.totalPrice)
-	},
+	},*/
+
 	
 	getIngredients : function(ingredientNames)
 	{
@@ -108,34 +109,37 @@ var myProto =
 		return rVol
 	},
 	
-	setVolume : function(ingredient, v)
+	setVolume : function(ingredient, volumeString)
 	{
 		var name = ingredient.name
-		v = parseFloat(v)
-		if(!v)
+		var v = parseFloat(volumeString)
+		
+		if(v)
+		{
+			this.excludes[name] = null
+			this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v) }
+			var price = this.volumes[name].price
+		}
+		else
 		{
 			this.excludes[name] = true
-			this.totalPrice = this.calculateTotalPrice(this.volumes)
-			this.save()
-			this.view.renderNewPrice(0)
-			this.view.renderTotalPrice(this.totalPrice)
-			return
+			var price = 0
 		}
 		
-		this.excludes[name] = null
-		this.volumes[name] = { volume : v, price : this.findCheapestPrice(ingredient, v) }
 		this.totalPrice = this.calculateTotalPrice(this.volumes)
 		this.save()
-		this.view.renderNewPrice(this.volumes[name].price)
+		this.view.renderFilteredVolume(volumeString)
+		this.view.renderNewPrice(price)
 		this.view.renderTotalPrice(this.totalPrice)
 	},
-	
-	setNotice : function(ingredient, notice)
-	{
-		var name = ingredient.name
-		this.notices[name] = notice
-		this.save()
-	},
+	/*
+		setNotice : function(ingredient, notice)
+		{
+			var name = ingredient.name
+			this.notices[name] = notice
+			this.save()
+		},
+		*/
 	
 	findCheapestPrice : function(ingredient, v)
 	{		
@@ -165,7 +169,7 @@ var myProto =
 				var tbottles = addingBottles
 				var temporyPrice = currentPrice
 				
-				while(tbottles > 0 && v - vol <= volumeObj[0] && i != last )
+				while(tbottles > 0 && v - vol < volumeObj[0] && i != last )
 				{
 					vol -= bottleVolume
 					tbottles--
