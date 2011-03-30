@@ -86,6 +86,7 @@ $.onready(
 	}
 )
 
+<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 <!--# include file="/lib-0.3/modules/regexp-escape.js" -->
 <!--# include file="/js/common/switcher.js" -->
 <!--# include file="/js/common/nodes-shortcut.js" -->
