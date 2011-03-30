@@ -304,6 +304,8 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
+    # puts %Q{"#{name}","#{@cocktail["teaser"]}"}
+    
     if about["Добавлен"]
       @cocktail["added"] = Time.gm(*about["Добавлен"].split(".").reverse.map{|v|v.to_i})
     else
