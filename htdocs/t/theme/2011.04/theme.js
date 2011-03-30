@@ -1,4 +1,4 @@
 {
-	"spotlighted":{"href":"/cocktail/golden_margarita/"},
-	"branded-image":{"href":"/cocktail/golden_margarita/"}
+	"spotlighted":{"href":"/cocktails.html#state=byIngredients&marks=Beefeater"},
+	"branded-image":{"href":"/cocktails.html#state=byIngredients&marks=Beefeater"}
 }
