@@ -16,17 +16,6 @@ Tests.test(function (t)
 {
 	t.ok(findCheapestPrice, 'findCheapestPrice')
 	
-	function old (volumes, max)
-	{
-		for (var i = 0, il = volumes.length; i < il; i++)
-			volumes[i][2] = true
-		
-		var res = DataFilter.countOptimal(max, volumes)
-		for (var k in res)
-			res[k] = res[k].count
-		return res
-	}
-	
 	function f (volumes, max)
 	{
 		if (!volumes.length)
