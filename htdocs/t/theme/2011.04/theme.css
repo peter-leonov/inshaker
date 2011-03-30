@@ -14,12 +14,12 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.jpg); width: 570px; height: 760px; left: 50px; bottom: -845px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #840813; }
-#bottom { color: #000; }
-#bottom a { color: #890814; background-color: #d5bc58; }
+#top .nav a:hover { border-bottom-color: #ab0e1c; }
+#bottom { color: #6c6c6c; }
+#bottom a { color: #fff; background-color: #141314; }
 html { background: #141314; }
-button.rounded b { text-shadow: 1px 1px 0 #8b5b2c; }
-button.strong b { text-shadow: 1px 1px 0 #dbacaa; color: #7b2c2a; }
+button.rounded b { text-shadow: 1px 1px 0 #622; }
+button.strong b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
 
 /* calculator.css */
 #b-bill dt,
@@ -69,7 +69,7 @@ button.strong b { text-shadow: 1px 1px 0 #dbacaa; color: #7b2c2a; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
-#output .help-line .hint { color: #840813; }
+#output .help-line .hint { color: #ab0e1c; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
