@@ -56,7 +56,8 @@ var myProto =
 			//item name
 			{
 				var nameTd = Nc('td', 'item-name')
-				var link = Nct('span', 'link-to-popup', name)
+				var brand = ingredient.brand
+				var link = Nct('span', 'link-to-popup', name + (brand ? ' ' + brand : ''))
 				link['data-ingredient'] = ingredient
 				nameTd.appendChild(link)
 				tr.appendChild(nameTd)
