@@ -141,6 +141,7 @@ Tests.test(function (t)
 		t.like(f([], 10), {}, 'empty volumes')
 		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
 		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
+		t.like(f([[1, 0], [2, 1]], 10), {1: 10}, 'free bottle')
 	})
 	
 	t.test('same factor', function (t)
