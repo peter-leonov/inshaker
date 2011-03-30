@@ -89,17 +89,18 @@ var myProto =
 				tr.appendChild(priceTd)
 			}
 			
-			//item notice
-			{
-				var noticeTd = Nc('td', 'item-notice')
-				var notice = Nct('div', 'notice-text', notes[name] || '')
-				notice.setAttribute('contenteditable', true)
-				notice.ingredient = ingredient
-				this.appendEventsToNoticeField(notice)
-
+			/*//item notice
+						{
+							var noticeTd = Nc('td', 'item-notice')
+							var notice = Nct('div', 'notice-text', notes[name] || '')
+							notice.setAttribute('contenteditable', true)
+							notice.ingredient = ingredient
+							this.appendEventsToNoticeField(notice)
+			
 				noticeTd.appendChild(notice)
-				tr.appendChild(noticeTd)
-			}
+							tr.appendChild(noticeTd)
+						}*/
+			
 			
 			df.appendChild(tr)
 		}
