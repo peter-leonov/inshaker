@@ -4,6 +4,7 @@
 <xsl:template match="/">
 <pie>
 	<xsl:variable name="opera" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera']"/>
+	<xsl:variable name="opera_11_1" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '11.1']"/>
 	<xsl:variable name="opera_11_0" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '11.0']"/>
 	<xsl:variable name="opera_10_7" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.7']"/>
 	<xsl:variable name="opera_10_6" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.6']"/>
@@ -15,6 +16,7 @@
 	<xsl:variable name="opera_9_2" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '9.2']"/>
 	
 	<xsl:variable name="opera_sum" select="sum($opera/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="opera_11_1_sum" select="sum($opera_11_1/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_11_0_sum" select="sum($opera_11_0/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_7_sum" select="sum($opera_10_7/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_6_sum" select="sum($opera_10_6/dxp:metric[@name='ga:visits']/@value)"/>
@@ -25,6 +27,9 @@
 	<xsl:variable name="opera_9_5_sum" select="sum($opera_9_5/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_9_2_sum" select="sum($opera_9_2/dxp:metric[@name='ga:visits']/@value)"/>
 	
+	<slice title="Opera 11.1" color="#cc2200">
+		<xsl:value-of select="$opera_11_1_sum"/>
+	</slice>
 	<slice title="Opera 11.0" color="#cc2200">
 		<xsl:value-of select="$opera_11_0_sum"/>
 	</slice>
@@ -53,7 +58,7 @@
 		<xsl:value-of select="$opera_9_2_sum"/>
 	</slice>
 	<slice title="other Opera" color="#ccbb99">
-		<xsl:value-of select="$opera_sum - $opera_11_0_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
+		<xsl:value-of select="$opera_sum - $opera_11_1_sum - $opera_11_0_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
 	</slice>
 	
 	
@@ -87,36 +92,61 @@
 	
 	
 	<xsl:variable name="chrome" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Chrome']"/>
+	<xsl:variable name="chrome_12" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '12.0']"/>
+	<xsl:variable name="chrome_11" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '11.0']"/>
+	<xsl:variable name="chrome_10" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.0']"/>
 	<xsl:variable name="chrome_9" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '9.0']"/>
 	<xsl:variable name="chrome_8" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '8.0']"/>
 	<xsl:variable name="chrome_7" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '7.0']"/>
 	<xsl:variable name="chrome_6" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '6.0']"/>
 	<xsl:variable name="chrome_5" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '5.0']"/>
+	<xsl:variable name="chrome_4" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '4.0']"/>
+	<xsl:variable name="chrome_3" select="$chrome[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.0']"/>
 	
 	<xsl:variable name="chrome_sum" select="sum($chrome/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="chrome_12_sum" select="sum($chrome_12/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="chrome_11_sum" select="sum($chrome_11/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="chrome_10_sum" select="sum($chrome_10/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="chrome_9_sum" select="sum($chrome_9/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="chrome_8_sum" select="sum($chrome_8/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="chrome_7_sum" select="sum($chrome_7/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="chrome_6_sum" select="sum($chrome_6/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="chrome_5_sum" select="sum($chrome_5/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="chrome_4_sum" select="sum($chrome_4/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="chrome_3_sum" select="sum($chrome_3/dxp:metric[@name='ga:visits']/@value)"/>
 	
-	<slice title="Chrome 9" color="#66cc22">
+	<slice title="Chrome 12" color="#66cc22">
+		<xsl:value-of select="$chrome_12_sum"/>
+	</slice>
+	<slice title="Chrome 11" color="#66cc22">
+		<xsl:value-of select="$chrome_11_sum"/>
+	</slice>
+	<slice title="Chrome 10" color="#66cc22">
+		<xsl:value-of select="$chrome_10_sum"/>
+	</slice>
+	<slice title="Chrome 9" color="#88cc44">
 		<xsl:value-of select="$chrome_9_sum"/>
 	</slice>
-	<slice title="Chrome 8" color="#66cc22">
+	<slice title="Chrome 8" color="#aacc66">
 		<xsl:value-of select="$chrome_8_sum"/>
 	</slice>
-	<slice title="Chrome 7" color="#88cc44">
+	<slice title="Chrome 7" color="#cccc88">
 		<xsl:value-of select="$chrome_7_sum"/>
 	</slice>
-	<slice title="Chrome 6" color="#aacc66">
+	<slice title="Chrome 6" color="#ccccaa">
 		<xsl:value-of select="$chrome_6_sum"/>
 	</slice>
-	<slice title="Chrome 5" color="#cccc88">
+	<slice title="Chrome 5" color="#ccccaa">
 		<xsl:value-of select="$chrome_5_sum"/>
 	</slice>
-	<slice title="other Chrome" color="#ccccaa">
-		<xsl:value-of select="$chrome_sum - $chrome_9_sum - $chrome_8_sum - $chrome_7_sum - $chrome_6_sum - $chrome_5_sum"/>
+	<slice title="Chrome 4" color="#ccccaa">
+		<xsl:value-of select="$chrome_4_sum"/>
+	</slice>
+	<slice title="Chrome 3" color="#ccccaa">
+		<xsl:value-of select="$chrome_3_sum"/>
+	</slice>
+	<slice title="other Chrome" color="#ccccbb">
+		<xsl:value-of select="$chrome_sum - $chrome_12_sum - $chrome_11_sum - $chrome_10_sum - $chrome_9_sum - $chrome_8_sum - $chrome_7_sum - $chrome_6_sum - $chrome_5_sum - $chrome_4_sum - $chrome_3_sum"/>
 	</slice>
 	
 	
