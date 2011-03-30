@@ -19,13 +19,12 @@ var f = function(ingredient, v)
 	
 	
 	var entries = 0
-	var ahtung = function(){ throw new Error('Too long finding cheapest price for volume ' + v + ' with ingredientVolumes: ' + ingredientVolumes.toSource()) }
 	
 	var appendBottles = function (currentVolume, currentPrice, start, bottles, addingBottles)
 	{
-		//set restriction for recurtion
-		if(entries++ === 100)
-			setTimeout(ahtung, 0)
+		//set restriction for recursion
+		if (++entries >= 100)
+			throw new Error('Too long finding cheapest price for volume ' + v + ' with ingredientVolumes: ' + ingredientVolumes.toSource())
 		
 		for (var i = start, il = ingredientVolumes.length; i < il; i++) 
 		{
@@ -62,7 +61,15 @@ var f = function(ingredient, v)
 		}
 	}
 	
-	appendBottles(volume, minPrice, 0, [], bottles)
+	try // to return last useful result
+	{
+		appendBottles(volume, minPrice, 0, [], bottles)
+	}
+	catch (ex)
+	{
+		// defered exception raising
+		setTimeout(function () { throw ex }, 0)
+	}
 	
 	return returnObj
 }
