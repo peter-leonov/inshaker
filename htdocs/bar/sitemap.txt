@@ -32,4 +32,3 @@ http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/daiquiri/
 http://www.inshaker.ru/bar/derzis/
 http://www.inshaker.ru/bar/house_of_consumer_services/
-http://www.inshaker.ru/bar/happiness/
