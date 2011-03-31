@@ -271,11 +271,8 @@ var myProto =
 						node.appendChild(me.rendernOneMustHaveRecommend(node.mustHaveIngredient))
 					
 					else if(node.group)
-					{
-						var recommend = me.renderOneRecommend(node.group)
-						if(recommend)
-							node.appendChild()
-					}	
+						node.appendChild(me.renderOneRecommend(node.group))
+						
 					node.removeClassName('lazy')
 					
 					box.loaded = true
@@ -336,12 +333,8 @@ var myProto =
 
 	renderOneRecommend : function(group)
 	{	
-		var ingredients = group.ingredients
-		
-		if(ingredients.length == 1 && ingredients[0].name == 'Лед в кубиках')
-			return null
-		
-		var	cocktails = group.cocktails,
+		var ingredients = group.ingredients,
+			cocktails = group.cocktails,
 			havingIngredients = group.havingIngredients,
 			cl = cocktails.length
 		

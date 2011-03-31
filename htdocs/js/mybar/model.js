@@ -257,13 +257,14 @@ var myProto =
 				var cocktail = cocktails[i]
 				var name = cocktail.name
 				var notMatched = {}
+				var matched = {}
 				
 				if(cocktailsHash[name])
 					continue
 				
 				var set = cocktail.ingredients
 				
-				for (var j = 0, t = 0, jl = set.length; j < jl; j++) 
+				for (var j = 0, t = 0, z = 0, jl = set.length; j < jl; j++) 
 				{
 					var ingName = set[j][0]
 	
@@ -272,7 +273,15 @@ var myProto =
 						notMatched[ingName] = true
 						t++
 					}
+					else
+					{
+						matched[ingName] = true
+						z++
+					}
 				}
+				
+				if(z == 1 && (matched['Лед в кубиках'] || matched['Лед дробленый']) || z == 2 && matched['Лед в кубиках'] && matched['Лед дробленый'])
+					continue
 				
 				if(t < j)
 				{
