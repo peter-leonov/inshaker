@@ -16,17 +16,6 @@ Tests.test(function (t)
 {
 	t.ok(findCheapestPrice, 'findCheapestPrice')
 	
-	function old (volumes, max)
-	{
-		for (var i = 0, il = volumes.length; i < il; i++)
-			volumes[i][2] = true
-		
-		var res = DataFilter.countOptimal(max, volumes)
-		for (var k in res)
-			res[k] = res[k].count
-		return res
-	}
-	
 	function f (volumes, max)
 	{
 		if (!volumes.length)
@@ -172,6 +161,28 @@ Tests.test(function (t)
 		var b = t.timeEnd('20000')
 		
 		t.peq((a + 10) / (b + 10), 1, 0.5, 'same timings')
+	})
+	
+	t.test('fractal', function (t)
+	{
+		// save maximun
+		var maxEntries = findCheapestPrice.maxEntries
+		findCheapestPrice.maxEntries = 20000
+		
+		var bottles = [[1000, 1000], [100, 100], [10, 10], [1, 1], [0.1, 0.1]]
+		
+		t.time('10')
+		f(bottles, 10)
+		var a = t.timeEnd('10')
+		
+		t.time('1111.11')
+		f(bottles, 1111.11)
+		var b = t.timeEnd('1111.11')
+		
+		t.peq((a + 10) / (b + 10), 1, 0.5, 'same timings')
+		
+		// restore maximun
+		findCheapestPrice.maxEntries = maxEntries
 	})
 	
 	t.test('performance (equal factor)', function (t)
