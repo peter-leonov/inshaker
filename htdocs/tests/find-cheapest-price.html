@@ -164,6 +164,16 @@ Tests.test(function (t)
 		t.lt(entries, 10, 'entries')
 	})
 	
+	t.test('reversed factor per volume', function (t)
+	{
+		t.mayFail()
+		
+		var bottles = [[12, 11], [11, 10], [10, 9], [9, 8], [8, 7]]
+		
+		t.eq(f(bottles, 111), {}, 'description')
+		t.lt(entries, 100, 'entries')
+	})
+	
 	t.test('performance (equal factor)', function (t)
 	{
 		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
