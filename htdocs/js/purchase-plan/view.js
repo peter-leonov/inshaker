@@ -158,9 +158,13 @@ var myProto =
 		
 		input.value = volume
 		
-		log('selectionStart', input.selectionStart, ' | ', 'selPos', input.selPos, ' | ', 'length', input.value.length)
-		input.selectionStart = input.selectionEnd = input.value.length - input.selPos
-		input.selPos = input.value.length - input.selectionEnd
+		var length = input.value.length
+		
+		var pos = length - input.selPos
+		if(pos <= 0) pos = length
+		input.selectionStart = input.selectionEnd = pos
+		log('selectionStart', input.selectionStart, ' | ', 'selPos', input.selPos, ' | ', 'length', length)
+		input.selPos = length - input.selectionEnd
 		input.prevValue = input.value
 		
 	},
@@ -199,6 +203,7 @@ var myProto =
 			var ingredient = target.ingredient
 			var value = target.value
 			
+			//toRight and toLeft keys
 			if(target.prevValue == value)
 			{
 				target.selPos = value.length - target.selectionEnd
@@ -206,10 +211,12 @@ var myProto =
 				return
 			}
 			
-			if(e.keyCode == 46)
+			//delete key
+			if(e.keyCode == 46 && !e.charCode)
 			{
 				target.selPos -= 1
 			}
+			
 			
 			me.controller.setVolume(ingredient, value)
 		}
