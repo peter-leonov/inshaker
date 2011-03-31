@@ -189,7 +189,7 @@ Tests.test(function (t)
 	{
 		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
 		
-		var a = t.speed(function () { f(bottles, 10) })
+		var a = t.speed(function () { f(bottles, 1000) })
 		t.gt(Math.round(a), 500, 'solve more than 500 times per second')
 	})
 })
