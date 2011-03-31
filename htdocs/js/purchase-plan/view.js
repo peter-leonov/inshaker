@@ -155,13 +155,14 @@ var myProto =
 	renderFilteredVolume : function(volume)
 	{
 		var input = this.currentEditingField
-		var start = input.selectionStart
 		
 		input.value = volume
 		
+		log('selectionStart', input.selectionStart, ' | ', 'selPos', input.selPos, ' | ', 'length', input.value.length)
 		input.selectionStart = input.selectionEnd = input.value.length - input.selPos
-		input.selPos = input.selectionStart
+		input.selPos = input.value.length - input.selectionEnd
 		input.prevValue = input.value
+		
 	},
 	
 	appendEventsToVolumeField : function(node)
@@ -200,7 +201,8 @@ var myProto =
 			
 			if(target.prevValue == value)
 			{
-				target.selPos = value.length - target.selectionStart
+				target.selPos = value.length - target.selectionEnd
+				log('selectionStart', target.selectionStart, ' | ', 'selPos', target.selPos, ' | ', 'length', target.value.length)
 				return
 			}
 			
@@ -209,7 +211,8 @@ var myProto =
 		
 		var t = new Throttler(keypress, 100, 500)
 		node.addEventListener('keypress', function(e){ t.call(e) }, false)
-		node.addEventListener('focus', function(){ this.selPos = this.value.length - this.selectionStart; this.prevValue = this.value }, false)
+		node.addEventListener('focus', function(){ this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
+		node.addEventListener('click', function(){ this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
 		node.addEventListener('blur', function(){ this.value = parseFloat(this.value) || 0 }, false)
 	},
 	
