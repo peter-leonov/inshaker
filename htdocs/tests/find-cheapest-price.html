@@ -148,10 +148,12 @@ Tests.test(function (t)
 	
 	t.test('very close factor', function (t)
 	{
-		var bottles = [[1, 1], [2, 1.99999999]]
+		t.mayFail()
 		
-		f(bottles, 20000)
-		t.lt(entries, 10, 'entries')
+		var bottles = [[12, 120], [11, 111], [10, 102], [9, 93], [8, 84]]
+		
+		f(bottles, 111)
+		t.lt(entries, 100, 'entries')
 	})
 	
 	t.test('very different volumes (fractal)', function (t)
