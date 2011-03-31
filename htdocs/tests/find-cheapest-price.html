@@ -154,11 +154,11 @@ Tests.test(function (t)
 		t.lt(entries, 10, 'entries')
 	})
 	
-	t.test('fractal', function (t)
+	t.test('very different volumes (fractal)', function (t)
 	{
-		var bottles = [[1000, 1000], [100, 100], [10, 10], [1, 1], [0.1, 0.1]]
+		var bottles = [[100, 100], [1, 2], [2, 3], [3, 4]]
 		
-		f(bottles, 1111.11)
+		f(bottles, 1100)
 		t.lt(entries, 10, 'entries')
 	})
 	
