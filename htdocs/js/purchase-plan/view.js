@@ -226,9 +226,9 @@ var myProto =
 		
 		var t = new Throttler(keypress, 100, 500)
 		node.addEventListener('keypress', function(e){ t.call(e) }, false)
-		node.addEventListener('focus', function(){ this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
+		node.addEventListener('focus', function(){ this.row.addClassName('active'); this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
 		node.addEventListener('click', function(){ this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
-		node.addEventListener('blur', function(){ this.value = parseFloat(this.value) || 0 }, false)
+		node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0 }, false)
 	},
 	
 	/*appendEventsToNoticeField : function(node)
