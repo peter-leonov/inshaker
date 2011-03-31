@@ -16,6 +16,7 @@ Tests.test(function (t)
 {
 	t.ok(findCheapestPrice, 'findCheapestPrice')
 	
+	findCheapestPrice.maxEntries = 2048
 	var entries
 	
 	function f (volumes, max)
