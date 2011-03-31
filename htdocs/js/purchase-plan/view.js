@@ -161,7 +161,9 @@ var myProto =
 		var length = input.value.length
 		
 		var pos = length - input.selPos
-		if(pos <= 0) pos = length
+		if(pos <= 0 && !input.deletePress) pos = length
+		input.deletePress = false
+		
 		input.selectionStart = input.selectionEnd = pos
 		log('selectionStart', input.selectionStart, ' | ', 'selPos', input.selPos, ' | ', 'length', length)
 		input.selPos = length - input.selectionEnd
@@ -215,6 +217,7 @@ var myProto =
 			if(e.keyCode == 46 && !e.charCode)
 			{
 				target.selPos -= 1
+				target.deletePress = true
 			}
 			
 			
