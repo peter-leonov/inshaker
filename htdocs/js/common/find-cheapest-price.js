@@ -72,6 +72,7 @@ var f = function(ingredient, v)
 		setTimeout(function () { throw ex }, 0)
 	}
 	
+	returnObj.entries = entries
 	return returnObj
 }
 
