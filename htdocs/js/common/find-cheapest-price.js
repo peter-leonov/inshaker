@@ -74,5 +74,8 @@ var f = function(ingredient, v)
 	
 	return returnObj
 }
+
+f.maxEntries = 100
+
 window['findCheapestPrice'] = f
 })()
