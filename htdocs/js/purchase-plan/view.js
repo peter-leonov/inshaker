@@ -206,6 +206,11 @@ var myProto =
 				return
 			}
 			
+			if(e.keyCode == 46)
+			{
+				target.selPos -= 1
+			}
+			
 			me.controller.setVolume(ingredient, value)
 		}
 		
