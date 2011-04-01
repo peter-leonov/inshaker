@@ -13,10 +13,13 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		this.bindEvents()
+		
 		return this
 	},
 	
-	setupPeaopleCount: function ()
+	bindEvents: function ()
 	{
 		var nodes = this.nodes
 		
@@ -36,26 +39,19 @@ Me.prototype =
 		
 		function keypress (e)
 		{
-			setTimeout(function () { nodes.body.firstChild.nodeValue = getNumberValue(nodes.count.value) }, 1)
-			if (e.keyCode == 13)
-			{
-				nodes.count.blur()
-				nodes.count.focus()
-				nodes.count.blur()
-				e.preventDefault()
-			}
+			// setTimeout(function () { getNumberValue(nodes.count.value) }, 1)
 		}
 		
 		function blur (e)
 		{
-			this.value = getNumberValue(this.value)
-			this.removeClassName('focused')
+			var target = e.target
+			target.value = getNumberValue(target.value)
 		}
 		
-		// listen at document level to fix Opera 9
-		nodes.count.addEventListener('keypress', keypress, false)
-		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
-		nodes.count.addEventListener('blur', blur, false)
+		
+		nodes.peopleCount.addEventListener('keypress', keypress, false)
+		nodes.peopleCount.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
+		document.addEventListener('blur', blur, true)
 	},
 	
 	renderCocktails: function (source)
