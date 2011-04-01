@@ -56,6 +56,19 @@ function bakeFirstRun (me, name)
 	}
 }
 
+function arrayToHash (a, p)
+{
+	var hash = {}
+	
+	for (var i = 0, il = a.length; i < il; i++)
+	{
+		var v = a[i]
+		hash[v[p]] = v
+	}
+	
+	return hash
+}
+
 Me.className = 'Party'
 self[Me.className] = Me
 
