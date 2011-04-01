@@ -29,7 +29,7 @@ Me.prototype =
 		
 		function keypress (e)
 		{
-			setTimeout(function () { nodes.body.firstChild.nodeValue = getNumberValue(nodes.count.innerHTML) }, 1)
+			setTimeout(function () { nodes.body.firstChild.nodeValue = getNumberValue(nodes.count.value) }, 1)
 			if (e.keyCode == 13)
 			{
 				nodes.count.blur()
