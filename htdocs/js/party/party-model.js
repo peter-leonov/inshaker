@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.cocktails = []
+	this.counts = []
 }
 
 Me.prototype =
@@ -43,6 +44,12 @@ Me.prototype =
 			counts[i] = Math.ceil(cocktails[i].factor * count)
 		
 		this.view.updateCocktails(counts)
+	},
+	
+	setCocktailCount: function (n, v)
+	{
+		this.counts[n] = v
+		log(this.counts)
 	}
 }
 

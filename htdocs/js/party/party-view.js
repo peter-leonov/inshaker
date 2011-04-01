@@ -47,11 +47,28 @@ Me.prototype =
 		
 		var view = this
 		nodes.peopleCount.addEventListener('keypress', function (e) { setTimeout(function () { view.peopleCountChanged(e) }, 0) }, false)
+		nodes.cocktails.addEventListener('keypress', function (e) { setTimeout(function () { view.cocktailCountsChanged(e) }, 0) }, false)
 	},
 	
 	peopleCountChanged: function (e)
 	{
 		this.controller.peopleCountChanged(getNumberValue(e.target.value))
+	},
+	
+	cocktailCountsChanged: function (e)
+	{
+		var target = e.target
+		var data = []
+		
+		var counts = this.cache.cocktailCounts
+		for (var i = 0, il = counts.length; i < il; i++)
+			if (target == counts[i])
+				break
+		
+		if (!counts[i])
+			return
+		
+		this.controller.cocktailCountChanged(i, getNumberValue(target.value))
 	},
 	
 	renderCocktails: function (source)
