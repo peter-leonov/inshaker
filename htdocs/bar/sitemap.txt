@@ -18,7 +18,6 @@ http://www.inshaker.ru/bar/rolling_stone/
 http://www.inshaker.ru/bar/secret_bar/
 http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/
-http://www.inshaker.ru/bar/sushi_rumba/
 http://www.inshaker.ru/bar/tapa_de_comida/
 http://www.inshaker.ru/bar/tema_bar/
 http://www.inshaker.ru/bar/tommy_d/
@@ -33,4 +32,3 @@ http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/daiquiri/
 http://www.inshaker.ru/bar/derzis/
 http://www.inshaker.ru/bar/house_of_consumer_services/
-http://www.inshaker.ru/bar/happiness/
