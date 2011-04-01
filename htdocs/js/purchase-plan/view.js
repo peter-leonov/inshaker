@@ -32,9 +32,11 @@ var myProto =
 		
 		var bodyNode = this.nodes.purchasePlan.body
 		var df = document.createDocumentFragment()
+		var me = this
 		
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
+			(function(){
 			var ingredient = ingredients[i]
 			var name = ingredient.name
 			
@@ -75,7 +77,7 @@ var myProto =
 					volume.ingredient = ingredient
 					volume.row = tr
 					volume.editNode = edit
-					this.appendEventsToVolumeField(volume)
+					me.appendEventsToVolumeField(volume)
 				}
 				var unit = Nct('span', 'volume-unit', ingredient.unit)
 				volumeTd.appendChild(volume)
@@ -105,6 +107,7 @@ var myProto =
 			
 			
 			df.appendChild(tr)
+			})()
 		}
 		
 		//total
@@ -166,7 +169,7 @@ var myProto =
 		setTimeout(function(){
 			me.setPos(input)
 			me.getPos(input)
-		}, 10)
+		}, 0)
 		
 	},
 	
@@ -212,18 +215,22 @@ var myProto =
 	getPos : function(input)
 	{
 		input.selPos = input.value.length - input.selectionEnd
-		input.selPosLength = input.selectionStart - input.selectionEnd
-		input.prevValue = input.value
+		input.selPosLength = input.selectionEnd - input.selectionStart
+		input.prevValue = input.value + ''
 		input.deletePress = false
 	},
 	
 	setPos : function(input)
 	{
+		if(input.prevValue.length == input.selPosLength)
+			return
+		
 		this.logPos(input)
 		var value = input.value
 		var pos = value.length - input.selPos + !!(input.deletePress && !input.selPosLength)
-		if(pos < 0)
-			pos = value.length
+/*		if(pos <= 0)
+			pos = value.length*/
+
 		input.selectionStart = input.selectionEnd = pos
 	},
 	
