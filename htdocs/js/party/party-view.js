@@ -57,6 +57,19 @@ Me.prototype =
 		nodes.count.addEventListener('blur', blur, false)
 	},
 	
+	renderCocktails: function (cocktails)
+	{
+		var root = this.nodes.cocktails
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i].cocktail
+			
+			var node = cocktail.getPreviewNode(false, true)
+			root.appendChild(node)
+		}
+	},
+	
 	guessParty: function ()
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')
