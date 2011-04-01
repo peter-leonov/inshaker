@@ -9,7 +9,6 @@
 
 #cocktail-plan { margin: 15px 0; }
 #cocktail-plan .head { font-size: 22px; }
-#cocktail-plan .head * { display: inline-block; } /* FF needs DIVs for content editable */
 html.msie-6 #cocktail-plan .head *,
 html.msie-7 #cocktail-plan .head * { display: inline !important; }
 #cocktail-plan .head .people .count { width: 50px; font-size: 25px; text-align: center; }
