@@ -12,7 +12,7 @@
 html.msie-6 #cocktail-plan .head *,
 html.msie-7 #cocktail-plan .head * { display: inline !important; }
 #cocktail-plan .head .people .count { width: 50px; font-size: 25px; text-align: center; }
-#cocktail-plan .body .cocktails { overflow: hidden; }
+#cocktail-plan .body .cocktails { overflow: hidden; padding: 5px 0; }
 #cocktail-plan .body .cocktails .portion { float: left; width: 220px; margin-right: 10px; }
 #cocktail-plan .body .cocktails .portion .control { font-size: 22px; text-align: center; line-height: 24px; margin: 15px 0 0 0; }
 #cocktail-plan .body .cocktails .portion .control .count { width: 50px; font-size: 24px; text-align: center; margin-right: 10px; }
