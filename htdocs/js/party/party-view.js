@@ -65,7 +65,7 @@ Me.prototype =
 		{
 			var cocktail = cocktails[i].cocktail
 			
-			var node = cocktail.getPreviewNode(false, true)
+			var node = cocktail.getLinkNodeBig()
 			root.appendChild(node)
 		}
 	},

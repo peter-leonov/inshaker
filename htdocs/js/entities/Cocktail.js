@@ -66,6 +66,8 @@ Cocktail.prototype =
 		return li
 	},
 	
+	getLinkNodeBig: function (lazy) { return this.getPreviewNode(lazy, true) },
+	
 	getIngredientNames: function ()
 	{
 		var names = []
