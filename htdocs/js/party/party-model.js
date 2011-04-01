@@ -38,25 +38,23 @@ Me.prototype =
 		this.peopleCount = count
 		
 		var counts = [],
-			customCounts = this.customCounts
+			customCounts = this.customCounts,
+			total = 0
 		
 		var cocktails = this.cocktails
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cc = customCounts[i]
-			if (cc == undefined)
-				counts[i] = Math.ceil(cocktails[i].factor * count)
-			else
-				counts[i] = cc
+			total += counts[i] = cc !== undefined ? cc : Math.ceil(cocktails[i].factor * count)
 		}
 		
 		this.view.updateCocktails(counts)
+		this.view.updateCocktailsCount(total)
 	},
 	
 	setCocktailCount: function (n, v)
 	{
 		this.customCounts[n] = v
-		log(this.counts)
 	}
 }
 

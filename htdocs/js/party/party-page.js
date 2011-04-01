@@ -13,7 +13,9 @@ function onready ()
 		partyName: $('party-name'),
 		peopleCount: $$('#cocktail-plan .head .people .count')[0],
 		body: $$('#cocktail-plan .body')[0],
-		cocktails: $$('#cocktail-plan .body .cocktails')[0]
+		cocktails: $$('#cocktail-plan .body .cocktails')[0],
+		cocktailsCount: $$('#purchase-plan .head .count')[0],
+		cocktailsCountNoun: $$('#purchase-plan .head .noun')[0]
 	}
 	
 	var widget = new PartyPage()
