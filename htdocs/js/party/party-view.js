@@ -41,11 +41,12 @@ Me.prototype =
 		
 		function blur (e)
 		{
+			this.value = getNumberValue(this.value)
 			this.removeClassName('focused')
 		}
 		
 		// listen at document level to fix Opera 9
-		document.addEventListener('keypress', keypress, false)
+		nodes.count.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
 		
