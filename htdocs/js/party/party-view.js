@@ -61,7 +61,8 @@ Me.prototype =
 	renderCocktails: function (source)
 	{
 		var root = this.nodes.cocktails,
-			cache = this.cache, counts = cache.cocktailCounts, units = cache.cocktailUnits
+			cache = this.cache,
+			counts = cache.cocktailCounts, units = cache.cocktailUnits
 		
 		for (var i = 0, il = source.length; i < il; i++)
 		{
@@ -78,14 +79,31 @@ Me.prototype =
 			var count = Nc('input', 'count')
 			control.appendChild(count)
 			counts[i] = count
-			count.value = '15'
 			
-			var unit = Nct('span', 'unit', 'порций')
+			var unit = Nct('span', 'unit', ' ')
 			control.appendChild(unit)
-			units[i] = units.firstChild
+			units[i] = unit.firstChild
 			
 			root.appendChild(item)
 		}
+	},
+	
+	updateCocktails: function (data)
+	{
+		var cache = this.cache,
+			counts = cache.cocktailCounts, units = cache.cocktailUnits
+		
+		for (var i = 0, il = counts.length; i < il; i++)
+		{
+			var v = data[i]
+			counts[i].value = v
+			units[i].nodeValue = v.plural('порция', 'порции', 'порций')
+		}
+	},
+	
+	updatePeopleCount: function (count)
+	{
+		this.nodes.peopleCount.value = count
 	},
 	
 	guessParty: function ()

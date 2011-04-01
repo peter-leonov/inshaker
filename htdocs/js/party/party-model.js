@@ -16,7 +16,7 @@ Me.prototype =
 	
 	setupCocktails: function (source)
 	{
-		var cocktails = this.cocktails
+		var cocktails = this.cocktails = []
 		for (var i = 0, il = source.length; i < il; i++)
 		{
 			var s = source[i]
@@ -26,9 +26,23 @@ Me.prototype =
 		this.view.renderCocktails(cocktails)
 	},
 	
+	setupPeaopleCount: function (count)
+	{
+		this.view.updatePeopleCount(count)
+		this.setPeaopleCount(count)
+	},
+	
 	setPeaopleCount: function (count)
 	{
-		var data = []
+		this.peopleCount = count
+		
+		var counts = []
+		
+		var cocktails = this.cocktails
+		for (var i = 0, il = cocktails.length; i < il; i++)
+			counts[i] = cocktails[i].factor * count
+		
+		this.view.updateCocktails(counts)
 	}
 }
 
