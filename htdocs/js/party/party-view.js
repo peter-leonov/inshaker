@@ -1,5 +1,20 @@
 ;(function(){
 
+function getNumberValue (v)
+{
+	// to string
+	v = '' + v
+	// clean up all non-digital chars
+	v = v.replace(/[^0-9\-]+/g, '')
+	// convert to number base 10
+	v = parseInt(v, 10)
+	// convert NaN to 0
+	v = isNaN(v) ? 0 : v
+	
+	return v
+}
+
+
 function Me ()
 {
 	this.nodes = {}
@@ -23,20 +38,6 @@ Me.prototype =
 	{
 		var nodes = this.nodes
 		
-		function getNumberValue (v)
-		{
-			// to string
-			v = '' + v
-			// clean up all non-digital chars
-			v = v.replace(/[^0-9\-]+/g, '')
-			// convert to number base 10
-			v = parseInt(v, 10)
-			// convert NaN to 0
-			v = isNaN(v) ? 0 : v
-			
-			return v
-		}
-		
 		function blur (e)
 		{
 			var target = e.target
@@ -50,7 +51,7 @@ Me.prototype =
 	
 	peopleCountChanged: function (e)
 	{
-		this.controller.peopleCountChanged(e.target.value)
+		this.controller.peopleCountChanged(getNumberValue(e.target.value))
 	},
 	
 	renderCocktails: function (source)
