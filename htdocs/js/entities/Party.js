@@ -29,7 +29,7 @@ Me.staticMethods =
 	
 	indexByName: function ()
 	{
-		this._byNameIndex = {}
+		this._byNameIndex = arrayToHash(this.db, 'name')
 	}
 }
 
