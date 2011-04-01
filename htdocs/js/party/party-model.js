@@ -40,7 +40,7 @@ Me.prototype =
 		
 		var cocktails = this.cocktails
 		for (var i = 0, il = cocktails.length; i < il; i++)
-			counts[i] = cocktails[i].factor * count
+			counts[i] = Math.ceil(cocktails[i].factor * count)
 		
 		this.view.updateCocktails(counts)
 	}
