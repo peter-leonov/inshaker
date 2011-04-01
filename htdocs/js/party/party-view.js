@@ -57,16 +57,20 @@ Me.prototype =
 		nodes.count.addEventListener('blur', blur, false)
 	},
 	
-	renderCocktails: function (cocktails)
+	renderCocktails: function (source)
 	{
 		var root = this.nodes.cocktails
 		
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		for (var i = 0, il = source.length; i < il; i++)
 		{
-			var cocktail = cocktails[i].cocktail
+			var s = source[i]
 			
-			var node = cocktail.getLinkNodeBig()
-			root.appendChild(node)
+			var item = Nc('li', 'portion')
+			
+			var cocktail = s.cocktail.getLinkNodeBig()
+			item.appendChild(cocktail)
+			
+			root.appendChild(item)
 		}
 	},
 	

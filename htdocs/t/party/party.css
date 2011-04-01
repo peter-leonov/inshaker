@@ -13,7 +13,14 @@
 html.msie-6 #plan .head *,
 html.msie-7 #plan .head * { display: inline !important; }
 #plan .head .people .count { width: 50px; font-size: 25px; color: #000; text-align: center; }
+#plan .body .cocktails { overflow: hidden; }
+#plan .body .cocktails .portion { float: left; width: 220px; margin-right: 10px; }
 
+.cocktail-preview { text-align: center; }
+.cocktail-preview .link,
+.cocktail-preview .link .image { display: block; }
+.cocktail-preview .link .image { margin: 0 auto; }
+.cocktail-preview .link { font-size: 16px; }
 
 html.msie-6 .photos .disabled { background-position-y: -60px; }
 html.msie-6 .photos .prev { background-position-x: -60px; }
