@@ -23,6 +23,10 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 .cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
 .cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
 
+#purchase-plan { margin-top: 25px; }
+#purchase-plan .head { font-size: 22px; }
+
+
 html.msie-6 .photos .disabled { background-position-y: -60px; }
 html.msie-6 .photos .prev { background-position-x: -60px; }
 html.msie-6 .photos .next { display: block; }
