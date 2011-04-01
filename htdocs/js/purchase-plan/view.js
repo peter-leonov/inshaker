@@ -160,105 +160,77 @@ var myProto =
 		
 		var length = input.value.length
 		
-		var pos = length - input.selPos
-		if(pos <= 0 && !input.deletePress) pos = length
-		input.deletePress = false
 		
-		input.selectionStart = input.selectionEnd = pos
-		log('selectionStart', input.selectionStart, ' | ', 'selPos', input.selPos, ' | ', 'length', length)
-		input.selPos = length - input.selectionEnd
-		input.prevValue = input.value
+		var me = this
+		
+		setTimeout(function(){
+			me.setPos(input)
+			me.getPos(input)
+		}, 10)
 		
 	},
 	
 	appendEventsToVolumeField : function(node)
 	{
-		var me = this/*
-				var availableCharCodes = { 48:1, 49:1, 50:1, 51:1, 52:1, 53:1, 54:1, 55:1, 56:1, 57:1, 46:1, 44:1 }
-				var availableKeyCodes = { 8:1, 37:1, 39:1 }*/
+		var me = this
 		
 		var keypress = function(e)
 		{
-			//var charCode = e.charCode || e.keyCode
-			//var keyCode = e.keyCode || e.charCode
-			
-			//alert('charCode ' + charCode + ', keyCode ' + keyCode)
-			/*
-						if(keyCode == 13)
-						{
-							e.target.blur()
-							e.preventDefault()
-							return
-						}
-						*/
-			/*
-						if(!availableCharCodes[charCode] && !availableKeyCodes[keyCode])
-						{
-							e.preventDefault()
-							return
-						}*/
-			
-			
 			var target = e.target
 			me.currentEditingField = target
 			
-			var ingredient = target.ingredient
-			var value = target.value
+			//if tab press
+			if(e.keyCode == 9)
+			{
+				return
+			}
 			
 			//toRight and toLeft keys
-			if(target.prevValue == value)
+			if(target.prevValue == target.value)
 			{
-				target.selPos = value.length - target.selectionEnd
-				log('selectionStart', target.selectionStart, ' | ', 'selPos', target.selPos, ' | ', 'length', target.value.length)
+				me.getPos(target)
 				return
 			}
 			
 			//delete key
 			if(e.keyCode == 46 && !e.charCode)
 			{
-				target.selPos -= 1
 				target.deletePress = true
 			}
 			
-			
-			me.controller.setVolume(ingredient, value)
+			me.controller.setVolume(target.ingredient, target.value)
 		}
 		
 		var t = new Throttler(keypress, 100, 500)
+		
 		node.addEventListener('keypress', function(e){ t.call(e) }, false)
-		node.addEventListener('focus', function(){ this.row.addClassName('active'); this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
-		node.addEventListener('click', function(){ this.selPos = this.value.length - this.selectionEnd; this.prevValue = this.value; log('selectionStart', this.selectionStart, ' | ', 'selPos', this.selPos, ' | ', 'length', this.value.length) }, false)
-		node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0 }, false)
+		node.addEventListener('focus', function() {	this.row.addClassName('active'); me.getPos(this) }, false)
+		node.addEventListener('click', function(){ me.getPos(this) }, false)
+		node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0}, false)
 	},
 	
-	/*appendEventsToNoticeField : function(node)
-		{
-			var me = this
-			var suppressKeys = { 9:1, 16:1, 17:1, 27:1, 33:1, 34:1, 35:1, 36:1, 37:1, 38:1, 39:1, 18:1, 91:1 }
-			var keypress = function(e)
-			{
-				var charCode = e.charCode
-				
-				if(charCode == 13)
-				{
-					e.target.blur()
-					e.preventDefault()
-					return
-				}
-				if(suppressKeys[charCode])
-				{
-					e.preventDefault()
-					return
-				}
-				
-				var target = e.target
-				var ingredient = target.ingredient
-				setTimeout(function(){ me.controller.setNotice(ingredient, target.innerHTML) }, 0)
-			}
-			
-			node.addEventListener('keypress', function(e){ keypress(e) }, false)	
-		}
-	,*/
+	getPos : function(input)
+	{
+		input.selPos = input.value.length - input.selectionEnd
+		input.selPosLength = input.selectionStart - input.selectionEnd
+		input.prevValue = input.value
+		input.deletePress = false
+	},
+	
+	setPos : function(input)
+	{
+		this.logPos(input)
+		var value = input.value
+		var pos = value.length - input.selPos + !!(input.deletePress && !input.selPosLength)
+		if(pos < 0)
+			pos = value.length
+		input.selectionStart = input.selectionEnd = pos
+	},
+	
+	logPos : function(input)
+	{
+		log('selectionStart', input.selectionStart, ' | ', 'selectionEnd', input.selectionEnd, ' | ', 'selPos', input.selPos, ' | ', 'length', input.value.length)
+	},
 	
 	handleTableClicks : function(e)
 	{
