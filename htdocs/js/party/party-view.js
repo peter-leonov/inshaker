@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.cache = {cocktailCounts: [], cocktailUnits: []}
 }
 
 eval(NodesShortcut.include())
@@ -59,7 +60,8 @@ Me.prototype =
 	
 	renderCocktails: function (source)
 	{
-		var root = this.nodes.cocktails
+		var root = this.nodes.cocktails,
+			cache = this.cache, counts = cache.cocktailCounts, units = cache.cocktailUnits
 		
 		for (var i = 0, il = source.length; i < il; i++)
 		{
@@ -69,6 +71,18 @@ Me.prototype =
 			
 			var cocktail = s.cocktail.getLinkNodeBig()
 			item.appendChild(cocktail)
+			
+			var control = Nc('div', 'control')
+			item.appendChild(control)
+			
+			var count = Nc('input', 'count')
+			control.appendChild(count)
+			counts[i] = count
+			count.value = '15'
+			
+			var unit = Nct('span', 'unit', 'порций')
+			control.appendChild(unit)
+			units[i] = units.firstChild
 			
 			root.appendChild(item)
 		}
