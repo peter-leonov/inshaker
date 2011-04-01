@@ -12,6 +12,12 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		return this
+	},
+	
+	setupPeaopleCount: function ()
+	{
+		var nodes = this.nodes
 		
 		function getNumberValue (v)
 		{
@@ -49,9 +55,6 @@ Me.prototype =
 		nodes.count.addEventListener('keypress', keypress, false)
 		nodes.count.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		nodes.count.addEventListener('blur', blur, false)
-		
-		
-		return this
 	},
 	
 	guessParty: function ()
