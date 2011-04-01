@@ -45,9 +45,22 @@ Me.prototype =
 		}
 		document.addEventListener('blur', blur, true)
 		
+		function ifReallyChanged (e, f)
+		{
+			var target = e.target
+			
+			var before = target.value
+			function after ()
+			{
+				if (before != target.value)
+					f()
+			}
+			setTimeout(after, 0)
+		}
+		
 		var view = this
-		nodes.peopleCount.addEventListener('keypress', function (e) { setTimeout(function () { view.peopleCountChanged(e) }, 0) }, false)
-		nodes.cocktails.addEventListener('keypress', function (e) { setTimeout(function () { view.cocktailCountsChanged(e) }, 0) }, false)
+		nodes.peopleCount.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.peopleCountChanged(e) }, 0) }, false)
+		nodes.cocktails.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountsChanged(e) }, 0) }, false)
 	},
 	
 	peopleCountChanged: function (e)
