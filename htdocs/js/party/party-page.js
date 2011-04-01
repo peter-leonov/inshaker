@@ -11,9 +11,9 @@ function onready ()
 	var nodes =
 	{
 		partyName: $('party-name'),
-		count: $$('#plan .head .people .count')[0],
-		body: $$('#plan .body')[0],
-		cocktails: $$('#plan .body .cocktails')[0]
+		count: $$('#cocktail-plan .head .people .count')[0],
+		body: $$('#cocktail-plan .body')[0],
+		cocktails: $$('#cocktail-plan .body .cocktails')[0]
 	}
 	
 	var widget = new PartyPage()
