@@ -24,6 +24,11 @@ Me.prototype =
 		}
 		
 		this.view.renderCocktails(cocktails)
+	},
+	
+	setPeaopleCount: function (count)
+	{
+		var data = []
 	}
 }
 
