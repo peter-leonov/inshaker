@@ -37,21 +37,20 @@ Me.prototype =
 			return v
 		}
 		
-		function keypress (e)
-		{
-			// setTimeout(function () { getNumberValue(nodes.count.value) }, 1)
-		}
-		
 		function blur (e)
 		{
 			var target = e.target
 			target.value = getNumberValue(target.value)
 		}
-		
-		
-		nodes.peopleCount.addEventListener('keypress', keypress, false)
-		nodes.peopleCount.addEventListener('focus', function (e) { this.addClassName('focused') }, false)
 		document.addEventListener('blur', blur, true)
+		
+		var view = this
+		nodes.peopleCount.addEventListener('keypress', function (e) { setTimeout(function () { view.peopleCountChanged(e) }, 0) }, false)
+	},
+	
+	peopleCountChanged: function (e)
+	{
+		this.controller.peopleCountChanged(e.target.value)
 	},
 	
 	renderCocktails: function (source)
