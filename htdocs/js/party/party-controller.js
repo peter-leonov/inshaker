@@ -14,7 +14,7 @@ Me.prototype =
 	
 	peopleCountChanged: function (v)
 	{
-		this.model.setPeaopleCount(v)
+		this.model.setPeopleCount(v)
 	},
 	
 	cocktailCountChanged: function (n, v)

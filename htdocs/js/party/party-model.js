@@ -30,10 +30,10 @@ Me.prototype =
 	setupPeaopleCount: function (count)
 	{
 		this.view.updatePeopleCount(count)
-		this.setPeaopleCount(count)
+		this.setPeopleCount(count)
 	},
 	
-	setPeaopleCount: function (count)
+	setPeopleCount: function (count)
 	{
 		this.peopleCount = count
 		
