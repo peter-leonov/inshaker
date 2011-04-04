@@ -15,6 +15,80 @@ var myProto =
 		var me = this
 		
 		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClicks(e) }, false)
+		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
+		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
+		nodes.purchasePlan.wrapper.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
+	},
+	
+	handleInputBlur : function(e)
+	{
+		var target = e.target
+		if(!target.volumeInput)
+			return
+			
+		target.row.removeClassName('active')
+		target.value = parseFloat(target.value) || 0
+	},
+	
+	handleInputFocus : function(e)
+	{
+		var target = e.target
+		if(!target.volumeInput)
+			return	
+			
+		target.row.addClassName('active')
+		this.getCursorPos(target)	
+	},
+	
+	handleTableClicks : function(e)
+	{
+		var target = e.target
+		if(target.editableItem)
+		{
+			this.controller.editPlanItem(target.editableItem, target.exclude)
+			return
+		}
+		
+		var ingredient = target['data-ingredient']
+		if(ingredient)
+		{
+			this.controller.ingredientSelected(ingredient)
+		}
+		
+		if(target.volumeInput)
+		{
+			this.getCursorPos(target)
+		}
+	},	
+	
+	handleInputKeypress : function(e)
+	{
+		var target = e.target
+		if(!target.volumeInput)
+			return
+			
+		this.currentEditingField = target
+			
+		if(e.keyCode == 9)
+		{
+			return
+		}
+		
+		//toRight and toLeft keys
+		if(e.keyCode == 37 && e.keyCode == 38)
+		{
+			this.getCursorPos(target)
+			return
+		}
+		
+		//delete key
+		if(e.keyCode == 46 && !e.charCode)
+		{
+			target.deletePress = true
+		}
+		
+		var me = this
+		setTimeout(function(){ me.controller.setVolume(target.ingredient, target.value) }, 0)
 	},
 	
 	renderBarName : function(barName)
@@ -76,8 +150,8 @@ var myProto =
 					volume.setAttribute('name', 'volume-value')
 					volume.ingredient = ingredient
 					volume.row = tr
+					volume.volumeInput = true
 					volume.editNode = edit
-					me.appendEventsToVolumeField(volume)
 				}
 				var unit = Nct('span', 'volume-unit', ingredient.unit)
 				volumeTd.appendChild(volume)
@@ -167,9 +241,9 @@ var myProto =
 		var me = this
 		
 		setTimeout(function(){
-			me.setPos(input)
-			me.getPos(input)
-		}, 0)
+			me.setCursorPos(input)
+			me.getCursorPos(input)
+		}, 10)
 		
 	},
 	
@@ -191,7 +265,7 @@ var myProto =
 			//toRight and toLeft keys
 			if(target.prevValue == target.value)
 			{
-				me.getPos(target)
+				me.getCursorPos(target)
 				return
 			}
 			
@@ -207,12 +281,12 @@ var myProto =
 		var t = new Throttler(keypress, 100, 500)
 		
 		node.addEventListener('keypress', function(e){ t.call(e) }, false)
-		node.addEventListener('focus', function() {	this.row.addClassName('active'); me.getPos(this) }, false)
-		node.addEventListener('click', function(){ me.getPos(this) }, false)
+		node.addEventListener('focus', function() {	this.row.addClassName('active'); me.getCursorPos(this) }, false)
+		node.addEventListener('click', function(){ me.getCursorPos(this) }, false)
 		node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0}, false)
 	},
 	
-	getPos : function(input)
+	getCursorPos : function(input)
 	{
 		input.selPos = input.value.length - input.selectionEnd
 		input.selPosLength = input.selectionEnd - input.selectionStart
@@ -220,7 +294,7 @@ var myProto =
 		input.deletePress = false
 	},
 	
-	setPos : function(input)
+	setCursorPos : function(input)
 	{
 		if(input.prevValue.length == input.selPosLength)
 			return
@@ -238,23 +312,7 @@ var myProto =
 	{
 		log('selectionStart', input.selectionStart, ' | ', 'selectionEnd', input.selectionEnd, ' | ', 'selPos', input.selPos, ' | ', 'length', input.value.length)
 	},
-	
-	handleTableClicks : function(e)
-	{
-		var target = e.target
-		if(target.editableItem)
-		{
-			this.controller.editPlanItem(target.editableItem, target.exclude)
-			return
-		}
-		
-		var ingredient = target['data-ingredient']
-		if(ingredient)
-		{
-			this.controller.ingredientSelected(ingredient)
-		}
-	},	
-	
+
 	renderIfEmpty : function()
 	{
 		this.nodes.purchasePlan.main.addClassName('empty')
