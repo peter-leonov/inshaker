@@ -27,7 +27,8 @@ var myProto =
 			return
 			
 		target.row.removeClassName('active')
-		target.value = parseFloat(target.value) || 0
+		
+		setTimeout(function(){ target.value = parseFloat(target.value) || 0 }, 0)
 	},
 	
 	handleInputFocus : function(e)
@@ -37,7 +38,9 @@ var myProto =
 			return	
 			
 		target.row.addClassName('active')
-		this.getCursorPos(target)	
+		
+		var me = this
+		setTimeout(function(){ me.getCursorPos(target) }, 0)	
 	},
 	
 	handleTableClicks : function(e)
@@ -57,7 +60,8 @@ var myProto =
 		
 		if(target.volumeInput)
 		{
-			this.getCursorPos(target)
+			var me = this
+			setTimeout(function(){ me.getCursorPos(target) }, 0)	
 		}
 	},	
 	
@@ -74,10 +78,12 @@ var myProto =
 			return
 		}
 		
+		var me = this
+		
 		//toRight and toLeft keys
-		if(e.keyCode == 37 && e.keyCode == 38)
+		if(e.keyCode == 37 || e.keyCode == 39)
 		{
-			this.getCursorPos(target)
+			setTimeout(function(){ me.getCursorPos(target) }, 0)
 			return
 		}
 		
@@ -86,8 +92,6 @@ var myProto =
 		{
 			target.deletePress = true
 		}
-		
-		var me = this
 		setTimeout(function(){ me.controller.setVolume(target.ingredient, target.value) }, 0)
 	},
 	
@@ -290,7 +294,7 @@ var myProto =
 	{
 		input.selPos = input.value.length - input.selectionEnd
 		input.selPosLength = input.selectionEnd - input.selectionStart
-		input.prevValue = input.value + ''
+		input.prevValue = input.value
 		input.deletePress = false
 	},
 	
@@ -302,8 +306,8 @@ var myProto =
 		this.logPos(input)
 		var value = input.value
 		var pos = value.length - input.selPos + !!(input.deletePress && !input.selPosLength)
-/*		if(pos <= 0)
-			pos = value.length*/
+		if(pos < 0 && value.length <= input.selPosLength)
+			pos = value.length
 
 		input.selectionStart = input.selectionEnd = pos
 	},
@@ -316,18 +320,6 @@ var myProto =
 	renderIfEmpty : function()
 	{
 		this.nodes.purchasePlan.main.addClassName('empty')
-	},
-	
-	showIngredient: function (ingredient)
-	{
-		if (ingredient)
-		{
-			var popup = IngredientPopup.show(ingredient)
-			var controller = this.controller
-			popup.onhide = function () { controller.ingredientSelected(null) }
-		}
-		else
-			IngredientPopup.hide()
 	},
 	
 	showIngredient: function (ingredient)
