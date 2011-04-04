@@ -17,7 +17,8 @@ var myProto =
 		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClicks(e) }, false)
 		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeypress(e) }, true)
+		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
+		nodes.purchasePlan.wrapper.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
 	},
 	
 	handleInputBlur : function(e)
@@ -67,21 +68,45 @@ var myProto =
 	
 	handleInputKeypress : function(e)
 	{
+		//press shift of ctrl
+		if(e.keyCode == 16 || e.keyCode == 17)
+		{
+			this.controlKeyPress = true
+		}
+	},
+	
+	handleInputKeyup : function(e)
+	{
 		var target = e.target
 		if(!target.volumeInput)
 			return
 		
+		if(e.keyCode == 16 || e.keyCode == 17)
+		{
+			this.controlKeyPress = false
+			return
+		}
+		
+		//alert(e.keyCode + ' ' + e.charCode)
+		
 		this.currentEditingField = target
-			
+		
+		//tab key
 		if(e.keyCode == 9)
 		{
 			return
 		}
 		
-		var me = this
+		//copy
+		if(this.controlKeyPress && e.keyCode == 67)
+		{
+			return
+		}
 		
+		var me = this
+		var arrowKeys = { 37 : true, 39 : true }
 		//toRight and toLeft keys
-		if(e.keyCode == 37 || e.keyCode == 39)
+		if(arrowKeys[e.keyCode])
 		{
 			setTimeout(function(){ me.getCursorPos(target) }, 0)
 			return
