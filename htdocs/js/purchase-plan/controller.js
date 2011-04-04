@@ -16,7 +16,8 @@ var myProto =
 	
 	setVolume : function(ingredient, v)
 	{
-		this.model.setVolume(ingredient, v.replace(/[\.\,]+/, '.').replace(/[^0-9\.]+/, ''))
+		v = v.replace(/[\,]+/g, '.').replace(/[^0-9\.]*/g, '').replace(/\.+/g, '.')
+		this.model.setVolume(ingredient, v)
 	},
 	/*
 		setNotice : function(ingredient, notice)
