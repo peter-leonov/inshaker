@@ -17,7 +17,7 @@ var myProto =
 		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClicks(e) }, false)
 		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
+		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeypress(e) }, true)
 	},
 	
 	handleInputBlur : function(e)
@@ -70,7 +70,7 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-			
+		
 		this.currentEditingField = target
 			
 		if(e.keyCode == 9)
@@ -309,7 +309,8 @@ var myProto =
 		if(pos < 0 && value.length <= input.selPosLength)
 			pos = value.length
 
-		input.selectionStart = input.selectionEnd = pos
+		input.selectionStart = pos
+		input.selectionEnd = pos
 	},
 	
 	logPos : function(input)
