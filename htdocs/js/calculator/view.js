@@ -152,68 +152,7 @@ function CalculatorView() {
 			} else window.location.href="/order.html";
 		}, false);
 	}
- 
-  this.initBarChanger = function(barName) {
-    var editing = false
-    var nodes  = { bill: $('b-bill'), 
-                   name: $$("#b-bill .b-title h1")[0], 
-                   edit: $$("#b-bill .b-title label")[0], 
-                   tip:  $$("#b-bill .b-title small")[0],
-                   input:$$("#b-bill .b-title input")[0] } 
-
-    var styles = { editing: 'editing-bar-name', unnamed: 'unnamed' }
-
-    if(nodes.name && nodes.edit) {
-        nodes.name.addEventListener('click', function(e) {
-          this.hide()
-          nodes.bill.addClassName(styles.editing)
-          nodes.edit.show()
-          editing = true
-          e.stopPropagation()
-          retainFocus()
-        }, false)
-        
-        function retainFocus(){ setTimeout(function(){
-          nodes.input.focus()
-          nodes.input.value = nodes.input.value
-        }, 2) }
-
-        nodes.input.addEventListener('keyup', function(e) {
-          if(e.keyCode == self.KEY_ENTER) finishEditing()
-        }, false)
   
-        document.body.addEventListener('click', function(e){
-          if(editing && e.target != nodes.input) finishEditing()
-        }, false)
-
-        function finishEditing(){
-          nodes.edit.hide()
-          nodes.bill.removeClassName(styles.editing)
-          nodes.name.removeClassName(styles.unnamed)
-          nodes.name.innerHTML = nodes.input.value || nodes.tip.innerHTML
-          nodes.name.show()
-          editing = false
-          self.eventListener.setBarName(nodes.name.innerHTML)
-        }
-
-        function checkEmptiness(){ setTimeout(function(){ 
-          nodes.input.value.length ? nodes.tip.hide() : nodes.tip.show()
-        }, 1) }
-
-        nodes.input.addEventListener('keypress', checkEmptiness, false)
-        nodes.input.addEventListener('keydown', checkEmptiness, false)
-        
-        if(barName) {
-            nodes.name.innerHTML = barName
-            nodes.input.value    = barName
-            nodes.tip.hide()
-        } else {
-            nodes.name.innerHTML = "Назови свой бар"
-            nodes.name.addClassName(styles.unnamed)
-        }
-    }
-  }
-  	
 	if($('call_barmen')){
 		$('call_barmen').addEventListener('click', function(e){
 			// if(!Calculator.checkSum("call_barmen")){
@@ -250,7 +189,6 @@ function CalculatorView() {
 		var barName = clientStorage.get('barName')
 		this.renderCart(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
-		else this.initBarChanger(barName)
 	};
 	
 	this.renderCart = function(cartData){
