@@ -36,6 +36,9 @@ var myProto =
 		target.row.removeClassName('active')
 		
 		setTimeout(function(){ target.value = parseFloat(target.value) || 0 }, 0)
+		
+		this.tempEditingField = target
+		//log('tempEditingField', this.tempEditingField)
 	},
 	
 	handleInputFocus : function(e)
@@ -53,8 +56,7 @@ var myProto =
 		
 		if(!this.currentEditingField)
 			this.currentEditingField = target
-			
-		setTimeout(function(){ me.currentEditingField = target }, 100)
+		//setTimeout(function(){ me.currentEditingField = target }, 100)
 	},
 	
 	handleTableClicks : function(e)
@@ -93,6 +95,11 @@ var myProto =
 			return
 		}
 		
+		if(e.keyCode == 9)
+		{
+			return
+		}	
+		
 		this.pressedInput = target
 	},
 	
@@ -108,18 +115,7 @@ var myProto =
 			return
 		}
 		
-		if(this.pressedInput == target)
-		{
-			this.currentEditingField = target
-		}
-		else
-		{
-			target = this.currentEditingField
-		}
-		
 		//alert(e.keyCode + ' ' + e.charCode)
-		
-		
 		
 		//tab key
 		if(e.keyCode == 9)
@@ -149,11 +145,19 @@ var myProto =
 			target.deletePress = true
 		}
 		
+		if(this.pressedInput == target)
+		{
+			this.currentEditingField = target
+		}
+		else
+		{
+			target = this.tempEditingField
+			this.currentEditingField = this.tempEditingField
+		}
 		
 		setTimeout(function(){
 			//log(me.currentEditingField)
 			me.controller.setVolume(target.ingredient, target.value)
-			me.currentEditingField = e.target
 		}, 0)
 	},
 	
