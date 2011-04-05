@@ -20,7 +20,7 @@ var myProto =
 		
 		var me = this
 		
-		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClicks(e) }, false)
+		nodes.purchasePlan.wrapper.addEventListener('select', function(e){ me.handleTableSelect(e) }, false)
 		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
@@ -59,7 +59,7 @@ var myProto =
 		//setTimeout(function(){ me.currentEditingField = target }, 100)
 	},
 	
-	handleTableClicks : function(e)
+	handleTableSelect : function(e)
 	{
 		var target = e.target
 		if(target.editableItem)
@@ -77,7 +77,6 @@ var myProto =
 		if(target.volumeInput)
 		{
 			var me = this
-			this.currentEditingField = target
 			setTimeout(function(){ me.getCursorPos(target) }, 0)	
 		}
 	},	
@@ -359,6 +358,8 @@ var myProto =
 	
 	getCursorPos : function(input)
 	{
+		//var end = input.selectionEnd >= input.selectionStart ? input.selectionEnd : input.selectionStart
+		//var start = input.selectionEnd >= input.selectionStart ? input.selectionEnd : input.selectionStart
 		input.selPos = input.value.length - input.selectionEnd
 		input.selPosLength = input.selectionEnd - input.selectionStart
 		input.prevValue = input.value
