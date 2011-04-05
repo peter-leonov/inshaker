@@ -5,6 +5,12 @@ eval(NodesShortcut.include())
 
 var myProto =
 {
+	initialize : function()
+	{
+		this.currentEditingField = null
+		this.i = 0
+	},
+	
 	bind : function (nodes)
 	{
 		this.nodes = nodes
@@ -26,7 +32,7 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-			
+		
 		target.row.removeClassName('active')
 		
 		setTimeout(function(){ target.value = parseFloat(target.value) || 0 }, 0)
@@ -37,11 +43,18 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return	
-			
+		
 		target.row.addClassName('active')
 		
 		var me = this
-		setTimeout(function(){ me.getCursorPos(target) }, 0)	
+		setTimeout(function(){ me.getCursorPos(target) }, 0)
+		
+		//log('focus', target)
+		
+		if(!this.currentEditingField)
+			this.currentEditingField = target
+			
+		setTimeout(function(){ me.currentEditingField = target }, 100)
 	},
 	
 	handleTableClicks : function(e)
@@ -62,17 +75,25 @@ var myProto =
 		if(target.volumeInput)
 		{
 			var me = this
+			this.currentEditingField = target
 			setTimeout(function(){ me.getCursorPos(target) }, 0)	
 		}
 	},	
 	
 	handleInputKeypress : function(e)
 	{
+		var target = e.target
+		if(!target.volumeInput)
+			return
+		
 		//press shift of ctrl
 		if(e.keyCode == 16 || e.keyCode == 17)
 		{
 			this.controlKeyPress = true
+			return
 		}
+		
+		this.pressedInput = target
 	},
 	
 	handleInputKeyup : function(e)
@@ -80,25 +101,35 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-		
+			
 		if(e.keyCode == 16 || e.keyCode == 17)
 		{
 			this.controlKeyPress = false
 			return
 		}
 		
+		if(this.pressedInput == target)
+		{
+			this.currentEditingField = target
+		}
+		else
+		{
+			target = this.currentEditingField
+		}
+		
 		//alert(e.keyCode + ' ' + e.charCode)
 		
-		this.currentEditingField = target
+		
 		
 		//tab key
 		if(e.keyCode == 9)
 		{
 			return
 		}
+
 		
-		//copy
-		if(this.controlKeyPress && e.keyCode == 67)
+		//copy || select all
+		if(this.controlKeyPress && (e.keyCode == 67 || e.keyCode == 65))
 		{
 			return
 		}
@@ -117,7 +148,13 @@ var myProto =
 		{
 			target.deletePress = true
 		}
-		setTimeout(function(){ me.controller.setVolume(target.ingredient, target.value) }, 0)
+		
+		
+		setTimeout(function(){
+			//log(me.currentEditingField)
+			me.controller.setVolume(target.ingredient, target.value)
+			me.currentEditingField = e.target
+		}, 0)
 	},
 	
 	renderBarName : function(barName)
@@ -272,48 +309,49 @@ var myProto =
 		setTimeout(function(){
 			me.setCursorPos(input)
 			me.getCursorPos(input)
-		}, 10)
+		}, 0)
 		
 	},
 	
-	appendEventsToVolumeField : function(node)
-	{
-		var me = this
-		
-		var keypress = function(e)
+	/*appendEventsToVolumeField : function(node)
 		{
-			var target = e.target
-			me.currentEditingField = target
+			var me = this
 			
-			//if tab press
-			if(e.keyCode == 9)
+			var keypress = function(e)
 			{
-				return
+				var target = e.target
+				me.currentEditingField = target
+				
+				//if tab press
+				if(e.keyCode == 9)
+				{
+					return
+				}
+				
+				//toRight and toLeft keys
+				if(target.prevValue == target.value)
+				{
+					me.getCursorPos(target)
+					return
+				}
+				
+				//delete key
+				if(e.keyCode == 46 && !e.charCode)
+				{
+					target.deletePress = true
+				}
+				
+				me.controller.setVolume(target.ingredient, target.value)
 			}
 			
-			//toRight and toLeft keys
-			if(target.prevValue == target.value)
-			{
-				me.getCursorPos(target)
-				return
-			}
+			var t = new Throttler(keypress, 100, 500)
 			
-			//delete key
-			if(e.keyCode == 46 && !e.charCode)
-			{
-				target.deletePress = true
-			}
-			
-			me.controller.setVolume(target.ingredient, target.value)
-		}
-		
-		var t = new Throttler(keypress, 100, 500)
-		
-		node.addEventListener('keypress', function(e){ t.call(e) }, false)
-		node.addEventListener('focus', function() {	this.row.addClassName('active'); me.getCursorPos(this) }, false)
-		node.addEventListener('click', function(){ me.getCursorPos(this) }, false)
-		node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0}, false)
-	},
+			node.addEventListener('keypress', function(e){ t.call(e) }, false)
+			node.addEventListener('focus', function() {	this.row.addClassName('active'); me.getCursorPos(this) }, false)
+			node.addEventListener('click', function(){ me.getCursorPos(this) }, false)
+			node.addEventListener('blur', function(){ this.row.removeClassName('active'); this.value = parseFloat(this.value) || 0}, false)
+		},
+		*/
 	
 	getCursorPos : function(input)
 	{
