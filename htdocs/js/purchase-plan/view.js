@@ -20,7 +20,8 @@ var myProto =
 		
 		var me = this
 		
-		nodes.purchasePlan.wrapper.addEventListener('select', function(e){ me.handleTableSelect(e) }, false)
+		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClick(e) }, false)
+		nodes.purchasePlan.wrapper.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
 		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
@@ -59,7 +60,22 @@ var myProto =
 		//setTimeout(function(){ me.currentEditingField = target }, 100)
 	},
 	
-	handleTableSelect : function(e)
+	handleInputSelect : function(e)
+	{
+		var target = e.target
+		if(!target.volumeInput)
+			return
+			
+		//alert(1)
+		
+		if(target.volumeInput)
+		{
+			var me = this
+			setTimeout(function(){ me.getCursorPos(target) }, 0)
+		}
+	},
+	
+	handleTableClick : function(e)
 	{
 		var target = e.target
 		if(target.editableItem)
@@ -74,11 +90,7 @@ var myProto =
 			this.controller.ingredientSelected(ingredient)
 		}
 		
-		if(target.volumeInput)
-		{
-			var me = this
-			setTimeout(function(){ me.getCursorPos(target) }, 0)	
-		}
+
 	},	
 	
 	handleInputKeypress : function(e)
