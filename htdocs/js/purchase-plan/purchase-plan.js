@@ -37,6 +37,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/mybar-name.js" -->
+<!--# include virtual="/js/common/purchase-plan-table-editable.js" -->
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
@@ -99,7 +100,6 @@ function onready ()
 			totalPrice : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tfoot .total-price .total')[0],
 			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
 		}
-		
 	}
 	
 	var widget = new PurchasePlan()
