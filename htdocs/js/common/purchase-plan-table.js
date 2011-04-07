@@ -86,7 +86,9 @@ var myProto =
 			var price = prices[name]
 			
 			var tr = this.renderRow(ingredient, volume, price, exclude)
-			tr.addClassName(i % 2 ? 'odd' : 'even')
+			var odd = i % 2 ? true : false
+			tr.addClassName(odd ? 'odd' : 'even')
+			tr.odd = odd
 			df.appendChild(tr)
 		}
 		
@@ -162,7 +164,10 @@ var myProto =
 			return
 		var newRow = this.renderRow(ingredient, volume, price, exclude)
 		var parent = this.currentRow.parentNode
-		parent.insertBefore(newRow, this.currentRow)
+		var odd = this.currentRow.odd
+		newRow.addClassName(odd ? 'odd' : 'even')
+		newRow.odd = odd
+		parent.insertBefore(newRow, this.currentRow)	
 		parent.removeChild(this.currentRow)
 		this.renderTotalPrice(totalPrice)
 	}
@@ -214,7 +219,7 @@ var myProto =
 			if(!excludes[k])
 				totalPrice += prices[k]
 		}
-		return totalPrice
+		return Math.round(totalPrice)
 	},
 	
 	editPlanItem : function(ingredient, exclude)
