@@ -3,10 +3,10 @@
 ;(function(){
 
 var myName = 'PurchasePlanTableEditable',
-	parent = PurchasePlan,
-	Me = self[myName] = function(){ parent.apply(this) }
+	parent = PurchasePlanTable,
+	Me = self[myName] = MVC.create()
 
-Object.extend(Me.prototype, new PurchasePlan())
+Object.extend(Me.prototype, new PurchasePlanTable())
 
 })();
 
@@ -17,18 +17,20 @@ eval(NodesShortcut.include())
 
 ;(function(){
 
-var Me = PurchasePlan.View
+var Me = PurchasePlanTableEditable.View
 
 var myProto =
 {
 	bind : function (nodes)
 	{
 		this.nodes = nodes
+		var me = this
 		nodes.body.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
 		nodes.body.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
 		nodes.body.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
 		nodes.body.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
 		nodes.body.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
+		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
 	},
 	
 	handleInputBlur : function(e)
@@ -36,8 +38,8 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-		
-		var row = findRow(target)
+			
+		var row = this.findRow(target)
 		row.removeClassName('active')
 		
 		setTimeout(function(){ target.value = parseFloat(target.value) || 0 }, 0)
@@ -51,10 +53,10 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return	
-		
-		var row = findRow(target)
-		target.row.addClassName('active')
-		
+			
+		var row = this.findRow(target)
+		row.addClassName('active')
+			
 		var me = this
 		setTimeout(function(){ me.getCursorPos(target) }, 0)
 		
@@ -68,11 +70,8 @@ var myProto =
 		if(!target.volumeInput)
 			return
 		
-		if(target.volumeInput)
-		{
-			var me = this
-			setTimeout(function(){ me.getCursorPos(target) }, 0)
-		}
+		var me = this
+		setTimeout(function(){ me.getCursorPos(target) }, 0)
 	},
 	
 	handleInputKeypress : function(e)
@@ -153,16 +152,16 @@ var myProto =
 	renderVolume : function(ingredient, volume, exclude)
 	{
 		var td = Nc('td', 'item-volume')
-		var volume = Nc('input', 'volume-value')
-		volume.value = exclude ? 0 : volume
-		volume.setAttribute('type', 'text')
-		volume.setAttribute('name', 'volume-value')
-		volume.ingredient = ingredient
-		volume.volumeInput = true
+		var input = Nc('input', 'volume-value')
+		input.value = exclude ? 0 : volume
+		input.setAttribute('type', 'text')
+		input.setAttribute('name', 'volume-value')
+		input.ingredient = ingredient
+		input.volumeInput = true
 		var unit = Nct('span', 'volume-unit', ingredient.unit)
-		td.appendChild(volume)
+		td.appendChild(input)
 		td.appendChild(unit)
-		td.volume = volume
+		td.volume = input
 		return td
 	},
 	
@@ -201,7 +200,6 @@ var myProto =
 		if(input.prevValue.length == input.selPosLength)
 			return
 		
-		this.logPos(input)
 		var value = input.value
 		var pos = value.length - input.selPos + !!(input.deletePress && !input.selPosLength)
 		if(pos < 0 && value.length <= input.selPosLength)
@@ -251,6 +249,7 @@ var myProto =
 	}
 }
 
+Object.extend(Me.prototype, PurchasePlanTable.View.prototype)
 Object.extend(Me.prototype, myProto)
 
 })();
@@ -260,64 +259,10 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Me = PurchasePlan.Model
+var Me = PurchasePlanTableEditable.Model
 
 var myProto =
 {
-	bind : function ()
-	{
-		
-	},
-	
-/*	setMainState : function(data)
-	{
-		this.setData(data)
-		var volumes = this.volumes = this.getVolumes(data.volumes, data.ingredients)
-		var prices = this.prices = this.calculatePrices(data.ingredients, volumes)
-		var totalPrice = this.calculateTotalPrice(prices, data.excludes)
-		this.view.renderPlan(data.ingredients, data.volumes, prices, data.excludes, totalPrice)
-	},*/
-
-	
-/*	calculatePrices : function(ingredients, volumes)
-	{
-		var prices = {}
-		for (var i = 0, il = ingredients.length; i < il; i++) 
-		{
-			var ingredient = ingredients[i]
-			var name = ingredient.name
-			var volume = volumes[name]
-			prices[name] = findCheapestPrice(ingredient, volume).price
-		}
-		return prices
-	},*/
-
-	
-	/*calculateTotalPrice : function(prices, excludes)
-		{
-			var totalPrice = 0
-			for (var k in prices) 
-			{
-				if(!excludes[k])
-					totalPrice += prices[k]
-			}
-			return totalPrice
-		},*/
-	
-	/*
-		editPlanItem : function(ingredient, exclude)
-		{
-			var name = ingredient.name
-			exclude = !exclude
-			this.excludes[name] = exclude
-			this.onChange()
-			var totalPrice = this.calculateTotalPrice(this.volumes)
-			this.view.updateRow(ingredient, this.volumes[name], this.prices[name], exclude, totalPrice)
-		}
-	
-*/
-	
-	
 	setVolume : function(ingredient, volumeString)
 	{
 		var name = ingredient.name
@@ -343,6 +288,7 @@ var myProto =
 	}
 }
 
+Object.extend(Me.prototype, PurchasePlanTable.Model.prototype)
 Object.extend(Me.prototype, myProto)
 
 })();
@@ -352,7 +298,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Me = PurchasePlan.Controller
+var Me = PurchasePlanTableEditable.Controller
 
 var myProto =
 {
@@ -363,6 +309,7 @@ var myProto =
 	}
 }
 
+Object.extend(Me.prototype, PurchasePlanTable.Controller.prototype)
 Object.extend(Me.prototype, myProto)
 
 })();
