@@ -197,6 +197,7 @@ http://www.inshaker.ru/cocktail/dutch_courage/
 http://www.inshaker.ru/cocktail/dutch_basil_smash/
 http://www.inshaker.ru/cocktail/blue_lagoon/
 http://www.inshaker.ru/cocktail/blue_moon/
+http://www.inshaker.ru/cocktail/blueberry_collins/
 http://www.inshaker.ru/cocktail/blue_temptation/
 http://www.inshaker.ru/cocktail/horatius/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
@@ -571,7 +572,6 @@ http://www.inshaker.ru/cocktail/fire_of_the_cuillins/
 http://www.inshaker.ru/cocktail/cucumber_cooler/
 http://www.inshaker.ru/cocktail/cucumber_lemonade/
 http://www.inshaker.ru/cocktail/cucumber_tini/
-http://www.inshaker.ru/cocktail/final_cut/
 http://www.inshaker.ru/cocktail/augustus/
 http://www.inshaker.ru/cocktail/oldboy/
 http://www.inshaker.ru/cocktail/ole/
@@ -808,6 +808,7 @@ http://www.inshaker.ru/cocktail/hurricane_shot/
 http://www.inshaker.ru/cocktail/prairie_oyster/
 http://www.inshaker.ru/cocktail/oister_shooter/
 http://www.inshaker.ru/cocktail/wakefield_triangle/
+http://www.inshaker.ru/cocktail/final_cut/
 http://www.inshaker.ru/cocktail/fantasy/
 http://www.inshaker.ru/cocktail/feijo_pleasure/
 http://www.inshaker.ru/cocktail/festrus/
