@@ -33,6 +33,25 @@ var myProto =
 		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
 	},
 	
+	handleClick : function(e)
+	{
+		var target = e.target
+		
+		var switcher = target.parentNode
+		if(switcher.editableItem)
+		{
+			this.currentRow = this.findRow(switcher)
+			this.controller.editPlanItem(switcher.editableItem, switcher.exclude)
+			return
+		}
+		
+		if(target.volumeInput)
+		{
+			var me = this
+			setTimeout(function(){ me.getMarkerPos(target) }, 0)
+		}
+	},
+	
 	handleInputBlur : function(e)
 	{
 		var target = e.target
@@ -58,7 +77,7 @@ var myProto =
 		row.addClassName('active')
 			
 		var me = this
-		setTimeout(function(){ me.getCursorPos(target) }, 0)
+		setTimeout(function(){ me.getMarkerPos(target) }, 0)
 		
 		if(!this.currentInput)
 			this.currentInput = target
@@ -71,7 +90,7 @@ var myProto =
 			return
 		
 		var me = this
-		setTimeout(function(){ me.getCursorPos(target) }, 0)
+		setTimeout(function(){ me.getMarkerPos(target) }, 0)
 	},
 	
 	handleInputKeypress : function(e)
@@ -127,7 +146,7 @@ var myProto =
 		//toRight and toLeft keys
 		if(arrowKeys[e.keyCode])
 		{
-			setTimeout(function(){ me.getCursorPos(target) }, 0)
+			setTimeout(function(){ me.getMarkerPos(target) }, 0)
 			return
 		}
 		
@@ -182,12 +201,12 @@ var myProto =
 		
 		var priceTd = this.renderPrice(price, exclude)
 		tr.appendChild(priceTd)
-		tr.price = volumeTd.volume
+		tr.price = priceTd
 		
 		return tr
 	},
 	
-	getCursorPos : function(input)
+	getMarkerPos : function(input)
 	{
 		input.selPos = input.value.length - input.selectionEnd
 		input.selPosLength = input.selectionEnd - input.selectionStart
@@ -195,7 +214,7 @@ var myProto =
 		input.deletePress = false
 	},
 	
-	setCursorPos : function(input)
+	setMarkerPos : function(input)
 	{
 		if(input.prevValue.length == input.selPosLength)
 			return
@@ -214,6 +233,7 @@ var myProto =
 		var tr = this.findRow(this.currentInput)
 		var editNode = tr.edit
 		var priceNode = tr.price
+		log(priceNode)
 		if(!price)
 		{
 			tr.removeClassName('included')
@@ -237,14 +257,11 @@ var myProto =
 		
 		input.value = volume
 		
-		var length = input.value.length
-		
-		
 		var me = this
 		
 		setTimeout(function(){
-			me.setCursorPos(input)
-			me.getCursorPos(input)
+			me.setMarkerPos(input)
+			me.getMarkerPos(input)
 		}, 0)
 	}
 }
