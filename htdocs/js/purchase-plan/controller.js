@@ -9,28 +9,10 @@ var myProto =
 		
 	},
 	
-	editPlanItem : function(ingredient, exclude)
+	save : function(data)
 	{
-		this.model.editPlanItem(ingredient, exclude)
+		this.model.save(data)
 	},
-	
-	setVolume : function(ingredient, v)
-	{
-		v = v.replace(/[\,]+/g, '.').replace(/[^0-9\.]*/g, '').replace(/\.+/g, '.')
-		this.model.setVolume(ingredient, v)
-	},
-	/*
-		setNotice : function(ingredient, notice)
-		{
-			this.model.setNotice(ingredient, notice)
-		},
-		*/
-	
-/*	reRender : function()
-	{
-		this.model.setPurchasePlan()
-	},*/
-
 	
 	ingredientSelected : function(ingredient)
 	{
