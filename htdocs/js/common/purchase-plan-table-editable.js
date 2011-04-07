@@ -297,11 +297,12 @@ var myProto =
 			var price = 0
 		}
 		
+		this.onChange()
+		
 		this.totalPrice = this.calculateTotalPrice(this.prices, this.excludes)
 		this.view.renderFilteredVolume(volumeString)
 		this.view.renderNewPrice(price)
 		this.view.renderTotalPrice(this.totalPrice)
-		this.onChange()
 	}
 }
 
