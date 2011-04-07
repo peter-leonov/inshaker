@@ -160,7 +160,6 @@ var myProto =
 	{
 		if(!this.currentRow)
 			return
-		
 		var newRow = this.renderRow(ingredient, volume, price, exclude)
 		var parent = this.currentRow.parentNode
 		parent.insertBefore(newRow, this.currentRow)
@@ -190,7 +189,7 @@ var myProto =
 	setState : function(data)
 	{
 		this.setData(data)
-		var totalPrice = this.calculateTotalPrice(this.prices, data.excludes)
+		var totalPrice = this.calculateTotalPrice(this.prices, this.excludes)
 		this.view.renderPlan(this.ingredients, this.volumes, this.prices, this.excludes, totalPrice)
 	},
 	
@@ -202,8 +201,6 @@ var myProto =
 			var ingredient = ingredients[i]
 			var name = ingredient.name
 			var volume = volumes[name]
-			log(volume)
-			log(findCheapestPrice(ingredient, volume))
 			prices[name] = findCheapestPrice(ingredient, volume).price
 		}
 		return prices
@@ -245,15 +242,18 @@ var myProto =
 	
 	getVolumes : function(volumes, ingredients)
 	{
+		var v = {}
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
 			var name = ingredient.name
 			if(!volumes[name] || isNaN(volumes[name]))
-			volumes[name] = this.getCheapestVolume(ingredient)
+				v[name] = this.getCheapestVolume(ingredient)
+			else
+				v[name] = volumes[name]
 		}
 		
-		return volumes
+		return v
 	},
 	
 	getCheapestVolume : function(ingredient)
