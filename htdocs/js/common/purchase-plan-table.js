@@ -2,7 +2,7 @@
 
 ;(function(){
 
-var myName = 'PurchasePlan',
+var myName = 'PurchasePlanTable',
 	Me = self[myName] = MVC.create(myName)
 
 var myProto =
@@ -14,14 +14,14 @@ var myProto =
 		this.controller.bind()
 	},
 	
-	setMainState : function(data)
+	setState : function(data)
 	{
-		this.model.setMainState(data)
+		this.model.setState(data)
 	}
 }
 
 Object.extend(Me.prototype, myProto)
-
+Me.mixIn(EventDriven)
 })();
 
 
@@ -31,12 +31,13 @@ eval(NodesShortcut.include())
 
 ;(function(){
 
-var Me = PurchasePlan.View
+var Me = PurchasePlanTable.View
 
 var myProto =
 {
 	bind : function (nodes)
 	{
+		var me = this
 		this.nodes = nodes
 		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
 	},
@@ -51,13 +52,7 @@ var myProto =
 			this.currentRow = this.findRow(switcher)
 			this.controller.editPlanItem(switcher.editableItem, switcher.exclude)
 			return
-		}
-		
-		var ingredient = target['data-ingredient']
-		if(ingredient)
-		{
-			this.controller.ingredientSelected(ingredient)
-		}		
+		}	
 	},
 	
 	findRow : function(target)
@@ -69,9 +64,9 @@ var myProto =
 		return node
 	},
 	
-	renderPlan : function(ingredients, volumes, prices, exludes, totalPrice)
+	renderPlan : function(ingredients, volumes, prices, excludes, totalPrice)
 	{
-		if(!data.ingredients.length)
+		if(!ingredients.length)
 		{
 			this.renderIfEmpty()
 			return
@@ -141,7 +136,7 @@ var myProto =
 	renderVolume : function(ingredient, volume, exclude)
 	{
 		var td = Nc('td', 'item-volume')
-		var volume = Nct('div', 'volume-value', exclude ? 0 : volume)
+		var volume = Nct('span', 'volume-value', exclude ? 0 : volume)
 		var unit = Nct('span', 'volume-unit', ingredient.unit)
 		td.appendChild(volume)
 		td.appendChild(unit)
@@ -166,25 +161,11 @@ var myProto =
 		if(!this.currentRow)
 			return
 		
-		var df = document.createDocumentFragment()
-		df.appendChild(renderRow(ingredient, volume, price, exclude))
-		
-		this.currentRow.empty()
-		this.currentRow.appendChild(df)
-		this.currentRow = null
+		var newRow = this.renderRow(ingredient, volume, price, exclude)
+		var parent = this.currentRow.parentNode
+		parent.insertBefore(newRow, this.currentRow)
+		parent.removeChild(this.currentRow)
 		this.renderTotalPrice(totalPrice)
-	},
-	
-	showIngredient: function (ingredient)
-	{
-		if (ingredient)
-		{
-			var popup = IngredientPopup.show(ingredient)
-			var controller = this.controller
-			popup.onhide = function () { controller.ingredientSelected(null) }
-		}
-		else
-			IngredientPopup.hide()
 	}
 }
 
@@ -197,7 +178,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Me = PurchasePlan.Model
+var Me = PurchasePlanTable.Model
 
 var myProto =
 {
@@ -206,11 +187,11 @@ var myProto =
 		
 	},
 	
-	setMainState : function(data)
+	setState : function(data)
 	{
 		this.setData(data)
 		var totalPrice = this.calculateTotalPrice(this.prices, data.excludes)
-		this.view.renderPlan(data.ingredients, data.volumes, this.prices, data.excludes, totalPrice)
+		this.view.renderPlan(this.ingredients, this.volumes, this.prices, this.excludes, totalPrice)
 	},
 	
 	calculatePrices : function(ingredients, volumes)
@@ -221,6 +202,8 @@ var myProto =
 			var ingredient = ingredients[i]
 			var name = ingredient.name
 			var volume = volumes[name]
+			log(volume)
+			log(findCheapestPrice(ingredient, volume))
 			prices[name] = findCheapestPrice(ingredient, volume).price
 		}
 		return prices
@@ -243,26 +226,21 @@ var myProto =
 		exclude = !exclude
 		this.excludes[name] = exclude
 		this.onChange()
-		var totalPrice = this.calculateTotalPrice(this.volumes)
+		var totalPrice = this.calculateTotalPrice(this.volumes, this.excludes)
 		this.view.updateRow(ingredient, this.volumes[name], this.prices[name], exclude, totalPrice)
-	},
-	
-	selectIngredient : function(ingredient)
-	{
-		this.view.showIngredient(ingredient)
 	},
 	
 	setData : function(data)
 	{
-		this.prices = this.calculatePrices(data.ingredients, data.volumes)
-		this.ingredients = data.ingredients
 		this.volumes = this.getVolumes(data.volumes, data.ingredients)
+		this.prices = this.calculatePrices(data.ingredients, this.volumes)
+		this.ingredients = data.ingredients
 		this.excludes = data.excludes
 	},
 	
 	onChange : function()
 	{
-		this.parent.dispatchEvent({ type : 'changed', data : { ingredients : this.ingredients, volumes : this.volumes, excludes : this.excludes } })
+		this.parent.dispatchEvent({ type : 'change', data : { ingredients : this.ingredients, volumes : this.volumes, excludes : this.excludes } })
 	},
 	
 	getVolumes : function(volumes, ingredients)
@@ -271,7 +249,8 @@ var myProto =
 		{
 			var ingredient = ingredients[i]
 			var name = ingredient.name
-			volumes[name] = volumes[name] || this.getCheapestVolume(ingredient)
+			if(!volumes[name] || isNaN(volumes[name]))
+			volumes[name] = this.getCheapestVolume(ingredient)
 		}
 		
 		return volumes
@@ -290,7 +269,7 @@ var myProto =
 			if(!minNominal || nominal < minNominal)
 			{
 				minNominal = nominal
-				rVol = { volume : v, price : p }
+				rVol = v
 			}
 		}
 		return rVol
@@ -306,7 +285,7 @@ Object.extend(Me.prototype, myProto)
 
 ;(function(){
 
-var Me = PurchasePlan.Controller
+var Me = PurchasePlanTable.Controller
 
 var myProto =
 {
@@ -318,12 +297,7 @@ var myProto =
 	editPlanItem : function(ingredient, exclude)
 	{
 		this.model.editPlanItem(ingredient, exclude)
-	},
-	
-	ingredientSelected : function(ingredient)
-	{
-		this.model.selectIngredient(ingredient)
-	}	
+	}
 }
 
 Object.extend(Me.prototype, myProto)

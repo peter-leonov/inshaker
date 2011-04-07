@@ -1,8 +1,8 @@
-<!--# include virtual="/js/common/purchase-plan.js" -->
+<!--# include virtual="/js/common/purchase-plan-table.js" -->
 
 ;(function(){
 
-var myName = 'PurchasePlanEditable',
+var myName = 'PurchasePlanTableEditable',
 	parent = PurchasePlan,
 	Me = self[myName] = function(){ parent.apply(this) }
 
@@ -24,12 +24,11 @@ var myProto =
 	bind : function (nodes)
 	{
 		this.nodes = nodes
-		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
-		nodes.purchasePlan.wrapper.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
-		nodes.purchasePlan.wrapper.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
+		nodes.body.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
+		nodes.body.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
+		nodes.body.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
+		nodes.body.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
+		nodes.body.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
 	},
 	
 	handleInputBlur : function(e)
@@ -189,33 +188,6 @@ var myProto =
 		return tr
 	},
 	
-	renderPrice : function(price, exclude)
-	{
-		var td = Nct('td', 'item-price', exclude ? 0 : price)
-		return td
-	},
-	
-	renderTotalPrice : function(totalPrice)
-	{
-		var totalPriceNode = this.nodes.totalPrice
-		totalPriceNode.empty()
-		totalPriceNode.appendChild(T(totalPrice))
-	},
-	
-	updateRow : function(ingredient, volume, price, exclude, totalPrice)
-	{
-		if(!this.currentRow)
-			return
-		
-		var df = document.createDocumentFragment()
-		df.appendChild(renderRow(ingredient, volume, price, exclude))
-		
-		this.currentRow.empty()
-		this.currentRow.appendChild(df)
-		this.currentRow = null
-		this.renderTotalPrice(totalPrice)
-	},
-	
 	getCursorPos : function(input)
 	{
 		input.selPos = input.value.length - input.selectionEnd
@@ -297,16 +269,17 @@ var myProto =
 		
 	},
 	
-	setMainState : function(data)
+/*	setMainState : function(data)
 	{
 		this.setData(data)
 		var volumes = this.volumes = this.getVolumes(data.volumes, data.ingredients)
 		var prices = this.prices = this.calculatePrices(data.ingredients, volumes)
 		var totalPrice = this.calculateTotalPrice(prices, data.excludes)
 		this.view.renderPlan(data.ingredients, data.volumes, prices, data.excludes, totalPrice)
-	},
+	},*/
+
 	
-	calculatePrices : function(ingredients, volumes)
+/*	calculatePrices : function(ingredients, volumes)
 	{
 		var prices = {}
 		for (var i = 0, il = ingredients.length; i < il; i++) 
@@ -317,7 +290,8 @@ var myProto =
 			prices[name] = findCheapestPrice(ingredient, volume).price
 		}
 		return prices
-	},
+	},*/
+
 	
 	/*calculateTotalPrice : function(prices, excludes)
 		{
@@ -362,10 +336,10 @@ var myProto =
 		}
 		
 		this.totalPrice = this.calculateTotalPrice(this.prices, this.excludes)
-		this.onChange()
 		this.view.renderFilteredVolume(volumeString)
 		this.view.renderNewPrice(price)
 		this.view.renderTotalPrice(this.totalPrice)
+		this.onChange()
 	}
 }
 
