@@ -111,8 +111,6 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-
-		//alert(e.keyCode + ' ' + e.charCode)
 		
 		//tab key
 		if(e.keyCode == 9)
@@ -120,7 +118,6 @@ var myProto =
 			return
 		}
 		
-		//copy || select all
 		if(e.ctrlKey && e.keyCode == 67 || e.keyCode == 17 || e.keyCode == 16)
 		{
 			return
