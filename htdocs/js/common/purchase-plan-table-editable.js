@@ -113,7 +113,7 @@ var myProto =
 			return
 		
 		
-		controlKeys = { 17 : 'ctrl', 16 : 'shift', 9 : 'tab', 18 : 'alt' }
+		var controlKeys = { 17 : 'ctrl', 16 : 'shift', 9 : 'tab', 18 : 'alt' }
 		
 		if(controlKeys[e.keyCode])
 		{
@@ -125,7 +125,8 @@ var myProto =
 		{
 			return
 		}
-		log(e)
+		
+		//log(e)
 		var me = this
 		var arrowKeys = { 35 : 'end', 36 : 'home', 37 : 'left', 38 : 'up', 39 : 'right', 40 : 'down' }
 		if(arrowKeys[e.keyCode])
