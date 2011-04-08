@@ -64,7 +64,6 @@ var myProto =
 		setTimeout(function(){ target.value = parseFloat(target.value) || 0 }, 0)
 		
 		this.tempCurrentInput = target
-		//log('tempEditingField', this.tempEditingField)
 	},
 	
 	handleInputFocus : function(e)
@@ -99,13 +98,6 @@ var myProto =
 		if(!target.volumeInput)
 			return
 		
-		//press shift of ctrl
-		if(e.keyCode == 16 || e.keyCode == 17)
-		{
-			this.controlKeyPress = true
-			return
-		}
-		
 		if(e.keyCode == 9)
 		{
 			return
@@ -119,13 +111,7 @@ var myProto =
 		var target = e.target
 		if(!target.volumeInput)
 			return
-			
-		if(e.keyCode == 16 || e.keyCode == 17)
-		{
-			this.controlKeyPress = false
-			return
-		}
-		
+
 		//alert(e.keyCode + ' ' + e.charCode)
 		
 		//tab key
@@ -133,10 +119,9 @@ var myProto =
 		{
 			return
 		}
-
 		
 		//copy || select all
-		if(this.controlKeyPress && (e.keyCode == 67 || e.keyCode == 65))
+		if(e.ctrlKey && e.keyCode == 67 || e.keyCode == 17 || e.keyCode == 16)
 		{
 			return
 		}
@@ -233,7 +218,7 @@ var myProto =
 		var tr = this.findRow(this.currentInput)
 		var editNode = tr.edit
 		var priceNode = tr.price
-		log(priceNode)
+		
 		if(!price)
 		{
 			tr.removeClassName('included')
