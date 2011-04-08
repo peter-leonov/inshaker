@@ -119,7 +119,7 @@ var myProto =
 		{
 			return
 		}
-		
+		log(e)
 		//copy || select all
 		if(e.ctrlKey && e.keyCode == 67 || e.keyCode == 17 || e.keyCode == 16)
 		{
