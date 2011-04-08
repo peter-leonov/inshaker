@@ -112,13 +112,15 @@ var myProto =
 		if(!target.volumeInput)
 			return
 		
-		//tab key
-		if(e.keyCode == 9)
+		controlKeys = { 17 : 'ctrl', 16 : 'shift', 9 : 'tab', 18 : 'alt' }
+		
+		if(controlKeys[e.keyCode])
 		{
 			return
 		}
 		
-		if(e.ctrlKey && e.keyCode == 67 || e.keyCode == 17 || e.keyCode == 16)
+		//ctrl-c
+		if(e.ctrlKey && e.keyCode == 67)
 		{
 			return
 		}
