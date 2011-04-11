@@ -1,0 +1,103 @@
+<!--# include virtual="/t/mybar/common.css" -->
+
+
+
+#output .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
+#output .b-title .open-own-bar {
+	color: #0392F1;
+	font-size: 18px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.b-content dt.title { font-size: 20px; margin-bottom: 15px; }
+.b-content { width: 100%; }
+
+#output .ingredients-block .list li, #output .list .cocktail-preview, #output .bottom-output .ingredient {
+	float: left;
+	margin: 0 17px 15px 0;
+	position: relative;
+	width: 100px;
+	padding-top: 15px;
+}
+#output .list { overflow: hidden; }
+#output .ingredient-preview .name { display: block; margin-top: 5px; }
+#output .list .cocktail-preview { height: 216px; width: 114px; font-size: 12px; text-align: center;}
+#output .list .cocktail-preview .image { height: 200px; display: block; margin: 0 auto; }
+
+#output .ingredients-block { width: 940px; margin-top: 5px; }
+#output .ingredients-block .list { padding-top: 15px; }
+#output .ingredients-block .list ul { overflow: hidden; }
+#output .ingredients-block .list li
+{
+	height: 140px;
+	margin-bottom: 0;
+	padding-top: 15px;
+}
+#output .ingredient-preview { display: block; font-size: 12px; text-align: center;}
+
+#output div.empty
+{
+	color: #ccc;
+	font-size: 16px;
+	margin: 9px 0;
+}
+
+#output .ingredient-preview, .ingredient-preview .image
+{
+	height: 100px;
+	width: 100px;
+	position: relative;
+}
+
+#output .ingredient-preview .image
+{
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: #EEEEEE;
+}
+
+#output .ingredients-block dd.group { overflow: hidden; }
+#output .ingredients-block dt.group-name { font-size: 18px; margin-top: 5px; }
+
+#output .cocktails-block { margin:35px 0 0; }
+
+.cocktails-block .photos-list { overflow: hidden; margin-top: 40px; width: 940px; }
+.cocktails-block .photos-list .cocktail-preview{
+	float: left;
+	height: 140px;
+	margin-right: 17px;
+	position: relative;
+	width: 100px;
+}
+
+.cocktails-block .photos-list .cocktail-preview img{
+	display: block;
+	height: 80px;
+	margin: 0 auto;
+	padding-bottom: 7px;
+}
+
+.cocktails-block .photos-list .cocktail-preview a, .bottom-output .cocktail-preview a {
+	display: block;
+	font-size: 120%;
+	text-align: center;
+	width: 100px;
+}
+
+
+/*Popup*/
+<!--# include virtual="/t/ingredient-popup.css" -->
+
+/*fixes*/
+html.opera-9 .ingredient-preview .image:before,
+html.opera-10-0 .ingredient-preview .image:before,
+html.opera-10-1 .ingredient-preview .image:before,
+html.msie-8 .ingredient-preview .image:before,
+html.firefox-2 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+
+html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
+
+html.msie-6 .ingredient-preview .image,
+html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
