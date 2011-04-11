@@ -119,7 +119,6 @@ var myProto =
 	
 	getIngredients : function(ingredientNames)
 	{
-		var me = this
 		var ingredients = fetchIngredients(ingredientNames)
 		ingredients.inBar = Array.toHash(ingredientNames)
 		//ingredients.inBarNames = ingredientNames
