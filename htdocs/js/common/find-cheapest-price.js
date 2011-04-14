@@ -23,12 +23,12 @@ var f = function(ingredient, v)
 	
 	var appendBottles = function (currentVolume, currentPrice, start, bottles, addingBottles)
 	{
-		//set restriction for recursion
-		if (++entries >= maxEntries)
-			throw new Error('More than ' + entries + ' entries while finding cheapest price for volume ' + v + ' with bottles: ' + ingredientVolumes.join(', '))
-		
 		for (var i = start, il = ingredientVolumes.length; i < il; i++) 
 		{
+			// set restriction for recursion
+			if (++entries >= maxEntries)
+				throw new Error('More than ' + entries + ' entries while finding cheapest price for volume ' + v + ' with bottles: ' + ingredientVolumes.join(', '))
+			
 			var volumeObj = ingredientVolumes[i]
 			var vol = currentVolume
 			var tbottles = addingBottles
