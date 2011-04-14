@@ -16,8 +16,7 @@ Tests.test(function (t)
 {
 	t.ok(findCheapestPrice, 'findCheapestPrice')
 	
-	findCheapestPrice.maxEntries = 2048
-	var entries
+	findCheapestPrice.maxEntries = 10000
 	
 	function f (volumes, max)
 	{
@@ -43,64 +42,81 @@ Tests.test(function (t)
 				h[v] = 1
 		}
 		
-		entries = res.entries
+		f.lastIterations = res.entries
 		
 		return h
 	}
 	
-	t.test('real life examples', function (t)
+	function run (t, bottles, volumes)
 	{
-		function run (t, bottles, volumes)
+		t.log(bottles)
+		
+		var price = {}
+		for (var i = 0, il = bottles.length; i < il; i++)
+			price[bottles[i][0]] = bottles[i][1]
+		
+		for (var i = 0, il = volumes.length; i < il; i++)
 		{
-			t.log(bottles)
+			var v = volumes[i]
 			
-			var price = {}
-			for (var i = 0, il = bottles.length; i < il; i++)
-				price[bottles[i][0]] = bottles[i][1]
+			var min = v[1]
+			var iterations = v[2] || 10
+			v = v[0]
 			
-			for (var i = 0, il = volumes.length; i < il; i++)
+			var suggestion = f(bottles, v)
+			var ok = t.like(suggestion, min, v)
+			
+			t.lte(f.lastIterations, iterations, 'iterations')
+			
+			if (!ok)
 			{
-				var v = volumes[i]
+				var v1 = 0
+				for (var k in suggestion)
+					v1 += suggestion[k] * +k
 				
-				var min = v[1]
-				v = v[0]
-				
-				var suggestion = f(bottles, v)
-				if (!t.like(suggestion, min, v))
+				if (v1 < v)
 				{
-					var sum1 = 0
-					for (var k in suggestion)
-						sum1 += price[k] * suggestion[k]
-					
-					var sum2 = 0
-					for (var k in min)
-						sum2 += price[k] * min[k]
-					
-					if (sum1 <= sum2)
-						t.warn('robo is right: ' + sum1 + ' <= ' + sum2)
-					else
-						t.warn('robo is wrong: ' + sum1 + ' > ' + sum2)
+					t.warn('robo is totally wrong: ' + v1 + ' < ' + v)
+					continue
 				}
+				
+				var price1 = 0
+				for (var k in suggestion)
+					price1 += price[k] * suggestion[k]
+				
+				var price2 = 0
+				for (var k in min)
+					price2 += price[k] * min[k]
+				
+				if (price1 <= price2)
+					t.warn('robo is right: ' + price1 + ' <= ' + price2)
+				else
+					t.warn('robo is wrong: ' + price1 + ' > ' + price2)
 			}
 		}
-		
+	}
+	
+	t.test('real life examples', function (t)
+	{
 		t.test('Bacardi Superior', function (t)
 		{
 			var bottles = [[0.5, 641], [0.75, 991]]
 			
 			var volumes =
 			[
-				[0.4, {0.5: 1}],
-				[0.5, {0.5: 1}],
-				[0.51, {0.75: 1}],
-				[0.75, {0.75: 1}],
-				[0.76, {0.5: 2}],
-				[1.0, {0.5: 2}],
-				[1.5, {0.5: 3}],
-				[1.75, {0.5: 2, 0.75: 1}],
-				[2.25, {0.5: 3, 0.75: 1}],
-				[3.0, {0.5: 6}],
-				[37.5, {0.5: 75}]
+				[0.4, {0.5: 1}, 2],
+				[0.5, {0.5: 1}, 2],
+				[0.51, {0.75: 1}, 2],
+				[0.75, {0.75: 1}, 2],
+				[0.76, {0.5: 2}, 4],
+				[1.0, {0.5: 2}, 4],
+				[1.5, {0.5: 3}, 4],
+				[1.75, {0.5: 2, 0.75: 1}, 2],
+				[2.25, {0.5: 3, 0.75: 1}, 2],
+				[3.0, {0.5: 6}, 4],
+				[37.5, {0.5: 75}, 4],
+				[10000, {0.5: 20000}, 4],
+				[10000.75,  {0.5: 20000, 0.75: 1}, 2]
 			]
 			
 			run(t, bottles, volumes)
@@ -112,18 +128,18 @@ Tests.test(function (t)
 			
 			var volumes =
 			[
-				[0.5, {0.5: 1}],
-				[1.0, {1.0: 1}],
-				[1.25, {2.0: 1}],
-				[1.5, {2.0: 1}],
-				[2.0, {2.0: 1}],
-				[2.5, {2.0: 1, 0.5: 1}],
-				[2.51, {2.0: 1, 1.0: 1}],
-				[3.0, {1.0: 1, 2.0: 1}],
-				[3.1, {2.0: 2}],
-				[100, {2.0: 50}],
-				[100.5, {2.0: 50, 0.5: 1}],
-				[10001, {2.0: 5000, 1.0: 1}]
+				[0.5, {0.5: 1}, 3],
+				[1.0, {1.0: 1}, 6],
+				[1.25, {2.0: 1}, 8],
+				[1.5, {2.0: 1}, 8],
+				[2.0, {2.0: 1}, 8],
+				[2.5, {2.0: 1, 0.5: 1}, 5],
+				[2.51, {2.0: 1, 1.0: 1}, 18],
+				[3.0, {1.0: 1, 2.0: 1}, 8],
+				[3.1, {2.0: 2}, 12],
+				[100, {2.0: 50}, 8],
+				[100.5, {2.0: 50, 0.5: 1}, 5],
+				[10001, {2.0: 5000, 1.0: 1}, 8]
 			]
 			
 			run(t, bottles, volumes)
@@ -132,7 +148,8 @@ Tests.test(function (t)
 	
 	t.test('corner cases', function (t)
 	{
-		t.like(f([], 10), {}, 'empty volumes')
+		t.like(f([], 10), {}, 'empty bottles')
+		t.like(f([[0.25, 50]], 1), {0.25: 4}, 'only one bottle')
 		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
 		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
 		t.like(f([[1, 0], [2, 1]], 10), {1: 10}, 'free bottle')
@@ -140,41 +157,97 @@ Tests.test(function (t)
 	
 	t.test('same factor', function (t)
 	{
-		var bottles = [[1, 1], [2, 2]]
-		
-		f(bottles, 20000)
-		t.lt(entries, 10, 'entries')
+		run
+		(
+			t,
+			// bottles
+			[[1, 1], [2, 2]],
+			// test cases: volume, result, maximum iterations
+			[
+				[20000, {2: 10000}, 4]
+			]
+		)
 	})
 	
 	t.test('very close factor', function (t)
 	{
-		t.mayFail()
-		
-		var bottles = [[12, 120], [11, 111], [10, 102], [9, 93], [8, 84]]
-		
-		f(bottles, 111)
-		t.lt(entries, 100, 'entries')
+		run
+		(
+			t,
+			// bottles
+			[[12, 120], [11, 111], [10, 102], [9, 93], [8, 84]],
+			// test cases: volume, result, maximum iterations
+			[
+				[111, {11: 1, 12: 7, 8: 2}, 1739]
+			]
+		)
 	})
 	
-	t.test('very different volumes (fractal)', function (t)
+	t.test('pyramid (more than one suboptimal bottle)', function (t)
 	{
-		var bottles = [[100, 100], [1, 2], [2, 3], [3, 4]]
-		
-		f(bottles, 1100)
-		t.lt(entries, 10, 'entries')
+		run
+		(
+			t,
+			// bottles
+			[[10, 10], [3, 3.1], [0.5, 0.55]],
+			// test cases: volume, result, maximum iterations
+			[
+				[27, {10: 2, 3: 2, 0.5: 2}, 198]
+			]
+		)
+	})
+	
+	t.test('fractal (very different volumes with same factor)', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[100, 100], [1, 2], [2, 3], [3, 4]],
+			// test cases: volume, result, maximum iterations
+			[
+				[112, {100: 1, 3: 4}, 7066]
+			]
+		)
 	})
 	
 	t.test('reversed factor per volume', function (t)
 	{
-		t.mayFail()
-		
-		var bottles = [[12, 11], [11, 10], [10, 9], [9, 8], [8, 7]]
-		
-		t.eq(f(bottles, 111), {}, 'description')
-		t.lt(entries, 100, 'entries')
+		run
+		(
+			t,
+			// bottles
+			[[12, 11], [11, 10], [10, 9], [9, 8], [8, 7]],
+			// test cases: volume, result, maximum iterations
+			[
+				[111, {8: 14}, 279],
+				[1111100, {12: 1, 8: 138886}, 75]
+			]
+		)
 	})
 	
-	t.test('performance (equal factor)', function (t)
+	t.test('digital', function (t)
+	{
+		var bottles = [[0.5, 37.90], [1.0, 52.90], [2.0, 56.90]]
+		
+		var max = 0
+		var step = 0.5 / 16
+		for (var i = 0; i < 20; i+= step)
+		{
+			f(bottles, i)
+			var iterations = f.lastIterations
+			if (iterations > max)
+			{
+				max = iterations
+				t.log([i, max])
+			}
+		}
+		
+		t.lte(max, 75, 'maximum')
+	})
+	
+	return
+	t.test('performance', function (t)
 	{
 		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
 		
