@@ -228,7 +228,7 @@ var myProto =
 		exclude = !exclude
 		this.excludes[name] = exclude
 		this.onChange()
-		var totalPrice = this.calculateTotalPrice(this.volumes, this.excludes)
+		var totalPrice = this.calculateTotalPrice(this.prices, this.excludes)
 		this.view.updateRow(ingredient, this.volumes[name], this.prices[name], exclude, totalPrice)
 	},
 	
