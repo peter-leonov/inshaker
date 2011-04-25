@@ -316,6 +316,20 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    if about["План покупок"]
+      cart = {}
+      if about["План покупок"]["Количество"]
+        cart["count"] = about["План покупок"]["Количество"]
+      end
+      if about["План покупок"]["Множественные"]
+        cart["plural"] = about["План покупок"]["Множественные"].split(/\s*,\s*/)
+      end
+      
+      unless cart.empty?
+        @cocktail["cart"] = cart
+      end
+    end
+    
     cocktail_tags = @cocktail["tags"] = []
     tags = about["Теги"] || []
     tags << "все коктейли"
