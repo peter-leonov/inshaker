@@ -48,7 +48,7 @@ function CalculatorModel(view){
 			var cs = this.cartData.cocktails;
 			var found = false;
 			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktail) found = cs[i];
-			var cartCount = cocktail.cartCount || 10
+			var cartCount = (cocktail.cart && cocktail.cart.count) || 10
 			if (found) {
 				found[1] += cartCount
 			} else {
