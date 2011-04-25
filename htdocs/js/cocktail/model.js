@@ -83,9 +83,9 @@ var Model = {
 				else
 					weight -= 2
 			
-			// forget it if there are no common ingredients
-			if (weight <= 0)
-				continue
+			// // forget it if there are no common ingredients
+			// if (weight <= 0)
+			// 	continue
 			
 			// weight by tags
 			var tags = cocktail.tags
