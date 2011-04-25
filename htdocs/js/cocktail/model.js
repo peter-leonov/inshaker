@@ -57,6 +57,7 @@ var Model = {
 	
 	_findRelated: function (source)
 	{
+		// var begin = new Date()
 		// console.time('_findRelated')
 		
 		var namesHash = source.getIngredientNames().hashIndex(),
@@ -83,9 +84,9 @@ var Model = {
 				else
 					weight -= 2
 			
-			// forget it if there are no common ingredients
-			if (weight <= 0)
-				continue
+			// // forget it if there are no common ingredients
+			// if (weight <= 0)
+			// 	continue
 			
 			// weight by tags
 			var tags = cocktail.tags
@@ -100,6 +101,7 @@ var Model = {
 		// if you serach the bottleneck in IE, here it is:
 		match.sort(function (a, b) { return b.__relatedWeight - a.__relatedWeight })
 		
+		// alert(new Date() - begin)
 		// console.timeEnd('_findRelated')
 		
 		return match
