@@ -305,7 +305,8 @@ function CalculatorView() {
 		
 		if(input.value != quantity)
 			input.value = quantity || "";
-		txt.nodeValue = " " + quantity.plural("порция", "порции", "порций");
+		var plurals = cocktail.cartPlurals || ['порция', 'порции', 'порций']
+		txt.nodeValue = " " + quantity.plural.apply(quantity, plurals);
 		
 		return li;
 	};
