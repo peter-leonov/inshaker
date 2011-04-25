@@ -48,10 +48,11 @@ function CalculatorModel(view){
 			var cs = this.cartData.cocktails;
 			var found = false;
 			for(var i = 0; i < cs.length; i++) if(cs[i][0] == cocktail) found = cs[i];
+			var cartCount = cocktail.cartCount || 10
 			if (found) {
-				found[1] += 10
+				found[1] += cartCount
 			} else {
-				cs.push([cocktail, 10]); // сразу 10
+				cs.push([cocktail, cartCount]); // сразу 10
 			}
 			// Оптимизируем весь набор по емкостям
 			this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
