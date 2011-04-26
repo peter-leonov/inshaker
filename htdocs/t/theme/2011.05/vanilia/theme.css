@@ -11,11 +11,11 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 85px; height: 40px; right: 0; top: -8px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 320px; height: 600px; left: 177px; bottom: -695px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.jpg); width: 600px; height: 570px; left: 80px; bottom: -675px; }
 #branded-image-holder { height: 800px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #b1b09e; }
-#bottom { color: #bbb; }
+#top .nav a:hover { border-bottom-color: #d2cab8; }
+#bottom { color: #d2cab8; }
 #bottom a { color: #000; }
 html { background: #fff url(bg.png) repeat-x center 65px; }
 button.rounded b { text-shadow: 1px 1px 0 #747368; color: #fff; }
@@ -89,7 +89,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 .win-shop .content .more i,
 button.rounded { background-image: url(common.8.png); }
 #alcohol-harm { background-image: url(alcohol-harm.8.png); }
-#branded-image { background-image: url(image.8.png); }
+#branded-image { background-image: url(image.jpg); }
 
 /* calculator.css */
 #b-bill dt,
