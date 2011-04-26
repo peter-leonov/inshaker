@@ -1,4 +1,4 @@
 {
-	"spotlighted":{"href":"/cocktail/mojito/"},
-	"branded-image":{"href":"/cocktail/mojito/"}
+	"spotlighted":{"href":"/cocktail/b-black/"},
+	"branded-image":{"href":"/cocktail/b-black/"}
 }
