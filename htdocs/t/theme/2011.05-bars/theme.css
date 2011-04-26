@@ -94,13 +94,9 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 .bar-mini a { background-image: url(bars-mask-full.png); }
 #sort-menu .bars-select dt,
 #sort-menu .bars-select dd ul li.selected,
-#sort-menu .bars-select dd ul li:hover { color: #f9593b; }
+#sort-menu .bars-select dd ul li:hover { color: #48c179; }
 #map .point .icon,
 #map .position-control { background-image: url(bars-common.png); }
-
-
-/* bar.css */
-#price-index { color: #f9593b; }
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
