@@ -17,7 +17,7 @@ html.msie-6 #spotlighted { width: 45px; height: 43px; right: 6px; top: 6px; }
 html.msie-6 #branded-image-holder { position: absolute !important; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
-a { color: #40ab6b; }
+a { color: #329d5d; }
 #top .nav a:hover { border-bottom-color: #76bd7b; }
 #bottom { color: #bbb; padding-top: 0; margin-top: 40px; }
 #bottom a { color: #48c179; }
@@ -100,6 +100,7 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 #map .point .title { color: #fff; }
 #map .point .point-name { color: #48c179; }
 #map .point.selected .point-name { color: #e64518; }
+#main-column .info .block .head a { color: #72c17e; }
 
 
 
