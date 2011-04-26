@@ -9,16 +9,16 @@
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 90px; height: 48px; right: 0; top: -14px; }
+#spotlighted { width: 90px; height: 48px; right: -5px; top: -11px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 320px; height: 600px; left: 177px; bottom: -695px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.jpg); width: 600px; height: 550px; left: 30px; bottom: -650px; }
 #branded-image-holder { height: 800px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #fae113; }
+#top .nav a:hover { border-bottom-color: #e9d223; }
 #bottom { color: #bbb; }
 #bottom a { color: #000; }
 html { background: #fff url(bg.png) repeat-x center 65px; }
-button.rounded b { text-shadow: 1px 1px 0 #624; color: #fff; }
+button.rounded b { text-shadow: 1px 1px 0 #644; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 
 /* calculator.css */
@@ -89,7 +89,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 .win-shop .content .more i,
 button.rounded { background-image: url(common.8.png); }
 #alcohol-harm { background-image: url(alcohol-harm.8.png); }
-#branded-image { background-image: url(image.8.png); }
+#branded-image { background-image: url(image.jpg); }
 
 /* calculator.css */
 #b-bill dt,
@@ -113,7 +113,7 @@ button.rounded { background-image: url(common.8.png); }
 
 /* cocktail.css */
 .b-more dt,
-.b-more dt b { background-image: url(cocktail.8.png); }
+.b-more dt b { background-image: url(cocktail.png); }
 .hreview .desc h2 i { background-image: url(common.8.png); }
 
 /* matching.css */
