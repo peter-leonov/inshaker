@@ -97,6 +97,10 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 #sort-menu .bars-select dd ul li:hover { color: #48c179; }
 #map .point .icon,
 #map .position-control { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #48c179; }
+#map .point.selected .point-name { color: #9cba25; }
+
 
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
