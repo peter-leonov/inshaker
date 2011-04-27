@@ -63,7 +63,7 @@ Me =
 		Storage.init(f)
 	},
 	
-	saveBar : function(bar)
+	saveBar : function(bar, noRemoteSave)
 	{
 		if(!bar)
 			bar = this.bar
@@ -81,7 +81,8 @@ Me =
 			log('Can\'t put mybar object.', e)
 		}
 		
-		this.saveRemote()
+		if(!noRemoteSave)
+			this.saveRemote()
 	},
 	
 	addIngredient : function(ingredientName)
@@ -119,11 +120,13 @@ Me =
 	
 	getForeignLink : function(callback)
 	{
+		var url = this.remoteServer + '/foreign-bar/createbar/'
+		alert(url)
 		Request.post(this.remoteServer + '/foreign-bar/createbar/', JSON.stringify(this.bar), function()
 		{
 			var foreignData = JSON.parse(this.responseText)
 			Object.extend(this.bar.foreignData, foreignData)
-			this.saveBar()
+			this.saveBar(false, true)
 			callback(this.bar.foreignData)
 		})
 	},
@@ -134,7 +137,7 @@ Me =
 		if(!fd.userid)
 			return
 			
-		Request.post(remoteServer + '/foreign-bar/savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
+		Request.post(this.remoteServer + '/foreign-bar/savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
 	}
 }
 
