@@ -13,7 +13,7 @@
 #output .b-title .open-own-bar.not-newbie .i-am-newbie,
 #output .b-title .open-own-bar.newbie .i-not-newbie,
 #output .b-content .fail.newbie .i-not-newbie,
-#output .b-content .fail.not-newbie .i-am-newbie,
+#output .b-content .fail.not-newbie .i-am-newbie
 {
 	display: none;
 }
