@@ -116,7 +116,7 @@ var myProto =
 		}
 		else
 		{
-			nodes.foreignLinkInput.value('http://' + window.location.hostname + '/foreign.html#' + userid)
+			nodes.foreignLinkInput.value = 'http://' + window.location.hostname + '/foreign.html#' + userid
 			nodes.foreignLink.show()
 			nodes.getLink.hide()
 		}
