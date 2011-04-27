@@ -18,7 +18,7 @@ a { color: #000; }
 #bottom { color: #bbb; }
 #bottom a { color: #000; }
 html { background: #fff url(bg.png) repeat-x center 65px; }
-button.rounded b { text-shadow: 1px 1px 0 #624; color: #fff; }
+button.rounded b { text-shadow: 1px 1px 0 #555; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 
 /* calculator.css */
