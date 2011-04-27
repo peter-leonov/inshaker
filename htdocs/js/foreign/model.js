@@ -24,7 +24,28 @@ var myProto =
 	bind : function ()
 	{
 		var me = this
-		BarStorage.initBar(function(bar){ me.setBar(bar) })
+		
+		function getForeignBar(userid)
+		{
+			if(!userid)
+			{
+				me.view.renderIfFail(me.newbie)
+				return
+			}
+			
+			var remoteServer = 'http://' + window.location.hostname + '/get-bar-by-id/'
+			
+			Request.get(this.remoteServer + userid, null, function(e){
+				if(e.type != 'success')
+					me.view.renderIfFail(me.newbie)
+				
+				me.setBar(JSON.parse(this.responseText))
+			})
+		}
+		
+		var userid = window.location.hash.substr(1)
+		
+		BarStorage.initBar(function(bar, newbie){ me.newbie = newbie; getForeignBar(userid) })
 	},
 
 	setBar : function(bar)
@@ -42,6 +63,7 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
+		this.view.renderLinkToMyBar(this.newbie)
 		this.view.renderIngredients(this.ingredients)
 		this.view.renderCocktails(this.cocktails)
 	},
