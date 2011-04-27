@@ -123,8 +123,10 @@ Me =
 		var url = this.remoteServer + 'createbar/'
 		var me = this
 		//alert(url)
-		Request.post(url, JSON.stringify(this.bar), function()
+		Request.post(url, JSON.stringify(this.bar), function(e)
 		{
+			log('e', e)
+			log('responseText', this.responseText)
 			var foreignData = JSON.parse(this.responseText)
 			Object.extend(me.bar.foreignData, foreignData)
 			me.saveBar(false, true)
