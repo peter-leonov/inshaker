@@ -98,8 +98,8 @@ function onready ()
 		share : {
 			getLink : $$('#output .share-bar .get-link')[0],
 			foreignBlock : $$('#output .share-bar .foreign-block')[0],
-			foreignLink: $$('#output .share-bar .foreign-link a')[0],
-			foreignLinkInput : $$('#output .share-bar .foreign-link input')[0]
+			foreignLink: $$('#output .share-bar .foreign-block a')[0],
+			foreignLinkInput : $$('#output .share-bar .foreign-block input')[0]
 		},
 		
 		barName : {
