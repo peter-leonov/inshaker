@@ -111,11 +111,13 @@ var myProto =
 		nodes = this.nodes.share
 		if(!userid)
 		{
+			alert(0)
 			nodes.getLink.show()
 			nodes.foreignLink.hide()
 		}
 		else
 		{
+			alert(1)
 			nodes.foreignLinkInput.value = 'http://' + window.location.hostname + '/foreign.html#' + userid
 			nodes.foreignLink.show()
 			nodes.getLink.hide()
