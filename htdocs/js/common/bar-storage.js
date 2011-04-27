@@ -1,4 +1,6 @@
 <!--# include virtual="/js/common/storage.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js"-->
+<!--# include virtual="/lib-0.3/modules/request.js"-->
 
 ;(function(){
 
@@ -6,6 +8,8 @@ var myName = 'BarStorage'
 
 Me =  
 {
+	remoteServer : 'http://' + window.location.hostname,
+	
 	initialize : function()
 	{
 		this.bar = 
@@ -19,7 +23,8 @@ Me =
 			currentTag : '',
 			purchasePlanNotices : {},
 			purchasePlanVolumes : {},
-			purchasePlanExcludes : {}
+			purchasePlanExcludes : {},
+			foreignData : { userid : '', hash : ''}
 		}
 		
 		if(!Storage)
@@ -75,6 +80,8 @@ Me =
 		{
 			log('Can\'t put mybar object.', e)
 		}
+		
+		this.saveRemote()
 	},
 	
 	addIngredient : function(ingredientName)
@@ -108,6 +115,26 @@ Me =
 			return true
 			
 		return false
+	},
+	
+	getForeignLink : function(callback)
+	{
+		Request.post(this.remoteServer + '/foreign-bar/createbar/', JSON.stringify(this.bar), function()
+		{
+			var foreignData = JSON.parse(this.responseText)
+			Object.extend(this.bar.foreignData, foreignData)
+			this.saveBar()
+			callback(this.bar.foreignData)
+		})
+	},
+	
+	saveRemote : function()
+	{
+		var fd = this.bar.foreignData
+		if(!fd.userid)
+			return
+			
+		Request.post(remoteServer + '/foreign-bar/savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
 	}
 }
 
