@@ -95,6 +95,9 @@ function onready ()
 			empty : $$('#output .cocktails-block .empty')[0]
 		},
 		
+		fail : $$('#output .fail')[0],
+		notFail : $$('#output .not-fail')[0],
+		linkToMybar : $$('#output .open-own-bar')[0],
 		output : $('output')
 	}
 	
