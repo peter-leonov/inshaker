@@ -23,6 +23,7 @@ var myProto =
 	
 	renderLinkToMyBar : function(newbie)
 	{
+		this.nodes.linkToMybar.show()
 		this.nodes.linkToMybar.addClassName(newbie ? 'newbie' : 'not-newbie')
 	},
 	
