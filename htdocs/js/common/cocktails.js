@@ -41,8 +41,3 @@ if (!clientStorage)
 <!--# include file="/js/common/dnd.js" -->
 <!--# include file="/js/common/cookie.js" -->
 <!--# include file="/js/common/rutils.js" -->
-
-<!--# include file="/js/common/theme.js" -->
-<!--# config timefmt="%Y.%m" -->
-<!--# block name="themejs" --><!--# endblock -->
-Theme.initialize(<!--# include virtual="/t/theme/$date_local/theme.js" stub="themejs" -->)
