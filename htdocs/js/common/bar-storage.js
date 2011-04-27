@@ -53,7 +53,7 @@ Me =
 			}
 			
 			parsingJson = JSON.parse(json)
-			me.newbie = parsingJson ? true : false
+			me.newbie = parsingJson ? false : true
 			Object.extend(me.bar, parsingJson)
 			
 			if(callback)
