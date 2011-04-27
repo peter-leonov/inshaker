@@ -473,7 +473,6 @@ http://www.inshaker.ru/cocktail/mar_del_plata/
 http://www.inshaker.ru/cocktail/margarita/
 http://www.inshaker.ru/cocktail/margarita_hibiscus/
 http://www.inshaker.ru/cocktail/home_margarita/
-http://www.inshaker.ru/cocktail/frozen_margarita/
 http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
@@ -666,6 +665,7 @@ http://www.inshaker.ru/cocktail/rum_orange/
 http://www.inshaker.ru/cocktail/gold_rum_and_pineapple/
 http://www.inshaker.ru/cocktail/rum_and_sprite/
 http://www.inshaker.ru/cocktail/rum_cranberry/
+http://www.inshaker.ru/cocktail/rum_cola/
 http://www.inshaker.ru/cocktail/rum_collins/
 http://www.inshaker.ru/cocktail/rum_ice-cream/
 http://www.inshaker.ru/cocktail/rum_infused_on_cherries/
