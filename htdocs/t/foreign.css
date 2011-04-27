@@ -10,6 +10,16 @@
 	right: 0;
 	top: 0;
 }
+#output .b-title .open-own-bar.not-newbie .i-am-newbie,
+#output .b-title .open-own-bar.newbie .i-not-newbie,
+#output .b-content .fail.newbie .i-not-newbie,
+#output .b-content .fail.not-newbie .i-am-newbie,
+{
+	display: none;
+}
+
+#output .b-content .fail { font-size: 28px; text-align: center; margin: 30px 0px; }
+
 .b-content dt.title { font-size: 20px; margin-bottom: 15px; }
 .b-content { width: 100%; }
 
