@@ -95,6 +95,12 @@ function onready ()
 	
 	var nodes = {
 		
+		share : {
+			getLink : $$('#output .share-bar .get-link')[0],
+			foreignLink : $$('#output .share-bar .foreign-link')[0],
+			foreignLinkInput : $$('#output .share-bar .foreign-link input')[0]
+		},
+		
 		barName : {
 			wrapper : $('bar-name'),
 			tip : $$('#bar-name .tip')[0],
