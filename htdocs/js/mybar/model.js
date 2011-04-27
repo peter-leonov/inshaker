@@ -901,6 +901,7 @@ var myProto =
 		BarStorage.getForeignLink(function(foreignData){
 			me.foreignData = foreignData
 			me.view.renderShare(foreignData.userid)
+			log('model', me.foreignData)
 		})
 	}
 }

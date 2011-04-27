@@ -128,6 +128,7 @@ Me =
 			var foreignData = JSON.parse(this.responseText)
 			Object.extend(me.bar.foreignData, foreignData)
 			me.saveBar(false, true)
+			log('barStorage', me.bar)
 			callback(me.bar.foreignData)
 		})
 	},
