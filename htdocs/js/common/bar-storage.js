@@ -53,7 +53,7 @@ Me =
 			}
 			
 			parsingJson = JSON.parse(json)
-			me.newbie = !parsingJson.ingredients
+			me.newbie = !!(parsingJson.ingredients || false)
 			Object.extend(me.bar, parsingJson)
 			
 			if(callback)
