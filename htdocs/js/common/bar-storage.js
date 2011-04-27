@@ -8,7 +8,7 @@ var myName = 'BarStorage'
 
 Me =  
 {
-	remoteServer : 'http://' + window.location.hostname,
+	remoteServer : 'http://' + window.location.hostname + '/mybar-foreign/',
 	
 	initialize : function()
 	{
@@ -120,9 +120,9 @@ Me =
 	
 	getForeignLink : function(callback)
 	{
-		var url = this.remoteServer + '/foreign-bar/createbar/'
-		alert(url)
-		Request.post(this.remoteServer + '/foreign-bar/createbar/', JSON.stringify(this.bar), function()
+		var url = this.remoteServer + 'createbar/'
+		//alert(url)
+		Request.post(url, JSON.stringify(this.bar), function()
 		{
 			var foreignData = JSON.parse(this.responseText)
 			Object.extend(this.bar.foreignData, foreignData)
@@ -137,7 +137,7 @@ Me =
 		if(!fd.userid)
 			return
 			
-		Request.post(this.remoteServer + '/foreign-bar/savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
+		Request.post(this.remoteServer + 'savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
 	}
 }
 
