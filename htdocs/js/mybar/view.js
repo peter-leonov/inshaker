@@ -112,12 +112,14 @@ var myProto =
 		if(!userid)
 		{
 			nodes.getLink.show()
-			nodes.foreignLink.hide()
+			nodes.foreignBlock.hide()
 		}
 		else
 		{
-			nodes.foreignLinkInput.value = 'http://' + window.location.hostname + '/foreign.html#' + userid
-			nodes.foreignLink.show()
+			var href = 'http://' + window.location.hostname + '/foreign.html#' + userid
+			nodes.foreignLinkInput.value = href
+			nodes.foreignLink.setAttribute('href', href)
+			nodes.foreignBlock.show()
 			nodes.getLink.hide()
 		}
 	},
