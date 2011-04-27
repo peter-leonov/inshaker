@@ -121,13 +121,14 @@ Me =
 	getForeignLink : function(callback)
 	{
 		var url = this.remoteServer + 'createbar/'
+		var me = this
 		//alert(url)
 		Request.post(url, JSON.stringify(this.bar), function()
 		{
 			var foreignData = JSON.parse(this.responseText)
-			Object.extend(this.bar.foreignData, foreignData)
-			this.saveBar(false, true)
-			callback(this.bar.foreignData)
+			Object.extend(me.bar.foreignData, foreignData)
+			me.saveBar(false, true)
+			callback(me.bar.foreignData)
 		})
 	},
 	
