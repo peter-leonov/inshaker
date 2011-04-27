@@ -28,8 +28,8 @@ var Me =
 
 Me.initialize
 ({
-	"spotlighted":{"href":"/combinator.html#q=ABSOLUT%20shooters"},
-	"branded-image":{"href":"/combinator.html#q=ABSOLUT%20shooters"}
+	"spotlighted":{"href":"/cocktail/vodka_citron_tonic/"},
+	"branded-image":{"href":"/cocktail/vodka_citron_tonic/"}
 })
 
 Me.bind()
