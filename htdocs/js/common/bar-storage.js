@@ -126,6 +126,8 @@ Me =
 		var me = this
 		Request.post(url, JSON.stringify(this.bar), function(e)
 		{
+			if(e.type != 'success')
+				return
 			var foreignData = JSON.parse(this.responseText)
 			Object.extend(me.bar.foreignData, foreignData)
 			me.saveBar(false, true)
