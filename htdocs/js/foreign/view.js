@@ -21,6 +21,19 @@ var myProto =
 		this.nodes.title.appendChild(T(barName + ' — Inshaker'))
 	},
 	
+	renderLinkToMyBar : function(newbie)
+	{
+		this.nodes.linkToMybar.addClassName(newbie ? 'newbie' : 'not-newbie')
+	},
+	
+	renderIfFail : function(newbie)
+	{
+		this.renderLinkToMyBar(newbie)
+		this.nodes.notFail.hide()
+		this.nodes.fail.show()
+		this.nodes.fail.addClassName(newbie ? 'newbie' : 'not-newbie')
+	},
+	
 	renderIngredients : function(ingredients)
 	{
 		var ingr = this.nodes.ingredients
