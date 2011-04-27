@@ -71,6 +71,8 @@ var myProto =
 		
 		this.computeRecommendsBlock()
 		
+		this.foreignData = bar.foreignData
+		
 		this.parent.setMainState()
 		
 		//ingr searcher
@@ -93,7 +95,7 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
-		
+		this.view.renderShare(this.foreignData.userid)
 	},
 	
 	computeRecommendsBlock : function()
@@ -891,6 +893,15 @@ var myProto =
 		
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
+	},
+	
+	getForeignLink : function()
+	{
+		var me = this
+		BarStorage.getForeignLink(function(foreignData){
+			me.foreignData = foreignData
+			me.view.renderShare(foreignData.userid)
+		})
 	}
 }
 Object.extend(Me.prototype, myProto)
