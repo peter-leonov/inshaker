@@ -52,10 +52,12 @@ Me =
 				log('Can\'t get mybar object.', e)
 			}
 			
-			Object.extend(me.bar, JSON.parse(json))
+			parsingJson = JSON.parse(json)
+			me.newbie = !parsingJson.ingredients
+			Object.extend(me.bar, parsingJson)
 			
 			if(callback)
-				callback(me.bar)
+				callback(me.bar, me.newbie)
 				
 			me.inited = true
 		}
