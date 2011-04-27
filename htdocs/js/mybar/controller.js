@@ -68,6 +68,11 @@ var myProto =
 	showTagRecommends : function(tag)
 	{
 		this.model.showTagRecommends(tag)
+	},
+	
+	getForeignLink : function()
+	{
+		this.model.getForeignLink()
 	}
 }
 Object.extend(Me.prototype, myProto)

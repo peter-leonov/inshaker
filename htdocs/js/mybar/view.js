@@ -80,6 +80,8 @@ var myProto =
 		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		nodes.bottomOutput.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
 		
+		nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
+		
 		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
@@ -102,6 +104,22 @@ var myProto =
 	renderBarName : function(barName)
 	{
 		this.barName.setMainState(barName)
+	},
+	
+	renderShare : function(userid)
+	{
+		nodes = this.nodes.share
+		if(!userid)
+		{
+			nodes.getLink.show()
+			nodes.foreignLink.hide()
+		}
+		else
+		{
+			nodes.foreignLinkInput.value('http://' + window.location.hostname + '/foreign.html#' + userid)
+			nodes.foreignLink.show()
+			nodes.getLink.hide()
+		}
 	},
 	
 	renderIngredients : function(ingredients, showByGroups, tipIngredient)
