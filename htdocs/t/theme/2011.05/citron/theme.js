@@ -28,8 +28,8 @@ var Me =
 
 Me.initialize
 ({
-	"spotlighted":{"href":"/cocktail/vodka_citron_tonic/"},
-	"branded-image":{"href":"/cocktail/vodka_citron_tonic/"}
+	"spotlighted":{"href":"/combinator.html#q=%D0%92%D0%BE%D0%B4%D0%BA%D0%B0%20%D1%86%D0%B8%D1%82%D1%80%D0%BE%D0%BD"},
+	"branded-image":{"href":"/combinator.html#q=%D0%92%D0%BE%D0%B4%D0%BA%D0%B0%20%D1%86%D0%B8%D1%82%D1%80%D0%BE%D0%BD"}
 })
 
 Me.bind()
