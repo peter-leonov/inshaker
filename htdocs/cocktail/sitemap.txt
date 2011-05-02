@@ -156,8 +156,10 @@ http://www.inshaker.ru/cocktail/cherry_sour/
 http://www.inshaker.ru/cocktail/cherry_and_cherry/
 http://www.inshaker.ru/cocktail/vaudeville/
 http://www.inshaker.ru/cocktail/vodka_bitter_honey/
+http://www.inshaker.ru/cocktail/vodka_vanilla_cranberries/
 http://www.inshaker.ru/cocktail/vodka_vanilla_apple/
 http://www.inshaker.ru/cocktail/vodka_pomegranate_juice/
+http://www.inshaker.ru/cocktail/vodka_pears_sprite/
 http://www.inshaker.ru/cocktail/vodka_mandarin/
 http://www.inshaker.ru/cocktail/vodka_martini/
 http://www.inshaker.ru/cocktail/vodka_minty_tea/
@@ -217,7 +219,6 @@ http://www.inshaker.ru/cocktail/grapefruit_splash/
 http://www.inshaker.ru/cocktail/green_hope/
 http://www.inshaker.ru/cocktail/grog/
 http://www.inshaker.ru/cocktail/pear_breeze/
-http://www.inshaker.ru/cocktail/pear_hit/
 http://www.inshaker.ru/cocktail/pears_shot/
 http://www.inshaker.ru/cocktail/guav-berry_martini/
 http://www.inshaker.ru/cocktail/good_time_girl/
@@ -473,7 +474,6 @@ http://www.inshaker.ru/cocktail/mar_del_plata/
 http://www.inshaker.ru/cocktail/margarita/
 http://www.inshaker.ru/cocktail/margarita_hibiscus/
 http://www.inshaker.ru/cocktail/home_margarita/
-http://www.inshaker.ru/cocktail/frozen_margarita/
 http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
@@ -666,6 +666,7 @@ http://www.inshaker.ru/cocktail/rum_orange/
 http://www.inshaker.ru/cocktail/gold_rum_and_pineapple/
 http://www.inshaker.ru/cocktail/rum_and_sprite/
 http://www.inshaker.ru/cocktail/rum_cranberry/
+http://www.inshaker.ru/cocktail/rum_cola/
 http://www.inshaker.ru/cocktail/rum_collins/
 http://www.inshaker.ru/cocktail/rum_ice-cream/
 http://www.inshaker.ru/cocktail/rum_infused_on_cherries/

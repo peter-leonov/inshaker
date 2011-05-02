@@ -1,0 +1,13 @@
+<script>;(function(){
+var names = ['vanilia', 'citron', 'pears', 'kurant']
+var name = names[(new Date().getDate() - 1) % names.length] || names[0]
+var prefix = '/t/theme/2011.05/' + name + '/'
+
+var link = document.createElement('link')
+link.id = 'theme-style'
+link['data-theme-prefix'] = prefix
+link.rel = 'stylesheet'
+link.href = prefix + 'theme.css'
+var root = document.getElementsByTagName('head')[0] || document.documentElement
+root.appendChild(link)
+})();</script>

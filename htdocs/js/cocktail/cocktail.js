@@ -5,7 +5,6 @@ $.onready(function(){
 	new RollingImagesLite($('ingredients'), aniOpts);
 	Controller.init();
 	Calculator.init();
-	Theme.bind()
 })
 
 <!--# include virtual="/js/common/bar-storage.js" -->

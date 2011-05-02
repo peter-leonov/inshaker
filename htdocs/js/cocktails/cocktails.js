@@ -82,7 +82,6 @@ $.onready(
 		
 		CocktailsPage.init(states, nodes, styles, cookies)
 		Calculator.init()
-		Theme.bind()
 	}
 )
 

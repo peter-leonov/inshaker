@@ -28,9 +28,6 @@
 
 $.onready(function () { setTimeout(function () { GoogleAnalytics.trackPageview() }, 250) })
 
-<!--# include virtual="/js/common/theme.js" -->
-$.onready(function () { Theme.bind() })
-
 $.onready(function ()
 {
 	var year = $$('#copyright .year')

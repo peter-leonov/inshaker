@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/head.html" -->
+	<title>Топ ошибок — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+	<div class="column"><div class="body-wrapper">
+		<div class="b-title">
+			<h1>Топ ошибок за 30 дней</h1>
+		</div>
+		<div class="b-content">
+			<div id="stat-errors"></div>
+		</div>
+	</div></div>
+</div>
+<!--# include file="/inc/bottom-common.html" -->
+<script type="text/javascript" src="/js/common/oops.js"></script>
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/about/swfobject.js"></script>
+<script>
+function onready ()
+{
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
+	line.addVariable('path', '/stat/amcharts/')
+	line.addParam('wmode', 'opaque')
+	line.addVariable('settings_file', escape('/stat/errors/settings.xml'))
+	line.addVariable('data_file', escape('/stat/errors/data.xml'))
+	line.write('stat-errors')
+}
+$.onready(onready)
+</script>
+</body>
+</html>
