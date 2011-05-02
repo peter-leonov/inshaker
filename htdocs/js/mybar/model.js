@@ -151,7 +151,9 @@ var myProto =
 			var ingredients = []
 			for (var i = 0, il = ingredientNames.length; i < il; i++)
 			{
-				ingredients.push(Ingredient.getByName(ingredientNames[i]))
+				var ingredient = Ingredient.getByName(ingredientNames[i])
+				if(ingredient)
+					ingredients.push(ingredient)
 			}
 			return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
 		}
