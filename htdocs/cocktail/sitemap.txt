@@ -280,6 +280,7 @@ http://www.inshaker.ru/cocktail/e-sencha-l/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_cobler/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
+http://www.inshaker.ru/cocktail/blackberry_saloop/
 http://www.inshaker.ru/cocktail/yellow_mix/
 http://www.inshaker.ru/cocktail/liquid_cheesecake/
 http://www.inshaker.ru/cocktail/jokers_breakfast/
@@ -457,6 +458,7 @@ http://www.inshaker.ru/cocktail/raspberry_lemonade/
 http://www.inshaker.ru/cocktail/raspberry_lemonade_junior/
 http://www.inshaker.ru/cocktail/raspberry_milkshake/
 http://www.inshaker.ru/cocktail/raspberry_jacket_shooter/
+http://www.inshaker.ru/cocktail/raspberry_saloop/
 http://www.inshaker.ru/cocktail/raspberry_sling/
 http://www.inshaker.ru/cocktail/raspberry_cheesecake/
 http://www.inshaker.ru/cocktail/raspberry_shot/
@@ -628,6 +630,7 @@ http://www.inshaker.ru/cocktail/primavera/
 http://www.inshaker.ru/cocktail/nasty_slush/
 http://www.inshaker.ru/cocktail/spicy_grapefruit/
 http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
+http://www.inshaker.ru/cocktail/spicy_saloop/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/drunk_gold/
@@ -760,6 +763,7 @@ http://www.inshaker.ru/cocktail/strelka_flip/
 http://www.inshaker.ru/cocktail/saturday/
 http://www.inshaker.ru/cocktail/bitch_on_the_beach/
 http://www.inshaker.ru/cocktail/t-55/
+http://www.inshaker.ru/cocktail/taiga_saloop/
 http://www.inshaker.ru/cocktail/tamarita/
 http://www.inshaker.ru/cocktail/cockroach/
 http://www.inshaker.ru/cocktail/tverskaya_street/
