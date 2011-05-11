@@ -158,7 +158,10 @@ var Printer = {
        var cnt = document.createElement("div");
        cnt.className = "cnt";
        div.innerHTML = cocktail.name;
-       cnt.innerHTML = quantity + " " + GoodHelper.pluralTxt(quantity, "порция");
+       
+       var plurals = (cocktail.cart && cocktail.cart.plural) || ['порция', 'порции', 'порций']
+       
+       cnt.innerHTML = quantity + " " + quantity.plural.apply(quantity, plurals)
        dd.appendChild(div);
        dd.appendChild(cnt);
        return dd;
