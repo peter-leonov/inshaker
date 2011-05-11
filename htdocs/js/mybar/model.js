@@ -790,7 +790,6 @@ var myProto =
 		this.saveStorage()
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		//this.recommIngr = this.computeRecommIngr(this.mustHave)
 		this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
@@ -803,6 +802,8 @@ var myProto =
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
 		
+		
+		
 		return true
 	},
 	
@@ -812,7 +813,6 @@ var myProto =
 		this.saveStorage()
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		//this.recommIngr = this.computeRecommIngr(this.mustHave)
 		this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
@@ -866,8 +866,7 @@ var myProto =
 		
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		//this.recommIngr = this.computeRecommIngr(this.mustHave)
-		this.computeRecommendsBlock()
+		//this.computeRecommendsBlock()
 		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
 		
 		var me = this
@@ -875,9 +874,10 @@ var myProto =
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		//this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+		this.view.setScrollTop()
 	},
 	
 	selectIngredient : function(ingredient)
@@ -904,6 +904,14 @@ var myProto =
 			me.foreignData = foreignData
 			me.view.renderShare(foreignData.userid)
 		})
+	},
+	
+	updateRecommends : function()
+	{
+		this.computeRecommendsBlock()
+		
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)	
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
 	}
 }
 Object.extend(Me.prototype, myProto)
