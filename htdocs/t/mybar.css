@@ -1,6 +1,6 @@
 <!--# include virtual="/t/mybar/common.css" -->
 
-#output .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
+#output .b-title { overflow: hidden; background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
 
 #output .b-title .share-bar { position: absolute; top: 0; right: 0; font-size: 13px; }
 
