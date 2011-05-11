@@ -439,14 +439,14 @@ var myProto =
 				var set = cocktails[ci].ingredients
 				for (var s = 0, sl = set.length; s < sl; s++) 
 				{
-								var ingr = set[s][0]
-								if(inBar[ingr])
-									havingIngredients[ingr] = true
-							}
-						}
+					var ingr = set[s][0]
+					if(inBar[ingr])
+					havingIngredients[ingr] = true
+				}
+			}
 			
 			
-			havingIngredients = Object.toArray(havingIngredients).sort(Ingredient.sortByGroups)
+			havingIngredients = Object.toArray(havingIngredients).sort(Ingredient.sortByGroups).map(function(name){ return Ingredient.getByName(name) })
 			
 			groups.push({ ingredients : ingredients, cocktails : cocktails, havingIngredients : havingIngredients })
 		}
@@ -847,9 +847,13 @@ var myProto =
 	switchBoShowType : function(showByCocktails)
 	{
 		if(showByCocktails)
+		{
 			this.showByCocktails = true
+		}
 		else
+		{
 			this.showByCocktails = false
+		}
 			
 		this.saveStorage()
 		
@@ -857,7 +861,7 @@ var myProto =
 		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},
 	
-	addIngredientsFromBo : function(ingredients)
+	addIngredientsFromBo : function(ingredients, group)
 	{
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
@@ -866,18 +870,45 @@ var myProto =
 		
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		//this.computeRecommendsBlock()
-		//this.boItems = this.computeBoItems(this.bottomOutput, this.packageCocktails)
+		
+		var me = this
+		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
+		
+		var recommend = this.newRecommendByGroup(ingredients, group)
+		
+		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
+		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		
+		this.view.updateCurrentRecommend(recommend)
+		
+		this.view.setScrollTop()
+	},
+	
+	addMustHaveIngredient : function(ingredient)
+	{
+		this.ingredients.add(ingredients)
+		
+		this.saveStorage()
+		this.cocktails = this.computeCocktails(this.ingredients)
 		
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		//this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+		this.view.updateMustHave(ingredient)
 		
 		this.view.setScrollTop()
+		
+		
+		function newRecommendByGroup(ingredients, group)
+		{
+			if(!group)
+			{
+				return ingredients
+			}
+		}
 	},
 	
 	selectIngredient : function(ingredient)
@@ -906,7 +937,7 @@ var myProto =
 		})
 	},
 	
-	updateRecommends : function()
+	upgradeRecommends : function()
 	{
 		this.computeRecommendsBlock()
 		
