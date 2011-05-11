@@ -44,10 +44,11 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 
+<!--# include virtual="/js/common/popup.js" -->
+<!--# include virtual="/js/common/ingredient-popup.js" -->
+
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
-<!--# include virtual="popup.js" -->
-<!--# include virtual="ingredient-popup.js" -->
 <!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
 <!--# include virtual="tokenizer.js" -->
