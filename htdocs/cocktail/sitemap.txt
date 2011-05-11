@@ -367,6 +367,7 @@ http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
 http://www.inshaker.ru/cocktail/cranberry_with_thyme/
 http://www.inshaker.ru/cocktail/cranberry-raspberry_mulled_wine/
+http://www.inshaker.ru/cocktail/cranberry_gogol-mogol/
 http://www.inshaker.ru/cocktail/cosa_nostra/
 http://www.inshaker.ru/cocktail/coconut_cranberries/
 http://www.inshaker.ru/cocktail/coconut_cola/
@@ -454,6 +455,7 @@ http://www.inshaker.ru/cocktail/raspberry_sunset/
 http://www.inshaker.ru/cocktail/raspberry_sambuca/
 http://www.inshaker.ru/cocktail/raspberry_voyage/
 http://www.inshaker.ru/cocktail/raspberry_ambitious/
+http://www.inshaker.ru/cocktail/raspberry_gogol-mogol/
 http://www.inshaker.ru/cocktail/raspberry_cobler_317/
 http://www.inshaker.ru/cocktail/raspberry_lemonade/
 http://www.inshaker.ru/cocktail/raspberry_lemonade_junior/
@@ -825,6 +827,7 @@ http://www.inshaker.ru/cocktail/forrest_gump/
 http://www.inshaker.ru/cocktail/afterburning/
 http://www.inshaker.ru/cocktail/frambuesa/
 http://www.inshaker.ru/cocktail/french_guiana/
+http://www.inshaker.ru/cocktail/french_gogol-mogol/
 http://www.inshaker.ru/cocktail/french_daiquiri/
 http://www.inshaker.ru/cocktail/french_desert/
 http://www.inshaker.ru/cocktail/french_maple_tea/
