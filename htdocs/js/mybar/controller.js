@@ -73,6 +73,11 @@ var myProto =
 	getForeignLink : function()
 	{
 		this.model.getForeignLink()
+	},
+	
+	updateRecommends : function()
+	{
+		this.model.updateRecommends()
 	}
 }
 Object.extend(Me.prototype, myProto)
