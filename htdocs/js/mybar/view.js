@@ -60,7 +60,6 @@ var myProto =
 		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
-		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
@@ -75,7 +74,8 @@ var myProto =
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
 		
 		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
-		nodes.bottomOutput.output.addEventListener('click', function(e){ me.handleBottomOutputClick(e) }, false)
+		
+		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleBottomWrapperClick(e) }, false)
 		
 		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		nodes.bottomOutput.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
@@ -89,11 +89,21 @@ var myProto =
 	
 	onscroll : function()
 	{
+		
+		if(this.nodes.bottomOutput.output.offsetPosition().top - window.screen.height > window.pageYOffset)
+		{
+			if(!this.recommendsWasRendered)
+			{
+				this.controller.updateRecommends()
+			}	
+			return
+		}
+		
 		this.suspendedRecommendsFrame.checkout()
 		this.suspendedMustHaveRecommendsFrame.checkout()
 		//var frame = this.recommendsFrame
 		//if(frame)
-		//	frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)		
+		//	frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -304,12 +314,7 @@ var myProto =
 	},
 
 	renderBottomOutput : function(mustHaveRecommends, recommends)
-	{
-		//this.renderBoByCocktails(recommends)
-		//var items = []
-		//items = items.concat(this.bottomRecommendsRender(recommends))
-		//items = items.concat(this.mustHaveRender(mustHaveRecommends))
-		
+	{	
 		var recommendsNode = this.nodes.bottomOutput.recommends
 		var dl = Nc('dl', 'show-by-cocktails')
 		recommendsNode.empty()
@@ -324,13 +329,16 @@ var myProto =
 		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(ul, mustHaveRecommends, this.renderOneMustHaveRecommend)
 		
 		//this.setupRecommendsVisibilityFrame(items)
-		
+		this.recommendsWasRendered = true
 		this.onscroll()
 	},
 	
 	renderOneMustHaveRecommend : function(mustHaveIngredient)
 	{
 			var li = Nc('li', 'row')
+			
+			li.recommendGroup = mustHaveIngredient
+			li.mustHave = true
 			
 			var bigPlus = Nct('div', 'big-plus', '+')
 			bigPlus.ingredients = [mustHaveIngredient.ingredient]
@@ -435,6 +443,8 @@ var myProto =
 		dd.style.height = rows * 155 + 'px'
 		
 		dd.setAttribute('rows', rows)
+		
+		dd.recommendGroup = group
 		
 		var bigPlus = Nct('div', 'big-plus', '+')
 		
@@ -797,10 +807,11 @@ var myProto =
 	handleIngredientClick : function(e)
 	{
 		var node = e.target
-		if(node.addingIngredient)
-			this.controller.addIngredientToBar(node.addingIngredient)
-		else if(node.removingIngredient)
+
+		if(node.removingIngredient)
+		{
 			this.controller.removeIngredientFromBar(node.removingIngredient)
+		}	
 	},
 
 	handleCocktailsSwitcherClick : function(e)
@@ -840,14 +851,45 @@ var myProto =
 		}
 	},
 	
-	handleBottomOutputClick : function(e)
+	handleBottomWrapperClick : function(e)
 	{
 		var target = e.target
+		
+		if(!target.ingredients && !target.addingIngredient)
+		{
+			return
+		}
+		
+		this.recommendsWasRendered = false
+		this.oldDocHeight = document.documentElement.scrollHeight
+		
+		this.currentRecommend = this.findParentRecommend(target.recommendNode)
+		
+		var group = this.currentRecommen.recommendGroup
+		
 		if(target.ingredients)
 		{
-			this.controller.addIngredientsFromBo(target.ingredients)
+			this.controller.addIngredientsFromBo(target.ingredients, group)
+		}
+		else if(target.addingIngredient)
+		{
+			this.controller.addIngredientsFromBo([target.addingIngredient], group)
 		}
 	},
+	
+	findParentRecommend : function(node)
+	{
+		while(node.parentNode)
+		{
+			var parent = node.parentNode
+			if(parent.recommendGroup)
+			{
+				return parent
+			}
+		}
+		
+		return false
+	}
 	
 	maybeIngredientClicked : function(target)
 	{
@@ -856,7 +898,9 @@ var myProto =
 		
 		var ingredient = target.parentNode['data-ingredient']
 		if(ingredient)
+		{
 			this.controller.ingredientSelected(ingredient)
+		}
 	},
 	
 	showIngredient: function (ingredient)
@@ -878,6 +922,13 @@ var myProto =
 		{
 			this.controller.showTagRecommends(target.tagValue)
 		}
+	},
+	
+	setScrollTop : function()
+	{
+		var delta = document.documentElement.scrollHeight - this.oldDocHeight
+		document.documentElement.scrollTop += delta
+		document.body.scrollTop += delta
 	}
 }
 Object.extend(Me.prototype, myProto)
