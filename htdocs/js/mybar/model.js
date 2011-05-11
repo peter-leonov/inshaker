@@ -105,6 +105,7 @@ var myProto =
 		this.currentTag = this.getCurrentTag(this.tags, this.bar.currentTag)
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
+		this.havingIngredients = {}
 	},
 	
 	sortByUsage : function(a, b)
@@ -861,11 +862,13 @@ var myProto =
 		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},
 	
-	addIngredientsFromBo : function(ingredients, group)
+	addIngredientsFromBo : function(ingredients)
 	{
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
-			this.ingredients.add(ingredients[i])
+			var ingredient = ingredients[i]
+			this.ingredients.add(ingredient)
+			this.havingIngredients[ingredient.name] = true
 		}
 		
 		this.saveStorage()
@@ -879,36 +882,9 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		
-		this.view.updateCurrentRecommend(recommend)
+		this.view.updateRecommends(havingIngredients)
 		
 		this.view.setScrollTop()
-	},
-	
-	addMustHaveIngredient : function(ingredient)
-	{
-		this.ingredients.add(ingredients)
-		
-		this.saveStorage()
-		this.cocktails = this.computeCocktails(this.ingredients)
-		
-		var me = this
-		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
-		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		
-		this.view.updateMustHave(ingredient)
-		
-		this.view.setScrollTop()
-		
-		
-		function newRecommendByGroup(ingredients, group)
-		{
-			if(!group)
-			{
-				return ingredients
-			}
-		}
 	},
 	
 	selectIngredient : function(ingredient)
