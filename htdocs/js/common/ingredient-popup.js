@@ -53,11 +53,20 @@ var myProto =
 		nodes.name.appendChild(T(ingredient.name))
 		
 		this.renderAllCocktailsLink(ingredient)
-		this.renderSupplements(ingredient)
 		
 		nodes.text.innerHTML = ingredient.about
 		
 		nodes.image.src = ingredient.getMainImageSrc()
+		
+		this.renderPlugins()
+	},
+	
+	renderPlugins: function ()
+	{
+		var nodes = this.nodes,
+			ingredient = this.ingredient
+		
+		this.renderSupplements(ingredient)
 		
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
