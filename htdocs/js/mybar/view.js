@@ -8,6 +8,8 @@ var myProto =
 	initialize : function()
 	{
 		this.nodes = {}
+		this.currentRecommends = []
+		this.currentMustHaveRecommends = []
 		
 		var me = this
 		
@@ -275,7 +277,7 @@ var myProto =
 		this.mustHaveRender(mustHave)
 	},
 */	
-	setupRecommendsVisibilityFrame : function(nodes)
+/*	setupRecommendsVisibilityFrame : function(nodes)
 	{
 		if (!nodes.length)
 			return
@@ -312,6 +314,7 @@ var myProto =
 		
 		frame.setBoxes(boxes)		
 	},
+*/
 
 	renderBottomOutput : function(mustHaveRecommends, recommends)
 	{	
@@ -325,6 +328,9 @@ var myProto =
 		mustHaveNode.empty()
 		mustHaveNode.appendChild(ul)
 		
+		this.currentRecommends = []
+		this.currentMustHaveRecommends = []
+		
 		this.suspendedRecommendsFrame = new SuspendRenderFrame(dl, recommends, this.renderOneRecommend)
 		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(ul, mustHaveRecommends, this.renderOneMustHaveRecommend)
 		
@@ -332,11 +338,11 @@ var myProto =
 		this.onscroll()
 	},
 	
-	renderOneMustHaveRecommend : function(mustHaveIngredient, currLi)
+	renderOneMustHaveRecommend : function(mustHaveIngredient, currLi, havingIngredients)
 	{
 		var li = currLi || Nc('li', 'row')
 		
-		li.recommendGroup = false
+		li.recommendWrapper = true
 		
 		var bigPlus = Nct('div', 'big-plus', '+')
 		bigPlus.ingredients = [mustHaveIngredient.ingredient]
@@ -350,10 +356,15 @@ var myProto =
 		desc.innerHTML = mustHaveIngredient.description
 		li.appendChild(desc)
 		
+		if(!havingIngredients)
+		{
+			this.currentMustHaveRecommends.push({ li : li, mustHaveIngredient : mustHaveIngredient })
+		}
+		
 		return li
 	},
 
-	renderOneRecommend : function(group, currDt, currDd)
+	renderOneRecommend : function(group, currDt, currDd, havingIngredients)
 	{	
 		var ingredients = group.ingredients,
 			cocktails = group.cocktails,
@@ -434,11 +445,10 @@ var myProto =
 		var df = document.createDocumentFragment()
 		
 		var dd = currDd || N('dd')
+		dd.empty()
 		dd.style.height = rows * 155 + 'px'
 		
 		dd.setAttribute('rows', rows)
-		
-		dd.recommendGroup = group
 		
 		var bigPlus = Nct('div', 'big-plus', '+')
 		
@@ -471,9 +481,11 @@ var myProto =
 			var n = cocktails[i].getPreviewNode()
 			body.appendChild(n)
 		}
+		
 		dd.appendChild(body)			
 		
 		var dt = currDt || Nc('dt', 'advice')
+		dt.empty()
 		
 		var hs = createTextFromArr(havingIngredients)
 		var is = createTextFromArr(ingredients)
@@ -484,6 +496,13 @@ var myProto =
 		dt.appendChild(document.createTextNode(text))
 		df.appendChild(dt)
 		df.appendChild(dd)
+		
+		dt.recommendWrapper = true
+		
+		if(!havingIngredients)
+		{
+			this.currentRecommends.push({ dt : dt, dd : dd, group : group })
+		}
 		
 		return df
 		
@@ -524,138 +543,139 @@ var myProto =
 		}
 	},
 	
-	bottomRecommendsRender : function(groups)
-	{	
-		var dl = Nc('dl', 'show-by-cocktails')
-		var items = []
-		
-		for (var i = 0, l = groups.length; i < l; i++) 
-		{
-			var g = groups[i]
-			var ingredients = g.ingredients
-			var cocktails = g.cocktails
-			var il = ingredients.length
-			var cl = cocktails.length
-			var tl = il + cl
-			var perRow = 7
-			if(tl <= perRow)
+	/*bottomRecommendsRender : function(groups)
+		{	
+			var dl = Nc('dl', 'show-by-cocktails')
+			var items = []
+			
+			for (var i = 0, l = groups.length; i < l; i++) 
 			{
-				var rows = 1
-				var iColumns = il
-				var cColumns = cl
-			}
-			else
-			{
-				var len = il > cl ? il : cl
-				var ti = [0]
-				var tc = [0]
-				var ri = rc = 0
-				var li = lc = null
-				for (var j = 0; j < len; j++) 
-				{						
-					if(ingredients[j])
-					{
-						if(ti[ri] + tc[rc] == perRow || li && ti[ri] == li)
+				var g = groups[i]
+				var ingredients = g.ingredients
+				var cocktails = g.cocktails
+				var il = ingredients.length
+				var cl = cocktails.length
+				var tl = il + cl
+				var perRow = 7
+				if(tl <= perRow)
+				{
+					var rows = 1
+					var iColumns = il
+					var cColumns = cl
+				}
+				else
+				{
+					var len = il > cl ? il : cl
+					var ti = [0]
+					var tc = [0]
+					var ri = rc = 0
+					var li = lc = null
+					for (var j = 0; j < len; j++) 
+					{						
+						if(ingredients[j])
 						{
-							var li = li || ti[ri]
-							ri++
+							if(ti[ri] + tc[rc] == perRow || li && ti[ri] == li)
+							{
+								var li = li || ti[ri]
+								ri++
+							}
+							
+							ti[ri] = ti[ri] || 0
+							ti[ri]++
 						}
 						
-						ti[ri] = ti[ri] || 0
-						ti[ri]++
-					}
-					
-					if(cocktails[j])
-					{
-						if(ti[ri] + tc[rc] == perRow || lc && tc[rc] == lc)
+						if(cocktails[j])
 						{
-							var lc = lc || tc[rc]
-							rc++
+							if(ti[ri] + tc[rc] == perRow || lc && tc[rc] == lc)
+							{
+								var lc = lc || tc[rc]
+								rc++
+							}
+							
+							tc[rc] = tc[rc] || 0
+							tc[rc]++
 						}
 						
-						tc[rc] = tc[rc] || 0
-						tc[rc]++
+						var rows = ti.length > tc.length ? ti.length : tc.length
+						if(rows - ti.length > 1 && ti[0] > 1)
+						{
+							ti = relocation(ti, ti[0] - 1)
+							tc = relocation(tc, tc[0] + 1)
+						}
+						else if(rows - tc.length > 1 && tc[0] > 1)
+						{
+							ti = relocation(ti, ti[0] + 1)
+							tc = relocation(tc, tc[0] - 1)
+						}
 					}
 					
-					var rows = ti.length > tc.length ? ti.length : tc.length
-					if(rows - ti.length > 1 && ti[0] > 1)
-					{
-						ti = relocation(ti, ti[0] - 1)
-						tc = relocation(tc, tc[0] + 1)
-					}
-					else if(rows - tc.length > 1 && tc[0] > 1)
-					{
-						ti = relocation(ti, ti[0] + 1)
-						tc = relocation(tc, tc[0] - 1)
-					}
+					var iColumns = ti[0]
+					var cColumns = tc[0]
 				}
 				
-				var iColumns = ti[0]
-				var cColumns = tc[0]
+				var dd = Nc('dd', 'lazy')
+				
+				dd.style.height = rows * 155 + 'px'
+				g.iColumns = iColumns
+				g.cColumns = cColumns
+				items.push(dd)
+				dd.group = g
+				
+				dl.appendChild(dd)
 			}
 			
-			var dd = Nc('dd', 'lazy')
+			var main = this.nodes.bottomOutput.recommends
+			main.empty()
+			main.appendChild(dl)
 			
-			dd.style.height = rows * 155 + 'px'
-			g.iColumns = iColumns
-			g.cColumns = cColumns
-			items.push(dd)
-			dd.group = g
+			return items
 			
-			dl.appendChild(dd)
-		}
-		
-		var main = this.nodes.bottomOutput.recommends
-		main.empty()
-		main.appendChild(dl)
-		
-		return items
-		
-		function relocation(tarr, cols)
-		{
-			var sum = 0						
-			for (var k = 0; k < tarr.length; k++) 
+			function relocation(tarr, cols)
 			{
-				sum += tarr[k]
-			}
-			
-			rows = 0
-			var arr = []
-			while(sum)
-			{
-				for (var k = 0; k < cols; i++) 
+				var sum = 0						
+				for (var k = 0; k < tarr.length; k++) 
 				{
-					sum--
-					arr[rows] = ++arr[rows] || 1
-					
-					if(!sum)
-						break;
+					sum += tarr[k]
 				}
-				rows++
+				
+				rows = 0
+				var arr = []
+				while(sum)
+				{
+					for (var k = 0; k < cols; i++) 
+					{
+						sum--
+						arr[rows] = ++arr[rows] || 1
+						
+						if(!sum)
+							break;
+					}
+					rows++
+				}
+				
+				return arr
+			}
+		},
+		
+		mustHaveRender : function(mustHave)
+		{
+			var mustHaveUl = N('ul')
+			var items = []
+			for (var i = 0, il = mustHave.length; i < il; i++)
+			{
+				var li = Nc('li', 'row lazy')
+				li.mustHaveIngredient = mustHave[i]
+				items.push(li)
+				mustHaveUl.appendChild(li)
 			}
 			
-			return arr
-		}
-	},
+			var main = this.nodes.bottomOutput.mustHave
+			main.empty()
+			main.appendChild(mustHaveUl)
+			
+			return items
+		},*/
 	
-	mustHaveRender : function(mustHave)
-	{
-		var mustHaveUl = N('ul')
-		var items = []
-		for (var i = 0, il = mustHave.length; i < il; i++)
-		{
-			var li = Nc('li', 'row lazy')
-			li.mustHaveIngredient = mustHave[i]
-			items.push(li)
-			mustHaveUl.appendChild(li)
-		}
-		
-		var main = this.nodes.bottomOutput.mustHave
-		main.empty()
-		main.appendChild(mustHaveUl)
-		
-		return items
-	},
 	
 	renderTagsSelect : function(tags, currentTag, tagsAmount)
 	{
@@ -818,7 +838,7 @@ var myProto =
 		}		
 	},
 	
-	handleBoTitleClick : function(e)
+/*	handleBoTitleClick : function(e)
 	{
 		var target = e.target
 		if(target.hasClassName('link'))
@@ -828,7 +848,8 @@ var myProto =
 			else
 				this.controller.switchBoShowType(true)
 		}
-	},
+	},*/
+
 	
 	handleBottomWrapperClick : function(e)
 	{
@@ -842,19 +863,15 @@ var myProto =
 		this.recommendsWasRendered = false
 		this.oldDocHeight = document.documentElement.scrollHeight
 		
-		var recommend = this.findParentRecommend(target.recommendNode)
-		
-		this.currentRecommend = recommend
-		
-		var group = recommend.recommendGroup
+		var recommendWrapper = this.findParentRecommend(target.recommendNode)
 		
 		if(target.ingredients)
 		{
-			this.controller.addIngredientsFromBo(target.ingredients, group)
+			this.controller.addIngredientsFromBo(target.ingredients)
 		}
 		else if(target.addingIngredient)
 		{
-			this.controller.addIngredientsFromBo([target.addingIngredient], group)
+			this.controller.addIngredientsFromBo([target.addingIngredient])
 		}
 	},
 	
@@ -863,7 +880,7 @@ var myProto =
 		while(node.parentNode)
 		{
 			var parent = node.parentNode
-			if(parent.recommendGroup)
+			if(parent.recommendWrapper)
 			{
 				return parent
 			}
@@ -874,39 +891,25 @@ var myProto =
 	
 	updateRecommends : function(havingIngredients)
 	{
-		for (var i = 0, il = this.recommendsForUpdate.length; i < il; i++) 
+		for (var i = 0, il = this.currentRecommends.length; i < il; i++) 
 		{
-			var recommend = this.recommendsForUpdate[i]
-			
-			if(recommend.mustHave)
-			{
-				updateMustHaveRecommend(recommend, havingIngredients)
-			}
-			else
-			{
-				updateRecommend(recommend, havingIngredients)
-			}
+			var recommend = this.currentRecommends[i]
+			this.renderOneRecommend(recommend.group, recommend.dt, recommend.dd, havingIngredients)
 		}
 		
-		function updateMustHaveRecommend(recommend, havingIngredients)
+		for (var i = 0, il = this.currentMustHaveRecommends.length; i < il; i++) 
 		{
-			
-		}
-		
-		function updateRecommend(recommend, havingIngredients)
-		{
-			
+			var recommend = this.currentRecommends[i]
+			this.renderOneMustHaveRecommend(recommend.mustHaveIngredient, recommend.li, havingIngredients)
 		}
 	},
-	
-	
 	
 	maybeIngredientClicked : function(target)
 	{
 		if(!target.parentNode)
 			return
 		
-		var ingredient = target.parentNode['data-ingredient']
+		var ingredient = target['data-ingredient'] || target.parentNode['data-ingredient']
 		if(ingredient)
 		{
 			this.controller.ingredientSelected(ingredient)
