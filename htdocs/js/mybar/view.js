@@ -324,7 +324,7 @@ var myProto =
 	},
 */
 
-	renderBottomOutput : function(mustHaveRecommends, recommends)
+	renderBottomOutput : function(mustHaveRecommends, recommends, update)
 	{	
 		var recommendsNode = this.nodes.bottomOutput.recommends
 		var dl = Nc('dl', 'show-by-cocktails')
@@ -344,7 +344,10 @@ var myProto =
 		this.suspendedRecommendsFrame = new SuspendRenderFrame(dl, recommends, function(group){ return me.renderOneRecommend(group) })
 		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(ul, mustHaveRecommends, function(ingr){ return me.renderOneMustHaveRecommend(ingr) })
 		
-		this.recommendsWasRendered = true
+		if(!update)
+		{
+			this.recommendsWasRendered = true
+		}
 		this.onscroll()
 	},
 	

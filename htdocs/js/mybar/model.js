@@ -900,7 +900,7 @@ var myProto =
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 		
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends, true)
 		
 		//this.view.setScrollTopTags()	
 	},
