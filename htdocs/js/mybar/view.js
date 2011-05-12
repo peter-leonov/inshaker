@@ -100,8 +100,7 @@ var myProto =
 	
 	onscroll : function()
 	{
-		
-		if(this.nodes.bottomOutput.output.offsetPosition().top - window.screen.height > window.pageYOffset)
+		if(this.nodes.bottomOutput.output.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
 		{
 			if(!this.recommendsWasRendered)
 			{
@@ -325,7 +324,7 @@ var myProto =
 	},
 */
 
-	renderBottomOutput : function(mustHaveRecommends, recommends, cocktailsHash)
+	renderBottomOutput : function(mustHaveRecommends, recommends)
 	{	
 		var recommendsNode = this.nodes.bottomOutput.recommends
 		var dl = Nc('dl', 'show-by-cocktails')
@@ -340,7 +339,7 @@ var myProto =
 		this.currentRecommendsNodes = []
 		this.currentMustHaveRecommendsNodes = []
 		this.havingIngredientsNames = {}
-		this.cocktailsHash = {}
+		this.havingCocktailsNames = {}
 		
 		var me = this
 		
@@ -601,7 +600,7 @@ var myProto =
 				var link = Nct('span', 'ingredient-link', ingredient.name)
 				link['data-ingredient'] = ingredient
 				
-				if(i == il - 1)
+				if(i == il - 1 && i != 0)
 				{
 					df.appendChild(T(' и '))
 				}
@@ -1015,7 +1014,7 @@ var myProto =
 		
 		for (var i = 0, il = this.currentMustHaveRecommendsNodes.length; i < il; i++) 
 		{
-			var recommend = this.currentRecommendsNodes[i]
+			var recommend = this.currentMustHaveRecommendsNodes[i]
 			this.renderOneMustHaveRecommend(recommend.mustHaveIngredient, recommend.li)
 		}
 	},
