@@ -881,7 +881,7 @@ var myProto =
 		this.view.setHaving(this.ingredients.inBar, this.cocktails.hash)
 		this.view.updateRecommends()
 		
-		this.view.setScrollTop()
+		this.view.setScrollTopRecommends()
 	},
 	
 	selectIngredient : function(ingredient)
@@ -898,7 +898,9 @@ var myProto =
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 		
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		
+		//this.view.setScrollTopTags()	
 	},
 	
 	getForeignLink : function()

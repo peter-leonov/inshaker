@@ -1051,17 +1051,27 @@ var myProto =
 		var target = e.target
 		if(target.tagValue && !target.parentNode.hasClassName('current'))
 		{
+			this.tagsWrapperScrollTop = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - window.pageYOffset
 			this.controller.showTagRecommends(target.tagValue)
 		}
 	},
 	
-	setScrollTop : function()
+	setScrollTopRecommends : function()
 	{
 		var scrollVal = this.currentRecommendNode.offsetPosition().top - this.recommendScrollTop
 		
 		document.documentElement.scrollTop = scrollVal
 		document.body.scrollTop = scrollVal
 	},
+	
+/*	setScrollTopTags : function()
+	{
+		var scrollVal = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - this.tagsWrapperScrollTop
+		
+		document.documentElement.scrollTop = scrollVal
+		document.body.scrollTop = scrollVal		
+	},*/
+
 	
 	setHaving : function(havingIngredientsHash, havingCocktailsHash)
 	{

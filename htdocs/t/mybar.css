@@ -317,7 +317,7 @@
 .bottom-output .wrapper .big-mark { width: 36px; height: 36px; font-size: 60px; cursor: pointer; margin: 50px 27px 0 0; float: left; background: url('/t/mybar/mark-sprite.png') no-repeat left top; }
 .bottom-output .wrapper .big-mark.have { background-position: left bottom; }
 
-.bottom-output .wrapper .recommends { margin-top: 30px; }
+.bottom-output .wrapper .recommends { margin-top: 30px; min-height: 600px; }
 
 .bottom-output .wrapper .recommends .package, .bottom-output .wrapper .must-have .row { overflow: hidden; height: 150px; margin-bottom: 5px; position: relative; }
 .bottom-output .wrapper .recommends .show-by-cocktails { width: 940px; }
