@@ -274,7 +274,7 @@
 .bottom-output .title span { color: #0392F1; }
 
 .bottom-output .show-by-cocktails ul { float: left; }
-.bottom-output .show-by-cocktails dd { overflow: hidden; position: relative; height: 155px; padding-bottom: 20px; }
+.bottom-output .show-by-cocktails dd { overflow: hidden; position: relative; height: 155px; padding-bottom: 13px; }
 
 .bottom-output .show-by-cocktails dd.rows-1 { height: 155px; }
 .bottom-output .show-by-cocktails dd.rows-2 { height: 310px; }
@@ -314,10 +314,11 @@
 }
 .cocktails-block .bar-menu-link a { text-decoration: underline; }
 
+.bottom-output .wrapper { min-height: 600px; }
 .bottom-output .wrapper .big-mark { width: 36px; height: 36px; font-size: 60px; cursor: pointer; margin: 50px 27px 0 0; float: left; background: url('/t/mybar/mark-sprite.png') no-repeat left top; }
 .bottom-output .wrapper .big-mark.have { background-position: left bottom; }
 
-.bottom-output .wrapper .recommends { margin-top: 30px; min-height: 600px; }
+.bottom-output .wrapper .recommends { margin-top: 30px; }
 
 .bottom-output .wrapper .recommends .package, .bottom-output .wrapper .must-have .row { overflow: hidden; height: 150px; margin-bottom: 5px; position: relative; }
 .bottom-output .wrapper .recommends .show-by-cocktails { width: 940px; }
