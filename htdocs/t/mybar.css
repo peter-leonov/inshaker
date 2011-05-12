@@ -92,15 +92,17 @@
 	border-radius: 10px 10px 10px 10px;
 	background-color: #EEEEEE;
 }
-#output .ingredient-preview .tick
+#output .ingredient .tick, #output .cocktail-preview .tick
 {
 	background: url("/t/mybar/tick.png") no-repeat scroll left top transparent;
 	height: 35px;
 	left: 65px;
 	position: absolute;
-	top: 65px;
+	top: 80px;
 	width: 35px;
 }
+
+#output .cocktail-preview .tick { top: 60px; }
 
 #output .ingredients-block .tip { font-size: 14px; margin: 6px; }
 #output .ingredients-block .tip-ingr { cursor: pointer; border-bottom: 1px dashed; }
@@ -312,15 +314,14 @@
 }
 .cocktails-block .bar-menu-link a { text-decoration: underline; }
 
-.bottom-output .wrapper .big-plus { width: 44px; font-size: 60px; color: #8dd013; cursor: pointer; margin: 28px 19px 0 0; float: left; }
-
+.bottom-output .wrapper .big-mark { width: 36px; height: 36px; font-size: 60px; cursor: pointer; margin: 50px 27px 0 0; float: left; background: url('/t/mybar/mark-sprite.png') no-repeat left top; }
+.bottom-output .wrapper .big-mark.have { background-position: left bottom; }
 
 .bottom-output .wrapper .recommends { margin-top: 30px; }
 
 .bottom-output .wrapper .recommends .package, .bottom-output .wrapper .must-have .row { overflow: hidden; height: 150px; margin-bottom: 5px; position: relative; }
 .bottom-output .wrapper .recommends .show-by-cocktails { width: 940px; }
 .bottom-output .wrapper .recommends .show-by-cocktails .advice { font-size: 14px; padding: 10px 10px 10px 0px; }
-.bottom-output .wrapper .recommends .show-by-cocktails .big-plus { margin-top: 28px; }
 #output .bottom-output .wrapper .recommends .package .ingredients { float: left; overflow: visible; }
 .bottom-output .wrapper .recommends .package .eq { float: left; margin-top: 27px; }
 .bottom-output .wrapper .recommends .package .cocktail { float: left; }
@@ -329,6 +330,9 @@
 
 .bottom-output .wrapper .must-have .ingredient { float: left; }
 .bottom-output .wrapper .must-have .description { float: left; font-size: 14px; margin: 25px 10px 0 20px; width: 700px; }
+
+.bottom-output .wrapper .ingredient-link { cursor: pointer; }
+.bottom-output .wrapper .ingredient-link:hover { text-decoration: underline; }
 
 .bottom-output .cocktail-preview img {
 	display: block;
