@@ -801,8 +801,7 @@ var myProto =
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
-		
-		
+		this.view.setHaving({}, {})
 		
 		return true
 	},
@@ -824,6 +823,7 @@ var myProto =
 		//this.view.renderBottomOutput(this.recommIngr, this.boItems, this.showPackages, this.ingredients.inBar, this.cocktails.hash)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.setHaving({}, {})
 		
 		return true
 	},
@@ -917,7 +917,8 @@ var myProto =
 		this.computeRecommendsBlock()
 		
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)	
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)		
+		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.setHaving({}, {})		
 	}
 }
 Object.extend(Me.prototype, myProto)

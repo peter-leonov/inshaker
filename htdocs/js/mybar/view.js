@@ -338,8 +338,6 @@ var myProto =
 		
 		this.currentRecommendsNodes = []
 		this.currentMustHaveRecommendsNodes = []
-		this.havingIngredientsNames = {}
-		this.havingCocktailsNames = {}
 		
 		var me = this
 		
