@@ -796,6 +796,7 @@ http://www.inshaker.ru/cocktail/soft_fire/
 http://www.inshaker.ru/cocktail/smoldering_fizz/
 http://www.inshaker.ru/cocktail/toddy_grog/
 http://www.inshaker.ru/cocktail/tom_and_jerry/
+http://www.inshaker.ru/cocktail/tom_yam_martini/
 http://www.inshaker.ru/cocktail/tom_yam_chaser/
 http://www.inshaker.ru/cocktail/tommy_d_sour/
 http://www.inshaker.ru/cocktail/top_banana/
