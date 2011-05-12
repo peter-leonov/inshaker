@@ -105,7 +105,6 @@ var myProto =
 		this.currentTag = this.getCurrentTag(this.tags, this.bar.currentTag)
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
-		this.havingIngredients = {}
 	},
 	
 	sortByUsage : function(a, b)
@@ -868,7 +867,6 @@ var myProto =
 		{
 			var ingredient = ingredients[i]
 			this.ingredients.add(ingredient)
-			this.havingIngredients[ingredient.name] = true
 		}
 		
 		this.saveStorage()
@@ -877,12 +875,11 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		var recommend = this.newRecommendByGroup(ingredients, group)
-		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		
-		this.view.updateRecommends(havingIngredients)
+		this.view.setHaving(this.ingredients.inBar, this.cocktails.hash)
+		this.view.updateRecommends()
 		
 		this.view.setScrollTop()
 	},
