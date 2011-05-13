@@ -147,6 +147,7 @@ function onready ()
 			mustHave : $$('#output .bottom-output .must-have')[0]
 		},
 		
+		upgradeRecommends : $('upgrade-recommends'),
 		menuLink : $$('#output .cocktails-block .bar-menu-link')[0],
 		output : $('output')
 	}
