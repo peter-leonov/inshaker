@@ -106,7 +106,7 @@ var myProto =
 		{
 			if(!this.recommendsWasRendered)
 			{
-				//this.controller.upgradeRecommends()
+				this.controller.upgradeRecommends()
 			}	
 			return
 		}
