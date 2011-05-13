@@ -93,7 +93,7 @@ var myProto =
 		
 		nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
 		
-		nodes.upgradeRecommends.addEventListener('click', function(){ me.controller.upgradeRecommends() }, false)
+		nodes.upgradeRecommends.addEventListener('click', function(){ if(!me.recommendsWasRendered) me.controller.upgradeRecommends() }, false)
 		
 		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
