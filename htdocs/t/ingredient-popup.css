@@ -1,0 +1,62 @@
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
+.ingredient-window .description { overflow: hidden; }
+.ingredient-window .photo { float: left; position: relative; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
+.ingredient-window .about { margin: 0 45px 0 0; width: 320px; overflow: hidden; font-size: 12px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .name { font-size: 20px; }
+.ingredient-window .about .mark,
+.ingredient-window .about .brand { display: none; }
+.ingredient-window .about .name { margin-bottom: 10px; }
+.ingredient-window.branded .about .mark,
+.ingredient-window.branded .about .brand { display: block; }
+.ingredient-window.branded .about .name { font-size: 12px; margin: 10px 0 0 0; }
+.ingredient-window.branded .about .brand { margin: 0 0 10px 0; }
+.ingredient-window .about .text { font-size: 12px; }
+.ingredient-window .about .text p { margin: 0px 0px 15px 0px; }
+.ingredient-window .about .all-cocktails,
+.ingredient-window .about .combinations { margin-top: 1em; font-size: 12px; }
+.ingredient-window .about .combinations .list { margin: 0.2em 0 0 1em; }
+.ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
+.ingredient-window.can-buy .about .where-to-buy { display: block; }
+
+.ingredient-window .cocktail-list { position: relative; margin: 30px 0 -20px 0; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
+.ingredient-window .cocktail-list .prev,
+.ingredient-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.ingredient-window .cocktail-list.single .prev,
+.ingredient-window .cocktail-list.single .next { display: none; }
+.ingredient-window .cocktail-list.empty { display: none; }
+.ingredient-window .cocktail-list .prev { left: 15px; }
+.ingredient-window .cocktail-list .next { right: 15px; }
+.ingredient-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
+.ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
+
+.ingredient-window .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
+.ingredient-window .cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
+.ingredient-window .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.ingredient-window .cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
+.ingredient-window .cocktail-list .prev .spacer,
+.ingredient-window .cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
+
+.ingredient-info-popup .popup-controls,
+.ingredient-info-popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.ingredient-info-popup .popup-controls { height: 10px; }
+.ingredient-info-popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+
+
+html.msie-6 .ingredient-info-popup .window { zoom: 1; }
+html.msie-6 .ingredient-info-popup .popup-back { height: 10000px; }
+
+
+html.msie-6 .ingredient-info-popup .popup-controls .cross,
+html.msie-7 .ingredient-info-popup .popup-controls .cross,
+html.msie-8 .ingredient-info-popup .popup-controls .cross,
+html.opera-9 .ingredient-info-popup .popup-controls .cross,
+html.opera-10 .ingredient-info-popup .popup-controls .cross { right: 0px; top: -14px; }
+
+html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
+html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
+
+/*html.msie-7 body { position: relative; }
+html.firefox-2 body { position: relative; height: none; }*/

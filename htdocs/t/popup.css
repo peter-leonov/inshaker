@@ -21,6 +21,7 @@
 .wide-popup .popup-controls .cross { position: absolute; right: -6px; top: -1px; }
 .wide-popup .popup-controls .text { position: absolute; left: 4px; top: 3px; }
 
+.popup.hidden .popup-front { top: 0 !important; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
 .popup .popup-back { width: 100%; height: 10000px; }
