@@ -340,7 +340,7 @@ function CalculatorView() {
 			
 			function showPopup (e)
 			{
-				alert(name)
+				IngredientPopup.show(Ingredient.getByName(name))
 			}
 			a.addEventListener('click', showPopup, false)
 			button.addEventListener('click', showPopup, false)

@@ -34,6 +34,11 @@ if (!clientStorage)
 <!--# include file="/lib-0.3/modules/animation.js" -->
 <!--# include file="/js/common/rolling-images.js" -->
 
+<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
+<!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/js/common/popup.js" -->
+<!--# include virtual="/js/common/ingredient-popup.js" -->
+
 <!--# include file="/js/calculator/calculator.js" -->
 
 <!--# include file="/js/common/good_helper.js" -->
