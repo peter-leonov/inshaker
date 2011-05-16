@@ -319,7 +319,7 @@ var Controller = {
 
 	showPopup: function(name)
 	{
-		alert(name)
+		IngredientPopup.show(Ingredient.getByName(name))
 	},
 
 	renderIngredients: function(ingredients) {
