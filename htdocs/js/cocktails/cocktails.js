@@ -11,7 +11,7 @@ CocktailsPage =
 
 $.onready(
 	function () {
-		
+		UserAgent.setupDocumentElementClassNames()
 		IngredientPopup.bootstrap()
 		
 		var nodes = {

@@ -1,4 +1,5 @@
 $.onready(function(){
+	UserAgent.setupDocumentElementClassNames()
 	IngredientPopup.bootstrap()
 	
 	var aniOpts = {animationType: 'easeInOutCubic'};
