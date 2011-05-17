@@ -1,4 +1,7 @@
 $.onready(function(){
+	UserAgent.setupDocumentElementClassNames()
+	IngredientPopup.bootstrap()
+	
 	var aniOpts = {animationType: 'easeInOutCubic'};
 	new RollingImagesLite($('recommendations'), aniOpts);
 	new RollingImagesLite($('related'), aniOpts);

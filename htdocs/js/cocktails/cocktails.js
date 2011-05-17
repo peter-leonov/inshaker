@@ -11,6 +11,9 @@ CocktailsPage =
 
 $.onready(
 	function () {
+		UserAgent.setupDocumentElementClassNames()
+		IngredientPopup.bootstrap()
+		
 		var nodes = {
 			bodyWrapper: $$('#main-wrapper .body-wrapper')[0],
 			resultsDisplay: $('results_display'),
