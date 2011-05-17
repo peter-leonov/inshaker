@@ -1,4 +1,5 @@
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+.hidden { display: none !important; }
+.popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
 .body-wrapper { overflow: hidden; }
 .b-title { padding-bottom: 11px; }

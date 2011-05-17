@@ -1,4 +1,5 @@
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+.hidden { display: none !important; }
+.popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
 .b-title { width: 100%; }
 .b-title h1 { position: relative; }
