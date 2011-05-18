@@ -287,40 +287,23 @@ var myProto =
 		this.onscroll()
 	},
 	
-	renderMustHaveRecommend : function(mustHaveIngredient, havingCocktails, havingIngredients)
+	renderMustHaveRecommend : function(mustHaveIngredient, ingredientsHash)
 	{
-		var li = currLi || Nc('li', 'row')
-		li.empty()
-		li.recommendWrapper = true
+		var row = Nc('li', 'row')
+		row.recommendWrapper = true
 		
 		var ingredient = mustHaveIngredient.ingredient
-		var bigMark = Nc('div', 'big-mark')
 		
-		if(this.havingIngredientsNames[ingredient.name])
-		{
-			bigMark.addClassName('have')
-			var ing = ingredient.getPreviewNode()
-			ing.addClassName('have')
-		}
-		else
-		{
-			bigMark.ingredients = [mustHaveIngredient.ingredient]
-			var ing = ingredient.getPreviewNode(true)
-		}
+		var node = ingredient.getPreviewNode(this.ingredientsHash[ingredient.name])
 		
-		li.appendChild(bigMark)
-		li.appendChild(ing)
+		row.appendChild(node)
 		
 		var desc = Nc('p', 'description')
 		desc.innerHTML = mustHaveIngredient.description
-		li.appendChild(desc)
+		row.appendChild(desc)
 		
-		if(!currLi)
-		{
-			this.currentMustHaveRecommendsNodes.push({ li : li, mustHaveIngredient : mustHaveIngredient })
-		}
-		
-		return li
+		this.currentMustHaveRecommendsNodes.push({ node : node, ingredient : ingredient })
+		this.nodes.bottomOutput.mustHave.appendChild(row)
 	},
 
 	renderRecommend : function(group, cocktailsHash, ingredientsHash)
