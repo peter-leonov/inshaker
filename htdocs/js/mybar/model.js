@@ -307,7 +307,7 @@ var myProto =
 			}
 			return nr
 		}
-
+		
 		return recommends
 	},
 	
@@ -651,16 +651,16 @@ var myProto =
 	
 	addRecommend : function()
 	{
-		var recommend = this.recommends.unshift()
+		var recommend = this.recommends.shift()
 		if(recommend)
 		{
-			this.view.renderRecommend(recommends, this.ingredients.hash, this.cocktails.hash)
+			this.view.renderRecommend(recommend, this.ingredients.hash, this.cocktails.hash)
 		}
 	},
 	
 	addMustHaveRecommend : function()
 	{
-		var recommend = this.mustHaveRecommends.unshift()
+		var recommend = this.mustHaveRecommends.shift()
 		if(recommend)
 		{
 			this.view.renderMustHaveRecommend(recommend, this.ingredients.hash)
