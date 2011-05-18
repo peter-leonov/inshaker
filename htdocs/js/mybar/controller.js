@@ -78,6 +78,26 @@ var myProto =
 	upgradeRecommends : function()
 	{
 		this.model.upgradeRecommends()
+	},
+	
+	addOneRecommend : function()
+	{
+		this.model.addOneRecommend()
+	},
+	
+	addOneMustHaveRecommend : function()
+	{
+		this.model.addOneMustHaveRecommend()
+	},
+	
+	checkoutRecommends : function()
+	{
+		this.model.checkoutRecommends()
+	},
+	
+	checkoutMustHaveRecommends : function()
+	{
+		this.model.checkoutMustHaveRecommends()
 	}
 }
 Object.extend(Me.prototype, myProto)

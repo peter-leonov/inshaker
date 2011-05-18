@@ -111,7 +111,17 @@ var myProto =
 			return
 		}
 		
+		this.controller.checkoutRecommends()
+		this.controller.checkoutMustHaveRecommends()
+	},
+	
+	checkoutRecommends : function()
+	{
 		this.suspendedRecommendsFrame.checkout()
+	},
+	
+	checkoutMustHaveRecommends : function()
+	{
 		this.suspendedMustHaveRecommendsFrame.checkout()
 	},
 	
@@ -264,32 +274,20 @@ var myProto =
 
 	renderBottomOutput : function(mustHaveRecommends, recommends, update)
 	{	
-		var recommendsNode = this.nodes.bottomOutput.recommends
-		var dl = Nc('dl', 'show-by-cocktails')
-		recommendsNode.empty()
-		recommendsNode.appendChild(dl)
-		
-		var mustHaveNode = this.nodes.bottomOutput.mustHave
-		var ul = N('ul')
-		mustHaveNode.empty()
-		mustHaveNode.appendChild(ul)
-		
 		this.currentRecommendsNodes = []
 		this.currentMustHaveRecommendsNodes = []
 		
 		var me = this
 		
-		this.suspendedRecommendsFrame = new SuspendRenderFrame(dl, recommends, function(group){ return me.renderOneRecommend(group) })
-		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(ul, mustHaveRecommends, function(ingr){ return me.renderOneMustHaveRecommend(ingr) })
+		this.suspendedRecommendsFrame = new SuspendRenderFrame(this.nodes.bottomOutput.recommends, function(){ me.controller.addOneRecommend() })
+		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(this.nodes.bottomOutput.mustHave, function(){ me.controller.addOneMustHaveRecommend() })
 		
-		if(!update)
-		{
-			this.recommendsWasRendered = true
-		}
+		this.recommendsWasRendered = !update
+		
 		this.onscroll()
 	},
 	
-	renderOneMustHaveRecommend : function(mustHaveIngredient, currLi)
+	renderOneMustHaveRecommend : function(mustHaveIngredient, havingCocktails, havingIngredients)
 	{
 		var li = currLi || Nc('li', 'row')
 		li.empty()
@@ -325,7 +323,7 @@ var myProto =
 		return li
 	},
 
-	renderOneRecommend : function(group, currDt, currDd)
+	renderOneRecommend : function(group, havingCocktails, havingIngredients)
 	{
 		var ingredients = group.ingredients,
 			cocktails = group.cocktails,
@@ -789,14 +787,7 @@ var myProto =
 		
 		document.documentElement.scrollTop = scrollVal
 		document.body.scrollTop = scrollVal		
-	},*/
-
-	
-	setHaving : function(havingIngredientsHash, havingCocktailsHash)
-	{
-		this.havingIngredientsNames = havingIngredientsHash
-		this.havingCocktailsNames = havingCocktailsHash
-	}
+	}*/
 }
 Object.extend(Me.prototype, myProto)
 })();
