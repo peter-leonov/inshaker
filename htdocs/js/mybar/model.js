@@ -669,17 +669,19 @@ var myProto =
 	
 	checkoutRecommends : function()
 	{
-		if(this.recommends.length != 0)
+		var length = this.recommends.length
+		if(length != 0)
 		{
-			this.view.checkoutRecommends()
+			this.view.checkoutRecommends(length)
 		}
 	},
 	
 	checkoutMustHaveRecommends : function()
 	{
-		if(this.mustHaveRecommends.length != 0)
+		var length = this.mustHaveRecommends.length
+		if(length != 0)
 		{
-			this.view.checkoutMustHaveRecommends()
+			this.view.checkoutMustHaveRecommends(length)
 		}
 	}	
 }

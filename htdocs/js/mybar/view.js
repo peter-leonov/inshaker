@@ -131,14 +131,36 @@ var myProto =
 		this.controller.checkoutMustHaveRecommends()
 	},
 	
-	checkoutRecommends : function()
+	checkoutRecommends : function(listLength)
 	{
-		this.suspendedRecommendsFrame.checkout()
+		var node = this.nodes.bottomOutput.recommends,
+			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
+			supply = 400,
+			i = 4
+			
+		while(listLength > 0 && currSupply < supply)
+		{
+			while(i-- && listLength--)
+			{
+				this.controller.addRecommend()
+			}
+		}
 	},
 	
-	checkoutMustHaveRecommends : function()
+	checkoutMustHaveRecommends : function(listLength)
 	{
-		this.suspendedMustHaveRecommendsFrame.checkout()
+		var node = this.nodes.bottomOutput.mustHave,
+			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
+			supply = 400,
+			i = 4
+		
+		while(listLength > 0 && currSupply < supply)
+		{
+			while(i-- && listLength--)
+			{
+				this.controller.addMustHaveRecommend()
+			}
+		}
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -295,9 +317,6 @@ var myProto =
 		
 		var me = this
 		
-		this.suspendedRecommendsFrame = new SuspendRenderFrame(this.nodes.bottomOutput.recommends, function(){ me.controller.addRecommend() })
-		this.suspendedMustHaveRecommendsFrame = new SuspendRenderFrame(this.nodes.bottomOutput.mustHave, function(){ me.controller.addMustHaveRecommend() })
-		
 		this.recommendsWasRendered = !update
 		
 		this.onscroll()
@@ -310,7 +329,7 @@ var myProto =
 		
 		var ingredient = mustHaveIngredient.ingredient
 		
-		var node = ingredient.getPreviewNodeExt(this.ingredientsHash[ingredient.name])
+		var node = ingredient.getPreviewNodeExt(ingredientsHash[ingredient.name])
 		
 		row.appendChild(node)
 		
