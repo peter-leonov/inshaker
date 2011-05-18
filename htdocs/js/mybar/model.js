@@ -425,10 +425,25 @@ var myProto =
 			
 			var cocktails = Object.toArray(r.cocktails).map(function(a){ return Cocktail.getByName(a) })
 			cocktails.sort(function(a, b){ return me.sortCocktails(a, b) })	
+
+			var inBar = this.ingredients.hash,
+				havingIngredients = {}
+			
+			
+			for (var ci = 0, cil = cocktails.length; ci < cil; ci++) 
+			{
+				var set = cocktails[ci].ingredients
+				for (var s = 0, sl = set.length; s < sl; s++) 
+				{
+					var ingr = set[s][0]
+					if(inBar[ingr])
+					havingIngredients[ingr] = true
+				}
+			}
 			
 			havingIngredients = Object.toArray(havingIngredients).sort(Ingredient.sortByGroups).map(function(name){ return Ingredient.getByName(name) })
 			
-			groups.push({ ingredients : ingredients, cocktails : cocktails})
+			groups.push({ ingredients : ingredients, cocktails : cocktails, havingIngredients : havingIngredients })
 		}
 		
 		return groups.sort(function(a,b){ return me.sortRecommends(a,b) }).reverse()
@@ -635,21 +650,21 @@ var myProto =
 		this.view.renderBottomOutput()
 	},
 	
-	addOneRecommend : function()
+	addRecommend : function()
 	{
 		var recommend = this.recommends.unshift()
 		if(recommend)
 		{
-			this.view.renderOneRecommend(recommends, this.ingredients.hash, this.cocktails.hash)
+			this.view.renderRecommend(recommends, this.ingredients.hash, this.cocktails.hash)
 		}
 	},
 	
-	addOneMustHaveRecommend : function()
+	addMustHaveRecommend : function()
 	{
 		var recommend = this.mustHaveRecommends.unshift()
 		if(recommend)
 		{
-			this.view.renderOneMustHaveRecommend(recommend, this.ingredients.hash, this.cocktails.hash)
+			this.view.renderMustHaveRecommend(recommend, this.cocktails.hash, this.ingredients.hash)
 		}
 	},
 	
