@@ -80,14 +80,14 @@ var myProto =
 		this.model.upgradeRecommends()
 	},
 	
-	addOneRecommend : function()
+	addRecommend : function()
 	{
-		this.model.addOneRecommend()
+		this.model.addRecommend()
 	},
 	
-	addOneMustHaveRecommend : function()
+	addMustHaveRecommend : function()
 	{
-		this.model.addOneMustHaveRecommend()
+		this.model.addMustHaveRecommend()
 	},
 	
 	checkoutRecommends : function()
