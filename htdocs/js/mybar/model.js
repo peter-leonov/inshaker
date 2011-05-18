@@ -606,8 +606,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		
-		this.view.setHaving(this.ingredients.hash, this.cocktails.hash)
-		this.view.updateRecommends()
+		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		
 		this.view.setScrollTopRecommends()
 	},
@@ -664,7 +663,7 @@ var myProto =
 		var recommend = this.mustHaveRecommends.unshift()
 		if(recommend)
 		{
-			this.view.renderMustHaveRecommend(recommend, this.cocktails.hash, this.ingredients.hash)
+			this.view.renderMustHaveRecommend(recommend, this.ingredients.hash)
 		}
 	},
 	
