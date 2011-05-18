@@ -2,61 +2,77 @@
 var Papa = MyBar, Me = Papa.View
 eval(NodesShortcut.include())
 var myProto =
-{
-	getPreviewNodeOriginal : Ingredient.prototype.getPreviewNode,
-	
+{	
 	initialize : function()
 	{
 		this.nodes = {}
 		
-		this.currentRecommendsNodes = []
-		this.currentMustHaveRecommendsNodes = []
+		this.currentRecommends = []
+		this.currentMustHaveRecommends = []
 		
 		this.havingIngredientsNames = {}
 		this.havingCocktailsNames = {}
 		
 		var me = this
 		
-		Ingredient.prototype.getPreviewNode = function(addFlag, removeFlag)
+		Ingredient.prototype.getPreviewNodeExt = function(have)
 		{
-			var ingr = me.getPreviewNodeOriginal.call(this)
-			var li = Nc('li', 'ingredient')
+			var node = Ingredient.prototype.getPreviewNode.call(this)
 			
-			if(!addFlag && !removeFlag) 
+			if(have === undefined)
 			{
-				li.appendChild(ingr)
-				return li
+				return node
 			}
 			
+			var li = Nc('li', 'ingredient'),
+				control = Nc('div', 'control')
 			
+			control.ingredient = this
 			
-			if(addFlag)
+			li.appendChild(node)
+			li.appendChild(control)
+				
+			if(have)
 			{
-				ingr.addClassName('not-in-bar')
-				var ctrl = Nct('span', 'add-ingredient', '+')
-				ctrl.addingIngredient = this
-				ctrl.setAttribute('title', 'Добавить')
+				li.addClassName('have')
 			}
 			
-			else if(removeFlag)
+			else
 			{
-				ingr.addClassName('in-bar')
-				var ctrl = Nct('span', 'remove-ingredient', '×')
-				ctrl.removingIngredient = this
-				ctrl.setAttribute('title', 'Удалить ингредиент')				
+				li.addClassName('no-have')				
 			}
-			
-			ctrl.style.opacity = 0
-			
-			li.addEventListener('mouseover', function(){ ctrl.animate(false, { opacity : 1 }, 0.2) }, true)
-			li.addEventListener('mouseout', function(){ ctrl.animate(false, { opacity : 0 }, 0.2) }, true)
-			
-			li.appendChild(ctrl)
-			li.appendChild(ingr)
 			
 			return li
 		}
 		
+		Cocktail.prototype.getPreviewNodeExt = function(have)
+		{
+			var li = Cocktail.prototype.getPreviewNode.call(this)
+			
+			if(have === undefined)
+			{
+				return li
+			}
+			
+			var control = Nc('div', 'control'),
+				tick = Nc('div', 'tick')
+				
+			control.cocktail = this
+			
+			li.appendChild(control)
+			li.appendChild(tick)
+				
+			if(have)
+			{
+				li.addClassName('have')
+			}
+			else
+			{
+				li.addClassName('no-have')				
+			}
+			
+			return li
+		}
 	},
 	
 	bind : function (nodes)
@@ -194,7 +210,7 @@ var myProto =
 					var dd = Nc('dd', 'group')
 				}
 				
-				dd.appendChild(ingredients[i].getPreviewNode(false, true))
+				dd.appendChild(ingredients[i].getPreviewNodeExt(true))
 			}
 			
 			dl.appendChild(dt)
@@ -211,7 +227,7 @@ var myProto =
 			var ul = N('ul')
 			for(var i = 0, l = ingredients.length; i < l; i++)
 			{
-				ul.appendChild(ingredients[i].getPreviewNode(false, true))
+				ul.appendChild(ingredients[i].getPreviewNodeExt(true))
 			}
 			
 			ingr.list.empty()
@@ -261,7 +277,7 @@ var myProto =
 				var ul = Nc('ul', 'photos-list')
 				for (var i = 0, il = cocktails.length; i < il; i++) 
 				{
-					var cNode = cocktails[i].getPreviewNode()
+					var cNode = cocktails[i].getPreviewNodeExt(true)
 					ul.appendChild(cNode)
 				}
 				c.wrapper.empty()
@@ -274,8 +290,8 @@ var myProto =
 
 	renderBottomOutput : function(mustHaveRecommends, recommends, update)
 	{	
-		this.currentRecommendsNodes = []
-		this.currentMustHaveRecommendsNodes = []
+		this.currentRecommends = []
+		this.currentMustHaveRecommends = []
 		
 		var me = this
 		
@@ -294,7 +310,7 @@ var myProto =
 		
 		var ingredient = mustHaveIngredient.ingredient
 		
-		var node = ingredient.getPreviewNode(this.ingredientsHash[ingredient.name])
+		var node = ingredient.getPreviewNodeExt(this.ingredientsHash[ingredient.name])
 		
 		row.appendChild(node)
 		
@@ -302,7 +318,7 @@ var myProto =
 		desc.innerHTML = mustHaveIngredient.description
 		row.appendChild(desc)
 		
-		this.currentMustHaveRecommendsNodes.push({ node : node, ingredient : ingredient })
+		this.currentMustHaveRecommends.push({ node : node, ingredient : ingredient })
 		this.nodes.bottomOutput.mustHave.appendChild(row)
 	},
 
@@ -312,7 +328,7 @@ var myProto =
 		var dt = this.getRecommendDt(group, cocktailsHash, ingredientsHash)
 		var dd = this.getRecommendDd(group, cocktailsHash, ingredientsHash)
 		
-		this.currentRecommendsNodes.push({ group : group, dt : dt, dd : dd })
+		this.currentRecommends.push({ group : group, dt : dt, dd : dd })
 		df.appendChild(dt)
 		df.appendChild(dd)
 		this.nodes.bottomOutput.recommends.appendChild(df)
@@ -320,8 +336,15 @@ var myProto =
 	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
 	{
-		var dt = Nc('dt', 'advice'),
-			ingredients = group.ingredients,
+		var dt = Nc('dt', 'advice')
+		var text = this.getTextForRecommend(group, cocktailsHash, ingredientsHash)
+		dt.appendChild(text)
+		return dt
+	},
+	
+	getTextForRecommend : function(group, cocktailsHash, ingredientsHash)
+	{
+		var	ingredients = group.ingredients,
 			cocktails = group.cocktails,
 			havingIngredients = group.havingIngredients.slice()
 		
@@ -330,7 +353,7 @@ var myProto =
 		{
 			var ingredient = ingredients[i]
 			
-			if(this.ingredientsHash[ingredient.name])
+			if(ingredientsHash[ingredient.name])
 			{
 				havingIngredients.push(ingredient)
 			}
@@ -345,7 +368,7 @@ var myProto =
 		{
 			var cocktail = cocktails[i]
 			
-			if(this.cocktailsHash[cocktail.name])
+			if(cocktailsHash[cocktail.name])
 			{
 				havingCocktails.push(cocktail)
 			}
@@ -378,9 +401,7 @@ var myProto =
 			text.appendChild(T('. '))
 		}
 		
-		dt.appendChild(text)
-		
-		return dt
+		return text
 	},
 	
 	createCocktailsTextFromArr : function(cocktails)
@@ -527,7 +548,7 @@ var myProto =
 		for (var i = 0; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
-			var node = ingredient.getPreviewNode(this.ingredientsHash[ingredient.name])
+			var node = ingredient.getPreviewNodeExt(ingredientsHash[ingredient.name])
 			head.appendChild(node)
 			dd.ingredientsList[i] = { node : node, ingredient : ingredient }
 		}
@@ -535,9 +556,7 @@ var myProto =
 		for (var i = 0; i < cl; i++) 
 		{
 			var cocktail = cocktails[i]
-			var node = cocktail.getPreviewNode()
-			node.appendChild(Nc('div', 'tick'))
-			node.addClassName(this.cocktailsHash[cocktail.name] ? 'have' : 'no-have')
+			var node = cocktail.getPreviewNodeExt(cocktailsHash[cocktail.name])
 			body.appendChild(node)
 			dd.cocktailsList[i] = { node : node, cocktail : cocktail }
 		}
@@ -669,14 +688,7 @@ var myProto =
 		this.recommendScrollTop = recommendNode.offsetPosition().top - window.pageYOffset
 		this.currentRecommendNode = recommendNode
 		
-		if(target.ingredients)
-		{
-			this.controller.addIngredientsFromBo(target.ingredients)
-		}
-		else if(target.addingIngredient)
-		{
-			this.controller.addIngredientsFromBo([target.addingIngredient])
-		}
+		this.controller.addIngredientsFromBo([target.ingredient])
 	},
 	
 	findParentRecommend : function(node)
@@ -696,16 +708,63 @@ var myProto =
 	
 	updateRecommends : function(cocktailsHash, ingredientsHash)
 	{
-		for (var i = 0, il = this.currentRecommendsNodes.length; i < il; i++) 
+		for (var i = 0, il = this.currentRecommends.length; i < il; i++) 
 		{
-			var recommend = this.currentRecommendsNodes[i]
-			this.renderOneRecommend(recommend.group, recommend.dt, recommend.dd)
+			var recommend = this.currentRecommends[i]
+			var group = recommend.group,
+				dt = recommend.dt,
+				dd = recommend.dd
+				
+			dt.empty()
+			dt.appendChild(this.getTextForRecommend(group, cocktailsHash, ingredientsHash))
+			
+			for (var j = 0, jl = dd.cocktailsList.length; j < jl; j++) 
+			{
+				var item = dd.cocktailsList[j],
+					node = item.node
+				if(item.cocktail.name)
+				{
+					node.addClassName('have')
+					node.removeClassName('no-have')
+				}
+				else
+				{
+					node.addClassName('no-have')
+					node.removeClassName('have')				
+				}
+			}
+			
+			for (var j = 0, jl = dd.ingredientsList.length; j < jl; j++) 
+			{
+				var item = dd.ingredientsList[j],
+					node = item.node
+				if(item.ingredient.name)
+				{
+					node.addClassName('have')
+					node.removeClassName('no-have')
+				}
+				else
+				{
+					node.addClassName('no-have')
+					node.removeClassName('have')				
+				}
+			}
 		}
 		
-		for (var i = 0, il = this.currentMustHaveRecommendsNodes.length; i < il; i++) 
+		for (var i = 0, il = this.currentMustHaveRecommends.length; i < il; i++) 
 		{
-			var recommend = this.currentMustHaveRecommendsNodes[i]
-			this.renderOneMustHaveRecommend(recommend.mustHaveIngredient, recommend.li)
+			var recommend = this.currentMustHaveRecommends[i],
+				node = recommend.node
+			if(ingredientsHash[recommend.ingredient.name])
+			{
+				node.addClassName('have')
+				node.removeClassName('no-have')
+			}
+			else
+			{
+				node.addClassName('no-have')
+				node.removeClassName('have')				
+			}
 		}
 	},
 	
@@ -751,7 +810,7 @@ var myProto =
 		
 		document.documentElement.scrollTop = scrollVal
 		document.body.scrollTop = scrollVal
-	},
+	}
 	
 /*	setScrollTopTags : function()
 	{
