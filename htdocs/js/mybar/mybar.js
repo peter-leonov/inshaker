@@ -143,8 +143,8 @@ function onready ()
 			title : $$('#output .bottom-output .title')[0],
 			wrapper : $$('#output .bottom-output .wrapper')[0],
 			empty : $$('#output .bottom-output .empty')[0],
-			recommends : $$('#output .bottom-output .recommends')[0],
-			mustHave : $$('#output .bottom-output .must-have')[0]
+			recommends : $$('#output .bottom-output .recommends dl')[0],
+			mustHave : $$('#output .bottom-output .must-have ul')[0]
 		},
 		
 		upgradeRecommends : $('upgrade-recommends'),
