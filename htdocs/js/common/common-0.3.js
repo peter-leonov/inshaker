@@ -40,6 +40,22 @@ $.onready(function ()
 		year.firstChild.nodeValue = new Date().getFullYear()
 })
 
+$.onready(function ()
+{
+	var like = $('fb-like-placeholder')
+	if (!like)
+		return
+	
+	var iframe = document.createElement('iframe')
+	iframe.setAttribute('scrolling', 'no')
+	iframe.setAttribute('frameborder', '0')
+	iframe.setAttribute('allowTransparency', 'true')
+	iframe.className = 'fb-like'
+	iframe.src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(location.href) + '&layout=button_count'
+	
+	like.appendChild(iframe)
+})
+
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
