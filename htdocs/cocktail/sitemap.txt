@@ -351,10 +351,10 @@ http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/clubland/
 http://www.inshaker.ru/cocktail/claudius_galenus/
-http://www.inshaker.ru/cocktail/clover_club/
 http://www.inshaker.ru/cocktail/maple_apple/
 http://www.inshaker.ru/cocktail/maple_julep/
 http://www.inshaker.ru/cocktail/mapple_sour/
+http://www.inshaker.ru/cocktail/clover_club/
 http://www.inshaker.ru/cocktail/pegu_club/
 http://www.inshaker.ru/cocktail/strawberry_night/
 http://www.inshaker.ru/cocktail/strawberry_mulled_wine/
