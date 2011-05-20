@@ -20,7 +20,6 @@
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 
-<!--# include virtual="/js/common/share-buttons.js" -->
 <!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->

@@ -12,5 +12,6 @@ $.onready(function(){
 	ShareButtons.bootstrap({text: 'Коктейль «' + Controller.name + '»'})
 })
 
+<!--# include virtual="/js/common/share-buttons.js" -->
 <!--# include file="/js/cocktail/model.js" -->
 <!--# include file="/js/cocktail/controller.js" -->
