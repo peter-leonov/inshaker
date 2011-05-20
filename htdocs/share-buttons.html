@@ -24,7 +24,7 @@ function job ()
 	var params = UrlEncode.parse(location.search.substr(1))
 	
 	$('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(params.url) + '&layout=button_count&locale=ru_RU'
-	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(params.url)
+	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(params.url) + '&text=' + encodeURIComponent(params.text)
 }
 
 job() // ;)

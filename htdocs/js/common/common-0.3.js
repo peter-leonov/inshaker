@@ -20,6 +20,7 @@
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 
+<!--# include virtual="/js/common/share-buttons.js" -->
 <!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
@@ -42,12 +43,7 @@ $.onready(function ()
 
 $.onready(function ()
 {
-	var frame = $$('#share .frame')
-	if (!frame || !frame[0]) // bad
-		return
-	
-	frame = frame[0]
-	frame.src = '/share-buttons.html?type=cocktail&url=' + encodeURIComponent(location.href)
+	ShareButtons.bootstrap({text: 'Крутой коктейль!'})
 })
 
 
