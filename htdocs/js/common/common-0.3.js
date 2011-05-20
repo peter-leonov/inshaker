@@ -42,18 +42,12 @@ $.onready(function ()
 
 $.onready(function ()
 {
-	var placeholder = $('fb-like-placeholder')
-	if (!placeholder)
+	var frame = $$('#share .frame')
+	if (!frame || !frame[0]) // bad
 		return
 	
-	var iframe = document.createElement('iframe')
-	iframe.setAttribute('scrolling', 'no')
-	iframe.setAttribute('frameborder', '0')
-	iframe.setAttribute('allowTransparency', 'true')
-	iframe.className = 'fb-like'
-	iframe.src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(location.href) + '&layout=button_count'
-	
-	placeholder.appendChild(iframe)
+	frame = frame[0]
+	frame.src = '/share-buttons.html?type=cocktail&url=' + encodeURIComponent(location.href)
 })
 
 
