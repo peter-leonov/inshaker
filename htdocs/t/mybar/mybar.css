@@ -1,11 +1,22 @@
 /*Popup*/
 <!--# include virtual="/t/ingredient-popup.css" -->
 
-html { min-height: 100%; overflow-y: scroll; position: relative; }
+html { min-height: 100%; overflow-y: scroll; position: relative; background: #444; }
 
 html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; }
+
+.please-wait .load-bar
+{
+    background: url("/t/mybar/mybar.png") no-repeat scroll -599px -149px transparent;
+    height: 15px;
+    left: -2px;
+    margin: 0 auto;
+    position: relative;
+    top: 13px;
+    width: 155px;
+}
 
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
@@ -42,11 +53,13 @@ html.loading .main-box { display: none; }
 
 .main-box .section-wrapper .left-shadow, .main-box .section-wrapper .right-shadow { position: absolute; width: 11px; height: 100%; background: url('/t/mybar/mybar.png') repeat-y; }
 
-.main-box .section-wrapper .left-shadow { left: -11px; background-position: -982px 0px; }
+.main-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
 
-.main-box .section-wrapper .right-shadow { right: -11px; background-position: -993px 0px; }
+.main-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
 
 .main-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
+
+.main-box .share-box, .please-wait { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
 
 /*ingredients-box*/
 
@@ -54,7 +67,7 @@ html.loading .main-box { display: none; }
 
 .main-box .ingredients-box .empty .tell-about-ingredients 
 {
-    background: url("/t/mybar/mybar.png") no-repeat scroll 3px -146px transparent;
+    background: url("/t/mybar/mybar.png") no-repeat 3px -146px transparent;
     float: left;
     height: 266px;
     width: 176px;
@@ -63,7 +76,7 @@ html.loading .main-box { display: none; }
 
 .main-box .ingredients-box .empty .explore-cocktails
 {
-    background: url("/t/mybar/mybar.png") no-repeat scroll -172px -146px transparent;
+    background: url("/t/mybar/mybar.png") no-repeat -172px -146px transparent;
     float: left;
     height: 266px;
     width: 209px;
@@ -71,7 +84,7 @@ html.loading .main-box { display: none; }
 }
 .main-box .ingredients-box .empty .print-cocktail-cart
 {
-    background: url("/t/mybar/mybar.png") no-repeat scroll -382px -146px transparent;
+    background: url("/t/mybar/mybar.png") no-repeat -382px -146px transparent;
     float: left;
     height: 266px;
     width: 202px;
@@ -86,3 +99,61 @@ html.loading .main-box { display: none; }
     font-style: italic;
     margin: 50px 0 50px 20px;
 }
+
+/*share-box*/
+.main-box .share-box { position: relative; }
+.main-box .share-box .share-wrapper { overflow: hidden; padding: 4px; }
+.main-box .share-box .share-wrapper .share-label
+{
+	width: 124px;
+	height: 8px;
+	float: left;
+	background: url("/t/mybar/mybar.png") no-repeat -548px -424px transparent;
+	margin: 14px 19px 0 16px;
+}
+
+.main-box .share-box .share-wrapper .facebook-share,
+.main-box .share-box .share-wrapper .twitter-share,
+.main-box .share-box .share-wrapper .email-share,
+.main-box .share-box .share-wrapper .web-share
+{
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-left: 4px;
+	background: url("/t/mybar/mybar.png") no-repeat -838px -411px transparent;
+	cursor: pointer;
+}
+
+.main-box .share-box .share-wrapper .twitter-share { background-position: -874px -411px; }
+.main-box .share-box .share-wrapper .email-share { background-position: -911px -411px; }
+.main-box .share-box .share-wrapper .web-share { background-position: -948px -411px; }
+
+.main-box .share-box .share-wrapper .facebook-share:hover { background-position: -695px -411px; }
+.main-box .share-box .share-wrapper .twitter-share:hover { background-position: -731px -411px; }
+.main-box .share-box .share-wrapper .email-share:hover { background-position: -768px -411px; }
+.main-box .share-box .share-wrapper .web-share:hover { background-position: -805px -411px; }
+
+.main-box .share-box .email-share-popup
+{
+    background: url("/t/mybar/mybar.png") no-repeat -588px -166px transparent;
+    height: 244px;
+    left: 12px;
+    position: absolute;
+    top: -243px;
+    width: 486px;
+    z-index: 1;
+}
+
+.main-box .share-box .web-share-popup
+{
+    background: url("/t/mybar/mybar.png") no-repeat -647px -447px transparent;
+    height: 49px;
+    left: 162px;
+    position: absolute;
+    top: -49px;
+    width: 257px;
+    z-index: 1;
+}
+
+/*recommends-box*/

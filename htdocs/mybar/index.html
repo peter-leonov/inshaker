@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="mybar-page" class="mybar-section" lang="ru">
+<html id="mybar-page" class="mybar-section loading" lang="ru">
 	<head>
 		<!--# include file="/inc/mybar-head.html" -->
 		<link rel="stylesheet" type="text/css" href="/t/mybar/mybar.css" media="screen"/>
@@ -48,7 +48,19 @@
 				</div>
 				
 				<div class="share-box">
-				
+					<div class="share-wrapper">
+						<div class="share-label"></div>
+						<div class="facebook-share"></div>
+						<div class="twitter-share"></div>
+						<div class="email-share"></div>
+						<div class="web-share"></div>
+					</div>
+					<div class="email-share-popup">
+						<form class="email-share-form hidden">
+							
+						</form>
+					</div>
+					<div class="web-share-popup hidden"></div>
 				</div>
 				
 				<div class="recommends-box">
@@ -69,7 +81,7 @@
 				</div>
 			</div><!-- /main-box -->
 			<div class="please-wait">
-					
+				<div class="load-bar">
 			</div>
 		</div><!-- /common-main-wrapper -->
 		<!--# include virtual="/inc/mybar-footer.html" -->
