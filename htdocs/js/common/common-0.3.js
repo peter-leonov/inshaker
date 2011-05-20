@@ -42,8 +42,8 @@ $.onready(function ()
 
 $.onready(function ()
 {
-	var like = $('fb-like-placeholder')
-	if (!like)
+	var placeholder = $('fb-like-placeholder')
+	if (!placeholder)
 		return
 	
 	var iframe = document.createElement('iframe')
@@ -53,7 +53,7 @@ $.onready(function ()
 	iframe.className = 'fb-like'
 	iframe.src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(location.href) + '&layout=button_count'
 	
-	like.appendChild(iframe)
+	placeholder.appendChild(iframe)
 })
 
 
