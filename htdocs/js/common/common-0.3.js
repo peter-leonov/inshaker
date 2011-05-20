@@ -41,12 +41,6 @@ $.onready(function ()
 		year.firstChild.nodeValue = new Date().getFullYear()
 })
 
-$.onready(function ()
-{
-	ShareButtons.bootstrap({text: 'Крутой коктейль!'})
-})
-
-
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
 require.names =

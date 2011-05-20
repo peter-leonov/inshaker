@@ -8,6 +8,8 @@ $.onready(function(){
 	new RollingImagesLite($('ingredients'), aniOpts);
 	Controller.init();
 	Calculator.init();
+	
+	ShareButtons.bootstrap({text: 'Коктейль «' + Controller.name + '»'})
 })
 
 <!--# include file="/js/cocktail/model.js" -->
