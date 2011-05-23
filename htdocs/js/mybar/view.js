@@ -87,9 +87,9 @@ var myProto =
 		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
-		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
@@ -105,7 +105,7 @@ var myProto =
 		nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
 		
 		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
-		nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
+		//nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
 		
 		//nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
 		
@@ -120,15 +120,12 @@ var myProto =
 	{
 		if(this.nodes.recommends.box.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
 		{
-			if(!this.recommendsWasRendered)
-			{
-				this.controller.upgradeRecommends()
-			}	
+			//this.controller.upgradeRecommends()
 			return
 		}
 		
-		this.controller.checkoutRecommends()
-		this.controller.checkoutMustHaveRecommends()
+		//this.controller.checkoutRecommends()
+		//this.controller.checkoutMustHaveRecommends()
 	},
 	
 	checkoutRecommends : function(listLength)
@@ -191,8 +188,9 @@ var myProto =
 		}
 	},
 	
-	renderIngredients : function(ingredients, tipIngredient, showType)
+	renderIngredients : function(ingredients, showType)
 	{
+		log(arguments)
 		var nodes = this.nodes.ingredients,
 			il = ingredients.length
 		
@@ -202,7 +200,7 @@ var myProto =
 		
 		if(il == 0)
 		{
-			nodes.ingredientsList.hide()
+			nodes.list.hide()
 			nodes.switcher.hide()
 			nodes.empty.show()
 			return
@@ -210,9 +208,12 @@ var myProto =
 		
 		nodes.empty.hide()
 		nodes.switcher.className = 'switcher ' + showType
+		nodes.list.empty()
+		nodes.list.show()
 		
 		switch(showType)
 		{
+			default:
 			case 'by-groups':
 			{
 				var dl = N('dl')
@@ -229,21 +230,29 @@ var myProto =
 							dl.appendChild(dd)
 						}
 						
-						var dt = Nct('dt', 'group-name', groupName)
+						var dt = Nc('dt', 'group-name')
+						var div = Nct('div', 'name-wrapper', groupName)
 						var dd = Nc('dd', 'group')
+						var ul = N('ul')
+						
+						div.appendChild(N('i'))
+						dd.appendChild(ul)
+						dt.appendChild(div)
 					}
 					
-					dd.appendChild(ingredients[i].getPreviewNodeExt(true))
+					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
 				}
 				
 				dl.appendChild(dt)
 				dl.appendChild(dd)			
 				
-				nodes.list.empty()
 				nodes.list.appendChild(dl)
 				break;
 			}
+			
+			
 			case 'by-list':
+			//default :
 			{
 				var ul = N('ul')
 				for(var i = 0 ; i < il; i++)
@@ -251,7 +260,6 @@ var myProto =
 					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
 				}
 				
-				nodes.list.empty()
 				nodes.list.appendChild(ul)			
 			}
 		}
@@ -260,7 +268,7 @@ var myProto =
 	hideCocktails : function()
 	{
 		this.nodes.cocktails.box.hide()
-	}
+	},
 	
 	renderCocktails : function(cocktails, noWantCook, showType)
 	{
@@ -282,7 +290,7 @@ var myProto =
 		
 		switch(showType)
 		{
-			case 'by-pics':
+			case 'by-pics' :
 			{				
 				var ul = Nc('ul', 'photos-list')
 				for (var i = 0, il = cocktails.length; i < il; i++) 
@@ -294,7 +302,8 @@ var myProto =
 				nodes.wantCookList.appendChild(ul)
 				break;
 			}
-			case 'by-ingredients':
+			case 'by-ingredients' :
+			default :
 			{	
 				var me = this
 				setTimeout(function()
@@ -310,11 +319,17 @@ var myProto =
 		nodes.wrapper.show()
 	},
 
-	prepareRecommends : function()
+	prepareRecommends : function(clearNodes)
 	{	
 		this.currentRecommends = []
 		this.currentMustHaveRecommends = []
-		this.recommendsWasRendered = !update
+		
+		if(clearNodes)
+		{
+			this.nodes.recommends.recommendsList.empty()
+			this.nodes.recommends.mustHaveList.empty()
+		}
+		
 		this.onscroll()
 	},
 	
@@ -334,7 +349,7 @@ var myProto =
 		row.appendChild(desc)
 		
 		this.currentMustHaveRecommends.push({ node : node, ingredient : ingredient })
-		this.nodes.bottomOutput.mustHave.appendChild(row)
+		this.nodes.recommends.mustHaveList.appendChild(row)
 	},
 
 	renderRecommend : function(group, cocktailsHash, ingredientsHash)
@@ -346,7 +361,7 @@ var myProto =
 		this.currentRecommends.push({ group : group, dt : dt, dd : dd })
 		df.appendChild(dt)
 		df.appendChild(dd)
-		this.nodes.bottomOutput.recommends.appendChild(df)
+		this.nodes.recommends.recommendsList.appendChild(df)
 	},
 	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
@@ -673,18 +688,7 @@ var myProto =
 	
 	handleIngredientsSwitcherClick : function(e)
 	{
-		var node = e.target
-		if(node.hasClassName('link'))
-		{
-			if(node.hasClassName('by-groups'))
-			{
-				this.controller.switchIngredientsView(true)
-			}
-			else
-			{
-				this.controller.switchIngredientsView(false)
-			}
-		}		
+		this.controller.switchIngredientsView(e.target.className)		
 	},
 	
 	handleBottomWrapperClick : function(e)
@@ -696,19 +700,16 @@ var myProto =
 			return
 		}
 		
-		this.recommendsWasRendered = false
-		
 		var recommendNode = this.findParentRecommend(target)
 		
 		this.recommendScrollTop = recommendNode.offsetPosition().top - window.pageYOffset
 		this.currentRecommendNode = recommendNode
 		
-		this.controller.addIngredientsFromBo([target.ingredient])
+		this.controller.addIngredientFromRecommends(target.ingredient)
 	},
 	
 	findParentRecommend : function(node)
 	{
-		
 		do
 		{
 			if(node.recommendWrapper)

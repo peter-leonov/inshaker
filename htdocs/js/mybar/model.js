@@ -54,11 +54,10 @@ var myProto =
 		
 		this.bar = bar
 		
-		this.showCocktailsType = bar.showCocktailsType
 		this.barName = bar.barName
-		this.showByCocktails = bar.showByCocktails
+		this.ingredientsShowType = bar.ingredientsShowType
+		this.cocktailsShowType = bar.cocktailsShowType
 		this.notAvailableCocktails = bar.notAvailableCocktails
-		this.showIngByGroups = bar.showIngByGroups
 
 		this.ingredients = this.getIngredients(bar.ingredients)
 		this.cocktails = this.computeCocktails(this.ingredients)
@@ -90,17 +89,17 @@ var myProto =
 	
 	setMainState : function()
 	{
-		this.view.renderBarName(this.barName)
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends()
-		this.view.renderShare(this.foreignData.userid)
+		//this.view.renderBarName(this.barName)
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		//this.view.prepareRecommends(true)
+		//this.view.renderShare(this.foreignData.userid)
 	},
 	
 	computeRecommendsBlock : function()
 	{
-		this.allRecommends = this.computeAllRecommends(this.ingredients.hash)
+		this.allRecommends = this.computeAllRecommends()
 		this.tags = this.getTags(this.allRecommends, this.allTags)	
 		this.currentTag = this.getCurrentTag(this.tags, this.bar.currentTag)
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
@@ -239,10 +238,11 @@ var myProto =
 		}
 	},
 	
-	computeAllRecommends : function(ingredientsHash)
+	computeAllRecommends : function()
 	{
 		var cocktails = Cocktail.getAll(),
-			cocktailsHash = Array.toHash(this.cocktails.map(function(a){ return a.name })),
+			cocktailsHash = this.cocktails.hash,
+			ingredientsHash = this.ingredients.hash,
 			recommends = []
 			
 		var limit = false,
@@ -253,47 +253,48 @@ var myProto =
 		
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
-				var cocktail = cocktails[i]
-				var name = cocktail.name
-				var notMatched = {}
-				var matched = {}
-				
-				if(cocktailsHash[name])
-					continue
-				
-				var set = cocktail.ingredients
-				
-				for (var j = 0, t = 0, z = 0, jl = set.length; j < jl; j++) 
-				{
-					var ingName = set[j][0]
+			var cocktail = cocktails[i]
+			var name = cocktail.name
+			var notMatched = {}
+			var matched = {}
+			
+			if(cocktailsHash[name])
+				continue
+			
+			var set = cocktail.ingredients
+			
+			for (var j = 0, t = 0, z = 0, jl = set.length; j < jl; j++) 
+			{
+				var ingName = set[j][0]
 	
-					if(!ingredientsHash[ingName])
-					{
-						notMatched[ingName] = true
-						t++
-					}
-					else
-					{
-						matched[ingName] = true
-						z++
-					}
+				if(!ingredientsHash[ingName])
+				{
+					notMatched[ingName] = true
+					t++
 				}
+				else
+				{
+					matched[ingName] = true
+					z++
+				}
+			}
+			
+			if(z == 1 && (matched['Лед в кубиках'] || matched['Лед дробленый']) || z == 2 && matched['Лед в кубиках'] && matched['Лед дробленый'])
+				continue
+			
+			if(t < j)
+			{
+				if(t <= lim)
+					limit = true
 				
-				if(z == 1 && (matched['Лед в кубиках'] || matched['Лед дробленый']) || z == 2 && matched['Лед в кубиках'] && matched['Лед дробленый'])
+				if(limit && t > lim)
 					continue
 				
-				if(t < j)
-				{
-					if(t <= lim)
-						limit = true
-					
-					if(limit && t > lim)
-						continue
-					
-					var h = {}
-					h[name] = true
-					recommends.push({ cocktails : h, ingredients : notMatched, len : t, cocktail : cocktail })
-				}
+/*				var h = {}
+				h[name] = true*/
+
+				recommends.push({ /*cocktails : h, */ingredients : notMatched, len : t, cocktail : cocktail })
+			}
 		}
 
 		if(limit)
@@ -512,7 +513,7 @@ var myProto =
 			ingredients : Object.toArray(this.ingredients.hash),
 			showCocktailsType : this.showCocktailsType,
 			showByCocktails : this.showByCocktails,
-			showIngByGroups : this.showIngByGroups,
+			ingredientsShowType : this.ingredientsShowType,
 			currentTag : this.currentTag
 		})
 	},
@@ -529,10 +530,10 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends()
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends(true)
 		
 		return true
 	},
@@ -552,16 +553,16 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		
-		this.view.prepareRecommends()
+		this.view.prepareRecommends(true)
 		return true
 	},
 	
-	switchIngredientsView : function(byGroups)
+	switchIngredientsView : function(showType)
 	{
-		this.showIngByGroups = byGroups
+		this.ingredientsShowType = showType
 		this.saveStorage()
 
-		this.view.renderIngredients(this.ingredients, byGroups, this.tipIngredient)
+		this.view.renderIngredients(this.ingredients, showType)
 	},
 	
 	switchCocktailsView : function(showCocktailsType)
@@ -590,13 +591,10 @@ var myProto =
 	},*/
 
 	
-	addIngredientsFromBo : function(ingredients)
+	addIngredientFromRecommends : function(ingredient)
 	{
-		for (var i = 0, il = ingredients.length; i < il; i++) 
-		{
-			var ingredient = ingredients[i]
-			this.ingredients.add(ingredient)
-		}
+		this.ingredients.add(ingredient)
+		this.recommendsUpgraded = false
 		
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
@@ -642,12 +640,14 @@ var myProto =
 	
 	upgradeRecommends : function()
 	{
+		if(this.recommendsUpgraded)
+		{
+			return
+		}
 		this.computeRecommendsBlock()
-		
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)	
-		
-		this.view.setHaving({}, {})
-		this.view.prepareRecommends()
+		this.recommendsUpgraded = true
+		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends(true)
 	},
 	
 	addRecommend : function()
