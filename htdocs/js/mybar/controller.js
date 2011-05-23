@@ -39,15 +39,15 @@ var myProto =
 	{
 		this.model.removeCocktailFromBar(cocktail)
 	},
-	
-	switchCocktailsView : function(showPhotos)
+		
+	switchIngredientsView : function(showType)
 	{
-		this.model.switchCocktailsView(showPhotos)
+		this.model.switchIngredientsView(showType)
 	},
 	
-	switchIngredientsView : function(byGroups)
+	switchCocktailsView : function(showType)
 	{
-		this.model.switchIngredientsView(byGroups)
+		this.model.switchCocktailsView(showType)
 	},
 	
 	switchBoShowType : function(showByCocktails)
