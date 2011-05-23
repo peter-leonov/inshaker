@@ -95,14 +95,15 @@ function onready ()
 	
 	var nodes = {
 		
-		share : {
+/*		share : {
 			getLink : $$('#output .share-bar .get-link')[0],
 			foreignBlock : $$('#output .share-bar .foreign-block')[0],
 			foreignLink: $$('#output .share-bar .foreign-block a')[0],
 			foreignLinkInput : $$('#output .share-bar .foreign-block input')[0]
-		},
+		},*/
+
 		
-		barName : {
+/*		barName : {
 			wrapper : $('bar-name'),
 			tip : $$('#bar-name .tip')[0],
 			title : $$('#bar-name h2')[0],
@@ -110,46 +111,49 @@ function onready ()
 			bName : $$('#bar-name h2 .name')[0],
 			form : $$('#bar-name .change-name')[0],
 			input : $$('#bar-name .change-name .new-bar-name')[0]
-		},
+		},*/
+
 		
 		ingredients : {
-			list : $$('#output .ingredients-block .list')[0],
-			searchForm : $$('#output .ingredients-block .search-box form')[0],
-			queryInput : $$('#output .ingredients-block .search-box form .query')[0],
-			resetButton: $$('#output .ingredients-block .search-box .reset')[0],
-			complete: $$('#output .ingredients-block .search-box .autocomplete')[0],
-			switcher : $$('#output .ingredients-block .switcher')[0],
-			swList : $$('#output .ingredients-block .switcher .by-list')[0],
-			swGroups : $$('#output .ingredients-block .switcher .by-groups')[0],			
-			empty : $$('#output .ingredients-block .empty')[0],
-			tipIngredient : $$('#output .ingredients-block .tip-ingr')[0]
+			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
+			searchForm : $$('#common-main-wrapper .ingredients-box .search-box form')[0],
+			queryInput : $$('#common-main-wrapper .ingredients-box .search-box form .query')[0],
+			complete: $$('#common-main-wrapper .ingredients-box .search-box .autocomplete')[0],
+			searchButton : $$('#common-main-wrapper .ingredients-box .search-box .search-button')[0],
+			luckyButton : $$('#common-main-wrapper .ingredients-box .search-box .lucky-button')[0],
+			switcher : $$('#common-main-wrapper .ingredients-box .switcher')[0],
+			empty : $$('#common-main-wrapper .ingredients-box .empty')[0],
 		},
 		
 		cocktails : {
-			block : $$('#output .cocktails-block')[0],
-			amount : $$('#output .cocktails-block .title .amount')[0],
-			switcher : $$('#output .cocktails-block .switcher')[0],
-			swPhotos : $$('#output .cocktails-block .switcher .photos')[0],
-			swCombs : $$('#output .cocktails-block .switcher .combs')[0],
-			wrapper : $$('#output .cocktails-block .wrapper')[0],
-			empty : $$('#output .cocktails-block .empty')[0]
+			box : $$('#common-main-wrapper .cocktails-box')[0],
+			title : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
+			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
+			wantCook : $$('#common-main-wrapper .cocktails-box .my-cocktails .want-cook')[0],
+			wantCookList : $$('#common-main-wrapper .cocktails-box .my-cocktails .want-cook .list')[0],
+			noWantCook : $$('#common-main-wrapper .cocktails-box .my-cocktails .no-want-cook')[0],
+			noWantCookList : $$('#common-main-wrapper .cocktails-box .my-cocktails .no-want-cook .list')[0],
+			empty : $$('#common-main-wrapper .cocktails-box .empty')[0]
 		},
 		
-		bottomOutput : {
-			output : $$('#output .bottom-output')[0],
-			//tagForm : $$('#output .bottom-output .select-tag')[0],
-			tagsCloud : $$('#output .bottom-output .tags-cloud')[0],
-			selectTag : $$('#output .bottom-output .select-tag .tags')[0],
-			title : $$('#output .bottom-output .title')[0],
-			wrapper : $$('#output .bottom-output .wrapper')[0],
-			empty : $$('#output .bottom-output .empty')[0],
-			recommends : $$('#output .bottom-output .recommends dl')[0],
-			mustHave : $$('#output .bottom-output .must-have ul')[0]
+		share : {
+			box : $$('#common-main-wrapper .share-box')[0],
+			popup : {
+				emailShare : $$('#common-main-wrapper .share-box .email-share-popup')[0],
+				webShare : $$('#common-main-wrapper .share-box .web-share-popup')[0]
+			}
 		},
 		
-		upgradeRecommends : $('upgrade-recommends'),
-		menuLink : $$('#output .cocktails-block .bar-menu-link')[0],
-		output : $('output')
+		recommends : {
+			box : $$('#common-main-wrapper .recommends-box')[0],
+			tags : $$('#common-main-wrapper .recommends-box .tags-wrapper')[0],
+			tagsList : $$('#common-main-wrapper .recommends-box .tags-wrapper .tags-list')[0],
+			wrapper : $$('#common-main-wrapper .recommends-box .recommends-wrapper')[0],
+			recommendsList : $$('#common-main-wrapper .recommends-box .recommends-wrapper .recommends-list')[0],
+			mustHaveList : $$('#common-main-wrapper .recommends-box .recommends-wrapper .must-have-list')[0]/*,
+						upgradeRecommends : $$('#common-main-wrapper .recommends-box .upgrade-recommends')[0]*/
+			
+		}
 	}
 
 	var widget = new MyBar()
