@@ -125,7 +125,7 @@ function onready ()
 			searchButton : $$('#common-main-wrapper .ingredients-box .search-box .search-button')[0],
 			luckyButton : $$('#common-main-wrapper .ingredients-box .search-box .lucky-button')[0],
 			switcher : $$('#common-main-wrapper .ingredients-box .switcher')[0],
-			empty : $$('#common-main-wrapper .ingredients-box .empty')[0],
+			empty : $$('#common-main-wrapper .ingredients-box .empty-box')[0],
 		},
 		
 		cocktails : {
@@ -137,7 +137,7 @@ function onready ()
 			wantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .want-cook .list')[0],
 			noWantCook : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook')[0],
 			noWantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook .list')[0],
-			empty : $$('#common-main-wrapper .cocktails-box .empty')[0]
+			empty : $$('#common-main-wrapper .cocktails-box .empty-box')[0]
 		},
 		
 		share : {
