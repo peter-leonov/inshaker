@@ -14,12 +14,11 @@ Me =
 	{
 		this.bar = 
 		{  
-			ingredients : [],
-			showPhotos : true,
 			barName : '',
-			showByCocktails : true,
+			ingredients : [],
+			ingredientsShowType : 'by-list',
+			cocktailsShowType : 'by-groups',
 			notAvailableCocktails : {},
-			showIngByGroups : false,
 			currentTag : '',
 			purchasePlanNotices : {},
 			purchasePlanVolumes : {},
