@@ -114,7 +114,10 @@ function onready ()
 		},*/
 
 		
+		mainBox : $$('#common-main-wrapper .main-box')[0],
+		
 		ingredients : {
+			box : $$('#common-main-wrapper .ingredients-box')[0],
 			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
 			searchForm : $$('#common-main-wrapper .ingredients-box .search-box form')[0],
 			queryInput : $$('#common-main-wrapper .ingredients-box .search-box form .query')[0],
@@ -127,6 +130,7 @@ function onready ()
 		
 		cocktails : {
 			box : $$('#common-main-wrapper .cocktails-box')[0],
+			wrapper : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper')[0],
 			title : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
 			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
 			wantCook : $$('#common-main-wrapper .cocktails-box .my-cocktails .want-cook')[0],
@@ -152,7 +156,6 @@ function onready ()
 			recommendsList : $$('#common-main-wrapper .recommends-box .recommends-wrapper .recommends-list')[0],
 			mustHaveList : $$('#common-main-wrapper .recommends-box .recommends-wrapper .must-have-list')[0]/*,
 						upgradeRecommends : $$('#common-main-wrapper .recommends-box .upgrade-recommends')[0]*/
-			
 		}
 	}
 
