@@ -133,10 +133,10 @@ function onready ()
 			wrapper : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper')[0],
 			title : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
 			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
-			wantCook : $$('#common-main-wrapper .cocktails-box .my-cocktails .want-cook')[0],
-			wantCookList : $$('#common-main-wrapper .cocktails-box .my-cocktails .want-cook .list')[0],
-			noWantCook : $$('#common-main-wrapper .cocktails-box .my-cocktails .no-want-cook')[0],
-			noWantCookList : $$('#common-main-wrapper .cocktails-box .my-cocktails .no-want-cook .list')[0],
+			wantCook : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .want-cook')[0],
+			wantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .want-cook .list')[0],
+			noWantCook : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook')[0],
+			noWantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook .list')[0],
 			empty : $$('#common-main-wrapper .cocktails-box .empty')[0]
 		},
 		
