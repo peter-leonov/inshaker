@@ -18,16 +18,20 @@
 							<div class="search-box hidden">
 								<form>
 									<input class="query" name="query" autocomplete="off" value=""/>
-									<div class="reset">×</div>
-									<!--<button class="button search" type="submit">Добавить</button>-->
+									<button type="submit" class="search-button">Найти</button>
+									<button type="submit" class="lucky-button">Мне повезет</button>
 								</form>
-								<ul class="autocomplete"><li class="item empty-message">такого ингредиента комбинатор пока не знает</li></ul>
+								<ul class="autocomplete"><li class="item empty-message">такого ингредиента нет</li></ul>
 							</div>
 							<div class="ingredients-list"></div>
 							<div class="empty">
 								<div class="tell-about-ingredients"></div>
 								<div class="explore-cocktails"></div>
 								<div class="print-cocktail-cart"></div>
+							</div>
+							<div class="switcher">
+								<div class="by-list"></div>
+								<div class="by-groups"></div>
 							</div>
 						</div>
 					</div>
@@ -39,8 +43,21 @@
 						<div class="left-shadow"></div>
 						<div class="right-shadow"></div>
 						<div class="content">
+							<div class="my-cocktails">
+								<div class="want-cook">
+									<div class="list"></div>
+								</div>
+								<div class="no-want-cook">
+									<h3>Не хочу готовить</h3>
+									<div class="list"></div>
+								</div>
+							</div>
 							<div class="empty">
 								В твоем баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
+							</div>
+							<div class="switcher">
+								<div class="by-pics"></div>
+								<div class="by-ingredients"></div>
 							</div>
 						</div>
 					</div>
@@ -55,8 +72,8 @@
 						<div class="email-share"></div>
 						<div class="web-share"></div>
 					</div>
-					<div class="email-share-popup">
-						<form class="email-share-form hidden">
+					<div class="email-share-popup hidden">
+						<form class="email-share-form">
 							
 						</form>
 					</div>
@@ -70,10 +87,27 @@
 						<div class="right-shadow"></div>
 						<div class="content">
 							<div class="tags-wrapper">
-								
+								<ul class="tags-list">
+									<li><div><span class="name">Алкогольные</span><span class="amount">55</span><b></b></div></li>
+									<li class="active"><div><span class="name">Безалкогольные</span><span class="amount">15</span><b></b></div></li>
+									<li><div><span class="name">Кофейные</span><span class="amount">5</span><b></b></div></li>
+									<li><div><span class="name">Фруктовые</span><span class="amount">8</span><b></b></div></li>
+									<li><div><span class="name">Сладкие</span><span class="amount">33</span><b></b></div></li>
+									<li><div><span class="name">Кислые</span><span class="amount">21</span><b></b></div></li>
+									<li><div><span class="name">Цветные</span><span class="amount">15</span><b></b></div></li>
+									<li><div><span class="name">Черно-белые</span><span class="amount">13</span><b></b></div></li>
+									<li><div><span class="name">Алкогольные</span><span class="amount">55</span><b></b></div></li>
+									<li class="active"><div><span class="name">Безалкогольные</span><span class="amount">15</span><b></b></div></li>
+									<li><div><span class="name">Кофейные</span><span class="amount">5</span><b></b></div></li>
+									<li><div><span class="name">Фруктовые</span><span class="amount">8</span><b></b></div></li>
+									<li><div><span class="name">Сладкие</span><span class="amount">33</span><b></b></div></li>
+									<li><div><span class="name">Кислые</span><span class="amount">21</span><b></b></div></li>
+									<li><div><span class="name">Цветные</span><span class="amount">15</span><b></b></div></li>
+								</ul>
 							</div>
 							<div class="recommends-wrapper">
-								
+								<dl class="recommends-list"></dl>
+								<ul class="must-have-list"></ul>
 							</div>
 						</div>
 					</div>
