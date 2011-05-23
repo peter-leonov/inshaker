@@ -100,7 +100,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box
 {
 	margin-top: 30px;
-	margin-left: 15px;
+	margin-left: 14px;
 	position: relative;
 	color: #000;
 	font-size: 18px;
@@ -122,8 +122,8 @@ html.loading .main-box { display: none; }
     cursor: pointer;
 }
 
-.main-box .ingredients-box .search-box .search-button { right: 130px; width: 64px; }
-.main-box .ingredients-box .search-box .lucky-button { right: 19px; width: 107px; }
+.main-box .ingredients-box .search-box .search-button { right: 131px; width: 64px; }
+.main-box .ingredients-box .search-box .lucky-button { right: 20px; width: 107px; }
 
 .main-box .ingredients-box .search-box .autocomplete
 {
