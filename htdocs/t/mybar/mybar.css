@@ -90,6 +90,21 @@ html.loading .main-box { display: none; }
     margin-left: 135px;
 }
 
+.main-box .ingredients-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 33px; }
+.main-box .ingredients-box .switcher div { cursor: pointer; height: 42px;  background: url("/t/mybar/mybar.png") no-repeat -984px -44px transparent; }
+.main-box .ingredients-box .switcher .by-list { background-position: -984px -1px; }
+.main-box .ingredients-box .switcher .by-groups { background-position: -984px -44px; }
+.main-box .ingredients-box .switcher.by-list .by-list,
+.main-box .ingredients-box .switcher .by-list:hover
+{
+	background-position: -1026px -1px;
+}
+.main-box .ingredients-box .switcher.by-groups .by-groups,
+.main-box .ingredients-box .switcher .by-groups:hover
+{
+	background-position: -1026px -44px;
+}
+
 /*cocktails-box*/
 
 .main-box .cocktails-box .empty {
@@ -97,6 +112,21 @@ html.loading .main-box { display: none; }
     font-size: 18px;
     font-style: italic;
     margin: 50px 0 50px 20px;
+}
+
+.main-box .cocktails-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 33px; }
+.main-box .cocktails-box .switcher div { cursor: pointer; height: 42px;  background: url("/t/mybar/mybar.png") no-repeat -984px -44px transparent; }
+.main-box .cocktails-box .switcher .by-pics { background-position: -984px -1px; }
+.main-box .cocktails-box .switcher .by-ingredients { background-position: -984px -44px; }
+.main-box .cocktails-box .switcher.by-pics .by-pics,
+.main-box .cocktails-box .switcher .by-pics:hover
+{
+	background-position: -1026px -1px;
+}
+.main-box .cocktails-box .switcher.by-ingredients .by-ingredients,
+.main-box .cocktails-box .switcher .by-ingredients:hover
+{
+	background-position: -1026px -44px;
 }
 
 /*share-box*/
