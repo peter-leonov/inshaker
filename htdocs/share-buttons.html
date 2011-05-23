@@ -6,13 +6,13 @@
 	<title>Поделись — Inshaker</title>
 	<style type="text/css">
 		html, body { margin: 0; padding: 0; }
-		iframe { border: none; overflow: hidden; height: 22px; }
-		#facebook { width: 150px; }
+		iframe { border: none; overflow: hidden; width: 175px; height: 22px; }
 	</style>
 </head>
 <body>
 <script src="/lib-0.3/modules/url-encode.js" type="text/javascript"></script>
 
+<iframe id="vkontakte" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 <iframe id="facebook" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 <iframe id="twitter"  allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 
@@ -23,6 +23,7 @@ function job ()
 {
 	var params = UrlEncode.parse(location.search.substr(1))
 	
+	$('vkontakte').src = 'http://vkontakte.ru/widget_like.php?app=2338279&width=100%&page=0&url=' + encodeURIComponent(params.url) + '&type=button&verb=0&title=' + encodeURIComponent(params.text) + '&description=&image=undefined'
 	$('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(params.url) + '&layout=button_count&locale=ru_RU'
 	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + encodeURIComponent(params.url) + '&text=' + encodeURIComponent(params.text)
 }
