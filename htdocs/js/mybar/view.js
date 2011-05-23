@@ -83,7 +83,7 @@ var myProto =
 		
 		var me = this
 		
-		nodes.ingredients.tipIngredient.addEventListener('click', function(e){ me.controller.addIngredientToBar(this.ingredient) }, false)
+		//nodes.ingredients.tipIngredient.addEventListener('click', function(e){ me.controller.addIngredientToBar(this.ingredient) }, false)
 		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
@@ -91,25 +91,25 @@ var myProto =
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
-		this.barName = new MyBarName()
-		this.barName.bind(nodes.barName)		
+		//this.barName = new MyBarName()
+		//this.barName.bind(nodes.barName)		
 		
-		nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)
+		//nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)
 		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
 		
-		nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
+		//nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
 		
-		nodes.bottomOutput.wrapper.addEventListener('click', function(e){ me.handleBottomWrapperClick(e) }, false)
+		nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
 		
-		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
-		nodes.bottomOutput.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
+		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
+		nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
 		
-		nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
+		//nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
 		
-		nodes.upgradeRecommends.addEventListener('click', function(){ if(!me.recommendsWasRendered) me.controller.upgradeRecommends() }, false)
+		//nodes.upgradeRecommends.addEventListener('click', function(){ if(!me.recommendsWasRendered) me.controller.upgradeRecommends() }, false)
 		
 		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
@@ -118,7 +118,7 @@ var myProto =
 	
 	onscroll : function()
 	{
-		if(this.nodes.bottomOutput.output.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
+		if(this.nodes.recommends.box.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
 		{
 			if(!this.recommendsWasRendered)
 			{
@@ -133,7 +133,7 @@ var myProto =
 	
 	checkoutRecommends : function(listLength)
 	{
-		var node = this.nodes.bottomOutput.recommends,
+		var node = this.nodes.recommends.recommendsList,
 			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
 			supply = 400,
 			i = 4
@@ -149,7 +149,7 @@ var myProto =
 	
 	checkoutMustHaveRecommends : function(listLength)
 	{
-		var node = this.nodes.bottomOutput.mustHave,
+		var node = this.nodes.recommends.mustHaveList,
 			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
 			supply = 400,
 			i = 4
@@ -191,134 +191,130 @@ var myProto =
 		}
 	},
 	
-	renderIngredients : function(ingredients, showByGroups, tipIngredient)
+	renderIngredients : function(ingredients, tipIngredient, showType)
 	{
-		var ingr = this.nodes.ingredients
+		var nodes = this.nodes.ingredients,
+			il = ingredients.length
 		
-		ingr.tipIngredient.innerHTML = tipIngredient.name
-		ingr.tipIngredient.ingredient = tipIngredient
+/*		ingr.tipIngredient.innerHTML = tipIngredient.name
+		ingr.tipIngredient.ingredient = tipIngredient*/
+
 		
-		if(ingredients.length == 0)
+		if(il == 0)
 		{
-			ingr.list.empty()
-			ingr.empty.show()
-			ingr.switcher.hide()
+			nodes.ingredientsList.hide()
+			nodes.switcher.hide()
+			nodes.empty.show()
 			return
 		}
 		
-		ingr.empty.hide()
-		ingr.switcher.show()
+		nodes.empty.hide()
+		nodes.switcher.className = 'switcher ' + showType
 		
-		if(showByGroups)
+		switch(showType)
 		{
-			ingr.swList.addClassName('link')
-			ingr.swGroups.removeClassName('link')
-			
-			var dl = N('dl')
-			for(var i = 0, l = ingredients.length, groupName = ''; i < l; i++)
+			case 'by-groups':
 			{
-				var ingredient = ingredients[i]
-				if(groupName != ingredient.group)
+				var dl = N('dl')
+				for(var i = 0, groupName = ''; i < il; i++)
 				{
-					groupName = ingredient.group
-					
-					if(i != 0)
+					var ingredient = ingredients[i]
+					if(groupName != ingredient.group)
 					{
-						dl.appendChild(dt)
-						dl.appendChild(dd)
+						groupName = ingredient.group
+						
+						if(i != 0)
+						{
+							dl.appendChild(dt)
+							dl.appendChild(dd)
+						}
+						
+						var dt = Nct('dt', 'group-name', groupName)
+						var dd = Nc('dd', 'group')
 					}
 					
-					var dt = Nct('dt', 'group-name', groupName)
-					var dd = Nc('dd', 'group')
+					dd.appendChild(ingredients[i].getPreviewNodeExt(true))
 				}
 				
-				dd.appendChild(ingredients[i].getPreviewNodeExt(true))
+				dl.appendChild(dt)
+				dl.appendChild(dd)			
+				
+				nodes.list.empty()
+				nodes.list.appendChild(dl)
+				break;
 			}
-			
-			dl.appendChild(dt)
-			dl.appendChild(dd)			
-			
-			ingr.list.empty()
-			ingr.list.appendChild(dl)			
-		}
-		else
-		{
-			ingr.swGroups.addClassName('link')
-			ingr.swList.removeClassName('link')
-			
-			var ul = N('ul')
-			for(var i = 0, l = ingredients.length; i < l; i++)
+			case 'by-list':
 			{
-				ul.appendChild(ingredients[i].getPreviewNodeExt(true))
+				var ul = N('ul')
+				for(var i = 0 ; i < il; i++)
+				{
+					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
+				}
+				
+				nodes.list.empty()
+				nodes.list.appendChild(ul)			
 			}
-			
-			ingr.list.empty()
-			ingr.list.appendChild(ul)
 		}
 	},
 	
-	renderCocktails : function(cocktails, showCocktailsType)
+	hideCocktails : function()
 	{
+		this.nodes.cocktails.box.hide()
+	}
+	
+	renderCocktails : function(cocktails, noWantCook, showType)
+	{
+		var nodes = this.nodes.cocktails
 		var cl = cocktails.length
-		var c = this.nodes.cocktails
 		
-		c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
+		//c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		
-		if(cocktails.length == 0)
+		if(cl == 0)
 		{
-			this.renderIfCocktailsEmpty()
+			nodes.cocktailsWrapper.hide()
+			nodes.switcher.hide()
+			nodes.empty.show()
 			return
 		}
 		
-		c.block.show()
+		nodes.empty.hide()
+		nodes.switcher.className = 'switcher ' + showType
 		
-		this.nodes.menuLink.addClassName('active')
-			
-		c.switcher.show()
-			
-		switch(showCocktailsType)
+		switch(showType)
 		{
-			case 'сочетания':
-				c.swCombs.removeClassName('link')
-				c.swPhotos.addClassName('link')
-				
-				var me = this
-				setTimeout(function()
-				{
-					me.incl.setCocktails([{cocktails : cocktails}])
-				}, 1)
-				
-				c.wrapper.show()
-				break;
-			
-			case 'фото':
-			default:
-				c.swPhotos.removeClassName('link')
-				c.swCombs.addClassName('link')
-				
+			case 'by-pics':
+			{				
 				var ul = Nc('ul', 'photos-list')
 				for (var i = 0, il = cocktails.length; i < il; i++) 
 				{
 					var cNode = cocktails[i].getPreviewNodeExt(true)
 					ul.appendChild(cNode)
 				}
-				c.wrapper.empty()
-				c.wrapper.appendChild(ul)
-				
-				c.wrapper.show()
+				nodes.wantCookList.empty()
+				nodes.wantCookList.appendChild(ul)
 				break;
+			}
+			case 'by-ingredients':
+			{	
+				var me = this
+				setTimeout(function()
+				{
+					me.incl.setCocktails([{cocktails : cocktails}])
+				}, 1)
+				break;
+			}
 		}
+		
+		//render noWantCook
+		
+		nodes.wrapper.show()
 	},
 
-	renderBottomOutput : function(mustHaveRecommends, recommends, update)
+	prepareRecommends : function()
 	{	
 		this.currentRecommends = []
 		this.currentMustHaveRecommends = []
-		
-		var me = this
-		
 		this.recommendsWasRendered = !update
-		
 		this.onscroll()
 	},
 	

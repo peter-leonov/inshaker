@@ -94,7 +94,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.prepareRecommends()
 		this.view.renderShare(this.foreignData.userid)
 	},
 	
@@ -532,7 +532,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.prepareRecommends()
 		
 		return true
 	},
@@ -552,7 +552,7 @@ var myProto =
 		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends)
+		this.view.prepareRecommends()
 		return true
 	},
 	
@@ -571,7 +571,7 @@ var myProto =
 		
 		this.view.renderCocktails(this.cocktails, showCocktailsType)
 	},
-	
+/*	
 	switchBoShowType : function(showByCocktails)
 	{
 		if(showByCocktails)
@@ -587,7 +587,8 @@ var myProto =
 		
 		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
 		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
-	},
+	},*/
+
 	
 	addIngredientsFromBo : function(ingredients)
 	{
@@ -625,7 +626,7 @@ var myProto =
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 		
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.renderBottomOutput(this.mustHaveRecommends, this.recommends, true)
+		this.view.prepareRecommends()
 		
 		//this.view.setScrollTopTags()
 	},
@@ -646,7 +647,7 @@ var myProto =
 		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)	
 		
 		this.view.setHaving({}, {})
-		this.view.renderBottomOutput()
+		this.view.prepareRecommends()
 	},
 	
 	addRecommend : function()
