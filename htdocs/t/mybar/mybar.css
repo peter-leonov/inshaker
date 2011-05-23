@@ -60,7 +60,109 @@ html.loading .main-box { display: none; }
 
 .main-box .share-box, .please-wait { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
 
+
+/*ingredient-previews*/
+.main-box .ingredient-preview
+{
+	display: block;
+	font-size: 12px;
+	text-align: center;
+	position: relative;
+	height: 100px;
+	width: 100px;
+	color: #000;
+}
+
+.main-box .ingredient-preview .image
+{
+	height: 100px;
+	height: 100px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: #EEEEEE;
+}
+
 /*ingredients-box*/
+
+.main-box .ingredients-box .search-box {
+	width: 922px;
+	margin-top: 30px; 
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#f1f1f1));
+	background: -moz-linear-gradient(top, #ebebeb, #f1f1f1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#f1f1f1');
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #e3e3e3;
+	position: relative;
+}
+.main-box .ingredients-box .search-box .autocomplete
+{
+	display: none;
+	z-index: 1;
+	position: absolute;
+	top: 29px;
+	left: 5px;
+	width: 909px;
+	opacity: 0.95;
+	border: solid #ddd;
+	border-width: 0px 1px 1px 1px;
+	background: #fff;
+	font-size: 15px;
+}
+.main-box .ingredients-box .search-box .autocomplete.focused { display: block; }
+.main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; }
+.main-box .ingredients-box .search-box .autocomplete.empty .empty-message { display: block; }
+.main-box .ingredients-box .search-box .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
+.main-box .ingredients-box .search-box .autocomplete .item.selected { background-color: #d2d2d2; }
+.main-box .ingredients-box .search-box .autocomplete .item .substr { font-weight: bold; }
+.main-box .ingredients-box .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
+.main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000;}
+.main-box .ingredients-box .search-box .query {
+	color: inherit;
+	margin: 5px;
+	padding: 2px;
+	width: 905px;
+	border: 1px solid #ccc;
+}
+
+.main-box .ingredients-box .ingredients-list { margin: 20px 0 10px 2px;; }
+
+.main-box .ingredients-box .ingredients-list .group-name { overflow: hidden; margin: 38px 0 10px; position: relative; left: -40px; }
+.main-box .ingredients-box .ingredients-list .name-wrapper
+{
+	position: relative;
+	float: left;
+	height: 37px;
+	color: #fff;
+	font-size: 14px;
+	background: url("/t/mybar/mybar.png") no-repeat -295px -490px transparent;
+	padding: 0 4px 0px 12px;
+	margin-right: 8px;
+	line-height: 30px;
+}
+.main-box .ingredients-box .ingredients-list .name-wrapper i
+{
+	position: absolute;
+	display: block;
+	width: 8px;
+	height: 40px;
+    right: -8px;
+    top: 0;
+    background: url("/t/mybar/mybar.png") no-repeat -537px -490px transparent;
+}
+
+.main-box .ingredients-box .ingredients-list ul { overflow: hidden; }
+
+.main-box .ingredients-box .ingredients-list li
+{
+    float: left;
+    margin: 0 0 28px 17px;
+    padding-top: 12px;
+    position: relative;
+    width: 100px;
+}
 
 .main-box .ingredients-box .empty { overflow: hidden; margin: 15px 0px; }
 
