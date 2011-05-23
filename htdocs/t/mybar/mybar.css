@@ -83,6 +83,18 @@ html.loading .main-box { display: none; }
 	background-color: #EEEEEE;
 }
 
+.main-box .ingredient .control
+{
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	background: url("/t/mybar/mybar.png") no-repeat -984px -417px transparent;
+	left: -16px;
+	top: -3px;
+	display: none;
+	cursor: pointer;
+}
+
 /*ingredients-box*/
 
 .main-box .ingredients-box .search-box
@@ -194,6 +206,9 @@ html.loading .main-box { display: none; }
     position: relative;
     width: 100px;
 }
+
+.main-box .ingredients-box .ingredient:hover .control { display: block; }
+.main-box .ingredients-box .ingredient:hover .control:hover { background-position: -1021px -417px; }
 
 .main-box .ingredients-box .empty-box { overflow: hidden; margin: 15px 0px; }
 
