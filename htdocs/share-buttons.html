@@ -23,9 +23,12 @@ function job ()
 {
 	var params = UrlEncode.parse(location.search.substr(1))
 	
-	$('vkontakte').src = 'http://vkontakte.ru/widget_like.php?app=2338279&width=100%&page=0&url=' + encodeURIComponent(params.url) + '&type=button&verb=0&title=' + encodeURIComponent(params.text) + '&description=&image=undefined'
-	$('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + encodeURIComponent(params.url) + '&layout=button_count&locale=ru_RU'
-	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + encodeURIComponent(params.url) + '&text=' + encodeURIComponent(params.text)
+	var url = encodeURIComponent(params.url),
+		text = encodeURIComponent(params.text)
+	
+	$('vkontakte').src = 'http://vkontakte.ru/widget_like.php?app=2338279&width=100%&page=0&url=' + url + '&type=button&verb=0&title=' + text + '&description=&image=undefined'
+	$('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + url + '&layout=button_count&locale=ru_RU'
+	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + url + '&text=' + text
 }
 
 job() // ;)
