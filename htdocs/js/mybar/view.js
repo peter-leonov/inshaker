@@ -213,10 +213,9 @@ var myProto =
 		
 		switch(showType)
 		{
-			default:
 			case 'by-groups':
 			{
-				var dl = N('dl')
+				var dl = Nc('dl', 'by-groups')
 				for(var i = 0, groupName = ''; i < il; i++)
 				{
 					var ingredient = ingredients[i]
@@ -250,11 +249,9 @@ var myProto =
 				break;
 			}
 			
-			
 			case 'by-list':
-			//default :
 			{
-				var ul = N('ul')
+				var ul = Nc('ul', 'by-list')
 				for(var i = 0 ; i < il; i++)
 				{
 					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
@@ -671,9 +668,9 @@ var myProto =
 	{
 		var node = e.target
 
-		if(node.removingIngredient)
+		if(node.hasClassName('control') && node.ingredient)
 		{
-			this.controller.removeIngredientFromBar(node.removingIngredient)
+			this.controller.removeIngredientFromBar(node.ingredient)
 		}	
 	},
 

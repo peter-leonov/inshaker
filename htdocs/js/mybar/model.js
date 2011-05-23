@@ -549,9 +549,9 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		
 		this.view.prepareRecommends(true)
 		return true
