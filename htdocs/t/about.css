@@ -1,3 +1,5 @@
+.hidden { display: none; }
+
 .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
 .border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
 .border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
@@ -7,7 +9,6 @@
 
 .b-content .viewport { height: 450px; }
 .b-content{min-height:46em;}
-.content {display:none;}
 .b-content {width:590px;}
 #poster {position:absolute;top:42px;}
 .b-content .content ol {padding-left:18px;}
@@ -55,7 +56,7 @@
 #b-cr-about input {display:block;border:1px solid #CCC;background:#fff;width:262px;}
 #b-cr-about textarea{width:266px;}
 
-#form_success{display:none;position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
+#form_success{position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
 #form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background-position: -200px -25px; }
 
 
