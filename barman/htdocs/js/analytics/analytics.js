@@ -312,7 +312,7 @@ function onready ()
 	
 	var an = new Analytics().bind(nodes, conf)
 	google.load('gdata', '1.x', {packages: ['analytics'], callback: function () { an.apiLoaded(google) }})
-	// an.pageviews = <!-- include file="anal.js" -->
+	// an.pageviews = <!-- include virtual="anal.js" -->
 	// an.dataReady()
 }
 $.onready(onready)
