@@ -263,6 +263,16 @@ html.loading .main-box { display: none; }
 }
 
 /*cocktails-box*/
+.main-box .cocktails-box .section-head h2 .have-no-cocktails,
+.main-box .cocktails-box .section-head h2.zero-cocktails .have-cocktails
+{
+	display: none;
+}
+.main-box .cocktails-box .section-head h2.zero-cocktails .have-no-cocktails,
+.main-box .cocktails-box .section-head h2 .have-cocktails
+{
+	display: inline;
+}
 
 .main-box .cocktails-box .visible-cocktails ul.photos-list { overflow: hidden; margin: 25px 0 0 29px; }
 .main-box .cocktails-box .cocktail-preview

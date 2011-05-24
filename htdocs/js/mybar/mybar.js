@@ -131,7 +131,10 @@ function onready ()
 		cocktails : {
 			box : $$('#common-main-wrapper .cocktails-box')[0],
 			wrapper : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper')[0],
-			title : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
+			title : {
+				h2 : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
+				plural : $$('#common-main-wrapper .cocktails-box .section-head h2 .plural')[0]
+			},
 			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
 			visible : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .visible-cocktails')[0],
 			hidden : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .hidden-cocktails')[0],

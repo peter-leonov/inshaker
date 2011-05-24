@@ -272,21 +272,24 @@ var myProto =
 	
 	renderCocktails : function(visibleCocktails, hiddenCocktails, showType)
 	{
-		log(arguments)
 		var nodes = this.nodes.cocktails,
 			vcl = visibleCocktails.length,
-			hcl = hiddenCocktails.length
+			hcl = hiddenCocktails.length,
+			cl = vcl + hcl
 		
 		//c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		
-		if(vcl + hcl == 0)
+		if(cl == 0)
 		{
 			nodes.wrapper.hide()
 			nodes.switcher.hide()
+			nodes.title.h2.className = 'zero-cocktails'
 			nodes.empty.show()
 			return
 		}
 		
+		nodes.title.plural.firstChild.nodeValue = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
+		nodes.title.h2.className = ''
 		nodes.empty.hide()
 		nodes.switcher.className = 'switcher ' + showType
 		
@@ -691,14 +694,15 @@ var myProto =
 			this.controller.removeIngredientFromBar(node.ingredient)
 		}	
 	},
+	
+	handleIngredientsSwitcherClick : function(e)
+	{
+		this.controller.switchIngredientsView(e.target.className)		
+	},
 
 	handleCocktailsSwitcherClick : function(e)
 	{
-		var node = e.target
-		if(node.hasClassName('link'))
-		{
-			this.controller.switchCocktailsView(node.innerHTML)
-		}
+		this.controller.switchCocktailsView(e.target.className)
 	},
 	
 	handleVisibleCocktailClick : function(e)
@@ -717,11 +721,6 @@ var myProto =
 		{
 			this.controller.showCocktail(node.cocktail)
 		}		
-	},
-	
-	handleIngredientsSwitcherClick : function(e)
-	{
-		this.controller.switchIngredientsView(e.target.className)		
 	},
 	
 	handleBottomWrapperClick : function(e)
