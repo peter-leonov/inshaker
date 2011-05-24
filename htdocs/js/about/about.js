@@ -87,7 +87,6 @@ $.onready(function(){
 <!--# include virtual="/lib-0.3/modules/request.js" -->
 
 <!--# include virtual="/lib-0.3/modules/location-hash.js" -->
-<!--# include virtual="/lib-0.3/modules/global-timer.js" -->
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
 <!--# include virtual="/lib-0.3/modules/animation.js" -->

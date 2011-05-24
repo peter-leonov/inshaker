@@ -1,7 +1,5 @@
-<!--# include virtual="/lib/Programica/Form.js" -->
-<!--# include virtual="/js/common/url-encode.js" -->
-$$ = cssQuery
-Element.prototype.removeClassName = Element.prototype.remClassName
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 
 ;(function(){
 
@@ -27,8 +25,8 @@ Me.prototype =
 		var me = this
 		nodes.login.addEventListener('click', function (e) { me.doLogin() }, false)
 		nodes.logout.addEventListener('click', function (e) { me.doLogout() }, false)
-		nodes.ingredientForm.addEventListener('submit', function (e) { e.preventDefault(); me.doCalculate(e.target.toHash()) }, false)
-		nodes.rangeForm.addEventListener('submit', function (e) { e.preventDefault(); me.doRange(e.target.toHash()) }, false)
+		nodes.ingredientForm.addEventListener('submit', function (e) { e.preventDefault(); me.doCalculate(FormHelper.toHash(e.target)) }, false)
+		nodes.rangeForm.addEventListener('submit', function (e) { e.preventDefault(); me.doRange(FormHelper.toHash(e.target)) }, false)
 		
 		this.handleErrorCallback = function (err) { me.handleError(err) }
 		this.handleAccountFeedCallback = function (r) { me.handleAccountFeed(r) }
@@ -180,7 +178,7 @@ Me.prototype =
 	dataReady: function ()
 	{
 		this.nodes.query.removeClassName('loading')
-		this.doCalculate(this.nodes.ingredientForm.toHash())
+		this.doCalculate(FormHelper.toHash(this.nodes.ingredientForm))
 	},
 	
 	doRange: function (form)
