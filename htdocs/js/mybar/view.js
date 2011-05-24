@@ -250,6 +250,7 @@ var myProto =
 			}
 			
 			case 'by-list':
+			default:
 			{
 				var ul = Nc('ul', 'by-list')
 				for(var i = 0 ; i < il; i++)
@@ -267,8 +268,9 @@ var myProto =
 		this.nodes.cocktails.box.hide()
 	},
 	
-	renderCocktails : function(cocktails, noWantCook, showType)
+	renderCocktails : function(cocktails, skipCocktails, showType)
 	{
+		log(arguments)
 		var nodes = this.nodes.cocktails
 		var cl = cocktails.length
 		
@@ -276,7 +278,7 @@ var myProto =
 		
 		if(cl == 0)
 		{
-			nodes.cocktailsWrapper.hide()
+			nodes.wrapper.hide()
 			nodes.switcher.hide()
 			nodes.empty.show()
 			return
@@ -287,20 +289,7 @@ var myProto =
 		
 		switch(showType)
 		{
-			case 'by-pics' :
-			{				
-				var ul = Nc('ul', 'photos-list')
-				for (var i = 0, il = cocktails.length; i < il; i++) 
-				{
-					var cNode = cocktails[i].getPreviewNodeExt(true)
-					ul.appendChild(cNode)
-				}
-				nodes.wantCookList.empty()
-				nodes.wantCookList.appendChild(ul)
-				break;
-			}
-			case 'by-ingredients' :
-			default :
+			case 'by-ingredients':
 			{	
 				var me = this
 				setTimeout(function()
@@ -309,9 +298,22 @@ var myProto =
 				}, 1)
 				break;
 			}
+			case 'by-pics':
+			default:
+			{				
+				var ul = Nc('ul', 'photos-list')
+				for (var i = 0, il = cocktails.length; i < il; i++) 
+				{
+					var cNode = cocktails[i].getPreviewNodeExt(true)
+					ul.appendChild(cNode)
+				}
+				nodes.visible.empty()
+				nodes.visible.appendChild(ul)
+				break;
+			}
 		}
 		
-		//render noWantCook
+		//render skip
 		
 		nodes.wrapper.show()
 	},
