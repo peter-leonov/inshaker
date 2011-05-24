@@ -1,5 +1,5 @@
-<!--# include file="/lib/Programica/Form.js" -->
-<!--# include file="/js/common/url-encode.js" -->
+<!--# include virtual="/lib/Programica/Form.js" -->
+<!--# include virtual="/js/common/url-encode.js" -->
 $$ = cssQuery
 Element.prototype.removeClassName = Element.prototype.remClassName
 

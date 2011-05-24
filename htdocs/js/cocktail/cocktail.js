@@ -13,5 +13,5 @@ $.onready(function(){
 })
 
 <!--# include virtual="/js/common/share-buttons.js" -->
-<!--# include file="/js/cocktail/model.js" -->
-<!--# include file="/js/cocktail/controller.js" -->
+<!--# include virtual="/js/cocktail/model.js" -->
+<!--# include virtual="/js/cocktail/controller.js" -->
