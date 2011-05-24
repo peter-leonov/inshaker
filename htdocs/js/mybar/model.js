@@ -57,7 +57,7 @@ var myProto =
 		this.barName = bar.barName
 		this.ingredientsShowType = bar.ingredientsShowType
 		this.cocktailsShowType = bar.cocktailsShowType
-		this.notAvailableCocktails = bar.notAvailableCocktails
+		this.hiddenCocktails = Array.toHash(bar.hiddenCocktails)
 
 		this.ingredients = this.getIngredients(bar.ingredients)
 		this.cocktails = this.computeCocktails(this.ingredients)
@@ -91,7 +91,7 @@ var myProto =
 	{
 		//this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		this.view.renderCocktails(this.cocktails, [], this.cocktailsShowType)
 		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		//this.view.prepareRecommends(true)
 		//this.view.renderShare(this.foreignData.userid)
@@ -511,10 +511,10 @@ var myProto =
 	{
 		BarStorage.saveBar({ 
 			ingredients : Object.toArray(this.ingredients.hash),
-			showCocktailsType : this.showCocktailsType,
-			showByCocktails : this.showByCocktails,
+			cocktailsShowType : this.cocktailsShowType,
 			ingredientsShowType : this.ingredientsShowType,
-			currentTag : this.currentTag
+			currentTag : this.currentTag,
+			hiddenCocktails : Object.toArray(this.hiddenCocktails)
 		})
 	},
 	
