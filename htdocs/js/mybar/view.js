@@ -79,7 +79,7 @@ var myProto =
 	{
 		this.nodes = nodes
 		this.incl = new IngredientedCocktailList()
-		this.incl.bind({main: nodes.cocktails.wrapper})
+		this.incl.bind({main: nodes.cocktails.visible})
 		
 		var me = this
 		
@@ -89,9 +89,9 @@ var myProto =
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
-		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		nodes.cocktails.visible.addEventListener('click', function(e){ me.handleVisibleCocktailClick(e) }, false)
 		nodes.cocktails.hiddenList.addEventListener('click', function(e){ me.handleHiddenCocktailClick(e) }, false)
+		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
@@ -205,6 +205,7 @@ var myProto =
 			nodes.list.hide()
 			nodes.switcher.hide()
 			nodes.empty.show()
+			this.nodes.cocktails.box.hide()
 			return
 		}
 		
@@ -212,6 +213,7 @@ var myProto =
 		nodes.switcher.className = 'switcher ' + showType
 		nodes.list.empty()
 		nodes.list.show()
+		this.nodes.cocktails.box.show()
 		
 		switch(showType)
 		{
@@ -265,11 +267,6 @@ var myProto =
 		}
 	},
 	
-	hideCocktails : function()
-	{
-		this.nodes.cocktails.box.hide()
-	},
-	
 	renderCocktails : function(visibleCocktails, hiddenCocktails, showType)
 	{
 		var nodes = this.nodes.cocktails,
@@ -307,7 +304,7 @@ var myProto =
 			case 'by-pics':
 			default:
 			{				
-				var ul = Nc('ul', 'photos-list')
+				var ul = Nc('ul', 'by-pics')
 				for (var i = 0; i < vcl; i++) 
 				{
 					var cNode = visibleCocktails[i].getPreviewNodeExt(true)

@@ -586,11 +586,11 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, showType)
 	},
 	
-	switchCocktailsView : function(showCocktailsType)
+	switchCocktailsView : function(showType)
 	{
-		this.showCocktailsType = showCocktailsType
+		this.cocktailsShowType = showType
 		this.saveStorage()
-		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, showType)
 	},
 	
 	hideCocktail : function(cocktail)
