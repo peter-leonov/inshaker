@@ -592,7 +592,7 @@ EventPage.view =
 	{
 		var me = this
 		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
+		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()

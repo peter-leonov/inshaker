@@ -121,6 +121,8 @@ $.onready
 
 <!--# include virtual="/lib-0.3/widgets/input-tip.js" -->
 
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+
 <!--# include virtual="/lib-0.3/modules/global-timer.js" -->
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
