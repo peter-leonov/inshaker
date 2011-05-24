@@ -49,7 +49,7 @@ EventPage.controller =
 		this.owner.view.setFormLock(false)
 	},
 	
-	formSuccess: function (hash)
+	formSuccess: function ()
 	{
 		var view = this.owner.view
 		view.showFormPopupThanks()
