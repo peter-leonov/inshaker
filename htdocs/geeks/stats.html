@@ -42,7 +42,7 @@
 </div>
 <!--# include virtual="/inc/bottom-common.html" -->
 <script type="text/javascript" src="/js/common/oops.js"></script>
-<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/about/swfobject.js"></script>
 <script>
 function onready ()
@@ -61,9 +61,15 @@ function onready ()
 	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
 	line.write('stat-browsers-plain')
 	
-	new Programica.RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
+	new RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
+
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
+
 </script>
 </body>
 </html>
