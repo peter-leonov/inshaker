@@ -23,9 +23,9 @@ var myProto =
 		return this
 	},
 	
-	setCocktails: function (cocktails)
+	setCocktails: function (cocktails, notInBar)
 	{
-		this.model.setCocktails(cocktails)
+		this.model.setCocktails(cocktails, notInBar)
 	},
 	
 	wake: function ()
@@ -148,8 +148,9 @@ var myProto =
 		this.controller.groupNameClicked(num)
 	},
 	
-	renderGroups: function (groups)
+	renderGroups: function (groups, notInBar)
 	{
+		if(notInBar) this.notInBar = notInBar
 		var main = this.nodes.main
 		main.empty()
 		
@@ -219,20 +220,40 @@ var myProto =
 		var root = N('dl')
 		
 		var head = root.appendChild(Nc('dt', 'head')),
-			cocktailNode = cocktail.getPreviewNode(false, true),
-			control = Nc('div', 'control')
-			
-		control.cocktail = cocktail
-		cocktailNode.appendChild(control)
-		head.appendChild(cocktailNode)
+			li = cocktail.getPreviewNode(false, true)
+				
+		head.appendChild(li)
 		head.appendChild(Nct('span', 'operator', '='))
 		
 		var body = root.appendChild(Nc('dd', 'body'))
 		
-		var inodes = []
-		for (var i = 0, il = ingredients.length; i < il; i++)
-			inodes[i] = ingredients[i].getPreviewNode()
+		var inodes = [], notInBar = this.notInBar || {}
 		
+		//ingredients.sort(function(a, b){ return !notInBar[a.name] && notInBar[b.name] ? 1 : -1 })
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i],
+				cn = ingredient.getPreviewNode()
+			
+			if(notInBar[ingredient.name])
+			{
+				(function(){
+				cn.addClassName('not-in-bar')
+				var add = Nct('span', 'add-ingredient', '+')
+				add.addingIngredient = ingredient
+				add.setAttribute('title', 'Добавить ингредиент')
+				add.style.opacity = 0
+				cn.appendChild(add)
+				cn.addEventListener('mouseover', function(){ add.animate(false, { opacity : 1 }, 0.25) }, true)
+				cn.addEventListener('mouseout', function(){ add.animate(false, { opacity : 0 }, 0.25) }, true)
+				}())
+			}
+			//else
+			//	cn.appendChild(Nc('div', 'tick'))
+			
+			inodes[i] = cn
+		}
 		body.appendChild(joinWithNodeToFragment(inodes, Nct('span', 'operator', '+')))
 		
 		return root
@@ -268,7 +289,7 @@ var myProto =
 {
 	initialize: function () {},
 	
-	setCocktails: function (groups)
+	setCocktails: function (groups, notInBar)
 	{
 		this.rawGroups = groups
 		
@@ -304,7 +325,7 @@ var myProto =
 		}
 		
 		this.groups = res
-		this.view.renderGroups(res)
+		this.view.renderGroups(res, notInBar)
 	},
 	
 	toggleGroupCollapsedility: function (num)
