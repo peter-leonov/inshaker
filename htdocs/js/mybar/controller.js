@@ -61,6 +61,11 @@ var myProto =
 		this.model.showCocktail(cocktail)
 	},
 	
+	switchTag : function(tag)
+	{
+		this.model.switchTag(tag)
+	},
+	
 	switchBoShowType : function(showByCocktails)
 	{
 		this.model.switchBoShowType(showByCocktails)
@@ -76,10 +81,11 @@ var myProto =
 		this.model.selectIngredient(ingredient)
 	},
 	
-	showTagRecommends : function(tag)
+/*	showTagRecommends : function(tag)
 	{
 		this.model.showTagRecommends(tag)
-	},
+	},*/
+
 	
 	getForeignLink : function()
 	{

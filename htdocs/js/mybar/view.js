@@ -85,6 +85,10 @@ var myProto =
 		
 		//nodes.ingredients.tipIngredient.addEventListener('click', function(e){ me.controller.addIngredientToBar(this.ingredient) }, false)
 		
+		var completer = this.completer = new PlainInputAutocompleter()
+		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
+		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
+		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
@@ -93,18 +97,15 @@ var myProto =
 		nodes.cocktails.hiddenList.addEventListener('click', function(e){ me.handleHiddenCocktailClick(e) }, false)
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		
+		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
+		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
 		
-		//nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)
-		
-		var completer = this.completer = new PlainInputAutocompleter()
-		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
-		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
-		
+		//nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)		
 		//nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
 		
-		nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
+		//nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
 		
 		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		//nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
@@ -196,10 +197,6 @@ var myProto =
 		var nodes = this.nodes.ingredients,
 			il = ingredients.length
 		
-/*		ingr.tipIngredient.innerHTML = tipIngredient.name
-		ingr.tipIngredient.ingredient = tipIngredient*/
-
-		
 		if(il == 0)
 		{
 			nodes.list.hide()
@@ -274,8 +271,6 @@ var myProto =
 			hcl = hiddenCocktails.length,
 			cl = vcl + hcl
 		
-		//c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
-		
 		if(cl == 0)
 		{
 			nodes.wrapper.hide()
@@ -322,12 +317,15 @@ var myProto =
 		}
 		else
 		{
-			nodes.hiddenList.empty()
+			var df = document.createDocumentFragment()
 			for (var i = 0; i < hcl; i++) 
 			{
 				var cNode = hiddenCocktails[i].getPreviewNodeExt(true)
-				nodes.hiddenList.appendChild(cNode)
+				df.appendChild(cNode)
 			}
+			
+			nodes.hiddenList.empty()
+			nodes.hiddenList.appendChild(df)
 			nodes.hidden.show()
 		}
 		
@@ -641,34 +639,41 @@ var myProto =
 		}
 	},
 	
-	renderTagsSelect : function(tags, currentTag, tagsAmount)
+	renderTags : function(tags, currentTag, tagsAmount)
 	{
-		var node = this.nodes.bottomOutput.tagsCloud
+		var nodes = this.nodes.recommends
 		
 		if(!tags.length)
 		{
-			node.hide()
+			nodes.tags.hide()
 			return
 		}
-			
-		var df = document.createDocumentFragment()
 		
+		var df = document.createDocumentFragment()
 		for (var i = 0, il = tags.length; i < il; i++) 
 		{
-			var tag = tags[i]
-			var div = Nc('div', 'wrap-tag')
-			var span = Nct('span', 'tag', tag + ' (' + tagsAmount[tag] + ')')
-			span.tagValue = tag
-			if(tag.localeCompare(currentTag) == 0)
-				div.addClassName('current')
+			var tag = tags[i],
+				li = N('li'), div = N('div'),
+				name = Nct('span', 'name', tag), amount = Nct('span', 'amount', tagsAmount[tag])
 			
-			div.appendChild(span)
-			df.appendChild(div)
+			if(tag.localeCompare(currentTag) == 0)
+			{
+				li.addClassName('active')
+			}
+			else
+			{
+				div.tagValue = tag
+			}
+			div.appendChild(name)
+			div.appendChild(amount)
+			div.appendChild(N('b'))
+			li.appendChild(div)
+			df.appendChild(li)
 		}
 		
-		node.empty()
-		node.appendChild(df)
-		node.show()
+		nodes.tagsList.empty()
+		nodes.tagsList.appendChild(df)
+		nodes.tags.show()
 	},
 	
 	renderIfCocktailsEmpty : function()
@@ -839,15 +844,26 @@ var myProto =
 		}
 	},
 	
-	selectOtherTag : function(e)
+	handleTagsClick : function(e)
 	{
-		var target = e.target
-		if(target.tagValue && !target.parentNode.hasClassName('current'))
+		var node = e.target
+		var tag = node.tagValue || node.parentNode.tagValue
+		if(tag)
 		{
-			this.tagsWrapperScrollTop = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - window.pageYOffset
-			this.controller.showTagRecommends(target.tagValue)
+			this.controller.switchTag(tag)
 		}
 	},
+	/*
+		selectOtherTag : function(e)
+		{
+			var target = e.target
+			if(target.tagValue && !target.parentNode.hasClassName('current'))
+			{
+				this.tagsWrapperScrollTop = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - window.pageYOffset
+				this.controller.showTagRecommends(target.tagValue)
+			}
+		},*/
+	
 	
 	setScrollTopRecommends : function()
 	{

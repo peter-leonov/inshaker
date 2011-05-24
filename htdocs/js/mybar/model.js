@@ -95,8 +95,8 @@ var myProto =
 		//this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
-		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		//this.view.prepareRecommends(true)
+		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends(true)
 		//this.view.renderShare(this.foreignData.userid)
 	},
 	
@@ -625,7 +625,18 @@ var myProto =
 		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
 		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
 	},*/
-
+	
+	switchTag : function(tag)
+	{
+		this.currentTag = tag
+		this.saveStorage()
+		
+		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
+		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
+		
+		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends()		
+	},
 	
 	addIngredientFromRecommends : function(ingredient)
 	{
@@ -651,7 +662,7 @@ var myProto =
 		this.view.showIngredient(ingredient)
 	},
 	
-	showTagRecommends : function(tag)
+/*	showTagRecommends : function(tag)
 	{
 		this.currentTag = tag
 		this.saveStorage()
@@ -663,7 +674,8 @@ var myProto =
 		this.view.prepareRecommends()
 		
 		//this.view.setScrollTopTags()
-	},
+	},*/
+
 	
 	getForeignLink : function()
 	{
