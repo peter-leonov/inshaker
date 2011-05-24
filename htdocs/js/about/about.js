@@ -60,14 +60,14 @@ $.onready(function(){
 	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
 
-<!--# include file="/lib/Programica/Request.js" -->
-<!--# include file="/lib/Programica/Form.js" -->
-<!--# include file="/lib/Programica/LocationHash.js" -->
+<!--# include virtual="/lib/Programica/Request.js" -->
+<!--# include virtual="/lib/Programica/Form.js" -->
+<!--# include virtual="/lib/Programica/LocationHash.js" -->
 
-<!--# include file="/lib/Programica/Widget.js" -->
-<!--# include file="/lib/Widgets/FormPoster.js" -->
-<!--# include file="/lib/Widgets/RollingImagesLite.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/lib/Programica/Widget.js" -->
+<!--# include virtual="/lib/Widgets/FormPoster.js" -->
+<!--# include virtual="/lib/Widgets/RollingImagesLite.js" -->
+<!--# include virtual="/lib/Widgets/Switcher.js" -->
 
 <!--# include virtual="swfobject.js" -->
 

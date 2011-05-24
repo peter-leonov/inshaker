@@ -402,9 +402,9 @@ Object.extend(Ingredient,
 
 Ingredient.initialize
 (
-	<!--# include file="/db/ingredients/ingredients.json"-->,
-	<!--# include file="/db/ingredients/groups.json"-->,
-	<!--# include file="/db/ingredients/tags.json"-->
+	<!--# include virtual="/db/ingredients/ingredients.json"-->,
+	<!--# include virtual="/db/ingredients/groups.json"-->,
+	<!--# include virtual="/db/ingredients/tags.json"-->
 )
 
 })();

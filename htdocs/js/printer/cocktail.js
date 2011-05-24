@@ -1,6 +1,6 @@
-<!--# include file="/lib-0.3/modules/url-encode.js" -->
-<!--# include file="/lib-0.3/modules/request.js" -->
-<!--# include file="/js/printer/printer.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/request.js" -->
+<!--# include virtual="/js/printer/printer.js" -->
 
 ;(function(){
 

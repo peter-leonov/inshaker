@@ -41,6 +41,6 @@ Object.extend(Me, myStatic)
 Me.className = 'Video'
 self[Me.className] = Me
 
-Me.initialize(<!--# include file="/db/videos/videos.json" -->)
+Me.initialize(<!--# include virtual="/db/videos/videos.json" -->)
 
 })();

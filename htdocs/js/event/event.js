@@ -119,19 +119,19 @@ $.onready
 )
 
 
-<!--# include file="/lib/Programica/Request.js" -->
-<!--# include file="/lib/Programica/Form.js" -->
+<!--# include virtual="/lib/Programica/Request.js" -->
+<!--# include virtual="/lib/Programica/Form.js" -->
 
-<!--# include file="/lib/Programica/Widget.js" -->
-<!--# include file="/lib/Widgets/FormPoster.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/lib/Programica/Widget.js" -->
+<!--# include virtual="/lib/Widgets/FormPoster.js" -->
+<!--# include virtual="/lib/Widgets/Switcher.js" -->
 
-<!--# include file="/lib-0.3/widgets/input-tip.js" -->
+<!--# include virtual="/lib-0.3/widgets/input-tip.js" -->
 
 
-<!--# include file="/js/event/model.js" -->
-<!--# include file="/js/event/controller.js" -->
-<!--# include file="/js/event/view.js" -->
-<!--# include file="/js/event/interpolate.js" -->
+<!--# include virtual="/js/event/model.js" -->
+<!--# include virtual="/js/event/controller.js" -->
+<!--# include virtual="/js/event/view.js" -->
+<!--# include virtual="/js/event/interpolate.js" -->
 
 Element.prototype.removeClassName = Element.prototype.remClassName
