@@ -277,6 +277,7 @@ http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
 http://www.inshaker.ru/cocktail/e-sencha-l/
+http://www.inshaker.ru/cocktail/jager_with_cucumber/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_cobler/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
@@ -436,6 +437,7 @@ http://www.inshaker.ru/cocktail/lime_flower_tea_with_thyme/
 http://www.inshaker.ru/cocktail/scarface/
 http://www.inshaker.ru/cocktail/long_island_iced_tea/
 http://www.inshaker.ru/cocktail/long_island_in_a_french_press/
+http://www.inshaker.ru/cocktail/long_berry_iced_tea/
 http://www.inshaker.ru/cocktail/london_minty_swizzle/
 http://www.inshaker.ru/cocktail/horse_s_neck_in_a_siphon/
 http://www.inshaker.ru/cocktail/ma_cherie/
