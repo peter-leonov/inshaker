@@ -29,17 +29,18 @@ var myProto =
 	{
 		this.model.removeIngredientFromBar(ingredient)
 	},
-	
-	addCocktailToBar : function(cocktail)
-	{
-		this.model.addCocktailToBar(cocktail)
-	},
-	
-	removeCocktailFromBar : function(cocktail)
-	{
-		this.model.removeCocktailFromBar(cocktail)
-	},
-		
+	/*
+			addCocktailToBar : function(cocktail)
+			{
+				this.model.addCocktailToBar(cocktail)
+			},
+			
+			removeCocktailFromBar : function(cocktail)
+			{
+				this.model.removeCocktailFromBar(cocktail)
+			},
+			*/
+			
 	switchIngredientsView : function(showType)
 	{
 		this.model.switchIngredientsView(showType)
@@ -48,6 +49,16 @@ var myProto =
 	switchCocktailsView : function(showType)
 	{
 		this.model.switchCocktailsView(showType)
+	},
+	
+	hideCocktail : function(cocktail)
+	{
+		this.model.hideCocktail(cocktail)
+	},
+	
+	showCocktail : function(cocktail)
+	{
+		this.model.showCocktail(cocktail)
 	},
 	
 	switchBoShowType : function(showByCocktails)

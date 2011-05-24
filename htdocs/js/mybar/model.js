@@ -57,10 +57,13 @@ var myProto =
 		this.barName = bar.barName
 		this.ingredientsShowType = bar.ingredientsShowType
 		this.cocktailsShowType = bar.cocktailsShowType
-		this.hiddenCocktails = Array.toHash(bar.hiddenCocktails)
 
 		this.ingredients = this.getIngredients(bar.ingredients)
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.hiddenCocktailsHash = Array.toHash(bar.hiddenCocktails)
+		
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
+		
 		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
 
 		this.tipIngredient = this.computeTipIngr()
@@ -91,7 +94,7 @@ var myProto =
 	{
 		//this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		this.view.renderCocktails(this.cocktails, [], this.cocktailsShowType)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
 		//this.view.prepareRecommends(true)
 		//this.view.renderShare(this.foreignData.userid)
@@ -218,6 +221,24 @@ var myProto =
 				return lc
 		}
 		return lc
+	},
+	
+	divideCocktails : function(cocktails, hidden)
+	{
+		var visibleCocktails = this.visibleCocktails = []
+		var hiddenCocktails = this.hiddenCocktails = []
+		for (var i = 0, il = cocktails.length; i < il; i++) 
+		{
+			var cocktail = cocktails[i]
+			if(hidden[cocktail.name])
+			{
+				hiddenCocktails.push(cocktail)
+			}
+			else
+			{
+				visibleCocktails.push(cocktail)
+			}
+		}
 	},
 	
 	computeTipIngr : function()
@@ -514,7 +535,7 @@ var myProto =
 			cocktailsShowType : this.cocktailsShowType,
 			ingredientsShowType : this.ingredientsShowType,
 			currentTag : this.currentTag,
-			hiddenCocktails : Object.toArray(this.hiddenCocktails)
+			hiddenCocktails : Object.toArray(this.hiddenCocktailsHash)
 		})
 	},
 	
@@ -569,8 +590,23 @@ var myProto =
 	{
 		this.showCocktailsType = showCocktailsType
 		this.saveStorage()
-		
-		this.view.renderCocktails(this.cocktails, showCocktailsType)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+	},
+	
+	hideCocktail : function(cocktail)
+	{
+		this.hiddenCocktailsHash[cocktail.name] = true
+		this.saveStorage()
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+	},
+	
+	showCocktail : function(cocktail)
+	{
+		this.hiddenCocktailsHash[cocktail.name] = false
+		this.saveStorage()
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)		
 	},
 /*	
 	switchBoShowType : function(showByCocktails)
@@ -684,7 +720,7 @@ var myProto =
 		{
 			this.view.checkoutMustHaveRecommends(length)
 		}
-	}	
+	}
 }
 Object.extend(Me.prototype, myProto)
 })();

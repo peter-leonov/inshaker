@@ -90,6 +90,8 @@ var myProto =
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
+		nodes.cocktails.visible.addEventListener('click', function(e){ me.handleVisibleCocktailClick(e) }, false)
+		nodes.cocktails.hiddenList.addEventListener('click', function(e){ me.handleHiddenCocktailClick(e) }, false)
 		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
@@ -268,15 +270,16 @@ var myProto =
 		this.nodes.cocktails.box.hide()
 	},
 	
-	renderCocktails : function(cocktails, skipCocktails, showType)
+	renderCocktails : function(visibleCocktails, hiddenCocktails, showType)
 	{
 		log(arguments)
-		var nodes = this.nodes.cocktails
-		var cl = cocktails.length
+		var nodes = this.nodes.cocktails,
+			vcl = visibleCocktails.length,
+			hcl = hiddenCocktails.length
 		
 		//c.amount.innerHTML = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		
-		if(cl == 0)
+		if(vcl + hcl == 0)
 		{
 			nodes.wrapper.hide()
 			nodes.switcher.hide()
@@ -294,7 +297,7 @@ var myProto =
 				var me = this
 				setTimeout(function()
 				{
-					me.incl.setCocktails([{cocktails : cocktails}])
+					me.incl.setCocktails([{cocktails : visibleCocktails}])
 				}, 1)
 				break;
 			}
@@ -302,9 +305,9 @@ var myProto =
 			default:
 			{				
 				var ul = Nc('ul', 'photos-list')
-				for (var i = 0, il = cocktails.length; i < il; i++) 
+				for (var i = 0; i < vcl; i++) 
 				{
-					var cNode = cocktails[i].getPreviewNodeExt(true)
+					var cNode = visibleCocktails[i].getPreviewNodeExt(true)
 					ul.appendChild(cNode)
 				}
 				nodes.visible.empty()
@@ -313,7 +316,20 @@ var myProto =
 			}
 		}
 		
-		//render skip
+		if(hcl == 0)
+		{
+			nodes.hidden.hide()
+		}
+		else
+		{
+			nodes.hiddenList.empty()
+			for (var i = 0; i < hcl; i++) 
+			{
+				var cNode = hiddenCocktails[i].getPreviewNodeExt(true)
+				nodes.hiddenList.appendChild(cNode)
+			}
+			nodes.hidden.show()
+		}
 		
 		nodes.wrapper.show()
 	},
@@ -683,6 +699,24 @@ var myProto =
 		{
 			this.controller.switchCocktailsView(node.innerHTML)
 		}
+	},
+	
+	handleVisibleCocktailClick : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('control') && node.cocktail)
+		{
+			this.controller.hideCocktail(node.cocktail)
+		}
+	},
+	
+	handleHiddenCocktailClick : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('control') && node.cocktail)
+		{
+			this.controller.showCocktail(node.cocktail)
+		}		
 	},
 	
 	handleIngredientsSwitcherClick : function(e)
