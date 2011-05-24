@@ -22,11 +22,12 @@ var AboutPage = {
 	init: function ()
 	{
 		var main = $('menu')
-		var tabs = cssQuery('.content')
-		var buttons = cssQuery('#menu a')
+		var tabs = $$('.content')
+		var buttons = $$('#menu a')
 		
-		LocationHash.bind(location)
-		var name = LocationHash.get()
+		var locationHash = new LocationHash()
+		locationHash.bind()
+		var name = locationHash.get()
 		
 		// var hrefs = ['view-about', 'view-cocktail-friend', 'view-stat']
 		var hrefs = tabs.map(function (v) { return String(v.className).split(/\s+/)[0] })
@@ -36,7 +37,7 @@ var AboutPage = {
 		sw.select(selected >= 0 ? selected : 0)
 		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
-		LocationHash.onchange = function (now, last) { sw.select(hrefs.indexOf(now)); log(now) }
+		locationHash.addEventListener('change', function () { sw.select(hrefs.indexOf(this.get())) }, false)
 		
 		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
 		line.addVariable("path", "stat/amcharts/");
@@ -57,17 +58,17 @@ var AboutPage = {
 
 $.onready(function(){
 	AboutPage.init();
-	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
+	new RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
 
-<!--# include virtual="/lib/Programica/Request.js" -->
-<!--# include virtual="/lib/Programica/Form.js" -->
-<!--# include virtual="/lib/Programica/LocationHash.js" -->
+<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+<!--# include virtual="/lib-0.3/modules/global-timer.js" -->
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
 
-<!--# include virtual="/lib/Programica/Widget.js" -->
-<!--# include virtual="/lib/Widgets/FormPoster.js" -->
-<!--# include virtual="/lib/Widgets/RollingImagesLite.js" -->
-<!--# include virtual="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/js/common/switcher.js" -->
 
 <!--# include virtual="swfobject.js" -->
 
