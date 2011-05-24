@@ -1,6 +1,3 @@
-/*Popup*/
-<!--# include virtual="/t/ingredient-popup.css" -->
-
 html { min-height: 100%; overflow-y: scroll; position: relative; background: #444; }
 
 html.loading .please-wait { display: block; }
@@ -18,7 +15,7 @@ html.loading .main-box { display: none; }
     width: 155px;
 }
 
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+.hidden { visibility: hidden; position: absolute !important; top: -20000px !important; }
 
 .main-box .section-head
 {
@@ -274,8 +271,8 @@ html.loading .main-box { display: none; }
 	display: inline;
 }
 
-.main-box .cocktails-box .visible-cocktails ul.photos-list { overflow: hidden; margin: 25px 0 0 29px; }
-.main-box .cocktails-box .cocktail-preview
+.main-box .cocktails-box .visible-cocktails ul.by-pics { overflow: hidden; margin: 25px 0 0 29px; }
+.main-box .cocktails-box .by-pics .cocktail-preview
 {
 	font-size: 12px;
 	text-align: center;
@@ -286,8 +283,8 @@ html.loading .main-box { display: none; }
 	float: left;
 }
 
-.main-box .cocktails-box .cocktail-preview a { display: block; width: 100px; color: #000; }
-.main-box .cocktails-box .cocktail-preview img
+.main-box .cocktails-box .by-pics .cocktail-preview a { display: block; width: 100px; color: #000; }
+.main-box .cocktails-box .by-pics .cocktail-preview img
 {
 	display: block;
 	height: 80px;
@@ -363,6 +360,36 @@ html.loading .main-box { display: none; }
 {
 	background-position: -1026px -44px;
 }
+
+/*combinator's ingrediented cocktails*/
+.main-box .cocktails-box .visible-cocktails .ingredient-preview { float: left; }
+.main-box .cocktails-box .visible-cocktails .group { margin: 60px 18px 0px 18px; }
+.main-box .cocktails-box .visible-cocktails .group.collapsed { margin: 0 0 20px 0; }
+.main-box .cocktails-box .visible-cocktails .group.collapsed .row { display: none; }
+.main-box .cocktails-box .visible-cocktails .group .group-name { font-size: 24px; }
+.main-box .cocktails-box .visible-cocktails .group .group-name:first-letter { text-transform: uppercase; }
+.main-box .cocktails-box .visible-cocktails .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
+.main-box .cocktails-box .visible-cocktails .row { margin: 50px 0 0 0; position: relative; }
+.main-box .cocktails-box .visible-cocktails .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-0 { height: 155px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-1 { height: 155px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-2 { height: 310px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-3 { height: 465px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-4 { height: 620px; }
+.main-box .cocktails-box .visible-cocktails .row.lines-5 { height: 775px; }
+.main-box .cocktails-box .visible-cocktails .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
+.main-box .cocktails-box .visible-cocktails .row .head { width: 200px; position: absolute; }
+.main-box .cocktails-box .visible-cocktails .row .head .operator { margin: 0; }
+.main-box .cocktails-box .visible-cocktails .row .body { overflow: visible; width: 800px; left: 150px; position: relative; }
+.main-box .cocktails-box .visible-cocktails .row .body .operator { color: #ccc; }
+.main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
+.main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview .add-ingredient { top: -20px; right: 0px; }
+.main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview:hover { text-decoration: none; }
+.main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview:hover .name { text-decoration: underline; }
+.main-box .cocktails-box .visible-cocktails .row .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
+.main-box .cocktails-box .visible-cocktails .row .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.main-box .cocktails-box .visible-cocktails .row .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+.main-box .cocktails-box .visible-cocktails .row .cocktail-preview a { color: #000; }
 
 /*share-box*/
 .main-box .share-box { position: relative; }
@@ -485,3 +512,6 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
+
+/*Popup*/
+<!--# include virtual="/t/ingredient-popup.css" -->
