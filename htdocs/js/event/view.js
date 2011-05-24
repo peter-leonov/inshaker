@@ -145,7 +145,7 @@ EventPage.view =
 			point.appendChild(this.createPreviewElement(event, selected))
 		}
 		
-		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
+		new RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
 	},
 	
 	createPreviewElement: function(event, selected)
@@ -227,7 +227,7 @@ EventPage.view =
 			buttons.push(dt)
 			tabs.push(dd)
 			
-			new Programica.RollingImagesLite(node, {animationType: 'easeOutQuad'})
+			new RollingImagesLite(node, {animationType: 'easeOutQuad'})
 			dd.hide = function () { this.style.visibility = 'hidden' }
 			dd.show = function () { this.style.visibility = 'visible' }
 		}
@@ -466,7 +466,7 @@ EventPage.view =
 						else
 							illustration.scrollTop += 300
 						
-						illustrationPopups.remClassName('hidden')
+						illustrationPopups.removeClassName('hidden')
 					},
 					500
 				)
@@ -576,7 +576,16 @@ EventPage.view =
 	setFormLock: function (status)
 	{
 		var button = this.nodes.formPopupSubmit
-		status ? button.disable() : button.enable()
+		if (status)
+		{
+			button.addClassName('disabled')
+			button.setAttribute('disabled', true)
+		}
+		else
+		{
+			button.removeAttribute('disabled')
+			button.removeClassName('disabled')
+		}
 	},
 	
 	startFormChecker: function ()
