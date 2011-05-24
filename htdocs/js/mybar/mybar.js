@@ -133,10 +133,9 @@ function onready ()
 			wrapper : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper')[0],
 			title : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
 			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
-			wantCook : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .want-cook')[0],
-			wantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .want-cook .list')[0],
-			noWantCook : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook')[0],
-			noWantCookList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .no-want-cook .list')[0],
+			visible : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .visible-cocktails')[0],
+			hidden : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .hidden-cocktails')[0],
+			hiddenList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .hidden-cocktails .list')[0],
 			empty : $$('#common-main-wrapper .cocktails-box .empty-box')[0]
 		},
 		
