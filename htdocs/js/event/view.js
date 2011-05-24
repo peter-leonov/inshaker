@@ -51,12 +51,30 @@ EventPage.view =
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
 		nodes.getInvitation.forEach(function (v) { if (v) v.addEventListener('click', formPopupOpenClicked, false) })
 		
-		var form = nodes.form
-		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
-		form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
-		form.onsend = function (e) { return controller.formSend() }
-		form.onload = function (e) { return controller.formLoad() }
-		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
+		
+		function sendListener (e)
+		{
+			e.preventDefault()
+			
+			controller.formSend()
+			
+			function sent (e)
+			{
+				if (e.type == 'success')
+				{
+					controller.formSuccess()
+				}
+				else
+				{
+					alert('Произошла ошибка! Пожалуйста, сообщите о ней по адресу support@inshaker.ru')
+				}
+				
+				controller.formLoad()
+			}
+			
+			Request.post(this.action, FormHelper.toHash(this), sent)
+		}
+		nodes.form.addEventListener('submit', sendListener,  false)
 	},
 	
 	readEvent: function ()
