@@ -125,7 +125,6 @@ $.onready
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/request.js" -->
 
-<!--# include virtual="/lib-0.3/modules/global-timer.js" -->
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
 <!--# include virtual="/lib-0.3/modules/animation.js" -->
