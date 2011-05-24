@@ -53,6 +53,27 @@ var AboutPage = {
 		pie.addVariable("data_file", escape("stat/cities/data.xml"));		
 		pie.addVariable("preloader_color", "#999999");
 		pie.write("stat_cities");
+		
+		var form = $('feedback_form')
+		function sendListener (e)
+		{
+			e.preventDefault()
+			
+			function sent (e)
+			{
+				if (e.type == 'success')
+				{
+					AboutPage.formSuccess()
+				}
+				else
+				{
+					alert('Произошла ошибка! Пожалуйста, сообщите о ней по адресу support@inshaker.ru')
+				}
+			}
+			
+			Request.post(this.action, FormHelper.toHash(this), sent)
+		}
+		form.addEventListener('submit', sendListener,  false)
 	}
 };
 
@@ -60,6 +81,10 @@ $.onready(function(){
 	AboutPage.init();
 	new RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
+
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/request.js" -->
 
 <!--# include virtual="/lib-0.3/modules/location-hash.js" -->
 <!--# include virtual="/lib-0.3/modules/global-timer.js" -->
