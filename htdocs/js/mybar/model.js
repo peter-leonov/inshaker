@@ -96,7 +96,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends(true)
+		this.view.prepareRecommends()
 		//this.view.renderShare(this.foreignData.userid)
 	},
 	
@@ -546,15 +546,16 @@ var myProto =
 		this.saveStorage()
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		this.computeRecommendsBlock()
 		
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends(true)
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)	
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends()
 		
 		return true
 	},
@@ -565,16 +566,17 @@ var myProto =
 		this.saveStorage()
 		this.tipIngredient = this.computeTipIngr()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		this.computeRecommendsBlock()
 		
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		//this.view.renderCocktails(this.cocktails, this.showCocktailsType)
-		//this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends()
 		
-		this.view.prepareRecommends(true)
 		return true
 	},
 	
@@ -608,23 +610,6 @@ var myProto =
 		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)		
 	},
-/*	
-	switchBoShowType : function(showByCocktails)
-	{
-		if(showByCocktails)
-		{
-			this.showByCocktails = true
-		}
-		else
-		{
-			this.showByCocktails = false
-		}
-			
-		this.saveStorage()
-		
-		this.boItems = this.computeBoItems(this.bottomOutput, this.showByCocktails)
-		this.view.renderBottomOutput(this.boItems, this.showByCocktails)
-	},*/
 	
 	switchTag : function(tag)
 	{
@@ -645,12 +630,13 @@ var myProto =
 		
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
-		this.view.renderCocktails(this.cocktails, this.showCocktailsType)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		
@@ -661,21 +647,6 @@ var myProto =
 	{
 		this.view.showIngredient(ingredient)
 	},
-	
-/*	showTagRecommends : function(tag)
-	{
-		this.currentTag = tag
-		this.saveStorage()
-		
-		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
-		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
-		
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends()
-		
-		//this.view.setScrollTopTags()
-	},*/
-
 	
 	getForeignLink : function()
 	{
@@ -694,8 +665,8 @@ var myProto =
 		}
 		this.computeRecommendsBlock()
 		this.recommendsUpgraded = true
-		this.view.renderTagsSelect(this.tags, this.currentTag, this.tagsAmount)
-		this.view.prepareRecommends(true)
+		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
+		this.view.prepareRecommends()
 	},
 	
 	addRecommend : function()
@@ -703,7 +674,7 @@ var myProto =
 		var recommend = this.recommends.shift()
 		if(recommend)
 		{
-			this.view.renderRecommend(recommend, this.ingredients.hash, this.cocktails.hash)
+			this.view.renderRecommend(recommend, this.cocktails.hash, this.ingredients.hash)
 		}
 	},
 	
