@@ -77,6 +77,8 @@ var myProto =
 		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
 		
+		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
+		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
@@ -86,7 +88,7 @@ var myProto =
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
-		
+		nodes.recommends.wrapper.addEventListener('click', function(e){ me.addIngredientFromRecommends(e) }, false)
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
 		
@@ -95,7 +97,6 @@ var myProto =
 		
 		//nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
 		
-		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		//nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
 		
 		//nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
@@ -111,7 +112,7 @@ var myProto =
 	{
 		if(this.nodes.recommends.box.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
 		{
-			//this.controller.upgradeRecommends()
+			this.controller.upgradeRecommends()
 			return
 		}
 		
@@ -717,7 +718,7 @@ var myProto =
 		}		
 	},
 	
-	handleBottomWrapperClick : function(e)
+/*	handleBottomWrapperClick : function(e)
 	{
 		var target = e.target
 		
@@ -732,21 +733,7 @@ var myProto =
 		this.currentRecommendNode = recommendNode
 		
 		this.controller.addIngredientFromRecommends(target.ingredient)
-	},
-	
-	findParentRecommend : function(node)
-	{
-		do
-		{
-			if(node.recommendWrapper)
-			{
-				return node
-			}
-		}
-		while((node = node.parentNode))
-		
-		return false
-	},
+	},*/
 	
 	updateRecommends : function(cocktailsHash, ingredientsHash)
 	{
@@ -764,7 +751,7 @@ var myProto =
 			{
 				var item = dd.cocktailsList[j],
 					node = item.node
-				if(item.cocktail.name)
+				if(cocktailsHash[item.cocktail.name])
 				{
 					node.addClassName('have')
 					node.removeClassName('no-have')
@@ -780,7 +767,7 @@ var myProto =
 			{
 				var item = dd.ingredientsList[j],
 					node = item.node
-				if(item.ingredient.name)
+				if(ingredientsHash[item.ingredient.name])
 				{
 					node.addClassName('have')
 					node.removeClassName('no-have')
@@ -844,6 +831,36 @@ var myProto =
 		{
 			this.controller.switchTag(tag)
 		}
+	},
+	
+	addIngredientFromRecommends : function(e)
+	{
+		var node = e.target
+		
+		if(!node.hasClassName('control') && node.hasClassName('no-have'))
+		{
+			return
+		}
+		
+		var recommendNode = this.findParentRecommend(node)	
+		this.recommendScrollTop = recommendNode.offsetPosition().top - window.pageYOffset
+		this.currentRecommendNode = recommendNode
+		
+		this.controller.addIngredientFromRecommends(node.ingredient)		
+	},
+	
+	findParentRecommend : function(node)
+	{
+		do
+		{
+			if(node.recommendWrapper)
+			{
+				return node
+			}
+		}
+		while((node = node.parentNode))
+		
+		return false
 	},
 	/*
 		selectOtherTag : function(e)
