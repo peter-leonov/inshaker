@@ -440,6 +440,7 @@ http://www.inshaker.ru/cocktail/long_island_in_a_french_press/
 http://www.inshaker.ru/cocktail/long_berry_iced_tea/
 http://www.inshaker.ru/cocktail/london_minty_swizzle/
 http://www.inshaker.ru/cocktail/horse_s_neck_in_a_siphon/
+http://www.inshaker.ru/cocktail/favourite/
 http://www.inshaker.ru/cocktail/ma_cherie/
 http://www.inshaker.ru/cocktail/madam/
 http://www.inshaker.ru/cocktail/madam_coffee/
@@ -731,6 +732,7 @@ http://www.inshaker.ru/cocktail/siberian_grog/
 http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/lilac_mist/
+http://www.inshaker.ru/cocktail/fairy_tale/
 http://www.inshaker.ru/cocktail/sweet_memories/
 http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
 http://www.inshaker.ru/cocktail/sweet_bite/
