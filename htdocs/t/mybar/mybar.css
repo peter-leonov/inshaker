@@ -497,7 +497,7 @@ html.loading .main-box { display: none; }
 .main-box .recommends-box .tags-wrapper .tags-list li.active b, .main-box .recommends-box .tags-wrapper .tags-list li:hover b { display: none; }
 .main-box .recommends-box .tags-wrapper .tags-list li b { display: block; width: 180px; border-bottom: 1px solid #e1e1e1; position: absolute; bottom: -1px; left: 13px; }
 
-.main-box .recommends-box .recommends-wrapper { margin-bottom: 30px; min-height: 500px; }
+.main-box .recommends-box .recommends-wrapper { margin-bottom: 30px; min-height: 1000px; }
 .main-box .recommends-box .ingredient
 {
 	float: left;
