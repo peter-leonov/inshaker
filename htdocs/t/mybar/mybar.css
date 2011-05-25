@@ -122,6 +122,18 @@ html.loading .main-box { display: none; }
 	padding-bottom: 7px;
 }
 
+.main-box .cocktail-preview .control
+{
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	background: url("/t/mybar/mybar.png") no-repeat -984px -417px transparent;
+	left: 10px;
+	top: -3px;
+	cursor: pointer;
+	display: none;
+}
+
 /*ingredients-box*/
 
 .main-box .ingredients-box .search-box
@@ -303,18 +315,6 @@ html.loading .main-box { display: none; }
 	font-size: 18px;
 	font-style: italic;
 	margin: 50px 0 50px 20px;
-}
-
-.main-box .cocktails-box .cocktail-preview .control
-{
-	position: absolute;
-	width: 32px;
-	height: 32px;
-	background: url("/t/mybar/mybar.png") no-repeat -984px -417px transparent;
-	left: 10px;
-	top: -3px;
-	cursor: pointer;
-	display: none;
 }
 
 .main-box .cocktails-box .cocktail-preview:hover .control { display: block; }
@@ -505,6 +505,12 @@ html.loading .main-box { display: none; }
 	margin: 0 0 28px 17px;
 	padding-top: 12px;
 }
+
+.main-box .recommends-box .ingredient.no-have .control { background-position: -984px -488px; }
+.main-box .recommends-box .ingredient.have .control,
+.main-box .recommends-box .cocktail-preview.have .control { display: block; background-position: -1021px -488px; }
+.main-box .recommends-box .cocktail-preview .control { left: -4px; top: -18px; }
+
 .main-box .recommends-box .recommends-list .advice
 {
 	border-top: 1px solid #E5E5E5;
