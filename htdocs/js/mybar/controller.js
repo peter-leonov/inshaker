@@ -6,6 +6,11 @@ var myProto =
 	{
 	},
 	
+	ingredientSelected : function(ingredient)
+	{
+		this.model.selectIngredient(ingredient)
+	},
+	
 	cocktailQuerySubmit : function(query)
 	{
 		var cocktail = Cocktail.getByName(query.replace(/(^\s*)|(\s*$)/g,''))
@@ -66,7 +71,7 @@ var myProto =
 		this.model.switchTag(tag)
 	},
 	
-	switchBoShowType : function(showByCocktails)
+/*	switchBoShowType : function(showByCocktails)
 	{
 		this.model.switchBoShowType(showByCocktails)
 	},
@@ -74,18 +79,18 @@ var myProto =
 	addIngredientsFromBo : function(ingredients)
 	{
 		this.model.addIngredientsFromBo(ingredients)
-	},
-	
-	ingredientSelected : function(ingredient)
-	{
-		this.model.selectIngredient(ingredient)
-	},
+	},*/
+
 	
 /*	showTagRecommends : function(tag)
 	{
 		this.model.showTagRecommends(tag)
 	},*/
 
+	addIngredientFromRecommends : function(ingredient)
+	{
+		this.model.addIngredientFromRecommends(ingredient)
+	},
 	
 	getForeignLink : function()
 	{
