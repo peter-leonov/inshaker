@@ -17,13 +17,7 @@ var myProto =
 		
 		Ingredient.prototype.getPreviewNodeExt = function(have)
 		{
-			var node = Ingredient.prototype.getPreviewNode.call(this)
-			
-			if(have === undefined)
-			{
-				return node
-			}
-			
+			var node = Ingredient.prototype.getPreviewNode.call(this)	
 			var li = Nc('li', 'ingredient'),
 				control = Nc('div', 'control')
 			
@@ -48,12 +42,6 @@ var myProto =
 		Cocktail.prototype.getPreviewNodeExt = function(have)
 		{
 			var li = Cocktail.prototype.getPreviewNode.call(this)
-			
-			if(have === undefined)
-			{
-				return li
-			}
-			
 			var control = Nc('div', 'control'),
 				tick = Nc('div', 'tick')
 				
@@ -127,18 +115,17 @@ var myProto =
 			return
 		}
 		
-		//this.controller.checkoutRecommends()
-		//this.controller.checkoutMustHaveRecommends()
+		this.controller.checkoutRecommends()
+		this.controller.checkoutMustHaveRecommends()
 	},
 	
 	checkoutRecommends : function(listLength)
 	{
 		var node = this.nodes.recommends.recommendsList,
-			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
 			supply = 400,
 			i = 4
 			
-		while(listLength > 0 && currSupply < supply)
+		while(listLength > 0 && this.getSupply(node) < supply)
 		{
 			while(i-- && listLength--)
 			{
@@ -150,17 +137,21 @@ var myProto =
 	checkoutMustHaveRecommends : function(listLength)
 	{
 		var node = this.nodes.recommends.mustHaveList,
-			currSupply = node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset,
 			supply = 400,
 			i = 4
 		
-		while(listLength > 0 && currSupply < supply)
+		while(listLength > 0 && this.getSupply(node) < supply)
 		{
 			while(i-- && listLength--)
 			{
 				this.controller.addMustHaveRecommend()
 			}
 		}
+	},
+	
+	getSupply : function(node)
+	{
+		return node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -337,11 +328,8 @@ var myProto =
 		this.currentRecommends = []
 		this.currentMustHaveRecommends = []
 		
-		if(clearNodes)
-		{
-			this.nodes.recommends.recommendsList.empty()
-			this.nodes.recommends.mustHaveList.empty()
-		}
+		this.nodes.recommends.recommendsList.empty()
+		this.nodes.recommends.mustHaveList.empty()
 		
 		this.onscroll()
 	},
@@ -391,7 +379,7 @@ var myProto =
 			cocktails = group.cocktails,
 			havingIngredients = group.havingIngredients.slice()
 		
-		var havingIngredients = [], noHavingIngredients = []
+		var noHavingIngredients = []
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
@@ -423,17 +411,21 @@ var myProto =
 		
 		var text = document.createDocumentFragment()
 		
+		log(havingIngredients)
+		
 		if(havingIngredients.length != 0)
 		{
 			text.appendChild(T('В твоем баре уже есть '))
 			text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
 			text.appendChild(T('. '))
+			text.appendChild(N('br'))
 		}
 		if(havingCocktails.length != 0)
 		{
 			text.appendChild(T('Теперь ты можешь приготовить ' +  havingCocktails.length.plural('коктейль','коктейли','коктейли') + ' '))
 			text.appendChild(this.createCocktailsTextFromArr(havingCocktails))
 			text.appendChild(T('. '))
+			text.appendChild(N('br'))
 		}
 		if(noHavingCocktails.length != 0)
 		{
@@ -502,7 +494,7 @@ var myProto =
 			cl = cocktails.length,
 			il = ingredients.length
 		
-		var dd = N('dd')
+		var dd = Nc('dd', 'recommend')
 		dd.recommendWrapper = true
 		
 		var tl = il + cl,
@@ -690,7 +682,7 @@ var myProto =
 	handleIngredientClick : function(e)
 	{
 		var node = e.target
-
+		
 		if(node.hasClassName('control') && node.ingredient)
 		{
 			this.controller.removeIngredientFromBar(node.ingredient)
