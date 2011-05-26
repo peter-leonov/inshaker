@@ -120,6 +120,11 @@ var myProto =
 	checkoutMustHaveRecommends : function()
 	{
 		this.model.checkoutMustHaveRecommends()
+	},
+	
+	changeBarName : function(barName)
+	{
+		this.model.changeBarName(barName)
 	}
 }
 Object.extend(Me.prototype, myProto)

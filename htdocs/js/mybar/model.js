@@ -92,7 +92,7 @@ var myProto =
 	
 	setMainState : function()
 	{
-		//this.view.renderBarName(this.barName)
+		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
@@ -531,6 +531,7 @@ var myProto =
 	saveStorage : function()
 	{
 		BarStorage.saveBar({ 
+			barName : this.barName,
 			ingredients : Object.toArray(this.ingredients.hash),
 			cocktailsShowType : this.cocktailsShowType,
 			ingredientsShowType : this.ingredientsShowType,
@@ -703,6 +704,16 @@ var myProto =
 		{
 			this.view.checkoutMustHaveRecommends(length)
 		}
+	},
+	
+	changeBarName : function(barName)
+	{
+		if(barName)
+		{
+			this.barName = barName
+			this.saveStorage()
+		}
+		this.view.renderBarName(this.barName)
 	}
 }
 Object.extend(Me.prototype, myProto)

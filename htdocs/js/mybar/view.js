@@ -79,6 +79,10 @@ var myProto =
 		
 		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		
+		nodes.ingredients.title.barName.addEventListener('focus', function(e){ me.handleBarNameFocus(e) }, false)
+		nodes.ingredients.title.barName.addEventListener('keypress', function(e){ me.handleBarNameKeypress(e) }, false)
+		nodes.ingredients.title.barName.addEventListener('blur', function(e){ me.handleBarNameBlur(e) }, false)
+		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
@@ -106,6 +110,24 @@ var myProto =
 		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
+	},
+	
+	handleBarNameFocus : function(e)
+	{
+		this.nodes.ingredients.title.advice.hide()
+	},
+	
+	handleBarNameKeypress : function(e)
+	{
+		if(e.keyCode == 13)
+		{
+			e.target.blur()
+		}
+	},
+	
+	handleBarNameBlur : function(e)
+	{
+		this.controller.changeBarName(e.target.innerHTML)
 	},
 	
 	onscroll : function()
@@ -162,7 +184,13 @@ var myProto =
 	
 	renderBarName : function(barName)
 	{
-		this.barName.setMainState(barName)
+		var nodes = this.nodes.ingredients.title
+		if(barName)
+		{
+			nodes.barName.empty()
+			nodes.barName.appendChild(T(barName))
+			nodes.advice.hide()
+		}
 	},
 	
 	renderShare : function(userid)
@@ -185,7 +213,6 @@ var myProto =
 	
 	renderIngredients : function(ingredients, showType)
 	{
-		log(arguments)
 		var nodes = this.nodes.ingredients,
 			il = ingredients.length
 		
@@ -193,16 +220,18 @@ var myProto =
 		{
 			nodes.list.hide()
 			nodes.switcher.hide()
+			nodes.links.hide()
 			nodes.empty.show()
-			this.nodes.cocktails.box.hide()
+			this.hideCocktailsBox()
 			return
 		}
 		
 		nodes.empty.hide()
+		nodes.links.show()
 		nodes.switcher.className = 'switcher ' + showType
 		nodes.list.empty()
 		nodes.list.show()
-		this.nodes.cocktails.box.show()
+		this.showCocktailsBox()
 		
 		switch(showType)
 		{
@@ -263,17 +292,28 @@ var myProto =
 			hcl = hiddenCocktails.length,
 			cl = vcl + hcl
 		
+		if(vcl == 0)
+		{
+			this.nodes.share.box.addClassName('zero-cocktails')
+		}
+		else
+		{
+			this.nodes.share.box.removeClassName('zero-cocktails')
+		}
+			
 		if(cl == 0)
 		{
 			nodes.wrapper.hide()
 			nodes.switcher.hide()
 			nodes.title.h2.className = 'zero-cocktails'
-			nodes.empty.show()
+			nodes.links.hide()
+			nodes.empty.show()	
 			return
 		}
 		
 		nodes.title.plural.firstChild.nodeValue = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		nodes.title.h2.className = ''
+		nodes.links.show()
 		nodes.empty.hide()
 		nodes.switcher.className = 'switcher ' + showType
 		
@@ -322,6 +362,18 @@ var myProto =
 		}
 		
 		nodes.wrapper.show()
+	},
+
+	hideCocktailsBox : function()
+	{
+		this.nodes.cocktails.box.hide()
+		this.nodes.share.box.hide()
+	},
+	
+	showCocktailsBox : function()
+	{
+		this.nodes.cocktails.box.show()
+		this.nodes.share.box.show()		
 	},
 
 	prepareRecommends : function(clearNodes)
@@ -837,7 +889,7 @@ var myProto =
 	{
 		var node = e.target
 		
-		if(!node.hasClassName('control') && node.hasClassName('no-have'))
+		if(!node.hasClassName('control') || node.parentNode.hasClassName('have'))
 		{
 			return
 		}
