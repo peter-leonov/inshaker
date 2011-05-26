@@ -32,7 +32,7 @@ html.loading .main-box { display: none; }
 	font-size: 24px;
 	font-weight: bold;
 	padding: 33px 0 0 32px;
-	text-shadow: 0 0 3px #FFFFFF;
+	text-shadow: 0 0 3px #FFFFFF, 1px 1px 0px #000;
 }
 
 .main-box .section-bottom 
@@ -47,17 +47,12 @@ html.loading .main-box { display: none; }
 .ingredients-box, .cocktails-box, .share-box, .recommends-box { margin: 20px 0px; }
 
 .main-box .section-wrapper { background-color: #fff; position: relative; }
-
 .main-box .section-wrapper .left-shadow, .main-box .section-wrapper .right-shadow { position: absolute; width: 11px; height: 100%; background: url('/t/mybar/mybar.png') repeat-y; }
-
 .main-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
-
 .main-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
-
 .main-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
-
 .main-box .share-box, .please-wait { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
-
+.main-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 
 /*ingredient-previews*/
 .main-box .ingredient-preview
@@ -136,6 +131,9 @@ html.loading .main-box { display: none; }
 
 /*ingredients-box*/
 
+.main-box .ingredients-box .section-head .bar-name { border-bottom: 1px dashed; }
+.main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: relative; top: -17px; left: 4px; }
+
 .main-box .ingredients-box .search-box
 {
 	margin-top: 30px;
@@ -161,7 +159,7 @@ html.loading .main-box { display: none; }
 	cursor: pointer;
 }
 
-.main-box .ingredients-box .search-box .search-button { right: 131px; width: 64px; }
+.main-box .ingredients-box .search-box .search-button { right: 131px; width: 87px; }
 .main-box .ingredients-box .search-box .lucky-button { right: 20px; width: 107px; }
 
 .main-box .ingredients-box .search-box .autocomplete
@@ -291,6 +289,9 @@ html.loading .main-box { display: none; }
 	background-position: -1026px -44px;
 }
 
+.main-box .ingredients-box .section-head .links .purchase-plan-link { display: block; width: 80px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat -114px -472px transparent; }
+.main-box .ingredients-box .section-head .links .purchase-plan-link:hover { background-position: -114px -416px; }
+
 /*cocktails-box*/
 .main-box .cocktails-box .section-head h2 .have-no-cocktails,
 .main-box .cocktails-box .section-head h2.zero-cocktails .have-cocktails
@@ -367,6 +368,9 @@ html.loading .main-box { display: none; }
 	background-position: -1026px -44px;
 }
 
+.main-box .cocktails-box .section-head .links .cocktails-cart-link { display: block; width: 110px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat 0px -472px transparent; }
+.main-box .cocktails-box .section-head .links .cocktails-cart-link:hover { background-position: 0px -416px; }
+
 /*combinator's ingrediented cocktails*/
 .main-box .cocktails-box .visible-cocktails .ingredient-preview { float: left; }
 .main-box .cocktails-box .visible-cocktails .group { margin: 60px 18px 0px 18px; }
@@ -399,6 +403,7 @@ html.loading .main-box { display: none; }
 
 /*share-box*/
 .main-box .share-box { position: relative; }
+.main-box .share-box.zero-cocktails { display: none; }
 .main-box .share-box .share-wrapper { overflow: hidden; padding: 4px; }
 .main-box .share-box .share-wrapper .share-label
 {
@@ -543,7 +548,7 @@ html.loading .main-box { display: none; }
 .main-box .recommends-box .must-have-list .row
 {
 	overflow: hidden;
-	padding-top: 26px;
+	padding: 26px 0 18px;
 	position: relative;
 }
 
