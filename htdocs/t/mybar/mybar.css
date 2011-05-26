@@ -32,6 +32,7 @@ html.loading .main-box { display: none; }
 	font-size: 24px;
 	font-weight: bold;
 	padding: 33px 0 0 32px;
+	text-shadow: 0 0 3px #FFFFFF;
 	text-shadow: 0 0 3px #FFFFFF, 1px 1px 0px #000;
 }
 
