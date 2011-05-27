@@ -36,7 +36,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/combinator/throttler.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
-<!--# include virtual="/js/common/mybar-name.js" -->
 <!--# include virtual="/js/common/purchase-plan-table-editable.js" -->
 
 <!--# include virtual="model.js" -->
@@ -83,23 +82,9 @@ function onready ()
 	Ingredient.calculateEachIngredientUsage()
 	
 	var nodes = {
-		barName : {
-			wrapper : $('bar-name'),
-			tip : $$('#bar-name .tip')[0],
-			title : $$('#bar-name h2')[0],
-			help : $$('#bar-name h2 .help')[0],
-			bName : $$('#bar-name h2 .name')[0],
-			form : $$('#bar-name .change-name')[0],
-			input : $$('#bar-name .change-name .new-bar-name')[0]
-		},
-		
-		purchasePlan : {
-			main : $$('#output .b-content .purchase-plan-block')[0],
-			wrapper : $$('#output .b-content .purchase-plan-block .wrapper')[0],
-			body : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tbody')[0],
-			totalPrice : $$('#output .b-content .purchase-plan-block .wrapper .plan-table .tfoot .total-price .total')[0],
-			empty : $$('#output .b-content .purchase-plan-block .empty')[0]
-		}
+		barName : $$('#common-main-wrapper .purchase-plan-box .section-head .bar-name')[0],
+		totalPrice : $$('#common-main-wrapper .purchase-plan-box .total-price-wrapper .total-price')[0],
+		wrapper : $$('#common-main-wrapper .purchase-plan-box .purchase-table-wrapper')[0]
 	}
 	
 	var widget = new PurchasePlan()
