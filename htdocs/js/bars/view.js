@@ -68,6 +68,8 @@ BarsPageView.prototype =
 	
 	setViewType: function (type)
 	{
+		if (!type)
+			type = 'list'
 		this.viewTypeSwitcher.renderSelected(type)
 	},
 	
