@@ -72,38 +72,57 @@ var myProto =
 			return
 		}
 		
-		var bodyNode = this.nodes.body
-		var totalPriceNode = this.nodes.totalPrice
-		var df = document.createDocumentFragment()
-		var me = this
-		
+		var wrapper = this.nodes.wrapper
+		var groupName = ''
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
+			if(groupName != ingredient.group)
+			{
+				groupName = ingredient.group
+				
+				if(i != 0)
+				{
+					tr.addClassName('last')
+					wrapper.appendChild(table)
+				}
+				
+				var table = Nc('table', 'group-table')
+				var thead = N('thead')
+				var tbody = N('tbody')
+				var tr = N('tr')
+				var trHead = Nc('th', 'tr-padding')
+				var groupNameTh = Nct('th', 'item-name tr-content', groupName)
+				var amountTh = Nct('th', 'item-volume tr-content', 'Кол-во')
+				var totalTh = Nct('th', 'item-price tr-content', '~ Руб.')
+				var trTail = Nc('th', 'tr-padding')
+				
+				tr.appendChild(trHead)
+				tr.appendChild(groupNameTh)
+				tr.appendChild(amountTh)
+				tr.appendChild(totalTh)
+				tr.appendChild(trTail)
+				thead.appendChild(tr)
+				
+				table.appendChild(thead)
+				table.appendChild(tbody)
+			}
+			
 			var name = ingredient.name
 			var exclude = excludes[name]
 			var volume = volumes[name]
 			var price = prices[name]
 			
 			var tr = this.renderRow(ingredient, volume, price, exclude)
-			var odd = i % 2 ? true : false
-			tr.addClassName(odd ? 'odd' : 'even')
-			tr.odd = odd
-			df.appendChild(tr)
+			tbody.appendChild(tr)
 		}
-		
-		bodyNode.empty()
-		bodyNode.appendChild(df)
 		
 		this.renderTotalPrice(totalPrice)
 	},
 	
 	renderRow : function(ingredient, volume, price, exclude)
 	{
-		var tr = Nc('tr', (exclude ? 'excluded' : 'included'))
-		tr.planRow = true
-		
-		tr.appendChild(this.renderEditButton(ingredient, exclude))
+		tr.planRow = true	
 		tr.appendChild(this.renderName(ingredient))
 		tr.appendChild(this.renderVolume(ingredient, volume, exclude))
 		tr.appendChild(this.renderPrice(price, exclude))
@@ -126,7 +145,7 @@ var myProto =
 	
 	renderName : function(ingredient)
 	{
-		var td = Nc('td', 'item-name')
+		var td = Nc('td', 'item-name tr-content')
 		var name = ingredient.name
 		var brand = ingredient.brand
 		var link = Nct('span', 'link-to-popup', name + (brand ? ' ' + brand : ''))
@@ -137,7 +156,7 @@ var myProto =
 	
 	renderVolume : function(ingredient, volume, exclude)
 	{
-		var td = Nc('td', 'item-volume')
+		var td = Nc('td', 'item-volume tr-content')
 		var volume = Nct('span', 'volume-value', exclude ? 0 : volume)
 		var unit = Nct('span', 'volume-unit', ingredient.unit)
 		td.appendChild(volume)
@@ -147,7 +166,7 @@ var myProto =
 	
 	renderPrice : function(price, exclude)
 	{
-		var td = Nct('td', 'item-price', exclude ? 0 : price)
+		var td = Nct('td', 'item-price tr-content', exclude ? 0 : price)
 		return td
 	},
 	
@@ -164,9 +183,10 @@ var myProto =
 			return
 		var newRow = this.renderRow(ingredient, volume, price, exclude)
 		var parent = this.currentRow.parentNode
-		var odd = this.currentRow.odd
-		newRow.addClassName(odd ? 'odd' : 'even')
-		newRow.odd = odd
+		if(this.currentRow.hasClassName('last'))
+		{
+			newRow.addClassName('last')
+		}
 		parent.insertBefore(newRow, this.currentRow)	
 		parent.removeChild(this.currentRow)
 		this.renderTotalPrice(totalPrice)

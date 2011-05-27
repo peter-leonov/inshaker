@@ -25,30 +25,28 @@ var myProto =
 	{
 		this.nodes = nodes
 		var me = this
-		nodes.body.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
-		nodes.body.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
-		nodes.body.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
-		nodes.body.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
-		nodes.body.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
-		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
+		nodes.wrapper.addEventListener('select', function(e){ me.handleInputSelect(e) }, true)
+		nodes.wrapper.addEventListener('blur', function(e){ me.handleInputBlur(e) }, true)
+		nodes.wrapper.addEventListener('focus', function(e){ me.handleInputFocus(e) }, true)
+		nodes.wrapper.addEventListener('keyup', function(e){ me.handleInputKeyup(e) }, true)
+		nodes.wrapper.addEventListener('keypress', function(e){ me.handleInputKeypress(e) }, true)
+		nodes.wrapper.addEventListener('click', function(e){ me.handleClick(e) }, false)
 	},
 	
 	handleClick : function(e)
 	{
-		var target = e.target
-		
-		var switcher = target.parentNode
-		if(switcher.editableItem)
+		var node = e.target
+		if(node.editableItem)
 		{
-			this.currentRow = this.findRow(switcher)
-			this.controller.editPlanItem(switcher.editableItem, switcher.exclude)
+			this.currentRow = this.findRow(node)
+			this.controller.editPlanItem(node.editableItem, this.currentRow.hasClassName('excluded'))
 			return
 		}
 		
-		if(target.volumeInput)
+		if(node.volumeInput)
 		{
 			var me = this
-			setTimeout(function(){ me.getMarkerPos(target) }, 0)
+			setTimeout(function(){ me.getMarkerPos(node) }, 0)
 		}
 	},
 	
@@ -155,7 +153,7 @@ var myProto =
 	
 	renderVolume : function(ingredient, volume, exclude)
 	{
-		var td = Nc('td', 'item-volume')
+		var td = Nc('td', 'item-volume tr-content')
 		var input = Nc('input', 'volume-value')
 		input.value = exclude ? 0 : volume
 		input.setAttribute('type', 'text')
@@ -169,16 +167,36 @@ var myProto =
 		return td
 	},
 	
+	renderName : function(ingredient)
+	{
+		var td = Nc('td', 'item-name tr-content')
+		var wrapper = Nc('div', 'name-wrapper')
+		var name = ingredient.name
+		var brand = ingredient.brand
+		var link = Nct('span', 'link-to-popup', name + (brand ? ' ' + brand : ''))
+		var editItem = Nc('div', 'edit-item')
+		editItem.editableItem = ingredient
+		link['data-ingredient'] = ingredient
+		wrapper.appendChild(editItem)
+		wrapper.appendChild(link)
+		td.appendChild(wrapper)	
+		return td			
+	},
+	
 	renderRow : function(ingredient, volume, price, exclude)
 	{
 		var tr = Nc('tr', (exclude ? 'excluded' : 'included'))
 		tr.planRow = true
 		
-		var editTd = this.renderEditButton(ingredient, exclude)
+/*		var editTd = this.renderEditButton(ingredient, exclude)
 		tr.appendChild(editTd)
-		tr.edit = editTd.edit
+		tr.edit = editTd.edit*/
+		var trHead = Nc('td', 'tr-padding')
+		tr.appendChild(trHead)
 		
-		tr.appendChild(this.renderName(ingredient))
+		var nameTd = this.renderName(ingredient)
+		tr.appendChild(nameTd)
+		tr.edit = nameTd
 		
 		var volumeTd = this.renderVolume(ingredient, volume, exclude)
 		tr.appendChild(volumeTd)
@@ -187,6 +205,9 @@ var myProto =
 		var priceTd = this.renderPrice(price, exclude)
 		tr.appendChild(priceTd)
 		tr.price = priceTd
+		
+		var trTail = Nc('td', 'tr-padding')
+		tr.appendChild(trTail)
 		
 		return tr
 	},
@@ -223,13 +244,11 @@ var myProto =
 		{
 			tr.removeClassName('included')
 			tr.addClassName('excluded')
-			editNode.exclude = true
 		}
 		else
 		{
 			tr.removeClassName('excluded')
-			tr.addClassName('included')		
-			editNode.exclude = false
+			tr.addClassName('included')
 		}
 		
 		priceNode.empty()
