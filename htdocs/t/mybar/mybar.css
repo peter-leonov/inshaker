@@ -585,8 +585,8 @@ html.loading .main-box { display: none; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper { height: 43px; position: relative; line-height: 42px; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper .edit-item { height: 45px; width: 40px; position: absolute; left: -61px; top: -1px; background: url("/t/mybar/mybar.png") no-repeat -1024px -87px transparent; cursor: pointer; display: none; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tr.excluded .item-name .name-wrapper .edit-item { background-position: -984px -87px; }
-.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume { width: 100px; text-align: left; }
-.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume .volume-value { width: 63px; padding: 5px; margin-right: 5px; border: none; background-color: #e5e5e5; text-align: right; font-size: 18px; color: #3c3c3c; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume { width: 103px; text-align: left; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume .volume-value { width: 63px; padding: 5px; margin: 0px 5px 0px 3px; border: none; background-color: #e5e5e5; text-align: right; font-size: 18px; color: #3c3c3c; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-price { width: 175px; text-align: right; }
 
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr:hover td,
