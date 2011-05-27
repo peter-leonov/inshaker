@@ -121,6 +121,7 @@ var myProto =
 	{
 		if(e.keyCode == 13)
 		{
+			e.preventDefault()
 			e.target.blur()
 		}
 	},
