@@ -566,7 +566,46 @@ html.loading .main-box { display: none; }
 	color: #2b2b2b;
 }
 
+/*purchase-plan*/
+
+.main-box .purchase-plan-box .purchase-table-wrapper { margin: 28px 0px 10px; }
+.main-box .purchase-plan-box .purchase-table-wrapper { color: #3c3c3c; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table { left: -1px; margin-bottom: 30px; position: relative; width: 960px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table th { font-size: 24px; vertical-align: middle; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table td { font-size: 18px; vertical-align: middle; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .tr-padding { width: 20px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table thead th.tr-content { border-bottom: 2px solid #000; height: 48px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody td.tr-content { border-top: 1px solid #e5e5e5; height: 43px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.last td { border-bottom: 1px solid #fff; }
+
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name { width: 640px; text-align: left; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .link-to-popup { cursor: pointer; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .link-to-popup:hover { text-decoration: underline; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper { height: 43px; position: relative; line-height: 42px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper .edit-item { height: 45px; width: 40px; position: absolute; left: -61px; top: -1px; background: url("/t/mybar/mybar.png") no-repeat -1024px -87px transparent; cursor: pointer; display: none; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tr.excluded .item-name .name-wrapper .edit-item { background-position: -984px -87px; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume { width: 100px; text-align: left; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume .volume-value { width: 63px; padding: 5px; margin-right: 5px; border: none; background-color: #e5e5e5; text-align: right; font-size: 18px; color: #3c3c3c; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-price { width: 175px; text-align: right; }
+
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr:hover td,
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.active td { background-color: #e5e5e5; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr:hover .name-wrapper .edit-item,
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.active .name-wrapper .edit-item { display: block; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr:hover .volume-value,
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.active .volume-value { background-color: #cecece; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.excluded .link-to-popup,
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.excluded .link-to-popup:hover{ text-decoration: line-through; }
+
+
+.main-box .purchase-plan-box .total-price-wrapper { margin: 0 20px 35px 0; text-align: right; font-size: 24px; font-weight: bold; }
+
+
 /*fixes*/
+html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
+html.msie .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding { border-bottom: 1px solid #fff; border-collapse: separate; }
+html.msie .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper .edit-item { left: -62px; }
+
 html.opera-9 .ingredient-preview .image:before,
 html.opera-10-0 .ingredient-preview .image:before,
 html.opera-10-1 .ingredient-preview .image:before,
