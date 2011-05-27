@@ -128,7 +128,12 @@ var myProto =
 	
 	handleBarNameBlur : function(e)
 	{
-		this.controller.changeBarName(e.target.innerHTML)
+		var value = ''
+		if(e.target.firstChild)
+		{
+			value = e.target.firstChild.nodeValue
+		}
+		this.controller.changeBarName(value)
 	},
 	
 	onscroll : function()
