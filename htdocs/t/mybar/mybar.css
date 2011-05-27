@@ -17,7 +17,7 @@ html.loading .main-box { display: none; }
 
 .hidden { visibility: hidden; position: absolute !important; top: -20000px !important; }
 
-.main-box .section-head
+.main-box  .wrapper-box .section-head
 {
 	height: 85px;
 	width: 982px;
@@ -26,7 +26,7 @@ html.loading .main-box { display: none; }
 	background: url('/t/mybar/mybar.png') 0px 0px no-repeat;
 }
 
-.main-box .section-head h2
+.main-box .wrapper-box .section-head h2
 { 
 	color: #FFFFFF;
 	font-size: 24px;
@@ -36,7 +36,7 @@ html.loading .main-box { display: none; }
 	text-shadow: 0 0 3px #FFFFFF, 1px 1px 0px #000;
 }
 
-.main-box .section-bottom 
+.main-box .wrapper-box .section-bottom 
 {
 	height: 15px;
 	width: 982px;
@@ -45,15 +45,15 @@ html.loading .main-box { display: none; }
 	background: url('/t/mybar/mybar.png') 0px -85px no-repeat;
 }
 
-.ingredients-box, .cocktails-box, .share-box, .recommends-box { margin: 20px 0px; }
+.wrapper-box, .single-box { margin: 20px 0px; }
 
-.main-box .section-wrapper { background-color: #fff; position: relative; }
-.main-box .section-wrapper .left-shadow, .main-box .section-wrapper .right-shadow { position: absolute; width: 11px; height: 100%; background: url('/t/mybar/mybar.png') repeat-y; }
-.main-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
-.main-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
-.main-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
-.main-box .share-box, .please-wait { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
-.main-box .section-head .links { position: absolute; right: 28px; top: 28px; }
+.main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
+.main-box .wrapper-box .section-wrapper .left-shadow, .main-box .wrapper-box .section-wrapper .right-shadow { position: absolute; width: 11px; height: 100%; background: url('/t/mybar/mybar.png') repeat-y; }
+.main-box .wrapper-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
+.main-box .wrapper-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
+.main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
+.main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
+.main-box .single-box { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
 
 /*ingredient-previews*/
 .main-box .ingredient-preview
@@ -601,6 +601,8 @@ html.loading .main-box { display: none; }
 
 .main-box .purchase-plan-box .total-price-wrapper { margin: 0 20px 35px 0; text-align: right; font-size: 24px; font-weight: bold; }
 
+.main-box .purchase-plan-box .section-head .links .mybar-link { display: block; width: 98px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat -195px -472px transparent; }
+.main-box .purchase-plan-box .section-head .links .mybar-link:hover { background-position: -195px -416px; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
