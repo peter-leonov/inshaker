@@ -577,6 +577,7 @@ html.loading .main-box { display: none; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead th.tr-content { border-bottom: 2px solid #000; height: 48px; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody td.tr-content { border-top: 1px solid #e5e5e5; height: 43px; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.last td { border-bottom: 1px solid #fff; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody .tr-padding { border-top: 1px solid #fff; }
 
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name { width: 640px; text-align: left; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-name .link-to-popup { cursor: pointer; }
