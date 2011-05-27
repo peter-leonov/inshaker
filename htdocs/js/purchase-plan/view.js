@@ -15,26 +15,24 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		this.barName = new MyBarName()
-		this.barName.bind(nodes.barName)
-		
 		this.purchasePlanTable = new PurchasePlanTableEditable()
-		this.purchasePlanTable.bind(nodes.purchasePlan)
+		this.purchasePlanTable.bind(nodes)
 		this.purchasePlanTable.addEventListener('change', function(e){ me.controller.save(e.data) })
 		
 		var me = this
 		
-		nodes.purchasePlan.wrapper.addEventListener('click', function(e){ me.handleTableClick(e) }, false)
+		nodes.wrapper.addEventListener('click', function(e){ me.handleTableClick(e) }, false)
 	},
 
 	handleTableClick : function(e)
 	{
 		var target = e.target
-		if(target.editableItem)
+/*		if(target.editableItem)
 		{
 			this.controller.editPlanItem(target.editableItem, target.exclude)
 			return
-		}
+		}*/
+
 		
 		var ingredient = target['data-ingredient']
 		if(ingredient)
@@ -45,7 +43,11 @@ var myProto =
 
 	renderBarName : function(barName)
 	{
-		this.barName.setMainState(barName)
+		if(barName)
+		{
+			this.nodes.barName.empty()
+			this.nodes.barName.appendChild(T(barName))
+		}
 	},
 	
 	renderPurchasePlan : function(ingredients, volumes, excludes)
