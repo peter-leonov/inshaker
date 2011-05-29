@@ -119,7 +119,7 @@ function onready ()
 		ingredients : {
 			box : $$('#common-main-wrapper .ingredients-box')[0],
 			title : {
-				barName : $$('#common-main-wrapper .ingredients-box .section-head h2 .bar-name')[0],
+				barName : $$('#common-main-wrapper .ingredients-box .section-head h2 .bar-name-editable')[0],
 				advice : $$('#common-main-wrapper .ingredients-box .section-head h2 .advice')[0]
 			},
 			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
@@ -144,7 +144,7 @@ function onready ()
 			hiddenList : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .hidden-cocktails .list')[0],
 			switcher : $$('#common-main-wrapper .cocktails-box .switcher')[0],
 			links : $$('#common-main-wrapper .cocktails-box .section-head .links')[0],
-			empty : $$('#common-main-wrapper .cocktails-box .empty-box')[0]
+			empty : $$('#common-main-wrapper .cocktails-box .empty-notice')[0]
 		},
 		
 		share : {
