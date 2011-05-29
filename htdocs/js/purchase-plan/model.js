@@ -55,12 +55,18 @@ var myProto =
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
 			var name = ingredientNames[i]
-			ingredients.push(Ingredient.getByName(name))
-			ingredients.inBar[name] = true
+			var ingredient = Ingredient.getByName(name)
+			if(ingredient)
+			{
+				ingredients.push(ingredient)
+				ingredients.inBar[name] = true
+			}
 		}
 		return ingredients.sort(function(a, b){
 			if(a.group != b.group)
+			{
 				return Ingredient.sortByGroups(a.name, b.name)
+			}
 				
 			return a.name.localeCompare(b.name)
 		})		
