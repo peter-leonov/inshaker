@@ -55,7 +55,9 @@ var myProto =
 	{
 		this.barName = bar.barName
 		this.ingredients = this.getIngredients(bar.ingredients)
-		this.cocktails = this.computeCocktails(this.ingredients, bar.notAvailableCocktails)
+		
+		var hiddenCocktailsHash = Array.toHash(bar.hiddenCocktails)
+		this.cocktails = this.computeCocktails(this.ingredients, hiddenCocktailsHash)
 		
 		var me = this
 		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
@@ -95,7 +97,7 @@ var myProto =
 		return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
 	},
 	
-	computeCocktails : function(ingredients, notAvailableCocktails)
+	computeCocktails : function(ingredients, hiddenCocktailsHash)
 	{
 		if(Object.isEmpty(ingredients.inBar)) return []
 		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.inBar), {count : 1}),
@@ -108,7 +110,7 @@ var myProto =
 		{
 			var cocktail = needCocktails[i]
 			
-			if(notAvailableCocktails[cocktail.name])
+			if(hiddenCocktailsHash[cocktail.name])
 			{
 				continue
 			}

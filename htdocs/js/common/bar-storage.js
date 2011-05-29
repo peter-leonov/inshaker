@@ -18,7 +18,7 @@ Me =
 			ingredients : [],
 			ingredientsShowType : 'by-list',
 			cocktailsShowType : 'by-pics',
-			notAvailableCocktails : {},
+			//notAvailableCocktails : {},
 			hiddenCocktails : [],
 			currentTag : '',
 			purchasePlanNotices : {},
