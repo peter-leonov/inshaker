@@ -82,23 +82,29 @@ function onready ()
 	
 	var nodes = 
 	{
-		barName : $$('#bar-name h2')[0],
 		title : $$('head title')[0],
+		
+		mainBox : $$('#common-main-wrapper .main-box')[0],
+		
 		ingredients : {
-			list : $$('#output .ingredients-block .list')[0],
-			empty : $$('#output .ingredients-block .empty')[0]
+			box : $$('#common-main-wrapper .ingredients-box')[0],
+			barName : $$('#common-main-wrapper .ingredients-box .section-head h2 .bar-name')[0],
+			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
+			empty : $$('#common-main-wrapper .ingredients-box .empty-notice')[0]
 		},
 		
 		cocktails : {
-			amount : $$('#output .cocktails-block .title .amount')[0],
-			wrapper : $$('#output .cocktails-block .wrapper')[0],
-			empty : $$('#output .cocktails-block .empty')[0]
+			box : $$('#common-main-wrapper .cocktails-box')[0],
+			title : {
+				h2 : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
+				plural : $$('#common-main-wrapper .cocktails-box .section-head h2 .plural')[0]
+			},
+			list : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .cocktails-list')[0],
+			empty : $$('#common-main-wrapper .cocktails-box .empty-notice')[0]
 		},
 		
-		fail : $$('#output .fail')[0],
-		notFail : $$('#output .not-fail')[0],
-		linkToMybar : $$('#output .open-own-bar')[0],
-		output : $('output')
+		failBox : $$('#common-main-wrapper .fail-box')[0],
+		mybarLinkBox : $$('#common-main-wrapper .mybar-link-box')[0]
 	}
 	
 	var widget = new Foreign()
