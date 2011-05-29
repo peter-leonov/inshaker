@@ -8,45 +8,35 @@ var myProto =
 	{
 		this.nodes = nodes
 		var me = this
-		nodes.output.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
+		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 	},
 	
 	renderBarName : function(barName)
 	{
-		barName = barName || 'Безымянный бар'
+		var nodes = this.nodes
+		if(!barName)
+		{
+			return
+		}
 		
-		this.nodes.barName.empty()
-		this.nodes.barName.appendChild(T(barName))
-		this.nodes.title.empty()
-		this.nodes.title.appendChild(T(barName + ' — Inshaker'))
-	},
-	
-	renderLinkToMyBar : function(newbie)
-	{
-		this.nodes.linkToMybar.show()
-		this.nodes.linkToMybar.addClassName(newbie ? 'newbie' : 'not-newbie')
-	},
-	
-	renderIfFail : function(newbie)
-	{
-		this.renderLinkToMyBar(newbie)
-		this.nodes.notFail.hide()
-		this.nodes.fail.show()
-		this.nodes.fail.addClassName(newbie ? 'newbie' : 'not-newbie')
+		nodes.ingredients.barName.empty()
+		nodes.ingredients.barName.appendChild(T(barName))
+		nodes.title.empty()
+		nodes.title.appendChild(T(barName + ' — Inshaker'))
 	},
 	
 	renderIngredients : function(ingredients)
 	{
-		var ingr = this.nodes.ingredients
+		var nodes = this.nodes.ingredients
 		
 		if(ingredients.length == 0)
 		{
-			ingr.list.empty()
-			ingr.empty.show()
+			nodes.list.empty()
+			nodes.empty.show()
 			return
 		}
 		
-		ingr.empty.hide()
+		nodes.empty.hide()
 		
 		var ul = N('ul')
 		for(var i = 0, l = ingredients.length; i < l; i++)
@@ -56,37 +46,50 @@ var myProto =
 			ul.appendChild(li)
 		}
 		
-		ingr.list.empty()
-		ingr.list.appendChild(ul)		
+		nodes.list.empty()
+		nodes.list.appendChild(ul)		
 	},
 	
 	renderCocktails : function(cocktails)
 	{
+		var nodes = this.nodes.cocktails
 		var cl = cocktails.length
-		
-		var c = this.nodes.cocktails
-		c.amount.empty()
-		c.amount.appendChild(T(cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')))
 		
 		if(cocktails.length == 0)
 		{
-			c.empty.show()
-			c.wrapper.hide()
+			nodes.empty.show()
+			nodes.title.h2.addClassName('empty')
+			nodes.list.hide()
 			return
 		}
 		
-		c.empty.hide()
+		nodes.title.h2.removeClassName('empty')
+		nodes.title.plural.appendChild(T(cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')))
+		nodes.empty.hide()
 		
-		var ul = Nc('ul', 'photos-list')
-		for (var i = 0, il = cocktails.length; i < il; i++) 
+		var ul = Nc('ul', 'by-pics')
+		for (var i = 0; i < cl; i++) 
 		{
 			var cNode = cocktails[i].getPreviewNode()
 			ul.appendChild(cNode)
 		}
-		c.wrapper.empty()
-		c.wrapper.appendChild(ul)
-		
-		c.wrapper.show()		
+		nodes.list.empty()
+		nodes.list.appendChild(ul)
+		nodes.list.show()		
+	},
+	
+	renderLinkToMyBar : function(newbie)
+	{
+		this.nodes.mybarLinkBox.addClassName(newbie ? 'newbie' : 'not-newbie')
+	},
+	
+	renderIfFail : function(newbie)
+	{
+		var nodes = this.nodes
+		nodes.ingredients.box.hide()
+		nodes.cocktails.box.hide()
+		nodes.failBox.show()
+		this.renderLinkToMyBar(newbie)
 	},
 	
 	maybeIngredientClicked : function(target)
