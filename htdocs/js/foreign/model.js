@@ -44,14 +44,18 @@ var myProto =
 		
 		var userid = window.location.hash.substr(1)
 		
-		BarStorage.initBar(function(bar, newbie){ me.newbie = newbie; getForeignBar(userid) })
+		BarStorage.initBar(function(bar, newbie)
+		{
+			me.newbie = newbie
+			getForeignBar(userid)			
+		})
 	},
 
 	setBar : function(bar)
 	{
 		this.barName = bar.barName
 		this.ingredients = this.getIngredients(bar.ingredients)
-		this.cocktails = this.computeCocktails(this.ingredients)
+		this.cocktails = this.computeCocktails(this.ingredients, bar.notAvailableCocktails)
 		
 		var me = this
 		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
@@ -62,9 +66,9 @@ var myProto =
 	setMainState : function()
 	{
 		this.view.renderBarName(this.barName)
-		this.view.renderLinkToMyBar(this.newbie)
 		this.view.renderIngredients(this.ingredients)
 		this.view.renderCocktails(this.cocktails)
+		this.view.renderLinkToMyBar(this.newbie)
 	},
 	
 	sortByUsage : function(a, b)
@@ -91,7 +95,7 @@ var myProto =
 		return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
 	},
 	
-	computeCocktails : function(ingredients)
+	computeCocktails : function(ingredients, notAvailableCocktails)
 	{
 		if(Object.isEmpty(ingredients.inBar)) return []
 		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.inBar), {count : 1}),
@@ -103,6 +107,12 @@ var myProto =
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )
 		{
 			var cocktail = needCocktails[i]
+			
+			if(notAvailableCocktails[cocktail.name])
+			{
+				continue
+			}
+			
 			var ing = cocktail.ingredients
 			for (var j = 0, jl = ing.length; j < jl; j++)
 			{
