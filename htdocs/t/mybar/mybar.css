@@ -53,7 +53,7 @@ html.loading .main-box { display: none; }
 .main-box .wrapper-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
 .main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
-.main-box .single-box { height: 42px; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
+.main-box .single-box { height: 42px; position: relative; background: url("/t/mybar/mybar.png") no-repeat -11px -103px transparent; }
 
 /*ingredient-previews*/
 .main-box .ingredient-preview
@@ -598,11 +598,12 @@ html.loading .main-box { display: none; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.excluded .link-to-popup,
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.excluded .link-to-popup:hover{ text-decoration: line-through; }
 
-
 .main-box .purchase-plan-box .total-price-wrapper { margin: 0 20px 35px 0; text-align: right; font-size: 24px; font-weight: bold; }
 
 .main-box .purchase-plan-box .section-head .links .mybar-link { display: block; width: 98px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat -195px -472px transparent; }
 .main-box .purchase-plan-box .section-head .links .mybar-link:hover { background-position: -195px -416px; }
+.main-box .print-link-box .print-link { position: absolute; left: 20px; top: 6px; height: 30px; width: 174px; background: url("/t/mybar/mybar.png") no-repeat -298px -456px transparent; }
+.main-box .print-link-box .print-link:hover { background-position: -298px -424px; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
