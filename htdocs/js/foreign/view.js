@@ -36,8 +36,6 @@ var myProto =
 			return
 		}
 		
-		nodes.empty.hide()
-		
 		var ul = N('ul')
 		for(var i = 0, l = ingredients.length; i < l; i++)
 		{
@@ -58,14 +56,12 @@ var myProto =
 		if(cocktails.length == 0)
 		{
 			nodes.empty.show()
-			nodes.title.h2.addClassName('empty')
+			nodes.title.h2.addClassName('zero-cocktails')
 			nodes.list.hide()
 			return
 		}
 		
-		nodes.title.h2.removeClassName('empty')
 		nodes.title.plural.appendChild(T(cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')))
-		nodes.empty.hide()
 		
 		var ul = Nc('ul', 'by-pics')
 		for (var i = 0; i < cl; i++) 
@@ -75,7 +71,6 @@ var myProto =
 		}
 		nodes.list.empty()
 		nodes.list.appendChild(ul)
-		nodes.list.show()		
 	},
 	
 	renderLinkToMyBar : function(newbie)
