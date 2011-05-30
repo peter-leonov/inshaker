@@ -43,7 +43,9 @@ var myProto =
 			for (var i = 0; i < alcoLen; i++) 
 			{
 				var cocktail = alcoholCocktails[i]
-				df.appendChild(renderCocktail(cocktail))
+				var li = renderCocktail(cocktail)
+				li.addClassName(i%2 ? 'odd' : 'even')
+				df.appendChild(li)
 			}
 			nodes.alcohol.list.appendChild(df)
 		}
@@ -58,8 +60,10 @@ var myProto =
 			var df = document.createDocumentFragment()
 			for (var i = 0; i < nonAlcoLen; i++) 
 			{
-				var cocktail = nonAlcoholCocktails[i]
-				df.appendChild(renderCocktail(cocktail))
+				var cocktail = alcoholCocktails[i]
+				var li = renderCocktail(cocktail)
+				li.addClassName(i%2 ? 'even' : 'odd')
+				df.appendChild(li)
 			}
 			nodes.nonAlcohol.list.appendChild(df)
 		}

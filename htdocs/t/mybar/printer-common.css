@@ -31,8 +31,9 @@ html.loading #common-main-wrapper { display: none; }
 #common-main-wrapper .content .black-sticker { position: relative; left: -55px; }
 #common-main-wrapper .content .alcohol-box, #common-main-wrapper .content .non-alcohol-box { margin-top: 53px; }
 #common-main-wrapper .content .cocktail-list { margin-top: 18px; overflow: hidden; }
-#common-main-wrapper .content .cocktail-list .cocktail { width: 480px; height: 125px; float: left; }
-#common-main-wrapper .content .cocktail-list .cocktail table { width: 420px; height: 100%; }
+#common-main-wrapper .content .cocktail-list .cocktail { width: 460px; height: 125px; float: left; }
+#common-main-wrapper .content .cocktail-list .cocktail.even { margin-right: 40px; }
+#common-main-wrapper .content .cocktail-list .cocktail table { height: 100%; }
 #common-main-wrapper .content .cocktail-list .cocktail td { vertical-align: middle; }
 #common-main-wrapper .content .cocktail-list .cocktail .img-td { width: 60px; }
 #common-main-wrapper .content .cocktail-list .cocktail .img-link { display: block; }
