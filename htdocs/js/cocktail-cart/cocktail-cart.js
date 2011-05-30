@@ -47,14 +47,14 @@ function onready ()
 		
 		alcohol :
 		{
-			box :  $$('#common-main-wrapper .alcohol-box')[0],
-			list : $$('#common-main-wrapper .alcohol-box .cocktail-list')[0]
+			box :  $$('#common-main-wrapper .cocktail-cart-box .alcohol-box')[0],
+			list : $$('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list')[0]
 		},
 		
 		nonAlcohol :
 		{
-			box :  $$('#common-main-wrapper .non-alcohol-box')[0],
-			list : $$('#common-main-wrapper .non-alcohol-box .cocktail-list')[0]
+			box :  $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box')[0],
+			list : $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box .cocktail-list')[0]
 		}
 	}
 	

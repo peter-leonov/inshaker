@@ -1,6 +1,6 @@
 #common-main-wrapper { width: auto; margin: 0; }
 #common-main-wrapper .header h1 { font-size: 18px; padding-top: 0; }
 #common-main-wrapper .header .logo img { width: 80px; }
-#common-main-wrapper .content .black-sticker { width: 100px; left: 0; }
+#common-main-wrapper .cocktail-cart-box .black-sticker { width: 100px; left: 0; }
 
 html.opera #common-main-wrapper .header h1 .bar-name { color: #000; }
