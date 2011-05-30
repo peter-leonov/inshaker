@@ -36,7 +36,7 @@ html.loading #common-main-wrapper { display: none; }
 #common-main-wrapper .content .cocktail-list .cocktail td { vertical-align: middle; }
 #common-main-wrapper .content .cocktail-list .cocktail .img-td { width: 60px; }
 #common-main-wrapper .content .cocktail-list .cocktail .img-link { display: block; }
-#common-main-wrapper .content .cocktail-list .cocktail .img-link img { width: 60px; }
+#common-main-wrapper .content .cocktail-list .cocktail .img-link img { width: 60px; height: 113px; }
 #common-main-wrapper .content .cocktail-list .cocktail .recipe-td { padding-left: 20px; }
 #common-main-wrapper .content .cocktail-list .cocktail .cocktail-name { font-size: 18px; }
 #common-main-wrapper .content .cocktail-list .cocktail .cocktail-recipe { position: relative; left: 1px; top: 3px; }
