@@ -98,9 +98,8 @@ var myProto =
 				var brand = ingObj.brand
 				recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 8 ? ' ' + ing[1] : ''))
 			}
-			recipeTd.appendChild(N('br'))
-			var recipeSpan = Nct('span', 'cocktail-recipe', recipe.join(', '))
-			recipeTd.appendChild(recipeSpan)		
+			var recipeDiv = Nct('div', 'cocktail-recipe', recipe.join(', '))
+			recipeTd.appendChild(recipeDiv)		
 			tr.appendChild(recipeTd)
 			
 			table.appendChild(tr)

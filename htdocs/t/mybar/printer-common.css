@@ -40,4 +40,4 @@ html.loading #common-main-wrapper { display: none; }
 #common-main-wrapper .content .cocktail-list .cocktail .img-link img { width: 60px; height: 113px; }
 #common-main-wrapper .content .cocktail-list .cocktail .recipe-td { padding-left: 20px; }
 #common-main-wrapper .content .cocktail-list .cocktail .cocktail-name { font-size: 18px; }
-#common-main-wrapper .content .cocktail-list .cocktail .cocktail-recipe { position: relative; left: 1px; top: 3px; }
+#common-main-wrapper .content .cocktail-list .cocktail .cocktail-recipe { padding: 3px 0px 0px 1px; }
