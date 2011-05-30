@@ -26,7 +26,6 @@ html.loading #common-main-wrapper { display: none; }
 #common-main-wrapper .header .logo { position: absolute; right: 0; top: 0; }
 #common-main-wrapper .header h1 { padding-top: 7px; font-size: 24px; color: #bdbdbd; }
 #common-main-wrapper .header h1 .bar-name { color: #ec118f; }
-#common-main-wrapper .header h1 .label { color: #bdbdbd; }
 
 #common-main-wrapper .content .black-sticker { position: relative; left: -55px; }
 #common-main-wrapper .content .alcohol-box, #common-main-wrapper .content .non-alcohol-box { margin-top: 53px; }
