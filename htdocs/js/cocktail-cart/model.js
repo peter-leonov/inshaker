@@ -110,7 +110,7 @@ var myProto =
 		for (var i = 0, il = cocktails.length; i < il; i++) 
 		{
 			var cocktail = cocktails[i]
-			if(cocktail.tags.indexOf('Алкогольные') != -1)
+			if(cocktail.tags.indexOf('Безалкогольные') == -1)
 			{
 				alcoholCocktails.push(cocktail)
 			}
