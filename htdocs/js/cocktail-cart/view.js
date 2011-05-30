@@ -62,7 +62,7 @@ var myProto =
 			{
 				var cocktail = nonAlcoholCocktails[i]
 				var li = renderCocktail(cocktail)
-				li.addClassName(i%2 ? 'even' : 'odd')
+				li.addClassName(i%2 ? 'odd' : 'even')
 				df.appendChild(li)
 			}
 			nodes.nonAlcohol.list.appendChild(df)
