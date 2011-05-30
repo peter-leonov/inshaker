@@ -279,7 +279,7 @@ var myProto =
 			var notMatched = {}
 			var matched = {}
 			
-			if(cocktailsHash[name])
+			if(cocktailsHash[name] || this.hiddenCocktailsHash[name])
 				continue
 			
 			var set = cocktail.ingredients
