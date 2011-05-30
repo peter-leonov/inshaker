@@ -60,7 +60,7 @@ var myProto =
 			var df = document.createDocumentFragment()
 			for (var i = 0; i < nonAlcoLen; i++) 
 			{
-				var cocktail = alcoholCocktails[i]
+				var cocktail = nonAlcoholCocktails[i]
 				var li = renderCocktail(cocktail)
 				li.addClassName(i%2 ? 'even' : 'odd')
 				df.appendChild(li)
