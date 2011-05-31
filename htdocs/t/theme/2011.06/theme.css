@@ -11,13 +11,13 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 95px; height: 40px; right: 0; top: -5px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.jpg); width: 570px; height: 760px; left: 50px; bottom: -845px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 672px; height: 648px; left: -30px; bottom: -800px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #top .nav a:hover { border-bottom-color: #ab0e1c; }
-#bottom { color: #6c6c6c; }
-#bottom a { color: #fff; background-color: #141314; }
-html { background: #141314; }
+#bottom { color: #bfa452; }
+#bottom a { color: #000; background-color: #fff; }
+html { background: #fff url(bg.png) center 75px; }
 button.rounded b { text-shadow: 1px 1px 0 #622; }
 button.strong b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
 
