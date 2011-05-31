@@ -28,8 +28,8 @@ var Me =
 
 Me.initialize
 ({
-	"spotlighted":{"href":"/cocktails.html#state=byIngredients&marks=Beefeater"},
-	"branded-image":{"href":"/cocktails.html#state=byIngredients&marks=Beefeater"}
+	"spotlighted":{"href":"/cocktail/home_margarita/"},
+	"branded-image":{"href":"/cocktail/home_margarita/"}
 })
 
 Me.bind()
