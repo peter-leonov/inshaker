@@ -39,6 +39,7 @@ http://www.inshaker.ru/cocktail/watermelon_sling/
 http://www.inshaker.ru/cocktail/watermelon_thai_sling/
 http://www.inshaker.ru/cocktail/watermelon_ale/
 http://www.inshaker.ru/cocktail/arnaud/
+http://www.inshaker.ru/cocktail/acai_sour/
 http://www.inshaker.ru/cocktail/aztec/
 http://www.inshaker.ru/cocktail/b-52/
 http://www.inshaker.ru/cocktail/baba_tanya/
@@ -82,6 +83,7 @@ http://www.inshaker.ru/cocktail/borodinsky/
 http://www.inshaker.ru/cocktail/boston_tea/
 http://www.inshaker.ru/cocktail/bowling_in_tu-154/
 http://www.inshaker.ru/cocktail/keg_with_honey/
+http://www.inshaker.ru/cocktail/brazilian_lemonade/
 http://www.inshaker.ru/cocktail/brazilian/
 http://www.inshaker.ru/cocktail/brandy_alexander/
 http://www.inshaker.ru/cocktail/brandy_buck/
@@ -472,6 +474,7 @@ http://www.inshaker.ru/cocktail/mar_del_plata/
 http://www.inshaker.ru/cocktail/margarita/
 http://www.inshaker.ru/cocktail/margarita_hibiscus/
 http://www.inshaker.ru/cocktail/home_margarita/
+http://www.inshaker.ru/cocktail/home_margarita_2/
 http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
@@ -743,6 +746,7 @@ http://www.inshaker.ru/cocktail/spice_girls/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/style_martini/
 http://www.inshaker.ru/cocktail/old_fashioned/
+http://www.inshaker.ru/cocktail/peel_infused_old_fashioned/
 http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
 http://www.inshaker.ru/cocktail/old_fashioned_with_tequila/
 http://www.inshaker.ru/cocktail/way_of_life/
