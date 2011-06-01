@@ -59,6 +59,6 @@ Object.extend(Me, staticMethods)
 Me.className = myName
 self[myName] = Me
 
-Me.initialize(<!--# include file="/db/ingredients/marks.json"-->)
+Me.initialize(<!--# include virtual="/db/ingredients/marks.json"-->)
 
 })();

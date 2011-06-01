@@ -1,6 +1,10 @@
 <script>;(function(){
-var names = ['vanilia', 'citron', 'pears', 'kurant']
-var name = names[(new Date().getDate() - 1) % names.length] || names[0]
+var date = new Date().getDate()
+var name = 'vanilia'
+if (date >= 18 && date < 25)
+	name = 'pears'
+if (date >= 25)
+	name = 'kurant'
 var prefix = '/t/theme/2011.05/' + name + '/'
 
 var link = document.createElement('link')

@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html class="about-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<!--# include file="/inc/head.html" -->
+	<!--# include virtual="/inc/head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/about.css" media="screen"/>
 	<title>Inshaker — Коктейльный сайт</title>
 </head>
 <body>
-<!--# include file="/inc/top-common.html" -->
+<!--# include virtual="/inc/top-common.html" -->
 <div id="main-wrapper">
 	
 	<div class="column-main-container">
@@ -23,7 +23,7 @@
 						</p>
 						<!-- <img src="/t/bg/about/poster.jpg" width="590" height="140" id="poster"/> -->
 					</div></div>
-					<div class="view-about content">
+					<div class="view-about content" class="hidden">
 						<div class="section">
 						<h3>Почему люди доверяют коктейлям на Inshaker.ru?</h3>
 						<p>На коктейльном сайте можно увидеть, но нельзя попробовать. Понимая это, мы размещаем только интересную, качественную и проверенную информацию. Все коктейли готовятся руками сильнейших профессионалов, из натуральных ингредиентов и проходят дегустацию коктейльными друзьями. Только после этого, фотографии коктейлей попадают в коктейльную фотообработку, а рецепты в коктейльную корректировку. И наконец, полностью проверенные коктейли размещаются на сайте.</p>
@@ -108,14 +108,14 @@
 			<div class="b-title">
 				<h2>Быстросвязь</h2>
 			</div>
-			<form action="/act/info.cgi" method="post" target="ajax" onsuccess="AboutPage.formSuccess()" onerror="alert('При отправке произошла ошибка. Попробуй еще раз.')" id='feedback_form'>
+			<form action="/act/info.cgi" method="post" target="ajax" id='feedback_form'>
 				<label>Меня зовут		<input type="text" name="name" value=""></label>
 				<label>Мой телефон или email	<input type="text" name="address" value=""></label>
 				<label>Я из компании	<input type="text" name="company" value=""></label>
 				<label>Мое предложение или вопрос		<textarea name="text" rows="11" cols="40"></textarea></label>
 				<p><button class="bt-send rounded tiny" type="submit"><b>Отправить</b></button></p>
 			</form>
-			<div id="form_success">
+			<div id="form_success" class="hidden">
 				<i></i>
 				Сообщение отправлено
 				<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
@@ -123,11 +123,11 @@
 		</div>
 	</div>
 </div>
-<!--# include file="/inc/bottom-common.html" -->
+<!--# include virtual="/inc/bottom-common.html" -->
 <script type="text/javascript" src="/js/common/oops.js"></script>
-<!--[if lte IE 7]><script type="text/javascript" src="/lib/Programica/Fixes/Trident.js"></script><![endif]-->
-<!--[if IE 8]><script type="text/javascript" src="/lib/Programica/Fixes/Trident8.js"></script><![endif]-->
-<script type="text/javascript" src="/js/common/common.js"></script>
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/about/about.js"></script>
 </body>
 </html>

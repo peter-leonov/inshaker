@@ -91,4 +91,4 @@ Object.extend(Event,
 	}
 })
 
-Event.initialize(<!--# include file="/db/events/events.json" -->)
+Event.initialize(<!--# include virtual="/db/events/events.json" -->)

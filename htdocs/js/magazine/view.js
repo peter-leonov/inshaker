@@ -14,11 +14,11 @@ MagazinePageView.prototype =
 		this.switchBlock = false
 		this.blockNames = ['special', 'pop', 'author', 'classic']
 		
-		new Programica.RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+		new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
 		
 		var cocktails = nodes.cocktails
 		for(var i = 0; i < cocktails.length; i++)
-			new Programica.RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
+			new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
 	},
 	
 	start: function ()

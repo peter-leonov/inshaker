@@ -40,7 +40,6 @@ var Controller = {
 
 	name : "",
 	relatedCount: 10,
-    currentlyShownIngred: "",
 	
 	init: function(){
 		this.name = $(this.NAME_ELEM).getAttribute('data-cocktail-name');
@@ -199,35 +198,6 @@ var Controller = {
 		
 	},
 	
-	renderPopup: function(name){
-        this.currentlyShownIngred = name
-		var ingredient = Ingredient.getByName(name)
-		Statistics.ingredientPopupOpened(ingredient)
-		
-		var good = Good.getBySellName(name)[0]
-		
-		$('good_name').innerHTML = ingredient.brand || name;
-		if(ingredient.mark){ // branded
-			$('good_composition').style.display = "block";
-			$('good_mark').innerHTML = ingredient.mark;
-            $('good_mark').href = Ingredient.ingredientsLinkByMark(ingredient.mark);
-			$('good_ingredient').innerHTML = name;
-			$('good_ingredient').href = GoodHelper.ingredientLink(name);
-		} else $('good_composition').style.display = "none";
-		
-		if (good)
-		{
-			$('good_buy').parentNode.show()
-			$('good_buy').href = good.getHref()
-			$('good_buy').innerHTML = good.name
-		}
-		else
-			$('good_buy').parentNode.hide()
-		
-		$('good_desc').innerHTML = ingredient.about;
-		$('good_picture').src = ingredient.getMainImageSrc()
-	},
-	
 	renderToolPopup: function(tool){
 		Statistics.toolPopupOpened(tool)
 		var good = Good.getBySellName(tool.name)[0]
@@ -368,14 +338,10 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 
-    showPopup: function(ingred) {
-        if(Calculator.isIngredientPresent(ingred)) 
-            Calculator.showPopup(ingred);
-        else { 
-            $(this.INGRED_POPUP).show(); 
-            this.renderPopup(ingred); 
-        } 
-    },
+	showPopup: function(name)
+	{
+		IngredientPopup.show(Ingredient.getByName(name))
+	},
 
 	renderIngredients: function(ingredients) {
 		var perPage = 3;

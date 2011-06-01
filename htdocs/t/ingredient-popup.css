@@ -1,10 +1,3 @@
-<!--# include virtual="/t/popup.css" -->
-
-.popup .popup-controls,
-.popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
-.popup .popup-controls { height: 10px; }
-.popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
-
 .ingredient-window { position: relative; min-height: 200px; padding: 30px 0 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
 .ingredient-window .description { overflow: hidden; }
 .ingredient-window .photo { float: left; position: relative; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
@@ -37,15 +30,33 @@
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
 .ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
 
-.cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
-.cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
-.cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
-.cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+.ingredient-window .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
+.ingredient-window .cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
+.ingredient-window .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.ingredient-window .cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
-.cocktail-list .prev .spacer,
-.cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
+.ingredient-window .cocktail-list .prev .spacer,
+.ingredient-window .cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
 
-.ingredient-window .in-bar { margin-bottom: 10px; }
-.ingredient-window .in-bar .add, .ingredient-window .in-bar .remove { display: none; cursor: pointer; border-bottom: 1px dashed; }
-.ingredient-window .in-bar.have .remove{ display: inline; }
-.ingredient-window .in-bar.no-have .add { display: inline; }
+.ingredient-info-popup .popup-controls,
+.ingredient-info-popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.ingredient-info-popup .popup-controls { height: 10px; }
+.ingredient-info-popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
+
+
+
+html.msie-6 .ingredient-info-popup .window { zoom: 1; }
+html.msie-6 .ingredient-info-popup .popup-back { height: 10000px; }
+
+
+html.msie-6 .ingredient-info-popup .popup-controls .cross,
+html.msie-7 .ingredient-info-popup .popup-controls .cross,
+html.msie-8 .ingredient-info-popup .popup-controls .cross,
+html.opera-9 .ingredient-info-popup .popup-controls .cross,
+html.opera-10 .ingredient-info-popup .popup-controls .cross { right: 0px; top: -14px; }
+
+html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
+html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
+
+/*html.msie-7 body { position: relative; }
+html.firefox-2 body { position: relative; height: none; }*/

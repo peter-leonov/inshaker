@@ -1,4 +1,4 @@
-<!--# include file="/js/printer/printer.js" -->
+<!--# include virtual="/js/printer/printer.js" -->
 
 ;(function(){
 

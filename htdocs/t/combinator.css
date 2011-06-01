@@ -2,7 +2,6 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 body { position: static; min-height: 100%; }
 
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
-.popup.hidden .popup-front { top: 0 !important; }
 
 #branded-image-holder { display: none; }
 
@@ -148,14 +147,8 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-
-<!--# include virtual="/t/ingredient-popup.css" -->
-
-
-html.msie-7 body { position: relative; }
-
-html.msie-6 .popup .window { zoom: 1; }
-html.msie-6 #ingredient-info-popup.popup .popup-back { height: 10000px; }
+<!--# include virtual="popup.css" -->
+<!--# include virtual="ingredient-popup.css" -->
 
 html.msie-6 .ingredients-list .group .list,
 html.msie-7 .ingredients-list .group .list { zoom: 1; }
@@ -191,14 +184,5 @@ html.msie-7 #search-box .autocomplete { top: 28px; border-color: #aab; }
 html.msie-8 #search-box .autocomplete { top: 27px; border-color: #aab; }
 html.msie-9 #search-box .autocomplete { top: 28px; border-color: #bcd; }
 
-
-html.msie-6 .popup .popup-controls .cross,
-html.msie-7 .popup .popup-controls .cross,
-html.msie-8 .popup .popup-controls .cross,
-html.opera-9 .popup .popup-controls .cross,
-html.opera-10 .popup .popup-controls .cross { right: 0px; top: -14px; }
-
-html.opera-9 .ingredient-window .cocktail-list .viewport .surface,
-html.opera-10 .ingredient-window .cocktail-list .viewport .surface { width: 30000px; }
-
+html.msie-7 body { position: relative; }
 html.firefox-2 body { position: relative; height: none; }

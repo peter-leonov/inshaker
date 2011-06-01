@@ -22,11 +22,12 @@ var AboutPage = {
 	init: function ()
 	{
 		var main = $('menu')
-		var tabs = cssQuery('.content')
-		var buttons = cssQuery('#menu a')
+		var tabs = $$('.content')
+		var buttons = $$('#menu a')
 		
-		LocationHash.bind(location)
-		var name = LocationHash.get()
+		var locationHash = new LocationHash()
+		locationHash.bind()
+		var name = locationHash.get()
 		
 		// var hrefs = ['view-about', 'view-cocktail-friend', 'view-stat']
 		var hrefs = tabs.map(function (v) { return String(v.className).split(/\s+/)[0] })
@@ -36,7 +37,7 @@ var AboutPage = {
 		sw.select(selected >= 0 ? selected : 0)
 		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
-		LocationHash.onchange = function (now, last) { sw.select(hrefs.indexOf(now)); log(now) }
+		locationHash.addEventListener('change', function () { sw.select(hrefs.indexOf(this.get())) }, false)
 		
 		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
 		line.addVariable("path", "stat/amcharts/");
@@ -52,22 +53,46 @@ var AboutPage = {
 		pie.addVariable("data_file", escape("stat/cities/data.xml"));		
 		pie.addVariable("preloader_color", "#999999");
 		pie.write("stat_cities");
+		
+		var form = $('feedback_form')
+		function sendListener (e)
+		{
+			e.preventDefault()
+			
+			function sent (e)
+			{
+				if (e.type == 'success')
+				{
+					AboutPage.formSuccess()
+				}
+				else
+				{
+					alert('Произошла ошибка! Пожалуйста, сообщите о ней по адресу support@inshaker.ru')
+				}
+			}
+			
+			Request.post(this.action, FormHelper.toHash(this), sent)
+		}
+		form.addEventListener('submit', sendListener,  false)
 	}
 };
 
 $.onready(function(){
 	AboutPage.init();
-	new Programica.RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
+	new RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
 
-<!--# include file="/lib/Programica/Request.js" -->
-<!--# include file="/lib/Programica/Form.js" -->
-<!--# include file="/lib/Programica/LocationHash.js" -->
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/request.js" -->
 
-<!--# include file="/lib/Programica/Widget.js" -->
-<!--# include file="/lib/Widgets/FormPoster.js" -->
-<!--# include file="/lib/Widgets/RollingImagesLite.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
+
+<!--# include virtual="/js/common/switcher.js" -->
 
 <!--# include virtual="swfobject.js" -->
 

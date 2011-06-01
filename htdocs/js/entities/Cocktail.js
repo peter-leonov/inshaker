@@ -386,9 +386,9 @@ Object.extend(Cocktail,
 
 Cocktail.initialize
 (
-	<!--# include file="/db/cocktails/cocktails.json" -->,
-	<!--# include file="/db/cocktails/groups.json" -->,
-	<!--# include file="/db/cocktails/strengths.json" -->,
-	<!--# include file="/db/cocktails/methods.json" -->,
-	<!--# include file="/db/cocktails/tags.json" -->
+	<!--# include virtual="/db/cocktails/cocktails.json" -->,
+	<!--# include virtual="/db/cocktails/groups.json" -->,
+	<!--# include virtual="/db/cocktails/strengths.json" -->,
+	<!--# include virtual="/db/cocktails/methods.json" -->,
+	<!--# include virtual="/db/cocktails/tags.json" -->
 )

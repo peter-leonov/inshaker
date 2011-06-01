@@ -11,6 +11,9 @@ CocktailsPage =
 
 $.onready(
 	function () {
+		UserAgent.setupDocumentElementClassNames()
+		IngredientPopup.bootstrap()
+		
 		var nodes = {
 			bodyWrapper: $$('#main-wrapper .body-wrapper')[0],
 			resultsDisplay: $('results_display'),
@@ -86,12 +89,12 @@ $.onready(
 )
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
-<!--# include file="/lib-0.3/modules/regexp-escape.js" -->
-<!--# include file="/js/common/switcher.js" -->
-<!--# include file="/js/common/nodes-shortcut.js" -->
-<!--# include file="/js/common/mvc.js" -->
-<!--# include file="/js/common/autocompleter-2.js" -->
-<!--# include file="/js/cocktails/model.js" -->
-<!--# include file="/js/cocktails/ingredients-searcher.js" -->
-<!--# include file="/js/cocktails/view.js" -->
-<!--# include file="/js/cocktails/controller.js" -->
+<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
+<!--# include virtual="/js/common/switcher.js" -->
+<!--# include virtual="/js/common/nodes-shortcut.js" -->
+<!--# include virtual="/js/common/mvc.js" -->
+<!--# include virtual="/js/common/autocompleter-2.js" -->
+<!--# include virtual="/js/cocktails/model.js" -->
+<!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
+<!--# include virtual="/js/cocktails/view.js" -->
+<!--# include virtual="/js/cocktails/controller.js" -->

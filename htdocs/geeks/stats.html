@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<!--# include file="/inc/head.html" -->
+	<!--# include virtual="/inc/head.html" -->
 	<title>Статистика по браузерам — Inshaker</title>
 	<style>
 	.stat { position: relative; margin: 20px 0 0 0; }
@@ -15,7 +15,7 @@
 	</style>
 </head>
 <body>
-<!--# include file="/inc/top-common.html" -->
+<!--# include virtual="/inc/top-common.html" -->
 <div id="main-wrapper">
 	<div class="column"><div class="body-wrapper">
 		<div class="b-title">
@@ -40,9 +40,9 @@
 		</div>
 	</div></div>
 </div>
-<!--# include file="/inc/bottom-common.html" -->
+<!--# include virtual="/inc/bottom-common.html" -->
 <script type="text/javascript" src="/js/common/oops.js"></script>
-<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/about/swfobject.js"></script>
 <script>
 function onready ()
@@ -61,9 +61,15 @@ function onready ()
 	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
 	line.write('stat-browsers-plain')
 	
-	new Programica.RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
+	new RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
+
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
+
 </script>
 </body>
 </html>
