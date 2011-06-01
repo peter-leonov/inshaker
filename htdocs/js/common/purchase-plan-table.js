@@ -79,14 +79,11 @@ var myProto =
 			var ingredient = ingredients[i]
 			if(groupName != ingredient.group)
 			{
-				groupName = ingredient.group
-				
-				if(i != 0)
+				if(tr && i)
 				{
 					tr.addClassName('last')
-					wrapper.appendChild(table)
 				}
-				
+				groupName = ingredient.group
 				var table = Nc('table', 'group-table')
 				var thead = N('thead')
 				var tbody = N('tbody')
@@ -106,6 +103,7 @@ var myProto =
 				
 				table.appendChild(thead)
 				table.appendChild(tbody)
+				wrapper.appendChild(table)
 			}
 			
 			var name = ingredient.name
@@ -116,6 +114,7 @@ var myProto =
 			var tr = this.renderRow(ingredient, volume, price, exclude)
 			tbody.appendChild(tr)
 		}
+		tr.addClassName('last')
 		
 		this.renderTotalPrice(totalPrice)
 	},
