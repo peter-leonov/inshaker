@@ -26,6 +26,9 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
+	
+<!--# include virtual="/lib-0.3/modules/child-indexed-path.js" -->
+<!--# include virtual="/lib-0.3/modules/cloner.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/mybar-name.js" -->
@@ -44,18 +47,12 @@ function onready ()
 	var nodes = 
 	{
 		barName : $$('#common-main-wrapper .header .bar-name')[0],
-		
-		alcohol :
-		{
-			box :  $$('#common-main-wrapper .cocktail-cart-box .alcohol-box')[0],
-			list : $$('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list')[0]
-		},
-		
-		nonAlcohol :
-		{
-			box :  $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box')[0],
-			list : $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box .cocktail-list')[0]
-		}
+		pageWrapper : $$('#common-main-wrapper .page-wrapper')[0],
+		alcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .alcohol-box')[0],
+		alcoholList : $$('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list')[0],
+		nonAlcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box')[0],
+		nonAlcoholList : $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box .cocktail-list')[0],
+		main : $$('#common-main-wrapper')[0]
 	}
 	
 	var widget = new CocktailCart()

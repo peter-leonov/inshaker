@@ -8,13 +8,19 @@ var myProto =
 	bind : function (nodes)
 	{
 		this.nodes = nodes
-		
 		var me = this
 		
-		//nodes.barMenu.wrapper.addEventListener('click', function(e){ me.handleBarMenuClick(e) }, false)
+		var cloner = this.cloner = new Cloner()
+		var cloneNodes = 
+		{
+			alcoholBox : nodes.alcoholBox,
+			alcoholList : nodes.alcoholList,
+			nonAlcoholBox : nodes.nonAlcoholBox,
+			nonAlcoholList : nodes.nonAlcoholList
+		}
+		cloner.bind(nodes.pageWrapper, cloneNodes)
 		
-		//this.barName = new MyBarName()
-		//this.barName.bind(nodes.barName)
+		var clone = cloner.create()
 	},
 	
 	renderBarName : function(barName)
@@ -31,41 +37,91 @@ var myProto =
 	renderCocktails : function(alcoholCocktails, nonAlcoholCocktails)
 	{
 		var nodes = this.nodes
+		var perPage = 14
+		var clone = this.cloner.create()
+		var df = document.createDocumentFragment()
+		var items = perPage
+		var me = this
+		var append = true
 		
+		clone.root.addClassName('first-clone')
 		var alcoLen = alcoholCocktails.length
-		if(alcoLen == 0)
+		if(alcoLen != 0)
 		{
-			nodes.alcohol.box.hide()
-		}
-		else
-		{
-			var df = document.createDocumentFragment()
+			clone.root.addClassName('first-alco-clone')
 			for (var i = 0; i < alcoLen; i++) 
 			{
 				var cocktail = alcoholCocktails[i]
 				var li = renderCocktail(cocktail)
 				li.addClassName(i%2 ? 'odd' : 'even')
 				df.appendChild(li)
+				append = false
+				if(--items <= 0)
+				{
+					clone.nodes.alcoholList.appendChild(df)
+					clone.nodes.alcoholBox.show()
+					clone.root.show()
+					nodes.main.appendChild(clone.root)
+					createPageWrapper()
+					append = true
+				}
 			}
-			nodes.alcohol.list.appendChild(df)
+		}
+		
+		if(append == false)
+		{
+			clone.nodes.alcoholList.appendChild(df)
+			clone.nodes.alcoholBox.show()
+			clone.root.show()
+			nodes.main.appendChild(clone.root)
+			df = document.createDocumentFragment()
+			items = perPage - 2
+			append = true	
 		}
 		
 		var nonAlcoLen = nonAlcoholCocktails.length
-		if(nonAlcoLen == 0)
+		if(nonAlcoLen != 0)
 		{
-			nodes.nonAlcohol.box.hide()
-		}
-		else
-		{
-			var df = document.createDocumentFragment()
+			items -= 2
+			if(items <= 0)
+			{
+				createPageWrapper()
+			}
+			clone.root.addClassName('first-non-alco-clone')
 			for (var i = 0; i < nonAlcoLen; i++) 
 			{
 				var cocktail = nonAlcoholCocktails[i]
 				var li = renderCocktail(cocktail)
 				li.addClassName(i%2 ? 'odd' : 'even')
 				df.appendChild(li)
+				append = false
+				if(--items <= 0)
+				{
+					clone.nodes.nonAlcoholList.appendChild(df)
+					clone.nodes.nonAlcoholBox.show()				
+					clone.root.show()
+					nodes.main.appendChild(clone.root)
+					createPageWrapper()
+					append = true
+				}
 			}
-			nodes.nonAlcohol.list.appendChild(df)
+		}
+		
+		clone.root.addClassName('last-clone')
+		
+		if(append == false)
+		{
+			clone.nodes.nonAlcoholList.appendChild(df)
+			clone.nodes.nonAlcoholBox.show()
+			clone.root.show()
+			nodes.main.appendChild(clone.root)
+		}
+		
+		function createPageWrapper()
+		{	
+			items = perPage
+			df = document.createDocumentFragment()
+			clone = me.cloner.create()			
 		}
 		
 		function renderCocktail(cocktail)
