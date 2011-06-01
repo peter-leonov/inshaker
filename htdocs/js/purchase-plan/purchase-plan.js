@@ -31,9 +31,9 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 
-<!--# include virtual="/js/combinator/popup.js" -->
-<!--# include virtual="/js/combinator/ingredient-popup.js" -->
-<!--# include virtual="/js/combinator/throttler.js" -->
+<!--# include virtual="/js/common/popup.js" -->
+<!--# include virtual="/js/common/ingredient-popup.js" -->
+<!--# include virtual="/js/common/throttler.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/purchase-plan-table-editable.js" -->
