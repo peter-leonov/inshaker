@@ -1,5 +1,3 @@
-<!--# include virtual="/js/mybar/mybar-button.js" -->
-
 ;(function(){
 
 var myName = 'IngredientPopup'
