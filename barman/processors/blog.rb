@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/cocktail"
 
 class EventsProcessor < Inshaker::Processor
   
@@ -30,6 +31,7 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def job
+    Cocktail.init
     prepare_dirs
     
     update_blog
@@ -94,6 +96,13 @@ class EventsProcessor < Inshaker::Processor
         else
           %Q{<div class="image-box"><img src="#{src}"/></div>}
         end
+      elsif name == "коктейль"
+        cocktail = Cocktail[data]
+        unless cocktail
+          error "нет такого коктейля «#{data}» (указан в тексте поста)"
+          return
+        end
+        %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
       else
         %Q{<a href="#{data}">#{name}</a>}
       end
