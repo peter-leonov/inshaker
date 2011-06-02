@@ -55,7 +55,8 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 #good-page #top .nav a.goods,
 #event-page #top .nav a.events,
 #academy-page #top .nav a.academy,
-#combinator-page #top .nav a.combinator
+#combinator-page #top .nav a.combinator,
+#mybar-page #top .nav a.mybar
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
