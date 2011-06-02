@@ -9,6 +9,7 @@ class EventsProcessor < Inshaker::Processor
     
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
+    POSTS_PREVIEWS = HT_ROOT + "posts.html"
     
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     
@@ -32,6 +33,7 @@ class EventsProcessor < Inshaker::Processor
     prepare_dirs
     
     update_blog
+    update_posts_loop
     
     unless errors?
       cleanup_deleted
@@ -119,10 +121,20 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def update_html entity, dst
-    template = File.read(Config::TEMPLATES + "blog-post.rhtml")
-    renderer = ERB.new(template)
+    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post.rhtml"))
     
     File.write("#{dst.path}/#{dst.name}.html", renderer.result(Template.new(entity).get_binding))
+  end
+  
+  def update_posts_loop
+    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
+    
+    @entities_array.sort { |a, b| a["date"] - b["date"] }
+    File.open(Config::POSTS_PREVIEWS, "w+") do |p|
+      @entities_array.each do |entity|
+        p.puts renderer.result(Template.new(entity).get_binding)
+      end
+    end
   end
   
   def cleanup_deleted
