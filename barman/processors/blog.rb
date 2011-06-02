@@ -78,15 +78,21 @@ class EventsProcessor < Inshaker::Processor
     @entity["date"]              = ru_date.to_i * 1000
     @entity["date_ru"]           = ru_date_str
     
-    content.gsub!(/\(\(\s*(.+?)\s*:\s*(\S+)\s*\)\)/) do
+    content.gsub!(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
       data = $2
       
       if name == "фотка"
-        if data =~ /^https?:\/\//
-          %Q{<img src="#{data}"/>}
+        (src, href) = data.split(/\s+/)
+        
+        if src !~ /^https?:\/\//
+          src = %Q{/blog/#{@entity["href"]}/i/#{src}}
+        end
+        
+        if href
+          %Q{<a href="#{href}"><img src="#{src}"/></a>}
         else
-          %Q{<img src="/blog/#{@entity["href"]}/i/#{data}"/>}
+          %Q{<img src="#{src}"/>}
         end
       else
         %Q{<a href="#{data}">#{name}</a>}
