@@ -1,3 +1,4 @@
 .hidden { display: none; }
 
-.post .body img { display: block; margin: 1em 0; }
+.post .body .image-box { display: block; margin: 1em 0; text-align: center; }
+.post .body .image-box .image { margin: 0 auto; }

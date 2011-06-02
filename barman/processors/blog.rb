@@ -90,9 +90,9 @@ class EventsProcessor < Inshaker::Processor
         end
         
         if href
-          %Q{<a href="#{href}"><img src="#{src}"/></a>}
+          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
         else
-          %Q{<img src="#{src}"/>}
+          %Q{<div class="image-box"><img src="#{src}"/></div>}
         end
       else
         %Q{<a href="#{data}">#{name}</a>}
