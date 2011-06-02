@@ -34,9 +34,9 @@ var myProto =
 		var me = this
 		BarStorage.initBar(function(bar){
 			me.barName = bar.barName
-			me.ingredients = me.getIngredients(bar.ingredients)
-			me.volumes = bar.purchasePlanVolumes
 			me.excludes = bar.purchasePlanExcludes
+			me.ingredients = me.getIngredients(bar.ingredients, bar.purchasePlanExcludes)
+			me.volumes = bar.purchasePlanVolumes
 			
 			me.parent.setMainState()
 		})		
@@ -48,18 +48,16 @@ var myProto =
 		this.view.renderPurchasePlan(this.ingredients, this.volumes, this.excludes)
 	},
 	
-	getIngredients : function(ingredientNames)
+	getIngredients : function(ingredientNames, excludes)
 	{
 		var ingredients = []
-		ingredients.inBar = {}
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
 			var name = ingredientNames[i]
 			var ingredient = Ingredient.getByName(name)
-			if(ingredient)
+			if(ingredient && !excludes[name])
 			{
 				ingredients.push(ingredient)
-				ingredients.inBar[name] = true
 			}
 		}
 		return ingredients.sort(function(a, b){
@@ -70,18 +68,6 @@ var myProto =
 				
 			return a.name.localeCompare(b.name)
 		})		
-	},
-	
-	save : function(data)
-	{
-		this.volumes = data.volumes
-		this.excludes = data.excludes
-		BarStorage.saveBar({ purchasePlanVolumes : data.volumes, purchasePlanExcludes : data.excludes })
-	},
-	
-	selectIngredient : function(ingredient)
-	{
-		this.view.showIngredient(ingredient)
 	}
 }
 
