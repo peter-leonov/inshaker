@@ -101,7 +101,7 @@ class EventsProcessor < Inshaker::Processor
     template = File.read(Config::TEMPLATES + "blog-post.rhtml")
     renderer = ERB.new(template)
     
-    File.write("#{dst.path}/index.html", renderer.result(EventTemplate.new(entity).get_binding))
+    File.write("#{dst.path}/index.html", renderer.result(Template.new(entity).get_binding))
   end
   
   def cleanup_deleted
@@ -130,6 +130,20 @@ class EventsProcessor < Inshaker::Processor
       @entities.each do |name, entity|
         links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
       end
+    end
+  end
+  
+  class Template
+    def initialize *hashes
+      hashes.each do |hash|
+        hash.each do |k, v|
+          instance_variable_set("@#{k}", v)
+        end
+      end
+    end
+
+    def get_binding
+      binding
     end
   end
 end
