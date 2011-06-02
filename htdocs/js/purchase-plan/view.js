@@ -8,7 +8,6 @@ var myProto =
 	initialize : function()
 	{
 		this.currentEditingField = null
-		this.i = 0
 	},
 	
 	bind : function (nodes)
@@ -27,12 +26,6 @@ var myProto =
 	handleTableClick : function(e)
 	{
 		var target = e.target
-/*		if(target.editableItem)
-		{
-			this.controller.editPlanItem(target.editableItem, target.exclude)
-			return
-		}*/
-
 		
 		var ingredient = target['data-ingredient']
 		if(ingredient)
