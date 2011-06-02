@@ -1,1 +1,3 @@
 .hidden { display: none; }
+
+.post .body img { display: block; margin: 1em 0; }
