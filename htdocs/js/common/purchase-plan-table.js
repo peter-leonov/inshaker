@@ -39,29 +39,6 @@ var myProto =
 	{
 		var me = this
 		this.nodes = nodes
-		nodes.body.addEventListener('click', function(e){ me.handleClick(e) }, false)
-	},
-	
-	handleClick : function(e)
-	{
-		var target = e.target
-		
-		var switcher = target.parentNode
-		if(switcher.editableItem)
-		{
-			this.currentRow = this.findRow(switcher)
-			this.controller.editPlanItem(switcher.editableItem, switcher.exclude)
-			return
-		}	
-	},
-	
-	findRow : function(target)
-	{
-		var node = target
-		while(!node.planRow)
-			node = node.parentNode
-		
-		return node
 	},
 	
 	renderPlan : function(ingredients, volumes, prices, excludes, totalPrice)
@@ -88,17 +65,13 @@ var myProto =
 				var thead = N('thead')
 				var tbody = N('tbody')
 				var tr = N('tr')
-				var trHead = Nc('th', 'tr-padding')
 				var groupNameTh = Nct('th', 'item-name tr-content', groupName)
 				var amountTh = Nct('th', 'item-volume tr-content', 'Кол-во')
 				var totalTh = Nct('th', 'item-price tr-content', '~ Руб.')
-				var trTail = Nc('th', 'tr-padding')
 				
-				tr.appendChild(trHead)
 				tr.appendChild(groupNameTh)
 				tr.appendChild(amountTh)
 				tr.appendChild(totalTh)
-				tr.appendChild(trTail)
 				thead.appendChild(tr)
 				
 				table.appendChild(thead)
@@ -121,25 +94,21 @@ var myProto =
 	
 	renderRow : function(ingredient, volume, price, exclude)
 	{
-		tr.planRow = true	
-		tr.appendChild(this.renderName(ingredient))
-		tr.appendChild(this.renderVolume(ingredient, volume, exclude))
-		tr.appendChild(this.renderPrice(price, exclude))
+		var tr = N('tr')
+		
+		var nameTd = this.renderName(ingredient)
+		tr.appendChild(nameTd)
+		tr.edit = nameTd
+		
+		var volumeTd = this.renderVolume(ingredient, volume, exclude)
+		tr.appendChild(volumeTd)
+		tr.volume = volumeTd.volume
+		
+		var priceTd = this.renderPrice(price, exclude)
+		tr.appendChild(priceTd)
+		tr.price = priceTd
 		
 		return tr
-	},
-	
-	renderEditButton : function(ingredient, exclude)
-	{
-		var td = Nc('td', 'edit-item')
-		var edit = Nc('div', 'edit')
-		edit.appendChild(Nct('div', 'add', '+'))
-		edit.appendChild(Nct('div', 'remove', '×'))
-		edit.editableItem = ingredient
-		edit.exclude = exclude	
-		td.edit = edit
-		td.appendChild(edit)
-		return td
 	},
 	
 	renderName : function(ingredient)
@@ -174,21 +143,6 @@ var myProto =
 		var totalPriceNode = this.nodes.totalPrice
 		totalPriceNode.empty()
 		totalPriceNode.appendChild(T(totalPrice))
-	},
-	
-	updateRow : function(ingredient, volume, price, exclude, totalPrice)
-	{
-		if(!this.currentRow)
-			return
-		var newRow = this.renderRow(ingredient, volume, price, exclude)
-		var parent = this.currentRow.parentNode
-		if(this.currentRow.hasClassName('last'))
-		{
-			newRow.addClassName('last')
-		}
-		parent.insertBefore(newRow, this.currentRow)	
-		parent.removeChild(this.currentRow)
-		this.renderTotalPrice(totalPrice)
 	}
 }
 
@@ -236,19 +190,11 @@ var myProto =
 		for (var k in prices) 
 		{
 			if(!excludes[k])
+			{
 				totalPrice += prices[k]
+			}
 		}
 		return Math.round(totalPrice)
-	},
-	
-	editPlanItem : function(ingredient, exclude)
-	{
-		var name = ingredient.name
-		exclude = !exclude
-		this.excludes[name] = exclude
-		this.onChange()
-		var totalPrice = this.calculateTotalPrice(this.prices, this.excludes)
-		this.view.updateRow(ingredient, this.volumes[name], this.prices[name], exclude, totalPrice)
 	},
 	
 	setData : function(data)
@@ -257,11 +203,6 @@ var myProto =
 		this.prices = this.calculatePrices(data.ingredients, this.volumes)
 		this.ingredients = data.ingredients
 		this.excludes = data.excludes
-	},
-	
-	onChange : function()
-	{
-		this.parent.dispatchEvent({ type : 'change', data : { ingredients : this.ingredients, volumes : this.volumes, excludes : this.excludes } })
 	},
 	
 	getVolumes : function(volumes, ingredients)
@@ -316,11 +257,6 @@ var myProto =
 	bind : function()
 	{
 		
-	},
-	
-	editPlanItem : function(ingredient, exclude)
-	{
-		this.model.editPlanItem(ingredient, exclude)
 	}
 }
 
