@@ -568,8 +568,8 @@ html.loading .main-box { display: none; }
 
 /*purchase-plan*/
 
+.main-box .purchase-plan-box { color: #3c3c3c; }
 .main-box .purchase-plan-box .purchase-table-wrapper { margin: 28px 0px 10px; }
-.main-box .purchase-plan-box .purchase-table-wrapper { color: #3c3c3c; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table { left: -1px; margin-bottom: 30px; position: relative; width: 960px; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table th { font-size: 24px; vertical-align: middle; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table td { font-size: 18px; vertical-align: middle; }
