@@ -84,9 +84,11 @@ class EventsProcessor < Inshaker::Processor
       @entities_hrefs[@entity["href"]] = @entity
     end
     
-    ht_path = Config::HT_ROOT + @entity["href"]
+    ht_name = @entity["href"]
+    ht_path = Config::HT_ROOT + ht_name
     FileUtils.mkdir_p ht_path
     ht_dir = Dir.new(ht_path)
+    ht_dir.name = ht_name
     
     FileUtils.cp_r(src_dir.path + "/i/", ht_dir.path + "/i/", @mv_opt)
     
@@ -101,7 +103,7 @@ class EventsProcessor < Inshaker::Processor
     template = File.read(Config::TEMPLATES + "blog-post.rhtml")
     renderer = ERB.new(template)
     
-    File.write("#{dst.path}/index.html", renderer.result(Template.new(entity).get_binding))
+    File.write("#{dst.path}/#{dst.name}.html", renderer.result(Template.new(entity).get_binding))
   end
   
   def cleanup_deleted
