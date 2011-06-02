@@ -98,7 +98,7 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def update_html entity, dst
-    template = File.read(Config::TEMPLATES + "blog.rhtml")
+    template = File.read(Config::TEMPLATES + "blog-post.rhtml")
     renderer = ERB.new(template)
     
     File.write("#{dst.path}/index.html", renderer.result(EventTemplate.new(entity).get_binding))
