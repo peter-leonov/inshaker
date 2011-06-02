@@ -77,6 +77,11 @@ class EventsProcessor < Inshaker::Processor
     @entity["date_ru"]           = ru_date_str
     
     
+    (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
+    @entity["cut"]               = cut
+    @entity["body"]              = body
+    
+    
     seen = @entities_hrefs[@entity["href"]]
     if seen
       error %Q{пост с такой ссылкой уже существует: "#{seen["name"]}"}
