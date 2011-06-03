@@ -9,6 +9,7 @@ class EventsProcessor < Inshaker::Processor
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
+    HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     POSTS_PREVIEWS = HT_ROOT + "posts.html"
     
@@ -35,7 +36,7 @@ class EventsProcessor < Inshaker::Processor
     prepare_dirs
     
     update_blog
-    update_posts_loop
+    update_banners
     
     unless errors?
       cleanup_deleted
@@ -45,13 +46,18 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def prepare_dirs
-    FileUtils.mkdir_p [Config::HT_ROOT]
+    FileUtils.mkdir_p [Config::HT_ROOT, Config::HT_ROOT_BAN]
   end
   
   def update_blog
-    Dir.new(Config::BASE_DIR).each_dir do |post_dir|
-      process_entity post_dir
+    say "обновляю блог"
+    indent do
+    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
+      process_entity dir
     end
+    
+    update_posts_loop
+    end #indent
   end
   
   def process_entity src_dir
@@ -194,6 +200,80 @@ class EventsProcessor < Inshaker::Processor
       binding
     end
   end
+  
+  
+  # banners ZONE ;)
+  
+  def update_banners
+    say "обновляю банеры"
+    indent do
+    
+    FileUtils.mkdir_p [Config::HT_ROOT_BAN + 'i']
+    @small_banners = []
+    
+    ht_dir = Dir.new(Config::HT_ROOT_BAN)
+    
+    Dir.new(Config::BASE_DIR + "banners/small").each_dir do |dir|
+      process_small_banner dir, ht_dir
+    end
+    
+    flush_banners_html
+    
+    process_big_banner Dir.new(Config::BASE_DIR + "banners/big"), ht_dir
+    
+    end #indent
+  end
+  
+  def process_small_banner src_dir, ht_dir
+    say src_dir.name
+    indent do
+    
+    banner = {}
+    @small_banners << banner
+    
+    banner["src_dir"] = src_dir
+    
+    num = @small_banners.length
+    banner["num"] = num
+    
+    yaml = load_yaml(src_dir.path + "/about.yaml")
+    banner["href"] = yaml["Ссылка"]
+    
+    # image
+    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/small-#{num}.jpg", @mv_opt)
+    
+    end #indent
+  end
+  
+  def flush_banners_html
+    File.open(Config::HT_ROOT_BAN + "/small.html", "w+") do |f|
+      @small_banners.each do |banner|
+        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.jpg"/></a></li>}
+      end
+    end
+  end
+  
+  def process_big_banner src_dir, ht_dir
+    say "big"
+    indent do
+    
+    banner = {}
+    
+    banner["src_dir"] = src_dir
+    
+    yaml = load_yaml(src_dir.path + "/about.yaml")
+    banner["href"] = yaml["Ссылка"]
+    
+    # image
+    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/big.jpg", @mv_opt)
+    
+    File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
+      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.jpg"/></a>}
+    end
+    
+    end #indent
+  end
+  
 end
 
 exit EventsProcessor.new.run
