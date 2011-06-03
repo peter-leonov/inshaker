@@ -2,14 +2,25 @@
 
 html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff; }
 
-#blog-head { margin: 0 0 10px 0; }
+#common-main-wrapper { overflow: hidden; }
+
+#blog-head { margin: 0 0 30px 0; }
 #blog-head .name { font-size: 25px; }
 #blog-head .description { font-size: 10px; }
 
-#blog-page #blog-head .name a { color: inherit; text-decoration: none; cursor: default; }
+#blog-page #blog-head .name a { color: inherit; text-decoration: none; cursor: text; }
 
-#big-banner { margin: 10px 0; padding: 20px 0; border: 1px solid #000; border-left: none; border-right: none; }
-#small-banners { float: right; }
+#big-banner { margin: 10px 0; padding: 20px 0; border-top: 1px solid #000; }
 
-.post .body .image-box { display: block; margin: 1em 0; text-align: center; }
-.post .body .image-box .image { margin: 0 auto; }
+#small-banners { float: right; width: 304px; margin-right: -2px; padding: 20px 0 0 0; overflow: hidden; border-top: 1px solid #000; }
+#small-banners .head { font-size: 18px; margin-bottom: 10px; }
+#small-banners .item { float: left; margin: 0 2px 2px 0; }
+
+#posts-loop { border-top: 1px solid #000; width: 620px; padding: 20px 0 30px 0; }
+
+#posts-loop .post { margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
+#posts-loop .post:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+#posts-loop .post .title { font-size: 18px; margin: 0 0 5px 0; }
+#posts-loop .post .body { font-size: 12px; line-height: 18px; }
+#posts-loop .post .body .image-box { display: block; margin: 1em 0; text-align: center; }
+#posts-loop .post .body .image-box .image { margin: 0 auto; }
