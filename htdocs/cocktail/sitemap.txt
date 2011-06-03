@@ -556,7 +556,6 @@ http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
 http://www.inshaker.ru/cocktail/nero/
 http://www.inshaker.ru/cocktail/knickerbocker/
-http://www.inshaker.ru/cocktail/new_look/
 http://www.inshaker.ru/cocktail/new_new_york/
 http://www.inshaker.ru/cocktail/normandi_smash/
 http://www.inshaker.ru/cocktail/norman_hot_pie/
@@ -728,7 +727,6 @@ http://www.inshaker.ru/cocktail/dream_cream/
 http://www.inshaker.ru/cocktail/creamy_whisky/
 http://www.inshaker.ru/cocktail/smile/
 http://www.inshaker.ru/cocktail/currant_caipirinha/
-http://www.inshaker.ru/cocktail/currant_freshness/
 http://www.inshaker.ru/cocktail/snickers_milkshake/
 http://www.inshaker.ru/cocktail/dog_ru/
 http://www.inshaker.ru/cocktail/seducer/
