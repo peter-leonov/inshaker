@@ -8,23 +8,27 @@ var myName = 'BarStorage'
 
 Me =  
 {
-	remoteServer : 'http://' + window.location.hostname + '/mybar-foreign/',
-	
 	initialize : function()
 	{
-		this.bar = 
-		{  
-			barName : '',
-			ingredients : [],
-			ingredientsShowType : 'by-list',
-			cocktailsShowType : 'by-pics',
-			//notAvailableCocktails : {},
-			hiddenCocktails : [],
-			currentTag : '',
-			purchasePlanNotices : {},
-			purchasePlanVolumes : {},
-			purchasePlanExcludes : {},
-			foreignData : { userid : '', hash : ''}
+		this.data = 
+		{
+			remote :
+			{
+				barName : '',
+				ingredients : [],
+				ingredientsShowType : 'by-list',
+				cocktailsShowType : 'by-pics',
+				hiddenCocktails : [],
+				currentTag : '',
+				purchasePlanNotices : {},
+				purchasePlanVolumes : {},
+				purchasePlanExcludes : {}
+			},
+			local :
+			{
+				userid : '',
+				hash : ''
+			}
 		}
 		
 		if(!Storage)
@@ -35,13 +39,21 @@ Me =
 	{
 		if(this.inited)
 		{
-			callback(this.bar)
+			callCallback()
 			return
 		}
 		
 		var me = this
 		
-		var f = function(){
+		Storage.init(init)
+		
+		function callCallback()
+		{
+			callback(me.data.remote, me.data.local.userid, me.newbie)
+		}
+		
+		function init()
+		{
 			var json = ''
 			try
 			{
@@ -53,27 +65,96 @@ Me =
 			}
 			
 			parsingJson = JSON.parse(json)
-			me.newbie = parsingJson ? false : true
-			Object.extend(me.bar, parsingJson)
+			if(parsingJson)
+			{
+				me.newbie = false
+				Object.extend(me.data.local, parsingJson)
+				me.remoteGet(me.data.local.userid, remoteGetCallback)
+			}
+			else
+			{
+				me.newbie = true
+				me.remoteCreate(remoteCreateCallback)
+			}
 			
-			if(callback)
-				callback(me.bar, me.newbie)
-				
-			me.inited = true
+			function remoteCreateCallback(localData)
+			{
+				if(localData)
+				{
+					Object.extend(me.data.local, localData)
+					me.localSave()
+				}
+				callCallback()
+				me.inited = true				
+			}
+			
+			function remoteGetCallback(remoteData)
+			{
+				if(remoteData)
+				{
+					Object.extend(me.data.remote, remoteData)
+					callCallback()
+					me.inited = true						
+				}
+				else
+				{
+					me.remoteCreate(remoteCreateCallback)						
+				}				
+			}
 		}
-		
-		Storage.init(f)
 	},
 	
-	saveBar : function(bar, noRemoteSave)
+	remoteServer : 'http://' + window.location.hostname,
+	
+	remoteCreate : function(callback)
 	{
-		if(!bar)
-			bar = this.bar
-		else
-			Object.extend(this.bar, bar)
-
-		var json = JSON.stringify(this.bar)
-			
+		var url = this.remoteServer + '/mybar-foreign/createbar/'
+		var me = this
+		Request.post(url, JSON.stringify(this.data.remote), function(e)
+		{
+			if(e.type != 'success')
+			{
+				callback()
+				return
+			}
+			var localData = JSON.parse(this.responseText)
+			callback(localData)
+		})			
+	},
+	
+	remoteGet : function(userid, callback)
+	{
+		var url = this.remoteServer + '/get-bar-by-id/'
+		Request.get(url + userid, null, function(e)
+		{
+			log(this)
+			if(e.type != 'success')
+			{
+				callback()
+				return
+			}
+			var remoteData = JSON.parse(this.responseText)
+			callback(remoteData)
+		})		
+	},
+	
+	remoteSave : function()
+	{
+		var ld = this.data.local
+		if(ld.userid)
+		{
+			var url = this.remoteServer + '/mybar-foreign/savebar/'
+			Request.post(
+				url + ld.hash + '/' + ld.userid,
+				JSON.stringify(this.data.remote),
+				function(){}
+			)		
+		}	
+	},
+	
+	localSave : function()
+	{
+		var json = JSON.stringify(this.data.local)
 		try
 		{
 			Storage.put('mybar', json)
@@ -82,66 +163,53 @@ Me =
 		{
 			log('Can\'t put mybar object.', e)
 		}
+	},
+	
+	saveBar : function(bar)
+	{
 		
-		if(!noRemoteSave)
-			this.saveRemote()
+		Object.extend(this.data.remote, bar)
+		this.remoteSave()
 	},
 	
 	addIngredient : function(ingredientName)
 	{
-		var ings = this.bar.ingredients
+		var ings = this.data.remote.ingredients
 		if(ings.indexOf(ingredientName) == -1)
+		{
 			ings.push(ingredientName)
+		}
 		else
+		{
 			return false
-			
+		}
 		this.saveBar()
 		return true
 	},
 	
 	removeIngredient : function(ingredientName)
 	{
-		var ings = this.bar.ingredients
+		var ings = this.data.remote.ingredients
 		var pos = ings.indexOf(ingredientName)
 		if(pos != -1)
+		{
 			ings.splice(pos, 1)
+		}
 		else
+		{
 			return false
-			
+		}
 		this.saveBar()
 		return true
 	},
 	
 	haveIngredient : function(ingredientName)
 	{
-		if(this.bar.ingredients.indexOf(ingredientName) != -1)
-			return true
-			
-		return false
-	},
-	
-	getForeignLink : function(callback)
-	{
-		var url = this.remoteServer + 'createbar/'
-		var me = this
-		Request.post(url, JSON.stringify(this.bar), function(e)
+		if(this.data.remote.ingredients.indexOf(ingredientName) != -1)
 		{
-			if(e.type != 'success')
-				return
-			var foreignData = JSON.parse(this.responseText)
-			Object.extend(me.bar.foreignData, foreignData)
-			me.saveBar(false, true)
-			callback(me.bar.foreignData)
-		})
-	},
-	
-	saveRemote : function()
-	{
-		var fd = this.bar.foreignData
-		if(!fd.userid)
-			return
-			
-		Request.post(this.remoteServer + 'savebar/' + fd.hash + '/' + fd.userid, JSON.stringify(this.bar), function(){})
+			return true
+		}
+		return false
 	}
 }
 
