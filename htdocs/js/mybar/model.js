@@ -45,14 +45,15 @@ var myProto =
 	bind : function ()
 	{
 		var me = this
-		BarStorage.initBar(function(bar){ me.setBar(bar) })
+		BarStorage.initBar(function(bar, userid){ me.setBar(bar, userid) })
 	},
 	
-	setBar : function(bar)
+	setBar : function(bar, userid)
 	{
 		var me = this
 		
 		this.bar = bar
+		this.userid = userid
 		
 		this.barName = bar.barName
 		this.ingredientsShowType = bar.ingredientsShowType
@@ -61,15 +62,12 @@ var myProto =
 		this.ingredients = this.getIngredients(bar.ingredients)
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.hiddenCocktailsHash = Array.toHash(bar.hiddenCocktails)
-		
 		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
-		
 		this.ingredients.sort(function(a,b){ return me.sortByUsage(a,b) })
-
-		this.tipIngredient = this.computeTipIngr()
 		
-		this.allTags = <!--# include virtual="/db/mybar/tags.json" -->
-		this.mustHave = <!--# include virtual="/db/mybar/musthave.json" -->
+		this.settingsData = <!--# include virtual="/db/mybar/settings.json" -->
+		this.allTags = this.settingsData.tags
+		this.mustHave = this.settingsData.mustHaveIngredients
 		
 		this.computeRecommendsBlock()
 		
@@ -95,8 +93,10 @@ var myProto =
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		this.view.renderShareLinks(this.userid)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
+		this.view.showView()
 		//this.view.renderShare(this.foreignData.userid)
 	},
 	
@@ -647,15 +647,6 @@ var myProto =
 	selectIngredient : function(ingredient)
 	{
 		this.view.showIngredient(ingredient)
-	},
-	
-	getForeignLink : function()
-	{
-		var me = this
-		BarStorage.getForeignLink(function(foreignData){
-			me.foreignData = foreignData
-			me.view.renderShare(foreignData.userid)
-		})
 	},
 	
 	upgradeRecommends : function()
