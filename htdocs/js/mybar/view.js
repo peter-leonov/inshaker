@@ -92,19 +92,19 @@ var myProto =
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		
 		nodes.share.wrapper.addEventListener('click', function(e){ me.handleShareClick(e) }, false)
-		nodes.share.popup.email.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
-		nodes.share.popup.web.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
+		nodes.share.popups.email.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
+		nodes.share.popups.web.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
 		
 		this.hideEmailShare = function()
 		{
-			me.nodes.share.popup.email.main.hide()
+			me.nodes.share.popups.email.main.hide()
 			me.hideEmailShare.binded = false
 			setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
 		}
 		
 		this.hideWebShare = function()
 		{
-			me.nodes.share.popup.web.main.hide()
+			me.nodes.share.popups.web.main.hide()
 			me.hideWebShare.binded = false
 			setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
 		}
@@ -129,6 +129,11 @@ var myProto =
 		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
+	},
+	
+	showView : function()
+	{
+		document.documentElement.removeClassName('loading')		
 	},
 	
 	handleBarNameFocus : function(e)
@@ -157,6 +162,10 @@ var myProto =
 	
 	onscroll : function()
 	{
+		if(document.documentElement.hasClassName('loading'))
+		{
+			return
+		}
 		if(this.nodes.recommends.box.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
 		{
 			this.controller.upgradeRecommends()
@@ -170,11 +179,11 @@ var myProto =
 	checkoutRecommends : function(listLength)
 	{
 		var node = this.nodes.recommends.recommendsList,
-			supply = 400,
-			i = 4
-			
+			supply = 400
+		
 		while(listLength > 0 && this.getSupply(node) < supply)
 		{
+			var i = 4
 			while(i-- && listLength--)
 			{
 				this.controller.addRecommend()
@@ -185,11 +194,11 @@ var myProto =
 	checkoutMustHaveRecommends : function(listLength)
 	{
 		var node = this.nodes.recommends.mustHaveList,
-			supply = 400,
-			i = 4
+			supply = 400
 		
 		while(listLength > 0 && this.getSupply(node) < supply)
 		{
+			var i = 4
 			while(i-- && listLength--)
 			{
 				this.controller.addMustHaveRecommend()
@@ -215,24 +224,6 @@ var myProto =
 			nodes.barName.empty()
 			nodes.barName.appendChild(T(barName))
 			nodes.advice.hide()
-		}
-	},
-	
-	renderShare : function(userid)
-	{
-		nodes = this.nodes.share
-		if(!userid)
-		{
-			nodes.getLink.show()
-			nodes.foreignBlock.hide()
-		}
-		else
-		{
-			var href = 'http://' + window.location.hostname + '/foreign.html#' + userid
-			nodes.foreignLinkInput.value = href
-			nodes.foreignLink.setAttribute('href', href)
-			nodes.foreignBlock.show()
-			nodes.getLink.hide()
 		}
 	},
 	
@@ -399,6 +390,54 @@ var myProto =
 	{
 		this.nodes.cocktails.box.show()
 		this.nodes.share.box.show()		
+	},
+
+	renderShareLinks : function(userid)
+	{
+		var nodes = this.nodes.share
+		var url = window.location.protocol + '//' + window.location.hostname + '/mybar/foreign.html#' + userid
+		nodes.links.facebook.href = nodes.links.facebook.href.replace('mybarlink', UrlEncode.stringify({ u : url }))
+		nodes.links.twitter.href = nodes.links.twitter.href.replace('mybarlink', UrlEncode.stringify({ url : url }))
+		var textValue = nodes.popups.email.textarea.firstChild.nodeValue.replace('mybarlink', url)
+		nodes.popups.email.textarea.value = textValue
+		nodes.popups.web.input.value = url
+	},
+
+	renderTags : function(tags, currentTag, tagsAmount)
+	{
+		var nodes = this.nodes.recommends
+		
+		if(!tags.length)
+		{
+			nodes.tags.hide()
+			return
+		}
+		
+		var df = document.createDocumentFragment()
+		for (var i = 0, il = tags.length; i < il; i++) 
+		{
+			var tag = tags[i],
+				li = N('li'), div = N('div'),
+				name = Nct('span', 'name', tag), amount = Nct('span', 'amount', tagsAmount[tag])
+			
+			if(tag.localeCompare(currentTag) == 0)
+			{
+				li.addClassName('active')
+			}
+			else
+			{
+				div.tagValue = tag
+			}
+			div.appendChild(name)
+			div.appendChild(amount)
+			div.appendChild(N('b'))
+			li.appendChild(div)
+			df.appendChild(li)
+		}
+		
+		nodes.tagsList.empty()
+		nodes.tagsList.appendChild(df)
+		nodes.tags.show()
 	},
 
 	prepareRecommends : function(clearNodes)
@@ -707,43 +746,6 @@ var myProto =
 		}
 	},
 	
-	renderTags : function(tags, currentTag, tagsAmount)
-	{
-		var nodes = this.nodes.recommends
-		
-		if(!tags.length)
-		{
-			nodes.tags.hide()
-			return
-		}
-		
-		var df = document.createDocumentFragment()
-		for (var i = 0, il = tags.length; i < il; i++) 
-		{
-			var tag = tags[i],
-				li = N('li'), div = N('div'),
-				name = Nct('span', 'name', tag), amount = Nct('span', 'amount', tagsAmount[tag])
-			
-			if(tag.localeCompare(currentTag) == 0)
-			{
-				li.addClassName('active')
-			}
-			else
-			{
-				div.tagValue = tag
-			}
-			div.appendChild(name)
-			div.appendChild(amount)
-			div.appendChild(N('b'))
-			li.appendChild(div)
-			df.appendChild(li)
-		}
-		
-		nodes.tagsList.empty()
-		nodes.tagsList.appendChild(df)
-		nodes.tags.show()
-	},
-	
 	renderIfCocktailsEmpty : function()
 	{
 		var c = this.nodes.cocktails
@@ -959,11 +961,20 @@ var myProto =
 	
 	handleShareClick : function(e)
 	{
-		var nodes = this.nodes.share
-		var me = this
+		var nodes = this.nodes.share,
+			node = e.target,
+			me = this
+		
+		e.preventDefault()
 		
 		switch(e.target.className)
 		{
+			case 'facebook-share':
+			case 'twitter-share':
+			{
+				this.openWindow(node.href)
+				break;
+			}
 			case 'email-share':
 			{
 				this.emailShareShow()
@@ -980,14 +991,14 @@ var myProto =
 	emailShareShow : function(userid)
 	{
 		var me = this
-		this.nodes.share.popup.email.main.show()
+		this.nodes.share.popups.email.main.show()
 		setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
 	},
 	
 	webShareShow : function(userid)
 	{
 		var me = this
-		this.nodes.share.popup.web.main.show()
+		this.nodes.share.popups.web.main.show()
 		setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
 	},
 	
@@ -1005,6 +1016,18 @@ var myProto =
 	{
 		document.removeEventListener('click', callback, false)
 		callback.binded = false
+	},
+	
+	openWindow : function(url)
+	{
+		var w = 550,
+			h = 450,
+			sh = window.screen.height
+			sw = window.screen.width,
+			left = Math.round((sw-w)/2),
+			top = sh > h ? Math.round((sh-h)/2) : 0
+			
+		window.open(url, '', 'left=' + left + ',top=' + top + ',width=' + w + ',height=' + h + ',personalbar=0,toolbar=0,scrollbars=1,resizable=1')
 	}
 	
 /*	setScrollTopTags : function()
