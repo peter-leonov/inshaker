@@ -420,6 +420,7 @@ html.loading .main-box { display: none; }
 .main-box .share-box .share-wrapper .email-share,
 .main-box .share-box .share-wrapper .web-share
 {
+	display: block;
 	width: 32px;
 	height: 32px;
 	float: left;
@@ -457,6 +458,13 @@ html.loading .main-box { display: none; }
 	top: -49px;
 	width: 257px;
 	z-index: 1;
+}
+
+.main-box .share-box .web-share-popup input {
+	width: 210px;
+	margin: 10px 0 0 20px;
+	padding: 2px;
+	font-size: 14px;
 }
 
 /*recommends-box*/
