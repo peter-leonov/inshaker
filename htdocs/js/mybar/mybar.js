@@ -121,9 +121,15 @@ function onready ()
 		
 		share : {
 			box : $$('#common-main-wrapper .share-box')[0],
+			wrapper : $$('#common-main-wrapper .share-box .share-wrapper')[0],
 			popup : {
-				emailShare : $$('#common-main-wrapper .share-box .email-share-popup')[0],
-				webShare : $$('#common-main-wrapper .share-box .web-share-popup')[0]
+				email : {
+					main : $$('#common-main-wrapper .share-box .email-share-popup')[0]
+				},
+				web : {
+					main : $$('#common-main-wrapper .share-box .web-share-popup')[0],
+					input : $$('#common-main-wrapper .share-box .web-share-popup input')[0]
+				}
 			}
 		},
 		
