@@ -92,11 +92,6 @@ var myProto =
 		this.model.addIngredientFromRecommends(ingredient)
 	},
 	
-	getForeignLink : function()
-	{
-		this.model.getForeignLink()
-	},
-	
 	upgradeRecommends : function()
 	{
 		this.model.upgradeRecommends()
