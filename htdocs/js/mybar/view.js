@@ -91,8 +91,27 @@ var myProto =
 		nodes.cocktails.hiddenList.addEventListener('click', function(e){ me.handleHiddenCocktailClick(e) }, false)
 		nodes.cocktails.switcher.addEventListener('click', function(e){ me.handleCocktailsSwitcherClick(e) }, false)
 		
+		nodes.share.wrapper.addEventListener('click', function(e){ me.handleShareClick(e) }, false)
+		nodes.share.popup.email.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
+		nodes.share.popup.web.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
+		
+		this.hideEmailShare = function()
+		{
+			me.nodes.share.popup.email.main.hide()
+			me.hideEmailShare.binded = false
+			setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
+		}
+		
+		this.hideWebShare = function()
+		{
+			me.nodes.share.popup.web.main.hide()
+			me.hideWebShare.binded = false
+			setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
+		}
+		
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.addIngredientFromRecommends(e) }, false)
+		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
 		
@@ -469,8 +488,6 @@ var myProto =
 		}
 		
 		var text = document.createDocumentFragment()
-		
-		log(havingIngredients)
 		
 		if(havingIngredients.length != 0)
 		{
@@ -938,6 +955,56 @@ var myProto =
 		
 		document.documentElement.scrollTop = scrollVal
 		document.body.scrollTop = scrollVal
+	},
+	
+	handleShareClick : function(e)
+	{
+		var nodes = this.nodes.share
+		var me = this
+		
+		switch(e.target.className)
+		{
+			case 'email-share':
+			{
+				this.emailShareShow()
+				break;
+			}
+			case 'web-share':
+			{
+				this.webShareShow()
+				break;
+			}
+		}
+	},
+	
+	emailShareShow : function(userid)
+	{
+		var me = this
+		this.nodes.share.popup.email.main.show()
+		setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
+	},
+	
+	webShareShow : function(userid)
+	{
+		var me = this
+		this.nodes.share.popup.web.main.show()
+		setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
+	},
+	
+	bindShareListeners : function(callback)
+	{
+		if(callback.binded)
+		{
+			return
+		}
+		callback.binded = true
+		document.addEventListener('click', callback, false)
+	},
+	
+	unbindShareListeners : function(callback)
+	{
+		document.removeEventListener('click', callback, false)
+		callback.binded = false
 	}
 	
 /*	setScrollTopTags : function()
