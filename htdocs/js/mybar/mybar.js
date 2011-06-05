@@ -59,7 +59,6 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	document.documentElement.removeClassName('loading')
 	
 	IngredientPopup.bootstrap()
 	
@@ -122,14 +121,19 @@ function onready ()
 		share : {
 			box : $$('#common-main-wrapper .share-box')[0],
 			wrapper : $$('#common-main-wrapper .share-box .share-wrapper')[0],
-			popup : {
+			popups : {
 				email : {
-					main : $$('#common-main-wrapper .share-box .email-share-popup')[0]
+					main : $$('#common-main-wrapper .share-box .email-share-popup')[0],
+					textarea : $$('#common-main-wrapper .share-box .email-share-popup .message-body')[0]
 				},
 				web : {
 					main : $$('#common-main-wrapper .share-box .web-share-popup')[0],
 					input : $$('#common-main-wrapper .share-box .web-share-popup input')[0]
 				}
+			},
+			links : {
+				facebook : $$('#common-main-wrapper .share-box .share-wrapper .facebook-share')[0],
+				twitter : $$('#common-main-wrapper .share-box .share-wrapper .twitter-share')[0]
 			}
 		},
 		
