@@ -279,6 +279,11 @@ class EventsProcessor < Inshaker::Processor
         %Q{<a href="#{data}">#{name}</a>}
       end
     end
+    
+    # paragraphs
+    text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
+    
+    return text
   end
 end
 
