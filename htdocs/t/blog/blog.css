@@ -26,3 +26,4 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .body { font-size: 12px; line-height: 18px; }
 .post .body .image-box { display: block; margin: 1em 0; }
 .post .body .image-box .image { margin: 0 auto; }
+.post .body h2 { margin: 15px 0 2px 0; }
