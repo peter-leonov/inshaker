@@ -286,6 +286,12 @@ class EventsProcessor < Inshaker::Processor
       %Q{<h2>#{header}</h2>}
     end
     
+    # emails
+    text = text.gsub(/(\S+@[a-z0-9\-]{2,}\.[a-z]{2,})/i) do
+      email = $1
+      %Q{<a href="mailto:#{email}">#{email}</a>}
+    end
+    
     # paragraphs
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
