@@ -44,7 +44,7 @@ var myProto =
 		
 		var userid = window.location.hash.substr(1)
 		
-		BarStorage.initBar(function(bar, newbie)
+		BarStorage.initBar(function(bar, myid, newbie)
 		{
 			me.newbie = newbie
 			getForeignBar(userid)			
