@@ -84,8 +84,10 @@ var myProto =
 		nodes.ingredients.title.barName.addEventListener('blur', function(e){ me.handleBarNameBlur(e) }, false)
 		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
-		nodes.ingredients.list.addEventListener('click', function(e){ me.handleIngredientClick(e) }, false)
+		nodes.ingredients.list.addEventListener('click', function(e){ me.tryRemoveIngredient(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
+		
+		nodes.maybeHave.list.addEventListener('click', function(e){ me.tryAddIngredient(e) }, false)
 		
 		nodes.cocktails.visible.addEventListener('click', function(e){ me.handleVisibleCocktailClick(e) }, false)
 		nodes.cocktails.hiddenList.addEventListener('click', function(e){ me.handleHiddenCocktailClick(e) }, false)
@@ -299,6 +301,35 @@ var myProto =
 				nodes.list.appendChild(ul)			
 			}
 		}
+	},
+	
+	renderMaybeHave : function(ingredients, ingredientsHash)
+	{
+		if(!ingredients)
+		{
+			return
+		}
+		
+		var nodes = this.nodes.maybeHave
+		if(this.maybeHaveBoxScrollTop)
+		{
+			var scrollVal = nodes.box.offsetPosition().top - this.maybeHaveBoxScrollTop
+			
+			document.documentElement.scrollTop = scrollVal
+			document.body.scrollTop = scrollVal			
+			this.maybeHaveBoxScrollTop = false
+		}
+		
+		var	ul = Nc('ul', 'by-list')
+		for(var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i]
+			ul.appendChild(ingredients[i].getPreviewNodeExt(ingredientsHash[ingredient.name]))
+		}
+		
+		nodes.list.empty()
+		nodes.list.appendChild(ul)
+		nodes.box.show()
 	},
 	
 	renderCocktails : function(visibleCocktails, hiddenCocktails, showType)
@@ -757,11 +788,21 @@ var myProto =
 		this.nodes.ingredients.queryInput.value = ''
 	},
 	
-	handleIngredientClick : function(e)
+	tryAddIngredient : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('no-have'))
+		{
+			this.maybeHaveBoxScrollTop = this.nodes.maybeHave.box.offsetPosition().top - window.pageYOffset
+			this.controller.addIngredientToBar(node.ingredient)
+		}
+	},
+	
+	tryRemoveIngredient : function(e)
 	{
 		var node = e.target
 		
-		if(node.hasClassName('control') && node.ingredient)
+		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('have'))
 		{
 			this.controller.removeIngredientFromBar(node.ingredient)
 		}	
