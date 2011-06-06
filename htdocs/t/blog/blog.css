@@ -1,5 +1,7 @@
 .hidden { display: none; }
 
+h1 a, h2 a, h3 a, dt.name a { color: inherit; }
+
 html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff; }
 
 #common-main-wrapper { overflow: hidden; }
