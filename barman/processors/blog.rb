@@ -86,9 +86,9 @@ class EventsProcessor < Inshaker::Processor
     @entity["date"]              = ru_date.to_i * 1000
     @entity["date_ru"]           = ru_date_str
     
-    content = markup(content)
-    
     (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
+    cut = markup cut
+    body = markup body
     @entity["cut"]               = cut
     @entity["body"]              = body
     
