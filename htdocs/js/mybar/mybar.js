@@ -64,27 +64,8 @@ function onready ()
 	
 	Ingredient.calculateEachIngredientUsage()
 	
-	var nodes = {
-		
-/*		share : {
-			getLink : $$('#output .share-bar .get-link')[0],
-			foreignBlock : $$('#output .share-bar .foreign-block')[0],
-			foreignLink: $$('#output .share-bar .foreign-block a')[0],
-			foreignLinkInput : $$('#output .share-bar .foreign-block input')[0]
-		},*/
-
-		
-/*		barName : {
-			wrapper : $('bar-name'),
-			tip : $$('#bar-name .tip')[0],
-			title : $$('#bar-name h2')[0],
-			help : $$('#bar-name h2 .help')[0],
-			bName : $$('#bar-name h2 .name')[0],
-			form : $$('#bar-name .change-name')[0],
-			input : $$('#bar-name .change-name .new-bar-name')[0]
-		},*/
-
-		
+	var nodes = 
+	{	
 		mainBox : $$('#common-main-wrapper .main-box')[0],
 		
 		ingredients : {
@@ -101,6 +82,11 @@ function onready ()
 			switcher : $$('#common-main-wrapper .ingredients-box .switcher')[0],
 			links : $$('#common-main-wrapper .ingredients-box .section-head .links')[0],
 			empty : $$('#common-main-wrapper .ingredients-box .empty-box')[0]
+		},
+		
+		maybeHave : {
+			box : $$('#common-main-wrapper .maybe-have-box')[0],
+			list : $$('#common-main-wrapper .maybe-have-box .ingredients-list')[0],
 		},
 		
 		cocktails : {
