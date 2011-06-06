@@ -86,33 +86,7 @@ class EventsProcessor < Inshaker::Processor
     @entity["date"]              = ru_date.to_i * 1000
     @entity["date_ru"]           = ru_date_str
     
-    content.gsub!(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
-      name = $1
-      data = $2
-      
-      if name == "фотка"
-        (src, href) = data.split(/\s+/)
-        
-        if src !~ /^https?:\/\//
-          src = %Q{/blog/#{@entity["href"]}/i/#{src}}
-        end
-        
-        if href
-          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
-        else
-          %Q{<div class="image-box"><img src="#{src}"/></div>}
-        end
-      elsif name == "коктейль"
-        cocktail = Cocktail[data]
-        unless cocktail
-          error "нет такого коктейля «#{data}» (указан в тексте поста)"
-          return
-        end
-        %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
-      else
-        %Q{<a href="#{data}">#{name}</a>}
-      end
-    end
+    content = markup(content)
     
     (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
     @entity["cut"]               = cut
@@ -274,6 +248,38 @@ class EventsProcessor < Inshaker::Processor
     end #indent
   end
   
+  # etc
+  
+  def markup text
+    # links
+    text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
+      name = $1
+      data = $2
+      
+      if name == "фотка"
+        (src, href) = data.split(/\s+/)
+        
+        if src !~ /^https?:\/\//
+          src = %Q{/blog/#{@entity["href"]}/i/#{src}}
+        end
+        
+        if href
+          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
+        else
+          %Q{<div class="image-box"><img src="#{src}"/></div>}
+        end
+      elsif name == "коктейль"
+        cocktail = Cocktail[data]
+        unless cocktail
+          error "нет такого коктейля «#{data}» (указан в тексте поста)"
+          return
+        end
+        %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
+      else
+        %Q{<a href="#{data}">#{name}</a>}
+      end
+    end
+  end
 end
 
 exit EventsProcessor.new.run
