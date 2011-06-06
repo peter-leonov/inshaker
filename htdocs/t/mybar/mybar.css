@@ -131,7 +131,6 @@ html.loading .main-box { display: none; }
 }
 
 /*ingredients-box*/
-
 .main-box .ingredients-box .section-head .bar-name-editable { border-bottom: 1px dashed; }
 .main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: relative; top: -17px; left: 4px; }
 
@@ -204,7 +203,8 @@ html.loading .main-box { display: none; }
 	-moz-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5);
 }
 
-.main-box .ingredients-box .ingredients-list { margin: 20px 0 10px 2px; }
+.main-box .ingredients-box .ingredients-list,
+.main-box .maybe-have-box .ingredients-list { margin: 20px 0 10px 2px; }
 
 .main-box .ingredients-box .ingredients-list ul.by-list { padding-top: 10px; }
 
@@ -234,90 +234,47 @@ html.loading .main-box { display: none; }
 
 .main-box .ingredients-box .ingredients-list dd.group { margin-bottom: 35px; }
 
-.main-box .ingredients-box .ingredients-list ul { overflow: hidden; }
+.main-box .ingredients-box .ingredients-list ul,
+.main-box .maybe-have-box .ingredients-list ul { overflow: hidden; }
 
-.main-box .ingredients-box .ingredients-list .ingredient
-{
-	float: left;
-	margin: 0 0 28px 17px;
-	padding-top: 12px;
-	position: relative;
-}
+.main-box .ingredients-box .ingredients-list .ingredient,
+.main-box .maybe-have-box .ingredients-list .ingredient { float: left; margin: 0 0 28px 17px; padding-top: 12px; position: relative; }
 
-.main-box .ingredients-box .ingredient:hover .control { display: block; }
+.main-box .ingredients-box .ingredient:hover .control,
+.main-box .maybe-have-box .ingredient:hover .control { display: block; }
+
 .main-box .ingredients-box .ingredient:hover .control:hover { background-position: -1021px -417px; }
-
 .main-box .ingredients-box .empty-box { overflow: hidden; margin: 15px 0px; }
 
-.main-box .ingredients-box .empty-box .tell-about-ingredients 
-{
-	background: url("/t/mybar/mybar.png") no-repeat 3px -146px transparent;
-	float: left;
-	height: 266px;
-	width: 176px;
-	margin-left: 47px;
-}
-
-.main-box .ingredients-box .empty-box .explore-cocktails
-{
-	background: url("/t/mybar/mybar.png") no-repeat -172px -146px transparent;
-	float: left;
-	height: 266px;
-	width: 209px;
-	margin-left: 135px;
-}
-.main-box .ingredients-box .empty-box .print-cocktail-cart
-{
-	background: url("/t/mybar/mybar.png") no-repeat -382px -146px transparent;
-	float: left;
-	height: 266px;
-	width: 202px;
-	margin-left: 135px;
-}
+.main-box .ingredients-box .empty-box .tell-about-ingredients { background: url("/t/mybar/mybar.png") no-repeat 3px -146px transparent; float: left; height: 266px; width: 176px; margin-left: 47px; }
+.main-box .ingredients-box .empty-box .explore-cocktails { background: url("/t/mybar/mybar.png") no-repeat -172px -146px transparent; float: left; height: 266px; width: 209px; margin-left: 135px; }
+.main-box .ingredients-box .empty-box .print-cocktail-cart { background: url("/t/mybar/mybar.png") no-repeat -382px -146px transparent; float: left; height: 266px; width: 202px; margin-left: 135px; }
 
 .main-box .ingredients-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 116px; }
 .main-box .ingredients-box .switcher div { cursor: pointer; height: 42px;  background: url("/t/mybar/mybar.png") no-repeat -984px -44px transparent; }
 .main-box .ingredients-box .switcher .by-list { background-position: -984px -1px; }
 .main-box .ingredients-box .switcher .by-groups { background-position: -984px -44px; }
 .main-box .ingredients-box .switcher.by-list .by-list,
-.main-box .ingredients-box .switcher .by-list:hover
-{
-	background-position: -1026px -1px;
-}
+.main-box .ingredients-box .switcher .by-list:hover { background-position: -1026px -1px; }
 .main-box .ingredients-box .switcher.by-groups .by-groups,
-.main-box .ingredients-box .switcher .by-groups:hover
-{
-	background-position: -1026px -44px;
-}
-
+.main-box .ingredients-box .switcher .by-groups:hover { background-position: -1026px -44px; }
 .main-box .ingredients-box .section-head .links .purchase-plan-link { display: block; width: 80px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat -114px -472px transparent; }
 .main-box .ingredients-box .section-head .links .purchase-plan-link:hover { background-position: -114px -416px; }
 
+/*maybe-have-box*/
+.main-box .maybe-have-box .ingredient.have .control { display: block; background-position: -1021px -488px; }
+.main-box .maybe-have-box .ingredient.no-have .control { background-position: -984px -488px; }
+
 /*cocktails-box*/
 .main-box .cocktails-box .section-head h2 .have-no-cocktails,
-.main-box .cocktails-box .section-head h2.zero-cocktails .have-cocktails
-{
-	display: none;
-}
+.main-box .cocktails-box .section-head h2.zero-cocktails .have-cocktails { display: none; }
 .main-box .cocktails-box .section-head h2.zero-cocktails .have-no-cocktails,
-.main-box .cocktails-box .section-head h2 .have-cocktails
-{
-	display: inline;
-}
+.main-box .cocktails-box .section-head h2 .have-cocktails { display: inline; }
 
 .main-box .cocktails-box ul.by-pics { overflow: hidden; margin: 25px 0 0 29px; }
-.main-box .cocktails-box .by-pics .cocktail-preview
-{
-	padding: 20px 24px;
-	float: left;
-}
+.main-box .cocktails-box .by-pics .cocktail-preview { padding: 20px 24px; float: left; }
 
-.main-box .empty-notice {
-	font-family: Georgia;
-	font-size: 18px;
-	font-style: italic;
-	margin: 50px 0 50px 20px;
-}
+.main-box .empty-notice { font-family: Georgia; font-size: 18px; font-style: italic; margin: 50px 0 50px 20px; }
 
 .main-box .cocktails-box .cocktail-preview:hover .control { display: block; }
 .main-box .cocktails-box .visible-cocktails .cocktail-preview:hover .control:hover { background-position: -1021px -417px; }
@@ -406,104 +363,32 @@ html.loading .main-box { display: none; }
 .main-box .share-box { position: relative; }
 .main-box .share-box.zero-cocktails { display: none; }
 .main-box .share-box .share-wrapper { overflow: hidden; padding: 4px; }
-.main-box .share-box .share-wrapper .share-label
-{
-	width: 124px;
-	height: 8px;
-	float: left;
-	background: url("/t/mybar/mybar.png") no-repeat -548px -424px transparent;
-	margin: 14px 19px 0 16px;
-}
-
+.main-box .share-box .share-wrapper .share-label { width: 124px; height: 8px; float: left; background: url("/t/mybar/mybar.png") no-repeat -548px -424px transparent; margin: 14px 19px 0 16px; }
 .main-box .share-box .share-wrapper .facebook-share,
 .main-box .share-box .share-wrapper .twitter-share,
 .main-box .share-box .share-wrapper .email-share,
-.main-box .share-box .share-wrapper .web-share
-{
-	display: block;
-	width: 32px;
-	height: 32px;
-	float: left;
-	margin-left: 4px;
-	background: url("/t/mybar/mybar.png") no-repeat -838px -411px transparent;
-	cursor: pointer;
-}
-
+.main-box .share-box .share-wrapper .web-share { display: block; width: 32px; height: 32px; float: left; margin-left: 4px; background: url("/t/mybar/mybar.png") no-repeat -838px -411px transparent; cursor: pointer; }
 .main-box .share-box .share-wrapper .twitter-share { background-position: -874px -411px; }
 .main-box .share-box .share-wrapper .email-share { background-position: -911px -411px; }
 .main-box .share-box .share-wrapper .web-share { background-position: -948px -411px; }
-
 .main-box .share-box .share-wrapper .facebook-share:hover { background-position: -695px -411px; }
 .main-box .share-box .share-wrapper .twitter-share:hover { background-position: -731px -411px; }
 .main-box .share-box .share-wrapper .email-share:hover { background-position: -768px -411px; }
 .main-box .share-box .share-wrapper .web-share:hover { background-position: -805px -411px; }
-
-.main-box .share-box .email-share-popup
-{
-	background: url("/t/mybar/mybar.png") no-repeat -588px -166px transparent;
-	height: 244px;
-	left: 12px;
-	position: absolute;
-	top: -243px;
-	width: 486px;
-	z-index: 1;
-}
-
-.main-box .share-box .web-share-popup
-{
-	background: url("/t/mybar/mybar.png") no-repeat -647px -447px transparent;
-	height: 49px;
-	left: 162px;
-	position: absolute;
-	top: -49px;
-	width: 257px;
-	z-index: 1;
-}
-
-.main-box .share-box .web-share-popup input {
-	width: 210px;
-	margin: 10px 0 0 20px;
-	padding: 2px;
-	font-size: 14px;
-}
+.main-box .share-box .email-share-popup { background: url("/t/mybar/mybar.png") no-repeat -588px -166px transparent; height: 244px; left: 12px; position: absolute; top: -243px; width: 486px; z-index: 1; }
+.main-box .share-box .web-share-popup { background: url("/t/mybar/mybar.png") no-repeat -647px -447px transparent; height: 49px; left: 162px; position: absolute; top: -49px; width: 257px; z-index: 1; }
+.main-box .share-box .web-share-popup input { width: 210px; margin: 10px 0 0 20px; padding: 2px; font-size: 14px; }
 
 /*recommends-box*/
-
 .main-box .recommends-box .tags-wrapper { overflow: hidden; margin: 24px 0 24px 5px; }
 .main-box .recommends-box .tags-wrapper .tags-list { overflow: hidden; position: relative; top: 1px; }
-.main-box .recommends-box .tags-wrapper .tags-list li
-{
-	float: left;
-	margin-bottom: 1px;
-	font-size: 14px;
-	color: #000;
-	position: relative;
-	cursor: pointer;
-	margin-left: 22px;
-}
+.main-box .recommends-box .tags-wrapper .tags-list li { float: left; margin-bottom: 1px; font-size: 14px; color: #000; position: relative; cursor: pointer; margin-left: 22px; }
 
-.main-box .recommends-box .tags-wrapper .tags-list li div
-{
-	line-height: 27px;
-	width: 207px;
-	height: 29px;
-}
-
+.main-box .recommends-box .tags-wrapper .tags-list li div { line-height: 27px; width: 207px; height: 29px; }
 .main-box .recommends-box .tags-wrapper .tags-list li.active div,
-.main-box .recommends-box .tags-wrapper .tags-list li:hover.active div
-{
-	background: url("/t/mybar/mybar.png") no-repeat -753px -498px transparent;
-	color: #fff;
-	cursor: default;
-}
-
+.main-box .recommends-box .tags-wrapper .tags-list li:hover.active div { background: url("/t/mybar/mybar.png") no-repeat -753px -498px transparent; color: #fff; cursor: default; }
 .main-box .recommends-box .tags-wrapper .tags-list li.active,
-.main-box .recommends-box .tags-wrapper .tags-list li:hover
-{
-	margin-top: -1px;
-	border-top: 1px solid #fff;
-}
-
+.main-box .recommends-box .tags-wrapper .tags-list li:hover { margin-top: -1px; border-top: 1px solid #fff; }
 .main-box .recommends-box .tags-wrapper .tags-list li:hover div { background: url("/t/mybar/mybar.png") no-repeat -546px -498px transparent; }
 .main-box .recommends-box .tags-wrapper .tags-list li .name { padding-left: 13px; }
 .main-box .recommends-box .tags-wrapper .tags-list li .amount { float: right; color: #b1b1b1; font-size: 10px; padding-right: 13px; }
@@ -512,70 +397,27 @@ html.loading .main-box { display: none; }
 .main-box .recommends-box .tags-wrapper .tags-list li b { display: block; width: 180px; border-bottom: 1px solid #e1e1e1; position: absolute; bottom: -1px; left: 13px; }
 
 .main-box .recommends-box .recommends-wrapper { margin-bottom: 30px; min-height: 1000px; }
-.main-box .recommends-box .ingredient
-{
-	float: left;
-	position: relative;
-	margin: 0 0 28px 17px;
-	padding-top: 12px;
-}
-
+.main-box .recommends-box .ingredient { float: left; position: relative; margin: 0 0 28px 17px; padding-top: 12px; }
 .main-box .recommends-box .ingredient.no-have .control { background-position: -984px -488px; }
 .main-box .recommends-box .ingredient.have .control,
 .main-box .recommends-box .cocktail-preview.have .control { display: block; background-position: -1021px -488px; }
 .main-box .recommends-box .cocktail-preview .control { left: -4px; top: -18px; }
 
-.main-box .recommends-box .recommends-list .advice
-{
-	border-top: 1px solid #E5E5E5;
-	font-family: Georgia;
-	font-size: 18px;
-	font-style: italic;
-	margin: 0 17px 17px;
-	padding-top: 26px;
-	color: #2b2b2b;
-}
-
+.main-box .recommends-box .recommends-list .advice { border-top: 1px solid #E5E5E5; font-family: Georgia; font-size: 18px; font-style: italic; margin: 0 17px 17px; padding-top: 26px; color: #2b2b2b; }
 .main-box .recommends-box .recommends-list .advice .ingredient-link,
 .main-box .recommends-box .recommends-list .advice .cocktail-link { color: #ec118f; cursor: pointer; white-space: nowrap; }
 .main-box .recommends-box .recommends-list .advice .ingredient-link:hover { text-decoration: underline; }
 .main-box .recommends-box .recommends-list .recommend { overflow: hidden; }
 .main-box .recommends-box .recommends-list .recommend .head { float: left; }
-
-.main-box .recommends-box .recommends-list .recommend .eq
-{
-	color: #7F7F7F;
-	float: left;
-	font-size: 52px;
-	font-weight: bold;
-	margin: 28px 4px 0 30px;
-	position: relative;
-}
+.main-box .recommends-box .recommends-list .recommend .eq { color: #7F7F7F; float: left; font-size: 52px; font-weight: bold; margin: 28px 4px 0 30px; position: relative; }
 .main-box .recommends-box .recommends-list .recommend .body { float: left; }
 .main-box .recommends-box .recommends-list .recommend .body .cocktail-preview { margin: 15px 17px 10px 0; float: left; }
 
-.main-box .recommends-box .must-have-list .row
-{
-	overflow: hidden;
-	padding: 26px 0 18px;
-	position: relative;
-}
-
+.main-box .recommends-box .must-have-list .row { overflow: hidden; padding: 26px 0 18px; position: relative; }
 .main-box .recommends-box .must-have-list .row .ingredient { margin: 0 17px 0px 17px; }
-
-.main-box .recommends-box .must-have-list .row .description
-{
-	float: left;
-	font-family: georgia;
-	font-size: 16px;
-	font-style: italic;
-	padding: 17px 0 0 10px;
-	width: 750px;
-	color: #2b2b2b;
-}
+.main-box .recommends-box .must-have-list .row .description { float: left; font-family: georgia; font-size: 16px; font-style: italic; padding: 17px 0 0 10px; width: 750px; color: #2b2b2b; }
 
 /*purchase-plan*/
-
 .main-box .purchase-plan-box { color: #3c3c3c; }
 .main-box .purchase-plan-box .purchase-table-wrapper { margin: 28px 0px 10px; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table { left: -1px; margin-bottom: 30px; position: relative; width: 960px; }
@@ -614,7 +456,6 @@ html.loading .main-box { display: none; }
 .main-box .print-link-box .print-link:hover { background-position: -298px -424px; }
 
 /*foreign-page*/
-
 .main-box .mybar-link-box .mybar-link { display: block; width: 169px; height: 18px; position: relative; left: -2px; top: 10px; margin: 0 auto; background: url("/t/mybar/mybar.png") no-repeat scroll -470px -437px transparent; }
 .main-box .mybar-link-box.newbie .mybar-link { background-position: -470px -457px;; width: 171px; }
 
