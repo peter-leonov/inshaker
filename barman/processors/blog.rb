@@ -263,7 +263,9 @@ class EventsProcessor < Inshaker::Processor
           src = %Q{/blog/#{@entity["href"]}/i/#{src}}
         end
         
-        if href
+        if href == "внутрь"
+          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}"/></a></div>}
+        elsif href
           %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
         else
           %Q{<div class="image-box"><img src="#{src}"/></div>}
