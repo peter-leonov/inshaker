@@ -67,6 +67,7 @@ var myProto =
 		
 		this.settingsData = <!--# include virtual="/db/mybar/settings.json" -->
 		this.allTags = this.settingsData.tags
+		this.maybeHaveIngredients = this.ingredients.length ? false : this.fetchIngredients(this.settingsData.maybeHaveIngredients)
 		this.mustHave = this.settingsData.mustHaveIngredients
 		
 		this.computeRecommendsBlock()
@@ -92,6 +93,7 @@ var myProto =
 	{
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderShareLinks(this.userid)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
@@ -123,9 +125,10 @@ var myProto =
 	
 	getIngredients : function(ingredientNames)
 	{
-		var ingredients = fetchIngredients(ingredientNames)
+		var ingredients = this.fetchIngredients(ingredientNames)
 		ingredients.hash = Array.toHash(ingredientNames)
 		
+		var me = this
 		ingredients.add = function(ingredient)
 		{
 			if(this.hash[ingredient.name])
@@ -140,24 +143,23 @@ var myProto =
 		{
 			this.hash[ingredient.name] = null
 			this.length = 0
-			Object.extend(this, fetchIngredients(Object.toArray(this.hash)))
+			Object.extend(this, me.fetchIngredients(Object.toArray(this.hash)))
 			return this
 		}
-		
-		function fetchIngredients(ingredientNames)
-		{
-			var ingredients = []
-			for (var i = 0, il = ingredientNames.length; i < il; i++)
-			{
-				var ingredient = Ingredient.getByName(ingredientNames[i])
-				if(ingredient)
-					ingredients.push(ingredient)
-			}
-			return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
-		}
-
 		return ingredients
 	},
+	
+	fetchIngredients : function(ingredientNames)
+	{
+		var ingredients = []
+		for (var i = 0, il = ingredientNames.length; i < il; i++)
+		{
+			var ingredient = Ingredient.getByName(ingredientNames[i])
+			if(ingredient)
+				ingredients.push(ingredient)
+		}
+		return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
+	},	
 	
 	computeCocktails : function(ingredients)
 	{
@@ -553,7 +555,8 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)	
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -574,6 +577,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -637,6 +641,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
+		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
