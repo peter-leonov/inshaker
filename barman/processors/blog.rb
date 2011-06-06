@@ -280,6 +280,12 @@ class EventsProcessor < Inshaker::Processor
       end
     end
     
+    # headers
+    text = text.gsub(/^([^\n]+)$\n=+/) do
+      header = $1
+      %Q{<h2>#{header}</h2>}
+    end
+    
     # paragraphs
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
