@@ -1063,7 +1063,7 @@ var myProto =
 	{
 		var w = 550,
 			h = 450,
-			sh = window.screen.height
+			sh = window.screen.height,
 			sw = window.screen.width,
 			left = Math.round((sw-w)/2),
 			top = sh > h ? Math.round((sh-h)/2) : 0
