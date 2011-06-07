@@ -16,9 +16,14 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 
 #big-banner { margin: 10px 0; padding: 20px 0; border-top: 1px solid #eee; }
 
-#small-banners { float: right; width: 304px; margin-right: -2px; padding: 20px 0 0 0; overflow: hidden; border-top: 1px solid #eee; }
+#sidebar { float: right; }
+#small-banners { width: 304px; margin-right: -2px; padding: 20px 0 0 0; overflow: hidden; border-top: 1px solid #eee; }
 #small-banners .head { font-size: 14px; line-height: 26px; margin-bottom: 10px; }
 #small-banners .item { float: left; margin: 0 2px 2px 0; }
+
+#editors { margin-top: 30px; font-size: 8px; }
+#editors .head { font-weight: bold; }
+#editors .body { margin-bottom: 8px; }
 
 #posts-loop,
 #the-one { border-top: 1px solid #eee; width: 590px; padding: 20px 0 30px 0; }
