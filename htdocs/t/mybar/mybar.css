@@ -33,14 +33,12 @@ html.loading .main-box { display: none; }
 .main-box .cocktail-preview .control { position: absolute; width: 32px; height: 32px; background: url("/t/mybar/mybar.png") no-repeat -984px -417px transparent; left: 10px; top: -3px; cursor: pointer; display: none; }
 
 /*ingredients-box*/
-.main-box .ingredients-box .section-head .bar-name-editable { background: none; border: medium none; color: inherit; display: block; float: left; font-size: inherit; font-weight: bold; text-decoration: underline; text-shadow: inherit; width: 600px; }
+.main-box .ingredients-box .section-head .bar-name-editable { background: none; border: medium none; outline: none; color: inherit; display: block; float: left; font-size: inherit; font-weight: bold; text-decoration: underline; text-shadow: inherit; width: 600px; }
 .main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: absolute; top: 32px; left: 140px; }
 .main-box .ingredients-box .search-box { margin-top: 30px; margin-left: 14px; position: relative; color: #000; font-size: 18px; }
 .main-box .ingredients-box .search-box button { color: #3c3c3c; font-size: 14px; background: url("/t/mybar/mybar.png") no-repeat -905px -454px transparent; border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 1px; height: 32px; display: block; position: absolute; top: 5px; padding-bottom: 3px; cursor: pointer; }
-
 .main-box .ingredients-box .search-box .search-button { right: 131px; width: 87px; }
 .main-box .ingredients-box .search-box .lucky-button { right: 20px; width: 107px; }
-
 .main-box .ingredients-box .search-box .autocomplete { display: none; z-index: 1; position: absolute; top: 36px; left: 5px; width: 698px; border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 0px 1px 1px 1px; background: #fff; box-shadow: 1px 1px 0 rgb(231, 231, 231); box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -webkit-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -moz-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); }
 .main-box .ingredients-box .search-box .autocomplete.focused { display: block; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; }
@@ -50,7 +48,6 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .autocomplete .item .substr { font-weight: bold; }
 .main-box .ingredients-box .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000; }
-
 .main-box .ingredients-box .search-box .query { border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 1px; color: inherit; font-size: inherit; margin: 5px; padding: 4px 4px 5px; width: 690px; box-shadow: 1px 1px 0 rgb(231, 231, 231); box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -webkit-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -moz-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); }
 .main-box .ingredients-box .ingredients-list,
 .main-box .maybe-have-box .ingredients-list { margin: 20px 0 10px 2px; }
@@ -80,6 +77,8 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .switcher .by-groups:hover { background-position: -1026px -44px; }
 .main-box .ingredients-box .section-head .links .purchase-plan-link { display: block; width: 80px; height: 52px; background: url("/t/mybar/mybar.png") no-repeat -114px -472px transparent; }
 .main-box .ingredients-box .section-head .links .purchase-plan-link:hover { background-position: -114px -416px; }
+
+html.chrome .main-box .ingredients-box .section-head .bar-name-editable { position: relative; top: -3px; }
 
 /*maybe-have-box*/
 .main-box .maybe-have-box .ingredient.have .control { display: block; background-position: -1021px -488px; }

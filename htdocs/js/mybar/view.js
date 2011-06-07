@@ -143,8 +143,11 @@ var myProto =
 		var node = e.target
 		if(!node.inited)
 		{
-			node.selectionStart = 0
-			node.selectionEnd = node.value.length
+			setTimeout(function()
+			{
+				node.selectionStart = 0
+				node.selectionEnd = node.value.length
+			}, 0)
 			this.nodes.ingredients.title.advice.hide()
 		}
 	},
