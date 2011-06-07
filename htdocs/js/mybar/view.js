@@ -140,7 +140,13 @@ var myProto =
 	
 	handleBarNameFocus : function(e)
 	{
-		this.nodes.ingredients.title.advice.hide()
+		var node = e.target
+		if(!node.inited)
+		{
+			node.selectionStart = 0
+			node.selectionEnd = node.value.length
+			this.nodes.ingredients.title.advice.hide()
+		}
 	},
 	
 	handleBarNameKeypress : function(e)
@@ -154,12 +160,11 @@ var myProto =
 	
 	handleBarNameBlur : function(e)
 	{
-		var value = ''
-		if(e.target.firstChild)
+		var value = e.target.value
+		if(value)
 		{
-			value = e.target.firstChild.nodeValue
+			this.controller.changeBarName(value)
 		}
-		this.controller.changeBarName(value)
 	},
 	
 	onscroll : function()
@@ -223,8 +228,8 @@ var myProto =
 		var nodes = this.nodes.ingredients.title
 		if(barName)
 		{
-			nodes.barName.empty()
-			nodes.barName.appendChild(T(barName))
+			nodes.barName.value = barName
+			nodes.barName.inited = true
 			nodes.advice.hide()
 		}
 	},
