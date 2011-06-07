@@ -134,7 +134,10 @@ var myProto =
 	
 	renderPrice : function(price, exclude)
 	{
-		var td = Nct('td', 'item-price tr-content', exclude ? 0 : price)
+		var td = Nc('td', 'item-price tr-content')
+		var div = N('div')
+		div.appendChild(T(exclude ? 0 : price))
+		td.appendChild(div)
 		return td
 	},
 	

@@ -224,8 +224,10 @@ var myProto =
 			tr.addClassName('included')
 		}
 		
+		var div = N('div')
+		div.appendChild(T(price))
 		priceNode.empty()
-		priceNode.appendChild(T(price))
+		priceNode.appendChild(div)
 	},
 	
 	renderFilteredVolume : function(volume)

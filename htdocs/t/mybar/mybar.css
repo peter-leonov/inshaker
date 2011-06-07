@@ -226,6 +226,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { positi
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume { width: 103px; text-align: left; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-volume .volume-value { width: 63px; padding: 5px; margin: 0px 5px 0px 3px; border: none; background-color: #e5e5e5; text-align: right; font-size: 18px; color: #3c3c3c; }
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-price { width: 175px; text-align: right; }
+.main-box .purchase-plan-box .purchase-table-wrapper .group-table .item-price div { width: 175px; overflow: hidden; }
 
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr:hover td,
 .main-box .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.active td { background-color: #e5e5e5; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
