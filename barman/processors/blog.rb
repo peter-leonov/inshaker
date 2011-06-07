@@ -308,6 +308,12 @@ class EventsProcessor < Inshaker::Processor
       %Q{<span class="crossed">#{words}</span>}
     end
     
+    # bold
+    text = text.gsub(/\*\*\*(.+?)\*\*\*/) do
+      words = $1
+      %Q{<b>#{words}</b>}
+    end
+    
     # emails
     text = text.gsub(/(\S+@[a-z0-9\-]{2,}\.[a-z]{2,})/i) do
       email = $1
