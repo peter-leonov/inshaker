@@ -640,7 +640,7 @@ var myProto =
 		var me = this
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.showIngByGroups, this.tipIngredient)
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		
