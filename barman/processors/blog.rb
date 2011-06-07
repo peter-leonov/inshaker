@@ -111,6 +111,7 @@ class EventsProcessor < Inshaker::Processor
     ht_dir = Dir.new(ht_path)
     ht_dir.name = ht_name
     
+    FileUtils.rmtree(ht_dir.path + "/i/")
     FileUtils.cp_r(src_dir.path + "/i/", ht_dir.path + "/i/", @mv_opt)
     
     update_html @entity, ht_dir
