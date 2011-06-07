@@ -111,7 +111,7 @@ html.loading .main-box { display: none; }
 	width: 100px;
 }
 
-.main-box .cocktail-preview a { display: block; width: 100px; color: #000; }
+.main-box .cocktail-preview a { display: block; color: #000; }
 .main-box .cocktail-preview img
 {
 	display: block;
