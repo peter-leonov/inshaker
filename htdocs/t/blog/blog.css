@@ -33,5 +33,6 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .body .image-box .image { margin: 0 auto; }
 .post .body .crossed { text-decoration: line-through; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
+.post .body p { margin: 10px 0; }
 
 #bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
