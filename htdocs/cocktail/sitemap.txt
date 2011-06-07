@@ -294,6 +294,7 @@ http://www.inshaker.ru/cocktail/winter_cherry/
 http://www.inshaker.ru/cocktail/golden_margarita/
 http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/
+http://www.inshaker.ru/cocktail/gold_tequila_with_lime/
 http://www.inshaker.ru/cocktail/gold_bottom/
 http://www.inshaker.ru/cocktail/gold_gingery_rum/
 http://www.inshaker.ru/cocktail/zombie/
@@ -714,6 +715,7 @@ http://www.inshaker.ru/cocktail/senior_sazerac/
 http://www.inshaker.ru/cocktail/senhorita/
 http://www.inshaker.ru/cocktail/silver_bullet/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
+http://www.inshaker.ru/cocktail/silver_tequila_with_lime/
 http://www.inshaker.ru/cocktail/siberian_grog/
 http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/symphony/
