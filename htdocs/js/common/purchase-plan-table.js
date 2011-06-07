@@ -45,7 +45,6 @@ var myProto =
 	{
 		if(!ingredients.length)
 		{
-			this.renderIfEmpty()
 			return
 		}
 		
