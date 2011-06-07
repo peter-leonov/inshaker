@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" id="blog-post-page" class="blog-section">
+<head>
+	<!--# include virtual="/inc/blog-head.html" -->
+	<title><%= @title %> — Супер Блог — Inshaker</title>
+</head>
+<body>
+<!--# include virtual="/inc/top-common.html" -->
+<div id="common-main-wrapper">
+
+<!--# include virtual="/inc/blog-top.html" -->
+
+<div id="the-one">
+
+<div class="post">
+	<h1 class="title"><%= @title %></h1>
+	<div class="body">
+		<%= @body %>
+	</div>
+	<div class="more">
+		<a class="deeper" href="/blog/">← сколько всего интересного</a>
+		<span class="date"><%= @date_ru %></span>
+	</div>
+</div>
+
+</div id="the-one">
+
+</div id="common-main-wrapper">
+<!--# include virtual="/inc/blog-post-footer.html" -->
+</body>
+</html>

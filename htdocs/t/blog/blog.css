@@ -1,0 +1,45 @@
+.hidden { display: none; }
+
+h1 a, h2 a, h3 a, dt.name a { color: inherit; }
+
+html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff; }
+
+#common-main-wrapper { overflow: hidden; position: relative; }
+
+#blog-head { margin: 0 0 30px 0; }
+#blog-head .name { font-size: 28px; }
+#blog-head .description { font-size: 14px; }
+
+#blog-page #blog-head .name a { color: inherit; text-decoration: none; cursor: text; }
+
+#fb-likebutton { position: absolute; right: 0; top: 28px; width: 150px; height: 21px; overflow: hidden; border: none; }
+
+#big-banner { margin: 10px 0; padding: 20px 0; border-top: 1px solid #eee; }
+
+#sidebar { float: right; }
+#small-banners { width: 304px; margin-right: -2px; padding: 20px 0 0 0; overflow: hidden; border-top: 1px solid #eee; }
+#small-banners .head { font-size: 14px; line-height: 26px; margin-bottom: 10px; }
+#small-banners .item { float: left; margin: 0 2px 2px 0; }
+
+#editors { margin-top: 30px; font-size: 8px; }
+#editors .head { font-weight: bold; }
+#editors .body { margin-bottom: 8px; }
+
+#posts-loop,
+#the-one { border-top: 1px solid #eee; width: 590px; padding: 20px 0 30px 0; }
+
+.post { position: relative; margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
+.post:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.post .title { font-size: 22px; margin: 0 0 5px 0; }
+.post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
+.post .more .deeper { color: inherit; margin: 0 20px 0 0; }
+#the-one .post .more { margin-top: 30px; }
+#the-one .post .more .date { position: absolute; right: 0; top: 0; }
+.post .body { font-size: 14px; line-height: 22px; }
+.post .body .image-box { display: block; margin: 1em 0; }
+.post .body .image-box .image { margin: 0 auto; }
+.post .body .crossed { text-decoration: line-through; }
+.post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
+.post .body p { margin: 10px 0; }
+
+#bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
