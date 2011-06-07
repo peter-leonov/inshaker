@@ -81,8 +81,13 @@ class EventsProcessor < Inshaker::Processor
     @entity["title"]             = yaml['Заголовок']
     @entity["href"]              = yaml['Ссылка']
     
-    ru_date                      = Time.gm(*yaml['Дата'].split(".").reverse.map{|v|v.to_i})
-    ru_date_str                  = "#{ru_date.day} #{Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
+    ru_date = parse_date(yaml['Дата'])
+    unless ru_date
+      error "не могу понять вашу дату «#{yaml['Дата']}»"
+      return
+    end
+    ru_date_str = "#{ru_date.day} #{Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
+    
     @entity["date"]              = ru_date.to_i * 1000
     @entity["date_ru"]           = ru_date_str
     
@@ -124,7 +129,7 @@ class EventsProcessor < Inshaker::Processor
   def update_posts_loop
     renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
     
-    @entities_array.sort { |a, b| a["date"] - b["date"] }
+    @entities_array.sort! { |a, b| b["date"] - a["date"] }
     File.open(Config::POSTS_PREVIEWS, "w+") do |p|
       @entities_array.each do |entity|
         p.puts renderer.result(Template.new(entity).get_binding)
@@ -158,6 +163,14 @@ class EventsProcessor < Inshaker::Processor
       @entities.each do |name, entity|
         links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
       end
+    end
+  end
+  
+  def parse_date str
+    m = /(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)(?: +(?<hour>\d+)\:(?<minute>\d+))?/.match(str)
+    if m
+      arr = [m[:year], m[:month], m[:day], m[:hour] || 0, m[:minute] || 0].map { |v| v.to_i }
+      Time.gm(*arr)
     end
   end
   
