@@ -357,7 +357,7 @@ html.loading .main-box { display: none; }
 .main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview:hover { text-decoration: none; }
 .main-box .cocktails-box .visible-cocktails .row .body .ingredient-preview:hover .name { text-decoration: underline; }
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
-.main-box .cocktails-box .visible-cocktails .row .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
+.main-box .cocktails-box .visible-cocktails .row .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; width: 91px; }
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview a { color: #000; }
 
