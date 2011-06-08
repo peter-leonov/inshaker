@@ -305,6 +305,7 @@ var myProto =
 		
 		this.groups = res
 		this.view.renderGroups(res)
+		this.view.onscroll()
 	},
 	
 	toggleGroupCollapsedility: function (num)
