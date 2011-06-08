@@ -34,7 +34,7 @@ html.loading .main-box { display: none; }
 .main-box .cocktail-preview .control { position: absolute; width: 32px; height: 32px; background: url("/t/mybar/mybar.png") no-repeat -984px -417px transparent; left: 10px; top: -3px; cursor: pointer; display: none; }
 
 /*ingredients-box*/
-.main-box .ingredients-box .section-head .bar-name-editable { background: none; border: medium none; outline: none; color: inherit; display: block; float: left; font-size: inherit; font-weight: bold; text-decoration: underline; text-shadow: inherit; width: 600px; }
+.main-box .ingredients-box .section-head .bar-name-editable { position: relative; top: -1px; background: none; border: medium none; outline: none; color: inherit; display: block; float: left; font-size: inherit; font-weight: bold; text-decoration: underline; text-shadow: inherit; width: 600px; }
 .main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: absolute; top: 32px; left: 140px; }
 .main-box .ingredients-box .search-box { margin-top: 30px; margin-left: 14px; position: relative; color: #000; font-size: 18px; }
 .main-box .ingredients-box .search-box button { color: #3c3c3c; font-size: 14px; background: url("/t/mybar/mybar.png") no-repeat -905px -454px transparent; border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 1px; height: 32px; display: block; position: absolute; top: 5px; padding-bottom: 3px; cursor: pointer; }
@@ -80,7 +80,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .section-head .links .purchase-plan-link:hover { background-position: -114px -416px; }
 
 html.chrome .main-box .ingredients-box .section-head .bar-name-editable,
-html.safari .main-box .ingredients-box .section-head .bar-name-editable { position: relative; top: -3px; }
+html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -3px; }
 
 /*maybe-have-box*/
 .main-box .maybe-have-box .ingredient.have .control { display: block; background-position: -1021px -488px; }
@@ -146,10 +146,9 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { positi
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; position: relative;}
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; width: 91px; }
 .main-box .cocktails-box .visible-cocktails .row .cocktail-preview.lazy .image { background-color: #f4f4f4; }
-.main-box .cocktails-box .visible-cocktails .row .cocktail-preview a { color: #000; }
 
 /*share-box*/
-.main-box .share-box { position: relative; }
+.main-box .share-box { position: relative; color: #000; }
 .main-box .share-box.zero-cocktails { display: none; }
 .main-box .share-box .share-wrapper { overflow: hidden; padding: 4px; }
 .main-box .share-box .share-wrapper .share-label { width: 124px; height: 8px; float: left; background: url("/t/mybar/mybar.png") no-repeat -548px -424px transparent; margin: 14px 19px 0 16px; }
@@ -164,15 +163,24 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { positi
 .main-box .share-box .share-wrapper .twitter-share:hover { background-position: -731px -411px; }
 .main-box .share-box .share-wrapper .email-share:hover { background-position: -768px -411px; }
 .main-box .share-box .share-wrapper .web-share:hover { background-position: -805px -411px; }
-.main-box .share-box .email-share-popup { background: url("/t/mybar/mybar.png") no-repeat -588px -166px transparent; height: 244px; left: 12px; position: absolute; top: -243px; width: 486px; z-index: 1; }
 .main-box .share-box .web-share-popup { background: url("/t/mybar/mybar.png") no-repeat -647px -447px transparent; height: 49px; left: 162px; position: absolute; top: -49px; width: 257px; z-index: 1; }
 .main-box .share-box .web-share-popup input { width: 210px; margin: 10px 0 0 20px; padding: 2px; font-size: 14px; }
+.main-box .share-box .email-share-popup { background: url("/t/mybar/mybar.png") no-repeat -588px -166px transparent; height: 244px; left: 12px; position: absolute; top: -243px; width: 486px; z-index: 1; }
+.main-box .share-box .email-share-popup .email-form { margin: 26px 0px 0px 19px; }
+.main-box .share-box .email-share-popup .email-form label { display: block; overflow: hidden; margin-bottom: 5px; }
+.main-box .share-box .email-share-popup .email-form label * { display: block; float: left; }
+.main-box .share-box .email-share-popup .email-form label b { width: 88px; height: 28px; line-height: 26px; font-size: 14px; font-weight: normal; }
+.main-box .share-box .email-share-popup .email-form label input,
+.main-box .share-box .email-share-popup .email-form label textarea { width: 335px; padding: 8px 10px; border: none; font-size: 10px; background-color: #e6e6e6; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.main-box .share-box .email-share-popup .email-form label textarea { height: 75px; resize: none; }
+.main-box .share-box .email-share-popup .send-button { position: absolute; top: 200px; right: 27px; font-size: 14px; text-decoration: underline; cursor: pointer; }
+.main-box .share-box .email-share-popup .send-button.sending { cursor: default; color: #777; }
+.main-box .share-box .email-share-popup .email-sended { position: absolute; top: 200px; right: 27px; font-size: 14px; }
 
 /*recommends-box*/
 .main-box .recommends-box .tags-wrapper { overflow: hidden; margin: 24px 0 24px 5px; }
 .main-box .recommends-box .tags-wrapper .tags-list { overflow: hidden; position: relative; top: 1px; }
 .main-box .recommends-box .tags-wrapper .tags-list li { float: left; margin-bottom: 1px; font-size: 14px; color: #000; position: relative; cursor: pointer; margin-left: 22px; }
-
 .main-box .recommends-box .tags-wrapper .tags-list li div { line-height: 27px; width: 207px; height: 29px; }
 .main-box .recommends-box .tags-wrapper .tags-list li.active div,
 .main-box .recommends-box .tags-wrapper .tags-list li:hover.active div { background: url("/t/mybar/mybar.png") no-repeat -753px -498px transparent; color: #fff; cursor: default; }

@@ -96,11 +96,15 @@
 						<div class="web-share"></div>
 					</div>
 					<div class="email-share-popup hidden">
-						<form class="email-share-form">
-							<form class="email-form">
-								<textarea class="message-body">Вот мой бар mybarlink !</textarea>
-							</form>
+						<form class="email-form" action="#">
+							<label for="address"><b>E-mail кому:</b><input name="address" class="address" value="" /></label>
+							<label for="mailer"><b>Ваше имя:</b><input name="mailer" class="mailer" value="" /></label>
+							<label for="message-body"><b>Текст:</b>
+								<textarea name="message-body" class="message-body">Вот мой бар mybarlink !</textarea>
+							</label>
 						</form>
+						<span class="send-button">Отправить</span>
+						<span class="email-sended hidden">Письмо отправлено!</span>
 					</div>
 					<div class="web-share-popup hidden"><input type="text" value="" /></div>
 				</div>
