@@ -13,5 +13,6 @@ a[href^="#"] { text-decoration: none; border-bottom: dashed 1px; }
 .faq p { margin: 0.5em 0; }
 .faq .question { margin-bottom: 1.5em; }
 
-#sidebar .who { display: block; font-size: 16px; text-align: center; }
-#sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin-bottom: 0.5em; }
+#sidebar .head { font-size: 20px; }
+#sidebar .who {  }
+#sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0.5em 0 0.5em 0; }
