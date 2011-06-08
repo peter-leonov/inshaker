@@ -378,7 +378,6 @@ var myProto =
 			case 'by-ingredients':
 			{	
 				this.incl.setCocktails([{cocktails : visibleCocktails}])
-				this.incl.wake()
 				break;
 			}
 			case 'by-pics':
