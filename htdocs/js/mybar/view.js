@@ -377,11 +377,7 @@ var myProto =
 		{
 			case 'by-ingredients':
 			{	
-				var me = this
-				setTimeout(function()
-				{
-					me.incl.setCocktails([{cocktails : visibleCocktails}])
-				}, 1)
+				this.incl.setCocktails([{cocktails : visibleCocktails}])
 				break;
 			}
 			case 'by-pics':
