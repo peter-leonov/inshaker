@@ -110,7 +110,12 @@ function onready ()
 			popups : {
 				email : {
 					main : $$('#common-main-wrapper .share-box .email-share-popup')[0],
-					textarea : $$('#common-main-wrapper .share-box .email-share-popup .message-body')[0]
+					form : $$('#common-main-wrapper .share-box .email-form')[0],
+					text : $$('#common-main-wrapper .share-box .email-share-popup textarea.message-body')[0],
+					address : $$('#common-main-wrapper .share-box .email-share-popup input.address')[0],
+					mailer : $$('#common-main-wrapper .share-box .email-share-popup input.mailer')[0],
+					sendButton : $$('#common-main-wrapper .share-box .email-share-popup .send-button')[0],
+					emailSended : $$('#common-main-wrapper .share-box .email-share-popup .email-sended')[0]
 				},
 				web : {
 					main : $$('#common-main-wrapper .share-box .web-share-popup')[0],
