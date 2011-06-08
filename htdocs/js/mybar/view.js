@@ -95,6 +95,7 @@ var myProto =
 		
 		nodes.share.wrapper.addEventListener('click', function(e){ me.handleShareClick(e) }, false)
 		nodes.share.popups.email.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
+		nodes.share.popups.email.sendButton.addEventListener('click', function(e){ me.sendEmail(e) }, false)
 		nodes.share.popups.web.main.addEventListener('click', function(e){ e.stopPropagation() }, false)
 		
 		this.hideEmailShare = function()
@@ -437,8 +438,8 @@ var myProto =
 		var url = window.location.protocol + '//' + window.location.hostname + '/mybar/foreign.html#' + userid
 		nodes.links.facebook.href = nodes.links.facebook.href.replace('mybarlink', UrlEncode.stringify({ u : url }))
 		nodes.links.twitter.href = nodes.links.twitter.href.replace('mybarlink', UrlEncode.stringify({ url : url }))
-		var textValue = nodes.popups.email.textarea.firstChild.nodeValue.replace('mybarlink', url)
-		nodes.popups.email.textarea.value = textValue
+		var textValue = nodes.popups.email.text.innerHTML.replace('mybarlink', url)
+		nodes.popups.email.text.innerHTML = textValue
 		nodes.popups.web.input.value = url
 	},
 
@@ -1077,6 +1078,28 @@ var myProto =
 			top = sh > h ? Math.round((sh-h)/2) : 0
 			
 		window.open(url, '', 'left=' + left + ',top=' + top + ',width=' + w + ',height=' + h + ',personalbar=0,toolbar=0,scrollbars=1,resizable=1')
+	},
+	
+	sendEmail : function(e)
+	{
+		var node = e.target
+		if(node.hasClassName('sending'))
+		{
+			return
+		}
+		node.addClassName('sending')
+		var nodes = this.nodes.share.popups.email,
+			address = nodes.address.value,
+			mailer = nodes.mailer.value,
+			text = nodes.text.innerHTML
+		this.controller.sendEmail(address, mailer, text)
+	},
+	
+	emailSended : function()
+	{
+		var nodes = this.nodes.share.popups.email
+		nodes.sendButton.hide()
+		nodes.emailSended.show()
 	}
 	
 /*	setScrollTopTags : function()

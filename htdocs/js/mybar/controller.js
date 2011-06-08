@@ -66,6 +66,11 @@ var myProto =
 		this.model.showCocktail(cocktail)
 	},
 	
+	sendEmail : function(address, email, text)
+	{
+		this.model.sendEmail(address, email, text)
+	},
+	
 	switchTag : function(tag)
 	{
 		this.model.switchTag(tag)

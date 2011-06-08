@@ -25,6 +25,7 @@ var myProto =
 		this.ingredients = []
 		this.recommends = []
 		this.recommIngr = []
+		this.emailScript = 'http://demo.inshaker.ru'
 		
 		var originAdd = BarStorage.addIngredient
 		var originRem = BarStorage.removeIngredient
@@ -86,7 +87,7 @@ var myProto =
 		set.sort()
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
-		this.view.setCompleterDataSource(searcher)		
+		this.view.setCompleterDataSource(searcher)
 	},
 	
 	setMainState : function()
@@ -614,6 +615,18 @@ var myProto =
 		this.saveStorage()
 		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)		
+	},
+	
+	sendEmail : function(address, mailer, text)
+	{
+		var me = this
+		Request.post(this.emailScript, { address : address, mailer : mailer, text : text }, function(e)
+		{
+			if(e.type == 'success' && this.status)
+			{
+				me.view.emailSended()
+			}
+		})
 	},
 	
 	switchTag : function(tag)
