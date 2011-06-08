@@ -150,7 +150,7 @@ var myProto =
 		{
 			node.selectionStart = 0
 			node.selectionEnd = node.value.length
-		}, 0)
+		}, 1)
 	},
 	
 	handleBarNameKeypress : function(e)
@@ -378,6 +378,7 @@ var myProto =
 			case 'by-ingredients':
 			{	
 				this.incl.setCocktails([{cocktails : visibleCocktails}])
+				this.incl.wake()
 				break;
 			}
 			case 'by-pics':
