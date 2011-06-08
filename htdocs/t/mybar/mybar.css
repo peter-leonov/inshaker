@@ -171,7 +171,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .share-box .email-share-popup .email-form label * { display: block; float: left; }
 .main-box .share-box .email-share-popup .email-form label b { width: 88px; height: 28px; line-height: 26px; font-size: 14px; font-weight: normal; }
 .main-box .share-box .email-share-popup .email-form label input,
-.main-box .share-box .email-share-popup .email-form label textarea { width: 335px; padding: 8px 10px; border: none; font-size: 10px; background-color: #e6e6e6; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.main-box .share-box .email-share-popup .email-form label textarea { width: 335px; padding: 8px 10px; border: none; outline: none; font-size: 10px; background-color: #e6e6e6; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 .main-box .share-box .email-share-popup .email-form label textarea { height: 75px; resize: none; }
 .main-box .share-box .email-share-popup .send-button { position: absolute; top: 200px; right: 27px; font-size: 14px; text-decoration: underline; cursor: pointer; }
 .main-box .share-box .email-share-popup .send-button.sending { cursor: default; color: #777; }
