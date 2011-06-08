@@ -104,6 +104,7 @@ var myProto =
 	
 	onscroll: function ()
 	{
+		log(this)
 		var frame = this.frame
 		if (frame)
 			frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
