@@ -52,6 +52,7 @@ http://www.inshaker.ru/cocktail/balbinus/
 http://www.inshaker.ru/cocktail/bamboo_2/
 http://www.inshaker.ru/cocktail/banana_sambuca/
 http://www.inshaker.ru/cocktail/barberries_fizz/
+http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
 http://www.inshaker.ru/cocktail/bounty_martini/
 http://www.inshaker.ru/cocktail/baja_bocana/
@@ -215,6 +216,7 @@ http://www.inshaker.ru/cocktail/grand_mimosa/
 http://www.inshaker.ru/cocktail/grand_sazerac/
 http://www.inshaker.ru/cocktail/count/
 http://www.inshaker.ru/cocktail/grapefruit_splash/
+http://www.inshaker.ru/cocktail/green_tini/
 http://www.inshaker.ru/cocktail/green_hope/
 http://www.inshaker.ru/cocktail/grog/
 http://www.inshaker.ru/cocktail/pear_breeze/
