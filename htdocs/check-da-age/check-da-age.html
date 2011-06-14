@@ -28,7 +28,7 @@
 ;(function(){
 
 var yes = document.getElementById('yes')
-var uri = window.location.search.substr(1)
+var uri = window.location.hash.substr(1)
 if (uri == 'create')
 	build()
 else if (uri)
@@ -39,7 +39,7 @@ function build ()
 	var uri = window.prompt('Вставь-ка ссылку:')
 	if (uri)
 	{
-		yes.href = '/check-da-age/?' + decodeURIComponent(uri)
+		yes.href = '/check-da-age/#' + decodeURIComponent(uri)
 		window.prompt('Скопируй-ка ссылку с подтверждением', yes.href)
 	}
 }
