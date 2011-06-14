@@ -27,10 +27,22 @@
 <script type="text/javascript">
 ;(function(){
 
-var link = document.getElementById('yes')
+var yes = document.getElementById('yes')
 var uri = window.location.search.substr(1)
-if (uri)
-	link.href = decodeURIComponent(uri)
+if (uri == 'create')
+	build()
+else if (uri)
+	yes.href = decodeURIComponent(uri)
+
+function build ()
+{
+	var uri = window.prompt('Вставь-ка ссылку:')
+	if (uri)
+	{
+		yes.href = '/check-da-age/?' + decodeURIComponent(uri)
+		window.prompt('Скопируй-ка ссылку с подтверждением', yes.href)
+	}
+}
 
 })();
 
