@@ -22,9 +22,17 @@
 <body>
 <div id="holder"><div class="wrapper">
 	<div id="question">Мне уже есть <em>18</em> лет!</div>
-	<div id="answer"><a class="no" href="/combinator.html#q=Безалкогольные">нет</a><a class="yes" href="/cocktails.html">да</a></div>
+	<div id="answer"><a class="no" href="/combinator.html#q=Безалкогольные">нет</a><a class="yes" id="yes" href="/cocktails.html">да</a></div>
 </div></div>
 <script type="text/javascript">
+;(function(){
+
+var link = document.getElementById('yes')
+var uri = window.location.search.substr(1)
+if (uri)
+	link.href = decodeURIComponent(uri)
+
+})();
 
 </script>
 </body>
