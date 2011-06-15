@@ -84,6 +84,7 @@ var myProto =
 		nodes.ingredients.title.barName.addEventListener('blur', function(e){ me.handleBarNameBlur(e) }, false)
 		
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
+		nodes.ingredients.luckyButton.addEventListener('click', function(){ me.controller.addLuckyIngredient() }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.tryRemoveIngredient(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
 		

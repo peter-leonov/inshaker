@@ -30,6 +30,11 @@ var myProto =
 		this.model.addIngredientToBar(ingredient)
 	},
 	
+	addLuckyIngredient : function()
+	{
+		this.model.addLuckyIngredient()
+	},
+	
 	removeIngredientFromBar : function(ingredient)
 	{
 		this.model.removeIngredientFromBar(ingredient)

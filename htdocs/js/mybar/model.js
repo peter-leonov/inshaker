@@ -70,7 +70,7 @@ var myProto =
 		
 		this.settingsData = <!--# include virtual="/db/mybar/settings.json" -->
 		this.allTags = this.settingsData.tags
-		this.luckyButtonIngredients = this.settingsData.luckyButtonIngredients
+		this.luckyIngredients = this.settingsData.luckyButtonIngredients.randomize()
 		this.maybeHaveIngredients = this.ingredients.length ? false : this.fetchIngredients(this.settingsData.maybeHaveIngredients)
 		this.mustHave = this.settingsData.mustHaveIngredients
 		
@@ -587,6 +587,18 @@ var myProto =
 		this.view.prepareRecommends()
 		
 		return true
+	},
+	
+	addLuckyIngredient : function()
+	{
+		var names = this.luckyIngredients
+		for (var i = 0, il = names.length; i < il; i++) 
+		{
+			var name = names[i]
+			if(!this.ingredients.hash[name])
+				break;
+		}
+		this.addIngredientToBar(Ingredient.getByName(name))
 	},
 	
 	removeIngredientFromBar : function(ingredient)
