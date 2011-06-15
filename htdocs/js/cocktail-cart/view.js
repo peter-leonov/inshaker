@@ -37,7 +37,7 @@ var myProto =
 	renderCocktails : function(alcoholCocktails, nonAlcoholCocktails)
 	{
 		var nodes = this.nodes
-		var perPage = 12
+		var perPage = 14
 		var clone = this.cloner.create()
 		var df = document.createDocumentFragment()
 		var items = perPage
