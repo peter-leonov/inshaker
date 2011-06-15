@@ -99,6 +99,7 @@ var myProto =
 		this.view.showView()
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		this.view.focusSearchInput()
 		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		setTimeout(function(){ me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
 		this.view.renderShareLinks(this.userid)

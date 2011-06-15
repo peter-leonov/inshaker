@@ -139,6 +139,11 @@ var myProto =
 		document.documentElement.removeClassName('loading')		
 	},
 	
+	focusSearchInput : function()
+	{
+		this.nodes.ingredients.queryInput.focus()
+	},
+	
 	handleBarNameFocus : function(e)
 	{
 		var node = e.target
@@ -631,7 +636,6 @@ var myProto =
 		
 		var text = document.createDocumentFragment()
 		
-		
 		{
 			if(havingIngredients.length != 0)
 			{
@@ -992,6 +996,8 @@ var myProto =
 				node.removeClassName('have')				
 			}
 		}
+		
+		this.onscroll()
 	},
 	
 	maybeIngredientClicked : function(target)
