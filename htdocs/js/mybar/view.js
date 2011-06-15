@@ -645,7 +645,7 @@ var myProto =
 			}
 			else
 			{
-				text.appendChild(T('В твоем баре сейчас пусто.'))
+				text.appendChild(T('В твоем баре не хватает ингредиентов.'))
 			}
 			text.appendChild(N('br'))
 		}
