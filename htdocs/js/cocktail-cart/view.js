@@ -75,14 +75,13 @@ var myProto =
 			clone.root.show()
 			nodes.main.appendChild(clone.root)
 			df = document.createDocumentFragment()
-			items = perPage - 2
+			items -= 2
 			append = true	
 		}
 		
 		var nonAlcoLen = nonAlcoholCocktails.length
 		if(nonAlcoLen != 0)
 		{
-			items -= 2
 			if(items <= 0)
 			{
 				createPageWrapper()
@@ -98,7 +97,7 @@ var myProto =
 				if(--items <= 0)
 				{
 					clone.nodes.nonAlcoholList.appendChild(df)
-					clone.nodes.nonAlcoholBox.show()				
+					clone.nodes.nonAlcoholBox.show()
 					clone.root.show()
 					nodes.main.appendChild(clone.root)
 					createPageWrapper()
@@ -118,10 +117,10 @@ var myProto =
 		}
 		
 		function createPageWrapper()
-		{	
+		{
 			items = perPage
 			df = document.createDocumentFragment()
-			clone = me.cloner.create()			
+			clone = me.cloner.create()
 		}
 		
 		function renderCocktail(cocktail)
