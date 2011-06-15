@@ -631,11 +631,18 @@ var myProto =
 		
 		var text = document.createDocumentFragment()
 		
-		if(havingIngredients.length != 0)
+		
 		{
-			text.appendChild(T('В твоем баре уже есть '))
-			text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
-			text.appendChild(T('. '))
+			if(havingIngredients.length != 0)
+			{
+				text.appendChild(T('В твоем баре уже есть '))
+				text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
+				text.appendChild(T('. '))
+			}
+			else
+			{
+				text.appendChild(T('В твоем баре сейчас пусто.'))
+			}
 			text.appendChild(N('br'))
 		}
 		if(havingCocktails.length != 0)

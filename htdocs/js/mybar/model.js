@@ -70,6 +70,7 @@ var myProto =
 		
 		this.settingsData = <!--# include virtual="/db/mybar/settings.json" -->
 		this.allTags = this.settingsData.tags
+		this.luckyButtonIngredients = this.settingsData.luckyButtonIngredients
 		this.maybeHaveIngredients = this.ingredients.length ? false : this.fetchIngredients(this.settingsData.maybeHaveIngredients)
 		this.mustHave = this.settingsData.mustHaveIngredients
 		
@@ -112,6 +113,8 @@ var myProto =
 		this.tags = this.getTags(this.allRecommends, this.allTags)	
 		this.currentTag = this.getCurrentTag(this.tags, this.bar.currentTag)
 		this.recommends = this.computeRecommends(this.allRecommends, this.currentTag)
+		if(!this.recommends.length)
+			this.recommends = this.getRecommendsFromPackages(this.settingsData.packages)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
 	},
 	
@@ -119,11 +122,11 @@ var myProto =
 	{
 		if(a.group != b.group)
 			return Ingredient.sortByGroups(a.name, b.name)
-
+		
 		var u = this.ingredients.usage
 		
 		var r = (u[b.name] || 0) - (u[a.name] || 0)
-
+		
 		return r != 0 ? r : a.name.localeCompare(b.name)
 	},
 	
@@ -167,13 +170,14 @@ var myProto =
 	
 	computeCocktails : function(ingredients)
 	{
-		if(Object.isEmpty(ingredients.hash)) return []
-		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.hash), {count : 1}),
-			cocktails = [],
-			hash = {}
-			
+		var	cocktails = [], hash = cocktails.hash = {}
 		ingredients.usage = {}
-
+		
+		if(Object.isEmpty(ingredients.hash))
+			return cocktails
+		
+		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.hash), {count : 1})
+		
 		ck:
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )
 		{
@@ -198,7 +202,6 @@ var myProto =
 			hash[cocktail.name] = true
 		}
 		
-		cocktails.hash = hash
 		return cocktails.sort(this.sortCocktails)
 	},
 	
@@ -512,6 +515,23 @@ var myProto =
 		return 0
 	},
 	
+	getRecommendsFromPackages : function(packages)
+	{
+		var groups = []
+		for (var i = 0, il = packages.length; i < il; i++) 
+		{
+			var cocktail = Cocktail.getByName(packages[i])
+			groups.push(
+			{
+				ingredients : cocktail.getIngredientNames().sort(Ingredient.sortByGroups).map(function(name){ return Ingredient.getByName(name) }),
+				cocktails : [cocktail],
+				havingIngredients : []
+			})
+			
+		}
+		var me = this
+		return groups.sort(function(a, b){ return me.sortCocktails(a.cocktails[0], b.cocktails[0]) })
+	},
 	
 	computeMustHave : function(mustHave)
 	{
