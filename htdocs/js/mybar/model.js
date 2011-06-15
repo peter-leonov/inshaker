@@ -25,6 +25,8 @@ var myProto =
 		this.ingredients = []
 		this.recommends = []
 		this.recommIngr = []
+		this.recommendsUpgraded = true
+		this.topBlockUpgraded = true
 		this.emailScript = 'http://demo.inshaker.ru'
 		
 		var originAdd = BarStorage.addIngredient
@@ -92,14 +94,15 @@ var myProto =
 	
 	setMainState : function()
 	{
+		var me = this
+		this.view.showView()
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
-		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
+		setTimeout(function(){ me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
 		this.view.renderShareLinks(this.userid)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
-		this.view.showView()
 		//this.view.renderShare(this.foreignData.userid)
 	},
 	
@@ -557,7 +560,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
+		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -578,7 +581,7 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
+		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -614,7 +617,7 @@ var myProto =
 		this.hiddenCocktailsHash[cocktail.name] = false
 		this.saveStorage()
 		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
-		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)		
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 	},
 	
 	sendEmail : function(address, mailer, text)
@@ -645,21 +648,21 @@ var myProto =
 	{
 		this.ingredients.add(ingredient)
 		this.recommendsUpgraded = false
-		
+		this.topBlockUpgraded = false
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		
-		var me = this
-		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
+		//var me = this
+		//this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
-		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
-		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		//this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
+		//this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		
-		this.view.setScrollTopRecommends()
+		this.view.setScrollTop()
 	},
 	
 	selectIngredient : function(ingredient)
@@ -667,6 +670,21 @@ var myProto =
 		this.view.showIngredient(ingredient)
 	},
 	
+	upgradeTopBlock : function()
+	{
+		if(this.topBlockUpgraded)
+		{
+			return
+		}
+		var me = this
+		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
+		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
+		this.topBlockUpgraded = true
+		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
+		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
+		this.view.setScrollTop()
+	},
+		
 	upgradeRecommends : function()
 	{
 		if(this.recommendsUpgraded)
@@ -700,7 +718,7 @@ var myProto =
 	checkoutRecommends : function()
 	{
 		var length = this.recommends.length
-		if(length != 0)
+		if(length > 0)
 		{
 			this.view.checkoutRecommends(length)
 		}
@@ -709,7 +727,7 @@ var myProto =
 	checkoutMustHaveRecommends : function()
 	{
 		var length = this.mustHaveRecommends.length
-		if(length != 0)
+		if(length > 0)
 		{
 			this.view.checkoutMustHaveRecommends(length)
 		}

@@ -10,8 +10,8 @@ var myProto =
 		this.currentRecommends = []
 		this.currentMustHaveRecommends = []
 		
-		this.havingIngredientsNames = {}
-		this.havingCocktailsNames = {}
+		this.offsetTops = {}
+		this.offsetHeights = {}
 		
 		var me = this
 		
@@ -177,15 +177,73 @@ var myProto =
 		{
 			return
 		}
-		if(this.nodes.recommends.box.offsetPosition().top - window.screen.height > window.pageYOffset || window.pageYOffset == 0)
+		var node = this.nodes.recommends.box,
+			windowOffset = window.pageYOffset,
+			screenHeight = window.screen.height,
+			nodeOffset = this.getOffsetTop(node),
+			supply = 400
+		log('nodeOffset = ', nodeOffset, '; ', 'windowOffset = ', windowOffset, '; ', 'screenHeight = ', screenHeight)
+		if(nodeOffset > windowOffset + screenHeight || windowOffset == 0)
 		{
 			this.controller.upgradeRecommends()
-			return
+		}
+		else if(windowOffset - nodeOffset <= supply)
+		{
+			log('top block upgrading...')
+			this.savePreviousScrollTop(node)
+			this.controller.upgradeTopBlock()
 		}
 		
 		this.controller.checkoutRecommends()
 		this.controller.checkoutMustHaveRecommends()
 	},
+	
+	getOffsetTop : function(node)
+	{
+		var offsetTop = this.offsetTops[node]
+		if(!offsetTop)
+		{
+			offsetTop = node.offsetPosition().top
+			this.offsetTops[node] = offsetTop
+		}
+		return offsetTop
+	},
+	
+/*	getOffsetHeight : function(node)
+	{
+		var offsetHeight = this.offsetHeights[node]
+		if(!offsetHeight)
+		{
+			offsetHeight = node.clientHeight || node.offsetHeight
+			this.offsetHeights[node] = offsetHeight
+		}
+		return offsetHeight
+	},
+	
+	resetOffsetHeight : function(node)
+	{
+		this.offsetHeights[node] = null
+	},*/
+
+	
+	resetOffsetTop : function(node)
+	{
+		this.offsetTops[node] = null
+	},
+	
+	resetRecommendsOffsets : function()
+	{
+		this.resetOffsetTop(this.nodes.recommends.recommendsList)
+		this.resetOffsetTop(this.nodes.recommends.mustHaveList)
+		this.resetOffsetTop(this.nodes.recommends.box)
+	},
+	
+/*	resetRecommendsOffsetHeight : function()
+	{
+		this.resetOffsetHeight(this.nodes.recommends.recommendsList)
+		this.resetOffsetHeight(this.nodes.recommends.mustHaveList)
+	},*/
+
 	
 	checkoutRecommends : function(listLength)
 	{
@@ -200,13 +258,16 @@ var myProto =
 				this.controller.addRecommend()
 			}
 		}
+		
+		var rn = this.nodes.recommends.box
+		rn.style.height = 'auto'
 	},
 	
 	checkoutMustHaveRecommends : function(listLength)
 	{
 		var node = this.nodes.recommends.mustHaveList,
 			supply = 400
-		
+			
 		while(listLength > 0 && this.getSupply(node) < supply)
 		{
 			var i = 4
@@ -215,11 +276,14 @@ var myProto =
 				this.controller.addMustHaveRecommend()
 			}
 		}
+		
+		var rn = this.nodes.recommends.box
+		rn.style.height = 'auto'
 	},
 	
 	getSupply : function(node)
 	{
-		return node.offsetHeight + node.offsetPosition().top - window.screen.height - window.pageYOffset
+		return node.offsetHeight + this.getOffsetTop(node) - window.screen.height - window.pageYOffset
 	},
 	
 	setCompleterDataSource : function (ds)
@@ -250,6 +314,7 @@ var myProto =
 			nodes.links.hide()
 			nodes.empty.show()
 			this.hideCocktailsBox()
+			this.resetRecommendsOffsets()
 			return
 		}
 		
@@ -295,7 +360,7 @@ var myProto =
 				dl.appendChild(dd)			
 				
 				nodes.list.appendChild(dl)
-				break;
+				break
 			}
 			
 			case 'by-list':
@@ -310,6 +375,8 @@ var myProto =
 				nodes.list.appendChild(ul)			
 			}
 		}
+		
+		this.resetRecommendsOffsets()
 	},
 	
 	renderMaybeHave : function(ingredients, ingredientsHash)
@@ -356,14 +423,15 @@ var myProto =
 		{
 			this.nodes.share.box.removeClassName('zero-cocktails')
 		}
-			
+		
 		if(cl == 0)
 		{
 			nodes.wrapper.hide()
 			nodes.switcher.hide()
 			nodes.title.h2.className = 'zero-cocktails'
 			nodes.links.hide()
-			nodes.empty.show()	
+			nodes.empty.show()
+			this.resetRecommendsOffsets()
 			return
 		}
 		
@@ -376,9 +444,9 @@ var myProto =
 		switch(showType)
 		{
 			case 'by-ingredients':
-			{	
+			{
 				this.incl.setCocktails([{cocktails : visibleCocktails}])
-				break;
+				break
 			}
 			case 'by-pics':
 			default:
@@ -391,7 +459,7 @@ var myProto =
 				}
 				nodes.visible.empty()
 				nodes.visible.appendChild(ul)
-				break;
+				break
 			}
 		}
 		
@@ -407,13 +475,12 @@ var myProto =
 				var cNode = hiddenCocktails[i].getPreviewNodeExt(true)
 				df.appendChild(cNode)
 			}
-			
 			nodes.hiddenList.empty()
 			nodes.hiddenList.appendChild(df)
 			nodes.hidden.show()
 		}
-		
 		nodes.wrapper.show()
+		this.resetRecommendsOffsets()
 	},
 
 	hideCocktailsBox : function()
@@ -480,10 +547,9 @@ var myProto =
 	{	
 		this.currentRecommends = []
 		this.currentMustHaveRecommends = []
-		
 		this.nodes.recommends.recommendsList.empty()
 		this.nodes.recommends.mustHaveList.empty()
-		
+		this.resetRecommendsOffsets()
 		this.onscroll()
 	},
 	
@@ -952,6 +1018,8 @@ var myProto =
 		var tag = node.tagValue || node.parentNode.tagValue
 		if(tag)
 		{
+			var rn = this.nodes.recommends.box
+			rn.style.height = rn.offsetHeight + 'px'
 			this.controller.switchTag(tag)
 		}
 	},
@@ -965,11 +1033,9 @@ var myProto =
 			return
 		}
 		
-		var recommendNode = this.findParentRecommend(node)	
-		this.recommendScrollTop = recommendNode.offsetPosition().top - window.pageYOffset
-		this.currentRecommendNode = recommendNode
-		
-		this.controller.addIngredientFromRecommends(node.ingredient)		
+		var recommendNode = this.findParentRecommend(node)
+		this.savePreviousScrollTop(recommendNode)
+		this.controller.addIngredientFromRecommends(node.ingredient)
 	},
 	
 	findParentRecommend : function(node)
@@ -996,10 +1062,14 @@ var myProto =
 			}
 		},*/
 	
-	
-	setScrollTopRecommends : function()
+	savePreviousScrollTop : function(node)
 	{
-		var scrollVal = this.currentRecommendNode.offsetPosition().top - this.recommendScrollTop
+		this.prevScrollTop = { node : node, pos : node.offsetPosition().top - window.pageYOffset }
+	},
+	
+	setScrollTop : function()
+	{
+		var scrollVal = this.prevScrollTop.node.offsetPosition().top - this.prevScrollTop.pos
 		
 		document.documentElement.scrollTop = scrollVal
 		document.body.scrollTop = scrollVal
