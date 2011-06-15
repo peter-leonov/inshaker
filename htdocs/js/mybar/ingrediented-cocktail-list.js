@@ -104,7 +104,6 @@ var myProto =
 	
 	onscroll: function ()
 	{
-		log(this)
 		var frame = this.frame
 		if (frame)
 			frame.moveTo(window.pageXOffset, window.pageYOffset - 2500)
@@ -306,9 +305,6 @@ var myProto =
 		
 		this.groups = res
 		this.view.renderGroups(res)
-		
-		var me = this
-		setTimeout(function(){ me.view.onscroll(); me.view.wake() }, 0)
 	},
 	
 	toggleGroupCollapsedility: function (num)
