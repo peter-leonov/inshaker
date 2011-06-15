@@ -195,6 +195,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 
 .main-box .recommends-box .recommends-wrapper { margin-bottom: 30px; }
 .main-box .recommends-box .ingredient { float: left; position: relative; margin: 0 0 28px 17px; padding-top: 12px; }
+.main-box .recommends-box .ingredient.no-have .control { display: block; }
 .main-box .recommends-box .ingredient.no-have .control { background-position: -984px -488px; }
 .main-box .recommends-box .ingredient.have .control,
 .main-box .recommends-box .cocktail-preview.have .control { display: block; background-position: -1021px -488px; }
@@ -204,6 +205,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .recommends-box .recommends-list .advice .ingredient-link,
 .main-box .recommends-box .recommends-list .advice .cocktail-link { color: #ec118f; cursor: pointer; white-space: nowrap; }
 .main-box .recommends-box .recommends-list .advice .ingredient-link:hover { text-decoration: underline; }
+.main-box .recommends-box .recommends-list .advice .pink { color: #ec118f; }
 .main-box .recommends-box .recommends-list .recommend { overflow: hidden; }
 .main-box .recommends-box .recommends-list .recommend .head { float: left; }
 .main-box .recommends-box .recommends-list .recommend .eq { color: #7F7F7F; float: left; font-size: 52px; font-weight: bold; margin: 28px 4px 0 30px; position: relative; }
