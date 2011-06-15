@@ -75,7 +75,7 @@ var myProto =
 			clone.root.show()
 			nodes.main.appendChild(clone.root)
 			df = document.createDocumentFragment()
-			items -= 2
+			items -= (2 + items % 2)
 			append = true	
 		}
 		
