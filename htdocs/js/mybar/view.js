@@ -182,14 +182,14 @@ var myProto =
 			screenHeight = window.screen.height,
 			nodeOffset = this.getOffsetTop(node),
 			supply = 400
-		log('nodeOffset = ', nodeOffset, '; ', 'windowOffset = ', windowOffset, '; ', 'screenHeight = ', screenHeight)
+		//log('nodeOffset = ', nodeOffset, '; ', 'windowOffset = ', windowOffset, '; ', 'screenHeight = ', screenHeight)
 		if(nodeOffset > windowOffset + screenHeight || windowOffset == 0)
 		{
 			this.controller.upgradeRecommends()
 		}
 		else if(windowOffset - nodeOffset <= supply)
 		{
-			log('top block upgrading...')
+			//log('top block upgrading...')
 			this.savePreviousScrollTop(node)
 			this.controller.upgradeTopBlock()
 		}
@@ -426,19 +426,20 @@ var myProto =
 		
 		if(cl == 0)
 		{
-			nodes.wrapper.hide()
-			nodes.switcher.hide()
-			nodes.title.h2.className = 'zero-cocktails'
-			nodes.links.hide()
-			nodes.empty.show()
+			//nodes.wrapper.hide()
+			//nodes.switcher.hide()
+			//nodes.title.h2.className = 'zero-cocktails'
+			//nodes.links.hide()
+			//nodes.empty.show()
+			nodes.box.hide()
 			this.resetRecommendsOffsets()
 			return
 		}
 		
 		nodes.title.plural.firstChild.nodeValue = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
-		nodes.title.h2.className = ''
-		nodes.links.show()
-		nodes.empty.hide()
+		//nodes.title.h2.className = ''
+		//nodes.links.show()
+		//nodes.empty.hide()
 		nodes.switcher.className = 'switcher ' + showType
 		
 		switch(showType)
@@ -479,7 +480,7 @@ var myProto =
 			nodes.hiddenList.appendChild(df)
 			nodes.hidden.show()
 		}
-		nodes.wrapper.show()
+		nodes.box.show()
 		this.resetRecommendsOffsets()
 	},
 
