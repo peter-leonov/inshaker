@@ -672,7 +672,6 @@ var myProto =
 		this.topBlockUpgraded = false
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		this.divideCocktails(this.cocktails, this.hiddenCocktailsHash)
 		
 		//var me = this
 		//this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
@@ -683,6 +682,17 @@ var myProto =
 		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		
+		this.view.setScrollTop()
+	},
+	
+	removeIngredientFromRecommends : function(ingredient)
+	{
+		this.ingredients.remove(ingredient)
+		this.recommendsUpgraded = false
+		this.topBlockUpgraded = false
+		this.saveStorage()
+		this.cocktails = this.computeCocktails(this.ingredients)		
+		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		this.view.setScrollTop()
 	},
 	

@@ -113,7 +113,7 @@ var myProto =
 		}
 		
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
-		nodes.recommends.wrapper.addEventListener('click', function(e){ me.addIngredientFromRecommends(e) }, false)
+		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
 		//this.barName = new MyBarName()
 		//this.barName.bind(nodes.barName)		
@@ -694,6 +694,11 @@ var myProto =
 	
 	createIngredientsTextFromArr : function(ingredients)
 	{
+		if(ingredients.length > 5)
+		{
+			var span = Nct('span', 'pink', 'много ингредиентов')
+			return span
+		}
 		var df = document.createDocumentFragment()
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
@@ -1038,18 +1043,25 @@ var myProto =
 		}
 	},
 	
-	addIngredientFromRecommends : function(e)
+	changeIngredientFromRecommends : function(e)
 	{
 		var node = e.target
 		
-		if(!node.hasClassName('control') || node.parentNode.hasClassName('have'))
+		if(!node.hasClassName('control') || !node.ingredient)
 		{
 			return
 		}
 		
 		var recommendNode = this.findParentRecommend(node)
 		this.savePreviousScrollTop(recommendNode)
-		this.controller.addIngredientFromRecommends(node.ingredient)
+		if(node.parentNode.hasClassName('no-have'))
+		{
+			this.controller.addIngredientFromRecommends(node.ingredient)
+		}
+		else
+		{
+			this.controller.removeIngredientFromRecommends(node.ingredient)
+		}
 	},
 	
 	findParentRecommend : function(node)

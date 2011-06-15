@@ -97,6 +97,11 @@ var myProto =
 		this.model.addIngredientFromRecommends(ingredient)
 	},
 	
+	removeIngredientFromRecommends : function(ingredient)
+	{
+		this.model.removeIngredientFromRecommends(ingredient)
+	},
+	
 	upgradeTopBlock : function()
 	{
 		this.model.upgradeTopBlock()
