@@ -1,14 +1,13 @@
-#common-main-wrapper { width: auto; margin: 0; }
-#common-main-wrapper .header { display: block; }
-#common-main-wrapper .header h1 { font-size: 18px; padding-top: 0; }
-#common-main-wrapper .header .logo img { width: 80px; }
-#common-main-wrapper .sticker { display: block; }
-#common-main-wrapper .cocktail-cart-box .black-sticker { width: 100px; left: 0; }
-#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail { width: 45%; }
-#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail.even { margin-right: 8%; }
-#common-main-wrapper .page-wrapper { page-break-after: always; }
-#common-main-wrapper .page-wrapper.last-clone { page-break-after: auto; }
-#common-main-wrapper .sticker { margin: 30px 0 12px; }
+#cocktail-cart-page #common-main-wrapper { width: auto; margin: 0; }
+#cocktail-cart-page #common-main-wrapper .header { display: block; }
+#cocktail-cart-page #common-main-wrapper .header h1 { font-size: 18px; padding-top: 0; }
+#cocktail-cart-page #common-main-wrapper .header .logo img { width: 80px; }
+#cocktail-cart-page #common-main-wrapper .sticker { display: block; margin: 30px 0 12px; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .black-sticker { width: 100px; left: 0; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail { width: 45%; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail.even { margin-right: 8%; }
+#cocktail-cart-page #common-main-wrapper .page-wrapper { page-break-after: always; }
+#cocktail-cart-page #common-main-wrapper .page-wrapper.last-clone { page-break-after: auto; }
 
 #common-main-wrapper .purchase-plan-box .purchase-table-wrapper { margin: 30px 0 0; }
 
