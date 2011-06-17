@@ -200,14 +200,10 @@ var Controller = {
 			var name = node.ingredient.name
 			var have = BarStorage.haveIngredient(name)
 			
-			if(!node.have)
+			if(!have)
 				BarStorage.addIngredient(name)
 			else
 				BarStorage.removeIngredient(name)
-				
-			node.have = !have
-			node.className = have ? 'in-my-bar not-have' : 'in-my-bar have'
-			node.setAttribute('title', !have ? 'Есть в Моем Баре' : 'Добавить в Мой Бар')
 		}
 		
 	},
@@ -388,7 +384,6 @@ var Controller = {
 				
 				var have = BarStorage.haveIngredient(name) 
 				inMyBar.className = have ? 'in-my-bar have' : 'in-my-bar not-have'
-				inMyBar.setAttribute('title', have ? 'Есть в Моем Баре' : 'Добавить в Мой Бар')
 				
 				ticksNodes[name] = inMyBar
 				dd.appendChild(inMyBar)
