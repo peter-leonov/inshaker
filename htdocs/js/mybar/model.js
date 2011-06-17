@@ -35,12 +35,26 @@ var myProto =
 		
 		BarStorage.addIngredient = function(ingredientName)
 		{
-			return me.addIngredientToBar(Ingredient.getByName(ingredientName))
+			var ingredient = Ingredient.getByName(ingredientName)
+			me.ingredients.add(ingredient)
+			me.recommendsUpgraded = false
+			me.topBlockUpgraded = false
+			me.saveStorage()
+			me.cocktails = me.computeCocktails(me.ingredients)
+			me.view.updateRecommends(me.cocktails.hash, me.ingredients.hash)
+			me.view.showIngredient(ingredient)
 		}
 		
 		BarStorage.removeIngredient = function(ingredientName)
 		{
-			return me.removeIngredientFromBar(Ingredient.getByName(ingredientName))
+			var ingredient = Ingredient.getByName(ingredientName)
+			me.ingredients.remove(ingredient)
+			me.recommendsUpgraded = false
+			me.topBlockUpgraded = false
+			me.saveStorage()
+			me.cocktails = me.computeCocktails(me.ingredients)
+			me.view.updateRecommends(me.cocktails.hash, me.ingredients.hash)
+			me.view.showIngredient(ingredient)
 		}
 		
 	},
