@@ -54,21 +54,11 @@ var myProto =
 	
 	myBarButtonClick : function(e)
 	{
-		var b = this.nodes.button
-		
-		if(b.hasClassName('no-have'))
-		{
-			this.controller.addIngredient()
-		}
-		else
-		{
-			this.controller.removeIngredient()
-		}
+		this.controller.handleMybarButtonClick()
 	},
 	
 	addIngredient : function()
 	{
-		log(1)
 		this.nodes.button.addClassName('have')
 		this.nodes.button.removeClassName('no-have')
 	},
@@ -104,16 +94,18 @@ var myProto =
 		})
 	},
 	
-	addIngredient : function()
+	handleMybarButtonClick : function()
 	{
-		BarStorage.addIngredient(this.ingredient.name)
-		this.view.addIngredient()
-	},
-	
-	removeIngredient : function()
-	{
-		BarStorage.removeIngredient(this.ingredient.name)
-		this.view.removeIngredient()
+		if(BarStorage.haveIngredient(this.ingredient.name))
+		{
+			BarStorage.removeIngredient(this.ingredient.name)
+			this.view.removeIngredient()
+		}
+		else
+		{
+			BarStorage.addIngredient(this.ingredient.name)
+			this.view.addIngredient()
+		}
 	}
 }
 
@@ -130,14 +122,9 @@ var Me = MybarButton.Controller
 
 var myProto =
 {
-	addIngredient : function()
+	handleMybarButtonClick : function()
 	{
-		this.model.addIngredient()
-	},
-	
-	removeIngredient : function()
-	{
-		this.model.removeIngredient()
+		this.model.handleMybarButtonClick()
 	}
 }
 
