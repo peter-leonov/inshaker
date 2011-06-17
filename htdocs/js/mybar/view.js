@@ -86,6 +86,7 @@ var myProto =
 		nodes.ingredients.searchForm.addEventListener('submit', function (e) { e.preventDefault(); me.controller.ingrQuerySubmit(nodes.ingredients.queryInput.value); }, false)
 		nodes.ingredients.queryInput.addEventListener('focus', function(){ nodes.ingredients.hint.hide() }, false)
 		nodes.ingredients.queryInput.addEventListener('blur', function(){ nodes.ingredients.hint.show() }, false)
+		nodes.ingredients.hint.addEventListener('click', function(){ nodes.ingredients.queryInput.focus() }, false)
 		nodes.ingredients.luckyButton.addEventListener('click', function(){ me.controller.addLuckyIngredient() }, false)
 		nodes.ingredients.list.addEventListener('click', function(e){ me.tryRemoveIngredient(e) }, false)
 		nodes.ingredients.switcher.addEventListener('click', function(e){ me.handleIngredientsSwitcherClick(e) }, false)
@@ -195,7 +196,7 @@ var myProto =
 		{
 			this.controller.upgradeRecommends()
 		}
-		else if(windowOffset - nodeOffset <= supply)
+		if(windowOffset - nodeOffset <= supply)
 		{
 			//log('top block upgrading...')
 			this.savePreviousScrollTop(node)
