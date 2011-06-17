@@ -38,10 +38,6 @@ var myProto =
 		var nodes = clone.nodes
 		nodes.root = clone.root
 		
-		//this.mybarButton = new MybarButton()
-		//this.mybarButton.bind({ inBar : nodes.inBar })	
-		//this.mybarButton.setState(ingredient)
-		
 		// implies this.nodes = nodes
 		this.bind(nodes)
 		
@@ -75,6 +71,13 @@ var myProto =
 		var me = this
 		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
+		
+		if(window['MybarButton'])
+		{
+			this.mybarButton = new MybarButton()
+			this.mybarButton.bind({ button : nodes.mybarButton })	
+			this.mybarButton.setState(ingredient)
+		}
 	},
 	
 	renderAllCocktailsLink: function (ingredient)
@@ -223,7 +226,8 @@ var myStatic =
 				cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
 				cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
 				cocktailsPrev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
-				cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0]
+				cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0],
+				mybarButton : $$('#ingredient-info-popup .description .about .mybar-button')[0]
 			}
 		}
 		
