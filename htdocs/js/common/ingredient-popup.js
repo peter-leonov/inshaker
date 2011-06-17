@@ -24,6 +24,7 @@ var myProto =
 	
 	show: function ()
 	{
+		this.updatePlugins()
 		Statistics.ingredientPopupOpened(this.ingredient)
 		return superProto.show.apply(this, arguments)
 	},
@@ -156,6 +157,12 @@ var myProto =
 		cl.bind(nodes)
 		cl.configure({pageLength: 5, pageVelocity: 38})
 		cl.setCocktails(cocktails)
+	},
+	
+	updatePlugins : function()
+	{
+		if(this.mybarButton)
+			this.mybarButton.setState(this.ingredient)
 	}
 }
 
