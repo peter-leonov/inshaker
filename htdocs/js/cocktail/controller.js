@@ -57,6 +57,20 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderIngrMybarStates();
+		
+		var me = this
+		var addIngredient = BarStorage.addIngredient
+		BarStorage.addIngredient = function(name)
+		{
+			addIngredient.call(BarStorage, name)
+			me.ticksNodes[name].className = 'in-my-bar have'
+		}
+		var removeIngredient = BarStorage.removeIngredient
+		BarStorage.removeIngredient = function(name)
+		{
+			removeIngredient.call(BarStorage, name)
+			me.ticksNodes[name].className = 'in-my-bar not-have'
+		}
 	},
 	
 	bindEvents: function(name){
@@ -169,10 +183,10 @@ var Controller = {
 			$(self.TOOL_POPUP).hide();
 		}, false);
 		
-		$(self.ID_INGS_LIST).addEventListener('click', function (e) { self.mayBeIngredientClicked(e.target) }, false)
+		$(self.ID_INGS_LIST).addEventListener('click', function (e) { self.maybeIngredientClicked(e.target) }, false)
     },
 	
-	mayBeIngredientClicked: function (node)
+	maybeIngredientClicked: function (node)
 	{
 		var name = node.getAttribute('data-ingredient-name')
 		if (name)
@@ -181,10 +195,10 @@ var Controller = {
 			return
 		}
 		
-		if(node.inMyBarName)
+		if(node.ingredient)
 		{
-			var name = node.inMyBarName
-			var have = node.have
+			var name = node.ingredient.name
+			var have = BarStorage.haveIngredient(name)
 			
 			if(!node.have)
 				BarStorage.addIngredient(name)
@@ -360,6 +374,7 @@ var Controller = {
 	{
 		var collection = $(this.ID_INGS_LIST).getElementsByTagName('dd')
 		
+		var ticksNodes = this.ticksNodes = {}
 		var f = function()
 		{
 			for (var i = 0, il = collection.length; i < il; i++) 
@@ -369,14 +384,13 @@ var Controller = {
 				var name = a.innerHTML
 				
 				var inMyBar = document.createElement('div')
+				inMyBar.ingredient = Ingredient.getByName(name)
 				
 				var have = BarStorage.haveIngredient(name) 
 				inMyBar.className = have ? 'in-my-bar have' : 'in-my-bar not-have'
 				inMyBar.setAttribute('title', have ? 'Есть в Моем Баре' : 'Добавить в Мой Бар')
 				
-				inMyBar.inMyBarName = name
-				inMyBar.have = have ? true : false
-				
+				ticksNodes[name] = inMyBar
 				dd.appendChild(inMyBar)
 			}
 		}
