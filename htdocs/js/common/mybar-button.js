@@ -34,12 +34,12 @@ var myProto =
 		this.nodes = nodes
 		
 		var me = this
-		this.nodes.inBar.addEventListener('click', function(e){ me.myBarButtonClick(e) }, false)
+		this.nodes.button.addEventListener('click', function(e){ me.myBarButtonClick(e) }, false)
 	},
 
 	renderMybarButton : function(inBar)
 	{
-		var b = this.nodes.inBar
+		var b = this.nodes.button
 		
 		if(inBar)
 		{
@@ -49,32 +49,34 @@ var myProto =
 		{
 			b.addClassName('no-have')
 		}
+		b.show()
 	},
 	
 	myBarButtonClick : function(e)
 	{
-		var b = this.nodes.inBar
+		var b = this.nodes.button
 		
 		if(b.hasClassName('no-have'))
-			{
-				this.controller.addIngredient()
-			}
+		{
+			this.controller.addIngredient()
+		}
 		else
-			{
-				this.controller.removeIngredient()
-			}
+		{
+			this.controller.removeIngredient()
+		}
 	},
 	
 	addIngredient : function()
 	{
-		this.nodes.inBar.addClassName('have')
-		this.nodes.inBar.removeClassName('no-have')
+		log(1)
+		this.nodes.button.addClassName('have')
+		this.nodes.button.removeClassName('no-have')
 	},
 	
 	removeIngredient : function()
 	{
-		this.nodes.inBar.addClassName('no-have')
-		this.nodes.inBar.removeClassName('have')		
+		this.nodes.button.addClassName('no-have')
+		this.nodes.button.removeClassName('have')		
 	}
 }
 
@@ -104,14 +106,14 @@ var myProto =
 	
 	addIngredient : function()
 	{
-		if(BarStorage.addIngredient(this.ingredient.name))
-			this.view.addIngredient()
+		BarStorage.addIngredient(this.ingredient.name)
+		this.view.addIngredient()
 	},
 	
 	removeIngredient : function()
 	{
-		if(BarStorage.removeIngredient(this.ingredient.name))
-			this.view.removeIngredient()
+		BarStorage.removeIngredient(this.ingredient.name)
+		this.view.removeIngredient()
 	}
 }
 
