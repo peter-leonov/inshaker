@@ -27,6 +27,9 @@
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
 
+<!--# include virtual="/js/common/bar-storage.js" -->
+<!--# include virtual="/js/common/mybar-button.js" -->
+
 $.onready(function () { setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()
