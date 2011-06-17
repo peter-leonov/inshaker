@@ -127,7 +127,6 @@ Me =
 		var url = this.remoteServer + '/get-bar-by-id/'
 		Request.get(url + userid + '?rand=' + Math.random(), null, function(e)
 		{
-			log(this)
 			if(e.type != 'success')
 			{
 				callback()
