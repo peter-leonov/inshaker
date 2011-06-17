@@ -35,6 +35,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
+<!--# include virtual="/js/common/mybar-button.js" -->
 <!--# include virtual="/js/common/purchase-plan-table-editable.js" -->
 
 <!--# include virtual="model.js" -->

@@ -32,6 +32,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
+<!--# include virtual="/js/common/mybar-button.js" -->
 
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
