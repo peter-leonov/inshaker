@@ -37,13 +37,13 @@ Me =
 	
 	initBar : function(callback)
 	{
+		var me = this
+		
 		if(this.inited)
 		{
 			callCallback()
 			return
 		}
-		
-		var me = this
 		
 		Storage.init(init)
 		
