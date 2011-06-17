@@ -77,6 +77,7 @@ function onready ()
 			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
 			searchForm : $$('#common-main-wrapper .ingredients-box .search-box form')[0],
 			queryInput : $$('#common-main-wrapper .ingredients-box .search-box form .query')[0],
+			hint : $$('#common-main-wrapper .ingredients-box .search-box .hint')[0],
 			complete: $$('#common-main-wrapper .ingredients-box .search-box .autocomplete')[0],
 			luckyButton : $$('#common-main-wrapper .ingredients-box .search-box .lucky-button')[0],
 			switcher : $$('#common-main-wrapper .ingredients-box .switcher')[0],
