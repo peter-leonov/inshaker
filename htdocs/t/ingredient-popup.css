@@ -17,6 +17,8 @@
 .ingredient-window .about .combinations { margin-top: 1em; font-size: 12px; }
 .ingredient-window .about .combinations .list { margin: 0.2em 0 0 1em; }
 .ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
+.ingredient-window .about .mybar-button { width: 111px; height: 23px; margin-top: 15px; background: url('/t/mybar/button.jpg') no-repeat left bottom; cursor: pointer; }
+.ingredient-window .about .mybar-button.no-have { background-position: left top; }
 .ingredient-window.can-buy .about .where-to-buy { display: block; }
 
 .ingredient-window .cocktail-list { position: relative; margin: 30px 0 -20px 0; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
