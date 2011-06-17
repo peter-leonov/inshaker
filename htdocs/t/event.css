@@ -2,7 +2,7 @@
 
 #overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }
 
-.timeline {display: none; width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}
+.timeline { width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}
 .timeline .b-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
 .timeline .b-title h1{font-size:20px; margin-left:-1px;}
 .timeline .body-wrapper{padding-bottom:0; height:220px;}
