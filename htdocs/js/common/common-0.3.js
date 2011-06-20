@@ -19,7 +19,6 @@
 <!--# include virtual="/lib-0.3/modules/boxer.js"-->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
-
 <!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
@@ -27,6 +26,19 @@
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
 
+<!--# include virtual="/lib-0.3/modules/json.js" -->
+<!--# include virtual="/lib-0.3/modules/client-storage.js" -->
+<!--# include virtual="/lib-0.3/modules/client-storage/local-storage.js" -->
+<!--# include virtual="/lib-0.3/modules/client-storage/global-storage.js" -->
+<!--# include virtual="/lib-0.3/modules/client-storage/user-data.js" -->
+<!--# include virtual="/lib-0.3/modules/client-storage/flash-9.js" -->
+
+var clientStorage = ClientStorage.guess()
+if (!clientStorage)
+	throw new Error('no client storge was found')
+
+<!--# include virtual="/lib-0.3/modules/url-encode.js"-->
+<!--# include virtual="/lib-0.3/modules/request.js"-->
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/mybar-button.js" -->
 
