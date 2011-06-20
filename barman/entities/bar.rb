@@ -14,7 +14,7 @@ class Bar < Inshaker::Entity
     BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen/barmen.json"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"
-    DECLENSIONS    = Inshaker::BASE_DIR + "declensions.yaml"
+    DECLENSIONS    = BASE_DIR + "declensions.yaml"
   end
   
   def self.init
