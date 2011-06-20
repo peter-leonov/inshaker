@@ -44,7 +44,8 @@ function onready ()
 	}
 	
 	var widget = new PurchasePlan()
-	widget.bind(nodes)
+	widget.bind(nodes)	
+	setTimeout('window.print()', 100)
 }
 
 $.onready(onready)
