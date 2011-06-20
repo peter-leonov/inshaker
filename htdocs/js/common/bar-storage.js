@@ -1,7 +1,3 @@
-<!--# include virtual="/js/common/storage.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js"-->
-<!--# include virtual="/lib-0.3/modules/request.js"-->
-
 ;(function(){
 
 var myName = 'BarStorage'
@@ -30,9 +26,6 @@ Me =
 				hash : ''
 			}
 		}
-		
-		if(!Storage)
-			Storage = new ClientStorage()
 	},
 	
 	initBar : function(callback)
@@ -45,7 +38,7 @@ Me =
 			return
 		}
 		
-		Storage.init(init)
+		clientStorage.ready(init)
 		
 		function callCallback()
 		{
@@ -57,14 +50,14 @@ Me =
 			var json = ''
 			try
 			{
-				json = Storage.get('mybar')
+				json = clientStorage.get('mybar')
 			}
 			catch(e)
 			{
 				log('Can\'t get mybar object.', e)
 			}
 			
-			parsingJson = JSON.parse(json)
+			var parsingJson = JSON.parse(json)
 			if(parsingJson)
 			{
 				me.newbie = false
@@ -156,7 +149,7 @@ Me =
 		var json = JSON.stringify(this.data.local)
 		try
 		{
-			Storage.put('mybar', json)
+			clientStorage.set('mybar', json)
 		}
 		catch(e)
 		{
