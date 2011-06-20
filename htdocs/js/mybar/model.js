@@ -708,7 +708,7 @@ var myProto =
 		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
 		
-		this.view.setScrollTop()
+		//this.view.setScrollTop()
 	},
 	
 	removeIngredientFromRecommends : function(ingredient)
@@ -719,7 +719,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
-		this.view.setScrollTop()
+		//this.view.setScrollTop()
 	},
 	
 	selectIngredient : function(ingredient)
