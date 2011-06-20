@@ -35,6 +35,8 @@ class MagazineProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Magazine"
+    
     Cocktail.init
     
     prepare_dirs

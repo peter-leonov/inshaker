@@ -32,6 +32,8 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Blog"
+    
     Cocktail.init
     prepare_dirs
     

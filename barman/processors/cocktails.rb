@@ -60,6 +60,8 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Cocktails"
+    
     prepare_dirs
     prepare_templates
     prepare_ingredients

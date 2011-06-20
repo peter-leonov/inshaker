@@ -35,6 +35,8 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Events"
+    
     prepare_dirs
     
     update_events

@@ -20,6 +20,8 @@ class BarmenProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Barmen"
+    
     Barman.init
     prepare_cocktails
     prepare_renderer
