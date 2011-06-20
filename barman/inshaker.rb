@@ -251,6 +251,18 @@ module Inshaker
         "peter" => "Peter Leonov <pl@inshaker.ru>"
       }[login] || "Barman <barman@inshaker.ru>"
     end
-  
+    
+    def sync_base subdir
+      if ENV['INSHAKER_BASE_DIR']
+        say "беру данные из #{ENV['INSHAKER_BASE_DIR']}"
+      end
+      
+      say "синхронизируюсь с базой (папка #{subdir})"
+      dst = "#{Inshaker::ROOT_DIR}barman/base/#{subdir}/"
+      FileUtils.mkdir_p dst
+      indent do
+      system(%Q{rsync -rptvh --delete "barman@toaster:/Shares/inshaker/#{subdir}/" "#{dst}"})
+      end # indent
+    end
   end
 end
