@@ -26,7 +26,6 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
 <!--# include virtual="/lib-0.3/modules/animation.js" -->

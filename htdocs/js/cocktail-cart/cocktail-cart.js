@@ -24,14 +24,10 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 	
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js" -->
 <!--# include virtual="/lib-0.3/modules/cloner.js" -->
-
-<!--# include virtual="/js/common/bar-storage.js" -->
-<!--# include virtual="/js/common/mybar-name.js" -->
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->

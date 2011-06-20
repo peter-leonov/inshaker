@@ -25,7 +25,6 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
@@ -34,8 +33,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
-<!--# include virtual="/js/common/bar-storage.js" -->
-<!--# include virtual="/js/common/mybar-button.js" -->
 <!--# include virtual="/js/common/purchase-plan-table-editable.js" -->
 
 <!--# include virtual="model.js" -->
