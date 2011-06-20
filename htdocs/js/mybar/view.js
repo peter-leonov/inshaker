@@ -1056,8 +1056,8 @@ var myProto =
 			return
 		}
 		
-		var recommendNode = this.findParentRecommend(node)
-		this.savePreviousScrollTop(recommendNode)
+		//var recommendNode = this.findParentRecommend(node)
+		//this.savePreviousScrollTop(recommendNode)
 		if(node.parentNode.hasClassName('no-have'))
 		{
 			this.controller.addIngredientFromRecommends(node.ingredient)
