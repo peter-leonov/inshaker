@@ -189,7 +189,7 @@ var myProto =
 			windowOffset = window.pageYOffset,
 			screenHeight = window.screen.height,
 			nodeOffset = this.getOffsetTop(node),
-			supply = 400
+			supply = 200
 		//log('nodeOffset = ', nodeOffset, '; ', 'windowOffset = ', windowOffset, '; ', 'screenHeight = ', screenHeight)
 		if(nodeOffset > windowOffset + screenHeight || windowOffset == 0)
 		{
