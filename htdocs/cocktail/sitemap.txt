@@ -203,6 +203,7 @@ http://www.inshaker.ru/cocktail/blueberry_collins/
 http://www.inshaker.ru/cocktail/blue_temptation/
 http://www.inshaker.ru/cocktail/horatius/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
+http://www.inshaker.ru/cocktail/bitter-sweet_symphony_2/
 http://www.inshaker.ru/cocktail/hot_gold/
 http://www.inshaker.ru/cocktail/hot_apple/
 http://www.inshaker.ru/cocktail/hot_orange/
@@ -261,6 +262,7 @@ http://www.inshaker.ru/cocktail/gioconda_shooter/
 http://www.inshaker.ru/cocktail/wild_land/
 http://www.inshaker.ru/cocktail/dioscorides/
 http://www.inshaker.ru/cocktail/kind_coconut/
+http://www.inshaker.ru/cocktail/house_m.d./
 http://www.inshaker.ru/cocktail/home_lebowski/
 http://www.inshaker.ru/cocktail/home_marmalade/
 http://www.inshaker.ru/cocktail/home_dad_s_double/
@@ -347,6 +349,7 @@ http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/cambridge/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
+http://www.inshaker.ru/cocktail/kin-dza-dza/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/clubland/
 http://www.inshaker.ru/cocktail/claudius_galenus/
@@ -632,6 +635,7 @@ http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
+http://www.inshaker.ru/cocktail/fifth_element/
 http://www.inshaker.ru/cocktail/raquel/
 http://www.inshaker.ru/cocktail/ramcooler/
 http://www.inshaker.ru/cocktail/rastafarai/
@@ -726,6 +730,7 @@ http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/lilac_mist/
 http://www.inshaker.ru/cocktail/fairy_tale/
+http://www.inshaker.ru/cocktail/skittles/
 http://www.inshaker.ru/cocktail/sweet_memories/
 http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
 http://www.inshaker.ru/cocktail/sweet_bite/
@@ -857,7 +862,7 @@ http://www.inshaker.ru/cocktail/champion/
 http://www.inshaker.ru/cocktail/black_cherry/
 http://www.inshaker.ru/cocktail/black_and_white/
 http://www.inshaker.ru/cocktail/black-current/
-http://www.inshaker.ru/cocktail/black-current_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/black-curr_nt_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/black_october/
 http://www.inshaker.ru/cocktail/black_russian/
 http://www.inshaker.ru/cocktail/black_flip/
