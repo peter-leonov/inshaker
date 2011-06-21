@@ -203,7 +203,6 @@ var myProto =
 		}
 		
 		this.controller.checkoutRecommends()
-		this.controller.checkoutMustHaveRecommends()
 	},
 	
 	getOffsetTop : function(node)
@@ -253,34 +252,22 @@ var myProto =
 	},*/
 
 	
-	checkoutRecommends : function(listLength)
+	checkoutRecommends : function(rLength, mhLength)
 	{
 		var node = this.nodes.recommends.recommendsList
-		
-		while(listLength > 0 && this.noHaveSupply(node))
+		while(rLength > 0 && this.noHaveSupply(node))
 		{
 			var i = 4
-			while(i-- && listLength--)
-			{
+			while(i-- && rLength--)
 				this.controller.addRecommend()
-			}
 		}
 		
-		var rn = this.nodes.recommends.box
-		rn.style.height = 'auto'
-	},
-	
-	checkoutMustHaveRecommends : function(listLength)
-	{
-		var node = this.nodes.recommends.mustHaveList
-			
-		while(listLength > 0 && this.noHaveSupply(node))
+		var node = this.nodes.recommends.mustHaveList	
+		while(!rLength && mhLength > 0 && this.noHaveSupply(node))
 		{
 			var i = 4
-			while(i-- && listLength--)
-			{
+			while(i-- && mhLength--)
 				this.controller.addMustHaveRecommend()
-			}
 		}
 		
 		var rn = this.nodes.recommends.box
@@ -293,7 +280,7 @@ var myProto =
 			offsetTop = this.getOffsetTop(node),
 			pageHeight = window.screen.height + window.pageYOffset
 		
-		return offsetTop > pageHeight ? false : node.offsetHeight + offsetTop - pageHeight < supply
+		return node.offsetHeight + offsetTop - pageHeight < supply
 	},
 	
 	setCompleterDataSource : function (ds)

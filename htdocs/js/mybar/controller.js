@@ -132,11 +132,6 @@ var myProto =
 		this.model.checkoutRecommends()
 	},
 	
-	checkoutMustHaveRecommends : function()
-	{
-		this.model.checkoutMustHaveRecommends()
-	},
-	
 	changeBarName : function(barName)
 	{
 		this.model.changeBarName(barName)

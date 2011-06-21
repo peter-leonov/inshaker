@@ -774,19 +774,11 @@ var myProto =
 	
 	checkoutRecommends : function()
 	{
-		var length = this.recommends.length
-		if(length > 0)
+		var rLength = this.recommends.length,
+			mhLength = this.mustHaveRecommends.length
+		if(rLength > 0 || mhLength > 0)
 		{
-			this.view.checkoutRecommends(length)
-		}
-	},
-	
-	checkoutMustHaveRecommends : function()
-	{
-		var length = this.mustHaveRecommends.length
-		if(length > 0)
-		{
-			this.view.checkoutMustHaveRecommends(length)
+			this.view.checkoutRecommends(rLength, mhLength)
 		}
 	},
 	
