@@ -255,10 +255,9 @@ var myProto =
 	
 	checkoutRecommends : function(listLength)
 	{
-		var node = this.nodes.recommends.recommendsList,
-			supply = 400
+		var node = this.nodes.recommends.recommendsList
 		
-		while(listLength > 0 && this.getSupply(node) < supply)
+		while(listLength > 0 && this.noHaveSupply(node))
 		{
 			var i = 4
 			while(i-- && listLength--)
@@ -273,10 +272,9 @@ var myProto =
 	
 	checkoutMustHaveRecommends : function(listLength)
 	{
-		var node = this.nodes.recommends.mustHaveList,
-			supply = 400
+		var node = this.nodes.recommends.mustHaveList
 			
-		while(listLength > 0 && this.getSupply(node) < supply)
+		while(listLength > 0 && this.noHaveSupply(node))
 		{
 			var i = 4
 			while(i-- && listLength--)
@@ -289,9 +287,13 @@ var myProto =
 		rn.style.height = 'auto'
 	},
 	
-	getSupply : function(node)
+	noHaveSupply : function(node)
 	{
-		return node.offsetHeight + this.getOffsetTop(node) - window.screen.height - window.pageYOffset
+		var supply = 400,
+			offsetTop = this.getOffsetTop(node),
+			pageHeight = window.screen.height + window.pageYOffset
+		
+		return offsetTop > pageHeight ? false : node.offsetHeight + offsetTop - pageHeight < supply
 	},
 	
 	setCompleterDataSource : function (ds)
