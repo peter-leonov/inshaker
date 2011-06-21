@@ -253,16 +253,17 @@ module Inshaker
     end
     
     def sync_base subdir
-      if ENV['INSHAKER_BASE_DIR']
-        say "беру данные из #{ENV['INSHAKER_BASE_DIR']}"
-      end
-      
-      say "синхронизируюсь с базой (папка #{subdir})"
-      dst = "#{Inshaker::ROOT_DIR}barman/base/#{subdir}/"
-      FileUtils.mkdir_p dst
-      indent do
-      system(%Q{rsync -rptvh --delete "barman@toaster:/Shares/inshaker/#{subdir}/" "#{dst}"})
-      end # indent
+      # waiting for libiconf for linux to support UTF-8-MAC encoding
+      # if ENV['INSHAKER_BASE_DIR']
+      #   say "беру данные из #{ENV['INSHAKER_BASE_DIR']}"
+      # end
+      # 
+      # say "синхронизируюсь с базой (папка #{subdir})"
+      # dst = "#{Inshaker::ROOT_DIR}barman/base/#{subdir}/"
+      # FileUtils.mkdir_p dst
+      # indent do
+      # system(%Q{rsync -rptvh --delete "barman@toaster:/Shares/inshaker/#{subdir}/" "#{dst}"})
+      # end # indent
     end
   end
 end
