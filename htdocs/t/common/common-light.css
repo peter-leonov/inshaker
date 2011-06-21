@@ -44,19 +44,19 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 #top h2 { position: absolute; left: -9px; top: 3px; }
 #top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; font-weight: bold; }
 #top .nav li{float:left;margin-right:16px;}
-#top .nav a { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
-#top .nav a:hover{border-bottom: 5px solid;}
-#cocktails-page #top .nav a.cocktails,
-#cocktail-page #top .nav a.cocktails,
-#matching-page #top .nav a.cocktails,
-#ingredients-page #top .nav a.ingredients,
-#bars-page #top .nav a.bars,
-#bar-page #top .nav a.bars,
-#good-page #top .nav a.goods,
-#event-page #top .nav a.events,
-#academy-page #top .nav a.academy,
-#combinator-page #top .nav a.combinator,
-html.blog-section #top .nav a.blog
+#top .nav .link { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
+#top .nav .link:hover{border-bottom: 5px solid;}
+#cocktails-page #top .nav .cocktails .link,
+#cocktail-page #top .nav .cocktails .link,
+#matching-page #top .nav .cocktails .link,
+#ingredients-page #top .nav .ingredients .link,
+#bars-page #top .nav .bars .link,
+#bar-page #top .nav .bars .link,
+#good-page #top .nav .goods .link,
+#event-page #top .nav .events .link,
+#academy-page #top .nav .academy .link,
+#combinator-page #top .nav .combinator .link,
+html.blog-section #top .nav .blog .link
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
