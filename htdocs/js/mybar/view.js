@@ -587,7 +587,7 @@ var myProto =
 		var dt = Nc('dt', 'advice')
 		var text = this.getTextForRecommend(group, cocktailsHash, ingredientsHash)
 		dt.appendChild(text)
-		setTimeout(function(){ dt.style.height = dt.offsetHeight - 26 + 'px' }, 0)
+		setTimeout(function(){ dt.style.height = dt.offsetHeight - 27 + 'px' }, 0)
 		return dt
 	},
 	
