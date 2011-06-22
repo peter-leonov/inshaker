@@ -718,6 +718,7 @@ http://www.inshaker.ru/cocktail/sage_romance/
 http://www.inshaker.ru/cocktail/sex_on_the_beach/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_light/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_special/
+http://www.inshaker.ru/cocktail/sex_with_anfisa/
 http://www.inshaker.ru/cocktail/celery_sour/
 http://www.inshaker.ru/cocktail/seneca/
 http://www.inshaker.ru/cocktail/senior_sazerac/
@@ -888,6 +889,7 @@ http://www.inshaker.ru/cocktail/exotic_grog/
 http://www.inshaker.ru/cocktail/extra_crush/
 http://www.inshaker.ru/cocktail/electric_chaser/
 http://www.inshaker.ru/cocktail/elisa/
+http://www.inshaker.ru/cocktail/endorfun/
 http://www.inshaker.ru/cocktail/espresso_martini/
 http://www.inshaker.ru/cocktail/effectini/
 http://www.inshaker.ru/cocktail/aniversary_sour/
