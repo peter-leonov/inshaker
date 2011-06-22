@@ -29,9 +29,26 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		this.bindWindow()
 		this.bindEvents()
 		
 		return this
+	},
+	
+	bindWindow: function ()
+	{
+		var nodes = this.nodes.window,
+			root = nodes.root, surface = nodes.surface
+		
+		var width = root.offsetWidth * 2.5
+		
+		var style = surface.style
+		function move (e)
+		{
+			style.width = width + e.layerX + 'px'
+		}
+		
+		root.addEventListener('mousemove', move, false)
 	},
 	
 	bindEvents: function ()

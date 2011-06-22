@@ -11,6 +11,11 @@ function onready ()
 	var nodes =
 	{
 		partyName: $('party-name'),
+		window:
+		{
+			root: $$('#window')[0],
+			surface: $$('#window .surface')[0]
+		},
 		peopleCount: $$('#cocktail-plan .head .people .count')[0],
 		body: $$('#cocktail-plan .body')[0],
 		cocktails: $$('#cocktail-plan .body .cocktails')[0],
