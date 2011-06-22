@@ -60,6 +60,8 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Cocktails"
+    
     prepare_dirs
     prepare_templates
     prepare_ingredients
@@ -314,6 +316,20 @@ class CocktailsProcessor < Inshaker::Processor
     
     if about["Винительный падеж"]
       @cocktail["nameVP"] = about["Винительный падеж"]
+    end
+    
+    if about["План покупок"]
+      cart = {}
+      if about["План покупок"]["Количество"]
+        cart["count"] = about["План покупок"]["Количество"]
+      end
+      if about["План покупок"]["Множественные"]
+        cart["plural"] = about["План покупок"]["Множественные"].split(/\s*,\s*/)
+      end
+      
+      unless cart.empty?
+        @cocktail["cart"] = cart
+      end
     end
     
     cocktail_tags = @cocktail["tags"] = []

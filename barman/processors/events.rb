@@ -15,6 +15,8 @@ class EventsProcessor < Inshaker::Processor
     DB_JS          = Inshaker::HTDOCS_DIR + "db/events/events.json"
     
     TEMPLATES      = Inshaker::TEMPLATES_DIR
+    
+    RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   end
   
   
@@ -33,6 +35,8 @@ class EventsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Events"
+    
     prepare_dirs
     
     update_events
@@ -70,7 +74,7 @@ class EventsProcessor < Inshaker::Processor
     
     # warn yaml.inspect
     ru_date             = Time.gm(*yaml['Дата'].split(".").reverse.map{|v|v.to_i})
-    ru_date_str         = "#{ru_date.day} #{Date::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
+    ru_date_str         = "#{ru_date.day} #{Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
     @entity["date"]      = ru_date.to_i * 1000
     @entity["lang"]      = {'английский' => 'en', nil => 'ru', 'русский' => 'ru'}[yaml['Язык']]
     

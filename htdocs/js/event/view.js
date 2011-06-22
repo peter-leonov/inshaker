@@ -51,12 +51,30 @@ EventPage.view =
 		function formPopupOpenClicked () { controller.formPopupOpenClicked() }
 		nodes.getInvitation.forEach(function (v) { if (v) v.addEventListener('click', formPopupOpenClicked, false) })
 		
-		var form = nodes.form
-		form.oncheck = function (e) { return controller.formOnCheck(e.hash, e.form.variableFields) }
-		form.onsuccess = function (e) { return controller.formSuccess(e.hash) }
-		form.onsend = function (e) { return controller.formSend() }
-		form.onload = function (e) { return controller.formLoad() }
-		form.onerror = function (e) { return controller.formError(e.request.errorMessage()) }
+		
+		function sendListener (e)
+		{
+			e.preventDefault()
+			
+			controller.formSend()
+			
+			function sent (e)
+			{
+				if (e.type == 'success')
+				{
+					controller.formSuccess()
+				}
+				else
+				{
+					alert('Произошла ошибка! Пожалуйста, сообщите о ней по адресу support@inshaker.ru')
+				}
+				
+				controller.formLoad()
+			}
+			
+			Request.post(this.action, FormHelper.toHash(this), sent)
+		}
+		nodes.form.addEventListener('submit', sendListener,  false)
 	},
 	
 	readEvent: function ()
@@ -75,7 +93,7 @@ EventPage.view =
 		if (event.status == 'preparing')
 			this.bindFormPopup()
 		
-		//this.renderPreviews(previewSet, event)
+		this.renderPreviews(previewSet, event)
 		
 		this.renderDialogue(event.dialogue)
 		this.renderRating(event.rating)
@@ -145,7 +163,7 @@ EventPage.view =
 			point.appendChild(this.createPreviewElement(event, selected))
 		}
 		
-		new Programica.RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
+		new RollingImagesLite(previews, {animationType: 'easeOutQuad', goInit: false}).jumpToFrame(selectedPoint)
 	},
 	
 	createPreviewElement: function(event, selected)
@@ -227,7 +245,7 @@ EventPage.view =
 			buttons.push(dt)
 			tabs.push(dd)
 			
-			new Programica.RollingImagesLite(node, {animationType: 'easeOutQuad'})
+			new RollingImagesLite(node, {animationType: 'easeOutQuad'})
 			dd.hide = function () { this.style.visibility = 'hidden' }
 			dd.show = function () { this.style.visibility = 'visible' }
 		}
@@ -466,7 +484,7 @@ EventPage.view =
 						else
 							illustration.scrollTop += 300
 						
-						illustrationPopups.remClassName('hidden')
+						illustrationPopups.removeClassName('hidden')
 					},
 					500
 				)
@@ -576,14 +594,23 @@ EventPage.view =
 	setFormLock: function (status)
 	{
 		var button = this.nodes.formPopupSubmit
-		status ? button.disable() : button.enable()
+		if (status)
+		{
+			button.addClassName('disabled')
+			button.setAttribute('disabled', true)
+		}
+		else
+		{
+			button.removeAttribute('disabled')
+			button.removeClassName('disabled')
+		}
 	},
 	
 	startFormChecker: function ()
 	{
 		var me = this
 		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(me.nodes.form.toHash(), me.nodes.form.variableFields) }, 200)
+		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()

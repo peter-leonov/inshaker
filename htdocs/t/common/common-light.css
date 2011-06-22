@@ -56,7 +56,8 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 #event-page #top .nav a.events,
 #academy-page #top .nav a.academy,
 #combinator-page #top .nav a.combinator,
-html.party-section #top .nav a.party
+html.party-section #top .nav a.party,
+html.blog-section #top .nav a.blog
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
@@ -77,7 +78,8 @@ html.party-section #top .nav a.party
 html.job-page #bottom a.job,
 html.about-page #bottom a.about,
 #combinator-page #bottom .main-menu a.combinator,
-html.party-section #bottom .main-menu a.party
+html.party-section #bottom .main-menu a.party,
+html.blog-section #bottom .main-menu a.blog
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 

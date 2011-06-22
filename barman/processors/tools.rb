@@ -22,6 +22,8 @@ class ToolsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Tools"
+    
     prepare_dirs
     prepare
     flush_images

@@ -90,4 +90,4 @@ Object.extend(Barman,
 	}
 })
 
-Barman.initialize(<!--# include file="/db/barmen/barmen.json"-->)
+Barman.initialize(<!--# include virtual="/db/barmen/barmen.json"-->)

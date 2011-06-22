@@ -67,6 +67,8 @@ dd {
 
 dd.last { border: 0; }
 
+#cocktails_num { display: none; }
+
 .txt { float: left; }
 .cnt { float: right; text-align: right; }
 .txt img { padding-right: 8px; }

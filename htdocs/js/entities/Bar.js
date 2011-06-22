@@ -130,4 +130,4 @@ Object.extend(Bar,
 	getFeels: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') }
 })
 
-Bar.initialize(<!--# include file="/db/bars/bars.json" -->)
+Bar.initialize(<!--# include virtual="/db/bars/bars.json" -->)

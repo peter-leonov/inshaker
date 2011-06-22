@@ -100,8 +100,6 @@ function CalculatorView() {
 	this.CLASS_ADD_BTN  = '.bt-want-slap';
 	this.NAME_ELEM      = 'cocktail_name';
 	
-	this.INGRED_POPUP   = 'shop-cocktail';
-	
 	this.KEY_LEFT  = 37;
 	this.KEY_RIGHT = 39;
 	this.KEY_ENTER = 13;
@@ -162,23 +160,6 @@ function CalculatorView() {
       // }
 		}, false);
 	}
-	
-	$('good_cancel').addEventListener('mousedown', function(e){
-		$(self.INGRED_POPUP).hide();
-	}, false);
-	
-	$$("#shop-cocktail .opacity")[0].addEventListener('click', function(e){
-		$(self.INGRED_POPUP).hide();
-	}, false);
-
-    document.documentElement.addEventListener('keyup', function(e){
-        if(e.keyCode == self.KEY_ESC) $(self.INGRED_POPUP).hide();
-    }, false);
-	
-    this.showPopup = function(ingred){
-        $(this.INGRED_POPUP).show();
-        this.renderPopup(this.eventListener.getItemFromCart(ingred), ingred);
-    };
 	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения
@@ -305,7 +286,8 @@ function CalculatorView() {
 		
 		if(input.value != quantity)
 			input.value = quantity || "";
-		txt.nodeValue = " " + quantity.plural("порция", "порции", "порций");
+		var plurals = (cocktail.cart && cocktail.cart.plural) || ['порция', 'порции', 'порций']
+		txt.nodeValue = " " + quantity.plural.apply(quantity, plurals);
 		
 		return li;
 	};
@@ -358,8 +340,7 @@ function CalculatorView() {
 			
 			function showPopup (e)
 			{
-				self.renderPopup(item, name);
-				$(self.INGRED_POPUP).show();
+				IngredientPopup.show(Ingredient.getByName(name))
 			}
 			a.addEventListener('click', showPopup, false)
 			button.addEventListener('click', showPopup, false)

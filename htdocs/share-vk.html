@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>Кнопка ВКонтакте</title>
+	<style type="text/css">
+		html, body { margin: 0; padding: 0; }
+	</style>
+</head>
+<body>
+<script src="/lib-0.3/modules/url-encode.js" type="text/javascript"></script>
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?11" charset="windows-1251"></script>
+
+<!-- Put this script tag to the place, where the Share button will be -->
+<script type="text/javascript"><!--
+var params = UrlEncode.parse(location.search.substr(1))
+document.write(VK.Share.button({url: params.url},{type: "round", text: "Сохранить"}));
+--></script>
+
+</body>
+</html>

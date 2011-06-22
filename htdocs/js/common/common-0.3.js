@@ -20,16 +20,18 @@
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 
+<!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
 
-$.onready(function () { setTimeout(function () { GoogleAnalytics.trackPageview() }, 250) })
-
-<!--# include virtual="/js/common/theme.js" -->
-$.onready(function () { Theme.bind() })
+$.onready(function () { setTimeout(function ()
+{
+	GoogleAnalytics.trackPageview()
+	YandexMetrika.trackPageview()
+}, 250) })
 
 $.onready(function ()
 {
@@ -37,7 +39,6 @@ $.onready(function ()
 	if (year)
 		year.firstChild.nodeValue = new Date().getFullYear()
 })
-
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 

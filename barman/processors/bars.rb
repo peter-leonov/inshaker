@@ -29,6 +29,8 @@ class BarsProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Bars"
+    
     Cocktail.init
     @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index
     
@@ -85,7 +87,7 @@ class BarsProcessor < Inshaker::Processor
       say city_dir.name
       indent do
       error "нет склонений для слова «#{city_dir.name}»" unless @declensions[city_dir.name]
-      error "нет точки корода на карте" unless @city_points[city_dir.name]
+      error "нет точки города на карте" unless @city_points[city_dir.name]
       city_dir.each_dir do |bar_dir|
         say bar_dir.name
         indent do

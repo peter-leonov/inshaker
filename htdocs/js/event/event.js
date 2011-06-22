@@ -21,7 +21,7 @@ EventPage =
 $.onready(function ()
 {
 	var de = document.documentElement
-	de.remClassName('loading')
+	de.removeClassName('loading')
 	de.addClassName(guessBrowser(navigator.userAgent).join(' '))
 	de.addClassName(guessOS(navigator.userAgent).join(' '))
 })
@@ -80,34 +80,34 @@ $.onready
 			name: $('event-name'),
 			promoBack: $('promo-back'),
 			mark: $('mark'),
-			previews: cssQuery('.previews')[0],
-			previewSurface: cssQuery('.previews .viewport .surface')[0],
+			previews: $$('.previews')[0],
+			previewSurface: $$('.previews .viewport .surface')[0],
 			illustration: $('illustration'),
-			illustrationPopups: cssQuery('#illustration img')[0],
-			rating: cssQuery('#comming .rating')[0],
-			ratingHead: cssQuery('#comming h2')[0],
-			ratingShowAll: cssQuery('#comming .list-all')[0],
-			ratingFrom: cssQuery('#comming .from')[0],
+			illustrationPopups: $$('#illustration img')[0],
+			rating: $$('#comming .rating')[0],
+			ratingHead: $$('#comming h2')[0],
+			ratingShowAll: $$('#comming .list-all')[0],
+			ratingFrom: $$('#comming .from')[0],
 			sidebar: $('sidebar'),
 			sponsorsLow: $('low-sponsors'),
-			sponsorsLowContent: cssQuery('#low-sponsors .b-content')[0],
+			sponsorsLowContent: $$('#low-sponsors .b-content')[0],
 			sponsorsMedium: $('medium-sponsors'),
-			sponsorsHighBlock: cssQuery('#main-sponsors')[0],
-			sponsorsHighTitle: cssQuery('#main-sponsors .b-title h4')[0],
-			sponsorsHigh: cssQuery('#main-sponsors .banner')[0],
-			form: cssQuery('#form-popup form')[0],
+			sponsorsHighBlock: $$('#main-sponsors')[0],
+			sponsorsHighTitle: $$('#main-sponsors .b-title h4')[0],
+			sponsorsHigh: $$('#main-sponsors .banner')[0],
+			form: $$('#form-popup form')[0],
 			formPopup: $('form-popup'),
-			formPopupOverlay: cssQuery('#form-popup #overlay')[0],
-			formPopupContent: cssQuery('#form-popup .content')[0],
-			formPopupMenu: cssQuery('#form-popup .menu')[0],
-			formPopupFields: cssQuery('#form-popup .fields')[0],
-			formPopupThanks: cssQuery('#form-popup .thanks')[0],
-			formPopupHolding: cssQuery('#form-popup .holding')[0],
-			formPopupNameInput: cssQuery('#form-popup input[name=event]')[0],
-			formPopupHrefInput: cssQuery('#form-popup input[name=href]')[0],
-			formPopupSubmit: cssQuery('#form-popup input[type=submit]')[0],
-			variableInputs: cssQuery('#form-popup .variable')[0],
-			getInvitation: [$('invitations-only'), cssQuery('.about .sign-on')[0]]
+			formPopupOverlay: $$('#form-popup #overlay')[0],
+			formPopupContent: $$('#form-popup .content')[0],
+			formPopupMenu: $$('#form-popup .menu')[0],
+			formPopupFields: $$('#form-popup .fields')[0],
+			formPopupThanks: $$('#form-popup .thanks')[0],
+			formPopupHolding: $$('#form-popup .holding')[0],
+			formPopupNameInput: $$('#form-popup input[name=event]')[0],
+			formPopupHrefInput: $$('#form-popup input[name=href]')[0],
+			formPopupSubmit: $$('#form-popup input[type=submit]')[0],
+			variableInputs: $$('#form-popup .variable')[0],
+			getInvitation: [$('invitations-only'), $$('.about .sign-on')[0]]
 		}
 		
 		// log(document.documentElement.appendChild($('form-popup')))
@@ -119,19 +119,21 @@ $.onready
 )
 
 
-<!--# include file="/lib/Programica/Request.js" -->
-<!--# include file="/lib/Programica/Form.js" -->
+<!--# include virtual="/lib-0.3/widgets/input-tip.js" -->
 
-<!--# include file="/lib/Programica/Widget.js" -->
-<!--# include file="/lib/Widgets/FormPoster.js" -->
-<!--# include file="/lib/Widgets/Switcher.js" -->
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/request.js" -->
 
-<!--# include file="/lib-0.3/widgets/input-tip.js" -->
+<!--# include virtual="/lib-0.3/modules/motion.js" -->
+<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
+<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
+<!--# include virtual="/js/common/humanize.js" -->
+<!--# include virtual="/js/common/switcher.js" -->
 
 
-<!--# include file="/js/event/model.js" -->
-<!--# include file="/js/event/controller.js" -->
-<!--# include file="/js/event/view.js" -->
-<!--# include file="/js/event/interpolate.js" -->
-
-Element.prototype.removeClassName = Element.prototype.remClassName
+<!--# include virtual="/js/event/model.js" -->
+<!--# include virtual="/js/event/controller.js" -->
+<!--# include virtual="/js/event/view.js" -->
+<!--# include virtual="/js/event/interpolate.js" -->

@@ -19,6 +19,8 @@ class MarksProcessor < Inshaker::Processor
   end
   
   def job
+    sync_base "Marks"
+    
     process_entities
     
     unless errors?

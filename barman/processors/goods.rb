@@ -38,6 +38,8 @@ class GoodsProcessor < Inshaker::Processor
     
     @goods = []
     
+    sync_base "Goods"
+    
     prepare_dirs
     prepare_renderer
     prepare_ingredients
