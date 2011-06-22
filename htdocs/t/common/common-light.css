@@ -40,23 +40,24 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 
 /* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid #fff; background: #000 url(top-gradient-v.png) repeat-x scroll 0 0; }
-#top #top-content {position: relative; margin: 0 auto; width: 960px;}
+#top #top-content {position: relative; margin: 0 auto; width: 960px; }
 #top h2 { position: absolute; left: -9px; top: 3px; }
-#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ overflow: hidden; font-weight: bold; }
+#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ width: 786px; overflow: hidden; font-weight: bold; }
 #top .nav li{float:left;margin-right:16px;}
-#top .nav a { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
-#top .nav a:hover{border-bottom: 5px solid;}
-#cocktails-page #top .nav a.cocktails,
-#cocktail-page #top .nav a.cocktails,
-#matching-page #top .nav a.cocktails,
-#ingredients-page #top .nav a.ingredients,
-#bars-page #top .nav a.bars,
-#bar-page #top .nav a.bars,
-#good-page #top .nav a.goods,
-#event-page #top .nav a.events,
-#academy-page #top .nav a.academy,
-#combinator-page #top .nav a.combinator,
-html.blog-section #top .nav a.blog
+#top .nav .link { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
+#top .nav .link:hover{border-bottom: 5px solid;}
+#top .nav .blog { position: absolute; right: 0px; }
+#cocktails-page #top .nav .cocktails .link,
+#cocktail-page #top .nav .cocktails .link,
+#matching-page #top .nav .cocktails .link,
+#ingredients-page #top .nav .ingredients .link,
+#bars-page #top .nav .bars .link,
+#bar-page #top .nav .bars .link,
+#good-page #top .nav .goods .link,
+#event-page #top .nav .events .link,
+#academy-page #top .nav .academy .link,
+#combinator-page #top .nav .combinator .link,
+html.blog-section #top .nav .blog .link
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
 #top .nav img{}
