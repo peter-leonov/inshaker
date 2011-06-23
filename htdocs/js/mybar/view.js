@@ -71,8 +71,6 @@ var myProto =
 		
 		var me = this
 		
-		//nodes.ingredients.tipIngredient.addEventListener('click', function(e){ me.controller.addIngredientToBar(this.ingredient) }, false)
-		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
 		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
@@ -118,21 +116,6 @@ var myProto =
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
-		//this.barName = new MyBarName()
-		//this.barName.bind(nodes.barName)		
-		
-		//nodes.ingredients.resetButton.addEventListener('click', function(){ me.clearInput() }, false)		
-		//nodes.menuLink.addEventListener('click', function(e){ if(!this.hasClassName('active')) e.preventDefault(); }, false)
-		
-		//nodes.recommends.box.addEventListener('click', function(e){ me.handleRecommendsBoxClick(e) }, false)
-		
-		//nodes.recommends.tagsList.tagsCloud.addEventListener('click', function(e){ me.selectOtherTag(e) }, false)
-		
-		//nodes.share.getLink.addEventListener('click', function(e){ this.setAttribute('disabled', 'disabled'); me.controller.getForeignLink() }, false)
-		
-		//nodes.upgradeRecommends.addEventListener('click', function(){ if(!me.recommendsWasRendered) me.controller.upgradeRecommends() }, false)
-		
-		//suspended rendering
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
 	},
@@ -190,14 +173,13 @@ var myProto =
 			screenHeight = window.screen.height,
 			nodeOffset = this.getOffsetTop(node),
 			supply = 200
-		//log('nodeOffset = ', nodeOffset, '; ', 'windowOffset = ', windowOffset, '; ', 'screenHeight = ', screenHeight)
+		
 		if(nodeOffset > windowOffset + screenHeight || windowOffset == 0)
 		{
 			this.controller.upgradeRecommends()
 		}
 		if(windowOffset - nodeOffset <= supply)
 		{
-			//log('top block upgrading...')
 			this.savePreviousScrollTop(node)
 			this.controller.upgradeTopBlock()
 		}
@@ -310,7 +292,7 @@ var myProto =
 			nodes.switcher.hide()
 			nodes.links.hide()
 			nodes.empty.show()
-			this.hideCocktailsBox()
+			//this.hideCocktailsBox()
 			this.resetRecommendsOffsets()
 			return
 		}
@@ -320,7 +302,7 @@ var myProto =
 		nodes.switcher.className = 'switcher ' + showType
 		nodes.list.empty()
 		nodes.list.show()
-		this.showCocktailsBox()
+		//this.showCocktailsBox()
 		
 		switch(showType)
 		{
@@ -423,20 +405,12 @@ var myProto =
 		
 		if(cl == 0)
 		{
-			//nodes.wrapper.hide()
-			//nodes.switcher.hide()
-			//nodes.title.h2.className = 'zero-cocktails'
-			//nodes.links.hide()
-			//nodes.empty.show()
 			nodes.box.hide()
 			this.resetRecommendsOffsets()
 			return
 		}
 		
 		nodes.title.plural.firstChild.nodeValue = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
-		//nodes.title.h2.className = ''
-		//nodes.links.show()
-		//nodes.empty.hide()
 		nodes.switcher.className = 'switcher ' + showType
 		
 		switch(showType)
@@ -917,23 +891,6 @@ var myProto =
 		}		
 	},
 	
-/*	handleBottomWrapperClick : function(e)
-	{
-		var target = e.target
-		
-		if(!target.ingredients && !target.addingIngredient)
-		{
-			return
-		}
-		
-		var recommendNode = this.findParentRecommend(target)
-		
-		this.recommendScrollTop = recommendNode.offsetPosition().top - window.pageYOffset
-		this.currentRecommendNode = recommendNode
-		
-		this.controller.addIngredientFromRecommends(target.ingredient)
-	},*/
-	
 	updateRecommends : function(cocktailsHash, ingredientsHash)
 	{
 		for (var i = 0, il = this.currentRecommends.length; i < il; i++) 
@@ -1045,8 +1002,6 @@ var myProto =
 			return
 		}
 		
-		//var recommendNode = this.findParentRecommend(node)
-		//this.savePreviousScrollTop(recommendNode)
 		if(node.parentNode.hasClassName('no-have'))
 		{
 			this.controller.addIngredientFromRecommends(node.ingredient)
@@ -1070,16 +1025,6 @@ var myProto =
 		
 		return false
 	},
-	/*
-		selectOtherTag : function(e)
-		{
-			var target = e.target
-			if(target.tagValue && !target.parentNode.hasClassName('current'))
-			{
-				this.tagsWrapperScrollTop = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - window.pageYOffset
-				this.controller.showTagRecommends(target.tagValue)
-			}
-		},*/
 	
 	savePreviousScrollTop : function(node)
 	{
@@ -1186,14 +1131,6 @@ var myProto =
 		nodes.sendButton.hide()
 		nodes.emailSended.show()
 	}
-	
-/*	setScrollTopTags : function()
-	{
-		var scrollVal = this.nodes.bottomOutput.tagsCloud.offsetPosition().top - this.tagsWrapperScrollTop
-		
-		document.documentElement.scrollTop = scrollVal
-		document.body.scrollTop = scrollVal		
-	}*/
 }
 Object.extend(Me.prototype, myProto)
 })();
