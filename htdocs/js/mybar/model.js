@@ -114,12 +114,10 @@ var myProto =
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.focusSearchInput()
-		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		setTimeout(function(){ me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
 		this.view.renderShareLinks(this.userid)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
-		//this.view.renderShare(this.foreignData.userid)
 	},
 	
 	computeRecommendsBlock : function()
@@ -335,10 +333,7 @@ var myProto =
 				if(limit && t > lim)
 					continue
 				
-/*				var h = {}
-				h[name] = true*/
-
-				recommends.push({ /*cocktails : h, */ingredients : notMatched, len : t, cocktail : cocktail })
+				recommends.push({ ingredients : notMatched, len : t, cocktail : cocktail })
 			}
 		}
 
@@ -595,7 +590,6 @@ var myProto =
 		this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
 		
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
 		this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -640,7 +634,6 @@ var myProto =
 	{
 		this.ingredientsShowType = showType
 		this.saveStorage()
-
 		this.view.renderIngredients(this.ingredients, showType)
 	},
 	
@@ -698,17 +691,7 @@ var myProto =
 		this.topBlockUpgraded = false
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
-		
-		//var me = this
-		//this.ingredients.sort(function(a, b){ return me.sortByUsage(a, b) })
-		
-		//this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
-		//this.view.renderMaybeHave(this.maybeHaveIngredients, this.ingredients.hash)
-		//this.view.renderCocktails(this.visibleCocktails, this.hiddenCocktails, this.cocktailsShowType)
-		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
-		
-		//this.view.setScrollTop()
 	},
 	
 	removeIngredientFromRecommends : function(ingredient)
@@ -719,7 +702,6 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)		
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
-		//this.view.setScrollTop()
 	},
 	
 	selectIngredient : function(ingredient)
