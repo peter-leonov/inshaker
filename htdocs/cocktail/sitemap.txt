@@ -813,6 +813,7 @@ http://www.inshaker.ru/cocktail/transformer/
 http://www.inshaker.ru/cocktail/tropical_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/tundra_libre/
 http://www.inshaker.ru/cocktail/tuttosi/
+http://www.inshaker.ru/cocktail/tykvan_do/
 http://www.inshaker.ru/cocktail/sorrel_smile/
 http://www.inshaker.ru/cocktail/hurricane/
 http://www.inshaker.ru/cocktail/hurricane_shot/
