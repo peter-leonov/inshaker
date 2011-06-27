@@ -1,0 +1,52 @@
+<!--# include virtual="/t/mybar/common.css" -->
+
+#output .b-content .menu-block .list-wrapper { padding: 20px 0px; }
+
+#output .b-content .menu-block .list-wrapper .cocktails-type { font-size: 18px; }
+
+#output .b-content .menu-block li.cocktail {
+	overflow: hidden;
+	margin-top: 13px;
+}
+
+#output .b-content .menu-block .cocktail-image {
+	width: 40px;
+	float: left;
+}
+
+#output .b-content .menu-block .cocktail-name {
+	font-size: 17px;
+	margin-top: 26px;
+	cursor: pointer;
+	margin-left: 65px;
+}
+
+#output .b-content .menu-block .cocktail-recipe {
+	font-size: 11px;
+	margin-top: 2px;
+	margin-left: 65px;
+}
+
+#output .b-content .menu-block .not-available {
+	color: #ccc;
+}
+
+#output .b-content .menu-block .not-available .cocktail-image {
+	opacity: 0.4;
+}
+
+#output .b-content .menu-block .not-available .cocktail-name {
+	text-decoration: line-through;
+}
+
+#output .b-content .menu-block .list { margin-bottom: 10px; }
+
+#output .b-content .empty-menu {
+	font-size: 14px;
+	color: #ccc;
+	margin: 10px 0px;
+}
+
+#output .b-content .ingredients-block { margin: 20px 0px 10px; }
+
+#output .b-content .ingredients-block .ing-name { font-size: 14px; margin: 10px 0px 0px; }

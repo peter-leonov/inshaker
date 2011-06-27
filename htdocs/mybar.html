@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="mybar-page" class="mybar-page loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+	<!--# include file="/inc/cocktails-head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/mybar.css"/>
+	<title>Мой Бар — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+<div id="main-wrapper">
+
+	<div class="column"><div class="body-wrapper" id="output">
+		<div class="b-title">
+			<!--# include file="/inc/bar-name.html" -->
+			<div class="share-bar">
+				<button class="get-link hidden">Поделиться баром</button>
+				<div class="foreign-block hidden"><a>Ссылка на мой бар</a> <input value="" type="text"/></div>
+			</div>
+		</div>
+
+		<div class="b-content">
+			<dl class="ingredients-block">
+				<dt class="title">Ингредиенты в моем баре
+					<span class="purchase-plan-link">(<a href="/purchase-plan.html">план покупок</a>)</span>
+					<div class="switcher">
+						<span class="by-list">списком</span> | <span class="by-groups">по группам</span>
+					</div>
+				</dt>
+				<dd>
+					<div class="search-box">
+						<form>
+							<input class="query" name="query" autocomplete="off" value=""/>
+							<div class="reset">×</div>
+							<!--<button class="button search" type="submit">Добавить</button>-->
+						</form>
+						<ul class="autocomplete"><li class="item empty-message">такого ингредиента комбинатор пока не знает</li></ul>
+					</div>
+					<div class="tip">например, <span class="tip-ingr"></span></div>
+					<div class="list"></div>
+					<div class="empty hidden">В твоем баре недостаточно ингредиентов, чтобы приготовить хотя бы 1 коктейль. Расскажи об ингредиентах своего бара через строку поиска или воспользуйся рекомендациями!</div>
+				</dd>
+			</dl>
+			<dl class="cocktails-block ing-list">
+				<dt class="title">
+					В моем баре есть всё необоходимое для приготовления <span class="amount"></span> <span class="bar-menu-link">(<a href="/bar-menu.html">печатать меню</a>)</span>
+					<div class="switcher">
+						<span class="photos">фото</span> | <span class="combs">сочетания</span>
+					</div>
+				</dt>
+				<dd>
+					<div class="wrapper"></div>
+					<div class="empty hidden">Добавьте еще ингредиентов.</div>
+				</dd>
+			</dl>
+			<dl><button id="upgrade-recommends">Обновить рекомендации</button></dl>
+			<dl class="bottom-output">
+				<dt class="title">Inshaker рекомендует пополнить бар и приготовить новые коктейли:<!-- ингредиентов и штучек <span class="number-of-cocktails">по количеству коктейлей</span> или <span class="easy-to-make">по простоте приготовления</span> -->
+					<form class="select-tag hidden">
+						<select class="tags"></select>
+					</form>
+				</dt>
+				<dd>
+					<div class="tags-cloud"></div>
+					<div class="wrapper">
+						<div class="recommends"><dl></dl></div>
+						<div class="must-have"><ul></ul></div>
+					</div>
+					<div class="empty hidden">Добавьте еще ингредиентов.</div>					
+				</dd>
+			</dl>
+			
+			<!--
+			<div class="recommends-block">
+				<div class="wrapper"></div>
+				<div class="empty hidden">Нету рекомендаций.</div>
+			</div>
+			-->
+		</div>
+
+		<div class="please-wait">Загружаю Бар...</div>
+	</div></div>
+</div>
+<!--# include virtual="/inc/bottom-common.html" -->
+<!--# include virtual="/inc/ingredient-popup.html" -->
+
+<!--[if lte IE 7]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/js/common/oops.js"></script>
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="/js/mybar/mybar.js"></script>
+</body>
+</html>

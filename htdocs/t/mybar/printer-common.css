@@ -1,0 +1,61 @@
+body, table,
+h1, h2, h3, h4,
+p, form,
+fieldset, legend,
+ol, ul, li, dl, dt, dd { margin: 0; padding: 0; border: 0; list-style: none; }
+td { font-size: 1em; vertical-align: top; }
+img { vertical-align: middle; }
+a { cursor: pointer; text-decoration: none; color: #000; }
+a:hover { text-decoration: underline; }
+a img { border: 0; }
+input, select, textarea, button { font-family: Tahoma, Arial, sans-serif; }
+input, select, textarea { font-size: 1.1em; }
+input[type="password"],
+input[type="text"] { margin: 0; }
+ul { list-style-type: none; }
+table { border: 0; border-collapse: collapse; }
+table td { padding: 0; }
+html { background-color: #fff; }
+body { font: 10px Tahoma, Arial, sans-serif; color: #000; position: relative; }
+html.loading #common-main-wrapper { display: none; }
+.hidden { display: none !important; }
+
+#common-main-wrapper { width: 960px; margin: 30px auto 30px; }
+#common-main-wrapper .header { position: relative; }
+#common-main-wrapper .header .logo { position: absolute; right: 0; top: 0; }
+#common-main-wrapper .header h1 { padding-top: 7px; font-size: 24px; color: #bdbdbd; }
+#common-main-wrapper .header h1 .bar-name { color: #ec118f; }
+
+#cocktail-cart-page #common-main-wrapper .header { display: none; }
+#cocktail-cart-page #common-main-wrapper .first-clone .header { display: block; }
+#cocktail-cart-page #common-main-wrapper .sticker { display: none; margin: 48px 0 16px; }
+#cocktail-cart-page #common-main-wrapper .first-alco-clone .alcohol-box .sticker { display: block; }
+#cocktail-cart-page #common-main-wrapper .first-non-alco-clone .non-alcohol-box .sticker { display: block; }
+#common-main-wrapper .cocktail-cart-box .black-sticker { position: relative; left: -55px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list { overflow: hidden; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail { width: 460px; height: 125px; float: left; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail.even { margin-right: 40px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail table { height: 100%; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail td { vertical-align: middle; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .img-td { width: 60px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .img-link { display: block; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .img-link img { width: 60px; height: 113px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .recipe-td { padding-left: 20px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .cocktail-name { font-size: 18px; }
+#common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .cocktail-recipe { padding: 3px 0px 0px 1px; }
+
+
+#common-main-wrapper .purchase-plan-box { color: #3c3c3c; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper { margin: 70px 0px 10px; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table { margin-bottom: 30px; width: 100%; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table th { font-size: 24px; vertical-align: middle; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table td { font-size: 18px; vertical-align: middle; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table thead th.tr-content { border-bottom: 2px solid #000; height: 48px; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table tbody td.tr-content { border-top: 1px solid #e5e5e5; height: 43px; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table tbody tr.last td { border-bottom: 1px solid #fff; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table .item-name { width: 60%; text-align: left; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table .item-name .name-wrapper { height: 43px; position: relative; line-height: 42px; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table .item-volume { width: 20%; text-align: right; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table .item-volume .volume-value { margin: 0 11px 0 0; }
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper .group-table .item-price { width: 20%; text-align: right; }
+#common-main-wrapper .purchase-plan-box .total-price-wrapper { margin: 0 20px 35px 0; text-align: right; font-size: 24px; font-weight: bold; }
