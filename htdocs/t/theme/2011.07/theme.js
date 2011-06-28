@@ -28,8 +28,8 @@ var Me =
 
 Me.initialize
 ({
-	"spotlighted":{"href":"/cocktail/home_margarita/"},
-	"branded-image":{"href":"/cocktail/home_margarita/"}
+	"spotlighted":{"href":"/cocktail/martini_royale/"},
+	"branded-image":{"href":"/cocktail/martini_royale/"}
 })
 
 Me.bind()
