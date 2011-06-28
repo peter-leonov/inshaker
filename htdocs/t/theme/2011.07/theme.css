@@ -15,9 +15,10 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #top .nav .link:hover { border-bottom-color: #ab0e1c; }
-#bottom { color: #bfa452; }
-#bottom a { color: #000; background-color: #fff; }
-html { background: #fff url(bg.png) center 74px; }
+#bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
+#bottom a { color: #d5b269; }
+html.msie #bottom a { background-color: #000; }
+html { background: #000 url(bg.jpg) center 74px; }
 button.rounded b { text-shadow: 1px 1px 0 #622; }
 button.strong b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
 
