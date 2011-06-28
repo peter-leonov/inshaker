@@ -65,7 +65,7 @@ html.blog-section #top .nav .blog .link
 #top .logo { width: 147px; height: 60px; background-position: -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 #index-page #top .logo { cursor: default; }
 
-#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;overflow:hidden;clear:both;padding-top:40px;margin:0 auto;width:960px;}
+#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
 #bottom .main-menu{float:right;}
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
