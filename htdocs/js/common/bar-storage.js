@@ -139,8 +139,7 @@ Me =
 			Request.post
 			(
 				url + ld.hash + '/' + ld.userid,
-				JSON.stringify(this.data.remote),
-				function () {}
+				JSON.stringify(this.data.remote)
 			)
 		}
 	},
@@ -167,14 +166,11 @@ Me =
 	addIngredient: function (ingredientName)
 	{
 		var ings = this.data.remote.ingredients
-		if (ings.indexOf(ingredientName) == -1)
-		{
-			ings.push(ingredientName)
-		}
-		else
-		{
+		
+		if (ings.indexOf(ingredientName) != -1)
 			return false
-		}
+		
+		ings.push(ingredientName)
 		this.saveBar()
 		return true
 	},
@@ -183,25 +179,17 @@ Me =
 	{
 		var ings = this.data.remote.ingredients
 		var pos = ings.indexOf(ingredientName)
-		if (pos != -1)
-		{
-			ings.splice(pos, 1)
-		}
-		else
-		{
+		if (pos == -1)
 			return false
-		}
+		
+		ings.splice(pos, 1)
 		this.saveBar()
 		return true
 	},
 	
 	haveIngredient: function (ingredientName)
 	{
-		if (this.data.remote.ingredients.indexOf(ingredientName) != -1)
-		{
-			return true
-		}
-		return false
+		return this.data.remote.ingredients.indexOf(ingredientName) != -1
 	}
 }
 
