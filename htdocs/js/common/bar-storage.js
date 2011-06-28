@@ -4,35 +4,35 @@ var myName = 'BarStorage'
 
 Me =  
 {
-	initialize : function()
+	initialize: function ()
 	{
 		this.data = 
 		{
-			remote :
+			remote:
 			{
-				barName : '',
-				ingredients : [],
-				ingredientsShowType : 'by-list',
-				cocktailsShowType : 'by-pics',
-				hiddenCocktails : [],
-				currentTag : '',
-				purchasePlanNotices : {},
-				purchasePlanVolumes : {},
-				purchasePlanExcludes : {}
+				barName: '',
+				ingredients: [],
+				ingredientsShowType: 'by-list',
+				cocktailsShowType: 'by-pics',
+				hiddenCocktails: [],
+				currentTag: '',
+				purchasePlanNotices: {},
+				purchasePlanVolumes: {},
+				purchasePlanExcludes: {}
 			},
-			local :
+			local:
 			{
-				userid : '',
-				hash : ''
+				userid: '',
+				hash: ''
 			}
 		}
 	},
 	
-	initBar : function(callback)
+	initBar: function (callback)
 	{
 		var me = this
 		
-		if(this.inited)
+		if (this.inited)
 		{
 			callCallback()
 			return
@@ -40,25 +40,25 @@ Me =
 		
 		clientStorage.ready(init)
 		
-		function callCallback()
+		function callCallback ()
 		{
 			callback(me.data.remote, me.data.local.userid, me.newbie)
 		}
 		
-		function init()
+		function init ()
 		{
 			var json = ''
 			try
 			{
 				json = clientStorage.get('mybar')
 			}
-			catch(e)
+			catch (e)
 			{
 				log('Can\'t get mybar object.', e)
 			}
 			
 			var parsingJson = JSON.parse(json)
-			if(parsingJson)
+			if (parsingJson)
 			{
 				me.newbie = false
 				Object.extend(me.data.local, parsingJson)
@@ -72,79 +72,80 @@ Me =
 			
 			function remoteCreateCallback(localData)
 			{
-				if(localData)
+				if (localData)
 				{
 					Object.extend(me.data.local, localData)
 					me.localSave()
 				}
 				callCallback()
-				me.inited = true				
+				me.inited = true
 			}
 			
 			function remoteGetCallback(remoteData)
 			{
-				if(remoteData)
+				if (remoteData)
 				{
 					Object.extend(me.data.remote, remoteData)
 					callCallback()
-					me.inited = true						
+					me.inited = true
 				}
 				else
 				{
-					me.remoteCreate(remoteCreateCallback)						
-				}				
+					me.remoteCreate(remoteCreateCallback)
+				}
 			}
 		}
 	},
 	
-	remoteServer : 'http://' + window.location.hostname,
+	remoteServer: 'http://' + window.location.hostname,
 	
-	remoteCreate : function(callback)
+	remoteCreate: function (callback)
 	{
 		var url = this.remoteServer + '/mybar-foreign/createbar/'
 		var me = this
-		Request.post(url, JSON.stringify(this.data.remote), function(e)
+		Request.post(url, JSON.stringify(this.data.remote), function (e)
 		{
-			if(e.type != 'success')
+			if (e.type != 'success')
 			{
 				callback()
 				return
 			}
 			var localData = JSON.parse(this.responseText)
 			callback(localData)
-		})			
+		})
 	},
 	
-	remoteGet : function(userid, callback)
+	remoteGet: function (userid, callback)
 	{
 		var url = this.remoteServer + '/get-bar-by-id/'
-		Request.get(url + userid + '?rand=' + Math.random(), null, function(e)
+		Request.get(url + userid + '?rand=' + Math.random(), null, function (e)
 		{
-			if(e.type != 'success')
+			if (e.type != 'success')
 			{
 				callback()
 				return
 			}
 			var remoteData = JSON.parse(this.responseText)
 			callback(remoteData)
-		})		
+		})
 	},
 	
-	remoteSave : function()
+	remoteSave: function ()
 	{
 		var ld = this.data.local
-		if(ld.userid)
+		if (ld.userid)
 		{
 			var url = this.remoteServer + '/mybar-foreign/savebar/'
-			Request.post(
+			Request.post
+			(
 				url + ld.hash + '/' + ld.userid,
 				JSON.stringify(this.data.remote),
-				function(){}
-			)		
-		}	
+				function () {}
+			)
+		}
 	},
 	
-	localSave : function()
+	localSave: function ()
 	{
 		var json = JSON.stringify(this.data.local)
 		try
@@ -157,17 +158,16 @@ Me =
 		}
 	},
 	
-	saveBar : function(bar)
+	saveBar: function (bar)
 	{
-		
 		Object.extend(this.data.remote, bar)
 		this.remoteSave()
 	},
 	
-	addIngredient : function(ingredientName)
+	addIngredient: function (ingredientName)
 	{
 		var ings = this.data.remote.ingredients
-		if(ings.indexOf(ingredientName) == -1)
+		if (ings.indexOf(ingredientName) == -1)
 		{
 			ings.push(ingredientName)
 		}
@@ -179,11 +179,11 @@ Me =
 		return true
 	},
 	
-	removeIngredient : function(ingredientName)
+	removeIngredient: function (ingredientName)
 	{
 		var ings = this.data.remote.ingredients
 		var pos = ings.indexOf(ingredientName)
-		if(pos != -1)
+		if (pos != -1)
 		{
 			ings.splice(pos, 1)
 		}
@@ -195,9 +195,9 @@ Me =
 		return true
 	},
 	
-	haveIngredient : function(ingredientName)
+	haveIngredient: function (ingredientName)
 	{
-		if(this.data.remote.ingredients.indexOf(ingredientName) != -1)
+		if (this.data.remote.ingredients.indexOf(ingredientName) != -1)
 		{
 			return true
 		}
