@@ -60,7 +60,5 @@ class Storage
   end
 end
 
-app = proc do |env|
-  Storage.new.process env
-end
-run app
+app = Storage.new
+run proc {|env| app.process env }
