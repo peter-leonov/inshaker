@@ -16,3 +16,11 @@ if [ -f $PROJ_ROOT/mini_httpd.pid ]; then
 else
 	echo "mini_httpd wasn't started (no pid file found)"
 fi
+
+# stopping this
+if [ -f $PROJ_ROOT/storage/thin.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/storage/thin.pid)
+	rm -f $PROJ_ROOT/storage/thin.pid
+else
+	echo "thin wasn't started (no pid file found)"
+fi
