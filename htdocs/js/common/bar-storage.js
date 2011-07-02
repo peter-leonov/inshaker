@@ -47,15 +47,7 @@ Me =
 		
 		function init ()
 		{
-			var json = ''
-			try
-			{
-				json = clientStorage.get('mybar')
-			}
-			catch (e)
-			{
-				log('Can\'t get mybar object.', e)
-			}
+			var json = clientStorage.get('mybar')
 			
 			var parsingJson = JSON.parse(json)
 			if (parsingJson)
@@ -142,15 +134,7 @@ Me =
 	
 	localSave: function ()
 	{
-		var json = JSON.stringify(this.data.local)
-		try
-		{
-			clientStorage.set('mybar', json)
-		}
-		catch(e)
-		{
-			log('Can\'t put mybar object.', e)
-		}
+		clientStorage.set('mybar', JSON.stringify(this.data.local))
 	},
 	
 	saveBar: function (bar)
