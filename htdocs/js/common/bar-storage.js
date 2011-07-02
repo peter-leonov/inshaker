@@ -49,11 +49,11 @@ Me =
 		{
 			var json = clientStorage.get('mybar')
 			
-			var parsingJson = JSON.parse(json)
-			if (parsingJson)
+			var localData = JSON.parse(json)
+			if (localData)
 			{
 				me.newbie = false
-				Object.extend(me.data.local, parsingJson)
+				Object.extend(me.data.local, localData)
 				me.remoteGet(me.data.local.userid, remoteGetCallback)
 			}
 			else
