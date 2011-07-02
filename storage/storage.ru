@@ -13,7 +13,7 @@ class Storage
 
     salt = /"(.+)"/.match(File.read("/www/inshaker/storage/salt.conf"))[1]
 
-    action, hash, id = uri.split("/")
+    x, action, hash, id = uri.split("/")
 
     if action == "createbar" && tempfile
       id = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
