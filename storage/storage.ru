@@ -6,7 +6,7 @@ app = proc do |env|
   uri = env["REQUEST_URI"]
   tempfile = env["HTTP_TEMPORARY_FILE"]
   path_to_dir = "/www/inshaker/storage/db/"
-  salt = "GreenMohito"
+  salt = /"(.+)"/.match(File.read("/www/inshaker/storage/salt.conf"))[1]
   
   action, hash, id = uri.split("/")
   
