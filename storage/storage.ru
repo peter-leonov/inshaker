@@ -4,40 +4,54 @@ require 'digest/md5'
 app = proc do |env|
   
   uri = env['REQUEST_URI']
-  tempfile = env['HTTP_TEMPORY_FILE']
-  path_to_dir = '/www/mybar/db/'
+  tempfile = env['HTTP_TEMPORARY_FILE']
+  path_to_dir = '/www/inshaker/storage/db/'
   salt = "GreenMohito"
-  r = 'all ok! uri is ' + uri
-
-  uri_arr = uri.split('/')
-
-  if uri_arr[1] == 'createbar' and !tempfile.nil?
-    userid = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s[0, 15]
+  
+  action, hash, userid = uri.split('/')
+  
+  if action == 'createbar' && tempfile
+    userid = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
+    
     directory_name = path_to_dir + userid
-    if !FileTest::directory?(directory_name)
-      Dir::mkdir(directory_name)
+    unless Dir.mkdir(directory_name)
+      return [
+        500,
+        {'Content-Type' => 'application/json'},
+        [%Q{{"error":"bar is already exists"}}]
+      ]
     end
     FileUtils.move(tempfile, directory_name + '/bar.json')
-    r = "{ \"userid\" : \"#{userid}\", \"hash\" : \"#{Digest::MD5.hexdigest(userid + salt)}\" }"
-  elsif uri_arr[1] == "savebar" and !tempfile.nil?
-    userid = uri_arr[3]
-    hash = uri_arr[2]
+    
+    return [
+      200,
+      {'Content-Type' => 'application/json'},
+      [%Q{{"userid":"#{userid}","hash":"#{Digest::MD5.hexdigest(userid + salt)}"}}]
+    ]
+  end
+  
+  if action == "savebar" and !tempfile.nil?
     directory_name = path_to_dir + userid
-    if !FileTest::directory?(directory_name)
-      Dir::mkdir(directory_name)
+    unless FileTest::directory?(directory_name)
+      return [
+        500,
+        {'Content-Type' => 'application/json'},
+        [%Q{{"error":"bar does not exist"}}]
+      ]
     end
     FileUtils.move(tempfile, directory_name + '/bar.json')
-    r = "{ \"userid\" : \"#{userid}\", \"hash\" : \"#{hash}\" }"
+    return [
+      200,
+      {'Content-Type' => 'application/json'},
+      [%Q{true}]
+    ]
   end
 
-  [
-    200,
-    {
-      'Content-Type' => 'text'
-    },
-    [r]
+  return [
+    404,
+    {'Content-Type' => 'application/json'},
+    [%Q{{"error":"unknown action “#{action}”"}}]
   ]
-
 end
 
 run app
