@@ -3,8 +3,8 @@ require "digest/md5"
 
 class Storage
   module Config
-    ROOT = "/www/inshaker/storage/"
-    DB   = "#{ROOT}db/"
+    ROOT = "/www/inshaker/storage"
+    DB   = "#{ROOT}/db"
   end
   
   def process env
@@ -18,7 +18,7 @@ class Storage
     if action == "createbar" && tempfile
       id = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
 
-      path = Config::DB + id
+      path = Config::DB + '/' + id
       unless Dir.mkdir(path)
         return [
           500,
@@ -36,7 +36,7 @@ class Storage
     end
 
     if action == "savebar" and !tempfile.nil?
-      path = Config::DB + id
+      path = Config::DB + '/' + id
       unless FileTest::directory?(path)
         return [
           500,
