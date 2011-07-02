@@ -8,12 +8,12 @@ app = proc do |env|
   path_to_dir = '/www/inshaker/storage/db/'
   salt = "GreenMohito"
   
-  action, hash, userid = uri.split('/')
+  action, hash, id = uri.split('/')
   
   if action == 'createbar' && tempfile
-    userid = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
+    id = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
     
-    directory_name = path_to_dir + userid
+    directory_name = path_to_dir + id
     unless Dir.mkdir(directory_name)
       return [
         500,
@@ -26,12 +26,12 @@ app = proc do |env|
     return [
       200,
       {'Content-Type' => 'application/json'},
-      [%Q{{"userid":"#{userid}","hash":"#{Digest::MD5.hexdigest(userid + salt)}"}}]
+      [%Q{{"id":"#{id}","hash":"#{Digest::MD5.hexdigest(id + salt)}"}}]
     ]
   end
   
   if action == "savebar" and !tempfile.nil?
-    directory_name = path_to_dir + userid
+    directory_name = path_to_dir + id
     unless FileTest::directory?(directory_name)
       return [
         500,
