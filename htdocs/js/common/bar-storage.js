@@ -49,7 +49,12 @@ Me =
 		{
 			var json = clientStorage.get('mybar')
 			
-			var localData = JSON.parse(json)
+			try
+			{
+				var localData = JSON.parse(json)
+			}
+			catch (ex) { log(ex) }
+			
 			if (localData)
 			{
 				me.newbie = false
