@@ -2,7 +2,7 @@
 
 PROJ_ROOT="/www/inshaker"
 
-# stopping nginx
+# stopping frontend nginx
 if [ -f $PROJ_ROOT/nginx.pid ]; then
 	kill -INT $(cat $PROJ_ROOT/nginx.pid)
 else
@@ -15,6 +15,13 @@ if [ -f $PROJ_ROOT/mini_httpd.pid ]; then
 	rm -f $PROJ_ROOT/mini_httpd.pid
 else
 	echo "mini_httpd wasn't started (no pid file found)"
+fi
+
+# stopping storage nginx
+if [ -f $PROJ_ROOT/storage/nginx.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/storage/nginx.pid)
+else
+	echo "storage nginx wasn't started (no pid file found)"
 fi
 
 # stopping thin

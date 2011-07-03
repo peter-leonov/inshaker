@@ -4,4 +4,5 @@ PROJ_ROOT="/www/inshaker"
 
 nginx -c "$PROJ_ROOT/nginx.developer.conf"
 mini_httpd -C "$PROJ_ROOT/mini_httpd.developer.conf"
+nginx -c "$PROJ_ROOT/storage/nginx.storage.developer.conf"
 thin start -d -a 127.0.0.3 -p 4001 -R "$PROJ_ROOT/storage/storage.ru" -P "$PROJ_ROOT/storage/thin.pid" -l "$PROJ_ROOT/storage/thin.log"
