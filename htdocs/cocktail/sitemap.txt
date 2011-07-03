@@ -550,6 +550,7 @@ http://www.inshaker.ru/cocktail/moulin_rouge/
 http://www.inshaker.ru/cocktail/multi_smash/
 http://www.inshaker.ru/cocktail/moonlight/
 http://www.inshaker.ru/cocktail/minty_mulled_wine/
+http://www.inshaker.ru/cocktail/mint_julep/
 http://www.inshaker.ru/cocktail/minty_lemonade/
 http://www.inshaker.ru/cocktail/minty_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/minty_mix/
