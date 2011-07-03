@@ -27,7 +27,6 @@ var myProto =
 		this.recommIngr = []
 		this.recommendsUpgraded = true
 		this.topBlockUpgraded = true
-		this.emailScript = 'http://demo.inshaker.ru'
 		
 		var originAdd = BarStorage.addIngredient
 		var originRem = BarStorage.removeIngredient
@@ -665,7 +664,7 @@ var myProto =
 	sendEmail: function (address, mailer, text)
 	{
 		var me = this
-		Request.post(this.emailScript, {address: address, mailer: mailer, text: text}, function (e)
+		Request.post('/act/email-friend.cgi', {address: address, mailer: mailer, text: text}, function (e)
 		{
 			if (e.type == 'success' && this.status)
 			{
