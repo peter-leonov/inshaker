@@ -546,8 +546,12 @@ var myProto =
 		var mustHaveRecommends = []
 		for (var k in mustHave)
 		{
-			if(!this.exclusions[k] && !this.ingredients.hash[k])
-				mustHaveRecommends.push({ingredient: Ingredient.getByName(k), description: mustHave[k] })
+			var ingredient = Ingredient.getByName(k)
+			if (!ingredient)
+				continue
+			
+			if (!this.exclusions[k] && !this.ingredients.hash[k])
+				mustHaveRecommends.push({ingredient: ingredient, description: mustHave[k]})
 		}
 		
 		mustHaveRecommends.sort(function (a, b)
