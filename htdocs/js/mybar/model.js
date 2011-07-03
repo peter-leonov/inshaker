@@ -552,16 +552,18 @@ var myProto =
 				mustHaveRecommends.push({ ingredient : Ingredient.getByName(k), description : mustHave[k] })
 		}
 		
-		return mustHaveRecommends.sort(function(a, b)
+		mustHaveRecommends.sort(function (a, b)
 		{
 			var ai = a.ingredient,
 				bi = b.ingredient
 				
 			if(ai.group != bi.group)
 				return Ingredient.sortByGroups(bi.name, ai.name)
-				
+			
 			return bi.cocktails.length - ai.cocktails.length
-		})		
+		})
+		
+		return mustHaveRecommends
 	},
 	
 	saveStorage : function()
