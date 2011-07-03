@@ -33,8 +33,8 @@ var myProto =
 				return
 			}
 			
-			var remoteServer = 'http://' + window.location.hostname + '/get-bar-by-id/'
-			Request.get(remoteServer + userid, null, function(e){
+			var remoteServer = 'http://' + window.location.hostname + '/storage/get/'
+			Request.get(remoteServer + userid + '/bar.json', null, function(e){
 				if(e.type != 'success')
 					me.view.renderIfFail(me.newbie)
 				

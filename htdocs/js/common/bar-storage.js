@@ -98,7 +98,7 @@ Me =
 	
 	remoteCreate: function (callback)
 	{
-		var url = this.remoteServer + '/mybar-foreign/createbar/'
+		var url = this.remoteServer + '/storage/createbar/'
 		var me = this
 		Request.post(url, JSON.stringify(this.data.remote), function (e)
 		{
@@ -112,8 +112,8 @@ Me =
 	
 	remoteGet: function (userid, callback)
 	{
-		var url = this.remoteServer + '/get-bar-by-id/'
-		Request.get(url + userid + '?rand=' + Math.random(), null, function (e)
+		var url = this.remoteServer + '/storage/get/'
+		Request.get(url + userid + '/bar.json?rand=' + Math.random(), null, function (e)
 		{
 			if (e.type != 'success')
 				throw new Error('BarStorage: failed to get the bar')
@@ -129,7 +129,7 @@ Me =
 		if (!ld.userid)
 			return
 		
-		var url = this.remoteServer + '/mybar-foreign/savebar/'
+		var url = this.remoteServer + '/storage/savebar/'
 		Request.post(url + ld.hash + '/' + ld.userid, JSON.stringify(this.data.remote), function (e)
 		{
 			if (e.type != 'success')
