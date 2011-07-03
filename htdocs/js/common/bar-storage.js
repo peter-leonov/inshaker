@@ -103,7 +103,7 @@ Me =
 		Request.post(url, JSON.stringify(this.data.remote), function (e)
 		{
 			if (e.type != 'success')
-				throw new Error('BarStorage: failed to create the new bar')
+				throw new Error('BarStorage: failed to create a new bar')
 			
 			var localData = JSON.parse(this.responseText)
 			callback(localData)
