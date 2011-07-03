@@ -25,16 +25,16 @@ var myProto =
 	{
 		var me = this
 		
-		function getForeignBar(userid)
+		function getForeignBar(id)
 		{
-			if(!userid)
+			if(!id)
 			{
 				me.view.renderIfFail(me.newbie)
 				return
 			}
 			
 			var remoteServer = 'http://' + window.location.hostname + '/storage/get/'
-			Request.get(remoteServer + userid + '/bar.json', null, function(e){
+			Request.get(remoteServer + id + '/bar.json', null, function(e){
 				if(e.type != 'success')
 					me.view.renderIfFail(me.newbie)
 				
@@ -42,12 +42,12 @@ var myProto =
 			})
 		}
 		
-		var userid = window.location.hash.substr(1)
+		var id = window.location.hash.substr(1)
 		
 		BarStorage.initBar(function(bar, myid, newbie)
 		{
 			me.newbie = newbie
-			getForeignBar(userid)			
+			getForeignBar(id)
 		})
 	},
 

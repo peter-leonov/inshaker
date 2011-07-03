@@ -22,7 +22,7 @@ Me =
 			},
 			local:
 			{
-				userid: '',
+				id: '',
 				hash: ''
 			}
 		}
@@ -42,7 +42,7 @@ Me =
 		
 		function callCallback ()
 		{
-			callback(me.data.remote, me.data.local.userid, me.newbie)
+			callback(me.data.remote, me.data.local.id, me.newbie)
 		}
 		
 		function init ()
@@ -59,7 +59,7 @@ Me =
 			{
 				me.newbie = false
 				Object.extend(me.data.local, localData)
-				me.remoteGet(me.data.local.userid, remoteGetCallback)
+				me.remoteGet(me.data.local.id, remoteGetCallback)
 			}
 			else
 			{
@@ -110,10 +110,10 @@ Me =
 		})
 	},
 	
-	remoteGet: function (userid, callback)
+	remoteGet: function (id, callback)
 	{
 		var url = this.remoteServer + '/storage/get/'
-		Request.get(url + userid + '/bar.json?rand=' + Math.random(), null, function (e)
+		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function (e)
 		{
 			if (e.type != 'success')
 				throw new Error('BarStorage: failed to get the bar')
@@ -126,11 +126,11 @@ Me =
 	remoteSave: function ()
 	{
 		var ld = this.data.local
-		if (!ld.userid)
+		if (!ld.id)
 			return
 		
 		var url = this.remoteServer + '/storage/savebar/'
-		Request.post(url + ld.hash + '/' + ld.userid, JSON.stringify(this.data.remote), function (e)
+		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function (e)
 		{
 			if (e.type != 'success')
 				throw new Error('BarStorage: failed to save the bar')

@@ -467,10 +467,10 @@ var myProto =
 		this.nodes.share.box.show()		
 	},
 
-	renderShareLinks : function(userid)
+	renderShareLinks : function(id)
 	{
 		var nodes = this.nodes.share
-		var url = window.location.protocol + '//' + window.location.hostname + '/mybar/foreign.html#' + userid
+		var url = window.location.protocol + '//' + window.location.hostname + '/mybar/foreign.html#' + id
 		nodes.links.facebook.href = nodes.links.facebook.href.replace('mybarlink', UrlEncode.stringify({ u : url }))
 		nodes.links.twitter.href = nodes.links.twitter.href.replace('mybarlink', UrlEncode.stringify({ url : url }))
 		var textValue = nodes.popups.email.text.innerHTML.replace('mybarlink', url)
@@ -1068,14 +1068,14 @@ var myProto =
 		}
 	},
 	
-	emailShareShow : function(userid)
+	emailShareShow : function(id)
 	{
 		var me = this
 		this.nodes.share.popups.email.main.show()
 		setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
 	},
 	
-	webShareShow : function(userid)
+	webShareShow : function(id)
 	{
 		var me = this
 		this.nodes.share.popups.web.main.show()

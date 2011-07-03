@@ -62,15 +62,15 @@ var myProto =
 	bind : function ()
 	{
 		var me = this
-		BarStorage.initBar(function(bar, userid){ me.setBar(bar, userid) })
+		BarStorage.initBar(function(bar, id){ me.setBar(bar, id) })
 	},
 	
-	setBar : function(bar, userid)
+	setBar : function(bar, id)
 	{
 		var me = this
 		
 		this.bar = bar
-		this.userid = userid
+		this.id = id
 		
 		this.barName = bar.barName
 		this.ingredientsShowType = bar.ingredientsShowType
@@ -115,7 +115,7 @@ var myProto =
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.focusSearchInput()
 		setTimeout(function(){ me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
-		this.view.renderShareLinks(this.userid)
+		this.view.renderShareLinks(this.id)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
 	},
