@@ -64,10 +64,8 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .ingredient:hover .control,
 .main-box .maybe-have-box .ingredient:hover .control { display: block; }
 .main-box .ingredients-box .ingredient:hover .control:hover { background-position: -1021px -417px; }
-.main-box .ingredients-box .empty-box { overflow: hidden; margin: 15px 0px; }
-.main-box .ingredients-box .empty-box .tell-about-ingredients { background: url("mybar.png") no-repeat 3px -146px transparent; float: left; height: 266px; width: 176px; margin-left: 47px; }
-.main-box .ingredients-box .empty-box .explore-cocktails { background: url("mybar.png") no-repeat -172px -146px transparent; float: left; height: 266px; width: 209px; margin-left: 135px; }
-.main-box .ingredients-box .empty-box .print-cocktail-cart { background: url("mybar.png") no-repeat -382px -146px transparent; float: left; height: 266px; width: 202px; margin-left: 135px; }
+.main-box .ingredients-box .empty-box { margin: 15px 0px; }
+.main-box .ingredients-box .empty-box .image { display: block; margin: 0 auto; }
 .main-box .ingredients-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 116px; }
 .main-box .ingredients-box .switcher div { cursor: pointer; height: 42px;  background: url("mybar.png") no-repeat -984px -44px transparent; }
 .main-box .ingredients-box .switcher .by-list { background-position: -984px -1px; }
