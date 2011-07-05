@@ -115,11 +115,10 @@ Me =
 		var url = this.remoteServer + '/storage/get/'
 		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function ()
 		{
-			if (this.statusType != 'success')
-				throw new Error('BarStorage: failed to get the bar')
+			if (this.statusType == 'success')
+				var remoteData = JSON.parse(this.responseText)
 			
-			var remoteData = JSON.parse(this.responseText)
-			callback(remoteData)
+			callback.call(this, remoteData)
 		})
 	},
 	
