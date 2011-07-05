@@ -83,7 +83,7 @@ function onready ()
 		
 		maybeHave : {
 			box : $$('#common-main-wrapper .maybe-have-box')[0],
-			list : $$('#common-main-wrapper .maybe-have-box .ingredients-list')[0],
+			list : $$('#common-main-wrapper .maybe-have-box .ingredients-list')[0]
 		},
 		
 		cocktails : {
