@@ -100,9 +100,9 @@ Me =
 	{
 		var url = this.remoteServer + '/storage/createbar/'
 		var me = this
-		Request.post(url, JSON.stringify(this.data.remote), function (e)
+		Request.post(url, JSON.stringify(this.data.remote), function ()
 		{
-			if (e.type != 'success')
+			if (this.statusType != 'success')
 				throw new Error('BarStorage: failed to create a new bar')
 			
 			var localData = JSON.parse(this.responseText)
@@ -113,9 +113,9 @@ Me =
 	remoteGet: function (id, callback)
 	{
 		var url = this.remoteServer + '/storage/get/'
-		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function (e)
+		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function ()
 		{
-			if (e.type != 'success')
+			if (this.statusType != 'success')
 				throw new Error('BarStorage: failed to get the bar')
 			
 			var remoteData = JSON.parse(this.responseText)
@@ -130,9 +130,9 @@ Me =
 			return
 		
 		var url = this.remoteServer + '/storage/savebar/'
-		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function (e)
+		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function ()
 		{
-			if (e.type != 'success')
+			if (this.statusType != 'success')
 				throw new Error('BarStorage: failed to save the bar')
 		})
 	},

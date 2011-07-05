@@ -668,9 +668,9 @@ var myProto =
 	sendEmail: function (address, mailer, text)
 	{
 		var me = this
-		Request.post('/act/email-friend.cgi', {address: address, mailer: mailer, text: text}, function (e)
+		Request.post('/act/email-friend.cgi', {address: address, mailer: mailer, text: text}, function ()
 		{
-			if (e.type == 'success' && this.status)
+			if (this.statusType == 'success' && this.status)
 			{
 				me.view.emailSended()
 			}
