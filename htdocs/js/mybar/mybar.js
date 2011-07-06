@@ -29,13 +29,11 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/lib-0.3/modules/motion.js" -->
 <!--# include virtual="/lib-0.3/modules/motion-types.js" -->
 <!--# include virtual="/lib-0.3/modules/animation.js" -->
-<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 
-<!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
