@@ -488,30 +488,24 @@ var myProto =
 			return
 		}
 		
-		var df = document.createDocumentFragment()
-		for (var i = 0, il = tags.length; i < il; i++) 
+		var fragment = document.createDocumentFragment()
+		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var tag = tags[i],
-				li = N('li'), div = N('div'),
-				name = Nct('span', 'name', tag), amount = Nct('span', 'amount', tagsAmount[tag])
+			var tag = tags[i]
 			
-			if(tag.localeCompare(currentTag) == 0)
-			{
-				li.addClassName('active')
-			}
-			else
-			{
-				div.tagValue = tag
-			}
-			div.appendChild(name)
-			div.appendChild(amount)
-			div.appendChild(N('b'))
-			li.appendChild(div)
-			df.appendChild(li)
+			var item = Nc('li', tag.localeCompare(currentTag) == 0 ? 'item active' : 'item')
+			item['data-tag-value'] = tag
+			fragment.appendChild(item)
+			
+			var name = Nct('span', 'name', tag)
+			item.appendChild(name)
+			
+			var amount = Nct('span', 'amount', tagsAmount[tag])
+			item.appendChild(amount)
 		}
 		
 		nodes.tagsList.empty()
-		nodes.tagsList.appendChild(df)
+		nodes.tagsList.appendChild(fragment)
 		nodes.tags.show()
 	},
 
@@ -984,7 +978,7 @@ var myProto =
 	handleTagsClick : function(e)
 	{
 		var node = e.target
-		var tag = node.tagValue || node.parentNode.tagValue
+		var tag = node['data-tag-value'] || node.parentNode['data-tag-value']
 		if(tag)
 		{
 			var rn = this.nodes.recommends.box
