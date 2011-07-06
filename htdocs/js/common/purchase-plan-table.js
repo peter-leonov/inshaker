@@ -65,8 +65,8 @@ var myProto =
 				var tbody = N('tbody')
 				var tr = N('tr')
 				var groupNameTh = Nct('th', 'item-name tr-content', groupName)
-				var amountTh = Nct('th', 'item-volume tr-content', 'Кол-во')
-				var totalTh = Nct('th', 'item-price tr-content', '~ Руб.')
+				var amountTh = Nct('th', 'item-volume tr-content', 'кол-во')
+				var totalTh = Nct('th', 'item-price tr-content', '≈ руб.')
 				
 				tr.appendChild(groupNameTh)
 				tr.appendChild(amountTh)

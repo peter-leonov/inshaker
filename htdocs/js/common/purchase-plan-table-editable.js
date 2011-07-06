@@ -84,8 +84,8 @@ var myProto =
 				var tr = N('tr')
 				var trHead = Nc('th', 'tr-padding')
 				var groupNameTh = Nct('th', 'item-name tr-content', groupName)
-				var amountTh = Nct('th', 'item-volume tr-content', 'Кол-во')
-				var totalTh = Nct('th', 'item-price tr-content', '~ Руб.')
+				var amountTh = Nct('th', 'item-volume tr-content', 'кол-во')
+				var totalTh = Nct('th', 'item-price tr-content', '≈ руб.')
 				var trTail = Nc('th', 'tr-padding')
 				
 				tr.appendChild(trHead)
