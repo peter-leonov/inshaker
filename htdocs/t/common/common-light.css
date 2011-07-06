@@ -99,3 +99,10 @@ html.blog-section #bottom .main-menu a.blog
 .common-box .common-title .common-name { font-size: 20px; margin-left: -1px; }
 
 html.msie-6 .common-box .common-content { zoom: 1; }
+
+.cocktail-list .prev,
+.cocktail-list .next { position: absolute; top: 54px; height: 14px; width: 14px; z-index: 2; }
+.cocktail-list .prev { background-position: -500px 0; left: 0px; }
+.cocktail-list .next { background-position: -525px 0; right: -2px; }
+.cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
+.cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
