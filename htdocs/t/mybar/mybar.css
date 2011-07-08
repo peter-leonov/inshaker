@@ -59,6 +59,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .ingredients-list dd.group { margin-bottom: 35px; }
 .main-box .ingredients-box .ingredients-list ul,
 .main-box .maybe-have-box .ingredients-list ul { overflow: hidden; }
+html.msie-7 .main-box .ingredients-box .ingredients-list ul { padding-bottom: 30px; }
 .main-box .ingredients-box .ingredients-list .ingredient,
 .main-box .maybe-have-box .ingredients-list .ingredient { float: left; margin: 0 0 28px 17px; padding-top: 12px; position: relative; }
 .main-box .ingredients-box .ingredient:hover .control,
