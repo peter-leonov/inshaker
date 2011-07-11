@@ -213,8 +213,9 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .recommends-box .recommends-list .recommend .body .cocktail-preview { margin: 15px 17px 10px 0; float: left; }
 
 .main-box .recommends-box .must-have-list .row { display: block; overflow: hidden; padding: 26px 0 18px; position: relative; }
+html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 .main-box .recommends-box .must-have-list .row .ingredient { margin: 0 17px 0px 17px; }
-.main-box .recommends-box .must-have-list .row .description { float: left; font-family: georgia; font-size: 16px; font-style: italic; padding: 17px 0 0 10px; width: 750px; color: #2b2b2b; }
+.main-box .recommends-box .must-have-list .row .description {  font-family: georgia; font-size: 16px; font-style: italic; padding: 17px 0 0 10px; width: 750px; color: #2b2b2b; }
 
 /*purchase-plan*/
 .main-box .purchase-plan-box { color: #3c3c3c; }
