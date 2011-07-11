@@ -17,8 +17,8 @@ var myProto =
 		
 		Ingredient.prototype.getPreviewNodeExt = function(have)
 		{
-			var node = Ingredient.prototype.getPreviewNode.call(this)	
-			var li = Nc('li', 'ingredient'),
+			var node = Ingredient.prototype.getPreviewNode.call(this)
+			var li = Nc('div', 'ingredient'),
 				control = Nc('div', 'control')
 			
 			control.ingredient = this
@@ -33,7 +33,7 @@ var myProto =
 			
 			else
 			{
-				li.addClassName('no-have')				
+				li.addClassName('no-have')
 			}
 			
 			return li
@@ -530,7 +530,7 @@ var myProto =
 		
 		row.appendChild(node)
 		
-		var desc = Nc('p', 'description')
+		var desc = Nc('div', 'description')
 		desc.innerHTML = mustHaveIngredient.description
 		row.appendChild(desc)
 		
