@@ -73,7 +73,7 @@ var myProto =
 		
 		var completer = this.completer = new PlainInputAutocompleter()
 		completer.bind({ main : nodes.ingredients.queryInput, list : nodes.ingredients.complete })
-		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value) }, false)
+		completer.addEventListener('accept', function (e) { me.controller.ingrQuerySubmit(e.value); completer.select('') }, false)
 		
 		nodes.mainBox.addEventListener('click', function(e){ me.maybeIngredientClicked(e.target) }, false)
 		
