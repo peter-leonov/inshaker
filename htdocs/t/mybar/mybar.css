@@ -52,7 +52,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .query { position: relative; z-index: 1; background: transparent; border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 1px; color: inherit; font-size: inherit; margin: 5px; padding: 4px 4px 5px; width: 690px; box-shadow: 1px 1px 0 rgb(231, 231, 231); box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -webkit-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -moz-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); }
 .main-box .ingredients-box .ingredients-list,
 .main-box .maybe-have-box .ingredients-list { margin: 20px 0 10px 2px; }
-.main-box .ingredients-box .ingredients-list ul.by-list { padding-top: 10px; }
+.main-box .ingredients-box .ingredients-list ul.by-list { padding-top: 10px; position: relative; }
 .main-box .ingredients-box .ingredients-list dt.group-name { overflow: hidden; margin: 0 0 10px; position: relative; left: -40px; }
 .main-box .ingredients-box .ingredients-list dt.group-name .name-wrapper { position: relative; float: left; height: 37px; color: #fff; font-size: 14px; background: url("mybar.png") no-repeat -295px -490px transparent; padding: 0 4px 0px 12px; margin-right: 8px; line-height: 31px; }
 .main-box .ingredients-box .ingredients-list dt.group-name .name-wrapper i { position: absolute; display: block; width: 8px; height: 40px; right: -8px; top: 0; background: url("mybar.png") no-repeat -537px -490px transparent; }
@@ -204,7 +204,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .recommends-box .recommends-list .advice .cocktail-link { color: #ec118f; cursor: pointer; white-space: nowrap; }
 .main-box .recommends-box .recommends-list .advice .ingredient-link:hover { text-decoration: underline; }
 .main-box .recommends-box .recommends-list .advice .pink { color: #ec118f; }
-.main-box .recommends-box .recommends-list .recommend { overflow: hidden; }
+.main-box .recommends-box .recommends-list .recommend { overflow: hidden; position: relative; }
 .main-box .recommends-box .recommends-list .recommend .head { float: left; }
 .main-box .recommends-box .recommends-list .recommend .eq { color: #7F7F7F; float: left; font-size: 52px; font-weight: bold; margin: 28px 4px 0 30px; position: relative; }
 .main-box .recommends-box .recommends-list .recommend .body { float: left; }
