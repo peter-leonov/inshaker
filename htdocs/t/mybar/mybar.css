@@ -1,7 +1,6 @@
 html { min-height: 100%; height: 100%; overflow-y: scroll; background: url('wood.jpg') repeat #444; }
 body { padding: 0; }
 a { color: #000; }
-#common-main-wrapper { padding-bottom: 123px; }
 html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
@@ -12,10 +11,13 @@ html.loading .main-box { display: none; }
 .wrapper-box, .single-box { margin: 20px 0px; }
 .main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
 .main-box .wrapper-box .section-wrapper .left-shadow, .main-box .wrapper-box .section-wrapper .right-shadow,
-#bottom .wrapper .content .left-shadow, #bottom .wrapper .content .right-shadow { position: absolute; width: 11px; top: 0; height: 100%; background: url('mybar.png') repeat-y; }
-.main-box .wrapper-box .section-wrapper .left-shadow, #bottom .wrapper .content .left-shadow { left: -11px; background-position: -1079px 0px; }
-.main-box .wrapper-box .section-wrapper .right-shadow, #bottom .wrapper .content .right-shadow { right: -11px; background-position: -1090px 0px; }
-.main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
+#bottom .wrapper .content .left-shadow,
+#bottom .wrapper .content .right-shadow { position: absolute; width: 11px; top: 0; height: 100%; background: url('mybar.png') repeat-y; }
+.main-box .wrapper-box .section-wrapper .left-shadow,
+#bottom .wrapper .content .left-shadow { left: -11px; background-position: -1079px 0px; }
+.main-box .wrapper-box .section-wrapper .right-shadow,
+#bottom .wrapper .content .right-shadow { right: -11px; background-position: -1090px 0px; }
+.main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; background-color: red !important; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 
@@ -258,7 +260,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .mybar-link-box.newbie .mybar-link { background-position: -470px -457px;; width: 171px; }
 
 /*footer*/
-#bottom { width: 100%; padding: 0; position: absolute; left: 0; bottom: 0; }
+#bottom { padding-top: 5px; }
 #bottom .wrapper { width: 960px; margin: 0 auto; }
 #bottom .wrapper .top-corners { width: 980px; height: 18px; position: relative; left: -10px; background: url('top-corners.png') no-repeat left top; }
 #bottom .wrapper .content { padding-top: 10px; background: #fff; position: relative; }
