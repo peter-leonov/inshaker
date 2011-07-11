@@ -289,3 +289,6 @@ html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microso
 /*Popup*/
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
+
+html.msie-7 .ingredient-window .cocktail-list,
+html.msie-6 .ingredient-window .cocktail-list { zoom: 1 }
