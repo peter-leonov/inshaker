@@ -177,7 +177,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .share-box .email-share-popup .email-sended { position: absolute; top: 200px; right: 27px; font-size: 14px; }
 
 /*recommends-box*/
-.main-box .recommends-box .tags-wrapper { overflow: hidden; margin: 24px 0 24px 5px; }
+.main-box .recommends-box .tags-wrapper { overflow: hidden; position: relative; margin: 24px 0 24px 5px; }
 .main-box .recommends-box .tags-wrapper .tags-list { overflow: hidden; position: relative; top: 1px; }
 .main-box .recommends-box .tags-wrapper .tags-list .item { float: left; width: 181px; height: 29px; margin-bottom: 1px; font-size: 14px; color: #000; position: relative; cursor: pointer; padding: 0 13px 0 13px; margin-left: 22px; line-height: 27px; }
 .main-box .recommends-box .tags-wrapper .tags-list .item.active,
