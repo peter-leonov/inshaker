@@ -138,6 +138,6 @@ function onready ()
 	widget.bind(nodes)
 }
 
-$.onready(onready)
+document.addEventListener('ready', onready, false)
 
 })();
