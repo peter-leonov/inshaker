@@ -577,6 +577,7 @@ http://www.inshaker.ru/cocktail/clouds/
 http://www.inshaker.ru/cocktail/sea-buckthorn_mulled_wine/
 http://www.inshaker.ru/cocktail/buckthorn_gringo/
 http://www.inshaker.ru/cocktail/buckthorn_daiquiri/
+http://www.inshaker.ru/cocktail/sea-buckthorn_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/fire_of_the_cuillins/
 http://www.inshaker.ru/cocktail/cucumber-basil_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/cucumber_cooler/
