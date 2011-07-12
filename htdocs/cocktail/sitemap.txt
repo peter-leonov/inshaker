@@ -60,6 +60,7 @@ http://www.inshaker.ru/cocktail/baja_bocana/
 http://www.inshaker.ru/cocktail/no_name_drink/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
+http://www.inshaker.ru/cocktail/white_bungalow/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
 http://www.inshaker.ru/cocktail/white_cuban/
@@ -753,6 +754,7 @@ http://www.inshaker.ru/cocktail/dog_ru/
 http://www.inshaker.ru/cocktail/seducer/
 http://www.inshaker.ru/cocktail/warming_orient_honey/
 http://www.inshaker.ru/cocktail/soda_and_peachtree_liqueur/
+http://www.inshaker.ru/cocktail/soda_the_french_way/
 http://www.inshaker.ru/cocktail/soda_and_ginger/
 http://www.inshaker.ru/cocktail/soda_and_cucumber/
 http://www.inshaker.ru/cocktail/salty_muchacha/
