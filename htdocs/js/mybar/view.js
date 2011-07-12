@@ -15,30 +15,6 @@ var myProto =
 		
 		var me = this
 		
-		Ingredient.prototype.getPreviewNodeExt = function(have)
-		{
-			var node = Ingredient.prototype.getPreviewNode.call(this)
-			var li = Nc('div', 'ingredient'),
-				control = Nc('div', 'control')
-			
-			control.ingredient = this
-			
-			li.appendChild(node)
-			li.appendChild(control)
-				
-			if(have)
-			{
-				li.addClassName('have')
-			}
-			
-			else
-			{
-				li.addClassName('no-have')
-			}
-			
-			return li
-		}
-		
 		Cocktail.prototype.getPreviewNodeExt = function(have)
 		{
 			var li = Cocktail.prototype.getPreviewNode.call(this)
@@ -118,6 +94,22 @@ var myProto =
 		
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
 		window.addEventListener('scroll', function () { t.call() }, false)
+	},
+	
+	getIngredientPreviewNodeExt: function (ingredient, have)
+	{
+		var node = Ingredient.prototype.getPreviewNode.call(ingredient)
+		var li = Nc('li', 'ingredient'),
+			control = Nc('div', 'control')
+		
+		control.ingredient = ingredient
+		
+		li.appendChild(node)
+		li.appendChild(control)
+		
+		li.addClassName(have ? 'have' : 'no-have')
+		
+		return li
 	},
 	
 	showView : function()
@@ -332,7 +324,7 @@ var myProto =
 						dt.appendChild(div)
 					}
 					
-					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
+					ul.appendChild(this.getIngredientPreviewNodeExt(ingredients[i], true))
 				}
 				
 				dl.appendChild(dt)
@@ -348,7 +340,7 @@ var myProto =
 				var ul = Nc('ul', 'by-list')
 				for(var i = 0 ; i < il; i++)
 				{
-					ul.appendChild(ingredients[i].getPreviewNodeExt(true))
+					ul.appendChild(this.getIngredientPreviewNodeExt(ingredients[i], true))
 				}
 				
 				nodes.list.appendChild(ul)			
@@ -379,7 +371,7 @@ var myProto =
 		for(var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingredient = ingredients[i]
-			ul.appendChild(ingredients[i].getPreviewNodeExt(ingredientsHash[ingredient.name]))
+			ul.appendChild(this.getIngredientPreviewNodeExt(ingredients[i], ingredientsHash[ingredient.name]))
 		}
 		
 		nodes.list.empty()
@@ -526,7 +518,7 @@ var myProto =
 		
 		var ingredient = mustHaveIngredient.ingredient
 		
-		var node = ingredient.getPreviewNodeExt(ingredientsHash[ingredient.name])
+		var node = this.getIngredientPreviewNodeExt(ingredient, ingredientsHash[ingredient.name])
 		
 		row.appendChild(node)
 		
@@ -778,7 +770,7 @@ var myProto =
 		for (var i = 0; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
-			var node = ingredient.getPreviewNodeExt(ingredientsHash[ingredient.name])
+			var node = this.getIngredientPreviewNodeExt(ingredient, ingredientsHash[ingredient.name])
 			head.appendChild(node)
 			dd.ingredientsList[i] = { node : node, ingredient : ingredient }
 		}
