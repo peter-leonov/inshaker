@@ -107,6 +107,7 @@ http://www.inshaker.ru/cocktail/bourbon_infused_on_dried_apricots/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_raspberries/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_sea-buckthorn/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_prunes/
+http://www.inshaker.ru/cocktail/burunduchok/
 http://www.inshaker.ru/cocktail/bucharest/
 http://www.inshaker.ru/cocktail/fast_vanilla_shot/
 http://www.inshaker.ru/cocktail/bianco_orange/
@@ -260,6 +261,7 @@ http://www.inshaker.ru/cocktail/gin_tonic_24/
 http://www.inshaker.ru/cocktail/gin_tonic_with_cucumber/
 http://www.inshaker.ru/cocktail/gin_fizz/
 http://www.inshaker.ru/cocktail/gioconda_shooter/
+http://www.inshaker.ru/cocktail/ju_julep/
 http://www.inshaker.ru/cocktail/wild_land/
 http://www.inshaker.ru/cocktail/dioscorides/
 http://www.inshaker.ru/cocktail/kind_coconut/
