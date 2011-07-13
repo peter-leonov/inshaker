@@ -29,6 +29,7 @@ html.loading #common-main-wrapper { display: none; }
 #cocktail-cart-page #common-main-wrapper .header { display: none; }
 #cocktail-cart-page #common-main-wrapper .first-clone .header { display: block; }
 #cocktail-cart-page #common-main-wrapper .sticker { display: none; margin: 48px 0 16px; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box.same-strength .sticker { display: none !important; background-color: red !important; }
 #cocktail-cart-page #common-main-wrapper .first-alco-clone .alcohol-box .sticker { display: block; }
 #cocktail-cart-page #common-main-wrapper .first-non-alco-clone .non-alcohol-box .sticker { display: block; }
 #common-main-wrapper .cocktail-cart-box .black-sticker { position: relative; left: -55px; }

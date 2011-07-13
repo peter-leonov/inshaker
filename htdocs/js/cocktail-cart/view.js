@@ -13,6 +13,7 @@ var myProto =
 		var cloner = this.cloner = new Cloner()
 		var cloneNodes = 
 		{
+			cartBox : nodes.cartBox,
 			alcoholBox : nodes.alcoholBox,
 			alcoholList : nodes.alcoholList,
 			nonAlcoholBox : nodes.nonAlcoholBox,
@@ -117,6 +118,9 @@ var myProto =
 			clone.root.show()
 			nodes.main.appendChild(clone.root)
 		}
+		
+		if (alcoLen == 0 || nonAlcoLen == 0)
+			clone.nodes.cartBox.addClassName('same-strength')
 		
 		function createPageWrapper()
 		{

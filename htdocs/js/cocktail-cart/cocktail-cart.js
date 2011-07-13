@@ -44,6 +44,7 @@ function onready ()
 	{
 		barName : $$('#common-main-wrapper .header .bar-name')[0],
 		pageWrapper : $$('#common-main-wrapper .page-wrapper')[0],
+		cartBox :  $$('#common-main-wrapper .cocktail-cart-box')[0],
 		alcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .alcohol-box')[0],
 		alcoholList : $$('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list')[0],
 		nonAlcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box')[0],
