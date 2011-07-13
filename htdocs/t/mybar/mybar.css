@@ -119,6 +119,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .cocktails-box .switcher .by-ingredients:hover { background-position: -1026px -44px; }
 .main-box .cocktails-box .section-head .links .cocktails-cart-link { display: block; width: 110px; height: 52px; background: url("mybar.png") no-repeat 0px -472px transparent; }
 .main-box .cocktails-box .section-head .links .cocktails-cart-link:hover { background-position: 0px -416px; }
+.main-box .cocktails-box.zero-cocktails .section-head .links .cocktails-cart-link { display: none; }
 
 /*combinator's ingrediented cocktails*/
 .main-box .cocktails-box .visible-cocktails .ingredient-preview { float: left; }
