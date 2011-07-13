@@ -110,6 +110,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .cocktails-box .hidden-cocktails dt .name-wrapper { position: relative; float: left; height: 37px; color: #fff; font-size: 14px; background: url("mybar.png") no-repeat -295px -490px transparent; padding: 0 4px 0px 12px; margin-right: 8px; line-height: 31px; }
 .main-box .cocktails-box .hidden-cocktails dt .name-wrapper i { position: absolute; display: block; width: 8px; height: 40px; right: -8px; top: 0; background: url("mybar.png") no-repeat -537px -490px transparent; }
 .main-box .cocktails-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 48px; }
+.main-box .cocktails-box.zero-cocktails .switcher { display: none; }
 .main-box .cocktails-box .switcher div { cursor: pointer; height: 42px;  background: url("mybar.png") no-repeat -984px -44px transparent; }
 .main-box .cocktails-box .switcher .by-pics { background-position: -984px -1px; }
 .main-box .cocktails-box .switcher .by-ingredients { background-position: -984px -44px; }
