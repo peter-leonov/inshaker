@@ -166,8 +166,8 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .share-box .share-wrapper .twitter-share:hover { background-position: -731px -411px; }
 .main-box .share-box .share-wrapper .email-share:hover { background-position: -768px -411px; }
 .main-box .share-box .share-wrapper .web-share:hover { background-position: -805px -411px; }
-.main-box .share-box .web-share-popup { background: url("mybar.png") no-repeat -647px -447px transparent; height: 49px; left: 162px; position: absolute; top: -49px; width: 257px; z-index: 1; }
-.main-box .share-box .web-share-popup input { width: 210px; margin: 10px 0 0 20px; padding: 2px; font-size: 14px; }
+.main-box .share-box .web-share-popup { background: url("mybar.png") no-repeat -647px -447px transparent; width: 220px; height: 31px; left: 162px; position: absolute; top: -49px; padding: 8px 19px; z-index: 1; }
+.main-box .share-box .web-share-popup input { width: 210px; padding: 2px; font-size: 14px; }
 .main-box .share-box .email-share-popup { background: url("mybar.png") no-repeat -588px -166px transparent; height: 244px; left: 12px; position: absolute; top: -243px; width: 486px; z-index: 1; }
 .main-box .share-box .email-share-popup .email-form { margin: 26px 0px 0px 19px; }
 .main-box .share-box .email-share-popup .email-form label { display: block; overflow: hidden; margin-bottom: 5px; }
