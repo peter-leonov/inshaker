@@ -388,19 +388,21 @@ var myProto =
 		
 		if(vcl == 0)
 		{
+			this.nodes.cocktails.box.addClassName('zero-cocktails')
 			this.nodes.share.box.addClassName('zero-cocktails')
 		}
 		else
 		{
+			this.nodes.cocktails.box.removeClassName('zero-cocktails')
 			this.nodes.share.box.removeClassName('zero-cocktails')
 		}
 		
-		if(cl == 0)
-		{
-			nodes.box.hide()
-			this.resetRecommendsOffsets()
-			return
-		}
+		// if(cl == 0)
+		// {
+		// 	nodes.box.hide()
+		// 	this.resetRecommendsOffsets()
+		// 	return
+		// }
 		
 		nodes.title.plural.firstChild.nodeValue = cl + ' ' + cl.plural('коктейля', 'коктейлей', 'коктейлей')
 		nodes.switcher.className = 'switcher ' + showType

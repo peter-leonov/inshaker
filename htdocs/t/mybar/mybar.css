@@ -89,13 +89,14 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 
 /*cocktails-box*/
 .main-box .cocktails-box .section-head h2 .have-no-cocktails,
-.main-box .cocktails-box .section-head h2.zero-cocktails .have-cocktails { display: none; }
-.main-box .cocktails-box .section-head h2.zero-cocktails .have-no-cocktails,
+.main-box .cocktails-box.zero-cocktails .section-head h2 .have-cocktails { display: none; }
+.main-box .cocktails-box.zero-cocktails .section-head h2 .have-no-cocktails,
 .main-box .cocktails-box .section-head h2 .have-cocktails { display: inline; }
 .main-box .cocktails-box ul.by-pics { overflow: hidden; margin: 25px 0 0 29px; }
 .main-box .cocktails-box .by-pics .cocktail-preview { padding: 20px 24px; float: left; }
 
-.main-box .empty-notice { font-family: Georgia; font-size: 18px; font-style: italic; margin: 50px 0 50px 20px; }
+.main-box .cocktails-box .empty-notice { display: none; font-family: Georgia; font-size: 18px; font-style: italic; margin: 50px 0 50px 20px; text-align: center; }
+.main-box .cocktails-box.zero-cocktails .empty-notice { display: block; }
 
 .main-box .cocktails-box .cocktail-preview:hover .control { display: block; }
 .main-box .cocktails-box .visible-cocktails .cocktail-preview:hover .control:hover { background-position: -1021px -417px; }
