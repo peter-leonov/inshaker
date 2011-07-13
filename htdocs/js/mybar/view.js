@@ -236,13 +236,13 @@ var myProto =
 				this.controller.addRecommend()
 		}
 		
-		var node = this.nodes.recommends.mustHaveList	
-		while(!rLength && mhLength > 0 && this.noHaveSupply(node))
-		{
-			var i = 4
-			while(i-- && mhLength--)
-				this.controller.addMustHaveRecommend()
-		}
+		// var node = this.nodes.recommends.mustHaveList	
+		// while(!rLength && mhLength > 0 && this.noHaveSupply(node))
+		// {
+		// 	var i = 4
+		// 	while(i-- && mhLength--)
+		// 		this.controller.addMustHaveRecommend()
+		// }
 		
 		var rn = this.nodes.recommends.box
 		rn.style.height = 'auto'
