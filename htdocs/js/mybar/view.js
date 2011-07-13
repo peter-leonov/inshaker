@@ -386,7 +386,7 @@ var myProto =
 			hcl = hiddenCocktails.length,
 			cl = vcl + hcl
 		
-		if(vcl == 0)
+		if(cl == 0)
 		{
 			this.nodes.cocktails.box.addClassName('zero-cocktails')
 			this.nodes.share.box.addClassName('zero-cocktails')
