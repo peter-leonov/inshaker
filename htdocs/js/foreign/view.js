@@ -21,8 +21,9 @@ var myProto =
 		
 		nodes.ingredients.barName.empty()
 		nodes.ingredients.barName.appendChild(T(barName))
-		nodes.title.empty()
-		nodes.title.appendChild(T(barName + ' — Inshaker'))
+		var firstChild = nodes.title.firstChild
+		if (firstChild)
+			firstChild.nodeValue = barName + ' — Inshaker'
 	},
 	
 	renderIngredients : function(ingredients)
