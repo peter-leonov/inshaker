@@ -216,11 +216,6 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .recommends-box .recommends-list .recommend .body { float: left; }
 .main-box .recommends-box .recommends-list .recommend .body .cocktail-preview { margin: 0 17px 10px 0; float: left; }
 
-.main-box .recommends-box .recommends-list .advice,
-.main-box .recommends-box .recommends-list .recommend { opacity: 0.3; }
-.main-box .recommends-box .recommends-list .recommend:hover,
-.main-box .recommends-box .recommends-list .advice:hover { opacity: 1; }
-
 .main-box .recommends-box .must-have-list .row { display: block; overflow: hidden; padding: 26px 0 18px; position: relative; }
 html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 .main-box .recommends-box .must-have-list .row .ingredient { margin: 0 17px 0px 17px; }
