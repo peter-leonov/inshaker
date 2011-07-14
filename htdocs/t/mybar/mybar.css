@@ -24,7 +24,7 @@ html.loading .main-box { display: none; }
 /*ingredient-previews*/
 .main-box .ingredient-preview { display: block; font-size: 12px; text-align: center; position: relative; width: 100px; height: 100px; }
 .main-box .ingredient-preview .image { width: 100px; height: 100px; -moz-border-radius: 10px 10px 10px 10px; -webkit-border-radius: 10px 10px 10px 10px; border-radius: 10px 10px 10px 10px; background-color: #eee; margin-bottom: 5px; }
-.main-box .ingredient-preview .name {  }
+.main-box .ingredient-preview .name { -ms-word-wrap: break-word; word-wrap: break-word; }
 .main-box .ingredient .control { position: absolute; width: 32px; height: 32px; background: url("mybar.png") no-repeat -984px -417px transparent; left: -15px; top: -15px; display: none; cursor: pointer; }
 .main-box .ingredient:hover .control { display: block; }
 
