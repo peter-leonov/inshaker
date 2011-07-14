@@ -677,6 +677,7 @@ http://www.inshaker.ru/cocktail/rose_gimlet/
 http://www.inshaker.ru/cocktail/pink_ginger/
 http://www.inshaker.ru/cocktail/pink_rum/
 http://www.inshaker.ru/cocktail/rockefeller_shooter/
+http://www.inshaker.ru/cocktail/rolling_slice/
 http://www.inshaker.ru/cocktail/rum_orange/
 http://www.inshaker.ru/cocktail/gold_rum_and_pineapple/
 http://www.inshaker.ru/cocktail/rum_and_sprite/
