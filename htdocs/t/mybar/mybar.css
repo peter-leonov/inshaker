@@ -53,7 +53,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000; }
 .main-box .ingredients-box .search-box .query { position: relative; z-index: 1; background: transparent; border-color: #ccc #999 #999 #ccc; border-style: solid; border-width: 1px; color: inherit; font-size: 18px; padding: 3px 4px 4px; width: 810px; box-shadow: 1px 1px 0 rgb(231, 231, 231); box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -webkit-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); -moz-box-shadow: 1px 1px 0 rgba(231, 231, 231, 0.5); vertical-align: middle; }
 .main-box .ingredients-box .ingredients-list,
-.main-box .maybe-have-box .ingredients-list { margin: 20px 0 10px 2px; }
+.main-box .maybe-have-box .ingredients-list { margin: 20px 0 0 2px; }
 .main-box .ingredients-box .ingredients-list ul.by-list { padding-top: 10px; position: relative; }
 .main-box .ingredients-box .ingredients-list dt.group-name { overflow: hidden; margin: 0 0 10px; position: relative; left: -40px; }
 .main-box .ingredients-box .ingredients-list dt.group-name .name-wrapper { position: relative; float: left; height: 37px; color: #fff; font-size: 14px; background: url("mybar.png") no-repeat -295px -490px transparent; padding: 0 4px 0px 12px; margin-right: 8px; line-height: 31px; }
@@ -92,7 +92,7 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .cocktails-box.zero-cocktails .section-head h2 .have-no-cocktails,
 .main-box .cocktails-box .section-head h2 .have-cocktails { display: inline; }
 .main-box .cocktails-box ul.by-pics { overflow: hidden; margin: 25px 0 0 29px; }
-.main-box .cocktails-box .by-pics .cocktail-preview { padding: 20px 24px; float: left; }
+.main-box .cocktails-box .by-pics .cocktail-preview { padding: 5px 24px 20px 24px; float: left; }
 
 .main-box .cocktails-box .empty-notice { display: none; font-family: Georgia; font-size: 18px; font-style: italic; margin: 50px 0 50px 20px; text-align: center; }
 .main-box .cocktails-box.zero-cocktails .empty-notice { display: block; }
