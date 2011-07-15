@@ -529,6 +529,9 @@ var myProto =
 		for (var i = 0, il = packages.length; i < il; i++)
 		{
 			var cocktail = Cocktail.getByName(packages[i])
+			if (!cocktail)
+				continue
+			
 			groups.push(
 			{
 				ingredients: cocktail.getIngredientNames().sort(Ingredient.sortByGroups).map(function (name) { return Ingredient.getByName(name) }),
