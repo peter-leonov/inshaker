@@ -651,7 +651,7 @@ var myProto =
 	{
 		if(ingredients.length > 5)
 		{
-			var span = Nct('span', 'pink', 'много ингредиентов')
+			var span = Nct('span', 'pink', 'больше ингредиентов')
 			return span
 		}
 		var df = document.createDocumentFragment()
