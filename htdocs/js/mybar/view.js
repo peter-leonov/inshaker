@@ -1033,13 +1033,12 @@ var myProto =
 			node = e.target,
 			me = this
 		
-		e.preventDefault()
-		
 		switch(e.target.className)
 		{
 			case 'facebook-share':
 			case 'twitter-share':
 			{
+				e.preventDefault()
 				this.openWindow(node.href)
 				break;
 			}
