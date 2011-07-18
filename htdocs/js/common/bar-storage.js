@@ -113,7 +113,7 @@ Me =
 	remoteGet: function (id, callback)
 	{
 		var url = this.remoteServer + '/storage/v1/get/'
-		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function ()
+		Request.get(url + id + '/bar?rand=' + Math.random(), null, function ()
 		{
 			if (this.statusType == 'success')
 				var remoteData = JSON.parse(this.responseText)
