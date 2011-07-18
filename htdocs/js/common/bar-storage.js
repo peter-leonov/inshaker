@@ -98,7 +98,7 @@ Me =
 	
 	remoteCreate: function (callback)
 	{
-		var url = this.remoteServer + '/storage/createbar/'
+		var url = this.remoteServer + '/storage/v1/create/'
 		var me = this
 		Request.post(url, JSON.stringify(this.data.remote), function ()
 		{
@@ -112,7 +112,7 @@ Me =
 	
 	remoteGet: function (id, callback)
 	{
-		var url = this.remoteServer + '/storage/get/'
+		var url = this.remoteServer + '/storage/v1/get/'
 		Request.get(url + id + '/bar.json?rand=' + Math.random(), null, function ()
 		{
 			if (this.statusType == 'success')
@@ -128,7 +128,7 @@ Me =
 		if (!ld.id)
 			return
 		
-		var url = this.remoteServer + '/storage/savebar/'
+		var url = this.remoteServer + '/storage/v1/save/'
 		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function ()
 		{
 			if (this.statusType != 'success')
