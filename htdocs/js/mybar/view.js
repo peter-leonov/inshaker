@@ -595,7 +595,10 @@ var myProto =
 			if(havingIngredients.length != 0)
 			{
 				text.appendChild(T('В твоем баре уже есть '))
-				text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
+				if (havingIngredients.length > 5)
+					text.appendChild(Nct('span', 'pink', 'много ингредиентов'))
+				else
+					text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
 				text.appendChild(T('. '))
 			}
 			else
@@ -614,7 +617,10 @@ var myProto =
 		if(noHavingCocktails.length != 0)
 		{
 			text.appendChild(T('Если будет '))
-			text.appendChild(this.createIngredientsTextFromArr(noHavingIngredients))
+			if (noHavingIngredients.length > 5)
+				text.appendChild(Nct('span', 'pink', 'больше ингредиентов'))
+			else
+				text.appendChild(this.createIngredientsTextFromArr(noHavingIngredients))
 			text.appendChild(T(', сможешь приготовить ' + noHavingCocktails.length.plural('коктейль','коктейли','коктейли') + ' '))
 			text.appendChild(this.createCocktailsTextFromArr(noHavingCocktails))
 			text.appendChild(T('. '))
@@ -649,11 +655,6 @@ var myProto =
 	
 	createIngredientsTextFromArr : function(ingredients)
 	{
-		if(ingredients.length > 5)
-		{
-			var span = Nct('span', 'pink', 'больше ингредиентов')
-			return span
-		}
 		var df = document.createDocumentFragment()
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
