@@ -190,3 +190,81 @@ UpStart
 Проверять нужно точно так же, как и энжинкс.
 
 
+Ruby
+----
+
+Ставим `zlib`, чтобы работал `gem install`:
+
+	sudo apt-get install zlib1g-dev
+
+Ставим:
+
+	curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
+	tar xzf ruby-1.9.2-p290.tar.gz
+	cd ruby-1.9.2-p290
+	./configure --prefix=/opt/ruby-1.9.2 && make && sudo make install
+
+Линкуем:
+
+	cd /usr/bin/
+	sudo ln -s /opt/ruby-1.9.2/bin/ruby ruby
+	sudo ln -s /opt/ruby-1.9.2/bin/gem gem
+	sudo ln -s /opt/ruby-1.9.2/bin/irb irb
+
+Тестим:
+
+	ruby -v
+	#>>> ruby 1.9.2p290 (2011-07-09 revision 32553) [i686-linux]
+	
+	ruby -e 'require "fileutils"; puts FileUtils.class'
+	#>>> Module
+	
+	
+	gem -v
+	#>>> 1.3.7
+	
+	gem list --local
+	#>>> *** LOCAL GEMS ***
+	#>>> 
+	#>>> daemons (1.1.4)
+	#>>> eventmachine (0.12.10)
+	#>>> minitest (1.6.0)
+	#>>> rack (1.3.1)
+	#>>> rake (0.8.7)
+	#>>> rdoc (2.5.8)
+	
+	
+	irb -v
+	#>>> irb 0.9.6(09/06/30)
+	
+	irb
+	#>>> irb(main):001:0>
+	exit
+	#>>> irb(main):001:0> exit
+
+Thin
+----
+
+Ставим:
+
+	sudo gem install thin
+	#>>> Building native extensions.  This could take a while...
+	#>>> Successfully installed thin-1.2.11
+	#>>> 1 gem installed
+	#>>> Installing ri documentation for thin-1.2.11...
+	#>>> Installing RDoc documentation for thin-1.2.11...
+
+Линкуем:
+
+	cd /usr/bin/
+	sudo ln -s /opt/ruby-1.9.2/bin/thin thin
+
+Тестим:
+
+	thin --help | grep daemonize
+	#>>> -d, --daemonize                  Run daemonized in the background
+
+
+
+
+
