@@ -2,7 +2,7 @@
 
 PROJ_ROOT="/www/inshaker"
 
-# stopping nginx
+# stopping frontend nginx
 if [ -f $PROJ_ROOT/nginx.pid ]; then
 	kill -INT $(cat $PROJ_ROOT/nginx.pid)
 else

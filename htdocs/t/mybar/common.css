@@ -1,0 +1,72 @@
+html { min-height: 100%; overflow-y: scroll; position: relative; }
+
+html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0 50px; text-align: center; color: #888; }
+html.loading .b-content { display: none; }
+.please-wait { display: none; }
+
+#output { color: #000; }
+
+.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+
+#output .b-title { background: none; z-index: 1; top: 7px; padding: 0; margin: 0; }
+
+#bar-name
+{
+	border-bottom: 1px dotted #ddd;
+	height: 31px;
+	margin-bottom: 24px;
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+
+#bar-name h2 { font-size: 24px; }
+
+#bar-name .help, #bar-name .title{
+	border-bottom: 2px dashed;
+	cursor: pointer;
+}
+
+#bar-name form.change-name {
+	font-size: 24px;
+	left: -6px;
+	position: relative;
+	top: -5px;
+}
+
+#bar-name form.change-name input.new-bar-name {
+	font-size: 1em;
+	position: relative;
+	z-index: 1;
+	background-color: transparent;
+	border: none;
+	padding: 2px 2px;
+	width: 100%;
+}
+#bar-name form.change-name .tip {
+	left: 4px;
+	position: absolute;
+	top: 4px;
+	color: #BBBBBB;
+}
+
+.firefox #bar-name form.change-name input.new-bar-name { left: 2px; top: 2px; }
+.safari #bar-name form.change-name input.new-bar-name, .chrome #bar-name form.change-name input.new-bar-name
+{ left: 2px; top: 1px; }
+
+.safari #bar-name form.change-name .tip, .chrome #bar-name form.change-name .tip { left: 5px; top: 5px; }
+
+#bar-name form.change-name input.new-bar-name:focus { outline: none; }
+
+/*common for purchase-plan and bar-menu*/
+
+#output .b-title .bar-link {
+	font-size: 24px;
+	position: absolute;
+	right: 0;
+	text-decoration: underline;
+	top: 0;
+}
+
+#output .b-content h3.title {
+	font-size: 24px;
+}

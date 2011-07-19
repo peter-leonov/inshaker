@@ -1,0 +1,18 @@
+#cocktail-cart-page #common-main-wrapper { width: auto; margin: 0; }
+#cocktail-cart-page #common-main-wrapper .header { display: block; }
+#cocktail-cart-page #common-main-wrapper .header h1 { font-size: 18px; padding-top: 0; }
+#cocktail-cart-page #common-main-wrapper .header .logo img { width: 80px; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .black-sticker { width: 100px; left: 0; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail { width: 45%; }
+#cocktail-cart-page #common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail.even { margin-right: 8%; }
+#cocktail-cart-page #common-main-wrapper .page-wrapper { page-break-after: always; }
+#cocktail-cart-page #common-main-wrapper .page-wrapper.last-clone { page-break-after: auto; }
+
+#common-main-wrapper .purchase-plan-box .purchase-table-wrapper { margin: 30px 0 0; }
+
+html.chrome #common-main-wrapper .header .logo img { width: 60px; }
+html.chrome #common-main-wrapper .sticker { margin: 20px 0 10px; }
+html.opera #common-main-wrapper .header h1 .bar-name { color: #000; }
+html#cocktail-cart-page.chrome #common-main-wrapper .cocktail-cart-box .black-sticker { width: 80px; }
+html#cocktail-cart-page.chrome #common-main-wrapper .header .logo img { width: 60px; }
+html#cocktail-cart-page.chrome #common-main-wrapper .cocktail-cart-box .cocktail-list .cocktail .img-link img { width: 50px; height: 94px; }

@@ -8,6 +8,6 @@ script('/lib-0.3/modules/test.js')
 script('/lib-0.3/modules/test-tool.js')
 script('/lib-0.3/widgets/tests.js')
 
-style('/tests/tests.css')
+style('/lib-0.3/tests/tests.css')
 
 })();

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Tests for findCheapestPrice()</title>
+	<script src="tests.common.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" src="/lib-0.3/core/prototype.js"></script>
+	<script type="text/javascript" src="/js/common/find-cheapest-price.js"></script>
+	<script type="text/javascript" src="/js/common/datafilter.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+Tests.test(function (t)
+{
+	t.ok(findCheapestPrice, 'findCheapestPrice')
+	
+	findCheapestPrice.maxEntries = 10000
+	
+	function f (volumes, max)
+	{
+		if (!volumes.length)
+			return {}
+		
+		if (max <= 0)
+			return {}
+		
+		var res = findCheapestPrice({volumes: volumes}, max)
+		
+		var h = {}
+		
+		if (res.addingBottles.amount)
+			h[res.addingBottles.vol] = res.addingBottles.amount
+		
+		for (var i = 0; i < res.bottles.length; i++)
+		{
+			var v = res.bottles[i][0]
+			if (h[v])
+				h[v]++
+			else
+				h[v] = 1
+		}
+		
+		f.lastIterations = res.entries
+		
+		return h
+	}
+	
+	function run (t, bottles, volumes)
+	{
+		t.log(bottles)
+		
+		var price = {}
+		for (var i = 0, il = bottles.length; i < il; i++)
+			price[bottles[i][0]] = bottles[i][1]
+		
+		for (var i = 0, il = volumes.length; i < il; i++)
+		{
+			var v = volumes[i]
+			
+			var min = v[1]
+			var iterations = v[2] || 10
+			v = v[0]
+			
+			var suggestion = f(bottles, v)
+			var ok = t.like(suggestion, min, v)
+			
+			t.lte(f.lastIterations, iterations, 'iterations')
+			
+			if (!ok)
+			{
+				var v1 = 0
+				for (var k in suggestion)
+					v1 += suggestion[k] * +k
+				
+				if (v1 < v)
+				{
+					t.warn('robo is totally wrong: ' + v1 + ' < ' + v)
+					continue
+				}
+				
+				var price1 = 0
+				for (var k in suggestion)
+					price1 += price[k] * suggestion[k]
+				
+				var price2 = 0
+				for (var k in min)
+					price2 += price[k] * min[k]
+				
+				if (price1 <= price2)
+					t.warn('robo is right: ' + price1 + ' <= ' + price2)
+				else
+					t.warn('robo is wrong: ' + price1 + ' > ' + price2)
+			}
+		}
+	}
+	
+	t.test('real life examples', function (t)
+	{
+		t.test('Bacardi Superior', function (t)
+		{
+			var bottles = [[0.5, 641], [0.75, 991]]
+			
+			var volumes =
+			[
+				[0.4, {0.5: 1}, 2],
+				[0.5, {0.5: 1}, 2],
+				[0.51, {0.75: 1}, 2],
+				[0.75, {0.75: 1}, 2],
+				[0.76, {0.5: 2}, 4],
+				[1.0, {0.5: 2}, 4],
+				[1.5, {0.5: 3}, 4],
+				[1.75, {0.5: 2, 0.75: 1}, 2],
+				[2.25, {0.5: 3, 0.75: 1}, 2],
+				[3.0, {0.5: 6}, 4],
+				[37.5, {0.5: 75}, 4],
+				[10000, {0.5: 20000}, 4],
+				[10000.75,  {0.5: 20000, 0.75: 1}, 2]
+			]
+			
+			run(t, bottles, volumes)
+		})
+		
+		t.test('Coca-cola from dostavka.7cont.ru', function (t)
+		{
+			var bottles = [[0.5, 37.90], [1.0, 52.90], [2.0, 56.90]]
+			
+			var volumes =
+			[
+				[0.5, {0.5: 1}, 3],
+				[1.0, {1.0: 1}, 6],
+				[1.25, {2.0: 1}, 8],
+				[1.5, {2.0: 1}, 8],
+				[2.0, {2.0: 1}, 8],
+				[2.5, {2.0: 1, 0.5: 1}, 5],
+				[2.51, {2.0: 1, 1.0: 1}, 18],
+				[3.0, {1.0: 1, 2.0: 1}, 8],
+				[3.1, {2.0: 2}, 12],
+				[100, {2.0: 50}, 8],
+				[100.5, {2.0: 50, 0.5: 1}, 5],
+				[10001, {2.0: 5000, 1.0: 1}, 8]
+			]
+			
+			run(t, bottles, volumes)
+		})
+	})
+	
+	t.test('corner cases', function (t)
+	{
+		t.like(f([], 10), {}, 'empty bottles')
+		t.like(f([[0.25, 50]], 1), {0.25: 4}, 'only one bottle')
+		t.like(f([[0.25, 50]], 0), {}, 'zero volume')
+		t.like(f([[0.25, 50]], -1), {}, 'negative volume')
+		t.like(f([[1, 0], [2, 1]], 10), {1: 10}, 'free bottle')
+	})
+	
+	t.test('same factor', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[1, 1], [2, 2]],
+			// test cases: volume, result, maximum iterations
+			[
+				[20000, {2: 10000}, 4]
+			]
+		)
+	})
+	
+	t.test('very close factor', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[12, 120], [11, 111], [10, 102], [9, 93], [8, 84]],
+			// test cases: volume, result, maximum iterations
+			[
+				[111, {11: 1, 12: 7, 8: 2}, 1739]
+			]
+		)
+	})
+	
+	t.test('pyramid (more than one suboptimal bottle)', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[10, 10], [3, 3.1], [0.5, 0.55]],
+			// test cases: volume, result, maximum iterations
+			[
+				[27, {10: 2, 3: 2, 0.5: 2}, 198]
+			]
+		)
+	})
+	
+	t.test('fractal (very different volumes with same factor)', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[100, 100], [1, 2], [2, 3], [3, 4]],
+			// test cases: volume, result, maximum iterations
+			[
+				[112, {100: 1, 3: 4}, 7066]
+			]
+		)
+	})
+	
+	t.test('reversed factor per volume', function (t)
+	{
+		run
+		(
+			t,
+			// bottles
+			[[12, 11], [11, 10], [10, 9], [9, 8], [8, 7]],
+			// test cases: volume, result, maximum iterations
+			[
+				[111, {8: 14}, 279],
+				[1111100, {12: 1, 8: 138886}, 75]
+			]
+		)
+	})
+	
+	t.test('digital', function (t)
+	{
+		var bottles = [[0.5, 37.90], [1.0, 52.90], [2.0, 56.90]]
+		
+		var max = 0
+		var step = 0.5 / 16
+		for (var i = 0; i < 20; i+= step)
+		{
+			f(bottles, i)
+			var iterations = f.lastIterations
+			if (iterations > max)
+			{
+				max = iterations
+				t.log([i, max])
+			}
+		}
+		
+		t.lte(max, 75, 'maximum')
+	})
+	
+	return
+	t.test('performance', function (t)
+	{
+		var bottles = [[1.0, 1], [2.0, 1.7], [3.0, 2.1]]
+		
+		var a = t.speed(function () { f(bottles, 1000) })
+		t.gt(Math.round(a), 500, 'solve more than 500 times per second')
+	})
+})
+</script>
+</body>
+</html>
