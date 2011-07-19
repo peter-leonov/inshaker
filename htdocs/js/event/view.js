@@ -58,9 +58,9 @@ EventPage.view =
 			
 			controller.formSend()
 			
-			function sent (e)
+			function sent ()
 			{
-				if (e.type == 'success')
+				if (this.statusType == 'success')
 				{
 					controller.formSuccess()
 				}

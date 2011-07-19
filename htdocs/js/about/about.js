@@ -59,9 +59,9 @@ var AboutPage = {
 		{
 			e.preventDefault()
 			
-			function sent (e)
+			function sent ()
 			{
-				if (e.type == 'success')
+				if (this.statusType == 'success')
 				{
 					AboutPage.formSuccess()
 				}
