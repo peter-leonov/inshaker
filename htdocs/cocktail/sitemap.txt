@@ -569,6 +569,7 @@ http://www.inshaker.ru/cocktail/our_mary/
 http://www.inshaker.ru/cocktail/just_as_well/
 http://www.inshaker.ru/cocktail/innocent_sex/
 http://www.inshaker.ru/cocktail/negroni/
+http://www.inshaker.ru/cocktail/negroni_2/
 http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
 http://www.inshaker.ru/cocktail/nero/
@@ -728,6 +729,7 @@ http://www.inshaker.ru/cocktail/north_man/
 http://www.inshaker.ru/cocktail/ceviche_mary/
 http://www.inshaker.ru/cocktail/ceviche_chaser/
 http://www.inshaker.ru/cocktail/sage_romance/
+http://www.inshaker.ru/cocktail/saint_p/
 http://www.inshaker.ru/cocktail/sex_on_the_beach/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_light/
 http://www.inshaker.ru/cocktail/sex_on_the_beach_special/
