@@ -355,6 +355,7 @@ http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/cambridge/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kiwi_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/kilim/
 http://www.inshaker.ru/cocktail/kin-dza-dza/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/clubland/
@@ -384,6 +385,7 @@ http://www.inshaker.ru/cocktail/coconut_apple/
 http://www.inshaker.ru/cocktail/coconut_pineapple/
 http://www.inshaker.ru/cocktail/coconut_banana/
 http://www.inshaker.ru/cocktail/coconut_breeze/
+http://www.inshaker.ru/cocktail/coconut_breeze_in_a_jug/
 http://www.inshaker.ru/cocktail/coconut_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/coconut_sprite/
 http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
