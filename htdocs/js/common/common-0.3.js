@@ -33,13 +33,6 @@ $.onready(function () { setTimeout(function ()
 	YandexMetrika.trackPageview()
 }, 250) })
 
-$.onready(function ()
-{
-	var year = $$('#copyright .year')[0]
-	if (year)
-		year.firstChild.nodeValue = new Date().getFullYear()
-})
-
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
 require.names =
