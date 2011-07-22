@@ -59,6 +59,7 @@ http://www.inshaker.ru/cocktail/butter_scotch/
 http://www.inshaker.ru/cocktail/bounty_martini/
 http://www.inshaker.ru/cocktail/baja_bocana/
 http://www.inshaker.ru/cocktail/no_name_drink/
+http://www.inshaker.ru/cocktail/white_lady/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
 http://www.inshaker.ru/cocktail/white_bungalow/
