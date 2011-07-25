@@ -19,6 +19,8 @@
 <!--# include virtual="/lib-0.3/modules/boxer.js"-->
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
+if (!document.querySelectorAll)
+	$.include('/lib-0.3/core/fixes/dom-level2-selectors.js')
 
 <!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
