@@ -19,6 +19,6 @@ function loadGoogleApi ()
 	}
 	var timer = setInterval(waitGoogleApi, 250)
 	
-	return $.include('http://www.google.com/jsapi?key=' + apiKeys[/[^.]+\.[^.]+$/i.exec(location.host)])
+	return $.load('http://www.google.com/jsapi?key=' + apiKeys[/[^.]+\.[^.]+$/i.exec(location.host)])
 }
 
