@@ -7,8 +7,8 @@ $stdout.sync = true
 $stderr.reopen($stdout)
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
-
 require "config"
+require "base64"
 
 class Launcher
   
@@ -34,6 +34,34 @@ class Launcher
       "reset" => ["./reset.rb", "Сброс"]
     }
     
+    LOGIN_TO_BUSY =
+    {
+      "mike" => "занял Мишенька",
+      "max" => "занял Максимка",
+      "lena" => "заняла Леночка",
+      "viola" => "заняла Виолочка",
+      "peter" => "занял Петечка",
+      "barman" => "занял Бармен",
+    }
+    LOGIN_TO_BUSY.default = "заняло НЛО"
+
+    LOGIN_TO_AUTHOR =
+    {
+      "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
+      "max" => "Maxim Dergilev <max@inshaker.ru>",
+      "lena" => "Elena Piskareva <lena@inshaker.ru>",
+      "viola" => "Viola Kostina <viola@inshaker.ru>",
+      "peter" => "Peter Leonov <pl@inshaker.ru>",
+      "barman" => "Barman <barman@inshaker.ru>"
+    }
+    LOGIN_TO_AUTHOR.default = "UFO <ufo@inshaker.ru>"
+    
+  end
+  
+  def initialize
+    @user_login = get_user_login
+    @user_busy = Config::LOGIN_TO_BUSY[@user_login]
+    @user_author = Config::LOGIN_TO_AUTHOR[@user_login]
   end
   
   def launch
@@ -55,23 +83,17 @@ class Launcher
       exit 1
     end
     
-    unless lock
-      puts "Ошибка: кто-то занял бармена."
-      exit 1
-    end
-    processors.each do |k, v|
-      run v
-    end
-    unlock
+    run processors
   end
   
   def lock
     begin
       Dir.mkdir(Config::LOCKPATH)
-      true
     rescue => e
-      false
+      return false
     end
+    
+    return true
   end
   
   def unlock
@@ -84,11 +106,19 @@ class Launcher
     end
   end
   
-  def run job
-    puts "Запускаю «#{job[1]}»…"
+  def run jobs
     Dir.chdir("#{Config::ROOT_DIR}barman/")
-    fork { exec job[0] }
-    Process.wait
+    
+    unless lock
+      puts "Ошибка: кто-то занял бармена."
+      exit 1
+    end
+    jobs.each do |k, job|
+      puts "Запускаю «#{job[1]}»…"
+      # fork { exec job[0] }
+      # Process.wait
+    end
+    unlock
   end
   
   def parse_params
@@ -102,6 +132,14 @@ class Launcher
     end
     
     return hash
+  end
+  
+  def get_user_login
+    if auth = ENV["HTTP_AUTHORIZATION"].to_s.match(/Basic (.+)/)
+      Base64.decode64(auth[1]).split(':')[0]
+    else
+      "barman"
+    end
   end
   
 end
