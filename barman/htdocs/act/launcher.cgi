@@ -90,6 +90,10 @@ class Launcher
   def lock
     
     if File.directory?(Config::LOCKPATH)
+      
+      busy = Config::LOGIN_TO_BUSY[File.read(Config::LOCKPATH_LOGIN)]
+      puts %Q{<h2 class="warning">Бармена #{busy}.<h2>}
+      
       return false
     end
     
