@@ -40,11 +40,11 @@ class EventsProcessor < Inshaker::Processor
     # update_blog
     update_banners
     
-    unless errors?
-      cleanup_deleted
-      flush_links
-      flush_json
-    end
+    # unless errors?
+    #   cleanup_deleted
+    #   flush_links
+    #   flush_json
+    # end
   end
   
   def prepare_dirs
