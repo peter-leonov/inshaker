@@ -109,14 +109,16 @@ class Launcher
   def run jobs
     Dir.chdir("#{Config::ROOT_DIR}barman/")
     
+    ENV["INSHAKER_USER_AUTHOR"] = @user_author
+    
     unless lock
       puts "Ошибка: кто-то занял бармена."
       exit 1
     end
     jobs.each do |k, job|
       puts "Запускаю «#{job[1]}»…"
-      # fork { exec job[0] }
-      # Process.wait
+      fork { exec job[0] }
+      Process.wait
     end
     unlock
   end
