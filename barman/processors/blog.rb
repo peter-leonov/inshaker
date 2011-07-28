@@ -237,11 +237,11 @@ class EventsProcessor < Inshaker::Processor
     
     new_image = guess_image_path("#{src_dir.path}/image.$$")
     unless new_image
-      error "в папке банера нету никакой картинки (image.*)"
+      error "в папке модного банера нету никакой картинки (image.*)"
     else
       ext = new_image[:ext]
       banner["ext"] = ext
-      FileUtils.cp_r("#{src_dir.path}/image.#{ext}", "#{ht_dir.path}/i/small-#{num}.#{ext}", @mv_opt)
+      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/small-#{num}.#{ext}", @mv_opt)
     end
     
     end #indent
@@ -266,8 +266,21 @@ class EventsProcessor < Inshaker::Processor
     yaml = load_yaml(src_dir.path + "/about.yaml")
     banner["href"] = yaml["Ссылка"]
     
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/big.jpg", @mv_opt)
+    
+    build_image_paths("#{ht_dir.path}/i/big.$$").each do |v|
+      if File.exists?(v[:path])
+        File.unlink(v[:path])
+      end
+    end
+    
+    new_image = guess_image_path("#{src_dir.path}/image.$$")
+    unless new_image
+      error "в папке крутого банера нету никакой картинки (image.*)"
+    else
+      ext = new_image[:ext]
+      banner["ext"] = ext
+      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/big.#{ext}", @mv_opt)
+    end
     
     File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
       f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.jpg"/></a>}
