@@ -282,8 +282,20 @@ class EventsProcessor < Inshaker::Processor
       FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/big.#{ext}", @mv_opt)
     end
     
+    markup = nil
+    if banner["ext"] == "swf"
+      markup = %Q{
+        <object width="960" height="90" type="application/x-shockwave-flash" data="/blog-banners/i/big.#{banner["ext"]}">
+          <param name="wmode" value="transparent"/>
+          <param name="movie" value="/blog-banners/i/big.#{banner["ext"]}"/>
+        </object>
+      }
+    else
+      markup = %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.#{banner["ext"]}"/></a>}
+    end
+    
     File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
-      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.#{banner["ext"]}"/></a>}
+      f.puts markup
     end
     
     end #indent
