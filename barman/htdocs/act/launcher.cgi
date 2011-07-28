@@ -16,6 +16,7 @@ class Launcher
     include Inshaker
     
     LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
+    LOCKPATH_LOGIN = "#{LOCKPATH}/login"
     
     SCRIPTS =
     {
@@ -93,7 +94,7 @@ class Launcher
     end
     
     Dir.mkdir(Config::LOCKPATH)
-    File.write(Config::LOCKPATH + "/login", @user_login)
+    File.write(Config::LOCKPATH_LOGIN, @user_login)
     
     return true
   end
@@ -104,7 +105,7 @@ class Launcher
       return false
     end
     
-    File.unlink(Config::LOCKPATH + "/login")
+    File.unlink(Config::LOCKPATH_LOGIN)
     Dir.rmdir(Config::LOCKPATH)
     
     return true
