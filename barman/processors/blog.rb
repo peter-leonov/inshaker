@@ -37,7 +37,7 @@ class EventsProcessor < Inshaker::Processor
     Cocktail.init
     prepare_dirs
     
-    update_blog
+    # update_blog
     update_banners
     
     unless errors?
@@ -262,6 +262,10 @@ class EventsProcessor < Inshaker::Processor
     end
     
     end #indent
+  end
+  
+  def guess_image path
+    
   end
   
   # etc
