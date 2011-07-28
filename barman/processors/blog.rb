@@ -229,8 +229,20 @@ class EventsProcessor < Inshaker::Processor
     yaml = load_yaml(src_dir.path + "/about.yaml")
     banner["href"] = yaml["Ссылка"]
     
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/small-#{num}.jpg", @mv_opt)
+    build_image_paths("#{ht_dir.path}/i/small-#{num}.$$").each do |v|
+      if File.exists?(v[:path])
+        File.unlink(v[:path])
+      end
+    end
+    
+    new_image = guess_image_path("#{src_dir.path}/image.$$")
+    unless new_image
+      error "в папке банера нету никакой картинки (image.*)"
+    else
+      ext = new_image[:ext]
+      banner["ext"] = ext
+      FileUtils.cp_r("#{src_dir.path}/image.#{ext}", "#{ht_dir.path}/i/small-#{num}.#{ext}", @mv_opt)
+    end
     
     end #indent
   end
@@ -264,8 +276,17 @@ class EventsProcessor < Inshaker::Processor
     end #indent
   end
   
-  def guess_image path
-    
+  def build_image_paths path
+    ['jpg', 'png', 'gif', 'swf'].map { |ext| {:path => path.gsub("$$", ext), :ext => ext} }
+  end
+  
+  def guess_image_path path
+    build_image_paths(path).each do |v|
+      if File.exists?(v[:path])
+        return v
+      end
+    end
+    return nil
   end
   
   # etc
