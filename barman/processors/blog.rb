@@ -229,8 +229,20 @@ class EventsProcessor < Inshaker::Processor
     yaml = load_yaml(src_dir.path + "/about.yaml")
     banner["href"] = yaml["Ссылка"]
     
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/small-#{num}.jpg", @mv_opt)
+    build_image_paths("#{ht_dir.path}/i/small-#{num}.$$").each do |v|
+      if File.exists?(v[:path])
+        File.unlink(v[:path])
+      end
+    end
+    
+    new_image = guess_image_path("#{src_dir.path}/image.$$")
+    unless new_image
+      error "в папке модного банера нету никакой картинки (image.*)"
+    else
+      ext = new_image[:ext]
+      banner["ext"] = ext
+      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/small-#{num}.#{ext}", @mv_opt)
+    end
     
     end #indent
   end
@@ -238,7 +250,7 @@ class EventsProcessor < Inshaker::Processor
   def flush_banners_html
     File.open(Config::HT_ROOT_BAN + "/small.html", "w+") do |f|
       @small_banners.each do |banner|
-        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.jpg"/></a></li>}
+        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.#{banner["ext"]}"/></a></li>}
       end
     end
   end
@@ -254,14 +266,52 @@ class EventsProcessor < Inshaker::Processor
     yaml = load_yaml(src_dir.path + "/about.yaml")
     banner["href"] = yaml["Ссылка"]
     
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/big.jpg", @mv_opt)
+    
+    build_image_paths("#{ht_dir.path}/i/big.$$").each do |v|
+      if File.exists?(v[:path])
+        File.unlink(v[:path])
+      end
+    end
+    
+    new_image = guess_image_path("#{src_dir.path}/image.$$")
+    unless new_image
+      error "в папке крутого банера нету никакой картинки (image.*)"
+    else
+      ext = new_image[:ext]
+      banner["ext"] = ext
+      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/big.#{ext}", @mv_opt)
+    end
+    
+    markup = nil
+    if banner["ext"] == "swf"
+      markup = %Q{
+        <object width="960" height="90" type="application/x-shockwave-flash" data="/blog-banners/i/big.#{banner["ext"]}">
+          <param name="wmode" value="transparent"/>
+          <param name="movie" value="/blog-banners/i/big.#{banner["ext"]}"/>
+        </object>
+      }
+    else
+      markup = %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.#{banner["ext"]}"/></a>}
+    end
     
     File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
-      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.jpg"/></a>}
+      f.puts markup
     end
     
     end #indent
+  end
+  
+  def build_image_paths path
+    ['jpg', 'png', 'gif', 'swf'].map { |ext| {:path => path.gsub("$$", ext), :ext => ext} }
+  end
+  
+  def guess_image_path path
+    build_image_paths(path).each do |v|
+      if File.exists?(v[:path])
+        return v
+      end
+    end
+    return nil
   end
   
   # etc
