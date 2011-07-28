@@ -54,6 +54,6 @@ end
 
 processors.each do |k, v|
   puts "Запускаю «#{v[1]}»"
-  fork { exit system(v[0]) }
+  fork { exec v[0] }
   Process.wait
 end
