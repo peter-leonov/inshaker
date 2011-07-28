@@ -15,6 +15,8 @@ class Launcher
   module Config
     include Inshaker
     
+    LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
+    
     SCRIPTS =
     {
       "cocktails" => ["./processors/cocktails.rb", "Коктейли"],
@@ -53,9 +55,32 @@ class Launcher
       exit 1
     end
     
-    
+    unless lock
+      puts "Ошибка: кто-то занял бармена."
+      exit 1
+    end
     processors.each do |k, v|
       run v
+    end
+    unlock
+  end
+  
+  def lock
+    begin
+      Dir.mkdir(Config::LOCKPATH)
+      true
+    rescue => e
+      false
+    end
+  end
+  
+  def unlock
+    begin
+      Dir.rmdir(Config::LOCKPATH)
+      true
+    rescue => e
+      puts "Паника: #{e.to_s.force_encoding('UTF-8')}"
+      false
     end
   end
   
