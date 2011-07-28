@@ -87,28 +87,27 @@ class Launcher
   end
   
   def lock
-    begin
-      Dir.mkdir(Config::LOCKPATH)
-    rescue => e
-      puts "Не могу залочить: #{e.to_s.force_encoding('UTF-8')}"
+    
+    if File.directory?(Config::LOCKPATH)
       return false
     end
     
+    Dir.mkdir(Config::LOCKPATH)
     File.write(Config::LOCKPATH + "/login", @user_login)
     
     return true
   end
   
   def unlock
-    File.unlink(Config::LOCKPATH + "/login")
     
-    begin
-      Dir.rmdir(Config::LOCKPATH)
-      true
-    rescue => e
-      puts "Не могу раззалочить: #{e.to_s.force_encoding('UTF-8')}"
-      false
+    unless File.directory?(Config::LOCKPATH)
+      return false
     end
+    
+    File.unlink(Config::LOCKPATH + "/login")
+    Dir.rmdir(Config::LOCKPATH)
+    
+    return true
   end
   
   def run jobs
@@ -117,7 +116,6 @@ class Launcher
     ENV["INSHAKER_USER_AUTHOR"] = @user_author
     
     unless lock
-      puts "Ошибка: кто-то занял бармена."
       exit 1
     end
     jobs.each do |k, job|
