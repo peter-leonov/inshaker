@@ -90,18 +90,23 @@ class Launcher
     begin
       Dir.mkdir(Config::LOCKPATH)
     rescue => e
+      puts "Не могу залочить: #{e.to_s.force_encoding('UTF-8')}"
       return false
     end
+    
+    File.write(Config::LOCKPATH + "/login", @user_login)
     
     return true
   end
   
   def unlock
+    File.unlink(Config::LOCKPATH + "/login")
+    
     begin
       Dir.rmdir(Config::LOCKPATH)
       true
     rescue => e
-      puts "Паника: #{e.to_s.force_encoding('UTF-8')}"
+      puts "Не могу раззалочить: #{e.to_s.force_encoding('UTF-8')}"
       false
     end
   end
@@ -144,6 +149,14 @@ class Launcher
     end
   end
   
+end
+
+class File
+  def self.write file, data
+    open(file, 'w') do |f|
+      f.write data
+    end
+  end
 end
 
 Launcher.new.launch
