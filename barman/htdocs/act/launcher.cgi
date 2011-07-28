@@ -7,13 +7,18 @@ $stderr.reopen($stdout)
 
 puts "Content-type: text/plain; charset=utf-8\n\n"
 
-puts "Загружаюсь…"
-
-require 'inshaker'
-require 'rubygems'
-require 'cgi'
+require "config"
 
 Dir.chdir("#{Inshaker::ROOT_DIR}barman/")
+
+body = $stdin.read(ENV["CONTENT_LENGTH"].to_i)
+
+# super light parser for url-encoded parameters
+params = {}
+body.split(/[&;]/).each do |pair|
+  k, v = pair.split(/\=/)
+  params[k] = v
+end
 
 scripts =
 {
@@ -33,7 +38,7 @@ scripts =
 }
 
 processors = {}
-CGI.new.params.each do |k, v|
+params.each do |k, v|
   script = scripts[k]
   unless script
     puts "неизвестное действие #{k}"
