@@ -250,7 +250,7 @@ class EventsProcessor < Inshaker::Processor
   def flush_banners_html
     File.open(Config::HT_ROOT_BAN + "/small.html", "w+") do |f|
       @small_banners.each do |banner|
-        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.jpg"/></a></li>}
+        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.#{banner["ext"]}"/></a></li>}
       end
     end
   end
@@ -283,7 +283,7 @@ class EventsProcessor < Inshaker::Processor
     end
     
     File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
-      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.jpg"/></a>}
+      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.#{banner["ext"]}"/></a>}
     end
     
     end #indent
