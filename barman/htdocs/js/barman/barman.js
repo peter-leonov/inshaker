@@ -81,7 +81,6 @@ $.onready(function()
 			// load
 			if (readyState == 4)
 			{
-				output.innerHTML = r.responseText
 				running = false
 				callback()
 			}
