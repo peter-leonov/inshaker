@@ -43,10 +43,6 @@ class Cocktail < Inshaker::Entity
     @by_name = @db.hash_index("name")
   end
   
-  def self.[] name
-    @by_name[name]
-  end
-  
   def self.get_by_tag tag
     @by_tag[tag.ci_index]
   end

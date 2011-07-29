@@ -2,6 +2,8 @@
 # encoding: utf-8
 require "inshaker"
 require "entities/cocktail"
+require "entities/ingredient"
+require "entities/tool"
 
 class CocktailsProcessor < Inshaker::Processor
 
@@ -11,7 +13,6 @@ class CocktailsProcessor < Inshaker::Processor
   
   def initialize
     super
-    @all_ingredients = {}
     @ingredient_groups = []
     @ingredient_weight_by_group = {}
     @ingredient_weight_by_group.default = -1
@@ -62,6 +63,10 @@ class CocktailsProcessor < Inshaker::Processor
   def job
     sync_base "Cocktails"
     
+    Ingredient.init
+    Tool.init
+    Cocktail.init
+    
     prepare_dirs
     prepare_templates
     prepare_ingredients
@@ -89,12 +94,6 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def prepare_ingredients
-    if File.exists?(Ingredient::Config::DB_JS)
-      load_json(Ingredient::Config::DB_JS).each do |ingred|
-        @all_ingredients[ingred["name"]] = ingred
-      end
-    end
-    
     if File.exists?(Ingredient::Config::DB_JS_GROUPS)
       @ingredient_groups = load_json(Ingredient::Config::DB_JS_GROUPS)
       
@@ -105,7 +104,7 @@ class CocktailsProcessor < Inshaker::Processor
         i += 1
       end
       
-      @all_ingredients.each do |name, ingredient|
+      Ingredient.all.each do |ingredient|
         @ingredient_weight_by_group[ingredient["name"]] = hash[ingredient["group"]]
       end
     end
@@ -116,7 +115,7 @@ class CocktailsProcessor < Inshaker::Processor
     indent do
     @cocktails.each do |name, cocktail|
       cocktail["ingredients"].each do |ingred|
-        unless @all_ingredients[ingred[0]]
+        unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
           if ingred[0].has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
@@ -130,9 +129,23 @@ class CocktailsProcessor < Inshaker::Processor
     indent do
     @cocktails.each do |name, cocktail|
       cocktail["garnish"].each do |ingred|
-        unless @all_ingredients[ingred[0]]
+        unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
           if ingred[0].has_diacritics
+            say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
+          end
+        end
+      end
+    end
+    end # indent
+    
+    say "проверяю штучки"
+    indent do
+    @cocktails.each do |name, cocktail|
+      cocktail["tools"].each do |tool|
+        unless Tool[tool]
+          error "#{name}: нет такой штучки «#{tool}»"
+          if tool.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
