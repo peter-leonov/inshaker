@@ -27,7 +27,15 @@ class MyBarProcessor < Inshaker::Processor
   end
   
   def update
+    Process.fork do
+      Dir.chdir(Config::DB_DIR)
+      Process.exec("git pull")
+    end
     
+    unless Process.wait2[1].exitstatus == 0
+      error "не удалось получить последнюю версию базы моих баров"
+      return
+    end
   end
   
   def analyse
