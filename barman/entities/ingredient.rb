@@ -24,6 +24,10 @@ class Ingredient < Inshaker::Entity
     end
   end
   
+  def self.all
+    @db
+  end
+  
   def self.[] name
     @by_name[name]
   end
