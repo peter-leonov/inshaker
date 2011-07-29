@@ -22,7 +22,7 @@ a { color: #000; }
 #bottom .main-menu,
 #bottom .left-menu { position: relative; z-index: 1; }
 html.msie #bottom a { background-color: #000; }
-html { background: #fff url(bg.jpg) center 300px repeat-y; }
+html { background: #fff url(bg.jpg) center -170px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px #311; color: #fff; }
 button.strong b { text-shadow: 1px 1px 1px #a12420; color: #fff; }
 
