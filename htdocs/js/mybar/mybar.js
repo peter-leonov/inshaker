@@ -118,6 +118,7 @@ function onready ()
 				}
 			},
 			links : {
+				vkontakte : $$('#common-main-wrapper .share-box .share-wrapper .vkontakte-share')[0],
 				facebook : $$('#common-main-wrapper .share-box .share-wrapper .facebook-share')[0],
 				twitter : $$('#common-main-wrapper .share-box .share-wrapper .twitter-share')[0]
 			}
