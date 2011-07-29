@@ -157,13 +157,14 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 .main-box .share-box .share-wrapper .twitter-share,
 .main-box .share-box .share-wrapper .email-share,
 .main-box .share-box .share-wrapper .web-share,
-.main-box .share-box .share-wrapper .menu-link { display: block; width: 32px; height: 32px; float: left; margin-left: 4px; background: url("mybar.png") no-repeat -838px -411px transparent; cursor: pointer; overflow: hidden; text-indent: -300px; }
-.main-box .share-box .share-wrapper .twitter-share { background-position: -874px -411px; }
-.main-box .share-box .share-wrapper .email-share { display: none; background-position: -911px -411px; }
-.main-box .share-box .share-wrapper .web-share { background-position: -948px -411px; }
+.main-box .share-box .share-wrapper .menu-link { display: block; width: 32px; height: 32px; float: left; margin-left: 4px; background: url("mybar.png") no-repeat; cursor: pointer; overflow: hidden; text-indent: -300px; }
+.main-box .share-box .share-wrapper .facebook-share { background-position: -838px -411px; }
 .main-box .share-box .share-wrapper .facebook-share:hover { background-position: -695px -411px; }
+.main-box .share-box .share-wrapper .twitter-share { background-position: -874px -411px; }
 .main-box .share-box .share-wrapper .twitter-share:hover { background-position: -731px -411px; }
+.main-box .share-box .share-wrapper .email-share { display: none; background-position: -911px -411px; }
 .main-box .share-box .share-wrapper .email-share:hover { background-position: -768px -411px; }
+.main-box .share-box .share-wrapper .web-share { background-position: -948px -411px; }
 .main-box .share-box .share-wrapper .web-share:hover { background-position: -805px -411px; }
 .main-box .share-box .share-wrapper .menu-link { background-position: 0 -175px; }
 .main-box .share-box .share-wrapper .menu-link:hover { background-position: -50px -175px; }
