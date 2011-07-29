@@ -12,6 +12,10 @@ class MyBarProcessor < Inshaker::Processor
   
   def initialize
     super
+    
+    @total = 0
+    @empty = 0
+    @hidden = 0
   end
   
   def job_name
@@ -21,6 +25,7 @@ class MyBarProcessor < Inshaker::Processor
   def job
     update
     analyse
+    report
     
     unless errors?
       # something
@@ -47,22 +52,36 @@ class MyBarProcessor < Inshaker::Processor
       next unless m
       if /bar.json$/ =~ fname
         id = m[1]
-        say id
-        indent do
+        # say id
+        # indent do
         process File.open(fname), id
-        end # indent
+        # end # indent
       end
     end
   end
   
   def process f, id
-    
+    @total += 1
     begin
       data = JSON.parse(f.read)
     rescue Exception => e
-      warning "не могу разобрать данные из файла “#{f.path}”"
+      warning "не могу разобрать данные бара “#{id}”"
       return
     end
+    
+    if data["ingredients"].empty?
+      @empty += 1
+    end
+    
+    unless data["hiddenCocktails"].empty?
+      @hidden += 1
+    end
+  end
+  
+  def report
+    say "всего: #{@total}"
+    say "пустых: #{@empty}"
+    say "прячут коктейли: #{@hidden}"
   end
 end
 
