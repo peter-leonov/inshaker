@@ -18,7 +18,7 @@ a { color: #000; }
 #bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
 #bottom a { color: #d5b269; }
 html.msie #bottom a { background-color: #000; }
-html { background: #000 url(bg.jpg) center 74px; }
+html { background: #fff url(bg.jpg) center 300px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
 button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
 
