@@ -29,7 +29,7 @@ class MyBarProcessor < Inshaker::Processor
   def update
     Process.fork do
       Dir.chdir(Config::DB_DIR)
-      Process.exec("git pull")
+      Process.exec("git", "pull")
     end
     
     unless Process.wait2[1].exitstatus == 0
