@@ -2,6 +2,7 @@
 # encoding: utf-8
 require "inshaker"
 require "entities/tool"
+require "find"
 
 class MyBarProcessor < Inshaker::Processor
   
@@ -40,6 +41,28 @@ class MyBarProcessor < Inshaker::Processor
   
   def analyse
     say "анализирую мои бары"
+    
+    Find.find(Config::DB_DIR) do |fname|
+      m = fname.match(/\/([^\/]+)\/bar.json/)
+      next unless m
+      if /bar.json$/ =~ fname
+        id = m[1]
+        say id
+        indent do
+        process File.open(fname), id
+        end # indent
+      end
+    end
+  end
+  
+  def process f, id
+    
+    begin
+      data = JSON.parse(f.read)
+    rescue Exception => e
+      warning "не могу разобрать данные из файла “#{f.path}”"
+      return
+    end
   end
 end
 
