@@ -85,6 +85,7 @@ b.rb { right: 0; bottom: 0; }
 #index-page #top .logo { cursor: default; }
 
 #bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
+#bottom a { padding: 7px; }
 #bottom .main-menu{float:right;}
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
@@ -97,7 +98,7 @@ b.rb { right: 0; bottom: 0; }
 html.job-page #bottom a.job,
 html.about-page #bottom a.about,
 #combinator-page #bottom .main-menu a.combinator
-{ color: inherit; cursor: default; text-decoration: none !important; }
+{ color: inherit; cursor: text; text-decoration: none !important; }
 
 
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}

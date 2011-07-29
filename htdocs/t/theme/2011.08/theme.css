@@ -9,17 +9,22 @@
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 85px; height: 40px; right: 0; top: -8px; }
+#spotlighted { width: 50px; height: 42px; right: -8px; top: -9px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 320px; height: 600px; left: 177px; bottom: -695px; }
-#branded-image-holder { height: 800px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 685px; left: 150px; bottom: -790px; }
+#branded-image-holder { height: 900px; }
 a { color: #000; }
-#top .nav a:hover { border-bottom-color: #88d824; }
-#bottom { color: #bbb; }
-#bottom a { color: #000; }
-html { background: #fff url(bg.png) repeat-x center 65px; }
-button.rounded b { text-shadow: 1px 1px 0 #624; color: #fff; }
-button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
+#top .nav .link:hover { border-bottom-color: #ab0e1c; }
+#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 80px; position: static; }
+#bottom a { color: #e50000; }
+#bottom .main-menu { margin-right: 240px; }
+#bottom .left-menu { margin-left: -7px; }
+#bottom .main-menu,
+#bottom .left-menu { position: relative; z-index: 1; }
+html.msie #bottom a { background-color: #000; }
+html { background: #fff url(bg.jpg) center 300px repeat-y; }
+button.rounded b { text-shadow: 1px 1px 1px #311; color: #fff; }
+button.strong b { text-shadow: 1px 1px 1px #a12420; color: #fff; }
 
 /* calculator.css */
 #b-bill dt,
@@ -28,7 +33,6 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
-#cart_draghere b {}
 
 /* cocktails.css */
 .square-list .prev,
@@ -46,7 +50,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 #results_display a {}
 #letters_all,
 #alphabetical-ru a { color: #fff; }
-#alphabetical-ru a.selected-button { color: #000; }
+#alphabetical-ru a.selected-button { color: #890814; }
 #search_tabs li { color: #000; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
@@ -60,8 +64,8 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 .b-search .groups dd { color: #231f20; }
 .b-search .groups dd.selected-button { color: #f1ece3; }
 .b-search .groups dd.disabled { color: #999; }
-.autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #aaa; }
-.autocomplete .item.selected { background-color: #d2d2d2; }
+#search_by_ingreds .autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border-color: #570709; }
+#search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
 
 /* cocktail.css */
 .b-more dt,
@@ -70,52 +74,7 @@ button.strong b { text-shadow: 1px 1px 0 #aaa; color: #000; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
-#output .help-line .hint { color: #96bf0d; }
+#output .help-line .hint { color: #ab0e1c; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
-
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-/* common.css */
-#top .logo,
-.b-title #spotlighted,
-.b-more-cocktails .prev,
-.b-more-cocktails .next,
-.cocktail-list .prev,
-.cocktail-list .next,
-.win-shop .content .less i,
-.win-shop .content form dl dt i,
-.win-shop .content .more i,
-button.rounded { background-image: url(common.8.png); }
-#alcohol-harm { background-image: url(alcohol-harm.8.png); }
-#branded-image { background-image: url(image.8.png); }
-
-/* calculator.css */
-#b-bill dt,
-#b-bill dd li button,
-#b-bill .print-call i,
-#cart_draghere i { background-image: url(common.8.png); }
-
-/* cocktails.css */
-.square-list .prev,
-.square-list .next { background-image: url(common.8.png) }
-#search_tabs li,
-#alphabetical-ru a.selected-button,
-.ingreds-list,
-.ingreds-list .rem,
-.pager-big .prev,
-.pager-big .next,
-.b-content .pager .p-list a.selected-button,
-#all_list i,
-.b-search .groups dd.selected-button,
-.search-control { background-image: url(cocktails.8.png) }
-
-/* cocktail.css */
-.b-more dt,
-.b-more dt b { background-image: url(cocktail.8.png); }
-.hreview .desc h2 i { background-image: url(common.8.png); }
-
-/* matching.css */
-#top-alphabetical .item.selected { background-image: url(ingredients.8.png) }
-<!--# endif -->
