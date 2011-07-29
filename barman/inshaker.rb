@@ -29,6 +29,14 @@ module Inshaker
     
     def self.check_integrity
     end
+    
+    def self.all
+      @db
+    end
+
+    def self.[] name
+      @by_name[name]
+    end
   end
   
   class Processor

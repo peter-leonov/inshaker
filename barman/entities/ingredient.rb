@@ -24,14 +24,6 @@ class Ingredient < Inshaker::Entity
     end
   end
   
-  def self.all
-    @db
-  end
-  
-  def self.[] name
-    @by_name[name]
-  end
-  
   def self.check_integrity
     say "проверяю связность данных ингредиентов"
   end
