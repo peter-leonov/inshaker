@@ -15,8 +15,12 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #top .nav .link:hover { border-bottom-color: #ab0e1c; }
-#bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
-#bottom a { color: #d5b269; }
+#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 80px; position: static; }
+#bottom a { color: #e50000; }
+#bottom .main-menu { margin-right: 240px; }
+#bottom .left-menu { margin-left: -7px; }
+#bottom .main-menu,
+#bottom .left-menu { position: relative; z-index: 1; }
 html.msie #bottom a { background-color: #000; }
 html { background: #fff url(bg.jpg) center 300px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
