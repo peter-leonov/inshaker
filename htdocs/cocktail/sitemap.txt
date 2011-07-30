@@ -859,6 +859,7 @@ http://www.inshaker.ru/cocktail/french_daiquiri/
 http://www.inshaker.ru/cocktail/french_desert/
 http://www.inshaker.ru/cocktail/french_maple_tea/
 http://www.inshaker.ru/cocktail/french_75/
+http://www.inshaker.ru/cocktail/french_75_2/
 http://www.inshaker.ru/cocktail/fruit_blazer/
 http://www.inshaker.ru/cocktail/grapefruit_frutoccino/
 http://www.inshaker.ru/cocktail/fusion_crush/
@@ -947,3 +948,4 @@ http://www.inshaker.ru/cocktail/yankee/
 http://www.inshaker.ru/cocktail/japanese_cosmopolitan/
 http://www.inshaker.ru/cocktail/japanese_sidecar/
 http://www.inshaker.ru/cocktail/japanese_harvest/
+http://www.inshaker.ru/cocktail/number_one/
