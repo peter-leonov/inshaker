@@ -20,6 +20,7 @@ http://www.inshaker.ru/cocktail/amba/
 http://www.inshaker.ru/cocktail/americano/
 http://www.inshaker.ru/cocktail/americano_2/
 http://www.inshaker.ru/cocktail/amigo/
+http://www.inshaker.ru/cocktail/pineapple-pomegranate_fresh/
 http://www.inshaker.ru/cocktail/pineapple_whisky/
 http://www.inshaker.ru/cocktail/pineapple_detox/
 http://www.inshaker.ru/cocktail/angel_s_tits/
@@ -217,6 +218,7 @@ http://www.inshaker.ru/cocktail/hot_rum_with_butter/
 http://www.inshaker.ru/cocktail/hot_rum_punch/
 http://www.inshaker.ru/cocktail/hot_toddy/
 http://www.inshaker.ru/cocktail/pomegranate_margarita/
+http://www.inshaker.ru/cocktail/pomegranate-grapefruit_fresh/
 http://www.inshaker.ru/cocktail/pomegranate_tini/
 http://www.inshaker.ru/cocktail/grand_mimosa/
 http://www.inshaker.ru/cocktail/grand_sazerac/
@@ -540,6 +542,7 @@ http://www.inshaker.ru/cocktail/milk_and_honey/
 http://www.inshaker.ru/cocktail/milky_brandy_punch/
 http://www.inshaker.ru/cocktail/milky_whisky_punsh/
 http://www.inshaker.ru/cocktail/montpensier/
+http://www.inshaker.ru/cocktail/carrot-pear_fresh/
 http://www.inshaker.ru/cocktail/carrot_chaser/
 http://www.inshaker.ru/cocktail/mors_martini/
 http://www.inshaker.ru/cocktail/sea_breeze/
@@ -590,6 +593,7 @@ http://www.inshaker.ru/cocktail/buckthorn_daiquiri/
 http://www.inshaker.ru/cocktail/sea-buckthorn_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/fire_of_the_cuillins/
 http://www.inshaker.ru/cocktail/cucumber-basil_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/cucumber-pear_fresh/
 http://www.inshaker.ru/cocktail/cucumber_cooler/
 http://www.inshaker.ru/cocktail/cucumber_lemonade/
 http://www.inshaker.ru/cocktail/cucumber_tini/
@@ -821,6 +825,7 @@ http://www.inshaker.ru/cocktail/toddy_grog/
 http://www.inshaker.ru/cocktail/tom_and_jerry/
 http://www.inshaker.ru/cocktail/tom_yam_martini/
 http://www.inshaker.ru/cocktail/tom_yam_chaser/
+http://www.inshaker.ru/cocktail/tomato_fresh_with_parsley/
 http://www.inshaker.ru/cocktail/tommy_d_sour/
 http://www.inshaker.ru/cocktail/top_banana/
 http://www.inshaker.ru/cocktail/top_billing/
@@ -926,9 +931,12 @@ http://www.inshaker.ru/cocktail/southern_sea_breeze/
 http://www.inshaker.ru/cocktail/universal/
 http://www.inshaker.ru/cocktail/apple_with_cardamon/
 http://www.inshaker.ru/cocktail/apple_sambuca/
+http://www.inshaker.ru/cocktail/apple-orange_fresh/
 http://www.inshaker.ru/cocktail/apple-vanilla_mulled_wine/
 http://www.inshaker.ru/cocktail/apple_and_ginger_margarita/
 http://www.inshaker.ru/cocktail/apple-ginger_mojito/
+http://www.inshaker.ru/cocktail/apple-carrot_fresh_with_ginger/
+http://www.inshaker.ru/cocktail/apple-celery_fresh_with_ginger/
 http://www.inshaker.ru/cocktail/apple_temptation/
 http://www.inshaker.ru/cocktail/apple_joy/
 http://www.inshaker.ru/cocktail/apple_lemonade_in_a_jug/
