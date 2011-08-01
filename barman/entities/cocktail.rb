@@ -43,6 +43,17 @@ class Cocktail < Inshaker::Entity
     @by_name = @db.hash_index("name")
   end
   
+  def self.index_names_by_ingredient
+    return if @names_by_ingredient
+    
+    @names_by_ingredient = Hash.new { |h, k| h[k] = [] }
+    @db.each do |cocktail|
+      cocktail["ingredients"].each do |part|
+        @names_by_ingredient[part[0]] << cocktail["name"]
+      end
+    end
+  end
+  
   def self.get_by_tag tag
     @by_tag[tag.ci_index]
   end
@@ -64,5 +75,28 @@ class Cocktail < Inshaker::Entity
       end # indent
     end
     end #indent
+  end
+  
+  def self.by_ingredients ingredients
+    index_names_by_ingredient
+    
+    partly = {}
+    partly.default = 0
+    
+    ingredients.each do |iname|
+      @names_by_ingredient[iname].each do |cname|
+        partly[cname] += 1
+      end
+    end
+    
+    full = []
+    partly.each do |cname, count|
+      cocktail = Cocktail[cname]
+      if cocktail["ingredients"].length == count
+        full << cname
+      end
+    end
+    
+    return full
   end
 end
