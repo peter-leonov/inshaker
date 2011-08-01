@@ -63,18 +63,27 @@ class MyBarProcessor < Inshaker::Processor
   end
   
   def analyse
-    say "анализирую мои бары"
-    
+    say "собираю список"
+    all = []
     Find.find(Config::DB_DIR) do |fname|
       m = fname.match(/\/([^\/]+)\/bar.json/)
       next unless m
       if /bar.json$/ =~ fname
         id = m[1]
-        # say id
-        # indent do
-        process File.open(fname), id
-        # end # indent
+        all << [fname, id]
       end
+    end
+    
+    say "анализирую мои бары"
+    l = all.length
+    last = 0
+    all.each_with_index do |v, i|
+      now = (100.0 * (i + 1) / l).to_i
+      if now % 10 == 0 and last != now
+        say "#{now}%"
+        last = now
+      end
+      process File.open(v[0]), v[1]
     end
   end
   
