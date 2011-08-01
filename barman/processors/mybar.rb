@@ -201,8 +201,6 @@ class MyBarProcessor < Inshaker::Processor
           say "#{name}: #{@cocktails[name]} (#{percent @cocktails[name]}%)"
         end
       end
-      
-      say "есть в барах, но нет на сайте: #{@cocktails_deleted.keys.join(", ")}"
     end
     
     
