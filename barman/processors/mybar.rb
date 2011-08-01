@@ -22,6 +22,13 @@ class MyBarProcessor < Inshaker::Processor
     @ingredients.default = 0
     @ingredients_deleted = {}
     @ingredients_deleted.default = 0
+    
+    @cocktails = {}
+    @cocktails.default = 0
+    @cocktails_deleted = {}
+    @cocktails_deleted.default = 0
+    @cocktails_ingredients_unused = {}
+    @cocktails_ingredients_unused.default = 0
   end
   
   def job_name
@@ -30,6 +37,7 @@ class MyBarProcessor < Inshaker::Processor
   
   def job
     Ingredient.init
+    Cocktail.init
     
     update
     analyse
@@ -80,6 +88,7 @@ class MyBarProcessor < Inshaker::Processor
     unless data["ingredients"].empty?
       @playing += 1
       process_ingredients data["ingredients"]
+      process_cocktails data["ingredients"]
     end
     
     unless data["hiddenCocktails"].empty?
@@ -94,6 +103,32 @@ class MyBarProcessor < Inshaker::Processor
         @ingredients_deleted[name] += 1
       end
     end
+  end
+  
+  def process_cocktails ingredients
+    cocktails = Cocktail.by_ingredients(ingredients)
+    
+    ingredients_used = {}
+    cocktails.each do |cname|
+      @cocktails[cname] += 1
+      
+      cocktail = Cocktail[cname]
+      unless cocktail
+        @cocktails_deleted[cname] += 1
+        next
+      end
+      
+      cocktail["ingredients"].each do |iname|
+        ingredients_used[iname] = true
+      end
+    end
+    
+    ingredients.each do |iname|
+      unless ingredients_used[iname]
+        @cocktails_ingredients_unused[iname] += 1
+      end
+    end
+    
   end
   
   def report
@@ -123,6 +158,21 @@ class MyBarProcessor < Inshaker::Processor
       end
       
       say "есть в барах, но нет на сайте: #{@ingredients_deleted.keys.join(", ")}"
+    end
+    
+    say ""
+    say "Коктейли"
+    indent do
+      cocktails_top = @cocktails.keys
+      cocktails_top.sort! { |a, b| @cocktails[b] - @cocktails[a] }
+      say "топ коктейлей:"
+      indent do
+        cocktails_top[0..10].each do |name|
+          say "#{name}: #{@cocktails[name]} (#{percent @cocktails[name]}%)"
+        end
+      end
+      
+      say "есть в барах, но нет на сайте: #{@cocktails_deleted.keys.join(", ")}"
     end
     
     
