@@ -22,7 +22,7 @@ button.active .a { display: inline; }
 .page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); }
 
 
-.page.shaker form { position: absolute; left: 175px; width: 195px; font-size: 16px; }
+.page.shaker form { position: absolute; left: 175px; top: 55px; width: 195px; font-size: 16px; }
 .page.shaker form label { display: block; padding: 1px 0; }
 .page.shaker form label input { vertical-align: bottom; margin: 3px; }
 .page.shaker .shake { position: absolute; right: 20px; top: 120px; }
@@ -39,7 +39,7 @@ button.active .a { display: inline; }
 
 
 
-#output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; white-space: pre-line; }
+#output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; }
 #output .welcome { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 #output.server-error { background: #aa0000; color: #000; border-color: #400; }
 #output .error { color: #d40; }

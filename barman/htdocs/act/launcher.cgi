@@ -30,6 +30,8 @@ class Launcher
       "goods" => ["./processors/goods.rb", "Покупки"],
       "magazine" => ["./processors/magazine.rb", "Журнал"],
       "blog" => ["./processors/blog.rb", "Блог"],
+      "mybar" => ["./processors/mybar.rb", "Мой бар"],
+      
       "deployer" => ["./deployer.rb", "Заливалку"],
       "status" => ["./status.rb", "Статус"],
       "reset" => ["./reset.rb", "Сброс"]
