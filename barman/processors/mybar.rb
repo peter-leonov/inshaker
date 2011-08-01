@@ -74,8 +74,8 @@ class MyBarProcessor < Inshaker::Processor
       end
     end
     
-    say "анализирую мои бары"
     l = all.length
+    say "анализирую #{l} #{l.plural("мой бар", "моих бара", "моих баров")}"
     last = 0
     all.each_with_index do |v, i|
       now = (100.0 * (i + 1) / l).to_i
