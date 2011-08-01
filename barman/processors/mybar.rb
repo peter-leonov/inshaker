@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
-require "entities/tool"
+require "entities/ingredient"
+require "entities/cocktail"
 require "find"
 
 class MyBarProcessor < Inshaker::Processor
@@ -14,8 +15,11 @@ class MyBarProcessor < Inshaker::Processor
     super
     
     @total = 0
-    @empty = 0
+    @playing = 0
     @hidden = 0
+    
+    @ingredients = {}
+    @ingredients.default = 0
   end
   
   def job_name
@@ -23,6 +27,8 @@ class MyBarProcessor < Inshaker::Processor
   end
   
   def job
+    Ingredient.init
+    
     update
     analyse
     report
@@ -69,8 +75,9 @@ class MyBarProcessor < Inshaker::Processor
       return
     end
     
-    if data["ingredients"].empty?
-      @empty += 1
+    unless data["ingredients"].empty?
+      @playing += 1
+      process_ingredients data["ingredients"]
     end
     
     unless data["hiddenCocktails"].empty?
@@ -78,10 +85,30 @@ class MyBarProcessor < Inshaker::Processor
     end
   end
   
+  def process_ingredients ingredients
+    ingredients.each do |name|
+      @ingredients[name] += 1
+    end
+  end
+  
   def report
-    say "всего: #{@total}"
-    say "пустых: #{@empty}"
-    say "прячут коктейли: #{@hidden}"
+    def percent a, b=@playing
+      (100.0 * a / b).round(1)
+    end
+    say "всего баров: #{@total}"
+    say "играющих: #{@playing} (#{percent @playing, @total}%)"
+    say "далее % считаются от играющих (непустых) баров"
+    say "прячут коктейли: #{@hidden} (#{percent @hidden}%)"
+    
+    ingredients_top = @ingredients.keys
+    ingredients_top.sort! { |a, b| @ingredients[b] - @ingredients[a] }
+    say "топ ингредиентов:"
+    indent do
+      ingredients_top[0..10].each do |name|
+        say "#{name}: #{@ingredients[name]} (#{percent @ingredients[name]}%)"
+      end
+    end
+    
   end
 end
 
