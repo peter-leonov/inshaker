@@ -39,7 +39,7 @@ button.active .a { display: inline; }
 
 
 
-#output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; white-space: pre-line; }
+#output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; }
 #output .welcome { display: block; font-size: 18px; text-align: center; margin-top: 140px; }
 #output.server-error { background: #aa0000; color: #000; border-color: #400; }
 #output .error { color: #d40; }
