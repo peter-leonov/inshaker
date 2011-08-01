@@ -88,13 +88,14 @@ class MyBarProcessor < Inshaker::Processor
   end
   
   def process f, id
-    @total += 1
     begin
       data = JSON.parse(f.read)
     rescue Exception => e
       warning "не могу разобрать данные бара “#{id}”"
       return
     end
+    
+    @total += 1
     
     unless data["ingredients"].empty?
       @playing += 1
