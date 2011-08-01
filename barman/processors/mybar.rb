@@ -27,6 +27,8 @@ class MyBarProcessor < Inshaker::Processor
     @cocktails.default = 0
     @cocktails_deleted = {}
     @cocktails_deleted.default = 0
+    @cocktails_ingredients_used = {}
+    @cocktails_ingredients_used.default = 0
     @cocktails_ingredients_unused = {}
     @cocktails_ingredients_unused.default = 0
   end
@@ -119,16 +121,17 @@ class MyBarProcessor < Inshaker::Processor
       end
       
       cocktail["ingredients"].each do |iname|
-        ingredients_used[iname] = true
+        ingredients_used[iname[0]] = true
       end
     end
     
-    ingredients.each do |iname|
-      unless ingredients_used[iname]
-        @cocktails_ingredients_unused[iname] += 1
-      end
+    ingredients_used.keys.each do |iname|
+      @cocktails_ingredients_used[iname] += 1
     end
     
+    (ingredients - ingredients_used.keys).each do |iname|
+      @cocktails_ingredients_unused[iname] += 1
+    end
   end
   
   def report
@@ -150,10 +153,28 @@ class MyBarProcessor < Inshaker::Processor
     indent do
       ingredients_top = @ingredients.keys
       ingredients_top.sort! { |a, b| @ingredients[b] - @ingredients[a] }
-      say "топ ингредиентов:"
+      say "топ добавленных ингредиентов:"
       indent do
         ingredients_top[0..10].each do |name|
           say "#{name}: #{@ingredients[name]} (#{percent @ingredients[name]}%)"
+        end
+      end
+      
+      ingredients_top = @cocktails_ingredients_used.keys
+      ingredients_top.sort! { |a, b| @cocktails_ingredients_used[b] - @cocktails_ingredients_used[a] }
+      say "топ используемых ингредиентов:"
+      indent do
+        ingredients_top[0..10].each do |name|
+          say "#{name}: #{@cocktails_ingredients_used[name]} (#{percent @cocktails_ingredients_used[name]}%)"
+        end
+      end
+      
+      ingredients_top = @cocktails_ingredients_unused.keys
+      ingredients_top.sort! { |a, b| @cocktails_ingredients_unused[b] - @cocktails_ingredients_unused[a] }
+      say "топ неиспользуемых ингредиентов:"
+      indent do
+        ingredients_top[0..10].each do |name|
+          say "#{name}: #{@cocktails_ingredients_unused[name]} (#{percent @cocktails_ingredients_unused[name]}%)"
         end
       end
       
@@ -167,7 +188,7 @@ class MyBarProcessor < Inshaker::Processor
       cocktails_top.sort! { |a, b| @cocktails[b] - @cocktails[a] }
       say "топ коктейлей:"
       indent do
-        cocktails_top[0..10].each do |name|
+        cocktails_top[0..30].each do |name|
           say "#{name}: #{@cocktails[name]} (#{percent @cocktails[name]}%)"
         end
       end
