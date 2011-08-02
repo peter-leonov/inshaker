@@ -3,7 +3,7 @@
 require "inshaker"
 require "entities/cocktail"
 
-class EventsProcessor < Inshaker::Processor
+class BlogProcessor < Inshaker::Processor
   
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
@@ -380,4 +380,4 @@ class EventsProcessor < Inshaker::Processor
   end
 end
 
-exit EventsProcessor.new.run
+exit BlogProcessor.new.run
