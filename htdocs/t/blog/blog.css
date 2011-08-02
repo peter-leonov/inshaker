@@ -14,7 +14,7 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 
 #fb-likebutton { position: absolute; right: 0; top: 28px; width: 150px; height: 21px; overflow: hidden; border: none; }
 
-#big-banner { margin: 10px 0; padding: 20px 0; border-top: 1px solid #eee; }
+#big-banner { margin: 10px 0; padding: 20px 0; border-top: 1px solid #eee; position: relative; }
 
 #sidebar { float: right; }
 #small-banners { width: 304px; margin-right: -2px; padding: 20px 0 0 0; overflow: hidden; border-top: 1px solid #eee; }
