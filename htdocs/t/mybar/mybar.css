@@ -272,9 +272,7 @@ html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 #bottom { padding-top: 5px; }
 #bottom .wrapper { width: 960px; margin: 0 auto; }
 #bottom .wrapper .top-corners { width: 980px; height: 18px; position: relative; left: -10px; background: url('top-corners.png') no-repeat left top; }
-#bottom .wrapper .content { padding-top: 10px; background: #fff; position: relative; }
-#bottom .wrapper .content .left-menu { margin-left: 23px; }
-#bottom .wrapper .content .main-menu { margin-right: 23px; }
+#bottom .wrapper .content { padding: 10px 23px 0 23px; background: #fff; position: relative; }
 #bottom a { color: #2e63c1; }
 #bottom #alcohol-harm { padding-bottom: 3px; }
 

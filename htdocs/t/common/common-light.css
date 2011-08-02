@@ -69,6 +69,7 @@ html.blog-section #top .nav .blog .link
 #bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
 #bottom a { padding: 7px; }
 #bottom .main-menu{float:right;}
+#bottom .left-menu { margin-left: -7px; }
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
 #cocktail-page #bottom .main-menu a.cocktails,

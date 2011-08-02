@@ -286,7 +286,7 @@ class EventsProcessor < Inshaker::Processor
     if banner["ext"] == "swf"
       markup = %Q{
         <object width="960" height="90" type="application/x-shockwave-flash" data="/blog-banners/i/big.#{banner["ext"]}">
-          <param name="wmode" value="transparent"/>
+          <param name="wmode" value="opaque"/>
           <param name="movie" value="/blog-banners/i/big.#{banner["ext"]}"/>
         </object>
       }
