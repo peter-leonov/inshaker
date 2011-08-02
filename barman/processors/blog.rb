@@ -35,7 +35,6 @@ class BlogProcessor < Inshaker::Processor
     sync_base "Blog"
     
     Cocktail.init
-    prepare_dirs
     
     update_blog
     update_banners
@@ -45,10 +44,6 @@ class BlogProcessor < Inshaker::Processor
       flush_links
       flush_json
     end
-  end
-  
-  def prepare_dirs
-    FileUtils.mkdir_p [Config::HT_ROOT, Config::HT_ROOT_BAN]
   end
   
   def update_blog
