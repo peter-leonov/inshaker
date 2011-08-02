@@ -331,11 +331,11 @@ class EventsProcessor < Inshaker::Processor
         end
         
         if href == "внутрь"
-          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}" class="image"/></a></div>}
         elsif href
-          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}" class="image"/></a></div>}
         else
-          %Q{<div class="image-box"><img src="#{src}"/></div>}
+          %Q{<div class="image-box"><img src="#{src}" class="image"/></div>}
         end
       elsif name == "коктейль"
         cocktail = Cocktail[data]
