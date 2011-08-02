@@ -2,6 +2,7 @@ http://www.inshaker.ru/bar/berry/
 http://www.inshaker.ru/bar/brut/
 http://www.inshaker.ru/bar/new/
 http://www.inshaker.ru/bar/old_fashioned/
+http://www.inshaker.ru/bar/relab/
 http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/aloha/
 http://www.inshaker.ru/bar/barbados/
