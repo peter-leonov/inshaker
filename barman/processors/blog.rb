@@ -3,7 +3,7 @@
 require "inshaker"
 require "entities/cocktail"
 
-class EventsProcessor < Inshaker::Processor
+class BlogProcessor < Inshaker::Processor
   
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
@@ -35,20 +35,14 @@ class EventsProcessor < Inshaker::Processor
     sync_base "Blog"
     
     Cocktail.init
-    prepare_dirs
     
     update_blog
-    update_banners
     
     unless errors?
       cleanup_deleted
       flush_links
       flush_json
     end
-  end
-  
-  def prepare_dirs
-    FileUtils.mkdir_p [Config::HT_ROOT, Config::HT_ROOT_BAN]
   end
   
   def update_blog
@@ -166,6 +160,7 @@ class EventsProcessor < Inshaker::Processor
       @entities.each do |name, entity|
         links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
       end
+      links.puts ""
     end
   end
   
@@ -185,136 +180,11 @@ class EventsProcessor < Inshaker::Processor
         end
       end
     end
-
+    
     def get_binding
       binding
     end
   end
-  
-  
-  # banners ZONE ;)
-  
-  def update_banners
-    say "обновляю банеры"
-    indent do
-    
-    FileUtils.mkdir_p [Config::HT_ROOT_BAN + 'i']
-    @small_banners = []
-    
-    ht_dir = Dir.new(Config::HT_ROOT_BAN)
-    
-    Dir.new(Config::BASE_DIR + "banners/small").each_dir do |dir|
-      process_small_banner dir, ht_dir
-    end
-    
-    flush_banners_html
-    
-    process_big_banner Dir.new(Config::BASE_DIR + "banners/big"), ht_dir
-    
-    end #indent
-  end
-  
-  def process_small_banner src_dir, ht_dir
-    say src_dir.name
-    indent do
-    
-    banner = {}
-    @small_banners << banner
-    
-    banner["src_dir"] = src_dir
-    
-    num = @small_banners.length
-    banner["num"] = num
-    
-    yaml = load_yaml(src_dir.path + "/about.yaml")
-    banner["href"] = yaml["Ссылка"]
-    
-    build_image_paths("#{ht_dir.path}/i/small-#{num}.$$").each do |v|
-      if File.exists?(v[:path])
-        File.unlink(v[:path])
-      end
-    end
-    
-    new_image = guess_image_path("#{src_dir.path}/image.$$")
-    unless new_image
-      error "в папке модного банера нету никакой картинки (image.*)"
-    else
-      ext = new_image[:ext]
-      banner["ext"] = ext
-      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/small-#{num}.#{ext}", @mv_opt)
-    end
-    
-    end #indent
-  end
-  
-  def flush_banners_html
-    File.open(Config::HT_ROOT_BAN + "/small.html", "w+") do |f|
-      @small_banners.each do |banner|
-        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.#{banner["ext"]}"/></a></li>}
-      end
-    end
-  end
-  
-  def process_big_banner src_dir, ht_dir
-    say "big"
-    indent do
-    
-    banner = {}
-    
-    banner["src_dir"] = src_dir
-    
-    yaml = load_yaml(src_dir.path + "/about.yaml")
-    banner["href"] = yaml["Ссылка"]
-    
-    
-    build_image_paths("#{ht_dir.path}/i/big.$$").each do |v|
-      if File.exists?(v[:path])
-        File.unlink(v[:path])
-      end
-    end
-    
-    new_image = guess_image_path("#{src_dir.path}/image.$$")
-    unless new_image
-      error "в папке крутого банера нету никакой картинки (image.*)"
-    else
-      ext = new_image[:ext]
-      banner["ext"] = ext
-      FileUtils.cp_r(new_image[:path], "#{ht_dir.path}/i/big.#{ext}", @mv_opt)
-    end
-    
-    markup = nil
-    if banner["ext"] == "swf"
-      markup = %Q{
-        <object width="960" height="90" type="application/x-shockwave-flash" data="/blog-banners/i/big.#{banner["ext"]}">
-          <param name="wmode" value="opaque"/>
-          <param name="movie" value="/blog-banners/i/big.#{banner["ext"]}"/>
-        </object>
-      }
-    else
-      markup = %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.#{banner["ext"]}"/></a>}
-    end
-    
-    File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
-      f.puts markup
-    end
-    
-    end #indent
-  end
-  
-  def build_image_paths path
-    ['jpg', 'png', 'gif', 'swf'].map { |ext| {:path => path.gsub("$$", ext), :ext => ext} }
-  end
-  
-  def guess_image_path path
-    build_image_paths(path).each do |v|
-      if File.exists?(v[:path])
-        return v
-      end
-    end
-    return nil
-  end
-  
-  # etc
   
   def markup text
     # links
@@ -330,11 +200,11 @@ class EventsProcessor < Inshaker::Processor
         end
         
         if href == "внутрь"
-          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}" class="image"/></a></div>}
         elsif href
-          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}" class="image"/></a></div>}
         else
-          %Q{<div class="image-box"><img src="#{src}"/></div>}
+          %Q{<div class="image-box"><img src="#{src}" class="image"/></div>}
         end
       elsif name == "коктейль"
         cocktail = Cocktail[data]
@@ -379,4 +249,4 @@ class EventsProcessor < Inshaker::Processor
   end
 end
 
-exit EventsProcessor.new.run
+exit BlogProcessor.new.run

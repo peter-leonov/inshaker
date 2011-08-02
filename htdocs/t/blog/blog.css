@@ -37,7 +37,7 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 #the-one .post .more .date { position: absolute; right: 0; top: 0; }
 .post .body { font-size: 14px; line-height: 22px; }
 .post .body .image-box { display: block; margin: 1em 0; }
-.post .body .image-box .image { margin: 0 auto; }
+.post .body .image-box .image {  }
 .post .body .crossed { text-decoration: line-through; }
 .post .body hr { border: none; border-top: 1px solid #eee; margin: 25px 10px; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
