@@ -166,6 +166,7 @@ class EventsProcessor < Inshaker::Processor
       @entities.each do |name, entity|
         links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
       end
+      links.puts ""
     end
   end
   
