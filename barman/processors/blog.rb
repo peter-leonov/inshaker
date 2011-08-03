@@ -196,12 +196,6 @@ class Blog::Post
   def russify_date date
     "#{date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[date.mon].downcase} #{date.year}"
   end
-  
-  def load_erb path
-    erb = ERB.new(File.read(path))
-    erb.filename = path
-    erb
-  end
 end
 
 class Blog
@@ -282,6 +276,13 @@ class Blog
   
 end
 
+class ERB
+  def self.read path
+    o = self.new(File.read(path))
+    o.filename = path
+    o
+  end
+end
 
 $stdout.sync = true
 Blog.new.run
