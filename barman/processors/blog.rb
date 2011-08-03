@@ -172,7 +172,7 @@ class Blog::Post
   end
   
   def update_html
-    renderer = ERB.new(File.read(Blog::Config::TEMPLATES + "blog-post.rhtml"))
+    renderer = load_erb Blog::Config::Templates::POST
     File.write("#{@dst_dir.path}/#{@href}.html", renderer.result(binding))
   end
   
@@ -271,6 +271,12 @@ class Blog::Post
   
   def russify_date date
     "#{date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[date.mon].downcase} #{date.year}"
+  end
+  
+  def load_erb path
+    erb = ERB.new(File.read(path))
+    erb.filename = path
+    erb
   end
 end
 
