@@ -22,11 +22,12 @@ class Blog
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    POSTS_PREVIEWS = HT_ROOT + "posts.html"
+    POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
+      POST_PREVIEW = TEMPLATES + "blog-post-preview.rhtml"
     end
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
@@ -96,8 +97,13 @@ class Blog::Post
   end
   
   def update_html
-    renderer = load_erb Blog::Config::Templates::POST
+    renderer = ERB.read(Blog::Config::Templates::POST)
     File.write("#{@dst_dir.path}/#{@href}.html", renderer.result(binding))
+  end
+  
+  def preview_snippet
+    renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
+    renderer.result(binding)
   end
   
   def update_images
@@ -209,7 +215,7 @@ class Blog
     
     update_posts
     sort_posts
-    # update_posts_loop
+    update_posts_loop
     
     # unless errors?
     #   cleanup_deleted
@@ -240,10 +246,10 @@ class Blog
   end
   
   def update_posts_loop
-    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
-    File.open(Config::POSTS_PREVIEWS, "w+") do |f|
+    say "обновляю список постов"
+    File.open(Config::POSTS_LOOP, "w+") do |f|
       @posts.each do |post|
-        f.puts renderer.result(post.binding)
+        f.puts post.preview_snippet
       end
     end
   end
