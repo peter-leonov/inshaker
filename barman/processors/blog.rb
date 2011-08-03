@@ -14,6 +14,14 @@ require "config"
 require "entities/entity"
 require "entities/cocktail"
 
+class ERB
+  def self.read path
+    o = self.new(File.read(path))
+    o.filename = path
+    o
+  end
+end
+
 class Blog
   
   module Config
@@ -39,6 +47,8 @@ class Blog::Post
   attr_reader :title, :date, :href
   
   @@seen_hrefs = {}
+  @@html_renderer = ERB.read(Blog::Config::Templates::POST)
+  @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
   
   def process src_dir
     
@@ -97,13 +107,11 @@ class Blog::Post
   end
   
   def update_html
-    renderer = ERB.read(Blog::Config::Templates::POST)
-    File.write("#{@dst_dir.path}/#{@href}.html", renderer.result(binding))
+    File.write("#{@dst_dir.path}/#{@href}.html", @@html_renderer.result(binding))
   end
   
   def preview_snippet
-    renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
-    renderer.result(binding)
+    @@preview_renderer.result(binding)
   end
   
   def update_images
@@ -280,14 +288,6 @@ class Blog
     end
   end
   
-end
-
-class ERB
-  def self.read path
-    o = self.new(File.read(path))
-    o.filename = path
-    o
-  end
 end
 
 $stdout.sync = true
