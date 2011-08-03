@@ -8,6 +8,7 @@ require "lib/output"
 require "lib/array"
 require "lib/string"
 require "lib/file"
+require "lib/image"
 
 require "config"
 require "entities/entity"
@@ -82,8 +83,8 @@ class Blog::Post
   end
   
   def absorb_content content
-    (@cut, @body) = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut
+    @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
+    @cut = markup @cut, {:geometry => true}
     @body = markup @body
   end
   
@@ -109,7 +110,7 @@ class Blog::Post
   
   
   
-  def markup text
+  def markup text, opts={}
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
@@ -119,15 +120,27 @@ class Blog::Post
         (src, href) = data.split(/\s+/)
         
         if src !~ /^https?:\/\//
+          if opts[:geometry]
+            box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
+            unless box
+              error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
+            end
+          end
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
-        if href == "внутрь"
-          %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one"><img src="#{src}" class="image"/></a></div>}
-        elsif href
-          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}" class="image"/></a></div>}
+        if box
+          image = %Q{<img src="#{src}" class="image" width="#{box[0]}" height="#{box[1]}"/>}
         else
-          %Q{<div class="image-box"><img src="#{src}" class="image"/></div>}
+          image = %Q{<img src="#{src}" class="image"/>}
+        end
+        
+        if href == "внутрь"
+          %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one">#{image}</a></div>}
+        elsif href
+          %Q{<div class="image-box"><a href="#{href}">#{image}</a></div>}
+        else
+          %Q{<div class="image-box">#{image}</div>}
         end
       elsif name == "коктейль"
         cocktail = Cocktail[data]
