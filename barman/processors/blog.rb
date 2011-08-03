@@ -75,11 +75,10 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
-    
+    copy_images
     absorb_content content
     
-    update_images
-    update_html
+    write_html
     
     true
   end
@@ -96,7 +95,7 @@ class Blog::Post
     @body = markup @body
   end
   
-  def update_html
+  def write_html
     File.write("#{@dst_dir.path}/#{@href}.html", @@html_renderer.result(binding))
   end
   
@@ -104,7 +103,7 @@ class Blog::Post
     @@preview_renderer.result(binding)
   end
   
-  def update_images
+  def copy_images
     FileUtils.rmtree(@dst_dir.path + "/i/")
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
