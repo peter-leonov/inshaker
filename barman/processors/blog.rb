@@ -45,16 +45,7 @@ class Blog::Post
     
     @src_dir = src_dir
     
-    content = File.read(@src_dir.path + "/post.html")
-    
-    # from jekyll 0.10.0 convertivle.rb
-    unless m = /^(---\s*\n.*?\n?)^(---\s*$\n?)/m.match(content)
-      error "в post.html нету описания на ямле (то, что между ---)"
-      return
-    end
-    header = m[1]
-    content = content[(m[1].size + m[2].size)..-1]
-    
+    header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
     absorb_data YAML.load(header)
     
@@ -198,6 +189,15 @@ class Blog::Post
   
   def russify_date date
     "#{date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[date.mon].downcase} #{date.year}"
+  end
+  
+  def split_header_from_content text
+    # from jekyll 0.10.0 convertivle.rb
+    unless m = /^(---\s*\n.*?\n?)^(---\s*$\n?)/m.match(text)
+      error "в post.html нету описания на ямле (то, что между ---)"
+      return
+    end
+    return m[1], text[(m[1].size + m[2].size)..-1]
   end
 end
 
