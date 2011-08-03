@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "yaml"
-require "erb"
 require "fileutils"
 
 require "lib/json"
+require "lib/erb"
 require "lib/output"
 require "lib/array"
 require "lib/string_util"
@@ -13,14 +13,6 @@ require "lib/fileutils"
 require "config"
 require "entities/entity"
 require "entities/cocktail"
-
-class ERB
-  def self.read path
-    o = self.new(File.read(path))
-    o.filename = path
-    o
-  end
-end
 
 class Blog
   
