@@ -47,6 +47,7 @@ class Blog::Post
     
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
+    
     absorb_data YAML.load(header)
     
     seen = @@seen_hrefs[@href]
@@ -57,14 +58,14 @@ class Blog::Post
       @@seen_hrefs[@href] = self
     end
     
-    
-    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
-    
     unless @date
       error "не могу понять дату поста"
       return
     end
     @date_ru = russify_date @date
+    
+    
+    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
     copy_images
     absorb_content content
