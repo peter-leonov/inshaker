@@ -1,9 +1,6 @@
 # encoding: utf-8
-require "config"
 require "rubygems"
 require "templates"
-require "fileutils"
-require "erb"
 require "yaml"
 require "base64"
 require "uri"
@@ -12,32 +9,20 @@ require "optparse"
 NaN = 0.0 / 0
 Infinity = 1.0 / 0
 
+require "lib/erb"
 require "lib/json"
-require "lib/string_util"
-require "lib/fileutils"
+require "lib/string"
+require "lib/file"
 require "lib/output"
 require "lib/plural"
 require "lib/array"
 
+require "config"
+require "entities/entity"
+
 $stdout.sync = true
 
 module Inshaker
-  
-  class Entity
-    def self.init
-    end
-    
-    def self.check_integrity
-    end
-    
-    def self.all
-      @db
-    end
-
-    def self.[] name
-      @by_name[name]
-    end
-  end
   
   class Processor
     attr_reader :user_login

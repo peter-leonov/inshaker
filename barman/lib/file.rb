@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+require "fileutils"
+
 class File
   attr_accessor :name
   
@@ -86,5 +89,11 @@ class Dir
     end
     
     return max
+  end
+end
+
+module FileUtils
+  def self.cp_rf src, dst
+    cp_r src, dst, {:remove_destination => true}
   end
 end
