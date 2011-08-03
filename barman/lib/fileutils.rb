@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+require "fileutils"
+
 class File
   attr_accessor :name
   
