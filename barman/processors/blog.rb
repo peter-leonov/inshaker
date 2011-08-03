@@ -209,7 +209,7 @@ class Blog
     @posts = []
   end
   
-  def run
+  def job
     Cocktail.init
     
     update_posts
@@ -279,7 +279,20 @@ class Blog
     end
   end
   
+  def run
+    
+    begin
+      job
+      summary
+    rescue => e
+      error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+      raise e
+    end
+    
+    return errors_count
+  end
+  
 end
 
 $stdout.sync = true
-Blog.new.run
+exit Blog.new.run
