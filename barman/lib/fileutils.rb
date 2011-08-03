@@ -88,3 +88,9 @@ class Dir
     return max
   end
 end
+
+module FileUtils
+  def self.cp_rf src, dst
+    cp_r src, dst, {:remove_destination => true}
+  end
+end
