@@ -122,27 +122,35 @@ class Blog::Post
       error "в post.html нету описания на ямле (то, что между ---)"
       return
     end
+    header = m[1]
     content = content[(m[1].size + m[2].size)..-1]
     
     
-    yaml = YAML.load(m[1])
+    absorb_data YAML.load(header)
     
-    @title = yaml['Заголовок']
-    @href = yaml['Ссылка']
-    
-    ru_date = parse_date(yaml['Дата'])
-    unless ru_date
-      error "не могу понять вашу дату «#{yaml['Дата']}»"
+    unless @date
+      error "не могу понять дату поста"
       return
     end
-    ru_date_str = "#{ru_date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
+    @date_ru = russify_date @date
     
-    @date = ru_date.to_i * 1000
-    @date_ru = ru_date_str
     
-    (@cut, @body) = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut
-    @body = markup @body
+    absorb_content content
+    
+    
+    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
+    
+    update_images
+    update_html
+    
+    true
+  end
+  
+  def absorb_data data
+    @title = data['Заголовок']
+    @href = data['Ссылка']
+    @date = parse_date data['Дата']
+    
     
     seen = @@seen_hrefs[@href]
     if seen
@@ -151,31 +159,32 @@ class Blog::Post
     else
       @@seen_hrefs[@href] = self
     end
-    
-    ht_path = Blog::Config::HT_ROOT + @href
-    FileUtils.mkdir_p ht_path
-    @dst_dir = Dir.new(ht_path)
-    @dst_dir.name = @href
-    
-    FileUtils.rmtree(@dst_dir.path + "/i/")
-    FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
-    
-    update_html
+  end
+  
+  def absorb_content content
+    (@cut, @body) = content.split(/\s*<!--\s*more\s*-->\s*/)
+    @cut = markup @cut
+    @body = markup @body
   end
   
   def update_html
     renderer = ERB.new(File.read(Blog::Config::TEMPLATES + "blog-post.rhtml"))
-    
     File.write("#{@dst_dir.path}/#{@href}.html", renderer.result(binding))
   end
   
-  def parse_date str
-    m = /(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)(?: +(?<hour>\d+)\:(?<minute>\d+))?/.match(str)
-    if m
-      arr = [m[:year], m[:month], m[:day], m[:hour] || 0, m[:minute] || 0].map { |v| v.to_i }
-      Time.gm(*arr)
-    end
+  def update_images
+    FileUtils.rmtree(@dst_dir.path + "/i/")
+    FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
+  
+  def to_hash
+    {
+      "date" => @date.to_i * 1000
+    }
+  end
+  
+  
+  
   
   def markup text
     # links
@@ -237,6 +246,27 @@ class Blog::Post
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
     return text
+  end
+  
+  
+  
+  def bake_dir path, name
+    FileUtils.mkdir_p path
+    dir = Dir.new(path)
+    dir.name = name
+    return dir
+  end
+  
+  def parse_date str
+    m = /(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)(?: +(?<hour>\d+)\:(?<minute>\d+))?/.match(str)
+    if m
+      arr = [m[:year], m[:month], m[:day], m[:hour] || 0, m[:minute] || 0].map { |v| v.to_i }
+      Time.gm(*arr)
+    end
+  end
+  
+  def russify_date date
+    "#{date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[date.mon].downcase} #{date.year}"
   end
 end
 
