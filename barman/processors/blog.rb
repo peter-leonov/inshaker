@@ -38,7 +38,6 @@ class Blog
     # unless errors?
     #   cleanup_deleted
     #   flush_links
-    #   flush_json
     # end
     
   end
@@ -79,10 +78,6 @@ class Blog
       end
     end
     end # indent
-  end
-  
-  def flush_json
-    # yet empty
   end
   
   def flush_links
