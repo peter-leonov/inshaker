@@ -1,6 +1,7 @@
 # encoding: utf-8
-require 'rutils'
-require "unicode_utils"
+require "rutils"
+require "unicode_utils/upcase"
+require "unicode_utils/downcase"
 
 class String
   
