@@ -29,10 +29,15 @@ class Blog
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   end
   
+  def initialize
+    @posts = []
+  end
+  
   def run
     Cocktail.init
     
     update_posts
+    sort_posts
     # update_posts_loop
     
     # unless errors?
@@ -46,19 +51,28 @@ class Blog
     say "обновляю блог"
     indent do
     Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
-      Blog::Post.new.process(dir)
-      # process_entity dir
+      say dir.name
+      indent do
+        post = Blog::Post.new
+        if post.process(dir)
+          @posts << post
+        end
+      end #indent
     end
     end #indent
   end
   
+  def sort_posts
+    @posts.sort! do |a, b|
+      b.date - a.date
+    end
+  end
+  
   def update_posts_loop
     renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
-    
-    @@entities_array.sort! { |a, b| b["date"] - a["date"] }
-    File.open(Config::POSTS_PREVIEWS, "w+") do |p|
-      @@entities_array.each do |entity|
-        p.puts renderer.result(Template.new(entity).get_binding)
+    File.open(Config::POSTS_PREVIEWS, "w+") do |f|
+      @posts.each do |post|
+        f.puts renderer.result(post.binding)
       end
     end
   end
@@ -67,8 +81,8 @@ class Blog
     say "ищу удаленные"
     indent do
     index = {}
-    @@entities_array.each do |entity|
-      index[entity["href"]] = entity
+    @posts.each do |post|
+      index[post.href] = post
     end
     
     Dir.new(Config::HT_ROOT).each_dir do |dir|
@@ -81,17 +95,19 @@ class Blog
   end
   
   def flush_links
-    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      @@entities.each do |name, entity|
-        links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
+      @posts.each do |post|
+        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
       end
-      links.puts ""
+      f.puts ""
     end
   end
   
 end
 
 class Blog::Post
+  
+  attr_reader :title, :date, :href
   
   def initialize
     @@entities = {}
@@ -100,10 +116,10 @@ class Blog::Post
   end
   
   def process src_dir
-    say src_dir.name
-    indent do
     
-    content = File.read(src_dir.path + "/post.html")
+    @src_dir = src_dir
+    
+    content = File.read(@src_dir.path + "/post.html")
     
     # from jekyll 0.10.0 convertivle.rb
     unless m = /^(---\s*\n.*?\n?)^(---\s*$\n?)/m.match(content)
@@ -115,10 +131,8 @@ class Blog::Post
     
     yaml = YAML.load(m[1])
     
-    @data = {}
-    
-    @data["title"]             = yaml['Заголовок']
-    @data["href"]              = yaml['Ссылка']
+    @title = yaml['Заголовок']
+    @href = yaml['Ссылка']
     
     ru_date = parse_date(yaml['Дата'])
     unless ru_date
@@ -127,43 +141,38 @@ class Blog::Post
     end
     ru_date_str = "#{ru_date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
     
-    @data["date"]              = ru_date.to_i * 1000
-    @data["date_ru"]           = ru_date_str
+    @date = ru_date.to_i * 1000
+    @date_ru = ru_date_str
     
     (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
     cut = markup cut
     body = markup body
-    @data["cut"]               = cut
-    @data["body"]              = body
+    @cut = cut
+    @body = body
     
     
-    seen = @@entities_hrefs[@data["href"]]
+    seen = @@entities_hrefs[@href]
     if seen
-      error %Q{пост с такой ссылкой уже существует: "#{seen["name"]}"}
+      error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
     else
-      @@entities_hrefs[@data["href"]] = @data
+      @@entities_hrefs[@href] = self
     end
     
-    ht_name = @data["href"]
-    ht_path = Blog::Config::HT_ROOT + ht_name
+    ht_path = Blog::Config::HT_ROOT + @href
     FileUtils.mkdir_p ht_path
-    ht_dir = Dir.new(ht_path)
-    ht_dir.name = ht_name
+    @dst_dir = Dir.new(ht_path)
+    @dst_dir.name = @href
     
-    FileUtils.rmtree(ht_dir.path + "/i/")
-    FileUtils.cp_r(src_dir.path + "/i/", ht_dir.path + "/i/", {:remove_destination => true})
+    FileUtils.rmtree(@dst_dir.path + "/i/")
+    FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
     
-    update_html @data, ht_dir
-    end # indent
-    
-    @@entities[@data["name"]] = @data
-    @@entities_array << @data
+    update_html
   end
   
-  def update_html entity, dst
+  def update_html
     renderer = ERB.new(File.read(Blog::Config::TEMPLATES + "blog-post.rhtml"))
     
-    File.write("#{dst.path}/#{dst.name}.html", renderer.result(Template.new(entity).get_binding))
+    File.write("#{@dst_dir.path}/#{@href}.html", renderer.result(binding))
   end
   
   def parse_date str
@@ -184,11 +193,11 @@ class Blog::Post
         (src, href) = data.split(/\s+/)
         
         if src !~ /^https?:\/\//
-          src = %Q{/blog/#{@data["href"]}/i/#{src}}
+          src = %Q{/blog/#{@href}/i/#{src}}
         end
         
         if href == "внутрь"
-          %Q{<div class="image-box"><a href="/blog/#{@data["href"]}/#the-one"><img src="#{src}" class="image"/></a></div>}
+          %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one"><img src="#{src}" class="image"/></a></div>}
         elsif href
           %Q{<div class="image-box"><a href="#{href}"><img src="#{src}" class="image"/></a></div>}
         else
@@ -234,20 +243,6 @@ class Blog::Post
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
     return text
-  end
-end
-
-class Blog::Post::Template
-  def initialize *hashes
-    hashes.each do |hash|
-      hash.each do |k, v|
-        instance_variable_set("@#{k}", v)
-      end
-    end
-  end
-  
-  def get_binding
-    binding
   end
 end
 
