@@ -154,6 +154,7 @@ class Blog::Post
     seen = @@entities_hrefs[@href]
     if seen
       error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
+      return
     else
       @@entities_hrefs[@href] = self
     end
