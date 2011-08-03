@@ -84,7 +84,7 @@ class Blog::Post
   
   def absorb_content content
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut, {:geometry => true}
+    @cut = markup @cut, {:lazy_images => true}
     @body = markup @body
   end
   
@@ -120,7 +120,7 @@ class Blog::Post
         (src, href) = data.split(/\s+/)
         
         if src !~ /^https?:\/\//
-          if opts[:geometry]
+          if opts[:lazy_images]
             box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
             unless box
               error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
@@ -130,7 +130,7 @@ class Blog::Post
         end
         
         if box
-          image = %Q{<img src="#{src}" class="image" width="#{box[0]}" height="#{box[1]}"/>}
+          image = %Q{<img lazy-src="#{src}" class="image lazy" width="#{box[0]}" height="#{box[1]}"/>}
         else
           image = %Q{<img src="#{src}" class="image"/>}
         end
