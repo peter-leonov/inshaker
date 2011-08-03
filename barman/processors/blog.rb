@@ -109,11 +109,7 @@ class Blog::Post
   
   attr_reader :title, :date, :href
   
-  def initialize
-    @@entities = {}
-    @@entities_array = []
-    @@entities_hrefs = {}
-  end
+  @@seen_hrefs = {}
   
   def process src_dir
     
@@ -144,19 +140,16 @@ class Blog::Post
     @date = ru_date.to_i * 1000
     @date_ru = ru_date_str
     
-    (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
-    cut = markup cut
-    body = markup body
-    @cut = cut
-    @body = body
+    (@cut, @body) = content.split(/\s*<!--\s*more\s*-->\s*/)
+    @cut = markup @cut
+    @body = markup @body
     
-    
-    seen = @@entities_hrefs[@href]
+    seen = @@seen_hrefs[@href]
     if seen
       error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
       return
     else
-      @@entities_hrefs[@href] = self
+      @@seen_hrefs[@href] = self
     end
     
     ht_path = Blog::Config::HT_ROOT + @href
