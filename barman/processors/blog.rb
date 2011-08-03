@@ -29,84 +29,8 @@ class Blog
       POST         = TEMPLATES + "blog-post.rhtml"
     end
     
-    
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   end
-  
-  def initialize
-    @posts = []
-  end
-  
-  def run
-    Cocktail.init
-    
-    update_posts
-    sort_posts
-    # update_posts_loop
-    
-    # unless errors?
-    #   cleanup_deleted
-    #   flush_links
-    # end
-    
-  end
-  
-  def update_posts
-    say "обновляю блог"
-    indent do
-    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
-      say dir.name
-      indent do
-        post = Blog::Post.new
-        if post.process(dir)
-          @posts << post
-        end
-      end #indent
-    end
-    end #indent
-  end
-  
-  def sort_posts
-    @posts.sort! do |a, b|
-      b.date - a.date
-    end
-  end
-  
-  def update_posts_loop
-    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
-    File.open(Config::POSTS_PREVIEWS, "w+") do |f|
-      @posts.each do |post|
-        f.puts renderer.result(post.binding)
-      end
-    end
-  end
-  
-  def cleanup_deleted
-    say "ищу удаленные"
-    indent do
-    index = {}
-    @posts.each do |post|
-      index[post.href] = post
-    end
-    
-    Dir.new(Config::HT_ROOT).each_dir do |dir|
-      unless index[dir.name]
-        say "удаляю #{dir.name}"
-        FileUtils.rmtree(dir.path)
-      end
-    end
-    end # indent
-  end
-  
-  def flush_links
-    File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
-      @posts.each do |post|
-        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
-      end
-      f.puts ""
-    end
-  end
-  
 end
 
 class Blog::Post
@@ -279,6 +203,85 @@ class Blog::Post
     erb
   end
 end
+
+class Blog
+  
+  def initialize
+    @posts = []
+  end
+  
+  def run
+    Cocktail.init
+    
+    update_posts
+    sort_posts
+    # update_posts_loop
+    
+    # unless errors?
+    #   cleanup_deleted
+    #   flush_links
+    # end
+    
+  end
+  
+  def update_posts
+    say "обновляю блог"
+    indent do
+    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
+      say dir.name
+      indent do
+        post = Blog::Post.new
+        if post.process(dir)
+          @posts << post
+        end
+      end #indent
+    end
+    end #indent
+  end
+  
+  def sort_posts
+    @posts.sort! do |a, b|
+      b.date - a.date
+    end
+  end
+  
+  def update_posts_loop
+    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
+    File.open(Config::POSTS_PREVIEWS, "w+") do |f|
+      @posts.each do |post|
+        f.puts renderer.result(post.binding)
+      end
+    end
+  end
+  
+  def cleanup_deleted
+    say "ищу удаленные"
+    indent do
+    index = {}
+    @posts.each do |post|
+      index[post.href] = post
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless index[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
+  end
+  
+  def flush_links
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
+      @posts.each do |post|
+        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
+      end
+      f.puts ""
+    end
+  end
+  
+end
+
 
 $stdout.sync = true
 Blog.new.run
