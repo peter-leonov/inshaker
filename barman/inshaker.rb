@@ -11,8 +11,8 @@ Infinity = 1.0 / 0
 
 require "lib/erb"
 require "lib/json"
-require "lib/string_util"
-require "lib/fileutils"
+require "lib/string"
+require "lib/file"
 require "lib/output"
 require "lib/plural"
 require "lib/array"
