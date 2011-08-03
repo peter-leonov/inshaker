@@ -23,8 +23,12 @@ class Blog
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     POSTS_PREVIEWS = HT_ROOT + "posts.html"
-    
     TEMPLATES      = Inshaker::TEMPLATES_DIR
+    
+    module Templates
+      POST         = TEMPLATES + "blog-post.rhtml"
+    end
+    
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   end
