@@ -66,6 +66,9 @@ class Blog::Post
       @@seen_hrefs[@href] = self
     end
     
+    
+    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
+    
     unless @date
       error "не могу понять дату поста"
       return
@@ -74,9 +77,6 @@ class Blog::Post
     
     
     absorb_content content
-    
-    
-    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
     update_images
     update_html
