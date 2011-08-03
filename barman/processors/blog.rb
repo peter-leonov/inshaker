@@ -58,6 +58,14 @@ class Blog::Post
     
     absorb_data YAML.load(header)
     
+    seen = @@seen_hrefs[@href]
+    if seen
+      error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
+      return
+    else
+      @@seen_hrefs[@href] = self
+    end
+    
     unless @date
       error "не могу понять дату поста"
       return
@@ -80,15 +88,6 @@ class Blog::Post
     @title = data['Заголовок']
     @href = data['Ссылка']
     @date = parse_date data['Дата']
-    
-    
-    seen = @@seen_hrefs[@href]
-    if seen
-      error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
-      return
-    else
-      @@seen_hrefs[@href] = self
-    end
   end
   
   def absorb_content content
