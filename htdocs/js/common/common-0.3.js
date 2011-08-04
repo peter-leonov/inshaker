@@ -20,7 +20,6 @@
 <!--# include virtual="/lib-0.3/modules/user-agent.js" -->
 
 
-<!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
@@ -30,7 +29,6 @@
 $.onready(function () { setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()
-	YandexMetrika.trackPageview()
 }, 250) })
 
 $.onready(function ()
