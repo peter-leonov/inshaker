@@ -274,7 +274,7 @@ html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 #bottom .wrapper .top-corners { width: 980px; height: 18px; position: relative; left: -10px; background: url('top-corners.png') no-repeat left top; }
 #bottom .wrapper .content { padding: 10px 23px 0 23px; background: #fff; position: relative; }
 #bottom a { color: #2e63c1; }
-#bottom #alcohol-harm { padding-bottom: 3px; }
+#bottom #alcohol-harm { padding-bottom: 3px; margin-left: -23px; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
