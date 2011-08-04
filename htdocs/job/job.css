@@ -1,5 +1,5 @@
 html { overflow-y: scroll; }
-a[href^="#"] { text-decoration: none; border-bottom: dashed 1px; }
+#common-main-wrapper a[href^="#"] { text-decoration: none; border-bottom: dashed 1px; }
 #common-main-wrapper { position: relative; }
 #main-column { width: 628px; }
 .common-title .name { font-size: 20px; }

@@ -10,9 +10,12 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
-a { color: #444; font-weight: bold; text-decoration: underline; }
-.common-title a { font-weight: normal; }
-#top .nav .link:hover { border-bottom-color: #8dd013; }
+a { color: #555; }
+a:hover { color: #000; }
+#sidebar a:hover { color: #fff; }
+#common-main-wrapper a { font-weight: bold; text-decoration: underline; }
+#common-main-wrapper .common-title a { font-weight: normal; }
+#top .nav .link:hover { border-bottom-color: #444; }
 #bottom { color: #788894; }
 #bottom a {}
 html { background: #000 url(bg.png) repeat-x center 65px; }
