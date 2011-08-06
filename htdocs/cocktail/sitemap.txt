@@ -394,7 +394,10 @@ http://www.inshaker.ru/cocktail/coconut_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/coconut_sprite/
 http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
 http://www.inshaker.ru/cocktail/cola_and_grapefruit_liqueur/
+http://www.inshaker.ru/cocktail/compote_from_kindergarten_in_a_jug/
+http://www.inshaker.ru/cocktail/compote_of_dandelion_in_a_jug/
 http://www.inshaker.ru/cocktail/compote_of_dried_fruits_in_a_jug/
+http://www.inshaker.ru/cocktail/compote_of_prunes_in_a_jug/
 http://www.inshaker.ru/cocktail/conca_d_oro/
 http://www.inshaker.ru/cocktail/connaught_martini/
 http://www.inshaker.ru/cocktail/head_shot/
