@@ -38,9 +38,12 @@ class Blog::Post
   
   attr_reader :title, :date, :href
   
-  @@seen_hrefs = {}
-  @@html_renderer = ERB.read(Blog::Config::Templates::POST)
-  @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
+  def self.init
+    @@seen_hrefs = {}
+    @@html_renderer = ERB.read(Blog::Config::Templates::POST)
+    @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
+  end
+  
   
   def process src_dir
     
@@ -222,6 +225,7 @@ class Blog
   end
   
   def job
+    Blog::Post.init
     Cocktail.init
     
     update_posts
