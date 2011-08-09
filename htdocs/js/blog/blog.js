@@ -16,6 +16,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.bakeStyles()
+		this.setupVisibilityFrame()
 		
 		var lh = this.locationHash = new LocationHash().bind(window)
 		var me = this
@@ -26,7 +27,7 @@ Me.prototype =
 	
 	renderPosts: function ()
 	{
-		this.setupVisibilityFrame(this.nodes.lazyImages)
+		this.updateVisibilityFrame(this.nodes.lazyImages)
 	},
 	
 	locationHashUpdated: function ()
@@ -59,14 +60,11 @@ Me.prototype =
 		}
 	},
 	
-	setupVisibilityFrame: function (images)
+	setupVisibilityFrame: function ()
 	{
-		var boxes = Boxer.nodesToBoxes(images)
-		
 		var frame = this.frame = new VisibilityFrame()
 		frame.setFrame(4000, 5000) // hardcoded for now
 		frame.setStep(1000, 1000)
-		frame.moveTo(0, -2500)
 		
 		var me = this
 		frame.onmove = function (show, hide)
@@ -86,10 +84,17 @@ Me.prototype =
 			}
 		}
 		
-		frame.setBoxes(boxes)
-		
 		var t = new Throttler(function (y) { frame.moveTo(0, y - 2500) }, 100, 500)
 		window.addEventListener('scroll', function () { t.call(window.pageYOffset) }, false)
+	},
+	
+	updateVisibilityFrame: function (images)
+	{
+		var boxes = Boxer.nodesToBoxes(images)
+		
+		var frame = this.frame
+		frame.setBoxes(boxes)
+		frame.moveTo(0, -2500)
 	}
 }
 
