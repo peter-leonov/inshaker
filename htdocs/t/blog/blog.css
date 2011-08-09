@@ -32,7 +32,6 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 #posts-loop.show-all .post { display: block; }
 
 .post { position: relative; margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
-.post:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 .post .title { font-size: 22px; margin: 0 0 5px 0; }
 .post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
 .post .more .deeper { color: inherit; margin: 0 20px 0 0; }
@@ -53,5 +52,14 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .body hr { border: none; border-top: 1px solid #eee; margin: 25px 10px; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
 .post .body p { margin: 10px 0; }
+
+#tag-cloud { color: #343B40; font-size: 17px; }
+#tag-cloud .list { color: #888; }
+#tag-cloud .list,
+#tag-cloud .list .item { display: inline; }
+#tag-cloud .list .item::after { content: ','; }
+#tag-cloud .list .item:last-child::after { content: '.'; }
+#tag-cloud .list .item .link { white-space: nowrap; }
+
 
 #bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }

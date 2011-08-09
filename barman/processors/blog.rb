@@ -22,6 +22,7 @@ class Blog
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
+    TAG_CLOUD      = HT_ROOT + "tag-cloud.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
@@ -269,6 +270,7 @@ class Blog
     unless errors?
       cleanup_deleted
       flush_links
+      flush_tags
       flush_json
     end
     
@@ -322,6 +324,7 @@ class Blog
   end
   
   def flush_links
+    say "рисую ссылки для поисковиков"
     File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
       @posts.each do |post|
         f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
@@ -330,7 +333,19 @@ class Blog
     end
   end
   
+  def flush_tags
+    say "рисую теги"
+    File.open(Config::TAG_CLOUD, "w+") do |f|
+      Blog::Post.tags_list.each do |tag|
+        name = tag["name"]
+        f.puts %Q{<li class="item"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
+      end
+      f.puts ""
+    end
+  end
+  
   def flush_json
+    say "сохраняю базу тегов"
     File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
   end
   
