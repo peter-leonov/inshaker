@@ -11,12 +11,26 @@ var myStatic =
 {
 	initialize: function (tags)
 	{
+		this.tagsDb = tags
 		
+		var byName = this.__byNameIndex = {}
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			byName[tag.name] = tag
+		}
 	},
 	
 	tagKeyByName: function (name)
 	{
+	allKeys: function (e)
+	{
+		var db = this.tagsDb
 		
+		var res = []
+		for (var i = 0, il = db.length; i < il; i++)
+			res[i] = db[i].key
+		return res
 	}
 }
 
