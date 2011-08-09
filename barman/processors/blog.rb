@@ -134,6 +134,11 @@ class Blog::Post
     }
   end
   
+  def tags_name_with_key
+    @tags.each do |name|
+      yield name, @@seen_tags[name]
+    end
+  end
   
   
   

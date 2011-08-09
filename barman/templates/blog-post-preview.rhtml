@@ -4,7 +4,14 @@
 		<%= @cut %>
 	</div>
 	<div class="more">
-		<a class="deeper" href="/blog/<%= @href %>/#the-one">сколько всего интересного →</a>
+		<div class="tags">
+			Теги:
+			<ul class="list">
+				<% tags_name_with_key do |name, key| %>
+				<li class="item"><a class="link" href="/blog/#tag=<%= key %>"><%= name %></a></li>
+				<% end %>
+			</ul>
+		</div>
 		<span class="date"><%= @date_ru %></span>
 	</div>
 </li>
