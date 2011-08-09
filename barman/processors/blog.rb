@@ -77,7 +77,9 @@ class Blog::Post
     else
       @tags.each do |tag|
         if @@known_tags[tag]
-          @@seen_tags[tag] = "key-#{@@seen_tags.length}"
+          unless @@seen_tags[tag]
+            @@seen_tags[tag] = "key-#{@@seen_tags.length}"
+          end
         else
           error "неизвестный тег «#{tag}»"
         end
