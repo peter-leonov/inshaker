@@ -17,6 +17,7 @@ class Blog
   
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
+    TAGS_DB        = BASE_DIR + "/tags.yaml"
     
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
@@ -41,6 +42,8 @@ class Blog::Post
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
     @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
+    
+    @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
   end
   
   
@@ -67,6 +70,16 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
+    if @tags.empty?
+      warning "нету ни одного тега"
+    else
+      @tags.each do |tag|
+        unless @@known_tags[tag]
+          error "неизвестный тег «#{tag}»"
+        end
+      end
+    end
+    
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
@@ -82,6 +95,7 @@ class Blog::Post
     @title = data['Заголовок']
     @href = data['Ссылка']
     @date = parse_date data['Дата']
+    @tags = data["Теги"] ? data["Теги"].split(/\s*,\s*/) : []
   end
   
   def absorb_content content
