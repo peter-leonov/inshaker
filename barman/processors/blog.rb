@@ -24,6 +24,7 @@ class Blog
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
+    HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "tags.json"
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
@@ -44,6 +45,7 @@ class Blog::Post
     @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
     
     @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
+    @@seen_tags = {}
   end
   
   
@@ -74,7 +76,9 @@ class Blog::Post
       warning "нету ни одного тега"
     else
       @tags.each do |tag|
-        unless @@known_tags[tag]
+        if @@known_tags[tag]
+          @@seen_tags[tag] = "key-#{@@seen_tags.length}"
+        else
           error "неизвестный тег «#{tag}»"
         end
       end
@@ -202,6 +206,16 @@ class Blog::Post
   
   
   
+  def tags_list
+    list = []
+    @@seen_tags.each do |k, v|
+      list << {"name" => k, "key" => v}
+    end
+    list
+  end
+  
+  
+  
   def bake_dir path, name
     FileUtils.mkdir_p path
     dir = Dir.new(path)
@@ -306,6 +320,10 @@ class Blog
       end
       f.puts ""
     end
+  end
+  
+  def flush_json
+    File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
   end
   
   def run
