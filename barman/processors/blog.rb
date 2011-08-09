@@ -76,7 +76,7 @@ class Blog::Post
     if @tags.empty?
       warning "нету ни одного тега"
     else
-      @tags.each do |tag|
+      @tags.select! do |tag|
         if @@known_tags[tag]
           key = @@seen_tags[tag]
           unless key
@@ -86,6 +86,7 @@ class Blog::Post
           @tags_keys << key
         else
           error "неизвестный тег «#{tag}»"
+          nil
         end
       end
     end
