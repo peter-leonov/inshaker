@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
-require "yaml"
-
+require "lib/yaml"
 require "lib/json"
 require "lib/erb"
 require "lib/output"
