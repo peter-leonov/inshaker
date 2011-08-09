@@ -216,7 +216,7 @@ class Blog::Post
   
   
   def self.tags_list
-    @@seen_tags.values
+    @@seen_tags.values.sort { |a, b| a["name"] <=> b["name"] }
   end
   
   
