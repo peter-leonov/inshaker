@@ -10,6 +10,17 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.setupVisibilityFrame(nodes.lazyImages)
+	
+	bakeStyles: function ()
+	{
+		var sheet = this.nodes.styleNode.sheet
+		
+		var tags = Blog.allKeys()
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			sheet.insertRule('#posts-loop.show-' + tag + ' .post.' + tag + ' { display: block }', i)
+		}
 	},
 	
 	setupVisibilityFrame: function (images)
@@ -56,7 +67,8 @@ function onready (e)
 {
 	var nodes =
 	{
-		lazyImages: $$('#posts-loop .post .body .image.lazy')
+		lazyImages: $$('#posts-loop .post .body .image.lazy'),
+		styleNode: $('posts-selecter')
 	}
 	
 	var widget = new BlogMainPage()
