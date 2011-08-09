@@ -19,6 +19,14 @@
 		<%= @body %>
 	</div>
 	<div class="more">
+		<div class="tags">
+			Теги:
+			<ul class="list">
+				<% @tags.each do |tag| %>
+				<li class="item"><a class="link" href="/blog/#tag=<%= tag %>"><%= tag %></a></li>
+				<% end %>
+			</ul>
+		</div>
 		<a class="deeper" href="/blog/">← сколько всего интересного</a>
 		<span class="date"><%= @date_ru %></span>
 	</div>
