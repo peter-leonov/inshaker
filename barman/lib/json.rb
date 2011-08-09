@@ -51,3 +51,9 @@ class Array
     "[\n" + map{ |v| v.to_json }.join(",\n") + "\n]"
   end
 end
+
+module JSON
+  def self.stringify v
+    v.to_json_expand
+  end
+end
