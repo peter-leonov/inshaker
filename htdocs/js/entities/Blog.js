@@ -23,6 +23,9 @@ var myStatic =
 	
 	tagKeyByName: function (name)
 	{
+		return this.__byNameIndex[name]
+	},
+	
 	allKeys: function (e)
 	{
 		var db = this.tagsDb
