@@ -262,6 +262,7 @@ class Blog
     unless errors?
       cleanup_deleted
       flush_links
+      flush_json
     end
     
   end
