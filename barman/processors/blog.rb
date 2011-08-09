@@ -259,10 +259,10 @@ class Blog
     sort_posts
     update_posts_loop
     
-    # unless errors?
-    #   cleanup_deleted
-    #   flush_links
-    # end
+    unless errors?
+      cleanup_deleted
+      #flush_links
+    end
     
   end
   
