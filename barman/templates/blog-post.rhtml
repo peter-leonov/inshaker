@@ -23,7 +23,7 @@
 			Теги:
 			<ul class="list">
 				<% @tags.each do |tag| %>
-				<li class="tag"><a class="link" href="/blog/#tag=<%= tag %>"><%= tag %></a></li>
+				<li class="tag"><a class="link" href="/blog/#tag=<%= tag["name"] %>"><%= tag["name"] %></a></li>
 				<% end %>
 			</ul>
 		</div>

@@ -73,23 +73,24 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
-    @tags_keys = []
-    if @tags.empty?
-      warning "нету ни одного тега"
-    else
-      @tags.select! do |tag|
-        if @@known_tags[tag]
-          key = @@seen_tags[tag]
-          unless key
-            key = "tag-#{@@seen_tags.length}"
-            @@seen_tags[tag] = key
-          end
-          @tags_keys << key
-        else
-          error "неизвестный тег «#{tag}»"
-          nil
-        end
+    @tags_names = @tags
+    @tags = []
+    @tags_names.each do |name|
+      unless @@known_tags[name]
+        warning "неизвестный тег «#{tag}»"
+        next
       end
+      
+      tag = @@seen_tags[name]
+      unless tag
+        tag = {"name" => name, "key" => "tag-#{@@seen_tags.length}"}
+        @@seen_tags[name] = tag
+      end
+      @tags << tag
+    end
+    
+    if @tags.empty?
+      error "нету ни одного внятного тега"
     end
     
     
@@ -215,11 +216,7 @@ class Blog::Post
   
   
   def self.tags_list
-    list = []
-    @@seen_tags.each do |k, v|
-      list << {"name" => k, "key" => v}
-    end
-    list
+    @@seen_tags.values
   end
   
   
