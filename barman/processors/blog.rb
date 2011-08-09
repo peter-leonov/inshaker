@@ -206,7 +206,7 @@ class Blog::Post
   
   
   
-  def tags_list
+  def self.tags_list
     list = []
     @@seen_tags.each do |k, v|
       list << {"name" => k, "key" => v}
