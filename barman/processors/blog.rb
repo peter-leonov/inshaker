@@ -24,7 +24,7 @@ class Blog
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
-    HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "tags.json"
+    HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
