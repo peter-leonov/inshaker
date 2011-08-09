@@ -8,4 +8,5 @@ module Inshaker
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
   HTDOCS_DIR    = ROOT_DIR + "htdocs/"
+  HT_DB_DIR     = ROOT_DIR + "htdocs/db/"
 end
