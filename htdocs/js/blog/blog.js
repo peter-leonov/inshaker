@@ -28,6 +28,7 @@ Me.prototype =
 	renderPosts: function ()
 	{
 		this.updateVisibilityFrame(this.nodes.lazyImages)
+		window.scrollTo(0, 0)
 	},
 	
 	locationHashUpdated: function ()
@@ -94,7 +95,6 @@ Me.prototype =
 		
 		var frame = this.frame
 		frame.setBoxes(boxes)
-		frame.moveTo(0, -2500)
 	}
 }
 
