@@ -40,10 +40,10 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .more .tags { margin-bottom: 5px; color: #343B40; }
 .post .more .tags .list { color: #888; }
 .post .more .tags .list,
-.post .more .tags .list .item { display: inline; }
-.post .more .tags .list .item::after { content: ','; }
-.post .more .tags .list .item:last-child::after { content: '.' }
-.post .more .tags .list .item .link {  }
+.post .more .tags .list .tag { display: inline; }
+.post .more .tags .list .tag::after { content: ','; }
+.post .more .tags .list .tag:last-child::after { content: '.' }
+.post .more .tags .list .tag .link {  }
 .post .body { font-size: 14px; line-height: 22px; }
 .post .body .image-box { display: block; margin: 1em 0; }
 .post .body .image-box .image { display: inline-block; }
@@ -56,10 +56,10 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 #tag-cloud { color: #343B40; font-size: 17px; }
 #tag-cloud .list { color: #888; }
 #tag-cloud .list,
-#tag-cloud .list .item { display: inline; }
-#tag-cloud .list .item::after { content: ','; }
-#tag-cloud .list .item:last-child::after { content: '.'; }
-#tag-cloud .list .item .link { white-space: nowrap; }
+#tag-cloud .list .tag { display: inline; }
+#tag-cloud .list .tag::after { content: ','; }
+#tag-cloud .list .tag:last-child::after { content: '.'; }
+#tag-cloud .list .tag .link { white-space: nowrap; }
 
 
 #bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }

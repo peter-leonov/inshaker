@@ -338,7 +338,8 @@ class Blog
     File.open(Config::TAG_CLOUD, "w+") do |f|
       Blog::Post.tags_list.each do |tag|
         name = tag["name"]
-        f.puts %Q{<li class="item"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
+        key = tag["key"]
+        f.puts %Q{<li class="tag #{key}"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
       end
       f.puts ""
     end

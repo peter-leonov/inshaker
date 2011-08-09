@@ -57,7 +57,8 @@ Me.prototype =
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i]
-			sheet.insertRule('#posts-loop.show-' + tag + ' .post.' + tag + ' { display: block }', i)
+			sheet.insertRule('#posts-loop.show-' + tag + ' .post.' + tag + ' { display: block }', i * 2)
+			sheet.insertRule('#posts-loop.show-' + tag + ' .tag.' + tag + ' .link { color: #ccc }', i *2 + 1)
 		}
 	},
 	
