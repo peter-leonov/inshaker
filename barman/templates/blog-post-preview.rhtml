@@ -7,8 +7,8 @@
 		<div class="tags">
 			Теги:
 			<ul class="list">
-				<% tags_name_with_key do |name, key| %>
-				<li class="item"><a class="link" href="/blog/#tag=<%= key %>"><%= name %></a></li>
+				<% @tags.each do |tag| %>
+				<li class="item"><a class="link" href="/blog/#tag=<%= tag %>"><%= tag %></a></li>
 				<% end %>
 			</ul>
 		</div>

@@ -32,7 +32,8 @@ Me.prototype =
 	locationHashUpdated: function ()
 	{
 		var bookmark = UrlEncode.parse(this.locationHash.get())
-		var tag = bookmark.tag || 'all'
+		var tag = Blog.getByName(bookmark.tag)
+		tag = tag ? tag.key : 'all'
 		this.switchTag(tag)
 		this.renderPosts()
 	},

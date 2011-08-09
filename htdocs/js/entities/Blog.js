@@ -21,7 +21,7 @@ var myStatic =
 		}
 	},
 	
-	tagKeyByName: function (name)
+	getByName: function (name)
 	{
 		return this.__byNameIndex[name]
 	},
