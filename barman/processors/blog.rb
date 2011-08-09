@@ -72,14 +72,18 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
+    @tags_keys = []
     if @tags.empty?
       warning "нету ни одного тега"
     else
       @tags.each do |tag|
         if @@known_tags[tag]
-          unless @@seen_tags[tag]
-            @@seen_tags[tag] = "tag-#{@@seen_tags.length}"
+          key = @@seen_tags[tag]
+          unless key
+            key = "tag-#{@@seen_tags.length}"
+            @@seen_tags[tag] = key
           end
+          @tags_keys << key
         else
           error "неизвестный тег «#{tag}»"
         end
