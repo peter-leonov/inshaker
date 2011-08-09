@@ -58,7 +58,7 @@ Me.prototype =
 		{
 			var tag = tags[i]
 			sheet.insertRule('#posts-loop.show-' + tag + ' .post.' + tag + ' { display: block }', i * 2)
-			sheet.insertRule('#posts-loop.show-' + tag + ' .tag.' + tag + ' .link { color: #ccc }', i *2 + 1)
+			sheet.insertRule('#posts-loop.show-' + tag + ' .tag.' + tag + ' .link { color: #ccc; cursor: text; text-decoration: none }', i *2 + 1)
 		}
 	},
 	
