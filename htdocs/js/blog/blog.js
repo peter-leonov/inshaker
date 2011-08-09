@@ -42,7 +42,7 @@ Me.prototype =
 	
 	switchTag: function (tag)
 	{
-		var root = this.nodes.postsRoot
+		var root = this.nodes.pageRoot
 		
 		root.removeClassName('show-' + this.lastTag)
 		root.addClassName('show-' + tag)
@@ -57,8 +57,8 @@ Me.prototype =
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i]
-			sheet.insertRule('#posts-loop.show-' + tag + ' .post.' + tag + ' { display: block }', i * 2)
-			sheet.insertRule('#posts-loop.show-' + tag + ' .tag.' + tag + ' .link { color: inherit; cursor: text; text-decoration: none }', i *2 + 1)
+			sheet.insertRule('#common-main-wrapper.show-' + tag + ' .post.' + tag + ' { display: block }', i * 2)
+			sheet.insertRule('#common-main-wrapper.show-' + tag + ' .tag.' + tag + ' .link { color: inherit; cursor: text; text-decoration: none }', i *2 + 1)
 		}
 	},
 	
@@ -110,7 +110,7 @@ function onready (e)
 	var nodes =
 	{
 		lazyImages: $$('#posts-loop .post .body .image.lazy'),
-		postsRoot: $('posts-loop'),
+		pageRoot: $('common-main-wrapper'),
 		styleNode: $('posts-selecter')
 	}
 	
