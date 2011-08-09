@@ -1,15 +1,50 @@
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+
 ;(function(){
 
 function Me ()
 {
-	var nodes = []
+	this.nodes = []
+	this.lastTag = 'all'
 }
 
 Me.prototype =
 {
 	bind: function (nodes)
 	{
-		this.setupVisibilityFrame(nodes.lazyImages)
+		this.nodes = nodes
+		
+		this.bakeStyles()
+		
+		var lh = this.locationHash = new LocationHash().bind(window)
+		var me = this
+		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
+		
+		this.locationHashUpdated()
+	},
+	
+	renderPosts: function ()
+	{
+		this.setupVisibilityFrame(this.nodes.lazyImages)
+	},
+	
+	locationHashUpdated: function ()
+	{
+		var bookmark = UrlEncode.parse(this.locationHash.get())
+		var tag = bookmark.tag || 'all'
+		this.switchTag(tag)
+		this.renderPosts()
+	},
+	
+	switchTag: function (tag)
+	{
+		var root = this.nodes.postsRoot
+		
+		root.removeClassName('show-' + this.lastTag)
+		root.addClassName('show-' + tag)
+		this.lastTag = tag
+	},
 	
 	bakeStyles: function ()
 	{
@@ -68,6 +103,7 @@ function onready (e)
 	var nodes =
 	{
 		lazyImages: $$('#posts-loop .post .body .image.lazy'),
+		postsRoot: $('posts-loop'),
 		styleNode: $('posts-selecter')
 	}
 	
