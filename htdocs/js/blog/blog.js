@@ -15,7 +15,6 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		this.bakeStyles()
 		this.setupVisibilityFrame()
 		
 		var lh = this.locationHash = new LocationHash().bind(window)
@@ -47,19 +46,6 @@ Me.prototype =
 		root.removeClassName('show-' + this.lastTag)
 		root.addClassName('show-' + tag)
 		this.lastTag = tag
-	},
-	
-	bakeStyles: function ()
-	{
-		var sheet = this.nodes.styleNode.sheet
-		
-		var tags = Blog.allKeys()
-		for (var i = 0, il = tags.length; i < il; i++)
-		{
-			var tag = tags[i]
-			sheet.insertRule('#common-main-wrapper.show-' + tag + ' .post.' + tag + ' { display: block }', i * 2)
-			sheet.insertRule('#common-main-wrapper.show-' + tag + ' .tag.' + tag + ' .link { color: inherit; cursor: text; text-decoration: none }', i *2 + 1)
-		}
 	},
 	
 	setupVisibilityFrame: function ()
@@ -110,8 +96,7 @@ function onready (e)
 	var nodes =
 	{
 		lazyImages: $$('#posts-loop .post .body .image.lazy'),
-		pageRoot: $('common-main-wrapper'),
-		styleNode: $('posts-selecter')
+		pageRoot: $('common-main-wrapper')
 	}
 	
 	var widget = new BlogMainPage()
