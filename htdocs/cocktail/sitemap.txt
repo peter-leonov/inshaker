@@ -11,6 +11,7 @@ http://www.inshaker.ru/cocktail/absinth_with_energy_drink/
 http://www.inshaker.ru/cocktail/absinthe_sour/
 http://www.inshaker.ru/cocktail/devil_s_advocate/
 http://www.inshaker.ru/cocktail/iq/
+http://www.inshaker.ru/cocktail/quince_compote_in_a_jug/
 http://www.inshaker.ru/cocktail/quince_crush/
 http://www.inshaker.ru/cocktail/alexander/
 http://www.inshaker.ru/cocktail/alexandra/
@@ -224,6 +225,7 @@ http://www.inshaker.ru/cocktail/grand_mimosa/
 http://www.inshaker.ru/cocktail/grand_sazerac/
 http://www.inshaker.ru/cocktail/count/
 http://www.inshaker.ru/cocktail/grapefruit_splash/
+http://www.inshaker.ru/cocktail/grapefruit_compote_in_a_jug/
 http://www.inshaker.ru/cocktail/grapefruit_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/green_tini/
 http://www.inshaker.ru/cocktail/green_hope/
@@ -395,6 +397,7 @@ http://www.inshaker.ru/cocktail/coconut_sprite/
 http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
 http://www.inshaker.ru/cocktail/cola_and_grapefruit_liqueur/
 http://www.inshaker.ru/cocktail/compote_from_kindergarten_in_a_jug/
+http://www.inshaker.ru/cocktail/compote_of_kiwi_in_a_jug/
 http://www.inshaker.ru/cocktail/compote_of_dandelion_in_a_jug/
 http://www.inshaker.ru/cocktail/compote_of_dried_fruits_in_a_jug/
 http://www.inshaker.ru/cocktail/compote_of_prunes_in_a_jug/
