@@ -1,3 +1,4 @@
+<!--# include virtual="/lib-0.3/core/fixes/onhashchange.js" -->
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/location-hash.js" -->
 
