@@ -54,6 +54,11 @@ var Me =
 		this.track('combinator-query', query)
 	},
 	
+	blogTagSelected: function (tag)
+	{
+		this.track('blog-tag-selected', tag)
+	},
+	
 	track: function (action, label, value)
 	{
 		setTimeout(function () { Tracker.track('UserAction', action, label, value) }, 500)

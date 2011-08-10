@@ -34,18 +34,29 @@ Me.prototype =
 	{
 		var bookmark = UrlEncode.parse(this.locationHash.get())
 		var tag = Blog.getByName(bookmark.tag)
-		tag = tag ? tag.key : 'all'
-		this.switchTag(tag)
+		this.setTag(tag)
 		this.renderPosts()
 	},
 	
-	switchTag: function (tag)
+	setTag: function (tag)
+	{
+		if (!tag)
+		{
+			this.switchTag('all')
+			return
+		}
+		
+		Statistics.blogTagSelected(tag.name)
+		this.switchTag(tag.key)
+	},
+	
+	switchTag: function (key)
 	{
 		var root = this.nodes.pageRoot
 		
 		root.removeClassName('show-' + this.lastTag)
-		root.addClassName('show-' + tag)
-		this.lastTag = tag
+		root.addClassName('show-' + key)
+		this.lastTag = key
 	},
 	
 	setupVisibilityFrame: function ()
