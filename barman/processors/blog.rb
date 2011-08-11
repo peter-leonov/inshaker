@@ -77,7 +77,7 @@ class Blog::Post
     @tags = []
     @tags_names.each do |name|
       unless @@known_tags[name]
-        warning "неизвестный тег «#{tag}»"
+        warning "неизвестный тег «#{name}»"
         next
       end
       
