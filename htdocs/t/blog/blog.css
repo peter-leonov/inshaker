@@ -37,7 +37,7 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
 .post .more .deeper { color: inherit; margin: 0 20px 0 0; }
 #the-one .post .more { margin-top: 30px; }
-#the-one .post .more .date { position: absolute; right: 0; top: 7px; }
+#the-one .post .more .date { position: absolute; right: 0; }
 .post .more .tags { margin-bottom: 5px; color: #343B40; }
 .post .more .tags .list { color: #888; }
 .post .more .tags .list,
