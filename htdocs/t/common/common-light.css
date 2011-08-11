@@ -67,7 +67,9 @@ html.blog-section #top .nav .blog .link
 #index-page #top .logo { cursor: default; }
 
 #bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
+#bottom a { padding: 7px; }
 #bottom .main-menu{float:right;}
+#bottom .left-menu { margin-left: -7px; }
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
 #cocktail-page #bottom .main-menu a.cocktails,
@@ -76,7 +78,7 @@ html.blog-section #top .nav .blog .link
 #good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events,
 #academy-page #bottom .main-menu a.academy,
-html.job-page #bottom a.job,
+html.job-section #bottom a.job,
 html.about-page #bottom a.about,
 #combinator-page #bottom .main-menu a.combinator,
 html.blog-section #bottom .main-menu a.blog
@@ -84,7 +86,7 @@ html.blog-section #bottom .main-menu a.blog
 
 
 /* branding.css */
-#alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background-position: 0 0;}
+#alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }

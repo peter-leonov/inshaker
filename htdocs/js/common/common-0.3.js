@@ -22,7 +22,6 @@
 if (!document.querySelectorAll)
 	$.load('/lib-0.3/core/fixes/dom-level2-selectors.js')
 
-<!--# include virtual="/js/common/yandex-metrika.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/combinator/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
@@ -32,7 +31,6 @@ if (!document.querySelectorAll)
 $.onready(function () { setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()
-	YandexMetrika.trackPageview()
 }, 250) })
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }

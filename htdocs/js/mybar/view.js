@@ -465,8 +465,9 @@ var myProto =
 	{
 		var nodes = this.nodes.share
 		var url = window.location.protocol + '//' + window.location.hostname + '/mybar/foreign.html#' + id
-		nodes.links.facebook.href = nodes.links.facebook.href.replace('${mybarlink}', UrlEncode.stringify({ u : url }))
-		nodes.links.twitter.href = nodes.links.twitter.href.replace('${mybarlink}', UrlEncode.stringify({ url : url }))
+		nodes.links.vkontakte.href = nodes.links.vkontakte.href.replace('${mybarlink}', window.encodeURIComponent(url))
+		nodes.links.facebook.href = nodes.links.facebook.href.replace('${mybarlink}', window.encodeURIComponent(url))
+		nodes.links.twitter.href = nodes.links.twitter.href.replace('${mybarlink}', window.encodeURIComponent(url))
 		var textValue = nodes.popups.email.text.innerHTML.replace('${mybarlink}', url)
 		nodes.popups.email.text.innerHTML = textValue
 		nodes.popups.web.input.value = url
@@ -1036,6 +1037,7 @@ var myProto =
 		
 		switch(e.target.className)
 		{
+			case 'vkontakte-share':
 			case 'facebook-share':
 			case 'twitter-share':
 			{

@@ -15,17 +15,8 @@ class Ingredient < Inshaker::Entity
     return if @inited
     @inited = true
     
-    @db = []
-    @by_name = {}
-    
-    if File.exists?(Config::DB_JS)
-      @db = JSON.parse(File.read(Config::DB_JS))
-      @by_name = @db.hash_index("name")
-    end
-  end
-  
-  def self.[] name
-    @by_name[name]
+    @db = JSON.parse(File.read(Config::DB_JS))
+    @by_name = @db.hash_index("name")
   end
   
   def self.check_integrity

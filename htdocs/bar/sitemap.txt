@@ -2,11 +2,12 @@ http://www.inshaker.ru/bar/berry/
 http://www.inshaker.ru/bar/brut/
 http://www.inshaker.ru/bar/new/
 http://www.inshaker.ru/bar/old_fashioned/
+http://www.inshaker.ru/bar/relab/
 http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/aloha/
+http://www.inshaker.ru/bar/barbados/
 http://www.inshaker.ru/bar/squirrel/
 http://www.inshaker.ru/bar/sideboard/
-http://www.inshaker.ru/bar/vision/
 http://www.inshaker.ru/bar/delicatessen/
 http://www.inshaker.ru/bar/denis_simachev_shop_and_bar/
 http://www.inshaker.ru/bar/gipsy/
@@ -34,9 +35,9 @@ http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/gull/
 http://www.inshaker.ru/bar/birch/
 http://www.inshaker.ru/bar/caramel/
-http://www.inshaker.ru/bar/22.13/
 http://www.inshaker.ru/bar/48_chairs/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/grafin/
 http://www.inshaker.ru/bar/house_of_consumer_services/
+http://www.inshaker.ru/bar/saint_p._bar___lounge/
