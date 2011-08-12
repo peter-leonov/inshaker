@@ -346,7 +346,11 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     cocktail_tags = @cocktail["tags"] = []
-    tags = about["Теги"] || []
+    tags = about["Теги"]
+    unless tags
+      error "нету поля «Теги» в описании коктейля, или поле названо неверно (например «Тег»)"
+      tags = []
+    end
     tags << "все коктейли"
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
