@@ -17,7 +17,7 @@ var Me =
 {
 	trackPageview: function ()
 	{
-		$.include('//mc.yandex.ru/metrika/watch_visor.js')
+		$.load('//mc.yandex.ru/metrika/watch_visor.js')
 	}
 }
 
