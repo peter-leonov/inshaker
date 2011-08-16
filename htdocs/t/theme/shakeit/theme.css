@@ -42,6 +42,8 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 #spotlighted { display: none; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
+#letters_all:hover,
+#alphabetical-ru a:hover,
 #alphabetical-ru a.selected-button { color: #ec118f; }
 #search_tabs li { color: #fff; }
 #search_tabs li.selected {}
