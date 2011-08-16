@@ -9,10 +9,10 @@
 #search_tabs li.selected {background-position: 0px -100px; cursor: default; height: 21px;}
 
 #search_by_letter a {text-decoration:none; font-size: 14px;}
-#letters_all{float:left; width: 40px; text-align:center;}
-#alphabetical-ru { overflow: hidden; position: absolute; right: 8px; top: 6px; }
-#alphabetical-ru a { float: left; display: block; width: 17px; height: 18px; line-height: 15px; text-align: center; }
-#alphabetical-ru a.selected-button {background-position: -125px -125px; cursor: default; }
+#letters_all { float:left; width: 32px; text-align:center; }
+#alphabetical-ru { position: absolute; right: 8px; top: 6px; }
+#alphabetical-ru a { float: left; display: block; width: 17px; height: 18px; line-height: 15px; text-align: center; position: relative; z-index: 2;  }
+#alphabetical-ru a.selected-button { width: 19px; margin: 0 -1px 0 -1px; z-index: 1; background-position: -125px -125px; cursor: default; }
 
 .search-control { z-index: 10; position: relative; }
 .autocomplete { position: absolute; opacity: 0.95; border-style: solid; border-width: 0px 1px 1px 1px; font-size: 14px; }
