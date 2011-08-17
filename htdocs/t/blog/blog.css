@@ -62,7 +62,7 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 #tag-cloud .list .tag:last-child::after { content: '.'; }
 #tag-cloud .list .tag .link { white-space: nowrap; }
 
-#share-box { margin: 10px 0 0 0; }
+#share-box { margin: 10px 0 0 -7px; }
 
 #bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
 
