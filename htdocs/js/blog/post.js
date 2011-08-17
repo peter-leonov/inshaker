@@ -13,7 +13,9 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		
+		var share = new ShareBox()
+		share.bind(nodes.shareBox)
+		share.render(window.location.href, nodes.title.getAttribute('data-title'))
 	}
 }
 
@@ -27,7 +29,12 @@ function onready (e)
 {
 	var nodes =
 	{
-		shareBox: $('share-box')
+		title: $$('#the-one .post .title')[0],
+		shareBox:
+		{
+			root: $('share-box'),
+			buttons: $$('#share-box .button')
+		}
 	}
 	
 	var widget = new BlogPostPage()
