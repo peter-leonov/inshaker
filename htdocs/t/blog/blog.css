@@ -36,8 +36,8 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 .post .title { font-size: 22px; margin: 0 0 5px 0; }
 .post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
 .post .more .deeper { color: inherit; margin: 0 20px 0 0; }
-#the-one .post .more { margin-top: 30px; }
-#the-one .post .more .date { position: absolute; right: 0; }
+#the-one .post .more { margin-top: 30px; position: relative; }
+#the-one .post .more .date { position: absolute; right: 0; top: 18px; }
 .post .more .tags { margin-bottom: 5px; color: #343B40; }
 .post .more .tags .list { color: #888; }
 .post .more .tags .list,
@@ -62,6 +62,7 @@ html { background: url("../common/content-gradient-v.png") repeat-x 0 65px #fff;
 #tag-cloud .list .tag:last-child::after { content: '.'; }
 #tag-cloud .list .tag .link { white-space: nowrap; }
 
+#share-box { position: absolute; right: -5px; top: -12px; }
 
 #bottom { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; }
 

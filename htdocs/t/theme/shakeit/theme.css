@@ -7,7 +7,8 @@
 .win-shop .content .less i,
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
-button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+button.rounded,
+#share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
