@@ -8,6 +8,7 @@ http://www.inshaker.ru/barman/aleksei-terekhov/
 http://www.inshaker.ru/barman/aleksei-shaposhnikov/
 http://www.inshaker.ru/barman/andrey-golubev/
 http://www.inshaker.ru/barman/andrey-zastavnuk/
+http://www.inshaker.ru/barman/andrey-kozlov/
 http://www.inshaker.ru/barman/andrey-larin/
 http://www.inshaker.ru/barman/andrey-razokov/
 http://www.inshaker.ru/barman/anton-pokozy/
@@ -17,10 +18,12 @@ http://www.inshaker.ru/barman/artem-emelshin/
 http://www.inshaker.ru/barman/artem-sidorenko/
 http://www.inshaker.ru/barman/artem-shahmetov/
 http://www.inshaker.ru/barman/artur-balayan/
+http://www.inshaker.ru/barman/artur-galaichuk/
 http://www.inshaker.ru/barman/bek-narzi/
 http://www.inshaker.ru/barman/bogdan-petrov/
 http://www.inshaker.ru/barman/vlad-lyahov-and-ivan-vladimirov/
 http://www.inshaker.ru/barman/vladimir-alekseev/
+http://www.inshaker.ru/barman/vladimir-zhuravlev/
 http://www.inshaker.ru/barman/vyacheslav-zatsepilov/
 http://www.inshaker.ru/barman/slava-lankin/
 http://www.inshaker.ru/barman/gennadyi-kononov/
@@ -34,12 +37,15 @@ http://www.inshaker.ru/barman/dan-warner/
 http://www.inshaker.ru/barman/evgeny-alexandrov/
 http://www.inshaker.ru/barman/joerg-meyer/
 http://www.inshaker.ru/barman/sam-konyahin-and-ilya-astafiev/
+http://www.inshaker.ru/barman/konstantin-komarov/
 http://www.inshaker.ru/barman/konstantin-podchasov/
 http://www.inshaker.ru/barman/lado-prangishvili/
 http://www.inshaker.ru/barman/lydia-reissmueller/
+http://www.inshaker.ru/barman/laurent-greco/
 http://www.inshaker.ru/barman/marat-saddarov/
 http://www.inshaker.ru/barman/marion-beke/
 http://www.inshaker.ru/barman/mikhail-kalachev/
+http://www.inshaker.ru/barman/nikita-sherbinin/
 http://www.inshaker.ru/barman/pavel-kyzovkov/
 http://www.inshaker.ru/barman/paul-tvaroh/
 http://www.inshaker.ru/barman/polina-sergeeva/
@@ -58,4 +64,5 @@ http://www.inshaker.ru/barman/ueno-hidetsugu/
 http://www.inshaker.ru/barman/edvin-byarygaba/
 http://www.inshaker.ru/barman/andy-pearson/
 http://www.inshaker.ru/barman/yura-yakovlev/
+http://www.inshaker.ru/barman/yaroslav-danilov/
 http://www.inshaker.ru/barman/yaroslav-panov/

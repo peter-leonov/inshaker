@@ -1,21 +1,26 @@
-<!--#include virtual="sizzle.js" -->
+;(function(){
 
-window.$$ = Sizzle
+function list2array (list)
+{
+	var arr = []
+	for (var i = 0, il = list.length; i < il; i++)
+		arr[i] = list[i]
+	return arr
+}
 
-// Element.prototype.getElementsByClassName=function(c){return $$('.'+c, this)}
+window.$$ = function (query, root)
+{
+	var list = (root || document).querySelectorAll(query)
+	// if (!list || list.length == 0)
+	// 	alert('empty $$("' + query + '")')
+	return list2array(list)
+}
+window.$ = function (id) { return document.getElementById(id) }
 
 if (!document.getElementsByClassName)
+Element.prototype.getElementsByClassName = document.getElementsByClassName = function (className)
 {
-	Element.prototype.getElementsByClassName = document.getElementsByClassName = function (className, tagName)
-	{
-		var children = this.getElementsByTagName(tagName || '*'),
-			rex = new RegExp("(?:\\s+|^)" + className + "(?:\\s+|$)")
-		
-		var res = []
-		for (var l = 0, i = 0, il = children.length; i < il; i++)
-			if (rex.test(children[i].className))
-				res[l++] = children[i]
-		
-		return res
-	}
+	return this.querySelectorAll('.' + className)
 }
+
+})();

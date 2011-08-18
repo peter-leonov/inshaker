@@ -58,6 +58,7 @@ html.msie-6 .rounding-corners .rb { bottom: -2px; }
 #academy-page #top .nav .academy .link,
 #combinator-page #top .nav .combinator .link,
 html.party-section #top .nav .party .link,
+#mybar-page #top .nav .mybar .link,
 html.blog-section #top .nav .blog .link
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
@@ -66,8 +67,10 @@ html.blog-section #top .nav .blog .link
 #top .logo { width: 147px; height: 60px; background-position: -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 #index-page #top .logo { cursor: default; }
 
-#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;overflow:hidden;clear:both;padding-top:40px;margin:0 auto;width:960px;}
+#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
+#bottom a { padding: 7px; }
 #bottom .main-menu{float:right;}
+#bottom .left-menu { margin-left: -7px; }
 #index-page #bottom .main-menu a.main,
 #cocktails-page #bottom .main-menu a.cocktails,
 #cocktail-page #bottom .main-menu a.cocktails,
@@ -76,7 +79,7 @@ html.blog-section #top .nav .blog .link
 #good-page #bottom .main-menu a.goods,
 #event-page #bottom .main-menu a.events,
 #academy-page #bottom .main-menu a.academy,
-html.job-page #bottom a.job,
+html.job-section #bottom a.job,
 html.about-page #bottom a.about,
 #combinator-page #bottom .main-menu a.combinator,
 html.party-section #bottom .main-menu a.party,
@@ -85,7 +88,7 @@ html.blog-section #bottom .main-menu a.blog
 
 
 /* branding.css */
-#alcohol-harm {margin-top: 15px; width: 960px; height: 40px; background-position: 0 0;}
+#alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
@@ -100,3 +103,19 @@ html.blog-section #bottom .main-menu a.blog
 .common-box .common-title .common-name { font-size: 20px; margin-left: -1px; }
 
 html.msie-6 .common-box .common-content { zoom: 1; }
+
+.cocktail-list .prev,
+.cocktail-list .next { position: absolute; top: 54px; height: 14px; width: 14px; z-index: 2; }
+.cocktail-list .prev { background-position: -500px 0; left: 0px; }
+.cocktail-list .next { background-position: -525px 0; right: -2px; }
+.cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
+.cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
+
+#share-box .button { display: inline-block; width: 30px; height: 30px; }
+#share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+#share-box .button.facebook i { background-position: -150px 0; }
+#share-box .button.facebook:hover i { background-position: -175px 0; }
+#share-box .button.twitter i { background-position: -150px -25px; }
+#share-box .button.twitter:hover i { background-position: -175px -25px; }
+#share-box .button.vkontakte i { background-position: -150px -50px; }
+#share-box .button.vkontakte:hover i { background-position: -175px -50px; }

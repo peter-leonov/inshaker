@@ -1,10 +1,17 @@
-<li class="post preview">
+<li class="post preview <%= @tags.map{|e|e["key"]}.join(" ") %>">
 	<h2 class="title"><a href="/blog/<%= @href %>/#the-one"><%= @title %></a></h2>
 	<div class="body">
 		<%= @cut %>
 	</div>
 	<div class="more">
-		<a class="deeper" href="/blog/<%= @href %>/#the-one">сколько всего интересного →</a>
+		<div class="tags">
+			Теги:
+			<ul class="list">
+				<% @tags.each do |tag| %>
+				<li class="tag <%= tag["key"] %>"><a class="link" href="/blog/#tag=<%= tag["name"] %>"><%= tag["name"] %></a></li>
+				<% end %>
+			</ul>
+		</div>
 		<span class="date"><%= @date_ru %></span>
 	</div>
 </li>

@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
-require 'inshaker'
+require "inshaker"
+require "entities/tool"
 
 class ToolsProcessor < Inshaker::Processor
   
   module Config
-    TOOLS_DIR  = Inshaker::BASE_DIR + "Tools" 
-    HTDOCS_DIR = Inshaker::HTDOCS_DIR
-    
-    TOOLS_ROOT = HTDOCS_DIR + "i/merchandise/tools/"
-    DB_JS      = HTDOCS_DIR + "db/tools/tools.json"
+    include Tool::Config
   end
   
   def initialize

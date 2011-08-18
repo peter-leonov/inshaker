@@ -1,272 +1,145 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
-require "inshaker"
+require "lib/yaml"
+require "lib/json"
+require "lib/erb"
+require "lib/output"
+require "lib/array"
+require "lib/string"
+require "lib/file"
+require "lib/image"
+
+require "config"
+require "entities/entity"
 require "entities/cocktail"
 
-class EventsProcessor < Inshaker::Processor
+class Blog
   
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
+    TAGS_DB        = BASE_DIR + "/tags.yaml"
     
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    POSTS_PREVIEWS = HT_ROOT + "posts.html"
-    
+    TAG_CLOUD      = HT_ROOT + "tag-cloud.html"
+    POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
+    HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
+    
+    module Templates
+      POST         = TEMPLATES + "blog-post.rhtml"
+      POST_PREVIEW = TEMPLATES + "blog-post-preview.rhtml"
+    end
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   end
-  
-  
-  def initialize
-    super
-    @entities = {}
-    @entities_array = []
-    @entities_hrefs = {}
-    @entity  = {} # currently processed entity
-  end
-  
-  def job_name
-    "смешивалку блога"
-  end
-  
-  def job
-    sync_base "Blog"
-    
-    Cocktail.init
-    prepare_dirs
-    
-    update_blog
-    update_banners
-    
-    unless errors?
-      cleanup_deleted
-      flush_links
-      flush_json
-    end
-  end
-  
-  def prepare_dirs
-    FileUtils.mkdir_p [Config::HT_ROOT, Config::HT_ROOT_BAN]
-  end
-  
-  def update_blog
-    say "обновляю блог"
-    indent do
-    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
-      process_entity dir
-    end
-    
-    update_posts_loop
-    end #indent
-  end
-  
-  def process_entity src_dir
-    say src_dir.name
-    indent do
-    
-    content = File.read(src_dir.path + "/post.html")
-    
-    # from jekyll 0.10.0 convertivle.rb
-    unless m = /^(---\s*\n.*?\n?)^(---\s*$\n?)/m.match(content)
-      error "в post.html нету описания на ямле (то, что между ---)"
-      return
-    end
-    content = content[(m[1].size + m[2].size)..-1]
-    
-    
-    yaml = YAML.load(m[1])
-    
-    @entity = {}
-    
-    @entity["title"]             = yaml['Заголовок']
-    @entity["href"]              = yaml['Ссылка']
-    
-    ru_date = parse_date(yaml['Дата'])
-    unless ru_date
-      error "не могу понять вашу дату «#{yaml['Дата']}»"
-      return
-    end
-    ru_date_str = "#{ru_date.day} #{Config::RU_INFLECTED_MONTHNAMES[ru_date.mon].downcase} #{ru_date.year}"
-    
-    @entity["date"]              = ru_date.to_i * 1000
-    @entity["date_ru"]           = ru_date_str
-    
-    (cut, body) = content.split(/\s*<!--\s*more\s*-->\s*/)
-    cut = markup cut
-    body = markup body
-    @entity["cut"]               = cut
-    @entity["body"]              = body
-    
-    
-    seen = @entities_hrefs[@entity["href"]]
-    if seen
-      error %Q{пост с такой ссылкой уже существует: "#{seen["name"]}"}
-    else
-      @entities_hrefs[@entity["href"]] = @entity
-    end
-    
-    ht_name = @entity["href"]
-    ht_path = Config::HT_ROOT + ht_name
-    FileUtils.mkdir_p ht_path
-    ht_dir = Dir.new(ht_path)
-    ht_dir.name = ht_name
-    
-    FileUtils.rmtree(ht_dir.path + "/i/")
-    FileUtils.cp_r(src_dir.path + "/i/", ht_dir.path + "/i/", @mv_opt)
-    
-    update_html @entity, ht_dir
-    end # indent
-    
-    @entities[@entity["name"]] = @entity
-    @entities_array << @entity
-  end
-  
-  def update_html entity, dst
-    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post.rhtml"))
-    
-    File.write("#{dst.path}/#{dst.name}.html", renderer.result(Template.new(entity).get_binding))
-  end
-  
-  def update_posts_loop
-    renderer = ERB.new(File.read(Config::TEMPLATES + "blog-post-preview.rhtml"))
-    
-    @entities_array.sort! { |a, b| b["date"] - a["date"] }
-    File.open(Config::POSTS_PREVIEWS, "w+") do |p|
-      @entities_array.each do |entity|
-        p.puts renderer.result(Template.new(entity).get_binding)
-      end
-    end
-  end
-  
-  def cleanup_deleted
-    say "ищу удаленные"
-    indent do
-    index = {}
-    @entities_array.each do |entity|
-      index[entity["href"]] = entity
-    end
-    
-    Dir.new(Config::HT_ROOT).each_dir do |dir|
-      unless index[dir.name]
-        say "удаляю #{dir.name}"
-        FileUtils.rmtree(dir.path)
-      end
-    end
-    end # indent
-  end
-  
-  def flush_json
-    # yet empty
-  end
-  
-  def flush_links
-    File.open(Config::NOSCRIPT_LINKS, "w+") do |links|
-      @entities.each do |name, entity|
-        links.puts %Q{<li><a href="/event/#{entity["href"]}/">#{entity["name"]}</a></li>}
-      end
-    end
-  end
-  
-  def parse_date str
-    m = /(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)(?: +(?<hour>\d+)\:(?<minute>\d+))?/.match(str)
-    if m
-      arr = [m[:year], m[:month], m[:day], m[:hour] || 0, m[:minute] || 0].map { |v| v.to_i }
-      Time.gm(*arr)
-    end
-  end
-  
-  class Template
-    def initialize *hashes
-      hashes.each do |hash|
-        hash.each do |k, v|
-          instance_variable_set("@#{k}", v)
-        end
-      end
-    end
+end
 
-    def get_binding
-      binding
+class Blog::Post
+  
+  attr_reader :title, :date, :href
+  
+  def self.init
+    @@seen_hrefs = {}
+    @@html_renderer = ERB.read(Blog::Config::Templates::POST)
+    @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
+    
+    @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
+    @@seen_tags = {}
+  end
+  
+  
+  def process src_dir
+    
+    @src_dir = src_dir
+    
+    header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
+    
+    
+    absorb_data YAML.load(header)
+    
+    seen = @@seen_hrefs[@href]
+    if seen
+      error %Q{пост с такой ссылкой уже существует: "#{seen.title}"}
+      return
+    else
+      @@seen_hrefs[@href] = self
     end
-  end
-  
-  
-  # banners ZONE ;)
-  
-  def update_banners
-    say "обновляю банеры"
-    indent do
     
-    FileUtils.mkdir_p [Config::HT_ROOT_BAN + 'i']
-    @small_banners = []
-    
-    ht_dir = Dir.new(Config::HT_ROOT_BAN)
-    
-    Dir.new(Config::BASE_DIR + "banners/small").each_dir do |dir|
-      process_small_banner dir, ht_dir
+    unless @date
+      error "не могу понять дату поста"
+      return
     end
+    @date_ru = russify_date @date
     
-    flush_banners_html
-    
-    process_big_banner Dir.new(Config::BASE_DIR + "banners/big"), ht_dir
-    
-    end #indent
-  end
-  
-  def process_small_banner src_dir, ht_dir
-    say src_dir.name
-    indent do
-    
-    banner = {}
-    @small_banners << banner
-    
-    banner["src_dir"] = src_dir
-    
-    num = @small_banners.length
-    banner["num"] = num
-    
-    yaml = load_yaml(src_dir.path + "/about.yaml")
-    banner["href"] = yaml["Ссылка"]
-    
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/small-#{num}.jpg", @mv_opt)
-    
-    end #indent
-  end
-  
-  def flush_banners_html
-    File.open(Config::HT_ROOT_BAN + "/small.html", "w+") do |f|
-      @small_banners.each do |banner|
-        f.puts %Q{<li class="item"><a href="#{banner["href"]}"><img src="/blog-banners/i/small-#{banner["num"]}.jpg"/></a></li>}
+    @tags_names = @tags
+    @tags = []
+    @tags_names.each do |name|
+      unless @@known_tags[name]
+        warning "неизвестный тег «#{name}»"
+        next
       end
-    end
-  end
-  
-  def process_big_banner src_dir, ht_dir
-    say "big"
-    indent do
-    
-    banner = {}
-    
-    banner["src_dir"] = src_dir
-    
-    yaml = load_yaml(src_dir.path + "/about.yaml")
-    banner["href"] = yaml["Ссылка"]
-    
-    # image
-    FileUtils.cp_r(src_dir.path + "/image.jpg", ht_dir.path + "/i/big.jpg", @mv_opt)
-    
-    File.open(Config::HT_ROOT_BAN + "/big.html", "w+") do |f|
-      f.puts %Q{<a href="#{banner["href"]}"><img src="/blog-banners/i/big.jpg"/></a>}
+      
+      tag = @@seen_tags[name]
+      unless tag
+        tag = {"name" => name, "key" => "tag-#{@@seen_tags.length}"}
+        @@seen_tags[name] = tag
+      end
+      @tags << tag
     end
     
-    end #indent
+    if @tags.empty?
+      error "нету ни одного внятного тега"
+    end
+    
+    
+    @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
+    
+    copy_images
+    absorb_content content
+    
+    write_html
+    
+    true
   end
   
-  # etc
+  def absorb_data data
+    @title = data['Заголовок']
+    @href = data['Ссылка']
+    @date = parse_date data['Дата']
+    @tags = data["Теги"] ? data["Теги"].split(/\s*,\s*/) : []
+  end
   
-  def markup text
+  def absorb_content content
+    @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
+    @cut = markup @cut, {:lazy_images => true}
+    @body = markup @body
+  end
+  
+  def write_html
+    File.write("#{@dst_dir.path}/#{@href}.html", @@html_renderer.result(binding))
+  end
+  
+  def preview_snippet
+    @@preview_renderer.result(binding)
+  end
+  
+  def copy_images
+    FileUtils.rmtree(@dst_dir.path + "/i/")
+    FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
+  end
+  
+  def to_hash
+    {
+      "date" => @date.to_i * 1000
+    }
+  end
+  
+  
+  
+  
+  def markup text, opts={}
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
@@ -276,15 +149,27 @@ class EventsProcessor < Inshaker::Processor
         (src, href) = data.split(/\s+/)
         
         if src !~ /^https?:\/\//
-          src = %Q{/blog/#{@entity["href"]}/i/#{src}}
+          if opts[:lazy_images]
+            box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
+            unless box
+              error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
+            end
+          end
+          src = %Q{/blog/#{@href}/i/#{src}}
+        end
+        
+        if box
+          image = %Q{<img lazy-src="#{src}" class="image lazy" width="#{box[0]}" height="#{box[1]}"/>}
+        else
+          image = %Q{<img src="#{src}" class="image"/>}
         end
         
         if href == "внутрь"
-          %Q{<div class="image-box"><a href="/blog/#{@entity["href"]}/#the-one"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one">#{image}</a></div>}
         elsif href
-          %Q{<div class="image-box"><a href="#{href}"><img src="#{src}"/></a></div>}
+          %Q{<div class="image-box"><a href="#{href}">#{image}</a></div>}
         else
-          %Q{<div class="image-box"><img src="#{src}"/></div>}
+          %Q{<div class="image-box">#{image}</div>}
         end
       elsif name == "коктейль"
         cocktail = Cocktail[data]
@@ -327,6 +212,155 @@ class EventsProcessor < Inshaker::Processor
     
     return text
   end
+  
+  
+  
+  def self.tags_list
+    @@seen_tags.values.sort { |a, b| a["name"] <=> b["name"] }
+  end
+  
+  
+  
+  def bake_dir path, name
+    FileUtils.mkdir_p path
+    dir = Dir.new(path)
+    dir.name = name
+    return dir
+  end
+  
+  def parse_date str
+    m = /(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)(?: +(?<hour>\d+)\:(?<minute>\d+))?/.match(str)
+    if m
+      arr = [m[:year], m[:month], m[:day], m[:hour] || 0, m[:minute] || 0].map { |v| v.to_i }
+      Time.gm(*arr)
+    end
+  end
+  
+  def russify_date date
+    "#{date.day} #{Blog::Config::RU_INFLECTED_MONTHNAMES[date.mon].downcase} #{date.year}"
+  end
+  
+  def split_header_from_content text
+    # from jekyll 0.10.0 convertivle.rb
+    unless m = /^(---\s*\n.*?\n?)^(---\s*$\n?)/m.match(text)
+      error "в post.html нету описания на ямле (то, что между ---)"
+      return
+    end
+    return m[1], text[(m[1].size + m[2].size)..-1]
+  end
 end
 
-exit EventsProcessor.new.run
+class Blog
+  
+  def initialize
+    @posts = []
+  end
+  
+  def job
+    Blog::Post.init
+    Cocktail.init
+    
+    update_posts
+    sort_posts
+    update_posts_loop
+    
+    unless errors?
+      cleanup_deleted
+      flush_links
+      flush_tags
+      flush_json
+    end
+    
+  end
+  
+  def update_posts
+    say "обновляю блог"
+    indent do
+    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
+      say dir.name
+      indent do
+        post = Blog::Post.new
+        if post.process(dir)
+          @posts << post
+        end
+      end #indent
+    end
+    end #indent
+  end
+  
+  def sort_posts
+    @posts.sort! do |a, b|
+      b.date - a.date
+    end
+  end
+  
+  def update_posts_loop
+    say "обновляю список постов"
+    File.open(Config::POSTS_LOOP, "w+") do |f|
+      @posts.each do |post|
+        f.puts post.preview_snippet
+      end
+    end
+  end
+  
+  def cleanup_deleted
+    say "ищу удаленные"
+    indent do
+    index = {}
+    @posts.each do |post|
+      index[post.href] = post
+    end
+    
+    Dir.new(Config::HT_ROOT).each_dir do |dir|
+      unless index[dir.name]
+        say "удаляю #{dir.name}"
+        FileUtils.rmtree(dir.path)
+      end
+    end
+    end # indent
+  end
+  
+  def flush_links
+    say "рисую ссылки для поисковиков"
+    File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
+      @posts.each do |post|
+        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
+      end
+      f.puts ""
+    end
+  end
+  
+  def flush_tags
+    say "рисую теги"
+    File.open(Config::TAG_CLOUD, "w+") do |f|
+      Blog::Post.tags_list.each do |tag|
+        name = tag["name"]
+        key = tag["key"]
+        f.puts %Q{<li class="tag #{key}"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
+      end
+      f.puts ""
+    end
+  end
+  
+  def flush_json
+    say "сохраняю базу тегов"
+    File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
+  end
+  
+  def run
+    
+    begin
+      job
+      summary
+    rescue => e
+      error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+      raise e
+    end
+    
+    return errors_count
+  end
+  
+end
+
+$stdout.sync = true
+exit Blog.new.run

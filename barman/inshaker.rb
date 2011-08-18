@@ -1,8 +1,6 @@
 # encoding: utf-8
 require "rubygems"
 require "templates"
-require "fileutils"
-require "erb"
 require "yaml"
 require "base64"
 require "uri"
@@ -11,31 +9,20 @@ require "optparse"
 NaN = 0.0 / 0
 Infinity = 1.0 / 0
 
+require "lib/erb"
 require "lib/json"
-require "lib/string_util"
-require "lib/fileutils"
+require "lib/string"
+require "lib/file"
 require "lib/output"
 require "lib/plural"
 require "lib/array"
 
+require "config"
+require "entities/entity"
+
 $stdout.sync = true
 
 module Inshaker
-  DOMAIN        = "www.inshaker.ru"
-  ROOT_DIR      = "/www/inshaker/"
-  BASE_DIR      = ENV['INSHAKER_BASE_DIR'] || (ROOT_DIR + "barman/base/")
-  LOCK_FILE     = ".lock-inshaker"
-  
-  TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
-  HTDOCS_DIR    = ROOT_DIR + "htdocs/"
-  
-  class Entity
-    def self.init
-    end
-    
-    def self.check_integrity
-    end
-  end
   
   class Processor
     attr_reader :user_login
@@ -43,7 +30,8 @@ module Inshaker
     def initialize
       @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      @user_login = get_user_login
+      
+      @user_author = ENV["INSHAKER_USER_AUTHOR"]
     end
     
     def flush_json_object(object, dest_file, wrap="%s")
@@ -158,25 +146,6 @@ module Inshaker
       JSON.parse(File.read(src))
     end
     
-    def lock
-      begin
-        Dir.mkdir("#{ROOT_DIR}/#{LOCK_FILE}")
-        true
-      rescue => e
-        false
-      end
-    end
-    
-    def unlock
-      begin
-        # FileUtils.rmtree("#{ROOT_DIR}/#{LOCK_FILE}")
-        system(%Q{rm -rf #{"#{ROOT_DIR}/#{LOCK_FILE}".quote}})
-        true
-      rescue => e
-        error "Паника: #{e.to_s.force_encoding('UTF-8')}"
-        false
-      end
-    end
     
     def pre_job
     end
@@ -191,65 +160,16 @@ module Inshaker
     
     def run
       pre_job
-      lockpath = "#{ROOT_DIR}/#{LOCK_FILE}"
-      if lock
-        begin
-          File.write("#{lockpath}/pid", $$)
-          File.write("#{lockpath}/login", user_login)
-          File.write("#{lockpath}/job", job_name)
-          job
-          summary
-        rescue => e
-          error "Паника: #{e.to_s.force_encoding('UTF-8')}"
-          say e.backtrace.join("\n")
-          raise e
-        end
-        unlock or error "не могу освободить бармена (свободу барменам!)"
-      else
-        pid = File.exists?("#{lockpath}/pid") && File.read("#{lockpath}/pid").match(/\d+/).to_s.to_i
-        if pid && `ps -A | grep #{pid}` =~ /ruby/
-          login = File.read("#{lockpath}/login")
-          job = File.read("#{lockpath}/job")
-          error "бармена #{login_to_name(login)}, запустив #{job}"
-        else
-          error "в прошлый раз бармен обрушился"
-          # say "восстанавливаю локальную версию после сбоя…"
-          # system("git reset --hard >>inshaker.log 2>&1")
-          unlock
-          say "теперь задачу можно перезапустить"
-        end
+      begin
+        job
+        summary
+      rescue => e
+        error "Паника: #{e.to_s.force_encoding('UTF-8')}"
+        say e.backtrace.join("\n")
+        raise e
       end
       
       return errors_count
-    end
-    
-    def get_user_login
-      if auth = ENV["HTTP_AUTHORIZATION"].to_s.match(/Basic (.+)/)
-        Base64.decode64(auth[1]).split(':')[0]
-      else
-        "unknown"
-      end
-    end
-    
-    def login_to_name login
-      {
-        "mike" => "занял Мишенька",
-        "max" => "занял Максимка",
-        "lena" => "заняла Леночка",
-        "viola" => "заняла Виолочка",
-        "peter" => "занял Петечка",
-        nil => "занял Совершенно Неизвестный Человек"
-      }[login]
-    end
-    
-    def login_to_author login
-      {
-        "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
-        "max" => "Maxim Dergilev <max@inshaker.ru>",
-        "lena" => "Elena Piskareva <lena@inshaker.ru>",
-        "viola" => "Viola Kostina <viola@inshaker.ru>",
-        "peter" => "Peter Leonov <pl@inshaker.ru>"
-      }[login] || "Barman <barman@inshaker.ru>"
     end
     
     def sync_base subdir

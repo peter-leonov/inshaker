@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="common-main-wrapper">
+<div id="common-main-wrapper" class="show-all">
 
 <!--# include virtual="/inc/blog-top.html" -->
 
@@ -14,7 +14,33 @@
 	<!--# include virtual="/blog/posts.html" -->
 </ul>
 
+<div id="tag-cloud">
+	Все теги:
+	<ul class="list">
+		<li class="tag all"><a class="link" href="/blog/">все посты</a></li>
+		<!--# include virtual="/blog/tag-cloud.html" -->
+	</ul>
+</div>
+
 </div id="common-main-wrapper">
-<!--# include virtual="/inc/blog-footer.html" -->
+
+<!--# include virtual="/inc/bottom-common.html" -->
+
+<script type="text/javascript" src="/js/common/oops.js"></script>
+<!--[if lte IE 7]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-selectors.js"></script>
+<![endif]-->
+<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/entities/Blog.js"></script>
+<script type="text/javascript" src="/js/blog/blog.js"></script>
+<script>
+;(function(){
+var e = document.createEvent('Event')
+e.initEvent('ready', false, false)
+document.dispatchEvent(e)
+})();
+</script>
 </body>
 </html>

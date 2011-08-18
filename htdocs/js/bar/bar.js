@@ -34,6 +34,11 @@ $.onready
 				next:            $$('.photos .next')[0],
 				items:           $$('.photos .point')
 			},
+			shareBox:
+			{
+				root: $('share-box'),
+				buttons: $$('#share-box .button')
+			},
 			hitBox: $$('#main-column .info .hit .body')[0],
 			barName: $('bar-name'),
 			cityName: $('city-name'),
@@ -51,6 +56,7 @@ $.onready
 )
 
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/lib-0.3/modules/interpolate.js" -->
 <!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
 
 <!--# include virtual="/lib-0.3/widgets/map.js" -->
@@ -58,6 +64,7 @@ $.onready
 
 <!--# include virtual="/js/common/google.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
+<!--# include virtual="/js/common/share-box.js" -->
 <!--# include virtual="/js/common/theme.js" -->
 
 <!--# include virtual="/js/bars/point.js" -->

@@ -62,7 +62,7 @@
 .photos .next.disabled { background-position: 0 -60px; cursor: default; }
 
 
-
+#share-box { position: absolute; right: 0; top: 0; }
 
 #map { height: 330px; position: relative; overflow: hidden; background-color: gray !important; }
 
