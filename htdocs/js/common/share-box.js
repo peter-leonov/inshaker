@@ -12,14 +12,13 @@ Me.prototype =
 		nodes.root.addEventListener('click', function (e) { me.clicked(e) }, false)
 	},
 	
-	render: function (url, title)
+	render: function (url, text)
 	{
-		url = encodeURIComponent(url)
-		
 		var buttons = this.nodes.buttons
-		for (var i = 0, il = buttons.length; i < il; i++)
-			buttons[i].href = buttons[i].href.replace('${link}', url)
 		
+		var values = {url: encodeURIComponent(url), text: encodeURIComponent(text)}
+		for (var i = 0, il = buttons.length; i < il; i++)
+			buttons[i].href = buttons[i].href.interpolate(values)
 	},
 	
 	clicked: function (e)

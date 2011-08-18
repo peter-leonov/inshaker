@@ -1,3 +1,4 @@
+<!--# include virtual="/lib-0.3/modules/interpolate.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
 
 ;(function(){
