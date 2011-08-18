@@ -16,7 +16,7 @@ Me.prototype =
 		
 		var share = new ShareBox()
 		share.bind(nodes.shareBox)
-		share.render(window.location.href, nodes.title.getAttribute('data-title'))
+		share.render(window.location.href, 'Супер блог: ' + nodes.title.getAttribute('data-title'))
 	}
 }
 
