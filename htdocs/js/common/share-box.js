@@ -7,6 +7,9 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		var me = this
+		nodes.root.addEventListener('click', function (e) { me.clicked(e) }, false)
 	},
 	
 	render: function (url, title)
@@ -17,6 +20,17 @@ Me.prototype =
 		for (var i = 0, il = buttons.length; i < il; i++)
 			buttons[i].href = buttons[i].href.replace('${link}', url)
 		
+	},
+	
+	clicked: function (e)
+	{
+		var href = this.searchParentNodes(this.nodes.root, e.target, function (node) { return node.href })
+		if (!href)
+			return
+		
+		e.preventDefault()
+		this.openWindow(href)
+	},
 	
 	openWindow: function (href)
 	{
