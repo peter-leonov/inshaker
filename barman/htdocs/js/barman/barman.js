@@ -1,11 +1,11 @@
 <!--# include virtual="/lib-0.3/core/prototype.js" -->
 <!--# include virtual="/lib-0.3/modules/element.js" -->
+<!--# include virtual="/lib-0.3/modules/selectors.js" -->
 <!--# include virtual="/lib-0.3/modules/cosy.js" -->
 <!--# include virtual="/lib-0.3/modules/onready.js" -->
 <!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 <!--# include virtual="/lib-0.3/modules/cookie.js" -->
 <!--# include virtual="/lib-0.3/modules/json.js" -->
-<!--# include virtual="/lib-0.3/modules/selectors.js" -->
 <!--# include virtual="/lib-0.3/modules/form-helper.js" -->
 <!--# include virtual="/lib-0.3/modules/event-driven.js" -->
 
