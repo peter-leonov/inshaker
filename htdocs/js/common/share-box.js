@@ -33,7 +33,7 @@ Me.prototype =
 	
 	openWindow: function (href)
 	{
-		var w = 550, h = 400, l = 0, t = 0,
+		var w = 550, h = 450, l = 0, t = 0,
 			sh = window.screen.height,
 			sw = window.screen.width
 		
