@@ -109,9 +109,11 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 .cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
 
-#share-box .button { display: inline-block; width: 30px; height: 30px; opacity: 0.4; }
-#share-box .button:hover { opacity: 1; }
+#share-box .button { display: inline-block; width: 30px; height: 30px; }
 #share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
 #share-box .button.facebook i { background-position: -150px 0; }
+#share-box .button.facebook:hover i { background-position: -175px 0; }
 #share-box .button.twitter i { background-position: -150px -25px; }
+#share-box .button.twitter:hover i { background-position: -175px -25px; }
 #share-box .button.vkontakte i { background-position: -150px -50px; }
+#share-box .button.vkontakte:hover i { background-position: -175px -50px; }
