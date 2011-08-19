@@ -14,10 +14,11 @@ html { overflow-y: scroll; }
 .faq p { margin: 0.5em 0; }
 .faq .question { margin-bottom: 1.5em; }
 
-#sidebar { position: absolute; top: 0; right: 0; }
+#sidebar { position: absolute; top: 0; right: 0; width: 300px; }
 #sidebar .head { font-size: 20px; }
+#sidebar .body { font-size: 13px; color: #888; }
 #sidebar .who {  }
-#sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0.5em 0 0.5em 0; }
+#sidebar .who .photo { display: block; width: 270px; height: 270px; border: 2px solid #ccc; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0.5em 0 0.5em -10px; }
 #sidebar .common-box,
 #sidebar .common-content { background: none; border-color: transparent; }
 
