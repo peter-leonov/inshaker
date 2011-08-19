@@ -20,6 +20,4 @@ html { overflow-y: scroll; }
 #sidebar .who .photo { display: block; width: 270px; height: 270px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0.5em 0 0.5em 0; }
 #sidebar .common-box,
 #sidebar .common-content { background: none; border-color: transparent; }
-#sidebar { color: #888 }
-#sidebar a { color: #ccc; font-weight: normal; }
 
