@@ -32,6 +32,7 @@ http://www.inshaker.ru/cocktail/antonius_pius/
 http://www.inshaker.ru/cocktail/antonio/
 http://www.inshaker.ru/cocktail/orange-mango_sambuca/
 http://www.inshaker.ru/cocktail/orange_gogol-mogol/
+http://www.inshaker.ru/cocktail/orange_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/orange_cinnamon_chaser/
 http://www.inshaker.ru/cocktail/apri_cot/
 http://www.inshaker.ru/cocktail/apri_smash/
@@ -55,6 +56,7 @@ http://www.inshaker.ru/cocktail/bali_dream/
 http://www.inshaker.ru/cocktail/balbinus/
 http://www.inshaker.ru/cocktail/bamboo_2/
 http://www.inshaker.ru/cocktail/banana_sambuca/
+http://www.inshaker.ru/cocktail/banana-mandarin_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/barberries_fizz/
 http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
@@ -378,6 +380,7 @@ http://www.inshaker.ru/cocktail/strawberry_cobler_317/
 http://www.inshaker.ru/cocktail/strawberry_lemonade/
 http://www.inshaker.ru/cocktail/strawberry_malarky/
 http://www.inshaker.ru/cocktail/strawberry_milkshake/
+http://www.inshaker.ru/cocktail/strawberry_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
 http://www.inshaker.ru/cocktail/cranberry_with_thyme/
@@ -851,6 +854,7 @@ http://www.inshaker.ru/cocktail/trans_siberian_express_hot/
 http://www.inshaker.ru/cocktail/transformer/
 http://www.inshaker.ru/cocktail/tropical_margarita/
 http://www.inshaker.ru/cocktail/tropical_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/tropical_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/tundra_libre/
 http://www.inshaker.ru/cocktail/tuttosi/
 http://www.inshaker.ru/cocktail/tykvan_do/
