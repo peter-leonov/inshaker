@@ -26,65 +26,6 @@ Tests.test(function (t)
 		setTimeout(function () { window.location.setHashchangeCheckInterval() }, 10000)
 	}
 	
-	t.test('a.hash', function (t)
-	{
-		t.mayFail()
-		
-		var a = document.createElement('a')
-		
-		// makes a.hash to work
-		a.href = 'abc'
-		
-		a.hash = '#123'
-		t.eq(a.hash, '#123', 'get')
-		
-		var text = '#%20& '
-		a.hash = encodeURIComponent(text)
-		window.location.hash = encodeURIComponent(text)
-		t.eq(window.location.hash, a.hash, 'a.hash and location.hash')
-		
-		
-		
-		var text = '###%20& Петя … 章亦春 +& '
-		
-		t.test('decodes on the fly', function (t)
-		{
-			var a = document.createElement('a')
-			a.href = 'abc'
-			a.hash = encodeURIComponent(text)
-			
-			t.eq(a.hash, '#' + text)
-		})
-		
-		t.test('encodes on the fly', function (t)
-		{
-			var a = document.createElement('a')
-			a.href = 'abc'
-			a.hash = '#' + text
-			
-			t.eq(a.hash, '#' + text)
-		})
-		
-		t.test('encodeURI() is enough', function (t)
-		{
-			var a = document.createElement('a')
-			a.href = 'abc'
-			a.hash = '#' + encodeURI(text)
-			
-			t.eq(decodeURIComponent(a.hash), '#' + text)
-		})
-		
-		t.test('encodeURIComponent() works fine', function (t)
-		{
-			var a = document.createElement('a')
-			a.href = 'abc'
-			a.hash = '#' + encodeURIComponent(text)
-			
-			t.eq(decodeURIComponent(a.hash), '#' + text)
-		})
-	})
-	
-	
 	var lh = new LocationHash().bind(window)
 	
 	t.test('setting and getting', function (t)
@@ -103,6 +44,9 @@ Tests.test(function (t)
 		
 		lh.set(123)
 		t.eq(lh.get(), '123', 'get')
+		
+		lh.set('1?2')
+		t.eq(lh.get(), '1?2', 'get')
 	})
 	
 	t.test('external changing', function (t)
@@ -152,32 +96,6 @@ Tests.test(function (t)
 			t.async(function () {}, 100)
 		})
 	})
-	
-	t.test('location', function (t)
-	{
-		if (!/Version\/\S+ Safari\/\S+/.test(navigator.userAgent))
-		{
-			t.log('this test works properly in Safari only')
-			return
-		}
-		
-		// https://bugs.webkit.org/show_bug.cgi?id=54960
-		
-		t.mayFail()
-		
-		location.href = 'pong.html'
-		var win = window,
-			loc = window.location
-		
-		function check ()
-		{
-			t.eq(win, window)
-			t.eq(loc, window.location)
-		}
-		
-		t.async(check, 500)
-	})
-	
 })
 </script>
 </body>
