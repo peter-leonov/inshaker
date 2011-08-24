@@ -554,6 +554,7 @@ http://www.inshaker.ru/cocktail/rejuvenating_apple/
 http://www.inshaker.ru/cocktail/milk_and_honey/
 http://www.inshaker.ru/cocktail/milky_brandy_punch/
 http://www.inshaker.ru/cocktail/milky_whisky_punsh/
+http://www.inshaker.ru/cocktail/monaco/
 http://www.inshaker.ru/cocktail/montpensier/
 http://www.inshaker.ru/cocktail/carrot-pear_fresh/
 http://www.inshaker.ru/cocktail/carrot_chaser/
