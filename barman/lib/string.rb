@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "rutils"
+require "lib/rutils-simple"
 require "unicode_utils/upcase"
 require "unicode_utils/downcase"
 
