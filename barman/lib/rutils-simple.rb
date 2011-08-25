@@ -1,14 +1,10 @@
 # encoding: utf-8
 # Реализует простейшую транслитерацию
 #   "вот мы и здесь".translify => "vot my i zdes"
-#   "vot my i zdes".detranslify => "вот мы и здесь"
 
 module RuTils
-  module Transliteration
-  end
-end
 
-module RuTils::Transliteration::Simple
+module TransliterationSimple
   TABLE_LOWER = {
      "і"=>"i","ґ"=>"g","ё"=>"yo","№"=>"#","є"=>"e",
      "ї"=>"yi","а"=>"a","б"=>"b",
@@ -22,7 +18,7 @@ module RuTils::Transliteration::Simple
     two[1].size <=> one[1].size
   end
   
-  TABLE_UPPER =  {
+  TABLE_UPPER = {
     "Ґ"=>"G","Ё"=>"YO","Є"=>"E","Ї"=>"YI","І"=>"I",
     "А"=>"A","Б"=>"B","В"=>"V","Г"=>"G",
      "Д"=>"D","Е"=>"E","Ж"=>"ZH","З"=>"Z","И"=>"I",
@@ -59,7 +55,7 @@ module RuTils::Transliteration::Simple
         ch = hashtable[char].downcase.capitalize
         result << ch
       elsif uppers.include?(char)
-        result << hashtable[char]        
+        result << hashtable[char]
       elsif lowers.include?(char)
         result << hashtable[char]
       else
@@ -68,7 +64,7 @@ module RuTils::Transliteration::Simple
     end
     return result
   end
-
+  
   # Транслитерирует строку, делая ее пригодной для применения как имя директории или URL
   def self.dirify(string)
     st = self.translify(string)
@@ -84,17 +80,19 @@ class Object::String
   
   # Транслитерирует строку в латиницу, и возвращает измененную строку
   def translify
-    RuTils::Transliteration::Simple::translify(self.to_s)
+    TransliterationSimple::translify(self.to_s)
   end
 
-  # Транслитерирует строку, меняя объект  
+  # Транслитерирует строку, меняя объект
   def translify!
     self.replace(self.translify)
   end
   
   # Транслитерирует строку, делая ее пригодной для применения как имя директории или URL
   def dirify
-    RuTils::Transliteration::Simple::dirify(self.to_s)
+    TransliterationSimple::dirify(self.to_s)
   end
   
+end
+
 end
