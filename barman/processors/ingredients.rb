@@ -12,7 +12,7 @@ class IngredientsProcessor < Inshaker::Processor
   
   def initialize
     super
-    @local_properties = []
+    @local_properties = ["about", "decls"]
     @entities = []
     @groups = []
     @groups_i = {}
@@ -321,7 +321,7 @@ class IngredientsProcessor < Inshaker::Processor
     @local_properties.each do |prop|
       data[prop] = entity.delete(prop)
     end
-    flush_json_object(data, "#{ht_dir.path}/data.json", "require.loaded(%s)")
+    flush_json_object(data, "#{ht_dir.path}/data.json", "require.data(%s)")
   end
   
   def flush_links
