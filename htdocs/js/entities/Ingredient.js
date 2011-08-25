@@ -19,6 +19,18 @@ Me.prototype =
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	combinatorLink: function () { return '/combinator.html#q=' + encodeURIComponent(this.name) },
 	
+	loadLocalData: function (f)
+	{
+		var ingredient = this
+		function merge (data)
+		{
+			Object.add(ingredient, data)
+			f.call(ingredient)
+		}
+		
+		return require(this.pageHref() + 'data.json', merge)
+	},
+	
 	getVolumeImage: function (vol)
 	{
 		return this.pageHref() + 'image.png'
