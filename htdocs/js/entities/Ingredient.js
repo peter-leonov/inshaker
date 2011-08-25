@@ -21,7 +21,7 @@ Me.prototype =
 	
 	getVolumeImage: function (vol)
 	{
-		return this.pageHref() + "image.png"
+		return this.pageHref() + 'image.png'
 	},
 	
 	getPreviewNode: function ()
