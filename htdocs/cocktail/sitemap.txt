@@ -639,6 +639,7 @@ http://www.inshaker.ru/cocktail/pacha_monte-carlo/
 http://www.inshaker.ru/cocktail/pacha_moscow/
 http://www.inshaker.ru/cocktail/pacha_new-york/
 http://www.inshaker.ru/cocktail/pacha_san-paolo/
+http://www.inshaker.ru/cocktail/perfect_continuous/
 http://www.inshaker.ru/cocktail/pedro_manhatten/
 http://www.inshaker.ru/cocktail/pedro_punsh/
 http://www.inshaker.ru/cocktail/pelican/
@@ -659,6 +660,7 @@ http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
 http://www.inshaker.ru/cocktail/fire_in_texas/
+http://www.inshaker.ru/cocktail/potenziale_special/
 http://www.inshaker.ru/cocktail/lost/
 http://www.inshaker.ru/cocktail/kisses_and_warm_hugs/
 http://www.inshaker.ru/cocktail/kiss_of_the_devil/
@@ -834,6 +836,7 @@ http://www.inshaker.ru/cocktail/tequila_apple_cowberry/
 http://www.inshaker.ru/cocktail/ten_opener/
 http://www.inshaker.ru/cocktail/tennessee_coffee_cup/
 http://www.inshaker.ru/cocktail/warm_apple/
+http://www.inshaker.ru/cocktail/teya/
 http://www.inshaker.ru/cocktail/tiberius/
 http://www.inshaker.ru/cocktail/tic_tac/
 http://www.inshaker.ru/cocktail/tiki_margarita/
