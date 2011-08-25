@@ -124,7 +124,7 @@ class IngredientsProcessor < Inshaker::Processor
       end
       end # indent
     end
-    say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("ингредиент", "ингредиента", "ингредиентов")}"
+    say "#{done.plural("обновлен", "обновлено", "обновлено")} #{done} #{done.plural("ингредиент", "ингредиента", "ингредиентов")}"
     end # indent
   end
   
