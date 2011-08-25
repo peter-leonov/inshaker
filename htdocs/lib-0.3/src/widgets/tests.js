@@ -64,7 +64,7 @@ function Object_keys (s) // Object.keys copy-n-paste
 var myName = 'Tests', Me =
 {
 	maxLabelLength: 100,
-	ignoredGlobals: [],
+	ignoredGlobals: ['sessionStorage', 'localStorage'],
 	nodes: {},
 	load: function ()
 	{
@@ -125,13 +125,6 @@ var myName = 'Tests', Me =
 		var rem = Object_keys(diff.remove)
 		if (rem.length)
 			tool.fail([rem], 'global variables removed')
-		
-		// ignore some built-in changes
-		delete diff.change.length
-		delete diff.change.event
-		delete diff.change.scrollMaxY
-		delete diff.change.scrollY
-		delete diff.change.pageYOffset
 		
 		var cng = Object_keys(diff.change)
 		if (cng.length)

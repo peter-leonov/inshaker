@@ -30,8 +30,6 @@ var myProto =
 	
 	render: function ()
 	{
-		var ingredient = this.ingredient
-		
 		var clone = this.cloner.create()
 		this.popupRoot.appendChild(clone.root)
 		
@@ -40,6 +38,24 @@ var myProto =
 		
 		// implies this.nodes = nodes
 		this.bind(nodes)
+		
+		this.renderData()
+		
+		var popup = this
+		this.ingredient.loadLocalData(function () { popup.renderLocalData() })
+		
+		this.renderPlugins()
+	},
+	
+	renderData: function ()
+	{
+		this.nodes.image.src = this.ingredient.getMainImageSrc()
+	},
+	
+	renderLocalData: function ()
+	{
+		var nodes = this.nodes
+		var ingredient = this.ingredient
 		
 		var brand = ingredient.brand
 		if (brand)
@@ -55,10 +71,6 @@ var myProto =
 		this.renderAllCocktailsLink(ingredient)
 		
 		nodes.text.innerHTML = ingredient.about
-		
-		nodes.image.src = ingredient.getMainImageSrc()
-		
-		this.renderPlugins()
 	},
 	
 	renderPlugins: function ()
