@@ -14,7 +14,6 @@ require "lib/json"
 require "lib/string"
 require "lib/file"
 require "lib/output"
-require "lib/plural"
 require "lib/array"
 
 require "config"

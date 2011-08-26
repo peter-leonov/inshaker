@@ -7,6 +7,7 @@ eval(NodesShortcut.include())
 var UrlEncodeLight = {}
 Object.extend(UrlEncodeLight, UrlEncode)
 UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
 
 var myProto =
 {

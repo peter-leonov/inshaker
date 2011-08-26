@@ -4,11 +4,9 @@ var myName = 'LocationHash'
 
 function Me () {}
 
-function dontTouch (v) { return v }
-
 Me.prototype =
 {
-	encode: encodeURI,
+	encode: encodeURIComponent,
 	decode: decodeURIComponent,
 	
 	bind: function (win)
@@ -17,19 +15,6 @@ Me.prototype =
 			win = window
 		
 		this.window = win
-		
-		function decodesOnTheFly ()
-		{
-			var a = document.createElement('a')
-			a.href = 'abc'
-			a.hash = encodeURIComponent('%26')
-			return a.hash === '#%26'
-		}
-		
-		if (decodesOnTheFly())
-			Me.prototype.decode = dontTouch
-		
-		this.value = this.get()
 		
 		var me = this
 		function onhashchange (e) { me.onhashchange() }
@@ -40,23 +25,29 @@ Me.prototype =
 	
 	onhashchange: function (e)
 	{
-		var v = this.get()
-		if (v === this.value)
+		if (this.manual)
+		{
+			this.manual = false
 			return
-		this.value = v
+		}
 		
 		this.dispatchEventData('change')
 	},
 	
 	set: function (v)
 	{
-		this.value = v
-		this.window.location.hash = '#' + this.encode(v)
+		this.manual = true
+		this.window.location.href = '#' + this.encode(v)
 	},
 	
 	get: function ()
 	{
-		var v = this.window.location.hash.substr(1)
+		var href = this.window.location.href
+		var start = href.indexOf('#')
+		if (start < 0)
+			return ''
+		
+		var v = href.substr(start + 1)
 		
 		try
 		{

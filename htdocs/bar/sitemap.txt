@@ -2,6 +2,7 @@ http://www.inshaker.ru/bar/berry/
 http://www.inshaker.ru/bar/brut/
 http://www.inshaker.ru/bar/new/
 http://www.inshaker.ru/bar/old_fashioned/
+http://www.inshaker.ru/bar/cuba_libre_kazan/
 http://www.inshaker.ru/bar/relab/
 http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/aloha/
@@ -37,6 +38,7 @@ http://www.inshaker.ru/bar/caramel/
 http://www.inshaker.ru/bar/48_chairs/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
+http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/holland/
 http://www.inshaker.ru/bar/grafin/
 http://www.inshaker.ru/bar/house_of_consumer_services/

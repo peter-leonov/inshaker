@@ -4,10 +4,10 @@
 var myName = 'require',
 	states = {}
 
-function run (callbacks)
+function run (callbacks, data)
 {
 	for (var i = 0, il = callbacks.length; i < il; i++)
-		setTimeout(callbacks[i], 0)
+		callbacks[i](data)
 }
 
 function Me (name, f)
@@ -19,7 +19,7 @@ function Me (name, f)
 	if (state)
 	{
 		if (state.loaded)
-			run([f])
+			setTimeout(function () { run([f], state.data) })
 		else
 			state.callbacks.push(f)
 	}
@@ -32,16 +32,22 @@ function Me (name, f)
 			if (state.loaded)
 				return
 			state.loaded = true
+			state.data = Me.lastData
 			
-			run(state.callbacks)
+			run(state.callbacks, state.data)
 		}
 		
-		script = state.node = Me.rootNode.appendChild(document.createElement('script'))
+		var script = state.node = Me.rootNode.appendChild(document.createElement('script'))
 		script.addEventListener('load', onload, false)
 		script.src = src
 	}
 	
 	return state.node
+}
+
+Me.data = function (data)
+{
+	this.lastData = data
 }
 
 Me.names = {}
