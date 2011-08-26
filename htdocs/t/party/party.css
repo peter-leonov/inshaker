@@ -7,9 +7,9 @@
 
 #main-column .description { font-size: 17px; margin: 10px 0 15px 0; line-height: 24px; color: #666; }
 
-#window { width: 924px; height: 450px; background-color: #aaa; position: relative; }
+#window { width: 924px; height: 450px; background-color: #fff; position: relative; }
 #window .layer { overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-#window .layer i { display: block; width: 3000px; height: 100%; background: center 0 no-repeat; }
+#window .layer i { display: block; width: 2000px; height: 100%; background: center 0 no-repeat; }
 
 #cocktail-plan { margin: 15px 0; }
 #cocktail-plan .head { font-size: 22px; }
