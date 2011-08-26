@@ -71,8 +71,13 @@ Me.prototype =
 		
 		var left = root.offsetLeft
 		
+		var lastDx
 		function position (dx)
 		{
+			if (lastDx == dx)
+				return
+			lastDx = dx
+			
 			for (var i = 0, il = layers.length; i < il; i++)
 				layers[i].scrollLeft = middle + dx * factors[i]
 		}
