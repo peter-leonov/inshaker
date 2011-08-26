@@ -23,6 +23,8 @@ function onready ()
 		cocktailsCountNoun: $$('#purchase-plan .head .noun')[0]
 	}
 	
+	RoundedCorners.round(nodes.window.root)
+	
 	var widget = new PartyPage()
 	widget.bind(nodes)
 }
