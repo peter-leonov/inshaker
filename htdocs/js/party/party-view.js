@@ -43,7 +43,7 @@ Me.prototype =
 		var factors = [0, 0.1, 0.2, 0.3, 1]
 		
 		var ww = root.offsetWidth,
-			lw = layers[0].firstChild.offsetWidth
+			lw = layers[0].scrollWidth
 		
 		var middle = (lw - ww) * 0.5
 		
