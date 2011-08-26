@@ -29,10 +29,30 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		this.bindWindow()
+		this.loadWindow()
 		this.bindEvents()
 		
 		return this
+	},
+	
+	loadWindow: function ()
+	{
+		var nodes = this.nodes.window,
+			layers = nodes.layers
+		
+		var me = this, count = 0
+		function onload ()
+		{
+			if (++count == layers.length)
+				me.bindWindow()
+		}
+		
+		for (var i = 0, il = layers.length; i < il; i++)
+		{
+			var image = layers[i].firstChild
+			image.addEventListener('load', onload, false)
+			image.src = image.getAttribute('lazy-src')
+		}
 	},
 	
 	bindWindow: function ()
@@ -43,7 +63,6 @@ Me.prototype =
 		var factors = []
 		for (var i = 0, il = layers.length; i < il; i++)
 			factors[i] = layers[i].getAttribute('data-factor') * 0.5
-		
 		
 		var ww = root.offsetWidth,
 			lw = layers[0].scrollWidth
