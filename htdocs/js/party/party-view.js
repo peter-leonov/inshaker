@@ -42,7 +42,7 @@ Me.prototype =
 		
 		var factors = []
 		for (var i = 0, il = layers.length; i < il; i++)
-			factors[i] = layers[i].getAttribute('data-factor') * 1
+			factors[i] = layers[i].getAttribute('data-factor') * 0.5
 		
 		
 		var ww = root.offsetWidth,
