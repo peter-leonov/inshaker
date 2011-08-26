@@ -49,15 +49,21 @@ Me.prototype =
 		
 		var left = root.offsetLeft
 		
-		function move (e)
+		function position (dx)
 		{
-			var x = e.clientX - left
-			var dx = Math.round(lw * 0.5 - x / ww * lw)
 			for (var i = 0, il = layers.length; i < il; i++)
 				layers[i].scrollLeft = middle + dx * factors[i]
 		}
 		
+		function move (e)
+		{
+			var x = e.clientX - left
+			var dx = Math.round(lw * 0.5 - x / ww * lw)
+			position(dx)
+		}
+		
 		root.addEventListener('mousemove', move, false)
+		position(0)
 	},
 	
 	bindEvents: function ()
