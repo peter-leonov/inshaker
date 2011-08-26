@@ -38,14 +38,23 @@ Me.prototype =
 	bindWindow: function ()
 	{
 		var nodes = this.nodes.window,
-			root = nodes.root, surface = nodes.surface
+			root = nodes.root, layers = nodes.layers
 		
-		var width = root.offsetWidth * 2.5
+		var factors = [0, 0.1, 0.2, 0.3, 1]
 		
-		var style = surface.style
+		var ww = root.offsetWidth,
+			lw = layers[0].firstChild.offsetWidth
+		
+		var middle = (lw - ww) * 0.5
+		
+		var left = root.offsetLeft
+		
 		function move (e)
 		{
-			style.width = width + e.layerX + 'px'
+			var x = e.clientX - left
+			var dx = Math.round(lw * 0.5 - x / ww * lw)
+			for (var i = 0, il = layers.length; i < il; i++)
+				layers[i].scrollLeft = middle + dx * factors[i]
 		}
 		
 		root.addEventListener('mousemove', move, false)
