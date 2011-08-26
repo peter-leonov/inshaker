@@ -14,7 +14,7 @@ function onready ()
 		window:
 		{
 			root: $$('#window')[0],
-			surface: $$('#window .surface')[0]
+			layers: $$('#window .layer')
 		},
 		peopleCount: $$('#cocktail-plan .head .people .count')[0],
 		body: $$('#cocktail-plan .body')[0],
