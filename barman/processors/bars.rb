@@ -230,7 +230,7 @@ class BarsProcessor < Inshaker::Processor
     src.each_rex(/^big-(\d+).jpg$/) { |img, m| images << m[1].to_i }
     
     if images.length > 0
-      say "нашел #{images.length} #{images.length.items("картинку", "картинки", "картинок")}"
+      say "нашел #{images.length} #{images.length.plural("картинку", "картинки", "картинок")}"
       
       images.sort!
       count = images[0]

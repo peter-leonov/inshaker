@@ -220,7 +220,7 @@ class CocktailsProcessor < Inshaker::Processor
         process_cocktail dir
         done += 1
       end
-      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      say "#{done.plural("обновлен", "обновлено", "обновлено")} #{done} #{done.plural("коктейль", "коктейля", "коктейлей")}"
       end # indent
       return done
     end
@@ -231,7 +231,7 @@ class CocktailsProcessor < Inshaker::Processor
     Dir.new(Config::COCKTAILS_DIR).each_dir do |cocktail_dir|
       @cocktails_present[cocktail_dir.name] = true
     end
-    say "нашел #{@cocktails_present.keys.length} #{@cocktails_present.keys.length.items("коктейль", "коктейля", "коктейлей")}"
+    say "нашел #{@cocktails_present.keys.length} #{@cocktails_present.keys.length.plural("коктейль", "коктейля", "коктейлей")}"
     end # indent
     
     
@@ -243,7 +243,7 @@ class CocktailsProcessor < Inshaker::Processor
         say name
         @cocktails.delete(name)
       end
-      say "#{deleted.length.items("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.items("коктейль", "коктейля", "коктейлей")}"
+      say "#{deleted.length.plural("удален", "удалено", "удалено")} #{deleted.length} #{deleted.length.plural("коктейль", "коктейля", "коктейлей")}"
       touched += deleted.length
       end # indent
     end
@@ -264,7 +264,7 @@ class CocktailsProcessor < Inshaker::Processor
         process_cocktail dir
         done += 1
       end
-      say "#{done.items("добавлен", "добавлено", "добавлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      say "#{done.plural("добавлен", "добавлено", "добавлено")} #{done} #{done.plural("коктейль", "коктейля", "коктейлей")}"
       touched += done
       end # indent
     end
@@ -283,7 +283,7 @@ class CocktailsProcessor < Inshaker::Processor
         process_cocktail dir
         done += 1
       end
-      say "#{done.items("обновлен", "обновлено", "обновлено")} #{done} #{done.items("коктейль", "коктейля", "коктейлей")}"
+      say "#{done.plural("обновлен", "обновлено", "обновлено")} #{done} #{done.plural("коктейль", "коктейля", "коктейлей")}"
       touched += done
       end # indent
     end
