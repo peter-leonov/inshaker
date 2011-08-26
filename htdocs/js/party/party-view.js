@@ -40,7 +40,10 @@ Me.prototype =
 		var nodes = this.nodes.window,
 			root = nodes.root, layers = nodes.layers
 		
-		var factors = [0, 0.1, 0.2, 0.3, 1]
+		var factors = []
+		for (var i = 0, il = layers.length; i < il; i++)
+			factors[i] = layers[i].getAttribute('data-factor') * 1
+		
 		
 		var ww = root.offsetWidth,
 			lw = layers[0].scrollWidth
