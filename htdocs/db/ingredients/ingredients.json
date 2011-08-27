@@ -306,6 +306,7 @@
 {"brand":"Antica Apple","brand_dir":"antica-apple","group":"Ликеры и настойки","mark":"Antica","name":"Самбука яблочная","path":"sambuka-yablochnaya","tags":["Ликер","Фруктовый ликер","Вкусовая самбука","Любой ингредиент"],"unit":"л","volumes":[[0.7,697.0,true]]},
 {"group":"Специи и пряности","name":"Сахар в кубиках","names":["Сахар рафинад","Сахар кубиками","Рафинад"],"path":"sahar-v-kubikah","tags":["Сахар","Любой ингредиент"],"unit":"гр","volumes":[[500.0,30.0,true]]},
 {"group":"Сладости","name":"Сахар на палочке коричневый","path":"sahar-na-palochke-korichnevyiy","tags":["Сахар","Любой ингредиент"],"unit":"шт","volumes":[[5.0,150.0,true]]},
+{"group":"Сладости","name":"Сахарная вата розовая","names":["Сладкая вата"],"path":"saharnaya-vata-rozovaya","tags":["Любой ингредиент"],"unit":"гр","volumes":[[16.0,20.0,true]]},
 {"group":"Специи и пряности","name":"Сахарная пудра","path":"saharnaya-pudra","tags":["Сахар","Любой ингредиент"],"unit":"гр","volumes":[[250.0,20.0,true]]},
 {"group":"Сладости","name":"Сахарные шарики золотые","path":"saharnyie-shariki-zolotyie","tags":["Любой ингредиент"],"unit":"гр","volumes":[[50.0,100.0,true]]},
 {"group":"Специи и пряности","name":"Сахарный песок","path":"saharnyiy-pesok","tags":["Сахар","Любой ингредиент"],"unit":"гр","volumes":[[500.0,60.0,true]]},

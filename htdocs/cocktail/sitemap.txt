@@ -163,6 +163,7 @@ http://www.inshaker.ru/cocktail/whisky_with_apple_juice/
 http://www.inshaker.ru/cocktail/vitamin/
 http://www.inshaker.ru/cocktail/vitamin_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/cherry_sambuca/
+http://www.inshaker.ru/cocktail/cherry-spice_cake_smoothie/
 http://www.inshaker.ru/cocktail/cherry_liqueur_and_grapefruit/
 http://www.inshaker.ru/cocktail/cherry_sour/
 http://www.inshaker.ru/cocktail/cherry_and_cherry/
@@ -182,6 +183,7 @@ http://www.inshaker.ru/cocktail/vodka_citron_tonic/
 http://www.inshaker.ru/cocktail/vodka_energy_drink/
 http://www.inshaker.ru/cocktail/vodka_energy_drink_mini/
 http://www.inshaker.ru/cocktail/around_the_world/
+http://www.inshaker.ru/cocktail/magic_water/
 http://www.inshaker.ru/cocktail/east_meets_west/
 http://www.inshaker.ru/cocktail/oriental_tea_party/
 http://www.inshaker.ru/cocktail/east_honey/
