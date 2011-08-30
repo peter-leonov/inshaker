@@ -361,6 +361,7 @@ http://www.inshaker.ru/cocktail/carribean_jewel/
 http://www.inshaker.ru/cocktail/carin/
 http://www.inshaker.ru/cocktail/carnival_fizz/
 http://www.inshaker.ru/cocktail/kassini/
+http://www.inshaker.ru/cocktail/kvass_smoothie/
 http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/cambridge/
@@ -585,6 +586,7 @@ http://www.inshaker.ru/cocktail/mint_julep/
 http://www.inshaker.ru/cocktail/minty_lemonade/
 http://www.inshaker.ru/cocktail/minty_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/minty_mix/
+http://www.inshaker.ru/cocktail/minty_smoothie/
 http://www.inshaker.ru/cocktail/minty_tea_with_rum/
 http://www.inshaker.ru/cocktail/nights/
 http://www.inshaker.ru/cocktail/nano-mojito/
