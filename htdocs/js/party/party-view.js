@@ -29,7 +29,7 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		this.loadWindow()
+		// this.loadWindow()
 		this.bindEvents()
 		
 		return this
