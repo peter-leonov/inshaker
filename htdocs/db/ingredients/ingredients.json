@@ -382,6 +382,7 @@
 {"group":"Специи и пряности","name":"Тростниковый сахар в кубиках","path":"trostnikovyiy-sahar-v-kubikah","tags":["Сахар","Любой ингредиент"],"unit":"гр","volumes":[[500.0,164.0,true]]},
 {"group":"Специи и пряности","name":"Тростниковый сахарный песок","path":"trostnikovyiy-saharnyiy-pesok","tags":["Сахар","Любой ингредиент"],"unit":"гр","volumes":[[300.0,200.0,true]]},
 {"group":"Ягоды","name":"Тыква","path":"tyikva","tags":["Овощи","Ягоды","Любой ингредиент"],"unit":"гр","volumes":[[1000.0,180.0,true]]},
+{"group":"Травы и цветы","name":"Укроп","path":"ukrop","tags":["Любой ингредиент"],"unit":"гр","volumes":[[50.0,30.0,true]]},
 {"group":"Соусы и масло","name":"Уксус винный","path":"uksus-vinnyiy","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.5,150.0,true]]},
 {"group":"Соусы и масло","name":"Уксус столовый","path":"uksus-stolovyiy","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.33,30.0,true]]},
 {"group":"Морепродукты","name":"Устрица","path":"ustritsa","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,120.0,true]]},
