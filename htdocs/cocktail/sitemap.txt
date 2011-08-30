@@ -292,6 +292,7 @@ http://www.inshaker.ru/cocktail/smoky/
 http://www.inshaker.ru/cocktail/smoky_flip/
 http://www.inshaker.ru/cocktail/smoking_scot/
 http://www.inshaker.ru/cocktail/smoky_apple_pie/
+http://www.inshaker.ru/cocktail/melon-basil_smoothie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
 http://www.inshaker.ru/cocktail/e-sencha-l/
@@ -304,6 +305,7 @@ http://www.inshaker.ru/cocktail/yellow_mix/
 http://www.inshaker.ru/cocktail/liquid_cheesecake/
 http://www.inshaker.ru/cocktail/jokers_breakfast/
 http://www.inshaker.ru/cocktail/tequila_breakfast/
+http://www.inshaker.ru/cocktail/baked_smoothie/
 http://www.inshaker.ru/cocktail/forbidden_fruit/
 http://www.inshaker.ru/cocktail/zaharoff_forest/
 http://www.inshaker.ru/cocktail/green_fairy/
@@ -940,6 +942,7 @@ http://www.inshaker.ru/cocktail/chocolate_curant/
 http://www.inshaker.ru/cocktail/chocolate-orange_martini/
 http://www.inshaker.ru/cocktail/chocolate_honey/
 http://www.inshaker.ru/cocktail/chocolate_milkshake/
+http://www.inshaker.ru/cocktail/chocolate_cheesecake_smoothie/
 http://www.inshaker.ru/cocktail/scotch_old_fashioned/
 http://www.inshaker.ru/cocktail/hullabaloo/
 http://www.inshaker.ru/cocktail/sorrel_lemonade_in_a_jug/
@@ -977,6 +980,7 @@ http://www.inshaker.ru/cocktail/apple_rum_cooler/
 http://www.inshaker.ru/cocktail/apple_sour/
 http://www.inshaker.ru/cocktail/apple_tini/
 http://www.inshaker.ru/cocktail/berry_versailles/
+http://www.inshaker.ru/cocktail/berry_daiquiri_smoothie/
 http://www.inshaker.ru/cocktail/berry_lemonade/
 http://www.inshaker.ru/cocktail/berry_pimms/
 http://www.inshaker.ru/cocktail/berry_twist/
