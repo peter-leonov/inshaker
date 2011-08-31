@@ -87,7 +87,7 @@ html.blog-section #bottom .main-menu a.blog
 #spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
 /* really common rules */
-#common-main-wrapper { margin: 0 auto; width: 960px; }
+#common-main-wrapper { margin: 0 auto; width: 962px; }
 .common-box { border: 1px solid #c0c0c0; -moz-border-radius: 2px; border-radius: 2px; background-color: #c0c0c0; }
 .common-box .common-content { padding: 14px 18px 18px 18px; border: 1px solid #fff; -moz-border-radius: 1px; border-radius: 1px; background: #fff url(content-gradient-v.png) repeat-x 0 0; }
 .common-box .common-title { background:url(header-dots-v.png) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 11px; }
