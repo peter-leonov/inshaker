@@ -1,6 +1,6 @@
 /* common.css */
 #top .logo,
-.b-title #spotlighted,
+#spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -68,7 +68,7 @@ button.strong b { text-shadow: 1px 1px 1px #a12420; color: #fff; }
 
 /* cocktail.css */
 .b-more dt,
-.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); }
+.b-more dt b { background-color: #bd2330; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
