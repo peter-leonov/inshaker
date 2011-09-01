@@ -1,23 +1,22 @@
-.b-title { height:26px; padding-bottom:10px; margin-bottom: 18px; }
-.b-title a { text-decoration:none; } 
-.b-content {}
-#top{}
-#main-wrapper {z-index: 1; position:relative;}
+.common-title { height:26px; padding-bottom:10px; margin-bottom: 18px; }
+.common-title a { text-decoration:none; } 
 
-.b-title h1,
-.b-title h2{font-size:20px;margin-left:-1px;}
-.b-title h2 a {cursor:default}
+#common-main-wrapper {z-index: 1; position:relative;}
 
-.body-wrapper { background-position: 0px -10px; }
+.common-title h1,
+.common-title h2{font-size:20px;margin-left:-1px;}
+.common-title h2 a {cursor:default}
+
+.common-box .common-content { background-position: 0px -10px; }
 
 .previews { display: none; }
 
-.previews.column { margin-bottom: 32px; } 
-.previews.column .body-wrapper { overflow:visible; height: 200px; padding-bottom:0}
-.previews.column .gradient {height:32px; width: 958px; position:absolute; top:182px; left:2px; margin:0; border:none; background:url(/t/bg/body/body-bottom.png); }
+.previews.common-box { margin-bottom: 32px; } 
+.previews.common-box .common-content { overflow:visible; height: 200px; padding-bottom:0}
+.previews.common-box .gradient {height:32px; width: 958px; position:absolute; top:182px; left:2px; margin:0; border:none; background:url(/t/bg/body/body-bottom.png); }
 
-.promos.column {}
-.promos.column .body-wrapper {overflow:hidden; padding:14px 18px 26px}
+.promos.common-box {}
+.promos.common-box .common-content {overflow:hidden; padding:14px 18px 26px}
 
 .goods-previews .item { float: left; position: relative; width: 180px; height: 30px; padding-right: 32px; }
 .goods-previews .item .good-preview { display: block; position: relative; width: 180px; padding-top: 110px; text-align: center; text-decoration: none; font-family: Arial, sans-serif; font-size: 13px; color: #0392f1; background: 0 0 no-repeat; }
@@ -76,8 +75,8 @@ html.loading .goods-previews .viewport { display: none; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
-.previews .body-wrapper { height: 170px; overflow: hidden; }
-.promos .body-wrapper { overflow: visible; }
+.previews .common-content { height: 170px; overflow: hidden; }
+.promos .common-content { overflow: visible; }
 .good-promos .prev,
 .good-promos .next { display: block; background-image: url(common/photos-buttons.8.png); }
 <!--# endif -->
