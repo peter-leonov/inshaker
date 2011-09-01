@@ -11,17 +11,16 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 93px; height: 30px; right: -8px; top: -2px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 100px; bottom: -730px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #top .nav .link:hover { border-bottom-color: #ab0e1c; }
-#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 80px; position: static; }
+#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 40px; position: static; }
 #bottom a { color: #e50000; }
-#bottom .main-menu { margin-right: 240px; }
 #bottom .main-menu,
 #bottom .left-menu { position: relative; z-index: 1; }
 html.msie #bottom a { background-color: #000; }
-html { background: #fff url(bg.jpg) center -170px repeat-y; }
+html { background: #fff url(bg.jpg) center -130px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #fff; }
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
 
