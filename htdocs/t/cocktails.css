@@ -1,9 +1,11 @@
 .hidden { display: none !important; }
 .popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
-.body-wrapper { overflow: hidden; }
-.b-title { padding-bottom: 11px; }
-.b-title h1 {font-size:20px } 
+.column-main { width: 627px; }
+
+.common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
+.common-title { padding-bottom: 11px; position: relative; }
+.common-title h1 {font-size:20px } 
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; z-index: 15; }
 #search_tabs li { margin-right: 1px; float: left; background-position: -125px -100px; width: 112px; height: 20px; line-height:21px; padding: 0 3px; font-size: 11px; text-align: center; cursor: pointer;}
 #search_tabs li.selected {background-position: 0px -100px; cursor: default; height: 21px;}
@@ -76,7 +78,7 @@
 
 
 .b-search{position:absolute;margin-right:2em;width:14em;}
-#all_list{ position: absolute; z-index: 25; top: 58px; right: 18px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
+#all_list{ position: absolute; z-index: 25; top: 58px; right: 20px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
 #all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 6px;}
@@ -110,6 +112,10 @@
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px dashed;}
 
+.drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
+.dragging-object{position:absolute;z-index:10;}
+
+
 <!--# include virtual="popup.css" -->
 <!--# include virtual="ingredient-popup.css" -->
 
@@ -136,10 +142,6 @@
 .b-content .pager .next
 {font-size: 17px;}
 
-/*.b-content .pager .prev{background-position-x:0;}
-.b-content .pager .disabled{background-position-y:-12px;}
-*/
-
 
 .b-search{width:140px;overflow:hidden;}
 .b-search form dd span{white-space:normal;}
@@ -152,4 +154,3 @@
 .search-form {z-index:1;}
 .search-form input { height: 22px; line-height: 22px; position:absolute}
 <!--# endif -->
-
