@@ -77,6 +77,21 @@ html.about-page #bottom a.about,
 html.blog-section #bottom .main-menu a.blog
 { color: inherit; cursor: default; text-decoration: none !important; }
 
+/* that great buttons */
+button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
+button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; }
+button.tiny { width: 110px; background-position: 0 -25px; }
+button.strong { background-position: 0 -50px; }
+html.msie-6 button.rounded b,
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { font-weight: bold; top: 5px; }
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { display: inline-block; letter-spacing: 0.1px; filter: Shadow(Color=#333333,Direction=135,Strength=1); padding-bottom: 1px; }
+html.msie-8 button.rounded b { top: -2px; }
+html.firefox button.rounded b {  top: -2px; }
+html.opera button.rounded b { top: 4px; }
+html.safari button.rounded b { top: -1px; }
+
 
 /* branding.css */
 #alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
