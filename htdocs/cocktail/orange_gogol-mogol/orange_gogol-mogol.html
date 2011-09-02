@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
@@ -14,190 +14,186 @@
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
-	
-	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper hrecipe">
-			<div class="b-title">
-				<h1 id="cocktail_name" class="fn" data-cocktail-name="Апельсиновый гоголь-моголь">Апельсиновый гоголь-моголь</h1>
-				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
-			</div>
-			<div class="b-content">
-				<div class="hreview">
-					<div class="top-menu"><div class="b">
-						<p class="border-links" id="panel_cocktail">
-							<a id="author"><b>Авторская подача</b></a>
-							<a id="where-to-taste"><b>Где попробовать</b></a>
-						</p>
-						<img src="orange_gogol-mogol-bg.png" width="590" height="210" alt="Коктейль «Апельсиновый гоголь-моголь»" id="poster"/>
-					</div></div>
-					
-					<div class="entry">
-						<div id="main-content">
-							<img src="orange_gogol-mogol-big.png" alt="Коктейль «Апельсиновый гоголь-моголь»" id="illustration" class="illustration"/>
-							<div class="desc">
-								<h2 class="summary"><i></i>Апельсиновый гоголь-моголь — Вспомни детство!</h2>
-								<div class="description">
-									
-									<p>За историческое право считаться автором первого в мире гоголя-моголя неформально соперничают немецкий кондитер Манфред Кёкенбауэр и преподаватель музыки из Могилёва по фамилии Гогель<a onclick="link.open('view-prepare')">…</a></p>
-									
-								</div>
-							</div>
-							<div class="tags"><b>Группы:</b>
-							<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
-							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
-							</div>
-							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
-							<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
-						</div>
-						
-						<div id="view-prepare">
-							<div id="view-prepare-text">
-								<h3>Легенда коктейля</h3>
-								<p>За историческое право считаться автором первого в мире гоголя-моголя неформально соперничают немецкий кондитер Манфред Кёкенбауэр и преподаватель музыки из Могилёва по фамилии Гогель.</p><p>Одно остается бесспорным: старинный десерт — самое приятное лекарство от простуды и потери голоса.</p>
-							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
-						</div>
-						
-						<div id="view-how">
-							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-									<a class="prev"></a>
-									<div class="viewport">
-										<div class="surface" id="ingreds_surface">
-										</div>
-									</div>
-									<a class="next"></a>
-							</div></div>
-							<dl class="recipe">
-								<dt>Как приготовить:</dt>
-								<dd>
-									<ul class="instructions">
-										
-										<li class="instruction">Наполни большую кастрюлю для водяной бани водой из-под крана наполовину</li>
-										
-										<li class="instruction">Поставь в нее кастрюлю поменьше так, чтобы вода не попадала внутрь</li>
-										
-										<li class="instruction">Положи в маленькую кастрюлю апельсиновый джем 2 ч. ложки, мед 4 ч. ложки и яичный желток 1 шт</li>
-										
-										<li class="instruction">Налей: гранд марнье 20 мл, сливки (11%) 50 мл и молоко (3%) 150 мл</li>
-										
-										<li class="instruction">Помешивая, нагрей коктейль на водяной бане, не доводя до кипения</li>
-										
-										<li class="instruction">Перелей в бокал для ирландского кофе</li>
-										
-										<li class="instruction">Добавь щепотку мускатного ореха и укрась печеньем</li>
-										
-									</ul>
-								</dd>
-							</dl>
-							<ul class="controls">
-								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-							</ul>
-						</div>
-					</div>
+<div id="common-main-wrapper">
+
+<!--# include virtual="/inc/calculator.html" -->
+
+<div class="common-box column-main"><div class="common-content hrecipe">
+	<div class="common-title">
+		<h1 id="cocktail_name" class="fn" data-cocktail-name="Апельсиновый гоголь-моголь">Апельсиновый гоголь-моголь</h1>
+		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+	</div>
+	<div class="b-content">
+		<div class="hreview">
+			<div id="top-menu">
+				<div class="border-links" id="panel_cocktail">
+					<a id="author" class="hidden"><b>Авторская подача</b></a>
+					<a id="where-to-taste" class="hidden"><b>Где попробовать</b></a>
 				</div>
-				
-				<div class="what-need">
-					<dl id="ingredients_list">
-						<dt>Необходимые ингредиенты</dt>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Гранд Марнье">Гранд Марнье</a>
-							<strong><span class="amount">20</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Молоко (3%)">Молоко (3%)</a>
-							<strong><span class="amount">150</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Сливки (11%)">Сливки (11%)</a>
-							<strong><span class="amount">50</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
-							<strong><span class="amount">1</span> <span class="type">шт</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Мед">Мед</a>
-							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Джем апельсиновый">Джем апельсиновый</a>
-							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Мускатный орех молотый">Мускатный орех молотый</a>
-							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Печенье">Печенье</a>
-							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
-						</dd>
-						
-					</dl>
-					<dl class="tools">
-						<dt>Необходимые штучки</dt>
-						
-						<dd><a>Бокал для ирландского кофе</a></dd>
-						
-						<dd><a>Кастрюли для водяной бани</a></dd>
-						
-						<dd><a>Коктейльная ложка</a></dd>
-						
-						<dd><a>Трубочки</a></dd>
-						
-					</dl>
-				</div>
-				
-				<div id="share">
-					<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-				</div>
-			</div>
-		</div></div>
-		
-		<div class="b-more">
-			<div class="column b-more-cocktails b-more-rec">
-				<dl class="body-wrapper">
-					<dt><b>Inshaker рекомендует</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="recommendations">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport">
-								<div class="surface" id="rec_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
+				<img class="poster" src="orange_gogol-mogol-bg.png" alt="Коктейль «Апельсиновый гоголь-моголь»"/>
 			</div>
 			
-			<div class="column b-more-cocktails">
-				<dl class="body-wrapper">
-					<dt><b>Вам также могут понравиться эти коктейли</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport" id="rel_viewport">
-								<div class="surface" id="rel_surface"></div>
-							</div>
+			<div class="entry">
+				<div id="main-content">
+					<img src="orange_gogol-mogol-big.png" alt="Коктейль «Апельсиновый гоголь-моголь»" id="illustration" class="illustration"/>
+					<div class="desc">
+						<h2 class="summary"><i></i>Апельсиновый гоголь-моголь — Вспомни детство!</h2>
+						<div class="description">
+							
+							<p>За историческое право считаться автором первого в мире гоголя-моголя неформально соперничают немецкий кондитер Манфред Кёкенбауэр и преподаватель музыки из Могилёва по фамилии Гогель<a onclick="link.open('view-prepare')">…</a></p>
+							
 						</div>
-					</dd>
-				</dl>
+					</div>
+					<div class="tags"><b>Группы:</b>
+					<a class="tag category" href="/cocktails.html#method=просто">просто</a>,
+					<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=согревающие">согревающие</a>.
+					</div>
+					<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+				</div>
+				
+				<div id="view-prepare">
+					<div id="view-prepare-text">
+						<h3>Легенда коктейля</h3>
+						<p>За историческое право считаться автором первого в мире гоголя-моголя неформально соперничают немецкий кондитер Манфред Кёкенбауэр и преподаватель музыки из Могилёва по фамилии Гогель.</p><p>Одно остается бесспорным: старинный десерт — самое приятное лекарство от простуды и потери голоса.</p>
+					</div>
+					<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
+				</div>
+				
+				<div id="view-how">
+					<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+							<a class="prev"></a>
+							<div class="viewport">
+								<div class="surface" id="ingreds_surface">
+								</div>
+							</div>
+							<a class="next"></a>
+					</div></div>
+					<dl class="recipe">
+						<dt>Как приготовить:</dt>
+						<dd>
+							<ul class="instructions">
+								
+								<li class="instruction">Наполни большую кастрюлю для водяной бани водой из-под крана наполовину</li>
+								
+								<li class="instruction">Поставь в нее кастрюлю поменьше так, чтобы вода не попадала внутрь</li>
+								
+								<li class="instruction">Положи в маленькую кастрюлю апельсиновый джем 2 ч. ложки, мед 4 ч. ложки и яичный желток 1 шт</li>
+								
+								<li class="instruction">Налей: гранд марнье 20 мл, сливки (11%) 50 мл и молоко (3%) 150 мл</li>
+								
+								<li class="instruction">Помешивая, нагрей коктейль на водяной бане, не доводя до кипения</li>
+								
+								<li class="instruction">Перелей в бокал для ирландского кофе</li>
+								
+								<li class="instruction">Добавь щепотку мускатного ореха и укрась печеньем</li>
+								
+							</ul>
+						</dd>
+					</dl>
+					<ul class="controls">
+						<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
+					</ul>
+				</div>
 			</div>
 		</div>
+		
+		<div class="what-need">
+			<dl id="ingredients_list">
+				<dt>Необходимые ингредиенты</dt>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Гранд Марнье">Гранд Марнье</a>
+					<strong><span class="amount">20</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Молоко (3%)">Молоко (3%)</a>
+					<strong><span class="amount">150</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Сливки (11%)">Сливки (11%)</a>
+					<strong><span class="amount">50</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Яйцо">Яйцо</a>
+					<strong><span class="amount">1</span> <span class="type">шт</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Мед">Мед</a>
+					<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Джем апельсиновый">Джем апельсиновый</a>
+					<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Мускатный орех молотый">Мускатный орех молотый</a>
+					<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Печенье">Печенье</a>
+					<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+				</dd>
+				
+			</dl>
+			<dl class="tools">
+				<dt>Необходимые штучки</dt>
+				
+				<dd><a>Бокал для ирландского кофе</a></dd>
+				
+				<dd><a>Кастрюли для водяной бани</a></dd>
+				
+				<dd><a>Коктейльная ложка</a></dd>
+				
+				<dd><a>Трубочки</a></dd>
+				
+			</dl>
+		</div>
+		
+		<div id="share">
+			<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+		</div>
 	</div>
+</div></div>
+
+<div class="b-more">
+	<div class="common-box b-more-cocktails b-more-rec"><dl class="common-content">
+		<dt><b>Inshaker рекомендует</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="recommendations">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport">
+					<div class="surface" id="rec_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 	
-	<!--# include virtual="/inc/calculator.html" -->
+	<div class="common-box b-more-cocktails"><dl class="common-content">
+		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport" id="rel_viewport">
+					<div class="surface" id="rel_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 </div>
+
+</div id="common-main-wrapper">
+
 <!--# include virtual="/inc/cocktail-footer.html" -->
 </body>
 </html>
