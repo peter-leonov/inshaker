@@ -25,13 +25,13 @@
 	</div>
 	<div class="b-content">
 		<div class="hreview">
-			<div class="top-menu"><div class="b">
-				<p class="border-links" id="panel_cocktail">
-					<a id="author"><b>Авторская подача</b></a>
-					<a id="where-to-taste"><b>Где попробовать</b></a>
-				</p>
-				<img src="<%=@name_html%>-bg.png" width="590" height="210" alt="Коктейль «<%= @name %>»" id="poster"/>
-			</div></div>
+			<div id="top-menu">
+				<div class="border-links" id="panel_cocktail">
+					<a id="author" class="hidden"><b>Авторская подача</b></a>
+					<a id="where-to-taste" class="hidden"><b>Где попробовать</b></a>
+				</div>
+				<img class="poster" src="<%=@name_html%>-bg.png" alt="Коктейль «<%= @name %>»"/>
+			</div>
 			
 			<div class="entry">
 				<div id="main-content">

@@ -68,7 +68,7 @@ var Controller = {
 			var a = $(this.ID_AUTHOR)
 			if (a)
 			{
-				a.style.display = "inline";
+				a.removeClassName('hidden')
 				a.href = barman.pageHref()
 				
 				// course of link.js cancels an event (#451)
@@ -91,11 +91,11 @@ var Controller = {
 		if (bars.length)
 		{
 			var a = $(this.ID_WHERE_TO_TASTE)
-			a.style.display = 'inline';
+			a.removeClassName('hidden')
 			
 			if (bars.length == 1)
 			{
-				a.href = bars.random().pageHref()
+				a.href = bars[0].pageHref()
 			}
 			else
 			{
