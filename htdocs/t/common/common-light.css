@@ -117,6 +117,15 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 .cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
 
+.square-list .next,
+.square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.square-list .prev { background-position: -450px 0; }
+.square-list .next { background-position: -475px 0; }
+.square-list .prev.disabled,
+.square-list .next.disabled { cursor:default; }
+.square-list .prev.disabled { background-position: -450px -25px; }
+.square-list .next.disabled { background-position: -475px -25px; }
+
 #share-box .button { display: inline-block; width: 30px; height: 30px; }
 #share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
 #share-box .button.facebook i { background-position: -150px 0; }
