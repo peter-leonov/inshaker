@@ -1,11 +1,108 @@
+/* in cocktail */
+.b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
+.b-more .b-more-cocktails { width:398px;}
+.b-more .common-box { float: left; }
+.b-more dl{height:163px;font-size:120%;height:11.24em;}
+.b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
+.b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
+.b-more dd{line-height:1.17;position:relative;}
+.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:120px; width:330px;}
+.b-more-cocktails .surface{width:20000px;}
+.b-more-cocktails .point{height:100px;width:330px;float:left;}
+.b-more-cocktails ul{padding-top:5px;}
+.b-more-cocktails li{width:8em;text-align:center;float:left;width:110px;}
+.b-more-cocktails img{display:block;margin:0 auto 5px;}
+.b-more-cocktails .prev,
+.b-more-cocktails .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.b-more-cocktails .prev{background-position:-500px 0;left:0px;}
+.b-more-cocktails .next{background-position:-525px 0;right:-2px;}
+.b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
+.b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
+.cocktail-list .prev,
+.cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.cocktail-list .prev{background-position:-500px 0;left:0px;}
+.cocktail-list .next{background-position:-525px 0;right:-2px;}
+.cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
+.cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
+.b-more .b-more-rec .point{width:130px; display:block}
+.b-more .b-more-rec {width:208px;margin-right:19px;}
+.b-more .b-more-rec .viewport{width:130px;left:21px;}
+.b-more .b-more-rec li{width:130px;}
+
+/* yellow inputs */
+.win-shop .b-gadget .count input,
+.win-shop .content dd input
+{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
+
+/* popups-related */
+.win-shop{position:fixed;z-index:50;top:0;left:0;width:100%;height:100%;}
+.opacity,.win-shop .opacity {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
+.win-shop .win{background:url(bg/win/win.png) no-repeat 0 100%;margin:0 auto;top:72px;position:relative;width:620px;padding:0 19px 19px;z-index:5;}
+.win-shop .win-bg{background:url(bg/win/win.png) no-repeat 0 0;position:absolute;top:-20px;width:658px;height:20px;left:0;}
+.win-shop .gadget-wrapper{position:relative;}
+.win-shop .main{background:#c0c0c0;position:relative;}
+.win-shop .main .wrapper{background:#fff;}
+.win-shop .main .wrapper{position:relative;overflow:hidden; border: 1px #c0c0c0 solid;}
+.win-shop .main .wrapper2{position:relative;}
+.win-shop .close{background:url(icon/close.png) no-repeat 0 -10px;position:absolute;height:14px;width:14px;top:11px;right:10px;text-indent:-1000em;}
+.win-shop h3{background:url(bg/body/green-more-title.png) repeat-x 0 -19px;padding:34px 0 0 290px;font-weight:bold;font-size:180%;}
+.win-shop .main .zoom{display:block;overflow:hidden;width:280px;text-align:center;margin:0 auto 37px;text-decoration:none;}
+.win-shop .main .zoom img{display:block;margin:10px auto 13px;}
+.win-shop .main .zoom span{text-decoration:underline;}
+.win-shop .main .gallery{float:left;width:290px;margin-top:-20px;}
+.win-shop .main .gallery ul{margin-bottom:35px;}
+.win-shop .content{font-size:120%;float:left;width:328px;}
+.win-shop .content small{font-size:92%;}
+.win-shop .content .alert{color:#eb1c57;}
+.win-shop .content .composition{list-style:disc inside;margin:23px 0 0 11px;min-height:4.5em;line-height:1.5;}
+.win-shop .content .desc{clear:both;padding:8px 28px 21px 0;}
+.win-shop .content .more,
+.win-shop .content .less{position:relative;background-color:#f7f7f7;width:160px;height:47px;padding:12px 30px 0 56px;}
+.win-shop .content .more dl *,
+.win-shop .content .less dl *{background:#f7f7f7;}
+.win-shop .content .more i,
+.win-shop .content .less i { width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
+.win-shop .content .more i { background-position: -200px -25px; }
+.win-shop .content .less i { background-position: -225px -25px; }
+.win-shop .content form{padding:20px 0 12px 0;}
+.win-shop .content form dl{margin:0 52px 6px 0}
+.win-shop .content form strong{font-weight:normal;padding-right:12px;}
+.win-shop .content form a{margin-left:4px;}
+.win-shop .content form dl dt { position: relative; padding-left: 14px; }
+.win-shop .content form dl dt i { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background-position: -225px 0px; }
+.win-shop .content form dl.empty dt i { display: none; }
+
+.win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
+.win-shop .content .sum p{float:left;text-align:left;}
+.win-shop .content .sum p small{display:block;padding-top:4px;}
+.win-shop .content .sum button{margin:6px 50px 0 0;}
+.win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
+
+.win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
+.win-shop .b-gadget .count{display:block;margin-bottom:6px;}
+.win-shop .b-gadget .count input{margin-left:6px;}
+.win-shop .b-gadget .tags{font-size:82%;color:#343b40;padding-bottom:40px;}
+.win-shop .b-gadget small{display:block;}
+.win-shop .b-gadget button{display:block;margin:13px 0 21px 0;}
+.win-shop .b-gadget .gallery{padding-top:0;}
+
+
+
+
+
+
 .hidden { display: none !important; }
 .popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
-.b-title { width: 100%; }
-.b-title h1 { position: relative; }
-.b-title h1,
-.b-title .hrefs { z-index: 10; }
+.column-main { width: 627px; }
 
+.common-title { width: 100%; position: relative; }
+.common-title h1 { position: relative; }
+.common-title .hrefs { position: absolute; right: 0; bottom: 15px; font-size: 110%; }
+.common-title h1,
+.common-title .hrefs { z-index: 10; }
+
+.b-content { position: relative; }
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
@@ -15,7 +112,7 @@
 a.author { text-decoration: none; color: inherit; cursor: default; }
 a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
-.body-wrapper { overflow: hidden; }
+.common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
 
 .b-content .top-menu{background:url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu #poster{position:absolute;bottom:0;left:0;}
@@ -76,6 +173,10 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #recommendations .point { line-height: 112px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
+
+.drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
+.dragging-object{position:absolute;z-index:10;}
+
 
 <!--# include virtual="popup.css" -->
 <!--# include virtual="ingredient-popup.css" -->
