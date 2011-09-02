@@ -114,7 +114,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
 
-#top-menu { position: relative; width: 590px; height: 182px; background: url(bg/cocktail/bgs.png) repeat-x 0 0; }
+#top-menu { position: relative; width: 590px; height: 182px; background: url(cocktail/menu.png) repeat-x 0 0; }
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
 #top-menu .border-links { position: relative; height: 19px; padding: 11px 0 8px 9px; font-size: 110%; }
 #top-menu .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
