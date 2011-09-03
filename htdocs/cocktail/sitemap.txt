@@ -116,7 +116,6 @@ http://www.inshaker.ru/cocktail/bourbon_infused_on_dried_apricots/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_raspberries/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_sea-buckthorn/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_prunes/
-http://www.inshaker.ru/cocktail/burunduchok/
 http://www.inshaker.ru/cocktail/bucharest/
 http://www.inshaker.ru/cocktail/fast_vanilla_shot/
 http://www.inshaker.ru/cocktail/bianco_orange/
@@ -376,6 +375,7 @@ http://www.inshaker.ru/cocktail/kin-dza-dza/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/clubland/
 http://www.inshaker.ru/cocktail/claudius_galenus/
+http://www.inshaker.ru/cocktail/classic_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/maple_apple/
 http://www.inshaker.ru/cocktail/maple_julep/
 http://www.inshaker.ru/cocktail/mapple_sour/
@@ -456,6 +456,7 @@ http://www.inshaker.ru/cocktail/lazy_man_flip/
 http://www.inshaker.ru/cocktail/lexus/
 http://www.inshaker.ru/cocktail/lena/
 http://www.inshaker.ru/cocktail/fruits_of_the_forest/
+http://www.inshaker.ru/cocktail/summer_breeze/
 http://www.inshaker.ru/cocktail/summer_evening_in_gagra/
 http://www.inshaker.ru/cocktail/summer_fizz/
 http://www.inshaker.ru/cocktail/summer_queen/
@@ -681,6 +682,7 @@ http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
 http://www.inshaker.ru/cocktail/spicy_saloop/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
+http://www.inshaker.ru/cocktail/little_bee/
 http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
 http://www.inshaker.ru/cocktail/fifth_element/
