@@ -38,14 +38,14 @@
 				<img src="<%=@name_html%>-big.png" alt="Коктейль «<%= @name %>»" id="cocktail-image"/>
 				
 				<div id="main-content">
-					<div class="desc">
+					<div class="description">
 						<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
 						<% if @desc_end.empty? %>
-						<div class="description">
+						<div class="short-legend">
 							<%= @desc_start.html_paragraphs %>
 						</div>
 						<% else %>
-						<div class="description" id="show-legend">
+						<div class="short-legend" id="show-legend">
 							<%= @desc_start.cut_last_dot.html_paragraphs %Q{…} %>
 						</div>
 						<% end %>
@@ -54,8 +54,10 @@
 					<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
 					<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
 					</div>
-					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					<div class="buttons">
 						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name"><%= @name %></span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					</div>
 				</div>
 				
 				<div id="view-legend">
@@ -82,10 +84,10 @@
 							</ul>
 						</dd>
 					</dl>
-					<ul class="controls">
-						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
-						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-					</ul>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
 		</div>
