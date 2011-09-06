@@ -198,6 +198,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 .drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
 .dragging-object{position:absolute;z-index:10;}
+#cocktail-image.dragging-object { display: block; }
 
 
 <!--# include virtual="popup.css" -->
