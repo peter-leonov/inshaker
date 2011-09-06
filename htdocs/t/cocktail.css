@@ -135,7 +135,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 .hreview .tags{font-size:110%;padding:29px 0 38px 0;}
 .hreview button { margin-right: 16px; }
 
-#cocktail-image { position: absolute; left: -2px; bottom: -9px;}
+#cocktail-image { position: absolute; left: -2px; bottom: -9px; z-index: 1; }
 
 
 #main-content,
