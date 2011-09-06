@@ -1,14 +1,20 @@
 /* in cocktail */
-.b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
-.b-more .b-more-cocktails { width:398px;}
-.b-more .common-box { float: left; }
-.b-more dl{height:163px;font-size:120%;height:11.24em;}
-.b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
-.b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
-.b-more dd{line-height:1.17;position:relative;}
-.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:120px; width:330px;}
-.b-more-cocktails .surface{width:20000px;}
-.b-more-cocktails .point{height:100px;width:330px;float:left;}
+#b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
+#b-more .b-more-cocktails { width:398px;}
+#b-more .common-box { float: left; }
+#b-more dl{font-size:120%;height:150px;}
+#b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
+#b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
+#b-more dd{line-height:1.17;position:relative;}
+#b-more .b-more-rec .point{width:130px; display:block}
+#b-more .b-more-rec {width:208px;margin-right:19px;}
+#b-more .b-more-rec .viewport{width:130px;left:21px;}
+#b-more .b-more-rec li{width:130px;}
+#b-more.wide .b-more-rec { display: none; }
+#b-more.wide .b-more-similar { width: 628px; }
+.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:140px; width:330px;}
+.b-more-cocktails .surface{width:20000px;height: 140px;}
+.b-more-cocktails .point{height:140px;width:330px;float:left;}
 .b-more-cocktails ul{padding-top:5px;}
 .b-more-cocktails li{width:8em;text-align:center;float:left;width:110px;}
 .b-more-cocktails img{display:block;margin:0 auto 5px;}
@@ -24,10 +30,6 @@
 .cocktail-list .next{background-position:-525px 0;right:-2px;}
 .cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
 .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
-.b-more .b-more-rec .point{width:130px; display:block}
-.b-more .b-more-rec {width:208px;margin-right:19px;}
-.b-more .b-more-rec .viewport{width:130px;left:21px;}
-.b-more .b-more-rec li{width:130px;}
 
 /* yellow inputs */
 .win-shop .b-gadget .count input,
@@ -111,7 +113,7 @@
 #top-menu { position: relative; width: 590px; height: 182px; background: url(cocktail/menu.png) repeat-x 0 0; }
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
 #top-menu .border-links { position: relative; height: 19px; padding: 13px 0 6px 9px; font-size: 110%; z-index: 1; }
-#top-menu .border-links a { text-decoration: none; line-height: 1.5; padding: 3px 10px 4px 10px; color: #fff; margin-right: 12px; border-radius: 2px; -moz-border-radius: 2px; }
+#top-menu .border-links a { padding: 3px 10px 4px 10px; margin-right: 12px; line-height: 1.5; color: #fff; border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; text-decoration: none; }
 #top-menu .border-links a:hover { background: #0392f1; text-decoration: none; }
 
 #content { position: relative; min-height: 190px; margin-bottom: 25px; }

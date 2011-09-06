@@ -40,6 +40,7 @@ var Controller = {
 	
 	nodes:
 	{
+		moreBox: $('b-more'),
 		hreview: $$('.hreview')[0],
 		showRecipe: $('show-recipe'),
 		hideRecipe: $('close-recipe'),
@@ -353,10 +354,8 @@ var Controller = {
 		return node
 	},
 	
-	expandRelated: function(){ // model
-		var recsCol = $$(".column.b-more-rec")[0];
-		var relCol  = $$(".column.b-more-cocktails")[1];
-		recsCol.style.display = "none";
-		relCol.style.width = "62.8em";
+	expandRelated: function ()
+	{
+		this.nodes.moreBox.addClassName('wide')
 	}
 }
