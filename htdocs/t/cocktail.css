@@ -127,7 +127,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #top-menu .border-links a:hover b { border-color: #0392f1; }
 #top-menu .border-links a:hover { text-decoration:none}
 
-.hreview .content { position: relative; min-height: 200px; margin-bottom: 25px; }
+.hreview .content { position: relative; min-height: 190px; margin-bottom: 25px; }
 
 #cocktail-image { position: absolute; left: -2px; bottom: -33px; z-index: 1; }
 
