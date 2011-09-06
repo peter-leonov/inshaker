@@ -1,5 +1,3 @@
-<!--# include virtual="/js/common/link.js" -->
-
 Array.prototype.random = function() {
 	var len = this.length
 	if (len)
@@ -11,7 +9,7 @@ var Controller = {
 	ID_REC     : 'recommendations',
 	ID_REC_SUR : 'rec_surface',
 	
-	ID_ILLUSTRATION : 'illustration',
+	ID_ILLUSTRATION : 'cocktail-image',
 	
 	ID_AUTHOR : 'author',
 	SELECTOR_AUTHOR : 'a.author',
@@ -34,12 +32,20 @@ var Controller = {
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
 	
-	CLASS_VIEW_HOW_BTN : '.bt-view-how',
 	CLASS_PRINT_RECIPE : '.bt-print-how',
-    KEY_ESC: 27,
-
+	KEY_ESC: 27,
+	
 	name : "",
 	relatedCount: 10,
+	
+	nodes:
+	{
+		hreview: $$('.hreview')[0],
+		showRecipe: $('show-recipe'),
+		hideRecipe: $('close-recipe'),
+		showLegendBtn: $('show-legend'),
+		hideLegendBtn: $('hide-legend')
+	},
 	
 	init: function(){
 		this.name = $(this.NAME_ELEM).getAttribute('data-cocktail-name');
@@ -60,7 +66,6 @@ var Controller = {
 	
 	bindEvents: function(name){
 		var self = this;
-		var menu = $('panel_cocktail');
 		
 		var barman = Barman.getByCocktailName(name)
 		if (barman)
@@ -70,9 +75,6 @@ var Controller = {
 			{
 				a.removeClassName('hidden')
 				a.href = barman.pageHref()
-				
-				// course of link.js cancels an event (#451)
-				a.addEventListener('click', function (e) { location.href = this.href }, false)
 			}
 			
 			
@@ -81,9 +83,6 @@ var Controller = {
 			{
 				a.addClassName('active')
 				a.href = barman.pageHref()
-				
-				// course of link.js cancels an event (#451)
-				a.addEventListener('click', function (e) { location.href = this.href }, false)
 			}
 		}
 		
@@ -101,37 +100,45 @@ var Controller = {
 			{
 				a.href = '/bars.html#cocktail=' + encodeURIComponent(name)
 			}
-			
-			// course of link.js cancels an event (#451)
-			a.addEventListener('click', function (e) { location.href = this.href }, false)
 		}
 		
-		menu.now = menu; 
-		this._initNavigationRules(menu);
-		
-		var mybar_links	= menu.getElementsByTagName('a');
-		for (var i = mybar_links.length - 1; i >= 0; i--) {
-			mybar_links[i].addEventListener('click', function(e) {
-					link.open(this);
-					this.parentNode.now.removeClassName('now');
-					// this.addClassName('now');
-					this.parentNode.now = this;
-					var ri = $(self.ID_ING).RollingImagesLite
-					if (ri)
-						ri.goInit(); // Work-around for RI: FIXME
-					e.preventDefault();
-				}, false);
-		}
-		link = new Link();
-		
-		var viewHowBtn = $$(this.CLASS_VIEW_HOW_BTN)[0];
-		viewHowBtn.addEventListener('click', function(e){
+		this.nodes.showRecipe.addEventListener('click', function(e){
 			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
-			link.open("view-how", true);
+			
+			var root = self.nodes.hreview
+			root.removeClassName('state-initial')
+			root.addClassName('state-recipe')
+			
 			var ri = $(self.ID_ING).RollingImagesLite
 			if (ri)
 				ri.goInit(); // Work-around for RI: FIXME
 		}, false);
+		
+		this.nodes.hideRecipe.addEventListener('click', function (e)
+		{
+			var root = self.nodes.hreview
+			root.removeClassName('state-recipe')
+			root.addClassName('state-initial')
+		},
+		false)
+		
+		this.nodes.showLegendBtn.addEventListener('click', function (e)
+		{
+			Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
+			
+			var root = self.nodes.hreview
+			root.removeClassName('state-initial')
+			root.addClassName('state-legend')
+		},
+		false)
+		
+		this.nodes.hideLegendBtn.addEventListener('click', function (e)
+		{
+			var root = self.nodes.hreview
+			root.removeClassName('state-legend')
+			root.addClassName('state-initial')
+		},
+		false)
 		
 		var printRecipe = $$(this.CLASS_PRINT_RECIPE)[0]
 		printRecipe.addEventListener('click', function (e)
@@ -194,50 +201,6 @@ var Controller = {
 		$('tool_name').innerHTML = tool.name;
 		$('tool_desc').innerHTML = tool.desc;
 		$('tool_picture').src = tool.imgSrc();
-	},
-	
-	_initNavigationRules: function(menu){
-		// TODO: remove UI fixes from Controller
-		var entry = $$("#cocktail-page .hreview .entry")[0];
-		var ul = $$("#cocktail-page #view-how ul")[0];
-		var hreview = $$("#cocktail-page .hreview")[0]; 
-		var desc = $('view-prepare-text');
-
-		$('view-prepare').show = function()
-		{
-			$('main-content').style.visibility = 'hidden';
-			this.style.display = 'block';
-			
-			// Apply fix
-			if(desc.offsetHeight > 160 && entry.offsetHeight < 240) entry.style.height = (desc.offsetHeight + 20) + "px";
-		}
-		$('view-prepare').hide = function()
-		{
-			this.style.display = 'none';
-			$('main-content').style.visibility = 'visible';
-			
-			// Cancel fix
-			entry.style.height = "";
-		}
-		$('view-how').show = function()
-		{
-			$('main-content').className = 'view-how';
-			this.style.display = 'block';
-			$('poster').style.visibility = 'hidden';
-			
-			// Apply fix
-			if(ul.offsetHeight > 100) entry.style.height = (ul.offsetHeight + 60) + "px";
-		}
-		$('view-how').hide = function()
-		{
-			this.style.display = 'none';
-			$('main-content').className = '';
-			$('poster').style.visibility = 'visible';
-			menu.now.removeClassName('now');
-			
-			// Cancel fix
-			entry.style.height = "";
-		}
 	},
 	
 	renderRecommendations: function(recs){

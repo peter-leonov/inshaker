@@ -137,42 +137,48 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #cocktail-image { position: absolute; left: -2px; bottom: -9px;}
 
-.hreview.state-initial #main-content { display: block; }
-.hreview.state-initial #view-how,
-.hreview.state-initial #view-legend { display: none; }
 
-.hreview.state-recipe #view-how { display: block; }
-.hreview.state-recipe #top-menu .poster,
-.hreview.state-recipe #main-content,
-.hreview.state-recipe #view-legend { display: none; }
+#main-content,
+#view-legend,
+#view-recipe,
+#cocktail-image { display: none; }
+
+.hreview.state-initial #main-content,
+.hreview.state-initial #cocktail-image { display: block; }
+
+.hreview.state-recipe #view-recipe,
+.hreview.state-recipe #cocktail-image { display: block; }
+
+.hreview.state-legend #view-legend { display: block; }
+
 
 
 #main-content { padding: 20px 0 0 220px; }
 
-#view-legend { position:absolute;min-height:100%;top:0;left:0;font-size:120%;line-height:1.5;width:93%;padding:0 3.5%;}
+#view-legend { font-size: 120%; line-height: 1.5; padding: 0 10px; }
 #view-legend h3{font-size:150%;margin:13px 0 10px;}
 #view-legend button{display:block;margin:2em auto;}
 
-#view-how { }
-#view-how .ingredients{ background-color: #f4f8f9; height: 140px; width: 590px; position: absolute; top: -140px; }
-#view-how .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
-#view-how .ingredients .surface{width:5000px;height:120px;padding:0}
-#view-how .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+#view-recipe { }
+#view-recipe .ingredients{ background-color: #f4f8f9; height: 140px; width: 590px; position: absolute; top: -140px; }
+#view-recipe .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
+#view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
+#view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 
-#view-how .ingredients .point{width:360px;height:120px;float:left;}
-#view-how .next,
-#view-how .prev{z-index:3;position:absolute;left:auto;right:19px;}
-#view-how .prev{top:72px;}
-#view-how .next{top:48px;}
+#view-recipe .ingredients .point{width:360px;height:120px;float:left;}
+#view-recipe .next,
+#view-recipe .prev{z-index:3;position:absolute;left:auto;right:19px;}
+#view-recipe .prev{top:72px;}
+#view-recipe .next{top:48px;}
 
-#view-how .recipe,
-#view-how .controls { margin-left: 200px; }
-#view-how .recipe { font-size:120%; }
-#view-how .recipe ul { line-height: 1.5; margin-left: 1.5em; }
-#view-how .recipe ul li { list-style: decimal; }
-#view-how .recipe dt { font-size:150%;padding:17px 0 11px 0; }
-#view-how .controls { margin-top: 30px; }
-#view-how .controls li { display: inline; }
+#view-recipe .recipe,
+#view-recipe .controls { margin-left: 200px; }
+#view-recipe .recipe { font-size:120%; }
+#view-recipe .recipe ul { line-height: 1.5; margin-left: 1.5em; }
+#view-recipe .recipe ul li { list-style: decimal; }
+#view-recipe .recipe dt { font-size:150%;padding:17px 0 11px 0; }
+#view-recipe .controls { margin-top: 30px; }
+#view-recipe .controls li { display: inline; }
 
 
 .what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
@@ -201,7 +207,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #share:hover .frame { opacity: 1; }
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
-#view-how .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
+#view-recipe .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
@@ -225,26 +231,22 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #view-legend button{bottom:-50px;}
 
-#view-how .ingredients .surface .image { margin-left: 15px; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7\./" -->
-.hreview button.bt-view-how{float:left;}
+#view-recipe .ingredients .surface .image { margin-left: 15px; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 8\./" -->
-#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
-#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
-#view-how .ingredients .surface .image { -moz-border-radius: 0; }
+#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+#view-recipe .ingredients .surface .image { -moz-border-radius: 0; }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.[256]/" -->
-#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.8.*Version\/10\.[01]/" -->
-#view-how .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
 <!--# endif -->
