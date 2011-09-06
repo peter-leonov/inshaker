@@ -165,7 +165,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #view-recipe { padding: 20px 0 0 0; }
 #view-recipe .ingredients{ background-color: #f4f8f9; height: 140px; width: 590px; position: absolute; top: -140px; }
-#view-recipe .ingredients .viewport{position:absolute;bottom:0;left:170px;width:360px;height:120px;}
+#view-recipe .ingredients .viewport { position: absolute; bottom: 0; left: 170px; width: 360px; height: 120px; z-index: 1; }
 #view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 
