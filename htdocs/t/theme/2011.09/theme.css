@@ -69,7 +69,7 @@ button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
 .b-more dt,
 .b-more dt b { background-color: #bd2330; }
 .b-more dt b { color: #fff; }
-.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
+#main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
 #output .help-line .hint { color: #ab0e1c; }
