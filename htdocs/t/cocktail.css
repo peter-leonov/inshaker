@@ -155,8 +155,8 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #main-content { padding: 20px 0 0 220px; }
 
-#view-legend { font-size: 120%; line-height: 1.5; padding: 0 10px; }
-#view-legend h3{font-size:150%;margin:13px 0 10px;}
+#view-legend { font-size: 120%; line-height: 1.5; padding: 13px 10px 0 10px; overflow: hidden; }
+#view-legend h3 { font-size: 150%; margin-bottom: 10px; }
 #view-legend button{display:block;margin:2em auto;}
 
 #view-recipe { }
