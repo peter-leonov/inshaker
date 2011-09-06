@@ -33,15 +33,15 @@
 				<img class="poster" src="lexus-bg.png" alt="Коктейль «Лексус»"/>
 			</div>
 			
-			<div class="content">
+			<div id="content">
 				
 				<img src="lexus-big.png" alt="Коктейль «Лексус»" id="cocktail-image"/>
 				
 				<div id="main-content">
-					<div class="desc">
+					<div class="description">
 						<h2 class="summary"><i></i>Лексус — Устрой тест-драйв!</h2>
 						
-						<div class="description" id="show-legend">
+						<div class="short-legend" id="show-legend">
 							<p>Проведя в пробках большую часть дня, многие клянутся однажды отказаться от машины совсем…</p>
 						</div>
 						
@@ -50,8 +50,10 @@
 					<a class="tag category" href="/cocktails.html#method=укладывают слои">укладывают слои</a>,
 					<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=убойные">убойные</a>.
 					</div>
-					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
-					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					<div class="buttons">
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name">Лексус</span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					</div>
 				</div>
 				
 				<div id="view-legend">
@@ -80,10 +82,10 @@
 							</ul>
 						</dd>
 					</dl>
-					<ul class="controls">
-						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
-						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-					</ul>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
 		</div>

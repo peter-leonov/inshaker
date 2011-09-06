@@ -33,15 +33,15 @@
 				<img class="poster" src="jumbo-bg.png" alt="Коктейль «Джамбо»"/>
 			</div>
 			
-			<div class="content">
+			<div id="content">
 				
 				<img src="jumbo-big.png" alt="Коктейль «Джамбо»" id="cocktail-image"/>
 				
 				<div id="main-content">
-					<div class="desc">
+					<div class="description">
 						<h2 class="summary"><i></i>Джамбо — Не забывай друзей!</h2>
 						
-						<div class="description" id="show-legend">
+						<div class="short-legend" id="show-legend">
 							<p>Джамбо — слон-великан, родившийся в Африке и ставший звездой Лондонского зоопарка в конце XIX века…</p>
 						</div>
 						
@@ -50,8 +50,10 @@
 					<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
 					<a class="tag" href="/cocktails.html#strength=безалкогольные">безалкогольные</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 					</div>
-					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
-					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					<div class="buttons">
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name">Джамбо</span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+					</div>
 				</div>
 				
 				<div id="view-legend">
@@ -86,10 +88,10 @@
 							</ul>
 						</dd>
 					</dl>
-					<ul class="controls">
-						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
-						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-					</ul>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
 		</div>
