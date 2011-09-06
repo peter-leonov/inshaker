@@ -54,8 +54,8 @@
 					<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
 					<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
 					</div>
-					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
 					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name"><%= @name %></span></b></button>
 				</div>
 				
 				<div id="view-legend">
