@@ -168,6 +168,11 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-recipe .ingredients .viewport { position: absolute; bottom: 0; left: 170px; width: 360px; height: 120px; z-index: 1; }
 #view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+html.msie-8 #view-recipe .ingredients .surface .image:before,
+html.opera-10-0 #view-recipe .ingredients .surface .image:before,
+html.opera-10-1 #view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+html.msie-6 #view-recipe .ingredients .surface .image,
+html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
 #view-recipe .ingredients .point{width:360px;height:120px;float:left;}
 #view-recipe .next,
@@ -200,52 +205,11 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #cocktail-image.dragging-object { display: block; }
 
 
-<!--# include virtual="popup.css" -->
-<!--# include virtual="ingredient-popup.css" -->
-
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
 #share { border-top: 1px solid #ddd; margin: 0 -18px -18px -18px; padding: 18px 18px; background-color: #fff; }
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
-#view-recipe .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]\./" -->
-.hreview .menu p a{zoom:1;padding-top:1px;padding-bottom:1px;position:relative;}
-.hreview .menu p a b{position:relative;border:0;display:inline;top:1px;zoom:1;left:-1px;}
-.hreview .menu p a.now b,
-.hreview .menu p a:hover b{background:#0392f1;}
-<!--# endif -->
-
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6\./" -->
-.hreview,
-.hreview .menu p a,
-.hreview .menu p {zoom:1}
-
-.b-content{width:590px;}
-
-#view-legend button{bottom:-50px;}
-
-#view-recipe .ingredients .surface .image { margin-left: 15px; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 8\./" -->
-#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
-#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
-#view-recipe .ingredients .surface .image { -moz-border-radius: 0; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.[256]/" -->
-#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.8.*Version\/10\.[01]/" -->
-#view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
-<!--# endif -->
+<!--# include virtual="popup.css" -->
+<!--# include virtual="ingredient-popup.css" -->
