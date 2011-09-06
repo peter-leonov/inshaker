@@ -141,15 +141,18 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #main-content,
 #view-legend,
 #view-recipe,
+#top-menu .poster,
 #cocktail-image { display: none; }
 
 .hreview.state-initial #main-content,
-.hreview.state-initial #cocktail-image { display: block; }
+.hreview.state-initial #cocktail-image,
+.hreview.state-initial #top-menu .poster { display: block; }
 
 .hreview.state-recipe #view-recipe,
 .hreview.state-recipe #cocktail-image { display: block; }
 
-.hreview.state-legend #view-legend { display: block; }
+.hreview.state-legend #view-legend,
+.hreview.state-legend #top-menu .poster { display: block; }
 
 #show-legend { cursor: pointer; }
 
