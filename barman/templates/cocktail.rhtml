@@ -40,13 +40,15 @@
 				<div id="main-content">
 					<div class="desc">
 						<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
+						<% if @desc_end.empty? %>
 						<div class="description">
-							<% if @desc_end.empty? %>
 							<%= @desc_start.html_paragraphs %>
-							<% else %>
-							<%= @desc_start.cut_last_dot.html_paragraphs %Q{<a id="show-legend">…</a>} %>
-							<% end %>
 						</div>
+						<% else %>
+						<div class="description" id="show-legend">
+							<%= @desc_start.cut_last_dot.html_paragraphs %Q{…} %>
+						</div>
+						<% end %>
 					</div>
 					<div class="tags"><b>Группы:</b>
 					<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,

@@ -122,23 +122,26 @@ var Controller = {
 		},
 		false)
 		
-		this.nodes.showLegendBtn.addEventListener('click', function (e)
+		if (this.nodes.showLegendBtn)
 		{
-			Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
+			this.nodes.showLegendBtn.addEventListener('click', function (e)
+			{
+				Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
 			
-			var root = self.nodes.hreview
-			root.removeClassName('state-initial')
-			root.addClassName('state-legend')
-		},
-		false)
-		
-		this.nodes.hideLegendBtn.addEventListener('click', function (e)
-		{
-			var root = self.nodes.hreview
-			root.removeClassName('state-legend')
-			root.addClassName('state-initial')
-		},
-		false)
+				var root = self.nodes.hreview
+				root.removeClassName('state-initial')
+				root.addClassName('state-legend')
+			},
+			false)
+			
+			this.nodes.hideLegendBtn.addEventListener('click', function (e)
+			{
+				var root = self.nodes.hreview
+				root.removeClassName('state-legend')
+				root.addClassName('state-initial')
+			},
+			false)
+		}
 		
 		var printRecipe = $$(this.CLASS_PRINT_RECIPE)[0]
 		printRecipe.addEventListener('click', function (e)
