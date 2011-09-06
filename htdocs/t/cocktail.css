@@ -116,7 +116,7 @@
 #top-menu .border-links a { padding: 3px 10px 4px 10px; margin-right: 12px; line-height: 1.5; color: #fff; border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; text-decoration: none; }
 #top-menu .border-links a:hover { background: #0392f1; text-decoration: none; }
 
-#content { position: relative; min-height: 190px; margin-bottom: 25px; }
+#content { position: relative; min-height: 190px; }
 
 #cocktail-image { position: absolute; left: -2px; bottom: -33px; z-index: 1; }
 
@@ -150,7 +150,7 @@
 
 #view-legend { font-size: 120%; line-height: 1.5; padding: 13px 10px 0 10px; overflow: hidden; }
 #view-legend h3 { font-size: 150%; margin-bottom: 10px; }
-#view-legend button{display:block;margin:2em auto;}
+#view-legend button { display: block; margin: 2em auto 0; }
 
 #view-recipe { padding: 20px 0 0 0; }
 #view-recipe .ingredients{ background-color: #f4f8f9; height: 140px; width: 590px; position: absolute; top: -140px; }
@@ -177,7 +177,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #view-recipe .buttons button { margin-right: 16px; }
 
 
-.what-need{overflow:hidden;font-size:120%;padding-top:20px;margin-bottom:27px;}
+.what-need { overflow: hidden; font-size: 120%; padding-top: 35px; margin-bottom: 27px; }
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
