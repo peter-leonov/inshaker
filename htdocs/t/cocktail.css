@@ -176,7 +176,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-recipe .prev{top:72px;}
 #view-recipe .next{top:48px;}
 
-#view-recipe .recipe { font-size:120%; padding: 0 0 0 220px; }
+#view-recipe .recipe { font-size:120%; padding: 0 0 40px 220px; }
 #view-recipe .recipe ul { line-height: 1.5; margin-left: 1.5em; }
 #view-recipe .recipe ul li { list-style: decimal; }
 #view-recipe .recipe dt { font-size: 14px; font-weight: bold; padding: 0 0 12px 16px; margin-left: -16px; }
