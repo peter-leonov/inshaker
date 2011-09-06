@@ -24,7 +24,7 @@
 		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 	</div>
 	<div class="b-content">
-		<div class="hreview">
+		<div class="hreview state-initial">
 			<div id="top-menu">
 				<div class="border-links" id="panel_cocktail">
 					<a id="author" class="hidden"><b>Авторская подача</b></a>
@@ -33,14 +33,16 @@
 				<img class="poster" src="japanese_cosmopolitan-bg.png" alt="Коктейль «Японский космополитен»"/>
 			</div>
 			
-			<div class="entry">
+			<div class="content">
+				
+				<img src="japanese_cosmopolitan-big.png" alt="Коктейль «Японский космополитен»" id="cocktail-image"/>
+				
 				<div id="main-content">
-					<img src="japanese_cosmopolitan-big.png" alt="Коктейль «Японский космополитен»" id="illustration" class="illustration"/>
 					<div class="desc">
 						<h2 class="summary"><i></i>Японский космополитен — Дай ему шанс!</h2>
 						<div class="description">
 							
-							<p>Классический Космополитен не раз оказывался на пике славы<a onclick="link.open('view-prepare')">…</a></p>
+							<p>Классический Космополитен не раз оказывался на пике славы<a id="show-legend">…</a></p>
 							
 						</div>
 					</div>
@@ -48,27 +50,24 @@
 					<a class="tag category" href="/cocktails.html#method=в шейкере">в шейкере</a>,
 					<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 					</div>
-					<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
 					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 				</div>
 				
-				<div id="view-prepare">
-					<div id="view-prepare-text">
+				<div id="view-legend">
+					<div id="view-legend-text">
 						<h3>Легенда коктейля</h3>
 						<p>Классический Космополитен не раз оказывался на пике славы.</p><p>В 70-х он был особенно популярен в гей-барах. Позднее его прославила Мадонна, попав в объективы фото-камер с бокалом коктейля в руке. Ну и наконец выход на экраны сериала «Секс в большом городе» в 1998 году обеспечил Космополитену любовь светских девушек всего мира.</p>
 					</div>
-					<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="view-how">
-					<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<div class="viewport">
-								<div class="surface" id="ingreds_surface">
-								</div>
-							</div>
-							<a class="next"></a>
-					</div></div>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
 					<dl class="recipe">
 						<dt>Как приготовить:</dt>
 						<dd>
@@ -86,7 +85,7 @@
 						</dd>
 					</dl>
 					<ul class="controls">
-						<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
 						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 					</ul>
 				</div>

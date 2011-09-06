@@ -24,7 +24,7 @@
 		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 	</div>
 	<div class="b-content">
-		<div class="hreview">
+		<div class="hreview state-initial">
 			<div id="top-menu">
 				<div class="border-links" id="panel_cocktail">
 					<a id="author" class="hidden"><b>Авторская подача</b></a>
@@ -33,14 +33,16 @@
 				<img class="poster" src="home_marmalade-bg.png" alt="Коктейль «Домашний мармелад»"/>
 			</div>
 			
-			<div class="entry">
+			<div class="content">
+				
+				<img src="home_marmalade-big.png" alt="Коктейль «Домашний мармелад»" id="cocktail-image"/>
+				
 				<div id="main-content">
-					<img src="home_marmalade-big.png" alt="Коктейль «Домашний мармелад»" id="illustration" class="illustration"/>
 					<div class="desc">
 						<h2 class="summary"><i></i>Домашний мармелад — Лечись по-королевски!</h2>
 						<div class="description">
 							
-							<p>Говорят, мармелад изобрел личный врач английской королевы Марии<a onclick="link.open('view-prepare')">…</a></p>
+							<p>Говорят, мармелад изобрел личный врач английской королевы Марии<a id="show-legend">…</a></p>
 							
 						</div>
 					</div>
@@ -48,27 +50,24 @@
 					<a class="tag category" href="/cocktails.html#method=не очень просто">не очень просто</a>,
 					<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=светские">светские</a>.
 					</div>
-					<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
 					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 				</div>
 				
-				<div id="view-prepare">
-					<div id="view-prepare-text">
+				<div id="view-legend">
+					<div id="view-legend-text">
 						<h3>Легенда коктейля</h3>
 						<p>Говорят, мармелад изобрел личный врач английской королевы Марии.</p><p>Однажды, королева заболела и чтобы возбудить аппетит у больной, повар готовил сладкий коктейль из джина, ананаса и апельсинов. Этот вкусный напиток так понравился королеве, что его постоянно держали на столике у ее кровати. Считалось даже, что само слово «мармелад» произошло от фразы «Marie est malade» («Мария больна»).</p>
 					</div>
-					<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="view-how">
-					<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<div class="viewport">
-								<div class="surface" id="ingreds_surface">
-								</div>
-							</div>
-							<a class="next"></a>
-					</div></div>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
 					<dl class="recipe">
 						<dt>Как приготовить:</dt>
 						<dd>
@@ -92,7 +91,7 @@
 						</dd>
 					</dl>
 					<ul class="controls">
-						<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
 						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 					</ul>
 				</div>

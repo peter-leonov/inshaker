@@ -24,7 +24,7 @@
 		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 	</div>
 	<div class="b-content">
-		<div class="hreview">
+		<div class="hreview state-initial">
 			<div id="top-menu">
 				<div class="border-links" id="panel_cocktail">
 					<a id="author" class="hidden"><b>Авторская подача</b></a>
@@ -33,14 +33,16 @@
 				<img class="poster" src="home_dad_s_double-bg.png" alt="Коктейль «Домашний папин двойной»"/>
 			</div>
 			
-			<div class="entry">
+			<div class="content">
+				
+				<img src="home_dad_s_double-big.png" alt="Коктейль «Домашний папин двойной»" id="cocktail-image"/>
+				
 				<div id="main-content">
-					<img src="home_dad_s_double-big.png" alt="Коктейль «Домашний папин двойной»" id="illustration" class="illustration"/>
 					<div class="desc">
 						<h2 class="summary"><i></i>Домашний папин двойной — Помни об отце!</h2>
 						<div class="description">
 							
-							<p>Считается, что идея  праздновать День отца впервые пришла в голову мисс Додд из Вашингтона в 1909 году<a onclick="link.open('view-prepare')">…</a></p>
+							<p>Считается, что идея  праздновать День отца впервые пришла в голову мисс Додд из Вашингтона в 1909 году<a id="show-legend">…</a></p>
 							
 						</div>
 					</div>
@@ -48,27 +50,24 @@
 					<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
 					<a class="tag" href="/cocktails.html#strength=крепкие">крепкие</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
 					</div>
-					<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
+					<button class="rounded strong" id="show-recipe"><b>Как приготовить</b></button>
 					<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 				</div>
 				
-				<div id="view-prepare">
-					<div id="view-prepare-text">
+				<div id="view-legend">
+					<div id="view-legend-text">
 						<h3>Легенда коктейля</h3>
 						<p>Считается, что идея  праздновать День отца впервые пришла в голову мисс Додд из Вашингтона в 1909 году. </p><p>И сегодня этот праздник отмечают в Германии 21 мая, в США, Великобритании, Нидерландах, Франции и Китае — в третье воскресенье июня, в Эстонии и Финляндии — во второе воскресенье  ноября, а в Австралии — в первое воскресенье сентября.</p>
 					</div>
-					<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="view-how">
-					<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<div class="viewport">
-								<div class="surface" id="ingreds_surface">
-								</div>
-							</div>
-							<a class="next"></a>
-					</div></div>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
 					<dl class="recipe">
 						<dt>Как приготовить:</dt>
 						<dd>
@@ -90,7 +89,7 @@
 						</dd>
 					</dl>
 					<ul class="controls">
-						<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
+						<li><button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button></li>
 						<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
 					</ul>
 				</div>
