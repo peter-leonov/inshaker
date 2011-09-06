@@ -171,9 +171,9 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 
 #view-recipe .ingredients .point{width:360px;height:120px;float:left;}
 #view-recipe .next,
-#view-recipe .prev{z-index:3;position:absolute;left:auto;right:19px;}
-#view-recipe .prev{top:72px;}
-#view-recipe .next{top:48px;}
+#view-recipe .prev { position: absolute; right: 20px; }
+#view-recipe .prev { top: 72px; }
+#view-recipe .next { top: 48px; }
 
 #view-recipe .recipe { font-size:120%; padding: 0 0 40px 225px; }
 #view-recipe .recipe ul { line-height: 1.5; margin-left: 1.5em; }
