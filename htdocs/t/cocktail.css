@@ -183,7 +183,7 @@ a.author.active { border-bottom: 1px dashed; cursor: pointer; }
 #view-recipe .buttons button { margin-right: 16px; }
 
 
-.what-need{overflow:hidden;font-size:120%;padding-top:27px;margin-bottom:27px;}
+.what-need{overflow:hidden;font-size:120%;padding-top:20px;margin-bottom:27px;}
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
