@@ -6,6 +6,9 @@
 .tool-window .about .name { margin-bottom: 10px; font-size: 20px; }
 .tool-window .about .text { font-size: 12px; }
 .tool-window .about .text p { margin: 0px 0px 15px 0px; }
+.tool-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
+.tool-window.can-buy .about .where-to-buy { display: block; }
+
 
 .tool-info-popup .popup-controls,
 .tool-info-popup .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }

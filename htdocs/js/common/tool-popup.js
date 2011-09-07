@@ -69,6 +69,14 @@ var myProto =
 		nodes.name.appendChild(T(tool.name))
 		nodes.image.src = tool.imgSrc()
 		nodes.text.innerHTML = tool.desc
+		
+		var good = Good.getBySellName(tool.name)[0]
+		if (good)
+		{
+			nodes.toolWindow.addClassName('can-buy')
+			nodes.buy.appendChild(T(good.name))
+			nodes.buy.href = good.getHref()
+		}
 	}
 }
 
@@ -123,8 +131,10 @@ var myStatic =
 			popupParts:
 			{
 				window: $$('#tool-info-popup .popup-window')[0],
+				toolWindow: $$('#tool-info-popup .popup-window .tool-window')[0],
 				front: $$('#tool-info-popup .popup-front')[0],
 				image: $$('#tool-info-popup .description .image')[0],
+				buy: $$('#tool-info-popup .description .about .where-to-buy .link')[0],
 				name: $$('#tool-info-popup .description .about .name')[0],
 				text: $$('#tool-info-popup .description .about .text')[0]
 			}
