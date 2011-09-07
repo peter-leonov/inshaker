@@ -26,9 +26,6 @@ var Controller = {
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	INGRED_POPUP : 'shop-cocktail',
-	TOOL_POPUP   : 'shop-gadget',
-	
 	ID_CART_EMPTY   : 'cart_draghere',
 	ID_CART_FULL    : 'cart_contents',
 	
@@ -160,24 +157,11 @@ var Controller = {
 				tools_links[i].parentNode.hide()
 				continue
 			}
-			tools_links[i].addEventListener('click', function(name){ return function(e){	
-				$(self.TOOL_POPUP).show();
-				self.renderToolPopup(name);
+			tools_links[i].addEventListener('click', function(tool){ return function(e){
+				self.showToolPopup(tool)
 			}}(tool), false);
 		}
 	
-        document.documentElement.addEventListener('keyup', function(e){
-            if(e.keyCode == self.KEY_ESC) $(self.TOOL_POPUP).hide();
-        }, false);
-	
-		$$("#shop-gadget .opacity")[0].addEventListener('click', function(e){
-		    $(self.TOOL_POPUP).hide();	
-		}, false);
-		
-        $('tool_cancel').addEventListener('mousedown', function(e){
-			$(self.TOOL_POPUP).hide();
-		}, false);
-		
 		$(self.ID_INGS_LIST).addEventListener('click', function (e) { self.mayBeIngredientClicked(e.target) }, false)
     },
 	
@@ -185,26 +169,7 @@ var Controller = {
 	{
 		var name = node.getAttribute('data-ingredient-name')
 		if (name)
-			this.showPopup(name)
-	},
-	
-	renderToolPopup: function(tool){
-		Statistics.toolPopupOpened(tool)
-		var good = Good.getBySellName(tool.name)[0]
-		
-		if (good)
-		{
-			$('tool_buy').parentNode.show()
-			$('tool_buy').href = good.getHref()
-			$('tool_buy').innerHTML = good.name
-		}
-		else
-			$('tool_buy').parentNode.hide()
-		
-		
-		$('tool_name').innerHTML = tool.name;
-		$('tool_desc').innerHTML = tool.desc;
-		$('tool_picture').src = tool.imgSrc();
+			this.showIngredientPopup(name)
 	},
 	
 	renderRecommendations: function(recs){
@@ -284,9 +249,14 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 
-	showPopup: function(name)
+	showIngredientPopup: function (name)
 	{
 		IngredientPopup.show(Ingredient.getByName(name))
+	},
+	
+	showToolPopup: function (tool)
+	{
+		ToolPopup.show(tool)
 	},
 
 	renderIngredients: function(ingredients) {
@@ -318,7 +288,7 @@ var Controller = {
 			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
 			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
-                self.showPopup(name);
+                self.showIngredientPopup(name);
             }}(ingredient.name), false);
 			div.appendChild(img);
 		}

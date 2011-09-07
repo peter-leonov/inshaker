@@ -38,6 +38,7 @@ if (!clientStorage)
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
+<!--# include virtual="/js/common/tool-popup.js" -->
 
 <!--# include virtual="/js/calculator/calculator.js" -->
 
