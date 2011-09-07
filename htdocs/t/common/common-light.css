@@ -89,7 +89,6 @@ html.msie-7 button.rounded b,
 html.msie-8 button.rounded b { display: inline-block; letter-spacing: 0.1px; filter: Shadow(Color=#333333,Direction=135,Strength=1); padding-bottom: 1px; }
 html.msie-8 button.rounded b { top: -2px; }
 html.firefox button.rounded b {  top: -2px; }
-html.opera button.rounded b { top: 4px; }
 html.safari button.rounded b { top: -1px; }
 
 
