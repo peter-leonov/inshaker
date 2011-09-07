@@ -40,7 +40,7 @@
 .b-content .top-menu p { margin-bottom: 0; padding-bottom: 10px; }
 .b-content .top-menu .b:after { display: none; }
 .b-content .content h3 { margin-top: 0; }
-.b-content .content { padding-top: 158px; background: url(bg/about/poster.jpg) center top no-repeat; }
+.b-content .content { padding-top: 158px; background: url(about/poster.jpg) center top no-repeat; }
 .b-content .view-stat { padding-top: 20px; background: none; }
 
 .b-content .view-about { font-size: 12px; }
