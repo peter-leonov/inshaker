@@ -173,7 +173,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
-.what-need dd{color:#343b40;line-height:2.3;background:url(bg/body/hr-repeat.png) repeat-x 0 100%;height:2.5em;}
+.what-need dd{color:#343b40;line-height:2.3;background:url(common/header-dots-v.png) repeat-x 0 100%;height:2.5em;}
 .what-need dd:last-child{background:none;}
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
@@ -181,7 +181,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #recommendations .point { line-height: 112px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
 
-.drag-cursor{cursor:url(/t/grabbing.cur),-moz-grabbing;}
+.drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }
 .dragging-object{position:absolute;z-index:10;}
 #cocktail-image.dragging-object { display: block; }
 
