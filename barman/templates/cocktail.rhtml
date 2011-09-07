@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
@@ -14,139 +14,138 @@
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
-	
-	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper hrecipe">
-			<div class="b-title">
-				<h1 id="cocktail_name" class="fn" data-cocktail-name="<%= @name %>"><%= @name %></h1>
-				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+<div id="common-main-wrapper">
+
+<!--# include virtual="/inc/calculator.html" -->
+
+<div class="common-box column-main"><div class="common-content hrecipe">
+	<div class="common-title">
+		<h1 id="cocktail_name" class="fn" data-cocktail-name="<%= @name %>"><%= @name %></h1>
+		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+	</div>
+	<div class="b-content">
+		<div class="hreview state-initial">
+			<div id="top-menu">
+				<div class="border-links" id="panel_cocktail">
+					<a id="author" class="hidden">Авторская подача</a>
+					<a id="where-to-taste" class="hidden">Где попробовать</a>
+				</div>
+				<img class="poster" src="<%=@name_html%>-bg.png" alt="Коктейль «<%= @name %>»"/>
 			</div>
-			<div class="b-content">
-				<div class="hreview">
-					<div class="top-menu"><div class="b">
-						<p class="border-links" id="panel_cocktail">
-							<a id="author"><b>Авторская подача</b></a>
-							<a id="where-to-taste"><b>Где попробовать</b></a>
-						</p>
-						<img src="<%=@name_html%>-bg.png" width="590" height="210" alt="Коктейль «<%= @name %>»" id="poster"/>
-					</div></div>
-					
-					<div class="entry">
-						<div id="main-content">
-							<img src="<%=@name_html%>-big.png" alt="Коктейль «<%= @name %>»" id="illustration" class="illustration"/>
-							<div class="desc">
-								<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
-								<div class="description">
-									<% if @desc_end.empty? %>
-									<%= @desc_start.html_paragraphs %>
-									<% else %>
-									<%= @desc_start.cut_last_dot.html_paragraphs "<a onclick=\"link.open('view-prepare')\">…</a>" %>
-									<% end %>
-								</div>
-							</div>
-							<div class="tags"><b>Группы:</b>
-							<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
-							<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
-							</div>
-							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
-							<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+			
+			<div id="content">
+				
+				<img src="<%=@name_html%>-big.png" alt="Коктейль «<%= @name %>»" id="cocktail-image"/>
+				
+				<div id="main-content">
+					<div class="description">
+						<h2 class="summary"><i></i><%= @name %> — <%= @teaser %></h2>
+						<% if @desc_end.empty? %>
+						<div class="short-legend">
+							<%= @desc_start.html_paragraphs %>
 						</div>
-						
-						<div id="view-prepare">
-							<div id="view-prepare-text">
-								<h3>Легенда коктейля</h3>
-								<%= @desc_start.html_paragraphs + @desc_end.html_paragraphs %>
-							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
+						<% else %>
+						<div class="short-legend" id="show-legend">
+							<%= @desc_start.cut_last_dot.html_paragraphs %Q{…} %>
 						</div>
-						
-						<div id="view-how">
-							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-									<a class="prev"></a>
-									<div class="viewport">
-										<div class="surface" id="ingreds_surface">
-										</div>
-									</div>
-									<a class="next"></a>
-							</div></div>
-							<dl class="recipe">
-								<dt>Как приготовить:</dt>
-								<dd>
-									<ul class="instructions">
-										<% @receipt.each do |item| %>
-										<li class="instruction"><%= item %></li>
-										<% end %>
-									</ul>
-								</dd>
-							</dl>
-							<ul class="controls">
-								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-							</ul>
-						</div>
+						<% end %>
+					</div>
+					<div class="tags"><b>Группы:</b>
+					<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
+					<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
+					</div>
+					<div class="buttons">
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name"><%= @name %></span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 					</div>
 				</div>
 				
-				<div class="what-need">
-					<dl id="ingredients_list">
-						<dt>Необходимые ингредиенты</dt>
-						<% parts do |name, amount, unit| %>
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
-							<strong><span class="amount"><%= amount %></span> <span class="type"><%= unit %></span></strong>
-						</dd>
-						<% end %>
-					</dl>
-					<dl class="tools">
-						<dt>Необходимые штучки</dt>
-						<% @tools.each do |tool| %>
-						<dd><a><%= tool %></a></dd>
-						<% end %>
-					</dl>
+				<div id="view-legend">
+					<div id="view-legend-text">
+						<h3>Легенда коктейля</h3>
+						<%= @desc_start.html_paragraphs + @desc_end.html_paragraphs %>
+					</div>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="share">
-					<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
+					<dl class="recipe">
+						<dt>Как приготовить:</dt>
+						<dd>
+							<ul class="instructions">
+								<% @receipt.each do |item| %>
+								<li class="instruction"><%= item %></li>
+								<% end %>
+							</ul>
+						</dd>
+					</dl>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
-		</div></div>
+		</div>
 		
-		<div class="b-more">
-			<div class="column b-more-cocktails b-more-rec">
-				<dl class="body-wrapper">
-					<dt><b>Inshaker рекомендует</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="recommendations">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport">
-								<div class="surface" id="rec_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
-			
-			<div class="column b-more-cocktails">
-				<dl class="body-wrapper">
-					<dt><b>Вам также могут понравиться эти коктейли</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport" id="rel_viewport">
-								<div class="surface" id="rel_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
+		<div class="what-need">
+			<dl id="ingredients_list">
+				<dt>Необходимые ингредиенты</dt>
+				<% parts do |name, amount, unit| %>
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
+					<strong><span class="amount"><%= amount %></span> <span class="type"><%= unit %></span></strong>
+				</dd>
+				<% end %>
+			</dl>
+			<dl class="tools">
+				<dt>Необходимые штучки</dt>
+				<% @tools.each do |tool| %>
+				<dd><a><%= tool %></a></dd>
+				<% end %>
+			</dl>
+		</div>
+		
+		<div id="share">
+			<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
+</div></div>
+
+<div id="b-more">
+	<div class="common-box b-more-cocktails b-more-rec"><dl class="common-content">
+		<dt><b>Inshaker рекомендует</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="recommendations">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport">
+					<div class="surface" id="rec_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 	
-	<!--# include virtual="/inc/calculator.html" -->
+	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
+		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport" id="rel_viewport">
+					<div class="surface" id="rel_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 </div>
+
+</div id="common-main-wrapper">
+
 <!--# include virtual="/inc/cocktail-footer.html" -->
 </body>
 </html>

@@ -27,6 +27,8 @@ class EventsProcessor < Inshaker::Processor
     @entities_hrefs = {}
     @entity  = {} # currently processed bar
     @type_names = {'amateur' => 'для любителей', 'pro' => 'для профессионалов'}
+    @by_type = {}
+    @by_type.default = 0
     @type_main = {}
   end
   
@@ -109,6 +111,7 @@ class EventsProcessor < Inshaker::Processor
     unless @entity["type"]
       error %Q{непонятный тип события «#{yaml['Тип']}»}
     end
+    @by_type[@entity["type"]] += 1
     
     if @entity["main"]
       main_event = @type_main[@entity["type"]]
@@ -238,7 +241,11 @@ class EventsProcessor < Inshaker::Processor
         say %Q{главное событие #{v}: "#{main_event["name"]}"}
         File.write(Config::MAIN_LINK % k, %Q{/event/#{main_event["href"]}/})
       else
-        error "ни одно событие #{v} не назначено главным"
+        if @by_type[k] == 0
+          warning "ни одно событие #{v} не назначено главным, но и событий этого типа нету вообще"
+        else
+          error "ни одно событие #{v} не назначено главным"
+        end
       end
     end
   end

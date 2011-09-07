@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
@@ -14,194 +14,191 @@
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
-	
-	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper hrecipe">
-			<div class="b-title">
-				<h1 id="cocktail_name" class="fn" data-cocktail-name="Наша Мэри">Наша Мэри</h1>
-				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+<div id="common-main-wrapper">
+
+<!--# include virtual="/inc/calculator.html" -->
+
+<div class="common-box column-main"><div class="common-content hrecipe">
+	<div class="common-title">
+		<h1 id="cocktail_name" class="fn" data-cocktail-name="Наша Мэри">Наша Мэри</h1>
+		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+	</div>
+	<div class="b-content">
+		<div class="hreview state-initial">
+			<div id="top-menu">
+				<div class="border-links" id="panel_cocktail">
+					<a id="author" class="hidden">Авторская подача</a>
+					<a id="where-to-taste" class="hidden">Где попробовать</a>
+				</div>
+				<img class="poster" src="our_mary-bg.png" alt="Коктейль «Наша Мэри»"/>
 			</div>
-			<div class="b-content">
-				<div class="hreview">
-					<div class="top-menu"><div class="b">
-						<p class="border-links" id="panel_cocktail">
-							<a id="author"><b>Авторская подача</b></a>
-							<a id="where-to-taste"><b>Где попробовать</b></a>
-						</p>
-						<img src="our_mary-bg.png" width="590" height="210" alt="Коктейль «Наша Мэри»" id="poster"/>
-					</div></div>
-					
-					<div class="entry">
-						<div id="main-content">
-							<img src="our_mary-big.png" alt="Коктейль «Наша Мэри»" id="illustration" class="illustration"/>
-							<div class="desc">
-								<h2 class="summary"><i></i>Наша Мэри — Знай наших!</h2>
-								<div class="description">
-									
-									<p>Коктейльные Мэри являются сёстрами классического коктейля <a href="/cocktails/bloody_mary.html">Кровавая Мэри</a><a onclick="link.open('view-prepare')">…</a></p>
-									
-								</div>
-							</div>
-							<div class="tags"><b>Группы:</b>
-							<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
-							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
-							</div>
-							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
-							<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+			
+			<div id="content">
+				
+				<img src="our_mary-big.png" alt="Коктейль «Наша Мэри»" id="cocktail-image"/>
+				
+				<div id="main-content">
+					<div class="description">
+						<h2 class="summary"><i></i>Наша Мэри — Знай наших!</h2>
+						
+						<div class="short-legend" id="show-legend">
+							<p>Коктейльные Мэри являются сёстрами классического коктейля <a href="/cocktails/bloody_mary.html">Кровавая Мэри</a>…</p>
 						</div>
 						
-						<div id="view-prepare">
-							<div id="view-prepare-text">
-								<h3>Легенда коктейля</h3>
-								<p>Коктейльные Мэри являются сёстрами классического коктейля <a href="/cocktails/bloody_mary.html">Кровавая Мэри</a>.</p><p>Его в 1921 году создал Фердинанд Петью в парижском Harry's New York Bar, подарив миру барменов вдохновение для экспериментов.</p>
-							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
-						</div>
-						
-						<div id="view-how">
-							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-									<a class="prev"></a>
-									<div class="viewport">
-										<div class="surface" id="ingreds_surface">
-										</div>
-									</div>
-									<a class="next"></a>
-							</div></div>
-							<dl class="recipe">
-								<dt>Как приготовить:</dt>
-								<dd>
-									<ul class="instructions">
-										
-										<li class="instruction">Наполни слинг кубиками льда доверху</li>
-										
-										<li class="instruction">Налей водку 40 мл</li>
-										
-										<li class="instruction">Налей в блендер: томатный сок 130 мл, ворчестер соус 5 мл и красный  соус табаско 1 каплю</li>
-										
-										<li class="instruction">Брось щепотку сельдереевой соли </li>
-										
-										<li class="instruction">Выжми четвертинку лимона и взбей</li>
-										
-										<li class="instruction">Перелей содержимое блендера в слинг</li>
-										
-										<li class="instruction">Размешай коктейльной ложкой</li>
-										
-										<li class="instruction">Укрась соленым огурцом</li>
-										
-									</ul>
-								</dd>
-							</dl>
-							<ul class="controls">
-								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-							</ul>
-						</div>
+					</div>
+					<div class="tags"><b>Группы:</b>
+					<a class="tag category" href="/cocktails.html#method=в блендере">в блендере</a>,
+					<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+					</div>
+					<div class="buttons">
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name">Наша Мэри</span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 					</div>
 				</div>
 				
-				<div class="what-need">
-					<dl id="ingredients_list">
-						<dt>Необходимые ингредиенты</dt>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Водка">Водка</a>
-							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Томатный сок">Томатный сок</a>
-							<strong><span class="amount">130</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Лимон">Лимон</a>
-							<strong><span class="amount">40</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Соленый огурец">Соленый огурец</a>
-							<strong><span class="amount">160</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Ворчестер соус">Ворчестер соус</a>
-							<strong><span class="amount">5</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Табаско соус красный">Табаско соус красный</a>
-							<strong><span class="amount">1</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Сельдереевая соль">Сельдереевая соль</a>
-							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
-							<strong><span class="amount">200</span> <span class="type">гр</span></strong>
-						</dd>
-						
-					</dl>
-					<dl class="tools">
-						<dt>Необходимые штучки</dt>
-						
-						<dd><a>Слинг</a></dd>
-						
-						<dd><a>Блендер</a></dd>
-						
-						<dd><a>Пресс для цитруса</a></dd>
-						
-						<dd><a>Коктейльная ложка</a></dd>
-						
-						<dd><a>Трубочки</a></dd>
-						
-					</dl>
+				<div id="view-legend">
+					<div id="view-legend-text">
+						<h3>Легенда коктейля</h3>
+						<p>Коктейльные Мэри являются сёстрами классического коктейля <a href="/cocktails/bloody_mary.html">Кровавая Мэри</a>.</p><p>Его в 1921 году создал Фердинанд Петью в парижском Harry's New York Bar, подарив миру барменов вдохновение для экспериментов.</p>
+					</div>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="share">
-					<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
+					<dl class="recipe">
+						<dt>Как приготовить:</dt>
+						<dd>
+							<ul class="instructions">
+								
+								<li class="instruction">Наполни слинг кубиками льда доверху</li>
+								
+								<li class="instruction">Налей водку 40 мл</li>
+								
+								<li class="instruction">Налей в блендер: томатный сок 130 мл, ворчестер соус 5 мл и красный  соус табаско 1 каплю</li>
+								
+								<li class="instruction">Брось щепотку сельдереевой соли </li>
+								
+								<li class="instruction">Выжми четвертинку лимона и взбей</li>
+								
+								<li class="instruction">Перелей содержимое блендера в слинг</li>
+								
+								<li class="instruction">Размешай коктейльной ложкой</li>
+								
+								<li class="instruction">Укрась соленым огурцом</li>
+								
+							</ul>
+						</dd>
+					</dl>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
-		</div></div>
+		</div>
 		
-		<div class="b-more">
-			<div class="column b-more-cocktails b-more-rec">
-				<dl class="body-wrapper">
-					<dt><b>Inshaker рекомендует</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="recommendations">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport">
-								<div class="surface" id="rec_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
-			
-			<div class="column b-more-cocktails">
-				<dl class="body-wrapper">
-					<dt><b>Вам также могут понравиться эти коктейли</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport" id="rel_viewport">
-								<div class="surface" id="rel_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
+		<div class="what-need">
+			<dl id="ingredients_list">
+				<dt>Необходимые ингредиенты</dt>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Водка">Водка</a>
+					<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Томатный сок">Томатный сок</a>
+					<strong><span class="amount">130</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Лимон">Лимон</a>
+					<strong><span class="amount">40</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Соленый огурец">Соленый огурец</a>
+					<strong><span class="amount">160</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Ворчестер соус">Ворчестер соус</a>
+					<strong><span class="amount">5</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Табаско соус красный">Табаско соус красный</a>
+					<strong><span class="amount">1</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Сельдереевая соль">Сельдереевая соль</a>
+					<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Лед в кубиках">Лед в кубиках</a>
+					<strong><span class="amount">200</span> <span class="type">гр</span></strong>
+				</dd>
+				
+			</dl>
+			<dl class="tools">
+				<dt>Необходимые штучки</dt>
+				
+				<dd><a>Слинг</a></dd>
+				
+				<dd><a>Блендер</a></dd>
+				
+				<dd><a>Пресс для цитруса</a></dd>
+				
+				<dd><a>Коктейльная ложка</a></dd>
+				
+				<dd><a>Трубочки</a></dd>
+				
+			</dl>
+		</div>
+		
+		<div id="share">
+			<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
+</div></div>
+
+<div id="b-more">
+	<div class="common-box b-more-cocktails b-more-rec"><dl class="common-content">
+		<dt><b>Inshaker рекомендует</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="recommendations">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport">
+					<div class="surface" id="rec_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 	
-	<!--# include virtual="/inc/calculator.html" -->
+	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
+		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport" id="rel_viewport">
+					<div class="surface" id="rel_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 </div>
+
+</div id="common-main-wrapper">
+
 <!--# include virtual="/inc/cocktail-footer.html" -->
 </body>
 </html>

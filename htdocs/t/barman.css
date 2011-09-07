@@ -1,17 +1,15 @@
-.b-content
-{
-	width: 100%;
-}
+html { overflow-y: scroll; }
 
-.b-title
+#head
 {
 	margin-bottom: 15px;
 }
 
-.b-title .hrefs { display: none; }
-.b-title .hrefs .arrow { text-decoration: none; }
+#head .hrefs { position:absolute; right:0; bottom:15px; font-size:110%; }
+#head .hrefs { display: none; }
+#head .hrefs .arrow { text-decoration: none; }
 
-.b-title .hrefs li
+#head .hrefs li
 {
 	display: inline;
 	margin: 0 4px;
@@ -63,15 +61,15 @@
 	line-height: 15px;
 }
 
-html.loading .b-content .cocktails { display: none; }
+html.loading .common-content .cocktails { display: none; }
 
-.b-content .cocktails
+.common-content .cocktails
 {
 	overflow: hidden;
-	width: 900px;
+	margin-bottom: -10px;
 }
 
-.b-content .cocktails .cocktail-preview
+.common-content .cocktails .cocktail-preview
 {
 	width: 8em;
 	text-align: center;
@@ -82,7 +80,7 @@ html.loading .b-content .cocktails { display: none; }
 	font-size: 12px;
 }
 
-.b-content .cocktails .cocktail-preview .image
+.common-content .cocktails .cocktail-preview .image
 {
 	display: block;
 	margin: 0 auto 5px;

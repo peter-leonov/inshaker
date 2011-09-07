@@ -1,55 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="combinator-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="combinator-page" class="cocktails-page" lang="ru">
 <head>
-	<!--# include virtual="/inc/cocktails-head.html" -->
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="/t/common/common-light.css"/>
+	<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/theme/$date_local/theme-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/combinator.css"/>
 	<title>Сочетайзер — Inshaker</title>
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
+<div id="common-main-wrapper">
 	
-	<div class="column"><div class="body-wrapper" id="output">
-		<div class="b-title">
-			<!-- <h1>Сочетайзер</h1> -->
-			<div id="search-box">
-				<form>
-					<input class="query" name="query" autocomplete="off" value=""/>
-					<button class="button plus" type="button">+</button>
-					<div class="reset">×</div>
-					<button class="button search" type="submit">Найти!</button>
-				</form>
-				<ul class="autocomplete"><li class="item empty-message">такого ингредиента сочетайзер пока не знает</li></ul>
-			</div>
-			<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->:</div>
-			<div class="sort-line empty"><em class="cocktail-count">0 коктейлей</em> с таким сочетанием. <a href="mailto:combinator-recipe@inshaker.ru">Возможно, ты знаешь рецепт?</a></div>
-			<div class="help-line">Узнай, с чем смешать любимые ингредиенты, например: <a class="hint single"> </a> или <a class="hint double"> </a> </div>
-			<a id="spotlighted"></a>
+<div id="main-column" class="common-box"><div class="common-content" id="output">
+	<div class="common-title">
+		<div id="search-box">
+			<form>
+				<input class="query" name="query" autocomplete="off" value=""/>
+				<button class="button plus" type="button">+</button>
+				<div class="reset">×</div>
+				<button class="button search" type="submit">Найти!</button>
+			</form>
+			<ul class="autocomplete"><li class="item empty-message">такого ингредиента сочетайзер пока не знает</li></ul>
+		</div>
+		<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->:</div>
+		<div class="sort-line empty"><em class="cocktail-count">0 коктейлей</em> с таким сочетанием. <a href="mailto:combinator-recipe@inshaker.ru">Возможно, ты знаешь рецепт?</a></div>
+		<div class="help-line">Узнай, с чем смешать любимые ингредиенты, например: <a class="hint single"> </a> или <a class="hint double"> </a> </div>
+		<a id="spotlighted"></a>
+	</div>
+	
+	<div class="b-content">
+		<div class="initial-block">
+			<div class="ingredients-list"></div>
 		</div>
 		
-		<div class="b-content">
-			<div class="initial-block">
-				<div class="ingredients-list"></div>
-			</div>
-			
-			<div class="result-block">
-				<div class="ingrediented-cocktail-list"></div>
-				<div class="stats"></div>
-			</div>
-			
-			<div class="empty-block">
-				<dl class="suggestions empty">
-					<dt>Посмотри другие сочетания:</dt>
-					<dd>
-						<ul class="list"></ul>
-					</dd>
-				</dl>
-				
-			</div>
+		<div class="result-block">
+			<div class="ingrediented-cocktail-list"></div>
+			<div class="stats"></div>
 		</div>
-	</div></div>
-</div>
+		
+		<div class="empty-block">
+			<dl class="suggestions empty">
+				<dt>Посмотри другие сочетания:</dt>
+				<dd>
+					<ul class="list"></ul>
+				</dd>
+			</dl>
+			
+		</div>
+	</div>
+</div></div>
 
+</div id="common-main-wrapper">
 
 <!--# include virtual="/inc/ingredient-popup.html" -->
 

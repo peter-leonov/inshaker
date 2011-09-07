@@ -9,7 +9,7 @@
 .win-shop .content form dl dt i,
 .win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 93px; height: 30px; right: -8px; top: -2px; }
+#spotlighted { width: 93px; height: 30px; right: 0; top: -2px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
 #branded-image-holder { height: 900px; }
@@ -19,7 +19,6 @@ a { color: #000; }
 #bottom a { color: #e50000; }
 #bottom .main-menu,
 #bottom .left-menu { position: relative; z-index: 1; }
-html.msie #bottom a { background-color: #000; }
 html { background: #fff url(bg.jpg) center -130px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #fff; }
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
@@ -66,10 +65,10 @@ button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
 #search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
 
 /* cocktail.css */
-.b-more dt,
-.b-more dt b { background-color: #bd2330; }
-.b-more dt b { color: #fff; }
-.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
+#b-more dt,
+#b-more dt b { background-color: #bd2330; }
+#b-more dt b { color: #fff; }
+#main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
 #output .help-line .hint { color: #ab0e1c; }

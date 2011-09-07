@@ -1,13 +1,16 @@
 .hidden { display: none; }
 
+#common-main-wrapper { position: relative; z-index: 1; }
+.common-box .common-content { position: relative; }
+
 #overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }
 
-.timeline { width:958px; /*two pixels preserved for left and right borders*/ margin-bottom: 32px; /*-1 px for crazy border (fkn. cut corners)*/}
-.timeline .b-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
-.timeline .b-title h1{font-size:20px; margin-left:-1px;}
-.timeline .body-wrapper{padding-bottom:0; height:220px;}
-html.type-pro .timeline .b-title .pro,
-html.type-amateur .timeline .b-title .amateur { cursor: default; color: inherit; text-decoration: none; }
+.timeline { margin-bottom: 30px; }
+.timeline .common-title{padding-bottom:10px; margin-bottom: 18px; height: 26px;}
+.timeline .common-title h1{font-size:20px; margin-left:-1px;}
+.timeline .common-content{padding-bottom:0; height:220px;}
+html.type-pro .timeline .common-title .pro,
+html.type-amateur .timeline .common-title .amateur { cursor: default; color: inherit; text-decoration: none; }
 
 
 .previews { position: relative; width: 920px; height: 159px; }
@@ -30,20 +33,19 @@ html.loading .previews .viewport .surface { display: none; }
 .previews .event .desc { color: #0392f1; }
 .previews .event.selected .desc { color: #F32C9F; border-bottom: none; }
 
-.previews .event .mark { position: absolute; left: 77px; top: 166px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
+.previews .event .mark { position: absolute; left: 77px; top: 167px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
 
 #both-wrapper { padding: 1px 0; clear: both; overflow: hidden; position:relative; top:-1px;}
-#both-wrapper .body-wrapper { overflow: hidden; }
+#both-wrapper .common-content { overflow: hidden; }
 
-.column-main-container {  }
 .column-main { width:606px; }
-.column-main .body-wrapper { padding: 14px 18px; }
-#sidebar { display: none; background: none; margin-left:20px; width: 308px;}
+.column-main .common-content { padding: 14px 18px; }
+#sidebar { display: none; background: none; margin-left:20px; width: 308px; float: right; }
 #sidebar.visible { display: block; }
-#sidebar .body-wrapper { padding: 14px 18px 11px; }
-.b-title { padding-bottom: 13px; font-family: Tahoma; }
-.b-title h1, .b-title h3 { font-size: 20px; }
-.b-title h2, .b-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
+#sidebar .common-content { padding: 14px 18px 11px; }
+.common-title { padding-bottom: 13px; font-family: Tahoma; }
+.common-title h1, .common-title h3 { font-size: 20px; }
+.common-title h2, .common-title h4 { font-size: 14px; color: #999; line-height:10px; margin-left: 1px; }
 #illustration { width: 566px; height: 300px; position: relative; margin-top: -113px; overflow: hidden; }
 #illustration .hidden { visibility: hidden; }
 #main-sponsors { margin-bottom: 24px; }
@@ -68,7 +70,7 @@ html.loading .previews .viewport .surface { display: none; }
 html.status-preparing #invitations-only { border-bottom:1px dashed; }
 
 #medium-sponsors { clear: left; }
-#medium-sponsors .sponsor { width: 606px; margin: 30px 0 0 0; }
+#medium-sponsors .sponsor { display: block; width: 606px; margin: 30px 0 0 0; }
 #medium-sponsors .sponsor img { width: 600px; height: 100px; display: block; margin: 2px 3px 3px 3px; }
 
 #comming { margin: 0; float: left; line-height: 19px;  }
@@ -86,10 +88,21 @@ html.status-preparing #invitations-only { border-bottom:1px dashed; }
 
 #low-sponsors { display: none; margin: 27px 0 0 0; }
 #low-sponsors.visible {display: block;}
-#low-sponsors .b-title { padding: 0 0 7px 0; }
+#low-sponsors .common-title { padding: 0 0 7px 0; }
+
 #low-sponsors .b-content { position: relative; width: 100%; }
-#low-sponsors .b-content .viewport { width: 852px; margin: 0 0 0 27px; }
+#low-sponsors .b-content .viewport {overflow:hidden;position:relative;left:16px;top:2px;height:120px; width: 852px; margin: 0 0 0 27px; overflow: hidden; }
+#low-sponsors .b-content .point{height:100px;width:330px;float:left;}
 #low-sponsors .b-content .viewport .surface { width: 10000px; }
+#low-sponsors .b-content ul{padding-top:5px;}
+#low-sponsors .b-content li{width:8em;text-align:center;float:left;width:110px;}
+#low-sponsors .b-content img{display:block;margin:0 auto 5px;}
+#low-sponsors .b-content .prev,
+#low-sponsors .b-content .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+#low-sponsors .b-content .prev{background-position:-500px 0;left:0px;}
+#low-sponsors .b-content .next{background-position:-525px 0;right:-2px;}
+#low-sponsors .b-content .prev.disabled{background-position:-500px -25px;cursor:default;}
+#low-sponsors .b-content .next.disabled{background-position:-525px -25px;cursor:default;}
 #low-sponsors .b-content .viewport .surface a { margin: 0 10px; }
 #low-sponsors .b-content .viewport .surface img { display: inline; margin: 0; }
 #low-sponsors .b-content .viewport .surface b { display: inline; padding: 0 500px 0 0; visibility: hidden; }
@@ -154,8 +167,7 @@ html.msie-7 #form-popup .content form label .tip { right: 2px; top: 3px; }
 .previews .event .mini .mask {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
 
 .previews .event .mark,
-.timeline .body-wrapper {overflow: hidden;}
-.b-content { width:100%; }
+.timeline .common-content {overflow: hidden;}
 
 #both-wrapper { zoom: 1; }
 
@@ -173,12 +185,12 @@ html.msie-7 #form-popup .content form label .tip { right: 2px; top: 3px; }
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [67]\./" -->
 #illustration { float: left; }
 #low-sponsors dl dt { zoom: 1; padding-bottom: 2px; }
-.timeline .b-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
+.timeline .common-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
 <!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
 #overlay { filter:alpha(opacity=75); }
-.timeline .b-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
+.timeline .common-title{height: 27px;/*+1px because ie has no that crazy boarder*/}
 <!--# endif -->
 
 

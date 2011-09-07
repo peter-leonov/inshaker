@@ -4,10 +4,8 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 
 #branded-image-holder { display: none; }
 
-.b-title { height: 55px; background: none; z-index: 1; top: 7px; }
-.b-title h1 { font-size: 24px; }
-.b-content { width: 100%; }
-.column { z-index: 2; }
+.common-box .common-title { background: none; z-index: 1; padding-bottom: 10px; position: relative; top: 7px; }
+#main-column { z-index: 2; }
 
 #search-box { position: relative; z-index: 10; width: 810px; top: -3px; }
 #search-box .query { padding: 2px; color: inherit; width: 680px; }

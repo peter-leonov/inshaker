@@ -31,13 +31,6 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 .rounding-corners .lb { left: 0; bottom: 0; background-position: -9px 0; }
 .rounding-corners .rb { right: 0; bottom: 0; background-position: 0 0; }
 
-html.msie-6 .rounding-corners .lt,
-html.msie-6 .rounding-corners .rt,
-html.msie-6 .rounding-corners .lb,
-html.msie-6 .rounding-corners .rb { overflow: hidden; background-image: url(rounded-corners-10px.8.png); }
-html.msie-6 .rounding-corners .lb,
-html.msie-6 .rounding-corners .rb { bottom: -2px; }
-
 /* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid #fff; background: #000 url(top-gradient-v.png) repeat-x scroll 0 0; }
 #top #top-content {position: relative; margin: 0 auto; width: 960px; }
@@ -84,6 +77,20 @@ html.about-page #bottom a.about,
 html.blog-section #bottom .main-menu a.blog
 { color: inherit; cursor: default; text-decoration: none !important; }
 
+/* that great buttons */
+button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
+button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; }
+button.tiny { width: 110px; background-position: 0 -25px; }
+button.strong { background-position: 0 -50px; }
+html.msie-6 button.rounded b,
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { font-weight: bold; top: 5px; }
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { display: inline-block; letter-spacing: 0.1px; filter: Shadow(Color=#333333,Direction=135,Strength=1); padding-bottom: 1px; }
+html.msie-8 button.rounded b { top: -2px; }
+html.firefox button.rounded b {  top: -2px; }
+html.safari button.rounded b { top: -1px; }
+
 
 /* branding.css */
 #alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
@@ -94,9 +101,9 @@ html.blog-section #bottom .main-menu a.blog
 #spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
 /* really common rules */
-#common-main-wrapper { margin: 0 auto; width: 960px; }
+#common-main-wrapper { margin: 0 auto; width: 962px; }
 .common-box { border: 1px solid #c0c0c0; -moz-border-radius: 2px; border-radius: 2px; background-color: #c0c0c0; }
-.common-box .common-content { padding: 14px 18px 18px 18px; border: 1px solid #fff; -moz-border-radius: 1px; border-radius: 1px; background: #fff url(content-gradient-v.png) repeat-x 0 0; }
+.common-box .common-content { padding: 14px 18px 14px 18px; border: 1px solid #fff; -moz-border-radius: 1px; border-radius: 1px; background: #fff url(content-gradient-v.png) repeat-x 0 0; }
 .common-box .common-title { background:url(header-dots-v.png) repeat-x 0 100%; margin-bottom: 9px; padding-bottom: 11px; }
 .common-box .common-title .common-name { font-size: 20px; margin-left: -1px; }
 
@@ -108,6 +115,15 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 .cocktail-list .next { background-position: -525px 0; right: -2px; }
 .cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
+
+.square-list .next,
+.square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.square-list .prev { background-position: -450px 0; }
+.square-list .next { background-position: -475px 0; }
+.square-list .prev.disabled,
+.square-list .next.disabled { cursor:default; }
+.square-list .prev.disabled { background-position: -450px -25px; }
+.square-list .next.disabled { background-position: -475px -25px; }
 
 #share-box .button { display: inline-block; width: 30px; height: 30px; }
 #share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }

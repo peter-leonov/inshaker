@@ -6,6 +6,9 @@
 .border-links a.now b, .border-links a.selected b, .border-links a:hover b { border-color: #0392f1; }
 .border-links a:hover { text-decoration:none}
 
+.common-box .common-content { position: relative; }
+.common-box .common-title { position: relative; }
+.common-box .common-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 
 .b-content .viewport { height: 450px; }
 .b-content{min-height:46em;}
@@ -28,15 +31,16 @@
 .view-stat ul { font-size: 12px;} 
 .view-stat ul li { list-style: disc; margin: 0 20px; }
 
-.body-wrapper{min-height:505px;}
+.common-content{min-height:505px;}
 #body_wrapper{padding-bottom: 14px;}
-.b-content .top-menu{background:#000 url(bg/cocktail/bgs.png) repeat-x 0 0;position:relative;}
+#main-column { width: 628px; }
+.b-content .top-menu{background: url(cocktail/menu.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu img{position:absolute;bottom:0;left:0;}
 .b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
 .b-content .top-menu p { margin-bottom: 0; padding-bottom: 10px; }
 .b-content .top-menu .b:after { display: none; }
 .b-content .content h3 { margin-top: 0; }
-.b-content .content { padding-top: 158px; background: url(bg/about/poster.jpg) center top no-repeat; }
+.b-content .content { padding-top: 158px; background: url(about/poster.jpg) center top no-repeat; }
 .b-content .view-stat { padding-top: 20px; background: none; }
 
 .b-content .view-about { font-size: 12px; }
@@ -47,7 +51,8 @@
 .b-content .view-about ul { margin: 0 0 0 2em; }
 .b-content .view-about ul li { list-style-type: disc; }
 
-#b-cr-about .body-wrapper{height:505px;}
+#b-cr-about { overflow: hidden; float: right; }
+#b-cr-about .common-content{height:505px;}
 #b-cr-about form {font-size:11px;line-height:2;}
 #b-cr-about p {display:block;}
 #b-cr-about label {margin-top:1em;}
