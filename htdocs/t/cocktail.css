@@ -24,65 +24,12 @@
 .b-more-cocktails .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
 .b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
-.cocktail-list .prev,
-.cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
-.cocktail-list .prev{background-position:-500px 0;left:0px;}
-.cocktail-list .next{background-position:-525px 0;right:-2px;}
-.cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
-.cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
-
-/* yellow inputs */
-.win-shop .b-gadget .count input,
-.win-shop .content dd input
-{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
-
-/* popups-related */
-.win-shop{position:fixed;z-index:50;top:0;left:0;width:100%;height:100%;}
-.win-shop .opacity {background:#000;opacity:0.75;position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;}
-.win-shop .win{margin:0 auto;top:72px;position:relative;overflow:hidden;width:660px;z-index:5;padding: 35px 15px 50px; background-color: #fff; border-radius: 4px;}
-.win-shop .close{background-color:#000;color:#fff;font-size: 14px;position:absolute;height:19px;width:20px;text-align:center;top:11px;right:10px;border-radius:4px}
-.win-shop .close:hover{background-color:#ec118f;text-decoration:none;}
-.win-shop h3{padding:0 0 0 330px;font-weight:bold;font-size:180%;}
-.win-shop .gallery{float:left;width:330px;}
-.win-shop .gallery .photo { display: block; margin: 0 auto; }
-.win-shop .content{font-size:120%;float:left;width:328px;}
-.win-shop .content small{font-size:92%;}
-.win-shop .content .alert{color:#eb1c57;}
-.win-shop .content .composition{list-style:disc inside;margin:23px 0 0 11px;min-height:4.5em;line-height:1.5;}
-.win-shop .content .desc{clear:both;padding:8px 28px 21px 0;}
-.win-shop .content .more,
-.win-shop .content .less{position:relative;background-color:#f7f7f7;width:160px;height:47px;padding:12px 30px 0 56px;}
-.win-shop .content .more dl *,
-.win-shop .content .less dl *{background:#f7f7f7;}
-.win-shop .content .more i,
-.win-shop .content .less i { width: 25px; height: 30px; position: absolute; left: 21px; top: 16px; }
-.win-shop .content .more i { background-position: -200px -25px; }
-.win-shop .content .less i { background-position: -225px -25px; }
-.win-shop .content form{padding:20px 0 12px 0;}
-.win-shop .content form dl{margin:0 52px 6px 0}
-.win-shop .content form strong{font-weight:normal;padding-right:12px;}
-.win-shop .content form a{margin-left:4px;}
-.win-shop .content form dl dt { position: relative; padding-left: 14px; }
-.win-shop .content form dl dt i { position: absolute; width: 14px; height: 11px; left: 0; top: 2px; background-position: -225px 0px; }
-.win-shop .content form dl.empty dt i { display: none; }
-
-.win-shop .content .sum{overflow:hidden;text-align:right;height:66px;}
-.win-shop .content .sum p{float:left;text-align:left;}
-.win-shop .content .sum p small{display:block;padding-top:4px;}
-.win-shop .content .sum button{margin:6px 50px 0 0;}
-.win-shop .content .sum p i{font-family:Georgia,serif;font-size:24px;line-height:31px;font-style:normal;}
-
-.win-shop .b-gadget .cost{font-size:117%;line-height:5;display:block;}
-.win-shop .b-gadget .count{display:block;margin-bottom:6px;}
-.win-shop .b-gadget .count input{margin-left:6px;}
-.win-shop .b-gadget .tags{font-size:82%;color:#343b40;padding-bottom:40px;}
-.win-shop .b-gadget small{display:block;}
-.win-shop .b-gadget button{display:block;margin:13px 0 21px 0;}
-.win-shop .b-gadget .gallery{padding-top:0;}
-
-
-
-
+.b-more-cocktails .cocktail-list .prev,
+.b-more-cocktails .cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.b-more-cocktails .cocktail-list .prev{background-position:-500px 0;left:0px;}
+.b-more-cocktails .cocktail-list .next{background-position:-525px 0;right:-2px;}
+.b-more-cocktails .cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
+.b-more-cocktails .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 
 
 .hidden { display: none !important; }
@@ -194,3 +141,4 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 
 <!--# include virtual="popup.css" -->
 <!--# include virtual="ingredient-popup.css" -->
+<!--# include virtual="tool-popup.css" -->
