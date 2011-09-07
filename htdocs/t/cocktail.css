@@ -24,12 +24,12 @@
 .b-more-cocktails .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .prev.disabled{background-position:-500px -25px;cursor:default;}
 .b-more-cocktails .next.disabled{background-position:-525px -25px;cursor:default;}
-.cocktail-list .prev,
-.cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
-.cocktail-list .prev{background-position:-500px 0;left:0px;}
-.cocktail-list .next{background-position:-525px 0;right:-2px;}
-.cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
-.cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
+.b-more-cocktails .cocktail-list .prev,
+.b-more-cocktails .cocktail-list .next{position:absolute;top:54px;height:14px;width:14px;z-index:2;}
+.b-more-cocktails .cocktail-list .prev{background-position:-500px 0;left:0px;}
+.b-more-cocktails .cocktail-list .next{background-position:-525px 0;right:-2px;}
+.b-more-cocktails .cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
+.b-more-cocktails .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 
 
 .hidden { display: none !important; }
