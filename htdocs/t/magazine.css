@@ -7,7 +7,7 @@
 
 #promo { width:962px; padding: 0; }
 #promo .viewport,
-#promo .point { width: 962px; height: 450px; background: #CCC url(/t/loader-gray.gif) no-repeat scroll center center; }
+#promo .point { width: 962px; height: 450px; background: #CCC url(magazine/loader-gray.gif) no-repeat scroll center center; }
 #promo .viewport { z-index: 1; }
 #promo .viewport .surface { width: 50000px; }
 #promo .point { float: left; color: #ccc;}
