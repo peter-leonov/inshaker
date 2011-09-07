@@ -192,6 +192,20 @@ Object.extend(Cocktail,
 		return res;
 	},
 	
+	getByTool: function (tool)
+	{
+		var db = this.db
+		
+		var res = []
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var cocktail = db[i]
+			if (cocktail.tools.indexOf(tool) > -1)
+				res.push(cocktail)
+		}
+		return res
+	},
+	
 	getByTags: function (tags, opts)
 	{
 		if (!opts)
