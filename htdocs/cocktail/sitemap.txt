@@ -312,7 +312,11 @@ http://www.inshaker.ru/cocktail/green_fairy/
 http://www.inshaker.ru/cocktail/greeny_light/
 http://www.inshaker.ru/cocktail/zempole/
 http://www.inshaker.ru/cocktail/winter/
+http://www.inshaker.ru/cocktail/winter_apple/
+http://www.inshaker.ru/cocktail/winter_cucumber/
 http://www.inshaker.ru/cocktail/winter_cherry/
+http://www.inshaker.ru/cocktail/winter_passion_fruit/
+http://www.inshaker.ru/cocktail/winter_mint/
 http://www.inshaker.ru/cocktail/golden_margarita/
 http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/

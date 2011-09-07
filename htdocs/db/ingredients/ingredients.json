@@ -337,6 +337,7 @@
 {"brand":"Monin Raspberry Tea","brand_dir":"monin-raspberry-tea","group":"Сиропы","mark":"Monin","name":"Сироп малиновый чай","path":"sirop-malinovyiy-chay","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,320.0,true]]},
 {"brand":"Monin Mangue","brand_dir":"monin-mangue","group":"Сиропы","mark":"Monin","name":"Сироп манго","path":"sirop-mango","tags":["Сироп","Фруктовый сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,315.0,true]]},
 {"brand":"Monin Fruit de la Passion","brand_dir":"monin-fruit-de-la-passion","group":"Сиропы","mark":"Monin","name":"Сироп маракуйя","path":"sirop-marakuyya","tags":["Сироп","Фруктовый сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,355.0,true]]},
+{"brand":"Monin Mojito Mint","brand_dir":"monin-mojito-mint","group":"Сиропы","mark":"Monin","name":"Сироп мохито","path":"sirop-mohito","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[1.0,393.0,true]]},
 {"brand":"Monin Pina-Colada","brand_dir":"monin-pina-colada","group":"Сиропы","mark":"Monin","name":"Сироп пина-колада","path":"sirop-pina-kolada","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,310.0,true]]},
 {"brand":"Monin Rose","brand_dir":"monin-rose","group":"Сиропы","mark":"Monin","name":"Сироп розы","path":"sirop-rozyi","tags":["Сироп","Цветочный сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,363.0,true]]},
 {"group":"Сиропы","name":"Сироп тархун","path":"sirop-tarhun","tags":["Сироп","Травяной сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,450.0,true]]},
