@@ -59,6 +59,8 @@ var myProto =
 		this.bind(nodes)
 		
 		this.renderContent()
+		var popup = this
+		setTimeout(function () { popup.renderCocktails() }, 0)
 	},
 	
 	renderContent: function ()
@@ -77,6 +79,18 @@ var myProto =
 			nodes.buy.appendChild(T(good.name))
 			nodes.buy.href = good.getHref()
 		}
+	},
+	
+	renderCocktails: function ()
+	{
+		var nodes = this.nodes,
+			tool = this.tool
+		
+		var cocktails = Cocktail.getByTool(tool.name)
+		var cl = new CocktailList()
+		cl.bind(nodes.cocktails)
+		cl.configure({pageLength: 5, pageVelocity: 38})
+		cl.setCocktails(cocktails)
 	}
 }
 
@@ -136,7 +150,15 @@ var myStatic =
 				image: $$('#tool-info-popup .description .image')[0],
 				buy: $$('#tool-info-popup .description .about .where-to-buy .link')[0],
 				name: $$('#tool-info-popup .description .about .name')[0],
-				text: $$('#tool-info-popup .description .about .text')[0]
+				text: $$('#tool-info-popup .description .about .text')[0],
+				cocktails:
+				{
+					root: $$('#tool-info-popup .cocktail-list')[0],
+					viewport: $$('#tool-info-popup .cocktail-list .viewport')[0],
+					surface: $$('#tool-info-popup .cocktail-list .surface')[0],
+					prev: $$('#tool-info-popup .cocktail-list .prev')[0],
+					next: $$('#tool-info-popup .cocktail-list .next')[0]
+				}
 			}
 		}
 		

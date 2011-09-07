@@ -16,6 +16,26 @@
 .tool-info-popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 
 
+.tool-window .cocktail-list { position: relative; margin: 30px 0 -20px 0; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
+.tool-window .cocktail-list .prev,
+.tool-window .cocktail-list .next { top: 70px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.tool-window .cocktail-list.single .prev,
+.tool-window .cocktail-list.single .next { display: none; }
+.tool-window .cocktail-list.empty { display: none; }
+.tool-window .cocktail-list .prev { left: 15px; }
+.tool-window .cocktail-list .next { right: 15px; }
+.tool-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
+.tool-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
+
+.tool-window .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
+.tool-window .cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
+.tool-window .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }
+.tool-window .cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
+
+.tool-window .cocktail-list .prev .spacer,
+.tool-window .cocktail-list .next .spacer { display: block; height: 34px; width: 35px; margin: -10px 0 0 -10px; }
+
+
 
 html.msie-6 .tool-info-popup .window { zoom: 1; }
 html.msie-6 .tool-info-popup .popup-back { height: 10000px; }
