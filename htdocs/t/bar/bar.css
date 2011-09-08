@@ -99,8 +99,6 @@ html.msie-6 #main-column .atmosphere .part { width: 240px; }
 html.msie-6 .photos .disabled { background-position-y: -60px; }
 html.msie-6 .photos .prev { background-position-x: -60px; }
 html.msie-6 .photos .next { display: block; }
-html.msie-6 .photos .prev,
-html.msie-6 .photos .next { display: block; background-image: url(../light/photos-buttons.8.png); }
 
 html.msie-7 #main-column .info .about .contacts,
 html.msie-8 #main-column .info .about .contacts { bottom: -1em; }
