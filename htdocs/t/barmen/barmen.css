@@ -39,7 +39,7 @@ html.loading .barmen-list { display: none; }
 	width: 100%;
 	height: 100%;
 	
-	background-image: url(barmen/mask.png);
+	background-image: url(mask.png);
 }
 
 .barmen-list .barman-preview.lazy { background-color: #eee; }
