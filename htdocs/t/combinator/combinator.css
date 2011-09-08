@@ -139,15 +139,15 @@ html.opera-9 .ingredient-preview .image:before,
 html.opera-10-0 .ingredient-preview .image:before,
 html.opera-10-1 .ingredient-preview .image:before,
 html.msie-8 .ingredient-preview .image:before,
-html.firefox-2 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+html.firefox-2 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
 
 html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-<!--# include virtual="popup.css" -->
-<!--# include virtual="ingredient-popup.css" -->
+<!--# include virtual="/t/popup.css" -->
+<!--# include virtual="/t/ingredient-popup.css" -->
 
 html.msie-6 .ingredients-list .group .list,
 html.msie-7 .ingredients-list .group .list { zoom: 1; }
