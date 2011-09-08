@@ -5,22 +5,20 @@
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
-.win-shop .content .less i,
-.win-shop .content form dl dt i,
-.win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 58px; height: 47px; right: 0; top: -14px; }
+#spotlighted { width: 90px; height: 43px; right: -2px; top: -11px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 570px; left: 150px; bottom: -730px; }
-#branded-image-holder { height: 900px; }
-a { color: #000; }
-#top .nav .link:hover { border-bottom-color: #ab0e1c; }
-#bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
-#bottom a { color: #d5b269; }
-html.msie #bottom a { background-color: #000; }
-html { background: #000 url(bg.jpg) center 74px; }
-button.rounded b { text-shadow: 1px 1px 0 #baa; color: #ab0e1c; }
-button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 520px; top: 20px; left: 140px; cursor: default; }
+#branded-image-holder { height: 710px; position: absolute; top: 85px; bottom: auto; }
+html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
+html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
+a { color: #2e63c1; }
+#top .nav .link:hover { border-bottom-color: #2e63c1; }
+#bottom { color: #888; }
+#bottom a { color: #2e63c1; background-color: #fff; }
+html { background: #fff url(bg.png) repeat-x center 60px; }
+button.rounded b { text-shadow: 1px 1px 0 #000; color: #fff; }
+button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 
 /* calculator.css */
 #b-bill dt,
@@ -29,6 +27,7 @@ button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
 #b-bill dt { color: #fff; font-weight: bold; }
 #b-bill dd input { background-color: #eee; }
+#cart_draghere b { color: #2e63c1; }
 
 /* cocktails.css */
 .square-list .prev,
@@ -46,7 +45,7 @@ button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
 #results_display a {}
 #letters_all,
 #alphabetical-ru a { color: #fff; }
-#alphabetical-ru a.selected-button { color: #890814; }
+#alphabetical-ru a.selected-button { color: #000; }
 #search_tabs li { color: #000; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
@@ -60,8 +59,8 @@ button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
 .b-search .groups dd { color: #231f20; }
 .b-search .groups dd.selected-button { color: #f1ece3; }
 .b-search .groups dd.disabled { color: #999; }
-#search_by_ingreds .autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border-color: #570709; }
-#search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
+.autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border: solid #570709; }
+.autocomplete .item.selected { background-color: #d2d2d2; }
 
 /* cocktail.css */
 .b-more dt,
@@ -69,8 +68,15 @@ button.strong b { text-shadow: 1px 1px 0 #622; color: #fff; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
-/* combinator.css */
-#output .help-line .hint { color: #ab0e1c; }
+/* ingredients */
+#menu .tweaker .list .item { background-color: #eee; }
+#menu .tweaker .list .item:hover { background-color: #ccc; }
+#menu .tweaker .list .item.selected { background-color: #999; color: #fff; }
+
+
+/* matching.css */
+#top-alphabetical .item.selected { background-repeat: no-repeat; background-image: url(ingredients.png); }
+#top-alphabetical .item.selected .name { color: #fff; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }

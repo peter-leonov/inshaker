@@ -5,9 +5,6 @@
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
-.win-shop .content .less i,
-.win-shop .content form dl dt i,
-.win-shop .content .more i,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 50px; height: 42px; right: -8px; top: -9px; }
 #alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }

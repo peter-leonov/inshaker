@@ -1,6 +1,6 @@
 ;(function(){
 
-var myName = 'Theme'
+var myName = 'Branding'
 var Me = self[myName] =
 {
 	initialize: function (db)
