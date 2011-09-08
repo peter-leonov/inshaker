@@ -49,7 +49,7 @@
 
 .common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
 
-#top-menu { position: relative; width: 590px; height: 182px; background: url(cocktail/menu.png) repeat-x 0 0; }
+#top-menu { position: relative; width: 590px; height: 182px; background: url(menu.png) repeat-x 0 0; }
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
 #top-menu .border-links { position: relative; height: 19px; padding: 13px 0 6px 9px; font-size: 110%; z-index: 1; }
 #top-menu .border-links a { padding: 3px 10px 4px 10px; margin-right: 12px; line-height: 1.5; color: #fff; border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; text-decoration: none; }
@@ -98,7 +98,7 @@
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 html.msie-8 #view-recipe .ingredients .surface .image:before,
 html.opera-10-0 #view-recipe .ingredients .surface .image:before,
-html.opera-10-1 #view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(ingredient/preview-mask.png); }
+html.opera-10-1 #view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
 html.msie-6 #view-recipe .ingredients .surface .image,
 html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
@@ -120,7 +120,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
-.what-need dd{color:#343b40;line-height:2.3;background:url(light/header-dots-v.png) repeat-x 0 100%;height:2.5em;}
+.what-need dd{color:#343b40;line-height:2.3;background:url(/t/light/header-dots-v.png) repeat-x 0 100%;height:2.5em;}
 .what-need dd:last-child{background:none;}
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
@@ -139,6 +139,6 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
-<!--# include virtual="popup.css" -->
-<!--# include virtual="ingredient-popup.css" -->
-<!--# include virtual="tool-popup.css" -->
+<!--# include virtual="/t/popup.css" -->
+<!--# include virtual="/t/ingredient-popup.css" -->
+<!--# include virtual="/t/tool-popup.css" -->
