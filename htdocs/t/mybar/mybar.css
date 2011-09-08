@@ -17,7 +17,7 @@ html.loading .main-box { display: none; }
 #bottom .wrapper .content .left-shadow { left: -11px; background-position: -1079px 0px; }
 .main-box .wrapper-box .section-wrapper .right-shadow,
 #bottom .wrapper .content .right-shadow { right: -11px; background-position: -1090px 0px; }
-.main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/common/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
+.main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("/t/light/content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 

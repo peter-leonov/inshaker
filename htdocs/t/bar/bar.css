@@ -53,7 +53,7 @@
 .photos .viewport .point { float: left; width: 590px; height: 242px; }
 .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
 .photos .prev,
-.photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(../common/photos-buttons.png); }
+.photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(../light/photos-buttons.png); }
 .photos:hover .prev,
 .photos:hover .next { display: block; }
 .photos .prev { left: 0; background-position: -60px 0; }
@@ -100,7 +100,7 @@ html.msie-6 .photos .disabled { background-position-y: -60px; }
 html.msie-6 .photos .prev { background-position-x: -60px; }
 html.msie-6 .photos .next { display: block; }
 html.msie-6 .photos .prev,
-html.msie-6 .photos .next { display: block; background-image: url(../common/photos-buttons.8.png); }
+html.msie-6 .photos .next { display: block; background-image: url(../light/photos-buttons.8.png); }
 
 html.msie-7 #main-column .info .about .contacts,
 html.msie-8 #main-column .info .about .contacts { bottom: -1em; }
