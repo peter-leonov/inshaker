@@ -69,6 +69,3 @@ button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
 
 /* combinator.css */
 #output .help-line .hint { color: #ab0e1c; }
-
-/* about.css */
-#form_success i { background-repeat: no-repeat; background-image: url(common.png); }

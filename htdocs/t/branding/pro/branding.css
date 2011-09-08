@@ -72,6 +72,3 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .top-alphabetical .now,
 .count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
 .count-cocktails strong { color: #eb1c57; }
-
-/* about.css */
-#form_success i { background-repeat: no-repeat; background-image: url(common.png); }
