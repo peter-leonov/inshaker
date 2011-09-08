@@ -50,8 +50,8 @@ $.onready
 		RoundedCorners.round(nodes.photos.root)
 		BarPage.initialize(nodes, Bar, Cocktail)
 		
-		Theme.initialize(<!--# include virtual="/t/theme/2011.05-bars/theme.js" -->)
-		Theme.bind()
+		Branding.initialize(<!--# include virtual="/t/branding/2011.05-bars/branding.js" -->)
+		Branding.bind()
 	}
 )
 
@@ -65,7 +65,7 @@ $.onready
 <!--# include virtual="/js/common/google.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
-<!--# include virtual="/js/common/theme.js" -->
+<!--# include virtual="/js/common/branding.js" -->
 
 <!--# include virtual="/js/bars/point.js" -->
 <!--# include virtual="model.js" -->
