@@ -27,13 +27,13 @@ html.loading .previews .viewport .surface { display: none; }
 
 .previews .event { position: relative; width: 180px; display: inline-block; vertical-align: top; width: 180px; margin-right: 32px; text-align: center;  text-decoration: none; font-size: 12px; font-family: Arial, sans-serif; }
 .previews .event .mini { display: block; margin: 0 auto 6px; height: 100px; width: 180px;}
-.previews .event .mini .mask { line-height: 15px; color:#FFFFFF; background:url(/t/event/preview-mask.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
+.previews .event .mini .mask { line-height: 15px; color:#FFFFFF; background:url(preview-mask.png); padding: 83px 0 0 10px; display:block; height:17px; width: 170px;}
 
 .previews .event .date { display: block; color: #343b40; font-size: 13px; font-weight: bold; margin: 7px 0 4px 0; }
 .previews .event .desc { color: #0392f1; }
 .previews .event.selected .desc { color: #F32C9F; border-bottom: none; }
 
-.previews .event .mark { position: absolute; left: 77px; top: 167px; width: 25px; height: 14px; background: url(/t/event/mark.png); }
+.previews .event .mark { position: absolute; left: 77px; top: 167px; width: 25px; height: 14px; background: url(mark.png); }
 
 #both-wrapper { padding: 1px 0; clear: both; overflow: hidden; position:relative; top:-1px;}
 #both-wrapper .common-content { overflow: hidden; }
