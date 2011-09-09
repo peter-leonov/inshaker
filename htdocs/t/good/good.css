@@ -40,7 +40,7 @@ html.loading .goods-previews .viewport { display: none; }
 .good-promos { overflow: hidden; position: relative; width: 920px; height: 356px; clear:both;}
 .good-promos .viewport .surface { width: 10000px; height:100%;}
 .good-promos .prev,
-.good-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(/t/light/photos-buttons.png); }
+.good-promos .next { position: absolute; top: 150px; z-index: 10; width: 60px; height: 60px; background: url(photos-buttons.png); }
 .good-promos:hover .prev,
 .good-promos:hover .next {display:block;}
 .good-promos:hover .hidden {display:none;}

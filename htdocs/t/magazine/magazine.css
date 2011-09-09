@@ -12,7 +12,7 @@
 #promo .viewport .surface { width: 50000px; }
 #promo .point { float: left; color: #ccc;}
 #promo-prev,
-#promo-next { display: none; cursor: pointer; position: absolute; z-index: 2; top: 195px; width: 61px; height: 60px; background: transparent url(/t/light/photos-buttons.png) no-repeat; }
+#promo-next { display: none; cursor: pointer; position: absolute; z-index: 2; top: 195px; width: 61px; height: 60px; background: transparent url(photos-buttons.png) no-repeat; }
 #promo:hover #promo-prev,
 #promo:hover #promo-next { display: block; }
 #promo-next { background-position: 0 0; right: 0;}
