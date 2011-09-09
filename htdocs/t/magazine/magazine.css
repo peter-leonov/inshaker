@@ -3,16 +3,16 @@
 #main-wrapper { width: 964px; }
 
 .box { padding: 1px 1px 0 1px; background: #fff; border: solid 1px #c0c0c0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
-.box .body { width: 100%; height: 100%; background: #fff url(common/content-gradient-v.png) repeat-x scroll 0 0; overflow: hidden; }
+.box .body { width: 100%; height: 100%; background: #fff url(box-body-gradient-v.png) repeat-x scroll 0 0; overflow: hidden; }
 
 #promo { width:962px; padding: 0; }
 #promo .viewport,
-#promo .point { width: 962px; height: 450px; background: #CCC url(magazine/loader-gray.gif) no-repeat scroll center center; }
+#promo .point { width: 962px; height: 450px; background: #CCC url(loader-gray.gif) no-repeat scroll center center; }
 #promo .viewport { z-index: 1; }
 #promo .viewport .surface { width: 50000px; }
 #promo .point { float: left; color: #ccc;}
 #promo-prev,
-#promo-next { display: none; cursor: pointer; position: absolute; z-index: 2; top: 195px; width: 61px; height: 60px; background: transparent url(common/photos-buttons.png) no-repeat; }
+#promo-next { display: none; cursor: pointer; position: absolute; z-index: 2; top: 195px; width: 61px; height: 60px; background: transparent url(photos-buttons.png) no-repeat; }
 #promo:hover #promo-prev,
 #promo:hover #promo-next { display: block; }
 #promo-next { background-position: 0 0; right: 0;}
@@ -51,8 +51,4 @@
 
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/(9|10)\./" -->
 #promo .viewport .surface { width: 32000px; }
-<!--# endif -->
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-#promo #promo-prev,
-#promo #promo-next { display: block; background-image: url(common/photos-buttons.8.png); }
 <!--# endif -->
