@@ -328,6 +328,7 @@
 {"group":"Сиропы","name":"Сироп агавы","path":"sirop-agavyi","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[0.35,210.0,true]]},
 {"brand":"Monin Blue Curacao","brand_dir":"monin-blue-curacao","group":"Сиропы","mark":"Monin","name":"Сироп блю курасао","path":"sirop-blyu-kurasao","tags":["Сироп","Фруктовый сироп","Любой ингредиент"],"unit":"л","volumes":[[1.0,355.0,true]]},
 {"brand":"Monin Flour de Sureau ","brand_dir":"monin-flour-de-sureau","group":"Сиропы","mark":"Monin","name":"Сироп бузины","path":"sirop-buzinyi","tags":["Сироп","Цветочный сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,363.0,true]]},
+{"brand":"Monin Blueberry","brand_dir":"monin-blueberry","group":"Сиропы","mark":"Monin","name":"Сироп голубики","names":["Сироп черники"],"path":"sirop-golubiki","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,355.0,true]]},
 {"brand":"Monin Kiwi","brand_dir":"monin-kiwi","group":"Сиропы","mark":"Monin","name":"Сироп киви","path":"sirop-kivi","tags":["Сироп","Фруктовый сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,315.0,true]]},
 {"brand":"Monin Cinnamon","brand_dir":"monin-cinnamon","group":"Сиропы","mark":"Monin","name":"Сироп корицы","path":"sirop-koritsyi","tags":["Сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,363.0,true]]},
 {"brand":"Monin Lavande","brand_dir":"monin-lavande","group":"Сиропы","mark":"Monin","name":"Сироп лаванды","path":"sirop-lavandyi","tags":["Сироп","Цветочный сироп","Любой ингредиент"],"unit":"л","volumes":[[0.7,363.0,true]]},

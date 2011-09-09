@@ -79,6 +79,7 @@ http://www.inshaker.ru/cocktail/birch_cooler/
 http://www.inshaker.ru/cocktail/berrymeup/
 http://www.inshaker.ru/cocktail/insomnia/
 http://www.inshaker.ru/cocktail/b-black/
+http://www.inshaker.ru/cocktail/beer_berry_royal/
 http://www.inshaker.ru/cocktail/bitter_melon/
 http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/black_jack/
@@ -661,6 +662,7 @@ http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
+http://www.inshaker.ru/cocktail/beer_berry_julep/
 http://www.inshaker.ru/cocktail/pilot/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
