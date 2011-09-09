@@ -1,7 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="analytics-page" class="loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="analytics-page" class="loading" lang="ru">
 <head>
-	<!--# include virtual="/inc/head.html" -->
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="/t/light/light.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/branding/shakeit/branding.css"/>
 	<title>Inshaker — Аналитика для ребят</title>
 	<style>
 	#main-wrapper { margin-top: 30px; }
@@ -37,36 +40,40 @@
 	</style>
 </head>
 <body>
-<div id="main-wrapper">
-	<div class="column"><div class="body-wrapper">
-		<div class="b-title">
-			<h1>Аналитика для ребят</h1>
+<div id="common-main-wrapper">
+
+<div id="main-column" class="common-box"><div class="common-content">
+	<div class="common-title">
+		<h1>Аналитика для ребят</h1>
+	</div>
+	<div class="b-content">
+		<div id="loading">
+			Загружаю гугловский апи…
 		</div>
-		<div class="b-content">
-			<div id="loading">
-				Загружаю гугловский апи…
-			</div>
-			<div id="analytics">
-				<button id="login">Войти</button>
-				<button id="logout">Выйти</button>
-				<form id="range"><input name="begin" value="2011-01-01"/> — <input name="end" value="2011-01-31"/> <button type="submit">Загрузить…</button></form>
-				<div id="query" class="loading">
-					<div id="loading-data">
-						Загружаю статистику…
-					</div>
-					
-					<form id="ingredient-search">
-						<input name="ingredients" type="text" value="Водка"/>
-						<button type="submit">Посчитать</button>
-					</form>
-				
-					<ul id="output"></ul>
+		<div id="analytics">
+			<button id="login">Войти</button>
+			<button id="logout">Выйти</button>
+			<form id="range"><input name="begin" value="2011-01-01"/> — <input name="end" value="2011-01-31"/> <button type="submit">Загрузить…</button></form>
+			<div id="query" class="loading">
+				<div id="loading-data">
+					Загружаю статистику…
 				</div>
+				
+				<form id="ingredient-search">
+					<input name="ingredients" type="text" value="Водка"/>
+					<button type="submit">Посчитать</button>
+				</form>
+			
+				<ul id="output"></ul>
 			</div>
 		</div>
-	</div></div>
-	<img src="/t/barman/barman.png" style="display:none" alt="required for Google Data"/>
-</div>
+	</div>
+</div></div>
+
+<img src="/t/barman/barman.png" style="display:none" alt="required for Google Data"/>
+
+</div id="common-main-wrapper">
+
 <script type="text/javascript" src="/js/common/oops.js"></script>
 <script type="text/javascript" src="/js/common/common-0.3.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>

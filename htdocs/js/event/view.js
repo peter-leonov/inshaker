@@ -424,7 +424,7 @@ EventPage.view =
 			var sponsor = sponsorsSet[i]
 			
 			var a = N('a')
-			a.className = 'column sponsor'
+			a.className = 'sponsor'
 			a.href = sponsor.href
 			
 			var img = N('img')

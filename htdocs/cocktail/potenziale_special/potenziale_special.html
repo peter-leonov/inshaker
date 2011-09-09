@@ -1,234 +1,231 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="cocktail-page" class="cocktails-page" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/cocktail.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/t/cocktail/cocktail.css" media="screen"/>
 	<title>Рецепт коктейля «Потенциале спешл» — Коктейли — Inshaker</title>
 	
 	<meta property="og:title" content="Коктейль «Потенциале спешл»" />
 	<meta property="og:type" content="drink" />
 	<meta property="og:url" content="http://www.inshaker.ru/cocktail/potenziale_special/" />
-	<meta property="og:image" content="http://peter.dev.inshaker.ru/cocktail/potenziale_special/potenziale_special-small.png" />
+	<meta property="og:image" content="http://www.inshaker.ru/cocktail/potenziale_special/potenziale_special-small.png" />
 	<meta property="og:site_name" content="Коктейльный сайт Inshaker.ru" />
 	<meta property="fb:admins" content="702933134,1419016311,100001016828481" />
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
-	
-	<div class="column-main-container">
-		<div class="column column-main"><div class="body-wrapper hrecipe">
-			<div class="b-title">
-				<h1 id="cocktail_name" class="fn" data-cocktail-name="Потенциале спешл">Потенциале спешл</h1>
-				<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+<div id="common-main-wrapper">
+
+<!--# include virtual="/inc/calculator.html" -->
+
+<div class="common-box column-main"><div class="common-content hrecipe">
+	<div class="common-title">
+		<h1 id="cocktail_name" class="fn" data-cocktail-name="Потенциале спешл">Потенциале спешл</h1>
+		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
+	</div>
+	<div class="b-content">
+		<div class="hreview state-initial">
+			<div id="top-menu">
+				<div class="border-links" id="panel_cocktail">
+					<a id="author" class="hidden">Авторская подача</a>
+					<a id="where-to-taste" class="hidden">Где попробовать</a>
+				</div>
+				<img class="poster" src="potenziale_special-bg.png" alt="Коктейль «Потенциале спешл»"/>
 			</div>
-			<div class="b-content">
-				<div class="hreview">
-					<div class="top-menu"><div class="b">
-						<p class="border-links" id="panel_cocktail">
-							<a id="author"><b>Авторская подача</b></a>
-							<a id="where-to-taste"><b>Где попробовать</b></a>
-						</p>
-						<img src="potenziale_special-bg.png" width="590" height="210" alt="Коктейль «Потенциале спешл»" id="poster"/>
-					</div></div>
-					
-					<div class="entry">
-						<div id="main-content">
-							<img src="potenziale_special-big.png" alt="Коктейль «Потенциале спешл»" id="illustration" class="illustration"/>
-							<div class="desc">
-								<h2 class="summary"><i></i>Потенциале спешл — Захвати мир!</h2>
-								<div class="description">
-									
-									<p>Ученые предупреждают: человек использует потенциальные возможности своего мозга всего на 10%<a onclick="link.open('view-prepare')">…</a></p>
-									
-								</div>
-							</div>
-							<div class="tags"><b>Группы:</b>
-							<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
-							<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
-							</div>
-							<button class="rounded strong bt-view-how"><b>Как приготовить</b></button>
-							<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
+			
+			<div id="content">
+				
+				<img src="potenziale_special-big.png" alt="Коктейль «Потенциале спешл»" id="cocktail-image"/>
+				
+				<div id="main-content">
+					<div class="description">
+						<h2 class="summary"><i></i>Потенциале спешл — Захвати мир!</h2>
+						
+						<div class="short-legend" id="show-legend">
+							<p>Ученые предупреждают: человек использует потенциальные возможности своего мозга всего на 10%…</p>
 						</div>
 						
-						<div id="view-prepare">
-							<div id="view-prepare-text">
-								<h3>Легенда коктейля</h3>
-								<p>Ученые предупреждают: человек использует потенциальные возможности своего мозга всего на 10%.</p><p>Самое интересное, как водится, таится в оставшихся 90. Но мы-то знаем, что достаточно одного специального коктейля, чтобы научиться использовать свой скрытый потенциал и захватить мир посредством интеллектуального господства.</p>
-							</div>
-							<button class="rounded" onclick="link.close(); $('panel_cocktail').getElementsByTagName('a')[0].removeClassName('now')"><b>Закрыть легенду</b></button>
-						</div>
-						
-						<div id="view-how">
-							<div class="ingredients"><div class="wrap square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
-									<a class="prev"></a>
-									<div class="viewport">
-										<div class="surface" id="ingreds_surface">
-										</div>
-									</div>
-									<a class="next"></a>
-							</div></div>
-							<dl class="recipe">
-								<dt>Как приготовить:</dt>
-								<dd>
-									<ul class="instructions">
-										
-										<li class="instruction">Рекомендуем готовить кардамоново-гвоздичный сироп сразу для 10 коктейлей</li>
-										
-										<li class="instruction">Положи в питчер сахарный песок 4 ст. ложки и налей воду без газа 100 мл</li>
-										
-										<li class="instruction">Добавь щепотку кардамона и гвоздики</li>
-										
-										<li class="instruction">Помешивая, вари, пока сахар не растворится</li>
-										
-										<li class="instruction">Процеди через ситечко и дай остыть</li>
-										
-										<li class="instruction">Положи в хайбол корень имбиря 2 дольки и подави мадлером</li>
-										
-										<li class="instruction">Наполни хайбол дробленым льдом доверху</li>
-										
-										<li class="instruction">Налей: водку 40 мл, яблочный сироп желтый 10 мл и кардамоново-гвоздичный сироп 10 мл</li>
-										
-										<li class="instruction">Выжми лимонный сок 2 ч. ложки</li>
-										
-										<li class="instruction">Долей спрайт доверху и аккуратно размешай коктейльной ложкой</li>
-										
-										<li class="instruction">Досыпь немного дробленого льда</li>
-										
-										<li class="instruction">Укрась двумя веточками розмарина</li>
-										
-									</ul>
-								</dd>
-							</dl>
-							<ul class="controls">
-								<li><button class="rounded strong bt-close-how" onclick="link.close()"><b>Закрыть рецепт</b></button></li>
-								<li><button class="rounded bt-print-how"><b>Распечатать</b></button></li>
-							</ul>
-						</div>
+					</div>
+					<div class="tags"><b>Группы:</b>
+					<a class="tag category" href="/cocktails.html#method=давят мадлером">давят мадлером</a>,
+					<a class="tag" href="/cocktails.html#strength=слабоалкогольные">слабоалкогольные</a>, <a class="tag" href="/cocktails.html#tag=лаунж">лаунж</a>.
+					</div>
+					<div class="buttons">
+						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name">Потенциале спешл</span></b></button>
+						<button class="rounded bt-want-slap"><b>Добавить в план</b></button>
 					</div>
 				</div>
 				
-				<div class="what-need">
-					<dl id="ingredients_list">
-						<dt>Необходимые ингредиенты</dt>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Водка">Водка</a>
-							<strong><span class="amount">40</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Яблочный сироп желтый">Яблочный сироп желтый</a>
-							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Спрайт">Спрайт</a>
-							<strong><span class="amount">70</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Вода без газа">Вода без газа</a>
-							<strong><span class="amount">10</span> <span class="type">мл</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Лимон">Лимон</a>
-							<strong><span class="amount">20</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Корень имбиря">Корень имбиря</a>
-							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Розмарин">Розмарин</a>
-							<strong><span class="amount">5</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Гвоздика">Гвоздика</a>
-							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Кардамон">Кардамон</a>
-							<strong><span class="amount">1</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Сахарный песок">Сахарный песок</a>
-							<strong><span class="amount">10</span> <span class="type">гр</span></strong>
-						</dd>
-						
-						<dd class="ingredient">
-							<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
-							<strong><span class="amount">250</span> <span class="type">гр</span></strong>
-						</dd>
-						
-					</dl>
-					<dl class="tools">
-						<dt>Необходимые штучки</dt>
-						
-						<dd><a>Хайбол</a></dd>
-						
-						<dd><a>Коктейльная ложка</a></dd>
-						
-						<dd><a>Мадлер</a></dd>
-						
-						<dd><a>Пресс для цитруса</a></dd>
-						
-						<dd><a>Питчер</a></dd>
-						
-						<dd><a>Ситечко</a></dd>
-						
-						<dd><a>Трубочки</a></dd>
-						
-					</dl>
+				<div id="view-legend">
+					<div id="view-legend-text">
+						<h3>Легенда коктейля</h3>
+						<p>Ученые предупреждают: человек использует потенциальные возможности своего мозга всего на 10%.</p><p>Самое интересное, как водится, таится в оставшихся 90. Но мы-то знаем, что достаточно одного специального коктейля, чтобы научиться использовать свой скрытый потенциал и захватить мир посредством интеллектуального господства.</p>
+					</div>
+					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
 				
-				<div id="share">
-					<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+				<div id="view-recipe">
+					<div class="ingredients square-list programica-rolling-images" id="ingredients" pmc-animation-type="easeInOutCubic">
+						<a class="prev"></a>
+						<div class="viewport"><div class="surface" id="ingreds_surface"></div></div>
+						<a class="next"></a>
+					</div>
+					<dl class="recipe">
+						<dt>Как приготовить:</dt>
+						<dd>
+							<ul class="instructions">
+								
+								<li class="instruction">Рекомендуем готовить кардамоново-гвоздичный сироп сразу для 10 коктейлей</li>
+								
+								<li class="instruction">Положи в питчер сахарный песок 4 ст. ложки и налей воду без газа 100 мл</li>
+								
+								<li class="instruction">Добавь щепотку кардамона и гвоздики</li>
+								
+								<li class="instruction">Помешивая, вари, пока сахар не растворится</li>
+								
+								<li class="instruction">Процеди через ситечко и дай остыть</li>
+								
+								<li class="instruction">Положи в хайбол корень имбиря 2 дольки и подави мадлером</li>
+								
+								<li class="instruction">Добавь розмарин 2 веточки</li>
+								
+								<li class="instruction">Наполни хайбол дробленым льдом доверху</li>
+								
+								<li class="instruction">Налей: водку 40 мл, яблочный сироп зеленый 10 мл и кардамоново-гвоздичный сироп 10 мл</li>
+								
+								<li class="instruction">Выжми лимонный сок 2 ч. ложки</li>
+								
+								<li class="instruction">Долей спрайт доверху и аккуратно размешай коктейльной ложкой</li>
+								
+								<li class="instruction">Досыпь немного дробленого льда</li>
+								
+							</ul>
+						</dd>
+					</dl>
+					<div class="buttons">
+						<button class="rounded strong" id="close-recipe"><b>Закрыть рецепт</b></button>
+						<button class="rounded bt-print-how"><b>Распечатать</b></button>
+					</div>
 				</div>
 			</div>
-		</div></div>
+		</div>
 		
-		<div class="b-more">
-			<div class="column b-more-cocktails b-more-rec">
-				<dl class="body-wrapper">
-					<dt><b>Inshaker рекомендует</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="recommendations">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport">
-								<div class="surface" id="rec_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
-			
-			<div class="column b-more-cocktails">
-				<dl class="body-wrapper">
-					<dt><b>Вам также могут понравиться эти коктейли</b></dt>
-					<dd>
-						<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
-							<a class="prev"></a>
-							<a class="next"></a>
-							<div class="viewport" id="rel_viewport">
-								<div class="surface" id="rel_surface"></div>
-							</div>
-						</div>
-					</dd>
-				</dl>
-			</div>
+		<div class="what-need">
+			<dl id="ingredients_list">
+				<dt>Необходимые ингредиенты</dt>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Водка">Водка</a>
+					<strong><span class="amount">40</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Яблочный сироп зеленый">Яблочный сироп зеленый</a>
+					<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Спрайт">Спрайт</a>
+					<strong><span class="amount">70</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Вода без газа">Вода без газа</a>
+					<strong><span class="amount">10</span> <span class="type">мл</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Лимон">Лимон</a>
+					<strong><span class="amount">20</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Корень имбиря">Корень имбиря</a>
+					<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Розмарин">Розмарин</a>
+					<strong><span class="amount">5</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Гвоздика">Гвоздика</a>
+					<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Кардамон">Кардамон</a>
+					<strong><span class="amount">1</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Сахарный песок">Сахарный песок</a>
+					<strong><span class="amount">10</span> <span class="type">гр</span></strong>
+				</dd>
+				
+				<dd class="ingredient">
+					<a class="name" data-ingredient-name="Лед дробленый">Лед дробленый</a>
+					<strong><span class="amount">250</span> <span class="type">гр</span></strong>
+				</dd>
+				
+			</dl>
+			<dl class="tools">
+				<dt>Необходимые штучки</dt>
+				
+				<dd><a>Хайбол</a></dd>
+				
+				<dd><a>Коктейльная ложка</a></dd>
+				
+				<dd><a>Мадлер</a></dd>
+				
+				<dd><a>Пресс для цитруса</a></dd>
+				
+				<dd><a>Питчер</a></dd>
+				
+				<dd><a>Ситечко</a></dd>
+				
+				<dd><a>Трубочки</a></dd>
+				
+			</dl>
+		</div>
+		
+		<div id="share">
+			<iframe class="frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
+</div></div>
+
+<div id="b-more">
+	<div class="common-box b-more-cocktails b-more-rec"><dl class="common-content">
+		<dt><b>Inshaker рекомендует</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="recommendations">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport">
+					<div class="surface" id="rec_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 	
-	<!--# include virtual="/inc/calculator.html" -->
+	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
+		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
+		<dd>
+			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+				<a class="prev"></a>
+				<a class="next"></a>
+				<div class="viewport" id="rel_viewport">
+					<div class="surface" id="rel_surface"></div>
+				</div>
+			</div>
+		</dd>
+	</dl></div>
 </div>
+
+</div id="common-main-wrapper">
+
 <!--# include virtual="/inc/cocktail-footer.html" -->
 </body>
 </html>

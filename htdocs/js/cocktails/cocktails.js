@@ -15,7 +15,7 @@ $.onready(
 		IngredientPopup.bootstrap()
 		
 		var nodes = {
-			bodyWrapper: $$('#main-wrapper .body-wrapper')[0],
+			bodyWrapper: $$('#common-main-wrapper .column-main')[0],
 			resultsDisplay: $('results_display'),
 			resultsRoot: $('surface'),
 			pagerRoot: $('p-list'),

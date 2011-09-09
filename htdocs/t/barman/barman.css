@@ -1,0 +1,92 @@
+html { overflow-y: scroll; }
+
+#head
+{
+	margin-bottom: 15px;
+}
+
+#head .hrefs { position:absolute; right:0; bottom:15px; font-size:110%; }
+#head .hrefs { display: none; }
+#head .hrefs .arrow { text-decoration: none; }
+
+#head .hrefs li
+{
+	display: inline;
+	margin: 0 4px;
+	vertical-align: middle;
+}
+
+.about
+{
+	overflow: hidden;
+	position: relative;
+	width: 922px;
+	height: 281px;
+	margin-bottom: 40px;
+	font-size: 12px;
+}
+
+.about .photo
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 281px;
+	width: 357px;
+	-moz-border-radius: 10px 0 0 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	border-radius: 10px 0 0 10px;
+}
+
+.about .desc
+{
+	position: absolute;
+	left: 357px;
+	top: 0;
+	width: 502px;
+	height: 271px;
+	overflow: auto;
+	background: #f1f0ed;
+	padding: 10px 30px 0;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+.about .desc p
+{
+	margin-bottom: 0.6em;
+	line-height: 15px;
+}
+
+html.loading .common-content .cocktails { display: none; }
+
+.common-content .cocktails
+{
+	overflow: hidden;
+	margin-bottom: -10px;
+}
+
+.common-content .cocktails .cocktail-preview
+{
+	width: 8em;
+	text-align: center;
+	float: left;
+	margin: 20px 0 0 0;
+	height: 140px;
+	width: 150px;
+	font-size: 12px;
+}
+
+.common-content .cocktails .cocktail-preview .image
+{
+	display: block;
+	margin: 0 auto 5px;
+}
+
+.hidden
+{
+	display: none;
+}

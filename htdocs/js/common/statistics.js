@@ -19,6 +19,11 @@ var Me =
 		this.track('cocktail-view-recipe', cocktail && cocktail.name)
 	},
 	
+	cocktailViewLegend: function (cocktail)
+	{
+		this.track('cocktail-view-legend', cocktail && cocktail.name)
+	},
+	
 	cocktailAddedToCalculator: function (cocktail)
 	{
 		this.track('cocktail-added-to-calculator', cocktail && cocktail.name)

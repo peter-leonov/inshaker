@@ -1,67 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html id="good-page" class="goods-page loading" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html id="good-page" class="goods-page loading" lang="ru">
 <head>
-	<!--# include virtual="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/good.css" media="screen"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="/t/light/light.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/branding/shakeit/branding.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/good/good.css" media="screen"/>
 	<title><%= @name %> — Inshaker</title>
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">	
-	<div class="previews column"><div class="body-wrapper">
-		<div class="b-title">
-			<h2>Где купить коктейльные ингредиенты и штучки</h2>
-		</div>
-		<div class="b-content">
-			<div class="goods-previews square-list">
-				<div class="viewport">
-					<ul class="surface">
-						<!--# include virtual="/good/links.html" -->
-					</ul>
-				</div>
-				<a class="prev"></a>
-				<a class="next"></a>
-			</div>
-		</div>
-	</div></div>
+<div id="common-main-wrapper">
+
+<div class="previews common-box"><div class="common-content">
+	<div class="common-title">
+		<h2>Где купить коктейльные ингредиенты и штучки</h2>
+	</div>
 	
-	<div class="promos column"><div class="body-wrapper">
-		<div class="good-promos programica-rolling-images">
-			<div class="viewport">
-				<ul class="surface"></ul>
-			</div>
-			<a class="prev"></a>
-			<a class="next"></a>
+	<div class="goods-previews square-list">
+		<div class="viewport">
+			<ul class="surface">
+				<!--# include virtual="/good/links.html" -->
+			</ul>
 		</div>
-		<% if @price %>
-		<div id="price"><%= @price["phrase"] %> <span class="number"><%= @price["text"] %></span></div>
+		<a class="prev"></a>
+		<a class="next"></a>
+	</div>
+</div></div>
+
+<div id="main-column" class="promos common-box"><div class="common-content">
+	<div class="good-promos programica-rolling-images">
+		<div class="viewport">
+			<ul class="surface"></ul>
+		</div>
+		<a class="prev"></a>
+		<a class="next"></a>
+	</div>
+	<% if @price %>
+	<div id="price"><%= @price["phrase"] %> <span class="number"><%= @price["text"] %></span></div>
+	<% end %>
+	<div id="desc">
+		<h1 class="name"><%= @name %></h1>
+		<h2 class="full-name"><%= @name_full %></h2>
+		<%= @desc %>
+	</div>
+	<div id="places">
+		<% @places.each do |type| %>
+			<dl class="type">
+				<dt class="type-title"><%= type["name"] %></dt>
+				<dd>
+					<% type["places"].each do |place| %>
+						<dl class="place">
+							<dt class="title"><a href="<%= place["link"] %>"><%= place["name"] %></a></dt>
+							<dd class="body">
+								<span class="address"><%= place["address"] %></span>
+								<span class="phone"><%= place["phone"] %></span>
+								<span class="hours"><%= place["hours"] %></span>
+							</dd>
+						</dl>
+					<% end %>
+				</dd>
+			</dl>
 		<% end %>
-		<div id="desc">
-			<h1 class="name"><%= @name %></h1>
-			<h2 class="full-name"><%= @name_full %></h2>
-			<%= @desc %>
-		</div>
-		<div id="places">
-			<% @places.each do |type| %>
-				<dl class="type">
-					<dt class="type-title"><%= type["name"] %></dt>
-					<dd>
-						<% type["places"].each do |place| %>
-							<dl class="place">
-								<dt class="title"><a href="<%= place["link"] %>"><%= place["name"] %></a></dt>
-								<dd class="body">
-									<span class="address"><%= place["address"] %></span>
-									<span class="phone"><%= place["phone"] %></span>
-									<span class="hours"><%= place["hours"] %></span>
-								</dd>
-							</dl>
-						<% end %>
-					</dd>
-				</dl>
-			<% end %>
-		</div>
-	</div></div>
-</div>
+	</div>
+</div></div>
+
+</div id="common-main-wrapper">
+
 </body>
 <!--# include virtual="/inc/bottom-common.html" -->
 <!--# include virtual="/inc/good-footer.html" -->

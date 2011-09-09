@@ -1,100 +1,107 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %> type-<%= @type %>">
+<!DOCTYPE html>
+<html lang="ru" id="event-page" class="loading <%= @href %> status-<%= @status %> type-<%= @type %>">
 <head>
-	<!--# include virtual="/inc/head.html" -->
-	<link rel="stylesheet" type="text/css" href="/t/event.css" media="screen"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="/t/light/light.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/branding/shakeit/branding.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/event/event.css" media="screen"/>
 	<title><%= @name %> — Cocktail events — Inshaker</title>
 </head>
 <body>
 <!--# include virtual="/inc/top-common.html" -->
-<div id="main-wrapper">
+<div id="common-main-wrapper">
 	
-	<div class="timeline column"><div class="body-wrapper">
-		<div class="b-title">
-			<h1>Cocktail events!</h1>
-		</div>
-		<div class="b-content">
-			<div class="previews square-list programica-rolling-images">
-				<div class="viewport">
-					<ul class="surface"><!--# include virtual="/event/links.html" --></ul>
-				</div>
-				<a class="prev disabled" disabled="true"></a><a class="next"></a>
+<div class="timeline common-box"><div class="common-content">
+	<div class="common-title">
+		<h1>Cocktail events!</h1>
+	</div>
+	<div class="b-content">
+		<div class="previews square-list programica-rolling-images">
+			<div class="viewport">
+				<ul class="surface"><!--# include virtual="/event/links.html" --></ul>
 			</div>
-		</div>
-	</div></div>
-	
-	<div id="both-wrapper">
-		<div class="column-main-container">
-			<div class="column column-main"><div class="body-wrapper">
-				<div class="b-title">
-					<h1 id="event-name" data-name="<%= @name %>"><%= @name %></h1>
-					<h2><%= @header %></h2>
-				</div>
-				<div class="b-content">
-					<div id="illustration"><img/></div>
-					<div class="about">
-						<% if @address %>
-							<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @adate || @date_ru %></h2>
-						<% else %>
-							<h2><%= @city %> — <%= @venue %>, <%= @adate || @date_ru %></h2>
-						<% end %>
-						<div class="parole"><%= @target %></div>
-						
-						<% if @status == "preparing" %>
-							<a class="sign-on"><span>Register to be there!</span> →</a>
-							<dl class="info">
-								<% if @enter %>
-									<dt>Entrance:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
-								<% end %>
-						<% elsif @status == "holding" %>
-							<dl class="info">
-								<% if @enter %>
-									<dt>Entrance:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
-								<% end %>
-						<% elsif @status == "archive" %>
-							<% if @photos %>
-								<a href="<%= @photos %>" class="view-photos"><span>Event photos!</span> →</a>
-							<% end %>
-							<dl class="info">
-						<% end %>
-							<% if @address %>
-								<dt>Address:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
-							<% end %>
-						</dl>
-					</div>
-				</div>
-			</div></div>
-			<div id="medium-sponsors"></div>
-		</div>
-		
-		<div id="sidebar">
-			<div id="main-sponsors" class="column"><div class="body-wrapper">
-				<% if @high_head %>
-					<div class="b-title">
-						<h3><%= @high_head %></h3>
-						<h4></h4>
-					</div>
-				<% end %>
-				<a class="banner"></a>
-			</div></div>
-			<div id="comming">
-				<h2></h2>
-				<dl class="rating"></dl>
-				<a class="list-all">Entire list</a>
-			</div>
+			<a class="prev disabled" disabled="true"></a><a class="next"></a>
 		</div>
 	</div>
-	
-	<div id="low-sponsors" class="b-more-cocktails">
-		<div class="column"><div class="body-wrapper">
-			<div class="b-title">
-				<h3>Supported by</h3>
-			</div>
-			<div class="b-content"></div>
+</div></div>
+
+<div id="both-wrapper">
+	<div id="sidebar">
+		<div id="main-sponsors" class="common-box"><div class="common-content">
+			<% if @high_head %>
+				<div class="common-title">
+					<h3><%= @high_head %></h3>
+					<h4></h4>
+				</div>
+			<% end %>
+			<a class="banner"></a>
 		</div></div>
+		<div id="comming">
+			<h2></h2>
+			<dl class="rating"></dl>
+			<a class="list-all">Entire list</a>
+		</div>
 	</div>
+	
+	<div class="column-main-container">
+		<div class="common-box column-main"><div class="common-content">
+			<div class="common-title">
+				<h1 id="event-name" data-name="<%= @name %>"><%= @name %></h1>
+				<h2><%= @header %></h2>
+			</div>
+			<div class="common-content">
+				<div id="illustration"><img/></div>
+				<div class="about">
+					<% if @address %>
+						<h2><%= @city %> — <a href="<%= @address %>"><%= @venue %></a>, <%= @adate || @date_ru %></h2>
+					<% else %>
+						<h2><%= @city %> — <%= @venue %>, <%= @adate || @date_ru %></h2>
+					<% end %>
+					<div class="parole"><%= @target %></div>
+					
+					<% if @status == "preparing" %>
+						<a class="sign-on"><span>Register to be there!</span> →</a>
+						<dl class="info">
+							<% if @enter %>
+								<dt>Entrance:</dt><dd><a id="invitations-only"><%= @enter %></a></dd>
+							<% end %>
+					<% elsif @status == "holding" %>
+						<dl class="info">
+							<% if @enter %>
+								<dt>Entrance:</dt><dd><span id="invitations-only"><%= @enter %></span></dd>
+							<% end %>
+					<% elsif @status == "archive" %>
+						<% if @photos %>
+							<a href="<%= @photos %>" class="view-photos"><span>Event photos!</span> →</a>
+						<% end %>
+						<dl class="info">
+					<% end %>
+						<% if @address %>
+							<dt>Адрес:</dt><dd><a href="<%= @address %>">how to get there</a></dd>
+						<% end %>
+					</dl>
+				</div>
+			</div>
+		</div></div>
+		<div id="medium-sponsors"></div>
+	</div>
+	
 </div>
+
+<div id="low-sponsors">
+	<div class="common-box"><div class="common-content">
+		<div class="common-title">
+			<h3>Supported by</h3>
+		</div>
+		<div class="b-content"></div>
+	</div></div>
+</div>
+
+</div id="common-main-wrapper">
+
 <div id="promo-back" <%= @promo ? %Q{style="background-image:url(promo-bg.png)"} : ''%>></div>
+
 <div id="form-popup" class="hidden">
 	<div id="overlay"></div>
 	<div class="content">
@@ -103,7 +110,7 @@
 			<div class="fields">
 				<h2>I want to be there!</h2>
 				<div class="variable"></div>
-				<p class="limit"><%= @form_hint %> <input type="submit" value="Register!"/></p>
+				<p class="limit"><%= @form_hint %> <input type="submit" value="Внести меня в списки!"/></p>
 				<input type="hidden" name="event"/>
 				<input type="hidden" name="href"/>
 			</div>
