@@ -165,6 +165,7 @@ http://www.inshaker.ru/cocktail/vitamin/
 http://www.inshaker.ru/cocktail/vitamin_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/cherry_sambuca/
 http://www.inshaker.ru/cocktail/cherry-spice_cake_smoothie/
+http://www.inshaker.ru/cocktail/cherry_beer/
 http://www.inshaker.ru/cocktail/cherry_liqueur_and_grapefruit/
 http://www.inshaker.ru/cocktail/cherry_sour/
 http://www.inshaker.ru/cocktail/cherry_and_cherry/
@@ -367,6 +368,7 @@ http://www.inshaker.ru/cocktail/caribbean_apple_pie/
 http://www.inshaker.ru/cocktail/carribean_jewel/
 http://www.inshaker.ru/cocktail/carin/
 http://www.inshaker.ru/cocktail/autumn_in_karlovy_vary/
+http://www.inshaker.ru/cocktail/karma/
 http://www.inshaker.ru/cocktail/carnival_fizz/
 http://www.inshaker.ru/cocktail/kassini/
 http://www.inshaker.ru/cocktail/kvass_smoothie/
@@ -591,6 +593,7 @@ http://www.inshaker.ru/cocktail/mulata_daisy/
 http://www.inshaker.ru/cocktail/moulin_rouge/
 http://www.inshaker.ru/cocktail/multi_smash/
 http://www.inshaker.ru/cocktail/moonlight/
+http://www.inshaker.ru/cocktail/minty_beer/
 http://www.inshaker.ru/cocktail/minty_mulled_wine/
 http://www.inshaker.ru/cocktail/mint_julep/
 http://www.inshaker.ru/cocktail/minty_lemonade/
