@@ -7,7 +7,7 @@
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 93px; height: 30px; right: 0; top: -2px; }
-#alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }

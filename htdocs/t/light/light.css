@@ -95,7 +95,7 @@ html.safari button.rounded b { top: -1px; }
 
 
 /* branding.css */
-#alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
+#bottom .alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
