@@ -55,8 +55,6 @@ html.party-section #top .nav .party .link,
 html.blog-section #top .nav .blog .link
 { background: url(top-item-selected.png) repeat-x 0 19px; cursor: default; border-bottom: none !important; }
 
-#top .nav img{}
-#top .nav2{display:none;position:absolute;right:0;top:84px;line-height:24px;/*index-page*/}
 #top .logo { width: 147px; height: 60px; background-position: -250px 0; display: block; text-indent: 200px; overflow: hidden; }
 #index-page #top .logo { cursor: default; }
 
