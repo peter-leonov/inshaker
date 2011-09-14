@@ -59,6 +59,7 @@ http://www.inshaker.ru/cocktail/balbinus/
 http://www.inshaker.ru/cocktail/bamboo_2/
 http://www.inshaker.ru/cocktail/banana_sambuca/
 http://www.inshaker.ru/cocktail/banana-mandarin_fruit_drink_in_a_jug/
+http://www.inshaker.ru/cocktail/banshee/
 http://www.inshaker.ru/cocktail/barberries_fizz/
 http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
@@ -216,6 +217,7 @@ http://www.inshaker.ru/cocktail/blue_moon/
 http://www.inshaker.ru/cocktail/blueberry_collins/
 http://www.inshaker.ru/cocktail/blue_temptation/
 http://www.inshaker.ru/cocktail/horatius/
+http://www.inshaker.ru/cocktail/bitter_pill/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony_2/
 http://www.inshaker.ru/cocktail/hot_gold/
