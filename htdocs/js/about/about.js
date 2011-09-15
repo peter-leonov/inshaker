@@ -22,7 +22,7 @@ var AboutPage = {
 	init: function ()
 	{
 		var main = $('menu')
-		var tabs = $$('.content')
+		var tabs = $$('#main-column .content')
 		var buttons = $$('#menu a')
 		
 		var locationHash = new LocationHash()
