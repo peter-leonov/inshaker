@@ -21,17 +21,16 @@ table td{padding:0;}
 html{background-color:#fff;}
 body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
 
-/* navigation.css */
-#top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid #fff; background: #000 url(top-gradient-v.png) repeat-x scroll 0 0; }
-#top #top-content {position: relative; margin: 0 auto; width: 960px; }
-#top h2 { position: absolute; left: -9px; top: 3px; }
-#top .nav { position: absolute; left: 190px; top: 0; /*height: 65px;*/ width: 786px; overflow: hidden; font-weight: bold; }
-#top .nav li{float:left;margin-right:16px;}
+#top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
+#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#top .content { position: relative; width: 960px; height: 65px; margin: 0 auto; }
+#top .navigation { position: absolute; right: 0; top: 0; overflow: hidden; font-weight: bold; }
+#top .nav li { float: left; margin-right: 16px; }
 #top .nav .link { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
 #top .nav .link:hover{border-bottom: 5px solid;}
-#top .nav .blog { position: absolute; right: 0px; }
-#top .logo { width: 147px; height: 60px; background-position: -250px 0; display: block; text-indent: 200px; overflow: hidden; }
+
 #index-page #top .logo { cursor: default; }
+
 
 #bottom { position: relative; width: 960px; padding-top: 40px; margin: 0 auto; z-index: 1; font-size: 11px; line-height: 17px; }
 #bottom a { padding: 7px; }
