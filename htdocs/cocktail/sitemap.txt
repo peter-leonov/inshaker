@@ -93,6 +93,7 @@ http://www.inshaker.ru/cocktail/boca_chica/
 http://www.inshaker.ru/cocktail/big_apple/
 http://www.inshaker.ru/cocktail/big_apple_martini/
 http://www.inshaker.ru/cocktail/fighter/
+http://www.inshaker.ru/cocktail/greyhound/
 http://www.inshaker.ru/cocktail/borodinsky/
 http://www.inshaker.ru/cocktail/boston_tea/
 http://www.inshaker.ru/cocktail/bowling_in_tu-154/
@@ -160,6 +161,7 @@ http://www.inshaker.ru/cocktail/whisky_marmalade_drum/
 http://www.inshaker.ru/cocktail/whisky_peach_mint/
 http://www.inshaker.ru/cocktail/whisky_and_peach_tea/
 http://www.inshaker.ru/cocktail/whisky_with_cherry/
+http://www.inshaker.ru/cocktail/whisky_sour/
 http://www.inshaker.ru/cocktail/whisky_thai/
 http://www.inshaker.ru/cocktail/whisky_fizz/
 http://www.inshaker.ru/cocktail/whisky_with_apple_juice/
