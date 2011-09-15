@@ -1,5 +1,12 @@
-/* common.css */
+#top,
 #top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #76bd7b; }
+
+/* common.css */
 #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
@@ -16,7 +23,6 @@ html.msie-6 #branded-image-holder { position: absolute !important; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #329d5d; }
-#top .nav .link:hover { border-bottom-color: #76bd7b; }
 #bottom { color: #bbb; padding-top: 0; margin-top: 40px; }
 #bottom a { color: #48c179; }
 html { background: #000 url(bg.jpg) no-repeat center 65px; }
