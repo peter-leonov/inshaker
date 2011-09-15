@@ -41,6 +41,11 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 
 #spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
+
+/* menu tweks */
+html.party-section #top .link.party { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
+
+
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
 .common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; }
