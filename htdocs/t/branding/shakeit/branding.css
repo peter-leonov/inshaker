@@ -1,5 +1,12 @@
-/* common.css */
+#top,
 #top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #8dd013; }
+
+/* common.css */
 #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
@@ -10,7 +17,6 @@ button.rounded,
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
-#top .nav .link:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
 #bottom a {}
 html { background: #fff url(bg.png) repeat-x center top; }
