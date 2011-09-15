@@ -1,5 +1,12 @@
-/* common.css */
+#top,
 #top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #2e63c1; }
+
+/* common.css */
 .b-title #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
@@ -13,7 +20,6 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #2e63c1; }
-#top .nav .link:hover { border-bottom-color: #2e63c1; }
 #bottom { color: #888; }
 #bottom a { color: #2e63c1; background-color: #fff; }
 html { background: #fff url(bg.png) repeat-x center 60px; }
