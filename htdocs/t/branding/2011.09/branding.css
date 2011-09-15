@@ -1,5 +1,12 @@
-/* common.css */
+#top,
 #top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #ab0e1c; }
+
+/* common.css */
 #spotlighted,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
@@ -11,7 +18,6 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#top .nav .link:hover { border-bottom-color: #ab0e1c; }
 #bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 40px; position: static; }
 #bottom a { color: #e50000; }
 #bottom .main-menu,
