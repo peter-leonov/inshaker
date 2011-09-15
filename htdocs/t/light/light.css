@@ -32,11 +32,10 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 .rounding-corners .rb { right: 0; bottom: 0; background-position: 0 0; }
 
 /* navigation.css */
-#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid #fff; background: #000 url(top.png) repeat-x 0 -75px; }
+#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
-#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 60px; background-position: -248px 3px; text-indent: -1000px; overflow: hidden; }
-#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; color: #fff; }
-#top .link:hover { border-bottom: 5px solid; }
+#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 #top .link.blog { position: absolute; right: 0; }
 
 #index-page #top .logo { cursor: default; }
