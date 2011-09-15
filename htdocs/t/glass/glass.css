@@ -22,11 +22,9 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 
 #top { position: relative; z-index: 5; height: 60px; width: 100%; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
-#top .content { position: relative; width: 960px; height: 65px; margin: 0 auto; }
-#top .navigation { position: absolute; right: 0; top: 0; overflow: hidden; font-weight: bold; }
-#top .nav li { float: left; margin-right: 16px; }
-#top .nav .link { display: block; display: inline-block; height: 37px; font-size: 14px; text-decoration: none; color: #fff; border-bottom: 5px solid #fff; /*line-height: 48px;*/ padding: 23px 18px 0px; }
-#top .nav .link:hover{border-bottom: 5px solid;}
+#top .content { position: relative; width: 786px; height: 65px; padding-left: 174px;; margin: 0 auto; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; background-repeat: repeat-x; border-bottom: 5px solid transparent; background-position: 0 -1000px; }
+#top .link.blog { position: absolute; right: 0; }
 
 #index-page #top .logo { cursor: default; }
 
