@@ -26,7 +26,7 @@ body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding
 #top .link.blog { position: absolute; right: 0; }
 
 
-#bottom { position: relative; width: 960px; height: 150px; margin: 40px auto 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
+#bottom { position: relative; width: 962px; height: 150px; margin: 40px auto 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 #bottom .link { padding: 7px; }
 #bottom .link:first-child { padding-left: 0; }
 #bottom .link:last-child { padding-right: 0; }
