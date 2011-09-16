@@ -9,7 +9,6 @@
 #bottom .alcohol-harm { background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
-#top .nav .link:hover { border-bottom-color: #8dd013; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #8c7559 url(bg.jpg) center top; }
+html { background: #8c7559 url(bg.jpg) center top; color: #343b40; }
