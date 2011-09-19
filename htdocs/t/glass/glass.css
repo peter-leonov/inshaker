@@ -33,7 +33,7 @@ body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding
 #bottom .main-menu { position: absolute; top: 18px; right: 18px; }
 #bottom .about-menu { position: absolute; top: 18px; left: 18px; }
 #bottom .copyright { position: absolute; top: 37px; left: 18px; }
-#bottom .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 0; }
+#bottom .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
