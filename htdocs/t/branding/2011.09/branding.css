@@ -18,10 +18,8 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; padding-top: 40px; position: static; }
-#bottom a { color: #e50000; }
-#bottom .main-menu,
-#bottom .left-menu { position: relative; z-index: 1; }
+#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; }
+#bottom .link { color: #e50000; }
 html { background: #fff url(bg.jpg) center -130px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #fff; }
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
