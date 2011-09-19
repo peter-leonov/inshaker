@@ -1,158 +1,164 @@
 <!DOCTYPE html>
 <html id="mybar-page" class="mybar-section loading" lang="ru">
-	<head>
-		<!--# include file="/inc/mybar/head.html" -->
-		<link rel="stylesheet" type="text/css" href="/t/mybar/mybar.css" media="screen"/>
-		<title>Мой бар — Inshaker</title>
-	</head>
-	<body>
-		<!--# include file="/inc/top-common.html" -->
-		<div id="common-main-wrapper">
-			<div class="main-box">
-				<div class="ingredients-box  wrapper-box">
-					<div class="section-head">
-						<h2><input class="bar-name-editable" value="Мой бар"/><small class="advice">Придумай название!</small>&nbsp;</h2>
-						<div class="links">
-							<!-- <a class="purchase-plan-link" href="purchase-plan.html"></a> -->
-						</div>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="search-box">
-								<form>
-									<div class="hint hidden">Введи ингредиенты, которые есть в твоем баре</div>
-									<input class="query" name="query" autocomplete="off" value=""/>
-									<button type="submit" class="search-button">Добавить</button>
-									<button class="lucky-button">Мне повезет</button>
-								</form>
-								<ul class="autocomplete"><li class="item empty-message">такого ингредиента нет</li></ul>
-							</div>
-							<div class="ingredients-list"></div>
-							<div class="empty-box hidden">
-								<img class="image" src="/t/mybar/three-steps-illustration.png"/>
-							</div>
-							<div class="switcher hidden">
-								<div class="by-list"></div>
-								<div class="by-groups"></div>
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
+<head>
+	<!--# include file="/inc/mybar/head.html" -->
+	<link rel="stylesheet" type="text/css" href="/t/mybar/mybar.css" media="screen"/>
+	<title>Мой бар — Inshaker</title>
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+
+<div id="common-main-wrapper">
+
+<div class="main-box">
+	<div class="ingredients-box  wrapper-box">
+		<div class="section-head">
+			<h2><input class="bar-name-editable" value="Мой бар"/><small class="advice">Придумай название!</small>&nbsp;</h2>
+			<div class="links">
+				<!-- <a class="purchase-plan-link" href="purchase-plan.html"></a> -->
+			</div>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="search-box">
+					<form>
+						<div class="hint hidden">Введи ингредиенты, которые есть в твоем баре</div>
+						<input class="query" name="query" autocomplete="off" value=""/>
+						<button type="submit" class="search-button">Добавить</button>
+						<button class="lucky-button">Мне повезет</button>
+					</form>
+					<ul class="autocomplete"><li class="item empty-message">такого ингредиента нет</li></ul>
 				</div>
-				<div class="maybe-have-box wrapper-box hidden">
-					<div class="section-head">
-						<h2>Возможно в твоем баре уже есть!</h2>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="ingredients-list"></div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>					
+				<div class="ingredients-list"></div>
+				<div class="empty-box hidden">
+					<img class="image" src="/t/mybar/three-steps-illustration.png"/>
 				</div>
-				<div class="cocktails-box  wrapper-box">
-					<div class="section-head">
-						<h2>
-							<span class="have-cocktails">В моем баре есть всё для приготовления <span class="plural">0</span></span>
-							<span class="have-no-cocktails">Мои коктейли</span>
-						</h2>
-						<div class="links">
-							<a class="cocktails-cart-link" href="cocktail-cart-print.html"></a>
-						</div>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="cocktails-wrapper">
-								<div class="visible-cocktails"></div>
-								<dl class="hidden-cocktails">
-									<dt><div class="name-wrapper">Не хочу готовить<i></i></div></dt>
-									<dd class="list by-pics"></dd>
-								</dl>
-							</div>
-							<div class="empty-notice">
-								В твоем баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
-							</div>
-							<div class="switcher hidden">
-								<div class="by-pics"></div>
-								<div class="by-ingredients"></div>
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
-				</div>			
-				<div class="share-box single-box">
-					<div class="share-wrapper">
-						<div class="share-label"></div>
-						<a class="vkontakte-share" href="http://vkontakte.ru/share.php?url=${mybarlink}"></a>
-						<a class="facebook-share" href="http://www.facebook.com/sharer.php?u=${mybarlink}&t=%D0%9C%D0%BE%D0%B9%20%D0%B1%D0%B0%D1%80"></a>
-						<a class="twitter-share" href="http://twitter.com/share?url=${mybarlink}&via=inshaker&related=inshaker"></a>
-						<div class="email-share"></div>
-						<div class="web-share"></div>
-						<a class="menu-link" href="cocktail-cart-print.html">Распечатать меню</a>
-					</div>
-					<div class="email-share-popup hidden">
-						<form class="email-form" action="#">
-							<label><b>E-mail кому:</b><input name="address" class="address" value="" /></label>
-							<label><b>Ваше имя:</b><input name="mailer" class="mailer" value="" /></label>
-							<label><b>Текст:</b>
-								<textarea name="message-body" class="message-body">Вот мой бар ${mybarlink} !</textarea>
-							</label>
-						</form>
-						<span class="send-button">Отправить</span>
-						<span class="email-sended hidden">Письмо отправлено!</span>
-					</div>
-					<div class="web-share-popup hidden"><input type="text" value="" /></div>
+				<div class="switcher hidden">
+					<div class="by-list"></div>
+					<div class="by-groups"></div>
 				</div>
-				
-				<div class="recommends-box  wrapper-box">
-					<div class="section-head"><h2>Inshaker рекомендует пополнить бар и приготовить новые коктейли</h2></div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="tags-wrapper"><ul class="tags-list"></ul></div>
-							<div class="recommends-wrapper">
-								<dl class="recommends-list"></dl>
-								<ul class="must-have-list"></ul>
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="maybe-have-box wrapper-box hidden">
+		<div class="section-head">
+			<h2>Возможно в твоем баре уже есть!</h2>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="ingredients-list"></div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="cocktails-box  wrapper-box">
+		<div class="section-head">
+			<h2>
+				<span class="have-cocktails">В моем баре есть всё для приготовления <span class="plural">0</span></span>
+				<span class="have-no-cocktails">Мои коктейли</span>
+			</h2>
+			<div class="links">
+				<a class="cocktails-cart-link" href="cocktail-cart-print.html"></a>
+			</div>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="cocktails-wrapper">
+					<div class="visible-cocktails"></div>
+					<dl class="hidden-cocktails">
+						<dt><div class="name-wrapper">Не хочу готовить<i></i></div></dt>
+						<dd class="list by-pics"></dd>
+					</dl>
 				</div>
-			</div><!-- /main-box -->
-			<div class="please-wait single-box">Загружаю бар…</div>
-		</div><!-- /common-main-wrapper -->
-		<!--# include virtual="/inc/mybar/footer.html" -->
-		<script type="text/javascript" src="/js/common/oops.js"></script>
-		<!--[if lte IE 7]>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-selectors.js"></script>
-		<![endif]-->
-		<!--[if IE 8]>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script>
-		<![endif]-->
-		<!--[if lte IE 8]>
-		<script type="text/javascript" src="/lib-0.3/core/fixes/trident-3-4-input-select.js"></script>
-		<![endif]-->
-		<script type="text/javascript" src="/js/common/common-0.3.js"></script>
-		<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
-		<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
-		<script type="text/javascript" src="/js/common/mybar.js"></script>
-		<script type="text/javascript" src="/js/mybar/mybar.js"></script>
-		<script type="text/javascript">
-		;(function(){
-		var e = document.createEvent('Event')
-		e.initEvent('ready', false, false)
-		document.dispatchEvent(e)
-		})();
-		</script>
-	</body>
+				<div class="empty-notice">
+					В твоем баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
+				</div>
+				<div class="switcher hidden">
+					<div class="by-pics"></div>
+					<div class="by-ingredients"></div>
+				</div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="share-box single-box">
+		<div class="share-wrapper">
+			<div class="share-label"></div>
+			<a class="vkontakte-share" href="http://vkontakte.ru/share.php?url=${mybarlink}"></a>
+			<a class="facebook-share" href="http://www.facebook.com/sharer.php?u=${mybarlink}&t=%D0%9C%D0%BE%D0%B9%20%D0%B1%D0%B0%D1%80"></a>
+			<a class="twitter-share" href="http://twitter.com/share?url=${mybarlink}&via=inshaker&related=inshaker"></a>
+			<div class="email-share"></div>
+			<div class="web-share"></div>
+			<a class="menu-link" href="cocktail-cart-print.html">Распечатать меню</a>
+		</div>
+		<div class="email-share-popup hidden">
+			<form class="email-form" action="#">
+				<label><b>E-mail кому:</b><input name="address" class="address" value="" /></label>
+				<label><b>Ваше имя:</b><input name="mailer" class="mailer" value="" /></label>
+				<label><b>Текст:</b>
+					<textarea name="message-body" class="message-body">Вот мой бар ${mybarlink} !</textarea>
+				</label>
+			</form>
+			<span class="send-button">Отправить</span>
+			<span class="email-sended hidden">Письмо отправлено!</span>
+		</div>
+		<div class="web-share-popup hidden"><input type="text" value="" /></div>
+	</div>
+	
+	<div class="recommends-box  wrapper-box">
+		<div class="section-head"><h2>Inshaker рекомендует пополнить бар и приготовить новые коктейли</h2></div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="tags-wrapper"><ul class="tags-list"></ul></div>
+				<div class="recommends-wrapper">
+					<dl class="recommends-list"></dl>
+					<ul class="must-have-list"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+</div><!-- /main-box -->
+
+<div class="please-wait single-box">Загружаю бар…</div>
+
+</div id="common-main-wrapper">
+
+<!--# include virtual="/inc/mybar/footer.html" -->
+
+<script type="text/javascript" src="/js/common/oops.js"></script>
+<!--[if lte IE 7]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident3-selectors.js"></script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/lib-0.3/core/fixes/trident-3-4-input-select.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="/js/common/mybar.js"></script>
+<script type="text/javascript" src="/js/mybar/mybar.js"></script>
+<script type="text/javascript">
+;(function(){
+var e = document.createEvent('Event')
+e.initEvent('ready', false, false)
+document.dispatchEvent(e)
+})();
+</script>
+</body>
 </html>
