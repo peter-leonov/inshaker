@@ -161,7 +161,7 @@ http://www.inshaker.ru/cocktail/whisky_marmalade_drum/
 http://www.inshaker.ru/cocktail/whisky_peach_mint/
 http://www.inshaker.ru/cocktail/whisky_and_peach_tea/
 http://www.inshaker.ru/cocktail/whisky_with_cherry/
-http://www.inshaker.ru/cocktail/whisky_sour/
+http://www.inshaker.ru/cocktail/whisky_sour_mojo/
 http://www.inshaker.ru/cocktail/whisky_thai/
 http://www.inshaker.ru/cocktail/whisky_fizz/
 http://www.inshaker.ru/cocktail/whisky_with_apple_juice/
