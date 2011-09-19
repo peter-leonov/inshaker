@@ -23,8 +23,8 @@ html.msie-6 #branded-image-holder { position: absolute !important; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #329d5d; }
-#bottom { color: #bbb; padding-top: 0; margin-top: 40px; }
-#bottom a { color: #48c179; }
+#bottom { color: #bbb; }
+#bottom .link { color: #48c179; }
 html { background: #000 url(bg.jpg) no-repeat center 65px; }
 html.float-fixed,
 html.stick-bottom { background-attachment: fixed; background-position: center -20px; }
