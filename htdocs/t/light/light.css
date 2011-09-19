@@ -19,7 +19,7 @@ table td{padding:0;}
 .to-print{display:none;}
 
 html{background-color:#fff;}
-body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
+body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;}
 
 /* 0px to 10px rounded corners */
 .rounding-corners .lt,
@@ -38,7 +38,7 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 #top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 #top .link.blog { position: absolute; right: 0; }
 
-#bottom { position: relative; width: 962px; height: 140px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
+#bottom { position: relative; width: 962px; height: 170px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
 #bottom .link { padding: 7px; }
 #bottom .link:first-child { padding-left: 0; }
 #bottom .link:last-child { padding-right: 0; }
