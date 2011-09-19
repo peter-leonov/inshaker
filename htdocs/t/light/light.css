@@ -38,6 +38,16 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 #top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 #top .link.blog { position: absolute; right: 0; }
 
+#bottom { position: relative; width: 962px; height: 140px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
+#bottom .link { padding: 7px; }
+#bottom .link:first-child { padding-left: 0; }
+#bottom .link:last-child { padding-right: 0; }
+#bottom .main-menu { position: absolute; top: 18px; right: 0; }
+#bottom .about-menu { position: absolute; top: 18px; left: 0; }
+#bottom .copyright { position: absolute; top: 37px; left: 0; }
+#bottom .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+
+/* menu tweks */
 #index-page #top .logo { cursor: default; }
 
 #cocktails-page #top .link.cocktails,
@@ -55,26 +65,21 @@ html.party-section #top .link.party,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 
-
-
-#bottom{position:relative;z-index:1;font-size:1.1em;line-height:1.7;clear:both;padding-top:40px;margin:0 auto;width:960px;}
-#bottom a { padding: 7px; }
-#bottom .main-menu{float:right;}
-#bottom .left-menu { margin-left: -7px; }
-#index-page #bottom .main-menu a.main,
-#cocktails-page #bottom .main-menu a.cocktails,
-#cocktail-page #bottom .main-menu a.cocktails,
-#bars-page #bottom .main-menu a.bars,
-#bar-page #bottom .main-menu a.bars,
-#good-page #bottom .main-menu a.goods,
-#event-page #bottom .main-menu a.events,
-#academy-page #bottom .main-menu a.academy,
-html.job-section #bottom a.job,
-html.about-page #bottom a.about,
-#combinator-page #bottom .main-menu a.combinator,
-html.party-section #bottom .main-menu a.party,
-html.blog-section #bottom .main-menu a.blog
+#index-page #bottom .main-menu .link.main,
+#cocktails-page #bottom .main-menu .link.cocktails,
+#cocktail-page #bottom .main-menu .link.cocktails,
+#bars-page #bottom .main-menu .link.bars,
+#bar-page #bottom .main-menu .link.bars,
+#good-page #bottom .main-menu .link.goods,
+#event-page #bottom .main-menu .link.events,
+#academy-page #bottom .main-menu .link.academy,
+html.job-section #bottom .link.job,
+html.about-page #bottom .link.about,
+#combinator-page #bottom .main-menu .link.combinator,
+html.party-section #bottom .main-menu .link.party,
+html.blog-section #bottom .main-menu .link.blog
 { color: inherit; cursor: default; text-decoration: none !important; }
+
 
 /* that great buttons */
 button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
@@ -92,7 +97,6 @@ html.safari button.rounded b { top: -1px; }
 
 
 /* branding.css */
-#bottom .alcohol-harm { margin-top: 30px; width: 960px; height: 60px; background-position: 0 0; }
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
