@@ -11,7 +11,7 @@
 a { color: #0392f1; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #8c7559 url(bg.jpg) center top; color: #343b40; }
+html { background: #d9d8d8 url(bg.png) center top; color: #343b40; }
 
 .common-box .common-title,
 .common-box .common-content { background-image: url(common.png); }
