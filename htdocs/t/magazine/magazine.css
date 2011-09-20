@@ -18,7 +18,7 @@
 #promo-next { background-position: 0 0; right: 0;}
 #promo-prev { background-position: -59px 0; left: 0px; }
 
-.info-blocks { margin: 21px 0 0 0px; }
+.info-blocks { margin: 21px 0 0 0px; overflow: hidden; }
 .info-blocks .box { float: left; width: 221px; height: 157px; overflow: hidden; margin-right: 21px; }
 .info-blocks .box.last { margin-right: 0; }
 .info-blocks .box.second { margin-right: 20px; }

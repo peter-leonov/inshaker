@@ -126,7 +126,9 @@ function compile (str, hash)
 var cache = {}
 function interpolate ()
 {
-	var f = this in cache ? cache[this] : (cache[this] = compile(this))
+	var f = cache[this]
+	if (!f)
+		f = cache[this] = compile(this)
 	
 	if (typeof f === 'string')
 		return f
@@ -135,7 +137,7 @@ function interpolate ()
 		try { return f.apply(this, arguments) }
 		catch (ex)
 		{
-			log('Error while executing string: "' + this + '"')
+			ex.message += ', while executing string: "' + this + '"'
 			throw ex
 		}
 	}

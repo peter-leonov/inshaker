@@ -1,0 +1,72 @@
+body,table,
+h1,h2,h3,h4,
+p,form,
+fieldset,legend,
+ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
+h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
+td{font-size:1em;vertical-align:top;}
+img{vertical-align:middle;}
+a { cursor: pointer; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a img{border:0;}
+input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
+input,select,textarea{font-size:1.1em;}
+input[type="password"],
+input[type="text"]{margin:0;}
+ul{list-style-type:none;}
+table{border:0;border-collapse:collapse;}
+table td{padding:0;}
+.to-print{display:none;}
+body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding:0;}
+
+#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
+#top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
+#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
+#top .link.blog { position: absolute; right: 0; }
+
+
+#bottom { position: relative; width: 962px; height: 150px; margin: 40px auto 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
+#bottom .link { padding: 7px; }
+#bottom .link:first-child { padding-left: 0; }
+#bottom .link:last-child { padding-right: 0; }
+#bottom .main-menu { position: absolute; top: 18px; right: 18px; }
+#bottom .about-menu { position: absolute; top: 18px; left: 18px; }
+#bottom .copyright { position: absolute; top: 37px; left: 18px; }
+#bottom .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+
+#branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
+#branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
+#branded-image { display: block; position: absolute; }
+
+#spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
+
+
+/* menu tweks */
+#index-page #top .logo { cursor: default; }
+html.party-section #top .link.party { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
+html.party-section #bottom .link.party { color: inherit; cursor: default; text-decoration: none !important; }
+
+
+/* really common rules */
+#common-main-wrapper { margin: 0 auto; width: 962px; }
+.common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; }
+.common-box .common-title { padding: 22px 22px 22px 22px; background-position: 0 0; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.common-box .common-title .common-name { color: #fff; font-size: 24px; font-weight: bold; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
+.common-box .common-content { padding: 14px 18px 14px 18px; background: 0 -75px repeat-x; border: 1px solid; border-radius: 7px; border-top-left-radius: 0; border-top-right-radius: 0; }
+
+.cocktail-list .prev,
+.cocktail-list .next { position: absolute; top: 54px; height: 14px; width: 14px; z-index: 2; }
+.cocktail-list .prev { background-position: -500px 0; left: 0px; }
+.cocktail-list .next { background-position: -525px 0; right: -2px; }
+.cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
+.cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
+
+#share-box .button { display: inline-block; width: 30px; height: 30px; }
+#share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+#share-box .button.facebook i { background-position: -150px 0; }
+#share-box .button.facebook:hover i { background-position: -175px 0; }
+#share-box .button.twitter i { background-position: -150px -25px; }
+#share-box .button.twitter:hover i { background-position: -175px -25px; }
+#share-box .button.vkontakte i { background-position: -150px -50px; }
+#share-box .button.vkontakte:hover i { background-position: -175px -50px; }
