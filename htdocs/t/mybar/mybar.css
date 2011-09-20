@@ -10,13 +10,10 @@ html.loading .main-box { display: none; }
 .main-box .wrapper-box .section-bottom { height: 15px; width: 982px; position: relative; left: -11px; background: url('mybar.png') 0px -85px no-repeat; }
 .wrapper-box, .single-box { margin: 20px 0px; }
 .main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
-.main-box .wrapper-box .section-wrapper .left-shadow, .main-box .wrapper-box .section-wrapper .right-shadow,
-#bottom .wrapper .content .left-shadow,
-#bottom .wrapper .content .right-shadow { position: absolute; width: 11px; top: 0; height: 100%; background: url('mybar.png') repeat-y; }
 .main-box .wrapper-box .section-wrapper .left-shadow,
-#bottom .wrapper .content .left-shadow { left: -11px; background-position: -1079px 0px; }
 .main-box .wrapper-box .section-wrapper .right-shadow,
-#bottom .wrapper .content .right-shadow { right: -11px; background-position: -1090px 0px; }
+.main-box .wrapper-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
+.main-box .wrapper-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
 .main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
@@ -269,12 +266,7 @@ html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 .main-box .mybar-link-box.newbie .mybar-link { background-position: -470px -457px;; width: 171px; }
 
 /*footer*/
-#bottom { padding-top: 5px; }
-#bottom .wrapper { width: 960px; margin: 0 auto; }
-#bottom .wrapper .top-corners { width: 980px; height: 18px; position: relative; left: -10px; background: url('top-corners.png') no-repeat left top; }
-#bottom .wrapper .content { padding: 10px 23px 0 23px; background: #fff; position: relative; }
 #bottom a { color: #2e63c1; }
-#bottom #alcohol-harm { padding-bottom: 3px; margin-left: -23px; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
