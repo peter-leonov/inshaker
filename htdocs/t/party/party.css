@@ -44,7 +44,7 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 .transparent-borders .top,
 .transparent-borders .right,
 .transparent-borders .bottom,
-.transparent-borders .left { position: absolute; }
+.transparent-borders .left { position: absolute; z-index: 1; }
 .transparent-borders .top,
 .transparent-borders .bottom { height: 1px; }
 .transparent-borders .right,
