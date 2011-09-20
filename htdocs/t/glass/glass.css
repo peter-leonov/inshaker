@@ -44,8 +44,10 @@ body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding
 
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
-html.party-section #top .link.party { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
-html.party-section #bottom .link.party { color: inherit; cursor: default; text-decoration: none !important; }
+html.party-section #top .link.party,
+html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
+html.party-section #bottom .link.party,
+html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-decoration: none !important; }
 
 
 /* really common rules */
