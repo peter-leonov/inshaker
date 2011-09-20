@@ -1,102 +1,113 @@
 <!DOCTYPE html>
 <html id="foreing-page" class="foreign-section loading" lang="ru">
-	<head>
-		<!--# include file="/inc/mybar/head.html" -->
-		<link rel="stylesheet" type="text/css" href="/t/mybar/mybar.css" media="screen"/>
-		<title>Бар — Inshaker</title>
-		<meta property="og:title" content="Мой бар"/>
-		<meta property="og:site_name" content="Коктейльный сайт Inshaker.ru"/>
-		<meta property="og:image" content="http://www.inshaker.ru/t/mybar/printer/logo.png"/>
-		<meta property="fb:admins" content="702933134,1419016311,100001016828481"/> 
-	</head>
-	<body>
-		<!--# include file="/inc/top-common.html" -->
-		<div id="common-main-wrapper">
-			<div class="main-box">
-				<div class="ingredients-box  wrapper-box">
-					<div class="section-head">
-						<h2><span class="bar-name">Бар</span></h2>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="ingredients-list"></div>
-							<div class="empty-notice hidden">
-								В этом баре пока нет ингредиентов.
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<link rel="stylesheet" type="text/css" href="/t/glass/glass.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/branding/drinkit/branding.css"/>
+	<link rel="stylesheet" type="text/css" href="/t/mybar/mybar.css" media="screen"/>
+	<title>Бар — Inshaker</title>
+	<meta property="og:title" content="Мой бар"/>
+	<meta property="og:site_name" content="Коктейльный сайт Inshaker.ru"/>
+	<meta property="og:image" content="http://www.inshaker.ru/t/mybar/printer/logo.png"/>
+	<meta property="fb:admins" content="702933134,1419016311,100001016828481"/> 
+</head>
+<body>
+<!--# include file="/inc/top-common.html" -->
+
+<div id="common-main-wrapper">
+
+<div class="main-box">
+	<div class="ingredients-box  wrapper-box">
+		<div class="section-head">
+			<h2><span class="bar-name">Бар</span></h2>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="ingredients-list"></div>
+				<div class="empty-notice hidden">
+					В этом баре пока нет ингредиентов.
 				</div>
-				<div class="cocktails-box  wrapper-box">
-					<div class="section-head">
-						<h2>
-							<span class="have-cocktails">В этом баре есть всё для приготовления <span class="plural"></span></span>
-							<span class="have-no-cocktails">Коктейли</span>
-						</h2>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="cocktails-wrapper">
-								<div class="cocktails-list"></div>
-							</div>
-							<div class="empty-notice hidden">
-								В этом баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
-							</div>
-							<div class="switcher hidden">
-								<div class="by-pics"></div>
-								<div class="by-ingredients"></div>
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
-				</div>
-				<div class="fail-box  wrapper-box hidden">
-					<div class="section-head">
-						<h2>Такого бара нет!</h2>
-					</div>
-					<div class="section-wrapper">
-						<div class="left-shadow"></div>
-						<div class="right-shadow"></div>
-						<div class="content">
-							<div class="empty-notice">
-								Бара по этому адресу нет :( <br />
-								Пожалуйста, проверьте адресную строку. Скорее всего там ошибка.
-							</div>
-						</div>
-					</div>
-					<div class="section-bottom"></div>
-				</div>
-				<div class="mybar-link-box single-box">
-					<a class="mybar-link" href="./"></a>
-				</div>
-			</div><!-- /main-box -->
-			<div class="please-wait single-box">
-				<div class="load-bar"></div>
 			</div>
-		</div><!-- /common-main-wrapper -->
-		<!--# include virtual="/inc/mybar/footer.html" -->
-		<script type="text/javascript" src="/js/common/oops.js"></script>
-		<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script><![endif]-->
-		<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script><![endif]-->
-		<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3-selectors.js"></script><![endif]-->
-		<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
-		<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script><![endif]-->
-		<!--[if lte IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident-3-4-input-select.js"></script><![endif]-->
-		<script type="text/javascript" src="/js/common/common-0.3.js"></script>
-		<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
-		<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
-		<script type="text/javascript" src="/js/common/mybar.js"></script>
-		<script type="text/javascript" src="/js/foreign/foreign.js"></script>
-		<script type="text/javascript">
-		;(function(){
-		var e = document.createEvent('Event')
-		e.initEvent('ready', false, false)
-		document.dispatchEvent(e)
-		})();
-		</script>
-	</body>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="cocktails-box  wrapper-box">
+		<div class="section-head">
+			<h2>
+				<span class="have-cocktails">В этом баре есть всё для приготовления <span class="plural"></span></span>
+				<span class="have-no-cocktails">Коктейли</span>
+			</h2>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="cocktails-wrapper">
+					<div class="cocktails-list"></div>
+				</div>
+				<div class="empty-notice hidden">
+					В этом баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
+				</div>
+				<div class="switcher hidden">
+					<div class="by-pics"></div>
+					<div class="by-ingredients"></div>
+				</div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="fail-box  wrapper-box hidden">
+		<div class="section-head">
+			<h2>Такого бара нет!</h2>
+		</div>
+		<div class="section-wrapper">
+			<div class="left-shadow"></div>
+			<div class="right-shadow"></div>
+			<div class="content">
+				<div class="empty-notice">
+					Бара по этому адресу нет :( <br />
+					Пожалуйста, проверьте адресную строку. Скорее всего там ошибка.
+				</div>
+			</div>
+		</div>
+		<div class="section-bottom"></div>
+	</div>
+	<div class="mybar-link-box single-box">
+		<a class="mybar-link" href="./"></a>
+	</div>
+</div><!-- /main-box -->
+			
+<div class="please-wait single-box">
+	<div class="load-bar"></div>
+</div>
+
+</div id="common-main-wrapper">
+
+<!--# include virtual="/inc/bottom-common.html" -->
+<!--# include virtual="/inc/ingredient-popup.html" -->
+
+
+<script type="text/javascript" src="/js/common/oops.js"></script>
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3.js"></script><![endif]-->
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3-input-selection.js"></script><![endif]-->
+<!--[if lte IE 7]><script type="text/javascript" src="/lib-0.3/core/fixes/trident3-selectors.js"></script><![endif]-->
+<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4.js"></script><![endif]-->
+<!--[if IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident4-input-selection.js"></script><![endif]-->
+<!--[if lte IE 8]><script type="text/javascript" src="/lib-0.3/core/fixes/trident-3-4-input-select.js"></script><![endif]-->
+<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<script type="text/javascript" src="/js/entities/Ingredient.js"></script>
+<script type="text/javascript" src="/js/common/mybar.js"></script>
+<script type="text/javascript" src="/js/foreign/foreign.js"></script>
+<script type="text/javascript">
+;(function(){
+var e = document.createEvent('Event')
+e.initEvent('ready', false, false)
+document.dispatchEvent(e)
+})();
+</script>
+</body>
 </html>
