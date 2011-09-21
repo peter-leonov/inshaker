@@ -11,9 +11,10 @@
 a { color: #0392f1; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #d9d8d8 url(bg.png) center top; color: #343b40; }
+html { background: #d9d8d8 url(bg.png) center top; color: #000; }
 
 .common-box .common-title,
-.common-box .common-content { background-image: url(common.png); }
+.common-box .common-content-gradiented { background-image: url(common.png); }
 .common-box .common-title { border-color: rgba(255, 250, 250, 0.65); border-bottom-color: #000; }
-.common-box .common-content { background-color: #fff; border-color: #fff; }
+.common-box .common-content-plain { background-color: #fff; }
+.common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
