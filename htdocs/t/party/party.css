@@ -36,6 +36,8 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 #purchase-plan { margin-top: 25px; }
 #purchase-plan .head { font-size: 22px; }
 
+.common-box { margin-bottom: 30px; }
+
 
 .transparent-borders .top,
 .transparent-borders .right,
