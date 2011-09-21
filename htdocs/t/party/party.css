@@ -1,9 +1,6 @@
-#common-main-wrapper { z-index: 1; font-size: 13px; }
+body { font-size: 14px; }
 
-#main-column .common-title { position: relative; }
-#main-column .common-title .navigation { position: absolute; right: 0; bottom: 15px; font-size: 11px; }
-#main-column .common-title .navigation a.hidden { cursor: default; color: #ccc; }
-#main-column .common-title .navigation li { display: inline; margin: 0 4px; vertical-align: middle; }
+#common-main-wrapper { z-index: 1; }
 
 #window { position: relative; width: 962px; height: 450px; background-color: #eee; }
 #window.loading .layer { visibility: hidden; }
