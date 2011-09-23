@@ -112,6 +112,7 @@ http://www.inshaker.ru/cocktail/bronx/
 http://www.inshaker.ru/cocktail/vaccinieas_with_orange/
 http://www.inshaker.ru/cocktail/tambourine_shots/
 http://www.inshaker.ru/cocktail/booze_fizz/
+http://www.inshaker.ru/cocktail/boombox/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_orange/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_cowberries/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_cherries/
@@ -150,6 +151,7 @@ http://www.inshaker.ru/cocktail/vergilius/
 http://www.inshaker.ru/cocktail/heathy_tea/
 http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/vesper/
+http://www.inshaker.ru/cocktail/evening_grog/
 http://www.inshaker.ru/cocktail/evergreen_fizz/
 http://www.inshaker.ru/cocktail/broken_brain/
 http://www.inshaker.ru/cocktail/grape_cobler_317/
@@ -364,6 +366,7 @@ http://www.inshaker.ru/cocktail/caligula/
 http://www.inshaker.ru/cocktail/arrowwood_martini/
 http://www.inshaker.ru/cocktail/calvados_infused_on_plums/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
+http://www.inshaker.ru/cocktail/kamikaze_in_a_shaker/
 http://www.inshaker.ru/cocktail/capri/
 http://www.inshaker.ru/cocktail/cardicas/
 http://www.inshaker.ru/cocktail/karel_gott/
@@ -684,6 +687,7 @@ http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
 http://www.inshaker.ru/cocktail/fire_in_texas/
+http://www.inshaker.ru/cocktail/pornstar/
 http://www.inshaker.ru/cocktail/potenziale_special/
 http://www.inshaker.ru/cocktail/lost/
 http://www.inshaker.ru/cocktail/kisses_and_warm_hugs/
@@ -695,12 +699,14 @@ http://www.inshaker.ru/cocktail/nasty_slush/
 http://www.inshaker.ru/cocktail/spicy_grapefruit/
 http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
 http://www.inshaker.ru/cocktail/spicy_saloop/
+http://www.inshaker.ru/cocktail/bird_shit/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/little_bee/
 http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
 http://www.inshaker.ru/cocktail/fifth_element/
+http://www.inshaker.ru/cocktail/squashed_frog/
 http://www.inshaker.ru/cocktail/raquel/
 http://www.inshaker.ru/cocktail/ramcooler/
 http://www.inshaker.ru/cocktail/rastafarai/
@@ -758,6 +764,7 @@ http://www.inshaker.ru/cocktail/ruby/
 http://www.inshaker.ru/cocktail/rouge/
 http://www.inshaker.ru/cocktail/russian_long_island/
 http://www.inshaker.ru/cocktail/russian_national/
+http://www.inshaker.ru/cocktail/russian_flag/
 http://www.inshaker.ru/cocktail/russian-japanese_war/
 http://www.inshaker.ru/cocktail/ryazanov/
 http://www.inshaker.ru/cocktail/near_fidel/
@@ -800,6 +807,7 @@ http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/singapore_sling/
 http://www.inshaker.ru/cocktail/lilac_mist/
 http://www.inshaker.ru/cocktail/fairy_tale/
+http://www.inshaker.ru/cocktail/scaffa/
 http://www.inshaker.ru/cocktail/skittles/
 http://www.inshaker.ru/cocktail/sweet_memories/
 http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
@@ -963,6 +971,7 @@ http://www.inshaker.ru/cocktail/chocolate-orange_martini/
 http://www.inshaker.ru/cocktail/chocolate_honey/
 http://www.inshaker.ru/cocktail/chocolate_milkshake/
 http://www.inshaker.ru/cocktail/chocolate_cheesecake_smoothie/
+http://www.inshaker.ru/cocktail/pavlov_s_shot/
 http://www.inshaker.ru/cocktail/scotch_old_fashioned/
 http://www.inshaker.ru/cocktail/hullabaloo/
 http://www.inshaker.ru/cocktail/sorrel_lemonade_in_a_jug/
