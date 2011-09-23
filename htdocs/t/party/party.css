@@ -16,13 +16,15 @@ body { font-size: 14px; }
 
 #illustration-box .content .description { font-style: italic; font-family: Georgia; font-size: 15px; line-height: 21px; }
 
-#recipe-list .recipe { position: relative; min-height: 250px; margin: 20px 0 50px 0; }
-#recipe-list .recipe .name { font-size: 24px; margin-bottom: 35px; }
-#recipe-list .recipe .image-box,
-#recipe-list .instructions { display: inline-block; }
-#recipe-list .recipe .image-box { vertical-align: middle; width: 210px; text-align: center; }
-#recipe-list .instructions { margin-left: 30px; width: 500px; vertical-align: middle; }
-#recipe-list .instructions .instruction { list-style: decimal; }
+#recipe-list .recipe { position: relative; overflow: hidden; margin: 20px 0 50px 0; }
+#recipe-list .recipe .name { font-size: 24px; }
+#recipe-list .recipe .image-box { float: left; width: 230px; text-align: center; margin-top: 30px; }
+#recipe-list .ingredients { overflow: hidden; width: 670px; margin: 35px 0 0 274px; }
+#recipe-list .ingredients .ingredient-preview { float: left; margin: 0 20px 20px 0; cursor: pointer; }
+#recipe-list .instructions { margin: 0 0 0 274px; width: 500px; }
+#recipe-list .instructions .head { margin-bottom: 10px; font-weight: bold; font-size: 14px; }
+#recipe-list .instructions .instruction { list-style: decimal; margin: 0 0 5px 0; color: #ccc; }
+#recipe-list .instructions .instruction .text { color: #000 }
 
 #advice-list .advice .name { font-size: 24px; line-height: 24px; }
 #advice-list .advice .image { margin: 20px 0; }
