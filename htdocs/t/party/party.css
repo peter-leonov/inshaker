@@ -44,6 +44,13 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 .cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
 .cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
 
+.ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
+html.msie-8 .ingredient-preview:before,
+html.opera-10-0 .ingredient-preview:before,
+html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0; display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
+html.msie-6 .ingredient-preview,
+html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
+
 #purchase-plan { margin-top: 25px; }
 #purchase-plan .head { font-size: 22px; }
 
