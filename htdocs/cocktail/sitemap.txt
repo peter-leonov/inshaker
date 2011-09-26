@@ -23,6 +23,7 @@ http://www.inshaker.ru/cocktail/americano/
 http://www.inshaker.ru/cocktail/americano_2/
 http://www.inshaker.ru/cocktail/amigo/
 http://www.inshaker.ru/cocktail/pineapple-pomegranate_fresh/
+http://www.inshaker.ru/cocktail/pineapple-apple_milkshake/
 http://www.inshaker.ru/cocktail/pineapple_whisky/
 http://www.inshaker.ru/cocktail/pineapple_detox/
 http://www.inshaker.ru/cocktail/angel_s_tit/
@@ -246,6 +247,7 @@ http://www.inshaker.ru/cocktail/green_tini/
 http://www.inshaker.ru/cocktail/green_hope/
 http://www.inshaker.ru/cocktail/grog/
 http://www.inshaker.ru/cocktail/pear_breeze/
+http://www.inshaker.ru/cocktail/pear_milkshake/
 http://www.inshaker.ru/cocktail/pears_shot/
 http://www.inshaker.ru/cocktail/guav-berry_martini/
 http://www.inshaker.ru/cocktail/good_time_girl/
@@ -385,6 +387,10 @@ http://www.inshaker.ru/cocktail/questo_successo/
 http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/cambridge/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
+http://www.inshaker.ru/cocktail/kefir-cowberry_milkshake/
+http://www.inshaker.ru/cocktail/kefir-raspberry_milkshake/
+http://www.inshaker.ru/cocktail/kefir-seabuckthorn_milkshake/
+http://www.inshaker.ru/cocktail/kefir-fruit_milkshake/
 http://www.inshaker.ru/cocktail/kiwi_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/kilim/
 http://www.inshaker.ru/cocktail/kin-dza-dza/
@@ -653,6 +659,7 @@ http://www.inshaker.ru/cocktail/dreadlock_holiday/
 http://www.inshaker.ru/cocktail/hunter/
 http://www.inshaker.ru/cocktail/ocha_karai/
 http://www.inshaker.ru/cocktail/mesmerized/
+http://www.inshaker.ru/cocktail/very_scary_punch/
 http://www.inshaker.ru/cocktail/paloma/
 http://www.inshaker.ru/cocktail/paloma_light/
 http://www.inshaker.ru/cocktail/paloma_chaser/
