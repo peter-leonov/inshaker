@@ -60,8 +60,17 @@ html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0
 html.msie-6 .ingredient-preview,
 html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-#purchase-plan { margin-top: 25px; }
-#purchase-plan .head { font-size: 22px; }
+#purchase-plan {  }
+#purchase-plan .ingredients-list { width: 450px; }
+#purchase-plan .ingredients-list .head { font-size: 18px; font-weight: bold; padding: 0 0 12px 0; border-bottom: 2px solid #777; text-indent: -1px; }
+#purchase-plan .ingredients-list .list .ingredient { position: relative; padding: 7px 0 9px 0; border-bottom: 1px solid #f2f2f2; }
+#purchase-plan .ingredients-list .list .ingredient:last-child { border-bottom: none; }
+#purchase-plan .ingredients-list .list .ingredient .amount,
+#purchase-plan .ingredients-list .list .ingredient .unit,
+#purchase-plan .ingredients-list .list .ingredient .cost { position: absolute; }
+#purchase-plan .ingredients-list .list .ingredient .amount { right: 130px; padding: 0 3px 2px 3px; text-align: right; border-bottom: 1px dasged; }
+#purchase-plan .ingredients-list .list .ingredient .unit { color: #ccc; left: 325px; }
+#purchase-plan .ingredients-list .list .ingredient .cost { right: 7px; }
 
 .common-box { margin-bottom: 30px; }
 
