@@ -2,7 +2,7 @@ body { font-size: 14px; }
 
 #common-main-wrapper { z-index: 1; }
 
-#window { position: relative; width: 962px; height: 420px; background-color: #eee; }
+#window { position: relative; width: 962px; height: 450px; background-color: #eee; }
 #window.loading .layer { visibility: hidden; }
 #window.loading .stub { display: block; background: center; }
 #window .stub { display: none; width: 100%; height: 100%; }
