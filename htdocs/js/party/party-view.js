@@ -231,13 +231,6 @@ Me.prototype =
 		this.nodes.peopleCount.value = count
 	},
 	
-	updateCocktailsCount: function (count)
-	{
-		var nodes = this.nodes
-		nodes.cocktailsCount.firstChild.nodeValue = count
-		nodes.cocktailsCountNoun.firstChild.nodeValue = count.plural('коктейль', 'коктейля', 'коктейлей')
-	},
-	
 	guessParty: function ()
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')

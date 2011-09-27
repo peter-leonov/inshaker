@@ -56,7 +56,6 @@ Me.prototype =
 		}
 		
 		this.view.updateCocktails(counts)
-		this.view.updateCocktailsCount(total)
 	},
 	
 	setCocktailCount: function (n, v)

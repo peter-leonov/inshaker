@@ -27,9 +27,7 @@ function onready ()
 		recipeList: $$('#recipe-list')[0],
 		peopleCount: $$('#cocktail-plan .head .people .count')[0],
 		body: $$('#cocktail-plan .body')[0],
-		cocktails: $$('#cocktail-plan .body .cocktails')[0],
-		cocktailsCount: $$('#purchase-plan .head .count')[0],
-		cocktailsCountNoun: $$('#purchase-plan .head .noun')[0]
+		cocktails: $$('#cocktail-plan .body .cocktails')[0]
 	}
 	
 	RoundedCorners.round(nodes.window.root)
