@@ -61,10 +61,10 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 
 .cocktail-list .prev,
 .cocktail-list .next { position: absolute; top: 54px; height: 14px; width: 14px; z-index: 2; }
-.cocktail-list .prev { background-position: -500px 0; left: 0px; }
-.cocktail-list .next { background-position: -525px 0; right: -2px; }
-.cocktail-list .prev.disabled { background-position: -500px -25px; cursor: default; }
-.cocktail-list .next.disabled { background-position: -525px -25px; cursor: default; }
+.cocktail-list .prev { background-position: 0 0; left: 0; }
+.cocktail-list .next { background-position: -25px 0; right: -2px; }
+.cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
+.cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
 #share-box .button { display: inline-block; width: 30px; height: 30px; }
 #share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
