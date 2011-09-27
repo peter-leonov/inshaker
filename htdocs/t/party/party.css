@@ -46,11 +46,12 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 #cocktail-plan .cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
 #cocktail-plan .cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
 
-.serviette { position: relative; margin: 12px -19px 12px -19px; background: url(serviette.png) -962px 0; min-height: 150px; }
+.serviette { position: relative; margin: 24px 0; padding: 20px; background: url(serviette.png) -962px 0; min-height: 150px; }
 .serviette:before,
 .serviette:after { position: absolute; left: 0; width: 962px; height: 12px; background-image: url(serviette.png); content: ''; }
 .serviette:before { top: -12px; background-position: 0 0; }
 .serviette:after { bottom: -12px; background-position: 0 -13px; }
+.common-box .serviette { margin-left: -19px; margin-right: -19px; }
 
 .ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
 html.msie-8 .ingredient-preview:before,
