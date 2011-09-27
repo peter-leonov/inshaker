@@ -1,4 +1,4 @@
-.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; }
+.ingredient-window { position: relative; min-height: 200px; padding: 30px 0 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; box-shadow: 0 0 20px -3px #ffb; }
 .ingredient-window .description { overflow: hidden; }
 .ingredient-window .photo { float: left; position: relative; width: 290px; padding: 5px 10px 0 20px; text-align: center; }
 .ingredient-window .about { margin: 0 45px 0 0; width: 320px; overflow: hidden; font-size: 12px; }

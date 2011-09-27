@@ -1,5 +1,5 @@
 .popup { position: absolute; z-index: 100; }
-.popup .popup-back { position: absolute; background-color: #000; opacity: 0.75; position: absolute; left: 0; top: 0; bottom: 0; right: 0; }
+.popup .popup-back { position: absolute; background-color: #000; opacity: 0.8; position: absolute; left: 0; top: 0; bottom: 0; right: 0; }
 .popup,
 .popup .popup-back { left: 0; top: 0; bottom: 0; right: 0; }
 
