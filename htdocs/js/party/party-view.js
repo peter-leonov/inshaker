@@ -30,6 +30,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		// this.loadWindow()
+		this.bindIngredientPopup()
 		this.bindEvents()
 		
 		return this
@@ -92,6 +93,44 @@ Me.prototype =
 		root.addEventListener('mousemove', move, false)
 		position(0)
 		root.removeClassName('loading')
+	},
+	
+	bindIngredientPopup: function ()
+	{
+		var nodes = this.nodes
+		
+		function findIngredientInParents (node)
+		{
+			do
+			{
+				var ingredient = node.getAttribute('data-ingredient')
+				if (ingredient)
+					return ingredient
+			}
+			while ((node = node.parentNode))
+			
+			return false
+		}
+		
+		var view = this
+		function maybeIngredientClicked (target)
+		{
+			var name = findIngredientInParents(target)
+			if (name)
+				view.controller.ingredientSelected(name)
+		}
+		
+		function onclick (e)
+		{
+			maybeIngredientClicked(e.target)
+		}
+		
+		nodes.recipeList.addEventListener('click', onclick, false)
+	},
+	
+	showIngredientPopup: function (ingredient)
+	{
+		IngredientPopup.show(ingredient)
 	},
 	
 	bindEvents: function ()

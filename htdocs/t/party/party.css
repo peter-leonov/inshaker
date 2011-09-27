@@ -40,11 +40,11 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 #cocktail-plan .body .cocktails .portion .control { font-size: 22px; text-align: center; line-height: 24px; margin: 15px 0 0 0; }
 #cocktail-plan .body .cocktails .portion .control .count { width: 50px; font-size: 24px; text-align: center; margin-right: 10px; }
 
-.cocktail-preview { text-align: center; }
-.cocktail-preview .link,
-.cocktail-preview .link .image { display: block; }
-.cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
-.cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
+#cocktail-plan .cocktail-preview { text-align: center; }
+#cocktail-plan .cocktail-preview .link,
+#cocktail-plan .cocktail-preview .link .image { display: block; }
+#cocktail-plan .cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
+#cocktail-plan .cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
 
 .ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
 html.msie-8 .ingredient-preview:before,
@@ -71,3 +71,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 .transparent-borders .right { right: 0; top: 0; bottom: 0; }
 .transparent-borders .bottom { bottom: 0; left: 1px; right: 1px; }
 .transparent-borders .left { left: 0; top: 0; bottom: 0; }
+
+.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
+
+<!--# include virtual="/t/popup.css" -->
+<!--# include virtual="/t/ingredient-popup.css" -->

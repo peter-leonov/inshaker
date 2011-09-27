@@ -15,6 +15,13 @@ Me.prototype =
 		this.setupCocktails(this.party.cocktails)
 	},
 	
+	selectIngredientName: function (ingredientName)
+	{
+		var ingredient = Ingredient.getByName(ingredientName)
+		if (ingredient)
+			this.view.showIngredientPopup(ingredient)
+	},
+	
 	setupCocktails: function (source)
 	{
 		var cocktails = this.cocktails = []

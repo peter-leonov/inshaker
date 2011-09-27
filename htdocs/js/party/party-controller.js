@@ -1,9 +1,6 @@
 ;(function(){
 
-function Me ()
-{
-	
-}
+function Me () {}
 
 Me.prototype =
 {
@@ -20,6 +17,11 @@ Me.prototype =
 	cocktailCountChanged: function (n, v)
 	{
 		this.model.setCocktailCount(n, v)
+	},
+	
+	ingredientSelected: function (name)
+	{
+		this.model.selectIngredientName(name)
 	}
 }
 
