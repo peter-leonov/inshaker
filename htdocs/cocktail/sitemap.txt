@@ -388,6 +388,7 @@ http://www.inshaker.ru/cocktail/cape_coder/
 http://www.inshaker.ru/cocktail/cambridge/
 http://www.inshaker.ru/cocktail/kentucky_cooler/
 http://www.inshaker.ru/cocktail/kefir-cowberry_milkshake/
+http://www.inshaker.ru/cocktail/kefir-cherry_milkshake/
 http://www.inshaker.ru/cocktail/kefir-raspberry_milkshake/
 http://www.inshaker.ru/cocktail/kefir-seabuckthorn_milkshake/
 http://www.inshaker.ru/cocktail/kefir-fruit_milkshake/
@@ -526,6 +527,7 @@ http://www.inshaker.ru/cocktail/mango_daiquiri/
 http://www.inshaker.ru/cocktail/mango_cobler_317/
 http://www.inshaker.ru/cocktail/mango_rum_collins/
 http://www.inshaker.ru/cocktail/mango_sling/
+http://www.inshaker.ru/cocktail/mango_milkshake_with_ryazhenka/
 http://www.inshaker.ru/cocktail/mandarin_shot/
 http://www.inshaker.ru/cocktail/mandrin_diva/
 http://www.inshaker.ru/cocktail/mandarin_margarita/
@@ -859,6 +861,7 @@ http://www.inshaker.ru/cocktail/tamarita/
 http://www.inshaker.ru/cocktail/cockroach/
 http://www.inshaker.ru/cocktail/tarragon_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/tverskaya_street/
+http://www.inshaker.ru/cocktail/curd-nut_milkshake/
 http://www.inshaker.ru/cocktail/damn_it/
 http://www.inshaker.ru/cocktail/tequila_batanga/
 http://www.inshaker.ru/cocktail/tequila_cowberry_orange/
@@ -1020,6 +1023,7 @@ http://www.inshaker.ru/cocktail/berry_daiquiri_smoothie/
 http://www.inshaker.ru/cocktail/berry_lemonade/
 http://www.inshaker.ru/cocktail/berry_pimms/
 http://www.inshaker.ru/cocktail/berry_twist/
+http://www.inshaker.ru/cocktail/egg_milkshake_with_ryazhenka/
 http://www.inshaker.ru/cocktail/jamaican_mule/
 http://www.inshaker.ru/cocktail/yankee/
 http://www.inshaker.ru/cocktail/japanese_cosmopolitan/
