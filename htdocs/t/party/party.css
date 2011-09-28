@@ -54,14 +54,16 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 .common-box .serviette { margin-left: -19px; margin-right: -19px; }
 
 .ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
+.ingredient-preview .name { display: block; margin-top: 103px; text-align: center; }
 html.msie-8 .ingredient-preview:before,
 html.opera-10-0 .ingredient-preview:before,
 html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0; display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
 html.msie-6 .ingredient-preview,
 html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-#purchase-plan {  }
-#purchase-plan .table { width: 450px; }
+#lists-box { position: relative; }
+
+#purchase-plan { width: 450px; }
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
 #purchase-plan .table .list .ingredient { position: relative; padding: 7px 0 9px 0; border-bottom: 1px solid #f2f2f2; }
 #purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
@@ -72,12 +74,16 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .ingredients-list,
 #purchase-plan .tools-list { margin-bottom: 20px; }
-#purchase-plan .total { position: relative; width: 450px; font-size: 18px; }
+#purchase-plan .total { position: relative; font-size: 18px; }
 #purchase-plan .total .head { font-weight: bold; }
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 
-.common-box { margin-bottom: 30px; }
+#ingredient-preview-list { position: absolute; top: 30px; right: 19px; width: 468px; }
+#ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
+#ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
 
+
+.common-box { margin-bottom: 30px; }
 
 .transparent-borders .top,
 .transparent-borders .right,
