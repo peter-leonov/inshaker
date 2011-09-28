@@ -127,6 +127,7 @@ Me.prototype =
 		
 		nodes.recipeList.addEventListener('click', onclick, false)
 		nodes.ingredientPreviewList.addEventListener('click', onclick, false)
+		nodes.purchasePlan.addEventListener('click', onclick, false)
 	},
 	
 	showIngredientPopup: function (ingredient)

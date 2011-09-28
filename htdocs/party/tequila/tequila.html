@@ -140,29 +140,59 @@
 				<dd class="body">
 					<ul class="list">
 						<li class="ingredient">
-							Серебряная текила
+							<span class="name" data-ingredient="Серебряная текила">Серебряная текила</span>
 							<span class="amount"><input class="value" value="1"> <span class="unit">л</span></span>
 							<span class="cost"><span class="value">2056</span> <span class="unit">р.</span></span>
 						</li>
 						<li class="ingredient">
-							Сироп корицы
+							<span class="name" data-ingredient="Сироп корицы">Сироп корицы</span>
 							<span class="amount"><input class="value" value="1"> <span class="unit">кг</span></span>
 							<span class="cost"><span class="value">4624</span> <span class="unit">р.</span></span>
 						</li>
 						<li class="ingredient">
-							Апельсиновый сок
+							<span class="name" data-ingredient="Апельсиновый сок">Апельсиновый сок</span>
 							<span class="amount"><input class="value" value="12"> <span class="unit">л</span></span>
 							<span class="cost"><span class="value">3534</span> <span class="unit">р.</span></span>
 						</li>
 						<li class="ingredient">
-							Томатный сок
+							<span class="name" data-ingredient="Томатный сок">Томатный сок</span>
 							<span class="amount"><input class="value" value="2"> <span class="unit">л</span></span>
 							<span class="cost"><span class="value">84</span> <span class="unit">р.</span></span>
 						</li>
 						<li class="ingredient">
-							Лайм
+							<span class="name" data-ingredient="Лайм">Лайм</span>
 							<span class="amount"><input class="value" value="5"> <span class="unit">шт</span></span>
 							<span class="cost"><span class="value">457</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Огурец">Огурец</span>
+							<span class="amount"><input class="value" value="3"> <span class="unit">шт</span></span>
+							<span class="cost"><span class="value">57</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Сельдерей">Сельдерей</span>
+							<span class="amount"><input class="value" value="1"> <span class="unit">шт</span></span>
+							<span class="cost"><span class="value">103</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Табаско соус красный">Табаско соус красный</span>
+							<span class="amount"><input class="value" value="40"> <span class="unit">мл</span></span>
+							<span class="cost"><span class="value">5103</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Перец черный молотый">Перец черный молотый</span>
+							<span class="amount"><input class="value" value="7"> <span class="unit">г</span></span>
+							<span class="cost"><span class="value">37</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Соль">Соль</span>
+							<span class="amount"><input class="value" value="15"> <span class="unit">г</span></span>
+							<span class="cost"><span class="value">90</span> <span class="unit">р.</span></span>
+						</li>
+						<li class="ingredient">
+							<span class="name" data-ingredient="Лед в кубиках">Лед в кубиках</span>
+							<span class="amount"><input class="value" value="700"> <span class="unit">г</span></span>
+							<span class="cost"><span class="value">300</span> <span class="unit">р.</span></span>
 						</li>
 					</ul>
 				</dd>
@@ -186,12 +216,16 @@
 		</div>
 		<ul id="ingredient-preview-list">
 			<li class="item ingredient-preview" data-ingredient="Серебряная текила" style="background-image: url(/ingredient/serebryanaya-tekila/preview.jpg)"><span class="name">Серебряная текила</span></li>
-			<li class="item ingredient-preview" data-ingredient="Сахарный сироп" style="background-image: url(/ingredient/saharnyiy-sirop/preview.jpg)"></li>
-			<li class="item ingredient-preview" data-ingredient="Арбузный сок" style="background-image: url(/ingredient/arbuznyiy-sok/preview.jpg)"></li>
-			<li class="item ingredient-preview" data-ingredient="Лайм" style="background-image: url(/ingredient/laym/preview.jpg)"></li>
-			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)"></li>
-			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)"></li>
-			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)"></li>
+			<li class="item ingredient-preview" data-ingredient="Сироп корицы" style="background-image: url(/ingredient/sirop-koritsyi/preview.jpg)"><span class="name">Сироп корицы</span></li>
+			<li class="item ingredient-preview" data-ingredient="Апельсиновый сок" style="background-image: url(/ingredient/apelsinovyiy-sok/preview.jpg)"><span class="name">Апельсиновый сок</span></li>
+			<li class="item ingredient-preview" data-ingredient="Томатный сок" style="background-image: url(/ingredient/tomatnyiy-sok/preview.jpg)"><span class="name">Томатный сок</span></li>
+			<li class="item ingredient-preview" data-ingredient="Лайм" style="background-image: url(/ingredient/laym/preview.jpg)"><span class="name">Лайм</span></li>
+			<li class="item ingredient-preview" data-ingredient="Огурец" style="background-image: url(/ingredient/ogurets/preview.jpg)"><span class="name">Огурец</span></li>
+			<li class="item ingredient-preview" data-ingredient="Сельдерей" style="background-image: url(/ingredient/selderey/preview.jpg)"><span class="name">Сельдерей</span></li>
+			<li class="item ingredient-preview" data-ingredient="Табаско соус красный" style="background-image: url(/ingredient/tabasko-sous-krasnyiy/preview.jpg)"><span class="name">Табаско соус красный</span></li>
+			<li class="item ingredient-preview" data-ingredient="Перец черный молотый" style="background-image: url(/ingredient/perets-chernyiy-molotyiy/preview.jpg)"><span class="name">Перец черный молотый</span></li>
+			<li class="item ingredient-preview" data-ingredient="Соль" style="background-image: url(/ingredient/sol/preview.jpg)"><span class="name">Соль</span></li>
+			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)"><span class="name">Лед в кубиках</span></li>
 		</ul>
 	</div>
 </div class="common-content-gradiented">
