@@ -54,7 +54,7 @@ html.msie-7 #cocktail-plan .head * { display: inline !important; }
 .common-box .serviette { margin-left: -19px; margin-right: -19px; }
 
 .ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
-.ingredient-preview .name { display: block; margin-top: 103px; text-align: center; }
+.ingredient-preview .name { display: block; margin-top: 105px; text-align: center; }
 html.msie-8 .ingredient-preview:before,
 html.opera-10-0 .ingredient-preview:before,
 html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0; display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
