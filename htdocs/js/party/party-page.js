@@ -25,6 +25,7 @@ function onready ()
 			layers: $$('#window .layer')
 		},
 		recipeList: $$('#recipe-list')[0],
+		ingredientPreviewList: $$('#ingredient-preview-list')[0],
 		peopleCount: $$('#cocktail-plan .head .people .count')[0],
 		body: $$('#cocktail-plan .body')[0],
 		cocktails: $$('#cocktail-plan .body .cocktails')[0]
