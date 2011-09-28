@@ -66,12 +66,10 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient { position: relative; padding: 7px 0 9px 0; border-bottom: 1px solid #f2f2f2; }
 #purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
 #purchase-plan .table .list .ingredient:last-child { border-bottom: none; }
-#purchase-plan .table .list .ingredient .amount,
-#purchase-plan .table .list .ingredient .unit,
-#purchase-plan .table .list .ingredient .cost { position: absolute; }
-#purchase-plan .table .list .ingredient .amount { right: 130px; padding: 0 3px 2px 3px; text-align: right; border-bottom: 1px dashed; }
+#purchase-plan .table .list .ingredient .amount { position: absolute; left: 300px; bottom: 3px; }
+#purchase-plan .table .list .ingredient .amount .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
-#purchase-plan .table .list .ingredient .cost { right: 7px; }
+#purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .ingredients-list,
 #purchase-plan .tools-list { margin-bottom: 20px; }
 #purchase-plan .total { position: relative; width: 450px; font-size: 18px; }
