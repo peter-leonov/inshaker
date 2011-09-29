@@ -31,20 +31,19 @@ body { font-size: 14px; }
 
 
 #cocktail-plan { margin: 15px 0; }
-#cocktail-plan .head { font-size: 22px; }
-html.msie-6 #cocktail-plan .head *,
-html.msie-7 #cocktail-plan .head * { display: inline !important; }
+#cocktail-plan .head { font-size: 22px; margin-bottom: 20px; }
 #cocktail-plan .head .people .count { width: 50px; font-size: 25px; text-align: center; }
-#cocktail-plan .body .cocktails { overflow: hidden; padding: 5px 0; }
-#cocktail-plan .body .cocktails .portion { float: left; width: 220px; margin-right: 10px; }
-#cocktail-plan .body .cocktails .portion .control { font-size: 22px; text-align: center; line-height: 24px; margin: 15px 0 0 0; }
-#cocktail-plan .body .cocktails .portion .control .count { width: 50px; font-size: 24px; text-align: center; margin-right: 10px; }
-
-#cocktail-plan .cocktail-preview { text-align: center; }
-#cocktail-plan .cocktail-preview .link,
-#cocktail-plan .cocktail-preview .link .image { display: block; }
-#cocktail-plan .cocktail-preview .link .image { margin: 0 auto; margin-bottom: -20px;  }
-#cocktail-plan .cocktail-preview .link { font-size: 16px; text-shadow: 0 0 2px #fff; }
+#cocktail-plan .body .portions { overflow: hidden; padding: 5px 0; }
+#cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 130px; margin-right: 20px; }
+#cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; font-size: 18px; color: inherit; }
+#cocktail-plan .body .portions .portion .name a { color: inherit; }
+#cocktail-plan .body .portions .portion .image { position: absolute; left: 0; top: 0; max-width: 90px; }
+#cocktail-plan .body .portions .portion .count { position: absolute; left: 350px; top: 0; }
+#cocktail-plan .body .portions .portion .count .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
+#cocktail-plan .body .portions .portion .ingredients { margin: 3px 0 0 100px; font-size: 12px; }
+#cocktail-plan .body .portions .portion .ingredients .ingredient { display: inline; cursor: pointer; }
+#cocktail-plan .body .portions .portion .ingredients .ingredient:after { content: ', '; }
+#cocktail-plan .body .portions .portion .ingredients .ingredient:last-child:after { content: ''; }
 
 .serviette { position: relative; margin: 24px 0; padding: 20px; background: url(serviette.png) -962px 0; min-height: 150px; }
 .serviette:before,
