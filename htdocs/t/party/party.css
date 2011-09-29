@@ -31,10 +31,10 @@ body { font-size: 14px; }
 
 
 #cocktail-plan { margin: 15px -20px 15px 0; }
-#cocktail-plan .head { font-size: 22px; margin-bottom: 20px; }
+#cocktail-plan .head { font-size: 22px; }
 #cocktail-plan .head .people .count { width: 50px; font-size: 25px; text-align: center; }
 #cocktail-plan .body .portions { overflow: hidden; padding: 5px 0; }
-#cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 120px; margin: 0 20px 30px 0; }
+#cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 120px; margin: 30px 20px 10px 0; }
 #cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; width: 240px; font-size: 18px; }
 #cocktail-plan .body .portions .portion .name a { color: inherit; }
 #cocktail-plan .body .portions .portion .image { position: absolute; left: 0; top: 0; max-width: 90px; }
