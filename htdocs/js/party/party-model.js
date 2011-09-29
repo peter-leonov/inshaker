@@ -31,7 +31,7 @@ Me.prototype =
 			cocktails.push({cocktail: Cocktail.getByName(s.name), factor: s.factor})
 		}
 		
-		this.view.renderCocktails(cocktails)
+		// this.view.renderCocktails(cocktails)
 	},
 	
 	setupPeaopleCount: function (count)
