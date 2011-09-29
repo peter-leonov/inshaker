@@ -86,7 +86,7 @@ Me.prototype =
 		function move (e)
 		{
 			var x = e.clientX - left
-			var dx = Math.round(lw * 0.5 - x / ww * lw)
+			var dx = Math.round(x / ww * lw - lw * 0.5)
 			position(dx)
 		}
 		
