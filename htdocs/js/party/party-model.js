@@ -43,7 +43,7 @@ Me.prototype =
 	
 	setupPeopleCount: function (count)
 	{
-		this.view.updatePeopleCount(count)
+		this.view.renderPeopleCount(count)
 	},
 	
 	setupPlan: function (portions)
@@ -94,6 +94,8 @@ Me.prototype =
 			var portion = portions[i]
 			portion.count = Math.ceil(portion.factor * people)
 		}
+		
+		this.view.updatePeopleUnit(people)
 		
 		this.view.updatePortions(portions)
 		

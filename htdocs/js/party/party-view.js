@@ -359,9 +359,14 @@ Me.prototype =
 		item.cost.nodeValue = buy.cost
 	},
 	
-	updatePeopleCount: function (count)
+	renderPeopleCount: function (count)
 	{
 		this.nodes.peopleCount.value = count
+	},
+	
+	updatePeopleUnit: function (count)
+	{
+		this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человек', 'человек')
 	},
 	
 	updateUnit: function (n, portion)
