@@ -61,9 +61,15 @@ Me.prototype =
 				if (buyByName[name])
 					continue
 				
+				var ingredient = Ingredient.getByName(name)
+				
+				var best = ingredient.volumes[0],
+					costPerUnit = best[1] / best[0]
+				
 				var buy =
 				{
-					ingredient: Ingredient.getByName(name),
+					ingredient: ingredient,
+					costPerUnit: costPerUnit,
 					amount: 0
 				}
 				
