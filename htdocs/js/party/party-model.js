@@ -59,7 +59,9 @@ Me.prototype =
 	
 	setCocktailCount: function (n, v)
 	{
-		this.customCounts[n] = v
+		var portion = this.portions[n]
+		portion.count = v
+		this.view.updateUnit(n, portion)
 	}
 }
 

@@ -267,6 +267,12 @@ Me.prototype =
 		this.nodes.peopleCount.value = count
 	},
 	
+	updateUnit: function (n, portion)
+	{
+		var p = this.cache.portions[n]
+		p.unit.nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
+	},
+	
 	guessParty: function ()
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')
