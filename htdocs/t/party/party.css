@@ -29,7 +29,7 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #recipe-list .instructions .instruction .text { color: #000 }
 
 #advice-list .advice .name { font-size: 24px; line-height: 24px; }
-#advice-list .advice .image { margin: 20px 0; }
+#advice-list .advice .image { display: block; margin: 20px auto; }
 
 
 #cocktail-plan { margin: 15px -20px 15px 0; }
