@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.portions = []
+	this.plan = []
 }
 
 Me.prototype =
@@ -12,6 +13,7 @@ Me.prototype =
 		this.party = Party.getByName(name)
 		
 		this.setupPortions(this.party.portions)
+		this.setupIngredients(this.portions)
 	},
 	
 	selectIngredientName: function (ingredientName)
@@ -37,6 +39,38 @@ Me.prototype =
 	{
 		this.view.updatePeopleCount(count)
 		this.setPeopleCount(count)
+	},
+	
+	setupIngredients: function (portions)
+	{
+		var seen = {},
+			plan = this.plan
+		
+		for (var i = 0, il = portions.length; i < il; i++)
+		{
+			var pairs = portions[i].cocktail.ingredients
+			
+			for (var j = 0, jl = pairs.length; j < jl; j++)
+			{
+				var name = pairs[j][0]
+				
+				if (seen[name])
+					continue
+				seen[name] = true
+				
+				var buy =
+				{
+					ingredient: Ingredient.getByName(name),
+					amount: 0
+				}
+				
+				plan.push(buy)
+			}
+		}
+		
+		plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
+		
+		this.view.renderPlan(plan)
 	},
 	
 	setPeopleCount: function (people)

@@ -27,6 +27,7 @@ function onready ()
 		recipeList: $$('#recipe-list')[0],
 		ingredientPreviewList: $$('#ingredient-preview-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
+		purchasePlanList: $$('#purchase-plan .ingredients-list .list')[0],
 		cocktailPlan: $$('#cocktail-plan')[0],
 		peopleCount: $$('#cocktail-plan .people .value')[0],
 		body: $$('#cocktail-plan .body')[0],

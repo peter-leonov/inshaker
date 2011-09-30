@@ -18,7 +18,7 @@ function getNumberValue (v)
 function Me ()
 {
 	this.nodes = {}
-	this.cache = {portions: []}
+	this.cache = {portions: [], plan: []}
 }
 
 eval(NodesShortcut.include())
@@ -259,6 +259,51 @@ Me.prototype =
 			var c = portionsCache[i]
 			c.value.value = portion.count
 			c.unit.nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
+		}
+	},
+	
+	renderPlan: function (plan)
+	{
+		var root = this.nodes.purchasePlanList,
+			planCache = this.cache.plan
+		
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			var ingredient = plan[i].ingredient,
+				cache = planCache[i] = {}
+			
+			var item = Nc('li', 'ingredient')
+			root.appendChild(item)
+			
+			var name = Nct('span', 'name', ingredient.name)
+			item.appendChild(name)
+			name.setAttribute('data-ingredient', ingredient.name)
+			
+			
+			var amount = Nc('span', 'amount')
+			item.appendChild(amount)
+			
+			var value = Nc('input', 'value')
+			amount.appendChild(value)
+			cache.amount = value
+			
+			amount.appendChild(T(' '))
+			
+			var unit = Nct('span', 'unit', ' ')
+			amount.appendChild(unit)
+			
+			
+			var cost = Nc('span', 'cost')
+			item.appendChild(cost)
+			
+			var value = Nct('span', 'value', ' ')
+			cost.appendChild(value)
+			cache.cost = value.firstChild
+			
+			cost.appendChild(T(' '))
+			
+			var unit = Nct('span', 'unit', 'р.')
+			cost.appendChild(unit)
 		}
 	},
 	
