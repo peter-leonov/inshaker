@@ -229,7 +229,7 @@ Me.prototype =
 			{
 				var name = ingredients[j][0]
 				
-				var ingredient = Nct('li', 'ingredient', name)
+				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
 				ingredientsNode.appendChild(ingredient)
 				
 				ingredient.setAttribute('data-ingredient', name)
