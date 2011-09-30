@@ -28,6 +28,11 @@ function onready ()
 		ingredientPreviewList: $$('#ingredient-preview-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
 		purchasePlanList: $$('#purchase-plan .ingredients-list .list')[0],
+		purchasePlanTotal:
+		{
+			value: $$('#purchase-plan .total .cost')[0],
+			unit: $$('#purchase-plan .total .unit')[0]
+		},
 		cocktailPlan: $$('#cocktail-plan')[0],
 		peopleCount: $$('#cocktail-plan .people .value')[0],
 		body: $$('#cocktail-plan .body')[0],

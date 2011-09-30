@@ -132,9 +132,18 @@ Me.prototype =
 			}
 		}
 		
-		var buyByName = this.buyByName
+		var buyByName = this.buyByName,
+			total = 0
 		for (var k in amounts)
-			buyByName[k].amount = amounts[k]
+		{
+			var buy = buyByName[k],
+				amount = amounts[k]
+			
+			buy.amount = amount
+			total += buy.cost = Math.ceil(amount * buy.costPerUnit)
+		}
+		
+		this.plan.total = total
 	}
 }
 

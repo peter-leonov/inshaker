@@ -310,12 +310,21 @@ Me.prototype =
 	
 	updatePlan: function (plan)
 	{
-		var planCache = this.cache.plan
+		var planCache = this.cache.plan,
+			totalNodes = this.nodes.purchasePlanTotal
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
-			planCache[i].amount.value = plan[i].amount
+			var buy = plan[i],
+				item = planCache[i]
+			
+			item.amount.value = buy.amount
+			item.cost.nodeValue = buy.cost
 		}
+		
+		var total = plan.total
+		totalNodes.value.firstChild.nodeValue = total
+		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
 	},
 	
 	updatePeopleCount: function (count)
