@@ -68,8 +68,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
 #purchase-plan .table .list .ingredient:last-child { border-bottom: none; }
 #purchase-plan .table .list .ingredient .name { cursor: pointer; }
-#purchase-plan .table .list .ingredient .amount { position: absolute; left: 300px; bottom: 3px; }
-#purchase-plan .table .list .ingredient .amount .value { width: 35px; padding: 0 3px 2px 3px; text-align: right; }
+#purchase-plan .table .list .ingredient .amount { position: absolute; left: 295px; bottom: 3px; }
+#purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .ingredients-list,
