@@ -173,15 +173,18 @@ Me.prototype =
 	cocktailCountsChanged: function (e)
 	{
 		var target = e.target
-		var data = []
 		
-		var counts = this.cache.cocktailCounts
-		for (var i = 0, il = counts.length; i < il; i++)
-			if (target == counts[i])
-				break
-		
-		if (!counts[i])
+		search:
+		{
+			var portionsCache = this.cache.portions
+			for (var i = 0, il = portionsCache.length; i < il; i++)
+			{
+				var value = portionsCache[i].value
+				if (target == value)
+					break search
+			}
 			return
+		}
 		
 		this.controller.cocktailCountChanged(i, getNumberValue(target.value))
 	},
