@@ -60,7 +60,7 @@ Me.prototype =
 			counts[i] = {cocktail: portion.cocktail, count: count}
 		}
 		
-		this.view.updateCocktails(counts)
+		this.view.updatePortions(counts)
 	},
 	
 	setCocktailCount: function (n, v)

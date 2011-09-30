@@ -18,7 +18,7 @@ function getNumberValue (v)
 function Me ()
 {
 	this.nodes = {}
-	this.cache = {cocktailCounts: [], cocktailUnits: []}
+	this.cache = {portions: []}
 }
 
 eval(NodesShortcut.include())
@@ -190,7 +190,7 @@ Me.prototype =
 	{
 		var root = this.nodes.portions,
 			cache = this.cache,
-			counts = cache.cocktailCounts, units = cache.cocktailUnits
+			portionsCache = cache.portions
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
@@ -213,13 +213,18 @@ Me.prototype =
 			
 			var value = Nc('input', 'value')
 			count.appendChild(value)
-			counts[i] = value
 			
 			count.appendChild(T(' '))
 			
 			var unit = Nct('span', 'unit', ' ')
 			count.appendChild(unit)
-			units[i] = unit.firstChild
+			
+			// cache for updatePortions()
+			portionsCache[i] =
+			{
+				value: value,
+				unit: unit.firstChild
+			}
 			
 			var ingredientsNode = Nc('ul', 'ingredients')
 			portion.appendChild(ingredientsNode)
@@ -240,18 +245,17 @@ Me.prototype =
 		}
 	},
 	
-	updateCocktails: function (portions)
+	updatePortions: function (portions)
 	{
-		var cache = this.cache,
-			counts = cache.cocktailCounts, units = cache.cocktailUnits
+		var portionsCache = this.cache.portions
 		
-		for (var i = 0, il = counts.length; i < il; i++)
+		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
 			
-			counts[i].value = portion.count
-			log(portion.cocktail.name)
-			units[i].nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
+			var c = portionsCache[i]
+			c.value.value = portion.count
+			c.unit.nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
 		}
 	},
 	
