@@ -5,6 +5,7 @@ function Me (data)
 	this.name = data.name
 	this.path = data.path
 	this.portions = data.portions
+	this.people = data.people
 }
 
 Me.staticMethods =

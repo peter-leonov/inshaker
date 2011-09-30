@@ -24,7 +24,6 @@ Me.prototype =
 		this.view.bind(nodes)
 		
 		this.view.guessParty()
-		this.model.setupPeaopleCount(10)
 		
 		return this
 	}

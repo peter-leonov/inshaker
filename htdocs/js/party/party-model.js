@@ -14,6 +14,7 @@ Me.prototype =
 		
 		this.setupPortions(this.party.portions)
 		this.setupIngredients(this.portions)
+		this.setupPeaopleCount(this.party.people)
 	},
 	
 	selectIngredientName: function (ingredientName)
