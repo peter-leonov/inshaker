@@ -205,6 +205,7 @@ Me.prototype =
 			portion.appendChild(name)
 			
 			var link = Nct('a', 'link', cocktail.name)
+			link.href = cocktail.getPath()
 			name.appendChild(link)
 			
 			var image = Nc('img', 'image')
