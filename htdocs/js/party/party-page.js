@@ -28,9 +28,9 @@ function onready ()
 		ingredientPreviewList: $$('#ingredient-preview-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
 		cocktailPlan: $$('#cocktail-plan')[0],
-		peopleCount: $$('#cocktail-plan .head .people .count')[0],
+		peopleCount: $$('#cocktail-plan .people .value')[0],
 		body: $$('#cocktail-plan .body')[0],
-		cocktails: $$('#cocktail-plan .body .cocktails')[0]
+		cocktails: $$('#cocktail-plan .body .portions')[0]
 	}
 	
 	RoundedCorners.round(nodes.window.root)
