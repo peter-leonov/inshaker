@@ -60,7 +60,7 @@ html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0
 html.msie-6 .ingredient-preview,
 html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-#lists-box { position: relative; }
+#lists-box { position: relative; min-height: 580px; }
 
 #purchase-plan { width: 450px; }
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
