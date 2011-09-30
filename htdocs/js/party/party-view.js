@@ -99,7 +99,7 @@ Me.prototype =
 	{
 		var nodes = this.nodes
 		
-		function findIngredientInParents (node)
+		function findIngredientInParents (node, deep)
 		{
 			do
 			{
@@ -107,7 +107,7 @@ Me.prototype =
 				if (ingredient)
 					return ingredient
 			}
-			while ((node = node.parentNode))
+			while (--deep && (node = node.parentNode))
 			
 			return false
 		}
@@ -115,7 +115,7 @@ Me.prototype =
 		var view = this
 		function maybeIngredientClicked (target)
 		{
-			var name = findIngredientInParents(target)
+			var name = findIngredientInParents(target, 3)
 			if (name)
 				view.controller.ingredientSelected(name)
 		}
