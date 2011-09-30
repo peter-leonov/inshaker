@@ -341,8 +341,12 @@ Me.prototype =
 			item.amount.value = buy.amount
 			item.cost.nodeValue = buy.cost
 		}
+	},
+	
+	updateTotal: function (total)
+	{
+		var totalNodes = this.nodes.purchasePlanTotal
 		
-		var total = plan.total
 		totalNodes.value.firstChild.nodeValue = total
 		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
 	},

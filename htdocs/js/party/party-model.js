@@ -4,6 +4,7 @@ function Me ()
 {
 	this.portions = []
 	this.plan = []
+	this.total = 0
 }
 
 Me.prototype =
@@ -98,6 +99,9 @@ Me.prototype =
 		
 		this.calculatePlan(portions)
 		this.view.updatePlan(this.plan)
+		
+		this.calculateTotal(this.plan)
+		this.view.updateTotal(this.total)
 	},
 	
 	setCocktailCount: function (n, v)
@@ -110,6 +114,9 @@ Me.prototype =
 		
 		this.calculatePlan(portions)
 		this.view.updatePlan(this.plan)
+		
+		this.calculateTotal(this.plan)
+		this.view.updateTotal(this.total)
 	},
 	
 	calculatePlan: function (portions)
@@ -136,18 +143,24 @@ Me.prototype =
 			}
 		}
 		
-		var buyByName = this.buyByName,
-			total = 0
+		var buyByName = this.buyByName
 		for (var k in amounts)
 		{
 			var buy = buyByName[k],
 				amount = amounts[k]
 			
 			buy.amount = amount
-			total += buy.cost = Math.ceil(amount * buy.costPerUnit)
+			buy.cost = Math.ceil(amount * buy.costPerUnit)
 		}
+	},
+	
+	calculateTotal: function (plan)
+	{
+		var total = 0
+		for (var i = 0, il = plan.length; i < il; i++)
+			total += plan[i].cost
 		
-		this.plan.total = total
+		this.total = total
 	},
 	
 	setIngredientAmount: function (n, amount)
@@ -158,6 +171,9 @@ Me.prototype =
 		buy.cost = Math.ceil(amount * buy.costPerUnit)
 		
 		this.view.updateBuy(n, buy)
+		
+		this.calculateTotal(this.plan)
+		this.view.updateTotal(this.total)
 	}
 }
 
