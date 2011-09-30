@@ -14,7 +14,7 @@ Me.prototype =
 		
 		this.setupPortions(this.party.portions)
 		this.setupIngredients(this.portions)
-		this.setupPeaopleCount(this.party.people)
+		this.setupPeopleCount(this.party.people)
 	},
 	
 	selectIngredientName: function (ingredientName)
@@ -36,7 +36,7 @@ Me.prototype =
 		this.view.renderPortions(portions)
 	},
 	
-	setupPeaopleCount: function (count)
+	setupPeopleCount: function (count)
 	{
 		this.view.updatePeopleCount(count)
 		this.setPeopleCount(count)
