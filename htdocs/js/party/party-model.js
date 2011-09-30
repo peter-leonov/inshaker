@@ -81,15 +81,11 @@ Me.prototype =
 	{
 		this.peopleCount = people
 		
-		var total = 0
-		
 		var portions = this.portions
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
-			
-			var count = portion.count = Math.ceil(portion.factor * people)
-			total += count
+			portion.count = Math.ceil(portion.factor * people)
 		}
 		
 		this.view.updatePortions(portions)
