@@ -308,6 +308,16 @@ Me.prototype =
 		}
 	},
 	
+	updatePlan: function (plan)
+	{
+		var planCache = this.cache.plan
+		
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			planCache[i].amount.value = plan[i].amount
+		}
+	},
+	
 	updatePeopleCount: function (count)
 	{
 		this.nodes.peopleCount.value = count
