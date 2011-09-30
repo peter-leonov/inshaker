@@ -15,6 +15,22 @@ function getIntegerValue (v)
 	return Math.ceil(v)
 }
 
+function getFloatValue (v)
+{
+	// to string
+	v = '' + v
+	// clean up all non-digital chars
+	v = v.replace(/,/g, '.')
+	v = v.replace(/[^0-9\-\.]+/g, '')
+	// convert to number base 10
+	v = parseFloat(v, 10)
+	// convert NaN to 0
+	v = isNaN(v) ? 0 : v
+	
+	return v
+}
+
+
 function Me ()
 {
 	this.nodes = {}
@@ -146,6 +162,12 @@ Me.prototype =
 			target.value = getIntegerValue(target.value)
 		}
 		
+		function blurFloat (e)
+		{
+			var target = e.target
+			target.value = getFloatValue(target.value)
+		}
+		
 		function ifReallyChanged (e, f)
 		{
 			var target = e.target
@@ -164,6 +186,8 @@ Me.prototype =
 		nodes.peopleCount.addEventListener('blur', blurInteger, true)
 		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
 		nodes.portions.addEventListener('blur', blurInteger, true)
+		nodes.purchasePlanList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+		nodes.purchasePlanList.addEventListener('blur', blurFloat, true)
 	},
 	
 	peopleCountChanged: function (e)
@@ -175,6 +199,12 @@ Me.prototype =
 	{
 		var target = e.target
 		this.controller.cocktailCountChanged(target.dataInListNumber, getIntegerValue(target.value))
+	},
+	
+	ingredientAmountChanged: function (e)
+	{
+		var target = e.target
+		this.controller.ingredientAmountChanged(target.dataInListNumber, getFloatValue(target.value))
 	},
 	
 	renderPortions: function (portions)
@@ -205,6 +235,7 @@ Me.prototype =
 			
 			var value = Nc('input', 'value')
 			count.appendChild(value)
+			value.dataInListNumber = i
 			
 			count.appendChild(T(' '))
 			
@@ -274,6 +305,7 @@ Me.prototype =
 			
 			var value = Nc('input', 'value')
 			amount.appendChild(value)
+			value.dataInListNumber = i
 			cache.amount = value
 			
 			amount.appendChild(T(' '))
@@ -313,6 +345,14 @@ Me.prototype =
 		var total = plan.total
 		totalNodes.value.firstChild.nodeValue = total
 		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
+	},
+	
+	updateBuy: function (n, buy)
+	{
+		var planCache = this.cache.plan
+		
+		var item = planCache[n]
+		item.cost.nodeValue = buy.cost
 	},
 	
 	updatePeopleCount: function (count)

@@ -148,6 +148,16 @@ Me.prototype =
 		}
 		
 		this.plan.total = total
+	},
+	
+	setIngredientAmount: function (n, amount)
+	{
+		var buy = this.plan[n]
+		
+		buy.amount = amount
+		buy.cost = Math.ceil(amount * buy.costPerUnit)
+		
+		this.view.updateBuy(n, buy)
 	}
 }
 

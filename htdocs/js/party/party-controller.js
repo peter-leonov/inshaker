@@ -19,6 +19,11 @@ Me.prototype =
 		this.model.setCocktailCount(n, v)
 	},
 	
+	ingredientAmountChanged: function (n, v)
+	{
+		this.model.setIngredientAmount(n, v)
+	},
+	
 	ingredientSelected: function (name)
 	{
 		this.model.selectIngredientName(name)
