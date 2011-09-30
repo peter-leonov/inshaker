@@ -51,8 +51,13 @@ Me.prototype =
 		var cocktails = this.cocktails
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
+			var cocktail = cocktails[i]
 			var cc = customCounts[i]
-			total += counts[i] = cc !== undefined ? cc : Math.ceil(cocktails[i].factor * count)
+			
+			var count = cc !== undefined ? cc : Math.ceil(cocktail.factor * count)
+			total += count
+			
+			counts[i] = {cocktail: cocktail.cocktail, count: count}
 		}
 		
 		this.view.updateCocktails(counts)

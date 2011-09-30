@@ -85,7 +85,16 @@ Cocktail.prototype =
 			names[i] = parts[i][0]
 		
 		return names
-	}
+	},
+	
+	getPlurals: function ()
+	{
+		var cart = this.cart
+		if (cart)
+			return cart.plural
+		
+		return ['порция', 'порции', 'порций']
+	},
 }
 
 Object.extend(Cocktail,

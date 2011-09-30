@@ -240,16 +240,18 @@ Me.prototype =
 		}
 	},
 	
-	updateCocktails: function (data)
+	updateCocktails: function (portions)
 	{
 		var cache = this.cache,
 			counts = cache.cocktailCounts, units = cache.cocktailUnits
 		
 		for (var i = 0, il = counts.length; i < il; i++)
 		{
-			var v = data[i]
-			counts[i].value = v
-			units[i].nodeValue = v.plural('порция', 'порции', 'порций')
+			var portion = portions[i]
+			
+			counts[i].value = portion.count
+			log(portion.cocktail.name)
+			units[i].nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
 		}
 	},
 	
