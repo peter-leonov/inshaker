@@ -198,19 +198,43 @@ Me.prototype =
 			
 			var item = Nc('li', 'portion')
 			
-			var cocktail = s.cocktail.getLinkNodeBig()
-			item.appendChild(cocktail)
+			var name = Nc('h3', 'name')
+			item.appendChild(name)
 			
-			var control = Nc('div', 'control')
-			item.appendChild(control)
+			var link = Nct('a', 'link', s.cocktail.name)
+			name.appendChild(link)
 			
-			var count = Nc('input', 'count')
-			control.appendChild(count)
-			counts[i] = count
+			var image = Nc('img', 'image')
+			image.src = s.cocktail.getBigCroppedImageSrc()
+			link.appendChild(image)
+			
+			var count = Nc('div', 'count')
+			item.appendChild(count)
+			
+			var value = Nc('input', 'value')
+			count.appendChild(value)
+			counts[i] = value
+			
+			count.appendChild(T(' '))
 			
 			var unit = Nct('span', 'unit', ' ')
-			control.appendChild(unit)
+			count.appendChild(unit)
 			units[i] = unit.firstChild
+			
+			var ingredientsNode = Nc('ul', 'ingredients')
+			item.appendChild(ingredientsNode)
+			
+			var ingredients = s.cocktail.ingredients
+			for (var j = 0, jl = ingredients.length; j < jl; j++)
+			{
+				var name = ingredients[j][0]
+				
+				var ingredient = Nct('li', 'ingredient', name)
+				ingredientsNode.appendChild(ingredient)
+				
+				ingredient.setAttribute('data-ingredient', name)
+				ingredientsNode.appendChild(ingredient)
+			}
 			
 			root.appendChild(item)
 		}

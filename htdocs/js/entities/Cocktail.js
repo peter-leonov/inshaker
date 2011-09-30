@@ -42,6 +42,14 @@ Cocktail.prototype =
 		return path + '/' + htmlName + '-big.png'
 	},
 	
+	getBigCroppedImageSrc: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		return path + '/' + htmlName + '-big-cropped.png'
+	},
+	
 	getPreviewNode: function (lazy, big)
 	{
 		var htmlName = this.name_eng.htmlName(),
