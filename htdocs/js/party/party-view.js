@@ -1,19 +1,19 @@
 ;(function(){
 
-function getNumberValue (v)
+function getIntegerValue (v)
 {
 	// to string
 	v = '' + v
 	// clean up all non-digital chars
-	v = v.replace(/[^0-9\-]+/g, '')
+	v = v.replace(/,/g, '.')
+	v = v.replace(/[^0-9\-\.]+/g, '')
 	// convert to number base 10
-	v = parseInt(v, 10)
+	v = parseFloat(v, 10)
 	// convert NaN to 0
 	v = isNaN(v) ? 0 : v
 	
-	return v
+	return Math.ceil(v)
 }
-
 
 function Me ()
 {
@@ -140,12 +140,11 @@ Me.prototype =
 	{
 		var nodes = this.nodes
 		
-		function blur (e)
+		function blurInteger (e)
 		{
 			var target = e.target
-			target.value = getNumberValue(target.value)
+			target.value = getIntegerValue(target.value)
 		}
-		document.addEventListener('blur', blur, true)
 		
 		function ifReallyChanged (e, f)
 		{
@@ -162,12 +161,14 @@ Me.prototype =
 		
 		var view = this
 		nodes.peopleCount.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.peopleCountChanged(e) }) }, false)
+		nodes.peopleCount.addEventListener('blur', blurInteger, true)
 		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountsChanged(e) }) }, false)
+		nodes.portions.addEventListener('blur', blurInteger, true)
 	},
 	
 	peopleCountChanged: function (e)
 	{
-		this.controller.peopleCountChanged(getNumberValue(e.target.value))
+		this.controller.peopleCountChanged(getIntegerValue(e.target.value))
 	},
 	
 	cocktailCountsChanged: function (e)
@@ -186,7 +187,7 @@ Me.prototype =
 			return
 		}
 		
-		this.controller.cocktailCountChanged(i, getNumberValue(target.value))
+		this.controller.cocktailCountChanged(i, getIntegerValue(target.value))
 	},
 	
 	renderPortions: function (portions)
