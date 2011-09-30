@@ -290,7 +290,7 @@ Me.prototype =
 			
 			amount.appendChild(T(' '))
 			
-			var unit = Nct('span', 'unit', ' ')
+			var unit = Nct('span', 'unit', ingredient.unit)
 			amount.appendChild(unit)
 			
 			
