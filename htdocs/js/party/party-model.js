@@ -2,7 +2,7 @@
 
 function Me ()
 {
-	this.cocktails = []
+	this.portions = []
 	this.customCounts = []
 }
 
@@ -12,7 +12,7 @@ Me.prototype =
 	{
 		this.party = Party.getByName(name)
 		
-		this.setupCocktails(this.party.cocktails)
+		this.setupPortions(this.party.portions)
 	},
 	
 	selectIngredientName: function (ingredientName)
@@ -22,16 +22,16 @@ Me.prototype =
 			this.view.showIngredientPopup(ingredient)
 	},
 	
-	setupCocktails: function (source)
+	setupPortions: function (source)
 	{
-		var cocktails = this.cocktails = []
+		var portions = this.portions = []
 		for (var i = 0, il = source.length; i < il; i++)
 		{
 			var s = source[i]
-			cocktails.push({cocktail: Cocktail.getByName(s.name), factor: s.factor})
+			portions.push({cocktail: Cocktail.getByName(s.cocktail), factor: s.factor})
 		}
 		
-		this.view.renderCocktails(cocktails)
+		this.view.renderPortions(portions)
 	},
 	
 	setupPeaopleCount: function (count)
@@ -48,16 +48,16 @@ Me.prototype =
 			customCounts = this.customCounts,
 			total = 0
 		
-		var cocktails = this.cocktails
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		var portions = this.portions
+		for (var i = 0, il = portions.length; i < il; i++)
 		{
-			var cocktail = cocktails[i]
+			var portion = portions[i]
 			var cc = customCounts[i]
 			
-			var count = cc !== undefined ? cc : Math.ceil(cocktail.factor * count)
+			var count = cc !== undefined ? cc : Math.ceil(portion.factor * count)
 			total += count
 			
-			counts[i] = {cocktail: cocktail.cocktail, count: count}
+			counts[i] = {cocktail: portion.cocktail, count: count}
 		}
 		
 		this.view.updateCocktails(counts)

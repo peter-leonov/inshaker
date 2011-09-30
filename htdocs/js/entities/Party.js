@@ -4,7 +4,7 @@ function Me (data)
 {
 	this.name = data.name
 	this.path = data.path
-	this.cocktails = data.cocktails
+	this.portions = data.portions
 }
 
 Me.staticMethods =

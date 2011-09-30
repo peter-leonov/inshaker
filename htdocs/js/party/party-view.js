@@ -162,7 +162,7 @@ Me.prototype =
 		
 		var view = this
 		nodes.peopleCount.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.peopleCountChanged(e) }, 0) }, false)
-		nodes.cocktails.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountsChanged(e) }, 0) }, false)
+		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountsChanged(e) }, 0) }, false)
 	},
 	
 	peopleCountChanged: function (e)
@@ -186,30 +186,30 @@ Me.prototype =
 		this.controller.cocktailCountChanged(i, getNumberValue(target.value))
 	},
 	
-	renderCocktails: function (source)
+	renderPortions: function (portions)
 	{
-		var root = this.nodes.cocktails,
+		var root = this.nodes.portions,
 			cache = this.cache,
 			counts = cache.cocktailCounts, units = cache.cocktailUnits
 		
-		for (var i = 0, il = source.length; i < il; i++)
+		for (var i = 0, il = portions.length; i < il; i++)
 		{
-			var s = source[i]
+			var cocktail = portions[i].cocktail
 			
-			var item = Nc('li', 'portion')
+			var portion = Nc('li', 'portion')
 			
 			var name = Nc('h3', 'name')
-			item.appendChild(name)
+			portion.appendChild(name)
 			
-			var link = Nct('a', 'link', s.cocktail.name)
+			var link = Nct('a', 'link', cocktail.name)
 			name.appendChild(link)
 			
 			var image = Nc('img', 'image')
-			image.src = s.cocktail.getBigCroppedImageSrc()
+			image.src = cocktail.getBigCroppedImageSrc()
 			link.appendChild(image)
 			
 			var count = Nc('div', 'count')
-			item.appendChild(count)
+			portion.appendChild(count)
 			
 			var value = Nc('input', 'value')
 			count.appendChild(value)
@@ -222,9 +222,9 @@ Me.prototype =
 			units[i] = unit.firstChild
 			
 			var ingredientsNode = Nc('ul', 'ingredients')
-			item.appendChild(ingredientsNode)
+			portion.appendChild(ingredientsNode)
 			
-			var ingredients = s.cocktail.ingredients
+			var ingredients = cocktail.ingredients
 			for (var j = 0, jl = ingredients.length; j < jl; j++)
 			{
 				var name = ingredients[j][0]
@@ -236,7 +236,7 @@ Me.prototype =
 				ingredientsNode.appendChild(ingredient)
 			}
 			
-			root.appendChild(item)
+			root.appendChild(portion)
 		}
 	},
 	

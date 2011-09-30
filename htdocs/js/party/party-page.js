@@ -30,7 +30,7 @@ function onready ()
 		cocktailPlan: $$('#cocktail-plan')[0],
 		peopleCount: $$('#cocktail-plan .people .value')[0],
 		body: $$('#cocktail-plan .body')[0],
-		cocktails: $$('#cocktail-plan .body .portions')[0]
+		portions: $$('#cocktail-plan .body .portions')[0]
 	}
 	
 	RoundedCorners.round(nodes.window.root)
