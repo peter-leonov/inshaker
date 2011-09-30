@@ -295,7 +295,7 @@ Me.prototype =
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
 			
-			var name = Nct('span', 'name', ingredient.name)
+			var name = Nct('span', 'name', ingredient.name == 'Абсент' ? 'Абсент Xenta' : ingredient.name)
 			item.appendChild(name)
 			name.setAttribute('data-ingredient', ingredient.name)
 			
