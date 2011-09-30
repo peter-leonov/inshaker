@@ -25,8 +25,10 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #recipe-list .ingredients .ingredient-preview { float: left; margin: 0 17px 17px 0; cursor: pointer; }
 #recipe-list .instructions { margin: 0 0 0 305px; width: 600px; }
 #recipe-list .instructions .head { margin-bottom: 10px; font-weight: bold; font-size: 14px; }
-#recipe-list .instructions .instruction { list-style: decimal; margin: 0 0 5px 0; color: #ccc; }
-#recipe-list .instructions .instruction .text { color: #000 }
+#recipe-list .instructions .instruction { list-style: decimal; margin: 0 0 7px 0; color: #ccc; }
+#recipe-list .instructions .instruction .text { color: #000; }
+#recipe-list .instructions .instruction a { color: #000; }
+#recipe-list .instructions .instruction a:hover { color: #ec118f; text-decoration: none; }
 
 #advice-list .advice .name { font-size: 24px; line-height: 24px; }
 #advice-list .advice .image { display: block; margin: 20px auto; }
