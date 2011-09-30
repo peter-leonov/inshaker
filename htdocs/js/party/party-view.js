@@ -162,7 +162,7 @@ Me.prototype =
 		var view = this
 		nodes.peopleCount.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.peopleCountChanged(e) }) }, false)
 		nodes.peopleCount.addEventListener('blur', blurInteger, true)
-		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountsChanged(e) }) }, false)
+		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
 		nodes.portions.addEventListener('blur', blurInteger, true)
 	},
 	
@@ -171,23 +171,10 @@ Me.prototype =
 		this.controller.peopleCountChanged(getIntegerValue(e.target.value))
 	},
 	
-	cocktailCountsChanged: function (e)
+	cocktailCountChanged: function (e)
 	{
 		var target = e.target
-		
-		search:
-		{
-			var portionsCache = this.cache.portions
-			for (var i = 0, il = portionsCache.length; i < il; i++)
-			{
-				var value = portionsCache[i].value
-				if (target == value)
-					break search
-			}
-			return
-		}
-		
-		this.controller.cocktailCountChanged(i, getIntegerValue(target.value))
+		this.controller.cocktailCountChanged(target.dataInListNumber, getIntegerValue(target.value))
 	},
 	
 	renderPortions: function (portions)
