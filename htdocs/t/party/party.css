@@ -44,7 +44,7 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #cocktail-plan .body .portions .portion .image { position: absolute; left: 0; top: 0; max-width: 90px; }
 #cocktail-plan .body .portions .portion .count { position: absolute; left: 340px; top: 0; }
 #cocktail-plan .body .portions .portion .count .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
-#cocktail-plan .body .portions .portion .ingredients { margin: 3px 0 0 100px; width: 300px; font-size: 12px; }
+#cocktail-plan .body .portions .portion .ingredients { margin: 3px 0 0 100px; width: 310px; font-size: 12px; }
 #cocktail-plan .body .portions .portion .ingredients .ingredient { display: inline; cursor: pointer; }
 #cocktail-plan .body .portions .portion .ingredients .ingredient:hover { color: #ec118f; }
 #cocktail-plan .body .portions .portion .ingredients .ingredient:after { content: ', '; }
