@@ -45,7 +45,7 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		// this.loadWindow()
+		this.loadWindow()
 		this.bindIngredientPopup()
 		this.bindEvents()
 		
