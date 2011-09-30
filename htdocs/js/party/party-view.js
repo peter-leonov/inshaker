@@ -227,8 +227,8 @@ Me.prototype =
 			name.appendChild(link)
 			
 			var image = Nc('img', 'image')
-			image.src = cocktail.getBigCroppedImageSrc()
 			link.appendChild(image)
+			image.src = cocktail.getBigCroppedImageSrc()
 			
 			var count = Nc('div', 'count')
 			portion.appendChild(count)
