@@ -96,16 +96,20 @@ Me.prototype =
 		
 		this.view.updatePortions(portions)
 		
-		
 		this.calculatePlan(portions)
 		this.view.updatePlan(this.plan)
 	},
 	
 	setCocktailCount: function (n, v)
 	{
-		var portion = this.portions[n]
+		var portions = this.portions
+		
+		var portion = portions[n]
 		portion.count = v
 		this.view.updateUnit(n, portion)
+		
+		this.calculatePlan(portions)
+		this.view.updatePlan(this.plan)
 	},
 	
 	calculatePlan: function (portions)
