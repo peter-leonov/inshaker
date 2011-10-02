@@ -67,7 +67,9 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
-#share-box .button { display: inline-block; width: 30px; height: 30px; }
+#share-box { line-height: 36px; }
+#share-box .label { display: inline-block; height: 30px; line-height: 28px; vertical-align: middle; }
+#share-box .button { display: inline-block; width: 30px; height: 30px; vertical-align: middle; }
 #share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
 #share-box .button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
 #share-box .button.facebook i { background-position: -50px 0; }
