@@ -1,3 +1,5 @@
+@media screen {
+
 body { font-size: 14px; }
 
 #common-main-wrapper { z-index: 1; }
@@ -108,5 +110,23 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
+} /* @media screen */
+
+
+@media print {
+
+#window,
+#illustration-box .content,
+#advice-list,
+#links-box,
+#recipes-box .common-title,
+.hidden { display: none; }
+
+html.print-recipes #plan-box { display: none; }
+
+} /* @media print */
+
+
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
+
