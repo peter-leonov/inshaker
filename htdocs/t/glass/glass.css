@@ -26,7 +26,7 @@ body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding
 #top .link.blog { position: absolute; right: 0; }
 
 
-#bottom { position: relative; width: 962px; height: 150px; margin: 40px auto 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
+#bottom { position: relative; width: 962px; height: 150px; margin: 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
 #bottom .link { padding: 7px; }
 #bottom .link:first-child { padding-left: 0; }
 #bottom .link:last-child { padding-right: 0; }
@@ -53,10 +53,11 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
 .common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; -moz-border-radius: 7px; }
-.common-box .common-title { padding: 22px 22px 22px 22px; background-position: 0 -125px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
-.common-box .common-title .common-name { color: #fff; font-size: 24px; font-weight: bold; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
+.common-box .common-title { height: 29px; padding: 22px 22px 22px 22px; background-position: 0 -175px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
+.common-box .common-title .common-name { font-size: 24px; font-weight: bold; }
+.common-box .common-mini { height: 40px; padding: 0 22px; background-position: 0 -125px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; -moz-border-radius: 7px; }
 .common-box .common-content-plain { padding: 15px 19px 15px 19px; }
-.common-box .common-content-gradiented { padding: 14px 19px 14px 19px; background: 0 -200px repeat-x; }
+.common-box .common-content-gradiented { padding: 14px 19px 14px 19px; background: 0 -250px repeat-x; }
 .common-box .common-bottom { border-radius: 7px; border-top-left-radius: 0; border-top-right-radius: 0; -moz-border-radius: 7px; -moz-border-radius-topleft: 0; -moz-border-radius-topright: 0; }
 
 .cocktail-list .prev,
@@ -66,11 +67,14 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
-#share-box .button { display: inline-block; width: 30px; height: 30px; }
-#share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
-#share-box .button.facebook i { background-position: -150px 0; }
-#share-box .button.facebook:hover i { background-position: -175px 0; }
-#share-box .button.twitter i { background-position: -150px -25px; }
-#share-box .button.twitter:hover i { background-position: -175px -25px; }
-#share-box .button.vkontakte i { background-position: -150px -50px; }
-#share-box .button.vkontakte:hover i { background-position: -175px -50px; }
+.share-box { line-height: 36px; }
+.share-box .label { display: inline-block; height: 30px; line-height: 28px; vertical-align: middle; }
+.share-box .button { display: inline-block; width: 30px; height: 30px; vertical-align: middle; }
+.share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+.share-box .button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
+.share-box .button.facebook i { background-position: -50px 0; }
+.share-box .button.facebook:hover i { background-position: -75px 0; }
+.share-box .button.twitter i { background-position: -50px -25px; }
+.share-box .button.twitter:hover i { background-position: -75px -25px; }
+.share-box .button.vkontakte i { background-position: -100px 0; }
+.share-box .button.vkontakte:hover i { background-position: -125px 0; }
