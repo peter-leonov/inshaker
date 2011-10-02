@@ -1,3 +1,5 @@
+@media screen {
+
 #top,
 #top .logo,
 #top .link { background-image: url(top.png); }
@@ -25,3 +27,5 @@ html { background: #d9d8d8 url(bg.jpg) center top; color: #000; }
 .common-box .common-mini { color: #fff; border-color: rgba(200, 200, 200, 0.5); text-shadow: 1px 1px 0px #000; }
 .common-box .common-content-plain { background-color: #fff; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
+
+} /* @media screen */

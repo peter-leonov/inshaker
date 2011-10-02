@@ -19,6 +19,8 @@ table td{padding:0;}
 .to-print{display:none;}
 body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding:0;}
 
+@media screen {
+
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
 #top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
@@ -78,3 +80,14 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .share-box .button.twitter:hover i { background-position: -75px -25px; }
 .share-box .button.vkontakte i { background-position: -100px 0; }
 .share-box .button.vkontakte:hover i { background-position: -125px 0; }
+
+} /* @media screen */
+
+
+@media print {
+
+#top,
+#bottom { display: none; }
+input { border: none; background: none; }
+
+} /* @media print */
