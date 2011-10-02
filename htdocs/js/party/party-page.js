@@ -2,9 +2,11 @@
 
 <!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/lib-0.3/modules/interpolate.js" -->
 
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
+<!--# include virtual="/js/common/share-box.js" -->
 
 ;(function(){
 
@@ -37,7 +39,13 @@ function onready ()
 		peopleCount: $$('#cocktail-plan .people .value')[0],
 		peopleUnit: $$('#cocktail-plan .people .unit')[0],
 		body: $$('#cocktail-plan .body')[0],
-		portions: $$('#cocktail-plan .body .portions')[0]
+		portions: $$('#cocktail-plan .body .portions')[0],
+		
+		shareBox:
+		{
+			root: $$('#links-box .share-box')[0],
+			buttons: $$('#links-box .share-box .button')
+		}
 	}
 	
 	RoundedCorners.round(nodes.window.root)

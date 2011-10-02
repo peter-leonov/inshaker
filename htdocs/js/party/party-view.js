@@ -48,6 +48,7 @@ Me.prototype =
 		this.loadWindow()
 		this.bindIngredientPopup()
 		this.bindEvents()
+		this.bindShareBox()
 		
 		return this
 	},
@@ -373,6 +374,15 @@ Me.prototype =
 	{
 		var p = this.cache.portions[n]
 		p.unit.nodeValue = portion.count.pluralA(portion.cocktail.getPlurals())
+	},
+	
+	bindShareBox: function ()
+	{
+		var nodes = this.nodes
+		
+		var share = new ShareBox()
+		share.bind(nodes.shareBox)
+		share.render(window.location.href, nodes.partyName.firstChild.nodeValue)
 	},
 	
 	guessParty: function ()
