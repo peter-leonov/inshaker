@@ -29,3 +29,10 @@ html { background: #d9d8d8 url(bg.jpg) center top; color: #000; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
 
 } /* @media screen */
+
+
+@media print {
+
+a { color: #ec118f; }
+
+} /* @media print */
