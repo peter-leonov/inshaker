@@ -28,7 +28,7 @@ class Ingredient < Inshaker::Entity
     'г' => {1000 => 'кг', 1000000 => 'т'},
     'гр' => {1000 => 'кг', 1000000 => 'т'}
   }
-  def self.normalize_volume vol, unit
+  def self.humanize_dose vol, unit
     vol = vol.to_f
     normal = @normals[unit]
     return [vol.may_be_to_i, unit] unless normal

@@ -23,15 +23,9 @@ class CocktailTemplate
   end
   
   def parts
-    @sorted_parts.each do |name, dose|
-      m = dose.match(/(\d+(?:\.\d+)?)\s*(.+)\s*/)
-      amount = m[1]
-      unit = m[2]
-      normilized = Ingredient.normalize_volume(amount, unit)
-      amount = normilized[0]
-      unit = normilized[1]
-      
-      yield name, amount, unit
+    @sorted_parts.each do |name, dose, unit|
+      normal = Ingredient.humanize_dose(dose, unit)
+      yield name, normal[0], normal[1]
     end
   end
   

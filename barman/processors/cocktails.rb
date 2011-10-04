@@ -432,6 +432,16 @@ class CocktailsProcessor < Inshaker::Processor
       data[prop] = cocktail.delete(prop)
     end
     
+    cocktail["ingredients"].each do |part|
+      part[1] = "#{part[1].may_be_to_i} #{part[2]}"
+      part.pop
+    end
+    
+    cocktail["garnish"].each do |part|
+      part[1] = "#{part[1].may_be_to_i} #{part[2]}"
+      part.pop
+    end
+    
     flush_json_object(data, "#{root_dir.path}/data.json")
   end
   
@@ -531,10 +541,10 @@ class CocktailsProcessor < Inshaker::Processor
         error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
         m = [nil, "0", "?"]
       end
-      vol = m[1].gsub(",", ".").to_f.may_be_to_i
+      vol = m[1].gsub(",", ".").to_f
       unit = m[2]
       
-      [name, "#{vol} #{unit}"]
+      [name, vol, unit]
     end
   end
   
@@ -545,32 +555,22 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def merge_parts *args
-    volumes = {}
-    units = {}
+    byname = {}
     
     args.each do |set|
       set.each do |part|
         name = part[0]
         
-        vol = volumes[name]
-        if vol
-          vol[1] += part[1].to_f
+        sum = byname[name]
+        if sum
+          sum[1] += part[1]
         else
-          am = part[1]
-          
-          volumes[name] = [name, am.to_f]
-          units[name] = am.match(/\d+(?:\.\d+)?\s*(.+)\s*/)[1]
+          byname[name] = [name, part[1], part[2]]
         end
       end
     end
     
-    res = []
-    volumes.each do |k, v|
-      v[1] = "#{v[1] % 1 == 0 ? v[1].to_i : v[1]} #{units[k]}"
-      res << v
-    end
-    
-    return res
+    return byname.values
   end
 private
   
