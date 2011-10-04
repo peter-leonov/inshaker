@@ -44,10 +44,3 @@ class Ingredient < Inshaker::Entity
     [vol.may_be_to_i, unit]
   end
 end
-
-class Float
-  def may_be_to_i
-    i = to_i
-    i == self ? i : self
-  end
-end
