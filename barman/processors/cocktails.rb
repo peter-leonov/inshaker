@@ -525,7 +525,16 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       name, amount = e.shift
-      [name.to_s, amount.to_s]
+      
+      m = amount.match(/^\s*(\d+(?:[.,]\d+)?)\s*(\S+)\s*$/)
+      unless m
+        error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+        m = [nil, "0", "?"]
+      end
+      vol = m[1].gsub(",", ".").to_f.may_be_to_i
+      unit = m[2]
+      
+      [name, "#{vol} #{unit}"]
     end
   end
   
