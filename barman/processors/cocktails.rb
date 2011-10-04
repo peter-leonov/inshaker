@@ -313,11 +313,15 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
     @cocktail["groups"] = about["Группы"]
+    @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["tools"] = about["Штучки"]
+    @cocktail["receipt"] = about["Как приготовить"]
+    
+    
     @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
     @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
     @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
-    @cocktail["tools"] = about["Штучки"]
-    @cocktail["receipt"] = about["Как приготовить"]
     
     # puts %Q{"#{name}","#{@cocktail["teaser"]}"}
     
