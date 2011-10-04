@@ -313,14 +313,18 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
     @cocktail["groups"] = about["Группы"]
-    @cocktail["ingredients"] = about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] }
-    @cocktail["garnish"] = (about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] }
+    @cocktail["ingredients"] = parse_parts(about["Ингредиенты"])
+    if about["Украшения"]
+      @cocktail["garnish"] = parse_parts(about["Украшения"])
+    else
+      @cocktail["garnish"] = []
+    end
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
     
-    @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
-    @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
+    @cocktail["ingredients"] = sort_parts_by_group(@cocktail["ingredients"])
+    @cocktail["garnish"] = sort_parts_by_group(@cocktail["garnish"])
     @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
     
     # puts %Q{"#{name}","#{@cocktail["teaser"]}"}
@@ -516,6 +520,13 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     end # indent
+  end
+  
+  def parse_parts parts
+    parts.map do |e|
+      name, amount = e.shift
+      [name.to_s, amount.to_s]
+    end
   end
   
   def sort_parts_by_group arr
