@@ -56,18 +56,6 @@ var GoodHelper = {
         return true;
     },
 
-    /**
-	 * Возвращает числительное для данного объема
-	 * @param vol - значение объема
-	 * @param unit - единица измерения
-	 */
-	pluralTxt: function(vol, unit){
-		if(unit == "кубики") return vol.plural("кубик", "кубика", "кубиков");
-        if(unit == "штуки") return vol.plural("штука", "штуки", "штук");
-        if(unit == "порция") return vol.plural("порция", "порции", "порций");
-		return unit;
-	},
-	
     normalVolumeTxt: function(vol, unit){
         switch(unit){
             case "мл": if(vol >= 1000) { vol /= 1000; unit = "л";  }; break;
