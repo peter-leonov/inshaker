@@ -40,7 +40,7 @@ function CalculatorModel(view){
 	this.initialize = function(cartData) {
 		// десериализация полученного от контроллера набора
 		if(cartData) {	
-			this.cartData = GoodHelper.deSerializeCartData(cartData);
+			this.cartData = Calculator.deSerializeCartData(cartData);
 		} else {
 			this.cartData = {};
 			this.cartData.cocktails = [];

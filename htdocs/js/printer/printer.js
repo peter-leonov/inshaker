@@ -89,10 +89,10 @@ var Printer = {
 	},
 
     cartInit: function(){
-        if(clientStorage.get(GoodHelper.CART)){
+        if(clientStorage.get(Calculator.CART)){
             this.preloadImages();
-            this.cartData = clientStorage.get(GoodHelper.CART);
-            this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
+            this.cartData = clientStorage.get(Calculator.CART);
+            this.cartData = Calculator.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
         } else {
