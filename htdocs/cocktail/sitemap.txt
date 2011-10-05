@@ -301,6 +301,7 @@ http://www.inshaker.ru/cocktail/dream_daiquiri_meringe/
 http://www.inshaker.ru/cocktail/dream_shot/
 http://www.inshaker.ru/cocktail/spirit_of__57/
 http://www.inshaker.ru/cocktail/smoky/
+http://www.inshaker.ru/cocktail/smoky_mulled_wine/
 http://www.inshaker.ru/cocktail/smoky_flip/
 http://www.inshaker.ru/cocktail/smoking_scot/
 http://www.inshaker.ru/cocktail/smoky_apple_pie/
@@ -320,6 +321,7 @@ http://www.inshaker.ru/cocktail/tequila_breakfast/
 http://www.inshaker.ru/cocktail/baked_smoothie/
 http://www.inshaker.ru/cocktail/forbidden_fruit/
 http://www.inshaker.ru/cocktail/zaharoff_forest/
+http://www.inshaker.ru/cocktail/green_terrace/
 http://www.inshaker.ru/cocktail/green_fairy/
 http://www.inshaker.ru/cocktail/greeny_light/
 http://www.inshaker.ru/cocktail/zempole/
@@ -977,6 +979,7 @@ http://www.inshaker.ru/cocktail/rustle/
 http://www.inshaker.ru/cocktail/silk_heart/
 http://www.inshaker.ru/cocktail/whisper/
 http://www.inshaker.ru/cocktail/chicanera/
+http://www.inshaker.ru/cocktail/bumblebee/
 http://www.inshaker.ru/cocktail/chocolate_curant/
 http://www.inshaker.ru/cocktail/chocolate-orange_martini/
 http://www.inshaker.ru/cocktail/chocolate_honey/
