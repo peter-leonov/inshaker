@@ -61,16 +61,16 @@ class Ingredient < Inshaker::Entity
     
     human = @humans[unit]
     unless human
-      return [vol.may_be_to_i, unit]
+      return [vol, unit]
     end
     
     human.each do |scale|
       if scale[0].include? vol
         vol = (vol * scale[1]).round(6)
-        return [vol.may_be_to_i, scale[2]]
+        return [vol, scale[2]]
       end
     end
     
-    [vol.may_be_to_i, unit]
+    [vol, unit]
   end
 end
