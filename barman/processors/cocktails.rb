@@ -536,13 +536,13 @@ class CocktailsProcessor < Inshaker::Processor
     parts.map do |e|
       name, amount = e.shift
       
-      m = amount.match(/^\s*(\d+(?:[.,]\d+)?)\s*(\S+)\s*$/)
-      if m
-        vol = m[1].gsub(",", ".").to_f
-        unit = m[2]
-        vol, unit = Ingredient.normalize_dose(vol, unit)
-      else
-        error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+      vol, unit = Ingredient.parse_dose(amount)
+      unless vol
+        if vol == nil
+          error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+        elsif vol == false
+          error "неизвестная единица измерения «#{unit}» в выражении «#{amount}»"
+        end
         vol = 0.0
         unit = "хз"
       end

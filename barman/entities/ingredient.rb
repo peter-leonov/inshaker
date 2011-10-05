@@ -9,6 +9,7 @@ class Ingredient < Inshaker::Entity
     DB_JS          = Inshaker::HTDOCS_DIR + "db/ingredients/ingredients.json"
     DB_JS_GROUPS   = Inshaker::HTDOCS_DIR + "db/ingredients/groups.json"
     DB_JS_TAGS     = Inshaker::HTDOCS_DIR + "db/ingredients/tags.json"
+    DB_JS_UNITS    = Inshaker::HTDOCS_DIR + "db/ingredients/units.json"
   end
   
   def self.init
@@ -17,6 +18,7 @@ class Ingredient < Inshaker::Entity
     
     @db = JSON.parse(File.read(Config::DB_JS))
     @by_name = @db.hash_index("name")
+    @units_i = JSON.parse(File.read(Config::DB_JS_UNITS)).hash_index
   end
   
   def self.check_integrity
@@ -69,5 +71,21 @@ class Ingredient < Inshaker::Entity
     end
     
     [vol, unit]
+  end
+  
+  def self.parse_dose dose
+    m = dose.match(/^\s*(\d+(?:[.,]\d+)?)\s*(\S+)\s*$/)
+    unless m
+      return nil
+    end
+    
+    unit = m[2]
+    unless @units_i[unit]
+      return [false, unit]
+    end
+    
+    vol = m[1].gsub(",", ".").to_f
+    
+    return normalize_dose(vol, unit)
   end
 end

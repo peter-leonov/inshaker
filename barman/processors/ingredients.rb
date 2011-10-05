@@ -20,6 +20,8 @@ class IngredientsProcessor < Inshaker::Processor
     @tags = []
     @tags_ci = {}
     @tags_hidden = []
+    @units = []
+    @units_i = {}
   end
   
   def job_name
@@ -52,7 +54,7 @@ class IngredientsProcessor < Inshaker::Processor
     prepare_ingredients
     prepare_marks
     
-    update_groups_and_tags
+    update_groups_and_tags_and_units
     process_ingredients
     
     check_intergity
@@ -68,27 +70,26 @@ class IngredientsProcessor < Inshaker::Processor
     FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
-  def update_groups_and_tags
+  def update_groups_and_tags_and_units
     @groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
     @groups_i = @groups.hash_index
     @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
+    @units = YAML::load(File.open("#{Config::BASE_DIR}/units.yaml"))
+    @units_i = @units.hash_index
   end
   
   def prepare_ingredients
-    if File.exists?(Config::DB_JS) && !@options[:force]
-      @ingredients_mtime = File.mtime(Config::DB_JS)
-      @entities = JSON.parse(File.read(Config::DB_JS))
-    else
+    if @options[:force]
       @ingredients_mtime = nil
+    else
+      @ingredients_mtime = File.mtime(Config::DB_JS)
     end
   end
   
   def prepare_marks
-    if File.exists?(Mark::Config::DB_JS)
-      @marks = JSON.parse(File.read(Mark::Config::DB_JS)).to_a.hash_index("name")
-    end
+    @marks = JSON.parse(File.read(Mark::Config::DB_JS)).to_a.hash_index("name")
   end
   
   def process_ingredients
@@ -201,8 +202,11 @@ class IngredientsProcessor < Inshaker::Processor
     
     if about["Единица"]
       good[:unit] = about["Единица"]
+      unless @units_i[good[:unit]]
+        error "неизвестная единица измерения «#{good[:unit]}»"
+      end
     else
-      error "не указана единица"
+      error "не указана единица измерения"
     end
     
     if about["Падежи"]
@@ -312,6 +316,7 @@ class IngredientsProcessor < Inshaker::Processor
     # hide hidden tags
     @tags -= @tags_hidden
     flush_json_object(@tags, Config::DB_JS_TAGS)
+    flush_json_object(@units, Config::DB_JS_UNITS)
   end
   
   def update_json entity
