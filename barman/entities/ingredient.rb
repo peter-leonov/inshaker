@@ -70,4 +70,15 @@ class Ingredient < Inshaker::Entity
     
     [vol, unit]
   end
+  
+  def self.parse_dose dose
+    m = dose.match(/^\s*(\d+(?:[.,]\d+)?)\s*(\S+)\s*$/)
+    unless m
+      return nil
+    end
+    
+    vol = m[1].gsub(",", ".").to_f
+    unit = m[2]
+    return normalize_dose(vol, unit)
+  end
 end
