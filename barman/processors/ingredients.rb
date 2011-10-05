@@ -202,8 +202,11 @@ class IngredientsProcessor < Inshaker::Processor
     
     if about["Единица"]
       good[:unit] = about["Единица"]
+      unless @units_i[good[:unit]]
+        error "неизвестная единица измерения «#{good[:unit]}»"
+      end
     else
-      error "не указана единица"
+      error "не указана единица измерения"
     end
     
     if about["Падежи"]
