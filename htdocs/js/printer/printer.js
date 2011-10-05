@@ -188,12 +188,12 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         var name = pair[0];
-
+		var ingredient = Ingredient.getByName(name)
         var txt = GoodHelper.getIngredText(name);
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
-        cnt.innerHTML = GoodHelper.normalVolumeTxtParsed(pair[1]);
+        cnt.innerHTML = GoodHelper.normalVolumeTxt(pair[1], ingredient.unit);
         cnt.className = "cnt";
 
         dd.appendChild(div);
