@@ -226,7 +226,7 @@ var Printer = {
         }
 
         var cnt = document.createElement("div");
-        cnt.innerHTML = bottle.count + " " + GoodHelper.pluralTxt(bottle.count, "штуки");
+        cnt.innerHTML = bottle.count + " " + bottle.count.plural("штука", "штуки", "штук")
         cnt.className  = "cnt";
        
         dd.appendChild(div);
