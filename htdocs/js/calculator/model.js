@@ -1,4 +1,13 @@
+Array.prototype.without = function(index) {
+	var tmp = [];
+	for(var i = 0; i < this.length; i++){
+		if(i != index) tmp.push(this[i]);
+	}
+	return tmp;
+}
+
 function CalculatorModel(view){
+	
 	var allGoods = Ingredient.getAllByNameHash()
 	this.cartData = {};
 	
@@ -37,7 +46,7 @@ function CalculatorModel(view){
 			this.cartData.cocktails = [];
 			this.cartData.goods = {};
 		}		
-		this.optimalGoods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
+		this.optimalGoods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
 		this.dataListeners.modelChanged(this.cartData, true);
 	};
 	
@@ -55,7 +64,7 @@ function CalculatorModel(view){
 				cs.push([cocktail, cartCount]);
 			}
 			// Оптимизируем весь набор по емкостям
-			this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
+			this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
 			this.optimalGoods = cloneObject(this.cartData.goods);
 			this.dataListeners.modelChanged(this.cartData);
 		}
@@ -67,7 +76,7 @@ function CalculatorModel(view){
 			if(cs[i][0] == cocktail){
 				this.cartData.cocktails.splice(i,1);
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
+				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
@@ -80,7 +89,7 @@ function CalculatorModel(view){
 		if(this.cartData.goods[name].bottles[bottleId]){
 			bottle = this.cartData.goods[name].bottles[bottleId];
 		} else { // дополнительная бутылка
-			bottle = DataFilter.bottleByIngredientAndVolume(allGoods, name, bottleId);
+			bottle = this.bottleByIngredientAndVolume(allGoods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
 		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
@@ -106,7 +115,7 @@ function CalculatorModel(view){
 			delete bottles[id].diff;
 		}
 		var diff = sum_vol - this.cartData.goods[name].dose;
-		var vol = DataFilter.findClosestVol(vol_arr, Math.abs(diff));
+		var vol = this.findClosestVol(vol_arr, Math.abs(diff));
 		var target = this.cartData.goods[name].bottles[vol[0]];
 		if(diff < 0 || Math.abs(diff) >= target.vol[0]) target.diff = diff;
 	};
@@ -129,7 +138,7 @@ function CalculatorModel(view){
 	};
 	
 	this.getNewBottle = function(name, bottleId){
-		return DataFilter.bottleByIngredientAndVolume(allGoods, name, bottleId);
+		return this.bottleByIngredientAndVolume(allGoods, name, bottleId);
 	};
 
     this.getItemFromCart = function(name){
@@ -147,7 +156,7 @@ function CalculatorModel(view){
 			if((cs[i][0] == cocktail) && (cs[i][1] != quantity)) {
 				this.cartData.cocktails[i][1] = quantity;
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = DataFilter.goodsByCocktails(allGoods, this.cartData.cocktails);
+				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
 				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
@@ -158,4 +167,162 @@ function CalculatorModel(view){
 	this.isIngredientPresent = function(name){
 		return this.cartData.goods[name];
 	};
+	
+	
+	this.goodsByCocktails = function (goods, cocktailsAndQuant)
+	{
+		var res = {}
+		
+		for (var i = 0, il = cocktailsAndQuant.length; i < il; i++)
+		{
+			var item = cocktailsAndQuant[i],
+				cocktail = item[0],
+				quantity = item[1]
+			
+			var parts = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
+			
+			for (var j = 0, jl = parts.length; j < jl; j++)
+			{
+				var part = parts[j],
+					name = part[0],
+					dose = part[1],
+					unit = part[2]
+				
+				var ingredient = goods[name]
+				if (!ingredient)
+					continue
+				
+				var sum = res[name]
+				if (sum)
+					sum.dose += dose * quantity
+				else
+				{
+					res[name] =
+					{
+						good: ingredient,
+						bottles: null,
+						dose: dose * quantity
+					}
+				}
+			}
+		}
+		
+		// calculate bottles
+		for (var name in res)
+		{
+			var item = res[name]
+			item.bottles = this.countOptimal(item.dose, item.good.volumes)
+		}
+		
+		return res;
+	}
+	
+	function noop () {  }
+	
+	this.countOptimal = function(max_vol, volumes){
+		var vols = [], costs = [];
+		var j = 0;
+		for(var i = 0; i < volumes.length; i++) {
+			if(volumes[i][2]) {
+				vols[j] = volumes[i][0];
+				costs[j] = volumes[i][1];
+				j++;
+			}
+		}
+		
+		var vol_index = 0,
+		vols_length = vols.length,
+		biggest = vols[0],
+		
+		// calculating long tail
+		tail = max_vol % (biggest * 2),
+		big_bottles_count = Math.round((max_vol - tail) / biggest),
+		
+		stack = [],
+		min = Infinity,
+		the_one = [],
+		answer = {}
+		
+		function walk (summ_vol, summ_cost, vols_length, vols, costs)
+		{
+			for (var i = 0; i < vols_length; i++)
+			{
+				var cost = costs[i],
+				vol = vols[i],
+				now_cost = summ_cost + cost,
+				now_vol = summ_vol + vol
+				
+				if (now_cost >= min)
+					continue
+				
+				stack[stack.length] = vol
+				if (now_vol >= tail)
+				{
+					min = now_cost
+					the_one = stack.slice()
+					// console.info(now_vol, now_cost, stack.slice())
+				}
+				else
+					walk(now_vol, now_cost, vols_length, vols, costs)
+				stack.length--
+			}
+		}
+		
+		if (tail)
+			walk(0, 0, vols_length, vols, costs)
+		
+		for (var i = 0; i < the_one.length; i++)
+			if (answer[the_one[i]]){
+				answer[the_one[i]].count++;
+			} else {
+				answer[the_one[i]] = {};
+				answer[the_one[i]].count = 1;
+			}
+		
+		if (big_bottles_count)
+		{
+			if (answer[biggest]) {
+				answer[biggest].count += big_bottles_count;
+			} else {
+				answer[biggest] = {};
+				answer[biggest].count = big_bottles_count;
+			}
+		}
+		
+		for(var i = 0; i < volumes.length; i++){
+			noop() // for FF <= 3.5.2 with jit on
+			var volume = volumes[i], val = volume[0]
+			if(answer[val])
+				answer[val].vol = volume;
+		}
+		
+		return answer
+	}
+	
+	this.bottleByIngredientAndVolume = function(goods, ingred, vol){
+		var res = {};
+		var volumes = goods[ingred].volumes;
+		for(var i = 0; i < volumes.length; i++){
+			if(volumes[i][0] == vol) {
+				res.vol = volumes[i];
+				break;
+			}
+		}
+		return res;
+	}
+	
+	this.findClosestVol = function(volumes, dose){
+		var closest_idx = 0;
+		for(var i = 0; i < volumes.length; i++) {
+			if((volumes[i][0] > volumes[closest_idx][0]) && volumes[i][2]) closest_idx = i;
+		}
+		for(var i = 0; i < volumes.length; i++){
+			if(volumes[i][2]) { // в наличии
+				var gap = volumes[i][0] - dose;
+				var closestGap = volumes[closest_idx][0] - dose;
+				if((gap >= 0) && (gap < closestGap)) closest_idx = i;
+			}
+		}
+		return volumes[closest_idx];
+	}
 };
