@@ -73,8 +73,8 @@ var GoodHelper = {
             case "мл": if(vol >= 1000) { vol /= 1000; unit = "л";  }; break;
             case  "л": if(vol < 1)     { vol *= 1000; unit = "мл"; }; break;
               
-            case "гр": if(vol >= 1000) { vol /= 1000; unit = "кг"; }; break;
-            case "кг": if(vol < 1)     { vol *= 1000; unit = "гр"; }; break;
+            case "г": if(vol >= 1000) { vol /= 1000; unit = "кг"; }; break;
+            case "кг": if(vol < 1)     { vol *= 1000; unit = "г"; }; break;
         }
 
         return vol + " " + unit;
