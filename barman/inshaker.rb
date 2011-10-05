@@ -15,6 +15,7 @@ require "lib/string"
 require "lib/file"
 require "lib/output"
 require "lib/array"
+require "lib/number"
 
 require "config"
 require "entities/entity"

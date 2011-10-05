@@ -23,31 +23,51 @@ class Ingredient < Inshaker::Entity
     say "проверяю связность данных ингредиентов"
   end
   
-  @normals = {
-    'мл' => {1000 => 'л'},
-    'г' => {1000 => 'кг', 1000000 => 'т'},
-    'гр' => {1000 => 'кг', 1000000 => 'т'}
+  @normals =
+  {
+    'мл' => [0.001, 'л'],
+    'кг' => [1000, 'г']
   }
-  def self.normalize_volume vol, unit
-    vol = vol.to_f
-    normal = @normals[unit]
-    return [vol.may_be_to_i, unit] unless normal
-    
-    normal.keys.sort.reverse.each do |v|
-      next if vol < v
-      
-      vol /= v
-      
-      return [vol.may_be_to_i, normal[v]]
+  
+  def self.normalize_dose vol, unit
+    n = @normals[unit]
+    unless n
+      return [vol, unit]
     end
     
-    [vol.may_be_to_i, unit]
+    [(vol * n[0]).round(6), n[1]]
   end
-end
-
-class Float
-  def may_be_to_i
-    i = to_i
-    i == self ? i : self
+  
+  
+  litre = [
+    [0...1, 1000, 'мл'],
+    [1...1000, 1, 'л']
+  ]
+  
+  gramme = [
+    [0...1000, 1, 'г'],
+    [1000...1000000, 0.001, 'кг'],
+    [1000000...1000000000, 0.000001, 'т']
+  ]
+  
+  @humans = {
+    'л' => litre,
+    'г' => gramme
+  }
+  def self.humanize_dose vol, unit
+    
+    human = @humans[unit]
+    unless human
+      return [vol, unit]
+    end
+    
+    human.each do |scale|
+      if scale[0].include? vol
+        vol = (vol * scale[1]).round(6)
+        return [vol, scale[2]]
+      end
+    end
+    
+    [vol, unit]
   end
 end
