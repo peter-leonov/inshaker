@@ -68,29 +68,6 @@ var GoodHelper = {
         return vol + " " + unit;
     },
 
-    normalVolumeTxtParsed: function(txt){
-		var arr  = txt.match(/^(.+)\ (.+)/);
-        return this.normalVolumeTxt(arr[1], arr[2]);
-    },
-
-	/**
-	 * Возвращает предполагаемое название емкости
-	 * для заданного ингредиента
-	 * @param ingred - название ингредиента
-	 * @param unit - единица измерения ингредиента
-	 * @param {Number} vol - объем емкости
-	 */
-	bottleTxt: function(ingred, unit, vol){
-		if(ingred == "Ред Булл") return "Банка ";
-		if(ingred == "Кола") {
-			if([0.33, 0.15].indexOf(vol) > -1) return "Банка ";
-			return "Бутылка ";
-		}
-		if(unit == "л")     return "Бутылка ";
-		if(ingred == "Лед") return "Пакетик ";
-		return "";
-	},
-	
 	/**
 	 * Возвращает адрес картинки для товара по заданному
 	 * названию ингредиента, объекту товара и элементу массива объемов товара

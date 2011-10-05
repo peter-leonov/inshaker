@@ -381,40 +381,6 @@ function CalculatorView() {
 		return li;
 	};
 	
-	var _createPopupIngredientElementCache = {};
-	this._createPopupIngredientElement = function(item, bottle, volume, name, bottleId){
-		var cacheKey = name + ':' + volume;
-		
-		var dl;
-		if (_createPopupIngredientElementCache[cacheKey])
-			dl = _createPopupIngredientElementCache[cacheKey]
-		else
-		{
-				dl         = document.createElement("dl");
-			var dt         = document.createElement("dt");
-			var icon       = document.createElement("i");
-			var a          = document.createElement("a");
-			var dd         = document.createElement("dd");
-			var strong     = document.createElement("strong");
-			
-			_createPopupIngredientElementCache[cacheKey] = dl
-			
-			icon.className = 'icon'
-			
-			a.innerHTML      = GoodHelper.bottleTxt(name, item.good.unit, volume[0]) + GoodHelper.normalVolumeTxt(volume[0], item.good.unit);
-			strong.innerHTML = volume[1] + " р.";
-			
-			
-			dl.appendChild(dt);
-			dt.appendChild(icon);
-			dt.appendChild(a);
-			dl.appendChild(dd);
-			dd.appendChild(strong);
-		}
-		
-		return dl;
-	};
-	
 	this.renderPopup = function(item, name){
 		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
 		
