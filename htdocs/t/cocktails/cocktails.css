@@ -1,3 +1,5 @@
+#common-main-wrapper { overflow: hidden; }
+
 .hidden { display: none !important; }
 .popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
