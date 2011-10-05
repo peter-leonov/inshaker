@@ -89,10 +89,10 @@ var Printer = {
 	},
 
     cartInit: function(){
-        if(clientStorage.get(GoodHelper.CART)){
+        if(clientStorage.get(Calculator.CART)){
             this.preloadImages();
-            this.cartData = clientStorage.get(GoodHelper.CART);
-            this.cartData = GoodHelper.deSerializeCartData(JSON.parse(this.cartData));
+            this.cartData = clientStorage.get(Calculator.CART);
+            this.cartData = Calculator.deSerializeCartData(JSON.parse(this.cartData));
             this.renderCartData(this.cartData);
             this.wannaPrint = true;
         } else {
@@ -178,7 +178,15 @@ var Printer = {
        img.src = Ingredient.getByName(name).getMiniImageSrc()
        return img;
     },
-
+	
+	getIngredientBrandedName: function(name){
+		var brand = Ingredient.getByName(name).brand || "";
+		if(brand.indexOf(name) > -1) name = "";
+		var gap = "";
+		if(brand && name) gap = " ";
+		return name + (brand ? gap + brand : "");
+	},
+	
     createIngredPairElement: function(pair, last){
         var dd = document.createElement("dd");
         if(last) dd.className = "last";
@@ -189,11 +197,11 @@ var Printer = {
         div.appendChild(img);
         var name = pair[0];
 		var ingredient = Ingredient.getByName(name)
-        var txt = GoodHelper.getIngredText(name);
+        var txt = this.getIngredientBrandedName(name);
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
-        cnt.innerHTML = GoodHelper.normalVolumeTxt(pair[1], ingredient.unit);
+        cnt.innerHTML = Units.humanizeDose(pair[1], ingredient.unit).join(' ')
         cnt.className = "cnt";
 
         dd.appendChild(div);
@@ -211,22 +219,17 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         
-		var txt = GoodHelper.getIngredText(name);
+		var txt = this.getIngredientBrandedName(name);
         div.appendChild(document.createTextNode(txt));
         
 		var ingred = Ingredient.getByName(name)
-		if(GoodHelper.isBottled(Ingredient.getByName(name))){
-            var span = document.createElement("span");
-            var spanTxt = "(" + GoodHelper.bottleTxt(name, ingred.unit, bottle.vol[0]);
-            spanTxt += GoodHelper.normalVolumeTxt(bottle.vol[0], ingred.unit);
-            spanTxt += ")";
-            span.className = "bottle";
-            span.innerHTML = spanTxt;
-            div.appendChild(span);
-        }
+        var span = document.createElement("span");
+        span.className = "bottle";
+        span.appendChild(document.createTextNode('(' + Units.humanizeDose(bottle.vol[0], ingred.unit).join(' ') + ')'))
+        div.appendChild(span);
 
         var cnt = document.createElement("div");
-        cnt.innerHTML = bottle.count + " " + GoodHelper.pluralTxt(bottle.count, "штуки");
+        cnt.innerHTML = bottle.count + " " + bottle.count.plural("штука", "штуки", "штук")
         cnt.className  = "cnt";
        
         dd.appendChild(div);

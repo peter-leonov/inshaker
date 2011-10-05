@@ -94,7 +94,7 @@ Cocktail.prototype =
 			return cart.plural
 		
 		return ['порция', 'порции', 'порций']
-	},
+	}
 }
 
 Object.extend(Cocktail,
