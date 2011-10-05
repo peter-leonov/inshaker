@@ -538,7 +538,11 @@ class CocktailsProcessor < Inshaker::Processor
       
       vol, unit = Ingredient.parse_dose(amount)
       unless vol
-        error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+        if vol == nil
+          error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+        elsif vol == false
+          error "неизвестная единица измерения «#{unit}» в выражении «#{amount}»"
+        end
         vol = 0.0
         unit = "хз"
       end

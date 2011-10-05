@@ -18,6 +18,7 @@ class Ingredient < Inshaker::Entity
     
     @db = JSON.parse(File.read(Config::DB_JS))
     @by_name = @db.hash_index("name")
+    @units_i = JSON.parse(File.read(Config::DB_JS_UNITS)).hash_index
   end
   
   def self.check_integrity
@@ -78,8 +79,13 @@ class Ingredient < Inshaker::Entity
       return nil
     end
     
-    vol = m[1].gsub(",", ".").to_f
     unit = m[2]
+    unless @units_i[unit]
+      return [false, unit]
+    end
+    
+    vol = m[1].gsub(",", ".").to_f
+    
     return normalize_dose(vol, unit)
   end
 end
