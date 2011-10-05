@@ -27,7 +27,7 @@ class Ingredient < Inshaker::Entity
   {
     'мл' => [0.001, 'л'],
     'кг' => [1000, 'г'],
-    'гр' => [1, 'гр']
+    'гр' => [1, 'г']
   }
   
   def self.normalize_dose vol, unit
@@ -46,7 +46,7 @@ class Ingredient < Inshaker::Entity
   ]
   
   gramme = [
-    [0...1000, 1, 'гр'],
+    [0...1000, 1, 'г'],
     [1000...1000000, 0.001, 'кг'],
     [1000000...1000000000, 0.000001, 'т']
   ]
