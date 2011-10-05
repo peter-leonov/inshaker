@@ -223,12 +223,10 @@ var Printer = {
         div.appendChild(document.createTextNode(txt));
         
 		var ingred = Ingredient.getByName(name)
-		if(GoodHelper.isBottled(Ingredient.getByName(name))){
-            var span = document.createElement("span");
-            span.className = "bottle";
-            span.appendChild(document.createTextNode('(' + GoodHelper.normalVolumeTxt(bottle.vol[0], ingred.unit) + ')'))
-            div.appendChild(span);
-        }
+        var span = document.createElement("span");
+        span.className = "bottle";
+        span.appendChild(document.createTextNode('(' + GoodHelper.normalVolumeTxt(bottle.vol[0], ingred.unit) + ')'))
+        div.appendChild(span);
 
         var cnt = document.createElement("div");
         cnt.innerHTML = bottle.count + " " + bottle.count.plural("штука", "штуки", "штук")
