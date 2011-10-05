@@ -20,35 +20,51 @@ self.DataFilter = {
 	 * @param cocktailsAndQuant - массив вида [[<cocktail1>, <quantity1>], [<cocktail2>, <quantity2>]]
 	 * @return хэш (ключ - ингредиент), включающий для каждого эл-та товар, дозировку, бутылки
 	 */
-	goodsByCocktails: function(goods, cocktailsAndQuant){
-		var res = {};
-		for(var i = 0; i < cocktailsAndQuant.length; i++){
-			var cocktail = cocktailsAndQuant[i][0];
-			var quantity = cocktailsAndQuant[i][1];
-			var ingredients = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
-			for(var j = 0; j < ingredients.length; j++){
+	goodsByCocktails: function (goods, cocktailsAndQuant)
+	{
+		var res = {}
+		
+		for (var i = 0, il = cocktailsAndQuant.length; i < il; i++)
+		{
+			var item = cocktailsAndQuant[i],
+				cocktail = item[0],
+				quantity = item[1]
+			
+			var parts = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
+			
+			for (var j = 0, jl = parts.length; j < jl; j++)
+			{
+				var part = parts[j],
+					name = part[0],
+					dose = part[1],
+					unit = part[2]
 				
-				var ingred = ingredients[j][0];
+				var ingredient = goods[name]
+				if (!ingredient)
+					continue
 				
-				if(goods[ingred]) {
-					var dose = ingredients[j][1]
-					if(!res[ingred]) {
-						res[ingred] = {};
-						res[ingred].good = goods[ingred];
-						res[ingred].bottles = {};
-						res[ingred].dose = 0;
+				var sum = res[name]
+				if (sum)
+					sum.dose += dose * quantity
+				else
+				{
+					res[name] =
+					{
+						good: ingredient,
+						bottles: null,
+						dose: dose * quantity
 					}
-					res[ingred].dose += dose*quantity;
 				}
 			}
 		}
 		
-		// предлагаем бутылки
-		for(ingred in res){
-			var dose = res[ingred].dose;
-			var vols = res[ingred].good.volumes;
-			res[ingred].bottles = this.countOptimal(dose, vols);
+		// calculate bottles
+		for (var name in res)
+		{
+			var item = res[name]
+			item.bottles = this.countOptimal(item.dose, item.good.volumes)
 		}
+		
 		return res;
 	},
 	
