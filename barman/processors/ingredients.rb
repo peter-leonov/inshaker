@@ -20,6 +20,8 @@ class IngredientsProcessor < Inshaker::Processor
     @tags = []
     @tags_ci = {}
     @tags_hidden = []
+    @units = []
+    @units_i = {}
   end
   
   def job_name
@@ -52,7 +54,7 @@ class IngredientsProcessor < Inshaker::Processor
     prepare_ingredients
     prepare_marks
     
-    update_groups_and_tags
+    update_groups_and_tags_and_units
     process_ingredients
     
     check_intergity
@@ -68,12 +70,14 @@ class IngredientsProcessor < Inshaker::Processor
     FileUtils.mkdir_p [Config::HT_ROOT]
   end
   
-  def update_groups_and_tags
+  def update_groups_and_tags_and_units
     @groups = YAML::load(File.open("#{Config::BASE_DIR}/groups.yaml"))
     @groups_i = @groups.hash_index
     @tags = YAML::load(File.open("#{Config::BASE_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
+    @units = YAML::load(File.open("#{Config::BASE_DIR}/units.yaml"))
+    @units_i = @units.hash_index
   end
   
   def prepare_ingredients
@@ -309,6 +313,7 @@ class IngredientsProcessor < Inshaker::Processor
     # hide hidden tags
     @tags -= @tags_hidden
     flush_json_object(@tags, Config::DB_JS_TAGS)
+    flush_json_object(@units, Config::DB_JS_UNITS)
   end
   
   def update_json entity

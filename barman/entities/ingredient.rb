@@ -9,6 +9,7 @@ class Ingredient < Inshaker::Entity
     DB_JS          = Inshaker::HTDOCS_DIR + "db/ingredients/ingredients.json"
     DB_JS_GROUPS   = Inshaker::HTDOCS_DIR + "db/ingredients/groups.json"
     DB_JS_TAGS     = Inshaker::HTDOCS_DIR + "db/ingredients/tags.json"
+    DB_JS_UNITS    = Inshaker::HTDOCS_DIR + "db/ingredients/units.json"
   end
   
   def self.init
