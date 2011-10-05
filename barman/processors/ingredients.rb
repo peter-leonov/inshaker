@@ -201,9 +201,6 @@ class IngredientsProcessor < Inshaker::Processor
     
     if about["Единица"]
       good[:unit] = about["Единица"]
-      if good[:unit] == "гр"
-        good[:unit] = "г"
-      end
     else
       error "не указана единица"
     end
