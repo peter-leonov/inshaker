@@ -77,18 +77,15 @@ class IngredientsProcessor < Inshaker::Processor
   end
   
   def prepare_ingredients
-    if File.exists?(Config::DB_JS) && !@options[:force]
-      @ingredients_mtime = File.mtime(Config::DB_JS)
-      @entities = JSON.parse(File.read(Config::DB_JS))
-    else
+    if @options[:force]
       @ingredients_mtime = nil
+    else
+      @ingredients_mtime = File.mtime(Config::DB_JS)
     end
   end
   
   def prepare_marks
-    if File.exists?(Mark::Config::DB_JS)
-      @marks = JSON.parse(File.read(Mark::Config::DB_JS)).to_a.hash_index("name")
-    end
+    @marks = JSON.parse(File.read(Mark::Config::DB_JS)).to_a.hash_index("name")
   end
   
   def process_ingredients
