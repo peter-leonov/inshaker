@@ -345,8 +345,8 @@ Object.extend(Ingredient,
 	
 	mergeIngredientSets: function ()
 	{
-		var volumes = {},
-			units = {}
+		var res = [],
+			byName = {}
 		
 		for (var i = 0, il = arguments.length; i < il; i++)
 		{
@@ -357,26 +357,16 @@ Object.extend(Ingredient,
 				var part = set[j],
 					name = part[0]
 				
-				var vol = volumes[name]
-				if (vol)
-					vol[1] += parseFloat(part[1])
+				var sum = byName[name]
+				if (sum)
+					sum[1] += part[1]
 				else
 				{
-					var am = part[1],
-						intam = parseFloat(am)
-					
-					volumes[name] = [name, intam]
-					units[name] = am.substr((intam + '').length + 1)
+					sum = [name, part[1], part[2]]
+					byName[name] = sum
+					res.push(sum)
 				}
 			}
-		}
-		
-		var res = []
-		for (var k in volumes)
-		{
-			var vol = volumes[k]
-			vol[1] = vol[1] + ' ' + units[k]
-			res.push(vol)
 		}
 		
 		return res

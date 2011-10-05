@@ -135,7 +135,7 @@ Me.prototype =
 			{
 				var part = parts[j],
 					name = part[0],
-					volume = parseFloat(part[1])
+					volume = part[1]
 				
 				var amount = Math.ceil(volume * count * 10) / 10
 				if (amounts[name])

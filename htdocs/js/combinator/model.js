@@ -321,14 +321,14 @@ var myProto =
 			{
 				var part = parts[j]
 				
-				var volume = parseFloat(part[1])
+				var volume = part[1]
 				// total += volume
 				
 				var k = kByIngredient[part[0]]
 				if (!k)
 					continue
 				
-				weight += k * parseFloat(part[1])
+				weight += k * volume
 			}
 			
 			weightByName[cocktail.name] = weight // / total

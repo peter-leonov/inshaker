@@ -20,35 +20,51 @@ self.DataFilter = {
 	 * @param cocktailsAndQuant - массив вида [[<cocktail1>, <quantity1>], [<cocktail2>, <quantity2>]]
 	 * @return хэш (ключ - ингредиент), включающий для каждого эл-та товар, дозировку, бутылки
 	 */
-	goodsByCocktails: function(goods, cocktailsAndQuant){
-		var res = {};
-		for(var i = 0; i < cocktailsAndQuant.length; i++){
-			var cocktail = cocktailsAndQuant[i][0];
-			var quantity = cocktailsAndQuant[i][1];
-			var ingredients = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
-			for(var j = 0; j < ingredients.length; j++){
+	goodsByCocktails: function (goods, cocktailsAndQuant)
+	{
+		var res = {}
+		
+		for (var i = 0, il = cocktailsAndQuant.length; i < il; i++)
+		{
+			var item = cocktailsAndQuant[i],
+				cocktail = item[0],
+				quantity = item[1]
+			
+			var parts = Ingredient.mergeIngredientSets(cocktail.ingredients, cocktail.garnish)
+			
+			for (var j = 0, jl = parts.length; j < jl; j++)
+			{
+				var part = parts[j],
+					name = part[0],
+					dose = part[1],
+					unit = part[2]
 				
-				var ingred = ingredients[j][0];
+				var ingredient = goods[name]
+				if (!ingredient)
+					continue
 				
-				if(goods[ingred]) {
-					var dose = this._parseDose(goods[ingred].unit, ingredients[j][1]);
-					if(!res[ingred]) {
-						res[ingred] = {};
-						res[ingred].good = goods[ingred];
-						res[ingred].bottles = {};
-						res[ingred].dose = 0;
+				var sum = res[name]
+				if (sum)
+					sum.dose += dose * quantity
+				else
+				{
+					res[name] =
+					{
+						good: ingredient,
+						bottles: null,
+						dose: dose * quantity
 					}
-					res[ingred].dose += dose*quantity;
 				}
 			}
 		}
 		
-		// предлагаем бутылки
-		for(ingred in res){
-			var dose = res[ingred].dose;
-			var vols = res[ingred].good.volumes;
-			res[ingred].bottles = this.countOptimal(dose, vols);
+		// calculate bottles
+		for (var name in res)
+		{
+			var item = res[name]
+			item.bottles = this.countOptimal(item.dose, item.good.volumes)
 		}
+		
 		return res;
 	},
 	
@@ -142,33 +158,6 @@ self.DataFilter = {
 			}
 		}
 		return res;
-	},
-	
-	/**
-	 * Нормализация объема относительно заданной единицы
-	 * @param normUnit - заданная единица (напр., "л")
-	 * @param txt - текст объема (напр., "15 мл")
-	 * @return нормализованное значение (напр., 0.015)
-	 */
-	_parseDose: function(normUnit, txt){
-		var arr = txt.match(/^(.+)\ (.+)/);
-		var vol = arr[1];
-		var unit = arr[2];
-		if(unit == "мл" && normUnit == "л") return vol/1000;
-		else if((unit.indexOf("кубик") > -1) && normUnit == "кубиков") return parseInt(vol);
-		else if(unit == "шт" && normUnit == "шт") return this._parseDecimal(vol);
-		else if(unit == "капли" && normUnit == "л") return vol/40000;
-		else if(unit == normUnit) return parseFloat(vol);
-	},
-	
-	/**
-	 * Парсинг значений объема, заданных в виде дробей
-	 * @param volume - например, "1/2"
-	 * @return число типа float наподобие 0.5
-	 */
-	_parseDecimal: function(volume){
-		if(volume.indexOf("/") > -1) return eval(volume);
-		else return parseFloat(volume);
 	},
 	
 	/**

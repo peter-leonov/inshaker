@@ -433,13 +433,11 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     cocktail["ingredients"].each do |part|
-      part[1] = "#{part[1].may_be_to_i} #{part[2]}"
-      part.pop
+      part[1] = part[1].may_be_to_i
     end
     
     cocktail["garnish"].each do |part|
-      part[1] = "#{part[1].may_be_to_i} #{part[2]}"
-      part.pop
+      part[1] = part[1].may_be_to_i
     end
     
     flush_json_object(data, "#{root_dir.path}/data.json")
