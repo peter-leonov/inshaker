@@ -42,6 +42,7 @@ if (!clientStorage)
 
 <!--# include virtual="/js/calculator/calculator.js" -->
 
+<!--# include virtual="/js/common/units.js" -->
 <!--# include virtual="/js/common/good_helper.js" -->
 <!--# include virtual="/js/common/dnd.js" -->
 <!--# include virtual="/lib-0.3/modules/cookie.js" -->
