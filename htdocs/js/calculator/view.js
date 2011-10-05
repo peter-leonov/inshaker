@@ -8,11 +8,6 @@ function spaces(num){
 	return res.join("");
 }
 
-function validateNumeric(txt){
-	if(txt.match(/^\d+$/)) return true;
-	return false;
-};
-
 /**
  * This function merges nodes from parentNode with nodes given in nodesArray.
  * It deletes nodes those aren't in nodesArray, appends noes those are'n in parentNode
@@ -109,7 +104,6 @@ function CalculatorView() {
 	
 	this.eventListener = null; // controller
 	
-	this.lastShownIngred = "";
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
 	this.addBtn = $$(this.CLASS_ADD_BTN) ? $$(this.CLASS_ADD_BTN)[0] : null;
 
@@ -216,10 +210,6 @@ function CalculatorView() {
 			sum = Math.roundPrecision(sum,2)
 			mergeNodes(ingredsParent, newIngredients);
 			sumParent.innerHTML = spaces(sum) + " р.";
-			
-			if(cartData.goods[this.lastShownIngred]) {
-				this.renderPopup(cartData.goods[this.lastShownIngred], this.lastShownIngred);
-			} 
 		} else { // empty
 			$(this.ID_CONTENTS).style.display = "none";
 			$(this.ID_TOTALS).style.display = "none";
@@ -379,44 +369,6 @@ function CalculatorView() {
 		}
 		
 		return li;
-	};
-	
-	this.renderPopup = function(item, name){
-		Statistics.ingredientPopupOpened(Ingredient.getByName(name))
-		
-		var good = Good.getBySellName(name)[0]
-		
-		$('good_name').innerHTML = item.good.brand || name;
-		if(item.good.mark){ // branded
-			$('good_composition').style.display = "block";
-            $('good_mark').href = Ingredient.ingredientsLinkByMark(item.good.mark);
-			$('good_mark').innerHTML = item.good.mark;
-            var clicker = function(e) {
-                window.location.href = this.href;
-                window.location.reload();
-            }
-            $('good_mark').addEventListener('click', clicker, false);
-			$('good_ingredient').innerHTML = name;
-			$('good_ingredient').href = GoodHelper.ingredientLink(name);
-            $('good_ingredient').addEventListener('click', clicker, false);
-		} else $('good_composition').style.display = "none";
-		
-		if (good)
-		{
-			$('good_buy').parentNode.show()
-			$('good_buy').href = good.getHref()
-			$('good_buy').innerHTML = good.name
-		}
-		else
-			$('good_buy').parentNode.hide()
-		
-		$('good_desc').innerHTML = item.good.about;
-		$('good_picture').src = item.good.getMainImageSrc()
-		
-		var summ = 0;
-		var have = 0;
-		
-		this.lastShownIngred = name;
 	};
 	
 	this.checkKey = function(keyCode){
