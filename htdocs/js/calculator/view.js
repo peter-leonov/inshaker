@@ -296,7 +296,7 @@ function CalculatorView() {
 			li.appendChild(a);
 			
 			var b = document.createElement("b");
-			b.innerHTML = GoodHelper.normalVolumeTxt(bottle.vol[0], item.good.unit);
+			b.innerHTML = Units.humanizeDose(bottle.vol[0], item.good.unit).join(' ')
 			li.appendChild(b);
 			
 			var label = document.createElement("label");

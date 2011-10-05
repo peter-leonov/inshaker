@@ -201,7 +201,7 @@ var Printer = {
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
-        cnt.innerHTML = GoodHelper.normalVolumeTxt(pair[1], ingredient.unit);
+        cnt.innerHTML = Units.humanizeDose(pair[1], ingredient.unit).join(' ')
         cnt.className = "cnt";
 
         dd.appendChild(div);
@@ -225,7 +225,7 @@ var Printer = {
 		var ingred = Ingredient.getByName(name)
         var span = document.createElement("span");
         span.className = "bottle";
-        span.appendChild(document.createTextNode('(' + GoodHelper.normalVolumeTxt(bottle.vol[0], ingred.unit) + ')'))
+        span.appendChild(document.createTextNode('(' + Units.humanizeDose(bottle.vol[0], ingred.unit).join(' ') + ')'))
         div.appendChild(span);
 
         var cnt = document.createElement("div");
