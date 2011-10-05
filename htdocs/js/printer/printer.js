@@ -178,7 +178,15 @@ var Printer = {
        img.src = Ingredient.getByName(name).getMiniImageSrc()
        return img;
     },
-
+	
+	getIngredientBrandedName: function(name){
+		var brand = Ingredient.getByName(name).brand || "";
+		if(brand.indexOf(name) > -1) name = "";
+		var gap = "";
+		if(brand && name) gap = " ";
+		return name + (brand ? gap + brand : "");
+	},
+	
     createIngredPairElement: function(pair, last){
         var dd = document.createElement("dd");
         if(last) dd.className = "last";
@@ -189,7 +197,7 @@ var Printer = {
         div.appendChild(img);
         var name = pair[0];
 		var ingredient = Ingredient.getByName(name)
-        var txt = GoodHelper.getIngredText(name);
+        var txt = this.getIngredientBrandedName(name);
         div.appendChild(document.createTextNode(txt));
         
         var cnt = document.createElement("div");
@@ -211,7 +219,7 @@ var Printer = {
         img.src = this.IMG_MARKER;
         div.appendChild(img);
         
-		var txt = GoodHelper.getIngredText(name);
+		var txt = this.getIngredientBrandedName(name);
         div.appendChild(document.createTextNode(txt));
         
 		var ingred = Ingredient.getByName(name)

@@ -84,14 +84,6 @@ var GoodHelper = {
 		return good.getVolumeImage(vol)
 	},
 	
-	getIngredText: function(name){
-		var brand = Ingredient.getByName(name).brand || "";
-		if(brand.indexOf(name) > -1) name = "";
-		var gap = "";
-		if(brand && name) gap = " ";
-		return name + (brand ? gap + brand : "");
-	},
-	
 	shortName: function(name){
 		if(name == "Черносмородиновый ликер") return "Черносмородин. ликер";
 		return name;
