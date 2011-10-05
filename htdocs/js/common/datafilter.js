@@ -31,7 +31,7 @@ self.DataFilter = {
 				var ingred = ingredients[j][0];
 				
 				if(goods[ingred]) {
-					var dose = this._parseDose(goods[ingred].unit, ingredients[j][1]);
+					var dose = ingredients[j][1]
 					if(!res[ingred]) {
 						res[ingred] = {};
 						res[ingred].good = goods[ingred];
@@ -142,33 +142,6 @@ self.DataFilter = {
 			}
 		}
 		return res;
-	},
-	
-	/**
-	 * Нормализация объема относительно заданной единицы
-	 * @param normUnit - заданная единица (напр., "л")
-	 * @param txt - текст объема (напр., "15 мл")
-	 * @return нормализованное значение (напр., 0.015)
-	 */
-	_parseDose: function(normUnit, txt){
-		var arr = txt.match(/^(.+)\ (.+)/);
-		var vol = arr[1];
-		var unit = arr[2];
-		if(unit == "мл" && normUnit == "л") return vol/1000;
-		else if((unit.indexOf("кубик") > -1) && normUnit == "кубиков") return parseInt(vol);
-		else if(unit == "шт" && normUnit == "шт") return this._parseDecimal(vol);
-		else if(unit == "капли" && normUnit == "л") return vol/40000;
-		else if(unit == normUnit) return parseFloat(vol);
-	},
-	
-	/**
-	 * Парсинг значений объема, заданных в виде дробей
-	 * @param volume - например, "1/2"
-	 * @return число типа float наподобие 0.5
-	 */
-	_parseDecimal: function(volume){
-		if(volume.indexOf("/") > -1) return eval(volume);
-		else return parseFloat(volume);
 	},
 	
 	/**
