@@ -311,8 +311,9 @@ Me.prototype =
 			
 			amount.appendChild(T(' '))
 			
-			var unit = Nct('span', 'unit', ingredient.unit)
+			var unit = Nct('span', 'unit', ' ')
 			amount.appendChild(unit)
+			cache.unit = unit.firstChild
 			
 			
 			var cost = Nc('span', 'cost')
@@ -340,6 +341,7 @@ Me.prototype =
 				item = planCache[i]
 			
 			item.amount.value = buy.amount
+			item.unit.nodeValue = buy.ingredient.unit
 			item.cost.nodeValue = buy.cost
 		}
 	},
