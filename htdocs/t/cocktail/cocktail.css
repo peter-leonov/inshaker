@@ -53,7 +53,7 @@
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
 #top-menu .border-links { position: relative; height: 19px; padding: 13px 0 6px 9px; font-size: 110%; z-index: 1; }
 #top-menu .border-links a { padding: 3px 10px 4px 10px; margin-right: 12px; line-height: 1.5; color: #fff; border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; text-decoration: none; }
-#top-menu .border-links a:hover { background: #0392f1; text-decoration: none; }
+#top-menu .border-links a:hover { text-decoration: none; }
 
 #content { position: relative; min-height: 190px; }
 
