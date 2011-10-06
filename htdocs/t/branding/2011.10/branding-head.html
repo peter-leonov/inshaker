@@ -5,13 +5,13 @@ if (date >= 18 && date < 25)
 	name = 'pears'
 if (date >= 25)
 	name = 'kurant'
-var prefix = '/t/theme/2011.10/' + name + '/'
+var prefix = '/t/branding/2011.10/' + name + '/'
 
 var link = document.createElement('link')
 link.id = 'theme-style'
 link['data-theme-prefix'] = prefix
 link.rel = 'stylesheet'
-link.href = prefix + 'theme.css'
+link.href = prefix + 'branding.css'
 var root = document.getElementsByTagName('head')[0] || document.documentElement
 root.appendChild(link)
 })();</script>
