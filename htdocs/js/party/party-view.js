@@ -342,8 +342,8 @@ Me.prototype =
 			
 			var human = Units.humanizeDose(buy.amount, buy.ingredient.unit)
 			
-			item.amount.value = human[0]
-			item.unit.nodeValue = human[1]
+			item.amount.value = buy.amountHumanized
+			item.unit.nodeValue = buy.unitHumanized
 			item.cost.nodeValue = buy.cost
 		}
 	},

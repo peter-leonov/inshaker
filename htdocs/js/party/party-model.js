@@ -71,7 +71,8 @@ Me.prototype =
 				{
 					ingredient: ingredient,
 					costPerUnit: costPerUnit,
-					amount: 0
+					amount: 0,
+					unit: ingredient.unit
 				}
 				
 				plan.push(buy)
@@ -153,6 +154,10 @@ Me.prototype =
 			
 			buy.amount = amount
 			buy.cost = Math.ceil(amount * buy.costPerUnit)
+			
+			var human = Units.humanizeDose(amount, buy.unit)
+			buy.amountHumanized = human[0]
+			buy.unitHumanized = human[1]
 		}
 	},
 	
