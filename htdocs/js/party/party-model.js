@@ -158,6 +158,7 @@ Me.prototype =
 			var human = Units.humanizeDose(amount, buy.unit)
 			buy.amountHumanized = human[0]
 			buy.unitHumanized = human[1]
+			buy.factorHumanized = human[2]
 		}
 	},
 	
@@ -173,6 +174,8 @@ Me.prototype =
 	setIngredientAmount: function (n, amount)
 	{
 		var buy = this.plan[n]
+		
+		amount /= buy.factorHumanized
 		
 		buy.amount = amount
 		buy.cost = Math.ceil(amount * buy.costPerUnit)
