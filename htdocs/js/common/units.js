@@ -37,17 +37,18 @@ var Me =
 	{
 		var h = humans[unit]
 		if (!h)
-			return [vol, unit]
+			return [vol, unit, 1]
 		
 		for (var i = 0, il = h.length; i < il; i++)
 		{
-			var scale = h[i]
+			var scale = h[i],
+				k = scale[2]
 			
 			if (scale[0] <= vol && vol < scale[1])
-				return [vol * scale[2], scale[3]]
+				return [vol * k, scale[3], k]
 		}
 		
-		return [vol, unit]
+		return [vol, unit, 1]
 	}
 }
 
