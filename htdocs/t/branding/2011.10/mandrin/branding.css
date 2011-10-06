@@ -66,6 +66,7 @@ button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #ff5501; }
 #search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
 
 /* cocktail.css */
+#top-menu .border-links a:hover,
 #b-more dt,
 #b-more dt b { background-color: #f96a26; }
 #b-more dt b { color: #fff; }
