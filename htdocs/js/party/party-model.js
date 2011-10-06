@@ -71,7 +71,8 @@ Me.prototype =
 				{
 					ingredient: ingredient,
 					costPerUnit: costPerUnit,
-					amount: 0
+					amount: 0,
+					unit: ingredient.unit
 				}
 				
 				plan.push(buy)
@@ -135,7 +136,7 @@ Me.prototype =
 			{
 				var part = parts[j],
 					name = part[0],
-					volume = parseFloat(part[1])
+					volume = part[1]
 				
 				var amount = Math.ceil(volume * count * 10) / 10
 				if (amounts[name])
@@ -153,6 +154,11 @@ Me.prototype =
 			
 			buy.amount = amount
 			buy.cost = Math.ceil(amount * buy.costPerUnit)
+			
+			var human = Units.humanizeDose(amount, buy.unit)
+			buy.amountHumanized = human[0].round(1)
+			buy.unitHumanized = human[1]
+			buy.factorHumanized = human[2]
 		}
 	},
 	
@@ -168,6 +174,8 @@ Me.prototype =
 	setIngredientAmount: function (n, amount)
 	{
 		var buy = this.plan[n]
+		
+		amount /= buy.factorHumanized
 		
 		buy.amount = amount
 		buy.cost = Math.ceil(amount * buy.costPerUnit)

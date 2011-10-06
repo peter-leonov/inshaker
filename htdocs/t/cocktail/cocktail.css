@@ -1,5 +1,5 @@
-/* in cocktail */
-#b-more {padding-top:20px;overflow:hidden;width:100%;clear:both;padding-bottom:1px;}
+#common-main-wrapper { overflow: hidden; }
+#b-more {padding-top:20px;overflow:hidden;width:630px;padding-bottom:1px;}
 #b-more .b-more-cocktails { width:398px;}
 #b-more .common-box { float: left; }
 #b-more dl{font-size:120%;height:150px;}
@@ -7,7 +7,7 @@
 #b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
 #b-more dd{line-height:1.17;position:relative;}
 #b-more .b-more-rec .point{width:130px; display:block}
-#b-more .b-more-rec {width:208px;margin-right:19px;}
+#b-more .b-more-rec {width:208px;margin-right:20px;}
 #b-more .b-more-rec .viewport{width:130px;left:21px;}
 #b-more .b-more-rec li{width:130px;}
 #b-more.wide .b-more-rec { display: none; }

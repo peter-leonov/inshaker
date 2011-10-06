@@ -311,8 +311,9 @@ Me.prototype =
 			
 			amount.appendChild(T(' '))
 			
-			var unit = Nct('span', 'unit', ingredient.unit)
+			var unit = Nct('span', 'unit', ' ')
 			amount.appendChild(unit)
+			cache.unit = unit.firstChild
 			
 			
 			var cost = Nc('span', 'cost')
@@ -339,7 +340,10 @@ Me.prototype =
 			var buy = plan[i],
 				item = planCache[i]
 			
-			item.amount.value = buy.amount
+			var human = Units.humanizeDose(buy.amount, buy.ingredient.unit)
+			
+			item.amount.value = buy.amountHumanized
+			item.unit.nodeValue = buy.unitHumanized
 			item.cost.nodeValue = buy.cost
 		}
 	},

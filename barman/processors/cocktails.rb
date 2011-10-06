@@ -313,11 +313,19 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["strength"] = about["Крепость"]
     @cocktail["groups"] = about["Группы"]
-    @cocktail["ingredients"] = sort_parts_by_group(about["Ингредиенты"].map { |e| [e.keys[0], e[e.keys[0]]] })
-    @cocktail["garnish"] = sort_parts_by_group((about["Украшения"] || []).map { |e| [e.keys[0], e[e.keys[0]]] })
-    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
+    @cocktail["ingredients"] = parse_parts(about["Ингредиенты"])
+    if about["Украшения"]
+      @cocktail["garnish"] = parse_parts(about["Украшения"])
+    else
+      @cocktail["garnish"] = []
+    end
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
+    
+    
+    @cocktail["ingredients"] = sort_parts_by_group(@cocktail["ingredients"])
+    @cocktail["garnish"] = sort_parts_by_group(@cocktail["garnish"])
+    @cocktail["sorted_parts"] = sort_parts_by_group(merge_parts(@cocktail["ingredients"], @cocktail["garnish"]))
     
     # puts %Q{"#{name}","#{@cocktail["teaser"]}"}
     
@@ -424,6 +432,16 @@ class CocktailsProcessor < Inshaker::Processor
       data[prop] = cocktail.delete(prop)
     end
     
+    cocktail["ingredients"].each do |part|
+      part[1] = part[1].may_be_to_i
+      part.pop
+    end
+    
+    cocktail["garnish"].each do |part|
+      part[1] = part[1].may_be_to_i
+      part.pop
+    end
+    
     flush_json_object(data, "#{root_dir.path}/data.json")
   end
   
@@ -514,6 +532,25 @@ class CocktailsProcessor < Inshaker::Processor
     end # indent
   end
   
+  def parse_parts parts
+    parts.map do |e|
+      name, amount = e.shift
+      
+      vol, unit = Ingredient.parse_dose(amount)
+      unless vol
+        if vol == nil
+          error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
+        elsif vol == false
+          error "неизвестная единица измерения «#{unit}» в выражении «#{amount}»"
+        end
+        vol = 0.0
+        unit = "хз"
+      end
+      
+      [name, vol, unit]
+    end
+  end
+  
   def sort_parts_by_group arr
     arr.sort do |a, b|
       @ingredient_weight_by_group[a[0]] - @ingredient_weight_by_group[b[0]]
@@ -521,32 +558,22 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def merge_parts *args
-    volumes = {}
-    units = {}
+    byname = {}
     
     args.each do |set|
       set.each do |part|
         name = part[0]
         
-        vol = volumes[name]
-        if vol
-          vol[1] += part[1].to_f
+        sum = byname[name]
+        if sum
+          sum[1] += part[1]
         else
-          am = part[1]
-          
-          volumes[name] = [name, am.to_f]
-          units[name] = am.match(/\d+(?:\.\d+)?\s*(.+)\s*/)[1]
+          byname[name] = [name, part[1], part[2]]
         end
       end
     end
     
-    res = []
-    volumes.each do |k, v|
-      v[1] = "#{v[1] % 1 == 0 ? v[1].to_i : v[1]} #{units[k]}"
-      res << v
-    end
-    
-    return res
+    return byname.values
   end
 private
   
