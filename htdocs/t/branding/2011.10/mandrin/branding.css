@@ -18,8 +18,8 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 780px; height: 425px; left: -30px; bottom: -550px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#bottom { color: #ff5502; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
-#bottom .link { color: #e50000; }
+#bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
+#bottom .link { color: #ff5502; }
 html { background: #000 url(bg.jpg) center -130px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #fff; }
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #ff5501; }
