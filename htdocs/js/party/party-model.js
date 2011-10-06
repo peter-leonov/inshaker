@@ -156,7 +156,7 @@ Me.prototype =
 			buy.cost = Math.ceil(amount * buy.costPerUnit)
 			
 			var human = Units.humanizeDose(amount, buy.unit)
-			buy.amountHumanized = human[0]
+			buy.amountHumanized = human[0].round(1)
 			buy.unitHumanized = human[1]
 			buy.factorHumanized = human[2]
 		}
