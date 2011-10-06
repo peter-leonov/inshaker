@@ -28,8 +28,8 @@ var Me =
 
 Me.initialize
 ({
-	"spotlighted":{"href":"/cocktail/gin_tonic/"},
-	"branded-image":{"href":"/cocktail/gin_tonic/"}
+	"spotlighted":{"href":"/academy.html"},
+	"branded-image":{"href":"/academy.html"}
 })
 
 Me.bind()

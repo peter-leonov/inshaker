@@ -4,7 +4,7 @@
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
-#top .link:hover { border-bottom-color: #ab0e1c; }
+#top .link:hover { border-bottom-color: #ff5502; }
 
 /* common.css */
 #spotlighted,
@@ -13,16 +13,16 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 93px; height: 30px; right: 0; top: -2px; }
+#spotlighted { width: 86px; height: 40px; right: 0; top: -9px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 465px; height: 555px; left: 85px; bottom: -700px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 780px; height: 425px; left: -30px; bottom: -550px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#bottom { color: #bd1340; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; }
+#bottom { color: #ff5502; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
 #bottom .link { color: #e50000; }
-html { background: #fff url(bg.jpg) center -130px repeat-y; }
+html { background: #000 url(bg.jpg) center -130px repeat-y; }
 button.rounded b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #fff; }
-button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
+button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #ff5501; }
 
 /* calculator.css */
 #b-bill dt,
@@ -67,9 +67,9 @@ button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); color: #bd2330; }
 
 /* cocktail.css */
 #b-more dt,
-#b-more dt b { background-color: #bd2330; }
+#b-more dt b { background-color: #f96a26; }
 #b-more dt b { color: #fff; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
-#output .help-line .hint { color: #ab0e1c; }
+#output .help-line .hint { color: #ff5502; }
