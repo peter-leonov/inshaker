@@ -115,6 +115,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 @media print {
 
+html { font-size: 14px; }
+
 #window,
 #illustration-box .content,
 #advice-list,
@@ -122,7 +124,25 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #recipes-box .common-title,
 .hidden { display: none; }
 
-html.print-recipes #plan-box { display: none; }
+#party-name { font-size: 25px; }
+#recipe-list .recipe { margin: 30px 0; }
+#recipe-list .recipe .name { font-size: 20px; }
+#recipe-list .recipe .image-box { float: left; width: 290px; text-align: center; margin-top: 30px; }
+#recipe-list .ingredients { overflow: hidden; width: 600px; margin: 10px 0 0 305px; }
+html.opera-10-0 #recipe-list .ingredients { margin-left: 15px; }
+html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
+#recipe-list .ingredients .ingredient-preview { float: left; margin: 0 17px 17px 0; cursor: pointer; }
+#recipe-list .instructions { margin: 0 0 0 305px; width: 600px; }
+#recipe-list .instructions .head { margin-bottom: 10px; font-weight: bold; font-size: 14px; }
+#recipe-list .instructions .instruction { list-style: decimal; margin: 0 0 7px 0; }
+#recipe-list .instructions .instruction a { color: #000; }
+#recipe-list .instructions .instruction a:hover { color: #ec118f; text-decoration: none; }
+
+#plan-box .common-title .common-name { font-size: 20px; }
+#cocktail-plan .head { display: none; }
+#cocktail-plan .portions .portion .name .image { display: none; }
+#cocktail-plan .portions .portion .count .value { width: 25px; }
+#cocktail-plan .portions .portion .ingredients { display: none; }
 
 } /* @media print */
 
