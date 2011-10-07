@@ -387,7 +387,7 @@
 {"group":"Соусы и масло","name":"Табаско соус красный","path":"tabasko-sous-krasnyiy","tags":["Соус","Любой ингредиент"],"unit":"мл","volumes":[[150.0,300.0,true]]},
 {"group":"Фрукты","name":"Тайский манго","path":"tayskiy-mango","tags":["Любой ингредиент"],"unit":"г","volumes":[[500.0,190.0,true]]},
 {"group":"Соусы и масло","name":"Тамаринд соус","path":"tamarind-sous","tags":["Соус","Любой ингредиент"],"unit":"л","volumes":[[0.25,203.0,true]]},
-{"group":"Мучные изделия","name":"Тарталетка","path":"tartaletka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[8.0,30.0,true]]},
+{"group":"Мучные изделия","name":"Тарталетка","path":"tartaletka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,4.0,true]]},
 {"group":"Молочные продукты. Яйца","name":"Творог","path":"tvorog","tags":["Любой ингредиент"],"unit":"г","volumes":[[240.0,70.0,true]]},
 {"brand":"Bacardi Black","brand_dir":"bacardi-black","group":"Крепкий алкоголь","mark":"Bacardi","name":"Темный ром","path":"temnyiy-rom","tags":["Ром","Любой ингредиент"],"unit":"л","volumes":[[0.75,1246.0,true]]},
 {"group":"Фрукты","name":"Терн","names":["Терновник"],"path":"tern","tags":["Ягоды","Любой ингредиент"],"unit":"г","volumes":[[1000.0,120.0,true]]},
