@@ -118,6 +118,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 html { font-size: 14px; }
 
+#common-main-wrapper { overflow: hidden; position: relative; width: 900px; margin: 0 auto; }
+
 #window,
 #illustration-box .content,
 #advice-list,
