@@ -109,6 +109,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 .transparent-borders .bottom { bottom: 0; left: 1px; right: 1px; }
 .transparent-borders .left { left: 0; top: 0; bottom: 0; }
 
+#print-logo-hd { display: none; } 
+
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
 } /* @media screen */
@@ -182,6 +184,8 @@ html { font-size: 14px; }
 .ingredient-preview { width: 80px; height: 80px; }
 .ingredient-preview .image { width: 80px; height: 80px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .ingredient-preview .name { display: block; margin-top: 5px; text-align: center; font-size: 10px; }
+
+#print-logo-hd { position: absolute; top: 0; right: 0; width: 150px; }
 
 
 
