@@ -3,21 +3,23 @@ h1,h2,h3,h4,
 p,form,
 fieldset,legend,
 ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
-h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
+h2,h3,h4,h5,h6{font-weight:normal;}
 td{font-size:1em;vertical-align:top;}
 img{vertical-align:middle;}
 a { cursor: pointer; text-decoration: none; }
 a:hover { text-decoration: underline; }
 a img{border:0;}
-input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
-input,select,textarea{font-size:1.1em;}
+input,select,textarea{font:inherit;}
 input[type="password"],
 input[type="text"]{margin:0;}
 ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
 .to-print{display:none;}
-body{font:10px Tahoma,Arial,sans-serif;position:relative;min-height:100%;padding:0;}
+html{font:10px Tahoma,Arial,sans-serif;}
+body{position:relative;min-height:100%;padding:0;}
+
+@media screen {
 
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
@@ -67,14 +69,26 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
-.share-box { line-height: 36px; }
-.share-box .label { display: inline-block; height: 30px; line-height: 28px; vertical-align: middle; }
-.share-box .button { display: inline-block; width: 30px; height: 30px; vertical-align: middle; }
-.share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
-.share-box .button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
-.share-box .button.facebook i { background-position: -50px 0; }
-.share-box .button.facebook:hover i { background-position: -75px 0; }
-.share-box .button.twitter i { background-position: -50px -25px; }
-.share-box .button.twitter:hover i { background-position: -75px -25px; }
-.share-box .button.vkontakte i { background-position: -100px 0; }
-.share-box .button.vkontakte:hover i { background-position: -125px 0; }
+.common-share-button { display: inline-block; position: relative; height: 30px; padding-left: 30px; }
+.common-share-button i { position: absolute; left: 7px; top: 7px; width: 16px; height: 16px; }
+.common-share-button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
+.common-share-button:hover .name { text-shadow: 0 0 8px #fff; }
+.common-share-button.facebook i { background-position: -50px 0; }
+.common-share-button.facebook:hover i { background-position: -75px 0; }
+.common-share-button.twitter i { background-position: -50px -25px; }
+.common-share-button.twitter:hover i { background-position: -75px -25px; }
+.common-share-button.vkontakte i { background-position: -100px 0; }
+.common-share-button.vkontakte:hover i { background-position: -125px 0; }
+.common-share-button.print i { background-position: -100px -25px; }
+.common-share-button.print:hover i { background-position: -125px -25px; }
+
+} /* @media screen */
+
+
+@media print {
+
+#top,
+#bottom { display: none; }
+input { border: none; background: none; }
+
+} /* @media print */

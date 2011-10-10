@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="party-page" class="party-section" lang="ru">
+<html id="party-page" class="party-section print-recipes" lang="ru">
 <head>
 	<!--# include file="/inc/party-head.html" -->
 	<link rel="stylesheet" type="text/css" href="/t/party/party.css"/>
@@ -37,7 +37,7 @@
 </div class="common-box">
 
 
-<div class="common-box">
+<div class="common-box" id="recipes-box">
 <div class="common-title">
 	<h2 class="common-name">Устроить эту вечеринку просто! Inshaker попробовал и рекомендует!</h2>
 </div>
@@ -86,7 +86,7 @@
 </div class="common-box">
 
 
-<div class="common-box">
+<div class="common-box" id="plan-box">
 <div class="common-title">
 	<h1 class="common-name">Не забудь составить план покупок!</h1>
 </div>
@@ -111,19 +111,58 @@
 			</dl>
 		</div>
 		<ul id="ingredient-preview-list">
-			<li class="item ingredient-preview" data-ingredient="Абсент" style="background-image: url(/ingredient/absent/preview.jpg)"><span class="name">Абсент</span></li>
-			<li class="item ingredient-preview" data-ingredient="Спрайт" style="background-image: url(/ingredient/sprayt/preview.jpg)"><span class="name">Спрайт</span></li>
-			<li class="item ingredient-preview" data-ingredient="Апельсин" style="background-image: url(/ingredient/apelsin/preview.jpg)"><span class="name">Апельсин</span></li>
-			<li class="item ingredient-preview" data-ingredient="Лайм" style="background-image: url(/ingredient/laym/preview.jpg)"><span class="name">Лайм</span></li>
-			<li class="item ingredient-preview" data-ingredient="Лимон" style="background-image: url(/ingredient/limon/preview.jpg)"><span class="name">Лимон</span></li>
-			<li class="item ingredient-preview" data-ingredient="Свежемороженая малина" style="background-image: url(/ingredient/svezhemorozhenaya-malina/preview.jpg)"><span class="name">Свежемороженая малина</span></li>
-			<li class="item ingredient-preview" data-ingredient="Свежемороженая вишня" style="background-image: url(/ingredient/svezhemorozhenaya-vishnya/preview.jpg)"><span class="name">Свежемороженая вишня</span></li>
-			<li class="item ingredient-preview" data-ingredient="Свежемороженая клубника" style="background-image: url(/ingredient/svezhemorozhenaya-klubnika/preview.jpg)"><span class="name">Свежемороженая клубника</span></li>
-			<li class="item ingredient-preview" data-ingredient="Мята" style="background-image: url(/ingredient/myata/preview.jpg)"><span class="name">Мята</span></li>
-			<li class="item ingredient-preview" data-ingredient="Звездчатый анис" style="background-image: url(/ingredient/zvezdchatyiy-anis/preview.jpg)"><span class="name">Звездчатый анис</span></li>
-			<li class="item ingredient-preview" data-ingredient="Сахарный песок" style="background-image: url(/ingredient/saharnyiy-pesok/preview.jpg)"><span class="name">Сахарный песок</span></li>
-			<li class="item ingredient-preview" data-ingredient="Корица в палочках" style="background-image: url(/ingredient/koritsa-v-palochkah/preview.jpg)"><span class="name">Корица в палочках</span></li>
-			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)"><span class="name">Лед в кубиках</span></li>
+			<li class="item ingredient-preview" data-ingredient="Абсент" style="background-image: url(/ingredient/absent/preview.jpg)">
+				<img class="image" src="/ingredient/absent/preview.jpg" alt="Абсент">
+				<span class="name">Абсент</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Спрайт" style="background-image: url(/ingredient/sprayt/preview.jpg)">
+				<img class="image" src="/ingredient/sprayt/preview.jpg" alt="Спрайт">
+				<span class="name">Спрайт</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Апельсин" style="background-image: url(/ingredient/apelsin/preview.jpg)">
+				<img class="image" src="/ingredient/apelsin/preview.jpg" alt="Апельсин">
+				<span class="name">Апельсин</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Лайм" style="background-image: url(/ingredient/laym/preview.jpg)">
+				<img class="image" src="/ingredient/laym/preview.jpg" alt="Лайм">
+				<span class="name">Лайм</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Лимон" style="background-image: url(/ingredient/limon/preview.jpg)">
+				<img class="image" src="/ingredient/limon/preview.jpg" alt="Лимон">
+				<span class="name">Лимон</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Свежемороженая малина" style="background-image: url(/ingredient/svezhemorozhenaya-malina/preview.jpg)">
+				<img class="image" src="/ingredient/svezhemorozhenaya-malina/preview.jpg" alt="Свежемороженая малина">
+				<span class="name">Свежемороженая малина</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Свежемороженая вишня" style="background-image: url(/ingredient/svezhemorozhenaya-vishnya/preview.jpg)">
+				<img class="image" src="/ingredient/svezhemorozhenaya-vishnya/preview.jpg" alt="Свежемороженая вишня">
+				<span class="name">Свежемороженая вишня</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Свежемороженая клубника" style="background-image: url(/ingredient/svezhemorozhenaya-klubnika/preview.jpg)">
+				<img class="image" src="/ingredient/svezhemorozhenaya-klubnika/preview.jpg" alt="Свежемороженая клубника">
+				<span class="name">Свежемороженая клубника</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Мята" style="background-image: url(/ingredient/myata/preview.jpg)">
+				<img class="image" src="/ingredient/myata/preview.jpg" alt="Мята">
+				<span class="name">Мята</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Звездчатый анис" style="background-image: url(/ingredient/zvezdchatyiy-anis/preview.jpg)">
+				<img class="image" src="/ingredient/zvezdchatyiy-anis/preview.jpg" alt="Звездчатый анис">
+				<span class="name">Звездчатый анис</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Сахарный песок" style="background-image: url(/ingredient/saharnyiy-pesok/preview.jpg)">
+				<img class="image" src="/ingredient/saharnyiy-pesok/preview.jpg" alt="Сахарный песок">
+				<span class="name">Сахарный песок</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Корица в палочках" style="background-image: url(/ingredient/koritsa-v-palochkah/preview.jpg)">
+				<img class="image" src="/ingredient/koritsa-v-palochkah/preview.jpg" alt="Корица в палочках">
+				<span class="name">Корица в палочках</span>
+			</li>
+			<li class="item ingredient-preview" data-ingredient="Лед в кубиках" style="background-image: url(/ingredient/led-v-kubikah/preview.jpg)">
+				<img class="image" src="/ingredient/led-v-kubikah/preview.jpg" alt="Лед в кубиках">
+				<span class="name">Лед в кубиках</span>
+			</li>
 		</ul>
 	</div>
 </div class="common-content-gradiented">
@@ -131,12 +170,17 @@
 
 <div class="common-box">
 <div class="common-mini" id="links-box">
-	<div class="share-box">
+	<div class="print-box block">
+		<a class="button print-page common-share-button print"><i></i> <span class="name">распечатай вечеринку</span></a>
+	</div>
+	<div class="share-box block">
 		<span class="label">Поделись с друзьями</span>
-		<a class="button vkontakte" href="http://vkontakte.ru/share.php?url=${url}"><i></i></a><a class="button facebook" href="http://www.facebook.com/sharer.php?u=${url}&t=${text}"><i></i></a><a class="button twitter" href="http://twitter.com/share?url=${url}&text=${text}&via=inshaker&related=inshaker&lang=ru"><i></i></a>
+		<a class="button common-share-button vkontakte" href="http://vkontakte.ru/share.php?url=${url}"><i></i></a><a class="button common-share-button facebook" href="http://www.facebook.com/sharer.php?u=${url}&t=${text}"><i></i></a><a class="button common-share-button twitter" href="http://twitter.com/share?url=${url}&text=${text}&via=inshaker&related=inshaker&lang=ru"><i></i></a>
 	</div>
 </div>
 </div class="common-box">
+
+<img id="print-logo-hd" src="/t/print/logo-hd.png">
 
 </div id="common-main-wrapper">
 

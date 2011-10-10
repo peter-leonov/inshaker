@@ -49,6 +49,7 @@ Me.prototype =
 		this.bindIngredientPopup()
 		this.bindEvents()
 		this.bindShareBox()
+		this.bindPrintBox()
 		
 		return this
 	},
@@ -387,6 +388,13 @@ Me.prototype =
 		var share = new ShareBox()
 		share.bind(nodes.shareBox)
 		share.render(window.location.href, nodes.partyName.firstChild.nodeValue)
+	},
+	
+	bindPrintBox: function ()
+	{
+		var nodes = this.nodes
+		
+		nodes.printButton.addEventListener('click', function () { window.print() }, false)
 	},
 	
 	guessParty: function ()
