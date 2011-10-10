@@ -96,10 +96,9 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 .common-box { margin-bottom: 30px; }
 
-.share-box { line-height: 36px; }
-.share-box .label { display: inline-block; height: 30px; line-height: 28px; vertical-align: middle; }
-.share-box .button { display: inline-block; vertical-align: middle; }
-.share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+#links-box .block { line-height: 36px; }
+#links-box .block .label { display: inline-block; height: 30px; line-height: 28px; vertical-align: middle; }
+#links-box .block .button { display: inline-block; vertical-align: middle; }
 
 .transparent-borders .top,
 .transparent-borders .right,

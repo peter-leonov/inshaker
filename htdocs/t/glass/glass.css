@@ -78,6 +78,8 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .common-share-button.twitter:hover i { background-position: -75px -25px; }
 .common-share-button.vkontakte i { background-position: -100px 0; }
 .common-share-button.vkontakte:hover i { background-position: -125px 0; }
+.common-share-button.print i { background-position: -100px -25px; }
+.common-share-button.print:hover i { background-position: -125px -25px; }
 
 } /* @media screen */
 
