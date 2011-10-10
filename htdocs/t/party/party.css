@@ -155,7 +155,6 @@ html { font-size: 14px; }
 #cocktail-plan .portions .portion .count { display: inline; }
 #cocktail-plan .portions .portion .ingredients { display: none; }
 
-} /* @media print */
 #lists-box { position: relative; min-height: 580px; }
 
 #purchase-plan .ingredients-list .head { font-size: 20px; }
@@ -190,7 +189,7 @@ html { font-size: 14px; }
 
 #print-logo-hd { position: absolute; top: 0; right: 0; width: 150px; }
 
-
+} /* @media print */
 
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
