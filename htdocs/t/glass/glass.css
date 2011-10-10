@@ -69,9 +69,10 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
-.common-share-button { display: block; width: 30px; height: 30px; }
-.common-share-button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+.common-share-button { display: inline-block; position: relative; height: 30px; padding-left: 30px; }
+.common-share-button i { position: absolute; left: 7px; top: 7px; width: 16px; height: 16px; }
 .common-share-button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
+.common-share-button:hover .name { text-shadow: 0 0 8px #fff; }
 .common-share-button.facebook i { background-position: -50px 0; }
 .common-share-button.facebook:hover i { background-position: -75px 0; }
 .common-share-button.twitter i { background-position: -50px -25px; }
