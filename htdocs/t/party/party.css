@@ -130,6 +130,9 @@ html { font-size: 14px; }
 .hidden { display: none; }
 
 #party-name { font-size: 25px; width: 730px; }
+
+#recipes-box { margin-bottom: 50px; }
+
 #recipe-list .recipe { margin: 30px 0; }
 #recipe-list .recipe .name { font-size: 20px; }
 #recipe-list .recipe .image-box { float: left; width: 290px; text-align: center; margin-top: 20px; }
@@ -140,7 +143,7 @@ html { font-size: 14px; }
 #recipe-list .instructions .instruction a { color: #000; }
 #recipe-list .instructions .instruction a:hover { color: #ec118f; text-decoration: none; }
 
-#plan-box .common-title { margin-bottom: 15px; }
+#plan-box .common-title { margin-bottom: 10px; }
 #plan-box .common-title .common-name { font-size: 20px; }
 #cocktail-plan { margin-bottom: 10px; }
 #cocktail-plan .head { display: none; }
@@ -178,7 +181,7 @@ html { font-size: 14px; }
 #purchase-plan .total .cost { color: #ec118f; }
 
 #ingredient-preview-list { position: absolute; top: 30px; right: 0; width: 390px; }
-#ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
+#ingredient-preview-list .item { float: left; margin: 0 0 45px 17px; }
 #ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; background: none !important; }
 
 .ingredient-preview { width: 80px; height: 80px; }
