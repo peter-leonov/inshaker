@@ -25,7 +25,8 @@ function onready ()
 		window:
 		{
 			root: $$('#window')[0],
-			layers: $$('#window .layer')
+			layers: $$('#window .layer'),
+			images: $$('#window .layer .image')
 		},
 		recipeList: $$('#recipe-list')[0],
 		ingredientPreviewList: $$('#ingredient-preview-list')[0],

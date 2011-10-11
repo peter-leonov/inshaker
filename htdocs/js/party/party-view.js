@@ -57,18 +57,18 @@ Me.prototype =
 	loadWindow: function ()
 	{
 		var nodes = this.nodes.window,
-			layers = nodes.layers
+			images = nodes.images
 		
 		var me = this, count = 0
 		function onload ()
 		{
-			if (++count == layers.length)
+			if (++count == images.length)
 				me.bindWindow()
 		}
 		
-		for (var i = 0, il = layers.length; i < il; i++)
+		for (var i = 0, il = images.length; i < il; i++)
 		{
-			var image = layers[i].firstChild
+			var image = images[i]
 			image.addEventListener('load', onload, false)
 			image.src = image.getAttribute('lazy-src')
 		}
