@@ -21,14 +21,9 @@ class ToolsProcessor < Inshaker::Processor
   def job
     sync_base "Tools"
     
-    prepare_dirs
     prepare
     flush_images
     flush_json
-  end
-  
-  def prepare_dirs
-    FileUtils.mkdir_p [Config::TOOLS_ROOT]
   end
   
   def prepare
