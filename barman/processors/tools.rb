@@ -47,6 +47,7 @@ class ToolsProcessor < Inshaker::Processor
       end
       end # indent
     end
+    say "Нашел #{@tools.length} #{@tools.length.plural('штучка', 'штучки', 'штучек')}"
   end
   
   def flush_json
