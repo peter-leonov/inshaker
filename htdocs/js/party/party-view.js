@@ -97,8 +97,10 @@ Me.prototype =
 				return
 			lastDx = dx
 			
+			root.className = 'rendering'
 			for (var i = 0, il = layers.length; i < il; i++)
 				layers[i].scrollLeft = middle + dx * factors[i]
+			root.className = ''
 		}
 		
 		function move (e)
