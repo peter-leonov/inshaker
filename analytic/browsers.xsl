@@ -83,25 +83,25 @@
 	<slice title="Firefox 7.0" color="#ff9900">
 		<xsl:value-of select="$firefox_7_0_sum"/>
 	</slice>
-	<slice title="Firefox 6.0" color="#ff9900">
+	<slice title="Firefox 6.0" color="#ffaa11">
 		<xsl:value-of select="$firefox_6_0_sum"/>
 	</slice>
-	<slice title="Firefox 5.0" color="#ff9900">
+	<slice title="Firefox 5.0" color="#ffbb22">
 		<xsl:value-of select="$firefox_5_0_sum"/>
 	</slice>
-	<slice title="Firefox 4.0" color="#ff9900">
+	<slice title="Firefox 4.0" color="#ffcc33">
 		<xsl:value-of select="$firefox_4_0_sum"/>
 	</slice>
-	<slice title="Firefox 3.6" color="#ffaa11">
+	<slice title="Firefox 3.6" color="#ffdd44">
 		<xsl:value-of select="$firefox_3_6_sum"/>
 	</slice>
-	<slice title="Firefox 3.5" color="#ffbb22">
+	<slice title="Firefox 3.5" color="#ffee55">
 		<xsl:value-of select="$firefox_3_5_sum"/>
 	</slice>
-	<slice title="Firefox 3.0" color="#ffcc33">
+	<slice title="Firefox 3.0" color="#ffff66">
 		<xsl:value-of select="$firefox_3_0_sum"/>
 	</slice>
-	<slice title="other Firefox" color="#ffdd44">
+	<slice title="other Firefox" color="#ffffaa">
 		<xsl:value-of select="$firefox_sum - $firefox_7_0_sum - $firefox_6_0_sum - $firefox_5_0_sum - $firefox_4_0_sum - $firefox_3_6_sum - $firefox_3_5_sum - $firefox_3_0_sum"/>
 	</slice>
 	
