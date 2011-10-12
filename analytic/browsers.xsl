@@ -27,10 +27,10 @@
 	<xsl:variable name="opera_10_1_sum" select="sum($opera_10_1/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_0_sum" select="sum($opera_10_0/dxp:metric[@name='ga:visits']/@value)"/>
 	
-	<slice title="Opera 12.0" color="#cc2200">
+	<slice title="Opera 12.0" color="#cc0000">
 		<xsl:value-of select="$opera_12_0_sum"/>
 	</slice>
-	<slice title="Opera 11.6" color="#cc2200">
+	<slice title="Opera 11.6" color="#cc0000">
 		<xsl:value-of select="$opera_11_6_sum"/>
 	</slice>
 	<slice title="Opera 11.5" color="#cc2200">
