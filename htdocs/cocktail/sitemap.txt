@@ -86,6 +86,8 @@ http://www.inshaker.ru/cocktail/b-black/
 http://www.inshaker.ru/cocktail/beer_berry_royal/
 http://www.inshaker.ru/cocktail/bitter_melon/
 http://www.inshaker.ru/cocktail/blackberry_shot/
+http://www.inshaker.ru/cocktail/bling-bling/
+http://www.inshaker.ru/cocktail/blow_job/
 http://www.inshaker.ru/cocktail/black_jack/
 http://www.inshaker.ru/cocktail/black_sabbath/
 http://www.inshaker.ru/cocktail/god_mars/
@@ -199,6 +201,7 @@ http://www.inshaker.ru/cocktail/oriental_tea_party/
 http://www.inshaker.ru/cocktail/east_honey/
 http://www.inshaker.ru/cocktail/orient_express/
 http://www.inshaker.ru/cocktail/all_fall_down/
+http://www.inshaker.ru/cocktail/woo-woo/
 http://www.inshaker.ru/cocktail/above_the_clouds/
 http://www.inshaker.ru/cocktail/galileo/
 http://www.inshaker.ru/cocktail/galliano_hot_shot/
@@ -210,6 +213,7 @@ http://www.inshaker.ru/cocktail/mulled_wine_5_stars/
 http://www.inshaker.ru/cocktail/mulled_wine_cardinal/
 http://www.inshaker.ru/cocktail/mulled_wine_mandrin_and_rosemary/
 http://www.inshaker.ru/cocktail/gloria/
+http://www.inshaker.ru/cocktail/depth_charge_sex-bomb/
 http://www.inshaker.ru/cocktail/gnaeus_pompey_the_great/
 http://www.inshaker.ru/cocktail/gogol-mogol/
 http://www.inshaker.ru/cocktail/gold_on_ice/
@@ -243,6 +247,8 @@ http://www.inshaker.ru/cocktail/count/
 http://www.inshaker.ru/cocktail/grapefruit_splash/
 http://www.inshaker.ru/cocktail/grapefruit_compote_in_a_jug/
 http://www.inshaker.ru/cocktail/grapefruit_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/rattlesnake/
+http://www.inshaker.ru/cocktail/greek_fig/
 http://www.inshaker.ru/cocktail/green_tini/
 http://www.inshaker.ru/cocktail/green_hope/
 http://www.inshaker.ru/cocktail/grog/
@@ -870,6 +876,7 @@ http://www.inshaker.ru/cocktail/damn_it/
 http://www.inshaker.ru/cocktail/tequila_batanga/
 http://www.inshaker.ru/cocktail/tequila_cowberry_orange/
 http://www.inshaker.ru/cocktail/tequila_slammer/
+http://www.inshaker.ru/cocktail/tequila_slammer_2/
 http://www.inshaker.ru/cocktail/tequila_cherry_pineapple/
 http://www.inshaker.ru/cocktail/tequila_madras/
 http://www.inshaker.ru/cocktail/tequila_martini/
