@@ -15,6 +15,8 @@ class Bar < Inshaker::Entity
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"
     DECLENSIONS    = BASE_DIR + "declensions.yaml"
+    
+    IMAGE_GEOMETRY = [590, 242]
   end
   
   def self.init

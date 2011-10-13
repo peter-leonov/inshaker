@@ -247,6 +247,12 @@ class BarsProcessor < Inshaker::Processor
         elsif size > 70
           warning "фотка №#{i} (big-#{i}.jpg) великовата (#{size}КБ > 70Кб)"
         end
+        
+        # geometry = get_jpeg_geometry(from)
+        # unless geometry == Config::IMAGE_GEOMETRY
+        #   error "у фотки №#{i} (big-#{i}.jpg) неверная геометрия (ширина или высота)"
+        # end
+        
         cp_if_different(from, "#{dst.path}/photo-#{i}.jpg")
       end
       
