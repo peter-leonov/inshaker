@@ -235,12 +235,41 @@ class BarsProcessor < Inshaker::Processor
       images.sort!
       count = images[0]
       images.each do |v|
-        error "большие картинки идут не по порядку" if count != v
+        unless count == v
+          error "большие картинки идут не по порядку"
+          return
+        end
         count += 1
       end
       
+      from = "#{src.path}/big-1.jpg"
+      geometry = get_jpeg_geometry(from)
+      geometry_name = nil
+      
+      Config::IMAGE_GEOMETRY.each do |k, v|
+        if v == geometry
+          geometry_name = k
+        end
+      end
+      
+      unless geometry_name
+        error "геометрия первой фотки (big-1.jpg) не подходит ни под старый (590x242) ни под новый (590x320) формат: #{geometry[0]}x#{geometry[1]}"
+        return
+      end
+      
+      
       images.each do |i|
         from = "#{src.path}/big-#{i}.jpg"
+        
+        if i >= 2
+          g = get_jpeg_geometry(from)
+          unless g == geometry
+            error "у фотки №#{i} (big-#{i}.jpg) неверная геометрия: #{geometry[0]}x#{geometry[1]}"
+            break
+          end
+          
+        end
+        
         size = File.size(from) / 1024
         if size > 120
           error "фотка №#{i} (big-#{i}.jpg) огромна (#{size}КБ > 120Кб)"
@@ -248,15 +277,11 @@ class BarsProcessor < Inshaker::Processor
           warning "фотка №#{i} (big-#{i}.jpg) великовата (#{size}КБ > 70Кб)"
         end
         
-        # geometry = get_jpeg_geometry(from)
-        # unless geometry == Config::IMAGE_GEOMETRY
-        #   error "у фотки №#{i} (big-#{i}.jpg) неверная геометрия (ширина или высота)"
-        # end
-        
         cp_if_different(from, "#{dst.path}/photo-#{i}.jpg")
       end
       
       bar["photos"] = images.length
+      bar["geometry"] = geometry_name
     else
       error "не нашел ни одной фотки бара (big-N.jpg)"
     end
@@ -305,6 +330,7 @@ class BarsProcessor < Inshaker::Processor
       bar.delete("entrance")
       bar.delete("photos")
       bar.delete("priceIndex")
+      bar.delete("geometry")
       bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
       bar["chief"] = bar["chief"]["name"]
     end
