@@ -63,13 +63,13 @@
 
 .photos.geometry-small .viewport .point,
 .photos.geometry-small { width: 590px; height: 242px; }
-.photos .prev,
-.photos .next { top: 98px; }
+.photos.geometry-small .prev,
+.photos.geometry-small .next { top: 98px; }
 
 .photos.geometry-big .viewport .point,
 .photos.geometry-big { width: 590px; height: 320px; }
-.photos .prev,
-.photos .next { top: 132px; }
+.photos.geometry-big .prev,
+.photos.geometry-big .next { top: 132px; }
 
 
 #share-box { position: absolute; right: 0; top: 0; }
