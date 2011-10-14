@@ -18,7 +18,7 @@
 	
 	<div class="description"><%= @desc_start.gsub(/[\n\r]/, "<br/>") %></div>
 	
-	<div class="photos programica-rolling-images">
+	<div class="photos programica-rolling-images geometry-<%= @geometry %>">
 		<div class="viewport">
 			<ul class="surface">
 				<% (1..@photos).each do |i| %>
