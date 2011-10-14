@@ -235,7 +235,9 @@ class BarsProcessor < Inshaker::Processor
       images.sort!
       count = images[0]
       images.each do |v|
-        error "большие картинки идут не по порядку" if count != v
+        unless count == v
+          error "большие картинки идут не по порядку"
+        end
         count += 1
       end
       
