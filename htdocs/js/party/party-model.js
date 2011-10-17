@@ -53,7 +53,8 @@ Me.prototype =
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
-			var pairs = portions[i].cocktail.ingredients
+			var portion = portions[i]
+			var pairs = portion.cocktail.garnish
 			
 			for (var j = 0, jl = pairs.length; j < jl; j++)
 			{
@@ -131,7 +132,7 @@ Me.prototype =
 			var portion = portions[i]
 			
 			var count = portion.count,
-				parts = portion.cocktail.ingredients
+				parts = portion.cocktail.garnish
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
 				var part = parts[j],
