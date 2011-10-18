@@ -54,11 +54,11 @@ Me.prototype =
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
-			var pairs = portion.cocktail.garnish
+			var parts = portion.cocktail.garnish
 			
-			for (var j = 0, jl = pairs.length; j < jl; j++)
+			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
-				var name = pairs[j][0]
+				var name = parts[j][0]
 				
 				if (buyByName[name])
 					continue
