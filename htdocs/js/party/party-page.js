@@ -4,6 +4,7 @@
 <!--# include virtual="/lib-0.3/modules/cloner.js"-->
 <!--# include virtual="/lib-0.3/modules/interpolate.js" -->
 
+<!--# include virtual="/js/common/number.js" -->
 <!--# include virtual="/js/common/units.js" -->
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
