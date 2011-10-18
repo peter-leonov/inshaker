@@ -92,7 +92,7 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .total .head { font-weight: bold; }
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 
-#ingredient-preview-list { float: right; width: 468px; }
+#ingredient-preview-list { float: right; width: 468px; margin-bottom: -15px; }
 #ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
 #ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
 #ingredient-preview-list .ingredient-preview .image { display: none; }
