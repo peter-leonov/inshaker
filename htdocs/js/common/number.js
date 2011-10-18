@@ -2,7 +2,8 @@
 
 var M = Math,
 	round = M.round,
-	ceil = M.ceil
+	ceil = M.ceil,
+	floor = M.floor
 
 Number.prototype.round = function (factor)
 {
@@ -22,6 +23,16 @@ Number.prototype.ceil = function (factor)
 	}
 	
 	return ceil(this)
+}
+
+Number.prototype.floor = function (factor)
+{
+	if (factor)
+	{
+		return floor(this * factor) / factor
+	}
+	
+	return floor(this)
 }
 
 })();
