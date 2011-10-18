@@ -17,4 +17,15 @@ Number.prototype.round = function (factor)
 	return round(this)
 }
 
+Number.prototype.ceil = function (factor)
+{
+	if (factor)
+	{
+		factor = powersOfTen[factor]
+		return ceil(this * factor) / factor
+	}
+	
+	return ceil(this)
+}
+
 })();

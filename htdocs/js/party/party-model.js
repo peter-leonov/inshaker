@@ -92,7 +92,7 @@ Me.prototype =
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
-			portion.count = Math.ceil(portion.factor * people)
+			portion.count = (portion.factor * people).ceil()
 		}
 		
 		this.view.updatePeopleUnit(people)
@@ -137,7 +137,7 @@ Me.prototype =
 					name = part.ingredient.name,
 					dose = part.dose
 				
-				var amount = Math.ceil(dose * count * 10) / 10
+				var amount = (dose * count).ceil(1)
 				if (amounts[name])
 					amounts[name] += amount
 				else
@@ -152,7 +152,7 @@ Me.prototype =
 				amount = amounts[k]
 			
 			buy.amount = amount
-			buy.cost = Math.ceil(amount * buy.costPerUnit)
+			buy.cost = (amount * buy.costPerUnit).ceil()
 			
 			var human = Units.humanizeDose(amount, buy.unit)
 			buy.amountHumanized = human[0].round(1)
@@ -177,7 +177,7 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = Math.ceil(amount * buy.costPerUnit)
+		buy.cost = (amount * buy.costPerUnit).ceil()
 		
 		this.view.updateBuy(n, buy)
 		
