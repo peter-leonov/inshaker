@@ -41,9 +41,7 @@ h2, dt {
 	clear: both;
 }
 
-.title img { position: absolute; }
-img.logo { left: 40px; top: 14px; }
-img.link { right: 40px; top: 24px;}
+#logo { position: absolute; right: 0; top: 0; width: 100px; }
 
 h1#cocktail_name { margin-bottom: 26px; }
 img#cocktail_img { height: 210px; float: left; }
