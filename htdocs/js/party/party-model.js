@@ -56,17 +56,12 @@ Me.prototype =
 			var portion = portions[i]
 			
 			var cocktail = portion.cocktail
-			var parts = Ingredient.mergeIngredientSets(cocktail.garnish, cocktail.ingredients)
+			var parts = cocktail.parts
 			portion.parts = parts
 			
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
-				var name = parts[j][0]
-				
-				if (buyByName[name])
-					continue
-				
-				var ingredient = Ingredient.getByName(name)
+				var ingredient = parts[j].ingredient
 				
 				var best = ingredient.volumes[0],
 					costPerUnit = best[1] / best[0]
@@ -80,7 +75,7 @@ Me.prototype =
 				}
 				
 				plan.push(buy)
-				buyByName[name] = buy
+				buyByName[ingredient.name] = buy
 			}
 		}
 		
@@ -139,10 +134,10 @@ Me.prototype =
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
 				var part = parts[j],
-					name = part[0],
-					volume = part[1]
+					name = part.ingredient.name,
+					dose = part.dose
 				
-				var amount = Math.ceil(volume * count * 10) / 10
+				var amount = Math.ceil(dose * count * 10) / 10
 				if (amounts[name])
 					amounts[name] += amount
 				else
