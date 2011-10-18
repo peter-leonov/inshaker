@@ -396,7 +396,14 @@ Me.prototype =
 	{
 		var nodes = this.nodes
 		
-		nodes.printButton.addEventListener('click', function () { window.print() }, false)
+		var controller = this.controller
+		nodes.printButton.addEventListener('click', function () { controller.printParty() }, false)
+	},
+	
+	printParty: function (party)
+	{
+		window.print()
+		Statistics.partyPrinted(party)
 	},
 	
 	guessParty: function ()

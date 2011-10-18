@@ -185,6 +185,11 @@ Me.prototype =
 		
 		this.calculateTotal(this.plan)
 		this.view.updateTotal(this.total)
+	},
+	
+	printParty: function ()
+	{
+		this.view.printParty(this.party)
 	}
 }
 

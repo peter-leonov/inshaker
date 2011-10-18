@@ -46,20 +46,30 @@
 #bar-on-map .head .taxi .code { color: #999; }
 
 .photos .viewport,
-.photos { overflow: hidden; position: relative; width: 590px; height: 242px; }
+.photos { overflow: hidden; position: relative; }
 
 .photos .viewport { cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
 .photos .viewport.grabbing { cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing; }
-.photos .viewport .point { float: left; width: 590px; height: 242px; }
+.photos .viewport .point { float: left; }
 .photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
 .photos .prev,
-.photos .next { position: absolute; top: 98px; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
+.photos .next { position: absolute; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
 .photos:hover .prev,
 .photos:hover .next { display: block; }
 .photos .prev { left: 0; background-position: -60px 0; }
 .photos .next { right: 0; background-position: 0 0; }
 .photos .prev.disabled { background-position: -60px -60px; cursor: default; }
 .photos .next.disabled { background-position: 0 -60px; cursor: default; }
+
+.photos.geometry-small .viewport .point,
+.photos.geometry-small { width: 590px; height: 242px; }
+.photos.geometry-small .prev,
+.photos.geometry-small .next { top: 98px; }
+
+.photos.geometry-big .viewport .point,
+.photos.geometry-big { width: 590px; height: 320px; }
+.photos.geometry-big .prev,
+.photos.geometry-big .next { top: 132px; }
 
 
 #share-box { position: absolute; right: 0; top: 0; }

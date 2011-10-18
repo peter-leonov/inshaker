@@ -52,6 +52,20 @@ module Inshaker
       return m[1].to_i, m[2].to_i
     end
     
+    def get_jpeg_geometry(src)
+      io = IO.popen(["jfifwh", src])
+      wh = io.read
+      io.close
+      
+      m = wh.match(/^(\d+)x(\d+)$/)
+      unless m
+        error "не могу определить геометрию джипега #{src}"
+        return 0, 0
+      end
+      
+      return m[1].to_i, m[2].to_i
+    end
+    
     def check_img_geometry_cached(src, dst)
       if File.mtime_cmp(src, dst) == 0
         return true

@@ -8,7 +8,7 @@ function log (str) { try { console.log(Me.className + ': ' + str) } catch (ex) {
 
 var Me =
 {
-	track: function (category, action, label, value)
+	event: function (category, action, label, value)
 	{
 		try // to track an event
 		{
@@ -25,7 +25,25 @@ var Me =
 		catch (ex)
 		{
 			// to warn the developer
-			log('could not report a track')
+			log('could not report an event')
+		}
+	},
+	
+	path: function (path)
+	{
+		try // to track an event
+		{
+			// prepare types
+			path = String(path)
+			
+			log('path' + ': ' + path)
+			GoogleAnalytics.push(['_trackPageview', path])
+			return true
+		}
+		catch (ex)
+		{
+			// to warn the developer
+			log('could not report a path')
 		}
 	}
 }
