@@ -137,7 +137,7 @@ Me.prototype =
 					name = part.ingredient.name,
 					dose = part.dose
 				
-				var amount = (dose * count).ceil(1)
+				var amount = (dose * count).ceil(10)
 				if (amounts[name])
 					amounts[name] += amount
 				else
@@ -155,7 +155,7 @@ Me.prototype =
 			buy.cost = (amount * buy.costPerUnit).ceil()
 			
 			var human = Units.humanizeDose(amount, buy.unit)
-			buy.amountHumanized = human[0].round(1)
+			buy.amountHumanized = human[0].round(10)
 			buy.unitHumanized = human[1]
 			buy.factorHumanized = human[2]
 		}
