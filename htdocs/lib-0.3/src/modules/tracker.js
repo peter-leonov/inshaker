@@ -9,7 +9,7 @@ var Me =
 	reportPath: '/tracker/report',
 	session: +new Date() + '-' + Math.round(Math.random() * 1E+17),
 	
-	track: function (category, action, label, value)
+	event: function (category, action, label, value)
 	{
 		try
 		{
@@ -27,14 +27,33 @@ var Me =
 		}
 		catch (ex)
 		{
-			this.log('could not report a track')
+			this.log('could not report an event')
 		}
 	},
 	
-	send: function (data)
+	path: function (path)
+	{
+		try
+		{
+			var q =
+				'vr=' + escape(this.version) +
+				'&s=' + escape(this.session) +
+				'&p=' + escape(path)
+			
+			this.send(q)
+			
+			return true
+		}
+		catch (ex)
+		{
+			this.log('could not report a path')
+		}
+	},
+	
+	send: function (q)
 	{
 		var r = new Image(1, 1)
-		r.src = this.reportPath + '?' + data
+		r.src = this.reportPath + '?' + q
 	},
 	
 	log: function (str) { try { console.log(myName + ': ' + str) } catch (ex) {} }

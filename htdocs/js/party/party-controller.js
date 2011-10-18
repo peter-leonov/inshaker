@@ -27,6 +27,11 @@ Me.prototype =
 	ingredientSelected: function (name)
 	{
 		this.model.selectIngredientName(name)
+	},
+	
+	printParty: function ()
+	{
+		this.model.printParty()
 	}
 }
 
