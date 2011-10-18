@@ -64,9 +64,19 @@ var Me =
 		this.event('blog-tag-selected', tag)
 	},
 	
+	partyPrinted: function (party)
+	{
+		this.path('/party/' + party.path + '/print')
+	},
+	
 	event: function (action, label, value)
 	{
 		setTimeout(function () { Tracker.event('UserAction', action, label, value) }, 500)
+	},
+	
+	path: function (path)
+	{
+		setTimeout(function () { Tracker.path(path) }, 500)
 	}
 }
 
