@@ -53,17 +53,26 @@ var Calculator = {
 	
 	CART : 'cart',
 	
-	serializeCartData: function(cd) {
-		for(var i = 0; i < cd.cocktails.length; i++){
-			// cocktail -> name
-			cd.cocktails[i][0] = cd.cocktails[i][0].name;
+	serializeCartData: function (cd)
+	{
+		var cocktails = [],
+			goods = {}
+		
+		for (var i = 0; i < cd.cocktails.length; i++)
+			cocktails[i] = [cd.cocktails[i][0].name, cd.cocktails[i][1]]
+		
+		for (var k in cd.goods)
+		{
+			goods[k] =
+			{
+				bottles: cd.goods[k].bottles,
+				dose: cd.goods[k].dose
+			}
 		}
-		for(ingred in cd.goods){
-			cd.goods[ingred].good = null;
-		}
-        return cd;
-    },
-
+		
+		return {cocktails: cocktails, goods: goods}
+	},
+	
 	deSerializeCartData: function (cartData)
 	{
 		var dataCocktails = cartData.cocktails,
@@ -87,5 +96,5 @@ var Calculator = {
 		}
 		
 		return {cocktails: cocktails, goods: gds}
-    }
+	}
 };

@@ -38,10 +38,10 @@ function CalculatorController(model, view) {
 	/**
 	 * Сериализация набора данных калькулятора и сохранение
 	 */
-	this.saveCartData = function(cartData){
-		var cd = cloneObject(cartData);
-	    cd = Calculator.serializeCartData(cd);	
-		clientStorage.set(Calculator.CART, JSON.stringify(cd));
+	this.saveCartData = function(cartData)
+	{
+		var cd = Calculator.serializeCartData(cartData)
+		clientStorage.set(Calculator.CART, JSON.stringify(cd))
 	};
 	
 	this.needNewBottle = function(name, bottleId){
