@@ -88,7 +88,7 @@ function CalculatorModel(view){
 			bottle = this.bottleByIngredientAndVolume(allGoods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
-		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
+		if(quantity == 0 && (Object.keysCount(this.cartData.goods[name].bottles) > 1)) {
 			delete this.cartData.goods[name].bottles[bottleId];
 		} else bottle.count = quantity;
 		this.countDiffs(name);
@@ -124,7 +124,7 @@ function CalculatorModel(view){
 	 */
 	this.goodItemChanged = function(item, name){
 		for(id in item.bottles){
-			if(item.bottles[id].count == 0 && (lengthOf(item.bottles) > 1)){
+			if(item.bottles[id].count == 0 && (Object.keysCount(item.bottles) > 1)){
 				delete item.bottles[id];
 			}
 		}

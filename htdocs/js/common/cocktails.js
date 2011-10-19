@@ -1,9 +1,3 @@
-function lengthOf(obj){
-	var length = 0;
-	for(prop in obj) length++;
-	return length;
-}
-
 Array.prototype.uniq = function(){
 	var tmp = [];
 	for(var i = 0; i < this.length; i++){
