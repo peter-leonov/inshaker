@@ -171,7 +171,13 @@ Object.extend(Cocktail,
 		return this.db
 	},
 	
-	getByName: function (name) { return this.byName[name].bake() },
+	getByName: function (name)
+	{
+		var cocktail = this.byName[name]
+		if (cocktail)
+			cocktail.bake()
+		return cocktail
+	},
 	
 	getByNames: function (names)
 	{
