@@ -1,8 +1,3 @@
-// deep copy using JSON lib ;-)
-function cloneObject(obj){
-	return JSON.parse(JSON.stringify(obj));
-}
-
 function lengthOf(obj){
 	var length = 0;
 	for(prop in obj) length++;
