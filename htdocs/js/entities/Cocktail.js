@@ -24,6 +24,26 @@ var Cocktail = function (data)
 
 Cocktail.prototype =
 {
+	bake: function ()
+	{
+		var parts = Ingredient.mergeIngredientSets(this.ingredients, this.garnish)
+		
+		for (var i = 0, il = parts.length; i < il; i++)
+		{
+			var part = parts[i]
+			
+			parts[i] =
+			{
+				ingredient: Ingredient.getByName(part[0]),
+				dose: part[1]
+			}
+		}
+		
+		this.parts = parts
+		
+		return this
+	},
+	
 	getPath: function ()
 	{
 		var path = this._path
@@ -151,7 +171,7 @@ Object.extend(Cocktail,
 		return this.db
 	},
 	
-	getByName: function (name) { return this.byName[name] },
+	getByName: function (name) { return this.byName[name].bake() },
 	
 	getByNames: function (names)
 	{
