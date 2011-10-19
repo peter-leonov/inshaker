@@ -256,10 +256,10 @@ Me.prototype =
 			var ingredientsNode = Nc('ul', 'ingredients')
 			portion.appendChild(ingredientsNode)
 			
-			var ingredients = cocktail.ingredients
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
+			var parts = cocktail.parts
+			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
-				var name = ingredients[j][0]
+				var name = parts[j].ingredient.name
 				
 				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
 				ingredientsNode.appendChild(ingredient)
