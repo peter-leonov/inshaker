@@ -1,11 +1,3 @@
-Array.prototype.uniq = function(){
-	var tmp = [];
-	for(var i = 0; i < this.length; i++){
-		if(tmp.indexOf(this[i]) == -1) tmp.push(this[i]);
-	}
-	return tmp;
-}
-
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/client-storage.js" -->
 <!--# include virtual="/lib-0.3/modules/client-storage/local-storage.js" -->
