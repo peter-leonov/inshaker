@@ -156,7 +156,7 @@ class IngredientsProcessor < Inshaker::Processor
   def read_names dir
     fname = dir.path + "/names.yaml"
     if File.exists?(fname)
-      say "обновляю псевдонимы"
+      # say "обновляю псевдонимы"
       YAML::load(File.open(fname))
     else
       nil
