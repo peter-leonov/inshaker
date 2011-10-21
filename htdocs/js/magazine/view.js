@@ -262,7 +262,7 @@ Me.prototype =
 			
 			var item = Nc('a', 'item')
 			list.appendChild(item)
-			item.href = '/combinator.html#' + encodeURIComponent('q=' + tag.name)
+			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
 			
 			var name = Nct('span', 'name', tag.name)
 			item.appendChild(name)
