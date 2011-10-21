@@ -149,6 +149,13 @@ Object.extend(Cocktail,
 		this.db = db
 	},
 	
+	bakeAry: function (ary)
+	{
+		for (var i = 0, il = ary.length; i < il; i++)
+			ary[i].bake()
+		return ary
+	},
+	
 	getGroups: function () { return this.groups },
 	getStrengths: function () { return this.strengths },
 	getMethods: function () { return this.methods },
