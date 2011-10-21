@@ -37,6 +37,8 @@ MagazinePageModel.prototype =
 			}
 		}
 		
+		tags.sort(function (a, b) { return b.count - a.count })
+		
 		var data =
 		{
 			cocktails: cocktails,
