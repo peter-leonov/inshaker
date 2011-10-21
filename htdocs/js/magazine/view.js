@@ -33,8 +33,6 @@ Me.prototype =
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
 			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
-		
-		this.renderTags(data.tags)
 	},
 	
 	_createCocktailElement: function (cocktail)
@@ -256,11 +254,29 @@ Me.prototype =
 		
 		list.empty()
 		
+		var columned = [], width = 4, height = Math.ceil(tags.length / width)
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var tag = tags[i]
+			var x = (i / height) >> 0
+			var y = i % height
 			
-			var item = Nc('a', 'item')
+			var tag = tags[i]
+			columned[y * width + x] = tag
+			if (y == height -1 || i == il - 1)
+				tag.bottom = true
+		}
+		
+		for (var i = 0, il = columned.length; i < il; i++)
+		{
+			var tag = columned[i]
+			
+			if (!tag)
+			{
+				list.appendChild(Nc('span', 'space'))
+				continue
+			}
+			
+			var item = Nc('a', tag.bottom ? 'item bottom' : 'item')
 			list.appendChild(item)
 			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
 			
