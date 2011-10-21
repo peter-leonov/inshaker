@@ -26,6 +26,10 @@ Cocktail.prototype =
 {
 	bake: function ()
 	{
+		if (this._baked)
+			return this
+		this._baked = true
+		
 		var parts = Ingredient.mergeIngredientSets(this.ingredients, this.garnish)
 		
 		for (var i = 0, il = parts.length; i < il; i++)
