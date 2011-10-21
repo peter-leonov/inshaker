@@ -51,8 +51,6 @@ MagazinePageModel.prototype =
 		}
 		
 		tags.sort(function (a, b) { return b.count - a.count })
-		for (var i = 0, il = tags.length; i < il; i++)
-			tags[i].name = i
 		
 		this.view.renderTags(tags)
 	}
