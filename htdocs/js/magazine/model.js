@@ -26,6 +26,19 @@ MagazinePageModel.prototype =
 			cocktails[k] = all.map(function (v) { return Cocktail.getByName(v) })
 		}
 		
+		this.processTags(this.tags)
+		
+		var data =
+		{
+			cocktails: cocktails,
+			promos: this.promos
+		}
+		
+		this.view.modelChanged(data, state)
+	},
+	
+	processTags: function (tags)
+	{
 		var tags = this.tags
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
@@ -50,14 +63,6 @@ MagazinePageModel.prototype =
 			columned[y * width + x] = tags[i]
 		}
 		
-		
-		var data =
-		{
-			cocktails: cocktails,
-			promos: this.promos,
-			tags: columned,
-		}
-		
-		this.view.modelChanged(data, state)
+		this.view.renderTags(columned)
 	}
 }

@@ -33,8 +33,6 @@ Me.prototype =
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
 			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
-		
-		this.renderTags(data.tags)
 	},
 	
 	_createCocktailElement: function (cocktail)
