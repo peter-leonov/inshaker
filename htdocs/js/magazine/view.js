@@ -254,9 +254,17 @@ Me.prototype =
 		
 		list.empty()
 		
+		var columned = [], width = 4, height = Math.ceil(tags.length / width)
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var tag = tags[i]
+			var x = (i / height) >> 0
+			var y = i % height
+			columned[y * width + x] = tags[i]
+		}
+		
+		for (var i = 0, il = columned.length; i < il; i++)
+		{
+			var tag = columned[i]
 			
 			if (!tag)
 			{

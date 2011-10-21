@@ -54,15 +54,6 @@ MagazinePageModel.prototype =
 		for (var i = 0, il = tags.length; i < il; i++)
 			tags[i].name = i
 		
-		
-		var columned = [], width = 4, height = Math.ceil(tags.length / width)
-		for (var i = 0, il = tags.length; i < il; i++)
-		{
-			var x = (i / height) >> 0
-			var y = i % height
-			columned[y * width + x] = tags[i]
-		}
-		
-		this.view.renderTags(columned)
+		this.view.renderTags(tags)
 	}
 }
