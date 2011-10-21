@@ -123,7 +123,8 @@ Cocktail.prototype =
 
 Object.extend(Cocktail,
 {
-    letters: [],
+	index: {},
+	letters: [],
 	
 	initialize: function (hash, groups, strengths, methods, tags)
 	{
@@ -292,6 +293,42 @@ Object.extend(Cocktail,
 			rest.push(cocktail)
 		}
 		return res;
+	},
+	
+	_indexByTag: function ()
+	{
+		var index = this.index.byTag
+		if (index)
+			return index
+		
+		var db = this.db
+		
+		var index = this.index.byTag = {}
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var cocktail = db[i]
+			
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
+			{
+				var tag = tags[j]
+				
+				var ary = index[tag]
+				if (ary)
+					ary.push(cocktail)
+				else
+					index[tag] = [cocktail]
+			}
+		}
+		
+		return index
+	},
+	
+	getByTag: function (tag)
+	{
+		var index = this._indexByTag()
+		var res = index[tag] || []
+		return this.bakeAry(res)
 	},
 	
 	getByStrength: function(strength, set) {
