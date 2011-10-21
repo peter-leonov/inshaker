@@ -31,6 +31,7 @@ http://www.inshaker.ru/cocktail/angel_s_tits/
 http://www.inshaker.ru/cocktail/english_virgin/
 http://www.inshaker.ru/cocktail/english/
 http://www.inshaker.ru/cocktail/english_breakfast/
+http://www.inshaker.ru/cocktail/antifreeze_in_a_cucumber/
 http://www.inshaker.ru/cocktail/antonius_pius/
 http://www.inshaker.ru/cocktail/antonio/
 http://www.inshaker.ru/cocktail/orange-mango_sambuca/
@@ -59,6 +60,7 @@ http://www.inshaker.ru/cocktail/basil-bramble_sling/
 http://www.inshaker.ru/cocktail/bacardi_symphony/
 http://www.inshaker.ru/cocktail/bali_dream/
 http://www.inshaker.ru/cocktail/balbinus/
+http://www.inshaker.ru/cocktail/balsamic_martinez/
 http://www.inshaker.ru/cocktail/bamboo_2/
 http://www.inshaker.ru/cocktail/banana_sambuca/
 http://www.inshaker.ru/cocktail/banana-mandarin_fruit_drink_in_a_jug/
@@ -114,6 +116,7 @@ http://www.inshaker.ru/cocktail/broker_shooter/
 http://www.inshaker.ru/cocktail/bronx/
 http://www.inshaker.ru/cocktail/vaccinieas_with_orange/
 http://www.inshaker.ru/cocktail/tambourine_shots/
+http://www.inshaker.ru/cocktail/bubble_gum/
 http://www.inshaker.ru/cocktail/booze_fizz/
 http://www.inshaker.ru/cocktail/boombox/
 http://www.inshaker.ru/cocktail/bourbon_infused_on_orange/
@@ -997,6 +1000,7 @@ http://www.inshaker.ru/cocktail/chocolate_milkshake/
 http://www.inshaker.ru/cocktail/chocolate_cheesecake_smoothie/
 http://www.inshaker.ru/cocktail/pavlov_s_shot/
 http://www.inshaker.ru/cocktail/scotch_old_fashioned/
+http://www.inshaker.ru/cocktail/shtyrlits/
 http://www.inshaker.ru/cocktail/hullabaloo/
 http://www.inshaker.ru/cocktail/sorrel_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/transition/
