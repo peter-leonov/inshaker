@@ -38,12 +38,24 @@ MagazinePageModel.prototype =
 		}
 		
 		tags.sort(function (a, b) { return b.count - a.count })
+		for (var i = 0, il = tags.length; i < il; i++)
+			tags[i].name = i
+		
+		
+		var columned = [], width = 4, height = Math.ceil(tags.length / width)
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var x = (i / height) >> 0
+			var y = i % height
+			columned[y * width + x] = tags[i]
+		}
+		
 		
 		var data =
 		{
 			cocktails: cocktails,
 			promos: this.promos,
-			tags: this.tags
+			tags: columned,
 		}
 		
 		this.view.modelChanged(data, state)

@@ -260,6 +260,12 @@ Me.prototype =
 		{
 			var tag = tags[i]
 			
+			if (!tag)
+			{
+				list.appendChild(Nc('span', 'space'))
+				continue
+			}
+			
 			var item = Nc('a', 'item')
 			list.appendChild(item)
 			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
