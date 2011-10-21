@@ -1,26 +1,23 @@
-function MagazinePageView ()
+;(function(){
+
+eval(NodesShortcut.include())
+
+function Me (nodes)
 {
-	MagazinePageView.name = "MagazinePageView"
-	this.constructor = MagazinePageView
-	this.initialize.apply(this, arguments)
+	this.nodes = nodes
+	this.imagesLoaded = false
+	this.switchBlock = false
+	this.blockNames = ['special', 'pop', 'author', 'classic']
+	
+	new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+	
+	var cocktails = nodes.cocktails
+	for(var i = 0; i < cocktails.length; i++)
+		new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
 }
 
-MagazinePageView.prototype =
+Me.prototype =
 {
-	initialize: function (nodes)
-	{
-		this.nodes = nodes
-		this.imagesLoaded = false
-		this.switchBlock = false
-		this.blockNames = ['special', 'pop', 'author', 'classic']
-		
-		new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
-		
-		var cocktails = nodes.cocktails
-		for(var i = 0; i < cocktails.length; i++)
-			new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
-	},
-	
 	start: function ()
 	{
 		this.controller.start()
@@ -276,3 +273,8 @@ MagazinePageView.prototype =
 		}
 	}
 }
+
+Me.className = 'MagazinePageView'
+self[Me.className] = Me
+
+})();
