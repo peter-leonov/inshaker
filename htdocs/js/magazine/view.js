@@ -36,6 +36,8 @@ MagazinePageView.prototype =
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
 			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
+		
+		this.renderTags(data.tags)
 	},
 	
 	_createCocktailElement: function (cocktail)
@@ -249,5 +251,28 @@ MagazinePageView.prototype =
 				point.appendChild(renderFunction(set[i], set))
 		}
 		node.RollingImagesLite.sync()
+	},
+	
+	renderTags: function (tags)
+	{
+		var list = this.nodes.tagsList
+		
+		list.empty()
+		
+		// <li class="item"><span class="name">Все коктейли</span><span class="count">224</span></li>
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			
+			var item = Nc('li', 'item')
+			list.appendChild(item)
+			
+			var name = Nct('span', 'name', tag)
+			item.appendChild(name)
+			
+			var count = Nct('span', 'count', 123)
+			item.appendChild(name)
+		}
 	}
 }
