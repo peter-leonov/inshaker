@@ -1,26 +1,23 @@
-function MagazinePageView ()
+;(function(){
+
+eval(NodesShortcut.include())
+
+function Me (nodes)
 {
-	MagazinePageView.name = "MagazinePageView"
-	this.constructor = MagazinePageView
-	this.initialize.apply(this, arguments)
+	this.nodes = nodes
+	this.imagesLoaded = false
+	this.switchBlock = false
+	this.blockNames = ['special', 'pop', 'author', 'classic']
+	
+	new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+	
+	var cocktails = nodes.cocktails
+	for(var i = 0; i < cocktails.length; i++)
+		new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
 }
 
-MagazinePageView.prototype =
+Me.prototype =
 {
-	initialize: function (nodes)
-	{
-		this.nodes = nodes
-		this.imagesLoaded = false
-		this.switchBlock = false
-		this.blockNames = ['special', 'pop', 'author', 'classic']
-		
-		new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
-		
-		var cocktails = nodes.cocktails
-		for(var i = 0; i < cocktails.length; i++)
-			new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
-	},
-	
 	start: function ()
 	{
 		this.controller.start()
@@ -36,6 +33,8 @@ MagazinePageView.prototype =
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
 			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
+		
+		this.renderTags(data.tags)
 	},
 	
 	_createCocktailElement: function (cocktail)
@@ -249,5 +248,32 @@ MagazinePageView.prototype =
 				point.appendChild(renderFunction(set[i], set))
 		}
 		node.RollingImagesLite.sync()
+	},
+	
+	renderTags: function (tags)
+	{
+		var list = this.nodes.tagsList
+		
+		list.empty()
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			
+			var item = Nc('a', 'item')
+			list.appendChild(item)
+			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
+			
+			var name = Nct('span', 'name', tag.name)
+			item.appendChild(name)
+			
+			var count = Nct('span', 'count', tag.count)
+			item.appendChild(count)
+		}
 	}
 }
+
+Me.className = 'MagazinePageView'
+self[Me.className] = Me
+
+})();

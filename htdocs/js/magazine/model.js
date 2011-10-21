@@ -26,10 +26,24 @@ MagazinePageModel.prototype =
 			cocktails[k] = all.map(function (v) { return Cocktail.getByName(v) })
 		}
 		
+		var tags = this.tags
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			tags[i] =
+			{
+				name: tag,
+				count: Cocktail.getByTag(tag).length
+			}
+		}
+		
+		tags.sort(function (a, b) { return b.count - a.count })
+		
 		var data =
 		{
 			cocktails: cocktails,
-			promos: this.promos
+			promos: this.promos,
+			tags: this.tags
 		}
 		
 		this.view.modelChanged(data, state)
