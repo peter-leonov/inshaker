@@ -23,6 +23,7 @@ $.onready
 		var nodes =
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
+			tagsList: $$('#tags-list')[0],
 			promo: $('promo'),
 			arrows:[$$('#promo-prev')[0], $$('#promo-next')[0]]
 		}

@@ -29,7 +29,8 @@ MagazinePageModel.prototype =
 		var data =
 		{
 			cocktails: cocktails,
-			promos: this.promos
+			promos: this.promos,
+			tags: this.tags
 		}
 		
 		this.view.modelChanged(data, state)
