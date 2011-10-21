@@ -256,8 +256,6 @@ Me.prototype =
 		
 		list.empty()
 		
-		// <li class="item"><span class="name">Все коктейли</span><span class="count">224</span></li>
-		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i]
@@ -265,11 +263,11 @@ Me.prototype =
 			var item = Nc('li', 'item')
 			list.appendChild(item)
 			
-			var name = Nct('span', 'name', tag)
+			var name = Nct('span', 'name', tag.name)
 			item.appendChild(name)
 			
-			var count = Nct('span', 'count', 123)
-			item.appendChild(name)
+			var count = Nct('span', 'count', tag.count)
+			item.appendChild(count)
 		}
 	}
 }
