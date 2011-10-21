@@ -259,7 +259,11 @@ Me.prototype =
 		{
 			var x = (i / height) >> 0
 			var y = i % height
-			columned[y * width + x] = tags[i]
+			
+			var tag = tags[i]
+			columned[y * width + x] = tag
+			if (y == height -1 || i == il - 1)
+				tag.bottom = true
 		}
 		
 		for (var i = 0, il = columned.length; i < il; i++)
@@ -272,7 +276,7 @@ Me.prototype =
 				continue
 			}
 			
-			var item = Nc('a', 'item')
+			var item = Nc('a', tag.bottom ? 'item bottom' : 'item')
 			list.appendChild(item)
 			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
 			
