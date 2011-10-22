@@ -476,6 +476,7 @@ http://www.inshaker.ru/cocktail/bloody_mary/
 http://www.inshaker.ru/cocktail/bloody_joseph/
 http://www.inshaker.ru/cocktail/blood_and_sand/
 http://www.inshaker.ru/cocktail/cuba_libre/
+http://www.inshaker.ru/cocktail/grasshopper/
 http://www.inshaker.ru/cocktail/cool_sweet_heart/
 http://www.inshaker.ru/cocktail/kumquat_tea/
 http://www.inshaker.ru/cocktail/kurant_bitter_lemon/
@@ -492,6 +493,7 @@ http://www.inshaker.ru/cocktail/lazy_man_flip/
 http://www.inshaker.ru/cocktail/lexus/
 http://www.inshaker.ru/cocktail/lena/
 http://www.inshaker.ru/cocktail/fruits_of_the_forest/
+http://www.inshaker.ru/cocktail/flying_grasshopper/
 http://www.inshaker.ru/cocktail/summer_breeze/
 http://www.inshaker.ru/cocktail/summer_evening_in_gagra/
 http://www.inshaker.ru/cocktail/summer_fizz/
@@ -648,6 +650,7 @@ http://www.inshaker.ru/cocktail/normandi_smash/
 http://www.inshaker.ru/cocktail/norman_hot_pie/
 http://www.inshaker.ru/cocktail/a_night_in_tunisia/
 http://www.inshaker.ru/cocktail/eau_de_vie/
+http://www.inshaker.ru/cocktail/monkey_brains/
 http://www.inshaker.ru/cocktail/clouds/
 http://www.inshaker.ru/cocktail/seabuckthorn-melon_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/sea-buckthorn_mulled_wine/
