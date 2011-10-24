@@ -37,17 +37,18 @@ MagazinePageModel.prototype =
 		this.view.modelChanged(data, state)
 	},
 	
-	processTags: function (tags)
+	processTags: function (names)
 	{
-		var tags = this.tags
-		for (var i = 0, il = tags.length; i < il; i++)
+		var tags = []
+		for (var i = 0, il = names.length; i < il; i++)
 		{
-			var tag = tags[i]
-			tags[i] =
-			{
-				name: tag,
-				count: Cocktail.getByTag(tag).length
-			}
+			var name = names[i]
+			
+			var count = Cocktail.getByTag(name).length
+			if (!count)
+				continue
+			
+			tags.push({name: name, count: count})
 		}
 		
 		tags.sort(function (a, b) { return b.count - a.count })
