@@ -117,7 +117,7 @@ class MagazineProcessor < Inshaker::Processor
   end
   
   def check_intergity
-    say "проверяю хиты"
+    say "проверяю теги"
     indent do
     @db["tags"].each do |tag|
       unless Cocktail.known_tag?(tag)
