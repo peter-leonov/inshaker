@@ -241,6 +241,7 @@ http://www.inshaker.ru/cocktail/hot_and_spicy/
 http://www.inshaker.ru/cocktail/hot_rum_with_butter/
 http://www.inshaker.ru/cocktail/hot_rum_punch/
 http://www.inshaker.ru/cocktail/hot_toddy/
+http://www.inshaker.ru/cocktail/flaming_dr._pepper/
 http://www.inshaker.ru/cocktail/pomegranate_margarita/
 http://www.inshaker.ru/cocktail/pomegranate-grapefruit_fresh/
 http://www.inshaker.ru/cocktail/pomegranate_tini/
@@ -725,6 +726,7 @@ http://www.inshaker.ru/cocktail/spicy_grapefruit/
 http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
 http://www.inshaker.ru/cocktail/spicy_saloop/
 http://www.inshaker.ru/cocktail/bird_shit/
+http://www.inshaker.ru/cocktail/pusse-cafe/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/little_bee/
@@ -794,6 +796,7 @@ http://www.inshaker.ru/cocktail/russian-japanese_war/
 http://www.inshaker.ru/cocktail/ryazanov/
 http://www.inshaker.ru/cocktail/near_fidel/
 http://www.inshaker.ru/cocktail/sazerac/
+http://www.inshaker.ru/cocktail/sazerac_2/
 http://www.inshaker.ru/cocktail/sidecar/
 http://www.inshaker.ru/cocktail/salers_martini/
 http://www.inshaker.ru/cocktail/world_fasted_bloody_mary/
@@ -936,6 +939,7 @@ http://www.inshaker.ru/cocktail/wakefield_triangle/
 http://www.inshaker.ru/cocktail/final_cut/
 http://www.inshaker.ru/cocktail/fantasy/
 http://www.inshaker.ru/cocktail/feijo_pleasure/
+http://www.inshaker.ru/cocktail/ferry_corsten/
 http://www.inshaker.ru/cocktail/festrus/
 http://www.inshaker.ru/cocktail/mary_fay/
 http://www.inshaker.ru/cocktail/fiztiny/
