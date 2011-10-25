@@ -37,6 +37,7 @@ http://www.inshaker.ru/bar/birch/
 http://www.inshaker.ru/bar/caramel/
 http://www.inshaker.ru/bar/john_do/
 http://www.inshaker.ru/bar/mojo/
+http://www.inshaker.ru/bar/48_chairs/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/

@@ -13,6 +13,7 @@ http://www.inshaker.ru/cocktail/devil_s_advocate/
 http://www.inshaker.ru/cocktail/iq/
 http://www.inshaker.ru/cocktail/quince_compote_in_a_jug/
 http://www.inshaker.ru/cocktail/quince_crush/
+http://www.inshaker.ru/cocktail/irish_cream_with_ice/
 http://www.inshaker.ru/cocktail/alexander/
 http://www.inshaker.ru/cocktail/alexandra/
 http://www.inshaker.ru/cocktail/alco-chequers/
@@ -247,6 +248,7 @@ http://www.inshaker.ru/cocktail/pomegranate-grapefruit_fresh/
 http://www.inshaker.ru/cocktail/pomegranate_tini/
 http://www.inshaker.ru/cocktail/grand_mimosa/
 http://www.inshaker.ru/cocktail/grand_sazerac/
+http://www.inshaker.ru/cocktail/grando/
 http://www.inshaker.ru/cocktail/count/
 http://www.inshaker.ru/cocktail/grapefruit_splash/
 http://www.inshaker.ru/cocktail/grapefruit_compote_in_a_jug/
@@ -990,6 +992,7 @@ http://www.inshaker.ru/cocktail/black_october/
 http://www.inshaker.ru/cocktail/black_russian/
 http://www.inshaker.ru/cocktail/black_flip/
 http://www.inshaker.ru/cocktail/chivava/
+http://www.inshaker.ru/cocktail/cheese_cream/
 http://www.inshaker.ru/cocktail/chile_martini/
 http://www.inshaker.ru/cocktail/pure_passion/
 http://www.inshaker.ru/cocktail/feeling/
