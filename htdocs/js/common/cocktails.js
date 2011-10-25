@@ -1,22 +1,3 @@
-// deep copy using JSON lib ;-)
-function cloneObject(obj){
-	return JSON.parse(JSON.stringify(obj));
-}
-
-function lengthOf(obj){
-	var length = 0;
-	for(prop in obj) length++;
-	return length;
-}
-
-Array.prototype.uniq = function(){
-	var tmp = [];
-	for(var i = 0; i < this.length; i++){
-		if(tmp.indexOf(this[i]) == -1) tmp.push(this[i]);
-	}
-	return tmp;
-}
-
 <!--# include virtual="/lib-0.3/modules/json.js" -->
 <!--# include virtual="/lib-0.3/modules/client-storage.js" -->
 <!--# include virtual="/lib-0.3/modules/client-storage/local-storage.js" -->

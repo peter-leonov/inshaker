@@ -1,26 +1,23 @@
-function MagazinePageView ()
+;(function(){
+
+eval(NodesShortcut.include())
+
+function Me (nodes)
 {
-	MagazinePageView.name = "MagazinePageView"
-	this.constructor = MagazinePageView
-	this.initialize.apply(this, arguments)
+	this.nodes = nodes
+	this.imagesLoaded = false
+	this.switchBlock = false
+	this.blockNames = ['special', 'pop', 'author', 'classic']
+	
+	new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+	
+	var cocktails = nodes.cocktails
+	for(var i = 0; i < cocktails.length; i++)
+		new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
 }
 
-MagazinePageView.prototype =
+Me.prototype =
 {
-	initialize: function (nodes)
-	{
-		this.nodes = nodes
-		this.imagesLoaded = false
-		this.switchBlock = false
-		this.blockNames = ['special', 'pop', 'author', 'classic']
-		
-		new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
-		
-		var cocktails = nodes.cocktails
-		for(var i = 0; i < cocktails.length; i++)
-			new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
-	},
-	
 	start: function ()
 	{
 		this.controller.start()
@@ -249,5 +246,50 @@ MagazinePageView.prototype =
 				point.appendChild(renderFunction(set[i], set))
 		}
 		node.RollingImagesLite.sync()
+	},
+	
+	renderTags: function (tags)
+	{
+		var list = this.nodes.tagsList
+		
+		list.empty()
+		
+		var columned = [], width = 4, height = Math.ceil(tags.length / width)
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var x = (i / height) >> 0
+			var y = i % height
+			
+			var tag = tags[i]
+			columned[y * width + x] = tag
+			if (y == height -1 || i == il - 1)
+				tag.bottom = true
+		}
+		
+		for (var i = 0, il = columned.length; i < il; i++)
+		{
+			var tag = columned[i]
+			
+			if (!tag)
+			{
+				list.appendChild(Nc('span', 'space'))
+				continue
+			}
+			
+			var item = Nc('a', tag.bottom ? 'item bottom' : 'item')
+			list.appendChild(item)
+			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
+			
+			var name = Nct('span', 'name', tag.name)
+			item.appendChild(name)
+			
+			var count = Nct('span', 'count', tag.count)
+			item.appendChild(count)
+		}
 	}
 }
+
+Me.className = 'MagazinePageView'
+self[Me.className] = Me
+
+})();

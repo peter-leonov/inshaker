@@ -49,6 +49,20 @@
 .info-blocks .point a img { display: block; margin: 8px auto; }
 
 
+#tags-box { margin-top: 21px; }
+#tags-box .body { padding: 20px 0; }
+#tags-list { overflow: hidden; }
+#tags-list .space,
+#tags-list .item { float: left; width: 181px; height: 29px; margin-bottom: 1px; padding: 0 13px 0 13px; margin-left: 25px; }
+#tags-list .item { position: relative; font-size: 14px; color: #000; line-height: 27px; border-radius: 7px; }
+#tags-list .item:hover { margin-top: -1px; border-top: 1px solid #fff; background: #ec118f; color: #fff; text-decoration: none; }
+#tags-list .item .name { display: block; height: 29px; border-bottom: 1px solid #eee; }
+#tags-list .item.bottom .name,
+#tags-list .item:hover .name { border-bottom: none; }
+#tags-list .item .count { position: absolute; right: 13px; top: 0px; font-size: 10px; line-height: 28px; }
+
+
+
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/(9|10)\./" -->
 #promo .viewport .surface { width: 32000px; }
 <!--# endif -->

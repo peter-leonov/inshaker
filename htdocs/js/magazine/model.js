@@ -26,6 +26,8 @@ MagazinePageModel.prototype =
 			cocktails[k] = all.map(function (v) { return Cocktail.getByName(v) })
 		}
 		
+		this.processTags(this.tags)
+		
 		var data =
 		{
 			cocktails: cocktails,
@@ -33,5 +35,24 @@ MagazinePageModel.prototype =
 		}
 		
 		this.view.modelChanged(data, state)
+	},
+	
+	processTags: function (names)
+	{
+		var tags = []
+		for (var i = 0, il = names.length; i < il; i++)
+		{
+			var name = names[i]
+			
+			var count = Cocktail.getByTag(name).length
+			if (!count)
+				continue
+			
+			tags.push({name: name, count: count})
+		}
+		
+		tags.sort(function (a, b) { return b.count - a.count })
+		
+		this.view.renderTags(tags)
 	}
 }

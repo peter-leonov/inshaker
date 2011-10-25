@@ -11,8 +11,6 @@ function CalculatorModel(view){
 	var allGoods = Ingredient.getAllByNameHash()
 	this.cartData = {};
 	
-	this.optimalGoods = {};
-	
 	this.dataListeners = {
 		listeners: [view],
 		modelChanged: function(cartData, dontSave){
@@ -45,8 +43,8 @@ function CalculatorModel(view){
 			this.cartData = {};
 			this.cartData.cocktails = [];
 			this.cartData.goods = {};
-		}		
-		this.optimalGoods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
+		}
+		
 		this.dataListeners.modelChanged(this.cartData, true);
 	};
 	
@@ -65,7 +63,6 @@ function CalculatorModel(view){
 			}
 			// Оптимизируем весь набор по емкостям
 			this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
-			this.optimalGoods = cloneObject(this.cartData.goods);
 			this.dataListeners.modelChanged(this.cartData);
 		}
 	};
@@ -77,7 +74,6 @@ function CalculatorModel(view){
 				this.cartData.cocktails.splice(i,1);
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
-				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}
@@ -92,7 +88,7 @@ function CalculatorModel(view){
 			bottle = this.bottleByIngredientAndVolume(allGoods, name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
-		if(quantity == 0 && (lengthOf(this.cartData.goods[name].bottles) > 1)) {
+		if(quantity == 0 && (Object.keysCount(this.cartData.goods[name].bottles) > 1)) {
 			delete this.cartData.goods[name].bottles[bottleId];
 		} else bottle.count = quantity;
 		this.countDiffs(name);
@@ -128,7 +124,7 @@ function CalculatorModel(view){
 	 */
 	this.goodItemChanged = function(item, name){
 		for(id in item.bottles){
-			if(item.bottles[id].count == 0 && (lengthOf(item.bottles) > 1)){
+			if(item.bottles[id].count == 0 && (Object.keysCount(item.bottles) > 1)){
 				delete item.bottles[id];
 			}
 		}
@@ -157,7 +153,6 @@ function CalculatorModel(view){
 				this.cartData.cocktails[i][1] = quantity;
 				// Оптимизируем весь набор по емкостям
 				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
-				this.optimalGoods = cloneObject(this.cartData.goods);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}

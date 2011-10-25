@@ -103,7 +103,8 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .ingrediented-cocktail-list .group .group-name:first-letter { text-transform: uppercase; }
 .ingrediented-cocktail-list .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
 
-.ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; }
+.ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; border-bottom: 1px solid #eee; }
+.ingrediented-cocktail-list .row:last-child { border-bottom: none; }
 .ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
 .ingrediented-cocktail-list .row.lines-0 { height: 155px; }
 .ingrediented-cocktail-list .row.lines-1 { height: 155px; }

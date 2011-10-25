@@ -118,7 +118,7 @@ var Printer = {
         if(cNum > 1) numTxt = cNum + " " + cNum.plural("коктейль", "коктейля", "коктейлей");
         $(this.ID_COCKTAILS_NUM).innerHTML = numTxt;
          
-        var l = lengthOf(cartData.goods);
+        var l = Object.keysCount(cartData.goods);
 		
 		var names = [];
 		for(var name in cartData.goods) {names.push(name)};
@@ -129,7 +129,7 @@ var Printer = {
 			var bottles = cartData.goods[name].bottles;
 			var j = 0;
             for(id in bottles){
-                var last = (i == (l-1)) && (j == (lengthOf(bottles)-1)); 
+                var last = (i == (l-1)) && (j == (Object.keysCount(bottles)-1));
 				ingredsRoot.appendChild(this.createIngredElement(bottles[id], name, last));
                 j++;
 			}

@@ -79,6 +79,9 @@ class MagazineProcessor < Inshaker::Processor
   def process_about
     about = YAML::load(File.open(Config::BASE_DIR + "about.yaml"))
     
+    say "обновляю теги"
+    @db["tags"] = about["Теги"]
+    
     say "обновляю коктейли"
     indent do
     @db["cocktails"] = {}
@@ -114,6 +117,18 @@ class MagazineProcessor < Inshaker::Processor
   end
   
   def check_intergity
+    say "проверяю теги"
+    indent do
+    @db["tags"].each do |tag|
+      unless Cocktail.known_tag?(tag)
+        error "неизвестный тег «#{tag}»"
+        next
+      end
+      unless Cocktail.get_by_tag(tag).length > 1
+        warning "с тегом «#{tag}» нет ни одного коктейля"
+      end
+    end
+    end # indent
     say "проверяю хиты"
     indent do
     bar_hits = @db["cocktails"]["author"].flatten
