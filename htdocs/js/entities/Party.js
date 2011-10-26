@@ -33,7 +33,7 @@ Me.staticMethods =
 		this._byNameIndex = arrayToHash(this.db, 'name')
 	},
 	
-	bakeFirstRuns: function ()
+	bakeFirstRun: function (name)
 	{
 		this[name + 'SecondRun'] = this[name]
 		this[name] = function ()
@@ -44,11 +44,23 @@ Me.staticMethods =
 			var secondRun = this[name] = this[name + 'SecondRun']
 			return secondRun.apply(this, arguments)
 		}
+	},
+	
+	findAndBakeFirstRuns: function ()
+	{
+		for (var k in this)
+		{
+			var name = k + 'FirstRun'
+			var f = this[name]
+			if (!f)
+				continue
+			this.bakeFirstRun(k)
+		}
 	}
 }
 
 Object.extend(Me, Me.staticMethods)
-Me.bakeFirstRun('getByName')
+Me.findAndBakeFirstRuns()
 
 Me.prototype =
 {
