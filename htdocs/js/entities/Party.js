@@ -18,14 +18,14 @@ Me.staticMethods =
 		this.db = db
 	},
 	
-	getByName: function (name)
-	{
-		return this._byNameIndex[name]
-	},
-	
 	getByNameFirstRun: function (name)
 	{
 		this.indexByName()
+	},
+	
+	getByName: function (name)
+	{
+		return this._byNameIndex[name]
 	},
 	
 	indexByName: function ()
