@@ -36,12 +36,12 @@ Me.staticMethods =
 	
 	bakeFirstRun: function (name)
 	{
-		this[name + 'SecondRun'] = this[name]
+		var real = this[name]
+		var first = this[name + 'FirstRun']
 		this[name] = function ()
 		{
-			var firstRun = this[name + 'FirstRun']
-			var secondRun = this[name] = this[name + 'SecondRun']
-			return firstRun.apply(this, arguments)
+			this[name] = real
+			return first.apply(this, arguments)
 		}
 	},
 	
