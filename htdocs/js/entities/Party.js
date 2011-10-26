@@ -21,6 +21,7 @@ Me.staticMethods =
 	getByNameFirstRun: function (name)
 	{
 		this.indexByName()
+		return this.getByName(name)
 	},
 	
 	getByName: function (name)
@@ -39,10 +40,8 @@ Me.staticMethods =
 		this[name] = function ()
 		{
 			var firstRun = this[name + 'FirstRun']
-			firstRun.apply(this, arguments)
-			
 			var secondRun = this[name] = this[name + 'SecondRun']
-			return secondRun.apply(this, arguments)
+			return firstRun.apply(this, arguments)
 		}
 	},
 	
