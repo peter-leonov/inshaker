@@ -31,11 +31,24 @@ Me.staticMethods =
 	indexByName: function ()
 	{
 		this._byNameIndex = arrayToHash(this.db, 'name')
+	},
+	
+	bakeFirstRuns: function ()
+	{
+		this[name + 'SecondRun'] = this[name]
+		this[name] = function ()
+		{
+			var firstRun = this[name + 'FirstRun']
+			firstRun.apply(this, arguments)
+			
+			var secondRun = this[name] = this[name + 'SecondRun']
+			return secondRun.apply(this, arguments)
+		}
 	}
 }
 
 Object.extend(Me, Me.staticMethods)
-bakeFirstRun(Me, 'getByName')
+Me.bakeFirstRun('getByName')
 
 Me.prototype =
 {
@@ -43,19 +56,6 @@ Me.prototype =
 }
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
-
-function bakeFirstRun (me, name)
-{
-	me[name + 'SecondRun'] = me[name]
-	me[name] = function ()
-	{
-		var firstRun = me[name + 'FirstRun']
-		firstRun.apply(me, arguments)
-		
-		var secondRun = me[name] = me[name + 'SecondRun']
-		return secondRun.apply(me, arguments)
-	}
-}
 
 function arrayToHash (a, p)
 {
