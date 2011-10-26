@@ -49,7 +49,7 @@ Me.prototype =
 	setupPlan: function (portions)
 	{
 		var buyByName = this.buyByName = {},
-			plan = this.plan
+			plan = this.plan = []
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
