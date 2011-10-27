@@ -1,5 +1,57 @@
 ;(function(){
 
+Object.extend(Cocktail,
+{
+	getByLetterCache: {},
+	getByLetter: function (letter, set)
+	{
+		letter = letter.toUpperCase()
+		var res
+		if (res = this.getByLetterCache[letter])
+			return res
+		res = this.getByLetterCache[letter] = []
+		if (!set)
+			set = this.db
+		
+		
+		for (var i = 0, il = set.length; i < il; i++)
+			if (set[i].name.indexOf(letter) == 0)
+			{
+				res.push(set[i])
+				break
+			}
+		
+		i++
+		for (; i < il; i++)
+		{
+			if (set[i].name.indexOf(letter) == 0)
+				res.push(set[i])
+			else
+				// as cocktails are sorted we can stop searching at the first mismatch
+				break
+		}
+		
+		
+		// cocktails is already alphabeticaly sorted
+		return res
+	},
+	
+	getFirstLetters: function ()
+	{
+		var db = this.db
+		
+		var seen = {}
+		for (var i = 0, il = db.length; i < il; i++)
+			seen[db[i].name.charAt(0).toLowerCase()] = true
+		
+		var letters = []
+		for (var k in seen)
+			letters.push(k)
+		
+		return letters.sort()
+	}
+})
+
 // deep copy using JSON lib ;-)
 function cloneObject(obj){
 	return JSON.parse(JSON.stringify(obj));
