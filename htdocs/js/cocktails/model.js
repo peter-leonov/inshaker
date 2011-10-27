@@ -1,5 +1,36 @@
 ;(function(){
 
+var lettersConversion =
+{
+	0: '#', 1: '#', 2: '#', 3: '#', 4: '#', 5: '#', 6: '#', 7: '#', 8: '#', 9: '#', '№': '#',
+	'ё': 'е', 'й': 'и'
+}
+
+Object.extend(Cocktail,
+{
+	getByFirstLetter: function (letter)
+	{
+		return this.index.byFirstLetter[letter.toLowerCase()]
+	},
+	
+	getFirstLetters: function ()
+	{
+		function byFirstLetter (v)
+		{
+			var letter = v.name.charAt(0).toLowerCase()
+			var l = lettersConversion[letter]
+			return l || letter
+		}
+		var index = this.index.byFirstLetter = this.db.hashOfAryIndexBy(byFirstLetter)
+		
+		var letters = []
+		for (var k in index)
+			letters.push(k)
+		
+		return letters.sort()
+	}
+})
+
 // deep copy using JSON lib ;-)
 function cloneObject(obj){
 	return JSON.parse(JSON.stringify(obj));
@@ -306,7 +337,7 @@ function CocktailsModel (states, view) {
 			return this.getBySimilarName(filters.name)
 		
 		if (filters.letter)
-			return Cocktail.getByLetter(filters.letter)
+			return Cocktail.getByFirstLetter(filters.letter)
 		
 		if (filters.tag)
 			res = Cocktail.getByGroup(filters.tag)

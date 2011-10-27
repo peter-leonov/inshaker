@@ -16,7 +16,24 @@ prototype.hashIndexKey = function (key)
 	for (var i = 0, il = this.length; i < il; i++)
 	{
 		var v = this[i]
-		hash[v] = v[key]
+		hash[v[key]] = v
+	}
+	return hash
+}
+
+prototype.hashOfAryIndexBy = function (f)
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		
+		var key = f(v)
+		var ary = hash[key]
+		if (ary)
+			ary.push(v)
+		else
+			hash[key] = [v]
 	}
 	return hash
 }

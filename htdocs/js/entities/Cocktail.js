@@ -162,22 +162,6 @@ Object.extend(Cocktail,
 	getMethods: function () { return this.methods },
 	getTags: function () { return this.tags.slice() },
 	
-	getFirstLetters: function (set)
-	{
-		if (!set)
-			set = this.db
-		
-		var seen = {}
-		for (var i = 0, il = set.length; i < il; i++)
-			seen[set[i].name.charAt(0).toLowerCase()] = true
-		
-		var letters = []
-		for (var k in seen)
-			letters.push(k)
-		
-		return letters.sort()
-	},
-	
 	getAll: function()
 	{
 		return this.db
@@ -203,40 +187,6 @@ Object.extend(Cocktail,
 	},
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
-	
-	getByLetterCache: {},
-	getByLetter: function (letter, set)
-	{
-		letter = letter.toUpperCase()
-		var res
-		if (res = this.getByLetterCache[letter])
-			return res
-		res = this.getByLetterCache[letter] = []
-		if (!set)
-			set = this.db
-		
-		
-		for (var i = 0, il = set.length; i < il; i++)
-			if (set[i].name.indexOf(letter) == 0)
-			{
-				res.push(set[i])
-				break
-			}
-		
-		i++
-		for (; i < il; i++)
-		{
-			if (set[i].name.indexOf(letter) == 0)
-				res.push(set[i])
-			else
-				// as cocktails are sorted we can stop searching at the first mismatch
-				break
-		}
-		
-		
-		// cocktails is already alphabeticaly sorted
-		return res
-	},
 	
 	getByGroup: function (group, set) {
 		if(!set) set = this.db;
