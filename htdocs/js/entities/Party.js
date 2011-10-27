@@ -30,7 +30,7 @@ Me.staticMethods =
 	
 	indexByName: function ()
 	{
-		this._byNameIndex = arrayToHash(this.db, 'name')
+		this._byNameIndex = this.db.hashIndexKey('name')
 	}
 }
 
@@ -44,19 +44,6 @@ Me.prototype =
 }
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
-
-function arrayToHash (a, p)
-{
-	var hash = {}
-	
-	for (var i = 0, il = a.length; i < il; i++)
-	{
-		var v = a[i]
-		hash[v[p]] = v
-	}
-	
-	return hash
-}
 
 Me.className = 'Party'
 self[Me.className] = Me
