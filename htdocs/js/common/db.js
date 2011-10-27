@@ -8,7 +8,7 @@ var Me =
 		this[name] = function ()
 		{
 			this[name] = real
-			prepare.apply(this, arguments)
+			prepare.apply(this)
 			return real.apply(this, arguments)
 		}
 	},
