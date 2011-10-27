@@ -18,10 +18,9 @@ Me.staticMethods =
 		this.db = db
 	},
 	
-	getByNameFirstRun: function (name)
+	getByNamePrepare: function (name)
 	{
 		this.indexByName()
-		return this.getByName(name)
 	},
 	
 	getByName: function (name)
@@ -34,30 +33,31 @@ Me.staticMethods =
 		this._byNameIndex = arrayToHash(this.db, 'name')
 	},
 	
-	bakeFirstRun: function (name, first)
+	bakePrepare: function (name, prepare)
 	{
 		var real = this[name]
 		this[name] = function ()
 		{
 			this[name] = real
-			return first.apply(this, arguments)
+			prepare.apply(this, arguments)
+			return real.apply(this, arguments)
 		}
 	},
 	
-	findAndBakeFirstRuns: function ()
+	findAndBakePrepares: function ()
 	{
 		for (var k in this)
 		{
-			var first = this[k + 'FirstRun']
-			if (!first)
+			var prepare = this[k + 'Prepare']
+			if (!prepare)
 				continue
-			this.bakeFirstRun(k, first)
+			this.bakePrepare(k, prepare)
 		}
 	}
 }
 
 Object.extend(Me, Me.staticMethods)
-Me.findAndBakeFirstRuns()
+Me.findAndBakePrepares()
 
 Me.prototype =
 {
