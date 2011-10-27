@@ -157,9 +157,9 @@ Object.extend(Cocktail,
 		return ary
 	},
 	
-	getGroups: function () { return this.groups },
-	getStrengths: function () { return this.strengths },
-	getMethods: function () { return this.methods },
+	getGroups: function () { return this.groups.slice() },
+	getStrengths: function () { return this.strengths.slice() },
+	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
 	getAll: function()
