@@ -12,9 +12,6 @@ Me.staticMethods =
 {
 	initialize: function (db)
 	{
-		for (var i = 0, il = db.length; i < il; i++)
-			db[i] = new Me(db[i])
-		
 		this.db = db
 	},
 	
@@ -25,7 +22,7 @@ Me.staticMethods =
 	
 	getByName: function (name)
 	{
-		return this._byNameIndex[name]
+		return this.bake(this._byNameIndex[name])
 	},
 	
 	indexByName: function ()
@@ -38,10 +35,7 @@ Object.extend(Me, DB)
 Object.extend(Me, Me.staticMethods)
 Me.findAndBakePrepares()
 
-Me.prototype =
-{
-	
-}
+Me.prototype = {}
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
 

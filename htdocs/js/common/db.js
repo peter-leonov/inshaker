@@ -22,6 +22,30 @@ var Me =
 				continue
 			this.bakePrepare(k, prepare)
 		}
+	},
+	
+	bake: function (data)
+	{
+		var instance = data._instance
+		if (!instance)
+			instance = data._instance = new this(data)
+		return instance
+	},
+	
+	bakeAry: function (ary)
+	{
+		for (var i = 0, il = ary.length; i < il; i++)
+		{
+			var data = ary[i]
+			
+			var instance = data._instance
+			if (!instance)
+				instance = data._instance = new this(data)
+			
+			ary[i] = instance
+		}
+		
+		return ary
 	}
 }
 
