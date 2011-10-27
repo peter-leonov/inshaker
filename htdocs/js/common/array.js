@@ -1,0 +1,24 @@
+;(function(){
+
+var prototype = Array.prototype
+
+prototype.hashIndex = function ()
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++)
+		hash[this[i]] = true
+	return hash
+}
+
+prototype.hashIndexKey = function (key)
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		hash[v] = v[key]
+	}
+	return hash
+}
+
+})();

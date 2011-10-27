@@ -1,11 +1,3 @@
-Array.prototype.hashIndex = function ()
-{
-	var hash = {}
-	for (var i = 0, il = this.length; i < il; i++)
-		hash[this[i]] = true
-	return hash
-}
-
 var Model = {
 	cocktail: null,
 	ingredients: [],
