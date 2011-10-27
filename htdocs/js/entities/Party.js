@@ -12,6 +12,7 @@ Me.staticMethods =
 {
 	initialize: function (db)
 	{
+		this.index = {}
 		this.db = db
 	},
 	
@@ -22,12 +23,12 @@ Me.staticMethods =
 	
 	getByName: function (name)
 	{
-		return this.bake(this._byNameIndex[name])
+		return this.bake(this.index.byName[name])
 	},
 	
 	indexByName: function ()
 	{
-		this._byNameIndex = this.db.hashIndexKey('name')
+		this.index.byName = this.db.hashIndexKey('name')
 	}
 }
 
