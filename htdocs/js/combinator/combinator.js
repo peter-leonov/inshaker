@@ -40,6 +40,7 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/lib-0.3/widgets/selecter.js" -->
 
+<!--# include virtual="/js/common/throttler.js" -->
 <!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
@@ -49,7 +50,6 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
-<!--# include virtual="throttler.js" -->
 <!--# include virtual="query-parser.js" -->
 <!--# include virtual="tokenizer.js" -->
 <!--# include virtual="model.js" -->

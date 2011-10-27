@@ -22,8 +22,9 @@
 if (!document.querySelectorAll)
 	$.load('/lib-0.3/core/fixes/dom-level2-selectors.js')
 
+<!--# include virtual="/js/common/array.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
-<!--# include virtual="/js/combinator/throttler.js" -->
+<!--# include virtual="/js/common/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
