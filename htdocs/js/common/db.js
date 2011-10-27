@@ -26,6 +26,9 @@ var Me =
 	
 	bake: function (data)
 	{
+		if (!data)
+			return data
+		
 		var instance = data._instance
 		if (!instance)
 			instance = data._instance = new this(data)
