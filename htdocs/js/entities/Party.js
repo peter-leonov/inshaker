@@ -18,17 +18,12 @@ Me.staticMethods =
 	
 	getByNamePrepare: function (name)
 	{
-		this.indexByName()
+		this.index.byName = this.db.hashIndexKey('name')
 	},
 	
 	getByName: function (name)
 	{
 		return this.bake(this.index.byName[name])
-	},
-	
-	indexByName: function ()
-	{
-		this.index.byName = this.db.hashIndexKey('name')
 	}
 }
 
