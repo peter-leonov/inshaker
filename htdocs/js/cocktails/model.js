@@ -8,7 +8,7 @@ var lettersConversion =
 
 Object.extend(Cocktail,
 {
-	getByLetter: function (letter)
+	getByFirstLetter: function (letter)
 	{
 		return this.index.byFirstLetter[letter.toLowerCase()]
 	},
@@ -337,7 +337,7 @@ function CocktailsModel (states, view) {
 			return this.getBySimilarName(filters.name)
 		
 		if (filters.letter)
-			return Cocktail.getByLetter(filters.letter)
+			return Cocktail.getByFirstLetter(filters.letter)
 		
 		if (filters.tag)
 			res = Cocktail.getByGroup(filters.tag)
