@@ -21,4 +21,21 @@ prototype.hashIndexKey = function (key)
 	return hash
 }
 
+prototype.hashOfAryIndexBy = function (f)
+{
+	var hash = {}
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		
+		var key = f(v)
+		var ary = hash[key]
+		if (ary)
+			ary.push(v)
+		else
+			hash[key] = [v]
+	}
+	return hash
+}
+
 })();
