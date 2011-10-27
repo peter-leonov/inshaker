@@ -16,7 +16,7 @@ Me.staticMethods =
 		this.db = db
 	},
 	
-	getByNamePrepare: function (name)
+	getByNamePrepare: function ()
 	{
 		this.index.byName = this.db.hashIndexKey('name')
 	},
