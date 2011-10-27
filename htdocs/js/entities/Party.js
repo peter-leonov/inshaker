@@ -34,10 +34,9 @@ Me.staticMethods =
 		this._byNameIndex = arrayToHash(this.db, 'name')
 	},
 	
-	bakeFirstRun: function (name)
+	bakeFirstRun: function (name, first)
 	{
 		var real = this[name]
-		var first = this[name + 'FirstRun']
 		this[name] = function ()
 		{
 			this[name] = real
@@ -49,11 +48,10 @@ Me.staticMethods =
 	{
 		for (var k in this)
 		{
-			var name = k + 'FirstRun'
-			var f = this[name]
-			if (!f)
+			var first = this[k + 'FirstRun']
+			if (!first)
 				continue
-			this.bakeFirstRun(k)
+			this.bakeFirstRun(k, first)
 		}
 	}
 }
