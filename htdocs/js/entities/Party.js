@@ -29,7 +29,7 @@ Me.staticMethods =
 
 Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
-Me.findAndBakePrepares()
+Me.findAndBindPrepares()
 
 Me.prototype = {}
 

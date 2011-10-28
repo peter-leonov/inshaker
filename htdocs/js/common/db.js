@@ -42,7 +42,7 @@ var Me =
 Me.module = {}
 Me.module.staticMethods =
 {
-	bakePrepare: function (name, prepare)
+	bindPrepare: function (name, prepare)
 	{
 		var real = this[name]
 		this[name] = function ()
@@ -53,14 +53,14 @@ Me.module.staticMethods =
 		}
 	},
 	
-	findAndBakePrepares: function ()
+	findAndBindPrepares: function ()
 	{
 		for (var k in this)
 		{
 			var prepare = this[k + 'Prepare']
 			if (!prepare)
 				continue
-			this.bakePrepare(k, prepare)
+			this.bindPrepare(k, prepare)
 		}
 	},
 	
