@@ -405,7 +405,7 @@ class CocktailsProcessor < Inshaker::Processor
     methods["в блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
     methods["давят пестиком"] = true if tools.index("Пестик")
     methods["миксуют в стакане"] = true if tools.index("Стакан для смешивания")
-    methods["укладывают слои"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
+    methods["укладывают слоями"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
     
     num = methods.keys.length
     if num == 0
