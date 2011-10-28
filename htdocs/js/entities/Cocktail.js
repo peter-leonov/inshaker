@@ -105,7 +105,7 @@ Me.prototype =
 	}
 }
 
-Object.extend(Me,
+Me.staticMethods =
 {
 	index: {},
 	letters: [],
@@ -408,7 +408,9 @@ Object.extend(Me,
     },
 	
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
-})
+}
+
+Object.extend(Me, Me.staticMethods)
 
 Me.className = 'Cocktail'
 self[Me.className] = Me
