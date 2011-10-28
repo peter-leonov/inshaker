@@ -4,20 +4,6 @@ Array.prototype.sortedBy = function(sortFunc) {
     return Array.copy(this).sort(sortFunc);
 }
 
-Array.prototype.shuffled = function() {
-	var array = Array.copy(this);
-	var tmp, current, top = array.length;
-	
-	if(top) while(--top) {
-		current = Math.floor(Math.random() * (top + 1));
-		tmp = array[current];
-		array[current] = array[top];
-		array[top] = tmp;
-	}
-	return array;
-}
-
-
 function Me (data)
 {
 	for (var k in data)
@@ -166,7 +152,7 @@ Object.extend(Me,
 	
 	getAll: function()
 	{
-		return this.db
+		return this.db.slice()
 	},
 	
 	getByName: function (name)
