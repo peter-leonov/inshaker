@@ -1,3 +1,5 @@
+;(function(){
+
 Array.prototype.sortedBy = function(sortFunc) {
     return Array.copy(this).sort(sortFunc);
 }
@@ -16,13 +18,13 @@ Array.prototype.shuffled = function() {
 }
 
 
-var Cocktail = function (data)
+function Me (data)
 {
 	for (var k in data)
 		this[k] = data[k]
 }
 
-Cocktail.prototype =
+Me.prototype =
 {
 	bake: function ()
 	{
@@ -121,7 +123,7 @@ Cocktail.prototype =
 	}
 }
 
-Object.extend(Cocktail,
+Object.extend(Me,
 {
 	index: {},
 	letters: [],
@@ -144,7 +146,7 @@ Object.extend(Cocktail,
 		for (var i = 0, il = names.length; i < il; i++)
 		{
 			var name = names[i]
-			db[i] = byName[name] = new Cocktail(hash[name])
+			db[i] = byName[name] = new Me(hash[name])
 		}
 		
 		this.db = db
@@ -426,7 +428,10 @@ Object.extend(Cocktail,
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
 })
 
-Cocktail.initialize
+Me.className = 'Cocktail'
+self[Me.className] = Me
+
+Me.initialize
 (
 	<!--# include virtual="/db/cocktails/cocktails.json" -->,
 	<!--# include virtual="/db/cocktails/groups.json" -->,
@@ -434,3 +439,5 @@ Cocktail.initialize
 	<!--# include virtual="/db/cocktails/methods.json" -->,
 	<!--# include virtual="/db/cocktails/tags.json" -->
 )
+
+})();
