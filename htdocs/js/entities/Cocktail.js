@@ -210,7 +210,7 @@ Object.extend(Cocktail,
 		var db = opts.db || this.db
 		var count = opts.count || tags.length
 		
-		var hash = tags.hashIndex()
+		var hash = DB.hashIndex(tags)
 		
 		var res = [], rest = res.rest = []
 		db:
@@ -309,7 +309,7 @@ Object.extend(Cocktail,
 		var searchGarnish = opts.searchGarnish
 		
 		// caching names of requested ingredients
-		var hash = names.hashIndex()
+		var hash = DB.hashIndex(names)
 		
 		var res = [],
 			rest = res.rest = []

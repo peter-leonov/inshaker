@@ -18,7 +18,7 @@ Me.staticMethods =
 	
 	getByNamePrepare: function ()
 	{
-		this.index.byName = this.db.hashIndexKey('name')
+		this.index.byName = DB.hashIndexKey(this.db, 'name')
 	},
 	
 	getByName: function (name)
@@ -27,7 +27,7 @@ Me.staticMethods =
 	}
 }
 
-Object.extend(Me, DB)
+Object.extend(Me, DB.classMethods)
 Object.extend(Me, Me.staticMethods)
 Me.findAndBakePrepares()
 

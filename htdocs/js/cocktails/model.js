@@ -21,7 +21,7 @@ Object.extend(Cocktail,
 			var l = lettersConversion[letter]
 			return l || letter
 		}
-		var index = this.index.byFirstLetter = this.db.hashOfAryIndexBy(byFirstLetter)
+		var index = this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
 		
 		var letters = []
 		for (var k in index)

@@ -167,7 +167,7 @@ Object.extend(Ingredient,
 	
 	getByGroups: function (groups)
 	{
-		var hash = groups.hashIndex()
+		var hash = DB.hashIndex(groups)
 		
 		var db = this.db,
 			res = []

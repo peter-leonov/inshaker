@@ -2,6 +2,45 @@
 
 var Me =
 {
+	hashOfAryIndexBy: function (src, f)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			
+			var key = f(v)
+			var ary = hash[key]
+			if (ary)
+				ary.push(v)
+			else
+				hash[key] = [v]
+		}
+		return hash
+	},
+	
+	hashIndex: function (src)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+			hash[src[i]] = true
+		return hash
+	},
+	
+	hashIndexKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			hash[v[key]] = v
+		}
+		return hash
+	}
+}
+
+Me.classMethods =
+{
 	bakePrepare: function (name, prepare)
 	{
 		var real = this[name]
