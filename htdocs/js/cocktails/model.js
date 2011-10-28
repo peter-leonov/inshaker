@@ -28,6 +28,18 @@ Object.extend(Cocktail,
 			letters.push(k)
 		
 		return letters.sort()
+	},
+	
+	getByGroup: function (group)
+	{
+		var db = this.db
+		var res = [];
+		for(var i = 0; i < db.length; i++){
+			if(db[i].groups.indexOf(group) > -1){
+				res.push(db[i]);
+			}
+		}
+		return res;
 	}
 })
 

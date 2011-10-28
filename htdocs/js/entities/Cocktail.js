@@ -188,17 +188,6 @@ Object.extend(Cocktail,
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
-	getByGroup: function (group, set) {
-		if(!set) set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].groups.indexOf(group) > -1){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
 	getByTool: function (tool)
 	{
 		var db = this.db
