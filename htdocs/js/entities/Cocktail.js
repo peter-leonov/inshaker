@@ -1,9 +1,5 @@
 ;(function(){
 
-Array.prototype.sortedBy = function(sortFunc) {
-    return Array.copy(this).sort(sortFunc);
-}
-
 function Me (data)
 {
 	for (var k in data)

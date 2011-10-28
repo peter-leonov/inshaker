@@ -382,9 +382,15 @@ function CocktailsModel (states, view) {
 				res.randomize()
 			}
 			else if (filters.state == states.byIngredients)
-				res = Cocktail.getAll().sortedBy(Cocktail.complexitySort)
+			{
+				res = Cocktail.getAll()
+				res.sort(Cocktail.complexitySort)
+			}
 			else
-				res = Cocktail.getAll().sortedBy(Cocktail.nameSort)
+			{
+				res = Cocktail.getAll()
+				res.sort(Cocktail.nameSort)
+			}
 		}
 		
 		return res
