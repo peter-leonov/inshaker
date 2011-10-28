@@ -39,7 +39,8 @@ var Me =
 	}
 }
 
-Me.classMethods =
+Me.module = {}
+Me.module.staticMethods =
 {
 	bakePrepare: function (name, prepare)
 	{

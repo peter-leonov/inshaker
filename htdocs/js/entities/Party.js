@@ -27,7 +27,7 @@ Me.staticMethods =
 	}
 }
 
-Object.extend(Me, DB.classMethods)
+Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
 Me.findAndBakePrepares()
 
