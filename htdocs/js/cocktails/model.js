@@ -131,11 +131,10 @@ function CocktailsModel (states, view) {
 		this.filters.state = states.defaultState;
 	};
 	
-	this.uniqueTags = function(set){
-		var res = [];
-		for(var i = 0; i < set.length; i++){ res = res.concat(set[i].groups) }
-		return res.uniq();
-	};
+	this.uniqueTags = function (cocktails)
+	{
+		return DB.hashIndexByAryKey(cocktails, 'tags')
+	}
 	
 	this.uniqueStrengths = function(set){
 		var res = [];
@@ -337,7 +336,7 @@ function CocktailsModel (states, view) {
 			return Cocktail.getByFirstLetter(filters.letter)
 		
 		if (filters.tag)
-			res = Cocktail.getByGroup(filters.tag)
+			res = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
 		
 		if (filters.strength)
 			res = Cocktail.getByStrength(filters.strength, res)

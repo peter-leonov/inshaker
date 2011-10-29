@@ -232,13 +232,15 @@ function CocktailsView (states, nodes, styles) {
 		this.filterElems.letter.addClassName(styles.selected);
 		
 		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
+		for (var k in tagState)
+			tagState[k.toLowerCase()] = true
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
 			var elemTxt = tagElems[i].value
 			if(elemTxt == filters.tag) {
 				this.filterElems.tag = tagElems[i];
 				this.filterElems.tag.className = styles.selected;
-			} else if(tagState.indexOf(elemTxt) == -1) {
+			} else if(!tagState[elemTxt.toLowerCase()]) {
 				tagElems[i].className = styles.disabled;
 			} else {
 				tagElems[i].className = "";

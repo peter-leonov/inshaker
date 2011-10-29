@@ -40,6 +40,20 @@ var Me =
 		return hash
 	},
 	
+	hashIndexByAryKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var item = src[i]
+			
+			var ary = item[key]
+			for (var j = 0, jl = ary.length; j < jl; j++)
+				hash[ary[j]] = item
+		}
+		return hash
+	},
+	
 	hashIndex: function (src)
 	{
 		var hash = {}
