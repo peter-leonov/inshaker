@@ -157,7 +157,7 @@ Me.staticMethods =
 	
 	getTagByTagCI: function (tag)
 	{
-		return this.index.tagByTagCI[tag]
+		return this.index.tagByTagCI[tag.toLowerCase()]
 	},
 	
 	getAll: function()
