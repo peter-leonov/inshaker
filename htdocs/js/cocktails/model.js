@@ -131,13 +131,6 @@ function CocktailsModel (states, view) {
 		this.filters.state = states.defaultState;
 	};
 	
-	this.filtersAreEmpty = function(){
-		return (!this.filters.name && !this.filters.letter &&
-				!this.filters.tag && !this.filters.strength &&
-				!this.filters.method && !this.filters.ingredients.length)
-	};
-	
-	
 	this.uniqueTags = function(set){
 		var res = [];
 		for(var i = 0; i < set.length; i++){ res = res.concat(set[i].groups) }
@@ -279,14 +272,6 @@ function CocktailsModel (states, view) {
 	// get states by current filters
 	this.getGroupStates = function(){
 		var set = [], groupStates = {};
-		
-		if (this.filtersAreEmpty())
-		{
-			var res = {}
-			res.tags = Cocktail.getGroups()
-			res.strengths = Cocktail.getStrengths()
-			res.methods = Cocktail.getMethods()
-		}
 		
 		// strengths state - depends only on ingredients
 		var rFilters = cloneObject(this.filters);
