@@ -159,7 +159,7 @@ class CocktailsProcessor < Inshaker::Processor
     count = {}
     count.default = 0
     @cocktails.each do |name, hash|
-      hash["groups"].each { |group| count[group] += 1 }
+      hash["tags"].each { |group| count[group] += 1 }
     end
     groups = []
     
@@ -398,12 +398,13 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def prepare_groups_and_strengths_and_methods
-    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
-    @groups_ci = @groups.hash_ci_index
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
+    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
+    @groups_ci = @groups.hash_ci_index
+    @groups = @groups.map { |e| @tags_ci[e] }
     
     @tags_hidden = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
