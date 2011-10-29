@@ -236,11 +236,11 @@ function CocktailsView (states, nodes, styles) {
 			tagState[k.toLowerCase()] = true
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].value
-			if(elemTxt == filters.tag) {
+			var elemTxt = tagElems[i].value.toLowerCase()
+			if(elemTxt == filters.tag.toLowerCase()) {
 				this.filterElems.tag = tagElems[i];
 				this.filterElems.tag.className = styles.selected;
-			} else if(!tagState[elemTxt.toLowerCase()]) {
+			} else if(!tagState[elemTxt]) {
 				tagElems[i].className = styles.disabled;
 			} else {
 				tagElems[i].className = "";
