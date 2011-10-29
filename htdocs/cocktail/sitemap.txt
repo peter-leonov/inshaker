@@ -299,6 +299,7 @@ http://www.inshaker.ru/cocktail/gin_fizz/
 http://www.inshaker.ru/cocktail/gioconda_shooter/
 http://www.inshaker.ru/cocktail/ju_julep/
 http://www.inshaker.ru/cocktail/wild_land/
+http://www.inshaker.ru/cocktail/dixieland_smash/
 http://www.inshaker.ru/cocktail/dioscorides/
 http://www.inshaker.ru/cocktail/kind_coconut/
 http://www.inshaker.ru/cocktail/house_m.d./
@@ -710,6 +711,8 @@ http://www.inshaker.ru/cocktail/pina_colada_in_a_coconut/
 http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pink_floyd/
 http://www.inshaker.ru/cocktail/pyramid_shooter/
+http://www.inshaker.ru/cocktail/pisco_punch/
+http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/platinum_berry/
 http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
@@ -864,6 +867,7 @@ http://www.inshaker.ru/cocktail/salty_dog/
 http://www.inshaker.ru/cocktail/salty_russian/
 http://www.inshaker.ru/cocktail/sunny_dream/
 http://www.inshaker.ru/cocktail/sunlight/
+http://www.inshaker.ru/cocktail/sun/
 http://www.inshaker.ru/cocktail/malted_gold/
 http://www.inshaker.ru/cocktail/spice_girls/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
