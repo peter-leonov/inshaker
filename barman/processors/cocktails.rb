@@ -370,6 +370,7 @@ class CocktailsProcessor < Inshaker::Processor
       @tags_used[tag] = true
       cocktail_tags << tag
     end
+    cocktail_tags.uniq!
     
     # find groups
     groups = @cocktail["groups"] = []
@@ -379,7 +380,6 @@ class CocktailsProcessor < Inshaker::Processor
         groups << group
       end
     end
-    groups.uniq!
     
     @cocktails[name] = @cocktail
     
