@@ -19,6 +19,27 @@ var Me =
 		return hash
 	},
 	
+	hashOfAryIndexByAryKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var item = src[i]
+			
+			var ary = item[key]
+			for (var j = 0, jl = ary.length; j < jl; j++)
+			{
+				var v = ary[j]
+				var a = hash[v]
+				if (a)
+					a.push(item)
+				else
+					hash[v] = [item]
+			}
+		}
+		return hash
+	},
+	
 	hashIndex: function (src)
 	{
 		var hash = {}

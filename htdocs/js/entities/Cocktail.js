@@ -410,6 +410,7 @@ Me.staticMethods =
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
 }
 
+Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
 
 Me.className = 'Cocktail'

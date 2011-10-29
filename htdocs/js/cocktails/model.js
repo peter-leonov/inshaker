@@ -30,18 +30,18 @@ Object.extend(Cocktail,
 		return letters.sort()
 	},
 	
+	getByGroupPrepare: function ()
+	{
+		this.index.byGroup = DB.hashOfAryIndexByAryKey(this.db, 'groups')
+	},
+	
 	getByGroup: function (group)
 	{
-		var db = this.db
-		var res = [];
-		for(var i = 0; i < db.length; i++){
-			if(db[i].groups.indexOf(group) > -1){
-				res.push(db[i]);
-			}
-		}
-		return res;
+		return this.index.byGroup[group]
 	}
 })
+
+Cocktail.bindPrepare('getByGroup', Cocktail.getByGroupPrepare)
 
 // deep copy using JSON lib ;-)
 function cloneObject(obj){
