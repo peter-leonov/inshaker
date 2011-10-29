@@ -266,28 +266,6 @@ Me.staticMethods =
 		return this.bakeAry(res)
 	},
 	
-	getByStrength: function(strength, set) {
-		if(!set) set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].strength == strength) {
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-
-    getByMethod: function(method, set) {
-        if(!set) set = this.db;
-        var res = [];
-        for(var i = 0; i < set.length; i++){
-             if(set[i].method == method) {
-                res.push(set[i]);
-             }
-        }
-        return res;
-    },
-    
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
