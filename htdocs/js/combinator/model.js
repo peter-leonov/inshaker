@@ -200,16 +200,21 @@ var myProto =
 	{
 		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
 		
+		var groups = Cocktail.getGroups(),
+			isaGroup = DB.hashIndex(groups)
+		
 		var byGroup = {}
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cocktail = cocktails[i]
 			
-			var groups = cocktail.groups
-			for (var j = 0, jl = groups.length; j < jl; j++)
+			var tags = cocktail.tags
+			for (var j = 0, jl = tags.length; j < jl; j++)
 			{
-				var group = groups[j]
+				var group = tags[j]
+				if (!isaGroup[group])
+					continue
 				
 				var arr = byGroup[group]
 				if (arr)
@@ -219,8 +224,7 @@ var myProto =
 			}
 		}
 		
-		var groups = Cocktail.getGroups(),
-			sorted = []
+		var sorted = []
 		for (var i = 0, il = groups.length; i < il; i++)
 		{
 			var group = groups[i]
