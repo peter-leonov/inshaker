@@ -146,6 +146,20 @@ Me.staticMethods =
 	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
+	getTagByTagCIPrepare: function ()
+	{
+		function lowercase (tag)
+		{
+			return tag.toLowerCase()
+		}
+		this.index.tagByTagCI = DB.hashIndexBy(this.tags, lowercase)
+	},
+	
+	getTagByTagCI: function (tag)
+	{
+		return this.index.tagByTagCI[tag]
+	},
+	
 	getAll: function()
 	{
 		return this.db.slice()
@@ -412,6 +426,7 @@ Me.staticMethods =
 
 Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
 
 Me.className = 'Cocktail'
 self[Me.className] = Me

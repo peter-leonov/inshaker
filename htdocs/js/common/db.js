@@ -57,6 +57,17 @@ var Me =
 			hash[v[key]] = v
 		}
 		return hash
+	},
+	
+	hashIndexBy: function (src, f)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			hash[f(v)] = v
+		}
+		return hash
 	}
 }
 
