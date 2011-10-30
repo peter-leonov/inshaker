@@ -30,17 +30,6 @@ Object.extend(Cocktail,
 		return letters.sort()
 	},
 	
-	getByStrength: function(strength) {
-		var set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].strength == strength) {
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
 	getByMethod: function(method, set) {
 		if(!set) set = this.db;
 		var res = [];
@@ -350,7 +339,7 @@ function CocktailsModel (states, view) {
 		
 		if (filters.strength)
 		{
-			var set = Cocktail.getByStrength(filters.strength)
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
 			res = res ? DB.intersection([res, set]) : set
 		}
 		
