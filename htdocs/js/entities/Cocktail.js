@@ -128,7 +128,9 @@ Me.staticMethods =
 		for (var i = 0, il = names.length; i < il; i++)
 		{
 			var name = names[i]
-			db[i] = byName[name] = new Me(hash[name])
+			var cocktail = new Me(hash[name])
+			db[i] = byName[name] = cocktail
+			cocktail._oid = i
 		}
 		
 		this.db = db
