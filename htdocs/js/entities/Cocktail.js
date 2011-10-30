@@ -76,7 +76,8 @@ Me.prototype =
 		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
 		a.appendChild(img)
 		
-		var txt = document.createTextNode(this.name)
+		var name = this.name.replace(/ (и|в|во|с|со|на|он|от) /g, ' $1 ')
+		var txt = document.createTextNode(name)
 		a.appendChild(txt)
 		
 		return li
