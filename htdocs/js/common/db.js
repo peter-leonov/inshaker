@@ -82,6 +82,41 @@ var Me =
 			hash[f(v)] = v
 		}
 		return hash
+	},
+	
+	intersection: function (arys)
+	{
+		var length = arys.length
+		if (length == 0)
+			return []
+		else if (length == 1)
+			return arys[0].slice()
+		
+		var seen = []
+		for (var i = 0; i < length; i++)
+		{
+			var items = arys[i]
+			for (var j = 0, jl = items.length; j < jl; j++)
+			{
+				var id = items[j]._oid
+				var times = seen[id]
+				if (times)
+					seen[id] = times + 1
+				else
+					seen[id] = 1
+			}
+		}
+		
+		var first = arys[0], res = []
+		for (var i = 0, il = first.length; i < il; i++)
+		{
+			var item = first[i]
+			// if seen in all the arys
+			if (seen[item._oid] == length)
+				res.push(item)
+		}
+		
+		return res
 	}
 }
 
