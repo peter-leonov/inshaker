@@ -311,7 +311,6 @@ class CocktailsProcessor < Inshaker::Processor
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
-    @cocktail["strength"] = about["Крепость"]
     @cocktail["ingredients"] = parse_parts(about["Ингредиенты"])
     if about["Украшения"]
       @cocktail["garnish"] = parse_parts(about["Украшения"])
@@ -359,6 +358,7 @@ class CocktailsProcessor < Inshaker::Processor
       tags = []
     end
     tags << "все коктейли"
+    tags << about["Крепость"]
     tags = about["Группы"] + tags
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
@@ -380,6 +380,21 @@ class CocktailsProcessor < Inshaker::Processor
         groups << group
       end
     end
+    if groups.empty?
+      error "не могу найти ни одной группы в тегах"
+    end
+    
+    # find strength
+    cocktail_tags.each do |tag|
+      strength = @strengths_ci[tag.ci_index]
+      if strength
+        @cocktail["strength"] = strength
+        break
+      end
+    end
+    unless @cocktail["strength"]
+      error "не могу найти крепость в тегах"
+    end
     
     @cocktails[name] = @cocktail
     
@@ -399,6 +414,7 @@ class CocktailsProcessor < Inshaker::Processor
   
   def prepare_groups_and_strengths_and_methods
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    @strengths_ci = @strengths.hash_ci_index
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
