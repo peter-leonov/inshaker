@@ -13,7 +13,7 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 86px; height: 40px; right: 0; top: -9px; }
+#spotlighted { width: 50px; height: 37px; right: 0; top: -9px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 380px; height: 700px; left: 168px; bottom: -840px; }
 #branded-image-holder { height: 900px; }
@@ -24,7 +24,7 @@ html { background: #000 url(bg.jpg) center -130px repeat-y; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
-button.strong b { color: #b12b99; }
+button.strong b { color: #000; }
 
 /* calculator.css */
 #b-bill dt,
@@ -70,9 +70,9 @@ button.strong b { color: #b12b99; }
 /* cocktail.css */
 #top-menu .border-links a:hover,
 #b-more dt,
-#b-more dt b { background-color: #b12b99; }
+#b-more dt b { background-color: #222; }
 #b-more dt b { color: #fff; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
-#output .help-line .hint { color: #b12b99; }
+#output .help-line .hint { color: #000; }
