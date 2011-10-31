@@ -351,6 +351,8 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     
+    guess_methods @cocktail
+    
     cocktail_tags = @cocktail["tags"] = []
     tags = about["Теги"]
     unless tags
@@ -358,6 +360,7 @@ class CocktailsProcessor < Inshaker::Processor
       tags = []
     end
     tags << "все коктейли"
+    tags << @cocktail["method"]
     tags << about["Крепость"]
     tags = about["Группы"] + tags
     tags.each do |tag_candidate|
@@ -406,7 +409,6 @@ class CocktailsProcessor < Inshaker::Processor
     root_dir.name = html_name
     @cocktail["root_dir"] = root_dir
     
-    guess_methods @cocktail
     update_images dir, root_dir, @cocktail unless @options[:text]
     update_html root_dir, @cocktail
     end # indent

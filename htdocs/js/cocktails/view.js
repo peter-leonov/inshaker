@@ -262,13 +262,15 @@ function CocktailsView (states, nodes, styles) {
 			}
 		}
 		
+		for (var k in methodState)
+			methodState[k.toLowerCase()] = true
 		var methodElems = nodes.methodsList.getElementsByTagName("dd");
 		for(var i = 0; i < methodElems.length; i++) {
 			var elemTxt = methodElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.method) {
 				this.filterElems.method = methodElems[i]; 
 				this.filterElems.method.className = styles.selected;
-			} else if(methodState.indexOf(elemTxt) == -1) {
+			} else if(!methodState[elemTxt]) {
 				methodElems[i].className = styles.disabled
 			} else {
 				methodElems[i].className = "";

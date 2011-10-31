@@ -129,11 +129,10 @@ function CocktailsModel (states, view) {
 		return DB.hashIndexByAryKey(cocktails, 'tags')
 	}
 	
-	this.uniqueMethods = function(set){
-		var res = [];
-		for(var i = 0; i < set.length; i++){ res.push(set[i].method) }
-		return res.uniq();
-	};
+	this.uniqueMethods = function (cocktails)
+	{
+		return DB.hashIndexByAryKey(cocktails, 'tags')
+	}
 
 	this.onStateChanged = function(state){
 		this.resetFilters();
