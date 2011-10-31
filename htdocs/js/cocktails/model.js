@@ -28,17 +28,6 @@ Object.extend(Cocktail,
 			letters.push(k)
 		
 		return letters.sort()
-	},
-	
-	getByMethod: function(method, set) {
-		if(!set) set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].method == method) {
-				res.push(set[i]);
-			}
-		}
-		return res;
 	}
 })
 
@@ -343,7 +332,10 @@ function CocktailsModel (states, view) {
 		}
 		
 		if (filters.method)
-			res = Cocktail.getByMethod(filters.method, res)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
+			res = res ? DB.intersection([res, set]) : set
+		}
 		
 		if (filters.marks && filters.marks.length)
 		{
