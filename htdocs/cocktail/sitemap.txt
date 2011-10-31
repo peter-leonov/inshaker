@@ -71,6 +71,7 @@ http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
 http://www.inshaker.ru/cocktail/bounty_martini/
 http://www.inshaker.ru/cocktail/baja_bocana/
+http://www.inshaker.ru/cocktail/bacchus/
 http://www.inshaker.ru/cocktail/no_name_drink/
 http://www.inshaker.ru/cocktail/white_lady/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
@@ -200,6 +201,7 @@ http://www.inshaker.ru/cocktail/vodka_energy_drink/
 http://www.inshaker.ru/cocktail/vodka_energy_drink_mini/
 http://www.inshaker.ru/cocktail/around_the_world/
 http://www.inshaker.ru/cocktail/magic_water/
+http://www.inshaker.ru/cocktail/voroshilov_rifleman/
 http://www.inshaker.ru/cocktail/east_meets_west/
 http://www.inshaker.ru/cocktail/oriental_tea_party/
 http://www.inshaker.ru/cocktail/east_honey/
@@ -712,6 +714,7 @@ http://www.inshaker.ru/cocktail/pina_colada_in_a_coconut/
 http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pink_floyd/
 http://www.inshaker.ru/cocktail/pyramid_shooter/
+http://www.inshaker.ru/cocktail/dried_apricots_pie/
 http://www.inshaker.ru/cocktail/pisco_punch/
 http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/platinum_berry/
@@ -794,6 +797,7 @@ http://www.inshaker.ru/cocktail/royal_flambe/
 http://www.inshaker.ru/cocktail/royal_flush/
 http://www.inshaker.ru/cocktail/royal_shot/
 http://www.inshaker.ru/cocktail/ruby/
+http://www.inshaker.ru/cocktail/rudy_passion/
 http://www.inshaker.ru/cocktail/rouge/
 http://www.inshaker.ru/cocktail/russian_long_island/
 http://www.inshaker.ru/cocktail/russian_national/
@@ -1019,6 +1023,7 @@ http://www.inshaker.ru/cocktail/scotch_old_fashioned/
 http://www.inshaker.ru/cocktail/shtyrlits/
 http://www.inshaker.ru/cocktail/hullabaloo/
 http://www.inshaker.ru/cocktail/sorrel_lemonade_in_a_jug/
+http://www.inshaker.ru/cocktail/eucalyptus_daiquiri/
 http://www.inshaker.ru/cocktail/transition/
 http://www.inshaker.ru/cocktail/evolution/
 http://www.inshaker.ru/cocktail/abc/
