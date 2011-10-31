@@ -474,6 +474,7 @@ http://www.inshaker.ru/cocktail/red_tea/
 http://www.inshaker.ru/cocktail/creme_de_le_creme/
 http://www.inshaker.ru/cocktail/kremlin_strudel/
 http://www.inshaker.ru/cocktail/strong_mulled_wine/
+http://www.inshaker.ru/cocktail/krzhemilek_and_vahmurka/
 http://www.inshaker.ru/cocktail/little_bloody_masha/
 http://www.inshaker.ru/cocktail/bloody_mashka/
 http://www.inshaker.ru/cocktail/bloody_mary/
