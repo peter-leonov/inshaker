@@ -367,7 +367,7 @@ function CocktailsModel (states, view) {
 			res = DB.intersection([res, set])
 		}
 		
-		// res.sort(Cocktail.complexitySort)
+		res.sort(Cocktail.complexitySort)
 		return {cocktails: res, groupStates: groupStates}
 	}
 	
