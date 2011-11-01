@@ -313,16 +313,26 @@ function CocktailsModel (states, view) {
 	
 	this.getCocktailsByFilters = function (filters, states)
 	{
-		// one-pass filters
+		if (filters.state == states.byName)
+		{
+			if (filters.name)
+				return this.getBySimilarName(filters.name)
+			
+			var res = Cocktail.getAll()
+			res.randomize()
+			return res
+		}
 		
-		if (filters.name)
-			return this.getBySimilarName(filters.name)
+		if (filters.state == states.byLetter)
+		{
+			if (filters.letter)
+				return Cocktail.getByFirstLetter(filters.letter)
+			
+			return Cocktail.getAll()
+		}
 		
-		if (filters.letter)
-			return Cocktail.getByFirstLetter(filters.letter)
 		
-		
-		// multi-pass filters
+		// “by ingredients” state
 		
 		var res = null
 		
@@ -361,21 +371,11 @@ function CocktailsModel (states, view) {
 		if (res)
 			return res
 		
-		if (filters.state == states.byName)
-		{
-			res = Cocktail.getAll()
-			res.randomize()
-			return res
-		}
+		// no filter applied
 		
-		if (filters.state == states.byIngredients)
-		{
-			res = Cocktail.getAll()
-			res.sort(Cocktail.complexitySort)
-			return res
-		}
-		
-		return Cocktail.getAll()
+		res = Cocktail.getAll()
+		res.sort(Cocktail.complexitySort)
+		return res
 	}
 	
 	
