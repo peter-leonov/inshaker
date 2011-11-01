@@ -383,7 +383,8 @@ function CocktailsModel (states, view) {
 	this.applyFilters = function()
 	{
 		var filters = this.filters
-		view.onModelChanged(this.getCocktailsByFilters(filters, states), filters, this.getGroupStates());
+		var cocktails = this.getCocktailsByFilters(filters, states)
+		view.onModelChanged(cocktails, filters, this.getGroupStates())
 	};
 }
 
