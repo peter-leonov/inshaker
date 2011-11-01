@@ -313,7 +313,7 @@ function CocktailsModel (states, view) {
 	
 	this.getCocktailsByFilters = function (filters, states)
 	{
-		var res = null
+		// one-pass filters
 		
 		if (filters.name)
 			return this.getBySimilarName(filters.name)
@@ -321,20 +321,10 @@ function CocktailsModel (states, view) {
 		if (filters.letter)
 			return Cocktail.getByFirstLetter(filters.letter)
 		
-		if (filters.tag)
-			res = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
 		
-		if (filters.strength)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
-			res = res ? DB.intersection([res, set]) : set
-		}
+		// multi-pass filters
 		
-		if (filters.method)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
-			res = res ? DB.intersection([res, set]) : set
-		}
+		var res = null
 		
 		if (filters.marks && filters.marks.length)
 		{
@@ -349,6 +339,24 @@ function CocktailsModel (states, view) {
 		
 		if (filters.ingredients && filters.ingredients.length)
 			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
+		
+		if (filters.tag)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
+			res = res ? DB.intersection([res, set]) : set
+		}
+		
+		if (filters.strength)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
+			res = res ? DB.intersection([res, set]) : set
+		}
+		
+		if (filters.method)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
+			res = res ? DB.intersection([res, set]) : set
+		}
 		
 		if (!res)
 		{
