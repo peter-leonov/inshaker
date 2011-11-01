@@ -337,23 +337,29 @@ function CocktailsModel (states, view) {
 		if (filters.ingredients && filters.ingredients.length)
 			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
 		
-		groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
+		var lastStates = groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.strength)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
 			res = DB.intersection([res, set])
+			
+			lastStates = groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
 		}
+		else
+			groupStates.tags = lastStates
 		
-		groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.tag)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
 			res = DB.intersection([res, set])
+			
+			groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
 		}
+		else
+			groupStates.methods = lastStates
 		
-		groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.method)
 		{
