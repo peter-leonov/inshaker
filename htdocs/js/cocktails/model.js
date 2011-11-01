@@ -254,28 +254,6 @@ function CocktailsModel (states, view) {
 		}
 	}
 	
-	// get states by current filters
-	this.getGroupStates = function(){
-		var set = [], groupStates = {};
-		
-		// strengths state - depends only on ingredients
-		var rFilters = cloneObject(this.filters);
-		rFilters.strength = "", rFilters.tag  = "", rFilters.method = "";
-		groupStates.strengths = this.uniqueStrengths(this.getCocktailsByFilters(rFilters, states));
-		
-		// tags state - depends on ingredients and strength
-		rFilters = cloneObject(this.filters);
-		rFilters.tag = "", rFilters.method = "";
-		groupStates.tags = this.uniqueTags(this.getCocktailsByFilters(rFilters, states));
-		
-		// methods state - depends on ingredients, strength and tag
-		rFilters = cloneObject(this.filters);
-		rFilters.method = "";
-		groupStates.methods = this.uniqueMethods(this.getCocktailsByFilters(rFilters, states));
-		
-		return groupStates;
-	};
-	
 	var getBySimilarNameCache = {},
 		allCocktails = Cocktail.getAll()
 	this.getBySimilarName = function (name)
@@ -313,28 +291,37 @@ function CocktailsModel (states, view) {
 	
 	this.getCocktailsByFilters = function (filters, states)
 	{
+		var groupStates = {strengths: {}, tags: {}, methods: {}}
+		
 		if (filters.state == states.byName)
 		{
 			if (filters.name)
-				return this.getBySimilarName(filters.name)
+			{
+				var res = this.getBySimilarName(filters.name)
+				return {cocktails: res, groupStates: groupStates}
+			}
 			
 			var res = Cocktail.getAll()
 			res.randomize()
-			return res
+			return {cocktails: res, groupStates: groupStates}
 		}
 		
 		if (filters.state == states.byLetter)
 		{
 			if (filters.letter)
-				return Cocktail.getByFirstLetter(filters.letter)
+			{
+				var res = Cocktail.getByFirstLetter(filters.letter)
+				return {cocktails: res, groupStates: groupStates}
+			}
 			
-			return Cocktail.getAll()
+			var res = Cocktail.getAll()
+			return {cocktails: res, groupStates: groupStates}
 		}
 		
 		
 		// “by ingredients” state
 		
-		var res = null
+		var res = null, all = DB.hashIndexByAryKey(Cocktail.getAll(), 'tags')
 		
 		if (filters.marks && filters.marks.length)
 		{
@@ -350,17 +337,23 @@ function CocktailsModel (states, view) {
 		if (filters.ingredients && filters.ingredients.length)
 			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
 		
-		if (filters.tag)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
-			res = res ? DB.intersection([res, set]) : set
-		}
+		groupStates.strengths = res ? DB.hashIndexByAryKey(res, 'tags') : all
 		
 		if (filters.strength)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
 			res = res ? DB.intersection([res, set]) : set
 		}
+		
+		groupStates.tags = res ? DB.hashIndexByAryKey(res, 'tags') : all
+		
+		if (filters.tag)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
+			res = res ? DB.intersection([res, set]) : set
+		}
+		
+		groupStates.methods = res ? DB.hashIndexByAryKey(res, 'tags') : all
 		
 		if (filters.method)
 		{
@@ -369,21 +362,21 @@ function CocktailsModel (states, view) {
 		}
 		
 		if (res)
-			return res
+			return {cocktails: res, groupStates: groupStates}
 		
 		// no filter applied
 		
 		res = Cocktail.getAll()
 		res.sort(Cocktail.complexitySort)
-		return res
+		return {cocktails: res, groupStates: groupStates}
 	}
 	
 	
 	this.applyFilters = function()
 	{
 		var filters = this.filters
-		var cocktails = this.getCocktailsByFilters(filters, states)
-		view.onModelChanged(cocktails, filters, this.getGroupStates())
+		var res = this.getCocktailsByFilters(filters, states)
+		view.onModelChanged(res.cocktails, filters, res.groupStates)
 	};
 }
 
