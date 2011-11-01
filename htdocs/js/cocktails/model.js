@@ -373,7 +373,6 @@ function CocktailsModel (states, view) {
 			else
 			{
 				res = Cocktail.getAll()
-				res.sort(Cocktail.nameSort)
 			}
 		}
 		
