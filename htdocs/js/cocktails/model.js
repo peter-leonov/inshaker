@@ -358,25 +358,24 @@ function CocktailsModel (states, view) {
 			res = res ? DB.intersection([res, set]) : set
 		}
 		
-		if (!res)
+		if (res)
+			return res
+		
+		if (filters.state == states.byName)
 		{
-			if (filters.state == states.byName)
-			{
-				res = Cocktail.getAll()
-				res.randomize()
-			}
-			else if (filters.state == states.byIngredients)
-			{
-				res = Cocktail.getAll()
-				res.sort(Cocktail.complexitySort)
-			}
-			else
-			{
-				res = Cocktail.getAll()
-			}
+			res = Cocktail.getAll()
+			res.randomize()
+			return res
 		}
 		
-		return res
+		if (filters.state == states.byIngredients)
+		{
+			res = Cocktail.getAll()
+			res.sort(Cocktail.complexitySort)
+			return res
+		}
+		
+		return Cocktail.getAll()
 	}
 	
 	
