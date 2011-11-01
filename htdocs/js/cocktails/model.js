@@ -321,7 +321,7 @@ function CocktailsModel (states, view) {
 		
 		// “by ingredients” state
 		
-		var res = null, all = DB.hashIndexByAryKey(Cocktail.getAll(), 'tags')
+		var res = Cocktail.getAll()
 		
 		if (filters.marks && filters.marks.length)
 		{
@@ -337,37 +337,31 @@ function CocktailsModel (states, view) {
 		if (filters.ingredients && filters.ingredients.length)
 			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
 		
-		groupStates.strengths = res ? DB.hashIndexByAryKey(res, 'tags') : all
+		groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.strength)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
-			res = res ? DB.intersection([res, set]) : set
+			res = DB.intersection([res, set])
 		}
 		
-		groupStates.tags = res ? DB.hashIndexByAryKey(res, 'tags') : all
+		groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.tag)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
-			res = res ? DB.intersection([res, set]) : set
+			res = DB.intersection([res, set])
 		}
 		
-		groupStates.methods = res ? DB.hashIndexByAryKey(res, 'tags') : all
+		groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.method)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
-			res = res ? DB.intersection([res, set]) : set
+			res = DB.intersection([res, set])
 		}
 		
-		if (res)
-			return {cocktails: res, groupStates: groupStates}
-		
-		// no filter applied
-		
-		res = Cocktail.getAll()
-		res.sort(Cocktail.complexitySort)
+		// res.sort(Cocktail.complexitySort)
 		return {cocktails: res, groupStates: groupStates}
 	}
 	
