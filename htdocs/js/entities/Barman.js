@@ -8,7 +8,11 @@ function Barman (data)
 		this.cocktails = []
 	else
 		for (var i = 0, il = cocktails.length; i < il; i++)
-			cocktails[i] = Cocktail.getByName(cocktails[i])
+		{
+			var cocktail = Cocktail.getByName(cocktails[i])
+			if (cocktail)
+				cocktails.push(cocktail)
+		}
 	
 	this.constructor = Barman
 }
