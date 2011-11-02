@@ -360,9 +360,24 @@ class CocktailsProcessor < Inshaker::Processor
       tags = []
     end
     tags << "все коктейли"
+    real_tags = tags.hash_ci_index
     tags << @cocktail["method"]
+    unless real_tags[@cocktail["method"].ci_index]
+      warning "в тегах нету метода «#{@cocktail["method"]}»"
+    end
+    
     tags << about["Крепость"]
+    unless real_tags[about["Крепость"].ci_index]
+      warning "в тегах нету крепости «#{about["Крепость"]}»"
+    end
+    
     tags = about["Группы"] + tags
+    about["Группы"].each do |group|
+      unless real_tags[group.ci_index]
+        warning "в тегах нету группы «#{group}»"
+      end
+    end
+    
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
       unless tag
