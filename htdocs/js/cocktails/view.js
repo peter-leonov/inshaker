@@ -232,39 +232,45 @@ function CocktailsView (states, nodes, styles) {
 		this.filterElems.letter.addClassName(styles.selected);
 		
 		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
+		for (var k in tagState)
+			tagState[k.toLowerCase()] = true
 		var tagElems = nodes.tagsList.getElementsByTagName("dd");
 		for(var i = 0; i < tagElems.length; i++) {
-			var elemTxt = tagElems[i].value
-			if(elemTxt == filters.tag) {
+			var elemTxt = tagElems[i].value.toLowerCase()
+			if(elemTxt == filters.tag.toLowerCase()) {
 				this.filterElems.tag = tagElems[i];
 				this.filterElems.tag.className = styles.selected;
-			} else if(tagState.indexOf(elemTxt) == -1) {
+			} else if(!tagState[elemTxt]) {
 				tagElems[i].className = styles.disabled;
 			} else {
 				tagElems[i].className = "";
 			}
 		}
 		
+		for (var k in strengthState)
+			strengthState[k.toLowerCase()] = true
 		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
 		for(var i = 0; i < strengthElems.length; i++) {
 			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.strength) {
 				this.filterElems.strength = strengthElems[i]; 
 				this.filterElems.strength.className = styles.selected;
-			} else if(strengthState.indexOf(elemTxt) == -1) {
+			} else if(!strengthState[elemTxt]) {
 				strengthElems[i].className = styles.disabled
 			} else {
 				strengthElems[i].className = "";
 			}
 		}
 		
+		for (var k in methodState)
+			methodState[k.toLowerCase()] = true
 		var methodElems = nodes.methodsList.getElementsByTagName("dd");
 		for(var i = 0; i < methodElems.length; i++) {
 			var elemTxt = methodElems[i].innerHTML.toLowerCase();
 			if(elemTxt == filters.method) {
 				this.filterElems.method = methodElems[i]; 
 				this.filterElems.method.className = styles.selected;
-			} else if(methodState.indexOf(elemTxt) == -1) {
+			} else if(!methodState[elemTxt]) {
 				methodElems[i].className = styles.disabled
 			} else {
 				methodElems[i].className = "";

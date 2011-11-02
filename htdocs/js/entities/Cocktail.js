@@ -1,28 +1,12 @@
-Array.prototype.sortedBy = function(sortFunc) {
-    return Array.copy(this).sort(sortFunc);
-}
+;(function(){
 
-Array.prototype.shuffled = function() {
-	var array = Array.copy(this);
-	var tmp, current, top = array.length;
-	
-	if(top) while(--top) {
-		current = Math.floor(Math.random() * (top + 1));
-		tmp = array[current];
-		array[current] = array[top];
-		array[top] = tmp;
-	}
-	return array;
-}
-
-
-var Cocktail = function (data)
+function Me (data)
 {
 	for (var k in data)
 		this[k] = data[k]
 }
 
-Cocktail.prototype =
+Me.prototype =
 {
 	bake: function ()
 	{
@@ -122,7 +106,7 @@ Cocktail.prototype =
 	}
 }
 
-Object.extend(Cocktail,
+Me.staticMethods =
 {
 	index: {},
 	letters: [],
@@ -145,7 +129,9 @@ Object.extend(Cocktail,
 		for (var i = 0, il = names.length; i < il; i++)
 		{
 			var name = names[i]
-			db[i] = byName[name] = new Cocktail(hash[name])
+			var cocktail = new Me(hash[name])
+			db[i] = byName[name] = cocktail
+			cocktail._oid = i
 		}
 		
 		this.db = db
@@ -158,14 +144,28 @@ Object.extend(Cocktail,
 		return ary
 	},
 	
-	getGroups: function () { return this.groups },
-	getStrengths: function () { return this.strengths },
-	getMethods: function () { return this.methods },
+	getGroups: function () { return this.groups.slice() },
+	getStrengths: function () { return this.strengths.slice() },
+	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
+	
+	getTagByTagCIPrepare: function ()
+	{
+		function lowercase (tag)
+		{
+			return tag.toLowerCase()
+		}
+		this.index.tagByTagCI = DB.hashIndexBy(this.tags, lowercase)
+	},
+	
+	getTagByTagCI: function (tag)
+	{
+		return this.index.tagByTagCI[tag.toLowerCase()]
+	},
 	
 	getAll: function()
 	{
-		return this.db
+		return this.db.slice()
 	},
 	
 	getByName: function (name)
@@ -189,17 +189,6 @@ Object.extend(Cocktail,
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
-	getByGroup: function (group, set) {
-		if(!set) set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].groups.indexOf(group) > -1){
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-	
 	getByTool: function (tool)
 	{
 		var db = this.db
@@ -222,7 +211,7 @@ Object.extend(Cocktail,
 		var db = opts.db || this.db
 		var count = opts.count || tags.length
 		
-		var hash = tags.hashIndex()
+		var hash = DB.hashIndex(tags)
 		
 		var res = [], rest = res.rest = []
 		db:
@@ -280,28 +269,6 @@ Object.extend(Cocktail,
 		return this.bakeAry(res)
 	},
 	
-	getByStrength: function(strength, set) {
-		if(!set) set = this.db;
-		var res = [];
-		for(var i = 0; i < set.length; i++){
-			if(set[i].strength == strength) {
-				res.push(set[i]);
-			}
-		}
-		return res;
-	},
-
-    getByMethod: function(method, set) {
-        if(!set) set = this.db;
-        var res = [];
-        for(var i = 0; i < set.length; i++){
-             if(set[i].method == method) {
-                res.push(set[i]);
-             }
-        }
-        return res;
-    },
-    
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
@@ -321,7 +288,7 @@ Object.extend(Cocktail,
 		var searchGarnish = opts.searchGarnish
 		
 		// caching names of requested ingredients
-		var hash = names.hashIndex()
+		var hash = DB.hashIndex(names)
 		
 		var res = [],
 			rest = res.rest = []
@@ -436,9 +403,16 @@ Object.extend(Cocktail,
     },
 	
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
-})
+}
 
-Cocktail.initialize
+Object.extend(Me, DB.module.staticMethods)
+Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
+
+Me.className = 'Cocktail'
+self[Me.className] = Me
+
+Me.initialize
 (
 	<!--# include virtual="/db/cocktails/cocktails.json" -->,
 	<!--# include virtual="/db/cocktails/groups.json" -->,
@@ -446,3 +420,5 @@ Cocktail.initialize
 	<!--# include virtual="/db/cocktails/methods.json" -->,
 	<!--# include virtual="/db/cocktails/tags.json" -->
 )
+
+})();

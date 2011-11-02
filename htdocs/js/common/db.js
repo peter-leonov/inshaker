@@ -2,7 +2,128 @@
 
 var Me =
 {
-	bakePrepare: function (name, prepare)
+	hashOfAryIndexBy: function (src, f)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			
+			var key = f(v)
+			var ary = hash[key]
+			if (ary)
+				ary.push(v)
+			else
+				hash[key] = [v]
+		}
+		return hash
+	},
+	
+	hashOfAryIndexByAryKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var item = src[i]
+			
+			var ary = item[key]
+			for (var j = 0, jl = ary.length; j < jl; j++)
+			{
+				var v = ary[j]
+				var a = hash[v]
+				if (a)
+					a.push(item)
+				else
+					hash[v] = [item]
+			}
+		}
+		return hash
+	},
+	
+	hashIndexByAryKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var item = src[i]
+			
+			var ary = item[key]
+			for (var j = 0, jl = ary.length; j < jl; j++)
+				hash[ary[j]] = item
+		}
+		return hash
+	},
+	
+	hashIndex: function (src)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+			hash[src[i]] = true
+		return hash
+	},
+	
+	hashIndexKey: function (src, key)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			hash[v[key]] = v
+		}
+		return hash
+	},
+	
+	hashIndexBy: function (src, f)
+	{
+		var hash = {}
+		for (var i = 0, il = src.length; i < il; i++)
+		{
+			var v = src[i]
+			hash[f(v)] = v
+		}
+		return hash
+	},
+	
+	intersection: function (arys)
+	{
+		var length = arys.length
+		if (length == 0)
+			return []
+		else if (length == 1)
+			return arys[0].slice()
+		
+		var seen = []
+		for (var i = 0; i < length; i++)
+		{
+			var items = arys[i]
+			for (var j = 0, jl = items.length; j < jl; j++)
+			{
+				var id = items[j]._oid
+				var times = seen[id]
+				if (times)
+					seen[id] = times + 1
+				else
+					seen[id] = 1
+			}
+		}
+		
+		var first = arys[0], res = []
+		for (var i = 0, il = first.length; i < il; i++)
+		{
+			var item = first[i]
+			// if seen in all the arys
+			if (seen[item._oid] == length)
+				res.push(item)
+		}
+		
+		return res
+	}
+}
+
+Me.module = {}
+Me.module.staticMethods =
+{
+	bindPrepare: function (name, prepare)
 	{
 		var real = this[name]
 		this[name] = function ()
@@ -13,14 +134,14 @@ var Me =
 		}
 	},
 	
-	findAndBakePrepares: function ()
+	findAndBindPrepares: function ()
 	{
 		for (var k in this)
 		{
 			var prepare = this[k + 'Prepare']
 			if (!prepare)
 				continue
-			this.bakePrepare(k, prepare)
+			this.bindPrepare(k, prepare)
 		}
 	},
 	

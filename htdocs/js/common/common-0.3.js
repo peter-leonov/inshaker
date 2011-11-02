@@ -22,7 +22,6 @@
 if (!document.querySelectorAll)
 	$.load('/lib-0.3/core/fixes/dom-level2-selectors.js')
 
-<!--# include virtual="/js/common/array.js" -->
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/common/throttler.js" -->

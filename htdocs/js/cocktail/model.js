@@ -52,8 +52,8 @@ var Model = {
 		// var begin = new Date()
 		// console.time('_findRelated')
 		
-		var namesHash = source.getIngredientNames().hashIndex(),
-			tagsHash = source.tags.hashIndex()
+		var namesHash = DB.hashIndex(source.getIngredientNames()),
+			tagsHash = DB.hashIndex(source.tags)
 		
 		var match = []
 		

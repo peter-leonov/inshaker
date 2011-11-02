@@ -159,7 +159,7 @@ class CocktailsProcessor < Inshaker::Processor
     count = {}
     count.default = 0
     @cocktails.each do |name, hash|
-      hash["groups"].each { |group| count[group] += 1 }
+      hash["tags"].each { |group| count[group] += 1 }
     end
     groups = []
     
@@ -311,8 +311,6 @@ class CocktailsProcessor < Inshaker::Processor
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
-    @cocktail["strength"] = about["Крепость"]
-    @cocktail["groups"] = about["Группы"]
     @cocktail["ingredients"] = parse_parts(about["Ингредиенты"])
     if about["Украшения"]
       @cocktail["garnish"] = parse_parts(about["Украшения"])
@@ -353,6 +351,8 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     
+    guess_methods @cocktail
+    
     cocktail_tags = @cocktail["tags"] = []
     tags = about["Теги"]
     unless tags
@@ -360,14 +360,58 @@ class CocktailsProcessor < Inshaker::Processor
       tags = []
     end
     tags << "все коктейли"
+    real_tags = tags.hash_ci_index
+    tags << @cocktail["method"]
+    unless real_tags[@cocktail["method"].ci_index]
+      warning "в тегах нету метода «#{@cocktail["method"]}»"
+    end
+    
+    tags << about["Крепость"]
+    unless real_tags[about["Крепость"].ci_index]
+      warning "в тегах нету крепости «#{about["Крепость"]}»"
+    end
+    
+    tags = about["Группы"] + tags
+    about["Группы"].each do |group|
+      unless real_tags[group.ci_index]
+        warning "в тегах нету группы «#{group}»"
+      end
+    end
+    
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
       unless tag
         error "незнакомый тег «#{tag_candidate}»"
+        next
       end
       
       @tags_used[tag] = true
       cocktail_tags << tag
+    end
+    cocktail_tags.uniq!
+    
+    # find groups
+    groups = @cocktail["groups"] = []
+    cocktail_tags.each do |tag|
+      group = @groups_ci[tag.ci_index]
+      if group
+        groups << group
+      end
+    end
+    if groups.empty?
+      error "не могу найти ни одной группы в тегах"
+    end
+    
+    # find strength
+    cocktail_tags.each do |tag|
+      strength = @strengths_ci[tag.ci_index]
+      if strength
+        @cocktail["strength"] = strength
+        break
+      end
+    end
+    unless @cocktail["strength"]
+      error "не могу найти крепость в тегах"
     end
     
     @cocktails[name] = @cocktail
@@ -380,18 +424,20 @@ class CocktailsProcessor < Inshaker::Processor
     root_dir.name = html_name
     @cocktail["root_dir"] = root_dir
     
-    guess_methods @cocktail
     update_images dir, root_dir, @cocktail unless @options[:text]
     update_html root_dir, @cocktail
     end # indent
   end
   
   def prepare_groups_and_strengths_and_methods
-    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    @strengths_ci = @strengths.hash_ci_index
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/known-tags.yaml"))
     @tags_ci = @tags.hash_ci_index
+    @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
+    @groups_ci = @groups.hash_ci_index
+    @groups = @groups.map { |e| @tags_ci[e] }
     
     @tags_hidden = YAML::load(File.open("#{Config::COCKTAILS_DIR}/hidden-tags.yaml"))
   end
@@ -425,6 +471,8 @@ class CocktailsProcessor < Inshaker::Processor
   def update_json cocktail
     cocktail["added"] = cocktail["added"].to_i
     cocktail.delete("sorted_parts")
+    cocktail.delete("groups")
+    cocktail.delete("strength")
     
     data = {}
     root_dir = cocktail.delete("root_dir")
