@@ -1008,6 +1008,7 @@ http://www.inshaker.ru/cocktail/pure_passion/
 http://www.inshaker.ru/cocktail/feeling/
 http://www.inshaker.ru/cocktail/champagne_cocktail/
 http://www.inshaker.ru/cocktail/champagne_fresh/
+http://www.inshaker.ru/cocktail/champarelle/
 http://www.inshaker.ru/cocktail/rustle/
 http://www.inshaker.ru/cocktail/silk_heart/
 http://www.inshaker.ru/cocktail/whisper/
