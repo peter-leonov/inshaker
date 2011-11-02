@@ -3,16 +3,18 @@ function Barman (data)
 	for (var k in data)
 		this[k] = data[k]
 	
-	var cocktails = this.cocktails
-	if (!cocktails)
-		this.cocktails = []
-	else
-		for (var i = 0, il = cocktails.length; i < il; i++)
+	var names = this.cocktails
+	var cocktails = this.cocktails = []
+	
+	if (names)
+	{
+		for (var i = 0, il = names.length; i < il; i++)
 		{
-			var cocktail = Cocktail.getByName(cocktails[i])
+			var cocktail = Cocktail.getByName(names[i])
 			if (cocktail)
 				cocktails.push(cocktail)
 		}
+	}
 	
 	this.constructor = Barman
 }
