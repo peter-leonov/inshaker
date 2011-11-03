@@ -200,12 +200,10 @@ var myProto =
 	{
 		cocktails.sort(Cocktail.complexitySort)
 		
-		var groups = Cocktail.getGroups(),
-			isaGroup = DB.hashIndex(groups)
-		
 		var byGroup = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
 		
-		var sorted = []
+		var groups = Cocktail.getGroups(),
+			sorted = []
 		for (var i = 0, il = groups.length; i < il; i++)
 		{
 			var group = groups[i]
