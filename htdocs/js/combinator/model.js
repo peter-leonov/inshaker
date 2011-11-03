@@ -1,28 +1,5 @@
 ;(function(){
 
-Array.prototype.hashValues = function (hash)
-{
-	if (!hash)
-		hash = {}
-	for (var i = 0, il = this.length; i < il; i++)
-		hash[this[i]] = true
-	return hash
-}
-
-Array.prototype.flatten = function ()
-{
-	var res = [], push = this.push
-	for (var i = 0, il = this.length; i < il; i++)
-	{
-		var item = this[i]
-		if (item.constructor == Array)
-			push.apply(res, item.flatten())
-		else
-			res.push(item)
-	}
-	return res
-}
-
 var Papa = CombinatorPage, Me = Papa.Model
 
 function DefaultState (state)
