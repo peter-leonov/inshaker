@@ -234,7 +234,7 @@ var myProto =
 	
 	sortByDate: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return b.added - a.added })
+		cocktails.sort(Cocktail.addedSort)
 		
 		var groups = []
 		
