@@ -223,21 +223,9 @@ var myProto =
 	
 	sortByMethod: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		cocktails.sort(Cocktail.complexitySort)
 		
-		var byMethod = {}
-		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i],
-				method = cocktail.method
-			
-			var arr = byMethod[method]
-			if (arr)
-				arr.push(cocktail)
-			else
-				byMethod[method] = [cocktail]
-		}
+		var byMethod = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
 		
 		var methods = Cocktail.getMethods(),
 			sorted = []
