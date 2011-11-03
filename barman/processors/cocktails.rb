@@ -436,27 +436,27 @@ class CocktailsProcessor < Inshaker::Processor
     @tags_ci = @tags.hash_ci_index
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
     @groups_ci = @groups.hash_ci_index
-    @groups = @groups.map { |e| @tags_ci[e] }
+    @groups = @groups.map { |e| @tags_ci[e.ci_index] }
   end
   
   def guess_methods cocktail
     methods = {}
     tools = cocktail["tools"]
     
-    methods["в шейкере"] = true if tools.index("Шейкер")
-    methods["давят мадлером"] = true if tools.index("Мадлер")
-    methods["в блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
-    methods["давят пестиком"] = true if tools.index("Пестик")
-    methods["миксуют в стакане"] = true if tools.index("Стакан для смешивания")
-    methods["укладывают слоями"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
+    methods["В шейкере"] = true if tools.index("Шейкер")
+    methods["Давят мадлером"] = true if tools.index("Мадлер")
+    methods["В блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
+    methods["Давят пестиком"] = true if tools.index("Пестик")
+    methods["Миксуют в стакане"] = true if tools.index("Стакан для смешивания")
+    methods["Укладывают слоями"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
     
     num = methods.keys.length
     if num == 0
-      cocktail["method"] = "просто"
+      cocktail["method"] = "Просто"
     elsif num == 1
       cocktail["method"] = methods.keys[0]
     else
-      cocktail["method"] = "не очень просто"
+      cocktail["method"] = "Не очень просто"
     end
   end
   
@@ -470,6 +470,7 @@ class CocktailsProcessor < Inshaker::Processor
     cocktail.delete("sorted_parts")
     cocktail.delete("groups")
     cocktail.delete("strength")
+    cocktail["method"] = cocktail["method"].u_downcase
     
     data = {}
     root_dir = cocktail.delete("root_dir")

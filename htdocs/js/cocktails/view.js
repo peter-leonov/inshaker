@@ -252,7 +252,7 @@ function CocktailsView (states, nodes, styles) {
 		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
 		for(var i = 0; i < strengthElems.length; i++) {
 			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
-			if(elemTxt == filters.strength) {
+			if(elemTxt == filters.strength.toLowerCase()) {
 				this.filterElems.strength = strengthElems[i]; 
 				this.filterElems.strength.className = styles.selected;
 			} else if(!strengthState[elemTxt]) {
@@ -267,7 +267,7 @@ function CocktailsView (states, nodes, styles) {
 		var methodElems = nodes.methodsList.getElementsByTagName("dd");
 		for(var i = 0; i < methodElems.length; i++) {
 			var elemTxt = methodElems[i].innerHTML.toLowerCase();
-			if(elemTxt == filters.method) {
+			if(elemTxt == filters.method.toLowerCase()) {
 				this.filterElems.method = methodElems[i]; 
 				this.filterElems.method.className = styles.selected;
 			} else if(!methodState[elemTxt]) {
