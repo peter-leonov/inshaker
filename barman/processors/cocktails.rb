@@ -470,7 +470,7 @@ class CocktailsProcessor < Inshaker::Processor
     cocktail.delete("sorted_parts")
     cocktail.delete("groups")
     cocktail.delete("strength")
-    cocktail["method"] = cocktail["method"].u_downcase
+    cocktail.delete("method")
     
     data = {}
     root_dir = cocktail.delete("root_dir")
