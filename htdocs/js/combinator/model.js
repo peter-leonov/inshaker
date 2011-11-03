@@ -198,31 +198,12 @@ var myProto =
 	
 	sortByGroup: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		cocktails.sort(Cocktail.complexitySort)
 		
 		var groups = Cocktail.getGroups(),
 			isaGroup = DB.hashIndex(groups)
 		
-		var byGroup = {}
-		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var group = tags[j]
-				if (!isaGroup[group])
-					continue
-				
-				var arr = byGroup[group]
-				if (arr)
-					arr.push(cocktail)
-				else
-					byGroup[group] = [cocktail]
-			}
-		}
+		var byGroup = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
 		
 		var sorted = []
 		for (var i = 0, il = groups.length; i < il; i++)
