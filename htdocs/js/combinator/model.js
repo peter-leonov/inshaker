@@ -200,47 +200,33 @@ var myProto =
 	{
 		cocktails.sort(Cocktail.complexitySort)
 		
-		var byGroup = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
-		
-		var groups = Cocktail.getGroups(),
-			sorted = []
-		for (var i = 0, il = groups.length; i < il; i++)
-		{
-			var group = groups[i]
-			if (byGroup[group])
-				sorted.push(group)
-		}
-		
-		var groups = []
-		for (var i = 0, il = sorted.length; i < il; i++)
-		{
-			var group = sorted[i]
-			groups.push({name: group, cocktails: byGroup[group]})
-		}
-		
-		return groups
+		return this.sortByTags(cocktails, Cocktail.getGroups())
 	},
 	
 	sortByMethod: function (cocktails)
 	{
 		cocktails.sort(Cocktail.complexitySort)
 		
-		var byMethod = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
+		return this.sortByTags(cocktails, Cocktail.getMethods())
+	},
+	
+	sortByTags: function (cocktails, tags)
+	{
+		var byTag = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
 		
-		var methods = Cocktail.getMethods(),
-			sorted = []
-		for (var i = 0, il = methods.length; i < il; i++)
+		var sorted = []
+		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var method = methods[i]
-			if (byMethod[method])
-				sorted.push(method)
+			var tag = tags[i]
+			if (byTag[tag])
+				sorted.push(tag)
 		}
 		
 		var groups = []
 		for (var i = 0, il = sorted.length; i < il; i++)
 		{
-			var method = sorted[i]
-			groups.push({name: method, cocktails: byMethod[method]})
+			var tag = sorted[i]
+			groups.push({name: tag, cocktails: byTag[tag]})
 		}
 		
 		return groups
