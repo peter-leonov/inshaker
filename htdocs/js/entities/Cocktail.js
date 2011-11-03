@@ -402,7 +402,9 @@ Me.staticMethods =
 	    else return -1;
     },
 	
-	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length }
+	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length },
+	
+	addedSort: function (a, b) { return b.added - a.added }
 }
 
 Object.extend(Me, DB.module.staticMethods)

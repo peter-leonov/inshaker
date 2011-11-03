@@ -1,28 +1,5 @@
 ;(function(){
 
-Array.prototype.hashValues = function (hash)
-{
-	if (!hash)
-		hash = {}
-	for (var i = 0, il = this.length; i < il; i++)
-		hash[this[i]] = true
-	return hash
-}
-
-Array.prototype.flatten = function ()
-{
-	var res = [], push = this.push
-	for (var i = 0, il = this.length; i < il; i++)
-	{
-		var item = this[i]
-		if (item.constructor == Array)
-			push.apply(res, item.flatten())
-		else
-			res.push(item)
-	}
-	return res
-}
-
 var Papa = CombinatorPage, Me = Papa.Model
 
 function DefaultState (state)
@@ -198,82 +175,35 @@ var myProto =
 	
 	sortByGroup: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		cocktails.sort(Cocktail.complexitySort)
 		
-		var groups = Cocktail.getGroups(),
-			isaGroup = DB.hashIndex(groups)
-		
-		var byGroup = {}
-		
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var group = tags[j]
-				if (!isaGroup[group])
-					continue
-				
-				var arr = byGroup[group]
-				if (arr)
-					arr.push(cocktail)
-				else
-					byGroup[group] = [cocktail]
-			}
-		}
-		
-		var sorted = []
-		for (var i = 0, il = groups.length; i < il; i++)
-		{
-			var group = groups[i]
-			if (byGroup[group])
-				sorted.push(group)
-		}
-		
-		var groups = []
-		for (var i = 0, il = sorted.length; i < il; i++)
-		{
-			var group = sorted[i]
-			groups.push({name: group, cocktails: byGroup[group]})
-		}
-		
-		return groups
+		return this.sortByTags(cocktails, Cocktail.getGroups())
 	},
 	
 	sortByMethod: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return a.ingredients.length - b.ingredients.length })
+		cocktails.sort(Cocktail.complexitySort)
 		
-		var byMethod = {}
+		return this.sortByTags(cocktails, Cocktail.getMethods())
+	},
+	
+	sortByTags: function (cocktails, tags)
+	{
+		var byTag = DB.hashOfAryIndexByAryKey(cocktails, 'tags')
 		
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		var sorted = []
+		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var cocktail = cocktails[i],
-				method = cocktail.method
-			
-			var arr = byMethod[method]
-			if (arr)
-				arr.push(cocktail)
-			else
-				byMethod[method] = [cocktail]
-		}
-		
-		var methods = Cocktail.getMethods(),
-			sorted = []
-		for (var i = 0, il = methods.length; i < il; i++)
-		{
-			var method = methods[i]
-			if (byMethod[method])
-				sorted.push(method)
+			var tag = tags[i]
+			if (byTag[tag])
+				sorted.push(tag)
 		}
 		
 		var groups = []
 		for (var i = 0, il = sorted.length; i < il; i++)
 		{
-			var method = sorted[i]
-			groups.push({name: method, cocktails: byMethod[method]})
+			var tag = sorted[i]
+			groups.push({name: tag, cocktails: byTag[tag]})
 		}
 		
 		return groups
@@ -281,7 +211,7 @@ var myProto =
 	
 	sortByDate: function (cocktails)
 	{
-		cocktails.sort(function (a, b) { return b.added - a.added })
+		cocktails.sort(Cocktail.addedSort)
 		
 		var groups = []
 		
