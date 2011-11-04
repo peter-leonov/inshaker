@@ -995,6 +995,7 @@ http://www.inshaker.ru/cocktail/tea_martini_at_five_o_clock/
 http://www.inshaker.ru/cocktail/chapurin/
 http://www.inshaker.ru/cocktail/champion/
 http://www.inshaker.ru/cocktail/black_cherry/
+http://www.inshaker.ru/cocktail/blueberry_pie/
 http://www.inshaker.ru/cocktail/black_and_white/
 http://www.inshaker.ru/cocktail/black-current/
 http://www.inshaker.ru/cocktail/black-curr_nt_lemonade_in_a_jug/
