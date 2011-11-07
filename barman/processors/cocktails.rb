@@ -404,6 +404,7 @@ class CocktailsProcessor < Inshaker::Processor
     end
     unless @cocktail["method"]
       guess_methods @cocktail
+      cocktail_tags << @tags_ci[@cocktail["method"].ci_index]
       warning "не могу найти метод в тегах (пока поставлю «#{@cocktail["method"]}»)"
     end
     
