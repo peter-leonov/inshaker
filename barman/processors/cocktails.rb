@@ -426,12 +426,16 @@ class CocktailsProcessor < Inshaker::Processor
   
   def prepare_groups_and_strengths_and_methods
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
+    @strengths = @strengths.uniq.sort
     @strengths_ci = @strengths.hash_ci_index
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+    @methods = @methods.uniq.sort
     @methods_ci = @methods.hash_ci_index
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
+    @tags = @tags.uniq.sort
     @tags_ci = @tags.hash_ci_index
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
+    @groups = @groups.uniq.sort
     @groups_ci = @groups.hash_ci_index
     @groups = @groups.map { |e| @tags_ci[e.ci_index] }
   end
