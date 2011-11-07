@@ -90,8 +90,8 @@
 
 .b-search .groups dd { padding-left: 6px; cursor: pointer; }
 .b-search .groups dd:hover { text-decoration: underline; }
-.b-search .groups dd.selected-button {background-position: -250px -100px; width: 140px; height:17px; line-height:16px; }
-.b-search .groups dd.selected-button:hover { background-position: -400px -100px; text-decoration: none; }
+.b-search .groups dd.selected-button {background-position: -250px -100px; width: 150px; height:17px; line-height:16px; }
+.b-search .groups dd.selected-button:hover { background-position: -425px -100px; text-decoration: none; }
 .b-search .groups dd.disabled {text-decoration:none;cursor:default;}
 
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
