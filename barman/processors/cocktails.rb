@@ -350,8 +350,6 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     
-    guess_methods @cocktail
-    
     cocktail_tags = @cocktail["tags"] = []
     tags = about["Теги"]
     unless tags
@@ -359,23 +357,6 @@ class CocktailsProcessor < Inshaker::Processor
       tags = []
     end
     tags << "все коктейли"
-    real_tags = tags.hash_ci_index
-    tags << @cocktail["method"]
-    unless real_tags[@cocktail["method"].ci_index]
-      warning "в тегах нету метода «#{@cocktail["method"]}»"
-    end
-    
-    tags << about["Крепость"]
-    unless real_tags[about["Крепость"].ci_index]
-      warning "в тегах нету крепости «#{about["Крепость"]}»"
-    end
-    
-    tags = about["Группы"] + tags
-    about["Группы"].each do |group|
-      unless real_tags[group.ci_index]
-        warning "в тегах нету группы «#{group}»"
-      end
-    end
     
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
@@ -388,6 +369,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail_tags << tag
     end
     cocktail_tags.uniq!
+    cocktail_tags.sort!
     
     # find groups
     groups = @cocktail["groups"] = []
@@ -413,6 +395,20 @@ class CocktailsProcessor < Inshaker::Processor
       error "не могу найти крепость в тегах"
     end
     
+    # find method
+    cocktail_tags.each do |tag|
+      strength = @methods_ci[tag.ci_index]
+      if strength
+        @cocktail["method"] = strength
+        break
+      end
+    end
+    unless @cocktail["method"]
+      guess_methods @cocktail
+      cocktail_tags << @tags_ci[@cocktail["method"].ci_index]
+      warning "не могу найти метод в тегах (пока поставлю «#{@cocktail["method"]}»)"
+    end
+    
     @cocktails[name] = @cocktail
     
     html_name = @cocktail["html_name"] = @cocktail["name_eng"].html_name
@@ -432,6 +428,7 @@ class CocktailsProcessor < Inshaker::Processor
     @strengths = YAML::load(File.open("#{Config::COCKTAILS_DIR}/strengths.yaml"))
     @strengths_ci = @strengths.hash_ci_index
     @methods = YAML::load(File.open("#{Config::COCKTAILS_DIR}/methods.yaml"))
+    @methods_ci = @methods.hash_ci_index
     @tags = YAML::load(File.open("#{Config::COCKTAILS_DIR}/tags.yaml"))
     @tags_ci = @tags.hash_ci_index
     @groups = YAML::load(File.open("#{Config::COCKTAILS_DIR}/groups.yaml"))
@@ -447,12 +444,12 @@ class CocktailsProcessor < Inshaker::Processor
     methods["Давят мадлером"] = true if tools.index("Мадлер")
     methods["В блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
     methods["Давят пестиком"] = true if tools.index("Пестик")
-    methods["Миксуют в стакане"] = true if tools.index("Стакан для смешивания")
+    methods["Смешивают в стакане"] = true if tools.index("Стакан для смешивания")
     methods["Укладывают слоями"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
     
     num = methods.keys.length
     if num == 0
-      cocktail["method"] = "Просто"
+      cocktail["method"] = "Просто приготовить"
     elsif num == 1
       cocktail["method"] = methods.keys[0]
     else
