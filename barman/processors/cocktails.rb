@@ -403,7 +403,8 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     unless @cocktail["method"]
-      error "не могу найти метод в тегах"
+      guess_methods @cocktail
+      warning "не могу найти метод в тегах (пока поставлю «#{@cocktail["method"]}»)"
     end
     
     @cocktails[name] = @cocktail
