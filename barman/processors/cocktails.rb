@@ -505,9 +505,12 @@ class CocktailsProcessor < Inshaker::Processor
     from_cropp = "#{src.path}/small-cropped.png"
     from_bg    = "#{src.path}/bg.png"
     
-    system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_cropp.quote}"})
-    system(%Q{optipng -o7 -q "#{from_cropp.quote}"})
-    system(%Q{advpng -z -4 -q "#{from_cropp.quote}"})
+    # system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_cropp.quote}"})
+    # system(%Q{optipng -o7 -q "#{from_cropp.quote}"})
+    # system(%Q{advpng -z -4 -q "#{from_cropp.quote}"})
+    
+    # use cropped
+    from_small = from_cropp
     
     if @options[:mtime]
       File.mtime_cp(from_big, to_big)
@@ -523,8 +526,8 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     if File.exists?(from_small)
-      unless check_img_geometry_cached(from_small, to_small) { |w, h| w == 60 && h == 80 }
-        error "маленькая картинка не подходит по размеру (должна быть 60 x 80)"
+      unless check_img_geometry_cached(from_small, to_small) { |w, h| w <= 60 && h <= 80 }
+        error "маленькая картинка не подходит по размеру (должна быть не более 60 x 80)"
         return
       end
       
