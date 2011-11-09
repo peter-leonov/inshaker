@@ -496,25 +496,21 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def update_images src, dst, cocktail
-    to_big     = "#{dst.path}/#{cocktail["html_name"]}-big.png"
-    to_small   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
-    to_bg      = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
+    to_big             = "#{dst.path}/#{cocktail["html_name"]}-big.png"
+    to_small           = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_small_cropped   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_bg              = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
     
-    from_big   = "#{src.path}/big.png"
-    from_small = "#{src.path}/small.png"
-    from_cropp = "#{src.path}/small-cropped.png"
-    from_bg    = "#{src.path}/bg.png"
+    from_big           = "#{src.path}/big.png"
+    from_small         = "#{src.path}/small.png"
+    from_small_cropped = "#{src.path}/small-cropped.png"
+    from_bg            = "#{src.path}/bg.png"
     
-    # system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_cropp.quote}"})
-    # system(%Q{optipng -o7 -q "#{from_cropp.quote}"})
-    # system(%Q{advpng -z -4 -q "#{from_cropp.quote}"})
-    
-    # use cropped
-    from_small = from_cropp
     
     if @options[:mtime]
       File.mtime_cp(from_big, to_big)
       File.mtime_cp(from_small, to_small)
+      # File.mtime_cp(from_small_cropped, to_small_cropped)
       File.mtime_cp(from_bg, to_bg)
       return
     end
@@ -525,9 +521,22 @@ class CocktailsProcessor < Inshaker::Processor
       error "не могу найти большую картинку коктейля (big.png)"
     end
     
+    if File.exists?(from_small_cropped)
+      unless check_img_geometry_cached(from_small_cropped, to_small_cropped) { |w, h| w <= 60 && h <= 80 }
+        error "маленькая кропнутая картинка не подходит по размеру (должна быть не более 60 x 80)"
+        return
+      end
+      
+      cp_if_different(from_small_cropped, to_small_cropped)
+    else
+      warning "кропаю маленькую картинку (small.png → small.png)"
+      system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_small_cropped.quote}"})
+      system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
+    end
+    
     if File.exists?(from_small)
-      unless check_img_geometry_cached(from_small, to_small) { |w, h| w <= 60 && h <= 80 }
-        error "маленькая картинка не подходит по размеру (должна быть не более 60 x 80)"
+      unless check_img_geometry_cached(from_small, to_small) { |w, h| w == 60 && h == 80 }
+        error "маленькая картинка не подходит по размеру (должна быть ровно 60 x 80)"
         return
       end
       
