@@ -42,6 +42,9 @@ class CocktailsProcessor < Inshaker::Processor
       opts.on("-t", "--text", "обрабатывать только текст") do |v|
         @options[:text] = v
       end
+      opts.on("-m", "--mtime", "синхронизировать mtime картинкам") do |v|
+        @options[:mtime] = v
+      end
       opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
         list.each do |v|
           names[v] = true
@@ -500,6 +503,13 @@ class CocktailsProcessor < Inshaker::Processor
     from_big   = "#{src.path}/big.png"
     from_small = "#{src.path}/small.png"
     from_bg    = "#{src.path}/bg.png"
+    
+    if @options[:mtime]
+      File.mtime_cp(from_big, to_big)
+      File.mtime_cp(from_small, to_small)
+      File.mtime_cp(from_bg, to_bg)
+      return
+    end
     
     if File.exists?(from_big)
       flush_pngm_img(from_big, to_big)
