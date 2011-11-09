@@ -82,16 +82,16 @@
 .search-form .substr{font-weight: bold;}
 
 
-.b-search{position:absolute;margin-right:2em;width:14em;left: 12px;}
+.b-search{position:absolute;margin-right:2em;width:14em;left: 10px;}
 #all_list{ position: absolute; z-index: 25; top: 58px; right: 20px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
 #all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
-.b-search dt{font-weight:bold;padding:16px 0 0 6px;}
+.b-search dt{font-weight:bold;padding:16px 0 0 8px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 
 
-.b-search .groups dd { padding-left: 6px; cursor: pointer; }
+.b-search .groups dd { padding-left: 8px; cursor: pointer; }
 .b-search .groups dd:hover { text-decoration: underline; }
 .b-search .groups dd.selected-button {background-position: -250px -100px; width: 150px; height:17px; line-height:16px; }
 .b-search .groups dd.selected-button:hover { background-position: -425px -100px; text-decoration: none; }
