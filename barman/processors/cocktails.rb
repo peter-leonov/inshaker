@@ -498,7 +498,7 @@ class CocktailsProcessor < Inshaker::Processor
   def update_images src, dst, cocktail
     to_big             = "#{dst.path}/#{cocktail["html_name"]}-big.png"
     to_small           = "#{dst.path}/#{cocktail["html_name"]}-small.png"
-    to_small_cropped   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_small_cropped   = "#{dst.path}/#{cocktail["html_name"]}-small-cropped.png"
     to_bg              = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
     
     from_big           = "#{src.path}/big.png"
