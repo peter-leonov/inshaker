@@ -78,18 +78,6 @@ module Inshaker
       system(%Q{convert $'#{src_file.ansi_quote}' -background white -flatten -scale #{size[0]}x#{size[1]} $'#{dest_file.ansi_quote}'}) or warn "  while converting #{src_file} -> #{dest_file}"
     end
     
-    def flush_pngm_img(src, dst)
-      if File.mtime_cmp(src, dst) != 0
-        say "крашу фон"
-        unless system(%Q{pngm "#{src.quote}" "#{dst.quote}" >/dev/null})
-          error "не могу добавить белый фон (#{src} → #{dst})"
-          return false
-        end
-        File.mtime_cp(src, dst)
-      end
-      true
-    end
-    
     def optimize_img(src, level=5)
       return true unless @options[:optimize_images]
       say "оптимизирую изображение #{src}"
