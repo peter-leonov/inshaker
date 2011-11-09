@@ -83,7 +83,7 @@ Me.prototype =
 		return li
 	},
 	
-	getPreviewNode2: function ()
+	getPreviewNodeCropped: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
 			path = '/cocktail/' + htmlName
@@ -98,7 +98,7 @@ Me.prototype =
 		
 		var img = a.img = document.createElement('img')
 		img.className = 'image'
-		img.src = path + '/' + htmlName + '-small.png'
+		img.src = path + '/' + htmlName + '-small-cropped.png'
 		imageBox.appendChild(img)
 		
 		var name = document.createElement('span')
