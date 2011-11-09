@@ -506,6 +506,7 @@ class CocktailsProcessor < Inshaker::Processor
     from_bg    = "#{src.path}/bg.png"
     
     system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_cropp.quote}"})
+    system(%Q{optipng -o7 -q "#{from_cropp.quote}"})
     system(%Q{advpng -z -4 -q "#{from_cropp.quote}"})
     
     if @options[:mtime]
