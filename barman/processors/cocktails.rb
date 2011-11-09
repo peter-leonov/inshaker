@@ -502,7 +502,11 @@ class CocktailsProcessor < Inshaker::Processor
     
     from_big   = "#{src.path}/big.png"
     from_small = "#{src.path}/small.png"
+    from_cropp = "#{src.path}/small-cropped.png"
     from_bg    = "#{src.path}/bg.png"
+    
+    system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_cropp.quote}"})
+    system(%Q{advpng -z -4 -q "#{from_cropp.quote}"})
     
     if @options[:mtime]
       File.mtime_cp(from_big, to_big)
