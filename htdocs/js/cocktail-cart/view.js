@@ -156,8 +156,17 @@ var myProto =
 			{
 				var ing = cocktail.ingredients[j]
 				var ingObj = Ingredient.getByName(ing[0])
+				
+				var name = ing[0]
+				
 				var brand = ingObj.brand
-				recipe.push(ing[0] + (brand ? ' ' + brand : '') + (Ingredient.groups.indexOf(ingObj.group) < 10 ? ' ' + ing[1] : ''))
+				if (brand)
+					name += ' ' + brand
+				
+				if (Ingredient.groups.indexOf(ingObj.group) < 10)
+					name += ' ' + ing[1]
+				
+				recipe.push(name)
 			}
 			var recipeDiv = Nct('div', 'cocktail-recipe', recipe.join(', '))
 			recipeTd.appendChild(recipeDiv)		
