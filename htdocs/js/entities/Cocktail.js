@@ -92,10 +92,14 @@ Me.prototype =
 		a.className = 'cocktail-preview'
 		a.href = path + '/'
 		
+		var imageBox = document.createElement('span')
+		imageBox.className = 'image-box'
+		a.appendChild(imageBox)
+		
 		var img = a.img = document.createElement('img')
 		img.className = 'image'
 		img.src = path + '/' + htmlName + '-small.png'
-		a.appendChild(img)
+		imageBox.appendChild(img)
 		
 		var name = document.createElement('span')
 		name.className = 'name'
