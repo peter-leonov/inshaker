@@ -521,6 +521,12 @@ class CocktailsProcessor < Inshaker::Processor
       error "не могу найти большую картинку коктейля (big.png)"
     end
     
+    unless File.exists?(from_small_cropped)
+      warning "кропаю маленькую картинку (small.png → small.png)"
+      system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_small_cropped.quote}"})
+      system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
+    end
+    
     if File.exists?(from_small_cropped)
       unless check_img_geometry_cached(from_small_cropped, to_small_cropped) { |w, h| w <= 60 && h <= 80 }
         error "маленькая кропнутая картинка не подходит по размеру (должна быть не более 60 x 80)"
@@ -529,9 +535,7 @@ class CocktailsProcessor < Inshaker::Processor
       
       cp_if_different(from_small_cropped, to_small_cropped)
     else
-      warning "кропаю маленькую картинку (small.png → small.png)"
-      system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_small_cropped.quote}"})
-      system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
+      error "не могу найти маленькую кропнутую картинку коктейля (small-cropped.png)"
     end
     
     if File.exists?(from_small)
