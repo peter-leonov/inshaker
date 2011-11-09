@@ -522,8 +522,8 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     unless File.exists?(from_small_cropped)
-      warning "кропаю маленькую картинку (small.png → small.png)"
-      system(%Q{convert "#{from_small.quote}" -trim +repage "#{from_small_cropped.quote}"})
+      warning "кропаю маленькую картинку (small.png → small-cropped.png)"
+      system(%Q{convert "#{from_small.quote}" +profile icm -trim +repage "#{from_small_cropped.quote}"})
       system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
     end
     
