@@ -512,7 +512,7 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     if File.exists?(from_big)
-      flush_pngm_img(from_big, to_big)
+      cp_if_different(from_big, to_big)
     else
       error "не могу найти большую картинку коктейля (big.png)"
     end
@@ -523,7 +523,7 @@ class CocktailsProcessor < Inshaker::Processor
         return
       end
       
-      flush_pngm_img(from_small, to_small)
+      cp_if_different(from_small, to_small)
     else
       error "не могу найти маленькую картинку коктейля (small.png)"
     end
