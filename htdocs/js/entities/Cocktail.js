@@ -98,6 +98,9 @@ Me.prototype =
 		
 		var img = a.img = document.createElement('img')
 		img.className = 'image'
+		var dx = this.dx
+		if (dx)
+			img.style.left = dx + 'px'
 		img.src = path + '/' + htmlName + '-small-cropped.png'
 		imageBox.appendChild(img)
 		

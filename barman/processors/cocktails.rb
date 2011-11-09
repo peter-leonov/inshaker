@@ -339,6 +339,16 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    if about["Эксцентриситет"]
+      dx, dy = about["Эксцентриситет"].to_s.split(/ +/).map { |e| e.to_i  }
+      if dx && dx != 0
+        @cocktail["dx"] = dx
+      end
+      if dy && dy != 0
+        @cocktail["dy"] = dy
+      end
+    end
+    
     if about["План покупок"]
       cart = {}
       if about["План покупок"]["Количество"]

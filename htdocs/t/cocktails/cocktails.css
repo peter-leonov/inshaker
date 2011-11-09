@@ -46,7 +46,7 @@
 
 .cocktail-preview { display: block; position: relative; width: 100px; height: 100px; }
 .cocktail-preview .image-box { position: absolute; width: 100%; height: 80px; left: 0; bottom: 20px; line-height: 80px; text-align: center; }
-.cocktail-preview .image-box .image { vertical-align: bottom; }
+.cocktail-preview .image-box .image { position: relative; vertical-align: bottom; }
 .cocktail-preview .name { position: absolute; left: 0; top: 87px; width: 100%; text-align: center; font-size: 120%; -ms-word-wrap: break-word; word-wrap: break-word; }
 .byIngredients .cocktail-preview .name { left: 10px; width: 80px; }
 
