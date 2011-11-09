@@ -164,7 +164,10 @@ var myProto =
 					name += ' ' + brand
 				
 				if (Ingredient.groups.indexOf(ingObj.group) < 10)
-					name += ' ' + ing[1]
+				{
+					var dose = Units.humanizeDose(ing[1], ingObj.unit)
+					name += ' ' + dose[0] + ' ' + dose[1]
+				}
 				
 				recipe.push(name)
 			}
