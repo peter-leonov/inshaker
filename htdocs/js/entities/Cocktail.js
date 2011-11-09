@@ -83,6 +83,30 @@ Me.prototype =
 		return li
 	},
 	
+	getPreviewNode2: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var a = document.createElement('a')
+		a.className = 'cocktail-preview'
+		a.href = path + '/'
+		
+		var img = a.img = document.createElement('img')
+		img.className = 'image'
+		img.src = path + '/' + htmlName + '-small.png'
+		a.appendChild(img)
+		
+		var name = document.createElement('span')
+		name.className = 'name'
+		a.appendChild(name)
+		
+		var str = this.name.replace(/ (и|в|во|с|со|на|он|от) /g, ' $1 ')
+		name.appendChild(document.createTextNode(str))
+		
+		return a
+	},
+	
 	getLinkNodeBig: function (lazy) { return this.getPreviewNode(lazy, true) },
 	
 	getIngredientNames: function ()

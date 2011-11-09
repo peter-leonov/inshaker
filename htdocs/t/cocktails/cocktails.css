@@ -42,10 +42,11 @@
 .b-content .alphabetical .wrapper{display:block;padding:6px 0 9px 10px;position:relative;}
 .b-content ul.cocktails{overflow:hidden;}
 /* and index */
-.b-content ul.cocktails li { float: left; position: relative; width: 90px; height: 140px; padding: 0 10px; -ms-word-wrap: break-word; word-wrap: break-word; }
-.b-content ul.cocktails li a{font-size:120%;}
-.b-content ul.cocktails li img{display:block;padding-bottom:7px;padding-right:30px;margin-left:-10px;width:60px;height:80px;}
-.mini-illustration {z-index:2} /* also applied to the dragged element */
+.b-content ul.cocktails .item { float: left; width: 100px; padding-left: 10px; height: 140px; }
+
+.cocktail-preview { display: block; position: relative; width: 90px; height: 100px; }
+.cocktail-preview .image { position: absolute; left: 0; bottom: 20px; }
+.cocktail-preview .name { position: absolute; left: 0; top: 87px; width: 100%; -ms-word-wrap: break-word; word-wrap: break-word; font-size: 120%; }
 
 
 .pager-big {width:64px; height:24px; position:absolute; z-index: 2; left: 565px; top: 409px; }
