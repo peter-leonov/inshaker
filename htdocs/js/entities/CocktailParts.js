@@ -9,26 +9,35 @@ Me.prototype =
 {
 	add: function (b)
 	{
-		var mys = this.parts,
-			yours = b.parts
-		
-		for (var k in yours)
+		this.addHash(b.parts)
+	},
+	
+	addHash: function (hash)
+	{
+		for (var k in hash)
 		{
-			var your = yours[k]
-			
-			var my = mys[k]
-			if (my)
-			{
-				my.amount += your.amount
-				continue
-			}
-			
-			// “deep copy” your part
-			mys[k] =
-			{
-				good: your.good,
-				amount: your.amount
-			}
+			var part = hash[k]
+			this.addGood(part.good, part.amount)
+		}
+	},
+	
+	addGood: function (good, amount)
+	{
+		var parts = this.parts
+		
+		var name = good.name
+		
+		var a = parts[name]
+		if (a)
+		{
+			a.amount += amount
+			return
+		}
+		
+		parts[name] =
+		{
+			good: good,
+			amount: amount
 		}
 	},
 	
