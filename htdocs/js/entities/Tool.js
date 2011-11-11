@@ -4,6 +4,8 @@ function Me (data)
 {
 	for (var k in data)
 		this[k] = data[k]
+	
+	this.volumes = [[1, 1]]
 }
 
 Me.prototype =
@@ -11,6 +13,12 @@ Me.prototype =
 	imgSrc: function ()
 	{
 		return '/i/merchandise/tools/' + this.name.trans() + '.png'
+	},
+	
+	getCost: function (anount)
+	{
+		var best = this.volumes[0]
+		return anount * best[1] / best[0]
 	}
 }
 
