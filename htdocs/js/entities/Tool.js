@@ -1,17 +1,19 @@
-Tool = function (data)
+;(function(){
+
+function Me (data)
 {
 	for (var k in data) this[k] = data[k];
 }
 
-Tool.prototype = {
-	constructor: Tool,
+Me.prototype = {
+	constructor: Me,
 	
 	imgSrc: function(){
 		return "/i/merchandise/tools/" + this.name.trans() + ".png";
 	}
 }
 
-Object.extend(Tool,
+Me.staticMethods =
 {
 	tools: [],
 	
@@ -29,6 +31,13 @@ Object.extend(Tool,
 			if(this.tools[i].name == name) return this.tools[i];
 		}
 	}
-});
+}
 
-Tool.initialize(<!--# include virtual="/db/tools/tools.json" -->)
+Object.extend(Me, Me.staticMethods)
+
+Me.className = 'Tool'
+self[Me.className] = Me
+
+Me.initialize(<!--# include virtual="/db/tools/tools.json" -->)
+
+})();
