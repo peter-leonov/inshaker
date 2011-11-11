@@ -5,6 +5,7 @@ function Me (data)
 	for (var k in data)
 		this[k] = data[k]
 	
+	this.unit = 'шт'
 	this.volumes = [[1, 1]]
 }
 
