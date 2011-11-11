@@ -121,38 +121,29 @@ Me.prototype =
 	
 	calculatePlan: function (portions)
 	{
-		var amounts = {}
+		var parts = new Cocktail.Parts()
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
 			
-			var count = portion.count,
-				parts = portion.parts
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var part = parts[j],
-					name = part.good.name,
-					dose = part.dose
-				
-				var amount = (dose * count).ceil(10)
-				if (amounts[name])
-					amounts[name] += amount
-				else
-					amounts[name] = amount
-			}
+			parts.add(portion.cocktail.getPartsFor(portion.count))
 		}
 		
 		var buyByName = this.buyByName
-		for (var k in amounts)
+		var arr = parts.toArray()
+		for (var i = 0, il = arr.length; i < il; i++)
 		{
-			var buy = buyByName[k],
-				amount = amounts[k]
+			var part = arr[i],
+				amount = part.amount,
+				good = part.good
+			
+			var buy = buyByName[good.name]
 			
 			buy.amount = amount
-			buy.cost = buy.good.getCost(amount).ceil()
+			buy.cost = good.getCost(amount).ceil()
 			
-			var human = Units.humanizeDose(amount, buy.good.unit)
+			var human = Units.humanizeDose(amount, good.unit)
 			buy.amountHumanized = human[0].round(10)
 			buy.unitHumanized = human[1]
 			buy.factorHumanized = human[2]
