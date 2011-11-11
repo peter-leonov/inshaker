@@ -17,30 +17,30 @@ Me.prototype =
 Me.staticMethods =
 {
 	db: null,
+	index: {},
 	
 	initialize: function (db)
 	{
 		this.db = db
 		
 		for (var i = 0; i < db.length; i++)
-		{
 			db[i] = new Tool(db[i])
-		}
+	},
+	
+	getByNamePrepare: function (name)
+	{
+		this.index.byName = DB.hashIndexKey(this.db, 'name')
 	},
 	
 	getByName: function (name)
 	{
-		var db = this.db
-		for (var i = 0; i < this.db.length; i++)
-		{
-			var tool = db[i]
-			if (tool.name == name)
-				return tool
-		}
+		return this.index.byName[name]
 	}
 }
 
+Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
 
 Me.className = 'Tool'
 self[Me.className] = Me
