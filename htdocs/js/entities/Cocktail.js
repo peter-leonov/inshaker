@@ -43,6 +43,13 @@ Me.prototype =
 			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
 		}
 		
+		var garnish = this.garnish
+		for (var i = 0, il = garnish.length; i < il; i++)
+		{
+			var v = garnish[i]
+			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
+		}
+		
 		var tools = this.tools
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
