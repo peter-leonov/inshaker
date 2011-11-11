@@ -293,15 +293,15 @@ Me.prototype =
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
-			var ingredient = plan[i].ingredient,
+			var good = plan[i].good,
 				cache = planCache[i] = {}
 			
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
 			
-			var name = Nct('span', 'name', ingredient.name == 'Абсент' ? 'Абсент Xenta' : ingredient.name)
+			var name = Nct('span', 'name', good.name == 'Абсент' ? 'Абсент Xenta' : good.name)
 			item.appendChild(name)
-			name.setAttribute('data-ingredient', ingredient.name)
+			name.setAttribute('data-ingredient', good.name)
 			
 			
 			var amount = Nc('span', 'amount')
@@ -343,7 +343,7 @@ Me.prototype =
 			var buy = plan[i],
 				item = planCache[i]
 			
-			var human = Units.humanizeDose(buy.amount, buy.ingredient.unit)
+			var human = Units.humanizeDose(buy.amount, buy.good.unit)
 			
 			item.amount.value = buy.amountHumanized
 			item.unit.nodeValue = buy.unitHumanized

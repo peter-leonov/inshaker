@@ -32,6 +32,11 @@ Me.prototype =
 		return this
 	},
 	
+	getAllParts: function ()
+	{
+		return new Me.Parts(this.ingredients, this.tools)
+	},
+	
 	getPath: function ()
 	{
 		var path = this._path

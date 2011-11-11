@@ -19,7 +19,7 @@ Me.prototype =
 		this.setupPeopleCount(this.party.people)
 		
 		// init the first cycle
-		this.setPeopleCount(this.party.people)
+		// this.setPeopleCount(this.party.people)
 	},
 	
 	selectIngredientName: function (ingredientName)
@@ -55,27 +55,26 @@ Me.prototype =
 		{
 			var portion = portions[i]
 			
-			var cocktail = portion.cocktail
-			var parts = cocktail.parts
+			var parts = portion.cocktail.getAllParts()
 			portion.parts = parts
 			
-			for (var j = 0, jl = parts.length; j < jl; j++)
+			var ary = parts.toArray()
+			for (var j = 0, jl = ary.length; j < jl; j++)
 			{
-				var ingredient = parts[j].ingredient
+				var good = ary[j].good
 				
 				var buy =
 				{
-					ingredient: ingredient,
-					amount: 0,
-					unit: ingredient.unit
+					good: good,
+					amount: 0
 				}
 				
 				plan.push(buy)
-				buyByName[ingredient.name] = buy
+				buyByName[good.name] = buy
 			}
 		}
 		
-		plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
+		// plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
 		
 		this.view.renderPlan(plan)
 	},
@@ -130,7 +129,7 @@ Me.prototype =
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
 				var part = parts[j],
-					name = part.ingredient.name,
+					name = part.good.name,
 					dose = part.dose
 				
 				var amount = (dose * count).ceil(10)
@@ -148,9 +147,9 @@ Me.prototype =
 				amount = amounts[k]
 			
 			buy.amount = amount
-			buy.cost = buy.ingredient.getCost(amount).ceil()
+			buy.cost = buy.good.getCost(amount).ceil()
 			
-			var human = Units.humanizeDose(amount, buy.unit)
+			var human = Units.humanizeDose(amount, buy.good.unit)
 			buy.amountHumanized = human[0].round(10)
 			buy.unitHumanized = human[1]
 			buy.factorHumanized = human[2]
@@ -173,7 +172,7 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = buy.ingredient.getCost(amount).ceil()
+		buy.cost = buy.good.getCost(amount).ceil()
 		
 		this.view.updateBuy(n, buy)
 		
