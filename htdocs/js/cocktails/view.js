@@ -378,14 +378,18 @@ function CocktailsView (states, nodes, styles) {
 		
 		for (var i = num * this.perPage; i < end; i++)
 		{
+			var item = document.createElement('li')
+			item.className = 'item'
+			
 			if (!(node = cache[i]))
 			{
 				if (!(cocktail = cocktails[i]))
 					continue
-				node = cache[i] = cocktail.getPreviewNode()
+				node = cache[i] = cocktail.getPreviewNodeCropped()
 				node.img.__draggable = [cocktail.name, dropTargets]
 			}
-			parent.appendChild(node)
+			item.appendChild(node)
+			parent.appendChild(item)
 		}
 		
 		this.renderedPages[num] = true

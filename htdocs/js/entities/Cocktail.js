@@ -76,11 +76,42 @@ Me.prototype =
 		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
 		a.appendChild(img)
 		
-		var name = this.name.replace(/ (и|в|во|с|со|на|он|от) /g, ' $1 ')
+		var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
 		var txt = document.createTextNode(name)
 		a.appendChild(txt)
 		
 		return li
+	},
+	
+	getPreviewNodeCropped: function ()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var a = document.createElement('a')
+		a.className = 'cocktail-preview'
+		a.href = path + '/'
+		
+		var imageBox = document.createElement('span')
+		imageBox.className = 'image-box'
+		a.appendChild(imageBox)
+		
+		var img = a.img = document.createElement('img')
+		img.className = 'image'
+		var dx = this.dx
+		if (dx)
+			img.style.left = dx + 'px'
+		img.src = path + '/' + htmlName + '-small-cropped.png'
+		imageBox.appendChild(img)
+		
+		var name = document.createElement('span')
+		name.className = 'name'
+		a.appendChild(name)
+		
+		var str = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+		name.appendChild(document.createTextNode(str))
+		
+		return a
 	},
 	
 	getLinkNodeBig: function (lazy) { return this.getPreviewNode(lazy, true) },

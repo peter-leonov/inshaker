@@ -42,6 +42,9 @@ class CocktailsProcessor < Inshaker::Processor
       opts.on("-t", "--text", "обрабатывать только текст") do |v|
         @options[:text] = v
       end
+      opts.on("-m", "--mtime", "синхронизировать mtime картинкам") do |v|
+        @options[:mtime] = v
+      end
       opts.on("--names '911','Ай кью'", Array, "обновить только указанные коктейли") do |list|
         list.each do |v|
           names[v] = true
@@ -336,6 +339,16 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    if about["Эксцентриситет"]
+      dx, dy = about["Эксцентриситет"].to_s.split(/ +/).map { |e| e.to_i  }
+      if dx && dx != 0
+        @cocktail["dx"] = dx
+      end
+      if dy && dy != 0
+        @cocktail["dy"] = dy
+      end
+    end
+    
     if about["План покупок"]
       cart = {}
       if about["План покупок"]["Количество"]
@@ -493,27 +506,55 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def update_images src, dst, cocktail
-    to_big     = "#{dst.path}/#{cocktail["html_name"]}-big.png"
-    to_small   = "#{dst.path}/#{cocktail["html_name"]}-small.png"
-    to_bg      = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
+    to_big             = "#{dst.path}/#{cocktail["html_name"]}-big.png"
+    to_small           = "#{dst.path}/#{cocktail["html_name"]}-small.png"
+    to_small_cropped   = "#{dst.path}/#{cocktail["html_name"]}-small-cropped.png"
+    to_bg              = "#{dst.path}/#{cocktail["html_name"]}-bg.png"
     
-    from_big   = "#{src.path}/big.png"
-    from_small = "#{src.path}/small.png"
-    from_bg    = "#{src.path}/bg.png"
+    from_big           = "#{src.path}/big.png"
+    from_small         = "#{src.path}/small.png"
+    from_small_cropped = "#{src.path}/small-cropped.png"
+    from_bg            = "#{src.path}/bg.png"
+    
+    
+    if @options[:mtime]
+      File.mtime_cp(from_big, to_big)
+      File.mtime_cp(from_small, to_small)
+      # File.mtime_cp(from_small_cropped, to_small_cropped)
+      File.mtime_cp(from_bg, to_bg)
+      return
+    end
     
     if File.exists?(from_big)
-      flush_pngm_img(from_big, to_big)
+      cp_if_different(from_big, to_big)
     else
       error "не могу найти большую картинку коктейля (big.png)"
     end
     
-    if File.exists?(from_small)
-      unless check_img_geometry_cached(from_small, to_small) { |w, h| w == 60 && h == 80 }
-        error "маленькая картинка не подходит по размеру (должна быть 60 x 80)"
+    unless File.exists?(from_small_cropped)
+      warning "кропаю маленькую картинку (small.png → small-cropped.png)"
+      system(%Q{convert "#{from_small.quote}" +profile icm -trim +repage "#{from_small_cropped.quote}"})
+      system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
+    end
+    
+    if File.exists?(from_small_cropped)
+      unless check_img_geometry_cached(from_small_cropped, to_small_cropped) { |w, h| w <= 60 && h <= 80 }
+        error "маленькая кропнутая картинка не подходит по размеру (должна быть не более 60 x 80)"
         return
       end
       
-      flush_pngm_img(from_small, to_small)
+      cp_if_different(from_small_cropped, to_small_cropped)
+    else
+      error "не могу найти маленькую кропнутую картинку коктейля (small-cropped.png)"
+    end
+    
+    if File.exists?(from_small)
+      unless check_img_geometry_cached(from_small, to_small) { |w, h| w == 60 && h == 80 }
+        error "маленькая картинка не подходит по размеру (должна быть ровно 60 x 80)"
+        return
+      end
+      
+      cp_if_different(from_small, to_small)
     else
       error "не могу найти маленькую картинку коктейля (small.png)"
     end
