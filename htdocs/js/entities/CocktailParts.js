@@ -1,41 +1,38 @@
 ;(function(){
 
-function Me (ingredients, tools)
+function Me (parts)
 {
-	var parts = this.parts = []
-	
-	for (var i = 0, il = ingredients.length; i < il; i++)
-	{
-		var v = ingredients[i]
-		
-		var part =
-		{
-			good: Ingredient.getByName(v[0]),
-			amount: v[1]
-		}
-		
-		parts.push(part)
-	}
-	
-	for (var i = 0, il = tools.length; i < il; i++)
-	{
-		var v = tools[i]
-		
-		var part =
-		{
-			good: Tool.getByName(v),
-			amount: 777
-		}
-		
-		parts.push(part)
-	}
-	
-	this.parts = parts
+	this.parts = parts || {}
 }
 
 Me.prototype =
 {
-	toArray: function () { return this.parts.slice() }
+	add: function (b)
+	{
+		var mys = this.parts,
+			yours = b.parts
+		
+		for (var k in yours)
+		{
+			var your = yours[k]
+			
+			var my = mys[k]
+			if (my)
+			{
+				my.amount += your.amount
+				continue
+			}
+			
+			// “deep copy” your part
+			mys[k] =
+			{
+				good: your.good,
+				amount: your.amount
+			}
+		}
+	},
+	
+	toArray: function () { return Object.values(this.parts) }
 }
 
 Me.className = 'Parts'

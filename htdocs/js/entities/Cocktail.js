@@ -32,9 +32,40 @@ Me.prototype =
 		return this
 	},
 	
-	getAllParts: function ()
+	getPartsFor: function (count)
 	{
-		return new Me.Parts(this.ingredients, this.tools)
+		var parts = {}
+		
+		var ingredients = this.ingredients
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var v = ingredients[i],
+				name = v[0]
+			
+			var part =
+			{
+				good: Ingredient.getByName(name),
+				amount: v[1] * count
+			}
+			
+			parts[name] = part
+		}
+		
+		var tools = this.tools
+		for (var i = 0, il = tools.length; i < il; i++)
+		{
+			var name = tools[i]
+			
+			var part =
+			{
+				good: Tool.getByName(name),
+				amount: 555 * count
+			}
+			
+			parts[name] = part
+		}
+		
+		return new Me.Parts(parts)
 	},
 	
 	getPath: function ()

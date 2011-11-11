@@ -48,30 +48,33 @@ Me.prototype =
 	
 	setupPlan: function (portions)
 	{
-		var buyByName = this.buyByName = {},
-			plan = this.plan = []
+		var parts = new Cocktail.Parts()
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
 			
-			var parts = portion.cocktail.getAllParts()
-			portion.parts = parts
+			parts.add(portion.cocktail.getPartsFor(1))
+			// portion.parts = parts
 			
-			var ary = parts.toArray()
-			for (var j = 0, jl = ary.length; j < jl; j++)
+		}
+		
+		var buyByName = this.buyByName = {},
+			plan = this.plan = []
+		
+		var ary = parts.toArray()
+		for (var j = 0, jl = ary.length; j < jl; j++)
+		{
+			var good = ary[j].good
+			
+			var buy =
 			{
-				var good = ary[j].good
-				
-				var buy =
-				{
-					good: good,
-					amount: 0
-				}
-				
-				plan.push(buy)
-				buyByName[good.name] = buy
+				good: good,
+				amount: 0
 			}
+			
+			plan.push(buy)
+			buyByName[good.name] = buy
 		}
 		
 		// plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
