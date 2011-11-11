@@ -1,6 +1,6 @@
 ;(function(){
 
-function Me (ingredients)
+function Me (ingredients, tools)
 {
 	var parts = this.parts = []
 	
@@ -12,6 +12,19 @@ function Me (ingredients)
 		{
 			good: Ingredient.getByName(v[0]),
 			amount: v[1]
+		}
+		
+		parts.push(part)
+	}
+	
+	for (var i = 0, il = tools.length; i < il; i++)
+	{
+		var v = tools[i]
+		
+		var part =
+		{
+			good: Tool.getByName(v),
+			amount: 777
 		}
 		
 		parts.push(part)
