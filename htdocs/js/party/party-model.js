@@ -63,13 +63,9 @@ Me.prototype =
 			{
 				var ingredient = parts[j].ingredient
 				
-				var best = ingredient.volumes[0],
-					costPerUnit = best[1] / best[0]
-				
 				var buy =
 				{
 					ingredient: ingredient,
-					costPerUnit: costPerUnit,
 					amount: 0,
 					unit: ingredient.unit
 				}
@@ -152,7 +148,7 @@ Me.prototype =
 				amount = amounts[k]
 			
 			buy.amount = amount
-			buy.cost = (amount * buy.costPerUnit).ceil()
+			buy.cost = buy.ingredient.getCost(amount).ceil()
 			
 			var human = Units.humanizeDose(amount, buy.unit)
 			buy.amountHumanized = human[0].round(10)
@@ -177,7 +173,7 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = (amount * buy.costPerUnit).ceil()
+		buy.cost = buy.ingredient.getCost(amount).ceil()
 		
 		this.view.updateBuy(n, buy)
 		

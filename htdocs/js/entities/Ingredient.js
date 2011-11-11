@@ -70,6 +70,12 @@ Me.prototype =
 		}
 		
 		return node
+	},
+	
+	getCost: function (anount)
+	{
+		var best = this.volumes[0]
+		return anount * best[1] / best[0]
 	}
 }
 
