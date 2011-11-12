@@ -349,6 +349,7 @@ http://www.inshaker.ru/cocktail/winter_mint/
 http://www.inshaker.ru/cocktail/golden_margarita/
 http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/
+http://www.inshaker.ru/cocktail/gold_tequila_slammer/
 http://www.inshaker.ru/cocktail/gold_tequila_with_lime_and_salt/
 http://www.inshaker.ru/cocktail/gold_bottom/
 http://www.inshaker.ru/cocktail/gold_gingery_rum/
@@ -899,7 +900,6 @@ http://www.inshaker.ru/cocktail/damn_it/
 http://www.inshaker.ru/cocktail/tequila_batanga/
 http://www.inshaker.ru/cocktail/tequila_cowberry_orange/
 http://www.inshaker.ru/cocktail/tequila_slammer/
-http://www.inshaker.ru/cocktail/tequila_slammer_2/
 http://www.inshaker.ru/cocktail/tequila_cherry_pineapple/
 http://www.inshaker.ru/cocktail/tequila_madras/
 http://www.inshaker.ru/cocktail/tequila_martini/
