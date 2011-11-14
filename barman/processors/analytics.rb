@@ -115,12 +115,11 @@ class Analytics
       
       cocktail = Cocktail.by_path(path)
       unless cocktail
-        error "не могу найти коктейль для пути «#{path}»"
+        warning "не могу найти коктейль для пути «#{path}»"
         next
       end
       
-      
-      puts "#{cocktail["name"]}: #{pv} #{upv}"
+      puts "#{cocktail["name"]} #{pv} #{upv}"
     end
   end
   
