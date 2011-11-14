@@ -3,7 +3,7 @@
 
 ;(function(){
 
-var myName = 'Analytics'
+var myName = 'Reporter'
 
 function Me ()
 {
@@ -308,7 +308,7 @@ function onready ()
 		id: 9038802
 	}
 	
-	var an = new Analytics().bind(nodes, conf)
+	var an = new Reporter().bind(nodes, conf)
 	google.load('gdata', '1.x', {packages: ['analytics'], callback: function () { an.apiLoaded(google) }})
 	// an.pageviews = <!-- include virtual="anal.js" -->
 	// an.dataReady()
