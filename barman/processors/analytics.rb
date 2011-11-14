@@ -97,6 +97,10 @@ class Analytics
   
   def parse_pageviews data
     
+    stats = Hash::new do |h, k|
+      h[k] = Hash::new(0)
+    end
+    
     data["feed"]["entry"].each do |entry|
       path = entry["dxp$dimension"][0]["value"]
       pv = entry["dxp$metric"][0]["value"].to_i
@@ -106,7 +110,7 @@ class Analytics
         error "уникальных больше чем просмотров"
       end
       
-      path = /\/cocktail\/([^\/]+)\//.match(path)
+      path = /\/cocktail\/+([^\/]+)\//.match(path)
       unless path
         error "не могу найти название коктейля в пути «#{path}»"
         next
@@ -119,8 +123,15 @@ class Analytics
         next
       end
       
-      puts "#{cocktail["name"]} #{pv} #{upv}"
+      name = cocktail["name"]
+      
+      puts "#{name}: #{pv} #{upv}"
+      
+      stats[name]["pageviews"] += pv
+      stats[name]["uniques"] += upv
     end
+    
+    # p stats
   end
   
   def flush_json
