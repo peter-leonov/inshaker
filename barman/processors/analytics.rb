@@ -152,14 +152,10 @@ class Analytics
   end
   
   def flush_json
-    views_stats = []
+    views_stats = {}
     @views_stats.keys.sort.each do |k|
       v = @views_stats[k]
-      views_stats << {
-        "name" => k,
-        "pv" => v["pageviews"],
-        "upv" => v["uniques"]
-      }
+      views_stats[k] = [v["pageviews"], v["uniques"]]
     end
     
     File.write(Config::HT_VIEWS_JSON, JSON.stringify(views_stats))
