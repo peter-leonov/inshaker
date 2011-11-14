@@ -84,7 +84,18 @@ class Analytics
   end
   
   def update
-    puts report("dimensions=ga:date&metrics=ga:visits,ga:pageviews", Time.new(2010, 11, 1), Time.new(2011, 11, 30))
+     data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 11, 1), Time.new(2011, 10, 13), 2000))
+     
+     parse_pageviews data
+  end
+  
+  def parse_pageviews data
+    data["feed"]["entry"].each do |entry|
+      path = entry["dxp$dimension"][0]["value"]
+      pageviews = entry["dxp$metric"][0]["value"].to_i
+      unique = entry["dxp$metric"][1]["value"].to_i
+      
+    end
   end
   
   def flush_json
