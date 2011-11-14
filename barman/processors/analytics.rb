@@ -24,6 +24,8 @@ class Analytics
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     TOKEN_FILE     = TMP + "/auth-token.txt"
+    
+    HT_VIEWS_JSON  = Inshaker::HTDOCS_DIR + "/db/stats/views.json"
   end
   
   def job
@@ -92,11 +94,10 @@ class Analytics
   def update
      data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 11, 1), Time.new(2011, 10, 13), 2000))
      
-     parse_pageviews data
+     @views_stats = parse_pageviews(data)
   end
   
   def parse_pageviews data
-    
     stats = Hash::new do |h, k|
       h[k] = Hash::new(0)
     end
@@ -147,11 +148,21 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    # p stats
+    return stats
   end
   
   def flush_json
+    views_stats = []
+    @views_stats.keys.sort.each do |k|
+      v = @views_stats[k]
+      views_stats << {
+        "name" => k,
+        "pv" => v["pageviews"],
+        "upv" => v["uniques"]
+      }
+    end
     
+    File.write(Config::HT_VIEWS_JSON, JSON.stringify(views_stats))
   end
   
   def run
