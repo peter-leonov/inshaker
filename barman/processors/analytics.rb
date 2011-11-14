@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 require "lib/json"
+require "lib/file"
 require "lib/output"
 
 require "config"
@@ -14,6 +15,9 @@ class Analytics
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
     LOGIN          = ENV["ANALYTICS_EMAIL"]
     PASSWORD       = ENV["ANALYTICS_PASSWORD"]
+    
+    TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
+    TOKEN_FILE     = TMP + "/auth-token.txt"
   end
   
   def job
@@ -28,21 +32,28 @@ class Analytics
   end
   
   def login
+    
+    # try to use recent login token
+    
+    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < 60 * 60
+      @token = File.read(Config::TOKEN_FILE)
+      return true
+    end
+    
     # based on http://gdatatips.blogspot.com/2008/08/perform-clientlogin-using-curl.html
     io = IO.popen(["curl", Config::AUTH_URI, "-s", "-d", "accountType=GOOGLE", "-d" "Email=#{Config::LOGIN}", "-d", "Passwd=#{Config::PASSWORD}", "-d", "service=analytics", "-d", "source=inshaker"])
     r = io.read
     io.close
     
     
-    token = /^Auth=(\S+)/.match(r)
+    token = /^Auth=(\S{100,})/.match(r)
     unless token
       error "не удалось залогиниться"
       return false
     end
     
     @token = token[1]
-    
-    p @token
+    File.write(Config::TOKEN_FILE, @token)
     
     return true
   end
