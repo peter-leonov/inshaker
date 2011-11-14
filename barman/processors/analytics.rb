@@ -3,10 +3,14 @@
 
 require "digest/md5"
 require "lib/json"
+require "lib/string"
+require "lib/array"
 require "lib/file"
 require "lib/output"
 
 require "config"
+require "entities/entity"
+require "entities/cocktail"
 
 class Analytics
   
@@ -23,6 +27,8 @@ class Analytics
   end
   
   def job
+    
+    Cocktail.init
     
     if login
       update
@@ -90,14 +96,31 @@ class Analytics
   end
   
   def parse_pageviews data
+    
     data["feed"]["entry"].each do |entry|
       path = entry["dxp$dimension"][0]["value"]
-      pageviews = entry["dxp$metric"][0]["value"].to_i
-      unique = entry["dxp$metric"][1]["value"].to_i
+      pv = entry["dxp$metric"][0]["value"].to_i
+      upv = entry["dxp$metric"][1]["value"].to_i
       
-      if unique > pageviews
+      if upv > pv
         error "уникальных больше чем просмотров"
       end
+      
+      path = /\/cocktail\/([^\/]+)\//.match(path)
+      unless path
+        error "не могу найти название коктейля в пути «#{path}»"
+        next
+      end
+      path = path[1]
+      
+      cocktail = Cocktail.by_path(path)
+      unless cocktail
+        error "не могу найти коктейль для пути «#{path}»"
+        next
+      end
+      
+      
+      puts "#{cocktail["name"]}: #{pv} #{upv}"
     end
   end
   
