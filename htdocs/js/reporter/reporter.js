@@ -35,7 +35,8 @@ Me.prototype =
 	
 	handleError: function (err)
 	{
-		alert(err)
+		log(err)
+		alert('поймал ошибку:' + err.toString())
 	},
 	
 	apiLoaded: function (api)
