@@ -95,6 +95,9 @@ class Analytics
       pageviews = entry["dxp$metric"][0]["value"].to_i
       unique = entry["dxp$metric"][1]["value"].to_i
       
+      if unique > pageviews
+        error "уникальных больше чем просмотров"
+      end
     end
   end
   
