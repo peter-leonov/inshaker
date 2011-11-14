@@ -102,13 +102,29 @@ class Analytics
     end
     
     data["feed"]["entry"].each do |entry|
-      path = entry["dxp$dimension"][0]["value"]
-      pv = entry["dxp$metric"][0]["value"].to_i
-      upv = entry["dxp$metric"][1]["value"].to_i
+      
+      v = entry["dxp$dimension"][0]
+      unless v["name"] = "ga:pagePath"
+        error "ga:pagePath переехал"
+      end
+      path = v["value"]
+      
+      v = entry["dxp$metric"][0]
+      unless v["name"] = "ga:pageviews"
+        error "ga:pageviews переехал"
+      end
+      pv = v["value"].to_i
+      
+      v = entry["dxp$metric"][1]
+      unless v["name"] = "ga:uniquePageviews"
+        error "ga:uniquePageviews переехал"
+      end
+      upv = v["value"].to_i
       
       if upv > pv
         error "уникальных больше чем просмотров"
       end
+      
       
       path = /\/cocktail\/+([^\/]+)\//.match(path)
       unless path
