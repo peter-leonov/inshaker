@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 
+require "digest/md5"
 require "lib/json"
 require "lib/file"
 require "lib/output"
@@ -60,9 +61,19 @@ class Analytics
   end
   
   def get url
+    
+    hash = Digest::MD5.hexdigest(url)
+    cache = "#{Config::TMP}/#{hash}.url.txt"
+    if File.exists?(cache) && Time.now - File.mtime(cache) < 60 * 60
+      return File.read(cache)
+    end
+    
     io = IO.popen(["curl", url, "-s", "--header", "Authorization: GoogleLogin Auth=#{@token}"])
     r = io.read
     io.close
+    
+    File.write(cache, r)
+    
     return r
   end
   
