@@ -87,7 +87,10 @@ Me.prototype =
 		
 		var results = []
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
-			results[i] = this.doIngredient(ingredientNames[i])
+		{
+			var name = ingredientNames[i]
+			results[i] = this.doIngredient(name, Cocktail.getByIngredientNames([name]))
+		}
 		
 		if (results.length > 1)
 		{
@@ -95,10 +98,8 @@ Me.prototype =
 		}
 	},
 	
-	doIngredient: function (ingredient)
+	doIngredient: function (name, cocktails)
 	{
-		var cocktails = Cocktail.getByIngredientNames([ingredient])
-		
 		cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
 		
 		var pageviews = 0,
@@ -117,7 +118,7 @@ Me.prototype =
 		}
 		
 		var totalCocktails = Cocktail.getAll().length
-		this.printHead(ingredient)
+		this.printHead(name)
 		this.print('Всего просмотров: ' + pageviews)
 		this.print('Всего уникальных просмотров: ' + uniquePageviews)
 		this.print('Всего коктейлей: ' + total)
