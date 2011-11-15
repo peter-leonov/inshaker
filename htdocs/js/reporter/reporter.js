@@ -89,7 +89,10 @@ Me.prototype =
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
 			var name = ingredientNames[i]
-			results[i] = this.doIngredient(name, Cocktail.getByIngredientNames([name]))
+			var cocktails = Cocktail.getByIngredientNames([name])
+			cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
+			results[i] = cocktails
+			this.renderCocktails(name, cocktails)
 		}
 		
 		if (results.length > 1)
@@ -98,10 +101,8 @@ Me.prototype =
 		}
 	},
 	
-	doIngredient: function (name, cocktails)
+	renderCocktails: function (name, cocktails)
 	{
-		cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
-		
 		var pageviews = 0,
 			uniquePageviews = 0,
 			total = 0,
@@ -127,8 +128,6 @@ Me.prototype =
 		this.print('Max factor по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
-		
-		return {pageviews: pageviews, uniquePageviews: uniquePageviews, cocktails: cocktails}
 	},
 	
 	guessQueryType: function (item)
