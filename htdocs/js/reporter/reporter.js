@@ -201,7 +201,7 @@ Me.prototype =
 	printHead: function (str)
 	{
 		this.nodes.output.appendChild(document.createElement('hr'))
-		this.nodes.output.appendChild(document.createElement('li')).appendChild(document.createElement('h1')).appendChild(document.createTextNode(str))
+		this.nodes.output.appendChild(document.createElement('h1')).appendChild(document.createTextNode(str))
 	},
 	
 	error: function (str)
