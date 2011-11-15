@@ -92,7 +92,7 @@ class Analytics
   end
   
   def update
-     data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 11, 1), Time.new(2011, 10, 13), 2000))
+     data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 12, 1), Time.new(2011, 11, 13), 2000))
      
      @views_stats, @total_pageviews, @total_uniques = parse_pageviews(data)
   end
