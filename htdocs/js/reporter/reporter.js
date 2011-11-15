@@ -84,7 +84,8 @@ Me.prototype =
 		
 		if (query.type == 'cocktail')
 		{
-			
+			var cocktail = query.cocktail
+			this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
 			return
 		}
 		
