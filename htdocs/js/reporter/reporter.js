@@ -118,12 +118,12 @@ Me.prototype =
 		
 		var totalCocktails = Cocktail.getAll().length
 		this.printHead(ingredient)
-		this.print('Всего просмотров (pageviews) ингрединта: ' + pageviews)
-		this.print('Всего уникальных (uniquePageviews) просмотров ингрединта: ' + uniquePageviews)
-		this.print('Всего коктейлей с ингредиентом: ' + total)
+		this.print('Всего просмотров: ' + pageviews)
+		this.print('Всего уникальных просмотров: ' + uniquePageviews)
+		this.print('Всего коктейлей: ' + total)
 		this.print(' ')
-		this.print('Коэффициент Макса по просмотрам: ' + ((pageviews * totalCocktails) / (total * Cocktail.totalPageviews)).toFixed(2))
-		this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
+		this.print('Max factor по просмотрам: ' + ((pageviews * totalCocktails) / (total * Cocktail.totalPageviews)).toFixed(2))
+		this.print('Max factor по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 		
