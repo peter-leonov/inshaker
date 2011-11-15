@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="analytics-page" class="loading" lang="ru">
+<html id="analytics-page" lang="ru">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
@@ -8,28 +8,9 @@
 	<title>Inshaker — Аналитика для ребят</title>
 	<style>
 	#main-wrapper { margin-top: 30px; }
-	#branded-image { display: none; }
-	#loading { display: none; }
-	html.loading #loading { display: block; }
-	html.loading #analytics { display: none; }
-	
-	#logout { position: absolute; right: 20px; top: 20px; }
-	#logout { display: none; }
-	#analytics.logged-in #logout { display: block; }
-	#analytics.logged-in #login { display: none; }
-	
-	#query { display: none; }
-	#analytics.logged-in #query { display: block; }
-	#query.loading #ingredient-search { display: none; }
-	
-	#query #loading { display: none; }
-	#query.loading #loading { display: block; }
 	
 	#output { font-size: 12px; }
 	#output .error { color: #f44; }
-	
-	#loading-data { display: none; }
-	#analytics.loading-data #loading-data { display: block; }
 	
 	#ingredient-search input { width: 500px; }
 	
@@ -46,31 +27,18 @@
 	<div class="common-title">
 		<h1>Аналитика для ребят</h1>
 	</div>
-	<div class="b-content">
-		<div id="loading">
-			Загружаю гугловский апи…
-		</div>
-		<div id="analytics">
-			<button id="login">Войти</button>
-			<button id="logout">Выйти</button>
-			<form id="range"><input name="begin" value="2011-01-01"/> — <input name="end" value="2011-01-31"/> <button type="submit">Загрузить…</button></form>
-			<div id="query" class="loading">
-				<div id="loading-data">
-					Загружаю статистику…
-				</div>
-				
-				<form id="ingredient-search">
-					<input name="ingredients" type="text" value="Водка"/>
-					<button type="submit">Посчитать</button>
-				</form>
-			
-				<ul id="output"></ul>
-			</div>
+	
+	<div id="analytics">
+		<div id="query">
+			<form id="ingredient-search">
+				<input name="ingredients" type="text" value="Водка"/>
+				<button type="submit">Посчитать</button>
+			</form>
+		
+			<ul id="output"></ul>
 		</div>
 	</div>
 </div></div>
-
-<img src="/favicon.ico" style="display:none" alt="required for Google Data"/>
 
 </div id="common-main-wrapper">
 
