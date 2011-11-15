@@ -94,7 +94,7 @@ class Analytics
   def update
      data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 11, 1), Time.new(2011, 10, 13), 2000))
      
-     @views_stats = parse_pageviews(data)
+     @views_stats, @total_pageviews, @total_uniques = parse_pageviews(data)
   end
   
   def parse_pageviews data
@@ -148,7 +148,14 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    return stats
+    total_pageviews = data["feed"]["dxp$aggregates"]["dxp$metric"][0]["value"].to_i
+    total_uniques = data["feed"]["dxp$aggregates"]["dxp$metric"][1]["value"].to_i
+    
+    if total_pageviews < total_uniques
+      error "всего просмотров меньше чем всего уникальных просмотров"
+    end
+    
+    return stats, total_pageviews, total_uniques
   end
   
   def flush_json
@@ -157,6 +164,8 @@ class Analytics
       v = @views_stats[k]
       views_stats[k] = [v["pageviews"], v["uniques"]]
     end
+    
+    views_stats["$total"] = [@total_pageviews, @total_uniques]
     
     File.write(Config::HT_VIEWS_JSON, JSON.stringify(views_stats))
   end
