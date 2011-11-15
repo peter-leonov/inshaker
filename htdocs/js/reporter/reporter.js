@@ -1,6 +1,3 @@
-<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-
 ;(function(){
 
 var myName = 'Reporter'
@@ -89,35 +86,68 @@ Me.prototype =
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
 		{
 			var name = ingredientNames[i]
-			var cocktails = Cocktail.getByIngredientNames([name])
-			cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
-			results[i] = cocktails
-			this.renderCocktails(name, cocktails)
+			results[i] = this.processIngredient(name)
 		}
 		
-		if (results.length > 1)
+		if (results.length > 100)
 		{
-			
+			var seen = {}
+			for (var i = 0, il = cocktails.length; i < il; i++)
+			{
+				var set = cocktails[i]
+				for (var j = 0, jl = set.length; j < jl; j++)
+				{
+					var cocktail = set[j],
+						stat = cocktail.stat
+					
+					var seenStat = seen[cocktail.name]
+					if (seenStat)
+					{
+						seenStat.pageviews += stat.pageviews
+						seenStat.uniquePageviews += stat.uniquePageviews
+						continue
+					}
+					
+					seen[cocktail.name] =
+					{
+						pageviews: stat.pageviews,
+						uniquePageviews: stat.uniquePageviews
+					}
+				}
+			}
 		}
 	},
 	
-	renderCocktails: function (name, cocktails)
+	processIngredient: function (name)
+	{
+		var cocktails = Cocktail.getByIngredientNames([name])
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+		}
+		
+		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+		this.renderStats(name, stats)
+		
+		return stats
+	},
+	
+	renderStats: function (name, stats)
 	{
 		var pageviews = 0,
 			uniquePageviews = 0,
-			total = 0,
 			all = []
-		for (var i = 0; i < cocktails.length; i++)
+		for (var i = 0; i < stats.length; i++)
 		{
-			var cocktail = cocktails[i]
-			
-			var stat = cocktail.stat
-			all.push([cocktail.name, stat.pageviews, stat.uniquePageviews])
+			var stat = stats[i]
+			all.push([stat.name, stat.pageviews, stat.uniquePageviews])
 			pageviews += stat.pageviews
 			uniquePageviews += stat.uniquePageviews
-			total++
 		}
 		
+		var total = stats.length
 		var totalCocktails = Cocktail.getAll().length
 		this.printHead(name)
 		this.print('Всего просмотров: ' + pageviews)
@@ -215,6 +245,9 @@ self[Me.className] = Me
 Me.initialize(<!--# include virtual="/db/stats/views.json" -->)
 
 })();
+
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 
 function onready ()
 {
