@@ -1,6 +1,3 @@
-<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-
 ;(function(){
 
 var myName = 'Reporter'
@@ -69,6 +66,15 @@ Me.prototype =
 	{
 		this.clear()
 		
+		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		query = this.guessQueryType(query)
+		
+		if (!query)
+		{
+			this.print('фигня какая-то…')
+			return
+		}
+		
 		var totalCocktails = Cocktail.getAll().length
 		
 		this.print('Всего просмотров (pageviews) всех коктейлей: ' + Cocktail.totalPageviews)
@@ -76,79 +82,139 @@ Me.prototype =
 		this.print('Всего коктейлей на сайте: ' + totalCocktails)
 		this.print(' ')
 		
-		
-		var ingredients = this.expandQueryNames(form.ingredients.split(/\s*,\s*/))
-		
-		for (var i = 0, il = ingredients.length; i < il; i++)
+		if (query.type == 'cocktail')
 		{
-			this.doIngredient(ingredients[i])
+			var cocktail = query.cocktail
+			this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
+			return
+		}
+		
+		if (query.type == 'cocktail-tag')
+		{
+			var cocktails = query.cocktails,
+				stats = []
+			for (var i = 0, il = cocktails.length; i < il; i++)
+			{
+				var cocktail = cocktails[i]
+				stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+			}
+			
+			this.renderStats(query.tag, stats)
+			return
+		}
+		
+		var ingredientNames
+		if (query.type == 'ingredient-tag')
+			ingredientNames = query.names
+		else if (query.type == 'ingredient')
+			ingredientNames = [query.ingredient.name]
+		
+		var results = []
+		for (var i = 0, il = ingredientNames.length; i < il; i++)
+		{
+			var name = ingredientNames[i]
+			results[i] = this.processIngredient(name)
+		}
+		
+		if (query.type == 'ingredient-tag' && results.length > 1)
+		{
+			var seen = {}
+			for (var i = 0, il = results.length; i < il; i++)
+			{
+				var stats = results[i]
+				for (var j = 0, jl = stats.length; j < jl; j++)
+				{
+					var stat = stats[j]
+					
+					var seenStat = seen[stat.name]
+					if (seenStat)
+					{
+						seenStat.pageviews += stat.pageviews
+						seenStat.uniquePageviews += stat.uniquePageviews
+						continue
+					}
+					
+					seen[stat.name] =
+					{
+						name: stat.name,
+						pageviews: stat.pageviews,
+						uniquePageviews: stat.uniquePageviews
+					}
+				}
+			}
+			
+			var stats = Object.values(seen)
+			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+			this.renderStats('Сводная по тегу «' + query.tag + '»', stats)
 		}
 	},
 	
-	doIngredient: function (ingredient)
+	processIngredient: function (name)
 	{
-		var cocktails = Cocktail.getByIngredientNames([ingredient])
-		
-		cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
-		
-		var pageviews = 0,
-			uniquePageviews = 0,
-			total = 0,
-			all = []
-		for (var i = 0; i < cocktails.length; i++)
+		var cocktails = Cocktail.getByIngredientNames([name])
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			var cocktail = cocktails[i]
-			
-			var stat = cocktail.stat
-			all.push([cocktail.name, stat.pageviews, stat.uniquePageviews])
-			pageviews += stat.pageviews
-			uniquePageviews += stat.uniquePageviews
-			total++
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
 		}
 		
+		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+		this.renderStats(name, stats)
+		
+		return stats
+	},
+	
+	renderStats: function (name, stats)
+	{
+		var pageviews = 0,
+			uniquePageviews = 0,
+			all = []
+		for (var i = 0; i < stats.length; i++)
+		{
+			var stat = stats[i]
+			all.push([stat.name, stat.pageviews, stat.uniquePageviews])
+			pageviews += stat.pageviews
+			uniquePageviews += stat.uniquePageviews
+		}
+		
+		var total = stats.length
 		var totalCocktails = Cocktail.getAll().length
-		this.printHead(ingredient)
-		this.print('Всего просмотров (pageviews) ингрединта: ' + pageviews)
-		this.print('Всего уникальных (uniquePageviews) просмотров ингрединта: ' + uniquePageviews)
-		this.print('Всего коктейлей с ингредиентом: ' + total)
+		this.printHead(name)
+		this.print('Всего просмотров: ' + pageviews)
+		this.print('Всего уникальных просмотров: ' + uniquePageviews)
+		this.print('Всего коктейлей: ' + total)
 		this.print(' ')
-		this.print('Коэффициент Макса по просмотрам: ' + ((pageviews * totalCocktails) / (total * Cocktail.totalPageviews)).toFixed(2))
-		this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
+		this.print('Max factor по просмотрам: ' + ((pageviews * totalCocktails) / (total * Cocktail.totalPageviews)).toFixed(2))
+		this.print('Max factor по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 	},
 	
-	expandQueryNames: function (arr)
+	guessQueryType: function (item)
 	{
-		var ingredientsTagsHash = this.ingredientsTagsHash
-		
-		var res = [], seen = {}
-		for (var i = 0; i < arr.length; i++)
+		var tag = this.ingredientsTagsHash[item.toLowerCase()]
+		if (tag)
 		{
-			var item = arr[i]
+			var names = []
+			var group = Ingredient.getByTag(tag)
+			for (var j = 0, jl = group.length; j < jl; j++)
+				names[j] = group[j].name
 			
-			if (seen[item])
-				continue
-			seen[item] = true
-			
-			var tag = ingredientsTagsHash[item.toLowerCase()]
-			if (tag)
-			{
-				var group = Ingredient.getByTag(tag)
-				for (var j = 0, jl = group.length; j < jl; j++)
-					res.push(group[j].name)
-				continue
-			}
-			
-			var ingredient = Ingredient.getByNameCI(item)
-			if (ingredient)
-			{
-				res.push(ingredient.name)
-				continue
-			}
+			return {type: 'ingredient-tag', tag: tag, names: names}
 		}
 		
-		return res
+		var ingredient = Ingredient.getByNameCI(item)
+		if (ingredient)
+			return {type: 'ingredient', ingredient: ingredient}
+		
+		var tag = Cocktail.getTagByTagCI(item)
+		if (tag)
+			return {type: 'cocktail-tag', tag: tag, cocktails: Cocktail.getByTag(tag)}
+		
+		var cocktail = Cocktail.getByNameCI(item)
+		if (cocktail)
+			return {type: 'cocktail', cocktail: cocktail}
 	},
 	
 	
@@ -218,6 +284,9 @@ self[Me.className] = Me
 Me.initialize(<!--# include virtual="/db/stats/views.json" -->)
 
 })();
+
+<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
+<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
 
 function onready ()
 {
