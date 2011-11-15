@@ -66,6 +66,15 @@ Me.prototype =
 	{
 		this.clear()
 		
+		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		query = this.guessQueryType(query)
+		
+		if (!query)
+		{
+			this.print('фигня какая-то…')
+			return
+		}
+		
 		var totalCocktails = Cocktail.getAll().length
 		
 		this.print('Всего просмотров (pageviews) всех коктейлей: ' + Cocktail.totalPageviews)
@@ -73,8 +82,11 @@ Me.prototype =
 		this.print('Всего коктейлей на сайте: ' + totalCocktails)
 		this.print(' ')
 		
-		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
-		query = this.guessQueryType(query)
+		if (query.type == 'cocktail')
+		{
+			
+			return
+		}
 		
 		var ingredientNames
 		if (query.type == 'ingredient-tag')
@@ -180,6 +192,10 @@ Me.prototype =
 		var ingredient = Ingredient.getByNameCI(item)
 		if (ingredient)
 			return {type: 'ingredient', ingredient: ingredient}
+		
+		var cocktail = Cocktail.getByNameCI(item)
+		if (cocktail)
+			return {type: 'cocktail', cocktail: cocktail}
 	},
 	
 	
