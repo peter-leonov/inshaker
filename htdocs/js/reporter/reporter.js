@@ -89,18 +89,17 @@ Me.prototype =
 			results[i] = this.processIngredient(name)
 		}
 		
-		if (results.length > 100)
+		if (query.type == 'ingredient-tag' && results.length > 1)
 		{
 			var seen = {}
-			for (var i = 0, il = cocktails.length; i < il; i++)
+			for (var i = 0, il = results.length; i < il; i++)
 			{
-				var set = cocktails[i]
-				for (var j = 0, jl = set.length; j < jl; j++)
+				var stats = results[i]
+				for (var j = 0, jl = stats.length; j < jl; j++)
 				{
-					var cocktail = set[j],
-						stat = cocktail.stat
+					var stat = stats[j]
 					
-					var seenStat = seen[cocktail.name]
+					var seenStat = seen[stat.name]
 					if (seenStat)
 					{
 						seenStat.pageviews += stat.pageviews
@@ -108,13 +107,18 @@ Me.prototype =
 						continue
 					}
 					
-					seen[cocktail.name] =
+					seen[stat.name] =
 					{
+						name: stat.name,
 						pageviews: stat.pageviews,
 						uniquePageviews: stat.uniquePageviews
 					}
 				}
 			}
+			
+			var stats = Object.values(seen)
+			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+			this.renderStats(query.tag, stats)
 		}
 	},
 	
