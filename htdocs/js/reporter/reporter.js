@@ -50,22 +50,48 @@ Me.prototype =
 			me.doCalculate(FormHelper.toHash(this))
 		}
 		nodes.ingredientForm.addEventListener('submit', submit, false)
+		
+		
+		var ingredientsTags = Ingredient.getTags()
+		var ingredientsTagsHash = this.ingredientsTagsHash = {}
+		for (var i = 0, il = ingredientsTags.length; i < il; i++)
+		{
+			var tag = ingredientsTags[i]
+			ingredientsTagsHash[tag.toLowerCase()] = tag
+		}
 	},
 	
 	doCalculate: function (form)
 	{
-		if (!form.ingredients)
-			return
+		this.clear()
 		
-		var cocktails = Cocktail.getByIngredientNames(form.ingredients.split(/\s*,\s*/)),
-			totalCocktails = Cocktail.getAll().length,
-			output = this.nodes.output
+		var totalCocktails = Cocktail.getAll().length
+		
+		// this.print('Всего просмотров (pageviews) всех коктейлей: ' + stats.total.pageviews)
+		// this.print('Всего уникальных просмотров (uniquePageviews) всех коктейлей: ' + stats.total.uniquePageviews)
+		this.print('Всего коктейлей на сайте: ' + totalCocktails)
+		this.print(' ')
+		
+		
+		var ingredients = this.expandQueryNames(form.ingredients.split(/\s*,\s*/))
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			this.doIngredient(ingredients[i])
+		}
+	},
+	
+	doIngredient: function (ingredient)
+	{
+		var cocktails = Cocktail.getByIngredientNames([ingredient]),
+			totalCocktails = Cocktail.getAll().length
 		
 		cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
 		
-		this.clear()
-		
-		var pageviews = 0, uniquePageviews = 0, total = 0, all = []
+		var pageviews = 0,
+			uniquePageviews = 0,
+			total = 0,
+			all = []
 		for (var i = 0; i < cocktails.length; i++)
 		{
 			var cocktail = cocktails[i]
@@ -77,11 +103,7 @@ Me.prototype =
 			total++
 		}
 		
-		
-		// this.print('Всего просмотров (pageviews) всех коктейлей: ' + stats.total.pageviews)
-		// this.print('Всего уникальных просмотров (uniquePageviews) всех коктейлей: ' + stats.total.uniquePageviews)
-		this.print('Всего коктейлей на сайте: ' + totalCocktails)
-		this.print(' ')
+		this.printHead(ingredient)
 		this.print('Всего просмотров (pageviews) ингрединта: ' + pageviews)
 		this.print('Всего уникальных (uniquePageviews) просмотров ингрединта: ' + uniquePageviews)
 		this.print('Всего коктейлей с ингредиентом: ' + total)
@@ -91,6 +113,44 @@ Me.prototype =
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 	},
+	
+	expandQueryNames: function (arr)
+	{
+		var ingredientsTagsHash = this.ingredientsTagsHash
+		
+		var res = [], seen = {}
+		for (var i = 0; i < arr.length; i++)
+		{
+			var item = arr[i]
+			
+			if (seen[item])
+				continue
+			seen[item] = true
+			
+			var tag = ingredientsTagsHash[item.toLowerCase()]
+			if (tag)
+			{
+				var group = Ingredient.getByTag(tag)
+				for (var j = 0, jl = group.length; j < jl; j++)
+					res.push(group[j].name)
+				continue
+			}
+			
+			var ingredient = Ingredient.getByNameCI(item)
+			if (ingredient)
+			{
+				res.push(ingredient.name)
+				continue
+			}
+		}
+		
+		return res
+	},
+	
+	
+	
+	
+	
 	
 	clear: function ()
 	{
@@ -132,6 +192,12 @@ Me.prototype =
 	printString: function (str)
 	{
 		this.nodes.output.appendChild(document.createElement('li')).appendChild(document.createTextNode(str))
+	},
+	
+	printHead: function (str)
+	{
+		this.nodes.output.appendChild(document.createElement('hr'))
+		this.nodes.output.appendChild(document.createElement('li')).appendChild(document.createElement('h1')).appendChild(document.createTextNode(str))
 	},
 	
 	error: function (str)
