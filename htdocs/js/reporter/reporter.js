@@ -145,7 +145,7 @@ Me.prototype =
 			
 			var stats = Object.values(seen)
 			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
-			this.renderStats(query.tag, stats)
+			this.renderStats('Сводная по тегу «' + query.tag + '»', stats)
 		}
 	},
 	
