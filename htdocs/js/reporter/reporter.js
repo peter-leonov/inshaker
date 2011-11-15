@@ -35,6 +35,10 @@ Me.initialize = function (db)
 			uniquePageviews: stat[1]
 		}
 	}
+	
+	var total = db.$total
+	Cocktail.totalPageviews = total[0]
+	Cocktail.totalUniquePageviews = total[1]
 }
 
 Me.prototype =
