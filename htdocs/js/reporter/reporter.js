@@ -71,8 +71,8 @@ Me.prototype =
 		
 		var totalCocktails = Cocktail.getAll().length
 		
-		// this.print('Всего просмотров (pageviews) всех коктейлей: ' + stats.total.pageviews)
-		// this.print('Всего уникальных просмотров (uniquePageviews) всех коктейлей: ' + stats.total.uniquePageviews)
+		this.print('Всего просмотров (pageviews) всех коктейлей: ' + Cocktail.totalPageviews)
+		this.print('Всего уникальных просмотров (uniquePageviews) всех коктейлей: ' + Cocktail.totalUniquePageviews)
 		this.print('Всего коктейлей на сайте: ' + totalCocktails)
 		this.print(' ')
 		
@@ -87,8 +87,7 @@ Me.prototype =
 	
 	doIngredient: function (ingredient)
 	{
-		var cocktails = Cocktail.getByIngredientNames([ingredient]),
-			totalCocktails = Cocktail.getAll().length
+		var cocktails = Cocktail.getByIngredientNames([ingredient])
 		
 		cocktails.sort(function (a, b) { return b.stat.pageviews - a.stat.pageviews })
 		
@@ -107,13 +106,14 @@ Me.prototype =
 			total++
 		}
 		
+		var totalCocktails = Cocktail.getAll().length
 		this.printHead(ingredient)
 		this.print('Всего просмотров (pageviews) ингрединта: ' + pageviews)
 		this.print('Всего уникальных (uniquePageviews) просмотров ингрединта: ' + uniquePageviews)
 		this.print('Всего коктейлей с ингредиентом: ' + total)
 		this.print(' ')
-		// this.print('Коэффициент Макса по просмотрам: ' + ((pageviews * totalCocktails) / (total * stats.total.pageviews)).toFixed(2))
-		// this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * stats.total.uniquePageviews)).toFixed(2))
+		this.print('Коэффициент Макса по просмотрам: ' + ((pageviews * totalCocktails) / (total * Cocktail.totalPageviews)).toFixed(2))
+		this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
 	},
