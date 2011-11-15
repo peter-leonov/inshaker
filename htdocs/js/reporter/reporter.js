@@ -89,6 +89,20 @@ Me.prototype =
 			return
 		}
 		
+		if (query.type == 'cocktail-tag')
+		{
+			var cocktails = query.cocktails,
+				stats = []
+			for (var i = 0, il = cocktails.length; i < il; i++)
+			{
+				var cocktail = cocktails[i]
+				stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+			}
+			
+			this.renderStats(query.tag, stats)
+			return
+		}
+		
 		var ingredientNames
 		if (query.type == 'ingredient-tag')
 			ingredientNames = query.names
@@ -193,6 +207,10 @@ Me.prototype =
 		var ingredient = Ingredient.getByNameCI(item)
 		if (ingredient)
 			return {type: 'ingredient', ingredient: ingredient}
+		
+		var tag = Cocktail.getTagByTagCI(item)
+		if (tag)
+			return {type: 'cocktail-tag', tag: tag, cocktails: Cocktail.getByTag(tag)}
 		
 		var cocktail = Cocktail.getByNameCI(item)
 		if (cocktail)
