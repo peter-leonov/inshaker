@@ -76,12 +76,22 @@ Me.prototype =
 		this.print('Всего коктейлей на сайте: ' + totalCocktails)
 		this.print(' ')
 		
+		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		query = this.guessQueryType(query)
 		
-		var ingredients = this.expandQueryNames(form.ingredients.split(/\s*,\s*/))
+		var ingredientNames
+		if (query.type == 'ingredient-tag')
+			ingredientNames = query.names
+		else if (query.type == 'ingredient')
+			ingredientNames = [query.ingredient.name]
 		
-		for (var i = 0, il = ingredients.length; i < il; i++)
+		var results = []
+		for (var i = 0, il = ingredientNames.length; i < il; i++)
+			results[i] = this.doIngredient(ingredientNames[i])
+		
+		if (results.length > 1)
 		{
-			this.doIngredient(ingredients[i])
+			
 		}
 	},
 	
@@ -116,39 +126,26 @@ Me.prototype =
 		this.print('Коэффициент Макса по уникальным просмотрам: ' + ((uniquePageviews * totalCocktails) / (total * Cocktail.totalUniquePageviews)).toFixed(2))
 		this.print(' ')
 		this.printTable(['коктейль', 'pageviews', 'uniquePageviews'], all)
+		
+		return {pageviews: pageviews, uniquePageviews: uniquePageviews, cocktails: cocktails}
 	},
 	
-	expandQueryNames: function (arr)
+	guessQueryType: function (item)
 	{
-		var ingredientsTagsHash = this.ingredientsTagsHash
-		
-		var res = [], seen = {}
-		for (var i = 0; i < arr.length; i++)
+		var tag = this.ingredientsTagsHash[item.toLowerCase()]
+		if (tag)
 		{
-			var item = arr[i]
+			var names = []
+			var group = Ingredient.getByTag(tag)
+			for (var j = 0, jl = group.length; j < jl; j++)
+				names[j] = group[j].name
 			
-			if (seen[item])
-				continue
-			seen[item] = true
-			
-			var tag = ingredientsTagsHash[item.toLowerCase()]
-			if (tag)
-			{
-				var group = Ingredient.getByTag(tag)
-				for (var j = 0, jl = group.length; j < jl; j++)
-					res.push(group[j].name)
-				continue
-			}
-			
-			var ingredient = Ingredient.getByNameCI(item)
-			if (ingredient)
-			{
-				res.push(ingredient.name)
-				continue
-			}
+			return {type: 'ingredient-tag', tag: tag, names: names}
 		}
 		
-		return res
+		var ingredient = Ingredient.getByNameCI(item)
+		if (ingredient)
+			return {type: 'ingredient', ingredient: ingredient}
 	},
 	
 	
