@@ -138,6 +138,7 @@ class Analytics
   
   @@substitute =
   {
+    "----_it" => "damn_it",
     "angel_s_----" => "angel_s_tits",
     "---_on_the_beach" => "bitch_on_the_beach",
     "safe_---_on_the_beach" => "safe_sex_on_the_beach",
