@@ -175,12 +175,12 @@ class Analytics
       end
       
       
-      path = /\/cocktails?\/+([^\/.]+)[\/.]/.match(path)
-      unless path
+      m = /\/cocktails?\/+([^\/.]+)[\/.]/.match(path)
+      unless m
         error "не могу найти название коктейля в пути «#{path}»"
         next
       end
-      path = path[1]
+      path = m[1]
       
       if /---/.match(path)
         fixed = @@substitute[path]
