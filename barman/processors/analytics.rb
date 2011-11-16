@@ -123,6 +123,19 @@ class Analytics
     File.write(dst, JSON.stringify(stats))
   end
   
+  def get_month_borders year, month
+    start = Time.new(year, month, 1)
+    # jump to the next month (maybe year too)
+    endd = start + 33 * 24 * 60 * 60
+    # jump to the fist second of the next month
+    endd = Time.new(endd.year, endd.month, 1)
+    # jump to the last second of current month
+    endd = endd - 1
+    # get the last day of the current month
+    endd = Time.new(endd.year, endd.month, endd.day)
+    return [start, endd]
+  end
+  
   def update
     cocktails_pageviews("views", Time.new(2010, 12, 1), Time.new(2011, 11, 13))
   end
