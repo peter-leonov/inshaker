@@ -25,7 +25,7 @@ class Analytics
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     TOKEN_FILE     = TMP + "/auth-token.txt"
     
-    HT_VIEWS_JSON  = Inshaker::HTDOCS_DIR + "/db/stats/views.json"
+    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
   end
   
   def job
@@ -34,10 +34,6 @@ class Analytics
     
     if login
       update
-    end
-    
-    unless errors?
-      flush_json
     end
   end
   
@@ -91,10 +87,30 @@ class Analytics
         "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
   end
   
+  def cocktails_pageviews name, start, endd
+    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", start, endd, 10000)
+    data = JSON.parse(json)
+    
+    views_stats, total_pageviews, total_uniques = parse_pageviews(data)
+    
+    if errors?
+      return false
+    end
+    
+    
+    stats = {}
+    views_stats.keys.sort.each do |k|
+      v = views_stats[k]
+      stats[k] = [v["pageviews"], v["uniques"]]
+    end
+    
+    stats["$total"] = [total_pageviews, total_uniques]
+    
+    File.write(Config::HT_STAT_DIR + "/" + name + ".json", JSON.stringify(stats))
+  end
+  
   def update
-     data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 12, 1), Time.new(2011, 11, 13), 2000))
-     
-     @views_stats, @total_pageviews, @total_uniques = parse_pageviews(data)
+    cocktails_pageviews("views", Time.new(2010, 12, 1), Time.new(2011, 11, 13))
   end
   
   def parse_pageviews data
@@ -156,18 +172,6 @@ class Analytics
     end
     
     return stats, total_pageviews, total_uniques
-  end
-  
-  def flush_json
-    views_stats = {}
-    @views_stats.keys.sort.each do |k|
-      v = @views_stats[k]
-      views_stats[k] = [v["pageviews"], v["uniques"]]
-    end
-    
-    views_stats["$total"] = [@total_pageviews, @total_uniques]
-    
-    File.write(Config::HT_VIEWS_JSON, JSON.stringify(views_stats))
   end
   
   def run
