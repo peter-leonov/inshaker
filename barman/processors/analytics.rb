@@ -64,15 +64,15 @@ class Analytics
     return true
   end
   
-  def older? fn, sec
-    File.exists?(fn) && Time.now - File.mtime(fn) > sec
+  def newer? fn, sec
+    File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
   def get url
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    unless older?(cache, 60 * 60)
+    if newer?(cache, 60 * 60)
       return File.read(cache)
     end
     
@@ -92,6 +92,16 @@ class Analytics
   end
   
   def cocktails_pageviews name, start, endd
+    dst = Config::HT_STAT_DIR + "/" + name + ".json"
+    
+    if newer?(dst, 60 * 60)
+      return true
+    end
+    
+    if Time.now - endd > 4 * 24 * 60 * 60 and File.exists?(dst)
+      return true
+    end
+    
     json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", start, endd, 10000)
     data = JSON.parse(json)
     
@@ -110,7 +120,7 @@ class Analytics
     
     stats["$total"] = [total_pageviews, total_uniques]
     
-    File.write(Config::HT_STAT_DIR + "/" + name + ".json", JSON.stringify(stats))
+    File.write(dst, JSON.stringify(stats))
   end
   
   def update
