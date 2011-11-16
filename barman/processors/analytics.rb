@@ -136,6 +136,13 @@ class Analytics
     cocktails_pageviews("views", Time.new(2010, 12, 1), Time.new(2011, 11, 13))
   end
   
+  @@substitute =
+  {
+    "---_on_the_beach" => "bitch_on_the_beach.html",
+    "safe_---_on_the_beach.html" => "safe_sex_on_the_beach",
+    "---_on_the_beach_light" => "sex_on_the_beach_light"
+  }
+  
   def parse_pageviews data
     stats = Hash::new do |h, k|
       h[k] = Hash::new(0)
@@ -172,6 +179,15 @@ class Analytics
         next
       end
       path = path[1]
+      
+      if /---/.match(path)
+        fixed = @@substitute[path]
+        unless fixed
+          error "изуродовано цензурой «#{path}»"
+          next
+        end
+        path = fixed
+      end
       
       cocktail = Cocktail.by_path(path)
       unless cocktail
