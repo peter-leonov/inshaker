@@ -64,11 +64,15 @@ class Analytics
     return true
   end
   
+  def older? fn, sec
+    File.exists?(fn) && Time.now - File.mtime(fn) > sec
+  end
+  
   def get url
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if File.exists?(cache) && Time.now - File.mtime(cache) < 60 * 60
+    unless older?(cache, 60 * 60)
       return File.read(cache)
     end
     
