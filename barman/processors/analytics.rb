@@ -102,7 +102,7 @@ class Analytics
       return true
     end
     
-    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", start, endd, 10000)
+    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
     data = JSON.parse(json)
     
     views_stats, total_pageviews, total_uniques = parse_pageviews(data)
@@ -170,7 +170,7 @@ class Analytics
       end
       
       
-      path = /\/cocktail\/+([^\/]+)\//.match(path)
+      path = /\/cocktails?\/+([^\/.]+)[\/.]/.match(path)
       unless path
         error "не могу найти название коктейля в пути «#{path}»"
         next
