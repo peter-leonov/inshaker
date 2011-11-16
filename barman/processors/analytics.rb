@@ -139,7 +139,7 @@ class Analytics
   @@substitute =
   {
     "---_on_the_beach" => "bitch_on_the_beach.html",
-    "safe_---_on_the_beach.html" => "safe_sex_on_the_beach",
+    "safe_---_on_the_beach" => "safe_sex_on_the_beach",
     "---_on_the_beach_light" => "sex_on_the_beach_light"
   }
   
