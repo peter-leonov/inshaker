@@ -1,5 +1,7 @@
 ;(function(){
 
+function byPageview (a, b) { return b.pageviews - a.pageviews }
+
 var myName = 'Reporter'
 
 function Me ()
@@ -121,7 +123,7 @@ Me.prototype =
 			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
 		}
 		
-		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+		stats.sort(byPageview)
 		this.renderStats(tag, stats)
 	},
 	
@@ -135,7 +137,7 @@ Me.prototype =
 			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
 		}
 		
-		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+		stats.sort(byPageview)
 		this.renderStats(name, stats)
 		
 		return stats
@@ -178,7 +180,7 @@ Me.prototype =
 			}
 			
 			var stats = Object.values(seen)
-			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+			stats.sort(byPageview)
 			this.renderStats('Сводная по тегу «' + tag + '»', stats)
 		}
 	},
