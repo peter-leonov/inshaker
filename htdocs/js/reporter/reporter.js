@@ -84,22 +84,13 @@ Me.prototype =
 		
 		if (query.type == 'cocktail')
 		{
-			var cocktail = query.cocktail
-			this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
+			this.processCocktail(query.cocktail)
 			return
 		}
 		
 		if (query.type == 'cocktail-tag')
 		{
-			var cocktails = query.cocktails,
-				stats = []
-			for (var i = 0, il = cocktails.length; i < il; i++)
-			{
-				var cocktail = cocktails[i]
-				stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
-			}
-			
-			this.renderStats(query.tag, stats)
+			this.processCocktailTag(query.tag, query.cocktails)
 			return
 		}
 		
@@ -114,6 +105,23 @@ Me.prototype =
 			this.processIngredientTag(query.tag, query.names)
 			return
 		}
+	},
+	
+	processCocktail: function (cocktail)
+	{
+		this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
+	},
+	
+	processCocktailTag: function (tag, cocktails)
+	{
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+		}
+		
+		this.renderStats(tag, stats)
 	},
 	
 	processIngredient: function (name)
