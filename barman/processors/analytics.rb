@@ -2,6 +2,8 @@
 # encoding: utf-8
 
 require "digest/md5"
+require "optparse"
+
 require "lib/json"
 require "lib/string"
 require "lib/array"
@@ -14,6 +16,10 @@ require "entities/cocktail"
 
 class Analytics
   
+  HOUR = 60 * 60
+  DAY  = 24 * 60 * 60
+  
+  
   module Config
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
@@ -25,19 +31,27 @@ class Analytics
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     TOKEN_FILE     = TMP + "/auth-token.txt"
     
-    HT_VIEWS_JSON  = Inshaker::HTDOCS_DIR + "/db/stats/views.json"
+    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
+  end
+  
+  def process_options
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Запускайте так: analytics.rb [опции]"
+      
+      opts.on("-q", "--quite", "сообщать только об ошибках") do |v|
+        quite!
+      end
+    end.parse!
   end
   
   def job
+    process_options
     
     Cocktail.init
     
     if login
       update
-    end
-    
-    unless errors?
-      flush_json
     end
   end
   
@@ -45,7 +59,7 @@ class Analytics
     
     # try to use recent login token
     
-    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < 60 * 60
+    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < HOUR
       @token = File.read(Config::TOKEN_FILE)
       return true
     end
@@ -68,11 +82,15 @@ class Analytics
     return true
   end
   
+  def newer? fn, sec
+    File.exists?(fn) && Time.now - File.mtime(fn) < sec
+  end
+  
   def get url
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if File.exists?(cache) && Time.now - File.mtime(cache) < 60 * 60
+    if newer?(cache, HOUR)
       return File.read(cache)
     end
     
@@ -91,11 +109,89 @@ class Analytics
         "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
   end
   
-  def update
-     data = JSON.parse(report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktail/&sort=-ga:pageviews", Time.new(2010, 12, 1), Time.new(2011, 11, 13), 2000))
-     
-     @views_stats, @total_pageviews, @total_uniques = parse_pageviews(data)
+  def cocktails_pageviews name, start, endd
+    dst = Config::HT_STAT_DIR + "/" + name + ".json"
+    
+    if newer?(dst, HOUR)
+      return true
+    end
+    
+    if Time.now - endd > 4 * DAY and File.exists?(dst)
+      return true
+    end
+    
+    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
+    data = JSON.parse(json)
+    
+    views_stats, total_pageviews, total_uniques = parse_pageviews(data)
+    
+    if errors?
+      return false
+    end
+    
+    
+    stats = {}
+    views_stats.keys.sort.each do |k|
+      v = views_stats[k]
+      stats[k] = [v["pageviews"], v["uniques"]]
+    end
+    
+    stats["$total"] = [total_pageviews, total_uniques]
+    
+    File.write(dst, JSON.stringify(stats))
   end
+  
+  def get_month_borders year, month
+    start = Time.new(year, month, 1)
+    # jump to the next month (maybe year too)
+    endd = start + 33 * DAY
+    # jump to the fist second of the next month
+    endd = Time.new(endd.year, endd.month, 1)
+    # jump to the last second of current month
+    endd = endd - 1
+    # get the last day of the current month
+    endd = Time.new(endd.year, endd.month, endd.day)
+    return [start, endd]
+  end
+  
+  def update
+    # 25-26 month from the past
+    now = Time.now
+    cur = now - 27 * 30 * DAY
+    last = nil
+    while true
+      cur += 25 * DAY
+      if cur > now and cur.month > now.month
+        break
+      end
+      
+      name = "views-#{cur.year}-#{cur.month}"
+      if last == name
+        next
+      end
+      last = name
+      
+      say "обновляю период «#{name}»"
+      indent do
+        cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
+      end
+    end
+    
+    say "обновляю период «last-30-days»"
+    indent do
+      cocktails_pageviews("last-30-days", Time.now - 33 * DAY, Time.now - 3 * DAY)
+    end
+  end
+  
+  @@substitute =
+  {
+    "----_it" => "damn_it",
+    "angel_s_----" => "angel_s_tits",
+    "---_on_the_beach" => "bitch_on_the_beach",
+    "safe_---_on_the_beach" => "safe_sex_on_the_beach",
+    "---_on_the_beach_light" => "sex_on_the_beach_light",
+    "innocent_---" => "innocent_sex"
+  }
   
   def parse_pageviews data
     stats = Hash::new do |h, k|
@@ -127,12 +223,21 @@ class Analytics
       end
       
       
-      path = /\/cocktail\/+([^\/]+)\//.match(path)
-      unless path
+      m = /\/cocktails?\/+([^\/.]+)/.match(path)
+      unless m
         error "не могу найти название коктейля в пути «#{path}»"
         next
       end
-      path = path[1]
+      path = m[1]
+      
+      if /---/.match(path)
+        fixed = @@substitute[path]
+        unless fixed
+          error "изуродовано цензурой «#{path}»"
+          next
+        end
+        path = fixed
+      end
       
       cocktail = Cocktail.by_path(path)
       unless cocktail
@@ -142,7 +247,7 @@ class Analytics
       
       name = cocktail["name"]
       
-      puts "#{name}: #{pv} #{upv}"
+      say "#{name}: #{pv} #{upv}"
       
       stats[name]["pageviews"] += pv
       stats[name]["uniques"] += upv
@@ -156,18 +261,6 @@ class Analytics
     end
     
     return stats, total_pageviews, total_uniques
-  end
-  
-  def flush_json
-    views_stats = {}
-    @views_stats.keys.sort.each do |k|
-      v = @views_stats[k]
-      views_stats[k] = [v["pageviews"], v["uniques"]]
-    end
-    
-    views_stats["$total"] = [@total_pageviews, @total_uniques]
-    
-    File.write(Config::HT_VIEWS_JSON, JSON.stringify(views_stats))
   end
   
   def run

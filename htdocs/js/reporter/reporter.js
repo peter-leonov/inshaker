@@ -1,5 +1,7 @@
 ;(function(){
 
+function byPageview (a, b) { return b.pageviews - a.pageviews }
+
 var myName = 'Reporter'
 
 function Me ()
@@ -84,39 +86,73 @@ Me.prototype =
 		
 		if (query.type == 'cocktail')
 		{
-			var cocktail = query.cocktail
-			this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
+			this.processCocktail(query.cocktail)
 			return
 		}
 		
 		if (query.type == 'cocktail-tag')
 		{
-			var cocktails = query.cocktails,
-				stats = []
-			for (var i = 0, il = cocktails.length; i < il; i++)
-			{
-				var cocktail = cocktails[i]
-				stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
-			}
-			
-			this.renderStats(query.tag, stats)
+			this.processCocktailTag(query.tag, query.cocktails)
 			return
 		}
 		
-		var ingredientNames
-		if (query.type == 'ingredient-tag')
-			ingredientNames = query.names
-		else if (query.type == 'ingredient')
-			ingredientNames = [query.ingredient.name]
-		
-		var results = []
-		for (var i = 0, il = ingredientNames.length; i < il; i++)
+		if (query.type == 'ingredient')
 		{
-			var name = ingredientNames[i]
+			this.processIngredient(query.ingredient.name)
+			return
+		}
+		
+		if (query.type == 'ingredient-tag')
+		{
+			this.processIngredientTag(query.tag, query.names)
+			return
+		}
+	},
+	
+	processCocktail: function (cocktail)
+	{
+		this.renderStats(cocktail.name, [{name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}])
+	},
+	
+	processCocktailTag: function (tag, cocktails)
+	{
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+		}
+		
+		stats.sort(byPageview)
+		this.renderStats(tag, stats)
+	},
+	
+	processIngredient: function (name)
+	{
+		var cocktails = Cocktail.getByIngredientNames([name])
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+		}
+		
+		stats.sort(byPageview)
+		this.renderStats(name, stats)
+		
+		return stats
+	},
+	
+	processIngredientTag: function (tag, names)
+	{
+		var results = []
+		for (var i = 0, il = names.length; i < il; i++)
+		{
+			var name = names[i]
 			results[i] = this.processIngredient(name)
 		}
 		
-		if (query.type == 'ingredient-tag' && results.length > 1)
+		if (results.length > 1)
 		{
 			var seen = {}
 			for (var i = 0, il = results.length; i < il; i++)
@@ -144,25 +180,9 @@ Me.prototype =
 			}
 			
 			var stats = Object.values(seen)
-			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
-			this.renderStats('Сводная по тегу «' + query.tag + '»', stats)
+			stats.sort(byPageview)
+			this.renderStats('Сводная по тегу «' + tag + '»', stats)
 		}
-	},
-	
-	processIngredient: function (name)
-	{
-		var cocktails = Cocktail.getByIngredientNames([name])
-		var stats = []
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
-		}
-		
-		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
-		this.renderStats(name, stats)
-		
-		return stats
 	},
 	
 	renderStats: function (name, stats)
