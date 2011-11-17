@@ -301,7 +301,7 @@ Me.prototype =
 Me.className = myName
 self[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/db/stats/last-30-days.json" -->)
+Me.initialize(<!--# include virtual="/db/stats/last-365-days.json" -->)
 
 })();
 
