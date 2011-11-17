@@ -103,11 +103,15 @@ Me.prototype =
 			return
 		}
 		
-		var ingredientNames
-		if (query.type == 'ingredient-tag')
-			ingredientNames = query.names
-		else if (query.type == 'ingredient')
-			ingredientNames = [query.ingredient.name]
+		if (query.type == 'ingredient')
+		{
+			this.processIngredient(query.ingredient.name)
+			return
+		}
+		
+		// if (query.type == 'ingredient-tag')
+		
+		var ingredientNames = query.names
 		
 		var results = []
 		for (var i = 0, il = ingredientNames.length; i < il; i++)
