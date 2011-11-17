@@ -121,6 +121,7 @@ Me.prototype =
 			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
 		}
 		
+		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
 		this.renderStats(tag, stats)
 	},
 	
