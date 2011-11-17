@@ -162,6 +162,11 @@ class Analytics
         cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
       end
     end
+    
+    say "обновляю период «last-30-days»"
+    indent do
+      cocktails_pageviews("last-30-days", Time.now - 33 * DAY, Time.now - 3 * DAY)
+    end
   end
   
   @@substitute =
