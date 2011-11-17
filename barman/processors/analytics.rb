@@ -14,6 +14,10 @@ require "entities/cocktail"
 
 class Analytics
   
+  HOUR = 60 * 60
+  DAY  = 24 * 60 * 60
+  
+  
   module Config
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
@@ -41,7 +45,7 @@ class Analytics
     
     # try to use recent login token
     
-    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < 60 * 60
+    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < HOUR
       @token = File.read(Config::TOKEN_FILE)
       return true
     end
@@ -72,7 +76,7 @@ class Analytics
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if newer?(cache, 60 * 60)
+    if newer?(cache, HOUR)
       return File.read(cache)
     end
     
@@ -94,11 +98,11 @@ class Analytics
   def cocktails_pageviews name, start, endd
     dst = Config::HT_STAT_DIR + "/" + name + ".json"
     
-    if newer?(dst, 60 * 60)
+    if newer?(dst, HOUR)
       return true
     end
     
-    if Time.now - endd > 4 * 24 * 60 * 60 and File.exists?(dst)
+    if Time.now - endd > 4 * DAY and File.exists?(dst)
       return true
     end
     
@@ -126,7 +130,7 @@ class Analytics
   def get_month_borders year, month
     start = Time.new(year, month, 1)
     # jump to the next month (maybe year too)
-    endd = start + 33 * 24 * 60 * 60
+    endd = start + 33 * DAY
     # jump to the fist second of the next month
     endd = Time.new(endd.year, endd.month, 1)
     # jump to the last second of current month
@@ -137,11 +141,12 @@ class Analytics
   end
   
   def update
+    # 25-26 month from the past
     now = Time.now
-    cur = now - 27 * 30 * 24 * 60 * 60
+    cur = now - 27 * 30 * DAY
     last = nil
     while true
-      cur += 25 * 24 * 60 * 60
+      cur += 25 * DAY
       if cur > now and cur.month > now.month
         break
       end
