@@ -179,7 +179,12 @@ class Analytics
     
     say "обновляю период «last-30-days»"
     indent do
-      cocktails_pageviews("last-30-days", Time.now - 33 * DAY, Time.now - 3 * DAY)
+      cocktails_pageviews("last-30-days", Time.now - (30 + 3) * DAY, Time.now - (0 + 3) * DAY)
+    end
+    
+    say "обновляю период «last-365-days»"
+    indent do
+      cocktails_pageviews("last-365-days", Time.now - (365 + 3) * DAY, Time.now - (0 + 3) * DAY)
     end
   end
   
