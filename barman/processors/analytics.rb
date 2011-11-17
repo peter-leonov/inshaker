@@ -139,12 +139,19 @@ class Analytics
   def update
     now = Time.now
     cur = now - 27 * 30 * 24 * 60 * 60
+    last = nil
     while true
-      cur += 15 * 24 * 60 * 60
+      cur += 25 * 24 * 60 * 60
       if cur > now and cur.month > now.month
         break
       end
+      
       name = "views-#{cur.year}-#{cur.month}"
+      if last == name
+        next
+      end
+      last = name
+      
       say "обновляю период «#{name}»"
       indent do
         cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
