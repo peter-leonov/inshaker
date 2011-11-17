@@ -133,7 +133,15 @@ class Analytics
   end
   
   def update
-    cocktails_pageviews("views", Time.new(2010, 12, 1), Time.new(2011, 11, 13))
+    now = Time.now
+    cur = now - 27 * 30 * 24 * 60 * 60
+    while true
+      cur += 15 * 24 * 60 * 60
+      if cur > now and cur.month > now.month
+        break
+      end
+      cocktails_pageviews("views-#{cur.year}-#{cur.month}", *get_month_borders(cur.year, cur.month))
+    end
   end
   
   @@substitute =
