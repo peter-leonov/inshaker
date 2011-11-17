@@ -45,6 +45,10 @@ module Output
       @headers = []
     end
     
+    def quite!
+      @quite = true
+    end
+    
     def indent block, header=nil
       @headers << header && "#{indentation}#{header}"
       @indent += 1
@@ -58,6 +62,10 @@ module Output
     end
     
     def say msg
+      if @quite
+        return
+      end
+      
       unless @headers.empty?
         @headers.each do |header|
           puts header if header
@@ -141,5 +149,9 @@ end
 
 def errors_count *args
   $output_worker.errors_count *args
+end
+
+def quite! *args
+  $output_worker.quite! *args
 end
 

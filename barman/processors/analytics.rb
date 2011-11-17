@@ -2,6 +2,8 @@
 # encoding: utf-8
 
 require "digest/md5"
+require "optparse"
+
 require "lib/json"
 require "lib/string"
 require "lib/array"
@@ -32,7 +34,19 @@ class Analytics
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
   end
   
+  def process_options
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Запускайте так: analytics.rb [опции]"
+      
+      opts.on("-q", "--quite", "сообщать только об ошибках") do |v|
+        quite!
+      end
+    end.parse!
+  end
+  
   def job
+    process_options
     
     Cocktail.init
     
