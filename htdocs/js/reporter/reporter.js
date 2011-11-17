@@ -109,18 +109,39 @@ Me.prototype =
 			return
 		}
 		
-		// if (query.type == 'ingredient-tag')
-		
-		var ingredientNames = query.names
-		
-		var results = []
-		for (var i = 0, il = ingredientNames.length; i < il; i++)
+		if (query.type == 'ingredient-tag')
 		{
-			var name = ingredientNames[i]
+			this.processIngredientTag(query.tag, query.names)
+			return
+		}
+	},
+	
+	processIngredient: function (name)
+	{
+		var cocktails = Cocktail.getByIngredientNames([name])
+		var stats = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
+		}
+		
+		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
+		this.renderStats(name, stats)
+		
+		return stats
+	},
+	
+	processIngredientTag: function (tag, names)
+	{
+		var results = []
+		for (var i = 0, il = names.length; i < il; i++)
+		{
+			var name = names[i]
 			results[i] = this.processIngredient(name)
 		}
 		
-		if (query.type == 'ingredient-tag' && results.length > 1)
+		if (results.length > 1)
 		{
 			var seen = {}
 			for (var i = 0, il = results.length; i < il; i++)
@@ -149,24 +170,8 @@ Me.prototype =
 			
 			var stats = Object.values(seen)
 			stats.sort(function (a, b) { return b.pageviews - a.pageviews })
-			this.renderStats('Сводная по тегу «' + query.tag + '»', stats)
+			this.renderStats('Сводная по тегу «' + tag + '»', stats)
 		}
-	},
-	
-	processIngredient: function (name)
-	{
-		var cocktails = Cocktail.getByIngredientNames([name])
-		var stats = []
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			stats[i] = {name: cocktail.name, pageviews: cocktail.stat.pageviews, uniquePageviews: cocktail.stat.uniquePageviews}
-		}
-		
-		stats.sort(function (a, b) { return b.pageviews - a.pageviews })
-		this.renderStats(name, stats)
-		
-		return stats
 	},
 	
 	renderStats: function (name, stats)
