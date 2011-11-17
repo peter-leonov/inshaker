@@ -140,7 +140,11 @@ class Analytics
       if cur > now and cur.month > now.month
         break
       end
-      cocktails_pageviews("views-#{cur.year}-#{cur.month}", *get_month_borders(cur.year, cur.month))
+      name = "views-#{cur.year}-#{cur.month}"
+      say "обновляю период «#{name}»"
+      indent do
+        cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
+      end
     end
   end
   
@@ -208,7 +212,7 @@ class Analytics
       
       name = cocktail["name"]
       
-      puts "#{name}: #{pv} #{upv}"
+      say "#{name}: #{pv} #{upv}"
       
       stats[name]["pageviews"] += pv
       stats[name]["uniques"] += upv
