@@ -25,37 +25,26 @@ Me =
 		var res = {}
 		
 		for (var i = 0, il = periods.length; i < il; i++)
-			this.addHashes(res, this.getPeriod(periods[i]))
+			this.addHash(res, this.getPeriod(periods[i]))
 		
 		return res
 	},
 	
-	addHashes: function (a, b)
+	addHash: function (a, b)
 	{
-		var c = {}
-		
-		// just copy
-		for (var k in a)
-		{
-			var src = a[k]
-			c[k] = [src[0], src[1]]
-		}
-		
 		for (var k in b)
 		{
 			var src = b[k]
 			
-			var dst = c[k]
+			var dst = a[k]
 			if (dst)
 			{
 				dst[0] += src[0]
 				dst[1] += src[1]
 			}
 			else
-				c[k] = [src[0], src[1]]
+				a[k] = [src[0], src[1]]
 		}
-		
-		return c
 	}
 }
 

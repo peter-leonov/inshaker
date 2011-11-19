@@ -11,7 +11,7 @@ eval(NodesShortcut.include())
 
 function byPageview (a, b) { return b.pageviews - a.pageviews }
 
-Me.initialize = function (db)
+Me.updateStats = function (db)
 {
 	var cocktails = Cocktail.getAll()
 	
@@ -87,7 +87,8 @@ Me.prototype =
 		this.clear()
 		
 		var periods = form.periods
-		this.db = Stats.mergePeriods(periods)
+		var db = Stats.mergePeriods(periods)
+		Me.updateStats(db)
 		
 		var query = form.query[0].replace(/\s+/g, ' ').replace(/^ | $/g, '')
 		query = this.guessQueryType(query)
@@ -321,8 +322,6 @@ Me.prototype =
 
 Me.className = myName
 self[Me.className] = Me
-
-Me.initialize(<!--# include virtual="/db/stats/last-365-days.json" -->)
 
 })();
 
