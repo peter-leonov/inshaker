@@ -6,6 +6,13 @@ Me =
 	{
 		this.index = {}
 		this.db = db
+	},
+	
+	getList: function ()
+	{
+		var periods = Object.keys(this.db)
+		periods.sort()
+		return periods
 	}
 }
 

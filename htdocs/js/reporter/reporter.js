@@ -1,13 +1,15 @@
 ;(function(){
 
-function byPageview (a, b) { return b.pageviews - a.pageviews }
-
 var myName = 'Reporter'
 
 function Me ()
 {
 	this.nodes = {}
 }
+
+eval(NodesShortcut.include())
+
+function byPageview (a, b) { return b.pageviews - a.pageviews }
 
 Me.initialize = function (db)
 {
@@ -61,6 +63,22 @@ Me.prototype =
 		{
 			var tag = ingredientsTags[i]
 			ingredientsTagsHash[tag.toLowerCase()] = tag
+		}
+		
+		this.renderPeriods(Stats.getList())
+	},
+	
+	renderPeriods: function (periods)
+	{
+		var list = this.nodes.periods
+		
+		list.empty()
+		
+		for (var i = 0, il = periods.length; i < il; i++)
+		{
+			var period = periods[i]
+			var item = Nct('option', 'period', period)
+			list.appendChild(item)
 		}
 	},
 	
@@ -316,6 +334,7 @@ function onready ()
 		main: $$('#analytics')[0],
 		ingredientForm: $$('#analytics #ingredient-search')[0],
 		output: $$('#analytics #output')[0],
+		periods: $$('#periods')[0],
 		query: $$('#analytics #query')[0]
 	}
 	
