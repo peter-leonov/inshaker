@@ -171,7 +171,7 @@ class Analytics
         break
       end
       
-      name = "views-#{cur.year}-#{cur.month}"
+      name = cur.month <= 9 ? "views-#{cur.year}-0#{cur.month}" : "views-#{cur.year}-#{cur.month}"
       if last == name
         next
       end
