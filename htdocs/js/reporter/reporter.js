@@ -47,6 +47,7 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		nodes.query.focus()
 		
 		var me = this
 		function submit (e)
@@ -66,6 +67,8 @@ Me.prototype =
 		}
 		
 		this.renderPeriods(Stats.getList())
+		
+		nodes.query.focus()
 	},
 	
 	renderPeriods: function (periods)
@@ -80,6 +83,8 @@ Me.prototype =
 			var item = Nct('option', 'period', period)
 			list.appendChild(item)
 		}
+		
+		list.options[0].selected = true
 	},
 	
 	doCalculate: function (form)
@@ -337,7 +342,8 @@ function onready ()
 		ingredientForm: $$('#analytics #ingredient-search')[0],
 		output: $$('#analytics #output')[0],
 		periods: $$('#periods')[0],
-		query: $$('#analytics #query')[0]
+		form: $$('#form')[0],
+		query: $$('#query')[0]
 	}
 	
 	new Reporter().bind(nodes)
