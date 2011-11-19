@@ -52,7 +52,7 @@ Me.prototype =
 		function submit (e)
 		{
 			e.preventDefault()
-			me.doCalculate(FormHelper.toHash(this))
+			me.doCalculate(FormHelper.toHash(this, true))
 		}
 		nodes.ingredientForm.addEventListener('submit', submit, false)
 		
@@ -86,7 +86,10 @@ Me.prototype =
 	{
 		this.clear()
 		
-		var query = form.query.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		var periods = form.periods
+		this.db = Stats.mergePeriods(periods)
+		
+		var query = form.query[0].replace(/\s+/g, ' ').replace(/^ | $/g, '')
 		query = this.guessQueryType(query)
 		
 		if (!query)
