@@ -68,7 +68,7 @@ Me.prototype =
 	{
 		this.clear()
 		
-		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		var query = form.query.replace(/\s+/g, ' ').replace(/^ | $/g, '')
 		query = this.guessQueryType(query)
 		
 		if (!query)
