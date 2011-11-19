@@ -32,6 +32,11 @@ class Analytics
     TOKEN_FILE     = TMP + "/auth-token.txt"
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
+    ALL_JSON       = HT_STAT_DIR + "/all.json"
+  end
+  
+  def initialize
+    @all = []
   end
   
   def process_options
@@ -52,6 +57,7 @@ class Analytics
     
     if login
       update
+      flush_all_jason
     end
   end
   
@@ -165,7 +171,7 @@ class Analytics
         break
       end
       
-      name = "views-#{cur.year}-#{cur.month}"
+      name = cur.month <= 9 ? "views-#{cur.year}-0#{cur.month}" : "views-#{cur.year}-#{cur.month}"
       if last == name
         next
       end
@@ -175,16 +181,31 @@ class Analytics
       indent do
         cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
       end
+      @all << name
     end
     
     say "обновляю период «last-30-days»"
     indent do
       cocktails_pageviews("last-30-days", Time.now - (30 + 3) * DAY, Time.now - (0 + 3) * DAY)
     end
+    @all << "last-30-days"
     
     say "обновляю период «last-365-days»"
     indent do
       cocktails_pageviews("last-365-days", Time.now - (365 + 3) * DAY, Time.now - (0 + 3) * DAY)
+    end
+    @all << "last-365-days"
+  end
+  
+  def flush_all_jason
+    File.open(Config::ALL_JSON, "w+") do |f|
+      f.puts "{"
+      rows = []
+      @all.each do |name|
+        rows << %Q{"#{name}": <!--# include virtual="#{name}.json" -->}
+      end
+      f.puts rows.join(",\n")
+      f.puts "}"
     end
   end
   

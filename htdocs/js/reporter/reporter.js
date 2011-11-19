@@ -1,7 +1,5 @@
 ;(function(){
 
-function byPageview (a, b) { return b.pageviews - a.pageviews }
-
 var myName = 'Reporter'
 
 function Me ()
@@ -9,7 +7,11 @@ function Me ()
 	this.nodes = {}
 }
 
-Me.initialize = function (db)
+eval(NodesShortcut.include())
+
+function byPageview (a, b) { return b.pageviews - a.pageviews }
+
+Me.updateStats = function (db)
 {
 	var cocktails = Cocktail.getAll()
 	
@@ -45,12 +47,13 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		nodes.query.focus()
 		
 		var me = this
 		function submit (e)
 		{
 			e.preventDefault()
-			me.doCalculate(FormHelper.toHash(this))
+			me.doCalculate(FormHelper.toHash(this, true))
 		}
 		nodes.ingredientForm.addEventListener('submit', submit, false)
 		
@@ -62,13 +65,37 @@ Me.prototype =
 			var tag = ingredientsTags[i]
 			ingredientsTagsHash[tag.toLowerCase()] = tag
 		}
+		
+		this.renderPeriods(Stats.getList())
+		
+		nodes.query.focus()
+	},
+	
+	renderPeriods: function (periods)
+	{
+		var list = this.nodes.periods
+		
+		list.empty()
+		
+		for (var i = 0, il = periods.length; i < il; i++)
+		{
+			var period = periods[i]
+			var item = Nct('option', 'period', period)
+			list.appendChild(item)
+		}
+		
+		list.options[0].selected = true
 	},
 	
 	doCalculate: function (form)
 	{
 		this.clear()
 		
-		var query = form.ingredients.replace(/\s+/g, ' ').replace(/^ | $/g, '')
+		var periods = form.periods
+		var db = Stats.mergePeriods(periods)
+		Me.updateStats(db)
+		
+		var query = form.query[0].replace(/\s+/g, ' ').replace(/^ | $/g, '')
 		query = this.guessQueryType(query)
 		
 		if (!query)
@@ -301,8 +328,6 @@ Me.prototype =
 Me.className = myName
 self[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/db/stats/last-365-days.json" -->)
-
 })();
 
 <!--# include virtual="/lib-0.3/modules/form-helper.js" -->
@@ -316,7 +341,9 @@ function onready ()
 		main: $$('#analytics')[0],
 		ingredientForm: $$('#analytics #ingredient-search')[0],
 		output: $$('#analytics #output')[0],
-		query: $$('#analytics #query')[0]
+		periods: $$('#periods')[0],
+		form: $$('#form')[0],
+		query: $$('#query')[0]
 	}
 	
 	new Reporter().bind(nodes)
