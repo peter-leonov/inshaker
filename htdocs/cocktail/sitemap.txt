@@ -100,6 +100,7 @@ http://www.inshaker.ru/cocktail/allanabarrancos/
 http://www.inshaker.ru/cocktail/boca_chica/
 http://www.inshaker.ru/cocktail/big_apple/
 http://www.inshaker.ru/cocktail/big_apple_martini/
+http://www.inshaker.ru/cocktail/boreas/
 http://www.inshaker.ru/cocktail/fighter/
 http://www.inshaker.ru/cocktail/greyhound/
 http://www.inshaker.ru/cocktail/borodinsky/
@@ -749,6 +750,7 @@ http://www.inshaker.ru/cocktail/raquel/
 http://www.inshaker.ru/cocktail/ramcooler/
 http://www.inshaker.ru/cocktail/rastafarai/
 http://www.inshaker.ru/cocktail/raul_and_fidel/
+http://www.inshaker.ru/cocktail/rafaello/
 http://www.inshaker.ru/cocktail/reanimator/
 http://www.inshaker.ru/cocktail/rubarb_ruban/
 http://www.inshaker.ru/cocktail/rhubarb_compote_in_a_jug/
@@ -851,6 +853,7 @@ http://www.inshaker.ru/cocktail/fairy_tale/
 http://www.inshaker.ru/cocktail/scaffa/
 http://www.inshaker.ru/cocktail/skittles/
 http://www.inshaker.ru/cocktail/slippery_nipple/
+http://www.inshaker.ru/cocktail/son_of_a_peach/
 http://www.inshaker.ru/cocktail/sweet_memories/
 http://www.inshaker.ru/cocktail/sweet_pepper_with_strawberry/
 http://www.inshaker.ru/cocktail/sweet_bite/
