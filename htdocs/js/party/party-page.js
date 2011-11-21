@@ -30,9 +30,8 @@ function onready ()
 			images: $$('#window .layer .image')
 		},
 		recipeList: $$('#recipe-list')[0],
-		ingredientPreviewList: $$('#ingredient-preview-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
-		purchasePlanList: $$('#purchase-plan .ingredients-list .list')[0],
+		purchasePlanList: $$('#ingredients-part .parts-list .list')[0],
 		purchasePlanTotal:
 		{
 			value: $$('#purchase-plan .total .cost')[0],

@@ -75,7 +75,6 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 #ingredients-part { overflow: hidden; }
 
-#purchase-plan { width: 450px; float: left; }
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
 #purchase-plan .table .list .ingredient { position: relative; padding: 7px 0 9px 0; border-bottom: 1px solid #f2f2f2; }
 #purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
@@ -86,16 +85,17 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
-#purchase-plan .ingredients-list,
-#purchase-plan .tools-list { margin-bottom: 20px; }
+#purchase-plan .parts-list { margin-bottom: 20px; }
 #purchase-plan .total { position: relative; font-size: 18px; }
 #purchase-plan .total .head { font-weight: bold; }
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 
-#ingredient-preview-list { float: right; width: 468px; margin-bottom: -15px; }
-#ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
-#ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
-#ingredient-preview-list .ingredient-preview .image { display: none; }
+#purchase-plan .ingredient-preview-list { float: right; width: 468px; margin-bottom: -15px; }
+#purchase-plan .ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
+#purchase-plan .ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
+#purchase-plan .ingredient-preview-list .ingredient-preview .image { display: none; }
+
+#ingredients-part .parts-list { width: 450px; float: left; }
 
 #links-box { position: relative; }
 #links-box .share-box { position: absolute; right: 15px; top: 0; }
