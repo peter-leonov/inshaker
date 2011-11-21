@@ -11,10 +11,9 @@ function Me (data)
 
 Me.prototype =
 {
-	imgSrc: function ()
-	{
-		return '/i/merchandise/tools/' + this.name.trans() + '.png'
-	},
+	pageHref: function () { return '/tool/' + this.path },
+	getMiniImageSrc: function () { return this.pageHref() + '/preview.jpg' },
+	imgSrc: function () { return this.pageHref() + '/image.png' },
 	
 	getCost: function (anount)
 	{

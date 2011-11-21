@@ -22,7 +22,6 @@ class ToolsProcessor < Inshaker::Processor
     sync_base "Tools"
     
     prepare
-    flush_images
     flush_json
   end
   
@@ -34,15 +33,7 @@ class ToolsProcessor < Inshaker::Processor
       group_dir.each_dir do |tool_dir|
         say tool_dir.name
         indent do
-        @tool = {}
-        @tool["group"] = group_dir.name
-        @tool["name"] = tool_dir.name
-        if File.exists?("#{tool_dir.path}/about.txt")
-          @tool[:desc] = File.open("#{tool_dir.path}/about.txt").read.html_paragraphs
-        else
-          @tool[:desc] = ""
-        end
-        @tools << @tool
+          process_tool tool_dir, tool_dir.name, group_dir
         end # indent
       end
       end # indent
@@ -50,16 +41,40 @@ class ToolsProcessor < Inshaker::Processor
     say "Нашел #{@tools.length} #{@tools.length.plural('штучка', 'штучки', 'штучек')}"
   end
   
-  def flush_json
-    flush_json_object(@tools, Config::DB_JS)
+  def process_tool dir, name, group_dir
+    tool = {}
+    tool["group"] = group_dir.name
+    tool["name"] = dir.name
+    if File.exists?("#{dir.path}/about.txt")
+      tool["desc"] = File.open("#{dir.path}/about.txt").read.html_paragraphs
+    else
+      tool["desc"] = ""
+    end
+    tool["path"] = dir.name.dirify
+    
+    ht_dir = Dir.create("#{Config::HT_ROOT}/#{name.dirify}/")
+    
+    
+    img = "#{dir.path}/preview.png"
+    if File.exists?(img)
+      convert_image(img, "#{ht_dir.path}/preview.jpg", 90, 100, 100)
+    else
+      warning "нет картинки-превьюшки (файл #{img})"
+    end
+    
+    img = "#{dir.path}/image.png"
+    if File.exists?(img)
+      cp_if_different(img, "#{ht_dir.path}/image.png")
+    else
+      error "нет большой картинки (файл #{img})"
+    end
+    
+    
+    @tools << tool
   end
   
-  def flush_images
-    @tools.each do |t|
-      from = "#{Config::TOOLS_DIR}/#{t["group"]}/#{t["name"]}/image.png"
-      to   = "#{Config::TOOLS_ROOT}/#{t["name"].trans}.png"
-      FileUtils.cp_r(from, to, @mv_opt) unless !File.exists?(from)
-    end
+  def flush_json
+    flush_json_object(@tools, Config::DB_JS)
   end
 end
 
