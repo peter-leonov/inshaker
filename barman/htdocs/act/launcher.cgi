@@ -32,6 +32,7 @@ class Launcher
       "blog" => ["./processors/blog.rb", "Блог"],
       "blog-banners" => ["./processors/blog-banners.rb", "Баннеры в Блоге"],
       "mybar" => ["./processors/mybar.rb", "Мой бар"],
+      "analytics" => ["./processors/analytics.rb", "Аналитика"],
       
       "deployer" => ["./deployer.rb", "Заливалку"],
       "status" => ["./status.rb", "Статус"],

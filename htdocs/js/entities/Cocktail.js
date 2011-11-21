@@ -221,6 +221,20 @@ Me.staticMethods =
 		return this.index.tagByTagCI[tag.toLowerCase()]
 	},
 	
+	getByNameCIPrepare: function ()
+	{
+		function lowercase (cocktail)
+		{
+			return cocktail.name.toLowerCase()
+		}
+		this.index.byNameCI = DB.hashIndexBy(this.db, lowercase)
+	},
+	
+	getByNameCI: function (name)
+	{
+		return this.index.byNameCI[name.toLowerCase()]
+	},
+	
 	getAll: function()
 	{
 		return this.db.slice()

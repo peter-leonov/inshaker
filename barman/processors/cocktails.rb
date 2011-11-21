@@ -417,9 +417,7 @@ class CocktailsProcessor < Inshaker::Processor
       end
     end
     unless @cocktail["method"]
-      guess_methods @cocktail
-      cocktail_tags << @tags_ci[@cocktail["method"].ci_index]
-      warning "не могу найти метод в тегах (пока поставлю «#{@cocktail["method"]}»)"
+      error "не могу найти метод в тегах"
     end
     
     @cocktails[name] = @cocktail
@@ -451,27 +449,6 @@ class CocktailsProcessor < Inshaker::Processor
     @groups = @groups.uniq.sort
     @groups_ci = @groups.hash_ci_index
     @groups = @groups.map { |e| @tags_ci[e.ci_index] }
-  end
-  
-  def guess_methods cocktail
-    methods = {}
-    tools = cocktail["tools"]
-    
-    methods["В шейкере"] = true if tools.index("Шейкер")
-    methods["Давят мадлером"] = true if tools.index("Мадлер")
-    methods["В блендере"] = true if tools.index("Блендер") || tools.index("Коктейльный миксер")
-    methods["Давят пестиком"] = true if tools.index("Пестик")
-    methods["Смешивают в стакане"] = true if tools.index("Стакан для смешивания")
-    methods["Укладывают слоями"] = true if tools.index("Стопка") && tools.index("Коктейльная ложка") && !tools.index("Кувшин") && (tools.length == 2 || tools.index("Трубочки") || tools.index("Пресс для цитруса") || tools.index("Зажигалка"))
-    
-    num = methods.keys.length
-    if num == 0
-      cocktail["method"] = "Просто приготовить"
-    elsif num == 1
-      cocktail["method"] = methods.keys[0]
-    else
-      cocktail["method"] = "Не очень просто"
-    end
   end
   
   def update_html dst, hash
@@ -520,7 +497,7 @@ class CocktailsProcessor < Inshaker::Processor
     if @options[:mtime]
       File.mtime_cp(from_big, to_big)
       File.mtime_cp(from_small, to_small)
-      # File.mtime_cp(from_small_cropped, to_small_cropped)
+      File.mtime_cp(from_small_cropped, to_small_cropped)
       File.mtime_cp(from_bg, to_bg)
       return
     end
@@ -529,12 +506,6 @@ class CocktailsProcessor < Inshaker::Processor
       cp_if_different(from_big, to_big)
     else
       error "не могу найти большую картинку коктейля (big.png)"
-    end
-    
-    unless File.exists?(from_small_cropped)
-      warning "кропаю маленькую картинку (small.png → small-cropped.png)"
-      system(%Q{convert "#{from_small.quote}" +profile icm -trim +repage "#{from_small_cropped.quote}"})
-      system(%Q{optipng -o7 -q "#{from_small_cropped.quote}"})
     end
     
     if File.exists?(from_small_cropped)

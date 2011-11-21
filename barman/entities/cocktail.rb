@@ -103,4 +103,18 @@ class Cocktail < Inshaker::Entity
     
     return full
   end
+  
+  def self.index_by_path
+    index = @by_path = {}
+    @db.each do |cocktail|
+      @by_path[cocktail["name_eng"].html_name] = cocktail
+    end
+  end
+  
+  def self.by_path path
+    unless @by_path
+      index_by_path
+    end
+    @by_path[path]
+  end
 end
