@@ -287,6 +287,8 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
+		this.renderPreviewList(plan)
+		
 		var root = this.nodes.purchasePlanList,
 			planCache = this.cache.plan
 		
@@ -329,6 +331,30 @@ Me.prototype =
 			
 			var unit = Nct('span', 'unit', 'р.')
 			cost.appendChild(unit)
+		}
+	},
+	
+	renderPreviewList: function (plan)
+	{
+		var root = this.nodes.purchasePlanPreviewList
+		
+		root.empty()
+		
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			var good = plan[i].good
+			
+			var item = Nc('li', 'item ingredient-preview')
+			root.appendChild(item)
+			item.setAttribute('data-ingredient', good.name)
+			item.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
+			
+			var image = Nc('img', 'image')
+			item.appendChild(image)
+			image.src = good.getMiniImageSrc()
+			
+			var name = Nct('span', 'name', good.name)
+			item.appendChild(name)
 		}
 	},
 	

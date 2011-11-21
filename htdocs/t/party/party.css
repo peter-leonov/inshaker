@@ -90,10 +90,10 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .total .head { font-weight: bold; }
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 
-#purchase-plan .ingredient-preview-list { float: right; width: 468px; margin-bottom: -15px; }
-#purchase-plan .ingredient-preview-list .item { float: left; margin: 0 0 50px 17px; }
-#purchase-plan .ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
-#purchase-plan .ingredient-preview-list .ingredient-preview .image { display: none; }
+#purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; }
+#purchase-plan .preview-list .item { float: left; margin: 0 0 50px 17px; }
+#purchase-plan .preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
+#purchase-plan .preview-list .ingredient-preview .image { display: none; }
 
 #ingredients-part .parts-list { width: 450px; float: left; }
 
@@ -196,9 +196,9 @@ body,
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 #purchase-plan .total .cost { color: #ec118f; }
 
-#ingredient-preview-list { position: absolute; top: 30px; right: 0; width: 390px; }
-#ingredient-preview-list .item { float: left; margin: 0 0 45px 17px; }
-#ingredient-preview-list .ingredient-preview { cursor: pointer; font-size: 12px; background: none !important; }
+.preview-list { position: absolute; top: 30px; right: 0; width: 390px; }
+.preview-list .item { float: left; margin: 0 0 45px 17px; }
+.preview-list .ingredient-preview { cursor: pointer; font-size: 12px; background: none !important; }
 
 .ingredient-preview { width: 80px; height: 80px; }
 .ingredient-preview .image { width: 80px; height: 80px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
