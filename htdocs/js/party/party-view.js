@@ -46,7 +46,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.loadWindow()
-		this.bindIngredientPopup()
+		this.bindGoodPopup()
 		this.bindEvents()
 		this.bindShareBox()
 		this.bindPrintBox()
@@ -115,7 +115,7 @@ Me.prototype =
 		root.removeClassName('loading')
 	},
 	
-	bindIngredientPopup: function ()
+	bindGoodPopup: function ()
 	{
 		var nodes = this.nodes
 		
@@ -123,7 +123,7 @@ Me.prototype =
 		{
 			do
 			{
-				var ingredient = node.getAttribute('data-ingredient')
+				var ingredient = node.getAttribute('data-good')
 				if (ingredient)
 					return ingredient
 			}
@@ -133,16 +133,16 @@ Me.prototype =
 		}
 		
 		var view = this
-		function maybeIngredientClicked (target)
+		function maybeGoodClicked (target)
 		{
 			var name = findIngredientInParents(target, 3)
 			if (name)
-				view.controller.ingredientSelected(name)
+				view.controller.goodSelected(name)
 		}
 		
 		function onclick (e)
 		{
-			maybeIngredientClicked(e.target)
+			maybeGoodClicked(e.target)
 		}
 		
 		nodes.recipeList.addEventListener('click', onclick, false)
@@ -150,9 +150,9 @@ Me.prototype =
 		nodes.cocktailPlan.addEventListener('click', onclick, false)
 	},
 	
-	showIngredientPopup: function (ingredient)
+	showGoodPopup: function (good)
 	{
-		IngredientPopup.show(ingredient)
+		IngredientPopup.show(good)
 	},
 	
 	bindEvents: function ()
@@ -263,7 +263,7 @@ Me.prototype =
 				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
 				ingredientsNode.appendChild(ingredient)
 				
-				ingredient.setAttribute('data-ingredient', name)
+				ingredient.setAttribute('data-good', name)
 				ingredientsNode.appendChild(ingredient)
 			}
 			
@@ -302,7 +302,7 @@ Me.prototype =
 			
 			var name = Nct('span', 'name', good.name == 'Абсент' ? 'Абсент Xenta' : good.name)
 			item.appendChild(name)
-			name.setAttribute('data-ingredient', good.name)
+			name.setAttribute('data-good', good.name)
 			
 			
 			var amount = Nc('span', 'amount')
@@ -346,7 +346,7 @@ Me.prototype =
 			
 			var item = Nc('li', 'item ingredient-preview')
 			root.appendChild(item)
-			item.setAttribute('data-ingredient', good.name)
+			item.setAttribute('data-good', good.name)
 			item.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
 			
 			var image = Nc('img', 'image')

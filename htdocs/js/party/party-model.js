@@ -22,11 +22,11 @@ Me.prototype =
 		this.setPeopleCount(this.party.people)
 	},
 	
-	selectIngredientName: function (ingredientName)
+	selectGoodName: function (name)
 	{
-		var ingredient = Ingredient.getByName(ingredientName)
-		if (ingredient)
-			this.view.showIngredientPopup(ingredient)
+		var good = Ingredient.getByName(name) || Tool.getByName(name)
+		if (good)
+			this.view.showGoodPopup(good)
 	},
 	
 	setupPortions: function (source)
