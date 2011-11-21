@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/ingredient"
 require "entities/tool"
 
 class ToolsProcessor < Inshaker::Processor
@@ -22,10 +23,15 @@ class ToolsProcessor < Inshaker::Processor
     sync_base "Tools"
     
     prepare
+    process
     flush_json
   end
-  
   def prepare
+    @units = YAML::load(File.open("#{Ingredient::Config::BASE_DIR}/units.yaml"))
+    @units_i = @units.hash_index
+  end
+  
+  def process
     path = Config::TOOLS_DIR
     Dir.new(path).each_dir do |group_dir|
       say group_dir.name
@@ -52,8 +58,44 @@ class ToolsProcessor < Inshaker::Processor
     end
     tool["path"] = dir.name.dirify
     
-    ht_dir = Dir.create("#{Config::HT_ROOT}/#{name.dirify}/")
+    about = dir.path + "/about.yaml"
+    if File.exists?(about)
+      about = YAML::load(File.open(about))
+      if about["Единица"]
+        tool["unit"] = about["Единица"]
+        unless @units_i[tool["unit"]]
+          error "неизвестная единица измерения «#{tool["unit"]}»"
+        end
+      else
+        error "не указана единица измерения"
+      end
+      
+      if about["Тара"] and about["Тара"].length > 0
+        volumes = []
+        about["Тара"].each_with_index do |v, i|
+          if v["Объем"] <= 0
+            warning "нулевой или отрицательный объем (номер #{i+1})"
+            next
+          end
+          
+          if v["Цена"] <= 0
+            warning "нулевая или отрицательная цена (номер #{i+1})"
+            next
+          end
+          
+          volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+        end
+        # increment sort by cost per litre
+        tool["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
+      else
+        error "тара не указана"
+      end
+    else
+      warning "нет описания штучки (about.yaml)"
+    end
     
+    
+    ht_dir = Dir.create("#{Config::HT_ROOT}/#{name.dirify}/")
     
     img = "#{dir.path}/preview.png"
     if File.exists?(img)
