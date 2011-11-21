@@ -201,9 +201,9 @@ class IngredientsProcessor < Inshaker::Processor
     
     
     if about["Единица"]
-      good[:unit] = about["Единица"]
-      unless @units_i[good[:unit]]
-        error "неизвестная единица измерения «#{good[:unit]}»"
+      good["unit"] = about["Единица"]
+      unless @units_i[good["unit"]]
+        error "неизвестная единица измерения «#{good["unit"]}»"
       end
     else
       error "не указана единица измерения"
@@ -256,7 +256,7 @@ class IngredientsProcessor < Inshaker::Processor
         volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
       end
       # increment sort by cost per litre
-      good[:volumes] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
+      good["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
     else
       error "тара не указана"
     end
