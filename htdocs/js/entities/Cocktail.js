@@ -341,6 +341,25 @@ Me.staticMethods =
 		return this.bakeAry(res)
 	},
 	
+	getByIngredientPrepare: function (name)
+	{
+		function ingredients (v)
+		{
+			var keys = []
+			var parts = v.ingredients
+			for (var i = 0, il = parts.length; i < il; i++)
+				keys[i] = parts[i][0]
+			
+			return keys
+		}
+		this.index.byIngredient = DB.hashOfAryIndexAryBy(this.db, ingredients)
+	},
+	
+	getByIngredient: function (name)
+	{
+		return this.index.byIngredient[name].slice() || []
+	},
+	
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
