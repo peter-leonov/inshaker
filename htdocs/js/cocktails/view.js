@@ -208,13 +208,6 @@ function CocktailsView (states, nodes, styles) {
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
 		this.controller.saveFilters(this.currentFilters);
-		
-		var withouts = this.searcher.withouts = {},
-			ingredients = filters.ingredients;
-		
-		for (var i = 0, il = ingredients.length; i < il; i ++){
-			withouts[ingredients[i]] = true;
-		}
 	};
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){
