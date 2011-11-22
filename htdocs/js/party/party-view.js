@@ -46,7 +46,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.loadWindow()
-		this.bindIngredientPopup()
+		this.bindGoodPopup()
 		this.bindEvents()
 		this.bindShareBox()
 		this.bindPrintBox()
@@ -115,7 +115,7 @@ Me.prototype =
 		root.removeClassName('loading')
 	},
 	
-	bindIngredientPopup: function ()
+	bindGoodPopup: function ()
 	{
 		var nodes = this.nodes
 		
@@ -123,7 +123,7 @@ Me.prototype =
 		{
 			do
 			{
-				var ingredient = node.getAttribute('data-ingredient')
+				var ingredient = node.getAttribute('data-good')
 				if (ingredient)
 					return ingredient
 			}
@@ -133,27 +133,26 @@ Me.prototype =
 		}
 		
 		var view = this
-		function maybeIngredientClicked (target)
+		function maybeGoodClicked (target)
 		{
 			var name = findIngredientInParents(target, 3)
 			if (name)
-				view.controller.ingredientSelected(name)
+				view.controller.goodSelected(name)
 		}
 		
 		function onclick (e)
 		{
-			maybeIngredientClicked(e.target)
+			maybeGoodClicked(e.target)
 		}
 		
 		nodes.recipeList.addEventListener('click', onclick, false)
-		nodes.ingredientPreviewList.addEventListener('click', onclick, false)
 		nodes.purchasePlan.addEventListener('click', onclick, false)
 		nodes.cocktailPlan.addEventListener('click', onclick, false)
 	},
 	
-	showIngredientPopup: function (ingredient)
+	showGoodPopup: function (good)
 	{
-		IngredientPopup.show(ingredient)
+		IngredientPopup.show(good)
 	},
 	
 	bindEvents: function ()
@@ -264,7 +263,7 @@ Me.prototype =
 				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
 				ingredientsNode.appendChild(ingredient)
 				
-				ingredient.setAttribute('data-ingredient', name)
+				ingredient.setAttribute('data-good', name)
 				ingredientsNode.appendChild(ingredient)
 			}
 			
@@ -288,20 +287,22 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
+		this.renderPreviewList(plan)
+		
 		var root = this.nodes.purchasePlanList,
 			planCache = this.cache.plan
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
-			var ingredient = plan[i].ingredient,
+			var good = plan[i].good,
 				cache = planCache[i] = {}
 			
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
 			
-			var name = Nct('span', 'name', ingredient.name == 'Абсент' ? 'Абсент Xenta' : ingredient.name)
+			var name = Nct('span', 'name', good.name == 'Абсент' ? 'Абсент Xenta' : good.name)
 			item.appendChild(name)
-			name.setAttribute('data-ingredient', ingredient.name)
+			name.setAttribute('data-good', good.name)
 			
 			
 			var amount = Nc('span', 'amount')
@@ -333,6 +334,30 @@ Me.prototype =
 		}
 	},
 	
+	renderPreviewList: function (plan)
+	{
+		var root = this.nodes.purchasePlanPreviewList
+		
+		root.empty()
+		
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			var good = plan[i].good
+			
+			var item = Nc('li', 'item ingredient-preview')
+			root.appendChild(item)
+			item.setAttribute('data-good', good.name)
+			item.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
+			
+			var image = Nc('img', 'image')
+			item.appendChild(image)
+			image.src = good.getMiniImageSrc()
+			
+			var name = Nct('span', 'name', good.name)
+			item.appendChild(name)
+		}
+	},
+	
 	updatePlan: function (plan)
 	{
 		var planCache = this.cache.plan,
@@ -343,7 +368,7 @@ Me.prototype =
 			var buy = plan[i],
 				item = planCache[i]
 			
-			var human = Units.humanizeDose(buy.amount, buy.ingredient.unit)
+			var human = Units.humanizeDose(buy.amount, buy.good.unit)
 			
 			item.amount.value = buy.amountHumanized
 			item.unit.nodeValue = buy.unitHumanized

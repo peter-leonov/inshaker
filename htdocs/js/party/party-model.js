@@ -22,11 +22,11 @@ Me.prototype =
 		this.setPeopleCount(this.party.people)
 	},
 	
-	selectIngredientName: function (ingredientName)
+	selectGoodName: function (name)
 	{
-		var ingredient = Ingredient.getByName(ingredientName)
-		if (ingredient)
-			this.view.showIngredientPopup(ingredient)
+		var good = Ingredient.getByName(name) || Tool.getByName(name)
+		if (good)
+			this.view.showGoodPopup(good)
 	},
 	
 	setupPortions: function (source)
@@ -48,38 +48,36 @@ Me.prototype =
 	
 	setupPlan: function (portions)
 	{
-		var buyByName = this.buyByName = {},
-			plan = this.plan
+		var parts = new Cocktail.Parts()
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
 			
-			var cocktail = portion.cocktail
-			var parts = cocktail.parts
-			portion.parts = parts
+			parts.add(portion.cocktail.getPartsFor(1))
+			// portion.parts = parts
 			
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var ingredient = parts[j].ingredient
-				
-				var best = ingredient.volumes[0],
-					costPerUnit = best[1] / best[0]
-				
-				var buy =
-				{
-					ingredient: ingredient,
-					costPerUnit: costPerUnit,
-					amount: 0,
-					unit: ingredient.unit
-				}
-				
-				plan.push(buy)
-				buyByName[ingredient.name] = buy
-			}
 		}
 		
-		plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
+		var buyByName = this.buyByName = {},
+			plan = this.plan = []
+		
+		var ary = parts.toArray()
+		for (var j = 0, jl = ary.length; j < jl; j++)
+		{
+			var good = ary[j].good
+			
+			var buy =
+			{
+				good: good,
+				amount: 0
+			}
+			
+			plan.push(buy)
+			buyByName[good.name] = buy
+		}
+		
+		// plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
 		
 		this.view.renderPlan(plan)
 	},
@@ -123,38 +121,29 @@ Me.prototype =
 	
 	calculatePlan: function (portions)
 	{
-		var amounts = {}
+		var parts = new Cocktail.Parts()
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
 			var portion = portions[i]
 			
-			var count = portion.count,
-				parts = portion.parts
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var part = parts[j],
-					name = part.ingredient.name,
-					dose = part.dose
-				
-				var amount = (dose * count).ceil(10)
-				if (amounts[name])
-					amounts[name] += amount
-				else
-					amounts[name] = amount
-			}
+			parts.add(portion.cocktail.getPartsFor(portion.count))
 		}
 		
 		var buyByName = this.buyByName
-		for (var k in amounts)
+		var arr = parts.toArray()
+		for (var i = 0, il = arr.length; i < il; i++)
 		{
-			var buy = buyByName[k],
-				amount = amounts[k]
+			var part = arr[i],
+				amount = part.amount,
+				good = part.good
+			
+			var buy = buyByName[good.name]
 			
 			buy.amount = amount
-			buy.cost = (amount * buy.costPerUnit).ceil()
+			buy.cost = good.getCost(amount).ceil()
 			
-			var human = Units.humanizeDose(amount, buy.unit)
+			var human = Units.humanizeDose(amount, good.unit)
 			buy.amountHumanized = human[0].round(10)
 			buy.unitHumanized = human[1]
 			buy.factorHumanized = human[2]
@@ -177,7 +166,7 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = (amount * buy.costPerUnit).ceil()
+		buy.cost = buy.good.getCost(amount).ceil()
 		
 		this.view.updateBuy(n, buy)
 		

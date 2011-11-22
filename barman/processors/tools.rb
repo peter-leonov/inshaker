@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 require "inshaker"
+require "entities/ingredient"
 require "entities/tool"
 
 class ToolsProcessor < Inshaker::Processor
@@ -22,11 +23,15 @@ class ToolsProcessor < Inshaker::Processor
     sync_base "Tools"
     
     prepare
-    flush_images
+    process
     flush_json
   end
-  
   def prepare
+    @units = YAML::load(File.open("#{Ingredient::Config::BASE_DIR}/units.yaml"))
+    @units_i = @units.hash_index
+  end
+  
+  def process
     path = Config::TOOLS_DIR
     Dir.new(path).each_dir do |group_dir|
       say group_dir.name
@@ -34,15 +39,7 @@ class ToolsProcessor < Inshaker::Processor
       group_dir.each_dir do |tool_dir|
         say tool_dir.name
         indent do
-        @tool = {}
-        @tool["group"] = group_dir.name
-        @tool["name"] = tool_dir.name
-        if File.exists?("#{tool_dir.path}/about.txt")
-          @tool[:desc] = File.open("#{tool_dir.path}/about.txt").read.html_paragraphs
-        else
-          @tool[:desc] = ""
-        end
-        @tools << @tool
+          process_tool tool_dir, tool_dir.name, group_dir
         end # indent
       end
       end # indent
@@ -50,16 +47,76 @@ class ToolsProcessor < Inshaker::Processor
     say "Нашел #{@tools.length} #{@tools.length.plural('штучка', 'штучки', 'штучек')}"
   end
   
-  def flush_json
-    flush_json_object(@tools, Config::DB_JS)
+  def process_tool dir, name, group_dir
+    tool = {}
+    tool["group"] = group_dir.name
+    tool["name"] = dir.name
+    if File.exists?("#{dir.path}/about.txt")
+      tool["desc"] = File.open("#{dir.path}/about.txt").read.html_paragraphs
+    else
+      tool["desc"] = ""
+    end
+    tool["path"] = dir.name.dirify
+    
+    about = dir.path + "/about.yaml"
+    if File.exists?(about)
+      about = YAML::load(File.open(about))
+      if about["Единица"]
+        tool["unit"] = about["Единица"]
+        unless @units_i[tool["unit"]]
+          error "неизвестная единица измерения «#{tool["unit"]}»"
+        end
+      else
+        error "не указана единица измерения"
+      end
+      
+      if about["Тара"] and about["Тара"].length > 0
+        volumes = []
+        about["Тара"].each_with_index do |v, i|
+          if v["Объем"] <= 0
+            warning "нулевой или отрицательный объем (номер #{i+1})"
+            next
+          end
+          
+          if v["Цена"] <= 0
+            warning "нулевая или отрицательная цена (номер #{i+1})"
+            next
+          end
+          
+          volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+        end
+        # increment sort by cost per litre
+        tool["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
+      else
+        error "тара не указана"
+      end
+    else
+      warning "нет описания штучки (about.yaml)"
+    end
+    
+    
+    ht_dir = Dir.create("#{Config::HT_ROOT}/#{name.dirify}/")
+    
+    img = "#{dir.path}/preview.png"
+    if File.exists?(img)
+      convert_image(img, "#{ht_dir.path}/preview.jpg", 90, 100, 100)
+    else
+      warning "нет картинки-превьюшки (файл #{img})"
+    end
+    
+    img = "#{dir.path}/image.png"
+    if File.exists?(img)
+      cp_if_different(img, "#{ht_dir.path}/image.png")
+    else
+      error "нет большой картинки (файл #{img})"
+    end
+    
+    
+    @tools << tool
   end
   
-  def flush_images
-    @tools.each do |t|
-      from = "#{Config::TOOLS_DIR}/#{t["group"]}/#{t["name"]}/image.png"
-      to   = "#{Config::TOOLS_ROOT}/#{t["name"].trans}.png"
-      FileUtils.cp_r(from, to, @mv_opt) unless !File.exists?(from)
-    end
+  def flush_json
+    flush_json_object(@tools, Config::DB_JS)
   end
 end
 

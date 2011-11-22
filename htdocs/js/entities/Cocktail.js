@@ -32,6 +32,33 @@ Me.prototype =
 		return this
 	},
 	
+	getPartsFor: function (count)
+	{
+		var parts = new Me.Parts()
+		
+		var ingredients = this.ingredients
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var v = ingredients[i]
+			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
+		}
+		
+		var garnish = this.garnish
+		for (var i = 0, il = garnish.length; i < il; i++)
+		{
+			var v = garnish[i]
+			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
+		}
+		
+		// var tools = this.tools
+		// for (var i = 0, il = tools.length; i < il; i++)
+		// {
+		// 	parts.addGood(Tool.getByName(tools[i]), 1 * count)
+		// }
+		
+		return parts
+	},
+	
 	getPath: function ()
 	{
 		var path = this._path
@@ -314,6 +341,26 @@ Me.staticMethods =
 		return this.bakeAry(res)
 	},
 	
+	getByIngredientPrepare: function (name)
+	{
+		function ingredients (v)
+		{
+			var keys = []
+			var parts = v.ingredients
+			for (var i = 0, il = parts.length; i < il; i++)
+				keys[i] = parts[i][0]
+			
+			return keys
+		}
+		this.index.byIngredient = DB.hashOfAryIndexAryBy(this.db, ingredients)
+	},
+	
+	getByIngredient: function (name)
+	{
+		var res = this.index.byIngredient[name]
+		return res ? res.slice() : []
+	},
+	
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
@@ -469,3 +516,5 @@ Me.initialize
 )
 
 })();
+
+<!--# include virtual="CocktailParts.js" -->

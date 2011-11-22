@@ -4,7 +4,7 @@ class Tool < Inshaker::Entity
     TOOLS_DIR  = Inshaker::BASE_DIR + "Tools" 
     HTDOCS_DIR = Inshaker::HTDOCS_DIR
     
-    TOOLS_ROOT = HTDOCS_DIR + "i/merchandise/tools/"
+    HT_ROOT    = HTDOCS_DIR + "/tool"
     DB_JS      = HTDOCS_DIR + "db/tools/tools.json"
   end
   

@@ -163,8 +163,6 @@ var myStatic =
 		}
 		
 		this.bind(nodes)
-		
-		Ingredient.calculateEachIngredientUsage()
 	}
 }
 

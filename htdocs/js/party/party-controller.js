@@ -24,9 +24,9 @@ Me.prototype =
 		this.model.setIngredientAmount(n, v)
 	},
 	
-	ingredientSelected: function (name)
+	goodSelected: function (name)
 	{
-		this.model.selectIngredientName(name)
+		this.model.selectGoodName(name)
 	},
 	
 	printParty: function ()

@@ -14,7 +14,7 @@ Me.prototype =
 	
     listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	pageHref: function () { return '/ingredient/' + this.path + '/' },
-	getMiniImageSrc: function () { return this.pageHref() + "preview.jpg" },
+	getMiniImageSrc: function () { return this.pageHref() + 'preview.jpg' },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	combinatorLink: function () { return '/combinator.html#q=' + encodeURIComponent(this.name) },
@@ -70,6 +70,12 @@ Me.prototype =
 		}
 		
 		return node
+	},
+	
+	getCost: function (anount)
+	{
+		var best = this.volumes[0]
+		return anount * best[1] / best[0]
 	}
 }
 

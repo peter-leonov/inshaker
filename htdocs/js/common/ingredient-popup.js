@@ -81,7 +81,7 @@ var myProto =
 		this.renderSupplements(ingredient)
 		
 		var me = this
-		setTimeout(function () { me.renderCocktails(nodes, ingredient.cocktails) }, 0)
+		setTimeout(function () { me.renderCocktails(nodes, ingredient) }, 0)
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
 	},
 	
@@ -89,7 +89,7 @@ var myProto =
 	{
 		var nodes = this.nodes
 		
-		var count = ingredient.cocktails.length
+		var count = Cocktail.getByIngredient(ingredient.name).length
 		if (count == 0)
 		{
 			nodes.allCocktails.hide()
@@ -110,7 +110,7 @@ var myProto =
 	{
 		var nodes = this.nodes
 		
-		if (ingredient.cocktails.length < 6)
+		if (Cocktail.getByIngredient(ingredient.name).length < 6)
 		{
 			nodes.combinations.hide()
 			return
@@ -145,20 +145,13 @@ var myProto =
 		}
 	},
 	
-	renderCocktails: function (nodes, cocktails)
+	renderCocktails: function (nodes, ingredient)
 	{
-		cocktails = cocktails.slice().randomize()
+		var cocktails = Cocktail.getByIngredient(ingredient.name)
+		cocktails.randomize()
 		
 		var cl = new CocktailList()
-		var nodes =
-		{
-			root: nodes.cocktails,
-			viewport: nodes.cocktailsViewport,
-			surface: nodes.cocktailsSurface,
-			prev: nodes.cocktailsPrev,
-			next: nodes.cocktailsNext
-		}
-		cl.bind(nodes)
+		cl.bind(nodes.cocktails)
 		cl.configure({pageLength: 5, pageVelocity: 38})
 		cl.setCocktails(cocktails)
 	}
@@ -227,17 +220,19 @@ var myStatic =
 				allCocktailsLink: $$('#ingredient-info-popup .description .about .all-cocktails .link')[0],
 				combinations: $$('#ingredient-info-popup .description .about .combinations')[0],
 				combinationsList: $$('#ingredient-info-popup .description .about .combinations .list')[0],
-				cocktails: $$('#ingredient-info-popup .cocktail-list')[0],
-				cocktailsViewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
-				cocktailsSurface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
-				cocktailsPrev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
-				cocktailsNext: $$('#ingredient-info-popup .cocktail-list .next')[0]
+				
+				cocktails:
+				{
+					root: $$('#ingredient-info-popup .cocktail-list')[0],
+					viewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
+					surface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
+					prev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
+					next: $$('#ingredient-info-popup .cocktail-list .next')[0]
+				}
 			}
 		}
 		
 		this.bind(nodes)
-		
-		Ingredient.calculateEachIngredientUsage()
 	}
 }
 

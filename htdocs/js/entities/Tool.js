@@ -1,34 +1,60 @@
-Tool = function (data)
+;(function(){
+
+function Me (data)
 {
-	for (var k in data) this[k] = data[k];
+	for (var k in data)
+		this[k] = data[k]
+	
+	if (!this.unit)
+		this.unit = 'шт'
+	if (!this.volumes)
+		this.volumes = [[1, 1]]
 }
 
-Tool.prototype = {
-	constructor: Tool,
+Me.prototype =
+{
+	pageHref: function () { return '/tool/' + this.path },
+	getMiniImageSrc: function () { return this.pageHref() + '/preview.jpg' },
+	imgSrc: function () { return this.pageHref() + '/image.png' },
 	
-	imgSrc: function(){
-		return "/i/merchandise/tools/" + this.name.trans() + ".png";
+	getCost: function (anount)
+	{
+		var best = this.volumes[0]
+		return anount * best[1] / best[0]
 	}
 }
 
-Object.extend(Tool,
+Me.staticMethods =
 {
-	tools: [],
+	db: null,
+	index: {},
 	
-	initialize: function (array)
+	initialize: function (db)
 	{
-		for(var i = 0; i < array.length; i++){
-			var tool = new Tool(array[i]);
-			this.tools[i] = tool;
-		}
+		this.db = db
+		
+		for (var i = 0; i < db.length; i++)
+			db[i] = new Tool(db[i])
+	},
+	
+	getByNamePrepare: function (name)
+	{
+		this.index.byName = DB.hashIndexKey(this.db, 'name')
 	},
 	
 	getByName: function (name)
 	{
-		for(var i = 0; i < this.tools.length; i++){
-			if(this.tools[i].name == name) return this.tools[i];
-		}
+		return this.index.byName[name]
 	}
-});
+}
 
-Tool.initialize(<!--# include virtual="/db/tools/tools.json" -->)
+Object.extend(Me, DB.module.staticMethods)
+Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
+
+Me.className = 'Tool'
+self[Me.className] = Me
+
+Me.initialize(<!--# include virtual="/db/tools/tools.json" -->)
+
+})();
