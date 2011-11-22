@@ -147,7 +147,11 @@ var myProto =
 	
 	renderCocktails: function (nodes, ingredient)
 	{
-		var cocktails = Cocktail.getByIngredient(ingredient.name)
+		var a = Cocktail.getByIngredient(ingredient.name),
+			b = Cocktail.getByGarnish(ingredient.name),
+			c = Cocktail.getByTool(ingredient.name)
+		
+		var cocktails = DB.disjunction([a, b, c])
 		cocktails.randomize()
 		
 		var cl = new CocktailList()
