@@ -327,7 +327,7 @@ function CocktailsModel (states, view) {
 		if (filters.strength)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 			
 			lastStates = groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
 		}
@@ -338,7 +338,7 @@ function CocktailsModel (states, view) {
 		if (filters.tag)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 			
 			groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
 		}
@@ -349,7 +349,7 @@ function CocktailsModel (states, view) {
 		if (filters.method)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 		}
 		
 		res.sort(Cocktail.complexitySort)

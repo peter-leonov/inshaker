@@ -107,7 +107,7 @@ var Me =
 		return hash
 	},
 	
-	intersection: function (arys)
+	conjunction: function (arys)
 	{
 		var length = arys.length
 		if (length == 0)
