@@ -316,8 +316,17 @@ function CocktailsModel (states, view) {
 			res = Cocktail.getByIngredients(ingredients, {db: res, count: 1})
 		}
 		
+		// first run of Cocktail.getByGood() may cost near 20 ms
 		if (filters.ingredients && filters.ingredients.length)
-			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
+		{
+			var goods = filters.ingredients.slice()
+			for (var i = 0, il = goods.length; i < il; i++)
+			{
+				goods[i] = Cocktail.getByGood(goods[i])
+			}
+			goods.push(res)
+			res = DB.conjunction(goods)
+		}
 		
 		var lastStates = groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
 		

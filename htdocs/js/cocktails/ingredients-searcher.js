@@ -12,10 +12,6 @@ function Me ()
 		var ingredient = ingredients[i],
 			name = ingredient.name
 		
-		var cocktails = Cocktail.getByIngredient(ingredient.name)
-		if (cocktails.length < 1)
-			continue
-		
 		set.push(name)
 		
 		var snames = ingredient.names
