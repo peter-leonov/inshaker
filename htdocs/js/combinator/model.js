@@ -519,7 +519,12 @@ var myProto =
 			
 			if (type == 'ingredient')
 			{
-				var set = Cocktail.getByIngredient(item.valueOf())
+				var name = item.valueOf()
+				
+				var ingredient = Cocktail.getByIngredient(name),
+					tool = Cocktail.getByTool(name)
+				
+				var set = DB.disjunction([ingredient, tool])
 				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
