@@ -282,7 +282,7 @@ Me.staticMethods =
 		
 		var hash = DB.hashIndex(tags)
 		
-		var res = [], rest = res.rest = []
+		var res = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -296,8 +296,6 @@ Me.staticMethods =
 					res.push(cocktail)
 					continue db
 				}
-			
-			rest.push(cocktail)
 		}
 		return res;
 	},
@@ -383,8 +381,7 @@ Me.staticMethods =
 		// caching names of requested ingredients
 		var hash = DB.hashIndex(names)
 		
-		var res = [],
-			rest = res.rest = []
+		var res = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -415,9 +412,6 @@ Me.staticMethods =
 						continue db
 					}
 			}
-			// here if cocktail does not pass at all
-			
-			rest.push(cocktail)
 		}
 		return res
 	},
