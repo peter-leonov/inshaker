@@ -71,7 +71,7 @@ function CocktailsModel (states, view) {
 	{
 		var ingredients = Ingredient.getAll()
 		
-		var set = [], bySecondName = {}, push = Array.prototype.push
+		var set = [], bySecondName = {}
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingredient = ingredients[i],
