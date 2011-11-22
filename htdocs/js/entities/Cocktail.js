@@ -358,6 +358,26 @@ Me.staticMethods =
 		return res ? res.slice() : []
 	},
 	
+	getByGarnishPrepare: function (name)
+	{
+		function ingredients (v)
+		{
+			var keys = []
+			var parts = v.garnish
+			for (var i = 0, il = parts.length; i < il; i++)
+				keys[i] = parts[i][0]
+			
+			return keys
+		}
+		this.index.byGarnish = DB.hashOfAryIndexAryBy(this.db, ingredients)
+	},
+	
+	getByGarnish: function (name)
+	{
+		var res = this.index.byGarnish[name]
+		return res ? res.slice() : []
+	},
+	
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
