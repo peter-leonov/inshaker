@@ -91,7 +91,7 @@ class ToolsProcessor < Inshaker::Processor
         error "тара не указана"
       end
     else
-      warning "нет описания штучки (about.yaml)"
+      error "нет описания штучки (about.yaml)"
     end
     
     
@@ -101,7 +101,7 @@ class ToolsProcessor < Inshaker::Processor
     if File.exists?(img)
       convert_image(img, "#{ht_dir.path}/preview.jpg", 90, 100, 100)
     else
-      warning "нет картинки-превьюшки (файл #{img})"
+      error "нет картинки-превьюшки (файл #{img})"
     end
     
     img = "#{dir.path}/image.png"
