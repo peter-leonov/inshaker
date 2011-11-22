@@ -261,18 +261,15 @@ Me.staticMethods =
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
-	getByTool: function (tool)
+	getByToolPrepare: function (name)
 	{
-		var db = this.db
-		
-		var res = []
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i]
-			if (cocktail.tools.indexOf(tool) > -1)
-				res.push(cocktail)
-		}
-		return res
+		this.index.byTool = DB.hashOfAryIndexByAryKey(this.db, 'tools')
+	},
+	
+	getByTool: function (name)
+	{
+		var res = this.index.byTool[name]
+		return res ? res.slice() : []
 	},
 	
 	getByTags: function (tags, opts)
