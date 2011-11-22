@@ -378,6 +378,15 @@ Me.staticMethods =
 		return res ? res.slice() : []
 	},
 	
+	getByGood: function (name)
+	{
+		var ingredient = this.getByIngredient(name),
+			garnish = this.getByGarnish(name),
+			tool = this.getByTool(name)
+		
+		return DB.disjunction([ingredient, garnish, tool])
+	},
+	
 	getByIngredients: function (ingredients, opts)
 	{
 		var names = []
