@@ -92,6 +92,11 @@ var myProto =
 		
 		this.parent.setMainState()
 		
+		this.setupSearcher()
+	},
+	
+	setupSearcher: function ()
+	{
 		//ingr searcher
 		var ingredients = Ingredient.getAllNames(),
 			secondNames = Ingredient.getAllSecondNames(),
@@ -101,7 +106,7 @@ var myProto =
 		set.push.apply(set, secondNames)
 		set.sort()
 		
-		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
+		var searcher = new IngredientsSearcher(set, secondNamesHash)
 		this.view.setCompleterDataSource(searcher)
 	},
 	
