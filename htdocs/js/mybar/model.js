@@ -99,11 +99,21 @@ var myProto =
 	{
 		var ingredients = Ingredient.getAll()
 		
+		var forbiddenGroups =
+		{
+			'Посуда': true,
+			'Штучки': true,
+			'Украшения': true
+		}
+		
 		var set = [], bySecondName = {}
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingredient = ingredients[i],
 				name = ingredient.name
+			
+			if (forbiddenGroups[ingredient.group])
+				continue
 			
 			set.push(name)
 			
