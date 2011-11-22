@@ -109,24 +109,6 @@ Object.extend(Ingredient,
 		return this.tags
 	},
 	
-	getAllWithCocktails: function (n)
-	{
-		var db = this.db
-		
-		if (n === undefined)
-			n = 1
-		
-		var res = []
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingredient = db[i]
-			var cocktails = Cocktail.getByIngredient(ingredient.name)
-			if (cocktails.length >= n)
-				res.push(ingredient)
-		}
-		return res
-	},
-	
 	getByName: function (name)
 	{
 		if (!this._byName)

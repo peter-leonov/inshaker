@@ -4,17 +4,35 @@ var myName = 'IngredientsSearcher'
 
 function Me ()
 {
-	var ingredients = Ingredient.getAllNames(),
-		names = Ingredient.getAllSecondNames()
+	var ingredients = Ingredient.getAll()
 	
-	var set = ingredients.slice()
-	set.push.apply(set, names)
-	set = set.sort()
+	var set = [], bySecondName = {}, push = Array.prototype.push
+	for (var i = 0, il = ingredients.length; i < il; i++)
+	{
+		var ingredient = ingredients[i],
+			name = ingredient.name
+		
+		var cocktails = Cocktail.getByIngredient(ingredient.name)
+		if (cocktails.length < 1)
+			continue
+		
+		set.push(name)
+		
+		var snames = ingredient.names
+		if (!snames)
+			continue
+		
+		for (var j = 0, jl = snames.length; j < jl; j++)
+		{
+			var sname = snames[j]
+			set.push(sname)
+			bySecondName[sname] = name
+		}
+	}
+	set.sort()
 	
-	var bySecondName = Ingredient.getNameBySecondNameHash()
-	
-	this.ingredients = set || []
-	this.names = bySecondName || {}
+	this.ingredients = set
+	this.names = bySecondName
 	this.cache = {}
 	this.duplicates = {}
 	this.favorites = {}
