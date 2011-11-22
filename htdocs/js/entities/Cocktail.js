@@ -302,40 +302,15 @@ Me.staticMethods =
 		return res;
 	},
 	
-	_indexByTag: function ()
+	getByTagPrepare: function ()
 	{
-		var index = this.index.byTag
-		if (index)
-			return index
-		
-		var db = this.db
-		
-		var index = this.index.byTag = {}
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i]
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var tag = tags[j]
-				
-				var ary = index[tag]
-				if (ary)
-					ary.push(cocktail)
-				else
-					index[tag] = [cocktail]
-			}
-		}
-		
-		return index
+		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
 	},
 	
 	getByTag: function (tag)
 	{
-		var index = this._indexByTag()
-		var res = index[tag] || []
-		return this.bakeAry(res)
+		var res = this.index.byTag[tag]
+		return res ? this.bakeAry(res.slice()) : []
 	},
 	
 	getByIngredientPrepare: function (name)
