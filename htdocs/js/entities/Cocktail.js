@@ -446,7 +446,7 @@ Me.staticMethods =
 	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
 	{
-		var cocktails = this.getByIngredientNames([ingredientName])
+		var cocktails = this.getByIngredient(ingredientName)
 		
 		var score = {}
 		
