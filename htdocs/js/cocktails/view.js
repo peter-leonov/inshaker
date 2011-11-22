@@ -24,11 +24,7 @@ function CocktailsView (states, nodes, styles) {
 	{
 		this.viewData = viewData
 		
-		var set = viewData.ingredients.slice()
-		set.push.apply(set, viewData.names)
-		set = set.sort()
-		
-		var searcher = this.searcher = new IngredientsSearcher(set, viewData.byName)
+		var searcher = this.searcher = new IngredientsSearcher()
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
 		

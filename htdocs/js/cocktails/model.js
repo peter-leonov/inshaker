@@ -56,14 +56,11 @@ function CocktailsModel (states, view) {
 		this.filters = this.completeFilters(filters);
 		var viewData = {}
 		
-		viewData.ingredients = Ingredient.getAllNames()
 		viewData.tags = Cocktail.getGroups()
 		viewData.strengths = Cocktail.getStrengths()
 		viewData.methods = Cocktail.getMethods()
 		
 		viewData.letters = Cocktail.getFirstLetters()
-		viewData.names = Ingredient.getAllSecondNames()
-		viewData.byName = Ingredient.getNameBySecondNameHash()
 		view.initialize(viewData, this.filters.state);
 		this.applyFilters();
 	};
