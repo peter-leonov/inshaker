@@ -357,7 +357,8 @@ Me.staticMethods =
 	
 	getByIngredient: function (name)
 	{
-		return this.index.byIngredient[name].slice() || []
+		var res = this.index.byIngredient[name]
+		return res ? res.slice() : []
 	},
 	
 	getByIngredients: function (ingredients, opts)
