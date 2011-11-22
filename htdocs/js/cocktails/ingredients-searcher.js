@@ -2,33 +2,10 @@
 
 var myName = 'IngredientsSearcher'
 
-function Me ()
+function Me (ingredients, names)
 {
-	var ingredients = Ingredient.getAll()
-	
-	var set = [], bySecondName = {}, push = Array.prototype.push
-	for (var i = 0, il = ingredients.length; i < il; i++)
-	{
-		var ingredient = ingredients[i],
-			name = ingredient.name
-		
-		set.push(name)
-		
-		var snames = ingredient.names
-		if (!snames)
-			continue
-		
-		for (var j = 0, jl = snames.length; j < jl; j++)
-		{
-			var sname = snames[j]
-			set.push(sname)
-			bySecondName[sname] = name
-		}
-	}
-	set.sort()
-	
-	this.ingredients = set
-	this.names = bySecondName
+	this.ingredients = ingredients || []
+	this.names = names || []
 	this.cache = {}
 	this.duplicates = {}
 	this.favorites = {}

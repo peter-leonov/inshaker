@@ -62,8 +62,38 @@ function CocktailsModel (states, view) {
 		
 		viewData.letters = Cocktail.getFirstLetters()
 		view.initialize(viewData, this.filters.state);
+		this.setupCompleter()
+		
 		this.applyFilters();
 	};
+	
+	this.setupCompleter = function ()
+	{
+		var ingredients = Ingredient.getAll()
+		
+		var set = [], bySecondName = {}, push = Array.prototype.push
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			set.push(name)
+			
+			var snames = ingredient.names
+			if (!snames)
+				continue
+			
+			for (var j = 0, jl = snames.length; j < jl; j++)
+			{
+				var sname = snames[j]
+				set.push(sname)
+				bySecondName[sname] = name
+			}
+		}
+		set.sort()
+		
+		view.setupCompleter(new IngredientsSearcher(set, bySecondName))
+	}
 	
 	this.randomIngredient = function(){
 		var allNames = Ingredient.getAllNames()
