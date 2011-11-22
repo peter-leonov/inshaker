@@ -519,19 +519,25 @@ var myProto =
 			
 			if (type == 'ingredient')
 			{
-				cocktails = Cocktail.getByIngredientNames([item.valueOf()], {db: cocktails})
+				var set = Cocktail.getByIngredient(item.valueOf())
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 			
 			if (type == 'ingredient-tag')
 			{
-				cocktails = Cocktail.getByIngredientNames(item.names, {db: cocktails, count: 1})
+				var goods = item.names.slice()
+				for (var i = 0, il = goods.length; i < il; i++)
+					goods[i] = Cocktail.getByIngredient(goods[i])
+				var set = DB.disjunction(goods)
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 			
 			if (type == 'cocktail-tag')
 			{
-				cocktails = Cocktail.getByTags([item], {db: cocktails, count: 1})
+				var set = Cocktail.getByTag(item)
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 		}
