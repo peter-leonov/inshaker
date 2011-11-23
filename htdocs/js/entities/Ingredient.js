@@ -86,10 +86,6 @@ Object.extend(Ingredient,
 	
 	initialize: function (db, groups, tags)
 	{
-		var I = Ingredient
-		for (var i = 0, il = db.length; i < il; i++)
-			db[i] = new I(db[i])
-		
 		this.db = db
 		this.groups = groups
 		this.tags = tags
@@ -97,6 +93,10 @@ Object.extend(Ingredient,
 		var groupOrder = this.groupOrder = {}
 		for (var i = 0, il = groups.length; i < il; i++)
 			groupOrder[groups[i]] = i
+		
+		var I = Ingredient
+		for (var i = 0, il = db.length; i < il; i++)
+			db[i] = new I(db[i])
 	},
 	
 	getAll: function ()
