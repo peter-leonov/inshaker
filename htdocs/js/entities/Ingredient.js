@@ -2,7 +2,7 @@
 
 eval(NodesShortcut.include())
 
-var Me = self.Ingredient = function (data)
+function Me (data)
 {
 	for (var k in data)
 		this[k] = data[k]
@@ -10,8 +10,6 @@ var Me = self.Ingredient = function (data)
 
 Me.prototype =
 {
-	constructor: Ingredient,
-	
 	pageHref: function () { return '/ingredient/' + this.path + '/' },
 	getMiniImageSrc: function () { return this.pageHref() + 'preview.jpg' },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
@@ -78,7 +76,7 @@ Me.prototype =
 	}
 }
 
-Object.extend(Ingredient,
+Me.staticMethods =
 {
 	db: null,
 	groups: null,
@@ -94,9 +92,8 @@ Object.extend(Ingredient,
 		for (var i = 0, il = groups.length; i < il; i++)
 			groupOrder[groups[i]] = i
 		
-		var I = Ingredient
 		for (var i = 0, il = db.length; i < il; i++)
-			db[i] = new I(db[i])
+			db[i] = new Me(db[i])
 	},
 	
 	getAll: function ()
@@ -370,10 +367,16 @@ Object.extend(Ingredient,
 		
 		return coefficients
 	}
-})
+}
 
+Object.extend(Me, DB.module.staticMethods)
+Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
 
-Ingredient.initialize
+Me.className = 'Ingredient'
+self[Me.className] = Me
+
+Me.initialize
 (
 	<!--# include virtual="/db/ingredients/ingredients.json"-->,
 	<!--# include virtual="/db/ingredients/groups.json"-->,
