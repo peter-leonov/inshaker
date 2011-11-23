@@ -23,7 +23,6 @@ class Launcher
       "cocktails" => ["./processors/cocktails.rb", "Коктейли"],
       "ingredients" => ["./processors/ingredients.rb", "Ингредиенты"],
       "marks" => ["./processors/marks.rb", "Марки"],
-      "tools" => ["./processors/tools.rb", "Штучки"],
       "bars" => ["./processors/bars.rb", "Бары"],
       "events" => ["./processors/events.rb", "События"],
       "barmen" => ["./processors/barmen.rb", "Барменов"],

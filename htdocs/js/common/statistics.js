@@ -29,11 +29,6 @@ var Me =
 		this.event('cocktail-added-to-calculator', cocktail && cocktail.name)
 	},
 	
-	toolPopupOpened: function (tool)
-	{
-		this.event('tool-popup', tool && tool.name)
-	},
-	
 	ingredientPopupOpened: function (ingredient)
 	{
 		this.event('ingredient-popup', ingredient && ingredient.name)

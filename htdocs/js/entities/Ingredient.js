@@ -259,44 +259,6 @@ Object.extend(Ingredient,
 		}
 	},
 	
-	_updateBySecondNameIndex: function ()
-	{
-		var db = this.db,
-			secondNames = this._secondNames = [],
-			nameBySecondName = this._nameBySecondName = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i],
-				snames = ingred.names
-			
-			if (snames)
-			{
-				var name = ingred.name
-				for (var j = 0; j < snames.length; j++)
-				{
-					var sn = snames[j]
-					nameBySecondName[sn] = name
-					secondNames.push(sn)
-				}
-			}
-		}
-	},
-	
-	getNameBySecondNameHash: function ()
-	{
-		if (!this._nameBySecondName)
-			this._updateBySecondNameIndex()
-		return this._nameBySecondName
-	},
-	
-	getAllSecondNames: function ()
-	{
-		if (!this._secondNames)
-			this._updateBySecondNameIndex()
-		return this._secondNames
-	},
-	
 	_updateByMarkIndex: function ()
 	{
 		var db = this.db,

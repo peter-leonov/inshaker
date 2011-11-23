@@ -53,7 +53,7 @@ Me.prototype =
 		// var tools = this.tools
 		// for (var i = 0, il = tools.length; i < il; i++)
 		// {
-		// 	parts.addGood(Tool.getByName(tools[i]), 1 * count)
+		// 	parts.addGood(Ingredient.getByName(tools[i]), 1 * count)
 		// }
 		
 		return parts
@@ -261,18 +261,15 @@ Me.staticMethods =
 	
 	getAllNames: function (name) { return Object.keys(this.byName) },
 	
-	getByTool: function (tool)
+	getByToolPrepare: function (name)
 	{
-		var db = this.db
-		
-		var res = []
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i]
-			if (cocktail.tools.indexOf(tool) > -1)
-				res.push(cocktail)
-		}
-		return res
+		this.index.byTool = DB.hashOfAryIndexByAryKey(this.db, 'tools')
+	},
+	
+	getByTool: function (name)
+	{
+		var res = this.index.byTool[name]
+		return res ? res.slice() : []
 	},
 	
 	getByTags: function (tags, opts)
@@ -285,7 +282,7 @@ Me.staticMethods =
 		
 		var hash = DB.hashIndex(tags)
 		
-		var res = [], rest = res.rest = []
+		var res = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -299,46 +296,19 @@ Me.staticMethods =
 					res.push(cocktail)
 					continue db
 				}
-			
-			rest.push(cocktail)
 		}
 		return res;
 	},
 	
-	_indexByTag: function ()
+	getByTagPrepare: function ()
 	{
-		var index = this.index.byTag
-		if (index)
-			return index
-		
-		var db = this.db
-		
-		var index = this.index.byTag = {}
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i]
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var tag = tags[j]
-				
-				var ary = index[tag]
-				if (ary)
-					ary.push(cocktail)
-				else
-					index[tag] = [cocktail]
-			}
-		}
-		
-		return index
+		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
 	},
 	
 	getByTag: function (tag)
 	{
-		var index = this._indexByTag()
-		var res = index[tag] || []
-		return this.bakeAry(res)
+		var res = this.index.byTag[tag]
+		return res ? this.bakeAry(res.slice()) : []
 	},
 	
 	getByIngredientPrepare: function (name)
@@ -359,6 +329,35 @@ Me.staticMethods =
 	{
 		var res = this.index.byIngredient[name]
 		return res ? res.slice() : []
+	},
+	
+	getByGarnishPrepare: function (name)
+	{
+		function ingredients (v)
+		{
+			var keys = []
+			var parts = v.garnish
+			for (var i = 0, il = parts.length; i < il; i++)
+				keys[i] = parts[i][0]
+			
+			return keys
+		}
+		this.index.byGarnish = DB.hashOfAryIndexAryBy(this.db, ingredients)
+	},
+	
+	getByGarnish: function (name)
+	{
+		var res = this.index.byGarnish[name]
+		return res ? res.slice() : []
+	},
+	
+	getByGood: function (name)
+	{
+		var ingredient = this.getByIngredient(name),
+			garnish = this.getByGarnish(name),
+			tool = this.getByTool(name)
+		
+		return DB.disjunction([ingredient, garnish, tool])
 	},
 	
 	getByIngredients: function (ingredients, opts)
@@ -382,8 +381,7 @@ Me.staticMethods =
 		// caching names of requested ingredients
 		var hash = DB.hashIndex(names)
 		
-		var res = [],
-			rest = res.rest = []
+		var res = []
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
@@ -414,9 +412,6 @@ Me.staticMethods =
 						continue db
 					}
 			}
-			// here if cocktail does not pass at all
-			
-			rest.push(cocktail)
 		}
 		return res
 	},
@@ -451,7 +446,7 @@ Me.staticMethods =
 	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
 	{
-		var cocktails = this.getByIngredientNames([ingredientName])
+		var cocktails = this.getByIngredient(ingredientName)
 		
 		var score = {}
 		

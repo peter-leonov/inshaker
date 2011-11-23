@@ -3,7 +3,6 @@
 require "inshaker"
 require "entities/cocktail"
 require "entities/ingredient"
-require "entities/tool"
 
 class CocktailsProcessor < Inshaker::Processor
 
@@ -66,7 +65,6 @@ class CocktailsProcessor < Inshaker::Processor
     sync_base "Cocktails"
     
     Ingredient.init
-    Tool.init
     Cocktail.init
     
     prepare_dirs
@@ -145,7 +143,7 @@ class CocktailsProcessor < Inshaker::Processor
     indent do
     @cocktails.each do |name, cocktail|
       cocktail["tools"].each do |tool|
-        unless Tool[tool]
+        unless Ingredient[tool]
           error "#{name}: нет такой штучки «#{tool}»"
           if tool.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"

@@ -107,7 +107,7 @@ var Me =
 		return hash
 	},
 	
-	intersection: function (arys)
+	conjunction: function (arys)
 	{
 		var length = arys.length
 		if (length == 0)
@@ -138,6 +138,34 @@ var Me =
 			if (seen[item._oid] == length)
 				res.push(item)
 		}
+		
+		return res
+	},
+	
+	disjunction: function (arys)
+	{
+		var length = arys.length
+		if (length == 0)
+			return []
+		else if (length == 1)
+			return arys[0].slice()
+		
+		var res = [], seen = []
+		for (var i = 0; i < length; i++)
+		{
+			var items = arys[i]
+			for (var j = 0, jl = items.length; j < jl; j++)
+			{
+				var item = items[j],
+					id = item._oid
+				if (seen[id])
+					continue
+				seen[id] = true
+				res.push(item)
+			}
+		}
+		
+		// res.sort(function (a, b) { return a._oid - b._oid })
 		
 		return res
 	}

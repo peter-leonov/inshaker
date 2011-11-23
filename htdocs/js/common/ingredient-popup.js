@@ -147,7 +147,7 @@ var myProto =
 	
 	renderCocktails: function (nodes, ingredient)
 	{
-		var cocktails = Cocktail.getByIngredient(ingredient.name)
+		var cocktails = Cocktail.getByGood(ingredient.name)
 		cocktails.randomize()
 		
 		var cl = new CocktailList()

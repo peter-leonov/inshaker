@@ -13,13 +13,11 @@ class GoodsProcessor < Inshaker::Processor
     NOSCRIPT_LINKS     = HT_ROOT + "links.html"
     
     DB_JS              = Inshaker::HTDOCS_DIR + "db/goods/goods.json"
-    DB_JS_TOOLS        = Inshaker::HTDOCS_DIR + "db/tools/tools.json"
   end
   
   def initialize
     super
     @all_ingredients = {}
-    @all_tools = {}
   end
   
   def job_name
@@ -43,7 +41,6 @@ class GoodsProcessor < Inshaker::Processor
     prepare_dirs
     prepare_renderer
     prepare_ingredients
-    prepare_tools
     
     process_goods
     
@@ -58,14 +55,6 @@ class GoodsProcessor < Inshaker::Processor
     if File.exists?(Ingredient::Config::DB_JS)
       load_json(Ingredient::Config::DB_JS).each do |ingred|
         @all_ingredients[ingred["name"]] = ingred
-      end
-    end
-  end
-  
-  def prepare_tools
-    if File.exists?(Config::DB_JS_TOOLS)
-      load_json(Config::DB_JS_TOOLS).each do |tool|
-        @all_tools[tool["name"]] = tool
       end
     end
   end
@@ -94,7 +83,7 @@ class GoodsProcessor < Inshaker::Processor
       if yaml["Что продается"]
         for_sale = good["sell"] = []
         yaml["Что продается"].each do |v|
-          if @all_ingredients[v] || @all_tools[v]
+          if @all_ingredients[v]
             for_sale << v
           else
             error %Q{нет такого ингредиента или штучки "#{v}"}
