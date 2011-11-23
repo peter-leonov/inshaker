@@ -12,7 +12,6 @@ Me.prototype =
 {
 	constructor: Ingredient,
 	
-    listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	pageHref: function () { return '/ingredient/' + this.path + '/' },
 	getMiniImageSrc: function () { return this.pageHref() + 'preview.jpg' },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
