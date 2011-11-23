@@ -56,17 +56,44 @@ function CocktailsModel (states, view) {
 		this.filters = this.completeFilters(filters);
 		var viewData = {}
 		
-		viewData.ingredients = Ingredient.getAllNames()
 		viewData.tags = Cocktail.getGroups()
 		viewData.strengths = Cocktail.getStrengths()
 		viewData.methods = Cocktail.getMethods()
 		
 		viewData.letters = Cocktail.getFirstLetters()
-		viewData.names = Ingredient.getAllSecondNames()
-		viewData.byName = Ingredient.getNameBySecondNameHash()
 		view.initialize(viewData, this.filters.state);
+		this.setupCompleter()
+		
 		this.applyFilters();
 	};
+	
+	this.setupCompleter = function ()
+	{
+		var ingredients = Ingredient.getAll()
+		
+		var set = [], bySecondName = {}
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			set.push(name)
+			
+			var snames = ingredient.names
+			if (!snames)
+				continue
+			
+			for (var j = 0, jl = snames.length; j < jl; j++)
+			{
+				var sname = snames[j]
+				set.push(sname)
+				bySecondName[sname] = name
+			}
+		}
+		set.sort()
+		
+		view.setupCompleter(new IngredientsSearcher(set, bySecondName))
+	}
 	
 	this.randomIngredient = function(){
 		var allNames = Ingredient.getAllNames()
@@ -319,15 +346,24 @@ function CocktailsModel (states, view) {
 			res = Cocktail.getByIngredients(ingredients, {db: res, count: 1})
 		}
 		
+		// first run of Cocktail.getByGood() may cost near 20 ms
 		if (filters.ingredients && filters.ingredients.length)
-			res = Cocktail.getByIngredientNames(filters.ingredients, {db: res})
+		{
+			var goods = filters.ingredients.slice()
+			for (var i = 0, il = goods.length; i < il; i++)
+			{
+				goods[i] = Cocktail.getByGood(goods[i])
+			}
+			goods.push(res)
+			res = DB.conjunction(goods)
+		}
 		
 		var lastStates = groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
 		
 		if (filters.strength)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 			
 			lastStates = groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
 		}
@@ -338,7 +374,7 @@ function CocktailsModel (states, view) {
 		if (filters.tag)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 			
 			groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
 		}
@@ -349,7 +385,7 @@ function CocktailsModel (states, view) {
 		if (filters.method)
 		{
 			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
-			res = DB.intersection([res, set])
+			res = DB.conjunction([res, set])
 		}
 		
 		res.sort(Cocktail.complexitySort)

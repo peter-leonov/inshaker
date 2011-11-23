@@ -149,7 +149,7 @@ var Controller = {
 		
 		var tools_links = $$(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
-			var tool = Tool.getByName(tools_links[i].innerHTML)
+			var tool = Ingredient.getByName(tools_links[i].innerHTML)
 			// FIXME: dirty fix for invalid tool name
 			// was cached in html while js had been updated
 			if (!tool)
@@ -158,7 +158,7 @@ var Controller = {
 				continue
 			}
 			tools_links[i].addEventListener('click', function(tool){ return function(e){
-				self.showToolPopup(tool)
+				self.showIngredientPopup(tool)
 			}}(tool), false);
 		}
 	
@@ -168,8 +168,9 @@ var Controller = {
 	mayBeIngredientClicked: function (node)
 	{
 		var name = node.getAttribute('data-ingredient-name')
-		if (name)
-			this.showIngredientPopup(name)
+		var ingredient = Ingredient.getByName(name)
+		if (ingredient)
+			this.showIngredientPopup(ingredient)
 	},
 	
 	renderRecommendations: function(recs){
@@ -249,16 +250,11 @@ var Controller = {
 		$(this.ID_RELATED).RollingImagesLite.goInit();
 	},
 
-	showIngredientPopup: function (name)
+	showIngredientPopup: function (ingredient)
 	{
-		IngredientPopup.show(Ingredient.getByName(name))
+		IngredientPopup.show(ingredient)
 	},
 	
-	showToolPopup: function (tool)
-	{
-		ToolPopup.show(tool)
-	},
-
 	renderIngredients: function(ingredients) {
 		var perPage = 3;
 		var np = this._getNumOfPages(ingredients, perPage);
@@ -288,7 +284,7 @@ var Controller = {
 			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
 			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
-                self.showIngredientPopup(name);
+                self.showIngredientPopup(Ingredient.getByName(name));
             }}(ingredient.name), false);
 			div.appendChild(img);
 		}

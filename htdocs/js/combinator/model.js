@@ -45,29 +45,24 @@ var myProto =
 		this.searchCache = {}
 		
 		this.state = new DefaultState()
+		
+		this.hideGroups =
+		{
+			'Посуда': true,
+			'Штучки': true,
+			'Украшения': true
+		}
 	},
 	
 	bind: function ()
 	{
-		var ingredients = Ingredient.getAllNames(),
-			secondNames = Ingredient.getAllSecondNames(),
-			secondNamesHash = Ingredient.getNameBySecondNameHash(),
-			ingredientsTags = Ingredient.getTags(),
+		var ingredientsTags = Ingredient.getTags(),
 			cocktailsTags = Cocktail.getTags()
-		
-		var set = ingredients.slice()
-		set.push.apply(set, secondNames)
-		set.push.apply(set, ingredientsTags)
-		set.push.apply(set, cocktailsTags)
-		set.sort()
-		
-		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
-		this.view.setCompleterDataSource(searcher)
 		
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
 		
-		var favorites = searcher.favorites = {}
+		var favorites = {}
 		
 		var ingredientsTagsHash = this.ingredientsTagsHash = {}
 		for (var i = 0, il = ingredientsTags.length; i < il; i++)
@@ -84,6 +79,40 @@ var myProto =
 			cocktailsTagsHash[tag.toLowerCase()] = tag
 			favorites[tag] = true
 		}
+		
+		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
+	},
+	
+	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)
+	{
+		var ingredients = Ingredient.getAll()
+		
+		var set = [], bySecondName = {}
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			set.push(name)
+			
+			var snames = ingredient.names
+			if (!snames)
+				continue
+			
+			for (var j = 0, jl = snames.length; j < jl; j++)
+			{
+				var sname = snames[j]
+				set.push(sname)
+				bySecondName[sname] = name
+			}
+		}
+		
+		set.push.apply(set, ingredientsTags)
+		set.push.apply(set, cocktailsTags)
+		set.sort()
+		
+		var searcher = this.searcher = new IngredientsSearcher(set, bySecondName, favorites)
+		this.view.setCompleterDataSource(searcher)
 	},
 	
 	updateData: function ()
@@ -497,47 +526,35 @@ var myProto =
 			
 			if (type == 'ingredient')
 			{
-				cocktails = Cocktail.getByIngredientNames([item.valueOf()], {db: cocktails})
+				var name = item.valueOf()
+				
+				var ingredient = Cocktail.getByIngredient(name),
+					tool = Cocktail.getByTool(name)
+				
+				var set = DB.disjunction([ingredient, tool])
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 			
 			if (type == 'ingredient-tag')
 			{
-				cocktails = Cocktail.getByIngredientNames(item.names, {db: cocktails, count: 1})
+				var goods = item.names.slice()
+				for (var i = 0, il = goods.length; i < il; i++)
+					goods[i] = Cocktail.getByIngredient(goods[i])
+				var set = DB.disjunction(goods)
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 			
 			if (type == 'cocktail-tag')
 			{
-				cocktails = Cocktail.getByTags([item], {db: cocktails, count: 1})
+				var set = Cocktail.getByTag(item)
+				cocktails = DB.conjunction([cocktails, set])
 				continue
 			}
 		}
 		
-		// yes, needs refactoring
-		for (var i = 0, il = remove.length; i < il; i++)
-		{
-			var item = remove[i],
-				type = item.type
-			
-			if (type == 'ingredient')
-			{
-				cocktails = Cocktail.getByIngredientNames([item.valueOf()], {db: cocktails}).rest
-				continue
-			}
-			
-			if (type == 'ingredient-tag')
-			{
-				cocktails = Cocktail.getByIngredientNames(item.names, {db: cocktails, count: 1}).rest
-				continue
-			}
-			
-			if (type == 'cocktail-tag')
-			{
-				cocktails = Cocktail.getByTags([item], {db: cocktails, count: 1}).rest
-				continue
-			}
-		}
+		// remove logic has been removed ;)
 		
 		return cocktails
 	},
@@ -628,6 +645,10 @@ var myProto =
 			{
 				var list = [], name = groups[i]
 				slices[name] = list
+				
+				if (this.hideGroups[name])
+					continue
+				
 				data.push({name: name, list: list})
 			}
 			
