@@ -53,7 +53,7 @@ Me.prototype =
 		var tools = this.tools
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
-			parts.addGood(Ingredient.getByName(tools[i]), 1 * count)
+			parts.addGood(Ingredient.getByName(tools[i]), 1)
 		}
 		
 		return parts
