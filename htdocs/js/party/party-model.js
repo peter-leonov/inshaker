@@ -24,7 +24,7 @@ Me.prototype =
 	
 	selectGoodName: function (name)
 	{
-		var good = Ingredient.getByName(name) || Tool.getByName(name)
+		var good = Ingredient.getByName(name)
 		if (good)
 			this.view.showGoodPopup(good)
 	},
