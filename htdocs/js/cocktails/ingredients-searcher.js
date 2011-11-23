@@ -2,13 +2,13 @@
 
 var myName = 'IngredientsSearcher'
 
-function Me (ingredients, names)
+function Me (ingredients, names, favorites)
 {
 	this.ingredients = ingredients || []
 	this.names = names || {}
 	this.cache = {}
 	this.duplicates = {}
-	this.favorites = {}
+	this.favorites = favorites || {}
 }
 
 eval(NodesShortcut.include())

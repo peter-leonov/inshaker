@@ -10,7 +10,6 @@ var Model = {
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
 		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
-		this.tools = Tool.tools;
 		
 		this.related = this._findRelated(this.cocktail).slice(0, 15)
 		

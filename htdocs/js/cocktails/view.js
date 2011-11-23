@@ -24,14 +24,6 @@ function CocktailsView (states, nodes, styles) {
 	{
 		this.viewData = viewData
 		
-		var set = viewData.ingredients.slice()
-		set.push.apply(set, viewData.names)
-		set = set.sort()
-		
-		var searcher = this.searcher = new IngredientsSearcher(set, viewData.byName)
-		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
-		completer.setDataSource(searcher)
-		
 		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
 		this.renderGroupSet(nodes.strengthsList, this.viewData.strengths);
@@ -40,6 +32,23 @@ function CocktailsView (states, nodes, styles) {
 		this.bindEvents();
 		this.turnToState(state);
 	};
+	
+	this.setupCompleter = function (searcher)
+	{
+		var self = this
+		
+		this.searcher = searcher
+		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
+		completer.setDataSource(searcher)
+		
+		function changeListener (e)
+		{
+			nodes.searchByIngredsInput.value = ''
+			self.onIngredientAdded(e.data.value)
+			return false // prevents input value blinking in FF
+		}
+		this.completer.onconfirm = changeListener
+	}
 	
 	this.bindEvents = function () {
 		var self = this;
@@ -150,13 +159,6 @@ function CocktailsView (states, nodes, styles) {
 			self.controller.onStateChanged(num);
 		}
 		
-		function changeListener (e)
-		{
-			nodes.searchByIngredsInput.value = ''
-			self.onIngredientAdded(e.data.value)
-			return false // prevents input value blinking in FF
-		}
-		this.completer.onconfirm = changeListener
 		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
 	};
 	
@@ -208,13 +210,6 @@ function CocktailsView (states, nodes, styles) {
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
 		this.controller.saveFilters(this.currentFilters);
-		
-		var withouts = this.searcher.withouts = {},
-			ingredients = filters.ingredients;
-		
-		for (var i = 0, il = ingredients.length; i < il; i ++){
-			withouts[ingredients[i]] = true;
-		}
 	};
 	
 	this.renderFilters = function(filters, tagState, strengthState, methodState){

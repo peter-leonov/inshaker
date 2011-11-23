@@ -92,16 +92,45 @@ var myProto =
 		
 		this.parent.setMainState()
 		
-		//ingr searcher
-		var ingredients = Ingredient.getAllNames(),
-			secondNames = Ingredient.getAllSecondNames(),
-			secondNamesHash = Ingredient.getNameBySecondNameHash()
+		this.setupSearcher()
+	},
+	
+	setupSearcher: function ()
+	{
+		var ingredients = Ingredient.getAll()
 		
-		var set = ingredients.slice()
-		set.push.apply(set, secondNames)
+		var forbiddenGroups =
+		{
+			'Посуда': true,
+			'Штучки': true,
+			'Украшения': true
+		}
+		
+		var set = [], bySecondName = {}
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			if (forbiddenGroups[ingredient.group])
+				continue
+			
+			set.push(name)
+			
+			var snames = ingredient.names
+			if (!snames)
+				continue
+			
+			for (var j = 0, jl = snames.length; j < jl; j++)
+			{
+				var sname = snames[j]
+				set.push(sname)
+				bySecondName[sname] = name
+			}
+		}
 		set.sort()
 		
-		var searcher = this.searcher = new IngredientsSearcher(set, secondNamesHash)
+		var searcher = new IngredientsSearcher(set, bySecondName)
 		this.view.setCompleterDataSource(searcher)
 	},
 	
