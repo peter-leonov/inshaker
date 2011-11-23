@@ -93,6 +93,10 @@ Object.extend(Ingredient,
 		this.db = db
 		this.groups = groups
 		this.tags = tags
+		
+		var groupOrder = this.groupOrder = {}
+		for (var i = 0, il = groups.length; i < il; i++)
+			groupOrder[groups[i]] = i
 	},
 	
 	getAll: function ()
@@ -341,8 +345,8 @@ Object.extend(Ingredient,
 	
 	compareByGroup: function (a, b)
 	{
-		var groups = Me.groups
-		return groups.indexOf(a.group) - groups.indexOf(b.group)
+		var groupOrder = Me.groupOrder
+		return groupOrder[a.group] - groupOrder[b.group]
 	},
 	
 	defaultSupplementCoefficients: function ()
