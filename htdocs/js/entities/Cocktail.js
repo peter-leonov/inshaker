@@ -50,11 +50,11 @@ Me.prototype =
 			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
 		}
 		
-		// var tools = this.tools
-		// for (var i = 0, il = tools.length; i < il; i++)
-		// {
-		// 	parts.addGood(Ingredient.getByName(tools[i]), 1 * count)
-		// }
+		var tools = this.tools
+		for (var i = 0, il = tools.length; i < il; i++)
+		{
+			parts.addGood(Ingredient.getByName(tools[i]), 1 * count)
+		}
 		
 		return parts
 	},
