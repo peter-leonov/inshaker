@@ -80,7 +80,9 @@ Me.prototype =
 
 Object.extend(Ingredient,
 {
-	groups: [],
+	db: null,
+	groups: null,
+	tags: null,
 	
 	initialize: function (db, groups, tags)
 	{
