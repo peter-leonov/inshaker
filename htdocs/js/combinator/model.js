@@ -45,6 +45,13 @@ var myProto =
 		this.searchCache = {}
 		
 		this.state = new DefaultState()
+		
+		this.hideGroups =
+		{
+			'Посуда': true,
+			'Штучки': true,
+			'Украшения': true
+		}
 	},
 	
 	bind: function ()
@@ -638,6 +645,10 @@ var myProto =
 			{
 				var list = [], name = groups[i]
 				slices[name] = list
+				
+				if (this.hideGroups[name])
+					continue
+				
 				data.push({name: name, list: list})
 			}
 			
