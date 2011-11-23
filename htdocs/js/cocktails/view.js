@@ -35,6 +35,8 @@ function CocktailsView (states, nodes, styles) {
 	
 	this.setupCompleter = function (searcher)
 	{
+		var self = this
+		
 		this.searcher = searcher
 		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
 		completer.setDataSource(searcher)
