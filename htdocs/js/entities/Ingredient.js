@@ -103,12 +103,12 @@ Me.staticMethods =
 	
 	getGroups: function ()
 	{
-		return this.groups
+		return this.groups.slice()
 	},
 	
 	getTags: function ()
 	{
-		return this.tags
+		return this.tags.slice()
 	},
 	
 	getByName: function (name)
