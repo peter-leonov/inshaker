@@ -121,10 +121,13 @@ Me.staticMethods =
 	
 	getByNameCI: function (name)
 	{
-		if (!this._byNameCI)
-			this._updateByNameCIIndex()
+		if (!this._byName)
+			this._updateByNameIndex()
 		
-		return this._byNameCI[name.toLowerCase()]
+		if (!this._nameByNameCI)
+			this._updateNameByNameCIIndex()
+		
+		return this._byName[this._nameByNameCI[name.toLowerCase()]]
 	},
 	
 	getByTag: function (name)
@@ -209,15 +212,15 @@ Me.staticMethods =
 		}
 	},
 	
-	_updateByNameCIIndex: function ()
+	_updateNameByNameCIIndex: function ()
 	{
 		var db = this.db,
-			byNameCI = this._byNameCI = {}
+			_nameByNameCI = this._nameByNameCI = {}
 		
 		for (var i = 0; i < db.length; i++)
 		{
-			var ingred = db[i]
-			byNameCI[ingred.name.toLowerCase()] = ingred
+			var name = db[i].name
+			_nameByNameCI[name.toLowerCase()] = name
 		}
 	},
 	
