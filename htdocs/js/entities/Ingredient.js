@@ -82,6 +82,8 @@ Me.staticMethods =
 	groups: null,
 	tags: null,
 	
+	index: {},
+	
 	initialize: function (db, groups, tags)
 	{
 		this.db = db
@@ -111,20 +113,29 @@ Me.staticMethods =
 		return this.tags.slice()
 	},
 	
+	getByNamePrepare: function ()
+	{
+		this.index.byName = DB.hashIndexKey(this.db, 'name')
+	},
+	
 	getByName: function (name)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
+		return this.index.byName[name]
+	},
+	
+	getByNameCIPrepare: function ()
+	{
+		function lowercase (ingredient)
+		{
+			return ingredient.name.toLowerCase()
+		}
 		
-		return this._byName[name]
+		this.index.byNameCI = DB.hashIndexBy(this.db, lowercase)
 	},
 	
 	getByNameCI: function (name)
 	{
-		if (!this._nameByNameCI)
-			this._updateNameByNameCIIndex()
-		
-		return this.getByName(this._nameByNameCI[name.toLowerCase()])
+		return this.index.byNameCI[name.toLowerCase()]
 	},
 	
 	getByTag: function (name)
@@ -139,7 +150,6 @@ Me.staticMethods =
 	{
 		var res = []
 		
-		var byName = this._byName
 		for (var i = 0, il = names.length; i < il; i++)
 			res[i] = this.getByName(names[i])
 		
@@ -191,30 +201,6 @@ Me.staticMethods =
 		{
 			var ingred = db[i]
 			ingred.cocktails = cocktails[ingred.name] || []
-		}
-	},
-	
-	_updateByNameIndex: function ()
-	{
-		var db = this.db,
-			byName = this._byName = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i]
-			byName[ingred.name] = ingred
-		}
-	},
-	
-	_updateNameByNameCIIndex: function ()
-	{
-		var db = this.db,
-			_nameByNameCI = this._nameByNameCI = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var name = db[i].name
-			_nameByNameCI[name.toLowerCase()] = name
 		}
 	},
 	
