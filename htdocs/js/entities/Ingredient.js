@@ -206,34 +206,14 @@ Me.staticMethods =
 		}
 	},
 	
-	_updateByMarkIndex: function ()
+	getByMarkPrepare: function ()
 	{
-		var db = this.db,
-			byMark = this._byMark = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i],
-				mark = ingred.mark
-			
-			if (mark)
-			{
-				var arr
-				if ((arr = byMark[mark]))
-					arr.push(ingred)
-				else
-					byMark[mark] = [ingred]
-			}
-		}
+		this.index.byMark = DB.hashOfAryIndexByKey(this.db, 'mark')
 	},
-	
 	
 	getByMark: function (mark)
 	{
-		if (!this._byMark)
-			this._updateByMarkIndex()
-		
-		return this._byMark[mark]
+		return this.index.byMark[mark] || []
 	},
 	
 	ingredientsLinkByMark: function (mark)
