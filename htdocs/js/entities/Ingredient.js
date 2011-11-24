@@ -149,14 +149,6 @@ Me.staticMethods =
 		return res
 	},
 	
-	getAllNames: function (name)
-	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
-		return Object.keys(this._byName)
-	},
-	
 	// rarely used simple search
 	getByGroup: function (group)
 	{
