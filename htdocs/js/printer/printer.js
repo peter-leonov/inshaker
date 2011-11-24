@@ -65,7 +65,7 @@ var Printer = {
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
 
-	   var ingredients = cocktail.ingredients.sort(Ingredient.sortByGroups);
+	   var ingredients = cocktail.ingredients
        for(var i = 0; i < ingredients.length; i++){
            var last = (i == (ingredients.length - 1));
            ingredsRoot.appendChild(this.createIngredPairElement(ingredients[i], last));
@@ -120,17 +120,19 @@ var Printer = {
          
         var l = Object.keysCount(cartData.goods);
 		
-		var names = [];
-		for(var name in cartData.goods) {names.push(name)};
-    names = names.sort(Ingredient.sortByGroups);
+		var ingredients = []
+		for (var name in cartData.goods)
+			ingredients.push(Ingredient.getByName(name))
+		ingredients.sort(Ingredient.compareByName)
 		
-        for(var i = 0; i < names.length; i++){
-			var name = names[i];
-			var bottles = cartData.goods[name].bottles;
+		for(var i = 0; i < ingredients.length; i++)
+		{
+			var ingredient = ingredients[i]
+			var bottles = cartData.goods[ingredient.name].bottles;
 			var j = 0;
             for(id in bottles){
                 var last = (i == (l-1)) && (j == (Object.keysCount(bottles)-1));
-				ingredsRoot.appendChild(this.createIngredElement(bottles[id], name, last));
+				ingredsRoot.appendChild(this.createIngredElement(bottles[id], ingredient.name, last));
                 j++;
 			}
 		}

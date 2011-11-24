@@ -205,15 +205,6 @@ Me.staticMethods =
 		}
 	},
 	
-	sortByGroups: function(a, b){
-		var self = Ingredient;
-        if(typeof a == 'object') { a = a[0]; b = b[0] }
-
-		if(self.groups.indexOf(self.getByName(a).group) > 
-			self.groups.indexOf(self.getByName(b).group)) return 1;
-		else return -1;
-	},
-	
 	_updateByNameIndex: function ()
 	{
 		var db = this.db,

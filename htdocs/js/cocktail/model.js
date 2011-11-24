@@ -9,7 +9,11 @@ var Model = {
 	
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
-		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
+		
+		var ingredients = this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish)
+		for (var i = 0, il = ingredients.length; i < il; i++)
+			ingredients[i] = Ingredient.getByName(ingredients[i][0])
+		ingredients.sort(Ingredient.compareByGroup)
 		
 		this.related = this._findRelated(this.cocktail).slice(0, 15)
 		

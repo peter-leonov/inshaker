@@ -76,7 +76,7 @@ var myProto =
 	sortByUsage : function(a, b)
 	{
 		if(a.group != b.group)
-			return Ingredient.sortByGroups(a.name, b.name)
+			return Ingredient.compareByGroup(a, b)
 
 		var u = this.ingredients.usage
 		
@@ -94,7 +94,7 @@ var myProto =
 		}
 		
 		ingredients.inBar = Array.toHash(ingredientNames)
-		return ingredients.sort(function(a, b){ return Ingredient.sortByGroups(a.name, b.name) })
+		return ingredients.sort(function(a, b){ return Ingredient.compareByGroup(a, b) })
 	},
 	
 	computeCocktails : function(ingredients, hiddenCocktailsHash)
@@ -155,7 +155,7 @@ var myProto =
 				bb = Ingredient.getByName(bi[i][0])
 			
 			if(aa.group != bb.group)
-				return Ingredient.sortByGroups(aa.name, bb.name)
+				return Ingredient.compareByGroup(aa, bb)
 
 			lc = aa.name.localeCompare(bb.name)
 			if(lc)

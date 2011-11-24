@@ -278,14 +278,14 @@ var Controller = {
 		
 		for (var i = 0; i < resultSet.length; i++)
 		{
-			var ingredient = Ingredient.getByName(resultSet[i][0])
+			var ingredient = resultSet[i]
 			var img = document.createElement("div");
 			img.className = 'image'
 			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
 			img.alt = ingredient.name;
             img.addEventListener('click', function(name) { return function(){
-                self.showIngredientPopup(Ingredient.getByName(name));
-            }}(ingredient.name), false);
+                self.showIngredientPopup(ingredient);
+            }}(ingredient), false);
 			div.appendChild(img);
 		}
 	},
