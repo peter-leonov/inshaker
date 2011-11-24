@@ -121,13 +121,10 @@ Me.staticMethods =
 	
 	getByNameCI: function (name)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
 		if (!this._nameByNameCI)
 			this._updateNameByNameCIIndex()
 		
-		return this._byName[this._nameByNameCI[name.toLowerCase()]]
+		return this.getByName(this._nameByNameCI[name.toLowerCase()])
 	},
 	
 	getByTag: function (name)
@@ -140,14 +137,11 @@ Me.staticMethods =
 	
 	getByNames: function (names)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
 		var res = []
 		
 		var byName = this._byName
 		for (var i = 0, il = names.length; i < il; i++)
-			res[i] = byName[names[i]]
+			res[i] = this.getByName(names[i])
 		
 		return res
 	},
