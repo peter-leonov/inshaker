@@ -157,12 +157,20 @@ Me.staticMethods =
 		return Object.keys(this._byName)
 	},
 	
-	getByGroup: function(group){
-		var res = [];
-		for(var i = 0; i < this.db.length; i++){
-			if(this.db[i].group == group) res.push(this.db[i]);
+	// rarely used simple search
+	getByGroup: function (group)
+	{
+		var res = []
+		
+		var db = this.db
+		for (var i = 0, il = db.length; i < il; i++)
+		{
+			var ingredient = db[i]
+			if (ingredient.group == group)
+				res.push(ingredient)
 		}
-		return res;
+		
+		return res
 	},
 	
 	getByGroups: function (groups)
