@@ -158,36 +158,23 @@ Me.staticMethods =
 		return res
 	},
 	
-	// rarely used simple search
+	getByGroupPrepare: function ()
+	{
+		this.index.byGroup = DB.hashOfAryIndexByKey(this.db, 'group')
+	},
+	
 	getByGroup: function (group)
 	{
-		var res = []
-		
-		var db = this.db
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingredient = db[i]
-			if (ingredient.group == group)
-				res.push(ingredient)
-		}
-		
-		return res
+		return this.index.byGroup[group] || []
 	},
 	
 	getByGroups: function (groups)
 	{
-		var hash = DB.hashIndex(groups)
+		var res = []
+		for (var i = 0, il = groups.length; i < il; i++)
+			res[i] = this.getByGroup(groups[i])
 		
-		var db = this.db,
-			res = []
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingredient = db[i]
-			if (hash[ingredient.group])
-				res.push(ingredient)
-		}
-		
-		return res
+		return DB.disjunction(res)
 	},
 	
 	calculateEachIngredientUsage: function ()
