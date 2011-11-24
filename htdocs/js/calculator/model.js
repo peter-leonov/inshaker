@@ -8,7 +8,6 @@ Array.prototype.without = function(index) {
 
 function CalculatorModel(view){
 	
-	var allGoods = Ingredient.getAllByNameHash()
 	this.cartData = {};
 	
 	this.dataListeners = {
@@ -62,7 +61,7 @@ function CalculatorModel(view){
 				cs.push([cocktail, cartCount]);
 			}
 			// Оптимизируем весь набор по емкостям
-			this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
+			this.cartData.goods = this.goodsByCocktails(this.cartData.cocktails);
 			this.dataListeners.modelChanged(this.cartData);
 		}
 	};
@@ -73,7 +72,7 @@ function CalculatorModel(view){
 			if(cs[i][0] == cocktail){
 				this.cartData.cocktails.splice(i,1);
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
+				this.cartData.goods = this.goodsByCocktails(this.cartData.cocktails);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}
@@ -85,7 +84,7 @@ function CalculatorModel(view){
 		if(this.cartData.goods[name].bottles[bottleId]){
 			bottle = this.cartData.goods[name].bottles[bottleId];
 		} else { // дополнительная бутылка
-			bottle = this.bottleByIngredientAndVolume(allGoods, name, bottleId);
+			bottle = this.bottleByIngredientAndVolume(name, bottleId);
 			this.cartData.goods[name].bottles[bottleId] = bottle;
 		}
 		if(quantity == 0 && (Object.keysCount(this.cartData.goods[name].bottles) > 1)) {
@@ -134,7 +133,7 @@ function CalculatorModel(view){
 	};
 	
 	this.getNewBottle = function(name, bottleId){
-		return this.bottleByIngredientAndVolume(allGoods, name, bottleId);
+		return this.bottleByIngredientAndVolume(name, bottleId);
 	};
 
     this.getItemFromCart = function(name){
@@ -152,7 +151,7 @@ function CalculatorModel(view){
 			if((cs[i][0] == cocktail) && (cs[i][1] != quantity)) {
 				this.cartData.cocktails[i][1] = quantity;
 				// Оптимизируем весь набор по емкостям
-				this.cartData.goods = this.goodsByCocktails(allGoods, this.cartData.cocktails);
+				this.cartData.goods = this.goodsByCocktails(this.cartData.cocktails);
 				this.dataListeners.modelChanged(this.cartData);
 				break;
 			}
@@ -164,7 +163,7 @@ function CalculatorModel(view){
 	};
 	
 	
-	this.goodsByCocktails = function (goods, cocktailsAndQuant)
+	this.goodsByCocktails = function (cocktailsAndQuant)
 	{
 		var res = {}
 		
@@ -183,7 +182,7 @@ function CalculatorModel(view){
 					dose = part[1],
 					unit = part[2]
 				
-				var ingredient = goods[name]
+				var ingredient = Ingredient.getByName(name)
 				if (!ingredient)
 					continue
 				
@@ -294,9 +293,9 @@ function CalculatorModel(view){
 		return answer
 	}
 	
-	this.bottleByIngredientAndVolume = function(goods, ingred, vol){
+	this.bottleByIngredientAndVolume = function(ingred, vol){
 		var res = {};
-		var volumes = goods[ingred].volumes;
+		var volumes = Ingredient.getByName(ingred).volumes;
 		for(var i = 0; i < volumes.length; i++){
 			if(volumes[i][0] == vol) {
 				res.vol = volumes[i];

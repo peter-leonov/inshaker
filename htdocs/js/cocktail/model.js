@@ -1,7 +1,6 @@
 var Model = {
 	cocktail: null,
 	ingredients: [],
-	goods: Ingredient.getAllByNameHash(),
 	
 	dataListener: null,
 	
@@ -40,7 +39,7 @@ var Model = {
 		var ingreds = cocktail.ingredients; 
 		
 		for(var i = 0; i < ingreds.length; i++){
-			var items = this.goods[ingreds[i][0]];
+			var items = Ingredient.getByName(ingreds[i][0])
 			if(items && items.mark && this._doesntHave(recs, items.mark)){
 				var rec = {};
 				rec.mark  = items.mark;
