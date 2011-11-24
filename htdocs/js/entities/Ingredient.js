@@ -138,12 +138,14 @@ Me.staticMethods =
 		return this.index.byNameCI[name.toLowerCase()]
 	},
 	
+	getByTagPrepare: function ()
+	{
+		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+	},
+	
 	getByTag: function (name)
 	{
-		if (!this._byTag)
-			this._updateByTagIndex()
-		
-		return this._byTag[name] || []
+		return this.index.byTag[name] || []
 	},
 	
 	getByNames: function (names)
@@ -201,29 +203,6 @@ Me.staticMethods =
 		{
 			var ingred = db[i]
 			ingred.cocktails = cocktails[ingred.name] || []
-		}
-	},
-	
-	_updateByTagIndex: function ()
-	{
-		var db = this.db,
-			index = this._byTag = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i]
-			
-			var tags = ingred.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var tag = tags[j]
-				
-				var arr = index[tag]
-				if (arr)
-					arr.push(ingred)
-				else
-					index[tag] = [ingred]
-			}
 		}
 	},
 	
