@@ -287,21 +287,6 @@ Me.staticMethods =
 		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
 	},
 	
-	getByFirstLetter: function (letter)
-	{
-		var db = this.db, res = []
-		letter = letter.toUpperCase()
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingred = db[i]
-			if (ingred.name.indexOf(letter) == 0)
-				res.push(ingred)
-		}
-		
-		return res
-	},
-	
 	mergeIngredientSets: function ()
 	{
 		var res = [],
