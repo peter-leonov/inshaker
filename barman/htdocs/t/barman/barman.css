@@ -22,7 +22,7 @@ button.active .a { display: inline; }
 .page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); }
 
 
-.page.shaker form { position: absolute; left: 175px; top: 55px; width: 195px; font-size: 16px; }
+.page.shaker form { position: absolute; left: 175px; top: 55px; width: 210px; font-size: 16px; }
 .page.shaker form label { display: block; padding: 1px 0; }
 .page.shaker form label input { vertical-align: bottom; margin: 3px; }
 .page.shaker .shake { position: absolute; right: 20px; top: 120px; }
