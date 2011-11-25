@@ -31,8 +31,10 @@ function onready ()
 		},
 		recipeList: $$('#recipe-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
-		purchasePlanList: $$('#ingredients-part .parts-list .list')[0],
-		purchasePlanPreviewList: $$('#ingredients-part .preview-list')[0],
+		
+		ingredientsPartList: $$('#ingredients-part .parts-list .list')[0],
+		ingredientsPartPreviewList: $$('#ingredients-part .preview-list')[0],
+		
 		purchasePlanTotal:
 		{
 			value: $$('#purchase-plan .total .cost')[0],

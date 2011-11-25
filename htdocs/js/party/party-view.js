@@ -189,8 +189,8 @@ Me.prototype =
 		nodes.peopleCount.addEventListener('blur', blurInteger, true)
 		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
 		nodes.portions.addEventListener('blur', blurInteger, true)
-		nodes.purchasePlanList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-		nodes.purchasePlanList.addEventListener('blur', blurFloat, true)
+		nodes.ingredientsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+		nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
 	},
 	
 	peopleCountChanged: function (e)
@@ -289,7 +289,7 @@ Me.prototype =
 	{
 		this.renderPreviewList(plan)
 		
-		var root = this.nodes.purchasePlanList,
+		var root = this.nodes.ingredientsPartList,
 			planCache = this.cache.plan
 		
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -336,7 +336,7 @@ Me.prototype =
 	
 	renderPreviewList: function (plan)
 	{
-		var root = this.nodes.purchasePlanPreviewList
+		var root = this.nodes.ingredientsPartPreviewList
 		
 		root.empty()
 		
