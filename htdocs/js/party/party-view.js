@@ -287,20 +287,47 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
-		this.renderIngredientsPlan(plan)
+		var byGroup =
+		{
+			tools: [],
+			ingredients: []
+		}
+		
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			var buy = plan[i]
+			byGroup[buy.group].push(buy)
+		}
+		
+		this.renderIngredientsPlan(byGroup.ingredients)
+		this.renderToolsPlan(byGroup.tools)
 	},
 	
 	renderIngredientsPlan: function (plan)
 	{
-		this.renderIngredientsPreviewList(plan)
+		this.renderPlanTo(plan, this.nodes.ingredientsPartList)
+	},
+	
+	renderToolsPlan: function (plan)
+	{
+		this.renderPlanTo(plan, this.nodes.toolsPartList)
+	},
+	
+	renderPlanTo: function (plan, root)
+	{
+		if (plan.length == 0)
+		{
+			root.hide()
+			return
+		}
+		root.show()
 		
-		var root = this.nodes.ingredientsPartList,
-			planCache = this.cache.plan
-		
+		var planCache = this.cache.plan
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
-			var good = plan[i].good,
-				cache = planCache[i] = {}
+			var buy = plan[i],
+				good = buy.good,
+				cache = planCache[buy.id] = {}
 			
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
