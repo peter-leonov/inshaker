@@ -208,7 +208,26 @@ Me.prototype =
 			
 			var stats = Object.values(seen)
 			stats.sort(byPageview)
-			this.renderStats('Сводная по тегу «' + tag + '»', stats)
+			this.renderStats('Показы ингредиентов по тегу «' + tag + '»', stats)
+			
+			
+			var names = Object.keys(seen),
+				stats = []
+			for (var i = 0, il = names.length; i < il; i++)
+			{
+				var name = names[i]
+				var stat = Cocktail.getByName(name).stat
+				
+				stats[i] =
+				{
+					name: name,
+					pageviews: stat.pageviews,
+					uniquePageviews: stat.uniquePageviews
+				}
+			}
+			
+			stats.sort(byPageview)
+			this.renderStats('Рейтинг коктейлей по тегу «' + tag + '»', stats)
 		}
 	},
 	
