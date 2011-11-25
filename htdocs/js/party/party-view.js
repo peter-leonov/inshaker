@@ -287,7 +287,12 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
-		this.renderPreviewList(plan)
+		this.renderIngredientsPlan(plan)
+	},
+	
+	renderIngredientsPlan: function (plan)
+	{
+		this.renderIngredientsPreviewList(plan)
 		
 		var root = this.nodes.ingredientsPartList,
 			planCache = this.cache.plan
@@ -334,7 +339,7 @@ Me.prototype =
 		}
 	},
 	
-	renderPreviewList: function (plan)
+	renderIngredientsPreviewList: function (plan)
 	{
 		var root = this.nodes.ingredientsPartPreviewList
 		
