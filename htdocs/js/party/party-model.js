@@ -63,9 +63,9 @@ Me.prototype =
 			plan = this.plan = []
 		
 		var ary = parts.toArray()
-		for (var j = 0, jl = ary.length; j < jl; j++)
+		for (var i = 0, il = ary.length; i < il; i++)
 		{
-			var good = ary[j].good
+			var good = ary[i].good
 			
 			var buy =
 			{
