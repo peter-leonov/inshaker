@@ -300,7 +300,10 @@ Me.prototype =
 		}
 		
 		this.renderIngredientsPlan(byGroup.ingredients)
+		this.renderIngredientsPreviewList(byGroup.ingredients)
+		
 		this.renderToolsPlan(byGroup.tools)
+		this.renderToolsPreviewList(byGroup.tools)
 	},
 	
 	renderIngredientsPlan: function (plan)
@@ -368,8 +371,16 @@ Me.prototype =
 	
 	renderIngredientsPreviewList: function (plan)
 	{
-		var root = this.nodes.ingredientsPartPreviewList
-		
+		this.renderPreviewListTo(plan, this.nodes.ingredientsPartPreviewList)
+	},
+	
+	renderToolsPreviewList: function (plan)
+	{
+		this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
+	},
+	
+	renderPreviewListTo: function (plan, root)
+	{
 		root.empty()
 		
 		for (var i = 0, il = plan.length; i < il; i++)
