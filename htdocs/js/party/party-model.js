@@ -69,6 +69,7 @@ Me.prototype =
 			
 			var buy =
 			{
+				group: Ingredient.getGroupOfGroup(good.group),
 				good: good,
 				amount: 0
 			}
