@@ -35,6 +35,9 @@ function onready ()
 		ingredientsPartList: $$('#ingredients-part .parts-list .list')[0],
 		ingredientsPartPreviewList: $$('#ingredients-part .preview-list')[0],
 		
+		toolsPartList: $$('#tools-part .parts-list .list')[0],
+		toolsPartPreviewList: $$('#tools-part .preview-list')[0],
+		
 		purchasePlanTotal:
 		{
 			value: $$('#purchase-plan .total .cost')[0],
