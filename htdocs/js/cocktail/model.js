@@ -1,7 +1,6 @@
 var Model = {
 	cocktail: null,
 	ingredients: [],
-	goods: Ingredient.getAllByNameHash(),
 	
 	dataListener: null,
 	
@@ -9,7 +8,11 @@ var Model = {
 	
 	init: function(name){
 		this.cocktail = Cocktail.getByName(name);
-		this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish).sort(Ingredient.sortByGroups);
+		
+		var ingredients = this.ingredients = Ingredient.mergeIngredientSets(this.cocktail.ingredients, this.cocktail.garnish)
+		for (var i = 0, il = ingredients.length; i < il; i++)
+			ingredients[i] = Ingredient.getByName(ingredients[i][0])
+		ingredients.sort(Ingredient.compareByGroup)
 		
 		this.related = this._findRelated(this.cocktail).slice(0, 15)
 		
@@ -36,7 +39,7 @@ var Model = {
 		var ingreds = cocktail.ingredients; 
 		
 		for(var i = 0; i < ingreds.length; i++){
-			var items = this.goods[ingreds[i][0]];
+			var items = Ingredient.getByName(ingreds[i][0])
 			if(items && items.mark && this._doesntHave(recs, items.mark)){
 				var rec = {};
 				rec.mark  = items.mark;

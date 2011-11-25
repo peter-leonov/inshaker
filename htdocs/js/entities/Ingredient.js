@@ -2,7 +2,7 @@
 
 eval(NodesShortcut.include())
 
-var Me = self.Ingredient = function (data)
+function Me (data)
 {
 	for (var k in data)
 		this[k] = data[k]
@@ -10,9 +10,6 @@ var Me = self.Ingredient = function (data)
 
 Me.prototype =
 {
-	constructor: Ingredient,
-	
-    listOrder: function () { return Ingredient.groups.indexOf(this.group) },
 	pageHref: function () { return '/ingredient/' + this.path + '/' },
 	getMiniImageSrc: function () { return this.pageHref() + 'preview.jpg' },
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
@@ -79,19 +76,26 @@ Me.prototype =
 	}
 }
 
-Object.extend(Ingredient,
+Me.staticMethods =
 {
-	groups: [],
+	db: null,
+	groups: null,
+	tags: null,
+	
+	index: {},
 	
 	initialize: function (db, groups, tags)
 	{
-		var I = Ingredient
-		for (var i = 0, il = db.length; i < il; i++)
-			db[i] = new I(db[i])
-		
 		this.db = db
 		this.groups = groups
 		this.tags = tags
+		
+		var groupOrder = this.groupOrder = {}
+		for (var i = 0, il = groups.length; i < il; i++)
+			groupOrder[groups[i]] = i
+		
+		for (var i = 0, il = db.length; i < il; i++)
+			db[i] = new Me(db[i])
 	},
 	
 	getAll: function ()
@@ -101,90 +105,76 @@ Object.extend(Ingredient,
 	
 	getGroups: function ()
 	{
-		return this.groups
+		return this.groups.slice()
 	},
 	
 	getTags: function ()
 	{
-		return this.tags
+		return this.tags.slice()
+	},
+	
+	getByNamePrepare: function ()
+	{
+		this.index.byName = DB.hashIndexKey(this.db, 'name')
 	},
 	
 	getByName: function (name)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
+		return this.index.byName[name]
+	},
+	
+	getByNameCIPrepare: function ()
+	{
+		function lowercase (ingredient)
+		{
+			return ingredient.name.toLowerCase()
+		}
 		
-		return this._byName[name]
+		this.index.byNameCI = DB.hashIndexBy(this.db, lowercase)
 	},
 	
 	getByNameCI: function (name)
 	{
-		if (!this._byNameCI)
-			this._updateByNameCIIndex()
-		
-		return this._byNameCI[name.toLowerCase()]
+		return this.index.byNameCI[name.toLowerCase()]
+	},
+	
+	getByTagPrepare: function ()
+	{
+		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
 	},
 	
 	getByTag: function (name)
 	{
-		if (!this._byTag)
-			this._updateByTagIndex()
-		
-		return this._byTag[name] || []
+		return this.index.byTag[name] || []
 	},
 	
 	getByNames: function (names)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
 		var res = []
 		
-		var byName = this._byName
 		for (var i = 0, il = names.length; i < il; i++)
-			res[i] = byName[names[i]]
+			res[i] = this.getByName(names[i])
 		
 		return res
 	},
 	
-	getAllNames: function (name)
+	getByGroupPrepare: function ()
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
-		return Object.keys(this._byName)
+		this.index.byGroup = DB.hashOfAryIndexByKey(this.db, 'group')
 	},
 	
-	getAllByNameHash: function ()
+	getByGroup: function (group)
 	{
-		if (!this._byName)
-			this._updateByNameIndex()
-		
-		return this._byName
-	},
-	
-	getByGroup: function(group){
-		var res = [];
-		for(var i = 0; i < this.db.length; i++){
-			if(this.db[i].group == group) res.push(this.db[i]);
-		}
-		return res;
+		return this.index.byGroup[group] || []
 	},
 	
 	getByGroups: function (groups)
 	{
-		var hash = DB.hashIndex(groups)
+		var res = []
+		for (var i = 0, il = groups.length; i < il; i++)
+			res[i] = this.getByGroup(groups[i])
 		
-		var db = this.db,
-			res = []
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingredient = db[i]
-			if (hash[ingredient.group])
-				res.push(ingredient)
-		}
-		
-		return res
+		return DB.disjunction(res)
 	},
 	
 	calculateEachIngredientUsage: function ()
@@ -203,110 +193,19 @@ Object.extend(Ingredient,
 		}
 	},
 	
-	sortByGroups: function(a, b){
-		var self = Ingredient;
-        if(typeof a == 'object') { a = a[0]; b = b[0] }
-
-		if(self.groups.indexOf(self.getByName(a).group) > 
-			self.groups.indexOf(self.getByName(b).group)) return 1;
-		else return -1;
-	},
-	
-	_updateByNameIndex: function ()
+	getByMarkPrepare: function ()
 	{
-		var db = this.db,
-			byName = this._byName = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i]
-			byName[ingred.name] = ingred
-		}
+		this.index.byMark = DB.hashOfAryIndexByKey(this.db, 'mark')
 	},
-	
-	_updateByNameCIIndex: function ()
-	{
-		var db = this.db,
-			byNameCI = this._byNameCI = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i]
-			byNameCI[ingred.name.toLowerCase()] = ingred
-		}
-	},
-	
-	_updateByTagIndex: function ()
-	{
-		var db = this.db,
-			index = this._byTag = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i]
-			
-			var tags = ingred.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-			{
-				var tag = tags[j]
-				
-				var arr = index[tag]
-				if (arr)
-					arr.push(ingred)
-				else
-					index[tag] = [ingred]
-			}
-		}
-	},
-	
-	_updateByMarkIndex: function ()
-	{
-		var db = this.db,
-			byMark = this._byMark = {}
-		
-		for (var i = 0; i < db.length; i++)
-		{
-			var ingred = db[i],
-				mark = ingred.mark
-			
-			if (mark)
-			{
-				var arr
-				if ((arr = byMark[mark]))
-					arr.push(ingred)
-				else
-					byMark[mark] = [ingred]
-			}
-		}
-	},
-	
 	
 	getByMark: function (mark)
 	{
-		if (!this._byMark)
-			this._updateByMarkIndex()
-		
-		return this._byMark[mark]
+		return this.index.byMark[mark] || []
 	},
 	
 	ingredientsLinkByMark: function (mark)
 	{
 		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
-	},
-	
-	getByFirstLetter: function (letter)
-	{
-		var db = this.db, res = []
-		letter = letter.toUpperCase()
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingred = db[i]
-			if (ingred.name.indexOf(letter) == 0)
-				res.push(ingred)
-		}
-		
-		return res
 	},
 	
 	mergeIngredientSets: function ()
@@ -340,8 +239,8 @@ Object.extend(Ingredient,
 	
 	compareByGroup: function (a, b)
 	{
-		var groups = Me.groups
-		return groups.indexOf(a.group) - groups.indexOf(b.group)
+		var groupOrder = Me.groupOrder
+		return groupOrder[a.group] - groupOrder[b.group]
 	},
 	
 	defaultSupplementCoefficients: function ()
@@ -365,10 +264,16 @@ Object.extend(Ingredient,
 		
 		return coefficients
 	}
-})
+}
 
+Object.extend(Me, DB.module.staticMethods)
+Object.extend(Me, Me.staticMethods)
+Me.findAndBindPrepares()
 
-Ingredient.initialize
+Me.className = 'Ingredient'
+self[Me.className] = Me
+
+Me.initialize
 (
 	<!--# include virtual="/db/ingredients/ingredients.json"-->,
 	<!--# include virtual="/db/ingredients/groups.json"-->,

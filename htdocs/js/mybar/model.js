@@ -161,7 +161,7 @@ var myProto =
 	sortByUsage: function (a, b)
 	{
 		if (a.group != b.group)
-			return Ingredient.sortByGroups(a.name, b.name)
+			return Ingredient.compareByGroup(a, b)
 		
 		var u = this.ingredients.usage
 		
@@ -181,7 +181,7 @@ var myProto =
 			if (this.hash[ingredient.name])
 				return false
 			this.push(ingredient)
-			this.sort(function(a,b){ return Ingredient.sortByGroups(a.name, b.name) })
+			this.sort(function(a,b){ return Ingredient.compareByGroup(a, b) })
 			this.hash[ingredient.name] = true
 			return this
 		}
@@ -205,7 +205,7 @@ var myProto =
 			if (ingredient)
 				ingredients.push(ingredient)
 		}
-		return ingredients.sort(function (a, b) { return Ingredient.sortByGroups(a.name, b.name) })
+		return ingredients.sort(function (a, b) { return Ingredient.compareByGroup(a, b) })
 	},
 	
 	computeCocktails: function (ingredients)
@@ -263,7 +263,7 @@ var myProto =
 				bb = Ingredient.getByName(bi[i][0])
 			
 			if (aa.group != bb.group)
-				return Ingredient.sortByGroups(aa.name, bb.name)
+				return Ingredient.compareByGroup(aa, bb)
 			
 			lc = aa.name.localeCompare(bb.name)
 			if (lc)
@@ -509,7 +509,8 @@ var myProto =
 				}
 			}
 			
-			havingIngredients = Object.toArray(havingIngredients).sort(Ingredient.sortByGroups).map(function (name) { return Ingredient.getByName(name) })
+			havingIngredients = Object.toArray(havingIngredients).map(function (name) { return Ingredient.getByName(name) })
+			havingIngredients.sort(Ingredient.compareByGroup)
 			
 			groups.push({ingredients: ingredients, cocktails: cocktails, havingIngredients: havingIngredients})
 		}
@@ -563,7 +564,7 @@ var myProto =
 			
 			groups.push(
 			{
-				ingredients: cocktail.getIngredientNames().sort(Ingredient.sortByGroups).map(function (name) { return Ingredient.getByName(name) }),
+				ingredients: cocktail.getIngredientNames().map(function (name) { return Ingredient.getByName(name) }).sort(Ingredient.compareByGroup),
 				cocktails: [cocktail],
 				havingIngredients: []
 			})
@@ -592,7 +593,7 @@ var myProto =
 				bi = b.ingredient
 			
 			if (ai.group != bi.group)
-				return Ingredient.sortByGroups(bi.name, ai.name)
+				return Ingredient.compareByGroup(bi, ai)
 			
 			return bi.cocktails.length - ai.cocktails.length
 		})

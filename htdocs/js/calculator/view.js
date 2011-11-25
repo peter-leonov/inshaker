@@ -52,36 +52,6 @@ function mergeNodes(parent, nodes)
 	}
 }
 
-function insertChild(presentIngreds, parentNode, node)
-{
-    var insertedIngredient = Ingredient.getByName(node.getElementsByTagName("input")[1].value)
-    var closestGap = Infinity
-    var closestNode = null
-    var sGap = null // signed
-
-    for(var i = 0; i < presentIngreds.length; i++)
-    {
-        sGap = presentIngreds[i][1].listOrder() - insertedIngredient.listOrder()
-        var gap = Math.abs(sGap)
-        if(gap < closestGap)
-        {
-            closestGap = gap
-            closestNode = presentIngreds[i][0] 
-        }
-    }
-    if(sGap < 0) parentNode.insertBefore(node, closestNode)
-    else if(closestNode) insertAfter(node, closestNode)
-    else parentNode.appendChild(node)
-}
-
-function insertAfter(new_node, existing_node) 
-{
-    if (existing_node.nextSibling) 
-        existing_node.parentNode.insertBefore(new_node, existing_node.nextSibling)
-    else existing_node.parentNode.appendChild(new_node)
-}
-
-
 
 function CalculatorView() {
 	this.ID_COCKTAILS   = 'cart_cocktails';

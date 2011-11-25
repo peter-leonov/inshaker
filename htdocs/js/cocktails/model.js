@@ -95,11 +95,10 @@ function CocktailsModel (states, view) {
 		view.setupCompleter(new IngredientsSearcher(set, bySecondName))
 	}
 	
-	this.randomIngredient = function(){
-		var allNames = Ingredient.getAllNames()
-		var num = Math.floor((allNames.length)*Math.random());
-		return allNames[num];
-	};
+	this.randomIngredient = function ()
+	{
+		return Ingredient.getAll().random(1)[0].name
+	}
 	
 	this.randomCocktailNames = function(){
 		var cocktails = Cocktail.getAll()

@@ -65,7 +65,7 @@ var myProto =
 		return ingredients.sort(function(a, b){
 			if(a.group != b.group)
 			{
-				return Ingredient.sortByGroups(a.name, b.name)
+				return Ingredient.compareByGroup(a, b)
 			}
 				
 			return a.name.localeCompare(b.name)
