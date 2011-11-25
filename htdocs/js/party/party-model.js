@@ -77,7 +77,7 @@ Me.prototype =
 			buyByName[good.name] = buy
 		}
 		
-		// plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
+		plan.sort(function (a, b) { return Ingredient.compareByGroup(a.good, b.good) })
 		
 		this.view.renderPlan(plan)
 	},
