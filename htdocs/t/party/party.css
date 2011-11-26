@@ -74,11 +74,10 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #lists-box { position: relative; }
 
 #ingredients-part,
-#tools-part { overflow: hidden; }
+#tools-part { overflow: hidden; margin-bottom: 10px; }
 
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
-#purchase-plan .table .list .ingredient { position: relative; padding: 10px 0 12px 0; border-bottom: 1px solid #f2f2f2; }
-#purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
+#purchase-plan .table .list .ingredient { position: relative; padding: 9px 0 10px 0; border-bottom: 1px solid #f2f2f2; }
 #purchase-plan .table .list .ingredient:last-child { border-bottom: none; }
 #purchase-plan .table .list .ingredient .name { cursor: pointer; }
 #purchase-plan .table .list .ingredient .name:hover { color: #ec118f; }
@@ -91,8 +90,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .total .head { font-weight: bold; }
 #purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
 
-#purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; }
-#purchase-plan .preview-list .item { float: left; margin: 0 0 50px 17px; }
+#purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; margin-top: 30px; }
+#purchase-plan .preview-list .item { float: left; margin: 0 0 48px 17px; }
 #purchase-plan .preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
 #purchase-plan .preview-list .ingredient-preview .image { display: none; }
 
