@@ -539,8 +539,8 @@ var myProto =
 			if (type == 'ingredient-tag')
 			{
 				var goods = item.names.slice()
-				for (var i = 0, il = goods.length; i < il; i++)
-					goods[i] = Cocktail.getByIngredient(goods[i])
+				for (var j = 0, jl = goods.length; j < jl; j++)
+					goods[j] = Cocktail.getByIngredient(goods[j])
 				var set = DB.disjunction(goods)
 				cocktails = DB.conjunction([cocktails, set])
 				continue
