@@ -320,6 +320,10 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["tools"] = about["Штучки"]
     @cocktail["receipt"] = about["Как приготовить"]
     
+    if about["Порций"]
+      @cocktail["portions"] = about["Порций"]
+    end
+    
     
     @cocktail["ingredients"] = sort_parts_by_group(@cocktail["ingredients"])
     @cocktail["garnish"] = sort_parts_by_group(@cocktail["garnish"])
