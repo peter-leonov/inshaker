@@ -317,13 +317,23 @@ class CocktailsProcessor < Inshaker::Processor
     else
       @cocktail["garnish"] = []
     end
-    @cocktail["tools"] = about["Штучки"]
-    @cocktail["receipt"] = about["Как приготовить"]
+    
+    @cocktail["tools"] = about["Штучки"].map do |tool|
+      if tool.class == String
+        tool
+      elsif tool.class == Hash
+        name, amount = tool.shift
+        name
+      elsif
+        error "непонятный контейнер штучки «#{tool.class}»"
+      end
+    end
     
     if about["Порций"]
       @cocktail["portions"] = about["Порций"]
     end
     
+    @cocktail["receipt"] = about["Как приготовить"]
     
     @cocktail["ingredients"] = sort_parts_by_group(@cocktail["ingredients"])
     @cocktail["garnish"] = sort_parts_by_group(@cocktail["garnish"])
