@@ -53,7 +53,8 @@ Me.prototype =
 		var tools = this.tools
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
-			parts.addGood(Ingredient.getByName(tools[i]), 1)
+			var v = tools[i]
+			parts.addGood(Ingredient.getByName(v[0]), v[1])
 		}
 		
 		return parts
@@ -263,7 +264,16 @@ Me.staticMethods =
 	
 	getByToolPrepare: function (name)
 	{
-		this.index.byTool = DB.hashOfAryIndexByAryKey(this.db, 'tools')
+		function tools (v)
+		{
+			var keys = []
+			var parts = v.tools
+			for (var i = 0, il = parts.length; i < il; i++)
+				keys[i] = parts[i][0]
+			
+			return keys
+		}
+		this.index.byTool = DB.hashOfAryIndexAryBy(this.db, tools)
 	},
 	
 	getByTool: function (name)
