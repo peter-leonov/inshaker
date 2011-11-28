@@ -142,7 +142,8 @@ class CocktailsProcessor < Inshaker::Processor
     say "проверяю штучки"
     indent do
     @cocktails.each do |name, cocktail|
-      cocktail["tools"].each do |tool|
+      cocktail["tools"].each do |part|
+        tool = part[0]
         unless Ingredient[tool]
           error "#{name}: нет такой штучки «#{tool}»"
           if tool.to_s.has_diacritics
@@ -320,12 +321,13 @@ class CocktailsProcessor < Inshaker::Processor
     
     @cocktail["tools"] = about["Штучки"].map do |tool|
       if tool.class == String
-        tool
+        [tool, 1.0, "шт"]
       elsif tool.class == Hash
         name, amount = tool.shift
-        name
+        parse_part(name, amount)
       elsif
         error "непонятный контейнер штучки «#{tool.class}»"
+        ["хз", 1.0, "шт"]
       end
     end
     
@@ -487,6 +489,11 @@ class CocktailsProcessor < Inshaker::Processor
     end
     
     cocktail["garnish"].each do |part|
+      part[1] = part[1].may_be_to_i
+      part.pop
+    end
+    
+    cocktail["tools"].each do |part|
       part[1] = part[1].may_be_to_i
       part.pop
     end
@@ -674,7 +681,7 @@ class CocktailsProcessor::Template
     @desc_start  = hash["desc_start"]
     @desc_end    = hash["desc_end"]
     @groups      = hash["groups"]
-    @tools       = hash["tools"]
+    @tools       = hash["tools"].map { |e| e[0] }
     @receipt     = hash["receipt"]
     @ingredients = hash["ingredients"]
     @garnish     = hash["garnish"]
