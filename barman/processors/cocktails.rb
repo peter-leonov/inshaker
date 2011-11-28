@@ -603,7 +603,11 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       name, amount = e.shift
-      
+      parse_part(name, amount)
+    end
+  end
+  
+  def parse_part name, amount
       vol, unit = Ingredient.parse_dose(amount)
       unless vol
         if vol == nil
@@ -616,7 +620,6 @@ class CocktailsProcessor < Inshaker::Processor
       end
       
       [name, vol, unit]
-    end
   end
   
   def sort_parts_by_group arr
