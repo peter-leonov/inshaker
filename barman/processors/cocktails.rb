@@ -117,7 +117,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail["ingredients"].each do |ingred|
         unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
-          if ingred[0].has_diacritics
+          if ingred[0].to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
@@ -131,7 +131,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail["garnish"].each do |ingred|
         unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
-          if ingred[0].has_diacritics
+          if ingred[0].to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
@@ -145,7 +145,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail["tools"].each do |tool|
         unless Ingredient[tool]
           error "#{name}: нет такой штучки «#{tool}»"
-          if tool.has_diacritics
+          if tool.to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
