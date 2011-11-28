@@ -319,17 +319,7 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["garnish"] = []
     end
     
-    @cocktail["tools"] = about["Штучки"].map do |tool|
-      if tool.class == String
-        [tool, 1.0, "шт"]
-      elsif tool.class == Hash
-        name, amount = tool.shift
-        parse_part(name, amount)
-      elsif
-        error "непонятный контейнер штучки «#{tool.class}»"
-        ["хз", 1.0, "шт"]
-      end
-    end
+    @cocktail["tools"] = parse_parts(about["Штучки"])
     
     if about["Порций"]
       @cocktail["portions"] = about["Порций"]
@@ -609,8 +599,15 @@ class CocktailsProcessor < Inshaker::Processor
   
   def parse_parts parts
     parts.map do |e|
-      name, amount = e.shift
-      parse_part(name, amount)
+      if e.class == String
+        [e, 1.0, "шт"]
+      elsif e.class == Hash
+        name, amount = e.shift
+        parse_part(name, amount)
+      else
+        error "непонятный контейнер штучки «#{e.class}»"
+        ["хз", 1.0, "шт"]
+      end
     end
   end
   
