@@ -473,19 +473,25 @@ class CocktailsProcessor < Inshaker::Processor
       data[prop] = cocktail.delete(prop)
     end
     
-    cocktail["ingredients"].each do |part|
-      part[1] = part[1].may_be_to_i
-      part.pop
+    cocktail["ingredients"].map! do |part|
+      [
+        part[0],
+        part[1].may_be_to_i
+      ]
     end
     
-    cocktail["garnish"].each do |part|
-      part[1] = part[1].may_be_to_i
-      part.pop
+    cocktail["garnish"].map! do |part|
+      [
+        part[0],
+        part[1].may_be_to_i
+      ]
     end
     
-    cocktail["tools"].each do |part|
-      part[1] = part[1].may_be_to_i
-      part.pop
+    cocktail["tools"].map! do |part|
+      [
+        part[0],
+        part[1].may_be_to_i
+      ]
     end
     
     flush_json_object(data, "#{root_dir.path}/data.json")
