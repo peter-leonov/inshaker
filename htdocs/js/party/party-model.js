@@ -63,6 +63,8 @@ Me.prototype =
 			plan = this.plan = []
 		
 		var ary = parts.toArray()
+		ary.sort(function (a, b) { return Ingredient.compareByGroup(a.good, b.good) })
+		
 		for (var i = 0, il = ary.length; i < il; i++)
 		{
 			var good = ary[i].good
@@ -75,11 +77,9 @@ Me.prototype =
 				amount: 0
 			}
 			
-			plan.push(buy)
+			plan[i] = buy
 			buyByName[good.name] = buy
 		}
-		
-		plan.sort(function (a, b) { return Ingredient.compareByGroup(a.good, b.good) })
 		
 		this.view.renderPlan(plan)
 	},
@@ -161,16 +161,16 @@ Me.prototype =
 		this.total = total
 	},
 	
-	setIngredientAmount: function (n, amount)
+	setIngredientAmount: function (id, amount)
 	{
-		var buy = this.plan[n]
+		var buy = this.plan[id]
 		
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
 		buy.cost = buy.good.getCost(amount).ceil()
 		
-		this.view.updateBuy(n, buy)
+		this.view.updateBuy(id, buy)
 		
 		this.calculateTotal(this.plan)
 		this.view.updateTotal(this.total)
