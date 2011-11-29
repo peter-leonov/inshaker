@@ -432,7 +432,7 @@
 {"group":"Посуда","name":"Сосуд и чаша для саке","path":"sosud-i-chasha-dlya-sake","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,1200.0,true]]},
 {"group":"Соусы и масло","name":"Соус винкотто ягодный","path":"sous-vinkotto-yagodnyiy","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.25,575.0,true]]},
 {"group":"Соусы и масло","name":"Соус чили","path":"sous-chili","tags":["Соус","Любой ингредиент"],"unit":"л","volumes":[[0.28,65.0,true]]},
-{"group":"Морепродукты","name":"Спирулина","path":"spirulina","tags":["Любой ингредиент"],"unit":"г","volumes":[[450.0,3500.0,true]]},
+{"group":"Морепродукты","name":"Спирулина","path":"spirulina","tags":["Любой ингредиент"],"unit":"г","volumes":[[450.0,2500.0,true]]},
 {"group":"Вода и напитки","name":"Спрайт","names":["7up"],"path":"sprayt","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.33,23.0,true]]},
 {"group":"Штучки","name":"Спрейер","path":"spreyer","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,1000.0,true]]},
 {"group":"Штучки","name":"Стакан для смешивания","path":"stakan-dlya-smeshivaniya","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,1000.0,true]]},
