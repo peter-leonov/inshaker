@@ -606,13 +606,13 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       if e.class == String
-        [e, 1.0, "шт"]
+        [e, 1.0, "шт", "helping"]
       elsif e.class == Hash
         name, amount = e.shift
         parse_part(name, amount)
       else
         error "непонятный контейнер штучки «#{e.class}»"
-        ["хз", 1.0, "шт"]
+        ["хз", 1.0, "шт", "helping"]
       end
     end
   end
@@ -630,7 +630,7 @@ class CocktailsProcessor < Inshaker::Processor
         unit = "хз"
       end
       
-      [name, vol, unit]
+      [name, vol, unit, multiplier]
   end
   
   def sort_parts_by_group arr
