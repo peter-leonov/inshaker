@@ -32,29 +32,38 @@ Me.prototype =
 		return this
 	},
 	
-	getPartsFor: function (count)
+	getPartsFor: function (count, guests)
 	{
 		var parts = new Me.Parts()
+		
+		var portions = this.portions || 1
 		
 		var ingredients = this.ingredients
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var v = ingredients[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
+			parts.addGood(Ingredient.getByName(v[0]), v[1] * portions * count)
 		}
 		
 		var garnish = this.garnish
 		for (var i = 0, il = garnish.length; i < il; i++)
 		{
 			var v = garnish[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
+			parts.addGood(Ingredient.getByName(v[0]), v[1] * portions * count)
 		}
 		
 		var tools = this.tools
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
 			var v = tools[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1])
+			var total = v[1]
+			var multiplier = v[2]
+			if (multiplier == 1)
+				total *= guests
+			else if (!multiplier || multiplier == 2)
+				total *= portions * count
+			
+			parts.addGood(Ingredient.getByName(v[0]), total)
 		}
 		
 		return parts
