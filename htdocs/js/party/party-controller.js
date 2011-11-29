@@ -19,9 +19,9 @@ Me.prototype =
 		this.model.setCocktailCount(n, v)
 	},
 	
-	ingredientAmountChanged: function (id, v)
+	ingredientAmountChanged: function (name, v)
 	{
-		this.model.setIngredientAmount(id, v)
+		this.model.setIngredientAmount(name, v)
 	},
 	
 	goodSelected: function (name)

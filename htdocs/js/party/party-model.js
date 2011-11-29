@@ -71,7 +71,6 @@ Me.prototype =
 			
 			var buy =
 			{
-				id: i,
 				group: Ingredient.getGroupOfGroup(good.group),
 				good: good,
 				amount: 0
@@ -161,16 +160,16 @@ Me.prototype =
 		this.total = total
 	},
 	
-	setIngredientAmount: function (id, amount)
+	setIngredientAmount: function (name, amount)
 	{
-		var buy = this.plan[id]
+		var buy = this.buyByName[name]
 		
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
 		buy.cost = buy.good.getCost(amount).ceil()
 		
-		this.view.updateBuy(id, buy)
+		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
 		this.view.updateTotal(this.total)

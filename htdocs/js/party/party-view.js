@@ -207,7 +207,7 @@ Me.prototype =
 	ingredientAmountChanged: function (e)
 	{
 		var target = e.target
-		this.controller.ingredientAmountChanged(target.dataGoodID, getFloatValue(target.value))
+		this.controller.ingredientAmountChanged(target.dataGoodName, getFloatValue(target.value))
 	},
 	
 	renderPortions: function (portions)
@@ -330,7 +330,7 @@ Me.prototype =
 		{
 			var buy = plan[i],
 				good = buy.good,
-				cache = planCache[buy.id] = {}
+				cache = planCache[good.name] = {}
 			
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
@@ -345,7 +345,7 @@ Me.prototype =
 			
 			var value = Nc('input', 'value')
 			amount.appendChild(value)
-			value.dataGoodID = buy.id
+			value.dataGoodName = good.name
 			cache.amount = value
 			
 			amount.appendChild(T(' '))
@@ -409,7 +409,7 @@ Me.prototype =
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
 			var buy = plan[i],
-				item = planCache[buy.id]
+				item = planCache[buy.good.name]
 			
 			var human = Units.humanizeDose(buy.amount, buy.good.unit)
 			
@@ -427,11 +427,11 @@ Me.prototype =
 		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
 	},
 	
-	updateBuy: function (id, buy)
+	updateBuy: function (name, buy)
 	{
 		var planCache = this.cache.plan
 		
-		var item = planCache[id]
+		var item = planCache[name]
 		item.cost.nodeValue = buy.cost
 	},
 	
