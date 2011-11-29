@@ -612,7 +612,8 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def parse_part name, amount
-      vol, unit = Ingredient.parse_dose(amount)
+      vol, unit, multiplier = Ingredient.parse_dose(amount)
+      
       unless vol
         if vol == nil
           error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"

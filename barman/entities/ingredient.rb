@@ -56,6 +56,12 @@ class Ingredient < Inshaker::Entity
     "л" => litre,
     "г" => gramme
   }
+  
+  @multipliers = {
+    "на человека" => "guest",
+    "на порцию" => "helping",
+    "на вечеринку" => "party"
+  }
   def self.humanize_dose vol, unit
     
     human = @humans[unit]
@@ -74,7 +80,7 @@ class Ingredient < Inshaker::Entity
   end
   
   def self.parse_dose dose
-    m = dose.match(/^\s*(\d+(?:[.,]\d+)?)\s*(\S+)\s*$/)
+    m = dose.match(/^ *(\d+(?:[.,]\d+)?) *(\S+)(?: +(на человека|на порцию|на вечеринку))? *$/)
     unless m
       return nil
     end
@@ -84,8 +90,22 @@ class Ingredient < Inshaker::Entity
       return [false, unit]
     end
     
+    multiplier = m[3]
+    if multiplier
+      type = @multipliers[multiplier]
+      if type
+        multiplier = type
+      else
+        error "непонятный множитель «#{multiplier}»"
+      end
+    else
+      multiplier = @multipliers["на порцию"]
+    end
+    
     vol = m[1].gsub(",", ".").to_f
     
-    return normalize_dose(vol, unit)
+    vol, unit = normalize_dose(vol, unit)
+    
+    return [vol, unit, multiplier]
   end
 end
