@@ -62,6 +62,17 @@ class Ingredient < Inshaker::Entity
     "на порцию" => "helping",
     "на вечеринку" => "party"
   }
+  
+  @multiplier_id = {
+    "guest" => 1,
+    "helping" => 2,
+    "party" => 3
+  }
+  
+  def self.get_multiplier_id multiplier
+    @multiplier_id[multiplier]
+  end
+  
   def self.humanize_dose vol, unit
     
     human = @humans[unit]

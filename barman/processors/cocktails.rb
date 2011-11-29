@@ -475,10 +475,16 @@ class CocktailsProcessor < Inshaker::Processor
     
     def cleanup_ingredient_list list
       list.map! do |part|
-        [
+        res = [
           part[0],
           part[1].may_be_to_i
         ]
+        
+        if part[3] != "helping"
+          res[2] = Ingredient.get_multiplier_id(part[3])
+        end
+        
+        res
       end
     end
     
