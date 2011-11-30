@@ -13,9 +13,9 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 50px; height: 37px; right: 0; top: -9px; }
+#spotlighted { width: 103px; height: 37px; right: 0; top: -4px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 380px; height: 700px; left: 168px; bottom: -840px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 410px; height: 700px; left: 140px; bottom: -850px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
