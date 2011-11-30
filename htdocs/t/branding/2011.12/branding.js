@@ -26,10 +26,12 @@ var Me =
 	}
 }
 
+var link = '/cocktail/spice_and_ice/'
+
 Me.initialize
 ({
-	"spotlighted":{"href":"/cocktail/ferry_corsten/"},
-	"branded-image":{"href":"/cocktail/ferry_corsten/"}
+	'spotlighted':{'href':link},
+	'branded-image':{'href':link}
 })
 
 Me.bind()
