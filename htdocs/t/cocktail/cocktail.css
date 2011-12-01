@@ -127,7 +127,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
-#recommendations .point { line-height: 112px; text-align: center; }
+#recommendations .point { line-height: 124px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
 
 .drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }
