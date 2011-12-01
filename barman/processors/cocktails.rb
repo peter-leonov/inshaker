@@ -117,7 +117,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail["ingredients"].each do |ingred|
         unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
-          if ingred[0].has_diacritics
+          if ingred[0].to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
@@ -131,7 +131,7 @@ class CocktailsProcessor < Inshaker::Processor
       cocktail["garnish"].each do |ingred|
         unless Ingredient[ingred[0]]
           error "#{name}: нет такого ингредиента «#{ingred[0]}»"
-          if ingred[0].has_diacritics
+          if ingred[0].to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
@@ -142,10 +142,11 @@ class CocktailsProcessor < Inshaker::Processor
     say "проверяю штучки"
     indent do
     @cocktails.each do |name, cocktail|
-      cocktail["tools"].each do |tool|
+      cocktail["tools"].each do |part|
+        tool = part[0]
         unless Ingredient[tool]
           error "#{name}: нет такой штучки «#{tool}»"
-          if tool.has_diacritics
+          if tool.to_s.has_diacritics
             say "пожалуйста, проверь буквы «й» и «ё» на «правильность»"
           end
         end
@@ -317,9 +318,14 @@ class CocktailsProcessor < Inshaker::Processor
     else
       @cocktail["garnish"] = []
     end
-    @cocktail["tools"] = about["Штучки"]
-    @cocktail["receipt"] = about["Как приготовить"]
     
+    @cocktail["tools"] = parse_parts(about["Штучки"])
+    
+    if about["Порций"]
+      @cocktail["portions"] = about["Порций"]
+    end
+    
+    @cocktail["receipt"] = about["Как приготовить"]
     
     @cocktail["ingredients"] = sort_parts_by_group(@cocktail["ingredients"])
     @cocktail["garnish"] = sort_parts_by_group(@cocktail["garnish"])
@@ -450,7 +456,7 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def update_html dst, hash
-    tpl = CocktailTemplate.new(hash)
+    tpl = Template.new(hash)
     File.write("#{dst.path}/#{dst.name}.html", @cocktail_renderer.result(tpl.get_binding))
   end
   
@@ -467,15 +473,24 @@ class CocktailsProcessor < Inshaker::Processor
       data[prop] = cocktail.delete(prop)
     end
     
-    cocktail["ingredients"].each do |part|
-      part[1] = part[1].may_be_to_i
-      part.pop
+    def cleanup_ingredient_list list
+      list.map! do |part|
+        res = [
+          part[0],
+          part[1].may_be_to_i
+        ]
+        
+        if part[3] != "helping"
+          res[2] = Ingredient.get_multiplier_id(part[3])
+        end
+        
+        res
+      end
     end
     
-    cocktail["garnish"].each do |part|
-      part[1] = part[1].may_be_to_i
-      part.pop
-    end
+    cleanup_ingredient_list(cocktail["ingredients"])
+    cleanup_ingredient_list(cocktail["garnish"])
+    cleanup_ingredient_list(cocktail["tools"])
     
     flush_json_object(data, "#{root_dir.path}/data.json")
   end
@@ -588,9 +603,21 @@ class CocktailsProcessor < Inshaker::Processor
   
   def parse_parts parts
     parts.map do |e|
-      name, amount = e.shift
+      if e.class == String
+        [e, 1.0, "шт", "helping"]
+      elsif e.class == Hash
+        name, amount = e.shift
+        parse_part(name, amount)
+      else
+        error "непонятный контейнер штучки «#{e.class}»"
+        ["хз", 1.0, "шт", "helping"]
+      end
+    end
+  end
+  
+  def parse_part name, amount
+      vol, unit, multiplier = Ingredient.parse_dose(amount)
       
-      vol, unit = Ingredient.parse_dose(amount)
       unless vol
         if vol == nil
           error "не могу понять количество ингредиента «#{name}» в выражении «#{amount}»"
@@ -601,8 +628,7 @@ class CocktailsProcessor < Inshaker::Processor
         unit = "хз"
       end
       
-      [name, vol, unit]
-    end
+      [name, vol, unit, multiplier]
   end
   
   def sort_parts_by_group arr
@@ -643,6 +669,50 @@ private
     end
   end
   
+end
+
+class CocktailsProcessor::Template
+  def initialize(hash)
+    @name        = hash["name"]
+    @name_eng    = hash["name_eng"]
+    @name_html   = hash["name_eng"].html_name 
+    
+    @teaser      = hash["teaser"]
+    @strength    = hash["strength"]
+    @method      = hash["method"]
+    @desc_start  = hash["desc_start"]
+    @desc_end    = hash["desc_end"]
+    @groups      = hash["groups"]
+    @tools       = hash["tools"].map { |e| e[0] }
+    @receipt     = hash["receipt"]
+    @ingredients = hash["ingredients"]
+    @garnish     = hash["garnish"]
+    @sorted_parts= hash["sorted_parts"]
+    @video       = hash["video"]
+    
+    @recs        = hash["recs"]
+  end
+  
+  def parts
+    @sorted_parts.each do |name, dose, unit|
+      normal = Ingredient.humanize_dose(dose, unit)
+      yield name, normal[0].may_be_to_i, normal[1]
+    end
+  end
+  
+  def groups
+    groups = []
+    groups << ["/cocktails.html#strength=#{@strength}", @strength]
+    
+    @groups.each do |group|
+      groups << ["/cocktails.html#tag=#{group}", group]
+    end
+    groups
+  end
+  
+  def get_binding
+    binding
+  end
 end
 
 exit CocktailsProcessor.new.run

@@ -189,8 +189,8 @@ Me.prototype =
 		nodes.peopleCount.addEventListener('blur', blurInteger, true)
 		nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
 		nodes.portions.addEventListener('blur', blurInteger, true)
-		nodes.purchasePlanList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-		nodes.purchasePlanList.addEventListener('blur', blurFloat, true)
+		nodes.ingredientsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+		nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
 	},
 	
 	peopleCountChanged: function (e)
@@ -207,7 +207,7 @@ Me.prototype =
 	ingredientAmountChanged: function (e)
 	{
 		var target = e.target
-		this.controller.ingredientAmountChanged(target.dataInListNumber, getFloatValue(target.value))
+		this.controller.ingredientAmountChanged(target.dataGoodName, getFloatValue(target.value))
 	},
 	
 	renderPortions: function (portions)
@@ -287,15 +287,50 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
-		this.renderPreviewList(plan)
-		
-		var root = this.nodes.purchasePlanList,
-			planCache = this.cache.plan
+		var byGroup =
+		{
+			tools: [],
+			ingredients: []
+		}
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
-			var good = plan[i].good,
-				cache = planCache[i] = {}
+			var buy = plan[i]
+			byGroup[buy.group].push(buy)
+		}
+		
+		this.renderIngredientsPlan(byGroup.ingredients)
+		this.renderIngredientsPreviewList(byGroup.ingredients)
+		
+		this.renderToolsPlan(byGroup.tools)
+		this.renderToolsPreviewList(byGroup.tools)
+	},
+	
+	renderIngredientsPlan: function (plan)
+	{
+		this.renderPlanTo(plan, this.nodes.ingredientsPartList)
+	},
+	
+	renderToolsPlan: function (plan)
+	{
+		this.renderPlanTo(plan, this.nodes.toolsPartList)
+	},
+	
+	renderPlanTo: function (plan, root)
+	{
+		if (plan.length == 0)
+		{
+			root.hide()
+			return
+		}
+		root.show()
+		
+		var planCache = this.cache.plan
+		for (var i = 0, il = plan.length; i < il; i++)
+		{
+			var buy = plan[i],
+				good = buy.good,
+				cache = planCache[good.name] = {}
 			
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
@@ -310,7 +345,7 @@ Me.prototype =
 			
 			var value = Nc('input', 'value')
 			amount.appendChild(value)
-			value.dataInListNumber = i
+			value.dataGoodName = good.name
 			cache.amount = value
 			
 			amount.appendChild(T(' '))
@@ -334,10 +369,18 @@ Me.prototype =
 		}
 	},
 	
-	renderPreviewList: function (plan)
+	renderIngredientsPreviewList: function (plan)
 	{
-		var root = this.nodes.purchasePlanPreviewList
-		
+		this.renderPreviewListTo(plan, this.nodes.ingredientsPartPreviewList)
+	},
+	
+	renderToolsPreviewList: function (plan)
+	{
+		this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
+	},
+	
+	renderPreviewListTo: function (plan, root)
+	{
 		root.empty()
 		
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -366,7 +409,7 @@ Me.prototype =
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
 			var buy = plan[i],
-				item = planCache[i]
+				item = planCache[buy.good.name]
 			
 			var human = Units.humanizeDose(buy.amount, buy.good.unit)
 			
@@ -384,11 +427,11 @@ Me.prototype =
 		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
 	},
 	
-	updateBuy: function (n, buy)
+	updateBuy: function (name, buy)
 	{
 		var planCache = this.cache.plan
 		
-		var item = planCache[n]
+		var item = planCache[name]
 		item.cost.nodeValue = buy.cost
 	},
 	

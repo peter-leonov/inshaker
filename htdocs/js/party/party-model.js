@@ -54,7 +54,7 @@ Me.prototype =
 		{
 			var portion = portions[i]
 			
-			parts.add(portion.cocktail.getPartsFor(1))
+			parts.add(portion.cocktail.getPartsFor(1, 1))
 			// portion.parts = parts
 			
 		}
@@ -63,21 +63,22 @@ Me.prototype =
 			plan = this.plan = []
 		
 		var ary = parts.toArray()
-		for (var j = 0, jl = ary.length; j < jl; j++)
+		ary.sort(function (a, b) { return Ingredient.compareByGroup(a.good, b.good) })
+		
+		for (var i = 0, il = ary.length; i < il; i++)
 		{
-			var good = ary[j].good
+			var good = ary[i].good
 			
 			var buy =
 			{
+				group: Ingredient.getGroupOfGroup(good.group),
 				good: good,
 				amount: 0
 			}
 			
-			plan.push(buy)
+			plan[i] = buy
 			buyByName[good.name] = buy
 		}
-		
-		// plan.sort(function (a, b) { return Ingredient.compareByGroup(a.ingredient, b.ingredient) })
 		
 		this.view.renderPlan(plan)
 	},
@@ -127,7 +128,7 @@ Me.prototype =
 		{
 			var portion = portions[i]
 			
-			parts.add(portion.cocktail.getPartsFor(portion.count))
+			parts.add(portion.cocktail.getPartsFor(portion.count, this.peopleCount))
 		}
 		
 		var buyByName = this.buyByName
@@ -159,16 +160,16 @@ Me.prototype =
 		this.total = total
 	},
 	
-	setIngredientAmount: function (n, amount)
+	setIngredientAmount: function (name, amount)
 	{
-		var buy = this.plan[n]
+		var buy = this.buyByName[name]
 		
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
 		buy.cost = buy.good.getCost(amount).ceil()
 		
-		this.view.updateBuy(n, buy)
+		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
 		this.view.updateTotal(this.total)

@@ -1,3 +1,23 @@
+function uniqBy (ary, f)
+{
+	var res = []
+	
+	var seen = {}
+	for (var i = 0, il = ary.length; i < il; i++)
+	{
+		var v = ary[i]
+		
+		var key = f(ary[i])
+		if (seen[key])
+			continue
+		seen[key] = true
+		
+		res.push(v)
+	}
+	
+	return res
+}
+
 var Printer = {
     ID_COCKTAILS_NUM  : 'cocktails_num',
     ID_COCKTAILS_LIST : 'cocktails_list',
@@ -73,7 +93,7 @@ var Printer = {
 
        for(var i = 0; i < cocktail.tools.length; i++){
            var last = (i == (cocktail.tools.length - 1));
-           toolsRoot.appendChild(this.createToolElement(cocktail.tools[i], last));
+           toolsRoot.appendChild(this.createToolElement(cocktail.tools[i][0], last));
        }
 
        var imgCounter = 0;
@@ -139,7 +159,7 @@ var Printer = {
 
         var tools = this.collectTools(cartData.cocktails);
         for(var i = 0; i < tools.length; i++) {
-            toolsRoot.appendChild(this.createToolElement(tools[i], i == (tools.length-1)));
+            toolsRoot.appendChild(this.createToolElement(tools[i][0], i == (tools.length-1)));
         }
     },
 
@@ -149,7 +169,7 @@ var Printer = {
             var cocktail = cocktailsAndQuants[i][0];
             res = res.concat(cocktail.tools);
         }
-        return res.uniq();
+        return uniqBy(res, function (v) { return v[0] })
     },
 
     createCocktailElement: function(cocktail, quantity, last){

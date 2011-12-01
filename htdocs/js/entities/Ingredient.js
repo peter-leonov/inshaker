@@ -263,6 +263,13 @@ Me.staticMethods =
 			coefficients[minor[i].name] = 0.001
 		
 		return coefficients
+	},
+	
+	// you can see hard-coded values, sorry again
+	groupsOfGroups: {'Украшения': 'tools', 'Штучки': 'tools', 'Посуда': 'tools'},
+	getGroupOfGroup: function (group)
+	{
+		return this.groupsOfGroups[group] || 'ingredients'
 	}
 }
 
