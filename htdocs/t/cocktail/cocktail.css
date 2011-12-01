@@ -32,6 +32,8 @@
 .b-more-cocktails .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 
 
+.cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
+
 .hidden { display: none !important; }
 .popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
