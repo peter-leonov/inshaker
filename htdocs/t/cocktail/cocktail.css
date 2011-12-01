@@ -47,7 +47,7 @@
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
-.common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
+.common-box { overflow: hidden; position: relative; z-index: 1; }
 
 #top-menu { position: relative; width: 590px; height: 182px; background: url(menu.png) repeat-x 0 0; }
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
