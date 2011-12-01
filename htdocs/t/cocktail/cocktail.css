@@ -32,6 +32,8 @@
 .b-more-cocktails .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
 
 
+.cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
+
 .hidden { display: none !important; }
 .popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
@@ -47,7 +49,7 @@
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
-.common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
+.common-box { overflow: hidden; position: relative; z-index: 1; }
 
 #top-menu { position: relative; width: 590px; height: 182px; background: url(menu.png) repeat-x 0 0; }
 #top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
@@ -125,7 +127,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 
-#recommendations .point { line-height: 112px; text-align: center; }
+#recommendations .point { line-height: 124px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
 
 .drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }

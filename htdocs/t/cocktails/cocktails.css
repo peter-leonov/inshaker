@@ -5,7 +5,7 @@
 
 .column-main { width: 627px; }
 
-.common-box .common-content { overflow: hidden; position: relative; z-index: 1; }
+.common-box { overflow: hidden; position: relative; z-index: 1; }
 .common-title { padding-bottom: 11px; position: relative; }
 .common-title h1 {font-size:20px } 
 #search_tabs { overflow: hidden; margin-bottom:-1px; position:relative; z-index: 15; }
