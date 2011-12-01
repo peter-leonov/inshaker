@@ -433,6 +433,7 @@ http://www.inshaker.ru/cocktail/strawberry_lemonade/
 http://www.inshaker.ru/cocktail/strawberry_malarky/
 http://www.inshaker.ru/cocktail/strawberry_milkshake/
 http://www.inshaker.ru/cocktail/strawberry_fruit_drink_in_a_jug/
+http://www.inshaker.ru/cocktail/strawberry_new_year_s_punch/
 http://www.inshaker.ru/cocktail/strawberry_sling/
 http://www.inshaker.ru/cocktail/cranberry_crush/
 http://www.inshaker.ru/cocktail/cranberry_with_thyme/
