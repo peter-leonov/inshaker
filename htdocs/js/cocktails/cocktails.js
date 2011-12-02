@@ -2,12 +2,16 @@
 
 CocktailsPage =
 {
-	init: function (states, nodes, styles, cookies) {
-		this.view       = new CocktailsView(states, nodes, styles)
-		this.view.initialize()
-		this.model      = new CocktailsModel(states, this.view)
-		this.controller = new CocktailsController(states, cookies, this.model, this.view)
+	init: function (nodes, styles, cookies) {
+		this.view       = new CocktailsView(nodes, styles)
+		this.model      = new CocktailsModel()
+		this.controller = new CocktailsController()
 		
+		this.model.view = this.view
+		this.view.controller = this.controller
+		this.controller.model = this.model
+		
+		this.view.initialize()
 		this.view.checkRequest()
 	}
 }
@@ -68,14 +72,7 @@ $.onready(
 			methodState: 'method_state'
 		}
 		
-		var states = {
-			byName:        0,
-			byLetter:      1,
-			
-			defaultState:  0
-		}
-		
-		CocktailsPage.init(states, nodes, styles, cookies)
+		CocktailsPage.init(nodes, styles, cookies)
 		Calculator.init()
 	}
 )

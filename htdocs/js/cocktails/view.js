@@ -1,7 +1,13 @@
 function remClass(elem, className) { if(elem) elem.removeClassName(className) };
 function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
-function CocktailsView (states, nodes, styles) {
+function keyForValue(hash, value) {
+  for(var key in hash) if(hash[key] == value) return key
+  return null
+}
+
+
+function CocktailsView (nodes, styles) {
 	
 	new RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
@@ -14,11 +20,6 @@ function CocktailsView (states, nodes, styles) {
 	
 	this.riJustInited  = true;
 	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
-	
-	this.currentState;
-	this.currentFilters;
-	this.stateSwitcher;
-	this.resultSet; // for caching purposes only
 	
 	this.initialize = function ()
 	{
@@ -55,7 +56,6 @@ function CocktailsView (states, nodes, styles) {
 				var pair = params[i].split("=");
 				filters[pair[0]]=decodeURIComponent(pair[1]);
 			}
-            filters.state = states[filters.state];
 			filters.page = +filters.page || 0
 			return filters;
 		} else return null;
@@ -74,7 +74,6 @@ function CocktailsView (states, nodes, styles) {
 		for(var key in filters)
 			if(filters[key] != "" || (filters[key] === 0 && key != "page")) {
 				var value = filters[key];
-				if(key == "state") value = keyForValue(states, value)
 				pairs.push([key, value]);
 			}
 		
@@ -133,28 +132,28 @@ function CocktailsView (states, nodes, styles) {
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
 		
 		this.stateSwitcher = Switcher.bind(nodes.searchTabs, nodes.searchTabs.getElementsByTagName("li"),
-						[nodes.searchByName, nodes.searchByLetter, nodes.searchByTags]);
+						[nodes.searchByName, nodes.searchByLetter]);
 		
 		this.stateSwitcher.onselect = function (num) {
-			self.turnToState(num);
-			self.controller.onStateChanged(num);
+			var state = ['byName', 'byLetter'][num]
+			self.turnToState(state);
+			self.controller.onStateChanged(state);
 		}
 	};
 	
-	this.turnToState = function(state){
-		this.currentState = state;
-		this.stateSwitcher.drawSelected(state);
+	this.turnToState = function(state)
+	{
+		if (this.currentState == state)
+			return
+		this.currentState = state
 		
-		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
+		this.stateSwitcher.drawSelected({'byName': 0, 'byLetter': 1}[state]);
 		
-		var bodyWrapper = nodes.bodyWrapper
-		for (var k in states)
-			// toggleClassName(k, states[k] == state) must be used
-			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.removeClassName(k)
+		setVisible(nodes.searchTipName, state == 'byName')
 		
-		setVisible(nodes.searchTipName, state == states.byName)
-		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
-	};
+		if (state != 'byName')
+			nodes.searchByNameInput.value = ''
+	}
 	
 	this.onModelChanged = function(resultSet, filters) { // model
 		this.currentFilters = filters;

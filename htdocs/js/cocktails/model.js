@@ -47,15 +47,15 @@ Object.extend(Cocktail,
 
 Cocktail.findAndBindPrepares()
 
-function CocktailsModel (states, view) {
+function CocktailsModel () {
 	this.resultSet = [];
 	
 	this.setFilters = function (filters)
 	{
 		this.completeFilters(filters)
 		
-		view.renderLetters(Cocktail.getFirstLetters())
-		view.turnToState(this.filters.state)
+		this.view.renderLetters(Cocktail.getFirstLetters())
+		this.view.turnToState(this.filters.state)
 		
 		this.applyFilters()
 	}
@@ -74,7 +74,7 @@ function CocktailsModel (states, view) {
 			name: filters.name || '',
 			letter: filters.letter || '',
 			page: filters.page || 0,
-			state: filters.state || states.defaultState
+			state: filters.state || 'byName'
 		}
 	};
 	
@@ -86,7 +86,7 @@ function CocktailsModel (states, view) {
 	
 	this.onPageChanged = function(num){
 		this.filters.page = num;
-		view.saveFilters(this.filters);
+		this.view.saveFilters(this.filters);
 	};
 	
 	this.onLetterFilter = function(name, name_all) {
@@ -143,9 +143,9 @@ function CocktailsModel (states, view) {
 	},
 	
 	
-	this.getCocktailsByFilters = function (filters, states)
+	this.getCocktailsByFilters = function (filters)
 	{
-		if (filters.state == states.byName)
+		if (filters.state == 'byName')
 		{
 			if (filters.name)
 			{
@@ -158,7 +158,7 @@ function CocktailsModel (states, view) {
 			return {cocktails: res}
 		}
 		
-		if (filters.state == states.byLetter)
+		if (filters.state == 'byLetter')
 		{
 			if (filters.letter)
 			{
@@ -175,8 +175,8 @@ function CocktailsModel (states, view) {
 	this.applyFilters = function()
 	{
 		var filters = this.filters
-		var res = this.getCocktailsByFilters(filters, states)
-		view.onModelChanged(res.cocktails, filters)
+		var res = this.getCocktailsByFilters(filters)
+		this.view.onModelChanged(res.cocktails, filters)
 	};
 }
 

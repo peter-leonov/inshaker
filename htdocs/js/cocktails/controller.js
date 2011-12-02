@@ -1,18 +1,4 @@
-function keyForValue(hash, value) {
-  for(var key in hash) if(hash[key] == value) return key
-  return null
-}
-
-function CocktailsController (states, cookies, model, view) {
-	this.model = model;
-	this.view	= view;
-	
-	this.hashTimeout = null;
-	
-	this.initialize = function () {
-		this.view.controller = this;
-	};
-	
+function CocktailsController () {
 	this.onFiltersChanged = function (filters)
 	{
 		this.model.setFilters(filters)
@@ -37,6 +23,4 @@ function CocktailsController (states, cookies, model, view) {
 	this.needRandomCocktailNames = function(){
 		return this.model.randomCocktailNames();
 	};
-	
-	this.initialize();
 };
