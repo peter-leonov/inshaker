@@ -109,15 +109,14 @@ function CocktailsModel (states, view) {
 		}
 	}
 	
-	var getBySimilarNameCache = {},
-		allCocktails = Cocktail.getAll()
+	var getBySimilarNameCache = {}
 	this.getBySimilarName = function (name)
 	{
 		if (getBySimilarNameCache[name])
 			return getBySimilarNameCache[name]
 			
 		var words = name.split(/\s+/),
-			res = [], db = allCocktails
+			res = [], db = Cocktail.getAll()
 		
 		for (var i = 0; i < words.length; i++)
 			words[i] = new RegExp('(?:^|\\s|-)' + RegExp.escape(words[i]), 'i')
