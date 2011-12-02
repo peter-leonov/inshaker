@@ -79,11 +79,15 @@ function CocktailsModel (states, view) {
 		return filters;
 	};
 	
-	this.resetFilters = function(){
-		this.filters.name = "";
-		this.filters.letter = "";
-		this.filters.page = 0;
-		this.filters.state = states.defaultState;
+	this.resetFilters = function ()
+	{
+		this.filters =
+		{
+			name: '',
+			letter: '',
+			page: 0,
+			state: states.defaultState
+		}
 	};
 	
 	this.onStateChanged = function(state){
