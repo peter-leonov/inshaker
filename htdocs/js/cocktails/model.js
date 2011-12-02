@@ -50,7 +50,7 @@ Cocktail.findAndBindPrepares()
 function CocktailsModel (states, view) {
 	this.resultSet = [];
 	
-	this.initialize = function (filters)
+	this.setFilters = function (filters)
 	{
 		this.completeFilters(filters)
 		
@@ -86,7 +86,7 @@ function CocktailsModel (states, view) {
 	
 	this.onPageChanged = function(num){
 		this.filters.page = num;
-		view.controller.saveFilters(this.filters);
+		view.saveFilters(this.filters);
 	};
 	
 	this.onLetterFilter = function(name, name_all) {
