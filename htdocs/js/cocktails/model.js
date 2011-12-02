@@ -42,9 +42,6 @@ function CocktailsModel (states, view) {
 	this.filters = {
 		name:        "",
 		letter:      "",
-		tag:         "",
-		strength:    "",
-		ingredients: [],
 		page:        0,
 		state:       states.defaultState
 	};
@@ -56,49 +53,11 @@ function CocktailsModel (states, view) {
 		this.filters = this.completeFilters(filters);
 		var viewData = {}
 		
-		viewData.tags = Cocktail.getGroups()
-		viewData.strengths = Cocktail.getStrengths()
-		viewData.methods = Cocktail.getMethods()
-		
 		viewData.letters = Cocktail.getFirstLetters()
 		view.initialize(viewData, this.filters.state);
-		this.setupCompleter()
 		
 		this.applyFilters();
 	};
-	
-	this.setupCompleter = function ()
-	{
-		var ingredients = Ingredient.getAll()
-		
-		var set = [], bySecondName = {}
-		for (var i = 0, il = ingredients.length; i < il; i++)
-		{
-			var ingredient = ingredients[i],
-				name = ingredient.name
-			
-			set.push(name)
-			
-			var snames = ingredient.names
-			if (!snames)
-				continue
-			
-			for (var j = 0, jl = snames.length; j < jl; j++)
-			{
-				var sname = snames[j]
-				set.push(sname)
-				bySecondName[sname] = name
-			}
-		}
-		set.sort()
-		
-		view.setupCompleter(new IngredientsSearcher(set, bySecondName))
-	}
-	
-	this.randomIngredient = function ()
-	{
-		return Ingredient.getAll().random(1)[0].name
-	}
 	
 	this.randomCocktailNames = function(){
 		var cocktails = Cocktail.getAll()
@@ -111,24 +70,10 @@ function CocktailsModel (states, view) {
 		if(!filters)             filters = {};
 		if(!filters.name)        filters.name = "";
 		if(!filters.letter)      filters.letter = "";
-		if(!filters.tag)         filters.tag = "";
-		if(!filters.strength)    filters.strength = "";
-		if(!filters.method)      filters.method = "";
 		if(!filters.page)        filters.page = 0;
 		
-		if(!filters.ingredients) filters.ingredients = [];
-		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
-		
-		if (!filters.marks)
-			filters.marks = []
-		else if (filters.marks.split)
-			filters.marks = filters.marks.split(',')
-		
-		if(!filters.state) filters.state = states.defaultState;
-		
-		if(filters.ingredients.length || filters.tag || filters.strength || filters.method) {
-			filters.state = states.byIngredients;
-		}
+		if (!filters.state)
+			filters.state = states.defaultState;
 		
 		return filters;
 	};
@@ -136,11 +81,6 @@ function CocktailsModel (states, view) {
 	this.resetFilters = function(){
 		this.filters.name = "";
 		this.filters.letter = "";
-		this.filters.tag = "";
-		this.filters.strength = "";
-		this.filters.method = "";
-		this.filters.ingredients = [];
-		this.filters.marks = []
 		this.filters.page = 0;
 		this.filters.state = states.defaultState;
 	};
@@ -158,10 +98,6 @@ function CocktailsModel (states, view) {
 	
 	this.onLetterFilter = function(name, name_all) {
 		if(name != this.filters.letter) {
-			this.filters.ingredients = [];
-			this.filters.tag         = "";
-			this.filters.strength    = "";
-			this.filters.method      = "";
 			this.filters.page        = 0;
 			
 			if(name != name_all) {
@@ -174,94 +110,9 @@ function CocktailsModel (states, view) {
 	
 	this.onNameFilter = function(name) {
 		if(name != this.filters.name) {
-			this.filters.ingredients = [];
-			this.filters.tag         = "";
-			this.filters.strength    = "";
-			this.filters.method      = "";
 			this.filters.page        = 0;
 			this.filters.name        = name;
 			this.applyFilters();
-		}
-	}
-	
-	this.onTagFilter = function(name) {
-		if(name != this.filters.tag) {
-			this.filters.letter  = "";
-			this.filters.tag     = name;
-			Statistics.cocktailsFilterSelected(name)
-		} else this.filters.tag  = "";
-		this.filters.method = "";
-		this.filters.page = 0;
-		this.applyFilters();
-	};
-	
-	this.onStrengthFilter = function(name) {
-		if(name != this.filters.strength) {
-			this.filters.letter      = "";
-			this.filters.strength    = name;
-			Statistics.cocktailsFilterSelected(name)
-		} else this.filters.strength = "";
-		this.filters.page = 0;
-		this.filters.tag = "";
-		this.filters.method = "";
-		this.applyFilters();
-	};
-	
-	this.onMethodFilter = function(name) {
-		if(name != this.filters.method) {
-			this.filters.letter  = "";
-			this.filters.method  = name;
-			Statistics.cocktailsFilterSelected(name)
-		} else this.filters.method = "";
-		this.filters.page = 0;
-		this.applyFilters();
-	};	
-
-	this.onIngredientFilter = function(name, remove) {
-		this.filters.letter   = "";
-		this.filters.page     = 0;
-		this.filters.strength = "";
-		this.filters.tag      = "";
-		this.filters.method   = "";
-		
-		if (!name) // removing all
-		{
-			this.filters.ingredients = []
-			this.filters.marks = []
-			this.applyFilters()
-			return
-		}
-		
-		var idx = this.filters.marks.indexOf(name)
-		if (idx >= 0)
-		{
-			this.filters.marks.splice(idx, 1)
-			this.applyFilters()
-			return
-		}
-		
-		var ingredient = Ingredient.getByNameCI(name)
-		if (!ingredient)
-			return
-		
-		var idx = this.filters.ingredients.indexOf(ingredient.name);
-		if (remove) {
-			this.filters.ingredients.splice(idx, 1);
-		} else if (idx == -1){
-			this.filters.ingredients.push(ingredient.name);
-			Statistics.ingredientTypedIn(ingredient)
-		} else return; // duplicate entry
-		this.applyFilters();
-	};
-	
-	this.onMarkAddFilter = function (name)
-	{
-		var idx = this.filters.marks.indexOf(name)
-		if (idx < 0)
-		{
-			this.filters.marks.push(name)
-			this.applyFilters()
-			return
 		}
 	}
 	
@@ -302,19 +153,17 @@ function CocktailsModel (states, view) {
 	
 	this.getCocktailsByFilters = function (filters, states)
 	{
-		var groupStates = {strengths: {}, tags: {}, methods: {}}
-		
 		if (filters.state == states.byName)
 		{
 			if (filters.name)
 			{
 				var res = this.getBySimilarName(filters.name)
-				return {cocktails: res, groupStates: groupStates}
+				return {cocktails: res}
 			}
 			
 			var res = Cocktail.getAll()
 			res.randomize()
-			return {cocktails: res, groupStates: groupStates}
+			return {cocktails: res}
 		}
 		
 		if (filters.state == states.byLetter)
@@ -322,73 +171,12 @@ function CocktailsModel (states, view) {
 			if (filters.letter)
 			{
 				var res = Cocktail.getByFirstLetter(filters.letter)
-				return {cocktails: res, groupStates: groupStates}
+				return {cocktails: res}
 			}
 			
 			var res = Cocktail.getAll()
-			return {cocktails: res, groupStates: groupStates}
+			return {cocktails: res}
 		}
-		
-		
-		// “by ingredients” state
-		
-		var res = Cocktail.getAll()
-		
-		if (filters.marks && filters.marks.length)
-		{
-			var marks = filters.marks, ingredients = []
-			for (var i = 0; i < marks.length; i++)
-				ingredients.push(Ingredient.getByMark(marks[i]))
-			
-			// concat all the ingredients in one native operation just like SIMD ;)
-			ingredients = Array.prototype.concat.apply([], ingredients)
-			res = Cocktail.getByIngredients(ingredients, {db: res, count: 1})
-		}
-		
-		// first run of Cocktail.getByGood() may cost near 20 ms
-		if (filters.ingredients && filters.ingredients.length)
-		{
-			var goods = filters.ingredients.slice()
-			for (var i = 0, il = goods.length; i < il; i++)
-			{
-				goods[i] = Cocktail.getByGood(goods[i])
-			}
-			goods.push(res)
-			res = DB.conjunction(goods)
-		}
-		
-		var lastStates = groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
-		
-		if (filters.strength)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
-			res = DB.conjunction([res, set])
-			
-			lastStates = groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
-		}
-		else
-			groupStates.tags = lastStates
-		
-		
-		if (filters.tag)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
-			res = DB.conjunction([res, set])
-			
-			groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
-		}
-		else
-			groupStates.methods = lastStates
-		
-		
-		if (filters.method)
-		{
-			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
-			res = DB.conjunction([res, set])
-		}
-		
-		res.sort(Cocktail.complexitySort)
-		return {cocktails: res, groupStates: groupStates}
 	}
 	
 	
@@ -396,7 +184,7 @@ function CocktailsModel (states, view) {
 	{
 		var filters = this.filters
 		var res = this.getCocktailsByFilters(filters, states)
-		view.onModelChanged(res.cocktails, filters, res.groupStates)
+		view.onModelChanged(res.cocktails, filters)
 	};
 }
 

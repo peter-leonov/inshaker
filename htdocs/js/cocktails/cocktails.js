@@ -31,23 +31,14 @@ $.onready(
 			methodsList: $('methods_list'),
 			
 			searchByName: $('search_by_name'),
-			searchByIngreds: $('search_by_ingreds'),
-			searchByIngredsInput: $$('#search_by_ingreds input')[0],
-			searchByIngredsForm: $$('#search_by_ingreds form')[0],
+			searchByNameInput: $$('#search_by_name input')[0],
 			searchByLetter: $('search_by_letter'),
+			searchByTags: $('search_by_tags'),
 			
-			tagStrengthArea: $('b_search'),
 			mainArea: $('b_content'),
 			
 			searchTabs: $('search_tabs'),
-			ingredsView: $$(".ingreds-list")[0],
-			removeAllIngreds: $$(".ingreds-list .rem")[0],
-			searchesList: $('ingredients_list'),
 			searchTips: $('search_tips'),
-			
-			ingredientsLink: $('all_list'),
-			
-			searchExampleIngredient: $('search_example_ingredient'),
 			
 			searchExampleName: $('search_example_name'),
 			searchExampleNameEng: $('search_example_name_eng'),
@@ -77,7 +68,6 @@ $.onready(
 		var states = {
 			byName:        0,
 			byLetter:      1,
-			byIngredients: 2,
 			
 			defaultState:  0
 		}
@@ -94,6 +84,5 @@ $.onready(
 <!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->
 <!--# include virtual="/js/cocktails/model.js" -->
-<!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 <!--# include virtual="/js/cocktails/view.js" -->
 <!--# include virtual="/js/cocktails/controller.js" -->

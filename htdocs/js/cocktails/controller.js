@@ -83,26 +83,6 @@ function CocktailsController (states, cookies, model, view) {
 		this.model.onLetterFilter(letter, all);
 	};
 	
-	this.onTagFilter = function(tag) {
-		this.model.onTagFilter(tag);
-	};
-	
-    this.onMethodFilter = function(method) {
-		this.model.onMethodFilter(method);
-	};
-
-	this.onStrengthFilter = function(strength) {
-		this.model.onStrengthFilter(strength);
-	};
-	
-	this.onIngredientFilter = function(name, remove) {
-		this.model.onIngredientFilter(name, remove);
-	};
-	
-	this.onMarkAddFilter = function(name, remove) {
-		this.model.onMarkAddFilter(name, remove);
-	};
-	
 	this.onNameFilter = function(name){
 		this.model.onNameFilter(name);
 	};
@@ -114,10 +94,6 @@ function CocktailsController (states, cookies, model, view) {
 	this.onStateChanged = function(num){
 		this.model.onStateChanged(num);
 	}
-	
-	this.needRandomIngredient = function(){
-		return this.model.randomIngredient();
-	};
 	
 	this.needRandomCocktailNames = function(){
 		return this.model.randomCocktailNames();

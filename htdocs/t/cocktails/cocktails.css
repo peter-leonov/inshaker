@@ -23,18 +23,6 @@
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 
 
-.ingreds-list { position: relative; width:574px; height: 22px; background-position: 0 -175px; color: #FFF; font-size: 11px; padding-left:15px; margin-top: 3px;  }
-.ingreds-list .list { overflow: hidden; width:550px; white-space: nowrap; text-overflow: ellipsis; -o-text-overflow: ellipsis; }
-.ingreds-list a:hover {text-decoration:line-through;}
-
-.ingreds-list .rem { position: absolute; top: 0; right: 0; background-position: -175px -125px; width: 11px; height: 11px; overflow: hidden; text-indent: -100em; display: block; margin: 3px; }
-.ingreds-list .rem:hover {background-position: -189px -125px; }
-#ingredients_list { width: 550px; height:17px; line-height:15px; }
-
-
-
-
-
 /*Block content*/
 /*pager list*/
 .b-content { margin-top: 20px; }
@@ -90,12 +78,6 @@
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
 
 
-.b-search .groups dd { padding-left: 8px; cursor: pointer; }
-.b-search .groups dd:hover { text-decoration: underline; }
-.b-search .groups dd.selected-button {background-position: -250px -100px; width: 150px; height:17px; line-height:16px; }
-.b-search .groups dd.selected-button:hover { background-position: -425px -100px; text-decoration: none; }
-.b-search .groups dd.disabled {text-decoration:none;cursor:default;}
-
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 
 .search-control {background-position: 0px 0px; padding:5px; color:#fff; height: 22px;}
@@ -122,32 +104,6 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.b-search form dl,
-.b-content ul.cocktails li img,
-.b-search form dd
-{zoom:1}
-
-#top { left: -9px; }
-.search-form {z-index:1;}
-.search-form input { position:absolute; border-width: 1px 0 0; border-color: #c9c9c9; border-style:solid; margin-left:0; }
-.pager-big .prev {background-position-x:0px}
-
-.b-content ul.cocktails{zoom:1;margin-right:-20px;}
-.b-content ul.cocktails li{float:none;display:inline;zoom:1;}
-
-.b-content .pager .prev,
-.b-content .pager .next
-{font-size: 17px;}
-
-
-.b-search{width:140px;overflow:hidden;}
-.b-search form dd span{white-space:normal;}
-.b-search form dd a{position:relative;right:-5px;}
-
-#search_tabs { zoom:1}
-<!--# endif -->
 
 <!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
 .search-form {z-index:1;}
