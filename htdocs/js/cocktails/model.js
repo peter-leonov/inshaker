@@ -47,11 +47,6 @@ Object.extend(Cocktail,
 
 Cocktail.findAndBindPrepares()
 
-// deep copy using JSON lib ;-)
-function cloneObject(obj){
-	return JSON.parse(JSON.stringify(obj));
-}
-
 function CocktailsModel (states, view) {
 	this.resultSet = [];
 	
@@ -61,9 +56,6 @@ function CocktailsModel (states, view) {
 		page:        0,
 		state:       states.defaultState
 	};
-	
-	this.resultSet = [];
-	
 	
 	this.initialize = function(filters) {
 		this.filters = this.completeFilters(filters);
