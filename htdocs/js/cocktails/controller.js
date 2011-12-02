@@ -12,7 +12,6 @@ function CocktailsController (states, cookies, model, view) {
 	this.initialize = function () {
 		var filters = this.filtersFromRequest();
 		var states = null;
-		if(!filters) filters = this.filtersFromCookie();
 		
 		this.view.controller = this;
 		this.model.initialize(filters);
@@ -44,18 +43,11 @@ function CocktailsController (states, cookies, model, view) {
 		} else return null;
 	};
 	
-	this.filtersFromCookie = function () {
-		var cookie = Cookie.get(cookies.filter);
-		if(cookie) return JSON.parse(cookie);
-		else return null;
-	};
-	
 	this.saveFilters = function (filters) {
 		var self = this;
 		clearTimeout(this.hashTimeout);
 		this.hashTimeout = setTimeout(function() { 
 			self.updatePageHash(filters);
-			Cookie.set(cookies.filter, JSON.stringify(filters));
 		} , 400);
 	};
 	
