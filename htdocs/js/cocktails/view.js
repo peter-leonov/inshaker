@@ -106,8 +106,6 @@ function CocktailsView (states, nodes, styles) {
 			else nodes.bigPrev.removeClassName(styles.disabled);
 		}
 		
-		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
-		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
@@ -123,12 +121,6 @@ function CocktailsView (states, nodes, styles) {
 		nodes.removeAllIngreds.addEventListener('click', function(e){
 				self.onAllIngredientsRemoved();
 			}, false);
-		
-		nodes.searchTipIngredient.realShow = nodes.searchTipIngredient.show
-		nodes.searchTipIngredient.show = function () {
-			this.realShow()
-			nodes.searchExampleIngredient.innerHTML = self.controller.needRandomIngredient();
-		};
 		
 		nodes.ingredsView.realShow = nodes.ingredsView.show
 		nodes.ingredsView.show = function(){
@@ -182,7 +174,6 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		nodes.ingredsView.hide();
-		setVisible(nodes.searchTipIngredient, state == states.byIngredients)
 		setVisible(nodes.searchTipName, state == states.byName)
 		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
 	};
@@ -284,7 +275,6 @@ function CocktailsView (states, nodes, styles) {
 		}
 		
 		if(this.currentState == states.byIngredients){
-			setVisible(nodes.searchTipIngredient, words.length == 0)
 			setVisible(nodes.ingredsView, words.length > 0)
 		}
 		

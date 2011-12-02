@@ -48,7 +48,6 @@ $.onready(
 			ingredientsLink: $('all_list'),
 			
 			searchExampleIngredient: $('search_example_ingredient'),
-			searchTipIngredient: $('search_tip_ingredient'),
 			
 			searchExampleName: $('search_example_name'),
 			searchExampleNameEng: $('search_example_name_eng'),
