@@ -167,7 +167,7 @@ class Analytics
     last = nil
     while true
       cur += 25 * DAY
-      if cur > now and cur.month > now.month
+      if cur > now and (cur.month > now.month or cur.year > now.year)
         break
       end
       
