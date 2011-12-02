@@ -28,13 +28,6 @@ function CocktailsView (states, nodes, styles) {
 	this.bindEvents = function () {
 		var self = this;
 		
-		var letterLinks = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
-		for(var i = 0; i < letterLinks.length; i++){
-			letterLinks[i].addEventListener('mousedown', function(e){
-				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), 
-											nodes.lettersAll.innerHTML.toUpperCase());
-			}, false);
-		}
 		
 		var ril = nodes.resultsDisplay.RollingImagesLite;
 		
@@ -177,13 +170,25 @@ function CocktailsView (states, nodes, styles) {
 				this.renderPage(i)
 	}
 	
-	this.renderLetters = function(set){
+	this.renderLetters = function (set){
+		var controller = this.controller
+		function click (e)
+		{
+			var letter = e.target.dataLetter
+			controller.onLetterFilter(letter, 
+										nodes.lettersAll.innerHTML.toUpperCase());
+		}
+		
+		nodes.lettersAll.addEventListener('click', click, false)
+		
 		var parent = nodes.alphabetRu
 		
 		for(var i = 0; i < set.length; i++){
 			var a = document.createElement("a");
 			a.innerHTML = set[i];
+			a.dataLetter = set[i]
 			parent.appendChild(a);
+			a.addEventListener('click', click, false)
 		}
 	},
 	
