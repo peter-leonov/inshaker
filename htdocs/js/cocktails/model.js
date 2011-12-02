@@ -8,28 +8,44 @@ var lettersConversion =
 
 Object.extend(Cocktail,
 {
-	getByFirstLetter: function (letter)
+	indexByFirstLetter: function ()
 	{
-		return this.index.byFirstLetter[letter.toLowerCase()]
-	},
-	
-	getFirstLetters: function ()
-	{
+		if (this.index.byFirstLetter)
+			return
+		
 		function byFirstLetter (v)
 		{
 			var letter = v.name.charAt(0).toLowerCase()
 			var l = lettersConversion[letter]
 			return l || letter
 		}
-		var index = this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
-		
-		var letters = []
-		for (var k in index)
-			letters.push(k)
-		
-		return letters.sort()
+		this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
+	},
+	
+	getByFirstLetterPrepare: function ()
+	{
+		this.indexByFirstLetter()
+	},
+	
+	getByFirstLetter: function (letter)
+	{
+		return this.index.byFirstLetter[letter.toLowerCase()]
+	},
+	
+	getFirstLettersPrepare: function ()
+	{
+		this.indexByFirstLetter()
+	},
+	
+	getFirstLetters: function ()
+	{
+		var letters = Object.keys(this.index.byFirstLetter)
+		letters.sort()
+		return letters
 	}
 })
+
+Cocktail.findAndBindPrepares()
 
 // deep copy using JSON lib ;-)
 function cloneObject(obj){
