@@ -333,6 +333,7 @@ http://www.inshaker.ru/cocktail/blackberry_milkshake/
 http://www.inshaker.ru/cocktail/blackberry_saloop/
 http://www.inshaker.ru/cocktail/yellow_mix/
 http://www.inshaker.ru/cocktail/liquid_cheesecake/
+http://www.inshaker.ru/cocktail/breakfast/
 http://www.inshaker.ru/cocktail/jokers_breakfast/
 http://www.inshaker.ru/cocktail/tequila_breakfast/
 http://www.inshaker.ru/cocktail/baked_smoothie/
