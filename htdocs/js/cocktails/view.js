@@ -20,11 +20,8 @@ function CocktailsView (states, nodes, styles) {
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
-	this.initialize = function (viewData, state)
+	this.initialize = function (state)
 	{
-		this.viewData = viewData
-		
-		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
 		this.bindEvents();
 		this.turnToState(state);
 	};
@@ -181,7 +178,9 @@ function CocktailsView (states, nodes, styles) {
 				this.renderPage(i)
 	}
 	
-	this.renderLetters = function(parent, set){
+	this.renderLetters = function(set){
+		var parent = nodes.alphabetRu
+		
 		for(var i = 0; i < set.length; i++){
 			var a = document.createElement("a");
 			a.innerHTML = set[i];

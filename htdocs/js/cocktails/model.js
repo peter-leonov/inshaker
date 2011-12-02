@@ -50,22 +50,15 @@ Cocktail.findAndBindPrepares()
 function CocktailsModel (states, view) {
 	this.resultSet = [];
 	
-	this.filters = {
-		name:        "",
-		letter:      "",
-		page:        0,
-		state:       states.defaultState
-	};
-	
-	this.initialize = function(filters) {
-		this.filters = this.completeFilters(filters);
-		var viewData = {}
+	this.initialize = function (filters)
+	{
+		this.filters = this.completeFilters(filters)
 		
-		viewData.letters = Cocktail.getFirstLetters()
-		view.initialize(viewData, this.filters.state);
+		view.renderLetters(Cocktail.getFirstLetters())
+		view.initialize(this.filters.state)
 		
-		this.applyFilters();
-	};
+		this.applyFilters()
+	}
 	
 	this.randomCocktailNames = function(){
 		var cocktails = Cocktail.getAll()
