@@ -164,7 +164,12 @@ function CocktailsView (nodes, styles) {
 	
 	this.renderFilters = function(filters){
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
-		if(filters.letter != "") {
+		if (filters.letter == '*')
+		{
+			this.filterElems.letter = nodes.lettersAll
+		}
+		else
+		{
 			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 			
 			for(var i = 0; i < letterElems.length; i++) {
@@ -173,7 +178,7 @@ function CocktailsView (nodes, styles) {
 					break;
 				}
 			}   
-		} else this.filterElems.letter = nodes.lettersAll;
+		};
 		this.filterElems.letter.addClassName(styles.selected);
 		
 		if(filters.page > 0) {
@@ -237,10 +242,10 @@ function CocktailsView (nodes, styles) {
 		function click (e)
 		{
 			var letter = e.target.dataLetter
-			controller.onLetterFilter(letter, 
-										nodes.lettersAll.innerHTML.toUpperCase());
+			controller.onLetterFilter(letter);
 		}
 		
+		nodes.lettersAll.dataLetter = '*'
 		nodes.lettersAll.addEventListener('click', click, false)
 		
 		var parent = nodes.alphabetRu

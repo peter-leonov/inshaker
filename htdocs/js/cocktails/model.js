@@ -72,7 +72,7 @@ function CocktailsModel () {
 		this.filters =
 		{
 			name: filters.name || '',
-			letter: filters.letter || '',
+			letter: filters.letter || '*',
 			page: filters.page || 0,
 			state: filters.state || 'byName'
 		}
@@ -89,16 +89,16 @@ function CocktailsModel () {
 		this.view.saveFilters(this.filters);
 	};
 	
-	this.onLetterFilter = function(name, name_all) {
-		if(name != this.filters.letter) {
-			this.filters.page        = 0;
-			
-			if(name != name_all) {
-				this.filters.letter    = name;
-				Statistics.cocktailsFilterSelected(name)
-			} else this.filters.letter = "";
-			this.applyFilters();
-		}
+	this.onLetterFilter = function(letter)
+	{
+		if (letter == this.filters.letter)
+			return
+		
+		Statistics.cocktailsFilterSelected(letter)
+		
+		this.filters.page        = 0;
+		this.filters.letter = letter
+		this.applyFilters()
 	};
 	
 	this.onNameFilter = function(name) {
@@ -148,26 +148,20 @@ function CocktailsModel () {
 		if (filters.state == 'byName')
 		{
 			if (filters.name)
-			{
-				var res = this.getBySimilarName(filters.name)
-				return {cocktails: res}
-			}
+				return this.getBySimilarName(filters.name)
 			
 			var res = Cocktail.getAll()
 			res.randomize()
-			return {cocktails: res}
+			return res
 		}
 		
 		if (filters.state == 'byLetter')
 		{
-			if (filters.letter)
-			{
-				var res = Cocktail.getByFirstLetter(filters.letter)
-				return {cocktails: res}
-			}
+			if (filters.letter == '*')
+				return Cocktail.getAll()
 			
-			var res = Cocktail.getAll()
-			return {cocktails: res}
+			if (filters.letter)
+				return Cocktail.getByFirstLetter(filters.letter)
 		}
 	}
 	
@@ -176,7 +170,7 @@ function CocktailsModel () {
 	{
 		var filters = this.filters
 		var res = this.getCocktailsByFilters(filters)
-		this.view.onModelChanged(res.cocktails, filters)
+		this.view.onModelChanged(res, filters)
 	};
 }
 

@@ -4,8 +4,8 @@ function CocktailsController () {
 		this.model.setFilters(filters)
 	}
 	
-	this.onLetterFilter = function(letter, all) {
-		this.model.onLetterFilter(letter, all);
+	this.onLetterFilter = function(letter) {
+		this.model.onLetterFilter(letter);
 	};
 	
 	this.onNameFilter = function(name){
