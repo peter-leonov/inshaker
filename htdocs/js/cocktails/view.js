@@ -20,10 +20,9 @@ function CocktailsView (states, nodes, styles) {
 	this.stateSwitcher;
 	this.resultSet; // for caching purposes only
 	
-	this.initialize = function (state)
+	this.initialize = function ()
 	{
-		this.bindEvents();
-		this.turnToState(state);
+		this.bindEvents()
 	};
 	
 	this.bindEvents = function () {

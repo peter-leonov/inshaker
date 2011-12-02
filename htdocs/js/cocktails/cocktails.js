@@ -4,6 +4,7 @@ CocktailsPage =
 {
 	init: function (states, nodes, styles, cookies) {
 		this.view       = new CocktailsView(states, nodes, styles)
+		this.view.initialize()
 		this.model      = new CocktailsModel(states, this.view)
 		this.controller = new CocktailsController(states, cookies, this.model, this.view)
 	}

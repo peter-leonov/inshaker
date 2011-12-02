@@ -55,7 +55,7 @@ function CocktailsModel (states, view) {
 		this.filters = this.completeFilters(filters)
 		
 		view.renderLetters(Cocktail.getFirstLetters())
-		view.initialize(this.filters.state)
+		view.turnToState(this.filters.state)
 		
 		this.applyFilters()
 	}
