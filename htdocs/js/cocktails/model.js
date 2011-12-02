@@ -52,7 +52,7 @@ function CocktailsModel (states, view) {
 	
 	this.initialize = function (filters)
 	{
-		this.filters = this.completeFilters(filters)
+		this.completeFilters(filters)
 		
 		view.renderLetters(Cocktail.getFirstLetters())
 		view.turnToState(this.filters.state)
@@ -67,31 +67,19 @@ function CocktailsModel (states, view) {
 		return [cocktail.name, cocktail.name_eng];
 	};
 	
-	this.completeFilters = function(filters){
-		if(!filters)             filters = {};
-		if(!filters.name)        filters.name = "";
-		if(!filters.letter)      filters.letter = "";
-		if(!filters.page)        filters.page = 0;
-		
-		if (!filters.state)
-			filters.state = states.defaultState;
-		
-		return filters;
-	};
-	
-	this.resetFilters = function ()
+	this.completeFilters = function (filters)
 	{
 		this.filters =
 		{
-			name: '',
-			letter: '',
-			page: 0,
-			state: states.defaultState
+			name: filters.name || '',
+			letter: filters.letter || '',
+			page: filters.page || 0,
+			state: filters.state || states.defaultState
 		}
 	};
 	
 	this.onStateChanged = function(state){
-		this.resetFilters();
+		this.completeFilters({})
 		this.filters.state = state;
 		this.applyFilters();
 	}
