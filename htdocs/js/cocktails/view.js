@@ -1,3 +1,5 @@
+;(function(){
+
 function remClass(elem, className) { if(elem) elem.removeClassName(className) }
 function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
@@ -7,7 +9,7 @@ function keyForValue(hash, value) {
 }
 
 
-function CocktailsView (nodes)
+function Me (nodes)
 {
 	this.riJustInited  = true;
 	this.filterElems   = { letter: null }
@@ -17,7 +19,7 @@ function CocktailsView (nodes)
 	this.nodeCache     = []
 }
 
-CocktailsView.prototype =
+Me.prototype =
 {
 	bind: function (nodes)
 	{
@@ -328,3 +330,8 @@ CocktailsView.prototype =
 		}
 	}
 }
+
+Me.className = 'CocktailsView'
+self[Me.className] = Me
+
+})();
