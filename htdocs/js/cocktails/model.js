@@ -52,7 +52,7 @@ function CocktailsModel () {
 	
 	this.setFilters = function (filters)
 	{
-		this.completeFilters(filters)
+		this.completeFilters(filters || {})
 		
 		this.view.renderLetters(Cocktail.getFirstLetters())
 		this.view.turnToState(this.filters.state)
