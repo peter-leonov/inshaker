@@ -91,6 +91,7 @@
 
 .b-search form input{border:1px solid;text-align:center;height:15px;font-size:1em;line-height:1;padding:3px 0 0 0;border-color:#d7d7d7 #fff #fff #d7d7d7;background:#f1f7b6;margin:0;width:35px;}
 
+.search-controls { height: 32px; }
 .search-control {background-position: 0px 0px; padding:5px; color:#fff; height: 22px;}
 .search-control#search_by_letter { background-position: 0 -50px; }
 
