@@ -1,5 +1,4 @@
 {
-"views-2009-09": <!--# include virtual="views-2009-09.json" -->,
 "views-2009-10": <!--# include virtual="views-2009-10.json" -->,
 "views-2009-11": <!--# include virtual="views-2009-11.json" -->,
 "views-2009-12": <!--# include virtual="views-2009-12.json" -->,
@@ -26,6 +25,7 @@
 "views-2011-09": <!--# include virtual="views-2011-09.json" -->,
 "views-2011-10": <!--# include virtual="views-2011-10.json" -->,
 "views-2011-11": <!--# include virtual="views-2011-11.json" -->,
+"views-2011-12": <!--# include virtual="views-2011-12.json" -->,
 "last-30-days": <!--# include virtual="last-30-days.json" -->,
 "last-365-days": <!--# include virtual="last-365-days.json" -->
 }
