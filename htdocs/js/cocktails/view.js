@@ -89,6 +89,9 @@ Me.prototype =
 			if (!v || v == '*')
 				continue
 			
+			if (k == 'state' && v == 'byName')
+				continue
+			
 			pairs.push([k, v])
 		}
 		
