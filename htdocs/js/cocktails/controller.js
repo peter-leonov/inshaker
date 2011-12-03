@@ -30,7 +30,6 @@ Me.prototype =
 	}
 }
 
-Me.className = 'CocktailsController'
-self[Me.className] = Me
+Papa.Controller = Me
 
 })();

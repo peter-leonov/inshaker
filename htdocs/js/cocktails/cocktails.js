@@ -1,21 +1,47 @@
-// @requires Cocktail, Ingredient, Good
+;(function(){
 
-CocktailsPage =
+var Papa
+
+;(function(){
+
+function Me ()
 {
-	init: function (nodes, cookies) {
-		this.view       = new CocktailsView(nodes)
-		this.model      = new CocktailsModel()
-		this.controller = new CocktailsController()
-		
-		this.model.view = this.view
-		this.view.controller = this.controller
-		this.controller.model = this.model
-		
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
+	bind: function (nodes)
+	{
 		this.view.bind(nodes)
 		
 		this.view.checkRequest()
+		
+		return this
 	}
 }
+
+Me.className = 'CocktailsPage'
+self[Me.className] = Papa = Me
+
+})();
+
+
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
+
+})();
+
 
 $.onready(
 	function () {
@@ -67,7 +93,9 @@ $.onready(
 			methodState: 'method_state'
 		}
 		
-		CocktailsPage.init(nodes, cookies)
+		var widget = new CocktailsPage(nodes, cookies)
+		widget.bind(nodes)
+		
 		Calculator.init()
 	}
 )
@@ -78,6 +106,3 @@ $.onready(
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 <!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->
-<!--# include virtual="/js/cocktails/model.js" -->
-<!--# include virtual="/js/cocktails/view.js" -->
-<!--# include virtual="/js/cocktails/controller.js" -->

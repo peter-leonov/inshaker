@@ -175,7 +175,6 @@ Me.prototype =
 	}
 }
 
-Me.className = 'CocktailsModel'
-self[Me.className] = Me
+Papa.Model = Me
 
 })();

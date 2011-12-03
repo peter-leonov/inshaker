@@ -331,7 +331,6 @@ Me.prototype =
 	}
 }
 
-Me.className = 'CocktailsView'
-self[Me.className] = Me
+Papa.View = Me
 
 })();
