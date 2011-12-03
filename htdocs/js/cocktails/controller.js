@@ -1,26 +1,36 @@
-function CocktailsController () {
-	this.onFiltersChanged = function (filters)
+;(function(){
+
+function Me () {}
+
+Me.prototype =
+{
+	onFiltersChanged: function (filters)
 	{
 		this.model.setFilters(filters)
-	}
+	},
 	
-	this.onLetterFilter = function(letter) {
+	onLetterFilter: function(letter) {
 		this.model.onLetterFilter(letter);
-	};
+	},
 	
-	this.onNameFilter = function(name){
+	onNameFilter: function(name){
 		this.model.onNameFilter(name);
-	};
+	},
 	
-	this.onPageChanged = function(num){
+	onPageChanged: function(num){
 		this.model.onPageChanged(num);
-	};
+	},
 	
-	this.onStateChanged = function(num){
+	onStateChanged: function(num){
 		this.model.onStateChanged(num);
-	}
+	},
 	
-	this.needRandomCocktailNames = function(){
+	needRandomCocktailNames: function(){
 		return this.model.randomCocktailNames();
-	};
-};
+	}
+}
+
+Me.className = 'CocktailsController'
+self[Me.className] = Me
+
+})();
