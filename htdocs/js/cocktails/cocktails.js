@@ -2,8 +2,8 @@
 
 CocktailsPage =
 {
-	init: function (nodes, styles, cookies) {
-		this.view       = new CocktailsView(nodes, styles)
+	init: function (nodes, cookies) {
+		this.view       = new CocktailsView(nodes)
 		this.model      = new CocktailsModel()
 		this.controller = new CocktailsController()
 		
@@ -57,12 +57,6 @@ $.onready(
 			spotlighted: $('spotlighted')
 		}
 		
-		var styles = {
-			selected: 'selected-button',
-			disabled: 'disabled',
-			point: 'point'
-		}
-		
 		var cookies = {
 			filter: 'filters',
 			force: 'force',
@@ -72,7 +66,7 @@ $.onready(
 			methodState: 'method_state'
 		}
 		
-		CocktailsPage.init(nodes, styles, cookies)
+		CocktailsPage.init(nodes, cookies)
 		Calculator.init()
 	}
 )

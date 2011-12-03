@@ -7,7 +7,7 @@ function keyForValue(hash, value) {
 }
 
 
-function CocktailsView (nodes, styles) {
+function CocktailsView (nodes) {
 	
 	this.nodes = nodes
 	
@@ -112,10 +112,10 @@ function CocktailsView (nodes, styles) {
 			} else { self.riJustInited = false }
 			
 			// big pager buttons
-			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName(styles.disabled);
-			else nodes.bigNext.removeClassName(styles.disabled);
-			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName(styles.disabled);
-			else nodes.bigPrev.removeClassName(styles.disabled);
+			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName('disabled');
+			else nodes.bigNext.removeClassName('disabled');
+			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName('disabled');
+			else nodes.bigPrev.removeClassName('disabled');
 		}
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
@@ -173,7 +173,7 @@ function CocktailsView (nodes, styles) {
 	this.renderFilters = function(filters){
 		var nodes = this.nodes
 		
-		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
+		remClass(this.filterElems.letter || nodes.lettersAll, 'selected-button');
 		if (filters.letter == '*')
 		{
 			this.filterElems.letter = nodes.lettersAll
@@ -189,7 +189,7 @@ function CocktailsView (nodes, styles) {
 				}
 			}   
 		};
-		this.filterElems.letter.addClassName(styles.selected);
+		this.filterElems.letter.addClassName('selected-button');
 		
 		if(filters.page > 0) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
