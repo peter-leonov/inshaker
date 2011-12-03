@@ -11,7 +11,8 @@ CocktailsPage =
 		this.view.controller = this.controller
 		this.controller.model = this.model
 		
-		this.view.initialize()
+		this.view.bind(nodes)
+		
 		this.view.checkRequest()
 	}
 }

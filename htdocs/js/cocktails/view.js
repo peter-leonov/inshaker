@@ -10,13 +10,6 @@ function keyForValue(hash, value) {
 function CocktailsView (nodes)
 {
 	this.riJustInited  = true;
-	
-	this.nodes = nodes
-	
-	this.dropTargets   = [this.nodes.cartEmpty, this.nodes.cartFull];
-	
-	new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
-	
 	this.filterElems   = { letter: null }
 	this.perPage       = 20;
 	this.np            = -1;
@@ -26,8 +19,18 @@ function CocktailsView (nodes)
 
 CocktailsView.prototype =
 {
-	initialize: function ()
+	bind: function (nodes)
 	{
+		this.nodes = nodes
+		
+		this.dropTargets =
+		[
+			this.nodes.cartEmpty,
+			this.nodes.cartFull
+		]
+		
+		new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75})
+		
 		this.fixHashChange()
 		this.bindEvents()
 	},
