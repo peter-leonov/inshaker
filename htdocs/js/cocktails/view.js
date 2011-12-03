@@ -131,14 +131,6 @@ Me.prototype =
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
 		
-		nodes.searchTipName.realShow = nodes.searchTipName.show
-		nodes.searchTipName.show = function () {
-			this.realShow()
-			var names = self.controller.needRandomCocktailNames();
-			nodes.searchExampleName.innerHTML = names[0];
-			nodes.searchExampleNameEng.innerHTML = names[1];
-		}
-		
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
@@ -159,7 +151,7 @@ Me.prototype =
 		nodes.tabsRoot.addEventListener('click', tabClicked, false)
 	},
 	
-	turnToState: function(state)
+	turnToState: function (state)
 	{
 		if (this.currentState == state)
 			return
@@ -177,7 +169,13 @@ Me.prototype =
 		this.nodes.panels.className = state
 		
 		if (state == 'byName')
+		{
 			this.nodes.searchByNameInput.value = ''
+			
+			var names = this.controller.needRandomCocktailNames()
+			this.nodes.searchExampleName.innerHTML = names[0];
+			this.nodes.searchExampleNameEng.innerHTML = names[1];
+		}
 	},
 	
 	onModelChanged: function(resultSet, filters) { // model
