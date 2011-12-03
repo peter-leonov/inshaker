@@ -9,7 +9,9 @@ function keyForValue(hash, value) {
 
 function CocktailsView (nodes, styles) {
 	
-	new RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
+	this.nodes = nodes
+	
+	new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
 	this.filterElems   = { letter: null };
 	this.perPage       = 20;
@@ -19,7 +21,7 @@ function CocktailsView (nodes, styles) {
 	
 	
 	this.riJustInited  = true;
-	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
+	this.dropTargets   = [this.nodes.cartEmpty, this.nodes.cartFull];
 	
 	this.initialize = function ()
 	{
@@ -96,6 +98,7 @@ function CocktailsView (nodes, styles) {
 	this.bindEvents = function () {
 		var self = this;
 		
+		var nodes = this.nodes
 		
 		var ril = nodes.resultsDisplay.RollingImagesLite;
 		
@@ -154,10 +157,10 @@ function CocktailsView (nodes, styles) {
 		
 		this.stateSwitcher.drawSelected({'byName': 0, 'byLetter': 1}[state]);
 		
-		setVisible(nodes.searchTipName, state == 'byName')
+		setVisible(this.nodes.searchTipName, state == 'byName')
 		
 		if (state != 'byName')
-			nodes.searchByNameInput.value = ''
+			this.nodes.searchByNameInput.value = ''
 	}
 	
 	this.onModelChanged = function(resultSet, filters) { // model
@@ -168,6 +171,8 @@ function CocktailsView (nodes, styles) {
 	};
 	
 	this.renderFilters = function(filters){
+		var nodes = this.nodes
+		
 		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
 		if (filters.letter == '*')
 		{
@@ -199,6 +204,8 @@ function CocktailsView (nodes, styles) {
 	},
 	
 	this.renderAllPages = function(resultSet, pageNum){
+		var nodes = this.nodes
+		
 		this.resultSet = resultSet;
 		this.np = this.getNumOfPages(resultSet, this.perPage);
 		
@@ -222,7 +229,10 @@ function CocktailsView (nodes, styles) {
 	
 	this.renderSkeleton = function (count)
 	{
-		var parent = nodes.resultsRoot, pages = nodes.pages = []
+		var nodes = this.nodes,
+			parent = nodes.resultsRoot,
+			pages = nodes.pages = []
+		
 		for (var i = 0; i < count; i++)
 		{
 			var page = pages[i] = document.createElement('ul')
@@ -243,6 +253,8 @@ function CocktailsView (nodes, styles) {
 	}
 	
 	this.renderLetters = function (set){
+		var nodes = this.nodes
+		
 		var controller = this.controller
 		function click (e)
 		{
@@ -266,6 +278,8 @@ function CocktailsView (nodes, styles) {
 	
 	this.renderPage = function (num)
 	{
+		var nodes = this.nodes
+		
 		var cocktails = this.resultSet,
 			node, cocktail, cache = this.nodeCache,
 			parent = nodes.pages[num],
@@ -297,7 +311,7 @@ function CocktailsView (nodes, styles) {
 	};
 	
 	this.renderPager = function (numOfPages) {
-		var span = nodes.pagerRoot;
+		var span = this.nodes.pagerRoot;
 		span.empty();
 		for (var i = 1; i <= numOfPages; i++) {
 			var a = document.createElement("a");
