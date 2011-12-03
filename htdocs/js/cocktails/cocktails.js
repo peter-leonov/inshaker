@@ -42,63 +42,59 @@ self[Me.className] = Papa = Me
 
 })();
 
+;(function(){
 
-$.onready(
-	function () {
-		UserAgent.setupDocumentElementClassNames()
-		IngredientPopup.bootstrap()
+function onready ()
+{
+	UserAgent.setupDocumentElementClassNames()
+	IngredientPopup.bootstrap()
+	
+	var nodes =
+	{
+		bodyWrapper: $$('#common-main-wrapper .column-main')[0],
+		resultsDisplay: $('results_display'),
+		resultsRoot: $('surface'),
+		pagerRoot: $('p-list'),
 		
-		var nodes = {
-			bodyWrapper: $$('#common-main-wrapper .column-main')[0],
-			resultsDisplay: $('results_display'),
-			resultsRoot: $('surface'),
-			pagerRoot: $('p-list'),
-			
-			bigNext: $$(".pager-big .next")[0],
-			bigPrev: $$(".pager-big .prev")[0],
-			
-			alphabetRu: $('alphabetical-ru'),
-			lettersAll: $('letters_all'),
-			
-			tagsList: $('tags_list'),
-			strengthsList: $('strengths_list'),
-			methodsList: $('methods_list'),
-			
-			searchByName: $('search_by_name'),
-			searchByNameInput: $$('#search_by_name input')[0],
-			searchByLetter: $('search_by_letter'),
-			searchByTags: $('search_by_tags'),
-			
-			mainArea: $('b_content'),
-			
-			searchTabs: $('search_tabs'),
-			searchTips: $('search_tips'),
-			
-			searchExampleName: $('search_example_name'),
-			searchExampleNameEng: $('search_example_name_eng'),
-			searchTipName: $('search_tip_name'),
-			
-			cartEmpty: $('cart_draghere'),
-			cartFull: $('cart_contents'),
-			
-			spotlighted: $('spotlighted')
-		}
+		bigNext: $$(".pager-big .next")[0],
+		bigPrev: $$(".pager-big .prev")[0],
 		
-		var cookies = {
-			filter: 'filters',
-			force: 'force',
-			
-			strengthState: 'strength_state',
-			tagState: 'tag_state',
-			methodState: 'method_state'
-		}
+		alphabetRu: $('alphabetical-ru'),
+		lettersAll: $('letters_all'),
 		
-		var widget = new CocktailsPage(nodes, cookies)
-		widget.bind(nodes)
+		tagsList: $('tags_list'),
+		strengthsList: $('strengths_list'),
+		methodsList: $('methods_list'),
 		
-		Calculator.init()
+		searchByName: $('search_by_name'),
+		searchByNameInput: $$('#search_by_name input')[0],
+		searchByLetter: $('search_by_letter'),
+		searchByTags: $('search_by_tags'),
+		
+		mainArea: $('b_content'),
+		
+		searchTabs: $('search_tabs'),
+		searchTips: $('search_tips'),
+		
+		searchExampleName: $('search_example_name'),
+		searchExampleNameEng: $('search_example_name_eng'),
+		searchTipName: $('search_tip_name'),
+		
+		cartEmpty: $('cart_draghere'),
+		cartFull: $('cart_contents'),
+		
+		spotlighted: $('spotlighted')
 	}
-)
+	
+	var widget = new CocktailsPage(nodes)
+	widget.bind(nodes)
+	
+	Calculator.init()
+}
+
+$.onready(onready)
+
+})();
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
