@@ -73,12 +73,20 @@ function onready ()
 		
 		mainArea: $('b_content'),
 		
-		searchTabs: $('search_tabs'),
-		searchTips: $('search_tips'),
+		tabsRoot: $$('#search_tabs')[0],
+		tabs:
+		{
+			byName: $$('.by-name')[0],
+			byLetter: $$('.by-letter')[0]
+		},
+		
+		byLetterTab: $$('#search_tabs .by-letter')[0],
 		
 		searchExampleName: $('search_example_name'),
 		searchExampleNameEng: $('search_example_name_eng'),
 		searchTipName: $('search_tip_name'),
+		
+		panels: $('panels'),
 		
 		cartEmpty: $('cart_draghere'),
 		cartFull: $('cart_contents'),
@@ -98,7 +106,6 @@ $.onready(onready)
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
-<!--# include virtual="/js/common/switcher.js" -->
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 <!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->

@@ -79,10 +79,12 @@ Me.prototype =
 		}
 	},
 	
-	onStateChanged: function(state){
+	setState: function (state)
+	{
+		this.view.turnToState(state)
 		this.completeFilters({})
-		this.filters.state = state;
-		this.applyFilters();
+		this.filters.state = state
+		this.applyFilters()
 	},
 	
 	onPageChanged: function(num){

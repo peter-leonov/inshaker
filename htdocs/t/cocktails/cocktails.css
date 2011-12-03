@@ -22,6 +22,14 @@
 .autocomplete { position: absolute; opacity: 0.95; border-style: solid; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 
+#search_tip_name,
+#search_by_name { display: none; }
+
+#panels.byName #search_tip_name,
+#panels.byName #search_by_name { display: block; }
+#panels.byName #search_by_letter { display: none; }
+
+#panels.byLetter #search_by_name { display: none; }
 
 /*Block content*/
 /*pager list*/

@@ -21,8 +21,8 @@ Me.prototype =
 		this.model.onPageChanged(num);
 	},
 	
-	onStateChanged: function(num){
-		this.model.onStateChanged(num);
+	onTabSelected: function(name){
+		this.model.setState(name);
 	},
 	
 	needRandomCocktailNames: function(){

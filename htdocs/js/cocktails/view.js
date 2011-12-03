@@ -103,7 +103,8 @@ Me.prototype =
 		}
 	},
 	
-	bindEvents: function () {
+	bindEvents: function ()
+	{
 		var self = this;
 		
 		var nodes = this.nodes
@@ -147,27 +148,35 @@ Me.prototype =
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
 		
-		this.stateSwitcher = Switcher.bind(nodes.searchTabs, nodes.searchTabs.getElementsByTagName("li"),
-						[nodes.searchByName, nodes.searchByLetter]);
-		
-		this.stateSwitcher.onselect = function (num) {
-			var state = ['byName', 'byLetter'][num]
-			self.turnToState(state);
-			self.controller.onStateChanged(state);
+		var controller = this.controller
+		function tabClicked (e)
+		{
+			var name = e.target.getAttribute('data-tab-name')
+			if (!name)
+				return
+			controller.onTabSelected(name)
 		}
+		nodes.tabsRoot.addEventListener('click', tabClicked, false)
 	},
 	
 	turnToState: function(state)
 	{
 		if (this.currentState == state)
 			return
+		
+		var last = this.nodes.tabs[this.currentState]
+		if (last)
+			last.removeClassName('selected')
+		
 		this.currentState = state
 		
-		this.stateSwitcher.drawSelected({'byName': 0, 'byLetter': 1}[state]);
+		var present = this.nodes.tabs[state]
+		if (present)
+			present.addClassName('selected')
 		
-		setVisible(this.nodes.searchTipName, state == 'byName')
+		this.nodes.panels.className = state
 		
-		if (state != 'byName')
+		if (state == 'byName')
 			this.nodes.searchByNameInput.value = ''
 	},
 	
