@@ -27,6 +27,7 @@
 
 #panels.byName #search_tip_name,
 #panels.byName #search_by_name { display: block; }
+#panels.just-suggested #search_tip_name,
 #panels.byName #search_by_letter { display: none; }
 
 #panels.byLetter #search_by_name { display: none; }

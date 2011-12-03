@@ -134,7 +134,7 @@ Me.prototype =
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
-			nodes.searchTipName.hide();
+			nodes.panels.addClassName('just-suggested')
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
