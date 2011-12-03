@@ -69,13 +69,18 @@ function CocktailsView (nodes, styles) {
 		} , 400);
 	};
 	
-	this.updatePageHash = function(filters) {
-		var pairs = [];
-		for(var key in filters)
-			if(filters[key] != "" || (filters[key] === 0 && key != "page")) {
-				var value = filters[key];
-				pairs.push([key, value]);
-			}
+	this.updatePageHash = function (filters)
+	{
+		var pairs = []
+		for (var k in filters)
+		{
+			var v = filters[k]
+			
+			if (!v || v == '*')
+				continue
+			
+			pairs.push([k, v])
+		}
 		
 		var hash = [], encode = encodeURIComponent;
 		for(var i = 0; i < pairs.length; i++) {
