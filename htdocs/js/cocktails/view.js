@@ -1,4 +1,4 @@
-function remClass(elem, className) { if(elem) elem.removeClassName(className) };
+function remClass(elem, className) { if(elem) elem.removeClassName(className) }
 function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
 function keyForValue(hash, value) {
@@ -7,29 +7,32 @@ function keyForValue(hash, value) {
 }
 
 
-function CocktailsView (nodes) {
+function CocktailsView (nodes)
+{
+	this.riJustInited  = true;
 	
 	this.nodes = nodes
 	
+	this.dropTargets   = [this.nodes.cartEmpty, this.nodes.cartFull];
+	
 	new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
 	
-	this.filterElems   = { letter: null };
+	this.filterElems   = { letter: null }
 	this.perPage       = 20;
 	this.np            = -1;
 	this.renderedPages = {}
 	this.nodeCache     = []
-	
-	
-	this.riJustInited  = true;
-	this.dropTargets   = [this.nodes.cartEmpty, this.nodes.cartFull];
-	
-	this.initialize = function ()
+}
+
+CocktailsView.prototype =
+{
+	initialize: function ()
 	{
 		this.fixHashChange()
 		this.bindEvents()
-	};
+	},
 	
-	this.fixHashChange = function ()
+	fixHashChange: function ()
 	{
 		// fix for cocktails initialization issue
 		this.currentHash = window.location.hash
@@ -40,20 +43,20 @@ function CocktailsView (nodes) {
 				window.location.reload(true)
 		}
 		setInterval(checkHash, 250)
-	}
+	},
 	
-	this.checkRequest = function ()
+	checkRequest: function ()
 	{
 		var filters = this.filtersFromRequest()
 		this.controller.onFiltersChanged(filters)
-	}
+	},
 	
-	this.filtersFromRequest = function () {
+	filtersFromRequest: function () {
 		var address = window.location.href;
 		var match = address.match(/.+\#(.+)/);
 		if(match){
 			var params = match[1].split("&");
-			var filters = {};
+			var filters = {}
 			for(var i = 0; i < params.length; i++) {
 				var pair = params[i].split("=");
 				filters[pair[0]]=decodeURIComponent(pair[1]);
@@ -61,17 +64,17 @@ function CocktailsView (nodes) {
 			filters.page = +filters.page || 0
 			return filters;
 		} else return null;
-	};
+	},
 	
-	this.saveFilters = function (filters) {
+	saveFilters: function (filters) {
 		var self = this;
 		clearTimeout(this.hashTimeout);
 		this.hashTimeout = setTimeout(function() { 
 			self.updatePageHash(filters);
 		} , 400);
-	};
+	},
 	
-	this.updatePageHash = function (filters)
+	updatePageHash: function (filters)
 	{
 		var pairs = []
 		for (var k in filters)
@@ -93,9 +96,9 @@ function CocktailsView (nodes) {
 			window.location.hash = hash.join('&')
 			this.currentHash = window.location.hash
 		}
-	};
+	},
 	
-	this.bindEvents = function () {
+	bindEvents: function () {
 		var self = this;
 		
 		var nodes = this.nodes
@@ -128,13 +131,13 @@ function CocktailsView (nodes) {
 			var names = self.controller.needRandomCocktailNames();
 			nodes.searchExampleName.innerHTML = names[0];
 			nodes.searchExampleNameEng.innerHTML = names[1];
-		};
+		}
 		
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
 			nodes.searchTipName.hide();
-		};
+		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
@@ -147,9 +150,9 @@ function CocktailsView (nodes) {
 			self.turnToState(state);
 			self.controller.onStateChanged(state);
 		}
-	};
+	},
 	
-	this.turnToState = function(state)
+	turnToState: function(state)
 	{
 		if (this.currentState == state)
 			return
@@ -161,16 +164,16 @@ function CocktailsView (nodes) {
 		
 		if (state != 'byName')
 			this.nodes.searchByNameInput.value = ''
-	}
+	},
 	
-	this.onModelChanged = function(resultSet, filters) { // model
+	onModelChanged: function(resultSet, filters) { // model
 		this.currentFilters = filters;
 		
 		this.renderAllPages(resultSet, filters.page);
 		this.renderFilters(this.currentFilters);
-	};
+	},
 	
-	this.renderFilters = function(filters){
+	renderFilters: function(filters){
 		var nodes = this.nodes
 		
 		remClass(this.filterElems.letter || nodes.lettersAll, 'selected-button');
@@ -188,7 +191,7 @@ function CocktailsView (nodes) {
 					break;
 				}
 			}   
-		};
+		}
 		this.filterElems.letter.addClassName('selected-button');
 		
 		if(filters.page > 0) {
@@ -203,7 +206,7 @@ function CocktailsView (nodes) {
 		}
 	},
 	
-	this.renderAllPages = function(resultSet, pageNum){
+	renderAllPages: function(resultSet, pageNum){
 		var nodes = this.nodes
 		
 		this.resultSet = resultSet;
@@ -225,9 +228,9 @@ function CocktailsView (nodes) {
 		this.renderPager(this.np);
 		nodes.resultsDisplay.RollingImagesLite.sync();
 		nodes.resultsDisplay.RollingImagesLite.goInit();
-	};
+	},
 	
-	this.renderSkeleton = function (count)
+	renderSkeleton: function (count)
 	{
 		var nodes = this.nodes,
 			parent = nodes.resultsRoot,
@@ -240,9 +243,9 @@ function CocktailsView (nodes) {
 			page.className = 'point cocktails';
 			parent.appendChild(page)
 		}
-	}
+	},
 	
-	this.renderNearbyPages = function (num, delta)
+	renderNearbyPages: function (num, delta)
 	{
 		if (delta === undefined)
 			delta = 1
@@ -250,9 +253,9 @@ function CocktailsView (nodes) {
 		for (var i = num - delta; i <= num + delta; i++)
 			if(i >= 0 && i < this.np && !this.renderedPages[i])
 				this.renderPage(i)
-	}
+	},
 	
-	this.renderLetters = function (set){
+	renderLetters: function (set){
 		var nodes = this.nodes
 		
 		var controller = this.controller
@@ -276,7 +279,7 @@ function CocktailsView (nodes) {
 		}
 	},
 	
-	this.renderPage = function (num)
+	renderPage: function (num)
 	{
 		var nodes = this.nodes
 		
@@ -303,14 +306,14 @@ function CocktailsView (nodes) {
 		}
 		
 		this.renderedPages[num] = true
-	};
+	},
 	
-	this.getNumOfPages = function(resultSet, perPage) {
+	getNumOfPages: function(resultSet, perPage) {
 		if ((resultSet.length % perPage) == 0) return (resultSet.length/perPage);
 		return parseInt(resultSet.length / perPage) + 1;
-	};
+	},
 	
-	this.renderPager = function (numOfPages) {
+	renderPager: function (numOfPages) {
 		var span = this.nodes.pagerRoot;
 		span.empty();
 		for (var i = 1; i <= numOfPages; i++) {
@@ -320,5 +323,5 @@ function CocktailsView (nodes) {
 			span.appendChild(a);
 			span.appendChild(document.createTextNode(' '))
 		}
-	};
+	}
 }
