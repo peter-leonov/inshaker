@@ -47,10 +47,11 @@ Object.extend(Cocktail,
 
 Cocktail.findAndBindPrepares()
 
-function CocktailsModel () {
-	this.resultSet = [];
-	
-	this.setFilters = function (filters)
+function Me () {}
+
+Me.prototype =
+{
+	setFilters: function (filters)
 	{
 		this.completeFilters(filters || {})
 		
@@ -58,16 +59,16 @@ function CocktailsModel () {
 		this.view.turnToState(this.filters.state)
 		
 		this.applyFilters()
-	}
+	},
 	
-	this.randomCocktailNames = function(){
+	randomCocktailNames: function(){
 		var cocktails = Cocktail.getAll()
 		var num = Math.floor((cocktails.length)*Math.random());
 		var cocktail = cocktails[num];
 		return [cocktail.name, cocktail.name_eng];
-	};
+	},
 	
-	this.completeFilters = function (filters)
+	completeFilters: function (filters)
 	{
 		this.filters =
 		{
@@ -76,20 +77,20 @@ function CocktailsModel () {
 			page: filters.page || 0,
 			state: filters.state || 'byName'
 		}
-	};
+	},
 	
-	this.onStateChanged = function(state){
+	onStateChanged: function(state){
 		this.completeFilters({})
 		this.filters.state = state;
 		this.applyFilters();
-	}
+	},
 	
-	this.onPageChanged = function(num){
+	onPageChanged: function(num){
 		this.filters.page = num;
 		this.view.saveFilters(this.filters);
-	};
+	},
 	
-	this.onLetterFilter = function(letter)
+	onLetterFilter: function(letter)
 	{
 		if (letter == this.filters.letter)
 			return
@@ -99,21 +100,21 @@ function CocktailsModel () {
 		this.filters.page        = 0;
 		this.filters.letter = letter
 		this.applyFilters()
-	};
+	},
 	
-	this.onNameFilter = function(name) {
+	onNameFilter: function(name) {
 		if(name != this.filters.name) {
 			this.filters.page        = 0;
 			this.filters.name        = name;
 			this.applyFilters();
 		}
-	}
+	},
 	
-	var getBySimilarNameCache = {}
-	this.getBySimilarName = function (name)
+	getBySimilarNameCache: {},
+	getBySimilarName: function (name)
 	{
-		if (getBySimilarNameCache[name])
-			return getBySimilarNameCache[name]
+		if (this.getBySimilarNameCache[name])
+			return this.getBySimilarNameCache[name]
 			
 		var words = name.split(/\s+/),
 			res = [], db = Cocktail.getAll()
@@ -139,11 +140,11 @@ function CocktailsModel () {
 			
 			res.push(cocktail)
 		}
-		return (getBySimilarNameCache[name] = res)
+		return (this.getBySimilarNameCache[name] = res)
 	},
 	
 	
-	this.getCocktailsByFilters = function (filters)
+	getCocktailsByFilters: function (filters)
 	{
 		if (filters.state == 'byName')
 		{
@@ -163,17 +164,18 @@ function CocktailsModel () {
 			if (filters.letter)
 				return Cocktail.getByFirstLetter(filters.letter)
 		}
-	}
+	},
 	
 	
-	this.applyFilters = function()
+	applyFilters: function()
 	{
 		var filters = this.filters
 		var res = this.getCocktailsByFilters(filters)
 		this.view.onModelChanged(res, filters)
-	};
+	}
 }
 
-self.CocktailsModel = CocktailsModel
+Me.className = 'CocktailsModel'
+self[Me.className] = Me
 
 })();
