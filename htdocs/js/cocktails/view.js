@@ -171,6 +171,7 @@ Me.prototype =
 		if (state == 'byName')
 		{
 			this.nodes.searchByNameInput.value = ''
+			this.nodes.searchByNameInput.focus()
 			
 			var names = this.controller.needRandomCocktailNames()
 			this.nodes.searchExampleName.innerHTML = names[0];
