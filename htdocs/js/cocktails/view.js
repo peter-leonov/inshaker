@@ -156,26 +156,28 @@ Me.prototype =
 	
 	turnToState: function (state)
 	{
-		var last = this.nodes.tabs[this.lastState]
+		var nodes = this.nodes
+		
+		var last = nodes.tabs[this.lastState]
 		if (last)
 			last.removeClassName('selected')
 		
 		this.lastState = state
 		
-		var present = this.nodes.tabs[state]
+		var present = nodes.tabs[state]
 		if (present)
 			present.addClassName('selected')
 		
-		this.nodes.panels.className = state
+		nodes.panels.className = state
 		
 		if (state == 'byName')
 		{
-			this.nodes.searchByNameInput.value = ''
-			this.nodes.searchByNameInput.focus()
+			nodes.searchByNameInput.value = ''
+			nodes.searchByNameInput.focus()
 			
 			var names = this.controller.needRandomCocktailNames()
-			this.nodes.searchExampleName.innerHTML = names[0];
-			this.nodes.searchExampleNameEng.innerHTML = names[1];
+			nodes.searchExampleName.innerHTML = names[0];
+			nodes.searchExampleNameEng.innerHTML = names[1];
 		}
 	},
 	
