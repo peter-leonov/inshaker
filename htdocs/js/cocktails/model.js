@@ -81,6 +81,9 @@ Me.prototype =
 	
 	setState: function (state)
 	{
+		if (this.filters.state == state)
+			return
+		
 		this.view.turnToState(state)
 		this.completeFilters({})
 		this.filters.state = state

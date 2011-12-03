@@ -153,14 +153,11 @@ Me.prototype =
 	
 	turnToState: function (state)
 	{
-		if (this.currentState == state)
-			return
-		
-		var last = this.nodes.tabs[this.currentState]
+		var last = this.nodes.tabs[this.lastState]
 		if (last)
 			last.removeClassName('selected')
 		
-		this.currentState = state
+		this.lastState = state
 		
 		var present = this.nodes.tabs[state]
 		if (present)
