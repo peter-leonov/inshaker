@@ -225,7 +225,7 @@ Me.prototype =
 		var nodes = this.nodes
 		
 		this.resultSet = resultSet;
-		this.np = this.getNumOfPages(resultSet, this.perPage);
+		this.np = Math.ceil(resultSet.length / this.perPage)
 		
 		nodes.resultsRoot.empty();
 		
@@ -321,11 +321,6 @@ Me.prototype =
 		}
 		
 		this.renderedPages[num] = true
-	},
-	
-	getNumOfPages: function(resultSet, perPage) {
-		if ((resultSet.length % perPage) == 0) return (resultSet.length/perPage);
-		return parseInt(resultSet.length / perPage) + 1;
 	},
 	
 	renderPager: function (numOfPages) {
