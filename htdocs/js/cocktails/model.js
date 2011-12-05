@@ -107,12 +107,14 @@ Me.prototype =
 		this.applyFilters()
 	},
 	
-	onNameFilter: function(name) {
-		if(name != this.filters.name) {
-			this.filters.page        = 0;
-			this.filters.name        = name;
-			this.applyFilters();
-		}
+	onNameFilter: function (name)
+	{
+		if (name == this.filters.name)
+			return
+		
+		this.filters.name = name
+		this.filters.page = 0
+		this.applyFilters()
 	},
 	
 	getBySimilarNameCache: {},
