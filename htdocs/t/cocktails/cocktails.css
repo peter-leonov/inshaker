@@ -32,6 +32,7 @@
 #panels.just-suggested #search_tip_name { display: none; }
 
 #panels.byName #search_by_name,
+#panels.byName #search_tip_name,
 #panels.byLetter #search_by_letter,
 #panels.top20 #search_top-20 { display: block; }
 
