@@ -18,18 +18,22 @@
 #alphabetical-ru a { float: left; display: block; width: 18px; height: 18px; line-height: 15px; text-align: center; }
 #alphabetical-ru a.selected-button { width: 18px; background-position: -125px -125px; cursor: default; }
 
+#search_top-20 { font-size: 14px; line-height: 22px; text-align: center; letter-spacing: 1px; }
+
 .search-control { z-index: 10; position: relative; }
 .autocomplete { position: absolute; opacity: 0.95; border-style: solid; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 
 #search_tip_name,
 #search_by_name,
-#search_by_letter { display: none; }
+#search_by_letter,
+#search_top-20 { display: none; }
 
 #panels.just-suggested #search_tip_name { display: none; }
 
 #panels.byName #search_by_name,
-#panels.byLetter #search_by_letter { display: block; }
+#panels.byLetter #search_by_letter,
+#panels.top20 #search_top-20 { display: block; }
 
 /*Block content*/
 /*pager list*/
@@ -91,6 +95,7 @@
 #search-controls { height: 32px; }
 .search-control {background-position: 0px 0px; padding:5px; color:#fff; height: 22px;}
 #search_by_letter { background-position: 0 -50px; }
+#search_top-20 { background-position: 0 -50px; }
 
 .b-content {width:100%;}
 #results_display {}

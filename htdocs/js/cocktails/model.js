@@ -169,6 +169,15 @@ Me.prototype =
 			if (filters.letter)
 				return Cocktail.getByFirstLetter(filters.letter)
 		}
+		
+		if (filters.state == 'top20')
+		{
+			var res = Cocktail.getByTag('Самые популярные')
+			res.sort(Cocktail.complexitySort)
+			return res
+		}
+		
+		return []
 	},
 	
 	

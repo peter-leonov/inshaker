@@ -77,7 +77,8 @@ function onready ()
 		tabs:
 		{
 			byName: $$('.by-name')[0],
-			byLetter: $$('.by-letter')[0]
+			byLetter: $$('.by-letter')[0],
+			top20: $$('.top-20')[0]
 		},
 		
 		byLetterTab: $$('#search_tabs .by-letter')[0],
