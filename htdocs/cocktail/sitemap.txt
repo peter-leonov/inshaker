@@ -809,7 +809,6 @@ http://www.inshaker.ru/cocktail/rudy_passion/
 http://www.inshaker.ru/cocktail/rouge/
 http://www.inshaker.ru/cocktail/russian_long_island/
 http://www.inshaker.ru/cocktail/russian_national/
-http://www.inshaker.ru/cocktail/russian_flag/
 http://www.inshaker.ru/cocktail/russian-japanese_war/
 http://www.inshaker.ru/cocktail/ryazanov/
 http://www.inshaker.ru/cocktail/near_fidel/
@@ -965,6 +964,7 @@ http://www.inshaker.ru/cocktail/festrus/
 http://www.inshaker.ru/cocktail/mary_fay/
 http://www.inshaker.ru/cocktail/fiztiny/
 http://www.inshaker.ru/cocktail/fitness_smoothie/
+http://www.inshaker.ru/cocktail/russian_flag/
 http://www.inshaker.ru/cocktail/flirtation_margarita/
 http://www.inshaker.ru/cocktail/foxy_lady_shooter/
 http://www.inshaker.ru/cocktail/forrest_gump/
