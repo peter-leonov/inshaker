@@ -102,7 +102,7 @@ Me.prototype =
 		
 		Statistics.cocktailsFilterSelected(letter)
 		
-		this.filters.page        = 0;
+		this.filters.page = 0
 		this.filters.letter = letter
 		this.applyFilters()
 	},
