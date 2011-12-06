@@ -61,11 +61,9 @@ Me.prototype =
 		this.setState(state, this.filters)
 	},
 	
-	getRandomCocktail: function(){
-		var cocktails = Cocktail.getAll()
-		var num = Math.floor((cocktails.length)*Math.random());
-		var cocktail = cocktails[num];
-		return cocktail;
+	getRandomCocktail: function ()
+	{
+		return Cocktail.getAll().random(1)[0]
 	},
 	
 	completeFilters: function (filters)
