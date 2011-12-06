@@ -8,6 +8,7 @@ if [ -f $PROJ_ROOT/logs/nginx.pid ]; then
 else
 	echo "nginx wasn't started (no pid file found)"
 fi
+rm -f $PROJ_ROOT/logs/nginx.sock
 
 # stopping mini_httpd
 if [ -f $PROJ_ROOT/logs/mini_httpd.pid ]; then
