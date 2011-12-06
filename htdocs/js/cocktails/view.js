@@ -56,19 +56,15 @@ Me.prototype =
 		this.controller.onFiltersChanged(filters)
 	},
 	
-	filtersFromRequest: function () {
-		var address = window.location.href;
-		var match = address.match(/.+\#(.+)/);
-		if(match){
-			var params = match[1].split("&");
-			var filters = {}
-			for(var i = 0; i < params.length; i++) {
-				var pair = params[i].split("=");
-				filters[pair[0]]=decodeURIComponent(pair[1]);
-			}
-			filters.page = +filters.page || 0
-			return filters;
-		} else return null;
+	filtersFromRequest: function ()
+	{
+		var m = window.location.href.match(/#(.+)$/)
+		if (!m)
+			return
+		
+		var filters = UrlEncode.parse(m[1])
+		filters.page = +filters.page || 0
+		return filters
 	},
 	
 	saveFilters: function (filters) {
@@ -81,7 +77,7 @@ Me.prototype =
 	
 	updatePageHash: function (filters)
 	{
-		var pairs = []
+		var hash = {}
 		for (var k in filters)
 		{
 			var v = filters[k]
@@ -92,18 +88,11 @@ Me.prototype =
 			if (k == 'state' && v == 'byName')
 				continue
 			
-			pairs.push([k, v])
+			hash[k] = v
 		}
 		
-		var hash = [], encode = encodeURIComponent;
-		for(var i = 0; i < pairs.length; i++) {
-			hash[i] = encode(pairs[i][0]) + "=" + encode(pairs[i][1]);
-		}
-		if (hash)
-		{
-			window.location.hash = hash.join('&')
-			this.currentHash = window.location.hash
-		}
+		window.location.hash = UrlEncode.stringify(hash)
+		this.currentHash = window.location.hash
 	},
 	
 	bindEvents: function ()
