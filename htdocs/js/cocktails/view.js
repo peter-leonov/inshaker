@@ -84,7 +84,7 @@ Me.prototype =
 			hash[k] = v
 		}
 		
-		window.location.hash = UrlEncode.stringify(hash)
+		window.location.hash = UrlEncode.stringify(hash) || 'i'
 		this.currentHash = window.location.hash
 	},
 	
