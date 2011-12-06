@@ -1,13 +1,6 @@
 ;(function(){
 
 function remClass(elem, className) { if(elem) elem.removeClassName(className) }
-function setVisible (elem, b) { b ? elem.show() : elem.hide() }
-
-function keyForValue(hash, value) {
-  for(var key in hash) if(hash[key] == value) return key
-  return null
-}
-
 
 function Me (nodes)
 {
