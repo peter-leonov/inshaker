@@ -53,19 +53,19 @@ Me.prototype =
 {
 	setFilters: function (filters)
 	{
-		this.completeFilters(filters || {})
-		
 		this.view.renderLetters(Cocktail.getFirstLetters())
-		this.view.turnToState(this.filters.state)
 		
-		this.applyFilters()
+		this.completeFilters(filters || {})
+		var state = this.filters.state
+		this.filters.state = null
+		this.setState(state, this.filters)
 	},
 	
-	randomCocktailNames: function(){
+	getRandomCocktail: function(){
 		var cocktails = Cocktail.getAll()
 		var num = Math.floor((cocktails.length)*Math.random());
 		var cocktail = cocktails[num];
-		return [cocktail.name, cocktail.name_eng];
+		return cocktail;
 	},
 	
 	completeFilters: function (filters)
@@ -79,13 +79,16 @@ Me.prototype =
 		}
 	},
 	
-	setState: function (state)
+	setState: function (state, filters)
 	{
 		if (this.filters.state == state)
 			return
 		
+		if (state == 'byName')
+			this.view.renderRandomCocktail(this.getRandomCocktail())
+		
 		this.view.turnToState(state)
-		this.completeFilters({})
+		this.completeFilters(filters || {})
 		this.filters.state = state
 		this.applyFilters()
 	},

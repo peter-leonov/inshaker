@@ -23,10 +23,6 @@ Me.prototype =
 	
 	onTabSelected: function(name){
 		this.model.setState(name);
-	},
-	
-	needRandomCocktailNames: function(){
-		return this.model.randomCocktailNames();
 	}
 }
 

@@ -174,11 +174,14 @@ Me.prototype =
 		{
 			nodes.searchByNameInput.value = ''
 			nodes.searchByNameInput.focus()
-			
-			var names = this.controller.needRandomCocktailNames()
-			nodes.searchExampleName.innerHTML = names[0];
-			nodes.searchExampleNameEng.innerHTML = names[1];
 		}
+	},
+	
+	renderRandomCocktail: function (cocktail)
+	{
+		var nodes = this.nodes
+		nodes.searchExampleName.innerHTML = cocktail.name
+		nodes.searchExampleNameEng.innerHTML = cocktail.name_eng
 	},
 	
 	onModelChanged: function(resultSet, filters) { // model
