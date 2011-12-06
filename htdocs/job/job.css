@@ -14,7 +14,7 @@ html { overflow-y: scroll; }
 .faq p { margin: 0.5em 0; }
 .faq .question { margin-bottom: 1.5em; }
 
-#sidebar { position: absolute; top: 0; right: 0; width: 300px; }
+#sidebar { display: none; position: absolute; top: 0; right: 0; width: 300px; }
 #sidebar .head { font-size: 20px; }
 #sidebar .body { font-size: 13px; color: #888; }
 #sidebar .who {  }
