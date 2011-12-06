@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
 PROJ_ROOT="/www/inshaker/"
 
 nginx -q -p "$PROJ_ROOT" -c "nginx.developer.conf"
