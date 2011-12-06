@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
-PROJ_ROOT="/www/inshaker/"
+PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
 
 # stopping nginx
 if [ -f $PROJ_ROOT/logs/nginx.pid ]; then
