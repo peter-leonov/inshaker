@@ -282,6 +282,7 @@ http://www.inshaker.ru/cocktail/double_pleasure/
 http://www.inshaker.ru/cocktail/debutante/
 http://www.inshaker.ru/cocktail/awol/
 http://www.inshaker.ru/cocktail/awol_2/
+http://www.inshaker.ru/cocktail/awol__3_/
 http://www.inshaker.ru/cocktail/delissia/
 http://www.inshaker.ru/cocktail/all_day_long/
 http://www.inshaker.ru/cocktail/wooden_jack/
@@ -808,7 +809,6 @@ http://www.inshaker.ru/cocktail/rudy_passion/
 http://www.inshaker.ru/cocktail/rouge/
 http://www.inshaker.ru/cocktail/russian_long_island/
 http://www.inshaker.ru/cocktail/russian_national/
-http://www.inshaker.ru/cocktail/russian_flag/
 http://www.inshaker.ru/cocktail/russian-japanese_war/
 http://www.inshaker.ru/cocktail/ryazanov/
 http://www.inshaker.ru/cocktail/near_fidel/
@@ -964,6 +964,7 @@ http://www.inshaker.ru/cocktail/festrus/
 http://www.inshaker.ru/cocktail/mary_fay/
 http://www.inshaker.ru/cocktail/fiztiny/
 http://www.inshaker.ru/cocktail/fitness_smoothie/
+http://www.inshaker.ru/cocktail/russian_flag/
 http://www.inshaker.ru/cocktail/flirtation_margarita/
 http://www.inshaker.ru/cocktail/foxy_lady_shooter/
 http://www.inshaker.ru/cocktail/forrest_gump/
