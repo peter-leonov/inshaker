@@ -3,8 +3,8 @@
 PROJ_ROOT="/www/inshaker"
 
 # stopping nginx
-if [ -f $PROJ_ROOT/nginx.pid ]; then
-	kill -INT $(cat $PROJ_ROOT/nginx.pid)
+if [ -f $PROJ_ROOT/logs/nginx.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/logs/nginx.pid)
 else
 	echo "nginx wasn't started (no pid file found)"
 fi
