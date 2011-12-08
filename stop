@@ -1,18 +1,19 @@
 #!/bin/sh
 
-PROJ_ROOT="/www/inshaker"
+PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
 
 # stopping nginx
-if [ -f $PROJ_ROOT/nginx.pid ]; then
-	kill -INT $(cat $PROJ_ROOT/nginx.pid)
+if [ -f $PROJ_ROOT/logs/nginx.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/logs/nginx.pid)
 else
 	echo "nginx wasn't started (no pid file found)"
 fi
+rm -f $PROJ_ROOT/logs/nginx.sock
 
 # stopping mini_httpd
-if [ -f $PROJ_ROOT/mini_httpd.pid ]; then
-	kill -INT $(cat $PROJ_ROOT/mini_httpd.pid)
-	rm -f $PROJ_ROOT/mini_httpd.pid
+if [ -f $PROJ_ROOT/logs/mini_httpd.pid ]; then
+	kill -INT $(cat $PROJ_ROOT/logs/mini_httpd.pid)
+	rm -f $PROJ_ROOT/logs/mini_httpd.pid
 else
 	echo "mini_httpd wasn't started (no pid file found)"
 fi
