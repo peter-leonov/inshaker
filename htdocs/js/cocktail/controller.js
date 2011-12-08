@@ -283,7 +283,7 @@ var Controller = {
 			img.className = 'image'
 			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
 			img.alt = ingredient.name;
-            img.addEventListener('click', function(name) { return function(){
+            img.addEventListener('click', function(ingredient) { return function(){
                 self.showIngredientPopup(ingredient);
             }}(ingredient), false);
 			div.appendChild(img);
