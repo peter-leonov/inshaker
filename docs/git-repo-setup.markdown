@@ -1,4 +1,6 @@
 
+Важно не забыть затюнить как написано в linux-setup.
+
 Git repo
 ========
 
@@ -13,14 +15,13 @@ Git repo
 	cd /www/project
 	git init
 
-Подтюним:
-
-	git config receive.denyCurrentBranch ignore
-	git config core.packedGitLimit 16m
-
 Если это просто хранилище, то:
 
 	git config core.bare true
+
+Если это нужна рабочая копия:
+
+	git config receive.denyCurrentBranch ignore
 
 Настроим автоматический чекаут по обновлении:
 

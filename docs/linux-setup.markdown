@@ -121,6 +121,7 @@ Git
 	git config --global gc.auto 0
 	git config --global user.name "server"
 	git config --global user.email "admin@server.net"
+	git config --global core.packedGitLimit 16m
 
 
 UpStart
