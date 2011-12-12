@@ -58,7 +58,9 @@ Me.prototype =
 			var v = tools[i]
 			var total = v[1]
 			var multiplier = v[2]
-			if (multiplier == 1)
+			if (count == 0)
+				total = 0
+			else if (multiplier == 1)
 				total *= guests
 			else if (!multiplier || multiplier == 2)
 				total *= portions * count
