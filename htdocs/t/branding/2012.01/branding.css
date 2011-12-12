@@ -13,14 +13,14 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 103px; height: 37px; right: 0; top: -4px; }
+#spotlighted { width: 56px; height: 37px; right: 0; top: -4px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 410px; height: 700px; left: 140px; bottom: -850px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 470px; height: 520px; left: 152px; bottom: -710px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
 #bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
 #bottom .link { color: #888; }
-html { background: #000 url(bg.jpg) center -130px repeat; }
+html { background: #000 url(bg.jpg) center 20px repeat; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
