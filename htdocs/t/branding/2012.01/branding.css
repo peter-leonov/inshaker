@@ -4,7 +4,7 @@
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
-#top .link:hover { border-bottom-color: #fdea61; }
+#top .link:hover { border-bottom-color: #2f99ff; }
 
 /* common.css */
 #spotlighted,
@@ -70,7 +70,7 @@ button.strong b { color: #000; }
 /* cocktail.css */
 #top-menu .border-links a:hover,
 #b-more dt,
-#b-more dt b { background-color: #222; }
+#b-more dt b { background-color: #2b3c69; }
 #b-more dt b { color: #fff; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
