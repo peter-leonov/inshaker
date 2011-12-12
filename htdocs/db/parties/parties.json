@@ -1,4 +1,4 @@
 [
 {"name": "Дегустация коктейлей с Malibu", "path": "halloween-xenta", "portions": [{"cocktail": "Очень страшный пунш", "factor": 0.2}], "people": 10},
-{"name": "Коктейльный Новый Год", "path": "new-year", "portions": [{"cocktail": "Ананасовый новогодний пунш", "factor": 0.2}, {"cocktail": "Клубничный новогодний пунш", "factor": 0.1}], "people": 10}
+{"name": "Коктейльный Новый Год", "path": "new-year", "portions": [{"cocktail": "Ананасовый новогодний пунш", "factor": 0.2}], "people": 10}
 ]
