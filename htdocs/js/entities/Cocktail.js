@@ -56,16 +56,8 @@ Me.prototype =
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
 			var v = tools[i]
-			var total = v[1]
-			var multiplier = v[2]
-			if (count == 0)
-				total = 0
-			else if (multiplier == 1)
-				total *= guests
-			else if (!multiplier || multiplier == 2)
-				total *= portions * count
-			
-			parts.addGood(Ingredient.getByName(v[0]), total)
+			var amount = Me.calculateGoodAmount(v, portions, count, guests)
+			parts.addGood(Ingredient.getByName(v[0]), amount)
 		}
 		
 		return parts
@@ -502,6 +494,21 @@ Me.staticMethods =
 		var ingredients = Object.keys(score)
 		ingredients.sort(function (a, b) { return score[b] - score[a] })
 		return ingredients
+	},
+	
+	calculateGoodAmount: function (part, portions, count, guests)
+	{
+		var amount = part[1],
+			multiplier = part[2]
+		
+		if (count == 0)
+			return 0
+		else if (multiplier == 1)
+			return amount * guests
+		else if (!multiplier || multiplier == 2)
+			return amount * portions * count
+		
+		return amount
 	},
 	
     nameSort: function(a,b) {
