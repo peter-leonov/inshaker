@@ -46,7 +46,6 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #cocktail-plan .body .portions { overflow: hidden; padding: 5px 0; }
 #cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 120px; margin: 30px 20px 10px 0; }
 #cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; width: 240px; font-size: 18px; }
-#cocktail-plan .body .portions .portion .name a { color: inherit; }
 #cocktail-plan .body .portions .portion .image { position: absolute; left: 0; top: 0; max-width: 90px; }
 #cocktail-plan .body .portions .portion .count { position: absolute; left: 340px; top: 0; }
 #cocktail-plan .body .portions .portion .count .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
@@ -96,6 +95,7 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; margin-top: 30px; }
 #purchase-plan .preview-list .item { float: left; margin: 0 0 48px 17px; }
 #purchase-plan .preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
+#purchase-plan .preview-list .ingredient-preview:hover { color: #ec118f; }
 #purchase-plan .preview-list .ingredient-preview .image { display: none; }
 
 #purchase-plan .parts-list { width: 450px; float: left; }
