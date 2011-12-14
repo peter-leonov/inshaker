@@ -193,6 +193,8 @@ Me.prototype =
 		nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
 		nodes.toolsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
 		nodes.toolsPartList.addEventListener('blur', blurFloat, true)
+		nodes.thingsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+		nodes.thingsPartList.addEventListener('blur', blurFloat, true)
 	},
 	
 	peopleCountChanged: function (e)
