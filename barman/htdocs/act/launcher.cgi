@@ -44,6 +44,7 @@ class Launcher
       "max" => "занял Максимка",
       "lena" => "заняла Леночка",
       "viola" => "заняла Виолочка",
+      "anya" => "заняла Анечка",
       "peter" => "занял Петечка",
       "barman" => "занял Бармен",
     }
@@ -55,6 +56,7 @@ class Launcher
       "max" => "Maxim Dergilev <max@inshaker.ru>",
       "lena" => "Elena Piskareva <lena@inshaker.ru>",
       "viola" => "Viola Kostina <viola@inshaker.ru>",
+      "anya" => "Anna Baturina <anya@inshaker.ru>",
       "peter" => "Peter Leonov <pl@inshaker.ru>",
       "barman" => "Barman <barman@inshaker.ru>"
     }
