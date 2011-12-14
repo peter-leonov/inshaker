@@ -59,6 +59,10 @@ Me.prototype =
 			
 		}
 		
+		var goods = this.party.goods
+		for (var i = 0, il = goods.length; i < il; i++)
+			parts.addGood(Ingredient.getByName(goods[i][0]), 1)
+		
 		var buyByName = this.buyByName = {},
 			plan = this.plan = []
 		
@@ -129,6 +133,14 @@ Me.prototype =
 			var portion = portions[i]
 			
 			parts.add(portion.cocktail.getPartsFor(portion.count, this.peopleCount))
+		}
+		
+		var goods = this.party.goods
+		for (var i = 0, il = goods.length; i < il; i++)
+		{
+			var good = goods[i]
+			var amount = Cocktail.calculateGoodAmount(good, 1, 1, this.peopleCount)
+			parts.addGood(Ingredient.getByName(goods[i][0]), amount)
 		}
 		
 		var buyByName = this.buyByName
