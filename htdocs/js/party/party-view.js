@@ -264,11 +264,11 @@ Me.prototype =
 			{
 				var ingredient = parts[j].ingredient
 				
-				var ingredient = Nct('li', 'ingredient', ingredient.getBrandedName())
-				ingredientsNode.appendChild(ingredient)
+				var ingredientNode = Nct('li', 'ingredient', ingredient.getBrandedName())
+				ingredientsNode.appendChild(ingredientNode)
 				
-				ingredient.setAttribute('data-good', ingredient.name)
-				ingredientsNode.appendChild(ingredient)
+				ingredientNode.setAttribute('data-good', ingredient.name)
+				ingredientsNode.appendChild(ingredientNode)
 			}
 			
 			root.appendChild(portion)
