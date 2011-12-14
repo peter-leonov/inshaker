@@ -262,12 +262,12 @@ Me.prototype =
 			var parts = cocktail.parts
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
-				var name = parts[j].ingredient.name
+				var ingredient = parts[j].ingredient
 				
-				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
+				var ingredient = Nct('li', 'ingredient', ingredient.getBrandedName())
 				ingredientsNode.appendChild(ingredient)
 				
-				ingredient.setAttribute('data-good', name)
+				ingredient.setAttribute('data-good', ingredient.name)
 				ingredientsNode.appendChild(ingredient)
 			}
 			
@@ -357,7 +357,7 @@ Me.prototype =
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
 			
-			var name = Nct('span', 'name', good.name == 'Абсент' ? 'Абсент Xenta' : good.name)
+			var name = Nct('span', 'name', good.getBrandedName())
 			item.appendChild(name)
 			name.setAttribute('data-good', good.name)
 			
