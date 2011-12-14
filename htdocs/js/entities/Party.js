@@ -6,6 +6,7 @@ function Me (data)
 	this.path = data.path
 	this.portions = data.portions
 	this.people = data.people
+	this.goods = data.goods || []
 }
 
 Me.staticMethods =

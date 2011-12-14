@@ -13,7 +13,7 @@ html.msie-9 #window.rendering { visibility: hidden; }
 #window .stub { display: none; width: 100%; height: 100%; }
 #window .stub .label { position: absolute; left: 50%; top: 50%; margin: -30px 0 0 -76px; color: #fff; font-size: 45px; text-shadow: 0 0 2px #000; letter-spacing: 0.05em; }
 #window .layer { overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-#window .layer .surface { width: 4160px; height: 100%; }
+#window .layer .surface { height: 100%; }
 #window .layer img { display: block; margin: 0 auto; }
 #window .transparent-borders .top,
 #window .transparent-borders .right,
@@ -46,7 +46,6 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #cocktail-plan .body .portions { overflow: hidden; padding: 5px 0; }
 #cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 120px; margin: 30px 20px 10px 0; }
 #cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; width: 240px; font-size: 18px; }
-#cocktail-plan .body .portions .portion .name a { color: inherit; }
 #cocktail-plan .body .portions .portion .image { position: absolute; left: 0; top: 0; max-width: 90px; }
 #cocktail-plan .body .portions .portion .count { position: absolute; left: 340px; top: 0; }
 #cocktail-plan .body .portions .portion .count .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
@@ -71,10 +70,12 @@ html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0
 html.msie-6 .ingredient-preview,
 html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-#lists-box { position: relative; }
+#lists-box { position: relative; margin-bottom: 58px; }
 
 #ingredients-part,
-#tools-part { overflow: hidden; margin-bottom: 10px; }
+#tools-part,
+#things-part { overflow: hidden; margin-bottom: 10px; }
+#things-part { margin-bottom: 0; }
 
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
 #purchase-plan .table .list .ingredient { position: relative; padding: 9px 0 10px 0; border-bottom: 1px solid #f2f2f2; }
@@ -86,13 +87,15 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .parts-list { margin-bottom: 20px; }
-#purchase-plan .total { position: relative; font-size: 18px; width: 450px; }
-#purchase-plan .total .head { font-weight: bold; }
-#purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
+#purchase-plan .total { position: absolute; bottom: -48px; font-size: 18px; width: 450px; }
+#purchase-plan .total .head { font-weight: bold; display: inline; }
+#purchase-plan .total .body {  width: 500px; font-weight: bold; display: inline; }
+#purchase-plan .total .body .per-person { font-size: 12px; color: #888; }
 
 #purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; margin-top: 30px; }
 #purchase-plan .preview-list .item { float: left; margin: 0 0 48px 17px; }
 #purchase-plan .preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
+#purchase-plan .preview-list .ingredient-preview:hover { color: #ec118f; }
 #purchase-plan .preview-list .ingredient-preview .image { display: none; }
 
 #purchase-plan .parts-list { width: 450px; float: left; }

@@ -193,6 +193,8 @@ Me.prototype =
 		nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
 		nodes.toolsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
 		nodes.toolsPartList.addEventListener('blur', blurFloat, true)
+		nodes.thingsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+		nodes.thingsPartList.addEventListener('blur', blurFloat, true)
 	},
 	
 	peopleCountChanged: function (e)
@@ -260,13 +262,13 @@ Me.prototype =
 			var parts = cocktail.parts
 			for (var j = 0, jl = parts.length; j < jl; j++)
 			{
-				var name = parts[j].ingredient.name
+				var ingredient = parts[j].ingredient
 				
-				var ingredient = Nct('li', 'ingredient', name == 'Абсент' ? 'Абсент Xenta' : name)
-				ingredientsNode.appendChild(ingredient)
+				var ingredientNode = Nct('li', 'ingredient', ingredient.getBrandedName())
+				ingredientsNode.appendChild(ingredientNode)
 				
-				ingredient.setAttribute('data-good', name)
-				ingredientsNode.appendChild(ingredient)
+				ingredientNode.setAttribute('data-good', ingredient.name)
+				ingredientsNode.appendChild(ingredientNode)
 			}
 			
 			root.appendChild(portion)
@@ -289,10 +291,13 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
+		var nodes = this.nodes
+		
 		var byGroup =
 		{
 			tools: [],
-			ingredients: []
+			ingredients: [],
+			things: []
 		}
 		
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -301,11 +306,23 @@ Me.prototype =
 			byGroup[buy.group].push(buy)
 		}
 		
-		this.renderIngredientsPlan(byGroup.ingredients)
-		this.renderIngredientsPreviewList(byGroup.ingredients)
+		var plan = byGroup.ingredients
+		if (plan.length)
+			nodes.ingredientsPart.show()
+		this.renderIngredientsPlan(plan)
+		this.renderIngredientsPreviewList(plan)
 		
-		this.renderToolsPlan(byGroup.tools)
-		this.renderToolsPreviewList(byGroup.tools)
+		var plan = byGroup.tools
+		if (plan.length)
+			nodes.toolsPart.show()
+		this.renderToolsPlan(plan)
+		this.renderToolsPreviewList(plan)
+		
+		var plan = byGroup.things
+		if (plan.length)
+			nodes.thingsPart.show()
+		this.renderThingsPlan(plan)
+		this.renderThingsPreviewList(plan)
 	},
 	
 	renderIngredientsPlan: function (plan)
@@ -318,14 +335,17 @@ Me.prototype =
 		this.renderPlanTo(plan, this.nodes.toolsPartList)
 	},
 	
+	renderThingsPlan: function (plan)
+	{
+		this.renderPlanTo(plan, this.nodes.thingsPartList)
+	},
+	
 	renderPlanTo: function (plan, root)
 	{
+		root.empty()
+		
 		if (plan.length == 0)
-		{
-			root.hide()
 			return
-		}
-		root.show()
 		
 		var planCache = this.cache.plan
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -337,7 +357,7 @@ Me.prototype =
 			var item = Nc('li', 'ingredient')
 			root.appendChild(item)
 			
-			var name = Nct('span', 'name', good.name == 'Абсент' ? 'Абсент Xenta' : good.name)
+			var name = Nct('span', 'name', good.getBrandedName())
 			item.appendChild(name)
 			name.setAttribute('data-good', good.name)
 			
@@ -381,9 +401,17 @@ Me.prototype =
 		this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
 	},
 	
+	renderThingsPreviewList: function (plan)
+	{
+		this.renderPreviewListTo(plan, this.nodes.thingsPartPreviewList)
+	},
+	
 	renderPreviewListTo: function (plan, root)
 	{
 		root.empty()
+		
+		if (plan.length == 0)
+			return
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
@@ -405,8 +433,7 @@ Me.prototype =
 	
 	updatePlan: function (plan)
 	{
-		var planCache = this.cache.plan,
-			totalNodes = this.nodes.purchasePlanTotal
+		var planCache = this.cache.plan
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
@@ -421,12 +448,17 @@ Me.prototype =
 		}
 	},
 	
-	updateTotal: function (total)
+	updateTotal: function (total, person)
 	{
 		var totalNodes = this.nodes.purchasePlanTotal
 		
-		totalNodes.value.firstChild.nodeValue = total
-		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
+		var perParty = totalNodes.perParty
+		perParty.value.firstChild.nodeValue = total
+		perParty.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
+		
+		var perPerson = totalNodes.perPerson
+		perPerson.value.firstChild.nodeValue = person
+		perPerson.unit.firstChild.nodeValue = person.plural('рубль', 'рубля', 'рублей')
 	},
 	
 	updateBuy: function (name, buy)

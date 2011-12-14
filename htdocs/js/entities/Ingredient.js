@@ -73,6 +73,15 @@ Me.prototype =
 	{
 		var best = this.volumes[0]
 		return anount * best[1] / best[0]
+	},
+	
+	getBrandedName: function ()
+	{
+		var mark = this.mark
+		if (mark)
+			return this.name + ' ' + mark
+		
+		return this.name
 	}
 }
 
@@ -266,7 +275,7 @@ Me.staticMethods =
 	},
 	
 	// you can see hard-coded values, sorry again
-	groupsOfGroups: {'Украшения': 'tools', 'Штучки': 'tools', 'Посуда': 'tools'},
+	groupsOfGroups: {'Украшения': 'tools', 'Штучки': 'tools', 'Посуда': 'tools', 'Штуковины': 'things'},
 	getGroupOfGroup: function (group)
 	{
 		return this.groupsOfGroups[group] || 'ingredients'

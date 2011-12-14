@@ -46,11 +46,14 @@ var myProto =
 		
 		this.state = new DefaultState()
 		
-		this.hideGroups =
+		
+		var hideGroups = this.hideGroups = {}
+		var groups = Ingredient.getGroups()
+		for (var i = 0, il = groups.length; i < il; i++)
 		{
-			'Посуда': true,
-			'Штучки': true,
-			'Украшения': true
+			var group = groups[i]
+			if (Ingredient.getGroupOfGroup(group) != 'ingredients')
+				hideGroups[group] = true
 		}
 	},
 	

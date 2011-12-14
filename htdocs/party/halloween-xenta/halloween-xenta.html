@@ -2,9 +2,13 @@
 <html id="party-page" class="party-section print-recipes" lang="ru">
 <head>
 	<!--# include file="/inc/party-head.html" -->
+	<link rel="stylesheet" type="text/css" href="branding/branding.css"/>
 	<link rel="stylesheet" type="text/css" href="/t/party/party.css"/>
 	<title>Устрой дегустацию очень страшного пунша — Вечеринки — Inshaker</title>
 	<meta property="og:image" content="http://www.inshaker.ru/party/halloween-xenta/opengraph.jpg" />
+	<style>
+	#window .layer .surface { width: 4160px; }
+	</style>
 </head>
 <body>
 <!--# include file="/inc/top-common.html" -->
@@ -12,7 +16,7 @@
 
 <div class="common-box" id="illustration-box">
 <div class="common-title">
-	<h1 id="party-name" class="common-name" data-value="Дегустация коктейлей с Malibu">Устрой дегустацию очень страшного пунша</h1>
+	<h1 id="party-name" class="common-name" data-value="Дегустация очень страшного пунша">Устрой дегустацию очень страшного пунша</h1>
 </div>
 <div id="window" class="loading">
 	<b class="transparent-borders"><b class="top"></b><b class="right"></b><b class="bottom"></b><b class="left"></b></b>
@@ -94,7 +98,7 @@
 	</dl>
 	<div class="serviette" id="lists-box">
 		<div id="purchase-plan">
-			<div id="ingredients-part">
+			<div id="ingredients-part" class="hidden">
 				<dl class="table parts-list">
 					<dt class="head">Необходимые ингредиенты</dt>
 					<dd class="body">
@@ -103,7 +107,7 @@
 				</dl>
 				<ul class="preview-list"><!-- view.renderPreviewList() --></ul>
 			</div>
-			<div id="tools-part">
+			<div id="tools-part" class="hidden">
 				<dl class="table parts-list">
 					<dt class="head">Необходимые штучки</dt>
 					<dd class="body">
@@ -112,9 +116,21 @@
 				</dl>
 				<ul class="preview-list"><!-- view.renderPreviewList() --></ul>
 			</div>
+			<div id="things-part" class="hidden">
+				<dl class="table parts-list">
+					<dt class="head">Могут пригодиться</dt>
+					<dd class="body">
+						<ul class="list"><!-- view.renderThingsPlan() --></ul>
+					</dd>
+				</dl>
+				<ul class="preview-list"><!-- view.renderThingsPreviewList() --></ul>
+			</div>
 			<dl class="total">
 				<dt class="head">Итого</dt>
-				<dt class="body">≈ <span class="cost"> </span> <span class="unit"> </span></dt>
+				<dt class="body">
+					<span class="per-party">≈ <span class="cost"> </span> <span class="unit"> </span></span>
+					<span class="per-person">или по <span class="cost"><span class="value"> </span> <span class="unit"> </span></span> на человека</span>
+				</dt>
 			</dl>
 		</div>
 	</div>

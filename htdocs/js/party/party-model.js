@@ -4,7 +4,6 @@ function Me ()
 {
 	this.portions = []
 	this.plan = []
-	this.total = 0
 }
 
 Me.prototype =
@@ -59,6 +58,10 @@ Me.prototype =
 			
 		}
 		
+		var goods = this.party.goods
+		for (var i = 0, il = goods.length; i < il; i++)
+			parts.addGood(Ingredient.getByName(goods[i][0]), 1)
+		
 		var buyByName = this.buyByName = {},
 			plan = this.plan = []
 		
@@ -102,7 +105,6 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	setCocktailCount: function (n, v)
@@ -117,7 +119,6 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	calculatePlan: function (portions)
@@ -129,6 +130,14 @@ Me.prototype =
 			var portion = portions[i]
 			
 			parts.add(portion.cocktail.getPartsFor(portion.count, this.peopleCount))
+		}
+		
+		var goods = this.party.goods
+		for (var i = 0, il = goods.length; i < il; i++)
+		{
+			var good = goods[i]
+			var amount = Cocktail.calculateGoodAmount(good, 1, 1, this.peopleCount)
+			parts.addGood(Ingredient.getByName(goods[i][0]), amount)
 		}
 		
 		var buyByName = this.buyByName
@@ -157,7 +166,7 @@ Me.prototype =
 		for (var i = 0, il = plan.length; i < il; i++)
 			total += plan[i].cost
 		
-		this.total = total
+		this.view.updateTotal(total, (total / this.peopleCount).ceil())
 	},
 	
 	setIngredientAmount: function (name, amount)
@@ -172,7 +181,6 @@ Me.prototype =
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	printParty: function ()

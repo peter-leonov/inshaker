@@ -21,7 +21,7 @@ Me.prototype =
 		
 		var me = this
 		this.listeners.click = function (e) { me.onhide() }
-		this.listeners.key = function (e) { e.keyCode == 27 && me.hide() }
+		this.listeners.key = function (e) { if (e.keyCode == 27){ me.hide(); e.preventDefault() }}
 		
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
 		
