@@ -67,6 +67,7 @@ http://www.inshaker.ru/cocktail/bamboo_2/
 http://www.inshaker.ru/cocktail/banana_sambuca/
 http://www.inshaker.ru/cocktail/banana-mandarin_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/banshee/
+http://www.inshaker.ru/cocktail/barbadian/
 http://www.inshaker.ru/cocktail/barberries_fizz/
 http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
@@ -848,6 +849,7 @@ http://www.inshaker.ru/cocktail/seneca/
 http://www.inshaker.ru/cocktail/senior_sazerac/
 http://www.inshaker.ru/cocktail/senhorita/
 http://www.inshaker.ru/cocktail/silver_bullet/
+http://www.inshaker.ru/cocktail/silver_bullet__2_/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
 http://www.inshaker.ru/cocktail/silver_tequila_with_lime_and_salt/
 http://www.inshaker.ru/cocktail/siberian_grog/
