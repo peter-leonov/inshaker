@@ -4,7 +4,6 @@ function Me ()
 {
 	this.portions = []
 	this.plan = []
-	this.total = 0
 }
 
 Me.prototype =
@@ -106,7 +105,6 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	setCocktailCount: function (n, v)
@@ -121,7 +119,6 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	calculatePlan: function (portions)
@@ -169,7 +166,7 @@ Me.prototype =
 		for (var i = 0, il = plan.length; i < il; i++)
 			total += plan[i].cost
 		
-		this.total = total
+		this.view.updateTotal(total, (total / this.peopleCount).ceil())
 	},
 	
 	setIngredientAmount: function (name, amount)
@@ -184,7 +181,6 @@ Me.prototype =
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
-		this.view.updateTotal(this.total)
 	},
 	
 	printParty: function ()

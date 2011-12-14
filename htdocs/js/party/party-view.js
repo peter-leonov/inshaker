@@ -431,8 +431,7 @@ Me.prototype =
 	
 	updatePlan: function (plan)
 	{
-		var planCache = this.cache.plan,
-			totalNodes = this.nodes.purchasePlanTotal
+		var planCache = this.cache.plan
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
@@ -447,12 +446,17 @@ Me.prototype =
 		}
 	},
 	
-	updateTotal: function (total)
+	updateTotal: function (total, person)
 	{
 		var totalNodes = this.nodes.purchasePlanTotal
 		
-		totalNodes.value.firstChild.nodeValue = total
-		totalNodes.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
+		var perParty = totalNodes.perParty
+		perParty.value.firstChild.nodeValue = total
+		perParty.unit.firstChild.nodeValue = total.plural('рубль', 'рубля', 'рублей')
+		
+		var perPerson = totalNodes.perPerson
+		perPerson.value.firstChild.nodeValue = person
+		perPerson.unit.firstChild.nodeValue = person.plural('рубль', 'рубля', 'рублей')
 	},
 	
 	updateBuy: function (name, buy)

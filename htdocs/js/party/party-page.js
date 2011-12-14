@@ -46,8 +46,16 @@ function onready ()
 		
 		purchasePlanTotal:
 		{
-			value: $$('#purchase-plan .total .cost')[0],
-			unit: $$('#purchase-plan .total .unit')[0]
+			perParty:
+			{
+				value: $$('#purchase-plan .total .per-party .cost')[0],
+				unit: $$('#purchase-plan .total .per-party .unit')[0]
+			},
+			perPerson:
+			{
+				value: $$('#purchase-plan .total .per-person .cost .value')[0],
+				unit: $$('#purchase-plan .total .per-person .cost .unit')[0]
+			}
 		},
 		cocktailPlan: $$('#cocktail-plan')[0],
 		peopleCount: $$('#cocktail-plan .people .value')[0],
