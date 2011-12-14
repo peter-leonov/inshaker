@@ -138,7 +138,7 @@ html { font-size: 14px; }
 /* very much fixed width */
 html,
 body,
-#common-main-wrapper { width: 900px; }
+#common-main-wrapper { width: 962px; }
 
 #common-main-wrapper { overflow: hidden; position: relative; margin: 0 auto; }
 
@@ -175,12 +175,15 @@ body,
 #cocktail-plan .portions .portion .count { display: inline; }
 #cocktail-plan .portions .portion .ingredients { display: none; }
 
-#lists-box { position: relative; min-height: 580px; }
+#lists-box { position: relative; margin-bottom: 58px; }
 
-#purchase-plan { width: 450px; }
+#ingredients-part,
+#tools-part,
+#things-part { overflow: hidden; margin-bottom: 10px; }
+#things-part { margin-bottom: 0; }
+
 #purchase-plan .table .head { font-size: 18px; font-weight: bold; padding: 0 0 10px 0; border-bottom: 2px solid #777; text-indent: -1px; }
-#purchase-plan .table .list .ingredient { position: relative; padding: 7px 0 9px 0; border-bottom: 1px solid #f2f2f2; }
-#purchase-plan .table .list .ingredient:first-child { padding-top: 10px; }
+#purchase-plan .table .list .ingredient { position: relative; padding: 9px 0 10px 0; border-bottom: 1px solid #f2f2f2; }
 #purchase-plan .table .list .ingredient:last-child { border-bottom: none; }
 #purchase-plan .table .list .ingredient .name { cursor: pointer; }
 #purchase-plan .table .list .ingredient .name:hover { color: #ec118f; }
@@ -188,15 +191,19 @@ body,
 #purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
+#purchase-plan .parts-list { margin-bottom: 20px; }
+#purchase-plan .total { position: absolute; bottom: -48px; font-size: 18px; width: 450px; }
+#purchase-plan .total .head { font-weight: bold; display: inline; }
+#purchase-plan .total .body {  width: 500px; font-weight: bold; display: inline; }
+#purchase-plan .total .body .per-party .cost { color: #ec118f; }
+#purchase-plan .total .body .per-person { font-size: 12px; color: #888; }
 
-#purchase-plan .total { position: relative; font-size: 18px; }
-#purchase-plan .total .head { font-weight: bold; }
-#purchase-plan .total .body { position: absolute; right: 6px; top: 4px; font-weight: bold; }
-#purchase-plan .total .cost { color: #ec118f; }
+#purchase-plan .preview-list { float: right; width: 468px; margin-bottom: -15px; margin-top: 30px; }
+#purchase-plan .preview-list .item { float: left; margin: 0 0 48px 17px; }
+#purchase-plan .preview-list .ingredient-preview { cursor: pointer; font-size: 12px; }
+#purchase-plan .preview-list .ingredient-preview:hover { color: #ec118f; }
 
-.preview-list { position: absolute; top: 30px; right: 0; width: 390px; }
-.preview-list .item { float: left; margin: 0 0 45px 17px; }
-.preview-list .ingredient-preview { cursor: pointer; font-size: 12px; background: none !important; }
+#purchase-plan .parts-list { width: 450px; float: left; }
 
 .ingredient-preview { width: 80px; height: 80px; }
 .ingredient-preview .image { width: 80px; height: 80px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
