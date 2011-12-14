@@ -64,6 +64,10 @@ class Launcher
   
   def initialize
     @user_login = get_user_login
+    unless @user_login
+      puts "unauthorized access"
+      exit 1
+    end
     @user_busy = Config::LOGIN_TO_BUSY[@user_login]
     @user_author = Config::LOGIN_TO_AUTHOR[@user_login]
   end
@@ -151,7 +155,7 @@ class Launcher
     if auth = ENV["HTTP_AUTHORIZATION"].to_s.match(/Basic (.+)/)
       Base64.decode64(auth[1]).split(':')[0]
     else
-      "barman"
+      nil
     end
   end
   
