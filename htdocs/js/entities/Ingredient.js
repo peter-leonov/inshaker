@@ -266,7 +266,7 @@ Me.staticMethods =
 	},
 	
 	// you can see hard-coded values, sorry again
-	groupsOfGroups: {'Украшения': 'tools', 'Штучки': 'tools', 'Посуда': 'tools'},
+	groupsOfGroups: {'Украшения': 'tools', 'Штучки': 'tools', 'Посуда': 'tools', 'Штуковины': 'things'},
 	getGroupOfGroup: function (group)
 	{
 		return this.groupsOfGroups[group] || 'ingredients'
