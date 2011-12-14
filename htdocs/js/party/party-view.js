@@ -292,7 +292,8 @@ Me.prototype =
 		var byGroup =
 		{
 			tools: [],
-			ingredients: []
+			ingredients: [],
+			things: []
 		}
 		
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -306,6 +307,9 @@ Me.prototype =
 		
 		this.renderToolsPlan(byGroup.tools)
 		this.renderToolsPreviewList(byGroup.tools)
+		
+		this.renderThingsPlan(byGroup.things)
+		this.renderThingsPreviewList(byGroup.things)
 	},
 	
 	renderIngredientsPlan: function (plan)
@@ -316,6 +320,11 @@ Me.prototype =
 	renderToolsPlan: function (plan)
 	{
 		this.renderPlanTo(plan, this.nodes.toolsPartList)
+	},
+	
+	renderThingsPlan: function (plan)
+	{
+		this.renderPlanTo(plan, this.nodes.thingsPartList)
 	},
 	
 	renderPlanTo: function (plan, root)
@@ -379,6 +388,11 @@ Me.prototype =
 	renderToolsPreviewList: function (plan)
 	{
 		this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
+	},
+	
+	renderThingsPreviewList: function (plan)
+	{
+		this.renderPreviewListTo(plan, this.nodes.thingsPartPreviewList)
 	},
 	
 	renderPreviewListTo: function (plan, root)

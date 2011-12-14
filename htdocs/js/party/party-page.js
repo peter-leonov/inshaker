@@ -38,6 +38,9 @@ function onready ()
 		toolsPartList: $$('#tools-part .parts-list .list')[0],
 		toolsPartPreviewList: $$('#tools-part .preview-list')[0],
 		
+		thingsPartList: $$('#things-part .parts-list .list')[0],
+		thingsPartPreviewList: $$('#things-part .preview-list')[0],
+		
 		purchasePlanTotal:
 		{
 			value: $$('#purchase-plan .total .cost')[0],
