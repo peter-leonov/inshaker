@@ -329,12 +329,10 @@ Me.prototype =
 	
 	renderPlanTo: function (plan, root)
 	{
+		root.empty()
+		
 		if (plan.length == 0)
-		{
-			root.hide()
 			return
-		}
-		root.show()
 		
 		var planCache = this.cache.plan
 		for (var i = 0, il = plan.length; i < il; i++)
@@ -398,6 +396,9 @@ Me.prototype =
 	renderPreviewListTo: function (plan, root)
 	{
 		root.empty()
+		
+		if (plan.length == 0)
+			return
 		
 		for (var i = 0, il = plan.length; i < il; i++)
 		{
