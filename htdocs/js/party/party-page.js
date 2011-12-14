@@ -32,12 +32,15 @@ function onready ()
 		recipeList: $$('#recipe-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
 		
+		ingredientsPart: $$('#ingredients-part')[0],
 		ingredientsPartList: $$('#ingredients-part .parts-list .list')[0],
 		ingredientsPartPreviewList: $$('#ingredients-part .preview-list')[0],
 		
+		toolsPart: $$('#tools-part')[0],
 		toolsPartList: $$('#tools-part .parts-list .list')[0],
 		toolsPartPreviewList: $$('#tools-part .preview-list')[0],
 		
+		thingsPart: $$('#things-part')[0],
 		thingsPartList: $$('#things-part .parts-list .list')[0],
 		thingsPartPreviewList: $$('#things-part .preview-list')[0],
 		

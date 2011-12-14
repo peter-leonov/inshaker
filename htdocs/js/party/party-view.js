@@ -289,6 +289,8 @@ Me.prototype =
 	
 	renderPlan: function (plan)
 	{
+		var nodes = this.nodes
+		
 		var byGroup =
 		{
 			tools: [],
@@ -302,14 +304,23 @@ Me.prototype =
 			byGroup[buy.group].push(buy)
 		}
 		
-		this.renderIngredientsPlan(byGroup.ingredients)
-		this.renderIngredientsPreviewList(byGroup.ingredients)
+		var plan = byGroup.ingredients
+		if (plan.length)
+			nodes.ingredientsPart.show()
+		this.renderIngredientsPlan(plan)
+		this.renderIngredientsPreviewList(plan)
 		
-		this.renderToolsPlan(byGroup.tools)
-		this.renderToolsPreviewList(byGroup.tools)
+		var plan = byGroup.tools
+		if (plan.length)
+			nodes.toolsPart.show()
+		this.renderToolsPlan(plan)
+		this.renderToolsPreviewList(plan)
 		
-		this.renderThingsPlan(byGroup.things)
-		this.renderThingsPreviewList(byGroup.things)
+		var plan = byGroup.things
+		if (plan.length)
+			nodes.thingsPart.show()
+		this.renderThingsPlan(plan)
+		this.renderThingsPreviewList(plan)
 	},
 	
 	renderIngredientsPlan: function (plan)
