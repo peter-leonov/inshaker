@@ -302,7 +302,7 @@
 {"group":"Овощи","name":"Оливки","path":"olivki","tags":["Овощи","Любой ингредиент"],"unit":"г","volumes":[[300.0,70.0,true]]},
 {"group":"Добавки","name":"Оливковый сироп","path":"olivkovyiy-sirop","tags":["Сироп","Любой ингредиент"],"unit":"мл","volumes":[[350.0,73.0,true]]},
 {"group":"Травы и цветы","name":"Орхидея","path":"orhideya","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,400.0,true]]},
-{"group":"Сладости","name":"Пастила","path":"pastila","tags":["Любой ингредиент"],"unit":"г","volumes":[[200.0,55.0,true]]},
+{"group":"Сладости","name":"Пастила","names":["Маршмеллоу"],"path":"pastila","tags":["Любой ингредиент"],"unit":"г","volumes":[[200.0,55.0,true]]},
 {"group":"Специи и пряности","name":"Перец горошком","path":"perets-goroshkom","tags":["Перец","Любой ингредиент"],"unit":"г","volumes":[[20.0,17.0,true]]},
 {"group":"Специи и пряности","name":"Перец красный молотый","path":"perets-krasnyiy-molotyiy","tags":["Перец","Любой ингредиент"],"unit":"г","volumes":[[17.0,10.0,true]]},
 {"group":"Овощи","name":"Перец красный сладкий","path":"perets-krasnyiy-sladkiy","tags":["Овощи","Перец","Любой ингредиент"],"unit":"г","volumes":[[1000.0,110.0,true]]},
