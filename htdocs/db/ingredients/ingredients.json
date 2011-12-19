@@ -505,7 +505,7 @@
 {"group":"Чай и кофе","name":"Чай эрл грей","path":"chay-erl-grey","tags":["Чай","Черный чай","Любой ингредиент"],"unit":"г","volumes":[[100.0,223.0,true]]},
 {"group":"Штучки","name":"Чайная ложка","path":"chaynaya-lozhka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,50.0,true]]},
 {"group":"Посуда","name":"Чаша","path":"chasha","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
-{"group":"Посуда","name":"Чаша для пунша","path":"chasha-dlya-punsha","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,2500.0,true]]},
+{"group":"Посуда","name":"Чаша для пунша","path":"chasha-dlya-punsha","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,1500.0,true]]},
 {"group":"Посуда","name":"Чашка","path":"chashka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
 {"group":"Ягоды","name":"Черешня","path":"chereshnya","tags":["Ягоды","Любой ингредиент"],"unit":"г","volumes":[[1000.0,370.0,true]]},
 {"group":"Соки и морсы","name":"Черничный сок","path":"chernichnyiy-sok","tags":["Сок","Ягодный сок","Любой ингредиент"],"unit":"л","volumes":[[0.75,680.0,true]]},
