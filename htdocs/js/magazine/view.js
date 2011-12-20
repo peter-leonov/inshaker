@@ -2,6 +2,11 @@
 
 eval(NodesShortcut.include())
 
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
+
 function Me (nodes)
 {
 	this.nodes = nodes
@@ -276,11 +281,9 @@ Me.prototype =
 				continue
 			}
 			
-			var className = tag.name.replace(/\s/, '-').toLowerCase()
-			
-			var item = Nc('a', (tag.bottom ? 'item bottom' : 'item') + ' ' +  className)
+			var item = Nc('a', (tag.bottom ? 'item bottom' : 'item') + ' ' +  tag.id)
 			list.appendChild(item)
-			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
+			item.href = '/combinator.html#' + UrlEncodeLight.stringify(tag.link)
 			
 			var name = Nct('span', 'name', tag.name)
 			item.appendChild(name)
