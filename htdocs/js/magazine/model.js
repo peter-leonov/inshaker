@@ -56,7 +56,6 @@ MagazinePageModel.prototype =
 		tags.sort(function (a, b) { return b.count - a.count })
 		
 		var all = tags[0]
-		all.name = 'Новые коктейли'
 		all.link.s = 'by-date'
 		
 		this.view.renderTags(tags)
