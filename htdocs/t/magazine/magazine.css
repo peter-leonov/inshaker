@@ -57,13 +57,28 @@
 #tags-list .item { position: relative; font-size: 14px; color: #000; line-height: 27px; border-radius: 7px; }
 #tags-list .item:hover { margin-top: -1px; border-top: 1px solid #fff; background: #ec118f; color: #fff; text-decoration: none; }
 #tags-list .item .name { display: block; height: 29px; border-bottom: 1px solid #eee; }
-#tags-list .item .icon { display: none; position: absolute; left: 0px; top: 0px; width: 20px; height: 20px; background-color: red !important;  }
+#tags-list .item .icon { display: none; position: absolute; left: 11px; top: 5px; width: 16px; height: 18px;  }
 #tags-list .item.bottom .name,
 #tags-list .item:hover .name { border-bottom: none; }
 #tags-list .item .count { position: absolute; right: 13px; top: 0px; font-size: 10px; line-height: 28px; }
-#tags-list .item.в-блендере { margin-left: 5px; padding-left: 33px; }
-#tags-list .item.в-блендере .icon { display: block; }
-#tags-list .item:hover.в-блендере .icon { display: block; background-color: green !important; }
+
+#tags-list .item.все-коктейли,
+#tags-list .item.авторские-хиты,
+#tags-list .item.самые-популярные,
+#tags-list .item.классические { margin-left: 5px; padding-left: 33px; }
+#tags-list .item.все-коктейли .icon,
+#tags-list .item.авторские-хиты .icon,
+#tags-list .item.самые-популярные .icon,
+#tags-list .item.классические .icon { display: block; }
+
+#tags-list .item.все-коктейли .icon { background-position: -275px 0; }
+#tags-list .item:hover.все-коктейли .icon { background-position: -275px -25px; }
+#tags-list .item.авторские-хиты .icon { background-position: -350px 0; }
+#tags-list .item:hover.авторские-хиты .icon { background-position: -350px -25px; }
+#tags-list .item.классические .icon { background-position: -325px 0; }
+#tags-list .item:hover.классические .icon { background-position: -325px -25px; }
+#tags-list .item.самые-популярные .icon { background-position: -375px 0; }
+#tags-list .item:hover.самые-популярные .icon { background-position: -375px -25px; }
 
 
 
