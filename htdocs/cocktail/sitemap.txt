@@ -886,6 +886,7 @@ http://www.inshaker.ru/cocktail/soda_and_cucumber/
 http://www.inshaker.ru/cocktail/salty_muchacha/
 http://www.inshaker.ru/cocktail/salty_dog/
 http://www.inshaker.ru/cocktail/salty_russian/
+http://www.inshaker.ru/cocktail/salty_russian_shot/
 http://www.inshaker.ru/cocktail/sunny_dream/
 http://www.inshaker.ru/cocktail/sunlight/
 http://www.inshaker.ru/cocktail/sun/
