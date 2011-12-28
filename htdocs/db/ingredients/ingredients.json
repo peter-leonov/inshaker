@@ -137,7 +137,7 @@
 {"group":"Добавки","name":"Желатин","path":"zhelatin","tags":["Любой ингредиент"],"unit":"г","volumes":[[50.0,49.0,true]]},
 {"group":"Штучки","name":"Заварной чайник","path":"zavarnoy-chaynik","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,500.0,true]]},
 {"group":"Штучки","name":"Зажигалка","path":"zazhigalka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,50.0,true]]},
-{"group":"Специи и пряности","name":"Звездчатый анис","names":["Бадьян"],"path":"zvezdchatyiy-anis","tags":["Любой ингредиент"],"unit":"г","volumes":[[18.0,35.0,true]]},
+{"group":"Специи и пряности","name":"Звездчатый анис","names":["Бадьян"],"path":"zvezdchatyiy-anis","tags":["Любой ингредиент"],"unit":"г","volumes":[[18.0,16.0,true]]},
 {"brand":"Olmeca Gold","brand_dir":"olmeca-gold","group":"Крепкий алкоголь","mark":"Olmeca","name":"Золотая текила","names":["Ольмека голд","Ольмека золотая","Olmeca gold"],"path":"zolotaya-tekila","tags":["Текила","Любой ингредиент"],"unit":"л","volumes":[[1.0,1998.0,true],[0.75,1794.0,true]]},
 {"brand":"Olmeca Altos Reposado ","brand_dir":"olmeca-altos-reposado","group":"Крепкий алкоголь","mark":"Olmeca Altos","name":"Золотая текила из 100% агавы","names":["Ольмека Альтос Репосадо","Olmeca Altos Reposado"],"path":"zolotaya-tekila-iz-100-agavyi","tags":["Текила","Любой ингредиент"],"unit":"л","volumes":[[0.7,1659.0,true]]},
 {"brand":"Martini Gold","brand_dir":"martini-gold","group":"Вермуты","mark":"Martini","name":"Золотой вермут","names":["Мартини Голд","Martini Gold","Золотой Мартини"],"path":"zolotoy-vermut","tags":["Мартини","Вермут","Любой ингредиент"],"unit":"л","volumes":[[0.75,1470.0,true]]},
