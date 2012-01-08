@@ -19,7 +19,7 @@ Git repo
 
 	git config core.bare true
 
-Если это нужна рабочая копия:
+Если нужна рабочая копия:
 
 	git config receive.denyCurrentBranch ignore
 

@@ -17,9 +17,21 @@ APT
 
 на вопросы отвечаем `y` то есть “install the package maintainer's version”.
 
+При необходимости ищем лишние пакеты:
+
+	dpkg --get-selections
+
+и удаляем:
+
+	apt-get remove apache2 apache2-*
+	apt-get remove samba samba-*
+	apt-get remove bind9 bind9-*
+	apt-get autoremove
+
 Перезагружаемся:
 
 	reboot
+
 
 Пользователи
 ------------
@@ -194,9 +206,9 @@ UpStart
 Ruby
 ----
 
-Ставим `zlib`, чтобы работал `gem install`:
+Ставим `zlib` и `libyaml`, чтобы работал `gem install`:
 
-	sudo apt-get install zlib1g-dev
+	sudo apt-get install zlib1g-dev libyaml-dev
 
 Ставим:
 
