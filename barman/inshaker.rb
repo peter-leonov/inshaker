@@ -187,5 +187,32 @@ module Inshaker
       # system(%Q{rsync -rptvh --delete "barman@toaster:/Shares/inshaker/#{subdir}/" "#{dst}"})
       # end # indent
     end
+    
+    def fix_base subdir
+      def walk dir
+        dir.each_real do |entry|
+          fullpath = "#{dir.path}/#{entry}"
+          if entry[0] == "." || File.ftype(fullpath) != "directory"
+            next
+          end
+          
+          if entry.has_diacritics
+            puts fullpath
+            clear = "#{dir.path}/#{entry.iy}"
+            File.rename(fullpath, clear)
+            fullpath = clear
+          end
+          
+          Dir.open(fullpath) do |dir|
+            dir.name = entry
+            walk dir
+          end
+        end
+      end
+      
+      Dir.new(Inshaker::BASE_DIR).each_dir do |dir|
+        walk dir
+      end
+    end
   end
 end
