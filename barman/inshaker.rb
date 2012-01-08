@@ -43,17 +43,7 @@ module Inshaker
     end
     
     def get_img_geometry(src)
-      m = `identify -format "%[fx:w]x%[fx:h]" "#{src.quote}"`.match(/^(\d+)x(\d+)$/)
-      unless m
-        error "не могу определить геометрию кртинки #{src}"
-        return 0, 0
-      end
-      
-      return m[1].to_i, m[2].to_i
-    end
-    
-    def get_jpeg_geometry(src)
-      io = IO.popen(["jfifwh", src])
+      io = IO.popen(["geometry", src])
       wh = io.read
       io.close
       

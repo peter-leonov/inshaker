@@ -243,7 +243,7 @@ class BarsProcessor < Inshaker::Processor
       end
       
       from = "#{src.path}/big-1.jpg"
-      geometry = get_jpeg_geometry(from)
+      geometry = get_img_geometry(from)
       geometry_name = nil
       
       Config::IMAGE_GEOMETRY.each do |k, v|
@@ -262,7 +262,7 @@ class BarsProcessor < Inshaker::Processor
         from = "#{src.path}/big-#{i}.jpg"
         
         if i >= 2
-          g = get_jpeg_geometry(from)
+          g = get_img_geometry(from)
           unless g == geometry
             error "у фотки №#{i} (big-#{i}.jpg) неверная геометрия: #{geometry[0]}x#{geometry[1]}"
             break
