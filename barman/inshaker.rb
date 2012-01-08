@@ -210,9 +210,7 @@ module Inshaker
         end
       end
       
-      Dir.new("#{Inshaker::BASE_DIR}/#{subdir}").each_dir do |dir|
-        walk dir
-      end
+      walk Dir.new("#{Inshaker::BASE_DIR}/#{subdir}")
     end
   end
 end
