@@ -64,7 +64,7 @@ class CocktailsProcessor < Inshaker::Processor
   def job
     sync_base "Cocktails"
     fix_base "Cocktails"
-    return
+    
     Ingredient.init
     Cocktail.init
     
