@@ -6,9 +6,9 @@ class File
   attr_accessor :name
   
   def self.write file, data
-    open(file, 'w') do |f|
-      f.write data
-    end
+    f = open(file, "w")
+    f.write data
+    f.close
   end
   
   def self.mtime_cmp a, b
