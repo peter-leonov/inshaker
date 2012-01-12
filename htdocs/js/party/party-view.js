@@ -45,6 +45,8 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		this.checkOGImage()
+		
 		this.loadWindow()
 		this.bindGoodPopup()
 		this.bindEvents()
@@ -52,6 +54,28 @@ Me.prototype =
 		this.bindPrintBox()
 		
 		return this
+	},
+	
+	checkOGImage: function ()
+	{
+		var nodes = this.nodes
+		
+		var rex = /\/party\/([^\/]+)\//
+		
+		var og = rex.exec(nodes.ogImage.content)
+		if (!og)
+		{
+			log('og:image path is totally wrong')
+			return
+		}
+		og = og[1]
+		
+		var my = rex.exec(location.href)
+		my = my[1]
+		
+		
+		if (og != my)
+			log('fix the og:image path')
 	},
 	
 	loadWindow: function ()
