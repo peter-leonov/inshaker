@@ -74,5 +74,8 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
+/* magazine.css */
+#tags-list .item .icon { background-repeat: no-repeat; background-image: url(common.png); }
+
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }

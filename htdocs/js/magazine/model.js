@@ -48,10 +48,15 @@ MagazinePageModel.prototype =
 			if (!count)
 				continue
 			
-			tags.push({name: name, count: count})
+			var id = name.replace(/\s/, '-').toLowerCase()
+			
+			tags.push({name: name, count: count, id: id, link: {q: name}})
 		}
 		
 		tags.sort(function (a, b) { return b.count - a.count })
+		
+		var all = tags[0]
+		all.link.s = 'by-date'
 		
 		this.view.renderTags(tags)
 	}
