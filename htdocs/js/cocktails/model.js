@@ -66,6 +66,8 @@ Me.prototype =
 		return Cocktail.getAll().random(1)[0]
 	},
 	
+	knownStates: {byName: 1, byLetter: 1, top20: 1},
+	
 	completeFilters: function (filters)
 	{
 		this.filters =
@@ -73,7 +75,7 @@ Me.prototype =
 			name: filters.name || '',
 			letter: filters.letter || '*',
 			page: filters.page || 0,
-			state: filters.state || 'byName'
+			state: this.knownStates[filters.state] ? filters.state : 'byName'
 		}
 	},
 	
