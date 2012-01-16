@@ -49,7 +49,7 @@
 {"group":"Вода и напитки","name":"Биттер лемон","path":"bitter-lemon","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.2,75.0,true]]},
 {"group":"Штучки","name":"Блендер","path":"blender","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,2500.0,true]]},
 {"brand":"De Kuyper Blue Curacao ","brand_dir":"de-kuyper-blue-curacao","group":"Ликеры и настойки","mark":"De Kuyper","name":"Блю Курасао ликер","names":["Голубой курасао","Blue curacao","Блу курасао","De Kuyper Blue Curacao","Де кайпер блю курасао","Ди кайпер блю курасао"],"path":"blyu-kurasao-liker","tags":["De Kuyper","Апельсиновый ликер","Ликер","Любой ингредиент","Фруктовый ликер"],"unit":"л","volumes":[[0.7,1118.0,true]]},
-{"group":"Посуда","name":"Блюдце","path":"blyudtse","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
+{"group":"Посуда","name":"Блюдце","path":"blyudtse","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,30.0,true]]},
 {"group":"Посуда","name":"Бокал для вина","path":"bokal-dlya-vina","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,100.0,true]]},
 {"group":"Посуда","name":"Бокал для ирландского кофе","path":"bokal-dlya-irlandskogo-kofe","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
 {"group":"Посуда","name":"Бокал сауэр","path":"bokal-sauer","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
