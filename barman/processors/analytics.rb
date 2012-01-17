@@ -16,7 +16,8 @@ require "entities/cocktail"
 
 class Analytics
   
-  HOUR = 60 * 60
+  MINUTE = 60
+  HOUR = MINUTE * 60
   DAY  = 24 * 60 * 60
   
   
@@ -33,6 +34,7 @@ class Analytics
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
+    LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
   end
   
   def initialize
@@ -56,8 +58,10 @@ class Analytics
     Cocktail.init
     
     if login
+      get_last_updated
       update
-      flush_all_jason
+      set_last_updated
+      flush_all_json
     end
   end
   
@@ -88,6 +92,14 @@ class Analytics
     return true
   end
   
+  def get_last_updated
+    @last_updated = Time.at(JSON.parse(File.read(Config::LAST_UP_JSON))[0])
+  end
+  
+  def set_last_updated
+    File.write(Config::LAST_UP_JSON, [Time.now.to_i].to_json)
+  end
+  
   def newer? fn, sec
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
@@ -96,7 +108,7 @@ class Analytics
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if newer?(cache, HOUR)
+    if newer?(cache, MINUTE)
       return File.read(cache)
     end
     
@@ -118,11 +130,11 @@ class Analytics
   def cocktails_pageviews name, start, endd
     dst = Config::HT_STAT_DIR + "/" + name + ".json"
     
-    if newer?(dst, HOUR)
+    if newer?(dst, MINUTE)
       return true
     end
     
-    if Time.now - endd > 4 * DAY and File.exists?(dst)
+    if @last_updated - endd > 4 * DAY and File.exists?(dst)
       return true
     end
     
@@ -197,7 +209,7 @@ class Analytics
     @all << "last-365-days"
   end
   
-  def flush_all_jason
+  def flush_all_json
     File.open(Config::ALL_JSON, "w+") do |f|
       f.puts "{"
       rows = []
