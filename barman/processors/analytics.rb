@@ -16,7 +16,8 @@ require "entities/cocktail"
 
 class Analytics
   
-  HOUR = 60 * 60
+  MINUTE = 60
+  HOUR = MINUTE * 60
   DAY  = 24 * 60 * 60
   
   
@@ -107,7 +108,7 @@ class Analytics
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if newer?(cache, HOUR)
+    if newer?(cache, MINUTE)
       return File.read(cache)
     end
     
@@ -129,7 +130,7 @@ class Analytics
   def cocktails_pageviews name, start, endd
     dst = Config::HT_STAT_DIR + "/" + name + ".json"
     
-    if newer?(dst, HOUR)
+    if newer?(dst, MINUTE)
       return true
     end
     
