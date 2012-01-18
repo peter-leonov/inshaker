@@ -45,7 +45,11 @@ class Dir
   end
   
   def each_dir
-    each do |entry|
+    entries = []
+    each { |entry| entries << entry }
+    entries.sort!
+    
+    entries.each do |entry|
       next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "directory"
       Dir.open("#{path}/#{entry}") do |dir|
         dir.name = entry
