@@ -75,7 +75,7 @@ $.onready(function()
 			if (readyState >= 3)
 			{
 				output.innerHTML = r.responseText
-				output.scrollTop = 20000
+				output.scrollTop = output.scrollHeight
 			}
 			
 			// load

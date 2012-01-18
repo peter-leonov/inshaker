@@ -10,10 +10,11 @@ require "lib/file"
 require "lib/image"
 
 require "config"
+require "processor"
 require "entities/entity"
 require "entities/cocktail"
 
-class Blog
+class Blog < Inshaker::Processor
   
   module Config
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
@@ -257,6 +258,8 @@ class Blog
   end
   
   def job
+    fix_base "Blog/posts"
+    
     Blog::Post.init
     Cocktail.init
     

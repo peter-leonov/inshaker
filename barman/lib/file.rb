@@ -6,9 +6,9 @@ class File
   attr_accessor :name
   
   def self.write file, data
-    open(file, 'w') do |f|
-      f.write data
-    end
+    f = open(file, "w")
+    f.write data
+    f.close
   end
   
   def self.mtime_cmp a, b
@@ -45,7 +45,11 @@ class Dir
   end
   
   def each_dir
-    each do |entry|
+    entries = []
+    each { |entry| entries << entry }
+    entries.sort!
+    
+    entries.each do |entry|
       next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "directory"
       Dir.open("#{path}/#{entry}") do |dir|
         dir.name = entry
