@@ -36,6 +36,7 @@ class MagazineProcessor < Inshaker::Processor
   
   def job
     sync_base "Magazine"
+    fix_base "Magazine"
     
     Cocktail.init
     

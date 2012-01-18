@@ -49,6 +49,7 @@ class IngredientsProcessor < Inshaker::Processor
   
   def job
     sync_base "Ingredients"
+    fix_base "Ingredients"
     
     prepare_dirs
     prepare_ingredients

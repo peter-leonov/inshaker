@@ -20,6 +20,7 @@ class MarksProcessor < Inshaker::Processor
   
   def job
     sync_base "Marks"
+    fix_base "Marks"
     
     process_entities
     

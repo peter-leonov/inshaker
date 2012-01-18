@@ -30,6 +30,7 @@ class BarsProcessor < Inshaker::Processor
   
   def job
     sync_base "Bars"
+    fix_base "Bars"
     
     Cocktail.init
     @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index

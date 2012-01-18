@@ -22,6 +22,7 @@ class BannersProcessor < Inshaker::Processor
   
   def job
     sync_base "Blog"
+    fix_base "Blog/banners"
     
     update_banners
     
