@@ -214,7 +214,7 @@ Me.staticMethods =
 	
 	ingredientsLinkByMark: function (mark)
 	{
-		return '/combinator.html#q=' + encodeURIComponent(mark)
+		return '/cocktails.html#state=byIngredients&marks=' + encodeURIComponent(mark)
 	},
 	
 	mergeIngredientSets: function ()

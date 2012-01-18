@@ -1,8 +1,8 @@
-#common-main-wrapper { font-size: 13px; }
+#common-main-wrapper { position: relative; z-index: 1; font-size: 13px; }
 
 #city-name { display: none; }
 
-#main-column { width: 628px; position: relative; z-index: 1; }
+#main-column { width: 628px; }
 .common-box .common-content { overflow: hidden; }
 
 #main-column .common-title { position: relative; }
@@ -38,7 +38,7 @@
 #main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
-#bar-on-map { position: relative; z-index: 1; width: 630px; /* +2px for borders */ margin-top: 10px; }
+#bar-on-map { width: 630px; /* +2px for borders */ margin-top: 10px; }
 #bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; background: #222 url(block-title-v.png) repeat-x scroll 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 #bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; display: none; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }

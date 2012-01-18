@@ -17,11 +17,9 @@ ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
 .to-print{display:none;}
-body{font:10px Tahoma,Arial,sans-serif;color:#343b40;}
 
-html { overflow-y: scroll; height: 100%; }
-body { min-width: 985px; position: relative; min-height: 100%; }
-
+html{background-color:#fff;}
+body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;}
 
 /* 0px to 10px rounded corners */
 .rounding-corners .lt,
@@ -49,21 +47,6 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #bottom .copyright { position: absolute; top: 37px; left: 0; }
 #bottom .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 
-#cocktail-club,
-#cocktail-club-placeholder { height: 68px; }
-#cocktail-club-placeholder { margin-top: 0px; }
-#cocktail-club { position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; overflow: hidden; background: #00549f; }
-#cocktail-club .border { position: absolute; top: 0; left: 0; right: 0; height: 5px; background-color: #fff; box-shadow: 0 0 25px 1px #000; -moz-box-shadow: 0 0 25px 1px #000; -webkit-box-shadow: 0 0 25px 1px #000; }
-#cocktail-club .imperative { position: relative; z-index: 1; width: 962px; margin: 20px auto 0; font-size: 28px; line-height: 28px; /*letter-spacing: 1px;*/ color: #fff; }
-#cocktail-club .imperative .facebook,
-#cocktail-club .imperative .vkontakte { white-space: nowrap; }
-#cocktail-club .imperative .facebook .link,
-#cocktail-club .imperative .vkontakte .link { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -1000px; background: url(/t/cocktail-club/logos.png) no-repeat; }
-#cocktail-club .imperative .facebook .link { top: -5px; width: 135px; height: 33px; margin: 0 -4px 0 -5px; background-position: 0 0; }
-#cocktail-club .imperative .vkontakte .link { top: -1px; width: 159px; height: 35px; margin: 0 -4px 0 -3px; background-position: -150px 0; }
-#cocktail-club .imperative .facebook .link:hover { background-position: 0 -50px; }
-#cocktail-club .imperative .vkontakte .link:hover { background-position: -150px -50px; }
-
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
 
@@ -87,8 +70,6 @@ html.blog-section #top .link.blog
 #cocktail-page #bottom .main-menu .link.cocktails,
 #bars-page #bottom .main-menu .link.bars,
 #bar-page #bottom .main-menu .link.bars,
-#barman-page #bottom .main-menu .link.barmen,
-#barmen-page #bottom .main-menu .link.barmen,
 #good-page #bottom .main-menu .link.goods,
 #event-page #bottom .main-menu .link.events,
 #academy-page #bottom .main-menu .link.academy,
@@ -96,8 +77,7 @@ html.job-section #bottom .link.job,
 html.about-page #bottom .link.about,
 #combinator-page #bottom .main-menu .link.combinator,
 html.party-section #bottom .main-menu .link.party,
-html.blog-section #bottom .main-menu .link.blog,
-html.cocktail-groups-section #bottom .main-menu .link.cocktail-groups
+html.blog-section #bottom .main-menu .link.blog
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 
@@ -121,8 +101,7 @@ html.safari button.rounded b { top: -1px; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
-#spotlighted { position: relative; text-decoration: none; }
-#spotlighted i { position: absolute; background-position: 0px -100px; }
+#spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
 
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }

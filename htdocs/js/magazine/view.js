@@ -2,11 +2,6 @@
 
 eval(NodesShortcut.include())
 
-var UrlEncodeLight = {}
-Object.extend(UrlEncodeLight, UrlEncode)
-UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
-UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
-
 function Me (nodes)
 {
 	this.nodes = nodes
@@ -267,7 +262,7 @@ Me.prototype =
 			
 			var tag = tags[i]
 			columned[y * width + x] = tag
-			if (y == height - 1 || i == il - 1)
+			if (y == height -1 || i == il - 1)
 				tag.bottom = true
 		}
 		
@@ -281,15 +276,12 @@ Me.prototype =
 				continue
 			}
 			
-			var item = Nc('a', (tag.bottom ? 'item bottom' : 'item') + ' ' +  tag.id)
+			var item = Nc('a', tag.bottom ? 'item bottom' : 'item')
 			list.appendChild(item)
-			item.href = '/combinator.html#' + UrlEncodeLight.stringify(tag.link)
+			item.href = '/combinator.html#q=' + encodeURIComponent(tag.name)
 			
 			var name = Nct('span', 'name', tag.name)
 			item.appendChild(name)
-			
-			var icon = Nc('span', 'icon')
-			item.appendChild(icon)
 			
 			var count = Nct('span', 'count', tag.count)
 			item.appendChild(count)

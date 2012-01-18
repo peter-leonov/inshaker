@@ -22,14 +22,12 @@ function onready ()
 	
 	var nodes =
 	{
-		ogImage: $('og-image'),
 		partyName: $('party-name'),
 		window:
 		{
 			root: $$('#window')[0],
 			layers: $$('#window .layer'),
-			images: $$('#window .layer .image'),
-			bar: $$('#window .stub .label .bar')[0]
+			images: $$('#window .layer .image')
 		},
 		recipeList: $$('#recipe-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
@@ -71,9 +69,7 @@ function onready ()
 			buttons: $$('#links-box .share-box .button')
 		},
 		
-		printButton: $$('#links-box .print-box .print-page')[0],
-		
-		partyList: $$('#party-list')[0]
+		printButton: $$('#links-box .print-box .print-page')[0]
 	}
 	
 	RoundedCorners.round(nodes.window.root)

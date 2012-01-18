@@ -115,15 +115,15 @@ function CalculatorView() {
 		}, false);
 	}
   
-	// function callBarmen (e)
-	// {
-	// 	if (Calculator.checkSum("call_barmen"))
-	// 		return
-	// 	
-	// 	e.preventDefault()
-	// 	alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
-	// }
-	// $('call_barmen').addEventListener('click', callBarmen, false);
+	if($('call_barmen')){
+		$('call_barmen').addEventListener('click', function(e){
+			// if(!Calculator.checkSum("call_barmen")){
+			//  alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
+			// } else {
+        window.location.href="/bars/moskva/inshaker.html";
+      // }
+		}, false);
+	}
 	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения

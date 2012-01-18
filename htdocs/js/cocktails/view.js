@@ -1,98 +1,92 @@
-;(function(){
+function remClass(elem, className) { if(elem) elem.removeClassName(className) };
+function setVisible (elem, b) { b ? elem.show() : elem.hide() }
 
-function remClass(elem, className) { if(elem) elem.removeClassName(className) }
-
-function Me (nodes)
-{
-	this.riJustInited  = true;
-	this.filterElems   = { letter: null }
-	this.perPage       = 20;
+function CocktailsView (states, nodes, styles) {
+	
+	new RollingImagesLite(nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75});
+	
+	this.filterElems   = { tag: null, strength: null, method: null, letter: null };
+	this.perPage       = 16;
 	this.np            = -1;
 	this.renderedPages = {}
 	this.nodeCache     = []
-}
+	
+	
+	this.riJustInited  = true;
+	this.dropTargets   = [nodes.cartEmpty, nodes.cartFull];
+	
+	this.currentState;
+	this.currentFilters;
+	this.stateSwitcher;
+	this.resultSet; // for caching purposes only
+	
+	this.initialize = function (viewData, state)
+	{
+		this.viewData = viewData
+		
+		this.renderLetters(nodes.alphabetRu,     this.viewData.letters);
+		this.renderGroupSet(nodes.tagsList,      this.viewData.tags);
+		this.renderGroupSet(nodes.strengthsList, this.viewData.strengths);
+		this.renderGroupSet(nodes.methodsList,   this.viewData.methods);
+		
+		this.bindEvents();
+		this.turnToState(state);
+	};
+	
+	this.setupCompleter = function (searcher)
+	{
+		var self = this
+		
+		this.searcher = searcher
+		var completer = this.completer = new Autocompleter().bind(nodes.searchByIngredsInput)
+		completer.setDataSource(searcher)
+		
+		function changeListener (e)
+		{
+			nodes.searchByIngredsInput.value = ''
+			self.onIngredientAdded(e.data.value)
+			return false // prevents input value blinking in FF
+		}
+		this.completer.onconfirm = changeListener
+	}
+	
+	this.bindEvents = function () {
+		var self = this;
+		
+		var letterLinks = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
+		for(var i = 0; i < letterLinks.length; i++){
+			letterLinks[i].addEventListener('mousedown', function(e){
+				self.controller.onLetterFilter(e.target.innerHTML.toUpperCase(), 
+											nodes.lettersAll.innerHTML.toUpperCase());
+			}, false);
+		}
+		
+		var tagLinks = $$("dd", nodes.tagsList);
+		for(var i = 0; i < tagLinks.length; i++){
+			tagLinks[i].addEventListener('mousedown', function(num){ return function(){
+				if(!tagLinks[num].hasClassName(styles.disabled)) {
+					self.controller.onTagFilter(this.value)
+				}
+			}}(i), false);
+		}
+		
+		var strengthLinks = $$("dd", nodes.strengthsList);
+		for(var i = 0; i < strengthLinks.length; i++){
+			strengthLinks[i].addEventListener('mousedown', function(num){ return function(){
+				if(!strengthLinks[num].hasClassName(styles.disabled)) {
+					self.controller.onStrengthFilter(this.innerHTML.toLowerCase());
+				}
+			}}(i), false);
+		}
 
-Me.prototype =
-{
-	bind: function (nodes)
-	{
-		this.nodes = nodes
-		
-		this.dropTargets =
-		[
-			this.nodes.cartEmpty,
-			this.nodes.cartFull
-		]
-		
-		new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75})
-		
-		this.fixHashChange()
-		this.bindEvents()
-	},
-	
-	fixHashChange: function ()
-	{
-		// fix for cocktails initialization issue
-		this.currentHash = window.location.hash
-		var me = this
-		function checkHash ()
-		{
-			if (me.currentHash != window.location.hash)
-				window.location.reload(true)
+		var methodLinks = $$("dd", nodes.methodsList);
+		for(var i = 0; i < methodLinks.length; i++){
+			methodLinks[i].addEventListener('mousedown', function(num){ return function(){
+				if(!methodLinks[num].hasClassName(styles.disabled)) {
+					self.controller.onMethodFilter(this.innerHTML.toLowerCase());
+				}
+			}}(i), false);
 		}
-		setInterval(checkHash, 250)
-	},
-	
-	checkRequest: function ()
-	{
-		var filters = this.filtersFromRequest()
-		this.controller.onFiltersChanged(filters)
-	},
-	
-	filtersFromRequest: function ()
-	{
-		var m = window.location.href.match(/#(.+)$/)
-		if (!m)
-			return
-		
-		var filters = UrlEncode.parse(m[1])
-		filters.page = +filters.page || 0
-		return filters
-	},
-	
-	saveFilters: function (filters) {
-		var self = this;
-		clearTimeout(this.hashTimeout);
-		this.hashTimeout = setTimeout(function() { 
-			self.updatePageHash(filters);
-		} , 400);
-	},
-	
-	updatePageHash: function (filters)
-	{
-		var hash = {}
-		for (var k in filters)
-		{
-			var v = filters[k]
-			
-			if (!v || v == '*')
-				continue
-			
-			if (k == 'state' && v == 'byName')
-				continue
-			
-			hash[k] = v
-		}
-		
-		window.location.hash = UrlEncode.stringify(hash) || 'i'
-		this.currentHash = window.location.hash
-	},
-	
-	bindEvents: function ()
-	{
-		var self = this;
-		
-		var nodes = this.nodes
 		
 		var ril = nodes.resultsDisplay.RollingImagesLite;
 		
@@ -106,83 +100,121 @@ Me.prototype =
 			} else { self.riJustInited = false }
 			
 			// big pager buttons
-			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName('disabled');
-			else nodes.bigNext.removeClassName('disabled');
-			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName('disabled');
-			else nodes.bigPrev.removeClassName('disabled');
+			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName(styles.disabled);
+			else nodes.bigNext.removeClassName(styles.disabled);
+			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName(styles.disabled);
+			else nodes.bigPrev.removeClassName(styles.disabled);
 		}
+		
+		nodes.searchExampleIngredient.addEventListener('mousedown', function(e){ self.onIngredientAdded(this.innerHTML) }, false);
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
 		
+		nodes.searchTipName.realShow = nodes.searchTipName.show
+		nodes.searchTipName.show = function () {
+			this.realShow()
+			var names = self.controller.needRandomCocktailNames();
+			nodes.searchExampleName.innerHTML = names[0];
+			nodes.searchExampleNameEng.innerHTML = names[1];
+		};
+		
+		nodes.removeAllIngreds.addEventListener('click', function(e){
+				self.onAllIngredientsRemoved();
+			}, false);
+		
+		nodes.searchTipIngredient.realShow = nodes.searchTipIngredient.show
+		nodes.searchTipIngredient.show = function () {
+			this.realShow()
+			nodes.searchExampleIngredient.innerHTML = self.controller.needRandomIngredient();
+		};
+		
+		nodes.ingredsView.realShow = nodes.ingredsView.show
+		nodes.ingredsView.show = function(){
+			this.realShow()
+			nodes.searchTips.hide();
+		}
+		
+		nodes.ingredsView.realHide = nodes.ingredsView.hide
+		nodes.ingredsView.hide = function(){
+			this.realHide()
+			nodes.searchTips.show();
+		}
+		
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
-			nodes.panels.addClassName('just-suggested')
-		}
+			nodes.searchTipName.hide();
+		};
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
 		
-		var controller = this.controller
-		function tabClicked (e)
-		{
-			var name = e.target.getAttribute('data-tab-name')
-			if (!name)
-				return
-			controller.onTabSelected(name)
+		this.stateSwitcher = Switcher.bind(nodes.searchTabs, nodes.searchTabs.getElementsByTagName("li"),
+						[nodes.searchByName, nodes.searchByLetter, nodes.searchByIngreds]);
+		
+		this.stateSwitcher.onselect = function (num) {
+			self.turnToState(num);
+			self.controller.onStateChanged(num);
 		}
-		nodes.tabsRoot.addEventListener('click', tabClicked, false)
-	},
+		
+		nodes.searchByIngredsForm.addEventListener('submit', function (e) { e.preventDefault() }, false)
+	};
 	
-	turnToState: function (state)
-	{
-		var nodes = this.nodes
+	this.turnToState = function(state){
+		this.currentState = state;
+		this.stateSwitcher.drawSelected(state);
 		
-		var last = nodes.tabs[this.lastState]
-		if (last)
-			last.removeClassName('selected')
+		var viewport = nodes.mainArea.getElementsByClassName("viewport")[0]; 
 		
-		this.lastState = state
+		var bodyWrapper = nodes.bodyWrapper
+		for (var k in states)
+			// toggleClassName(k, states[k] == state) must be used
+			states[k] == state ? bodyWrapper.addClassName(k) : bodyWrapper.removeClassName(k)
 		
-		var present = nodes.tabs[state]
-		if (present)
-			present.addClassName('selected')
-		
-		nodes.panels.className = state
-		
-		if (state == 'byName')
-		{
-			nodes.searchByNameInput.value = ''
-			nodes.searchByNameInput.focus()
+		if(state == states.byIngredients) {
+			nodes.tagStrengthArea.show();
+			this.perPage = 16;
+		} else {
+			nodes.tagStrengthArea.hide();
+			this.perPage = 20;
 		}
-	},
+		
+		nodes.ingredsView.hide();
+		setVisible(nodes.searchTipIngredient, state == states.byIngredients)
+		setVisible(nodes.searchTipName, state == states.byName)
+		if(state != states.byName) $$("input", nodes.searchByName)[0].value = "";
+	};
 	
-	renderRandomCocktail: function (cocktail)
+	this.onAllIngredientsRemoved = function () {
+		this.controller.onIngredientFilter();
+	};
+	
+	this.onIngredientAdded = function(name)
 	{
-		var nodes = this.nodes
-		nodes.searchExampleName.innerHTML = cocktail.name
-		nodes.searchExampleNameEng.innerHTML = cocktail.name_eng
-	},
+		var markToken = 'марка '
+		if (name.indexOf(markToken) == 0)
+			this.controller.onMarkAddFilter(name.substr(markToken.length), false)
+		else
+			this.controller.onIngredientFilter(name, false)
+	}
 	
-	onModelChanged: function(resultSet, filters) { // model
+	this.onIngredientRemoved = function(name) {
+		this.controller.onIngredientFilter(name, true);
+	};
+	
+	this.onModelChanged = function(resultSet, filters, groupStates) { // model
 		this.currentFilters = filters;
 		
 		this.renderAllPages(resultSet, filters.page);
-		this.renderFilters(this.currentFilters);
-	},
+		this.renderFilters(this.currentFilters, groupStates.tags, groupStates.strengths, groupStates.methods);
+		this.controller.saveFilters(this.currentFilters);
+	};
 	
-	renderFilters: function(filters){
-		var nodes = this.nodes
-		
-		remClass(this.filterElems.letter || nodes.lettersAll, 'selected-button');
-		if (filters.letter == '*')
-		{
-			this.filterElems.letter = nodes.lettersAll
-		}
-		else
-		{
+	this.renderFilters = function(filters, tagState, strengthState, methodState){
+		remClass(this.filterElems.letter || nodes.lettersAll, styles.selected);
+		if(filters.letter != "") {
 			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
 			
 			for(var i = 0; i < letterElems.length; i++) {
@@ -191,8 +223,70 @@ Me.prototype =
 					break;
 				}
 			}   
+		} else this.filterElems.letter = nodes.lettersAll;
+		this.filterElems.letter.addClassName(styles.selected);
+		
+		// TODO: simplify this code with nodes[...] while avoiding the copy-paste
+		for (var k in tagState)
+			tagState[k.toLowerCase()] = true
+		var tagElems = nodes.tagsList.getElementsByTagName("dd");
+		for(var i = 0; i < tagElems.length; i++) {
+			var elemTxt = tagElems[i].value.toLowerCase()
+			if(elemTxt == filters.tag.toLowerCase()) {
+				this.filterElems.tag = tagElems[i];
+				this.filterElems.tag.className = styles.selected;
+			} else if(!tagState[elemTxt]) {
+				tagElems[i].className = styles.disabled;
+			} else {
+				tagElems[i].className = "";
+			}
 		}
-		this.filterElems.letter.addClassName('selected-button');
+		
+		for (var k in strengthState)
+			strengthState[k.toLowerCase()] = true
+		var strengthElems = nodes.strengthsList.getElementsByTagName("dd");
+		for(var i = 0; i < strengthElems.length; i++) {
+			var elemTxt = strengthElems[i].innerHTML.toLowerCase();
+			if(elemTxt == filters.strength.toLowerCase()) {
+				this.filterElems.strength = strengthElems[i]; 
+				this.filterElems.strength.className = styles.selected;
+			} else if(!strengthState[elemTxt]) {
+				strengthElems[i].className = styles.disabled
+			} else {
+				strengthElems[i].className = "";
+			}
+		}
+		
+		for (var k in methodState)
+			methodState[k.toLowerCase()] = true
+		var methodElems = nodes.methodsList.getElementsByTagName("dd");
+		for(var i = 0; i < methodElems.length; i++) {
+			var elemTxt = methodElems[i].innerHTML.toLowerCase();
+			if(elemTxt == filters.method.toLowerCase()) {
+				this.filterElems.method = methodElems[i]; 
+				this.filterElems.method.className = styles.selected;
+			} else if(!methodState[elemTxt]) {
+				methodElems[i].className = styles.disabled
+			} else {
+				methodElems[i].className = "";
+			}
+		}
+		
+		var ingredientsParent = nodes.searchesList;
+		ingredientsParent.empty();
+		
+		var words = filters.marks.concat(filters.ingredients)
+		for (var i = 0, il = words.length; i < il; i++)
+		{
+			ingredientsParent.appendChild(this.createIngredientElement(words[i]));
+			if (i != (il-1))
+				ingredientsParent.appendChild(document.createTextNode(" + "));
+		}
+		
+		if(this.currentState == states.byIngredients){
+			setVisible(nodes.searchTipIngredient, words.length == 0)
+			setVisible(nodes.ingredsView, words.length > 0)
+		}
 		
 		if(filters.page > 0) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
@@ -200,17 +294,15 @@ Me.prototype =
 		
 		if (filters.name)
 		{
-			var input = nodes.searchByNameInput
+			var input = $$("input", nodes.searchByName)[0]
 			if (input.value != filters.name)
 				input.value = filters.name
 		}
 	},
 	
-	renderAllPages: function(resultSet, pageNum){
-		var nodes = this.nodes
-		
+	this.renderAllPages = function(resultSet, pageNum){
 		this.resultSet = resultSet;
-		this.np = Math.ceil(resultSet.length / this.perPage)
+		this.np = this.getNumOfPages(resultSet, this.perPage);
 		
 		nodes.resultsRoot.empty();
 		
@@ -228,14 +320,11 @@ Me.prototype =
 		this.renderPager(this.np);
 		nodes.resultsDisplay.RollingImagesLite.sync();
 		nodes.resultsDisplay.RollingImagesLite.goInit();
-	},
+	};
 	
-	renderSkeleton: function (count)
+	this.renderSkeleton = function (count)
 	{
-		var nodes = this.nodes,
-			parent = nodes.resultsRoot,
-			pages = nodes.pages = []
-		
+		var parent = nodes.resultsRoot, pages = nodes.pages = []
 		for (var i = 0; i < count; i++)
 		{
 			var page = pages[i] = document.createElement('ul')
@@ -243,9 +332,9 @@ Me.prototype =
 			page.className = 'point cocktails';
 			parent.appendChild(page)
 		}
-	},
+	}
 	
-	renderNearbyPages: function (num, delta)
+	this.renderNearbyPages = function (num, delta)
 	{
 		if (delta === undefined)
 			delta = 1
@@ -253,36 +342,29 @@ Me.prototype =
 		for (var i = num - delta; i <= num + delta; i++)
 			if(i >= 0 && i < this.np && !this.renderedPages[i])
 				this.renderPage(i)
-	},
+	}
 	
-	renderLetters: function (set){
-		var nodes = this.nodes
-		
-		var controller = this.controller
-		function click (e)
-		{
-			var letter = e.target.dataLetter
-			controller.onLetterFilter(letter);
-		}
-		
-		nodes.lettersAll.dataLetter = '*'
-		nodes.lettersAll.addEventListener('click', click, false)
-		
-		var parent = nodes.alphabetRu
-		
+	this.renderGroupSet = function(parent, set){
+		for(var i = 0; i < set.length; i++) {
+			var dd = document.createElement("dd");
+			dd.value = set[i]
+			var span = document.createElement("span");
+			var txt = document.createTextNode(set[i].capitalize());
+			dd.appendChild(txt);
+			parent.appendChild(dd);
+		}		
+	};
+	
+	this.renderLetters = function(parent, set){
 		for(var i = 0; i < set.length; i++){
 			var a = document.createElement("a");
 			a.innerHTML = set[i];
-			a.dataLetter = set[i]
 			parent.appendChild(a);
-			a.addEventListener('click', click, false)
 		}
 	},
 	
-	renderPage: function (num)
+	this.renderPage = function (num)
 	{
-		var nodes = this.nodes
-		
 		var cocktails = this.resultSet,
 			node, cocktail, cache = this.nodeCache,
 			parent = nodes.pages[num],
@@ -306,10 +388,25 @@ Me.prototype =
 		}
 		
 		this.renderedPages[num] = true
-	},
+	};
 	
-	renderPager: function (numOfPages) {
-		var span = this.nodes.pagerRoot;
+	this.createIngredientElement = function(name){
+		var a = document.createElement("a");
+		a.innerHTML = name;
+		var self = this;
+		a.addEventListener('click', function(e){
+			self.onIngredientRemoved(name);
+		}, false);
+		return a;
+	};
+	
+	this.getNumOfPages = function(resultSet, perPage) {
+		if ((resultSet.length % perPage) == 0) return (resultSet.length/perPage);
+		return parseInt(resultSet.length / perPage) + 1;
+	};
+	
+	this.renderPager = function (numOfPages) {
+		var span = nodes.pagerRoot;
 		span.empty();
 		for (var i = 1; i <= numOfPages; i++) {
 			var a = document.createElement("a");
@@ -318,9 +415,5 @@ Me.prototype =
 			span.appendChild(a);
 			span.appendChild(document.createTextNode(' '))
 		}
-	}
+	};
 }
-
-Papa.View = Me
-
-})();

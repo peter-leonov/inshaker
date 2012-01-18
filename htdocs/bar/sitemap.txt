@@ -6,7 +6,6 @@ http://www.inshaker.ru/bar/cuba_libre_kazan/
 http://www.inshaker.ru/bar/relab/
 http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/aloha/
-http://www.inshaker.ru/bar/barbara/
 http://www.inshaker.ru/bar/squirrel/
 http://www.inshaker.ru/bar/sideboard/
 http://www.inshaker.ru/bar/delicatessen/
@@ -41,5 +40,7 @@ http://www.inshaker.ru/bar/48_chairs/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/
+http://www.inshaker.ru/bar/grafin/
 http://www.inshaker.ru/bar/house_of_consumer_services/
 http://www.inshaker.ru/bar/thebar/
+http://www.inshaker.ru/bar/flybar/

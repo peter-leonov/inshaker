@@ -20,9 +20,6 @@ var myProto =
 	{
 		this.nodes = nodes
 		
-		var ff = new FunFix()
-		ff.bind(nodes.mainFunFix)
-		
 		var inco = this.inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.cocktailList})
 		
@@ -54,17 +51,8 @@ var myProto =
 		var lh = this.locationHash = new LocationHash().bind(window)
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
-		var t = new Throttler(function (y) { me.controller.windowScrolled(y) }, 100, 500)
-		
-		function onscroll (e)
-		{
-			var y = window.pageYOffset
-			
-			t.call(y)
-			ff.windowScrolled(y)
-		}
-		
-		window.addEventListener('scroll', onscroll, false)
+		var t = new Throttler(function () { me.controller.windowScrolled(window.pageYOffset) }, 100, 500)
+		window.addEventListener('scroll', function () { t.call() }, false)
 		
 		return this
 	},

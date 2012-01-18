@@ -16,8 +16,6 @@ class Cocktail < Inshaker::Entity
     NOSCRIPT_LINKS     = HTDOCS_ROOT + "links.html"
     SITEMAP_LINKS      = HTDOCS_ROOT + "sitemap.txt"
     
-    SEO_GROUPS_PATH    = HTDOCS_DIR + "gruppy-kokteyley/%s/list.html"
-    
     VIDEOS_DIR = HTDOCS_DIR + "v/"
     
     COCKTAIL_ERB  = Inshaker::TEMPLATES_DIR + "cocktail.rhtml"

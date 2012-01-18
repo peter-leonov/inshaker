@@ -17,37 +17,23 @@ Array.prototype.randomize = function ()
 
 Array.prototype.random = function (n)
 {
-	if (n <= 0)
-		return []
-	
-	if (n == 1)
-		return [this[(random() * this.length) >> 0]]
-	
-	// n > 1
-	return this.slice().fetchRandom(n)
-}
-
-Array.prototype.fetchRandom = function (n)
-{
 	var len = this.length
 	
 	if (n > len)
 		n = len
 	
-	var res = []
-	
-	for (var i = 0; i < n; i++)
+	if (n > 1)
 	{
-		var r = (random() * len) >> 0
-		
-		res[i] = this[r]
-		len--
-		this[r] = this[len]
+		var copy = this.slice()
+		copy.randomize()
+		return n === len ? copy : copy.slice(0, n)
 	}
 	
-	this.length = len
+	if (n === 1)
+		return [this[(random() * len) >> 0]]
 	
-	return res
+	// n <= 0
+	return []
 }
 
 })();

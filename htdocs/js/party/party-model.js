@@ -12,8 +12,6 @@ Me.prototype =
 	{
 		this.party = Party.getByName(name)
 		
-		this.buildPartyList()
-		
 		// prepare data, caches, etc.
 		this.setupPortions(this.party.portions)
 		this.setupPlan(this.portions)
@@ -188,32 +186,6 @@ Me.prototype =
 	printParty: function ()
 	{
 		this.view.printParty(this.party)
-	},
-	
-	buildPartyList: function ()
-	{
-		var iterator = Party.getRandomPartiesIterator()
-		
-		var parties = []
-		while (parties.length < 2)
-		{
-			var party = iterator(1)[0]
-			
-			if (!party)
-				break
-			
-			if (party == this.party)
-				continue
-			
-			if (party.hidden)
-				continue
-			
-			parties.push(party)
-		}
-		
-		parties.sort(function (a, b) { return a.people - b.people || a.portions.length - b.portions.length || String.localeCompare(a.name, b.name) })
-		
-		this.view.renderPartyList(parties)
 	}
 }
 

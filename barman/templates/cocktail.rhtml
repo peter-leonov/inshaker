@@ -51,7 +51,8 @@
 						<% end %>
 					</div>
 					<div class="tags"><b>Группы:</b>
-					<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(",\n") %>.
+					<a class="tag category" href="/cocktails.html#method=<%=@method%>"><%=@method%></a>,
+					<%= groups.map { |a| %Q{<a class="tag" href="#{a[0]}">#{a[1]}</a>} } .join(", ") %>.
 					</div>
 					<div class="buttons">
 						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name"><%= @name %></span></b></button>

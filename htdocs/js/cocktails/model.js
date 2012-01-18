@@ -8,126 +8,272 @@ var lettersConversion =
 
 Object.extend(Cocktail,
 {
-	indexByFirstLetter: function ()
+	getByFirstLetter: function (letter)
 	{
-		if (this.index.byFirstLetter)
-			return
-		
+		return this.index.byFirstLetter[letter.toLowerCase()]
+	},
+	
+	getFirstLetters: function ()
+	{
 		function byFirstLetter (v)
 		{
 			var letter = v.name.charAt(0).toLowerCase()
 			var l = lettersConversion[letter]
 			return l || letter
 		}
-		this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
-	},
-	
-	getByFirstLetterPrepare: function ()
-	{
-		this.indexByFirstLetter()
-	},
-	
-	getByFirstLetter: function (letter)
-	{
-		return this.index.byFirstLetter[letter.toLowerCase()]
-	},
-	
-	getFirstLettersPrepare: function ()
-	{
-		this.indexByFirstLetter()
-	},
-	
-	getFirstLetters: function ()
-	{
-		var letters = Object.keys(this.index.byFirstLetter)
-		letters.sort()
-		return letters
+		var index = this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
+		
+		var letters = []
+		for (var k in index)
+			letters.push(k)
+		
+		return letters.sort()
 	}
 })
 
-Cocktail.findAndBindPrepares()
+// deep copy using JSON lib ;-)
+function cloneObject(obj){
+	return JSON.parse(JSON.stringify(obj));
+}
 
-function Me () {}
-
-Me.prototype =
-{
-	setFilters: function (filters)
-	{
-		this.view.renderLetters(Cocktail.getFirstLetters())
+function CocktailsModel (states, view) {
+	this.resultSet = [];
+	
+	this.filters = {
+		name:        "",
+		letter:      "",
+		tag:         "",
+		strength:    "",
+		ingredients: [],
+		page:        0,
+		state:       states.defaultState
+	};
+	
+	this.resultSet = [];
+	
+	
+	this.initialize = function(filters) {
+		this.filters = this.completeFilters(filters);
+		var viewData = {}
 		
-		this.completeFilters(filters || {})
-		var state = this.filters.state
-		this.filters.state = null
-		this.setState(state, this.filters)
-	},
+		viewData.tags = Cocktail.getGroups()
+		viewData.strengths = Cocktail.getStrengths()
+		viewData.methods = Cocktail.getMethods()
+		
+		viewData.letters = Cocktail.getFirstLetters()
+		view.initialize(viewData, this.filters.state);
+		this.setupCompleter()
+		
+		this.applyFilters();
+	};
 	
-	getRandomCocktail: function ()
+	this.setupCompleter = function ()
 	{
-		return Cocktail.getAll().random(1)[0]
-	},
-	
-	knownStates: {byName: 1, byLetter: 1, top20: 1},
-	
-	completeFilters: function (filters)
-	{
-		this.filters =
+		var ingredients = Ingredient.getAll()
+		
+		var set = [], bySecondName = {}
+		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
-			name: filters.name || '',
-			letter: filters.letter || '*',
-			page: filters.page || 0,
-			state: this.knownStates[filters.state] ? filters.state : 'byName'
+			var ingredient = ingredients[i],
+				name = ingredient.name
+			
+			set.push(name)
+			
+			var snames = ingredient.names
+			if (!snames)
+				continue
+			
+			for (var j = 0, jl = snames.length; j < jl; j++)
+			{
+				var sname = snames[j]
+				set.push(sname)
+				bySecondName[sname] = name
+			}
 		}
-	},
+		set.sort()
+		
+		view.setupCompleter(new IngredientsSearcher(set, bySecondName))
+	}
 	
-	setState: function (state, filters)
+	this.randomIngredient = function ()
 	{
-		if (this.filters.state == state)
-			return
-		
-		if (state == 'byName')
-			this.view.renderRandomCocktail(this.getRandomCocktail())
-		
-		this.view.turnToState(state)
-		this.completeFilters(filters || {})
-		this.filters.state = state
-		this.applyFilters()
-	},
+		return Ingredient.getAll().random(1)[0].name
+	}
 	
-	onPageChanged: function(num){
+	this.randomCocktailNames = function(){
+		var cocktails = Cocktail.getAll()
+		var num = Math.floor((cocktails.length)*Math.random());
+		var cocktail = cocktails[num];
+		return [cocktail.name, cocktail.name_eng];
+	};
+	
+	this.completeFilters = function(filters){
+		if(!filters)             filters = {};
+		if(!filters.name)        filters.name = "";
+		if(!filters.letter)      filters.letter = "";
+		if(!filters.tag)         filters.tag = "";
+		if(!filters.strength)    filters.strength = "";
+		if(!filters.method)      filters.method = "";
+		if(!filters.page)        filters.page = 0;
+		
+		if(!filters.ingredients) filters.ingredients = [];
+		else if(filters.ingredients.split) filters.ingredients = filters.ingredients.split(",");
+		
+		if (!filters.marks)
+			filters.marks = []
+		else if (filters.marks.split)
+			filters.marks = filters.marks.split(',')
+		
+		if(!filters.state) filters.state = states.defaultState;
+		
+		if(filters.ingredients.length || filters.tag || filters.strength || filters.method) {
+			filters.state = states.byIngredients;
+		}
+		
+		return filters;
+	};
+	
+	this.resetFilters = function(){
+		this.filters.name = "";
+		this.filters.letter = "";
+		this.filters.tag = "";
+		this.filters.strength = "";
+		this.filters.method = "";
+		this.filters.ingredients = [];
+		this.filters.marks = []
+		this.filters.page = 0;
+		this.filters.state = states.defaultState;
+	};
+	
+	this.onStateChanged = function(state){
+		this.resetFilters();
+		this.filters.state = state;
+		this.applyFilters();
+	}
+	
+	this.onPageChanged = function(num){
 		this.filters.page = num;
-		this.view.saveFilters(this.filters);
-	},
+		view.controller.saveFilters(this.filters);
+	};
 	
-	onLetterFilter: function(letter)
-	{
-		if (letter == this.filters.letter)
+	this.onLetterFilter = function(name, name_all) {
+		if(name != this.filters.letter) {
+			this.filters.ingredients = [];
+			this.filters.tag         = "";
+			this.filters.strength    = "";
+			this.filters.method      = "";
+			this.filters.page        = 0;
+			
+			if(name != name_all) {
+				this.filters.letter    = name;
+				Statistics.cocktailsFilterSelected(name)
+			} else this.filters.letter = "";
+			this.applyFilters();
+		}
+	};
+	
+	this.onNameFilter = function(name) {
+		if(name != this.filters.name) {
+			this.filters.ingredients = [];
+			this.filters.tag         = "";
+			this.filters.strength    = "";
+			this.filters.method      = "";
+			this.filters.page        = 0;
+			this.filters.name        = name;
+			this.applyFilters();
+		}
+	}
+	
+	this.onTagFilter = function(name) {
+		if(name != this.filters.tag) {
+			this.filters.letter  = "";
+			this.filters.tag     = name;
+			Statistics.cocktailsFilterSelected(name)
+		} else this.filters.tag  = "";
+		this.filters.method = "";
+		this.filters.page = 0;
+		this.applyFilters();
+	};
+	
+	this.onStrengthFilter = function(name) {
+		if(name != this.filters.strength) {
+			this.filters.letter      = "";
+			this.filters.strength    = name;
+			Statistics.cocktailsFilterSelected(name)
+		} else this.filters.strength = "";
+		this.filters.page = 0;
+		this.filters.tag = "";
+		this.filters.method = "";
+		this.applyFilters();
+	};
+	
+	this.onMethodFilter = function(name) {
+		if(name != this.filters.method) {
+			this.filters.letter  = "";
+			this.filters.method  = name;
+			Statistics.cocktailsFilterSelected(name)
+		} else this.filters.method = "";
+		this.filters.page = 0;
+		this.applyFilters();
+	};	
+
+	this.onIngredientFilter = function(name, remove) {
+		this.filters.letter   = "";
+		this.filters.page     = 0;
+		this.filters.strength = "";
+		this.filters.tag      = "";
+		this.filters.method   = "";
+		
+		if (!name) // removing all
+		{
+			this.filters.ingredients = []
+			this.filters.marks = []
+			this.applyFilters()
+			return
+		}
+		
+		var idx = this.filters.marks.indexOf(name)
+		if (idx >= 0)
+		{
+			this.filters.marks.splice(idx, 1)
+			this.applyFilters()
+			return
+		}
+		
+		var ingredient = Ingredient.getByNameCI(name)
+		if (!ingredient)
 			return
 		
-		Statistics.cocktailsFilterSelected(letter)
-		
-		this.filters.page = 0
-		this.filters.letter = letter
-		this.applyFilters()
-	},
+		var idx = this.filters.ingredients.indexOf(ingredient.name);
+		if (remove) {
+			this.filters.ingredients.splice(idx, 1);
+		} else if (idx == -1){
+			this.filters.ingredients.push(ingredient.name);
+			Statistics.ingredientTypedIn(ingredient)
+		} else return; // duplicate entry
+		this.applyFilters();
+	};
 	
-	onNameFilter: function (name)
+	this.onMarkAddFilter = function (name)
 	{
-		if (name == this.filters.name)
+		var idx = this.filters.marks.indexOf(name)
+		if (idx < 0)
+		{
+			this.filters.marks.push(name)
+			this.applyFilters()
 			return
-		
-		this.filters.name = name
-		this.filters.page = 0
-		this.applyFilters()
-	},
+		}
+	}
 	
-	getBySimilarNameCache: {},
-	getBySimilarName: function (name)
+	var getBySimilarNameCache = {},
+		allCocktails = Cocktail.getAll()
+	this.getBySimilarName = function (name)
 	{
-		if (this.getBySimilarNameCache[name])
-			return this.getBySimilarNameCache[name]
+		if (getBySimilarNameCache[name])
+			return getBySimilarNameCache[name]
 			
 		var words = name.split(/\s+/),
-			res = [], db = Cocktail.getAll()
+			res = [], db = allCocktails
 		
 		for (var i = 0; i < words.length; i++)
 			words[i] = new RegExp('(?:^|\\s|-)' + RegExp.escape(words[i]), 'i')
@@ -150,50 +296,110 @@ Me.prototype =
 			
 			res.push(cocktail)
 		}
-		return (this.getBySimilarNameCache[name] = res)
+		return (getBySimilarNameCache[name] = res)
 	},
 	
 	
-	getCocktailsByFilters: function (filters)
+	this.getCocktailsByFilters = function (filters, states)
 	{
-		if (filters.state == 'byName')
+		var groupStates = {strengths: {}, tags: {}, methods: {}}
+		
+		if (filters.state == states.byName)
 		{
 			if (filters.name)
-				return this.getBySimilarName(filters.name)
+			{
+				var res = this.getBySimilarName(filters.name)
+				return {cocktails: res, groupStates: groupStates}
+			}
 			
 			var res = Cocktail.getAll()
 			res.randomize()
-			return res
+			return {cocktails: res, groupStates: groupStates}
 		}
 		
-		if (filters.state == 'byLetter')
+		if (filters.state == states.byLetter)
 		{
-			if (filters.letter == '*')
-				return Cocktail.getAll()
-			
 			if (filters.letter)
-				return Cocktail.getByFirstLetter(filters.letter)
+			{
+				var res = Cocktail.getByFirstLetter(filters.letter)
+				return {cocktails: res, groupStates: groupStates}
+			}
+			
+			var res = Cocktail.getAll()
+			return {cocktails: res, groupStates: groupStates}
 		}
 		
-		if (filters.state == 'top20')
+		
+		// “by ingredients” state
+		
+		var res = Cocktail.getAll()
+		
+		if (filters.marks && filters.marks.length)
 		{
-			var res = Cocktail.getByTag('Самые популярные')
-			res.sort(Cocktail.complexitySort)
-			return res
+			var marks = filters.marks, ingredients = []
+			for (var i = 0; i < marks.length; i++)
+				ingredients.push(Ingredient.getByMark(marks[i]))
+			
+			// concat all the ingredients in one native operation just like SIMD ;)
+			ingredients = Array.prototype.concat.apply([], ingredients)
+			res = Cocktail.getByIngredients(ingredients, {db: res, count: 1})
 		}
 		
-		return []
-	},
+		// first run of Cocktail.getByGood() may cost near 20 ms
+		if (filters.ingredients && filters.ingredients.length)
+		{
+			var goods = filters.ingredients.slice()
+			for (var i = 0, il = goods.length; i < il; i++)
+			{
+				goods[i] = Cocktail.getByGood(goods[i])
+			}
+			goods.push(res)
+			res = DB.conjunction(goods)
+		}
+		
+		var lastStates = groupStates.strengths = DB.hashIndexByAryKey(res, 'tags')
+		
+		if (filters.strength)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.strength))
+			res = DB.conjunction([res, set])
+			
+			lastStates = groupStates.tags = DB.hashIndexByAryKey(res, 'tags')
+		}
+		else
+			groupStates.tags = lastStates
+		
+		
+		if (filters.tag)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.tag))
+			res = DB.conjunction([res, set])
+			
+			groupStates.methods = DB.hashIndexByAryKey(res, 'tags')
+		}
+		else
+			groupStates.methods = lastStates
+		
+		
+		if (filters.method)
+		{
+			var set = Cocktail.getByTag(Cocktail.getTagByTagCI(filters.method))
+			res = DB.conjunction([res, set])
+		}
+		
+		res.sort(Cocktail.complexitySort)
+		return {cocktails: res, groupStates: groupStates}
+	}
 	
 	
-	applyFilters: function()
+	this.applyFilters = function()
 	{
 		var filters = this.filters
-		var res = this.getCocktailsByFilters(filters)
-		this.view.onModelChanged(res, filters)
-	}
+		var res = this.getCocktailsByFilters(filters, states)
+		view.onModelChanged(res.cocktails, filters, res.groupStates)
+	};
 }
 
-Papa.Model = Me
+self.CocktailsModel = CocktailsModel
 
 })();

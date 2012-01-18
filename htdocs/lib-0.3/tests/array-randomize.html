@@ -13,15 +13,7 @@
 <script type="text/javascript">
 Tests.test(function (t)
 {
-	function factorial (n)
-	{
-		var res = 1
-		
-		for (var i = 2; i <= n; i++)
-			res *= i
-		
-		return res
-	}
+	function factorial (n) { return n <= 1 ? 1 : n * factorial(n - 1) }
 	
 	t.test('distribution and combinations', function (t)
 	{
@@ -52,7 +44,7 @@ Tests.test(function (t)
 		t.like([].randomize(), [], 'empty')
 		t.like([1].randomize(), [1], 'single')
 		t.like([1, 2].randomize().sort(), [1, 2], 'duo')
-		t.like([1, 2, "3", "abc", 4.0, [], {}].randomize().sort(), [1, 2, "3", "abc", 4.0, [], {}].sort(), 'preserve structures')
+		t.like([1, 2, "3", "abc", 4.0, [], {}].randomize().sort(), [1, 2, "3", "abc", 4.0, [], {}].sort(), 'different values')
 	})
 	
 })

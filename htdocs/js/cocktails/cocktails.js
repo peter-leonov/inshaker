@@ -1,113 +1,100 @@
-;(function(){
+// @requires Cocktail, Ingredient, Good
 
-var Papa
-
-;(function(){
-
-function Me ()
+CocktailsPage =
 {
-	var m = this.model = new Me.Model(),
-		v = this.view = new Me.View(),
-		c = this.controller = new Me.Controller()
-	
-	m.view = v
-	v.controller = c
-	c.model = m
-	
-	m.parent = v.parent = c.parent = this
-}
-
-Me.prototype =
-{
-	bind: function (nodes)
-	{
-		this.view.bind(nodes)
-		
-		this.view.checkRequest()
-		
-		return this
+	init: function (states, nodes, styles, cookies) {
+		this.view       = new CocktailsView(states, nodes, styles)
+		this.model      = new CocktailsModel(states, this.view)
+		this.controller = new CocktailsController(states, cookies, this.model, this.view)
 	}
 }
 
-Me.className = 'CocktailsPage'
-self[Me.className] = Papa = Me
-
-})();
-
-
-<!--# include virtual="model.js" -->
-<!--# include virtual="view.js" -->
-<!--# include virtual="controller.js" -->
-
-
-})();
-
-;(function(){
-
-function onready ()
-{
-	UserAgent.setupDocumentElementClassNames()
-	IngredientPopup.bootstrap()
-	
-	var nodes =
-	{
-		bodyWrapper: $$('#common-main-wrapper .column-main')[0],
-		resultsDisplay: $('results_display'),
-		resultsRoot: $('surface'),
-		pagerRoot: $('p-list'),
+$.onready(
+	function () {
+		UserAgent.setupDocumentElementClassNames()
+		IngredientPopup.bootstrap()
 		
-		bigNext: $$(".pager-big .next")[0],
-		bigPrev: $$(".pager-big .prev")[0],
+		var nodes = {
+			bodyWrapper: $$('#common-main-wrapper .column-main')[0],
+			resultsDisplay: $('results_display'),
+			resultsRoot: $('surface'),
+			pagerRoot: $('p-list'),
+			
+			bigNext: $$(".pager-big .next")[0],
+			bigPrev: $$(".pager-big .prev")[0],
+			
+			alphabetRu: $('alphabetical-ru'),
+			lettersAll: $('letters_all'),
+			
+			tagsList: $('tags_list'),
+			strengthsList: $('strengths_list'),
+			methodsList: $('methods_list'),
+			
+			searchByName: $('search_by_name'),
+			searchByIngreds: $('search_by_ingreds'),
+			searchByIngredsInput: $$('#search_by_ingreds input')[0],
+			searchByIngredsForm: $$('#search_by_ingreds form')[0],
+			searchByLetter: $('search_by_letter'),
+			
+			tagStrengthArea: $('b_search'),
+			mainArea: $('b_content'),
+			
+			searchTabs: $('search_tabs'),
+			ingredsView: $$(".ingreds-list")[0],
+			removeAllIngreds: $$(".ingreds-list .rem")[0],
+			searchesList: $('ingredients_list'),
+			searchTips: $('search_tips'),
+			
+			ingredientsLink: $('all_list'),
+			
+			searchExampleIngredient: $('search_example_ingredient'),
+			searchTipIngredient: $('search_tip_ingredient'),
+			
+			searchExampleName: $('search_example_name'),
+			searchExampleNameEng: $('search_example_name_eng'),
+			searchTipName: $('search_tip_name'),
+			
+			cartEmpty: $('cart_draghere'),
+			cartFull: $('cart_contents'),
+			
+			spotlighted: $('spotlighted')
+		}
 		
-		alphabetRu: $('alphabetical-ru'),
-		lettersAll: $('letters_all'),
+		var styles = {
+			selected: 'selected-button',
+			disabled: 'disabled',
+			point: 'point'
+		}
 		
-		tagsList: $('tags_list'),
-		strengthsList: $('strengths_list'),
-		methodsList: $('methods_list'),
+		var cookies = {
+			filter: 'filters',
+			force: 'force',
+			
+			strengthState: 'strength_state',
+			tagState: 'tag_state',
+			methodState: 'method_state'
+		}
 		
-		searchByName: $('search_by_name'),
-		searchByNameInput: $$('#search_by_name input')[0],
-		searchByLetter: $('search_by_letter'),
-		searchByTags: $('search_by_tags'),
+		var states = {
+			byName:        0,
+			byLetter:      1,
+			byIngredients: 2,
+			
+			defaultState:  0
+		}
 		
-		mainArea: $('b_content'),
-		
-		tabsRoot: $$('#search_tabs')[0],
-		tabs:
-		{
-			byName: $$('.by-name')[0],
-			byLetter: $$('.by-letter')[0],
-			top20: $$('.top-20')[0]
-		},
-		
-		byLetterTab: $$('#search_tabs .by-letter')[0],
-		
-		searchExampleName: $('search_example_name'),
-		searchExampleNameEng: $('search_example_name_eng'),
-		searchTipName: $('search_tip_name'),
-		
-		panels: $('panels'),
-		
-		cartEmpty: $('cart_draghere'),
-		cartFull: $('cart_contents'),
-		
-		spotlighted: $('spotlighted')
+		CocktailsPage.init(states, nodes, styles, cookies)
+		Calculator.init()
 	}
-	
-	var widget = new CocktailsPage(nodes)
-	widget.bind(nodes)
-	
-	Calculator.init()
-}
-
-$.onready(onready)
-
-})();
+)
 
 <!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
 <!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/js/common/switcher.js" -->
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 <!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->
+<!--# include virtual="/js/cocktails/model.js" -->
+<!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
+<!--# include virtual="/js/cocktails/view.js" -->
+<!--# include virtual="/js/cocktails/controller.js" -->

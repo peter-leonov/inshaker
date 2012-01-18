@@ -23,18 +23,16 @@ Tests.test(function (t)
 		t.eq(array.random(array.length).length, array.length, 'full length')
 		t.eq(array.random(array.length + 1).length, array.length, 'greater then length')
 		t.like(array.random(-1), [], 'less then zero')
-		t.eq(array.random(2.5).length, 3, 'float point')
+		t.eq(array.random(2.5).length, 2, 'float point')
 	})
 	
-	function declension (arr, n)
+	function declension (arr, n, repeat)
 	{
-		var repeat = 50000 * n * n
-		
 		var combos = {}
 		for (var i = 0; i < repeat; i++)
 		{
-			var key = arr.random(n).join(',')
-			if (combos[key])
+			var key = arr.slice().random(n).join(', ')
+			if (key in combos)
 				combos[key]++
 			else
 				combos[key] = 1
@@ -55,20 +53,21 @@ Tests.test(function (t)
 	
 	t.test('declensions', function (t)
 	{
-		var arr = [1, 2, 3, 4, 5, 6, 7]
-		
-		function run (i)
-		{
-			t.test('for ' + i, function (t)
-			{
-				var d = declension(arr, i)
-				t.log(d)
-				t.lt(d, 0.01)
-			})
-		}
+		var arr = [1, 2, 3, 4, 5], m = 0.1, count = 10000
 		
 		for (var i = 1; i <= arr.length; i++)
-			run(i)
+		{
+			(function (i) { return function () { // lambda
+			
+			t.test('for ' + i, function (t)
+			{
+				var d = declension(arr, i, count)
+				t.log(d)
+				t.lt(d, m)
+			})
+			
+			} })(i)() // lambda
+		}
 	})
 })
 </script>
