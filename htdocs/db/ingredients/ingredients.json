@@ -4,7 +4,7 @@
 {"brand":"De Kuyper Apricot Brandy","brand_dir":"de-kuyper-apricot-brandy","group":"Ликеры и настойки","mark":"De Kuyper","name":"Абрикосовый ликер","names":["Абрикосовый бренди","Apricot brandy","De Kuyper Apricot Brandy","Де кайпер априкот бренди","Ди кайпер априкот бренди"],"path":"abrikosovyiy-liker","tags":["De Kuyper","Ликер","Любой ингредиент","Фруктовый ликер"],"unit":"л","volumes":[[0.7,1093.0,true]]},
 {"brand":"Monin Apricot","brand_dir":"monin-apricot","group":"Сиропы","mark":"Monin","name":"Абрикосовый сироп","names":["Monin Apricot","Монин Эприкот"],"path":"abrikosovyiy-sirop","tags":["Monin","Любой ингредиент","Сироп","Фруктовый сироп"],"unit":"л","volumes":[[0.7,268.0,true]]},
 {"group":"Соки и морсы","name":"Абрикосовый сок","path":"abrikosovyiy-sok","tags":["Любой ингредиент","Сок","Фруктовый сок"],"unit":"л","volumes":[[1.0,63.0,true]]},
-{"brand":"Xenta","brand_dir":"xenta","group":"Крепкий алкоголь","mark":"Xenta","name":"Абсент","names":["Xenta","Ксента"],"path":"absent","tags":["Xenta","Любой ингредиент"],"unit":"л","volumes":[[0.7,1463.0,true]]},
+{"group":"Крепкий алкоголь","name":"Абсент","path":"absent","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.7,1463.0,true]]},
 {"group":"Фрукты","name":"Авокадо","path":"avokado","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,130.0,true]]},
 {"group":"Фрукты","name":"Айва","path":"ayva","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,150.0,true]]},
 {"brand":"Baileys","brand_dir":"baileys","group":"Ликеры и настойки","mark":"Baileys","name":"Айриш крим","names":["Бейлис","Baileys","Бэйлис"],"path":"ayrish-krim","tags":["Baileys","Любой ингредиент"],"unit":"л","volumes":[[1.0,1375.0,true]]},
