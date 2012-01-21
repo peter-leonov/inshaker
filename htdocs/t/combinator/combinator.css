@@ -9,6 +9,8 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 
 #main-fun-fix { position: absolute; z-index: 5; left: 18px; top: 21px; width: 922px; height: 70px; }
 
+#spotlighted { position: absolute; right: 18px; top: 22px; }
+
 #search-box { position: relative; z-index: 10; width: 810px; top: -3px; }
 #search-box .query { padding: 2px; color: inherit; width: 680px; }
 #search-box .query,

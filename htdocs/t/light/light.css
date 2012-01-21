@@ -101,7 +101,8 @@ html.safari button.rounded b { top: -1px; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
-#spotlighted { position: absolute; background-position: 0px -100px; text-decoration: none; }
+#spotlighted { position: relative; text-decoration: none; }
+#spotlighted i { position: absolute; background-position: 0px -100px; }
 
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
