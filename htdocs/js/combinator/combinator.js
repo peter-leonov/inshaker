@@ -72,7 +72,7 @@ function onready ()
 	var nodes =
 	{
 		output: $('output'),
-		mainFunFix: $('main-fun-fix'),
+		mainFunFix: $('the-main-menu'),
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		stats: $$('#output .result-block .stats')[0],
 		queryInput: $$('#search-box .query')[0],

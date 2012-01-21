@@ -7,8 +7,9 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .common-box .common-title { background: none; z-index: 1; position: relative; }
 #main-column { z-index: 2; }
 
-#main-fun-fix { position: absolute; z-index: 5; left: 0; top: 0; width: 922px; height: 70px; padding: 21px 18px 0 18px; }
-#main-fun-fix.fixed { position: fixed; z-index: 5; }
+#the-main-menu { position: absolute; z-index: 5; left: 0; top: 0; right: 0; }
+#the-main-menu .center { position: relative; width: 922px; height: 60px; padding: 21px 18px 0 18px; margin: 0 auto; background: #fff url(/t/light/content-gradient-v.png) repeat-x; box-shadow: 0 1px 2px 2px #fff; }
+#the-main-menu.fixed { position: fixed; z-index: 5; }
 
 #spotlighted { position: absolute; right: 18px; top: 22px; }
 
@@ -31,7 +32,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #search-box .autocomplete .item .substr { font-weight: bold; }
 #search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 
-#output { padding-top: 80px; position: relative; }
+#output { padding-top: 80px; position: relative; background-image: none; }
 
 #output .empty-block { font-size: 15px; }
 #output .empty-block .share-recipe { font-size: 20px; }

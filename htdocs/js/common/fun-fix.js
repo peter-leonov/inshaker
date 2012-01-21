@@ -8,7 +8,9 @@ Me.prototype =
 	{
 		this.node = node
 		
-		this.top = node.offsetPosition(document.documentElement).top
+		var pos = node.offsetPosition(document.documentElement)
+		this.top = pos.top
+		this.left = pos.left
 	},
 	
 	windowScrolled: function (y)
@@ -21,12 +23,14 @@ Me.prototype =
 		if (far == lastFar)
 			return
 		
+		var node = this.node
+		
 		this.lastFar = far
 		
 		if (!lastFar && far)
-			this.node.addClassName('fixed')
+			node.addClassName('fixed')
 		else if (lastFar && !far)
-			this.node.removeClassName('fixed')
+			node.removeClassName('fixed')
 	}
 }
 
