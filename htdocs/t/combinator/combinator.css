@@ -7,7 +7,8 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .common-box .common-title { background: none; z-index: 1; position: relative; }
 #main-column { z-index: 2; }
 
-#main-fun-fix { position: absolute; z-index: 5; left: 18px; top: 21px; width: 922px; height: 70px; }
+#main-fun-fix { position: absolute; z-index: 5; left: 0; top: 0; width: 922px; height: 70px; padding: 21px 18px 0 18px; }
+#main-fun-fix.fixed { position: fixed; z-index: 5; }
 
 #spotlighted { position: absolute; right: 18px; top: 22px; }
 

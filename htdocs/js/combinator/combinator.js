@@ -48,6 +48,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
+<!--# include virtual="/js/common/fun-fix.js" -->
+
 <!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="ingredients-list.js" -->
 <!--# include virtual="query-parser.js" -->
@@ -70,6 +72,7 @@ function onready ()
 	var nodes =
 	{
 		output: $('output'),
+		mainFunFix: $('main-fun-fix'),
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		stats: $$('#output .result-block .stats')[0],
 		queryInput: $$('#search-box .query')[0],
