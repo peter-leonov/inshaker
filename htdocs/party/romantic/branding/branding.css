@@ -1,0 +1,38 @@
+@media screen {
+
+#top,
+#top .logo,
+#top .link { background-image: url(top.png); }
+
+.cocktail-list .prev,
+.cocktail-list .next,
+.common-share-button i,
+#bottom .alcohol-harm,
+.common-box .common-title,
+.common-box .common-mini,
+.common-box .common-content-gradiented { background-image: url(common.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #8dd013; }
+
+#branded-image { display: none; }
+a { color: #ec118f; }
+#bottom { color: #788894; }
+#bottom a {}
+html { background: #000 url(bg.jpg) center top; color: #000; }
+
+.common-box .common-title { border-color: rgba(255, 250, 250, 0.65); border-bottom-color: #000; }
+.common-box .common-title .common-name { color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
+.common-box .common-mini { color: #fff; border-color: rgba(200, 200, 200, 0.5); text-shadow: 1px 1px 0px #000; }
+.common-box .common-content-plain { background-color: #fff; }
+.common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
+
+} /* @media screen */
+
+
+@media print {
+
+a { color: #ec118f; }
+
+} /* @media print */

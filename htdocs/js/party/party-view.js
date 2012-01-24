@@ -257,8 +257,11 @@ Me.prototype =
 			link.href = cocktail.getPath()
 			name.appendChild(link)
 			
+			var imageBox = Nc('span', 'image-box')
+			link.appendChild(imageBox)
+			
 			var image = Nc('img', 'image')
-			link.appendChild(image)
+			imageBox.appendChild(image)
 			image.src = cocktail.getBigCroppedImageSrc()
 			
 			var count = Nc('div', 'count')
