@@ -4,7 +4,7 @@
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
-#top .link:hover { border-bottom-color: #2f99ff; }
+#top .link:hover { border-bottom-color: #c00; }
 
 /* common.css */
 #spotlighted,
@@ -18,9 +18,9 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 470px; height: 520px; left: 152px; bottom: -710px; }
 #branded-image-holder { height: 900px; }
 a { color: #000; }
-#bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
-#bottom .link { color: #888; }
-html { background: #000 url(bg.jpg) center 20px repeat; }
+#bottom { color: #039; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; }
+#bottom .link { color: #c00; }
+html { background: #fff url(bg.jpg) center 20px repeat; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
@@ -75,4 +75,5 @@ button.strong b { color: #000; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* combinator.css */
-#output .help-line .hint { color: #000; }
+#output .help-line .hint.single { color: #c00; }
+#output .help-line .hint.double { color: #039; }
