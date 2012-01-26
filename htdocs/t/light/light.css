@@ -79,7 +79,8 @@ html.job-section #bottom .link.job,
 html.about-page #bottom .link.about,
 #combinator-page #bottom .main-menu .link.combinator,
 html.party-section #bottom .main-menu .link.party,
-html.blog-section #bottom .main-menu .link.blog
+html.blog-section #bottom .main-menu .link.blog,
+html.cocktail-groups-section #bottom .main-menu .link.cocktail-groups
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 
