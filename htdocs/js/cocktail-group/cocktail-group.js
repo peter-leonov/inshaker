@@ -35,28 +35,32 @@ Me.prototype =
 		inco.wake()
 		
 		var me = this
-		nodes.list.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
+		nodes.root.addEventListener('click', function (e) { me.maybeIngredientClicked(e) }, false)
 	},
 	
 	findIngredientInParents: function (node)
 	{
 		do
 		{
-			var ingredient = node['data-ingredient']
+			var ingredient = node['data-ingredient'] || Ingredient.getByName(node.getAttribute('data-ingredient-name'))
 			if (ingredient)
 				return ingredient
 		}
-		while ((node = node.parentNode))
+		while ((node = node.parentNode) && node != document)
 		
 		return null
 	},
 	
-	maybeIngredientClicked: function (target)
+	maybeIngredientClicked: function (e)
 	{
-		var ingredient = this.findIngredientInParents(target)
+		var target = e.target
 		
-		if (ingredient)
-			this.showIngredient(ingredient)
+		var ingredient = this.findIngredientInParents(target)
+		if (!ingredient)
+			return
+		
+		e.preventDefault()
+		this.showIngredient(ingredient)
 	},
 	
 	showIngredient: function (ingredient)
@@ -94,6 +98,7 @@ function onready ()
 {
 	var nodes =
 	{
+		root: $('main-column'),
 		groupName: $('group-name'),
 		list: $('cocktail-list'),
 		cocktailItems: $$('#cocktail-list li')
