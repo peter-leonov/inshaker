@@ -23,6 +23,8 @@ Me.prototype =
 			cocktails.push(cocktail)
 		}
 		
+		cocktails.sort(Cocktail.complexitySort)
+		
 		var groupName = nodes.groupName.getAttribute('data-name')
 		
 		var inco = new IngredientedCocktailList()
