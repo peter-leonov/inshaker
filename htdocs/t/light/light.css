@@ -51,9 +51,9 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-heigh
 #cocktail-club .border { position: absolute; top: 0; left: 0; right: 0; height: 5px; background-color: #fff; box-shadow: 0 0 25px 1px #000; -moz-box-shadow: 0 0 25px 1px #000; -webkit-box-shadow: 0 0 25px 1px #000; }
 #cocktail-club .imperative { position: relative; z-index: 1; width: 962px; margin: 20px auto 0; font-size: 28px; line-height: 28px; /*letter-spacing: 1px;*/ color: #fff; }
 #cocktail-club .imperative .facebook,
-#cocktail-club .imperative .vkontakte { display: inline-block; vertical-align: baseline; overflow: hidden; text-indent: -200px; background-image: url(/t/cocktail-club/logos.png); }
-#cocktail-club .imperative .facebook { width: 128px; height: 26px; margin-right: -2px; background-position: 0 0; }
-#cocktail-club .imperative .vkontakte { position: relative; top: 4px; width: 152px; height: 28px; background-position: -150px 0; }
+#cocktail-club .imperative .vkontakte { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -200px; background-image: url(/t/cocktail-club/logos.png); }
+#cocktail-club .imperative .facebook { top: 0px; width: 128px; height: 26px; margin-right: -2px; background-position: 0 0; }
+#cocktail-club .imperative .vkontakte { top: 4px; width: 152px; height: 28px; background-position: -150px 0; }
 
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
