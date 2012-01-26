@@ -83,6 +83,7 @@ class CocktailsProcessor < Inshaker::Processor
       flush_groups_and_strengths_and_methods
       flush_json
       flush_links
+      flush_seo
     end
   end
   
@@ -581,6 +582,26 @@ class CocktailsProcessor < Inshaker::Processor
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @cocktails.each do |name, hash|
         links.puts %Q{http://#{Inshaker::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
+      end
+    end
+  end
+  
+  def flush_seo
+    tags = {
+      "Алкогольные" => ["alkogolnye-kokteyli", "Алкогольный коктейль"]
+    }
+    
+    tags.each do |k, v|
+      cocktails = Cocktail.get_by_tag(k)
+      cocktails.sort! { |a, b| a["ingredients"].length - b["ingredients"].length }
+      dir, prefix = v
+      path = Config::SEO_GROUPS_PATH % dir
+      
+      File.open(path, "w+") do |list|
+        cocktails.each do |c|
+          ingredients = c["ingredients"].map { |e| e[0] }
+          list.puts %Q{<li data-cocktail="#{c["name"]}"><a href="/cocktail/#{c["name_eng"].dirify}/">#{prefix} «#{c["name"]}»</a> = #{ingredients.join(" + ")}</li>}
+        end
       end
     end
   end
