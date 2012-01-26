@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/cocktail/trendy_breeze/'
+var link = '/cocktail/gin_tonic/'
 
 Me.initialize
 ({
