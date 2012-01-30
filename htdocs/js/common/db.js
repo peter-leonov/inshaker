@@ -193,6 +193,10 @@ Me.module.staticMethods =
 {
 	bindPrepare: function (name, prepare)
 	{
+		if (prepare.alreadyFoundAndBind)
+			return
+		prepare.alreadyFoundAndBind = true
+		
 		var real = this[name]
 		this[name] = function ()
 		{

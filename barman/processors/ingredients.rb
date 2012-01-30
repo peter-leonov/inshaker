@@ -217,6 +217,24 @@ class IngredientsProcessor < Inshaker::Processor
     good_tags = good["tags"] = []
     tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
     tags << "любой ингредиент"
+    
+    if brand
+      good[:brand] = brand
+      good[:brand_dir] = brand.dirify
+      
+      if about["Марка"]
+        if @marks[about["Марка"]]
+          good[:mark] = about["Марка"]
+          tags << good[:mark]
+        else
+          error "нет такой марки «#{about["Марка"]}»"
+        end
+      else
+        error "не указана марка (бренд «#{brand}»)"
+      end
+    end
+    
+    
     tags.each do |tag_candidate|
       tag = @tags_ci[tag_candidate.ci_index]
       unless tag
@@ -226,20 +244,7 @@ class IngredientsProcessor < Inshaker::Processor
       good_tags << tag
     end
     
-    if brand
-      good[:brand] = brand
-      good[:brand_dir] = brand.dirify
-      
-      if about["Марка"]
-        if @marks[about["Марка"]]
-          good[:mark] = about["Марка"]
-        else
-          error "нет такой марки «#{about["Марка"]}»"
-        end
-      else
-        error "не указана марка (бренд «#{brand}»)"
-      end
-    end
+    good_tags.sort!
     
     if about["Тара"] and about["Тара"].length > 0
       volumes = []
