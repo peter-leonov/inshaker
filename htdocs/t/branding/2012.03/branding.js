@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/cocktail/gin_tonic/'
+var link = '/cocktail/martini_royale/'
 
 Me.initialize
 ({
