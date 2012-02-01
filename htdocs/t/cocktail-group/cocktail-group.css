@@ -1,3 +1,5 @@
+html { overflow-y: scroll; }
+
 #main-column { font-size: 14px; }
 #main-column .title h1 { display: inline; }
 #main-column .about { line-height: 20px; }
