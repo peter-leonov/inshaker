@@ -2,6 +2,8 @@
 #main-column .title h1 { display: inline; }
 #main-column .about { line-height: 20px; }
 
+#branded-image-holder { display: none; }
+
 html.loading #cocktail-list { display: none; }
 #cocktail-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }
 
