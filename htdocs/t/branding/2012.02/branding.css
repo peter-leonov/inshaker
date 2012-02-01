@@ -77,3 +77,7 @@ button.strong b { color: #000; }
 /* combinator.css */
 #output .help-line .hint.single { color: #c00; }
 #output .help-line .hint.double { color: #039; }
+
+/* cocktail-group.css */
+
+#cocktail-group-page #main-column .about a { color: #c00; }
