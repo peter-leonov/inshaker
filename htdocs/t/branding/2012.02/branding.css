@@ -80,4 +80,5 @@ button.strong b { color: #000; }
 
 /* cocktail-group.css */
 
+#cocktail-groups-page #main-column a,
 #cocktail-group-page #main-column .about a { color: #c00; }
