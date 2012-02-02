@@ -46,6 +46,12 @@ body{position:relative;min-height:100%;padding:0;}
 #cocktail-club .imperative .vkontakte { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -200px; background-image: url(/t/cocktail-club/logos.png); }
 #cocktail-club .imperative .facebook { top: 0px; width: 128px; height: 26px; margin-right: -2px; background-position: 0 0; }
 #cocktail-club .imperative .vkontakte { top: 4px; width: 152px; height: 28px; background-position: -150px 0; }
+#cocktail-club .imperative .facebook .link,
+#cocktail-club .imperative .vkontakte .link { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -1000px; background: url(/t/cocktail-club/logos.png) no-repeat; }
+#cocktail-club .imperative .facebook .link { top: -5px; width: 135px; height: 33px; margin: 0 -4px 0 -5px; background-position: 0 0; }
+#cocktail-club .imperative .vkontakte .link { top: -1px; width: 159px; height: 35px; margin: 0 -4px 0 -3px; background-position: -150px 0; }
+#cocktail-club .imperative .facebook .link:hover { background-position: 0 -50px; }
+#cocktail-club .imperative .vkontakte .link:hover { background-position: -150px -50px; }
 
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
