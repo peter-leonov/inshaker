@@ -21,6 +21,8 @@ body{position:relative;min-height:100%;padding:0;}
 
 @media screen {
 
+body { min-width: 985px; }
+
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
 #top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
