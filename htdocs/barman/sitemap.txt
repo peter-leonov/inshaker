@@ -16,7 +16,6 @@ http://www.inshaker.ru/barman/anton-pokozy/
 http://www.inshaker.ru/barman/aristotelis-papadopoulos/
 http://www.inshaker.ru/barman/arno-van-eijmeren/
 http://www.inshaker.ru/barman/artem-emelshin/
-http://www.inshaker.ru/barman/artem-sidorenko/
 http://www.inshaker.ru/barman/artem-shahmetov/
 http://www.inshaker.ru/barman/artur-arutynian/
 http://www.inshaker.ru/barman/artur-balayan/
@@ -59,6 +58,7 @@ http://www.inshaker.ru/barman/ricardo-albrecht/
 http://www.inshaker.ru/barman/ricardo-sporksled/
 http://www.inshaker.ru/barman/roman-milostivy/
 http://www.inshaker.ru/barman/roman-toroshin/
+http://www.inshaker.ru/barman/ruslan-fernandez/
 http://www.inshaker.ru/barman/rustam-nigmatzianov/
 http://www.inshaker.ru/barman/salvatore-calabrese/
 http://www.inshaker.ru/barman/sasha-petraske/
