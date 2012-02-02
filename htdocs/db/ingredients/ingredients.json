@@ -167,7 +167,7 @@
 {"group":"Ягоды","name":"Калина","path":"kalina","tags":["Любой ингредиент","Ягоды"],"unit":"г","volumes":[[50.0,20.0,true]]},
 {"brand":"Pere Magloire","brand_dir":"pere-magloire","group":"Крепкий алкоголь","mark":"Pere Magloire","name":"Кальвадос","names":["Pere Magloire"],"path":"kalvados","tags":["Pere Magloire","Любой ингредиент"],"unit":"л","volumes":[[0.7,1986.0,true]]},
 {"group":"Ликеры и настойки","name":"Кампари","names":["Campari","Красный биттер"],"path":"kampari","tags":["Любой ингредиент"],"unit":"л","volumes":[[1.0,1092.0,true]]},
-{"group":"Фрукты","name":"Карамбола","path":"karambola","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,725.0,true]]},
+{"group":"Фрукты","name":"Карамбола","path":"karambola","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[100.0,70.0,true]]},
 {"brand":"Monin Caramel","brand_dir":"monin-caramel","group":"Сиропы","mark":"Monin","name":"Карамельный сироп","names":["Монин Карамель","Monin Caramel"],"path":"karamelnyiy-sirop","tags":["Monin","Любой ингредиент","Сироп"],"unit":"л","volumes":[[1.0,303.0,true]]},
 {"group":"Специи и пряности","name":"Кардамон","path":"kardamon","tags":["Любой ингредиент"],"unit":"г","volumes":[[10.0,36.0,true]]},
 {"group":"Чай и кофе","name":"Каркаде","names":["Гибискус сушеный","Суданская роза"],"path":"karkade","tags":["Любой ингредиент","Сироп"],"unit":"г","volumes":[[50.0,43.0,true]]},
