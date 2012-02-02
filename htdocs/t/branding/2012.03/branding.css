@@ -20,7 +20,7 @@ button.rounded { background-repeat: no-repeat; background-image: url(common.png)
 a { color: #000; }
 #bottom { color: #444; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
 #bottom .link { color: #c00; }
-html { background-color: #555; } /* fixes centered body bg */
+html { background-color: #ccc; } /* fixes centered body bg */
 body { background: #000 url(bg.jpg) center 20px repeat; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
