@@ -17,11 +17,11 @@ table{border:0;border-collapse:collapse;}
 table td{padding:0;}
 .to-print{display:none;}
 html{font:10px Tahoma,Arial,sans-serif;}
-body{position:relative;min-height:100%;padding:0;}
 
 @media screen {
 
-body { min-width: 985px; }
+html { overflow-y: scroll; height: 100%; }
+body { min-width: 985px; position: relative; min-height: 100%; }
 
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
