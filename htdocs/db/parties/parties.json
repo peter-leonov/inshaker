@@ -2,5 +2,6 @@
 {"name": "Дегустация очень страшного пунша", "path": "halloween-xenta", "portions": [{"cocktail": "Очень страшный пунш", "factor": 0.2}], "people": 10},
 {"name": "Коктейльный Новый Год", "path": "new-year", "portions": [{"cocktail": "Ананасовый новогодний пунш", "factor": 0.2}], "people": 10, "goods": [["Мишура",1,3],["Хлопушка",0.5,1],["Бенгальские огни",1,1]]},
 {"name": "Мафия", "path": "mafia", "portions": [{"cocktail": "Спайс энд айс", "factor": 3}], "people": 10, "goods": [["Карты для игры в Мафию",1,3]]},
-{"name": "Романтическая", "path": "romantic", "portions": [{"cocktail": "Розовый ром", "factor": 3}, {"cocktail": "Фрамбуэза", "factor": 3}], "goods": [["Ароматические палочки",4,3], ["Ароматические свечи",1,3]], "people": 2}
+{"name": "Романтическая", "path": "romantic", "portions": [{"cocktail": "Розовый ром", "factor": 3}, {"cocktail": "Фрамбуэза", "factor": 3}], "goods": [["Ароматические палочки",4,3], ["Ароматические свечи",1,3]], "people": 2},
+{"name": "Свой клуб", "path": "private-club", "portions": [{"cocktail": "Куба либре", "factor": 5}], "goods": [["Дискобол",1,3]], "people": 10}
 ]
