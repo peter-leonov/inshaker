@@ -15,12 +15,13 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted { width: 90px; height: 30px; right: -3px; top: -6px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 530px; left: 149px; bottom: -700px; }
-#branded-image-holder { height: 900px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 530px; left: 147px; bottom: -700px; }
+#branded-image-holder { height: 970px; }
 a { color: #000; }
 #bottom { color: #039; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; }
 #bottom .link { color: #c00; }
-html { background: #fff url(bg.jpg) center 20px repeat; }
+html { background-color: #555; } /* fixes centered body bg */
+body { background: #fff url(bg.jpg) center 20px repeat; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
