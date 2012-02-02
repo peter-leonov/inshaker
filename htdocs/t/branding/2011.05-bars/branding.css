@@ -18,7 +18,7 @@ button.rounded,
 html.msie-6 #spotlighted { width: 45px; height: 43px; right: 6px; top: 6px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 440px; height: 670px; top: 30px; left: 110px; }
-#branded-image-holder { height: 895px; position: absolute; top: 85px; bottom: auto; }
+#branded-image-holder { height: 955px; position: absolute; top: 85px; bottom: auto; }
 html.msie-6 #branded-image-holder { position: absolute !important; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
