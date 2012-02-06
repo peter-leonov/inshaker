@@ -592,7 +592,6 @@ http://www.inshaker.ru/cocktail/martini_fizz/
 http://www.inshaker.ru/cocktail/mask_of_evil/
 http://www.inshaker.ru/cocktail/master_and_margarita/
 http://www.inshaker.ru/cocktail/matador/
-http://www.inshaker.ru/cocktail/magic_star/
 http://www.inshaker.ru/cocktail/honey_lollipop/
 http://www.inshaker.ru/cocktail/honey_versailles/
 http://www.inshaker.ru/cocktail/honey_cosmo-tini/
