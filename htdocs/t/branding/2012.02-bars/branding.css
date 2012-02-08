@@ -88,7 +88,8 @@ button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }
 #sort-menu .bars-select dd ul li.selected,
 #sort-menu .bars-select dd ul li:hover { color: #d33; }
 #map .point .icon,
-#map .position-control { background-image: url(bars-common.png); }
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
 #map .point .title { color: #fff; }
 #map .point .point-name { color: #d33; }
 #map .point.selected .point-name { color: #e64518; }
