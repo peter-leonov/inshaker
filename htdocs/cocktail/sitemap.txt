@@ -242,6 +242,7 @@ http://www.inshaker.ru/cocktail/bitter_pill/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony_2/
 http://www.inshaker.ru/cocktail/hot_gold/
+http://www.inshaker.ru/cocktail/hot_gold_in_a_french-press/
 http://www.inshaker.ru/cocktail/hot_apple/
 http://www.inshaker.ru/cocktail/hot_orange/
 http://www.inshaker.ru/cocktail/hot_and_spicy/
@@ -565,6 +566,7 @@ http://www.inshaker.ru/cocktail/mango_cobler_317/
 http://www.inshaker.ru/cocktail/mango_rum_collins/
 http://www.inshaker.ru/cocktail/mango_sling/
 http://www.inshaker.ru/cocktail/mango_milkshake_with_ryazhenka/
+http://www.inshaker.ru/cocktail/mandarin_tini/
 http://www.inshaker.ru/cocktail/mandarin_shot/
 http://www.inshaker.ru/cocktail/mandrin_diva/
 http://www.inshaker.ru/cocktail/mandarin_margarita/

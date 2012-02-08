@@ -263,7 +263,7 @@
 {"group":"Ягоды","name":"Малина","path":"malina","tags":["Любой ингредиент","Ягоды"],"unit":"г","volumes":[[150.0,350.0,true]]},
 {"group":"Мёд, варенье, джемы","name":"Малиновый джем","path":"malinovyiy-dzhem","tags":["Джем","Любой ингредиент"],"unit":"г","volumes":[[340.0,79.0,true]]},
 {"brand":"De Kuyper Raspberry","brand_dir":"de-kuyper-raspberry","group":"Ликеры и настойки","mark":"De Kuyper","name":"Малиновый ликер","names":["De Kuyper Raspberry","Де кайпер распберри","Ди кайпер распберри","Де кайпер малиновый","Ди кайпер малиновый"],"path":"malinovyiy-liker","tags":["De Kuyper","Ликер","Любой ингредиент","Ягодный ликер"],"unit":"л","volumes":[[0.7,1132.0,true]]},
-{"brand":"Monin Framboise","brand_dir":"monin-framboise","group":"Сиропы","mark":"Monin","name":"Малиновый сироп","names":["Monin Framboise","Монин Фрамбоиз"],"path":"malinovyiy-sirop","tags":["Monin","Любой ингредиент","Сироп","Ягодный сироп"],"unit":"л","volumes":[[0.7,875.0,true]]},
+{"brand":"Monin Framboise","brand_dir":"monin-framboise","group":"Сиропы","mark":"Monin","name":"Малиновый сироп","names":["Monin Framboise","Монин Фрамбоиз"],"path":"malinovyiy-sirop","tags":["Monin","Любой ингредиент","Сироп","Ягодный сироп"],"unit":"л","volumes":[[1.0,386.0,true]]},
 {"group":"Фрукты","name":"Манго","path":"mango","tags":["Любой ингредиент"],"unit":"г","volumes":[[500.0,99.0,true]]},
 {"group":"Соки и морсы","name":"Манговый сок","path":"mangovyiy-sok","tags":["Любой ингредиент","Сок","Фруктовый сок"],"unit":"л","volumes":[[1.0,77.0,true]]},
 {"group":"Фрукты","name":"Мандарин","path":"mandarin","tags":["Любой ингредиент","Фрукты","Цитрусовые"],"unit":"г","volumes":[[1000.0,87.0,true]]},
