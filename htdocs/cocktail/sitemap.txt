@@ -188,6 +188,7 @@ http://www.inshaker.ru/cocktail/cherry_liqueur_and_grapefruit/
 http://www.inshaker.ru/cocktail/cherry_sour/
 http://www.inshaker.ru/cocktail/cherry_and_cherry/
 http://www.inshaker.ru/cocktail/vaudeville/
+http://www.inshaker.ru/cocktail/vodka_absolut/
 http://www.inshaker.ru/cocktail/vodka_bitter_honey/
 http://www.inshaker.ru/cocktail/vodka_vanilla_cranberries/
 http://www.inshaker.ru/cocktail/vodka_vanilla_apple/
