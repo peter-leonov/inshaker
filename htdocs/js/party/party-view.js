@@ -86,8 +86,14 @@ Me.prototype =
 		var me = this, count = 0
 		function onload ()
 		{
-			if (++count == images.length)
-				me.bindWindow()
+			count++
+			
+			nodes.bar.style.width = Math.ceil(count / images.length * 100) + '%'
+			
+			if (count < images.length)
+				return
+			
+			me.bindWindow()
 		}
 		
 		for (var i = 0, il = images.length; i < il; i++)

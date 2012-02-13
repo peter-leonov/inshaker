@@ -28,7 +28,8 @@ function onready ()
 		{
 			root: $$('#window')[0],
 			layers: $$('#window .layer'),
-			images: $$('#window .layer .image')
+			images: $$('#window .layer .image'),
+			bar: $$('#window .stub .label .bar')[0]
 		},
 		recipeList: $$('#recipe-list')[0],
 		purchasePlan: $$('#purchase-plan')[0],
