@@ -1,12 +1,14 @@
 [
 {
 	"name": "Дегустация очень страшного пунша",
+	"imperative": "Устрой дегустацию очень страшного пунша",
 	"path": "halloween-xenta",
 	"portions": [{"cocktail": "Очень страшный пунш", "factor": 0.2}],
 	"people": 10
 },
 {
 	"name": "Коктейльный Новый Год",
+	"imperative": "Устрой коктейльный Новый Год!",
 	"path": "new-year",
 	"portions": [{"cocktail": "Ананасовый новогодний пунш", "factor": 0.2}],
 	"people": 10,
@@ -14,6 +16,7 @@
 },
 {
 	"name": "Мафия",
+	"imperative": "Сыграй с друзьями в мафию!",
 	"path": "mafia",
 	"portions": [{"cocktail": "Спайс энд айс", "factor": 3}],
 	"people": 10,
@@ -21,6 +24,7 @@
 },
 {
 	"name": "Романтическая",
+	"imperative": "Устрой романтическую дегустацию!",
 	"path": "romantic",
 	"portions": [{"cocktail": "Розовый ром", "factor": 3},
 	{"cocktail": "Фрамбуэза", "factor": 3}],
@@ -29,6 +33,7 @@
 },
 {
 	"name": "Свой клуб",
+	"imperative": "Открой свой клуб на одну ночь!",
 	"path": "private-club",
 	"portions": [{"cocktail": "Куба либре", "factor": 5}],
 	"goods": [["Дискобол",1,3]],
@@ -36,6 +41,7 @@
 },
 {
 	"name": "Камин",
+	"imperative": "Проведи теплый вечер у камина!",
 	"path": "fireplace",
 	"portions": [{"cocktail": "Тодди грог", "factor": 3}],
 	"people": 4
