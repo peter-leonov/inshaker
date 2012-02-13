@@ -214,6 +214,8 @@ body,
 
 } /* @media print */
 
+<!--# include virtual="/t/parties/party-list.css" -->
+
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
 
