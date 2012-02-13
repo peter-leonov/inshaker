@@ -152,7 +152,7 @@ body,
 
 #party-name { font-size: 25px; width: 730px; }
 
-#recipes-box { margin-bottom: 50px; }
+#recipes-box { margin-bottom: 50px; overflow: hidden; }
 
 #recipe-list .recipe { margin: 30px 0; }
 #recipe-list .recipe .name { font-size: 20px; }
