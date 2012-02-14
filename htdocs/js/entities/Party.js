@@ -3,10 +3,12 @@
 function Me (data)
 {
 	this.name = data.name
+	this.imperative = data.imperative
 	this.path = data.path
 	this.portions = data.portions
 	this.people = data.people
 	this.goods = data.goods || []
+	this.hidden = data.hidden
 }
 
 Me.staticMethods =
@@ -25,6 +27,19 @@ Me.staticMethods =
 	getByName: function (name)
 	{
 		return this.bake(this.index.byName[name])
+	},
+	
+	getRandomPartiesIterator: function ()
+	{
+		var me = this
+		
+		var arr = this.db.slice()
+		function iterator (n)
+		{
+			return me.bakeAry(arr.fetchRandom(n))
+		}
+		
+		return iterator
 	}
 }
 
@@ -32,7 +47,18 @@ Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
 Me.findAndBindPrepares()
 
-Me.prototype = {}
+Me.prototype =
+{
+	getPath: function ()
+	{
+		return '/party/' + this.path + '/'
+	},
+	
+	getPreviewImage: function ()
+	{
+		return this.getPath() + '/preview.jpg'
+	}
+}
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
 

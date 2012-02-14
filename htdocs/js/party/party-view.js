@@ -86,8 +86,14 @@ Me.prototype =
 		var me = this, count = 0
 		function onload ()
 		{
-			if (++count == images.length)
-				me.bindWindow()
+			count++
+			
+			nodes.bar.style.width = Math.ceil(count / images.length * 100) + '%'
+			
+			if (count < images.length)
+				return
+			
+			me.bindWindow()
 		}
 		
 		for (var i = 0, il = images.length; i < il; i++)
@@ -257,8 +263,11 @@ Me.prototype =
 			link.href = cocktail.getPath()
 			name.appendChild(link)
 			
+			var imageBox = Nc('span', 'image-box')
+			link.appendChild(imageBox)
+			
 			var image = Nc('img', 'image')
-			link.appendChild(image)
+			imageBox.appendChild(image)
 			image.src = cocktail.getBigCroppedImageSrc()
 			
 			var count = Nc('div', 'count')
@@ -536,6 +545,29 @@ Me.prototype =
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')
 		this.controller.partyNameGuessed(name)
+	},
+	
+	renderPartyList: function (parties)
+	{
+		var list = this.nodes.partyList
+		
+		list.empty()
+		
+		for (var i = 0, il = parties.length; i < il; i++)
+		{
+			var party = parties[i]
+			
+			var item = Nc('li', 'item')
+			list.appendChild(item)
+			
+			var link = Nc('a', 'party')
+			item.appendChild(link)
+			link.href = party.getPath()
+			link.style.backgroundImage = 'url(' + party.getPreviewImage() + ')'
+			
+			var name = Nct('span', 'name', party.imperative)
+			link.appendChild(name)
+		}
 	}
 }
 

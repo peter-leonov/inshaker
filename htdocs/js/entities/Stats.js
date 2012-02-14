@@ -11,7 +11,6 @@ Me =
 	getList: function ()
 	{
 		var periods = Object.keys(this.db)
-		periods.sort()
 		return periods
 	},
 	
