@@ -27,6 +27,19 @@ Me.staticMethods =
 	getByName: function (name)
 	{
 		return this.bake(this.index.byName[name])
+	},
+	
+	getRandomPartiesIterator: function ()
+	{
+		var me = this
+		
+		var arr = this.db.slice()
+		function iterator (n)
+		{
+			return me.bakeAry(arr.fetchRandom(n))
+		}
+		
+		return iterator
 	}
 }
 
