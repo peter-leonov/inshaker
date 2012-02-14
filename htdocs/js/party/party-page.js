@@ -71,7 +71,9 @@ function onready ()
 			buttons: $$('#links-box .share-box .button')
 		},
 		
-		printButton: $$('#links-box .print-box .print-page')[0]
+		printButton: $$('#links-box .print-box .print-page')[0],
+		
+		partyList: $$('#party-list')[0]
 	}
 	
 	RoundedCorners.round(nodes.window.root)

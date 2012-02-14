@@ -47,7 +47,18 @@ Object.extend(Me, DB.module.staticMethods)
 Object.extend(Me, Me.staticMethods)
 Me.findAndBindPrepares()
 
-Me.prototype = {}
+Me.prototype =
+{
+	getPath: function ()
+	{
+		return '/party/' + this.path + '/'
+	},
+	
+	getPreviewImage: function ()
+	{
+		return this.getPath() + '/preview.jpg'
+	}
+}
 
 Me.initialize(<!--# include file="/db/parties/parties.json" -->)
 

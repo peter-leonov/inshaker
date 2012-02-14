@@ -545,6 +545,29 @@ Me.prototype =
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')
 		this.controller.partyNameGuessed(name)
+	},
+	
+	renderPartyList: function (parties)
+	{
+		var list = this.nodes.partyList
+		
+		list.empty()
+		
+		for (var i = 0, il = parties.length; i < il; i++)
+		{
+			var party = parties[i]
+			
+			var item = Nc('li', 'item')
+			list.appendChild(item)
+			
+			var link = Nc('a', 'party')
+			item.appendChild(link)
+			link.href = party.getPath()
+			link.style.backgroundImage = 'url(' + party.getPreviewImage() + ')'
+			
+			var name = Nct('span', 'name', party.imperative)
+			link.appendChild(name)
+		}
 	}
 }
 
