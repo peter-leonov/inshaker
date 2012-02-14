@@ -3,10 +3,12 @@
 function Me (data)
 {
 	this.name = data.name
+	this.imperative = data.imperative
 	this.path = data.path
 	this.portions = data.portions
 	this.people = data.people
 	this.goods = data.goods || []
+	this.hidden = data.hidden
 }
 
 Me.staticMethods =
