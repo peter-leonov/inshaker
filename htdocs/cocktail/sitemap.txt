@@ -218,6 +218,7 @@ http://www.inshaker.ru/cocktail/galliano_hot_shot/
 http://www.inshaker.ru/cocktail/garibaldi/
 http://www.inshaker.ru/cocktail/geisha_martini/
 http://www.inshaker.ru/cocktail/gimlet/
+http://www.inshaker.ru/cocktail/gimlet_2/
 http://www.inshaker.ru/cocktail/mulled_wine/
 http://www.inshaker.ru/cocktail/mulled_wine_5_stars/
 http://www.inshaker.ru/cocktail/mulled_wine_cardinal/

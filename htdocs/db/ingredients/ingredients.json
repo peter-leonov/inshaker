@@ -230,6 +230,7 @@
 {"group":"Орехи и сухофрукты","name":"Курага","path":"kuraga","tags":["Любой ингредиент","Сухофрукты"],"unit":"г","volumes":[[200.0,112.0,true]]},
 {"group":"Травы и цветы","name":"Лаванда","path":"lavanda","tags":["Любой ингредиент"],"unit":"г","volumes":[[100.0,180.0,true]]},
 {"group":"Фрукты","name":"Лайм","path":"laym","tags":["Любой ингредиент","Фрукты","Цитрусовые"],"unit":"г","volumes":[[1000.0,193.0,true]]},
+{"brand":"Monin Lime juice cordial","brand_dir":"monin-lime-juice-cordial","group":"Сиропы","mark":"Monin","name":"Лаймовый кордиал","names":["Monin Lime juice cordial","Монин Лайм джус кордиал","Лайм джус кордиал"],"path":"laymovyiy-kordial","tags":["Monin","Любой ингредиент","Сироп"],"unit":"л","volumes":[[1.0,310.0,true]]},
 {"brand":"Monin Citron Vert","brand_dir":"monin-citron-vert","group":"Сиропы","mark":"Monin","name":"Лаймовый сироп","names":["Monin Citron Vert","Монин Цитрон Верт"],"path":"laymovyiy-sirop","tags":["Monin","Любой ингредиент","Сироп"],"unit":"л","volumes":[[0.7,469.0,true]]},
 {"group":"Лед","name":"Лед в кубиках","path":"led-v-kubikah","tags":["Лед","Любой ингредиент"],"unit":"г","volumes":[[1000.0,30.0,true]]},
 {"group":"Лед","name":"Лед дробленый","path":"led-droblenyiy","tags":["Лед","Любой ингредиент"],"unit":"г","volumes":[[1000.0,30.0,true]]},
