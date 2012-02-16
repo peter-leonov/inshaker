@@ -31,12 +31,18 @@ Me.prototype =
 			if (this.y > this.top)
 				return this.switchState('down')
 		},
+		up_to_initial: function ()
+		{
+			this.node.style.top = 0
+		},
+		
 		
 		down: function ()
 		{
 			if (this.y < this.lastY)
 				return this.switchState('up')
 		},
+		
 		
 		up: function ()
 		{
@@ -45,12 +51,24 @@ Me.prototype =
 			
 			if (this.y > this.lastY)
 				return this.switchState('down')
+			
+			
+		},
+		down_to_up: function ()
+		{
+			this.node.style.top = this.lastY - this.height - this.top + 'px'
 		}
 	},
 	
 	switchState: function (name)
 	{
-		log(this.state.stateName + ' -> ' + name)
+		var transition = this.states[this.state.stateName + '_to_' + name]
+		if (transition)
+		{
+			log(this.state.stateName + ' -> ' + name)
+			transition.call(this)
+		}
+		
 		this.state = this.states[name]
 		log(this.state.stateName + '?')
 		if (this.state() !== false)
