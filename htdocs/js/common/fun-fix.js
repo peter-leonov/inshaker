@@ -48,6 +48,7 @@ Me.prototype =
 			this.node.style.top = this.lastY + 'px'
 		},
 		
+		
 		up: function ()
 		{
 			if (this.y <= 0)
@@ -56,13 +57,13 @@ Me.prototype =
 			if (this.y > this.lastY)
 				return this.switchState('down')
 			
-			if (this.lastTop - this.y > this.offsetHeight)
+			if (this.top >= this.y)
 				return this.switchState('fixed')
 		},
 		down_to_up: function ()
 		{
-			this.lastTop = this.lastY
-			this.node.style.top = this.lastY - this.offsetHeight + 'px'
+			this.top = this.lastY - this.offsetHeight
+			this.node.style.top = this.top + 'px'
 		},
 		
 		
