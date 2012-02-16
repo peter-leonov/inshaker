@@ -17,6 +17,7 @@ Me.prototype =
 		var pos = node.offsetPosition(document.documentElement)
 		this.offsetTop = pos.top
 		this.offsetHeight = node.offsetHeight
+		this.top = 0
 	},
 	
 	states:
@@ -41,6 +42,14 @@ Me.prototype =
 		{
 			if (this.y < this.lastY)
 				return this.switchState('up')
+			
+			if (this.top + this.offsetHeight < this.y)
+				return this.switchState('hidden')
+		},
+		fixed_to_down: function ()
+		{
+			this.node.removeClassName('fixed')
+			this.node.style.top = this.lastY + 'px'
 		},
 		fixed_to_down: function ()
 		{
@@ -48,6 +57,12 @@ Me.prototype =
 			this.node.style.top = this.lastY + 'px'
 		},
 		
+		
+		hidden: function ()
+		{
+			if (this.y < this.lastY)
+				return this.switchState('up')
+		},
 		
 		up: function ()
 		{
@@ -60,7 +75,7 @@ Me.prototype =
 			if (this.top >= this.y)
 				return this.switchState('fixed')
 		},
-		down_to_up: function ()
+		hidden_to_up: function ()
 		{
 			this.top = this.lastY - this.offsetHeight
 			this.node.style.top = this.top + 'px'
