@@ -6,6 +6,11 @@ function Me ()
 	this.height = 0
 	this.y = 0
 	this.dy = 0
+	
+	for (var k in this.states)
+		this.states[k].stateName = k
+	
+	this.state = this.states.initial
 }
 
 Me.prototype =
@@ -19,7 +24,51 @@ Me.prototype =
 		this.height = node.offsetHeight
 	},
 	
+	states:
+	{
+		initial: function ()
+		{
+			if (this.y > this.top)
+				return this.switchState('down')
+		},
+		
+		down: function ()
+		{
+			if (this.y < this.lastY)
+				return this.switchState('up')
+		},
+		
+		up: function ()
+		{
+			if (this.y < this.top)
+				return this.switchState('initial')
+			
+			if (this.y > this.lastY)
+				return this.switchState('down')
+		}
+	},
+	
+	switchState: function (name)
+	{
+		log(this.state.stateName + ' -> ' + name)
+		this.state = this.states[name]
+		log(this.state.stateName + '?')
+		if (this.state() !== false)
+			log(this.state.stateName + '!')
+		
+		return false
+	},
+	
 	windowScrolled: function (y)
+	{
+		this.y = y
+		log(this.state.stateName + '?')
+		if (this.state() !== false)
+			log(this.state.stateName + '!')
+		this.lastY = y
+	},
+	
+	windowScrolled1: function (y)
 	{
 		var far = y > this.top
 		
