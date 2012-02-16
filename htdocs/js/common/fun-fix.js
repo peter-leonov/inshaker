@@ -101,15 +101,16 @@ Me.prototype =
 		var transition = this.states[this.state.stateName + '_to_' + name]
 		if (transition)
 		{
-			log(this.state.stateName + ' -> ' + name)
+			// log(this.state.stateName + ' -> ' + name)
 			transition.call(this)
 		}
 		
 		this.state = this.states[name]
-		log(this.state.stateName + '?')
+		// log(this.state.stateName + '?')
 		if (this.state() !== false)
-			log(this.state.stateName + '!')
-		
+		{
+			// log(this.state.stateName + '!')
+		}
 		return false
 	},
 	
@@ -117,9 +118,11 @@ Me.prototype =
 	{
 		y -= this.offsetTop
 		this.y = y
-		log(this.state.stateName + '?')
+		// log(this.state.stateName + '?')
 		if (this.state() !== false)
-			log(this.state.stateName + '!')
+		{
+			// log(this.state.stateName + '!')
+		}
 		this.lastY = y
 	}
 }
