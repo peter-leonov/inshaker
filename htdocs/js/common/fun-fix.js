@@ -105,11 +105,14 @@ Me.prototype =
 			transition.call(this)
 		}
 		
+		this.node.removeClassName('state-' + this.state.stateName)
+		
 		this.state = this.states[name]
 		// log(this.state.stateName + '?')
 		if (this.state() !== false)
 		{
 			// log(this.state.stateName + '!')
+			this.node.addClassName('state-' + this.state.stateName)
 		}
 		return false
 	},
