@@ -51,11 +51,6 @@ Me.prototype =
 			this.node.removeClassName('fixed')
 			this.node.style.top = this.lastY + 'px'
 		},
-		fixed_to_down: function ()
-		{
-			this.node.removeClassName('fixed')
-			this.node.style.top = this.lastY + 'px'
-		},
 		
 		
 		hidden: function ()
