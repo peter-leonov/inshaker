@@ -29,12 +29,14 @@ Me.prototype =
 		},
 		up_to_initial: function ()
 		{
-			this.node.style.top = 0
+			this.top = 0
+			this.node.style.top = this.top + 'px'
 		},
 		fixed_to_initial: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.node.style.top = 0
+			this.top = 0
+			this.node.style.top = this.top + 'px'
 		},
 		
 		
@@ -49,7 +51,8 @@ Me.prototype =
 		fixed_to_down: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.node.style.top = this.lastY + 'px'
+			this.top = this.lastY
+			this.node.style.top = this.top + 'px'
 		},
 		
 		
@@ -87,7 +90,8 @@ Me.prototype =
 		},
 		up_to_fixed: function ()
 		{
-			this.node.style.top = 0
+			this.top = 0
+			this.node.style.top = this.top + 'px'
 			this.node.addClassName('fixed')
 		}
 	},
