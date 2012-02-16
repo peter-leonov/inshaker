@@ -8,6 +8,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #main-column { z-index: 2; }
 
 #the-main-menu { position: absolute; z-index: 5; left: 0; top: 0; right: 0; }
+#the-main-menu.state-up { border-top: 10px solid #ccc; margin-top: -10px; }
 #the-main-menu .center { position: relative; width: 922px; height: 60px; padding: 21px 18px 0 18px; margin: 0 auto; background: #fff url(/t/light/content-gradient-v.png) repeat-x; }
 #the-main-menu.fixed { position: fixed; z-index: 5; }
 
