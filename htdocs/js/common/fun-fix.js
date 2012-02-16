@@ -106,47 +106,6 @@ Me.prototype =
 		if (this.state() !== false)
 			log(this.state.stateName + '!')
 		this.lastY = y
-	},
-	
-	windowScrolled1: function (y)
-	{
-		var far = y > this.top
-		
-		var node = this.node
-		
-		if (far)
-		{
-			var offsetHeight = this.offsetHeight
-			
-			var dy = this.dy + this.y - y
-			if (dy < -offsetHeight)
-				dy = -offsetHeight
-			else if (dy > 0)
-				dy = 0
-			
-			this.dy = dy
-			
-			node.style.top = dy + 'px'
-		}
-		else
-		{
-			node.style.top = 0
-		}
-		
-		this.y = y
-		
-		var lastFar = this.lastFar
-		
-		// the most recent case
-		if (far == lastFar)
-			return
-		
-		this.lastFar = far
-		
-		if (!lastFar && far)
-			node.addClassName('fixed')
-		else if (lastFar && !far)
-			node.removeClassName('fixed')
 	}
 }
 
