@@ -20,7 +20,7 @@ Me.prototype =
 		this.node = node
 		
 		var pos = node.offsetPosition(document.documentElement)
-		this.top = pos.top
+		this.offsetTop = pos.top
 		this.height = node.offsetHeight
 	},
 	
@@ -28,7 +28,7 @@ Me.prototype =
 	{
 		initial: function ()
 		{
-			if (this.y > this.top)
+			if (this.y > 0)
 				return this.switchState('down')
 		},
 		up_to_initial: function ()
@@ -46,7 +46,7 @@ Me.prototype =
 		
 		up: function ()
 		{
-			if (this.y < this.top)
+			if (this.y <= 0)
 				return this.switchState('initial')
 			
 			if (this.y > this.lastY)
@@ -56,7 +56,8 @@ Me.prototype =
 		},
 		down_to_up: function ()
 		{
-			this.node.style.top = this.lastY - this.height - this.top + 'px'
+			this.lastTop = this.lastY
+			this.node.style.top = this.lastY - this.height + 'px'
 		}
 	},
 	
@@ -79,6 +80,7 @@ Me.prototype =
 	
 	windowScrolled: function (y)
 	{
+		y -= this.offsetTop
 		this.y = y
 		log(this.state.stateName + '?')
 		if (this.state() !== false)
