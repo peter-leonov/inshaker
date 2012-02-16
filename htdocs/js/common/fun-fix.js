@@ -2,11 +2,6 @@
 
 function Me ()
 {
-	this.top = 0
-	this.height = 0
-	this.y = 0
-	this.dy = 0
-	
 	for (var k in this.states)
 		this.states[k].stateName = k
 	
@@ -21,18 +16,23 @@ Me.prototype =
 		
 		var pos = node.offsetPosition(document.documentElement)
 		this.offsetTop = pos.top
-		this.height = node.offsetHeight
+		this.offsetHeight = node.offsetHeight
 	},
 	
 	states:
 	{
 		initial: function ()
 		{
-			if (this.y > 0)
+			if (this.y > this.offsetHeight)
 				return this.switchState('down')
 		},
 		up_to_initial: function ()
 		{
+			this.node.style.top = 0
+		},
+		fixed_to_initial: function ()
+		{
+			this.node.removeClassName('fixed')
 			this.node.style.top = 0
 		},
 		
@@ -42,7 +42,11 @@ Me.prototype =
 			if (this.y < this.lastY)
 				return this.switchState('up')
 		},
-		
+		fixed_to_down: function ()
+		{
+			this.node.removeClassName('fixed')
+			this.node.style.top = this.lastY + 'px'
+		},
 		
 		up: function ()
 		{
@@ -52,12 +56,28 @@ Me.prototype =
 			if (this.y > this.lastY)
 				return this.switchState('down')
 			
-			
+			if (this.lastTop - this.y > this.offsetHeight)
+				return this.switchState('fixed')
 		},
 		down_to_up: function ()
 		{
 			this.lastTop = this.lastY
-			this.node.style.top = this.lastY - this.height + 'px'
+			this.node.style.top = this.lastY - this.offsetHeight + 'px'
+		},
+		
+		
+		fixed: function ()
+		{
+			if (this.y > this.lastY)
+				return this.switchState('down')
+			
+			if (this.y <= 0)
+				return this.switchState('initial')
+		},
+		up_to_fixed: function ()
+		{
+			this.node.style.top = 0
+			this.node.addClassName('fixed')
 		}
 	},
 	
@@ -96,11 +116,11 @@ Me.prototype =
 		
 		if (far)
 		{
-			var height = this.height
+			var offsetHeight = this.offsetHeight
 			
 			var dy = this.dy + this.y - y
-			if (dy < -height)
-				dy = -height
+			if (dy < -offsetHeight)
+				dy = -offsetHeight
 			else if (dy > 0)
 				dy = 0
 			
