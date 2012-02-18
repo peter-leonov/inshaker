@@ -7,13 +7,13 @@
 #top .link:hover { border-bottom-color: #c00; }
 
 /* common.css */
-#spotlighted,
+#spotlighted i,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 53px; height: 50px; right: 0px; top: -14px; }
+#spotlighted i { width: 53px; height: 50px; right: 0px; top: -14px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.jpg); width: 410px; height: 530px; left: 147px; bottom: -700px; }
 #branded-image-holder { height: 970px; }
