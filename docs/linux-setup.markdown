@@ -227,22 +227,24 @@ Ruby
 
 Ставим:
 
-	curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
-	tar xzf ruby-1.9.2-p290.tar.gz
-	cd ruby-1.9.2-p290
+	curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.gz
+	tar xzf ruby-1.9.3-p125.tar.gz
+	cd ruby-1.9.3-p125
 	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
+	./ruby -e 'puts RUBY_VERSION'
 
 Линкуем:
 
 	cd /usr/bin/
-	sudo ln -s /opt/ruby-1.9.2/bin/ruby ruby
-	sudo ln -s /opt/ruby-1.9.2/bin/gem gem
-	sudo ln -s /opt/ruby-1.9.2/bin/irb irb
+	sudo ln -s /opt/ruby-1.9/bin/ruby ruby1.9
+	sudo ln -s ruby1.9 ruby
+	sudo ln -s /opt/ruby-1.9/bin/gem gem
+	sudo ln -s /opt/ruby-1.9/bin/irb irb
 
 Тестим:
 
 	ruby -v
-	#>>> ruby 1.9.2p290 (2011-07-09 revision 32553) [i686-linux]
+	#>>> ruby 1.9.3p125 (2012-02-16 revision 34643) [i686-linux]
 	
 	ruby -e 'require "fileutils"; puts FileUtils.class'
 	#>>> Module
