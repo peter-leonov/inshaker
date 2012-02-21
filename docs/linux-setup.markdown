@@ -230,7 +230,7 @@ Ruby
 	curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
 	tar xzf ruby-1.9.2-p290.tar.gz
 	cd ruby-1.9.2-p290
-	./configure --prefix=/opt/ruby-1.9.2 && make && sudo make install
+	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
 
 Линкуем:
 
