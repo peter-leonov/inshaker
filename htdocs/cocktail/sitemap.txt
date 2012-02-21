@@ -196,6 +196,7 @@ http://www.inshaker.ru/cocktail/vodka_pears_sprite/
 http://www.inshaker.ru/cocktail/vodka_mandarin/
 http://www.inshaker.ru/cocktail/vodka_martini/
 http://www.inshaker.ru/cocktail/vodka_minty_tea/
+http://www.inshaker.ru/cocktail/vodka_with_orange_juice/
 http://www.inshaker.ru/cocktail/vodka_smash/
 http://www.inshaker.ru/cocktail/vodka_sprite/
 http://www.inshaker.ru/cocktail/vodka_tonic/
@@ -217,6 +218,7 @@ http://www.inshaker.ru/cocktail/galliano_hot_shot/
 http://www.inshaker.ru/cocktail/garibaldi/
 http://www.inshaker.ru/cocktail/geisha_martini/
 http://www.inshaker.ru/cocktail/gimlet/
+http://www.inshaker.ru/cocktail/gimlet_2/
 http://www.inshaker.ru/cocktail/mulled_wine/
 http://www.inshaker.ru/cocktail/mulled_wine_5_stars/
 http://www.inshaker.ru/cocktail/mulled_wine_cardinal/
@@ -241,6 +243,7 @@ http://www.inshaker.ru/cocktail/bitter_pill/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony/
 http://www.inshaker.ru/cocktail/bitter-sweet_symphony_2/
 http://www.inshaker.ru/cocktail/hot_gold/
+http://www.inshaker.ru/cocktail/hot_gold_in_a_french-press/
 http://www.inshaker.ru/cocktail/hot_apple/
 http://www.inshaker.ru/cocktail/hot_orange/
 http://www.inshaker.ru/cocktail/hot_and_spicy/
@@ -564,6 +567,7 @@ http://www.inshaker.ru/cocktail/mango_cobler_317/
 http://www.inshaker.ru/cocktail/mango_rum_collins/
 http://www.inshaker.ru/cocktail/mango_sling/
 http://www.inshaker.ru/cocktail/mango_milkshake_with_ryazhenka/
+http://www.inshaker.ru/cocktail/mandarin_tini/
 http://www.inshaker.ru/cocktail/mandarin_shot/
 http://www.inshaker.ru/cocktail/mandrin_diva/
 http://www.inshaker.ru/cocktail/mandarin_margarita/
@@ -581,6 +585,7 @@ http://www.inshaker.ru/cocktail/home_margarita_2/
 http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
+http://www.inshaker.ru/cocktail/mary_love/
 http://www.inshaker.ru/cocktail/marcus_aurelius/
 http://www.inshaker.ru/cocktail/marcus_licinius_crassus/
 http://www.inshaker.ru/cocktail/marmalade_margarita/
@@ -592,7 +597,6 @@ http://www.inshaker.ru/cocktail/martini_fizz/
 http://www.inshaker.ru/cocktail/mask_of_evil/
 http://www.inshaker.ru/cocktail/master_and_margarita/
 http://www.inshaker.ru/cocktail/matador/
-http://www.inshaker.ru/cocktail/magic_star/
 http://www.inshaker.ru/cocktail/honey_lollipop/
 http://www.inshaker.ru/cocktail/honey_versailles/
 http://www.inshaker.ru/cocktail/honey_cosmo-tini/
@@ -1064,6 +1068,7 @@ http://www.inshaker.ru/cocktail/electric_chaser/
 http://www.inshaker.ru/cocktail/elisa/
 http://www.inshaker.ru/cocktail/endorfun/
 http://www.inshaker.ru/cocktail/espresso_martini/
+http://www.inshaker.ru/cocktail/aesthetics/
 http://www.inshaker.ru/cocktail/effectini/
 http://www.inshaker.ru/cocktail/aniversary_sour/
 http://www.inshaker.ru/cocktail/southern_hospitality/

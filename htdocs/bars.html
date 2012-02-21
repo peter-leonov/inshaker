@@ -16,12 +16,19 @@
 			<span class="search hidden">Где попробовать <a class="cocktail"></a> в лучших <a class="drop-cocktail">барах</a></span>
 			<span id="switch-view"><a class="view-list" data-tab-name="list">списком</a> или <a class="view-map" data-tab-name="map">на карте</a></span>
 		</h1>
-		<a id="spotlighted"></a>
+		<a id="spotlighted"><i></i></a>
 	</div>
 	
 	<div id="bars-list">
 		<div id="sort-menu">
-			<dl class="bars-select" id="bars-city"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>: куда пойти <dl class="bars-select" id="bars-format"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl> в компании <dl class="bars-select" id="bars-feel"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl></div>
+			<dl class="bars-select" id="bars-city"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>:
+			куда пойти
+			<dl class="bars-select" id="bars-format"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>
+			в компании
+			<dl class="bars-select" id="bars-feel"><dt class="button"></dt><dd><ul class="options"></ul></dd></dl>
+			
+			<a id="mobile-bar" href="/good/mobile-bar/">Выездной коктейльный бар</a>
+		</div>
 		<div class="please-wait">Загружаю много баров…</div>
 		<ul id="bars-container"><!--# include virtual="/bar/links.html" --></ul>
 		<div id="map" class="hidden">
@@ -54,5 +61,6 @@
 <script type="text/javascript" src="/js/entities/Bar.js"></script>
 <script type="text/javascript" src="/js/entities/City.js"></script>
 <script type="text/javascript" src="/js/entities/Cocktail.js"></script>
+<!--# include virtual="/t/branding/2012.02-bars/branding-footer.html" -->
 </body>
 </html>

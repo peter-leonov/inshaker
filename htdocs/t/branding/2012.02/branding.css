@@ -7,20 +7,21 @@
 #top .link:hover { border-bottom-color: #c00; }
 
 /* common.css */
-#spotlighted,
+#spotlighted i,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#spotlighted { width: 90px; height: 30px; right: -3px; top: -6px; }
+#spotlighted i { position: absolute; width: 90px; height: 30px; right: -3px; top: -6px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 530px; left: 149px; bottom: -700px; }
-#branded-image-holder { height: 900px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 530px; left: 147px; bottom: -700px; }
+#branded-image-holder { height: 970px; }
 a { color: #000; }
 #bottom { color: #039; text-shadow: 2px 0px 2px #fff, 0px 2px 2px #fff, -2px 0px 2px #fff, 0px -2px 2px #fff; }
 #bottom .link { color: #c00; }
-html { background: #fff url(bg.jpg) center 20px repeat; }
+html { background-color: #fff; } /* fixes centered body bg */
+body { background: #fff url(bg.jpg) center 20px repeat; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
@@ -77,3 +78,8 @@ button.strong b { color: #000; }
 /* combinator.css */
 #output .help-line .hint.single { color: #c00; }
 #output .help-line .hint.double { color: #039; }
+
+/* cocktail-group.css */
+
+#cocktail-groups-page #main-column a,
+#cocktail-group-page #main-column .about a { color: #c00; }
