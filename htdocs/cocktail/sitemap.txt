@@ -68,6 +68,7 @@ http://www.inshaker.ru/cocktail/banana_sambuca/
 http://www.inshaker.ru/cocktail/banana-mandarin_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/banshee/
 http://www.inshaker.ru/cocktail/barbadian/
+http://www.inshaker.ru/cocktail/barbara_tea_punch/
 http://www.inshaker.ru/cocktail/barberries_fizz/
 http://www.inshaker.ru/cocktail/barbie/
 http://www.inshaker.ru/cocktail/butter_scotch/
@@ -377,6 +378,7 @@ http://www.inshaker.ru/cocktail/ginger_chaser/
 http://www.inshaker.ru/cocktail/ginger-coriander_tini/
 http://www.inshaker.ru/cocktail/indian_sour/
 http://www.inshaker.ru/cocktail/ines/
+http://www.inshaker.ru/cocktail/incognito/
 http://www.inshaker.ru/cocktail/irish_brothers/
 http://www.inshaker.ru/cocktail/irish_coffee/
 http://www.inshaker.ru/cocktail/irish_pie_toddy/
@@ -675,6 +677,7 @@ http://www.inshaker.ru/cocktail/knickerbocker/
 http://www.inshaker.ru/cocktail/new_new_york/
 http://www.inshaker.ru/cocktail/normandi_smash/
 http://www.inshaker.ru/cocktail/norman_hot_pie/
+http://www.inshaker.ru/cocktail/not_in_me/
 http://www.inshaker.ru/cocktail/a_night_in_tunisia/
 http://www.inshaker.ru/cocktail/eau_de_vie/
 http://www.inshaker.ru/cocktail/monkey_brains/
@@ -728,6 +731,7 @@ http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
 http://www.inshaker.ru/cocktail/beer_berry_julep/
 http://www.inshaker.ru/cocktail/pilot/
+http://www.inshaker.ru/cocktail/pimm_s__6/
 http://www.inshaker.ru/cocktail/pina_colada/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_pineapple/
 http://www.inshaker.ru/cocktail/pina_colada_in_a_coconut/
