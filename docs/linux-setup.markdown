@@ -47,6 +47,7 @@ APT
 
 На тестовой машине позволим ему все:
 
+	apt-get install sudo
 	echo 'www ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 Далее работаем под пользователем `www`:
@@ -60,9 +61,9 @@ APT
 
 Кладем свои ключи в `/home/www/.ssh/authorized_keys`:
 
-	mkdir -p /home/www/.ssh/
-	touch /home/www/.ssh/authorized_keys
-	sudo cat /root/.ssh/authorized_keys > /home/www/.ssh/authorized_keys
+	mkdir -p ~/.ssh/
+	touch ~/.ssh/authorized_keys
+	sudo cat /root/.ssh/authorized_keys > ~/.ssh/authorized_keys
 
 Сгенерим пользователю собственный ключ:
 
@@ -87,17 +88,17 @@ APT
 
 И сам nginx:
 
-	curl -O http://nginx.org/download/nginx-0.8.54.tar.gz
-	tar xzf nginx-0.8.54.tar.gz
-	cd nginx-0.8.54
+	curl -O http://nginx.org/download/nginx-1.0.12.tar.gz
+	tar xzf nginx-1.0.12.tar.gz
+	cd nginx-1.0.12
 	./configure && make && sudo make install
-	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/nginx
+	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
 и сразу дебажную версию:
 
 	make clean && ./configure --with-debug && make
 	sudo cp ./objs/nginx /usr/local/nginx/sbin/nginx-debug
-	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/sbin/nginx-debug
+	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/bin/nginx-debug
 
 Тестим:
 
@@ -115,12 +116,19 @@ APT
 Git
 ---
 
+Проверяем, какая версия в репозитории:
 
-Ставим:
+	apt-cache showpkg git
 
-	curl -O http://kernel.org/pub/software/scm/git/git-1.7.4.1.tar.bz2
-	tar xjf git-1.7.4.1.tar.bz2
-	cd git-1.7.4.1
+если всё в порядке (>= 1.7), то ставим из репозитория:
+
+	sudo apt-get install git
+
+иначе ставим руками:
+
+	curl -O http://git-core.googlecode.com/files/git-1.7.9.1.tar.gz
+	tar xzf git-1.7.9.1.tar.gz
+	cd git-1.7.9.1
 	./configure --without-tcltk && make && sudo make install
 
 Тестим:
@@ -144,7 +152,14 @@ UpStart
 
 	dpkg --get-selections | grep upstart
 	#>>> upstart      hold
-	
+
+Если его нет, то ставим:
+
+	sudo apt-get install upstart
+	rebooot
+
+Если удалось перезагрузиться: то:
+
 	sudo initctl list
 	#>>> rc stop/waiting
 	#>>> openvz stop/waiting
