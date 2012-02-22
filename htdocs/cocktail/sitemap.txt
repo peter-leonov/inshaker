@@ -161,7 +161,6 @@ http://www.inshaker.ru/cocktail/great_wall_shooter/
 http://www.inshaker.ru/cocktail/velvet_daiquiri/
 http://www.inshaker.ru/cocktail/vergilius/
 http://www.inshaker.ru/cocktail/heathy_tea/
-http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/vesper/
 http://www.inshaker.ru/cocktail/evening_grog/
 http://www.inshaker.ru/cocktail/evergreen_fizz/
@@ -638,6 +637,7 @@ http://www.inshaker.ru/cocktail/mors_martini/
 http://www.inshaker.ru/cocktail/sea_breeze/
 http://www.inshaker.ru/cocktail/moscow_fever/
 http://www.inshaker.ru/cocktail/moscow_lights/
+http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/moscow_lassi/
 http://www.inshaker.ru/cocktail/moscow_mule/
 http://www.inshaker.ru/cocktail/moscow_sangaree/
@@ -695,6 +695,10 @@ http://www.inshaker.ru/cocktail/cucumber_lemonade/
 http://www.inshaker.ru/cocktail/cucumber_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/cucumber_tini/
 http://www.inshaker.ru/cocktail/augustus/
+http://www.inshaker.ru/cocktail/old_fashioned/
+http://www.inshaker.ru/cocktail/peel_infused_old_fashioned/
+http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
+http://www.inshaker.ru/cocktail/old_fashioned_with_tequila/
 http://www.inshaker.ru/cocktail/oldboy/
 http://www.inshaker.ru/cocktail/ole/
 http://www.inshaker.ru/cocktail/orange_bitter/
@@ -909,10 +913,6 @@ http://www.inshaker.ru/cocktail/spice_girls/
 http://www.inshaker.ru/cocktail/spice_and_ice/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/style_martini/
-http://www.inshaker.ru/cocktail/old_fashioned/
-http://www.inshaker.ru/cocktail/peel_infused_old_fashioned/
-http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
-http://www.inshaker.ru/cocktail/old_fashioned_with_tequila/
 http://www.inshaker.ru/cocktail/way_of_life/
 http://www.inshaker.ru/cocktail/way_of_life_2/
 http://www.inshaker.ru/cocktail/passion_gin/
