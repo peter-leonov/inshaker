@@ -394,11 +394,13 @@ var myProto =
 		{
 			this.nodes.cocktails.box.addClassName('zero-cocktails')
 			this.nodes.share.box.addClassName('zero-cocktails')
+			this.nodes.mainFunFix.addClassName('zero-cocktails')
 		}
 		else
 		{
 			this.nodes.cocktails.box.removeClassName('zero-cocktails')
 			this.nodes.share.box.removeClassName('zero-cocktails')
+			this.nodes.mainFunFix.removeClassName('zero-cocktails')
 		}
 		
 		// if(cl == 0)
