@@ -1,6 +1,32 @@
 ;(function(){
+
 var Papa = MyBar, Me = Papa.View
+
 eval(NodesShortcut.include())
+
+Cocktail.prototype.getPreviewNodeExt = function(have)
+{
+	var li = Cocktail.prototype.getPreviewNode.call(this)
+	var control = Nc('div', 'control'),
+		tick = Nc('div', 'tick')
+		
+	control.cocktail = this
+	
+	li.appendChild(control)
+	li.appendChild(tick)
+		
+	if(have)
+	{
+		li.addClassName('have')
+	}
+	else
+	{
+		li.addClassName('no-have')
+	}
+	
+	return li
+}
+
 var myProto =
 {	
 	initialize : function()
@@ -12,31 +38,6 @@ var myProto =
 		
 		this.offsetTops = {}
 		this.offsetHeights = {}
-		
-		var me = this
-		
-		Cocktail.prototype.getPreviewNodeExt = function(have)
-		{
-			var li = Cocktail.prototype.getPreviewNode.call(this)
-			var control = Nc('div', 'control'),
-				tick = Nc('div', 'tick')
-				
-			control.cocktail = this
-			
-			li.appendChild(control)
-			li.appendChild(tick)
-				
-			if(have)
-			{
-				li.addClassName('have')
-			}
-			else
-			{
-				li.addClassName('no-have')				
-			}
-			
-			return li
-		}
 	},
 	
 	bind : function (nodes)
