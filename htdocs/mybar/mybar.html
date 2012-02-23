@@ -11,10 +11,21 @@
 <body>
 <!--# include file="/inc/top-common.html" -->
 
+<div id="the-main-menu"><div class="center">
+	<div class="nav">
+		<a class="link ingredients" href="#ingredients-box-anchor">Мои ингредиенты</a>
+		<a class="link cocktails" href="#cocktails-box-anchor">Коктейльная карта</a>
+		<a class="link recommendations" href="#recommendations-box-anchor">Рекомендации</a>
+	</div>
+	<div class="tools">
+		<a class="link print" href="cocktail-cart-print.html">Распечатать карту</a>
+	</div>
+</div></div>
+
 <div id="common-main-wrapper">
 
 <div class="main-box">
-	<div class="ingredients-box  wrapper-box">
+	<div class="ingredients-box  wrapper-box" id="ingredients-box-anchor">
 		<div class="section-head">
 			<h2><input class="bar-name-editable" value="Мой бар"/><small class="advice">Придумай название!</small>&nbsp;</h2>
 			<div class="links">
@@ -59,7 +70,7 @@
 		</div>
 		<div class="section-bottom"></div>
 	</div>
-	<div class="cocktails-box  wrapper-box">
+	<div class="cocktails-box  wrapper-box" id="cocktails-box-anchor">
 		<div class="section-head">
 			<h2>
 				<span class="have-cocktails">В моем баре есть всё для приготовления <span class="plural">0</span></span>
@@ -115,7 +126,7 @@
 		<div class="web-share-popup hidden"><input type="text" value="" /></div>
 	</div>
 	
-	<div class="recommends-box  wrapper-box">
+	<div class="recommends-box  wrapper-box" id="recommendations-box-anchor">
 		<div class="section-head"><h2>Inshaker рекомендует пополнить бар и приготовить новые коктейли</h2></div>
 		<div class="section-wrapper">
 			<div class="left-shadow"></div>

@@ -1,6 +1,25 @@
 ;(function(){
+
 var Papa = MyBar, Me = Papa.View
+
 eval(NodesShortcut.include())
+
+Cocktail.prototype.getPreviewNodeExt = function (have)
+{
+	var li = this.getPreviewNode()
+	
+	var control = Nc('div', 'control')
+	control.cocktail = this
+	li.appendChild(control)
+	
+	var tick = Nc('div', 'tick')
+	li.appendChild(tick)
+	
+	li.addClassName(have ? 'have' : 'no-have')
+	
+	return li
+}
+
 var myProto =
 {	
 	initialize : function()
@@ -12,31 +31,6 @@ var myProto =
 		
 		this.offsetTops = {}
 		this.offsetHeights = {}
-		
-		var me = this
-		
-		Cocktail.prototype.getPreviewNodeExt = function(have)
-		{
-			var li = Cocktail.prototype.getPreviewNode.call(this)
-			var control = Nc('div', 'control'),
-				tick = Nc('div', 'tick')
-				
-			control.cocktail = this
-			
-			li.appendChild(control)
-			li.appendChild(tick)
-				
-			if(have)
-			{
-				li.addClassName('have')
-			}
-			else
-			{
-				li.addClassName('no-have')				
-			}
-			
-			return li
-		}
 	},
 	
 	bind : function (nodes)
@@ -44,6 +38,15 @@ var myProto =
 		this.nodes = nodes
 		this.incl = new IngredientedCocktailList()
 		this.incl.bind({main: nodes.cocktails.visible})
+		
+		var ff = new FunFix()
+		ff.bind(nodes.mainFunFix)
+		function hideFunFix (e)
+		{
+			if (nodes.mainFunFixLinks.indexOf(e.target) >= 0)
+				ff.hide()
+		}
+		nodes.mainFunFix.addEventListener('click', hideFunFix, false)
 		
 		var me = this
 		
@@ -93,7 +96,14 @@ var myProto =
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
-		window.addEventListener('scroll', function () { t.call() }, false)
+		
+		function onscroll (e)
+		{
+			t.call()
+			ff.windowScrolled(window.pageYOffset)
+		}
+		
+		window.addEventListener('scroll', onscroll, false)
 	},
 	
 	getIngredientPreviewNodeExt: function (ingredient, have)
@@ -390,11 +400,13 @@ var myProto =
 		{
 			this.nodes.cocktails.box.addClassName('zero-cocktails')
 			this.nodes.share.box.addClassName('zero-cocktails')
+			this.nodes.mainFunFix.addClassName('zero-cocktails')
 		}
 		else
 		{
 			this.nodes.cocktails.box.removeClassName('zero-cocktails')
 			this.nodes.share.box.removeClassName('zero-cocktails')
+			this.nodes.mainFunFix.removeClassName('zero-cocktails')
 		}
 		
 		// if(cl == 0)

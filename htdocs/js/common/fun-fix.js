@@ -13,30 +13,38 @@ Me.prototype =
 	bind: function (node)
 	{
 		this.node = node
+		this.style = node.style
+		
+		this.offsetHeight = node.offsetHeight
+		
+		this.initialTop = node.offsetTop
+		this.top = this.initialTop
 		
 		var pos = node.offsetPosition(document.documentElement)
-		this.offsetTop = pos.top
-		this.offsetHeight = node.offsetHeight
-		this.top = 0
+		this.topCompensation = pos.top - this.initialTop
+	},
+	
+	setTop: function (top)
+	{
+		this.top = top
+		this.style.top = top + 'px'
 	},
 	
 	states:
 	{
 		initial: function ()
 		{
-			if (this.y > this.offsetHeight)
+			if (this.y > this.offsetHeight + this.initialTop)
 				return this.switchState('down')
 		},
 		up_to_initial: function ()
 		{
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.initialTop)
 		},
 		fixed_to_initial: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.initialTop)
 		},
 		
 		
@@ -51,8 +59,7 @@ Me.prototype =
 		fixed_to_down: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.top = this.lastY
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.lastY)
 		},
 		
 		
@@ -64,7 +71,7 @@ Me.prototype =
 		
 		up: function ()
 		{
-			if (this.y <= 0)
+			if (this.y <= this.initialTop)
 				return this.switchState('initial')
 			
 			if (this.y > this.lastY)
@@ -75,8 +82,7 @@ Me.prototype =
 		},
 		hidden_to_up: function ()
 		{
-			this.top = this.lastY - this.offsetHeight
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.lastY - this.offsetHeight)
 		},
 		
 		
@@ -85,13 +91,12 @@ Me.prototype =
 			if (this.y > this.lastY)
 				return this.switchState('down')
 			
-			if (this.y <= 0)
+			if (this.y <= this.initialTop)
 				return this.switchState('initial')
 		},
 		up_to_fixed: function ()
 		{
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(0)
 			this.node.addClassName('fixed')
 		}
 	},
@@ -119,7 +124,7 @@ Me.prototype =
 	
 	windowScrolled: function (y)
 	{
-		y -= this.offsetTop
+		y -= this.topCompensation
 		this.y = y
 		// log(this.state.stateName + '?')
 		if (this.state() !== false)
@@ -127,6 +132,11 @@ Me.prototype =
 			// log(this.state.stateName + '!')
 		}
 		this.lastY = y
+	},
+	
+	hide: function (timeout)
+	{
+		this.windowScrolled(0)
 	}
 }
 

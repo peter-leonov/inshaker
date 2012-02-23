@@ -37,6 +37,8 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
+<!--# include virtual="/js/common/fun-fix.js" -->
+
 <!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/common/plain-input-autocompleter.js" -->
 
@@ -61,6 +63,8 @@ function onready ()
 	var nodes = 
 	{	
 		mainBox : $$('#common-main-wrapper .main-box')[0],
+		mainFunFix: $('the-main-menu'),
+		mainFunFixLinks: $$('#the-main-menu .link'),
 		
 		ingredients : {
 			box : $$('#common-main-wrapper .ingredients-box')[0],
