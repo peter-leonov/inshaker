@@ -4,25 +4,18 @@ var Papa = MyBar, Me = Papa.View
 
 eval(NodesShortcut.include())
 
-Cocktail.prototype.getPreviewNodeExt = function(have)
+Cocktail.prototype.getPreviewNodeExt = function (have)
 {
-	var li = Cocktail.prototype.getPreviewNode.call(this)
-	var control = Nc('div', 'control'),
-		tick = Nc('div', 'tick')
-		
-	control.cocktail = this
+	var li = this.getPreviewNode()
 	
+	var control = Nc('div', 'control')
+	control.cocktail = this
 	li.appendChild(control)
+	
+	var tick = Nc('div', 'tick')
 	li.appendChild(tick)
-		
-	if(have)
-	{
-		li.addClassName('have')
-	}
-	else
-	{
-		li.addClassName('no-have')
-	}
+	
+	li.addClassName(have ? 'have' : 'no-have')
 	
 	return li
 }
