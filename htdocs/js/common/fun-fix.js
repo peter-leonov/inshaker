@@ -13,6 +13,7 @@ Me.prototype =
 	bind: function (node)
 	{
 		this.node = node
+		this.style = node.style
 		
 		var pos = node.offsetPosition(document.documentElement)
 		this.offsetTop = pos.top
@@ -23,7 +24,7 @@ Me.prototype =
 	setTop: function (top)
 	{
 		this.top = top
-		this.node.style.top = top + 'px'
+		this.style.top = top + 'px'
 	},
 	
 	states:
