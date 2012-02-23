@@ -15,10 +15,13 @@ Me.prototype =
 		this.node = node
 		this.style = node.style
 		
-		var pos = node.offsetPosition(document.documentElement)
-		this.offsetTop = pos.top
 		this.offsetHeight = node.offsetHeight
-		this.top = 0
+		
+		this.initialTop = node.offsetTop
+		this.top = this.initialTop
+		
+		var pos = node.offsetPosition(document.documentElement)
+		this.topCompensation = pos.top - this.initialTop
 	},
 	
 	setTop: function (top)
@@ -31,17 +34,17 @@ Me.prototype =
 	{
 		initial: function ()
 		{
-			if (this.y > this.offsetHeight)
+			if (this.y > this.offsetHeight + this.initialTop)
 				return this.switchState('down')
 		},
 		up_to_initial: function ()
 		{
-			this.setTop(0)
+			this.setTop(this.initialTop)
 		},
 		fixed_to_initial: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.setTop(0)
+			this.setTop(this.initialTop)
 		},
 		
 		
@@ -68,7 +71,7 @@ Me.prototype =
 		
 		up: function ()
 		{
-			if (this.y <= 0)
+			if (this.y <= this.initialTop)
 				return this.switchState('initial')
 			
 			if (this.y > this.lastY)
@@ -88,7 +91,7 @@ Me.prototype =
 			if (this.y > this.lastY)
 				return this.switchState('down')
 			
-			if (this.y <= 0)
+			if (this.y <= this.initialTop)
 				return this.switchState('initial')
 		},
 		up_to_fixed: function ()
@@ -121,7 +124,7 @@ Me.prototype =
 	
 	windowScrolled: function (y)
 	{
-		y -= this.offsetTop
+		y -= this.topCompensation
 		this.y = y
 		// log(this.state.stateName + '?')
 		if (this.state() !== false)
