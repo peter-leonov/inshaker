@@ -132,6 +132,11 @@ Me.prototype =
 			// log(this.state.stateName + '!')
 		}
 		this.lastY = y
+	},
+	
+	hide: function (timeout)
+	{
+		this.windowScrolled(0)
 	}
 }
 
