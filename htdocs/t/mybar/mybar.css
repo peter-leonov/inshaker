@@ -4,6 +4,7 @@ a { color: #000; }
 
 #the-main-menu { position: absolute; z-index: 1; left: 0; top: 65px; right: 0; height: 33px; background-color: #222; background-color: rgba(0,0,0,0.8); box-shadow: 0 0 15px #000; }
 #the-main-menu .link { color: #888; }
+#the-main-menu .link:hover { color: #fff; }
 #the-main-menu.state-up,
 #the-main-menu.state-down,
 #the-main-menu.state-fixed { z-index: 10; }
