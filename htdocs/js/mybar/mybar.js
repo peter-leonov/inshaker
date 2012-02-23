@@ -64,6 +64,7 @@ function onready ()
 	{	
 		mainBox : $$('#common-main-wrapper .main-box')[0],
 		mainFunFix: $('the-main-menu'),
+		mainFunFixLinks: $$('#the-main-menu .link'),
 		
 		ingredients : {
 			box : $$('#common-main-wrapper .ingredients-box')[0],

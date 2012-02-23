@@ -41,6 +41,12 @@ var myProto =
 		
 		var ff = new FunFix()
 		ff.bind(nodes.mainFunFix)
+		function hideFunFix (e)
+		{
+			if (nodes.mainFunFixLinks.indexOf(e.target) >= 0)
+				ff.hide()
+		}
+		nodes.mainFunFix.addEventListener('click', hideFunFix, false)
 		
 		var me = this
 		
