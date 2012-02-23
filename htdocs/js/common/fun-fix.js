@@ -20,6 +20,12 @@ Me.prototype =
 		this.top = 0
 	},
 	
+	setTop: function (top)
+	{
+		this.top = top
+		this.node.style.top = top + 'px'
+	},
+	
 	states:
 	{
 		initial: function ()
@@ -29,14 +35,12 @@ Me.prototype =
 		},
 		up_to_initial: function ()
 		{
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(0)
 		},
 		fixed_to_initial: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(0)
 		},
 		
 		
@@ -51,8 +55,7 @@ Me.prototype =
 		fixed_to_down: function ()
 		{
 			this.node.removeClassName('fixed')
-			this.top = this.lastY
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.lastY)
 		},
 		
 		
@@ -75,8 +78,7 @@ Me.prototype =
 		},
 		hidden_to_up: function ()
 		{
-			this.top = this.lastY - this.offsetHeight
-			this.node.style.top = this.top + 'px'
+			this.setTop(this.lastY - this.offsetHeight)
 		},
 		
 		
@@ -90,8 +92,7 @@ Me.prototype =
 		},
 		up_to_fixed: function ()
 		{
-			this.top = 0
-			this.node.style.top = this.top + 'px'
+			this.setTop(0)
 			this.node.addClassName('fixed')
 		}
 	},
