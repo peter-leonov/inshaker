@@ -39,6 +39,9 @@ var myProto =
 		this.incl = new IngredientedCocktailList()
 		this.incl.bind({main: nodes.cocktails.visible})
 		
+		var ff = new FunFix()
+		ff.bind(nodes.mainFunFix)
+		
 		var me = this
 		
 		var completer = this.completer = new PlainInputAutocompleter()
@@ -87,7 +90,14 @@ var myProto =
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
 		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
-		window.addEventListener('scroll', function () { t.call() }, false)
+		
+		function onscroll (e)
+		{
+			t.call()
+			ff.windowScrolled(window.pageYOffset)
+		}
+		
+		window.addEventListener('scroll', onscroll, false)
 	},
 	
 	getIngredientPreviewNodeExt: function (ingredient, have)
