@@ -12,6 +12,7 @@ html { overflow-y: scroll; }
 
 .faq h3 { font-size: 18px; font-weight: bold; }
 .faq p { margin: 0.5em 0; }
+.faq hr { border: none; border-bottom: 1px solid #eee; margin: 1.5em 0; }
 .faq .question { margin-bottom: 1.5em; }
 
 #sidebar { display: none; position: absolute; top: 0; right: 0; width: 300px; }
