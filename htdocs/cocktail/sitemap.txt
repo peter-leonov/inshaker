@@ -706,6 +706,7 @@ http://www.inshaker.ru/cocktail/ole/
 http://www.inshaker.ru/cocktail/orange_bitter/
 http://www.inshaker.ru/cocktail/orange_soul/
 http://www.inshaker.ru/cocktail/orange_mood/
+http://www.inshaker.ru/cocktail/east-indian_negroni/
 http://www.inshaker.ru/cocktail/spicey_tropicana/
 http://www.inshaker.ru/cocktail/from_alice/
 http://www.inshaker.ru/cocktail/screwdriver/
@@ -720,6 +721,7 @@ http://www.inshaker.ru/cocktail/paloma_light/
 http://www.inshaker.ru/cocktail/paloma_chaser/
 http://www.inshaker.ru/cocktail/palma_de_pear/
 http://www.inshaker.ru/cocktail/daddy/
+http://www.inshaker.ru/cocktail/parkside_fizz/
 http://www.inshaker.ru/cocktail/pasteque/
 http://www.inshaker.ru/cocktail/pacha_ibiza/
 http://www.inshaker.ru/cocktail/pacha_monaco/
