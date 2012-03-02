@@ -96,7 +96,6 @@ http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/bling-bling/
 http://www.inshaker.ru/cocktail/blow_job/
 http://www.inshaker.ru/cocktail/black_jack/
-http://www.inshaker.ru/cocktail/black_cola/
 http://www.inshaker.ru/cocktail/black_sabbath/
 http://www.inshaker.ru/cocktail/god_mars/
 http://www.inshaker.ru/cocktail/bohemian_iced_tea/
@@ -763,9 +762,9 @@ http://www.inshaker.ru/cocktail/practically_cherry_daiquiri/
 http://www.inshaker.ru/cocktail/pret-a-porter/
 http://www.inshaker.ru/cocktail/primavera/
 http://www.inshaker.ru/cocktail/nasty_slush/
-http://www.inshaker.ru/cocktail/spiced_cola/
 http://www.inshaker.ru/cocktail/spicy_grapefruit/
 http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
+http://www.inshaker.ru/cocktail/spiced_cola/
 http://www.inshaker.ru/cocktail/spicy_saloop/
 http://www.inshaker.ru/cocktail/bird_shit/
 http://www.inshaker.ru/cocktail/pusse-cafe/
@@ -947,6 +946,7 @@ http://www.inshaker.ru/cocktail/tequila_sprite/
 http://www.inshaker.ru/cocktail/tequila_toreador/
 http://www.inshaker.ru/cocktail/tequila_espresso/
 http://www.inshaker.ru/cocktail/tequila_apple_cowberry/
+http://www.inshaker.ru/cocktail/black_cola/
 http://www.inshaker.ru/cocktail/ten_opener/
 http://www.inshaker.ru/cocktail/tennessee_coffee_cup/
 http://www.inshaker.ru/cocktail/warm_apple/
