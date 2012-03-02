@@ -454,6 +454,7 @@
 {"group":"Штучки","name":"Стакан для смешивания","path":"stakan-dlya-smeshivaniya","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,300.0,true]]},
 {"group":"Посуда","name":"Стаканчик для чая","path":"stakanchik-dlya-chaya","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,150.0,true]]},
 {"group":"Посуда","name":"Стопка","path":"stopka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,100.0,true]]},
+{"group":"Ликеры и настойки","name":"Стрега","path":"strega","tags":["Ликер","Любой ингредиент","Травяной ликер"],"unit":"л","volumes":[[0.75,1165.0,true]]},
 {"group":"Штучки","name":"Стрейнер","path":"streyner","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,100.0,true]]},
 {"group":"Мучные изделия","name":"Сухарики ржаные","path":"suhariki-rzhanyie","tags":["Любой ингредиент"],"unit":"г","volumes":[[45.0,11.0,true]]},
 {"brand":"Martini Extra Dry","brand_dir":"martini-extra-dry","group":"Вермуты","mark":"Martini","name":"Сухой вермут","names":["Мартини Экстра Драй","Martini Extra Dry","Мартини сухой","Чинзано сухой","Cinzano Extra Dry","Чинзано Экстра Драй"],"path":"suhoy-vermut","tags":["Martini","Вермут","Любой ингредиент","Мартини"],"unit":"л","volumes":[[1.0,642.0,true]]},

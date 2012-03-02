@@ -501,6 +501,7 @@ http://www.inshaker.ru/cocktail/crimean_flip/
 http://www.inshaker.ru/cocktail/cuba_libre/
 http://www.inshaker.ru/cocktail/grasshopper/
 http://www.inshaker.ru/cocktail/cool_sweet_heart/
+http://www.inshaker.ru/cocktail/kumquat_collins/
 http://www.inshaker.ru/cocktail/kumquat_tea/
 http://www.inshaker.ru/cocktail/kurant_bitter_lemon/
 http://www.inshaker.ru/cocktail/kurant_shot/
