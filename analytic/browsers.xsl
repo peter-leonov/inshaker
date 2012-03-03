@@ -4,6 +4,7 @@
 <xsl:template match="/">
 <pie>
 	<xsl:variable name="opera" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera']"/>
+	<xsl:variable name="opera_12_1" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '12.1']"/>
 	<xsl:variable name="opera_12_0" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '12.0']"/>
 	<xsl:variable name="opera_11_6" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '11.6']"/>
 	<xsl:variable name="opera_11_5" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '11.5']"/>
@@ -16,6 +17,7 @@
 	<xsl:variable name="opera_10_0" select="$opera[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 4) = '10.0']"/>
 	
 	<xsl:variable name="opera_sum" select="sum($opera/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="opera_12_1_sum" select="sum($opera_12_1/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_12_0_sum" select="sum($opera_12_0/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_11_6_sum" select="sum($opera_11_6/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_11_5_sum" select="sum($opera_11_5/dxp:metric[@name='ga:visits']/@value)"/>
@@ -27,6 +29,9 @@
 	<xsl:variable name="opera_10_1_sum" select="sum($opera_10_1/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="opera_10_0_sum" select="sum($opera_10_0/dxp:metric[@name='ga:visits']/@value)"/>
 	
+	<slice title="Opera 12.1" color="#cc0000">
+		<xsl:value-of select="$opera_12_1_sum"/>
+	</slice>
 	<slice title="Opera 12.0" color="#cc0000">
 		<xsl:value-of select="$opera_12_0_sum"/>
 	</slice>
@@ -58,7 +63,7 @@
 		<xsl:value-of select="$opera_10_0_sum"/>
 	</slice>
 	<slice title="other Opera" color="#ccbb99">
-		<xsl:value-of select="$opera_sum - $opera_12_0_sum - $opera_11_6_sum - $opera_11_5_sum - $opera_11_1_sum - $opera_11_0_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum"/>
+		<xsl:value-of select="$opera_sum - $opera_12_1_sum - $opera_12_0_sum - $opera_11_6_sum - $opera_11_5_sum - $opera_11_1_sum - $opera_11_0_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum"/>
 	</slice>
 	
 	
