@@ -53,6 +53,8 @@ Me.prototype =
 		this.bindShareBox()
 		this.bindPrintBox()
 		
+		this.renderRecipeIngredientPreviews()
+		
 		return this
 	},
 	
@@ -545,6 +547,22 @@ Me.prototype =
 	{
 		var name = this.nodes.partyName.getAttribute('data-value')
 		this.controller.partyNameGuessed(name)
+	},
+	
+	renderRecipeIngredientPreviews: function ()
+	{
+		var previews = this.nodes.recipeIngredientPreviews
+		
+		for (var i = 0, il = previews.length; i < il; i++)
+		{
+			var preview = previews[i]
+			
+			var good = Ingredient.getByName(preview.getAttribute('data-good'))
+			if (!good)
+				return
+			
+			preview.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
+		}
 	},
 	
 	renderPartyList: function (parties)

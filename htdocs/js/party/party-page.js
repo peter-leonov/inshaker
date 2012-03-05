@@ -32,6 +32,7 @@ function onready ()
 			bar: $$('#window .stub .label .bar')[0]
 		},
 		recipeList: $$('#recipe-list')[0],
+		recipeIngredientPreviews: $$('#recipe-list .recipe .ingredients .ingredient-preview'),
 		purchasePlan: $$('#purchase-plan')[0],
 		
 		ingredientsPart: $$('#ingredients-part')[0],
