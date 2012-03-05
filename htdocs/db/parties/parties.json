@@ -1,5 +1,12 @@
 [
 {
+	"name": "Девичник",
+	"imperative": "Собери девочек на коктейль!",
+	"path": "girls-night",
+	"portions": [{"cocktail": "Мохито королевский", "factor": 3}],
+	"people": 10
+},
+{
 	"name": "Дегустация очень страшного пунша",
 	"imperative": "Устрой дегустацию очень страшного пунша",
 	"path": "halloween-xenta",
