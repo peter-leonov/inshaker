@@ -1,6 +1,6 @@
 [
 {
-	"name": "Девичник",
+	"name": "Коктейльный девичник",
 	"imperative": "Собери девочек на коктейль!",
 	"path": "girls-night",
 	"portions": [{"cocktail": "Мохито королевский", "factor": 3}],
@@ -24,7 +24,7 @@
 	"hidden": true
 },
 {
-	"name": "Мафия",
+	"name": "Игра в мафию",
 	"imperative": "Сыграй с друзьями в мафию!",
 	"path": "mafia",
 	"portions": [{"cocktail": "Спайс энд айс", "factor": 3}],
@@ -32,7 +32,7 @@
 	"goods": [["Карты для игры в Мафию",1,3]]
 },
 {
-	"name": "Романтическая",
+	"name": "Романтическое свидание",
 	"imperative": "Устрой романтическую дегустацию!",
 	"path": "romantic",
 	"portions": [{"cocktail": "Розовый ром", "factor": 3},
@@ -41,7 +41,7 @@
 	"people": 2
 },
 {
-	"name": "Свой клуб",
+	"name": "Клуб на одну ночь",
 	"imperative": "Открой свой клуб на одну ночь!",
 	"path": "private-club",
 	"portions": [{"cocktail": "Куба либре", "factor": 5}],
@@ -49,7 +49,7 @@
 	"people": 10
 },
 {
-	"name": "Камин",
+	"name": "Тепый вечер у камина",
 	"imperative": "Проведи теплый вечер у камина!",
 	"path": "fireplace",
 	"portions": [{"cocktail": "Тодди грог", "factor": 3}],
