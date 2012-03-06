@@ -332,6 +332,7 @@ http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon-basil_smoothie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
+http://www.inshaker.ru/cocktail/duboudreau/
 http://www.inshaker.ru/cocktail/e-sencha-l/
 http://www.inshaker.ru/cocktail/jager_with_cucumber/
 http://www.inshaker.ru/cocktail/blackberry_mood/
@@ -522,6 +523,7 @@ http://www.inshaker.ru/cocktail/summer_breeze/
 http://www.inshaker.ru/cocktail/summer_evening_in_gagra/
 http://www.inshaker.ru/cocktail/summer_fizz/
 http://www.inshaker.ru/cocktail/summer_queen/
+http://www.inshaker.ru/cocktail/flying_dutchman/
 http://www.inshaker.ru/cocktail/liqueur_mango_and_orange/
 http://www.inshaker.ru/cocktail/liqueur_mango_and_cranberries/
 http://www.inshaker.ru/cocktail/tarragon_lemonade_in_a_jug/
