@@ -724,11 +724,11 @@ class CocktailsProcessor::Template
   
   def groups
     groups = []
-    groups << ["/combinator.html#q=#{@method}", @method]
-    groups << ["/combinator.html#q=#{@strength}", @strength]
+    groups << [@method, "/combinator.html#q=#{@method}"]
+    groups << [@strength, "/combinator.html#q=#{@strength}"]
     
     @groups.each do |group|
-      groups << ["/combinator.html#q=#{group}", group]
+      groups << [group, "/combinator.html#q=#{group}"]
     end
     groups
   end
