@@ -583,7 +583,7 @@ Me.prototype =
 			link.href = party.getPath()
 			link.style.backgroundImage = 'url(' + party.getPreviewImage() + ')'
 			
-			var name = Nct('span', 'name', party.imperative)
+			var name = Nct('span', 'name', party.name)
 			link.appendChild(name)
 		}
 	}
