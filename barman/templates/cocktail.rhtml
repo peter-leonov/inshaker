@@ -51,7 +51,9 @@
 						<% end %>
 					</div>
 					<div class="tags"><b>Группы:</b>
-					<%= groups.map { |a| %Q{<a class="tag" href="#{a[1]}"#{ a[2] && %Q{data-tag="#{a[2]}"} }>#{a[0]}</a>} } .join(",\n") %>.
+						<% groups.each do |a| %>
+						<a class="tag" href="<%= a[1] %>"<%= a[2] && %Q{data-tag="#{a[2]}"} %>><%= a[0] %></a>
+						<% end %>
 					</div>
 					<div class="buttons">
 						<button class="rounded strong" id="show-recipe"><b>Как приготовить <span class="the-name"><%= @name %></span></b></button>
