@@ -600,7 +600,7 @@ class CocktailsProcessor < Inshaker::Processor
       File.open(path, "w+") do |list|
         cocktails.each do |c|
           ingredients = c["ingredients"].map { |e| e[0] }
-          list.puts %Q{<li data-cocktail="#{c["name"]}"><a href="/cocktail/#{c["name_eng"].dirify}/">#{prefix} «#{c["name"]}»</a> = #{ingredients.join(" + ")}</li>}
+          list.puts %Q{<li data-cocktail="#{c["name"]}">#{prefix} «#{c["name"]}» = #{ingredients.join(" + ")}</li>}
         end
       end
     end
@@ -724,11 +724,16 @@ class CocktailsProcessor::Template
   
   def groups
     groups = []
-    groups << ["/combinator.html#q=#{@method}", @method]
-    groups << ["/combinator.html#q=#{@strength}", @strength]
+    groups << [@method, "/combinator.html#q=#{@method}"]
+    if @strength == "Крепкие" || @strength == "Слабоалкогольные"
+      groups << [@strength, "/gruppy-kokteyley/alkogolnye-kokteyli/", @strength]
+    else
+      groups << [@strength, "/combinator.html#q=#{@strength}"]
+    end
+    
     
     @groups.each do |group|
-      groups << ["/combinator.html#q=#{group}", group]
+      groups << [group, "/combinator.html#q=#{group}"]
     end
     groups
   end

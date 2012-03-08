@@ -42,7 +42,8 @@ var Controller = {
 		showRecipe: $('show-recipe'),
 		hideRecipe: $('close-recipe'),
 		showLegendBtn: $('show-legend'),
-		hideLegendBtn: $('hide-legend')
+		hideLegendBtn: $('hide-legend'),
+		tags: $$('#main-content .tags .tag')
 	},
 	
 	init: function(){
@@ -60,6 +61,7 @@ var Controller = {
 		} else this.expandRelated();
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
+		this.renderTags()
 	},
 	
 	bindEvents: function(name){
@@ -171,6 +173,21 @@ var Controller = {
 		var ingredient = Ingredient.getByName(name)
 		if (ingredient)
 			this.showIngredientPopup(ingredient)
+	},
+	
+	renderTags: function ()
+	{
+		var tags = this.nodes.tags
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i]
+			
+			var query = tag.getAttribute('data-tag')
+			if (!query)
+				continue
+			
+			tag.href = "/combinator.html#q=" + query
+		}
 	},
 	
 	renderRecommendations: function(recs){
