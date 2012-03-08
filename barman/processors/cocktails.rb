@@ -600,7 +600,7 @@ class CocktailsProcessor < Inshaker::Processor
       File.open(path, "w+") do |list|
         cocktails.each do |c|
           ingredients = c["ingredients"].map { |e| e[0] }
-          list.puts %Q{<li data-cocktail="#{c["name"]}"><a href="/cocktail/#{c["name_eng"].dirify}/">#{prefix} «#{c["name"]}»</a> = #{ingredients.join(" + ")}</li>}
+          list.puts %Q{<li data-cocktail="#{c["name"]}">#{prefix} «#{c["name"]}» = #{ingredients.join(" + ")}</li>}
         end
       end
     end
