@@ -725,7 +725,12 @@ class CocktailsProcessor::Template
   def groups
     groups = []
     groups << [@method, "/combinator.html#q=#{@method}"]
-    groups << [@strength, "/combinator.html#q=#{@strength}"]
+    if @strength == "Крепкие" || @strength == "Слабоалкогольные"
+      groups << [@strength, "/gruppy-kokteyley/alkogolnye-kokteyli/", @strength]
+    else
+      groups << [@strength, "/combinator.html#q=#{@strength}"]
+    end
+    
     
     @groups.each do |group|
       groups << [group, "/combinator.html#q=#{group}"]
