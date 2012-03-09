@@ -62,8 +62,11 @@ Object.extend(Bar,
 			if (rex.test(bar.searchKey))
 				res.push(bar)
 		}
+
 		
-		return res
+		return res.sort(function(barl, barr) {
+			return barl.name < barr.name ? -1 : 1;
+		})
 	},
 	
 	getAll: function ()
