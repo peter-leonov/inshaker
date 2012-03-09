@@ -47,7 +47,7 @@ Object.extend(Bar,
 		query = query || {}
 		var res = []
 		
-		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
+		var bars = this.db[query.city] ? this.getAllByCity(query.city) : this.getAll()
 		if (!bars)
 			return res
 		
