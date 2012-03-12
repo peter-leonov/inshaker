@@ -587,14 +587,16 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def flush_seo
-    tags = {
-      "Алкогольные" => ["alkogolnye-kokteyli", "Алкогольный коктейль"]
-    }
+    tags = [
+      ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"]
+    ]
     
-    tags.each do |k, v|
-      cocktails = Cocktail.get_by_tag(k)
+    tags.each do |v|
+      tag, dir, prefix = v
+      
+      cocktails = Cocktail.get_by_tag(tag)
       cocktails.sort! { |a, b| a["ingredients"].length - b["ingredients"].length }
-      dir, prefix = v
+      
       path = Config::SEO_GROUPS_PATH % dir
       
       File.open(path, "w+") do |list|
