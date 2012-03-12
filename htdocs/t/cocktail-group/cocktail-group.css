@@ -3,6 +3,9 @@ html { overflow-y: scroll; }
 #main-column { font-size: 14px; }
 #main-column .title h1 { display: inline; }
 #main-column .about { line-height: 20px; }
+#main-column .about .facts { width: 960px; }
+#main-column .about .facts .column { width: 430px; margin: 0 21px; display: inline-block; vertical-align: top; }
+#main-column .about .facts li { list-style: decimal; margin: 0 0 7px 0; }
 
 #branded-image-holder { display: none; }
 
