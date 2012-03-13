@@ -94,6 +94,9 @@ class Blog::Post
       error "нету ни одного внятного тега"
     end
     
+    if is_archive
+      return true
+    end
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
