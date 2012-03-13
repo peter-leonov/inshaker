@@ -26,6 +26,7 @@ $.onready
 		var nodes =
 		{
 			titleAll: $$('#head .all')[0],
+			titleAllCount: $$('#head .all .count')[0],
 			titleSearch: $$('#head .search')[0],
 			titleSearchName: $$('#head .search .cocktail')[0],
 			titleSearchAll: $$('#head .search .drop-cocktail')[0],

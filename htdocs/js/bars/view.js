@@ -194,9 +194,10 @@ BarsPageView.prototype =
 		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
 	},
 	
-	renderTitle: function (cocktail)
+	renderTitle: function (bars)
 	{
 		var nodes = this.nodes
+		var cocktail = bars.cocktail
 		if (cocktail)
 		{
 			nodes.titleAll.hide()
@@ -208,9 +209,15 @@ BarsPageView.prototype =
 		else
 		{
 			nodes.titleSearch.hide()
-			nodes.titleAll.show()
+			this.renderTitleAll(bars)
 		}
 	},
+
+  renderTitleAll: function(bars) {
+		var nodes = this.nodes
+		nodes.titleAllCount.innerHTML = bars.size
+		nodes.titleAll.show()
+  },
 	
 	getBarNode: function (bar)
 	{
