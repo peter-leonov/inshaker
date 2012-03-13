@@ -119,11 +119,15 @@ class Blog::Post
   end
   
   def write_html
-    File.write("#{@dst_dir.path}/#{@href}.html", @@html_renderer.result(binding))
+    File.write("#{@dst_dir.path}/#{@href}.html", body_html)
   end
   
   def preview_snippet
     @@preview_renderer.result(binding)
+  end
+  
+  def body_html
+    @@html_renderer.result(binding)
   end
   
   def copy_images
