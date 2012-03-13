@@ -120,6 +120,7 @@ class Blog::Post
   
   def write_html
     File.write("#{@dst_dir.path}/#{@href}.html", body_html)
+    File.write("#{@dst_dir.path}/preview-snippet.html", preview_snippet_html)
   end
   
   def preview_snippet_html
@@ -309,7 +310,7 @@ class Blog
     say "обновляю список постов"
     File.open(Config::POSTS_LOOP, "w+") do |f|
       @posts.each do |post|
-        f.puts post.preview_snippet_html
+        f.puts %Q{<!--# include virtual="#{post.page_href}preview-snippet.html" -->}
       end
     end
   end
