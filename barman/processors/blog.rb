@@ -131,6 +131,10 @@ class Blog::Post
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
   
+  def page_href
+    "/blog/#{@href}/"
+  end
+  
   def to_hash
     {
       "date" => @date.to_i * 1000

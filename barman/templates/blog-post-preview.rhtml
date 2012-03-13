@@ -1,5 +1,5 @@
 <li class="post preview <%= @tags.map{|e|e["key"]}.join(" ") %>">
-	<h2 class="title"><a href="/blog/<%= @href %>/#the-one"><%= @title %></a></h2>
+	<h2 class="title"><a href="<%= page_href %>#the-one"><%= @title %></a></h2>
 	<div class="body">
 		<%= @cut %>
 	</div>
