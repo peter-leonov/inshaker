@@ -122,7 +122,7 @@ class Blog::Post
     File.write("#{@dst_dir.path}/#{@href}.html", body_html)
   end
   
-  def preview_snippet
+  def preview_snippet_html
     @@preview_renderer.result(binding)
   end
   
@@ -309,7 +309,7 @@ class Blog
     say "обновляю список постов"
     File.open(Config::POSTS_LOOP, "w+") do |f|
       @posts.each do |post|
-        f.puts post.preview_snippet
+        f.puts post.preview_snippet_html
       end
     end
   end
