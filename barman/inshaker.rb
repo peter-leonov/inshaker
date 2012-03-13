@@ -16,6 +16,7 @@ require "lib/file"
 require "lib/output"
 require "lib/array"
 require "lib/number"
+require "lib/image"
 
 require "config"
 require "processor"
@@ -44,17 +45,13 @@ module Inshaker
     end
     
     def get_img_geometry(src)
-      io = IO.popen(["geometry", src])
-      wh = io.read
-      io.close
-      
-      m = wh.match(/^(\d+)x(\d+)$/)
-      unless m
-        error "не могу определить геометрию джипега #{src}"
+      wh = ImageUtils.get_geometry(src)
+      unless wh
+        error "не могу определить геометрию картинки #{src}"
         return 0, 0
       end
       
-      return m[1].to_i, m[2].to_i
+      return wh[0], wh[1]
     end
     
     def check_img_geometry_cached(src, dst)

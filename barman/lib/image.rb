@@ -3,7 +3,11 @@
 module ImageUtils
   
   def self.get_geometry path
-    m = `identify -format "%[fx:w]x%[fx:h]" "#{path.quote}"`.match(/^(\d+)x(\d+)$/)
+    io = IO.popen(["geometry", path])
+    wh = io.read
+    io.close
+    
+    m = wh.match(/^(\d+)x(\d+)$/)
     unless m
       return nil
     end
