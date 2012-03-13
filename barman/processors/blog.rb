@@ -51,7 +51,7 @@ class Blog::Post
   end
   
   
-  def process src_dir
+  def process src_dir, is_archive
     
     @src_dir = src_dir
     
@@ -94,6 +94,9 @@ class Blog::Post
       error "нету ни одного внятного тега"
     end
     
+    if is_archive
+      return true
+    end
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
@@ -119,16 +122,25 @@ class Blog::Post
   end
   
   def write_html
-    File.write("#{@dst_dir.path}/#{@href}.html", @@html_renderer.result(binding))
+    File.write("#{@dst_dir.path}/#{@href}.html", body_html)
+    File.write("#{@dst_dir.path}/preview-snippet.html", preview_snippet_html)
   end
   
-  def preview_snippet
+  def preview_snippet_html
     @@preview_renderer.result(binding)
+  end
+  
+  def body_html
+    @@html_renderer.result(binding)
   end
   
   def copy_images
     FileUtils.rmtree(@dst_dir.path + "/i/")
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
+  end
+  
+  def page_href
+    "/blog/#{@href}/"
   end
   
   def to_hash
@@ -279,16 +291,26 @@ class Blog
   def update_posts
     say "обновляю блог"
     indent do
-    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
+    walk_dir Dir.new(Config::BASE_DIR + "posts")
+    end #indent
+  end
+  
+  def walk_dir updir, is_archive=false
+    updir.each_dir do |dir|
+      if /^#/.match(dir.name)
+        say "перехожу в «#{dir.name}»"
+        walk_dir dir, true
+        next
+      end
+      
       say dir.name
       indent do
-        post = Blog::Post.new
-        if post.process(dir)
-          @posts << post
-        end
+      post = Blog::Post.new
+      if post.process(dir, is_archive)
+        @posts << post
+      end
       end #indent
     end
-    end #indent
   end
   
   def sort_posts
@@ -301,7 +323,7 @@ class Blog
     say "обновляю список постов"
     File.open(Config::POSTS_LOOP, "w+") do |f|
       @posts.each do |post|
-        f.puts post.preview_snippet
+        f.puts %Q{<!--# include virtual="#{post.page_href}preview-snippet.html" -->}
       end
     end
   end
