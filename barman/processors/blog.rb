@@ -51,7 +51,7 @@ class Blog::Post
   end
   
   
-  def process src_dir
+  def process src_dir, is_archive
     
     @src_dir = src_dir
     
@@ -288,16 +288,26 @@ class Blog
   def update_posts
     say "обновляю блог"
     indent do
-    Dir.new(Config::BASE_DIR + "posts").each_dir do |dir|
+    walk_dir Dir.new(Config::BASE_DIR + "posts")
+    end #indent
+  end
+  
+  def walk_dir updir, is_archive=false
+    updir.each_dir do |dir|
+      if /^#/.match(dir.name)
+        say "перехожу в «#{dir.name}»"
+        walk_dir dir, true
+        next
+      end
+      
       say dir.name
       indent do
-        post = Blog::Post.new
-        if post.process(dir)
-          @posts << post
-        end
+      post = Blog::Post.new
+      if post.process(dir, is_archive)
+        @posts << post
+      end
       end #indent
     end
-    end #indent
   end
   
   def sort_posts
