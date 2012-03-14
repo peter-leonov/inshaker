@@ -5,6 +5,8 @@ function BarsPageView ()
 	this.initialize.apply(this, arguments)
 }
 
+eval(NodesShortcut.include())
+
 BarsPageView.prototype =
 {
 	initialize: function (controller, nodes)
@@ -194,10 +196,9 @@ BarsPageView.prototype =
 		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
 	},
 	
-	renderTitle: function (bars)
+	renderTitle: function (cocktail, allBarsCount)
 	{
 		var nodes = this.nodes
-		var cocktail = bars.cocktail
 		if (cocktail)
 		{
 			nodes.titleAll.hide()
@@ -209,16 +210,11 @@ BarsPageView.prototype =
 		else
 		{
 			nodes.titleSearch.hide()
-			this.renderTitleAll(bars)
+			nodes.titleAll.appendChild(T(allBarsCount + " " + allBarsCount.plural("лучший коктейльный бар", "лучших коктейльных барa", "лучших коктейльных баров") + " России"))
+			nodes.titleAll.show()
 		}
 	},
 
-  renderTitleAll: function(bars) {
-		var nodes = this.nodes
-		nodes.titleAllCount.innerHTML = bars.size
-		nodes.titleAll.show()
-  },
-	
 	getBarNode: function (bar)
 	{
 		var main = this.cache.barNode[bar.id] || (this.cache.barNode[bar.id] = this.createBarNode(bar))
