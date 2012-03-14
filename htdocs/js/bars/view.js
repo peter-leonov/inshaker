@@ -210,7 +210,7 @@ BarsPageView.prototype =
 		else
 		{
 			nodes.titleSearch.hide()
-			nodes.titleAll.appendChild(T(allBarsCount + " " + allBarsCount.plural("лучший коктейльный бар", "лучших коктейльных барa", "лучших коктейльных баров") + " России"))
+			nodes.titleAll.appendChild(T(allBarsCount + " " + allBarsCount.plural("лучший коктейльный бар", "лучших коктейльных бара", "лучших коктейльных баров") + " России"))
 			nodes.titleAll.show()
 		}
 	},
