@@ -596,6 +596,7 @@ http://www.inshaker.ru/cocktail/marcus_licinius_crassus/
 http://www.inshaker.ru/cocktail/marmalade_margarita/
 http://www.inshaker.ru/cocktail/moroccan_smash/
 http://www.inshaker.ru/cocktail/martinez/
+http://www.inshaker.ru/cocktail/martinez_2/
 http://www.inshaker.ru/cocktail/martini_royale/
 http://www.inshaker.ru/cocktail/martini_mojitato/
 http://www.inshaker.ru/cocktail/martini_fizz/
