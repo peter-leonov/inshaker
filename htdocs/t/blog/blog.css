@@ -52,7 +52,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
 .post .body p { margin: 10px 0; }
 
-#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 35px 0; }
+#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 35px 0; }
 #tag-cloud .list { color: #888; }
 #tag-cloud .list,
 #tag-cloud .list .tag { display: inline; }
