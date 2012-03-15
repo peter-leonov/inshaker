@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
+require "optparse"
+
 require "lib/yaml"
 require "lib/json"
 require "lib/erb"
@@ -40,6 +42,7 @@ end
 class Blog::Post
   
   attr_reader :title, :date, :href
+  attr_accessor :options
   
   def self.init
     @@seen_hrefs = {}
@@ -299,13 +302,14 @@ class Blog
     updir.each_dir do |dir|
       if /^#/.match(dir.name)
         say "перехожу в «#{dir.name}»"
-        walk_dir dir, true
+        walk_dir dir, !@options[:force]
         next
       end
       
       say dir.name
       indent do
       post = Blog::Post.new
+      post.options = @options
       if post.process(dir, is_archive)
         @posts << post
       end
@@ -373,6 +377,18 @@ class Blog
   end
   
   def run
+    @options = {}
+    OptionParser.new do |opts|
+      opts.banner = "Запускайте так: blog.rb [опции]"
+      
+      opts.on("-f", "--force", "обновлять невзирая на архив") do |v|
+        @options[:force] = v
+      end
+      opts.on("-h", "--help", "помочь") do
+        puts opts
+        exit
+      end
+    end.parse!
     
     begin
       job
