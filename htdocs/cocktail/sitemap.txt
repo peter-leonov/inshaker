@@ -625,6 +625,7 @@ http://www.inshaker.ru/cocktail/mixet/
 http://www.inshaker.ru/cocktail/milano_breeze/
 http://www.inshaker.ru/cocktail/milano_spritzer/
 http://www.inshaker.ru/cocktail/milky_way/
+http://www.inshaker.ru/cocktail/billionaire/
 http://www.inshaker.ru/cocktail/mimosa/
 http://www.inshaker.ru/cocktail/mirage/
 http://www.inshaker.ru/cocktail/miss_martini/
@@ -768,6 +769,7 @@ http://www.inshaker.ru/cocktail/kiss_of_the_devil/
 http://www.inshaker.ru/cocktail/practically_cherry_daiquiri/
 http://www.inshaker.ru/cocktail/pret-a-porter/
 http://www.inshaker.ru/cocktail/primavera/
+http://www.inshaker.ru/cocktail/provence/
 http://www.inshaker.ru/cocktail/nasty_slush/
 http://www.inshaker.ru/cocktail/spicy_grapefruit/
 http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
