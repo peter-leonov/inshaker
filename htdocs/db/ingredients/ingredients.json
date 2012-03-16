@@ -314,6 +314,7 @@
 {"group":"Ягоды","name":"Облепиха","path":"oblepiha","tags":["Любой ингредиент","Ягоды"],"unit":"г","volumes":[[1000.0,279.0,true]]},
 {"group":"Мёд, варенье, джемы","name":"Облепиховый джем","path":"oblepihovyiy-dzhem","tags":["Джем","Любой ингредиент"],"unit":"г","volumes":[[360.0,59.0,true]]},
 {"group":"Соки и морсы","name":"Облепиховый сок","path":"oblepihovyiy-sok","tags":["Любой ингредиент","Сок"],"unit":"л","volumes":[[1.0,198.0,true]]},
+{"group":"Крепкий алкоголь","name":"Оверпруф виски","path":"overpruf-viski","tags":["Виски","Любой ингредиент"],"unit":"л","volumes":[[0.7,2000.0,true]]},
 {"group":"Овощи","name":"Огурец","path":"ogurets","tags":["Любой ингредиент","Овощи"],"unit":"г","volumes":[[1000.0,129.0,true]]},
 {"brand":"Monin Cucumber","brand_dir":"monin-cucumber","group":"Сиропы","mark":"Monin","name":"Огуречный сироп","names":["Monin Cucumber","Монин Кукумбер"],"path":"ogurechnyiy-sirop","tags":["Monin","Любой ингредиент","Сироп"],"unit":"л","volumes":[[0.7,382.0,true]]},
 {"group":"Травы и цветы","name":"Одуванчик","path":"oduvanchik","tags":["Любой ингредиент"],"unit":"г","volumes":[[50.0,51.0,true]]},
