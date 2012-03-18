@@ -1,7 +1,7 @@
 ;(function(){
 
 function script (src) { document.write('<script src="' + src + '" type="text/javascript"></script>') }
-function style (src) { document.write('<link rel="stylesheet" href="' + src + '" type="text/css"/>') }
+function style (src) { document.write('<link rel="stylesheet" href="' + src + '"/>') }
 
 script('/lib-0.3/modules/cascade.js')
 script('/lib-0.3/modules/test.js')
