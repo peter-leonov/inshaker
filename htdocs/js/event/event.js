@@ -119,15 +119,15 @@ $.onready
 )
 
 
-<!--# include virtual="/lib-0.3/widgets/input-tip.js" -->
+<!--# include virtual="/liby/widgets/input-tip.js" -->
 
-<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/request.js" -->
+<!--# include virtual="/liby/modules/form-helper.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/request.js" -->
 
-<!--# include virtual="/lib-0.3/modules/motion.js" -->
-<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
-<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/liby/modules/motion.js" -->
+<!--# include virtual="/liby/modules/motion-types.js" -->
+<!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 <!--# include virtual="/js/common/humanize.js" -->
 <!--# include virtual="/js/common/switcher.js" -->

@@ -1,6 +1,6 @@
-<!--# include virtual="/lib-0.3/core/fixes/onhashchange.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+<!--# include virtual="/liby/core/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
 
 ;(function(){
 

@@ -1,8 +1,8 @@
-<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
-<!--# include virtual="/lib-0.3/modules/cloner.js"-->
-<!--# include virtual="/lib-0.3/modules/interpolate.js" -->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/interpolate.js" -->
 
 <!--# include virtual="/js/common/number.js" -->
 <!--# include virtual="/js/common/units.js" -->

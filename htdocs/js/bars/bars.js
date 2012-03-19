@@ -61,14 +61,14 @@ $.onready
 	}
 )
 
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/window-name.js" -->
-<!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/window-name.js" -->
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
 
-<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
-<!--# include virtual="/lib-0.3/widgets/selecter.js" -->
-<!--# include virtual="/lib-0.3/widgets/map.js" -->
-<!--# include virtual="/lib-0.3/widgets/map-light-marker.js" -->
+<!--# include virtual="/liby/widgets/tab-switcher.js" -->
+<!--# include virtual="/liby/widgets/selecter.js" -->
+<!--# include virtual="/liby/widgets/map.js" -->
+<!--# include virtual="/liby/widgets/map-light-marker.js" -->
 
 <!--# include virtual="/js/common/google.js" -->
 

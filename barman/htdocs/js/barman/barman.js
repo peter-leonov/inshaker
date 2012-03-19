@@ -1,15 +1,15 @@
-<!--# include virtual="/lib-0.3/core/prototype.js" -->
-<!--# include virtual="/lib-0.3/modules/element.js" -->
-<!--# include virtual="/lib-0.3/modules/selectors.js" -->
-<!--# include virtual="/lib-0.3/modules/cosy.js" -->
-<!--# include virtual="/lib-0.3/modules/onready.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/cookie.js" -->
-<!--# include virtual="/lib-0.3/modules/json.js" -->
-<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
-<!--# include virtual="/lib-0.3/modules/event-driven.js" -->
+<!--# include virtual="/liby/core/prototype.js" -->
+<!--# include virtual="/liby/modules/element.js" -->
+<!--# include virtual="/liby/modules/selectors.js" -->
+<!--# include virtual="/liby/modules/cosy.js" -->
+<!--# include virtual="/liby/modules/onready.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/cookie.js" -->
+<!--# include virtual="/liby/modules/json.js" -->
+<!--# include virtual="/liby/modules/form-helper.js" -->
+<!--# include virtual="/liby/modules/event-driven.js" -->
 
-<!--# include virtual="/lib-0.3/widgets/tab-switcher.js" -->
+<!--# include virtual="/liby/widgets/tab-switcher.js" -->
 
 <!--# include virtual="uibutton.js" -->
 

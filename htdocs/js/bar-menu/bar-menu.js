@@ -24,8 +24,8 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/modules/json.js" -->
-<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
+<!--# include virtual="/liby/modules/json.js" -->
+<!--# include virtual="/liby/modules/user-agent.js" -->
 
 <!--# include virtual="/js/common/bar-storage.js" -->
 <!--# include virtual="/js/common/mybar-name.js" -->
