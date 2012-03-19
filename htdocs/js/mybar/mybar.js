@@ -24,15 +24,15 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/lib-0.3/modules/motion.js" -->
-<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
-<!--# include virtual="/lib-0.3/modules/animation.js" -->
-<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
+<!--# include virtual="/liby/modules/motion.js" -->
+<!--# include virtual="/liby/modules/motion-types.js" -->
+<!--# include virtual="/liby/modules/animation.js" -->
+<!--# include virtual="/liby/modules/regexp-escape.js" -->
 
-<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
-<!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
 
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->

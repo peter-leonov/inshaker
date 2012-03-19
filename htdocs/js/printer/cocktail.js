@@ -1,5 +1,5 @@
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/request.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/request.js" -->
 <!--# include virtual="/js/printer/printer.js" -->
 
 ;(function(){

@@ -22,11 +22,11 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
-<!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
 
-<!--# include virtual="/lib-0.3/modules/user-agent.js" -->
-<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
+<!--# include virtual="/liby/modules/user-agent.js" -->
+<!--# include virtual="/liby/modules/regexp-escape.js" -->
 
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->

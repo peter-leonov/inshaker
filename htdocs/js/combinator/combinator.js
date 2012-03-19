@@ -29,16 +29,16 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/lib-0.3/core/fixes/onhashchange.js"-->
-<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
+<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
-<!--# include virtual="/lib-0.3/modules/cloner.js"-->
-<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/regexp-escape.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
 
-<!--# include virtual="/lib-0.3/widgets/selecter.js" -->
+<!--# include virtual="/liby/widgets/selecter.js" -->
 
 <!--# include virtual="/js/common/throttler.js" -->
 <!--# include virtual="/js/common/autocompleter-3.js" -->

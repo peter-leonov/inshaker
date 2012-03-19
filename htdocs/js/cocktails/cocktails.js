@@ -105,9 +105,9 @@ $.onready(onready)
 
 })();
 
-<!--# include virtual="/lib-0.3/core/fixes/keydown-to-keypress.js"-->
-<!--# include virtual="/lib-0.3/modules/regexp-escape.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
+<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/modules/regexp-escape.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 <!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->

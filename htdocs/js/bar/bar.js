@@ -52,12 +52,12 @@ $.onready
 	}
 )
 
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/interpolate.js" -->
-<!--# include virtual="/lib-0.3/modules/google-api-loader.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/interpolate.js" -->
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
 
-<!--# include virtual="/lib-0.3/widgets/map.js" -->
-<!--# include virtual="/lib-0.3/widgets/map-light-marker.js" -->
+<!--# include virtual="/liby/widgets/map.js" -->
+<!--# include virtual="/liby/widgets/map-light-marker.js" -->
 
 <!--# include virtual="/js/common/google.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->

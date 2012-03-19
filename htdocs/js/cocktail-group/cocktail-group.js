@@ -81,8 +81,8 @@ self[Me.className] = Me
 
 })();
 
-<!--# include virtual="/lib-0.3/modules/child-indexed-path.js"-->
-<!--# include virtual="/lib-0.3/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
 
 <!--# include virtual="/js/common/throttler.js" -->
 

@@ -82,14 +82,14 @@ $.onready(function(){
 	new RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
 })
 
-<!--# include virtual="/lib-0.3/modules/form-helper.js" -->
-<!--# include virtual="/lib-0.3/modules/url-encode.js" -->
-<!--# include virtual="/lib-0.3/modules/request.js" -->
+<!--# include virtual="/liby/modules/form-helper.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/request.js" -->
 
-<!--# include virtual="/lib-0.3/modules/location-hash.js" -->
-<!--# include virtual="/lib-0.3/modules/motion.js" -->
-<!--# include virtual="/lib-0.3/modules/motion-types.js" -->
-<!--# include virtual="/lib-0.3/modules/animation.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
+<!--# include virtual="/liby/modules/motion.js" -->
+<!--# include virtual="/liby/modules/motion-types.js" -->
+<!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 
 <!--# include virtual="/js/common/switcher.js" -->
