@@ -650,6 +650,7 @@ http://www.inshaker.ru/cocktail/moscow_lights/
 http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/moscow_lassi/
 http://www.inshaker.ru/cocktail/moscow_mule/
+http://www.inshaker.ru/cocktail/moscow_orange_sour/
 http://www.inshaker.ru/cocktail/moscow_sangaree/
 http://www.inshaker.ru/cocktail/mojito/
 http://www.inshaker.ru/cocktail/mojito_great_bilberry/
