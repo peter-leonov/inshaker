@@ -47,7 +47,7 @@ Object.extend(Bar,
 		query = query || {}
 		var res = []
 		
-		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
+		var bars = this.db[query.city] ? this.getAllByCity(query.city) : this.getAll()
 		if (!bars)
 			return res
 		
@@ -63,7 +63,9 @@ Object.extend(Bar,
 				res.push(bar)
 		}
 		
-		return res
+		return res.sort(function(barl, barr) {
+			return barl.name < barr.name ? -1 : 1;
+		})
 	},
 	
 	getAll: function ()
