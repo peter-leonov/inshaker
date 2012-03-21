@@ -29,8 +29,9 @@ Object.extend(Bar,
 {
 	initialize: function (db)
 	{
-		// console.time('Bar.initialize')
-		var id = 0, byCity = {}
+		var byCity = this.db = {}
+		
+		var id = 0
 		for (var i = 0; i < db.length; i++)
 		{
 			var bar = new Bar(db[i]), city = bar.city
@@ -38,8 +39,6 @@ Object.extend(Bar,
 			bar.id = ++id
 			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
 		}
-		this.db = byCity
-		// console.timeEnd('Bar.initialize')
 	},
 	
 	getByQuery: function (query)
