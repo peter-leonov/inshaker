@@ -1,6 +1,6 @@
 function BarsPageModel ()
 {
-	BarsPageModel.name = "BarsPageModel"
+	BarsPageModel.name = 'BarsPageModel'
 	this.constructor = BarsPageModel
 	this.initialize.apply(this, arguments)
 }
@@ -14,6 +14,7 @@ BarsPageModel.prototype =
 		state = Object.copy(state)
 		
 		var cities = Bar.getCities(state)
+		cities.unshift('Россия')
 		if (!state.city)
 			state.city = cities[0]
 		
@@ -22,24 +23,24 @@ BarsPageModel.prototype =
 		
 		var barsSet = Bar.getByQuery(state)
 		
-		var now = new Date(), hYearMs = 3600 * 24 * (366 / 4) * 1000,
+		var now = new Date(), bestBefore = 3600 * 24 * (366 / 4) * 1000,
 			neo = [], normal = [], future = []
 		
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
 			var bar = barsSet[i]
-			var openDate = bar.openDate ? now - new Date(bar.openDate) : - 1
-			if (openDate < 0) //// fill bars what opened in future
+			var timeDiff = now - bar.openDate
+			if (timeDiff < 0) // bars comming soon
 			{
 				bar.labelType = 'future'
 				future.push(bar)
 			}
-			else if (openDate < hYearMs) //// fill new bars
+			else if (timeDiff < bestBefore) // just opened
 			{
 				bar.labelType = 'new'
 				neo.push(bar)
 			}
-			else //// other bars are neither 'new' nor 'future'
+			else // old bars
 			{
 				normal.push(bar)
 			}
@@ -49,7 +50,7 @@ BarsPageModel.prototype =
 		var city = City.getByName(state.city)
 		var view = this.view
 		view.modelChanged({bars: barsSet, state: state, city: city})
-		view.renderTitle(Cocktail.getByName(state.cocktail))
+		view.renderTitle(Cocktail.getByName(state.cocktail), Bar.getCount())
 		view.renderCities(cities, state.city)
 		view.renderFormats(Bar.getFormats(state), state.format)
 		view.renderFeels(Bar.getFeels(state), state.feel)

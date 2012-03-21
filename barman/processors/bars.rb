@@ -289,20 +289,22 @@ class BarsProcessor < Inshaker::Processor
   end
   
   def prepare_map_points
-    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
+    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<description><!\[CDATA\[(.*?)\]\]><\/description>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
     
     body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b6fb5abcd94e9d2&output=kml'`
     bars = body.scan(rx)
     raise "не удалось скачать карту баров" if bars.empty?
     bars.each do |arr|
-      @bar_points[arr[0]] = [arr[2].to_f, arr[1].to_f]
+      @bar_points[arr[0]] = [arr[3].to_f, arr[2].to_f]
     end
     
     body = `curl --silent 'http://maps.google.com/maps/ms?ie=UTF8&hl=ru&msa=0&msid=107197571518206937258.000453b7d5de92024cf67&output=kml'`
     cities = body.scan(rx)
     throw "не удалось скачать карту городов" if cities.empty?
     cities.each do |arr|
-      @city_points[arr[0]] = {"point" => [arr[2].to_f, arr[1].to_f], "zoom" => 11}
+      zoom = /zoom: *(\d+)/.match(arr[1])
+      zoom = zoom ? zoom[1].to_i : 11
+      @city_points[arr[0]] = {"point" => [arr[3].to_f, arr[2].to_f], "zoom" => zoom}
     end
   end
   
@@ -332,9 +334,11 @@ class BarsProcessor < Inshaker::Processor
       bar.delete("photos")
       bar.delete("priceIndex")
       bar.delete("geometry")
-      bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
+      bar["openDate"] = bar["openDate"].to_i
       bar["chief"] = bar["chief"]["name"]
     end
+    
+    @entities.sort! { |a, b| a["name"] <=> b["name"] }
     
     flush_json_object(@entities, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)

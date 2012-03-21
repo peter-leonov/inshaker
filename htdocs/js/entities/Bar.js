@@ -4,6 +4,8 @@ Bar = function (data)
 	for (var k in data)
 		this[k] = data[k]
 	
+	this.openDate = new Date(this.openDate * 1000)
+	
 	if (!this.feel)
 		this.feel = []
 	if (!this.format)
@@ -27,19 +29,21 @@ Bar.prototype =
 
 Object.extend(Bar,
 {
-	initialize: function (db)
+	initialize: function (data)
 	{
-		// console.time('Bar.initialize')
-		var id = 0, byCity = {}
-		for (var i = 0; i < db.length; i++)
+		var byCity = this.byCity = {},
+			db = this.db = []
+		
+		var id = 0
+		for (var i = 0; i < data.length; i++)
 		{
-			var bar = new Bar(db[i]), city = bar.city
+			var bar = db[i] = new Bar(data[i]), city = bar.city
 			byCity[city] ? byCity[city].push(bar) : byCity[city] = [bar]
 			bar.id = ++id
 			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
 		}
-		this.db = byCity
-		// console.timeEnd('Bar.initialize')
+		
+		byCity['Россия'] = db.slice()
 	},
 	
 	getByQuery: function (query)
@@ -68,20 +72,12 @@ Object.extend(Bar,
 	
 	getAll: function ()
 	{
-		var db = this.db
-		var bars = []
-		for (var k in db)
-		{
-			var byCity = db[k]
-			for (var i = 0; i < byCity.length; i++)
-				bars.push(byCity[i])
-		}
-		return bars
+		return this.db.slice()
 	},
 	
 	getAllByCity: function (city)
 	{
-		var bars = this.db[city]
+		var bars = this.byCity[city]
 		return bars ? bars.slice() : []
 	},
 	
@@ -123,6 +119,11 @@ Object.extend(Bar,
 		for (var k in hash)
 			res.push(k)
 		return res.sort(function (a, b) { return hash[b] - hash[a] })
+	},
+	
+	getCount: function ()
+	{
+		return this.db.length
 	},
 	
 	getCities: function (state) { return this.getPropertiesSorted(this.getByQuery({cocktail:state.cocktail}), 'city') },

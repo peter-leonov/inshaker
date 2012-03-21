@@ -1,6 +1,6 @@
 function BarsPageView ()
 {
-	BarsPageView.name = "BarsPageView"
+	BarsPageView.name = 'BarsPageView'
 	this.constructor = BarsPageView
 	this.initialize.apply(this, arguments)
 }
@@ -51,7 +51,7 @@ BarsPageView.prototype =
 	setHash: function (hash)
 	{
 		var urledHash = UrlEncode.stringify(hash)
-		location.hash = "#" + urledHash
+		location.hash = '#' + urledHash
 		WindowName.set('bars:state', urledHash)
 	},
 	
@@ -194,12 +194,12 @@ BarsPageView.prototype =
 		map.addEventListener('moved', function (e) { controller.mapMoved(e.center, e.zoom) }, false)
 	},
 	
-	renderTitle: function (cocktail)
+	renderTitle: function (cocktail, allBarsCount)
 	{
 		var nodes = this.nodes
 		if (cocktail)
 		{
-			nodes.titleAll.hide()
+			nodes.titleAll.root.hide()
 			nodes.titleSearch.show()
 			var nameNode = nodes.titleSearchName
 			nameNode.innerHTML = cocktail.nameVP || cocktail.name
@@ -208,7 +208,9 @@ BarsPageView.prototype =
 		else
 		{
 			nodes.titleSearch.hide()
-			nodes.titleAll.show()
+			nodes.titleAll.value.firstChild.nodeValue = allBarsCount
+			nodes.titleAll.unit.firstChild.nodeValue = allBarsCount.plural('лучший коктейльный бар', 'лучших коктейльных бара', 'лучших коктейльных баров')
+			nodes.titleAll.root.show()
 		}
 	},
 	
