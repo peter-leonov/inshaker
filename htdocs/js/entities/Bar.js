@@ -29,7 +29,7 @@ Object.extend(Bar,
 {
 	initialize: function (db)
 	{
-		var byCity = this.db = {}
+		var byCity = this.byCity = {}
 		
 		var id = 0
 		for (var i = 0; i < db.length; i++)
@@ -69,20 +69,20 @@ Object.extend(Bar,
 	
 	getAll: function ()
 	{
-		var db = this.db
+		var byCity = this.byCity
 		var bars = []
-		for (var k in db)
+		for (var k in byCity)
 		{
-			var byCity = db[k]
-			for (var i = 0; i < byCity.length; i++)
-				bars.push(byCity[i])
+			var city = byCity[k]
+			for (var i = 0; i < city.length; i++)
+				bars.push(city[i])
 		}
 		return bars
 	},
 	
 	getAllByCity: function (city)
 	{
-		var bars = this.db[city]
+		var bars = this.byCity[city]
 		return bars ? bars.slice() : []
 	},
 	
