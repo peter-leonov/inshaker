@@ -334,7 +334,7 @@ class BarsProcessor < Inshaker::Processor
       bar.delete("photos")
       bar.delete("priceIndex")
       bar.delete("geometry")
-      bar["openDate"] = bar["openDate"].strftime("%a, %d %b %Y %H:%M:%S GMT")
+      bar["openDate"] = bar["openDate"].to_i
       bar["chief"] = bar["chief"]["name"]
     end
     
