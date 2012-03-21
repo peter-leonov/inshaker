@@ -4,6 +4,8 @@ Bar = function (data)
 	for (var k in data)
 		this[k] = data[k]
 	
+	this.openDate = new Date(this.openDate * 1000)
+	
 	if (!this.feel)
 		this.feel = []
 	if (!this.format)

@@ -29,7 +29,7 @@ BarsPageModel.prototype =
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
 			var bar = barsSet[i]
-			var openDate = bar.openDate ? now - new Date(bar.openDate) : - 1
+			var openDate = now - bar.openDate
 			if (openDate < 0) //// fill bars what opened in future
 			{
 				bar.labelType = 'future'
