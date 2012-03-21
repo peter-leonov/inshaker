@@ -14,7 +14,7 @@ BarsPageModel.prototype =
 		state = Object.copy(state)
 		
 		var cities = Bar.getCities(state)
-		cities.push("Россия")
+		cities.unshift('Россия')
 		if (!state.city)
 			state.city = cities[0]
 		
