@@ -40,6 +40,8 @@ Object.extend(Bar,
 			bar.id = ++id
 			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
 		}
+		
+		byCity['Россия'] = db.slice().sort(function (a, b) { return a.name.localeCompare(b.name) })
 	},
 	
 	getByQuery: function (query)
@@ -47,7 +49,7 @@ Object.extend(Bar,
 		query = query || {}
 		var res = []
 		
-		var bars = this.db[query.city] ? this.getAllByCity(query.city) : this.getAll()
+		var bars = query.city ? this.getAllByCity(query.city) : this.getAll()
 		if (!bars)
 			return res
 		
