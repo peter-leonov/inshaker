@@ -23,24 +23,24 @@ BarsPageModel.prototype =
 		
 		var barsSet = Bar.getByQuery(state)
 		
-		var now = new Date(), hYearMs = 3600 * 24 * (366 / 4) * 1000,
+		var now = new Date(), bestBefore = 3600 * 24 * (366 / 4) * 1000,
 			neo = [], normal = [], future = []
 		
 		for (var i = 0, il = barsSet.length; i < il; i++)
 		{
 			var bar = barsSet[i]
-			var openDate = now - bar.openDate
-			if (openDate < 0) //// fill bars what opened in future
+			var timeDiff = now - bar.openDate
+			if (timeDiff < 0) // bars comming soon
 			{
 				bar.labelType = 'future'
 				future.push(bar)
 			}
-			else if (openDate < hYearMs) //// fill new bars
+			else if (timeDiff < bestBefore) // just opened
 			{
 				bar.labelType = 'new'
 				neo.push(bar)
 			}
-			else //// other bars are neither 'new' nor 'future'
+			else // old bars
 			{
 				normal.push(bar)
 			}
