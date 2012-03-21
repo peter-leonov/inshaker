@@ -5,8 +5,6 @@ function BarsPageView ()
 	this.initialize.apply(this, arguments)
 }
 
-eval(NodesShortcut.include())
-
 BarsPageView.prototype =
 {
 	initialize: function (controller, nodes)
@@ -201,7 +199,7 @@ BarsPageView.prototype =
 		var nodes = this.nodes
 		if (cocktail)
 		{
-			nodes.titleAll.hide()
+			nodes.titleAll.root.hide()
 			nodes.titleSearch.show()
 			var nameNode = nodes.titleSearchName
 			nameNode.innerHTML = cocktail.nameVP || cocktail.name
@@ -210,8 +208,9 @@ BarsPageView.prototype =
 		else
 		{
 			nodes.titleSearch.hide()
-			nodes.titleAll.appendChild(T(allBarsCount + " " + allBarsCount.plural("лучший коктейльный бар", "лучших коктейльных бара", "лучших коктейльных баров") + " России"))
-			nodes.titleAll.show()
+			nodes.titleAll.value.firstChild.nodeValue = allBarsCount
+			nodes.titleAll.unit.firstChild.nodeValue = allBarsCount.plural('лучший коктейльный бар', 'лучших коктейльных бара', 'лучших коктейльных баров')
+			nodes.titleAll.root.show()
 		}
 	},
 	
