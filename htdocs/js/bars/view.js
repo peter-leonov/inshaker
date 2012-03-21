@@ -1,6 +1,6 @@
 function BarsPageView ()
 {
-	BarsPageView.name = "BarsPageView"
+	BarsPageView.name = 'BarsPageView'
 	this.constructor = BarsPageView
 	this.initialize.apply(this, arguments)
 }
@@ -53,7 +53,7 @@ BarsPageView.prototype =
 	setHash: function (hash)
 	{
 		var urledHash = UrlEncode.stringify(hash)
-		location.hash = "#" + urledHash
+		location.hash = '#' + urledHash
 		WindowName.set('bars:state', urledHash)
 	},
 	

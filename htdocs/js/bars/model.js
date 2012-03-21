@@ -1,6 +1,6 @@
 function BarsPageModel ()
 {
-	BarsPageModel.name = "BarsPageModel"
+	BarsPageModel.name = 'BarsPageModel'
 	this.constructor = BarsPageModel
 	this.initialize.apply(this, arguments)
 }
