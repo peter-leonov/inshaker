@@ -27,14 +27,15 @@ Bar.prototype =
 
 Object.extend(Bar,
 {
-	initialize: function (db)
+	initialize: function (data)
 	{
-		var byCity = this.byCity = {}
+		var byCity = this.byCity = {},
+			db = this.db = []
 		
 		var id = 0
-		for (var i = 0; i < db.length; i++)
+		for (var i = 0; i < data.length; i++)
 		{
-			var bar = new Bar(db[i]), city = bar.city
+			var bar = db[i] = new Bar(data[i]), city = bar.city
 			byCity[city] ? byCity[city].push(bar) : byCity[city] = [bar]
 			bar.id = ++id
 			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
@@ -69,15 +70,7 @@ Object.extend(Bar,
 	
 	getAll: function ()
 	{
-		var byCity = this.byCity
-		var bars = []
-		for (var k in byCity)
-		{
-			var city = byCity[k]
-			for (var i = 0; i < city.length; i++)
-				bars.push(city[i])
-		}
-		return bars
+		return this.db.slice()
 	},
 	
 	getAllByCity: function (city)
