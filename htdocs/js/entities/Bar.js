@@ -121,6 +121,11 @@ Object.extend(Bar,
 		return res.sort(function (a, b) { return hash[b] - hash[a] })
 	},
 	
+	getCount: function ()
+	{
+		return this.db.length
+	},
+	
 	getCities: function (state) { return this.getPropertiesSorted(this.getByQuery({cocktail:state.cocktail}), 'city') },
 	getFormats: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, cocktail:state.cocktail}), 'format') },
 	getFeels: function (state) { return this.getPropertiesSorted(this.getByQuery({city:state.city, format:state.format, cocktail:state.cocktail}), 'feel') }
