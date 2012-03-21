@@ -1,7 +1,5 @@
 #common-main-wrapper { font-size: 13px; }
 
-#city-name { display: none; }
-
 #main-column { width: 628px; position: relative; z-index: 1; }
 .common-box .common-content { overflow: hidden; }
 
