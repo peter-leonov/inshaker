@@ -650,6 +650,7 @@ http://www.inshaker.ru/cocktail/moscow_lights/
 http://www.inshaker.ru/cocktail/spring_punch/
 http://www.inshaker.ru/cocktail/moscow_lassi/
 http://www.inshaker.ru/cocktail/moscow_mule/
+http://www.inshaker.ru/cocktail/moscow_orange_sour/
 http://www.inshaker.ru/cocktail/moscow_sangaree/
 http://www.inshaker.ru/cocktail/mojito/
 http://www.inshaker.ru/cocktail/mojito_great_bilberry/
@@ -684,6 +685,7 @@ http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
 http://www.inshaker.ru/cocktail/nero/
 http://www.inshaker.ru/cocktail/knickerbocker/
+http://www.inshaker.ru/cocktail/knickerbocker_2/
 http://www.inshaker.ru/cocktail/new_new_york/
 http://www.inshaker.ru/cocktail/normandi_smash/
 http://www.inshaker.ru/cocktail/norman_hot_pie/
