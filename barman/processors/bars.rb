@@ -338,6 +338,8 @@ class BarsProcessor < Inshaker::Processor
       bar["chief"] = bar["chief"]["name"]
     end
     
+    @entities.sort! { |a, b| a["name"] <=> b["name"] }
+    
     flush_json_object(@entities, Config::DB_JS)
     flush_json_object(@city_points, Config::DB_JS_CITIES)
   end

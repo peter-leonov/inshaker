@@ -41,7 +41,7 @@ Object.extend(Bar,
 			bar.searchKey = ':' + bar.feel.join(':') + ':\n:' + bar.format.join(':') + ':\n:' + bar.carte.join(':') + ':'
 		}
 		
-		byCity['Россия'] = db.slice().sort(function (a, b) { return a.name.localeCompare(b.name) })
+		byCity['Россия'] = db.slice()
 	},
 	
 	getByQuery: function (query)
@@ -65,9 +65,7 @@ Object.extend(Bar,
 				res.push(bar)
 		}
 		
-		return res.sort(function(barl, barr) {
-			return barl.name < barr.name ? -1 : 1;
-		})
+		return res
 	},
 	
 	getAll: function ()
