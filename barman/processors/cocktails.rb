@@ -590,6 +590,7 @@ class CocktailsProcessor < Inshaker::Processor
     tags = [
       ["Миксы", "domashnie-alkogolnye-kokteyli", "Домашний алкогольный коктейль"],
       ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
+      ["Безалкогольные", "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
       ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"]
     ]
     
