@@ -732,6 +732,8 @@ class CocktailsProcessor::Template
     groups << [@method, "/combinator.html#q=#{@method}"]
     if @strength == "Крепкие" || @strength == "Слабоалкогольные"
       groups << [@strength, "/gruppy-kokteyley/alkogolnye-kokteyli/", @strength]
+    elsif @strength == "Безалкогольные"
+      groups << [@strength, "/gruppy-kokteyley/bezalkogolnye-kokteyli/", @strength]
     else
       groups << [@strength, "/combinator.html#q=#{@strength}"]
     end
