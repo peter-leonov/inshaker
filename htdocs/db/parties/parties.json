@@ -49,7 +49,7 @@
 	"people": 10
 },
 {
-	"name": "Тепый вечер у камина",
+	"name": "Теплый вечер у камина",
 	"imperative": "Проведи теплый вечер у камина!",
 	"path": "fireplace",
 	"portions": [{"cocktail": "Тодди грог", "factor": 3}],
