@@ -598,7 +598,14 @@ class CocktailsProcessor < Inshaker::Processor
       tag, dir, prefix = v
       
       cocktails = Cocktail.get_by_tag(tag)
-      cocktails.sort! { |a, b| a["ingredients"].length - b["ingredients"].length }
+      cocktails.sort! do |a, b|
+        length = a["ingredients"].length - b["ingredients"].length
+        if length != 0
+          length
+        else
+          a["name"] <=> b["name"]
+        end
+      end
       
       path = Config::SEO_GROUPS_PATH % dir
       
