@@ -590,6 +590,7 @@ class CocktailsProcessor < Inshaker::Processor
     tags = [
       ["Миксы", "domashnie-alkogolnye-kokteyli", "Домашний алкогольный коктейль"],
       ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
+      ["Безалкогольные", "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
       ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"]
     ]
     
@@ -597,7 +598,14 @@ class CocktailsProcessor < Inshaker::Processor
       tag, dir, prefix = v
       
       cocktails = Cocktail.get_by_tag(tag)
-      cocktails.sort! { |a, b| a["ingredients"].length - b["ingredients"].length }
+      cocktails.sort! do |a, b|
+        length = a["ingredients"].length - b["ingredients"].length
+        if length != 0
+          length
+        else
+          a["name"] <=> b["name"]
+        end
+      end
       
       path = Config::SEO_GROUPS_PATH % dir
       
@@ -731,6 +739,8 @@ class CocktailsProcessor::Template
     groups << [@method, "/combinator.html#q=#{@method}"]
     if @strength == "Крепкие" || @strength == "Слабоалкогольные"
       groups << [@strength, "/gruppy-kokteyley/alkogolnye-kokteyli/", @strength]
+    elsif @strength == "Безалкогольные"
+      groups << [@strength, "/gruppy-kokteyley/bezalkogolnye-kokteyli/", @strength]
     else
       groups << [@strength, "/combinator.html#q=#{@strength}"]
     end
