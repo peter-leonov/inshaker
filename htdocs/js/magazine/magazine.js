@@ -20,6 +20,8 @@ $.onready
 (
 	function ()
 	{
+		UserAgent.setupDocumentElementClassNames()
+		
 		var nodes =
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
