@@ -657,6 +657,7 @@ http://www.inshaker.ru/cocktail/moscow_mule/
 http://www.inshaker.ru/cocktail/moscow_orange_sour/
 http://www.inshaker.ru/cocktail/moscow_sangaree/
 http://www.inshaker.ru/cocktail/mojito/
+http://www.inshaker.ru/cocktail/non_alcoholic_mojito/
 http://www.inshaker.ru/cocktail/mojito_great_bilberry/
 http://www.inshaker.ru/cocktail/mojito_blackberry/
 http://www.inshaker.ru/cocktail/mojito_strawberry/
@@ -1095,6 +1096,7 @@ http://www.inshaker.ru/cocktail/exotic_grog/
 http://www.inshaker.ru/cocktail/extra_crush/
 http://www.inshaker.ru/cocktail/electric_chaser/
 http://www.inshaker.ru/cocktail/elisa/
+http://www.inshaker.ru/cocktail/el_nino/
 http://www.inshaker.ru/cocktail/endorfun/
 http://www.inshaker.ru/cocktail/espresso_martini/
 http://www.inshaker.ru/cocktail/aesthetics/
