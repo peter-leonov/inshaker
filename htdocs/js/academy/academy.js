@@ -48,6 +48,7 @@ Object.extend(Me.prototype, myProto)
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
 	RoundedCorners.init()
 	
 	var nodes =

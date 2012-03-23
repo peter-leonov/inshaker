@@ -157,3 +157,36 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 #share-box .button.twitter:hover i { background-position: -175px -25px; }
 #share-box .button.vkontakte i { background-position: -150px -50px; }
 #share-box .button.vkontakte:hover i { background-position: -175px -50px; }
+
+
+#ancient-browser-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; text-decoration: none; }
+#ancient-browser-warning:hover { background-color: #6b0; }
+#ancient-browser-warning .time { color: #fff; }
+html.chrome-2 body,
+html.chrome-10 body,
+html.chrome-11 body,
+html.chrome-12 body,
+html.chrome-13 body,
+html.opera-8 body,
+html.opera-9 body,
+html.opera-10-0 body,
+html.opera-10-1 body,
+html.firefox-1 body,
+html.firefox-2 body,
+html.msie-5 body,
+html.msie-6 body,
+html.msie-7 body { top: 25px; }
+html.chrome-2 #ancient-browser-warning,
+html.chrome-10 #ancient-browser-warning,
+html.chrome-11 #ancient-browser-warning,
+html.chrome-12 #ancient-browser-warning,
+html.chrome-13 #ancient-browser-warning,
+html.opera-8 #ancient-browser-warning,
+html.opera-9 #ancient-browser-warning,
+html.opera-10-0 #ancient-browser-warning,
+html.opera-10-1 #ancient-browser-warning,
+html.firefox-1 #ancient-browser-warning,
+html.firefox-2 #ancient-browser-warning,
+html.msie-5 #ancient-browser-warning,
+html.msie-6 #ancient-browser-warning,
+html.msie-7 #ancient-browser-warning { display: block; }

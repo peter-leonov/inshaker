@@ -105,6 +105,8 @@ self[Me.className] = Me
 
 function onready (e)
 {
+	UserAgent.setupDocumentElementClassNames()
+	
 	var nodes =
 	{
 		lazyImages: $$('#posts-loop .post .body .image.lazy'),

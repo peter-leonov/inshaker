@@ -28,6 +28,8 @@ self[Me.className] = Me
 
 function onready (e)
 {
+	UserAgent.setupDocumentElementClassNames()
+	
 	var nodes =
 	{
 		title: $$('#the-one .post .title')[0],
