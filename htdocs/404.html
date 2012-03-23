@@ -1,18 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-	<title>Странице не найдена — Inshaker</title>
-	<style>
-	body{font:10px Tahoma,Arial,sans-serif;color:#343b40;position:relative;min-height:100%;padding:0 0 35px 0;}
-	html { background: #000 url(/t/404/eyes.jpg) no-repeat center 28px; overflow: hidden; }
-	body { color: #fff; font-family: Tahoma, sans-serif; width: 250px; margin: auto; padding: 395px 0 0 90px; }
-	a { color: #52baff; }
-	h1 { position: relative;  }
-	p { font-size: 1.2em; }
-	</style>
+<title>Странице не найдена — Inshaker</title>
+<style>
+	html { font-family: PT Sans, Arial, Tahoma, sans-serif; color: #fff; font-size: 10px; }
+	body { background: #000 url(/t/404/glass-on-spot.png) no-repeat center 75px; }
+	a { color: #52baff; text-decoration: none; border-bottom: 1px solid; }
+	a:hover { border-bottom: none; }
+	#message { position: relative; width: 310px; font-size: 18px; line-height: 24px; font-weight: normal; letter-spacing: 1px; margin: 95px auto 0; padding: 0 0 0 100px; left: 10px }
+	#message .code { position: absolute; left: 0px; font-size: 51px; line-height: 48px; font-family: Arial, Tahoma, sans-serif; }
+</style>
 </head>
 <body>
-	<h1>Страница не найдена —</h1>
-	<p>пожалуйста, начните с <a href="/">главной</a>.</p>
+
+<h1 id="message"><span class="code">404</span> Пусто. Страница не найдена. Пожалуйста, <a href="/">начните с главной</a>.</h1>
+
+<script src="/js/common/oops.js"></script>
+<script>
+GoogleAnalytics.trackPageview()
+</script>
+<link rel="stylesheet" href="/t/fonts/pt-sans/pt-sans.css"/>
 </body>
 </html>
