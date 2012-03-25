@@ -1,17 +1,11 @@
 ;(function(){
 
-var Papa = AllBarmensPage
-var Me = Papa.View
-
 eval(NodesShortcut.include())
 
-var myProto =
+function Me () {}
+
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-	},
-	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -88,6 +82,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();

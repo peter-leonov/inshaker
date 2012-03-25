@@ -1,23 +1,15 @@
 ;(function(){
 
-var Papa = AllBarmensPage
-var Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.state = {}
-	},
-	
-	bind: function (state) {},
-	
 	loadBarmen: function ()
 	{
 		this.model.loadBarmen()
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();
