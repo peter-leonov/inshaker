@@ -109,5 +109,4 @@ $.onready(onready)
 <!--# include virtual="/liby/modules/regexp-escape.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
-<!--# include virtual="/js/common/mvc.js" -->
 <!--# include virtual="/js/common/autocompleter-2.js" -->
