@@ -1,24 +1,30 @@
 ;(function(){
 
-var Papa = GoodPage, Me = Papa.View
-
 eval(NodesShortcut.include())
 
-var myProto =
+function Me ()
+{
+	this.nodes = {}
+	this.cache = {previews: {}, previewsGhosts: {}}
+	this.previewsList = new LazyList()
+}
+
+Me.prototype =
 {
 	previewsPageLength: 4,
 	promosPageLength: 1,
 	
 	initialize: function ()
 	{
-		this.nodes = {}
-		this.cache = {previews: {}, previewsGhosts: {}}
-		this.previewsList = new LazyList()
 	},
 	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+	},
+	
+	guessGood: function ()
+	{
 		this.controller.selectGoodByName(this.nodes.name.firstChild.nodeValue)
 	},
 	
@@ -140,6 +146,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();
