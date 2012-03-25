@@ -1,14 +1,9 @@
-function BarsPageModel ()
-{
-	BarsPageModel.name = 'BarsPageModel'
-	this.constructor = BarsPageModel
-	this.initialize.apply(this, arguments)
-}
+;(function(){
 
-BarsPageModel.prototype =
+function Me () {}
+
+Me.prototype =
 {
-	initialize: function () { },
-	
 	setState: function (state)
 	{
 		state = Object.copy(state)
@@ -56,3 +51,7 @@ BarsPageModel.prototype =
 		view.renderFeels(Bar.getFeels(state), state.feel)
 	}
 }
+
+Papa.Model = Me
+
+})();
