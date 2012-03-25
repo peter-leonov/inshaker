@@ -1,14 +1,12 @@
 ;(function(){
 
-var Me = Papa.Model
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.state = {}
-	},
-	
+	this.state = {}
+}
+
+Me.prototype =
+{
 	setState: function (state)
 	{
 		this.state = state
@@ -17,6 +15,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();
