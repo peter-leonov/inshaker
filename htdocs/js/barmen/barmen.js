@@ -29,7 +29,7 @@ Me.prototype =
 	}
 }
 
-Me.className = 'AllBarmensPage'
+Me.className = 'BarmenPage'
 self[Me.className] = Papa = Me
 
 })();
@@ -52,6 +52,6 @@ $.onready(function ()
 		barmensList: $$('.barmen-list')[0]
 	}
 	
-	var page = new AllBarmensPage()
+	var page = new BarmenPage()
 	page.bind(nodes)
 })
