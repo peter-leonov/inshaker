@@ -1,19 +1,63 @@
-BarPage =
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/interpolate.js" -->
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
+
+<!--# include virtual="/liby/widgets/map.js" -->
+<!--# include virtual="/liby/widgets/map-light-marker.js" -->
+
+<!--# include virtual="/js/common/google.js" -->
+<!--# include virtual="/js/common/branding-scroller.js" -->
+<!--# include virtual="/js/common/share-box.js" -->
+
+<!--# include virtual="/js/bars/point.js" -->
+
+
+;(function(){
+
+var Papa
+
+;(function(){
+
+function Me ()
 {
-	initialize: function (nodes, barsDB, cocktailsDB)
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
+	bind: function (nodes)
 	{
-		this.view.owner = this
-		this.controller.owner = this
-		this.model.owner = this
-		
-		this.view.initialize(nodes)
-		this.model.initialize(barsDB, cocktailsDB)
+		this.view.bind(nodes)
 		
 		this.view.readBarCityNames()
 		
 		this.view.bindBrandingScroller()
+		
+		return this
 	}
 }
+
+Me.className = 'BarPage'
+self[Me.className] = Papa = Me
+
+})();
+
+
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
+
+})();
+
 
 $.onready
 (
@@ -48,22 +92,8 @@ $.onready
 			barNext: $$('#main-column .common-title .navigation .next')[0]
 		}
 		RoundedCorners.round(nodes.photos.root)
-		BarPage.initialize(nodes, Bar, Cocktail)
+		
+		var widget = new BarPage()
+		widget.bind(nodes)
 	}
 )
-
-<!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/interpolate.js" -->
-<!--# include virtual="/liby/modules/google-api-loader.js" -->
-
-<!--# include virtual="/liby/widgets/map.js" -->
-<!--# include virtual="/liby/widgets/map-light-marker.js" -->
-
-<!--# include virtual="/js/common/google.js" -->
-<!--# include virtual="/js/common/branding-scroller.js" -->
-<!--# include virtual="/js/common/share-box.js" -->
-
-<!--# include virtual="/js/bars/point.js" -->
-<!--# include virtual="model.js" -->
-<!--# include virtual="controller.js" -->
-<!--# include virtual="view.js" -->

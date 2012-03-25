@@ -1,19 +1,20 @@
-BarPage.controller =
+;(function(){
+
+function Me () {}
+
+Me.prototype =
 {
-	owner: null, // must be defined before initialize
-	
-	initialize: function ()
-	{
-		
-	},
-	
 	barCityNamesLoaded: function (state)
 	{
 		this.cityName = state.city
 		this.barName = state.name
-		this.owner.model.setQuery(state)
+		this.model.setQuery(state)
 	},
 	
 	moreIsMaximized: function () {  },
 	moreIsMinimized: function () {  }
 }
+
+Papa.Controller = Me
+
+})();
