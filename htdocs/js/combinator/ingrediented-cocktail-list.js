@@ -4,18 +4,21 @@ var Papa
 
 ;(function(){
 
-var myName = 'IngredientedCocktailList',
-	Me = Papa = self[myName] = MVC.create(myName)
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
 	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
@@ -39,14 +42,15 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.mixIn(EventDriven)
+
+Me.className = 'IngredientedCocktailList'
+self[Me.className] = Papa = Me
 
 })();
 
 
 ;(function(){
-
-var Me = Papa.View
 
 eval(NodesShortcut.include())
 
@@ -70,14 +74,14 @@ function joinWithNodeToFragment (arr, node)
 
 var months = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь']
 
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-		this.cache = {cocktails:{}}
-	},
-	
+	this.nodes = {}
+	this.cache = {cocktails:{}}
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -234,35 +238,31 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function () {},
-	
 	groupNameClicked: function (num) { this.model.toggleGroupCollapsedility(num) }
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.Model
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function () {},
-	
 	setCocktails: function (groups)
 	{
 		this.rawGroups = groups
@@ -316,7 +316,7 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();
 

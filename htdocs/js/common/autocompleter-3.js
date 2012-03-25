@@ -4,18 +4,21 @@ var Papa
 
 ;(function(){
 
-var myName = 'Autocompleter',
-	Me = Papa = self[myName] = MVC.create(myName)
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
 	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
 	bind: function (nodes, count)
 	{
 		this.view.bind(nodes)
@@ -31,25 +34,25 @@ var myProto =
 
 Me.mixIn(EventDriven)
 
-Object.extend(Me.prototype, myProto)
+Me.className = 'Autocompleter'
+self[Me.className] = Papa = Me
 
 })();
 
 
+
 ;(function(){
 
-var Me = Papa.View
+function Me ()
+{
+	this.nodes = {}
+	this.listeners = {}
+}
 
 eval(NodesShortcut.include())
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-		this.listeners = {}
-	},
-	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -172,16 +175,17 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.className = Papa.className + '.View'
+Papa.View = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
 	search: function (v)
 	{
@@ -224,25 +228,23 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.Model
+function Me ()
+{
+	this.results = null
+	this.selected = -1
+	this.value = null
+}
 
-var myProto =
+Me.prototype =
 {
 	dataSource: {search: function () { return [] }},
-	
-	initialize: function ()
-	{
-		this.results = null
-		this.selected = -1
-		this.value = null
-	},
 	
 	setCount: function (count)
 	{
@@ -252,7 +254,7 @@ var myProto =
 	
 	reset: function ()
 	{
-		this.initialize()
+		Me.call(this)
 		this.view.render(null)
 	},
 	
@@ -354,7 +356,7 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();
 

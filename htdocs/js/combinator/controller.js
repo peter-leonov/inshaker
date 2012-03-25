@@ -1,14 +1,12 @@
 ;(function(){
 
-var Papa = CombinatorPage, Me = Papa.Controller
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.state = {}
-	},
-	
+	this.state = {}
+}
+
+Me.prototype =
+{
 	setState: function (state)
 	{
 		this.model.setState(state)
@@ -46,6 +44,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();

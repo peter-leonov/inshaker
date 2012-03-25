@@ -1,7 +1,5 @@
 ;(function(){
 
-var Papa = CombinatorPage, Me = Papa.Model
-
 function DefaultState (state)
 {
 	for (var k in state)
@@ -17,7 +15,17 @@ DefaultState.prototype =
 }
 Me.DefaultState = DefaultState
 
-var myProto =
+
+function Me ()
+{
+	this.ds = {}
+	this.searchCache = {}
+	this.hideGroups = {}
+	
+	this.state = new DefaultState()
+}
+
+Me.prototype =
 {
 	sortByNames:
 	[
@@ -39,15 +47,9 @@ var myProto =
 		// 'by-strength'
 	],
 	
-	initialize: function ()
+	bind: function ()
 	{
-		this.ds = {}
-		this.searchCache = {}
-		
-		this.state = new DefaultState()
-		
-		
-		var hideGroups = this.hideGroups = {}
+		var hideGroups = this.hideGroups
 		var groups = Ingredient.getGroups()
 		for (var i = 0, il = groups.length; i < il; i++)
 		{
@@ -55,10 +57,7 @@ var myProto =
 			if (Ingredient.getGroupOfGroup(group) != 'ingredients')
 				hideGroups[group] = true
 		}
-	},
-	
-	bind: function ()
-	{
+		
 		var ingredientsTags = Ingredient.getTags(),
 			cocktailsTags = Cocktail.getTags()
 		
@@ -770,6 +769,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();
