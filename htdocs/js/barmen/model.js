@@ -1,9 +1,6 @@
 ;(function(){
 
-function Me ()
-{
-	this.state = {}
-}
+function Me () {}
 
 Me.prototype =
 {
