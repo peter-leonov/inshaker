@@ -11,6 +11,7 @@ if (!clientStorage)
 
 <!--# include virtual="/liby/modules/url-encode.js"-->
 <!--# include virtual="/liby/modules/request.js"-->
-<!--# include virtual="/js/common/bar-storage.js" -->
 
-<!--# include virtual="/js/mybar/mvc.js" -->
+<!--# include virtual="bar-storage.js" -->
+
+<!--# include virtual="mvc.js" -->
