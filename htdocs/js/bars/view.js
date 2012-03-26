@@ -1,23 +1,24 @@
-function BarsPageView ()
+;(function(){
+
+function Me ()
 {
-	BarsPageView.name = 'BarsPageView'
-	this.constructor = BarsPageView
-	this.initialize.apply(this, arguments)
+	this.cache = {barNode: {}}
 }
 
-BarsPageView.prototype =
+Me.prototype =
 {
-	initialize: function (controller, nodes)
+	bind: function (nodes)
 	{
-		this.controller = controller
 		this.nodes = nodes
-		this.cache = {barNode: {}}
 		
 		var me = this
 		
 		var ts = this.viewTypeSwitcher = new TabSwitcher()
 		ts.bind({tabs: nodes.viewSwitcherButtons, sections:[this.nodes.barsContainer, this.nodes.map]})
 		ts.addEventListener('select', function (e) { me.setViewNum(e.data.value) }, false)
+		
+		
+		var controller = this.controller
 		
 		var s = this.formatSelecter = new Selecter()
 		s.bind(nodes.formatSelecter)
@@ -252,3 +253,7 @@ BarsPageView.prototype =
 		return main
 	}
 }
+
+Papa.View = Me
+
+})();

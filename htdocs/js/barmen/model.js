@@ -1,29 +1,17 @@
 ;(function(){
 
-var Papa = AllBarmensPage
-var Me = Papa.Model
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.sources = {}
-		this.state = {}
-	},
-	
-	bind: function (sources)
-	{
-		this.sources = sources
-	},
-	
 	loadBarmen: function ()
 	{
-		var barmen = this.sources.barman.getAll()
+		var barmen = Barman.getAll()
 		this.barmen = barmen
 		this.view.modelChanged(barmen)
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();

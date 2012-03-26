@@ -1,31 +1,47 @@
 ;(function(){
 
-var myName = 'AllBarmensPage'
-var Me = self[myName] = MVC.create(myName)
+var Papa
 
-var myProto =
+;(function(){
+
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
 	
-	bind: function (nodes, sources, state)
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
+	bind: function (nodes)
 	{
-		this.model.bind(sources)
 		this.view.bind(nodes)
-		this.controller.bind(state)
 		
 		this.controller.loadBarmen()
+		
 		return this
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.className = 'BarmenPage'
+self[Me.className] = Papa = Me
 
 })();
+
+
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
+
+})();
+
 
 $.onready(function ()
 {
@@ -36,16 +52,6 @@ $.onready(function ()
 		barmensList: $$('.barmen-list')[0]
 	}
 	
-	var sources =
-	{
-		barman: Barman
-	}
-	
-	var page = new AllBarmensPage()
-	
-	page.bind(nodes, sources)
+	var page = new BarmenPage()
+	page.bind(nodes)
 })
-
-<!--# include virtual="model.js" -->
-<!--# include virtual="view.js" -->
-<!--# include virtual="controller.js" -->

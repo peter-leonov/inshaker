@@ -4,11 +4,11 @@ var doc = document
 function N (name) { return doc.createElement(name) }
 function T (text) { return doc.createTextNode(text) }
 
-BarPage.view =
+function Me () {}
+
+Me.prototype =
 {
-	owner: null, // must be defined before initialize
-	
-	initialize: function (nodes)
+	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
@@ -70,7 +70,7 @@ BarPage.view =
 		state.name = barName
 		state.city = cityName
 		
-		this.owner.controller.barCityNamesLoaded(state)
+		this.controller.barCityNamesLoaded(state)
 	},
 	
 	initMap: function (bar)
@@ -135,5 +135,7 @@ BarPage.view =
 		bs.bind({holder: nodes.brandedImageHolder, page: nodes.page})
 	}
 }
+
+Papa.View = Me
 
 })()}

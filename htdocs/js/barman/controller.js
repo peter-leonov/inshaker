@@ -1,20 +1,15 @@
 ;(function(){
 
-var Papa = BarmanPage
-var Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function () { },
-	
-	bind: function () {},
-	
 	barmanNameFound: function (name)
 	{
 		this.model.setBarmanByName(name)
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();

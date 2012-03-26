@@ -1,9 +1,9 @@
-BarPage.model =
+;(function(){
+
+function Me () {}
+
+Me.prototype =
 {
-	owner: null, // must be defined before initialize
-	
-	initialize: function () { },
-	
 	getCocktailsByNames: function (arr)
 	{
 		var res = []
@@ -41,6 +41,10 @@ BarPage.model =
 			prevNext: this.getPrevNext(query.name, {city: query.city, format: query.format, feel: query.feel})
 		}
 		
-		this.owner.view.modelChanged(data)
+		this.view.modelChanged(data)
 	}
 }
+
+Papa.Model = Me
+
+})();

@@ -1,15 +1,9 @@
 ;(function(){
 
-var Papa = BarmanPage
-var Me = Papa.View
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-	},
-	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -54,6 +48,6 @@ var myProto =
 	}
 };
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();

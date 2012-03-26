@@ -1,22 +1,15 @@
 ;(function(){
 
-var Papa = GoodPage, Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		
-	},
-	
 	selectGoodByName: function (name)
 	{
 		this.model.selectGoodByName(name)
-	},
-	
-	bind: function () {}
+	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Controller = Me
 
 })();

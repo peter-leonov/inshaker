@@ -1,25 +1,11 @@
 ;(function(){
 
-var Papa = BarmanPage
-var Me = Papa.Model
+function Me () {}
 
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.sources = {}
-		this.state = {}
-	},
-	
-	bind: function (sources)
-	{
-		this.sources = sources
-	},
-	
 	setBarmanByName: function (name)
 	{
-		var Barman = this.sources.barman
-		
 		var barman = Barman.getByName(name)
 		this.barman = barman
 		
@@ -28,6 +14,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();

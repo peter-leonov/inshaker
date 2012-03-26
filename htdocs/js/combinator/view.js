@@ -1,7 +1,5 @@
 ;(function(){
 
-var Papa = CombinatorPage, Me = Papa.View
-
 eval(NodesShortcut.include())
 
 var UrlEncodeLight = {}
@@ -9,13 +7,13 @@ Object.extend(UrlEncodeLight, UrlEncode)
 UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
 UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
 
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-	},
-	
+	this.nodes = {}
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -319,6 +317,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();

@@ -1,10 +1,8 @@
-function BarsPageController ()
-{
-	BarsPageController.name = "BarsPageController"
-	this.constructor = BarsPageController
-}
+;(function(){
 
-BarsPageController.prototype =
+function Me () {}
+
+Me.prototype =
 {
 	hashUpdated: function (hash)
 	{
@@ -77,3 +75,6 @@ BarsPageController.prototype =
 	}
 }
 
+Papa.Controller = Me
+
+})();

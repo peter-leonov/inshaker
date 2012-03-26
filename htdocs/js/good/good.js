@@ -1,30 +1,36 @@
 ;(function(){
 
-var myName = 'GoodPage',
-	Me = self[myName] = MVC.create(myName)
+var Papa
 
-// Me.mixIn(EventDriven)
+;(function(){
 
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
 
-	bind: function (nodes, sources)
+Me.prototype =
+{
+	bind: function (nodes)
 	{
-		this.model.bind(sources)
 		this.view.bind(nodes)
-		this.controller.bind()
+		
+		this.view.guessGood()
 		
 		return this
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.className = 'GoodPage'
+self[Me.className] = Papa = Me
 
 })();
 
@@ -32,6 +38,9 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
+
+
+})();
 
 
 function onready ()
@@ -62,7 +71,7 @@ function onready ()
 	RoundedCorners.round(nodes.promos.root)
 	
 	var widget = new GoodPage()
-	widget.bind(nodes, {good:Good})
+	widget.bind(nodes)
 }
 
 $.onready(onready)

@@ -1,16 +1,14 @@
 ;(function(){
 
-var Me = Papa.View
-
 eval(NodesShortcut.include())
 
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-	},
-	
+	this.nodes = {}
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -67,6 +65,6 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();

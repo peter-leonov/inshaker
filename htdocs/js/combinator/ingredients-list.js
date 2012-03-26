@@ -4,18 +4,21 @@ var Papa
 
 ;(function(){
 
-var myName = 'IngredientsList',
-	Me = Papa = self[myName] = MVC.create(myName)
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
 	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
@@ -39,25 +42,24 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.className = 'IngredientsList'
+self[Me.className] = Papa = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.View
-
 eval(NodesShortcut.include())
 
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.nodes = {}
-		this.ingredientCache = {}
-	},
-	
+	this.nodes = {}
+	this.ingredientCache = {}
+}
+
+Me.prototype =
+{
 	bind: function (nodes)
 	{
 		this.nodes = nodes
@@ -171,36 +173,29 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.View = Me
 
 })();
 
 
 ;(function(){
 
-var Me = Papa.Controller
+function Me () {}
 
-var myProto =
+Papa.Controller = Me
+
+})();
+
+
+;(function(){
+
+function Me ()
 {
-	initialize: function () {}
+	this.groups = []
 }
 
-Object.extend(Me.prototype, myProto)
-
-})();
-
-
-;(function(){
-
-var Me = Papa.Model
-
-var myProto =
+Me.prototype =
 {
-	initialize: function ()
-	{
-		this.groups = []
-	},
-	
 	setIngredients: function (groups)
 	{
 		this.groups = groups
@@ -208,7 +203,7 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Papa.Model = Me
 
 })();
 

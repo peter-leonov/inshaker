@@ -1,34 +1,3 @@
-;(function(){
-
-var myName = 'CombinatorPage',
-	Me = self[myName] = MVC.create(myName)
-
-// Me.mixIn(EventDriven)
-
-var myProto =
-{
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
-
-	bind: function (nodes)
-	{
-		this.view.bind(nodes)
-		this.model.bind()
-		
-		this.view.locationHashUpdated()
-		
-		return this
-	}
-}
-
-Object.extend(Me.prototype, myProto)
-
-})();
-
 <!--# include virtual="/liby/core/fixes/onhashchange.js"-->
 <!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
@@ -54,10 +23,52 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="ingredients-list.js" -->
 <!--# include virtual="query-parser.js" -->
 <!--# include virtual="tokenizer.js" -->
+
+
+;(function(){
+
+var Papa
+
+;(function(){
+
+function Me ()
+{
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
+	bind: function (nodes)
+	{
+		this.view.bind(nodes)
+		this.model.bind()
+		
+		this.view.locationHashUpdated()
+		
+		return this
+	}
+}
+
+Me.className = 'CombinatorPage'
+self[Me.className] = Papa = Me
+
+})();
+
+
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
 
+
+})();
 
 
 ;(function(){

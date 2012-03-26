@@ -1,18 +1,60 @@
-BarsPage =
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/window-name.js" -->
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
+
+<!--# include virtual="/liby/widgets/tab-switcher.js" -->
+<!--# include virtual="/liby/widgets/selecter.js" -->
+<!--# include virtual="/liby/widgets/map.js" -->
+<!--# include virtual="/liby/widgets/map-light-marker.js" -->
+
+<!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="point.js" -->
+
+
+;(function(){
+
+var Papa
+
+;(function(){
+
+function Me ()
 {
-	initialize: function (nodes)
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	c.view = v
+	
+	m.parent = v.parent = c.parent = this
+}
+
+Me.prototype =
+{
+	bind: function (nodes)
 	{
-		var state = {view: 'list'}
-		var model = this.model = new BarsPageModel()
-		var controller = this.controller = new BarsPageController(state)
-		var view = this.view = new BarsPageView(controller, nodes)
-		model.view = view
-		controller.view = view
-		controller.model = model
+		this.view.bind(nodes)
 		
-		view.checkHash()
+		this.view.checkHash()
 	}
 }
+
+Me.className = 'BarsPage'
+self[Me.className] = Papa = Me
+
+})();
+
+
+<!--# include virtual="model.js" -->
+<!--# include virtual="view.js" -->
+<!--# include virtual="controller.js" -->
+
+
+})();
+
 
 $.onready
 (
@@ -62,22 +104,7 @@ $.onready
 		
 		RoundedCorners.round(nodes.map)
 		
-		BarsPage.initialize(nodes)
+		var widget = new BarsPage()
+		widget.bind(nodes)
 	}
 )
-
-<!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/window-name.js" -->
-<!--# include virtual="/liby/modules/google-api-loader.js" -->
-
-<!--# include virtual="/liby/widgets/tab-switcher.js" -->
-<!--# include virtual="/liby/widgets/selecter.js" -->
-<!--# include virtual="/liby/widgets/map.js" -->
-<!--# include virtual="/liby/widgets/map-light-marker.js" -->
-
-<!--# include virtual="/js/common/google.js" -->
-
-<!--# include virtual="point.js" -->
-<!--# include virtual="model.js" -->
-<!--# include virtual="controller.js" -->
-<!--# include virtual="view.js" -->

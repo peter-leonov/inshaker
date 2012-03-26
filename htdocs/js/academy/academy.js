@@ -1,24 +1,28 @@
+<!--# include virtual="/js/common/branding-scroller.js" -->
+
+
 ;(function(){
 
 var Papa
 
 ;(function(){
 
-var myName = 'AcademyPage',
-	Me = Papa = self[myName] = MVC.create(myName)
-
-// Me.mixIn(EventDriven)
-
-var myProto =
+function Me ()
 {
-	initialize: function ()
-	{
-		this.model.initialize()
-		this.view.initialize()
-		this.controller.initialize()
-	},
+	var m = this.model = new Me.Model(),
+		v = this.view = new Me.View(),
+		c = this.controller = new Me.Controller()
+	
+	m.view = v
+	v.controller = c
+	c.model = m
+	
+	m.parent = v.parent = c.parent = this
+}
 
-	bind: function (nodes, sources, state)
+Me.prototype =
+{
+	bind: function (nodes)
 	{
 		this.view.bind(nodes)
 		
@@ -30,18 +34,19 @@ var myProto =
 	}
 }
 
-Object.extend(Me.prototype, myProto)
+Me.className = 'AcademyPage'
+self[Me.className] = Papa = Me
 
 })();
 
 
-<!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="view.js" -->
 <!--# include virtual="controller.js" -->
 
 
 })();
+
 
 
 ;(function(){
