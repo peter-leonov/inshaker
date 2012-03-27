@@ -488,6 +488,7 @@ http://www.inshaker.ru/cocktail/cosmo_passion_tea_/
 http://www.inshaker.ru/cocktail/cosmo_tea/
 http://www.inshaker.ru/cocktail/cosmopolitan/
 http://www.inshaker.ru/cocktail/cosmopolitan_jelly/
+http://www.inshaker.ru/cocktail/coffee_cocktail/
 http://www.inshaker.ru/cocktail/cranberryni/
 http://www.inshaker.ru/cocktail/red_moscow/
 http://www.inshaker.ru/cocktail/red_sangria_in_a_jug/
