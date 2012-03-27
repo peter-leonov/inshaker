@@ -33,8 +33,8 @@ var myProto =
 				return
 			}
 			
-			var remoteServer = 'http://' + window.location.hostname + '/storage/v1/get/'
-			Request.get(remoteServer + id + '/bar', null, function(){
+			var storagePath = '/storage/v1/'
+			Request.get(storagePath + 'get/' + id + '/bar', null, function(){
 				if(this.statusType != 'success')
 					me.view.renderIfFail(me.newbie)
 				

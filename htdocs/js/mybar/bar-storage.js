@@ -94,11 +94,11 @@ Me =
 		}
 	},
 	
-	remoteServer: 'http://' + window.location.hostname,
+	storagePath: '/storage/v1/',
 	
 	remoteCreate: function (callback)
 	{
-		var url = this.remoteServer + '/storage/v1/create/'
+		var url = this.storagePath + 'create/'
 		var me = this
 		Request.post(url, JSON.stringify(this.data.remote), function ()
 		{
@@ -112,7 +112,7 @@ Me =
 	
 	remoteGet: function (id, callback)
 	{
-		var url = this.remoteServer + '/storage/v1/get/'
+		var url = this.storagePath + 'get/'
 		Request.get(url + id + '/bar?rand=' + Math.random(), null, function ()
 		{
 			if (this.statusType == 'success')
@@ -128,7 +128,7 @@ Me =
 		if (!ld.id)
 			return
 		
-		var url = this.remoteServer + '/storage/v1/save/'
+		var url = this.storagePath + 'save/'
 		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function ()
 		{
 			if (this.statusType != 'success')
