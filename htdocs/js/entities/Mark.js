@@ -21,6 +21,11 @@ Me.prototype =
 	getBannerSrc: function (lazy)
 	{
 		return this.pageHref() + 'banner.png'
+	},
+	
+	combinatorLink: function ()
+	{
+		return '/combinator.html#q=' + encodeURIComponent(this.name)
 	}
 }
 
