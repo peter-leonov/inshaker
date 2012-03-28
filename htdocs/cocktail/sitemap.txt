@@ -159,6 +159,7 @@ http://www.inshaker.ru/cocktail/varekai/
 http://www.inshaker.ru/cocktail/varro/
 http://www.inshaker.ru/cocktail/great_wall_shooter/
 http://www.inshaker.ru/cocktail/velvet_daiquiri/
+http://www.inshaker.ru/cocktail/venus/
 http://www.inshaker.ru/cocktail/vergilius/
 http://www.inshaker.ru/cocktail/heathy_tea/
 http://www.inshaker.ru/cocktail/vesper/
@@ -629,6 +630,7 @@ http://www.inshaker.ru/cocktail/mexican_lemonade/
 http://www.inshaker.ru/cocktail/mexican_mule/
 http://www.inshaker.ru/cocktail/mexican_pie/
 http://www.inshaker.ru/cocktail/melonic/
+http://www.inshaker.ru/cocktail/mercury/
 http://www.inshaker.ru/cocktail/mixet/
 http://www.inshaker.ru/cocktail/milano_breeze/
 http://www.inshaker.ru/cocktail/milano_spritzer/
