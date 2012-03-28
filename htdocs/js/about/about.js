@@ -73,7 +73,26 @@ var AboutPage = {
 			
 			Request.post(this.action, FormHelper.toHash(this), sent)
 		}
-		form.addEventListener('submit', sendListener,  false)
+		form.addEventListener('submit', sendListener, false)
+		
+		
+		var content = $('partner-list')
+		
+		var marks = Mark.getAll()
+		for (var i = 0; i < marks.length; i++)
+		{
+			var mark = marks[i]
+			
+			var span = document.createElement('li')
+			span.className = 'partner-item'
+			span.innerHTML = '<a class="partner-link" href="' + mark.combinatorLink() + '"><img class="partner-image" src="' + mark.getBannerSrc() + '"></a>'
+			content.appendChild(span)
+			content.appendChild(document.createTextNode(' '))
+		}
+		
+		var spacer = document.createElement('span')
+		spacer.className = 'spacer'
+		content.appendChild(spacer)
 	}
 };
 

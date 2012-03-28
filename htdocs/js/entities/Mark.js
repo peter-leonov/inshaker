@@ -21,6 +21,11 @@ Me.prototype =
 	getBannerSrc: function (lazy)
 	{
 		return this.pageHref() + 'banner.png'
+	},
+	
+	combinatorLink: function ()
+	{
+		return '/combinator.html#q=' + encodeURIComponent(this.name)
 	}
 }
 
@@ -32,6 +37,11 @@ var staticMethods =
 			db[i] = new Me(db[i])
 		
 		this.db = db
+	},
+	
+	getAll: function ()
+	{
+		return this.db.slice()
 	},
 	
 	byNameIndex: null,
