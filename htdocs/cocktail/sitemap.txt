@@ -57,6 +57,7 @@ http://www.inshaker.ru/cocktail/b-52/
 http://www.inshaker.ru/cocktail/baba_tanya/
 http://www.inshaker.ru/cocktail/indian_summer/
 http://www.inshaker.ru/cocktail/bavarian_pear/
+http://www.inshaker.ru/cocktail/badminton/
 http://www.inshaker.ru/cocktail/basil_smash/
 http://www.inshaker.ru/cocktail/basil-bramble_sling/
 http://www.inshaker.ru/cocktail/bacardi_symphony/
@@ -756,6 +757,7 @@ http://www.inshaker.ru/cocktail/apricot_kir_reverse/
 http://www.inshaker.ru/cocktail/peach_touched_by_the_sun/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_orange/
 http://www.inshaker.ru/cocktail/peachtree_liqueur_and_cranberries/
+http://www.inshaker.ru/cocktail/perfect_continuous/
 http://www.inshaker.ru/cocktail/st._petersburg_sling/
 http://www.inshaker.ru/cocktail/beer_berry_julep/
 http://www.inshaker.ru/cocktail/pilot/
@@ -797,7 +799,6 @@ http://www.inshaker.ru/cocktail/little_bee/
 http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
 http://www.inshaker.ru/cocktail/fifth_element/
-http://www.inshaker.ru/cocktail/perfect_continuous/
 http://www.inshaker.ru/cocktail/squashed_frog/
 http://www.inshaker.ru/cocktail/raquel/
 http://www.inshaker.ru/cocktail/ramcooler/
@@ -876,6 +877,7 @@ http://www.inshaker.ru/cocktail/sangrita/
 http://www.inshaker.ru/cocktail/sangrita_carlitos/
 http://www.inshaker.ru/cocktail/sangrita_in_russian/
 http://www.inshaker.ru/cocktail/satisfaction/
+http://www.inshaker.ru/cocktail/saturn/
 http://www.inshaker.ru/cocktail/sour_24/
 http://www.inshaker.ru/cocktail/beet_chaser/
 http://www.inshaker.ru/cocktail/traffic_lights/
