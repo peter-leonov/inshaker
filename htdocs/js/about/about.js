@@ -75,20 +75,17 @@ var AboutPage = {
 		}
 		form.addEventListener('submit', sendListener, false)
 		
-		var marks =
-		[
-			'absolut', 'angostura', 'antica', 'bacardi', 'baileys', 'barline', 'beefeater', 'black-bottle',
-			'bombay-sapphire', 'bushmills', 'de-kuyper', 'franciacorta', 'frapin', 'grand-marnier',
-			'hakushika-ginjo-namachozo', 'johnnie-walker', 'malibu', 'martini', 'monin', 'nonino', 'olmeca',
-			'olmeca-altos', 'pere-magloire', 'perrier', 'sagatiba', 'simple', 'xenta'
-		]
 		
 		var content = $$('.partner-list')[0]
+		
+		var marks = Mark.getAll()
 		for (var i = 0; i < marks.length; i++)
 		{
+			var mark = marks[i]
+			
 			var span = document.createElement('span')
-			span.innerHTML = '<a class="partner-link" href="/combinator.html#q=' + marks[i] + '"><img class="partner-image" src="/mark/' + marks[i] + '/banner.png"></a>'
 			span.className = 'partner-item'
+			span.innerHTML = '<a class="partner-link" href="/combinator.html#q=' + mark + '"><img class="partner-image" src="' + mark.getBannerSrc() + '"></a>'
 			content.appendChild(span)
 		}
 	}

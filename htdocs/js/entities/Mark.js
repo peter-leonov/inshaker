@@ -34,6 +34,11 @@ var staticMethods =
 		this.db = db
 	},
 	
+	getAll: function ()
+	{
+		return this.db.slice()
+	},
+	
 	byNameIndex: null,
 	getByName: function (name)
 	{
