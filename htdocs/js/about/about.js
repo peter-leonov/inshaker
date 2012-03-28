@@ -76,7 +76,7 @@ var AboutPage = {
 		form.addEventListener('submit', sendListener, false)
 		
 		
-		var content = $$('.partner-list')[0]
+		var content = $('partner-list')
 		
 		var marks = Mark.getAll()
 		for (var i = 0; i < marks.length; i++)

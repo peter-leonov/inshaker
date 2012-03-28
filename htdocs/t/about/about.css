@@ -77,5 +77,5 @@
 <!--# endif -->
 
 
-.partner-list{ width: 590px; text-align: center;}
-.partner-item{display:inline-block; width: 190px; margin-bottom: 30px;}
+#partner-list { width: 590px; text-align: justify;}
+#partner-list .partner-item {display:inline-block; width: 150px; margin: 30px 0 15px; text-align: center;}
