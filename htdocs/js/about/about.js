@@ -87,6 +87,7 @@ var AboutPage = {
 			span.className = 'partner-item'
 			span.innerHTML = '<a class="partner-link" href="/combinator.html#q=' + mark + '"><img class="partner-image" src="' + mark.getBannerSrc() + '"></a>'
 			content.appendChild(span)
+			content.appendChild(document.createTextNode(' '))
 		}
 	}
 };
