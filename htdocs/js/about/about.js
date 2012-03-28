@@ -89,6 +89,10 @@ var AboutPage = {
 			content.appendChild(span)
 			content.appendChild(document.createTextNode(' '))
 		}
+		
+		var spacer = document.createElement('span')
+		spacer.className = 'spacer'
+		content.appendChild(spacer)
 	}
 };
 
