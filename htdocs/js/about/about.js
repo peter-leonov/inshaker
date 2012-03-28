@@ -83,10 +83,10 @@ var AboutPage = {
 				  		
 		 var content=$$('.partner-list')[0];	  
 		 for(var i=0;i<marks.length;i++){
-				var div=document.createElement('div');
-				div.className="partner-item";
-				div.innerHTML='<a class="partner-link" href="/combinator.html#q='+marks[i]+'"><img class="partner-image" src="/mark/'+marks[i]+'/banner.png"></a>';
-				content.appendChild(div);
+				var span=document.createElement('span');
+				span.className="partner-item";
+				span.innerHTML='<a class="partner-link" href="/combinator.html#q='+marks[i]+'"><img class="partner-image" src="/mark/'+marks[i]+'/banner.png"></a>';
+				content.appendChild(span);
 		 }		  
 	}
 };
