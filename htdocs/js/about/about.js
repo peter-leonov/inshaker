@@ -74,6 +74,20 @@ var AboutPage = {
 			Request.post(this.action, FormHelper.toHash(this), sent)
 		}
 		form.addEventListener('submit', sendListener,  false)
+		
+		var marks=['absolut', 'angostura', 'antica', 'bacardi', 'baileys', 'barline', 'beefeater', 'black-bottle', 
+					'bombay-sapphire', 'bushmills', 'de-kuyper', 'franciacorta', 'frapin', 'grand-marnier',
+					'hakushika-ginjo-namachozo', 'johnnie-walker', 'malibu', 'martini', 'monin', 'nonino', 'olmeca', 
+					'olmeca-altos', 'pere-magloire', 'perrier', 'sagatiba', 'simple', 'xenta'
+				  ];
+				  		
+		 var content=$$('.view-partners')[0];	  
+		 for(var i=0;i<marks.length;i++){
+				var div=document.createElement('div');
+				div.className="partner-item";
+				div.innerHTML='<a class="partner-link" href="/combinator.html#q='+marks[i]+'"><img class="partner-image" src="/mark/'+marks[i]+'/banner.png"></a>';
+				content.appendChild(div);
+		 }		  
 	}
 };
 
