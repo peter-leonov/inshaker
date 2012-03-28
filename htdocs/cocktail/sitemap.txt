@@ -253,6 +253,7 @@ http://www.inshaker.ru/cocktail/hot_rum_with_butter/
 http://www.inshaker.ru/cocktail/hot_rum_punch/
 http://www.inshaker.ru/cocktail/hot_toddy/
 http://www.inshaker.ru/cocktail/flaming_henry/
+http://www.inshaker.ru/cocktail/flaming_ferrari/
 http://www.inshaker.ru/cocktail/flaming_dr._pepper/
 http://www.inshaker.ru/cocktail/pomegranate_margarita/
 http://www.inshaker.ru/cocktail/pomegranate-grapefruit_fresh/
