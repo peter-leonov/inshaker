@@ -133,8 +133,28 @@ function CalculatorView() {
 	this.modelChanged = function(cartData, init){ // model
 		var barName = clientStorage.get('barName')
 		this.renderCart(cartData);
+		this.renderButton(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
 	};
+	
+	this.renderButton = function(cartData){
+		var cocktails = cartData.cocktails,
+			cocktailName = this.cocktailName,
+			cl = cocktails.length,
+			state = false
+		
+		if(cl > 0)
+			for(var i = 0; i < cl; i++){
+				state = typeof cocktails[i][0].name !== 'undefined' && cocktails[i][0].name == cocktailName || state
+			}
+		this.setStateButton(state)
+	}
+	
+	this.setStateButton = function(state){
+		if (this.addBtn !== null){
+			this.addBtn.innerHTML = state === false ? '<b>Добавить в план</b>' : '<b>Добавлено</b>'
+		}
+	}
 	
 	this.renderCart = function(cartData){
 		// FIXME: dirty fix for too early call for renderCart()
