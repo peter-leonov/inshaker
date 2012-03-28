@@ -83,7 +83,7 @@ var AboutPage = {
 		{
 			var mark = marks[i]
 			
-			var span = document.createElement('span')
+			var span = document.createElement('li')
 			span.className = 'partner-item'
 			span.innerHTML = '<a class="partner-link" href="/combinator.html#q=' + mark + '"><img class="partner-image" src="' + mark.getBannerSrc() + '"></a>'
 			content.appendChild(span)
