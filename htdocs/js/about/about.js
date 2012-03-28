@@ -81,7 +81,7 @@ var AboutPage = {
 					'olmeca-altos', 'pere-magloire', 'perrier', 'sagatiba', 'simple', 'xenta'
 				  ];
 				  		
-		 var content=$$('.view-partners')[0];	  
+		 var content=$$('.partner-list')[0];	  
 		 for(var i=0;i<marks.length;i++){
 				var div=document.createElement('div');
 				div.className="partner-item";
