@@ -159,7 +159,7 @@ function CalculatorView() {
 		if (!this.addBtn)
 			return
 		
-		this.addBtn.innerHTML = state ? '<b>Добавлено</b>' : '<b>Добавить в план</b>'
+		this.addBtn.toggleClassName('in-cart', state)
 	}
 	
 	this.renderCart = function(cartData){
