@@ -143,10 +143,10 @@ function CalculatorView() {
 			cl = cocktails.length,
 			state = false
 		
-		if(cl > 0)
-			for(var i = 0; i < cl; i++){
-				state = typeof cocktails[i][0].name !== 'undefined' && cocktails[i][0].name == cocktailName || state
-			}
+		for(var i = 0; i < cl; i++){
+			state = typeof cocktails[i][0].name !== 'undefined' && cocktails[i][0].name == cocktailName || state
+		}
+		
 		this.setStateButton(state)
 	}
 	
