@@ -454,6 +454,12 @@ var myProto =
 						continue ck
 				}
 				
+				for (var k in r.ingredients)
+				{
+					if (!curr.ingredients[k])
+						continue ck
+				}
+				
 				Object.extend(r.cocktails, curr.cocktails)
 				if (curr.len == r.len)
 					recommends[i] = null
