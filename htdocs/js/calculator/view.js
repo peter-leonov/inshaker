@@ -143,8 +143,13 @@ function CalculatorView() {
 			cl = cocktails.length,
 			state = false
 		
+		// look up for a cocktail in the cart
 		for(var i = 0; i < cl; i++){
-			state = cocktails[i][0].name == cocktailName || state
+			if (cocktails[i][0].name == cocktailName)
+			{
+				state = true
+				break
+			}
 		}
 		
 		this.setStateButton(state)
