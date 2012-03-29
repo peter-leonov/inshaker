@@ -151,7 +151,7 @@ function CalculatorView() {
 	}
 	
 	this.setStateButton = function(state){
-		if (this.addBtn !== null){
+		if (this.addBtn){
 			this.addBtn.innerHTML = state ? '<b>Добавлено</b>' : '<b>Добавить в план</b>'
 		}
 	}
