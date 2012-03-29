@@ -144,7 +144,7 @@ function CalculatorView() {
 			state = false
 		
 		for(var i = 0; i < cl; i++){
-			state = typeof cocktails[i][0].name !== 'undefined' && cocktails[i][0].name == cocktailName || state
+			state = cocktails[i][0].name == cocktailName || state
 		}
 		
 		this.setStateButton(state)
