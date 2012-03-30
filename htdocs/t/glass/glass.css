@@ -138,6 +138,8 @@ html.msie-5 #ancient-browser-warning,
 html.msie-6 #ancient-browser-warning,
 html.msie-7 #ancient-browser-warning { display: block; }
 
+<!--# include virtual="/t/popup.css" -->
+
 } /* @media screen */
 
 

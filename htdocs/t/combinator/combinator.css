@@ -159,7 +159,6 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-<!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 html.msie-6 .ingredients-list .group .list,
