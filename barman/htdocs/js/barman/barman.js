@@ -4,6 +4,7 @@
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/onready.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/date.js" -->
 <!--# include virtual="/liby/modules/cookie.js" -->
 <!--# include virtual="/liby/modules/json.js" -->
 <!--# include virtual="/liby/modules/form-helper.js" -->
@@ -103,12 +104,18 @@ $.onready(function()
 		}
 	}
 	
+	function remember (e)
+	{
+		var fh = FormHelper.toHash(nodes.processorsList)
+		Cookie.set('barman-memory', JSON.stringify(fh), Date.diff('1y'))
+	}
+	nodes.processorsList.addEventListener('click', remember, false)
+	
 	new UIButton(nodes.shake).onaction = function (e)
 	{
 		var button = this
 		
 		var fh = FormHelper.toHash(nodes.processorsList)
-		Cookie.set('barman-memory', JSON.stringify(fh))
 		
 		if (run('/act/launcher.cgi', fh, function () { button.enable() }))
 			button.disable()
