@@ -34,6 +34,7 @@ var Controller = {
 	
 	name : "",
 	relatedCount: 10,
+	lastFrame: 'state-initial',
 	
 	nodes:
 	{
@@ -51,6 +52,7 @@ var Controller = {
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
 		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
 	    
+		this.lh = new LocationHash().bind(window)
 		Model.dataListener = this;
 		this.bindEvents(this.name);
 		Model.init(this.name);
@@ -62,6 +64,66 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderTags()
+		if ( this.lh.get() != '' )
+			this.renderFrame()
+	},
+	
+	frames: function(){
+		var self = this
+
+		return [
+			{
+				cl: 'state-recipe',
+				hash: 'showme-recipe',
+				doit: function(){
+					Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
+					
+					var ri = $(self.ID_ING).RollingImagesLite
+					if (ri)
+						ri.goInit(); // Work-around for RI: FIXME
+				}
+			},
+			{
+				cl: 'state-legend',
+				hash: 'showme-legend',
+				doit: function(){
+					Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
+				}
+			},
+			{
+				cl: 'state-initial',
+				hash: '',
+				doit: function(){
+					//if ( typeof window.history.replaceState === 'function' )
+					//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
+				}
+			}
+		]
+	},
+	
+	changeFrame: function(key, val){
+		var self = this,
+			root = self.nodes.hreview,
+			frames = self.frames()
+		
+		for(var i = 0, fl = frames.length; i < fl; i++)
+		{
+			if(key in frames[i] && frames[i][key] == val)
+			{
+				root.removeClassName(self.lastFrame)
+				root.addClassName(frames[i].cl)
+				self.lastFrame = frames[i].cl
+				frames[i].doit()
+				if ( self.lh.get() != frames[i].hash ) self.lh.set(frames[i].hash)
+				return
+			}
+		}
+	},
+	
+	renderFrame: function(){
+		var self = this
+		
+		self.changeFrame('hash', self.lh.get())
 	},
 	
 	bindEvents: function(name){
@@ -102,23 +164,17 @@ var Controller = {
 			}
 		}
 		
+		this.lh.addEventListener('change', function (e) {
+			self.renderFrame()
+		}, false)
+		
 		this.nodes.showRecipe.addEventListener('click', function(e){
-			Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
-			
-			var root = self.nodes.hreview
-			root.removeClassName('state-initial')
-			root.addClassName('state-recipe')
-			
-			var ri = $(self.ID_ING).RollingImagesLite
-			if (ri)
-				ri.goInit(); // Work-around for RI: FIXME
+			self.changeFrame('cl', 'state-recipe')
 		}, false);
 		
 		this.nodes.hideRecipe.addEventListener('click', function (e)
 		{
-			var root = self.nodes.hreview
-			root.removeClassName('state-recipe')
-			root.addClassName('state-initial')
+			self.changeFrame('cl', 'state-initial')
 		},
 		false)
 		
@@ -126,19 +182,13 @@ var Controller = {
 		{
 			this.nodes.showLegendBtn.addEventListener('click', function (e)
 			{
-				Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
-			
-				var root = self.nodes.hreview
-				root.removeClassName('state-initial')
-				root.addClassName('state-legend')
+				self.changeFrame('cl', 'state-legend')
 			},
 			false)
 			
 			this.nodes.hideLegendBtn.addEventListener('click', function (e)
 			{
-				var root = self.nodes.hreview
-				root.removeClassName('state-legend')
-				root.addClassName('state-initial')
+				self.changeFrame('cl', 'state-initial')
 			},
 			false)
 		}
