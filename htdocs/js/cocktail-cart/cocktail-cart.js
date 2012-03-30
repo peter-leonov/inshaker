@@ -26,9 +26,6 @@ Object.extend(Me.prototype, myProto)
 
 <!--# include virtual="/liby/modules/user-agent.js" -->
 	
-<!--# include virtual="/liby/modules/child-indexed-path.js" -->
-<!--# include virtual="/liby/modules/cloner.js" -->
-
 <!--# include virtual="/js/common/units.js" -->
 
 <!--# include virtual="model.js" -->

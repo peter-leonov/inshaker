@@ -28,6 +28,11 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
 
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
+<!--# include virtual="/js/common/popup.js" -->
+
+
 $.onready(function () { setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()

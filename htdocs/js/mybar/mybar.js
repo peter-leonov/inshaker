@@ -31,10 +31,6 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/liby/modules/regexp-escape.js" -->
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
-
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/common/fun-fix.js" -->
