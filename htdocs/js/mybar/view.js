@@ -557,6 +557,15 @@ var myProto =
 		this.nodes.recommends.recommendsList.appendChild(df)
 	},
 	
+	renderMenuNums : function(ingredientsHash, cocktailsHash, recommends)
+	{
+		var nodes = this.nodes.mainLinksSup
+		
+		nodes.ingredients.innerText = ingredientsHash.length == 0 ? '' : ingredientsHash.length 
+		nodes.cocktails.innerText = cocktailsHash.length == 0 ? '' : cocktailsHash.length
+		nodes.recommendations.innerText = recommends.length == 0 ? '' : recommends.length
+	},
+	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
 	{
 		var dt = Nc('dt', 'advice')
