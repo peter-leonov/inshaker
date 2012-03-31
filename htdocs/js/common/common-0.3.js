@@ -16,6 +16,8 @@
 <!--# include virtual="/liby/modules/visibility-frame.js"-->
 <!--# include virtual="/liby/modules/boxer.js"-->
 <!--# include virtual="/liby/modules/user-agent.js" -->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')
@@ -26,9 +28,6 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
-
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/js/common/popup.js" -->
 
 
