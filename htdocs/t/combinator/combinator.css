@@ -1,7 +1,5 @@
 html { overflow-y: scroll; min-height: 100%; position: relative; }
 
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
-
 #branded-image-holder { display: none; }
 
 .common-box .common-title { background: none; z-index: 1; position: relative; }

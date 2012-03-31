@@ -1,8 +1,6 @@
 html, button { font-family: Arial,sans-serif; }
 body { padding: 25px 0 0 0; margin: 0; }
 
-.hidden { display: none; }
-
 a { color:#cc2f7c; }
 
 button { cursor: pointer; border: 1px transparent solid; border-radius: 10px;  text-align: center; padding: 0; font-size: 16px; }

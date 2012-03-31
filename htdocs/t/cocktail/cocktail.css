@@ -34,9 +34,6 @@
 
 .cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
 
-.hidden { display: none !important; }
-.popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
-
 .column-main { width: 628px; }
 
 .common-title { width: 100%; position: relative; }

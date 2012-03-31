@@ -80,8 +80,6 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
 
-.hidden { display: none !important; }
-
 <!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
 #sort-menu dl,
 #sort-menu dd { position: static; }

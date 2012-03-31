@@ -22,6 +22,7 @@ body{font:10px Tahoma,Arial,sans-serif;color:#343b40;}
 html { overflow-y: scroll; height: 100%; }
 body { min-width: 985px; position: relative; min-height: 100%; }
 
+.hidden { visibility: hidden; position: absolute !important; top: -100000px !important; }
 
 /* 0px to 10px rounded corners */
 .rounding-corners .lt,
