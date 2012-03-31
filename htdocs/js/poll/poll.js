@@ -27,6 +27,6 @@ function onready ()
 	Me.bootstrap()
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
 
 })();

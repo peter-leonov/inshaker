@@ -74,6 +74,6 @@ function onready ()
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
 
 })();
