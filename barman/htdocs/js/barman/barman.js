@@ -2,7 +2,6 @@
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/selectors.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
-<!--# include virtual="/liby/modules/onready.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/date.js" -->
 <!--# include virtual="/liby/modules/cookie.js" -->
