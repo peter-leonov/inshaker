@@ -197,6 +197,13 @@ var Controller = {
 			tag.href = "/combinator.html#q=" + query
 		}
 	},
+
+	toArray: function(node_list) {
+		var result = [], i, l
+		for (i = 0, l = node_list.length; i < l; i+=1)
+			result.push(node_list[i])
+		return result
+	},
 	
 	renderRecommendations: function(recs){
 		var recs_nodes = this.nodes.recommendations
@@ -209,7 +216,7 @@ var Controller = {
 			recs_fragment.appendChild(this._createRecommendationElement(recs[i], i))
 		}
 
-		recs_items = Array.prototype.slice.call(recs_fragment.childNodes, 0)
+		recs_items = this.toArray(recs_fragment.childNodes)
 
 		if (recs_size > 1) {
 			recs_fragment.appendChild(recs_items[0].cloneNode(true))
