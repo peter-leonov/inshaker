@@ -16,6 +16,8 @@ Me.prototype =
 	{
 		var me = this
 		
+		this.nodes.form.addEventListener('submit', function (e) { me.onsubmit(e) }, false)
+		
 		var popup = this.popup = new Popup()
 		popup.bind(this.nodes.popup)
 		popup.addEventListener('hide', function (e) { me.onhide() }, false)
@@ -38,6 +40,14 @@ Me.prototype =
 		this.show()
 	},
 	
+	onsubmit: function (e)
+	{
+		e.preventDefault()
+		
+		var hash = FormHelper.toHash(e.target)
+		this.poll(hash.answer)
+	},
+	
 	poll: function (value)
 	{
 		log('poll: ' + value)
@@ -57,6 +67,7 @@ function onready ()
 	var nodes =
 	{
 		about: $$('#bottom .main-menu .link.poll')[0],
+		form: $$('#poll-popup .poll-form')[0],
 		popup:
 		{
 			root: $('poll-popup'),
