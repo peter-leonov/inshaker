@@ -20,12 +20,20 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		this.listeners.click = function (e) { me.hide() }
-		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ me.hide(); e.preventDefault() }}
+		this.listeners.click = function (e) { me.hideFromUI() }
+		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ e.preventDefault(); me.hideFromUI() }}
 		
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
 		
 		return this
+	},
+	
+	hideFromUI: function ()
+	{
+		if (!this.dispatchEvent({type: 'ui-hide'}))
+			return false
+		
+		this.hide()
 	},
 	
 	hide: function ()
