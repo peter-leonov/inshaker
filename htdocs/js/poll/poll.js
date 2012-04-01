@@ -1,16 +1,11 @@
 ;(function(){
 
-var Me =
+function Me () {}
+
+Me.prototype =
 {
-	bootstrap: function ()
+	bind: function (nodes)
 	{
-		var nodes =
-		{
-			root: $('poll-popup'),
-			window: $$('#poll-popup .popup-window')[0],
-			front: $$('#poll-popup .popup-front')[0]
-		}
-		
 		var popup = new Popup()
 		popup.bind(nodes)
 		
@@ -18,9 +13,25 @@ var Me =
 	}
 }
 
+Me.className = 'PollPopup'
+self[Me.className] = Me
+
+})();
+
+
+;(function(){
+
 function onready ()
 {
-	Me.bootstrap()
+	var nodes =
+	{
+		root: $('poll-popup'),
+		window: $$('#poll-popup .popup-window')[0],
+		front: $$('#poll-popup .popup-front')[0]
+	}
+	
+	var widget = new PollPopup()
+	widget.bind(nodes)
 }
 
 $.onready(onready)
