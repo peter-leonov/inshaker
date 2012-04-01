@@ -14,7 +14,15 @@ Me.prototype =
 		var popup = this.popup = new Popup()
 		popup.bind(this.nodes.popup)
 		
+		var me = this
+		popup.addEventListener('hide', function (e) { me.onhide() }, false)
+		
 		this.popup.show()
+	},
+	
+	onhide: function ()
+	{
+		log('hide')
 	},
 	
 	maybeShow: function ()
