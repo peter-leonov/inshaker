@@ -22,12 +22,23 @@ Me.prototype =
 	
 	onhide: function ()
 	{
-		log('hide')
+		// log('onhide')
+		Cookie.set('poll-popup-hidden', Date.now(), Date.add('5s'))
 	},
 	
 	maybeShow: function ()
 	{
+		var hidden = Cookie.get('poll-popup-hidden')
+		// log(hidden && new Date(+hidden))
+		if (hidden)
+			return
+		
 		this.show()
+	},
+	
+	poll: function (value)
+	{
+		log('poll: ' + value)
 	}
 }
 

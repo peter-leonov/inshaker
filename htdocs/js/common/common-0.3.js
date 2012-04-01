@@ -43,4 +43,6 @@ require.names =
 	'Good': '/js/entities/Good.js'
 }
 
+<!--# include virtual="/liby/modules/date.js"-->
+<!--# include virtual="/liby/modules/cookie.js"-->
 <!--# include virtual="/js/poll/poll.js" -->
