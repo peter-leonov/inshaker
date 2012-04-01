@@ -33,6 +33,10 @@ Me.prototype =
 		if (!this.visible)
 			return
 		
+		if (!this.dispatchEvent({type: 'hide'}))
+			return false
+		
+		
 		this.nodes.root.hide()
 		this.visible = false
 		
@@ -44,6 +48,9 @@ Me.prototype =
 	{
 		if (this.visible)
 			return
+		
+		if (!this.dispatchEvent({type: 'show'}))
+			return false
 		
 		var nodes = this.nodes
 		nodes.root.show()
@@ -67,7 +74,8 @@ Me.prototype =
 	}
 }
 
-// Me.mixIn(EventDriven)
+Me.mixIn(EventDriven)
+
 Me.className = myName
 self[myName] = Me
 
