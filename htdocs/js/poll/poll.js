@@ -21,6 +21,7 @@ Me.prototype =
 		var me = this
 		
 		this.nodes.form.addEventListener('submit', function (e) { me.onsubmit(e) }, false)
+		this.nodes.form.addEventListener('change', function (e) { me.onchange(e) }, false)
 		
 		var popup = this.popup = new Popup()
 		popup.bind(this.nodes.popup)
@@ -51,12 +52,17 @@ Me.prototype =
 		this.show()
 	},
 	
+	onchange: function ()
+	{
+		this.nodes.button.disabled = false
+	},
+	
 	onsubmit: function (e)
 	{
 		e.preventDefault()
 		
-		var hash = FormHelper.toHash(e.target)
-		this.poll(hash.answer)
+		var answer = FormHelper.toHash(e.target).answer
+		this.poll(answer)
 		
 		this.nodes.root.addClassName('done')
 		
@@ -85,6 +91,7 @@ function onready ()
 		show: $$('#bottom .copyright .poll-show')[0],
 		root: $$('#poll-popup .poll-window')[0],
 		form: $$('#poll-popup .poll-form')[0],
+		button: $$('#poll-popup .poll-form button')[0],
 		popup:
 		{
 			root: $('poll-popup'),
