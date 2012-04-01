@@ -1,3 +1,7 @@
+<!--# include virtual="/liby/modules/date.js"-->
+<!--# include virtual="/liby/modules/cookie.js"-->
+<!--# include virtual="/liby/modules/form-helper.js"-->
+
 ;(function(){
 
 function Me () {}
