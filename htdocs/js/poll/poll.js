@@ -58,7 +58,10 @@ Me.prototype =
 		var hash = FormHelper.toHash(e.target)
 		this.poll(hash.answer)
 		
-		this.popup.hide()
+		this.nodes.root.addClassName('done')
+		
+		var popup = this.popup
+		window.setTimeout(function () { popup.hide() }, 1000)
 	},
 	
 	poll: function (value)
@@ -80,6 +83,7 @@ function onready ()
 	var nodes =
 	{
 		show: $$('#bottom .copyright .poll-show')[0],
+		root: $$('#poll-popup .poll-window')[0],
 		form: $$('#poll-popup .poll-form')[0],
 		popup:
 		{
