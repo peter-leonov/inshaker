@@ -15,14 +15,12 @@ Me.prototype =
 {
 	visible: false,
 	
-	onhide: function () { this.hide() },
-	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
 		var me = this
-		this.listeners.click = function (e) { me.onhide() }
+		this.listeners.click = function (e) { me.hide() }
 		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ me.hide(); e.preventDefault() }}
 		
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
