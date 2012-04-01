@@ -14,12 +14,11 @@ Me.prototype =
 	
 	show: function ()
 	{
+		var me = this
+		
 		var popup = this.popup = new Popup()
 		popup.bind(this.nodes.popup)
-		
-		var me = this
 		popup.addEventListener('hide', function (e) { me.onhide() }, false)
-		
 		this.popup.show()
 	},
 	
