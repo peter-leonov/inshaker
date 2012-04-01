@@ -2,6 +2,8 @@
 
 var myName = 'Popup'
 
+var KEY_ESC = 27
+
 function Me ()
 {
 	this.nodes = {}
@@ -21,7 +23,7 @@ Me.prototype =
 		
 		var me = this
 		this.listeners.click = function (e) { me.onhide() }
-		this.listeners.key = function (e) { if (e.keyCode == 27){ me.hide(); e.preventDefault() }}
+		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ me.hide(); e.preventDefault() }}
 		
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
 		
