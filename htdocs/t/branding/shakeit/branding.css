@@ -7,7 +7,7 @@
 #top .link:hover { border-bottom-color: #8dd013; }
 
 /* common.css */
-#spotlighted,
+#spotlighted i,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
@@ -79,3 +79,18 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 /* about.css */
 #form_success i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* bars.css */
+.bar-mini a { background-image: url(bars-mask-full.png); }
+#sort-menu .bars-select dt,
+#sort-menu .bars-select dd ul li.selected,
+#sort-menu .bars-select dd ul li:hover { color: #40aaf1; }
+#map .point .icon,
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #ff4ea5; }
+#map .point.selected .point-name { color: #ff2929; }
+
+/* bar.css */
+#main-column .info .block .head a {  }
