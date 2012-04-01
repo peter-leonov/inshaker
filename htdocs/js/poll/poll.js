@@ -7,6 +7,9 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		var me = this
+		nodes.about.addEventListener('click', function (e) { me.show() }, false)
 	},
 	
 	show: function ()
@@ -54,6 +57,7 @@ function onready ()
 {
 	var nodes =
 	{
+		about: $$('#bottom .main-menu .link.poll')[0],
 		popup:
 		{
 			root: $('poll-popup'),
