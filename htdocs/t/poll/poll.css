@@ -8,3 +8,5 @@
 #poll-popup .poll-window .variants li { display: block; margin: 0 0 10px 0; }
 #poll-popup .poll-window .variants .control { margin: 0 10px 0 0; }
 #poll-popup .poll-window .confirm { font-size: 17px; margin: 22px 0 0; text-align: center; }
+
+#bottom .copyright .poll-show { cursor: pointer; }

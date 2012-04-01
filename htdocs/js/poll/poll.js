@@ -9,7 +9,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		nodes.about.addEventListener('click', function (e) { me.show() }, false)
+		nodes.show.addEventListener('click', function (e) { me.show() }, false)
 	},
 	
 	show: function ()
@@ -66,7 +66,7 @@ function onready ()
 {
 	var nodes =
 	{
-		about: $$('#bottom .main-menu .link.poll')[0],
+		show: $$('#bottom .copyright .poll-show')[0],
 		form: $$('#poll-popup .poll-form')[0],
 		popup:
 		{
