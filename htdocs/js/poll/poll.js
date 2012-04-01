@@ -6,10 +6,20 @@ Me.prototype =
 {
 	bind: function (nodes)
 	{
-		var popup = new Popup()
-		popup.bind(nodes)
+		this.nodes = nodes
+	},
+	
+	show: function ()
+	{
+		var popup = this.popup = new Popup()
+		popup.bind(this.nodes.popup)
 		
-		popup.show()
+		this.popup.show()
+	},
+	
+	maybeShow: function ()
+	{
+		this.show()
 	}
 }
 
@@ -25,13 +35,18 @@ function onready ()
 {
 	var nodes =
 	{
-		root: $('poll-popup'),
-		window: $$('#poll-popup .popup-window')[0],
-		front: $$('#poll-popup .popup-front')[0]
+		popup:
+		{
+			root: $('poll-popup'),
+			window: $$('#poll-popup .popup-window')[0],
+			front: $$('#poll-popup .popup-front')[0]
+		}
 	}
 	
 	var widget = new PollPopup()
 	widget.bind(nodes)
+	
+	widget.maybeShow()
 }
 
 $.onready(onready)
