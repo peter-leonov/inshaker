@@ -73,7 +73,7 @@ Me.prototype =
 	
 	poll: function (value)
 	{
-		log('poll: ' + value)
+		Statistics.poll('frequency-of-making-cocktails-at-home', value)
 	}
 }
 
