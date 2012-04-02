@@ -44,4 +44,4 @@ function onready (e)
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)

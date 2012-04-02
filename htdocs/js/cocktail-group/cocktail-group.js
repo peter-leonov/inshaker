@@ -81,12 +81,8 @@ self[Me.className] = Me
 
 })();
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
-
 <!--# include virtual="/js/common/throttler.js" -->
 
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/combinator/ingrediented-cocktail-list.js" -->
@@ -108,6 +104,6 @@ function onready ()
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
 
 })();

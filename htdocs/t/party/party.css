@@ -129,8 +129,6 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 
 #print-logo-hd { display: none; } 
 
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
-
 } /* @media screen */
 
 
@@ -149,8 +147,7 @@ body,
 #illustration-box .content,
 #advice-list,
 #links-box,
-#recipes-box .common-title,
-.hidden { display: none; }
+#recipes-box .common-title { display: none; }
 
 #party-name { font-size: 25px; width: 730px; }
 
@@ -218,6 +215,4 @@ body,
 
 <!--# include virtual="/t/parties/party-list.css" -->
 
-<!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
-

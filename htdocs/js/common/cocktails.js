@@ -15,9 +15,6 @@ if (!clientStorage)
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/calculator/calculator.js" -->

@@ -1,25 +1,35 @@
 (function(){
 
-var doc = document
+var fired
+function fireDCL ()
+{
+	// one more frontier
+	if (fired)
+		return
+	fired = true
+	
+	// Events must be fixed at this point to preserve handlers call order.
+	// Element prototype and other fixes have subscribed erlier.
+	var e = document.createEvent('Event')
+	e.initEvent('DOMContentLoaded', false, false)
+	document.dispatchEvent(e)
+}
 
 // based on jQuery onready for IE
 // based on the trick by Diego Perini (http://javascript.nwbox.com/IEContentLoaded/)
 function checkready ()
 {
-	try { doc.documentElement.doScroll("left") }
+	try { document.documentElement.doScroll('left') }
 	catch (ex) { return }
 	
-	clearInterval(checkready.interval)
+	// run once
+	clearInterval(interval)
 	
-	// IE8 gain native support for Element.prototype
-	// so __pmc__fixNodes is no more needed
-	if (doc.__pmc__fixNodes)
-		// IE 6 and 7
-		doc.__pmc__fixNodes(doc.all)
-	
-	if (self.$ && self.$.onready)
-		self.$.onready.run()
+	fireDCL()
 }
-checkready.interval = setInterval(checkready, 100)
+var interval = setInterval(checkready, 100)
+
+// safe fallback
+window.addEventListener('load', fireDCL, false)
 
 })();

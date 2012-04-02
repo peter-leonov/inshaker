@@ -12,8 +12,6 @@ html { overflow-y: scroll; }
 html.loading #cocktail-list { display: none; }
 #cocktail-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }
 
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
-
 
 .ingrediented-cocktail-list .group { margin: 0 0 50px 0; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
@@ -67,5 +65,4 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
-<!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->

@@ -1,12 +1,9 @@
 <!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/interpolate.js" -->
 
 <!--# include virtual="/js/common/number.js" -->
 <!--# include virtual="/js/common/units.js" -->
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
 
@@ -83,5 +80,6 @@ function onready ()
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
+
 })();

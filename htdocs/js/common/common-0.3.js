@@ -5,7 +5,6 @@
 <!--# include virtual="/liby/modules/require.js" -->
 <!--# include virtual="/liby/modules/selectors.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
-<!--# include virtual="/liby/modules/onready.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/nodes.js" -->
 <!--# include virtual="/liby/modules/event-driven.js" -->
@@ -17,6 +16,8 @@
 <!--# include virtual="/liby/modules/visibility-frame.js"-->
 <!--# include virtual="/liby/modules/boxer.js"-->
 <!--# include virtual="/liby/modules/user-agent.js" -->
+<!--# include virtual="/liby/modules/child-indexed-path.js"-->
+<!--# include virtual="/liby/modules/cloner.js"-->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')
@@ -27,6 +28,8 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
+<!--# include virtual="/js/common/popup.js" -->
+
 
 $.onready(function () { setTimeout(function ()
 {
@@ -39,3 +42,5 @@ require.names =
 {
 	'Good': '/js/entities/Good.js'
 }
+
+<!--# include virtual="/js/poll/poll.js" -->

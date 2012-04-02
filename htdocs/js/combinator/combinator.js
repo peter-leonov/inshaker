@@ -1,8 +1,6 @@
 <!--# include virtual="/liby/core/fixes/onhashchange.js"-->
 <!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/regexp-escape.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->
@@ -14,7 +12,6 @@
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/common/fun-fix.js" -->

@@ -1,4 +1,5 @@
-$.onload = function (fn) { return self.addEventListener('load', fn, false) }
+$.onload = function (f) { return window.addEventListener('load', f, false) }
+$.onready = function (f) { document.addEventListener('DOMContentLoaded', f, false) }
 $.load = function (src)
 {
 	var me = arguments.callee
@@ -11,10 +12,4 @@ $.load = function (src)
 	document.getElementsByTagName('head')[0].appendChild(node)
 	cache[src] = node
 	return node
-}
-$.iamready = function ()
-{
-	var e = document.createEvent('Event')
-	e.initEvent('ready', false, false)
-	document.dispatchEvent(e)
 }

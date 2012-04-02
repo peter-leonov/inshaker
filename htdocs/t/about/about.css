@@ -1,5 +1,3 @@
-.hidden { display: none; }
-
 .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
 .border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
 .border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }

@@ -50,10 +50,12 @@
 <script src="/js/common/common-0.3.js"></script>
 <script>
 ;(function(){
-function onready () { UserAgent.setupDocumentElementClassNames() }
-document.addEventListener('ready', onready, false)
+function onready ()
+{
+	UserAgent.setupDocumentElementClassNames()
+}
+$.onready(onready)
 })();
-$.iamready()
 </script>
 </body>
 </html>
