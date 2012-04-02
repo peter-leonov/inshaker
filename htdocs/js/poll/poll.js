@@ -33,7 +33,6 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		// log('onhide')
 		Cookie.set('poll-popup-hidden', Date.now(), Date.add('5s'))
 	},
 	
@@ -46,7 +45,6 @@ Me.prototype =
 	maybeShow: function ()
 	{
 		var hidden = Cookie.get('poll-popup-hidden')
-		// log(hidden && new Date(+hidden))
 		if (hidden)
 			return
 		
