@@ -22,6 +22,7 @@ Me.prototype =
 		
 		this.nodes.form.addEventListener('submit', function (e) { me.onsubmit(e) }, false)
 		this.nodes.form.addEventListener('change', function (e) { me.onchange(e) }, false)
+		this.nodes.form.addEventListener('click', function (e) { me.onchange(e) }, false)
 		
 		var popup = this.popup = new Popup()
 		popup.bind(this.nodes.popup)
