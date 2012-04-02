@@ -33,7 +33,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set('poll-popup-hidden', Date.now(), Date.add('10d'))
+		Cookie.set('poll-popup-hidden', Date.now(), Date.add('10d'), '/')
 	},
 	
 	hideFromUI: function ()
