@@ -64,6 +64,11 @@ var Me =
 		this.path('/party/' + party.path + '/print')
 	},
 	
+	poll: function (name, value)
+	{
+		this.path('/user-events/poll/' + name + '/' + value)
+	},
+	
 	event: function (action, label, value)
 	{
 		setTimeout(function () { Tracker.event('UserAction', action, label, value) }, 250)
