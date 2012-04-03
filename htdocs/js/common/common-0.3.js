@@ -42,5 +42,3 @@ require.names =
 {
 	'Good': '/js/entities/Good.js'
 }
-
-<!--# include virtual="/js/poll/poll.js" -->
