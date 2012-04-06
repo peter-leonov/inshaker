@@ -81,8 +81,8 @@ var Controller = {
 			Statistics.cocktailViewLegend(Cocktail.getByName(this.name))
 		},
 		'state-initial': function(){
-			//if ( typeof window.history.replaceState === 'function' )
-			//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
+			if ( typeof window.history.replaceState === 'function' )
+				window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
 		}
 	},
 	
@@ -97,12 +97,12 @@ var Controller = {
 		root.addClassName(state)
 		self.lastFrame = state
 		
-		frames[state].call(self)
-
 		if ( state == self.defaultFrame )
 			self.lh.set('')
 		else if ( self.lh.get() != state )
 			self.lh.set(state)
+
+		frames[state].call(self)
 	},
 	
 	renderFrame: function(){
