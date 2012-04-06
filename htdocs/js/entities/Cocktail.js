@@ -91,27 +91,54 @@ Me.prototype =
 	
 	getPreviewNode: function (lazy, big)
 	{
-		var htmlName = this.name_eng.htmlName(),
-			path = '/cocktail/' + htmlName
-		
 		var li = document.createElement('li')
 		li.className = lazy ? 'cocktail-preview lazy' : 'cocktail-preview'
+				
+		var a = this.getPreviewLink(lazy, big, true)
+		li.img = a.img
+		li.appendChild(a)
 		
+		return li
+	},
+	
+	getPreviewLink: function(lazy, big, text)
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+
 		var a = document.createElement('a')
 		a.className = 'link'
 		a.href = path + '/'
-		li.appendChild(a)
 		
-		var img = li.img = document.createElement("img")
+		var img = a.img = document.createElement("img")
 		img.className = 'image'
 		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
 		a.appendChild(img)
+		
+		if ( text == true )
+		{
+			var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+			var txt = document.createTextNode(name)
+			a.appendChild(txt)
+		}
+		
+		return a
+	},
+	
+	getNameLink: function()
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+
+		var a = document.createElement('a')
+		a.className = 'cocktail-name'
+		a.href = path + '/'
 		
 		var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
 		var txt = document.createTextNode(name)
 		a.appendChild(txt)
 		
-		return li
+		return a
 	},
 	
 	getPreviewNodeCropped: function ()

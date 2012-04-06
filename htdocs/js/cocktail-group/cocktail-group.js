@@ -30,9 +30,8 @@ Me.prototype =
 		var groupName = nodes.groupName.getAttribute('data-name')
 		
 		var inco = new IngredientedCocktailList()
-		inco.bind({main: nodes.list})
+		inco.bind({main: nodes.list, more: nodes.moreCocktails})
 		inco.setCocktails([{name: groupName, cocktails: cocktails}])
-		inco.wake()
 		
 		var me = this
 		nodes.root.addEventListener('click', function (e) { me.maybeIngredientClicked(e) }, false)
@@ -89,7 +88,7 @@ self[Me.className] = Me
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
-<!--# include virtual="/js/combinator/ingrediented-cocktail-list.js" -->
+<!--# include virtual="ingrediented-cocktail-list.js" -->
 <!--# include virtual="/js/combinator/ingredients-list.js" -->
 
 ;(function(){
@@ -101,7 +100,8 @@ function onready ()
 		root: $('main-column'),
 		groupName: $('group-name'),
 		list: $('cocktail-list'),
-		cocktailItems: $$('#cocktail-list li')
+		cocktailItems: $$('#cocktail-list li'),
+		moreCocktails: $('more-cocktails')
 	}
 	
 	var widget = new CocktailGroup()
