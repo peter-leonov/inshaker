@@ -233,10 +233,12 @@ var Controller = {
 			timeout: 2600,
 			start: function ()
 			{
-				carousel.cycle = setTimeout(function() {
+				function goNext ()
+				{
 					list.goNext()
 					carousel.start()
-				}, carousel.timeout)
+				}
+				carousel.cycle = setTimeout(goNext, carousel.timeout)
 			},
 			stop: function ()
 			{
