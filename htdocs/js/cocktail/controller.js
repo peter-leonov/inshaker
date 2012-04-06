@@ -217,16 +217,17 @@ var Controller = {
 
 		recs_items = this.toArray(recs_fragment.childNodes)
 
-		if (recs_size > 1) {
-			recs_fragment.appendChild(recs_items[0].cloneNode(true))
-			recs_surface.appendChild(recs_fragment)
-		} else {
+		if (recs_size <= 1) {
 			recs_nodes.next.addClassName('disabled')
 			recs_nodes.prev.addClassName('disabled')
 			recs_surface.appendChild(recs_fragment)
 			return
 		}
-
+		
+		recs_fragment.appendChild(recs_items[0].cloneNode(true))
+		recs_surface.appendChild(recs_fragment)
+		
+		
 		var list = new LazyList()
 		list.bind(recs_nodes)
 		list.configure({friction: 100, pageVelocity: 19.5, soft: Infinity, min: 75, max: 100})
