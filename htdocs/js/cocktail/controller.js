@@ -35,6 +35,7 @@ var Controller = {
 	name : "",
 	relatedCount: 10,
 	lastFrame: 'state-initial',
+	defaultFrame: 'state-initial',
 	
 	nodes:
 	{
@@ -89,7 +90,7 @@ var Controller = {
 		},
 		{
 			cl: 'state-initial',
-			hash: '',
+			hash: 'state-initial',
 			doit: function(){
 				//if ( typeof window.history.replaceState === 'function' )
 				//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
@@ -102,15 +103,20 @@ var Controller = {
 			root = self.nodes.hreview,
 			frames = self.frames
 		
+		val = val || self.defaultFrame
+		
 		for(var i = 0, fl = frames.length; i < fl; i++)
 		{
-			if(key in frames[i] && frames[i][key] == val)
+			if(frames[i][key] == val)
 			{
 				root.removeClassName(self.lastFrame)
 				root.addClassName(frames[i].cl)
 				self.lastFrame = frames[i].cl
 				frames[i].doit.call(self)
-				if ( self.lh.get() != frames[i].hash ) self.lh.set(frames[i].hash)
+				if ( frames[i].hash == self.defaultFrame )
+					self.lh.set('')
+				else if ( self.lh.get() != frames[i].hash )
+					self.lh.set(frames[i].hash)
 				return
 			}
 		}
