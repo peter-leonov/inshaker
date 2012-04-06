@@ -3,7 +3,6 @@ $.onready(function(){
 	IngredientPopup.bootstrap()
 	
 	var aniOpts = {animationType: 'easeInOutCubic'};
-	new RollingImagesLite($('recommendations'), aniOpts);
 	new RollingImagesLite($('related'), aniOpts);
 	new RollingImagesLite($('ingredients'), aniOpts);
 	Controller.init();

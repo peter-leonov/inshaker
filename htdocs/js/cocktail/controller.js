@@ -43,7 +43,15 @@ var Controller = {
 		hideRecipe: $('close-recipe'),
 		showLegendBtn: $('show-legend'),
 		hideLegendBtn: $('hide-legend'),
-		tags: $$('#main-content .tags .tag')
+		tags: $$('#main-content .tags .tag'),
+		recommendations:
+		{
+			root: $('recommendations'),
+			viewport: $$('#recommendations .viewport')[0],
+			surface: $$('#recommendations .surface')[0],
+			prev: $$('#recommendations .prev')[0],
+			next: $$('#recommendations .next')[0]
+		}
 	},
 	
 	init: function(){
@@ -189,44 +197,64 @@ var Controller = {
 			tag.href = "/combinator.html#q=" + query
 		}
 	},
+
+	renderRecommendations: function (recs)
+	{
+		var nodes = this.nodes.recommendations
+		var surface = nodes.surface
+		var items = []
+		var size = recs.length
+		
+		for (var i = 0; i < recs.length; i++)
+		{
+			var item = this._createRecommendationElement(recs[i], i)
+			items[i] = item
+			surface.appendChild(item)
+		}
+		
+		var tail = items[0].cloneNode(true)
+		items.push(tail)
+		surface.appendChild(tail)
+		
+		
+		var list = new LazyList()
+		list.bind(nodes)
+		list.configure({friction: 5, pageVelocity: 18, soft: Infinity, min: 75, max: 100})
+		list.setNodes(items, size)
+		
+		if (size <= 1)
+		{
+			nodes.next.addClassName('disabled')
+			nodes.prev.addClassName('disabled')
+			return
+		}
+		
+		this.setupCarousel(nodes, list)
+	},
 	
-	renderRecommendations: function(recs){
-		var ri = $(this.ID_REC).RollingImagesLite;
-		var parent = $(this.ID_REC_SUR);
-		
-		for(var i = 0; i < recs.length; i++){
-			var div = this._createRecommendationElement(recs[i], i);
-			parent.appendChild(div);
-		}
-		
-		if(recs.length > 1){
-			parent.appendChild(this._createRecommendationElement(recs[0], i));
-			switchFrame = function(){
-				var len = ri.points.length
-				var cur = ri.current
-				
-				if(cur == len-2) {
-					var animation = ri.goToFrame(cur+1);
-					animation.oncomplete = function(){
-						ri.goToFrame(0, 'directJump');
-					};
-				} else {
-					ri.goToFrame(cur+1);
+	setupCarousel: function (nodes, list)
+	{
+		var carousel =
+		{
+			timeout: 2600,
+			start: function ()
+			{
+				function goNext ()
+				{
+					list.goNext()
+					carousel.start()
 				}
+				carousel.cycle = setTimeout(goNext, carousel.timeout)
+			},
+			stop: function ()
+			{
+				clearTimeout(carousel.cycle)
 			}
-			var frameSwitchTimer = setInterval(switchFrame, 2500);
-			var removedLast = false;
-			parent.addEventListener('mouseover', function(){ 
-				clearInterval(frameSwitchTimer);
-				if(!removedLast){
-					parent.removeChild(parent.lastChild);
-					ri.sync();
-					removedLast = true;
-				}
-			}, false);
 		}
-		ri.sync();
-		ri.goInit();
+		
+		nodes.root.addEventListener('mouseover', carousel.stop)
+		nodes.root.addEventListener('mouseout', carousel.start)
+		carousel.start()
 	},
 	
 	_createRecommendationElement: function (rec, num)
