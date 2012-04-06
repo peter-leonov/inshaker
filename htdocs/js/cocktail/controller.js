@@ -197,18 +197,20 @@ var Controller = {
 		}
 	},
 
-	renderRecommendations: function(recs){
+	renderRecommendations: function (recs)
+	{
 		var nodes = this.nodes.recommendations
 		var surface = nodes.surface
 		var items = []
 		var size = recs.length
-
-		for(var i = 0; i < recs.length; i++){
+		
+		for (var i = 0; i < recs.length; i++)
+		{
 			var item = this._createRecommendationElement(recs[i], i)
 			items[i] = item
 			surface.appendChild(item)
 		}
-
+		
 		var tail = items[0].cloneNode(true)
 		items.push(tail)
 		surface.appendChild(tail)
@@ -219,27 +221,31 @@ var Controller = {
 		list.configure({friction: 100, pageVelocity: 19.5, soft: Infinity, min: 75, max: 100})
 		list.setNodes(items, size)
 		
-		if (size <= 1) {
+		if (size <= 1)
+		{
 			nodes.next.addClassName('disabled')
 			nodes.prev.addClassName('disabled')
 			return
 		}
 		
-		var carousel = {
+		var carousel =
+		{
 			timeout: 2600,
-			start: function() {
+			start: function ()
+			{
 				carousel.cycle = setTimeout(function() {
 					list.goNext()
 					carousel.start()
 				}, carousel.timeout)
 			},
-			stop: function() {
+			stop: function ()
+			{
 				clearTimeout(carousel.cycle)
 			}
 		}
-
-		nodes.root.addEventListener("mouseover", carousel.stop)
-		nodes.root.addEventListener("mouseout", carousel.start)
+		
+		nodes.root.addEventListener('mouseover', carousel.stop)
+		nodes.root.addEventListener('mouseout', carousel.start)
 		carousel.start()
 	},
 	
