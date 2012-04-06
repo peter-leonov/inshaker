@@ -1,7 +1,7 @@
 #b-bill {position:relative;z-index:1}
 /* bill (cart) */
 
-#b-bill .common-title h1 { display: inline; font-size: 16px; }
+#b-bill .common-title h1 { display: inline; font-size: 20px; }
 
 #b-bill,
 #sidebar {float:right; width:310px; margin-left:18px; position:relative; z-index:1;}
