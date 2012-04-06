@@ -228,6 +228,11 @@ var Controller = {
 			return
 		}
 		
+		this.setupCarousel(nodes, list)
+	},
+	
+	setupCarousel: function (nodes, list)
+	{
 		var carousel =
 		{
 			timeout: 2600,
