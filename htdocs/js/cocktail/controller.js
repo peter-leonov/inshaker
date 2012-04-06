@@ -218,7 +218,7 @@ var Controller = {
 		
 		var list = new LazyList()
 		list.bind(nodes)
-		list.configure({friction: 100, pageVelocity: 19.5, soft: Infinity, min: 75, max: 100})
+		list.configure({friction: 5, pageVelocity: 18, soft: Infinity, min: 75, max: 100})
 		list.setNodes(items, size)
 		
 		if (size <= 1)
