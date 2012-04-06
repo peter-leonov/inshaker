@@ -197,35 +197,27 @@ var Controller = {
 		}
 	},
 
-	toArray: function(node_list) {
-		var result = [], i, l
-		for (i = 0, l = node_list.length; i < l; i+=1)
-			result.push(node_list[i])
-		return result
-	},
-	
 	renderRecommendations: function(recs){
 		var recs_nodes = this.nodes.recommendations
 		var recs_surface = recs_nodes.surface
-		var recs_items = null
-		var recs_fragment = document.createDocumentFragment()
+		var recs_items = []
 		var recs_size = recs.length
 
 		for(var i = 0; i < recs.length; i++){
-			recs_fragment.appendChild(this._createRecommendationElement(recs[i], i))
+			var item = this._createRecommendationElement(recs[i], i)
+			recs_items[i] = item
+			recs_surface.appendChild(item)
 		}
-
-		recs_items = this.toArray(recs_fragment.childNodes)
 
 		if (recs_size <= 1) {
 			recs_nodes.next.addClassName('disabled')
 			recs_nodes.prev.addClassName('disabled')
-			recs_surface.appendChild(recs_fragment)
 			return
 		}
 		
-		recs_fragment.appendChild(recs_items[0].cloneNode(true))
-		recs_surface.appendChild(recs_fragment)
+		var tail = recs_items[0].cloneNode(true)
+		recs_items.push(tail)
+		recs_surface.appendChild(tail)
 		
 		
 		var list = new LazyList()
