@@ -65,67 +65,50 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderTags()
-		if ( this.lh.get() != '' )
+		if ( !!this.lh.get() )
 			this.renderFrame()
 	},
 	
-	frames: [
-		{
-			cl: 'state-recipe',
-			hash: 'showme-recipe',
-			doit: function(){
-				Statistics.cocktailViewRecipe(Cocktail.getByName(this.name))
-				
-				var ri = $(this.ID_ING).RollingImagesLite
-				if (ri)
-					ri.goInit(); // Work-around for RI: FIXME
-			}
+	frames: {
+		'state-recipe': function(){
+			Statistics.cocktailViewRecipe(Cocktail.getByName(this.name))
+			
+			var ri = $(this.ID_ING).RollingImagesLite
+			if (ri)
+				ri.goInit(); // Work-around for RI: FIXME
 		},
-		{
-			cl: 'state-legend',
-			hash: 'showme-legend',
-			doit: function(){
-				Statistics.cocktailViewLegend(Cocktail.getByName(this.name))
-			}
+		'state-legend': function(){
+			Statistics.cocktailViewLegend(Cocktail.getByName(this.name))
 		},
-		{
-			cl: 'state-initial',
-			hash: 'state-initial',
-			doit: function(){
-				//if ( typeof window.history.replaceState === 'function' )
-				//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
-			}
+		'state-initial': function(){
+			//if ( typeof window.history.replaceState === 'function' )
+			//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
 		}
-	],
+	},
 	
-	changeFrame: function(key, val){
+	changeFrame: function(state){
 		var self = this,
 			root = self.nodes.hreview,
 			frames = self.frames
 		
-		val = val || self.defaultFrame
+		state = state || self.defaultFrame
+
+		root.removeClassName(self.lastFrame)
+		root.addClassName(state)
+		self.lastFrame = state
 		
-		for(var i = 0, fl = frames.length; i < fl; i++)
-		{
-			if(frames[i][key] == val)
-			{
-				root.removeClassName(self.lastFrame)
-				root.addClassName(frames[i].cl)
-				self.lastFrame = frames[i].cl
-				frames[i].doit.call(self)
-				if ( frames[i].hash == self.defaultFrame )
-					self.lh.set('')
-				else if ( self.lh.get() != frames[i].hash )
-					self.lh.set(frames[i].hash)
-				return
-			}
-		}
+		frames[state].call(self)
+
+		if ( state == self.defaultFrame )
+			self.lh.set('')
+		else if ( self.lh.get() != state )
+			self.lh.set(state)
 	},
 	
 	renderFrame: function(){
 		var self = this
 		
-		self.changeFrame('hash', self.lh.get())
+		self.changeFrame(self.lh.get())
 	},
 	
 	bindEvents: function(name){
@@ -171,12 +154,12 @@ var Controller = {
 		}, false)
 		
 		this.nodes.showRecipe.addEventListener('click', function(e){
-			self.changeFrame('cl', 'state-recipe')
+			self.changeFrame('state-recipe')
 		}, false);
 		
 		this.nodes.hideRecipe.addEventListener('click', function (e)
 		{
-			self.changeFrame('cl', 'state-initial')
+			self.changeFrame('state-initial')
 		},
 		false)
 		
@@ -184,13 +167,13 @@ var Controller = {
 		{
 			this.nodes.showLegendBtn.addEventListener('click', function (e)
 			{
-				self.changeFrame('cl', 'state-legend')
+				self.changeFrame('state-legend')
 			},
 			false)
 			
 			this.nodes.hideLegendBtn.addEventListener('click', function (e)
 			{
-				self.changeFrame('cl', 'state-initial')
+				self.changeFrame('state-initial')
 			},
 			false)
 		}
