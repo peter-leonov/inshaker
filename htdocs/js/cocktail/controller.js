@@ -68,43 +68,39 @@ var Controller = {
 			this.renderFrame()
 	},
 	
-	frames: function(){
-		var self = this
-
-		return [
-			{
-				cl: 'state-recipe',
-				hash: 'showme-recipe',
-				doit: function(){
-					Statistics.cocktailViewRecipe(Cocktail.getByName(self.name))
-					
-					var ri = $(self.ID_ING).RollingImagesLite
-					if (ri)
-						ri.goInit(); // Work-around for RI: FIXME
-				}
-			},
-			{
-				cl: 'state-legend',
-				hash: 'showme-legend',
-				doit: function(){
-					Statistics.cocktailViewLegend(Cocktail.getByName(self.name))
-				}
-			},
-			{
-				cl: 'state-initial',
-				hash: '',
-				doit: function(){
-					//if ( typeof window.history.replaceState === 'function' )
-					//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
-				}
+	frames: [
+		{
+			cl: 'state-recipe',
+			hash: 'showme-recipe',
+			doit: function(){
+				Statistics.cocktailViewRecipe(Cocktail.getByName(this.name))
+				
+				var ri = $(this.ID_ING).RollingImagesLite
+				if (ri)
+					ri.goInit(); // Work-around for RI: FIXME
 			}
-		]
-	},
+		},
+		{
+			cl: 'state-legend',
+			hash: 'showme-legend',
+			doit: function(){
+				Statistics.cocktailViewLegend(Cocktail.getByName(this.name))
+			}
+		},
+		{
+			cl: 'state-initial',
+			hash: '',
+			doit: function(){
+				//if ( typeof window.history.replaceState === 'function' )
+				//	window.history.replaceState('page', '', window.location.href.replace( /#.*/, ""))
+			}
+		}
+	],
 	
 	changeFrame: function(key, val){
 		var self = this,
 			root = self.nodes.hreview,
-			frames = self.frames()
+			frames = self.frames
 		
 		for(var i = 0, fl = frames.length; i < fl; i++)
 		{
@@ -113,7 +109,7 @@ var Controller = {
 				root.removeClassName(self.lastFrame)
 				root.addClassName(frames[i].cl)
 				self.lastFrame = frames[i].cl
-				frames[i].doit()
+				frames[i].doit.call(self)
 				if ( self.lh.get() != frames[i].hash ) self.lh.set(frames[i].hash)
 				return
 			}
