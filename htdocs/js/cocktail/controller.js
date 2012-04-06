@@ -209,12 +209,6 @@ var Controller = {
 			recs_surface.appendChild(item)
 		}
 
-		if (recs_size <= 1) {
-			recs_nodes.next.addClassName('disabled')
-			recs_nodes.prev.addClassName('disabled')
-			return
-		}
-		
 		var tail = recs_items[0].cloneNode(true)
 		recs_items.push(tail)
 		recs_surface.appendChild(tail)
@@ -224,7 +218,13 @@ var Controller = {
 		list.bind(recs_nodes)
 		list.configure({friction: 100, pageVelocity: 19.5, soft: Infinity, min: 75, max: 100})
 		list.setNodes(recs_items, recs_size)
-
+		
+		if (recs_size <= 1) {
+			recs_nodes.next.addClassName('disabled')
+			recs_nodes.prev.addClassName('disabled')
+			return
+		}
+		
 		var carousel = {
 			timeout: 2600,
 			start: function() {
