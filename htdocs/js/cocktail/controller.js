@@ -198,30 +198,30 @@ var Controller = {
 	},
 
 	renderRecommendations: function(recs){
-		var recs_nodes = this.nodes.recommendations
-		var recs_surface = recs_nodes.surface
-		var recs_items = []
-		var recs_size = recs.length
+		var nodes = this.nodes.recommendations
+		var surface = nodes.surface
+		var items = []
+		var size = recs.length
 
 		for(var i = 0; i < recs.length; i++){
 			var item = this._createRecommendationElement(recs[i], i)
-			recs_items[i] = item
-			recs_surface.appendChild(item)
+			items[i] = item
+			surface.appendChild(item)
 		}
 
-		var tail = recs_items[0].cloneNode(true)
-		recs_items.push(tail)
-		recs_surface.appendChild(tail)
+		var tail = items[0].cloneNode(true)
+		items.push(tail)
+		surface.appendChild(tail)
 		
 		
 		var list = new LazyList()
-		list.bind(recs_nodes)
+		list.bind(nodes)
 		list.configure({friction: 100, pageVelocity: 19.5, soft: Infinity, min: 75, max: 100})
-		list.setNodes(recs_items, recs_size)
+		list.setNodes(items, size)
 		
-		if (recs_size <= 1) {
-			recs_nodes.next.addClassName('disabled')
-			recs_nodes.prev.addClassName('disabled')
+		if (size <= 1) {
+			nodes.next.addClassName('disabled')
+			nodes.prev.addClassName('disabled')
 			return
 		}
 		
@@ -238,8 +238,8 @@ var Controller = {
 			}
 		}
 
-		recs_nodes.root.addEventListener("mouseover", carousel.stop)
-		recs_nodes.root.addEventListener("mouseout", carousel.start)
+		nodes.root.addEventListener("mouseover", carousel.stop)
+		nodes.root.addEventListener("mouseout", carousel.start)
 		carousel.start()
 	},
 	
