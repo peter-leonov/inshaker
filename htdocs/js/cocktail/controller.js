@@ -49,8 +49,7 @@ var Controller = {
 			viewport: $$('#recommendations .viewport')[0],
 			surface: $$('#recommendations .surface')[0],
 			prev: $$('#recommendations .prev')[0],
-			next: $$('#recommendations .next')[0],
-			items: null
+			next: $$('#recommendations .next')[0]
 		}
 	},
 	
@@ -208,7 +207,7 @@ var Controller = {
 	renderRecommendations: function(recs){
 		var recs_nodes = this.nodes.recommendations
 		var recs_surface = recs_nodes.surface
-		var recs_items = recs_nodes.items
+		var recs_items = null
 		var recs_fragment = document.createDocumentFragment()
 		var recs_size = recs.length
 
