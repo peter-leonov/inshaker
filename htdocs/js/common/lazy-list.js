@@ -45,7 +45,7 @@ Me.prototype =
 			conf.min = conf.friction * 2
 	},
 	
-	bind: function (nodes, cocktails)
+	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
