@@ -475,6 +475,7 @@
 {"group":"Соусы и масло","name":"Табаско соус зеленый","path":"tabasko-sous-zelenyiy","tags":["Любой ингредиент","Соус"],"unit":"мл","volumes":[[150.0,371.0,true]]},
 {"group":"Соусы и масло","name":"Табаско соус красный","path":"tabasko-sous-krasnyiy","tags":["Любой ингредиент","Соус"],"unit":"мл","volumes":[[150.0,324.0,true]]},
 {"group":"Фрукты","name":"Тайский манго","path":"tayskiy-mango","tags":["Любой ингредиент"],"unit":"г","volumes":[[500.0,185.0,true]]},
+{"group":"Специи и пряности","name":"Тамаринд","path":"tamarind","tags":["Любой ингредиент","Соус"],"unit":"г","volumes":[[10.0,100.0,true]]},
 {"group":"Соусы и масло","name":"Тамаринд соус","path":"tamarind-sous","tags":["Любой ингредиент","Соус"],"unit":"л","volumes":[[0.25,205.0,true]]},
 {"group":"Мучные изделия","name":"Тарталетка","path":"tartaletka","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,5.0,true]]},
 {"group":"Молочные продукты. Яйца","name":"Творог","path":"tvorog","tags":["Любой ингредиент"],"unit":"г","volumes":[[240.0,63.0,true]]},
