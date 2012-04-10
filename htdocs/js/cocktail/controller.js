@@ -96,24 +96,30 @@ var Controller = {
 	
 	changeHashReaction: function (state)
 	{
-		state = state || this.defaultFrame
+		if (!state)
+			state = this.defaultFrame
 		
-		var frame = this.frames[state]
-		if (!frame)
+		// do nothig for unknown state frame
+		if (!this.frames[state])
 			return
 		
+		this.renderFrame(state)
+	},
+	
+	renderFrame: function (frame)
+	{
 		var root = this.nodes.hreview
 		root.removeClassName(this.lastFrame)
-		root.addClassName(state)
+		root.addClassName(frame)
 		
-		this.lastFrame = state
+		this.lastFrame = frame
 		
-		frame.call(this)
+		this.frames[frame].call(this)
 	},
 	
 	changeFrame: function (state)
 	{
-		this.changeHashReaction(state)
+		this.renderFrame(state)
 		
 		if (state == this.defaultFrame)
 			this.lh.set('')
