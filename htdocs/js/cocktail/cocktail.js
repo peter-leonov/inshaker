@@ -14,3 +14,6 @@ $.onready(function(){
 <!--# include virtual="/js/common/share-buttons.js" -->
 <!--# include virtual="/js/cocktail/model.js" -->
 <!--# include virtual="/js/cocktail/controller.js" -->
+<!--# include virtual="/liby/core/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
