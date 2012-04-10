@@ -83,7 +83,7 @@ var Controller = {
 		'state-initial': function(){}
 	},
 	
-	changeFrame: function(state){
+	changeHashReaction: function(state)	{
 		var self = this,
 			root = self.nodes.hreview,
 			frames = self.frames
@@ -95,17 +95,23 @@ var Controller = {
 		self.lastFrame = state
 
 		frames[state].call(self)
+	},
+	
+	changeFrame: function(state){
+		var self = this
+		
+		self.changeHashReaction(state)
 		
 		if ( state == self.defaultFrame )
 			self.lh.set('')
-		else if ( self.lh.get() != state )
+		else
 			self.lh.set(state)
 	},
 	
 	renderFrame: function(){
 		var self = this
 		
-		self.changeFrame(self.lh.get())
+		self.changeHashReaction(self.lh.get())
 	},
 	
 	bindEvents: function(name){
