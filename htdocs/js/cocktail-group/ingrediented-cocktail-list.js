@@ -19,6 +19,11 @@ function Me ()
 
 Me.prototype =
 {
+	bind: function (nodes)
+	{
+		this.view.bind(nodes)
+	},
+	
 	setCocktails: function (group)
 	{
 		this.model.setCocktails(group)
@@ -33,10 +38,33 @@ self[Me.className] = Papa = Me
 
 ;(function(){
 
-function Me () {}
+eval(NodesShortcut.include())
+
+function Me ()
+{
+	this.nodes = {}
+}
 
 Me.prototype =
 {
+	bind: function (nodes)
+	{
+		this.nodes = nodes
+	},
+
+	renderGroup: function (group)
+	{
+		var main = this.nodes.main
+		main.empty()
+		
+		var list = Nc('dl', 'group')
+		main.appendChild(list)
+		
+		var nameNode = list.appendChild(Nct('dt', 'group-name', group.name))
+		nameNode.appendChild(Nct('span', 'count', '(' + group.rows.length + ')'))
+
+		this.nodes.list = list
+	}
 }
 
 Papa.View = Me
@@ -87,6 +115,7 @@ Me.prototype =
 		}
 		
 		this.group = res
+		this.view.renderGroup(res)
 	}
 }
 
