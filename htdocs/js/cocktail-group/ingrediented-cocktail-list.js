@@ -50,6 +50,9 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		var me = this
+		nodes.more.addEventListener('click', function () { me.controller.moreButtonClicked() }, false)
 	},
 
 	renderGroup: function (group)
@@ -111,6 +114,13 @@ Me.prototype =
 		body.appendChild(recipeDiv)
 			
 		return root
+	},
+	
+	hideButton: function ()
+	{
+		var more = this.nodes.more
+		
+		more.setClassName('hidden')
 	}
 }
 
@@ -127,6 +137,11 @@ Me.prototype =
 	renderCocktails: function ()
 	{
 		this.model.renderCocktails()
+	},
+	
+	moreButtonClicked: function ()
+	{
+		this.model.moreButtonClicked()
 	}
 }
 
@@ -139,6 +154,8 @@ Papa.Controller = Me
 function Me ()
 {
 	this.showRows = 0
+	this.group = {}
+	this.group.rows = []
 }
 
 Me.prototype =
@@ -174,7 +191,7 @@ Me.prototype =
 	
 	renderCocktails: function ()
 	{
-		var rows = this.group.rows
+		var rows = this.group.rows,
 			showRows = this.showRows
 		
 		for (var i = showRows, rl = rows.length, cl = showRows+30; i < rl && i < cl; i++)
@@ -185,6 +202,17 @@ Me.prototype =
 		}
 		
 		this.showRows = i
+	},
+	
+	moreButtonClicked: function ()
+	{
+		var showRows = this.showRows,
+			lengthRows = this.group.rows.length
+
+		this.renderCocktails()
+			
+		if ( showRows >= lengthRows )
+			this.view.hideButton()
 	}
 }
 
