@@ -73,8 +73,7 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderTags()
-		if ( this.lh.get() )
-			this.renderFrame()
+		this.renderFrame()
 	},
 	
 	frames:
