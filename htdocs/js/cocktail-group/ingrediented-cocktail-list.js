@@ -64,6 +64,53 @@ Me.prototype =
 		nameNode.appendChild(Nct('span', 'count', '(' + group.rows.length + ')'))
 
 		this.nodes.list = list
+		
+		this.controller.renderCocktails()
+	},
+	
+	renderRow: function (row, className)
+	{
+		var item = Nc('li', 'row lines-1 ' + className)
+		
+		item.appendChild(this.renderCocktail(row.cocktail, row.ingredients))
+		this.nodes.list.appendChild(item)
+	},
+	
+	renderCocktail: function (cocktail, ingredients)
+	{
+		var root = N('dl')
+		
+		var head = root.appendChild(Nc('dt', 'head'))
+		var body = root.appendChild(Nc('dd', 'body'))
+		
+		head.appendChild(cocktail.getPreviewLink(false, true, false))
+		body.appendChild(cocktail.getNameLink())
+		
+		var recipe = []
+		for (var i = 0, il = cocktail.ingredients.length; i < il; i++) 
+		{
+			var ing = cocktail.ingredients[i]
+			var ingObj = Ingredient.getByName(ing[0])
+			
+			var name = ing[0]
+			
+			var brand = ingObj.brand
+			if (brand)
+				name += ' ' + brand
+			
+			if (Ingredient.groups.indexOf(ingObj.group) < 10)
+			{
+				var dose = Units.humanizeDose(ing[1], ingObj.unit)
+				name += ' ' + dose[0] + ' ' + dose[1]
+			}
+			
+			recipe.push(name)
+		}
+		var recipeDiv = Nct('div', 'cocktail-recipe', recipe.join(', '))
+		
+		body.appendChild(recipeDiv)
+			
+		return root
 	}
 }
 
@@ -77,6 +124,10 @@ function Me () {}
 
 Me.prototype =
 {
+	renderCocktails: function ()
+	{
+		this.model.renderCocktails()
+	}
 }
 
 Papa.Controller = Me
@@ -85,7 +136,10 @@ Papa.Controller = Me
 
 ;(function(){
 
-function Me () {}
+function Me ()
+{
+	this.showRows = 0
+}
 
 Me.prototype =
 {
@@ -116,6 +170,21 @@ Me.prototype =
 		
 		this.group = res
 		this.view.renderGroup(res)
+	},
+	
+	renderCocktails: function ()
+	{
+		var rows = this.group.rows
+			showRows = this.showRows
+		
+		for (var i = showRows, rl = rows.length, cl = showRows+30; i < rl && i < cl; i++)
+		{
+			var className = i%2 ? 'even' : 'odd'
+			
+			this.view.renderRow(rows[i], className)
+		}
+		
+		this.showRows = i
 	}
 }
 
