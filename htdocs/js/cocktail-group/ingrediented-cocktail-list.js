@@ -19,6 +19,10 @@ function Me ()
 
 Me.prototype =
 {
+	setCocktails: function (group)
+	{
+		this.model.setCocktails(group)
+	}
 }
 
 Me.className = 'IngredientedCocktailList'
@@ -57,6 +61,33 @@ function Me () {}
 
 Me.prototype =
 {
+	setCocktails: function (group)
+	{
+		var cocktails = group.cocktails
+		
+		var rows = []
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+		
+			var row = rows[i] = {}
+			row.cocktail = cocktail
+		
+			var ingredients = row.ingredients = []
+		
+			var recipe = cocktail.ingredients
+			for (var k = 0, kl = recipe.length; k < kl; k++)
+				ingredients[k] = Ingredient.getByName(recipe[k][0])
+		}
+		
+		var res =
+		{
+			name: group.name,
+			rows: rows
+		}
+		
+		this.group = res
+	}
 }
 
 Papa.Model = Me

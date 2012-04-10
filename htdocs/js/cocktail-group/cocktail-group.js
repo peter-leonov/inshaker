@@ -31,7 +31,7 @@ Me.prototype =
 		
 		var inco = new IngredientedCocktailList()
 		inco.bind({main: nodes.list, more: nodes.moreCocktails})
-		inco.setCocktails([{name: groupName, cocktails: cocktails}])
+		inco.setCocktails({name: groupName, cocktails: cocktails})
 		
 		var me = this
 		nodes.root.addEventListener('click', function (e) { me.maybeIngredientClicked(e) }, false)
