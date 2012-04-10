@@ -73,7 +73,8 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderTags()
-		this.renderFrame()
+		
+		this.changeHashReaction(this.lh.get())
 	},
 	
 	frames:
@@ -120,11 +121,6 @@ var Controller = {
 			this.lh.set(state)
 	},
 	
-	renderFrame: function ()
-	{
-		this.changeHashReaction(this.lh.get())
-	},
-	
 	bindEvents: function(name){
 		var self = this;
 		
@@ -165,7 +161,7 @@ var Controller = {
 		
 		this.lh.addEventListener('change', function (e)
 		{
-			self.renderFrame()
+			self.changeHashReaction(this.get())
 		},
 		false)
 		
