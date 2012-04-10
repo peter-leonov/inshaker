@@ -81,13 +81,26 @@ Me.prototype =
 	
 	renderCocktail: function (cocktail, ingredients)
 	{
-		var root = N('dl')
+		var a = Nc('a', 'link'),
+			root = N('dl')
 		
-		var head = root.appendChild(Nc('dt', 'head'))
-		var body = root.appendChild(Nc('dd', 'body'))
+		a.appendChild(root)
+
+		var head = root.appendChild(Nc('dt', 'head')),
+			body = root.appendChild(Nc('dd', 'body'))
 		
-		head.appendChild(cocktail.getPreviewLink(false, true, false))
-		body.appendChild(cocktail.getNameLink())
+		var htmlName = cocktail.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+
+		a.href = path + '/'
+		
+		var img = Nc("img", 'image')
+		img['src'] = path + '/' + htmlName + '-big.png'
+		head.appendChild(img)
+		
+		var name = cocktail.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+		var span = Nct('span', 'cocktail-name', name)
+		body.appendChild(span)
 		
 		var recipe = []
 		for (var i = 0, il = cocktail.ingredients.length; i < il; i++) 
@@ -113,7 +126,7 @@ Me.prototype =
 		
 		body.appendChild(recipeDiv)
 			
-		return root
+		return a
 	},
 	
 	hideButton: function ()
