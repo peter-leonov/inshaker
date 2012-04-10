@@ -34,8 +34,8 @@ var Controller = {
 	
 	name : "",
 	relatedCount: 10,
-	lastFrame: 'state-initial',
-	defaultFrame: 'state-initial',
+	lastFrame: 'state-recipe',
+	defaultFrame: 'state-recipe',
 	
 	nodes:
 	{
@@ -73,8 +73,8 @@ var Controller = {
 		this.renderRelated(perPage);
 		this.renderIngredients(Model.ingredients);
 		this.renderTags()
-		if ( this.lh.get() )
-			this.renderFrame()
+		
+		this.changeHashReaction(this.lh.get())
 	},
 	
 	frames:
@@ -96,32 +96,35 @@ var Controller = {
 	
 	changeHashReaction: function (state)
 	{
-		var self = this,
-			root = self.nodes.hreview,
-			frames = self.frames
+		if (!state)
+			state = this.defaultFrame
 		
-		state = state || self.defaultFrame
+		// do nothig for unknown state frame
+		if (!this.frames[state])
+			return
 		
-		root.removeClassName(self.lastFrame)
-		root.addClassName(state)
-		self.lastFrame = state
+		this.renderFrame(state)
+	},
+	
+	renderFrame: function (frame)
+	{
+		var root = this.nodes.hreview
+		root.removeClassName(this.lastFrame)
+		root.addClassName(frame)
 		
-		frames[state].call(self)
+		this.lastFrame = frame
+		
+		this.frames[frame].call(this)
 	},
 	
 	changeFrame: function (state)
 	{
-		this.changeHashReaction(state)
+		this.renderFrame(state)
 		
 		if (state == this.defaultFrame)
 			this.lh.set('')
 		else
 			this.lh.set(state)
-	},
-	
-	renderFrame: function ()
-	{
-		this.changeHashReaction(this.lh.get())
 	},
 	
 	bindEvents: function(name){
@@ -164,7 +167,7 @@ var Controller = {
 		
 		this.lh.addEventListener('change', function (e)
 		{
-			self.renderFrame()
+			self.changeHashReaction(this.get())
 		},
 		false)
 		
