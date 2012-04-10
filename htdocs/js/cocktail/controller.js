@@ -96,17 +96,16 @@ var Controller = {
 	
 	changeHashReaction: function (state)
 	{
-		var self = this,
-			root = self.nodes.hreview,
-			frames = self.frames
+		var root = this.nodes.hreview
+			frames = this.frames
 		
-		state = state || self.defaultFrame
+		state = state || this.defaultFrame
 		
-		root.removeClassName(self.lastFrame)
+		root.removeClassName(this.lastFrame)
 		root.addClassName(state)
-		self.lastFrame = state
+		this.lastFrame = state
 		
-		frames[state].call(self)
+		frames[state].call(this)
 	},
 	
 	changeFrame: function (state)
