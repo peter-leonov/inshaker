@@ -15,7 +15,7 @@ html.loading #cocktail-list { display: none; }
 .hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
 
-.ingrediented-cocktail-list .group { margin: 0 0 50px 0; zoom: 1; }
+.ingrediented-cocktail-list .group { margin: 0 0 50px 0; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
 .ingrediented-cocktail-list .group:before, .ingrediented-cocktail-list .group:after { content: "\0020"; display: block; height: 0; visibility: hidden; }
 .ingrediented-cocktail-list .group:after { clear: both; }
@@ -82,6 +82,8 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
+
+html.msie-6 .ingrediented-cocktail-list .group { zoom: 1; }
 
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
