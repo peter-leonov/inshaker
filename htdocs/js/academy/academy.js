@@ -1,6 +1,3 @@
-<!--# include virtual="/js/common/branding-scroller.js" -->
-
-
 ;(function(){
 
 var Papa
@@ -27,8 +24,6 @@ Me.prototype =
 		this.view.bind(nodes)
 		
 		this.model.setState()
-		
-		this.view.bindBrandingScroller()
 		
 		return this
 	}
@@ -58,13 +53,21 @@ function onready ()
 	
 	var nodes =
 	{
-		page: $('academy-page'),
-		brandedImageHolder: $('branded-image-holder'),
 		videoBlocks: $('video-blocks')
 	}
 	
 	var widget = new AcademyPage()
 	widget.bind(nodes)
+	
+	
+	var nodes =
+	{
+		page: document.documentElement,
+		holder: $('branded-image-holder')
+	}
+	
+	var bs = new BrandingScroller()
+	bs.bind(nodes)
 }
 
 $.onready(onready)

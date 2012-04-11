@@ -6,7 +6,6 @@
 <!--# include virtual="/liby/widgets/map-light-marker.js" -->
 
 <!--# include virtual="/js/common/google.js" -->
-<!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
 
 <!--# include virtual="/js/bars/point.js" -->
@@ -38,8 +37,6 @@ Me.prototype =
 		this.view.bind(nodes)
 		
 		this.view.readBarCityNames()
-		
-		this.view.bindBrandingScroller()
 		
 		return this
 	}
@@ -95,5 +92,14 @@ $.onready
 		
 		var widget = new BarPage()
 		widget.bind(nodes)
+		
+		var nodes =
+		{
+			page: document.documentElement,
+			holder: $('branded-image-holder')
+		}
+		
+		var bs = new BrandingScroller()
+		bs.bind(nodes)
 	}
 )
