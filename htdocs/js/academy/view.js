@@ -54,14 +54,6 @@ Me.prototype =
 			
 			root.appendChild(item)
 		}
-	},
-	
-	bindBrandingScroller: function ()
-	{
-		var nodes = this.nodes
-		
-		var bs = new BrandingScroller()
-		bs.bind({holder: nodes.brandedImageHolder, page: nodes.page})
 	}
 }
 
