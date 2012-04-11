@@ -9,6 +9,15 @@ $.onready(function(){
 	Calculator.init();
 	
 	ShareButtons.bootstrap({text: 'Коктейль «' + Controller.name + '»'})
+	
+	var nodes =
+	{
+		page: document.documentElement,
+		holder: $('branded-image-holder')
+	}
+	
+	var bs = new BrandingScroller()
+	bs.bind(nodes)
 })
 
 <!--# include virtual="/js/common/share-buttons.js" -->
