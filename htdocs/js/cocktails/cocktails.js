@@ -99,6 +99,15 @@ function onready ()
 	widget.bind(nodes)
 	
 	Calculator.init()
+	
+	var nodes =
+	{
+		page: document.documentElement,
+		holder: $('branded-image-holder')
+	}
+	
+	var bs = new BrandingScroller()
+	bs.bind(nodes)
 }
 
 $.onready(onready)
