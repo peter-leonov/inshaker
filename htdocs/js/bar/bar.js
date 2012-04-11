@@ -38,8 +38,6 @@ Me.prototype =
 		
 		this.view.readBarCityNames()
 		
-		this.view.bindBrandingScroller()
-		
 		return this
 	}
 }
@@ -94,5 +92,14 @@ $.onready
 		
 		var widget = new BarPage()
 		widget.bind(nodes)
+		
+		var nodes =
+		{
+			page: document.documentElement,
+			holder: $('branded-image-holder')
+		}
+		
+		var bs = new BrandingScroller()
+		bs.bind(nodes)
 	}
 )

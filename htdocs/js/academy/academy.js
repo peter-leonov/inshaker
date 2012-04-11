@@ -62,7 +62,7 @@ function onready ()
 	
 	var nodes =
 	{
-		page: $('academy-page'),
+		page: document.documentElement,
 		holder: $('branded-image-holder')
 	}
 	

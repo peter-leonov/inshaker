@@ -125,14 +125,6 @@ Me.prototype =
 		}
 		else
 			this.nodes.barNext.hide()
-	},
-	
-	bindBrandingScroller: function ()
-	{
-		var nodes = this.nodes
-		
-		var bs = new BrandingScroller()
-		bs.bind({holder: nodes.brandedImageHolder, page: nodes.page})
 	}
 }
 
