@@ -1,6 +1,3 @@
-<!--# include virtual="/js/common/branding-scroller.js" -->
-
-
 ;(function(){
 
 var Papa

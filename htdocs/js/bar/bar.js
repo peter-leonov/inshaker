@@ -6,7 +6,6 @@
 <!--# include virtual="/liby/widgets/map-light-marker.js" -->
 
 <!--# include virtual="/js/common/google.js" -->
-<!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
 
 <!--# include virtual="/js/bars/point.js" -->

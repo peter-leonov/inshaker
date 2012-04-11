@@ -29,6 +29,7 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->
 <!--# include virtual="/js/common/popup.js" -->
+<!--# include virtual="/js/common/branding-scroller.js" -->
 
 
 $.onready(function () { setTimeout(function ()
