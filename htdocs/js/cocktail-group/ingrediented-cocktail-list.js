@@ -102,26 +102,7 @@ Me.prototype =
 		var span = Nct('span', 'cocktail-name', name)
 		body.appendChild(span)
 		
-		var recipe = []
-		for (var i = 0, il = cocktail.ingredients.length; i < il; i++) 
-		{
-			var ing = cocktail.ingredients[i]
-			var ingObj = Ingredient.getByName(ing[0])
-			
-			var name = ing[0]
-			
-			var brand = ingObj.brand
-			if (brand)
-				name += ' ' + brand
-			
-			if (Ingredient.groups.indexOf(ingObj.group) < 10)
-			{
-				var dose = Units.humanizeDose(ing[1], ingObj.unit)
-				name += ' ' + dose[0] + ' ' + dose[1]
-			}
-			
-			recipe.push(name)
-		}
+		var recipe = this.controller.getRecipe(cocktail)
 		var recipeDiv = Nct('div', 'cocktail-recipe', recipe.join(', '))
 		
 		body.appendChild(recipeDiv)
@@ -155,6 +136,11 @@ Me.prototype =
 	moreButtonClicked: function ()
 	{
 		this.model.moreButtonClicked()
+	},
+	
+	getRecipe: function (cocktail)
+	{
+		return this.model.getRecipe(cocktail)
 	}
 }
 
@@ -226,6 +212,31 @@ Me.prototype =
 			
 		if ( showRows >= lengthRows )
 			this.view.hideButton()
+	},
+	
+	getRecipe: function (cocktail)
+	{
+		var recipe = []
+		for (var i = 0, il = cocktail.ingredients.length; i < il; i++) 
+		{
+			var ing = cocktail.ingredients[i]
+			var ingObj = Ingredient.getByName(ing[0])
+			
+			var name = ing[0]
+			
+			var brand = ingObj.brand
+			if (brand)
+				name += ' ' + brand
+			
+			if (Ingredient.groups.indexOf(ingObj.group) < 10)
+			{
+				var dose = Units.humanizeDose(ing[1], ingObj.unit)
+				name += ' ' + dose[0] + ' ' + dose[1]
+			}
+			
+			recipe.push(name)
+		}
+		return recipe
 	}
 }
 
