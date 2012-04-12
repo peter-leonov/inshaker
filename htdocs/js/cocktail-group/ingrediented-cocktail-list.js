@@ -71,9 +71,9 @@ Me.prototype =
 		this.controller.addMoreCocktails()
 	},
 	
-	renderRow: function (row, className)
+	renderRow: function (row, isEven)
 	{
-		var item = Nc('li', 'row lines-1 ' + className)
+		var item = Nc('li', 'row lines-1 ' + (isEven ? 'even' : 'odd'))
 		
 		item.appendChild(this.renderCocktail(row.cocktail, row.ingredients))
 		this.nodes.list.appendChild(item)
@@ -209,9 +209,9 @@ Me.prototype =
 		
 		for (var i = showRows, rl = rows.length, cl = showRows+30; i < rl && i < cl; i++)
 		{
-			var className = i%2 ? 'even' : 'odd'
+			var isEven = i%2
 			
-			this.view.renderRow(rows[i], className)
+			this.view.renderRow(rows[i], isEven)
 		}
 		
 		this.showRows = i
