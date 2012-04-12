@@ -68,7 +68,7 @@ Me.prototype =
 
 		this.nodes.list = list
 		
-		this.controller.renderCocktails()
+		this.controller.addMoreCocktails()
 	},
 	
 	renderRow: function (row, className)
@@ -147,9 +147,9 @@ function Me () {}
 
 Me.prototype =
 {
-	renderCocktails: function ()
+	addMoreCocktails: function ()
 	{
-		this.model.renderCocktails()
+		this.model.addMoreCocktails()
 	},
 	
 	moreButtonClicked: function ()
@@ -202,7 +202,7 @@ Me.prototype =
 		this.view.renderGroup(res)
 	},
 	
-	renderCocktails: function ()
+	addMoreCocktails: function ()
 	{
 		var rows = this.group.rows,
 			showRows = this.showRows
@@ -222,7 +222,7 @@ Me.prototype =
 		var showRows = this.showRows,
 			lengthRows = this.group.rows.length
 
-		this.renderCocktails()
+		this.addMoreCocktails()
 			
 		if ( showRows >= lengthRows )
 			this.view.hideButton()
