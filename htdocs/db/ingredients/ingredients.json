@@ -122,7 +122,7 @@
 {"group":"Мёд, варенье, джемы","name":"Гречишный мед","path":"grechishnyiy-med","tags":["Любой ингредиент"],"unit":"г","volumes":[[250.0,190.0,true]]},
 {"group":"Фрукты","name":"Груша","path":"grusha","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,99.0,true]]},
 {"brand":"Monin Poire","brand_dir":"monin-poire","group":"Сиропы","mark":"Monin","name":"Грушевый сироп","names":["Monin Poire","Монин Поир","Monin Pear","Монин Пеар"],"path":"grushevyiy-sirop","tags":["Monin","Любой ингредиент","Сироп","Фруктовый сироп"],"unit":"л","volumes":[[1.0,374.0,true]]},
-{"group":"Фрукты","name":"Гуава","path":"guava","tags":["Любой ингредиент","Фрукты"],"unit":"шт","volumes":[[1.0,638.0,true]]},
+{"group":"Фрукты","name":"Гуава","path":"guava","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,638.0,true]]},
 {"group":"Мёд, варенье, джемы","name":"Джем апельсиновый","path":"dzhem-apelsinovyiy","tags":["Джем","Любой ингредиент"],"unit":"г","volumes":[[380.0,83.0,true]]},
 {"group":"Мёд, варенье, джемы","name":"Джем вишневый","path":"dzhem-vishnevyiy","tags":["Джем","Любой ингредиент"],"unit":"г","volumes":[[360.0,85.0,true]]},
 {"group":"Мёд, варенье, джемы","name":"Джем голубичный","path":"dzhem-golubichnyiy","tags":["Джем","Любой ингредиент"],"unit":"г","volumes":[[380.0,240.0,true]]},
