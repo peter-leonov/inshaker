@@ -34,8 +34,8 @@ var Controller = {
 	
 	name : "",
 	relatedCount: 10,
-	lastFrame: 'state-recipe',
-	defaultFrame: 'state-recipe',
+	lastFrame: 'state-initial',
+	defaultFrame: 'state-initial',
 	
 	nodes:
 	{
