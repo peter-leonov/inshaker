@@ -3,6 +3,8 @@ body { padding: 25px 0 0 0; margin: 0; }
 
 a { color:#cc2f7c; }
 
+.hidden { visibility: hidden; position: absolute !important; top: -100000px !important; }
+
 button { cursor: pointer; border: 1px transparent solid; border-radius: 10px;  text-align: center; padding: 0; font-size: 16px; }
 button.action { width: 100px; height: 40px; line-height: 40px; background-color: #cc2f7c; border-color: #cc2f7c; color: #fff; }
 button.navigation { width: 90px; height: 30px; line-height: 28px; background-color: #fff; border-color: #c0c0c0; border-radius: 5px; color: #979797; }
