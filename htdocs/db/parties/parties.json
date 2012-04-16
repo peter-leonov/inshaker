@@ -2,7 +2,7 @@
 {
 	"name": "Убойная пятница",
 	"imperative": "Пригласи друзей на дегустацию убойных шотов!",
-	"path": "friday",
+	"path": "smashing-friday",
 	"portions": [{"cocktail": "Сатурн", "factor": 3},{"cocktail": "Меркурий", "factor": 3}],
 	"people": 10
 },
