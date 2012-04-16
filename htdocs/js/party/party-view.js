@@ -1,5 +1,15 @@
 ;(function(){
 
+var hypenateDict =
+{
+	'Черносмородиновый ликер': 'Черносмородино­вый ликер'
+}
+
+function hypenate (str)
+{
+	return  hypenateDict[str] || str
+}
+
 function getIntegerValue (v)
 {
 	// to string
@@ -461,7 +471,7 @@ Me.prototype =
 			item.appendChild(image)
 			image.src = good.getMiniImageSrc()
 			
-			var name = Nct('span', 'name', good.name)
+			var name = Nct('span', 'name', hypenate(good.name))
 			item.appendChild(name)
 		}
 	},
