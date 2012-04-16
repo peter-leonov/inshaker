@@ -1,5 +1,12 @@
 [
 {
+	"name": "Убойная пятница",
+	"imperative": "Пригласи друзей на дегустацию убойных шотов!",
+	"path": "friday",
+	"portions": [{"cocktail": "Сатурн", "factor": 3},{"cocktail": "Меркурий", "factor": 3}],
+	"people": 10
+},
+{
 	"name": "Коктейльный девичник",
 	"imperative": "Собери девочек на коктейль!",
 	"path": "girls-night",
