@@ -345,6 +345,16 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    screen_name = about["Текст названия"]
+    if screen_name
+      @cocktail["screen"] = screen_name
+    else
+      screen_name = name.gsub(/ (и|в|во|с|со|на|он|от|без) /, ' \1 ')
+      if screen_name != @cocktail["name"]
+        @cocktail["screen"] = screen_name
+      end
+    end
+    
     if about["Эксцентриситет"]
       dx, dy = about["Эксцентриситет"].to_s.split(/ +/).map { |e| e.to_i  }
       if dx && dx != 0
