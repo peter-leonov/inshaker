@@ -32,16 +32,7 @@ Me.prototype =
 		return this
 	},
 	
-	screenName: function ()
-	{
-		var s = this.screen
-		if (s)
-			return s
-		
-		var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
-		this.screen = name
-		return name
-	},
+	screenName: function () { return this.screen || this.name },
 	
 	getPartsFor: function (count, guests)
 	{
