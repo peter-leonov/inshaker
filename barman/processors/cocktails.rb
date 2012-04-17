@@ -349,7 +349,7 @@ class CocktailsProcessor < Inshaker::Processor
     if screen_name
       @cocktail["screen"] = screen_name
     else
-      screen_name = name.gsub(/ (и|в|во|с|со|на|он|от|без) /, ' \1 ')
+      screen_name = @cocktail["name"].gsub(/ (и|в|во|с|со|на|он|от|без) /, ' \1 ')
       if screen_name != @cocktail["name"]
         @cocktail["screen"] = screen_name
       end
