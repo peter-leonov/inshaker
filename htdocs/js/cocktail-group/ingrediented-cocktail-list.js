@@ -71,12 +71,15 @@ Me.prototype =
 		this.controller.addMoreCocktails()
 	},
 	
-	renderRow: function (row, isEven)
+	renderRows: function (rows)
 	{
-		var item = Nc('li', 'row lines-1 ' + (isEven ? 'even' : 'odd'))
-		
-		item.appendChild(this.renderCocktail(row.cocktail, row.ingredients, row.recipe))
-		this.nodes.list.appendChild(item)
+		for (var i = 0, ci = rows.length; i < ci; i++)
+		{
+			var item = Nc('li', 'row lines-1 ' + (i%2 ? 'even' : 'odd'))
+			
+			item.appendChild(this.renderCocktail(rows[i].cocktail, rows[i].ingredients, rows[i].recipe))
+			this.nodes.list.appendChild(item)
+		}
 	},
 	
 	renderCocktail: function (cocktail, ingredients, recipe)
@@ -185,17 +188,17 @@ Me.prototype =
 	addMoreCocktails: function ()
 	{
 		var rows = this.group.rows,
-			showRows = this.showRows
+			showRows = this.showRows,
+			rowsEx = []
 		
 		for (var i = showRows, rl = rows.length, cl = showRows+30; i < rl && i < cl; i++)
 		{
-			var isEven = i%2
-			
 			rows[i].recipe = this.getRecipe(rows[i].cocktail)
-			this.view.renderRow(rows[i], isEven)
+			rowsEx.push(rows[i])
 		}
 		
 		this.showRows = i
+		this.view.renderRows(rowsEx)
 	},
 	
 	moreButtonClicked: function ()
