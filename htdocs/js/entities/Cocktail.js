@@ -32,6 +32,17 @@ Me.prototype =
 		return this
 	},
 	
+	screenName: function ()
+	{
+		var s = this.screen
+		if (s)
+			return s
+		
+		var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+		this.screen = name
+		return name
+	},
+	
 	getPartsFor: function (count, guests)
 	{
 		var parts = new Me.Parts()
@@ -107,7 +118,7 @@ Me.prototype =
 		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
 		a.appendChild(img)
 		
-		var name = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+		var name = this.screenName()
 		var txt = document.createTextNode(name)
 		a.appendChild(txt)
 		
@@ -139,7 +150,7 @@ Me.prototype =
 		name.className = 'name'
 		a.appendChild(name)
 		
-		var str = this.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
+		var str = this.screenName()
 		name.appendChild(document.createTextNode(str))
 		
 		return a
