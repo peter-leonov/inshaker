@@ -214,6 +214,10 @@ class IngredientsProcessor < Inshaker::Processor
       good["decls"] = {"t" => about["Падежи"]["Творительный"]}
     end
     
+    if about["Текст названия"]
+      good["screen"] = about["Текст названия"].to_s
+    end
+    
     good_tags = good["tags"] = []
     tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
     tags << "любой ингредиент"

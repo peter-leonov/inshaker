@@ -15,6 +15,7 @@ Me.prototype =
 	getMainImageSrc: function () { return this.getVolumeImage(this.volumes[0]) },
 	cocktailsLink: function () { return '/cocktails.html#state=byIngredients&ingredients=' + encodeURIComponent(this.name) },
 	combinatorLink: function () { return '/combinator.html#q=' + encodeURIComponent(this.name) },
+	screenName: function () { return this.screen || this.name },
 	
 	loadLocalData: function (f)
 	{
