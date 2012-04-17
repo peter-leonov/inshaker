@@ -75,11 +75,11 @@ Me.prototype =
 	{
 		var item = Nc('li', 'row lines-1 ' + (isEven ? 'even' : 'odd'))
 		
-		item.appendChild(this.renderCocktail(row.cocktail, row.ingredients))
+		item.appendChild(this.renderCocktail(row.cocktail, row.ingredients, row.recipe))
 		this.nodes.list.appendChild(item)
 	},
 	
-	renderCocktail: function (cocktail, ingredients)
+	renderCocktail: function (cocktail, ingredients, recipe)
 	{
 		var a = Nc('a', 'link'),
 			root = N('dl')
@@ -102,7 +102,6 @@ Me.prototype =
 		var span = Nct('span', 'cocktail-name', name)
 		body.appendChild(span)
 		
-		var recipe = this.controller.getRecipe(cocktail)
 		var recipeDiv = Nct('div', 'cocktail-recipe', recipe.join(', '))
 		
 		body.appendChild(recipeDiv)
@@ -136,11 +135,6 @@ Me.prototype =
 	moreButtonClicked: function ()
 	{
 		this.model.moreButtonClicked()
-	},
-	
-	getRecipe: function (cocktail)
-	{
-		return this.model.getRecipe(cocktail)
 	}
 }
 
@@ -197,6 +191,7 @@ Me.prototype =
 		{
 			var isEven = i%2
 			
+			rows[i].recipe = this.getRecipe(rows[i].cocktail)
 			this.view.renderRow(rows[i], isEven)
 		}
 		
