@@ -18,7 +18,7 @@ Me.prototype =
 		
 		this.setupVisibilityFrame()
 		
-		var lh = this.locationHash = new LocationHash().bind(window)
+		var lh = this.locationHash = new LocationHash().bind()
 		var me = this
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		

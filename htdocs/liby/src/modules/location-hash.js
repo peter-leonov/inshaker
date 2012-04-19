@@ -9,16 +9,11 @@ Me.prototype =
 	encode: encodeURIComponent,
 	decode: decodeURIComponent,
 	
-	bind: function (win)
+	bind: function ()
 	{
-		if (!win)
-			win = window
-		
-		this.window = win
-		
 		var me = this
 		function onhashchange (e) { me.onhashchange() }
-		win.addEventListener('hashchange', onhashchange, false)
+		window.addEventListener('hashchange', onhashchange, false)
 		
 		return this
 	},
@@ -42,7 +37,7 @@ Me.prototype =
 	set: function (v)
 	{
 		this.manual = true
-		this.window.location.href = '#' + this.encode(v)
+		window.location.href = '#' + this.encode(v)
 		
 		if (v === '')
 			this.eraseEmptyHash()
@@ -50,7 +45,7 @@ Me.prototype =
 	
 	get: function ()
 	{
-		var href = this.window.location.href
+		var href = window.location.href
 		var start = href.indexOf('#')
 		if (start < 0)
 			return ''
