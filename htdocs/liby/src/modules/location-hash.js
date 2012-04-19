@@ -34,10 +34,18 @@ Me.prototype =
 		this.dispatchEventData('change')
 	},
 	
+	eraseEmptyHash: function()
+	{
+		window.history.replaceState(null, null, window.location.pathname + window.location.search)
+	},
+	
 	set: function (v)
 	{
 		this.manual = true
 		this.window.location.href = '#' + this.encode(v)
+		
+		if (v === '')
+			this.eraseEmptyHash()
 	},
 	
 	get: function ()
@@ -59,6 +67,9 @@ Me.prototype =
 		}
 	}
 }
+
+if (!window.history.pushState)
+	Me.prototype.eraseEmptyHash = function () {}
 
 Me.mixIn(EventDriven)
 
