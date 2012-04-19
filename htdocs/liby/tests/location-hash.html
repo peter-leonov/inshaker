@@ -102,6 +102,9 @@ Tests.test(function (t)
 		var index = window.location.href.indexOf('#')
 		t.ne(index, -1, '"blablba"')
 		
+		lh.set(0)
+		t.eq(window.location.href.indexOf('#'), index, '0')
+		
 		lh.set('')
 		if (window.history.replaceState)
 			index = -1
