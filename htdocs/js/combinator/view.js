@@ -49,7 +49,7 @@ Me.prototype =
 		nodes.ingredientsList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		nodes.cocktailList.addEventListener('click', function (e) { me.maybeIngredientClicked(e.target) }, false)
 		
-		var lh = this.locationHash = new LocationHash().bind(window)
+		var lh = this.locationHash = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
 		var t = new Throttler(function (y) { me.controller.windowScrolled(y) }, 100, 500)

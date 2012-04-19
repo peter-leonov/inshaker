@@ -61,7 +61,7 @@ var Controller = {
 		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
 		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
 	    
-		this.lh = new LocationHash().bind(window)
+		this.lh = new LocationHash().bind()
 		Model.dataListener = this;
 		this.bindEvents(this.name);
 		Model.init(this.name);
