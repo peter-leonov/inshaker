@@ -37,10 +37,15 @@ Me.prototype =
 	set: function (v)
 	{
 		this.manual = true
-		window.location.href = '#' + this.encode(v)
 		
 		if (v === '')
+		{
+			window.location.href = '#-'
 			this.eraseEmptyHash()
+			return
+		}
+		
+		window.location.href = '#' + this.encode(v)
 	},
 	
 	get: function ()
