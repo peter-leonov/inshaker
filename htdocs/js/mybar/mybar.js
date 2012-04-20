@@ -36,7 +36,7 @@ Object.extend(Me.prototype, myProto)
 <!--# include virtual="/js/common/fun-fix.js" -->
 
 <!--# include virtual="/js/common/autocompleter-3.js" -->
-<!--# include virtual="/js/common/plain-input-autocompleter.js" -->
+<!--# include virtual="/js/mybar/plain-input-autocompleter.js" -->
 
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
 <!--# include virtual="ingrediented-cocktail-list.js" -->
