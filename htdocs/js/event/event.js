@@ -130,7 +130,7 @@ $.onready
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 <!--# include virtual="/js/common/humanize.js" -->
-<!--# include virtual="/js/common/switcher.js" -->
+<!--# include virtual="/js/event/switcher.js" -->
 
 
 <!--# include virtual="/js/event/model.js" -->
