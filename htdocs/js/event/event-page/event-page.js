@@ -133,7 +133,7 @@ $.onready
 <!--# include virtual="/js/event/switcher.js" -->
 
 
-<!--# include virtual="/js/event/model.js" -->
-<!--# include virtual="/js/event/controller.js" -->
-<!--# include virtual="/js/event/view.js" -->
+<!--# include virtual="model.js" -->
+<!--# include virtual="controller.js" -->
+<!--# include virtual="view.js" -->
 <!--# include virtual="/js/event/interpolate.js" -->
