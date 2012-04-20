@@ -17,7 +17,7 @@ if (!clientStorage)
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
-<!--# include virtual="/js/calculator/calculator.js" -->
+<!--# include virtual="/js/cocktails/calculator/calculator.js" -->
 
 <!--# include virtual="/js/common/units.js" -->
 <!--# include virtual="/js/common/dnd.js" -->
