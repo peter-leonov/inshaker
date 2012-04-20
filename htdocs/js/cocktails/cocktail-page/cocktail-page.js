@@ -20,7 +20,7 @@ $.onready(function(){
 	bs.bind(nodes)
 })
 
-<!--# include virtual="/js/common/share-buttons.js" -->
+<!--# include virtual="/js/cocktails/share-buttons.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="/liby/core/fixes/onhashchange.js" -->
