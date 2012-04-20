@@ -10,7 +10,6 @@ class Bar < Inshaker::Entity
     
     DB_JS          = Inshaker::HTDOCS_DIR + "db/bars/bars.json"
     DB_JS_CITIES   = Inshaker::HTDOCS_DIR + "db/bars/cities.json"
-    COCKTAILS_DB   = Inshaker::HTDOCS_DIR + "db/cocktails.js"
     BARMEN_JS      = Inshaker::HTDOCS_DIR + "db/barmen/barmen.json"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "bar.rhtml"

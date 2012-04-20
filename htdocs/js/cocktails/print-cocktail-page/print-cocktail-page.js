@@ -1,6 +1,7 @@
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/request.js" -->
-<!--# include virtual="/js/printer/printer.js" -->
+
+<!--# include virtual="/js/cocktails/cocktails-printer.js" -->
 
 ;(function(){
 

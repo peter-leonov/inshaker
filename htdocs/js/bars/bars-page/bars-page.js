@@ -9,7 +9,7 @@
 
 <!--# include virtual="/js/common/google.js" -->
 
-<!--# include virtual="point.js" -->
+<!--# include virtual="/js/bars/point.js" -->
 
 
 ;(function(){

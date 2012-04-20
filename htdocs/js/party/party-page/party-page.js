@@ -2,10 +2,11 @@
 
 <!--# include virtual="/liby/modules/interpolate.js" -->
 
-<!--# include virtual="/js/common/number.js" -->
 <!--# include virtual="/js/common/units.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
+
+<!--# include virtual="/js/party/number.js" -->
 
 ;(function(){
 

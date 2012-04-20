@@ -18,13 +18,13 @@
 <!--# include virtual="/liby/modules/user-agent.js" -->
 <!--# include virtual="/liby/modules/child-indexed-path.js"-->
 <!--# include virtual="/liby/modules/cloner.js"-->
+<!--# include virtual="/liby/modules/throttler.js" -->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')
 
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
-<!--# include virtual="/js/common/throttler.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
 <!--# include virtual="/js/common/cocktail-list.js" -->
 <!--# include virtual="/js/common/rounded-corners.js" -->

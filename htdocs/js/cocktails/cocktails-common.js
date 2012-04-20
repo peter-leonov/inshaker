@@ -17,9 +17,8 @@ if (!clientStorage)
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
-<!--# include virtual="/js/calculator/calculator.js" -->
+<!--# include virtual="/js/cocktails/calculator/calculator.js" -->
 
 <!--# include virtual="/js/common/units.js" -->
-<!--# include virtual="/js/common/dnd.js" -->
+<!--# include virtual="/js/cocktails/dnd.js" -->
 <!--# include virtual="/liby/modules/cookie.js" -->
-<!--# include virtual="/js/common/rutils.js" -->
