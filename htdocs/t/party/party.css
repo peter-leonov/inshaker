@@ -153,7 +153,7 @@ body,
 
 #recipes-box { margin-bottom: 50px; overflow: hidden; }
 
-#recipe-list .recipe { margin: 30px 0; }
+#recipe-list .recipe { margin: 30px 0; overflow: hidden; }
 #recipe-list .recipe .name { font-size: 20px; }
 #recipe-list .recipe .image-box { float: left; width: 290px; text-align: center; margin-top: 20px; }
 #recipe-list .ingredients { display: none; }

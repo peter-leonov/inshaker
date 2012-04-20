@@ -150,6 +150,9 @@ html.msie-7 #ancient-browser-warning { display: block; }
 
 @media print {
 
+#ancient-browser-warning,
+#cocktail-club-placeholder,
+#cocktail-club,
 #top,
 #bottom { display: none; }
 input { border: none; background: none; }
