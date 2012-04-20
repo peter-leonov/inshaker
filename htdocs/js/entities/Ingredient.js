@@ -41,7 +41,7 @@ Me.prototype =
 		image.style.backgroundImage = 'url(' + this.getMiniImageSrc() + ')'
 		node.appendChild(image)
 		
-		var name = Nct('span', 'name', this.name)
+		var name = Nct('span', 'name', this.screenName())
 		node.appendChild(name)
 		
 		node['data-ingredient'] = this
@@ -55,7 +55,7 @@ Me.prototype =
 		var image = Nc('div', 'image')
 		node.appendChild(image)
 		
-		var name = Nct('span', 'name', this.name)
+		var name = Nct('span', 'name', this.screenName())
 		node.appendChild(name)
 		
 		node['data-ingredient'] = this
