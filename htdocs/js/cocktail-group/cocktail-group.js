@@ -81,8 +81,6 @@ self[Me.className] = Me
 
 })();
 
-<!--# include virtual="/js/common/throttler.js" -->
-
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="/js/combinator/ingrediented-cocktail-list.js" -->

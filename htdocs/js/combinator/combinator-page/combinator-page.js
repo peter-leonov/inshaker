@@ -7,7 +7,6 @@
 
 <!--# include virtual="/liby/widgets/selecter.js" -->
 
-<!--# include virtual="/js/common/throttler.js" -->
 <!--# include virtual="/js/common/autocompleter-3.js" -->
 <!--# include virtual="/js/common/adding-input-autocompleter.js" -->
 <!--# include virtual="/js/cocktails/ingredients-searcher.js" -->
