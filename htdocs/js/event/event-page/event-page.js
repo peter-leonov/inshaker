@@ -124,6 +124,7 @@ $.onready
 <!--# include virtual="/liby/modules/form-helper.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/request.js" -->
+<!--# include virtual="/liby/modules/interpolate.js" -->
 
 <!--# include virtual="/liby/modules/motion.js" -->
 <!--# include virtual="/liby/modules/motion-types.js" -->
@@ -136,4 +137,3 @@ $.onready
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="view.js" -->
-<!--# include virtual="/js/event/interpolate.js" -->
