@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/cocktail/spice_and_ice/'
+var link = '/combinator.html#q=Jim Beam&i=Бурбон'
 
 Me.initialize
 ({
