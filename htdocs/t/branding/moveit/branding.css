@@ -19,7 +19,7 @@ button.rounded,
 a { color: #0392f1; }
 #bottom { color: #788894; }
 #bottom a {}
-html { background: #fff url(bg.png) repeat-x center top; }
+html { background: #000 url(bg.png) repeat-x center 47px; }
 html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
