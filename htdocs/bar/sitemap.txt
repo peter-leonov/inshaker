@@ -35,7 +35,6 @@ http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/chainaya/
 http://www.inshaker.ru/bar/birch/
 http://www.inshaker.ru/bar/john_do/
-http://www.inshaker.ru/bar/mojo/
 http://www.inshaker.ru/bar/22.13/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
