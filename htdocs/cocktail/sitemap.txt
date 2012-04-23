@@ -98,6 +98,7 @@ http://www.inshaker.ru/cocktail/blackberry_shot/
 http://www.inshaker.ru/cocktail/bling-bling/
 http://www.inshaker.ru/cocktail/blow_job/
 http://www.inshaker.ru/cocktail/black_jack/
+http://www.inshaker.ru/cocktail/black_wood/
 http://www.inshaker.ru/cocktail/black_sabbath/
 http://www.inshaker.ru/cocktail/god_mars/
 http://www.inshaker.ru/cocktail/bohemian_iced_tea/
@@ -300,6 +301,7 @@ http://www.inshaker.ru/cocktail/wooden_jack/
 http://www.inshaker.ru/cocktail/jumbo/
 http://www.inshaker.ru/cocktail/jack_rose/
 http://www.inshaker.ru/cocktail/jackie/
+http://www.inshaker.ru/cocktail/jam_jack_pot/
 http://www.inshaker.ru/cocktail/jimmy-jimmy/
 http://www.inshaker.ru/cocktail/gin_bitter_lemon/
 http://www.inshaker.ru/cocktail/gin_garden/
