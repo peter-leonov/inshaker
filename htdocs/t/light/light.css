@@ -194,5 +194,8 @@ html.msie-5 #ancient-browser-warning,
 html.msie-6 #ancient-browser-warning,
 html.msie-7 #ancient-browser-warning { display: block; }
 
+#nojs-warning { display: block; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; text-decoration: none; }
+#nojs-warning:hover { background-color: #6b0; }
+#nojs-warning .time { color: #fff; }
 
 <!--# include virtual="/t/popup.css" -->
