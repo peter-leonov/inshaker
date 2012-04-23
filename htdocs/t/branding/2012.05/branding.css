@@ -52,7 +52,7 @@ button.strong b { color: #000; }
 #results_display a {}
 #letters_all,
 #alphabetical-ru a { color: #fff; }
-#alphabetical-ru a.selected-button { color: #890814; }
+#alphabetical-ru a.selected-button { color: #000; }
 #search_tabs li { color: #000; }
 #search_tabs li.selected { color: #fff; }
 .ingreds-list a { color: #fff; }
