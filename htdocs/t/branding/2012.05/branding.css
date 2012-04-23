@@ -15,7 +15,7 @@
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted i { width: 65px; height: 40px; right: -1px; top: -9px; }
 #bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 285px; height: 530px; left: 188px; bottom: -640px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 2000px; height: 530px; left: -1010px; bottom: -640px; }
 #branded-image-holder { height: 890px; position: absolute; top: 245px; bottom: auto; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
