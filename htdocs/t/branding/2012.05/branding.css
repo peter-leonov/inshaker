@@ -22,7 +22,7 @@ html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #000; }
 #bottom { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
 #bottom .link { color: #888; }
-html { background: #000 url(bg.jpg) center -130px repeat-y; }
+html { background: #f8f6f1 url(bg.jpg) center 0 repeat-y; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
