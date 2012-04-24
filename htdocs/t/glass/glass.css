@@ -111,9 +111,10 @@ html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-d
 .common-share-button.barmen:hover i { background-position: -175px -25px; }
 
 
-#ancient-browser-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; text-decoration: none; }
-#ancient-browser-warning:hover { background-color: #6b0; }
-#ancient-browser-warning .time { color: #fff; }
+.overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
+a.overall-technical-warning { text-decoration: none; }
+.overall-technical-warning:hover { background-color: #6b0; }
+.overall-technical-warning .time { color: #fff; }
 html.chrome-2 body,
 html.chrome-10 body,
 html.chrome-11 body,
