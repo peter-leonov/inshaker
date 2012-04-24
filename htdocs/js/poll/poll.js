@@ -12,6 +12,8 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		this.name = nodes.name.getAttribute('data-poll-name')
+		
 		var me = this
 		nodes.show.addEventListener('click', function (e) { me.show() }, false)
 	},
@@ -33,7 +35,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set('poll-popup-hidden', Date.now(), Date.add('14d'), '/')
+		Cookie.set(this.name + '-hidden', Date.now(), Date.add('14d'), '/')
 	},
 	
 	hideFromUI: function ()
@@ -44,9 +46,16 @@ Me.prototype =
 	
 	maybeShow: function ()
 	{
-		var hidden = Cookie.get('poll-popup-hidden')
+		var hidden = Cookie.get(this.name + '-hidden')
 		if (hidden)
 			return
+		
+		
+		if (Math.floor(Math.random() * 7) != 0)
+		{
+			this.hide()
+			return
+		}
 		
 		this.show()
 	},
@@ -71,7 +80,7 @@ Me.prototype =
 	
 	poll: function (value)
 	{
-		Statistics.poll('frequency-of-making-cocktails-at-home', value)
+		Statistics.poll(this.name, value)
 	}
 }
 
@@ -90,6 +99,7 @@ function onready ()
 		show: $$('#bottom .copyright .poll-show')[0],
 		root: $$('#poll-popup .poll-window')[0],
 		form: $$('#poll-popup .poll-form')[0],
+		name: $$('#poll-popup .poll-form .poll-name')[0],
 		button: $$('#poll-popup .poll-form button')[0],
 		popup:
 		{
