@@ -67,9 +67,9 @@ function onready ()
 		mainFunFixLinks: $$('#the-main-menu .link'),
 		
 		mainLinksSup : {
-			ingredients : $$('#the-main-menu .ingredients sup')[0],
-			cocktails : $$('#the-main-menu .cocktails sup')[0],
-			recommendations : $$('#the-main-menu .recommendations sup')[0]
+			ingredients : $$('#the-main-menu .ingredients .count')[0],
+			cocktails : $$('#the-main-menu .cocktails .count')[0],
+			recommendations : $$('#the-main-menu .recommendations .count')[0]
 		},
 		
 		ingredients : {

@@ -17,7 +17,7 @@ a { color: #000; }
 #the-main-menu .tools { right: 0; }
 #the-main-menu.zero-cocktails .tools .print { display: none; }
 #the-main-menu .nav .link { margin-right: 20px; }
-#the-main-menu .nav .link sup { padding: 0 0 0 5px; font-size: 8px; }
+#the-main-menu .nav .link .count { vertical-align: super; font-size: 8px; }
 #the-main-menu .center { position: relative; width: 922px; margin: 0 auto; }
 #the-main-menu.fixed { position: fixed; }
 
