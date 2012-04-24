@@ -35,7 +35,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set('poll-popup-hidden', Date.now(), Date.add('14d'), '/')
+		Cookie.set(this.name + '-hidden', Date.now(), Date.add('14d'), '/')
 	},
 	
 	hideFromUI: function ()
@@ -46,7 +46,7 @@ Me.prototype =
 	
 	maybeShow: function ()
 	{
-		var hidden = Cookie.get('poll-popup-hidden')
+		var hidden = Cookie.get(this.name + '-hidden')
 		if (hidden)
 			return
 		
