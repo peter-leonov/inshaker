@@ -561,9 +561,9 @@ var myProto =
 	{
 		var nodes = this.nodes.mainLinksSup
 		
-		nodes.ingredients.innerText = ingredients.length || ''
-		nodes.cocktails.innerText = cocktails.length || ''
-		nodes.recommendations.innerText = recommends.length || ''
+		nodes.ingredients.firstChild.nodeValue = ingredients.length || ''
+		nodes.cocktails.firstChild.nodeValue = cocktails.length || ''
+		nodes.recommendations.firstChild.nodeValue = recommends.length || ''
 	},
 	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
