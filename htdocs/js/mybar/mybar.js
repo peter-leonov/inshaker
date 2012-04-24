@@ -62,6 +62,12 @@ function onready ()
 		mainFunFix: $('the-main-menu'),
 		mainFunFixLinks: $$('#the-main-menu .link'),
 		
+		mainLinksSup : {
+			ingredients : $$('#the-main-menu .ingredients .count')[0],
+			cocktails : $$('#the-main-menu .cocktails .count')[0],
+			recommendations : $$('#the-main-menu .recommendations .count')[0]
+		},
+		
 		ingredients : {
 			box : $$('#common-main-wrapper .ingredients-box')[0],
 			title : {

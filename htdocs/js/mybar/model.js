@@ -156,6 +156,7 @@ var myProto =
 		if (!this.recommends.length)
 			this.recommends = this.getRecommendsFromPackages(this.settingsData.packages)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	sortByUsage: function (a, b)
@@ -736,6 +737,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	removeIngredientFromRecommends: function (ingredient)
@@ -746,6 +748,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	selectIngredient: function (ingredient)
