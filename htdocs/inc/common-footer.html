@@ -35,5 +35,13 @@
 </div>
 
 <noindex>
-<a href="http://browsers.yandex.ru/" id="ancient-browser-warning">Ваш браузер безнадёжно устарел. Иншейкер не может работать в таких условиях. <span class="time">Пора обновляться!</span></a>
+<a class="overall-technical-warning" id="ancient-browser-warning" href="http://browsers.yandex.ru/">Ваш браузер безнадёжно устарел. Иншейкер не может работать в таких условиях. <span class="time">Пора обновляться!</span></a>
+<a class="overall-technical-warning" id="nojs-warning" href="http://www.enable-javascript.com/ru/">В вашем браузере отключен яваскрипт. Иншейкер не может работать в таких условиях. <span class="time">Включите, пожалуйста!</span></a>
 </noindex>
+
+<noscript>
+<style>
+body { top: 25px; }
+#nojs-warning { display: block }
+</style>
+</noscript>
