@@ -557,13 +557,13 @@ var myProto =
 		this.nodes.recommends.recommendsList.appendChild(df)
 	},
 	
-	renderMenuNums : function(ingredientsHash, cocktailsHash, recommends)
+	renderMenuNums : function(ingredients, cocktails, recommends)
 	{
 		var nodes = this.nodes.mainLinksSup
 		
-		nodes.ingredients.innerText = ingredientsHash.length == 0 ? '' : ingredientsHash.length 
-		nodes.cocktails.innerText = cocktailsHash.length == 0 ? '' : cocktailsHash.length
-		nodes.recommendations.innerText = recommends.length == 0 ? '' : recommends.length
+		nodes.ingredients.innerText = ingredients.length || ''
+		nodes.cocktails.innerText = cocktails.length || ''
+		nodes.recommendations.innerText = recommends.length || ''
 	},
 	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
