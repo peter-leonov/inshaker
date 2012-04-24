@@ -35,7 +35,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set(this.name + '-hidden', Date.now(), Date.add('14d'), '/')
+		Cookie.set(this.name + '-hidden', Date.now(), Date.add('28d'), '/')
 	},
 	
 	hideFromUI: function ()
@@ -94,6 +94,8 @@ self[Me.className] = Me
 
 function onready ()
 {
+	Cookie.erase('who-are-you-stranger-hidden', '/')
+	log(Cookie.get('who-are-you-stranger-hidden'))
 	var nodes =
 	{
 		show: $$('#bottom .copyright .poll-show')[0],
