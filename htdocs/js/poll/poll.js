@@ -12,6 +12,8 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		this.name = nodes.name.getAttribute('data-poll-name')
+		
 		var me = this
 		nodes.show.addEventListener('click', function (e) { me.show() }, false)
 	},
@@ -71,7 +73,7 @@ Me.prototype =
 	
 	poll: function (value)
 	{
-		Statistics.poll('frequency-of-making-cocktails-at-home', value)
+		Statistics.poll(this.name, value)
 	}
 }
 
@@ -90,6 +92,7 @@ function onready ()
 		show: $$('#bottom .copyright .poll-show')[0],
 		root: $$('#poll-popup .poll-window')[0],
 		form: $$('#poll-popup .poll-form')[0],
+		name: $$('#poll-popup .poll-form .poll-name')[0],
 		button: $$('#poll-popup .poll-form button')[0],
 		popup:
 		{
