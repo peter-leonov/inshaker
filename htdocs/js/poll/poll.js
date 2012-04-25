@@ -94,8 +94,6 @@ self[Me.className] = Me
 
 function onready ()
 {
-	Cookie.erase('who-are-you-stranger-hidden', '/')
-	log(Cookie.get('who-are-you-stranger-hidden'))
 	var nodes =
 	{
 		show: $$('#bottom .copyright .poll-show')[0],
