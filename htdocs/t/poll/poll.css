@@ -13,4 +13,4 @@
 #poll-popup .poll-window.done .thank-you { display: block; }
 #poll-popup .poll-window.done .poll-form { visibility: hidden; }
 
-#bottom .copyright .poll-show { cursor: pointer; }
+#common-footer .copyright .poll-show { cursor: pointer; }

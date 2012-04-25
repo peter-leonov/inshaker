@@ -23,7 +23,7 @@ a { color: #000; }
 
 
 #common-main-wrapper,
-#bottom { width: 960px; }
+#common-footer { width: 960px; }
 
 html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
@@ -291,7 +291,7 @@ html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 .main-box .mybar-link-box.newbie .mybar-link { background-position: -470px -457px;; width: 171px; }
 
 /*footer*/
-#bottom a { color: #2e63c1; }
+#common-footer a { color: #2e63c1; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,
