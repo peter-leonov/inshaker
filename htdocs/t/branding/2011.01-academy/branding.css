@@ -14,14 +14,14 @@
 .cocktail-list .next,
 button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted i { position: absolute; width: 88px; height: 42px; right: 10px; top: 6px; }
-#bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 500px; height: 520px; top: 20px; left: 140px; cursor: default; }
 #branded-image-holder { height: 780px; position: absolute; top: 85px; bottom: auto; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #2e63c1; }
-#bottom { color: #888; }
-#bottom .link { color: #2e63c1; }
+#common-footer { color: #888; }
+#common-footer .link { color: #2e63c1; }
 html { background: #fff url(bg.png) repeat-x center 60px; }
 button.rounded b { text-shadow: 1px 1px 0 #000; color: #fff; }
 button.strong b { text-shadow: 1px 1px 0 #ccc; color: #000; }

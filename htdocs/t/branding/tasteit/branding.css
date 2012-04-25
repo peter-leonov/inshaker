@@ -1,21 +1,26 @@
-/* common.css */
+#top,
 #top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #8dd013; }
+
+/* common.css */
+#spotlighted i,
 .b-more-cocktails .prev,
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
-button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
-#bottom .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+button.rounded,
+#share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
-a { color: #555; }
-a:hover { color: #000; }
-#sidebar a:hover { color: #fff; }
-#common-main-wrapper a { font-weight: bold; text-decoration: underline; }
-#common-main-wrapper .common-title a { font-weight: normal; }
-#top .nav .link:hover { border-bottom-color: #444; }
-#bottom { color: #788894; }
-#bottom a {}
-html { background: #000 url(bg.png) repeat-x center 65px; }
+a { color: #0392f1; }
+#common-footer { color: #788894; }
+#common-footer a {}
+html { background: #000 url(bg.png) repeat-x center 47px; }
+html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
 button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
@@ -43,6 +48,8 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 #spotlighted { display: none; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
+#letters_all:hover,
+#alphabetical-ru a:hover,
 #alphabetical-ru a.selected-button { color: #ec118f; }
 #search_tabs li { color: #fff; }
 #search_tabs li.selected {}
@@ -63,12 +70,27 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 /* cocktail.css */
 .b-more dt,
-.b-more dt b { background-repeat: no-repeat; background-image: url(cocktail.png); background-color: #77a300; }
+.b-more dt b { background-color: #77a300; }
 .b-more dt b { color: #fff; }
 .hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
 
-/* matching.css */
-.you-choise a,
-.top-alphabetical .now,
-.count-cocktails { background-repeat: no-repeat; background-image: url(ingredients.png); }
-.count-cocktails strong { color: #eb1c57; }
+/* magazine.css */
+#tags-list .item .icon { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* about.css */
+#form_success i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* bars.css */
+.bar-mini a { background-image: url(bars-mask-full.png); }
+#sort-menu .bars-select dt,
+#sort-menu .bars-select dd ul li.selected,
+#sort-menu .bars-select dd ul li:hover { color: #40aaf1; }
+#map .point .icon,
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #ff4ea5; }
+#map .point.selected .point-name { color: #ff2929; }
+
+/* bar.css */
+#main-column .info .block .head a {  }
