@@ -44,23 +44,6 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #common-footer .copyright { position: absolute; top: 37px; left: 18px; }
 #common-footer .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 -50px; text-indent: -1000px; overflow: hidden; }
 
-#cocktail-club,
-#cocktail-club-placeholder { height: 68px; }
-#cocktail-club-placeholder { margin-top: 30px; }
-#cocktail-club { position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; overflow: hidden; margin: 0 auto; background: #00549f; }
-#cocktail-club .border { position: absolute; top: 0; left: 0; right: 0; height: 5px; background-color: #fff; box-shadow: 0 0 25px 1px #000; -moz-box-shadow: 0 0 25px 1px #000; -webkit-box-shadow: 0 0 25px 1px #000; }
-#cocktail-club .imperative { position: relative; z-index: 1; min-width: 962px; text-align: center; margin-top: 20px; font-size: 28px; line-height: 28px; /*letter-spacing: 1px;*/ color: #fff; }
-#cocktail-club .imperative .facebook,
-#cocktail-club .imperative .vkontakte { white-space: nowrap; }
-#cocktail-club .imperative .facebook .link,
-#cocktail-club .imperative .vkontakte .link { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -1000px; background: url(/t/cocktail-club/logos.png) no-repeat; }
-#cocktail-club .imperative .facebook .link { top: -5px; width: 135px; height: 33px; margin: 0 -4px 0 -5px; background-position: 0 0; }
-#cocktail-club .imperative .vkontakte .link { top: -1px; width: 159px; height: 35px; margin: 0 -4px 0 -3px; background-position: -150px 0; }
-#cocktail-club .imperative .facebook .link:hover { background-position: 0 -50px; }
-#cocktail-club .imperative .vkontakte .link:hover { background-position: -150px -50px; }
-#common-footer { border-radius: 7px; -moz-border-radius: 7px; }
-
-
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
@@ -152,8 +135,6 @@ html.msie-7 #ancient-browser-warning { display: block; }
 @media print {
 
 #ancient-browser-warning,
-#cocktail-club-placeholder,
-#cocktail-club,
 #top,
 #common-footer { display: none; }
 input { border: none; background: none; }
