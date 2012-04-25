@@ -50,7 +50,6 @@ Me.prototype =
 		if (hidden)
 			return
 		
-		
 		if (Math.floor(Math.random() * 7) != 0)
 		{
 			this.hide()
