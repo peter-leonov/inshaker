@@ -7,7 +7,7 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 .common-share-button i,
-#bottom .alcohol-harm,
+#common-footer .alcohol-harm,
 .common-box .common-title,
 .common-box .common-mini,
 .common-box .common-content-gradiented { background-image: url(common.png); }
@@ -18,8 +18,8 @@
 
 #branded-image { display: none; }
 a { color: #ec118f; }
-#bottom { color: #788894; }
-#bottom a {}
+#common-footer { color: #788894; }
+#common-footer a {}
 html { background-color: #fff; } /* fixes centered body bg */
 body { background: center top; color: #000; }
 

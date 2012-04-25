@@ -45,14 +45,14 @@ body { color: #343b40; }
 #top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 #top .link.blog { position: absolute; right: 0; }
 
-#bottom { position: relative; width: 962px; height: 170px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
-#bottom .link { padding: 7px; }
-#bottom .link:first-child { padding-left: 0; }
-#bottom .link:last-child { padding-right: 0; }
-#bottom .main-menu { position: absolute; top: 18px; right: 0; }
-#bottom .about-menu { position: absolute; top: 18px; left: 0; }
-#bottom .copyright { position: absolute; top: 37px; left: 0; }
-#bottom .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#common-footer { position: relative; width: 962px; height: 170px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
+#common-footer .link { padding: 7px; }
+#common-footer .link:first-child { padding-left: 0; }
+#common-footer .link:last-child { padding-right: 0; }
+#common-footer .main-menu { position: absolute; top: 18px; right: 0; }
+#common-footer .about-menu { position: absolute; top: 18px; left: 0; }
+#common-footer .copyright { position: absolute; top: 37px; left: 0; }
+#common-footer .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 
 #cocktail-club,
 #cocktail-club-placeholder { height: 68px; }
@@ -86,21 +86,21 @@ html.party-section #top .link.party,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 
-#index-page #bottom .main-menu .link.main,
-#cocktails-page #bottom .main-menu .link.cocktails,
-#cocktail-page #bottom .main-menu .link.cocktails,
-html.bars-section #bottom .main-menu .link.bars,
-#barman-page #bottom .main-menu .link.barmen,
-#barmen-page #bottom .main-menu .link.barmen,
-#good-page #bottom .main-menu .link.goods,
-#event-page #bottom .main-menu .link.events,
-#academy-page #bottom .main-menu .link.academy,
-html.job-section #bottom .link.job,
-html.about-page #bottom .link.about,
-#combinator-page #bottom .main-menu .link.combinator,
-html.party-section #bottom .main-menu .link.party,
-html.blog-section #bottom .main-menu .link.blog,
-html.cocktail-groups-section #bottom .main-menu .link.cocktail-groups
+#index-page #common-footer .main-menu .link.main,
+#cocktails-page #common-footer .main-menu .link.cocktails,
+#cocktail-page #common-footer .main-menu .link.cocktails,
+html.bars-section #common-footer .main-menu .link.bars,
+#barman-page #common-footer .main-menu .link.barmen,
+#barmen-page #common-footer .main-menu .link.barmen,
+#good-page #common-footer .main-menu .link.goods,
+#event-page #common-footer .main-menu .link.events,
+#academy-page #common-footer .main-menu .link.academy,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+#combinator-page #common-footer .main-menu .link.combinator,
+html.party-section #common-footer .main-menu .link.party,
+html.blog-section #common-footer .main-menu .link.blog,
+html.cocktail-groups-section #common-footer .main-menu .link.cocktail-groups
 { color: inherit; cursor: default; text-decoration: none !important; }
 
 

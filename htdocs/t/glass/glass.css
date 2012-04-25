@@ -35,14 +35,14 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #top .link.blog { position: absolute; right: 0; }
 
 
-#bottom { position: relative; width: 962px; height: 150px; margin: 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
-#bottom .link { padding: 7px; }
-#bottom .link:first-child { padding-left: 0; }
-#bottom .link:last-child { padding-right: 0; }
-#bottom .main-menu { position: absolute; top: 18px; right: 18px; }
-#bottom .about-menu { position: absolute; top: 18px; left: 18px; }
-#bottom .copyright { position: absolute; top: 37px; left: 18px; }
-#bottom .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 -50px; text-indent: -1000px; overflow: hidden; }
+#common-footer { position: relative; width: 962px; height: 150px; margin: 0 auto; z-index: 1; font-size: 11px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
+#common-footer .link { padding: 7px; }
+#common-footer .link:first-child { padding-left: 0; }
+#common-footer .link:last-child { padding-right: 0; }
+#common-footer .main-menu { position: absolute; top: 18px; right: 18px; }
+#common-footer .about-menu { position: absolute; top: 18px; left: 18px; }
+#common-footer .copyright { position: absolute; top: 37px; left: 18px; }
+#common-footer .alcohol-harm { position: absolute; top: 70px; left: 18px; width: 926px; height: 60px; background-position: 0 -50px; text-indent: -1000px; overflow: hidden; }
 
 #cocktail-club,
 #cocktail-club-placeholder { height: 68px; }
@@ -72,8 +72,8 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #index-page #top .logo { cursor: default; }
 html.party-section #top .link.party,
 html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
-html.party-section #bottom .link.party,
-html.mybar-section #bottom .link.mybar { color: inherit; cursor: default; text-decoration: none !important; }
+html.party-section #common-footer .link.party,
+html.mybar-section #common-footer .link.mybar { color: inherit; cursor: default; text-decoration: none !important; }
 
 
 /* really common rules */
@@ -155,7 +155,7 @@ html.msie-7 #ancient-browser-warning { display: block; }
 #cocktail-club-placeholder,
 #cocktail-club,
 #top,
-#bottom { display: none; }
+#common-footer { display: none; }
 input { border: none; background: none; }
 
 } /* @media print */
