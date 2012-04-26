@@ -14,11 +14,8 @@
 .cocktail-list .next,
 button.rounded,
 #share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
-#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
-#common-footer { color: #788894; }
-#common-footer a {}
 html { background: #fff url(bg.png) repeat-x center top; }
 html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
 button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
@@ -26,6 +23,10 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 
 /* footer */
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#common-footer .bottom { color: #565656; }
+#common-footer .bottom a { color: inherit; }
+#common-footer .bottom a:hover { color: #000; }
 #index-page #common-footer .main-menu .link.main,
 #cocktails-page #common-footer .main-menu .link.cocktails,
 #cocktail-page #common-footer .main-menu .link.cocktails,
