@@ -45,15 +45,18 @@ body { color: #343b40; }
 #top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 #top .link.blog { position: absolute; right: 0; }
 
-#common-footer,
-#common-footer-spacer { height: 450px; }
+#common-footer-spacer { margin-top: 35px; }
+#common-footer-spacer,
+#common-footer { height: 450px; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
+#common-footer .content { position: relative; width: 962px; margin: 0 auto; }
+#common-footer .index .content { height: 370px; }
 #common-footer .bottom { background-color: #f8f8f8; border-top: solid 1px #ededed; }
-#common-footer .bottom .content { position: relative; width: 962px; height: 180px; margin: 0 auto; }
-#common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; }
+#common-footer .bottom .content { height: 180px; }
+#common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; font-size: 11px; }
 #common-footer .bottom .about-menu .link { padding: 7px; }
 #common-footer .bottom .about-menu .link:first-child { margin-left: -7px; }
-#common-footer .bottom .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
