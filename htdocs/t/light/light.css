@@ -65,23 +65,6 @@ html.party-section #top .link.party,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 
-#index-page #common-footer .main-menu .link.main,
-#cocktails-page #common-footer .main-menu .link.cocktails,
-#cocktail-page #common-footer .main-menu .link.cocktails,
-html.bars-section #common-footer .main-menu .link.bars,
-#barman-page #common-footer .main-menu .link.barmen,
-#barmen-page #common-footer .main-menu .link.barmen,
-#good-page #common-footer .main-menu .link.goods,
-#event-page #common-footer .main-menu .link.events,
-#academy-page #common-footer .main-menu .link.academy,
-html.job-section #common-footer .link.job,
-html.about-page #common-footer .link.about,
-#combinator-page #common-footer .main-menu .link.combinator,
-html.party-section #common-footer .main-menu .link.party,
-html.blog-section #common-footer .main-menu .link.blog,
-html.cocktail-groups-section #common-footer .main-menu .link.cocktail-groups
-{ color: inherit; cursor: default; text-decoration: none !important; }
-
 
 /* that great buttons */
 button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
