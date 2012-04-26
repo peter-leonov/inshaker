@@ -46,12 +46,6 @@ body { color: #343b40; }
 #top .link.blog { position: absolute; right: 0; }
 
 #common-footer { position: relative; width: 962px; height: 170px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
-#common-footer .link { padding: 7px; }
-#common-footer .link:first-child { padding-left: 0; }
-#common-footer .link:last-child { padding-right: 0; }
-#common-footer .main-menu { position: absolute; top: 18px; right: 0; }
-#common-footer .about-menu { position: absolute; top: 18px; left: 0; }
-#common-footer .copyright { position: absolute; top: 37px; left: 0; }
 #common-footer .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 
 /* menu tweks */
