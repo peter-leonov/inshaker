@@ -13,9 +13,6 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.name = nodes.name.getAttribute('data-poll-name')
-		
-		var me = this
-		nodes.show.addEventListener('click', function (e) { me.show() }, false)
 	},
 	
 	show: function ()
@@ -95,7 +92,6 @@ function onready ()
 {
 	var nodes =
 	{
-		show: $$('#common-footer .copyright .poll-show')[0],
 		root: $$('#poll-popup .poll-window')[0],
 		form: $$('#poll-popup .poll-form')[0],
 		name: $$('#poll-popup .poll-form .poll-name')[0],
