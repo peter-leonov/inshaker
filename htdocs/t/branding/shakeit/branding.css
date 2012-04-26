@@ -24,9 +24,9 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 
 /* footer */
 #common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
-#common-footer .bottom { color: #565656; }
-#common-footer .bottom a { color: inherit; }
-#common-footer .bottom a:hover { color: #000; }
+#common-footer { color: #565656; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #000; }
 #index-page #common-footer .main-menu .link.main,
 #cocktails-page #common-footer .main-menu .link.cocktails,
 #cocktail-page #common-footer .main-menu .link.cocktails,

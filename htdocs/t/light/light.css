@@ -50,7 +50,9 @@ body { color: #343b40; }
 #common-footer { height: 450px; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
 #common-footer .content { position: relative; width: 962px; margin: 0 auto; }
+#common-footer .index { font-size: 12px; }
 #common-footer .index .content { height: 370px; }
+#common-footer .index .head { color: #323232; font-size: 14px; }
 #common-footer .bottom { background-color: #f8f8f8; border-top: solid 1px #ededed; }
 #common-footer .bottom .content { height: 180px; }
 #common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; font-size: 11px; }
