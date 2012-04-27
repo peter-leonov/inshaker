@@ -13,7 +13,7 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded,
-#share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
 #branded-image { display: none; }
 a { color: #0392f1; }
 html { background: #fff url(bg.png) repeat-x center top; }

@@ -129,14 +129,14 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 .square-list .prev.disabled { background-position: -450px -25px; }
 .square-list .next.disabled { background-position: -475px -25px; }
 
-#share-box .button { display: inline-block; width: 30px; height: 30px; }
-#share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
-#share-box .button.facebook i { background-position: -150px 0; }
-#share-box .button.facebook:hover i { background-position: -175px 0; }
-#share-box .button.twitter i { background-position: -150px -25px; }
-#share-box .button.twitter:hover i { background-position: -175px -25px; }
-#share-box .button.vkontakte i { background-position: -150px -50px; }
-#share-box .button.vkontakte:hover i { background-position: -175px -50px; }
+.common-share-box .button { display: inline-block; width: 30px; height: 30px; }
+.common-share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+.common-share-box .button.facebook i { background-position: -150px 0; }
+.common-share-box .button.facebook:hover i { background-position: -175px 0; }
+.common-share-box .button.twitter i { background-position: -150px -25px; }
+.common-share-box .button.twitter:hover i { background-position: -175px -25px; }
+.common-share-box .button.vkontakte i { background-position: -150px -50px; }
+.common-share-box .button.vkontakte:hover i { background-position: -175px -50px; }
 
 
 .overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
