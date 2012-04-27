@@ -52,7 +52,8 @@ body { color: #343b40; }
 #common-footer .content { position: relative; width: 962px; margin: 0 auto; }
 #common-footer .index { font-size: 12px; }
 #common-footer .index .content { height: 370px; }
-#common-footer .index .head { color: #323232; font-size: 14px; }
+#common-footer .index .theme .head { position: relative; color: #323232; font-size: 14px; padding-bottom: 14px; margin-bottom: 15px; text-indent: -1px; }
+#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 100%; height: 1px; left: 0; bottom: 0; background-position: -200px -50px; }
 #common-footer .bottom { background-color: #f8f8f8; border-top: solid 1px #ededed; }
 #common-footer .bottom .content { height: 180px; }
 #common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; font-size: 11px; }
