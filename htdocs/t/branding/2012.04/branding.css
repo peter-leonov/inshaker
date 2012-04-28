@@ -33,6 +33,7 @@ button.strong b { color: #000; }
 #common-footer { color: #565656; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #000; }
+#common-footer .index .theme .head { color: #eee; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
 #common-footer .bottom {  }
 #index-page #common-footer .main-menu .link.main,
