@@ -33,7 +33,7 @@ body { background: center top; color: #000; }
 #common-footer a:hover { color: #000; }
 #common-footer .index { border-bottom: solid 1px #ededed; }
 #common-footer .index .theme .head { color: #323232; }
-#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .index .theme .head:after { border-left-color: #d6d6d6; background-color: #e0e0e0; border-right-color: #eaeaea; }
 #common-footer .bottom { background-color: #f8f8f8; }
 
 } /* @media screen */
