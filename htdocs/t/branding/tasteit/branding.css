@@ -13,16 +13,37 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded,
-#share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
-#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
+#spotlighted i { }
 #branded-image { display: none; }
+#branded-image-holder { }
+html.float-fixed #branded-image-holder { }
+html.stick-bottom #branded-image-holder { }
 a { color: #0392f1; }
-#common-footer { color: #788894; }
-#common-footer a {}
 html { background: #000 url(bg.png) repeat-x center 47px; }
 html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
-button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
-button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
+button.rounded b,
+button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
+button.rounded b { color: #fff; }
+button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer { color: #aaa; background-color: #000; box-shadow: 0 -8px 12px #000; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #fff; }
+#common-footer .index { border-bottom: solid 1px #2a2929; }
+#common-footer .index .theme .head { color: #eee; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .bottom { box-shadow: 0 -50px 150px #1e1c1c; }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+
+html.barmen-section #common-footer .about-menu .link.barmen,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
+{ color: #fff; cursor: default; text-decoration: none !important; }
+
 
 /* calculator.css */
 #b-bill dt,
