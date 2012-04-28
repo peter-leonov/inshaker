@@ -12,21 +12,45 @@
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
-button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+button.rounded,
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted i { width: 103px; height: 37px; right: 0; top: -4px; }
-#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 410px; height: 700px; left: 140px; bottom: -800px; }
 #branded-image-holder { height: 900px; position: absolute; top: 185px; bottom: auto; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #000; }
-#common-footer { color: #fff; text-shadow: 2px 0px 2px #000, 0px 2px 2px #000, -2px 0px 2px #000, 0px -2px 2px #000; }
-#common-footer .link { color: #888; }
 html { background: #000 url(bg.jpg) center -130px repeat-y; }
+html.branding-short {  }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
 button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+#common-footer { color: #565656; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #000; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#index-page #common-footer .main-menu .link.main,
+#cocktails-page #common-footer .main-menu .link.cocktails,
+#cocktail-page #common-footer .main-menu .link.cocktails,
+html.bars-section #common-footer .main-menu .link.bars,
+#barman-page #common-footer .main-menu .link.barmen,
+#barmen-page #common-footer .main-menu .link.barmen,
+#good-page #common-footer .main-menu .link.goods,
+#event-page #common-footer .main-menu .link.events,
+#academy-page #common-footer .main-menu .link.academy,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+#combinator-page #common-footer .main-menu .link.combinator,
+html.party-section #common-footer .main-menu .link.party,
+html.blog-section #common-footer .main-menu .link.blog,
+html.cocktail-groups-section #common-footer .main-menu .link.cocktail-groups
+{ color: #000; cursor: default; text-decoration: none !important; }
+
 
 /* calculator.css */
 #b-bill dt,
@@ -49,7 +73,6 @@ button.strong b { color: #000; }
 #all_list i,
 .b-search .groups dd.selected-button,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
-#results_display a {}
 #letters_all,
 #alphabetical-ru a { color: #fff; }
 #alphabetical-ru a.selected-button { color: #890814; }
