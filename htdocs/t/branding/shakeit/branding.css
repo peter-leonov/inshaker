@@ -32,7 +32,7 @@ button.strong b { color: #000; }
 #common-footer { color: #565656; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #000; }
-#common-footer .index { border-top: solid 1px #ededed; }
+#common-footer .index { border-bottom: solid 1px #ededed; }
 #common-footer .index .theme .head { color: #323232; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
 #common-footer .bottom { background-color: #f8f8f8; }
