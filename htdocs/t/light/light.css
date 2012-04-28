@@ -60,7 +60,7 @@ body { color: #343b40; }
 #common-footer .bottom .about-menu .link { padding: 7px; }
 #common-footer .bottom .about-menu .link:first-child { margin-left: -7px; }
 #common-footer .bottom .social { position: absolute; right: 0; top: 20px; }
-#common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 960px; height: 60px; background-position: 0 0; background-repeat: no-repeat; text-indent: -1000px; overflow: hidden; }
 
 html.magazine-section #common-footer-spacer,
 html.magazine-section #common-footer { height: 159px; margin-top: 0; }
