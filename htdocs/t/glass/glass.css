@@ -91,15 +91,10 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .common-share-button:hover i { box-shadow: 0 0 10px -1px #fff; -moz-box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
 .common-share-button:hover .name { text-shadow: 0 0 8px #fff; }
 .common-share-button.facebook i { background-position: -50px 0; }
-.common-share-button.facebook:hover i { background-position: -75px 0; }
 .common-share-button.twitter i { background-position: -50px -25px; }
-.common-share-button.twitter:hover i { background-position: -75px -25px; }
-.common-share-button.vkontakte i { background-position: -100px 0; }
-.common-share-button.vkontakte:hover i { background-position: -125px 0; }
+.common-share-button.vkontakte i { background-position: -75px 0; }
 .common-share-button.print i { background-position: -100px -25px; }
-.common-share-button.print:hover i { background-position: -125px -25px; }
-.common-share-button.barmen i { background-position: -150px -25px; }
-.common-share-button.barmen:hover i { background-position: -175px -25px; }
+.common-share-button.barmen i { background-position: -100px 0; }
 
 
 .overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
