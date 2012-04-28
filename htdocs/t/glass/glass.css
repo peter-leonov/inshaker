@@ -35,7 +35,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #top .link.blog { position: absolute; right: 0; }
 
 #common-footer-spacer,
-#common-footer { height: 432px; margin-top: 50px; padding-top: 25px; }
+#common-footer { height: 433px; margin-top: 50px; padding-top: 25px; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
 #common-footer .wrapper { width: 962px; margin: 0 auto; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
 #common-footer .content { position: relative; }
