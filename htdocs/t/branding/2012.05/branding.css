@@ -12,21 +12,38 @@
 .b-more-cocktails .next,
 .cocktail-list .prev,
 .cocktail-list .next,
-button.rounded { background-repeat: no-repeat; background-image: url(common.png); }
+button.rounded,
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted i { width: 65px; height: 40px; right: -1px; top: -9px; }
-#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 2000px; height: 530px; left: -1010px; bottom: -640px; }
-#branded-image-holder { height: 890px; position: absolute; top: 245px; bottom: auto; }
+#branded-image-holder { height: 1115px; position: absolute; top: 245px; bottom: auto; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #000; }
-#common-footer { color: #888; text-shadow: 2px 0px 2px #f8f6f1, 0px 2px 2px #f8f6f1, -2px 0px 2px #f8f6f1, 0px -2px 2px #f8f6f1; }
-#common-footer .link { color: #000; }
 html { background: #f8f6f1 url(bg.jpg) center 0 repeat-y; }
+html.branding-short {  }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
 button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer { color: #565656; }
+#common-footer a { color: inherit; text-shadow: 1px 1px #fff, 1px -1px #fff, -1px 1px #fff, -1px -1px #fff; }
+#common-footer a:hover { color: #000; }
+#common-footer .index { border-bottom: solid 1px #ddd; }
+#common-footer .index .theme .head { color: #323232; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .bottom { background-color: rgba(255,255,255,0.6); }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+
+html.barmen-section #common-footer .about-menu .link.barmen,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
+{ color: #000; cursor: default; text-decoration: none !important; }
+
 
 /* calculator.css */
 #b-bill dt,
