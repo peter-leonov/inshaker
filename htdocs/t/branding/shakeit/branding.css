@@ -37,6 +37,7 @@ button.strong b { color: #000; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
 #common-footer .bottom { background-color: #f8f8f8; }
 #common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+html.magazine-section #common-footer .bottom { background: none; }
 
 html.barmen-section #common-footer .about-menu .link.barmen,
 html.job-section #common-footer .link.job,
