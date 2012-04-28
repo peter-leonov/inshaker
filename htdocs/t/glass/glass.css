@@ -85,6 +85,15 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .cocktail-list .prev.disabled { background-position: 0 -25px; cursor: default; }
 .cocktail-list .next.disabled { background-position: -25px -25px; cursor: default; }
 
+.common-share-box .button { display: inline-block; width: 30px; height: 30px; }
+.common-share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
+.common-share-box .button.facebook i { background-position: -200px 0; }
+.common-share-box .button.facebook:hover i { background-position: -225px 0; }
+.common-share-box .button.twitter i { background-position: -200px -25px; }
+.common-share-box .button.twitter:hover i { background-position: -225px -25px; }
+.common-share-box .button.vkontakte i { background-position: -250px 0; }
+.common-share-box .button.vkontakte:hover i { background-position: -275px 0; }
+
 .common-share-button { display: inline-block; position: relative; height: 30px; padding-left: 30px; margin-left: 10px; }
 .common-share-button:first-child { margin-left: 0; }
 .common-share-button i { position: absolute; left: 7px; top: 7px; width: 16px; height: 16px; }
