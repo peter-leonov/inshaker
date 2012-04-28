@@ -29,12 +29,13 @@ button.strong b { color: #000; }
 
 
 /* footer */
-#common-footer { color: #aaa; }
+#common-footer { color: #aaa; background-color: #000; box-shadow: 0 -8px 12px #000; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #fff; }
+#common-footer .index { border-bottom: solid 1px #2a2929; }
 #common-footer .index .theme .head { color: #eee; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
-#common-footer .bottom {  }
+#common-footer .bottom { box-shadow: 0 -50px 150px #1e1c1c; }
 #common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 #index-page #common-footer .main-menu .link.main,
 #cocktails-page #common-footer .main-menu .link.cocktails,
