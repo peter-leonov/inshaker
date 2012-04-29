@@ -8,7 +8,6 @@ Me.prototype =
 	{
 		var state = this.state = hash
 		
-		this.view.setHash(state)
 		this.view.setViewType(state.view)
 		this.model.setState(state)
 	},
