@@ -22,8 +22,7 @@ a { color: #000; }
 #the-main-menu.fixed { position: fixed; }
 
 
-#common-main-wrapper,
-#common-footer { width: 960px; }
+#common-main-wrapper { width: 960px; }
 
 html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
@@ -289,9 +288,6 @@ html.msie-6 .main-box .recommends-box .must-have-list .row { clear: both; }
 /*foreign-page*/
 .main-box .mybar-link-box .mybar-link { display: block; width: 169px; height: 18px; position: relative; left: -2px; top: 10px; margin: 0 auto; background: url("mybar.png") no-repeat scroll -470px -437px transparent; }
 .main-box .mybar-link-box.newbie .mybar-link { background-position: -470px -457px;; width: 171px; }
-
-/*footer*/
-#common-footer a { color: #2e63c1; }
 
 /*fixes*/
 html.firefox .main-box .purchase-plan-box .purchase-table-wrapper .group-table thead .tr-padding,

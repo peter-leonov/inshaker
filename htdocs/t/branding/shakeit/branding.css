@@ -13,23 +13,47 @@
 .cocktail-list .prev,
 .cocktail-list .next,
 button.rounded,
-#share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
-#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+.common-share-box .button i { background-image: url(common.png); }
+#spotlighted i { }
 #branded-image { display: none; }
+#branded-image-holder {  }
+html.float-fixed #branded-image-holder {  }
+html.stick-bottom #branded-image-holder {  }
 a { color: #0392f1; }
-#common-footer { color: #788894; }
-#common-footer a {}
 html { background: #fff url(bg.png) repeat-x center top; }
 html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
-button.rounded b { text-shadow: 1px 1px 0 #576d1d; }
-button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
+button.rounded b,
+button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
+button.rounded b { color: #fff; }
+button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer { color: #565656; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #000; }
+#common-footer .index { border-bottom: solid 1px #ededed; }
+#common-footer .index .theme .head { color: #323232; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .bottom { background-color: #f8f8f8; }
+#common-footer .alcohol-harm { background-image: url(alcohol-harm.png); }
+html.magazine-section #common-footer .bottom { background: none; }
+html.magazine-section #common-footer a { color: #0392f1; }
+
+html.barmen-section #common-footer .about-menu .link.barmen,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
+{ color: #000; cursor: default; text-decoration: none !important; }
+
 
 /* calculator.css */
 #b-bill dt,
 #b-bill dd li button,
 #b-bill .print-call i,
 #cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
-#cart_draghere b { color: #7ca527; }
+#b-bill dt { color: #fff; font-weight: bold; }
+#b-bill dd input { background-color: #eee; }
 
 /* cocktails.css */
 .square-list .prev,
@@ -43,17 +67,12 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .b-content .pager .p-list a.selected-button,
 #all_list i,
 .b-search .groups dd.selected-button,
-.b-title #spotlighted,
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
-#spotlighted { display: none; }
 #letters_all,
 #alphabetical-ru a { color: #fff; }
-#letters_all:hover,
-#alphabetical-ru a:hover,
 #alphabetical-ru a.selected-button { color: #ec118f; }
 #search_tabs li { color: #fff; }
 #search_tabs li.selected {}
-#ingredients_list,
 .ingreds-list a { color: #fff; }
 .pager-big .prev,
 .pager-big .next { width: 23px; height: 24px; }
@@ -65,14 +84,15 @@ button.strong b { text-shadow: 1px 1px 0 #8f2b47; }
 .b-search .groups dd { color: #0392f1; }
 .b-search .groups dd.selected-button { color: #fff; }
 .b-search .groups dd.disabled { color: #999; }
-.autocomplete { left: -1px; top: 22px; width: 579px; background-color: #fff; color: #000; border: solid #94ba0b; }
-.autocomplete .item.selected { background-color: #cede97; }
+#search_by_ingreds .autocomplete { left: -1px; top: 22px; width: 579px; background-color: #fff; color: #000; border: solid #94ba0b; }
+#search_by_ingreds .autocomplete .item.selected { background-color: #cede97; }
 
 /* cocktail.css */
-.b-more dt,
-.b-more dt b { background-color: #77a300; }
-.b-more dt b { color: #fff; }
-.hreview .desc h2 i { background-repeat: no-repeat; background-image: url(common.png); }
+#top-menu .border-links a:hover,
+#b-more dt,
+#b-more dt b { background-color: #77a300; }
+#b-more dt b { color: #fff; }
+#main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* magazine.css */
 #tags-list .item .icon { background-repeat: no-repeat; background-image: url(common.png); }

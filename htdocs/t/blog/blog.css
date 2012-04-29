@@ -50,7 +50,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
 .post .body p { margin: 10px 0; }
 
-#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 35px 0; }
+#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 0 0; }
 #tag-cloud .list { color: #888; }
 #tag-cloud .list,
 #tag-cloud .list .tag { display: inline; }
@@ -59,8 +59,6 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #tag-cloud .list .tag .link { white-space: nowrap; }
 
 #share-box { position: absolute; right: -5px; top: -12px; }
-
-#common-footer { border-top: 1px solid #eee; margin-top: 40px; }
 
 
 /* hand-generated styles for future 31 tags :))) */
