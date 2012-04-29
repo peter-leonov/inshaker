@@ -37,7 +37,7 @@ var AboutPage = {
 		sw.select(selected >= 0 ? selected : 0)
 		// sw.onselect = function (num) { location.hash = hrefs[num] }
 		
-		locationHash.addEventListener('change', function () { sw.select(hrefs.indexOf(this.get())) }, false)
+		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
 		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
 		line.addVariable("path", "stat/amcharts/");
