@@ -1,3 +1,6 @@
+<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
+
+<!--# include virtual="/liby/modules/location-hash.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 
@@ -40,9 +43,9 @@ Me.prototype =
 		return this
 	},
 	
-	checkHash: function ()
+	checkState: function ()
 	{
-		this.view.checkHash()
+		this.view.locationHashUpdated()
 	}
 }
 
@@ -107,6 +110,6 @@ $.onready
 		RoundedCorners.round(nodes.map)
 		
 		var widget = new BarsPage()
-		widget.bind(nodes).checkHash()
+		widget.bind(nodes).checkState()
 	}
 )

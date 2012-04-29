@@ -33,24 +33,22 @@ Me.prototype =
 		s.addEventListener('select', function (e) { controller.citySelected(e.data.value) }, false)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
+		
+		var lh = this.locationHash = new LocationHash().bind()
+		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 	},
 	
-	checkHash: function ()
+	locationHashUpdated: function ()
 	{
-		var hash, str
+		var hash = this.locationHash.get()
+		var state = hash ? UrlEncode.parse(hash) : {view: 'list'}
 		
-		if (str = location.hash.substr(1))
-			hash = UrlEncode.parse(str)
-		else
-			hash = {view: 'list'}
-		
-		this.controller.hashUpdated(hash)
+		this.controller.hashUpdated(state)
 	},
 	
 	setHash: function (hash)
 	{
-		var urledHash = UrlEncode.stringify(hash)
-		location.hash = '#' + urledHash
+		this.locationHash.set(UrlEncode.stringify(hash))
 	},
 	
 	modelChanged: function (data)
