@@ -1,5 +1,7 @@
+<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
+
+<!--# include virtual="/liby/modules/location-hash.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/window-name.js" -->
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 
 <!--# include virtual="/liby/widgets/tab-switcher.js" -->
@@ -38,7 +40,12 @@ Me.prototype =
 	{
 		this.view.bind(nodes)
 		
-		this.view.checkHash()
+		return this
+	},
+	
+	checkState: function ()
+	{
+		this.view.locationHashUpdated()
 	}
 }
 
@@ -62,8 +69,6 @@ $.onready
 	{
 		document.documentElement.removeClassName('loading')
 		UserAgent.setupDocumentElementClassNames()
-		
-		WindowName.init()
 		
 		var nodes =
 		{
@@ -105,6 +110,6 @@ $.onready
 		RoundedCorners.round(nodes.map)
 		
 		var widget = new BarsPage()
-		widget.bind(nodes)
+		widget.bind(nodes).checkState()
 	}
 )

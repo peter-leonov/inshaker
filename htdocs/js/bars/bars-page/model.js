@@ -10,7 +10,8 @@ Me.prototype =
 		
 		var cities = Bar.getCities(state)
 		cities.unshift('Россия')
-		if (!state.city)
+		
+		if (cities.indexOf(state.city) == -1)
 			state.city = cities[0]
 		
 		if (state.bar)
