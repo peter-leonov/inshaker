@@ -39,11 +39,11 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
 #common-footer .wrapper { width: 962px; margin: 0 auto; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
 #common-footer .content { position: relative; }
-#common-footer .index { position: relative; z-index: 1; padding: 19px 19px 0; font-size: 12px; margin-bottom: -2px; }
+#common-footer .index { position: relative; z-index: 1; padding: 19px 0 0 19px; font-size: 12px; margin-bottom: -2px; }
 #common-footer .index .content { height: 255px; }
-#common-footer .index .theme { float: left; width: 184px; }
+#common-footer .index .theme { float: left; width: 188px; }
 #common-footer .index .theme .head { position: relative; font-size: 14px; padding-bottom: 14px; margin-bottom: 15px; text-indent: -1px; }
-#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 55px; border-left: 55px solid; border-right: 55px solid; height: 1px; left: 0; bottom: 0; }
+#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 56px; border-left: 56px solid; border-right: 56px solid; height: 1px; left: 0; bottom: 0; }
 #common-footer .index .theme .link { line-height: 20px; }
 #common-footer .bottom { padding: 0 19px; }
 #common-footer .bottom .content { height: 160px; }
