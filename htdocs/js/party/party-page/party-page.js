@@ -76,7 +76,7 @@ function onready ()
 	}
 	
 	var widget = new PartyPage()
-	widget.bind(nodes)
+	widget.bind(nodes).guessParty()
 }
 
 $.onready(onready)

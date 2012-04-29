@@ -23,9 +23,12 @@ Me.prototype =
 	{
 		this.view.bind(nodes)
 		
-		this.view.guessParty()
-		
 		return this
+	},
+	
+	guessParty: function ()
+	{
+		this.view.guessParty()
 	}
 }
 
