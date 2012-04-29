@@ -1,5 +1,4 @@
 <!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/window-name.js" -->
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 
 <!--# include virtual="/liby/widgets/tab-switcher.js" -->
@@ -62,8 +61,6 @@ $.onready
 	{
 		document.documentElement.removeClassName('loading')
 		UserAgent.setupDocumentElementClassNames()
-		
-		WindowName.init()
 		
 		var nodes =
 		{

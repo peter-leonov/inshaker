@@ -41,8 +41,6 @@ Me.prototype =
 		
 		if (str = location.hash.substr(1))
 			hash = UrlEncode.parse(str)
-		else if (str = WindowName.get('bars:state'))
-			hash = UrlEncode.parse(str)
 		else
 			hash = {view: 'list'}
 		
@@ -53,7 +51,6 @@ Me.prototype =
 	{
 		var urledHash = UrlEncode.stringify(hash)
 		location.hash = '#' + urledHash
-		WindowName.set('bars:state', urledHash)
 	},
 	
 	modelChanged: function (data)
