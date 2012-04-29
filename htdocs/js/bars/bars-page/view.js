@@ -1,5 +1,11 @@
 ;(function(){
 
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26').replace('=', '%3D') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&').replace('%3D', '=') }
+
+
 function Me ()
 {
 	this.cache = {barNode: {}}
@@ -41,14 +47,14 @@ Me.prototype =
 	locationHashUpdated: function ()
 	{
 		var hash = this.locationHash.get()
-		var state = hash ? UrlEncode.parse(hash) : {view: 'list'}
+		var state = hash ? UrlEncodeLight.parse(hash) : {view: 'list'}
 		
 		this.controller.hashUpdated(state)
 	},
 	
 	setHash: function (hash)
 	{
-		this.locationHash.set(UrlEncode.stringify(hash))
+		this.locationHash.set(UrlEncodeLight.stringify(hash))
 	},
 	
 	modelChanged: function (data)
