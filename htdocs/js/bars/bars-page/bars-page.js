@@ -37,6 +37,11 @@ Me.prototype =
 	{
 		this.view.bind(nodes)
 		
+		return this
+	},
+	
+	checkHash: function ()
+	{
 		this.view.checkHash()
 	}
 }
@@ -102,6 +107,6 @@ $.onready
 		RoundedCorners.round(nodes.map)
 		
 		var widget = new BarsPage()
-		widget.bind(nodes)
+		widget.bind(nodes).checkHash()
 	}
 )
