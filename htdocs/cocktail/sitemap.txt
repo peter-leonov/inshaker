@@ -237,6 +237,7 @@ http://www.inshaker.ru/cocktail/gold_royale/
 http://www.inshaker.ru/cocktail/gold_on_ice/
 http://www.inshaker.ru/cocktail/golden_rico/
 http://www.inshaker.ru/cocktail/golden_fizz/
+http://www.inshaker.ru/cocktail/goldinez/
 http://www.inshaker.ru/cocktail/goldfinger/
 http://www.inshaker.ru/cocktail/dutch_courage/
 http://www.inshaker.ru/cocktail/dutch_basil_smash/
@@ -515,6 +516,7 @@ http://www.inshaker.ru/cocktail/blood_and_sand/
 http://www.inshaker.ru/cocktail/crimean_flip/
 http://www.inshaker.ru/cocktail/cuba_libre/
 http://www.inshaker.ru/cocktail/grasshopper/
+http://www.inshaker.ru/cocktail/cucaracha/
 http://www.inshaker.ru/cocktail/cool_sweet_heart/
 http://www.inshaker.ru/cocktail/kumquat_collins/
 http://www.inshaker.ru/cocktail/kumquat_tea/
@@ -526,6 +528,7 @@ http://www.inshaker.ru/cocktail/lavander_creme_brulle/
 http://www.inshaker.ru/cocktail/avalanche/
 http://www.inshaker.ru/cocktail/titbit/
 http://www.inshaker.ru/cocktail/liquorice_sour/
+http://www.inshaker.ru/cocktail/latin_lady/
 http://www.inshaker.ru/cocktail/lady_scarlett/
 http://www.inshaker.ru/cocktail/lady_killer/
 http://www.inshaker.ru/cocktail/lazy_man_flip/
@@ -597,6 +600,7 @@ http://www.inshaker.ru/cocktail/mandarin_compote_in_a_jug/
 http://www.inshaker.ru/cocktail/tangerine_lemonade/
 http://www.inshaker.ru/cocktail/mandarin_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/mandarin_tea_with_currant/
+http://www.inshaker.ru/cocktail/monkey_business/
 http://www.inshaker.ru/cocktail/manhatten/
 http://www.inshaker.ru/cocktail/mar_del_plata/
 http://www.inshaker.ru/cocktail/margarita/
@@ -706,6 +710,7 @@ http://www.inshaker.ru/cocktail/normandi_smash/
 http://www.inshaker.ru/cocktail/norman_hot_pie/
 http://www.inshaker.ru/cocktail/not_in_me/
 http://www.inshaker.ru/cocktail/a_night_in_tunisia/
+http://www.inshaker.ru/cocktail/new_fashion/
 http://www.inshaker.ru/cocktail/eau_de_vie/
 http://www.inshaker.ru/cocktail/monkey_brains/
 http://www.inshaker.ru/cocktail/clouds/
@@ -1032,6 +1037,7 @@ http://www.inshaker.ru/cocktail/flirtation_margarita/
 http://www.inshaker.ru/cocktail/foxy_lady_shooter/
 http://www.inshaker.ru/cocktail/forrest_gump/
 http://www.inshaker.ru/cocktail/afterburning/
+http://www.inshaker.ru/cocktail/forum/
 http://www.inshaker.ru/cocktail/frambuesa/
 http://www.inshaker.ru/cocktail/french_guiana/
 http://www.inshaker.ru/cocktail/french_gogol-mogol/

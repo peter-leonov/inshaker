@@ -355,7 +355,7 @@
 {"group":"Штучки","name":"Пресс для цитруса","path":"press-dlya-tsitrusa","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,300.0,true]]},
 {"group":"Игристые вина","name":"Просекко","names":["Martini Prosecco","Мартини Просекко"],"path":"prosekko","tags":["Игристое вино","Любой ингредиент","Шампанское"],"unit":"л","volumes":[[0.75,852.0,true]]},
 {"group":"Мучные изделия","name":"Пряник","path":"pryanik","tags":["Любой ингредиент"],"unit":"г","volumes":[[140.0,18.0,true]]},
-{"brand":"Bacardi OakHeart","brand_dir":"bacardi-oakheart","group":"Крепкий алкоголь","mark":"Bacardi","name":"Пряный ром","names":["Bacardi OakHeart","Бакарди окхарт","Пряный бакарди"],"path":"pryanyiy-rom","tags":["Bacardi","Любой ингредиент","Ром","Сочетайзер"],"unit":"л","volumes":[[0.75,1210.0,true]]},
+{"brand":"Bacardi OakHeart","brand_dir":"bacardi-oakheart","group":"Крепкий алкоголь","mark":"Bacardi","name":"Пряный ром","names":["Bacardi OakHeart","Бакарди окхарт","Пряный бакарди"],"path":"pryanyiy-rom","tags":["Bacardi","Любой ингредиент","Ром"],"unit":"л","volumes":[[0.75,1210.0,true]]},
 {"brand":"Monin Spicy","brand_dir":"monin-spicy","group":"Сиропы","mark":"Monin","name":"Пряный сироп","names":["Monin Spicy","Монин Списи","Монин Спайси"],"path":"pryanyiy-sirop","tags":["Monin","Любой ингредиент","Сироп"],"unit":"л","volumes":[[0.7,399.0,true]]},
 {"group":"Добавки","name":"Пюре асаи","path":"pyure-asai","tags":["Любой ингредиент","Ягоды"],"unit":"г","volumes":[[500.0,500.0,true]]},
 {"group":"Сладости","name":"Рахат-лукум","path":"rahat-lukum","tags":["Любой ингредиент"],"unit":"г","volumes":[[400.0,73.0,true]]},
