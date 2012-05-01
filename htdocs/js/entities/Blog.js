@@ -22,6 +22,23 @@ var myStatic =
 			byName[tag.name] = tag
 			byIndex[tag.key] = tag
 		}
+		this.initDbKeys()
+	},
+	
+	initDbKeys: function ()
+	{
+		var db = this.postDb,
+			tags = this.tagsDb,
+			dbKeys = this.dbKeys = {}
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			dbKeys[tags[i].key] = []
+		}
+		for (i = 0, il = db.length; i < il; i++)
+		{
+			dbKeys[db[i].tag_key[0]].push(i)
+		}
 	},
 	
 	getByName: function (name)
@@ -42,6 +59,28 @@ var myStatic =
 		for (var i = 0, il = db.length; i < il; i++)
 			res[i] = db[i].key
 		return res
+	},
+	
+	getSomePostsByTag: function (from, to, tag)
+	{
+		var posts = [],
+			dbKeys = this.dbKeys,
+			dbKey = [],
+			i
+		
+		if (!tag)
+			for (i = from, il = this.postDb.length; i < to && i < il; i++)
+				dbKey[i] = i
+		else
+			dbKey = dbKeys[tag]
+	
+		to = Math.min(dbKey.length, to)
+		
+		for (i = from; i < to; i++)
+		{
+			posts.push(this.postDb[dbKey[i]])
+		}
+		return posts
 	}
 }
 
