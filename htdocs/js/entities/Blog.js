@@ -39,7 +39,7 @@ var myStatic =
 		}
 		for (i = 0, il = db.length; i < il; i++)
 		{
-			dbKeys[db[i].tag_key[0]].push(i)
+			dbKeys[db[i].tag_key].push(i)
 		}
 	},
 	
