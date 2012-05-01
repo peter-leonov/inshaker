@@ -7,6 +7,7 @@ function onready ()
 	
 	var nodes =
 	{
+		root: $('common-main-wrapper'),
 		postsLoop: $('posts-loop'),
 		more: $('more')
 	}
