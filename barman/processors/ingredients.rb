@@ -293,7 +293,7 @@ class IngredientsProcessor < Inshaker::Processor
       unused = @tags - tags_used.keys
     
       unless unused.empty?
-        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+        warning "нет ингредиентов с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
       end
     
       # delete unused tags
@@ -305,7 +305,7 @@ class IngredientsProcessor < Inshaker::Processor
       unused = @groups - groups_used.keys
     
       unless unused.empty?
-        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+        warning "нет ингредиентов с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
       end
     
       # delete unused tags
