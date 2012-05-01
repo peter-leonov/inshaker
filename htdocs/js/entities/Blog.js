@@ -14,17 +14,24 @@ var myStatic =
 		this.tagsDb = tags
 		this.postDb = posts
 		
-		var byName = this.__byNameIndex = {}
+		var byName = this.__byNameIndex = {},
+			byIndex = this.__byIndexName = {}
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i]
 			byName[tag.name] = tag
+			byIndex[tag.key] = tag
 		}
 	},
 	
 	getByName: function (name)
 	{
 		return this.__byNameIndex[name]
+	},
+	
+	getByIndex: function (name)
+	{
+		return this.__byIndexName[name]
 	},
 	
 	allKeys: function (e)
