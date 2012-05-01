@@ -1,3 +1,5 @@
+<!--# include virtual="/liby/modules/request.js"-->
+
 ;(function(){
 
 function Me () {}
@@ -78,7 +80,15 @@ var myStatic =
 		
 		for (i = from; i < to; i++)
 		{
-			posts.push(this.postDb[dbKey[i]])
+			var post = this.postDb[dbKey[i]]
+
+			Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
+			{
+				if (this.statusType == 'success')
+					post.html = this.responseText
+			}, true)
+
+			posts.push(post)
 		}
 		return posts
 	}
