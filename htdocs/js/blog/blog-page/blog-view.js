@@ -15,6 +15,9 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		this.controller.renderPosts()
+		
+		var me = this
+		nodes.more.addEventListener('click', function (e) { me.controller.renderPosts() }, false)
 	},
 	
 	renderPosts: function (posts)
