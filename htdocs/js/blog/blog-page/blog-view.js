@@ -14,6 +14,7 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		this.controller.renderPosts()
 	},
 	
 	renderPosts: function (posts)
