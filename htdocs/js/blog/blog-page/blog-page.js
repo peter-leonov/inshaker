@@ -7,6 +7,7 @@ function onready ()
 	
 	var nodes =
 	{
+		pageRoot: $('common-main-wrapper')
 	}
 	
 	var widget = new BlogPage()
