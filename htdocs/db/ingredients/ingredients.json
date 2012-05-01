@@ -62,7 +62,7 @@
 {"group":"Ягоды","name":"Брусника","path":"brusnika","tags":["Любой ингредиент","Ягоды"],"unit":"г","volumes":[[300.0,112.0,true]]},
 {"group":"Соки и морсы","name":"Брусничный морс","path":"brusnichnyiy-mors","tags":["Любой ингредиент","Морс"],"unit":"л","volumes":[[1.0,90.0,true]]},
 {"group":"Штучки","name":"Бубен","path":"buben","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,500.0,true]]},
-{"brand":"Jim Beam White","brand_dir":"jim-beam-white","group":"Крепкий алкоголь","mark":"Jim Beam","name":"Бурбон","names":["Американский виски"],"path":"burbon","tags":["Jim Beam","Любой ингредиент"],"unit":"л","volumes":[[1.0,1422.0,true]]},
+{"brand":"Jim Beam White","brand_dir":"jim-beam-white","group":"Крепкий алкоголь","mark":"Jim Beam","name":"Бурбон","names":["Американский виски"],"path":"burbon","tags":["Jim Beam","Любой ингредиент","Сочетайзер"],"unit":"л","volumes":[[1.0,1422.0,true]]},
 {"group":"Добавки","name":"Ванилин","path":"vanilin","tags":["Любой ингредиент"],"unit":"г","volumes":[[50.0,71.0,true]]},
 {"group":"Специи и пряности","name":"Ваниль в стручках","path":"vanil-v-struchkah","tags":["Любой ингредиент"],"unit":"г","volumes":[[3.0,120.0,true]]},
 {"group":"Молочные продукты. Яйца","name":"Ванильное мороженое","path":"vanilnoe-morozhenoe","tags":["Любой ингредиент","Мороженое"],"unit":"г","volumes":[[500.0,109.0,true]]},
