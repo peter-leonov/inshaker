@@ -53,6 +53,30 @@ Me.prototype =
 		root.removeClassName('show-' + this.lastTag)
 		root.addClassName('show-' + key)
 		this.lastTag = key
+	},
+	
+	showMoreButton: function ()
+	{
+		var more = this.nodes.more
+		
+		if (more.hasClassName('hidden'))
+			more.removeClassName('hidden')
+	},
+	
+	hideMoreButton: function ()
+	{
+		var more = this.nodes.more
+		
+		if (!more.hasClassName('hidden'))
+			more.addClassName('hidden')
+	},
+	
+	renameMoreButton: function (diff)
+	{
+		var more = this.nodes.more
+		
+		more.value = "еще " + diff + " постов!"
+		this.showMoreButton()
 	}
 }
 

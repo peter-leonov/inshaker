@@ -93,6 +93,14 @@ var myStatic =
 		return posts
 	},
 	
+	getCountPostsByTag: function (tag)
+	{
+		if (!tag)
+			return this.postDb.length
+		else
+			return this.dbKeys[tag].length
+	},
+	
 	sortByDate: function (a, b)
 	{
 		return b.date - a.date
