@@ -14,7 +14,7 @@ var myStatic =
 	initialize: function (tags, posts)
 	{
 		this.tagsDb = tags
-		this.postDb = posts
+		this.postDb = posts.sort(this.sortByDate)
 		
 		var byName = this.__byNameIndex = {},
 			byIndex = this.__byIndexName = {}
@@ -91,6 +91,11 @@ var myStatic =
 			posts.push(post)
 		}
 		return posts
+	},
+	
+	sortByDate: function (a, b)
+	{
+		return b.date - a.date
 	}
 }
 
