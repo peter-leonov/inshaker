@@ -1,5 +1,12 @@
 [
 {
+	"name": "Коктейльное барбекю",
+	"imperative": "Пригласи друзей на коктейльное барбекю!",
+	"path": "cocktail-bbq",
+	"portions": [{"cocktail": "Темный ром с колой", "factor": 5},{"cocktail": "Бадминтон", "factor": 2}],
+	"people": 10
+},
+{
 	"name": "Убойная пятница",
 	"imperative": "Пригласи друзей на дегустацию убойных шотов!",
 	"path": "smashing-friday",
