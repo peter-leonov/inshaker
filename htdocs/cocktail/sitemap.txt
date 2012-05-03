@@ -956,6 +956,7 @@ http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/style_martini/
 http://www.inshaker.ru/cocktail/way_of_life/
 http://www.inshaker.ru/cocktail/way_of_life_2/
+http://www.inshaker.ru/cocktail/stinger/
 http://www.inshaker.ru/cocktail/passion_gin/
 http://www.inshaker.ru/cocktail/stratosphere/
 http://www.inshaker.ru/cocktail/strelka_flip/
