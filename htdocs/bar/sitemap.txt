@@ -43,3 +43,5 @@ http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/daiquiri/
 http://www.inshaker.ru/bar/thebar/
+http://www.inshaker.ru/bar/clocks/
+http://www.inshaker.ru/bar/elephant/
