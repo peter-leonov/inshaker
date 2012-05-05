@@ -3,7 +3,6 @@
 <!--# include virtual="/liby/modules/plural.js"-->
 <!--# include virtual="/liby/modules/array-randomize.js"-->
 <!--# include virtual="/liby/modules/require.js" -->
-<!--# include virtual="/liby/modules/selectors.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/nodes.js" -->
