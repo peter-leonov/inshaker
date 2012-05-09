@@ -102,8 +102,8 @@ function CalculatorView() {
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
-	if($('order_button')){
-		$('order_button').addEventListener('click', function(e){
+	if($('#order_button')){
+		$('#order_button').addEventListener('click', function(e){
 			if(!Calculator.checkSum("order")){
 				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("order") + ". Добавьте что-нибудь еще ;-)");
 			} else window.location.href="/order.html";
@@ -118,7 +118,7 @@ function CalculatorView() {
 	// 	e.preventDefault()
 	// 	alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("call_barmen") + ". Добавьте что-нибудь еще ;-)");
 	// }
-	// $('call_barmen').addEventListener('click', callBarmen, false);
+	// $('#call_barmen').addEventListener('click', callBarmen, false);
 	
 	/**
 	 * Событие, поступающее от модели в случае ее изменения

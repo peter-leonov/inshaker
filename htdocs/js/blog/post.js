@@ -35,7 +35,7 @@ function onready (e)
 		title: $$('#the-one .post .title')[0],
 		shareBox:
 		{
-			root: $('share-box'),
+			root: $('#share-box'),
 			buttons: $$('#share-box .button')
 		}
 	}

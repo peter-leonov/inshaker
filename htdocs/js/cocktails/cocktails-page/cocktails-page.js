@@ -52,26 +52,26 @@ function onready ()
 	var nodes =
 	{
 		bodyWrapper: $$('#common-main-wrapper .column-main')[0],
-		resultsDisplay: $('results_display'),
-		resultsRoot: $('surface'),
-		pagerRoot: $('p-list'),
+		resultsDisplay: $('#results_display'),
+		resultsRoot: $('#surface'),
+		pagerRoot: $('#p-list'),
 		
 		bigNext: $$(".pager-big .next")[0],
 		bigPrev: $$(".pager-big .prev")[0],
 		
-		alphabetRu: $('alphabetical-ru'),
-		lettersAll: $('letters_all'),
+		alphabetRu: $('#alphabetical-ru'),
+		lettersAll: $('#letters_all'),
 		
-		tagsList: $('tags_list'),
-		strengthsList: $('strengths_list'),
-		methodsList: $('methods_list'),
+		tagsList: $('#tags_list'),
+		strengthsList: $('#strengths_list'),
+		methodsList: $('#methods_list'),
 		
-		searchByName: $('search_by_name'),
+		searchByName: $('#search_by_name'),
 		searchByNameInput: $$('#search_by_name input')[0],
-		searchByLetter: $('search_by_letter'),
-		searchByTags: $('search_by_tags'),
+		searchByLetter: $('#search_by_letter'),
+		searchByTags: $('#search_by_tags'),
 		
-		mainArea: $('b_content'),
+		mainArea: $('#b_content'),
 		
 		tabsRoot: $$('#search_tabs')[0],
 		tabs:
@@ -83,16 +83,16 @@ function onready ()
 		
 		byLetterTab: $$('#search_tabs .by-letter')[0],
 		
-		searchExampleName: $('search_example_name'),
-		searchExampleNameEng: $('search_example_name_eng'),
-		searchTipName: $('search_tip_name'),
+		searchExampleName: $('#search_example_name'),
+		searchExampleNameEng: $('#search_example_name_eng'),
+		searchTipName: $('#search_tip_name'),
 		
-		panels: $('panels'),
+		panels: $('#panels'),
 		
-		cartEmpty: $('cart_draghere'),
-		cartFull: $('cart_contents'),
+		cartEmpty: $('#cart_draghere'),
+		cartFull: $('#cart_contents'),
 		
-		spotlighted: $('spotlighted')
+		spotlighted: $('#spotlighted')
 	}
 	
 	var widget = new CocktailsPage(nodes)
@@ -103,7 +103,7 @@ function onready ()
 	var nodes =
 	{
 		page: document.documentElement,
-		holder: $('branded-image-holder')
+		holder: $('#branded-image-holder')
 	}
 	
 	var bs = new BrandingScroller()

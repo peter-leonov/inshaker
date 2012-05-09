@@ -64,8 +64,8 @@ $.onready
 		
 		var nodes =
 		{
-			page: $('bar-page'),
-			brandedImageHolder: $('branded-image-holder'),
+			page: $('#bar-page'),
+			brandedImageHolder: $('#branded-image-holder'),
 			photos:
 			{
 				root:            $$('.photos')[0],
@@ -77,13 +77,13 @@ $.onready
 			},
 			shareBox:
 			{
-				root: $('share-box'),
+				root: $('#share-box'),
 				buttons: $$('#share-box .button')
 			},
 			hitBox: $$('#main-column .info .hit .body')[0],
-			barName: $('bar-name'),
-			cityName: $('city-name'),
-			map: $('map'),
+			barName: $('#bar-name'),
+			cityName: $('#city-name'),
+			map: $('#map'),
 			positionControl: $$('.position-control')[0],
 			barPrev: $$('#main-column .common-title .navigation .prev')[0],
 			barNext: $$('#main-column .common-title .navigation .next')[0]
@@ -96,7 +96,7 @@ $.onready
 		var nodes =
 		{
 			page: document.documentElement,
-			holder: $('branded-image-holder')
+			holder: $('#branded-image-holder')
 		}
 		
 		var bs = new BrandingScroller()

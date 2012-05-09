@@ -81,28 +81,28 @@ $.onready
 			titleSearch: $$('#head .search')[0],
 			titleSearchName: $$('#head .search .cocktail')[0],
 			titleSearchAll: $$('#head .search .drop-cocktail')[0],
-			viewSwitcher: $('switch-view'),
+			viewSwitcher: $('#switch-view'),
 			viewSwitcherButtons: $$('#switch-view .view-list, #switch-view .view-map'),
-			barsContainer: $('bars-container'),
+			barsContainer: $('#bars-container'),
 			citySelecter:
 			{
-				main: $('bars-city'),
+				main: $('#bars-city'),
 				button: $$('#bars-city .button')[0],
 				options: $$('#bars-city .options')[0]
 			},
 			formatSelecter:
 			{
-				main: $('bars-format'),
+				main: $('#bars-format'),
 				button: $$('#bars-format .button')[0],
 				options: $$('#bars-format .options')[0]
 			},
 			feelSelecter:
 			{
-				main: $('bars-feel'),
+				main: $('#bars-feel'),
 				button: $$('#bars-feel .button')[0],
 				options: $$('#bars-feel .options')[0]
 			},
-			map: $('map'),
+			map: $('#map'),
 			mapSurface: $$('#map .surface')[0],
 			positionControl: $$('.position-control')[0]
 		}

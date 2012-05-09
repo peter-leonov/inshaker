@@ -98,7 +98,7 @@ function onready ()
 		button: $$('#poll-popup .poll-form button')[0],
 		popup:
 		{
-			root: $('poll-popup'),
+			root: $('#poll-popup'),
 			window: $$('#poll-popup .popup-window')[0],
 			front: $$('#poll-popup .popup-front')[0]
 		}

@@ -53,7 +53,7 @@ function onready ()
 	
 	var nodes =
 	{
-		videoBlocks: $('video-blocks')
+		videoBlocks: $('#video-blocks')
 	}
 	
 	var widget = new AcademyPage()
@@ -63,7 +63,7 @@ function onready ()
 	var nodes =
 	{
 		page: document.documentElement,
-		holder: $('branded-image-holder')
+		holder: $('#branded-image-holder')
 	}
 	
 	var bs = new BrandingScroller()

@@ -77,26 +77,26 @@ $.onready
 	{
 		var nodes =
 		{
-			name: $('event-name'),
-			promoBack: $('promo-back'),
-			mark: $('mark'),
+			name: $('#event-name'),
+			promoBack: $('#promo-back'),
+			mark: $('#mark'),
 			previews: $$('.previews')[0],
 			previewSurface: $$('.previews .viewport .surface')[0],
-			illustration: $('illustration'),
+			illustration: $('#illustration'),
 			illustrationPopups: $$('#illustration img')[0],
 			rating: $$('#comming .rating')[0],
 			ratingHead: $$('#comming h2')[0],
 			ratingShowAll: $$('#comming .list-all')[0],
 			ratingFrom: $$('#comming .from')[0],
-			sidebar: $('sidebar'),
-			sponsorsLow: $('low-sponsors'),
+			sidebar: $('#sidebar'),
+			sponsorsLow: $('#low-sponsors'),
 			sponsorsLowContent: $$('#low-sponsors .b-content')[0],
-			sponsorsMedium: $('medium-sponsors'),
+			sponsorsMedium: $('#medium-sponsors'),
 			sponsorsHighBlock: $$('#main-sponsors')[0],
 			sponsorsHighTitle: $$('#main-sponsors .b-title h4')[0],
 			sponsorsHigh: $$('#main-sponsors .banner')[0],
 			form: $$('#form-popup form')[0],
-			formPopup: $('form-popup'),
+			formPopup: $('#form-popup'),
 			formPopupOverlay: $$('#form-popup #overlay')[0],
 			formPopupContent: $$('#form-popup .content')[0],
 			formPopupMenu: $$('#form-popup .menu')[0],
@@ -107,10 +107,10 @@ $.onready
 			formPopupHrefInput: $$('#form-popup input[name=href]')[0],
 			formPopupSubmit: $$('#form-popup input[type=submit]')[0],
 			variableInputs: $$('#form-popup .variable')[0],
-			getInvitation: [$('invitations-only'), $$('.about .sign-on')[0]]
+			getInvitation: [$('#invitations-only'), $$('.about .sign-on')[0]]
 		}
 		
-		// log(document.documentElement.appendChild($('form-popup')))
+		// log(document.documentElement.appendChild($('#form-popup')))
 		
 		// document.addEventListener('click', function () { alert(document.body.parentNode.scrollHeight + document.body.parentNode.scrollTop) })
 		

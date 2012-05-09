@@ -1,27 +1,27 @@
 var AboutPage = {
 	formSuccess: function(){
-		$('feedback_form').hide();
-		$('form_success').show();
+		$('#feedback_form').hide();
+		$('#form_success').show();
 	},
 	
 	formShow: function(){
-		$('form_success').hide();
-		$('feedback_form').show();
+		$('#form_success').hide();
+		$('#feedback_form').show();
 	},
 	
 	hidePoster: function(){
-		$('panel_cocktail').style.marginBottom = "0";
-		$('poster').style.display = "none";
+		$('#panel_cocktail').style.marginBottom = "0";
+		$('#poster').style.display = "none";
 	},
 	
 	showPoster: function(){
-		$('panel_cocktail').style.marginBottom = "142px";
-		$('poster').style.display = "block";		
+		$('#panel_cocktail').style.marginBottom = "142px";
+		$('#poster').style.display = "block";
 	},
 	
 	init: function ()
 	{
-		var main = $('menu')
+		var main = $('#menu')
 		var tabs = $$('#main-column .content')
 		var buttons = $$('#menu a')
 		
@@ -54,7 +54,7 @@ var AboutPage = {
 		pie.addVariable("preloader_color", "#999999");
 		pie.write("stat_cities");
 		
-		var form = $('feedback_form')
+		var form = $('#feedback_form')
 		function sendListener (e)
 		{
 			e.preventDefault()
@@ -76,7 +76,7 @@ var AboutPage = {
 		form.addEventListener('submit', sendListener, false)
 		
 		
-		var content = $('partner-list')
+		var content = $('#partner-list')
 		
 		var marks = Mark.getAll()
 		for (var i = 0; i < marks.length; i++)
@@ -98,7 +98,7 @@ var AboutPage = {
 
 $.onready(function(){
 	AboutPage.init();
-	new RollingImagesLite($('rolling_stats'), {animationType: 'directJump'});
+	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
 <!--# include virtual="/liby/modules/form-helper.js" -->

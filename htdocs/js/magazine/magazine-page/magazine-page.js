@@ -26,7 +26,7 @@ $.onready
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
 			tagsList: $$('#tags-list')[0],
-			promo: $('promo'),
+			promo: $('#promo'),
 			arrows:[$$('#promo-prev')[0], $$('#promo-next')[0]]
 		}
 		

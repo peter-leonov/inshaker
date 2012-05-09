@@ -3,8 +3,8 @@ $.onready(function(){
 	IngredientPopup.bootstrap()
 	
 	var aniOpts = {animationType: 'easeInOutCubic'};
-	new RollingImagesLite($('related'), aniOpts);
-	new RollingImagesLite($('ingredients'), aniOpts);
+	new RollingImagesLite($('#related'), aniOpts);
+	new RollingImagesLite($('#ingredients'), aniOpts);
 	Controller.init();
 	Calculator.init();
 	
@@ -13,7 +13,7 @@ $.onready(function(){
 	var nodes =
 	{
 		page: document.documentElement,
-		holder: $('branded-image-holder')
+		holder: $('#branded-image-holder')
 	}
 	
 	var bs = new BrandingScroller()

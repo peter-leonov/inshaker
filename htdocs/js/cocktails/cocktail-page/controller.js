@@ -39,16 +39,16 @@ var Controller = {
 	
 	nodes:
 	{
-		moreBox: $('b-more'),
+		moreBox: $('#b-more'),
 		hreview: $$('.hreview')[0],
-		showRecipe: $('show-recipe'),
-		hideRecipe: $('close-recipe'),
-		showLegendBtn: $('show-legend'),
-		hideLegendBtn: $('hide-legend'),
+		showRecipe: $('#show-recipe'),
+		hideRecipe: $('#close-recipe'),
+		showLegendBtn: $('#show-legend'),
+		hideLegendBtn: $('#hide-legend'),
 		tags: $$('#main-content .tags .tag'),
 		recommendations:
 		{
-			root: $('recommendations'),
+			root: $('#recommendations'),
 			viewport: $$('#recommendations .viewport')[0],
 			surface: $$('#recommendations .surface')[0],
 			prev: $$('#recommendations .prev')[0],

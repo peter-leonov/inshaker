@@ -59,7 +59,7 @@ function onready ()
 	var nodes = 
 	{	
 		mainBox : $$('#common-main-wrapper .main-box')[0],
-		mainFunFix: $('the-main-menu'),
+		mainFunFix: $('#the-main-menu'),
 		mainFunFixLinks: $$('#the-main-menu .link'),
 		
 		mainLinksSup : {

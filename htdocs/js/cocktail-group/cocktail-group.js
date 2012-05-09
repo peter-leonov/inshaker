@@ -92,9 +92,9 @@ function onready ()
 {
 	var nodes =
 	{
-		root: $('main-column'),
-		groupName: $('group-name'),
-		list: $('cocktail-list'),
+		root: $('#main-column'),
+		groupName: $('#group-name'),
+		list: $('#cocktail-list'),
 		cocktailItems: $$('#cocktail-list li')
 	}
 	
