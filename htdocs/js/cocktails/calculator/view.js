@@ -299,7 +299,6 @@ function CalculatorView() {
 				IngredientPopup.show(Ingredient.getByName(name))
 			}
 			a.addEventListener('click', showPopup, false)
-			button.addEventListener('click', showPopup, false)
 			
 			input.addEventListener('focus', function (e) { li.focused = true }, false)
 			input.addEventListener('blur', function (e) { li.focused = false }, false)

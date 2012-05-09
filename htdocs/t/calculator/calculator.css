@@ -14,7 +14,7 @@
 #b-bill dd li a{display:block;width:125px;}
 #b-bill dd li label{position:absolute;top:10px;width:110px;right:30px;white-space:nowrap;}
 #b-bill dd li b{font-weight:normal;display:block;}
-#b-bill dd li button{position:absolute;top:12px;right:8px;width:16px;height:16px;border:none;padding:0;background: no-repeat -500px -75px;overflow:hidden;text-indent:200px;cursor:pointer;}
+#b-bill dd li button{position:absolute;top:12px;right:8px;width:16px;height:16px;border:none;padding:0;background: no-repeat -500px -75px;overflow:hidden;text-indent:200px;}
 #b-bill dd li button.bt-less,
 #b-bill dd li button.bt-more { height:20px; }
 #b-bill dd li button.bt-less { background-position: -525px -75px; }
