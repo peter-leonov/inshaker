@@ -49,22 +49,22 @@ function onready ()
 	
 	var nodes =
 	{
-		name: $$('#desc .name')[0],
+		name: $('#desc .name'),
 		previews:
 		{
-			root: $$('.goods-previews')[0],
-			prev: $$('.goods-previews .prev')[0],
-			next: $$('.goods-previews .next')[0],
-			viewport: $$('.goods-previews .viewport')[0],
-			surface: $$('.goods-previews .surface')[0]
+			root: $('.goods-previews'),
+			prev: $('.goods-previews .prev'),
+			next: $('.goods-previews .next'),
+			viewport: $('.goods-previews .viewport'),
+			surface: $('.goods-previews .surface')
 		},
 		promos:
 		{
-			root: $$('.good-promos')[0],
-			prev: $$('.good-promos .prev')[0],
-			next: $$('.good-promos .next')[0],
-			viewport: $$('.good-promos .viewport')[0],
-			surface: $$('.good-promos .surface')[0]
+			root: $('.good-promos'),
+			prev: $('.good-promos .prev'),
+			next: $('.good-promos .next'),
+			viewport: $('.good-promos .viewport'),
+			surface: $('.good-promos .surface')
 		}
 	}
 	

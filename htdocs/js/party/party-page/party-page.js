@@ -24,55 +24,55 @@ function onready ()
 		partyName: $('#party-name'),
 		window:
 		{
-			root: $$('#window')[0],
+			root: $('#window'),
 			layers: $$('#window .layer'),
 			images: $$('#window .layer .image'),
-			bar: $$('#window .stub .label .bar')[0]
+			bar: $('#window .stub .label .bar')
 		},
-		recipeList: $$('#recipe-list')[0],
+		recipeList: $('#recipe-list'),
 		recipeIngredientPreviews: $$('#recipe-list .recipe .ingredients .ingredient-preview'),
-		purchasePlan: $$('#purchase-plan')[0],
+		purchasePlan: $('#purchase-plan'),
 		
-		ingredientsPart: $$('#ingredients-part')[0],
-		ingredientsPartList: $$('#ingredients-part .parts-list .list')[0],
-		ingredientsPartPreviewList: $$('#ingredients-part .preview-list')[0],
+		ingredientsPart: $('#ingredients-part'),
+		ingredientsPartList: $('#ingredients-part .parts-list .list'),
+		ingredientsPartPreviewList: $('#ingredients-part .preview-list'),
 		
-		toolsPart: $$('#tools-part')[0],
-		toolsPartList: $$('#tools-part .parts-list .list')[0],
-		toolsPartPreviewList: $$('#tools-part .preview-list')[0],
+		toolsPart: $('#tools-part'),
+		toolsPartList: $('#tools-part .parts-list .list'),
+		toolsPartPreviewList: $('#tools-part .preview-list'),
 		
-		thingsPart: $$('#things-part')[0],
-		thingsPartList: $$('#things-part .parts-list .list')[0],
-		thingsPartPreviewList: $$('#things-part .preview-list')[0],
+		thingsPart: $('#things-part'),
+		thingsPartList: $('#things-part .parts-list .list'),
+		thingsPartPreviewList: $('#things-part .preview-list'),
 		
 		purchasePlanTotal:
 		{
 			perParty:
 			{
-				value: $$('#purchase-plan .total .per-party .cost')[0],
-				unit: $$('#purchase-plan .total .per-party .unit')[0]
+				value: $('#purchase-plan .total .per-party .cost'),
+				unit: $('#purchase-plan .total .per-party .unit')
 			},
 			perPerson:
 			{
-				value: $$('#purchase-plan .total .per-person .cost .value')[0],
-				unit: $$('#purchase-plan .total .per-person .cost .unit')[0]
+				value: $('#purchase-plan .total .per-person .cost .value'),
+				unit: $('#purchase-plan .total .per-person .cost .unit')
 			}
 		},
-		cocktailPlan: $$('#cocktail-plan')[0],
-		peopleCount: $$('#cocktail-plan .people .value')[0],
-		peopleUnit: $$('#cocktail-plan .people .unit')[0],
-		body: $$('#cocktail-plan .body')[0],
-		portions: $$('#cocktail-plan .body .portions')[0],
+		cocktailPlan: $('#cocktail-plan'),
+		peopleCount: $('#cocktail-plan .people .value'),
+		peopleUnit: $('#cocktail-plan .people .unit'),
+		body: $('#cocktail-plan .body'),
+		portions: $('#cocktail-plan .body .portions'),
 		
 		shareBox:
 		{
-			root: $$('#links-box .share-box')[0],
+			root: $('#links-box .share-box'),
 			buttons: $$('#links-box .share-box .button')
 		},
 		
-		printButton: $$('#links-box .print-box .print-page')[0],
+		printButton: $('#links-box .print-box .print-page'),
 		
-		partyList: $$('#party-list')[0]
+		partyList: $('#party-list')
 	}
 	
 	var widget = new PartyPage()

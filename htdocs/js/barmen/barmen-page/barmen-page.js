@@ -49,7 +49,7 @@ $.onready(function ()
 	
 	var nodes =
 	{
-		barmensList: $$('.barmen-list')[0]
+		barmensList: $('.barmen-list')
 	}
 	
 	var page = new BarmenPage()

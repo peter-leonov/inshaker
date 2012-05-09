@@ -51,32 +51,32 @@ function onready ()
 	
 	var nodes =
 	{
-		bodyWrapper: $$('#common-main-wrapper .column-main')[0],
+		bodyWrapper: $('#common-main-wrapper .column-main'),
 		resultsDisplay: $('#results_display'),
 		resultsRoot: $('#surface'),
 		pagerRoot: $('#p-list'),
 		
-		bigNext: $$(".pager-big .next")[0],
-		bigPrev: $$(".pager-big .prev")[0],
+		bigNext: $(".pager-big .next"),
+		bigPrev: $(".pager-big .prev"),
 		
 		alphabetRu: $('#alphabetical-ru'),
 		lettersAll: $('#letters_all'),
 		
 		searchByName: $('#search_by_name'),
-		searchByNameInput: $$('#search_by_name input')[0],
+		searchByNameInput: $('#search_by_name input'),
 		searchByLetter: $('#search_by_letter'),
 		
 		mainArea: $('#b_content'),
 		
-		tabsRoot: $$('#search_tabs')[0],
+		tabsRoot: $('#search_tabs'),
 		tabs:
 		{
-			byName: $$('.by-name')[0],
-			byLetter: $$('.by-letter')[0],
-			top20: $$('.top-20')[0]
+			byName: $('.by-name'),
+			byLetter: $('.by-letter'),
+			top20: $('.top-20')
 		},
 		
-		byLetterTab: $$('#search_tabs .by-letter')[0],
+		byLetterTab: $('#search_tabs .by-letter'),
 		
 		searchExampleName: $('#search_example_name'),
 		searchExampleNameEng: $('#search_example_name_eng'),

@@ -80,27 +80,27 @@ function onready ()
 	{
 		output: $('#output'),
 		mainFunFix: $('#the-main-menu'),
-		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
-		stats: $$('#output .result-block .stats')[0],
-		queryInput: $$('#search-box .query')[0],
-		searchForm: $$('#search-box form')[0],
-		plusButton: $$('#search-box .plus')[0],
-		resetButton: $$('#search-box .reset')[0],
-		ingredientComplete: $$('#search-box .autocomplete')[0],
-		totalCocktails: $$('#output .sort-line .cocktail-count')[0],
-		sortedWord: $$('#output .sort-line .sorted-word')[0],
-		suggestions: $$('#output .empty-block .suggestions')[0],
-		suggestionsList: $$('#output .empty-block .suggestions .list')[0],
-		ingredientsList: $$('#output .initial-block .ingredients-list')[0],
-		helpLine: $$('#output .help-line')[0],
-		hintSingle: $$('#output .help-line .hint.single')[0],
-		hintDouble: $$('#output .help-line .hint.double')[0],
+		cocktailList: $('#output .result-block .ingrediented-cocktail-list'),
+		stats: $('#output .result-block .stats'),
+		queryInput: $('#search-box .query'),
+		searchForm: $('#search-box form'),
+		plusButton: $('#search-box .plus'),
+		resetButton: $('#search-box .reset'),
+		ingredientComplete: $('#search-box .autocomplete'),
+		totalCocktails: $('#output .sort-line .cocktail-count'),
+		sortedWord: $('#output .sort-line .sorted-word'),
+		suggestions: $('#output .empty-block .suggestions'),
+		suggestionsList: $('#output .empty-block .suggestions .list'),
+		ingredientsList: $('#output .initial-block .ingredients-list'),
+		helpLine: $('#output .help-line'),
+		hintSingle: $('#output .help-line .hint.single'),
+		hintDouble: $('#output .help-line .hint.double'),
 		
 		sortbySelect:
 		{
 			main: $('#sortby-select'),
-			button: $$('#sortby-select .button')[0],
-			options: $$('#sortby-select .options')[0]
+			button: $('#sortby-select .button'),
+			options: $('#sortby-select .options')
 		}
 	}
 	

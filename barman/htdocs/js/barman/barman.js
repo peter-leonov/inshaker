@@ -16,16 +16,16 @@ $.onready(function()
 {
 	var nodes =
 	{
-		shakerPage: $$('.page.shaker')[0],
-		shake: $$('.shaker .shake')[0],
-		processorsList: $$('.shaker .processors-list')[0],
-		viewStatus: $$('.shaker .view-status')[0],
-		resetState: $$('.shaker .reset-state')[0],
-		gotoUploader: $$('.goto-uploader')[0],
+		shakerPage: $('.page.shaker'),
+		shake: $('.shaker .shake'),
+		processorsList: $('.shaker .processors-list'),
+		viewStatus: $('.shaker .view-status'),
+		resetState: $('.shaker .reset-state'),
+		gotoUploader: $('.goto-uploader'),
 		
-		uploaderPage: $$('.page.uploader')[0],
-		upload: $$('.uploader .upload')[0],
-		gotoShaker: $$('.goto-shaker')[0],
+		uploaderPage: $('.page.uploader'),
+		upload: $('.uploader .upload'),
+		gotoShaker: $('.goto-shaker'),
 		
 		output: $('#output')
 	}

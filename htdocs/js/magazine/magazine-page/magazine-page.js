@@ -25,9 +25,9 @@ $.onready
 		var nodes =
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
-			tagsList: $$('#tags-list')[0],
+			tagsList: $('#tags-list'),
 			promo: $('#promo'),
-			arrows:[$$('#promo-prev')[0], $$('#promo-next')[0]]
+			arrows: [$('#promo-prev'), $('#promo-next')]
 		}
 		
 		MagazinePage.initialize(nodes)

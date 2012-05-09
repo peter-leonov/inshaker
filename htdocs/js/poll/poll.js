@@ -92,15 +92,15 @@ function onready ()
 {
 	var nodes =
 	{
-		root: $$('#poll-popup .poll-window')[0],
-		form: $$('#poll-popup .poll-form')[0],
-		name: $$('#poll-popup .poll-form .poll-name')[0],
-		button: $$('#poll-popup .poll-form button')[0],
+		root: $('#poll-popup .poll-window'),
+		form: $('#poll-popup .poll-form'),
+		name: $('#poll-popup .poll-form .poll-name'),
+		button: $('#poll-popup .poll-form button'),
 		popup:
 		{
 			root: $('#poll-popup'),
-			window: $$('#poll-popup .popup-window')[0],
-			front: $$('#poll-popup .popup-front')[0]
+			window: $('#poll-popup .popup-window'),
+			front: $('#poll-popup .popup-front')
 		}
 	}
 	

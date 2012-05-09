@@ -207,27 +207,27 @@ var myStatic =
 			popupMain: $('#ingredient-info-popup'),
 			popupParts:
 			{
-				window: $$('#ingredient-info-popup .popup-window')[0],
-				front: $$('#ingredient-info-popup .popup-front')[0],
-				ingredientWindow: $$('#ingredient-info-popup .popup-window .ingredient-window')[0],
-				image: $$('#ingredient-info-popup .description .image')[0],
-				mark: $$('#ingredient-info-popup .description .about .mark')[0],
-				brand: $$('#ingredient-info-popup .description .about .brand .link')[0],
-				buy: $$('#ingredient-info-popup .description .about .where-to-buy .link')[0],
-				name: $$('#ingredient-info-popup .description .about .name')[0],
-				text: $$('#ingredient-info-popup .description .about .text')[0],
-				allCocktails: $$('#ingredient-info-popup .description .about .all-cocktails')[0],
-				allCocktailsLink: $$('#ingredient-info-popup .description .about .all-cocktails .link')[0],
-				combinations: $$('#ingredient-info-popup .description .about .combinations')[0],
-				combinationsList: $$('#ingredient-info-popup .description .about .combinations .list')[0],
+				window: $('#ingredient-info-popup .popup-window'),
+				front: $('#ingredient-info-popup .popup-front'),
+				ingredientWindow: $('#ingredient-info-popup .popup-window .ingredient-window'),
+				image: $('#ingredient-info-popup .description .image'),
+				mark: $('#ingredient-info-popup .description .about .mark'),
+				brand: $('#ingredient-info-popup .description .about .brand .link'),
+				buy: $('#ingredient-info-popup .description .about .where-to-buy .link'),
+				name: $('#ingredient-info-popup .description .about .name'),
+				text: $('#ingredient-info-popup .description .about .text'),
+				allCocktails: $('#ingredient-info-popup .description .about .all-cocktails'),
+				allCocktailsLink: $('#ingredient-info-popup .description .about .all-cocktails .link'),
+				combinations: $('#ingredient-info-popup .description .about .combinations'),
+				combinationsList: $('#ingredient-info-popup .description .about .combinations .list'),
 				
 				cocktails:
 				{
-					root: $$('#ingredient-info-popup .cocktail-list')[0],
-					viewport: $$('#ingredient-info-popup .cocktail-list .viewport')[0],
-					surface: $$('#ingredient-info-popup .cocktail-list .surface')[0],
-					prev: $$('#ingredient-info-popup .cocktail-list .prev')[0],
-					next: $$('#ingredient-info-popup .cocktail-list .next')[0]
+					root: $('#ingredient-info-popup .cocktail-list'),
+					viewport: $('#ingredient-info-popup .cocktail-list .viewport'),
+					surface: $('#ingredient-info-popup .cocktail-list .surface'),
+					prev: $('#ingredient-info-popup .cocktail-list .prev'),
+					next: $('#ingredient-info-popup .cocktail-list .next')
 				}
 			}
 		}

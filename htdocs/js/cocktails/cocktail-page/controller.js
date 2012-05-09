@@ -18,7 +18,7 @@ var Controller = {
 	nodes:
 	{
 		moreBox: $('#b-more'),
-		hreview: $$('.hreview')[0],
+		hreview: $('.hreview'),
 		showRecipe: $('#show-recipe'),
 		hideRecipe: $('#close-recipe'),
 		showLegendBtn: $('#show-legend'),
@@ -27,10 +27,10 @@ var Controller = {
 		recommendations:
 		{
 			root: $('#recommendations'),
-			viewport: $$('#recommendations .viewport')[0],
-			surface: $$('#recommendations .surface')[0],
-			prev: $$('#recommendations .prev')[0],
-			next: $$('#recommendations .next')[0]
+			viewport: $('#recommendations .viewport'),
+			surface: $('#recommendations .surface'),
+			prev: $('#recommendations .prev'),
+			next: $('#recommendations .next')
 		}
 	},
 	

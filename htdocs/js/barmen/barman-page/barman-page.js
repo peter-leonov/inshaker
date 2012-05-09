@@ -61,10 +61,10 @@ $.onready(function ()
 	
 	var nodes =
 	{
-		barmanName: $$('#head .name')[0],
-		cocktailList: $$('.common-content .cocktails')[0],
-		prevBarman: $$('#head .arrow.prev')[0],
-		nextBarman: $$('#head .arrow.next')[0]
+		barmanName: $('#head .name'),
+		cocktailList: $('.common-content .cocktails'),
+		prevBarman: $('#head .arrow.prev'),
+		nextBarman: $('#head .arrow.next')
 	}
 	
 	var sources =

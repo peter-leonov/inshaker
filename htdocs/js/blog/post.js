@@ -32,7 +32,7 @@ function onready (e)
 	
 	var nodes =
 	{
-		title: $$('#the-one .post .title')[0],
+		title: $('#the-one .post .title'),
 		shareBox:
 		{
 			root: $('#share-box'),
