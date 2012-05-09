@@ -63,6 +63,8 @@ function CalculatorView() {
 	
 	this.eventListener = null; // controller
 	
+	this.cocktailName = $('#cocktail_name') ? $('#cocktail_name').innerHTML : null;
+	
 	var self = this;
 	
 	var dropTarget = $('#cart_draghere');
