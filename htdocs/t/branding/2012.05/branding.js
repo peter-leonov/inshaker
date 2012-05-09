@@ -17,7 +17,7 @@ var Me =
 			if (!item.href)
 				continue
 			
-			var node = $('#' + k)
+			var node = $(k)
 			if (node)
 			{
 				node.href = item.href

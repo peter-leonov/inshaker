@@ -17,7 +17,7 @@ var Me =
 			if (!item.href)
 				continue
 			
-			var node = $('#' + k)
+			var node = $(k)
 			if (node)
 			{
 				node.href = item.href
@@ -28,7 +28,7 @@ var Me =
 
 Me.initialize
 ({
-	spotlighted: {href: "/combinator.html#q=%D0%92%D0%BE%D0%B4%D0%BA%D0%B0"}
+	'#spotlighted': {href: "/combinator.html#q=%D0%92%D0%BE%D0%B4%D0%BA%D0%B0"}
 })
 
 Me.bind()

@@ -17,7 +17,7 @@ var Me =
 			if (!item.href)
 				continue
 			
-			var node = $('#' + k)
+			var node = $(k)
 			if (node)
 			{
 				node.href = item.href
@@ -30,8 +30,8 @@ var link = '/cocktail/spice_and_ice/'
 
 Me.initialize
 ({
-	'spotlighted':{'href':link},
-	'branded-image':{'href':link}
+	'#spotlighted':{'href':link},
+	'#branded-image':{'href':link}
 })
 
 Me.bind()
