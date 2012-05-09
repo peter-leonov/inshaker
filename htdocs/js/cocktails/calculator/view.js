@@ -62,7 +62,6 @@ function CalculatorView() {
 	this.ID_DROP_TARGET = 'cart_draghere';
 	this.ID_PRINT_PLAN  = 'print_plan';
 	this.ID_PRINT_PLAN_INACTIVE  = 'print_plan_inactive';
-	this.CLASS_ADD_BTN  = '.bt-want-slap';
 	this.NAME_ELEM      = 'cocktail_name';
 	
 	this.KEY_LEFT  = 37;
@@ -75,13 +74,9 @@ function CalculatorView() {
 	this.eventListener = null; // controller
 	
 	this.cocktailName = $(this.NAME_ELEM) ? $(this.NAME_ELEM).innerHTML : null;
-	this.addBtn = $$(this.CLASS_ADD_BTN) ? $$(this.CLASS_ADD_BTN)[0] : null;
 
 	
 	var self = this;
-	if(this.addBtn) this.addBtn.addEventListener('mousedown', function(e){
-		self.eventListener.addCocktail(self.cocktailName);
-	}, false);
 	
 	var dropTarget = $(this.ID_DROP_TARGET);
 	var dragAnimation;
@@ -133,34 +128,8 @@ function CalculatorView() {
 	this.modelChanged = function(cartData, init){ // model
 		var barName = clientStorage.get('barName')
 		this.renderCart(cartData);
-		this.renderButton(cartData);
 		if(!init) this.eventListener.saveCartData(cartData); //save to storage
 	};
-	
-	this.renderButton = function(cartData){
-		var cocktails = cartData.cocktails,
-			cocktailName = this.cocktailName,
-			state = false
-		
-		// look up for a cocktail in the cart
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			if (cocktails[i][0].name == cocktailName)
-			{
-				state = true
-				break
-			}
-		}
-		
-		this.setStateButton(state)
-	}
-	
-	this.setStateButton = function(state){
-		if (!this.addBtn)
-			return
-		
-		this.addBtn.toggleClassName('in-cart', state)
-	}
 	
 	this.renderCart = function(cartData){
 		// FIXME: dirty fix for too early call for renderCart()
