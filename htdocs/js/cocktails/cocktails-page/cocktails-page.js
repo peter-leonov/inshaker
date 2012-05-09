@@ -62,14 +62,9 @@ function onready ()
 		alphabetRu: $('#alphabetical-ru'),
 		lettersAll: $('#letters_all'),
 		
-		tagsList: $('#tags_list'),
-		strengthsList: $('#strengths_list'),
-		methodsList: $('#methods_list'),
-		
 		searchByName: $('#search_by_name'),
 		searchByNameInput: $$('#search_by_name input')[0],
 		searchByLetter: $('#search_by_letter'),
-		searchByTags: $('#search_by_tags'),
 		
 		mainArea: $('#b_content'),
 		

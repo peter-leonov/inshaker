@@ -63,9 +63,6 @@ function CalculatorView() {
 	
 	this.eventListener = null; // controller
 	
-	this.cocktailName = $('#cocktail_name') ? $('#cocktail_name').innerHTML : null;
-
-	
 	var self = this;
 	
 	var dropTarget = $('#cart_draghere');
@@ -92,14 +89,6 @@ function CalculatorView() {
 		self.eventListener.addCocktail(cocktailName);
 	};
 	
-	if($('#order_button')){
-		$('#order_button').addEventListener('click', function(e){
-			if(!Calculator.checkSum("order")){
-				alert("Минимальная сумма заказа составляет "+ Calculator.getMinSum("order") + ". Добавьте что-нибудь еще ;-)");
-			} else window.location.href="/order.html";
-		}, false);
-	}
-  
 	// function callBarmen (e)
 	// {
 	// 	if (Calculator.checkSum("call_barmen"))
