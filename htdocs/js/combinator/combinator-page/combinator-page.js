@@ -78,8 +78,8 @@ function onready ()
 	
 	var nodes =
 	{
-		output: $('output'),
-		mainFunFix: $('the-main-menu'),
+		output: $('#output'),
+		mainFunFix: $('#the-main-menu'),
 		cocktailList: $$('#output .result-block .ingrediented-cocktail-list')[0],
 		stats: $$('#output .result-block .stats')[0],
 		queryInput: $$('#search-box .query')[0],
@@ -98,7 +98,7 @@ function onready ()
 		
 		sortbySelect:
 		{
-			main: $('sortby-select'),
+			main: $('#sortby-select'),
 			button: $$('#sortby-select .button')[0],
 			options: $$('#sortby-select .options')[0]
 		}

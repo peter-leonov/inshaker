@@ -204,7 +204,7 @@ var myStatic =
 		var nodes =
 		{
 			root: document.body,
-			popupMain: $('ingredient-info-popup'),
+			popupMain: $('#ingredient-info-popup'),
 			popupParts:
 			{
 				window: $$('#ingredient-info-popup .popup-window')[0],
