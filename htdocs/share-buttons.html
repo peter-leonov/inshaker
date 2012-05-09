@@ -15,7 +15,7 @@
 <iframe id="twitter"   allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 
 <script>
-function $ (id) { return document.getElementById(id) }
+function $id (id) { return document.getElementById(id) }
 
 function job ()
 {
@@ -24,9 +24,9 @@ function job ()
 	var url = encodeURIComponent(params.url),
 		text = encodeURIComponent(params.text)
 	
-	$('#vkontakte').src = '/share-vk.html?url=' + url + '&type=button&verb=0&title=' + text
-	$('#facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + url + '&layout=button_count&locale=ru_RU'
-	$('#twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + url + '&text=' + text
+	$id('vkontakte').src = '/share-vk.html?url=' + url + '&type=button&verb=0&title=' + text
+	$id('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + url + '&layout=button_count&locale=ru_RU'
+	$id('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + url + '&text=' + text
 }
 
 job() // ;)
