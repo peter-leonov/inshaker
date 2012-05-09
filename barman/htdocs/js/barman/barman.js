@@ -27,7 +27,7 @@ $.onready(function()
 		upload: $$('.uploader .upload')[0],
 		gotoShaker: $$('.goto-shaker')[0],
 		
-		output: $('output')
+		output: $('#output')
 	}
 	
 	;(function(){
@@ -89,7 +89,7 @@ $.onready(function()
 	}
 	
 	var host = location.host.replace(/^m\./, '')
-	var parentLink = $('parent-link')
+	var parentLink = $('#parent-link')
 	parentLink.href = '//' + host + '/'
 	parentLink.firstChild.nodeValue = host
 	
