@@ -66,34 +66,32 @@ var myStatic =
 		return res
 	},
 	
-	getSomePostsByTag: function (from, to, tag)
+	getSomePostsByTag: function (from, to, tag, callback)
 	{
-		var posts = [],
-			dbKeys = this.dbKeys,
-			dbKey = [],
-			i
+		var dbKeys = this.dbKeys,
+			dbKey = []
 		
 		if (!tag)
-			for (i = from, il = this.postDb.length; i < to && i < il; i++)
+			for (var i = from, il = this.postDb.length; i < to && i < il; i++)
 				dbKey[i] = i
 		else
 			dbKey = dbKeys[tag]
 	
 		to = Math.min(dbKey.length, to)
 		
-		for (i = from; i < to; i++)
+		for (var i = from; i < to; i++)
 		{
 			var post = this.postDb[dbKey[i]]
 
 			Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
 			{
 				if (this.statusType == 'success')
+				{
 					post.html = this.responseText
-			}, true)
-
-			posts.push(post)
+					callback(post)
+				}
+			})
 		}
-		return posts
 	},
 	
 	getCountPostsByTag: function (tag)

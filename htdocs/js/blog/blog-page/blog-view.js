@@ -26,14 +26,11 @@ Me.prototype =
 		lh.addEventListener('change', function (e) { me.updateHash(lh.get()) }, false)
 	},
 	
-	renderPosts: function (posts)
+	renderPost: function (post)
 	{
-		for (var i = 0, pi = posts.length; i < pi; i++)
-		{
-			var div = N('div')
-			div.innerHTML = posts[i].html
-			this.nodes.postsLoop.appendChild(div.childNodes[0])
-		}
+		var div = N('div')
+		div.innerHTML = post.html
+		this.nodes.postsLoop.appendChild(div.childNodes[0])
 	},
 	
 	updateHash: function ()

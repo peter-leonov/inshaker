@@ -11,8 +11,11 @@ Me.prototype =
 {
 	renderPosts: function ()
 	{
-		var posts = Blog.getSomePostsByTag(this.state, this.state+=this.postPerPage, this.currentHash)
-		this.view.renderPosts(posts)
+		var me = this
+		Blog.getSomePostsByTag(this.state, this.state+=this.postPerPage, this.currentHash, function(post)
+		{
+			me.view.renderPost(post)
+		})
 		this.updateMoreButton()
 	},
 	
