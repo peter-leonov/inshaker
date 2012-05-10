@@ -83,14 +83,23 @@ var myStatic =
 		{
 			var post = this.postDb[dbKey[i]]
 
-			Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
+			if (post.html)
 			{
-				if (this.statusType == 'success')
-				{
-					post.html = this.responseText
-					callback(post)
-				}
-			})
+				callback(post)
+			}
+			else
+			{
+				(function(post){
+					Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
+					{
+						if (this.statusType == 'success')
+						{
+							post.html = this.responseText
+							callback(post)
+						}
+					})
+				})(post)
+			}
 		}
 	},
 	
