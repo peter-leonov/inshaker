@@ -18,14 +18,13 @@ Me.prototype =
 	
 	updateHash: function (hash)
 	{
-		var tag = UrlEncode.parse(hash).tag,
-			key = Blog.getByName(tag).key
+		var tag = UrlEncode.parse(hash).tag
 			
 		this.state = 0
-		this.currentHash = key
+		this.currentHash = tag
 		this.renderPosts()
 			
-		this.view.switchTag(key)
+		this.view.switchTag(tag)
 		
 		Statistics.blogTagSelected(tag)
 	},

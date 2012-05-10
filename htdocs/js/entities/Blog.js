@@ -35,11 +35,14 @@ var myStatic =
 		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			dbKeys[tags[i].key] = []
+			dbKeys[tags[i].name] = []
 		}
 		for (i = 0, il = db.length; i < il; i++)
 		{
-			dbKeys[db[i].tag_key].push(i)
+			for (var j = 0, jl = db[i].tags.length; j < jl; j++)
+			{
+				dbKeys[db[i].tags[j]].push(i)
+			}
 		}
 	},
 	
