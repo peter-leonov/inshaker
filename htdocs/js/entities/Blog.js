@@ -68,7 +68,8 @@ var myStatic =
 	
 	getSomePostsByTag: function (from, to, tag, callback)
 	{
-		var dbKeys = this.dbKeys,
+		var posts = [],
+			dbKeys = this.dbKeys,
 			dbKey = []
 		
 		if (!tag)
@@ -79,27 +80,35 @@ var myStatic =
 	
 		to = Math.min(dbKey.length, to)
 		
+		var j = 0
+		function localCallback(post)
+		{
+			posts[j] = post
+			if (++j == to-from)
+				callback(posts)
+		}
+		
 		for (var i = from; i < to; i++)
 		{
 			var post = this.postDb[dbKey[i]]
 
-			if (post.html)
-			{
-				callback(post)
-			}
-			else
-			{
-				(function(post){
+			;(function(post){
+				if (post.html)
+				{
+					localCallback(post)
+				}
+				else
+				{
 					Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
 					{
 						if (this.statusType == 'success')
 						{
 							post.html = this.responseText
-							callback(post)
+							localCallback(post)
 						}
 					})
-				})(post)
-			}
+				}
+			})(post)
 		}
 	},
 	
