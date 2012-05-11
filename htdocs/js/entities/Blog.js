@@ -81,9 +81,9 @@ var myStatic =
 		to = Math.min(dbKey.length, to)
 		
 		var j = 0
-		function localCallback(post)
+		function localCallback(post, i)
 		{
-			posts[j] = post
+			posts[i] = post
 			if (++j == to-from)
 				callback(posts)
 		}
@@ -92,10 +92,10 @@ var myStatic =
 		{
 			var post = this.postDb[dbKey[i]]
 
-			;(function(post){
+			;(function(post, i){
 				if (post.html)
 				{
-					localCallback(post)
+					localCallback(post, i)
 				}
 				else
 				{
@@ -104,11 +104,11 @@ var myStatic =
 						if (this.statusType == 'success')
 						{
 							post.html = this.responseText
-							localCallback(post)
+							localCallback(post, i)
 						}
 					})
 				}
-			})(post)
+			})(post, i-from)
 		}
 	},
 	
