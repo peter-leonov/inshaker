@@ -70,12 +70,20 @@ Me.prototype =
 			more.addClassName('hidden')
 	},
 	
-	renameMoreButton: function (diff)
+	renameMoreButton: function (count)
 	{
 		var more = this.nodes.more
 		
-		more.value = "еще " + diff + " постов!"
+		more.value = "еще " + count + " постов!"
 		this.showMoreButton()
+	},
+	
+	renderMoreButton: function (count)
+	{
+		if (count < 1)
+			this.hideMoreButton()
+		else
+			this.renameMoreButton(count)
 	}
 }
 

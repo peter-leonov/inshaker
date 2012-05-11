@@ -16,7 +16,7 @@ Me.prototype =
 		{
 			me.view.renderPosts(posts)
 		})
-		this.updateMoreButton()
+		this.updateLeftCount()
 	},
 	
 	updateHash: function (hash)
@@ -32,15 +32,12 @@ Me.prototype =
 		Statistics.blogTagSelected(tag)
 	},
 	
-	updateMoreButton: function ()
+	updateLeftCount: function ()
 	{
 		var count = Blog.getCountPostsByTag(this.currentHash),
 			diff = count - this.state
 		
-		if (diff < 1)
-			this.view.hideMoreButton()
-		else
-			this.view.renameMoreButton(diff > this.postPerPage ? this.postPerPage : diff)
+		this.view.renderMoreButton(Math.min(diff, this.postPerPage))
 	}
 }
 
