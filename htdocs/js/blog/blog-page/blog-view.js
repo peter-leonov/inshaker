@@ -17,13 +17,14 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
-		this.controller.addMorePosts()
 		
 		var me = this
 		nodes.more.addEventListener('click', function (e) { me.controller.addMorePosts() }, false)
 					
 		var lh = this.lh = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.updateHash(lh.get()) }, false)
+
+		this.updateHash()
 	},
 	
 	renderPosts: function (posts)
