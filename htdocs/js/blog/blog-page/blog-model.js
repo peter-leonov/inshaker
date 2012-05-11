@@ -24,8 +24,6 @@ Me.prototype =
 		this.state = 0
 		this.currentTag = tag
 		this.addMorePosts()
-			
-		this.view.switchTag(tag)
 		
 		Statistics.blogTagSelected(tag)
 	},
