@@ -334,6 +334,7 @@ http://www.inshaker.ru/cocktail/ancient_greek/
 http://www.inshaker.ru/cocktail/dream_daiquiri_meringe/
 http://www.inshaker.ru/cocktail/dream_shot/
 http://www.inshaker.ru/cocktail/spirit_of__57/
+http://www.inshaker.ru/cocktail/kind_punch/
 http://www.inshaker.ru/cocktail/smoky/
 http://www.inshaker.ru/cocktail/smoky_mulled_wine/
 http://www.inshaker.ru/cocktail/smoky_flip/
@@ -678,6 +679,7 @@ http://www.inshaker.ru/cocktail/mojito_strawberry/
 http://www.inshaker.ru/cocktail/mojito_royal/
 http://www.inshaker.ru/cocktail/mojito_raspberry/
 http://www.inshaker.ru/cocktail/mojito_sangria/
+http://www.inshaker.ru/cocktail/mojito_shakerato/
 http://www.inshaker.ru/cocktail/cinful_mule/
 http://www.inshaker.ru/cocktail/mulata_daisy/
 http://www.inshaker.ru/cocktail/moulin_rouge/
@@ -823,6 +825,7 @@ http://www.inshaker.ru/cocktail/rhubarb_sour/
 http://www.inshaker.ru/cocktail/rhubarb-butterscotch_sour/
 http://www.inshaker.ru/cocktail/red_basil_smash/
 http://www.inshaker.ru/cocktail/red_dress/
+http://www.inshaker.ru/cocktail/red_collins/
 http://www.inshaker.ru/cocktail/red_hope/
 http://www.inshaker.ru/cocktail/rheingold/
 http://www.inshaker.ru/cocktail/recall/
@@ -856,6 +859,7 @@ http://www.inshaker.ru/cocktail/romantic_daiquiri/
 http://www.inshaker.ru/cocktail/camomile_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
 http://www.inshaker.ru/cocktail/romul/
+http://www.inshaker.ru/cocktail/rori/
 http://www.inshaker.ru/cocktail/rossini/
 http://www.inshaker.ru/cocktail/rosso_pomegranate/
 http://www.inshaker.ru/cocktail/rosso_berry_crush/
