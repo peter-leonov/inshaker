@@ -4,9 +4,9 @@ function Me () {}
 
 Me.prototype =
 {
-	renderPosts: function ()
+	addMorePosts: function ()
 	{
-		this.model.renderPosts()
+		this.model.addMorePosts()
 	},
 	
 	updateHash: function (hash)

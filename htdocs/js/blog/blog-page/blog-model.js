@@ -9,7 +9,7 @@ function Me ()
 
 Me.prototype =
 {
-	renderPosts: function ()
+	addMorePosts: function ()
 	{
 		var me = this
 		Blog.getSomePostsByTag(this.state, this.state+=this.postPerPage, this.currentHash, function(posts)
@@ -25,7 +25,7 @@ Me.prototype =
 			
 		this.state = 0
 		this.currentHash = tag
-		this.renderPosts()
+		this.addMorePosts()
 			
 		this.view.switchTag(tag)
 		
