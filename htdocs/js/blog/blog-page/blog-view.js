@@ -39,7 +39,7 @@ Me.prototype =
 	updateHash: function ()
 	{
 		this.nodes.postsLoop.empty()
-		this.controller.updateHash(this.lh.get())
+		this.controller.updateTag(UrlEncode.parse(this.lh.get()).tag)
 	},
 	
 	switchTag: function (key)

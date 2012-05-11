@@ -9,9 +9,9 @@ Me.prototype =
 		this.model.addMorePosts()
 	},
 	
-	updateHash: function (hash)
+	updateTag: function (tag)
 	{
-		this.model.updateHash(hash)
+		this.model.updateTag(tag)
 	}
 }
 
