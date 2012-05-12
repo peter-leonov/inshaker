@@ -72,24 +72,39 @@ function CalculatorView() {
 	}, false);
 	
 	var dropTarget = $('#cart_draghere');
+	var draghere = $('#cart_draghere')
 	var dragAnimation;
 	
-	$('#cart_draghere').onDrop = function(cocktailName){
-		self.eventListener.addCocktail(cocktailName);
-		return true;
-	};
+	function onDrop (e)
+	{
+		e.preventDefault()
+		self.eventListener.addCocktail(e.dataTransfer.getData('text'))
+	}
+	dropTarget.addEventListener('drop', onDrop, false)
 	
-	$('#cart_draghere').onDragEnd = function(){
+	function onDragEnd ()
+	{
 		dragAnimation.stop();
-		this.style.height = ''
-	};
+		draghere.style.height = ''
+	}
+	document.addEventListener('dragend', onDragEnd, false)
 	
-	$('#cart_draghere').onDragStart = function(element){
+	function onDragOver (e)
+	{
+		e.preventDefault()
+	}
+	dropTarget.addEventListener('dragover', onDragOver, false)
+	
+	function onDragStart (e)
+	{
+		var element = e.target
 		var h = element.offsetHeight + 50
 		if (h < 100)
 			h = 100
-		dragAnimation = this.animate("easeInCubic", {height: [dropTarget.offsetHeight, h]}, 0.15);
-	};
+		dragAnimation = draghere.animate("easeInCubic", {height: [draghere.offsetHeight, h]}, 0.15);
+	}
+	document.addEventListener('dragstart', onDragStart, false)
+	
 	
 	$('#cart_contents').onDrop = function(cocktailName){
 		self.eventListener.addCocktail(cocktailName);
