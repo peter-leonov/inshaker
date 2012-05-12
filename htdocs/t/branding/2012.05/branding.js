@@ -30,8 +30,8 @@ var link = '/combinator.html#q=Jim Beam&i=Бурбон'
 
 Me.initialize
 ({
-	'spotlighted':{'href':link},
-	'branded-image':{'href':link}
+	'#spotlighted':{'href':link},
+	'#branded-image':{'href':link}
 })
 
 Me.bind()

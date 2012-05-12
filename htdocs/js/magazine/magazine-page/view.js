@@ -142,7 +142,7 @@ Me.prototype =
 	renderPromo: function (node, set, len, state)
 	{
 		var ri = node.RollingImagesLite
-		var parent = node.getElementsByClassName('surface')[0]
+		var parent = $('.surface', node)
 		
 		parent.empty()
 		
@@ -237,7 +237,7 @@ Me.prototype =
 	
 	renderSet: function (node, set, len, renderFunction)
 	{
-		var parent = node.getElementsByClassName('surface')[0]
+		var parent = $('.surface', node)
 		parent.empty()
 		for (var i = 0; i < set.length; i++)
 		{

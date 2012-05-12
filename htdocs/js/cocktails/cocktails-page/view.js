@@ -195,7 +195,7 @@ Me.prototype =
 		this.filterElems.letter.addClassName('selected-button');
 		
 		if(filters.page > 0) {
-			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
+			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
 		}
 		
 		if (filters.name)

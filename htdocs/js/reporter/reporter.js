@@ -357,12 +357,12 @@ function onready ()
 	var nodes =
 	{
 		html: document.documentElement,
-		main: $$('#analytics')[0],
-		ingredientForm: $$('#analytics #ingredient-search')[0],
-		output: $$('#analytics #output')[0],
-		periods: $$('#periods')[0],
-		form: $$('#form')[0],
-		query: $$('#query')[0]
+		main: $('#analytics'),
+		ingredientForm: $('#analytics #ingredient-search'),
+		output: $('#analytics #output'),
+		periods: $('#periods'),
+		form: $('#form'),
+		query: $('#query')
 	}
 	
 	new Reporter().bind(nodes)

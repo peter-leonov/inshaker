@@ -65,7 +65,7 @@ function onready ()
 	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
 	line.write('stat-browsers-plain')
 	
-	new RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
+	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
 

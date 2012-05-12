@@ -19,16 +19,6 @@ function uniqBy (ary, f)
 }
 
 var Printer = {
-    ID_COCKTAILS_NUM  : 'cocktails_num',
-    ID_COCKTAILS_LIST : 'cocktails_list',
-    ID_INGREDS_LIST   : 'ingredients_list',
-    ID_TOOLS_LIST     : 'tools_list',
-    ID_RECEIPT        : 'receipt',
-    
-    ID_COCKTAIL_NAME  : 'cocktail_name',
-    ID_COCKTAIL_IMG   : 'cocktail_img',
-    ID_INGREDS_IMGS   : 'cocktail_ingreds',
-
     IMG_MARKER        : '/t/print/li.png',
 
     wannaPrint: false,
@@ -73,14 +63,14 @@ var Printer = {
 	
 	
 	renderCocktail: function(cocktail){
-	   var receiptRoot   = $(this.ID_RECEIPT);
-       var ingredsRoot   = $(this.ID_INGREDS_LIST);
-       var toolsRoot     = $(this.ID_TOOLS_LIST);
-       var imgsRoot      = $(this.ID_INGREDS_IMGS);
+	   var receiptRoot   = $('#receipt');
+       var ingredsRoot   = $('#ingredients_list');
+       var toolsRoot     = $('#tools_list');
+       var imgsRoot      = $('#cocktail_ingreds');
 
        document.title = "Inshaker —  " + cocktail.name;
-       $(this.ID_COCKTAIL_NAME).innerHTML = cocktail.name;
-       $(this.ID_COCKTAIL_IMG).src = cocktail.getBigImageSrc()
+       $('#cocktail_name').innerHTML = cocktail.name;
+       $('#cocktail_img').src = cocktail.getBigImageSrc()
        for(var i = 0; i < cocktail.receipt.length; i++){
             receiptRoot.appendChild(this.createReceiptElement(cocktail.receipt[i]));
        }
@@ -121,9 +111,9 @@ var Printer = {
     },
 
     renderCartData: function(cartData){
-        var cocktailsRoot = $(this.ID_COCKTAILS_LIST);
-        var ingredsRoot   = $(this.ID_INGREDS_LIST);
-        var toolsRoot     = $(this.ID_TOOLS_LIST); 
+        var cocktailsRoot = $('#cocktails_list');
+        var ingredsRoot   = $('#ingredients_list');
+        var toolsRoot     = $('#tools_list'); 
 
         var cNum = 0;
         for(var i = 0; i < cartData.cocktails.length; i++){
@@ -136,7 +126,7 @@ var Printer = {
         }
         var numTxt = "";
         if(cNum > 1) numTxt = cNum + " " + cNum.plural("коктейль", "коктейля", "коктейлей");
-        $(this.ID_COCKTAILS_NUM).innerHTML = numTxt;
+        $('#cocktails_num').innerHTML = numTxt;
          
         var l = Object.keysCount(cartData.goods);
 		

@@ -42,16 +42,16 @@ RollingImagesLite.prototype =
 {
 	sync: function ()
 	{
-		this.viewport = this.my('viewport')[0]
+		this.viewport = this.my('.viewport')
 		if (!this.viewport)
 			throw new Error('Can`t find viewport for ' + this.mainNode)
 		if (!this.viewport.animate)
 			throw new Error('Viewport can`t be animated!')
 		
-		this.points = this.my('point')
-		this.buttons = this.my('button')
-		this.aPrev = this.my('prev')[0]
-		this.aNext = this.my('next')[0]
+		this.points = this.myAll('.point')
+		this.buttons = this.myAll('.button')
+		this.aPrev = this.my('.prev')
+		this.aNext = this.my('.next')
 		
 		// if syncing when pushed
 		clearInterval(this.svInt)
@@ -71,7 +71,8 @@ RollingImagesLite.prototype =
 	
 	goPrev: function () { if (this.current > 0) this.goToFrame(this.current - 1) },
 	goNext: function () { if (this.current < this.points.length - 1) this.goToFrame(this.current + 1) },
-	my: function (cn) { return this.mainNode.getElementsByClassName(cn) },
+	my: function (q) { return $(q, this.mainNode) },
+	myAll: function (q) { return $$(q, this.mainNode) },
 	
 	goInit: function ()
 	{

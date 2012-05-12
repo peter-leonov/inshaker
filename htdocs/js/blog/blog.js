@@ -110,7 +110,7 @@ function onready (e)
 	var nodes =
 	{
 		lazyImages: $$('#posts-loop .post .body .image.lazy'),
-		pageRoot: $('common-main-wrapper')
+		pageRoot: $('#common-main-wrapper')
 	}
 	
 	var widget = new BlogMainPage()

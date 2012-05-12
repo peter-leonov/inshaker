@@ -41,14 +41,14 @@ function onready ()
 	document.documentElement.removeClassName('loading')
 	var nodes = 
 	{
-		barName : $$('#common-main-wrapper .header .bar-name')[0],
-		pageWrapper : $$('#common-main-wrapper .page-wrapper')[0],
-		cartBox :  $$('#common-main-wrapper .cocktail-cart-box')[0],
-		alcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .alcohol-box')[0],
-		alcoholList : $$('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list')[0],
-		nonAlcoholBox :  $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box')[0],
-		nonAlcoholList : $$('#common-main-wrapper .cocktail-cart-box .non-alcohol-box .cocktail-list')[0],
-		main : $$('#common-main-wrapper')[0]
+		barName : $('#common-main-wrapper .header .bar-name'),
+		pageWrapper : $('#common-main-wrapper .page-wrapper'),
+		cartBox :  $('#common-main-wrapper .cocktail-cart-box'),
+		alcoholBox :  $('#common-main-wrapper .cocktail-cart-box .alcohol-box'),
+		alcoholList : $('#common-main-wrapper .cocktail-cart-box .alcohol-box .cocktail-list'),
+		nonAlcoholBox :  $('#common-main-wrapper .cocktail-cart-box .non-alcohol-box'),
+		nonAlcoholList : $('#common-main-wrapper .cocktail-cart-box .non-alcohol-box .cocktail-list'),
+		main : $('#common-main-wrapper')
 	}
 	
 	var widget = new CocktailCart()
