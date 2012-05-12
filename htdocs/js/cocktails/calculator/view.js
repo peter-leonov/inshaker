@@ -71,8 +71,7 @@ function CalculatorView() {
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
 	
-	var dropTarget = $('#cart_draghere');
-	var draghere = $('#cart_draghere')
+	var dropTarget = $('#b-bill')
 	var dragAnimation;
 	
 	function onDrop (e)
@@ -85,7 +84,7 @@ function CalculatorView() {
 	function onDragEnd ()
 	{
 		dragAnimation.stop();
-		draghere.style.height = ''
+		$('#cart_draghere').style.height = ''
 	}
 	document.addEventListener('dragend', onDragEnd, false)
 	
@@ -101,7 +100,7 @@ function CalculatorView() {
 		var h = element.offsetHeight + 50
 		if (h < 100)
 			h = 100
-		dragAnimation = draghere.animate("easeInCubic", {height: [draghere.offsetHeight, h]}, 0.15);
+		dragAnimation = $('#cart_draghere').animate("easeInCubic", {height: [$('#cart_draghere').offsetHeight, h]}, 0.15);
 	}
 	document.addEventListener('dragstart', onDragStart, false)
 	
