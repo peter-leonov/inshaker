@@ -104,11 +104,6 @@ function CalculatorView() {
 	}
 	document.addEventListener('dragstart', onDragStart, false)
 	
-	
-	$('#cart_contents').onDrop = function(cocktailName){
-		self.eventListener.addCocktail(cocktailName);
-	};
-	
 	// function callBarmen (e)
 	// {
 	// 	if (Calculator.checkSum("call_barmen"))
