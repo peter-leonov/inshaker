@@ -83,10 +83,11 @@ var myStatic =
 		var j = 0
 		for (var i = from; i < to; i++)
 		{
-			var post = this.postDb[dbKey[i]]
+			var post = this.postDb[dbKey[i]],
+				me = this
 
 			;(function(i){
-				Blog.getPostSnippet(post, function(post)
+				me.getPostSnippet(post, function(post)
 				{
 					posts[i] = post
 					if (++j == to-from)
