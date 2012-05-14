@@ -308,7 +308,7 @@ Me.prototype =
 				if (!(cocktail = cocktails[i]))
 					continue
 				node = cache[i] = cocktail.getPreviewNodeCropped()
-				bindDragData(node.img, cocktail.name)
+				bindDragData(node, cocktail.name)
 			}
 			item.appendChild(node)
 			parent.appendChild(item)
