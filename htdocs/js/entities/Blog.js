@@ -81,34 +81,37 @@ var myStatic =
 		to = Math.min(dbKey.length, to)
 		
 		var j = 0
-		function localCallback(post, i)
-		{
-			posts[i] = post
-			if (++j == to-from)
-				callback(posts)
-		}
-		
 		for (var i = from; i < to; i++)
 		{
 			var post = this.postDb[dbKey[i]]
 
-			;(function(post, i){
-				if (post.html)
+			;(function(i){
+				Blog.getPostSnippet(post, function(post)
 				{
-					localCallback(post, i)
-				}
-				else
+					posts[i] = post
+					if (++j == to-from)
+						callback(posts)
+				})
+			})(i-from)
+		}
+	},
+	
+	getPostSnippet: function(post, callback)
+	{
+		if (post.html)
+		{
+			callback(post)
+		}
+		else
+		{
+			Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
+			{
+				if (this.statusType == 'success')
 				{
-					Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
-					{
-						if (this.statusType == 'success')
-						{
-							post.html = this.responseText
-							localCallback(post, i)
-						}
-					})
+					post.html = this.responseText
+					callback(post)
 				}
-			})(post, i-from)
+			})
 		}
 	},
 	
