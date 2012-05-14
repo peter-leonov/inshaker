@@ -25,7 +25,8 @@ Me.prototype =
 		this.currentTag = tag
 		this.addMorePosts()
 		
-		Statistics.blogTagSelected(tag)
+		if (tag)
+			Statistics.blogTagSelected(tag)
 	},
 	
 	updateLeftCount: function ()
