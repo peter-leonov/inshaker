@@ -41,6 +41,7 @@ http://www.inshaker.ru/bar/22.13/
 http://www.inshaker.ru/bar/812/
 http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/
+http://www.inshaker.ru/bar/grafin/
 http://www.inshaker.ru/bar/daiquiri/
 http://www.inshaker.ru/bar/thebar/
 http://www.inshaker.ru/bar/clocks/
