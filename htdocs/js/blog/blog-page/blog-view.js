@@ -8,6 +8,7 @@ function Me ()
 {
 	this.nodes = {}
 	this.lastTag = 'all'
+	this.postPerPage = 20
 }
 
 eval(NodesShortcut.include())
@@ -19,15 +20,15 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		nodes.more.addEventListener('click', function (e) { me.controller.addMorePosts() }, false)
+		nodes.more.addEventListener('click', function (e) { me.addMorePosts() }, false)
 					
 		var lh = this.lh = new LocationHash().bind()
-		lh.addEventListener('change', function (e) { me.updateHash(lh.get()) }, false)
+		lh.addEventListener('change', function (e) { me.addMorePosts() }, false)
 
-		this.updateHash()
+		this.addMorePosts()
 	},
 	
-	renderPosts: function (posts)
+	renderPosts: function (posts, left)
 	{
 		for (var i = 0, pi = posts.length; i < pi; i++)
 		{
@@ -35,25 +36,30 @@ Me.prototype =
 			div.innerHTML = posts[i].html
 			this.nodes.postsLoop.appendChild(div.childNodes[0])
 		}
+		this.renderMoreButton(left)
 	},
 	
-	updateHash: function ()
+	renderNewPosts: function (posts, left)
 	{
-		var tag = UrlEncode.parse(this.lh.get()).tag
 		this.nodes.postsLoop.empty()
-		this.controller.updateTag(tag)
-		this.switchTag(tag)
+		this.renderPosts(posts, left)
+	},
+	
+	addMorePosts: function ()
+	{
+		var hash = UrlEncode.parse(this.lh.get())
+		this.controller.addMorePosts(hash, this.postPerPage)
 	},
 	
 	switchTag: function (key)
 	{
-		if (!key)
+		if (key < 0)
 			key = 'all'
 		
 		var root = this.nodes.root
 		
-		root.removeClassName('show-' + this.lastTag)
-		root.addClassName('show-' + key)
+		root.removeClassName('show-tag-' + this.lastTag)
+		root.addClassName('show-tag-' + key)
 		this.lastTag = key
 	},
 	
@@ -83,10 +89,17 @@ Me.prototype =
 	
 	renderMoreButton: function (count)
 	{
+		var more = this.nodes.more
+		
+		count = Math.min(count, this.postPerPage)
+		
 		if (count < 1)
 			this.hideMoreButton()
-		else
+		
+		else if(more.count != count)
 			this.renameMoreButton(count)
+
+		more.count = count
 	}
 }
 
