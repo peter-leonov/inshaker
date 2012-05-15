@@ -24,7 +24,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #posts-loop,
 #the-one { border-top: 1px solid #eee; width: 590px; padding: 20px 0 0 0; }
 
-#common-main-wrapper.show-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
+#common-main-wrapper.show-tag-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
 
 .post { position: relative; margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
 .post .title { font-size: 22px; margin: 0 0 5px 0; }
