@@ -1,12 +1,6 @@
 ;(function(){
 
-function Me ()
-{
-	for (var k in this.states)
-		this.states[k].stateName = k
-	
-	this.state = this.states.initial
-}
+function Me () {}
 
 Me.prototype =
 {
@@ -22,6 +16,10 @@ Me.prototype =
 		
 		var pos = node.offsetPosition(document.documentElement)
 		this.topCompensation = pos.top - this.initialTop
+		
+		var sm = this.sm = new StateMachine(this)
+		sm.setStates(this.states)
+		sm.onswitch = this.onswitch
 	},
 	
 	setTop: function (top)
@@ -32,10 +30,10 @@ Me.prototype =
 	
 	states:
 	{
-		initial: function ()
+		initial: function (sm)
 		{
 			if (this.y > this.offsetHeight + this.initialTop)
-				return this.switchState('down')
+				return sm.switchState('down')
 		},
 		up_to_initial: function ()
 		{
@@ -48,13 +46,13 @@ Me.prototype =
 		},
 		
 		
-		down: function ()
+		down: function (sm)
 		{
 			if (this.y < this.lastY)
-				return this.switchState('up')
+				return sm.switchState('up')
 			
 			if (this.top + this.offsetHeight < this.y)
-				return this.switchState('hidden')
+				return sm.switchState('hidden')
 		},
 		fixed_to_down: function ()
 		{
@@ -63,22 +61,22 @@ Me.prototype =
 		},
 		
 		
-		hidden: function ()
+		hidden: function (sm)
 		{
 			if (this.y < this.lastY)
-				return this.switchState('up')
+				return sm.switchState('up')
 		},
 		
-		up: function ()
+		up: function (sm)
 		{
 			if (this.y <= this.initialTop)
-				return this.switchState('initial')
+				return sm.switchState('initial')
 			
 			if (this.y > this.lastY)
-				return this.switchState('down')
+				return sm.switchState('down')
 			
 			if (this.top >= this.y)
-				return this.switchState('fixed')
+				return sm.switchState('fixed')
 		},
 		hidden_to_up: function ()
 		{
@@ -86,13 +84,13 @@ Me.prototype =
 		},
 		
 		
-		fixed: function ()
+		fixed: function (sm)
 		{
 			if (this.y > this.lastY)
-				return this.switchState('down')
+				return sm.switchState('down')
 			
 			if (this.y <= this.initialTop)
-				return this.switchState('initial')
+				return sm.switchState('initial')
 		},
 		up_to_fixed: function ()
 		{
@@ -101,25 +99,10 @@ Me.prototype =
 		}
 	},
 	
-	switchState: function (name)
+	onswitch: function (from, to)
 	{
-		var transition = this.states[this.state.stateName + '_to_' + name]
-		if (transition)
-		{
-			// log(this.state.stateName + ' -> ' + name)
-			transition.call(this)
-		}
-		
-		this.node.removeClassName('state-' + this.state.stateName)
-		
-		this.state = this.states[name]
-		// log(this.state.stateName + '?')
-		if (this.state() !== false)
-		{
-			// log(this.state.stateName + '!')
-			this.node.addClassName('state-' + this.state.stateName)
-		}
-		return false
+		this.node.removeClassName('state-' + from)
+		this.node.addClassName('state-' + to)
 	},
 	
 	windowScrolled: function (y)
@@ -127,10 +110,8 @@ Me.prototype =
 		y -= this.topCompensation
 		this.y = y
 		// log(this.state.stateName + '?')
-		if (this.state() !== false)
-		{
-			// log(this.state.stateName + '!')
-		}
+		this.sm.exec()
+		
 		this.lastY = y
 	},
 	
