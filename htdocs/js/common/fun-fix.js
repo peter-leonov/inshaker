@@ -45,7 +45,7 @@ Me.prototype =
 		
 		down:
 		{
-			enter: function ()
+			enter_from_fixed: function ()
 			{
 				this.setTop(this.lastY)
 			},
