@@ -27,6 +27,7 @@ Me.prototype =
 		lh.addEventListener('change', function (e) { me.addMorePosts() }, false)
 
 		this.addMorePosts()
+		this.renderTagCloud()
 	},
 	
 	renderPosts: function (posts, left)
@@ -62,13 +63,8 @@ Me.prototype =
 			
 			for (var j = 0, jl = post.tags.length; j < jl; j++)
 			{
-				var tag = Nc('li', 'tag tag-' + Blog.getIndexByName(post.tags[j])),
-					link = Nct('a', 'link', post.tags[j])
-				
-				link.href = "/blog/#tag=" + post.tags[j]
-				
-				tag.appendChild(link)
-				list.appendChild(tag)
+				list.appendChild(this.renderTagLi(post.tags[j], Blog.getIndexByName(post.tags[j])))
+				list.appendChild(T(' '))
 			}
 			this.nodes.postsLoop.appendChild(li)
 		}
@@ -136,6 +132,40 @@ Me.prototype =
 			this.renameMoreButton(count)
 
 		more.count = count
+	},
+	
+	renderTagCloud: function ()
+	{
+		var cloud = this.nodes.tagCloud,
+			tags = Blog.getTagsDB()
+					
+		cloud.empty()
+
+		var li = Nc('li', 'tag all'),
+			link = Nct('a', 'link', 'все посты')
+		
+		link.href = "/blog/"
+		li.appendChild(link)
+		cloud.appendChild(li)
+		cloud.appendChild(T(' '))
+
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			cloud.appendChild(this.renderTagLi(tags[i], i))
+			cloud.appendChild(T(' '))
+		}
+	},
+	
+	renderTagLi: function(tag, index)
+	{
+		var li = Nc('li', 'tag tag-' + index),
+			link = Nct('a', 'link', tag)
+		
+		link.href = "/blog/#tag=" + tag
+		
+		li.appendChild(link)
+		
+		return li
 	}
 }
 

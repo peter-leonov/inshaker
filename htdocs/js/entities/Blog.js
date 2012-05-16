@@ -99,6 +99,11 @@ var myStatic =
 	getIndexByName: function (name)
 	{
 		return this.tagsDb.indexOf(name)
+	},
+	
+	getTagsDB: function ()
+	{
+		return this.tagsDb 
 	}
 }
 

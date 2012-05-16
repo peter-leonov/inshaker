@@ -9,7 +9,8 @@ function onready ()
 	{
 		root: $('common-main-wrapper'),
 		postsLoop: $('posts-loop'),
-		more: $('more')
+		more: $('more'),
+		tagCloud: $$('#tag-cloud .list')[0]
 	}
 	
 	var widget = new BlogPage()
