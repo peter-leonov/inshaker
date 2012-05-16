@@ -1,6 +1,7 @@
 <!--# include virtual="/liby/core/fixes/onhashchange.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->
+<!--# include virtual="/liby/modules/rus-date.js" -->
 
 ;(function(){
 
@@ -32,9 +33,44 @@ Me.prototype =
 	{
 		for (var i = 0, pi = posts.length; i < pi; i++)
 		{
-			var div = N('div')
-			div.innerHTML = posts[i].html
-			this.nodes.postsLoop.appendChild(div.childNodes[0])
+			var post = posts[i],
+				li = Nc('li', 'post preview'),
+				title = Nc('h2', 'title'),
+				a = Nct('a', '', post.title)
+				
+			a.href = "/blog/" + post.path + "/#the-one"
+			
+			title.appendChild(a)
+			li.appendChild(title)
+			
+			var body = Nc('div', 'body')
+			body.innerHTML = post.html
+			li.appendChild(body)
+			
+			var more = Nc('div', 'more'),
+				tags = Nc('div', 'tags'),
+				list = Nc('ul', 'list'),
+				date = Nct('span', 'date', (new Date(parseInt(post.date)*1000)).toRusDate())
+				
+			more.appendChild(tags)
+			more.appendChild(date)
+			
+			tags.appendChild(T('Теги: '))
+			tags.appendChild(list)
+			
+			li.appendChild(more)
+			
+			for (var j = 0, jl = post.tags.length; j < jl; j++)
+			{
+				var tag = Nc('li', 'tag tag-' + Blog.getIndexByName(post.tags[j])),
+					link = Nct('a', 'link', post.tags[j])
+				
+				link.href = "/blog/#tag=" + post.tags[j]
+				
+				tag.appendChild(link)
+				list.appendChild(tag)
+			}
+			this.nodes.postsLoop.appendChild(li)
 		}
 		this.renderMoreButton(left)
 	},
