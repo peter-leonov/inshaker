@@ -30,72 +30,82 @@ Me.prototype =
 	
 	states:
 	{
-		initial: function (sm)
+		initial:
 		{
-			if (this.y > this.offsetHeight + this.initialTop)
-				return sm.switchState('down')
-		},
-		up_to_initial: function ()
-		{
-			this.setTop(this.initialTop)
-		},
-		fixed_to_initial: function ()
-		{
-			this.node.removeClassName('fixed')
-			this.setTop(this.initialTop)
+			enter: function ()
+			{
+				this.setTop(this.initialTop)
+			},
+			job: function (sm)
+			{
+				if (this.y > this.offsetHeight + this.initialTop)
+					return sm.switchState('down')
+			}
 		},
 		
-		
-		down: function (sm)
+		down:
 		{
-			if (this.y < this.lastY)
-				return sm.switchState('up')
-			
-			if (this.top + this.offsetHeight < this.y)
-				return sm.switchState('hidden')
-		},
-		fixed_to_down: function ()
-		{
-			this.node.removeClassName('fixed')
-			this.setTop(this.lastY)
-		},
-		
-		
-		hidden: function (sm)
-		{
-			if (this.y < this.lastY)
-				return sm.switchState('up')
+			enter: function ()
+			{
+				this.setTop(this.lastY)
+			},
+			job: function (sm)
+			{
+				if (this.y < this.lastY)
+					return sm.switchState('up')
+				
+				if (this.top + this.offsetHeight < this.y)
+					return sm.switchState('hidden')
+			}
 		},
 		
-		up: function (sm)
+		hidden:
 		{
-			if (this.y <= this.initialTop)
-				return sm.switchState('initial')
-			
-			if (this.y > this.lastY)
-				return sm.switchState('down')
-			
-			if (this.top >= this.y)
-				return sm.switchState('fixed')
-		},
-		hidden_to_up: function ()
-		{
-			this.setTop(this.lastY - this.offsetHeight)
+			job: function (sm)
+			{
+				if (this.y < this.lastY)
+					return sm.switchState('up')
+			}
 		},
 		
-		
-		fixed: function (sm)
+		up:
 		{
-			if (this.y > this.lastY)
-				return sm.switchState('down')
-			
-			if (this.y <= this.initialTop)
-				return sm.switchState('initial')
+			enter: function ()
+			{
+				this.setTop(this.lastY - this.offsetHeight)
+			},
+			job: function (sm)
+			{
+				if (this.y <= this.initialTop)
+					return sm.switchState('initial')
+				
+				if (this.y > this.lastY)
+					return sm.switchState('down')
+				
+				if (this.top >= this.y)
+					return sm.switchState('fixed')
+			}
 		},
-		up_to_fixed: function ()
+		
+		fixed:
 		{
-			this.setTop(0)
-			this.node.addClassName('fixed')
+			enter: function (sm)
+			{
+				this.setTop(0)
+				this.node.addClassName('fixed')
+			},
+			job: function (sm)
+			{
+				if (this.y > this.lastY)
+					return sm.switchState('down')
+				
+				if (this.y <= this.initialTop)
+					return sm.switchState('initial')
+			},
+			leave: function ()
+			{
+				this.node.removeClassName('fixed')
+			}
 		}
 	},
 	
