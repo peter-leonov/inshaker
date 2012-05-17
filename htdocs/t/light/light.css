@@ -177,6 +177,6 @@ html.msie-6 #ancient-browser-warning,
 html.msie-7 #ancient-browser-warning { display: block; }
 
 html.opera-10 .dragging-object,
-html.opera-11 .dragging-object { position: absolute; z-index: 1000; max-width: 50px; max-height: 200px; margin: 15px 0 0 15px;}
+html.opera-11 .dragging-object { display: block !important; position: absolute; z-index: 1000; max-width: 50px; max-height: 200px; margin: 15px 0 0 15px;}
 
 <!--# include virtual="/t/popup.css" -->
