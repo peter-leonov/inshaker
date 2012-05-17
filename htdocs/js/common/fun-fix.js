@@ -19,7 +19,9 @@ Me.prototype =
 		
 		var sm = this.sm = new StateMachine(this)
 		sm.setStates(this.states)
-		sm.onswitch = this.onswitch
+		
+		var me = this
+		sm.onswitch = function (from, to) { me.onswitch(from, to) }
 	},
 	
 	setTop: function (top)
