@@ -111,10 +111,6 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px dashed;}
 
-.drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }
-.dragging-object{position:absolute;z-index:10;}
-
-
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
