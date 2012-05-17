@@ -393,7 +393,6 @@ var Controller = {
 		
 		function onDragStart (e)
 		{
-			log(cocktail.name)
 			e.dataTransfer.setData('text', cocktail.name)
 		}
 		node.addEventListener('dragstart', onDragStart, false)
