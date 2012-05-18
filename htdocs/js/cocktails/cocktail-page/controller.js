@@ -281,8 +281,8 @@ var Controller = {
 			}
 		}
 		
-		nodes.root.addEventListener('mouseover', carousel.stop)
-		nodes.root.addEventListener('mouseout', carousel.start)
+		nodes.root.addEventListener('mouseover', carousel.stop, false)
+		nodes.root.addEventListener('mouseout', carousel.start, false)
 		carousel.start()
 	},
 	
