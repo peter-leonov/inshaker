@@ -94,6 +94,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #common-main-wrapper.show-tag-30 .post.tag-30
 { display: block }
 
+#common-main-wrapper.show-tag-all .tag.tag-all .link,
 #common-main-wrapper.show-tag-0  .tag.tag-0  .link,
 #common-main-wrapper.show-tag-1  .tag.tag-1  .link,
 #common-main-wrapper.show-tag-2  .tag.tag-2  .link,

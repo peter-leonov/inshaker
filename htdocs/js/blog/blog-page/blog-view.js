@@ -83,7 +83,7 @@ Me.prototype =
 	
 	switchTag: function (tag)
 	{
-		var key = tag ? this.tagIndexByTagName[tag] : 'all'
+		var key = tag == 'all' ? tag : this.tagIndexByTagName[tag]
 		
 		var root = this.nodes.root
 		root.removeClassName('show-tag-' + this.lastTagKey)
