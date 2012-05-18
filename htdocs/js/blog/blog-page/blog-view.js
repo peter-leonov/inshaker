@@ -57,7 +57,7 @@ Me.prototype =
 			
 			for (var j = 0, jl = post.tags.length; j < jl; j++)
 			{
-				list.appendChild(this.renderTagLi(post.tags[j], Blog.getTagIndexByName(post.tags[j])))
+				list.appendChild(this.renderTagLi(post.tags[j]))
 				list.appendChild(T(' '))
 			}
 			this.nodes.postsLoop.appendChild(li)
@@ -149,14 +149,14 @@ Me.prototype =
 		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			cloud.appendChild(this.renderTagLi(tags[i], i))
+			cloud.appendChild(this.renderTagLi(tags[i]))
 			cloud.appendChild(T(' '))
 		}
 	},
 	
-	renderTagLi: function(tag, index)
+	renderTagLi: function(tag)
 	{
-		var li = Nc('li', 'tag tag-' + index),
+		var li = Nc('li', 'tag tag-' + Blog.getTagIndexByName(tag)),
 			link = Nct('a', 'link', tag)
 		
 		link.href = '/blog/#tag=' + tag
