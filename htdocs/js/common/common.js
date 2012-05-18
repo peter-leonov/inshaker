@@ -19,6 +19,7 @@
 <!--# include virtual="/liby/modules/child-indexed-path.js"-->
 <!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/throttler.js" -->
+<!--# include virtual="/liby/modules/request.js"-->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')

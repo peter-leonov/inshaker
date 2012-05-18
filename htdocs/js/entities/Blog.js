@@ -1,5 +1,3 @@
-<!--# include virtual="/liby/modules/request.js"-->
-
 ;(function(){
 
 function Me () {}

@@ -10,7 +10,6 @@ if (!clientStorage)
 	throw new Error('no client storge was found')
 
 <!--# include virtual="/liby/modules/url-encode.js"-->
-<!--# include virtual="/liby/modules/request.js"-->
 
 <!--# include virtual="bar-storage.js" -->
 
