@@ -67,12 +67,9 @@ var myStatic =
 			posts[i].loadSnippet(gotOneSnippet)
 	},
 	
-	getCountPostsByTag: function (tag)
+	getPostsCountByTag: function (tag)
 	{
-		if (!tag)
-			return this.db.length
-		else
-			return this.getIndexByTag()[tag].length
+		return this.getIndexByTag()[tag].length
 	},
 	
 	getAllTags: function ()

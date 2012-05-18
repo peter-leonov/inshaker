@@ -55,7 +55,7 @@ Me.prototype =
 		var from = this.state,
 			to = this.state += this.postsPerPage
 			
-		var left = Blog.getCountPostsByTag(this.currentTag) - this.state
+		var left = Blog.getPostsCountByTag(this.currentTag) - this.state
 		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })
 	},
 	
