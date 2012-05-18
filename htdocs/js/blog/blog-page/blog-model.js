@@ -20,6 +20,9 @@ Me.prototype =
 	
 	setTag: function (tag)
 	{
+		if (!tag)
+			tag = 'all'
+		
 		if (this.currentTag == tag)
 			return
 		
