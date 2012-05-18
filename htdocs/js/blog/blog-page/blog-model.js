@@ -2,13 +2,17 @@
 
 function Me ()
 {
-	this.postPerPage = 10
 	this.state = 0
 	this.currentTag = null
 }
 
 Me.prototype =
 {
+	setPostsPerPage: function (count)
+	{
+		this.postsPerPage = count
+	},
+	
 	setHash: function (hash)
 	{
 		this.setTag(hash.tag)
@@ -46,7 +50,7 @@ Me.prototype =
 	getMorePosts: function (f)
 	{
 		var from = this.state,
-			to = this.state += this.postPerPage
+			to = this.state += this.postsPerPage
 			
 		var left = Blog.getCountPostsByTag(this.currentTag) - this.state
 		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })

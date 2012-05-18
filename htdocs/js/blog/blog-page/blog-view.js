@@ -126,7 +126,7 @@ Me.prototype =
 	{
 		var more = this.nodes.more
 		
-		count = Math.min(count)
+		count = Math.min(count, this.postsPerPage)
 		
 		if (count < 1)
 			this.hideMoreButton()
@@ -168,6 +168,11 @@ Me.prototype =
 		li.appendChild(link)
 		
 		return li
+	},
+	
+	setPostsPerPage: function (count)
+	{
+		this.postsPerPage = count
 	}
 }
 

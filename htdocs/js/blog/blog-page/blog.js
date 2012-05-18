@@ -28,6 +28,12 @@ Me.prototype =
 	guessState: function ()
 	{
 		this.view.checkHash()
+	},
+	
+	setPostsPerPage: function (count)
+	{
+		this.view.setPostsPerPage(count)
+		this.model.setPostsPerPage(count)
 	}
 }
 
