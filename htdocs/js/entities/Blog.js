@@ -29,7 +29,7 @@ Me.prototype =
 
 var myStatic =
 {
-	initialize: function (tags, posts)
+	initialize: function (posts, tags)
 	{
 		this.index = {}
 		this.tags = tags
@@ -83,6 +83,6 @@ Object.extend(Me, myStatic)
 Me.className = 'Blog'
 self[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/db/blog/tags.json" -->, <!--# include virtual="/db/blog/posts.json" -->)
+Me.initialize(<!--# include virtual="/db/blog/posts.json" -->, <!--# include virtual="/db/blog/tags.json" -->)
 
 })();
