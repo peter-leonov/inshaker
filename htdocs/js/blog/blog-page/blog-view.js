@@ -93,18 +93,12 @@ Me.prototype =
 	
 	showMoreButton: function ()
 	{
-		var more = this.nodes.more
-		
-		if (more.hasClassName('hidden'))
-			more.removeClassName('hidden')
+		this.nodes.more.removeClassName('hidden')
 	},
 	
 	hideMoreButton: function ()
 	{
-		var more = this.nodes.more
-		
-		if (!more.hasClassName('hidden'))
-			more.addClassName('hidden')
+		this.nodes.more.addClassName('hidden')
 	},
 	
 	renameMoreButton: function (count)
