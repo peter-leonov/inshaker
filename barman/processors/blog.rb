@@ -226,6 +226,16 @@ class Blog::Post
         end
         %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
       else
+        if /^https?:\/\// =~ data
+          # absolute uri
+        elsif /^\// =~ data
+          # uri relative to the site
+        elsif /$[a-z0-9\.]^/ =~ data
+          # file in the /i/ folder
+        else
+          data = "/t/print/logo-hd.png"
+          error "ссылка на не пойми что: «#{data}»"
+        end
         %Q{<a href="#{data}">#{name}</a>}
       end
     end
