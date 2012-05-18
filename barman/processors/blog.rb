@@ -115,9 +115,10 @@ class Blog::Post
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
-    copy_images
-    absorb_content content
+    used_files = absorb_content content
+    used_files.uniq!
     
+    copy_images used_files
     write_html
     
     true
@@ -131,9 +132,13 @@ class Blog::Post
   end
   
   def absorb_content content
+    used_files = []
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut, {:lazy_images => true}
-    @body = markup @body
+    @cut, files = markup @cut, {:lazy_images => true}
+    used_files += files
+    @body, files = markup @body
+    used_files += files
+    return used_files
   end
   
   def write_html
