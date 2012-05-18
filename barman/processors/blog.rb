@@ -154,7 +154,16 @@ class Blog::Post
     @@html_renderer.result(binding)
   end
   
-  def copy_images
+  def copy_images used_files
+    error = false
+    @src_dir.subdir("i").each do |e|
+      next if /^\./ =~ e
+      next if used_files.index(e)
+      error "непонятно что в папке /i/: «#{e}»"
+      error = true
+    end
+    return if error
+    
     FileUtils.rmtree(@dst_dir.path + "/i/")
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
