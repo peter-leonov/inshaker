@@ -20,7 +20,7 @@ Me.prototype =
 		var lh = this.lh = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.checkHash() }, false)
 		
-		this.renderTagCloud()
+		this.controller.askForTagsList()
 	},
 	
 	renderPosts: function (posts, left)
@@ -137,10 +137,9 @@ Me.prototype =
 		more.count = count
 	},
 	
-	renderTagCloud: function ()
+	renderTagCloud: function (tags)
 	{
-		var cloud = this.nodes.tagCloud,
-			tags = Blog.getTagsDB()
+		var cloud = this.nodes.tagCloud
 		
 		cloud.empty()
 		

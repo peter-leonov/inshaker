@@ -12,6 +12,11 @@ Me.prototype =
 	hashUpdated: function (hash)
 	{
 		this.model.setHash(hash)
+	},
+	
+	askForTagsList: function ()
+	{
+		this.model.sendTags()
 	}
 }
 

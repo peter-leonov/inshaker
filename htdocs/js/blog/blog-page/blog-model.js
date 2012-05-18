@@ -50,6 +50,11 @@ Me.prototype =
 			
 		var left = Blog.getCountPostsByTag(this.currentTag) - this.state
 		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })
+	},
+	
+	sendTags: function ()
+	{
+		this.view.renderTagCloud(Blog.getTagsDB())
 	}
 }
 
