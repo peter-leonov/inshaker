@@ -12,6 +12,7 @@ Me.prototype =
 	{
 		if (this.snippet)
 		{
+			// outer code expects async call back
 			setTimeout(callback, 0)
 			return
 		}
