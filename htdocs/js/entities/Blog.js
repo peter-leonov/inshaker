@@ -57,10 +57,14 @@ var myStatic =
 		return index
 	},
 	
+	getPostsByTag: function (tag)
+	{
+		return this.getIndexByTag()[tag] || []
+	},
+	
 	getSomePostsByTag: function (from, to, tag, callback)
 	{
-		var index = this.getIndexByTag()
-		var posts = index[tag].slice(from, to)
+		var posts = this.getPostsByTag(tag).slice(from, to)
 		
 		var total = posts.length
 		function gotOneSnippet ()
@@ -75,7 +79,7 @@ var myStatic =
 	
 	getPostsCountByTag: function (tag)
 	{
-		return this.getIndexByTag()[tag].length
+		return this.getPostsByTag(tag).length
 	},
 	
 	getAllTags: function ()
