@@ -108,21 +108,14 @@ Me.prototype =
 	
 	renderMoreButton: function (count)
 	{
-		var more = this.nodes.more
-		
-		count = Math.min(count, this.postsPerPage)
-		
-		if (count < 1)
+		if (count <= 0)
 		{
 			this.hideMoreButton()
-		}
-		else if (more.count != count)
-		{
-			this.showMoreButton()
-			this.renameMoreButton(count)
+			return
 		}
 		
-		more.count = count
+		this.showMoreButton()
+		this.renameMoreButton(Math.min(count, this.postsPerPage))
 	},
 	
 	eatAllTags: function (tags)
