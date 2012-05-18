@@ -14,10 +14,11 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		var me = this
-		nodes.more.addEventListener('click', function (e) { me.addMorePosts() }, false)
+		var controller = this.controller
+		nodes.more.addEventListener('click', function (e) { controller.addMorePosts() }, false)
 		
 		var lh = this.lh = new LocationHash().bind()
+		var me = this
 		lh.addEventListener('change', function (e) { me.checkHash() }, false)
 		
 		this.controller.askForTagsList()
@@ -79,11 +80,6 @@ Me.prototype =
 	{
 		var hash = UrlEncode.parse(this.lh.get())
 		this.controller.hashUpdated(hash)
-	},
-	
-	addMorePosts: function ()
-	{
-		this.controller.addMorePosts()
 	},
 	
 	switchTag: function (key)
