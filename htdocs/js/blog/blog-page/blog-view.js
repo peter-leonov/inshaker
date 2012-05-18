@@ -19,7 +19,7 @@ Me.prototype =
 		nodes.more.addEventListener('click', function (e) { me.addMorePosts() }, false)
 		
 		var lh = this.lh = new LocationHash().bind()
-		lh.addEventListener('change', function (e) { me.addMorePosts() }, false)
+		lh.addEventListener('change', function (e) { me.checkHash() }, false)
 		
 		this.renderTagCloud()
 	},
