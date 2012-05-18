@@ -48,14 +48,8 @@ Me.prototype =
 		var from = this.state,
 			to = this.state += this.postPerPage
 			
-		var left = this.getLeftCount()
+		var left = Blog.getCountPostsByTag(this.currentTag) - this.state
 		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })
-	},
-	
-	getLeftCount: function ()
-	{
-		var count = Blog.getCountPostsByTag(this.currentTag)
-		return count - this.state
 	}
 }
 
