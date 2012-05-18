@@ -63,6 +63,13 @@ class Blog::Post
       return
     end
     
+    @src_dir.each do |e|
+      next if /^\./ =~ e
+      next if /^(post\.html|i)$/ =~ e
+      
+      error "непонятный файл или папка «#{e}»"
+    end
+    
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
     
