@@ -11,16 +11,16 @@ var myStatic =
 {
 	initialize: function (tags, posts)
 	{
-		this.tagsDb = tags
-		this.postDb = posts
+		this.tags = tags
+		this.db = posts
 		
 		this.initDbKeys()
 	},
 	
 	initDbKeys: function ()
 	{
-		var db = this.postDb,
-			tags = this.tagsDb,
+		var db = this.db,
+			tags = this.tags,
 			dbKeys = this.dbKeys = {}
 		
 		for (var i = 0, il = tags.length; i < il; i++)
@@ -44,7 +44,7 @@ var myStatic =
 			dbKey = []
 		
 		if (!tag)
-			for (var i = from, il = this.postDb.length; i < to && i < il; i++)
+			for (var i = from, il = this.db.length; i < to && i < il; i++)
 				dbKey[i] = i
 		else
 			dbKey = dbKeys[tag]
@@ -54,7 +54,7 @@ var myStatic =
 		var j = 0
 		for (var i = from; i < to; i++)
 		{
-			var post = this.postDb[dbKey[i]],
+			var post = this.db[dbKey[i]],
 				me = this
 			
 			;(function(i){
@@ -90,19 +90,19 @@ var myStatic =
 	getCountPostsByTag: function (tag)
 	{
 		if (!tag)
-			return this.postDb.length
+			return this.db.length
 		else
 			return this.dbKeys[tag].length
 	},
 	
 	getTagIndexByName: function (name)
 	{
-		return this.tagsDb.indexOf(name)
+		return this.tags.indexOf(name)
 	},
 	
 	getAllTags: function ()
 	{
-		return this.tagsDb 
+		return this.tags.slice()
 	}
 }
 
