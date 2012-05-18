@@ -29,32 +29,22 @@ var myStatic =
 	
 	getSomePostsByTag: function (from, to, tag, callback)
 	{
-		var posts = [],
-			dbKeys = this.dbKeys,
-			dbKey = []
+		var index = this.getIndexByTag()
+		var posts = index[tag].slice(from, to)
 		
-		if (!tag)
-			for (var i = from, il = this.db.length; i < to && i < il; i++)
-				dbKey[i] = i
-		else
-			dbKey = dbKeys[tag]
-		
-		to = Math.min(dbKey.length, to)
-		
-		var j = 0
-		for (var i = from; i < to; i++)
+		var total = 0
+		for (var i = 0, il = posts.length; i < il; i++)
 		{
-			var post = this.db[dbKey[i]],
-				me = this
+			var post = posts[i]
 			
-			;(function(i){
+			var me = this
+			;(function(post){
 				me.getPostSnippet(post, function(post)
 				{
-					posts[i] = post
-					if (++j == to-from)
+					if (++total >= il)
 						callback(posts)
 				})
-			})(i-from)
+			})(post)
 		}
 	},
 	
@@ -82,7 +72,7 @@ var myStatic =
 		if (!tag)
 			return this.db.length
 		else
-			return this.dbKeys[tag].length
+			return this.getIndexByTag()[tag].length
 	},
 	
 	getAllTags: function ()
