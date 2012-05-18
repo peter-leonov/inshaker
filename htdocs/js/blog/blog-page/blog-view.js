@@ -132,16 +132,6 @@ Me.prototype =
 	{
 		var cloud = this.nodes.tagCloud
 		
-		cloud.empty()
-		
-		var li = Nc('li', 'tag all'),
-			link = Nct('a', 'link', 'все посты')
-		
-		link.href = '/blog/'
-		li.appendChild(link)
-		cloud.appendChild(li)
-		cloud.appendChild(T(' '))
-		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			cloud.appendChild(this.renderTagLi(tags[i]))
