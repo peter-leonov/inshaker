@@ -234,8 +234,8 @@ class Blog::Post
           # file in the /i/ folder
           files << data
         else
-          data = "/t/print/logo-hd.png"
           error "ссылка на не пойми что: «#{data}»"
+          data = "/t/print/logo-hd.png"
         end
         %Q{<a href="#{data}">#{name}</a>}
       end
