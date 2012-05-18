@@ -81,16 +81,14 @@ Me.prototype =
 		this.controller.hashUpdated(hash)
 	},
 	
-	switchTag: function (key)
+	switchTag: function (tag)
 	{
-		if (key < 0)
-			key = 'all'
+		var key = tag ? this.tagIndexByTagName[tag] : 'all'
 		
 		var root = this.nodes.root
-		
-		root.removeClassName('show-tag-' + this.lastTag)
+		root.removeClassName('show-tag-' + this.lastTagKey)
 		root.addClassName('show-tag-' + key)
-		this.lastTag = key
+		this.lastTagKey = key
 	},
 	
 	showMoreButton: function ()
@@ -132,6 +130,16 @@ Me.prototype =
 		more.count = count
 	},
 	
+	eatAllTags: function (tags)
+	{
+		var index = this.tagIndexByTagName = {}
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+			index[tags[i]] = i
+		
+		this.renderTagCloud(tags)
+	},
+	
 	renderTagCloud: function (tags)
 	{
 		var cloud = this.nodes.tagCloud
@@ -155,7 +163,7 @@ Me.prototype =
 	
 	renderTagLi: function(tag)
 	{
-		var li = Nc('li', 'tag tag-' + Blog.getTagIndexByName(tag)),
+		var li = Nc('li', 'tag tag-' + this.tagIndexByTagName[tag]),
 			link = Nct('a', 'link', tag)
 		
 		link.href = '/blog/#tag=' + tag

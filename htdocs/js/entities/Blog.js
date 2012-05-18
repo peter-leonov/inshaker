@@ -95,11 +95,6 @@ var myStatic =
 			return this.dbKeys[tag].length
 	},
 	
-	getTagIndexByName: function (name)
-	{
-		return this.tags.indexOf(name)
-	},
-	
 	getAllTags: function ()
 	{
 		return this.tags.slice()
