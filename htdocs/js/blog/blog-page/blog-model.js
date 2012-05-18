@@ -33,30 +33,23 @@ Me.prototype =
 	{
 		this.state = 0
 		
-		var from = this.state,
-			to = this.state += this.postPerPage
-			
-		var left = this.getLeftCount()
-		
 		var view = this.view
-		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts)
-		{
-			view.renderNewPosts(posts, left)
-		})
+		this.getMorePosts( function (posts, left) { view.renderNewPosts(posts, left) })
 	},
 	
 	addMorePosts: function ()
+	{
+		var view = this.view
+		this.getMorePosts( function (posts, left) { view.renderAddedPosts(posts, left) })
+	},
+	
+	getMorePosts: function (f)
 	{
 		var from = this.state,
 			to = this.state += this.postPerPage
 			
 		var left = this.getLeftCount()
-		
-		var view = this.view
-		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts)
-		{
-			view.renderAddedPosts(posts, left)
-		})
+		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })
 	},
 	
 	getLeftCount: function ()
