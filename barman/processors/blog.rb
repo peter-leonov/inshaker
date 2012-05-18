@@ -58,6 +58,11 @@ class Blog::Post
     
     @src_dir = src_dir
     
+    if /  |^ | $/ =~ @src_dir.name
+      error "лишние пробелы в названии папки"
+      return
+    end
+    
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
     
