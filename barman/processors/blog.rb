@@ -45,6 +45,7 @@ class Blog::Post
   attr_accessor :options
   
   def self.init
+    @@filename_rex = /^[a-zA-Z0-9\._\-]+$/
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
     @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
@@ -119,7 +120,7 @@ class Blog::Post
     used_files.uniq!
     
     used_files.each do |name|
-      next if /^[a-zA-Z0-9\._\-]+$/ =~ name
+      next if @@filename_rex =~ name
       error "имя файла содержит посторонние символы: «#{name}»"
     end
     
@@ -237,7 +238,7 @@ class Blog::Post
         elsif /^\// =~ data
           # uri relative to the site
           %Q{<a href="#{data}">#{name}</a>}
-        elsif /^[a-z0-9\.]+$/ =~ data
+        elsif @@filename_rex =~ data
           # file in the /i/ folder
           files << data
           %Q{<a href="/blog/#{@href}/i/#{data}">#{name}</a>}
