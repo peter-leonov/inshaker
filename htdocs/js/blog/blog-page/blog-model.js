@@ -38,10 +38,8 @@ Me.prototype =
 	
 	getLeftCount: function ()
 	{
-		var count = Blog.getCountPostsByTag(this.currentTag),
-			diff = count - this.state
-		
-		return diff
+		var count = Blog.getCountPostsByTag(this.currentTag)
+		return count - this.state
 	}
 }
 
