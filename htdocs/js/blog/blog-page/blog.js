@@ -9,11 +9,11 @@ function Me ()
 	var m = this.model = new Me.Model(),
 		v = this.view = new Me.View(),
 		c = this.controller = new Me.Controller()
-
+	
 	m.view = v
 	v.controller = c
 	c.model = m
-
+	
 	m.parent = v.parent = c.parent = this
 }
 
@@ -35,5 +35,4 @@ self[Me.className] = Papa = Me
 <!--# include virtual="blog-view.js" -->
 <!--# include virtual="blog-controller.js" -->
 
-	
 })();

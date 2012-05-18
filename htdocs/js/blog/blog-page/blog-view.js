@@ -22,10 +22,10 @@ Me.prototype =
 		
 		var me = this
 		nodes.more.addEventListener('click', function (e) { me.addMorePosts() }, false)
-					
+		
 		var lh = this.lh = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.addMorePosts() }, false)
-
+		
 		this.addMorePosts()
 		this.renderTagCloud()
 	},
@@ -38,7 +38,7 @@ Me.prototype =
 				li = Nc('li', 'post preview'),
 				title = Nc('h2', 'title'),
 				a = Nct('a', '', post.title)
-				
+			
 			a.href = "/blog/" + post.path + "/#the-one"
 			
 			title.appendChild(a)
@@ -130,7 +130,7 @@ Me.prototype =
 		
 		else if(more.count != count)
 			this.renameMoreButton(count)
-
+		
 		more.count = count
 	},
 	
@@ -138,9 +138,9 @@ Me.prototype =
 	{
 		var cloud = this.nodes.tagCloud,
 			tags = Blog.getTagsDB()
-					
+		
 		cloud.empty()
-
+		
 		var li = Nc('li', 'tag all'),
 			link = Nct('a', 'link', 'все посты')
 		
@@ -148,7 +148,7 @@ Me.prototype =
 		li.appendChild(link)
 		cloud.appendChild(li)
 		cloud.appendChild(T(' '))
-
+		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			cloud.appendChild(this.renderTagLi(tags[i], i))

@@ -4,7 +4,6 @@
 
 function onready ()
 {
-	
 	var nodes =
 	{
 		root: $('common-main-wrapper'),

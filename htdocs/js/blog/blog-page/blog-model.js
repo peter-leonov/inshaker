@@ -16,8 +16,8 @@ Me.prototype =
 			
 		if (this.currentTag != tag)
 			this.updateTag(tag)
-
-		if (!this.state)				
+		
+		if (!this.state)
 			method = 'renderNewPosts'
 		
 		Blog.getSomePostsByTag(this.state, this.state+=count, this.currentTag, function(posts)

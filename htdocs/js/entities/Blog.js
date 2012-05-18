@@ -49,7 +49,7 @@ var myStatic =
 				dbKey[i] = i
 		else
 			dbKey = dbKeys[tag]
-	
+		
 		to = Math.min(dbKey.length, to)
 		
 		var j = 0
@@ -57,7 +57,7 @@ var myStatic =
 		{
 			var post = this.postDb[dbKey[i]],
 				me = this
-
+			
 			;(function(i){
 				me.getPostSnippet(post, function(post)
 				{
