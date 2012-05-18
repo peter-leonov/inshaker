@@ -3,7 +3,6 @@
 function Me ()
 {
 	this.nodes = {}
-	this.lastTag = 'all'
 }
 
 eval(NodesShortcut.include())
