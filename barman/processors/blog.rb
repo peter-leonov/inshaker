@@ -67,7 +67,7 @@ class Blog::Post
       next if /^\./ =~ e
       next if /^(post\.html|i)$/ =~ e
       
-      error "непонятный файл или папка «#{e}»"
+      error "непонятно что в папке поста «#{e}»"
     end
     
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
