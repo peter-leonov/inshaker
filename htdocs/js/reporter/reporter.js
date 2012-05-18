@@ -350,7 +350,6 @@ self[Me.className] = Me
 })();
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
 
 function onready ()
 {

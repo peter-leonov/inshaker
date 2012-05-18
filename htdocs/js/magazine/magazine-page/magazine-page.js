@@ -34,8 +34,6 @@ $.onready
 	}
 )
 
-<!--# include virtual="/liby/modules/url-encode.js" -->
-
 <!--# include virtual="/liby/modules/motion.js" -->
 <!--# include virtual="/liby/modules/motion-types.js" -->
 <!--# include virtual="/liby/modules/animation.js" -->

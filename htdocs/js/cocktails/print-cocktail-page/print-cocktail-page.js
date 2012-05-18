@@ -1,5 +1,3 @@
-<!--# include virtual="/liby/modules/url-encode.js" -->
-
 <!--# include virtual="/js/cocktails/cocktails-printer.js" -->
 
 ;(function(){
