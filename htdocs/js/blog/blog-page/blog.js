@@ -22,6 +22,12 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
+		return this
+	},
+	
+	guessState: function ()
+	{
+		this.view.checkHash()
 	}
 }
 

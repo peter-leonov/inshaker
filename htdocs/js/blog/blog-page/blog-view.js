@@ -21,7 +21,6 @@ Me.prototype =
 		var lh = this.lh = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.addMorePosts() }, false)
 		
-		this.addMorePosts()
 		this.renderTagCloud()
 	},
 	
@@ -70,6 +69,12 @@ Me.prototype =
 	{
 		this.nodes.postsLoop.empty()
 		this.renderPosts(posts, left)
+	},
+	
+	checkHash: function ()
+	{
+		var hash = UrlEncode.parse(this.lh.get())
+		this.controller.addMorePosts(hash, this.postPerPage)
 	},
 	
 	addMorePosts: function ()

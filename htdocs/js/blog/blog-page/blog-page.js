@@ -17,7 +17,7 @@ function onready ()
 	}
 	
 	var widget = new BlogPage()
-	widget.bind(nodes)
+	widget.bind(nodes).guessState()
 }
 
 $.onready(onready)
