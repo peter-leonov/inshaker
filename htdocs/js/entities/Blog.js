@@ -1,6 +1,10 @@
 ;(function(){
 
-function Me () {}
+function Me (data)
+{
+	for (var k in data)
+		this[k] = data[k]
+}
 
 Me.prototype =
 {
@@ -13,6 +17,10 @@ var myStatic =
 	{
 		this.index = {}
 		this.tags = tags
+		
+		for (var i = 0, il = posts.length; i < il; i++)
+			posts[i] = new Me(posts[i])
+		
 		this.db = posts
 	},
 	
