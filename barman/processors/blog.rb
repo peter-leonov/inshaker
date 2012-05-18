@@ -230,7 +230,7 @@ class Blog::Post
           # absolute uri
         elsif /^\// =~ data
           # uri relative to the site
-        elsif /$[a-z0-9\.]^/ =~ data
+        elsif /^[a-z0-9\.]+$/ =~ data
           # file in the /i/ folder
           files << data
         else
