@@ -176,7 +176,10 @@ class Blog::Post
       if name == "фотка"
         (src, href) = data.split(/\s+/)
         
-        if src !~ /^https?:\/\//
+        if src =~ /^https?:\/\//
+          src = "/t/print/logo-hd.png"
+          error "не используй абсолютные пути к фоткам: «#{src}»"
+        else
           if opts[:lazy_images]
             box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
             unless box
