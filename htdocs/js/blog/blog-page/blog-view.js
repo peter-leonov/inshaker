@@ -118,7 +118,7 @@ Me.prototype =
 	{
 		var more = this.nodes.more
 		
-		more.value = 'еще ' + count + ' постов!'
+		more.value = 'еще ' + count + ' ' + count.plural('пост', 'поста', 'постов') + '!'
 		this.showMoreButton()
 	},
 	
