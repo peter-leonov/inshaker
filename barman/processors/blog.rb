@@ -228,16 +228,18 @@ class Blog::Post
       else
         if /^https?:\/\// =~ data
           # absolute uri
+          %Q{<a href="#{data}">#{name}</a>}
         elsif /^\// =~ data
           # uri relative to the site
+          %Q{<a href="#{data}">#{name}</a>}
         elsif /^[a-z0-9\.]+$/ =~ data
           # file in the /i/ folder
           files << data
+          %Q{<a href="/blog/#{@href}/i/#{data}">#{name}</a>}
         else
           error "ссылка на не пойми что: «#{data}»"
-          data = "/t/print/logo-hd.png"
+          %Q{<a href="/">#{name}</a>}
         end
-        %Q{<a href="#{data}">#{name}</a>}
       end
     end
     
