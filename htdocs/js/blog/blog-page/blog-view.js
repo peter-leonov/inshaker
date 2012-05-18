@@ -4,7 +4,6 @@ function Me ()
 {
 	this.nodes = {}
 	this.lastTag = 'all'
-	this.postPerPage = 20
 }
 
 eval(NodesShortcut.include())
@@ -74,13 +73,13 @@ Me.prototype =
 	checkHash: function ()
 	{
 		var hash = UrlEncode.parse(this.lh.get())
-		this.controller.addMorePosts(hash, this.postPerPage)
+		this.controller.addMorePosts(hash)
 	},
 	
 	addMorePosts: function ()
 	{
 		var hash = UrlEncode.parse(this.lh.get())
-		this.controller.addMorePosts(hash, this.postPerPage)
+		this.controller.addMorePosts(hash)
 	},
 	
 	switchTag: function (key)
@@ -123,7 +122,7 @@ Me.prototype =
 	{
 		var more = this.nodes.more
 		
-		count = Math.min(count, this.postPerPage)
+		count = Math.min(count)
 		
 		if (count < 1)
 			this.hideMoreButton()

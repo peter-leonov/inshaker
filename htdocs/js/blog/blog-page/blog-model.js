@@ -2,13 +2,14 @@
 
 function Me ()
 {
+	this.postPerPage = 20
 	this.state = 0
 	this.currentTag = ''
 }
 
 Me.prototype =
 {
-	addMorePosts: function (params, count)
+	addMorePosts: function (params)
 	{
 		var me = this,
 			tag = params.tag,
@@ -20,7 +21,7 @@ Me.prototype =
 		if (!this.state)
 			method = 'renderNewPosts'
 		
-		Blog.getSomePostsByTag(this.state, this.state += count, this.currentTag, function (posts)
+		Blog.getSomePostsByTag(this.state, this.state += this.postPerPage, this.currentTag, function (posts)
 		{
 			me.view[method](posts, me.getLeftCount())
 		})
