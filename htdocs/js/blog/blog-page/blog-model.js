@@ -25,7 +25,7 @@ Me.prototype =
 		
 		this.currentTag = tag
 		
-		this.view.switchTag(Blog.getIndexByName(tag))
+		this.view.switchTag(Blog.getTagIndexByName(tag))
 		
 		this.addNewPosts()
 		
@@ -58,7 +58,7 @@ Me.prototype =
 	
 	sendTags: function ()
 	{
-		this.view.renderTagCloud(Blog.getTagsDB())
+		this.view.renderTagCloud(Blog.getAllTags())
 	}
 }
 

@@ -56,7 +56,7 @@ Me.prototype =
 			
 			for (var j = 0, jl = post.tags.length; j < jl; j++)
 			{
-				list.appendChild(this.renderTagLi(post.tags[j], Blog.getIndexByName(post.tags[j])))
+				list.appendChild(this.renderTagLi(post.tags[j], Blog.getTagIndexByName(post.tags[j])))
 				list.appendChild(T(' '))
 			}
 			this.nodes.postsLoop.appendChild(li)

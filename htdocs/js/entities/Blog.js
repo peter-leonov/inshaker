@@ -95,12 +95,12 @@ var myStatic =
 			return this.dbKeys[tag].length
 	},
 	
-	getIndexByName: function (name)
+	getTagIndexByName: function (name)
 	{
 		return this.tagsDb.indexOf(name)
 	},
 	
-	getTagsDB: function ()
+	getAllTags: function ()
 	{
 		return this.tagsDb 
 	}
