@@ -2,39 +2,61 @@
 
 function Me ()
 {
-	this.postPerPage = 20
+	this.postPerPage = 10
 	this.state = 0
-	this.currentTag = ''
+	this.currentTag = null
 }
 
 Me.prototype =
 {
-	addMorePosts: function (params)
+	setHash: function (hash)
 	{
-		var me = this,
-			tag = params.tag,
-			method = 'renderPosts'
-			
-		if (this.currentTag != tag)
-			this.updateTag(tag)
-		
-		if (!this.state)
-			method = 'renderNewPosts'
-		
-		Blog.getSomePostsByTag(this.state, this.state += this.postPerPage, this.currentTag, function (posts)
-		{
-			me.view[method](posts, me.getLeftCount())
-		})
+		this.setTag(hash.tag)
 	},
 	
-	updateTag: function (tag)
+	setTag: function (tag)
 	{
-		this.state = 0
+		if (this.currentTag == tag)
+			return
+		
 		this.currentTag = tag
+		
 		this.view.switchTag(Blog.getIndexByName(tag))
+		
+		this.addNewPosts()
 		
 		if (tag)
 			Statistics.blogTagSelected(tag)
+	},
+	
+	addNewPosts: function ()
+	{
+		this.state = 0
+		
+		var from = this.state,
+			to = this.state += this.postPerPage
+			
+		var left = this.getLeftCount()
+		
+		var view = this.view
+		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts)
+		{
+			view.renderNewPosts(posts, left)
+		})
+	},
+	
+	addMorePosts: function ()
+	{
+		var from = this.state,
+			to = this.state += this.postPerPage
+			
+		var left = this.getLeftCount()
+		
+		var view = this.view
+		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts)
+		{
+			view.renderAddedPosts(posts, left)
+		})
 	},
 	
 	getLeftCount: function ()

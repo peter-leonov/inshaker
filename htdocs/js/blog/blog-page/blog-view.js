@@ -70,16 +70,20 @@ Me.prototype =
 		this.renderPosts(posts, left)
 	},
 	
+	renderAddedPosts: function (posts, left)
+	{
+		this.renderPosts(posts, left)
+	},
+	
 	checkHash: function ()
 	{
 		var hash = UrlEncode.parse(this.lh.get())
-		this.controller.addMorePosts(hash)
+		this.controller.hashUpdated(hash)
 	},
 	
 	addMorePosts: function ()
 	{
-		var hash = UrlEncode.parse(this.lh.get())
-		this.controller.addMorePosts(hash)
+		this.controller.addMorePosts()
 	},
 	
 	switchTag: function (key)

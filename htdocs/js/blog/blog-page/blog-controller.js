@@ -4,14 +4,14 @@ function Me () {}
 
 Me.prototype =
 {
-	addMorePosts: function (hash)
+	addMorePosts: function ()
 	{
-		this.model.addMorePosts(hash)
+		this.model.addMorePosts()
 	},
 	
-	updateTag: function (tag)
+	hashUpdated: function (hash)
 	{
-		this.model.updateTag(tag)
+		this.model.setHash(hash)
 	}
 }
 
