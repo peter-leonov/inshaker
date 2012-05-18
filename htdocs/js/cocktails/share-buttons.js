@@ -9,7 +9,7 @@ var Me =
 			return
 		
 		frame = frame[0]
-		frame.src = '/share-buttons.html?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(params.text)
+		frame.src = '/share-buttons.html?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(params.text)
 	}
 }
 

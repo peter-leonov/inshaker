@@ -64,29 +64,29 @@ $.onready
 		
 		var nodes =
 		{
-			page: $('bar-page'),
-			brandedImageHolder: $('branded-image-holder'),
+			page: $('#bar-page'),
+			brandedImageHolder: $('#branded-image-holder'),
 			photos:
 			{
-				root:            $$('.photos')[0],
-				viewport:        $$('.photos .viewport')[0],
-				surface:         $$('.photos .surface')[0],
-				prev:            $$('.photos .prev')[0],
-				next:            $$('.photos .next')[0],
-				items:           $$('.photos .point')
+				root:     $('.photos'),
+				viewport: $('.photos .viewport'),
+				surface:  $('.photos .surface'),
+				prev:     $('.photos .prev'),
+				next:     $('.photos .next'),
+				items:   $$('.photos .point')
 			},
 			shareBox:
 			{
-				root: $('share-box'),
+				root: $('#share-box'),
 				buttons: $$('#share-box .button')
 			},
-			hitBox: $$('#main-column .info .hit .body')[0],
-			barName: $('bar-name'),
-			cityName: $('city-name'),
-			map: $('map'),
-			positionControl: $$('.position-control')[0],
-			barPrev: $$('#main-column .common-title .navigation .prev')[0],
-			barNext: $$('#main-column .common-title .navigation .next')[0]
+			hitBox: $('#main-column .info .hit .body'),
+			barName: $('#bar-name'),
+			cityName: $('#city-name'),
+			map: $('#map'),
+			positionControl: $('.position-control'),
+			barPrev: $('#main-column .common-title .navigation .prev'),
+			barNext: $('#main-column .common-title .navigation .next')
 		}
 		RoundedCorners.round(nodes.photos.root)
 		
@@ -96,7 +96,7 @@ $.onready
 		var nodes =
 		{
 			page: document.documentElement,
-			holder: $('branded-image-holder')
+			holder: $('#branded-image-holder')
 		}
 		
 		var bs = new BrandingScroller()

@@ -3,7 +3,7 @@
 #poll-popup .popup-controls { height: 10px; }
 #poll-popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 
-#poll-popup .poll-window { position: relative; min-height: 200px; padding: 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; box-shadow: 0 0 20px -3px #ffb; font-size: 15px; }
+#poll-popup .poll-window { position: relative; min-height: 150px; padding: 30px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; box-shadow: 0 0 20px -3px #ffb; font-size: 15px; }
 #poll-popup .poll-window h4 { font-size: 20px; margin-bottom: 15px; }
 #poll-popup .poll-window .variants li { display: block; margin: 0 0 10px 0; }
 #poll-popup .poll-window .variants .control { margin: 0 10px 0 0; }
@@ -13,4 +13,4 @@
 #poll-popup .poll-window.done .thank-you { display: block; }
 #poll-popup .poll-window.done .poll-form { visibility: hidden; }
 
-#bottom .copyright .poll-show { cursor: pointer; }
+#common-footer .copyright .poll-show { cursor: pointer; }

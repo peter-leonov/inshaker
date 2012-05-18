@@ -45,6 +45,7 @@ class Blog::Post
   attr_accessor :options
   
   def self.init
+    @@filename_rex = /^[a-zA-Z0-9\._\-]+$/
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
     @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
@@ -57,6 +58,18 @@ class Blog::Post
   def process src_dir, is_archive
     
     @src_dir = src_dir
+    
+    if /  |^ | $/ =~ @src_dir.name
+      error "лишние пробелы в названии папки"
+      return
+    end
+    
+    @src_dir.each do |e|
+      next if /^\./ =~ e
+      next if /^(post\.html|i)$/ =~ e
+      
+      error "непонятно что в папке поста «#{e}»"
+    end
     
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
@@ -103,9 +116,15 @@ class Blog::Post
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
-    copy_images
-    absorb_content content
+    used_files = absorb_content content
+    used_files.uniq!
     
+    used_files.each do |name|
+      next if @@filename_rex =~ name
+      error "имя файла содержит посторонние символы: «#{name}»"
+    end
+    
+    copy_images used_files
     write_html
     
     true
@@ -119,9 +138,13 @@ class Blog::Post
   end
   
   def absorb_content content
+    used_files = []
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut, {:lazy_images => true}
-    @body = markup @body
+    @cut, files = markup @cut, {:lazy_images => true}
+    used_files += files
+    @body, files = markup @body
+    used_files += files
+    return used_files
   end
   
   def write_html
@@ -137,7 +160,16 @@ class Blog::Post
     @@html_renderer.result(binding)
   end
   
-  def copy_images
+  def copy_images used_files
+    error = false
+    @src_dir.subdir("i").each do |e|
+      next if /^\./ =~ e
+      next if used_files.index(e)
+      error "непонятно что в папке /i/: «#{e}»"
+      error = true
+    end
+    return if error
+    
     FileUtils.rmtree(@dst_dir.path + "/i/")
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
@@ -156,6 +188,7 @@ class Blog::Post
   
   
   def markup text, opts={}
+    files = []
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
@@ -164,13 +197,17 @@ class Blog::Post
       if name == "фотка"
         (src, href) = data.split(/\s+/)
         
-        if src !~ /^https?:\/\//
+        if src =~ /^https?:\/\//
+          src = "/t/print/logo-hd.png"
+          error "не используй абсолютные пути к фоткам: «#{src}»"
+        else
           if opts[:lazy_images]
             box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
             unless box
               error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
             end
           end
+          files << src
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
@@ -195,7 +232,20 @@ class Blog::Post
         end
         %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
       else
-        %Q{<a href="#{data}">#{name}</a>}
+        if /^https?:\/\// =~ data
+          # absolute uri
+          %Q{<a href="#{data}">#{name}</a>}
+        elsif /^\// =~ data
+          # uri relative to the site
+          %Q{<a href="#{data}">#{name}</a>}
+        elsif @@filename_rex =~ data
+          # file in the /i/ folder
+          files << data
+          %Q{<a href="/blog/#{@href}/i/#{data}">#{name}</a>}
+        else
+          error "ссылка на не пойми что: «#{data}»"
+          %Q{<a href="/">#{name}</a>}
+        end
       end
     end
     
@@ -226,7 +276,7 @@ class Blog::Post
     # paragraphs
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
-    return text
+    return text, files
   end
   
   
@@ -302,7 +352,7 @@ class Blog
     updir.each_dir do |dir|
       if /^#/.match(dir.name)
         say "перехожу в «#{dir.name}»"
-        walk_dir dir, !@options[:force]
+        walk_dir dir#, !@options[:force]
         next
       end
       

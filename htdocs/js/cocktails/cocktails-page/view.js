@@ -195,7 +195,7 @@ Me.prototype =
 		this.filterElems.letter.addClassName('selected-button');
 		
 		if(filters.page > 0) {
-			nodes.resultsDisplay.RollingImagesLite.goToNode($('page_'+filters.page), 'directJump');	
+			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
 		}
 		
 		if (filters.name)
@@ -289,6 +289,15 @@ Me.prototype =
 			end = (num + 1) * this.perPage,
 			dropTargets = this.dropTargets
 		
+		function bindDragData (node, data)
+		{
+			function onDragStart (e)
+			{
+				e.dataTransfer.setData('text', data)
+			}
+			node.addEventListener('dragstart', onDragStart, false)
+		}
+		
 		for (var i = num * this.perPage; i < end; i++)
 		{
 			var item = document.createElement('li')
@@ -299,7 +308,7 @@ Me.prototype =
 				if (!(cocktail = cocktails[i]))
 					continue
 				node = cache[i] = cocktail.getPreviewNodeCropped()
-				node.img.__draggable = [cocktail.name, dropTargets]
+				bindDragData(node, cocktail.name)
 			}
 			item.appendChild(node)
 			parent.appendChild(item)

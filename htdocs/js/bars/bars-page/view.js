@@ -1,5 +1,11 @@
 ;(function(){
 
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26').replace('=', '%3D') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&').replace('%3D', '=') }
+
+
 function Me ()
 {
 	this.cache = {barNode: {}}
@@ -33,27 +39,22 @@ Me.prototype =
 		s.addEventListener('select', function (e) { controller.citySelected(e.data.value) }, false)
 		
 		nodes.titleSearchAll.addEventListener('mousedown', function () { controller.showAllBars({}) }, false)
+		
+		var lh = this.locationHash = new LocationHash().bind()
+		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 	},
 	
-	checkHash: function ()
+	locationHashUpdated: function ()
 	{
-		var hash, str
+		var hash = this.locationHash.get()
+		var state = hash ? UrlEncodeLight.parse(hash) : {view: 'list'}
 		
-		if (str = location.hash.substr(1))
-			hash = UrlEncode.parse(str)
-		else if (str = WindowName.get('bars:state'))
-			hash = UrlEncode.parse(str)
-		else
-			hash = {view: 'list'}
-		
-		this.controller.hashUpdated(hash)
+		this.controller.hashUpdated(state)
 	},
 	
 	setHash: function (hash)
 	{
-		var urledHash = UrlEncode.stringify(hash)
-		location.hash = '#' + urledHash
-		WindowName.set('bars:state', urledHash)
+		this.locationHash.set(UrlEncodeLight.stringify(hash))
 	},
 	
 	modelChanged: function (data)

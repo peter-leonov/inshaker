@@ -95,7 +95,6 @@
 #main-content .buttons .bt-want-slap.in-cart:hover .added { display: none; }
 #main-content .buttons .bt-want-slap.in-cart:hover .add-more { display: inline; }
 
-
 #view-legend { font-size: 120%; line-height: 1.5; padding: 13px 10px 0 10px; overflow: hidden; }
 #view-legend h3 { font-size: 150%; margin-bottom: 10px; }
 #view-legend button { display: block; margin: 2em auto 0; }
@@ -136,11 +135,6 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 
 #recommendations .point { line-height: 124px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
-
-.drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }
-.dragging-object{position:absolute;z-index:10;}
-#cocktail-image.dragging-object { display: block; }
-
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 

@@ -5,31 +5,9 @@ Array.prototype.random = function() {
 }
 
 var Controller = {
-	NAME_ELEM  : 'cocktail_name',
-	ID_REC     : 'recommendations',
-	ID_REC_SUR : 'rec_surface',
-	
-	ID_ILLUSTRATION : 'cocktail-image',
-	
-	ID_AUTHOR : 'author',
-	SELECTOR_AUTHOR : 'a.author',
-	ID_WHERE_TO_TASTE : 'where-to-taste',
-	
-	ID_RELATED : 'related',
-	ID_REL_SUR : 'rel_surface',
-	ID_REL_VPR : 'rel_viewport',
-	
-	ID_ING       : 'ingredients',
-	ID_ING_SUR   : 'ingreds_surface',
-    ID_INGS_LIST : 'ingredients_list',
-	
 	REL_WIDTH_SMALL : '330px',
 	REL_WIDTH_BIG   : '560px',
 	
-	ID_CART_EMPTY   : 'cart_draghere',
-	ID_CART_FULL    : 'cart_contents',
-	
-	CLASS_PRINT_RECIPE : '.bt-print-how',
 	KEY_ESC: 27,
 	
 	name : "",
@@ -39,28 +17,32 @@ var Controller = {
 	
 	nodes:
 	{
-		moreBox: $('b-more'),
-		hreview: $$('.hreview')[0],
-		showRecipe: $('show-recipe'),
-		hideRecipe: $('close-recipe'),
-		showLegendBtn: $('show-legend'),
-		hideLegendBtn: $('hide-legend'),
+		moreBox: $('#b-more'),
+		hreview: $('.hreview'),
+		showRecipe: $('#show-recipe'),
+		hideRecipe: $('#close-recipe'),
+		showLegendBtn: $('#show-legend'),
+		hideLegendBtn: $('#hide-legend'),
 		tags: $$('#main-content .tags .tag'),
 		recommendations:
 		{
-			root: $('recommendations'),
-			viewport: $$('#recommendations .viewport')[0],
-			surface: $$('#recommendations .surface')[0],
-			prev: $$('#recommendations .prev')[0],
-			next: $$('#recommendations .next')[0]
+			root: $('#recommendations'),
+			viewport: $('#recommendations .viewport'),
+			surface: $('#recommendations .surface'),
+			prev: $('#recommendations .prev'),
+			next: $('#recommendations .next')
 		}
 	},
 	
 	init: function(){
-		this.name = $(this.NAME_ELEM).getAttribute('data-cocktail-name');
-		this.DROP_TARGETS = [$(this.ID_CART_EMPTY), $(this.ID_CART_FULL)];
-		new Draggable($(this.ID_ILLUSTRATION), this.name, this.DROP_TARGETS);
-	    
+		var cocktailName = this.name = $('#cocktail_name').getAttribute('data-cocktail-name');
+		
+		function onDragStart (e)
+		{
+			e.dataTransfer.setData('text', cocktailName)
+		}
+		$('#cocktail-image').addEventListener('dragstart', onDragStart, false)
+		
 		this.lh = new LocationHash().bind()
 		Model.dataListener = this;
 		this.bindEvents(this.name);
@@ -83,7 +65,7 @@ var Controller = {
 		{
 			Statistics.cocktailViewRecipe(Cocktail.getByName(this.name))
 			
-			var ri = $(this.ID_ING).RollingImagesLite
+			var ri = $('#ingredients').RollingImagesLite
 			if (ri)
 				ri.goInit(); // Work-around for RI: FIXME
 		},
@@ -133,7 +115,7 @@ var Controller = {
 		var barman = Barman.getByCocktailName(name)
 		if (barman)
 		{
-			var a = $(this.ID_AUTHOR)
+			var a = $('#author')
 			if (a)
 			{
 				a.removeClassName('hidden')
@@ -141,7 +123,7 @@ var Controller = {
 			}
 			
 			
-			a = $$(this.SELECTOR_AUTHOR)[0]
+			a = $('a.author')
 			if (a)
 			{
 				a.addClassName('active')
@@ -152,7 +134,7 @@ var Controller = {
 		var bars = Bar.getByCocktailName(name)
 		if (bars.length)
 		{
-			var a = $(this.ID_WHERE_TO_TASTE)
+			var a = $('#where-to-taste')
 			a.removeClassName('hidden')
 			
 			if (bars.length == 1)
@@ -198,7 +180,7 @@ var Controller = {
 			false)
 		}
 		
-		var printRecipe = $$(this.CLASS_PRINT_RECIPE)[0]
+		var printRecipe = $('.bt-print-how')
 		printRecipe.addEventListener('click', function (e)
 		{
 			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
@@ -219,7 +201,7 @@ var Controller = {
 			}}(tool), false);
 		}
 	
-		$(self.ID_INGS_LIST).addEventListener('click', function (e) { self.mayBeIngredientClicked(e.target) }, false)
+		$('#ingredients_list').addEventListener('click', function (e) { self.mayBeIngredientClicked(e.target) }, false)
     },
 	
 	mayBeIngredientClicked: function (node)
@@ -299,8 +281,8 @@ var Controller = {
 			}
 		}
 		
-		nodes.root.addEventListener('mouseover', carousel.stop)
-		nodes.root.addEventListener('mouseout', carousel.start)
+		nodes.root.addEventListener('mouseover', carousel.stop, false)
+		nodes.root.addEventListener('mouseout', carousel.start, false)
 		carousel.start()
 	},
 	
@@ -328,18 +310,18 @@ var Controller = {
 	renderRelated: function (perPage)
 	{
 		var resultSet = Model.related,
-			root = $(this.ID_REL_VPR)
+			root = $('#rel_viewport')
 		
 		root.style.width = (perPage == 3) ? this.REL_WIDTH_SMALL : this.REL_WIDTH_BIG;
 		
-		$(this.ID_REL_SUR).empty()
+		$('#rel_surface').empty()
 		var np = this._getNumOfPages(resultSet, perPage);
 		for(var i = 1; i <= np; i++) {
 			var selectedSet = resultSet.slice((i-1)*perPage, i*perPage);
 			this._renderPage(selectedSet, i, perPage);
 		}
-		$(this.ID_RELATED).RollingImagesLite.sync();
-		$(this.ID_RELATED).RollingImagesLite.goInit();
+		$('#related').RollingImagesLite.sync();
+		$('#related').RollingImagesLite.goInit();
 	},
 
 	showIngredientPopup: function (ingredient)
@@ -356,13 +338,13 @@ var Controller = {
 			this._renderIngPage(selectedSet, i);
 		}
 		
-		$(this.ID_ING).RollingImagesLite.sync();
-		$(this.ID_ING).RollingImagesLite.goInit();
+		$('#ingredients').RollingImagesLite.sync();
+		$('#ingredients').RollingImagesLite.goInit();
 	},
 	
 	_renderIngPage: function(resultSet, pageNum) {
 		var self = this;
-        var parent = $(this.ID_ING_SUR);
+        var parent = $('#ingreds_surface');
 		var div = document.createElement("div");
 		div.className = "point";
 		div.id = "ing_" + pageNum;
@@ -388,7 +370,7 @@ var Controller = {
 	},
 	
 	_renderPage: function(resultSet, pageNum, perPage){
-		var parent = $(this.ID_REL_SUR);
+		var parent = $('#rel_surface');
 		
 		var page = document.createElement("div");
 		page.id = "page_" + pageNum;
@@ -408,7 +390,13 @@ var Controller = {
 	_createCocktailElement: function (cocktail)
 	{
 		var node = cocktail.getPreviewNode()
-		new Draggable(node.img, cocktail.name, this.DROP_TARGETS)
+		
+		function onDragStart (e)
+		{
+			e.dataTransfer.setData('text', cocktail.name)
+		}
+		node.addEventListener('dragstart', onDragStart, false)
+		
 		return node
 	},
 	

@@ -1,5 +1,7 @@
+<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
+
+<!--# include virtual="/liby/modules/location-hash.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/window-name.js" -->
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 
 <!--# include virtual="/liby/widgets/tab-switcher.js" -->
@@ -38,7 +40,12 @@ Me.prototype =
 	{
 		this.view.bind(nodes)
 		
-		this.view.checkHash()
+		return this
+	},
+	
+	checkState: function ()
+	{
+		this.view.locationHashUpdated()
 	}
 }
 
@@ -63,48 +70,46 @@ $.onready
 		document.documentElement.removeClassName('loading')
 		UserAgent.setupDocumentElementClassNames()
 		
-		WindowName.init()
-		
 		var nodes =
 		{
 			titleAll:
 			{
-				root: $$('#head .all')[0],
-				value: $$('#bars-count .value')[0],
-				unit: $$('#bars-count .unit')[0]
+				root: $('#head .all'),
+				value: $('#bars-count .value'),
+				unit: $('#bars-count .unit')
 			},
-			titleSearch: $$('#head .search')[0],
-			titleSearchName: $$('#head .search .cocktail')[0],
-			titleSearchAll: $$('#head .search .drop-cocktail')[0],
-			viewSwitcher: $('switch-view'),
+			titleSearch: $('#head .search'),
+			titleSearchName: $('#head .search .cocktail'),
+			titleSearchAll: $('#head .search .drop-cocktail'),
+			viewSwitcher: $('#switch-view'),
 			viewSwitcherButtons: $$('#switch-view .view-list, #switch-view .view-map'),
-			barsContainer: $('bars-container'),
+			barsContainer: $('#bars-container'),
 			citySelecter:
 			{
-				main: $('bars-city'),
-				button: $$('#bars-city .button')[0],
-				options: $$('#bars-city .options')[0]
+				main: $('#bars-city'),
+				button: $('#bars-city .button'),
+				options: $('#bars-city .options')
 			},
 			formatSelecter:
 			{
-				main: $('bars-format'),
-				button: $$('#bars-format .button')[0],
-				options: $$('#bars-format .options')[0]
+				main: $('#bars-format'),
+				button: $('#bars-format .button'),
+				options: $('#bars-format .options')
 			},
 			feelSelecter:
 			{
-				main: $('bars-feel'),
-				button: $$('#bars-feel .button')[0],
-				options: $$('#bars-feel .options')[0]
+				main: $('#bars-feel'),
+				button: $('#bars-feel .button'),
+				options: $('#bars-feel .options')
 			},
-			map: $('map'),
-			mapSurface: $$('#map .surface')[0],
-			positionControl: $$('.position-control')[0]
+			map: $('#map'),
+			mapSurface: $('#map .surface'),
+			positionControl: $('.position-control')
 		}
 		
 		RoundedCorners.round(nodes.map)
 		
 		var widget = new BarsPage()
-		widget.bind(nodes)
+		widget.bind(nodes).checkState()
 	}
 )

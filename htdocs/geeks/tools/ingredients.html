@@ -41,7 +41,7 @@
 function onready ()
 {
 	eval(NodesShortcut.include())
-	var node = $$('#ingredient-list')[0],
+	var node = $('#ingredient-list'),
 		all = Ingredient.getAll()
 	
 	for( var i = 0, ii = all.length; i < ii; i++ )

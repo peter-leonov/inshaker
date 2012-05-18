@@ -3,7 +3,6 @@
 <!--# include virtual="/liby/modules/plural.js"-->
 <!--# include virtual="/liby/modules/array-randomize.js"-->
 <!--# include virtual="/liby/modules/require.js" -->
-<!--# include virtual="/liby/modules/selectors.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/nodes.js" -->
@@ -19,11 +18,15 @@
 <!--# include virtual="/liby/modules/child-indexed-path.js"-->
 <!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/throttler.js" -->
+<!--# include virtual="/liby/modules/state-machine.js" -->
 <!--# include virtual="/liby/modules/url-encode.js"-->
 <!--# include virtual="/liby/modules/request.js"-->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')
+
+if (!('draggable' in document.body || 'ondrop' in document.body))
+	$.load('/liby/core/fixes/dnd.js')
 
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->

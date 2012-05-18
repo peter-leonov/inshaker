@@ -12,8 +12,7 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		var me = this
-		nodes.show.addEventListener('click', function (e) { me.show() }, false)
+		this.name = nodes.name.getAttribute('data-poll-name')
 	},
 	
 	show: function ()
@@ -33,7 +32,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set('poll-popup-hidden', Date.now(), Date.add('14d'), '/')
+		Cookie.set(this.name + '-hidden', Date.now(), Date.add('28d'), '/')
 	},
 	
 	hideFromUI: function ()
@@ -44,9 +43,15 @@ Me.prototype =
 	
 	maybeShow: function ()
 	{
-		var hidden = Cookie.get('poll-popup-hidden')
+		var hidden = Cookie.get(this.name + '-hidden')
 		if (hidden)
 			return
+		
+		if (Math.floor(Math.random() * 7) != 0)
+		{
+			this.hide()
+			return
+		}
 		
 		this.show()
 	},
@@ -71,7 +76,7 @@ Me.prototype =
 	
 	poll: function (value)
 	{
-		Statistics.poll('frequency-of-making-cocktails-at-home', value)
+		Statistics.poll(this.name, value)
 	}
 }
 
@@ -87,15 +92,15 @@ function onready ()
 {
 	var nodes =
 	{
-		show: $$('#bottom .copyright .poll-show')[0],
-		root: $$('#poll-popup .poll-window')[0],
-		form: $$('#poll-popup .poll-form')[0],
-		button: $$('#poll-popup .poll-form button')[0],
+		root: $('#poll-popup .poll-window'),
+		form: $('#poll-popup .poll-form'),
+		name: $('#poll-popup .poll-form .poll-name'),
+		button: $('#poll-popup .poll-form button'),
 		popup:
 		{
-			root: $('poll-popup'),
-			window: $$('#poll-popup .popup-window')[0],
-			front: $$('#poll-popup .popup-front')[0]
+			root: $('#poll-popup'),
+			window: $('#poll-popup .popup-window'),
+			front: $('#poll-popup .popup-front')
 		}
 	}
 	

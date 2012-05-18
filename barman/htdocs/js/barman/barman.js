@@ -1,6 +1,5 @@
 <!--# include virtual="/liby/core/prototype.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
-<!--# include virtual="/liby/modules/selectors.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/date.js" -->
@@ -17,18 +16,18 @@ $.onready(function()
 {
 	var nodes =
 	{
-		shakerPage: $$('.page.shaker')[0],
-		shake: $$('.shaker .shake')[0],
-		processorsList: $$('.shaker .processors-list')[0],
-		viewStatus: $$('.shaker .view-status')[0],
-		resetState: $$('.shaker .reset-state')[0],
-		gotoUploader: $$('.goto-uploader')[0],
+		shakerPage: $('.page.shaker'),
+		shake: $('.shaker .shake'),
+		processorsList: $('.shaker .processors-list'),
+		viewStatus: $('.shaker .view-status'),
+		resetState: $('.shaker .reset-state'),
+		gotoUploader: $('.goto-uploader'),
 		
-		uploaderPage: $$('.page.uploader')[0],
-		upload: $$('.uploader .upload')[0],
-		gotoShaker: $$('.goto-shaker')[0],
+		uploaderPage: $('.page.uploader'),
+		upload: $('.uploader .upload'),
+		gotoShaker: $('.goto-shaker'),
 		
-		output: $('output')
+		output: $('#output')
 	}
 	
 	;(function(){
@@ -90,7 +89,7 @@ $.onready(function()
 	}
 	
 	var host = location.host.replace(/^m\./, '')
-	var parentLink = $('parent-link')
+	var parentLink = $('#parent-link')
 	parentLink.href = '//' + host + '/'
 	parentLink.firstChild.nodeValue = host
 	
