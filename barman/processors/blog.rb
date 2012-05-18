@@ -232,6 +232,7 @@ class Blog::Post
           # uri relative to the site
         elsif /$[a-z0-9\.]^/ =~ data
           # file in the /i/ folder
+          files << data
         else
           data = "/t/print/logo-hd.png"
           error "ссылка на не пойми что: «#{data}»"
