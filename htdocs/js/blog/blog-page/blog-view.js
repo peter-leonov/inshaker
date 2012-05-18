@@ -103,10 +103,7 @@ Me.prototype =
 	
 	renameMoreButton: function (count)
 	{
-		var more = this.nodes.more
-		
-		more.value = 'еще ' + count + ' ' + count.plural('пост', 'поста', 'постов') + '!'
-		this.showMoreButton()
+		this.nodes.more.value = 'еще ' + count + ' ' + count.plural('пост', 'поста', 'постов') + '!'
 	},
 	
 	renderMoreButton: function (count)
@@ -116,10 +113,14 @@ Me.prototype =
 		count = Math.min(count, this.postsPerPage)
 		
 		if (count < 1)
+		{
 			this.hideMoreButton()
-		
+		}
 		else if (more.count != count)
+		{
+			this.showMoreButton()
 			this.renameMoreButton(count)
+		}
 		
 		more.count = count
 	},
