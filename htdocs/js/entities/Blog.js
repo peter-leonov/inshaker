@@ -27,7 +27,8 @@ var myStatic =
 		{
 			dbKeys[tags[i]] = []
 		}
-		for (i = 0, il = db.length; i < il; i++)
+		
+		for (var i = 0, il = db.length; i < il; i++)
 		{
 			for (var j = 0, jl = db[i].tags.length; j < jl; j++)
 			{
