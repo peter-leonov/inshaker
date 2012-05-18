@@ -58,6 +58,12 @@ class Dir
     end
   end
   
+  def subdir entry
+    dir = Dir.open("#{path}/#{entry}")
+    dir.name = entry
+    dir
+  end
+  
   def each_file
     each do |entry|
       next if @@exclude =~ entry || File.ftype("#{path}/#{entry}") != "file"
