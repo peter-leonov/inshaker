@@ -34,13 +34,13 @@ Me.prototype =
 		this.state = 0
 		
 		var view = this.view
-		this.getMorePosts( function (posts, left) { view.renderNewPosts(posts, left) })
+		this.getMorePosts(function (posts, left) { view.renderNewPosts(posts, left) })
 	},
 	
 	addMorePosts: function ()
 	{
 		var view = this.view
-		this.getMorePosts( function (posts, left) { view.renderAddedPosts(posts, left) })
+		this.getMorePosts(function (posts, left) { view.renderAddedPosts(posts, left) })
 	},
 	
 	getMorePosts: function (f)
