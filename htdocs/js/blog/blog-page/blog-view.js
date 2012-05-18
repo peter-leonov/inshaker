@@ -39,7 +39,7 @@ Me.prototype =
 				title = Nc('h2', 'title'),
 				a = Nct('a', '', post.title)
 			
-			a.href = "/blog/" + post.path + "/#the-one"
+			a.href = '/blog/' + post.path + '/#the-one'
 			
 			title.appendChild(a)
 			li.appendChild(title)
@@ -115,7 +115,7 @@ Me.prototype =
 	{
 		var more = this.nodes.more
 		
-		more.value = "еще " + count + " постов!"
+		more.value = 'еще ' + count + ' постов!'
 		this.showMoreButton()
 	},
 	
@@ -144,7 +144,7 @@ Me.prototype =
 		var li = Nc('li', 'tag all'),
 			link = Nct('a', 'link', 'все посты')
 		
-		link.href = "/blog/"
+		link.href = '/blog/'
 		li.appendChild(link)
 		cloud.appendChild(li)
 		cloud.appendChild(T(' '))
@@ -161,7 +161,7 @@ Me.prototype =
 		var li = Nc('li', 'tag tag-' + index),
 			link = Nct('a', 'link', tag)
 		
-		link.href = "/blog/#tag=" + tag
+		link.href = '/blog/#tag=' + tag
 		
 		li.appendChild(link)
 		
