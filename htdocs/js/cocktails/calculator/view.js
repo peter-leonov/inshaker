@@ -71,29 +71,38 @@ function CalculatorView() {
 		self.eventListener.addCocktail(self.cocktailName);
 	}, false);
 	
-	var dropTarget = $('#cart_draghere');
+	var dropTarget = $('#b-bill')
 	var dragAnimation;
 	
-	$('#cart_draghere').onDrop = function(cocktailName){
-		self.eventListener.addCocktail(cocktailName);
-		return true;
-	};
+	function onDrop (e)
+	{
+		e.preventDefault()
+		self.eventListener.addCocktail(e.dataTransfer.getData('text'))
+	}
+	dropTarget.addEventListener('drop', onDrop, false)
 	
-	$('#cart_draghere').onDragEnd = function(){
+	function onDragEnd ()
+	{
 		dragAnimation.stop();
-		this.style.height = ''
-	};
+		$('#cart_draghere').style.height = ''
+	}
+	document.addEventListener('dragend', onDragEnd, false)
 	
-	$('#cart_draghere').onDragStart = function(element){
+	function onDragOver (e)
+	{
+		e.preventDefault()
+	}
+	dropTarget.addEventListener('dragover', onDragOver, false)
+	
+	function onDragStart (e)
+	{
+		var element = e.target
 		var h = element.offsetHeight + 50
 		if (h < 100)
 			h = 100
-		dragAnimation = this.animate("easeInCubic", {height: [dropTarget.offsetHeight, h]}, 0.15);
-	};
-	
-	$('#cart_contents').onDrop = function(cocktailName){
-		self.eventListener.addCocktail(cocktailName);
-	};
+		dragAnimation = $('#cart_draghere').animate("easeInCubic", {height: [$('#cart_draghere').offsetHeight, h]}, 0.15);
+	}
+	document.addEventListener('dragstart', onDragStart, false)
 	
 	// function callBarmen (e)
 	// {

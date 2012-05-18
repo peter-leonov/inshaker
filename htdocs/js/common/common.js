@@ -18,9 +18,13 @@
 <!--# include virtual="/liby/modules/child-indexed-path.js"-->
 <!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/throttler.js" -->
+<!--# include virtual="/liby/modules/state-machine.js" -->
 
 if (!document.querySelectorAll)
 	$.load('/liby/core/fixes/dom-level2-selectors.js')
+
+if (!('draggable' in document.body || 'ondrop' in document.body))
+	$.load('/liby/core/fixes/dnd.js')
 
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->

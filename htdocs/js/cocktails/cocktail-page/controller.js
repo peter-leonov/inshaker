@@ -35,10 +35,14 @@ var Controller = {
 	},
 	
 	init: function(){
-		this.name = $('#cocktail_name').getAttribute('data-cocktail-name');
-		this.DROP_TARGETS = [$('#cart_draghere'), $('#cart_contents')];
-		new Draggable($('#cocktail-image'), this.name, this.DROP_TARGETS);
-	    
+		var cocktailName = this.name = $('#cocktail_name').getAttribute('data-cocktail-name');
+		
+		function onDragStart (e)
+		{
+			e.dataTransfer.setData('text', cocktailName)
+		}
+		$('#cocktail-image').addEventListener('dragstart', onDragStart, false)
+		
 		this.lh = new LocationHash().bind()
 		Model.dataListener = this;
 		this.bindEvents(this.name);
@@ -277,8 +281,8 @@ var Controller = {
 			}
 		}
 		
-		nodes.root.addEventListener('mouseover', carousel.stop)
-		nodes.root.addEventListener('mouseout', carousel.start)
+		nodes.root.addEventListener('mouseover', carousel.stop, false)
+		nodes.root.addEventListener('mouseout', carousel.start, false)
 		carousel.start()
 	},
 	
@@ -386,7 +390,13 @@ var Controller = {
 	_createCocktailElement: function (cocktail)
 	{
 		var node = cocktail.getPreviewNode()
-		new Draggable(node.img, cocktail.name, this.DROP_TARGETS)
+		
+		function onDragStart (e)
+		{
+			e.dataTransfer.setData('text', cocktail.name)
+		}
+		node.addEventListener('dragstart', onDragStart, false)
+		
 		return node
 	},
 	

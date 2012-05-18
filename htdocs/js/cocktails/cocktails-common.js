@@ -20,5 +20,3 @@ if (!clientStorage)
 <!--# include virtual="/js/cocktails/calculator/calculator.js" -->
 
 <!--# include virtual="/js/common/units.js" -->
-<!--# include virtual="/js/cocktails/dnd.js" -->
-<!--# include virtual="/liby/modules/cookie.js" -->
