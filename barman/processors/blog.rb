@@ -168,6 +168,7 @@ class Blog::Post
   
   
   def markup text, opts={}
+    files = []
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
@@ -186,6 +187,7 @@ class Blog::Post
               error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
             end
           end
+          files << src
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
@@ -241,7 +243,7 @@ class Blog::Post
     # paragraphs
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
-    return text
+    return text, files
   end
   
   
