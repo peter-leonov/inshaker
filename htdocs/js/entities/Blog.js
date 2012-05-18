@@ -11,30 +11,20 @@ var myStatic =
 {
 	initialize: function (tags, posts)
 	{
+		this.index = {}
 		this.tags = tags
 		this.db = posts
-		
-		this.initDbKeys()
 	},
 	
-	initDbKeys: function ()
+	getIndexByTag: function ()
 	{
-		var db = this.db,
-			tags = this.tags,
-			dbKeys = this.dbKeys = {}
+		var index = this.index.byTag
+		if (index)
+			return index
 		
-		for (var i = 0, il = tags.length; i < il; i++)
-		{
-			dbKeys[tags[i]] = []
-		}
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			for (var j = 0, jl = db[i].tags.length; j < jl; j++)
-			{
-				dbKeys[db[i].tags[j]].push(i)
-			}
-		}
+		index = this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+		index['all'] = this.db.slice()
+		return index
 	},
 	
 	getSomePostsByTag: function (from, to, tag, callback)
