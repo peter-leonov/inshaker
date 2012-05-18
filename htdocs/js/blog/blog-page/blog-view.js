@@ -38,7 +38,7 @@ Me.prototype =
 			li.appendChild(title)
 			
 			var body = Nc('div', 'body')
-			body.innerHTML = post.html
+			body.innerHTML = post.snippet
 			li.appendChild(body)
 			
 			var more = Nc('div', 'more'),

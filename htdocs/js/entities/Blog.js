@@ -70,7 +70,7 @@ var myStatic =
 	
 	getPostSnippet: function(post, callback)
 	{
-		if (post.html)
+		if (post.snippet)
 		{
 			callback(post)
 		}
@@ -80,7 +80,7 @@ var myStatic =
 			{
 				if (this.statusType == 'success')
 				{
-					post.html = this.responseText
+					post.snippet = this.responseText
 					callback(post)
 				}
 			})
