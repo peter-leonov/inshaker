@@ -8,6 +8,11 @@ function Me (data)
 
 Me.prototype =
 {
+	getRoot: function ()
+	{
+		return '/blog/' + this.path + '/'
+	},
+	
 	loadSnippet: function(callback)
 	{
 		if (this.snippet)
@@ -17,7 +22,7 @@ Me.prototype =
 			return
 		}
 		
-		Request.get('/blog/' + this.path + '/preview-snippet.html', null, function ()
+		Request.get(this.getRoot() + 'preview-snippet.html', null, function ()
 		{
 			if (this.statusType == 'success')
 			{

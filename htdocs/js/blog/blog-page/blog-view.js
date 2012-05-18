@@ -32,7 +32,7 @@ Me.prototype =
 				title = Nc('h2', 'title'),
 				a = Nct('a', '', post.title)
 			
-			a.href = '/blog/' + post.path + '/#the-one'
+			a.href = post.getRoot() + '#the-one'
 			
 			title.appendChild(a)
 			li.appendChild(title)
