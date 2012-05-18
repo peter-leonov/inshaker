@@ -128,7 +128,7 @@ Me.prototype =
 		if (count < 1)
 			this.hideMoreButton()
 		
-		else if(more.count != count)
+		else if (more.count != count)
 			this.renameMoreButton(count)
 		
 		more.count = count

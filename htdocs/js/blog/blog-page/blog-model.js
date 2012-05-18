@@ -20,7 +20,7 @@ Me.prototype =
 		if (!this.state)
 			method = 'renderNewPosts'
 		
-		Blog.getSomePostsByTag(this.state, this.state+=count, this.currentTag, function(posts)
+		Blog.getSomePostsByTag(this.state, this.state += count, this.currentTag, function (posts)
 		{
 			me.view[method](posts, me.getLeftCount())
 		})
