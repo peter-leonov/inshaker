@@ -8,7 +8,23 @@ function Me (data)
 
 Me.prototype =
 {
-	
+	loadSnippet: function(callback)
+	{
+		if (this.snippet)
+		{
+			setTimeout(callback, 0)
+			return
+		}
+		
+		Request.get('/blog/' + this.path + '/preview-snippet.html', null, function ()
+		{
+			if (this.statusType == 'success')
+			{
+				this.snippet = this.responseText
+				callback()
+			}
+		})
+	}
 }
 
 var myStatic =
@@ -40,39 +56,15 @@ var myStatic =
 		var index = this.getIndexByTag()
 		var posts = index[tag].slice(from, to)
 		
-		var total = 0
+		var total = posts.length
+		function gotOneSnippet ()
+		{
+			if (--total == 0)
+				callback(posts)
+		}
+		
 		for (var i = 0, il = posts.length; i < il; i++)
-		{
-			var post = posts[i]
-			
-			var me = this
-			;(function(post){
-				me.getPostSnippet(post, function(post)
-				{
-					if (++total >= il)
-						callback(posts)
-				})
-			})(post)
-		}
-	},
-	
-	getPostSnippet: function(post, callback)
-	{
-		if (post.snippet)
-		{
-			callback(post)
-		}
-		else
-		{
-			Request.get('/blog/' + post.path + '/preview-snippet.html', null, function()
-			{
-				if (this.statusType == 'success')
-				{
-					post.snippet = this.responseText
-					callback(post)
-				}
-			})
-		}
+			posts[i].loadSnippet(gotOneSnippet)
 	},
 	
 	getCountPostsByTag: function (tag)
