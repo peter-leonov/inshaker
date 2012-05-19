@@ -382,7 +382,7 @@ class Blog
     say "рисую ссылки для поисковиков"
     File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
       @posts.each do |post|
-        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
+        f.puts %Q{<li><a href="/blog/#{post.href}/">#{post.title}</a></li>}
       end
       f.puts ""
     end
