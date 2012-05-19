@@ -148,14 +148,13 @@ Me.prototype =
 	
 	renderTagLi: function(tag)
 	{
-		var li = Nc('li', 'tag tag-' + this.tagIndexByTagName[tag]),
-			link = Nct('a', 'link', tag)
-		
+		var link = Nct('a', 'link', tag)
 		link.href = '/blog/#tag=' + tag
 		
-		li.appendChild(link)
+		var item = Nc('li', 'tag tag-' + this.tagIndexByTagName[tag])
+		item.appendChild(link)
 		
-		return li
+		return item
 	},
 	
 	setPostsPerPage: function (count)
