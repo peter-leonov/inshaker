@@ -25,7 +25,6 @@ class Blog < Inshaker::Processor
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    TAG_CLOUD      = HT_ROOT + "tag-cloud.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
@@ -89,20 +88,13 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
-    @tags_names = @tags
-    @tags = []
-    @tags_names.each do |name|
+    @tags.select! do |name|
       unless @@known_tags[name]
         warning "неизвестный тег «#{name}»"
         next
       end
       
-      tag = @@seen_tags[name]
-      unless tag
-        tag = {"name" => name, "key" => "tag-#{@@seen_tags.length}"}
-        @@seen_tags[name] = tag
-      end
-      @tags << tag
+      @@seen_tags[name] = true
     end
     
     if @tags.empty?
@@ -280,7 +272,7 @@ class Blog::Post
   
   
   def self.tags_list
-    @@seen_tags.values.sort { |a, b| a["name"] <=> b["name"] }
+    @@seen_tags.keys.sort
   end
   
   
@@ -333,7 +325,6 @@ class Blog
     unless errors?
       cleanup_deleted
       flush_links
-      flush_tags
       flush_json
     end
     
@@ -402,18 +393,6 @@ class Blog
     File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
       @posts.each do |post|
         f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
-      end
-      f.puts ""
-    end
-  end
-  
-  def flush_tags
-    say "рисую теги"
-    File.open(Config::TAG_CLOUD, "w+") do |f|
-      Blog::Post.tags_list.each do |tag|
-        name = tag["name"]
-        key = tag["key"]
-        f.puts %Q{<li class="tag #{key}"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
       end
       f.puts ""
     end
