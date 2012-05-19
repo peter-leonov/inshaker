@@ -32,7 +32,6 @@ class Blog < Inshaker::Processor
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
-      POST_PREVIEW = TEMPLATES + "blog-post-preview.rhtml"
     end
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
@@ -48,7 +47,6 @@ class Blog::Post
     @@filename_rex = /^[a-zA-Z0-9\._\-]+$/
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
-    @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
     
     @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
     @@seen_tags = {}
@@ -149,11 +147,7 @@ class Blog::Post
   
   def write_html
     File.write("#{@dst_dir.path}/#{@href}.html", body_html)
-    File.write("#{@dst_dir.path}/preview-snippet.html", preview_snippet_html)
-  end
-  
-  def preview_snippet_html
-    @@preview_renderer.result(binding)
+    File.write("#{@dst_dir.path}/preview-snippet.html", @cut)
   end
   
   def body_html
