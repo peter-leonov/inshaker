@@ -131,7 +131,7 @@ class Blog::Post
   def absorb_content content
     used_files = []
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut, files = markup @cut, {:lazy_images => true}
+    @cut, files = markup @cut
     used_files += files
     @body, files = markup @body
     used_files += files
@@ -177,7 +177,7 @@ class Blog::Post
   
   
   
-  def markup text, opts={}
+  def markup text
     files = []
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
@@ -191,21 +191,11 @@ class Blog::Post
           src = "/t/print/logo-hd.png"
           error "не используй абсолютные пути к фоткам: «#{src}»"
         else
-          if opts[:lazy_images]
-            box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
-            unless box
-              error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
-            end
-          end
           files << src
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
-        if box
-          image = %Q{<img lazy-src="#{src}" class="image lazy" width="#{box[0]}" height="#{box[1]}"/>}
-        else
-          image = %Q{<img src="#{src}" class="image"/>}
-        end
+        image = %Q{<img src="#{src}" class="image"/>}
         
         if href == "внутрь"
           %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one">#{image}</a></div>}
