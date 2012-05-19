@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.cache = {posts: []}
 }
 
 eval(NodesShortcut.include())
@@ -28,9 +29,20 @@ Me.prototype =
 		var root = this.nodes.postsLoop
 		
 		for (var i = 0, pi = posts.length; i < pi; i++)
-			root.appendChild(this.renderPost(posts[i]))
+			root.appendChild(this.getPostNode(posts[i]))
 		
 		this.renderMoreButton(left)
+	},
+	
+	getPostNode: function (post)
+	{
+		var cache = this.cache.posts
+		
+		var node = cache[post.id]
+		if (node)
+			return node
+		
+		return cache[post.id] = this.renderPost(post)
 	},
 	
 	renderPost: function (post)
