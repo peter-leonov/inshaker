@@ -63,7 +63,7 @@ Me.prototype =
 			var postTags = post.tags
 			for (var j = 0, jl = postTags.length; j < jl; j++)
 			{
-				list.appendChild(this.renderTagLi(postTags[j]))
+				list.appendChild(this.renderTagItem(postTags[j]))
 				list.appendChild(T(' '))
 			}
 		}
@@ -141,12 +141,12 @@ Me.prototype =
 		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			cloud.appendChild(this.renderTagLi(tags[i]))
+			cloud.appendChild(this.renderTagItem(tags[i]))
 			cloud.appendChild(T(' '))
 		}
 	},
 	
-	renderTagLi: function(tag)
+	renderTagItem: function (tag)
 	{
 		var link = Nct('a', 'link', tag)
 		link.href = '/blog/#tag=' + tag
