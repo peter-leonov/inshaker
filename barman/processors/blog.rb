@@ -320,7 +320,6 @@ class Blog
     
     update_posts
     sort_posts
-    update_posts_loop
     
     unless errors?
       cleanup_deleted
@@ -359,15 +358,6 @@ class Blog
   def sort_posts
     @posts.sort! do |a, b|
       b.date - a.date
-    end
-  end
-  
-  def update_posts_loop
-    say "обновляю список постов"
-    File.open(Config::POSTS_LOOP, "w+") do |f|
-      @posts.each do |post|
-        f.puts %Q{<!--# include virtual="#{post.page_href}preview-snippet.html" -->}
-      end
     end
   end
   
