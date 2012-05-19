@@ -44,9 +44,9 @@ Me.prototype =
 			var more = Nc('div', 'more'),
 				tags = Nc('div', 'tags'),
 				list = Nc('ul', 'list'),
-				date = Nct('span', 'date', (new Date(parseInt(post.date)*1000)).toRusDate())
 				
 			more.appendChild(tags)
+			var date = Nct('span', 'date', new Date(post.date * 1000).toRusDate())
 			more.appendChild(date)
 			
 			tags.appendChild(T('Теги: '))
