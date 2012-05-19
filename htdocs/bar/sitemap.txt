@@ -30,6 +30,7 @@ http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/
 http://www.inshaker.ru/bar/tapa_de_comida/
 http://www.inshaker.ru/bar/tema_bar/
+http://www.inshaker.ru/bar/tommy_d/
 http://www.inshaker.ru/bar/free_bar/
 http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/chainaya/
