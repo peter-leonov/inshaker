@@ -28,11 +28,14 @@ Me.prototype =
 		var root = this.nodes.postsLoop
 		
 		for (var i = 0, pi = posts.length; i < pi; i++)
-		{
-			var post = posts[i]
-			
+			root.appendChild(this.renderPost(posts[i]))
+		
+		this.renderMoreButton(left)
+	},
+	
+	renderPost: function (post)
+	{
 			var preview = Nc('li', 'post preview')
-			root.appendChild(preview)
 			
 			var title = Nc('h2', 'title')
 			preview.appendChild(title)
@@ -66,9 +69,8 @@ Me.prototype =
 				list.appendChild(this.renderTagItem(postTags[j]))
 				list.appendChild(T(' '))
 			}
-		}
-		
-		this.renderMoreButton(left)
+			
+			return preview
 	},
 	
 	renderNewPosts: function (posts, left)
