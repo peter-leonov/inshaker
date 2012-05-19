@@ -25,42 +25,49 @@ Me.prototype =
 	
 	renderPosts: function (posts, left)
 	{
+		var root = this.nodes.postsLoop
+		
 		for (var i = 0, pi = posts.length; i < pi; i++)
 		{
-			var post = posts[i],
-				li = Nc('li', 'post preview'),
-				title = Nc('h2', 'title'),
-				a = Nct('a', '', post.title)
+			var post = posts[i]
 			
-			a.href = post.getRoot() + '#the-one'
+			var li = Nc('li', 'post preview')
+			root.appendChild(li)
 			
-			title.appendChild(a)
+			var title = Nc('h2', 'title')
 			li.appendChild(title)
+			
+			var a = Nct('a', '', post.title)
+			a.href = post.getRoot() + '#the-one'
+			title.appendChild(a)
 			
 			var body = Nc('div', 'body')
 			body.innerHTML = post.snippet
 			li.appendChild(body)
 			
-			var more = Nc('div', 'more'),
-				tags = Nc('div', 'tags'),
-				list = Nc('ul', 'list'),
-				
+			
+			var more = Nc('div', 'more')
+			li.appendChild(more)
+			
+			var tags = Nc('div', 'tags')
 			more.appendChild(tags)
+			
 			var date = Nct('span', 'date', new Date(post.date * 1000).toRusDate())
 			more.appendChild(date)
 			
 			tags.appendChild(T('Теги: '))
+			
+			var list = Nc('ul', 'list')
 			tags.appendChild(list)
 			
-			li.appendChild(more)
-			
-			for (var j = 0, jl = post.tags.length; j < jl; j++)
+			var postTags = post.tags
+			for (var j = 0, jl = postTags.length; j < jl; j++)
 			{
-				list.appendChild(this.renderTagLi(post.tags[j]))
+				list.appendChild(this.renderTagLi(postTags[j]))
 				list.appendChild(T(' '))
 			}
-			this.nodes.postsLoop.appendChild(li)
 		}
+		
 		this.renderMoreButton(left)
 	},
 	
