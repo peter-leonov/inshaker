@@ -1,7 +1,8 @@
 ;(function(){
 
-function Me (data)
+function Me (data, id)
 {
+	this.id = id
 	for (var k in data)
 		this[k] = data[k]
 }
@@ -41,7 +42,7 @@ var myStatic =
 		this.tags = tags
 		
 		for (var i = 0, il = posts.length; i < il; i++)
-			posts[i] = new Me(posts[i])
+			posts[i] = new Me(posts[i], i)
 		
 		this.db = posts
 	},
