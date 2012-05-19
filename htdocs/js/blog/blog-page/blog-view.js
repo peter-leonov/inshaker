@@ -31,11 +31,11 @@ Me.prototype =
 		{
 			var post = posts[i]
 			
-			var li = Nc('li', 'post preview')
-			root.appendChild(li)
+			var preview = Nc('li', 'post preview')
+			root.appendChild(preview)
 			
 			var title = Nc('h2', 'title')
-			li.appendChild(title)
+			preview.appendChild(title)
 			
 			var a = Nct('a', '', post.title)
 			a.href = post.getRoot() + '#the-one'
@@ -43,11 +43,11 @@ Me.prototype =
 			
 			var body = Nc('div', 'body')
 			body.innerHTML = post.snippet
-			li.appendChild(body)
+			preview.appendChild(body)
 			
 			
 			var more = Nc('div', 'more')
-			li.appendChild(more)
+			preview.appendChild(more)
 			
 			var tags = Nc('div', 'tags')
 			more.appendChild(tags)
