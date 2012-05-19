@@ -29,6 +29,7 @@ class Blog < Inshaker::Processor
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
+    HT_POSTS_JSON  = Inshaker::HT_DB_DIR + "blog/posts.json"
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
@@ -174,7 +175,10 @@ class Blog::Post
   
   def to_hash
     {
-      "date" => @date.to_i * 1000
+      "date" => @date.to_i,
+      "title" => @title,
+      "tags" => @tags_names,
+      "path" => @href
     }
   end
   
@@ -418,6 +422,9 @@ class Blog
   def flush_json
     say "сохраняю базу тегов"
     File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
+    
+    say "сохраняю базу постов"
+    File.write(Config::HT_POSTS_JSON, JSON.stringify(@posts.map { |post| post.to_hash }))
   end
   
   def run
