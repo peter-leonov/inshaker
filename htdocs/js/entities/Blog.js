@@ -23,11 +23,12 @@ Me.prototype =
 			return
 		}
 		
+		var post = this
 		Request.get(this.getRoot() + 'preview-snippet.html', null, function ()
 		{
 			if (this.statusType == 'success')
 			{
-				this.snippet = this.responseText
+				post.snippet = this.responseText
 				callback()
 			}
 		})
