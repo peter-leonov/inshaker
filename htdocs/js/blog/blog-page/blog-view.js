@@ -35,42 +35,42 @@ Me.prototype =
 	
 	renderPost: function (post)
 	{
-			var preview = Nc('li', 'post preview')
-			
-			var title = Nc('h2', 'title')
-			preview.appendChild(title)
-			
-			var a = Nct('a', '', post.title)
-			a.href = post.getRoot() + '#the-one'
-			title.appendChild(a)
-			
-			var body = Nc('div', 'body')
-			body.innerHTML = post.snippet
-			preview.appendChild(body)
-			
-			
-			var more = Nc('div', 'more')
-			preview.appendChild(more)
-			
-			var tags = Nc('div', 'tags')
-			more.appendChild(tags)
-			
-			var date = Nct('span', 'date', new Date(post.date * 1000).toRusDate())
-			more.appendChild(date)
-			
-			tags.appendChild(T('Теги: '))
-			
-			var list = Nc('ul', 'list')
-			tags.appendChild(list)
-			
-			var postTags = post.tags
-			for (var j = 0, jl = postTags.length; j < jl; j++)
-			{
-				list.appendChild(this.renderTagItem(postTags[j]))
-				list.appendChild(T(' '))
-			}
-			
-			return preview
+		var preview = Nc('li', 'post preview')
+		
+		var title = Nc('h2', 'title')
+		preview.appendChild(title)
+		
+		var a = Nct('a', '', post.title)
+		a.href = post.getRoot() + '#the-one'
+		title.appendChild(a)
+		
+		var body = Nc('div', 'body')
+		body.innerHTML = post.snippet
+		preview.appendChild(body)
+		
+		
+		var more = Nc('div', 'more')
+		preview.appendChild(more)
+		
+		var tags = Nc('div', 'tags')
+		more.appendChild(tags)
+		
+		var date = Nct('span', 'date', new Date(post.date * 1000).toRusDate())
+		more.appendChild(date)
+		
+		tags.appendChild(T('Теги: '))
+		
+		var list = Nc('ul', 'list')
+		tags.appendChild(list)
+		
+		var postTags = post.tags
+		for (var j = 0, jl = postTags.length; j < jl; j++)
+		{
+			list.appendChild(this.renderTagItem(postTags[j]))
+			list.appendChild(T(' '))
+		}
+		
+		return preview
 	},
 	
 	renderNewPosts: function (posts, left)
