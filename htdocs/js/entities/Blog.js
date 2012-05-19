@@ -62,19 +62,28 @@ var myStatic =
 		return this.getIndexByTag()[tag] || []
 	},
 	
-	getSomePostsByTag: function (from, to, tag, callback)
+	getPostsByTagIterator: function (tag)
 	{
-		var posts = this.getPostsByTag(tag).slice(from, to)
+		var all = this.getPostsByTag(tag)
 		
-		var total = posts.length
-		function gotOneSnippet ()
+		var start = 0
+		function iterator (count, callback)
 		{
-			if (--total == 0)
-				callback(posts)
+			var posts = all.slice(start, start + count)
+			start += count
+			
+			var total = posts.length
+			function gotOneSnippet ()
+			{
+				if (--total == 0)
+					callback(posts, all.length - start)
+			}
+			
+			for (var i = 0, il = posts.length; i < il; i++)
+				posts[i].loadSnippet(gotOneSnippet)
 		}
 		
-		for (var i = 0, il = posts.length; i < il; i++)
-			posts[i].loadSnippet(gotOneSnippet)
+		return iterator
 	},
 	
 	getPostsCountByTag: function (tag)

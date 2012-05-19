@@ -2,7 +2,6 @@
 
 function Me ()
 {
-	this.state = 0
 	this.currentTag = null
 }
 
@@ -38,25 +37,16 @@ Me.prototype =
 	
 	addNewPosts: function ()
 	{
-		this.state = 0
+		this.iterator = Blog.getPostsByTagIterator(this.currentTag)
 		
 		var view = this.view
-		this.getMorePosts(function (posts, left) { view.renderNewPosts(posts, left) })
+		this.iterator(this.postsPerPage, function (posts, left) { view.renderNewPosts(posts, left) })
 	},
 	
 	addMorePosts: function ()
 	{
 		var view = this.view
-		this.getMorePosts(function (posts, left) { view.renderAddedPosts(posts, left) })
-	},
-	
-	getMorePosts: function (f)
-	{
-		var from = this.state,
-			to = this.state += this.postsPerPage
-			
-		var left = Blog.getPostsCountByTag(this.currentTag) - this.state
-		Blog.getSomePostsByTag(from, to, this.currentTag, function (posts) { f(posts, left) })
+		this.iterator(this.postsPerPage, function (posts, left) { view.renderAddedPosts(posts, left) })
 	},
 	
 	sendTags: function ()
