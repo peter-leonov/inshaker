@@ -169,7 +169,7 @@ class Blog::Post
     {
       "date" => @date.to_i,
       "title" => @title,
-      "tags" => @tags_names,
+      "tags" => @tags,
       "path" => @href
     }
   end
