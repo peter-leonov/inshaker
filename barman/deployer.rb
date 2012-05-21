@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
-require 'inshaker'
+require "inshaker"
 require "lib/checker"
 
 class Deployer < Inshaker::Processor
   module Config
     ROOT_DIR = Inshaker::ROOT_DIR
+    
+    include Inshaker::Launcher
   end
   
   def job_name
