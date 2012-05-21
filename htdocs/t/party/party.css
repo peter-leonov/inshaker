@@ -38,7 +38,8 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #recipe-list .instructions .instruction a { color: #000; }
 #recipe-list .instructions .instruction a:hover { color: #ec118f; text-decoration: none; }
 
-#advice-list .advice { margin-top: 30px; }
+#advice-list .advice { margin: 30px 0 75px; }
+#advice-list:last-child .advice { margin: 30px 0 0; }
 #advice-list .advice .name { font-size: 24px; line-height: 24px; margin-bottom: 20px; }
 #advice-list .advice .image { display: block; margin: 10px auto; }
 
