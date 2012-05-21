@@ -25,9 +25,12 @@ class Deployer < Inshaker::Processor
     
     ok = true
     Config::Launcher::SCRIPTS.each do |k, v|
-      if File.exists?(Config::Launcher::SAVE_ERROR % k)
+      error_path = Config::Launcher::SAVE_ERROR % k
+      if File.exists?(error_path)
         ok = false
-        error "смешано неудачно: #{k}"
+        login = File.read(error_path)
+        
+        error Config::Launcher::LOGIN_TO_ERRORED[login] + ": #{v[1]}"
       end
     end
     unless ok
