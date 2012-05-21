@@ -7,7 +7,9 @@ class Deployer < Inshaker::Processor
   module Config
     ROOT_DIR = Inshaker::ROOT_DIR
     
-    include Inshaker::Launcher
+    module Launcher
+      include Inshaker::Launcher
+    end
   end
   
   def job_name
@@ -19,6 +21,17 @@ class Deployer < Inshaker::Processor
     Checker.check
     if errors?
       return 1
+    end
+    
+    ok = true
+    Config::Launcher::SCRIPTS.each do |k, v|
+      if File.exists?(Config::Launcher::SAVE_ERROR % k)
+        ok = false
+        error "смешано неудачно: #{k}"
+      end
+    end
+    unless ok
+      return
     end
     
     Dir.chdir(Config::ROOT_DIR)
