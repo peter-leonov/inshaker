@@ -17,6 +17,7 @@ class Launcher
     
     LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
     LOCKPATH_LOGIN = "#{LOCKPATH}/login"
+    SAVE_ERROR = "#{ROOT_DIR}/error-in-processor.%s"
     
     SCRIPTS =
     {
@@ -136,6 +137,12 @@ class Launcher
       puts "Запускаю «#{job[1]}»…"
       fork { exec job[0] }
       Process.wait
+      error_file = Config::SAVE_ERROR % k
+      if $?.exitstatus == 0
+        File.unlink(error_file) if File.exists?(error_file)
+      else
+        File.write(error_file, @user_login)
+      end
     end
     unlock
   end
