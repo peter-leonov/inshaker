@@ -88,8 +88,8 @@ class Launcher
     end
     jobs.each do |k, job|
       puts "Запускаю «#{job[1]}»…"
-      fork { exec job[0] }
-      Process.wait
+      pid = fork { exec job[0] }
+      Process.wait pid
       
       unless k == "deployer"
         error_file = Config::SAVE_ERROR % k
