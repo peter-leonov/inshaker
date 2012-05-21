@@ -15,10 +15,6 @@ class Launcher
   module Config
     include Inshaker
     
-    LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
-    LOCKPATH_LOGIN = "#{LOCKPATH}/login"
-    SAVE_ERROR = "#{ROOT_DIR}/error-in-processor.%s"
-    
     include Inshaker::Launcher
   end
   

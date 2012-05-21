@@ -11,6 +11,10 @@ module Inshaker
   HT_DB_DIR     = ROOT_DIR + "htdocs/db/"
   
   module Launcher
+    LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
+    LOCKPATH_LOGIN = "#{LOCKPATH}/login"
+    SAVE_ERROR = "#{ROOT_DIR}/error-in-processor.%s"
+    
     SCRIPTS =
     {
       "cocktails" => ["./processors/cocktails.rb", "Коктейли"],
