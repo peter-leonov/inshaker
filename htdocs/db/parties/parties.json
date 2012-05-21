@@ -1,5 +1,12 @@
 [
 {
+	"name": "Коктейльный День Рождения",
+	"imperative": "Отпразднуй коктейльный день рождения!",
+	"path": "cocktail-birthday",
+	"portions": [{"cocktail": "Душевный пунш", "factor": 0.2}],
+	"people": 10
+},
+{
 	"name": "Коктейльное барбекю",
 	"imperative": "Пригласи друзей на коктейльное барбекю!",
 	"path": "cocktail-bbq",
