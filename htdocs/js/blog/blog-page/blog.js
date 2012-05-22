@@ -27,6 +27,7 @@ Me.prototype =
 	
 	guessState: function ()
 	{
+		this.model.sendTags()
 		this.view.checkHash()
 	},
 	

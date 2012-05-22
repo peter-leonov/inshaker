@@ -20,8 +20,6 @@ Me.prototype =
 		var lh = this.lh = new LocationHash().bind()
 		var me = this
 		lh.addEventListener('change', function (e) { me.checkHash() }, false)
-		
-		this.controller.askForTagsList()
 	},
 	
 	renderPosts: function (posts, left)
