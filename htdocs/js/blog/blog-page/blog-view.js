@@ -98,6 +98,8 @@ Me.prototype =
 	
 	hashUpdated: function ()
 	{
+		window.scrollTo(0, 0)
+		
 		var hash = UrlEncode.parse(this.lh.get())
 		this.controller.hashUpdated(hash)
 	},
