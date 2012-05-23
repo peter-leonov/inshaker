@@ -1,12 +1,5 @@
 ;(function(){
 
-window.Blog = {}
-
-})();
-
-
-;(function(){
-
 function Me (data, id)
 {
 	this.id = id
@@ -44,10 +37,9 @@ Me.prototype =
 
 var myStatic =
 {
-	initialize: function (posts, tags)
+	initialize: function (posts)
 	{
 		this.index = {}
-		this.tags = tags
 		
 		for (var i = 0, il = posts.length; i < il; i++)
 			posts[i] = new Me(posts[i], i)
@@ -98,11 +90,6 @@ var myStatic =
 	getPostsCountByTag: function (tag)
 	{
 		return this.getPostsByTag(tag).length
-	},
-	
-	getAllTags: function ()
-	{
-		return this.tags.slice()
 	}
 }
 
@@ -111,6 +98,6 @@ Object.extend(Me, myStatic)
 Me.className = 'Post'
 Blog[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/db/blog/posts.json" -->, <!--# include virtual="/db/blog/tags.json" -->)
+Me.initialize(<!--# include virtual="/db/blog/posts.json" -->)
 
 })();

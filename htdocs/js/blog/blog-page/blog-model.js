@@ -51,7 +51,7 @@ Me.prototype =
 	
 	sendTags: function ()
 	{
-		this.view.eatAllTags(Blog.Post.getAllTags())
+		this.view.eatAllTags(Blog.Tag.getAll())
 	}
 }
 
