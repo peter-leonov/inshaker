@@ -21,7 +21,7 @@ Me.prototype =
 		
 		var lh = this.lh = new LocationHash().bind()
 		var me = this
-		lh.addEventListener('change', function (e) { me.checkHash() }, false)
+		lh.addEventListener('change', function (e) { me.hashUpdated() }, false)
 	},
 	
 	renderPosts: function (posts, left)
@@ -96,7 +96,7 @@ Me.prototype =
 		this.renderPosts(posts, left)
 	},
 	
-	checkHash: function ()
+	hashUpdated: function ()
 	{
 		var hash = UrlEncode.parse(this.lh.get())
 		this.controller.hashUpdated(hash)

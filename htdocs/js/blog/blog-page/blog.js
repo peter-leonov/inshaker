@@ -28,7 +28,7 @@ Me.prototype =
 	guessState: function ()
 	{
 		this.model.sendTags()
-		this.view.checkHash()
+		this.view.hashUpdated()
 	},
 	
 	setPostsPerPage: function (count)
