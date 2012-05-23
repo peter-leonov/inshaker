@@ -17,6 +17,8 @@ Me.prototype =
 		var controller = this.controller
 		nodes.more.addEventListener('click', function (e) { controller.addMorePosts() }, false)
 		
+		this.tagCloud = new TagCloud({root: nodes.tagCloud})
+		
 		var lh = this.lh = new LocationHash().bind()
 		var me = this
 		lh.addEventListener('change', function (e) { me.checkHash() }, false)
@@ -76,7 +78,7 @@ Me.prototype =
 		var postTags = post.tags
 		for (var j = 0, jl = postTags.length; j < jl; j++)
 		{
-			list.appendChild(this.renderTagItem(postTags[j]))
+			list.appendChild(this.tagCloud.renderItem(postTags[j]))
 			list.appendChild(T(' '))
 		}
 		
@@ -102,7 +104,7 @@ Me.prototype =
 	
 	switchTag: function (tag)
 	{
-		var key = tag == 'all' ? tag : this.tagIndexByTagName[tag]
+		var key = tag == 'all' ? tag : this.tagCloud.getTagIndex(tag)
 		
 		var root = this.nodes.root
 		root.removeClassName('show-tag-' + this.lastTagKey)
@@ -139,34 +141,8 @@ Me.prototype =
 	
 	eatAllTags: function (tags)
 	{
-		var index = this.tagIndexByTagName = {}
-		
-		for (var i = 0, il = tags.length; i < il; i++)
-			index[tags[i]] = i
-		
-		this.renderTagCloud(tags)
-	},
-	
-	renderTagCloud: function (tags)
-	{
-		var cloud = this.nodes.tagCloud
-		
-		for (var i = 0, il = tags.length; i < il; i++)
-		{
-			cloud.appendChild(this.renderTagItem(tags[i]))
-			cloud.appendChild(T(' '))
-		}
-	},
-	
-	renderTagItem: function (tag)
-	{
-		var link = Nct('a', 'link', tag)
-		link.href = '/blog/#tag=' + tag
-		
-		var item = Nc('li', 'tag tag-' + this.tagIndexByTagName[tag])
-		item.appendChild(link)
-		
-		return item
+		this.tagCloud.setTags(tags)
+		this.tagCloud.render()
 	},
 	
 	setPostsPerPage: function (count)

@@ -2,6 +2,8 @@
 <!--# include virtual="/liby/modules/location-hash.js" -->
 <!--# include virtual="/liby/modules/rus-date.js" -->
 
+<!--# include virtual="/js/blog/tag-cloud.js" -->
+
 ;(function(){
 
 <!--# include virtual="blog.js" -->
