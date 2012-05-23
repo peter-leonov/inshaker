@@ -37,7 +37,7 @@ Me.prototype =
 	
 	addNewPosts: function ()
 	{
-		this.iterator = Blog.getPostsByTagIterator(this.currentTag)
+		this.iterator = Blog.Post.getPostsByTagIterator(this.currentTag)
 		
 		var view = this.view
 		this.iterator(this.postsPerPage, function (posts, left) { view.renderNewPosts(posts, left) })
@@ -51,7 +51,7 @@ Me.prototype =
 	
 	sendTags: function ()
 	{
-		this.view.eatAllTags(Blog.getAllTags())
+		this.view.eatAllTags(Blog.Post.getAllTags())
 	}
 }
 

@@ -1,5 +1,12 @@
 ;(function(){
 
+window.Blog = {}
+
+})();
+
+
+;(function(){
+
 function Me (data, id)
 {
 	this.id = id
@@ -101,8 +108,8 @@ var myStatic =
 
 Object.extend(Me, myStatic)
 
-Me.className = 'Blog'
-self[Me.className] = Me
+Me.className = 'Post'
+Blog[Me.className] = Me
 
 Me.initialize(<!--# include virtual="/db/blog/posts.json" -->, <!--# include virtual="/db/blog/tags.json" -->)
 
