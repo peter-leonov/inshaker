@@ -122,7 +122,7 @@ Me.prototype =
 	
 	renameMoreButton: function (count)
 	{
-		this.nodes.more.value = 'еще ' + count + ' ' + count.plural('пост', 'поста', 'постов') + '!'
+		this.nodes.morePosts.firstChild.nodeValue = count + ' ' + count.plural('пост', 'поста', 'постов')
 	},
 	
 	renderMoreButton: function (count)
