@@ -16,5 +16,6 @@ data/*
 .idea/*
 Thumbs.db
 .lock-barman
+error-in-processor*
 yandex_*
 google*.html

@@ -15,53 +15,7 @@ class Launcher
   module Config
     include Inshaker
     
-    LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
-    LOCKPATH_LOGIN = "#{LOCKPATH}/login"
-    
-    SCRIPTS =
-    {
-      "cocktails" => ["./processors/cocktails.rb", "Коктейли"],
-      "ingredients" => ["./processors/ingredients.rb", "Ингредиенты"],
-      "marks" => ["./processors/marks.rb", "Марки"],
-      "bars" => ["./processors/bars.rb", "Бары"],
-      "events" => ["./processors/events.rb", "События"],
-      "barmen" => ["./processors/barmen.rb", "Барменов"],
-      "goods" => ["./processors/goods.rb", "Покупки"],
-      "magazine" => ["./processors/magazine.rb", "Журнал"],
-      "blog" => ["./processors/blog.rb", "Блог"],
-      "blog-banners" => ["./processors/blog-banners.rb", "Баннеры в Блоге"],
-      "mybar" => ["./processors/mybar.rb", "Мой бар"],
-      "analytics" => ["./processors/analytics.rb", "Аналитика"],
-      
-      "deployer" => ["./deployer.rb", "Заливалку"],
-      "status" => ["./status.rb", "Статус"],
-      "reset" => ["./reset.rb", "Сброс"]
-    }
-    
-    LOGIN_TO_BUSY =
-    {
-      "mike" => "занял Мишенька",
-      "max" => "занял Максимка",
-      "lena" => "заняла Леночка",
-      "viola" => "заняла Виолочка",
-      "anya" => "заняла Анечка",
-      "peter" => "занял Петечка",
-      "barman" => "занял Бармен",
-    }
-    LOGIN_TO_BUSY.default = "заняло НЛО"
-
-    LOGIN_TO_AUTHOR =
-    {
-      "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
-      "max" => "Maxim Dergilev <max@inshaker.ru>",
-      "lena" => "Elena Piskareva <lena@inshaker.ru>",
-      "viola" => "Viola Kostina <viola@inshaker.ru>",
-      "anya" => "Anna Baturina <anya@inshaker.ru>",
-      "peter" => "Peter Leonov <pl@inshaker.ru>",
-      "barman" => "Barman <barman@inshaker.ru>"
-    }
-    LOGIN_TO_AUTHOR.default = "UFO <ufo@inshaker.ru>"
-    
+    include Inshaker::Launcher
   end
   
   def initialize
@@ -134,8 +88,17 @@ class Launcher
     end
     jobs.each do |k, job|
       puts "Запускаю «#{job[1]}»…"
-      fork { exec job[0] }
-      Process.wait
+      pid = fork { exec job[0] }
+      Process.wait pid
+      
+      unless k == "deployer"
+        error_file = Config::SAVE_ERROR % k
+        if $?.exitstatus == 0
+          File.unlink(error_file) if File.exists?(error_file)
+        else
+          File.write(error_file, @user_login)
+        end
+      end
     end
     unlock
   end

@@ -8,11 +8,9 @@ http://www.inshaker.ru/bar/317/
 http://www.inshaker.ru/bar/aloha/
 http://www.inshaker.ru/bar/barbara/
 http://www.inshaker.ru/bar/squirrel/
-http://www.inshaker.ru/bar/sideboard/
 http://www.inshaker.ru/bar/delicatessen/
 http://www.inshaker.ru/bar/denis_simachev_shop_and_bar/
 http://www.inshaker.ru/bar/gipsy/
-http://www.inshaker.ru/bar/dream_bar/
 http://www.inshaker.ru/bar/carabas_bar/
 http://www.inshaker.ru/bar/ketama/
 http://www.inshaker.ru/bar/cuba_libre/
@@ -20,7 +18,6 @@ http://www.inshaker.ru/bar/swans_lake/
 http://www.inshaker.ru/bar/ray/
 http://www.inshaker.ru/bar/martinez/
 http://www.inshaker.ru/bar/mayak/
-http://www.inshaker.ru/bar/dream/
 http://www.inshaker.ru/bar/mulata/
 http://www.inshaker.ru/bar/noor/
 http://www.inshaker.ru/bar/all_time_bar/
@@ -30,6 +27,7 @@ http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/
 http://www.inshaker.ru/bar/tapa_de_comida/
 http://www.inshaker.ru/bar/tema_bar/
+http://www.inshaker.ru/bar/tommy_d/
 http://www.inshaker.ru/bar/free_bar/
 http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/chainaya/
