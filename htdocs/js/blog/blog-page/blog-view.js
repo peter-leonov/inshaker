@@ -116,12 +116,12 @@ Me.prototype =
 	
 	showMoreButton: function ()
 	{
-		this.nodes.more.removeClassName('hidden')
+		this.nodes.more.show()
 	},
 	
 	hideMoreButton: function ()
 	{
-		this.nodes.more.addClassName('hidden')
+		this.nodes.more.hide()
 	},
 	
 	renameMoreButton: function (count)
