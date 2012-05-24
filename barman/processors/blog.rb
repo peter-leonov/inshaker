@@ -25,14 +25,13 @@ class Blog < Inshaker::Processor
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    TAG_CLOUD      = HT_ROOT + "tag-cloud.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
+    HT_POSTS_JSON  = Inshaker::HT_DB_DIR + "blog/posts.json"
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
-      POST_PREVIEW = TEMPLATES + "blog-post-preview.rhtml"
     end
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
@@ -48,7 +47,6 @@ class Blog::Post
     @@filename_rex = /^[a-zA-Z0-9\._\-]+$/
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
-    @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
     
     @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
     @@seen_tags = {}
@@ -90,20 +88,13 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
-    @tags_names = @tags
-    @tags = []
-    @tags_names.each do |name|
+    @tags.select! do |name|
       unless @@known_tags[name]
         warning "неизвестный тег «#{name}»"
         next
       end
       
-      tag = @@seen_tags[name]
-      unless tag
-        tag = {"name" => name, "key" => "tag-#{@@seen_tags.length}"}
-        @@seen_tags[name] = tag
-      end
-      @tags << tag
+      @@seen_tags[name] = true
     end
     
     if @tags.empty?
@@ -140,7 +131,7 @@ class Blog::Post
   def absorb_content content
     used_files = []
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut, files = markup @cut, {:lazy_images => true}
+    @cut, files = markup @cut
     used_files += files
     @body, files = markup @body
     used_files += files
@@ -149,11 +140,7 @@ class Blog::Post
   
   def write_html
     File.write("#{@dst_dir.path}/#{@href}.html", body_html)
-    File.write("#{@dst_dir.path}/preview-snippet.html", preview_snippet_html)
-  end
-  
-  def preview_snippet_html
-    @@preview_renderer.result(binding)
+    File.write("#{@dst_dir.path}/preview-snippet.html", @cut)
   end
   
   def body_html
@@ -180,14 +167,17 @@ class Blog::Post
   
   def to_hash
     {
-      "date" => @date.to_i * 1000
+      "date" => @date.to_i,
+      "title" => @title,
+      "tags" => @tags,
+      "path" => @href
     }
   end
   
   
   
   
-  def markup text, opts={}
+  def markup text
     files = []
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
@@ -201,21 +191,11 @@ class Blog::Post
           src = "/t/print/logo-hd.png"
           error "не используй абсолютные пути к фоткам: «#{src}»"
         else
-          if opts[:lazy_images]
-            box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
-            unless box
-              error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
-            end
-          end
           files << src
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
-        if box
-          image = %Q{<img lazy-src="#{src}" class="image lazy" width="#{box[0]}" height="#{box[1]}"/>}
-        else
-          image = %Q{<img src="#{src}" class="image"/>}
-        end
+        image = %Q{<img src="#{src}" class="image"/>}
         
         if href == "внутрь"
           %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one">#{image}</a></div>}
@@ -282,7 +262,7 @@ class Blog::Post
   
   
   def self.tags_list
-    @@seen_tags.values.sort { |a, b| a["name"] <=> b["name"] }
+    @@seen_tags.keys.sort
   end
   
   
@@ -330,12 +310,10 @@ class Blog
     
     update_posts
     sort_posts
-    update_posts_loop
     
     unless errors?
       cleanup_deleted
       flush_links
-      flush_tags
       flush_json
     end
     
@@ -373,15 +351,6 @@ class Blog
     end
   end
   
-  def update_posts_loop
-    say "обновляю список постов"
-    File.open(Config::POSTS_LOOP, "w+") do |f|
-      @posts.each do |post|
-        f.puts %Q{<!--# include virtual="#{post.page_href}preview-snippet.html" -->}
-      end
-    end
-  end
-  
   def cleanup_deleted
     say "ищу удаленные"
     indent do
@@ -403,19 +372,7 @@ class Blog
     say "рисую ссылки для поисковиков"
     File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
       @posts.each do |post|
-        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
-      end
-      f.puts ""
-    end
-  end
-  
-  def flush_tags
-    say "рисую теги"
-    File.open(Config::TAG_CLOUD, "w+") do |f|
-      Blog::Post.tags_list.each do |tag|
-        name = tag["name"]
-        key = tag["key"]
-        f.puts %Q{<li class="tag #{key}"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
+        f.puts %Q{<li><a href="/blog/#{post.href}/">#{post.title}</a></li>}
       end
       f.puts ""
     end
@@ -424,6 +381,9 @@ class Blog
   def flush_json
     say "сохраняю базу тегов"
     File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
+    
+    say "сохраняю базу постов"
+    File.write(Config::HT_POSTS_JSON, JSON.stringify(@posts.map { |post| post.to_hash }))
   end
   
   def run

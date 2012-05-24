@@ -2,7 +2,6 @@
 <!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/liby/modules/regexp-escape.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->
 
 <!--# include virtual="/liby/widgets/selecter.js" -->

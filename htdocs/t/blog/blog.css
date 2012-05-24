@@ -24,11 +24,10 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #posts-loop,
 #the-one { border-top: 1px solid #eee; width: 590px; padding: 20px 0 0 0; }
 
-#posts-loop .post { display: none; }
-#common-main-wrapper.show-all .post { display: block; }
-#common-main-wrapper.show-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
+#common-main-wrapper.show-tag-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
 
 .post { position: relative; margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
+.post:last-child { border-bottom: none; margin-bottom: 0; }
 .post .title { font-size: 22px; margin: 0 0 5px 0; }
 .post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
 .post .more .deeper { color: inherit; margin: 0 20px 0 0; }
@@ -49,6 +48,10 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 .post .body hr { border: none; border-top: 1px solid #eee; margin: 25px 10px; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
 .post .body p { margin: 10px 0; }
+
+#more { display: block; width: 590px; margin: 0 0 35px; text-align: center; }
+#more .button { display: inline-block; padding: 5px 12px; border-radius: 5px; border: 1px solid #ddd; font-size: 20px; letter-spacing: 2px; color: inherit; }
+#more .button:hover { text-decoration: none; }
 
 #tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 0 0; }
 #tag-cloud .list { color: #888; }
@@ -96,6 +99,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #common-main-wrapper.show-tag-30 .post.tag-30
 { display: block }
 
+#common-main-wrapper.show-tag-all .tag.tag-all .link,
 #common-main-wrapper.show-tag-0  .tag.tag-0  .link,
 #common-main-wrapper.show-tag-1  .tag.tag-1  .link,
 #common-main-wrapper.show-tag-2  .tag.tag-2  .link,

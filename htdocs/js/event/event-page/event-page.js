@@ -122,8 +122,6 @@ $.onready
 <!--# include virtual="/liby/widgets/input-tip.js" -->
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/request.js" -->
 <!--# include virtual="/liby/modules/interpolate.js" -->
 
 <!--# include virtual="/liby/modules/motion.js" -->
