@@ -330,7 +330,7 @@ class Blog
     updir.each_dir do |dir|
       if /^#/.match(dir.name)
         say "перехожу в «#{dir.name}»"
-        walk_dir dir#, !@options[:force]
+        walk_dir dir, !@options[:force]
         next
       end
       
