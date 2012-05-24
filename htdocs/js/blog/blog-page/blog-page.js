@@ -21,7 +21,7 @@ function onready ()
 	
 	var widget = new BlogPage()
 	widget.bind(nodes)
-	widget.setPostsPerPage(5)
+	widget.setPostsPerPage(10)
 	widget.guessState()
 }
 
