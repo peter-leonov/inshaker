@@ -43,10 +43,10 @@
 .b-content .content { padding-top: 158px; background: url(poster.jpg) center top no-repeat; }
 .b-content .view-stat { padding-top: 20px; background: none; }
 
-.b-content .view-about { font-size: 14px; }
-.b-content .view-about .section { margin: 0 0 1.75em 0; }
-.b-content .view-about h3 { margin: 0 0 0.3em 0; font-size: 20px; letter-spacing: 1px; }
-.b-content .view-about h4 { margin: 0.5em 0 0.3em 0; font-size: 16px; }
+.b-content .view-about { font-size: 14px; line-height: 22px; }
+.b-content .view-about .section { margin: 0 0 2em 0; }
+.b-content .view-about h3 { margin: 0 0 0.3em 0; font-size: 20px; letter-spacing: 1px; line-height: 26px; }
+.b-content .view-about h4 { margin: 0.75em 0 0.25em 0; font-size: 16px; }
 .b-content .view-about h4:before { display: inline-block; content: '•'; margin: 0 0.4em 0 0; font-weight: bold; }
 .b-content .view-about p { margin: 0 0 0.25em 0; }
 .b-content .view-about ul { margin: 0 0 0 2em; }
