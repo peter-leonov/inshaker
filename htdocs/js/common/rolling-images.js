@@ -11,14 +11,14 @@ function RollingImagesLite (node, conf)
 	function mouseup (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		document.removeEventListener('mouseup', mouseup, false)
 	}
 	
 	this.prevmousedown = function (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		t.goPrev()
 		t.svInt = window.setInterval(function () { t.goPrev() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
@@ -27,7 +27,7 @@ function RollingImagesLite (node, conf)
 	this.nextmousedown = function (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		t.goNext()
 		t.svInt = window.setInterval(function () { t.goNext() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
@@ -54,7 +54,7 @@ RollingImagesLite.prototype =
 		this.aNext = this.my('.next')
 		
 		// if syncing when pushed
-		clearInterval(this.svInt)
+		window.clearInterval(this.svInt)
 		
 		var t = this
 		if (this.aPrev)
