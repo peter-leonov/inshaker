@@ -10,7 +10,6 @@ UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
 function Me (nodes)
 {
 	this.nodes = nodes
-	this.imagesLoaded = false
 	this.switchBlock = false
 	this.blockNames = ['special', 'pop', 'author', 'classic']
 	
@@ -76,7 +75,7 @@ Me.prototype =
 		return images = this.nodes.promo.getElementsByTagName("img")
 	},
 	
-	loadFrames: function (list, onImageLoaded)
+	loadFrames: function (list)
 	{
 		var images = this.getPromoImages()
 		
@@ -84,11 +83,7 @@ Me.prototype =
 		{
 			var img = images[list[i]]
 			if (!img.src)
-			{
 				img.src = img.getAttribute("lazy")
-				if (onImageLoaded)
-					img.onload = onImageLoaded
-			}
 		}
 	},
 	
@@ -114,19 +109,9 @@ Me.prototype =
 	
 	loadInitialFrames: function (initFrame)
 	{
-		var me = this, counter = 0
 		var range = this.getRange(initFrame)
 		
-		this.loadFrames
-		(
-			range,
-			function ()
-			{
-				counter++
-				if (counter == range.length)
-					me.imagesLoaded = true
-			}
-		)
+		this.loadFrames(range)
 	},
 	
 	renderCocktails: function (node, set, len)
@@ -220,18 +205,6 @@ Me.prototype =
 			
 			this.loadInitialFrames(initFrame)
 			ri.jumpToFrame(initFrame)
-			
-			// Wait for initial images to load and start switching
-			var tries = 0
-			var imageLoadTimer = setInterval
-			(
-				function ()
-				{
-					if (me.imagesLoaded || tries++ > 10)
-						clearInterval(imageLoadTimer)
-				},
-				100
-			)
 		}
 	},
 	
