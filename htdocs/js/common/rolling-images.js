@@ -20,7 +20,7 @@ function RollingImagesLite (node, conf)
 		e.preventDefault()
 		clearInterval(t.svInt)
 		t.goPrev()
-		t.svInt = setInterval(function () { t.goPrev() }, t.conf.duration * 1000 * 0.5 + 150)
+		t.svInt = window.setInterval(function () { t.goPrev() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
 	}
 	
@@ -29,7 +29,7 @@ function RollingImagesLite (node, conf)
 		e.preventDefault()
 		clearInterval(t.svInt)
 		t.goNext()
-		t.svInt = setInterval(function () { t.goNext() }, t.conf.duration * 1000 * 0.5 + 150)
+		t.svInt = window.setInterval(function () { t.goNext() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
 	}
 	

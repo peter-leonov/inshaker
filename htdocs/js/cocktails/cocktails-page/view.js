@@ -40,7 +40,7 @@ Me.prototype =
 			if (me.currentHash != window.location.hash)
 				window.location.reload(true)
 		}
-		setInterval(checkHash, 250)
+		window.setInterval(checkHash, 250)
 	},
 	
 	checkRequest: function ()
