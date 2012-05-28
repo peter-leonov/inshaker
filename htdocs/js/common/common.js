@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/core/prototype.js" -->
+<!--# include virtual="/liby/modules/prototype.js" -->
 <!--# include virtual="/liby/modules/log.js" -->
 <!--# include virtual="/liby/modules/plural.js"-->
 <!--# include virtual="/liby/modules/array-randomize.js"-->
