@@ -69,7 +69,7 @@ var f = function(ingredient, v)
 	catch (ex)
 	{
 		// defered exception raising
-		setTimeout(function () { throw ex }, 0)
+		window.setTimeout(function () { throw ex }, 0)
 	}
 	
 	returnObj.entries = entries

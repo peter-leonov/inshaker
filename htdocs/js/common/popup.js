@@ -49,7 +49,7 @@ Me.prototype =
 		this.visible = false
 		
 		var me = this
-		setTimeout(function () { me.unbindListeners() }, 0)
+		window.setTimeout(function () { me.unbindListeners() }, 0)
 	},
 	
 	show: function ()
@@ -66,7 +66,7 @@ Me.prototype =
 		this.visible = true
 		
 		var me = this
-		setTimeout(function () { me.bindListeners() }, 0)
+		window.setTimeout(function () { me.bindListeners() }, 0)
 	},
 	
 	bindListeners: function ()

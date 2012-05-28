@@ -74,7 +74,7 @@ Me.prototype =
 		e.stopPropagation()
 		
 		var controller = this.controller
-		setTimeout(function () { controller.action(action) }, 0)
+		window.setTimeout(function () { controller.action(action) }, 0)
 	},
 	
 	focus: function ()

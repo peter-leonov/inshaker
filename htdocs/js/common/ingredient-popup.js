@@ -81,7 +81,7 @@ var myProto =
 		this.renderSupplements(ingredient)
 		
 		var me = this
-		setTimeout(function () { me.renderCocktails(nodes, ingredient) }, 0)
+		window.setTimeout(function () { me.renderCocktails(nodes, ingredient) }, 0)
 		require('Good', function () { me.renderWhereToBuy(nodes, ingredient) })
 	},
 	

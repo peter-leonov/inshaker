@@ -40,7 +40,7 @@ Me.prototype =
 			if (me.currentHash != window.location.hash)
 				window.location.reload(true)
 		}
-		setInterval(checkHash, 250)
+		window.setInterval(checkHash, 250)
 	},
 	
 	checkRequest: function ()
@@ -62,8 +62,8 @@ Me.prototype =
 	
 	saveFilters: function (filters) {
 		var self = this;
-		clearTimeout(this.hashTimeout);
-		this.hashTimeout = setTimeout(function() { 
+		window.clearTimeout(this.hashTimeout);
+		this.hashTimeout = window.setTimeout(function() {
 			self.updatePageHash(filters);
 		} , 400);
 	},

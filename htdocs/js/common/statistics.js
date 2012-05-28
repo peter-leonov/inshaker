@@ -71,12 +71,12 @@ var Me =
 	
 	event: function (action, label, value)
 	{
-		setTimeout(function () { Tracker.event('UserAction', action, label, value) }, 250)
+		window.setTimeout(function () { Tracker.event('UserAction', action, label, value) }, 250)
 	},
 	
 	path: function (path)
 	{
-		setTimeout(function () { Tracker.path(path) }, 250)
+		window.setTimeout(function () { Tracker.path(path) }, 250)
 	}
 }
 

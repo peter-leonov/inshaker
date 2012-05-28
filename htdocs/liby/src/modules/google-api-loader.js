@@ -33,17 +33,17 @@ Me.prototype =
 				if (!window.google)
 					return
 				
-				clearInterval(timer)
+				window.clearInterval(timer)
 				me.apiLoaderLoaded()
 			}
 			
-			var timer = setInterval(wait, 250)
+			var timer = window.setInterval(wait, 250)
 			
 			this.state = 'loading'
 		}
 		
 		if (this.state == 'ready')
-			setTimeout(function () { me.fireAll() }, 1)
+			window.setTimeout(function () { me.fireAll() }, 1)
 			
 		return this
 	},

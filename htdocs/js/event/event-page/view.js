@@ -475,7 +475,7 @@ EventPage.view =
 			function animatePopups ()
 			{
 				illustrationPopups.addClassName('hidden')
-				setTimeout
+				window.setTimeout
 				(
 					function ()
 					{ 
@@ -490,7 +490,7 @@ EventPage.view =
 				)
 			}
 			
-			setInterval(animatePopups, 3200)
+			window.setInterval(animatePopups, 3200)
 		}
 		else
 			illustrationPopups.remove()
@@ -609,13 +609,13 @@ EventPage.view =
 	startFormChecker: function ()
 	{
 		var me = this
-		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
+		window.clearInterval(this.formCheckTimer)
+		this.formCheckTimer = window.setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()
 	{
-		clearInterval(this.formCheckTimer)
+		window.clearInterval(this.formCheckTimer)
 	}
 }
 

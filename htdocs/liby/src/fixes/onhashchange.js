@@ -22,16 +22,16 @@ function check ()
 var timer
 function restart (d)
 {
-	clearInterval(timer)
+	window.clearInterval(timer)
 	if (d < 0)
 		return
 	
-	timer = setInterval(check, d || 500)
+	timer = window.setInterval(check, d || 500)
 }
 
 window.location.setHashchangeCheckInterval = restart
 
 restart()
-document.addEventListener('mouseup', function () { setTimeout(function () { check() }, 0) }, true)
+document.addEventListener('mouseup', function () { window.setInterval(function () { check() }, 0) }, true)
 
 })();

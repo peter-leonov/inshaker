@@ -22,11 +22,11 @@ Me.prototype =
 	{
 		this.args = arguments
 		
-		clearTimeout(this.delayTimer)
-		this.delayTimer = setTimeout(this.timerCallback, this.delay)
+		window.clearTimeout(this.delayTimer)
+		this.delayTimer = window.setTimeout(this.timerCallback, this.delay)
 		
 		if (!this.timeoutTimer)
-			this.timeoutTimer = setTimeout(this.timeoutCallback, this.timeout)
+			this.timeoutTimer = window.setTimeout(this.timeoutCallback, this.timeout)
 	},
 	
 	fire: function ()
@@ -34,14 +34,14 @@ Me.prototype =
 		var delayTimer = this.delayTimer
 		if (delayTimer)
 		{
-			clearTimeout(delayTimer)
+			window.clearTimeout(delayTimer)
 			this.delayTimer = 0
 		}
 		
 		var timeoutTimer = this.timeoutTimer
 		if (timeoutTimer)
 		{
-			clearTimeout(timeoutTimer)
+			window.clearTimeout(timeoutTimer)
 			this.timeoutTimer = 0
 		}
 		
