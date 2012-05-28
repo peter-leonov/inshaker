@@ -43,7 +43,7 @@ var Printer = {
         img.src = this.IMG_MARKER;
         img.onload = function(e){
             if (self.wannaPrint)
-                setTimeout(function () { window.print() }, 1000)
+                window.setTimeout(function () { window.print() }, 1000)
         }
     },
 
@@ -93,7 +93,7 @@ var Printer = {
             img.onload = function(e){
                 imgCounter++;
                 if(imgCounter == cocktail.ingredients.length)
-                    setTimeout(function () { window.print() }, 1000)
+                    window.setTimeout(function () { window.print() }, 1000)
             }
        }
 	},

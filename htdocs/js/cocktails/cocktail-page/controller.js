@@ -273,7 +273,7 @@ var Controller = {
 					list.goNext()
 					carousel.start()
 				}
-				carousel.cycle = setTimeout(goNext, carousel.timeout)
+				carousel.cycle = window.setTimeout(goNext, carousel.timeout)
 			},
 			stop: function ()
 			{

@@ -53,7 +53,7 @@ function onready ()
 	
 	var widget = new CocktailCart()
 	widget.bind(nodes)
-	setTimeout(function () { window.print() }, 1000)
+	window.setTimeout(function () { window.print() }, 1000)
 }
 
 $.onready(onready)

@@ -22,7 +22,7 @@ var Me =
 	adjustTextSizeOfNodes: function (root, selector)
 	{
 		var me = this
-		setTimeout(function () { me.adjustTextSize($$(selector, root)) }, 1)
+		window.setTimeout(function () { me.adjustTextSize($$(selector, root)) }, 1)
 	}
 }
 

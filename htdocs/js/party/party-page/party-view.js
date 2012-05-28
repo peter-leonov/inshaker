@@ -213,7 +213,7 @@ Me.prototype =
 				if (before != target.value)
 					f()
 			}
-			setTimeout(after, 0)
+			window.setTimeout(after, 0)
 		}
 		
 		var view = this

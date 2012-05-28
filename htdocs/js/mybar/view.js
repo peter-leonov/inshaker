@@ -82,14 +82,14 @@ var myProto =
 		{
 			me.nodes.share.popups.email.main.hide()
 			me.hideEmailShare.binded = false
-			setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
+			window.setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
 		}
 		
 		this.hideWebShare = function()
 		{
 			me.nodes.share.popups.web.main.hide()
 			me.hideWebShare.binded = false
-			setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
+			window.setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
 		}
 		
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
@@ -139,7 +139,7 @@ var myProto =
 		{
 			this.nodes.ingredients.title.advice.hide()
 		}
-		setTimeout(function()
+		window.setTimeout(function()
 		{
 			node.selectionStart = 0
 			node.selectionEnd = node.value.length
@@ -571,7 +571,7 @@ var myProto =
 		var dt = Nc('dt', 'advice')
 		var text = this.getTextForRecommend(group, cocktailsHash, ingredientsHash)
 		dt.appendChild(text)
-		setTimeout(function(){ dt.style.height = dt.offsetHeight - 27 + 'px' }, 0)
+		window.setTimeout(function(){ dt.style.height = dt.offsetHeight - 27 + 'px' }, 0)
 		return dt
 	},
 	
@@ -1083,14 +1083,14 @@ var myProto =
 	{
 		var me = this
 		this.nodes.share.popups.email.main.show()
-		setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
+		window.setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
 	},
 	
 	webShareShow : function(id)
 	{
 		var me = this
 		this.nodes.share.popups.web.main.show()
-		setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
+		window.setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
 	},
 	
 	bindShareListeners : function(callback)

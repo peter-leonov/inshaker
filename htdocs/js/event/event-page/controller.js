@@ -53,7 +53,7 @@ EventPage.controller =
 	{
 		var view = this.owner.view
 		view.showFormPopupThanks()
-		// setTimeout(function () { view.hideFormPopup() }, 10000)
+		// window.setTimeout(function () { view.hideFormPopup() }, 10000)
 	},
 	
 	formError: function (message)

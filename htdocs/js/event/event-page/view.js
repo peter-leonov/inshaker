@@ -475,7 +475,7 @@ EventPage.view =
 			function animatePopups ()
 			{
 				illustrationPopups.addClassName('hidden')
-				setTimeout
+				window.setTimeout
 				(
 					function ()
 					{ 

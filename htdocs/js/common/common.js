@@ -37,7 +37,7 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 <!--# include virtual="/js/common/branding-scroller.js" -->
 
 
-$.onready(function () { setTimeout(function ()
+$.onready(function () { window.setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()
 }, 250) })
