@@ -277,7 +277,7 @@ var Controller = {
 			},
 			stop: function ()
 			{
-				clearTimeout(carousel.cycle)
+				window.clearTimeout(carousel.cycle)
 			}
 		}
 		

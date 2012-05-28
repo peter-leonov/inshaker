@@ -77,7 +77,7 @@ Me.prototype =
 			frame.moveTo(window.pageXOffset, window.pageYOffset)
 		}
 		var timer
-		window.addEventListener('scroll', function () { clearTimeout(timer); timer = window.setTimeout(onscroll, 100) }, false)
+		window.addEventListener('scroll', function () { window.clearTimeout(timer); timer = window.setTimeout(onscroll, 100) }, false)
 		onscroll()
 	}
 }

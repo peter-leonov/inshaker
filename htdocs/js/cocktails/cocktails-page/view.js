@@ -62,7 +62,7 @@ Me.prototype =
 	
 	saveFilters: function (filters) {
 		var self = this;
-		clearTimeout(this.hashTimeout);
+		window.clearTimeout(this.hashTimeout);
 		this.hashTimeout = window.setTimeout(function() {
 			self.updatePageHash(filters);
 		} , 400);
