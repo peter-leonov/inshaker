@@ -24,7 +24,7 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/liby/modules/motion.js" -->
 <!--# include virtual="/liby/modules/motion-types.js" -->

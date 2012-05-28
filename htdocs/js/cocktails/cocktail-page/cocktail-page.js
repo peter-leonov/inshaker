@@ -23,5 +23,5 @@ $.onready(function(){
 <!--# include virtual="/js/cocktails/share-buttons.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
-<!--# include virtual="/liby/core/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/fixes/onhashchange.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->
