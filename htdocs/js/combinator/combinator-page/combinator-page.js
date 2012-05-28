@@ -1,5 +1,5 @@
-<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
-<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/fixes/onhashchange.js"-->
+<!--# include virtual="/liby/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/liby/modules/regexp-escape.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->

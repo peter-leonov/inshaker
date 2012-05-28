@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/liby/modules/interpolate.js" -->
 

@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/core/prototype.js" -->
+<!--# include virtual="/liby/modules/prototype.js" -->
 <!--# include virtual="/liby/modules/log.js" -->
 <!--# include virtual="/liby/modules/plural.js"-->
 <!--# include virtual="/liby/modules/array-randomize.js"-->
@@ -23,10 +23,10 @@
 <!--# include virtual="/liby/modules/request.js"-->
 
 if (!document.querySelectorAll)
-	$.load('/liby/core/fixes/dom-level2-selectors.js')
+	$.load('/liby/fixes/dom-level2-selectors.js')
 
 if (!('draggable' in document.body || 'ondrop' in document.body))
-	$.load('/liby/core/fixes/dnd.js')
+	$.load('/liby/fixes/dnd.js')
 
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
