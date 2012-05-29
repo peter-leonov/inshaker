@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/combinator.html#q=Jim Beam&i=Бурбон'
+var link = '/combinator.html#q=Маргариты'
 
 Me.initialize
 ({
