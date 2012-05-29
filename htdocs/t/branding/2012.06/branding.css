@@ -89,7 +89,7 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 /* cocktail.css */
 #top-menu .border-links a:hover,
 #b-more dt,
-#b-more dt b { background-color: #222; }
+#b-more dt b { background-color: #333; }
 #b-more dt b { color: #fff; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
