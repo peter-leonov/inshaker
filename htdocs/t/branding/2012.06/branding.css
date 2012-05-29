@@ -32,10 +32,10 @@ button.strong b { color: #000; }
 #common-footer { color: #6b4d1f; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #000; }
-#common-footer .index { border-bottom: dotted 1px #fbebae; }
+#common-footer .index { border-bottom: solid 1px #fbebae; }
 #common-footer .index .theme .head { color: #c78c3e; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
-#common-footer .bottom { background-color: rgba(225,172,82,0.6); }
+#common-footer .bottom { background-color: rgba(225,172,82,0.5); }
 #common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
 
 #common-footer .index .theme .head,
