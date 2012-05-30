@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/modules/prototype.js" -->
+<!--# include virtual="/liby/fixes/prototype.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
