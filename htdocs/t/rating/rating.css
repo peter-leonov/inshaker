@@ -1,0 +1,54 @@
+#common-main-wrapper { background-color: white; padding-left: 18px; border: 1px solid gray; padding-top: 50px; }
+
+.rating-col { display: inline-block; vertical-align: top; padding-bottom: 75px; padding-right: 18px; }
+
+.rating-name { font-size: 18px; }
+.rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
+
+
+.rating-list .first-item { display: block; width: 300px; border-top: 3px solid #E5E5E5; margin-top: 5px; text-align: right; }
+.rating-list .first-item img { height: 180px; float: left; }
+.rating-list .first-item .cocktail-name { display: block; color: #000; font-size: 16px; padding-top: 20px; }
+
+.rating-list .first-item .cocktail { width: 160px; padding: 30px 0 30px 0; margin-left: auto; }
+.rating-list .first-item .cocktail .cocktail-ingredient { font-size: 11px; }
+
+.rating-list .first-item .cocktail-rating { font-size: 12px; margin-left: auto; }
+.rating-list .first-item .cocktail-rating .note { font-size: 9px; color: #838383; display: block; width: 100px; margin-left: auto; }
+
+
+.rating-list .item { display: block; width: 300px; min-height: 43px; border-top: 1px solid #E5E5E5; padding-top: 10px; margin-top: 10px; }
+
+.rating-list .item .cocktail-position { float: left; width: 20px; color: #838383; font-size: 12px; }
+.rating-list .item .cocktail { float: left; padding: 0 40px 0 20px; width: 240px; position: absolute; }
+.rating-list .item .cocktail-rating { float: right; margin-left: auto; font-size: 12px; }
+
+.rating-list .item .cocktail .cocktail-name { display: block; color: #000; font-size: 12px; padding-bottom: 5px; }
+
+
+.rating-list .item .cocktail .cocktail-ingredient,
+.rating-list .first-item .cocktail .cocktail-ingredient{ color: #4b4b4b; }
+
+.rating-list .item .cocktail .cocktail-ingredient:after,
+.rating-list .first-item .cocktail .cocktail-ingredient:after { content: ', ' }
+.rating-list .item .cocktail .cocktail-ingredient:last-child:after,
+.rating-list .first-item .cocktail .cocktail-ingredient:last-child:after { content: '' }
+
+
+.rating-list .item .cocktail-position .arrow,
+.rating-list .item .cocktail-rating .arrow,
+.rating-list .first-item .cocktail-rating .arrow,
+.rating-list .first-item .cocktail-position .arrow{ background-image: url(arrows.png); }
+
+.rating-list .item .cocktail-position .arrow,
+.rating-list .first-item .cocktail-position .arrow { width: 6px; height: 6px; display: block; margin-top: 6px; background-position: -8px 0; }
+.rating-list .item .cocktail-position .arrow.up,
+.rating-list .first-item .cocktail-position .arrow.up{ background-position: -8px -6px; }
+
+.rating-list .item .cocktail-rating .arrow,
+.rating-list .first-item .cocktail-rating .arrow { width: 8px; height: 9px; display: inline-block; background-position: 0 0; }
+.rating-list .item .cocktail-rating .arrow.up,
+.rating-list .first-item .cocktail-rating .arrow.up{ background-position: 0 -9px; }
+
+.rating-list .first-item .cocktail-position .arrow { display: inline-block; }
+
