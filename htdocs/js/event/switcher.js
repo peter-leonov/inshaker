@@ -4,7 +4,7 @@ Switcher =
 	{
 		if (!main || !buttons || !tabs)
 			throw new Error('main, buttons or tabs are not defined: ' + [!!main, !!buttons, !!tabs].join(', '))
-		main.nodes = {buttons: Array.copy(buttons), tabs: Array.copy(tabs)}
+		main.nodes = {buttons: Array.from(buttons), tabs: Array.from(tabs)}
 		main.names = names || []
 		
 		main.onselect = function () {}
