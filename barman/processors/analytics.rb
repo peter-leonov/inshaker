@@ -137,9 +137,6 @@ class Analytics
   def cocktails_pageviews name, start, endd
     dst = Config::HT_STAT_DIR + "/" + name + ".json"
     
-    if newer?(dst, MINUTE)
-      return true
-    end
     
     if @last_updated - endd > 4 * DAY and File.exists?(dst)
       return true
