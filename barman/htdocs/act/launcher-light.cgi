@@ -51,10 +51,20 @@ class Launcher
     Process.wait pid
     
     if $?.exitstatus == 0
-      # TODO
+      commit
+    else
+      reset
     end
     
     unlock
+  end
+  
+  def commit
+    puts %Q{All went well, commiting…}
+  end
+  
+  def reset
+    puts %Q{Something failed, resetting…}
   end
   
   def lock
