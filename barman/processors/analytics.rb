@@ -35,6 +35,8 @@ class Analytics
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
     LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
+    
+    HT_RATING_JSON = Inshaker::HTDOCS_DIR + "/db/rating/rating.json"
   end
   
   def initialize
@@ -162,11 +164,53 @@ class Analytics
   
   def update
     update_ratings
-    update_reporter
+    # update_reporter
   end
   
   def update_ratings
+    start = Time.new
+    start -= (4 + 7) * DAY
     
+    seen = {}
+    week = []
+    
+    7.times do
+      
+      endd = start + DAY
+      views_stats, no, no = get_pageviews(start, endd)
+      
+      uniques = {}
+      views_stats.each do |k, v|
+        uniques[k] = v["uniques"]
+      end
+      
+      names = uniques.keys
+      names.sort! do |a, b|
+        uniques[b] - uniques[a]
+      end
+      
+      positions = {}
+      names.each_with_index do |name, i|
+        seen[name] = true
+        positions[name] = i
+      end
+      
+      week << positions
+      
+      start += DAY
+    end
+    
+    
+    res = Hash.new { |h, k| h[k] = [] }
+    
+    (0...7).each do |i|
+      seen.keys.sort.each do |name|
+        res[name][i] = (week[i][name] || 999998) + 1
+      end
+    end
+    
+    
+    File.write(Config::HT_RATING_JSON, JSON.stringify(res))
   end
   
   def get_month_borders year, month
