@@ -16,6 +16,8 @@ $.onready(function()
 {
 	var nodes =
 	{
+		logo: $('.logo'),
+		
 		shakerPage: $('.page.shaker'),
 		shake: $('.shaker .shake'),
 		processorsList: $('.shaker .processors-list'),
@@ -43,6 +45,8 @@ $.onready(function()
 		
 	})();
 	
+	
+	nodes.logo.addEventListener('click', function (e) { document.documentElement.classList.toggle('advanced') }, false)
 	
 	
 	var running = false
