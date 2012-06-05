@@ -82,6 +82,7 @@ class Launcher
     Dir.chdir("#{Config::ROOT_DIR}barman/")
     
     ENV["INSHAKER_USER_AUTHOR"] = @user_author
+    ENV["INSHAKER_SAYING_TYPE"] = "HTML"
     
     unless lock
       exit 1
