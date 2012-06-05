@@ -108,7 +108,7 @@ class Analytics
     
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
-    if newer?(cache, MINUTE)
+    if newer?(cache, 15 * MINUTE)
       return File.read(cache)
     end
     
