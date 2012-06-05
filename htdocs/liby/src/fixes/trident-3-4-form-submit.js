@@ -1,8 +1,10 @@
 (function(){
 
-HTMLFormElement.__pmc_fixHook = function (node)
+function fix (node)
 {
-	node.__pmc__bindCatcher('submit')
+	node.__liby__bindCatcher('submit')
 }
+
+HTMLFormElement.__liby_fixHooks.push(fix)
 
 })();

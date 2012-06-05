@@ -1,6 +1,6 @@
 (function(){
 
-HTMLScriptElement.__pmc_fixHook = function (node)
+function fix (node)
 {
 	function onreadystatechange (e)
 	{
@@ -13,7 +13,9 @@ HTMLScriptElement.__pmc_fixHook = function (node)
 	}
 	
 	node.attachEvent('onreadystatechange', onreadystatechange)
-	node.__pmc_getListeners('load')
+	node.__liby_getListeners('load')
 }
+
+HTMLScriptElement.__liby_fixHooks.push(fix)
 
 })();

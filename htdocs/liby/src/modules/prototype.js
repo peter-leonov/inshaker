@@ -75,22 +75,25 @@ function isEmpty (s)
 	return true
 }
 
+function defineProperty (o, p, c)
+{
+	if (c.get)
+		o.__defineGetter__(p, c.get)
+	
+	if (c.set)
+		o.__defineSetter__(p, c.set)
+}
+
 add(Object, {add: add, extend: extend, copy: copy, keys: keys, keysCount: keysCount, values: values, isEmpty: isEmpty})
+
+var o = {}
+if (!Object.defineProperty && o.__defineGetter__ && o.__defineSetter__)
+	Object.defineProperty = defineProperty
 
 })();
 
 
 ;(function(){
-
-function localeCompare (a, b)
-{
-	if (a < b)
-		return -1
-	if (a > b)
-		return 1
-	
-	return 0
-}
 
 function trim ()
 {
@@ -102,7 +105,6 @@ function capitalize ()
 	return this.charAt(0).toUpperCase() + this.substr(1)
 }
 
-Object.add(String, {localeCompare: localeCompare})
 Object.add(String.prototype, {trim: trim, capitalize: capitalize})
 
 })();
@@ -115,97 +117,49 @@ function mixIn (module)
 	return Object.extend(this.prototype, module.prototype)
 }
 
-function extend (s)
+function bind (inv)
 {
-	for (var k in s)
-		this[k] = s[k]
+	var args = Array.from(arguments).slice(1)
 	
-	return this
-}
-
-function bind (inv, args)
-{
 	var f = this
 	function wrapper ()
 	{
-		f.apply(inv, args || arguments)
+		return f.apply(inv, args.concat(Array.from(arguments)))
 	}
 	return wrapper
 }
 
-Object.add(Function.prototype, {mixIn: mixIn, extend: extend, bind: bind})
+Object.add(Function.prototype, {mixIn: mixIn, bind: bind})
 
 })();
 
 
 ;(function(){
 
-var ceil = Math.ceil, floor = Math.floor
-
-function indexOf (v, i)
+function from (list)
 {
-	var len = this.length
+	var ary = []
 	
-	i = +i
+	for (var i = 0, il = list.length; i < il; i++)
+		ary[i] = list[i]
 	
-	if (i)
-	{
-		if (i < 0)
-			i = ceil(i) + len
-		else
-			i = floor(i)
-	}
-	else
-	{
-		i = 0
-	}
-	
-	for (; i < len; i++)
-		if (i in this && this[i] === v)
-			return i
-	
-	return -1
+	return ary
 }
 
-function uniq ()
+Object.add(Array, {from: from})
+
+})();
+
+
+;(function(){
+
+var meta = /([\\\.\*\+\?\$\^\|\(\)\[\]\{\}])/g
+
+function escape (str)
 {
-	var res = []
-	
-	var j = 0
-	for (var i = 0, il = this.length; i < il; i++)
-	{
-		var v = this[i]
-		if (res.indexOf(v) == -1)
-			res[j++] = v
-	}
-	
-	return res
+	return ('' + str).replace(meta, '\\$1')
 }
 
-function forEach (f, inv)
-{
-	for (var i = 0, il = this.length; i < il; i++)
-		f.call(inv, this[i], i, this)
-}
-
-function map (f, inv)
-{
-	var res = []
-	
-	for (var i = 0, il = this.length; i < il; i++)
-		if (i in this)
-			res[i] = f.call(inv, this[i], i, this)
-	
-	return res
-}
-
-var slice = Array.prototype.slice
-function copy (ary)
-{
-	return slice.call(ary)
-}
-
-Object.add(Array.prototype, {indexOf: indexOf, uniq: uniq, forEach: forEach, map: map})
-Object.add(Array, {copy: copy})
+Object.add(RegExp, {escape: escape})
 
 })();

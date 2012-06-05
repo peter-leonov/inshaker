@@ -1,10 +1,12 @@
 (function(){
 
-HTMLInputElement.__pmc_fixHook = function (node)
+function fix (node)
 {
-	node.__pmc__bindCatcher('focus')
-	node.__pmc__bindCatcher('blur')
-	node.__pmc__bindCatcher('change')
+	node.__liby__bindCatcher('focus')
+	node.__liby__bindCatcher('blur')
+	node.__liby__bindCatcher('change')
 }
+
+HTMLInputElement.__liby_fixHooks.push(fix)
 
 })();

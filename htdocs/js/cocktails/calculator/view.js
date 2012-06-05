@@ -18,7 +18,7 @@ function spaces(num){
 
 function mergeNodes(parent, nodes)
 {
-	var focused, children = Array.copy(parent.childNodes)
+	var focused, children = Array.from(parent.childNodes)
 	for (var i = 0; i < children.length; i++)
 	{
 		var child = children[i]
