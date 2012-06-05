@@ -127,6 +127,13 @@ class Analytics
         "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
   end
   
+  def get_pageviews start, endd
+    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
+    data = JSON.parse(json)
+    
+    parse_pageviews(data)
+  end
+  
   def cocktails_pageviews name, start, endd
     dst = Config::HT_STAT_DIR + "/" + name + ".json"
     
@@ -138,10 +145,7 @@ class Analytics
       return true
     end
     
-    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
-    data = JSON.parse(json)
-    
-    views_stats, total_pageviews, total_uniques = parse_pageviews(data)
+    views_stats, total_pageviews, total_uniques = get_pageviews(start, endd)
     
     if errors?
       return false
