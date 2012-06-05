@@ -42,12 +42,33 @@ class Launcher
   def run job
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
+    unless lock
+      puts %Q{Failed to lock}
+      return false
+    end
+    
     pid = fork { exec job[0] }
     Process.wait pid
     
     if $?.exitstatus == 0
       # TODO
     end
+    
+    unlock
+  end
+  
+  def lock
+    begin
+      Dir.mkdir(Config::LOCKPATH)
+    rescue Exception => e
+      return false
+    end
+    
+    true
+  end
+  
+  def unlock
+    Dir.rmdir(Config::LOCKPATH)
   end
   
   def parse_params
