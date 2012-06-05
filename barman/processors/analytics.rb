@@ -160,6 +160,15 @@ class Analytics
     File.write(dst, JSON.stringify(stats))
   end
   
+  def update
+    update_ratings
+    update_reporter
+  end
+  
+  def update_ratings
+    
+  end
+  
   def get_month_borders year, month
     start = Time.new(year, month, 1)
     # jump to the next month (maybe year too)
@@ -173,7 +182,7 @@ class Analytics
     return [start, endd]
   end
   
-  def update
+  def update_reporter
     # 25-26 month from the past
     now = Time.now
     cur = now - 27 * 30 * DAY
