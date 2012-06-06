@@ -28,18 +28,18 @@ class Launcher
     end
     
     
-    job_name = params["job"]
-    job = Config::SCRIPTS[job_name]
+    @job_name = params["job"]
+    @job = Config::SCRIPTS[@job_name]
     
-    unless job
-      puts %Q{Unknown job "#{job_name}"}
+    unless @job
+      puts %Q{Unknown job "#{@job_name}"}
       return false
     end
     
-    run job_name, job
+    run
   end
   
-  def run job_name, job
+  def run
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
     unless lock
@@ -49,7 +49,7 @@ class Launcher
     
     reset
     
-    pid = fork { exec job[0] }
+    pid = fork { exec @job[0] }
     Process.wait pid
     
     if $?.exitstatus == 0
@@ -66,7 +66,7 @@ class Launcher
   def commit
     puts %Q{Commiting…}
     
-    system(%Q{git pull && git add . && git commit -am "job done: #{job_name}" --author="Worker pl+worker@inshaker.ru" && git push})
+    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" --author="Worker pl+worker@inshaker.ru" && git push})
   end
   
   def reset
