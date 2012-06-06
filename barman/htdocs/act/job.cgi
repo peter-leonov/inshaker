@@ -40,12 +40,20 @@ class Launcher
   end
   
   def run
-    Dir.chdir("#{Config::ROOT_DIR}/barman/")
-    
     unless lock
       puts %Q{Failed to lock}
       return false
     end
+    
+    begin
+      job
+    ensure
+      unlock
+    end
+  end
+  
+  def job
+    Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
     reset
     
@@ -59,8 +67,6 @@ class Launcher
       puts %Q{Job failed!}
       reset
     end
-    
-    unlock
   end
   
   def commit
