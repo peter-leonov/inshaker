@@ -72,7 +72,7 @@ class Launcher
   def commit
     puts %Q{Commiting…}
     
-    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" --author="Worker pl+worker@inshaker.ru" && git push})
+    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" && git push})
   end
   
   def reset
