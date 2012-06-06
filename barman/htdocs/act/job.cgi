@@ -20,11 +20,16 @@ class Launcher
   
   def launch
     
+    unless authorize
+      puts %Q{Unauthorized access.}
+      return false
+    end
+    
     params = parse_params
     
     unless params
       puts %Q{No input parameters passed.}
-      return
+      return false
     end
     
     
@@ -125,7 +130,6 @@ class Launcher
   def authorize
     @user_login = get_user_login
     unless @user_login
-      puts %Q{Unauthorized access.}
       return false
     end
     @user_author = Config::LOGIN_TO_AUTHOR[@user_login]
