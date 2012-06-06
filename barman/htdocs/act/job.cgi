@@ -73,7 +73,7 @@ class Launcher
     puts %Q{Commiting…}
     
     system(%Q{git status; git diff})
-    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" && git push})
+    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" --author="#{@author.quote}" && git push})
   end
   
   def reset
@@ -114,6 +114,23 @@ class Launcher
     return hash
   end
   
+  def get_user_login
+    if auth = ENV["HTTP_AUTHORIZATION"].to_s.match(/Basic (.+)/)
+      Base64.decode64(auth[1]).split(':')[0]
+    else
+      nil
+    end
+  end
+  
+  def authorize
+    @user_login = get_user_login
+    unless @user_login
+      puts %Q{Unauthorized access.}
+      return false
+    end
+    @user_author = Config::LOGIN_TO_AUTHOR[@user_login]
+    true
+  end
 end
 
 class File
