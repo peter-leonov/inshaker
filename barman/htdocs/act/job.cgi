@@ -36,10 +36,10 @@ class Launcher
       return false
     end
     
-    run job
+    run job_name, job
   end
   
-  def run job
+  def run job_name, job
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
     unless lock
@@ -47,12 +47,16 @@ class Launcher
       return false
     end
     
+    reset
+    
     pid = fork { exec job[0] }
     Process.wait pid
     
     if $?.exitstatus == 0
+      puts %Q{Job succeeded.}
       commit
     else
+      puts %Q{Job failed!}
       reset
     end
     
@@ -60,11 +64,16 @@ class Launcher
   end
   
   def commit
-    puts %Q{All went well, commiting…}
+    puts %Q{Commiting…}
+    
+    system(%Q{git pull && git add . && git commit -am "job done: #{job_name}" --author="Worker pl+worker@inshaker.ru" && git push})
   end
   
   def reset
-    puts %Q{Something failed, resetting…}
+    puts %Q{Resetting…}
+    
+    system(%Q{git fetch && git reset --hard git/master})
+    system(%Q{git clean -df; git status})
   end
   
   def lock
