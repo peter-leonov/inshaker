@@ -37,6 +37,8 @@ button.active .a { display: inline; }
 .page.uploader .upload { position: absolute; right: 20px; top: 120px; }
 .page.uploader .goto-shaker { position: absolute; left: -115px; top: 110px; }
 
+.processors-list .advanced { display: none; }
+html.advanced .processors-list .advanced { display: block; }
 
 
 #output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; }
