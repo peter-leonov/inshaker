@@ -72,6 +72,7 @@ class Launcher
   def commit
     puts %Q{Commiting…}
     
+    system(%Q{git status; git diff})
     system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" && git push})
   end
   
