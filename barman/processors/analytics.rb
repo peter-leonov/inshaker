@@ -164,7 +164,7 @@ class Analytics
   
   def update
     update_ratings
-    # update_reporter
+    update_reporter
   end
   
   def update_ratings
