@@ -2,7 +2,7 @@
 	sudo echo "smtp.gmail.com:587 event@inshaker.ru:******" >> /etc/postfix/sasl_passwd
 	sudo postmap /etc/postfix/sasl_passwd
 
-edit /etc/postfix/main.cf
+Добавить в конец /etc/postfix/main.cf
 
 	# Minimum Postfix-specific configurations.
 	# mydomain_fallback = localhost
@@ -28,9 +28,9 @@ edit /etc/postfix/main.cf
 	sudo postfix reload
 
 
-test
+Тестанём:
 
-	date | mail -s test gojpeg@mail.ru
+	date | mail -s test pl@inshaker.ru
 
 
 http://www.riverturn.com/blog/?p=239
