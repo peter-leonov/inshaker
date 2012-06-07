@@ -1,34 +1,22 @@
-#!/usr/bin/perl
+#!/usr/bin/env ruby
 
-# use utf8;
-use CGI::Minimal;
-use MIME::Lite;
-use MIME::EncWords qw(:all);
-use MIME::Base64;
-use Encode qw(encode);
+$main = "mail@inshaker.ru"
 
-my $cgi = CGI::Minimal->new;
-my $q = {};
-map { $q->{$_} = $cgi->param($_) } $cgi->param;
+require "rubygems"
+require "cgi"
+require "rutils"
+require "/www/inshaker/barman/lib/rmail"
 
-$msg = MIME::Lite->new
-(
-	From    => 'mail@inshaker.ru',
-	To      => 'mail@inshaker.ru',
-	Subject =>  encode_mimewords('Предложение или вопрос по иншейкеру', Charset => 'UTF-8'),
-	Type    => 'multipart/mixed'
-);
+p = CGI.new.params
 
+body = %Q{
+Имя: #{p["name"]}<br/>
+Контакт: #{p["address"]}<br/>
+Компания: #{p["company"]}<br/>
+Что говорит: #{p["text"]}
+}
 
-$msg->attach
-(
-	Type     => 'text/html; charset=utf-8',
-	Encoding => 'base64',
-	Data     =>  "Имя: ".$q->{name}."<br/>Контакт: ".$q->{address}."<br/>Компания: ".$q->{company}."<br/>Что говорит: ".$q->{text}
-);
-$msg->attr('X-HTTP-User-Agent' => $ENV{HTTP_USER_AGENT});
-$msg->attr('X-Http-Remote-Addr' => $ENV{HTTP_X_FORWARDED_FOR} || $ENV{HTTP_X_REAL_IP} || $ENV{REMOTE_ADDR});
+m = RMail::Message.bake(:to => $main, :from => "info@inshaker.ru", :subject => "Предложение или вопрос по иншейкеру", :body => body)
+m.send
 
-$msg->send;
-
-print "Content-type: application/javascript\n\n[]";
+puts "Content-type: application/javascript\n\n[]"
