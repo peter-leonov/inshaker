@@ -32,7 +32,7 @@ class Analytics
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     TOKEN_FILE     = TMP + "/auth-token.txt"
     
-    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
+    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
     LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
     

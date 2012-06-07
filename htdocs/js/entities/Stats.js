@@ -49,7 +49,7 @@ Me =
 
 // Me.findAndBindPrepares()
 
-Me.initialize(<!--# include file="/db/stats/all.json" -->)
+Me.initialize(<!--# include file="/reporter/db/stats/all.json" -->)
 
 Me.className = 'Stats'
 self[Me.className] = Me
