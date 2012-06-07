@@ -22,6 +22,9 @@
 <!--# include virtual="/liby/modules/url-encode.js"-->
 <!--# include virtual="/liby/modules/request.js"-->
 
+if (!document.documentElement.classList)
+	$.load('/liby/fixes/class-list.js')
+
 if (!document.querySelectorAll)
 	$.load('/liby/fixes/dom-level2-selectors.js')
 
