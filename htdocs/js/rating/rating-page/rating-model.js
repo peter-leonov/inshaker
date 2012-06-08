@@ -53,12 +53,18 @@ Me.prototype =
 	
 	addIngredientsArrow: function()
 	{
-		var ingredients = this.ingredients
+		var ingredients = this.ingredients,
+			byIngredient = this.byIngredient = []
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingr = ingredients[i],
-				cocktails = Cocktail.getByIngredient(ingr)
+				cocktails = Cocktail.getByIngredient(ingr),
+				byIngr =
+				{
+					name: ingr,
+					count: cocktails.length
+				}
 			
 			for (var j = 0, jl = cocktails.length; j < jl; j++)
 			{
@@ -67,6 +73,8 @@ Me.prototype =
 				c.days = this.rating[c.name]
 			}
 			cocktails = cocktails.sort(this.sort).slice(0, 10)
+			
+			byIngr.cocktails = cocktails
 			
 			var sorts = []
 			for (var j = 0, jl = cocktails.length; j < jl; j++)
@@ -91,6 +99,8 @@ Me.prototype =
 				else if (j < pos)
 					c.ingrArrow = (day+1)*-1
 			}
+			
+			byIngredient.push(byIngr)
 		}
 	}
 }
