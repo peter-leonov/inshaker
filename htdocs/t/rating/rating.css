@@ -36,7 +36,7 @@
 
 .rating-list .item .cocktail .cocktail-ingredient:after,
 .rating-list .first-item .cocktail .cocktail-ingredient:after,
-#rating-total li .cocktail .cocktail-ingredient:after { content: ', ' }
+#rating-total li .cocktail .cocktail-ingredient:after { content: ',' }
 .rating-list .item .cocktail .cocktail-ingredient:last-child:after,
 .rating-list .first-item .cocktail .cocktail-ingredient:last-child:after,
 #rating-total li .cocktail .cocktail-ingredient:last-child:after { content: '' }
