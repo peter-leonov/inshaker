@@ -29,7 +29,7 @@ Me.prototype =
 	
 	addTotalArrow: function()
 	{
-		var cocktails = this.cocktails.slice(0, 10) // ten cocktails
+		var cocktails = this.cocktails.slice(0, 10)
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
@@ -64,7 +64,7 @@ Me.prototype =
 			{
 				var c = cocktails[j]
 				
-				c.days = this.db[c.name]
+				c.days = this.rating[c.name]
 			}
 			cocktails = cocktails.sort(this.sort).slice(0, 10)
 			
