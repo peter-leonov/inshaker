@@ -17,8 +17,6 @@ Me.prototype =
 		share.render(window.location.href, 'Бар «' + nodes.barName.getAttribute('data-value') + '»')
 		
 		this.renderPhotos()
-		
-		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
 	renderPhotos: function ()
