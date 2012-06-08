@@ -255,11 +255,11 @@ Me.prototype =
 		
 		if (suggestions.length == 0)
 		{
-			root.toggleClassName('empty', true)
+			root.classList.add('empty')
 			return
 		}
 		
-		root.toggleClassName('empty', false)
+		root.classList.remove('empty')
 		
 		for (var i = 0, il = suggestions.length; i < il; i++)
 		{

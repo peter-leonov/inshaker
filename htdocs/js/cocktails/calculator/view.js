@@ -150,7 +150,7 @@ function CalculatorView() {
 		if (!this.addBtn)
 			return
 		
-		this.addBtn.toggleClassName('in-cart', state)
+		this.addBtn.classList.toggleTo('in-cart', state)
 	}
 	
 	this.renderCart = function(cartData){

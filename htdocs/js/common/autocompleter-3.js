@@ -153,7 +153,7 @@ Me.prototype =
 		for (; i < items.length; i++)
 			items[i].addClassName('hidden')
 		
-		this.nodes.list.toggleClassName('empty', rl == 0)
+		this.nodes.list.classList.toggleTo('empty', rl == 0)
 	},
 	
 	selectItem: function (num)
