@@ -49,6 +49,49 @@ Me.prototype =
 				}
 			}
 		}
+	},
+	
+	addIngredientsArrow: function()
+	{
+		var ingredients = this.ingredients
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingr = ingredients[i],
+				cocktails = Cocktail.getByIngredient(ingr)
+			
+			for (var j = 0, jl = cocktails.length; j < jl; j++)
+			{
+				var c = cocktails[j]
+				
+				c.days = this.db[c.name]
+			}
+			cocktails = cocktails.sort(this.sort).slice(0, 10)
+			
+			var sorts = []
+			for (var j = 0, jl = cocktails.length; j < jl; j++)
+			{
+				var c = cocktails[j],
+					day = 0,
+					pos
+				
+				do
+				{
+					if (!sorts[day])
+					{
+						sorts[day] = cocktails.slice()
+						sorts[day].sort(function(a, b){ return a.days[day+1] - b.days[day+1] })
+					}
+					pos = sorts[day].indexOf( c )
+				}
+				while ( j == pos && ++day < 10 )
+				
+				if (j > pos)
+					c.ingrArrow = day+1
+				else if (j < pos)
+					c.ingrArrow = (day+1)*-1
+			}
+		}
 	}
 }
 
