@@ -19,6 +19,10 @@ function Me ()
 
 Me.prototype =
 {
+	bind: function (nodes)
+	{
+		this.view.bind(nodes)
+	}
 }
 
 Me.className = 'RatingPage'
