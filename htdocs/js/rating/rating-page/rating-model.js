@@ -13,10 +13,9 @@ Me.prototype =
 		var cocktails = []
 		for (var k in this.rating)
 		{
-			var q = {}
-			q.name = k
-			q.days = this.rating[k]
-			cocktails.push(q)
+			var cocktail = Cocktail.getByName(k)
+			cocktail.days = this.rating[k]
+			cocktails.push(cocktail)
 		}
 		
 		this.cocktails = cocktails.sort(this.sort)
@@ -49,6 +48,7 @@ Me.prototype =
 				}
 			}
 		}
+		this.view.renderTotal(cocktails.sort(this.sort))
 	},
 	
 	addIngredientsArrow: function()
