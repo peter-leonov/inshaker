@@ -133,7 +133,7 @@ var Printer = {
 		var ingredients = []
 		for (var name in cartData.goods)
 			ingredients.push(Ingredient.getByName(name))
-		ingredients.sort(Ingredient.compareByName)
+		ingredients.sort(function (a, b) { return a.name.localeCompare(b.name) })
 		
 		for(var i = 0; i < ingredients.length; i++)
 		{
