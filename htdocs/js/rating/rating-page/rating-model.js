@@ -75,8 +75,7 @@ Me.prototype =
 				byIngr =
 				{
 					name: ingr,
-					count: cocktails.length,
-					cocktails: cocktails
+					count: cocktails.length
 				}
 			
 			for (var j = 0, jl = cocktails.length; j < jl; j++)
@@ -85,7 +84,7 @@ Me.prototype =
 				
 				c.days = this.rating[c.name]
 			}
-			cocktails = cocktails.sort(this.sort).slice(0, 10)
+			byIngr.cocktails = cocktails = cocktails.sort(this.sort).slice(0, 10)
 			
 			var sorts = []
 			for (var j = 0, jl = cocktails.length; j < jl; j++)
