@@ -166,7 +166,7 @@ var myProto =
 	
 	onscroll : function()
 	{
-		if(document.documentElement.hasClassName('loading'))
+		if(document.documentElement.classList.contains('loading'))
 		{
 			return
 		}
@@ -857,7 +857,7 @@ var myProto =
 	tryAddIngredient : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('no-have'))
+		if(node.classList.contains('control') && node.ingredient && node.parentNode.classList.contains('no-have'))
 		{
 			this.maybeHaveBoxScrollTop = this.nodes.maybeHave.box.offsetPosition().top - window.pageYOffset
 			this.controller.addIngredientToBar(node.ingredient)
@@ -868,7 +868,7 @@ var myProto =
 	{
 		var node = e.target
 		
-		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('have'))
+		if(node.classList.contains('control') && node.ingredient && node.parentNode.classList.contains('have'))
 		{
 			this.controller.removeIngredientFromBar(node.ingredient)
 		}	
@@ -887,7 +887,7 @@ var myProto =
 	handleVisibleCocktailClick : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.cocktail)
+		if(node.classList.contains('control') && node.cocktail)
 		{
 			this.controller.hideCocktail(node.cocktail)
 		}
@@ -896,7 +896,7 @@ var myProto =
 	handleHiddenCocktailClick : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.cocktail)
+		if(node.classList.contains('control') && node.cocktail)
 		{
 			this.controller.showCocktail(node.cocktail)
 		}		
@@ -1008,12 +1008,12 @@ var myProto =
 	{
 		var node = e.target
 		
-		if(!node.hasClassName('control') || !node.ingredient)
+		if(!node.classList.contains('control') || !node.ingredient)
 		{
 			return
 		}
 		
-		if(node.parentNode.hasClassName('no-have'))
+		if(node.parentNode.classList.contains('no-have'))
 		{
 			this.controller.addIngredientFromRecommends(node.ingredient)
 		}
@@ -1124,7 +1124,7 @@ var myProto =
 	sendEmail : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('sending'))
+		if(node.classList.contains('sending'))
 		{
 			return
 		}

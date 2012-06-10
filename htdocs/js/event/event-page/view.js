@@ -549,7 +549,7 @@ EventPage.view =
 		new InputTip().bind(inputs)
 		
 		var thanks = nodes.formPopupThanks
-		if (!thanks.hasClassName('default'))
+		if (!thanks.classList.contains('default'))
 		{
 			var input = inputs[i] = N('input')
 			input.type = 'hidden'
