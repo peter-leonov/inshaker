@@ -151,7 +151,7 @@ Me.prototype =
 		if (current && current.mapPoint)
 		{
 			var node = current.mapPoint.createNode()
-			node.addClassName('selected')
+			node.classList.add('selected')
 		}
 		
 		if (this.lastCity != state.city)
@@ -248,7 +248,7 @@ Me.prototype =
 			label.className = 'label'
 			label.innerHTML  = 'Бар недавно открылся, заходи посмотреть!'
 			nameCont.appendChild(label)
-			main.addClassName(bar.labelType)
+			main.classList.add(bar.labelType)
 		}
 		
 		return main

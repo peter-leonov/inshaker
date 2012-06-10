@@ -64,7 +64,7 @@ Me.prototype =
 		node.unLazy = function ()
 		{
 			image.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
-			this.removeClassName('lazy')
+			this.classList.remove('lazy')
 		}
 		
 		return node

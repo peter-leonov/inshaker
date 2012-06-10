@@ -68,7 +68,7 @@ Me.prototype =
 		var me = this
 		googleApiLoader.addEventListener('maps', function (e) { me.apiLoaded(e) }, false)
 		googleApiLoader.load('maps', 2)
-		nodes.wrapper.addClassName('loading')
+		nodes.wrapper.classList.add('loading')
 	},
 	
 	apiLoaded: function (e)
@@ -102,7 +102,7 @@ Me.prototype =
 	mapLoaded: function ()
 	{
 		var me = this
-		this.nodes.wrapper.removeClassName('loading')
+		this.nodes.wrapper.classList.remove('loading')
 		this.api.Event.addListener(this.map, 'moveend', function () { me.mapMoveEnd(this) })
 		this.addControls()
 	},

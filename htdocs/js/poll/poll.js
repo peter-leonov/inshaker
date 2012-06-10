@@ -68,7 +68,7 @@ Me.prototype =
 		var answer = FormHelper.toHash(e.target).answer
 		this.poll(answer)
 		
-		this.nodes.root.addClassName('done')
+		this.nodes.root.classList.add('done')
 		
 		var popup = this.popup
 		window.setTimeout(function () { popup.hide() }, 1000)

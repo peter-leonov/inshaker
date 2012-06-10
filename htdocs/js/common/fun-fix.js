@@ -94,7 +94,7 @@ Me.prototype =
 			enter: function (sm)
 			{
 				this.setTop(0)
-				this.node.addClassName('fixed')
+				this.node.classList.add('fixed')
 			},
 			job: function (sm)
 			{
@@ -106,15 +106,15 @@ Me.prototype =
 			},
 			leave: function ()
 			{
-				this.node.removeClassName('fixed')
+				this.node.classList.remove('fixed')
 			}
 		}
 	},
 	
 	onswitch: function (from, to)
 	{
-		this.node.removeClassName('state-' + from)
-		this.node.addClassName('state-' + to)
+		this.node.classList.remove('state-' + from)
+		this.node.classList.add('state-' + to)
 	},
 	
 	windowScrolled: function (y)

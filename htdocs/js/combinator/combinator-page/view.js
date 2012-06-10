@@ -179,15 +179,15 @@ Me.prototype =
 		var nodes = this.nodes,
 			output = nodes.output
 		
-		output.removeClassName('initial-state')
-		output.removeClassName('result-state')
-		output.removeClassName('empty-state')
+		output.classList.remove('initial-state')
+		output.classList.remove('result-state')
+		output.classList.remove('empty-state')
 		
 		var inco = this.inco, inli = this.inli
 		
 		if (!cocktails)
 		{
-			output.addClassName('initial-state')
+			output.classList.add('initial-state')
 			inco.setCocktails([])
 			inco.sleep()
 			inli.wake()
@@ -199,7 +199,7 @@ Me.prototype =
 		{
 			inco.sleep()
 			inli.sleep()
-			output.addClassName('empty-state')
+			output.classList.add('empty-state')
 			inco.setCocktails(cocktails)
 			return
 		}
@@ -207,7 +207,7 @@ Me.prototype =
 		inco.wake()
 		inli.sleep()
 		
-		output.addClassName('result-state')
+		output.classList.add('result-state')
 		inco.setCocktails(cocktails)
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
@@ -255,11 +255,11 @@ Me.prototype =
 		
 		if (suggestions.length == 0)
 		{
-			root.toggleClassName('empty', true)
+			root.classList.add('empty')
 			return
 		}
 		
-		root.toggleClassName('empty', false)
+		root.classList.remove('empty')
 		
 		for (var i = 0, il = suggestions.length; i < il; i++)
 		{

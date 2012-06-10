@@ -144,7 +144,7 @@ Me.prototype =
 		
 		root.addEventListener('mousemove', move, false)
 		position(0)
-		root.removeClassName('loading')
+		root.classList.remove('loading')
 	},
 	
 	bindGoodPopup: function ()

@@ -7,14 +7,19 @@
 	
 	<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
 	<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+	<script src="../src/modules/prototype.js"></script>
 	<script src="../src/modules/cosy.js"></script>
 	<script>
 	if (!document.documentElement.classList)
+	{
+		$.load('../src/fixes/dom-token-list.js')
 		$.load('../src/fixes/class-list.js')
+	}
 	</script>
 </head>
 <body>
 <script>
+Tests.ignoreGlobals(['_firebug'])
 Tests.test(function (t)
 {
 	function copy (list)
@@ -27,6 +32,39 @@ Tests.test(function (t)
 			ary[i] = list.item(i)
 		return ary
 	}
+	
+	t.test('extend', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.ok(window.DOMTokenList, 'DOMTokenList')
+		
+		DOMTokenList.prototype.abcdefGH = function () { return 123 }
+		
+		t.eq(cl.abcdefGH(), 123, 'cl.abcdefGH()')
+	})
+	
+	t.test('multiple', function (t)
+	{
+		t.mayFail()
+		
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.exception(function (t)
+		{
+			cl.add('a b c')
+		},
+		function (t, ex)
+		{
+			t.match(ex.toString(), /invalid/i, 'invalid')
+		},
+		'add("a b c")')
+		
+		t.eq(node.className, '', 'className')
+	})
+	
 	
 	t.test('write className read classList', function (t)
 	{
@@ -46,6 +84,8 @@ Tests.test(function (t)
 		t.eq(cl.item(1), 'b', 'item(1)')
 		t.eq(cl.item(10), null, 'item(10)')
 		t.eq(cl.item(99), null, 'item(99)')
+		
+		t.eq('' + cl, 'a b c', 'toString()')
 		
 		node.className = ''
 		t.no(cl.contains('a'), 'a')
@@ -79,8 +119,8 @@ Tests.test(function (t)
 		t.eq(cl.toggle('a'), true, 'toggle to true')
 		t.eq(node.className, 'c a', 'toggle a')
 		
-		t.ok(cl.contains('a'), 'contains a')
-		t.no(cl.contains('b'), 'contains b')
+		t.eq(cl.contains('a'), true, 'contains a')
+		t.eq(cl.contains('b'), false, 'contains b')
 	})
 	
 	t.test('spaces in className', function (t)

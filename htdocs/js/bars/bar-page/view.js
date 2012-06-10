@@ -17,8 +17,6 @@ Me.prototype =
 		share.render(window.location.href, 'Бар «' + nodes.barName.getAttribute('data-value') + '»')
 		
 		this.renderPhotos()
-		
-		nodes.barPrev.hide = nodes.barNext.hide = function () { this.addClassName('hidden') }
 	},
 	
 	renderPhotos: function ()
@@ -99,7 +97,7 @@ Me.prototype =
 		map.setPoints(points)
 		
 		var node = current.mapPoint.createNode()
-		node.addClassName('selected')
+		node.classList.add('selected')
 		map.setCenter({lat: current.point[0], lng: current.point[1]}, 15)
 	},
 	

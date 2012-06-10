@@ -133,7 +133,7 @@ var myProto =
 						row = node['data-row']
 					
 					node.appendChild(me.renderCocktail(row.cocktail, row.ingredients))
-					node.removeClassName('lazy')
+					node.classList.remove('lazy')
 					
 					box.loaded = true
 				}
@@ -183,11 +183,11 @@ var myProto =
 			
 			if (group.collapsed)
 			{
-				list.addClassName('collapsed')
+				list.classList.add('collapsed')
 				continue
 			}
 			else
-				list.removeClassName('collapsed')
+				list.classList.remove('collapsed')
 			
 			var rows = group.rows
 			for (var j = 0, jl = rows.length; j < jl; j++)

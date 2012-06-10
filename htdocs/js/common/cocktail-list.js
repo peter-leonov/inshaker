@@ -34,7 +34,7 @@ Me.prototype =
 					image = node.img
 				
 				image.src = image.lazySrc
-				node.removeClassName('lazy')
+				node.classList.remove('lazy')
 			}
 		}
 		

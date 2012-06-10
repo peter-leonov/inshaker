@@ -1,6 +1,6 @@
 ;(function(){
 
-function remClass(elem, className) { if(elem) elem.removeClassName(className) }
+function remClass(elem, className) { if(elem) elem.classList.remove(className) }
 
 function Me (nodes)
 {
@@ -106,10 +106,10 @@ Me.prototype =
 			} else { self.riJustInited = false }
 			
 			// big pager buttons
-			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName('disabled');
-			else nodes.bigNext.removeClassName('disabled');
-			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName('disabled');
-			else nodes.bigPrev.removeClassName('disabled');
+			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
+			else nodes.bigNext.classList.remove('disabled');
+			if(num == 0 || self.np == 1) nodes.bigPrev.classList.add('disabled');
+			else nodes.bigPrev.classList.remove('disabled');
 		}
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
@@ -119,7 +119,7 @@ Me.prototype =
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
-			nodes.panels.addClassName('just-suggested')
+			nodes.panels.classList.add('just-suggested')
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
@@ -142,13 +142,13 @@ Me.prototype =
 		
 		var last = nodes.tabs[this.lastState]
 		if (last)
-			last.removeClassName('selected')
+			last.classList.remove('selected')
 		
 		this.lastState = state
 		
 		var present = nodes.tabs[state]
 		if (present)
-			present.addClassName('selected')
+			present.classList.add('selected')
 		
 		nodes.panels.className = state
 		
@@ -192,7 +192,7 @@ Me.prototype =
 				}
 			}   
 		}
-		this.filterElems.letter.addClassName('selected-button');
+		this.filterElems.letter.classList.add('selected-button');
 		
 		if(filters.page > 0) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
@@ -215,9 +215,9 @@ Me.prototype =
 		nodes.resultsRoot.empty();
 		
 		if (resultSet.length)
-			nodes.resultsDisplay.removeClassName('empty')
+			nodes.resultsDisplay.classList.remove('empty')
 		else
-			nodes.resultsDisplay.addClassName('empty')
+			nodes.resultsDisplay.classList.add('empty')
 			
 		
 		this.renderedPages = {}
