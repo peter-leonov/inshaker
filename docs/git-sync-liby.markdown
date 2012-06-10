@@ -2,7 +2,7 @@
 Синхронизируемся с Либи
 =======================
 
-Подключим репу и создадим ветку ветку:
+Подключим репу и создадим ветку:
 
 	git remote add liby git@github.com:kung-fu-tzu/liby.git
 	git fetch liby
