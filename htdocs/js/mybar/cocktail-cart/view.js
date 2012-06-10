@@ -45,16 +45,16 @@ var myProto =
 		var me = this
 		var appended = true
 		
-		clone.root.addClassName('first-clone')
+		clone.root.classList.add('first-clone')
 		var alcoLen = alcoholCocktails.length
 		if(alcoLen != 0)
 		{
-			clone.root.addClassName('first-alco-clone')
+			clone.root.classList.add('first-alco-clone')
 			for (var i = 0; i < alcoLen; i++) 
 			{
 				var cocktail = alcoholCocktails[i]
 				var li = renderCocktail(cocktail)
-				li.addClassName(i%2 ? 'odd' : 'even')
+				li.classList.add(i%2 ? 'odd' : 'even')
 				df.appendChild(li)
 				appended = false
 				if(--items <= 0)
@@ -87,12 +87,12 @@ var myProto =
 			{
 				createPageWrapper()
 			}
-			clone.root.addClassName('first-non-alco-clone')
+			clone.root.classList.add('first-non-alco-clone')
 			for (var i = 0; i < nonAlcoLen; i++) 
 			{
 				var cocktail = nonAlcoholCocktails[i]
 				var li = renderCocktail(cocktail)
-				li.addClassName(i%2 ? 'odd' : 'even')
+				li.classList.add(i%2 ? 'odd' : 'even')
 				df.appendChild(li)
 				appended = false
 				if(--items <= 0)
@@ -101,7 +101,7 @@ var myProto =
 					clone.nodes.nonAlcoholBox.show()
 					clone.root.show()
 					if(i + 1 == nonAlcoLen)
-						clone.root.addClassName('last-clone')
+						clone.root.classList.add('last-clone')
 					nodes.main.appendChild(clone.root)
 					createPageWrapper()
 					appended = true
@@ -109,7 +109,7 @@ var myProto =
 			}
 		}
 		
-		clone.root.addClassName('last-clone')
+		clone.root.classList.add('last-clone')
 		
 		if(appended == false)
 		{
@@ -120,7 +120,7 @@ var myProto =
 		}
 		
 		if (alcoLen == 0 || nonAlcoLen == 0)
-			clone.nodes.cartBox.addClassName('same-strength')
+			clone.nodes.cartBox.classList.add('same-strength')
 		
 		function createPageWrapper()
 		{
@@ -138,7 +138,7 @@ var myProto =
 			var imgTd = Nc('td', 'img-td')
 			var img = new Image()
 			img.src = cocktail.getBigImageSrc()
-			img.addClassName('cocktail-image')
+			img.classList.add('cocktail-image')
 			var path = '/cocktail/' + cocktail.name_eng.htmlName() + '/'
 			var a = N('a')
 			a.href = path

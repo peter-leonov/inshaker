@@ -15,7 +15,7 @@ Cocktail.prototype.getPreviewNodeExt = function (have)
 	var tick = Nc('div', 'tick')
 	li.appendChild(tick)
 	
-	li.addClassName(have ? 'have' : 'no-have')
+	li.classList.add(have ? 'have' : 'no-have')
 	
 	return li
 }
@@ -117,7 +117,7 @@ var myProto =
 		li.appendChild(node)
 		li.appendChild(control)
 		
-		li.addClassName(have ? 'have' : 'no-have')
+		li.classList.add(have ? 'have' : 'no-have')
 		
 		return li
 	},
@@ -398,9 +398,9 @@ var myProto =
 		
 		if(cl == 0)
 		{
-			this.nodes.cocktails.box.addClassName('zero-cocktails')
-			this.nodes.share.box.addClassName('zero-cocktails')
-			this.nodes.mainFunFix.addClassName('zero-cocktails')
+			this.nodes.cocktails.box.classList.add('zero-cocktails')
+			this.nodes.share.box.classList.add('zero-cocktails')
+			this.nodes.mainFunFix.classList.add('zero-cocktails')
 		}
 		else
 		{
@@ -920,12 +920,12 @@ var myProto =
 					node = item.node
 				if(cocktailsHash[item.cocktail.name])
 				{
-					node.addClassName('have')
+					node.classList.add('have')
 					node.removeClassName('no-have')
 				}
 				else
 				{
-					node.addClassName('no-have')
+					node.classList.add('no-have')
 					node.removeClassName('have')				
 				}
 			}
@@ -936,12 +936,12 @@ var myProto =
 					node = item.node
 				if(ingredientsHash[item.ingredient.name])
 				{
-					node.addClassName('have')
+					node.classList.add('have')
 					node.removeClassName('no-have')
 				}
 				else
 				{
-					node.addClassName('no-have')
+					node.classList.add('no-have')
 					node.removeClassName('have')				
 				}
 			}
@@ -953,12 +953,12 @@ var myProto =
 				node = recommend.node
 			if(ingredientsHash[recommend.ingredient.name])
 			{
-				node.addClassName('have')
+				node.classList.add('have')
 				node.removeClassName('no-have')
 			}
 			else
 			{
-				node.addClassName('no-have')
+				node.classList.add('no-have')
 				node.removeClassName('have')				
 			}
 		}
@@ -1128,7 +1128,7 @@ var myProto =
 		{
 			return
 		}
-		node.addClassName('sending')
+		node.classList.add('sending')
 		var nodes = this.nodes.share.popups.email,
 			address = nodes.address.value,
 			mailer = nodes.mailer.value,

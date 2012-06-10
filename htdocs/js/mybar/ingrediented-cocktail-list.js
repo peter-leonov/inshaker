@@ -183,7 +183,7 @@ var myProto =
 			
 			if (group.collapsed)
 			{
-				list.addClassName('collapsed')
+				list.classList.add('collapsed')
 				continue
 			}
 			else

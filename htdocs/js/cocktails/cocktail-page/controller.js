@@ -92,7 +92,7 @@ var Controller = {
 	{
 		var root = this.nodes.hreview
 		root.removeClassName(this.lastFrame)
-		root.addClassName(frame)
+		root.classList.add(frame)
 		
 		this.lastFrame = frame
 		
@@ -126,7 +126,7 @@ var Controller = {
 			a = $('a.author')
 			if (a)
 			{
-				a.addClassName('active')
+				a.classList.add('active')
 				a.href = barman.pageHref()
 			}
 		}
@@ -253,8 +253,8 @@ var Controller = {
 		
 		if (size <= 1)
 		{
-			nodes.next.addClassName('disabled')
-			nodes.prev.addClassName('disabled')
+			nodes.next.classList.add('disabled')
+			nodes.prev.classList.add('disabled')
 			return
 		}
 		
@@ -402,6 +402,6 @@ var Controller = {
 	
 	expandRelated: function ()
 	{
-		this.nodes.moreBox.addClassName('wide')
+		this.nodes.moreBox.classList.add('wide')
 	}
 }

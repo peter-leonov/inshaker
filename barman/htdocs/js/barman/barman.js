@@ -68,7 +68,7 @@ $.onready(function()
 		r.onreadystatechange = function (e)
 		{
 			if (this.status != 200)
-				output.addClassName('server-error')
+				output.classList.add('server-error')
 			else
 				output.removeClassName('server-error')
 			

@@ -60,7 +60,7 @@ Me.prototype =
 		}
 		
 		// log(state)
-		page.addClassName(state)
+		page.classList.add(state)
 	}
 }
 

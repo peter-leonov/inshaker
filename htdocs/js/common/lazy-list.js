@@ -124,12 +124,12 @@ Me.prototype =
 		else if (realCount == 0)
 		{
 			root.removeClassName('single')
-			root.addClassName('empty')
+			root.classList.add('empty')
 			scroller.setMovable(false)
 		}
 		else
 		{
-			root.addClassName('single')
+			root.classList.add('single')
 			root.removeClassName('empty')
 			scroller.setMovable(false)
 		}

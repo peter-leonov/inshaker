@@ -37,7 +37,7 @@ UIButton.prototype =
 		}
 		else
 		{
-			node.addClassName('active')
+			node.classList.add('active')
 			node.removeEventListener('click', conf.onclick, false)
 		}
 	},

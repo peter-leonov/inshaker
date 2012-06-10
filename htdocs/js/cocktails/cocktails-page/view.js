@@ -106,9 +106,9 @@ Me.prototype =
 			} else { self.riJustInited = false }
 			
 			// big pager buttons
-			if(num == (self.np-1) || self.np == 1) nodes.bigNext.addClassName('disabled');
+			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
 			else nodes.bigNext.removeClassName('disabled');
-			if(num == 0 || self.np == 1) nodes.bigPrev.addClassName('disabled');
+			if(num == 0 || self.np == 1) nodes.bigPrev.classList.add('disabled');
 			else nodes.bigPrev.removeClassName('disabled');
 		}
 		
@@ -119,7 +119,7 @@ Me.prototype =
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
-			nodes.panels.addClassName('just-suggested')
+			nodes.panels.classList.add('just-suggested')
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
@@ -148,7 +148,7 @@ Me.prototype =
 		
 		var present = nodes.tabs[state]
 		if (present)
-			present.addClassName('selected')
+			present.classList.add('selected')
 		
 		nodes.panels.className = state
 		
@@ -192,7 +192,7 @@ Me.prototype =
 				}
 			}   
 		}
-		this.filterElems.letter.addClassName('selected-button');
+		this.filterElems.letter.classList.add('selected-button');
 		
 		if(filters.page > 0) {
 			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
@@ -217,7 +217,7 @@ Me.prototype =
 		if (resultSet.length)
 			nodes.resultsDisplay.removeClassName('empty')
 		else
-			nodes.resultsDisplay.addClassName('empty')
+			nodes.resultsDisplay.classList.add('empty')
 			
 		
 		this.renderedPages = {}

@@ -258,7 +258,7 @@ EventPage.view =
 		Switcher.bind(main, buttons, tabs)
 		main.select(0)
 		
-		this.nodes.sponsorsLow.addClassName('visible')
+		this.nodes.sponsorsLow.classList.add('visible')
 	},
 	
 	createLowSponsorNode: function (logosSet)
@@ -385,7 +385,7 @@ EventPage.view =
 			this.nodes.ratingShowAll.show()
 		}
 		
-		nodes.sidebar.addClassName('visible')
+		nodes.sidebar.classList.add('visible')
 	},
 	
 	showAllRating: function ()
@@ -447,7 +447,7 @@ EventPage.view =
 				nodes.sponsorsHighTitle.innerHTML = sponsor.name
 			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.root + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
-			nodes.sidebar.addClassName('visible')
+			nodes.sidebar.classList.add('visible')
 		}
 		else
 		{
@@ -474,7 +474,7 @@ EventPage.view =
 			
 			function animatePopups ()
 			{
-				illustrationPopups.addClassName('hidden')
+				illustrationPopups.classList.add('hidden')
 				window.setTimeout
 				(
 					function ()
@@ -520,7 +520,7 @@ EventPage.view =
 			if (field.type == 'textarea')
 			{
 				input = N('textarea')
-				label.addClassName('big')
+				label.classList.add('big')
 			}
 			else
 			{
@@ -596,7 +596,7 @@ EventPage.view =
 		var button = this.nodes.formPopupSubmit
 		if (status)
 		{
-			button.addClassName('disabled')
+			button.classList.add('disabled')
 			button.setAttribute('disabled', true)
 		}
 		else

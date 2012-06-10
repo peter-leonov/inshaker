@@ -83,7 +83,7 @@ Me.prototype =
 			return
 		this.focused = true
 		
-		this.nodes.list.addClassName('focused')
+		this.nodes.list.classList.add('focused')
 		document.addEventListener('keypress', this.listeners.keypress, true)
 	},
 	
@@ -151,7 +151,7 @@ Me.prototype =
 		}
 		
 		for (; i < items.length; i++)
-			items[i].addClassName('hidden')
+			items[i].classList.add('hidden')
 		
 		this.nodes.list.classList.toggleTo('empty', rl == 0)
 	},
@@ -169,7 +169,7 @@ Me.prototype =
 		
 		var node = items[num]
 		if (node)
-			node.addClassName('selected')
+			node.classList.add('selected')
 		
 		this.selected = num
 	}

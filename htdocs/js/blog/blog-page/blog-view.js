@@ -110,7 +110,7 @@ Me.prototype =
 		
 		var root = this.nodes.root
 		root.removeClassName('show-tag-' + this.lastTagKey)
-		root.addClassName('show-tag-' + key)
+		root.classList.add('show-tag-' + key)
 		this.lastTagKey = key
 	},
 	

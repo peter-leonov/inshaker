@@ -187,7 +187,7 @@ Me.prototype =
 		
 		if (!cocktails)
 		{
-			output.addClassName('initial-state')
+			output.classList.add('initial-state')
 			inco.setCocktails([])
 			inco.sleep()
 			inli.wake()
@@ -199,7 +199,7 @@ Me.prototype =
 		{
 			inco.sleep()
 			inli.sleep()
-			output.addClassName('empty-state')
+			output.classList.add('empty-state')
 			inco.setCocktails(cocktails)
 			return
 		}
@@ -207,7 +207,7 @@ Me.prototype =
 		inco.wake()
 		inli.sleep()
 		
-		output.addClassName('result-state')
+		output.classList.add('result-state')
 		inco.setCocktails(cocktails)
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')

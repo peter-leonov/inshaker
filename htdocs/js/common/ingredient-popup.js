@@ -61,7 +61,7 @@ var myProto =
 		if (brand)
 		{
 			nodes.mark.appendChild(T(ingredient.brand))
-			nodes.ingredientWindow.addClassName('branded')
+			nodes.ingredientWindow.classList.add('branded')
 			nodes.brand.appendChild(T(ingredient.mark))
 			nodes.brand.href = Ingredient.ingredientsLinkByMark(ingredient.mark)
 		}
@@ -139,7 +139,7 @@ var myProto =
 		var good = Good.getBySellName(ingredient.name)[0]
 		if (good)
 		{
-			nodes.ingredientWindow.addClassName('can-buy')
+			nodes.ingredientWindow.classList.add('can-buy')
 			nodes.buy.appendChild(T(good.name))
 			nodes.buy.href = good.getHref()
 		}
