@@ -20,7 +20,7 @@ EventPage =
 
 $.onready(function ()
 {
-	document.documentElement.removeClassName('loading')
+	document.documentElement.classList.remove('loading')
 	UserAgent.setupDocumentElementClassNames()
 })
 
