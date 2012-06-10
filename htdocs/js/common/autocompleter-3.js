@@ -93,7 +93,7 @@ Me.prototype =
 			return
 		this.focused = false
 		
-		this.nodes.list.removeClassName('focused')
+		this.nodes.list.classList.remove('focused')
 		document.removeEventListener('keypress', this.listeners.keypress, true)
 	},
 	
@@ -147,7 +147,7 @@ Me.prototype =
 				item = items[i]
 			item.empty()
 			item.appendChild(r[1]) // [1] means a text representing node (or DocumentFragment)
-			item.removeClassName('hidden')
+			item.classList.remove('hidden')
 		}
 		
 		for (; i < items.length; i++)
@@ -165,7 +165,7 @@ Me.prototype =
 		
 		var node = items[this.selected]
 		if (node)
-			node.removeClassName('selected')
+			node.classList.remove('selected')
 		
 		var node = items[num]
 		if (node)

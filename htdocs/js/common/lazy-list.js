@@ -113,8 +113,8 @@ Me.prototype =
 		
 		if (realCount >= conf.pageLength)
 		{
-			root.removeClassName('single')
-			root.removeClassName('empty')
+			root.classList.remove('single')
+			root.classList.remove('empty')
 			
 			var last = boxes[realCount - 1]
 			this.scroller.setWidth(last.x + last.w)
@@ -123,14 +123,14 @@ Me.prototype =
 		}
 		else if (realCount == 0)
 		{
-			root.removeClassName('single')
+			root.classList.remove('single')
 			root.classList.add('empty')
 			scroller.setMovable(false)
 		}
 		else
 		{
 			root.classList.add('single')
-			root.removeClassName('empty')
+			root.classList.remove('empty')
 			scroller.setMovable(false)
 		}
 	},

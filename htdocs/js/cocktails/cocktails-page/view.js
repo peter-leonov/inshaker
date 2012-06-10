@@ -1,6 +1,6 @@
 ;(function(){
 
-function remClass(elem, className) { if(elem) elem.removeClassName(className) }
+function remClass(elem, className) { if(elem) elem.classList.remove(className) }
 
 function Me (nodes)
 {
@@ -107,9 +107,9 @@ Me.prototype =
 			
 			// big pager buttons
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
-			else nodes.bigNext.removeClassName('disabled');
+			else nodes.bigNext.classList.remove('disabled');
 			if(num == 0 || self.np == 1) nodes.bigPrev.classList.add('disabled');
-			else nodes.bigPrev.removeClassName('disabled');
+			else nodes.bigPrev.classList.remove('disabled');
 		}
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
@@ -142,7 +142,7 @@ Me.prototype =
 		
 		var last = nodes.tabs[this.lastState]
 		if (last)
-			last.removeClassName('selected')
+			last.classList.remove('selected')
 		
 		this.lastState = state
 		
@@ -215,7 +215,7 @@ Me.prototype =
 		nodes.resultsRoot.empty();
 		
 		if (resultSet.length)
-			nodes.resultsDisplay.removeClassName('empty')
+			nodes.resultsDisplay.classList.remove('empty')
 		else
 			nodes.resultsDisplay.classList.add('empty')
 			

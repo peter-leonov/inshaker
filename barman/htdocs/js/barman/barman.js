@@ -70,7 +70,7 @@ $.onready(function()
 			if (this.status != 200)
 				output.classList.add('server-error')
 			else
-				output.removeClassName('server-error')
+				output.classList.remove('server-error')
 			
 			var readyState = this.readyState
 			

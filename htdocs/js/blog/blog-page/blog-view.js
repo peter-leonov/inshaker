@@ -109,7 +109,7 @@ Me.prototype =
 		var key = tag == 'all' ? tag : this.tagCloud.getTagIndex(tag)
 		
 		var root = this.nodes.root
-		root.removeClassName('show-tag-' + this.lastTagKey)
+		root.classList.remove('show-tag-' + this.lastTagKey)
 		root.classList.add('show-tag-' + key)
 		this.lastTagKey = key
 	},

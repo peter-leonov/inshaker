@@ -91,7 +91,7 @@ var Controller = {
 	renderFrame: function (frame)
 	{
 		var root = this.nodes.hreview
-		root.removeClassName(this.lastFrame)
+		root.classList.remove(this.lastFrame)
 		root.classList.add(frame)
 		
 		this.lastFrame = frame
@@ -118,7 +118,7 @@ var Controller = {
 			var a = $('#author')
 			if (a)
 			{
-				a.removeClassName('hidden')
+				a.classList.remove('hidden')
 				a.href = barman.pageHref()
 			}
 			
@@ -135,7 +135,7 @@ var Controller = {
 		if (bars.length)
 		{
 			var a = $('#where-to-taste')
-			a.removeClassName('hidden')
+			a.classList.remove('hidden')
 			
 			if (bars.length == 1)
 			{

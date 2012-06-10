@@ -63,7 +63,7 @@ Me.prototype =
 						image = node.barmanImageSrc
 					
 					node.style.backgroundImage = image
-					node.removeClassName('lazy')
+					node.classList.remove('lazy')
 					
 					box.loaded = true
 				}

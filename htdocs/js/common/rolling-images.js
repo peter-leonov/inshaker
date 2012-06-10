@@ -119,7 +119,7 @@ RollingImagesLite.prototype =
 	updateNavigation: function ()
 	{
 		for (var i = 0, il = this.buttons.length; i < il; i++)
-			this.buttons[i].removeClassName('selected-button')
+			this.buttons[i].classList.remove('selected-button')
 		
 		var button = this.buttons[this.current]
 		if (button)
@@ -128,7 +128,7 @@ RollingImagesLite.prototype =
 		if (this.aPrev)
 		{
 			if (this.current > 0)
-				this.aPrev.removeClassName('disabled')
+				this.aPrev.classList.remove('disabled')
 			else
 				this.aPrev.classList.add('disabled')
 		}
@@ -136,7 +136,7 @@ RollingImagesLite.prototype =
 		if (this.aNext)
 		{
 			if (this.current < this.points.length - 1)
-				this.aNext.removeClassName('disabled')
+				this.aNext.classList.remove('disabled')
 			else
 				this.aNext.classList.add('disabled')
 		}

@@ -179,9 +179,9 @@ Me.prototype =
 		var nodes = this.nodes,
 			output = nodes.output
 		
-		output.removeClassName('initial-state')
-		output.removeClassName('result-state')
-		output.removeClassName('empty-state')
+		output.classList.remove('initial-state')
+		output.classList.remove('result-state')
+		output.classList.remove('empty-state')
 		
 		var inco = this.inco, inli = this.inli
 		

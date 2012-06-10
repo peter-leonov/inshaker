@@ -38,7 +38,7 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	document.documentElement.removeClassName('loading')
+	document.documentElement.classList.remove('loading')
 	var nodes = 
 	{
 		barName : $('#common-main-wrapper .header .bar-name'),

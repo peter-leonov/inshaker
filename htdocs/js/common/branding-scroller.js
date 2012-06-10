@@ -44,18 +44,18 @@ Me.prototype =
 		switch (state)
 		{
 			case 'stick-top':
-			page.removeClassName('float-fixed')
-			page.removeClassName('stick-bottom')
+			page.classList.remove('float-fixed')
+			page.classList.remove('stick-bottom')
 			break
 			
 			case 'float-fixed':
-			page.removeClassName('stick-top')
-			page.removeClassName('stick-bottom')
+			page.classList.remove('stick-top')
+			page.classList.remove('stick-bottom')
 			break
 			
 			case 'stick-bottom':
-			page.removeClassName('stick-top')
-			page.removeClassName('float-fixed')
+			page.classList.remove('stick-top')
+			page.classList.remove('float-fixed')
 			break
 		}
 		

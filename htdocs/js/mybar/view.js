@@ -124,7 +124,7 @@ var myProto =
 	
 	showView : function()
 	{
-		document.documentElement.removeClassName('loading')		
+		document.documentElement.classList.remove('loading')
 	},
 	
 	focusSearchInput : function()
@@ -404,9 +404,9 @@ var myProto =
 		}
 		else
 		{
-			this.nodes.cocktails.box.removeClassName('zero-cocktails')
-			this.nodes.share.box.removeClassName('zero-cocktails')
-			this.nodes.mainFunFix.removeClassName('zero-cocktails')
+			this.nodes.cocktails.box.classList.remove('zero-cocktails')
+			this.nodes.share.box.classList.remove('zero-cocktails')
+			this.nodes.mainFunFix.classList.remove('zero-cocktails')
 		}
 		
 		// if(cl == 0)
@@ -921,12 +921,12 @@ var myProto =
 				if(cocktailsHash[item.cocktail.name])
 				{
 					node.classList.add('have')
-					node.removeClassName('no-have')
+					node.classList.remove('no-have')
 				}
 				else
 				{
 					node.classList.add('no-have')
-					node.removeClassName('have')				
+					node.classList.remove('have')
 				}
 			}
 			
@@ -937,12 +937,12 @@ var myProto =
 				if(ingredientsHash[item.ingredient.name])
 				{
 					node.classList.add('have')
-					node.removeClassName('no-have')
+					node.classList.remove('no-have')
 				}
 				else
 				{
 					node.classList.add('no-have')
-					node.removeClassName('have')				
+					node.classList.remove('have')
 				}
 			}
 		}
@@ -954,12 +954,12 @@ var myProto =
 			if(ingredientsHash[recommend.ingredient.name])
 			{
 				node.classList.add('have')
-				node.removeClassName('no-have')
+				node.classList.remove('no-have')
 			}
 			else
 			{
 				node.classList.add('no-have')
-				node.removeClassName('have')				
+				node.classList.remove('have')
 			}
 		}
 		

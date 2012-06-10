@@ -45,7 +45,7 @@ self[Me.className] = Papa = Me
 
 function onready ()
 {
-	document.documentElement.removeClassName('loading')
+	document.documentElement.classList.remove('loading')
 	
 	var nodes =
 	{

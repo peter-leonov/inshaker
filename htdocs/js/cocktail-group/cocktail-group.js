@@ -10,7 +10,7 @@ Me.prototype =
 	{
 		IngredientPopup.bootstrap()
 		
-		document.documentElement.removeClassName('loading')
+		document.documentElement.classList.remove('loading')
 		
 		var items = nodes.cocktailItems,
 			cocktails = []

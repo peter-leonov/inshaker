@@ -106,14 +106,14 @@ Me.prototype =
 			},
 			leave: function ()
 			{
-				this.node.removeClassName('fixed')
+				this.node.classList.remove('fixed')
 			}
 		}
 	},
 	
 	onswitch: function (from, to)
 	{
-		this.node.removeClassName('state-' + from)
+		this.node.classList.remove('state-' + from)
 		this.node.classList.add('state-' + to)
 	},
 	

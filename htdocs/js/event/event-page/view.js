@@ -484,7 +484,7 @@ EventPage.view =
 						else
 							illustration.scrollTop += 300
 						
-						illustrationPopups.removeClassName('hidden')
+						illustrationPopups.classList.remove('hidden')
 					},
 					500
 				)
@@ -602,7 +602,7 @@ EventPage.view =
 		else
 		{
 			button.removeAttribute('disabled')
-			button.removeClassName('disabled')
+			button.classList.remove('disabled')
 		}
 	},
 	
