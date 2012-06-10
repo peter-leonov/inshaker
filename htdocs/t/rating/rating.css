@@ -76,3 +76,5 @@
 #rating-total li .cocktail h3 .cocktail-name { font-size: 18px; color: #000; }
 
 #rating-total li .cocktail .cocktail-ingredient { font-size: 11px; color: #505050; }
+
+<!--# include virtual="/t/ingredient-popup.css" -->

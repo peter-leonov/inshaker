@@ -12,6 +12,36 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		this.controller.temp()
+		
+		var view = this
+		nodes.mainWrapper.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
+	},
+	
+	maybeIngredientClicked : function(target)
+	{
+		if(!target.parentNode)
+			return
+		
+		var ingredient = target['data-ingredient']
+		if(ingredient)
+		{
+			this.controller.ingredientSelected(ingredient)
+		}
+	},
+	
+	showIngredient: function (ingredient)
+	{
+		if (ingredient)
+		{
+			var popup = IngredientPopup.show(ingredient)
+			var controller = this.controller
+			popup.onhide = function () { controller.ingredientSelected(null) }
+		}
+		else
+		{
+			IngredientPopup.hide()
+		}
 	},
 	
 	renderTotal: function(cocktails)
@@ -67,12 +97,17 @@ Me.prototype =
 				}
 
 				var a = Nct('a', 'cocktail-ingredient', name)
-				a.href = ingObj.pageHref()
+				a['data-ingredient'] = ingObj
 				ingredients.appendChild(a)
 				ingredients.appendChild(T(' '))
 			}
 			ratingTotal.appendChild(li)
 		}
+	},
+	
+	renderCol: function(cocktails)
+	{
+		
 	}
 }
 

@@ -10,23 +10,23 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
-<h1><span>Топ 10 коктейлей</span> за последние 30 дней</h1>
+<h1><span>Топ 10 <a href="#all">всех коктейлей</a>, <a href="#byTag">по тегам</a> или <a href="#byIngredient">ингредиентам</a></span> за последние 30 дней</h1>
 
 <ul id="rating-total">
 	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
-	<!--# include virtual="/rating/rating-row.html" -->
 </ul>
 
-<div id="rating-groups">
+<div id="rating-tag">
+	<!--# include virtual="/rating/rating-col.html" -->
+	<!--# include virtual="/rating/rating-col.html" -->
+	<!--# include virtual="/rating/rating-col.html" -->
+	
+	<!--# include virtual="/rating/rating-col.html" -->
+	<!--# include virtual="/rating/rating-col.html" -->
+	<!--# include virtual="/rating/rating-col.html" -->
+</div>
+
+<div id="rating-ingredient">
 	<!--# include virtual="/rating/rating-col.html" -->
 	<!--# include virtual="/rating/rating-col.html" -->
 	<!--# include virtual="/rating/rating-col.html" -->
@@ -39,6 +39,8 @@
 </div id="common-main-wrapper">
 
 <!--# include virtual="/inc/common-footer.html" -->
+<!--# include virtual="/inc/ingredient-popup.html" -->
+
 <script src="/js/common/oops.js"></script>
 <!--[if lte IE 7]><script src="/liby/core/fixes/trident3.js"></script><![endif]-->
 <!--[if IE 8]><script src="/liby/core/fixes/trident4.js"></script><![endif]-->

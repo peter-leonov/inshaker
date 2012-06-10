@@ -116,6 +116,11 @@ Me.prototype =
 			byIngredient.push(byIngr)
 		}
 		this.view.renderCol(byIngredient)
+	},
+	
+	selectIngredient: function (ingredient)
+	{
+		this.view.showIngredient(ingredient)
 	}
 }
 
