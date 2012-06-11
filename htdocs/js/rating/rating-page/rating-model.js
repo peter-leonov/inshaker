@@ -131,6 +131,27 @@ Me.prototype =
 		this.view.renderCol(byIngredients)
 	},
 	
+	addTagsArrow: function()
+	{
+		var tags = this.tags,
+			byTags = this.byTags = []
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i],
+				cocktails = Cocktail.getByTag(tag),
+				byTag =
+				{
+					name: tag,
+					count: cocktails.length,
+					cocktails: this.addArrowByGroup(cocktails, 'ingrArrow')
+				}
+
+			byTags.push(byTag)
+		}
+		this.view.renderCol(byTags)
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
