@@ -49,12 +49,12 @@ Me.prototype =
 		{
 			if (days[i] < days[i+1])
 			{
-				cocktail.totalArrow = 'up'
+				cocktail.rating.totalArrow = 'up'
 				break
 			}
 			else if (days[i] > days[i+1])
 			{
-				cocktail.totalArrow = 'down'
+				cocktail.rating.totalArrow = 'down'
 				break
 			}
 		}
@@ -64,7 +64,7 @@ Me.prototype =
 	{
 		var pos = this.cocktails.indexOf(cocktail)
 		if (pos != -1)
-			cocktail.totalPos = pos + 1
+			cocktail.rating.totalPos = pos + 1
 
 		this.fillTotalArrow(cocktail)
 	},
