@@ -14,7 +14,10 @@ Me.prototype =
 		for (var k in this.rating)
 		{
 			var cocktail = Cocktail.getByName(k)
-			cocktail.days = this.rating[k]
+			
+			cocktail.rating = cocktail.rating || {}
+			cocktail.rating.days = cocktail.rating.days || this.rating[k]
+
 			cocktails.push(cocktail)
 		}
 		
@@ -23,7 +26,7 @@ Me.prototype =
 	
 	sort: function(a, b)
 	{
-		return a.days[0] - b.days[0]
+		return a.rating.days[0] - b.rating.days[0]
 	},
 	
 	addTotalArrow: function()
@@ -40,7 +43,7 @@ Me.prototype =
 	
 	fillTotalArrow: function(cocktail)
 	{
-		var days = cocktail.days
+		var days = cocktail.rating.days
 		
 		for (var i = 0, il = days.length-1; i < il; i++)
 		{
@@ -71,12 +74,12 @@ Me.prototype =
 		var cocktailsDays = []
 		for (var j = 0, jl = cocktails.length; j < jl; j++)
 		{
-			var c = cocktails[j]
+			var cocktail = cocktails[j]
 			
-			if(this.rating[c.name])
+			if(this.rating[cocktail.name])
 			{
-				c.days = this.rating[c.name]
-				cocktailsDays.push(c)
+				cocktail.rating.days = cocktail.rating.days || this.rating[cocktail.name]
+				cocktailsDays.push(cocktail)
 			}
 		}
 		cocktails = cocktailsDays.sort(this.sort).slice(0, 10)
@@ -95,7 +98,7 @@ Me.prototype =
 				if (!sorts[day])
 				{
 					sorts[day] = cocktails.slice()
-					sorts[day].sort(function(a, b){ return a.days[day+1] - b.days[day+1] })
+					sorts[day].sort(function(a, b){ return a.rating.days[day+1] - b.rating.days[day+1] })
 				}
 				pos = sorts[day].indexOf( cocktail )
 			}
