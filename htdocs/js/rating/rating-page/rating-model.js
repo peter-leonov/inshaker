@@ -59,8 +59,50 @@ Me.prototype =
 	
 	fillTotalPosition: function(cocktail)
 	{
-		cocktail.totalPos = this.cocktails.indexOf(cocktail)
+		var pos = this.cocktails.indexOf(cocktail)
+		if (pos != -1)
+			cocktail.totalPos = pos + 1
+
 		this.fillTotalArrow(cocktail)
+	},
+	
+	addArrowByGroup: function(cocktails, keyArrow)
+	{
+		for (var j = 0, jl = cocktails.length; j < jl; j++)
+		{
+			var c = cocktails[j]
+			
+			c.days = this.rating[c.name]
+		}
+		cocktails = cocktails.sort(this.sort).slice(0, 10)
+		
+		var sorts = []
+		for (var j = 0, jl = cocktails.length; j < jl; j++)
+		{
+			var cocktail = cocktails[j],
+				day = 0,
+				pos
+			
+			this.fillTotalPosition(cocktail)
+			
+			do
+			{
+				if (!sorts[day])
+				{
+					sorts[day] = cocktails.slice()
+					sorts[day].sort(function(a, b){ return a.days[day+1] - b.days[day+1] })
+				}
+				pos = sorts[day].indexOf( cocktail )
+			}
+			while ( j == pos && ++day < 10 )
+			
+			if (j < pos)
+				cocktail[keyArrow] = day+1
+			else if (j > pos)
+				cocktail[keyArrow] = (day+1)*-1
+		}
+		
+		return cocktails
 	},
 	
 	addIngredientsArrow: function()
@@ -75,43 +117,10 @@ Me.prototype =
 				byIngr =
 				{
 					name: ingr,
-					count: cocktails.length
+					count: cocktails.length,
+					cocktails: this.addArrowByGroup(cocktails, 'ingrArrow')
 				}
-			
-			for (var j = 0, jl = cocktails.length; j < jl; j++)
-			{
-				var c = cocktails[j]
-				
-				c.days = this.rating[c.name]
-			}
-			byIngr.cocktails = cocktails = cocktails.sort(this.sort).slice(0, 10)
-			
-			var sorts = []
-			for (var j = 0, jl = cocktails.length; j < jl; j++)
-			{
-				var cocktail = cocktails[j],
-					day = 0,
-					pos
-				
-				this.fillTotalPosition(cocktail)
-				
-				do
-				{
-					if (!sorts[day])
-					{
-						sorts[day] = cocktails.slice()
-						sorts[day].sort(function(a, b){ return a.days[day+1] - b.days[day+1] })
-					}
-					pos = sorts[day].indexOf( cocktail )
-				}
-				while ( j == pos && ++day < 10 )
-				
-				if (j > pos)
-					cocktail.ingrArrow = day+1
-				else if (j < pos)
-					cocktail.ingrArrow = (day+1)*-1
-			}
-			
+
 			byIngredient.push(byIngr)
 		}
 		this.view.renderCol(byIngredient)
