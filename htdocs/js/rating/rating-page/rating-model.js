@@ -69,7 +69,7 @@ Me.prototype =
 		this.fillTotalArrow(cocktail)
 	},
 	
-	addArrowByGroup: function(cocktails, keyArrow)
+	addArrowByGroup: function(cocktails, type, name)
 	{
 		var cocktailsDays = []
 		for (var j = 0, jl = cocktails.length; j < jl; j++)
@@ -104,10 +104,12 @@ Me.prototype =
 			}
 			while ( j == pos && ++day < 10 )
 			
+			cocktail.rating[type] = cocktail.rating[type] || {} 
+			
 			if (j < pos)
-				cocktail[keyArrow] = day+1
+				cocktail.rating[type][name] = day+1
 			else if (j > pos)
-				cocktail[keyArrow] = (day+1)*-1
+				cocktail.rating[type][name] = (day+1)*-1
 		}
 		
 		return cocktails
@@ -116,7 +118,8 @@ Me.prototype =
 	addIngredientsArrow: function()
 	{
 		var ingredients = this.ingredients,
-			byIngredients = this.byIngredients = []
+			byIngredients = this.byIngredients = [],
+			type = 'ingredient'
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
@@ -126,18 +129,19 @@ Me.prototype =
 				{
 					name: ingr,
 					count: cocktails.length,
-					cocktails: this.addArrowByGroup(cocktails, 'ingrArrow')
+					cocktails: this.addArrowByGroup(cocktails, type, ingr)
 				}
 
 			byIngredients.push(byIngr)
 		}
-		this.view.renderCol(byIngredients)
+		this.view.renderCol(byIngredients, type)
 	},
 	
 	addTagsArrow: function()
 	{
 		var tags = this.tags,
-			byTags = this.byTags = []
+			byTags = this.byTags = [],
+			type = 'tag'
 		
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
@@ -147,12 +151,12 @@ Me.prototype =
 				{
 					name: tag,
 					count: cocktails.length,
-					cocktails: this.addArrowByGroup(cocktails, 'ingrArrow')
+					cocktails: this.addArrowByGroup(cocktails, type, tag)
 				}
 
 			byTags.push(byTag)
 		}
-		this.view.renderCol(byTags)
+		this.view.renderCol(byTags, type)
 	},
 	
 	selectIngredient: function (ingredient)

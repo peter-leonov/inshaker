@@ -114,7 +114,7 @@ Me.prototype =
 		return links
 	},
 	
-	renderCol: function(byIngredients)
+	renderCol: function(byIngredients, type)
 	{
 		var ratingIngr = this.nodes.ratingIngredient
 		
@@ -152,12 +152,14 @@ Me.prototype =
 			var position = Nc('div', 'cocktail-position')
 			firstItem.appendChild(position)
 			
-			var arrowClass = ''
-			if (firstCocktail.ingrArrow)
+			var arrowClass = '',
+				arrowNum = firstCocktail.rating[type][group.name]
+			
+			if (arrowNum)
 			{
-				if (firstCocktail.ingrArrow > 0)
+				if (arrowNum > 0)
 					arrowClass = 'arrow up'
-				else if (firstCocktail.ingrArrow < 0)
+				else if (arrowNum < 0)
 					arrowClass = 'arrow down'
 			}
 			
@@ -174,7 +176,7 @@ Me.prototype =
 				
 			var arrowClass = ''
 			if (firstCocktail.rating.totalArrow)
-				arrowClass += 'arrow ' + firstCocktail.totalArrow
+				arrowClass += 'arrow ' + firstCocktail.rating.totalArrow
 
 			var ratingArrow = Nc('span', arrowClass)
 			rating.appendChild(ratingArrow)
@@ -193,12 +195,14 @@ Me.prototype =
 				var position = Nct('div', 'cocktail-position', j+1)
 				item.appendChild(position)
 				
-				var arrowClass = ''
-				if (cocktail.ingrArrow)
+				var arrowClass = '',
+					arrowNum = cocktail.rating[type][group.name]
+				
+				if (arrowNum)
 				{
-					if (cocktail.ingrArrow > 0)
+					if (arrowNum > 0)
 						arrowClass = 'arrow up'
-					else if (cocktail.ingrArrow < 0)
+					else if (arrowNum < 0)
 						arrowClass = 'arrow down'
 				}
 				
