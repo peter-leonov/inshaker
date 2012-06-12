@@ -1,12 +1,71 @@
 ;(function(){
 
-function Me () {}
+function Me ()
+{
+	this.defaultFrame = 'rating-total'
+}
 
 Me.prototype =
 {
 	rating: <!--# include virtual="/db/ratings/rating.json" -->,
 	ingredients: <!--# include virtual="/db/ratings/ingredients.json" -->,
 	tags: <!--# include virtual="/db/ratings/tags.json" -->,
+	
+	frames:
+	{
+		'rating-total': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.addTotalArrow()
+			this.view.renderTotal(this.byTotal)
+			this.frameChanger('rating-total')
+		},
+
+		'rating-tag': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.addTagsArrow()
+			this.view.renderCol(this.byTags, 'tag')
+			this.frameChanger('rating-tag')
+		},
+
+		'rating-ingredient': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.addIngredientsArrow()
+			this.view.renderCol(this.byIngredients, 'ingredient')
+			this.frameChanger('rating-ingredient')
+		}
+	},
+	
+	frameChanger: function(frame)
+	{
+		var view = this.view
+		
+		this.frames[frame] = function()
+		{
+			view.changeFrame(frame)
+		}
+		
+		this.frames[frame]()
+	},
+	
+	setState: function(state)
+	{
+		if (!state)
+			state = this.defaultFrame
+		
+		if (!this.frames[state])
+			return
+		
+		this.frames[state].call(this)
+	},
 	
 	sortByPos: function()
 	{
@@ -15,8 +74,7 @@ Me.prototype =
 		{
 			var cocktail = Cocktail.getByName(k)
 			
-			cocktail.rating = cocktail.rating || {}
-			cocktail.rating.days = cocktail.rating.days || this.rating[k]
+			cocktail.rating = {days: this.rating[k]}
 
 			cocktails.push(cocktail)
 		}
@@ -31,14 +89,12 @@ Me.prototype =
 	
 	addTotalArrow: function()
 	{
-		var cocktails = this.cocktails.slice(0, 10)
+		var cocktails = this.byTotal = this.cocktails.slice(0, 10)
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
 			this.fillTotalArrow(cocktails[i])
 		}
-		
-		this.view.renderTotal(cocktails.sort(this.sort))
 	},
 	
 	fillTotalArrow: function(cocktail)
@@ -134,7 +190,6 @@ Me.prototype =
 
 			byIngredients.push(byIngr)
 		}
-		this.view.renderCol(byIngredients, type)
 	},
 	
 	addTagsArrow: function()
@@ -156,7 +211,6 @@ Me.prototype =
 
 			byTags.push(byTag)
 		}
-		this.view.renderCol(byTags, type)
 	},
 	
 	selectIngredient: function (ingredient)

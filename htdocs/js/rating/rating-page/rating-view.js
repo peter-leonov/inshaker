@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.lastFrame = 'rating-total'
 }
 
 eval(NodesShortcut.include())
@@ -12,10 +13,20 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
-		this.controller.temp()
 		
 		var view = this
 		nodes.mainWrapper.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
+		
+		this.lh = new LocationHash().bind()
+		
+		var controller = this.controller
+		this.lh.addEventListener('change', function (e)
+		{
+			controller.changeHashReaction(this.get())
+		},
+		false)
+		
+		controller.changeHashReaction(this.lh.get())
 	},
 	
 	maybeIngredientClicked : function(target)
@@ -46,7 +57,7 @@ Me.prototype =
 	
 	renderTotal: function(cocktails)
 	{
-		var ratingTotal = this.nodes.ratingTotal
+		var ratingTotal = this.nodes['rating-total']
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
@@ -116,14 +127,14 @@ Me.prototype =
 	
 	renderCol: function(byIngredients, type)
 	{
-		var ratingIngr = this.nodes.ratingIngredient
+		var ratingNode = this.nodes['rating-' + type]
 		
 		for (var i = 0, il = byIngredients.length; i < il; i++)
 		{
 			var group = byIngredients[i]
 			
 			var col = Nc('div', 'rating-col')
-			ratingIngr.appendChild(col)
+			ratingNode.appendChild(col)
 			
 			var h2 = Nct('h2', 'rating-name', group.name)
 			col.appendChild(h2)
@@ -233,6 +244,20 @@ Me.prototype =
 				rating.appendChild(ratingArrow)
 			}
 		}
+	},
+
+	changeFrame: function(frame)
+	{
+		if (frame == this.lastFrame)
+			return
+		
+		var last = this.nodes[this.lastFrame],
+			current = this.nodes[frame]
+		
+		current.removeClassName('hidden')
+		last.addClassName('hidden')
+		
+		this.lastFrame = frame
 	}
 }
 
