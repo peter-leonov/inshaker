@@ -17,8 +17,10 @@
 .rating-list .first-item .cocktail { width: 160px; padding: 30px 0 30px 0; margin-left: auto; }
 .rating-list .first-item .cocktail .cocktail-ingredient { font-size: 11px; }
 
+.rating-list .first-item .cocktail-position .arrow { margin-right: 3px; }
 .rating-list .first-item .cocktail-rating { font-size: 12px; margin-left: auto; }
 .rating-list .first-item .cocktail-rating .note { font-size: 9px; color: #838383; display: block; width: 100px; margin-left: auto; }
+.rating-list .first-item .cocktail-rating .arrow { margin-left: 5px; }
 
 
 .rating-list .item { display: block; position: relative; width: 300px; min-height: 43px; border-top: 1px solid #E5E5E5; padding-top: 10px; margin-top: 10px; }
@@ -26,6 +28,7 @@
 .rating-list .item .cocktail-position { position: absolute; top: 10px; left: 0; width: 20px; color: #838383; font-size: 12px; }
 .rating-list .item .cocktail { padding: 0 40px 0 20px; width: 240px; }
 .rating-list .item .cocktail-rating { position: absolute; top: 10px; right: 0; margin-left: auto; font-size: 12px; }
+.rating-list .item .cocktail-rating .arrow { margin-left: 5px; }
 
 .rating-list .item .cocktail h3 { padding-bottom: 5px; }
 .rating-list .item .cocktail h3 .cocktail-name { color: #000; font-size: 12px; }
@@ -69,7 +72,9 @@
 #rating-total li:last-child { border-bottom: none; }
 
 #rating-total li .cocktail-position { position: absolute; top: 35px; left: 0; font-size: 14px; }
-#rating-total li .cocktail-image { position: absolute; top: 0; left: 55px; }
+#rating-total li .cocktail-position:after { content: '.'; }
+#rating-total li .cocktail-position .arrow { margin-right: 5px; }
+#rating-total li .cocktail-image { position: absolute; top: 10px; left: 55px; }
 #rating-total li .cocktail { padding-left: 160px; padding-top: 30px; padding-bottom: 36px; width: 550px; }
 
 #rating-total li .cocktail h3 { padding-bottom: 5px; }
