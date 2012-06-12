@@ -10,9 +10,9 @@ function onready ()
 	var nodes =
 	{
 		mainWrapper: $('#common-main-wrapper'),
-		ratingTotal: $('#rating-total'),
-		ratingIngredient: $('#rating-ingredient'),
-		ratingTag: $('#rating-tag')
+		'rating-total': $('#rating-total'),
+		'rating-ingredient': $('#rating-ingredient'),
+		'rating-tag': $('#rating-tag')
 	}
 
 	var widget = new RatingPage()
@@ -25,5 +25,8 @@ $.onready(onready)
 
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 <!--# include virtual="/js/common/units.js" -->
+<!--# include virtual="/liby/core/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
