@@ -180,15 +180,19 @@ Me.prototype =
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingr = ingredients[i],
-				cocktails = Cocktail.getByIngredient(ingr),
-				byIngr =
+				cocktails = Cocktail.getByIngredient(ingr)
+				
+			if (cocktails.length)
+			{
+				var byIngr =
 				{
 					name: ingr,
 					count: cocktails.length,
 					cocktails: this.addArrowByGroup(cocktails, type, ingr)
 				}
 
-			byIngredients.push(byIngr)
+				byIngredients.push(byIngr)
+			}
 		}
 	},
 	
@@ -201,15 +205,19 @@ Me.prototype =
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i],
-				cocktails = Cocktail.getByTag(tag),
-				byTag =
+				cocktails = Cocktail.getByTag(tag)
+			
+			if (cocktails.length)
+			{
+				var byTag =
 				{
 					name: tag,
 					count: cocktails.length,
 					cocktails: this.addArrowByGroup(cocktails, type, tag)
 				}
 
-			byTags.push(byTag)
+				byTags.push(byTag)
+			}
 		}
 	},
 	
