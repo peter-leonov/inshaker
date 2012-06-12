@@ -44,11 +44,11 @@ Me.prototype =
 		}
 	},
 	
-	frameChanger: function(frame)
+	frameChanger: function (frame)
 	{
 		var view = this.view
 		
-		this.frames[frame] = function()
+		this.frames[frame] = function ()
 		{
 			view.changeFrame(frame)
 		}
@@ -56,7 +56,7 @@ Me.prototype =
 		this.frames[frame]()
 	},
 	
-	setState: function(state)
+	setState: function (state)
 	{
 		if (!state)
 			state = this.defaultFrame
@@ -67,7 +67,7 @@ Me.prototype =
 		this.frames[state].call(this)
 	},
 	
-	sortByPos: function()
+	sortByPos: function ()
 	{
 		var cocktails = []
 		for (var k in this.rating)
@@ -82,12 +82,12 @@ Me.prototype =
 		this.cocktails = cocktails.sort(this.sort)
 	},
 	
-	sort: function(a, b)
+	sort: function (a, b)
 	{
 		return a.rating.days[0] - b.rating.days[0]
 	},
 	
-	addTotalArrow: function()
+	addTotalArrow: function ()
 	{
 		var cocktails = this.byTotal = this.cocktails.slice(0, 10)
 		
@@ -97,7 +97,7 @@ Me.prototype =
 		}
 	},
 	
-	fillTotalArrow: function(cocktail)
+	fillTotalArrow: function (cocktail)
 	{
 		var days = cocktail.rating.days
 		
@@ -116,7 +116,7 @@ Me.prototype =
 		}
 	},
 	
-	fillTotalPosition: function(cocktail)
+	fillTotalPosition: function (cocktail)
 	{
 		var pos = this.cocktails.indexOf(cocktail)
 		if (pos != -1)
@@ -125,7 +125,7 @@ Me.prototype =
 		this.fillTotalArrow(cocktail)
 	},
 	
-	addArrowByGroup: function(cocktails, type, name)
+	addArrowByGroup: function (cocktails, type, name)
 	{
 		var cocktailsDays = []
 		for (var j = 0, jl = cocktails.length; j < jl; j++)
@@ -171,7 +171,7 @@ Me.prototype =
 		return cocktails
 	},
 	
-	addIngredientsArrow: function()
+	addIngredientsArrow: function ()
 	{
 		var ingredients = this.ingredients,
 			byIngredients = this.byIngredients = [],
@@ -192,7 +192,7 @@ Me.prototype =
 		}
 	},
 	
-	addTagsArrow: function()
+	addTagsArrow: function ()
 	{
 		var tags = this.tags,
 			byTags = this.byTags = [],

@@ -4,12 +4,12 @@ function Me () {}
 
 Me.prototype =
 {
-	ingredientSelected : function(ingredient)
+	ingredientSelected: function (ingredient)
 	{
 		this.model.selectIngredient(ingredient)
 	},
 	
-	changeHashReaction: function(hash)
+	changeHashReaction: function (hash)
 	{
 		this.model.setState(hash)
 	}

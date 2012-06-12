@@ -29,7 +29,7 @@ Me.prototype =
 		controller.changeHashReaction(this.lh.get())
 	},
 	
-	maybeIngredientClicked : function(target)
+	maybeIngredientClicked: function (target)
 	{
 		if(!target.parentNode)
 			return
@@ -55,7 +55,7 @@ Me.prototype =
 		}
 	},
 	
-	renderTotal: function(cocktails)
+	renderTotal: function (cocktails)
 	{
 		var ratingTotal = this.nodes['rating-total']
 		
@@ -95,7 +95,7 @@ Me.prototype =
 		}
 	},
 	
-	renderIngredientLinks: function(ingredients)
+	renderIngredientLinks: function (ingredients)
 	{
 		var links = document.createDocumentFragment()
 		
@@ -125,7 +125,7 @@ Me.prototype =
 		return links
 	},
 	
-	renderCol: function(byIngredients, type)
+	renderCol: function (byIngredients, type)
 	{
 		var ratingNode = this.nodes['rating-' + type]
 		
@@ -246,7 +246,7 @@ Me.prototype =
 		}
 	},
 
-	changeFrame: function(frame)
+	changeFrame: function (frame)
 	{
 		if (frame == this.lastFrame)
 			return
