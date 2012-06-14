@@ -65,10 +65,16 @@ Me.prototype =
 				li = N('li')
 			
 			var cocktailPos = Nc('div', 'cocktail-position'),
-				arrowClass = ''
+				arrowClass = '',
+				arrowNum = cocktail.rating.totalArrow
 			
-			if (cocktail.rating.totalArrow)
-				arrowClass += 'arrow ' + cocktail.rating.totalArrow
+			if (arrowNum)
+			{
+				if (arrowNum > 0)
+					arrowClass = 'arrow up'
+				else if (arrowNum < 0)
+					arrowClass = 'arrow down'
+			}
 			
 			cocktailPos.appendChild( Nc('span', arrowClass) )
 			cocktailPos.appendChild( T(i+1) )

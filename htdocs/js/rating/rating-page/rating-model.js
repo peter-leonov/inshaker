@@ -105,12 +105,12 @@ Me.prototype =
 		{
 			if (days[i] < days[i+1])
 			{
-				cocktail.rating.totalArrow = 'up'
+				cocktail.rating.totalArrow = i+1
 				break
 			}
 			else if (days[i] > days[i+1])
 			{
-				cocktail.rating.totalArrow = 'down'
+				cocktail.rating.totalArrow = (i+1)*-1
 				break
 			}
 		}
