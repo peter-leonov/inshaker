@@ -105,6 +105,33 @@ Me.prototype =
 		}
 	},
 	
+	renderByIngredients: function ()
+	{
+		var ingredients = this.ingredients,
+			byIngredients = this.byIngredients = []
+		
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var ingr = ingredients[i],
+				cocktails = Cocktail.getByIngredient(ingr)
+				
+			if (cocktails.length)
+			{
+				var byIngr =
+				{
+					name: ingr,
+					count: cocktails.length
+				}
+				
+				var cocktailsObj = byIngr.cocktails = this.getTopCocktails(cocktails)
+				this.calculateSpecialDays(cocktailsObj)
+				this.fillDirectionAndPos(cocktailsObj)
+
+				byIngredients.push(byIngr)
+			}
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
