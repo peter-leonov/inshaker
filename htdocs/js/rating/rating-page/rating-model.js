@@ -69,6 +69,27 @@ Me.prototype =
 		return cocktailsDays.sort(this.sort).slice(0, 10)
 	},
 	
+	calculateSpecialDays: function (cocktails)
+	{
+		for (var i = 0, il = cocktails.length; i < il; i++ )
+		{
+			var days = cocktails[i].days,
+				specialDays = []
+			
+			for (var j = 0, jl = days.length; j < jl; j++ )
+			{
+				var sorts = cocktails.slice()
+				
+				sorts.sort(function(a, b){ return a.days[j] - b.days[j] })
+				var pos = sorts.indexOf( cocktails[i] )
+				
+				specialDays.push(pos)
+			}
+			
+			cocktails[i].specialDays = specialDays
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
