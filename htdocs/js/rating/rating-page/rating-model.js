@@ -11,6 +11,51 @@ Me.prototype =
 	ingredients: <!--# include virtual="/db/ratings/ingredients.json" -->,
 	tags: <!--# include virtual="/db/ratings/tags.json" -->,
 	
+	frames:
+	{
+		'rating-total': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.renderByTotal()
+			this.view.renderTotal(this.byTotal)
+			this.frameChanger('rating-total')
+		},
+
+		'rating-tag': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.renderByTags()
+			this.view.renderCol(this.byTags, 'rating-tag')
+			this.frameChanger('rating-tag')
+		},
+
+		'rating-ingredient': function ()
+		{
+			if (!this.cocktails)
+				this.sortByPos()
+			
+			this.renderByIngredients()
+			this.view.renderCol(this.byIngredients, 'rating-ingredient')
+			this.frameChanger('rating-ingredient')
+		}
+	},
+	
+	frameChanger: function (frame)
+	{
+		var view = this.view
+		
+		this.frames[frame] = function ()
+		{
+			view.changeFrame(frame)
+		}
+		
+		this.frames[frame]()
+	},
+	
 	sort: function (a, b)
 	{
 		return a.days[0] - b.days[0]
