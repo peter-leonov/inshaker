@@ -56,6 +56,17 @@ Me.prototype =
 		this.frames[frame]()
 	},
 	
+	setState: function (state)
+	{
+		if (!state)
+			state = this.defaultFrame
+		
+		if (!this.frames[state])
+			return
+		
+		this.frames[state].call(this)
+	},
+	
 	sort: function (a, b)
 	{
 		return a.days[0] - b.days[0]
