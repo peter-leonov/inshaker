@@ -66,7 +66,7 @@ Me.prototype =
 			
 			var cocktailPos = Nc('div', 'cocktail-position'),
 				arrowClass = '',
-				arrowNum = cocktail.rating.totalArrow
+				arrowNum = cocktail.totalDirection
 			
 			if (arrowNum)
 			{
@@ -131,13 +131,13 @@ Me.prototype =
 		return links
 	},
 	
-	renderCol: function (byIngredients, type)
+	renderCol: function (cocktailsObj, frame)
 	{
-		var ratingNode = this.nodes['rating-' + type]
+		var ratingNode = this.nodes[frame]
 		
-		for (var i = 0, il = byIngredients.length; i < il; i++)
+		for (var i = 0, il = cocktailsObj.length; i < il; i++)
 		{
-			var group = byIngredients[i]
+			var group = cocktailsObj[i]
 			
 			var col = Nc('div', 'rating-col')
 			ratingNode.appendChild(col)
@@ -157,20 +157,20 @@ Me.prototype =
 			var firstItem = Nc('li', 'first-item')
 			list.appendChild(firstItem)
 			
-			firstItem.appendChild(firstCocktail.getLinkImage(false, true))
+			firstItem.appendChild(firstCocktail.cocktail.getLinkImage(false, true))
 			
 			var h3 = N('h3')
 			firstItem.appendChild(h3)
 			
-			var link = Nct('a', 'cocktail-name', firstCocktail.name)
-			link.href = firstCocktail.getPath()
+			var link = Nct('a', 'cocktail-name', firstCocktail.cocktail.name)
+			link.href = firstCocktail.cocktail.getPath()
 			h3.appendChild(link)
 			
 			var position = Nc('div', 'cocktail-position')
 			firstItem.appendChild(position)
 			
 			var arrowClass = '',
-				arrowNum = firstCocktail.rating[type][group.name]
+				arrowNum = firstCocktail.specialDirection
 			
 			if (arrowNum)
 			{
@@ -186,16 +186,23 @@ Me.prototype =
 			
 			var ingredients = Nc('div', 'cocktail')
 			firstItem.appendChild(ingredients)
-			ingredients.appendChild(this.renderIngredientLinks(firstCocktail.ingredients))
+			ingredients.appendChild(this.renderIngredientLinks(firstCocktail.cocktail.ingredients))
 			
-			var rating = Nct('div', 'cocktail-rating', firstCocktail.rating.totalPos)
+			var rating = Nct('div', 'cocktail-rating', firstCocktail.totalPos)
 			firstItem.appendChild(rating)
 				
-			var arrowClass = ''
-			if (firstCocktail.rating.totalArrow)
-				arrowClass += 'arrow ' + firstCocktail.rating.totalArrow
+			var arrowClassTotal = '',
+				arrowNumTotal = firstCocktail.totalDirection
+				
+			if (arrowNumTotal)
+			{
+				if (arrowNumTotal > 0)
+					arrowClassTotal = 'arrow up'
+				else if (arrowNumTotal < 0)
+					arrowClassTotal = 'arrow down'
+			}
 
-			var ratingArrow = Nc('span', arrowClass)
+			var ratingArrow = Nc('span', arrowClassTotal)
 			rating.appendChild(ratingArrow)
 
 			var note = Nct('span', 'note', 'позиция в рейтинге всех коктейлей')
@@ -213,7 +220,7 @@ Me.prototype =
 				item.appendChild(position)
 				
 				var arrowClass = '',
-					arrowNum = cocktail.rating[type][group.name]
+					arrowNum = cocktail.specialDirection
 				
 				if (arrowNum)
 				{
@@ -232,21 +239,28 @@ Me.prototype =
 				var h3 = N('h3')
 				ingredients.appendChild(h3)
 				
-				var link = Nct('a', 'cocktail-name', cocktail.name)
-				link.href = cocktail.getPath()
+				var link = Nct('a', 'cocktail-name', cocktail.cocktail.name)
+				link.href = cocktail.cocktail.getPath()
 				h3.appendChild(link)
 				
-				ingredients.appendChild(this.renderIngredientLinks(cocktail.ingredients))
+				ingredients.appendChild(this.renderIngredientLinks(cocktail.cocktail.ingredients))
 
 				
-				var rating = Nct('div', 'cocktail-rating', cocktail.rating.totalPos)
+				var rating = Nct('div', 'cocktail-rating', cocktail.totalPos)
 				item.appendChild(rating)
 					
-				var arrowClass = ''
-				if (cocktail.rating.totalArrow)
-					arrowClass += 'arrow ' + cocktail.rating.totalArrow
+				var arrowClassTotal = '',
+					arrowNumTotal = cocktail.totalDirection
+					
+				if (arrowNumTotal)
+				{
+					if (arrowNumTotal > 0)
+						arrowClassTotal = 'arrow up'
+					else if (arrowNumTotal < 0)
+						arrowClassTotal = 'arrow down'
+				}
 	
-				var ratingArrow = Nc('span', arrowClass)
+				var ratingArrow = Nc('span', arrowClassTotal)
 				rating.appendChild(ratingArrow)
 			}
 		}
