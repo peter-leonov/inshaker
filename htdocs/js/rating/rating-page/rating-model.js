@@ -38,6 +38,16 @@ Me.prototype =
 		}
 	},
 	
+	renderByTotal: function ()
+	{
+		var cocktails = this.byTotal = this.cocktails.slice(0, 10)
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
