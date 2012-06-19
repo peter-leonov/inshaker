@@ -132,6 +132,33 @@ Me.prototype =
 		}
 	},
 	
+	renderByTags: function ()
+	{
+		var tags = this.tags,
+			byTags = this.byTags = []
+		
+		for (var i = 0, il = tags.length; i < il; i++)
+		{
+			var tag = tags[i],
+				cocktails = Cocktail.getByTag(tag)
+			
+			if (cocktails.length)
+			{
+				var byTag =
+				{
+					name: tag,
+					count: cocktails.length
+				}
+
+				var cocktailsObj = byTag.cocktails = this.getTopCocktails(cocktails)
+				this.calculateSpecialDays(cocktailsObj)
+				this.fillDirectionAndPos(cocktailsObj)
+				
+				byTags.push(byTag)
+			}
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
