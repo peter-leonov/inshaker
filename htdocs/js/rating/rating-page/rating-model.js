@@ -11,6 +11,11 @@ Me.prototype =
 	ingredients: <!--# include virtual="/db/ratings/ingredients.json" -->,
 	tags: <!--# include virtual="/db/ratings/tags.json" -->,
 	
+	sort: function (a, b)
+	{
+		return a.days[0] - b.days[0]
+	},
+	
 	sortByPos: function ()
 	{
 		var cocktails = []
