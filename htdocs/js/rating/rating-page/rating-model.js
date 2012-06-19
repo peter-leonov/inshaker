@@ -26,6 +26,18 @@ Me.prototype =
 		this.cocktails = cocktails.sort(this.sort)
 	},
 	
+	calculateDirection: function (days)
+	{
+		for (var i = 0, il = days.length-1; i < il; i++)
+		{
+			if (days[i] < days[i+1])
+				return i+1
+
+			if (days[i] > days[i+1])
+				return (i+1)*-1
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
