@@ -90,6 +90,21 @@ Me.prototype =
 		}
 	},
 	
+	fillDirectionAndPos: function (cocktails)
+	{
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			cocktail.specialDirection = this.calculateDirection(cocktail.specialDays)
+			cocktail.totalDirection = this.calculateDirection(cocktail.days)
+			
+			var pos = this.cocktails.indexOf(cocktail.cocktail)
+			if (pos != -1)
+				cocktail.totalPos = pos + 1
+		}
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
