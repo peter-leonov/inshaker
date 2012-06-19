@@ -11,6 +11,21 @@ Me.prototype =
 	ingredients: <!--# include virtual="/db/ratings/ingredients.json" -->,
 	tags: <!--# include virtual="/db/ratings/tags.json" -->,
 	
+	sortByPos: function ()
+	{
+		var cocktails = []
+		for (var k in this.rating)
+		{
+			var cocktail = Cocktail.getByName(k)
+			
+			cocktail.days = this.rating[k]
+
+			cocktails.push(cocktail)
+		}
+		
+		this.cocktails = cocktails.sort(this.sort)
+	},
+	
 	selectIngredient: function (ingredient)
 	{
 		this.view.showIngredient(ingredient)
