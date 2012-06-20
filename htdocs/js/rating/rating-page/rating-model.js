@@ -21,21 +21,18 @@ Me.prototype =
 		'rating-total': function ()
 		{
 			this.renderByTotal()
-			this.view.renderTotal(this.byTotal)
 			this.frameChanger('rating-total')
 		},
 		
 		'rating-tag': function ()
 		{
 			this.renderByTags()
-			this.view.renderCol(this.byTags, 'rating-tag')
 			this.frameChanger('rating-tag')
 		},
 		
 		'rating-ingredient': function ()
 		{
 			this.renderByIngredients()
-			this.view.renderCol(this.byIngredients, 'rating-ingredient')
 			this.frameChanger('rating-ingredient')
 		}
 	},
@@ -95,12 +92,11 @@ Me.prototype =
 	
 	renderByTotal: function ()
 	{
-		var cocktails = this.byTotal = this.cocktails.slice(0, 10)
-		
+		var cocktails = this.cocktails.slice(0, 10)
 		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
 			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
-		}
+		
+		this.view.renderTotal(cocktails)
 	},
 	
 	getTopCocktails: function (cocktails)
@@ -158,7 +154,7 @@ Me.prototype =
 	renderByIngredients: function ()
 	{
 		var ingredients = this.ingredients,
-			byIngredients = this.byIngredients = []
+			byIngredients = []
 		
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
@@ -180,13 +176,15 @@ Me.prototype =
 				byIngredients.push(byIngr)
 			}
 		}
+		
+		this.view.renderCol(byIngredients, 'rating-ingredient')
 	},
 	
 	renderByTags: function ()
 	{
-		var tags = this.tags,
-			byTags = this.byTags = []
+		var tags = this.tags
 		
+		var byTags = []
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i],
@@ -207,6 +205,8 @@ Me.prototype =
 				byTags.push(byTag)
 			}
 		}
+		
+		this.view.renderCol(byTags, 'rating-tag')
 	}
 }
 
