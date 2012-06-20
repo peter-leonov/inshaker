@@ -94,7 +94,7 @@ Me.prototype =
 			var ing = ingredients[j]
 			var ingObj = Ingredient.getByName(ing[0])
 			
-			var name = ing[0]
+			var name = ingObj.screenName()
 			
 			var brand = ingObj.brand
 			if (brand)
