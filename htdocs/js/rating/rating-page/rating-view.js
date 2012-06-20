@@ -260,7 +260,7 @@ Me.prototype =
 		this.renderCol(set, 'rating-tag')
 	},
 	
-	changeFrame: function (frame)
+	switchToFrame: function (frame)
 	{
 		if (frame == this.lastFrame)
 			return

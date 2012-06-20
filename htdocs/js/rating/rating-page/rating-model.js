@@ -1,9 +1,6 @@
 ;(function(){
 
-function Me ()
-{
-	this.defaultFrameName = 'rating-total'
-}
+function Me () {}
 
 Me.prototype =
 {
@@ -18,46 +15,60 @@ Me.prototype =
 		this.sortByPos()
 	},
 	
-	frames:
+	stateTotal: function ()
 	{
-		'rating-total': function ()
-		{
-			this.processTotal()
-			this.frameChanger('rating-total')
-		},
+		// switch this state method to the light version
+		this.stateTotal = this.stateTotalLight
 		
-		'rating-tag': function ()
-		{
-			this.processTags()
-			this.frameChanger('rating-tag')
-		},
-		
-		'rating-ingredient': function ()
-		{
-			this.processIngredients()
-			this.frameChanger('rating-ingredient')
-		}
+		this.processTotal()
+		this.view.switchToFrame('rating-total')
+	},
+	stateTotalLight: function ()
+	{
+		this.view.switchToFrame('rating-total')
 	},
 	
-	frameChanger: function (frame)
+	stateTag: function ()
 	{
-		var view = this.view
+		// switch this state method to the light version
+		this.stateTag = this.stateTagLight
 		
-		this.frames[frame] = function ()
-		{
-			view.changeFrame(frame)
-		}
-		
-		this.frames[frame]()
+		this.processTags()
+		this.view.switchToFrame('rating-tag')
 	},
+	stateTagLight: function ()
+	{
+		this.view.switchToFrame('rating-tag')
+	},
+	
+	stateIngredient: function ()
+	{
+		// switch this state method to the light version
+		this.stateIngredient = this.stateIngredientLight
+		
+		this.processIngredients()
+		this.view.switchToFrame('rating-ingredient')
+	},
+	stateIngredientLight: function ()
+	{
+		this.view.switchToFrame('rating-ingredient')
+	},
+	
+	stateToMethod:
+	{
+		'rating-total': 'stateTotal',
+		'rating-tag': 'stateTag',
+		'rating-ingredient': 'stateIngredient'
+	},
+	defaultStateName: 'stateTotal',
 	
 	setState: function (state)
 	{
-		var frame = this.frames[state]
-		if (!frame)
-			frame = this.frames[this.defaultFrameName]
+		if (state == this.currentState)
+			return
+		this.currentState = state
 		
-		frame.call(this)
+		this[this.stateToMethod[state] || this.defaultStateName]()
 	},
 	
 	sort: function (a, b)
