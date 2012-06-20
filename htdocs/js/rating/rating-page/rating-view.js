@@ -14,6 +14,13 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
+		this.frames =
+		{
+			'rating-total': nodes.ratingTotal,
+			'rating-ingredient': nodes.ratingIngredient,
+			'rating-tag': nodes.ratingTag
+		}
+		
 		var view = this
 		nodes.widget.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
 		
@@ -34,7 +41,7 @@ Me.prototype =
 	
 	renderTotal: function (cocktails)
 	{
-		var ratingTotal = this.nodes['rating-total']
+		var ratingTotal = this.frames['rating-total']
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
@@ -110,7 +117,7 @@ Me.prototype =
 	
 	renderCol: function (cocktailsObj, frame)
 	{
-		var ratingNode = this.nodes[frame]
+		var ratingNode = this.frames[frame]
 		
 		for (var i = 0, il = cocktailsObj.length; i < il; i++)
 		{
@@ -248,8 +255,8 @@ Me.prototype =
 		if (frame == this.lastFrame)
 			return
 		
-		var last = this.nodes[this.lastFrame],
-			current = this.nodes[frame]
+		var last = this.frames[this.lastFrame],
+			current = this.frames[frame]
 		
 		current.classList.remove('hidden')
 		last.classList.add('hidden')
