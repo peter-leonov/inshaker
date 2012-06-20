@@ -22,7 +22,7 @@ Me.prototype =
 	{
 		'rating-total': function ()
 		{
-			this.calculateTotal()
+			this.processTotal()
 			this.frameChanger('rating-total')
 		},
 		
@@ -34,7 +34,7 @@ Me.prototype =
 		
 		'rating-ingredient': function ()
 		{
-			this.calculateIngredients()
+			this.processIngredients()
 			this.frameChanger('rating-ingredient')
 		}
 	},
@@ -151,7 +151,16 @@ Me.prototype =
 		for (var i = 0, il = cocktails.length; i < il; i++)
 			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
 		
-		this.view.renderTotal(cocktails)
+		return cocktails
+	},
+	
+	processTotal: function ()
+	{
+		var set = this.cache.total
+		if (!set)
+			set = this.cache.total = this.calculateTotal()
+		
+		this.view.renderTotal(set)
 	},
 	
 	
