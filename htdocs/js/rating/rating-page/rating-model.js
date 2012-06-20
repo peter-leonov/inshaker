@@ -7,9 +7,12 @@ function Me ()
 
 Me.prototype =
 {
-	rating: <!--# include virtual="/db/ratings/rating.json" -->,
-	ingredients: <!--# include virtual="/db/ratings/ingredients.json" -->,
-	tags: <!--# include virtual="/db/ratings/tags.json" -->,
+	initialize: function (rating, ingredients, tags)
+	{
+		this.rating = rating
+		this.ingredients = ingredients
+		this.tags = tags
+	},
 	
 	frames:
 	{
@@ -217,3 +220,5 @@ Me.prototype =
 Papa.Model = Me
 
 })();
+
+

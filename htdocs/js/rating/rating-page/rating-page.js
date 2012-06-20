@@ -23,6 +23,14 @@ function onready ()
 	}
 	
 	var widget = new RatingPage()
+	
+	widget.model.initialize
+	(
+		<!--# include virtual="/db/ratings/rating.json" -->,
+		<!--# include virtual="/db/ratings/ingredients.json" -->,
+		<!--# include virtual="/db/ratings/tags.json" -->
+	)
+	
 	widget.bind(nodes)
 }
 
