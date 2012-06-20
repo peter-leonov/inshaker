@@ -10,8 +10,6 @@ Me.prototype =
 		this.ingredients = ingredients
 		this.tags = tags
 		
-		this.cache = {}
-		
 		this.sortByPos()
 	},
 	
@@ -167,11 +165,7 @@ Me.prototype =
 	
 	processTotal: function ()
 	{
-		var set = this.cache.total
-		if (!set)
-			set = this.cache.total = this.calculateTotal()
-		
-		this.view.renderTotal(set)
+		this.view.renderTotal(this.calculateTotal())
 	},
 	
 	
@@ -206,11 +200,7 @@ Me.prototype =
 	
 	processIngredients: function ()
 	{
-		var set = this.cache.ingredients
-		if (!set)
-			set = this.cache.ingredients = this.calculateIngredients()
-		
-		this.view.renderRatingByIngredient(set)
+		this.view.renderRatingByIngredient(this.calculateIngredients())
 	},
 	
 	
@@ -245,11 +235,7 @@ Me.prototype =
 	
 	processTags: function ()
 	{
-		var set = this.cache.tags
-		if (!set)
-			set = this.cache.tags = this.calculateTags()
-		
-		this.view.renderRatingByTag(set)
+		this.view.renderRatingByTag(this.calculateTags())
 	}
 }
 
