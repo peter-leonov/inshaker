@@ -15,7 +15,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var view = this
-		nodes.mainWrapper.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
+		nodes.widget.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
 		
 		var lh = new LocationHash().bind()
 		var controller = this.controller

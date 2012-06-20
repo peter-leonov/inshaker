@@ -16,7 +16,7 @@ function onready ()
 	
 	var nodes =
 	{
-		mainWrapper: $('#common-main-wrapper'),
+		widget: $('#ratings-widget'),
 		'rating-total': $('#rating-total'),
 		'rating-ingredient': $('#rating-ingredient'),
 		'rating-tag': $('#rating-tag')
