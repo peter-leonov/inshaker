@@ -199,7 +199,7 @@ Me.prototype =
 		if (!set)
 			set = this.cache.ingredients = this.calculateIngredients()
 		
-		this.view.renderCol(set, 'rating-ingredient')
+		this.view.renderRatingByIngredient(set)
 	},
 	
 	
@@ -238,7 +238,7 @@ Me.prototype =
 		if (!set)
 			set = this.cache.tags = this.calculateTags()
 		
-		this.view.renderCol(set, 'rating-tag')
+		this.view.renderRatingByTag(set)
 	}
 }
 

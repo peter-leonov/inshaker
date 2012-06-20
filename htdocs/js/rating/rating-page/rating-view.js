@@ -249,7 +249,17 @@ Me.prototype =
 			}
 		}
 	},
-
+	
+	renderRatingByIngredient: function (set)
+	{
+		this.renderCol(set, 'rating-ingredient')
+	},
+	
+	renderRatingByTag: function (set)
+	{
+		this.renderCol(set, 'rating-tag')
+	},
+	
 	changeFrame: function (frame)
 	{
 		if (frame == this.lastFrame)
