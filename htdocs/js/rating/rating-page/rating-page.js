@@ -1,3 +1,11 @@
+<!--# include virtual="/js/common/nodes-shortcut.js" -->
+<!--# include virtual="/js/common/units.js" -->
+<!--# include virtual="/liby/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
+
+<!--# include virtual="/js/common/ingredient-popup.js" -->
+
 ;(function(){
 
 <!--# include virtual="rating.js" -->
@@ -21,11 +29,3 @@ function onready ()
 $.onready(onready)
 
 })();
-
-<!--# include virtual="/js/common/nodes-shortcut.js" -->
-<!--# include virtual="/js/common/units.js" -->
-<!--# include virtual="/liby/fixes/onhashchange.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/location-hash.js" -->
-
-<!--# include virtual="/js/common/ingredient-popup.js" -->
