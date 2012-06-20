@@ -20,19 +20,19 @@ Me.prototype =
 	{
 		'rating-total': function ()
 		{
-			this.renderByTotal()
+			this.calculateTotal()
 			this.frameChanger('rating-total')
 		},
 		
 		'rating-tag': function ()
 		{
-			this.renderByTags()
+			this.calculateTags()
 			this.frameChanger('rating-tag')
 		},
 		
 		'rating-ingredient': function ()
 		{
-			this.renderByIngredients()
+			this.calculateIngredients()
 			this.frameChanger('rating-ingredient')
 		}
 	},
@@ -90,7 +90,7 @@ Me.prototype =
 		}
 	},
 	
-	renderByTotal: function ()
+	calculateTotal: function ()
 	{
 		var cocktails = this.cocktails.slice(0, 10)
 		for (var i = 0, il = cocktails.length; i < il; i++)
@@ -151,7 +151,7 @@ Me.prototype =
 		}
 	},
 	
-	renderByIngredients: function ()
+	calculateIngredients: function ()
 	{
 		var ingredients = this.ingredients,
 			byIngredients = []
@@ -180,7 +180,7 @@ Me.prototype =
 		this.view.renderCol(byIngredients, 'rating-ingredient')
 	},
 	
-	renderByTags: function ()
+	calculateTags: function ()
 	{
 		var tags = this.tags
 		
