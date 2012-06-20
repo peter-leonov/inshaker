@@ -93,11 +93,21 @@ Me.prototype =
 	
 	getPreviewNode: function (lazy, big)
 	{
+		var htmlName = this.name_eng.htmlName(),
+		path = '/cocktail/' + htmlName
+		
 		var li = document.createElement('li')
 		li.className = lazy ? 'cocktail-preview lazy' : 'cocktail-preview'
 		
-		var a = this.getLinkImage(lazy, big)
+		var a = document.createElement('a')
+		a.className = 'link'
+		a.href = path + '/'
 		li.appendChild(a)
+		
+		var img = li.img = document.createElement("img")
+		img.className = 'image'
+		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
+		a.appendChild(img)
 		
 		var name = this.screenName()
 		var txt = document.createTextNode(name)
