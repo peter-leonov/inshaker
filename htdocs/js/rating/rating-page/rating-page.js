@@ -17,9 +17,9 @@ function onready ()
 	var nodes =
 	{
 		widget: $('#ratings-widget'),
-		'rating-total': $('#rating-total'),
-		'rating-ingredient': $('#rating-ingredient'),
-		'rating-tag': $('#rating-tag')
+		'rating-total': $('#ratings-widget .rating-total'),
+		'rating-ingredient': $('#ratings-widget .rating-ingredient'),
+		'rating-tag': $('#ratings-widget .rating-tag')
 	}
 	
 	var widget = new RatingPage()
