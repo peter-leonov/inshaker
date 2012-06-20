@@ -92,10 +92,10 @@ Me.prototype =
 		for (var i = 0, il = days.length-1; i < il; i++)
 		{
 			if (days[i] < days[i+1])
-				return i+1
-
-			if (days[i] > days[i+1])
-				return (i+1)*-1
+				return i + 1
+			
+			if (days[i] > days[i + 1])
+				return (i + 1) * -1
 		}
 	},
 	
@@ -114,7 +114,7 @@ Me.prototype =
 		var cocktailsDays = []
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			if(this.rating[cocktails[i].name])
+			if (this.rating[cocktails[i].name])
 			{
 				var cocktailObj = {}
 				cocktailObj.cocktail = cocktails[i]

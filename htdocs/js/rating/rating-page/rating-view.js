@@ -20,25 +20,19 @@ Me.prototype =
 		this.lh = new LocationHash().bind()
 		
 		var controller = this.controller
-		this.lh.addEventListener('change', function (e)
-		{
-			controller.changeHashReaction(this.get())
-		},
-		false)
+		this.lh.addEventListener('change', function (e) { controller.changeHashReaction(this.get()) }, false)
 		
 		controller.changeHashReaction(this.lh.get())
 	},
 	
 	maybeIngredientClicked: function (target)
 	{
-		if(!target.parentNode)
+		if (!target.parentNode)
 			return
 		
 		var ingredient = target['data-ingredient']
-		if(ingredient)
-		{
+		if (ingredient)
 			this.controller.ingredientSelected(ingredient)
-		}
 	},
 	
 	showIngredient: function (ingredient)
