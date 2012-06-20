@@ -87,30 +87,47 @@ Me.prototype =
 	
 	renderIngredientLinks: function (ingredients)
 	{
-		var links = document.createDocumentFragment()
+		var links = Nc('div', 'ingredients-list')
 		
-		for (var j = 0, jl = ingredients.length; j < jl; j++) 
+		function feed ()
 		{
-			var ing = ingredients[j]
-			var ingObj = Ingredient.getByName(ing[0])
-			
-			var name = ingObj.screenName()
-			
-			var brand = ingObj.brand
-			if (brand)
-				name += ' ' + brand
-			
-			if (Ingredient.groups.indexOf(ingObj.group) < 10)
+			for (var j = 0, jl = ingredients.length; j < jl; j++)
 			{
-				var dose = Units.humanizeDose(ing[1], ingObj.unit)
-				name += ' ' + dose[0] + ' ' + dose[1]
+				var ing = ingredients[j]
+				var ingObj = Ingredient.getByName(ing[0])
+				
+				var name = ingObj.screenName()
+				
+				var brand = ingObj.brand
+				if (brand)
+					name += ' ' + brand
+				
+				if (Ingredient.groups.indexOf(ingObj.group) < 10)
+				{
+					var dose = Units.humanizeDose(ing[1], ingObj.unit)
+					name += ' ' + dose[0] + ' ' + dose[1]
+				}
+				
+				var a = Nct('a', 'cocktail-ingredient', name)
+				a['data-ingredient'] = ingObj
+				links.appendChild(a)
+				
+				var ellipsis = Nct('span', 'cocktail-ingredient ellipsis', '…')
+				links.appendChild(ellipsis)
+				
+				if (links.scrollHeight > links.offsetHeight)
+				{
+					links.removeChild(a)
+					break
+				}
+				else
+					links.removeChild(ellipsis)
+				
+				links.appendChild(T(' '))
 			}
-			
-			var a = Nct('a', 'cocktail-ingredient', name)
-			a['data-ingredient'] = ingObj
-			links.appendChild(a)
-			links.appendChild(T(' '))
 		}
+		
+		window.setTimeout(feed, 0)
 		
 		return links
 	},
