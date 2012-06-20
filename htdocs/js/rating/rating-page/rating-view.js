@@ -17,12 +17,10 @@ Me.prototype =
 		var view = this
 		nodes.mainWrapper.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
 		
-		this.lh = new LocationHash().bind()
-		
+		var lh = new LocationHash().bind()
 		var controller = this.controller
-		this.lh.addEventListener('change', function (e) { controller.changeHashReaction(this.get()) }, false)
-		
-		controller.changeHashReaction(this.lh.get())
+		lh.addEventListener('change', function (e) { controller.changeHashReaction(lh.get()) }, false)
+		controller.changeHashReaction(lh.get())
 	},
 	
 	maybeIngredientClicked: function (target)
