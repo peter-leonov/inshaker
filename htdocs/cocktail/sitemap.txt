@@ -325,6 +325,7 @@ http://www.inshaker.ru/cocktail/kind_coconut/
 http://www.inshaker.ru/cocktail/house_m.d./
 http://www.inshaker.ru/cocktail/dolores_park_swizzle/
 http://www.inshaker.ru/cocktail/home_lebowski/
+http://www.inshaker.ru/cocktail/mojito_home_classic/
 http://www.inshaker.ru/cocktail/home_marmalade/
 http://www.inshaker.ru/cocktail/home_dad_s_double/
 http://www.inshaker.ru/cocktail/home_sling/
