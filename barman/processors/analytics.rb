@@ -168,7 +168,7 @@ class Analytics
   end
   
   def update_ratings
-    days = 7
+    days = 10
     
     start = Time.new
     start -= (4 + days) * DAY
