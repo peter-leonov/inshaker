@@ -14,7 +14,7 @@ class ResetState < Inshaker::Processor
   
   def job
     
-    Dir.chdir("#{Config::ROOT_DIR}barman/")
+    Dir.chdir("#{Config::ROOT_DIR}")
     
     say "сбрасываю все изменения…"
     system("git fetch")
