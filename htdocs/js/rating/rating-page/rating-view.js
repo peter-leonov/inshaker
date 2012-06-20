@@ -95,7 +95,7 @@ Me.prototype =
 			var a = Nct('a', 'cocktail-name', cocktail.name)
 			a.href = cocktail.getPath()
 			h3.appendChild(a)
-
+			
 			ingredients.appendChild(this.renderIngredientLinks(cocktail.ingredients))
 			ratingTotal.appendChild(li)
 		}
@@ -115,13 +115,13 @@ Me.prototype =
 			var brand = ingObj.brand
 			if (brand)
 				name += ' ' + brand
-
+			
 			if (Ingredient.groups.indexOf(ingObj.group) < 10)
 			{
 				var dose = Units.humanizeDose(ing[1], ingObj.unit)
 				name += ' ' + dose[0] + ' ' + dose[1]
 			}
-
+			
 			var a = Nct('a', 'cocktail-ingredient', name)
 			a['data-ingredient'] = ingObj
 			links.appendChild(a)
@@ -201,10 +201,10 @@ Me.prototype =
 				else if (arrowNumTotal < 0)
 					arrowClassTotal = 'arrow down'
 			}
-
+			
 			var ratingArrow = Nc('span', arrowClassTotal)
 			rating.appendChild(ratingArrow)
-
+			
 			var note = Nct('span', 'note', 'позиция в рейтинге всех коктейлей')
 			rating.appendChild(note)
 			
@@ -215,7 +215,7 @@ Me.prototype =
 				
 				var item = Nc('li', 'item')
 				list.appendChild(item)
-
+				
 				var position = Nct('div', 'cocktail-position', j+1)
 				item.appendChild(position)
 				
@@ -232,7 +232,7 @@ Me.prototype =
 				
 				var positionArrow = Nc('span', arrowClass)
 				position.appendChild(positionArrow)
-
+				
 				var ingredients = Nc('div', 'cocktail')
 				item.appendChild(ingredients)
 				
@@ -244,14 +244,14 @@ Me.prototype =
 				h3.appendChild(link)
 				
 				ingredients.appendChild(this.renderIngredientLinks(cocktail.cocktail.ingredients))
-
+				
 				
 				var rating = Nct('div', 'cocktail-rating', cocktail.totalPos)
 				item.appendChild(rating)
-					
+				
 				var arrowClassTotal = '',
 					arrowNumTotal = cocktail.totalDirection
-					
+				
 				if (arrowNumTotal)
 				{
 					if (arrowNumTotal > 0)
@@ -259,7 +259,7 @@ Me.prototype =
 					else if (arrowNumTotal < 0)
 						arrowClassTotal = 'arrow down'
 				}
-	
+				
 				var ratingArrow = Nc('span', arrowClassTotal)
 				rating.appendChild(ratingArrow)
 			}

@@ -22,7 +22,7 @@ Me.prototype =
 			this.view.renderTotal(this.byTotal)
 			this.frameChanger('rating-total')
 		},
-
+		
 		'rating-tag': function ()
 		{
 			if (!this.cocktails)
@@ -32,7 +32,7 @@ Me.prototype =
 			this.view.renderCol(this.byTags, 'rating-tag')
 			this.frameChanger('rating-tag')
 		},
-
+		
 		'rating-ingredient': function ()
 		{
 			if (!this.cocktails)
@@ -80,7 +80,7 @@ Me.prototype =
 			var cocktail = Cocktail.getByName(k)
 			
 			cocktail.days = this.rating[k]
-
+			
 			cocktails.push(cocktail)
 		}
 		
@@ -182,7 +182,7 @@ Me.prototype =
 				var cocktailsObj = byIngr.cocktails = this.getTopCocktails(cocktails)
 				this.calculateSpecialDays(cocktailsObj)
 				this.fillDirectionAndPos(cocktailsObj)
-
+				
 				byIngredients.push(byIngr)
 			}
 		}
@@ -205,7 +205,7 @@ Me.prototype =
 					name: tag,
 					count: cocktails.length
 				}
-
+				
 				var cocktailsObj = byTag.cocktails = this.getTopCocktails(cocktails)
 				this.calculateSpecialDays(cocktailsObj)
 				this.fillDirectionAndPos(cocktailsObj)

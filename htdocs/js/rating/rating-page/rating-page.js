@@ -4,7 +4,6 @@
 
 function onready ()
 {
-
 	IngredientPopup.bootstrap()
 	
 	var nodes =
@@ -14,7 +13,7 @@ function onready ()
 		'rating-ingredient': $('#rating-ingredient'),
 		'rating-tag': $('#rating-tag')
 	}
-
+	
 	var widget = new RatingPage()
 	widget.bind(nodes)
 }
