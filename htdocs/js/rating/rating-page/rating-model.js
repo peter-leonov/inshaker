@@ -13,6 +13,8 @@ Me.prototype =
 		this.ingredients = ingredients
 		this.tags = tags
 		
+		this.cache = {}
+		
 		this.sortByPos()
 	},
 	
@@ -26,7 +28,7 @@ Me.prototype =
 		
 		'rating-tag': function ()
 		{
-			this.calculateTags()
+			this.processTags()
 			this.frameChanger('rating-tag')
 		},
 		
@@ -153,9 +155,9 @@ Me.prototype =
 	
 	calculateIngredients: function ()
 	{
-		var ingredients = this.ingredients,
-			byIngredients = []
+		var res = []
 		
+		var ingredients = this.ingredients
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingr = ingredients[i],
@@ -173,18 +175,28 @@ Me.prototype =
 				this.calculateSpecialDays(cocktailsObj)
 				this.fillDirectionAndPos(cocktailsObj)
 				
-				byIngredients.push(byIngr)
+				res.push(byIngr)
 			}
 		}
 		
-		this.view.renderCol(byIngredients, 'rating-ingredient')
+		return res
 	},
+	
+	processIngredients: function ()
+	{
+		var set = this.cache.ingredients
+		if (!set)
+			set = this.cache.ingredients = this.calculateIngredients()
+		
+		this.view.renderCol(set, 'rating-ingredient')
+	},
+	
 	
 	calculateTags: function ()
 	{
-		var tags = this.tags
+		var res = []
 		
-		var byTags = []
+		var tags = this.tags
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
 			var tag = tags[i],
@@ -202,11 +214,20 @@ Me.prototype =
 				this.calculateSpecialDays(cocktailsObj)
 				this.fillDirectionAndPos(cocktailsObj)
 				
-				byTags.push(byTag)
+				res.push(byTag)
 			}
 		}
 		
-		this.view.renderCol(byTags, 'rating-tag')
+		return res
+	},
+	
+	processTags: function ()
+	{
+		var set = this.cache.tags
+		if (!set)
+			set = this.cache.tags = this.calculateTags()
+		
+		this.view.renderCol(set, 'rating-tag')
 	}
 }
 
