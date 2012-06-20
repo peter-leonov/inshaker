@@ -1,87 +1,79 @@
-#ratings-root .head { font-size: 24px; margin-bottom: 35px; }
-#ratings-root .head a:hover { text-decoration: none; border-bottom: 2px dashed; }
-#ratings-root .head .hint { color: #c2c2c2; }
+#ratings-widget .head { font-size: 24px; margin-bottom: 35px; }
+#ratings-widget .head a:hover { text-decoration: none; border-bottom: 2px dashed; }
+#ratings-widget .head .hint { color: #c2c2c2; }
 
 #rating-ingredient,
 #rating-tag { width: 940px; }
 
-.rating-col { display: inline-block; vertical-align: top; margin: 0 11px 75px 0; }
+#ratings-widget .rating-col { display: inline-block; vertical-align: top; margin: 0 11px 75px 0; }
 
-.rating-name { font-size: 18px; }
-.rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
+#ratings-widget .rating-name { font-size: 18px; }
+#ratings-widget .rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
 
+#ratings-widget .rating-list .first-item { display: block; width: 300px; border-top: 3px solid #E5E5E5; margin-top: 5px; text-align: right; }
+#ratings-widget .rating-list .first-item img { height: 180px; float: left; }
+#ratings-widget .rating-list .first-item h3 { padding-top: 20px; }
+#ratings-widget .rating-list .first-item h3 .cocktail-name { color: #000; font-size: 16px; }
+#ratings-widget .rating-list .first-item .cocktail { width: 160px; padding: 30px 0 30px 0; margin-left: auto; }
+#ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient { font-size: 11px; }
 
-.rating-list .first-item { display: block; width: 300px; border-top: 3px solid #E5E5E5; margin-top: 5px; text-align: right; }
-.rating-list .first-item img { height: 180px; float: left; }
-.rating-list .first-item h3 { padding-top: 20px; }
-.rating-list .first-item h3 .cocktail-name { color: #000; font-size: 16px; }
+#ratings-widget .rating-list .first-item .cocktail-position .arrow { margin-right: 3px; }
+#ratings-widget .rating-list .first-item .cocktail-rating { font-size: 12px; margin-left: auto; }
+#ratings-widget .rating-list .first-item .cocktail-rating .note { font-size: 9px; color: #838383; display: block; width: 100px; margin-left: auto; }
+#ratings-widget .rating-list .first-item .cocktail-rating .arrow { margin-left: 5px; }
 
-.rating-list .first-item .cocktail { width: 160px; padding: 30px 0 30px 0; margin-left: auto; }
-.rating-list .first-item .cocktail .cocktail-ingredient { font-size: 11px; }
-
-.rating-list .first-item .cocktail-position .arrow { margin-right: 3px; }
-.rating-list .first-item .cocktail-rating { font-size: 12px; margin-left: auto; }
-.rating-list .first-item .cocktail-rating .note { font-size: 9px; color: #838383; display: block; width: 100px; margin-left: auto; }
-.rating-list .first-item .cocktail-rating .arrow { margin-left: 5px; }
-
-
-.rating-list .item { display: block; position: relative; width: 300px; min-height: 43px; border-top: 1px solid #E5E5E5; padding-top: 10px; margin-top: 10px; }
-
-.rating-list .item .cocktail-position { position: absolute; top: 10px; left: 0; width: 20px; color: #838383; font-size: 12px; }
-.rating-list .item .cocktail { padding: 0 40px 0 20px; width: 240px; }
-.rating-list .item .cocktail-rating { position: absolute; top: 10px; right: 0; margin-left: auto; font-size: 12px; }
-.rating-list .item .cocktail-rating .arrow { margin-left: 5px; }
-
-.rating-list .item .cocktail h3 { padding-bottom: 5px; }
-.rating-list .item .cocktail h3 .cocktail-name { color: #000; font-size: 12px; }
+#ratings-widget .rating-list .item { display: block; position: relative; width: 300px; min-height: 43px; border-top: 1px solid #E5E5E5; padding-top: 10px; margin-top: 10px; }
+#ratings-widget .rating-list .item .cocktail-position { position: absolute; top: 10px; left: 0; width: 20px; color: #838383; font-size: 12px; }
+#ratings-widget .rating-list .item .cocktail { padding: 0 40px 0 20px; width: 240px; }
+#ratings-widget .rating-list .item .cocktail-rating { position: absolute; top: 10px; right: 0; margin-left: auto; font-size: 12px; }
+#ratings-widget .rating-list .item .cocktail-rating .arrow { margin-left: 5px; }
+#ratings-widget .rating-list .item .cocktail h3 { padding-bottom: 5px; }
+#ratings-widget .rating-list .item .cocktail h3 .cocktail-name { color: #000; font-size: 12px; }
 
 
-.rating-list .item .cocktail .cocktail-ingredient,
-.rating-list .first-item .cocktail .cocktail-ingredient { color: #4b4b4b; }
+#ratings-widget .rating-list .item .cocktail .cocktail-ingredient,
+#ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient { color: #4b4b4b; }
 
-.rating-list .item .cocktail .cocktail-ingredient:after,
-.rating-list .first-item .cocktail .cocktail-ingredient:after,
-#rating-total li .cocktail .cocktail-ingredient:after { content: ',' }
-.rating-list .item .cocktail .cocktail-ingredient:last-child:after,
-.rating-list .first-item .cocktail .cocktail-ingredient:last-child:after,
-#rating-total li .cocktail .cocktail-ingredient:last-child:after { content: '' }
-
-
-.rating-list .item .cocktail-position .arrow,
-.rating-list .item .cocktail-rating .arrow,
-.rating-list .first-item .cocktail-rating .arrow,
-.rating-list .first-item .cocktail-position .arrow,
-#rating-total li .cocktail-position .arrow { background-image: url(arrows.png); }
-
-.rating-list .item .cocktail-position .arrow,
-.rating-list .first-item .cocktail-position .arrow { width: 6px; height: 6px; display: block; margin-top: 6px; background-position: -8px 0; }
-.rating-list .item .cocktail-position .arrow.up,
-.rating-list .first-item .cocktail-position .arrow.up { background-position: -8px -6px; }
-
-.rating-list .item .cocktail-rating .arrow,
-.rating-list .first-item .cocktail-rating .arrow,
-#rating-total li .cocktail-position .arrow { width: 8px; height: 9px; display: inline-block; background-position: 0 0; }
-.rating-list .item .cocktail-rating .arrow.up,
-.rating-list .first-item .cocktail-rating .arrow.up,
-#rating-total li .cocktail-position .arrow.up { background-position: 0 -9px; }
-
-.rating-list .first-item .cocktail-position .arrow { display: inline-block; }
+#ratings-widget .rating-list .item .cocktail .cocktail-ingredient:after,
+#ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient:after,
+#ratings-widget #rating-total li .cocktail .cocktail-ingredient:after { content: ',' }
+#ratings-widget .rating-list .item .cocktail .cocktail-ingredient:last-child:after,
+#ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient:last-child:after,
+#ratings-widget #rating-total li .cocktail .cocktail-ingredient:last-child:after { content: '' }
 
 
-#rating-total { padding-bottom: 75px; }
+#ratings-widget .rating-list .item .cocktail-position .arrow,
+#ratings-widget .rating-list .item .cocktail-rating .arrow,
+#ratings-widget .rating-list .first-item .cocktail-rating .arrow,
+#ratings-widget .rating-list .first-item .cocktail-position .arrow,
+#ratings-widget #rating-total li .cocktail-position .arrow { background-image: url(arrows.png); }
 
-#rating-total li { position: relative; border-bottom: 1px solid #e5e5e5; margin-right: 18px; }
-#rating-total li:last-child { border-bottom: none; }
+#ratings-widget .rating-list .item .cocktail-position .arrow,
+#ratings-widget .rating-list .first-item .cocktail-position .arrow { width: 6px; height: 6px; display: block; margin-top: 6px; background-position: -8px 0; }
+#ratings-widget .rating-list .item .cocktail-position .arrow.up,
+#ratings-widget .rating-list .first-item .cocktail-position .arrow.up { background-position: -8px -6px; }
 
-#rating-total li .cocktail-position { position: absolute; top: 35px; left: 0; font-size: 14px; }
-#rating-total li .cocktail-position:after { content: '.'; }
-#rating-total li .cocktail-position .arrow { margin-right: 5px; }
-#rating-total li .cocktail-image { position: absolute; top: 10px; left: 55px; }
-#rating-total li .cocktail { padding-left: 160px; padding-top: 30px; padding-bottom: 36px; width: 550px; }
+#ratings-widget .rating-list .item .cocktail-rating .arrow,
+#ratings-widget .rating-list .first-item .cocktail-rating .arrow,
+#ratings-widget #rating-total li .cocktail-position .arrow { width: 8px; height: 9px; display: inline-block; background-position: 0 0; }
+#ratings-widget .rating-list .item .cocktail-rating .arrow.up,
+#ratings-widget .rating-list .first-item .cocktail-rating .arrow.up,
+#ratings-widget #rating-total li .cocktail-position .arrow.up { background-position: 0 -9px; }
 
-#rating-total li .cocktail h3 { padding-bottom: 5px; }
-#rating-total li .cocktail h3 .cocktail-name { font-size: 18px; color: #000; }
+#ratings-widget .rating-list .first-item .cocktail-position .arrow { display: inline-block; }
 
-#rating-total li .cocktail .cocktail-ingredient { font-size: 11px; color: #505050; }
+#ratings-widget #rating-total { padding-bottom: 75px; }
+
+#ratings-widget #rating-total li { position: relative; border-bottom: 1px solid #e5e5e5; margin-right: 18px; }
+#ratings-widget #rating-total li:last-child { border-bottom: none; }
+
+#ratings-widget #rating-total li .cocktail-position { position: absolute; top: 35px; left: 0; font-size: 14px; }
+#ratings-widget #rating-total li .cocktail-position:after { content: '.'; }
+#ratings-widget #rating-total li .cocktail-position .arrow { margin-right: 5px; }
+#ratings-widget #rating-total li .cocktail-image { position: absolute; top: 10px; left: 55px; }
+#ratings-widget #rating-total li .cocktail { padding-left: 160px; padding-top: 30px; padding-bottom: 36px; width: 550px; }
+#ratings-widget #rating-total li .cocktail h3 { padding-bottom: 5px; }
+#ratings-widget #rating-total li .cocktail h3 .cocktail-name { font-size: 18px; color: #000; }
+#ratings-widget #rating-total li .cocktail .cocktail-ingredient { font-size: 11px; color: #505050; }
 
 <!--# include virtual="/t/ingredient-popup.css" -->
