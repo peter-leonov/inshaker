@@ -27,26 +27,11 @@ Me.prototype =
 	
 	maybeIngredientClicked: function (target)
 	{
-		if (!target.parentNode)
+		var ingredient = target['data-ingredient']
+		if (!ingredient)
 			return
 		
-		var ingredient = target['data-ingredient']
-		if (ingredient)
-			this.controller.ingredientSelected(ingredient)
-	},
-	
-	showIngredient: function (ingredient)
-	{
-		if (ingredient)
-		{
-			var popup = IngredientPopup.show(ingredient)
-			var controller = this.controller
-			popup.onhide = function () { controller.ingredientSelected(null) }
-		}
-		else
-		{
-			IngredientPopup.hide()
-		}
+		IngredientPopup.show(ingredient)
 	},
 	
 	renderTotal: function (cocktails)

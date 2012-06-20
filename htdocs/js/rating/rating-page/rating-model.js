@@ -213,11 +213,6 @@ Me.prototype =
 				byTags.push(byTag)
 			}
 		}
-	},
-	
-	selectIngredient: function (ingredient)
-	{
-		this.view.showIngredient(ingredient)
 	}
 }
 
