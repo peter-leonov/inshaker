@@ -168,13 +168,15 @@ class Analytics
   end
   
   def update_ratings
+    days = 7
+    
     start = Time.new
-    start -= (4 + 7) * DAY
+    start -= (4 + days) * DAY
     
     seen = {}
     week = []
     
-    7.times do
+    days.times do
       
       endd = start + DAY
       views_stats, no, no = get_pageviews(start, endd)
@@ -203,9 +205,9 @@ class Analytics
     
     res = Hash.new { |h, k| h[k] = [] }
     
-    (0...7).each do |i|
+    (0...days).each do |i|
       seen.keys.sort.each do |name|
-        res[name][i] = (week[i][name] || 999998) + 1
+        res[name][days - 1 - i] = (week[i][name] || 999998) + 1
       end
     end
     
