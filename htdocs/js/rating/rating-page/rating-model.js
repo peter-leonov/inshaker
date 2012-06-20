@@ -92,15 +92,6 @@ Me.prototype =
 		}
 	},
 	
-	calculateTotal: function ()
-	{
-		var cocktails = this.cocktails.slice(0, 10)
-		for (var i = 0, il = cocktails.length; i < il; i++)
-			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
-		
-		this.view.renderTotal(cocktails)
-	},
-	
 	getTopCocktails: function (cocktails)
 	{
 		var cocktailsDays = []
@@ -152,6 +143,17 @@ Me.prototype =
 				cocktail.totalPos = pos + 1
 		}
 	},
+	
+	
+	calculateTotal: function ()
+	{
+		var cocktails = this.cocktails.slice(0, 10)
+		for (var i = 0, il = cocktails.length; i < il; i++)
+			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
+		
+		this.view.renderTotal(cocktails)
+	},
+	
 	
 	calculateIngredients: function ()
 	{
