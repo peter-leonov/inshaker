@@ -258,7 +258,7 @@ EventPage.view =
 		Switcher.bind(main, buttons, tabs)
 		main.select(0)
 		
-		this.nodes.sponsorsLow.addClassName('visible')
+		this.nodes.sponsorsLow.classList.add('visible')
 	},
 	
 	createLowSponsorNode: function (logosSet)
@@ -385,7 +385,7 @@ EventPage.view =
 			this.nodes.ratingShowAll.show()
 		}
 		
-		nodes.sidebar.addClassName('visible')
+		nodes.sidebar.classList.add('visible')
 	},
 	
 	showAllRating: function ()
@@ -447,7 +447,7 @@ EventPage.view =
 				nodes.sponsorsHighTitle.innerHTML = sponsor.name
 			nodes.sponsorsHigh.style.backgroundImage = 'url(' + this.root + '/logos/' + sponsor.src + ')'
 			nodes.sponsorsHigh.href = sponsor.href
-			nodes.sidebar.addClassName('visible')
+			nodes.sidebar.classList.add('visible')
 		}
 		else
 		{
@@ -474,8 +474,8 @@ EventPage.view =
 			
 			function animatePopups ()
 			{
-				illustrationPopups.addClassName('hidden')
-				setTimeout
+				illustrationPopups.classList.add('hidden')
+				window.setTimeout
 				(
 					function ()
 					{ 
@@ -484,13 +484,13 @@ EventPage.view =
 						else
 							illustration.scrollTop += 300
 						
-						illustrationPopups.removeClassName('hidden')
+						illustrationPopups.classList.remove('hidden')
 					},
 					500
 				)
 			}
 			
-			setInterval(animatePopups, 3200)
+			window.setInterval(animatePopups, 3200)
 		}
 		else
 			illustrationPopups.remove()
@@ -520,7 +520,7 @@ EventPage.view =
 			if (field.type == 'textarea')
 			{
 				input = N('textarea')
-				label.addClassName('big')
+				label.classList.add('big')
 			}
 			else
 			{
@@ -549,7 +549,7 @@ EventPage.view =
 		new InputTip().bind(inputs)
 		
 		var thanks = nodes.formPopupThanks
-		if (!thanks.hasClassName('default'))
+		if (!thanks.classList.contains('default'))
 		{
 			var input = inputs[i] = N('input')
 			input.type = 'hidden'
@@ -596,26 +596,26 @@ EventPage.view =
 		var button = this.nodes.formPopupSubmit
 		if (status)
 		{
-			button.addClassName('disabled')
+			button.classList.add('disabled')
 			button.setAttribute('disabled', true)
 		}
 		else
 		{
 			button.removeAttribute('disabled')
-			button.removeClassName('disabled')
+			button.classList.remove('disabled')
 		}
 	},
 	
 	startFormChecker: function ()
 	{
 		var me = this
-		clearInterval(this.formCheckTimer)
-		this.formCheckTimer = setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
+		window.clearInterval(this.formCheckTimer)
+		this.formCheckTimer = window.setInterval(function () { me.owner.controller.formTimeCheck(FormHelper.toHash(me.nodes.form), me.nodes.form.variableFields) }, 200)
 	},
 	
 	stopFormChecker: function ()
 	{
-		clearInterval(this.formCheckTimer)
+		window.clearInterval(this.formCheckTimer)
 	}
 }
 

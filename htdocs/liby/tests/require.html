@@ -5,8 +5,8 @@
 	<title>Tests for require()</title>
 	<script src="tests.common.js"></script>
 	
-	<!--[if lte IE 7]><script src="../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../src/core/fixes/trident4.js"></script><![endif]-->
+	<!--[if lte IE 7]><script src="../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../src/fixes/trident4.js"></script><![endif]-->
 	<script src="../src/modules/require.js"></script>
 </head>
 <body>
@@ -30,7 +30,7 @@ Tests.test(function (t)
 				t.eq(window.veryGlobalCounter1, num)
 				t.no(called[num], 'already called')
 				called[num] = true
-				setTimeout(function () { t.done() }, 250)
+				window.setTimeout(function () { t.done() }, 250)
 			}
 			
 			require('require-file-1.js?ac=' + Math.random(), onload)

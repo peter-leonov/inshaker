@@ -23,7 +23,6 @@ Object.extend(Me.prototype, myProto)
 })();
 
 <!--# include virtual="/liby/modules/user-agent.js" -->
-<!--# include virtual="/liby/modules/regexp-escape.js" -->
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
@@ -37,7 +36,7 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	document.documentElement.removeClassName('loading')
+	document.documentElement.classList.remove('loading')
 	
 	IngredientPopup.bootstrap()
 	

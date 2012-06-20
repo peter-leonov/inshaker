@@ -11,25 +11,25 @@ function RollingImagesLite (node, conf)
 	function mouseup (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		document.removeEventListener('mouseup', mouseup, false)
 	}
 	
 	this.prevmousedown = function (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		t.goPrev()
-		t.svInt = setInterval(function () { t.goPrev() }, t.conf.duration * 1000 * 0.5 + 150)
+		t.svInt = window.setInterval(function () { t.goPrev() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
 	}
 	
 	this.nextmousedown = function (e)
 	{
 		e.preventDefault()
-		clearInterval(t.svInt)
+		window.clearInterval(t.svInt)
 		t.goNext()
-		t.svInt = setInterval(function () { t.goNext() }, t.conf.duration * 1000 * 0.5 + 150)
+		t.svInt = window.setInterval(function () { t.goNext() }, t.conf.duration * 1000 * 0.5 + 150)
 		document.addEventListener('mouseup', mouseup, false)
 	}
 	
@@ -54,7 +54,7 @@ RollingImagesLite.prototype =
 		this.aNext = this.my('.next')
 		
 		// if syncing when pushed
-		clearInterval(this.svInt)
+		window.clearInterval(this.svInt)
 		
 		var t = this
 		if (this.aPrev)
@@ -119,26 +119,26 @@ RollingImagesLite.prototype =
 	updateNavigation: function ()
 	{
 		for (var i = 0, il = this.buttons.length; i < il; i++)
-			this.buttons[i].removeClassName('selected-button')
+			this.buttons[i].classList.remove('selected-button')
 		
 		var button = this.buttons[this.current]
 		if (button)
-			button.addClassName('selected-button')
+			button.classList.add('selected-button')
 		
 		if (this.aPrev)
 		{
 			if (this.current > 0)
-				this.aPrev.removeClassName('disabled')
+				this.aPrev.classList.remove('disabled')
 			else
-				this.aPrev.addClassName('disabled')
+				this.aPrev.classList.add('disabled')
 		}
 		
 		if (this.aNext)
 		{
 			if (this.current < this.points.length - 1)
-				this.aNext.removeClassName('disabled')
+				this.aNext.classList.remove('disabled')
 			else
-				this.aNext.addClassName('disabled')
+				this.aNext.classList.add('disabled')
 		}
 	},
 	

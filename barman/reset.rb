@@ -14,10 +14,12 @@ class ResetState < Inshaker::Processor
   
   def job
     
+    Dir.chdir("#{Config::ROOT_DIR}")
+    
     say "сбрасываю все изменения…"
     system("git fetch")
     system("git reset --hard git/master")
-    system("git clean -df")
+    system("git clean -fd")
     
     say "проверяю состояние…"
     system("git status")

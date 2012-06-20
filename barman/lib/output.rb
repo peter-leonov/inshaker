@@ -28,7 +28,7 @@ module Output
   end
   
   class Worker
-    if ENV['REQUEST_METHOD']
+    if ENV['INSHAKER_SAYING_TYPE'] == "HTML"
       include Saying::HTML
     else
       include Saying::Console

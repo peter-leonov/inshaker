@@ -47,7 +47,7 @@ Me.prototype =
 		}
 		
 		var me = this
-		setTimeout(function () { me.action(action) }, 1)
+		window.setTimeout(function () { me.action(action) }, 1)
 	},
 	
 	onBlur: function ()

@@ -5,7 +5,7 @@
 	<title>Best way to search smt. by letter</title>
 	<script src="tests.common.js"></script>
 	
-	<script src="../../src/modules/regexp-escape.js"></script>
+	<script src="../../src/modules/prototype.js"></script>
 </head>
 <body>
 <script>
@@ -15,7 +15,7 @@ Tests.test(function (t)
 	{
 		var words = [],
 			letters = 'qwertyuiopasdfghjklzxcvbnm1234567890йцукенгшщзхъфывапролджэёячсмитьбю'.split(''),
-			suffixes = ['', 'a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa', 'aaaaaaa', 'aaaaaaaa', 'aaaaaaaaa']
+			suffixes = ['', 'a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa', 'aaaaaaa', 'aaaaaaaa', 'aaaaaaaaa'],
 			ll = letters.length
 		
 		for (var i = 0; i < 1000; i++)

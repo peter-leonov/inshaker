@@ -141,7 +141,7 @@ var myProto =
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.focusSearchInput()
-		setTimeout(function () { me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
+		window.setTimeout(function () { me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
 		this.view.renderShareLinks(this.id)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()

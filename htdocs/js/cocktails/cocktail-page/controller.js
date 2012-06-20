@@ -91,8 +91,8 @@ var Controller = {
 	renderFrame: function (frame)
 	{
 		var root = this.nodes.hreview
-		root.removeClassName(this.lastFrame)
-		root.addClassName(frame)
+		root.classList.remove(this.lastFrame)
+		root.classList.add(frame)
 		
 		this.lastFrame = frame
 		
@@ -118,7 +118,7 @@ var Controller = {
 			var a = $('#author')
 			if (a)
 			{
-				a.removeClassName('hidden')
+				a.classList.remove('hidden')
 				a.href = barman.pageHref()
 			}
 			
@@ -126,7 +126,7 @@ var Controller = {
 			a = $('a.author')
 			if (a)
 			{
-				a.addClassName('active')
+				a.classList.add('active')
 				a.href = barman.pageHref()
 			}
 		}
@@ -135,7 +135,7 @@ var Controller = {
 		if (bars.length)
 		{
 			var a = $('#where-to-taste')
-			a.removeClassName('hidden')
+			a.classList.remove('hidden')
 			
 			if (bars.length == 1)
 			{
@@ -253,8 +253,8 @@ var Controller = {
 		
 		if (size <= 1)
 		{
-			nodes.next.addClassName('disabled')
-			nodes.prev.addClassName('disabled')
+			nodes.next.classList.add('disabled')
+			nodes.prev.classList.add('disabled')
 			return
 		}
 		
@@ -273,11 +273,11 @@ var Controller = {
 					list.goNext()
 					carousel.start()
 				}
-				carousel.cycle = setTimeout(goNext, carousel.timeout)
+				carousel.cycle = window.setTimeout(goNext, carousel.timeout)
 			},
 			stop: function ()
 			{
-				clearTimeout(carousel.cycle)
+				window.clearTimeout(carousel.cycle)
 			}
 		}
 		
@@ -402,6 +402,6 @@ var Controller = {
 	
 	expandRelated: function ()
 	{
-		this.nodes.moreBox.addClassName('wide')
+		this.nodes.moreBox.classList.add('wide')
 	}
 }

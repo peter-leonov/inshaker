@@ -136,13 +136,13 @@ Me.prototype =
 		var item = this.cache.previews[good.name]
 		if (item)
 		{
-			item.addClassName('selected')
+			item.classList.add('selected')
 			this.previewsList.jumpToNode(item)
 		}
 		
 		var item = this.cache.previewsGhosts[good.name]
 		if (item)
-			item.addClassName('selected')
+			item.classList.add('selected')
 	}
 }
 

@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/core/fixes/onhashchange.js"-->
+<!--# include virtual="/liby/fixes/onhashchange.js"-->
 
 <!--# include virtual="/liby/modules/location-hash.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
@@ -67,7 +67,7 @@ $.onready
 (
 	function ()
 	{
-		document.documentElement.removeClassName('loading')
+		document.documentElement.classList.remove('loading')
 		UserAgent.setupDocumentElementClassNames()
 		
 		var nodes =

@@ -1,4 +1,4 @@
-<!--# include virtual="/liby/core/prototype.js" -->
+<!--# include virtual="/liby/modules/prototype.js" -->
 <!--# include virtual="/liby/modules/element.js" -->
 <!--# include virtual="/liby/modules/cosy.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
@@ -16,6 +16,8 @@ $.onready(function()
 {
 	var nodes =
 	{
+		logo: $('.logo'),
+		
 		shakerPage: $('.page.shaker'),
 		shake: $('.shaker .shake'),
 		processorsList: $('.shaker .processors-list'),
@@ -44,6 +46,8 @@ $.onready(function()
 	})();
 	
 	
+	nodes.logo.addEventListener('click', function (e) { document.documentElement.classList.toggle('advanced') }, false)
+	
 	
 	var running = false
 	function run (path, hash, callback)
@@ -64,9 +68,9 @@ $.onready(function()
 		r.onreadystatechange = function (e)
 		{
 			if (this.status != 200)
-				output.addClassName('server-error')
+				output.classList.add('server-error')
 			else
-				output.removeClassName('server-error')
+				output.classList.remove('server-error')
 			
 			var readyState = this.readyState
 			

@@ -24,12 +24,11 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/liby/core/fixes/keydown-to-keypress.js"-->
+<!--# include virtual="/liby/fixes/keydown-to-keypress.js"-->
 
 <!--# include virtual="/liby/modules/motion.js" -->
 <!--# include virtual="/liby/modules/motion-types.js" -->
 <!--# include virtual="/liby/modules/animation.js" -->
-<!--# include virtual="/liby/modules/regexp-escape.js" -->
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 

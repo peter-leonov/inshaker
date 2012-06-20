@@ -63,7 +63,7 @@ Me.prototype =
 						image = node.barmanImageSrc
 					
 					node.style.backgroundImage = image
-					node.removeClassName('lazy')
+					node.classList.remove('lazy')
 					
 					box.loaded = true
 				}
@@ -77,7 +77,7 @@ Me.prototype =
 			frame.moveTo(window.pageXOffset, window.pageYOffset)
 		}
 		var timer
-		window.addEventListener('scroll', function () { clearTimeout(timer); timer = setTimeout(onscroll, 100) }, false)
+		window.addEventListener('scroll', function () { window.clearTimeout(timer); timer = window.setTimeout(onscroll, 100) }, false)
 		onscroll()
 	}
 }

@@ -4,7 +4,7 @@ Switcher =
 	{
 		if (!main || !buttons || !tabs)
 			throw new Error('main, buttons or tabs are not defined: ' + [!!main, !!buttons, !!tabs].join(', '))
-		main.nodes = {buttons: Array.copy(buttons), tabs: Array.copy(tabs)}
+		main.nodes = {buttons: Array.from(buttons), tabs: Array.from(tabs)}
 		main.names = names || []
 		
 		main.onselect = function () {}
@@ -31,7 +31,7 @@ Switcher =
 			var buttons = this.nodes.buttons
 			for (var i = 0; i < buttons.length; i++)
 				if (buttons[i])
-					num == i ? buttons[i].addClassName('selected') : buttons[i].removeClassName('selected')
+					num == i ? buttons[i].classList.add('selected') : buttons[i].classList.remove('selected')
 			
 			var tabs = this.nodes.tabs
 			if (tabs && tabs[num])

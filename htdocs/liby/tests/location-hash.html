@@ -5,10 +5,10 @@
 	<title>Tests for LocationHash</title>
 	<script src="tests.common.js"></script>
 	
-	<!--[if lte IE 7]><script src="../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../src/core/fixes/trident4.js"></script><![endif]-->
-	<script src="../src/core/prototype.js"></script>
-	<script src="../src/core/fixes/onhashchange.js"></script>
+	<!--[if lte IE 7]><script src="../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../src/fixes/trident4.js"></script><![endif]-->
+	<script src="../src/modules/prototype.js"></script>
+	<script src="../src/fixes/onhashchange.js"></script>
 	<script src="../src/modules/event-driven.js"></script>
 	<script src="../src/modules/location-hash.js"></script>
 	
@@ -26,7 +26,7 @@ Tests.test(function (t)
 	if (window.location.setHashchangeCheckInterval)
 	{
 		window.location.setHashchangeCheckInterval(1)
-		setTimeout(function () { window.location.setHashchangeCheckInterval() }, 10000)
+		window.setTimeout(function () { window.location.setHashchangeCheckInterval() }, 10000)
 	}
 	
 	var lh = new LocationHash().bind()
@@ -79,7 +79,7 @@ Tests.test(function (t)
 			
 			lh.addEventListener('change', onchange, false)
 			
-			setTimeout(function () { window.location.hash = text }, 0)
+			window.setTimeout(function () { window.location.hash = text }, 0)
 			
 			t.wait(1000)
 		})
@@ -94,7 +94,7 @@ Tests.test(function (t)
 			
 			lh.addEventListener('change', onchange, false)
 			
-			setTimeout(function () { lh.set('123') }, 0)
+			window.setTimeout(function () { lh.set('123') }, 0)
 			
 			t.async(function () {}, 100)
 		})

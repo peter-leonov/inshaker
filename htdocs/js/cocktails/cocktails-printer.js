@@ -43,7 +43,7 @@ var Printer = {
         img.src = this.IMG_MARKER;
         img.onload = function(e){
             if (self.wannaPrint)
-                setTimeout(function () { window.print() }, 1000)
+                window.setTimeout(function () { window.print() }, 1000)
         }
     },
 
@@ -93,7 +93,7 @@ var Printer = {
             img.onload = function(e){
                 imgCounter++;
                 if(imgCounter == cocktail.ingredients.length)
-                    setTimeout(function () { window.print() }, 1000)
+                    window.setTimeout(function () { window.print() }, 1000)
             }
        }
 	},
@@ -133,7 +133,7 @@ var Printer = {
 		var ingredients = []
 		for (var name in cartData.goods)
 			ingredients.push(Ingredient.getByName(name))
-		ingredients.sort(Ingredient.compareByName)
+		ingredients.sort(function (a, b) { return a.name.localeCompare(b.name) })
 		
 		for(var i = 0; i < ingredients.length; i++)
 		{

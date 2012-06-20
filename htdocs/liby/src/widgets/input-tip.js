@@ -14,7 +14,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		function onvalue (e) { setTimeout(function () { me.checkValue(e.target) }, 0) }
+		function onvalue (e) { window.setTimeout(function () { me.checkValue(e.target) }, 0) }
 		function onfocus (e) { me.focus(e.target) }
 		function onblur (e) { me.blur(e.target) }
 		
@@ -34,20 +34,20 @@ Me.prototype =
 	{
 		var parent = node.parentNode
 		if (node.value === '')
-			parent.removeClassName(this.filledClassName)
+			parent.classList.remove(this.filledClassName)
 		else
-			parent.addClassName(this.filledClassName)
+			parent.classList.add(this.filledClassName)
 		
 	},
 	
 	focus: function (node)
 	{
-		node.parentNode.addClassName(this.focusedClassName)
+		node.parentNode.classList.add(this.focusedClassName)
 	},
 	
 	blur: function (node)
 	{
-		node.parentNode.removeClassName(this.focusedClassName)
+		node.parentNode.classList.remove(this.focusedClassName)
 	}
 }
 

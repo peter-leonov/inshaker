@@ -5,9 +5,9 @@
 	<title>Event player tests</title>
 	<script src="tests.common.js"></script>
 	
-	<!--[if lte IE 7]><script src="../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../src/core/fixes/trident4.js"></script><![endif]-->
-	<script src="../src/core/prototype.js"></script>
+	<!--[if lte IE 7]><script src="../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../src/fixes/trident4.js"></script><![endif]-->
+	<script src="../src/modules/prototype.js"></script>
 	<script src="../src/modules/child-indexed-path.js"></script>
 	<script src="../src/modules/event-player.js"></script>
 	<!--
@@ -103,7 +103,7 @@ Tests.test(function (t)
 			function check (e)
 			{
 				t.eq(e.target.value, '0', 'within')
-				setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
+				window.setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
 			}
 			bind(t, keyboard, 'keydown', check)
 		})
@@ -114,7 +114,7 @@ Tests.test(function (t)
 			function check (e)
 			{
 				t.eq(e.target.value, '0', 'within')
-				setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
+				window.setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
 			}
 			bind(t, keyboard, 'keypress', check)
 		})
@@ -125,7 +125,7 @@ Tests.test(function (t)
 			function check (e)
 			{
 				t.eq(e.target.value, '1', 'within')
-				setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
+				window.setTimeout(function () { t.eq(e.target.value, '1', 'after') }, 0)
 			}
 			bind(t, keyboard, 'keyup', check)
 		})

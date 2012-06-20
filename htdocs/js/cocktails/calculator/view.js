@@ -18,7 +18,7 @@ function spaces(num){
 
 function mergeNodes(parent, nodes)
 {
-	var focused, children = Array.copy(parent.childNodes)
+	var focused, children = Array.from(parent.childNodes)
 	for (var i = 0; i < children.length; i++)
 	{
 		var child = children[i]
@@ -150,7 +150,7 @@ function CalculatorView() {
 		if (!this.addBtn)
 			return
 		
-		this.addBtn.toggleClassName('in-cart', state)
+		this.addBtn.classList.toggleTo('in-cart', state)
 	}
 	
 	this.renderCart = function(cartData){

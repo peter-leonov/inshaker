@@ -144,7 +144,7 @@ Me.prototype =
 		
 		root.addEventListener('mousemove', move, false)
 		position(0)
-		root.removeClassName('loading')
+		root.classList.remove('loading')
 	},
 	
 	bindGoodPopup: function ()
@@ -213,7 +213,7 @@ Me.prototype =
 				if (before != target.value)
 					f()
 			}
-			setTimeout(after, 0)
+			window.setTimeout(after, 0)
 		}
 		
 		var view = this

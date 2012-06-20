@@ -1,4 +1,6 @@
-<!--# include virtual="/liby/core/prototype.js" -->
+<!--# include virtual="/liby/fixes/dom-token-list.js" -->
+
+<!--# include virtual="/liby/modules/prototype.js" -->
 <!--# include virtual="/liby/modules/log.js" -->
 <!--# include virtual="/liby/modules/plural.js"-->
 <!--# include virtual="/liby/modules/array-randomize.js"-->
@@ -19,12 +21,17 @@
 <!--# include virtual="/liby/modules/cloner.js"-->
 <!--# include virtual="/liby/modules/throttler.js" -->
 <!--# include virtual="/liby/modules/state-machine.js" -->
+<!--# include virtual="/liby/modules/url-encode.js"-->
+<!--# include virtual="/liby/modules/request.js"-->
+
+if (!document.documentElement.classList)
+	$.load('/liby/fixes/class-list.js')
 
 if (!document.querySelectorAll)
-	$.load('/liby/core/fixes/dom-level2-selectors.js')
+	$.load('/liby/fixes/dom-level2-selectors.js')
 
 if (!('draggable' in document.body || 'ondrop' in document.body))
-	$.load('/liby/core/fixes/dnd.js')
+	$.load('/liby/fixes/dnd.js')
 
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
@@ -35,7 +42,7 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 <!--# include virtual="/js/common/branding-scroller.js" -->
 
 
-$.onready(function () { setTimeout(function ()
+$.onready(function () { window.setTimeout(function ()
 {
 	GoogleAnalytics.trackPageview()
 }, 250) })
