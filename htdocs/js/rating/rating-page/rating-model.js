@@ -12,15 +12,14 @@ Me.prototype =
 		this.rating = rating
 		this.ingredients = ingredients
 		this.tags = tags
+		
+		this.sortByPos()
 	},
 	
 	frames:
 	{
 		'rating-total': function ()
 		{
-			if (!this.cocktails)
-				this.sortByPos()
-			
 			this.renderByTotal()
 			this.view.renderTotal(this.byTotal)
 			this.frameChanger('rating-total')
@@ -28,9 +27,6 @@ Me.prototype =
 		
 		'rating-tag': function ()
 		{
-			if (!this.cocktails)
-				this.sortByPos()
-			
 			this.renderByTags()
 			this.view.renderCol(this.byTags, 'rating-tag')
 			this.frameChanger('rating-tag')
@@ -38,9 +34,6 @@ Me.prototype =
 		
 		'rating-ingredient': function ()
 		{
-			if (!this.cocktails)
-				this.sortByPos()
-			
 			this.renderByIngredients()
 			this.view.renderCol(this.byIngredients, 'rating-ingredient')
 			this.frameChanger('rating-ingredient')
