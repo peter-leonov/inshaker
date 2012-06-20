@@ -2,7 +2,7 @@
 
 function Me ()
 {
-	this.defaultFrame = 'rating-total'
+	this.defaultFrameName = 'rating-total'
 }
 
 Me.prototype =
@@ -58,13 +58,11 @@ Me.prototype =
 	
 	setState: function (state)
 	{
-		if (!state)
-			state = this.defaultFrame
+		var frame = this.frames[state]
+		if (!frame)
+			frame = this.frames[this.defaultFrameName]
 		
-		if (!this.frames[state])
-			return
-		
-		this.frames[state].call(this)
+		frame.call(this)
 	},
 	
 	sort: function (a, b)
