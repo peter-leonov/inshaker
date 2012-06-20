@@ -112,16 +112,12 @@ Me.prototype =
 				a['data-ingredient'] = ingObj
 				links.appendChild(a)
 				
-				var ellipsis = Nct('span', 'cocktail-ingredient ellipsis', '…')
-				links.appendChild(ellipsis)
-				
 				if (links.scrollHeight > links.offsetHeight)
 				{
 					links.removeChild(a)
+					links.classList.add('overflowed')
 					break
 				}
-				else
-					links.removeChild(ellipsis)
 				
 				links.appendChild(T(' '))
 			}

@@ -10,6 +10,8 @@
 .ratings-widget .rating-name { font-size: 18px; }
 .ratings-widget .rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
 
+.ratings-widget .ingredients-list.overflowed .cocktail-ingredient:last-child:after { content: '…' !important; }
+
 .ratings-widget .rating-list .first-item { position: relative; height: 182px; border-top: 3px solid #e5e5e5; margin-top: 5px; text-align: right; }
 .ratings-widget .rating-list .first-item img { height: 180px; float: left; }
 .ratings-widget .rating-list .first-item h3 { padding-top: 20px; }
