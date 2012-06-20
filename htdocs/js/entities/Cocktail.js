@@ -116,6 +116,23 @@ Me.prototype =
 		return li
 	},
 	
+	getLinkImage: function (lazy, big)
+	{
+		var htmlName = this.name_eng.htmlName(),
+			path = '/cocktail/' + htmlName
+		
+		var a = document.createElement('a')
+		a.className = 'link'
+		a.href = path + '/'
+
+		var img = document.createElement("img")
+		img.className = 'image'
+		img[lazy ? 'lazySrc' : 'src'] = path + '/' + htmlName + (big ? '-big.png' : '-small.png')
+		a.appendChild(img)
+		
+		return a
+	},
+	
 	getPreviewNodeCropped: function ()
 	{
 		var htmlName = this.name_eng.htmlName(),
