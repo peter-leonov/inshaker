@@ -43,7 +43,7 @@
 .ratings-widget .rating-total li .cocktail .cocktail-ingredient:after { content: ',' }
 .ratings-widget .rating-list .item .cocktail .cocktail-ingredient:last-child:after,
 .ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient:last-child:after,
-.ratings-widget .rating-total li .cocktail .cocktail-ingredient:last-child:after { content: '' }
+.ratings-widget .rating-total li .cocktail .cocktail-ingredient:last-child:after { content: '.' }
 
 
 .ratings-widget .rating-list .item .cocktail-position .arrow,
