@@ -1,9 +1,11 @@
-#common-main-wrapper { background-color: white; padding-left: 18px; border: 1px solid #d7d7d7; }
+#ratings-root .head { font-size: 24px; margin-bottom: 35px; }
+#ratings-root .head a:hover { text-decoration: none; border-bottom: 2px dashed; }
+#ratings-root .head .hint { color: #c2c2c2; }
 
-#common-main-wrapper h1 { font-size: 24px; color: #c2c2c2; font-weight: bold; padding-bottom: 50px; padding-top: 30px; }
-#common-main-wrapper h1 span { color: #ff0795; }
+#rating-ingredient,
+#rating-tag { width: 940px; }
 
-.rating-col { display: inline-block; vertical-align: top; padding-bottom: 75px; padding-right: 18px; }
+.rating-col { display: inline-block; vertical-align: top; margin: 0 11px 75px 0; }
 
 .rating-name { font-size: 18px; }
 .rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
