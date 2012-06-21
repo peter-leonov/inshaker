@@ -43,26 +43,16 @@ Me.prototype =
 	
 	renderTotal: function (cocktails)
 	{
-		var ratingTotal = this.frames['rating-total']
+		var ratingTotal = this.nodes.ratingTotal
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var cocktail = cocktails[i],
-				li = N('li')
+			var cocktail = cocktails[i]
 			
-			var cocktailPos = Nc('div', 'cocktail-position'),
-				arrowClass = '',
-				arrowNum = cocktail.totalDirection
+			var li = N('li')
 			
-			if (arrowNum)
-			{
-				if (arrowNum > 0)
-					arrowClass = 'arrow up'
-				else if (arrowNum < 0)
-					arrowClass = 'arrow down'
-			}
-			
-			cocktailPos.appendChild( Nc('span', arrowClass) )
+			var cocktailPos = Nc('div', 'cocktail-position')
+			cocktailPos.appendChild( Nc('span', 'arrow ' + (cocktail.totalDirection < 0 ? 'down' : 'up')) )
 			cocktailPos.appendChild( T(i+1) )
 			li.appendChild(cocktailPos)
 			
