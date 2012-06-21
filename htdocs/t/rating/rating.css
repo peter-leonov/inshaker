@@ -5,7 +5,7 @@
 .ratings-widget .rating-ingredient,
 .ratings-widget .rating-tag { width: 945px; }
 
-.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 0 22px 75px 0; vertical-align: top; }
+.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 0 22px 55px 0; vertical-align: top; }
 
 .ratings-widget .rating-name { font-size: 18px; }
 .ratings-widget .rating-name .count { font-size: 10px; color: #959595; vertical-align: super; margin-left: 5px; }
