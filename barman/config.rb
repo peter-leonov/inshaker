@@ -3,7 +3,7 @@
 module Inshaker
   DOMAIN        = "www.inshaker.ru"
   ROOT_DIR      = "/www/inshaker/"
-  BASE_DIR      = ENV['INSHAKER_BASE_DIR'] || "/base/inshaker/"
+  BASE_DIR      = ENV['INSHAKER_BASE_DIR'] || "/home/www/inshaker-base/"
   LOCK_FILE     = ".lock-barman"
   
   TEMPLATES_DIR = ROOT_DIR + "barman/templates/"
