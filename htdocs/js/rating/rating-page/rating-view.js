@@ -269,16 +269,13 @@ Me.prototype =
 	
 	switchToFrame: function (frame)
 	{
-		if (frame == this.lastFrame)
+		var lastFrame = this.lastFrame
+		if (frame == lastFrame)
 			return
-		
-		var last = this.frames[this.lastFrame],
-			current = this.frames[frame]
-		
-		current.show()
-		last.hide()
-		
 		this.lastFrame = frame
+		
+		this.frames[lastFrame].hide()
+		this.frames[frame].show()
 	}
 }
 
