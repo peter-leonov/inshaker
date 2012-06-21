@@ -184,7 +184,6 @@ Me.prototype =
 			else
 				var cocktails = Cocktail.getByIngredient(ingredientOrTag)
 			
-			log(ingredientOrTag, ingredients.length, cocktails.length)
 			if (cocktails.length)
 			{
 				var byIngr =
