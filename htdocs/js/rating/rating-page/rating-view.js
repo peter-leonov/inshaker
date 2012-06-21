@@ -275,8 +275,8 @@ Me.prototype =
 		var last = this.frames[this.lastFrame],
 			current = this.frames[frame]
 		
-		current.classList.remove('hidden')
-		last.classList.add('hidden')
+		current.show()
+		last.hide()
 		
 		this.lastFrame = frame
 	}
