@@ -7,8 +7,8 @@ Me.prototype =
 	initialize: function (rating, ingredients, tags)
 	{
 		this.rating = rating
-		this.ingredients = ingredients
-		this.tags = tags
+		this.ingredients = ingredients.sort()
+		this.tags = tags.sort()
 		
 		this.sortByPos()
 	},
