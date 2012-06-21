@@ -173,17 +173,23 @@ Me.prototype =
 	{
 		var res = []
 		
-		var ingredients = this.ingredients
-		for (var i = 0, il = ingredients.length; i < il; i++)
+		var ingredientsOrTags = this.ingredients
+		for (var i = 0, il = ingredientsOrTags.length; i < il; i++)
 		{
-			var ingr = ingredients[i],
-				cocktails = Cocktail.getByIngredient(ingr)
-				
+			var ingredientOrTag = ingredientsOrTags[i]
+			
+			var ingredients = Ingredient.getByTag(ingredientOrTag)
+			if (ingredients.length)
+				var cocktails = Cocktail.getByIngredients(ingredients, {count: 1})
+			else
+				var cocktails = Cocktail.getByIngredient(ingredientOrTag)
+			
+			log(ingredientOrTag, ingredients.length, cocktails.length)
 			if (cocktails.length)
 			{
 				var byIngr =
 				{
-					name: ingr,
+					name: ingredientOrTag,
 					count: cocktails.length
 				}
 				
