@@ -276,6 +276,10 @@ Me.prototype =
 			return
 		this.lastFrame = frame
 		
+		var widgetCL = this.nodes.widget.classList
+		widgetCL.remove('state-' + lastFrame)
+		widgetCL.add('state-' + frame)
+		
 		if (lastFrame)
 			this.frames[lastFrame].hide()
 		this.frames[frame].show()
