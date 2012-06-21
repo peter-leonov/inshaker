@@ -70,8 +70,6 @@
 
 .ratings-widget .rating-list .first-item .cocktail-position .arrow { display: inline-block; }
 
-.ratings-widget .rating-total { padding-bottom: 75px; }
-
 .ratings-widget .rating-total li { position: relative; border-bottom: 1px solid #e5e5e5; margin-right: 18px; }
 .ratings-widget .rating-total li:last-child { border-bottom: none; }
 
