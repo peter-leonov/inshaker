@@ -31,6 +31,7 @@ function onready ()
 	)
 	
 	widget.bind(nodes)
+	widget.checkState()
 }
 
 $.onready(onready)

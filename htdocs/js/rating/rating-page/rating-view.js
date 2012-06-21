@@ -3,7 +3,6 @@
 function Me ()
 {
 	this.nodes = {}
-	this.lastFrame = 'rating-total'
 }
 
 eval(NodesShortcut.include())
@@ -24,10 +23,13 @@ Me.prototype =
 		var view = this
 		nodes.widget.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
 		
-		var lh = new LocationHash().bind()
-		var controller = this.controller
-		lh.addEventListener('change', function (e) { controller.changeHashReaction(lh.get()) }, false)
-		controller.changeHashReaction(lh.get())
+		var lh = this.locationHash = new LocationHash().bind()
+		lh.addEventListener('change', function (e) { view.hashChanged() }, false)
+	},
+	
+	hashChanged: function ()
+	{
+		this.controller.changeHashReaction(this.locationHash.get())
 	},
 	
 	maybeIngredientClicked: function (target)
@@ -274,7 +276,8 @@ Me.prototype =
 			return
 		this.lastFrame = frame
 		
-		this.frames[lastFrame].hide()
+		if (lastFrame)
+			this.frames[lastFrame].hide()
 		this.frames[frame].show()
 	}
 }
