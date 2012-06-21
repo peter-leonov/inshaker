@@ -152,18 +152,7 @@ Me.prototype =
 			var position = Nc('div', 'cocktail-position')
 			firstItem.appendChild(position)
 			
-			var arrowClass = '',
-				arrowNum = firstCocktail.specialDirection
-			
-			if (arrowNum)
-			{
-				if (arrowNum > 0)
-					arrowClass = 'arrow up'
-				else if (arrowNum < 0)
-					arrowClass = 'arrow down'
-			}
-			
-			var positionArrow = Nc('span', arrowClass)
+			var positionArrow = Nc('span', 'arrow ' + (firstCocktail.specialDirection < 0 ? 'down' : 'up'))
 			position.appendChild(positionArrow)
 			position.appendChild(T('1-ая позиция в текущем рейтинге'))
 			
@@ -174,18 +163,7 @@ Me.prototype =
 			var rating = Nct('div', 'cocktail-rating', firstCocktail.totalPos)
 			firstItem.appendChild(rating)
 				
-			var arrowClassTotal = '',
-				arrowNumTotal = firstCocktail.totalDirection
-				
-			if (arrowNumTotal)
-			{
-				if (arrowNumTotal > 0)
-					arrowClassTotal = 'arrow up'
-				else if (arrowNumTotal < 0)
-					arrowClassTotal = 'arrow down'
-			}
-			
-			var ratingArrow = Nc('span', arrowClassTotal)
+			var ratingArrow = Nc('span', (firstCocktail.totalDirection < 0 ? 'down' : 'up'))
 			rating.appendChild(ratingArrow)
 			
 			var note = Nct('span', 'note', 'позиция в рейтинге всех коктейлей')
@@ -202,18 +180,7 @@ Me.prototype =
 				var position = Nct('div', 'cocktail-position', j+1)
 				item.appendChild(position)
 				
-				var arrowClass = '',
-					arrowNum = cocktail.specialDirection
-				
-				if (arrowNum)
-				{
-					if (arrowNum > 0)
-						arrowClass = 'arrow up'
-					else if (arrowNum < 0)
-						arrowClass = 'arrow down'
-				}
-				
-				var positionArrow = Nc('span', arrowClass)
+				var positionArrow = Nc('span', 'arrow ' + (cocktail.specialDirection < 0 ? 'down' : 'up'))
 				position.appendChild(positionArrow)
 				
 				var ingredients = Nc('div', 'cocktail')
@@ -232,18 +199,7 @@ Me.prototype =
 				var rating = Nct('div', 'cocktail-rating', cocktail.totalPos)
 				item.appendChild(rating)
 				
-				var arrowClassTotal = '',
-					arrowNumTotal = cocktail.totalDirection
-				
-				if (arrowNumTotal)
-				{
-					if (arrowNumTotal > 0)
-						arrowClassTotal = 'arrow up'
-					else if (arrowNumTotal < 0)
-						arrowClassTotal = 'arrow down'
-				}
-				
-				var ratingArrow = Nc('span', arrowClassTotal)
+				var ratingArrow = Nc('span', 'arrow ' + (cocktail.totalDirection < 0 ? 'down' : 'up'))
 				rating.appendChild(ratingArrow)
 			}
 		}
