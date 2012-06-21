@@ -163,7 +163,7 @@ Me.prototype =
 			var rating = Nct('div', 'cocktail-rating', firstCocktail.totalPos)
 			firstItem.appendChild(rating)
 				
-			var ratingArrow = Nc('span', (firstCocktail.totalDirection < 0 ? 'down' : 'up'))
+			var ratingArrow = Nc('span', 'arrow ' + (firstCocktail.totalDirection < 0 ? 'down' : 'up'))
 			rating.appendChild(ratingArrow)
 			
 			var note = Nct('span', 'note', 'позиция в рейтинге всех коктейлей')
