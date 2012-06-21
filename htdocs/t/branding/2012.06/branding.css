@@ -99,3 +99,8 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 
 /* combinator.css */
 #output .help-line .hint { color: #000; }
+
+/* rating.css */
+#output .help-line .hint { color: #000; }
+
+.ratings-widget .head .switch { color: #cb5626; }

@@ -3,8 +3,9 @@
 
 #spotlighted { position: absolute; right: 0px; top: 4px; }
 
-.ratings-widget .head { position: relative; font-size: 24px; margin-bottom: 35px; }
-.ratings-widget .head a:hover { text-decoration: none; border-bottom: 2px dashed; }
+.ratings-widget .head { position: relative; font-size: 24px; padding-bottom: 17px; margin-bottom: 37px; }
+.ratings-widget .head .switch { text-decoration: none; border-bottom: 2px dashed; }
+.ratings-widget .head .switch:hover { border: none; }
 .ratings-widget .head .hint { color: #c2c2c2; font-size: 16px; }
 
 .ratings-widget.state-rating-total .head .switch.total,
