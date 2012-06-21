@@ -90,9 +90,9 @@ Me.prototype =
 				
 				var name = ingObj.screenName()
 				
-				var brand = ingObj.brand
-				if (brand)
-					name += ' ' + brand
+				var mark = ingObj.mark
+				if (mark)
+					name += ' ' + mark
 				
 				var a = Nct('a', 'cocktail-ingredient', name)
 				a['data-ingredient'] = ingObj
