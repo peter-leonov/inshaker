@@ -102,12 +102,6 @@ Me.prototype =
 				if (brand)
 					name += ' ' + brand
 				
-				if (Ingredient.groups.indexOf(ingObj.group) < 10)
-				{
-					var dose = Units.humanizeDose(ing[1], ingObj.unit)
-					name += ' ' + dose[0] + ' ' + dose[1]
-				}
-				
 				var a = Nct('a', 'cocktail-ingredient', name)
 				a['data-ingredient'] = ingObj
 				links.appendChild(a)
