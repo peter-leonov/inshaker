@@ -42,7 +42,7 @@
 {"group":"Соки и морсы","name":"Банановый сок","path":"bananovyiy-sok","tags":["Любой ингредиент","Сок","Фруктовый сок"],"unit":"л","volumes":[[0.2,39.0,true]]},
 {"group":"Посуда","name":"Банка с крышкой","path":"banka-s-kryishkoy","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,100.0,true]]},
 {"group":"Вина","name":"Белое вино сухое","path":"beloe-vino-suhoe","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.75,558.0,true]]},
-{"group":"Вермуты","name":"Белый вермут","names":["Мартини Бьянко","Martini Bianco","Чинзано Бьянко","Cinzano Bianco","Cesare de Sesto Bianco","Чезаре да Сесто Бьянко","Gran Torino Bianco","Гран Торино Бьянко","Мартини белый","Чинзано белый"],"path":"belyiy-vermut","tags":["Любой ингредиент"],"unit":"л","volumes":[[1.0,506.0,true]]},
+{"group":"Вермуты","name":"Белый вермут","names":["Мартини Бьянко","Martini Bianco","Чинзано Бьянко","Cinzano Bianco","Cesare de Sesto Bianco","Чезаре да Сесто Бьянко","Gran Torino Bianco","Гран Торино Бьянко","Мартини белый","Чинзано белый"],"path":"belyiy-vermut","tags":["Вермут","Любой ингредиент","Мартини"],"unit":"л","volumes":[[1.0,506.0,true]]},
 {"brand":"Bacardi Superior","brand_dir":"bacardi-superior","group":"Крепкий алкоголь","mark":"Bacardi","name":"Белый ром","names":["Светлый ром","Bacardi superior","Бакарди супериор"],"path":"belyiy-rom","tags":["Bacardi","Любой ингредиент","Ром"],"unit":"л","volumes":[[0.75,1191.0,true]]},
 {"group":"Овощи","name":"Белый трюфель","path":"belyiy-tryufel","tags":["Любой ингредиент"],"unit":"г","volumes":[[100.0,1000.0,true]]},
 {"group":"Штуковины","name":"Бенгальские огни","path":"bengalskie-ogni","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,2.0,true]]},
