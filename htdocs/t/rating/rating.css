@@ -28,7 +28,7 @@
 .ratings-widget .rating-list .item { display: block; position: relative; height: 46px; border-top: 1px solid #e5e5e5; padding-top: 8px; margin-top: 8px; }
 .ratings-widget .rating-list .item .cocktail-position { position: absolute; top: 10px; left: 0; width: 20px; color: #838383; font-size: 12px; }
 .ratings-widget .rating-list .item .ingredients-list { overflow: hidden; height: 27px; }
-.ratings-widget .rating-list .item .cocktail { padding: 0 25px 0 20px; }
+.ratings-widget .rating-list .item .cocktail { padding: 0 30px 0 20px; }
 .ratings-widget .rating-list .item .cocktail-rating { position: absolute; top: 8px; right: 0; margin-left: auto; font-size: 12px; }
 .ratings-widget .rating-list .item .cocktail-rating .arrow { margin-left: 5px; }
 .ratings-widget .rating-list .item .cocktail h3 { padding-bottom: 5px; }
