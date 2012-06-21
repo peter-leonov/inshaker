@@ -3,7 +3,6 @@
 function Me ()
 {
 	this.nodes = {}
-	this.lastFrame = 'rating-total'
 }
 
 eval(NodesShortcut.include())
@@ -24,10 +23,13 @@ Me.prototype =
 		var view = this
 		nodes.widget.addEventListener('click', function(e){ view.maybeIngredientClicked(e.target) }, false)
 		
-		var lh = new LocationHash().bind()
-		var controller = this.controller
-		lh.addEventListener('change', function (e) { controller.changeHashReaction(lh.get()) }, false)
-		controller.changeHashReaction(lh.get())
+		var lh = this.locationHash = new LocationHash().bind()
+		lh.addEventListener('change', function (e) { view.hashChanged() }, false)
+	},
+	
+	hashChanged: function ()
+	{
+		this.controller.changeHashReaction(this.locationHash.get())
 	},
 	
 	maybeIngredientClicked: function (target)
@@ -41,26 +43,16 @@ Me.prototype =
 	
 	renderTotal: function (cocktails)
 	{
-		var ratingTotal = this.frames['rating-total']
+		var ratingTotal = this.nodes.ratingTotal
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var cocktail = cocktails[i],
-				li = N('li')
+			var cocktail = cocktails[i]
 			
-			var cocktailPos = Nc('div', 'cocktail-position'),
-				arrowClass = '',
-				arrowNum = cocktail.totalDirection
+			var li = N('li')
 			
-			if (arrowNum)
-			{
-				if (arrowNum > 0)
-					arrowClass = 'arrow up'
-				else if (arrowNum < 0)
-					arrowClass = 'arrow down'
-			}
-			
-			cocktailPos.appendChild( Nc('span', arrowClass) )
+			var cocktailPos = Nc('div', 'cocktail-position')
+			cocktailPos.appendChild( Nc('span', 'arrow ' + (cocktail.totalDirection < 0 ? 'down' : 'up')) )
 			cocktailPos.appendChild( T(i+1) )
 			li.appendChild(cocktailPos)
 			
@@ -160,18 +152,7 @@ Me.prototype =
 			var position = Nc('div', 'cocktail-position')
 			firstItem.appendChild(position)
 			
-			var arrowClass = '',
-				arrowNum = firstCocktail.specialDirection
-			
-			if (arrowNum)
-			{
-				if (arrowNum > 0)
-					arrowClass = 'arrow up'
-				else if (arrowNum < 0)
-					arrowClass = 'arrow down'
-			}
-			
-			var positionArrow = Nc('span', arrowClass)
+			var positionArrow = Nc('span', 'arrow ' + (firstCocktail.specialDirection < 0 ? 'down' : 'up'))
 			position.appendChild(positionArrow)
 			position.appendChild(T('1-ая позиция в текущем рейтинге'))
 			
@@ -182,18 +163,7 @@ Me.prototype =
 			var rating = Nct('div', 'cocktail-rating', firstCocktail.totalPos)
 			firstItem.appendChild(rating)
 				
-			var arrowClassTotal = '',
-				arrowNumTotal = firstCocktail.totalDirection
-				
-			if (arrowNumTotal)
-			{
-				if (arrowNumTotal > 0)
-					arrowClassTotal = 'arrow up'
-				else if (arrowNumTotal < 0)
-					arrowClassTotal = 'arrow down'
-			}
-			
-			var ratingArrow = Nc('span', arrowClassTotal)
+			var ratingArrow = Nc('span', (firstCocktail.totalDirection < 0 ? 'down' : 'up'))
 			rating.appendChild(ratingArrow)
 			
 			var note = Nct('span', 'note', 'позиция в рейтинге всех коктейлей')
@@ -210,18 +180,7 @@ Me.prototype =
 				var position = Nct('div', 'cocktail-position', j+1)
 				item.appendChild(position)
 				
-				var arrowClass = '',
-					arrowNum = cocktail.specialDirection
-				
-				if (arrowNum)
-				{
-					if (arrowNum > 0)
-						arrowClass = 'arrow up'
-					else if (arrowNum < 0)
-						arrowClass = 'arrow down'
-				}
-				
-				var positionArrow = Nc('span', arrowClass)
+				var positionArrow = Nc('span', 'arrow ' + (cocktail.specialDirection < 0 ? 'down' : 'up'))
 				position.appendChild(positionArrow)
 				
 				var ingredients = Nc('div', 'cocktail')
@@ -240,18 +199,7 @@ Me.prototype =
 				var rating = Nct('div', 'cocktail-rating', cocktail.totalPos)
 				item.appendChild(rating)
 				
-				var arrowClassTotal = '',
-					arrowNumTotal = cocktail.totalDirection
-				
-				if (arrowNumTotal)
-				{
-					if (arrowNumTotal > 0)
-						arrowClassTotal = 'arrow up'
-					else if (arrowNumTotal < 0)
-						arrowClassTotal = 'arrow down'
-				}
-				
-				var ratingArrow = Nc('span', arrowClassTotal)
+				var ratingArrow = Nc('span', 'arrow ' + (cocktail.totalDirection < 0 ? 'down' : 'up'))
 				rating.appendChild(ratingArrow)
 			}
 		}
@@ -269,16 +217,18 @@ Me.prototype =
 	
 	switchToFrame: function (frame)
 	{
-		if (frame == this.lastFrame)
+		var lastFrame = this.lastFrame
+		if (frame == lastFrame)
 			return
-		
-		var last = this.frames[this.lastFrame],
-			current = this.frames[frame]
-		
-		current.classList.remove('hidden')
-		last.classList.add('hidden')
-		
 		this.lastFrame = frame
+		
+		var widgetCL = this.nodes.widget.classList
+		widgetCL.remove('state-' + lastFrame)
+		widgetCL.add('state-' + frame)
+		
+		if (lastFrame)
+			this.frames[lastFrame].hide()
+		this.frames[frame].show()
 	}
 }
 

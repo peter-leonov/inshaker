@@ -1,6 +1,15 @@
-.ratings-widget .head { font-size: 24px; margin-bottom: 35px; }
+
+#branded-image-holder { display: none; }
+
+#spotlighted { position: absolute; right: 0px; top: 4px; }
+
+.ratings-widget .head { position: relative; font-size: 24px; margin-bottom: 35px; }
 .ratings-widget .head a:hover { text-decoration: none; border-bottom: 2px dashed; }
-.ratings-widget .head .hint { color: #c2c2c2; }
+.ratings-widget .head .hint { color: #c2c2c2; font-size: 16px; }
+
+.ratings-widget.state-rating-total .head .switch.total,
+.ratings-widget.state-rating-tag .head .switch.tag,
+.ratings-widget.state-rating-ingredient .head .switch.ingredient { color: inherit; border: none; cursor: text; }
 
 .ratings-widget .rating-ingredient,
 .ratings-widget .rating-tag { width: 945px; }
@@ -65,8 +74,6 @@
 .ratings-widget .rating-total li .cocktail-position .arrow.up { background-position: 0 -9px; }
 
 .ratings-widget .rating-list .first-item .cocktail-position .arrow { display: inline-block; }
-
-.ratings-widget .rating-total { padding-bottom: 75px; }
 
 .ratings-widget .rating-total li { position: relative; border-bottom: 1px solid #e5e5e5; margin-right: 18px; }
 .ratings-widget .rating-total li:last-child { border-bottom: none; }

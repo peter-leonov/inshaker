@@ -22,6 +22,11 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
+	},
+	
+	checkState: function (nodes)
+	{
+		this.view.hashChanged()
 	}
 }
 
