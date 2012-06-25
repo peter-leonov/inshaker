@@ -171,15 +171,16 @@ class Analytics
     days = 10
     
     now = Time.new
-    now -= (4 + days) * DAY
+    now -= (3 + days) * DAY
     
     seen = {}
     week = []
     
     days.times do
       
-      endd = now + DAY
-      views_stats, no, no = get_pageviews(now, endd)
+      start = now - DAY * 30
+      endd = now
+      views_stats, no, no = get_pageviews(start, endd)
       
       uniques = {}
       views_stats.each do |k, v|
