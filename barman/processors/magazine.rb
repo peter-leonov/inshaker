@@ -19,7 +19,7 @@ class MagazineProcessor < Inshaker::Processor
     BLOCK_NAMES = {
       "Коктейльная классика" => "classic",
       "Самые популярные" => "pop",
-      "Авторские хиты в барах" => "author",
+      "Авторские хиты" => "author",
       "Коктейли месяца" => "special"
     }
   end
