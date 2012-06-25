@@ -19,7 +19,7 @@ class MagazineProcessor < Inshaker::Processor
     BLOCK_NAMES = {
       "Коктейльная классика" => "classic",
       "Самые популярные" => "pop",
-      "Авторские хиты" => "author",
+      "Авторские хиты в барах" => "author",
       "Коктейли месяца" => "special"
     }
   end
@@ -134,14 +134,14 @@ class MagazineProcessor < Inshaker::Processor
     indent do
     bar_hits = @db["cocktails"]["author"].flatten
     
-    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index
+    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты в барах").map { |e| e["name"] }.hash_index
     
     (bar_hits - @cocktail_hits.keys).each do |name|
       error "коктейль «#{name}» не является хитом ни в одном баре"
     end
     
     (@cocktail_hits.keys - bar_hits).each do |name|
-      warning "хитовый коктейль «#{name}» не добавлен в группу «Авторские хиты»"
+      warning "хитовый коктейль «#{name}» не добавлен в группу «Авторские хиты в барах»"
     end
     
     end # indent
