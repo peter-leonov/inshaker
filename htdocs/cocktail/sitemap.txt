@@ -349,7 +349,6 @@ http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
 http://www.inshaker.ru/cocktail/duboudreau/
 http://www.inshaker.ru/cocktail/e-sencha-l/
-http://www.inshaker.ru/cocktail/jager_with_cucumber/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_cobler/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
@@ -640,7 +639,6 @@ http://www.inshaker.ru/cocktail/mexican/
 http://www.inshaker.ru/cocktail/mexican_rainbow/
 http://www.inshaker.ru/cocktail/mexican_breakfast/
 http://www.inshaker.ru/cocktail/mexican_astronaut/
-http://www.inshaker.ru/cocktail/mexican_lemonade/
 http://www.inshaker.ru/cocktail/mexican_mule/
 http://www.inshaker.ru/cocktail/mexican_pie/
 http://www.inshaker.ru/cocktail/melonic/
@@ -651,7 +649,6 @@ http://www.inshaker.ru/cocktail/milano_spritzer/
 http://www.inshaker.ru/cocktail/milky_way/
 http://www.inshaker.ru/cocktail/billionaire/
 http://www.inshaker.ru/cocktail/mimosa/
-http://www.inshaker.ru/cocktail/mirage/
 http://www.inshaker.ru/cocktail/miss_martini/
 http://www.inshaker.ru/cocktail/mitsubishi/
 http://www.inshaker.ru/cocktail/trendy_breeze/
@@ -795,7 +792,6 @@ http://www.inshaker.ru/cocktail/fire_in_texas/
 http://www.inshaker.ru/cocktail/pornstar/
 http://www.inshaker.ru/cocktail/unemployment_benefit/
 http://www.inshaker.ru/cocktail/potenziale_special/
-http://www.inshaker.ru/cocktail/lost/
 http://www.inshaker.ru/cocktail/kisses_and_warm_hugs/
 http://www.inshaker.ru/cocktail/kiss_of_the_devil/
 http://www.inshaker.ru/cocktail/practically_cherry_daiquiri/
