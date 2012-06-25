@@ -170,15 +170,16 @@ class Analytics
   def update_ratings
     days = 10
     
-    start = Time.new
-    start -= (4 + days) * DAY
+    now = Time.new
+    now -= (3 + days) * DAY
     
     seen = {}
     week = []
     
     days.times do
       
-      endd = start + DAY
+      start = now - DAY * 30
+      endd = now
       views_stats, no, no = get_pageviews(start, endd)
       
       uniques = {}
@@ -199,7 +200,7 @@ class Analytics
       
       week << positions
       
-      start += DAY
+      now += DAY
     end
     
     
