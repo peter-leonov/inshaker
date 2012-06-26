@@ -96,7 +96,6 @@ Me.prototype =
 		
 		var ril = nodes.resultsDisplay.RollingImagesLite;
 		
-		nodes.bigPrev.addEventListener('mousedown', function(e){ ril.goPrev() }, false);
 		nodes.bigNext.addEventListener('mousedown', function(e){ ril.goNext() }, false);
 		
 		ril.onselect = function (node, num) {
@@ -108,8 +107,6 @@ Me.prototype =
 			// big pager buttons
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
 			else nodes.bigNext.classList.remove('disabled');
-			if(num == 0 || self.np == 1) nodes.bigPrev.classList.add('disabled');
-			else nodes.bigPrev.classList.remove('disabled');
 		}
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
@@ -225,7 +222,7 @@ Me.prototype =
 		this.renderSkeleton(this.np);
 		this.renderNearbyPages(pageNum);
 		
-		this.renderPager(this.np);
+		//this.renderPager(this.np);
 		nodes.resultsDisplay.RollingImagesLite.sync();
 		nodes.resultsDisplay.RollingImagesLite.goInit();
 	},
@@ -315,18 +312,6 @@ Me.prototype =
 		}
 		
 		this.renderedPages[num] = true
-	},
-	
-	renderPager: function (numOfPages) {
-		var span = this.nodes.pagerRoot;
-		span.empty();
-		for (var i = 1; i <= numOfPages; i++) {
-			var a = document.createElement("a");
-			a.className= i >= 10 ? "button two" : "button";
-			a.appendChild(document.createTextNode(i));
-			span.appendChild(a);
-			span.appendChild(document.createTextNode(' '))
-		}
 	}
 }
 

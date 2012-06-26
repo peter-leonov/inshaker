@@ -63,13 +63,7 @@
 .pager-big .next.disabled {background-position: -25px -150px; }
 
 .b-content .pager { height: 57px; padding: 10px 0 0; margin-top: 10px; position: relative; background: url(/t/light/header-dots-v.png) repeat-x 0 0; font-size: 110%; }
-.b-content .pager .p-list { width: 590px; margin-left: 7px; }
-.b-content .pager .p-list a { line-height: 22px; text-decoration:none; margin-right: 2px; }
-.b-content .pager .p-list a.selected-button { background-position: -75px -125px; cursor: default;}
-.b-content .pager .p-list a.two.selected-button { background-position: -100px -125px; }
-.b-content .pager .p-list a { padding: 2px 6px 3px; }
-.b-content .pager .p-list a.two { padding: 2px 4px 3px; margin-right: 0; }
-.b-content .viewport{height:560px;overflow:hidden;position:relative;}
+.b-content .viewport{overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;}
 
 
@@ -103,8 +97,8 @@
 #results_display .empty-result-by-name { display: none; position: absolute; left: 200px; top: 158px; width: 230px; text-align: center; font-size: 15px; }
 .byName #results_display.empty .empty-result-by-name { display: block; }
 #results_display .viewport {width:585px;margin-left:11px; }
-#results_display .point{height:560px;width:585px;float:left;}
-#results_display .surface { width: 50000px; height: 560px; padding: 0px; }
+#results_display .point{width:585px;}
+#results_display .surface { padding: 0px; }
 html.opera-10 #results_display .surface,
 html.opera-11-0 #results_display .surface { width: 30000px; }
 #search_tips { height: 14px}

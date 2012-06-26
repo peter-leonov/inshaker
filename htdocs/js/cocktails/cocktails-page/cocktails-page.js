@@ -54,10 +54,8 @@ function onready ()
 		bodyWrapper: $('#common-main-wrapper .column-main'),
 		resultsDisplay: $('#results_display'),
 		resultsRoot: $('#surface'),
-		pagerRoot: $('#p-list'),
 		
-		bigNext: $(".pager-big .next"),
-		bigPrev: $(".pager-big .prev"),
+		bigNext: $(".pager .next"),
 		
 		alphabetRu: $('#alphabetical-ru'),
 		lettersAll: $('#letters_all'),
