@@ -24,8 +24,6 @@ Me.prototype =
 			this.nodes.cartFull
 		]
 		
-		new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75})
-		
 		this.fixHashChange()
 		this.bindEvents()
 	},
@@ -94,20 +92,17 @@ Me.prototype =
 		
 		var nodes = this.nodes
 		
-		var ril = nodes.resultsDisplay.RollingImagesLite;
-		
-		nodes.bigNext.addEventListener('mousedown', function(e){ ril.goNext() }, false);
-		
-		ril.onselect = function (node, num) {
-			if (!self.riJustInited) {
-				self.controller.onPageChanged(num);
-				self.renderNearbyPages(num, 0)
-			} else { self.riJustInited = false }
+		var num = 1
+		nodes.bigNext.addEventListener('click', function(e)
+		{
+			num++
+			self.controller.onPageChanged(num);
+			self.renderNearbyPages(num, 0)
 			
 			// big pager buttons
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
 			else nodes.bigNext.classList.remove('disabled');
-		}
+		}, false)		
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
@@ -191,10 +186,6 @@ Me.prototype =
 		}
 		this.filterElems.letter.classList.add('selected-button');
 		
-		if(filters.page > 0) {
-			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
-		}
-		
 		if (filters.name)
 		{
 			var input = nodes.searchByNameInput
@@ -221,10 +212,6 @@ Me.prototype =
 		this.nodeCache     = []
 		this.renderSkeleton(this.np);
 		this.renderNearbyPages(pageNum);
-		
-		//this.renderPager(this.np);
-		nodes.resultsDisplay.RollingImagesLite.sync();
-		nodes.resultsDisplay.RollingImagesLite.goInit();
 	},
 	
 	renderSkeleton: function (count)
