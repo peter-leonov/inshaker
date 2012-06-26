@@ -3,7 +3,6 @@
 function Me ()
 {
 	this.nodes = {}
-	this.planStack = []
 }
 
 eval(NodesShortcut.include())
@@ -78,62 +77,26 @@ Me.prototype =
 		}
 	},
 	
-	planToRender: function (f)
-	{
-		this.planStack.push(f)
-		
-		if (this.planTimer)
-			return
-		
-		var view = this
-		function plan ()
-		{
-			view.planTimer = 0
-			
-			console.time('plan')
-			var stack = view.planStack
-			for (var i = 0, il = stack.length; i < il; i++)
-				stack[i]()
-			console.timeEnd('plan')
-			
-			stack.length = 0
-		}
-		this.planTimer = setTimeout(plan, 0)
-	},
-	
 	renderIngredientLinks: function (ingredients)
 	{
 		var links = Nc('div', 'ingredients-list')
 		
-		function feed ()
+		for (var j = 0, jl = ingredients.length; j < jl; j++)
 		{
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
-			{
-				var ing = ingredients[j]
-				var ingObj = Ingredient.getByName(ing[0])
-				
-				var name = ingObj.screenName()
-				
-				var mark = ingObj.mark
-				if (mark)
-					name += ' ' + mark
-				
-				var a = Nct('a', 'cocktail-ingredient', name)
-				a['data-ingredient'] = ingObj
-				links.appendChild(a)
-				
-				if (links.scrollHeight > links.offsetHeight)
-				{
-					links.removeChild(a)
-					links.classList.add('overflowed')
-					break
-				}
-				
-				links.appendChild(T(' '))
-			}
+			var ing = ingredients[j]
+			var ingObj = Ingredient.getByName(ing[0])
+			
+			var name = ingObj.screenName()
+			
+			var mark = ingObj.mark
+			if (mark)
+				name += ' ' + mark
+			
+			var a = Nct('a', 'cocktail-ingredient', name)
+			a['data-ingredient'] = ingObj
+			links.appendChild(a)
+			links.appendChild(T(' '))
 		}
-		
-		this.planToRender(feed)
 		
 		return links
 	},
