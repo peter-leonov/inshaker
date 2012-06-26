@@ -5,8 +5,8 @@
 	<link rel="stylesheet" href="/t/branding/shakeit/branding.css"/>
 	<title>Статистика по браузерам — Inshaker</title>
 	<style>
-	.stat { position: relative; margin: 20px 0 0 0; }
-	.stat .viewport { position: relative; width: 100%; height: 620px; overflow: hidden; }
+	.stat { position: relative; margin: 20px -20px 0 -20px; }
+	.stat .viewport { position: relative; width: 100%; height: 770px; overflow: hidden; }
 	.stat .viewport .point { width: 100%; height: 100%; }
 	.stat .prev,
 	.stat .next { position: absolute; top: 4px; z-index: 11; }
@@ -51,16 +51,16 @@
 <script>
 function onready ()
 {
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
 	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque')
+	line.addParam('wmode', 'transparent')
 	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
 	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
 	line.write('stat-browsers')
 	
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
+	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
 	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque')
+	line.addParam('wmode', 'transparent')
 	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
 	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
 	line.write('stat-browsers-plain')

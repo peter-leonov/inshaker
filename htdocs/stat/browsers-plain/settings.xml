@@ -15,10 +15,10 @@
     <y/>
     <radius>350</radius>                                       <!-- [] (Number) If left empty, will be 25% of your chart smaller side -->
     <inner_radius>0</inner_radius>                             <!-- [0] (Number) the radius of the hole (if you want to have donut, use > 0) -->
-    <height>5</height>                                        <!-- [0] (Number) pie height (for 3D effect) -->
-    <angle>30</angle>                                          <!-- [0] (0 - 90) lean angle (for 3D effect) -->
-    <outline_color/>                           <!-- [#FFFFFF] (hex color code) -->    
-    <outline_alpha/>                           <!-- [0] (Number) -->
+    <height>3</height>                                        <!-- [0] (Number) pie height (for 3D effect) -->
+    <angle>10</angle>                                          <!-- [0] (0 - 90) lean angle (for 3D effect) -->
+    <outline_color>#000000</outline_color>                           <!-- [#FFFFFF] (hex color code) -->    
+    <outline_alpha>3</outline_alpha>                           <!-- [0] (Number) -->
     <base_color>#888888</base_color>
     <brightness_step>15</brightness_step>
     <!-- <colors>0xFF0F00,0xFF6600,0xFF9E01,0xFCD202,0xF8FF01,0xB0DE09,0x04D215,0x0D8ECF,0x0D52D1,0x2A0CD0,0x8A0CCF,0xCD0D74</colors> -->
