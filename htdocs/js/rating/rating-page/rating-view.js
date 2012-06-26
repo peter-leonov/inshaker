@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.planStack = []
 }
 
 eval(NodesShortcut.include())
@@ -77,6 +78,29 @@ Me.prototype =
 		}
 	},
 	
+	planToRender: function (f)
+	{
+		this.planStack.push(f)
+		
+		if (this.planTimer)
+			return
+		
+		var view = this
+		function plan ()
+		{
+			view.planTimer = 0
+			
+			console.time('plan')
+			var stack = view.planStack
+			for (var i = 0, il = stack.length; i < il; i++)
+				stack[i]()
+			console.timeEnd('plan')
+			
+			stack.length = 0
+		}
+		this.planTimer = setTimeout(plan, 0)
+	},
+	
 	renderIngredientLinks: function (ingredients)
 	{
 		var links = Nc('div', 'ingredients-list')
@@ -109,7 +133,7 @@ Me.prototype =
 			}
 		}
 		
-		window.setTimeout(feed, 0)
+		this.planToRender(feed)
 		
 		return links
 	},
