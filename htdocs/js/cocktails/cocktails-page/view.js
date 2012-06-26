@@ -6,7 +6,7 @@ function Me (nodes)
 {
 	this.riJustInited  = true;
 	this.filterElems   = { letter: null }
-	this.perPage       = 20;
+	this.perPage       = 40;
 	this.np            = -1;
 	this.renderedPages = {}
 	this.nodeCache     = []
