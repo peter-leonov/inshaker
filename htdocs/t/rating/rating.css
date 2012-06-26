@@ -26,7 +26,7 @@
 .ratings-widget .rating-list .first-item img { height: 180px; float: left; }
 .ratings-widget .rating-list .first-item h3 { padding-top: 20px; }
 .ratings-widget .rating-list .first-item h3 .cocktail-name { color: #000; font-size: 16px; }
-.ratings-widget .rating-list .first-item .ingredients-list { overflow: hidden; height: 57px; }
+.ratings-widget .rating-list .first-item .ingredients-list { overflow: hidden; height: 56px; line-height: 13px; }
 .ratings-widget .rating-list .first-item .cocktail { position: absolute; width: 180px; top: 80px; right: 0; }
 .ratings-widget .rating-list .first-item .cocktail .cocktail-ingredient { font-size: 11px; }
 .ratings-widget .rating-list .first-item .cocktail-position { color: #838383; }
@@ -36,12 +36,12 @@
 .ratings-widget .rating-list .first-item .cocktail-rating .arrow { margin-left: 5px; }
 
 .ratings-widget .rating-list .item { display: block; position: relative; height: 46px; border-top: 1px solid #e5e5e5; padding-top: 8px; margin-top: 8px; }
-.ratings-widget .rating-list .item .cocktail-position { position: absolute; top: 10px; left: 0; width: 20px; color: #838383; font-size: 12px; }
-.ratings-widget .rating-list .item .ingredients-list { overflow: hidden; height: 30px; }
+.ratings-widget .rating-list .item .cocktail-position { position: absolute; top: 8px; left: 0; width: 20px; color: #838383; font-size: 12px; }
+.ratings-widget .rating-list .item .ingredients-list { overflow: hidden; height: 27px; line-height: 13px; }
 .ratings-widget .rating-list .item .cocktail { padding: 0 30px 0 20px; }
 .ratings-widget .rating-list .item .cocktail-rating { position: absolute; top: 8px; right: 0; margin-left: auto; font-size: 12px; }
 .ratings-widget .rating-list .item .cocktail-rating .arrow { margin-left: 5px; }
-.ratings-widget .rating-list .item .cocktail h3 { padding-bottom: 5px; }
+.ratings-widget .rating-list .item .cocktail h3 { padding-bottom: 3px; }
 .ratings-widget .rating-list .item .cocktail h3 .cocktail-name { color: #000; font-size: 12px; }
 
 
