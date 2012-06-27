@@ -3,6 +3,7 @@
 function Me ()
 {
 	this.nodes = {}
+	this.planStack = []
 }
 
 eval(NodesShortcut.include())
@@ -77,39 +78,82 @@ Me.prototype =
 		}
 	},
 	
+	calculateEllipses: function (nodes)
+	{
+		var bigs = []
+		
+		var total = 0, small = 0
+		for (var i = 0, il = nodes.length; i < il; i++)
+		{
+			var node = nodes[i]
+			
+			if (node.scrollHeight > node.offsetHeight)
+			{
+				bigs.push(node)
+				continue
+			}
+			
+			total += node.childNodes.length
+			small++
+		}
+		
+		var medium = Math.round(total / small)
+		
+		for (var i = 0, il = bigs.length; i < il; i++)
+		{
+			var big = bigs[i]
+			
+			big.classList.add('overflowed')
+			
+			var childs = big.childNodes.length
+			while (childs-- > medium)
+				big.removeChild(big.lastChild)
+		}
+	},
+	
+	planToRender: function (node)
+	{
+		this.planStack.push(node)
+		
+		if (this.planTimer)
+			return
+		
+		var view = this
+		function plan ()
+		{
+			view.planTimer = 0
+			
+			var stack = view.planStack
+			// console.time('plan')
+			view.calculateEllipses(stack)
+			// console.timeEnd('plan')
+			
+			stack.length = 0
+		}
+		this.planTimer = setTimeout(plan, 0)
+	},
+	
 	renderIngredientLinks: function (ingredients)
 	{
 		var links = Nc('div', 'ingredients-list')
 		
-		function feed ()
+		for (var j = 0, jl = ingredients.length; j < jl; j++)
 		{
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
-			{
-				var ing = ingredients[j]
-				var ingObj = Ingredient.getByName(ing[0])
-				
-				var name = ingObj.screenName()
-				
-				var mark = ingObj.mark
-				if (mark)
-					name += ' ' + mark
-				
-				var a = Nct('a', 'cocktail-ingredient', name)
-				a['data-ingredient'] = ingObj
-				links.appendChild(a)
-				
-				if (links.scrollHeight > links.offsetHeight)
-				{
-					links.removeChild(a)
-					links.classList.add('overflowed')
-					break
-				}
-				
-				links.appendChild(T(' '))
-			}
+			var ing = ingredients[j]
+			var ingObj = Ingredient.getByName(ing[0])
+			
+			var name = ingObj.screenName()
+			
+			var mark = ingObj.mark
+			if (mark)
+				name += ' ' + mark
+			
+			var a = Nct('a', 'cocktail-ingredient', name)
+			a['data-ingredient'] = ingObj
+			links.appendChild(a)
 		}
 		
-		window.setTimeout(feed, 0)
+		this.planToRender(links)
 		
 		return links
 	},

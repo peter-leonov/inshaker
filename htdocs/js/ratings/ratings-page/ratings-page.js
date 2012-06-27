@@ -7,10 +7,11 @@
 
 ;(function(){
 
-<!--# include virtual="rating.js" -->
+<!--# include virtual="ratings-widget.js" -->
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
 	IngredientPopup.bootstrap()
 	
 	var nodes =
@@ -21,7 +22,7 @@ function onready ()
 		ratingTag: $('#ratings-widget .rating-tag')
 	}
 	
-	var widget = new RatingPage()
+	var widget = new RatingsPage()
 	
 	widget.model.initialize
 	(
