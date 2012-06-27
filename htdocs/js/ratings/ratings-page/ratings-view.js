@@ -172,7 +172,7 @@ Me.prototype =
 			var h2 = Nct('h2', 'rating-name', group.name)
 			col.appendChild(h2)
 			
-			var count = Nct('span', 'count', group.cocktails.length + ' из ' + group.count)
+			var count = Nct('span', 'count', 'Топ ' + group.cocktails.length + ' из ' + group.count)
 			h2.appendChild(count)
 			
 			var list = Nc('ul', 'rating-list')
