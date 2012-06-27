@@ -30,15 +30,15 @@ Me.prototype =
 	}
 }
 
-Me.className = 'RatingPage'
+Me.className = 'RatingsPage'
 self[Me.className] = Papa = Me
 
 })();
 
 
-<!--# include virtual="rating-model.js" -->
-<!--# include virtual="rating-view.js" -->
-<!--# include virtual="rating-controller.js" -->
+<!--# include virtual="ratings-model.js" -->
+<!--# include virtual="ratings-view.js" -->
+<!--# include virtual="ratings-controller.js" -->
 
 
 })();

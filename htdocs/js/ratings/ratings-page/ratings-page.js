@@ -7,7 +7,7 @@
 
 ;(function(){
 
-<!--# include virtual="rating.js" -->
+<!--# include virtual="ratings-widget.js" -->
 
 function onready ()
 {
@@ -22,7 +22,7 @@ function onready ()
 		ratingTag: $('#ratings-widget .rating-tag')
 	}
 	
-	var widget = new RatingPage()
+	var widget = new RatingsPage()
 	
 	widget.model.initialize
 	(
