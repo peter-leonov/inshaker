@@ -80,6 +80,7 @@ html.bars-section #top .link.bars,
 #combinator-page #top .link.combinator,
 html.party-section #top .link.party,
 #mybar-page #top .link.mybar,
+html.ratings-section #top .link.ratings,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 
