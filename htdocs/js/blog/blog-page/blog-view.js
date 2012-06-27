@@ -15,7 +15,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var controller = this.controller
-		nodes.more.addEventListener('click', function (e) { controller.addMorePosts() }, false)
+		nodes.moreButton.addEventListener('click', function (e) { controller.addMorePosts() }, false)
 		
 		this.tagCloud = new TagCloud({root: nodes.tagCloud})
 		
