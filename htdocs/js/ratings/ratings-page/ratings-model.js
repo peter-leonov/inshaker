@@ -7,6 +7,15 @@ Me.prototype =
 	initialize: function (rating, ingredients, tags)
 	{
 		this.rating = rating
+		
+		for (var k in rating)
+		{
+			if (Cocktail.getByName(k))
+				continue
+			
+			delete rating[k]
+		}
+		
 		this.ingredients = ingredients.sort()
 		this.tags = tags.sort()
 		
