@@ -11,6 +11,7 @@
 
 function onready ()
 {
+	UserAgent.setupDocumentElementClassNames()
 	IngredientPopup.bootstrap()
 	
 	var nodes =

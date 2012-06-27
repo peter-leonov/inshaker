@@ -22,6 +22,7 @@
 
 .ratings-widget .ingredients-list .cocktail-ingredient { margin-right: 3px;  }
 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:last-child:after { content: '…' !important; }
+html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:first-child + a + a + a:after { content: '…' !important; }
 
 .ratings-widget .rating-list .first-item { position: relative; height: 182px; border-top: 3px solid #e5e5e5; margin-top: 5px; text-align: right; }
 .ratings-widget .rating-list .first-item img { height: 180px; float: left; }
