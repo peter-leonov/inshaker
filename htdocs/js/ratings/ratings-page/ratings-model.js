@@ -136,22 +136,25 @@ Me.prototype =
 	
 	calculateSpecialDays: function (rows)
 	{
-		for (var i = 0, il = rows.length; i < il; i++ )
+		// assume rows had been sorted by first elemnet of days (today)
+		
+		// preserve original order
+		rows = rows.slice()
+		
+		// bake today position
+		for (var i = 0, il = rows.length; i < il; i++)
+			rows[i].specialDays = [i]
+		
+		// bake the rest positions starting from yesterday
+		var length = rows[0].days.length
+		for (var day = 1; day < length; day++)
 		{
-			var days = rows[i].days,
-				specialDays = []
+			// sort by current day
+			rows.sort(function (a, b) { return a.days[day] - b.days[day] })
 			
-			for (var j = 0, jl = days.length; j < jl; j++ )
-			{
-				var sorts = rows.slice()
-				
-				sorts.sort(function(a, b){ return a.days[j] - b.days[j] })
-				var pos = sorts.indexOf(rows[i])
-				
-				specialDays.push(pos)
-			}
-			
-			rows[i].specialDays = specialDays
+			// save result order
+			for (var i = 0, il = rows.length; i < il; i++)
+				rows[i].specialDays[day] = i
 		}
 	},
 	
