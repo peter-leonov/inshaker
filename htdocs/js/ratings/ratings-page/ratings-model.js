@@ -70,7 +70,7 @@ Me.prototype =
 		this[this.stateToMethod[state] || this.defaultStateName]()
 	},
 	
-	sort: function (a, b)
+	sortByToday: function (a, b)
 	{
 		return a.days[0] - b.days[0]
 	},
@@ -99,7 +99,7 @@ Me.prototype =
 	
 	sortByPos: function ()
 	{
-		this.cocktails = Cocktail.getAll().sort(this.sort)
+		this.cocktails = Cocktail.getAll().sort(this.sortByToday)
 	},
 	
 	calculateDirection: function (days)
@@ -124,7 +124,8 @@ Me.prototype =
 			cocktailObj.days = cocktails[i].days
 			cocktailsDays.push(cocktailObj)
 		}
-		return cocktailsDays.sort(this.sort).slice(0, 10)
+		
+		return cocktailsDays.sort(this.sortByToday).slice(0, 10)
 	},
 	
 	calculateSpecialDays: function (cocktails)
