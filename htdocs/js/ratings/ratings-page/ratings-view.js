@@ -158,16 +158,14 @@ Me.prototype =
 		return links
 	},
 	
-	renderCol: function (cocktailsObj, frame)
+	renderCol: function (cocktailsObj, root)
 	{
-		var ratingNode = this.frames[frame]
-		
 		for (var i = 0, il = cocktailsObj.length; i < il; i++)
 		{
 			var group = cocktailsObj[i]
 			
 			var col = Nc('div', 'rating-col')
-			ratingNode.appendChild(col)
+			root.appendChild(col)
 			
 			var h2 = Nct('h2', 'rating-name', group.name)
 			col.appendChild(h2)
@@ -251,12 +249,12 @@ Me.prototype =
 	
 	renderRatingByIngredient: function (set)
 	{
-		this.renderCol(set, 'rating-ingredient')
+		this.renderCol(set, this.nodes.ratingIngredient)
 	},
 	
 	renderRatingByTag: function (set)
 	{
-		this.renderCol(set, 'rating-tag')
+		this.renderCol(set, this.nodes.ratingTag)
 	},
 	
 	switchToFrame: function (frame)
