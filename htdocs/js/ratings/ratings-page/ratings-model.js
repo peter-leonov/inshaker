@@ -55,9 +55,9 @@ Me.prototype =
 	
 	stateToMethod:
 	{
-		'total': 'stateTotal',
-		'tag': 'stateTag',
-		'ingredient': 'stateIngredient'
+		total: 'stateTotal',
+		tag: 'stateTag',
+		ingredient: 'stateIngredient'
 	},
 	defaultStateName: 'stateTotal',
 	
