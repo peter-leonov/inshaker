@@ -134,39 +134,39 @@ Me.prototype =
 		return rows.slice(0, 10)
 	},
 	
-	calculateSpecialDays: function (cocktails)
+	calculateSpecialDays: function (rows)
 	{
-		for (var i = 0, il = cocktails.length; i < il; i++ )
+		for (var i = 0, il = rows.length; i < il; i++ )
 		{
-			var days = cocktails[i].days,
+			var days = rows[i].days,
 				specialDays = []
 			
 			for (var j = 0, jl = days.length; j < jl; j++ )
 			{
-				var sorts = cocktails.slice()
+				var sorts = rows.slice()
 				
 				sorts.sort(function(a, b){ return a.days[j] - b.days[j] })
-				var pos = sorts.indexOf( cocktails[i] )
+				var pos = sorts.indexOf(rows[i])
 				
 				specialDays.push(pos)
 			}
 			
-			cocktails[i].specialDays = specialDays
+			rows[i].specialDays = specialDays
 		}
 	},
 	
-	fillDirectionAndPos: function (cocktails)
+	fillDirectionAndPos: function (rows)
 	{
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		for (var i = 0, il = rows.length; i < il; i++)
 		{
-			var cocktail = cocktails[i]
+			var row = rows[i]
 			
-			cocktail.specialDirection = this.calculateDirection(cocktail.specialDays)
-			cocktail.totalDirection = this.calculateDirection(cocktail.days)
+			row.specialDirection = this.calculateDirection(row.specialDays)
+			row.totalDirection = this.calculateDirection(row.days)
 			
-			var pos = this.cocktails.indexOf(cocktail.cocktail)
+			var pos = this.cocktails.indexOf(row.cocktail)
 			if (pos != -1)
-				cocktail.totalPos = pos + 1
+				row.totalPos = pos + 1
 		}
 	},
 	
