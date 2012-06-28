@@ -235,23 +235,23 @@ Me.prototype =
 		var tags = this.tags
 		for (var i = 0, il = tags.length; i < il; i++)
 		{
-			var tag = tags[i],
-				cocktails = Cocktail.getByTag(tag)
+			var tag = tags[i]
 			
-			if (cocktails.length)
+			var cocktails = Cocktail.getByTag(tag)
+			if (!cocktails.length)
+				continue
+			
+			var byTag =
 			{
-				var byTag =
-				{
-					name: tag,
-					count: cocktails.length
-				}
-				
-				var cocktailsObj = byTag.cocktails = this.getTopCocktails(cocktails)
-				this.calculateSpecialDays(cocktailsObj)
-				this.fillDirectionAndPos(cocktailsObj)
-				
-				res.push(byTag)
+				name: tag,
+				count: cocktails.length
 			}
+			
+			var cocktailsObj = byTag.cocktails = this.getTopCocktails(cocktails)
+			this.calculateSpecialDays(cocktailsObj)
+			this.fillDirectionAndPos(cocktailsObj)
+			
+			res.push(byTag)
 		}
 		
 		return res
