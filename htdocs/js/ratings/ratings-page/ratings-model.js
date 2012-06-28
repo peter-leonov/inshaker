@@ -173,11 +173,11 @@ Me.prototype =
 	
 	calculateTotal: function ()
 	{
-		var cocktails = this.cocktails.slice(0, 10)
-		for (var i = 0, il = cocktails.length; i < il; i++)
-			cocktails[i].totalDirection = this.calculateDirection(cocktails[i].days)
+		var rows = this.getTopRows(Cocktail.getAll())
+		this.calculateSpecialDays(rows)
+		this.fillDirectionAndPos(rows)
 		
-		return cocktails
+		return rows
 	},
 	
 	processTotal: function ()

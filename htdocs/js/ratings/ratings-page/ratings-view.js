@@ -42,18 +42,19 @@ Me.prototype =
 		IngredientPopup.show(ingredient)
 	},
 	
-	renderTotal: function (cocktails)
+	renderTotal: function (rows)
 	{
 		var ratingTotal = this.nodes.ratingTotal
 		
-		for (var i = 0, il = cocktails.length; i < il; i++)
+		for (var i = 0, il = rows.length; i < il; i++)
 		{
-			var cocktail = cocktails[i]
+			var row = rows[i],
+				cocktail = row.cocktail
 			
 			var li = N('li')
 			
 			var cocktailPos = Nc('div', 'cocktail-position')
-			cocktailPos.appendChild( Nc('span', 'arrow ' + (cocktail.totalDirection < 0 ? 'down' : 'up')) )
+			cocktailPos.appendChild( Nc('span', 'arrow ' + (row.totalDirection < 0 ? 'down' : 'up')) )
 			cocktailPos.appendChild( T(i+1) )
 			li.appendChild(cocktailPos)
 			
