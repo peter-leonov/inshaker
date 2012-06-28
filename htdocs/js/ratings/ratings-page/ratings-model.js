@@ -119,13 +119,10 @@ Me.prototype =
 		var cocktailsDays = []
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			if (this.rating[cocktails[i].name])
-			{
-				var cocktailObj = {}
-				cocktailObj.cocktail = cocktails[i]
-				cocktailObj.days = this.rating[cocktails[i].name]
-				cocktailsDays.push(cocktailObj)
-			}
+			var cocktailObj = {}
+			cocktailObj.cocktail = cocktails[i]
+			cocktailObj.days = cocktails[i].days
+			cocktailsDays.push(cocktailObj)
 		}
 		return cocktailsDays.sort(this.sort).slice(0, 10)
 	},
