@@ -188,7 +188,7 @@ Me.prototype =
 	
 	calculateIngredients: function ()
 	{
-		var res = []
+		var groups = []
 		
 		var ingredientsOrTags = this.ingredientsOrTags
 		for (var i = 0, il = ingredientsOrTags.length; i < il; i++)
@@ -214,10 +214,10 @@ Me.prototype =
 				count: cocktails.length,
 				rows: rows,
 			}
-			res.push(group)
+			groups.push(group)
 		}
 		
-		return res
+		return groups
 	},
 	
 	processIngredients: function ()
@@ -232,7 +232,7 @@ Me.prototype =
 	
 	calculateTags: function ()
 	{
-		var res = []
+		var groups = []
 		
 		var tags = this.tags
 		for (var i = 0, il = tags.length; i < il; i++)
@@ -253,10 +253,10 @@ Me.prototype =
 				count: cocktails.length,
 				rows: rows
 			}
-			res.push(group)
+			groups.push(group)
 		}
 		
-		return res
+		return groups
 	},
 	
 	processTags: function ()
