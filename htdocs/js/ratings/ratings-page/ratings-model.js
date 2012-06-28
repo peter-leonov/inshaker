@@ -220,7 +220,11 @@ Me.prototype =
 	
 	processIngredients: function ()
 	{
-		this.view.renderRatingByIngredient(this.calculateIngredients())
+		console.time('processIngredients')
+		var top = this.calculateIngredients()
+		console.timeEnd('processIngredients')
+		
+		this.view.renderRatingByIngredient(top)
 	},
 	
 	
@@ -255,7 +259,11 @@ Me.prototype =
 	
 	processTags: function ()
 	{
-		this.view.renderRatingByTag(this.calculateTags())
+		console.time('processIngredients')
+		var top = this.calculateTags()
+		console.timeEnd('processIngredients')
+		
+		this.view.renderRatingByTag(top)
 	}
 }
 
