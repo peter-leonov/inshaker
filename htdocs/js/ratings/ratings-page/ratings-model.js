@@ -114,18 +114,24 @@ Me.prototype =
 		}
 	},
 	
-	getTopCocktails: function (cocktails)
+	getTopRows: function (cocktails)
 	{
-		var cocktailsDays = []
+		var rows = []
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var cocktailObj = {}
-			cocktailObj.cocktail = cocktails[i]
-			cocktailObj.days = cocktails[i].days
-			cocktailsDays.push(cocktailObj)
+			var cocktail = cocktails[i]
+			
+			var row =
+			{
+				cocktail: cocktail,
+				days: cocktail.days
+			}
+			rows.push(row)
 		}
 		
-		return cocktailsDays.sort(this.sortByToday).slice(0, 10)
+		rows.sort(this.sortByToday)
+		
+		return rows.slice(0, 10)
 	},
 	
 	calculateSpecialDays: function (cocktails)
@@ -203,7 +209,7 @@ Me.prototype =
 					count: cocktails.length
 				}
 				
-				var cocktailsObj = byIngr.cocktails = this.getTopCocktails(cocktails)
+				var cocktailsObj = byIngr.cocktails = this.getTopRows(cocktails)
 				this.calculateSpecialDays(cocktailsObj)
 				this.fillDirectionAndPos(cocktailsObj)
 				
@@ -243,7 +249,7 @@ Me.prototype =
 				count: cocktails.length
 			}
 			
-			var cocktailsObj = byTag.cocktails = this.getTopCocktails(cocktails)
+			var cocktailsObj = byTag.cocktails = this.getTopRows(cocktails)
 			this.calculateSpecialDays(cocktailsObj)
 			this.fillDirectionAndPos(cocktailsObj)
 			
