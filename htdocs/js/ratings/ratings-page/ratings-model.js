@@ -10,8 +10,6 @@ Me.prototype =
 		
 		this.ingredientsOrTags = ingredientsOrTags.sort()
 		this.tags = tags.sort()
-		
-		this.sortByPos()
 	},
 	
 	stateTotal: function ()
@@ -97,11 +95,6 @@ Me.prototype =
 		}
 	},
 	
-	sortByPos: function ()
-	{
-		this.cocktails = Cocktail.getAll().sort(this.sortByToday)
-	},
-	
 	calculateDirection: function (days)
 	{
 		for (var i = 0, il = days.length - 1; i < il; i++)
@@ -166,10 +159,7 @@ Me.prototype =
 			
 			row.specialDirection = this.calculateDirection(row.specialDays)
 			row.totalDirection = this.calculateDirection(row.days)
-			
-			var pos = this.cocktails.indexOf(row.cocktail)
-			if (pos != -1)
-				row.totalPos = pos + 1
+			row.totalPos = row.days[0]
 		}
 	},
 	
