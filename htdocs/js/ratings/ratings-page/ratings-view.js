@@ -16,9 +16,9 @@ Me.prototype =
 		
 		this.frames =
 		{
-			'rating-total': nodes.ratingTotal,
-			'rating-ingredient': nodes.ratingIngredient,
-			'rating-tag': nodes.ratingTag
+			'total': nodes.ratingTotal,
+			'ingredient': nodes.ratingIngredient,
+			'tag': nodes.ratingTag
 		}
 		
 		var view = this

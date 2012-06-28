@@ -20,11 +20,11 @@ Me.prototype =
 		this.stateTotal = this.stateTotalLight
 		
 		this.processTotal()
-		this.view.switchToFrame('rating-total')
+		this.view.switchToFrame('total')
 	},
 	stateTotalLight: function ()
 	{
-		this.view.switchToFrame('rating-total')
+		this.view.switchToFrame('total')
 	},
 	
 	stateTag: function ()
@@ -33,11 +33,11 @@ Me.prototype =
 		this.stateTag = this.stateTagLight
 		
 		this.processTags()
-		this.view.switchToFrame('rating-tag')
+		this.view.switchToFrame('tag')
 	},
 	stateTagLight: function ()
 	{
-		this.view.switchToFrame('rating-tag')
+		this.view.switchToFrame('tag')
 	},
 	
 	stateIngredient: function ()
@@ -46,18 +46,18 @@ Me.prototype =
 		this.stateIngredient = this.stateIngredientLight
 		
 		this.processIngredients()
-		this.view.switchToFrame('rating-ingredient')
+		this.view.switchToFrame('ingredient')
 	},
 	stateIngredientLight: function ()
 	{
-		this.view.switchToFrame('rating-ingredient')
+		this.view.switchToFrame('ingredient')
 	},
 	
 	stateToMethod:
 	{
-		'rating-total': 'stateTotal',
-		'rating-tag': 'stateTag',
-		'rating-ingredient': 'stateIngredient'
+		'total': 'stateTotal',
+		'tag': 'stateTag',
+		'ingredient': 'stateIngredient'
 	},
 	defaultStateName: 'stateTotal',
 	
