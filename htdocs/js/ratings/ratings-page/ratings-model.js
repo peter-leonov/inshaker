@@ -7,18 +7,10 @@ Me.prototype =
 	initialize: function (rating, ingredients, tags)
 	{
 		this.rating = rating
-		
-		for (var k in rating)
-		{
-			if (Cocktail.getByName(k))
-				continue
-			
-			delete rating[k]
-		}
-		
 		this.ingredients = ingredients.sort()
 		this.tags = tags.sort()
 		
+		this.setDaysPropertyOnCocktails()
 		this.sortByPos()
 	},
 	
@@ -83,19 +75,33 @@ Me.prototype =
 		return a.days[0] - b.days[0]
 	},
 	
-	sortByPos: function ()
+	setDaysPropertyOnCocktails: function ()
 	{
-		var cocktails = []
-		for (var k in this.rating)
+		var rating = this.rating
+		
+		var stub
+		for (var k in rating)
 		{
-			var cocktail = Cocktail.getByName(k)
-			
-			cocktail.days = this.rating[k]
-			
-			cocktails.push(cocktail)
+			stub = rating[k].slice()
+			break
+		}
+		for (var i = 0, il = stub.length; i < il; i++)
+		{
+			stub[i] = 999999
 		}
 		
-		this.cocktails = cocktails.sort(this.sort)
+		var cocktails = Cocktail.getAll()
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var cocktail = cocktails[i]
+			
+			cocktail.days = rating[cocktail.name] || stub.slice()
+		}
+	},
+	
+	sortByPos: function ()
+	{
+		this.cocktails = Cocktail.getAll().sort(this.sort)
 	},
 	
 	calculateDirection: function (days)
