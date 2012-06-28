@@ -91,7 +91,9 @@ Me.prototype =
 		{
 			var cocktail = cocktails[i]
 			
-			cocktail.days = rating[cocktail.name] || stub.slice()
+			var days = rating[cocktail.name] || stub.slice()
+			days.direction = this.calculateDirection(days)
+			cocktail.days = days
 		}
 	},
 	
@@ -156,10 +158,7 @@ Me.prototype =
 		for (var i = 0, il = rows.length; i < il; i++)
 		{
 			var row = rows[i]
-			
-			row.specialDirection = this.calculateDirection(row.specialDays)
-			row.totalDirection = this.calculateDirection(row.days)
-			row.totalPos = row.days[0]
+			row.specialDays.direction = this.calculateDirection(row.specialDays)
 		}
 	},
 	
