@@ -124,6 +124,9 @@ var Me =
 		return hash
 	},
 	
+	// Counting entries of an element is much faster and simpler then buldings a hash with decreasing number of keys.
+	// This is the inside-out variant of the decreasing hash algorithm: growing hash with a check for length entries.
+	// Pluses: one hash to GC, N+1 passes (as in decreasing hash), fast integer comparision.
 	conjunction: function (arys)
 	{
 		var length = arys.length
