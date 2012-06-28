@@ -158,11 +158,12 @@ Me.prototype =
 		return links
 	},
 	
-	renderCol: function (cocktailsObj, root)
+	renderCol: function (groups, root)
 	{
-		for (var i = 0, il = cocktailsObj.length; i < il; i++)
+		for (var i = 0, il = groups.length; i < il; i++)
 		{
-			var group = cocktailsObj[i]
+			var group = groups[i],
+				rows = group.rows
 			
 			var col = Nc('div', 'rating-col')
 			root.appendChild(col)
@@ -170,14 +171,14 @@ Me.prototype =
 			var h2 = Nct('h2', 'rating-name', group.name)
 			col.appendChild(h2)
 			
-			var count = Nct('span', 'count', 'Топ ' + group.cocktails.length + ' из ' + group.count)
+			var count = Nct('span', 'count', 'Топ ' + rows.length + ' из ' + group.count)
 			h2.appendChild(count)
 			
 			var list = Nc('ul', 'rating-list')
 			col.appendChild(list)
 			
 			
-			var firstCocktail = group.cocktails[0]
+			var firstCocktail = rows[0]
 			
 			var firstItem = Nc('li', 'first-item')
 			list.appendChild(firstItem)
@@ -212,9 +213,9 @@ Me.prototype =
 			rating.appendChild(note)
 			
 			
-			for (var j = 1, jl = group.cocktails.length; j < jl; j++)
+			for (var j = 1, jl = rows.length; j < jl; j++)
 			{
-				var cocktail = group.cocktails[j]
+				var cocktail = rows[j]
 				
 				var item = Nc('li', 'item')
 				list.appendChild(item)

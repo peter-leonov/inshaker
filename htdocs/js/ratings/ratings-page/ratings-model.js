@@ -4,11 +4,11 @@ function Me () {}
 
 Me.prototype =
 {
-	initialize: function (rating, ingredients, tags)
+	initialize: function (rating, ingredientsOrTags, tags)
 	{
 		this.setDaysPropertyOnCocktails(rating)
 		
-		this.ingredients = ingredients.sort()
+		this.ingredientsOrTags = ingredientsOrTags.sort()
 		this.tags = tags.sort()
 		
 		this.sortByPos()
@@ -190,7 +190,7 @@ Me.prototype =
 	{
 		var res = []
 		
-		var ingredientsOrTags = this.ingredients
+		var ingredientsOrTags = this.ingredientsOrTags
 		for (var i = 0, il = ingredientsOrTags.length; i < il; i++)
 		{
 			var ingredientOrTag = ingredientsOrTags[i]
@@ -201,20 +201,20 @@ Me.prototype =
 			else
 				var cocktails = Cocktail.getByIngredient(ingredientOrTag)
 			
-			if (cocktails.length)
+			if (!cocktails.length)
+				continue
+			
+			var rows = this.getTopRows(cocktails)
+			this.calculateSpecialDays(rows)
+			this.fillDirectionAndPos(rows)
+			
+			var group =
 			{
-				var byIngr =
-				{
-					name: ingredientOrTag,
-					count: cocktails.length
-				}
-				
-				var cocktailsObj = byIngr.cocktails = this.getTopRows(cocktails)
-				this.calculateSpecialDays(cocktailsObj)
-				this.fillDirectionAndPos(cocktailsObj)
-				
-				res.push(byIngr)
+				name: ingredientOrTag,
+				count: cocktails.length,
+				rows: rows,
 			}
+			res.push(group)
 		}
 		
 		return res
@@ -243,17 +243,17 @@ Me.prototype =
 			if (!cocktails.length)
 				continue
 			
-			var byTag =
+			var rows = this.getTopRows(cocktails)
+			this.calculateSpecialDays(rows)
+			this.fillDirectionAndPos(rows)
+			
+			var group =
 			{
 				name: tag,
-				count: cocktails.length
+				count: cocktails.length,
+				rows: rows
 			}
-			
-			var cocktailsObj = byTag.cocktails = this.getTopRows(cocktails)
-			this.calculateSpecialDays(cocktailsObj)
-			this.fillDirectionAndPos(cocktailsObj)
-			
-			res.push(byTag)
+			res.push(group)
 		}
 		
 		return res
