@@ -104,14 +104,14 @@ Me.prototype =
 	
 	calculateDirection: function (days)
 	{
-		for (var i = 0, il = days.length-1; i < il; i++)
+		for (var i = 0, il = days.length - 1; i < il; i++)
 		{
-			if (days[i] < days[i+1])
-				return i + 1
-			
-			if (days[i] > days[i + 1])
-				return (i + 1) * -1
+			var d = days[i + 1] - days[i]
+			if (d != 0)
+				return d
 		}
+		
+		return 0
 	},
 	
 	getTopRows: function (cocktails)
