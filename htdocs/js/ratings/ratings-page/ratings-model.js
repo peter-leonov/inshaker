@@ -6,11 +6,11 @@ Me.prototype =
 {
 	initialize: function (rating, ingredients, tags)
 	{
-		this.rating = rating
+		this.setDaysPropertyOnCocktails(rating)
+		
 		this.ingredients = ingredients.sort()
 		this.tags = tags.sort()
 		
-		this.setDaysPropertyOnCocktails()
 		this.sortByPos()
 	},
 	
@@ -75,10 +75,8 @@ Me.prototype =
 		return a.days[0] - b.days[0]
 	},
 	
-	setDaysPropertyOnCocktails: function ()
+	setDaysPropertyOnCocktails: function (rating)
 	{
-		var rating = this.rating
-		
 		var stub
 		for (var k in rating)
 		{
