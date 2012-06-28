@@ -131,7 +131,7 @@ Me.prototype =
 	
 	calculateSpecialDays: function (rows)
 	{
-		// assume rows had been sorted by first elemnet of days (today)
+		// assume rows had been sorted by first element of days (today)
 		
 		// preserve original order
 		rows = rows.slice()
