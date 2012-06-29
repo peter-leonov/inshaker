@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/combinator.html#q=Маргариты'
+var link = '/cocktail/mojito_strawberry/'
 
 Me.initialize
 ({
