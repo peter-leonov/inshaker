@@ -164,12 +164,12 @@ Me.prototype =
 			return false
 		}
 		
-		var view = this
+		var controller = this.controller
 		function maybeGoodClicked (target)
 		{
 			var name = findIngredientInParents(target, 3)
 			if (name)
-				view.controller.goodSelected(name)
+				controller.goodSelected(name)
 		}
 		
 		function onclick (e)
