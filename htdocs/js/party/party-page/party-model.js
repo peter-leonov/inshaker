@@ -55,9 +55,7 @@ Me.prototype =
 		{
 			var portion = portions[i]
 			
-			parts.add(portion.cocktail.getPartsFor(1, 1))
-			// portion.parts = parts
-			
+			parts.add(portion.cocktail.getPartsFor(1, 1, parts))
 		}
 		
 		var goods = this.party.goods
@@ -131,7 +129,7 @@ Me.prototype =
 		{
 			var portion = portions[i]
 			
-			parts.add(portion.cocktail.getPartsFor(portion.count, this.peopleCount))
+			parts.add(portion.cocktail.getPartsFor(portion.count, this.peopleCount, parts))
 		}
 		
 		var goods = this.party.goods

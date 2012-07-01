@@ -34,7 +34,7 @@ Me.prototype =
 	
 	screenName: function () { return this.screen || this.name },
 	
-	getPartsFor: function (count, guests)
+	getPartsFor: function (count, guests, has)
 	{
 		var parts = new Me.Parts()
 		
@@ -58,7 +58,7 @@ Me.prototype =
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
 			var v = tools[i]
-			var amount = Me.calculateGoodAmount(v, portions, count, guests)
+			var amount = Me.calculateGoodAmount(v, portions, count, guests, has)
 			parts.addGood(Ingredient.getByName(v[0]), amount)
 		}
 		
@@ -515,18 +515,35 @@ Me.staticMethods =
 		return ingredients
 	},
 	
-	calculateGoodAmount: function (part, portions, count, guests)
+	calculateGoodAmount: function (part, portions, count, guests, has)
 	{
-		var amount = part[1],
+		var good = part[0],
+			amount = part[1],
 			multiplier = part[2]
 		
 		if (count == 0)
 			return 0
-		else if (multiplier == 1)
+		
+		
+		if (multiplier == 1) // per guest (1)
 			return amount * guests
-		else if (!multiplier || multiplier == 2)
+		
+		if (!multiplier || multiplier == 2) // helping (undefined, 0 and 2)
 			return amount * portions * count
 		
+		if (multiplier == 3) // per party (3)
+		{
+			var hasPart = has.getPartByGood(good)
+			if (!hasPart)
+				return amount
+			
+			if (hasPart.amount >= amount)
+				return 0
+			
+			return amount - hasPart.amount
+		}
+		
+		// return a save value on an unknown multiplier
 		return amount
 	},
 	

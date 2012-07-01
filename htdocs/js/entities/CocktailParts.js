@@ -41,6 +41,11 @@ Me.prototype =
 		}
 	},
 	
+	getPartByGood: function (name)
+	{
+		return this.parts[name]
+	},
+	
 	toArray: function () { return Object.values(this.parts) }
 }
 
