@@ -20,6 +20,8 @@ function onready ()
 	
 	var nodes =
 	{
+		root: $('#common-main-wrapper'),
+		
 		ogImage: $('#og-image'),
 		partyName: $('#party-name'),
 		window:

@@ -176,10 +176,7 @@ Me.prototype =
 		{
 			maybeGoodClicked(e.target)
 		}
-		
-		nodes.recipeList.addEventListener('click', onclick, false)
-		nodes.purchasePlan.addEventListener('click', onclick, false)
-		nodes.cocktailPlan.addEventListener('click', onclick, false)
+		nodes.root.addEventListener('click', onclick, false)
 	},
 	
 	showGoodPopup: function (good)
