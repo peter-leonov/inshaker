@@ -224,7 +224,6 @@ class IngredientsProcessor < Inshaker::Processor
     
     if brand
       good[:brand] = brand
-      good[:brand_dir] = brand.dirify
       
       if about["Марка"]
         if @marks[about["Марка"]]
