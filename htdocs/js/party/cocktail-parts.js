@@ -114,7 +114,7 @@ Me.prototype =
 	toArray: function () { return Object.values(this.parts) }
 }
 
-Me.className = 'Parts'
-Cocktail[Me.className] = Me
+Me.className = 'CocktailParts'
+self[Me.className] = Me
 
 })();

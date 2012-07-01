@@ -159,7 +159,7 @@ Me.prototype =
 	
 	getPartsFor: function (portions, goods, peopleCount)
 	{
-		var parts = new PartyParts()
+		var parts = new CocktailParts()
 		
 		for (var i = 0, il = portions.length; i < il; i++)
 		{
