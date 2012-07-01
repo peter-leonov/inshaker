@@ -41,47 +41,61 @@ Me.prototype =
 		}
 	},
 	
+	setGood: function (good, amount)
+	{
+		this.addGood(good, 0)
+		this.parts[good.name] = amount
+	},
+	
 	getPartByGood: function (name)
 	{
 		return this.parts[name]
 	},
 	
-	calculateGoodAmount: function (part, portions, count, guests, has)
+	addPart: function (part, portions, count, guests)
 	{
 		var good = part[0],
 			amount = part[1],
 			multiplier = part[2]
 		
-		if (count == 0)
-			return 0
+		var ingredient = Ingredient.getByName(good)
 		
+		if (count == 0)
+		{
+			this.addGood(ingredient, 0)
+			return
+		}
 		
 		if (multiplier == 1) // per guest (1)
-			return amount * guests
+		{
+			this.addGood(ingredient, amount * guests)
+			return
+		}
 		
 		if (!multiplier || multiplier == 2) // helping (undefined, 0 and 2)
-			return amount * portions * count
+		{
+			this.addGood(ingredient, amount * portions * count)
+			return
+		}
 		
 		if (multiplier == 3) // per party (3)
 		{
-			var hasPart = this.getPartByGood(good)
-			if (!hasPart)
-				return amount
+			var has = this.getPartByGood(good)
+			if (!has)
+			{
+				this.addGood(ingredient, amount)
+				return
+			}
 			
-			if (hasPart.amount >= amount)
-				return 0
+			if (has.amount >= amount)
+				return
 			
-			return amount - hasPart.amount
+			this.setGood(ingredient, amount)
+			return
 		}
 		
 		// return a save value on an unknown multiplier
 		return amount
-	},
-	
-	addPart: function (part, portions, count, guests)
-	{
-		var amount = this.calculateGoodAmount(part, portions, count, guests)
-		this.addGood(Ingredient.getByName(part[0]), amount)
 	},
 	
 	addCocktail: function (cocktail, count, guests)
