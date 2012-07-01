@@ -34,37 +34,6 @@ Me.prototype =
 	
 	screenName: function () { return this.screen || this.name },
 	
-	getPartsFor: function (count, guests, has)
-	{
-		var parts = new Me.Parts()
-		
-		var portions = this.portions || 1
-		
-		var ingredients = this.ingredients
-		for (var i = 0, il = ingredients.length; i < il; i++)
-		{
-			var v = ingredients[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
-		}
-		
-		var garnish = this.garnish
-		for (var i = 0, il = garnish.length; i < il; i++)
-		{
-			var v = garnish[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
-		}
-		
-		var tools = this.tools
-		for (var i = 0, il = tools.length; i < il; i++)
-		{
-			var v = tools[i]
-			var amount = Me.calculateGoodAmount(v, portions, count, guests, has)
-			parts.addGood(Ingredient.getByName(v[0]), amount)
-		}
-		
-		return parts
-	},
-	
 	getPath: function ()
 	{
 		var path = this._path
@@ -515,38 +484,6 @@ Me.staticMethods =
 		return ingredients
 	},
 	
-	calculateGoodAmount: function (part, portions, count, guests, has)
-	{
-		var good = part[0],
-			amount = part[1],
-			multiplier = part[2]
-		
-		if (count == 0)
-			return 0
-		
-		
-		if (multiplier == 1) // per guest (1)
-			return amount * guests
-		
-		if (!multiplier || multiplier == 2) // helping (undefined, 0 and 2)
-			return amount * portions * count
-		
-		if (multiplier == 3) // per party (3)
-		{
-			var hasPart = has.getPartByGood(good)
-			if (!hasPart)
-				return amount
-			
-			if (hasPart.amount >= amount)
-				return 0
-			
-			return amount - hasPart.amount
-		}
-		
-		// return a save value on an unknown multiplier
-		return amount
-	},
-	
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
@@ -575,5 +512,3 @@ Me.initialize
 )
 
 })();
-
-<!--# include virtual="CocktailParts.js" -->
