@@ -46,6 +46,71 @@ Me.prototype =
 		return this.parts[name]
 	},
 	
+	calculateGoodAmount: function (part, portions, count, guests, has)
+	{
+		var good = part[0],
+			amount = part[1],
+			multiplier = part[2]
+		
+		if (count == 0)
+			return 0
+		
+		
+		if (multiplier == 1) // per guest (1)
+			return amount * guests
+		
+		if (!multiplier || multiplier == 2) // helping (undefined, 0 and 2)
+			return amount * portions * count
+		
+		if (multiplier == 3) // per party (3)
+		{
+			var hasPart = this.getPartByGood(good)
+			if (!hasPart)
+				return amount
+			
+			if (hasPart.amount >= amount)
+				return 0
+			
+			return amount - hasPart.amount
+		}
+		
+		// return a save value on an unknown multiplier
+		return amount
+	},
+	
+	addPart: function (part, portions, count, guests)
+	{
+		var amount = this.calculateGoodAmount(part, portions, count, guests)
+		this.addGood(Ingredient.getByName(goods[i][0]), amount)
+	},
+	
+	addCocktail: function (cocktail, count, guests)
+	{
+		var portions = cocktail.portions || 1
+		
+		var ingredients = cocktail.ingredients
+		for (var i = 0, il = ingredients.length; i < il; i++)
+		{
+			var v = ingredients[i]
+			this.addGood(Ingredient.getByName(v[0]), v[1] * count)
+		}
+		
+		var garnish = cocktail.garnish
+		for (var i = 0, il = garnish.length; i < il; i++)
+		{
+			var v = garnish[i]
+			this.addGood(Ingredient.getByName(v[0]), v[1] * count)
+		}
+		
+		var tools = cocktail.tools
+		for (var i = 0, il = tools.length; i < il; i++)
+		{
+			var v = tools[i]
+			var amount = this.calculateGoodAmount(v, portions, count, guests)
+			this.addGood(Ingredient.getByName(v[0]), amount)
+		}
+	},
+	
 	toArray: function () { return Object.values(this.parts) }
 }
 
