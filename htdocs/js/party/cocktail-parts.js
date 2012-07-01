@@ -81,7 +81,7 @@ Me.prototype =
 	addPart: function (part, portions, count, guests)
 	{
 		var amount = this.calculateGoodAmount(part, portions, count, guests)
-		this.addGood(Ingredient.getByName(goods[i][0]), amount)
+		this.addGood(Ingredient.getByName(part[0]), amount)
 	},
 	
 	addCocktail: function (cocktail, count, guests)
@@ -92,22 +92,21 @@ Me.prototype =
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var v = ingredients[i]
-			this.addGood(Ingredient.getByName(v[0]), v[1] * count)
+			this.addPart(v, portions, count, guests)
 		}
 		
 		var garnish = cocktail.garnish
 		for (var i = 0, il = garnish.length; i < il; i++)
 		{
 			var v = garnish[i]
-			this.addGood(Ingredient.getByName(v[0]), v[1] * count)
+			this.addPart(v, portions, count, guests)
 		}
 		
 		var tools = cocktail.tools
 		for (var i = 0, il = tools.length; i < il; i++)
 		{
 			var v = tools[i]
-			var amount = this.calculateGoodAmount(v, portions, count, guests)
-			this.addGood(Ingredient.getByName(v[0]), amount)
+			this.addPart(v, portions, count, guests)
 		}
 	},
 	
