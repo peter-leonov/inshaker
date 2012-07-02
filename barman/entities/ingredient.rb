@@ -58,12 +58,14 @@ class Ingredient < Inshaker::Entity
   }
   
   @multipliers = {
+    "на коктейль" => "cocktail",
     "на человека" => "guest",
     "на порцию" => "helping",
     "на вечеринку" => "party"
   }
   
   @multiplier_id = {
+    "cocktail" => 0,
     "guest" => 1,
     "helping" => 2,
     "party" => 3
@@ -110,7 +112,7 @@ class Ingredient < Inshaker::Entity
         error "непонятный множитель «#{multiplier}»"
       end
     else
-      multiplier = @multipliers["на порцию"]
+      multiplier = @multipliers["на коктейль"]
     end
     
     vol = m[1].gsub(",", ".").to_f
