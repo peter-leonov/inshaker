@@ -67,7 +67,7 @@ Me.prototype =
 		}
 		
 		
-		if (!multiplier) // pure ingredient (undefined and 0)
+		if (!multiplier) // per cocktail, pure ingredient (undefined and 0)
 		{
 			this.addGood(ingredient, amount * count)
 			return
