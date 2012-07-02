@@ -75,7 +75,17 @@ Me.prototype =
 		
 		if (multiplier == 1) // per guest (1)
 		{
-			this.addGood(ingredient, amount * guests)
+			var has = this.getPartByGood(good)
+			if (!has)
+			{
+				this.addGood(ingredient, amount * guests)
+				return
+			}
+			
+			if (has.amount >= amount * guests)
+				return
+			
+			this.setGood(ingredient, amount * guests)
 			return
 		}
 		
