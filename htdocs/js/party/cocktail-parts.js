@@ -66,13 +66,20 @@ Me.prototype =
 			return
 		}
 		
+		
+		if (!multiplier) // pure ingredient (undefined and 0)
+		{
+			this.addGood(ingredient, amount * count)
+			return
+		}
+		
 		if (multiplier == 1) // per guest (1)
 		{
 			this.addGood(ingredient, amount * guests)
 			return
 		}
 		
-		if (!multiplier || multiplier == 2) // helping (undefined, 0 and 2)
+		if (multiplier == 2) // helping (2)
 		{
 			this.addGood(ingredient, amount * portions * count)
 			return

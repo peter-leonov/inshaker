@@ -492,7 +492,7 @@ class CocktailsProcessor < Inshaker::Processor
           part[1].may_be_to_i
         ]
         
-        if part[3] != "helping"
+        if part[3] != "cocktail"
           res[2] = Ingredient.get_multiplier_id(part[3])
         end
         
@@ -648,13 +648,13 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       if e.class == String
-        [e, 1.0, "шт", "helping"]
+        [e, 1.0, "шт", "cocktail"]
       elsif e.class == Hash
         name, amount = e.shift
         parse_part(name, amount)
       else
         error "непонятный контейнер штучки «#{e.class}»"
-        ["хз", 1.0, "шт", "helping"]
+        ["хз", 1.0, "шт", "cocktail"]
       end
     end
   end
