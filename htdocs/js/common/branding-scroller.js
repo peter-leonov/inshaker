@@ -17,6 +17,23 @@ Me.prototype =
 		var me = this
 		window.addEventListener('scroll', function (e) { me.onscroll() }, false)
 		this.onscroll()
+		
+		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+	},
+	
+	onBoxChanged: function ()
+	{
+		var nodes = this.nodes,
+			fixedEndY = nodes.page.scrollHeight
+		
+		if (fixedEndY == this.fixedEndY)
+			return
+		
+		if (nodes.holder.offsetHeight >= fixedEndY - this.fixedStartY)
+			return
+		
+		this.fixedEndY = fixedEndY
+		this.onscroll()
 	},
 	
 	onscroll: function ()
