@@ -299,6 +299,12 @@ Me.prototype =
 		}
 		
 		this.renderedPages[num] = true
+		
+		var evt = document.createEvent('Event')
+		evt.initEvent('inshaker-box-changed', true, true)
+		  
+		nodes.resultsDisplay.dispatchEvent(evt)
+		
 	}
 }
 
