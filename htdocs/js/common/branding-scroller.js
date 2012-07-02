@@ -14,11 +14,19 @@ Me.prototype =
 		if (nodes.holder.offsetHeight >= this.fixedEndY - this.fixedStartY)
 			return
 		
+		this.onceAddEventListenerBoxChanged()
+		
+		var me = this
+		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+	},
+	
+	onceAddEventListenerBoxChanged: function()
+	{
 		var me = this
 		window.addEventListener('scroll', function (e) { me.onscroll() }, false)
 		this.onscroll()
 		
-		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+		this.onceAddEventListenerBoxChanged = this.onscroll
 	},
 	
 	onBoxChanged: function ()
@@ -33,7 +41,7 @@ Me.prototype =
 			return
 		
 		this.fixedEndY = fixedEndY
-		this.onscroll()
+		this.onceAddEventListenerBoxChanged()
 	},
 	
 	onscroll: function ()
