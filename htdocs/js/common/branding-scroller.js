@@ -18,15 +18,6 @@ Me.prototype =
 		this.onBoxChanged()
 	},
 	
-	onceAddEventListenerBoxChanged: function()
-	{
-		var me = this
-		window.addEventListener('scroll', function (e) { me.onscroll() }, false)
-		this.onscroll()
-		
-		this.onceAddEventListenerBoxChanged = this.onscroll
-	},
-	
 	onBoxChanged: function ()
 	{
 		var nodes = this.nodes,
