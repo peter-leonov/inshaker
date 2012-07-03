@@ -135,22 +135,24 @@ var Me =
 		else if (length == 1)
 			return arys[0].slice()
 		
+		var first = arys[0]
+		
+		// {} lags heavily in Safari
+		// {} does twice as fast as [] in Chrome
+		// new Array(10000), length = 0 doest twice as fast as {} in Chrome
+		// Firefox lags on every variant
 		var seen = []
-		for (var i = 0; i < length; i++)
+		for (var i = 0, il = first.length; i < il; i++)
+			seen[first[i]._oid] = 1
+		
+		for (var i = 1; i < length; i++)
 		{
 			var items = arys[i]
 			for (var j = 0, jl = items.length; j < jl; j++)
-			{
-				var id = items[j]._oid
-				var times = seen[id]
-				if (times)
-					seen[id] = times + 1
-				else
-					seen[id] = 1
-			}
+				seen[items[j]._oid]++
 		}
 		
-		var first = arys[0], res = []
+		var res = []
 		for (var i = 0, il = first.length; i < il; i++)
 		{
 			var item = first[i]
