@@ -18,6 +18,19 @@ Me.prototype =
 		this.onBoxChanged()
 	},
 	
+	toggleEvent: function (isOn)
+	{
+		if (isOn == this.isOn)
+			return
+		
+		if (isOn)
+			window.addEventListener('scroll', this.onscrollListener, false)
+		else
+			window.removeEventListener('scroll', this.onscrollListener, false)			
+		
+		this.isOn = isOn
+	},
+	
 	onBoxChanged: function ()
 	{
 		var nodes = this.nodes,
