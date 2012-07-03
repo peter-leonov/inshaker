@@ -12,6 +12,9 @@ Me.prototype =
 		
 		var me = this
 		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+		
+		this.onscrollListener = function (e) { me.onscroll() }
+		
 		this.onBoxChanged()
 	},
 	
