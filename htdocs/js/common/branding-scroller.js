@@ -9,12 +9,8 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.fixedStartY = nodes.holder.offsetTop
-		this.fixedEndY = nodes.page.scrollHeight
 		
-		if (nodes.holder.offsetHeight >= this.fixedEndY - this.fixedStartY)
-			return
-		
-		this.onceAddEventListenerBoxChanged()
+		this.onBoxChanged()
 		
 		var me = this
 		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
