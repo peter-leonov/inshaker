@@ -39,11 +39,15 @@ Me.prototype =
 		if (fixedEndY == this.fixedEndY)
 			return
 		
-		if (nodes.holder.offsetHeight >= fixedEndY - this.fixedStartY)
+		var isLong = nodes.holder.offsetHeight >= fixedEndY - this.fixedStartY
+		
+		this.toggleEvent(!isLong)
+		
+		if (isLong)
 			return
 		
 		this.fixedEndY = fixedEndY
-		this.onceAddEventListenerBoxChanged()
+		this.onscroll()
 	},
 	
 	onscroll: function ()
