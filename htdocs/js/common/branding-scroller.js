@@ -10,10 +10,9 @@ Me.prototype =
 		
 		this.fixedStartY = nodes.holder.offsetTop
 		
-		this.onBoxChanged()
-		
 		var me = this
 		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+		this.onBoxChanged()
 	},
 	
 	onceAddEventListenerBoxChanged: function()
