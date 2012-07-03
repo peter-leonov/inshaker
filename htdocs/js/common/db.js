@@ -172,22 +172,29 @@ var Me =
 		else if (length == 1)
 			return arys[0].slice()
 		
-		var res = [], seen = []
-		for (var i = 0; i < length; i++)
+		var first = arys[0]
+		
+		var res = first.slice()
+		
+		var seen = []
+		for (var i = 0, il = first.length; i < il; i++)
+			seen[first[i]._oid] = true
+		
+		for (var i = 1; i < length; i++)
 		{
 			var items = arys[i]
 			for (var j = 0, jl = items.length; j < jl; j++)
 			{
-				var item = items[j],
-					id = item._oid
+				var item = items[j]
+				
+				var id = item._oid
 				if (seen[id])
 					continue
 				seen[id] = true
+				
 				res.push(item)
 			}
 		}
-		
-		// res.sort(function (a, b) { return a._oid - b._oid })
 		
 		return res
 	}
