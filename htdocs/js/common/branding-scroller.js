@@ -18,17 +18,17 @@ Me.prototype =
 		this.onBoxChanged()
 	},
 	
-	toggleEvent: function (isOn)
+	toggleEvent: function (onscrollBint)
 	{
-		if (isOn == this.isOn)
+		if (onscrollBint == this.onscrollBint)
 			return
 		
-		if (isOn)
+		if (onscrollBint)
 			window.addEventListener('scroll', this.onscrollListener, false)
 		else
 			window.removeEventListener('scroll', this.onscrollListener, false)			
 		
-		this.isOn = isOn
+		this.onscrollBint = onscrollBint
 	},
 	
 	onBoxChanged: function ()
