@@ -126,9 +126,6 @@ Me.prototype =
 			controller.onTabSelected(name)
 		}
 		nodes.tabsRoot.addEventListener('click', tabClicked, false)
-		
-		var eventBoxChanged = this.eventBoxChanged = document.createEvent('Event')
-		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
 	},
 	
 	turnToState: function (state)
@@ -303,7 +300,9 @@ Me.prototype =
 		
 		this.renderedPages[num] = true
 		
-		nodes.resultsDisplay.dispatchEvent(this.eventBoxChanged)
+		var eventBoxChanged = document.createEvent('Event')
+		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
+		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
 	}
 }
 
