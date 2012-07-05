@@ -11,11 +11,6 @@
 .autocomplete { position: absolute; opacity: 0.95; border-style: solid; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 
-#panels.just-suggested #search_tip_name { display: none; }
-
-#panels.byName #search_by_name,
-#panels.byName #search_tip_name { display: block; }
-
 /*Block content*/
 /*pager list*/
 .b-content { margin-top: 20px; }
@@ -57,8 +52,6 @@
 
 
 .b-search{position:absolute;margin-right:2em;width:14em;left: 10px;}
-#all_list{ position: absolute; z-index: 25; top: 58px; right: 20px; height: 19px; padding: 0 0 0 20px; font-size: 1.1em;}
-#all_list i { position: absolute; left: -1px; top: -5px; width: 25px; height: 25px; background-position: -150px -125px; }
 .b-search dl{font-size:120%;line-height:1.5;}
 .b-search dt{font-weight:bold;padding:16px 0 0 8px;}
 .b-search dd{line-height:1.4;margin:1px 0;height:17px;}
@@ -77,7 +70,7 @@
 #results_display .surface { padding: 0px; }
 html.opera-10 #results_display .surface,
 html.opera-11-0 #results_display .surface { width: 30000px; }
-#search_tips { height: 14px; padding-bottom: 6px; }
+#search_tips { height: 14px }
 #search_tips a:hover {text-decoration:none;}
 #search_tips a {border-bottom:1px dashed;}
 
