@@ -6,11 +6,7 @@ Me.prototype =
 {
 	onFiltersChanged: function (filters)
 	{
-		this.model.setFilters(filters)
-	},
-	
-	onLetterFilter: function(letter) {
-		this.model.onLetterFilter(letter);
+		this.model.applyFilters()
 	},
 	
 	onNameFilter: function(name){
@@ -19,10 +15,6 @@ Me.prototype =
 	
 	onPageChanged: function(num){
 		this.model.onPageChanged(num);
-	},
-	
-	onTabSelected: function(name){
-		this.model.setState(name);
 	}
 }
 

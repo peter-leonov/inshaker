@@ -1,11 +1,7 @@
 ;(function(){
 
-function remClass(elem, className) { if(elem) elem.classList.remove(className) }
-
 function Me (nodes)
 {
-	this.riJustInited  = true;
-	this.filterElems   = { letter: null }
 	this.perPage       = 40;
 	this.np            = -1;
 	this.renderedPages = {}
@@ -18,44 +14,12 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		this.dropTargets =
-		[
-			this.nodes.cartEmpty,
-			this.nodes.cartFull
-		]
-		
-		this.fixHashChange()
 		this.bindEvents()
-	},
-	
-	fixHashChange: function ()
-	{
-		// fix for cocktails initialization issue
-		this.currentHash = window.location.hash
-		var me = this
-		function checkHash ()
-		{
-			if (me.currentHash != window.location.hash)
-				window.location.reload(true)
-		}
-		window.setInterval(checkHash, 250)
 	},
 	
 	checkRequest: function ()
 	{
-		var filters = this.filtersFromRequest()
-		this.controller.onFiltersChanged(filters)
-	},
-	
-	filtersFromRequest: function ()
-	{
-		var m = window.location.href.match(/#(.+)$/)
-		if (!m)
-			return
-		
-		var filters = UrlEncode.parse(m[1])
-		filters.page = +filters.page || 0
-		return filters
+		this.controller.onFiltersChanged({})
 	},
 	
 	saveFilters: function (filters) {
@@ -73,17 +37,13 @@ Me.prototype =
 		{
 			var v = filters[k]
 			
-			if (!v || v == '*')
-				continue
-			
-			if (k == 'state' && v == 'byName')
+			if (!v)
 				continue
 			
 			hash[k] = v
 		}
 		
 		window.location.hash = UrlEncode.stringify(hash) || 'i'
-		this.currentHash = window.location.hash
 	},
 	
 	bindEvents: function ()
@@ -111,7 +71,6 @@ Me.prototype =
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
 			self.controller.onNameFilter(this.innerHTML);
-			nodes.panels.classList.add('just-suggested')
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
@@ -126,8 +85,6 @@ Me.prototype =
 	},
 	
 	onModelChanged: function(resultSet, filters) { // model
-		this.currentFilters = filters;
-		
 		this.renderAllPages(resultSet, filters.page);
 	},
 	
@@ -183,8 +140,7 @@ Me.prototype =
 		var cocktails = this.resultSet,
 			node, cocktail, cache = this.nodeCache,
 			parent = nodes.pages[num],
-			end = (num + 1) * this.perPage,
-			dropTargets = this.dropTargets
+			end = (num + 1) * this.perPage
 		
 		function bindDragData (node, data)
 		{
