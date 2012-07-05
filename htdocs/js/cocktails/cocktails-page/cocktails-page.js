@@ -57,24 +57,10 @@ function onready ()
 		
 		bigNext: $(".pager .next"),
 		
-		alphabetRu: $('#alphabetical-ru'),
-		lettersAll: $('#letters_all'),
-		
 		searchByName: $('#search_by_name'),
 		searchByNameInput: $('#search_by_name input'),
-		searchByLetter: $('#search_by_letter'),
 		
 		mainArea: $('#b_content'),
-		
-		tabsRoot: $('#search_tabs'),
-		tabs:
-		{
-			byName: $('.by-name'),
-			byLetter: $('.by-letter'),
-			top20: $('.top-20')
-		},
-		
-		byLetterTab: $('#search_tabs .by-letter'),
 		
 		searchExampleName: $('#search_example_name'),
 		searchExampleNameEng: $('#search_example_name_eng'),

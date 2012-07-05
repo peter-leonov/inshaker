@@ -116,39 +116,6 @@ Me.prototype =
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
-		
-		var controller = this.controller
-		function tabClicked (e)
-		{
-			var name = e.target.getAttribute('data-tab-name')
-			if (!name)
-				return
-			controller.onTabSelected(name)
-		}
-		nodes.tabsRoot.addEventListener('click', tabClicked, false)
-	},
-	
-	turnToState: function (state)
-	{
-		var nodes = this.nodes
-		
-		var last = nodes.tabs[this.lastState]
-		if (last)
-			last.classList.remove('selected')
-		
-		this.lastState = state
-		
-		var present = nodes.tabs[state]
-		if (present)
-			present.classList.add('selected')
-		
-		nodes.panels.className = state
-		
-		if (state == 'byName')
-		{
-			nodes.searchByNameInput.value = ''
-			nodes.searchByNameInput.focus()
-		}
 	},
 	
 	renderRandomCocktail: function (cocktail)
@@ -162,36 +129,6 @@ Me.prototype =
 		this.currentFilters = filters;
 		
 		this.renderAllPages(resultSet, filters.page);
-		this.renderFilters(this.currentFilters);
-	},
-	
-	renderFilters: function(filters){
-		var nodes = this.nodes
-		
-		remClass(this.filterElems.letter || nodes.lettersAll, 'selected-button');
-		if (filters.letter == '*')
-		{
-			this.filterElems.letter = nodes.lettersAll
-		}
-		else
-		{
-			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
-			
-			for(var i = 0; i < letterElems.length; i++) {
-				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
-					this.filterElems.letter = letterElems[i];
-					break;
-				}
-			}   
-		}
-		this.filterElems.letter.classList.add('selected-button');
-		
-		if (filters.name)
-		{
-			var input = nodes.searchByNameInput
-			if (input.value != filters.name)
-				input.value = filters.name
-		}
 	},
 	
 	renderAllPages: function(resultSet, pageNum){
@@ -237,30 +174,6 @@ Me.prototype =
 		for (var i = num - delta; i <= num + delta; i++)
 			if(i >= 0 && i < this.np && !this.renderedPages[i])
 				this.renderPage(i)
-	},
-	
-	renderLetters: function (set){
-		var nodes = this.nodes
-		
-		var controller = this.controller
-		function click (e)
-		{
-			var letter = e.target.dataLetter
-			controller.onLetterFilter(letter);
-		}
-		
-		nodes.lettersAll.dataLetter = '*'
-		nodes.lettersAll.addEventListener('click', click, false)
-		
-		var parent = nodes.alphabetRu
-		
-		for(var i = 0; i < set.length; i++){
-			var a = document.createElement("a");
-			a.innerHTML = set[i];
-			a.dataLetter = set[i]
-			parent.appendChild(a);
-			a.addEventListener('click', click, false)
-		}
 	},
 	
 	renderPage: function (num)

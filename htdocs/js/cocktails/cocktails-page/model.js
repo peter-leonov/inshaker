@@ -53,8 +53,6 @@ Me.prototype =
 {
 	setFilters: function (filters)
 	{
-		this.view.renderLetters(Cocktail.getFirstLetters())
-		
 		this.completeFilters(filters || {})
 		var state = this.filters.state
 		this.filters.state = null
@@ -87,7 +85,6 @@ Me.prototype =
 		if (state == 'byName')
 			this.view.renderRandomCocktail(this.getRandomCocktail())
 		
-		this.view.turnToState(state)
 		this.completeFilters(filters || {})
 		this.filters.state = state
 		this.applyFilters()
