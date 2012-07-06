@@ -9,6 +9,11 @@ Me.prototype =
 		this.model.setState(hash)
 	},
 	
+	addMoreCocktails: function ()
+	{
+		this.model.addMoreCocktails()
+	},
+	
 	onFiltersChanged: function (filters)
 	{
 		this.model.applyFilters()

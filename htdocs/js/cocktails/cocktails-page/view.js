@@ -20,6 +20,9 @@ Me.prototype =
 		
 		//this.checkRequest()
 		
+		var controller = this.controller
+		nodes.bigNext.addEventListener('click', function (e) { controller.addMoreCocktails() }, false)
+		
 		var lh = this.lh = new LocationHash().bind()
 		var me = this
 		lh.addEventListener('change', function (e) { me.hashUpdated() }, false)
@@ -68,6 +71,7 @@ Me.prototype =
 		var nodes = this.nodes
 		
 		var num = 1
+		/*
 		nodes.bigNext.addEventListener('click', function(e)
 		{
 			num++
@@ -78,7 +82,7 @@ Me.prototype =
 			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
 			else nodes.bigNext.classList.remove('disabled');
 		}, false)		
-		
+		*/
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);

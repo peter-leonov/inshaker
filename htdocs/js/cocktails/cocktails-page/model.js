@@ -96,14 +96,16 @@ Me.prototype =
 	{
 		var res = this.cocktails = this.getCocktailsByFilters(state)
 		
-		this.count = res.count
+		this.countCocktails = res.length
 		this.showedCocktails = 0
+		this.addMoreCocktails()
+	},
+	
+	addMoreCocktails: function ()
+	{
+		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
 		
-		var cocktails = res.slice(this.showedCocktails, this.perPage)
-		
-		this.view.renderCocktails(cocktails, this.count - this.showedCocktails)
-		
-		this.showedCocktails += this.perPage
+		this.view.renderCocktails(cocktails, this.countCocktails - this.showedCocktails)
 	}
 }
 
