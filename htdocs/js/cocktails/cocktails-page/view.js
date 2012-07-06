@@ -8,6 +8,8 @@ function Me (nodes)
 	this.nodeCache     = []
 }
 
+eval(NodesShortcut.include())
+
 Me.prototype =
 {
 	bind: function (nodes)
@@ -15,6 +17,19 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.bindEvents()
+		
+		//this.checkRequest()
+		
+		var lh = this.lh = new LocationHash().bind()
+		var me = this
+		lh.addEventListener('change', function (e) { me.hashUpdated() }, false)
+		me.hashUpdated()
+	},
+	
+	hashUpdated: function ()
+	{
+		var hash = UrlEncode.parse(this.lh.get())
+		this.controller.hashUpdated(hash)
 	},
 	
 	checkRequest: function ()
@@ -168,6 +183,36 @@ Me.prototype =
 		}
 		
 		this.renderedPages[num] = true
+		
+		var eventBoxChanged = document.createEvent('Event')
+		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
+		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
+	},
+	
+	renderCocktails: function (cocktails, left)
+	{
+		var nodes = this.nodes,
+			container = nodes.cocktails
+		
+		function bindDragData (node, data)
+		{
+			function onDragStart (e)
+			{
+				e.dataTransfer.setData('text', data)
+			}
+			node.addEventListener('dragstart', onDragStart, false)
+		}
+		
+		for (var i = 0, il = cocktails.length; i < il; i++)
+		{
+			var item = Nc('li', 'item'),
+				cocktail = cocktails[i].getPreviewNodeCropped()
+			
+			bindDragData(cocktail, cocktail.name)
+			item.appendChild(cocktail)
+			
+			container.appendChild(item)
+		}
 		
 		var eventBoxChanged = document.createEvent('Event')
 		eventBoxChanged.initEvent('inshaker-box-changed', true, true)

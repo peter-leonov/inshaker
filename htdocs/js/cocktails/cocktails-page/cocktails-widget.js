@@ -23,8 +23,6 @@ Me.prototype =
 	{
 		this.view.bind(nodes)
 		
-		this.view.checkRequest()
-		
 		return this
 	}
 }

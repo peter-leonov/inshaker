@@ -17,6 +17,7 @@ function onready ()
 		bodyWrapper: $('#common-main-wrapper .column-main'),
 		resultsDisplay: $('#results_display'),
 		resultsRoot: $('#surface'),
+		cocktails: $('#cocktails'),
 		
 		bigNext: $(".pager .next"),
 		

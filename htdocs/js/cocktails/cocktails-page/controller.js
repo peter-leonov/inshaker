@@ -4,6 +4,11 @@ function Me () {}
 
 Me.prototype =
 {
+	hashUpdated: function (hash)
+	{
+		this.model.setState(hash)
+	},
+	
 	onFiltersChanged: function (filters)
 	{
 		this.model.applyFilters()

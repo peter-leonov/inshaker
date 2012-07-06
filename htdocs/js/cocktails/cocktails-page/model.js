@@ -2,7 +2,10 @@
 
 Cocktail.findAndBindPrepares()
 
-function Me () {}
+function Me ()
+{
+	this.perPage = 40
+}
 
 Me.prototype =
 {
@@ -12,7 +15,7 @@ Me.prototype =
 	},
 	
 	onPageChanged: function(num){
-		this.filters.page = num;
+		this.page++;
 		this.view.saveFilters(this.filters);
 	},
 	
@@ -22,7 +25,7 @@ Me.prototype =
 			return
 		
 		this.filters.name = name
-		this.filters.page = 0
+		this.page = 0
 		this.applyFilters()
 	},
 	
@@ -77,14 +80,30 @@ Me.prototype =
 		this.filters =
 		{
 			name: this.filters.name || '',
-			page: this.filters.page || 0
+			page: 0
 		}
+		
+		this.page = this.page || 0
 		
 		var filters = this.filters
 			
 		var res = this.getCocktailsByFilters(filters)
 		this.view.onModelChanged(res, filters)
 		this.view.renderRandomCocktail(this.getRandomCocktail())
+	},
+	
+	setState: function (state)
+	{
+		var res = this.cocktails = this.getCocktailsByFilters(state)
+		
+		this.count = res.count
+		this.showedCocktails = 0
+		
+		var cocktails = res.slice(this.showedCocktails, this.perPage)
+		
+		this.view.renderCocktails(cocktails, this.count - this.showedCocktails)
+		
+		this.showedCocktails += this.perPage
 	}
 }
 
