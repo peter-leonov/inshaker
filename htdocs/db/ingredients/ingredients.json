@@ -33,6 +33,7 @@
 {"group":"Штуковины","name":"Ароматические свечи","path":"aromaticheskie-svechi","tags":["Любой ингредиент"],"unit":"шт","volumes":[[1.0,250.0,true]]},
 {"group":"Травы и цветы","name":"Базилик зеленый","path":"bazilik-zelenyiy","tags":["Любой ингредиент"],"unit":"г","volumes":[[60.0,50.0,true]]},
 {"group":"Травы и цветы","name":"Базилик красный","path":"bazilik-krasnyiy","tags":["Любой ингредиент"],"unit":"г","volumes":[[60.0,53.0,true]]},
+{"group":"Молочные продукты. Яйца","name":"Базиликовый сорбет","path":"bazilikovyiy-sorbet","tags":["Любой ингредиент","Сорбет"],"unit":"г","volumes":[[175.0,80.0,true]]},
 {"group":"Соусы и масло","name":"Бальзамический крем","path":"balzamicheskiy-krem","tags":["Любой ингредиент"],"unit":"л","volumes":[[0.5,328.0,true]]},
 {"group":"Фрукты","name":"Банан","path":"banan","tags":["Любой ингредиент","Фрукты"],"unit":"г","volumes":[[1000.0,60.0,true]]},
 {"brand":"De Kuyper Creme de Bananes","group":"Ликеры и настойки","mark":"De Kuyper","name":"Банановый ликер желтый","names":["Creme de Bananes","De Kuyper Creme de Bananes","Де кайпер крем де бананас","Ди кайпер крем де бананас"],"path":"bananovyiy-liker-zheltyiy","tags":["De Kuyper","Банановый ликер","Ликер","Любой ингредиент","Фруктовый ликер"],"unit":"л","volumes":[[0.7,1021.0,true]]},
