@@ -498,6 +498,7 @@ http://www.inshaker.ru/cocktail/cosmopolitan_jelly/
 http://www.inshaker.ru/cocktail/coffee_cocktail/
 http://www.inshaker.ru/cocktail/cranberryni/
 http://www.inshaker.ru/cocktail/red_moscow/
+http://www.inshaker.ru/cocktail/red_square/
 http://www.inshaker.ru/cocktail/red_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/red-skinned_macho/
 http://www.inshaker.ru/cocktail/red/
@@ -758,6 +759,7 @@ http://www.inshaker.ru/cocktail/pacha_monte-carlo/
 http://www.inshaker.ru/cocktail/pacha_moscow/
 http://www.inshaker.ru/cocktail/pacha_new-york/
 http://www.inshaker.ru/cocktail/pacha_san-paolo/
+http://www.inshaker.ru/cocktail/pearsberry/
 http://www.inshaker.ru/cocktail/pedro_manhatten/
 http://www.inshaker.ru/cocktail/pedro_punsh/
 http://www.inshaker.ru/cocktail/pelican/
@@ -959,6 +961,7 @@ http://www.inshaker.ru/cocktail/malted_gold/
 http://www.inshaker.ru/cocktail/spice_girls/
 http://www.inshaker.ru/cocktail/spice_and_ice/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
+http://www.inshaker.ru/cocktail/spring_grass_tini/
 http://www.inshaker.ru/cocktail/style_martini/
 http://www.inshaker.ru/cocktail/way_of_life/
 http://www.inshaker.ru/cocktail/way_of_life_2/
@@ -1027,6 +1030,7 @@ http://www.inshaker.ru/cocktail/tykvan_do/
 http://www.inshaker.ru/cocktail/sorrel_smile/
 http://www.inshaker.ru/cocktail/hurricane/
 http://www.inshaker.ru/cocktail/hurricane_shot/
+http://www.inshaker.ru/cocktail/ural_s_lemonade/
 http://www.inshaker.ru/cocktail/prairie_oyster/
 http://www.inshaker.ru/cocktail/prairie_oyster__2_/
 http://www.inshaker.ru/cocktail/oister_shooter/
