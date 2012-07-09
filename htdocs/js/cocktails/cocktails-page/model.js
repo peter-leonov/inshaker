@@ -90,6 +90,10 @@ Me.prototype =
 			
 		var res = this.getCocktailsByFilters(filters)
 		this.view.onModelChanged(res, filters)
+	},
+	
+	setRandomCocktail: function ()
+	{
 		this.view.renderRandomCocktail(this.getRandomCocktail())
 	},
 	
@@ -119,6 +123,11 @@ Me.prototype =
 		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
 		
 		this.view.renderNewCocktails(cocktails, this.countCocktails - this.showedCocktails)
+	},
+	
+	setCocktailsPerPage: function (count)
+	{
+		this.cocktailsPerPage = count
 	}
 }
 

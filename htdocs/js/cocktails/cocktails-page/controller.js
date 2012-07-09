@@ -20,7 +20,7 @@ Me.prototype =
 	},
 	
 	onNameFilter: function(name){
-		this.model.onNameFilter(name);
+		this.model.setState(name);
 	},
 	
 	onPageChanged: function(num){

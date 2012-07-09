@@ -24,6 +24,17 @@ Me.prototype =
 		this.view.bind(nodes)
 		
 		return this
+	},
+	
+	guessState: function ()
+	{
+		this.model.setRandomCocktail()
+	},
+	
+	setCocktailsPerPage: function (count)
+	{
+		this.view.setCocktailsPerPage(count)
+		this.model.setCocktailsPerPage(count)
 	}
 }
 

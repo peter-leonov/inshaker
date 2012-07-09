@@ -22,7 +22,7 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var controller = this.controller
-		nodes.bigNext.addEventListener('click', function (e) { controller.addMoreCocktails() }, false)
+		nodes.more.addEventListener('click', function (e) { controller.addMoreCocktails() }, false)
 		
 		var lh = this.lh = new LocationHash().bind()
 		var view = this
@@ -33,6 +33,14 @@ Me.prototype =
 		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
 		searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
 		
+		var nameSearchHandler = function (e) {
+			searchByNameInput.value = this.innerHTML;
+			view.controller.onNameFilter(this.innerHTML);
+		}
+		
+		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
+		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
+
 		this.bindEvents()
 	},
 	
@@ -101,14 +109,6 @@ Me.prototype =
 			else nodes.bigNext.classList.remove('disabled');
 		}, false)		
 		*/
-		
-		var nameSearchHandler = function (e) {
-			searchByNameInput.value = this.innerHTML;
-			self.controller.onNameFilter(this.innerHTML);
-		}
-		
-		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
-		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
 	},
 	
 	renderRandomCocktail: function (cocktail)
@@ -236,13 +236,48 @@ Me.prototype =
 		var eventBoxChanged = document.createEvent('Event')
 		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
 		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
+		
+		this.renderMoreButton(left)
 	},
 	
 	renderNewCocktails: function (cocktails, left)
 	{
 		this.nodes.cocktails.empty()
 		this.renderMoreCocktails(cocktails, left)
+	},
+	
+	setCocktailsPerPage: function (count)
+	{
+		this.cocktailsPerPage = count
+	},
+
+	renderMoreButton: function (count)
+	{
+		if (count <= 0)
+		{
+			this.hideMoreButton()
+			return
+		}
+		
+		this.showMoreButton()
+		this.renameMoreButton(Math.min(count, this.cocktailsPerPage))
+	},
+	
+	showMoreButton: function ()
+	{
+		this.nodes.more.show()
+	},
+	
+	hideMoreButton: function ()
+	{
+		this.nodes.more.hide()
+	},
+	
+	renameMoreButton: function (count)
+	{
+		this.nodes.more.innerText = 'еще ' + count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')
 	}
+
 }
 
 Papa.View = Me

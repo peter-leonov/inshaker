@@ -19,7 +19,7 @@ function onready ()
 		resultsRoot: $('#surface'),
 		cocktails: $('#cocktails'),
 		
-		bigNext: $(".pager .next"),
+		more: $(".pager .next"),
 		
 		searchByName: $('#search_by_name'),
 		searchByNameInput: $('#search_by_name input'),
@@ -40,6 +40,8 @@ function onready ()
 	
 	var widget = new CocktailsPage(nodes)
 	widget.bind(nodes)
+	widget.setCocktailsPerPage(40)
+	widget.guessState()
 	
 	Calculator.init()
 	
