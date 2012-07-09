@@ -4,7 +4,6 @@ Cocktail.findAndBindPrepares()
 
 function Me ()
 {
-	this.perPage = 40
 	this.state = ''
 }
 
@@ -13,21 +12,6 @@ Me.prototype =
 	getRandomCocktail: function ()
 	{
 		return Cocktail.getAll().random(1)[0]
-	},
-	
-	onPageChanged: function(num){
-		this.page++;
-		this.view.saveFilters(this.filters);
-	},
-	
-	onNameFilter: function (name)
-	{
-		if (name == this.filters.name)
-			return
-		
-		this.filters.name = name
-		this.page = 0
-		this.applyFilters()
 	},
 	
 	getBySimilarNameCache: {},
@@ -63,7 +47,6 @@ Me.prototype =
 		return (this.getBySimilarNameCache[name] = res)
 	},
 	
-	
 	getCocktailsByState: function (state)
 	{
 		if (state)
@@ -72,24 +55,6 @@ Me.prototype =
 		var res = Cocktail.getAll()
 		res.randomize()
 		return res
-	},
-	
-	applyFilters: function()
-	{
-		this.filters = this.filters || {}
-
-		this.filters =
-		{
-			name: this.filters.name || '',
-			page: 0
-		}
-		
-		this.page = this.page || 0
-		
-		var filters = this.filters
-			
-		var res = this.getCocktailsByFilters(filters)
-		this.view.onModelChanged(res, filters)
 	},
 	
 	setRandomCocktail: function ()
@@ -113,14 +78,14 @@ Me.prototype =
 	
 	addMoreCocktails: function ()
 	{
-		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
+		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.cocktailsPerPage)
 		
 		this.view.renderMoreCocktails(cocktails, this.countCocktails - this.showedCocktails)
 	},
 	
 	addNewCocktails: function ()
 	{
-		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
+		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.cocktailsPerPage)
 		
 		this.view.renderNewCocktails(cocktails, this.countCocktails - this.showedCocktails)
 	},

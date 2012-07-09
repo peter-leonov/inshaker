@@ -14,11 +14,6 @@ Me.prototype =
 		this.model.addMoreCocktails()
 	},
 	
-	onFiltersChanged: function (filters)
-	{
-		this.model.applyFilters()
-	},
-	
 	onNameFilter: function(name){
 		this.model.setState(name);
 	},
