@@ -34,8 +34,10 @@ Me.prototype =
 		searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
 		
 		var nameSearchHandler = function (e) {
-			searchByNameInput.value = this.innerHTML;
-			view.controller.onNameFilter(this.innerHTML);
+			var text = this.innerText
+			searchByNameInput.value = text
+			view.controller.onNameFilter(text)
+			view.changeHashName(text)
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
