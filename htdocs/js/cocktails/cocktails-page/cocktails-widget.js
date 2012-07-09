@@ -29,6 +29,7 @@ Me.prototype =
 	guessState: function ()
 	{
 		this.model.setRandomCocktail()
+		this.view.hashUpdated()
 	},
 	
 	setCocktailsPerPage: function (count)

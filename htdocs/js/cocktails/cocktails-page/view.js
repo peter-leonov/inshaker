@@ -27,23 +27,19 @@ Me.prototype =
 		var lh = this.lh = new LocationHash().bind()
 		var view = this
 		lh.addEventListener('change', function (e) { view.hashUpdated() }, false)
-		view.hashUpdated()
 		
 		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
-		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
-		searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
+		nodes.searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
 		
 		var nameSearchHandler = function (e) {
 			var text = this.innerText
-			searchByNameInput.value = text
+			nodes.searchByNameInput.value = text
 			view.controller.onNameFilter(text)
 			view.changeHashName(text)
 		}
 		
 		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
 		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
-
-		this.bindEvents()
 	},
 	
 	hashUpdated: function ()
@@ -51,7 +47,8 @@ Me.prototype =
 		var hash = UrlEncodeLight.parse(this.lh.get())
 		this.controller.hashUpdated(hash.name)
 		
-		this.nodes.searchByNameInput.value = hash.name
+		if (hash.name)
+			this.nodes.searchByNameInput.value = hash.name
 	},
 	
 	changeHashName: function (name)
