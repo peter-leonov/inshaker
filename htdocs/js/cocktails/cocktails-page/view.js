@@ -10,29 +10,47 @@ function Me (nodes)
 
 eval(NodesShortcut.include())
 
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
+
 Me.prototype =
 {
 	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
-		this.bindEvents()
-		
-		//this.checkRequest()
-		
 		var controller = this.controller
 		nodes.bigNext.addEventListener('click', function (e) { controller.addMoreCocktails() }, false)
 		
 		var lh = this.lh = new LocationHash().bind()
-		var me = this
-		lh.addEventListener('change', function (e) { me.hashUpdated() }, false)
-		me.hashUpdated()
+		var view = this
+		lh.addEventListener('change', function (e) { view.hashUpdated() }, false)
+		view.hashUpdated()
+		
+		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
+		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
+		searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
+		
+		this.bindEvents()
 	},
 	
 	hashUpdated: function ()
 	{
-		var hash = UrlEncode.parse(this.lh.get())
-		this.controller.hashUpdated(hash)
+		var hash = UrlEncodeLight.parse(this.lh.get())
+		this.controller.hashUpdated(hash.name)
+	},
+	
+	changeHashName: function (name)
+	{
+		var nameHash = 
+		{
+			name: name
+		}
+		this.lh.set(UrlEncodeLight.stringify(nameHash))
+		
+		this.controller.hashUpdated(name)
 	},
 	
 	checkRequest: function ()
@@ -83,9 +101,6 @@ Me.prototype =
 			else nodes.bigNext.classList.remove('disabled');
 		}, false)		
 		*/
-		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
-		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
-		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
 		
 		var nameSearchHandler = function (e) {
 			searchByNameInput.value = this.innerHTML;
@@ -193,7 +208,7 @@ Me.prototype =
 		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
 	},
 	
-	renderCocktails: function (cocktails, left)
+	renderMoreCocktails: function (cocktails, left)
 	{
 		var nodes = this.nodes,
 			container = nodes.cocktails
@@ -221,6 +236,12 @@ Me.prototype =
 		var eventBoxChanged = document.createEvent('Event')
 		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
 		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
+	},
+	
+	renderNewCocktails: function (cocktails, left)
+	{
+		this.nodes.cocktails.empty()
+		this.renderMoreCocktails(cocktails, left)
 	}
 }
 

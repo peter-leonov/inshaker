@@ -5,6 +5,7 @@ Cocktail.findAndBindPrepares()
 function Me ()
 {
 	this.perPage = 40
+	this.state = ''
 }
 
 Me.prototype =
@@ -63,10 +64,10 @@ Me.prototype =
 	},
 	
 	
-	getCocktailsByFilters: function (filters)
+	getCocktailsByState: function (state)
 	{
-		if (filters.name)
-			return this.getBySimilarName(filters.name)
+		if (state)
+			return this.getBySimilarName(state)
 		
 		var res = Cocktail.getAll()
 		res.randomize()
@@ -94,18 +95,30 @@ Me.prototype =
 	
 	setState: function (state)
 	{
-		var res = this.cocktails = this.getCocktailsByFilters(state)
+		if (this.state == state)
+			return
+		
+		this.state = state
+		
+		var res = this.cocktails = this.getCocktailsByState(state)
 		
 		this.countCocktails = res.length
 		this.showedCocktails = 0
-		this.addMoreCocktails()
+		this.addNewCocktails()
 	},
 	
 	addMoreCocktails: function ()
 	{
 		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
 		
-		this.view.renderCocktails(cocktails, this.countCocktails - this.showedCocktails)
+		this.view.renderMoreCocktails(cocktails, this.countCocktails - this.showedCocktails)
+	},
+	
+	addNewCocktails: function ()
+	{
+		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.perPage)
+		
+		this.view.renderNewCocktails(cocktails, this.countCocktails - this.showedCocktails)
 	}
 }
 
