@@ -50,15 +50,17 @@ Me.prototype =
 	{
 		var hash = UrlEncodeLight.parse(this.lh.get())
 		this.controller.hashUpdated(hash.name)
+		
+		this.nodes.searchByNameInput.value = hash.name
 	},
 	
 	changeHashName: function (name)
 	{
-		var nameHash = 
-		{
-			name: name
-		}
-		this.lh.set(UrlEncodeLight.stringify(nameHash))
+		var nameHash = {}
+		if (name)
+			nameHash.name = name
+		
+		this.lh.set(UrlEncodeLight.stringify(nameHash) || 'i')
 		
 		this.controller.hashUpdated(name)
 	},
