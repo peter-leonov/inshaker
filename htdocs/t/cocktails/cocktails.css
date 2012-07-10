@@ -37,7 +37,7 @@
 #results_display.empty .empty-result-by-name { display: block; }
 #results_display .viewport {width:585px;margin-left:11px; }
 #results_display .point{width:585px;}
-#results_display .surface { padding: 0px; }
+#results_display .surface { padding: 0px; min-height: 520px; }
 html.opera-10 #results_display .surface,
 html.opera-11-0 #results_display .surface { width: 30000px; }
 #search_tips { height: 14px }
