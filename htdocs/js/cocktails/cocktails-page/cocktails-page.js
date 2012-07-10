@@ -14,7 +14,6 @@ function onready ()
 	
 	var nodes =
 	{
-		resultsDisplay: $('#results_display'),
 		cocktails: $('#cocktails'),
 		
 		more: $(".pager .next"),
@@ -24,10 +23,6 @@ function onready ()
 		
 		searchExampleName: $('#search_example_name'),
 		searchExampleNameEng: $('#search_example_name_eng'),
-		
-		panels: $('#panels'),
-		
-		spotlighted: $('#spotlighted')
 	}
 	
 	var widget = new CocktailsPage(nodes)

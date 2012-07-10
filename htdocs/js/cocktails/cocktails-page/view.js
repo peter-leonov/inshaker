@@ -90,7 +90,7 @@ Me.prototype =
 		
 		var eventBoxChanged = document.createEvent('Event')
 		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
-		nodes.resultsDisplay.dispatchEvent(eventBoxChanged)
+		nodes.cocktails.dispatchEvent(eventBoxChanged)
 		
 		this.renderMoreButton(left)
 	},
