@@ -22,6 +22,7 @@ function onready ()
 		more: $(".pager .next"),
 		
 		searchByName: $('#search_by_name'),
+		searchForm: $('#search_by_name .search-form'),
 		searchByNameInput: $('#search_by_name input'),
 		
 		mainArea: $('#b_content'),

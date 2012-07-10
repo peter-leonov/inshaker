@@ -22,7 +22,7 @@ Me.prototype =
 		var view = this
 		lh.addEventListener('change', function (e) { view.hashUpdated() }, false)
 		
-		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
+		nodes.searchForm.addEventListener('submit', function(e) { e.preventDefault() }, false);
 		nodes.searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
 		
 		var nameSearchHandler = function (e) {
