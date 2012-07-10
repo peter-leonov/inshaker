@@ -759,7 +759,6 @@ http://www.inshaker.ru/cocktail/pacha_monte-carlo/
 http://www.inshaker.ru/cocktail/pacha_moscow/
 http://www.inshaker.ru/cocktail/pacha_new-york/
 http://www.inshaker.ru/cocktail/pacha_san-paolo/
-http://www.inshaker.ru/cocktail/pearsberry/
 http://www.inshaker.ru/cocktail/pedro_manhatten/
 http://www.inshaker.ru/cocktail/pedro_punsh/
 http://www.inshaker.ru/cocktail/pelican/
@@ -780,6 +779,7 @@ http://www.inshaker.ru/cocktail/pina_colada_home/
 http://www.inshaker.ru/cocktail/pink_floyd/
 http://www.inshaker.ru/cocktail/pyramid_shooter/
 http://www.inshaker.ru/cocktail/dried_apricots_pie/
+http://www.inshaker.ru/cocktail/pearsberry/
 http://www.inshaker.ru/cocktail/pisco_punch/
 http://www.inshaker.ru/cocktail/pisco_sour/
 http://www.inshaker.ru/cocktail/platinum_berry/
