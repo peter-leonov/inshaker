@@ -59,8 +59,8 @@ Me.prototype =
 	renderRandomCocktail: function (cocktail)
 	{
 		var nodes = this.nodes
-		nodes.searchExampleName.innerHTML = cocktail.name
-		nodes.searchExampleNameEng.innerHTML = cocktail.name_eng
+		nodes.searchExampleName.innerText = cocktail.name
+		nodes.searchExampleNameEng.innerText = cocktail.name_eng
 	},
 	
 	renderMoreCocktails: function (cocktails, left)
