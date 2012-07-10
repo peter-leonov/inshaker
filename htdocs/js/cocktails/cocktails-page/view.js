@@ -98,7 +98,14 @@ Me.prototype =
 	renderNewCocktails: function (cocktails, left)
 	{
 		this.nodes.cocktails.empty()
+		this.nodes.resultsDisplay.classList.remove('empty')
 		this.renderMoreCocktails(cocktails, left)
+	},
+	
+	notHaveCocktails: function ()
+	{
+		this.nodes.cocktails.empty()
+		this.nodes.resultsDisplay.classList.add('empty')
 	},
 	
 	setCocktailsPerPage: function (count)

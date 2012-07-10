@@ -73,6 +73,13 @@ Me.prototype =
 		
 		this.countCocktails = res.length
 		this.showedCocktails = 0
+		
+		if (!this.countCocktails)
+		{
+			this.view.notHaveCocktails()
+			return
+		}
+		
 		this.addNewCocktails()
 	},
 	
