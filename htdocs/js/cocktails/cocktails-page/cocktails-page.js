@@ -14,27 +14,18 @@ function onready ()
 	
 	var nodes =
 	{
-		bodyWrapper: $('#common-main-wrapper .column-main'),
 		resultsDisplay: $('#results_display'),
-		resultsRoot: $('#surface'),
 		cocktails: $('#cocktails'),
 		
 		more: $(".pager .next"),
 		
-		searchByName: $('#search_by_name'),
 		searchForm: $('#search_by_name .search-form'),
 		searchByNameInput: $('#search_by_name input'),
 		
-		mainArea: $('#b_content'),
-		
 		searchExampleName: $('#search_example_name'),
 		searchExampleNameEng: $('#search_example_name_eng'),
-		searchTipName: $('#search_tip_name'),
 		
 		panels: $('#panels'),
-		
-		cartEmpty: $('#cart_draghere'),
-		cartFull: $('#cart_contents'),
 		
 		spotlighted: $('#spotlighted')
 	}
