@@ -5,7 +5,6 @@ Cocktail.findAndBindPrepares()
 function Me ()
 {
 	this.state = ''
-	this.cache = {}
 }
 
 Me.prototype =
@@ -50,17 +49,12 @@ Me.prototype =
 	
 	getCocktailsByState: function (state)
 	{
-		state = state || ''
-		
-		if (this.cache[state])
-			return this.cache[state]
-		
 		if (state)
-			return this.cache[state] = this.getBySimilarName(state)
+			return this.getBySimilarName(state)
 		
 		var res = Cocktail.getAll()
 		res.randomize()
-		return this.cache[state] = res
+		return res
 	},
 	
 	setRandomCocktail: function ()
