@@ -12,14 +12,6 @@ Me.prototype =
 	addMoreCocktails: function ()
 	{
 		this.model.addMoreCocktails()
-	},
-	
-	onNameFilter: function(name){
-		this.model.setState(name);
-	},
-	
-	onPageChanged: function(num){
-		this.model.onPageChanged(num);
 	}
 }
 
