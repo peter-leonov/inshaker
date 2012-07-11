@@ -4,7 +4,7 @@ Cocktail.findAndBindPrepares()
 
 function Me ()
 {
-	this.state = ''
+	this.state = null
 }
 
 Me.prototype =
