@@ -5,6 +5,7 @@ Cocktail.findAndBindPrepares()
 function Me ()
 {
 	this.state = null
+	this.getBySimilarNameCache = {}
 }
 
 Me.prototype =
@@ -14,7 +15,6 @@ Me.prototype =
 		return Cocktail.getAll().random(1)[0]
 	},
 	
-	getBySimilarNameCache: {},
 	getBySimilarName: function (name)
 	{
 		if (this.getBySimilarNameCache[name])
