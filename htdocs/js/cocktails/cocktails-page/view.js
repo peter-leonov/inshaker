@@ -28,7 +28,6 @@ Me.prototype =
 		var nameSearchHandler = function (e) {
 			var text = this.innerText
 			nodes.searchByNameInput.value = text
-			view.controller.onNameFilter(text)
 			view.changeHashName(text)
 		}
 		
