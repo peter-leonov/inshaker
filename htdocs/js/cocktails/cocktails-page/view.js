@@ -38,11 +38,12 @@ Me.prototype =
 	
 	hashUpdated: function ()
 	{
-		var hash = UrlEncodeLight.parse(this.lh.get())
-		this.controller.hashUpdated(hash.name)
+		var hash = UrlEncodeLight.parse(this.lh.get()),
+			name = hash.name || ''
 		
-		if (hash.name)
-			this.nodes.searchByNameInput.value = hash.name
+		this.controller.hashUpdated(name)
+		
+		this.nodes.searchByNameInput.value = name
 	},
 	
 	changeHashName: function (name)
