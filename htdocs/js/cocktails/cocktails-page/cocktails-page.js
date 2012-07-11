@@ -15,7 +15,7 @@ function onready ()
 	var nodes =
 	{
 		resultsDisplay: $('#results_display'),
-		cocktails: $('#cocktails'),
+		cocktailsList: $('#cocktails'),
 		
 		more: $(".pager .next"),
 		

@@ -66,7 +66,7 @@ Me.prototype =
 	renderMoreCocktails: function (cocktails, left)
 	{
 		var nodes = this.nodes,
-			container = nodes.cocktails
+			container = nodes.cocktailsList
 		
 		function bindDragData (node, data)
 		{
@@ -90,21 +90,21 @@ Me.prototype =
 		
 		var eventBoxChanged = document.createEvent('Event')
 		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
-		nodes.cocktails.dispatchEvent(eventBoxChanged)
+		container.dispatchEvent(eventBoxChanged)
 		
 		this.renderMoreButton(left)
 	},
 	
 	renderNewCocktails: function (cocktails, left)
 	{
-		this.nodes.cocktails.empty()
+		this.nodes.cocktailsList.empty()
 		this.nodes.resultsDisplay.classList.remove('empty')
 		this.renderMoreCocktails(cocktails, left)
 	},
 	
 	notHaveCocktails: function ()
 	{
-		this.nodes.cocktails.empty()
+		this.nodes.cocktailsList.empty()
 		this.nodes.resultsDisplay.classList.add('empty')
 	},
 	
