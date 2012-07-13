@@ -41,7 +41,13 @@
 .b-content .top-menu .b:after { display: none; }
 .b-content .content h3 { margin-top: 0; }
 .b-content .content { padding-top: 158px; background: url(poster.jpg) center top no-repeat; }
-.b-content .view-stat { padding-top: 20px; background: none; }
+.b-content .view-stat,
+.b-content .view-team { padding-top: 20px; background: none; }
+
+.b-content .view-team .avatars-container {}
+.b-content .view-team .avatars-container .avatar-item { width: 160px; height: 160px; display: inline-block; margin: 19px 17px; }
+
+.b-content .view-team .profession { font-size: 16px; color: #ff0893; text-align: center; }
 
 .b-content .view-about { font-size: 14px; line-height: 22px; }
 .b-content .view-about .section { margin: 0 0 2em 0; }
