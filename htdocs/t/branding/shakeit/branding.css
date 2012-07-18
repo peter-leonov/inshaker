@@ -25,7 +25,7 @@ html.branding-short { background: url(bg-short.png) repeat-x 0 65px #fff; }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
 button.rounded b { color: #fff; }
-button.strong b { color: #000; }
+button.strong b { color: #fff; }
 
 
 /* footer */
