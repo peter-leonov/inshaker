@@ -93,8 +93,6 @@ function onready ()
 	var widget = new CocktailsPage(nodes)
 	widget.bind(nodes)
 	
-	Calculator.init()
-	
 	var nodes =
 	{
 		page: document.documentElement,

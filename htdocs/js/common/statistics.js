@@ -24,11 +24,6 @@ var Me =
 		this.event('cocktail-view-legend', cocktail && cocktail.name)
 	},
 	
-	cocktailAddedToCalculator: function (cocktail)
-	{
-		this.event('cocktail-added-to-calculator', cocktail && cocktail.name)
-	},
-	
 	ingredientPopupOpened: function (ingredient)
 	{
 		this.event('ingredient-popup', ingredient && ingredient.name)

@@ -47,14 +47,6 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 { color: #000; cursor: default; text-decoration: none !important; }
 
 
-/* calculator.css */
-#b-bill dt,
-#b-bill dd li button,
-#b-bill .print-call i,
-#cart_draghere i { background-repeat: no-repeat; background-image: url(common.png); }
-#b-bill dt { color: #fff; font-weight: bold; }
-#b-bill dd input { background-color: #eee; }
-
 /* cocktails.css */
 .square-list .prev,
 .square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
