@@ -318,9 +318,9 @@ Thin
 Postfix
 -------
 
-	apt-get install postfix
+	sudo apt-get install postfix
 
-И не забыть поправить в его конфиге (/etc/postfix/master.cf):
+И не забыть поправить в его конфиге (/etc/postfix/main.cf):
 
 	inet_interfaces = all
 
@@ -329,3 +329,16 @@ Postfix
 	inet_interfaces = 127.0.0.1
 
 Если нет первой строки, то просто дописать в конец конфига.
+
+Перезапускаем (увы, пока по старинке):
+
+	sudo /etc/init.d/postfix restart
+
+Тестим:
+
+	nc 127.0.0.1 25
+	#>>> 220 server ESMTP Postfix (Ubuntu)
+	
+	nc X.X.X.X 25
+	#>>>
+	
