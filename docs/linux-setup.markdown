@@ -307,8 +307,7 @@ Thin
 
 Линкуем:
 
-	cd /usr/bin/
-	sudo ln -s /opt/ruby-1.9.2/bin/thin thin
+	sudo ln -s /opt/ruby-1.9/bin/thin /usr/bin/thin
 
 Тестим:
 
