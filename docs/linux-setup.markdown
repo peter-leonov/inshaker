@@ -185,24 +185,10 @@ UpStart
 
 	dpkg --get-selections | grep upstart
 	#>>> upstart      hold
+	# или
+	#>>> upstart      install
 
-Если его нет, то ставим:
-
-	sudo apt-get install upstart
-	rebooot
-
-Если удалось перезагрузиться: то:
-
-	sudo initctl list
-	#>>> rc stop/waiting
-	#>>> openvz stop/waiting
-	#>>> ssh start/running, process 30215
-	#>>> rcS stop/waiting
-	#>>> rc-sysinit stop/waiting
-	#>>> hostname stop/waiting
-	#>>> network-interface stop/waiting
-	#>>> network-interface-security (networking) start/running
-	#>>> networking stop/waiting
+Если его нет, то ставим дестрибутив посвежей.
 
 Конфиг для энжинкса (кладем в `/etc/init/`):
 
