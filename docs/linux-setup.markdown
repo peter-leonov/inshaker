@@ -25,7 +25,7 @@ APT
 
 	apt-get remove apache2 apache2-*
 	apt-get remove samba samba-*
-	apt-get remove bind9 bind9-*
+	apt-get remove bind9
 	apt-get autoremove
 
 ставим nano:
