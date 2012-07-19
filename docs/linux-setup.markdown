@@ -89,6 +89,17 @@ SSH
 
 	ssh server
 
+/www
+----
+
+	sudo mkdir /www
+	sudo chown www:www /www
+
+Тестим:
+
+	touch /www/test
+	rm /www/test
+
 
 Софт
 ====
