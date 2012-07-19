@@ -341,4 +341,30 @@ Postfix
 	
 	nc X.X.X.X 25
 	#>>>
+
+
+Прикроемся
+==========
+
+	sudo apt-get install nmap
+
+Поищем, что видно снаружи:
+
+	ifconfig
+	eth0      blablabla 127.0.0.1
+	lo        blablabla X.X.X.X
 	
+	nmap 127.0.0.1 -p 0-65535
+	#>>> Not shown: 65533 closed ports
+	#>>> PORT      STATE SERVICE
+	#>>> 25/tcp    open  smtp
+	#>>> 80/tcp    open  http
+	#>>> 22333/tcp open  unknown
+	
+	nmap X.X.X.X -p 1-65535
+	#>>> Not shown: 65534 closed ports
+	#>>> PORT      STATE SERVICE
+	#>>> 80/tcp    open  http
+	#>>> 22333/tcp open  unknown
+
+Наружу торчат только http и ssh на нестандартном порту.
