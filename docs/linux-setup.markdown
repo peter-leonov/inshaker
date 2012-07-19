@@ -73,6 +73,23 @@ APT
 
 	ssh-keygen
 
+SSH
+---
+
+Меняем порт в /etc/ssh/sshd_config на 22333.
+
+И добавляем сервер в ~/.ssh/config
+
+	Host server
+	HostName server.project.name
+	Port 22333
+	User www
+
+Тестим:
+
+	ssh server
+
+
 Софт
 ====
 
@@ -92,8 +109,8 @@ APT
 
 И сам nginx:
 
-	curl http://nginx.org/download/nginx-1.2.1.tar.gz | tar xzf -
-	cd nginx-1.2.1
+	curl http://nginx.org/download/nginx-1.2.2.tar.gz | tar xzf -
+	cd nginx-1.2.2
 	./configure && make && sudo make install
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
