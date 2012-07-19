@@ -298,6 +298,17 @@ Thin
 	#>>> -d, --daemonize                  Run daemonized in the background
 
 
+Postfix
+-------
 
+	apt-get install postfix
 
+И не забыть поправить в его конфиге (/etc/postfix/master.cf):
 
+	inet_interfaces = all
+
+на
+
+	inet_interfaces = 127.0.0.1
+
+Если нет первой строки, то просто дописать в конец конфига.
