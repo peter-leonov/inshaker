@@ -249,7 +249,11 @@ Ruby
 	curl http://ftp.ruby-lang.org/pub/ruby/ruby-1.9-stable.tar.gz | tar xzf -
 	cd ruby-1.9.3-p194
 	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
+
+Претест:
+
 	./ruby -e 'puts RUBY_VERSION'
+	#>>> 1.9.3
 
 Линкуем:
 
@@ -268,17 +272,17 @@ Ruby
 	
 	
 	gem -v
-	#>>> 1.3.7
+	#>>> 1.8.23
 	
 	gem list --local
 	#>>> *** LOCAL GEMS ***
 	#>>> 
-	#>>> daemons (1.1.4)
-	#>>> eventmachine (0.12.10)
-	#>>> minitest (1.6.0)
-	#>>> rack (1.3.1)
-	#>>> rake (0.8.7)
-	#>>> rdoc (2.5.8)
+	#>>> bigdecimal (1.1.0)
+	#>>> io-console (0.3)
+	#>>> json (1.5.4)
+	#>>> minitest (2.5.1)
+	#>>> rake (0.9.2.2)
+	#>>> rdoc (3.9.4)
 	
 	
 	irb -v
