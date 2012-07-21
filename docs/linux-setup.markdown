@@ -261,6 +261,7 @@ Ruby
 	sudo ln -s /usr/bin/ruby1.9 /usr/bin/ruby
 	sudo ln -s /opt/ruby-1.9/bin/gem /usr/bin/gem
 	sudo ln -s /opt/ruby-1.9/bin/irb /usr/bin/irb
+	sudo ln -s /opt/ruby-1.9/bin/rake /usr/bin/rake
 
 Тестим:
 
@@ -269,6 +270,10 @@ Ruby
 	
 	ruby -e 'require "fileutils"; puts FileUtils.class'
 	#>>> Module
+	
+	
+	rake --version
+	#>>> rake, version 0.9.2.2
 	
 	
 	gem -v
