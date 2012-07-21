@@ -347,6 +347,14 @@ Postfix
 	nc X.X.X.X 25
 	#>>>
 
+Redmine
+-------
+
+	sudo gem install bundle
+	sudo ln -s /opt/ruby-1.9/bin/bundle /usr/bin/bundle
+
+	sudo apt-get install libsqlite3-dev
+	sudo bundle install --without development test postgresql mysql rmagick
 
 Прикроемся
 ==========
