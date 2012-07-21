@@ -25,7 +25,7 @@ APT
 
 	apt-get remove apache2 apache2-*
 	apt-get remove samba samba-*
-	apt-get remove bind9 bind9-*
+	apt-get remove bind9
 	apt-get autoremove
 
 ставим nano:
@@ -73,6 +73,34 @@ APT
 
 	ssh-keygen
 
+SSH
+---
+
+Меняем порт в /etc/ssh/sshd_config на 22333.
+
+И добавляем сервер в ~/.ssh/config
+
+	Host server
+	HostName server.project.name
+	Port 22333
+	User www
+
+Тестим:
+
+	ssh server
+
+/www
+----
+
+	sudo mkdir /www
+	sudo chown www:www /www
+
+Тестим:
+
+	touch /www/test
+	rm /www/test
+
+
 Софт
 ====
 
@@ -92,8 +120,8 @@ APT
 
 И сам nginx:
 
-	curl http://nginx.org/download/nginx-1.2.1.tar.gz | tar xzf -
-	cd nginx-1.2.1
+	curl http://nginx.org/download/nginx-1.2.2.tar.gz | tar xzf -
+	cd nginx-1.2.2
 	./configure && make && sudo make install
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
@@ -157,24 +185,10 @@ UpStart
 
 	dpkg --get-selections | grep upstart
 	#>>> upstart      hold
+	# или
+	#>>> upstart      install
 
-Если его нет, то ставим:
-
-	sudo apt-get install upstart
-	rebooot
-
-Если удалось перезагрузиться: то:
-
-	sudo initctl list
-	#>>> rc stop/waiting
-	#>>> openvz stop/waiting
-	#>>> ssh start/running, process 30215
-	#>>> rcS stop/waiting
-	#>>> rc-sysinit stop/waiting
-	#>>> hostname stop/waiting
-	#>>> network-interface stop/waiting
-	#>>> network-interface-security (networking) start/running
-	#>>> networking stop/waiting
+Если его нет, то ставим дестрибутив посвежей.
 
 Конфиг для энжинкса (кладем в `/etc/init/`):
 
@@ -235,7 +249,11 @@ Ruby
 	curl http://ftp.ruby-lang.org/pub/ruby/ruby-1.9-stable.tar.gz | tar xzf -
 	cd ruby-1.9.3-p194
 	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
+
+Претест:
+
 	./ruby -e 'puts RUBY_VERSION'
+	#>>> 1.9.3
 
 Линкуем:
 
@@ -243,6 +261,7 @@ Ruby
 	sudo ln -s /usr/bin/ruby1.9 /usr/bin/ruby
 	sudo ln -s /opt/ruby-1.9/bin/gem /usr/bin/gem
 	sudo ln -s /opt/ruby-1.9/bin/irb /usr/bin/irb
+	sudo ln -s /opt/ruby-1.9/bin/rake /usr/bin/rake
 
 Тестим:
 
@@ -253,18 +272,22 @@ Ruby
 	#>>> Module
 	
 	
+	rake --version
+	#>>> rake, version 0.9.2.2
+	
+	
 	gem -v
-	#>>> 1.3.7
+	#>>> 1.8.23
 	
 	gem list --local
 	#>>> *** LOCAL GEMS ***
 	#>>> 
-	#>>> daemons (1.1.4)
-	#>>> eventmachine (0.12.10)
-	#>>> minitest (1.6.0)
-	#>>> rack (1.3.1)
-	#>>> rake (0.8.7)
-	#>>> rdoc (2.5.8)
+	#>>> bigdecimal (1.1.0)
+	#>>> io-console (0.3)
+	#>>> json (1.5.4)
+	#>>> minitest (2.5.1)
+	#>>> rake (0.9.2.2)
+	#>>> rdoc (3.9.4)
 	
 	
 	irb -v
@@ -289,8 +312,7 @@ Thin
 
 Линкуем:
 
-	cd /usr/bin/
-	sudo ln -s /opt/ruby-1.9.2/bin/thin thin
+	sudo ln -s /opt/ruby-1.9/bin/thin /usr/bin/thin
 
 Тестим:
 
@@ -301,9 +323,9 @@ Thin
 Postfix
 -------
 
-	apt-get install postfix
+	sudo apt-get install postfix
 
-И не забыть поправить в его конфиге (/etc/postfix/master.cf):
+И не забыть поправить в его конфиге (/etc/postfix/main.cf):
 
 	inet_interfaces = all
 
@@ -312,3 +334,50 @@ Postfix
 	inet_interfaces = 127.0.0.1
 
 Если нет первой строки, то просто дописать в конец конфига.
+
+Перезапускаем (увы, пока по старинке):
+
+	sudo /etc/init.d/postfix restart
+
+Тестим:
+
+	nc 127.0.0.1 25
+	#>>> 220 server ESMTP Postfix (Ubuntu)
+	
+	nc X.X.X.X 25
+	#>>>
+
+Redmine
+-------
+
+	sudo gem install bundle
+	sudo ln -s /opt/ruby-1.9/bin/bundle /usr/bin/bundle
+
+	sudo apt-get install libsqlite3-dev
+	sudo bundle install --without development test postgresql mysql rmagick
+
+Прикроемся
+==========
+
+	sudo apt-get install nmap
+
+Поищем, что видно снаружи:
+
+	ifconfig
+	eth0      blablabla 127.0.0.1
+	lo        blablabla X.X.X.X
+	
+	nmap 127.0.0.1 -p 0-65535
+	#>>> Not shown: 65533 closed ports
+	#>>> PORT      STATE SERVICE
+	#>>> 25/tcp    open  smtp
+	#>>> 80/tcp    open  http
+	#>>> 22333/tcp open  unknown
+	
+	nmap X.X.X.X -p 1-65535
+	#>>> Not shown: 65534 closed ports
+	#>>> PORT      STATE SERVICE
+	#>>> 80/tcp    open  http
+	#>>> 22333/tcp open  unknown
+
+Наружу торчат только http и ssh на нестандартном порту.
