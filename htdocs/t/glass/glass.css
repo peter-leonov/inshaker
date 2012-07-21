@@ -32,7 +32,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #top .content { position: relative; width: 962px; height: 65px; margin: 0 auto; }
 #top .logo { position: absolute; left: -10px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 #top .menu { position: absolute; top: 0; right: 0; }
-#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 7px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 11px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 
 #common-footer-spacer,
 #common-footer { height: 433px; margin-top: 50px; }
