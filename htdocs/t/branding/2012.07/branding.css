@@ -89,6 +89,18 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 #b-more dt b { color: #fff; }
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
+/* bars.css */
+#sort-menu .bars-select dt,
+#sort-menu .bars-select dd ul li.selected,
+#sort-menu .bars-select dd ul li:hover { color: #40aaf1; }
+#map .point .icon,
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #ff4ea5; }
+#map .point.selected .point-name { color: #ff2929; }
+
+
 /* combinator.css */
 #output .help-line .hint { color: #ae0000; }
 
