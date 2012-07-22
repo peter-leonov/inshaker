@@ -6,12 +6,23 @@ html {overflow-y: scroll;}
 
 #mobile-bar { position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px; overflow: hidden; text-indent: -1000px; background-position: -100px 0; }
 
-.bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:20px 25px 0 0;background:no-repeat 0 0;}
-.bar-mini a { display:block; position: absolute; left: 0; top: 0; width: 290px; height: 50px; padding: 158px 0 0 15px; background-position: 0 0; line-height: 40px; color: #fff; font-size: 13px; }
-.bar-mini.new a { background-position: 0px -200px; }
-.bar-mini.new .label,
+.bar-mini { float: left; margin: 20px 25px 0 0; }
+.bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
+.bar-mini a .label,
+.bar-mini a .bar-name { position: absolute; left: 0; top: 161px; right: 0px; height: 30px; padding: 9px 15px 0px; font-size: 13px; background-color: rgba(0,0,0,0.6); }
+.bar-mini.new a .label,
+.bar-mini.new a .bar-name { background-color: rgba(255,42,146,0.7); }
+
+.bar-mini a,
+.bar-mini a .label,
+.bar-mini a .bar-name { border-radius: 10px; }
+.bar-mini a .label,
+.bar-mini a .bar-name { border-top-left-radius: 0; border-top-right-radius: 0; -moz-border-radius-topleft: 0; -moz-border-radius-topright: 0; }
+
+.bar-mini.new .label { display: none; }
 .bar-mini.new:hover .bar-name { display: none; }
 .bar-mini.new:hover .label { display: block; }
+
 
 #head h1 #switch-view a { text-decoration: none; border-bottom: 2px dashed; }
 #head h1 #switch-view a:hover { border-bottom: none; }

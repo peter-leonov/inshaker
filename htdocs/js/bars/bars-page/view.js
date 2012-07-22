@@ -231,9 +231,9 @@ Me.prototype =
 	{
 		var main = document.createElement('li')
 		main.className = 'bar-mini'
-		main.style.backgroundImage = 'url(' + bar.smallImageHref() + ')'
 		
 		var nameCont = document.createElement('a')
+		nameCont.style.backgroundImage = 'url(' + bar.smallImageHref() + ')'
 		nameCont.href = bar.pageHref()
 		main.appendChild(nameCont)
 		
