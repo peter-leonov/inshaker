@@ -115,20 +115,18 @@ Me.prototype =
 		else
 			log('Unknown view type "' + state.view + '"')
 	},
+	
 	renderBarsList: function (data)
 	{
-		var parent = this.nodes.barsContainer,
-			bars = data.bars
+		var parent = this.nodes.barsContainer
 		
 		parent.empty()
+		
+		var bars = data.bars
 		for (var i = 0; i < bars.length; i++)
-		{
-			var bar = bars[i]
-			var node = this.getBarNode(bar)
-			parent.appendChild(node)
-			parent.appendChild(document.createTextNode(' '))
-		}
+			parent.appendChild(this.getBarNode(bars[i]))
 	},
+	
 	renderBarsMap: function (data)
 	{
 		var bars = data.bars,
