@@ -217,7 +217,13 @@ Me.prototype =
 	
 	getBarNode: function (bar)
 	{
-		var main = this.cache.barNode[bar.id] || (this.cache.barNode[bar.id] = this.createBarNode(bar))
+		var barNode = this.cache.barNode
+		
+		var main = barNode[bar.id]
+		if (main)
+			return main
+		
+		main = barNode[bar.id] = this.createBarNode(bar)
 		main.setName(bar.name)
 		main.setImage(bar.smallImageHref())
 		main.setHref(bar.pageHref())
