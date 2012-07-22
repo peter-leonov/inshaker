@@ -239,14 +239,14 @@ Me.prototype =
 		
 		var name = document.createElement('span')
 		name.className = 'bar-name'
-		name.innerHTML = bar.name
+		name.appendChild(document.createTextNode(bar.name))
 		nameCont.appendChild(name)
 		
 		if (bar.labelType == 'new')
 		{
 			var label = document.createElement('span')
 			label.className = 'label'
-			label.innerHTML  = 'Бар недавно открылся, заходи посмотреть!'
+			label.appendChild(document.createTextNode('Бар недавно открылся, заходи посмотреть!'))
 			nameCont.appendChild(label)
 			main.classList.add(bar.labelType)
 		}
