@@ -224,28 +224,23 @@ Me.prototype =
 			return main
 		
 		main = barNode[bar.id] = this.createBarNode(bar)
-		main.setName(bar.name)
-		main.setImage(bar.smallImageHref())
-		main.setHref(bar.pageHref())
 		return main
 	},
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('li'),
-			nameCont = document.createElement('a'),
-			name = document.createElement('span')
+		var main = document.createElement('li')
+		main.className = 'bar-mini'
+		main.style.backgroundImage = 'url(' + bar.smallImageHref() + ')'
 		
-		name.className = 'bar-name'
-		name.innerHTML = bar.name
-		
-		nameCont.appendChild(name)
+		var nameCont = document.createElement('a')
+		nameCont.href = bar.pageHref()
 		main.appendChild(nameCont)
 		
-		main.className = 'bar-mini'
-		main.setImage = function (src) { main.style.backgroundImage = 'url('+src+')' }
-		main.setName = function (text) { name.innerHTML = text }
-		main.setHref = function (href) { nameCont.href = href }
+		var name = document.createElement('span')
+		name.className = 'bar-name'
+		name.innerHTML = bar.name
+		nameCont.appendChild(name)
 		
 		if (bar.labelType == 'new')
 		{
