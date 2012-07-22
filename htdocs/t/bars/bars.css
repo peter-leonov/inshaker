@@ -88,6 +88,8 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 #map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; }
 #map .point.selected .point-name {  }
 
+html.msie-8 #map .point .title { filter: alpha(opacity=85); }
+
 .position-control { display: none; }
 #map .position-control { display: block; position: absolute; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; }
 #map .position-control .to-top,
@@ -111,31 +113,3 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 .bar-map-popup img {width:100px;float:right;}
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
-
-<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
-#sort-menu dl,
-#sort-menu dd { position: static; }
-
-#sort-menu #bars-format.bars-select dd { left: 50px; }
-#sort-menu #bars-feel.bars-select dd { left: 370px; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-#sort-menu { scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(onselectstart=function(){return false})) }
-#map .point:hover { zoom: 1; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
-#map .point .title { filter: alpha(opacity=85); }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
-
-#sort-menu .bars-select dd ul { background: #000; }
-#switch-view a.selected { color: #333; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
-#main-wrapper { position: relative; z-index: 1; }
-<!--# endif -->
