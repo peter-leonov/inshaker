@@ -155,6 +155,7 @@ Me.prototype =
 		if (this.lastCity != state.city)
 		{
 			var lat, lng, zoom
+			
 			if (!this.lastCity && state.lat && state.lng)
 			{
 				lat = parseFloat(state.lat)
