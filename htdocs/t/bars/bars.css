@@ -10,8 +10,6 @@ html {overflow-y: scroll;}
 .bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
 .bar-mini a .label,
 .bar-mini a .bar-name { position: absolute; left: 0; top: 161px; right: 0px; height: 30px; padding: 9px 15px 0px; font-size: 13px; background-color: rgba(0,0,0,0.6); }
-.bar-mini.new a .label,
-.bar-mini.new a .bar-name { background-color: rgba(255,42,146,0.7); }
 
 .bar-mini a,
 .bar-mini a .label,

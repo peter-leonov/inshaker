@@ -90,16 +90,20 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 #main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
 
 /* bars.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(101,178,0,0.7); }
 #sort-menu .bars-select dt,
 #sort-menu .bars-select dd ul li.selected,
-#sort-menu .bars-select dd ul li:hover { color: #40aaf1; }
+#sort-menu .bars-select dd ul li:hover { color: #83cb26; }
 #map .point .icon,
 #map .position-control,
 #mobile-bar { background-image: url(bars-common.png); }
 #map .point .title { color: #fff; }
-#map .point .point-name { color: #ff4ea5; }
-#map .point.selected .point-name { color: #ff2929; }
+#map .point .point-name { color: #fb351b; }
+#map .point.selected .point-name { color: #f216c1; }
 
+/* bar.css */
+#main-column .info .block .head a { color: #83cb26; }
 
 /* combinator.css */
 #output .help-line .hint { color: #ae0000; }
