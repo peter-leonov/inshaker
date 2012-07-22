@@ -2,16 +2,46 @@ html {overflow-y: scroll;}
 #common-main-wrapper { position: relative; z-index: 1; }
 #branded-image-holder { display: none; }
 
-#spotlighted { position: absolute; right: 0; top: 0; }
+#spotlighted { position: absolute; right: 15px; top: 15px; }
 
 #mobile-bar { position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px; overflow: hidden; text-indent: -1000px; background-position: -100px 0; }
 
-.bar-mini {position:relative;float:left;width:290px;height:200px;overflow:hidden;margin:20px 25px 0 0;background:no-repeat 0 0;}
-.bar-mini a { display:block; position: absolute; left: 0; top: 0; width: 290px; height: 50px; padding: 158px 0 0 15px; background-position: 0 0; line-height: 40px; color: #fff; font-size: 13px; }
-.bar-mini.new a { background-position: 0px -200px; }
-.bar-mini.new .label,
+.bar-mini { float: left; margin: 20px 25px 0 0; }
+.bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
+.bar-mini a .label,
+.bar-mini a .bar-name { position: absolute; left: 0; top: 161px; right: 0px; height: 30px; padding: 9px 15px 0px; font-size: 13px; background-color: rgba(0,0,0,0.6); }
+
+.bar-mini a,
+.bar-mini a .label,
+.bar-mini a .bar-name { border-radius: 10px; }
+.bar-mini a .label,
+.bar-mini a .bar-name { border-top-left-radius: 0; border-top-right-radius: 0; -moz-border-radius-topleft: 0; -moz-border-radius-topright: 0; }
+
+.bar-mini.new .label { display: none; }
 .bar-mini.new:hover .bar-name { display: none; }
 .bar-mini.new:hover .label { display: block; }
+
+html.msie-8 .bar-mini a .label,
+html.msie-8 .bar-mini a .bar-name { filter: alpha(opacity=80) }
+html.msie-8 .bar-mini a .bar-name { background-color: #222; }
+html.msie-8 .bar-mini.new a .label,
+html.msie-8 .bar-mini.new a .bar-name { background-color: #ff2a92; }
+
+
+html.msie-8 .bar-mini a:before,
+html.msie-8 .bar-mini a:after,
+html.msie-8 .bar-mini .bar-name:before,
+html.msie-8 .bar-mini .bar-name:after,
+html.msie-8 .bar-mini .label:before,
+html.msie-8 .bar-mini .label:after { position: absolute; z-index: 10;  width: 10px; height: 10px; background: url(/t/light/rounded-corners-10px.png) no-repeat; content: ' '; }
+html.msie-8 .bar-mini a:before { left: 0; top: 0; background-position: -9px -9px; }
+html.msie-8 .bar-mini a:after { right: 0; top: 0; background-position: 0 -9px; }
+html.msie-8 .bar-mini .bar-name:before { left: 0; bottom: 0; background-position: -9px 0; }
+html.msie-8 .bar-mini .bar-name:after { right: 0; bottom: 0; background-position: 0 0; }
+html.msie-8 .bar-mini .label:before { left: 0; bottom: 0; background-position: -9px 0; }
+html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0 0; }
+
+
 
 #head h1 #switch-view a { text-decoration: none; border-bottom: 2px dashed; }
 #head h1 #switch-view a:hover { border-bottom: none; }
@@ -56,6 +86,8 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 #map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; }
 #map .point.selected .point-name {  }
 
+html.msie-8 #map .point .title { filter: alpha(opacity=85); }
+
 .position-control { display: none; }
 #map .position-control { display: block; position: absolute; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; }
 #map .position-control .to-top,
@@ -79,31 +111,3 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 .bar-map-popup img {width:100px;float:right;}
 .bar-map-popup h2 {font-weight:bold;}
 .bar-map-popup p {display:block;margin:5px 5px 5px 0;}
-
-<!--# if expr="$HTTP_USER_AGENT = /Opera\/9\.2/" -->
-#sort-menu dl,
-#sort-menu dd { position: static; }
-
-#sort-menu #bars-format.bars-select dd { left: 50px; }
-#sort-menu #bars-feel.bars-select dd { left: 370px; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-#sort-menu { scrollbar-highlight-color:expression((runtimeStyle.scrollbarHighlightColor="transparent"),(onselectstart=function(){return false})) }
-#map .point:hover { zoom: 1; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [678]/" -->
-#map .point .title { filter: alpha(opacity=85); }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.bar-mini a {filter:expression((runtimeStyle.backgroundImage!='none')?runtimeStyle.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src='+currentStyle.backgroundImage.split('\"')[1]+',sizingMethod=crop)':runtimeStyle.filter,runtimeStyle.backgroundImage='none');}
-
-#sort-menu .bars-select dd ul { background: #000; }
-#switch-view a.selected { color: #333; }
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /Firefox\/2\.0/" -->
-#main-wrapper { position: relative; z-index: 1; }
-<!--# endif -->
