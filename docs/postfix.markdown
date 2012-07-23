@@ -1,13 +1,6 @@
 
-	sudo echo "smtp.gmail.com:587 event@inshaker.ru:******" >> /etc/postfix/sasl_passwd
-	sudo postmap /etc/postfix/sasl_passwd
-
 Добавить в конец /etc/postfix/main.cf
 
-	# Minimum Postfix-specific configurations.
-	# mydomain_fallback = localhost
-	# mail_owner = _postfix
-	# setgid_group = _postdrop
 	relayhost=smtp.gmail.com:587
 	# Enable SASL authentication in the Postfix SMTP client.
 	smtp_sasl_auth_enable = yes
@@ -22,6 +15,10 @@
 
 
 	sudo mv thawte.pem /etc/postfix/cacert.pem
+
+
+	sudo echo "smtp.gmail.com:587 event@inshaker.ru:123456" >> /etc/postfix/sasl_passwd
+	sudo postmap /etc/postfix/sasl_passwd
 
 
 	sudo postfix start
