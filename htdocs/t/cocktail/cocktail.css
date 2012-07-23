@@ -135,6 +135,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dd:last-child{background:none;}
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
+.what-need dd .brand { display: none; }
 
 #recommendations .point { line-height: 124px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
@@ -157,9 +158,9 @@ html { font-size: 14px; }
 /* very much fixed width */
 html,
 body,
-#common-main-wrapper { width: 962px; }
+#common-main-wrapper { width: 800px; min-width: 800px; }
 
-#common-main-wrapper { overflow: hidden; position: relative; margin: 0 auto; }
+#common-main-wrapper { overflow: hidden; position: relative; margin: 0; }
 
 
 #b-bill { display: none; }
@@ -167,7 +168,10 @@ body,
 
 .common-box { border: none; }
 .common-box .hrefs { display: none; }
+.common-box .common-title { float: right; width: 557px; margin-right: 110px; }
 .common-box .common-title .common-name { font-size: 24px; font-weight: bold; }
+
+.common-box .common-content { padding: 0; }
 
 #cocktail-image { height: 210px; float: left; }
 
@@ -181,17 +185,18 @@ body,
 
 #view-recipe .recipe dt,
 .what-need dt,
-.what-need dt { font-size: 90%; font-weight: bold; margin-top: 20px; line-height: 25px; border-bottom: 3px #5C5C5C solid; }
+.what-need dt { font-weight: bold; margin-top: 20px; line-height: 25px; border-bottom: 3px #5C5C5C solid; }
 
-#view-recipe .recipe ul { font-size: 80%; margin-top: 12px; }
-#view-recipe .recipe ul li { list-style: decimal inside; padding-bottom: 5px; }
+#view-recipe .recipe ul { font-size: 90%; margin-top: 12px; margin-left: 25px; }
+#view-recipe .recipe ul li { list-style: decimal; padding-bottom: 5px; }
 
 .what-need dl { width: 100%;}
-.what-need dd { font-size: 80%; border-bottom: 1px black dashed; overflow: hidden; padding: 12px 0; display: list-item; list-style: url(/t/print/li.png) inside; }
+.what-need dd { font-size: 90%; border-bottom: 1px black dashed; overflow: hidden; padding: 12px 0; display: list-item; list-style: url(/t/print/li.png) inside; }
 .what-need dd:last-child { border: none; }
 html.msie-6 .what-need dd { zoom: 1; }
 
 .what-need dd strong { float: right; text-align: right; font-weight: normal; }
+.what-need dd .brand { display: inline; color: black; }
 
 #share { display: none; }
 
@@ -204,7 +209,7 @@ html.msie-6 .what-need dd { zoom: 1; }
 #common-footer { display: none; }
 input { border: none; background: none; }
 
-#print-logo-hd { position: absolute; top: 0; right: 0; width: 150px; }
+#print-logo-hd { position: absolute; top: 0; right: 0; width: 100px; }
 
 } /* @media print */
 
