@@ -100,7 +100,7 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 #mobile-bar { background-image: url(bars-common.png); }
 #map .point .title { color: #fff; }
 #map .point .point-name { color: #fb351b; }
-#map .point.selected .point-name { color: #f216c1; }
+#map .point.selected .point-name { color: #80ba04; }
 
 /* bar.css */
 #main-column .info .block .head a { color: #83cb26; }
