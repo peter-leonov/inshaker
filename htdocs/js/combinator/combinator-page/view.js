@@ -34,7 +34,7 @@ Me.prototype =
 		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
 		nodes.queryInput.focus()
-
+		
 		var queryDropped = function () { me.queryInputChanged(nodes.queryInput) }
 		nodes.queryInput.addEventListener('drop', function (e) { window.setTimeout( queryDropped, 0 ) }, false)
 		nodes.queryInput.addEventListener('paste', function (e) { window.setTimeout( queryDropped, 0 ) }, false)
