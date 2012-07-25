@@ -80,6 +80,7 @@ function onready ()
 		mainFunFix: $('#the-main-menu'),
 		cocktailList: $('#output .result-block .ingrediented-cocktail-list'),
 		stats: $('#output .result-block .stats'),
+		label: $('#search-box .placeholder'),
 		queryInput: $('#search-box .query'),
 		searchForm: $('#search-box form'),
 		plusButton: $('#search-box .plus'),
