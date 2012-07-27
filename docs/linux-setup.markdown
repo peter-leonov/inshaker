@@ -298,6 +298,17 @@ Ruby
 	exit
 	#>>> irb(main):001:0> exit
 
+
+RMagick
+-------
+
+	sudo apt-get install libmagickwand-dev imagemagick
+	sudo gem install rmagick
+
+потестим:
+
+	ruby -e 'require "RMagick"'
+
 Thin
 ----
 
@@ -354,7 +365,7 @@ Redmine
 	sudo ln -s /opt/ruby-1.9/bin/bundle /usr/bin/bundle
 
 	sudo apt-get install libsqlite3-dev
-	sudo bundle install --without development test postgresql mysql rmagick
+	sudo bundle install --without development test postgresql mysql
 
 Прикроемся
 ==========
