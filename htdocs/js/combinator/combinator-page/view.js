@@ -35,10 +35,12 @@ Me.prototype =
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
 		nodes.queryInput.focus()
 		
+		/*@cc_on
 		var queryDropped = function () { me.queryInputChanged(nodes.queryInput) }
 		nodes.queryInput.addEventListener('drop', function (e) { window.setTimeout( queryDropped, 0 ) }, false)
 		nodes.queryInput.addEventListener('paste', function (e) { window.setTimeout( queryDropped, 0 ) }, false)
-		nodes.queryInput.addEventListener('keyup', function (e) { me.queryInputChanged(e.target) }, false)
+		nodes.queryInput.addEventListener('keydown', function (e) { window.setTimeout( queryDropped, 0 ) }, false)
+		@*/
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); window.setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
