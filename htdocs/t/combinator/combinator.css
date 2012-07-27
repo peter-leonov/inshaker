@@ -33,7 +33,7 @@ input:-moz-placeholder,
 html.msie .placeholder .tip { color: #bbb; }
 
 html.msie .placeholder input { background-color: transparent;}
-html.msie .placeholder.filled input { background-color: white; }
+html.msie .placeholder input:focus { background-color: white; }
 html.msie .placeholder .tip { position: absolute; left: 2px; top: 0px; padding-top: 3px; z-index: -1; opacity: 0.5; display: block; }
 
 #search-box .autocomplete { display: none; position: absolute; top: 28px; left: 1px; width: 680px; opacity: 0.95; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; font-size: 20px; }
