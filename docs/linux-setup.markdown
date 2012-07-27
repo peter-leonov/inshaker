@@ -237,6 +237,18 @@ UpStart
 Проверять нужно точно так же, как и энжинкс.
 
 
+Apache
+------
+
+Чисто для надёжного сиджиая.
+Ставим тупо префорк:
+
+	sudo apt-get install apache2-mpm-prefork
+
+Вырубаем автостарт:
+
+	sudo update-rc.d -f apache2 remove
+
 Ruby
 ----
 
