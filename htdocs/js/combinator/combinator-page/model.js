@@ -83,6 +83,11 @@ Me.prototype =
 		}
 		
 		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
+		
+		var clientStorage = this.clientStorage = ClientStorage.guess(),
+			isAlreadySearched = clientStorage.get('combinatorSearched') 
+		
+		this.view.userSearched(isAlreadySearched)
 	},
 	
 	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)
@@ -457,6 +462,8 @@ Me.prototype =
 		this.updateData()
 		
 		this.view.setBookmark(state)
+		
+		this.clientStorage.set('combinatorSearched', 1)
 	},
 	
 	queryChanged: function (add, remove)
