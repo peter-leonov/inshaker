@@ -33,7 +33,6 @@ Me.prototype =
 		completer.bind({main: nodes.queryInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
-		nodes.queryInput.focus()
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); window.setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
@@ -65,6 +64,12 @@ Me.prototype =
 		window.addEventListener('scroll', onscroll, false)
 		
 		return this
+	},
+	
+	userSearched: function (isAlreadySearched)
+	{
+		if (isAlreadySearched)
+			this.nodes.queryInput.focus()
 	},
 	
 	plusButtonClicked: function ()
