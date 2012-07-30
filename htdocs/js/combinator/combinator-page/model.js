@@ -84,10 +84,10 @@ Me.prototype =
 		
 		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
 		
-		var clientStorage = this.clientStorage = ClientStorage.guess(),
-			isAlreadySearched = clientStorage.get('combinatorSearched') 
+		var clientStorage = this.clientStorage = ClientStorage.guess()
 		
-		this.view.userSearched(isAlreadySearched)
+		if (clientStorage.get('combinatorSearched'))
+			this.view.setFocus()
 	},
 	
 	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)

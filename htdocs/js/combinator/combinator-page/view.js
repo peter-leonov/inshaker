@@ -66,10 +66,9 @@ Me.prototype =
 		return this
 	},
 	
-	userSearched: function (isAlreadySearched)
+	setFocus: function ()
 	{
-		if (isAlreadySearched)
-			this.nodes.queryInput.focus()
+		this.nodes.queryInput.focus()
 	},
 	
 	plusButtonClicked: function ()
