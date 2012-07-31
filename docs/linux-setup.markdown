@@ -45,6 +45,11 @@ APT
 	mkdir -p /root/.ssh/
 	nano /root/.ssh/authorized_keys
 
+Меняем пароль рута.
+
+	passwd
+
+
 Создаем пользователя, под которым будем работать дальше:
 
 	useradd www -m -d /home/www -s /bin/bash
@@ -78,7 +83,10 @@ SSH
 
 Меняем порт в /etc/ssh/sshd_config на 22333.
 
-И добавляем сервер в ~/.ssh/config
+	sudo nano /etc/ssh/sshd_config
+	sudo restart ssh
+
+И добавляем сервер на свой комп в ~/.ssh/config
 
 	Host server
 	HostName server.project.name
@@ -94,11 +102,6 @@ SSH
 
 	sudo mkdir /www
 	sudo chown www:www /www
-
-Тестим:
-
-	touch /www/test
-	rm /www/test
 
 
 Софт
@@ -127,7 +130,8 @@ SSH
 
 и сразу дебажную версию:
 
-	make clean && ./configure --with-debug && make
+	make clean
+	./configure --with-debug && make
 	sudo cp ./objs/nginx /usr/local/nginx/sbin/nginx-debug
 	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/bin/nginx-debug
 
@@ -167,7 +171,7 @@ Git
 Тестим:
 
 	git --version
-	#>>> git version 1.7.4.1
+	#>>> git version 1.7.9.5
 
 Тюним:
 
@@ -245,6 +249,22 @@ Apache
 
 	sudo apt-get install apache2-mpm-prefork
 
+Проверяем установленные модули:
+
+	apache2 -l
+	#>>>  Compiled in modules:
+	#>>>    core.c
+	#>>>    mod_log_config.c
+	#>>>    mod_logio.c
+	#>>>    prefork.c
+	#>>>    http_core.c
+	#>>>    mod_so.c
+
+Останавливаем:
+
+	sudo /etc/init.d/apache2 stop
+	ps -A | grep apache2
+
 Вырубаем автостарт:
 
 	sudo update-rc.d -f apache2 remove
@@ -252,7 +272,7 @@ Apache
 Ruby
 ----
 
-Ставим `zlib` и `libyaml`, чтобы работал `gem install`:
+Ставим `zlib` и `libyaml`, чтобы работал и не ворчал `gem install`:
 
 	sudo apt-get install zlib1g-dev libyaml-dev
 
@@ -280,8 +300,8 @@ Ruby
 	ruby -v
 	#>>> ruby 1.9.3p194 (2012-04-20 revision 35410) [i686-linux]
 	
-	ruby -e 'require "fileutils"; puts FileUtils.class'
-	#>>> Module
+	ruby -e 'require "fileutils"; puts FileUtils.pwd'
+	#>>> /home/www/ruby-1.9.3-p194
 	
 	
 	rake --version
@@ -348,11 +368,15 @@ Postfix
 
 	sudo apt-get install postfix
 
-И не забыть поправить в его конфиге (/etc/postfix/main.cf):
+И не забыть поправить в его конфиге
+
+	sudo nano /etc/postfix/main.cf
+
+эту строку
 
 	inet_interfaces = all
 
-на
+на эту
 
 	inet_interfaces = 127.0.0.1
 
@@ -404,3 +428,11 @@ Redmine
 	#>>> 22333/tcp open  unknown
 
 Наружу торчат только http и ssh на нестандартном порту.
+
+
+Удалим www из /etc/sudoers
+
+	sudo nano /etc/sudoers
+
+	sudo id
+	#>>> [sudo] password for www:
