@@ -71,7 +71,15 @@ var AboutPage = {
 				}
 			}
 			
-			Request.post(this.action, FormHelper.toHash(this), sent)
+			var h = FormHelper.toHash(this)
+			
+			var message =
+			{
+				subject: 'Предложение или вопрос по иншейкеру',
+				body: 'Имя: ' + h.name + '<br/>Контакт: ' + h.address + '<br/>Компания: ' + h.company + '<br/>Что говорит: ' + h.text
+			}
+			
+			Request.post(this.action, message, sent)
 		}
 		form.addEventListener('submit', sendListener, false)
 		
