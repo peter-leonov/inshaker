@@ -45,6 +45,10 @@ APT
 	mkdir -p /root/.ssh/
 	nano /root/.ssh/authorized_keys
 
+Или для одного себя:
+
+	ssh-copy-id root@server
+
 Меняем пароль рута.
 
 	passwd

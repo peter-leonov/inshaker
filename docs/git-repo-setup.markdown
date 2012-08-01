@@ -29,6 +29,9 @@ Git repo
 	GIT_DIR=$(pwd)
 	cd ..
 	git checkout -f' > .git/hooks/post-receive
+	
+	cat .git/hooks/post-receive
+	
 	chmod +x .git/hooks/post-receive
 
 Переходим на локальную машину и заливаем `master` на сервер:
