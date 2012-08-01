@@ -13,13 +13,16 @@
 	smtp_tls_security_level = encrypt
 	tls_random_source = dev:/dev/urandom
 
+Скопируем сертификат:
 
 	sudo mv thawte.pem /etc/postfix/cacert.pem
 
+Добавим крденшиалс:
 
 	sudo echo "smtp.gmail.com:587 event@inshaker.ru:123456" >> /etc/postfix/sasl_passwd
 	sudo postmap /etc/postfix/sasl_passwd
 
+Рестартанём:
 
 	sudo postfix start
 	sudo postfix reload
