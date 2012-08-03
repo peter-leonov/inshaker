@@ -115,6 +115,9 @@ SSH
 
 	sudo apt-get install build-essential curl
 
+Спец. папка для исходников:
+
+	cd && mkdir src && cd src
 
 Энджин Икс
 ----------
