@@ -29,7 +29,9 @@ Me.prototype =
 			
 			var cocktail = cocktails.random(1)[0]
 			
-			var image = group.add('img', 'cocktail-image')
+			var imageBox = group.add('div', 'image-box')
+			
+			var image = imageBox.add('img', 'image')
 			image.src = cocktail.getBigImageSrc()
 		}
 	}
