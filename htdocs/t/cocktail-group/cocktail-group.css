@@ -17,6 +17,7 @@ html { overflow-y: scroll; }
 #groups-list .item .group { display: block; position: relative; width: 260px; height: 475px; }
 #groups-list .item .group .image-box { position: absolute; bottom: 45px; left: 0; right: 0; text-align: center; }
 #groups-list .item .group .name { position: absolute; bottom: 25px; left: 0; right: 0; height: 25px; text-align: center; }
+#groups-list .item .group .name .count { font-size: 11px; color: #aaa; margin-left: 5px;  position: absolute; }
 
 html.loading #cocktail-list { display: none; }
 #cocktail-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }

@@ -29,10 +29,19 @@ Me.prototype =
 			
 			var cocktail = cocktails.random(1)[0]
 			
+			var groupName = group.firstChild.nodeValue
+			group.empty()
+			
 			var imageBox = group.add('div', 'image-box')
 			
 			var image = imageBox.add('img', 'image')
 			image.src = cocktail.getBigImageSrc()
+			
+			var name = group.add('span', 'name')
+			name.text(groupName)
+			
+			var count = name.add('span', 'count')
+			count.text(cocktails.length)
 		}
 	}
 }
