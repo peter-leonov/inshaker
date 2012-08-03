@@ -11,7 +11,8 @@ html { overflow-y: scroll; }
 
 #branded-image-holder { display: none; }
 
-#groups-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }
+#groups-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; font-size: 18px; }
+#groups-list li { list-style: disc; color: #555; margin: 0 0 0 20px; }
 
 html.loading #cocktail-list { display: none; }
 #cocktail-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }
