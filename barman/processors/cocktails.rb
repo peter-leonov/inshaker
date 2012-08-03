@@ -608,7 +608,7 @@ class CocktailsProcessor < Inshaker::Processor
       ["Глинтвейны", "glintvejn", "Глинтвейн"],
       ["Лимонады", "limonad", "Лимонад"],
       ["Голубые", "golubye-kokteyli", "Голубой коктейль"],
-      ["Маргарита", "margarita", "Маргарита"],
+      ["Маргариты", "margarita", "Маргарита"],
       ["Космополитен", "cosmopolitan", "Космополитен"],
       ["Пина Колада", "pina-colada", "Пина Колада"]
     ]
