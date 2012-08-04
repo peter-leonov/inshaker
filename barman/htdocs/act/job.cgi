@@ -62,7 +62,10 @@ class Launcher
     
     reset
     
-    pid = fork { exec @job[0] }
+    pid = fork do
+      $stdout.reopen("/dev/null", "w")
+      exec @job[0]
+    end
     Process.wait pid
     
     if $?.exitstatus == 0
