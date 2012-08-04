@@ -80,8 +80,8 @@ class Launcher
   def commit
     puts %Q{Commiting…}
     
-    system(%Q{git status; git diff})
-    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" --author="#{@user_author}" && git push})
+    # system(%Q{git status; git diff})
+    system(%Q{git add . && git commit -am "job done: #{@job_name}" --author="#{@user_author}" && git push})
   end
   
   def reset
