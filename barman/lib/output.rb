@@ -5,6 +5,7 @@ module Output
     module Console
       def say_error str
         say "\x1B[31m#{str}\x1B[0m"
+        $stderr.puts str
       end
       def say_warning str
         say "\x1B[33m#{str}\x1B[0m"
