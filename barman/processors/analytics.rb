@@ -322,7 +322,7 @@ class Analytics
       
       m = /\/cocktails?\/+([^\/.]+)/.match(path)
       unless m
-        error "не могу найти название коктейля в пути «#{path}»"
+        warning "не могу найти название коктейля в пути «#{path}»"
         next
       end
       path = m[1]
