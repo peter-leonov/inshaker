@@ -69,10 +69,10 @@ class Launcher
     Process.wait pid
     
     if $?.exitstatus == 0
-      puts %Q{Job succeeded.}
+      puts %Q{Job “#{@job[1]}” succeeded.}
       commit
     else
-      puts %Q{Job failed!}
+      puts %Q{Job “#{@job[1]}” failed!}
       reset
     end
   end
