@@ -60,19 +60,18 @@ class Launcher
   def job
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
+    $stdout.reopen("/dev/null", "w")
+    
     reset
     
-    pid = fork do
-      $stdout.reopen("/dev/null", "w")
-      exec @job[0]
-    end
+    pid = fork { exec @job[0] }
     Process.wait pid
     
     if $?.exitstatus == 0
-      puts %Q{Job “#{@job[1]}” succeeded.}
+      warn %Q{Job “#{@job[1]}” succeeded.}
       commit
     else
-      puts %Q{Job “#{@job[1]}” failed!}
+      warn %Q{Job “#{@job[1]}” failed!}
       reset
     end
   end
