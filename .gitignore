@@ -1,7 +1,6 @@
 .DS_Store
 barman/base
 barman/tmp
-analytic/reports/*.xml
 update_stats.sh
 .TemporaryItems
 *.log
