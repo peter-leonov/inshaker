@@ -25,7 +25,7 @@ Me.prototype =
 		window.clearTimeout(this.delayTimer)
 		this.delayTimer = window.setTimeout(this.timerCallback, this.delay)
 		
-		if (!this.timeoutTimer)
+		if (!this.timeoutTimer && this.timeout)
 			this.timeoutTimer = window.setTimeout(this.timeoutCallback, this.timeout)
 	},
 	
