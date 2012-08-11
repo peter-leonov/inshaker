@@ -375,7 +375,7 @@ Me.staticMethods =
 		if (!opts)
 			opts = {}
 		
-		var db = opts.db || this.db
+		var db = this.db
 		var count = opts.count || names.length
 		
 		// caching names of requested ingredients
