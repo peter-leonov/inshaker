@@ -77,6 +77,7 @@ http://www.inshaker.ru/cocktail/butter_scotch/
 http://www.inshaker.ru/cocktail/bounty_martini/
 http://www.inshaker.ru/cocktail/baja_bocana/
 http://www.inshaker.ru/cocktail/bacchus/
+http://www.inshaker.ru/cocktail/bacchus_party/
 http://www.inshaker.ru/cocktail/no_name_drink/
 http://www.inshaker.ru/cocktail/white_lady/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
@@ -630,6 +631,7 @@ http://www.inshaker.ru/cocktail/honey_versailles/
 http://www.inshaker.ru/cocktail/honey_cosmo-tini/
 http://www.inshaker.ru/cocktail/honey_moon/
 http://www.inshaker.ru/cocktail/honey_smash/
+http://www.inshaker.ru/cocktail/honey_whisper/
 http://www.inshaker.ru/cocktail/medusa/
 http://www.inshaker.ru/cocktail/may_be_hot/
 http://www.inshaker.ru/cocktail/mexican/
@@ -639,6 +641,7 @@ http://www.inshaker.ru/cocktail/mexican_astronaut/
 http://www.inshaker.ru/cocktail/mexican_mule/
 http://www.inshaker.ru/cocktail/mexican_pie/
 http://www.inshaker.ru/cocktail/melonic/
+http://www.inshaker.ru/cocktail/memphis_sour/
 http://www.inshaker.ru/cocktail/mercury/
 http://www.inshaker.ru/cocktail/mixet/
 http://www.inshaker.ru/cocktail/milano_breeze/
@@ -788,6 +791,7 @@ http://www.inshaker.ru/cocktail/pliny_the_younger/
 http://www.inshaker.ru/cocktail/pliny_the_elder/
 http://www.inshaker.ru/cocktail/for_aspic/
 http://www.inshaker.ru/cocktail/fire_in_texas/
+http://www.inshaker.ru/cocktail/experience/
 http://www.inshaker.ru/cocktail/pornstar/
 http://www.inshaker.ru/cocktail/unemployment_benefit/
 http://www.inshaker.ru/cocktail/potenziale_special/
@@ -964,6 +968,7 @@ http://www.inshaker.ru/cocktail/spice_and_ice/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/spring_grass_tini/
 http://www.inshaker.ru/cocktail/style_martini/
+http://www.inshaker.ru/cocktail/old_cuban/
 http://www.inshaker.ru/cocktail/way_of_life/
 http://www.inshaker.ru/cocktail/way_of_life_2/
 http://www.inshaker.ru/cocktail/stinger/
