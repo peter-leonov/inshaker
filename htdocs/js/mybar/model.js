@@ -469,7 +469,7 @@ var myProto =
 		
 		var groups = []
 		
-		Ingredient.calculateEachIngredientUsage()
+		Ingredient.calculateTheCocktailsPropertyForEachIngredient()
 		
 		this.exclusions = {}
 		var me = this

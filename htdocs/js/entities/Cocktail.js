@@ -395,13 +395,6 @@ Me.staticMethods =
 		return res
 	},
 	
-	getCocktailsByIngredientNameHash: function ()
-	{
-		// build the index
-		this.getByIngredient()
-		return this.index.byIngredient
-	},
-	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
 	{
 		var cocktails = this.getByIngredient(ingredientName)

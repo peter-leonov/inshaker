@@ -53,7 +53,7 @@ function onready ()
 	
 	IngredientPopup.bootstrap()
 	
-	Ingredient.calculateEachIngredientUsage()
+	Ingredient.calculateTheCocktailsPropertyForEachIngredient()
 	
 	var nodes = 
 	{	
