@@ -52,7 +52,7 @@ var myProto =
 	computeCocktails : function(ingredients, hiddenCocktailsHash)
 	{
 		if(Object.isEmpty(ingredients.inBar)) return []
-		var needCocktails = Cocktail.getByIngredientNames(ingredients.inBarNames),
+		var needCocktails = Cocktail.getByAnyOfIngredientsNames(ingredients.inBarNames),
 			cocktails = []
 
 		ck:

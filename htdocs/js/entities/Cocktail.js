@@ -361,16 +361,16 @@ Me.staticMethods =
 		return DB.disjunction([ingredient, garnish, tool])
 	},
 	
-	getByIngredients: function (ingredients)
+	getByAnyOfIngredients: function (ingredients)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names)
+		return this.getByAnyOfIngredientsNames(names)
 	},
 	
-	getByIngredientNames: function (names)
+	getByAnyOfIngredientsNames: function (names)
 	{
 		var db = this.db
 		

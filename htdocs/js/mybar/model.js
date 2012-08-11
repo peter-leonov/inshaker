@@ -217,7 +217,7 @@ var myProto =
 		if (Object.isEmpty(ingredients.hash))
 			return cocktails
 		
-		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.hash))
+		var needCocktails = Cocktail.getByAnyOfIngredientsNames(Object.toArray(ingredients.hash))
 		
 		ck:
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )

@@ -189,7 +189,7 @@ Me.prototype =
 			
 			var ingredients = Ingredient.getByTag(ingredientOrTag)
 			if (ingredients.length)
-				var cocktails = Cocktail.getByIngredients(ingredients)
+				var cocktails = Cocktail.getByAnyOfIngredients(ingredients)
 			else
 				var cocktails = Cocktail.getByIngredient(ingredientOrTag)
 			
