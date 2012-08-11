@@ -178,7 +178,7 @@ Me.prototype =
 		if (filters.state == 'top20')
 		{
 			var res = Cocktail.getByTag('Самые популярные')
-			res.sort(Cocktail.complexitySort)
+			res.sort(Cocktail.sortByComplexity)
 			return res
 		}
 		

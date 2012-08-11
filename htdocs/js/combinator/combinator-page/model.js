@@ -206,14 +206,14 @@ Me.prototype =
 	
 	sortByGroup: function (cocktails)
 	{
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		return this.sortByTags(cocktails, Cocktail.getGroups())
 	},
 	
 	sortByMethod: function (cocktails)
 	{
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		return this.sortByTags(cocktails, Cocktail.getMethods())
 	},
@@ -242,7 +242,7 @@ Me.prototype =
 	
 	sortByDate: function (cocktails)
 	{
-		cocktails.sort(Cocktail.addedSort)
+		cocktails.sort(Cocktail.sortByAddTime)
 		
 		var groups = []
 		

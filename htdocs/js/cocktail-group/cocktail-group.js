@@ -25,7 +25,7 @@ Me.prototype =
 			cocktails.push(cocktail)
 		}
 		
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		var groupName = nodes.groupName.getAttribute('data-name')
 		
