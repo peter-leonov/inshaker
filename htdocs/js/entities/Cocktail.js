@@ -361,22 +361,18 @@ Me.staticMethods =
 		return DB.disjunction([ingredient, garnish, tool])
 	},
 	
-	getByIngredients: function (ingredients, opts)
+	getByIngredients: function (ingredients)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names, opts)
+		return this.getByIngredientNames(names)
 	},
 	
-	getByIngredientNames: function (names, opts)
+	getByIngredientNames: function (names)
 	{
-		if (!opts)
-			opts = {}
-		
 		var db = this.db
-		var count = opts.count || names.length
 		
 		// caching names of requested ingredients
 		var hash = DB.hashIndex(names)
@@ -385,12 +381,11 @@ Me.staticMethods =
 		db:
 		for (var i = 0, il = db.length; i < il; i++)
 		{
-			var cocktail = db[i],
-				matches = 0
+			var cocktail = db[i]
 			
-			var set = cocktail.ingredients
-			for (var j = 0, jl = set.length; j < jl; j++)
-				if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
+			var parts = cocktail.ingredients
+			for (var j = 0, jl = parts.length; j < jl; j++)
+				if (hash[parts[j][0]]) // [0] for ingredient name
 				{
 					// ta-da we'v found one
 					res.push(cocktail)
