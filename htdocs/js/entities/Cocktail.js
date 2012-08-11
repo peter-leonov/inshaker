@@ -377,7 +377,6 @@ Me.staticMethods =
 		
 		var db = opts.db || this.db
 		var count = opts.count || names.length
-		var searchGarnish = opts.searchGarnish
 		
 		// caching names of requested ingredients
 		var hash = DB.hashIndex(names)
@@ -389,30 +388,14 @@ Me.staticMethods =
 			var cocktail = db[i],
 				matches = 0
 			
-			// always search trough ingredients field
-			{
-				var set = cocktail.ingredients
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
-			// here if cocktail does not pass by ingredients
-			
-			if (searchGarnish)
-			{
-				var set = cocktail.garnish
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
+			var set = cocktail.ingredients
+			for (var j = 0, jl = set.length; j < jl; j++)
+				if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
+				{
+					// ta-da we'v found one
+					res.push(cocktail)
+					continue db
+				}
 		}
 		return res
 	},
