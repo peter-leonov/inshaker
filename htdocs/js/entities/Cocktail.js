@@ -434,11 +434,6 @@ Me.staticMethods =
 		return compare
 	},
 	
-    nameSort: function(a,b) {
-        if(a.name > b.name) return 1;
-	    else if(a.name == b.name) return 0;
-	    else return -1;
-    },
 	
 	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length },
 	
