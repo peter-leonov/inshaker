@@ -372,27 +372,12 @@ Me.staticMethods =
 	
 	getByAnyOfIngredientsNames: function (names)
 	{
-		var db = this.db
+		var sets = []
 		
-		// caching names of requested ingredients
-		var hash = DB.hashIndex(names)
+		for (var i = 0, il = names.length; i < il; i++)
+			sets.push(this.getByIngredient(names[i]))
 		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i]
-			
-			var parts = cocktail.ingredients
-			for (var j = 0, jl = parts.length; j < jl; j++)
-				if (hash[parts[j][0]]) // [0] for ingredient name
-				{
-					// ta-da we'v found one
-					res.push(cocktail)
-					continue db
-				}
-		}
-		return res
+		return DB.disjunction(sets)
 	},
 	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
