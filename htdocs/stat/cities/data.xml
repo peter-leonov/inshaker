@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <pie xmlns:dxp="http://schemas.google.com/analytics/2009" xmlns:a="http://www.w3.org/2005/Atom">
-  <slice title="Москва">146769</slice>
-  <slice title="Санкт-Петербург">51614</slice>
-  <slice title="Свердловская область">20395</slice>
-  <slice title="другие регионы">389487</slice>
+  <slice title="Москва">146470</slice>
+  <slice title="Санкт-Петербург">51325</slice>
+  <slice title="Свердловская область">20298</slice>
+  <slice title="другие регионы">388255</slice>
 </pie>
