@@ -517,7 +517,7 @@ Me.prototype =
 	
 	searchCocktails: function (add, remove)
 	{
-		var cocktails = Cocktail.getAll()
+		var res = Cocktail.getAll()
 		
 		for (var i = 0, il = add.length; i < il; i++)
 		{
@@ -532,7 +532,7 @@ Me.prototype =
 					tool = Cocktail.getByTool(name)
 				
 				var set = DB.disjunction([ingredient, tool])
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 			
@@ -542,21 +542,21 @@ Me.prototype =
 				for (var j = 0, jl = goods.length; j < jl; j++)
 					goods[j] = Cocktail.getByIngredient(goods[j])
 				var set = DB.disjunction(goods)
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 			
 			if (type == 'cocktail-tag')
 			{
 				var set = Cocktail.getByTag(item)
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 		}
 		
 		// remove logic has been removed ;)
 		
-		return cocktails
+		return res
 	},
 	
 	collapseQueryObjects: function (arr)
