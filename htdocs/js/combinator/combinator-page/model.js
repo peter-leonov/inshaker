@@ -625,11 +625,14 @@ Me.prototype =
 		if (ingredients)
 			return
 		
-		Ingredient.calculateEachIngredientUsage()
 		ingredients = this.allIngredients = Ingredient.getAll()
 		
+		console.time('sortByUsage')
+		ingredients.sort(Cocktail.sortIngredientsByUsage())
+		console.timeEnd('sortByUsage')
+		
+		
 		var groups = this.groupByGroup(ingredients)
-		this.sortGoupsBy(groups, this.sortByUsage)
 		
 		this.view.renderInitialBlock(groups)
 	},
@@ -660,14 +663,6 @@ Me.prototype =
 		}
 		return data
 	},
-	
-	sortGoupsBy: function (data, func)
-	{
-		for (var i = 0; i < data.length; i++)
-			data[i].list.sort(func)
-	},
-	
-	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length },
 	
 	updateExamples: function ()
 	{
@@ -710,8 +705,7 @@ Me.prototype =
 			return ingredients.random(1)[0]
 		
 		var ingredients = Ingredient.getByGroup('Крепкий алкоголь')
-		Ingredient.calculateEachIngredientUsage()
-		ingredients.sort(this.sortByUsage)
+		ingredients.sort(Cocktail.sortIngredientsByUsage())
 		return ingredients.slice(0, 8).random(1)[0]
 	},
 	

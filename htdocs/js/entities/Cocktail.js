@@ -434,6 +434,23 @@ Me.staticMethods =
 		return ingredients
 	},
 	
+	sortIngredientsByUsage: function ()
+	{
+		// build the index
+		this.getByIngredient()
+		
+		var index = this.index.byIngredient
+		function compare (a, b)
+		{
+			a = index[a.name]
+			b = index[b.name]
+			
+			return (b ? b.length : 0) - (a ? a.length : 0)
+		}
+		
+		return compare
+	},
+	
     nameSort: function(a,b) {
         if(a.name > b.name) return 1;
 	    else if(a.name == b.name) return 0;
