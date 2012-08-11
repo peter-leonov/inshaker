@@ -342,23 +342,21 @@ Me.prototype =
 	
 	combine: function (arr)
 	{
-		var res = [], seen = {}, total = 0
+		var res = []
 		
 		res.push(arr.slice())
 		if (arr.length == 1)
 			return res
 		
+		var seen = {}
 		function walk (a)
 		{
-			total++
-			
 			for (var i = a.length - 1; i >= 0; i--)
 			{
-				
 				var v = a.slice()
 				v.splice(i, 1)
 				
-				var s = ''+v
+				var s = '' + v
 				if (seen[s])
 					continue
 				seen[s] = true
