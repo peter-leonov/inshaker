@@ -621,19 +621,14 @@ Me.prototype =
 	
 	updateAllIngredients: function ()
 	{
-		var ingredients = this.allIngredients
-		if (ingredients)
+		if (this.allIngredientsUpdated)
 			return
+		this.allIngredientsUpdated = true
 		
-		ingredients = this.allIngredients = Ingredient.getAll()
-		
-		console.time('sortByUsage')
+		var ingredients = Ingredient.getAll()
 		ingredients.sort(Cocktail.sortIngredientsByUsage())
-		console.timeEnd('sortByUsage')
-		
 		
 		var groups = this.groupByGroup(ingredients)
-		
 		this.view.renderInitialBlock(groups)
 	},
 	
