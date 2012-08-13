@@ -35,6 +35,7 @@ Me.prototype =
 {
 	// a callback for nodes must be loaded
 	load: function () {},
+	onstop: function () {},
 	
 	configure: function (conf)
 	{
@@ -88,6 +89,8 @@ Me.prototype =
 		var space = scroller.space
 		space.add(new Kinematics.Friction(this.conf.friction))
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
+		
+		scroller.onstop = function () { me.onstop() }
 	},
 	
 	setNodes: function (nodes, realCount)
