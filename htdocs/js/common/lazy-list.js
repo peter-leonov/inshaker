@@ -98,7 +98,7 @@ Me.prototype =
 		var boxes = this.boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
 		var frame = this.frame,
-			frameWidth = viewport.offsetWidth
+			frameWidth = this.frameWidth = viewport.offsetWidth
 		
 		var t = new Throttler(function (x, realX) { frame.moveTo(realX - frameWidth, 0) }, conf.throttleSoft, conf.throttleHard)
 		this.scroller.onscroll = function (x, realX) { t.call(x, realX) }
