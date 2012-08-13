@@ -60,7 +60,9 @@ Me.prototype =
 		var nodes = this.nodes,
 			surface = nodes.surface, viewport = nodes.viewport
 		
-		var frame = this.frame = new VisibilityFrame()
+		var frame = this.frame = new VisibilityFrame(),
+			gridder = this.gridder = frame.getGridder()
+		
 		frame.setStep(this.conf.stepX, this.conf.stepY)
 		
 		var me = this
