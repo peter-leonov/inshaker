@@ -745,6 +745,7 @@ http://www.inshaker.ru/cocktail/east-indian_negroni/
 http://www.inshaker.ru/cocktail/spicey_tropicana/
 http://www.inshaker.ru/cocktail/from_alice/
 http://www.inshaker.ru/cocktail/screwdriver/
+http://www.inshaker.ru/cocktail/postcard_from_italy/
 http://www.inshaker.ru/cocktail/dreadlock_holiday/
 http://www.inshaker.ru/cocktail/hunter/
 http://www.inshaker.ru/cocktail/ocha_karai/
