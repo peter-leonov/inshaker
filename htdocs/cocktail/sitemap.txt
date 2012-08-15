@@ -882,6 +882,7 @@ http://www.inshaker.ru/cocktail/royal_flambe/
 http://www.inshaker.ru/cocktail/royal_flush/
 http://www.inshaker.ru/cocktail/royal_shot/
 http://www.inshaker.ru/cocktail/ruby_tuesday/
+http://www.inshaker.ru/cocktail/ruby_tuesday_2/
 http://www.inshaker.ru/cocktail/ruby/
 http://www.inshaker.ru/cocktail/rudy_passion/
 http://www.inshaker.ru/cocktail/rouge/
