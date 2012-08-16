@@ -13,7 +13,7 @@ function Me (nodes)
 	this.switchBlock = false
 	this.blockNames = ['special', 'pop', 'author', 'classic']
 	
-	new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
+	new RollingImagesLite(nodes.promos.root, {animationType: 'easeInOutQuad', duration:0.75})
 	
 	var cocktails = nodes.cocktails
 	for(var i = 0; i < cocktails.length; i++)
@@ -29,7 +29,7 @@ Me.prototype =
 	
 	modelChanged: function (data, state)
 	{
-		this.renderPromo(this.nodes.promo, data.promos, 1, state)
+		this.renderPromo(this.nodes.promos.root, data.promos, 1, state)
 		
 		var cocktailNodes = this.nodes.cocktails,
 			blockNames = this.blockNames,
@@ -73,7 +73,7 @@ Me.prototype =
 	
 	getPromoImages: function ()
 	{
-		return images = this.nodes.promo.getElementsByTagName("img")
+		return images = this.nodes.promos.root.getElementsByTagName("img")
 	},
 	
 	loadFrames: function (list)
