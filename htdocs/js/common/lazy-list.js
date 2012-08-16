@@ -90,7 +90,11 @@ Me.prototype =
 		space.add(new Kinematics.Friction(this.conf.friction))
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
 		
-		scroller.onstop = function () { me.onstop() }
+		scroller.onstop = function ()
+		{
+			var boxes = gridder.getBoxesPrecise(scroller.realX + me.frameWidth/2, 0, 1, 1)
+			me.onstop(boxes[0].node)
+		}
 	},
 	
 	setNodes: function (nodes, realCount)
