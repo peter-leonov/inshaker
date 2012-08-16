@@ -25,7 +25,7 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
-    DATA_URI       = "https://www.google.com/analytics/feeds/data"
+    DATA_URI       = "https://www.googleapis.com/analytics/v2.4/data"
     LOGIN          = ENV["ANALYTICS_EMAIL"]
     PASSWORD       = ENV["ANALYTICS_PASSWORD"]
     
@@ -125,7 +125,7 @@ class Analytics
   
   def report query, start, endd, results=100
     get Config::DATA_URI +
-        "?ids=ga:#{Config::PROFILE_ID}" +
+        "?key=AIzaSyD4EPtTBcJnQmY5hyhhZxLTWHn2DMeRIYQ&ids=ga:#{Config::PROFILE_ID}" +
         "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
   end
   
