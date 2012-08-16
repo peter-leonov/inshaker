@@ -129,13 +129,17 @@ Me.prototype =
 	{
 		var promos = this.nodes.promos,
 			surface = promos.surface,
-			items = []
+			items = [],
+			promoNodes = {}
 		
 		for (var i = 0, il = set.length; i < il; i++)
 		{
-			var photo = this.createPromoElement(set[i])
-			surface.appendChild(photo)
-			items.push(photo)
+			var setOne = set[i],
+				promo = this.createPromoElement(setOne)
+			
+			surface.appendChild(promo)
+			items.push(promo)
+			promoNodes[setOne.name] = promo
 		}
 		
 		var total = items.length, last
@@ -158,6 +162,11 @@ Me.prototype =
 		list.setNodes(items, total)
 		list.load([last])
 		
+		var lh = new LocationHash(),
+			hash = UrlEncode.parse(lh.get())
+		
+		if (hash.name)
+			list.jumpToNode(promoNodes[hash.name])
 		
 		var me = this
 		list.onstop = function (node)
