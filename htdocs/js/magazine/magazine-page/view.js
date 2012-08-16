@@ -62,9 +62,10 @@ Me.prototype =
 	{
 		var a  = document.createElement("a")
 		a.href = promo.href
+		a.setAttribute('data-name', promo.name)
 		var img = document.createElement("img")
 		img.alt = promo.name
-		img.setAttribute("lazy", "/magazine/promos/" + (promo.html_name) + ".jpg")
+		img.setAttribute("data-lazy", "/magazine/promos/" + (promo.html_name) + ".jpg")
 		a.appendChild(img)
 		a.className = "point"
 		return a
@@ -126,85 +127,45 @@ Me.prototype =
 	
 	renderPromo: function (node, set, len, state)
 	{
-		var ri = node.RollingImagesLite
-		var parent = $('.surface', node)
+		var promos = this.nodes.promos,
+			surface = promos.surface,
+			items = []
 		
-		parent.empty()
-		
-		// One fake before the actual series, one after
-		parent.appendChild(this.createPromoElement(set[set.length - 1]))
-		for (var i = 0; i < set.length; i++)
-			parent.appendChild(this.createPromoElement(set[i]))
-		parent.appendChild(this.createPromoElement(set[0]))
-		ri.sync()
-		
-		if (set.length > 1)
+		for (var i = 0, il = set.length; i < il; i++)
 		{
-			var len = ri.points.length, me = this
-			// Jumping to avoid fakes
-			function switchFrame (prev)
+			var photo = this.createPromoElement(set[i])
+			surface.appendChild(photo)
+			items.push(photo)
+		}
+		
+		var total = items.length, last
+		if (total > 1)
+			last = surface.appendChild(items[0].cloneNode(true))
+		
+		var list = new LazyList()
+		list.bind(promos)
+		list.configure({pageLength: 1, friction: 100, pageVelocity: 47.5, soft: Infinity, min: 75, max: 100})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
 			{
-				if (!me.switchBlock)
-				{
-					var cur = ri.current, after = cur
-					
-					me.switchBlock = true
-					function switchUnblock () { me.switchBlock = false }
-					function jumpToAfter () { ri.goToFrame(after, 'directJump'); switchUnblock() }
-					function slideToAfter () { ri.goToFrame(after).oncomplete = switchUnblock }
-					
-					if (prev)
-					{
-						if (cur == 1)
-						{
-							after = len - 2
-							ri.goToFrame(0).oncomplete = jumpToAfter
-						}
-						else
-						{
-							after = cur - 1
-							slideToAfter()
-						}
-					}
-					else
-					{
-						if (cur == len - 2)
-						{
-							after = 1
-							ri.goToFrame(len - 1).oncomplete = jumpToAfter
-						}
-						else
-						{
-							after = cur + 1
-							slideToAfter()
-						}
-					}
-					
-					var promo = set[after-1]
-					Statistics.magazinePromoViewed(promo)
-					me.controller.updateHash(promo.name)
-					me.loadFrames(me.getRange(after))
-				}
+				// buggy in Firefox 3.5
+				var image = nodes[i].firstChild
+				if (!image.src)
+					image.src = image.getAttribute('data-lazy')
 			}
+		}
+		list.setNodes(items, total)
+		list.load([last])
+		
+		
+		var me = this
+		list.onstop = function (node)
+		{
+			var name = node.getAttribute('data-name')
 			
-			this.nodes.arrows[0].addEventListener('click', function (e) { switchFrame(true)  }, false)
-			this.nodes.arrows[1].addEventListener('click', function (e) { switchFrame(false) }, false)
-			
-			var initFrame = state.initFrame
-			for (var i = 0; i < set.length; i++)
-				if (set[i].name == initFrame)
-				{
-					initFrame = i + 1
-					break
-				}
-			
-			if (!initFrame)
-				initFrame = 1//Math.round(Math.random() * (len - 1)) + 1
-			if (!this.getPromoImages()[initFrame])
-				initFrame = 1
-			
-			this.loadInitialFrames(initFrame)
-			ri.jumpToFrame(initFrame)
+			Statistics.magazinePromoViewed(name)
+			me.controller.updateHash(name)
 		}
 	},
 	
