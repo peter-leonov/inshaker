@@ -26,8 +26,15 @@ $.onready
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
 			tagsList: $('#tags-list'),
-			promo: $('#promo'),
-			arrows: [$('#promo-prev'), $('#promo-next')]
+			
+			promos:
+			{
+				root:     $('#promo'),
+				viewport: $('#promo .viewport'),
+				surface:  $('#promo .surface'),
+				prev:     $('#promo-prev'),
+				next:     $('#promo-next')
+			}
 		}
 		
 		MagazinePage.initialize(nodes)
