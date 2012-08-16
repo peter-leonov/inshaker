@@ -46,6 +46,9 @@ $.onready
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 
+<!--# include virtual="/liby/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
+
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="view.js" -->
