@@ -181,7 +181,7 @@ Me.prototype =
 		
 		var box = boxes[i - i % this.conf.pageLength]
 		if (box)
-			this.scroller.setX(box.x)
+			this.scroller.moveToX(box.x)
 	}
 }
 
