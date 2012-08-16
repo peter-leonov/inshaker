@@ -156,7 +156,7 @@ Me.prototype =
 	
 	processIngredient: function (name)
 	{
-		var cocktails = Cocktail.getByIngredientNames([name])
+		var cocktails = Cocktail.getByAnyOfIngredientsNames([name])
 		var stats = []
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{

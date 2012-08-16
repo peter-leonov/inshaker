@@ -206,14 +206,14 @@ Me.prototype =
 	
 	sortByGroup: function (cocktails)
 	{
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		return this.sortByTags(cocktails, Cocktail.getGroups())
 	},
 	
 	sortByMethod: function (cocktails)
 	{
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		return this.sortByTags(cocktails, Cocktail.getMethods())
 	},
@@ -242,7 +242,7 @@ Me.prototype =
 	
 	sortByDate: function (cocktails)
 	{
-		cocktails.sort(Cocktail.addedSort)
+		cocktails.sort(Cocktail.sortByAddTime)
 		
 		var groups = []
 		
@@ -342,23 +342,21 @@ Me.prototype =
 	
 	combine: function (arr)
 	{
-		var res = [], seen = {}, total = 0
+		var res = []
 		
 		res.push(arr.slice())
 		if (arr.length == 1)
 			return res
 		
+		var seen = {}
 		function walk (a)
 		{
-			total++
-			
 			for (var i = a.length - 1; i >= 0; i--)
 			{
-				
 				var v = a.slice()
 				v.splice(i, 1)
 				
-				var s = ''+v
+				var s = '' + v
 				if (seen[s])
 					continue
 				seen[s] = true
@@ -519,7 +517,7 @@ Me.prototype =
 	
 	searchCocktails: function (add, remove)
 	{
-		var cocktails = Cocktail.getAll()
+		var res = Cocktail.getAll()
 		
 		for (var i = 0, il = add.length; i < il; i++)
 		{
@@ -534,7 +532,7 @@ Me.prototype =
 					tool = Cocktail.getByTool(name)
 				
 				var set = DB.disjunction([ingredient, tool])
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 			
@@ -544,21 +542,21 @@ Me.prototype =
 				for (var j = 0, jl = goods.length; j < jl; j++)
 					goods[j] = Cocktail.getByIngredient(goods[j])
 				var set = DB.disjunction(goods)
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 			
 			if (type == 'cocktail-tag')
 			{
 				var set = Cocktail.getByTag(item)
-				cocktails = DB.conjunction([cocktails, set])
+				res = DB.conjunction([res, set])
 				continue
 			}
 		}
 		
 		// remove logic has been removed ;)
 		
-		return cocktails
+		return res
 	},
 	
 	collapseQueryObjects: function (arr)
@@ -623,16 +621,14 @@ Me.prototype =
 	
 	updateAllIngredients: function ()
 	{
-		var ingredients = this.allIngredients
-		if (ingredients)
+		if (this.allIngredientsUpdated)
 			return
+		this.allIngredientsUpdated = true
 		
-		Ingredient.calculateEachIngredientUsage()
-		ingredients = this.allIngredients = Ingredient.getAll()
+		var ingredients = Ingredient.getAll()
+		ingredients.sort(Cocktail.sortIngredientsByUsage())
 		
 		var groups = this.groupByGroup(ingredients)
-		this.sortGoupsBy(groups, this.sortByUsage)
-		
 		this.view.renderInitialBlock(groups)
 	},
 	
@@ -662,14 +658,6 @@ Me.prototype =
 		}
 		return data
 	},
-	
-	sortGoupsBy: function (data, func)
-	{
-		for (var i = 0; i < data.length; i++)
-			data[i].list.sort(func)
-	},
-	
-	sortByUsage: function (a, b) { return b.cocktails.length - a.cocktails.length },
 	
 	updateExamples: function ()
 	{
@@ -712,8 +700,7 @@ Me.prototype =
 			return ingredients.random(1)[0]
 		
 		var ingredients = Ingredient.getByGroup('Крепкий алкоголь')
-		Ingredient.calculateEachIngredientUsage()
-		ingredients.sort(this.sortByUsage)
+		ingredients.sort(Cocktail.sortIngredientsByUsage())
 		return ingredients.slice(0, 8).random(1)[0]
 	},
 	

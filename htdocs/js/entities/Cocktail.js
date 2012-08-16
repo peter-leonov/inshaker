@@ -361,88 +361,23 @@ Me.staticMethods =
 		return DB.disjunction([ingredient, garnish, tool])
 	},
 	
-	getByIngredients: function (ingredients, opts)
+	getByAnyOfIngredients: function (ingredients)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names, opts)
+		return this.getByAnyOfIngredientsNames(names)
 	},
 	
-	getByIngredientNames: function (names, opts)
+	getByAnyOfIngredientsNames: function (names)
 	{
-		if (!opts)
-			opts = {}
+		var sets = []
 		
-		var db = opts.db || this.db
-		var count = opts.count || names.length
-		var searchGarnish = opts.searchGarnish
+		for (var i = 0, il = names.length; i < il; i++)
+			sets.push(this.getByIngredient(names[i]))
 		
-		// caching names of requested ingredients
-		var hash = DB.hashIndex(names)
-		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				matches = 0
-			
-			// always search trough ingredients field
-			{
-				var set = cocktail.ingredients
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
-			// here if cocktail does not pass by ingredients
-			
-			if (searchGarnish)
-			{
-				var set = cocktail.garnish
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
-		}
-		return res
-	},
-	
-	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
-	getCocktailsByIngredientNameHash: function ()
-	{
-		if (this._byIngredientName)
-			return this._byIngredientName
-		
-		var cache = this._byIngredientName = {},
-			db = this.db
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				ingredients = cocktail.ingredients
-			
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
-			{
-				var arr, name = ingredients[j][0]
-				
-				if ((arr = cache[name]))
-					arr.push(cocktail)
-				else
-					cache[name] = [cocktail]
-			}
-		}
-		
-		return cache
+		return DB.disjunction(sets)
 	},
 	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
@@ -484,15 +419,24 @@ Me.staticMethods =
 		return ingredients
 	},
 	
-    nameSort: function(a,b) {
-        if(a.name > b.name) return 1;
-	    else if(a.name == b.name) return 0;
-	    else return -1;
-    },
+	sortIngredientsByUsage: function ()
+	{
+		// build the index
+		this.getByIngredient()
+		
+		var index = this.index.byIngredient,
+			empty = []
+		function compare (a, b)
+		{
+			return (index[b.name] || empty).length - (index[a.name] || empty).length
+		}
+		
+		return compare
+	},
 	
-	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length },
+	sortByComplexity: function (a, b) { return a.ingredients.length - b.ingredients.length },
 	
-	addedSort: function (a, b) { return b.added - a.added }
+	sortByAddTime: function (a, b) { return b.added - a.added }
 }
 
 Object.extend(Me, DB.module.staticMethods)

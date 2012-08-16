@@ -36,6 +36,7 @@ var Me =
 		return hash
 	},
 	
+	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
 	hashOfAryIndexAryBy: function (src, f)
 	{
 		var hash = {}

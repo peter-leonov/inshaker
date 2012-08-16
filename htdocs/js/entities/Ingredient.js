@@ -187,22 +187,6 @@ Me.staticMethods =
 		return DB.disjunction(res)
 	},
 	
-	calculateEachIngredientUsage: function ()
-	{
-		if (this.eachIngredientUsageCalculated)
-			return
-		this.eachIngredientUsageCalculated = true
-		
-		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
-			db = this.db
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingred = db[i]
-			ingred.cocktails = cocktails[ingred.name] || []
-		}
-	},
-	
 	getByMarkPrepare: function ()
 	{
 		this.index.byMark = DB.hashOfAryIndexByKey(this.db, 'mark')
