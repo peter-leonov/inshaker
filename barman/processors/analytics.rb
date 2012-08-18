@@ -147,9 +147,16 @@ class Analytics
     
     rtoken = File.read(Config::TOKEN_REFRESH)
     
-    puts IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{rtoken}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
+    r = JSON.parse(IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{rtoken}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read)
     
-    exit
+    unless r["access_token"]
+      return false
+    end
+    
+    @token = r["access_token"]
+    File.write(Config::AUTH_TOKEN, @token)
+    
+    true
   end
   
   def get_last_updated
