@@ -25,7 +25,7 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
-    DEVICE_CODE    = "4/Ohi4vuCSYr5mskZynLOE__JtQXJG"
+    DEVICE_CODE    = "4/wtsHFKhDs12lsF6Vu_xWX8Tlez1n"
     CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
@@ -77,11 +77,9 @@ class Analytics
     
     check_auth and return true
     
-    refresh or return false
-    check_auth and return true
+    refresh and check_auth and return true
     
-    login or return false
-    check_auth and return true
+    login and check_auth and return true
     
     return false
   end
