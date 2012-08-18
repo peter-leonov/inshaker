@@ -24,13 +24,19 @@ class Analytics
   module Config
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
+    CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
+    DEVICE_CODE    = "4/wtsHFKhDs12lsF6Vu_xWX8Tlez1n"
+    CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
+    TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
-    DATA_URI       = "https://www.google.com/analytics/feeds/data"
+    DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
+    SECRET         = ENV["ANALYTICS_SECRET"]
     LOGIN          = ENV["ANALYTICS_EMAIL"]
     PASSWORD       = ENV["ANALYTICS_PASSWORD"]
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
-    TOKEN_FILE     = TMP + "/auth-token.txt"
+    AUTH_TOKEN     = TMP + "/auth-token.txt"
+    TOKEN_REFRESH  = TMP + "/refresh-token.txt"
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
@@ -59,7 +65,7 @@ class Analytics
     
     Cocktail.init
     
-    if login
+    if get_credentials
       get_last_updated
       update
       set_last_updated
@@ -67,31 +73,88 @@ class Analytics
     end
   end
   
+  def get_credentials
+    
+    check_auth and return true
+    
+    refresh and check_auth and return true
+    
+    login and check_auth and return true
+    
+    return false
+  end
+  
+  def ping
+    r = raw_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
+    JSON.parse(r)["kind"] == "analytics#gaData"
+  end
+  
+  def check_auth
+    
+    unless @token
+      unless File.exists?(Config::AUTH_TOKEN)
+        return false
+      end
+      
+      unless Time.now - File.mtime(Config::AUTH_TOKEN) < HOUR
+        return false
+      end
+      
+      @token = File.read(Config::AUTH_TOKEN)
+    end
+    
+    ping
+  end
+  
   def login
+    
+    # based on https://developers.google.com/accounts/docs/OAuth2ForDevices
+    
+    # # request a scope
+    # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
+    # exit
     
     # try to use recent login token
     
-    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < HOUR
-      @token = File.read(Config::TOKEN_FILE)
-      return true
-    end
     
-    # based on http://gdatatips.blogspot.com/2008/08/perform-clientlogin-using-curl.html
-    io = IO.popen(["curl", Config::AUTH_URI, "-s", "-d", "accountType=GOOGLE", "-d" "Email=#{Config::LOGIN}", "-d", "Passwd=#{Config::PASSWORD}", "-d", "service=analytics", "-d", "source=inshaker"])
-    r = io.read
+    # get an access token
+    io = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0", Config::TOKEN_URI])
+    xx = io.read
+    # puts xx
+    r = JSON.parse(xx)
     io.close
     
     
-    token = /^Auth=(\S{100,})/.match(r)
-    unless token
+    unless r["access_token"]
+      error r["error"]["message"]
       error "не удалось залогиниться"
       return false
     end
     
-    @token = token[1]
-    File.write(Config::TOKEN_FILE, @token)
+    @token = r["access_token"]
+    File.write(Config::AUTH_TOKEN, @token)
     
     return true
+  end
+  
+  def refresh
+    
+    unless File.exists?(Config::TOKEN_REFRESH)
+      return false
+    end
+    
+    rtoken = File.read(Config::TOKEN_REFRESH)
+    
+    r = JSON.parse(IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{rtoken}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read)
+    
+    unless r["access_token"]
+      return false
+    end
+    
+    @token = r["access_token"]
+    File.write(Config::AUTH_TOKEN, @token)
+    
+    true
   end
   
   def get_last_updated
@@ -106,17 +169,22 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def get url
+  def raw_get url
+    io = IO.popen(["curl", "-s", "-H", "Authorization: Bearer #{@token}", url])
+    r = io.read
+    io.close
     
+    return r
+  end
+  
+  def get url
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
       return File.read(cache)
     end
     
-    io = IO.popen(["curl", url, "-s", "--header", "Authorization: GoogleLogin Auth=#{@token}"])
-    r = io.read
-    io.close
+    r = raw_get(url)
     
     File.write(cache, r)
     
@@ -126,13 +194,13 @@ class Analytics
   def report query, start, endd, results=100
     get Config::DATA_URI +
         "?ids=ga:#{Config::PROFILE_ID}" +
-        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
+        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true"
   end
   
   def get_pageviews start, endd
     json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
     data = JSON.parse(json)
-    
+    p data
     parse_pageviews(data)
   end
   
@@ -295,25 +363,11 @@ class Analytics
       h[k] = Hash::new(0)
     end
     
-    data["feed"]["entry"].each do |entry|
+    data["rows"].each do |entry|
       
-      v = entry["dxp$dimension"][0]
-      unless v["name"] = "ga:pagePath"
-        error "ga:pagePath переехал"
-      end
-      path = v["value"]
-      
-      v = entry["dxp$metric"][0]
-      unless v["name"] = "ga:pageviews"
-        error "ga:pageviews переехал"
-      end
-      pv = v["value"].to_i
-      
-      v = entry["dxp$metric"][1]
-      unless v["name"] = "ga:uniquePageviews"
-        error "ga:uniquePageviews переехал"
-      end
-      upv = v["value"].to_i
+      path = entry[0]
+      pv = entry[1].to_i
+      upv = entry[2].to_i
       
       if upv > pv
         error "уникальных больше чем просмотров"
@@ -350,8 +404,8 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    total_pageviews = data["feed"]["dxp$aggregates"]["dxp$metric"][0]["value"].to_i
-    total_uniques = data["feed"]["dxp$aggregates"]["dxp$metric"][1]["value"].to_i
+    total_pageviews = data["totalsForAllResults"]["ga:pageviews"].to_i
+    total_uniques = data["totalsForAllResults"]["ga:uniquePageviews"].to_i
     
     if total_pageviews < total_uniques
       error "всего просмотров меньше чем всего уникальных просмотров"
