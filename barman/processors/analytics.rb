@@ -25,7 +25,7 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
-    DEVICE_CODE    = "4/fs-9m3zc9A8HY9PemBgjZRT8xcN2"
+    DEVICE_CODE    = "4/Ohi4vuCSYr5mskZynLOE__JtQXJG"
     CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
