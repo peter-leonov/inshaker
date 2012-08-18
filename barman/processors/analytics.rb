@@ -309,25 +309,11 @@ class Analytics
       h[k] = Hash::new(0)
     end
     
-    data["feed"]["entry"].each do |entry|
+    data["rows"].each do |entry|
       
-      v = entry["dxp$dimension"][0]
-      unless v["name"] = "ga:pagePath"
-        error "ga:pagePath переехал"
-      end
-      path = v["value"]
-      
-      v = entry["dxp$metric"][0]
-      unless v["name"] = "ga:pageviews"
-        error "ga:pageviews переехал"
-      end
-      pv = v["value"].to_i
-      
-      v = entry["dxp$metric"][1]
-      unless v["name"] = "ga:uniquePageviews"
-        error "ga:uniquePageviews переехал"
-      end
-      upv = v["value"].to_i
+      path = entry[0]
+      pv = entry[1].to_i
+      upv = entry[2].to_i
       
       if upv > pv
         error "уникальных больше чем просмотров"
