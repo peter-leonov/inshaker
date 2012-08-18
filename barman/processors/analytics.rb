@@ -350,8 +350,8 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    total_pageviews = data["feed"]["dxp$aggregates"]["dxp$metric"][0]["value"].to_i
-    total_uniques = data["feed"]["dxp$aggregates"]["dxp$metric"][1]["value"].to_i
+    total_pageviews = data["totalsForAllResults"]["ga:pageviews"].to_i
+    total_uniques = data["totalsForAllResults"]["ga:uniquePageviews"].to_i
     
     if total_pageviews < total_uniques
       error "всего просмотров меньше чем всего уникальных просмотров"
