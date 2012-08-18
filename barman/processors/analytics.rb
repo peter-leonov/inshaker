@@ -24,8 +24,13 @@ class Analytics
   module Config
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
+    CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
+    DEVICE_CODE    = "4/0qImzfcAiCDB_5pavQImS4Ej4Il_"
+    CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
+    TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
-    DATA_URI       = "https://www.googleapis.com/analytics/v2.4/data"
+    DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
+    SECRET         = ENV["ANALYTICS_SECRET"]
     LOGIN          = ENV["ANALYTICS_EMAIL"]
     PASSWORD       = ENV["ANALYTICS_PASSWORD"]
     
@@ -68,6 +73,16 @@ class Analytics
   end
   
   def login
+    
+    # # request a scope
+    # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
+    
+    # get an access token
+    # puts IO.popen(["curl", Config::TOKEN_URI, "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0"]).read
+    
+    @token = "ya29.AHES6ZR936bC_0x3Dua6zQmgs4HAOWp_RBLbRrYreZco6CrekaVZgA"
+    
+    return true
     
     # try to use recent login token
     
@@ -114,7 +129,7 @@ class Analytics
       return File.read(cache)
     end
     
-    io = IO.popen(["curl", url, "-s", "--header", "Authorization: GoogleLogin Auth=#{@token}"])
+    io = IO.popen(["curl", "-s", "-H", "Authorization: Bearer #{@token}", url])
     r = io.read
     io.close
     
@@ -125,14 +140,14 @@ class Analytics
   
   def report query, start, endd, results=100
     get Config::DATA_URI +
-        "?key=AIzaSyD4EPtTBcJnQmY5hyhhZxLTWHn2DMeRIYQ&ids=ga:#{Config::PROFILE_ID}" +
-        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
+        "?ids=ga:#{Config::PROFILE_ID}" +
+        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true"
   end
   
   def get_pageviews start, endd
     json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
     data = JSON.parse(json)
-    
+    p data
     parse_pageviews(data)
   end
   
