@@ -25,7 +25,7 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
-    DEVICE_CODE    = "4/0qImzfcAiCDB_5pavQImS4Ej4Il_"
+    DEVICE_CODE    = "4/fs-9m3zc9A8HY9PemBgjZRT8xcN2"
     CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
@@ -74,15 +74,11 @@ class Analytics
   
   def login
     
+    # based on https://developers.google.com/accounts/docs/OAuth2ForDevices
+    
     # # request a scope
     # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
-    
-    # get an access token
-    # puts IO.popen(["curl", Config::TOKEN_URI, "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0"]).read
-    
-    @token = "ya29.AHES6ZR936bC_0x3Dua6zQmgs4HAOWp_RBLbRrYreZco6CrekaVZgA"
-    
-    return true
+    # exit
     
     # try to use recent login token
     
@@ -91,19 +87,22 @@ class Analytics
       return true
     end
     
-    # based on http://gdatatips.blogspot.com/2008/08/perform-clientlogin-using-curl.html
-    io = IO.popen(["curl", Config::AUTH_URI, "-s", "-d", "accountType=GOOGLE", "-d" "Email=#{Config::LOGIN}", "-d", "Passwd=#{Config::PASSWORD}", "-d", "service=analytics", "-d", "source=inshaker"])
-    r = io.read
+    
+    # get an access token
+    io = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0", Config::TOKEN_URI])
+    xx = io.read
+    # puts xx
+    r = JSON.parse(xx)
     io.close
     
     
-    token = /^Auth=(\S{100,})/.match(r)
-    unless token
+    unless r["access_token"]
+      error r["error"]["message"]
       error "не удалось залогиниться"
       return false
     end
     
-    @token = token[1]
+    @token = r["access_token"]
     File.write(Config::TOKEN_FILE, @token)
     
     return true
