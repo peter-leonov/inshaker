@@ -35,7 +35,8 @@ class Analytics
     PASSWORD       = ENV["ANALYTICS_PASSWORD"]
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
-    TOKEN_FILE     = TMP + "/auth-token.txt"
+    AUTH_TOKEN     = TMP + "/auth-token.txt"
+    TOKEN_REFRESH  = TMP + "/refresh-token.txt"
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
@@ -64,12 +65,47 @@ class Analytics
     
     Cocktail.init
     
-    if login
+    if get_credentials
       get_last_updated
       update
       set_last_updated
       flush_all_json
     end
+  end
+  
+  def get_credentials
+    
+    check_auth and return true
+    
+    refresh or return false
+    check_auth and return true
+    
+    login or return false
+    check_auth and return true
+    
+    return false
+  end
+  
+  def ping
+    r = raw_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
+    JSON.parse(r)["kind"] == "analytics#gaData"
+  end
+  
+  def check_auth
+    
+    unless @token
+      unless File.exists?(Config::AUTH_TOKEN)
+        return false
+      end
+      
+      unless Time.now - File.mtime(Config::AUTH_TOKEN) < HOUR
+        return false
+      end
+      
+      @token = File.read(Config::AUTH_TOKEN)
+    end
+    
+    ping
   end
   
   def login
@@ -81,11 +117,6 @@ class Analytics
     # exit
     
     # try to use recent login token
-    
-    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < HOUR
-      @token = File.read(Config::TOKEN_FILE)
-      return true
-    end
     
     
     # get an access token
@@ -103,9 +134,22 @@ class Analytics
     end
     
     @token = r["access_token"]
-    File.write(Config::TOKEN_FILE, @token)
+    File.write(Config::AUTH_TOKEN, @token)
     
     return true
+  end
+  
+  def refresh
+    
+    unless File.exists?(Config::TOKEN_REFRESH)
+      return false
+    end
+    
+    rtoken = File.read(Config::TOKEN_REFRESH)
+    
+    puts IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{rtoken}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
+    
+    exit
   end
   
   def get_last_updated
@@ -120,17 +164,22 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def get url
+  def raw_get url
+    io = IO.popen(["curl", "-s", "-H", "Authorization: Bearer #{@token}", url])
+    r = io.read
+    io.close
     
+    return r
+  end
+  
+  def get url
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
       return File.read(cache)
     end
     
-    io = IO.popen(["curl", "-s", "-H", "Authorization: Bearer #{@token}", url])
-    r = io.read
-    io.close
+    r = raw_get(url)
     
     File.write(cache, r)
     
