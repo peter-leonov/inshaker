@@ -324,11 +324,7 @@ Me.staticMethods =
 	
 	getByGood: function (name)
 	{
-		var ingredient = this.getByIngredient(name),
-			garnish = this.getByGarnish(name),
-			tool = this.getByTool(name)
-		
-		return DB.disjunction([ingredient, garnish, tool])
+		return DB.disjunction([this.getByIngredient(name), this.getByGarnish(name), this.getByTool(name)])
 	},
 	
 	getByAnyOfIngredients: function (ingredients)
@@ -389,16 +385,96 @@ Me.staticMethods =
 		return ingredients
 	},
 	
+	guessEntityTypePrepare: function ()
+	{
+		function ingredientTag (name)
+		{
+			return Cocktail.getByAnyOfIngredients(Ingredient.getByTag(name))
+		}
+		
+		function ingredient (name)
+		{
+			return Cocktail.getByIngredient(name)
+		}
+		
+		function tool (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function thing (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function cocktail (name)
+		{
+			var res = Cocktail.getByName(name)
+			if (!res)
+				return []
+			return [res]
+		}
+		
+		function cocktailTag (name)
+		{
+			return Cocktail.getByTag(name)
+		}
+		
+		
+		var index = {}
+		
+		var list = Ingredient.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = ingredientTag
+		
+		var gg2type = {ingredients: ingredient, tools: tool, things: thing}
+		var list = Ingredient.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = gg2type[Ingredient.getGroupOfGroup(item.group)]
+		}
+		
+		var list = Cocktail.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = cocktail
+		}
+		
+		var list = Cocktail.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = cocktailTag
+		
+		this.index.entityType = index
+	},
+	
+	guessEntityType: function (name)
+	{
+		return this.index.entityType[name]
+	},
+	
+	getByEntity: function (name)
+	{
+		var type = this.guessEntityType(name)
+		if (!type)
+			return []
+		
+		return type(name)
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index
 		this.getByIngredient()
 		
-		var index = this.index.byIngredient,
-			empty = []
+		var index = this.index.byIngredient
 		function compare (a, b)
 		{
-			return (index[b.name] || empty).length - (index[a.name] || empty).length
+			a = index[a.name]
+			b = index[b.name]
+			
+			return (b ? b.length : 0) - (a ? a.length : 0)
 		}
 		
 		return compare

@@ -23,7 +23,7 @@ Me.prototype =
 			if (!tag)
 				continue
 			
-			var cocktails = Cocktail.getByTag(tag)
+			var cocktails = Cocktail.getByEntity(tag)
 			if (cocktails.length < 1)
 				continue
 			
