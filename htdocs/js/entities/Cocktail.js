@@ -385,6 +385,46 @@ Me.staticMethods =
 		return ingredients
 	},
 	
+	guessEntityTypePrepare: function ()
+	{
+		console.time('guessEntityTypePrepare')
+		
+		var index = {}
+		
+		var list = Ingredient.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = 'ingredient-tag'
+		
+		var gg2type = {ingredients: 'ingredient', tools: 'tool', things: 'thing'}
+		var list = Ingredient.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var ingredient = list[i]
+			var gg = Ingredient.getGroupOfGroup(ingredient.group)
+			index[ingredient.name] = gg2type[gg]
+		}
+		
+		var list = Cocktail.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var cocktail = list[i]
+			index[cocktail.name] = 'cocktail'
+		}
+		
+		var list = Cocktail.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = 'cocktail-tag'
+		
+		this.index.entityType = index
+		
+		console.timeEnd('guessEntityTypePrepare')
+	},
+	
+	guessEntityType: function (name)
+	{
+		return this.index.entityType[name]
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index
