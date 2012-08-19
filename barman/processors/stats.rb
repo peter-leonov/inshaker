@@ -7,5 +7,4 @@ $stdout.sync = true
 
 Dir.chdir("#{Inshaker::ROOT_DIR}/analytic")
 
-`./login.sh`
-`./update.sh`
+exit system("./login.sh && ./update.sh")
