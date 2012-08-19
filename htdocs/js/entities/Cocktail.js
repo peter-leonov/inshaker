@@ -387,8 +387,6 @@ Me.staticMethods =
 	
 	guessEntityTypePrepare: function ()
 	{
-		console.time('guessEntityTypePrepare')
-		
 		var index = {}
 		
 		var list = Ingredient.getTags()
@@ -416,13 +414,37 @@ Me.staticMethods =
 			index[list[i]] = 'cocktail-tag'
 		
 		this.index.entityType = index
-		
-		console.timeEnd('guessEntityTypePrepare')
 	},
 	
 	guessEntityType: function (name)
 	{
 		return this.index.entityType[name]
+	},
+	
+	getByEntity: function (name)
+	{
+		var type = this.guessEntityType(name)
+		
+		switch (type)
+		{
+			case 'ingredient':
+			return this.getByIngredient(name)
+			
+			case 'ingredient-tag':
+			return this.getByAnyOfIngredients(Ingredient.getByTag(name))
+			
+			case 'cocktail-tag':
+			return this.getByTag(name)
+			
+			case 'cocktail':
+			return [this.getByName(name)]
+			
+			case 'tool':
+			case 'thing':
+			return this.getByTool(name)
+		}
+		
+		return []
 	},
 	
 	sortIngredientsByUsage: function ()
