@@ -242,16 +242,14 @@ Me.staticMethods =
 	
 	getByNames: function (names)
 	{
-		var byName = this.byName
-		
 		var res = []
+		
+		var byName = this.byName
 		for (var i = 0, il = names.length; i < il; i++)
 			res[i] = byName[names[i]]
 		
 		return res
 	},
-	
-	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getByToolPrepare: function (name)
 	{
@@ -271,34 +269,6 @@ Me.staticMethods =
 	{
 		var res = this.index.byTool[name]
 		return res ? res.slice() : []
-	},
-	
-	getByTags: function (tags, opts)
-	{
-		if (!opts)
-			opts = {}
-		
-		var db = opts.db || this.db
-		var count = opts.count || tags.length
-		
-		var hash = DB.hashIndex(tags)
-		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				matches = 0
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-				if (hash[tags[j]] && ++matches >= count)
-				{
-					res.push(cocktail)
-					continue db
-				}
-		}
-		return res;
 	},
 	
 	getByTagPrepare: function ()
