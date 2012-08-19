@@ -431,16 +431,15 @@ Me.staticMethods =
 		var list = Ingredient.getAll()
 		for (var i = 0, il = list.length; i < il; i++)
 		{
-			var ingredient = list[i]
-			var gg = Ingredient.getGroupOfGroup(ingredient.group)
-			index[ingredient.name] = gg2type[gg]
+			var item = list[i]
+			index[item.name] = gg2type[Ingredient.getGroupOfGroup(item.group)]
 		}
 		
 		var list = Cocktail.getAll()
 		for (var i = 0, il = list.length; i < il; i++)
 		{
-			var cocktail = list[i]
-			index[cocktail.name] = cocktail
+			var item = list[i]
+			index[item.name] = cocktail
 		}
 		
 		var list = Cocktail.getTags()
