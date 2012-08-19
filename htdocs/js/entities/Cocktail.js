@@ -324,11 +324,7 @@ Me.staticMethods =
 	
 	getByGood: function (name)
 	{
-		var ingredient = this.getByIngredient(name),
-			garnish = this.getByGarnish(name),
-			tool = this.getByTool(name)
-		
-		return DB.disjunction([ingredient, garnish, tool])
+		return DB.disjunction([this.getByIngredient(name), this.getByGarnish(name), this.getByTool(name)])
 	},
 	
 	getByAnyOfIngredients: function (ingredients)
