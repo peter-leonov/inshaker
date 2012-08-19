@@ -447,6 +447,23 @@ Me.staticMethods =
 		return []
 	},
 	
+	getByEntity2: function (name)
+	{
+		var res = this.getByIngredient(name)
+		if (res.length)
+			return res
+		
+		var ingredients = Ingredient.getByTag(name)
+		if (ingredients.length)
+			return this.getByAnyOfIngredients(ingredients)
+		
+		var res = this.getByTag(name)
+		if (res.length)
+			return res
+		
+		return this.getByTool(name)
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index
