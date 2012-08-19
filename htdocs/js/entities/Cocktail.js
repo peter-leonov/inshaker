@@ -469,11 +469,13 @@ Me.staticMethods =
 		// build the index
 		this.getByIngredient()
 		
-		var index = this.index.byIngredient,
-			empty = []
+		var index = this.index.byIngredient
 		function compare (a, b)
 		{
-			return (index[b.name] || empty).length - (index[a.name] || empty).length
+			a = index[a.name]
+			b = index[b.name]
+			
+			return (b ? b.length : 0) - (a ? a.length : 0)
 		}
 		
 		return compare
