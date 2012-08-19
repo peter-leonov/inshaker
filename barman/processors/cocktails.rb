@@ -598,6 +598,7 @@ class CocktailsProcessor < Inshaker::Processor
   
   def flush_seo
     tags = [
+      ["Алкогольные", "kokteyli-s-djinom", "Коктейль с джином"],
       ["Алкогольные", "kokteyli-s-tekiloj", "Коктейль с текилой"],
       ["Просто приготовить", "domashnie-kokteyli", "Домашний коктейль"],
       ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
