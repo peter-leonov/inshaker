@@ -242,9 +242,9 @@ Me.staticMethods =
 	
 	getByNames: function (names)
 	{
-		var byName = this.byName
-		
 		var res = []
+		
+		var byName = this.byName
 		for (var i = 0, il = names.length; i < il; i++)
 			res[i] = byName[names[i]]
 		
