@@ -610,7 +610,12 @@ class CocktailsProcessor < Inshaker::Processor
       ["Голубые", "golubye-kokteyli", "Голубой коктейль"],
       ["Маргариты", "margarita", "Маргарита"],
       ["Космополитен", "cosmopolitan", "Космополитен"],
-      ["Пина Колада", "pina-colada", "Пина Колада"]
+      ["Пина Колада", "pina-colada", "Пина Колада"],
+      ["Алкогольные", "kokteyli-s-vodkoj", "Коктейли с водкой"],
+      ["Алкогольные", "kokteyli-s-viski", "Коктейли с виски"],
+      ["Шоты", "b-52", "Б-52"],
+      ["Слабоалкогольные", "kokteyli-s-likerom", "Коктейли с ликером"],
+      ["Крепкие", "kokteyli-s-romom", "Коктейли с ромом"]
     ]
     
     tags.each do |v|
