@@ -409,7 +409,7 @@ Me.staticMethods =
 		
 		function cocktail (name)
 		{
-			var res = this.getByName(name)
+			var res = Cocktail.getByName(name)
 			if (!res)
 				return []
 			return [res]
