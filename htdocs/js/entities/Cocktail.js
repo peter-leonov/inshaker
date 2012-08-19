@@ -387,13 +387,47 @@ Me.staticMethods =
 	
 	guessEntityTypePrepare: function ()
 	{
+		function ingredientTag (name)
+		{
+			return Cocktail.getByAnyOfIngredients(Ingredient.getByTag(name))
+		}
+		
+		function ingredient (name)
+		{
+			return Cocktail.getByIngredient(name)
+		}
+		
+		function tool (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function thing (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function cocktail (name)
+		{
+			var res = this.getByName(name)
+			if (!res)
+				return []
+			return [res]
+		}
+		
+		function cocktailTag (name)
+		{
+			return Cocktail.getByTag(name)
+		}
+		
+		
 		var index = {}
 		
 		var list = Ingredient.getTags()
 		for (var i = 0, il = list.length; i < il; i++)
-			index[list[i]] = 'ingredient-tag'
+			index[list[i]] = ingredientTag
 		
-		var gg2type = {ingredients: 'ingredient', tools: 'tool', things: 'thing'}
+		var gg2type = {ingredients: ingredient, tools: tool, things: thing}
 		var list = Ingredient.getAll()
 		for (var i = 0, il = list.length; i < il; i++)
 		{
@@ -406,12 +440,12 @@ Me.staticMethods =
 		for (var i = 0, il = list.length; i < il; i++)
 		{
 			var cocktail = list[i]
-			index[cocktail.name] = 'cocktail'
+			index[cocktail.name] = cocktail
 		}
 		
 		var list = Cocktail.getTags()
 		for (var i = 0, il = list.length; i < il; i++)
-			index[list[i]] = 'cocktail-tag'
+			index[list[i]] = cocktailTag
 		
 		this.index.entityType = index
 	},
@@ -424,27 +458,10 @@ Me.staticMethods =
 	getByEntity: function (name)
 	{
 		var type = this.guessEntityType(name)
+		if (!type)
+			return []
 		
-		switch (type)
-		{
-			case 'ingredient':
-			return this.getByIngredient(name)
-			
-			case 'ingredient-tag':
-			return this.getByAnyOfIngredients(Ingredient.getByTag(name))
-			
-			case 'cocktail-tag':
-			return this.getByTag(name)
-			
-			case 'cocktail':
-			return [this.getByName(name)]
-			
-			case 'tool':
-			case 'thing':
-			return this.getByTool(name)
-		}
-		
-		return []
+		return type(name)
 	},
 	
 	getByEntity2: function (name)
