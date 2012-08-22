@@ -65,6 +65,33 @@ var AboutPage = {
 			
 			var chartPie = new visual.PieChart(statCities)
 			chartPie.draw(dataPie, optionsPie)
+			
+			
+			var dataArea = new visual.DataTable()
+			dataArea.addColumn('string', 'Дата')
+			dataArea.addColumn('number', 'Визиты')
+			dataArea.addColumn('number', 'Просмотры')
+			dataArea.addRows(visitors)
+			
+			var optionsArea = {
+				isStacked: true,
+				focusTarget: 'category',
+				width: 510,
+				height: 400,
+				legend:
+				{
+					position: 'bottom',
+					alignment: 'center'
+				},
+				chartArea:
+				{
+					left: 95,
+					width: 370
+				}
+			}
+			
+			var chartArea = new visual.AreaChart(statVisits)
+			chartArea.draw(dataArea, optionsArea)
 		}
 		
 		var form = $('#feedback_form')
