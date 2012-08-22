@@ -19,7 +19,7 @@ var AboutPage = {
 		$('#poster').style.display = "block";
 	},
 	
-	init: function ()
+	init: function (cities, visitors)
 	{
 		var main = $('#menu')
 		var tabs = $$('#main-column .content')
@@ -105,7 +105,7 @@ var AboutPage = {
 };
 
 $.onready(function(){
-	AboutPage.init();
+	AboutPage.init(<!--# include virtual="/stat/cities/data.json" -->, <!--# include virtual="/stat/visitors/data.json" -->);
 	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
