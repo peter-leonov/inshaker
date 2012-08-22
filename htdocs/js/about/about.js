@@ -39,6 +39,33 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
+		var statCities = $('#stat_cities'),
+			statVisits = $('#stat_visits')
+		
+		google.setOnLoadCallback(drawCharts)
+		
+		function drawCharts ()
+		{
+			var visual = google.visualization
+			
+			var dataPie = new visual.DataTable()
+			dataPie.addColumn('string', 'City')
+			dataPie.addColumn('number', 'Slices')
+			dataPie.addRows(cities)
+			
+			var optionsPie = {
+				width: 510,
+				height: 400,
+				chartArea:
+				{
+					left: 15,
+					width: 1000
+				}
+			}
+			
+			var chartPie = new visual.PieChart(statCities)
+			chartPie.draw(dataPie, optionsPie)
+		}
 		
 		var form = $('#feedback_form')
 		function sendListener (e)
