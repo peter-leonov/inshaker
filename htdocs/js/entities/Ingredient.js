@@ -4,8 +4,20 @@ eval(NodesShortcut.include())
 
 function Me (data)
 {
-	for (var k in data)
-		this[k] = data[k]
+	this.name    = data.name
+	this.screen  = data.screen
+	this.names   = data.names
+	
+	this.path    = data.path
+	
+	this.group   = data.group
+	this.tags    = data.tags
+	
+	this.brand   = data.brand
+	this.mark    = data.mark
+	
+	this.unit    = data.unit
+	this.volumes = data.volumes
 }
 
 Me.prototype =
