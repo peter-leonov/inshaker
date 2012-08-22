@@ -39,20 +39,6 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
-		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
-		line.addVariable("path", "stat/amcharts/");
-		line.addParam("wmode", "opaque");
-		line.addVariable("settings_file", escape("stat/visitors/settings.xml"));
-		line.addVariable("data_file", escape("stat/visitors/data.xml"));
-		line.write("stat_visits");
-
-		var pie = new SWFObject("stat/amcharts/ampie.swf", "ampie", "510", "400", "8", "#FFFFFF");
-		pie.addVariable("path", "stat/amcharts/");
-		pie.addParam("wmode", "opaque");
-		pie.addVariable("settings_file", escape("stat/cities/settings.xml"));
-		pie.addVariable("data_file", escape("stat/cities/data.xml"));		
-		pie.addVariable("preloader_color", "#999999");
-		pie.write("stat_cities");
 		
 		var form = $('#feedback_form')
 		function sendListener (e)
