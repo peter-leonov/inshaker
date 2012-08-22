@@ -11,7 +11,7 @@ function Me (data)
 	this.path    = data.path
 	
 	this.group   = data.group
-	this.tags    = data.tags
+	this.tags    = data.tags || []
 	
 	this.brand   = data.brand
 	this.mark    = data.mark

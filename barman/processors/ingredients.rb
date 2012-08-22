@@ -331,6 +331,9 @@ class IngredientsProcessor < Inshaker::Processor
     data = {}
     ht_dir = entity.delete("ht_dir")
     entity["path"] = ht_dir.name
+    if entity["tags"].empty?
+      entity.delete("tags")
+    end
     @local_properties.each do |prop|
       data[prop] = entity.delete(prop)
     end
