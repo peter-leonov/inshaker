@@ -150,7 +150,10 @@ Me.staticMethods =
 	
 	getByTagPrepare: function ()
 	{
-		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+		var index = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+		index['Любой ингредиент'] = this.db.slice()
+		
+		this.index.byTag = index
 	},
 	
 	getByTag: function (name)

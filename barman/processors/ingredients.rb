@@ -220,7 +220,6 @@ class IngredientsProcessor < Inshaker::Processor
     
     good_tags = good["tags"] = []
     tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
-    tags << "любой ингредиент"
     
     if brand
       good[:brand] = brand
@@ -275,7 +274,7 @@ class IngredientsProcessor < Inshaker::Processor
   
   def check_intergity
     
-    tags_used = {}
+    tags_used = {"Любой ингредиент" => true}
     groups_used = {}
     
     @entities.each do |ingredient|
