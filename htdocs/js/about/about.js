@@ -158,6 +158,3 @@ $.onready(function(){
 <!--# include virtual="/js/common/rolling-images.js" -->
 
 <!--# include virtual="/js/event/switcher.js" -->
-
-<!--# include virtual="swfobject.js" -->
-
