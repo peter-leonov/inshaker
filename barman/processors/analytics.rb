@@ -27,7 +27,7 @@ class Analytics
     CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
-    SECRET         = "w2i5khtidtXM5RuZocKMijGp"
+    SECRET         = ENV["ANALYTICS_CLIENT_SECRET"]
     TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
