@@ -4,6 +4,7 @@
 require "config"
 
 require "lib/json"
+require "lib/output"
 
 class Stats
   
