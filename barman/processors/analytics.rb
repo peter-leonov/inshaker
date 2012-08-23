@@ -3,6 +3,7 @@
 
 require "digest/md5"
 require "optparse"
+require "jwt"
 
 require "lib/json"
 require "lib/string"
@@ -25,14 +26,14 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
+    CLIENT_EMAIL   = "3164701909@developer.gserviceaccount.com"
+    CERT           = "/Users/peter-imac/Desktop/key"
     DEVICE_CODE    = "4/wtsHFKhDs12lsF6Vu_xWX8Tlez1n"
     CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
     DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
     SECRET         = ENV["ANALYTICS_SECRET"]
-    LOGIN          = ENV["ANALYTICS_EMAIL"]
-    PASSWORD       = ENV["ANALYTICS_PASSWORD"]
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     AUTH_TOKEN     = TMP + "/auth-token.txt"
@@ -77,7 +78,7 @@ class Analytics
     
     check_auth and return true
     
-    refresh and check_auth and return true
+    # refresh and check_auth and return true
     
     login and check_auth and return true
     
@@ -86,6 +87,7 @@ class Analytics
   
   def ping
     r = raw_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
+    puts r
     JSON.parse(r)["kind"] == "analytics#gaData"
   end
   
@@ -108,19 +110,23 @@ class Analytics
   
   def login
     
-    # based on https://developers.google.com/accounts/docs/OAuth2ForDevices
+    now = Time.now.to_i
     
-    # # request a scope
-    # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
-    # exit
+    claim = {
+      "iss" => Config::CLIENT_EMAIL,
+      "scope" => "https://www.googleapis.com/auth/analytics.readonly",
+      "aud" => Config::TOKEN_URI,
+      "exp" => now + 3600,
+      "iat" => now
+    }
     
-    # try to use recent login token
+    cert = OpenSSL::PKCS12.new(File.read(Config::CERT), 'notasecret')
     
+    assertion = JWT.encode(claim, cert.key, "RS256")
     
-    # get an access token
-    io = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0", Config::TOKEN_URI])
+    io = IO.popen(["curl", "-s", "-d", "grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer", "-d", "assertion=#{assertion}", Config::TOKEN_URI])
     xx = io.read
-    # puts xx
+    puts xx
     r = JSON.parse(xx)
     io.close
     
