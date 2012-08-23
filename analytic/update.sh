@@ -37,15 +37,6 @@ DAY=$((3600 * 24))
 END=$(($NOW - 2 * $DAY))
 
 
-# authorization
-
-if [ ! -f data/auth_token.txt ]; then
-	echo "ERROR: data/auth_token.txt file is missing" 1>&2
-	exit 1
-fi
-AUTH_TOKEN=$(cat data/auth_token.txt)
-
-
 # reports
 
 report (){
@@ -65,7 +56,7 @@ report (){
 		rm -f $MY_NAME.xml
 		echo "  downloading..."
 		mkdir -p data
-		curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$MY_NAME.xml
+		curl "$FEED_URI" -s --header "Authorization: Bearer $ANALYTICS_ACCESS_TOKEN" > data/$MY_NAME.xml
 	fi
 	if cat data/$MY_NAME.xml | grep "<?xml" >/dev/null; then
 		echo "  processing..."
