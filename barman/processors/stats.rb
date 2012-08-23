@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 
-require "config"
-
 require "lib/json"
 require "lib/output"
+
+require "config"
+
 
 class Stats
   
