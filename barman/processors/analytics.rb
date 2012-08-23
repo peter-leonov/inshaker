@@ -3,7 +3,6 @@
 
 require "digest/md5"
 require "optparse"
-require "jwt"
 
 require "lib/json"
 require "lib/string"
@@ -26,16 +25,14 @@ class Analytics
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
     CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
-    DEVICE_CODE    = "4/wtsHFKhDs12lsF6Vu_xWX8Tlez1n"
-    CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
-    AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
     DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
     SECRET         = "w2i5khtidtXM5RuZocKMijGp"
+    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
-    AUTH_TOKEN     = TMP + "/auth-token.txt"
-    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
+    TOKEN_ACCESS   = TMP + "/token-access.txt"
+    
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
@@ -94,44 +91,18 @@ class Analytics
   def check_auth
     
     unless @token
-      unless File.exists?(Config::AUTH_TOKEN)
+      unless File.exists?(Config::TOKEN_ACCESS)
         return false
       end
       
-      unless Time.now - File.mtime(Config::AUTH_TOKEN) < HOUR
+      unless Time.now - File.mtime(Config::TOKEN_ACCESS) < HOUR
         return false
       end
       
-      @token = File.read(Config::AUTH_TOKEN)
+      @token = File.read(Config::TOKEN_ACCESS)
     end
     
     ping
-  end
-  
-  def login
-    
-    # # request a scope
-    # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
-    # exit
-    
-    # get an access token
-    io = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0", Config::TOKEN_URI])
-    xx = io.read
-    puts xx
-    r = JSON.parse(xx)
-    io.close
-    
-    
-    unless r["access_token"]
-      error r["error"]["message"]
-      error "не удалось залогиниться"
-      return false
-    end
-    
-    @token = r["access_token"]
-    File.write(Config::AUTH_TOKEN, @token)
-    
-    return true
   end
   
   def refresh
@@ -147,7 +118,7 @@ class Analytics
     end
     
     @token = r["access_token"]
-    File.write(Config::AUTH_TOKEN, @token)
+    File.write(Config::TOKEN_ACCESS, @token)
     
     true
   end
