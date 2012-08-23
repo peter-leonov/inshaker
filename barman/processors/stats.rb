@@ -34,7 +34,10 @@ class Stats
   
   def run
     
-    refresh or return 123
+    unless refresh
+      error "не удалось получить доступ"
+      return 123
+    end
     
     Dir.chdir("#{Inshaker::ROOT_DIR}/analytic")
     
