@@ -69,8 +69,8 @@ var AboutPage = {
 			
 			var dataArea = new visual.DataTable()
 			dataArea.addColumn('string', 'Дата')
-			dataArea.addColumn('number', 'Визиты')
 			dataArea.addColumn('number', 'Просмотры')
+			dataArea.addColumn('number', 'Визиты')
 			dataArea.addRows(visitors)
 			
 			var optionsArea = {
