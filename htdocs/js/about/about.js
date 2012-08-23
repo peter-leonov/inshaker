@@ -74,7 +74,6 @@ var AboutPage = {
 			dataArea.addRows(visitors)
 			
 			var optionsArea = {
-				isStacked: true,
 				focusTarget: 'category',
 				width: 510,
 				height: 400,
