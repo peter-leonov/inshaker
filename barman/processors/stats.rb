@@ -18,13 +18,12 @@ class Stats
   
   def refresh
     
-    r = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{Config::TOKEN_REFRESH}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
+    data = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{Config::TOKEN_REFRESH}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
     
-    # puts r
-    
-    r = JSON.parse(r)
+    r = JSON.parse(data)
     
     unless r["access_token"]
+      error data
       return false
     end
     
