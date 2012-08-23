@@ -60,7 +60,7 @@ class Launcher
   def job
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
-    $stdout.reopen("/dev/null", "w")
+    $stdout.reopen("job.log", "a")
     
     reset
     
