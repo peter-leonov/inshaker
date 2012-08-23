@@ -25,19 +25,17 @@ class Analytics
   module Config
     PROFILE_ID     = "9038802"
     BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
-    CLIENT_ID      = "3164701909-5aqhi9135qf36hi5l3p4jrp5f4htnbdn.apps.googleusercontent.com"
-    CLIENT_EMAIL   = "3164701909@developer.gserviceaccount.com"
-    CERT           = "/Users/peter-imac/Desktop/key"
+    CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
     DEVICE_CODE    = "4/wtsHFKhDs12lsF6Vu_xWX8Tlez1n"
     CODE_URI       = "https://accounts.google.com/o/oauth2/device/code"
     TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
     DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
-    SECRET         = ENV["ANALYTICS_SECRET"]
+    SECRET         = "w2i5khtidtXM5RuZocKMijGp"
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     AUTH_TOKEN     = TMP + "/auth-token.txt"
-    TOKEN_REFRESH  = TMP + "/refresh-token.txt"
+    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
@@ -71,6 +69,8 @@ class Analytics
       update
       set_last_updated
       flush_all_json
+    else
+      error "не удалось получить доступ"
     end
   end
   
@@ -78,9 +78,9 @@ class Analytics
     
     check_auth and return true
     
-    # refresh and check_auth and return true
+    refresh and check_auth and return true
     
-    login and check_auth and return true
+    # login and check_auth and return true
     
     return false
   end
@@ -110,21 +110,12 @@ class Analytics
   
   def login
     
-    now = Time.now.to_i
+    # # request a scope
+    # puts IO.popen(["curl", Config::CODE_URI, "-s", "-d", "scope=https://www.googleapis.com/auth/analytics.readonly", "-d", "client_id=#{Config::CLIENT_ID}"]).read
+    # exit
     
-    claim = {
-      "iss" => Config::CLIENT_EMAIL,
-      "scope" => "https://www.googleapis.com/auth/analytics.readonly",
-      "aud" => Config::TOKEN_URI,
-      "exp" => now + 3600,
-      "iat" => now
-    }
-    
-    cert = OpenSSL::PKCS12.new(File.read(Config::CERT), 'notasecret')
-    
-    assertion = JWT.encode(claim, cert.key, "RS256")
-    
-    io = IO.popen(["curl", "-s", "-d", "grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer", "-d", "assertion=#{assertion}", Config::TOKEN_URI])
+    # get an access token
+    io = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "code=#{Config::DEVICE_CODE}", "-d", "grant_type=http://oauth.net/grant_type/device/1.0", Config::TOKEN_URI])
     xx = io.read
     puts xx
     r = JSON.parse(xx)
@@ -145,13 +136,11 @@ class Analytics
   
   def refresh
     
-    unless File.exists?(Config::TOKEN_REFRESH)
-      return false
-    end
+    r = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{Config::TOKEN_REFRESH}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
     
-    rtoken = File.read(Config::TOKEN_REFRESH)
+    # puts r
     
-    r = JSON.parse(IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{rtoken}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read)
+    r = JSON.parse(r)
     
     unless r["access_token"]
       return false
