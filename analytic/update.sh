@@ -3,7 +3,6 @@
 ONLINE="yes"
 
 FEED_BASE="https://www.googleapis.com/analytics/v2.4/data"
-API_KEY="AIzaSyDkDt1_2BablGL8HiMwYmDgZIjjuz3lbDU"
 PROFILE_ID=9038802
 STAT_DIR=/www/inshaker/htdocs/stat
 VISITS_XML=$STAT_DIR/visitors/data.xml
@@ -51,7 +50,7 @@ report (){
 	END_DATE=$(stamp2date $END)
 	
 	echo "reporting $MY_NAME (from $START_DATE to $END_DATE)"
-	FEED_URI="$FEED_BASE?key=$API_KEY&ids=ga:$PROFILE_ID&$MY_QUERY&start-date=$START_DATE&end-date=$END_DATE&max-results=$MY_RESULTS"
+	FEED_URI="$FEED_BASE?ids=ga:$PROFILE_ID&$MY_QUERY&start-date=$START_DATE&end-date=$END_DATE&max-results=$MY_RESULTS"
 	if [[ $ONLINE = "yes" ]]; then
 		rm -f $MY_NAME.xml
 		echo "  downloading..."
