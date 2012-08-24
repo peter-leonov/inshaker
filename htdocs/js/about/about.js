@@ -111,7 +111,8 @@ var AboutPage = {
 		dataPie.addColumn('number', 'Slices')
 		dataPie.addRows(this.cities)
 		
-		var optionsPie = {
+		var optionsPie =
+		{
 			width: 510,
 			height: 400,
 			chartArea:
@@ -131,7 +132,8 @@ var AboutPage = {
 		dataArea.addColumn('number', 'Визиты')
 		dataArea.addRows(this.visitors)
 		
-		var optionsArea = {
+		var optionsArea =
+		{
 			focusTarget: 'category',
 			width: 510,
 			height: 400,
