@@ -62,6 +62,30 @@ class Cocktail < Inshaker::Entity
     @by_tag[tag.ci_index] || []
   end
   
+  def self.bake_entity_type_cache
+    @entity_type_cache = {}
+    
+    Ingredient.tags.each do |e|
+      @entity_type_cache[e] = "ingredient-tag"
+    end
+    
+    Ingredient.each do |e|
+      @entity_type_cache[e["name"]] = Ingredient.group_of_group(e["group"])
+    end
+    
+    @db.each do |e|
+      @entity_type_cache[e["name"]] = "cocktail"
+    end
+    
+    @tags.each do |e|
+      @entity_type_cache[e] = "cocktail-tag"
+    end
+  end
+  
+  def self.guess_entity_type name
+    bake_entity_type_cache() unless @entity_type_cache
+    @entity_type_cache[name]
+  end
   def self.check_integrity
     say "проверяю связность данных коктейлей"
     indent do
