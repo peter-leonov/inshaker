@@ -31,6 +31,19 @@ class Ingredient < Inshaker::Entity
     say "проверяю связность данных ингредиентов"
   end
   
+  def self.bake_by_tag_index
+    @by_tag_index = Hash.new { |h, k| h[k] = [] }
+    @db.each do |e|
+      e["tags"].each do |tag|
+        @by_tag_index[tag] << e
+      end
+    end
+  end
+  
+  def self.get_by_tag tag
+    bake_by_tag_index unless @by_tag_index
+    @by_tag_index[tag]
+  end
   @normals =
   {
     "мл" => [0.001, "л"],
