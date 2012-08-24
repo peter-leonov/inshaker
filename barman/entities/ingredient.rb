@@ -55,8 +55,9 @@ class Ingredient < Inshaker::Entity
     end
   end
   
+  @group_of_group = {"Украшения" => "tool", "Штучки" => "tool", "Посуда" => "tool", "Штуковины" => "thing"}
   def self.group_of_group group
-    {"Украшения" => "tool", "Штучки" => "tool", "Посуда" => "tool", "Штуковины" => "thing"}[group] || "ingredient"
+    @group_of_group[group] || "ingredient"
   end
   
   @normals =
