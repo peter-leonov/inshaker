@@ -49,6 +49,12 @@ class Ingredient < Inshaker::Entity
     @tags
   end
   
+  def self.each
+    @db.each do |e|
+      yield e
+    end
+  end
+  
   @normals =
   {
     "мл" => [0.001, "л"],
