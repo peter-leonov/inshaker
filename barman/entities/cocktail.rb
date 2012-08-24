@@ -54,6 +54,15 @@ class Cocktail < Inshaker::Entity
     end
   end
   
+  def self.index_names_by_tool
+    @names_by_tool = Hash.new { |h, k| h[k] = [] }
+    @db.each do |cocktail|
+      cocktail["tools"].each do |part|
+        @names_by_tool[part[0]] << cocktail["name"]
+      end
+    end
+  end
+  
   def self.known_tag? tag
     @tags.index(tag)
   end
@@ -127,6 +136,20 @@ class Cocktail < Inshaker::Entity
     
     ingredients.each do |iname|
       res += @names_by_ingredient[iname]
+    end
+    
+    res.uniq!
+    
+    return res
+  end
+  
+  def self.by_any_of_tools tools
+    index_names_by_tool() unless @names_by_tool
+    
+    res = []
+    
+    tools.each do |iname|
+      res += @names_by_tool[iname]
     end
     
     res.uniq!
