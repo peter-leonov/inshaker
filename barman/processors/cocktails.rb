@@ -598,12 +598,10 @@ class CocktailsProcessor < Inshaker::Processor
   
   def flush_seo
     tags = [
-      ["Алкогольные", "kokteyli-s-djinom", "Коктейль с джином"],
-      ["Алкогольные", "kokteyli-s-tekiloj", "Коктейль с текилой"],
+      ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"],
       ["Просто приготовить", "domashnie-kokteyli", "Домашний коктейль"],
       ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
       ["Безалкогольные", "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
-      ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"],
       ["Милкшейки", "molochnye-kokteyli", "Молочный коктейль"],
       ["Мохито", "mojito", "Мохито"],
       ["Красные", "krasnye-kokteyli", "Красный коктейль"],
@@ -613,11 +611,13 @@ class CocktailsProcessor < Inshaker::Processor
       ["Маргариты", "margarita", "Маргарита"],
       ["Космополитен", "cosmopolitan", "Космополитен"],
       ["Пина Колада", "pina-colada", "Пина Колада"],
-      ["Алкогольные", "kokteyli-s-vodkoj", "Коктейль с водкой"],
-      ["Алкогольные", "kokteyli-s-viski", "Коктейль с виски"],
-      ["Шоты", "b-52", "Б-52"],
-      ["Слабоалкогольные", "kokteyli-s-likerom", "Коктейль с ликером"],
-      ["Крепкие", "kokteyli-s-romom", "Коктейль с ромом"]
+      ["Водка", "kokteyli-s-vodkoj", "Коктейль с водкой"],
+      ["Виски", "kokteyli-s-viski", "Коктейль с виски"],
+      ["Ром", "kokteyli-s-romom", "Коктейль с ромом"],
+      ["Ликер", "kokteyli-s-likerom", "Коктейль с ликером"],
+      ["Б-52", "b-52", "Б-52"],
+      ["Текила", "kokteyli-s-tekiloj", "Коктейль с текилой"],
+      ["Джин", "kokteyli-s-djinom", "Коктейль с джином"],
     ]
     
     tags.each do |v|
