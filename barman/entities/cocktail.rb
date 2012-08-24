@@ -59,7 +59,7 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.get_by_tag tag
-    @by_tag[tag.ci_index]
+    @by_tag[tag.ci_index] || []
   end
   
   def self.check_integrity
