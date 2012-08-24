@@ -17,6 +17,7 @@ class Ingredient < Inshaker::Entity
     @inited = true
     
     @db = JSON.parse(File.read(Config::DB_JS))
+    @tags = JSON.parse(File.read(Config::DB_JS_TAGS))
     @by_name = @db.hash_index("name")
     @units_i = JSON.parse(File.read(Config::DB_JS_UNITS)).hash_index
   end
