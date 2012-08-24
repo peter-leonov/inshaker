@@ -39,6 +39,10 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
+		this.statCities = $('#stat_cities')
+		this.statVisits = $('#stat_visits')
+		this.cities = cities
+		this.visitors = visitors
 		
 		var form = $('#feedback_form')
 		function sendListener (e)
