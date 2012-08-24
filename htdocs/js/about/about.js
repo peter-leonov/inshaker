@@ -169,3 +169,6 @@ $.onready(function(){
 <!--# include virtual="/js/common/rolling-images.js" -->
 
 <!--# include virtual="/js/event/switcher.js" -->
+
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
+<!--# include virtual="/js/common/google.js" -->
