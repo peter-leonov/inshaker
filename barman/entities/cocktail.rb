@@ -150,6 +150,8 @@ class Cocktail < Inshaker::Entity
     
     res.uniq!
     
+    res.map! { |e| Cocktail[e] }
+    
     return res
   end
   
@@ -163,6 +165,8 @@ class Cocktail < Inshaker::Entity
     end
     
     res.uniq!
+    
+    res.map! { |e| Cocktail[e] }
     
     return res
   end
