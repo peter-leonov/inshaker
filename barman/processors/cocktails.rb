@@ -623,7 +623,7 @@ class CocktailsProcessor < Inshaker::Processor
     tags.each do |v|
       tag, dir, prefix = v
       
-      cocktails = Cocktail.get_by_tag(tag)
+      cocktails = Cocktail.get_by_entity(tag)
       cocktails.sort! do |a, b|
         length = a["ingredients"].length - b["ingredients"].length
         if length != 0
