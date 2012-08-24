@@ -105,6 +105,20 @@ class Cocktail < Inshaker::Entity
     end #indent
   end
   
+  def self.by_any_of_ingredients ingredients
+    index_names_by_ingredient() unless @names_by_ingredient
+    
+    res = []
+    
+    ingredients.each do |iname|
+      res += @names_by_ingredient[iname]
+    end
+    
+    res.uniq!
+    
+    return res
+  end
+  
   def self.by_ingredients ingredients
     index_names_by_ingredient() unless @names_by_ingredient
     
