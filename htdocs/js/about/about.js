@@ -91,6 +91,55 @@ var AboutPage = {
 		var spacer = document.createElement('span')
 		spacer.className = 'spacer'
 		content.appendChild(spacer)
+	},
+	
+	drawCharts: function ()
+	{
+		var visual = google.visualization
+		
+		var dataPie = new visual.DataTable()
+		dataPie.addColumn('string', 'City')
+		dataPie.addColumn('number', 'Slices')
+		dataPie.addRows(this.cities)
+		
+		var optionsPie = {
+			width: 510,
+			height: 400,
+			chartArea:
+			{
+				left: 15,
+				width: 1000
+			}
+		}
+		
+		var chartPie = new visual.PieChart(this.statCities)
+		chartPie.draw(dataPie, optionsPie)
+		
+		
+		var dataArea = new visual.DataTable()
+		dataArea.addColumn('string', 'Дата')
+		dataArea.addColumn('number', 'Просмотры')
+		dataArea.addColumn('number', 'Визиты')
+		dataArea.addRows(this.visitors)
+		
+		var optionsArea = {
+			focusTarget: 'category',
+			width: 510,
+			height: 400,
+			legend:
+			{
+				position: 'bottom',
+				alignment: 'center'
+			},
+			chartArea:
+			{
+				left: 95,
+				width: 370
+			}
+		}
+		
+		var chartArea = new visual.AreaChart(this.statVisits)
+		chartArea.draw(dataArea, optionsArea)
 	}
 };
 
