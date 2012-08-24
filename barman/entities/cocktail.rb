@@ -105,6 +105,15 @@ class Cocktail < Inshaker::Entity
     
     when "cocktail-tag"
       return Cocktail.get_by_tag(name)
+    
+    when "ingredient"
+      return Cocktail.by_any_of_ingredients([name])
+    
+    when "tool", "thing"
+      return Cocktail.by_any_of_tools([name])
+    
+    when "cocktail"
+      return [Cocktail[name]]
     end
     
     return []
