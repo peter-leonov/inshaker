@@ -44,6 +44,11 @@ class Ingredient < Inshaker::Entity
     bake_by_tag_index unless @by_tag_index
     @by_tag_index[tag]
   end
+  
+  def self.tags
+    @tags
+  end
+  
   @normals =
   {
     "мл" => [0.001, "л"],
