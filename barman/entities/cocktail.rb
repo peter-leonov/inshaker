@@ -86,6 +86,21 @@ class Cocktail < Inshaker::Entity
     bake_entity_type_cache() unless @entity_type_cache
     @entity_type_cache[name]
   end
+  
+  def self.get_by_entity name
+    type = guess_entity_type(name)
+    
+    case type
+    when "ingredient-tag"
+      return Cocktail.by_any_of_ingredients(Ingredient.get_by_tag(name).map { |e| e["name"] })
+    
+    when "cocktail-tag"
+      return Cocktail.get_by_tag(name)
+    end
+    
+    return []
+  end
+  
   def self.check_integrity
     say "проверяю связность данных коктейлей"
     indent do
