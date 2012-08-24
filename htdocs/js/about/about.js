@@ -44,6 +44,15 @@ var AboutPage = {
 		this.cities = cities
 		this.visitors = visitors
 		
+		var opts =
+		{
+			packages: ["corechart"]
+		}
+		
+		var me = this
+		googleApiLoader.addEventListener('visualization', function (e) { me.drawCharts(e) }, false)
+		googleApiLoader.load('visualization', 1, opts)
+		
 		var form = $('#feedback_form')
 		function sendListener (e)
 		{
