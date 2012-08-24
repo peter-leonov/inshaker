@@ -113,7 +113,8 @@ class Cocktail < Inshaker::Entity
       return Cocktail.by_any_of_tools([name])
     
     when "cocktail"
-      return [Cocktail[name]]
+      c = Cocktail[name]
+      return c ? [c] : []
     end
     
     return []
