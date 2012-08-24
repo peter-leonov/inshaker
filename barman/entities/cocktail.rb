@@ -46,8 +46,6 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.index_names_by_ingredient
-    return if @names_by_ingredient
-    
     @names_by_ingredient = Hash.new { |h, k| h[k] = [] }
     @db.each do |cocktail|
       cocktail["ingredients"].each do |part|
@@ -84,7 +82,7 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.by_ingredients ingredients
-    index_names_by_ingredient
+    index_names_by_ingredient() unless @names_by_ingredient
     
     partly = {}
     partly.default = 0
