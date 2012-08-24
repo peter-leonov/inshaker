@@ -42,7 +42,7 @@ class Ingredient < Inshaker::Entity
   
   def self.get_by_tag tag
     bake_by_tag_index unless @by_tag_index
-    @by_tag_index[tag]
+    @by_tag_index[tag] || []
   end
   
   def self.tags
