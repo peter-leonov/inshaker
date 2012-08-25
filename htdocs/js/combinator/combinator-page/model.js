@@ -44,7 +44,6 @@ Me.prototype =
 		'by-group',
 		'by-method',
 		'alphabetically'
-		// 'by-strength'
 	],
 	
 	bind: function ()
@@ -160,10 +159,6 @@ Me.prototype =
 			case 'by-date':
 				sorted = this.sortByDate(cocktails)
 			break
-			
-			case 'by-strength':
-				sorted = this.sortByStrength(cocktails, add)
-			break
 		}
 		
 		var stats = this.calculateStats(cocktails)
@@ -266,42 +261,6 @@ Me.prototype =
 		}
 		
 		return groups
-	},
-	
-	sortByStrength: function (cocktails, add)
-	{
-		var kByIngredient = {}
-		for (var i = 0, il = add.length; i < il; i++)
-			kByIngredient[add[i]] = 1 / (i * 1000 + 1)
-		
-		var weightByName = {}
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			
-			var weight = 0// , total = 0
-			
-			var parts = cocktail.ingredients
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var part = parts[j]
-				
-				var volume = part[1]
-				// total += volume
-				
-				var k = kByIngredient[part[0]]
-				if (!k)
-					continue
-				
-				weight += k * volume
-			}
-			
-			weightByName[cocktail.name] = weight // / total
-		}
-		
-		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
-		
-		return [{cocktails: cocktails}]
 	},
 	
 	calculateStats: function (cocktails)
