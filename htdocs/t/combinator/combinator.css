@@ -107,6 +107,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 
 
 .ingrediented-cocktail-list .group { margin: 0 0 50px 0; }
+.ingrediented-cocktail-list .group:last-child { margin-bottom: 0; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
 .ingrediented-cocktail-list .group.collapsed .row { display: none; }
 .ingrediented-cocktail-list .group .group-name { font-size: 35px; }
