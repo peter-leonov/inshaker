@@ -598,32 +598,32 @@ class CocktailsProcessor < Inshaker::Processor
   
   def flush_seo
     tags = [
-      ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"],
-      ["Просто приготовить", "domashnie-kokteyli", "Домашний коктейль"],
-      ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
-      ["Безалкогольные", "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
-      ["Милкшейки", "molochnye-kokteyli", "Молочный коктейль"],
-      ["Мохито", "mojito", "Мохито"],
-      ["Красные", "krasnye-kokteyli", "Красный коктейль"],
-      ["Глинтвейны", "glintvejn", "Глинтвейн"],
-      ["Лимонады", "limonad", "Лимонад"],
-      ["Голубые", "golubye-kokteyli", "Голубой коктейль"],
-      ["Маргариты", "margarita", "Маргарита"],
-      ["Космополитен", "cosmopolitan", "Космополитен"],
-      ["Пина Колада", "pina-colada", "Пина Колада"],
-      ["Водка", "kokteyli-s-vodkoj", "Коктейль с водкой"],
-      ["Виски", "kokteyli-s-viski", "Коктейль с виски"],
-      ["Ром", "kokteyli-s-romom", "Коктейль с ромом"],
-      ["Ликер", "kokteyli-s-likerom", "Коктейль с ликером"],
-      ["Б-52", "b-52", "Б-52"],
-      ["Текила", "kokteyli-s-tekiloj", "Коктейль с текилой"],
-      ["Джин", "kokteyli-s-djinom", "Коктейль с джином"],
+      [["Алкогольные"], "alkogolnye-kokteyli", "Алкогольный коктейль"],
+      [["Просто приготовить"], "domashnie-kokteyli", "Домашний коктейль"],
+      [["Алкогольные"], "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
+      [["Безалкогольные"], "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
+      [["Милкшейки"], "molochnye-kokteyli", "Молочный коктейль"],
+      [["Мохито"], "mojito", "Мохито"],
+      [["Красные"], "krasnye-kokteyli", "Красный коктейль"],
+      [["Глинтвейны"], "glintvejn", "Глинтвейн"],
+      [["Лимонады"], "limonad", "Лимонад"],
+      [["Голубые"], "golubye-kokteyli", "Голубой коктейль"],
+      [["Маргариты"], "margarita", "Маргарита"],
+      [["Космополитен"], "cosmopolitan", "Космополитен"],
+      [["Пина Колада"], "pina-colada", "Пина Колада"],
+      [["Водка"], "kokteyli-s-vodkoj", "Коктейль с водкой"],
+      [["Виски"], "kokteyli-s-viski", "Коктейль с виски"],
+      [["Ром"], "kokteyli-s-romom", "Коктейль с ромом"],
+      [["Ликер"], "kokteyli-s-likerom", "Коктейль с ликером"],
+      [["Б-52"], "b-52", "Б-52"],
+      [["Текила"], "kokteyli-s-tekiloj", "Коктейль с текилой"],
+      [["Джин"], "kokteyli-s-djinom", "Коктейль с джином"],
     ]
     
     tags.each do |v|
       tag, dir, prefix = v
       
-      cocktails = Cocktail.get_by_entity(tag)
+      cocktails = Cocktail.by_any_of_entities(tag)
       cocktails.sort! do |a, b|
         length = a["ingredients"].length - b["ingredients"].length
         if length != 0

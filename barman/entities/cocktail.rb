@@ -170,6 +170,17 @@ class Cocktail < Inshaker::Entity
     
     return res
   end
+  def self.by_any_of_entities entities
+    res = []
+    
+    entities.each do |name|
+      res += get_by_entity(name)
+    end
+    
+    res.uniq!
+    
+    return res
+  end
   
   def self.by_ingredients ingredients
     index_names_by_ingredient() unless @names_by_ingredient
