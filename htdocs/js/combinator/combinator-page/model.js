@@ -371,9 +371,12 @@ Me.prototype =
 	
 	setDuplicates: function (add, remove)
 	{
-		var duplicates = this.searcher.duplicates = {}
+		var duplicates = {}
+		
 		this.hashDuplicates(add, duplicates)
 		this.hashDuplicates(remove, duplicates)
+		
+		this.searcher.setDuplicates(duplicates)
 	},
 	
 	hashDuplicates: function (arr, hash)
