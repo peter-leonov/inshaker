@@ -43,7 +43,7 @@
 {"group":"Соки и морсы","name":"Банановый сок","path":"bananovyiy-sok","tags":["Сок","Фруктовый сок"],"unit":"л","volumes":[[0.2,39.0,true]]},
 {"group":"Посуда","name":"Банка с крышкой","path":"banka-s-kryishkoy","unit":"шт","volumes":[[1.0,30.0,true]]},
 {"group":"Биттеры","name":"Барбекю биттер","path":"barbekyu-bitter","tags":["Биттеры"],"unit":"л","volumes":[[0.059,580.0,true]]},
-{"group":"Вина","name":"Белое вино сухое","path":"beloe-vino-suhoe","unit":"л","volumes":[[0.75,558.0,true]]},
+{"group":"Вина","name":"Белое вино сухое","path":"beloe-vino-suhoe","tags":["Вино"],"unit":"л","volumes":[[0.75,558.0,true]]},
 {"group":"Вермуты","name":"Белый вермут","path":"belyiy-vermut","tags":["Вермут","Мартини"],"unit":"л","volumes":[[1.0,506.0,true]]},
 {"group":"Крепкий алкоголь","name":"Белый ром","names":["Светлый ром"],"path":"belyiy-rom","tags":["Ром","Сочетайзер"],"unit":"л","volumes":[[0.75,1191.0,true]]},
 {"group":"Овощи","name":"Белый трюфель","path":"belyiy-tryufel","unit":"г","volumes":[[100.0,1000.0,true]]},
