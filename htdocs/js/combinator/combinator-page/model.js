@@ -494,14 +494,10 @@ Me.prototype =
 		var ingredientsTagsHash = this.ingredientsTagsHash,
 			cocktailsTagsHash = this.cocktailsTagsHash
 		
-		var res = [], seen = {}
+		var res = []
 		for (var i = 0; i < arr.length; i++)
 		{
 			var item = arr[i]
-			
-			if (seen[item])
-				continue
-			seen[item] = true
 			
 			var tag = ingredientsTagsHash[item.toLowerCase()]
 			if (tag)
