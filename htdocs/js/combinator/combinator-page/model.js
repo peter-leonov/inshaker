@@ -59,14 +59,14 @@ Me.prototype =
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
 		
-		var favorites = {}
-		
-		this.setupSearcher(favorites, Ingredient.getTags(), Cocktail.getTags())
+		this.setupSearcher()
 	},
 	
-	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)
+	setupSearcher: function ()
 	{
-		var ingredients = Ingredient.getAll()
+		var ingredientsTags = Ingredient.getTags(),
+			cocktailsTags = Cocktail.getTags(),
+			ingredients = Ingredient.getAll()
 		
 		var set = [], bySecondName = {}
 		for (var i = 0, il = ingredients.length; i < il; i++)
@@ -91,6 +91,16 @@ Me.prototype =
 		set.push.apply(set, ingredientsTags)
 		set.push.apply(set, cocktailsTags)
 		set.sort()
+		
+		
+		var favorites = {}
+		
+		for (var i = 0, il = ingredientsTags.length; i < il; i++)
+			favorites[ingredientsTags[i]] = true
+		
+		for (var i = 0, il = cocktailsTags.length; i < il; i++)
+			favorites[cocktailsTags[i]] = true
+		
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, bySecondName, favorites)
 		this.view.setCompleterDataSource(searcher)
