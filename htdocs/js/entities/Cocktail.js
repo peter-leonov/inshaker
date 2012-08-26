@@ -463,6 +463,25 @@ Me.staticMethods =
 		return type(name)
 	},
 	
+	guessEntityCIPrepare: function ()
+	{
+		// build the index
+		this.guessEntityType()
+		
+		var index = {}
+		
+		var types = this.index.entityType
+		for (var k in types)
+			index[k.toLowerCase()] = k
+		
+		this.index.entityCI = index
+	},
+	
+	guessEntityCI: function (name)
+	{
+		return this.index.entityCI[('' + name).toLowerCase()]
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index

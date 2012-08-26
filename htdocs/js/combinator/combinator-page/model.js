@@ -491,22 +491,25 @@ Me.prototype =
 	
 	expandQueryNames: function (arr)
 	{
-		var ingredientsTagsHash = this.ingredientsTagsHash,
-			cocktailsTagsHash = this.cocktailsTagsHash
-		
 		var res = []
 		for (var i = 0; i < arr.length; i++)
 		{
-			var item = arr[i]
+			var item = Cocktail.guessEntityCI(arr[i])
+			if (!item)
+				continue
 			
-			var tag = ingredientsTagsHash[item.toLowerCase()]
-			if (tag)
+			var type = Cocktail.guessEntityType(item)
+			var typeName = type.name
+			
+			log(item, typeName)
+			
+			if (typeName == 'ingredientTag')
 			{
-				var name = new String(tag)
+				var name = new String(item)
 				name.type = 'ingredient-tag'
 				var names = name.names = []
 				
-				var group = Ingredient.getByTag(tag)
+				var group = Ingredient.getByTag(item)
 				for (var j = 0, jl = group.length; j < jl; j++)
 					names[j] = group[j].name
 				
@@ -514,19 +517,17 @@ Me.prototype =
 				continue
 			}
 			
-			var tag = cocktailsTagsHash[item.toLowerCase()]
-			if (tag)
+			if (typeName == "cocktailTag")
 			{
-				var name = new String(tag)
+				var name = new String(item)
 				name.type = 'cocktail-tag'
 				res.push(name)
 				continue
 			}
 			
-			var ingredient = Ingredient.getByNameCI(item)
-			if (ingredient)
+			if (typeName == "ingredient")
 			{
-				var name = new String(ingredient.name)
+				var name = new String(item)
 				name.type = 'ingredient'
 				res.push(name)
 				continue
