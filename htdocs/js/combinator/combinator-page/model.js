@@ -64,35 +64,29 @@ Me.prototype =
 	
 	setupSearcher: function ()
 	{
-		var ingredientsTags = Ingredient.getTags(),
-			cocktailsTags = Cocktail.getTags(),
-			ingredients = Ingredient.getAll()
+		var bySecondName = {}
 		
-		var set = [], bySecondName = {}
+		var ingredients = Ingredient.getAll()
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingredient = ingredients[i],
 				name = ingredient.name
 			
-			set.push(name)
+			ingredients[i] = name
 			
 			var snames = ingredient.names
 			if (!snames)
 				continue
 			
 			for (var j = 0, jl = snames.length; j < jl; j++)
-			{
-				var sname = snames[j]
-				set.push(sname)
-				bySecondName[sname] = name
-			}
+				bySecondName[snames[j]] = name
 		}
 		
-		set.push.apply(set, ingredientsTags)
-		set.push.apply(set, cocktailsTags)
-		set.sort()
 		
+		var ingredientsTags = Ingredient.getTags(),
+			cocktailsTags = Cocktail.getTags()
 		
+		// favorites are all the tags
 		var favorites = {}
 		
 		for (var i = 0, il = ingredientsTags.length; i < il; i++)
@@ -100,6 +94,11 @@ Me.prototype =
 		
 		for (var i = 0, il = cocktailsTags.length; i < il; i++)
 			favorites[cocktailsTags[i]] = true
+		
+		
+		// integrate
+		var set = ingredients.concat(ingredientsTags, cocktailsTags, Object.keys(bySecondName))
+		set.sort()
 		
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, bySecondName, favorites)
