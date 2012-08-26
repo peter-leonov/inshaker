@@ -64,22 +64,6 @@ Me.prototype =
 		
 		var favorites = {}
 		
-		var ingredientsTagsHash = this.ingredientsTagsHash = {}
-		for (var i = 0, il = ingredientsTags.length; i < il; i++)
-		{
-			var tag = ingredientsTags[i]
-			ingredientsTagsHash[tag.toLowerCase()] = tag
-			favorites[tag] = true
-		}
-		
-		var cocktailsTagsHash = this.cocktailsTagsHash = {}
-		for (var i = 0, il = cocktailsTags.length; i < il; i++)
-		{
-			var tag = cocktailsTags[i]
-			cocktailsTagsHash[tag.toLowerCase()] = tag
-			favorites[tag] = true
-		}
-		
 		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
 	},
 	
