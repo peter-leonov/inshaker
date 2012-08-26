@@ -56,15 +56,12 @@ Me.prototype =
 				hideGroups[group] = true
 		}
 		
-		var ingredientsTags = Ingredient.getTags(),
-			cocktailsTags = Cocktail.getTags()
-		
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
 		
 		var favorites = {}
 		
-		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
+		this.setupSearcher(favorites, Ingredient.getTags(), Cocktail.getTags())
 	},
 	
 	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)
