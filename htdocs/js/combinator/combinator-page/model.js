@@ -15,6 +15,25 @@ DefaultState.prototype =
 }
 Me.DefaultState = DefaultState
 
+Array.prototype.uniqString = function uniqString ()
+{
+	var res = []
+	
+	var seen = {}
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		
+		if (seen[v])
+			continue
+		seen[v] = true
+		
+		res.push(v)
+	}
+	
+	return res
+}
+
 
 function Me ()
 {
@@ -102,6 +121,7 @@ Me.prototype =
 		var set = [].concat(ingredients, cocktails, ingredientsTags, cocktailsTags, Object.keys(bySecondName))
 		
 		set.sort()
+		set = set.uniqString()
 		
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, bySecondName, favorites)
