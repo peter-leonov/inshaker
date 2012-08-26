@@ -174,7 +174,7 @@ Me.prototype =
 		this.sortbySelect.renderSelected(selected)
 	},
 	
-	renderCocktails: function (cocktails, total, stats)
+	renderCocktails: function (cocktails, total)
 	{
 		var nodes = this.nodes,
 			output = nodes.output
@@ -212,18 +212,6 @@ Me.prototype =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
-		
-		var statsNode = nodes.stats
-		statsNode.empty()
-		
-		var top = stats.top, parts = []
-		for (var i = 0, il = top.length; i < il; i++)
-		{
-			var item = top[i]
-			parts[i] = item.ingredient.name + ' (' + item.rating + ')'
-		}
-		
-		statsNode.appendChild(T('Чаще ' + parts.length.plural('встречается', 'встречаются', 'встречаются') + ' ' + parts.join(', ') + '.'))
 	},
 	
 	renderInitialBlock: function (groups)

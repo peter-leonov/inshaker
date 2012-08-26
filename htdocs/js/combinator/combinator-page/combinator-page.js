@@ -79,7 +79,6 @@ function onready ()
 		output: $('#output'),
 		mainFunFix: $('#the-main-menu'),
 		cocktailList: $('#output .result-block .ingrediented-cocktail-list'),
-		stats: $('#output .result-block .stats'),
 		queryInput: $('#search-box .query'),
 		searchForm: $('#search-box form'),
 		plusButton: $('#search-box .plus'),

@@ -199,6 +199,16 @@ Me.staticMethods =
 	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
+	toNames: function (ary)
+	{
+		var res = []
+		
+		for (var i = 0, il = ary.length; i < il; i++)
+			res[i] = ary[i].name
+		
+		return res
+	},
+	
 	getTagByTagCIPrepare: function ()
 	{
 		function lowercase (tag)
@@ -461,6 +471,25 @@ Me.staticMethods =
 			return []
 		
 		return type(name)
+	},
+	
+	guessEntityCIPrepare: function ()
+	{
+		// build the index
+		this.guessEntityType()
+		
+		var index = {}
+		
+		var types = this.index.entityType
+		for (var k in types)
+			index[k.toLowerCase()] = k
+		
+		this.index.entityCI = index
+	},
+	
+	guessEntityCI: function (name)
+	{
+		return this.index.entityCI[name.toLowerCase()]
 	},
 	
 	sortIngredientsByUsage: function ()
