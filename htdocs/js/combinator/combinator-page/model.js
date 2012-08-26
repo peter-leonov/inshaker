@@ -309,8 +309,6 @@ Me.prototype =
 		var add = newState.add
 		var remove = newState.remove
 		
-		// this.setDuplicates(add, remove)
-		
 		var state = this.state = new DefaultState(newState)
 		state.add = add
 		state.remove = remove
@@ -343,8 +341,6 @@ Me.prototype =
 		this.statSearch(query)
 		this.statView(add, remove)
 		
-		// this.setDuplicates(add, remove)
-		
 		var state = this.state
 		state.add = add
 		state.remove = remove
@@ -360,40 +356,7 @@ Me.prototype =
 	
 	queryChanged: function (add, remove)
 	{
-		// this.setDuplicates(add, remove)
-	},
-	
-	setDuplicates: function (add, remove)
-	{
-		var add = this.expandQueryNames(add)
-		var remove = this.expandQueryNames(remove)
-		
-		var duplicates = {}
-		
-		this.hashDuplicates(add, duplicates)
-		this.hashDuplicates(remove, duplicates)
-		
-		this.searcher.setDuplicates(duplicates)
-	},
-	
-	hashDuplicates: function (arr, hash)
-	{
-		for (var i = 0, il = arr.length; i < il; i++)
-		{
-			var item = arr[i],
-				type = item.type
-			
-			hash[item] = true
-			
-			if (type == 'ingredient-tag')
-			{
-				var tag = item.valueOf(),
-					names = item.names
-				for (var j = 0, jl = names.length; j < jl; j++)
-					hash[names[j]] = tag
-				continue
-			}
-		}
+		// do nothing
 	},
 	
 	setSortBy: function (typeNum)
@@ -429,61 +392,6 @@ Me.prototype =
 		// remove logic has been removed ;)
 		
 		return DB.conjunction(res)
-	},
-	
-	collapseQueryObjects: function (arr)
-	{
-		var names = []
-		
-		for (var i = 0, il = arr.length; i < il; i++)
-			names[i] = arr[i].valueOf()
-		
-		return names
-	},
-	
-	expandQueryNames: function (arr)
-	{
-		var res = []
-		for (var i = 0; i < arr.length; i++)
-		{
-			var item = Cocktail.guessEntityCI(arr[i])
-			if (!item)
-				continue
-			
-			var type = Cocktail.guessEntityType(item)
-			var typeName = type.name
-			
-			if (typeName == 'ingredientTag')
-			{
-				var name = new String(item)
-				name.type = 'ingredient-tag'
-				var names = name.names = []
-				
-				var group = Ingredient.getByTag(item)
-				for (var j = 0, jl = group.length; j < jl; j++)
-					names[j] = group[j].name
-				
-				res.push(name)
-				continue
-			}
-			
-			if (typeName == "cocktailTag")
-			{
-				var name = new String(item)
-				name.type = 'cocktail-tag'
-				res.push(name)
-				continue
-			}
-			
-			if (typeName == "ingredient")
-			{
-				var name = new String(item)
-				name.type = 'ingredient'
-				res.push(name)
-				continue
-			}
-		}
-		return res
 	},
 	
 	updateAllIngredients: function ()
