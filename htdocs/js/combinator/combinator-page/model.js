@@ -309,7 +309,7 @@ Me.prototype =
 		var add = this.expandQueryNames(newState.add)
 		var remove = this.expandQueryNames(newState.remove)
 		
-		this.setDuplicates(add, remove)
+		// this.setDuplicates(add, remove)
 		
 		var state = this.state = new DefaultState(newState)
 		state.add = add
@@ -346,7 +346,7 @@ Me.prototype =
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
 		
-		this.setDuplicates(add, remove)
+		// this.setDuplicates(add, remove)
 		
 		var state = this.state
 		state.add = add
@@ -366,7 +366,7 @@ Me.prototype =
 		add = this.expandQueryNames(add)
 		remove = this.expandQueryNames(remove)
 		
-		this.setDuplicates(add, remove)
+		// this.setDuplicates(add, remove)
 	},
 	
 	setDuplicates: function (add, remove)
