@@ -64,6 +64,8 @@ Me.prototype =
 	
 	setupSearcher: function ()
 	{
+		var cocktails = Cocktail.toNames(Cocktail.getAll())
+		
 		var bySecondName = {}
 		
 		var ingredients = Ingredient.getAll()
@@ -97,7 +99,8 @@ Me.prototype =
 		
 		
 		// integrate
-		var set = ingredients.concat(ingredientsTags, cocktailsTags, Object.keys(bySecondName))
+		var set = [].concat(ingredients, cocktails, ingredientsTags, cocktailsTags, Object.keys(bySecondName))
+		
 		set.sort()
 		
 		

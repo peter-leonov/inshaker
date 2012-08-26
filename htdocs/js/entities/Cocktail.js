@@ -199,6 +199,16 @@ Me.staticMethods =
 	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
+	toNames: function (ary)
+	{
+		var res = []
+		
+		for (var i = 0, il = ary.length; i < il; i++)
+			res[i] = ary[i].name
+		
+		return res
+	},
+	
 	getTagByTagCIPrepare: function ()
 	{
 		function lowercase (tag)
