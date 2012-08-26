@@ -492,6 +492,36 @@ Me.staticMethods =
 		return this.index.entityCI[name.toLowerCase()]
 	},
 	
+	getByQuery: function (query)
+	{
+		var len = query.length
+		if (len == 0)
+			return []
+		
+		var a = this.getByEntity(query[0])
+		
+		for (var i = 1; i < len; i += 2)
+		{
+			var op = query[i],
+				entity = query[i + 1]
+			
+			var b = this.getByEntity(entity)
+			
+			switch (op)
+			{
+				case '&':
+					a = DB.conjunction([a, b])
+					break
+				
+				case '|':
+					a = DB.disjunction([a, b])
+					break
+			}
+		}
+		
+		return a
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index

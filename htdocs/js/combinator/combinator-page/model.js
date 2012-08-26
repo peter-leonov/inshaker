@@ -34,6 +34,24 @@ Array.prototype.uniqString = function uniqString ()
 	return res
 }
 
+Array.prototype.joinA = function joinA (o)
+{
+	var l = this.length
+	
+	if (l == 0)
+		return []
+	
+	var res = [this[0]]
+	
+	for (var i = 1; i < l; i++)
+	{
+		res.push(o)
+		res.push(this[i])
+	}
+	
+	return res
+}
+
 
 function Me ()
 {
@@ -413,14 +431,9 @@ Me.prototype =
 	
 	searchCocktails: function (add, remove)
 	{
-		var res = []
-		
-		for (var i = 0, il = add.length; i < il; i++)
-			res[i] = Cocktail.getByEntity(add[i])
-		
 		// remove logic has been removed ;)
 		
-		return DB.conjunction(res)
+		return Cocktail.getByQuery(add.joinA('&'))
 	},
 	
 	updateAllIngredients: function ()
