@@ -293,7 +293,7 @@ Me.prototype =
 			
 			var set = this.getCocktailsByQuery(query, [])
 			if (set.length)
-				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+				suggestions.push({add: query, count: set.length})
 			
 			if (i % 25 == 0 && new Date() - begin > 250)
 				break
@@ -306,8 +306,8 @@ Me.prototype =
 	{
 		this.statView(newState.add, newState.remove)
 		
-		var add = this.expandQueryNames(newState.add)
-		var remove = this.expandQueryNames(newState.remove)
+		var add = newState.add
+		var remove = newState.remove
 		
 		// this.setDuplicates(add, remove)
 		
@@ -343,9 +343,6 @@ Me.prototype =
 		this.statSearch(query)
 		this.statView(add, remove)
 		
-		add = this.expandQueryNames(add)
-		remove = this.expandQueryNames(remove)
-		
 		// this.setDuplicates(add, remove)
 		
 		var state = this.state
@@ -363,14 +360,14 @@ Me.prototype =
 	
 	queryChanged: function (add, remove)
 	{
-		add = this.expandQueryNames(add)
-		remove = this.expandQueryNames(remove)
-		
 		// this.setDuplicates(add, remove)
 	},
 	
 	setDuplicates: function (add, remove)
 	{
+		var add = this.expandQueryNames(add)
+		var remove = this.expandQueryNames(remove)
+		
 		var duplicates = {}
 		
 		this.hashDuplicates(add, duplicates)
