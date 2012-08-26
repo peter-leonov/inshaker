@@ -485,8 +485,6 @@ Me.prototype =
 			var type = Cocktail.guessEntityType(item)
 			var typeName = type.name
 			
-			log(item, typeName)
-			
 			if (typeName == 'ingredientTag')
 			{
 				var name = new String(item)
