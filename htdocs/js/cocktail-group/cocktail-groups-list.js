@@ -1,5 +1,38 @@
 ;(function(){
 
+function compare (a, b)
+{
+	a = a[1]
+	b = b[1]
+	
+	if (a < b)
+		return -1
+	if (a > b)
+		return 1
+	return 0
+}
+
+function sortBy (f)
+{
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		this[i] = [v, f(v)]
+	}
+	
+	this.sort(compare)
+	
+	for (var i = 0, il = this.length; i < il; i++)
+		this[i] = this[i][0]
+}
+
+Array.prototype.sortBy = sortBy
+
+})();
+
+
+;(function(){
+
 eval(NodesShortcut.include())
 
 function Me () {}
