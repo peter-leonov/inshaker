@@ -44,6 +44,24 @@ Me.prototype =
 		this.nodes = nodes
 	},
 	
+	render: function ()
+	{
+		this.sortList()
+		this.renderList()
+	},
+	
+	sortList: function ()
+	{
+		var nodes = this.nodes
+		
+		var groups = nodes.groups.slice()
+		groups.sortBy(function (e) { return e.firstChild.nodeValue })
+		
+		var list = nodes.list
+		for (var i = 0, il = groups.length; i < il; i++)
+			list.appendChild(groups[i].parentNode)
+	},
+	
 	renderList: function ()
 	{
 		var groups = this.nodes.groups
@@ -97,7 +115,7 @@ function onready ()
 	
 	var widget = new CocktailGroupsList()
 	widget.bind(nodes)
-	widget.renderList()
+	widget.render()
 }
 
 $.onready(onready)
