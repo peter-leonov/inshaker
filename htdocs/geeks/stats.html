@@ -49,7 +49,7 @@
 <script src="/js/common/common.js"></script>
 <script>
 
-function drawCharts (browserStats)
+function drawCharts (browserStats, browserPlainStats)
 {
 	var visual = google.visualization,
 		container = $('#stat-browsers')
@@ -103,7 +103,7 @@ function onready ()
 		packages: ["corechart"]
 	}
 	
-	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(<!--# include virtual="/stat/browsers/data.json" -->) }, false)
+	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(<!--# include virtual="/stat/browsers/data.json" -->, <!--# include virtual="/stat/browsers-plain/data.json" -->) }, false)
 	googleApiLoader.load('visualization', 1, opts)
 	
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
