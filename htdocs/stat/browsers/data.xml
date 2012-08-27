@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <pie xmlns:dxp="http://schemas.google.com/analytics/2009" xmlns:a="http://www.w3.org/2005/Atom">
   <slice title="Opera 12.1" color="#cc0000">0</slice>
-  <slice title="Opera 12.0" color="#cc0000">28055</slice>
-  <slice title="Opera 11.6" color="#cc3311">6022</slice>
-  <slice title="Opera 11.5" color="#cc5522">1089</slice>
-  <slice title="Opera 11.1" color="#cc5522">521</slice>
-  <slice title="Opera 11.0" color="#cc5522">288</slice>
-  <slice title="other Opera" color="#cc7733">1892</slice>
-  <slice title="Firefox 14.0" color="#ff9900">15974</slice>
-  <slice title="Firefox 13.0" color="#ff9900">2727</slice>
-  <slice title="Firefox 12.0" color="#ffaa11">2119</slice>
-  <slice title="Firefox 11.0" color="#ffbb22">1126</slice>
-  <slice title="Firefox 10.0" color="#ffbb22">667</slice>
-  <slice title="Firefox 9.0" color="#ffbb22">769</slice>
-  <slice title="Firefox 8.0" color="#ffbb22">427</slice>
+  <slice title="Opera 12.0" color="#cc0000">28272</slice>
+  <slice title="Opera 11.6" color="#cc3311">5945</slice>
+  <slice title="Opera 11.5" color="#cc5522">1095</slice>
+  <slice title="Opera 11.1" color="#cc5522">514</slice>
+  <slice title="Opera 11.0" color="#cc5522">279</slice>
+  <slice title="other Opera" color="#cc7733">1903</slice>
+  <slice title="Firefox 14.0" color="#ff9900">16170</slice>
+  <slice title="Firefox 13.0" color="#ff9900">2502</slice>
+  <slice title="Firefox 12.0" color="#ffaa11">2078</slice>
+  <slice title="Firefox 11.0" color="#ffbb22">1116</slice>
+  <slice title="Firefox 10.0" color="#ffbb22">665</slice>
+  <slice title="Firefox 9.0" color="#ffbb22">764</slice>
+  <slice title="Firefox 8.0" color="#ffbb22">431</slice>
   <slice title="Firefox 7.0" color="#ffbb22">198</slice>
-  <slice title="Firefox 6.0" color="#ffbb22">262</slice>
-  <slice title="Firefox 5.0" color="#ffbb22">205</slice>
-  <slice title="Firefox 4.0" color="#ffbb22">352</slice>
-  <slice title="Firefox 3.6" color="#ffcc33">917</slice>
-  <slice title="other Firefox" color="#ffee44">586</slice>
-  <slice title="Chrome 21" color="#00cc00">29886</slice>
-  <slice title="Chrome 20" color="#00cc00">13471</slice>
-  <slice title="Chrome 19" color="#00cc00">1107</slice>
-  <slice title="Chrome 18" color="#44cc22">8759</slice>
+  <slice title="Firefox 6.0" color="#ffbb22">245</slice>
+  <slice title="Firefox 5.0" color="#ffbb22">202</slice>
+  <slice title="Firefox 4.0" color="#ffbb22">349</slice>
+  <slice title="Firefox 3.6" color="#ffcc33">904</slice>
+  <slice title="other Firefox" color="#ffee44">585</slice>
+  <slice title="Chrome 21" color="#00cc00">31264</slice>
+  <slice title="Chrome 20" color="#00cc00">12063</slice>
+  <slice title="Chrome 19" color="#00cc00">1109</slice>
+  <slice title="Chrome 18" color="#44cc22">8735</slice>
   <slice title="Chrome 17" color="#66cc44">2096</slice>
-  <slice title="Chrome 16" color="#66cc44">855</slice>
-  <slice title="Chrome 15" color="#66cc44">511</slice>
-  <slice title="Chrome 14" color="#66cc44">163</slice>
-  <slice title="other Chrome" color="#88cc66">1759</slice>
-  <slice title="Explorer 10" color="#4499ff">49</slice>
-  <slice title="Explorer 9" color="#4499ff">5233</slice>
-  <slice title="Explorer 8" color="#55aaff">4084</slice>
-  <slice title="Explorer 7" color="#66bbff">320</slice>
-  <slice title="Explorer 6" color="#77ccff">100</slice>
+  <slice title="Chrome 16" color="#66cc44">859</slice>
+  <slice title="Chrome 15" color="#66cc44">517</slice>
+  <slice title="Chrome 14" color="#66cc44">156</slice>
+  <slice title="other Chrome" color="#88cc66">1750</slice>
+  <slice title="Explorer 10" color="#4499ff">47</slice>
+  <slice title="Explorer 9" color="#4499ff">5206</slice>
+  <slice title="Explorer 8" color="#55aaff">3996</slice>
+  <slice title="Explorer 7" color="#66bbff">303</slice>
+  <slice title="Explorer 6" color="#77ccff">93</slice>
   <slice title="other Explorer" color="#88ddff">1</slice>
-  <slice title="Safari" color="#0055bb">18575</slice>
-  <slice title="Opera Mini" color="#777777">4642</slice>
-  <slice title="Android Browser" color="#888888">4642</slice>
-  <slice title="Unknown" color="#999999">-541</slice>
+  <slice title="Safari" color="#0055bb">18811</slice>
+  <slice title="Opera Mini" color="#777777">4644</slice>
+  <slice title="Android Browser" color="#888888">4644</slice>
+  <slice title="Unknown" color="#999999">-467</slice>
 </pie>
