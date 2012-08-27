@@ -74,7 +74,8 @@ Me.prototype =
 			if (!query)
 				continue
 			
-			var cocktails = Cocktail.getByQuery(query.split(/\s+/))
+			query = query.split(/\s+([&|])\s+/)
+			var cocktails = Cocktail.getByQuery(query)
 			if (cocktails.length < 1)
 				continue
 			
