@@ -93,6 +93,14 @@ function drawCharts (browserStats)
 
 function onready ()
 {
+	var opts =
+	{
+		packages: ["corechart"]
+	}
+	
+	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(<!--# include virtual="/stat/browsers/data.json" -->) }, false)
+	googleApiLoader.load('visualization', 1, opts)
+	
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
