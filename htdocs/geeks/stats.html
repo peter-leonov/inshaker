@@ -47,24 +47,9 @@
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
 <script src="/js/common/common.js"></script>
-<script src="/js/about/swfobject.js"></script>
 <script>
 function onready ()
 {
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'transparent')
-	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
-	line.write('stat-browsers')
-	
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'transparent')
-	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
-	line.write('stat-browsers-plain')
-	
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
