@@ -19,11 +19,11 @@ Me.prototype =
 		{
 			var group = groups[i]
 			
-			var tag = group.getAttribute('data-tag')
-			if (!tag)
+			var query = group.getAttribute('data-query')
+			if (!query)
 				continue
 			
-			var cocktails = Cocktail.getByEntity(tag)
+			var cocktails = Cocktail.getByQuery(query.split(/\s+/))
 			if (cocktails.length < 1)
 				continue
 			
