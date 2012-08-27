@@ -87,8 +87,13 @@ function drawCharts (browserStats)
 	var chartPie = new visual.PieChart(container)
 	chartPie.draw(dataPie, optionsPie)
 	
-	//var iframe = container.firstChild
-	//console.log(iframe.contentDocument.body)
+	var iframe = container.firstChild.contentDocument.body,
+		link = document.createElement('link')
+	
+	link.href = '/t/geeks/stat.css'
+	link.rel = 'stylesheet'
+	
+	iframe.appendChild(link)
 }
 
 function onready ()
