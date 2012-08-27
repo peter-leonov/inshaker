@@ -51,6 +51,8 @@
 
 function drawCharts (browserStats, browserPlainStats)
 {
+	drawChartToNode($('#stat-browsers'), browserStats)
+	drawChartToNode($('#stat-browsers-plain'), browserPlainStats)
 }
 
 function drawChartToNode (node, data)
