@@ -48,6 +48,49 @@
 <script src="/js/common/oops.js"></script>
 <script src="/js/common/common.js"></script>
 <script>
+
+function drawCharts (browserStats)
+{
+	var visual = google.visualization,
+		container = $('#stat-browsers')
+	
+	var dataPie = new visual.DataTable()
+	dataPie.addColumn('string', 'Browser')
+	dataPie.addColumn('number', 'Slices')
+	dataPie.addRows(browserStats.data)
+	
+	var optionsPie =
+	{
+		height: 822,
+		width: 960,
+		colors: browserStats.colors,
+		backgroundColor: 'none',
+		pieSliceText: 'label',
+		pieSliceTextStyle:
+		{
+			fontSize: 11
+		},
+		chartArea:
+		{
+			top: 30,
+			left: 1,
+			height: 670,
+			width: 960
+		},
+		legend:
+		{
+			position: 'none'
+		},
+		sliceVisibilityThreshold: 0
+	}
+	
+	var chartPie = new visual.PieChart(container)
+	chartPie.draw(dataPie, optionsPie)
+	
+	//var iframe = container.firstChild
+	//console.log(iframe.contentDocument.body)
+}
+
 function onready ()
 {
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
