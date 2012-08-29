@@ -98,6 +98,10 @@ class Analytics
       opts.on("-q", "--quite", "сообщать только об ошибках") do |v|
         quite!
       end
+      
+      opts.on("-f", "--force", "не кешировать ответы") do |v|
+        @options[:force] = true
+      end
     end.parse!
   end
   
@@ -138,6 +142,10 @@ class Analytics
   end
   
   def get_cached url
+    if @options[:force]
+      return get_authed(url)
+    end
+    
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
