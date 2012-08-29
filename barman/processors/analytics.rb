@@ -14,6 +14,26 @@ require "config"
 require "entities/entity"
 require "entities/cocktail"
 
+class Curl
+  def self.popen args
+    IO.popen(["curl", "-s"] + args)
+  end
+  
+  def self.read args
+    popen(args).read
+  end
+  
+  def self.get url, hash={}
+    args = []
+    hash.each do |k, v|
+      args << "-d"
+      args << "#{k}=#{v}"
+    end
+    args << url
+    
+    read(args)
+  end
+end
 class Analytics
   
   MINUTE = 60
