@@ -131,6 +131,7 @@ class Analytics
   
   def initialize
     @all = []
+    @auth = OAuth2Helper.new
   end
   
   def process_options
@@ -164,7 +165,7 @@ class Analytics
   end
   
   def get_credentials
-    @token = OAuth2Helper.get_access_token
+    @token = @auth.get_access_token
   end
   
   
