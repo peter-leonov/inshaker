@@ -36,6 +36,7 @@ class Analytics
     CITIES_JSON    = HT_STAT_DIR + "/cities.json"
     BROWSERS_JSON  = HT_STAT_DIR + "/browsers.json"
     BROWSERSP_JSON = HT_STAT_DIR + "/browsers-plain.json"
+    ERRORS_JSON    = HT_STAT_DIR + "/errors.json"
     
     HT_RATING_JSON = Inshaker::HTDOCS_DIR + "/db/ratings/rating.json"
   end
@@ -238,6 +239,21 @@ class Analytics
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
     
     File.write(Config::BROWSERSP_JSON, JSON.stringify(stats))
+    
+    
+    r = report({"dimensions" => "ga:eventLabel", "metrics" => "ga:uniqueEvents", "filters" => "ga:eventAction==error", "sort" => "-ga:uniqueEvents"}, endd - DAY * 30, endd, 500)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[1] = e[1].to_i
+    end
+    stats.push({"total" => {"uniqueEvents" => total["ga:uniqueEvents"].to_i}})
+    
+    File.write(Config::ERRORS_JSON, JSON.stringify(stats))
     
   end
   
