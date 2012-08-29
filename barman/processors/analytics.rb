@@ -271,7 +271,7 @@ class Analytics
     File.write(Config::HT_RATING_JSON, JSON.stringify(res))
   end
   
-  def get_month_borders year, month
+  def calc_month_borders year, month
     start = Time.new(year, month, 1)
     # jump to the next month (maybe year too)
     endd = start + 33 * DAY
@@ -303,7 +303,7 @@ class Analytics
       
       say "обновляю период «#{name}»"
       indent do
-        cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
+        cocktails_pageviews(name, *calc_month_borders(cur.year, cur.month))
       end
       @all << name
     end
