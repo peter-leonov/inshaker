@@ -9,112 +9,18 @@ require "lib/string"
 require "lib/array"
 require "lib/file"
 require "lib/output"
+require "lib/curl"
+require "lib/oauth2helper"
 
 require "config"
 require "entities/entity"
 require "entities/cocktail"
-
-class Curl
-  def self.read args
-    io = IO.popen(["curl", "-s"] + args)
-    r = io.read
-    io.close
-    return r
-  end
-  
-  def self.bake_query query
-    ary = []
-    query.each do |k, v|
-      ary << "-d"
-      ary << "#{k}=#{v}"
-    end
-    ary
-  end
-  
-  def self.bake_headers headers
-    ary = []
-    headers.each do |k, v|
-      ary << "-H"
-      ary << "#{k}: #{v}"
-    end
-    ary
-  end
-  
-  def self.post url, query={}, headers={}
-    read(bake_query(query) + bake_headers(headers) + [url])
-  end
-  
-  def self.get url, query={}, headers={}
-    read(bake_query(query) + bake_headers(headers) + ["-G", url])
-  end
-end
-
-class OAuth2Helper
-  module Config
-    CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
-    TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
-    INFO_URI       = "https://www.googleapis.com/oauth2/v1/tokeninfo"
-    SECRET         = ENV["ANALYTICS_CLIENT_SECRET"]
-    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
-    TOKEN_CACHE    = Inshaker::ROOT_DIR + "/barman/tmp/access-token.txt"
-  end
-  
-  def check_token t
-    r = Curl.get(Config::INFO_URI, {"access_token" => t})
-    # puts r
-    r = JSON.parse(r)
-    
-    r["expires_in"].to_i > 1800 # half an hour
-  end
-  
-  def request_access_token
-    query =
-    {
-      "client_id" => Config::CLIENT_ID,
-      "client_secret" => Config::SECRET,
-      "refresh_token" => Config::TOKEN_REFRESH,
-      "grant_type" => "refresh_token"
-    }
-    
-    r = Curl.post(Config::TOKEN_URI, query)
-    # puts r
-    r = JSON.parse(r)
-    
-    r["access_token"]
-  end
-  
-  def token
-    return @token if @token
-    
-    unless File.exists?(Config::TOKEN_CACHE)
-      return
-    end
-    
-    @token = File.read(Config::TOKEN_CACHE)
-  end
-  
-  def token= t
-    @token = t
-    File.write(Config::TOKEN_CACHE, @token)
-    @token
-  end
-  
-  def get_access_token
-    token = self.token
-    if check_token(token)
-      return token
-    end
-    
-    self.token = request_access_token
-  end
-end
 
 class Analytics
   
   MINUTE = 60
   HOUR = MINUTE * 60
   DAY  = 24 * 60 * 60
-  
   
   module Config
     PROFILE_ID     = "9038802"
@@ -132,6 +38,7 @@ class Analytics
   def initialize
     @all = []
     @auth = OAuth2Helper.new
+    @auth.temp = Config::TMP
   end
   
   def process_options
