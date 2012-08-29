@@ -145,8 +145,8 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def get_authed url
-    Curl.post(url, {}, {"Authorization" => "Bearer #{@token}"})
+  def get_authed url, query
+    Curl.get(url, query, {"Authorization" => "Bearer #{@token}"})
   end
   
   def get_cached url
