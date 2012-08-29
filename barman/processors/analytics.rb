@@ -22,7 +22,7 @@ class Curl
     return r
   end
   
-  def self.get url, query={}, headers={}
+  def self.post url, query={}, headers={}
     args = []
     
     query.each do |k, v|
@@ -58,7 +58,7 @@ class OAuth2Helper
       "grant_type" => "refresh_token"
     }
     
-    r = Curl.get(Config::TOKEN_URI, query)
+    r = Curl.post(Config::TOKEN_URI, query)
     # puts r
     r = JSON.parse(r)
     
@@ -138,7 +138,7 @@ class Analytics
   end
   
   def get_authed url
-    Curl.get(url, {}, {"Authorization" => "Bearer #{@token}"})
+    Curl.post(url, {}, {"Authorization" => "Bearer #{@token}"})
   end
   
   def get_cached url
