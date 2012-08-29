@@ -166,7 +166,6 @@ class Analytics
   def get_pageviews start, endd
     json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
     data = JSON.parse(json)
-    p data
     parse_pageviews(data)
   end
   
