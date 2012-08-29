@@ -127,7 +127,7 @@ class Analytics
   
   def refresh
     
-    r = IO.popen(["curl", "-s", "-d", "client_id=#{Config::CLIENT_ID}", "-d", "client_secret=#{Config::SECRET}", "-d", "refresh_token=#{Config::TOKEN_REFRESH}", "-d", "grant_type=refresh_token", Config::TOKEN_URI]).read
+    r = Curl.get(Config::TOKEN_URI, {"client_id" => Config::CLIENT_ID, "client_secret" => Config::SECRET, "refresh_token" => Config::TOKEN_REFRESH, "grant_type" => "refresh_token"})
     
     # puts r
     
