@@ -190,7 +190,7 @@ class Analytics
       return get_authed(url, query)
     end
     
-    hash = Digest::MD5.hexdigest(url)
+    hash = Digest::MD5.hexdigest("#{url}?#{query.to_a.flatten.join("&")}")
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
       return File.read(cache)
