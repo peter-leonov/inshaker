@@ -3,6 +3,7 @@
 
 require "digest/md5"
 require "optparse"
+require "date"
 
 require "lib/json"
 require "lib/string"
@@ -31,6 +32,7 @@ class Analytics
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
     LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
+    VISITS_JSON    = HT_STAT_DIR + "/visits.json"
     
     HT_RATING_JSON = Inshaker::HTDOCS_DIR + "/db/ratings/rating.json"
   end
@@ -163,6 +165,27 @@ class Analytics
   def update
     update_ratings
     update_reporter
+    update_stats
+  end
+  
+  def update_stats
+    endd = Time.now - DAY * 2
+    
+    
+    r = report({"dimensions" => "ga:date", "metrics" => "ga:visits,ga:pageviews", "prettyprint" => "true"}, endd - DAY * 90, endd, 90)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.map! do |e|
+      [Time.strptime(e[0], "%Y%m%d").to_i, e[1].to_i, e[2].to_i]
+    end
+    stats.push({"total" => {"visits" => total["ga:visits"].to_i, "pageviews" => total["ga:pageviews"].to_i}})
+    
+    File.write(Config::VISITS_JSON, JSON.stringify(stats))
+    
   end
   
   def update_ratings
