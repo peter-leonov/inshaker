@@ -109,7 +109,7 @@ class Analytics
   end
   
   def ping
-    r = raw_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
+    r = auth_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
     # puts r
     JSON.parse(r)["kind"] == "analytics#gaData"
   end
@@ -161,7 +161,7 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def raw_get url
+  def auth_get url
     Curl.get(url, {}, {"Authorization" => "Bearer #{@token}"})
   end
   
@@ -172,7 +172,7 @@ class Analytics
       return File.read(cache)
     end
     
-    r = raw_get(url)
+    r = auth_get(url)
     
     File.write(cache, r)
     
