@@ -40,6 +40,32 @@ class Curl
     read(args)
   end
 end
+
+class OAuth2Helper
+  module Config
+    CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
+    TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
+    SECRET         = ENV["ANALYTICS_CLIENT_SECRET"]
+    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
+  end
+  
+  def self.get_access_token
+    query =
+    {
+      "client_id" => Config::CLIENT_ID,
+      "client_secret" => Config::SECRET,
+      "refresh_token" => Config::TOKEN_REFRESH,
+      "grant_type" => "refresh_token"
+    }
+    
+    r = Curl.get(Config::TOKEN_URI, query)
+    # puts r
+    r = JSON.parse(r)
+    
+    r["access_token"]
+  end
+end
+
 class Analytics
   
   MINUTE = 60
@@ -49,16 +75,9 @@ class Analytics
   
   module Config
     PROFILE_ID     = "9038802"
-    BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
-    CLIENT_ID      = "3164701909-cl0sa37gnh889cr5f043t6aeim88r7gk.apps.googleusercontent.com"
-    TOKEN_URI      = "https://accounts.google.com/o/oauth2/token"
     DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
-    SECRET         = ENV["ANALYTICS_CLIENT_SECRET"]
-    TOKEN_REFRESH  = "1/db0zlC0q9jiRo6vlQ45zWnFx32ER3orsVS089-NKCao"
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
-    TOKEN_ACCESS   = TMP + "/token-access.txt"
-    
     
     HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = HT_STAT_DIR + "/all.json"
@@ -98,56 +117,9 @@ class Analytics
   end
   
   def get_credentials
-    
-    check_auth and return true
-    
-    refresh and check_auth and return true
-    
-    # login and check_auth and return true
-    
-    return false
+    @token = OAuth2Helper.get_access_token
   end
   
-  def ping
-    r = get_authed(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
-    # puts r
-    JSON.parse(r)["kind"] == "analytics#gaData"
-  end
-  
-  def check_auth
-    
-    unless @token
-      unless File.exists?(Config::TOKEN_ACCESS)
-        return false
-      end
-      
-      unless Time.now - File.mtime(Config::TOKEN_ACCESS) < HOUR
-        return false
-      end
-      
-      @token = File.read(Config::TOKEN_ACCESS)
-    end
-    
-    ping
-  end
-  
-  def refresh
-    
-    r = Curl.get(Config::TOKEN_URI, {"client_id" => Config::CLIENT_ID, "client_secret" => Config::SECRET, "refresh_token" => Config::TOKEN_REFRESH, "grant_type" => "refresh_token"})
-    
-    # puts r
-    
-    r = JSON.parse(r)
-    
-    unless r["access_token"]
-      return false
-    end
-    
-    @token = r["access_token"]
-    File.write(Config::TOKEN_ACCESS, @token)
-    
-    true
-  end
   
   def get_last_updated
     @last_updated = Time.at(JSON.parse(File.read(Config::LAST_UP_JSON))[0])
