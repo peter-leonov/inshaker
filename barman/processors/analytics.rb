@@ -109,7 +109,7 @@ class Analytics
   end
   
   def ping
-    r = auth_get(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
+    r = get_authed(Config::DATA_URI + "?ids=ga:#{Config::PROFILE_ID}&dimensions=ga:pagePath&metrics=ga:pageviews&start-date=2010-04-20&end-date=2010-05-20&max-results=10")
     # puts r
     JSON.parse(r)["kind"] == "analytics#gaData"
   end
@@ -161,18 +161,18 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def auth_get url
+  def get_authed url
     Curl.get(url, {}, {"Authorization" => "Bearer #{@token}"})
   end
   
-  def get url
+  def get_cached url
     hash = Digest::MD5.hexdigest(url)
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
       return File.read(cache)
     end
     
-    r = auth_get(url)
+    r = get_authed(url)
     
     File.write(cache, r)
     
@@ -180,7 +180,7 @@ class Analytics
   end
   
   def report query, start, endd, results=100
-    get Config::DATA_URI +
+    get_cached Config::DATA_URI +
         "?ids=ga:#{Config::PROFILE_ID}" +
         "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true"
   end
