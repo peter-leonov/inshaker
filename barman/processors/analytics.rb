@@ -22,12 +22,19 @@ class Curl
     return r
   end
   
-  def self.get url, hash={}
+  def self.get url, query={}, headers={}
     args = []
-    hash.each do |k, v|
+    
+    query.each do |k, v|
       args << "-d"
       args << "#{k}=#{v}"
     end
+    
+    headers.each do |k, v|
+      args << "-H"
+      args << "#{k}: #{v}"
+    end
+    
     args << url
     
     read(args)
