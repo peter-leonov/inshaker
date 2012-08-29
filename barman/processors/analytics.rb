@@ -162,11 +162,7 @@ class Analytics
   end
   
   def raw_get url
-    io = IO.popen(["curl", "-s", "-H", "Authorization: Bearer #{@token}", url])
-    r = io.read
-    io.close
-    
-    return r
+    Curl.get(url, {}, {"Authorization" => "Bearer #{@token}"})
   end
   
   def get url
