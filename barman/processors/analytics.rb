@@ -149,9 +149,9 @@ class Analytics
     Curl.get(url, query, {"Authorization" => "Bearer #{@token}"})
   end
   
-  def get_cached url
+  def get_cached url, query
     if @options[:force]
-      return get_authed(url)
+      return get_authed(url, query)
     end
     
     hash = Digest::MD5.hexdigest(url)
@@ -160,7 +160,7 @@ class Analytics
       return File.read(cache)
     end
     
-    r = get_authed(url)
+    r = get_authed(url, query)
     
     File.write(cache, r)
     
@@ -168,13 +168,25 @@ class Analytics
   end
   
   def report query, start, endd, results=100
-    get_cached Config::DATA_URI +
-        "?ids=ga:#{Config::PROFILE_ID}" +
-        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true"
+    rep =
+    {
+      "ids" => "ga:#{Config::PROFILE_ID}",
+      "start-date" => start.strftime("%Y-%m-%d"),
+      "end-date" => endd.strftime("%Y-%m-%d"),
+      "max-results" => results
+    }
+    get_cached(Config::DATA_URI, query.merge(rep))
   end
   
   def get_pageviews start, endd
-    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
+    query =
+    {
+      "dimensions" => "ga:pagePath",
+      "metrics" => "ga:pageviews,ga:uniquePageviews",
+      "filters" => "ga:pagePath=~^/cocktails?/",
+      "sort" => "-ga:pageviews"
+    }
+    json = report(query, start, endd, 10000)
     data = JSON.parse(json)
     parse_pageviews(data)
   end
