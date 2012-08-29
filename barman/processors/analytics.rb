@@ -173,7 +173,7 @@ class Analytics
     endd = Time.now - DAY * 2
     
     
-    r = report({"dimensions" => "ga:date", "metrics" => "ga:visits,ga:pageviews", "prettyprint" => "true"}, endd - DAY * 90, endd, 90)
+    r = report({"dimensions" => "ga:date", "metrics" => "ga:visits,ga:pageviews"}, endd - DAY * 90, endd, 90)
     # puts r
     r = JSON.parse(r)
     
