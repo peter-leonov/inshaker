@@ -182,8 +182,10 @@ class Analytics
     total = r["totalsForAllResults"]
     
     stats = r["rows"]
-    stats.map! do |e|
-      [Time.strptime(e[0], "%Y%m%d").to_i, e[1].to_i, e[2].to_i]
+    stats.each do |e|
+      e[0] = Time.strptime(e[0], "%Y%m%d").to_i
+      e[1] = e[1].to_i
+      e[2] = e[2].to_i
     end
     stats.push({"total" => {"visits" => total["ga:visits"].to_i, "pageviews" => total["ga:pageviews"].to_i}})
     
@@ -198,8 +200,8 @@ class Analytics
     total = r["totalsForAllResults"]
     
     stats = r["rows"]
-    stats.map! do |e|
-      [e[0], e[1].to_i]
+    stats.each do |e|
+      e[1] = e[1].to_i
     end
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
     
@@ -214,8 +216,8 @@ class Analytics
     total = r["totalsForAllResults"]
     
     stats = r["rows"]
-    stats.map! do |e|
-      [e[0], e[1], e[2].to_i]
+    stats.each do |e|
+      e[2] = e[2].to_i
     end
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
     
@@ -230,8 +232,8 @@ class Analytics
     total = r["totalsForAllResults"]
     
     stats = r["rows"]
-    stats.map! do |e|
-      [e[0], e[1].to_i]
+    stats.each do |e|
+      e[1] = e[1].to_i
     end
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
     
