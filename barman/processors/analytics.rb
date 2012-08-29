@@ -241,7 +241,7 @@ class Analytics
     File.write(Config::BROWSERSP_JSON, JSON.stringify(stats))
     
     
-    r = report({"dimensions" => "ga:eventLabel", "metrics" => "ga:uniqueEvents", "filters" => "ga:eventAction==error", "sort" => "-ga:uniqueEvents"}, endd - DAY * 30, endd, 500)
+    r = report({"dimensions" => "ga:eventLabel,ga:browser,ga:browserVersion", "metrics" => "ga:uniqueEvents,ga:eventValue", "filters" => "ga:eventAction==error", "sort" => "-ga:uniqueEvents"}, endd - DAY * 30, endd, 500)
     # puts r
     r = JSON.parse(r)
     
@@ -249,7 +249,8 @@ class Analytics
     
     stats = r["rows"]
     stats.each do |e|
-      e[1] = e[1].to_i
+      e[3] = e[3].to_i
+      e[4] = e[4].to_i
     end
     stats.push({"total" => {"uniqueEvents" => total["ga:uniqueEvents"].to_i}})
     
