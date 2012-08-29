@@ -22,22 +22,30 @@ class Curl
     return r
   end
   
-  def self.post url, query={}, headers={}
-    args = []
-    
+  def self.bake_query query
+    ary = []
     query.each do |k, v|
-      args << "-d"
-      args << "#{k}=#{v}"
+      ary << "-d"
+      ary << "#{k}=#{v}"
     end
-    
+    ary
+  end
+  
+  def self.bake_headers headers
+    ary = []
     headers.each do |k, v|
-      args << "-H"
-      args << "#{k}: #{v}"
+      ary << "-H"
+      ary << "#{k}: #{v}"
     end
-    
-    args << url
-    
-    read(args)
+    ary
+  end
+  
+  def self.post url, query={}, headers={}
+    read(bake_query(query) + bake_headers(headers) + [url])
+  end
+  
+  def self.get url, query={}, headers={}
+    read(bake_query(query) + bake_headers(headers) + ["-G", url])
   end
 end
 
