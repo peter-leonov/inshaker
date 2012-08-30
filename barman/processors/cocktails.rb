@@ -765,7 +765,7 @@ class CocktailsProcessor::Template
   def parts
     @sorted_parts.each do |name, dose, unit|
       normal = Ingredient.humanize_dose(dose, unit)
-      yield name, normal[0].may_be_to_i, normal[1]
+      yield name, normal[0].may_be_to_i, normal[1], Ingredient[name]["mark"]
     end
   end
   

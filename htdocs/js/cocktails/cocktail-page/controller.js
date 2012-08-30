@@ -352,10 +352,17 @@ var Controller = {
 		
 		for (var i = 0; i < resultSet.length; i++)
 		{
-			var ingredient = resultSet[i]
+			var ingredient = resultSet[i],
+				url = ingredient.getMiniImageSrc()
+			
 			var img = document.createElement("div");
 			img.className = 'image'
-			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
+			img.style.backgroundImage = 'url(' + url + ')'
+			
+			var image = document.createElement("image")
+			image.src = url
+			img.appendChild(image)
+			
 			img.alt = ingredient.name;
             img.addEventListener('click', function(ingredient) { return function(){
                 self.showIngredientPopup(ingredient);
