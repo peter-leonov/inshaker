@@ -96,9 +96,10 @@
 		<div class="what-need">
 			<dl id="ingredients_list">
 				<dt>Необходимые ингредиенты</dt>
-				<% parts do |name, amount, unit| %>
+				<% parts do |name, amount, unit, mark| %>
 				<dd class="ingredient">
-					<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
+					<a class="name" data-ingredient-name="<%= name %>"><%= name %></a><% if mark %>
+					<span class="brand"><%= mark %></span><% end %>
 					<strong><span class="amount"><%= amount %></span> <span class="type"><%= unit %></span></strong>
 				</dd>
 				<% end %>
