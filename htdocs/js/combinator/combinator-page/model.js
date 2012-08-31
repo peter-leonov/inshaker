@@ -433,6 +433,9 @@ Me.prototype =
 	{
 		// remove logic has been removed ;)
 		
+		for (var i = 0, il = add.length; i < il; i++)
+			add[i] = Cocktail.guessEntityCI(add[i])
+		
 		return Cocktail.getByQuery(add.joinA('&'))
 	},
 	
