@@ -15,6 +15,43 @@ DefaultState.prototype =
 }
 Me.DefaultState = DefaultState
 
+Array.prototype.uniqString = function uniqString ()
+{
+	var res = []
+	
+	var seen = {}
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		
+		if (seen[v])
+			continue
+		seen[v] = true
+		
+		res.push(v)
+	}
+	
+	return res
+}
+
+Array.prototype.joinA = function joinA (o)
+{
+	var l = this.length
+	
+	if (l == 0)
+		return []
+	
+	var res = [this[0]]
+	
+	for (var i = 1; i < l; i++)
+	{
+		res.push(o)
+		res.push(this[i])
+	}
+	
+	return res
+}
+
 
 function Me ()
 {
@@ -34,7 +71,6 @@ Me.prototype =
 		'по группам',
 		'по методу приготовления',
 		'по алфавиту'
-		// 'по количеству ингредиента'
 	],
 	
 	sortTypeByNum:
@@ -44,7 +80,6 @@ Me.prototype =
 		'by-group',
 		'by-method',
 		'alphabetically'
-		// 'by-strength'
 	],
 	
 	bind: function ()
@@ -58,60 +93,54 @@ Me.prototype =
 				hideGroups[group] = true
 		}
 		
-		var ingredientsTags = Ingredient.getTags(),
-			cocktailsTags = Cocktail.getTags()
-		
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
 		
-		var favorites = {}
-		
-		var ingredientsTagsHash = this.ingredientsTagsHash = {}
-		for (var i = 0, il = ingredientsTags.length; i < il; i++)
-		{
-			var tag = ingredientsTags[i]
-			ingredientsTagsHash[tag.toLowerCase()] = tag
-			favorites[tag] = true
-		}
-		
-		var cocktailsTagsHash = this.cocktailsTagsHash = {}
-		for (var i = 0, il = cocktailsTags.length; i < il; i++)
-		{
-			var tag = cocktailsTags[i]
-			cocktailsTagsHash[tag.toLowerCase()] = tag
-			favorites[tag] = true
-		}
-		
-		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
+		this.setupSearcher()
 	},
 	
-	setupSearcher: function (favorites, ingredientsTags, cocktailsTags)
+	setupSearcher: function ()
 	{
-		var ingredients = Ingredient.getAll()
+		var cocktails = Cocktail.toNames(Cocktail.getAll())
 		
-		var set = [], bySecondName = {}
+		var bySecondName = {}
+		
+		var ingredients = Ingredient.getAll()
 		for (var i = 0, il = ingredients.length; i < il; i++)
 		{
 			var ingredient = ingredients[i],
 				name = ingredient.name
 			
-			set.push(name)
+			ingredients[i] = name
 			
 			var snames = ingredient.names
 			if (!snames)
 				continue
 			
 			for (var j = 0, jl = snames.length; j < jl; j++)
-			{
-				var sname = snames[j]
-				set.push(sname)
-				bySecondName[sname] = name
-			}
+				bySecondName[snames[j]] = name
 		}
 		
-		set.push.apply(set, ingredientsTags)
-		set.push.apply(set, cocktailsTags)
+		
+		var ingredientsTags = Ingredient.getTags(),
+			cocktailsTags = Cocktail.getTags()
+		
+		// favorites are all the tags
+		var favorites = {}
+		
+		for (var i = 0, il = ingredientsTags.length; i < il; i++)
+			favorites[ingredientsTags[i]] = true
+		
+		for (var i = 0, il = cocktailsTags.length; i < il; i++)
+			favorites[cocktailsTags[i]] = true
+		
+		
+		// integrate
+		var set = [].concat(ingredients, cocktails, ingredientsTags, cocktailsTags, Object.keys(bySecondName))
+		
 		set.sort()
+		set = set.uniqString()
+		
 		
 		var searcher = this.searcher = new IngredientsSearcher(set, bySecondName, favorites)
 		this.view.setCompleterDataSource(searcher)
@@ -160,16 +189,10 @@ Me.prototype =
 			case 'by-date':
 				sorted = this.sortByDate(cocktails)
 			break
-			
-			case 'by-strength':
-				sorted = this.sortByStrength(cocktails, add)
-			break
 		}
 		
-		var stats = this.calculateStats(cocktails)
-		
 		// oowf, need to update the view
-		this.view.renderCocktails(sorted, cocktails.length, stats)
+		this.view.renderCocktails(sorted, cocktails.length)
 	},
 	
 	sortByIncreasingComplexity: function (cocktails)
@@ -268,78 +291,6 @@ Me.prototype =
 		return groups
 	},
 	
-	sortByStrength: function (cocktails, add)
-	{
-		var kByIngredient = {}
-		for (var i = 0, il = add.length; i < il; i++)
-			kByIngredient[add[i]] = 1 / (i * 1000 + 1)
-		
-		var weightByName = {}
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var cocktail = cocktails[i]
-			
-			var weight = 0// , total = 0
-			
-			var parts = cocktail.ingredients
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var part = parts[j]
-				
-				var volume = part[1]
-				// total += volume
-				
-				var k = kByIngredient[part[0]]
-				if (!k)
-					continue
-				
-				weight += k * volume
-			}
-			
-			weightByName[cocktail.name] = weight // / total
-		}
-		
-		cocktails.sort(function (a, b) { return weightByName[b.name] - weightByName[a.name] })
-		
-		return [{cocktails: cocktails}]
-	},
-	
-	calculateStats: function (cocktails)
-	{
-		var rating = {}
-		for (var i = 0, il = cocktails.length; i < il; i++)
-		{
-			var parts = cocktails[i].ingredients
-			for (var j = 0, jl = parts.length; j < jl; j++)
-			{
-				var name = parts[j][0]
-				var count = rating[name]
-				if (count)
-					rating[name]++
-				else
-					rating[name] = 1
-			}
-		}
-		
-		var all = Object.keys(rating)
-		all.sort(function (a, b) { return rating[b] - rating[a] })
-		all = all.slice(0, 7)
-		
-		var top = []
-		for (var i = 0, il = all.length; i < il; i++)
-		{
-			var name = all[i]
-			
-			top[i] =
-			{
-				ingredient: Ingredient.getByName(name),
-				rating: rating[name]
-			}
-		}
-		
-		return {top: top}
-	},
-	
 	combine: function (arr)
 	{
 		var res = []
@@ -389,7 +340,7 @@ Me.prototype =
 			
 			var set = this.getCocktailsByQuery(query, [])
 			if (set.length)
-				suggestions.push({add: this.collapseQueryObjects(query), count: set.length})
+				suggestions.push({add: query, count: set.length})
 			
 			if (i % 25 == 0 && new Date() - begin > 250)
 				break
@@ -402,10 +353,8 @@ Me.prototype =
 	{
 		this.statView(newState.add, newState.remove)
 		
-		var add = this.expandQueryNames(newState.add)
-		var remove = this.expandQueryNames(newState.remove)
-		
-		this.setDuplicates(add, remove)
+		var add = newState.add
+		var remove = newState.remove
 		
 		var state = this.state = new DefaultState(newState)
 		state.add = add
@@ -439,11 +388,6 @@ Me.prototype =
 		this.statSearch(query)
 		this.statView(add, remove)
 		
-		add = this.expandQueryNames(add)
-		remove = this.expandQueryNames(remove)
-		
-		this.setDuplicates(add, remove)
-		
 		var state = this.state
 		state.add = add
 		state.remove = remove
@@ -459,37 +403,7 @@ Me.prototype =
 	
 	queryChanged: function (add, remove)
 	{
-		add = this.expandQueryNames(add)
-		remove = this.expandQueryNames(remove)
-		
-		this.setDuplicates(add, remove)
-	},
-	
-	setDuplicates: function (add, remove)
-	{
-		var duplicates = this.searcher.duplicates = {}
-		this.hashDuplicates(add, duplicates)
-		this.hashDuplicates(remove, duplicates)
-	},
-	
-	hashDuplicates: function (arr, hash)
-	{
-		for (var i = 0, il = arr.length; i < il; i++)
-		{
-			var item = arr[i],
-				type = item.type
-			
-			hash[item] = true
-			
-			if (type == 'ingredient-tag')
-			{
-				var tag = item.valueOf(),
-					names = item.names
-				for (var j = 0, jl = names.length; j < jl; j++)
-					hash[names[j]] = tag
-				continue
-			}
-		}
+		// do nothing
 	},
 	
 	setSortBy: function (typeNum)
@@ -517,106 +431,9 @@ Me.prototype =
 	
 	searchCocktails: function (add, remove)
 	{
-		var res = Cocktail.getAll()
-		
-		for (var i = 0, il = add.length; i < il; i++)
-		{
-			var item = add[i],
-				type = item.type
-			
-			if (type == 'ingredient')
-			{
-				var name = item.valueOf()
-				
-				var ingredient = Cocktail.getByIngredient(name),
-					tool = Cocktail.getByTool(name)
-				
-				var set = DB.disjunction([ingredient, tool])
-				res = DB.conjunction([res, set])
-				continue
-			}
-			
-			if (type == 'ingredient-tag')
-			{
-				var goods = item.names.slice()
-				for (var j = 0, jl = goods.length; j < jl; j++)
-					goods[j] = Cocktail.getByIngredient(goods[j])
-				var set = DB.disjunction(goods)
-				res = DB.conjunction([res, set])
-				continue
-			}
-			
-			if (type == 'cocktail-tag')
-			{
-				var set = Cocktail.getByTag(item)
-				res = DB.conjunction([res, set])
-				continue
-			}
-		}
-		
 		// remove logic has been removed ;)
 		
-		return res
-	},
-	
-	collapseQueryObjects: function (arr)
-	{
-		var names = []
-		
-		for (var i = 0, il = arr.length; i < il; i++)
-			names[i] = arr[i].valueOf()
-		
-		return names
-	},
-	
-	expandQueryNames: function (arr)
-	{
-		var ingredientsTagsHash = this.ingredientsTagsHash,
-			cocktailsTagsHash = this.cocktailsTagsHash
-		
-		var res = [], seen = {}
-		for (var i = 0; i < arr.length; i++)
-		{
-			var item = arr[i]
-			
-			if (seen[item])
-				continue
-			seen[item] = true
-			
-			var tag = ingredientsTagsHash[item.toLowerCase()]
-			if (tag)
-			{
-				var name = new String(tag)
-				name.type = 'ingredient-tag'
-				var names = name.names = []
-				
-				var group = Ingredient.getByTag(tag)
-				for (var j = 0, jl = group.length; j < jl; j++)
-					names[j] = group[j].name
-				
-				res.push(name)
-				continue
-			}
-			
-			var tag = cocktailsTagsHash[item.toLowerCase()]
-			if (tag)
-			{
-				var name = new String(tag)
-				name.type = 'cocktail-tag'
-				res.push(name)
-				continue
-			}
-			
-			var ingredient = Ingredient.getByNameCI(item)
-			if (ingredient)
-			{
-				var name = new String(ingredient.name)
-				name.type = 'ingredient'
-				res.push(name)
-				continue
-			}
-		}
-		return res
+		return Cocktail.getByQuery(add.joinA('&'))
 	},
 	
 	updateAllIngredients: function ()

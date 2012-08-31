@@ -199,6 +199,16 @@ Me.staticMethods =
 	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
+	toNames: function (ary)
+	{
+		var res = []
+		
+		for (var i = 0, il = ary.length; i < il; i++)
+			res[i] = ary[i].name
+		
+		return res
+	},
+	
 	getTagByTagCIPrepare: function ()
 	{
 		function lowercase (tag)
@@ -242,16 +252,14 @@ Me.staticMethods =
 	
 	getByNames: function (names)
 	{
-		var byName = this.byName
-		
 		var res = []
+		
+		var byName = this.byName
 		for (var i = 0, il = names.length; i < il; i++)
 			res[i] = byName[names[i]]
 		
 		return res
 	},
-	
-	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getByToolPrepare: function (name)
 	{
@@ -271,34 +279,6 @@ Me.staticMethods =
 	{
 		var res = this.index.byTool[name]
 		return res ? res.slice() : []
-	},
-	
-	getByTags: function (tags, opts)
-	{
-		if (!opts)
-			opts = {}
-		
-		var db = opts.db || this.db
-		var count = opts.count || tags.length
-		
-		var hash = DB.hashIndex(tags)
-		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				matches = 0
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-				if (hash[tags[j]] && ++matches >= count)
-				{
-					res.push(cocktail)
-					continue db
-				}
-		}
-		return res;
 	},
 	
 	getByTagPrepare: function ()
@@ -354,11 +334,7 @@ Me.staticMethods =
 	
 	getByGood: function (name)
 	{
-		var ingredient = this.getByIngredient(name),
-			garnish = this.getByGarnish(name),
-			tool = this.getByTool(name)
-		
-		return DB.disjunction([ingredient, garnish, tool])
+		return DB.disjunction([this.getByIngredient(name), this.getByGarnish(name), this.getByTool(name)])
 	},
 	
 	getByAnyOfIngredients: function (ingredients)
@@ -419,16 +395,145 @@ Me.staticMethods =
 		return ingredients
 	},
 	
+	guessEntityTypePrepare: function ()
+	{
+		function ingredientTag (name)
+		{
+			return Cocktail.getByAnyOfIngredients(Ingredient.getByTag(name))
+		}
+		
+		function ingredient (name)
+		{
+			return Cocktail.getByIngredient(name)
+		}
+		
+		function tool (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function thing (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function cocktail (name)
+		{
+			var res = Cocktail.getByName(name)
+			if (!res)
+				return []
+			return [res]
+		}
+		
+		function cocktailTag (name)
+		{
+			return Cocktail.getByTag(name)
+		}
+		
+		
+		var index = {}
+		
+		var list = Ingredient.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = ingredientTag
+		
+		var gg2type = {ingredients: ingredient, tools: tool, things: thing}
+		var list = Ingredient.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = gg2type[Ingredient.getGroupOfGroup(item.group)]
+		}
+		
+		var list = Cocktail.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = cocktail
+		}
+		
+		var list = Cocktail.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = cocktailTag
+		
+		this.index.entityType = index
+	},
+	
+	guessEntityType: function (name)
+	{
+		return this.index.entityType[name]
+	},
+	
+	getByEntity: function (name)
+	{
+		var type = this.guessEntityType(name)
+		if (!type)
+			return []
+		
+		return type(name)
+	},
+	
+	guessEntityCIPrepare: function ()
+	{
+		// build the index
+		this.guessEntityType()
+		
+		var index = {}
+		
+		var types = this.index.entityType
+		for (var k in types)
+			index[k.toLowerCase()] = k
+		
+		this.index.entityCI = index
+	},
+	
+	guessEntityCI: function (name)
+	{
+		return this.index.entityCI[name.toLowerCase()]
+	},
+	
+	getByQuery: function (query)
+	{
+		var len = query.length
+		if (len == 0)
+			return []
+		
+		var a = this.getByEntity(query[0])
+		
+		for (var i = 1; i < len; i += 2)
+		{
+			var op = query[i],
+				entity = query[i + 1]
+			
+			var b = this.getByEntity(entity)
+			
+			switch (op)
+			{
+				case '&':
+					a = DB.conjunction([a, b])
+					break
+				
+				case '|':
+					a = DB.disjunction([a, b])
+					break
+			}
+		}
+		
+		return a
+	},
+	
 	sortIngredientsByUsage: function ()
 	{
 		// build the index
 		this.getByIngredient()
 		
-		var index = this.index.byIngredient,
-			empty = []
+		var index = this.index.byIngredient
 		function compare (a, b)
 		{
-			return (index[b.name] || empty).length - (index[a.name] || empty).length
+			a = index[a.name]
+			b = index[b.name]
+			
+			return (b ? b.length : 0) - (a ? a.length : 0)
 		}
 		
 		return compare
