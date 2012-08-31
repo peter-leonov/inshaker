@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <pie xmlns:dxp="http://schemas.google.com/analytics/2009" xmlns:a="http://www.w3.org/2005/Atom">
   <slice title="Script error. at :0">710</slice>
-  <slice title="Не удалось получить значение свойства &quot;add&quot;: значением объекта является NULL или он не определен at /js/cocktails/cocktails-common.js:940">412</slice>
-  <slice title="Не удалось получить значение свойства &quot;add&quot;: значением объекта является NULL или он не определен at /js/cocktails/cocktails-page/cocktails-page.js:387">179</slice>
+  <slice title="Не удалось получить значение свойства &quot;add&quot;: значением объекта является NULL или он не определен at /js/cocktails/cocktails-common.js:940">413</slice>
+  <slice title="Не удалось получить значение свойства &quot;add&quot;: значением объекта является NULL или он не определен at /js/cocktails/cocktails-page/cocktails-page.js:387">178</slice>
+  <slice title="Uncaught exception: DOMException: DATA_CLONE_ERR at :50">140</slice>
   <slice title="Uncaught exception: TypeError: Cannot convert 'object' to object at :33">137</slice>
-  <slice title="Uncaught exception: DOMException: DATA_CLONE_ERR at :50">134</slice>
-  <slice title="Объект не поддерживает это свойство или метод at /cocktails.html:605">125</slice>
-  <slice title="Script error. at chrome://ffvkbd/content/ikavvklistener.js:0">123</slice>
-  <slice title="Error loading script at /js/entities/Cocktail.js:1">102</slice>
+  <slice title="Объект не поддерживает это свойство или метод at /cocktails.html:605">135</slice>
+  <slice title="Script error. at chrome://ffvkbd/content/ikavvklistener.js:0">120</slice>
+  <slice title="Error loading script at /js/entities/Cocktail.js:1">103</slice>
   <slice title="Не удалось получить значение свойства &quot;add&quot;: значением объекта является NULL или он не определен at /js/magazine/magazine-page/magazine-page.js:391">95</slice>
-  <slice title="Uncaught TypeError: Object #&lt;Object&gt; has no method 'ready' at :9">75</slice>
-  <slice title="Объект не поддерживает это свойство или метод at /cocktails.html:465">60</slice>
-  <slice title="Не удалось получить значение свойства &quot;remove&quot;: значением объекта является NULL или он не определен at /js/cocktail-group/cocktail-group.js:13">55</slice>
-  <slice title="Uncaught ReferenceError: Cocktail is not defined at /js/cocktails/cocktails-page/cocktails-page.js:46">52</slice>
+  <slice title="Uncaught TypeError: Object #&lt;Object&gt; has no method 'ready' at :9">77</slice>
+  <slice title="Объект не поддерживает это свойство или метод at /cocktails.html:465">67</slice>
+  <slice title="Не удалось получить значение свойства &quot;remove&quot;: значением объекта является NULL или он не определен at /js/cocktail-group/cocktail-group.js:13">56</slice>
+  <slice title="Uncaught ReferenceError: Cocktail is not defined at /js/cocktails/cocktails-page/cocktails-page.js:46">55</slice>
   <slice title="Uncaught exception: ReferenceError: Undefined variable: NodesShortcut at /js/entities/Ingredient.js:1">48</slice>
-  <slice title="Uncaught ReferenceError: argv is not defined at :424">45</slice>
+  <slice title="Uncaught ReferenceError: argv is not defined at :424">44</slice>
   <slice title="Uncaught exception: ReferenceError: Undefined variable: DB at /js/entities/Cocktail.js:498">41</slice>
   <slice title="'undefined' - есть null или не является объектом at /js/common/common.js:2153">40</slice>
-  <slice title="TypeError: 'undefined' is not an object at undefined:0">36</slice>
-  <slice title="Uncaught exception: TypeError: Cannot convert 'db' to object at /js/entities/Barman.js:68">34</slice>
+  <slice title="Uncaught exception: TypeError: Cannot convert 'db' to object at /js/entities/Barman.js:68">36</slice>
+  <slice title="Uncaught exception: ReferenceError: Undefined variable: Cocktail at /js/entities/Barman.js:13">34</slice>
   <slice title="Объект не поддерживает это свойство или метод at /liby/fixes/trident3.js:604">34</slice>
-  <slice title="Объект не поддерживает это свойство или метод at /liby/fixes/trident4.js:422">34</slice>
   <slice title="Uncaught exception: ReferenceError: Undefined variable: $ at /t/branding/2012.08/branding.js:20">33</slice>
-  <slice title="Unable to get value of the property 'add': object is null or undefined at /js/cocktails/cocktails-common.js:940">32</slice>
-  <slice title="Uncaught exception: ReferenceError: Undefined variable: Cocktail at /js/entities/Barman.js:13">32</slice>
-  <slice title="'Popup' - определение отсутствует at /js/cocktails/cocktails-common.js:976">31</slice>
+  <slice title="Объект не поддерживает это свойство или метод at /liby/fixes/trident4.js:422">33</slice>
+  <slice title="TypeError: 'undefined' is not an object at undefined:0">32</slice>
+  <slice title="Uncaught exception: ReferenceError: Undefined variable: Cocktail at /js/cocktails/cocktails-page/cocktails-page.js:46">32</slice>
+  <slice title="Unable to get value of the property 'add': object is null or undefined at /js/cocktails/cocktails-common.js:940">31</slice>
 </pie>
