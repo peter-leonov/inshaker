@@ -13,8 +13,6 @@ function Me (nodes)
 	this.switchBlock = false
 	this.blockNames = ['special', 'pop', 'author', 'classic']
 	
-	new RollingImagesLite(nodes.promos.root, {animationType: 'easeInOutQuad', duration:0.75})
-	
 	var cocktails = nodes.cocktails
 	for(var i = 0; i < cocktails.length; i++)
 		new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
@@ -36,26 +34,7 @@ Me.prototype =
 			blocks = data.cocktails
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
-			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
-	},
-	
-	_createCocktailElement: function (cocktail)
-	{
-		return cocktail.getPreviewNode()
-	},
-	
-	_createLinkElement: function (link, links)
-	{
-		var li = document.createElement("li")
-		var a  = document.createElement("a")
-		a.href = link[1]
-		var img = document.createElement("img")
-		img.src = "/magazine/links/" + (links.indexOf(link) + 1) + ".png"
-		var txt = document.createTextNode(link[0])
-		a.appendChild(img)
-		a.appendChild(txt)
-		li.appendChild(a)
-		return li
+			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]])
 	},
 	
 	createPromoElement: function (promo)
@@ -69,60 +48,6 @@ Me.prototype =
 		a.appendChild(img)
 		a.className = "point"
 		return a
-	},
-	
-	getPromoImages: function ()
-	{
-		return images = this.nodes.promos.root.getElementsByTagName("img")
-	},
-	
-	loadFrames: function (list)
-	{
-		var images = this.getPromoImages()
-		
-		for (var i = 0; i < list.length; i++)
-		{
-			var img = images[list[i]]
-			if (!img.src)
-				img.src = img.getAttribute("lazy")
-		}
-	},
-	
-	getRange: function (initFrame)
-	{
-		var range = [initFrame]
-		var images = this.getPromoImages()
-		
-		if (images[initFrame - 1])
-			range.push(initFrame - 1)
-		if (images[initFrame + 1])
-			range.push(initFrame + 1)
-		
-		var l = images.length
-		
-		if (range.indexOf(1) > -1)
-			range.push(l - 1) // first == last (fake)
-		if (range.indexOf(l - 2) > -1)
-			range.push(0) // last == first (fake)
-		
-		return range
-	},
-	
-	loadInitialFrames: function (initFrame)
-	{
-		var range = this.getRange(initFrame)
-		
-		this.loadFrames(range)
-	},
-	
-	renderCocktails: function (node, set, len)
-	{
-		this.renderSet(node, set, len, this._createCocktailElement)
-	},
-	
-	renderLinks: function (node, set, len)
-	{
-		this.renderSet(node, set, len, this._createLinkElement)
 	},
 	
 	renderPromo: function (node, set, len, state)
@@ -178,20 +103,22 @@ Me.prototype =
 		}
 	},
 	
-	renderSet: function (node, set, len, renderFunction)
+	renderCocktails: function (node, set)
 	{
 		var parent = $('.surface', node)
 		parent.empty()
 		for (var i = 0; i < set.length; i++)
 		{
-			if (i % len == 0)
-			{
-				var point = document.createElement('ul')
-				point.className = 'point'
-				parent.appendChild(point)
-			}
-			if (set[i])
-				point.appendChild(renderFunction(set[i], set))
+			var cocktail = set[i]
+			if (!cocktail)
+				continue
+			
+				
+			var point = document.createElement('ul')
+			point.className = 'point'
+			parent.appendChild(point)
+			
+			point.appendChild(cocktail.getPreviewNode())
 		}
 		node.RollingImagesLite.sync()
 	},
