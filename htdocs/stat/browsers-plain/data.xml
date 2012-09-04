@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <pie xmlns:dxp="http://schemas.google.com/analytics/2009" xmlns:a="http://www.w3.org/2005/Atom">
-  <slice title="Opera" color="#cc2200">38223</slice>
-  <slice title="Firefox" color="#ff9900">25831</slice>
-  <slice title="Chrome" color="#66cc22">58910</slice>
-  <slice title="Explorer" color="#4499ff">9316</slice>
-  <slice title="Safari" color="#0055bb">18872</slice>
-  <slice title="others" color="#999999">8724</slice>
+  <slice title="Opera" color="#cc2200">38131</slice>
+  <slice title="Firefox" color="#ff9900">25589</slice>
+  <slice title="Chrome" color="#66cc22">58794</slice>
+  <slice title="Explorer" color="#4499ff">9199</slice>
+  <slice title="Safari" color="#0055bb">18855</slice>
+  <slice title="others" color="#999999">8755</slice>
 </pie>
