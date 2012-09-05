@@ -61,8 +61,7 @@ Me.prototype =
 		var nodes = this.nodes,
 			surface = nodes.surface, viewport = nodes.viewport
 		
-		var frame = this.frame = new VisibilityFrame(),
-			gridder = this.gridder = frame.getGridder()
+		var frame = this.frame = new VisibilityFrame()
 		
 		frame.setStep(this.conf.stepX, this.conf.stepY)
 		
@@ -90,6 +89,7 @@ Me.prototype =
 		space.add(new Kinematics.Friction(this.conf.friction))
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
 		
+		var gridder = frame.getGridder()
 		scroller.onstop = function ()
 		{
 			var boxes = gridder.getBoxesPrecise(scroller.realX + me.frameWidth/2, 0, 1, 1)
