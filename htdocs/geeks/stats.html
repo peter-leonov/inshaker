@@ -103,12 +103,14 @@ function drawChartToNode (node, data)
 
 function onready ()
 {
+	BrowsersStats.init(<!--# include virtual="/stat/browsers.json" -->)
+
 	var opts =
 	{
 		packages: ["corechart"]
 	}
 	
-	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(<!--# include virtual="/stat/browsers/data.json" -->, <!--# include virtual="/stat/browsers-plain/data.json" -->) }, false)
+	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(BrowsersStats.getChartsData(), <!--# include virtual="/stat/browsers-plain/data.json" -->) }, false)
 	googleApiLoader.load('visualization', 1, opts)
 	
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
@@ -122,6 +124,8 @@ $.onready(onready)
 
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 <!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="/js/geeks/stat.js" -->
 
 </script>
 </body>
