@@ -39,6 +39,15 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
+		for (var i = 0, il = visitors.length; i < il; i++)
+		{
+			visitors[i][0] = new Date( visitors[i][0] * 1000 ).toRusDateShort()
+			
+			var temp = visitors[i][1]
+			visitors[i][1] = visitors[i][2]
+			visitors[i][2] = temp
+		}
+		
 		this.statCities = $('#stat_cities')
 		this.statVisits = $('#stat_visits')
 		this.cities = cities
@@ -129,7 +138,7 @@ var AboutPage = {
 		var dataArea = new visual.DataTable()
 		dataArea.addColumn('string', 'Дата')
 		dataArea.addColumn('number', 'Просмотры')
-		dataArea.addColumn('number', 'Визиты')
+		dataArea.addColumn('number', 'Посетители')
 		dataArea.addRows(this.visitors)
 		
 		var optionsArea =
@@ -137,6 +146,28 @@ var AboutPage = {
 			focusTarget: 'category',
 			width: 510,
 			height: 400,
+			hAxis:
+			{
+				textStyle: 
+				{
+					fontSize: 11
+				},
+				showTextEvery: (this.visitors.length/6) + 2,
+				maxAlternation:2,
+				maxTextLines:2,
+				minTextSpacing:0
+			},
+			vAxis:
+			{
+				textStyle: 
+				{
+					fontSize: 11
+				},
+				gridlines:
+				{
+					count: 8
+				}
+			},
 			legend:
 			{
 				position: 'bottom',
@@ -144,8 +175,8 @@ var AboutPage = {
 			},
 			chartArea:
 			{
-				left: 95,
-				width: 370
+				left: 50,
+				width: 450
 			}
 		}
 		
@@ -155,7 +186,7 @@ var AboutPage = {
 };
 
 $.onready(function(){
-	AboutPage.init(<!--# include virtual="/stat/cities/data.json" -->, <!--# include virtual="/stat/visitors/data.json" -->);
+	AboutPage.init(<!--# include virtual="/reporter/db/stats/cities.json" -->, <!--# include virtual="/reporter/db/stats/visits.json" -->);
 	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
@@ -172,3 +203,5 @@ $.onready(function(){
 
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 <!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="/liby/modules/rus-date.js" -->
