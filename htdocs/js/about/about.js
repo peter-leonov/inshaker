@@ -153,9 +153,9 @@ var AboutPage = {
 					fontSize: 11
 				},
 				showTextEvery: (this.visitors.length/6) + 2,
-				maxAlternation:2,
-				maxTextLines:2,
-				minTextSpacing:0
+				maxAlternation: 2,
+				maxTextLines: 2,
+				minTextSpacing: 0
 			},
 			vAxis:
 			{
