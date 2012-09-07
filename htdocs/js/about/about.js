@@ -39,6 +39,7 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
+		visitors.pop()
 		for (var i = 0, il = visitors.length; i < il; i++)
 		{
 			visitors[i][0] = new Date( visitors[i][0] * 1000 ).toRusDateShort()
