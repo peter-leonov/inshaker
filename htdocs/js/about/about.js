@@ -48,6 +48,36 @@ var AboutPage = {
 			visitors[i][2] = temp
 		}
 		
+		var rusCities =
+		{
+			'Moscow': 'Москва',
+			'Sankt-Petersburg': 'Санкт-Петербург',
+			'Sverdlovskaya oblast': 'Свердловская область',
+			'Moskovskaya oblast': 'Московская область',
+			'Rostovskaya oblast': 'Ростовская область',
+			'Kyiv': 'Киев',
+			'Novosibirskaya oblast': 'Новосибирская область',
+			'Krasnodarskiy kray': 'Краснодарский край',
+			'Samarskaya oblast': 'Самарская область'
+		}
+		
+		var otherCities = cities.pop().total.visits
+		var newCities = []
+		
+		for (var i = 0, il = cities.length; i < il; i++)
+		{
+			var city = cities[i],
+				rus = rusCities[city[0]] 
+			
+			if (rus)
+				newCities.push([rus, city[1]])
+			else
+				otherCities += city[1]
+		}
+		
+		newCities.push(['Другие регионы', otherCities])
+		cities = newCities
+		
 		this.statCities = $('#stat_cities')
 		this.statVisits = $('#stat_visits')
 		this.cities = cities
