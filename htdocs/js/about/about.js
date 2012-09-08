@@ -157,6 +157,7 @@ var AboutPage = {
 			height: 400,
 			chartArea:
 			{
+				top: 35,
 				left: 15,
 				width: 1000
 			}
@@ -206,6 +207,7 @@ var AboutPage = {
 			},
 			chartArea:
 			{
+				top: 35,
 				left: 50,
 				width: 450
 			}
