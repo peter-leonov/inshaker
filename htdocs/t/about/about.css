@@ -18,7 +18,7 @@
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
 .b-content .content h3{font-size:18px;margin:1em 0;}
 .view-stat {padding-bottom: 30px}
-.view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;}
+.view-stat .note {width: 300px; font-size: 12px; margin-left: 98px; margin-top: 43px;}
 .view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;}
 .view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;}
 .view-stat .stat .surface { width: 520px; padding:0;}
