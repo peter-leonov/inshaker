@@ -62,7 +62,8 @@ var AboutPage = {
 			'Samarskaya oblast': 'Самарская область'
 		}
 		
-		var otherCities = cities.pop().total.visits
+		var totalVisits = cities.pop().total.visits
+		var totalUsed = 0
 		var newCities = []
 		
 		for (var i = 0, il = cities.length; i < il; i++)
@@ -70,13 +71,15 @@ var AboutPage = {
 			var city = cities[i],
 				rus = rusCities[city[0]]
 			
-			if (rus)
-				newCities.push([rus, city[1]])
-			else
-				otherCities += city[1]
+			if (!rus)
+				continue
+			
+			var count = city[1]
+			totalUsed += count
+			newCities.push([rus, count])
 		}
 		
-		newCities.push(['Другие регионы', otherCities])
+		newCities.push(['Другие регионы', totalVisits - totalUsed])
 		cities = newCities
 		
 		this.statCities = $('#stat_cities')
