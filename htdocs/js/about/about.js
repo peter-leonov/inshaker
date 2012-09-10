@@ -68,7 +68,7 @@ var AboutPage = {
 		for (var i = 0, il = cities.length; i < il; i++)
 		{
 			var city = cities[i],
-				rus = rusCities[city[0]] 
+				rus = rusCities[city[0]]
 			
 			if (rus)
 				newCities.push([rus, city[1]])
@@ -180,7 +180,7 @@ var AboutPage = {
 			height: 400,
 			hAxis:
 			{
-				textStyle: 
+				textStyle:
 				{
 					fontSize: 11
 				},
@@ -191,7 +191,7 @@ var AboutPage = {
 			},
 			vAxis:
 			{
-				textStyle: 
+				textStyle:
 				{
 					fontSize: 11
 				},
