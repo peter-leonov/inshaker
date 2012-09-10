@@ -196,7 +196,7 @@ class Analytics
     
     
     
-    r = report({"dimensions" => "ga:region", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 90, endd, 10)
+    r = report({"dimensions" => "ga:region", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 90, endd, 50)
     # puts r
     r = JSON.parse(r)
     
