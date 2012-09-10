@@ -59,7 +59,14 @@ var AboutPage = {
 			'Kyiv': 'Киев',
 			'Novosibirskaya oblast': 'Новосибирская область',
 			'Krasnodarskiy kray': 'Краснодарский край',
-			'Samarskaya oblast': 'Самарская область'
+			'Samarskaya oblast': 'Самарская область',
+			'Nizhegorodskaya oblast': 'Нижегородская область',
+			'Chelyabinskaya oblast': 'Челябинская область',
+			'Tatarstan, Republic': 'Республика Татарстан'
+			// 'Primorskiy kray': 'Приморский край',
+			// 'Voronezhskaya oblast': 'Воронежская область',
+			// 'Volgogradskaya oblast': 'Волгоградская область',
+			// 'Krasnoyarskiy kray': 'Красноярский край'
 		}
 		
 		var totalVisits = cities.pop().total.visits
