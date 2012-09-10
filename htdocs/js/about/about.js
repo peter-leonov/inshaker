@@ -219,7 +219,7 @@ var AboutPage = {
 };
 
 $.onready(function(){
-	AboutPage.init(<!--# include virtual="/reporter/db/stats/cities.json" -->, <!--# include virtual="/reporter/db/stats/visits.json" -->);
+	AboutPage.init(<!--# include virtual="/db/stats/cities.json" -->, <!--# include virtual="/db/stats/visits.json" -->);
 	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
