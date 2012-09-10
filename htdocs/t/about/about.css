@@ -67,18 +67,6 @@
 #form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background-position: -200px -25px; }
 
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.b-content .border-links {width:581px;}
-#menu{/*z-index:20;position:absolute;*/ width:90%;}
-#menu a{width:1px;white-space:nowrap;}
-#menu a b{border:none;}
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-.b-content .content ol {padding-left:23px;}
-<!--# endif -->
-
-
 #partner-list { width: 590px; text-align: justify;}
 #partner-list .partner-item {display:inline-block; width: 150px; margin: 35px 0 10px; text-align: center;}
 #partner-list .spacer { display:inline-block; width: 500px; }
