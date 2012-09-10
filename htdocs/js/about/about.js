@@ -164,12 +164,17 @@ var AboutPage = {
 		var optionsPie =
 		{
 			width: 510,
-			height: 400,
+			height: 500,
 			chartArea:
 			{
 				top: 35,
 				left: 15,
 				width: 1000
+			},
+			legend:
+			{
+				position: 'right',
+				alignment: 'center'
 			}
 		}
 		
