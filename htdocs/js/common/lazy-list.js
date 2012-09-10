@@ -92,7 +92,7 @@ Me.prototype =
 		var gridder = frame.getGridder()
 		scroller.onstop = function ()
 		{
-			var boxes = gridder.getBoxesPrecise(scroller.realX + me.frameWidth/2, 0, 1, 1)
+			var boxes = gridder.getBoxesPrecise(Math.ceil(scroller.realX + me.frameWidth / 2), Math.ceil(me.frameHeight / 2), 1, 1)
 			me.onstop(boxes[0].node)
 		}
 	},
