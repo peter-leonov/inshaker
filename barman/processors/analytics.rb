@@ -184,7 +184,7 @@ class Analytics
     
     stats = r["rows"]
     stats.each do |e|
-      e[0] = Time.strptime(e[0], "%Y%m%d").to_i
+      e[0] = Date.strptime(e[0], "%Y%m%d").to_time.to_i
       e[1] = e[1].to_i
       e[2] = e[2].to_i
     end
