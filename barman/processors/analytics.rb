@@ -29,9 +29,11 @@ class Analytics
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
     
-    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
-    ALL_JSON       = HT_STAT_DIR + "/all.json"
-    LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
+    REPORTER_DIR   = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
+    ALL_JSON       = REPORTER_DIR + "/all.json"
+    LAST_UP_JSON   = REPORTER_DIR + "/last-updated.json"
+    
+    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
     VISITS_JSON    = HT_STAT_DIR + "/visits.json"
     CITIES_JSON    = HT_STAT_DIR + "/cities.json"
     BROWSERS_JSON  = HT_STAT_DIR + "/browsers.json"
@@ -141,7 +143,7 @@ class Analytics
   end
   
   def cocktails_pageviews name, start, endd
-    dst = Config::HT_STAT_DIR + "/" + name + ".json"
+    dst = Config::REPORTER_DIR + "/" + name + ".json"
     
     # do not re-calculate stats older than four days
     if @last_updated - endd > 4 * DAY and File.exists?(dst)
