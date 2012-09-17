@@ -140,7 +140,33 @@ var Me =
 	},
 	
 	toHEX: function  (d) { return ( 0 | ( 1 << 8 ) + d ).toString(16).substr(1) },
-	rgbToCode: function (c) { return '#' + this.toHEX(c[0]) + this.toHEX(c[1]) + this.toHEX(c[2]) }
+	rgbToCode: function (c) { return '#' + this.toHEX(c[0]) + this.toHEX(c[1]) + this.toHEX(c[2]) },
+	
+	genColors: function (browser, colors)
+	{
+		var sum = browser.sum,
+			colorMiddle = browser.colorMiddle,
+			colorEnd = browser.colorEnd,
+			color = browser.color,
+			stats = browser.byVersion
+		
+		var statPercent = sum * 0.01,
+			length = stats.length,
+			i = 0
+		
+		do
+		{
+			var howPercent = stats[i].stat / statPercent
+			colors.push(this.rgbToCode(color))
+		} while (howPercent < 2 && i++ < length-1)
+		
+		for (i++; i < length-1; i++)
+		{
+			colors.push(this.rgbToCode(colorMiddle))
+		}
+		
+		colors.push(this.rgbToCode(colorEnd))
+	}
 }
 
 Me.className = 'BrowsersStats'
