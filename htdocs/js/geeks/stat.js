@@ -61,6 +61,11 @@ var Me =
 		}
 		
 		this.groupBrowsers()
+		
+		this.groupStat(browsers.Opera)
+		this.groupStat(browsers.Firefox)
+		this.groupStat(browsers.Chrome)
+		this.groupStat(browsers['Internet Explorer'])
 	},
 	
 	groupBrowsers: function ()
@@ -82,7 +87,35 @@ var Me =
 				browsers[name].sum += +stat[2]
 			}
 		}
-	}
+	},
+	
+	groupStat: function (browser)
+	{
+		var statsPointer = {},
+			statsArray = [],
+			versionTemplate = /^\d+\.\d/,
+			other = 0
+		
+		for (var i = 0, il = browser.rawData.length; i < il; i++)
+		{
+			var fullVersion = browser.rawData[i][0],
+				stat = +browser.rawData[i][1],
+				version = +versionTemplate.exec(fullVersion)
+			
+			if (version)
+				if (!(version in statsPointer))
+					statsPointer[version] = statsArray.push({version: version, stat: stat}) - 1
+				else
+					statsArray[statsPointer[version]].stat += stat
+			else
+				other += stat
+		}
+		
+		browser.other = other
+		browser.byVersion = statsArray.sort(this.sort)
+	},
+	
+	sort: function(a, b){ return b.version - a.version }
 }
 
 Me.className = 'BrowsersStats'
