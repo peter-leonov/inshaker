@@ -66,6 +66,10 @@ var Me =
 		this.groupStat(browsers.Firefox)
 		this.groupStat(browsers.Chrome)
 		this.groupStat(browsers['Internet Explorer'])
+		
+		this.sealTail(browsers.Opera)
+		this.sealTail(browsers.Firefox)
+		this.sealTail(browsers.Chrome)
 	},
 	
 	groupBrowsers: function ()
@@ -115,7 +119,25 @@ var Me =
 		browser.byVersion = statsArray.sort(this.sort)
 	},
 	
-	sort: function(a, b){ return b.version - a.version }
+	sort: function(a, b){ return b.version - a.version },
+	
+	sealTail: function (browser)
+	{
+		var stats = browser.byVersion,
+			tail = 0,
+			halfPercent = this.total * 0.005,
+			length = stats.length-1
+		
+		while (tail + stats[length].stat < halfPercent)
+		{
+			tail += stats[length].stat
+			stats.pop()
+			length--
+		}
+		
+		browser.other += tail
+		stats.push({version: 'other', stat: browser.other})
+	}
 }
 
 Me.className = 'BrowsersStats'
