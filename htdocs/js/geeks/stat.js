@@ -78,7 +78,7 @@ var Me =
 			browsers = this.browsers
 		
 		var sum = stats.pop()
-		this.total = sum.total
+		this.total = sum.total.visits
 		
 		for (var i = 0, il = stats.length; i < il; i++)
 		{
@@ -239,6 +239,6 @@ var Me =
 Me.className = 'BrowsersStats'
 self[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/stat/browsers.json" -->)
+Me.initialize(<!--# include virtual="/db/stats/browsers.json" -->)
 
 })();
