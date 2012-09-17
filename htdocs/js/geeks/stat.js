@@ -195,6 +195,47 @@ var Me =
 		]
 		
 		return {data: data, colors: colors}
+	},
+	
+	getChartData: function ()
+	{
+		var browsers = this.browsers,
+			data = [],
+			colors = [],
+			known = 0
+		
+		for (var browserName in browsers)
+		{
+			var browser = browsers[browserName],
+				stats = browser.byVersion
+			
+			if (stats)
+			{
+				var length = stats.length
+				for (var i = 0, il = length-1; i < il; i++)
+				{
+					var stat = stats[i]
+					data.push([browserName + ' ' + stat.version, stat.stat])
+				}
+				
+				var stat = stats[length-1]
+				data.push([stat.version + ' ' + browserName, stat.stat])
+				
+				this.genColors(browser, colors)
+			}
+			else
+			{
+				data.push([browserName, browser.sum])
+				colors.push(this.rgbToCode(browser.color))
+			}
+			
+			known += browser.sum
+		}
+		
+		data.push(['Unknown', this.total - known])
+		colors.push('#999999')
+		
+		return {data: data, colors: colors}
 	}
 }
 
