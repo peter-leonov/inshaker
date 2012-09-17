@@ -12,51 +12,51 @@ var Me =
 			{
 				rawData: [],
 				sum: 0,
-				color: [0xcc, 0x00, 0x00],
-				colorMiddle: [0xcc, 0x59, 0x26],
-				colorEnd: [0xcc, 0x77, 0x33]
+				color: "#cc0000",
+				colorMiddle: "#cc5926",
+				colorEnd: "#cc7733"
 			},
 			'Firefox':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0xff, 0x99, 0x00],
-				colorMiddle: [0xff, 0xad, 0x10],
-				colorEnd: [0xff, 0xee, 0x44]
+				color: "#ff9900",
+				colorMiddle: "#ffad10",
+				colorEnd: "#ffee44"
 			},
 			'Chrome':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0x00, 0xcc, 0x00],
-				colorMiddle: [0x44, 0xcc, 0x33],
-				colorEnd: [0x88, 0xcc, 0x66]
+				color: "#00cc00",
+				colorMiddle: "#44cc33",
+				colorEnd: "#88cc66"
 			},
 			'Internet Explorer':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0x44, 0x99, 0xff],
-				colorMiddle: [0x55, 0xaa, 0xff],
-				colorEnd: [0x66, 0xbb, 0xff]
+				color: "#4499ff",
+				colorMiddle: "#55aaff",
+				colorEnd: "#66bbff"
 			},
 			'Safari':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0x00, 0x55, 0xbb]
+				color: "#0055bb"
 			},
 			'Opera Mini':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0x77, 0x77, 0x77]
+				color: "#777777"
 			},
 			'Android Browser':
 			{
 				rawData: [],
 				sum: 0,
-				color: [0x88, 0x88, 0x88]
+				color: "#888888"
 			}
 		}
 		
@@ -139,9 +139,6 @@ var Me =
 		stats.push({version: 'other', stat: browser.other})
 	},
 	
-	toHEX: function  (d) { return ( 0 | ( 1 << 8 ) + d ).toString(16).substr(1) },
-	rgbToCode: function (c) { return '#' + this.toHEX(c[0]) + this.toHEX(c[1]) + this.toHEX(c[2]) },
-	
 	genColors: function (browser, colors)
 	{
 		var sum = browser.sum,
@@ -157,15 +154,15 @@ var Me =
 		do
 		{
 			var howPercent = stats[i].stat / statPercent
-			colors.push(this.rgbToCode(color))
+			colors.push(color)
 		} while (howPercent < 2 && i++ < length-1)
 		
 		for (i++; i < length-1; i++)
 		{
-			colors.push(this.rgbToCode(colorMiddle))
+			colors.push(colorMiddle)
 		}
 		
-		colors.push(this.rgbToCode(colorEnd))
+		colors.push(colorEnd)
 	},
 	
 	getChartDataPlain: function ()
@@ -186,11 +183,11 @@ var Me =
 		
 		colors =
 		[
-			this.rgbToCode(browsers.Opera.color),
-			this.rgbToCode(browsers.Firefox.color),
-			this.rgbToCode(browsers.Chrome.color),
-			this.rgbToCode(browsers['Internet Explorer'].color),
-			this.rgbToCode(browsers.Safari.color),
+			browsers.Opera.color,
+			browsers.Firefox.color,
+			browsers.Chrome.color,
+			browsers['Internet Explorer'].color,
+			browsers.Safari.color,
 			'#999999'
 		]
 		
@@ -226,7 +223,7 @@ var Me =
 			else
 			{
 				data.push([browserName, browser.sum])
-				colors.push(this.rgbToCode(browser.color))
+				colors.push(browser.color)
 			}
 			
 			known += browser.sum
