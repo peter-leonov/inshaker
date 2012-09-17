@@ -88,7 +88,7 @@ var Me =
 			if (browsers[name])
 			{
 				browsers[name].rawData.push([stat[1], stat[2]])
-				browsers[name].sum += +stat[2]
+				browsers[name].sum += stat[2]
 			}
 		}
 	},
@@ -103,7 +103,7 @@ var Me =
 		for (var i = 0, il = browser.rawData.length; i < il; i++)
 		{
 			var fullVersion = browser.rawData[i][0],
-				stat = +browser.rawData[i][1],
+				stat = browser.rawData[i][1],
 				version = +versionTemplate.exec(fullVersion)
 			
 			if (version)
