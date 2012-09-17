@@ -166,6 +166,35 @@ var Me =
 		}
 		
 		colors.push(this.rgbToCode(colorEnd))
+	},
+	
+	getChartDataPlain: function ()
+	{
+		var browsers = this.browsers
+		
+		var other = this.total - browsers.Opera.sum - browsers.Firefox.sum - browsers['Internet Explorer'].sum - browsers.Safari.sum - browsers.Chrome.sum
+		
+		var data =
+		[
+			['Opera', browsers.Opera.sum],
+			['Firefox', browsers.Firefox.sum],
+			['Chorme', browsers.Chrome.sum],
+			['Internet Explorer', browsers['Internet Explorer'].sum],
+			['Safari', browsers.Safari.sum],
+			['Other', other]
+		],
+		
+		colors =
+		[
+			this.rgbToCode(browsers.Opera.color),
+			this.rgbToCode(browsers.Firefox.color),
+			this.rgbToCode(browsers.Chrome.color),
+			this.rgbToCode(browsers['Internet Explorer'].color),
+			this.rgbToCode(browsers.Safari.color),
+			'#999999'
+		]
+		
+		return {data: data, colors: colors}
 	}
 }
 
