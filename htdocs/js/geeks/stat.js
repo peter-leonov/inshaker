@@ -59,6 +59,29 @@ var Me =
 				color: [0x88, 0x88, 0x88]
 			}
 		}
+		
+		this.groupBrowsers()
+	},
+	
+	groupBrowsers: function ()
+	{
+		var stats = this.data,
+			browsers = this.browsers
+		
+		var sum = stats.pop()
+		this.total = sum.total
+		
+		for (var i = 0, il = stats.length; i < il; i++)
+		{
+			var stat = stats[i],
+				name = stat[0]
+			
+			if (browsers[name])
+			{
+				browsers[name].rawData.push([stat[1], stat[2]])
+				browsers[name].sum += +stat[2]
+			}
+		}
 	}
 }
 
