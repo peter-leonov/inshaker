@@ -76,6 +76,10 @@ Me.prototype =
 			{
 				this.setTop(this.lastY - this.offsetHeight)
 			},
+			enter_from_down: function ()
+			{
+				// do nothing
+			},
 			job: function (sm)
 			{
 				if (this.y <= this.initialTop)

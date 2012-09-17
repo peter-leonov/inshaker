@@ -1,0 +1,112 @@
+#top,
+#top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #e31938; }
+
+/* common.css */
+#spotlighted i,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+button.rounded,
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
+#spotlighted i { width: 85px; height: 40px; right: -1px; top: -11px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 530px; left: 140px; bottom: -570px; }
+#branded-image-holder { height: 1000px; position: absolute; top: 100px; bottom: auto; }
+html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
+html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
+a { color: #000; }
+html { background: #f8f6f1 url(bg.jpg) center 120px; }
+html.branding-short {  }
+button.rounded b,
+button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
+button.rounded b { color: #fff; }
+button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer { color: #364; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #ae0000; text-decoration: none; }
+#common-footer .index { border-bottom: solid 1px #9c9; }
+#common-footer .index .theme .head { color: #063; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .bottom { background-color: rgba(255,255,255,0.5); }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+
+#common-footer .index .theme .head,
+#common-footer a { text-shadow: 1px 1px #fff, 1px -1px #fff, -1px 1px #fff, -1px -1px #fff; }
+
+
+html.barmen-section #common-footer .about-menu .link.barmen,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
+{ color: #000; cursor: default; text-decoration: none !important; }
+
+
+/* cocktails.css */
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
+#search_tabs li,
+#alphabetical-ru a.selected-button,
+.ingreds-list,
+.ingreds-list .rem,
+.pager-big .prev,
+.pager-big .next,
+.b-content .pager .p-list a.selected-button,
+#all_list i,
+.b-search .groups dd.selected-button,
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
+#results_display a {}
+#letters_all,
+#alphabetical-ru a { color: #fff; }
+#alphabetical-ru a.selected-button { color: #000; }
+#search_tabs li { color: #000; }
+#search_tabs li.selected { color: #fff; }
+.ingreds-list a { color: #fff; }
+.pager-big .prev,
+.pager-big .next { width: 23px; height: 25px; }
+.b-content .pager .p-list a { padding: 2px 6px 3px; margin-right: -3px; }
+.b-content .pager .p-list a.two { padding: 2px 3px 3px; margin-right: 0; }
+.b-content .pager .p-list .selected-button { color: #f3ede3; }
+#b-bill dd li b { color: #888; }
+.search-form input { color: #362313; }
+.b-search .groups dd { color: #231f20; }
+.b-search .groups dd.selected-button { color: #f1ece3; }
+.b-search .groups dd.disabled { color: #999; }
+#search_by_ingreds .autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border-color: #570709; }
+#search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
+
+/* cocktail.css */
+#top-menu .border-links a:hover,
+#b-more dt,
+#b-more dt b { background-color: #333; }
+#b-more dt b { color: #fff; }
+#main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* bars.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(101,178,0,0.7); }
+#sort-menu .bars-select dt,
+#sort-menu .bars-select dd ul li.selected,
+#sort-menu .bars-select dd ul li:hover { color: #83cb26; }
+#map .point .icon,
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #fb351b; }
+#map .point.selected .point-name { color: #80ba04; }
+
+/* bar.css */
+#main-column .info .block .head a { color: #83cb26; }
+
+/* combinator.css */
+#output .help-line .hint { color: #ae0000; }
+
+/* rating.css */
+.ratings-widget .head .switch { color: #ae0000; }

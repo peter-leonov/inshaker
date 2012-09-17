@@ -17,6 +17,12 @@ class Ingredient < Inshaker::Entity
     @inited = true
     
     @db = JSON.parse(File.read(Config::DB_JS))
+    @db.each do |e|
+      unless e["tags"]
+        e["tags"] = []
+      end
+    end
+    @tags = JSON.parse(File.read(Config::DB_JS_TAGS))
     @by_name = @db.hash_index("name")
     @units_i = JSON.parse(File.read(Config::DB_JS_UNITS)).hash_index
   end
@@ -25,10 +31,39 @@ class Ingredient < Inshaker::Entity
     say "проверяю связность данных ингредиентов"
   end
   
+  def self.bake_by_tag_index
+    @by_tag_index = Hash.new { |h, k| h[k] = [] }
+    @db.each do |e|
+      e["tags"].each do |tag|
+        @by_tag_index[tag] << e
+      end
+    end
+  end
+  
+  def self.get_by_tag tag
+    bake_by_tag_index unless @by_tag_index
+    @by_tag_index[tag] || []
+  end
+  
+  def self.tags
+    @tags
+  end
+  
+  def self.each
+    @db.each do |e|
+      yield e
+    end
+  end
+  
+  @group_of_group = {"Украшения" => "tool", "Штучки" => "tool", "Посуда" => "tool", "Штуковины" => "thing"}
+  def self.group_of_group group
+    @group_of_group[group] || "ingredient"
+  end
+  
   @normals =
   {
-    'мл' => [0.001, 'л'],
-    'кг' => [1000, 'г']
+    "мл" => [0.001, "л"],
+    "кг" => [1000, "г"]
   }
   
   def self.normalize_dose vol, unit

@@ -46,12 +46,19 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.index_names_by_ingredient
-    return if @names_by_ingredient
-    
     @names_by_ingredient = Hash.new { |h, k| h[k] = [] }
     @db.each do |cocktail|
       cocktail["ingredients"].each do |part|
         @names_by_ingredient[part[0]] << cocktail["name"]
+      end
+    end
+  end
+  
+  def self.index_names_by_tool
+    @names_by_tool = Hash.new { |h, k| h[k] = [] }
+    @db.each do |cocktail|
+      cocktail["tools"].each do |part|
+        @names_by_tool[part[0]] << cocktail["name"]
       end
     end
   end
@@ -61,7 +68,56 @@ class Cocktail < Inshaker::Entity
   end
   
   def self.get_by_tag tag
-    @by_tag[tag.ci_index]
+    @by_tag[tag.ci_index] || []
+  end
+  
+  def self.bake_entity_type_cache
+    @entity_type_cache = {}
+    
+    Ingredient.tags.each do |e|
+      @entity_type_cache[e] = "ingredient-tag"
+    end
+    
+    Ingredient.each do |e|
+      @entity_type_cache[e["name"]] = Ingredient.group_of_group(e["group"])
+    end
+    
+    @db.each do |e|
+      @entity_type_cache[e["name"]] = "cocktail"
+    end
+    
+    @tags.each do |e|
+      @entity_type_cache[e] = "cocktail-tag"
+    end
+  end
+  
+  def self.guess_entity_type name
+    bake_entity_type_cache() unless @entity_type_cache
+    @entity_type_cache[name]
+  end
+  
+  def self.get_by_entity name
+    type = guess_entity_type(name)
+    
+    case type
+    when "ingredient-tag"
+      return Cocktail.by_any_of_ingredients(Ingredient.get_by_tag(name).map { |e| e["name"] })
+    
+    when "cocktail-tag"
+      return Cocktail.get_by_tag(name)
+    
+    when "ingredient"
+      return Cocktail.by_any_of_ingredients([name])
+    
+    when "tool", "thing"
+      return Cocktail.by_any_of_tools([name])
+    
+    when "cocktail"
+      c = Cocktail[name]
+      return c ? [c] : []
+    end
+    
+    return []
   end
   
   def self.check_integrity
@@ -83,8 +139,51 @@ class Cocktail < Inshaker::Entity
     end #indent
   end
   
+  def self.by_any_of_ingredients ingredients
+    index_names_by_ingredient() unless @names_by_ingredient
+    
+    res = []
+    
+    ingredients.each do |iname|
+      res += @names_by_ingredient[iname]
+    end
+    
+    res.uniq!
+    
+    res.map! { |e| Cocktail[e] }
+    
+    return res
+  end
+  
+  def self.by_any_of_tools tools
+    index_names_by_tool() unless @names_by_tool
+    
+    res = []
+    
+    tools.each do |iname|
+      res += @names_by_tool[iname]
+    end
+    
+    res.uniq!
+    
+    res.map! { |e| Cocktail[e] }
+    
+    return res
+  end
+  def self.by_any_of_entities entities
+    res = []
+    
+    entities.each do |name|
+      res += get_by_entity(name)
+    end
+    
+    res.uniq!
+    
+    return res
+  end
+  
   def self.by_ingredients ingredients
-    index_names_by_ingredient
+    index_names_by_ingredient() unless @names_by_ingredient
     
     partly = {}
     partly.default = 0

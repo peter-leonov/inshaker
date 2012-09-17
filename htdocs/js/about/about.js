@@ -39,6 +39,56 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
+		visitors.pop()
+		for (var i = 0, il = visitors.length; i < il; i++)
+		{
+			visitors[i][0] = new Date( visitors[i][0] * 1000 ).toRusDateShort()
+			
+			var temp = visitors[i][1]
+			visitors[i][1] = visitors[i][2]
+			visitors[i][2] = temp
+		}
+		
+		var rusCities =
+		{
+			'Moscow': 'Москва',
+			'Sankt-Petersburg': 'Санкт-Петербург',
+			'Sverdlovskaya oblast': 'Свердловская область',
+			'Moskovskaya oblast': 'Московская область',
+			'Rostovskaya oblast': 'Ростовская область',
+			'Kyiv': 'Киев',
+			'Novosibirskaya oblast': 'Новосибирская область',
+			'Krasnodarskiy kray': 'Краснодарский край',
+			'Samarskaya oblast': 'Самарская область',
+			'Nizhegorodskaya oblast': 'Нижегородская область',
+			'Chelyabinskaya oblast': 'Челябинская область',
+			'Tatarstan, Republic': 'Республика Татарстан'
+			// 'Primorskiy kray': 'Приморский край',
+			// 'Voronezhskaya oblast': 'Воронежская область',
+			// 'Volgogradskaya oblast': 'Волгоградская область',
+			// 'Krasnoyarskiy kray': 'Красноярский край'
+		}
+		
+		var totalVisits = cities.pop().total.visits
+		var totalUsed = 0
+		var newCities = []
+		
+		for (var i = 0, il = cities.length; i < il; i++)
+		{
+			var city = cities[i],
+				rus = rusCities[city[0]]
+			
+			if (!rus)
+				continue
+			
+			var count = city[1]
+			totalUsed += count
+			newCities.push([rus, count])
+		}
+		
+		newCities.push(['Другие регионы', totalVisits - totalUsed])
+		cities = newCities
+		
 		this.statCities = $('#stat_cities')
 		this.statVisits = $('#stat_visits')
 		this.cities = cities
@@ -114,11 +164,17 @@ var AboutPage = {
 		var optionsPie =
 		{
 			width: 510,
-			height: 400,
+			height: 500,
 			chartArea:
 			{
+				top: 35,
 				left: 15,
 				width: 1000
+			},
+			legend:
+			{
+				position: 'right',
+				alignment: 'center'
 			}
 		}
 		
@@ -129,7 +185,7 @@ var AboutPage = {
 		var dataArea = new visual.DataTable()
 		dataArea.addColumn('string', 'Дата')
 		dataArea.addColumn('number', 'Просмотры')
-		dataArea.addColumn('number', 'Визиты')
+		dataArea.addColumn('number', 'Посетители')
 		dataArea.addRows(this.visitors)
 		
 		var optionsArea =
@@ -137,6 +193,28 @@ var AboutPage = {
 			focusTarget: 'category',
 			width: 510,
 			height: 400,
+			hAxis:
+			{
+				textStyle:
+				{
+					fontSize: 11
+				},
+				showTextEvery: (this.visitors.length/6) + 2,
+				maxAlternation: 2,
+				maxTextLines: 2,
+				minTextSpacing: 0
+			},
+			vAxis:
+			{
+				textStyle:
+				{
+					fontSize: 11
+				},
+				gridlines:
+				{
+					count: 8
+				}
+			},
 			legend:
 			{
 				position: 'bottom',
@@ -144,8 +222,9 @@ var AboutPage = {
 			},
 			chartArea:
 			{
-				left: 95,
-				width: 370
+				top: 35,
+				left: 50,
+				width: 450
 			}
 		}
 		
@@ -155,7 +234,7 @@ var AboutPage = {
 };
 
 $.onready(function(){
-	AboutPage.init(<!--# include virtual="/stat/cities/data.json" -->, <!--# include virtual="/stat/visitors/data.json" -->);
+	AboutPage.init(<!--# include virtual="/db/stats/cities.json" -->, <!--# include virtual="/db/stats/visits.json" -->);
 	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
@@ -172,3 +251,5 @@ $.onready(function(){
 
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 <!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="/liby/modules/rus-date.js" -->

@@ -1,5 +1,38 @@
 ;(function(){
 
+function compare (a, b)
+{
+	a = a[1]
+	b = b[1]
+	
+	if (a < b)
+		return -1
+	if (a > b)
+		return 1
+	return 0
+}
+
+function sortBy (f)
+{
+	for (var i = 0, il = this.length; i < il; i++)
+	{
+		var v = this[i]
+		this[i] = [v, f(v)]
+	}
+	
+	this.sort(compare)
+	
+	for (var i = 0, il = this.length; i < il; i++)
+		this[i] = this[i][0]
+}
+
+Array.prototype.sortBy = sortBy
+
+})();
+
+
+;(function(){
+
 eval(NodesShortcut.include())
 
 function Me () {}
@@ -11,6 +44,24 @@ Me.prototype =
 		this.nodes = nodes
 	},
 	
+	render: function ()
+	{
+		this.sortList()
+		this.renderList()
+	},
+	
+	sortList: function ()
+	{
+		var nodes = this.nodes
+		
+		var groups = nodes.groups.slice()
+		groups.sortBy(function (e) { return e.firstChild.nodeValue })
+		
+		var list = nodes.list
+		for (var i = 0, il = groups.length; i < il; i++)
+			list.appendChild(groups[i].parentNode)
+	},
+	
 	renderList: function ()
 	{
 		var groups = this.nodes.groups
@@ -19,11 +70,12 @@ Me.prototype =
 		{
 			var group = groups[i]
 			
-			var tag = group.getAttribute('data-tag')
-			if (!tag)
+			var query = group.getAttribute('data-query')
+			if (!query)
 				continue
 			
-			var cocktails = Cocktail.getByTag(tag)
+			query = query.split(/\s+([&|])\s+/)
+			var cocktails = Cocktail.getByQuery(query)
 			if (cocktails.length < 1)
 				continue
 			
@@ -64,7 +116,7 @@ function onready ()
 	
 	var widget = new CocktailGroupsList()
 	widget.bind(nodes)
-	widget.renderList()
+	widget.render()
 }
 
 $.onready(onready)

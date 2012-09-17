@@ -30,7 +30,6 @@ module Inshaker
       "mybar" => ["./processors/mybar.rb", "Мой бар"],
       
       "analytics" => ["./processors/analytics.rb", "Аналитика"],
-      "stats" => ["./processors/stats.rb", "Статистика"],
       
       "deployer" => ["./deployer.rb", "Заливалку"],
       "status" => ["./status.rb", "Статус"],
