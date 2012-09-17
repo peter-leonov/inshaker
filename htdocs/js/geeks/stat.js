@@ -137,7 +137,9 @@ var Me =
 		
 		browser.other += tail
 		stats.push({version: 'other', stat: browser.other})
-	}
+	},
+	
+	toHEX: function  (d) { return ( 0 | ( 1 << 8 ) + d ).toString(16).substr(1) }
 }
 
 Me.className = 'BrowsersStats'
