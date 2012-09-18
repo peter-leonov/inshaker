@@ -2,9 +2,10 @@
 
 var Me =
 {
-	initialize: function (data)
+	initialize: function (data, plain)
 	{
 		this.data = data
+		this.plain = plain
 		
 		var browsers = this.browsers =
 		{
@@ -167,27 +168,37 @@ var Me =
 	
 	getChartDataPlain: function ()
 	{
-		var browsers = this.browsers
+		var plain = this.plain,
+			browsers = {},
+			total = plain.pop().total.visits,
+			infoBrowsers = this.browsers
 		
-		var other = this.total - browsers.Opera.sum - browsers.Firefox.sum - browsers['Internet Explorer'].sum - browsers.Safari.sum - browsers.Chrome.sum
+		for (var i = 0, il = plain.length; i < il; i++)
+		{
+			var name = plain[i][0],
+				stat = plain[i][1]
+			browsers[name] = stat
+		}
+		
+		var other = total - browsers.Opera - browsers.Firefox - browsers['Internet Explorer'] - browsers.Safari - browsers.Chrome
 		
 		var data =
 		[
-			['Opera', browsers.Opera.sum],
-			['Firefox', browsers.Firefox.sum],
-			['Chorme', browsers.Chrome.sum],
-			['Internet Explorer', browsers['Internet Explorer'].sum],
-			['Safari', browsers.Safari.sum],
+			['Opera', browsers.Opera],
+			['Firefox', browsers.Firefox],
+			['Chorme', browsers.Chrome],
+			['Internet Explorer', browsers['Internet Explorer']],
+			['Safari', browsers.Safari],
 			['Other', other]
 		],
 		
 		colors =
 		[
-			browsers.Opera.color,
-			browsers.Firefox.color,
-			browsers.Chrome.color,
-			browsers['Internet Explorer'].color,
-			browsers.Safari.color,
+			infoBrowsers.Opera.color,
+			infoBrowsers.Firefox.color,
+			infoBrowsers.Chrome.color,
+			infoBrowsers['Internet Explorer'].color,
+			infoBrowsers.Safari.color,
 			'#999999'
 		]
 		
@@ -239,6 +250,6 @@ var Me =
 Me.className = 'BrowsersStats'
 self[Me.className] = Me
 
-Me.initialize(<!--# include virtual="/db/stats/browsers.json" -->)
+Me.initialize(<!--# include virtual="/db/stats/browsers.json" -->, <!--# include virtual="/db/stats/browsers-plain.json" -->)
 
 })();
