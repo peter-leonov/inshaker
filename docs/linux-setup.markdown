@@ -101,6 +101,25 @@ SSH
 
 	ssh server
 
+Изоляция по группе:
+
+	addgroup sftp
+
+/etc/ssh/sshd_config:
+
+	#Subsystem sftp /usr/lib/openssh/sftp-server
+	Subsystem sftp internal-sftp
+	Match Group sftp
+	    ChrootDirectory %h
+	    AllowTCPForwarding no
+	    ForceCommand internal-sftp
+
+И пользователя в группе sftp:
+
+	adduser contentmanager
+	adduser contentmanager sftp
+	usermod -d /Dropbox/base/ contentmanager
+
 /www
 ----
 
