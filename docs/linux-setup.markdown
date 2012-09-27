@@ -274,17 +274,7 @@ UpStart
 
 Если его нет, то ставим дестрибутив посвежей.
 
-Конфиг для энжинкса (кладем в `/etc/init/`):
-
-	description "nginx http daemon"
-	
-	start on runlevel [2345]
-	stop on runlevel [!2345]
-	
-	exec /usr/local/nginx/sbin/nginx -g "daemon off;" -c /path/to/nginx.conf
-	
-	respawn
-	respawn limit 60000 1
+Конфиги лежат в папочке files.
 
 Проверяем:
 
@@ -305,20 +295,7 @@ UpStart
 
 Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
 
-
-Конфиг для апача 2.2:
-
-	description "apache 2.2 http daemon"
-	
-	start on runlevel [2345]
-	stop on runlevel [!2345]
-	
-	exec apache2 -D FOREGROUND -f /path/to/apache.conf
-	
-	respawn
-	respawn limit 60000 1
-
-Проверять нужно точно так же, как и энжинкс.
+То же для апача.
 
 
 Apache
