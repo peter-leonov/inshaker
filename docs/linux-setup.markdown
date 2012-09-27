@@ -169,12 +169,14 @@ SSH
 	sudo update-locale LANG=ru_RU.UTF-8 LC_MESSAGES=POSIX
 
 
-/www
+www
 ----
 
+	sudo useradd www -m -d /home/www -s /bin/bash
 	sudo mkdir /www
 	sudo chown www:www /www
 
+	echo 'alias www="sudo su -l www"' >> ~/.profile
 
 Софт
 ====
