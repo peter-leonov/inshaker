@@ -85,6 +85,28 @@ APT
 
 	ssh-keygen
 
+
+Hostname
+--------
+
+Либо просто:
+
+	sudo hostname hosto.namo.com
+
+Либо сложно:
+
+	sudo nano /etc/rc.local
+
+и там:
+
+	echo hosto > /etc/hostname
+	hostname hosto.namo.ru
+
+а потом:
+
+	sudo chmod +x /etc/rc.local
+
+
 SSH
 ---
 
