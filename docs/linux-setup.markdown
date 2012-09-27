@@ -110,9 +110,22 @@ Hostname
 SSH
 ---
 
-Меняем порт в /etc/ssh/sshd_config на 22333.
+Тюним:
 
 	sudo nano /etc/ssh/sshd_config
+
+и там:
+
+	Port 22333
+	PasswordAuthentication no
+	
+	PermitRootLogin no
+	
+	ClientAliveInterval 6000
+	ClientAliveInterval 10
+
+а потом:
+
 	sudo restart ssh
 
 И добавляем сервер на свой комп в ~/.ssh/config
