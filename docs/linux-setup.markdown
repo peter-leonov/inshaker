@@ -162,6 +162,13 @@ SSH
 	adduser contentmanager sftp
 	usermod -d /Dropbox/base/ contentmanager
 
+Локаль
+------
+
+	sudo locale-gen ru_RU.UTF-8
+	sudo update-locale LANG=ru_RU.UTF-8 LC_MESSAGES=POSIX
+
+
 /www
 ----
 
