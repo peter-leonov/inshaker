@@ -130,14 +130,18 @@ SSH
 
 И добавляем сервер на свой комп в ~/.ssh/config
 
-	Host server
-	HostName server.project.name
+	mate ~/.ssh/config
+
+и там:
+
+	Host hosto
+	HostName hosto.namo.com
 	Port 22333
-	User www
+	User po
 
 Тестим:
 
-	ssh server
+	ssh hosto
 
 Изоляция по группе:
 
