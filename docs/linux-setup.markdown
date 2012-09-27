@@ -5,11 +5,15 @@
 APT
 ---
 
-В репозиториях `/etc/apt/sources.list` меняем сервер на `ru.archive.ubuntu.com`.
+В репозиториях `/etc/apt/sources.list` меняем сервер на `*.ru.*`.
 Результат выглядит примерно так:
 
 	deb http://ru.archive.ubuntu.com/ubuntu/ lucid main universe multiverse
 	deb http://ru.archive.ubuntu.com/ubuntu/ lucid-security main universe multiverse
+
+Или так:
+
+	deb http://ftp.ru.debian.org/debian squeeze main contrib
 
 Обновляем систему:
 
