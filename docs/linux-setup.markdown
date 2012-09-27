@@ -59,23 +59,23 @@ APT
 
 Создаем пользователя, под которым будем работать дальше:
 
-	useradd www -m -d /home/www -s /bin/bash
+	useradd po -m -d /home/po -s /bin/bash
 
-На тестовой машине позволим ему все:
+и позволим ему всё:
 
 	apt-get install sudo
-	echo 'www ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+	echo 'po ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-Далее работаем под пользователем `www`:
+Далее работаем под пользователем `po`:
 
-	su www
+	su po
 	cd
 
 Протестим могущество:
 
 	sudo id
 
-Кладем свои ключи в `/home/www/.ssh/authorized_keys`:
+Ключи:
 
 	mkdir -p ~/.ssh/
 	touch ~/.ssh/authorized_keys
