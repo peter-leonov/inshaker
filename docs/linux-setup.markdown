@@ -165,9 +165,12 @@ SSH
 Локаль
 ------
 
-	sudo locale-gen ru_RU.UTF-8
-	sudo update-locale LANG=ru_RU.UTF-8 LC_MESSAGES=POSIX
+	export LANGUAGE=en_US.UTF-8
+	export LANG=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
+	sudo dpkg-reconfigure locales
 
+	sudo reboot
 
 www
 ----
