@@ -213,15 +213,14 @@ www
 
 И сам nginx:
 
-	curl http://nginx.org/download/nginx-1.2.2.tar.gz | tar xzf -
-	cd nginx-1.2.2
+	curl http://nginx.org/download/nginx-1.2.4.tar.gz | tar xzf -
+	cd nginx-1.2.4
 	./configure && make && sudo make install
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
 и сразу дебажную версию:
 
-	make clean
-	./configure --with-debug && make
+	make clean && ./configure --with-debug && make
 	sudo cp ./objs/nginx /usr/local/nginx/sbin/nginx-debug
 	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/bin/nginx-debug
 
