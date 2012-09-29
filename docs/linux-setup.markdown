@@ -252,15 +252,28 @@ Git
 
 иначе ставим руками:
 
-	curl -O http://git-core.googlecode.com/files/git-1.7.9.1.tar.gz
-	tar xzf git-1.7.9.1.tar.gz
-	cd git-1.7.9.1
-	./configure --without-tcltk && make && sudo make install
+	curl http://git-core.googlecode.com/files/git-1.7.12.1.tar.gz | tar -xzf -
+
+или
+
+	curl http://git-core.googlecode.com/files/git-1.7.9.1.tar.gz | tar -xzf -
+
+или
+
+	curl -L https://github.com/git/git/tarball/master | tar -xzf -
+
+а потом:
+
+	cd git-...
+	./configure --without-tcltk --prefix=/opt/git/ && make && sudo make install
+	sudo ln -s /opt/git/bin/git /usr/bin/git
+	sudo ln -s /opt/git/bin/git-upload-pack /usr/bin/git-upload-pack
+	sudo ln -s /opt/git/bin/git-receive-pack /usr/bin/git-receive-pack
 
 Тестим:
 
 	git --version
-	#>>> git version 1.7.9.5
+	#>>> git version 1.7.12.1
 
 
 Git repo
