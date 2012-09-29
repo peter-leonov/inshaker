@@ -618,11 +618,3 @@ Redmine
 	#>>> 22333/tcp open  unknown
 
 Наружу торчат только http и ssh на нестандартном порту.
-
-
-Удалим www из /etc/sudoers
-
-	sudo nano /etc/sudoers
-
-	sudo id
-	#>>> [sudo] password for www:
