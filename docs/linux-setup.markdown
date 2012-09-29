@@ -403,7 +403,7 @@ Ruby
 Ставим:
 
 	curl http://ftp.ruby-lang.org/pub/ruby/ruby-1.9-stable.tar.gz | tar xzf -
-	cd ruby-1.9.3-p194
+	cd ruby-...
 	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
 
 Претест:
@@ -425,7 +425,7 @@ Ruby
 	#>>> ruby 1.9.3p194 (2012-04-20 revision 35410) [i686-linux]
 	
 	ruby -e 'require "fileutils"; puts FileUtils.pwd'
-	#>>> /home/www/ruby-1.9.3-p194
+	#>>> /home/po/src/ruby-1.9.3-p194
 	
 	
 	rake --version
@@ -460,6 +460,10 @@ RMagick
 
 	sudo apt-get install libmagickwand-dev imagemagick
 	sudo gem install rmagick
+	#>>> Fetching: rmagick-2.13.1.gem (100%)
+	#>>> Building native extensions.  This could take a while...
+	#>>> Successfully installed rmagick-2.13.1
+	#>>> 1 gem installed
 
 потестим:
 
@@ -471,11 +475,18 @@ Thin
 Ставим:
 
 	sudo gem install thin
+	#>>> Fetching: rack-1.4.1.gem (100%)
+	#>>> Fetching: eventmachine-1.0.0.gem (100%)
 	#>>> Building native extensions.  This could take a while...
-	#>>> Successfully installed thin-1.2.11
-	#>>> 1 gem installed
-	#>>> Installing ri documentation for thin-1.2.11...
-	#>>> Installing RDoc documentation for thin-1.2.11...
+	#>>> Fetching: daemons-1.1.9.gem (100%)
+	#>>> Fetching: thin-1.5.0.gem (100%)
+	#>>> Building native extensions.  This could take a while...
+	#>>> Successfully installed rack-1.4.1
+	#>>> Successfully installed eventmachine-1.0.0
+	#>>> Successfully installed daemons-1.1.9
+	#>>> Successfully installed thin-1.5.0
+	#>>> 4 gems installed
+	
 
 Линкуем:
 
