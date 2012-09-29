@@ -529,6 +529,10 @@ Postfix
 	nc X.X.X.X 25
 	#>>>
 
+Тестанём:
+
+	sudo apt-get install mailutils
+	date | mail -s test pl@inshaker.ru
 
 
 
