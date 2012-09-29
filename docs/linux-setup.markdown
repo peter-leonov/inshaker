@@ -253,12 +253,57 @@ Git
 	git --version
 	#>>> git version 1.7.9.5
 
-Тюним:
+
+Git repo
+========
+
+Тут всё делаем из-под рабочего юзера `www`:
+
+	sudo su www
+
+Тюн им:
 
 	git config --global gc.auto 0
 	git config --global user.name "server"
 	git config --global user.email "admin@server.net"
 	git config --global core.packedGitLimit 16m
+
+
+Создадим пустой репозиторий на сервере:
+
+	mkdir -p /www/inshaker
+	cd /www/inshaker
+	git init
+
+Если это просто хранилище, то:
+
+	git config core.bare true
+
+Если нужна рабочая копия:
+
+	git config receive.denyCurrentBranch ignore
+
+Настроим автоматический чекаут по обновлении:
+
+	nano .git/hooks/post-receive
+
+и туда:
+
+	#!/bin/sh
+	GIT_DIR=$(pwd)
+	cd ..
+	git checkout -f
+
+а потом:
+
+	chmod +x .git/hooks/post-receive
+
+Переходим на локальную машину и заливаем `master` на сервер:
+
+	git remote add server ssh://www@server/www/inshaker
+	git push server master:master
+	#>>> * [new branch]      master -> master
+
 
 
 UpStart
@@ -450,6 +495,57 @@ Postfix
 	
 	nc X.X.X.X 25
 	#>>>
+
+
+
+
+Postfix через Gmail
+-------------------
+
+	sudo nano /etc/postfix/main.cf
+
+и там добавим в самый конец:
+
+	relayhost=smtp.gmail.com:587
+	# Enable SASL authentication in the Postfix SMTP client.
+	smtp_sasl_auth_enable = yes
+	smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+	smtp_sasl_security_options =
+	smtp_tls_CAfile = /etc/postfix/thawte.pem
+	
+	# Enable Transport Layer Security (TLS), i.e. SSL.
+	smtp_use_tls = yes
+	smtp_tls_security_level = encrypt
+	tls_random_source = dev:/dev/urandom
+
+Скопируем сертификат:
+
+	scp files/thawte.pem hosto:~/
+
+а потом:
+
+	sudo mv thawte.pem /etc/postfix/thawte.pem
+
+Добавим креденшиалс:
+
+	echo "smtp.gmail.com:587 user@inshaker.ru:123456" | sudo tee -a /etc/postfix/sasl_passwd
+	sudo nano /etc/postfix/sasl_passwd
+	sudo postmap /etc/postfix/sasl_passwd
+
+Рестартанём:
+
+	sudo postfix start
+	sudo postfix reload
+
+
+Тестанём:
+
+	sudo apt-get install mailutils
+	date | mail -s test pl@inshaker.ru
+
+Подробнее: [Gmail Email Relay using Postfix on Mac OS X 10.5 Leopard](http://www.riverturn.com/blog/?p=239).
+
+
 
 Redmine
 -------
