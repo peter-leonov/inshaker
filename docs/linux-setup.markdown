@@ -117,12 +117,13 @@ SSH
 и там:
 
 	Port 22333
-	PasswordAuthentication no
-	
-	PermitRootLogin no
-	
 	ClientAliveInterval 6000
 	ClientAliveInterval 10
+	
+	PasswordAuthentication no
+	PermitRootLogin no
+	
+	
 
 а потом:
 
