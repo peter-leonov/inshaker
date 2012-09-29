@@ -182,6 +182,15 @@ www
 
 	echo 'alias www="sudo su -l www"' >> ~/.profile
 
+Ключи:
+
+	export AUTHORIZED_KEYS=$(cat ~/.ssh/authorized_keys)
+	sudo -E su www
+	mkdir -p ~/.ssh/
+	printenv AUTHORIZED_KEYS >> ~/.ssh/authorized_keys
+	exit
+
+
 Софт
 ====
 
