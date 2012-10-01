@@ -2,7 +2,8 @@
 
 # invoke with curl http://host:$PORT/
 
-PORT=12345
+PORT="12345"
+LOGFILE="update-callback.log"
 
 cd "$(dirname "$0")"
 
@@ -10,8 +11,8 @@ while nc -l $PORT <<EOF > /dev/null
 HTTP/1.0 200 OK
 Content-Type: text/plain
 
-pulling from $(hostname)
+updating $(hostname)
 EOF
 do
-	exec ./pull
+	./update-callback-job 1>>$LOGFILE 2>&1
 done
