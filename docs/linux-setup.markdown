@@ -328,6 +328,27 @@ Git repo
 
 
 
+Git server
+----------
+
+
+	touch hooks/post-receive && chmod +x hooks/post-receive
+	nano hooks/post-receive
+
+и там:
+
+	#!/bin/bash
+	
+	while read oldrev newrev refname
+	do
+		[[ $refname =~ /master$ ]] || continue
+		
+		echo "master branch updated, notifying listeners..."
+		curl http://shaker.inshaker.ru:34543/
+	done
+
+
+
 UpStart
 ---
 
