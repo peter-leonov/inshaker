@@ -5,11 +5,19 @@
 APT
 ---
 
-В репозиториях `/etc/apt/sources.list` меняем сервер на `ru.archive.ubuntu.com`.
+Меняем пароль рута.
+
+	passwd
+
+В репозиториях `/etc/apt/sources.list` меняем сервер на `*.ru.*`.
 Результат выглядит примерно так:
 
 	deb http://ru.archive.ubuntu.com/ubuntu/ lucid main universe multiverse
 	deb http://ru.archive.ubuntu.com/ubuntu/ lucid-security main universe multiverse
+
+Или так:
+
+	deb http://ftp.ru.debian.org/debian squeeze main contrib
 
 Обновляем систему:
 
@@ -49,30 +57,25 @@ APT
 
 	ssh-copy-id root@server
 
-Меняем пароль рута.
-
-	passwd
-
-
 Создаем пользователя, под которым будем работать дальше:
 
-	useradd www -m -d /home/www -s /bin/bash
+	useradd po -m -d /home/po -s /bin/bash
 
-На тестовой машине позволим ему все:
+и позволим ему всё:
 
 	apt-get install sudo
-	echo 'www ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+	echo 'po ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-Далее работаем под пользователем `www`:
+Далее работаем под пользователем `po`:
 
-	su www
+	su po
 	cd
 
 Протестим могущество:
 
 	sudo id
 
-Кладем свои ключи в `/home/www/.ssh/authorized_keys`:
+Ключи:
 
 	mkdir -p ~/.ssh/
 	touch ~/.ssh/authorized_keys
@@ -82,24 +85,64 @@ APT
 
 	ssh-keygen
 
+
+Hostname
+--------
+
+Либо просто:
+
+	sudo hostname hosto.namo.com
+
+Либо сложно:
+
+	sudo nano /etc/rc.local
+
+и там:
+
+	echo hosto > /etc/hostname
+	hostname hosto.namo.ru
+
+а потом:
+
+	sudo chmod +x /etc/rc.local
+
+
 SSH
 ---
 
-Меняем порт в /etc/ssh/sshd_config на 22333.
+Тюним:
 
 	sudo nano /etc/ssh/sshd_config
+
+и там:
+
+	Port 22333
+	ClientAliveInterval 6000
+	ClientAliveInterval 10
+	
+	PasswordAuthentication no
+	PermitRootLogin no
+	
+	
+
+а потом:
+
 	sudo restart ssh
 
 И добавляем сервер на свой комп в ~/.ssh/config
 
-	Host server
-	HostName server.project.name
+	mate ~/.ssh/config
+
+и там:
+
+	Host hosto
+	HostName hosto.namo.com
 	Port 22333
-	User www
+	User po
 
 Тестим:
 
-	ssh server
+	ssh hosto
 
 Изоляция по группе:
 
@@ -120,11 +163,32 @@ SSH
 	adduser contentmanager sftp
 	usermod -d /Dropbox/base/ contentmanager
 
-/www
+Локаль
+------
+
+	export LANGUAGE=en_US.UTF-8
+	export LANG=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
+	sudo dpkg-reconfigure locales
+
+	sudo reboot
+
+www
 ----
 
+	sudo useradd www -m -d /home/www -s /bin/bash
 	sudo mkdir /www
 	sudo chown www:www /www
+
+	echo 'alias www="sudo su -l www"' >> ~/.profile
+
+Ключи:
+
+	export AUTHORIZED_KEYS=$(cat ~/.ssh/authorized_keys)
+	sudo -E su www
+	mkdir -p ~/.ssh/
+	printenv AUTHORIZED_KEYS >> ~/.ssh/authorized_keys
+	exit
 
 
 Софт
@@ -149,15 +213,14 @@ SSH
 
 И сам nginx:
 
-	curl http://nginx.org/download/nginx-1.2.2.tar.gz | tar xzf -
-	cd nginx-1.2.2
+	curl http://nginx.org/download/nginx-1.2.4.tar.gz | tar xzf -
+	cd nginx-1.2.4
 	./configure && make && sudo make install
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
 и сразу дебажную версию:
 
-	make clean
-	./configure --with-debug && make
+	make clean && ./configure --with-debug && make
 	sudo cp ./objs/nginx /usr/local/nginx/sbin/nginx-debug
 	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/bin/nginx-debug
 
@@ -189,22 +252,80 @@ Git
 
 иначе ставим руками:
 
-	curl -O http://git-core.googlecode.com/files/git-1.7.9.1.tar.gz
-	tar xzf git-1.7.9.1.tar.gz
-	cd git-1.7.9.1
-	./configure --without-tcltk && make && sudo make install
+	curl http://git-core.googlecode.com/files/git-1.7.12.1.tar.gz | tar -xzf -
+
+или
+
+	curl http://git-core.googlecode.com/files/git-1.7.9.1.tar.gz | tar -xzf -
+
+или
+
+	curl -L https://github.com/git/git/tarball/master | tar -xzf -
+
+а потом:
+
+	cd git-...
+	./configure --without-tcltk --prefix=/opt/git/ && make && sudo make install
+	sudo ln -s /opt/git/bin/git /usr/bin/git
+	sudo ln -s /opt/git/bin/git-upload-pack /usr/bin/git-upload-pack
+	sudo ln -s /opt/git/bin/git-receive-pack /usr/bin/git-receive-pack
 
 Тестим:
 
 	git --version
-	#>>> git version 1.7.9.5
+	#>>> git version 1.7.12.1
 
-Тюним:
+
+Git repo
+========
+
+Тут всё делаем из-под рабочего юзера `www`:
+
+	sudo su www
+
+Тюн им:
 
 	git config --global gc.auto 0
 	git config --global user.name "server"
 	git config --global user.email "admin@server.net"
 	git config --global core.packedGitLimit 16m
+
+
+Создадим пустой репозиторий на сервере:
+
+	mkdir -p /www/inshaker
+	cd /www/inshaker
+	git init
+
+Если это просто хранилище, то:
+
+	git config core.bare true
+
+Если нужна рабочая копия:
+
+	git config receive.denyCurrentBranch ignore
+
+Настроим автоматический чекаут по обновлении:
+
+	nano .git/hooks/post-receive
+
+и туда:
+
+	#!/bin/sh
+	GIT_DIR=$(pwd)
+	cd ..
+	git checkout -f
+
+а потом:
+
+	chmod +x .git/hooks/post-receive
+
+Переходим на локальную машину и заливаем `master` на сервер:
+
+	git remote add server ssh://www@server/www/inshaker
+	git push server master:master
+	#>>> * [new branch]      master -> master
+
 
 
 UpStart
@@ -220,17 +341,7 @@ UpStart
 
 Если его нет, то ставим дестрибутив посвежей.
 
-Конфиг для энжинкса (кладем в `/etc/init/`):
-
-	description "nginx http daemon"
-	
-	start on runlevel [2345]
-	stop on runlevel [!2345]
-	
-	exec /usr/local/nginx/sbin/nginx -g "daemon off;" -c /path/to/nginx.conf
-	
-	respawn
-	respawn limit 60000 1
+Конфиги лежат в папочке files.
 
 Проверяем:
 
@@ -251,20 +362,7 @@ UpStart
 
 Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
 
-
-Конфиг для апача 2.2:
-
-	description "apache 2.2 http daemon"
-	
-	start on runlevel [2345]
-	stop on runlevel [!2345]
-	
-	exec apache2 -D FOREGROUND -f /path/to/apache.conf
-	
-	respawn
-	respawn limit 60000 1
-
-Проверять нужно точно так же, как и энжинкс.
+То же для апача.
 
 
 Apache
@@ -305,7 +403,7 @@ Ruby
 Ставим:
 
 	curl http://ftp.ruby-lang.org/pub/ruby/ruby-1.9-stable.tar.gz | tar xzf -
-	cd ruby-1.9.3-p194
+	cd ruby-...
 	./configure --prefix=/opt/ruby-1.9 --disable-install-doc && make && sudo make install
 
 Претест:
@@ -327,7 +425,7 @@ Ruby
 	#>>> ruby 1.9.3p194 (2012-04-20 revision 35410) [i686-linux]
 	
 	ruby -e 'require "fileutils"; puts FileUtils.pwd'
-	#>>> /home/www/ruby-1.9.3-p194
+	#>>> /home/po/src/ruby-1.9.3-p194
 	
 	
 	rake --version
@@ -362,6 +460,10 @@ RMagick
 
 	sudo apt-get install libmagickwand-dev imagemagick
 	sudo gem install rmagick
+	#>>> Fetching: rmagick-2.13.1.gem (100%)
+	#>>> Building native extensions.  This could take a while...
+	#>>> Successfully installed rmagick-2.13.1
+	#>>> 1 gem installed
 
 потестим:
 
@@ -373,11 +475,18 @@ Thin
 Ставим:
 
 	sudo gem install thin
+	#>>> Fetching: rack-1.4.1.gem (100%)
+	#>>> Fetching: eventmachine-1.0.0.gem (100%)
 	#>>> Building native extensions.  This could take a while...
-	#>>> Successfully installed thin-1.2.11
-	#>>> 1 gem installed
-	#>>> Installing ri documentation for thin-1.2.11...
-	#>>> Installing RDoc documentation for thin-1.2.11...
+	#>>> Fetching: daemons-1.1.9.gem (100%)
+	#>>> Fetching: thin-1.5.0.gem (100%)
+	#>>> Building native extensions.  This could take a while...
+	#>>> Successfully installed rack-1.4.1
+	#>>> Successfully installed eventmachine-1.0.0
+	#>>> Successfully installed daemons-1.1.9
+	#>>> Successfully installed thin-1.5.0
+	#>>> 4 gems installed
+	
 
 Линкуем:
 
@@ -420,6 +529,61 @@ Postfix
 	nc X.X.X.X 25
 	#>>>
 
+Тестанём:
+
+	sudo apt-get install mailutils
+	date | mail -s test pl@inshaker.ru
+
+
+
+Postfix через Gmail
+-------------------
+
+	sudo nano /etc/postfix/main.cf
+
+и там добавим в самый конец:
+
+	relayhost=smtp.gmail.com:587
+	# Enable SASL authentication in the Postfix SMTP client.
+	smtp_sasl_auth_enable = yes
+	smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+	smtp_sasl_security_options =
+	smtp_tls_CAfile = /etc/postfix/thawte.pem
+	
+	# Enable Transport Layer Security (TLS), i.e. SSL.
+	smtp_use_tls = yes
+	smtp_tls_security_level = encrypt
+	tls_random_source = dev:/dev/urandom
+
+Скопируем сертификат:
+
+	scp files/thawte.pem hosto:~/
+
+а потом:
+
+	sudo mv thawte.pem /etc/postfix/thawte.pem
+
+Добавим креденшиалс:
+
+	echo "smtp.gmail.com:587 user@inshaker.ru:123456" | sudo tee -a /etc/postfix/sasl_passwd
+	sudo nano /etc/postfix/sasl_passwd
+	sudo postmap /etc/postfix/sasl_passwd
+
+Рестартанём:
+
+	sudo postfix start
+	sudo postfix reload
+
+
+Тестанём:
+
+	sudo apt-get install mailutils
+	date | mail -s test pl@inshaker.ru
+
+Подробнее: [Gmail Email Relay using Postfix on Mac OS X 10.5 Leopard](http://www.riverturn.com/blog/?p=239).
+
+
+
 Redmine
 -------
 
@@ -454,11 +618,3 @@ Redmine
 	#>>> 22333/tcp open  unknown
 
 Наружу торчат только http и ssh на нестандартном порту.
-
-
-Удалим www из /etc/sudoers
-
-	sudo nano /etc/sudoers
-
-	sudo id
-	#>>> [sudo] password for www:
