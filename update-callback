@@ -2,7 +2,7 @@
 
 # invoke with curl http://host:$PORT/
 
-PORT="12345"
+PORT="34543"
 LOGFILE="update-callback.log"
 
 cd "$(dirname "$0")"
