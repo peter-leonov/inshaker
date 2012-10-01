@@ -344,7 +344,7 @@ Git server
 		[[ $refname =~ /master$ ]] || continue
 		
 		echo "master branch updated, notifying listeners..."
-		curl http://shaker.inshaker.ru:34543/
+		curl -s http://shaker.inshaker.ru:34543/
 	done
 
 
