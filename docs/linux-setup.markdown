@@ -354,7 +354,13 @@ Git server
 
 	apt-get install netcat-openbsd
 
-а тут будет скрипт запуска pull
+и в update-callback-job:
+
+	git reset --hard
+	git clean -df
+	git pull
+	git checkout -f
+
 
 
 UpStart
