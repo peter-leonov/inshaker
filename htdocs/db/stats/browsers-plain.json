@@ -1,13 +1,13 @@
 [
-["Chrome",59053],
-["Opera",35058],
-["Firefox",24093],
-["Safari",19120],
-["Internet Explorer",8830],
-["Opera Mini",4593],
-["Android Browser",3411],
-["Safari (in-app)",434],
-["Mozilla Compatible Agent",201],
+["Chrome",59046],
+["Opera",35019],
+["Firefox",23958],
+["Safari",19207],
+["Internet Explorer",8733],
+["Opera Mini",4608],
+["Android Browser",3461],
+["Safari (in-app)",443],
+["Mozilla Compatible Agent",195],
 ["SeaMonkey",18],
 ["RockMelt",10],
 ["12345",6],
@@ -31,6 +31,7 @@
 ["NokiaC2-06",1],
 ["NokiaE71",1],
 ["NokiaX2-00",1],
+["PagePeeker.com",1],
 ["SAMSUNG-GT-C6712",1],
 ["SAMSUNG-GT-S3650",1],
 ["SAMSUNG-GT-S3850",1],
@@ -38,5 +39,5 @@
 ["SonyEricssonX2",1],
 ["Xuy ego znaet",1],
 ["Перезагрузка",1],
-{"total":{"visits":154868}}
+{"total":{"visits":154746}}
 ]
