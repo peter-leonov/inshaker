@@ -621,7 +621,6 @@ Postfix через Gmail
 	sudo postfix start
 	sudo postfix reload
 
-
 Тестанём:
 
 	sudo apt-get install mailutils
