@@ -166,9 +166,12 @@ SSH
 Локаль
 ------
 
+	apt-get install language-pack-en-base
+	
 	export LANGUAGE=en_US.UTF-8
 	export LANG=en_US.UTF-8
 	export LC_ALL=en_US.UTF-8
+	sudo locale-gen en_US.UTF-8
 	sudo dpkg-reconfigure locales
 
 	sudo reboot
@@ -347,6 +350,11 @@ Git server
 		curl -s http://shaker.inshaker.ru:34543/
 	done
 
+На клиенте:
+
+	apt-get install netcat-openbsd
+
+а тут будет скрипт запуска pull
 
 
 UpStart
