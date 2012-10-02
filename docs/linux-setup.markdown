@@ -2,6 +2,7 @@
 Система
 =======
 
+
 APT
 ---
 
@@ -45,6 +46,7 @@ APT
 	reboot
 
 
+
 Пользователи
 ------------
 
@@ -84,6 +86,7 @@ APT
 Сгенерим пользователю собственный ключ:
 
 	ssh-keygen
+
 
 
 Hostname
@@ -194,6 +197,8 @@ www
 	exit
 
 
+
+
 Софт
 ====
 
@@ -204,6 +209,8 @@ www
 Спец. папка для исходников:
 
 	cd && mkdir src && cd src
+
+
 
 Энджин Икс
 ----------
@@ -280,7 +287,7 @@ Git
 
 
 Git repo
-========
+--------
 
 Тут всё делаем из-под рабочего юзера `www`:
 
@@ -491,6 +498,7 @@ Ruby
 	#>>> irb(main):001:0> exit
 
 
+
 RMagick
 -------
 
@@ -504,6 +512,8 @@ RMagick
 потестим:
 
 	ruby -e 'require "RMagick"'
+
+
 
 Thin
 ----
@@ -532,6 +542,7 @@ Thin
 
 	thin --help | grep daemonize
 	#>>> -d, --daemonize                  Run daemonized in the background
+
 
 
 Postfix
@@ -628,6 +639,9 @@ Redmine
 
 	sudo apt-get install libsqlite3-dev
 	sudo bundle install --without development test postgresql mysql
+
+
+
 
 Прикроемся
 ==========
