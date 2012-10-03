@@ -120,8 +120,8 @@ SSH
 и там:
 
 	Port 22333
+	ClientAliveCountMax 10
 	ClientAliveInterval 6000
-	ClientAliveInterval 10
 	
 	PasswordAuthentication no
 	PermitRootLogin no
