@@ -1,13 +1,13 @@
 [
-["Chrome",59046],
-["Opera",35019],
-["Firefox",23958],
-["Safari",19207],
-["Internet Explorer",8733],
-["Opera Mini",4608],
-["Android Browser",3461],
-["Safari (in-app)",443],
-["Mozilla Compatible Agent",195],
+["Chrome",59059],
+["Opera",34850],
+["Firefox",23891],
+["Safari",19223],
+["Internet Explorer",8672],
+["Opera Mini",4598],
+["Android Browser",3434],
+["Safari (in-app)",448],
+["Mozilla Compatible Agent",196],
 ["SeaMonkey",18],
 ["RockMelt",10],
 ["12345",6],
@@ -39,5 +39,5 @@
 ["SonyEricssonX2",1],
 ["Xuy ego znaet",1],
 ["Перезагрузка",1],
-{"total":{"visits":154746}}
+{"total":{"visits":154447}}
 ]
