@@ -352,9 +352,13 @@ Git server
 	while read oldrev newrev refname
 	do
 		[[ $refname =~ /master$ ]] || continue
+		echo "GITHUB"
+		echo "git push inshaker master:master" | at -M now 2>/dev/null
 		
-		echo "master branch updated, notifying listeners..."
+		echo "SHAKER"
 		curl -s http://shaker.inshaker.ru:34543/
+		echo "MUDDLER"
+		curl -s http://muddler.inshaker.ru:34543/
 	done
 
 На клиенте:
@@ -368,6 +372,7 @@ Git server
 	git pull
 	git checkout -f
 
+upstart скрипт лежит в `files/inshaker-update-callback.conf`
 
 
 UpStart
