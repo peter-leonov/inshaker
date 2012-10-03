@@ -108,7 +108,7 @@ Hostname
 а потом:
 
 	sudo chmod +x /etc/rc.local
-
+	echo "127.0.1.1 hosto" >> /etc/hosts
 
 SSH
 ---
