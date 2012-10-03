@@ -179,6 +179,8 @@ SSH
 
 	sudo reboot
 
+
+
 www
 ----
 
@@ -209,6 +211,42 @@ www
 Спец. папка для исходников:
 
 	cd && mkdir src && cd src
+
+
+
+UpStart
+-------
+
+В Debian 6+ и Ubuntu 6.10+ он уже есть.
+Проверим, есть ли он у нас:
+
+	dpkg --get-selections | grep upstart
+	#>>> upstart      hold
+	# или
+	#>>> upstart      install
+
+Если его нет, то ставим дестрибутив посвежей.
+
+Конфиги лежат в папочке files.
+
+Проверяем работоспособность на примере энжин икса:
+
+	sudo initctl list | grep nginx
+	#>>> nginx stop/waiting
+	
+	sudo initctl start nginx
+	#>>> nginx start/running, process 23577
+	sudo initctl start nginx
+	#>>> initctl: Job is already running: nginx
+	sudo initctl list | grep nginx
+	nginx start/running, process 23577
+	
+	curl http://localhost/
+	
+	sudo initctl stop nginx
+	#>>> nginx stop/waiting
+
+Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
 
 
 
@@ -374,42 +412,6 @@ Git server
 
 upstart скрипт лежит в `files/inshaker-update-callback.conf`
 
-
-UpStart
----
-
-В Debian 6+ и Ubuntu 6.10+ он уже есть.
-Проверим, есть ли он у нас:
-
-	dpkg --get-selections | grep upstart
-	#>>> upstart      hold
-	# или
-	#>>> upstart      install
-
-Если его нет, то ставим дестрибутив посвежей.
-
-Конфиги лежат в папочке files.
-
-Проверяем:
-
-	sudo initctl list | grep nginx
-	#>>> nginx stop/waiting
-	
-	sudo initctl start nginx
-	#>>> nginx start/running, process 23577
-	sudo initctl start nginx
-	#>>> initctl: Job is already running: nginx
-	sudo initctl list | grep nginx
-	nginx start/running, process 23577
-	
-	curl http://localhost/
-	
-	sudo initctl stop nginx
-	#>>> nginx stop/waiting
-
-Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
-
-То же для апача.
 
 
 Apache
