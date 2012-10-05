@@ -214,7 +214,7 @@ www
 
 
 
-UpStart
+Upstart
 -------
 
 В Debian 6+ и Ubuntu 6.10+ он уже есть.
@@ -247,6 +247,50 @@ UpStart
 	#>>> nginx stop/waiting
 
 Номер процесса должен быть один и тот же (здесь `23577`). Если номер меняется, значит nginx либо не может запуститься, либо запустился, но отключился от консоли (демонизировался). В таком случае апстарт будет пытаться его запускать снова и снова. Отсюда и разные номера процессов.
+
+С версии 1.3 доступны пользовательские задачи.
+
+	init --version
+	#>>> init (upstart 1.5)
+
+
+Включаем:
+
+	sudo nano /etc/dbus-1/system.d/Upstart.conf
+
+После `<policy user="roor">…</policy>` вставим:
+
+	<policy user="www">
+	  <allow send_destination="com.ubuntu.Upstart"
+	         send_interface="org.freedesktop.DBus.Properties" />
+	  <allow send_destination="com.ubuntu.Upstart"
+	         send_interface="com.ubuntu.Upstart0_6" />
+	  <allow send_destination="com.ubuntu.Upstart"
+	         send_interface="com.ubuntu.Upstart0_6.Job" />
+	  <allow send_destination="com.ubuntu.Upstart"
+	         send_interface="com.ubuntu.Upstart0_6.Instance" />
+	</policy>
+
+Добавляем:
+
+	mkdir -p ~/.init/
+	nano ~/.init/www-task.conf
+	
+и туда:
+
+	task
+	
+	script
+	    sleep 5
+	end script
+
+Стартуем:
+
+	/sbin/start www-task
+
+Должно потупить 5 секунд.
+
+Отсюда: http://bradleyayers.blogspot.com/2011/10/upstart-user-jobs-on-ubuntu-1110.html
 
 
 
