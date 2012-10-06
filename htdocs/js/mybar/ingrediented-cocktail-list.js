@@ -86,8 +86,11 @@ var myProto =
 		
 		this.onclickGroupName = function () { me.groupNameClicked(this['data-group-num']) }
 		
-		var t = new Throttler(function () { me.onscroll() }, 100, 500)
-		this.onscrollListener = function () { t.call() }
+		function onscroll ()
+		{
+			me.onscroll()
+		}
+		this.onscrollListener = onscroll.throttle(100, 500)
 		
 		this.wake()
 	},

@@ -66,8 +66,11 @@ Me.prototype =
 		
 		var me = this
 		
-		var t = new Throttler(function () { me.onscroll() }, 100, 500)
-		this.onscrollListener = function () { t.call() }
+		function onscroll ()
+		{
+			me.onscroll()
+		}
+		this.onscrollListener = onscroll.throttle(100, 500)
 		
 		this.wake()
 	},

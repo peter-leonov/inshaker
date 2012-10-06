@@ -98,8 +98,11 @@ Me.prototype =
 		var frame = this.frame,
 			frameWidth = viewport.offsetWidth
 		
-		var t = new Throttler(function (x, realX) { frame.moveTo(realX - frameWidth, 0) }, conf.throttleSoft, conf.throttleHard)
-		this.scroller.onscroll = function (x, realX) { t.call(x, realX) }
+		function onscroll (x, realX)
+		{
+			frame.moveTo(realX - frameWidth, 0)
+		}
+		this.scroller.onscroll = onscroll.throttle(conf.throttleSoft, conf.throttleHard)
 		
 		frame.setFrame(frameWidth * 3, viewport.offsetHeight)
 		frame.setBoxes(boxes)
