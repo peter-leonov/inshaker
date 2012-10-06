@@ -52,13 +52,13 @@ Me.prototype =
 		var lh = this.locationHash = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
-		var t = new Throttler(function (y) { me.controller.windowScrolled(y) }, 100, 500)
+		var t = (function (y) { me.controller.windowScrolled(y) }).throttle(100, 500)
 		
 		function onscroll (e)
 		{
 			var y = window.pageYOffset
 			
-			t.call(y)
+			t(y)
 			ff.windowScrolled(y)
 		}
 		
