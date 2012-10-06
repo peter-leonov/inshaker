@@ -19,7 +19,7 @@
 <!--# include virtual="/liby/modules/user-agent.js" -->
 <!--# include virtual="/liby/modules/child-indexed-path.js"-->
 <!--# include virtual="/liby/modules/cloner.js"-->
-<!--# include virtual="/liby/modules/throttler.js" -->
+<!--# include virtual="/liby/modules/function-throttle.js" -->
 <!--# include virtual="/liby/modules/state-machine.js" -->
 <!--# include virtual="/liby/modules/url-encode.js"-->
 <!--# include virtual="/liby/modules/request.js"-->
