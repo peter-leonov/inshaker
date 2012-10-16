@@ -692,6 +692,25 @@ Redmine
 
 
 
+Для логов
+---------
+
+Диск на два гигабайта:
+
+	dd bs=1M count=2048 if=/dev/zero of=disk-image
+	mkfs.ext3 -b 1024 -i 1024 -m 0 disk-image
+
+Проверим:
+
+	tune2fs -l disk-image
+	fsck.ext3 -f disk-image
+
+Смонтируем:
+
+	mkdir fs
+	mount -o loop=/dev/loop0 disk-image fs
+
+
 
 Прикроемся
 ==========
