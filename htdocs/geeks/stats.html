@@ -13,6 +13,8 @@
 	.stat .prev { left: 890px; }
 	.stat .next { right: 0px; }
 	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
+	
+	path[stroke="#ffffff"] { stroke-width: 1.5px; stroke: rgba(255,255,255,0.2) }
 	</style>
 </head>
 <body>
@@ -91,14 +93,6 @@ function drawChartToNode (node, data)
 	
 	var chartPie = new visual.PieChart(node)
 	chartPie.draw(dataPie, optionsPie)
-	
-	var iframe = node.firstChild.contentDocument.body,
-		link = document.createElement('link')
-	
-	link.href = '/t/geeks/stat.css'
-	link.rel = 'stylesheet'
-	
-	iframe.appendChild(link)
 }
 
 function onready ()
