@@ -13,25 +13,25 @@ var Me =
 			{
 				rawData: [],
 				sum: 0,
-				color: "#cc0000",
-				colorMiddle: "#cc5926",
-				colorEnd: "#cc7733"
+				color: "#cc2200",
+				colorMiddle: "#cc4422",
+				colorEnd: "#cc6644"
 			},
 			'Firefox':
 			{
 				rawData: [],
 				sum: 0,
 				color: "#ff9900",
-				colorMiddle: "#ffad10",
-				colorEnd: "#ffee44"
+				colorMiddle: "#ffbb22",
+				colorEnd: "#ffdd44"
 			},
 			'Chrome':
 			{
 				rawData: [],
 				sum: 0,
-				color: "#00cc00",
-				colorMiddle: "#44cc33",
-				colorEnd: "#88cc66"
+				color: "#66cc22",
+				colorMiddle: "#88cc44",
+				colorEnd: "#aacc66"
 			},
 			'Internet Explorer':
 			{
@@ -45,7 +45,7 @@ var Me =
 			{
 				rawData: [],
 				sum: 0,
-				color: "#0055bb"
+				color: "#2255bb"
 			},
 			'Opera Mini':
 			{
