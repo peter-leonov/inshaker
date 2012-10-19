@@ -13,6 +13,8 @@
 	.stat .prev { left: 890px; }
 	.stat .next { right: 0px; }
 	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
+	
+	path[stroke="#ffffff"] { stroke-width: 1.5px; stroke: rgba(255,255,255,0.2) }
 	</style>
 </head>
 <body>
@@ -47,33 +49,6 @@
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
 <script src="/js/common/common.js"></script>
-<script src="/js/about/swfobject.js"></script>
-<script>
-function onready ()
-{
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'transparent')
-	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
-	line.write('stat-browsers')
-	
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '962', '820', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'transparent')
-	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
-	line.write('stat-browsers-plain')
-	
-	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
-}
-$.onready(onready)
-
-<!--# include virtual="/liby/modules/motion.js" -->
-<!--# include virtual="/liby/modules/motion-types.js" -->
-<!--# include virtual="/liby/modules/animation.js" -->
-<!--# include virtual="/js/common/rolling-images.js" -->
-
-</script>
+<script src="/js/geeks/stat-page.js"></script>
 </body>
 </html>
