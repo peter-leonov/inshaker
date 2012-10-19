@@ -128,10 +128,10 @@ var Me =
 	{
 		var stats = browser.byVersion,
 			tail = browser.other,
-			halfPercent = this.total * 0.005,
+			barriere = this.total * 0.01,
 			length = stats.length-1
 		
-		while (tail + stats[length].stat < halfPercent)
+		while (tail + stats[length].stat <= barriere)
 		{
 			tail += stats[length].stat
 			stats.pop()
