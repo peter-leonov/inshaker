@@ -192,7 +192,7 @@ var Me =
 			['Other', other]
 		],
 		
-		colors =
+		var colors =
 		[
 			infoBrowsers.Opera.color,
 			infoBrowsers.Firefox.color,
