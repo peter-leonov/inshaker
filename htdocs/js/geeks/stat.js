@@ -180,7 +180,7 @@ var Me =
 			browsers[name] = stat
 		}
 		
-		var other = total - browsers.Opera - browsers.Firefox - browsers['Internet Explorer'] - browsers.Safari - browsers.Chrome
+		var other = total - browsers.Opera - browsers.Firefox - browsers.Chrome - browsers['Internet Explorer'] - browsers.Safari
 		
 		var data =
 		[
