@@ -127,7 +127,7 @@ var Me =
 	sealTail: function (browser)
 	{
 		var stats = browser.byVersion,
-			tail = 0,
+			tail = browser.other,
 			halfPercent = this.total * 0.005,
 			length = stats.length-1
 		
@@ -138,8 +138,7 @@ var Me =
 			length--
 		}
 		
-		browser.other += tail
-		stats.push({version: 'other', stat: browser.other})
+		stats.push({version: 'other', stat: tail})
 	},
 	
 	genColors: function (browser, colors)
