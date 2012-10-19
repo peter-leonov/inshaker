@@ -98,22 +98,24 @@ var Me =
 	{
 		var statsPointer = {},
 			statsArray = [],
-			versionTemplate = /^\d+\.\d/,
 			other = 0
 		
 		for (var i = 0, il = browser.rawData.length; i < il; i++)
 		{
 			var fullVersion = browser.rawData[i][0],
-				stat = browser.rawData[i][1],
-				version = +versionTemplate.exec(fullVersion)
+				stat = browser.rawData[i][1]
 			
-			if (version)
-				if (!(version in statsPointer))
-					statsPointer[version] = statsArray.push({version: version, stat: stat}) - 1
-				else
-					statsArray[statsPointer[version]].stat += stat
-			else
+			var version = +/^\d+\.\d/.exec(fullVersion)
+			if (!version)
+			{
 				other += stat
+				continue
+			}
+			
+			if (version in statsPointer)
+				statsArray[statsPointer[version]].stat += stat
+			else
+				statsPointer[version] = statsArray.push({version: version, stat: stat}) - 1
 		}
 		
 		browser.other = other
