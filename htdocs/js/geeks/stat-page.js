@@ -9,12 +9,6 @@
 <!--# include virtual="/js/geeks/stat.js" -->
 
 
-function drawCharts (browserStats, browserPlainStats)
-{
-	drawChartToNode($('#stat-browsers'), browserStats)
-	drawChartToNode($('#stat-browsers-plain'), browserPlainStats)
-}
-
 function drawChartToNode (node, data)
 {
 	var visual = google.visualization
@@ -55,13 +49,14 @@ function drawChartToNode (node, data)
 
 function onready ()
 {
-	var opts =
+	function onvisualization ()
 	{
-		packages: ["corechart"]
+		drawChartToNode($('#stat-browsers'), BrowsersStats.getChartData())
+		drawChartToNode($('#stat-browsers-plain'), BrowsersStats.getChartDataPlain())
 	}
 	
-	googleApiLoader.addEventListener('visualization', function (e) { drawCharts(BrowsersStats.getChartData(), BrowsersStats.getChartDataPlain()) }, false)
-	googleApiLoader.load('visualization', 1, opts)
+	googleApiLoader.addEventListener('visualization', onvisualization, false)
+	googleApiLoader.load('visualization', 1, {packages: ['corechart']})
 	
 	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
 }
