@@ -190,7 +190,7 @@ var Me =
 			['Internet Explorer', browsers['Internet Explorer']],
 			['Safari', browsers.Safari],
 			['Other', other]
-		],
+		]
 		
 		var colors =
 		[
