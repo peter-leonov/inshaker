@@ -4,9 +4,9 @@ var myName = 'Statistics'
 
 var Me =
 {
-	magazinePromoViewed: function (promo)
+	magazinePromoViewed: function (name)
 	{
-		this.event('magazine-promo-viewed', promo && promo.name)
+		this.event('magazine-promo-viewed', name)
 	},
 	
 	cocktailsFilterSelected: function (name)

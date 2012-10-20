@@ -32,7 +32,7 @@ function throttle (delay, timeout, invocant)
 			window.clearTimeout(delayTimer)
 		delayTimer = window.setTimeout(fire, delay)
 		
-		if (!timeoutTimer)
+		if (!timeoutTimer && timeout)
 			timeoutTimer = window.setTimeout(fire, timeout)
 	}
 	

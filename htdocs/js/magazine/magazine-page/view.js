@@ -13,8 +13,6 @@ function Me (nodes)
 	this.switchBlock = false
 	this.blockNames = ['special', 'pop', 'author', 'classic']
 	
-	new RollingImagesLite(nodes.promo, {animationType: 'easeInOutQuad', duration:0.75})
-	
 	var cocktails = nodes.cocktails
 	for(var i = 0; i < cocktails.length; i++)
 		new RollingImagesLite(cocktails[i], {animationType: 'easeOutQuad'})
@@ -29,199 +27,98 @@ Me.prototype =
 	
 	modelChanged: function (data, state)
 	{
-		this.renderPromo(this.nodes.promo, data.promos, 1, state)
+		this.renderPromo(this.nodes.promos.root, data.promos, 1, state)
 		
 		var cocktailNodes = this.nodes.cocktails,
 			blockNames = this.blockNames,
 			blocks = data.cocktails
 		
 		for (var i = 0, il = blockNames.length; i < il; i++)
-			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]], 1)
-	},
-	
-	_createCocktailElement: function (cocktail)
-	{
-		return cocktail.getPreviewNode()
-	},
-	
-	_createLinkElement: function (link, links)
-	{
-		var li = document.createElement("li")
-		var a  = document.createElement("a")
-		a.href = link[1]
-		var img = document.createElement("img")
-		img.src = "/magazine/links/" + (links.indexOf(link) + 1) + ".png"
-		var txt = document.createTextNode(link[0])
-		a.appendChild(img)
-		a.appendChild(txt)
-		li.appendChild(a)
-		return li
+			this.renderCocktails(cocktailNodes[i], blocks[blockNames[i]])
 	},
 	
 	createPromoElement: function (promo)
 	{
 		var a  = document.createElement("a")
 		a.href = promo.href
+		a.setAttribute('data-name', promo.name)
 		var img = document.createElement("img")
 		img.alt = promo.name
-		img.setAttribute("lazy", "/magazine/promos/" + (promo.html_name) + ".jpg")
+		img.setAttribute("data-lazy", "/magazine/promos/" + (promo.html_name) + ".jpg")
 		a.appendChild(img)
 		a.className = "point"
 		return a
 	},
 	
-	getPromoImages: function ()
-	{
-		return images = this.nodes.promo.getElementsByTagName("img")
-	},
-	
-	loadFrames: function (list)
-	{
-		var images = this.getPromoImages()
-		
-		for (var i = 0; i < list.length; i++)
-		{
-			var img = images[list[i]]
-			if (!img.src)
-				img.src = img.getAttribute("lazy")
-		}
-	},
-	
-	getRange: function (initFrame)
-	{
-		var range = [initFrame]
-		var images = this.getPromoImages()
-		
-		if (images[initFrame - 1])
-			range.push(initFrame - 1)
-		if (images[initFrame + 1])
-			range.push(initFrame + 1)
-		
-		var l = images.length
-		
-		if (range.indexOf(1) > -1)
-			range.push(l - 1) // first == last (fake)
-		if (range.indexOf(l - 2) > -1)
-			range.push(0) // last == first (fake)
-		
-		return range
-	},
-	
-	loadInitialFrames: function (initFrame)
-	{
-		var range = this.getRange(initFrame)
-		
-		this.loadFrames(range)
-	},
-	
-	renderCocktails: function (node, set, len)
-	{
-		this.renderSet(node, set, len, this._createCocktailElement)
-	},
-	
-	renderLinks: function (node, set, len)
-	{
-		this.renderSet(node, set, len, this._createLinkElement)
-	},
-	
 	renderPromo: function (node, set, len, state)
 	{
-		var ri = node.RollingImagesLite
-		var parent = $('.surface', node)
+		var promos = this.nodes.promos,
+			surface = promos.surface,
+			items = [],
+			promoNodes = {}
 		
-		parent.empty()
-		
-		// One fake before the actual series, one after
-		parent.appendChild(this.createPromoElement(set[set.length - 1]))
-		for (var i = 0; i < set.length; i++)
-			parent.appendChild(this.createPromoElement(set[i]))
-		parent.appendChild(this.createPromoElement(set[0]))
-		ri.sync()
-		
-		if (set.length > 1)
+		for (var i = 0, il = set.length; i < il; i++)
 		{
-			var len = ri.points.length, me = this
-			// Jumping to avoid fakes
-			function switchFrame (prev)
+			var setOne = set[i],
+				promo = this.createPromoElement(setOne)
+			
+			surface.appendChild(promo)
+			items.push(promo)
+			promoNodes[setOne.name] = promo
+		}
+		
+		var total = items.length, last
+		if (total > 1)
+			last = surface.appendChild(items[0].cloneNode(true))
+		
+		var list = new LazyList()
+		list.bind(promos)
+		list.configure({pageLength: 1, friction: 100, pageVelocity: 47.5, soft: Infinity, min: 75, max: 100})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
 			{
-				if (!me.switchBlock)
-				{
-					var cur = ri.current, after = cur
-					
-					me.switchBlock = true
-					function switchUnblock () { me.switchBlock = false }
-					function jumpToAfter () { ri.goToFrame(after, 'directJump'); switchUnblock() }
-					function slideToAfter () { ri.goToFrame(after).oncomplete = switchUnblock }
-					
-					if (prev)
-					{
-						if (cur == 1)
-						{
-							after = len - 2
-							ri.goToFrame(0).oncomplete = jumpToAfter
-						}
-						else
-						{
-							after = cur - 1
-							slideToAfter()
-						}
-					}
-					else
-					{
-						if (cur == len - 2)
-						{
-							after = 1
-							ri.goToFrame(len - 1).oncomplete = jumpToAfter
-						}
-						else
-						{
-							after = cur + 1
-							slideToAfter()
-						}
-					}
-					
-					var promo = set[after-1]
-					Statistics.magazinePromoViewed(promo)
-					me.controller.updateHash(promo.name)
-					me.loadFrames(me.getRange(after))
-				}
+				// buggy in Firefox 3.5
+				var image = nodes[i].firstChild
+				if (!image.src)
+					image.src = image.getAttribute('data-lazy')
 			}
+		}
+		list.setNodes(items, total)
+		list.load([last])
+		
+		var lh = new LocationHash(),
+			hash = UrlEncode.parse(lh.get())
+		
+		if (hash.name)
+			list.jumpToNode(promoNodes[hash.name])
+		
+		var me = this
+		list.onstop = function (node)
+		{
+			var name = node.getAttribute('data-name')
 			
-			this.nodes.arrows[0].addEventListener('click', function (e) { switchFrame(true)  }, false)
-			this.nodes.arrows[1].addEventListener('click', function (e) { switchFrame(false) }, false)
-			
-			var initFrame = state.initFrame
-			for (var i = 0; i < set.length; i++)
-				if (set[i].name == initFrame)
-				{
-					initFrame = i + 1
-					break
-				}
-			
-			if (!initFrame)
-				initFrame = 1//Math.round(Math.random() * (len - 1)) + 1
-			if (!this.getPromoImages()[initFrame])
-				initFrame = 1
-			
-			this.loadInitialFrames(initFrame)
-			ri.jumpToFrame(initFrame)
+			Statistics.magazinePromoViewed(name)
+			me.controller.updateHash(name)
 		}
 	},
 	
-	renderSet: function (node, set, len, renderFunction)
+	renderCocktails: function (node, set)
 	{
 		var parent = $('.surface', node)
 		parent.empty()
 		for (var i = 0; i < set.length; i++)
 		{
-			if (i % len == 0)
-			{
-				var point = document.createElement('ul')
-				point.className = 'point'
-				parent.appendChild(point)
-			}
-			if (set[i])
-				point.appendChild(renderFunction(set[i], set))
+			var cocktail = set[i]
+			if (!cocktail)
+				continue
+			
+				
+			var point = document.createElement('ul')
+			point.className = 'point'
+			parent.appendChild(point)
+			
+			point.appendChild(cocktail.getPreviewNode())
 		}
 		node.RollingImagesLite.sync()
 	},
