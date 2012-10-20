@@ -235,7 +235,7 @@ Me.prototype =
 		this.inli.setIngredients(groups)
 	},
 	
-	renderExamples: function (examples)
+	renderExample: function (example)
 	{
 	},
 	
