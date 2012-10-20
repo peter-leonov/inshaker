@@ -237,6 +237,7 @@ Me.prototype =
 	
 	renderExample: function (example)
 	{
+		this.nodes.queryInput.placeholder = example.join(' + ')
 	},
 	
 	renderSuggestions: function (suggestions)
