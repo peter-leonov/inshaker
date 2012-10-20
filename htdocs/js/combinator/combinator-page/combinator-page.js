@@ -90,9 +90,6 @@ function onready ()
 		suggestions: $('#output .empty-block .suggestions'),
 		suggestionsList: $('#output .empty-block .suggestions .list'),
 		ingredientsList: $('#output .initial-block .ingredients-list'),
-		helpLine: $('#output .help-line'),
-		hintSingle: $('#output .help-line .hint.single'),
-		hintDouble: $('#output .help-line .hint.double'),
 		
 		sortbySelect:
 		{

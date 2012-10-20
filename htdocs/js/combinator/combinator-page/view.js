@@ -237,16 +237,6 @@ Me.prototype =
 	
 	renderExamples: function (examples)
 	{
-		var nodes = this.nodes,
-			s = nodes.hintSingle,
-			d = nodes.hintDouble
-		
-		s.firstChild.nodeValue = examples[0][0]
-		s.href = '#q=' + encodeURIComponent(examples[0])
-		
-		var pair = examples[1].join(' + ')
-		d.firstChild.nodeValue = pair
-		d.href = '#q=' + encodeURIComponent(pair)
 	},
 	
 	renderSuggestions: function (suggestions)

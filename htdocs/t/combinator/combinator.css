@@ -48,22 +48,17 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #output .result-block,
 #output .empty-block,
 #output.result-state .sort-line.empty,
-#output .sort-line,
-#output .help-line { display: none; }
+#output .sort-line { display: none; }
 
 #output.initial-state .initial-block,
-#output.initial-state .help-line,
 #output.result-state .result-block,
 #output.result-state .sort-line,
 #output.result-state .reset,
 #output.empty-state .sort-line.empty,
 #output.empty-state .empty-block { display: block; }
 
-#output .sort-line,
-#output .help-line { font-size: 14px; margin-top: 6px; }
-#output .sort-line .cocktail-count,
-#output .help-line .hint { font-style: normal; font-weight: bold; }
-#output .help-line .hint { text-decoration: none; border-bottom: 1px dashed; }
+#output .sort-line { font-size: 14px; margin-top: 6px; }
+#output .sort-line .cocktail-count { font-style: normal; font-weight: bold; }
 
 #output .result-block { font-size: 14px; }
 
