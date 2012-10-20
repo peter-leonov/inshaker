@@ -399,6 +399,8 @@ Me.prototype =
 		this.updateData()
 		
 		this.view.setBookmark(state)
+		
+		window.localStorage.setItem('combinatorSearched', 1)
 	},
 	
 	queryChanged: function (add, remove)
@@ -479,13 +481,13 @@ Me.prototype =
 		return data
 	},
 	
-	updateExamples: function ()
+	updateExample: function ()
 	{
-		var examples = this.guessExamples() || [['водка'], ['водка', 'сок']]
-		this.view.renderExamples(examples)
+		var example = this.guessExample() || ['водка', 'сок']
+		this.view.renderExample(example)
 	},
 	
-	guessExamples: function ()
+	guessExample: function ()
 	{
 		var base = this.chooseExampleIngredient(),
 			baseName = base.name
@@ -510,7 +512,7 @@ Me.prototype =
 		}
 		
 		var second = names.random(1)[0]
-		return [[baseName], [baseName, second]]
+		return [baseName, second]
 	},
 	
 	chooseExampleIngredient: function ()

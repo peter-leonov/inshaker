@@ -33,7 +33,6 @@ Me.prototype =
 		completer.bind({main: nodes.queryInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
-		nodes.queryInput.focus()
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); window.setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
@@ -65,6 +64,11 @@ Me.prototype =
 		window.addEventListener('scroll', onscroll, false)
 		
 		return this
+	},
+	
+	setFocus: function ()
+	{
+		this.nodes.queryInput.focus()
 	},
 	
 	plusButtonClicked: function ()
@@ -219,18 +223,9 @@ Me.prototype =
 		this.inli.setIngredients(groups)
 	},
 	
-	renderExamples: function (examples)
+	renderExample: function (example)
 	{
-		var nodes = this.nodes,
-			s = nodes.hintSingle,
-			d = nodes.hintDouble
-		
-		s.firstChild.nodeValue = examples[0][0]
-		s.href = '#q=' + encodeURIComponent(examples[0])
-		
-		var pair = examples[1].join(' + ')
-		d.firstChild.nodeValue = pair
-		d.href = '#q=' + encodeURIComponent(pair)
+		this.nodes.queryInput.placeholder = example.join(' + ')
 	},
 	
 	renderSuggestions: function (suggestions)

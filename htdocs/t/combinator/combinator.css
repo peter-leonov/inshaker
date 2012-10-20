@@ -16,12 +16,11 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #spotlighted { position: absolute; right: 12px; top: 22px; }
 
 #search-box { position: relative; z-index: 10; width: 810px; top: -3px; }
-#search-box .query { padding: 2px; color: inherit; width: 670px; }
+#search-box .query { color: inherit; width: 670px; }
 #search-box .query,
 #search-box .button { font-size: 20px; vertical-align: middle; }
 #search-box .button.plus { width: 30px; }
 #search-box .button.search { width: 80px; }
-#search-box .query { padding: 0; }
 #search-box .reset { display: none; position: absolute; left: 648px; top: 3px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 #search-box .reset:hover { color: #000; }
 
@@ -49,22 +48,17 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #output .result-block,
 #output .empty-block,
 #output.result-state .sort-line.empty,
-#output .sort-line,
-#output .help-line { display: none; }
+#output .sort-line { display: none; }
 
 #output.initial-state .initial-block,
-#output.initial-state .help-line,
 #output.result-state .result-block,
 #output.result-state .sort-line,
 #output.result-state .reset,
 #output.empty-state .sort-line.empty,
 #output.empty-state .empty-block { display: block; }
 
-#output .sort-line,
-#output .help-line { font-size: 14px; margin-top: 6px; }
-#output .sort-line .cocktail-count,
-#output .help-line .hint { font-style: normal; font-weight: bold; }
-#output .help-line .hint { text-decoration: none; border-bottom: 1px dashed; }
+#output .sort-line { font-size: 14px; margin-top: 6px; }
+#output .sort-line .cocktail-count { font-style: normal; font-weight: bold; }
 
 #output .result-block { font-size: 14px; }
 
