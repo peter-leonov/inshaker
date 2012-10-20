@@ -84,9 +84,7 @@ Me.prototype =
 		
 		this.setupSearcher(favorites, ingredientsTags, cocktailsTags)
 		
-		var clientStorage = this.clientStorage = ClientStorage.guess()
-		
-		if (clientStorage.get('combinatorSearched'))
+		if (window.localStorage.getItem('combinatorSearched'))
 			this.view.setFocus()
 	},
 	
@@ -463,7 +461,7 @@ Me.prototype =
 		
 		this.view.setBookmark(state)
 		
-		this.clientStorage.set('combinatorSearched', 1)
+		window.localStorage.setItem('combinatorSearched', 1)
 	},
 	
 	queryChanged: function (add, remove)

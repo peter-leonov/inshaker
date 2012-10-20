@@ -18,11 +18,6 @@
 <!--# include virtual="/js/combinator/query-parser.js" -->
 <!--# include virtual="/js/combinator/tokenizer.js" -->
 
-<!--# include virtual="/liby/modules/client-storage.js" -->
-<!--# include virtual="/liby/modules/client-storage/local-storage.js" -->
-<!--# include virtual="/liby/modules/client-storage/global-storage.js" -->
-<!--# include virtual="/liby/modules/client-storage/user-data.js" -->
-<!--# include virtual="/liby/modules/client-storage/flash-9.js" -->
 
 ;(function(){
 
