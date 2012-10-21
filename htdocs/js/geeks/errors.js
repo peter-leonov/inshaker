@@ -345,6 +345,21 @@ var Me =
 			alias: 'sy0'
 		}
 	},
+	
+	delimToRegExp: function(beg, esc, end, mod, suffix)
+	{
+		beg = this.escapeRegExp(beg)
+		if (esc) { esc = this.escapeRegExp(esc) }
+		end = (end) ? this.escapeRegExp(end) : beg
+		
+		var pat = (esc) ? beg+"[^"+end+esc+'\\n]*(?:'+esc+'.[^'+end+esc+'\\n]*)*'+end : beg+"[^"+end+'\\n]*'+end
+		
+		return new RegExp(pat+(suffix || ''), mod || '')
+	},
+	
+	escapeRegExp: function(str){
+		return String(str).replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1')
+	}
 }
 
 Me.className = 'TopErrors'
