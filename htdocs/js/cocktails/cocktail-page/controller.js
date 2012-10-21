@@ -359,7 +359,7 @@ var Controller = {
 			img.className = 'image'
 			img.style.backgroundImage = 'url(' + url + ')'
 			
-			var image = document.createElement("image")
+			var image = document.createElement('img')
 			image.src = url
 			img.appendChild(image)
 			
