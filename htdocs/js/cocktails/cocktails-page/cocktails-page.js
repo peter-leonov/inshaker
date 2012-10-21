@@ -17,7 +17,7 @@ function onready ()
 		resultsDisplay: $('#results_display'),
 		cocktailsList: $('#cocktails'),
 		
-		more: $(".pager .next"),
+		more: $('#more .button'),
 		
 		searchForm: $('#search_by_name .search-form'),
 		searchByNameInput: $('#search_by_name input'),

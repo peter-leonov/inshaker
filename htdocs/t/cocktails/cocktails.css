@@ -19,9 +19,12 @@
 .cocktail-preview .image-box .image { position: relative; vertical-align: bottom; }
 .cocktail-preview .name { position: absolute; left: 0; top: 87px; width: 100%; text-align: center; font-size: 120%; word-wrap: break-word; }
 
-.b-content .pager { height: 57px; padding: 10px 0 0; margin-top: 10px; position: relative; background: url(/t/light/header-dots-v.png) repeat-x 0 0; font-size: 110%; }
 .b-content .viewport{overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;}
+
+#more { display: block; width: 590px; margin: 13px 0 25px; text-align: center; }
+#more .button { display: inline-block; padding: 10px 15px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; }
+#more .button:hover { text-decoration: none; }
 
 
 .search-form { position:relative; height: 32px; }
