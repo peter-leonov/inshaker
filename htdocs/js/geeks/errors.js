@@ -24,12 +24,52 @@ var Me =
 		return count
 	},
 	
+	findDateVar: function (content)
+	{
+		var parser = /<!--\#\s*config\s+timefmt="(%Y.%m)"\s*-->/
+		
+		var timefnt = parser.exec(content)
+		
+		if (!timefnt)
+			return content
+		
+		var format = timefnt[1],
+			date = new Date()
+		
+		var dateLocal = format.replace(/(\%\w)/g, function(str)
+		{
+			var res
+			switch (str)
+			{
+				case '%Y':
+					res = date.getFullYear()
+					break;
+				
+				case '%m':
+					res = '09' //res = ('0' + (date.getMonth()+1)).slice(-2) // not set branding 10 month
+					break;
+				
+				default:
+					res = str
+			}
+			
+			return res
+		})
+		
+		content = content.replace(/<!--\#\s*include\s+virtual="(.*?)(\$date_local)(.*?)"\s*-->/g,
+			'<!--' + String.fromCharCode(35) + ' include virtual="$1' + dateLocal + '$3" -->')
+		
+		return content
+	},
+	
 	parseFile: function (file)
 	{
 		if (this.index[file])
 			return
 		
 		var content = Request.get('/ssioff' + file, null, null, true).responseText
+		
+		content = this.findDateVar(content)
 		
 		var parser = /<!--\#\s*include\s+virtual="(.*?)"\s*-->/g
 		
