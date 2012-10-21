@@ -4,6 +4,12 @@ eval(NodesShortcut.include())
 
 var Me =
 {
+	initialize: function (data)
+	{
+		this.data = data
+		this.files = {}
+		this.index = {}
+	},
 
 }
 
