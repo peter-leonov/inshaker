@@ -23,16 +23,9 @@
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
 <script src="/js/common/common.js"></script>
-<script src="/js/about/swfobject.js"></script>
 <script>
 function onready ()
 {
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque')
-	line.addVariable('settings_file', escape('/stat/errors/settings.xml'))
-	line.addVariable('data_file', escape('/stat/errors/data.xml'))
-	line.write('stat-errors')
 }
 $.onready(onready)
 </script>
