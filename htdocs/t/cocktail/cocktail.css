@@ -191,7 +191,7 @@ body,
 #view-recipe .recipe ul li { list-style: decimal; padding-bottom: 5px; }
 
 .what-need dl { width: 100%;}
-.what-need dd { font-size: 90%; border-bottom: 1px black dashed; overflow: hidden; padding: 12px 0; display: list-item; list-style: url(/t/print/li.png) inside; }
+.what-need dd { font-size: 90%; border-bottom: 1px black dashed; overflow: hidden; padding: 12px 0; display: list-item; list-style: square inside; }
 .what-need dd:last-child { border: none; }
 html.msie-6 .what-need dd { zoom: 1; }
 
