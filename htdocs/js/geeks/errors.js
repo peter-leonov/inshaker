@@ -142,6 +142,34 @@ var Me =
 		}
 	},
 	
+	getFileLine: function (path, line)
+	{
+		this.parseFile(path)
+		
+		line--
+		
+		var file = this.index[path],
+			collectLine = 0
+		
+		if (!file.includes.length)
+			return { path: path, line: line }
+		
+		for (var i = 0, il = file.includes.length; i < il; i++)
+		{
+			var include = file.includes[i]
+			
+			if (line < include.startFull)
+				return { path: path, line: line - collectLine }
+			
+			if (line <= include.endFull)
+				return this.getFileLine(include.include, line - include.startFull + 1)
+			
+			collectLine += this.index[include.include].fullLines - 1
+		}
+		
+		return { path: path, line: line - collectLine }
+	},
+	
 	indexedErrors: function ()
 	{
 		var data = this.data,
