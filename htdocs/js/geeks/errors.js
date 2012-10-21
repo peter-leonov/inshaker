@@ -346,6 +346,79 @@ var Me =
 		}
 	},
 	
+	pretty: function (code)
+	{
+		var rules= [],
+			patterns = this.patterns
+		
+		if (!patterns.regex.pattern)
+		patterns.regex.pattern = this.delimToRegExp("/", "\\", "/", "g", "[gimy]*")
+		
+		for (var pattern in patterns)
+		{
+			var regexp = patterns[pattern].pattern,
+				alias = patterns[pattern].alias
+			
+			var m
+			while (m = regexp.exec(code))
+			{
+				rules.push(
+					{
+						length: m[0].length,
+						index: m.index,
+						alias: alias,
+						text: '<span class="' + alias + '">' + m[0] + '</span>'
+					})
+			}
+		}
+		
+		
+		var sortedRules = rules.sort(function(a, b){ return a.index - b.index})
+		
+		var newCode = ''
+		
+		for (var i = 0, il = sortedRules.length-1; i < il; i++)
+		{
+			var rule = sortedRules[i],
+				nextRule = sortedRules[i+1]
+			
+			var currentEnd = rule.index + rule.length,
+				nextIndex = nextRule.index
+			
+			while (nextIndex < currentEnd && i < il)
+			{
+				sortedRules.splice(i+1, 1)
+				nextRule = sortedRules[i+1]
+				
+				if (nextRule)
+					nextIndex = nextRule.index
+				il--
+			}
+			
+			newCode += rule.text
+			
+			if (nextIndex - currentEnd > 0)
+			{
+				var simple = code.substr(currentEnd, nextIndex - currentEnd)
+				
+				newCode += simple
+			}
+		}
+		
+		if (sortedRules[i])
+		{
+			newCode += sortedRules[i].text
+			
+			if (sortedRules[i].index + sortedRules[i].length < code.length)
+				newCode += code.substr(sortedRules[i].index + sortedRules[i].length)
+		}
+		
+		if (sortedRules[0] && sortedRules[0].index > 0)
+			newCode = code.substr(0, sortedRules[0].index) + newCode
+		
+		return newCode
+	},
+	
 	delimToRegExp: function(beg, esc, end, mod, suffix)
 	{
 		beg = this.escapeRegExp(beg)
