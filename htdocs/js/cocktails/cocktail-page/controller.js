@@ -183,7 +183,7 @@ var Controller = {
 		var printRecipe = $('.bt-print-how')
 		printRecipe.addEventListener('click', function (e)
 		{
-			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
+			window.print()
 		}, false);
 		
 		var tools_links = $$(".b-content .tools dd a");
@@ -359,7 +359,7 @@ var Controller = {
 			img.className = 'image'
 			img.style.backgroundImage = 'url(' + url + ')'
 			
-			var image = document.createElement("image")
+			var image = document.createElement('img')
 			image.src = url
 			img.appendChild(image)
 			
