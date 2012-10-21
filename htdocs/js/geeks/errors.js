@@ -97,6 +97,7 @@ var Me =
 		currentIndex.lines = fileByLines.length
 		
 		this.getRecursiveNumLines(file)
+		this.calcEdgesIncludes(file)
 	},
 	
 	getRecursiveNumLines: function (path)
@@ -116,6 +117,29 @@ var Me =
 		lines += file.lines
 		
 		return file.fullLines = lines
+	},
+	
+	calcEdgesIncludes: function (path)
+	{
+		var file = this.index[path],
+			includes = file.includes,
+			prevEnd = 0,
+			prevLine = 0
+		
+		if (includes.length)
+		{
+			for (var i = 0, il = includes.length; i < il; i++)
+			{
+				var include = includes[i]
+				
+				include.startFull = prevEnd + include.line - prevLine
+				prevEnd = include.endFull = include.startFull + this.index[include.include].fullLines - 1
+				
+				prevLine = include.line
+				
+				this.calcEdgesIncludes(include.include)
+			}
+		}
 	},
 	
 	indexedErrors: function ()
