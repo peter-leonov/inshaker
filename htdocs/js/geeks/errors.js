@@ -11,6 +11,19 @@ var Me =
 		this.index = {}
 	},
 	
+	getOccurrencesCount: function (string, sub)
+	{
+		var count = 0,
+			pos = string.indexOf(sub)
+		
+		while ( pos != -1 ) {
+			count++
+			pos = string.indexOf(sub, pos+1)
+		}
+		
+		return count
+	},
+	
 	indexedErrors: function ()
 	{
 		var data = this.data,
