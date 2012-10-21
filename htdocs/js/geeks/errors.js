@@ -59,6 +59,23 @@ var Me =
 			var index = groups[type],
 				errors = groupsArr[index].errors
 
+			if (errors.length)
+			{
+				for (var j = 0, jl = errors.length; j < jl; j++)
+				{
+					var item = errors[j]
+
+					if (item.file == error.file && item.line == error.line)
+					{
+						item.browsers.push([error.browsers[0][0], error.browsers[0][1]])
+						item.uniqueEvents += error.uniqueEvents
+						item.eventVale += error.eventVale
+						error = 0
+						break
+					}
+				}
+			}
+
 			if (error != 0)
 				errors.push(error)
 
