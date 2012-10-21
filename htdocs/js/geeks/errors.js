@@ -84,6 +84,34 @@ var Me =
 
 		this.groups = groupsArr.sort(function(a, b){ return b.sumUniqueEvents - a.sumUniqueEvents })
 	},
+
+	drawGroups: function (node)
+	{
+		this.indexedErrors()
+
+		var groups = this.groups,
+			me = this
+
+		for (var i = 0, il = groups.length; i < il; i++)
+		{
+			var group = groups[i]
+
+			var div = Nc('div', 'type')
+			node.appendChild(div)
+
+			var p = Nct('p', '', group.type + ' (' + group.sumUniqueEvents + ')')
+			p.setAttribute('data-index', i)
+			div.appendChild(p)
+
+			p.addEventListener('click', function(e){ me.drawErrors(e.target) })
+
+			var ul = N('ul')
+			ul.classList.add('hidden')
+			div.appendChild(ul)
+
+			group.ul = ul
+		}
+	},
 }
 
 Me.className = 'TopErrors'
