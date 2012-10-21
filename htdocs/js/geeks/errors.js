@@ -286,6 +286,65 @@ var Me =
 			linesAfter.join('\n')
 		]
 	},
+	
+	patterns:
+	{
+		commonKeywords:
+		{
+			pattern: /\b(?:as|break|case|catch|continue|delete|do|else|eval|finally|for|if|in|is|item|instanceof|return|switch|this|throw|try|typeof|void|while|write|with)\b/g,
+			alias: 'kw1'
+		},
+		langKeywords:
+		{
+			pattern: /\b(?:class|const|default|debugger|export|extends|false|function|import|namespace|new|null|package|private|protected|public|super|true|use|var)\b/g,
+			alias: 'kw2'
+		},
+		windowKeywords:
+		{
+			pattern: /\b(?:alert|back|blur|close|confirm|focus|forward|home|navigate|onblur|onerror|onfocus|onload|onmove|onresize|onunload|open|print|prompt|scroll|status|stop)\b/g,
+			alias: 'kw3'
+		},
+	
+		'slashComments':
+		{
+			pattern: /(?:^|[^\\])\/\/.*$/gm,
+			alias: 'co1'
+		},
+		'multiComments':
+		{
+			pattern: /\/\*[\s\S]*?\*\//gm,
+			alias: 'co2'
+		},
+		'strings':
+		{
+			pattern: /'[^'\\\r\n]*(?:\\.[^'\\\r\n]*)*'|"[^"\\\r\n]*(?:\\.[^"\\\r\n]*)*"/gm,
+			alias: 'st0'
+		},
+		'methodCalls':
+		{
+			pattern: /\.([\w]+)\s*\(/gm,
+			alias: 'me0'
+		},
+		'brackets':
+		{
+			pattern: /\{|\}|\(|\)|\[|\]/g,
+			alias: 'br0'
+		},
+		'numbers':
+		{
+			pattern: /\b((([0-9]+)?\.)?[0-9_]+([e][-+]?[0-9]+)?|0x[A-F0-9]+)\b/gi,
+			alias: 'nu0'
+		},
+		'regex':
+		{
+			alias: 're0'
+		},
+		'symbols':
+		{
+			pattern: /\+|-|\*|\/|%|!|@|&|\||\^|\<|\>|=|,|\.|;|\?|:/g,
+			alias: 'sy0'
+		}
+	},
 }
 
 Me.className = 'TopErrors'
