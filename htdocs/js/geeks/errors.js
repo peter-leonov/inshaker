@@ -95,6 +95,27 @@ var Me =
 		currentIndex.content = content
 		var fileByLines = currentIndex.fileByLines = content.split('\n')
 		currentIndex.lines = fileByLines.length
+		
+		this.getRecursiveNumLines(file)
+	},
+	
+	getRecursiveNumLines: function (path)
+	{
+		var file = this.index[path],
+			includes = file.includes,
+			lines = 0
+		
+		if (includes.length)
+		{
+			for (var i = 0, il = includes.length; i < il; i++)
+			{
+				lines += this.getRecursiveNumLines(includes[i].include) - 1
+			}
+		}
+		
+		lines += file.lines
+		
+		return file.fullLines = lines
 	},
 	
 	indexedErrors: function ()
