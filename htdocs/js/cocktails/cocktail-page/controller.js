@@ -183,7 +183,7 @@ var Controller = {
 		var printRecipe = $('.bt-print-how')
 		printRecipe.addEventListener('click', function (e)
 		{
-			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
+			window.print()
 		}, false);
 		
 		var tools_links = $$(".b-content .tools dd a");
