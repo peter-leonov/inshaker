@@ -272,6 +272,62 @@ var Me =
 		}
 	},
 	
+	drawErrors: function (node)
+	{
+		var index = node.getAttribute('data-index'),
+			group = this.groups[index],
+			ul = group.ul,
+			errors = group.errors
+		
+		if (group.expanded)
+		{
+			ul.classList.add('hidden')
+			group.expanded = false
+		}
+		else
+		{
+			ul.classList.remove('hidden')
+			group.expanded = true
+		}
+		
+		if (group.filled)
+			return
+		
+		for (var i = 0, il = errors.length; i < il; i++)
+		{
+			var error = errors[i]
+			
+			var li = N('li')
+			ul.appendChild(li)
+			
+			var path = this.getFileLine(error.file, error.line)
+			
+			var a = Nct('a', '', path.path + ':' + path.line)
+			a.href = 'txmt://open?url=file:///www/inshaker/htdocs' + path.path + '&line=' + path.line
+			li.appendChild(a)
+			
+			var browsers = []
+			for (var j = 0, jl = error.browsers.length; j < jl; j++)
+			{
+				browsers.push(error.browsers[j].join(' '))
+			}
+			
+			var div = Nct('div', '', browsers.join(', '))
+			li.appendChild(div)
+			
+			var lines = this.getLinesFile(path.path, path.line || 1),
+				prettyError = this.pretty(lines[0]) + '\n<span class="err">' + this.pretty(lines[1]) + '</span>\n' + this.pretty(lines[2])
+			
+			var pre = Nc('pre', 'prettyprint mochaLighter') // or standard
+			pre.innerHTML = prettyError
+			li.appendChild(pre)
+		}
+		
+		group.filled = true
+		group.expanded = true
+		ul.classList.remove('hidden')
+	},
+	
 	getLinesFile: function (file, line)
 	{
 		var source = this.index[file].fileByLines
