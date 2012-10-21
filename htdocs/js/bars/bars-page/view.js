@@ -115,20 +115,18 @@ Me.prototype =
 		else
 			log('Unknown view type "' + state.view + '"')
 	},
+	
 	renderBarsList: function (data)
 	{
-		var parent = this.nodes.barsContainer,
-			bars = data.bars
+		var parent = this.nodes.barsContainer
 		
 		parent.empty()
+		
+		var bars = data.bars
 		for (var i = 0; i < bars.length; i++)
-		{
-			var bar = bars[i]
-			var node = this.getBarNode(bar)
-			parent.appendChild(node)
-			parent.appendChild(document.createTextNode(' '))
-		}
+			parent.appendChild(this.getBarNode(bars[i]))
 	},
+	
 	renderBarsMap: function (data)
 	{
 		var bars = data.bars,
@@ -157,6 +155,7 @@ Me.prototype =
 		if (this.lastCity != state.city)
 		{
 			var lat, lng, zoom
+			
 			if (!this.lastCity && state.lat && state.lng)
 			{
 				lat = parseFloat(state.lat)
@@ -218,35 +217,36 @@ Me.prototype =
 	
 	getBarNode: function (bar)
 	{
-		var main = this.cache.barNode[bar.id] || (this.cache.barNode[bar.id] = this.createBarNode(bar))
-		main.setName(bar.name)
-		main.setImage(bar.smallImageHref())
-		main.setHref(bar.pageHref())
+		var barNode = this.cache.barNode
+		
+		var main = barNode[bar.id]
+		if (main)
+			return main
+		
+		main = barNode[bar.id] = this.createBarNode(bar)
 		return main
 	},
 	
 	createBarNode: function (bar)
 	{
-		var main = document.createElement('li'),
-			nameCont = document.createElement('a'),
-			name = document.createElement('span')
+		var main = document.createElement('li')
+		main.className = 'bar-mini'
 		
-		name.className = 'bar-name'
-		name.innerHTML = bar.name
-		
-		nameCont.appendChild(name)
+		var nameCont = document.createElement('a')
+		nameCont.style.backgroundImage = 'url(' + bar.smallImageHref() + ')'
+		nameCont.href = bar.pageHref()
 		main.appendChild(nameCont)
 		
-		main.className = 'bar-mini'
-		main.setImage = function (src) { main.style.backgroundImage = 'url('+src+')' }
-		main.setName = function (text) { name.innerHTML = text }
-		main.setHref = function (href) { nameCont.href = href }
+		var name = document.createElement('span')
+		name.className = 'bar-name'
+		name.appendChild(document.createTextNode(bar.name))
+		nameCont.appendChild(name)
 		
 		if (bar.labelType == 'new')
 		{
 			var label = document.createElement('span')
 			label.className = 'label'
-			label.innerHTML  = 'Бар недавно открылся, заходи посмотреть!'
+			label.appendChild(document.createTextNode('Бар недавно открылся, заходи посмотреть!'))
 			nameCont.appendChild(label)
 			main.classList.add(bar.labelType)
 		}

@@ -1,6 +1,6 @@
 #main-column { width: 639px; position: relative; z-index: 1; }
 
-#spotlighted { position: absolute; right: 0; top: 0; }
+#spotlighted { position: absolute; right: 15px; top: 15px; }
 
 #video-blocks .item { height: 515px; position: relative; margin: 20px 0 10px 0; border-bottom: 1px dashed #aaa; }
 #video-blocks .item:last-child { height: 480px; margin-bottom: 20px; border-bottom: none; }

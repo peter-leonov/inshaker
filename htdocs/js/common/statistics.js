@@ -4,9 +4,9 @@ var myName = 'Statistics'
 
 var Me =
 {
-	magazinePromoViewed: function (promo)
+	magazinePromoViewed: function (name)
 	{
-		this.event('magazine-promo-viewed', promo && promo.name)
+		this.event('magazine-promo-viewed', name)
 	},
 	
 	cocktailsFilterSelected: function (name)
@@ -22,11 +22,6 @@ var Me =
 	cocktailViewLegend: function (cocktail)
 	{
 		this.event('cocktail-view-legend', cocktail && cocktail.name)
-	},
-	
-	cocktailAddedToCalculator: function (cocktail)
-	{
-		this.event('cocktail-added-to-calculator', cocktail && cocktail.name)
 	},
 	
 	ingredientPopupOpened: function (ingredient)

@@ -26,8 +26,15 @@ $.onready
 		{
 			cocktails: $$('.info-blocks .cocktail-list'),
 			tagsList: $('#tags-list'),
-			promo: $('#promo'),
-			arrows: [$('#promo-prev'), $('#promo-next')]
+			
+			promos:
+			{
+				root:     $('#promo'),
+				viewport: $('#promo .viewport'),
+				surface:  $('#promo .surface'),
+				prev:     $('#promo-prev'),
+				next:     $('#promo-next')
+			}
 		}
 		
 		MagazinePage.initialize(nodes)
@@ -38,6 +45,9 @@ $.onready
 <!--# include virtual="/liby/modules/motion-types.js" -->
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
+
+<!--# include virtual="/liby/fixes/onhashchange.js" -->
+<!--# include virtual="/liby/modules/location-hash.js" -->
 
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->

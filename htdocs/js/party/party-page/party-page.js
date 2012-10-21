@@ -6,6 +6,7 @@
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 <!--# include virtual="/js/common/share-box.js" -->
 
+<!--# include virtual="/js/party/cocktail-parts.js" -->
 <!--# include virtual="/js/party/number.js" -->
 
 ;(function(){
@@ -20,6 +21,8 @@ function onready ()
 	
 	var nodes =
 	{
+		root: $('#common-main-wrapper'),
+		
 		ogImage: $('#og-image'),
 		partyName: $('#party-name'),
 		window:

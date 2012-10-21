@@ -6,7 +6,6 @@ $.onready(function(){
 	new RollingImagesLite($('#related'), aniOpts);
 	new RollingImagesLite($('#ingredients'), aniOpts);
 	Controller.init();
-	Calculator.init();
 	
 	ShareButtons.bootstrap({text: 'Коктейль «' + Controller.name + '»'})
 	

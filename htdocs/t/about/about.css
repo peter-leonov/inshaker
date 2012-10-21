@@ -18,9 +18,9 @@
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
 .b-content .content h3{font-size:18px;margin:1em 0;}
 .view-stat {padding-bottom: 30px}
-.view-stat .note {width: 300px; font-size: 12px; position: absolute; margin-left: 178px; margin-top: 65px; z-index: 1;}
-.view-stat .stat{position:relative;width:550px;margin:0 auto;text-align:center;}
-.view-stat .stat .viewport { width: 510px; overflow: hidden; margin-left: 20px;}
+.view-stat .note {width: 300px; font-size: 12px; margin-left: 178px;}
+.view-stat .stat{position:relative;width:580px;margin:0 auto;text-align:center;}
+.view-stat .stat .viewport { width: 540px; overflow: hidden; margin-left: 20px;}
 .view-stat .stat .surface { width: 520px; padding:0;}
 .view-stat .stat .point { width: 510px; height: 560px; float: right;}
 .view-stat .stat a { margin-top: 140px; z-index: 1;}
@@ -41,7 +41,15 @@
 .b-content .top-menu .b:after { display: none; }
 .b-content .content h3 { margin-top: 0; }
 .b-content .content { padding-top: 158px; background: url(poster.jpg) center top no-repeat; }
-.b-content .view-stat { padding-top: 20px; background: none; }
+.b-content .view-stat,
+.b-content .view-team { padding-top: 20px; background: none; }
+
+.b-content .view-team { font-size: 16px; line-height: 22px; }
+.b-content .view-team .team {  }
+.b-content .view-team .team .mate { display: inline-block; overflow: hidden; position: relative; width: 160px; height: 185px; background-repeat: no-repeat; margin: 11px 16px; border-radius: 10px; }
+.b-content .view-team .team .mate .name { position: absolute; left: 0; right: 0; bottom: 0; height: 25px; text-align: center; letter-spacing: 1px; background-color: rgba(0,0,0,0.8); color: #fff; border-radius: 10px; border-top-left-radius: 0; border-top-right-radius: 0; }
+.b-content .view-team .team .mate.ed .name { letter-spacing: 0; }
+.b-content .view-team .profession { font-size: 20px; font-weight: bold; letter-spacing: 1px; color: #ff0893; margin: 20px 0 0;  }
 
 .b-content .view-about { font-size: 14px; line-height: 22px; }
 .b-content .view-about .section { margin: 0 0 2em 0; }
@@ -65,18 +73,6 @@
 
 #form_success{position:relative;color:#999999;height:35px;padding:0px 0pt 0pt 35px;width:140px;font-size:11px;margin-top:14px;}
 #form_success i { position: absolute; top: 0px; left: 0px; width: 25px; height: 30px; background-position: -200px -25px; }
-
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 6/" -->
-.b-content .border-links {width:581px;}
-#menu{/*z-index:20;position:absolute;*/ width:90%;}
-#menu a{width:1px;white-space:nowrap;}
-#menu a b{border:none;}
-<!--# endif -->
-
-<!--# if expr="$HTTP_USER_AGENT = /MSIE [67]/" -->
-.b-content .content ol {padding-left:23px;}
-<!--# endif -->
 
 
 #partner-list { width: 590px; text-align: justify;}

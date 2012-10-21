@@ -15,10 +15,13 @@ http://www.inshaker.ru/bar/carabas_bar/
 http://www.inshaker.ru/bar/ketama/
 http://www.inshaker.ru/bar/cuba_libre/
 http://www.inshaker.ru/bar/swans_lake/
+http://www.inshaker.ru/bar/lawsons/
 http://www.inshaker.ru/bar/ray/
 http://www.inshaker.ru/bar/martinez/
 http://www.inshaker.ru/bar/mayak/
+http://www.inshaker.ru/bar/main/
 http://www.inshaker.ru/bar/dream/
+http://www.inshaker.ru/bar/milk/
 http://www.inshaker.ru/bar/mulata/
 http://www.inshaker.ru/bar/noor/
 http://www.inshaker.ru/bar/all_time_bar/
@@ -27,7 +30,6 @@ http://www.inshaker.ru/bar/secret_bar/
 http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/
 http://www.inshaker.ru/bar/tapa_de_comida/
-http://www.inshaker.ru/bar/tommy_d/
 http://www.inshaker.ru/bar/free_bar/
 http://www.inshaker.ru/bar/help/
 http://www.inshaker.ru/bar/chainaya/
@@ -41,6 +43,7 @@ http://www.inshaker.ru/bar/barrel/
 http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/grafin/
 http://www.inshaker.ru/bar/daiquiri/
+http://www.inshaker.ru/bar/nove/
 http://www.inshaker.ru/bar/thebar/
 http://www.inshaker.ru/bar/clocks/
 http://www.inshaker.ru/bar/elephant/

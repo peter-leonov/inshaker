@@ -35,6 +35,7 @@ Me.prototype =
 {
 	// a callback for nodes must be loaded
 	load: function () {},
+	onstop: function () {},
 	
 	configure: function (conf)
 	{
@@ -86,6 +87,13 @@ Me.prototype =
 		var space = scroller.space
 		space.add(new Kinematics.Friction(this.conf.friction))
 		this.wave = space.add(new Kinematics.Wave(0, 0, 0))
+		
+		var gridder = frame.getGridder()
+		scroller.onstop = function ()
+		{
+			var boxes = gridder.getBoxesPrecise(Math.ceil(scroller.realX + me.frameWidth / 2), Math.ceil(me.frameHeight / 2), 1, 1)
+			me.onstop(boxes[0].node)
+		}
 	},
 	
 	setNodes: function (nodes, realCount)
@@ -95,11 +103,16 @@ Me.prototype =
 		
 		var boxes = this.boxes = Boxer.sameNodesToBoxes(nodes, viewport)
 		
-		var frame = this.frame,
-			frameWidth = viewport.offsetWidth
+		this.frameWidth = viewport.offsetWidth
+		this.frameHeight = viewport.offsetHeight
 		
-		var t = new Throttler(function (x, realX) { frame.moveTo(realX - frameWidth, 0) }, conf.throttleSoft, conf.throttleHard)
-		this.scroller.onscroll = function (x, realX) { t.call(x, realX) }
+		var frame = this.frame,
+			frameWidth = this.frameWidth
+		function onscroll (x, realX)
+		{
+			frame.moveTo(realX - frameWidth, 0)
+		}
+		this.scroller.onscroll = onscroll.throttle(conf.throttleSoft, conf.throttleHard)
 		
 		frame.setFrame(frameWidth * 3, viewport.offsetHeight)
 		frame.setBoxes(boxes)
@@ -172,7 +185,7 @@ Me.prototype =
 		
 		var box = boxes[i - i % this.conf.pageLength]
 		if (box)
-			this.scroller.setX(box.x)
+			this.scroller.jumpTo(box.x)
 	}
 }
 

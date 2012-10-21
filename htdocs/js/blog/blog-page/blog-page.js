@@ -15,6 +15,7 @@ function onready ()
 		root: $('#common-main-wrapper'),
 		postsLoop: $('#posts-loop'),
 		more: $('#more'),
+		moreButton: $('#more .button'),
 		morePosts: $('#more .posts'),
 		tagCloud: $('#tag-cloud .list')
 	}

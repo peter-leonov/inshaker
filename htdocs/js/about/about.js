@@ -19,7 +19,7 @@ var AboutPage = {
 		$('#poster').style.display = "block";
 	},
 	
-	init: function ()
+	init: function (cities, visitors)
 	{
 		var main = $('#menu')
 		var tabs = $$('#main-column .content')
@@ -39,20 +39,69 @@ var AboutPage = {
 		
 		locationHash.addEventListener('change', function () { window.scrollTo(0, 0); sw.select(hrefs.indexOf(this.get())) }, false)
 		
-		var line = new SWFObject("stat/amcharts/amline.swf", "amline", "510", "390", "8", "#FFFFFF");
-		line.addVariable("path", "stat/amcharts/");
-		line.addParam("wmode", "opaque");
-		line.addVariable("settings_file", escape("stat/visitors/settings.xml"));
-		line.addVariable("data_file", escape("stat/visitors/data.xml"));
-		line.write("stat_visits");
-
-		var pie = new SWFObject("stat/amcharts/ampie.swf", "ampie", "510", "400", "8", "#FFFFFF");
-		pie.addVariable("path", "stat/amcharts/");
-		pie.addParam("wmode", "opaque");
-		pie.addVariable("settings_file", escape("stat/cities/settings.xml"));
-		pie.addVariable("data_file", escape("stat/cities/data.xml"));		
-		pie.addVariable("preloader_color", "#999999");
-		pie.write("stat_cities");
+		visitors.pop()
+		for (var i = 0, il = visitors.length; i < il; i++)
+		{
+			visitors[i][0] = new Date( visitors[i][0] * 1000 ).toRusDateShort()
+			
+			var temp = visitors[i][1]
+			visitors[i][1] = visitors[i][2]
+			visitors[i][2] = temp
+		}
+		
+		var rusCities =
+		{
+			'Moscow': 'Москва',
+			'Sankt-Petersburg': 'Санкт-Петербург',
+			'Sverdlovskaya oblast': 'Свердловская область',
+			'Moskovskaya oblast': 'Московская область',
+			'Rostovskaya oblast': 'Ростовская область',
+			'Kyiv': 'Киев',
+			'Novosibirskaya oblast': 'Новосибирская область',
+			'Krasnodarskiy kray': 'Краснодарский край',
+			'Samarskaya oblast': 'Самарская область',
+			'Nizhegorodskaya oblast': 'Нижегородская область',
+			'Chelyabinskaya oblast': 'Челябинская область',
+			'Tatarstan, Republic': 'Республика Татарстан'
+			// 'Primorskiy kray': 'Приморский край',
+			// 'Voronezhskaya oblast': 'Воронежская область',
+			// 'Volgogradskaya oblast': 'Волгоградская область',
+			// 'Krasnoyarskiy kray': 'Красноярский край'
+		}
+		
+		var totalVisits = cities.pop().total.visits
+		var totalUsed = 0
+		var newCities = []
+		
+		for (var i = 0, il = cities.length; i < il; i++)
+		{
+			var city = cities[i],
+				rus = rusCities[city[0]]
+			
+			if (!rus)
+				continue
+			
+			var count = city[1]
+			totalUsed += count
+			newCities.push([rus, count])
+		}
+		
+		newCities.push(['Другие регионы', totalVisits - totalUsed])
+		cities = newCities
+		
+		this.statCities = $('#stat_cities')
+		this.statVisits = $('#stat_visits')
+		this.cities = cities
+		this.visitors = visitors
+		
+		var opts =
+		{
+			packages: ["corechart"]
+		}
+		
+		var me = this
+		googleApiLoader.addEventListener('visualization', function (e) { me.drawCharts(e) }, false)
+		googleApiLoader.load('visualization', 1, opts)
 		
 		var form = $('#feedback_form')
 		function sendListener (e)
@@ -71,7 +120,15 @@ var AboutPage = {
 				}
 			}
 			
-			Request.post(this.action, FormHelper.toHash(this), sent)
+			var h = FormHelper.toHash(this)
+			
+			var message =
+			{
+				subject: 'Предложение или вопрос по иншейкеру',
+				body: 'Имя: ' + h.name + '<br/>Контакт: ' + h.address + '<br/>Компания: ' + h.company + '<br/>Что говорит: ' + h.text
+			}
+			
+			Request.post(this.action, message, sent)
 		}
 		form.addEventListener('submit', sendListener, false)
 		
@@ -93,11 +150,91 @@ var AboutPage = {
 		var spacer = document.createElement('span')
 		spacer.className = 'spacer'
 		content.appendChild(spacer)
+	},
+	
+	drawCharts: function ()
+	{
+		var visual = google.visualization
+		
+		var dataPie = new visual.DataTable()
+		dataPie.addColumn('string', 'City')
+		dataPie.addColumn('number', 'Slices')
+		dataPie.addRows(this.cities)
+		
+		var optionsPie =
+		{
+			width: 510,
+			height: 500,
+			chartArea:
+			{
+				top: 35,
+				left: 15,
+				width: 1000
+			},
+			legend:
+			{
+				position: 'right',
+				alignment: 'center'
+			}
+		}
+		
+		var chartPie = new visual.PieChart(this.statCities)
+		chartPie.draw(dataPie, optionsPie)
+		
+		
+		var dataArea = new visual.DataTable()
+		dataArea.addColumn('string', 'Дата')
+		dataArea.addColumn('number', 'Просмотры')
+		dataArea.addColumn('number', 'Посетители')
+		dataArea.addRows(this.visitors)
+		
+		var optionsArea =
+		{
+			focusTarget: 'category',
+			width: 510,
+			height: 400,
+			hAxis:
+			{
+				textStyle:
+				{
+					fontSize: 11
+				},
+				showTextEvery: (this.visitors.length/6) + 2,
+				maxAlternation: 2,
+				maxTextLines: 2,
+				minTextSpacing: 0
+			},
+			vAxis:
+			{
+				textStyle:
+				{
+					fontSize: 11
+				},
+				gridlines:
+				{
+					count: 8
+				}
+			},
+			legend:
+			{
+				position: 'bottom',
+				alignment: 'center'
+			},
+			chartArea:
+			{
+				top: 35,
+				left: 50,
+				width: 450
+			}
+		}
+		
+		var chartArea = new visual.AreaChart(this.statVisits)
+		chartArea.draw(dataArea, optionsArea)
 	}
 };
 
 $.onready(function(){
-	AboutPage.init();
+	AboutPage.init(<!--# include virtual="/db/stats/cities.json" -->, <!--# include virtual="/db/stats/visits.json" -->);
 	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
@@ -112,5 +249,7 @@ $.onready(function(){
 
 <!--# include virtual="/js/event/switcher.js" -->
 
-<!--# include virtual="swfobject.js" -->
+<!--# include virtual="/liby/modules/google-api-loader.js" -->
+<!--# include virtual="/js/common/google.js" -->
 
+<!--# include virtual="/liby/modules/rus-date.js" -->

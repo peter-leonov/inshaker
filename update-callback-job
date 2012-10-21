@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git reset --hard
+git clean -df
+git pull
+git checkout -f

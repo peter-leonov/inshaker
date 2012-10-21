@@ -30,7 +30,7 @@ Me.prototype =
 	updateInitialBlock: function ()
 	{
 		this.model.updateAllIngredients()
-		this.model.updateExamples()
+		this.model.updateExample()
 	},
 	
 	ingredientSelected: function (ingredient)

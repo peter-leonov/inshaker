@@ -33,7 +33,7 @@ class BarsProcessor < Inshaker::Processor
     fix_base "Bars"
     
     Cocktail.init
-    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты").map { |e| e["name"] }.hash_index
+    @cocktail_hits = Cocktail.get_by_tag("Авторские хиты в барах").map { |e| e["name"] }.hash_index
     
     prepare_barmen
     prepare_dirs
@@ -132,7 +132,7 @@ class BarsProcessor < Inshaker::Processor
         cocktail_hit = bar["carte"][0]
         bar["carte"] = [cocktail_hit]
         unless @cocktail_hits[cocktail_hit]
-          error "коктейль «#{cocktail_hit}» не отмечен тегом «Авторские хиты»"
+          error "коктейль «#{cocktail_hit}» не отмечен тегом «Авторские хиты в барах»"
         end
         if @cocktail_hits_seen_first[cocktail_hit]
           error "коктейль «#{cocktail_hit}» уже является хитом в баре «#{@cocktail_hits_seen_first[cocktail_hit]}»"

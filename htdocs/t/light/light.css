@@ -19,7 +19,11 @@ html{font:10px Tahoma,Arial,sans-serif;}
 
 /* fix window-html-body box model */
 html { overflow-y: scroll; height: 100%; }
+
+@media screen
+{
 body { min-width: 985px; position: relative; min-height: 100%; }
+}
 
 
 /* art goes here */
@@ -40,10 +44,10 @@ body { color: #343b40; }
 
 /* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
-#top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
-#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
-#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
-#top .link.blog { position: absolute; right: 0; }
+#top .content { position: relative; width: 962px; height: 65px; margin: 0 auto; }
+#top .logo { position: absolute; left: -10px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#top .menu { position: absolute; top: 0; right: 0; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 7px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 
 #common-footer-spacer,
 #common-footer { height: 414px; margin-top: 25px; padding-top: 25px; }
@@ -81,6 +85,7 @@ html.bars-section #top .link.bars,
 #combinator-page #top .link.combinator,
 html.party-section #top .link.party,
 #mybar-page #top .link.mybar,
+html.ratings-section #top .link.ratings,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 

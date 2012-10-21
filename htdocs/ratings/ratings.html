@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html id="ratings-page" class="ratings-section" lang="ru">
+<head>
+	<link rel="stylesheet" href="/t/light/light.css"/>
+	<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/branding/$date_local/branding-head.html" -->
+	<link rel="stylesheet" href="/t/ratings/ratings.css"/>
+	<title>Рейтинг коктейлей — Inshaker</title>
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div id="common-main-wrapper">
+
+<div id="ratings-widget" class="ratings-widget common-box"><div class="common-content">
+
+	<div class="head common-title"><h1>Топ-10 <a class="switch total" href="#">всех коктейлей</a>, <a class="switch tag" href="#tag">по тегам</a> или <a class="switch ingredient" href="#ingredient">ингредиентам</a> <span class="hint">за последние 30 дней</span></h1><a id="spotlighted"><i></i></a></div>
+
+	<ul class="rating-total hidden"></ul>
+	<div class="rating-tag hidden"></div>
+	<div class="rating-ingredient hidden"></div>
+
+</div></div>
+
+</div id="common-main-wrapper">
+
+<!--# include virtual="/inc/common-footer.html" -->
+<!--# include virtual="/inc/ingredient-popup.html" -->
+
+<script src="/js/common/oops.js"></script>
+<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+<script src="/js/common/common.js"></script>
+<script src="/js/entities/Ingredient.js"></script>
+<script src="/js/entities/Cocktail.js"></script>
+<script src="/js/ratings/ratings-page/ratings-page.js"></script>
+<!--# include virtual="/inc/cocktails-footer.html" -->
+</body>
+</html>

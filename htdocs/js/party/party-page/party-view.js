@@ -164,22 +164,19 @@ Me.prototype =
 			return false
 		}
 		
-		var view = this
+		var controller = this.controller
 		function maybeGoodClicked (target)
 		{
 			var name = findIngredientInParents(target, 3)
 			if (name)
-				view.controller.goodSelected(name)
+				controller.goodSelected(name)
 		}
 		
 		function onclick (e)
 		{
 			maybeGoodClicked(e.target)
 		}
-		
-		nodes.recipeList.addEventListener('click', onclick, false)
-		nodes.purchasePlan.addEventListener('click', onclick, false)
-		nodes.cocktailPlan.addEventListener('click', onclick, false)
+		nodes.root.addEventListener('click', onclick, false)
 	},
 	
 	showGoodPopup: function (good)

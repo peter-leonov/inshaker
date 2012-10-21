@@ -34,37 +34,6 @@ Me.prototype =
 	
 	screenName: function () { return this.screen || this.name },
 	
-	getPartsFor: function (count, guests)
-	{
-		var parts = new Me.Parts()
-		
-		var portions = this.portions || 1
-		
-		var ingredients = this.ingredients
-		for (var i = 0, il = ingredients.length; i < il; i++)
-		{
-			var v = ingredients[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
-		}
-		
-		var garnish = this.garnish
-		for (var i = 0, il = garnish.length; i < il; i++)
-		{
-			var v = garnish[i]
-			parts.addGood(Ingredient.getByName(v[0]), v[1] * count)
-		}
-		
-		var tools = this.tools
-		for (var i = 0, il = tools.length; i < il; i++)
-		{
-			var v = tools[i]
-			var amount = Me.calculateGoodAmount(v, portions, count, guests)
-			parts.addGood(Ingredient.getByName(v[0]), amount)
-		}
-		
-		return parts
-	},
-	
 	getPath: function ()
 	{
 		var path = this._path
@@ -230,6 +199,16 @@ Me.staticMethods =
 	getMethods: function () { return this.methods.slice() },
 	getTags: function () { return this.tags.slice() },
 	
+	toNames: function (ary)
+	{
+		var res = []
+		
+		for (var i = 0, il = ary.length; i < il; i++)
+			res[i] = ary[i].name
+		
+		return res
+	},
+	
 	getTagByTagCIPrepare: function ()
 	{
 		function lowercase (tag)
@@ -273,16 +252,14 @@ Me.staticMethods =
 	
 	getByNames: function (names)
 	{
-		var byName = this.byName
-		
 		var res = []
+		
+		var byName = this.byName
 		for (var i = 0, il = names.length; i < il; i++)
 			res[i] = byName[names[i]]
 		
 		return res
 	},
-	
-	getAllNames: function (name) { return Object.keys(this.byName) },
 	
 	getByToolPrepare: function (name)
 	{
@@ -302,34 +279,6 @@ Me.staticMethods =
 	{
 		var res = this.index.byTool[name]
 		return res ? res.slice() : []
-	},
-	
-	getByTags: function (tags, opts)
-	{
-		if (!opts)
-			opts = {}
-		
-		var db = opts.db || this.db
-		var count = opts.count || tags.length
-		
-		var hash = DB.hashIndex(tags)
-		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				matches = 0
-			
-			var tags = cocktail.tags
-			for (var j = 0, jl = tags.length; j < jl; j++)
-				if (hash[tags[j]] && ++matches >= count)
-				{
-					res.push(cocktail)
-					continue db
-				}
-		}
-		return res;
 	},
 	
 	getByTagPrepare: function ()
@@ -385,95 +334,26 @@ Me.staticMethods =
 	
 	getByGood: function (name)
 	{
-		var ingredient = this.getByIngredient(name),
-			garnish = this.getByGarnish(name),
-			tool = this.getByTool(name)
-		
-		return DB.disjunction([ingredient, garnish, tool])
+		return DB.disjunction([this.getByIngredient(name), this.getByGarnish(name), this.getByTool(name)])
 	},
 	
-	getByIngredients: function (ingredients, opts)
+	getByAnyOfIngredients: function (ingredients)
 	{
 		var names = []
 		for (var i = 0, il = ingredients.length; i < il; i++)
 			names.push(ingredients[i].name)
 		
-		return this.getByIngredientNames(names, opts)
+		return this.getByAnyOfIngredientsNames(names)
 	},
 	
-	getByIngredientNames: function (names, opts)
+	getByAnyOfIngredientsNames: function (names)
 	{
-		if (!opts)
-			opts = {}
+		var sets = []
 		
-		var db = opts.db || this.db
-		var count = opts.count || names.length
-		var searchGarnish = opts.searchGarnish
+		for (var i = 0, il = names.length; i < il; i++)
+			sets.push(this.getByIngredient(names[i]))
 		
-		// caching names of requested ingredients
-		var hash = DB.hashIndex(names)
-		
-		var res = []
-		db:
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				matches = 0
-			
-			// always search trough ingredients field
-			{
-				var set = cocktail.ingredients
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
-			// here if cocktail does not pass by ingredients
-			
-			if (searchGarnish)
-			{
-				var set = cocktail.garnish
-				for (var j = 0, jl = set.length; j < jl; j++)
-					if (hash[set[j][0]] && ++matches == count) // [0] for ingredient name
-					{
-						// ta-da we'v found one
-						res.push(cocktail)
-						continue db
-					}
-			}
-		}
-		return res
-	},
-	
-	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
-	getCocktailsByIngredientNameHash: function ()
-	{
-		if (this._byIngredientName)
-			return this._byIngredientName
-		
-		var cache = this._byIngredientName = {},
-			db = this.db
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var cocktail = db[i],
-				ingredients = cocktail.ingredients
-			
-			for (var j = 0, jl = ingredients.length; j < jl; j++)
-			{
-				var arr, name = ingredients[j][0]
-				
-				if ((arr = cache[name]))
-					arr.push(cocktail)
-				else
-					cache[name] = [cocktail]
-			}
-		}
-		
-		return cache
+		return DB.disjunction(sets)
 	},
 	
 	getSupplementNamesByIngredientName: function (ingredientName, coefficients)
@@ -515,30 +395,153 @@ Me.staticMethods =
 		return ingredients
 	},
 	
-	calculateGoodAmount: function (part, portions, count, guests)
+	guessEntityTypePrepare: function ()
 	{
-		var amount = part[1],
-			multiplier = part[2]
+		function ingredientTag (name)
+		{
+			return Cocktail.getByAnyOfIngredients(Ingredient.getByTag(name))
+		}
 		
-		if (count == 0)
-			return 0
-		else if (multiplier == 1)
-			return amount * guests
-		else if (!multiplier || multiplier == 2)
-			return amount * portions * count
+		function ingredient (name)
+		{
+			return Cocktail.getByIngredient(name)
+		}
 		
-		return amount
+		function tool (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function thing (name)
+		{
+			return Cocktail.getByTool(name)
+		}
+		
+		function cocktail (name)
+		{
+			var res = Cocktail.getByName(name)
+			if (!res)
+				return []
+			return [res]
+		}
+		
+		function cocktailTag (name)
+		{
+			return Cocktail.getByTag(name)
+		}
+		
+		
+		var index = {}
+		
+		var list = Ingredient.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = ingredientTag
+		
+		var gg2type = {ingredients: ingredient, tools: tool, things: thing}
+		var list = Ingredient.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = gg2type[Ingredient.getGroupOfGroup(item.group)]
+		}
+		
+		var list = Cocktail.getAll()
+		for (var i = 0, il = list.length; i < il; i++)
+		{
+			var item = list[i]
+			index[item.name] = cocktail
+		}
+		
+		var list = Cocktail.getTags()
+		for (var i = 0, il = list.length; i < il; i++)
+			index[list[i]] = cocktailTag
+		
+		this.index.entityType = index
 	},
 	
-    nameSort: function(a,b) {
-        if(a.name > b.name) return 1;
-	    else if(a.name == b.name) return 0;
-	    else return -1;
-    },
+	guessEntityType: function (name)
+	{
+		return this.index.entityType[name]
+	},
 	
-	complexitySort: function (a, b) { return a.ingredients.length - b.ingredients.length },
+	getByEntity: function (name)
+	{
+		var type = this.guessEntityType(name)
+		if (!type)
+			return []
+		
+		return type(name)
+	},
 	
-	addedSort: function (a, b) { return b.added - a.added }
+	guessEntityCIPrepare: function ()
+	{
+		// build the index
+		this.guessEntityType()
+		
+		var index = {}
+		
+		var types = this.index.entityType
+		for (var k in types)
+			index[k.toLowerCase()] = k
+		
+		this.index.entityCI = index
+	},
+	
+	guessEntityCI: function (name)
+	{
+		return this.index.entityCI[name.toLowerCase()]
+	},
+	
+	getByQuery: function (query)
+	{
+		var len = query.length
+		if (len == 0)
+			return []
+		
+		var a = this.getByEntity(query[0])
+		
+		for (var i = 1; i < len; i += 2)
+		{
+			var op = query[i],
+				entity = query[i + 1]
+			
+			var b = this.getByEntity(entity)
+			
+			switch (op)
+			{
+				case '&':
+					a = DB.conjunction([a, b])
+					break
+				
+				case '|':
+					a = DB.disjunction([a, b])
+					break
+			}
+		}
+		
+		return a
+	},
+	
+	sortIngredientsByUsage: function ()
+	{
+		// build the index
+		this.getByIngredient()
+		
+		var index = this.index.byIngredient
+		function compare (a, b)
+		{
+			a = index[a.name]
+			b = index[b.name]
+			
+			return (b ? b.length : 0) - (a ? a.length : 0)
+		}
+		
+		return compare
+	},
+	
+	sortByComplexity: function (a, b) { return a.ingredients.length - b.ingredients.length },
+	
+	sortByAddTime: function (a, b) { return b.added - a.added }
 }
 
 Object.extend(Me, DB.module.staticMethods)
@@ -558,5 +561,3 @@ Me.initialize
 )
 
 })();
-
-<!--# include virtual="CocktailParts.js" -->

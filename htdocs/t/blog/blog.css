@@ -50,8 +50,8 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 .post .body p { margin: 10px 0; }
 
 #more { display: block; width: 590px; margin: 0 0 35px; text-align: center; }
-#more .button { display: inline-block; padding: 5px 12px; border-radius: 5px; border: 1px solid #ddd; font-size: 20px; letter-spacing: 2px; color: inherit; }
-#more .button:hover { text-decoration: none; }
+#more .button { display: inline-block; padding: 5px 12px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; background-color: #0392F1; color: #fff; }
+#more .button:hover { text-decoration: none; background-color: #0372c1; }
 
 #tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 0 0; }
 #tag-cloud .list { color: #888; }

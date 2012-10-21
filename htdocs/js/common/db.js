@@ -36,6 +36,7 @@ var Me =
 		return hash
 	},
 	
+	// IE 6 can perform it 1000 times in 10ms (witout a cache), so stop the paranoia
 	hashOfAryIndexAryBy: function (src, f)
 	{
 		var hash = {}
@@ -124,6 +125,9 @@ var Me =
 		return hash
 	},
 	
+	// Counting entries of an element is much faster and simpler then buldings a hash with decreasing number of keys.
+	// This is the inside-out variant of the decreasing hash algorithm: growing hash with a check for length entries.
+	// Pluses: one hash to GC, N+1 passes (as in decreasing hash), fast integer comparision.
 	conjunction: function (arys)
 	{
 		var length = arys.length
@@ -132,22 +136,24 @@ var Me =
 		else if (length == 1)
 			return arys[0].slice()
 		
+		var first = arys[0]
+		
+		// {} lags heavily in Safari
+		// {} does twice as fast as [] in Chrome
+		// new Array(10000), length = 0 doest twice as fast as {} in Chrome
+		// Firefox lags on every variant
 		var seen = []
-		for (var i = 0; i < length; i++)
+		for (var i = 0, il = first.length; i < il; i++)
+			seen[first[i]._oid] = 1
+		
+		for (var i = 1; i < length; i++)
 		{
 			var items = arys[i]
 			for (var j = 0, jl = items.length; j < jl; j++)
-			{
-				var id = items[j]._oid
-				var times = seen[id]
-				if (times)
-					seen[id] = times + 1
-				else
-					seen[id] = 1
-			}
+				seen[items[j]._oid]++
 		}
 		
-		var first = arys[0], res = []
+		var res = []
 		for (var i = 0, il = first.length; i < il; i++)
 		{
 			var item = first[i]
@@ -167,22 +173,29 @@ var Me =
 		else if (length == 1)
 			return arys[0].slice()
 		
-		var res = [], seen = []
-		for (var i = 0; i < length; i++)
+		var first = arys[0]
+		
+		var res = first.slice()
+		
+		var seen = []
+		for (var i = 0, il = first.length; i < il; i++)
+			seen[first[i]._oid] = true
+		
+		for (var i = 1; i < length; i++)
 		{
 			var items = arys[i]
 			for (var j = 0, jl = items.length; j < jl; j++)
 			{
-				var item = items[j],
-					id = item._oid
+				var item = items[j]
+				
+				var id = item._oid
 				if (seen[id])
 					continue
 				seen[id] = true
+				
 				res.push(item)
 			}
 		}
-		
-		// res.sort(function (a, b) { return a._oid - b._oid })
 		
 		return res
 	}

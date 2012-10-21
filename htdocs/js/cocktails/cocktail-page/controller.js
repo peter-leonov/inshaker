@@ -183,7 +183,7 @@ var Controller = {
 		var printRecipe = $('.bt-print-how')
 		printRecipe.addEventListener('click', function (e)
 		{
-			window.open('/print_cocktail.html#' + encodeURIComponent(self.name))
+			window.print()
 		}, false);
 		
 		var tools_links = $$(".b-content .tools dd a");
@@ -352,10 +352,17 @@ var Controller = {
 		
 		for (var i = 0; i < resultSet.length; i++)
 		{
-			var ingredient = resultSet[i]
+			var ingredient = resultSet[i],
+				url = ingredient.getMiniImageSrc()
+			
 			var img = document.createElement("div");
 			img.className = 'image'
-			img.style.backgroundImage = 'url(' + ingredient.getMiniImageSrc() + ')'
+			img.style.backgroundImage = 'url(' + url + ')'
+			
+			var image = document.createElement('img')
+			image.src = url
+			img.appendChild(image)
+			
 			img.alt = ingredient.name;
             img.addEventListener('click', function(ingredient) { return function(){
                 self.showIngredientPopup(ingredient);

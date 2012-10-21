@@ -3,12 +3,15 @@
 
 require "digest/md5"
 require "optparse"
+require "date"
 
 require "lib/json"
 require "lib/string"
 require "lib/array"
 require "lib/file"
 require "lib/output"
+require "lib/curl"
+require "lib/oauth2helper"
 
 require "config"
 require "entities/entity"
@@ -20,27 +23,30 @@ class Analytics
   HOUR = MINUTE * 60
   DAY  = 24 * 60 * 60
   
-  
   module Config
     PROFILE_ID     = "9038802"
-    BASE_DIR       = Inshaker::BASE_DIR + "Blog/"
-    AUTH_URI       = "https://www.google.com/accounts/ClientLogin"
-    DATA_URI       = "https://www.google.com/analytics/feeds/data"
-    LOGIN          = ENV["ANALYTICS_EMAIL"]
-    PASSWORD       = ENV["ANALYTICS_PASSWORD"]
+    DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
     
     TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
-    TOKEN_FILE     = TMP + "/auth-token.txt"
     
-    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
-    ALL_JSON       = HT_STAT_DIR + "/all.json"
-    LAST_UP_JSON   = HT_STAT_DIR + "/last-updated.json"
+    REPORTER_DIR   = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
+    ALL_JSON       = REPORTER_DIR + "/all.json"
+    LAST_UP_JSON   = REPORTER_DIR + "/last-updated.json"
+    
+    HT_STAT_DIR    = Inshaker::HTDOCS_DIR + "/db/stats"
+    VISITS_JSON    = HT_STAT_DIR + "/visits.json"
+    CITIES_JSON    = HT_STAT_DIR + "/cities.json"
+    BROWSERS_JSON  = HT_STAT_DIR + "/browsers.json"
+    BROWSERSP_JSON = HT_STAT_DIR + "/browsers-plain.json"
+    ERRORS_JSON    = HT_STAT_DIR + "/errors.json"
     
     HT_RATING_JSON = Inshaker::HTDOCS_DIR + "/db/ratings/rating.json"
   end
   
   def initialize
     @all = []
+    @auth = OAuth2Helper.new
+    @auth.temp = Config::TMP
   end
   
   def process_options
@@ -51,6 +57,10 @@ class Analytics
       opts.on("-q", "--quite", "сообщать только об ошибках") do |v|
         quite!
       end
+      
+      opts.on("-f", "--force", "не кешировать ответы") do |v|
+        @options[:force] = true
+      end
     end.parse!
   end
   
@@ -59,40 +69,20 @@ class Analytics
     
     Cocktail.init
     
-    if login
+    if get_credentials
       get_last_updated
       update
       set_last_updated
       flush_all_json
+    else
+      error "не удалось получить доступ"
     end
   end
   
-  def login
-    
-    # try to use recent login token
-    
-    if File.exists?(Config::TOKEN_FILE) && Time.now - File.mtime(Config::TOKEN_FILE) < HOUR
-      @token = File.read(Config::TOKEN_FILE)
-      return true
-    end
-    
-    # based on http://gdatatips.blogspot.com/2008/08/perform-clientlogin-using-curl.html
-    io = IO.popen(["curl", Config::AUTH_URI, "-s", "-d", "accountType=GOOGLE", "-d" "Email=#{Config::LOGIN}", "-d", "Passwd=#{Config::PASSWORD}", "-d", "service=analytics", "-d", "source=inshaker"])
-    r = io.read
-    io.close
-    
-    
-    token = /^Auth=(\S{100,})/.match(r)
-    unless token
-      error "не удалось залогиниться"
-      return false
-    end
-    
-    @token = token[1]
-    File.write(Config::TOKEN_FILE, @token)
-    
-    return true
+  def get_credentials
+    @token = @auth.get_access_token
   end
+  
   
   def get_last_updated
     @last_updated = Time.at(JSON.parse(File.read(Config::LAST_UP_JSON))[0])
@@ -106,17 +96,22 @@ class Analytics
     File.exists?(fn) && Time.now - File.mtime(fn) < sec
   end
   
-  def get url
+  def get_authed url, query
+    Curl.get(url, query, {"Authorization" => "Bearer #{@token}"})
+  end
+  
+  def get_cached url, query
+    if @options[:force]
+      return get_authed(url, query)
+    end
     
-    hash = Digest::MD5.hexdigest(url)
+    hash = Digest::MD5.hexdigest("#{url}?#{query.to_a.flatten.join("&")}")
     cache = "#{Config::TMP}/#{hash}.url.txt"
     if newer?(cache, 15 * MINUTE)
       return File.read(cache)
     end
     
-    io = IO.popen(["curl", url, "-s", "--header", "Authorization: GoogleLogin Auth=#{@token}"])
-    r = io.read
-    io.close
+    r = get_authed(url, query)
     
     File.write(cache, r)
     
@@ -124,20 +119,31 @@ class Analytics
   end
   
   def report query, start, endd, results=100
-    get Config::DATA_URI +
-        "?ids=ga:#{Config::PROFILE_ID}" +
-        "&#{query}&start-date=#{start.strftime("%Y-%m-%d")}&end-date=#{endd.strftime("%Y-%m-%d")}&max-results=#{results}&prettyprint=true&alt=json"
+    rep =
+    {
+      "ids" => "ga:#{Config::PROFILE_ID}",
+      "start-date" => start.strftime("%Y-%m-%d"),
+      "end-date" => endd.strftime("%Y-%m-%d"),
+      "max-results" => results
+    }
+    get_cached(Config::DATA_URI, query.merge(rep))
   end
   
   def get_pageviews start, endd
-    json = report("dimensions=ga:pagePath&metrics=ga:pageviews,ga:uniquePageviews&filters=ga:pagePath=~^/cocktails?/&sort=-ga:pageviews", start, endd, 10000)
+    query =
+    {
+      "dimensions" => "ga:pagePath",
+      "metrics" => "ga:pageviews,ga:uniquePageviews",
+      "filters" => "ga:pagePath=~^/cocktails?/",
+      "sort" => "-ga:pageviews"
+    }
+    json = report(query, start, endd, 10000)
     data = JSON.parse(json)
-    
     parse_pageviews(data)
   end
   
   def cocktails_pageviews name, start, endd
-    dst = Config::HT_STAT_DIR + "/" + name + ".json"
+    dst = Config::REPORTER_DIR + "/" + name + ".json"
     
     # do not re-calculate stats older than four days
     if @last_updated - endd > 4 * DAY and File.exists?(dst)
@@ -165,20 +171,108 @@ class Analytics
   def update
     update_ratings
     update_reporter
+    update_stats
+  end
+  
+  def update_stats
+    endd = Time.now - DAY * 2
+    
+    
+    r = report({"dimensions" => "ga:date", "metrics" => "ga:visits,ga:pageviews"}, endd - DAY * 90, endd, 90)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[0] = Date.strptime(e[0], "%Y%m%d").to_time.to_i
+      e[1] = e[1].to_i
+      e[2] = e[2].to_i
+    end
+    stats.push({"total" => {"visits" => total["ga:visits"].to_i, "pageviews" => total["ga:pageviews"].to_i}})
+    
+    File.write(Config::VISITS_JSON, JSON.stringify(stats))
+    
+    
+    
+    r = report({"dimensions" => "ga:region", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 90, endd, 50)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[1] = e[1].to_i
+    end
+    stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
+    
+    File.write(Config::CITIES_JSON, JSON.stringify(stats))
+    
+    
+    
+    r = report({"dimensions" => "ga:browser,ga:browserVersion", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 30, endd, 1000)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[2] = e[2].to_i
+    end
+    stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
+    
+    File.write(Config::BROWSERS_JSON, JSON.stringify(stats))
+    
+    
+    
+    r = report({"dimensions" => "ga:browser", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 30, endd, 100)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[1] = e[1].to_i
+    end
+    stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
+    
+    File.write(Config::BROWSERSP_JSON, JSON.stringify(stats))
+    
+    
+    r = report({"dimensions" => "ga:eventLabel,ga:browser,ga:browserVersion", "metrics" => "ga:uniqueEvents,ga:eventValue", "filters" => "ga:eventAction==error", "sort" => "-ga:uniqueEvents"}, endd - DAY * 30, endd, 500)
+    # puts r
+    r = JSON.parse(r)
+    
+    total = r["totalsForAllResults"]
+    
+    stats = r["rows"]
+    stats.each do |e|
+      e[3] = e[3].to_i
+      e[4] = e[4].to_i
+    end
+    stats.push({"total" => {"uniqueEvents" => total["ga:uniqueEvents"].to_i}})
+    
+    File.write(Config::ERRORS_JSON, JSON.stringify(stats))
+    
   end
   
   def update_ratings
     days = 10
     
-    start = Time.new
-    start -= (4 + days) * DAY
+    now = Time.new
+    now -= (3 + days) * DAY
     
     seen = {}
     week = []
     
     days.times do
       
-      endd = start + DAY
+      start = now - DAY * 30
+      endd = now
       views_stats, no, no = get_pageviews(start, endd)
       
       uniques = {}
@@ -199,7 +293,7 @@ class Analytics
       
       week << positions
       
-      start += DAY
+      now += DAY
     end
     
     
@@ -215,7 +309,7 @@ class Analytics
     File.write(Config::HT_RATING_JSON, JSON.stringify(res))
   end
   
-  def get_month_borders year, month
+  def calc_month_borders year, month
     start = Time.new(year, month, 1)
     # jump to the next month (maybe year too)
     endd = start + 33 * DAY
@@ -247,7 +341,7 @@ class Analytics
       
       say "обновляю период «#{name}»"
       indent do
-        cocktails_pageviews(name, *get_month_borders(cur.year, cur.month))
+        cocktails_pageviews(name, *calc_month_borders(cur.year, cur.month))
       end
       @all << name
     end
@@ -294,25 +388,11 @@ class Analytics
       h[k] = Hash::new(0)
     end
     
-    data["feed"]["entry"].each do |entry|
+    data["rows"].each do |entry|
       
-      v = entry["dxp$dimension"][0]
-      unless v["name"] = "ga:pagePath"
-        error "ga:pagePath переехал"
-      end
-      path = v["value"]
-      
-      v = entry["dxp$metric"][0]
-      unless v["name"] = "ga:pageviews"
-        error "ga:pageviews переехал"
-      end
-      pv = v["value"].to_i
-      
-      v = entry["dxp$metric"][1]
-      unless v["name"] = "ga:uniquePageviews"
-        error "ga:uniquePageviews переехал"
-      end
-      upv = v["value"].to_i
+      path = entry[0]
+      pv = entry[1].to_i
+      upv = entry[2].to_i
       
       if upv > pv
         error "уникальных больше чем просмотров"
@@ -321,7 +401,7 @@ class Analytics
       
       m = /\/cocktails?\/+([^\/.]+)/.match(path)
       unless m
-        error "не могу найти название коктейля в пути «#{path}»"
+        warning "не могу найти название коктейля в пути «#{path}»"
         next
       end
       path = m[1]
@@ -349,8 +429,8 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    total_pageviews = data["feed"]["dxp$aggregates"]["dxp$metric"][0]["value"].to_i
-    total_uniques = data["feed"]["dxp$aggregates"]["dxp$metric"][1]["value"].to_i
+    total_pageviews = data["totalsForAllResults"]["ga:pageviews"].to_i
+    total_uniques = data["totalsForAllResults"]["ga:uniquePageviews"].to_i
     
     if total_pageviews < total_uniques
       error "всего просмотров меньше чем всего уникальных просмотров"

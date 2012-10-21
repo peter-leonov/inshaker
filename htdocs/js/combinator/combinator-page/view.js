@@ -33,7 +33,6 @@ Me.prototype =
 		completer.bind({main: nodes.queryInput, list: nodes.ingredientComplete})
 		completer.addEventListener('accept', function (e) { me.queryAccepted(e.add, e.remove) }, false)
 		completer.addEventListener('changed', function (e) { me.queryChanged(e.add, e.remove) }, false)
-		nodes.queryInput.focus()
 		
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); window.setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
@@ -52,19 +51,24 @@ Me.prototype =
 		var lh = this.locationHash = new LocationHash().bind()
 		lh.addEventListener('change', function (e) { me.locationHashUpdated() }, false)
 		
-		var t = new Throttler(function (y) { me.controller.windowScrolled(y) }, 100, 500)
+		var t = (function (y) { me.controller.windowScrolled(y) }).throttle(100, 500)
 		
 		function onscroll (e)
 		{
 			var y = window.pageYOffset
 			
-			t.call(y)
+			t(y)
 			ff.windowScrolled(y)
 		}
 		
 		window.addEventListener('scroll', onscroll, false)
 		
 		return this
+	},
+	
+	setFocus: function ()
+	{
+		this.nodes.queryInput.focus()
 	},
 	
 	plusButtonClicked: function ()
@@ -174,7 +178,7 @@ Me.prototype =
 		this.sortbySelect.renderSelected(selected)
 	},
 	
-	renderCocktails: function (cocktails, total, stats)
+	renderCocktails: function (cocktails, total)
 	{
 		var nodes = this.nodes,
 			output = nodes.output
@@ -212,18 +216,6 @@ Me.prototype =
 		
 		nodes.totalCocktails.firstChild.nodeValue = total + ' ' + total.plural('коктейль', 'коктейля', 'коктейлей')
 		nodes.sortedWord.firstChild.nodeValue = total.plural('отсортирован', 'отсортированы', 'отсортированы')
-		
-		var statsNode = nodes.stats
-		statsNode.empty()
-		
-		var top = stats.top, parts = []
-		for (var i = 0, il = top.length; i < il; i++)
-		{
-			var item = top[i]
-			parts[i] = item.ingredient.name + ' (' + item.rating + ')'
-		}
-		
-		statsNode.appendChild(T('Чаще ' + parts.length.plural('встречается', 'встречаются', 'встречаются') + ' ' + parts.join(', ') + '.'))
 	},
 	
 	renderInitialBlock: function (groups)
@@ -231,18 +223,9 @@ Me.prototype =
 		this.inli.setIngredients(groups)
 	},
 	
-	renderExamples: function (examples)
+	renderExample: function (example)
 	{
-		var nodes = this.nodes,
-			s = nodes.hintSingle,
-			d = nodes.hintDouble
-		
-		s.firstChild.nodeValue = examples[0][0]
-		s.href = '#q=' + encodeURIComponent(examples[0])
-		
-		var pair = examples[1].join(' + ')
-		d.firstChild.nodeValue = pair
-		d.href = '#q=' + encodeURIComponent(pair)
+		this.nodes.queryInput.placeholder = example.join(' + ')
 	},
 	
 	renderSuggestions: function (suggestions)

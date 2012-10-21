@@ -95,11 +95,11 @@ var myProto =
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
-		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
+		var t = (function(){ me.onscroll() }).throttle(100, 500)
 		
 		function onscroll (e)
 		{
-			t.call()
+			t()
 			ff.windowScrolled(window.pageYOffset)
 		}
 		

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# invoke with curl http://host:$PORT/
+
+PORT="34543"
+LOGFILE="update-callback.log"
+
+cd "$(dirname "$0")"
+
+while nc -l $PORT <<EOF > /dev/null
+HTTP/1.0 200 OK
+Content-Type: text/plain
+
+updating $(hostname)
+EOF
+do
+	./update-callback-job 1>>$LOGFILE 2>&1
+done

@@ -79,7 +79,6 @@ function onready ()
 		output: $('#output'),
 		mainFunFix: $('#the-main-menu'),
 		cocktailList: $('#output .result-block .ingrediented-cocktail-list'),
-		stats: $('#output .result-block .stats'),
 		queryInput: $('#search-box .query'),
 		searchForm: $('#search-box form'),
 		plusButton: $('#search-box .plus'),
@@ -90,9 +89,6 @@ function onready ()
 		suggestions: $('#output .empty-block .suggestions'),
 		suggestionsList: $('#output .empty-block .suggestions .list'),
 		ingredientsList: $('#output .initial-block .ingredients-list'),
-		helpLine: $('#output .help-line'),
-		hintSingle: $('#output .help-line .hint.single'),
-		hintDouble: $('#output .help-line .hint.double'),
 		
 		sortbySelect:
 		{

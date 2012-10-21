@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="about-page" lang="ru">
+<head>
+	<link rel="stylesheet" href="/t/light/light.css"/>
+	<link rel="stylesheet" href="/t/branding/shakeit/branding.css"/>
+	<link rel="stylesheet" href="/t/about/about.css" media="screen"/>
+	<title>Inshaker — Коктейльный сайт</title>
+	<style>
+	#partner-list { display: none; }
+	</style>
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div id="common-main-wrapper">
+
+<div id="b-cr-about" class="common-box column-r"><div class="common-content">
+	<div class="common-title">
+		<h2>Быстросвязь</h2>
+	</div>
+	<form action="/act/send.cgi" method="post" target="ajax" id='feedback_form'>
+		<label>Меня зовут		<input type="text" name="name" value=""></label>
+		<label>Мой телефон или email	<input type="text" name="address" value=""></label>
+		<label>Я из компании	<input type="text" name="company" value=""></label>
+		<label>Мое предложение или вопрос		<textarea name="text" rows="11" cols="40"></textarea></label>
+		<p><button class="bt-send rounded tiny" type="submit"><b>Отправить</b></button></p>
+	</form>
+	<div id="form_success" class="hidden">
+		<i></i>
+		Сообщение отправлено
+		<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
+	</div>
+</div></div>
+
+<div class="common-box" id="main-column"><div class="common-content" id="body_wrapper">
+	<div class="common-title">
+		<h1>Коктейльный сайт Inshaker</h1>
+		<a class="hrefs" href="/">← на главную</a>
+	</div>
+	<div class="b-content">
+			<div class="top-menu"><div class="b">
+				<p class="border-links" id="menu">
+					<a href="#view-about"><b>О проекте</b></a>
+					<a href="#view-stat"><b>Cтатистика</b></a>
+					<!-- <a href="#view-partners"><b>Партнеры</b></a> -->
+					<a href="#view-team"><b>Команда</b></a>
+				</p>
+			</div></div>
+			<div class="view-about content" class="hidden">
+				<div class="section">
+				<p>На коктейльном сайте можно увидеть, но нельзя попробовать. Понимая это, Inshaker размещает только интересную, качественную и проверенную информацию. Все коктейли готовятся руками сильнейших профессионалов, только из натуральных ингредиентов и проходят обязательную дегустацию коктейльными друзьями. После этого, фотографии коктейлей попадают в коктейльную фотообработку, а рецепты в коктейльную корректировку. И наконец, полностью проверенные коктейли размещаются на сайте.</p>
+				</div>
+				
+				<div class="section">
+				<h3>Какие коктейли размещаются на сайте?</h3>
+				
+				<h4>Коктейльная классика</h4>
+				<p>Коктейли, повлиявшие на мировой ход развития коктейльной культуры.</p>
+				
+				<h4>Популярные коктейли и их вариации</h4>
+				<p>Мохито, Космополитен, Водка мартини, Б-52, Глинтвейн и многие другие рецепты коктейлей, чья популярность проверена дестяками лет.</p>
+				
+				<h4>Специальные серии</h4>
+				<p>Совместно с сильнейшими миксологами и представителями мировых брендов, команда коктейльного сайта разрабатывает трендовые серии коктейлей на основе новейших ингредиентов или интересов фанатов коктейльной культуры.</p>
+				
+				<h4>Авторские хиты из лучших коктейльных баров</h4>
+				<p>Ред Дресс, Зеленая Фея, Исаев Мартини… Невероятно, но факт: практически в каждом правильном коктейльном баре есть самый популярный коктейль. Любимый коктейль постоянных гостей бара, чья локальная популярность зачастую превышает популярность классических коктейлей.</p>
+				</div>
+				
+				<div class="section">
+				<h3>Какие бары размещаются в гиде по лучшим коктейльным барам России?</h3>
+				<p>1. Гид по барам Inshaker.ru — первый независимый и бесплатный гид по лучшим коктейльным барам России.</p>
+				<p>2. Все заведения проходят проверку гидом по лучшим коктейльным барам, а информация о заведениях обновляется ежемесячно.</p>
+				<p>3. Наиважнейший критерий выбора коктейльных баров — присутствие профессионального бар-менеджера. С точки зрения гида, атмосфера, интерьер и качество сервиса вторичны по отношению к уровню развития коктейльной культуры в баре, за которую такой специалист несет ответственность. Для добавления бара на сайт необходимо соответствие бар-менеджера одному из приведенных ниже критериев.</p>
+				</div>
+				
+				
+				<div class="section">
+				<h3>Критерии оценки бар-менеджеров</h3>
+				<h4>Миксолог</h4>
+				<p>Бармен, который придумал один или несколько коктейлей, ставших популярными далеко за пределами своего бара. А именно, коктейль(и) найден не менее, чем в десяти разных заведениях, не аффилированных с автором коктейля и расположенных в разных городах, или стал интересен потребителям на столько, что количество запросов на его рецепт в интернете за последний год превысило 3000 раз.</p>
+				
+				<h4>Трендмэйкер</h4>
+				<p>Основоположник новой барной тенденции. Под трендом команда Inshaker подразумевает инновацию, набирающую популярность среди барменов в геометрической прогрессии. На момент признания таковой не менее тридцати разных баров, не аффилированных с изобретателем и расположенных в разных городах, приняли ее на вооружение.</p>
+				
+				<h4>Эксперт</h4>
+				<p>Признанный специалист в одной области алкогольной индустрии и барного рынка. Подтверждением статуса эксперта становятся многократные приглашения (от не менее, чем 5 крупных алкогольных компаний) прочитать лекции или провести мастер-классы по выбранной экспертом специализации в разных городах.</p>
+				
+				<h4>Победитель</h4>
+				<p>Бармен, одержавший абсолютную победу на значимых мировых коктейльных конкурсах:<br/>
+				— Bacardi Legacy<br/>
+				— Diageo World Class<br/>
+				— Bols Around the World
+				</p>
+				
+				<h4>Международный бренд-амбассадор</h4>
+				<p>Бармен, заслуживший свой карьерный статус и продвигающий коктейльную культуру на позиции международного бренд-амбассадора не менее 5-и лет.</p>
+				
+				<h4>Профессионал</h4>
+				<p>Бар-менеджер, чье высокое мастерство, навыки и профессонализм получили признание у команды коктейльного сайта <a href="/">Inshaker.ru</a>.</p>
+				</div>
+			</div>
+			<div class="view-stat content">
+				<div class="stat square-list" id="rolling_stats">
+					<a class="prev"></a>
+					<a class="next"></a>
+					<div class="viewport">
+						<div class="surface">
+							<div class="point">
+								<h3>Посетители и просмотры за последние 90 дней</h3>
+								<div id="stat_visits"></div>
+							</div>
+							<div class="point">
+								<h3>Посетители по регионам за последние 90 дней</h3>
+								<div id="stat_cities"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="note">Статистика по данным <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a></div>
+			</div>
+			<div class="view-partners content">
+				<ul id="partner-list"></ul>
+			</div>
+			<div class="view-team content">
+				<ul class="team">
+					<li class="mate" style="background-image: url(mv.jpg)">
+						<span class="name">Михаил Вихман</span>
+					</li>
+					<li class="mate" style="background-image: url(pl.jpg)">
+						<span class="name">Пётр Леонов</span>
+					</li>
+					<li class="mate" style="background-image: url(vv.jpg)">
+						<span class="name">Виола Костина</span>
+					</li>
+					<li class="mate" style="background-image: url(md.jpg)">
+						<span class="name">Максим Дергилёв</span>
+					</li>
+					<li class="mate ed" style="background-image: url(ed.jpg)">
+						<span class="name">Евгений Дробышев</span>
+					</li>
+					<li class="mate" style="background-image: url(ag.jpg)">
+						<span class="name">Алексей Грабов</span>
+					</li>
+				</ul>
+				
+				<h2 class="profession">Активно помогают</h2>
+				<ul>
+					<li>Виктория рощина</li>
+					<li>Олег Медведев</li>
+					<li>Оксана Тарасова</li>
+					<li>Петр Соловей</li>
+					<li>Мария Е.</li>
+					<li>Олеся Наумова</li>
+					<li>Константин Л.Р.</li>
+				</ul>
+				
+				<h2 class="profession">Фотокорреспонденты</h2>
+				<ul>
+					<li>Александр Ивасенко</li>
+					<li>Антон Уханов</li>
+					<li>Борис Суходольский</li>
+					<li>Вадим Вуд,</li>
+					<li>Виталий Пеньков</li>
+					<li>Григорий Сухарев</li>
+					<li>Константин Фальк</li>
+					<li>Кристен Пелу</li>
+					<li>Наиль Зиятдинов</li>
+					<li>Никита Хнюнин</li>
+					<li>Николай Малышев</li>
+					<li>Роман Шмидт,</li>
+					<li>Сергей Никифоров</li>
+				</ul>
+				
+				<h2 class="profession">Видеоконтент</h2>
+				<ul>
+					<li>Elutine Production</li>
+				</ul>
+				
+				<h2 class="profession">В проекте принимали участие</h2>
+				<ul>
+					<li>Александр Журавлев</li>
+					<li>Василий Михайлеченко</li>
+					<li>Елена Пискарева</li>
+					<li>Сергей Ларин</li>
+					<li>Павел Корнилов</li>
+					<li>Юлия Гордеева</li>
+					<li>Анна Батурина</li>
+					<li>и другие хорошие люди</li>
+				</ul>
+			</div>
+	</div>
+</div></div>
+
+</div id="common-main-wrapper">
+
+<!--# include virtual="/inc/common-footer.html" -->
+<script src="/js/common/oops.js"></script>
+<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+<script src="/js/common/common.js"></script>
+<script src="/js/entities/Mark.js"></script>
+<script src="/js/about/about.js"></script>
+</body>
+</html>

@@ -60,16 +60,18 @@ class Launcher
   def job
     Dir.chdir("#{Config::ROOT_DIR}/barman/")
     
+    $stdout.reopen("job.log", "a")
+    
     reset
     
     pid = fork { exec @job[0] }
     Process.wait pid
     
     if $?.exitstatus == 0
-      puts %Q{Job succeeded.}
+      warn %Q{Job “#{@job[1]}” succeeded.}
       commit
     else
-      puts %Q{Job failed!}
+      warn %Q{Job “#{@job[1]}” failed!}
       reset
     end
   end
@@ -77,8 +79,8 @@ class Launcher
   def commit
     puts %Q{Commiting…}
     
-    system(%Q{git status; git diff})
-    system(%Q{git pull && git add . && git commit -am "job done: #{@job_name}" --author="#{@user_author}" && git push})
+    # system(%Q{git status; git diff})
+    system(%Q{git add . && git commit -am "job done: #{@job_name}" --author="#{@user_author}" && git push})
   end
   
   def reset

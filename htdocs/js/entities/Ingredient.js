@@ -4,8 +4,20 @@ eval(NodesShortcut.include())
 
 function Me (data)
 {
-	for (var k in data)
-		this[k] = data[k]
+	this.name    = data.name
+	this.screen  = data.screen
+	this.names   = data.names
+	
+	this.path    = data.path
+	
+	this.group   = data.group
+	this.tags    = data.tags || []
+	
+	this.brand   = data.brand
+	this.mark    = data.mark
+	
+	this.unit    = data.unit
+	this.volumes = data.volumes
 }
 
 Me.prototype =
@@ -150,7 +162,10 @@ Me.staticMethods =
 	
 	getByTagPrepare: function ()
 	{
-		this.index.byTag = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+		var index = DB.hashOfAryIndexByAryKey(this.db, 'tags')
+		index['Любой ингредиент'] = this.db.slice()
+		
+		this.index.byTag = index
 	},
 	
 	getByTag: function (name)
@@ -185,22 +200,6 @@ Me.staticMethods =
 			res[i] = this.getByGroup(groups[i])
 		
 		return DB.disjunction(res)
-	},
-	
-	calculateEachIngredientUsage: function ()
-	{
-		if (this.eachIngredientUsageCalculated)
-			return
-		this.eachIngredientUsageCalculated = true
-		
-		var cocktails = Cocktail.getCocktailsByIngredientNameHash(),
-			db = this.db
-		
-		for (var i = 0, il = db.length; i < il; i++)
-		{
-			var ingred = db[i]
-			ingred.cocktails = cocktails[ingred.name] || []
-		}
 	},
 	
 	getByMarkPrepare: function ()

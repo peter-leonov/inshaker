@@ -31,8 +31,6 @@ function onready ()
 	widget.setCocktailsPerPage(40)
 	widget.guessState()
 	
-	Calculator.init()
-	
 	var nodes =
 	{
 		page: document.documentElement,
