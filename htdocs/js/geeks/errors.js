@@ -271,6 +271,21 @@ var Me =
 			group.ul = ul
 		}
 	},
+	
+	getLinesFile: function (file, line)
+	{
+		var source = this.index[file].fileByLines
+		
+		var linesBefore = source.slice(line - 4, line),
+			linesAfter = source.slice(line+1, line + 5),
+			lineError = source[line]
+		
+		return [
+			linesBefore.join('\n'),
+			lineError,
+			linesAfter.join('\n')
+		]
+	},
 }
 
 Me.className = 'TopErrors'
