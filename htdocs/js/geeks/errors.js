@@ -24,6 +24,39 @@ var Me =
 		return count
 	},
 	
+	parseFile: function (file)
+	{
+		if (this.index[file])
+			return
+		
+		var content = Request.get('/ssioff' + file, null, null, true).responseText
+		
+		var parser = /<!--\#\s*include\s+virtual="(.*?)"\s*-->/g
+		
+		var currentIndex = this.index[file] = {includes:[]}
+		
+		var include
+		while (include = parser.exec(content))
+		{
+			var includeFile = include[1]
+			
+			if (includeFile.indexOf('/') == -1)
+				includeFile = file.substring(0, file.lastIndexOf("/")+1) + includeFile
+			
+			currentIndex.includes.push(
+				{
+					include: includeFile,
+					line: this.getOccurrencesCount(content.substr(0, include.index), '\n')
+				})
+			
+			this.parseFile(includeFile)
+		}
+		
+		currentIndex.content = content
+		var fileByLines = currentIndex.fileByLines = content.split('\n')
+		currentIndex.lines = fileByLines.length
+	},
+	
 	indexedErrors: function ()
 	{
 		var data = this.data,
