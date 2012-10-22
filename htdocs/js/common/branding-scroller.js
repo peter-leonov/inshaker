@@ -10,11 +10,10 @@ Me.prototype =
 		
 		this.fixedStartY = nodes.holder.offsetTop
 		
-		var me = this
-		document.addEventListener('inshaker-box-changed', function (e) { me.onBoxChanged() }, false)
-		
 		this.onscrollListener = function (e) { me.onscroll() }
 		
+		var me = this
+		document.addEventListener('inshaker-box-changed', function (e) { me.onBoxChanged() }, false)
 		this.onBoxChanged()
 	},
 	
