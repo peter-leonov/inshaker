@@ -75,7 +75,7 @@ Me.prototype =
 	{
 		for (var i = 0, ci = rows.length; i < ci; i++)
 		{
-			var item = Nc('li', 'row lines-1 ' + (i%2 ? 'even' : 'odd'))
+			var item = Nc('li', 'row lines-1 ' + (i % 2 ? 'even' : 'odd'))
 			
 			item.appendChild(this.renderCocktail(rows[i].cocktail, rows[i].ingredients, rows[i].recipe))
 			this.nodes.list.appendChild(item)
@@ -111,13 +111,13 @@ Me.prototype =
 	getRecipe: function (recipe)
 	{
 		var rec = []
-		for (var i=0, ci = recipe.length; i < ci; i++)
+		for (var i = 0, ci = recipe.length; i < ci; i++)
 		{
 			var name = recipe[i].name
-
+			
 			if (recipe[i].brand)
 				name += ' ' + recipe[i].brand
-
+			
 			if (recipe[i].dose)
 				name += ' ' + recipe[i].dose[0] + ' ' + recipe[i].dose[1]
 			
@@ -205,7 +205,7 @@ Me.prototype =
 			showRows = this.showRows,
 			rowsEx = []
 		
-		for (var i = showRows, rl = rows.length, cl = showRows+30; i < rl && i < cl; i++)
+		for (var i = showRows, rl = rows.length, cl = showRows + 30; i < rl && i < cl; i++)
 		{
 			rows[i].recipe = this.getRecipe(rows[i].cocktail)
 			rowsEx.push(rows[i])
