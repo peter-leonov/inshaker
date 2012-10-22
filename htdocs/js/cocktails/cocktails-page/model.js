@@ -10,11 +10,6 @@ function Me ()
 
 Me.prototype =
 {
-	getRandomCocktail: function ()
-	{
-		return Cocktail.getAll().random(1)[0]
-	},
-	
 	getBySimilarName: function (name)
 	{
 		if (this.getBySimilarNameCache[name])
@@ -59,7 +54,8 @@ Me.prototype =
 	
 	setRandomCocktail: function ()
 	{
-		this.view.renderRandomCocktail(this.getRandomCocktail())
+		var cocktail = Cocktail.getAll().random(1)[0]
+		this.view.renderRandomCocktail(cocktail)
 	},
 	
 	setState: function (state)
@@ -69,37 +65,58 @@ Me.prototype =
 		
 		this.state = state
 		
-		var res = this.cocktails = this.getCocktailsByState(state)
-		
-		this.countCocktails = res.length
-		this.showedCocktails = 0
-		
-		if (!this.countCocktails)
-		{
-			this.view.notHaveCocktails()
-			return
-		}
+		this.result = this.getIterator(this.getCocktailsByState(state))
 		
 		this.addNewCocktails()
 	},
 	
 	addMoreCocktails: function ()
 	{
-		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.cocktailsPerPage)
-		
-		this.view.renderMoreCocktails(cocktails, this.countCocktails - this.showedCocktails)
+		var view = this.view
+		function render (cocktails, left)
+		{
+			view.renderMoreCocktails(cocktails, left)
+		}
+		this.result(this.cocktailsPerPage, render)
 	},
 	
 	addNewCocktails: function ()
 	{
-		var cocktails = this.cocktails.slice(this.showedCocktails, this.showedCocktails+=this.cocktailsPerPage)
-		
-		this.view.renderNewCocktails(cocktails, this.countCocktails - this.showedCocktails)
+		var view = this.view
+		function render (cocktails, left)
+		{
+			if (cocktails.length == 0)
+			{
+				view.notHaveCocktails()
+				return
+			}
+			
+			view.renderNewCocktails(cocktails, left)
+		}
+		this.result(this.cocktailsPerPage, render)
 	},
 	
 	setCocktailsPerPage: function (count)
 	{
 		this.cocktailsPerPage = count
+	},
+	
+	getIterator: function (all)
+	{
+		var start = 0
+		function iterator (count, callback)
+		{
+			var items = all.slice(start, start + count)
+			start += count
+			
+			function call (e)
+			{
+				callback(items, all.length - start)
+			}
+			window.setTimeout(call, 0)
+		}
+		
+		return iterator
 	}
 }
 
