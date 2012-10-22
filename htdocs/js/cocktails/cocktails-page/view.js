@@ -24,15 +24,6 @@ Me.prototype =
 		
 		nodes.searchForm.addEventListener('submit', function(e) { e.preventDefault() }, false);
 		nodes.searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
-		
-		var nameSearchHandler = function (e) {
-			var text = this.innerText
-			nodes.searchByNameInput.value = text
-			view.changeHashName(text)
-		}
-		
-		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
-		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
 	},
 	
 	hashUpdated: function ()
@@ -58,9 +49,7 @@ Me.prototype =
 	
 	renderRandomCocktail: function (cocktail)
 	{
-		var nodes = this.nodes
-		nodes.searchExampleName.innerText = cocktail.name
-		nodes.searchExampleNameEng.innerText = cocktail.name_eng
+		this.nodes.searchByNameInput.placeholder = cocktail.name + '   —   ' + cocktail.name_eng
 	},
 	
 	renderMoreCocktails: function (cocktails, left)

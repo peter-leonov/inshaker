@@ -39,9 +39,6 @@
 #results_display .surface { padding: 0px; min-height: 520px; }
 html.opera-10 #results_display .surface,
 html.opera-11-0 #results_display .surface { width: 30000px; }
-#search_tips { height: 14px }
-#search_tips a:hover {text-decoration:none;}
-#search_tips a {border-bottom:1px dashed;}
 
 <!--# include virtual="/t/ingredient-popup.css" -->
 

@@ -20,10 +20,7 @@ function onready ()
 		more: $('#more .button'),
 		
 		searchForm: $('#search_by_name .search-form'),
-		searchByNameInput: $('#search_by_name input'),
-		
-		searchExampleName: $('#search_example_name'),
-		searchExampleNameEng: $('#search_example_name_eng'),
+		searchByNameInput: $('#search_by_name input')
 	}
 	
 	var widget = new CocktailsPage(nodes)
