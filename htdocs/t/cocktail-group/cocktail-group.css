@@ -58,16 +58,16 @@ html.loading #cocktail-list { display: none; }
 .ingrediented-cocktail-list .row.even { float: right; width: 451px; margin: 0; border: none; }
 
 .ingrediented-cocktail-list .row.odd .image,
-.ingrediented-cocktail-list .row.even .image { width: 60px; height: 113px; }
+.ingrediented-cocktail-list .row.even .image { width: 85px; }
 
 .ingrediented-cocktail-list .row.odd .cocktail-name,
 .ingrediented-cocktail-list .row.even .cocktail-name { font-size: 18px; }
 
 .ingrediented-cocktail-list .row.odd .cocktail-recipe,
-.ingrediented-cocktail-list .row.even .cocktail-recipe { padding: 3px 0px 0px 1px; font-size: 10px; }
+.ingrediented-cocktail-list .row.even .cocktail-recipe { padding: 7px 0px 0px 1px; font-size: 12px; }
 
 .ingrediented-cocktail-list .row.odd .body,
-.ingrediented-cocktail-list .row.even .body{ width: 341px; left: 80px; top: 40px; }
+.ingrediented-cocktail-list .row.even .body{ width: 325px; left: 100px; top: 40px; }
 
 .ingrediented-cocktail-list .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
 .ingrediented-cocktail-list .cocktail-preview .link { text-shadow: #fff 1px 1px 2px, #fff 1px -1px 2px, #fff -1px -1px 2px, #fff -1px 1px 2px; }
