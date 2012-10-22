@@ -57,23 +57,10 @@ Me.prototype =
 		var nodes = this.nodes,
 			container = nodes.cocktailsList
 		
-		function bindDragData (node, data)
-		{
-			function onDragStart (e)
-			{
-				e.dataTransfer.setData('text', data)
-			}
-			node.addEventListener('dragstart', onDragStart, false)
-		}
-		
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var item = Nc('li', 'item'),
-				cocktail = cocktails[i].getPreviewNodeCropped()
-			
-			bindDragData(cocktail, cocktail.name)
-			item.appendChild(cocktail)
-			
+			var item = Nc('li', 'item')
+			item.appendChild(cocktails[i].getPreviewNodeCropped())
 			container.appendChild(item)
 		}
 		
