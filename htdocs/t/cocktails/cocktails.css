@@ -35,6 +35,7 @@
 #results_display .empty-result { display: none; position: absolute; z-index: 1; left: 170px; top: 130px; width: 300px; text-align: center; font-size: 15px; line-height: 22px; }
 #results_display .empty-result a { text-decoration: underline; }
 #results_display.empty .empty-result { display: block; }
+#results_display.empty #more { display: none; }
 #results_display .viewport {width:585px;margin-left:11px; }
 #results_display .point{width:585px;}
 #results_display .surface { padding: 0px; min-height: 520px; }
