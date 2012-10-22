@@ -98,7 +98,9 @@ Me.prototype =
 		}
 		
 		this.showMoreButton()
-		this.renameMoreButton(Math.min(count, this.cocktailsPerPage))
+		
+		count = Math.min(count, this.cocktailsPerPage)
+		this.nodes.more.innerHTML = 'еще ' + count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')
 	},
 	
 	showMoreButton: function ()
@@ -113,7 +115,7 @@ Me.prototype =
 	
 	renameMoreButton: function (count)
 	{
-		this.nodes.more.innerText = 'еще ' + count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')
+		
 	}
 
 }
