@@ -11,7 +11,7 @@ Me.prototype =
 		this.fixedStartY = nodes.holder.offsetTop
 		
 		var me = this
-		document.addEventListener('inshaker-box-changed', function(e){ me.onBoxChanged() }, false)
+		document.addEventListener('inshaker-box-changed', function (e) { me.onBoxChanged() }, false)
 		
 		this.onscrollListener = function (e) { me.onscroll() }
 		
@@ -26,7 +26,7 @@ Me.prototype =
 		if (onscrollBint)
 			window.addEventListener('scroll', this.onscrollListener, false)
 		else
-			window.removeEventListener('scroll', this.onscrollListener, false)			
+			window.removeEventListener('scroll', this.onscrollListener, false)
 		
 		this.onscrollBint = onscrollBint
 	},
