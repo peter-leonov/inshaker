@@ -32,7 +32,8 @@
 
 .b-content {width:100%;}
 #results_display {}
-#results_display .empty-result { display: none; position: absolute; left: 200px; top: 158px; width: 230px; text-align: center; font-size: 15px; }
+#results_display .empty-result { display: none; position: absolute; z-index: 1; left: 170px; top: 130px; width: 300px; text-align: center; font-size: 15px; line-height: 22px; }
+#results_display .empty-result a { text-decoration: underline; }
 #results_display.empty .empty-result { display: block; }
 #results_display .viewport {width:585px;margin-left:11px; }
 #results_display .point{width:585px;}
