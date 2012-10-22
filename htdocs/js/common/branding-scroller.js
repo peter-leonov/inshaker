@@ -32,9 +32,9 @@ Me.prototype =
 	
 	onBoxChanged: function ()
 	{
-		var nodes = this.nodes,
-			fixedEndY = nodes.page.scrollHeight
+		var nodes = this.nodes
 		
+		var fixedEndY = nodes.page.scrollHeight
 		if (fixedEndY == this.fixedEndY)
 			return
 		
