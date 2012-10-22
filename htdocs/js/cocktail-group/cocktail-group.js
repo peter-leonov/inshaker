@@ -95,7 +95,7 @@ function onready ()
 		groupName: $('#group-name'),
 		list: $('#cocktail-list'),
 		cocktailItems: $$('#cocktail-list li'),
-		moreCocktails: $('#more-cocktails')
+		moreCocktails: $('#more .button')
 	}
 	
 	var widget = new CocktailGroup()
