@@ -9,20 +9,10 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 	
-	<!--# include virtual="/inc/calculator.html" -->
-	
 	<div class="common-box column-main"><div class="common-content">
 		<div class="common-title">
 			<h1 class="common-name">Коктейли</h1>
 			<a id="spotlighted"><i></i></a>
-		</div>
-		<div class="search-tabs-wrapper">
-			<ul id="search_tabs">
-				<li class="tab by-name" data-tab-name="byName">По названию</li>
-				<li class="tab by-letter" data-tab-name="byLetter">По алфавиту</li>
-				<li class="tab top-20" data-tab-name="top20">ТОП-20</li>
-			</ul>
-			<a id="all_list" href="/combinator.html"><i></i>Поиск по сочетанию ингредиентов</a>
 		</div>
 		
 		<div id="panels">
@@ -30,35 +20,18 @@
 				<div id="search_by_name" class="search-control">
 					<form class="search-form"><input type="text" name="text"/></form>
 				</div>
-				<div id="search_by_letter" class="search-control">
-					<a id="letters_all" class="selected-button">все</a>
-					<div id="alphabetical-ru"></div>
-				</div>
-				<div id="search_top-20" class="search-control">
-					ТОП-20 самых популярных коктейлей в России
-				</div>
-			</div>
-			
-			<div id="search_tips">
-				<div class="search-tip" id="search_tip_name">Например, <a id="search_example_name"></a> или <a id="search_example_name_eng"></a></div>
 			</div>
 			
 			<div class="b-content" id="b_content">
-				<div id="results_display" class="programica-rolling-images empty">
-					<div class="empty-result-by-name">Коктейлей с таким названием сейчас нет.</div>
+				<div id="results_display">
+					<div class="empty-result">Коктейлей с таким названием сейчас нет. <a href="mailto:combinator-recipe@inshaker.ru">Возможно, ты знаешь рецепт?</a></div>
 					<div class="viewport">
 						<div class="surface" id="surface">
+							<ul class="cocktails" id="cocktails"></ul>
 						</div>
 					</div>
-					<div class="pager">
-						<div class="p-list" id="p-list"></div>
-					</div>
+					<div id="more"><a class="button">еще коктейлей</a></div>
 				</div>
-			</div>
-			
-			<div class="pager-big">
-				<a class="prev"></a>
-				<a class="next"></a>
 			</div>
 		</div>
 	</div></div>
@@ -66,14 +39,14 @@
 <!--# include virtual="/inc/common-footer.html" -->
 <!--# include virtual="/inc/ingredient-popup.html" -->
 <script src="/js/common/oops.js"></script>
-<!--[if lte IE 7]><script src="/liby/core/fixes/trident3.js"></script><![endif]-->
-<!--[if IE 8]><script src="/liby/core/fixes/trident4.js"></script><![endif]-->
-<script src="/js/common/common-0.3.js"></script>
-<script src="/js/common/cocktails.js"></script>
+<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+<script src="/js/common/common.js"></script>
+<script src="/js/cocktails/cocktails-common.js"></script>
 <script src="/js/entities/Cocktail.js"></script>
 <script src="/js/entities/Ingredient.js"></script>
 <script src="/js/entities/Good.js"></script>
-<script src="/js/cocktails/cocktails.js"></script>
+<script src="/js/cocktails/cocktails-page/cocktails-page.js"></script>
 <!--# include virtual="/inc/cocktails-footer.html" -->
 </body>
 </html>

@@ -6,19 +6,17 @@ function Me () {}
 
 Me.prototype =
 {
-	encode: encodeURIComponent,
+	encode: function (str)
+	{
+		return (''+str).replace('%', '%25').replace(' ', '%20')
+	},
 	decode: decodeURIComponent,
 	
-	bind: function (win)
+	bind: function ()
 	{
-		if (!win)
-			win = window
-		
-		this.window = win
-		
 		var me = this
 		function onhashchange (e) { me.onhashchange() }
-		win.addEventListener('hashchange', onhashchange, false)
+		window.addEventListener('hashchange', onhashchange, false)
 		
 		return this
 	},
@@ -34,15 +32,28 @@ Me.prototype =
 		this.dispatchEventData('change')
 	},
 	
+	eraseEmptyHash: function()
+	{
+		window.history.replaceState(null, null, window.location.pathname + window.location.search)
+	},
+	
 	set: function (v)
 	{
 		this.manual = true
-		this.window.location.href = '#' + this.encode(v)
+		
+		if (v === '')
+		{
+			window.location.href = '#-'
+			this.eraseEmptyHash()
+			return
+		}
+		
+		window.location.href = '#' + this.encode(v)
 	},
 	
 	get: function ()
 	{
-		var href = this.window.location.href
+		var href = window.location.href
 		var start = href.indexOf('#')
 		if (start < 0)
 			return ''
@@ -59,6 +70,9 @@ Me.prototype =
 		}
 	}
 }
+
+if (!window.history.pushState)
+	Me.prototype.eraseEmptyHash = function () {}
 
 Me.mixIn(EventDriven)
 

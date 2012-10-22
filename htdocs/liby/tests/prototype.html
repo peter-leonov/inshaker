@@ -5,12 +5,38 @@
 	<title>Tests for some of the core prototype extensions</title>
 	<script src="tests.common.js"></script>
 	
-	<script src="../src/core/prototype.js"></script>
+	<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+	
+	<script src="../src/modules/prototype.js"></script>
 </head>
 <body>
+<p></p><p></p><p></p><p></p>
 <script>
 Tests.test(function (t)
 {
+	function arrayFrom (list)
+	{
+		var ary = []
+		for (var i = 0, il = list.length; i < il; i++)
+			ary[i] = list[i]
+		return ary
+	}
+	
+	t.test('Array#from()', function (t)
+	{
+		var a = [1,2,3,4,'5']
+		t.like(a, Array.from(a), 'plain array')
+		
+		var a = document.getElementsByTagName('p'),
+			b = Array.from(a)
+		t.eq(a.length, b.length, 'nodes list length')
+		t.eq(a[2], b[2], 'nodes list [2]')
+		
+		t.like(Array.from({0: 1, 1: 2, 2: 3, length: 3}), [1, 2, 3], 'object with length property')
+	})
+	
+	
 	t.test('String#capitalize()', function (t)
 	{
 		t.eq(''.capitalize(), '', 'empty string')
@@ -20,6 +46,42 @@ Tests.test(function (t)
 		t.eq('Abc'.capitalize(), 'Abc', 'Abc')
 		t.eq('эюя'.capitalize(), 'Эюя', 'эюя')
 		t.eq('Эюя'.capitalize(), 'Эюя', 'Эюя')
+	})
+	
+	t.test('String#trim()', function (t)
+	{
+		t.eq('  abcd  '.trim(), 'abcd', 'abcd.trim()')
+	})
+	
+	
+	t.test('Function#bind() simple case', function (t)
+	{
+		var f = function () { return this }
+		
+		t.ok(f.bind, 'f.bind')
+		
+		var o = {}
+		t.eq(f(), window, 'f()')
+		t.eq(f.bind(o)(), o, 'f.bind(o)()')
+	})
+	
+	t.test('Function#bind() hard case', function (t)
+	{
+		var f = function () { return [this].concat(arrayFrom(arguments)) }
+		
+		var o = {}
+		t.like(f.call(o), [o], 'f()')
+		t.like(f.bind(o, 1, 2, 3)(4), [o, 1, 2, 3, 4], 'f.bind(o, 1, 2, 3)(4)')
+	})
+	
+	
+	t.test('Object.*', function (t)
+	{
+		t.type(Object.extend, 'function', 'Object.extend')
+		t.type(Object.keys, 'function', 'Object.keys')
+		t.type(Object.keysCount, 'function', 'Object.keysCount')
+		t.type(Object.values, 'function', 'Object.values')
+		t.type(Object.isEmpty, 'function', 'Object.isEmpty')
 	})
 })
 </script>

@@ -1,55 +1,61 @@
 ;(function(){
 
-var myName = 'Cookie', day = 864e5, doc = document,
+var encode = escape, decode = unescape
 	// encode = encodeURIComponent, decode = decodeURIComponent
-	encode = escape, decode = unescape
 
-if (!self[myName]) self[myName] =
+var Me =
 {
-	days: 30,
-	path: '/',
-	set: function (name, value, days, path)
+	set: function (name, value, expires, path)
 	{
-		var d = new Date()
-		days = days || this.days
-		path = path || this.path
+		var cookie = encode(name) + '=' + encode(value)
 		
-		d.setTime(d.getTime() + day * days)
-		doc.cookie = encode(name) + '=' + encode(this.stringify(value)) + '; expires=' + d.toGMTString() + '; path=' + path
+		if (expires !== undefined)
+			cookie += '; expires=' + new Date(expires).toGMTString()
+		
+		if (path !== undefined)
+			cookie += '; path=' + path
+		
+		document.cookie = cookie
+		
 		return value
 	},
 	
 	get: function (name)
 	{
-		var value, cookie = new RegExp('(^|;)\\s*' + encode(name) + '=([^;\\s]*)').exec(doc.cookie)
-		return cookie ? this.parse(decode(cookie[2])) : null
+		var value, cookie = new RegExp('(^|;)\\s*' + encode(name) + '=([^;\\s]*)').exec(document.cookie)
+		return cookie ? decode(cookie[2]) : null
 	},
 	
-	erase: function (name)
+	erase: function (name, path)
 	{
-		var cookie = this.get(name) || true
-		this.set(name, '', -1)
-		return cookie
+		this.set(name, '', 0, path)
 	},
 	
 	keys: function ()
 	{
 		var cookie, keys = [], rex = new RegExp('(?:^|;)\\s*([^=]+)=[^;\\s]*', 'g')
-		while (cookie = rex.exec(doc.cookie))
+		while (cookie = rex.exec(document.cookie))
 			keys.push(cookie[1])
 		
 		return keys
 	},
 	
-	clear: function ()
+	toHash: function ()
 	{
+		var hash = {}
+		
 		var keys = this.keys()
-		for (var i = 0; i < keys.length; i++)
-			this.erase(keys[i])
-	},
-	
-	stringify: function (value) { return value },
-	parse: function (value) { return value }
+		for (var i = 0, il = keys.length; i < il; i++)
+		{
+			var k = keys[i]
+			hash[k] = this.get(k)
+		}
+		
+		return hash
+	}
 }
+
+Me.className = 'Cookie'
+self[Me.className] = Me
 
 })();

@@ -2,11 +2,11 @@
 <html id="academy-page" class="loading" lang="ru">
 <head>
 	<link rel="stylesheet" href="/t/light/light.css"/>
-	<!--# include virtual="/t/branding/2011.01-academy/branding-head.html" -->
+	<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/branding/$date_local/branding-head.html" -->
 	<link rel="stylesheet" href="/t/academy/academy.css"/>
 	<title>Коктейльная академия — Inshaker</title>
 </head>
-<body> 
+<body>
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
@@ -22,12 +22,12 @@
 
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
-<!--[if lte IE 7]><script src="/liby/core/fixes/trident3.js"></script><![endif]-->
-<!--[if IE 8]><script src="/liby/core/fixes/trident4.js"></script><![endif]-->
-<script src="/js/common/common-0.3.js"></script>
+<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+<script src="/js/common/common.js"></script>
 <script src="/js/entities/Cocktail.js"></script>
 <script src="/js/entities/Video.js"></script>
-<script src="/js/academy/academy.js"></script>
-<!--# include virtual="/t/branding/2011.01-academy/branding-footer.html" -->
+<script src="/js/academy/academy-page/academy-page.js"></script>
+<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/branding/$date_local/branding-footer.html" -->
 </body>
 </html>

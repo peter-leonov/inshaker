@@ -5,9 +5,8 @@
 	<title>benchmarks for Boxer</title>
 	<script src="tests.common.js"></script>
 	
-	<!--[if lte IE 7]><script src="../../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../../src/core/fixes/trident4.js"></script><![endif]-->
-	<script src="../../src/core/prototype.js"></script>
+	<!--[if lte IE 7]><script src="../../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../../src/fixes/trident4.js"></script><![endif]-->
 	<script src="../../src/modules/element.js"></script>
 	<script src="../../src/modules/boxer.js"></script>
 	
@@ -23,7 +22,7 @@
 <script>
 Tests.test(function (t)
 {
-	function $ (id) { return document.getElementById(id) }
+	function $id (id) { return document.getElementById(id) }
 	
 	function bakeNodes (count)
 	{
@@ -43,8 +42,8 @@ Tests.test(function (t)
 		t.time('whole')
 		
 		var set = bakeNodes(count)
-		$('holder').empty()
-		$('holder').appendChild(set.root)
+		$id('holder').empty()
+		$id('holder').appendChild(set.root)
 		
 		t.time('nodesToBoxes()')
 		Boxer.nodesToBoxes(set.nodes, set.root)
@@ -52,8 +51,8 @@ Tests.test(function (t)
 		
 		
 		var set = bakeNodes(count)
-		$('holder').empty()
-		$('holder').appendChild(set.root)
+		$id('holder').empty()
+		$id('holder').appendChild(set.root)
 		
 		t.time('nodesToBoxes() with width and height')
 		Boxer.nodesToBoxes(set.nodes, set.root, 100, 100)
@@ -61,8 +60,8 @@ Tests.test(function (t)
 		
 		
 		var set = bakeNodes(count)
-		$('holder').empty()
-		$('holder').appendChild(set.root)
+		$id('holder').empty()
+		$id('holder').appendChild(set.root)
 		
 		t.time('sameNodesToBoxes()')
 		Boxer.sameNodesToBoxes(set.nodes, set.root)

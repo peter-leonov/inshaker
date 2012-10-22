@@ -22,13 +22,8 @@ Object.extend(Me.prototype, myProto)
 
 })();
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
-
 <!--# include virtual="/liby/modules/user-agent.js" -->
-<!--# include virtual="/liby/modules/regexp-escape.js" -->
 
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="model.js" -->
@@ -41,43 +36,43 @@ Object.extend(Me.prototype, myProto)
 function onready ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	document.documentElement.removeClassName('loading')
+	document.documentElement.classList.remove('loading')
 	
 	IngredientPopup.bootstrap()
 	
-	Ingredient.calculateEachIngredientUsage()
+	Ingredient.calculateTheCocktailsPropertyForEachIngredient()
 	
 	var nodes = 
 	{
-		title : $$('head title')[0],
+		title : $('head title'),
 		
-		mainBox : $$('#common-main-wrapper .main-box')[0],
+		mainBox : $('#common-main-wrapper .main-box'),
 		
 		ingredients : {
-			box : $$('#common-main-wrapper .ingredients-box')[0],
-			barName : $$('#common-main-wrapper .ingredients-box .section-head h2 .bar-name')[0],
-			list : $$('#common-main-wrapper .ingredients-box .ingredients-list')[0],
-			empty : $$('#common-main-wrapper .ingredients-box .empty-notice')[0]
+			box : $('#common-main-wrapper .ingredients-box'),
+			barName : $('#common-main-wrapper .ingredients-box .section-head h2 .bar-name'),
+			list : $('#common-main-wrapper .ingredients-box .ingredients-list'),
+			empty : $('#common-main-wrapper .ingredients-box .empty-notice')
 		},
 		
 		cocktails : {
-			box : $$('#common-main-wrapper .cocktails-box')[0],
+			box : $('#common-main-wrapper .cocktails-box'),
 			title : {
-				h2 : $$('#common-main-wrapper .cocktails-box .section-head h2')[0],
-				plural : $$('#common-main-wrapper .cocktails-box .section-head h2 .plural')[0]
+				h2 : $('#common-main-wrapper .cocktails-box .section-head h2'),
+				plural : $('#common-main-wrapper .cocktails-box .section-head h2 .plural')
 			},
-			list : $$('#common-main-wrapper .cocktails-box .cocktails-wrapper .cocktails-list')[0],
-			empty : $$('#common-main-wrapper .cocktails-box .empty-notice')[0]
+			list : $('#common-main-wrapper .cocktails-box .cocktails-wrapper .cocktails-list'),
+			empty : $('#common-main-wrapper .cocktails-box .empty-notice')
 		},
 		
-		failBox : $$('#common-main-wrapper .fail-box')[0],
-		mybarLinkBox : $$('#common-main-wrapper .mybar-link-box')[0]
+		failBox : $('#common-main-wrapper .fail-box'),
+		mybarLinkBox : $('#common-main-wrapper .mybar-link-box')
 	}
 	
 	var widget = new Foreign()
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
 
 })();

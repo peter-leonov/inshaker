@@ -15,7 +15,7 @@ Cocktail.prototype.getPreviewNodeExt = function (have)
 	var tick = Nc('div', 'tick')
 	li.appendChild(tick)
 	
-	li.addClassName(have ? 'have' : 'no-have')
+	li.classList.add(have ? 'have' : 'no-have')
 	
 	return li
 }
@@ -82,24 +82,24 @@ var myProto =
 		{
 			me.nodes.share.popups.email.main.hide()
 			me.hideEmailShare.binded = false
-			setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
+			window.setTimeout(function(){ me.unbindShareListeners(me.hideEmailShare) }, 0)
 		}
 		
 		this.hideWebShare = function()
 		{
 			me.nodes.share.popups.web.main.hide()
 			me.hideWebShare.binded = false
-			setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
+			window.setTimeout(function(){ me.unbindShareListeners(me.hideWebShare) }, 0)
 		}
 		
 		nodes.recommends.tagsList.addEventListener('click', function(e){ me.handleTagsClick(e) }, false)
 		nodes.recommends.wrapper.addEventListener('click', function(e){ me.changeIngredientFromRecommends(e) }, false)
 		
-		var t = new Throttler(function(){ me.onscroll() }, 100, 500)
+		var t = (function(){ me.onscroll() }).throttle(100, 500)
 		
 		function onscroll (e)
 		{
-			t.call()
+			t()
 			ff.windowScrolled(window.pageYOffset)
 		}
 		
@@ -117,14 +117,14 @@ var myProto =
 		li.appendChild(node)
 		li.appendChild(control)
 		
-		li.addClassName(have ? 'have' : 'no-have')
+		li.classList.add(have ? 'have' : 'no-have')
 		
 		return li
 	},
 	
 	showView : function()
 	{
-		document.documentElement.removeClassName('loading')		
+		document.documentElement.classList.remove('loading')
 	},
 	
 	focusSearchInput : function()
@@ -139,7 +139,7 @@ var myProto =
 		{
 			this.nodes.ingredients.title.advice.hide()
 		}
-		setTimeout(function()
+		window.setTimeout(function()
 		{
 			node.selectionStart = 0
 			node.selectionEnd = node.value.length
@@ -166,7 +166,7 @@ var myProto =
 	
 	onscroll : function()
 	{
-		if(document.documentElement.hasClassName('loading'))
+		if(document.documentElement.classList.contains('loading'))
 		{
 			return
 		}
@@ -398,15 +398,15 @@ var myProto =
 		
 		if(cl == 0)
 		{
-			this.nodes.cocktails.box.addClassName('zero-cocktails')
-			this.nodes.share.box.addClassName('zero-cocktails')
-			this.nodes.mainFunFix.addClassName('zero-cocktails')
+			this.nodes.cocktails.box.classList.add('zero-cocktails')
+			this.nodes.share.box.classList.add('zero-cocktails')
+			this.nodes.mainFunFix.classList.add('zero-cocktails')
 		}
 		else
 		{
-			this.nodes.cocktails.box.removeClassName('zero-cocktails')
-			this.nodes.share.box.removeClassName('zero-cocktails')
-			this.nodes.mainFunFix.removeClassName('zero-cocktails')
+			this.nodes.cocktails.box.classList.remove('zero-cocktails')
+			this.nodes.share.box.classList.remove('zero-cocktails')
+			this.nodes.mainFunFix.classList.remove('zero-cocktails')
 		}
 		
 		// if(cl == 0)
@@ -557,12 +557,21 @@ var myProto =
 		this.nodes.recommends.recommendsList.appendChild(df)
 	},
 	
+	renderMenuNums : function(ingredients, cocktails, recommends)
+	{
+		var nodes = this.nodes.mainLinksSup
+		
+		nodes.ingredients.firstChild.nodeValue = ingredients.length || ''
+		nodes.cocktails.firstChild.nodeValue = cocktails.length || ''
+		nodes.recommendations.firstChild.nodeValue = recommends.length || ''
+	},
+	
 	getRecommendDt : function(group, cocktailsHash, ingredientsHash)
 	{
 		var dt = Nc('dt', 'advice')
 		var text = this.getTextForRecommend(group, cocktailsHash, ingredientsHash)
 		dt.appendChild(text)
-		setTimeout(function(){ dt.style.height = dt.offsetHeight - 27 + 'px' }, 0)
+		window.setTimeout(function(){ dt.style.height = dt.offsetHeight - 27 + 'px' }, 0)
 		return dt
 	},
 	
@@ -848,7 +857,7 @@ var myProto =
 	tryAddIngredient : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('no-have'))
+		if(node.classList.contains('control') && node.ingredient && node.parentNode.classList.contains('no-have'))
 		{
 			this.maybeHaveBoxScrollTop = this.nodes.maybeHave.box.offsetPosition().top - window.pageYOffset
 			this.controller.addIngredientToBar(node.ingredient)
@@ -859,7 +868,7 @@ var myProto =
 	{
 		var node = e.target
 		
-		if(node.hasClassName('control') && node.ingredient && node.parentNode.hasClassName('have'))
+		if(node.classList.contains('control') && node.ingredient && node.parentNode.classList.contains('have'))
 		{
 			this.controller.removeIngredientFromBar(node.ingredient)
 		}	
@@ -878,7 +887,7 @@ var myProto =
 	handleVisibleCocktailClick : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.cocktail)
+		if(node.classList.contains('control') && node.cocktail)
 		{
 			this.controller.hideCocktail(node.cocktail)
 		}
@@ -887,7 +896,7 @@ var myProto =
 	handleHiddenCocktailClick : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('control') && node.cocktail)
+		if(node.classList.contains('control') && node.cocktail)
 		{
 			this.controller.showCocktail(node.cocktail)
 		}		
@@ -911,13 +920,13 @@ var myProto =
 					node = item.node
 				if(cocktailsHash[item.cocktail.name])
 				{
-					node.addClassName('have')
-					node.removeClassName('no-have')
+					node.classList.add('have')
+					node.classList.remove('no-have')
 				}
 				else
 				{
-					node.addClassName('no-have')
-					node.removeClassName('have')				
+					node.classList.add('no-have')
+					node.classList.remove('have')
 				}
 			}
 			
@@ -927,13 +936,13 @@ var myProto =
 					node = item.node
 				if(ingredientsHash[item.ingredient.name])
 				{
-					node.addClassName('have')
-					node.removeClassName('no-have')
+					node.classList.add('have')
+					node.classList.remove('no-have')
 				}
 				else
 				{
-					node.addClassName('no-have')
-					node.removeClassName('have')				
+					node.classList.add('no-have')
+					node.classList.remove('have')
 				}
 			}
 		}
@@ -944,13 +953,13 @@ var myProto =
 				node = recommend.node
 			if(ingredientsHash[recommend.ingredient.name])
 			{
-				node.addClassName('have')
-				node.removeClassName('no-have')
+				node.classList.add('have')
+				node.classList.remove('no-have')
 			}
 			else
 			{
-				node.addClassName('no-have')
-				node.removeClassName('have')				
+				node.classList.add('no-have')
+				node.classList.remove('have')
 			}
 		}
 		
@@ -999,12 +1008,12 @@ var myProto =
 	{
 		var node = e.target
 		
-		if(!node.hasClassName('control') || !node.ingredient)
+		if(!node.classList.contains('control') || !node.ingredient)
 		{
 			return
 		}
 		
-		if(node.parentNode.hasClassName('no-have'))
+		if(node.parentNode.classList.contains('no-have'))
 		{
 			this.controller.addIngredientFromRecommends(node.ingredient)
 		}
@@ -1074,14 +1083,14 @@ var myProto =
 	{
 		var me = this
 		this.nodes.share.popups.email.main.show()
-		setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
+		window.setTimeout(function(){ me.bindShareListeners(me.hideEmailShare) }, 0)
 	},
 	
 	webShareShow : function(id)
 	{
 		var me = this
 		this.nodes.share.popups.web.main.show()
-		setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
+		window.setTimeout(function(){ me.bindShareListeners(me.hideWebShare) }, 0)
 	},
 	
 	bindShareListeners : function(callback)
@@ -1115,11 +1124,11 @@ var myProto =
 	sendEmail : function(e)
 	{
 		var node = e.target
-		if(node.hasClassName('sending'))
+		if(node.classList.contains('sending'))
 		{
 			return
 		}
-		node.addClassName('sending')
+		node.classList.add('sending')
 		var nodes = this.nodes.share.popups.email,
 			address = nodes.address.value,
 			mailer = nodes.mailer.value,

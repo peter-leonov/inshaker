@@ -18,7 +18,7 @@ function lazyLoadPreview ()
 	{
 		this.lazyBackgroundImage = null
 		this.style.backgroundImage = url
-		this.removeClassName('lazy')
+		this.classList.remove('lazy')
 	}
 }
 
@@ -29,7 +29,7 @@ function lazyLoadPromo ()
 	{
 		this.lazySrc = null
 		this.src = url
-		this.removeClassName('lazy')
+		this.classList.remove('lazy')
 	}
 }
 

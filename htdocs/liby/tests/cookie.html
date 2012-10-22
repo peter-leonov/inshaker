@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width"/>
+	<title>tests for Cookie</title>
+	<script src="tests.common.js"></script>
+	
+	<script src="../src/modules/cookie.js"></script>
+</head>
+<body>
+<script>
+Tests.test(function (t)
+{
+	t.test('single name', function (t)
+	{
+		Cookie.erase('single-name')
+		Cookie.set('single-name')
+		t.eq(Cookie.get('single-name'), 'undefined', '"undefined"')
+	})
+	
+	t.test('name and value', function (t)
+	{
+		Cookie.erase('name-value')
+		Cookie.set('name-value', 'asdf123')
+		t.eq(Cookie.get('name-value'), 'asdf123', '"asdf123"')
+	})
+	
+	t.test('erase', function (t)
+	{
+		Cookie.set('plain', 'value')
+		t.eq(Cookie.get('plain'), 'value', 'plain')
+		Cookie.erase('plain')
+		t.eq(Cookie.get('plain'), null, 'plain')
+		
+		Cookie.set('expires', 'value', +new Date() + 3000)
+		Cookie.erase('expires')
+		t.eq(Cookie.get('expires'), null, 'expires')
+		
+		Cookie.set('path', 'value', +new Date() + 3000, '/')
+		Cookie.erase('path')
+		t.eq(Cookie.get('path'), 'value', 'path')
+		Cookie.erase('path', '/')
+		t.eq(Cookie.get('path'), null, 'path')
+	})
+	
+	t.test('expires', function (t)
+	{
+		Cookie.erase('expires-one')
+		Cookie.set('expires-one', 'blabla', +new Date() + 3000)
+		t.eq(Cookie.get('expires-one'), 'blabla', 'just after')
+		
+		t.async(function (t) { t.eq(Cookie.get('expires-one'), 'blabla', '"1s later"')  }, 1000)
+		t.async(function (t) { t.eq(Cookie.get('expires-one'), null, '5s late (expired)'); t.done() }, 5000)
+		
+		t.wait(10000)
+	})
+})
+</script>
+</body>
+</html>

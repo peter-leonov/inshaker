@@ -14,10 +14,10 @@ function Me (keys, host, language)
 
 Me.prototype =
 {
-	load: function (name, version)
+	load: function (name, version, opts)
 	{
 		if (name)
-			this.apis.push({name: name, version: version})
+			this.apis.push({name: name, version: version, opts: opts || {}})
 		
 		var me = this
 		
@@ -33,17 +33,17 @@ Me.prototype =
 				if (!window.google)
 					return
 				
-				clearInterval(timer)
+				window.clearInterval(timer)
 				me.apiLoaderLoaded()
 			}
 			
-			var timer = setInterval(wait, 250)
+			var timer = window.setInterval(wait, 250)
 			
 			this.state = 'loading'
 		}
 		
 		if (this.state == 'ready')
-			setTimeout(function () { me.fireAll() }, 1)
+			window.setTimeout(function () { me.fireAll() }, 1)
 			
 		return this
 	},
@@ -72,12 +72,10 @@ Me.prototype =
 			me.apiLoaded(api)
 		}
 		
-		var opts =
-		{
-			nocss: true,
-			language: this.language,
-			callback: callback
-		}
+		var opts = api.opts
+		opts.nocss = true
+		opts.language = this.language
+		opts.callback = callback
 		
 		window.google.load(api.name, api.version, opts)
 	},

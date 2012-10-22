@@ -2,6 +2,8 @@
 
 var myName = 'Popup'
 
+var KEY_ESC = 27
+
 function Me ()
 {
 	this.nodes = {}
@@ -13,19 +15,25 @@ Me.prototype =
 {
 	visible: false,
 	
-	onhide: function () { this.hide() },
-	
 	bind: function (nodes)
 	{
 		this.nodes = nodes
 		
 		var me = this
-		this.listeners.click = function (e) { me.onhide() }
-		this.listeners.key = function (e) { if (e.keyCode == 27){ me.hide(); e.preventDefault() }}
+		this.listeners.click = function (e) { me.hideFromUI() }
+		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ e.preventDefault(); me.hideFromUI() }}
 		
 		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
 		
 		return this
+	},
+	
+	hideFromUI: function ()
+	{
+		if (!this.dispatchEvent({type: 'ui-hide'}))
+			return false
+		
+		this.hide()
 	},
 	
 	hide: function ()
@@ -33,11 +41,15 @@ Me.prototype =
 		if (!this.visible)
 			return
 		
+		if (!this.dispatchEvent({type: 'hide'}))
+			return false
+		
+		
 		this.nodes.root.hide()
 		this.visible = false
 		
 		var me = this
-		setTimeout(function () { me.unbindListeners() }, 0)
+		window.setTimeout(function () { me.unbindListeners() }, 0)
 	},
 	
 	show: function ()
@@ -45,13 +57,16 @@ Me.prototype =
 		if (this.visible)
 			return
 		
+		if (!this.dispatchEvent({type: 'show'}))
+			return false
+		
 		var nodes = this.nodes
 		nodes.root.show()
 		nodes.front.style.top = window.pageYOffset + 'px'
 		this.visible = true
 		
 		var me = this
-		setTimeout(function () { me.bindListeners() }, 0)
+		window.setTimeout(function () { me.bindListeners() }, 0)
 	},
 	
 	bindListeners: function ()
@@ -67,7 +82,8 @@ Me.prototype =
 	}
 }
 
-// Me.mixIn(EventDriven)
+Me.mixIn(EventDriven)
+
 Me.className = myName
 self[myName] = Me
 

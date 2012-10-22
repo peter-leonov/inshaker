@@ -57,7 +57,7 @@ var myProto =
 		if(cocktails.length == 0)
 		{
 			nodes.empty.show()
-			nodes.title.h2.addClassName('zero-cocktails')
+			nodes.title.h2.classList.add('zero-cocktails')
 			nodes.list.hide()
 			return
 		}
@@ -76,7 +76,7 @@ var myProto =
 	
 	renderLinkToMyBar : function(newbie)
 	{
-		this.nodes.mybarLinkBox.addClassName(newbie ? 'newbie' : 'not-newbie')
+		this.nodes.mybarLinkBox.classList.add(newbie ? 'newbie' : 'not-newbie')
 	},
 	
 	renderIfFail : function(newbie)

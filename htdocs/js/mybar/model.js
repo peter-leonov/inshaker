@@ -141,7 +141,7 @@ var myProto =
 		this.view.renderBarName(this.barName)
 		this.view.renderIngredients(this.ingredients, this.ingredientsShowType)
 		this.view.focusSearchInput()
-		setTimeout(function () { me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
+		window.setTimeout(function () { me.view.renderCocktails(me.visibleCocktails, me.hiddenCocktails, me.cocktailsShowType) }, 0)
 		this.view.renderShareLinks(this.id)
 		this.view.renderTags(this.tags, this.currentTag, this.tagsAmount)
 		this.view.prepareRecommends()
@@ -156,6 +156,7 @@ var myProto =
 		if (!this.recommends.length)
 			this.recommends = this.getRecommendsFromPackages(this.settingsData.packages)
 		this.mustHaveRecommends = this.computeMustHave(this.mustHave)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	sortByUsage: function (a, b)
@@ -216,7 +217,7 @@ var myProto =
 		if (Object.isEmpty(ingredients.hash))
 			return cocktails
 		
-		var needCocktails = Cocktail.getByIngredientNames(Object.toArray(ingredients.hash), {count: 1})
+		var needCocktails = Cocktail.getByAnyOfIngredientsNames(Object.toArray(ingredients.hash))
 		
 		ck:
 		for ( var i = 0, il = needCocktails.length; i < il; i++ )
@@ -468,7 +469,7 @@ var myProto =
 		
 		var groups = []
 		
-		Ingredient.calculateEachIngredientUsage()
+		Ingredient.calculateTheCocktailsPropertyForEachIngredient()
 		
 		this.exclusions = {}
 		var me = this
@@ -736,6 +737,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	removeIngredientFromRecommends: function (ingredient)
@@ -746,6 +748,7 @@ var myProto =
 		this.saveStorage()
 		this.cocktails = this.computeCocktails(this.ingredients)
 		this.view.updateRecommends(this.cocktails.hash, this.ingredients.hash)
+		this.view.renderMenuNums(this.ingredients, this.cocktails, this.allRecommends)
 	},
 	
 	selectIngredient: function (ingredient)

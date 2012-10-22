@@ -38,7 +38,8 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #recipe-list .instructions .instruction a { color: #000; }
 #recipe-list .instructions .instruction a:hover { color: #ec118f; text-decoration: none; }
 
-#advice-list .advice { margin-top: 30px; }
+#advice-list .advice { margin: 30px 0 75px; }
+#advice-list:last-child .advice { margin: 30px 0 0; }
 #advice-list .advice .name { font-size: 24px; line-height: 24px; margin-bottom: 20px; }
 #advice-list .advice .image { display: block; margin: 10px auto; }
 
@@ -67,7 +68,7 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 .common-box .serviette { margin-left: -19px; margin-right: -19px; }
 
 .ingredient-preview { width: 100px; height: 100px; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; position: relative; }
-.ingredient-preview .name { display: block; margin-top: 105px; text-align: center; }
+.ingredient-preview .name { display: block; margin-top: 105px; text-align: center; word-wrap: break-word; hyphens: auto; -moz-hyphens: auto; -webkit-hyphens: auto; }
 html.msie-8 .ingredient-preview:before,
 html.opera-10-0 .ingredient-preview:before,
 html.opera-10-1 .ingredient-preview:before { position: absolute; left: 0; top: 0; display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
@@ -114,6 +115,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #links-box .block .button { vertical-align: middle; color: inherit; text-decoration: none; }
 #links-box .block .button .name { display: inline-block; height: 12px; vertical-align: middle; }
 
+#party-list-box { display: none; }
+
 .transparent-borders .top,
 .transparent-borders .right,
 .transparent-borders .bottom,
@@ -128,8 +131,6 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 .transparent-borders .left { left: 0; top: 0; bottom: 0; }
 
 #print-logo-hd { display: none; } 
-
-.hidden { visibility: hidden; position: absolute; top: -20000px !important; }
 
 } /* @media screen */
 
@@ -149,14 +150,13 @@ body,
 #illustration-box .content,
 #advice-list,
 #links-box,
-#recipes-box .common-title,
-.hidden { display: none; }
+#recipes-box .common-title { display: none; }
 
 #party-name { font-size: 25px; width: 730px; }
 
 #recipes-box { margin-bottom: 50px; overflow: hidden; }
 
-#recipe-list .recipe { margin: 30px 0; }
+#recipe-list .recipe { margin: 30px 0; overflow: hidden; }
 #recipe-list .recipe .name { font-size: 20px; }
 #recipe-list .recipe .image-box { float: left; width: 290px; text-align: center; margin-top: 20px; }
 #recipe-list .ingredients { display: none; }
@@ -218,6 +218,4 @@ body,
 
 <!--# include virtual="/t/parties/party-list.css" -->
 
-<!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
-

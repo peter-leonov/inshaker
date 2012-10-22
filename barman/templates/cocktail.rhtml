@@ -2,7 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
-	<link rel="stylesheet" href="/t/cocktail/cocktail.css" media="screen"/>
+	<link rel="stylesheet" href="/t/cocktail/cocktail.css"/>
 	<title>Рецепт коктейля «<%= @name %>» — Коктейли — Inshaker</title>
 	
 	<meta property="og:title" content="Коктейль «<%= @name %>»" />
@@ -15,8 +15,6 @@
 <body>
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
-
-<!--# include virtual="/inc/calculator.html" -->
 
 <div class="common-box column-main"><div class="common-content hrecipe">
 	<div class="common-title">
@@ -96,9 +94,10 @@
 		<div class="what-need">
 			<dl id="ingredients_list">
 				<dt>Необходимые ингредиенты</dt>
-				<% parts do |name, amount, unit| %>
+				<% parts do |name, amount, unit, mark| %>
 				<dd class="ingredient">
-					<a class="name" data-ingredient-name="<%= name %>"><%= name %></a>
+					<a class="name" data-ingredient-name="<%= name %>"><%= name %></a><% if mark %>
+					<span class="brand"><%= mark %></span><% end %>
 					<strong><span class="amount"><%= amount %></span> <span class="type"><%= unit %></span></strong>
 				</dd>
 				<% end %>
@@ -134,7 +133,7 @@
 	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
 		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
 		<dd>
-			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+			<div class="programica-rolling-images" id="related">
 				<a class="prev"></a>
 				<a class="next"></a>
 				<div class="viewport" id="rel_viewport">
@@ -144,6 +143,8 @@
 		</dd>
 	</dl></div>
 </div>
+
+<img id="print-logo-hd" src="/t/print/logo-hd.png">
 
 </div id="common-main-wrapper">
 

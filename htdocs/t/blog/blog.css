@@ -1,5 +1,3 @@
-.hidden { display: none; }
-
 h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 
 #common-main-wrapper { overflow: hidden; position: relative; }
@@ -26,11 +24,10 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #posts-loop,
 #the-one { border-top: 1px solid #eee; width: 590px; padding: 20px 0 0 0; }
 
-#posts-loop .post { display: none; }
-#common-main-wrapper.show-all .post { display: block; }
-#common-main-wrapper.show-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
+#common-main-wrapper.show-tag-all .tag.all .link { color: inherit; cursor: text; text-decoration: none; }
 
 .post { position: relative; margin: 0 0 30px 0; padding: 0 0 30px 0; border-bottom: 1px dashed #bbb; }
+.post:last-child { border-bottom: none; margin-bottom: 0; }
 .post .title { font-size: 22px; margin: 0 0 5px 0; }
 .post .more { margin: 8px 0 0 0; font-size: 10px; color: #ccc; }
 .post .more .deeper { color: inherit; margin: 0 20px 0 0; }
@@ -52,7 +49,11 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 .post .body h2 { margin: 15px 0 2px 0; font-size: 15px; }
 .post .body p { margin: 10px 0; }
 
-#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 35px 0; }
+#more { display: block; width: 590px; margin: 0 0 35px; text-align: center; }
+#more .button { display: inline-block; padding: 5px 12px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; background-color: #0392F1; color: #fff; }
+#more .button:hover { text-decoration: none; background-color: #0372c1; }
+
+#tag-cloud { color: #343B40; font-size: 17px; width: 610px; margin: 15px 0 0 0; }
 #tag-cloud .list { color: #888; }
 #tag-cloud .list,
 #tag-cloud .list .tag { display: inline; }
@@ -61,8 +62,6 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #tag-cloud .list .tag .link { white-space: nowrap; }
 
 #share-box { position: absolute; right: -5px; top: -12px; }
-
-#bottom { border-top: 1px solid #eee; margin-top: 40px; }
 
 
 /* hand-generated styles for future 31 tags :))) */
@@ -100,6 +99,7 @@ h1 a, h2 a, h3 a, dt.name a { color: inherit; }
 #common-main-wrapper.show-tag-30 .post.tag-30
 { display: block }
 
+#common-main-wrapper.show-tag-all .tag.tag-all .link,
 #common-main-wrapper.show-tag-0  .tag.tag-0  .link,
 #common-main-wrapper.show-tag-1  .tag.tag-1  .link,
 #common-main-wrapper.show-tag-2  .tag.tag-2  .link,

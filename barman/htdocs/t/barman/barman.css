@@ -1,9 +1,9 @@
 html, button { font-family: Arial,sans-serif; }
 body { padding: 25px 0 0 0; margin: 0; }
 
-.hidden { display: none; }
-
 a { color:#cc2f7c; }
+
+.hidden { visibility: hidden; position: absolute !important; top: -100000px !important; }
 
 button { cursor: pointer; border: 1px transparent solid; border-radius: 10px;  text-align: center; padding: 0; font-size: 16px; }
 button.action { width: 100px; height: 40px; line-height: 40px; background-color: #cc2f7c; border-color: #cc2f7c; color: #fff; }
@@ -37,6 +37,8 @@ button.active .a { display: inline; }
 .page.uploader .upload { position: absolute; right: 20px; top: 120px; }
 .page.uploader .goto-shaker { position: absolute; left: -115px; top: 110px; }
 
+.processors-list .advanced { display: none; }
+html.advanced .processors-list .advanced { display: block; }
 
 
 #output { width: 510px; height: 300px; margin: 20px auto; padding: 15px; background: #ededed; border: 1px solid #c0c0c0; font-size: 12px; overflow-y: scroll; white-space: pre; }

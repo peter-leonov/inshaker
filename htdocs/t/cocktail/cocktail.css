@@ -1,3 +1,5 @@
+@media screen {
+
 #common-main-wrapper { overflow: hidden; }
 #b-more {padding-top:20px;overflow:hidden;width:630px;padding-bottom:1px;}
 #b-more .b-more-cocktails { width:398px;}
@@ -33,9 +35,6 @@
 
 
 .cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
-
-.hidden { display: none !important; }
-.popup .hidden { display: block !important; visibility: hidden; position: absolute; top: -20000px !important; }
 
 .column-main { width: 628px; }
 
@@ -86,18 +85,17 @@
 #main-content .tags { font-size: 110%; padding: 29px 0 50px 0; text-transform: lowercase; }
 #main-content .tags .tag:after { content: ',' }
 #main-content .tags .tag:last-child:after { content: '.' }
-#main-content .buttons { position: absolute; bottom: 0; left: 200px; z-index: 1; }
+#main-content .buttons { position: absolute; bottom: 0; left: 245px; z-index: 1; }
 #main-content .buttons button { margin-right: 16px; }
 #main-content .buttons button .the-name { display: none; }
 
-#main-content .buttons .bt-want-slap { overflow: hidden;  }
+#main-content .buttons .bt-want-slap { overflow: hidden; display: none; }
 #main-content .buttons .bt-want-slap .added,
 #main-content .buttons .bt-want-slap .add-more { display: none; }
 #main-content .buttons .bt-want-slap.in-cart .add { display: none; }
 #main-content .buttons .bt-want-slap.in-cart .added { display: inline; }
 #main-content .buttons .bt-want-slap.in-cart:hover .added { display: none; }
 #main-content .buttons .bt-want-slap.in-cart:hover .add-more { display: inline; }
-
 
 #view-legend { font-size: 120%; line-height: 1.5; padding: 13px 10px 0 10px; overflow: hidden; }
 #view-legend h3 { font-size: 150%; margin-bottom: 10px; }
@@ -108,6 +106,7 @@
 #view-recipe .ingredients .viewport { position: absolute; bottom: 0; left: 170px; width: 360px; height: 120px; z-index: 1; }
 #view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+#view-recipe .ingredients .surface .image img { display: none; }
 html.msie-8 #view-recipe .ingredients .surface .image:before,
 html.opera-10-0 #view-recipe .ingredients .surface .image:before,
 html.opera-10-1 #view-recipe .ingredients .surface .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
@@ -124,7 +123,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #view-recipe .recipe ul { line-height: 1.5; margin-left: 1.5em; }
 #view-recipe .recipe ul li { list-style: decimal; }
 #view-recipe .recipe dt { font-size: 14px; font-weight: bold; padding: 0 0 12px 16px; margin-left: -16px; }
-#view-recipe .buttons { position: absolute; bottom: 0; left: 200px; z-index: 1; }
+#view-recipe .buttons { position: absolute; bottom: 0; left: 245px; z-index: 1; }
 #view-recipe .buttons button { margin-right: 16px; }
 
 
@@ -136,14 +135,10 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need dd:last-child{background:none;}
 .what-need dd a{float:left;padding-right:5px;}
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
+.what-need dd .brand { display: none; }
 
 #recommendations .point { line-height: 124px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
-
-.drag-cursor { cursor: -moz-grabbing; cursor: grabbing; }
-.dragging-object{position:absolute;z-index:10;}
-#cocktail-image.dragging-object { display: block; }
-
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
@@ -151,5 +146,71 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
-<!--# include virtual="/t/popup.css" -->
+#print-logo-hd { display: none; } 
+
+} /* @media screen */
+
+
+@media print {
+
+html { font-size: 14px; }
+
+/* very much fixed width */
+html,
+body,
+#common-main-wrapper { width: 800px; min-width: 800px; }
+
+#common-main-wrapper { overflow: hidden; position: relative; margin: 0; }
+
+
+#b-bill { display: none; }
+#top-menu { display: none; }
+
+.common-box { border: none; }
+.common-box .hrefs { display: none; }
+.common-box .common-title { float: right; width: 557px; margin-right: 110px; }
+.common-box .common-title .common-name { font-size: 24px; font-weight: bold; }
+
+.common-box .common-content { padding: 0; }
+
+#cocktail-image { height: 210px; float: left; }
+
+#main-content { display: none; }
+#view-legend { display: none; }
+
+#view-recipe .buttons { display: none; }
+
+#view-recipe .ingredients { min-height: 210px; margin-left: 130px; }
+#view-recipe .ingredients .surface .image img { display: block; float: left; width: 60px; height: 60px; margin: 0 13px 8px 0; }
+
+#view-recipe .recipe dt,
+.what-need dt,
+.what-need dt { font-weight: bold; margin-top: 20px; line-height: 25px; border-bottom: 3px #5C5C5C solid; }
+
+#view-recipe .recipe ul { font-size: 90%; margin-top: 12px; margin-left: 25px; }
+#view-recipe .recipe ul li { list-style: decimal; padding-bottom: 5px; }
+
+.what-need dl { width: 100%;}
+.what-need dd { font-size: 90%; border-bottom: 1px black dashed; overflow: hidden; padding: 12px 0; display: list-item; list-style: square inside; }
+.what-need dd:last-child { border: none; }
+html.msie-6 .what-need dd { zoom: 1; }
+
+.what-need dd strong { float: right; text-align: right; font-weight: normal; }
+.what-need dd .brand { display: inline; color: black; }
+
+#share { display: none; }
+
+#b-more { display: none; }
+
+#ancient-browser-warning,
+#branded-image-holder,
+#top,
+#common-footer-spacer,
+#common-footer { display: none; }
+input { border: none; background: none; }
+
+#print-logo-hd { position: absolute; top: 0; right: 0; width: 100px; }
+
+} /* @media print */
+
 <!--# include virtual="/t/ingredient-popup.css" -->

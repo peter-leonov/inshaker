@@ -4,7 +4,10 @@
 	<title>Поделись — Inshaker</title>
 	<style>
 		html, body { margin: 0; padding: 0; }
-		iframe { border: none; overflow: hidden; width: 175px; height: 22px; }
+		iframe { border: none; overflow: hidden; height: 22px; }
+		#vkontakte { width: 160px; }
+		#facebook { width: 185px; }
+		#twitter { width: 165px; }
 	</style>
 </head>
 <body>
@@ -13,9 +16,10 @@
 <iframe id="vkontakte" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 <iframe id="facebook"  allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 <iframe id="twitter"   allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+<a id="appstore" href="http://itunes.apple.com/ru/app/id520094829" target="_blank"><img src="/t/cocktail/app-store.png"></a>
 
 <script>
-function $ (id) { return document.getElementById(id) }
+function $id (id) { return document.getElementById(id) }
 
 function job ()
 {
@@ -24,9 +28,9 @@ function job ()
 	var url = encodeURIComponent(params.url),
 		text = encodeURIComponent(params.text)
 	
-	$('vkontakte').src = '/share-vk.html?url=' + url + '&type=button&verb=0&title=' + text
-	$('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + url + '&layout=button_count&locale=ru_RU'
-	$('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + url + '&text=' + text
+	$id('vkontakte').src = '/share-vk.html?url=' + url + '&type=button&verb=0&title=' + text
+	$id('facebook').src = 'http://www.facebook.com/plugins/like.php?app_id=120845431330593&href=' + url + '&layout=button_count&locale=ru_RU'
+	$id('twitter').src  = 'http://platform.twitter.com/widgets/tweet_button.html?via=inshaker&related=inshaker&lang=ru&url=' + url + '&text=' + text
 }
 
 job() // ;)

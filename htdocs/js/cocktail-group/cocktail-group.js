@@ -10,7 +10,7 @@ Me.prototype =
 	{
 		IngredientPopup.bootstrap()
 		
-		document.documentElement.removeClassName('loading')
+		document.documentElement.classList.remove('loading')
 		
 		var items = nodes.cocktailItems,
 			cocktails = []
@@ -25,7 +25,7 @@ Me.prototype =
 			cocktails.push(cocktail)
 		}
 		
-		cocktails.sort(Cocktail.complexitySort)
+		cocktails.sort(Cocktail.sortByComplexity)
 		
 		var groupName = nodes.groupName.getAttribute('data-name')
 		
@@ -80,12 +80,6 @@ self[Me.className] = Me
 
 })();
 
-<!--# include virtual="/liby/modules/child-indexed-path.js"-->
-<!--# include virtual="/liby/modules/cloner.js"-->
-
-<!--# include virtual="/js/common/throttler.js" -->
-
-<!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
 <!--# include virtual="ingrediented-cocktail-list.js" -->
@@ -97,17 +91,16 @@ function onready ()
 {
 	var nodes =
 	{
-		root: $('main-column'),
-		groupName: $('group-name'),
-		list: $('cocktail-list'),
-		cocktailItems: $$('#cocktail-list li'),
-		moreCocktails: $('more-cocktails')
+		root: $('#main-column'),
+		groupName: $('#group-name'),
+		list: $('#cocktail-list'),
+		cocktailItems: $$('#cocktail-list li')
 	}
 	
 	var widget = new CocktailGroup()
 	widget.bind(nodes)
 }
 
-document.addEventListener('ready', onready, false)
+$.onready(onready)
 
 })();

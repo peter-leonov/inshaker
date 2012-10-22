@@ -156,7 +156,7 @@ Me.prototype =
 	
 	processIngredient: function (name)
 	{
-		var cocktails = Cocktail.getByIngredientNames([name])
+		var cocktails = Cocktail.getByAnyOfIngredientsNames([name])
 		var stats = []
 		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
@@ -350,19 +350,18 @@ self[Me.className] = Me
 })();
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
 
 function onready ()
 {
 	var nodes =
 	{
 		html: document.documentElement,
-		main: $$('#analytics')[0],
-		ingredientForm: $$('#analytics #ingredient-search')[0],
-		output: $$('#analytics #output')[0],
-		periods: $$('#periods')[0],
-		form: $$('#form')[0],
-		query: $$('#query')[0]
+		main: $('#analytics'),
+		ingredientForm: $('#analytics #ingredient-search'),
+		output: $('#analytics #output'),
+		periods: $('#periods'),
+		form: $('#form'),
+		query: $('#query')
 	}
 	
 	new Reporter().bind(nodes)

@@ -1,5 +1,33 @@
 [
 {
+	"name": "Мохито вечеринка",
+	"imperative": "Пригласи друзей в гости на вечеринку Домашнего Мохито!",
+	"path": "mojito-party",
+	"portions": [{"cocktail": "Домашний классический Мохито", "factor": 0.5}, {"cocktail": "Домашний клубничный Мохито", "factor": 1}, {"cocktail": "Домашний виноградный Мохито", "factor": 0.5}],
+	"people": 10
+},
+{
+	"name": "Коктейльный День Рождения",
+	"imperative": "Отпразднуй коктейльный день рождения!",
+	"path": "cocktail-birthday",
+	"portions": [{"cocktail": "Душевный пунш", "factor": 0.2}],
+	"people": 10
+},
+{
+	"name": "Коктейльное барбекю",
+	"imperative": "Пригласи друзей на коктейльное барбекю!",
+	"path": "cocktail-bbq",
+	"portions": [{"cocktail": "Темный ром с колой", "factor": 5},{"cocktail": "Бадминтон", "factor": 2}],
+	"people": 10
+},
+{
+	"name": "Убойная пятница",
+	"imperative": "Пригласи друзей на дегустацию убойных шотов!",
+	"path": "smashing-friday",
+	"portions": [{"cocktail": "Сатурн", "factor": 3},{"cocktail": "Меркурий", "factor": 3}],
+	"people": 10
+},
+{
 	"name": "Коктейльный девичник",
 	"imperative": "Собери девочек на коктейль!",
 	"path": "girls-night",

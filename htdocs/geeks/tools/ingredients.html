@@ -34,14 +34,14 @@
 
 <!--# include virtual="/inc/common-footer.html" -->
 <script type="text/javascript" src="/js/common/oops.js"></script>
-<script type="text/javascript" src="/js/common/common-0.3.js"></script>
+<script type="text/javascript" src="/js/common/common.js"></script>
 <script type="text/javascript" src="/js/entities/Ingredient.js"></script>
 <script>
 <!--# include virtual="/js/common/nodes-shortcut.js" -->
 function onready ()
 {
 	eval(NodesShortcut.include())
-	var node = $$('#ingredient-list')[0],
+	var node = $('#ingredient-list'),
 		all = Ingredient.getAll()
 	
 	for( var i = 0, ii = all.length; i < ii; i++ )

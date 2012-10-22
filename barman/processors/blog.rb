@@ -25,14 +25,13 @@ class Blog < Inshaker::Processor
     HT_ROOT        = Inshaker::HTDOCS_DIR + "blog/"
     HT_ROOT_BAN    = Inshaker::HTDOCS_DIR + "blog-banners/"
     NOSCRIPT_LINKS = HT_ROOT + "links.html"
-    TAG_CLOUD      = HT_ROOT + "tag-cloud.html"
     POSTS_LOOP     = HT_ROOT + "posts.html"
     TEMPLATES      = Inshaker::TEMPLATES_DIR
     HT_TAGS_JSON   = Inshaker::HT_DB_DIR + "blog/tags.json"
+    HT_POSTS_JSON  = Inshaker::HT_DB_DIR + "blog/posts.json"
     
     module Templates
       POST         = TEMPLATES + "blog-post.rhtml"
-      POST_PREVIEW = TEMPLATES + "blog-post-preview.rhtml"
     end
     
     RU_INFLECTED_MONTHNAMES = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
@@ -45,9 +44,9 @@ class Blog::Post
   attr_accessor :options
   
   def self.init
+    @@filename_rex = /^[a-zA-Z0-9\._\-]+$/
     @@seen_hrefs = {}
     @@html_renderer = ERB.read(Blog::Config::Templates::POST)
-    @@preview_renderer = ERB.read(Blog::Config::Templates::POST_PREVIEW)
     
     @@known_tags = YAML.read(Blog::Config::TAGS_DB)["Все теги"].hash_index
     @@seen_tags = {}
@@ -57,6 +56,18 @@ class Blog::Post
   def process src_dir, is_archive
     
     @src_dir = src_dir
+    
+    if /  |^ | $/ =~ @src_dir.name
+      error "лишние пробелы в названии папки"
+      return
+    end
+    
+    @src_dir.each do |e|
+      next if /^\./ =~ e
+      next if /^(post\.html|i)$/ =~ e
+      
+      error "непонятно что в папке поста «#{e}»"
+    end
     
     header, content = split_header_from_content File.read(@src_dir.path + "/post.html")
     
@@ -77,20 +88,13 @@ class Blog::Post
     end
     @date_ru = russify_date @date
     
-    @tags_names = @tags
-    @tags = []
-    @tags_names.each do |name|
+    @tags.select! do |name|
       unless @@known_tags[name]
         warning "неизвестный тег «#{name}»"
         next
       end
       
-      tag = @@seen_tags[name]
-      unless tag
-        tag = {"name" => name, "key" => "tag-#{@@seen_tags.length}"}
-        @@seen_tags[name] = tag
-      end
-      @tags << tag
+      @@seen_tags[name] = true
     end
     
     if @tags.empty?
@@ -103,9 +107,15 @@ class Blog::Post
     
     @dst_dir = bake_dir Blog::Config::HT_ROOT + @href, @href
     
-    copy_images
-    absorb_content content
+    used_files = absorb_content content
+    used_files.uniq!
     
+    used_files.each do |name|
+      next if @@filename_rex =~ name
+      error "имя файла содержит посторонние символы: «#{name}»"
+    end
+    
+    copy_images used_files
     write_html
     
     true
@@ -119,25 +129,34 @@ class Blog::Post
   end
   
   def absorb_content content
+    used_files = []
     @cut, @body = content.split(/\s*<!--\s*more\s*-->\s*/)
-    @cut = markup @cut, {:lazy_images => true}
-    @body = markup @body
+    @cut, files = markup @cut
+    used_files += files
+    @body, files = markup @body
+    used_files += files
+    return used_files
   end
   
   def write_html
     File.write("#{@dst_dir.path}/#{@href}.html", body_html)
-    File.write("#{@dst_dir.path}/preview-snippet.html", preview_snippet_html)
-  end
-  
-  def preview_snippet_html
-    @@preview_renderer.result(binding)
+    File.write("#{@dst_dir.path}/preview-snippet.html", @cut)
   end
   
   def body_html
     @@html_renderer.result(binding)
   end
   
-  def copy_images
+  def copy_images used_files
+    error = false
+    @src_dir.subdir("i").each do |e|
+      next if /^\./ =~ e
+      next if used_files.index(e)
+      error "непонятно что в папке /i/: «#{e}»"
+      error = true
+    end
+    return if error
+    
     FileUtils.rmtree(@dst_dir.path + "/i/")
     FileUtils.cp_rf(@src_dir.path + "/i/", @dst_dir.path + "/i/")
   end
@@ -148,14 +167,18 @@ class Blog::Post
   
   def to_hash
     {
-      "date" => @date.to_i * 1000
+      "date" => @date.to_i,
+      "title" => @title,
+      "tags" => @tags,
+      "path" => @href
     }
   end
   
   
   
   
-  def markup text, opts={}
+  def markup text
+    files = []
     # links
     text = text.gsub(/\(\(\s*(.+?)\s*:\s*(.+?)\s*\)\)/) do
       name = $1
@@ -164,21 +187,15 @@ class Blog::Post
       if name == "фотка"
         (src, href) = data.split(/\s+/)
         
-        if src !~ /^https?:\/\//
-          if opts[:lazy_images]
-            box = ImageUtils.get_geometry(@dst_dir.path + "/i/" + src)
-            unless box
-              error "не могу получить размеры картинки #{src} (возможно, это и не картинка вовсе)"
-            end
-          end
+        if src =~ /^https?:\/\//
+          src = "/t/print/logo-hd.png"
+          error "не используй абсолютные пути к фоткам: «#{src}»"
+        else
+          files << src
           src = %Q{/blog/#{@href}/i/#{src}}
         end
         
-        if box
-          image = %Q{<img lazy-src="#{src}" class="image lazy" width="#{box[0]}" height="#{box[1]}"/>}
-        else
-          image = %Q{<img src="#{src}" class="image"/>}
-        end
+        image = %Q{<img src="#{src}" class="image"/>}
         
         if href == "внутрь"
           %Q{<div class="image-box"><a href="/blog/#{@href}/#the-one">#{image}</a></div>}
@@ -195,7 +212,20 @@ class Blog::Post
         end
         %Q{<a href="/cocktail/#{cocktail["name_eng"].html_name}/">#{data}</a>}
       else
-        %Q{<a href="#{data}">#{name}</a>}
+        if /^https?:\/\// =~ data
+          # absolute uri
+          %Q{<a href="#{data}">#{name}</a>}
+        elsif /^\// =~ data
+          # uri relative to the site
+          %Q{<a href="#{data}">#{name}</a>}
+        elsif @@filename_rex =~ data
+          # file in the /i/ folder
+          files << data
+          %Q{<a href="/blog/#{@href}/i/#{data}">#{name}</a>}
+        else
+          error "ссылка на не пойми что: «#{data}»"
+          %Q{<a href="/">#{name}</a>}
+        end
       end
     end
     
@@ -226,13 +256,13 @@ class Blog::Post
     # paragraphs
     text = "<p>" + text.split(/\n{2,}/).reject{ |v| v.empty? }.join("</p>\n<p>") + "</p>"
     
-    return text
+    return text, files
   end
   
   
   
   def self.tags_list
-    @@seen_tags.values.sort { |a, b| a["name"] <=> b["name"] }
+    @@seen_tags.keys.sort
   end
   
   
@@ -280,12 +310,10 @@ class Blog
     
     update_posts
     sort_posts
-    update_posts_loop
     
     unless errors?
       cleanup_deleted
       flush_links
-      flush_tags
       flush_json
     end
     
@@ -323,15 +351,6 @@ class Blog
     end
   end
   
-  def update_posts_loop
-    say "обновляю список постов"
-    File.open(Config::POSTS_LOOP, "w+") do |f|
-      @posts.each do |post|
-        f.puts %Q{<!--# include virtual="#{post.page_href}preview-snippet.html" -->}
-      end
-    end
-  end
-  
   def cleanup_deleted
     say "ищу удаленные"
     indent do
@@ -353,19 +372,7 @@ class Blog
     say "рисую ссылки для поисковиков"
     File.open(Config::NOSCRIPT_LINKS, "w+") do |f|
       @posts.each do |post|
-        f.puts %Q{<li><a href="/event/#{post.href}/">#{post.title}</a></li>}
-      end
-      f.puts ""
-    end
-  end
-  
-  def flush_tags
-    say "рисую теги"
-    File.open(Config::TAG_CLOUD, "w+") do |f|
-      Blog::Post.tags_list.each do |tag|
-        name = tag["name"]
-        key = tag["key"]
-        f.puts %Q{<li class="tag #{key}"><a class="link" href="/blog/#tag=#{name}">#{name}</a></li>}
+        f.puts %Q{<li><a href="/blog/#{post.href}/">#{post.title}</a></li>}
       end
       f.puts ""
     end
@@ -374,6 +381,9 @@ class Blog
   def flush_json
     say "сохраняю базу тегов"
     File.write(Config::HT_TAGS_JSON, JSON.stringify(Blog::Post.tags_list))
+    
+    say "сохраняю базу постов"
+    File.write(Config::HT_POSTS_JSON, JSON.stringify(@posts.map { |post| post.to_hash }))
   end
   
   def run

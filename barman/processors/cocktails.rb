@@ -345,6 +345,16 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    screen_name = about["Текст названия"]
+    if screen_name
+      @cocktail["screen"] = screen_name
+    else
+      screen_name = @cocktail["name"].gsub(/ (и|в|во|с|со|на|он|от|без) /, ' \1 ')
+      if screen_name != @cocktail["name"]
+        @cocktail["screen"] = screen_name
+      end
+    end
+    
     if about["Эксцентриситет"]
       dx, dy = about["Эксцентриситет"].to_s.split(/ +/).map { |e| e.to_i  }
       if dx && dx != 0
@@ -482,7 +492,7 @@ class CocktailsProcessor < Inshaker::Processor
           part[1].may_be_to_i
         ]
         
-        if part[3] != "helping"
+        if part[3] != "cocktail"
           res[2] = Ingredient.get_multiplier_id(part[3])
         end
         
@@ -588,16 +598,41 @@ class CocktailsProcessor < Inshaker::Processor
   
   def flush_seo
     tags = [
-      ["Миксы", "domashnie-alkogolnye-kokteyli", "Домашний алкогольный коктейль"],
-      ["Алкогольные", "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
-      ["Безалкогольные", "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
-      ["Алкогольные", "alkogolnye-kokteyli", "Алкогольный коктейль"]
+      [["Алкогольные"], "alkogolnye-kokteyli", "Алкогольный коктейль"],
+      [["Просто приготовить"], "domashnie-kokteyli", "Домашний коктейль"],
+      [["Алкогольные"], "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
+      [["Безалкогольные"], "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
+      [["Милкшейки"], "molochnye-kokteyli", "Молочный коктейль"],
+      [["Мохито"], "mojito", "Мохито"],
+      [["Красные"], "krasnye-kokteyli", "Красный коктейль"],
+      [["Глинтвейны"], "glintvejn", "Глинтвейн"],
+      [["Лимонады"], "limonad", "Лимонад"],
+      [["Голубые"], "golubye-kokteyli", "Голубой коктейль"],
+      [["Маргариты"], "margarita", "Маргарита"],
+      [["Космополитен"], "cosmopolitan", "Космополитен"],
+      [["Пина Колада"], "pina-colada", "Пина Колада"],
+      [["Водка"], "kokteyli-s-vodkoj", "Коктейль с водкой"],
+      [["Виски"], "kokteyli-s-viski", "Коктейль с виски"],
+      [["Ром"], "kokteyli-s-romom", "Коктейль с ромом"],
+      [["Ликер"], "kokteyli-s-likerom", "Коктейль с ликером"],
+      [["Б-52"], "b-52", "Б-52"],
+      [["Текила"], "kokteyli-s-tekiloj", "Коктейль с текилой"],
+      [["Джин"], "kokteyli-s-djinom", "Коктейль с джином"],
+      [["Фруктовые"], "fruktovye-kokteyli", "Фруктовый коктейль"],
+      [["Вермут"], "kokteyli-s-martini", "Коктейль с мартини"],
+      [["Кола"], "kokteyli-s-koloj", "Коктейль с колой"],
+      [["Мороженое", "Сорбет"], "kokteyli-s-morozhenym", "Коктейль с мороженым"],
+      [["Клубника", "Свежемороженая клубника"], "klubnichnye-kokteyli", "Клубничный коктейль"],
+      [["Банан", "Банановый сок"], "bananovyje-kokteyli", "Банановый коктейль"],
+      [["В блендере"], "v-blendere", "В блендере"],
+      [["Шоколад черный", "Шоколадный сироп"], "shokoladnyje-kokteyli", "Шокодадный коктейль"],
+      [["Классические"], "populyarnyje-kokteyli", "Популярный коктейль"],
     ]
     
     tags.each do |v|
       tag, dir, prefix = v
       
-      cocktails = Cocktail.get_by_tag(tag)
+      cocktails = Cocktail.by_any_of_entities(tag)
       cocktails.sort! do |a, b|
         length = a["ingredients"].length - b["ingredients"].length
         if length != 0
@@ -638,13 +673,13 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       if e.class == String
-        [e, 1.0, "шт", "helping"]
+        [e, 1.0, "шт", "cocktail"]
       elsif e.class == Hash
         name, amount = e.shift
         parse_part(name, amount)
       else
         error "непонятный контейнер штучки «#{e.class}»"
-        ["хз", 1.0, "шт", "helping"]
+        ["хз", 1.0, "шт", "cocktail"]
       end
     end
   end
@@ -730,7 +765,7 @@ class CocktailsProcessor::Template
   def parts
     @sorted_parts.each do |name, dose, unit|
       normal = Ingredient.humanize_dose(dose, unit)
-      yield name, normal[0].may_be_to_i, normal[1]
+      yield name, normal[0].may_be_to_i, normal[1], Ingredient[name]["mark"]
     end
   end
   

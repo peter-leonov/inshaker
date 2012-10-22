@@ -21,7 +21,19 @@
 
 <ul id="party-list">
 	<li class="item">
-		<a class="party big" href="/party/girls-night/" style="background-image: url(/party/girls-night/preview-big.jpg)"><span class="name">Коктейльный девичник</span></a>
+		<a class="party" href="/party/mojito-party/" style="background-image: url(/party/mojito-party/preview.jpg)"><span class="name">Мохито вечеринка</span></a>
+	</li>
+	<li class="item">
+		<a class="party" href="/party/cocktail-birthday/" style="background-image: url(/party/cocktail-birthday/preview.jpg)"><span class="name">Коктейльный День Рождения</span></a>
+	</li>
+	<li class="item">
+		<a class="party" href="/party/cocktail-bbq/" style="background-image: url(/party/cocktail-bbq/preview.jpg)"><span class="name">Коктейльное барбекю</span></a>
+	</li>
+	<li class="item">
+		<a class="party" href="/party/smashing-friday/" style="background-image: url(/party/smashing-friday/preview.jpg)"><span class="name">Убойная пятница</span></a>
+	</li>
+	<li class="item">
+		<a class="party" href="/party/girls-night/" style="background-image: url(/party/girls-night/preview.jpg)"><span class="name">Коктейльный девичник</span></a>
 	</li>
 	<li class="item">
 		<a class="party" href="/party/fireplace/" style="background-image: url(/party/fireplace/preview.jpg)"><span class="name">Теплый вечер у камина</span></a>
@@ -45,15 +57,17 @@
 <!--# include file="/inc/common-footer.html" -->
 
 <script src="/js/common/oops.js"></script>
-<!--[if lte IE 7]><script src="/liby/core/fixes/trident3.js"></script><![endif]-->
-<!--[if IE 8]><script src="/liby/core/fixes/trident4.js"></script><![endif]-->
-<script src="/js/common/common-0.3.js"></script>
+<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+<script src="/js/common/common.js"></script>
 <script>
 ;(function(){
-function onready () { UserAgent.setupDocumentElementClassNames() }
-document.addEventListener('ready', onready, false)
+function onready ()
+{
+	UserAgent.setupDocumentElementClassNames()
+}
+$.onready(onready)
 })();
-$.iamready()
 </script>
 </body>
 </html>

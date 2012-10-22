@@ -214,13 +214,15 @@ class IngredientsProcessor < Inshaker::Processor
       good["decls"] = {"t" => about["Падежи"]["Творительный"]}
     end
     
+    if about["Текст названия"]
+      good["screen"] = about["Текст названия"].to_s
+    end
+    
     good_tags = good["tags"] = []
     tags = about["Теги"] ? about["Теги"].split(/\s*,\s*/) : []
-    tags << "любой ингредиент"
     
     if brand
       good[:brand] = brand
-      good[:brand_dir] = brand.dirify
       
       if about["Марка"]
         if @marks[about["Марка"]]
@@ -272,7 +274,7 @@ class IngredientsProcessor < Inshaker::Processor
   
   def check_intergity
     
-    tags_used = {}
+    tags_used = {"Любой ингредиент" => true}
     groups_used = {}
     
     @entities.each do |ingredient|
@@ -289,7 +291,7 @@ class IngredientsProcessor < Inshaker::Processor
       unused = @tags - tags_used.keys
     
       unless unused.empty?
-        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+        warning "нет ингредиентов с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
       end
     
       # delete unused tags
@@ -301,7 +303,7 @@ class IngredientsProcessor < Inshaker::Processor
       unused = @groups - groups_used.keys
     
       unless unused.empty?
-        warning "нет коктейлей с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
+        warning "нет ингредиентов с #{unused.length.plural("тегом", "тегами", "тегами")} #{unused.map{|v| "«#{v}»"}.join(", ")}"
       end
     
       # delete unused tags
@@ -329,6 +331,9 @@ class IngredientsProcessor < Inshaker::Processor
     data = {}
     ht_dir = entity.delete("ht_dir")
     entity["path"] = ht_dir.name
+    if entity["tags"].empty?
+      entity.delete("tags")
+    end
     @local_properties.each do |prop|
       data[prop] = entity.delete(prop)
     end

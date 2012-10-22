@@ -7,12 +7,15 @@ function Me ()
 	this.nodes = {}
 }
 
+var round = Math.round
+
 Me.prototype =
 {
 	power: 1.5,
 	spaceTimeout: 30000,
 	maxInertia: 500,
 	onscroll: function () {},
+	onstop: function () {},
 	
 	bind: function (root, width)
 	{
@@ -31,22 +34,6 @@ Me.prototype =
 		moveable.addEventListener('move', function (e) { me.onmoving(e) }, false)
 		moveable.addEventListener('moveend', function (e) { me.onmoveend(e) }, false)
 		
-		this.setX = function (x)
-		{
-			if (me.globalX == x)
-				return
-			me.globalX = x
-			
-			var w = me.width,
-				real
-			if (w == 0)
-				real = 0
-			else
-				real = x < 0 ? w + x % w : x % w
-			root.scrollLeft = Math.round(real)
-			this.onscroll(x, real)
-		}
-		
 		
 		var space = this.space = new Kinematics.Space()
 		var point = this.point = new Kinematics.Point(0, 0, 0, 0)
@@ -54,7 +41,24 @@ Me.prototype =
 		
 		space.ontick = function () { me.spaceTick() }
 		
+		space.onfreeze = function() { me.onstop() }
+		
 		return this
+	},
+	
+	scrollTo: function (x)
+	{
+		x = round(x)
+		
+		if (this.globalX == x)
+			return
+		this.globalX = x
+		
+		var w = this.width
+		
+		var real = x < 0 ? w + x % w : x % w
+		this.nodes.root.scrollLeft = this.realX = real
+		this.onscroll(x, real)
 	},
 	
 	guessWidth: function ()
@@ -76,21 +80,21 @@ Me.prototype =
 	reset: function ()
 	{
 		this.space.stop()
-		this.setX(0)
+		this.scrollTo(0)
 		this.point.x = this.globalX
 		this.setVelocity(0, 0)
 	},
 	
 	spaceTick: function ()
 	{
-		this.setX(this.point.x)
+		this.scrollTo(this.point.x)
 	},
 	
 	onmovestart: function (e)
 	{
 		this.space.stop()
 		this.startX = this.globalX
-		this.nodes.root.addClassName('grabbing')
+		this.nodes.root.classList.add('grabbing')
 	},
 	
 	onmoveabout: function ()
@@ -104,12 +108,12 @@ Me.prototype =
 	
 	onmoving: function (e)
 	{
-		this.setX(this.startX - e.data.dx)
+		this.scrollTo(this.startX - e.data.dx)
 	},
 	
 	onmoveend: function (e)
 	{
-		this.nodes.root.removeClassName('grabbing')
+		this.nodes.root.classList.remove('grabbing')
 		
 		var ms = e.data.movements.reverse()
 		if (!ms[3])
@@ -140,6 +144,12 @@ Me.prototype =
 	run: function (timeout)
 	{
 		this.space.run(timeout === undefined ? this.spaceTimeout : timeout) // set a reasonable timeout
+	},
+	
+	jumpTo: function (x)
+	{
+		this.point.x = x
+		this.scrollTo(x)
 	}
 }
 

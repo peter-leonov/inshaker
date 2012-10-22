@@ -85,12 +85,12 @@ Me.prototype =
 	
 	monitor: function (start)
 	{
-		clearInterval(this.timer)
+		window.clearInterval(this.timer)
 		if (start)
 		{
 			var me = this
 			function check () { me.check() }
-			this.timer = setInterval(check, this.interval)
+			this.timer = window.setInterval(check, this.interval)
 			me.check()
 		}
 	}

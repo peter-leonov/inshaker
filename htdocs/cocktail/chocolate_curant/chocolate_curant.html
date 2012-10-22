@@ -2,7 +2,7 @@
 <html id="cocktail-page" class="cocktails-page" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
-	<link rel="stylesheet" href="/t/cocktail/cocktail.css" media="screen"/>
+	<link rel="stylesheet" href="/t/cocktail/cocktail.css"/>
 	<title>Рецепт коктейля «Шоколадная смородина» — Коктейли — Inshaker</title>
 	
 	<meta property="og:title" content="Коктейль «Шоколадная смородина»" />
@@ -15,8 +15,6 @@
 <body>
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
-
-<!--# include virtual="/inc/calculator.html" -->
 
 <div class="common-box column-main"><div class="common-content hrecipe">
 	<div class="common-title">
@@ -66,7 +64,7 @@
 				<div id="view-legend">
 					<div id="view-legend-text">
 						<h3>Легенда коктейля</h3>
-						<p>День шоколада появился во Франции в 1995 году и с тех пор празднуется ежегодно 11 июля.</p><p>В этот год все кулинары мира стараются превзойти друг друга, изобретая новые шоколадные рецепты. Так появилась блондинка в шоколаде, шоколадное обертывание и шоколадная смородина.</p>
+						<p>День шоколада появился во Франции в 1995 году и с тех пор празднуется ежегодно 11 июля.</p><p>В этот день все кулинары мира стараются превзойти друг друга, изобретая новые шоколадные рецепты. Так появилась блондинка в шоколаде, шоколадное обертывание и шоколадная смородина.</p>
 					</div>
 					<button class="rounded" id="hide-legend"><b>Закрыть легенду</b></button>
 				</div>
@@ -112,6 +110,7 @@
 				
 				<dd class="ingredient">
 					<a class="name" data-ingredient-name="Шоколадный сироп">Шоколадный сироп</a>
+					<span class="brand">Monin</span>
 					<strong><span class="amount">25</span> <span class="type">мл</span></strong>
 				</dd>
 				
@@ -164,7 +163,7 @@
 	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
 		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
 		<dd>
-			<div class="programica-rolling-images" id="related" pmc-animation-type="easeInOutCubic">
+			<div class="programica-rolling-images" id="related">
 				<a class="prev"></a>
 				<a class="next"></a>
 				<div class="viewport" id="rel_viewport">
@@ -174,6 +173,8 @@
 		</dd>
 	</dl></div>
 </div>
+
+<img id="print-logo-hd" src="/t/print/logo-hd.png">
 
 </div id="common-main-wrapper">
 

@@ -5,8 +5,8 @@
 	<title>EventTarget dispatching tests</title>
 	<script src="tests.common.js"></script>
 	
-	<!--[if lte IE 7]><script src="../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../src/core/fixes/trident4.js"></script><![endif]-->
+	<!--[if lte IE 7]><script src="../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../src/fixes/trident4.js"></script><![endif]-->
 </head>
 <body>
 
@@ -16,13 +16,13 @@
 Tests.ignoreGlobals(['__tests_objectName'])
 Tests.test(function (t)
 {
-	function $ (id) { return document.getElementById(id) }
+	function $id (id) { return document.getElementById(id) }
 	
 	t.test('node → parentNode → document → window', function (t)
 	{
 		function stopPropagation (e) { e.stopPropagation() }
 		
-		var node = $('test-node-1')
+		var node = $id('test-node-1')
 		
 		var pn = {}
 		pn[Event.CAPTURING_PHASE] = 1

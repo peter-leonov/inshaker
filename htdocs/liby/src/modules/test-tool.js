@@ -164,6 +164,16 @@ var prototype =
 		else
 			return this.fail([a, new Label('<=', 'label middle'), b], d)
 	},
+	gtlt: function (a, b, c, d)
+	{
+		if (a <= b)
+			return this.fail([a, new Label('<=', 'label middle'), b], d)
+		
+		if (a >= c)
+			return this.fail([a, new Label('>=', 'label middle'), c], d)
+		
+		return this.pass([b, new Label('<', 'label middle'), a, new Label('<', 'label middle'), c], d)
+	},
 	
 	instance: function (a, b, d)
 	{
@@ -272,7 +282,7 @@ var prototype =
 			times.push(new Date())
 		}
 		
-		lag.timer = setInterval(shot, delay)
+		lag.timer = window.setInterval(shot, delay)
 		shot()
 	},
 	
@@ -282,7 +292,7 @@ var prototype =
 		if (!lag)
 			return
 		
-		clearInterval(lag.timer)
+		window.clearInterval(lag.timer)
 		
 		var times = lag.times
 		if (times.length < 2)

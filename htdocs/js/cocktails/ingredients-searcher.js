@@ -191,6 +191,11 @@ Me.prototype =
 		return res
 	},
 	
+	setDuplicates: function (duplicates)
+	{
+		this.duplicates = duplicates
+	},
+	
 	sortByWeight: function (a, b) { return a[0] - b[0] },
 	sortByLength: function (a, b) { return b.length - a.length }
 }

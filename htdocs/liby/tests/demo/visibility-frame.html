@@ -4,10 +4,10 @@
 	<meta name="viewport" content="width=device-width"/>
 	<title>Visibility frame demo</title>
 	
-	<!--[if lte IE 7]><script src="../../src/core/fixes/trident3.js"></script><![endif]-->
-	<!--[if IE 8]><script src="../../src/core/fixes/trident4.js"></script><![endif]-->
-	<script src="../../src/core/fixes/keydown-to-keypress.js"></script>
-	<script src="../../src/core/prototype.js"></script>
+	<!--[if lte IE 7]><script src="../../src/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="../../src/fixes/trident4.js"></script><![endif]-->
+	<script src="../../src/fixes/keydown-to-keypress.js"></script>
+	<script src="../../src/modules/prototype.js"></script>
 	<script src="../../src/modules/log.js"></script>
 	<script src="../../src/modules/cosy.js"></script>
 	<script src="../../src/modules/element.js"></script>
@@ -44,15 +44,15 @@
 <script>
 $.onload(function ()
 {
-	var count = parseInt($('count').value), transparent = $('transparency').checked
+	var count = parseInt($('#count').value), transparent = $('#transparency').checked
 	
 	if (isNaN(count) || !count)
-		count = $('count').value = 25
+		count = $('#count').value = 25
 	
-	var boxesRoot = $('boxes')
+	var boxesRoot = $('#boxes')
 	
 	if (transparent)
-		boxesRoot.addClassName('transparent')
+		boxesRoot.classList.add('transparent')
 	
 	
 	var rw = boxesRoot.offsetWidth, rh = boxesRoot.offsetHeight,
@@ -101,7 +101,7 @@ $.onload(function ()
 			{
 				var node = boxes[i].node
 				boxesRoot.removeChild(node)
-				node.removeClassName('visible')
+				node.classList.remove('visible')
 			}
 		}
 		
@@ -127,8 +127,8 @@ $.onload(function ()
 	
 	function setupFrame ()
 	{
-		var frameNode = $('frame'),
-			statNode = $('stat').firstChild
+		var frameNode = $('#frame'),
+			statNode = $('#stat').firstChild
 		
 		var frame = new VisibilityFrame()
 		frame.gridder.maxSteps = count * 10
@@ -138,12 +138,12 @@ $.onload(function ()
 			var begin = new Date()
 			
 			for (var i = 0; i < hide.length; i++)
-				hide[i].node.removeClassName('visible')
+				hide[i].node.classList.remove('visible')
 			
 			for (var i = 0; i < show.length; i++)
-				show[i].node.addClassName('visible')
+				show[i].node.classList.add('visible')
 			
-			setTimeout(function () { statNode.nodeValue = 'show: ' + show.length + ', hide: ' + hide.length + ', time: ' + (new Date() - begin) + 'ms' }, 0)
+			window.setTimeout(function () { statNode.nodeValue = 'show: ' + show.length + ', hide: ' + hide.length + ', time: ' + (new Date() - begin) + 'ms' }, 0)
 		}
 		frame.moveTo(frameNode.offsetLeft, frameNode.offsetTop)
 		
@@ -152,7 +152,7 @@ $.onload(function ()
 	
 	function setupMovable (frame)
 	{
-		var frameNode = $('frame')
+		var frameNode = $('#frame')
 		
 		var m = new Moveable()
 		m.bind(frameNode)
@@ -182,9 +182,9 @@ $.onload(function ()
 	{
 		function toggleTransparency (e)
 		{
-			boxesRoot.toggleClassName('transparent', this.checked)
+			boxesRoot.classList.toggleTo('transparent', this.checked)
 		}
-		$('transparency').addEventListener('click', toggleTransparency, false)
+		$('#transparency').addEventListener('click', toggleTransparency, false)
 		
 		var addByKey = {38: 1, 40: -1, 33: 10, 34: -10}
 		function catchKeys (e)
@@ -196,7 +196,7 @@ $.onload(function ()
 			}
 			
 			var input = this
-			setTimeout(function () { adjustCount.call(input, e) }, 1)
+			window.setTimeout(function () { adjustCount.call(input, e) }, 1)
 		}
 		function adjustCount (e)
 		{
@@ -214,7 +214,7 @@ $.onload(function ()
 			
 			updateCount(count)
 		}
-		$('count').addEventListener('keypress', catchKeys, false)
+		$('#count').addEventListener('keypress', catchKeys, false)
 	}
 	
 	function updateCount (count)
@@ -233,8 +233,8 @@ $.onload(function ()
 	
 	updateCount(count)
 	
-	boxesRoot.addClassName('wide')
-	$('count').focus()
+	boxesRoot.classList.add('wide')
+	$('#count').focus()
 })
 </script>
 </body>

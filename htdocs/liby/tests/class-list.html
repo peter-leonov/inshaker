@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Tests for element.classList</title>
+	<script src="tests.common.js"></script>
+	
+	<!--[if lte IE 7]><script src="/liby/fixes/trident3.js"></script><![endif]-->
+	<!--[if IE 8]><script src="/liby/fixes/trident4.js"></script><![endif]-->
+	<script src="../src/modules/prototype.js"></script>
+	<script src="../src/modules/cosy.js"></script>
+	<script>
+	if (!document.documentElement.classList)
+	{
+		$.load('../src/fixes/dom-token-list.js')
+		$.load('../src/fixes/class-list.js')
+	}
+	</script>
+</head>
+<body>
+<script>
+Tests.ignoreGlobals(['_firebug'])
+Tests.test(function (t)
+{
+	function copy (list)
+	{
+		if (list.toArray)
+			return list.toArray()
+		
+		var ary = []
+		for (var i = 0, il = list.length; i < il; i++)
+			ary[i] = list.item(i)
+		return ary
+	}
+	
+	t.test('extend', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.ok(window.DOMTokenList, 'DOMTokenList')
+		
+		DOMTokenList.prototype.abcdefGH = function () { return 123 }
+		
+		t.eq(cl.abcdefGH(), 123, 'cl.abcdefGH()')
+	})
+	
+	t.test('multiple', function (t)
+	{
+		t.mayFail()
+		
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.exception(function (t)
+		{
+			cl.add('a b c')
+		},
+		function (t, ex)
+		{
+			t.match(ex.toString(), /invalid/i, 'invalid')
+		},
+		'add("a b c")')
+		
+		t.eq(node.className, '', 'className')
+	})
+	
+	
+	t.test('write className read classList', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.no(cl.contains('a'), 'contains a 1')
+		node.className = 'a'
+		t.ok(cl.contains('a'), 'contains a 2')
+		
+		node.className = 'a b'
+		t.ok(cl.contains('a'), 'a')
+		t.ok(cl.contains('b'), 'b')
+		
+		node.className = 'a b c'
+		t.like(copy(cl), ['a', 'b', 'c'], 'list')
+		t.eq(cl.item(1), 'b', 'item(1)')
+		t.eq(cl.item(10), null, 'item(10)')
+		t.eq(cl.item(99), null, 'item(99)')
+		
+		t.eq('' + cl, 'a b c', 'toString()')
+		
+		node.className = ''
+		t.no(cl.contains('a'), 'a')
+		t.no(cl.contains('b'), 'b')
+		
+		var node = document.createElement('img')
+		node.className = 'a'
+		t.ok(node.classList.contains('a'), 'img contains a')
+	})
+	
+	t.test('write classList read className', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		t.eq(node.className, '', 'empty')
+		
+		cl.add('a')
+		t.eq(node.className, 'a', 'add one')
+		
+		cl.add('b')
+		cl.add('c')
+		t.eq(node.className, 'a b c', 'add two more')
+		
+		cl.remove('b')
+		t.eq(node.className, 'a c', 'remove')
+		
+		t.eq(cl.toggle('a'), false, 'toggle to false')
+		t.eq(node.className, 'c', 'toggle a')
+		
+		t.eq(cl.toggle('a'), true, 'toggle to true')
+		t.eq(node.className, 'c a', 'toggle a')
+		
+		t.eq(cl.contains('a'), true, 'contains a')
+		t.eq(cl.contains('b'), false, 'contains b')
+	})
+	
+	t.test('spaces in className', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		node.className = '  a b   c  '
+		t.eq(node.className, '  a b   c  ', 'lots of spaces')
+		t.like(copy(cl), ['a', 'b', 'c'], 'list')
+		
+		cl.add('d')
+		t.eq(node.className, '  a b   c  d', 'added d')
+		
+		cl.toggle('d')
+		t.eq(node.className, '  a b   c', 'toggled d')
+		
+		cl.toggle('b')
+		t.eq(node.className, '  a c', 'toggled d again')
+	})
+	
+	t.test('duples', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		node.className = '  a b  a c  a '
+		cl.remove('a')
+		t.eq(node.className, 'b c', 'without spaces')
+	})
+	
+	t.test('bad names in className', function (t)
+	{
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		node.className = 'b:n a b x,f [-] c'
+		t.eq(node.className, 'b:n a b x,f [-] c', 'lots of spaces')
+		t.like(copy(cl), ['b:n', 'a', 'b', 'x,f', '[-]', 'c'], 'list')
+		
+		cl.add('d')
+		t.eq(node.className, 'b:n a b x,f [-] c d', 'same string')
+		
+		cl.toggle('d')
+		t.eq(node.className, 'b:n a b x,f [-] c', 'same string')
+		
+		cl.toggle('b')
+		t.eq(node.className, 'b:n a x,f [-] c', 'same string')
+		
+		cl.toggle('x,f')
+		t.eq(node.className, 'b:n a [-] c', 'toggle bad item')
+		
+		cl.toggle('[-]')
+		t.eq(node.className, 'b:n a c', 'toggle one more bad item')
+	})
+	
+	t.test('iterate', function (t)
+	{
+		t.mayFail()
+		
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		// for MSIE <= 8 to cache propertychange event
+		document.body.appendChild(node)
+		
+		node.className = 'a b c d e f'
+		t.eq(cl.length, 6, 'length')
+		t.eq(cl[0], 'a', '[0]')
+		t.eq(cl[1], 'b', '[1]')
+		t.eq(cl[2], 'c', '[2]')
+		t.eq(cl[3], 'd', '[3]')
+		t.eq(cl[4], 'e', '[4]')
+		t.eq(cl[5], 'f', '[5]')
+		t.eq(cl[6], null, '[6]')
+		
+		node.className = 'a b'
+		t.eq(cl.length, 2, 'length')
+		t.eq(cl[0], 'a', '[0]')
+		t.eq(cl[1], 'b', '[1]')
+		t.eq(cl[2], null, '[2]')
+		t.eq(cl[3], null, '[3]')
+		t.eq(cl[4], null, '[4]')
+		t.eq(cl[5], null, '[5]')
+		t.eq(cl[6], null, '[6]')
+	})
+	
+	t.test('copy with Array.prototype.slice()', function (t)
+	{
+		t.mayFail()
+		
+		var node = document.createElement('div')
+		var cl = node.classList
+		
+		node.className = 'a b c d e f'
+		t.like(Array.prototype.slice.call(cl), ['a', 'b', 'c', 'd', 'e', 'f'], 'slice.call()')
+	})
+})
+</script>
+</body>
+</html>

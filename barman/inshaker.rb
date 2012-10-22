@@ -128,8 +128,17 @@ module Inshaker
       end
     end
     
+    BOM = "\xEF\xBB\xBF".force_encoding("ASCII-8BIT")
     def load_yaml src
-      YAML.load(File.open(src))
+      f = File.open(src)
+      bom = f.read(3)
+      if bom != BOM
+        f.seek(0)
+      end
+      
+      yaml = YAML.load(f)
+      f.close
+      yaml
     end
     
     def load_json src

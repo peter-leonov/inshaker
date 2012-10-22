@@ -5,14 +5,16 @@
 	<link rel="stylesheet" href="/t/branding/shakeit/branding.css"/>
 	<title>Статистика по браузерам — Inshaker</title>
 	<style>
-	.stat { position: relative; margin: 20px 0 0 0; }
-	.stat .viewport { position: relative; width: 100%; height: 620px; overflow: hidden; }
+	.stat { position: relative; margin: 20px -20px 0 -20px; }
+	.stat .viewport { position: relative; width: 100%; height: 770px; overflow: hidden; }
 	.stat .viewport .point { width: 100%; height: 100%; }
 	.stat .prev,
 	.stat .next { position: absolute; top: 4px; z-index: 11; }
 	.stat .prev { left: 890px; }
 	.stat .next { right: 0px; }
 	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
+	
+	path[stroke="#ffffff"] { stroke-width: 1.5px; stroke: rgba(255,255,255,0.2) }
 	</style>
 </head>
 <body>
@@ -46,34 +48,7 @@
 
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
-<script src="/js/common/common-0.3.js"></script>
-<script src="/js/about/swfobject.js"></script>
-<script>
-function onready ()
-{
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque')
-	line.addVariable('settings_file', escape('/stat/browsers/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers/data.xml'))
-	line.write('stat-browsers')
-	
-	var line = new SWFObject('/stat/amcharts/ampie.swf', 'amline', '920', '670', '8')
-	line.addVariable('path', '/stat/amcharts/')
-	line.addParam('wmode', 'opaque')
-	line.addVariable('settings_file', escape('/stat/browsers-plain/settings.xml'))
-	line.addVariable('data_file', escape('/stat/browsers-plain/data.xml'))
-	line.write('stat-browsers-plain')
-	
-	new RollingImagesLite($('rolling-stats'), {animationType: 'directJump'})
-}
-$.onready(onready)
-
-<!--# include virtual="/liby/modules/motion.js" -->
-<!--# include virtual="/liby/modules/motion-types.js" -->
-<!--# include virtual="/liby/modules/animation.js" -->
-<!--# include virtual="/js/common/rolling-images.js" -->
-
-</script>
+<script src="/js/common/common.js"></script>
+<script src="/js/geeks/stat-page.js"></script>
 </body>
 </html>

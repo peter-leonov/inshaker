@@ -3,25 +3,34 @@ h1,h2,h3,h4,
 p,form,
 fieldset,legend,
 ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
-h2,h3,h4,h5,h6{font-weight:normal;font-size:16px;}
+h1,h2,h3,h4,h5,h6{font:inherit;}
 td{font-size:1em;vertical-align:top;}
 img{vertical-align:middle;}
 a { cursor: pointer; text-decoration: none; }
 a:hover { text-decoration: underline; }
 a img{border:0;}
-input,select,textarea,button{font-family:Tahoma,Arial,sans-serif;}
-input,select,textarea{font-size:1.1em;}
+input,select,textarea,button{font:inherit;}
 input[type="password"],
 input[type="text"]{margin:0;}
 ul{list-style-type:none;}
 table{border:0;border-collapse:collapse;}
 table td{padding:0;}
-.to-print{display:none;}
-body{font:10px Tahoma,Arial,sans-serif;color:#343b40;}
+html{font:10px Tahoma,Arial,sans-serif;}
 
+/* fix window-html-body box model */
 html { overflow-y: scroll; height: 100%; }
-body { min-width: 985px; position: relative; min-height: 100%; }
 
+@media screen
+{
+body { min-width: 985px; position: relative; min-height: 100%; }
+}
+
+
+/* art goes here */
+
+body { color: #343b40; }
+
+.hidden { visibility: hidden; position: absolute !important; top: -100000px !important; }
 
 /* 0px to 10px rounded corners */
 .rounding-corners .lt,
@@ -35,34 +44,32 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 
 /* navigation.css */
 #top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
-#top .content { position: relative; width: 786px; height: 65px; padding-left: 174px; margin: 0 auto; }
-#top .logo { position: absolute; left: -11px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
-#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 16px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
-#top .link.blog { position: absolute; right: 0; }
+#top .content { position: relative; width: 962px; height: 65px; margin: 0 auto; }
+#top .logo { position: absolute; left: -10px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#top .menu { position: absolute; top: 0; right: 0; }
+#top .link { float: left; height: 37px; padding: 23px 18px 0 18px; margin-left: 7px; font-size: 14px; text-decoration: none; border-bottom: 5px solid transparent; background: repeat-x 0 -1000px; }
 
-#bottom { position: relative; width: 962px; height: 170px; margin: 25px auto 0 auto; z-index: 1; font-size: 11px; }
-#bottom .link { padding: 7px; }
-#bottom .link:first-child { padding-left: 0; }
-#bottom .link:last-child { padding-right: 0; }
-#bottom .main-menu { position: absolute; top: 18px; right: 0; }
-#bottom .about-menu { position: absolute; top: 18px; left: 0; }
-#bottom .copyright { position: absolute; top: 37px; left: 0; }
-#bottom .alcohol-harm { position: absolute; top: 80px; left: 0; width: 960px; height: 60px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
+#common-footer-spacer,
+#common-footer { height: 414px; margin-top: 25px; padding-top: 25px; }
+#common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
+#common-footer .content { position: relative; width: 962px; margin: 0 auto; }
+#common-footer .index { position: relative; z-index: 1; font-size: 12px; margin-bottom: -2px; }
+#common-footer .index .content { height: 255px; }
+#common-footer .index .theme { float: left; width: 192px; }
+#common-footer .index .theme .head { position: relative; font-size: 14px; padding-bottom: 14px; margin-bottom: 15px; text-indent: -1px; }
+#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 100%; height: 1px; left: 0; bottom: 0; background-position: -200px -50px; }
+#common-footer .index .theme .link { line-height: 20px; }
+#common-footer .bottom .content { height: 160px; }
+#common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; font-size: 11px; }
+#common-footer .bottom .about-menu .link { padding: 7px; }
+#common-footer .bottom .about-menu .link:first-child { margin-left: -7px; }
+#common-footer .bottom .social { position: absolute; right: -7px; top: 20px; }
+#common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 962px; height: 60px; background-position: 0 0; background-repeat: no-repeat; text-indent: -1000px; overflow: hidden; }
 
-#cocktail-club,
-#cocktail-club-placeholder { height: 68px; }
-#cocktail-club-placeholder { margin-top: 0px; }
-#cocktail-club { position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; overflow: hidden; background: #00549f; }
-#cocktail-club .border { position: absolute; top: 0; left: 0; right: 0; height: 5px; background-color: #fff; box-shadow: 0 0 25px 1px #000; -moz-box-shadow: 0 0 25px 1px #000; -webkit-box-shadow: 0 0 25px 1px #000; }
-#cocktail-club .imperative { position: relative; z-index: 1; width: 962px; margin: 20px auto 0; font-size: 28px; line-height: 28px; /*letter-spacing: 1px;*/ color: #fff; }
-#cocktail-club .imperative .facebook,
-#cocktail-club .imperative .vkontakte { white-space: nowrap; }
-#cocktail-club .imperative .facebook .link,
-#cocktail-club .imperative .vkontakte .link { display: inline-block; position: relative; vertical-align: top; overflow: hidden; text-indent: -1000px; background: url(/t/cocktail-club/logos.png) no-repeat; }
-#cocktail-club .imperative .facebook .link { top: -5px; width: 135px; height: 33px; margin: 0 -4px 0 -5px; background-position: 0 0; }
-#cocktail-club .imperative .vkontakte .link { top: -1px; width: 159px; height: 35px; margin: 0 -4px 0 -3px; background-position: -150px 0; }
-#cocktail-club .imperative .facebook .link:hover { background-position: 0 -50px; }
-#cocktail-club .imperative .vkontakte .link:hover { background-position: -150px -50px; }
+html.magazine-section #common-footer-spacer,
+html.magazine-section #common-footer { height: 159px; margin-top: 0; }
+html.magazine-section #common-footer .index { display: none; }
+
 
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
@@ -71,34 +78,16 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #cocktail-page #top .link.cocktails,
 #matching-page #top .link.cocktails,
 #ingredients-page #top .link.ingredients,
-#bars-page #top .link.bars,
-#bar-page #top .link.bars,
+html.bars-section #top .link.bars,
 #good-page #top .link.goods,
 #event-page #top .link.events,
 #academy-page #top .link.academy,
 #combinator-page #top .link.combinator,
 html.party-section #top .link.party,
 #mybar-page #top .link.mybar,
+html.ratings-section #top .link.ratings,
 html.blog-section #top .link.blog
 { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
-
-#index-page #bottom .main-menu .link.main,
-#cocktails-page #bottom .main-menu .link.cocktails,
-#cocktail-page #bottom .main-menu .link.cocktails,
-#bars-page #bottom .main-menu .link.bars,
-#bar-page #bottom .main-menu .link.bars,
-#barman-page #bottom .main-menu .link.barmen,
-#barmen-page #bottom .main-menu .link.barmen,
-#good-page #bottom .main-menu .link.goods,
-#event-page #bottom .main-menu .link.events,
-#academy-page #bottom .main-menu .link.academy,
-html.job-section #bottom .link.job,
-html.about-page #bottom .link.about,
-#combinator-page #bottom .main-menu .link.combinator,
-html.party-section #bottom .main-menu .link.party,
-html.blog-section #bottom .main-menu .link.blog,
-html.cocktail-groups-section #bottom .main-menu .link.cocktail-groups
-{ color: inherit; cursor: default; text-decoration: none !important; }
 
 
 /* that great buttons */
@@ -149,19 +138,20 @@ html.msie-6 .common-box .common-content { zoom: 1; }
 .square-list .prev.disabled { background-position: -450px -25px; }
 .square-list .next.disabled { background-position: -475px -25px; }
 
-#share-box .button { display: inline-block; width: 30px; height: 30px; }
-#share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; }
-#share-box .button.facebook i { background-position: -150px 0; }
-#share-box .button.facebook:hover i { background-position: -175px 0; }
-#share-box .button.twitter i { background-position: -150px -25px; }
-#share-box .button.twitter:hover i { background-position: -175px -25px; }
-#share-box .button.vkontakte i { background-position: -150px -50px; }
-#share-box .button.vkontakte:hover i { background-position: -175px -50px; }
+.common-share-box .button { display: inline-block; width: 30px; height: 30px; }
+.common-share-box .button i { display: block; margin: 7px 0 0 7px; width: 16px; height: 16px; background-repeat: no-repeat; }
+.common-share-box .button.facebook i { background-position: -150px 0; }
+.common-share-box .button.facebook:hover i { background-position: -175px 0; }
+.common-share-box .button.twitter i { background-position: -150px -25px; }
+.common-share-box .button.twitter:hover i { background-position: -175px -25px; }
+.common-share-box .button.vkontakte i { background-position: -150px -50px; }
+.common-share-box .button.vkontakte:hover i { background-position: -175px -50px; }
 
 
-#ancient-browser-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; text-decoration: none; }
-#ancient-browser-warning:hover { background-color: #6b0; }
-#ancient-browser-warning .time { color: #fff; }
+.overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
+a.overall-technical-warning { text-decoration: none; }
+.overall-technical-warning:hover { background-color: #6b0; }
+.overall-technical-warning .time { color: #fff; }
 html.chrome-2 body,
 html.chrome-10 body,
 html.chrome-11 body,
@@ -190,3 +180,8 @@ html.firefox-2 #ancient-browser-warning,
 html.msie-5 #ancient-browser-warning,
 html.msie-6 #ancient-browser-warning,
 html.msie-7 #ancient-browser-warning { display: block; }
+
+html.opera-10 .dragging-object,
+html.opera-11 .dragging-object { display: block !important; position: absolute; z-index: 1000; max-width: 50px; max-height: 200px; margin: 15px 0 0 15px;}
+
+<!--# include virtual="/t/popup.css" -->

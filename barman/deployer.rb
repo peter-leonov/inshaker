@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
-require 'inshaker'
+require "inshaker"
 require "lib/checker"
 
 class Deployer < Inshaker::Processor
   module Config
     ROOT_DIR = Inshaker::ROOT_DIR
+    
+    module Launcher
+      include Inshaker::Launcher
+    end
   end
   
   def job_name
@@ -17,6 +21,20 @@ class Deployer < Inshaker::Processor
     Checker.check
     if errors?
       return 1
+    end
+    
+    ok = true
+    Config::Launcher::SCRIPTS.each do |k, v|
+      error_path = Config::Launcher::SAVE_ERROR % k
+      if File.exists?(error_path)
+        ok = false
+        login = File.read(error_path)
+        
+        error Config::Launcher::LOGIN_TO_ERRORED[login] + ": #{v[1]}"
+      end
+    end
+    unless ok
+      return
     end
     
     Dir.chdir(Config::ROOT_DIR)
@@ -32,9 +50,8 @@ class Deployer < Inshaker::Processor
       return 3
     end
     
-    author = @user_author
     say "сохраняю в гит…"
-    unless system(%Q{git add . && git commit -am "content update" --author="#{author.quote}" >>inshaker.log 2>&1})
+    unless system(%Q{git add . && git commit -am "content update" --author="#{@user_author.quote}" >>inshaker.log 2>&1})
       error "не удалось сохранить обновления в гит"
       return 4
     end
