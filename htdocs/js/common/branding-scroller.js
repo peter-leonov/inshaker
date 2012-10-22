@@ -17,7 +17,7 @@ Me.prototype =
 		this.onBoxChanged()
 	},
 	
-	toggleEvent: function (onscrollBint)
+	toggleOnScroll: function (onscrollBint)
 	{
 		if (onscrollBint == this.onscrollBint)
 			return
@@ -40,7 +40,7 @@ Me.prototype =
 		
 		var isLong = nodes.holder.offsetHeight >= fixedEndY - this.fixedStartY
 		
-		this.toggleEvent(!isLong)
+		this.toggleOnScroll(!isLong)
 		
 		if (isLong)
 			return
