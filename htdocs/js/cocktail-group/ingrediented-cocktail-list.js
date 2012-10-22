@@ -84,26 +84,22 @@ Me.prototype =
 	
 	renderCocktail: function (cocktail, ingredients, recipe)
 	{
-		var a = Nc('a', 'link'),
-			root = N('dl')
-		
+		var a = Nc('a', 'link')
+			
+		var root = N('dl')
 		a.appendChild(root)
-
+		
 		var head = root.appendChild(Nc('dt', 'head')),
 			body = root.appendChild(Nc('dd', 'body'))
 		
-		var htmlName = cocktail.name_eng.htmlName(),
-			path = '/cocktail/' + htmlName
-
-		a.href = path + '/'
+		a.href = cocktail.getPath()
 		
-		var img = Nc("img", 'image')
-		img['src'] = path + '/' + htmlName + '-big.png'
+		var img = Nc('img', 'image')
+		img.src = cocktail.getBigImageSrc()
 		head.appendChild(img)
 		
-		var name = cocktail.name.replace(/ (и|в|во|с|со|на|он|от|без) /g, ' $1 ')
-		var span = Nct('span', 'cocktail-name', name)
-		body.appendChild(span)
+		var name = Nct('span', 'cocktail-name', cocktail.screenName())
+		body.appendChild(name)
 		
 		var recipeDiv = Nct('div', 'cocktail-recipe', this.getRecipe(recipe))
 		
