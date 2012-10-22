@@ -26,6 +26,9 @@ html.loading #cocktail-list { display: none; }
 
 .ingrediented-cocktail-list .group { margin: 0 0 50px 0; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
+.ingrediented-cocktail-list .group:before, .ingrediented-cocktail-list .group:after { content: "\0020"; display: block; height: 0; visibility: hidden; }
+.ingrediented-cocktail-list .group:after { clear: both; }
+
 .ingrediented-cocktail-list .group.collapsed .row { display: none; }
 .ingrediented-cocktail-list .group .group-name { font-size: 35px; }
 .ingrediented-cocktail-list .group .group-name:first-letter { text-transform: uppercase; }
@@ -51,7 +54,20 @@ html.loading #cocktail-list { display: none; }
 .ingrediented-cocktail-list .row .body .operator { color: #ccc; }
 .ingrediented-cocktail-list .row .body .ingredient-preview { margin: 0 15px 55px 15px; }
 
+.ingrediented-cocktail-list .row.odd { float: left; width: 451px; margin: 0; border: none; }
+.ingrediented-cocktail-list .row.even { float: right; width: 451px; margin: 0; border: none; }
 
+.ingrediented-cocktail-list .row.odd .image,
+.ingrediented-cocktail-list .row.even .image { width: 85px; }
+
+.ingrediented-cocktail-list .row.odd .cocktail-name,
+.ingrediented-cocktail-list .row.even .cocktail-name { font-size: 18px; }
+
+.ingrediented-cocktail-list .row.odd .cocktail-recipe,
+.ingrediented-cocktail-list .row.even .cocktail-recipe { padding: 7px 0px 0px 1px; font-size: 12px; }
+
+.ingrediented-cocktail-list .row.odd .body,
+.ingrediented-cocktail-list .row.even .body{ width: 325px; left: 100px; top: 40px; }
 
 .ingrediented-cocktail-list .cocktail-preview { float: left; margin-top: -55px;  width: 112px; text-align: center; font-size: 12px; }
 .ingrediented-cocktail-list .cocktail-preview .link { text-shadow: #fff 1px 1px 2px, #fff 1px -1px 2px, #fff -1px -1px 2px, #fff -1px 1px 2px; }
@@ -65,6 +81,10 @@ html.loading #cocktail-list { display: none; }
 .ingredient-preview .image { background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
+#more { display: block; margin: 13px 0 35px; text-align: center; }
+#more .button { display: inline-block; padding: 10px 15px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; }
+#more .button:hover { text-decoration: none; }
+
 html.opera-9 .ingredient-preview .image:before,
 html.opera-10-0 .ingredient-preview .image:before,
 html.opera-10-1 .ingredient-preview .image:before,
@@ -76,4 +96,5 @@ html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
 html.msie-6 .ingredient-preview .image,
 html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
+<!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
