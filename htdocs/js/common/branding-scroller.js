@@ -38,11 +38,11 @@ Me.prototype =
 		if (fixedEndY == this.fixedEndY)
 			return
 		
-		var isLong = nodes.holder.offsetHeight >= fixedEndY - this.fixedStartY
+		var lengthy = nodes.holder.offsetHeight < fixedEndY - this.fixedStartY
 		
-		this.toggleOnScroll(!isLong)
+		this.toggleOnScroll(lengthy)
 		
-		if (isLong)
+		if (!lengthy)
 			return
 		
 		this.fixedEndY = fixedEndY
