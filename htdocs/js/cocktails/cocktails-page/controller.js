@@ -4,25 +4,14 @@ function Me () {}
 
 Me.prototype =
 {
-	onFiltersChanged: function (filters)
+	hashUpdated: function (hash)
 	{
-		this.model.setFilters(filters)
+		this.model.setState(hash)
 	},
 	
-	onLetterFilter: function(letter) {
-		this.model.onLetterFilter(letter);
-	},
-	
-	onNameFilter: function(name){
-		this.model.onNameFilter(name);
-	},
-	
-	onPageChanged: function(num){
-		this.model.onPageChanged(num);
-	},
-	
-	onTabSelected: function(name){
-		this.model.setState(name);
+	addMoreCocktails: function ()
+	{
+		this.model.addMoreCocktails()
 	}
 }
 

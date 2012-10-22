@@ -1,126 +1,15 @@
 ;(function(){
 
-var lettersConversion =
-{
-	0: '#', 1: '#', 2: '#', 3: '#', 4: '#', 5: '#', 6: '#', 7: '#', 8: '#', 9: '#', '№': '#',
-	'ё': 'е', 'й': 'и'
-}
-
-Object.extend(Cocktail,
-{
-	indexByFirstLetter: function ()
-	{
-		if (this.index.byFirstLetter)
-			return
-		
-		function byFirstLetter (v)
-		{
-			var letter = v.name.charAt(0).toLowerCase()
-			var l = lettersConversion[letter]
-			return l || letter
-		}
-		this.index.byFirstLetter = DB.hashOfAryIndexBy(this.db, byFirstLetter)
-	},
-	
-	getByFirstLetterPrepare: function ()
-	{
-		this.indexByFirstLetter()
-	},
-	
-	getByFirstLetter: function (letter)
-	{
-		return this.index.byFirstLetter[letter.toLowerCase()]
-	},
-	
-	getFirstLettersPrepare: function ()
-	{
-		this.indexByFirstLetter()
-	},
-	
-	getFirstLetters: function ()
-	{
-		var letters = Object.keys(this.index.byFirstLetter)
-		letters.sort()
-		return letters
-	}
-})
-
 Cocktail.findAndBindPrepares()
 
-function Me () {}
+function Me ()
+{
+	this.state = null
+	this.getBySimilarNameCache = {}
+}
 
 Me.prototype =
 {
-	setFilters: function (filters)
-	{
-		this.view.renderLetters(Cocktail.getFirstLetters())
-		
-		this.completeFilters(filters || {})
-		var state = this.filters.state
-		this.filters.state = null
-		this.setState(state, this.filters)
-	},
-	
-	getRandomCocktail: function ()
-	{
-		return Cocktail.getAll().random(1)[0]
-	},
-	
-	knownStates: {byName: 1, byLetter: 1, top20: 1},
-	
-	completeFilters: function (filters)
-	{
-		this.filters =
-		{
-			name: filters.name || '',
-			letter: filters.letter || '*',
-			page: filters.page || 0,
-			state: this.knownStates[filters.state] ? filters.state : 'byName'
-		}
-	},
-	
-	setState: function (state, filters)
-	{
-		if (this.filters.state == state)
-			return
-		
-		if (state == 'byName')
-			this.view.renderRandomCocktail(this.getRandomCocktail())
-		
-		this.view.turnToState(state)
-		this.completeFilters(filters || {})
-		this.filters.state = state
-		this.applyFilters()
-	},
-	
-	onPageChanged: function(num){
-		this.filters.page = num;
-		this.view.saveFilters(this.filters);
-	},
-	
-	onLetterFilter: function(letter)
-	{
-		if (letter == this.filters.letter)
-			return
-		
-		Statistics.cocktailsFilterSelected(letter)
-		
-		this.filters.page = 0
-		this.filters.letter = letter
-		this.applyFilters()
-	},
-	
-	onNameFilter: function (name)
-	{
-		if (name == this.filters.name)
-			return
-		
-		this.filters.name = name
-		this.filters.page = 0
-		this.applyFilters()
-	},
-	
-	getBySimilarNameCache: {},
 	getBySimilarName: function (name)
 	{
 		if (this.getBySimilarNameCache[name])
@@ -153,44 +42,81 @@ Me.prototype =
 		return (this.getBySimilarNameCache[name] = res)
 	},
 	
-	
-	getCocktailsByFilters: function (filters)
+	getCocktailsByState: function (state)
 	{
-		if (filters.state == 'byName')
-		{
-			if (filters.name)
-				return this.getBySimilarName(filters.name)
-			
-			var res = Cocktail.getAll()
-			res.randomize()
-			return res
-		}
+		if (state)
+			return this.getBySimilarName(state)
 		
-		if (filters.state == 'byLetter')
-		{
-			if (filters.letter == '*')
-				return Cocktail.getAll()
-			
-			if (filters.letter)
-				return Cocktail.getByFirstLetter(filters.letter)
-		}
-		
-		if (filters.state == 'top20')
-		{
-			var res = Cocktail.getByTag('Самые популярные')
-			res.sort(Cocktail.sortByComplexity)
-			return res
-		}
-		
-		return []
+		var res = Cocktail.getAll()
+		res.randomize()
+		return res
 	},
 	
-	
-	applyFilters: function()
+	setRandomCocktail: function ()
 	{
-		var filters = this.filters
-		var res = this.getCocktailsByFilters(filters)
-		this.view.onModelChanged(res, filters)
+		var cocktail = Cocktail.getAll().random(1)[0]
+		this.view.renderRandomCocktail(cocktail)
+	},
+	
+	setState: function (state)
+	{
+		if (this.state == state)
+			return
+		
+		this.state = state
+		
+		this.result = this.getIterator(this.getCocktailsByState(state))
+		
+		this.addNewCocktails()
+	},
+	
+	addMoreCocktails: function ()
+	{
+		var view = this.view
+		function render (cocktails, left)
+		{
+			view.renderMoreCocktails(cocktails, left)
+		}
+		this.result(this.cocktailsPerPage, render)
+	},
+	
+	addNewCocktails: function ()
+	{
+		var view = this.view
+		function render (cocktails, left)
+		{
+			if (cocktails.length == 0)
+			{
+				view.notHaveCocktails()
+				return
+			}
+			
+			view.renderNewCocktails(cocktails, left)
+		}
+		this.result(this.cocktailsPerPage, render)
+	},
+	
+	setCocktailsPerPage: function (count)
+	{
+		this.cocktailsPerPage = count
+	},
+	
+	getIterator: function (all)
+	{
+		var start = 0
+		function iterator (count, callback)
+		{
+			var items = all.slice(start, start + count)
+			start += count
+			
+			function call (e)
+			{
+				callback(items, all.length - start)
+			}
+			window.setTimeout(call, 0)
+		}
+		
+		return iterator
 	}
 }
 

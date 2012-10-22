@@ -9,13 +9,43 @@ Me.prototype =
 		this.nodes = nodes
 		
 		this.fixedStartY = nodes.holder.offsetTop
-		this.fixedEndY = nodes.page.scrollHeight
 		
-		if (nodes.holder.offsetHeight >= this.fixedEndY - this.fixedStartY)
-			return
+		this.onscrollListener = function (e) { me.onscroll() }
 		
 		var me = this
-		window.addEventListener('scroll', function (e) { me.onscroll() }, false)
+		document.addEventListener('inshaker-box-changed', function (e) { me.onBoxChanged() }, false)
+		this.onBoxChanged()
+	},
+	
+	toggleOnScroll: function (onscrollBint)
+	{
+		if (onscrollBint == this.onscrollBint)
+			return
+		
+		if (onscrollBint)
+			window.addEventListener('scroll', this.onscrollListener, false)
+		else
+			window.removeEventListener('scroll', this.onscrollListener, false)
+		
+		this.onscrollBint = onscrollBint
+	},
+	
+	onBoxChanged: function ()
+	{
+		var nodes = this.nodes
+		
+		var fixedEndY = nodes.page.scrollHeight
+		if (fixedEndY == this.fixedEndY)
+			return
+		
+		var lengthy = nodes.holder.offsetHeight < fixedEndY - this.fixedStartY
+		
+		this.toggleOnScroll(lengthy)
+		
+		if (!lengthy)
+			return
+		
+		this.fixedEndY = fixedEndY
 		this.onscroll()
 	},
 	

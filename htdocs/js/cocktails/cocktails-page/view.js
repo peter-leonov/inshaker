@@ -1,16 +1,13 @@
 ;(function(){
 
-function remClass(elem, className) { if(elem) elem.classList.remove(className) }
+function Me () {}
 
-function Me (nodes)
-{
-	this.riJustInited  = true;
-	this.filterElems   = { letter: null }
-	this.perPage       = 20;
-	this.np            = -1;
-	this.renderedPages = {}
-	this.nodeCache     = []
-}
+eval(NodesShortcut.include())
+
+var UrlEncodeLight = {}
+Object.extend(UrlEncodeLight, UrlEncode)
+UrlEncodeLight.encode = function (v) { return ('' + v).replace('&', '%26') }
+UrlEncodeLight.decode = function (v) { return ('' + v).replace('%26', '&') }
 
 Me.prototype =
 {
@@ -18,316 +15,109 @@ Me.prototype =
 	{
 		this.nodes = nodes
 		
-		this.dropTargets =
-		[
-			this.nodes.cartEmpty,
-			this.nodes.cartFull
-		]
-		
-		new RollingImagesLite(this.nodes.resultsDisplay, {animationType: 'easeInOutQuad', duration:0.75})
-		
-		this.fixHashChange()
-		this.bindEvents()
-	},
-	
-	fixHashChange: function ()
-	{
-		// fix for cocktails initialization issue
-		this.currentHash = window.location.hash
-		var me = this
-		function checkHash ()
-		{
-			if (me.currentHash != window.location.hash)
-				window.location.reload(true)
-		}
-		window.setInterval(checkHash, 250)
-	},
-	
-	checkRequest: function ()
-	{
-		var filters = this.filtersFromRequest()
-		this.controller.onFiltersChanged(filters)
-	},
-	
-	filtersFromRequest: function ()
-	{
-		var m = window.location.href.match(/#(.+)$/)
-		if (!m)
-			return
-		
-		var filters = UrlEncode.parse(m[1])
-		filters.page = +filters.page || 0
-		return filters
-	},
-	
-	saveFilters: function (filters) {
-		var self = this;
-		window.clearTimeout(this.hashTimeout);
-		this.hashTimeout = window.setTimeout(function() {
-			self.updatePageHash(filters);
-		} , 400);
-	},
-	
-	updatePageHash: function (filters)
-	{
-		var hash = {}
-		for (var k in filters)
-		{
-			var v = filters[k]
-			
-			if (!v || v == '*')
-				continue
-			
-			if (k == 'state' && v == 'byName')
-				continue
-			
-			hash[k] = v
-		}
-		
-		window.location.hash = UrlEncode.stringify(hash) || 'i'
-		this.currentHash = window.location.hash
-	},
-	
-	bindEvents: function ()
-	{
-		var self = this;
-		
-		var nodes = this.nodes
-		
-		var ril = nodes.resultsDisplay.RollingImagesLite;
-		
-		nodes.bigPrev.addEventListener('mousedown', function(e){ ril.goPrev() }, false);
-		nodes.bigNext.addEventListener('mousedown', function(e){ ril.goNext() }, false);
-		
-		ril.onselect = function (node, num) {
-			if (!self.riJustInited) {
-				self.controller.onPageChanged(num);
-				self.renderNearbyPages(num, 0)
-			} else { self.riJustInited = false }
-			
-			// big pager buttons
-			if(num == (self.np-1) || self.np == 1) nodes.bigNext.classList.add('disabled');
-			else nodes.bigNext.classList.remove('disabled');
-			if(num == 0 || self.np == 1) nodes.bigPrev.classList.add('disabled');
-			else nodes.bigPrev.classList.remove('disabled');
-		}
-		
-		nodes.searchByName.getElementsByTagName("form")[0].addEventListener('submit', function(e) { e.preventDefault() }, false);
-		var searchByNameInput = nodes.searchByName.getElementsByTagName("input")[0];
-		searchByNameInput.addEventListener('keyup', function(e){ self.controller.onNameFilter(this.value) }, false);
-		
-		var nameSearchHandler = function (e) {
-			searchByNameInput.value = this.innerHTML;
-			self.controller.onNameFilter(this.innerHTML);
-			nodes.panels.classList.add('just-suggested')
-		}
-		
-		nodes.searchExampleName.addEventListener('mousedown', nameSearchHandler, false);
-		nodes.searchExampleNameEng.addEventListener('mousedown', nameSearchHandler, false);
-		
 		var controller = this.controller
-		function tabClicked (e)
-		{
-			var name = e.target.getAttribute('data-tab-name')
-			if (!name)
-				return
-			controller.onTabSelected(name)
-		}
-		nodes.tabsRoot.addEventListener('click', tabClicked, false)
+		nodes.more.addEventListener('click', function (e) { controller.addMoreCocktails() }, false)
+		
+		var lh = this.lh = new LocationHash().bind()
+		var view = this
+		lh.addEventListener('change', function (e) { view.hashUpdated() }, false)
+		
+		nodes.searchForm.addEventListener('submit', function(e) { e.preventDefault() }, false);
+		nodes.searchByNameInput.addEventListener('keyup', function(e){ view.changeHashName(this.value) }, false);
 	},
 	
-	turnToState: function (state)
+	hashUpdated: function ()
 	{
-		var nodes = this.nodes
+		var hash = UrlEncodeLight.parse(this.lh.get()),
+			name = hash.name || ''
 		
-		var last = nodes.tabs[this.lastState]
-		if (last)
-			last.classList.remove('selected')
+		this.controller.hashUpdated(name)
 		
-		this.lastState = state
+		this.nodes.searchByNameInput.value = name
+	},
+	
+	changeHashName: function (name)
+	{
+		var nameHash = {}
+		if (name)
+			nameHash.name = name
 		
-		var present = nodes.tabs[state]
-		if (present)
-			present.classList.add('selected')
+		this.lh.set(UrlEncodeLight.stringify(nameHash) || 'i')
 		
-		nodes.panels.className = state
-		
-		if (state == 'byName')
-		{
-			nodes.searchByNameInput.value = ''
-			nodes.searchByNameInput.focus()
-		}
+		this.controller.hashUpdated(name)
 	},
 	
 	renderRandomCocktail: function (cocktail)
 	{
-		var nodes = this.nodes
-		nodes.searchExampleName.innerHTML = cocktail.name
-		nodes.searchExampleNameEng.innerHTML = cocktail.name_eng
+		this.nodes.searchByNameInput.placeholder = cocktail.name + '   —   ' + cocktail.name_eng
 	},
 	
-	onModelChanged: function(resultSet, filters) { // model
-		this.currentFilters = filters;
-		
-		this.renderAllPages(resultSet, filters.page);
-		this.renderFilters(this.currentFilters);
-	},
-	
-	renderFilters: function(filters){
-		var nodes = this.nodes
-		
-		remClass(this.filterElems.letter || nodes.lettersAll, 'selected-button');
-		if (filters.letter == '*')
-		{
-			this.filterElems.letter = nodes.lettersAll
-		}
-		else
-		{
-			var letterElems = $$("a", nodes.alphabetRu).concat(nodes.lettersAll);
-			
-			for(var i = 0; i < letterElems.length; i++) {
-				if(letterElems[i].innerHTML == filters.letter.toLowerCase()){
-					this.filterElems.letter = letterElems[i];
-					break;
-				}
-			}   
-		}
-		this.filterElems.letter.classList.add('selected-button');
-		
-		if(filters.page > 0) {
-			nodes.resultsDisplay.RollingImagesLite.goToNode($('#page_'+filters.page), 'directJump');
-		}
-		
-		if (filters.name)
-		{
-			var input = nodes.searchByNameInput
-			if (input.value != filters.name)
-				input.value = filters.name
-		}
-	},
-	
-	renderAllPages: function(resultSet, pageNum){
-		var nodes = this.nodes
-		
-		this.resultSet = resultSet;
-		this.np = Math.ceil(resultSet.length / this.perPage)
-		
-		nodes.resultsRoot.empty();
-		
-		if (resultSet.length)
-			nodes.resultsDisplay.classList.remove('empty')
-		else
-			nodes.resultsDisplay.classList.add('empty')
-			
-		
-		this.renderedPages = {}
-		this.nodeCache     = []
-		this.renderSkeleton(this.np);
-		this.renderNearbyPages(pageNum);
-		
-		this.renderPager(this.np);
-		nodes.resultsDisplay.RollingImagesLite.sync();
-		nodes.resultsDisplay.RollingImagesLite.goInit();
-	},
-	
-	renderSkeleton: function (count)
+	renderMoreCocktails: function (cocktails, left)
 	{
 		var nodes = this.nodes,
-			parent = nodes.resultsRoot,
-			pages = nodes.pages = []
+			container = nodes.cocktailsList
 		
-		for (var i = 0; i < count; i++)
+		for (var i = 0, il = cocktails.length; i < il; i++)
 		{
-			var page = pages[i] = document.createElement('ul')
-			page.id = 'page_' + i
-			page.className = 'point cocktails';
-			parent.appendChild(page)
+			var item = Nc('li', 'item')
+			item.appendChild(cocktails[i].getPreviewNodeCropped())
+			container.appendChild(item)
 		}
+		
+		var eventBoxChanged = document.createEvent('Event')
+		eventBoxChanged.initEvent('inshaker-box-changed', true, true)
+		container.dispatchEvent(eventBoxChanged)
+		
+		this.renderMoreButton(left)
 	},
 	
-	renderNearbyPages: function (num, delta)
+	renderNewCocktails: function (cocktails, left)
 	{
-		if (delta === undefined)
-			delta = 1
-		
-		for (var i = num - delta; i <= num + delta; i++)
-			if(i >= 0 && i < this.np && !this.renderedPages[i])
-				this.renderPage(i)
+		this.nodes.cocktailsList.empty()
+		this.nodes.resultsDisplay.classList.remove('empty')
+		this.renderMoreCocktails(cocktails, left)
 	},
 	
-	renderLetters: function (set){
-		var nodes = this.nodes
-		
-		var controller = this.controller
-		function click (e)
-		{
-			var letter = e.target.dataLetter
-			controller.onLetterFilter(letter);
-		}
-		
-		nodes.lettersAll.dataLetter = '*'
-		nodes.lettersAll.addEventListener('click', click, false)
-		
-		var parent = nodes.alphabetRu
-		
-		for(var i = 0; i < set.length; i++){
-			var a = document.createElement("a");
-			a.innerHTML = set[i];
-			a.dataLetter = set[i]
-			parent.appendChild(a);
-			a.addEventListener('click', click, false)
-		}
-	},
-	
-	renderPage: function (num)
+	notHaveCocktails: function ()
 	{
-		var nodes = this.nodes
-		
-		var cocktails = this.resultSet,
-			node, cocktail, cache = this.nodeCache,
-			parent = nodes.pages[num],
-			end = (num + 1) * this.perPage,
-			dropTargets = this.dropTargets
-		
-		function bindDragData (node, data)
-		{
-			function onDragStart (e)
-			{
-				e.dataTransfer.setData('text', data)
-			}
-			node.addEventListener('dragstart', onDragStart, false)
-		}
-		
-		for (var i = num * this.perPage; i < end; i++)
-		{
-			var item = document.createElement('li')
-			item.className = 'item'
-			
-			if (!(node = cache[i]))
-			{
-				if (!(cocktail = cocktails[i]))
-					continue
-				node = cache[i] = cocktail.getPreviewNodeCropped()
-				bindDragData(node, cocktail.name)
-			}
-			item.appendChild(node)
-			parent.appendChild(item)
-		}
-		
-		this.renderedPages[num] = true
+		this.nodes.cocktailsList.empty()
+		this.nodes.resultsDisplay.classList.add('empty')
 	},
 	
-	renderPager: function (numOfPages) {
-		var span = this.nodes.pagerRoot;
-		span.empty();
-		for (var i = 1; i <= numOfPages; i++) {
-			var a = document.createElement("a");
-			a.className= i >= 10 ? "button two" : "button";
-			a.appendChild(document.createTextNode(i));
-			span.appendChild(a);
-			span.appendChild(document.createTextNode(' '))
+	setCocktailsPerPage: function (count)
+	{
+		this.cocktailsPerPage = count
+	},
+
+	renderMoreButton: function (count)
+	{
+		if (count <= 0)
+		{
+			this.hideMoreButton()
+			return
 		}
+		
+		this.showMoreButton()
+		
+		count = Math.min(count, this.cocktailsPerPage)
+		this.nodes.more.innerHTML = 'еще ' + count + ' ' + count.plural('коктейль', 'коктейля', 'коктейлей')
+	},
+	
+	showMoreButton: function ()
+	{
+		this.nodes.more.show()
+	},
+	
+	hideMoreButton: function ()
+	{
+		this.nodes.more.hide()
+	},
+	
+	renameMoreButton: function (count)
+	{
+		
 	}
+
 }
 
 Papa.View = Me

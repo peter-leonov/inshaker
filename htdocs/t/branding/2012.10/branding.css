@@ -81,6 +81,9 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 .b-search .groups dd.disabled { color: #999; }
 #search_by_ingreds .autocomplete { left: 0; top: 21px; width: 577px; background-color: #fff; color: #000; border-color: #570709; }
 #search_by_ingreds .autocomplete .item.selected { background-color: #d2d2d2; }
+#more .button { background-color: #e31928; color: #fff; }
+#more .button:hover { background-color: #a30000; }
+
 
 /* cocktail.css */
 #top-menu .border-links a:hover,
