@@ -1,7 +1,1 @@
-;(function(){
-
-var message = 'missing JS include: "<!--# echo var="args" -->"'
-alert(message)
-log(message)
-
-})();
+try { console.error('missing JS include: "<!--# echo var="args" -->"') } catch (ex) {}
