@@ -132,7 +132,7 @@ var AboutPage = {
 		}
 		form.addEventListener('submit', sendListener, false)
 		
-		
+		/*
 		var content = $('#partner-list')
 		
 		var marks = Mark.getAll()
@@ -150,6 +150,7 @@ var AboutPage = {
 		var spacer = document.createElement('span')
 		spacer.className = 'spacer'
 		content.appendChild(spacer)
+		*/
 	},
 	
 	drawCharts: function ()
