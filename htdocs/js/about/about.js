@@ -132,7 +132,7 @@ var AboutPage = {
 		}
 		form.addEventListener('submit', sendListener, false)
 		
-		this.renderPartners()
+		// this.renderPartners()
 	},
 	
 	renderPartners: function ()
