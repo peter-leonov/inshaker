@@ -132,7 +132,11 @@ var AboutPage = {
 		}
 		form.addEventListener('submit', sendListener, false)
 		
-		
+		this.renderPartners()
+	},
+	
+	renderPartners: function ()
+	{
 		var content = $('#partner-list')
 		
 		var marks = Mark.getAll()
