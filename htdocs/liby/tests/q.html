@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Q tests</title>
+	<script src="tests.common.js"></script>
+	
+	<script src="../src/modules/q.js"></script>
+</head>
+<body>
+<script>
+Tests.test(function (t)
+{
+	var fired
+	function done ()
+	{
+		fired = true
+	}
+	
+	t.test('n', function (t)
+	{
+		fired = false
+		
+		var q = new Q.n(done, 3)
+		t.no(fired, 'just created')
+		
+		var a = q.wait()
+		t.no(fired, 'a wait')
+		
+		var b = q.wait()
+		t.no(fired, 'b wait')
+		
+		var c = q.wait()
+		t.no(fired, 'b wait')
+		
+		var d = q.wait()
+		t.no(fired, 'b wait')
+		
+		var e = q.wait()
+		t.no(fired, 'b wait')
+		
+		c()
+		t.no(fired, 'c fired')
+		
+		e()
+		t.no(fired, 'e fired')
+		
+		a()
+		t.ok(fired, 'a fired')
+	})
+	
+	t.test('all', function (t)
+	{
+		fired = false
+		
+		var q = Q.all(done)
+		t.no(fired, 'just created')
+		
+		var a = q.wait()
+		t.no(fired, 'a wait')
+		
+		var b = q.wait()
+		t.no(fired, 'b wait')
+		
+		b()
+		t.no(fired, 'b fired')
+		
+		a()
+		t.ok(fired, 'a fired')
+	})
+	
+	t.test('any', function (t)
+	{
+		fired = false
+		
+		var q = Q.any(done)
+		t.no(fired, 'just created')
+		
+		var a = q.wait()
+		t.no(fired, 'a wait')
+		
+		var b = q.wait()
+		t.no(fired, 'b wait')
+		
+		b()
+		t.ok(fired, 'b fired')
+		
+		fired = false
+		
+		a()
+		t.no(fired, 'a fired')
+	})
+	
+	t.test('been fired', function (t)
+	{
+		fired = false
+		
+		var q = Q.all(done)
+		q.fire()
+		t.ok(fired, 'just created')
+		
+		fired = false
+		
+		var a = q.wait()
+		t.no(fired, 'a wait')
+		
+		var b = q.wait()
+		t.no(fired, 'b wait')
+		
+		b()
+		t.no(fired, 'b fired')
+		
+		a()
+		t.no(fired, 'a fired')
+		
+		a()
+		t.no(fired, 'a fired second time')
+		b()
+		t.no(fired, 'a fired second time')
+		
+		var c = q.wait()
+		t.no(fired, 'c wait')
+		
+		c()
+		t.no(fired, 'c fired')
+	})
+	
+	t.test('shortcuts', function (t)
+	{
+		fired = false
+		
+		var q = Q.all(done)
+		
+		var all = q.all()
+		var a = all.wait()
+		all.wait()()
+		all.wait()()
+		all.wait()()
+		
+		var any = q.any()
+		any.wait()
+		any.wait()
+		var b = any.wait()
+		any.wait()
+		any.wait()
+		
+		var any = q.n(3)
+		any.wait()()
+		any.wait()
+		var c = any.wait()
+		any.wait()()
+		any.wait()
+		
+		t.no(fired, 'ready to fire')
+		a()
+		t.no(fired, 'a fired')
+		b()
+		t.no(fired, 'b fired')
+		c()
+		t.ok(fired, 'c fired')
+	})
+})
+</script>
+</body>
+</html>

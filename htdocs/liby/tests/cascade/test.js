@@ -1,6 +1,6 @@
 ;(function(){
 
-var myName = 'Test', Super = Cascade
+var myName = 'Test'
 
 function indexOf (a, v, i)
 {
@@ -14,37 +14,60 @@ function indexOf (a, v, i)
 	return -1
 }
 
-function Me (parent, name, conf, callback)
+function Me (parent, name, conf, job, callback)
 {
-	Super.call(this)
-	
 	this.conf = conf || {}
 	this.results = []
 	
+	this.childrenQueue = []
+	this.childrenSpawned = 0
+	this.childrenParallelLimit = Infinity
+	
 	this.parent = parent
-	this.name = name || '(untitled)'
+	this.reporter = parent.reporter.create()
+	this.reporter.name(name || '(untitled)')
+	this.job = job
 	this.callback = callback
 	
 	this.tool = new Me.Tool(this)
-	this.constructor = Me
 }
 
-var sup = Super.prototype,
-	prototype =
+Me.prototype =
 {
 	status: 'new',
 	finished: false,
 	reporter: devNull,
 	
-	run: function ()
+	test: function (name, conf, job)
 	{
-		this.start()
+		if (arguments.length == 2)
+		{
+			job = conf
+			conf = undefined
+		}
+		else if (arguments.length == 1)
+		{
+			job = name
+			conf = undefined
+			name = undefined
+		}
+		
+		if (typeof job !== 'function')
+			throw new Error('job is not present')
+		
+		var test = new Me(this, name, conf, job, this.q.wait())
+		
+		this.addChildTest(test)
 	},
 	
-	start: function (delay)
+	run: function (callback)
 	{
-		this.reporter.name(this.name)
-		this.supercall('start', [delay])
+		var me = this
+		this.q = Q.all(function () { me._done() })
+		
+		var last = this.q.wait()
+		this.exec(this.job, [this.tool])
+		last()
 	},
 	
 	exec: function (f, args)
@@ -56,45 +79,54 @@ var sup = Super.prototype,
 		catch (ex)
 		{
 			this.fail([ex], 'got an exception')
+			window.setTimeout(function () { throw ex }, 0)
 		}
-	},
-	
-	job: function ()
-	{
-		this.exec(this.callback, [this.tool])
-	},
-	
-	oncomplete: function ()
-	{
-		this._done()
 	},
 	
 	async: function (f, d)
 	{
-		var me = this
-		this.add(function () { f(me.tool) }).start(d)
+		var w = this.q.wait()
 		this.setStatus('waiting')
+		
+		var me = this
+		function callback ()
+		{
+			try
+			{
+				f(me.tool)
+			}
+			finally
+			{
+				w()
+			}
+		}
+		window.setTimeout(callback, d)
 	},
 	
 	wait: function (d)
 	{
-		var me = this
-		var c = this.add(function () { me.timedOut() })
-		c.spawnable = false
-		if (d !== undefined)
-			c.start(d)
+		this.q.wait()
 		this.setStatus('waiting')
+		
+		if (d === undefined)
+			return
+		
+		var me = this
+		window.setTimeout(function () { me.timedOut() }, d)
 	},
 	
 	timedOut: function ()
 	{
+		if (this.finished)
+			return
+		
 		this.fail(new Me.Label('test timed out'))
 		this.done()
 	},
 	
 	done: function ()
 	{
-		this.stop()
+		this.q.fire()
 	},
 	
 	_done: function ()
@@ -128,6 +160,32 @@ var sup = Super.prototype,
 		this.finished = true
 		this.summary()
 		this.parent.childTest(this)
+		this.callback()
+	},
+	
+	addChildTest: function (test)
+	{
+		this.childrenQueue.push(test)
+		this.spawnChildren()
+	},
+	
+	spawnChildren: function ()
+	{
+		while (this.childrenSpawned < this.childrenParallelLimit)
+		{
+			this.childrenSpawned++
+			
+			var test = this.childrenQueue.shift()
+			if (!test)
+				break
+			
+			run(test)
+		}
+		
+		function run (test)
+		{
+			window.setTimeout(function () { test.run() }, 0)
+		}
 	},
 	
 	childTest: function (test)
@@ -137,33 +195,9 @@ var sup = Super.prototype,
 			this.fail()
 		else if (status === 'passed')
 			this.pass()
-	},
-	
-	test: function (name, conf, callback)
-	{
-		if (arguments.length == 2)
-		{
-			callback = conf
-			conf = undefined
-		}
-		else if (arguments.length == 1)
-		{
-			callback = name
-			conf = undefined
-			name = undefined
-		}
 		
-		if (typeof callback !== 'function')
-			throw new Error('callback is not present')
-		
-		var test = new Me(this, name, conf, callback)
-		test.holder = this.holder
-		test.reporter = this.reporter.create(test.holder, test)
-		
-		// link cascades
-		this.add(test)
-		
-		return test
+		this.childrenSpawned--
+		this.spawnChildren()
 	},
 	
 	summary: function ()
@@ -213,19 +247,8 @@ var sup = Super.prototype,
 	{
 		this.status = s
 		this.reporter.setStatus(s)
-	},
-	
-	supercall: function (name, args)
-	{
-		// oh, mama…
-		this.constructor.prototype.constructor.prototype[name].apply(this, args)
 	}
 }
-
-var proto = new Super()
-for (var k in prototype)
-	proto[k] = prototype[k]
-Me.prototype = proto
 
 Me.className = myName
 self[myName] = Me
