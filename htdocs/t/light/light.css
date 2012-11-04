@@ -17,11 +17,10 @@ table{border:0;border-collapse:collapse;}
 table td{padding:0;}
 html{font:10px Tahoma,Arial,sans-serif;}
 
-/* fix window-html-body box model */
-html { overflow-y: scroll; height: 100%; }
-
 @media screen
 {
+/* fix window-html-body box model */
+html { overflow-y: scroll; height: 100%; }
 body { min-width: 985px; position: relative; min-height: 100%; }
 }
 
