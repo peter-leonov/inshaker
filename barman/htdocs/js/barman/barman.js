@@ -109,7 +109,7 @@ $.onready(function()
 	function remember (e)
 	{
 		var fh = FormHelper.toHash(nodes.processorsList)
-		Cookie.set('barman-memory', JSON.stringify(fh), Date.diff('1y'))
+		Cookie.set('barman-memory', JSON.stringify(fh), Date.parseDiff('1y'))
 	}
 	nodes.processorsList.addEventListener('click', remember, false)
 	
