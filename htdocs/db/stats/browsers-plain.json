@@ -1,14 +1,14 @@
 [
-["Chrome",69898],
-["Opera",39727],
-["Firefox",25865],
-["Safari",20469],
-["Internet Explorer",9281],
-["Opera Mini",4989],
-["Android Browser",4640],
-["Safari (in-app)",530],
-["Mozilla Compatible Agent",222],
-["RockMelt",46],
+["Chrome",69735],
+["Opera",39432],
+["Firefox",25784],
+["Safari",20291],
+["Internet Explorer",9303],
+["Opera Mini",4940],
+["Android Browser",4529],
+["Safari (in-app)",528],
+["Mozilla Compatible Agent",217],
+["RockMelt",45],
 ["SeaMonkey",15],
 ["UCWEB",10],
 ["HTC_HD2_T8585 Opera",7],
@@ -31,5 +31,5 @@
 ["UYEXQKGJDPMVWJP",1],
 ["goplinetreide",1],
 ["nokia6280",1],
-{"total":{"visits":175729}}
+{"total":{"visits":174866}}
 ]
