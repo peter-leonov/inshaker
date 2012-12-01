@@ -109,7 +109,7 @@ class Cocktail < Inshaker::Entity
     when "ingredient"
       return Cocktail.by_any_of_ingredients([name])
     
-    when "tool", "thing"
+    when "tool", "glass", "thing"
       return Cocktail.by_any_of_tools([name])
     
     when "cocktail"
