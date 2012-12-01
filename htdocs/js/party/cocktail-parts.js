@@ -44,7 +44,7 @@ Me.prototype =
 	setGood: function (good, amount)
 	{
 		this.addGood(good, 0)
-		this.parts[good.name] = amount
+		this.parts[good.name].amount = amount
 	},
 	
 	getPartByGood: function (name)
