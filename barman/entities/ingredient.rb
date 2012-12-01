@@ -128,7 +128,7 @@ class Ingredient < Inshaker::Entity
   end
   
   def self.parse_dose dose
-    m = dose.match(/^ *(\d+(?:[.,]\d+)?) *(\S+)(?: +(на человека|на порцию|на вечеринку))? *$/)
+    m = dose.match(/^ *(\d+(?:[.,]\d+)?) *(\S+)(?: +(на человека|на порцию|на вечеринку|на коктейль))? *$/)
     unless m
       return nil
     end
