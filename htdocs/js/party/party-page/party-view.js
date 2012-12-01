@@ -234,6 +234,11 @@ Me.prototype =
 	cocktailCountChanged: function (e)
 	{
 		var target = e.target
+		
+		var num = target.dataInListNumber
+		if (num == undefined)
+			return
+		
 		this.controller.cocktailCountChanged(target.dataInListNumber, getIntegerValue(target.value))
 	},
 	
