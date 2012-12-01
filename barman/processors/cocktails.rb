@@ -675,7 +675,14 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       if e.class == String
-        [e, 1.0, "шт", "cocktail"]
+        case Ingredient.group_of_group(Ingredient[e]["group"])
+        when "glass"
+          [e, 1.0, "шт", "guest"]
+        when "tool", "thing"
+          [e, 1.0, "шт", "party"]
+        else
+          [e, 1.0, "шт", "cocktail"]
+        end
       elsif e.class == Hash
         name, amount = e.shift
         parse_part(name, amount)
