@@ -1,5 +1,5 @@
 #poll-popup .popup-controls,
-#poll-popup .popup-window { width: 430px; margin: 0 auto; top: 40px; position: relative; }
+#poll-popup .popup-window { width: 500px; margin: 0 auto; top: 40px; position: relative; }
 #poll-popup .popup-controls { height: 10px; }
 #poll-popup .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }
 
@@ -7,6 +7,7 @@
 #poll-popup .poll-window h4 { font-size: 20px; margin-bottom: 15px; }
 #poll-popup .poll-window .variants li { display: block; margin: 0 0 10px 0; }
 #poll-popup .poll-window .variants .control { margin: 0 10px 0 0; }
+#poll-popup .poll-window .hint { font-size: 12px; font-style: italic; margin: 20px 0; }
 #poll-popup .poll-window .confirm { font-size: 17px; margin: 22px 0 0; text-align: center; }
 
 #poll-popup .poll-window .thank-you { display: none; position: absolute; top: 50%; left: 0; width: 100%; margin-top: -0.65em; font-size: 35px; text-align: center; }
