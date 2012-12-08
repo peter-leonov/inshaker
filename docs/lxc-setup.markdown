@@ -81,7 +81,7 @@ later
 	sudo lxc-console -n demo1
 	# to exit: ctrl+a q
 
-	sudo ln -s /var/lib/lxc/demo1/config /etc/lxc/auto/lxc-demo1.conf
+	sudo ln -s /var/lib/lxc/demo1/config /etc/lxc/auto/demo1.conf
 
 
 
