@@ -8,8 +8,8 @@ module Mail
       to       o[:to]
       subject  o[:subject]
       
-      header['X-HTTP-User-Agent'] = ENV['HTTP_USER_AGENT'].to_s.dup
-      header['X-HTTP-Remote-Addr'] = (ENV['HTTP_X_FORWARDED_FOR'] || ENV['HTTP_X_REAL_IP'] || ENV['REMOTE_ADDR']).to_s.dup
+      # header['X-HTTP-User-Agent'] = ENV['HTTP_USER_AGENT'].to_s.dup
+      # header['X-HTTP-Remote-Addr'] = (ENV['HTTP_X_FORWARDED_FOR'] || ENV['HTTP_X_REAL_IP'] || ENV['REMOTE_ADDR']).to_s.dup
       
       
       html_part do
