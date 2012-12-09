@@ -52,21 +52,21 @@ LXC
 
 
 	sudo lxc-checkconfig
-	>>> all green and enabled
+	# >>> all green and enabled
 	
 	ifconfig | grep lxc
-	>>> lxcbr0 ...
+	# >>> lxcbr0 ...
 	
 	sudo lxc-create -t ubuntu -n demo1
-	>>> lots of packages
+	# >>> lots of packages
 	
 	# the template
 	sudo du -sh /var/cache/lxc/
-	>>> 363M   /var/cache/lxc/
+	# >>> 363M   /var/cache/lxc/
 	
 	# the container
 	sudo du -sh /var/lib/lxc/demo1/
-	>>> 364M	/var/lib/lxc/demo1/
+	# >>> 364M	/var/lib/lxc/demo1/
 	
 	
 	sudo lxc-start -n demo1
