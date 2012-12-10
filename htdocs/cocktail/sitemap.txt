@@ -30,7 +30,6 @@ http://www.inshaker.ru/cocktail/pineapple_whisky/
 http://www.inshaker.ru/cocktail/pineapple_detox/
 http://www.inshaker.ru/cocktail/pineapple_new_year_s_punch/
 http://www.inshaker.ru/cocktail/angel_s_tit/
-http://www.inshaker.ru/cocktail/angel_s_tits/
 http://www.inshaker.ru/cocktail/english_virgin/
 http://www.inshaker.ru/cocktail/english/
 http://www.inshaker.ru/cocktail/english_breakfast/
@@ -810,7 +809,6 @@ http://www.inshaker.ru/cocktail/spicy_kumquat_cooler/
 http://www.inshaker.ru/cocktail/spiced_cola/
 http://www.inshaker.ru/cocktail/spicy_saloop/
 http://www.inshaker.ru/cocktail/bird_shit/
-http://www.inshaker.ru/cocktail/pusse-cafe/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/little_bee/
