@@ -70,8 +70,7 @@ APT
 
 Далее работаем под пользователем `po`:
 
-	su po
-	cd
+	su -l po
 
 Протестим могущество:
 
@@ -108,7 +107,7 @@ Hostname
 а потом:
 
 	sudo chmod +x /etc/rc.local
-	echo "127.0.1.1 hosto" >> /etc/hosts
+	sudo -s 'echo "127.0.0.1 hosto" >> /etc/hosts'
 
 SSH
 ---
