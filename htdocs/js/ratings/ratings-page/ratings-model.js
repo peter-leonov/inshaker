@@ -204,7 +204,7 @@ Me.prototype =
 			{
 				name: ingredientOrTag,
 				count: cocktails.length,
-				rows: rows,
+				rows: rows
 			}
 			groups.push(group)
 		}
