@@ -90,10 +90,10 @@ Me.prototype =
 			image.src = cocktail.getBigImageSrc()
 			
 			var name = group.add('span', 'name')
-			name.text(groupName)
+			name.txt(groupName)
 			
 			var count = name.add('span', 'count')
-			count.text(cocktails.length)
+			count.txt(cocktails.length)
 		}
 	}
 }

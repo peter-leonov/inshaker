@@ -12,7 +12,7 @@ var prototype =
 		return node
 	},
 	
-	text: function (text)
+	txt: function (text)
 	{
 		var node = doc.createTextNode(text)
 		this.appendChild(node)
