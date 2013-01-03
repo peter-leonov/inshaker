@@ -128,7 +128,7 @@ var Me =
 	{
 		var stats = browser.byVersion,
 			tail = browser.other,
-			barriere = this.total * 0.01,
+			barriere = this.total * 0.005,
 			length = stats.length-1
 		
 		while (tail + stats[length].stat <= barriere)
