@@ -134,9 +134,10 @@ var Me =
 		while (tail + stats[length].stat <= barriere)
 		{
 			tail += stats[length].stat
-			stats.pop()
 			length--
 		}
+		
+		stats.length = length + 1
 		
 		stats.push({version: 'other', stat: tail})
 	},
