@@ -128,16 +128,29 @@ var Me =
 	{
 		var stats = browser.byVersion,
 			tail = browser.other,
-			barriere = this.total * 0.005,
-			length = stats.length-1
+			total = this.total
 		
-		while (tail + stats[length].stat <= barriere)
+		function filt (barriere, threshold)
 		{
-			tail += stats[length].stat
-			length--
+			barriere *= total
+			threshold *= total
+			
+			for (var i = stats.length - 1; i >= 0; i--)
+			{
+				var stat = stats[i].stat
+				if (stat > threshold)
+					continue
+				
+				if (tail + stat > barriere)
+					break
+				
+				tail += stat
+				stats.splice(i, 1)
+			}
 		}
 		
-		stats.length = length + 1
+		filt(0.02, 0.001444)
+		filt(0.01, 0.002)
 		
 		stats.push({version: 'other', stat: tail})
 	},
