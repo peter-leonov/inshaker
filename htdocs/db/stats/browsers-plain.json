@@ -1,12 +1,12 @@
 [
-["Chrome",101475],
-["Opera",54760],
-["Firefox",39503],
-["Safari",25761],
-["Internet Explorer",14315],
-["Android Browser",8063],
-["Opera Mini",7139],
-["Safari (in-app)",927],
+["Chrome",101610],
+["Opera",54954],
+["Firefox",39588],
+["Safari",25994],
+["Internet Explorer",14293],
+["Android Browser",8228],
+["Opera Mini",7194],
+["Safari (in-app)",941],
 ["Mozilla Compatible Agent",356],
 ["SeaMonkey",36],
 ["RockMelt",17],
@@ -50,5 +50,5 @@
 ["nokiae52-1",1],
 ["samsung-gt-s8530",1],
 ["sprd-S930",1],
-{"total":{"visits":252442}}
+{"total":{"visits":253301}}
 ]
