@@ -296,10 +296,14 @@ class CocktailsProcessor < Inshaker::Processor
   end
   
   def process_cocktail dir
-    name = dir.name
-    say name
+    say dir.name
     indent do
-    
+    process_cocktail_job dir
+    end # indent
+  end
+  
+  def process_cocktail_job dir
+    name = dir.name
     if name.cs_index != name
       error "в названии коктейля есть лишние символы (обычно, это пробелы)"
     end
@@ -317,13 +321,17 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
     @cocktail["ingredients"] = parse_parts(about["Ингредиенты"])
+    return unless check_parts_existence(@cocktail["ingredients"])
+    
     if about["Украшения"]
       @cocktail["garnish"] = parse_parts(about["Украшения"])
     else
       @cocktail["garnish"] = []
     end
+    return unless check_parts_existence(@cocktail["garnish"])
     
     @cocktail["tools"] = parse_parts(about["Штучки"])
+    return unless check_parts_existence(@cocktail["tools"])
     
     if about["Порций"]
       @cocktail["portions"] = about["Порций"]
@@ -450,7 +458,6 @@ class CocktailsProcessor < Inshaker::Processor
     
     update_images dir, root_dir, @cocktail unless @options[:text]
     update_html root_dir, @cocktail
-    end # indent
   end
   
   def prepare_groups_and_strengths_and_methods
@@ -707,6 +714,17 @@ class CocktailsProcessor < Inshaker::Processor
       end
       
       [name, vol, unit, multiplier]
+  end
+  
+  def check_parts_existence parts
+    parts.each do |part|
+      unless Ingredient[part[0]]
+        error "нет такого ингредиента «#{part[0]}»"
+        return false
+      end
+    end
+    
+    true
   end
   
   def sort_parts_by_group arr
