@@ -86,8 +86,8 @@ class Launcher
       exit 1
     end
     
-    puts "Запускаю «#{job[1]}»…"
-    pid = fork { exec job[0] }
+    puts "Запускаю «#{job[:name]}»…"
+    pid = fork { exec job[:script] }
     Process.wait pid
     
     unless name == "deployer"

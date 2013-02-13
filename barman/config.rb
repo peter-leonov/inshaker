@@ -17,23 +17,23 @@ module Inshaker
     
     SCRIPTS =
     {
-      "cocktails" => ["./processors/cocktails.rb", "Коктейли"],
-      "ingredients" => ["./processors/ingredients.rb", "Ингредиенты"],
-      "marks" => ["./processors/marks.rb", "Марки"],
-      "bars" => ["./processors/bars.rb", "Бары"],
-      "events" => ["./processors/events.rb", "События"],
-      "barmen" => ["./processors/barmen.rb", "Барменов"],
-      "goods" => ["./processors/goods.rb", "Покупки"],
-      "magazine" => ["./processors/magazine.rb", "Журнал"],
-      "blog" => ["./processors/blog.rb", "Блог"],
-      "blog-banners" => ["./processors/blog-banners.rb", "Баннеры в Блоге"],
-      "mybar" => ["./processors/mybar.rb", "Мой бар"],
+      "cocktails" => {script: "./processors/cocktails.rb", name: "Коктейли"},
+      "ingredients" => {script: "./processors/ingredients.rb", name: "Ингредиенты"},
+      "marks" => {script: "./processors/marks.rb", name: "Марки"},
+      "bars" => {script: "./processors/bars.rb", name: "Бары"},
+      "events" => {script: "./processors/events.rb", name: "События"},
+      "barmen" => {script: "./processors/barmen.rb", name: "Барменов"},
+      "goods" => {script: "./processors/goods.rb", name: "Покупки"},
+      "magazine" => {script: "./processors/magazine.rb", name: "Журнал"},
+      "blog" => {script: "./processors/blog.rb", name: "Блог"},
+      "blog-banners" => {script: "./processors/blog-banners.rb", name: "Баннеры в Блоге"},
+      "mybar" => {script: "./processors/mybar.rb", name: "Мой бар"},
       
-      "analytics" => ["./processors/analytics.rb", "Аналитика"],
+      "analytics" => {script: "./processors/analytics.rb", name: "Аналитика"},
       
-      "deployer" => ["./deployer.rb", "Заливалку"],
-      "status" => ["./status.rb", "Статус"],
-      "reset" => ["./reset.rb", "Сброс"]
+      "deployer" => {script: "./deployer.rb", name: "Заливалку"},
+      "status" => {script: "./status.rb", name: "Статус"},
+      "reset" => {script: "./reset.rb", name: "Сброс"}
     }
     
     LOGIN_TO_BUSY =
