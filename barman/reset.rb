@@ -22,12 +22,14 @@ class ResetState < Inshaker::Processor
     
     Dir.chdir("#{Config::ROOT_DIR}")
     
-    if File.exists? GlobalConfig::LOCKPATH
+    begin
       pid = File.read(GlobalConfig::LOCKPATH_PID)
       say "гашу предыдущий процесс (#{pid})"
+      p Process.pid, pid.to_i
       Process.kill("KILL", pid.to_i)
-      FileUtils.rmtree(GlobalConfig::LOCKPATH)
+    rescue
     end
+    FileUtils.rmtree(GlobalConfig::LOCKPATH)
     
     say "сбрасываю все изменения…"
     system("git fetch")

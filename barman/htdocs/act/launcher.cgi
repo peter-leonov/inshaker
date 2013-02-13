@@ -98,7 +98,7 @@ class Launcher
     
     puts "Запускаю «#{job[:name]}»…"
     pid = fork { exec job[:script] }
-    write_pid pid
+    write_pid pid unless job[:nolock]
     Process.wait pid
     
     unless name == "deployer"
