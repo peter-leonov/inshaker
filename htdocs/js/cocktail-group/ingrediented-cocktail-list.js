@@ -130,7 +130,7 @@ Me.prototype =
 	{
 		var more = this.nodes.more
 		
-		more.setClassName('hidden')
+		more.className = 'hidden'
 	}
 }
 
