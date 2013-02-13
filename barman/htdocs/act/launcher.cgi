@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
+$:.push('/www/inshaker/barman')
 
 # CGI-specific stuff
 # redirect all output to stdout and make it unbuferred
@@ -32,22 +33,19 @@ class Launcher
     
     params = parse_params
     
-    processors = {}
-    params.each do |k, v|
-      script = Config::SCRIPTS[k]
-      unless script
-        puts "Ошибка: неизвестное действие #{k}."
-        exit 1
-      end
-      processors[k] = script
-    end
-    
-    if processors.empty?
+    name = params["job"]
+    unless name
       puts "Ошибка: нечего запускать."
       exit 1
     end
     
-    run processors
+    job = Config::SCRIPTS[name]
+    unless job
+      puts "Ошибка: неизвестное действие #{name}."
+      exit 1
+    end
+    
+    run name, job
   end
   
   def lock
@@ -78,7 +76,7 @@ class Launcher
     return true
   end
   
-  def run jobs
+  def run name, job
     Dir.chdir("#{Config::ROOT_DIR}barman/")
     
     ENV["INSHAKER_USER_AUTHOR"] = @user_author
@@ -87,18 +85,17 @@ class Launcher
     unless lock
       exit 1
     end
-    jobs.each do |k, job|
-      puts "Запускаю «#{job[1]}»…"
-      pid = fork { exec job[0] }
-      Process.wait pid
-      
-      unless k == "deployer"
-        error_file = Config::SAVE_ERROR % k
-        if $?.exitstatus == 0
-          File.unlink(error_file) if File.exists?(error_file)
-        else
-          File.write(error_file, @user_login)
-        end
+    
+    puts "Запускаю «#{job[1]}»…"
+    pid = fork { exec job[0] }
+    Process.wait pid
+    
+    unless name == "deployer"
+      error_file = Config::SAVE_ERROR % k
+      if $?.exitstatus == 0
+        File.unlink(error_file) if File.exists?(error_file)
+      else
+        File.write(error_file, @user_login)
       end
     end
     unlock

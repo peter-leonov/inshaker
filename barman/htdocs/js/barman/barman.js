@@ -127,7 +127,7 @@ $.onready(function()
 	{
 		var button = this
 		
-		if (run('/act/launcher.cgi', {deployer: 'on'}, function () { button.enable() }))
+		if (run('/act/launcher.cgi', {job: 'deployer'}, function () { button.enable() }))
 			button.disable()
 	}
 	
@@ -135,7 +135,7 @@ $.onready(function()
 	{
 		var button = this
 		
-		if (run('/act/launcher.cgi', {status: 'on'}, function () { button.enable() }))
+		if (run('/act/launcher.cgi', {job: 'status'}, function () { button.enable() }))
 			button.disable()
 	}
 	
@@ -146,7 +146,7 @@ $.onready(function()
 		
 		var button = this
 		
-		if (run('/act/launcher.cgi', {reset: 'on'}, function () { button.enable() }))
+		if (run('/act/launcher.cgi', {job: 'reset'}, function () { button.enable() }))
 			button.disable()
 	}
 })
