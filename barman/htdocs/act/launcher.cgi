@@ -44,6 +44,10 @@ class Launcher
     end
     
     if job[:nolock]
+      locked = busy
+      if locked
+        puts %Q{<h2 class="warning">Бармена #{locked}.</h2>}
+      end
       run name, job
     elsif lock
       run name, job
@@ -53,12 +57,16 @@ class Launcher
     end
   end
   
-  def lock
+  def busy
     if File.directory?(Config::LOCKPATH)
-      
-      busy = Config::LOGIN_TO_BUSY[File.read(Config::LOCKPATH_LOGIN)]
-      puts %Q{<h2 class="warning">Бармена #{busy}.<h2>}
-      
+      Config::LOGIN_TO_BUSY[File.read(Config::LOCKPATH_LOGIN)]
+    end
+  end
+  
+  def lock
+    locked = busy
+    if locked
+      puts %Q{<h2 class="warning">Бармена #{locked}.</h2>}
       return false
     end
     
@@ -90,7 +98,7 @@ class Launcher
     Process.wait pid
     
     unless name == "deployer"
-      error_file = Config::SAVE_ERROR % k
+      error_file = Config::SAVE_ERROR % name
       if $?.exitstatus == 0
         File.unlink(error_file) if File.exists?(error_file)
       else
