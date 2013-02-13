@@ -25,7 +25,7 @@ class ResetState < Inshaker::Processor
     if File.exists? GlobalConfig::LOCKPATH
       pid = File.read(GlobalConfig::LOCKPATH_PID)
       say "гашу предыдущий процесс (#{pid})"
-      Process.kill("KILL", pid) 
+      Process.kill("KILL", pid.to_i)
       FileUtils.rmtree(GlobalConfig::LOCKPATH)
     end
     
