@@ -10,6 +10,7 @@ puts "Content-type: text/plain; charset=utf-8\n\n"
 
 require "config"
 require "base64"
+require "fileutils"
 
 class Launcher
   
