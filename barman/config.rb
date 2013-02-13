@@ -32,8 +32,8 @@ module Inshaker
       "analytics" => {script: "./processors/analytics.rb", name: "Аналитика"},
       
       "deployer" => {script: "./deployer.rb", name: "Заливалку"},
-      "status" => {script: "./status.rb", name: "Статус"},
-      "reset" => {script: "./reset.rb", name: "Сброс"}
+      "status" => {script: "./status.rb", name: "Статус", nolock: true},
+      "reset" => {script: "./reset.rb", name: "Сброс", nolock: true}
     }
     
     LOGIN_TO_BUSY =

@@ -43,7 +43,9 @@ class Launcher
       exit 1
     end
     
-    if lock
+    if job[:nolock]
+      run name, job
+    elsif lock
       run name, job
       unlock
     else
