@@ -20,7 +20,7 @@ class ViewStatus < Inshaker::Processor
     # system("git diff-files --name-only")
     
     say "какие процессы ruby запущены"
-    system("ps -A | grep ruby")
+    system("ps -A -o pid,args | grep ruby")
     
     say "связность данных"
     Checker.init
