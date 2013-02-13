@@ -25,9 +25,10 @@ class ResetState < Inshaker::Processor
     if File.exists? GlobalConfig::LOCKPATH
       pid = File.read(GlobalConfig::LOCKPATH_PID)
       say "гашу предыдущий процесс (#{pid})"
-      
+      Process.kill("KILL", pid) 
       FileUtils.rmtree(GlobalConfig::LOCKPATH)
     end
+    
     say "сбрасываю все изменения…"
     system("git fetch")
     system("git reset --hard git/master")
