@@ -72,6 +72,7 @@ class Launcher
     
     Dir.mkdir(Config::LOCKPATH)
     File.write(Config::LOCKPATH_LOGIN, @user_login)
+    File.write(Config::LOCKPATH_PID, Process.pid)
     
     return true
   end
@@ -81,8 +82,7 @@ class Launcher
       return false
     end
     
-    File.unlink(Config::LOCKPATH_LOGIN)
-    Dir.rmdir(Config::LOCKPATH)
+    FileUtils.rmtree(Config::LOCKPATH)
     
     return true
   end

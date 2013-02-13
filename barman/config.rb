@@ -13,6 +13,7 @@ module Inshaker
   module Launcher
     LOCKPATH = "#{ROOT_DIR}/#{LOCK_FILE}"
     LOCKPATH_LOGIN = "#{LOCKPATH}/login"
+    LOCKPATH_PID = "#{LOCKPATH}/pid"
     SAVE_ERROR = "#{ROOT_DIR}/error-in-processor.%s"
     
     SCRIPTS =
