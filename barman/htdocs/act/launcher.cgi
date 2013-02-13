@@ -45,7 +45,13 @@ class Launcher
       exit 1
     end
     
-    run name, job
+    if lock
+      run name, job
+      unlock
+    else
+      exit 1
+    end
+    
   end
   
   def lock
@@ -82,9 +88,6 @@ class Launcher
     ENV["INSHAKER_USER_AUTHOR"] = @user_author
     ENV["INSHAKER_SAYING_TYPE"] = "HTML"
     
-    unless lock
-      exit 1
-    end
     
     puts "Запускаю «#{job[:name]}»…"
     pid = fork { exec job[:script] }
@@ -98,7 +101,6 @@ class Launcher
         File.write(error_file, @user_login)
       end
     end
-    unlock
   end
   
   def parse_params
