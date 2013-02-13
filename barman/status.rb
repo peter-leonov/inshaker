@@ -15,7 +15,6 @@ class ViewStatus < Inshaker::Processor
   end
   
   def job
-    
     say "что говорит git"
     system("git status")
     # system("git diff-files --name-only")

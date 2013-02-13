@@ -15,7 +15,6 @@ class Launcher
   
   module Config
     include Inshaker
-    
     include Inshaker::Launcher
   end
   
@@ -30,7 +29,6 @@ class Launcher
   end
   
   def launch
-    
     params = parse_params
     
     name = params["job"]
@@ -51,11 +49,9 @@ class Launcher
     else
       exit 1
     end
-    
   end
   
   def lock
-    
     if File.directory?(Config::LOCKPATH)
       
       busy = Config::LOGIN_TO_BUSY[File.read(Config::LOCKPATH_LOGIN)]
@@ -71,7 +67,6 @@ class Launcher
   end
   
   def unlock
-    
     unless File.directory?(Config::LOCKPATH)
       return false
     end
@@ -87,7 +82,6 @@ class Launcher
     
     ENV["INSHAKER_USER_AUTHOR"] = @user_author
     ENV["INSHAKER_SAYING_TYPE"] = "HTML"
-    
     
     puts "Запускаю «#{job[:name]}»…"
     pid = fork { exec job[:script] }
