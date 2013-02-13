@@ -72,9 +72,12 @@ class Launcher
     
     Dir.mkdir(Config::LOCKPATH)
     File.write(Config::LOCKPATH_LOGIN, @user_login)
-    File.write(Config::LOCKPATH_PID, Process.pid)
     
     return true
+  end
+  
+  def write_pid pid
+    File.write(Config::LOCKPATH_PID, pid)
   end
   
   def unlock
@@ -95,6 +98,7 @@ class Launcher
     
     puts "Запускаю «#{job[:name]}»…"
     pid = fork { exec job[:script] }
+    write_pid pid
     Process.wait pid
     
     unless name == "deployer"
