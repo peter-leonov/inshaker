@@ -3,7 +3,6 @@
 module Inshaker
   class Processor
     def fix_base subdir
-      return
       @dediacritized_count = 0
       def walk dir
         dir.each_real do |entry|
