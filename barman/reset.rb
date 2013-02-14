@@ -35,6 +35,7 @@ class ResetState < Inshaker::Processor
     system("git fetch")
     system("git reset --hard git/master")
     system("git clean -fd")
+    system("rm error-in-processor.*")
     
     say "проверяю состояние…"
     system("git status")
