@@ -64,14 +64,14 @@ class Launcher
     
     reset
     
-    pid = fork { exec @job[0] }
+    pid = fork { exec @job[:script] }
     Process.wait pid
     
     if $?.exitstatus == 0
-      warn %Q{Job “#{@job[1]}” succeeded.}
+      warn %Q{Job “#{@job[:name]}” succeeded.}
       commit
     else
-      warn %Q{Job “#{@job[1]}” failed!}
+      warn %Q{Job “#{@job[:name]}” failed!}
       reset
     end
   end
