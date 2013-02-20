@@ -155,7 +155,7 @@ Me.prototype =
 	{
 		var proto = Papa.Overlay.prototype
 		
-		Object.extend(proto, new this.api.Overlay())
+		Object.extend(proto, new this.api.OverlayView())
 		proto.api = this.api
 	},
 	
@@ -187,14 +187,14 @@ Me.prototype =
 			
 			// add marker (and delete its record) only if it isn't already shown
 			if (!visible[pid])
-				map.addOverlay(point)
+				point.setMap(map)
 			else
 				delete visible[pid]
 		}
 		
 		// remove all the markers that are still visible
 		for (var k in visible)
-			map.removeOverlay(visible[k])
+			visible[k].setMap(null)
 	}
 }
 

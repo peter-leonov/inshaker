@@ -10,14 +10,13 @@ Me.prototype = new Map.Overlay()
 
 var myProto =
 {
-	initialize: function (map)
+	onAdd: function (map)
 	{
-		var ll = this.ll
-		this.latlng = new this.api.LatLng(ll.lat, ll.lng)
+		var node = this.node
+		if (!node)
+			node = this.node = this.createNode()
 		
-		var node = this.node || (this.node = this.createNode())
-		map.getPane(G_MAP_MARKER_PANE).appendChild(node)
-		this.map = map
+		this.getPanes().overlayImage.appendChild(node)
 	},
 	
 	createNode: function ()
@@ -25,19 +24,16 @@ var myProto =
 		return Nct('div', 'point', 'createNode() is not implemented')
 	},
 	
-	redraw: function (force)
+	draw: function ()
 	{
-		if (!force)
-			return
-		
-		var sw = this.map.fromLatLngToDivPixel(this.latlng)
+		var sw = this.getProjection().fromLatLngToDivPixel(this.latlng)
 		
 		var style = this.node.style
 		style.left = sw.x + 'px'
 		style.top = sw.y + 'px'
 	},
 	
-	remove: function ()
+	onRemove: function ()
 	{
 		this.node.remove()
 	}
