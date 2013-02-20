@@ -85,9 +85,17 @@ Me.prototype =
 	{
 		var api = this.api
 		
-		var map = this.map = new api.Map2(this.nodes.main)
+		var opts =
+		{
+			// center: new api.LatLng(this.center.lat, this.center.lng),
+			// zoom: this.zoom,
+			mapTypeId: api.MapTypeId.ROADMAP
+		}
+		
+		this.map = new api.Map(this.nodes.main, opts)
+		
 		var me = this
-		api.event.addListener(map, 'load', function () { me.mapLoaded(this) })
+		api.event.addListener(this.map, 'load', function () { me.mapLoaded(this) })
 	},
 	
 	setCenter: function (center, zoom)
