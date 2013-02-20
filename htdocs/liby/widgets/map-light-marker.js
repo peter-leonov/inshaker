@@ -26,7 +26,7 @@ var myProto =
 	
 	draw: function ()
 	{
-		var sw = this.getProjection().fromLatLngToDivPixel(this.latlng)
+		var sw = this.getProjection().fromLatLngToDivPixel(new this.api.LatLng(this.ll.lat, this.ll.lng))
 		
 		var style = this.node.style
 		style.left = sw.x + 'px'
