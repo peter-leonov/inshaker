@@ -127,21 +127,44 @@ Me.prototype =
 		
 		main.appendChild(control)
 		
-		var actions =
-		{
-			top:    ['panDirection', 0, 1],
-			right:  ['panDirection', -1, 0],
-			bottom: ['panDirection', 0, -1],
-			left:   ['panDirection', 1, 0],
-			plus:   ['zoomIn'],
-			minus:  ['zoomOut']
-		}
+		var step = 100
 		
 		function move (e)
 		{
-			var action = actions[e.target.getAttribute('data-map-action')]
-			if (action)
-				map[action[0]].apply(map, action.slice(1))
+			var action = e.target.getAttribute('data-map-action')
+			
+			switch (action)
+			{
+				case 'to-top':
+				map.panDirection(0, 1)
+				map.panBy(0, -step)
+				break
+				
+				case 'to-right':
+				map.panDirection(-1, 0)
+				map.panBy(step, 0)
+				break
+				
+				case 'to-bottom':
+				map.panDirection(0, -1)
+				map.panBy(0, step)
+				break
+				
+				case 'to-left':
+				map.panDirection(1, 0)
+				map.panBy(-step, 0)
+				break
+				
+				case 'to-plus':
+				map.zoomIn()
+				map.setZoom(map.getZoom() + 1)
+				break
+				
+				case 'to-minus':
+				map.zoomOut()
+				map.setZoom(map.getZoom() - 1)
+				break
+			}
 		}
 		
 		control.addEventListener('click', move, false)
