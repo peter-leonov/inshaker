@@ -73,7 +73,7 @@ Me.prototype =
 	
 	apiLoaded: function (e)
 	{
-		var api = this.api = e.api
+		this.api = e.api
 		this.updateOverlayProto()
 		this.createMap()
 		
