@@ -110,7 +110,7 @@ Me.prototype =
 	{
 		var me = this
 		this.nodes.wrapper.classList.remove('loading')
-		this.api.event.addListener(this.map, 'moveend', function () { me.mapMoveEnd(this) })
+		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd(this) })
 		this.addControls()
 	},
 	
