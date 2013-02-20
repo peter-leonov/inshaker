@@ -67,7 +67,7 @@ Me.prototype =
 		
 		var me = this
 		googleApiLoader.addEventListener('maps', function (e) { me.apiLoaded(e) }, false)
-		googleApiLoader.load('maps', 3, {other_params: "sensor=false"}) // shame on google.load()
+		googleApiLoader.load('maps', 3, {other_params: "sensor=false&language=ru-RU"}) // shame on google.load()
 		nodes.wrapper.classList.add('loading')
 	},
 	
