@@ -87,7 +87,7 @@ Me.prototype =
 		
 		var map = this.map = new api.Map2(this.nodes.main)
 		var me = this
-		api.Event.addListener(map, 'load', function () { me.mapLoaded(this) })
+		api.event.addListener(map, 'load', function () { me.mapLoaded(this) })
 	},
 	
 	setCenter: function (center, zoom)
@@ -102,7 +102,7 @@ Me.prototype =
 	{
 		var me = this
 		this.nodes.wrapper.classList.remove('loading')
-		this.api.Event.addListener(this.map, 'moveend', function () { me.mapMoveEnd(this) })
+		this.api.event.addListener(this.map, 'moveend', function () { me.mapMoveEnd(this) })
 		this.addControls()
 	},
 	
