@@ -108,7 +108,8 @@ Me.prototype =
 		if (!this.ready)
 			return
 		
-		this.map.setCenter(new this.api.LatLng(center.lat, center.lng), zoom)
+		this.map.setCenter(new this.api.LatLng(center.lat, center.lng))
+		this.map.setZoom(zoom)
 	},
 	
 	addControls: function ()
