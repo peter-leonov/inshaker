@@ -89,6 +89,7 @@ Me.prototype =
 		{
 			// center: new api.LatLng(this.center.lat, this.center.lng),
 			// zoom: this.zoom,
+			scrollwheel: false,
 			disableDefaultUI: true,
 			mapTypeId: api.MapTypeId.ROADMAP
 		}
