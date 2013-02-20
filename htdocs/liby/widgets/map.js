@@ -89,13 +89,17 @@ Me.prototype =
 		{
 			// center: new api.LatLng(this.center.lat, this.center.lng),
 			// zoom: this.zoom,
+			disableDefaultUI: true,
 			mapTypeId: api.MapTypeId.ROADMAP
 		}
 		
 		this.map = new api.Map(this.nodes.main, opts)
 		
 		var me = this
-		api.event.addListener(this.map, 'load', function () { me.mapLoaded(this) })
+		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd(this) })
+		this.addControls()
+		
+		this.nodes.wrapper.classList.remove('loading')
 	},
 	
 	setCenter: function (center, zoom)
@@ -104,14 +108,6 @@ Me.prototype =
 			return
 		
 		this.map.setCenter(new this.api.LatLng(center.lat, center.lng), zoom)
-	},
-	
-	mapLoaded: function ()
-	{
-		var me = this
-		this.nodes.wrapper.classList.remove('loading')
-		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd(this) })
-		this.addControls()
 	},
 	
 	addControls: function ()
