@@ -153,11 +153,10 @@ Me.prototype =
 	
 	updateOverlayProto: function ()
 	{
-		var proto = Papa.Overlay.prototype,
-			api = this.api
+		var proto = Papa.Overlay.prototype
 		
-		Object.extend(proto, new api.Overlay())
-		proto.api = api
+		Object.extend(proto, new this.api.Overlay())
+		proto.api = this.api
 	},
 	
 	mapMoveEnd: function (map)
