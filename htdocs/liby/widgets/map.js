@@ -96,7 +96,7 @@ Me.prototype =
 		this.map = new api.Map(this.nodes.main, opts)
 		
 		var me = this
-		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd(this) })
+		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd() })
 		this.addControls()
 		
 		this.nodes.wrapper.classList.remove('loading')
@@ -178,14 +178,14 @@ Me.prototype =
 		proto.api = this.api
 	},
 	
-	mapMoveEnd: function (map)
+	mapMoveEnd: function ()
 	{
-		var center = map.getCenter(),
-			bounds = map.getBounds(),
+		var center = this.map.getCenter(),
+			bounds = this.map.getBounds(),
 			sw = bounds.getSouthWest(),
 			ne = bounds.getNorthEast()
 		
-		this.controller.moved({lat:center.lat(), lng:center.lng()}, map.getZoom(), {lat:sw.lat(), lng:sw.lng()}, {lat:ne.lat(), lng:ne.lng()})
+		this.controller.moved({lat:center.lat(), lng:center.lng()}, this.map.getZoom(), {lat:sw.lat(), lng:sw.lng()}, {lat:ne.lat(), lng:ne.lng()})
 	},
 	
 	renderPoints: function (points)
