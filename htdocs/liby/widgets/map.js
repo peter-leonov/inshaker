@@ -88,7 +88,6 @@ Me.prototype =
 		var map = this.map = new api.Map2(this.nodes.main)
 		var me = this
 		api.Event.addListener(map, 'load', function () { me.mapLoaded(this) })
-		map.enableContinuousZoom()
 	},
 	
 	setCenter: function (center, zoom)
