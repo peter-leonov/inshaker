@@ -67,13 +67,13 @@ Me.prototype =
 		
 		var me = this
 		googleApiLoader.addEventListener('maps', function (e) { me.apiLoaded(e) }, false)
-		googleApiLoader.load('maps', 2)
+		googleApiLoader.load('maps', 3, {other_params: 'sensor=false&language=ru-RU'}) // shame on google.load()
 		nodes.wrapper.classList.add('loading')
 	},
 	
 	apiLoaded: function (e)
 	{
-		var api = this.api = e.api
+		this.api = e.api
 		this.updateOverlayProto()
 		this.createMap()
 		
@@ -85,10 +85,22 @@ Me.prototype =
 	{
 		var api = this.api
 		
-		var map = this.map = new api.Map2(this.nodes.main)
+		var opts =
+		{
+			// center: new api.LatLng(this.center.lat, this.center.lng),
+			// zoom: this.zoom,
+			scrollwheel: false,
+			disableDefaultUI: true,
+			mapTypeId: api.MapTypeId.ROADMAP
+		}
+		
+		this.map = new api.Map(this.nodes.main, opts)
+		
 		var me = this
-		api.Event.addListener(map, 'load', function () { me.mapLoaded(this) })
-		map.enableContinuousZoom()
+		this.api.event.addListener(this.map, 'dragend', function () { me.mapMoveEnd() })
+		this.addControls()
+		
+		this.nodes.wrapper.classList.remove('loading')
 	},
 	
 	setCenter: function (center, zoom)
@@ -96,15 +108,8 @@ Me.prototype =
 		if (!this.ready)
 			return
 		
-		this.map.setCenter(new this.api.LatLng(center.lat, center.lng), zoom)
-	},
-	
-	mapLoaded: function ()
-	{
-		var me = this
-		this.nodes.wrapper.classList.remove('loading')
-		this.api.Event.addListener(this.map, 'moveend', function () { me.mapMoveEnd(this) })
-		this.addControls()
+		this.map.setCenter(new this.api.LatLng(center.lat, center.lng))
+		this.map.setZoom(zoom)
 	},
 	
 	addControls: function ()
@@ -124,21 +129,38 @@ Me.prototype =
 		
 		main.appendChild(control)
 		
-		var actions =
-		{
-			top:    ['panDirection', 0, 1],
-			right:  ['panDirection', -1, 0],
-			bottom: ['panDirection', 0, -1],
-			left:   ['panDirection', 1, 0],
-			plus:   ['zoomIn'],
-			minus:  ['zoomOut']
-		}
+		var step = 100
 		
 		function move (e)
 		{
-			var action = actions[e.target.getAttribute('data-map-action')]
-			if (action)
-				map[action[0]].apply(map, action.slice(1))
+			var action = e.target.getAttribute('data-map-action')
+			
+			switch (action)
+			{
+				case 'top':
+				map.panBy(0, -step)
+				break
+				
+				case 'right':
+				map.panBy(step, 0)
+				break
+				
+				case 'bottom':
+				map.panBy(0, step)
+				break
+				
+				case 'left':
+				map.panBy(-step, 0)
+				break
+				
+				case 'plus':
+				map.setZoom(map.getZoom() + 1)
+				break
+				
+				case 'minus':
+				map.setZoom(map.getZoom() - 1)
+				break
+			}
 		}
 		
 		control.addEventListener('click', move, false)
@@ -146,21 +168,20 @@ Me.prototype =
 	
 	updateOverlayProto: function ()
 	{
-		var proto = Papa.Overlay.prototype,
-			api = this.api
+		var proto = Papa.Overlay.prototype
 		
-		Object.extend(proto, new api.Overlay())
-		proto.api = api
+		Object.extend(proto, new this.api.OverlayView())
+		proto.api = this.api
 	},
 	
-	mapMoveEnd: function (map)
+	mapMoveEnd: function ()
 	{
-		var center = map.getCenter(),
-			bounds = map.getBounds(),
+		var center = this.map.getCenter(),
+			bounds = this.map.getBounds(),
 			sw = bounds.getSouthWest(),
 			ne = bounds.getNorthEast()
 		
-		this.controller.moved({lat:center.lat(), lng:center.lng()}, map.getZoom(), {lat:sw.lat(), lng:sw.lng()}, {lat:ne.lat(), lng:ne.lng()})
+		this.controller.moved({lat:center.lat(), lng:center.lng()}, this.map.getZoom(), {lat:sw.lat(), lng:sw.lng()}, {lat:ne.lat(), lng:ne.lng()})
 	},
 	
 	renderPoints: function (points)
@@ -181,14 +202,14 @@ Me.prototype =
 			
 			// add marker (and delete its record) only if it isn't already shown
 			if (!visible[pid])
-				map.addOverlay(point)
+				point.setMap(map)
 			else
 				delete visible[pid]
 		}
 		
 		// remove all the markers that are still visible
 		for (var k in visible)
-			map.removeOverlay(visible[k])
+			visible[k].setMap(null)
 	}
 }
 

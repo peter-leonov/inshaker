@@ -17,8 +17,6 @@ function stopPropagation (e) { e.stopPropagation() }
 
 var myProto =
 {
-	ll: {lat: 0, lng: 0},
-	
 	createNode: function ()
 	{
 		return this.node || (this.node = this.getNode())
