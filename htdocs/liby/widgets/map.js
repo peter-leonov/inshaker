@@ -137,33 +137,27 @@ Me.prototype =
 			
 			switch (action)
 			{
-				case 'to-top':
-				map.panDirection(0, 1)
+				case 'top':
 				map.panBy(0, -step)
 				break
 				
-				case 'to-right':
-				map.panDirection(-1, 0)
+				case 'right':
 				map.panBy(step, 0)
 				break
 				
-				case 'to-bottom':
-				map.panDirection(0, -1)
+				case 'bottom':
 				map.panBy(0, step)
 				break
 				
-				case 'to-left':
-				map.panDirection(1, 0)
+				case 'left':
 				map.panBy(-step, 0)
 				break
 				
-				case 'to-plus':
-				map.zoomIn()
+				case 'plus':
 				map.setZoom(map.getZoom() + 1)
 				break
 				
-				case 'to-minus':
-				map.zoomOut()
+				case 'minus':
 				map.setZoom(map.getZoom() - 1)
 				break
 			}
