@@ -1,13 +1,13 @@
 [
-["Chrome",71290],
-["Opera",36883],
-["Firefox",23065],
-["Safari",20428],
-["Internet Explorer",9145],
-["Android Browser",5972],
-["Opera Mini",5071],
-["Safari (in-app)",781],
-["Mozilla Compatible Agent",249],
+["Chrome",71679],
+["Opera",36985],
+["Firefox",23186],
+["Safari",20589],
+["Internet Explorer",9159],
+["Android Browser",6024],
+["Opera Mini",5130],
+["Safari (in-app)",780],
+["Mozilla Compatible Agent",241],
 ["pr-cy.ru Screenshot Bot",14],
 ["HTC_HD2_T8585 Opera",11],
 ["SeaMonkey",8],
@@ -36,5 +36,5 @@
 ["iOS 6.0.2",1],
 ["samsung-GT-I9300",1],
 ["sonyericssonk770i",1],
-{"total":{"visits":172969}}
+{"total":{"visits":173858}}
 ]
