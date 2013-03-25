@@ -1,9 +1,9 @@
-.body-wall {
+#shop-page body {
 	background: url('bg-wall.jpg') no-repeat top center #140903;
 	font: 400 16px/1.1 Tahoma, Geneva, Kalimati, sans-serif;
 	color: #fff;
 }
-.body-wall a {
+#shop-page body a {
 	color: #ff0893;
 }
 .map-holder {
