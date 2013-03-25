@@ -13,8 +13,6 @@ Me.prototype = new MapLightMarker()
 
 eval(NodesShortcut.include())
 
-function stopPropagation (e) { e.stopPropagation() }
-
 var myProto =
 {
 	createNode: function ()
@@ -25,7 +23,6 @@ var myProto =
 	getNode: function ()
 	{
 		var main = Nc('div', 'point')
-		main.addEventListener('mousedown', stopPropagation, false)
 		
 		var icon = main.appendChild(Nc('span', 'icon'))
 		var title = main.appendChild(Nc('dl', 'title'))
