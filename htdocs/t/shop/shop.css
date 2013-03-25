@@ -1,0 +1,144 @@
+.body-wall {
+	background: url('bg-wall.jpg') no-repeat top center #140903;
+	font: 400 16px/1.1 Tahoma, Geneva, Kalimati, sans-serif;
+	color: #fff;
+}
+.body-wall a {
+	color: #ff0893;
+}
+.map-holder {
+	padding-top: 320px;
+	position: relative;
+}
+.map-holder .close {
+	position: absolute;
+	overflow: hidden;
+	right: 10px;
+	top: 330px;
+	z-index: 2;
+	background: url('icon-map-close.png') no-repeat;
+	width: 20px;
+	height: 20px;
+	display: block;
+	cursor: pointer;
+	text-indent: 999px;
+}
+.map-holder .map {
+	position: relative;
+	width: 100%;
+	height: 398px;
+	z-index: 1;
+}
+.map-holder .map .icon {
+	background: url('icon-map-point.png') no-repeat;
+	display: block;
+	overflow: hidden;
+	width: 69px;
+	height: 60px;
+	cursor: pointer;
+	position: absolute;
+	left: 390px;
+	top: 150px;
+}
+.map-holder .info {
+	min-height: 81px;
+	background-color: #000;
+	border-top: 1px solid #313131;
+	padding-left: 35px;
+	white-space: nowrap;
+	border-radius: 0 0 4px 4px;
+}
+.map-holder .info > div {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 40px;
+	margin-top: 12px;
+	position: relative;
+	white-space: normal;
+	*zoom:1;
+	*display: inline;
+}
+.map-holder .info p {
+	line-height: 1.3;
+}
+.map-holder .info .icon {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -15px;
+	background: url('icons-info.png') no-repeat;
+	overflow: hidden;
+	display: inline-block;
+	width: 31px;
+	height: 31px;
+}
+
+.map-holder .info .location {
+	width: 235px;
+	margin-right: 45px;
+}
+.map-holder .info .location .icon {
+	background-position: 0 0;
+}
+.map-holder .info .location a {
+	text-decoration: none;
+	border-bottom: 1px dashed #ff0893;	
+}
+.map-holder .info .location a:hover {
+	border-bottom-style: solid;
+}
+.map-holder .info .location p {
+	padding-top: 3px;
+}
+
+.map-holder .info .phone {
+	min-width: 131px;
+	margin-right: 60px;
+}
+.map-holder .info .phone .icon {
+	background-position: -31px 0;
+}
+.map-holder .info .time {
+	min-width: 142px;
+	margin-right: 48px;
+}
+.map-holder .info .time .icon {
+	background-position: -62px 0;
+}
+.map-holder .info .parking {
+	width: 80px;
+}
+.map-holder .info .parking .icon {
+	background-position: -93px 0;
+}
+
+.we-have-more {
+	margin-top: 42px;
+	white-space: nowrap;
+	text-align: center;
+}	
+.we-have-more .title {
+	width: 585px;
+	height: 55px;
+	margin: 0 auto 18px;
+	color: transparent;
+	font-size: 58px;
+	line-height: 55px;
+}
+.we-have-more > div {
+	width: 320px;
+	white-space: normal;
+	display: inline-block;
+	vertical-align: top;
+	*zoom:1;
+	*display: inline;
+}
+.we-have-more > div .picture {
+	margin-bottom: 20px;
+}
+.we-have-more > div a {
+	font-size: 24px;
+	line-height: 1.5; 
+	text-transform: uppercase;
+	text-decoration: underline;
+}
