@@ -33,7 +33,17 @@ ShopPage.prototype =
 {
 	render: function ()
 	{
+		this.initMap()
+	},
+	
+	initMap: function ()
+	{
+		if (this.map)
+			return
 		
+		var map = this.map = new Map()
+		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
+		map.setCenter({lat: 55.751755, lng: 37.624657}, 9)
 	}
 }
 
