@@ -16,7 +16,7 @@
 	right: 10px;
 	top: 330px;
 	z-index: 2;
-	background: url('icon-map-close.png') no-repeat;
+	background: url(icon-map-close.png) no-repeat;
 	width: 20px;
 	height: 20px;
 	display: block;
@@ -30,7 +30,7 @@
 	z-index: 1;
 }
 .map-holder .map .icon {
-	background: url('icon-map-point.png') no-repeat;
+	background: url(icon-map-point.png) no-repeat;
 	display: block;
 	overflow: hidden;
 	width: 69px;
@@ -66,7 +66,7 @@
 	left: 0;
 	top: 50%;
 	margin-top: -15px;
-	background: url('icons-info.png') no-repeat;
+	background: url(icons-info.png) no-repeat;
 	overflow: hidden;
 	display: inline-block;
 	width: 31px;
