@@ -18,8 +18,6 @@ $.onready(function ()
 		positionControl: $('.position-control')
 	}
 	
-	RoundedCorners.round(nodes.map)
-	
 	var widget = new ShopPage(nodes)
 	widget.render()
 })
