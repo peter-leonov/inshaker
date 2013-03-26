@@ -1,0 +1,168 @@
+#shop-page body {
+	background: url(bg-wall.jpg) top center #140903;
+	font: 400 16px/1.1 Tahoma, Geneva, Kalimati, sans-serif;
+	color: #fff;
+}
+#shop-page body a {
+	color: #ff0893;
+}
+.map-holder {
+	padding-top: 281px;
+	position: relative;
+}
+.map-holder .close {
+	position: absolute;
+	overflow: hidden;
+	right: 10px;
+	top: 288px;
+	z-index: 2;
+	background: url(icon-map-close.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	display: block;
+	cursor: pointer;
+	text-indent: 999px;
+}
+#map {
+	position: relative;
+	height: 398px;
+	z-index: 1;
+}
+#map .surface { width: 100%; height: 100%; }
+
+#map .point { position: absolute; }
+#map .point.selected { z-index: 4; }
+#map .point:hover { z-index: 5; }
+#map .point.selected .icon { width: 30px; height: 30px; cursor: default; }
+#map .point .icon { position: absolute; left: -19px; top: -60px; width: 69px; height: 60px; cursor: pointer; }
+#map .point .title { display: none; position: absolute; z-index: 10; left: -94px; top: 19px; min-width: 170px; padding: 10px; font-size: 13px; line-height: 17px; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
+#map .point:hover .title { display: block; }
+#map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; }
+#map .point.selected .point-name {  }
+html.msie-8 #map .point .title { filter: alpha(opacity=85); }
+/* branding part */
+#map .point .icon { background-image: url(/t/shop/icon-map-point.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #ff4ea5; }
+#map .point.selected .point-name { color: #ff2929; }
+
+
+.position-control { display: none; }
+#map .position-control { display: block; position: absolute; z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; }
+#map .position-control .to-top,
+#map .position-control .to-right,
+#map .position-control .to-bottom,
+#map .position-control .to-left,
+#map .position-control .to-plus,
+#map .position-control .to-minus { position: absolute; width: 15px; height: 15px; cursor: pointer; }
+#map .position-control .to-top { left: 23px; top: 8px; }
+#map .position-control .to-right { left: 32px; top: 26px; }
+#map .position-control .to-bottom { left: 23px; top: 44px; }
+#map .position-control .to-left { left: 14px; top: 26px; }
+#map .position-control .to-plus { left: 23px; top: 62px; }
+#map .position-control .to-minus { left: 23px; top: 80px; }
+/* branding part */
+#map .position-control { background-image: url(/t/branding/tasteit/bars-common.png); }
+
+
+.map-holder .info {
+	min-height: 81px;
+	background-color: #000;
+	border-top: 1px solid #313131;
+	padding-left: 35px;
+	white-space: nowrap;
+	border-radius: 0 0 4px 4px;
+}
+.map-holder .info > div {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 40px;
+	margin-top: 12px;
+	position: relative;
+	white-space: normal;
+	*zoom:1;
+	*display: inline;
+}
+.map-holder .info p {
+	line-height: 1.3;
+}
+.map-holder .info .icon {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -15px;
+	background: url(icons-info.png) no-repeat;
+	overflow: hidden;
+	display: inline-block;
+	width: 31px;
+	height: 31px;
+}
+
+.map-holder .info .location {
+	width: 235px;
+	margin-right: 45px;
+}
+.map-holder .info .location .icon {
+	background-position: 0 0;
+}
+.map-holder .info .location a {
+	text-decoration: none;
+	border-bottom: 1px dashed #ff0893;	
+}
+.map-holder .info .location a:hover {
+	border-bottom-style: solid;
+}
+.map-holder .info .location p {
+	padding-top: 3px;
+}
+
+.map-holder .info .phone {
+	min-width: 131px;
+	margin-right: 60px;
+}
+.map-holder .info .phone .icon {
+	background-position: -31px 0;
+}
+.map-holder .info .time {
+	min-width: 142px;
+	margin-right: 48px;
+}
+.map-holder .info .time .icon {
+	background-position: -62px 0;
+}
+.map-holder .info .parking {
+	width: 80px;
+}
+.map-holder .info .parking .icon {
+	background-position: -93px 0;
+}
+
+.we-have-more {
+	margin-top: 42px;
+	white-space: nowrap;
+	text-align: center;
+}	
+.we-have-more .title {
+	width: 585px;
+	height: 55px;
+	margin: 0 auto 18px;
+	color: transparent;
+	font-size: 58px;
+	line-height: 55px;
+}
+.we-have-more > div {
+	width: 320px;
+	white-space: normal;
+	display: inline-block;
+	vertical-align: top;
+	*zoom:1;
+	*display: inline;
+}
+.we-have-more > div .picture {
+	margin-bottom: 20px;
+}
+.we-have-more > div a {
+	font-size: 24px;
+	line-height: 1.5; 
+	text-transform: uppercase;
+}
