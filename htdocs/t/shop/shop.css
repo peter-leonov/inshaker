@@ -3,7 +3,7 @@
 	font: 400 16px/1.1 Tahoma, Geneva, Kalimati, sans-serif;
 	color: #fff;
 }
-#shop-page body a {
+#shop-page #common-main-wrapper a {
 	color: #ff0893;
 }
 .map-holder {
