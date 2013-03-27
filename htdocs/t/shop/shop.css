@@ -10,11 +10,11 @@
 	padding-top: 281px;
 	position: relative;
 }
-.map-holder .close {
+#map .close {
 	position: absolute;
 	overflow: hidden;
 	right: 10px;
-	top: 288px;
+	top: 10px;
 	z-index: 2;
 	background: url(icon-map-close.png) no-repeat;
 	width: 20px;
