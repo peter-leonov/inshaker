@@ -21,6 +21,7 @@ body {
 	font-size: 85px; text-align: center; line-height: 440px;
 	color: transparent;
 }
+html.msie-8 #image { font-size: 0; }
 #promo[data-state="image"] #image { display: block; }
 #map {
 	display: none;
@@ -173,6 +174,7 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 	font-size: 58px;
 	line-height: 55px;
 }
+html.msie-8 .we-have-more .title { font-size: 0; }
 .we-have-more > div {
 	width: 320px;
 	white-space: normal;
