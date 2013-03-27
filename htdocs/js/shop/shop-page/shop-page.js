@@ -37,6 +37,11 @@ function ShopPage (nodes)
 	this.nodes = nodes
 }
 
+function forceRedraw (node)
+{
+	document.body.className += ' '
+}
+
 ShopPage.prototype =
 {
 	render: function ()
@@ -45,12 +50,14 @@ ShopPage.prototype =
 		this.nodes.address.addEventListener('click', function ()
 		{
 			widget.nodes.promo.setAttribute('data-state', 'map')
+			forceRedraw()
 			widget.initMap()
 		}, false)
 		
 		this.nodes.mapClose.addEventListener('click', function ()
 		{
 			widget.nodes.promo.setAttribute('data-state', 'image')
+			forceRedraw()
 		}, false)
 	},
 	
