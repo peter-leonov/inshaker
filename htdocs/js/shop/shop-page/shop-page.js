@@ -15,11 +15,14 @@ $.onready(function ()
 	
 	var nodes =
 	{
-		address: $('.promo .info .location a'),
-		phone: $('.promo .info .phone p'),
+		promo: $('#promo'),
+		
+		address: $('#promo .info .location a'),
+		phone: $('#promo .info .phone p'),
 		
 		map: $('#map'),
 		mapSurface: $('#map .surface'),
+		mapClose: $('#map .close'),
 		positionControl: $('.position-control')
 	}
 	
@@ -38,7 +41,17 @@ ShopPage.prototype =
 {
 	render: function ()
 	{
-		this.initMap()
+		var widget = this
+		this.nodes.address.addEventListener('click', function ()
+		{
+			widget.nodes.promo.setAttribute('data-state', 'map')
+			widget.initMap()
+		}, false)
+		
+		this.nodes.mapClose.addEventListener('click', function ()
+		{
+			widget.nodes.promo.setAttribute('data-state', 'image')
+		}, false)
 	},
 	
 	initMap: function ()
