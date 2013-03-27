@@ -15,8 +15,8 @@ $.onready(function ()
 	
 	var nodes =
 	{
-		address: $('.map-holder .info .location a'),
-		phone: $('.map-holder .info .phone p'),
+		address: $('.promo .info .location a'),
+		phone: $('.promo .info .phone p'),
 		
 		map: $('#map'),
 		mapSurface: $('#map .surface'),
