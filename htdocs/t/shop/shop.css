@@ -165,4 +165,8 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 	font-size: 24px;
 	line-height: 1.5; 
 	text-transform: uppercase;
+	cursor: default;
+}
+.we-have-more > div a:hover {
+	text-decoration: none;
 }
