@@ -37,6 +37,11 @@ function ShopPage (nodes)
 	this.nodes = nodes
 }
 
+function forceRedraw (node)
+{
+	document.body.className += ' '
+}
+
 ShopPage.prototype =
 {
 	render: function ()
@@ -45,12 +50,14 @@ ShopPage.prototype =
 		this.nodes.address.addEventListener('click', function ()
 		{
 			widget.nodes.promo.setAttribute('data-state', 'map')
+			forceRedraw()
 			widget.initMap()
 		}, false)
 		
 		this.nodes.mapClose.addEventListener('click', function ()
 		{
 			widget.nodes.promo.setAttribute('data-state', 'image')
+			forceRedraw()
 		}, false)
 	},
 	
@@ -61,7 +68,7 @@ ShopPage.prototype =
 		
 		var map = this.map = new Map()
 		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
-		map.setCenter({lat: 55.751755, lng: 37.624657}, 9)
+		map.setCenter({lat: 55.678951, lng: 37.641293}, 14)
 		
 		var shop =
 		{
@@ -71,7 +78,7 @@ ShopPage.prototype =
 				address: this.nodes.address.firstChild.nodeValue,
 				tel: this.nodes.phone.firstChild.nodeValue
 			},
-			point: [55.766212, 37.640148]
+			point: [55.678951, 37.641293]
 		}
 		map.setPoints([new ShopPoint(shop)])
 	}
