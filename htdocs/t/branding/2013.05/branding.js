@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/party/mojito-party/'
+var link = '/'
 
 Me.initialize
 ({
