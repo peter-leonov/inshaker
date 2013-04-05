@@ -1,12 +1,12 @@
 [
-["Chrome",71641],
-["Opera",35463],
-["Firefox",22722],
-["Safari",21139],
-["Internet Explorer",8696],
-["Android Browser",6184],
-["Opera Mini",5227],
-["Safari (in-app)",800],
+["Chrome",71492],
+["Opera",35268],
+["Firefox",22707],
+["Safari",21012],
+["Internet Explorer",8713],
+["Android Browser",6150],
+["Opera Mini",5202],
+["Safari (in-app)",798],
 ["Mozilla Compatible Agent",272],
 ["SeaMonkey",14],
 ["UCWEB",8],
@@ -29,6 +29,7 @@
 ["Nokia302",1],
 ["Nokia309",1],
 ["Nokia5230",1],
+["NokiaC6-00",1],
 ["NokiaE51",1],
 ["NokiaN73",1],
 ["SAMSUNG-GT-C3510T",1],
@@ -37,5 +38,5 @@
 ["ia_archiver",1],
 ["samsung-GT-I9300",1],
 ["sonyericssonk770i",1],
-{"total":{"visits":172226}}
+{"total":{"visits":171697}}
 ]
