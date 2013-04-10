@@ -89,13 +89,7 @@
 #main-content .buttons button { margin-right: 16px; }
 #main-content .buttons button .the-name { display: none; }
 
-#main-content .buttons .bt-want-slap { overflow: hidden; display: none; }
-#main-content .buttons .bt-want-slap .added,
-#main-content .buttons .bt-want-slap .add-more { display: none; }
-#main-content .buttons .bt-want-slap.in-cart .add { display: none; }
-#main-content .buttons .bt-want-slap.in-cart .added { display: inline; }
-#main-content .buttons .bt-want-slap.in-cart:hover .added { display: none; }
-#main-content .buttons .bt-want-slap.in-cart:hover .add-more { display: inline; }
+#main-content .buttons .bt-want-slap { overflow: hidden; }
 
 #view-legend { font-size: 120%; line-height: 1.5; padding: 13px 10px 0 10px; overflow: hidden; }
 #view-legend h3 { font-size: 150%; margin-bottom: 10px; }

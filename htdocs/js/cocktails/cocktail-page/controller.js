@@ -23,6 +23,7 @@ var Controller = {
 		hideRecipe: $('#close-recipe'),
 		showLegendBtn: $('#show-legend'),
 		hideLegendBtn: $('#hide-legend'),
+		whereToBuy: $('#where-to-buy'),
 		tags: $$('#main-content .tags .tag'),
 		recommendations:
 		{
@@ -150,6 +151,12 @@ var Controller = {
 		this.lh.addEventListener('change', function (e)
 		{
 			self.changeHashReaction(this.get())
+		},
+		false)
+		
+		this.nodes.whereToBuy.addEventListener('click', function (e)
+		{
+			window.location.href = '/'
 		},
 		false)
 		
