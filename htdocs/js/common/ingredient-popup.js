@@ -139,11 +139,12 @@ var myProto =
 		// // old way, may come back
 		// var good = Good.getBySellName(ingredient.name)[0]
 		
-		// if (good)
+		var volume = ingredient.volumes[0]
+		if (volume[3] !== false) // in shop!
 		{
 			nodes.ingredientWindow.classList.add('can-buy')
-			// nodes.buy.appendChild(T(good.name))
-			// nodes.buy.href = good.getHref()
+			nodes.buy.price.appendChild(T(volume[1] + 'р.-'))
+			nodes.buy.unit.appendChild(T(volume[2] + ' ' + volume[0] + ingredient.unit))
 		}
 	},
 	
