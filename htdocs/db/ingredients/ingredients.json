@@ -97,7 +97,7 @@
 {"group":"Добавки","name":"Вишня гриотин","path":"vishnya-griotin","tags":["Ягоды"],"unit":"г","volumes":[[750.0,300.0]]},
 {"group":"Вода и напитки","name":"Вода без газа","path":"voda-bez-gaza","tags":["Вода","Минеральная вода"],"unit":"л","volumes":[[0.6,36.0]]},
 {"group":"Добавки","name":"Вода из цветков апельсина","path":"voda-iz-tsvetkov-apelsina","unit":"мл","volumes":[[20.0,192.0]]},
-{"group":"Крепкий алкоголь","name":"Водка","path":"vodka","unit":"л","volumes":[[0.7,776.0]]},
+{"group":"Крепкий алкоголь","name":"Водка","path":"vodka","unit":"л","volumes":[[0.7,776.0,"Бутылка"]]},
 {"group":"Крепкий алкоголь","name":"Водка ванильная","path":"vodka-vanilnaya","tags":["Вкусовая водка"],"unit":"л","volumes":[[0.7,803]]},
 {"group":"Крепкий алкоголь","name":"Водка грейпфрутовая","path":"vodka-greypfrutovaya","tags":["Вкусовая водка"],"unit":"л","volumes":[[0.7,863]]},
 {"group":"Крепкий алкоголь","name":"Водка грушевая","path":"vodka-grushevaya","tags":["Вкусовая водка"],"unit":"л","volumes":[[0.7,961.0]]},
