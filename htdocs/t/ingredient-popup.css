@@ -16,8 +16,10 @@
 .ingredient-window .about .all-cocktails,
 .ingredient-window .about .combinations { margin-top: 1em; font-size: 12px; }
 .ingredient-window .about .combinations .list { margin: 0.2em 0 0 1em; }
-.ingredient-window .about .where-to-buy { display: none; margin-top: 1em; font-size: 12px; }
-.ingredient-window.can-buy .about .where-to-buy { display: block; }
+.ingredient-window .about .where-to-buy { display: none; margin-top: 2em; font-weight: bold; text-decoration: none; }
+.ingredient-window .about .where-to-buy .price { font-size: 20px; color: #ff0893; }
+.ingredient-window .about .where-to-buy .unit {  }
+.ingredient-window.can-buy .about .where-to-buy { display: inline-block; }
 
 .ingredient-window .cocktail-list { position: relative; margin: 30px 0 -20px 0; padding: 25px 20px 5px; border-top: 1px solid #ccc; }
 .ingredient-window .cocktail-list .prev,
