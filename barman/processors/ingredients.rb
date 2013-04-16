@@ -263,7 +263,7 @@ class IngredientsProcessor < Inshaker::Processor
           next
         end
         
-        volumes << [v["Объем"], v["Цена"], v["Наличие"] == "есть"]
+        volumes << [v["Объем"], v["Цена"], v["Тара"] || "Бутылка", v["Наличие"] != "нет"]
       end
       # increment sort by cost per litre
       good["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
@@ -335,6 +335,14 @@ class IngredientsProcessor < Inshaker::Processor
     entity["path"] = ht_dir.name
     if entity["tags"].empty?
       entity.delete("tags")
+    end
+    # clean up traing falses/nils
+    entity["volumes"].map! do |v|
+      if v[3] # presence is not false
+        [v[0], v[1], v[2]]
+      else
+        v
+      end
     end
     @local_properties.each do |prop|
       data[prop] = entity.delete(prop)

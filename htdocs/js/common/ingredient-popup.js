@@ -136,12 +136,15 @@ var myProto =
 	
 	renderWhereToBuy: function (nodes, ingredient)
 	{
-		var good = Good.getBySellName(ingredient.name)[0]
-		if (good)
+		// // old way, may come back
+		// var good = Good.getBySellName(ingredient.name)[0]
+		
+		var volume = ingredient.volumes[0]
+		if (volume[3] !== false) // in shop!
 		{
 			nodes.ingredientWindow.classList.add('can-buy')
-			nodes.buy.appendChild(T(good.name))
-			nodes.buy.href = good.getHref()
+			nodes.buy.price.appendChild(T(volume[1] + 'р.-'))
+			nodes.buy.unit.appendChild(T(volume[2] + ' ' + volume[0] + ingredient.unit))
 		}
 	},
 	
@@ -213,7 +216,11 @@ var myStatic =
 				image: $('#ingredient-info-popup .description .image'),
 				mark: $('#ingredient-info-popup .description .about .mark'),
 				brand: $('#ingredient-info-popup .description .about .brand .link'),
-				buy: $('#ingredient-info-popup .description .about .where-to-buy .link'),
+				buy:
+				{
+					price: $('#ingredient-info-popup .description .about .where-to-buy .price'),
+					unit: $('#ingredient-info-popup .description .about .where-to-buy .unit')
+				},
 				name: $('#ingredient-info-popup .description .about .name'),
 				text: $('#ingredient-info-popup .description .about .text'),
 				allCocktails: $('#ingredient-info-popup .description .about .all-cocktails'),
