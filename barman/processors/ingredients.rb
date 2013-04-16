@@ -263,7 +263,7 @@ class IngredientsProcessor < Inshaker::Processor
           next
         end
         
-        volumes << [v["Объем"], v["Цена"], v["Тара"], v["Наличие"] != "нет"]
+        volumes << [v["Объем"], v["Цена"], v["Тара"] || "Бутылка", v["Наличие"] != "нет"]
       end
       # increment sort by cost per litre
       good["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
@@ -338,9 +338,7 @@ class IngredientsProcessor < Inshaker::Processor
     end
     # clean up traing falses/nils
     entity["volumes"].map! do |v|
-      if !v[2] && v[3] # unit is not set and presence is not false
-        [v[0], v[1]]
-      elsif v[3] # unit is set and presence stil is not false
+      if v[3] # presence is not false
         [v[0], v[1], v[2]]
       else
         v
