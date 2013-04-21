@@ -21,7 +21,7 @@ def travers
     key = 'bar'
     
     json = File.read(path)
-    data = begin
+    begin
       Oj.parse(json)
     rescue => e
       if json == ""
