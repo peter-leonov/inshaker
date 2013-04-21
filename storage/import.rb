@@ -20,7 +20,8 @@ class Import
   
   def job
     connect
-    traverse
+    count
+    import
     disconnect
   end
   
@@ -61,7 +62,24 @@ class Import
       next unless m
       node = m[1]
       key = 'bar'
-    
+      
+      yield path, node, key
+    end
+  end
+  
+  def count
+    print "calculating nodes count..."
+    count = 0
+    traverse do
+      count += 1
+    end
+    @count = count
+    puts " #{count}"
+  end
+  
+  def import
+    count = 0
+    traverse do |path, node, key|
       json = File.read(path)
       begin
         Oj.parse(json)
@@ -88,6 +106,9 @@ class Import
       end
       
       @insert_stmt.execute(node: node, key: key, json: json)
+      
+      count += 1
+      puts "#{count}: #{count * 100 / @count}%" if count % 1000 == 0
     end
   end
 end
