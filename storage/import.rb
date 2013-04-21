@@ -31,6 +31,8 @@ def travers
           json.gsub! 'undefined', 'null'
           json.gsub! %r[}GET.*$]m, '}'
         rescue => e
+          puts "broken JSON in #{node}"
+          next
         end
         
         begin
