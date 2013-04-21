@@ -33,7 +33,7 @@ class ResetState < Inshaker::Processor
     
     say "сбрасываю все изменения…"
     system("git fetch")
-    system("git reset --hard git/master")
+    system("git reset --hard origin/master")
     system("git clean -fd")
     system("rm error-in-processor.*")
     

@@ -86,7 +86,7 @@ class Launcher
   def reset
     puts %Q{Resetting…}
     
-    system(%Q{git fetch && git reset --hard git/master})
+    system(%Q{git fetch && git reset --hard origin/master})
     system(%Q{git clean -df; git status})
   end
   
