@@ -35,7 +35,7 @@ SQL
 
 db_insert_stmt = $db.prepare( "INSERT INTO Nodes(node, key, json) VALUES(:node, :key, :json)" )
 
-def travers
+def traverse
   Find.find("/Users/peter/Desktop/db/").each do |path|
     m = %r{/(\w+)/bar\.json$}.match path
     next unless m
@@ -72,4 +72,4 @@ def travers
 end
 
 
-travers
+traverse
