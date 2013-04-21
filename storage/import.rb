@@ -18,12 +18,20 @@ class Import
     REPO_PATH = "/Users/peter/Desktop/db/"
   end
   
-  def initialize
+  def job
+    connect
+    traverse
+    disconnect
+  end
+  
+  def connect
     @db = SQLite3::Database.new 'storage.sqlite3'
     
-    @db.execute <<-SQL
+    @db.execute_batch <<-SQL
       BEGIN;
-
+      
+      DROP TABLE IF EXISTS Nodes;
+      
       CREATE TABLE IF NOT EXISTS Nodes
       (
         id       INTEGER PRIMARY KEY,
@@ -39,9 +47,14 @@ class Import
       COMMIT;
     SQL
     
-    @insert_stmt = @db.prepare( "INSERT INTO Nodes(node, key, json) VALUES(:node, :key, :json)" )
+    @insert_stmt = @db.prepare "INSERT INTO Nodes(node, key, json) VALUES(:node, :key, :json)"
   end
-
+  
+  def disconnect
+    @insert_stmt.close
+    @db.close
+  end
+  
   def traverse
     Find.find(Config::REPO_PATH).each do |path|
       m = %r{/(\w+)/bar\.json$}.match path
@@ -73,10 +86,11 @@ class Import
           end
         end
       end
-    
-      @insert_stmt.execute node: node, key: key, json: json
+      
+      @insert_stmt.execute(node: node, key: key, json: json)
     end
   end
 end
 
-Import.new.traverse
+Import.new.job
+
