@@ -132,7 +132,10 @@ Me =
 		Request.post(url + ld.hash + '/' + ld.id, JSON.stringify(this.data.remote), function ()
 		{
 			if (this.statusType != 'success')
+			{
+				clientStorage.remove('mybar')
 				throw new Error('BarStorage: failed to save the bar')
+			}
 		})
 	},
 	
