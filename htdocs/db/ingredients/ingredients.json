@@ -25,7 +25,7 @@
 {"group":"Молочные продукты. Яйца","name":"Апельсиновый сорбет","path":"apelsinovyiy-sorbet","tags":["Сорбет"],"unit":"г","volumes":[[175.0,80.0,"Бутылка"]]},
 {"group":"Штучки","name":"Аптекарские весы","path":"aptekarskie-vesyi","unit":"шт","volumes":[[1.0,3000.0,"Бутылка"]]},
 {"group":"Орехи и сухофрукты","name":"Арахис жареный","path":"arahis-zharenyiy","tags":["Орехи"],"unit":"г","volumes":[[150.0,47.0,"Бутылка"]]},
-{"group":"Ягоды","name":"Арбуз","path":"arbuz","tags":["Ягоды"],"unit":"г","volumes":[[1000.0,99.0,"Бутылка"]]},
+{"group":"Ягоды","name":"Арбуз","path":"arbuz","tags":["Ягоды"],"unit":"г","volumes":[[1000.0,99.0,"Бутылка",false]]},
 {"group":"Ликеры и настойки","name":"Арбузный ликер","path":"arbuznyiy-liker","tags":["Ликер","Ягодный ликер"],"unit":"л","volumes":[[0.7,951.0,"Бутылка"]]},
 {"brand":"Monin Watermelon","group":"Сиропы","mark":"Monin","name":"Арбузный сироп","names":["Monin Watermelon","Монин Вотермелон"],"path":"arbuznyiy-sirop","tags":["Monin","Сироп","Ягодный сироп"],"unit":"л","volumes":[[1.0,413.0,"Бутылка"]]},
 {"group":"Соки и морсы","name":"Арбузный сок","path":"arbuznyiy-sok","tags":["Сок"],"unit":"л","volumes":[[1.0,470.0,"Бутылка"]]},
