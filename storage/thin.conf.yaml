@@ -1,7 +1,0 @@
----
-    chdir: /www/storage/
-    pid: /www/storage/logs/thin.pid
-    log: /www/storage/logs/thin.log
-    rackup: /www/storage/thin.ru
-    socket: /www/storage/thin.sock
-    tag: storage
