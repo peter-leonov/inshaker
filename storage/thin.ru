@@ -9,11 +9,13 @@ class Storage
 
     DB_PATH = ROOT + '/storage.sqlite3'
     SALT = ENV['INSHAKER_STORAGE_SALT']
+    throw "need salt" if SALT.nil?
   end
   
   def initialize
     @salt = Config::SALT
     @db = SQLite3::Database.new Config::DB_PATH
+    @db.results_as_hash = true
     
     @db.execute_batch <<-SQL
       BEGIN;
@@ -40,22 +42,22 @@ class Storage
   
   def process env
     uri = env["REQUEST_URI"]
-    tempfile = env["HTTP_TEMPORARY_FILE"]
     
     x, action, hash, id = uri.split("/")
     
-    if action == "create" && tempfile
+    if action == "create"
       id = Digest::MD5.hexdigest(rand.to_s + Time.now.to_s).to_s
       
-      path = Config::DB + "/#{id[0]}/#{id[1]}/#{id}"
-      unless FileUtils.mkdir_p(path)
+      now = Time.now.to_i
+      begin
+        @create_stmt.execute created: now, modified: now, node: id, key: 'bar', json: env["rack.input"].read
+      rescue => e
         return [
           500,
           {"Content-Type" => "application/json"},
           [%Q{{"error":"“bar” is already exists"}}]
         ]
       end
-      FileUtils.move(tempfile, path + "/bar.json")
       
       return [
         200,
@@ -64,21 +66,50 @@ class Storage
       ]
     end
     
-    if action == "save" and !tempfile.nil?
-      path = Config::DB + "/#{id[0]}/#{id[1]}/#{id}"
-      unless FileTest::directory?(path)
+    if action == "save"
+      unless Digest::MD5.hexdigest(id + @salt) == hash
+        return [
+          403,
+          {"Content-Type" => "application/json"},
+          [%Q{{"error":"hash missmatch"}}]
+        ]
+      end
+      
+      now = Time.now.to_i
+      begin
+        @update_stmt.execute modified: now, node: id, key: 'bar', json: env["rack.input"].read
+      rescue => e
         return [
           404,
           {"Content-Type" => "application/json"},
           [%Q{{"error":"“bar” does not exist"}}]
         ]
       end
-      FileUtils.move(tempfile, path + "/bar.json")
+      
       return [
         200,
         {"Content-Type" => "application/json"},
         [%Q{true}]
       ]
+    end
+    
+    if action == "get"
+      id = hash
+      begin
+        @get_stmt.execute node: id, key: 'bar' do |result|
+          return [
+            200,
+            {"Content-Type" => "application/json"},
+            [result.next['json']]
+          ]
+        end
+      rescue => e
+        return [
+          404,
+          {"Content-Type" => "application/json"},
+          [%Q{{"error":"“bar” does not exist"}}]
+        ]
+      end
     end
     
     return [
