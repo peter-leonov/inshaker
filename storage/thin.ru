@@ -1,6 +1,6 @@
 # encoding: utf-8
-require "fileutils"
-require "digest/md5"
+require 'sqlite3'
+require 'digest/md5'
 
 class Storage
   module Config
@@ -13,6 +13,29 @@ class Storage
   
   def initialize
     @salt = Config::SALT
+    @db = SQLite3::Database.new Config::DB_PATH
+    
+    @db.execute_batch <<-SQL
+      BEGIN;
+      
+      CREATE TABLE IF NOT EXISTS Nodes
+      (
+        id       INTEGER PRIMARY KEY,
+        created  INTEGER,
+        modified INTEGER,
+        node     TEXT,
+        key      TEXT,
+        json     TEXT
+      );
+
+      CREATE INDEX IF NOT EXISTS node_with_key ON Nodes(node, key);
+
+      COMMIT;
+    SQL
+    
+    @create_stmt = @db.prepare "INSERT INTO Nodes(created, modified, node, key, json) VALUES(:created, :modified, :node, :key, :json)"
+    @update_stmt = @db.prepare "UPDATE Nodes SET modified = :modified, json = :json WHERE node = :node AND key = :key"
+    @get_stmt = @db.prepare "SELECT json FROM Nodes WHERE node = :node AND key = :key"
   end
   
   def process env
