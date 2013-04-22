@@ -7,3 +7,4 @@ cd "$PROJ_ROOT" # needed by nginx, it's resolver of a unix socket path
 nginx -q -p "$PROJ_ROOT" -c "nginx.developer.conf"
 nginx -q -p "$PROJ_ROOT" -c "nginx.barman.conf"
 mini_httpd -C "$PROJ_ROOT/mini_httpd.developer.conf"
+thin start -d -a "127.0.0.1" -p "18183" -R "$PROJ_ROOT/storage/thin.ru" -P "$PROJ_ROOT/storage/logs/thin.pid"

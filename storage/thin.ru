@@ -4,12 +4,15 @@ require "digest/md5"
 
 class Storage
   module Config
-    ROOT = "/www/storage"
-    DB   = "#{ROOT}/db"
+    ROOT = File.dirname(__FILE__)
+    throw "need absolute path" unless ROOT[0] == '/'
+
+    DB_PATH = ROOT + '/storage.sqlite3'
+    SALT = ENV['INSHAKER_STORAGE_SALT']
   end
   
-  def self.init
-    @@salt = /"(.+)"/.match(File.read(Config::ROOT + "/salt.conf"))[1]
+  def initialize
+    @salt = Config::SALT
   end
   
   def process env
@@ -34,7 +37,7 @@ class Storage
       return [
         200,
         {"Content-Type" => "application/json"},
-        [%Q{{"id":"#{id}","hash":"#{Digest::MD5.hexdigest(id + @@salt)}"}}]
+        [%Q{{"id":"#{id}","hash":"#{Digest::MD5.hexdigest(id + @salt)}"}}]
       ]
     end
     
@@ -63,6 +66,5 @@ class Storage
   end
 end
 
-Storage.init
 app = Storage.new
 run proc {|env| app.process env }
