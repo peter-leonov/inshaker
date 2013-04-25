@@ -22,5 +22,5 @@ popd
 # storage
 ROOT="$PROJ_ROOT/storage/"
 pushd $ROOT
-thin start -d -a "127.0.0.3" -p "18183" -R "$ROOT/thin.ru" -P "$ROOT/logs/thin.pid" -l "$ROOT/logs/thin.log"
+thin start -d -a "127.0.0.3" -p "18183" -R "$ROOT/thin.ru" -P "$ROOT/var/thin.pid" -l "$ROOT/logs/thin.log"
 popd
