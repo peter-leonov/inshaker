@@ -7,7 +7,7 @@ class Storage
     ROOT = File.dirname(__FILE__)
     throw "need absolute path" unless ROOT[0] == '/'
 
-    DB_PATH = ROOT + '/storage.sqlite3'
+    DB_PATH = ROOT + '/db/storage.sqlite3'
     SALT = ENV['INSHAKER_STORAGE_SALT']
     throw "need salt" if SALT.nil?
   end
