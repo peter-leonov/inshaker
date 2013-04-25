@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
+$:.push('/www/inshaker/barman')
 
 require "digest/md5"
 require "optparse"

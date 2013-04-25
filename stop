@@ -2,30 +2,41 @@
 
 PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
 
-# stopping nginx.inshaker
-PID="$PROJ_ROOT/logs/nginx.inshaker.pid"
-if [ -f "$PID" ]; then
-	kill -INT $(cat "$PID")
-else
-	echo "nginx wasn't started (no pid file found)"
-fi
-rm -f $PROJ_ROOT/logs/nginx.inshaker.sock
-
-# stopping nginx.barman
-PID="$PROJ_ROOT/logs/nginx.barman.pid"
-if [ -f "$PID" ]; then
-	kill -INT $(cat "$PID")
-else
-	echo "nginx wasn't started (no pid file found)"
-fi
-rm -f $PROJ_ROOT/logs/nginx.barman.sock
-
-
 # stopping mini_httpd
-PID="$PROJ_ROOT/logs/mini_httpd.pid"
+PID="$PROJ_ROOT/var/mini_httpd.pid"
 if [ -f "$PID" ]; then
 	kill -INT $(cat "$PID")
 	rm -f "$PID"
 else
 	echo "mini_httpd wasn't started (no pid file found)"
+fi
+
+
+# stopping nginx.inshaker
+PID="$PROJ_ROOT/var/nginx.inshaker.pid"
+if [ -f "$PID" ]; then
+	kill -INT $(cat "$PID")
+else
+	echo "nginx wasn't started (no pid file found)"
+fi
+rm -f $PROJ_ROOT/var/nginx.inshaker.sock
+
+
+# stopping nginx.barman
+PID="$PROJ_ROOT/barman/var/nginx.barman.pid"
+if [ -f "$PID" ]; then
+	kill -INT $(cat "$PID")
+else
+	echo "nginx wasn't started (no pid file found)"
+fi
+rm -f $PROJ_ROOT/barman/var/nginx.barman.sock
+
+
+# stopping storage/thin
+PID="$PROJ_ROOT/storage/var/thin.pid"
+if [ -f "$PID" ]; then
+	kill -INT $(cat "$PID")
+	rm -f "$PID"
+else
+	echo "thin wasn't started (no pid file found)"
 fi

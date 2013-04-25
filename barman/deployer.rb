@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
+$:.push('/www/inshaker/barman')
+
 require "inshaker"
 require "lib/checker"
 

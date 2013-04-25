@@ -2,8 +2,25 @@
 
 PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
 
-cd "$PROJ_ROOT" # needed by nginx, it's resolver of a unix socket path
+# pushd needed by nginx, it's resolver of a unix socket path
 
-nginx -q -p "$PROJ_ROOT" -c "nginx.developer.conf"
-nginx -q -p "$PROJ_ROOT" -c "nginx.barman.conf"
+# global mini_httpd
 mini_httpd -C "$PROJ_ROOT/mini_httpd.developer.conf"
+
+# front
+ROOT=$PROJ_ROOT
+pushd $ROOT
+nginx -q -p "$ROOT" -c "nginx.developer.conf"
+popd
+
+# barman
+ROOT="$PROJ_ROOT/barman/"
+pushd $ROOT
+nginx -q -p "$ROOT" -c "nginx.barman.conf"
+popd
+
+# storage
+ROOT="$PROJ_ROOT/storage/"
+pushd $ROOT
+thin start -d -a "127.0.0.3" -p "18183" -R "$ROOT/thin.ru" -P "$ROOT/var/thin.pid" -l "$ROOT/logs/thin.log"
+popd
