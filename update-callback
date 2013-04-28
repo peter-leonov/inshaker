@@ -1,18 +1,43 @@
-#!/bin/sh
+#!/usr/bin/env ruby
+require 'socket'
 
 # invoke with curl http://host:$PORT/
+$port="34543"
 
-PORT="34543"
-LOGFILE="update-callback.log"
+Dir.chdir(File.dirname($PROGRAM_NAME))
 
-cd "$(dirname "$0")"
+server = TCPServer.new $port
 
-while nc -l $PORT <<EOF > /dev/null
-HTTP/1.0 200 OK
-Content-Type: text/plain
-
-updating $(hostname)
-EOF
-do
-	./update-callback-job 1>>$LOGFILE 2>&1
-done
+loop do
+  client = server.accept
+  
+  # render the minimal HTTP 1.0 header, so no chuncked encoding ever expected ;)
+  client.puts 'HTTP/1.0 200 OK'
+  client.puts 'Server: GithubCallbackHandler'
+  client.puts 'Content-Type: text/plain'
+  client.puts '' # end of header
+  
+  # tell the client the server name
+  client.puts "updating #{Socket.gethostname}"
+  
+  # run job in a worker
+  child = fork do
+    # worker doesn't need a server socket
+    server.close
+    
+    # redirect all output to the client socket
+    $stdout.reopen(client)
+    $stdout.sync = true
+    $stderr.reopen($stdout)
+    
+    
+    # hooray! do the job
+    # system('./update-callback-job')
+    system('git status')
+  end
+  
+  # do not produce zombies
+  Process.detach child
+  
+  client.close
+end
