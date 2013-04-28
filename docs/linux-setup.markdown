@@ -226,7 +226,27 @@ Upstart
 
 Если его нет, то ставим дестрибутив посвежей.
 
-Конфиги лежат в папочке files.
+Монтируем конфиги:
+
+    sudo mkdir /etc/init/inshaker/
+    sudo nano /etc/fstab
+
+и в конец:
+
+    /www/inshaker/upstart/back/ /etc/init/inshaker/  none bind
+
+а потом:
+
+    initctl reload-configuration
+
+и проверим:
+
+    initctl list | grep inshaker
+    #>>> inshaker/update-callback stop/waiting
+    #>>> inshaker/nginx stop/waiting
+    #>>> inshaker/storage-nginx stop/waiting
+    #>>> inshaker/back-apache stop/waiting
+    #>>> inshaker/storage-thin stop/waiting
 
 Проверяем работоспособность на примере энжин икса:
 
