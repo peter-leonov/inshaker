@@ -35,8 +35,8 @@ loop do
     system('./update-callback-job')
   end
   
-  # do not produce zombies
-  Process.detach child
+  # avoid overusage of the service
+  Process.wait child
   
   client.close
 end
