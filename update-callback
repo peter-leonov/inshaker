@@ -30,10 +30,8 @@ loop do
     $stdout.sync = true
     $stderr.reopen($stdout)
     
-    
     # hooray! do the job
-    # system('./update-callback-job')
-    system('git status')
+    system('./update-callback-job')
   end
   
   # do not produce zombies
