@@ -8,7 +8,7 @@ class Storage
     throw "need absolute path" unless ROOT[0] == '/'
 
     DB_PATH = ROOT + '/db/storage.sqlite3'
-    SALT = ENV['INSHAKER_STORAGE_SALT']
+    SALT = File.read(ROOT + '/salt.txt')
     throw "need salt" if SALT.nil?
   end
   
