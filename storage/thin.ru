@@ -54,8 +54,8 @@ class Storage
       rescue => e
         return [
           500,
-          {"Content-Type" => "application/json"},
-          [%Q{{"error":"“bar” is already exists"}}]
+          {"Content-Type" => "text/plain"},
+          [e.message]
         ]
       end
       
