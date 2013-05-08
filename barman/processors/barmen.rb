@@ -98,6 +98,11 @@ class BarmenProcessor < Inshaker::Processor
     
     render_erb "#{dst_dir.path}/index.html", @barman
     
+    data = {
+      "description" => @barman["about"] 
+    }
+    flush_json_object(data, "#{dst_dir.path}/data.json")
+    
     @entities << @barman
     end # indent
   end
