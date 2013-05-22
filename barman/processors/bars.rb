@@ -202,6 +202,16 @@ class BarsProcessor < Inshaker::Processor
           bar["point"] = []
         end
         
+        data = {
+          desc_start: bar["desc_start"],
+          desc_end:   bar["desc_end"],
+          entrance:   bar["entrance"],
+          photos:     bar["photos"],
+          priceIndex: bar["priceIndex"],
+          geometry:   bar["geometry"]
+        }
+        flush_json_object(data, "#{ht_dir.path}/data.json")
+        
         @entities << bar
         end # indent
       end
