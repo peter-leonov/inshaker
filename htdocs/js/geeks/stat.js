@@ -149,8 +149,14 @@ var Me =
 			}
 		}
 		
-		filt(0.02, 0.001444)
-		filt(0.01, 0.002)
+		// instead of sorting and cutting the tail
+		// try to collect the 1% tail step by step
+		filt(0.01, 0.001)
+		filt(0.01, 0.0011)
+		filt(0.01, 0.0012)
+		filt(0.01, 0.0013)
+		filt(0.01, 0.0014)
+		filt(0.01, 0.0015)
 		
 		stats.push({version: 'other', stat: tail})
 	},
