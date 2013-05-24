@@ -60,17 +60,6 @@ var Me =
 				color: "#888888"
 			}
 		}
-		
-		this.groupBrowsers()
-		
-		this.groupStat(browsers.Opera)
-		this.groupStat(browsers.Firefox)
-		this.groupStat(browsers.Chrome)
-		this.groupStat(browsers['Internet Explorer'])
-		
-		this.sealTail(browsers.Opera)
-		this.sealTail(browsers.Firefox)
-		this.sealTail(browsers.Chrome)
 	},
 	
 	groupBrowsers: function ()
@@ -232,6 +221,18 @@ var Me =
 			data = [],
 			colors = [],
 			known = 0
+		
+		this.groupBrowsers()
+		
+		this.groupStat(browsers.Opera)
+		this.groupStat(browsers.Firefox)
+		this.groupStat(browsers.Chrome)
+		this.groupStat(browsers['Internet Explorer'])
+		
+		this.sealTail(browsers.Opera)
+		this.sealTail(browsers.Firefox)
+		this.sealTail(browsers.Chrome)
+		
 		
 		for (var browserName in browsers)
 		{
