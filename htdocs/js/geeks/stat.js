@@ -17,6 +17,12 @@ var Me =
 				colorMiddle: "#cc4422",
 				colorEnd: "#cc6644"
 			},
+			'Opera Mini':
+			{
+				rawData: [],
+				sum: 0,
+				color: "#cc4422"
+			},
 			'Firefox':
 			{
 				rawData: [],
@@ -33,6 +39,18 @@ var Me =
 				colorMiddle: "#88cc44",
 				colorEnd: "#aacc66"
 			},
+			'YaBrowser':
+			{
+				rawData: [],
+				sum: 0,
+				color: "#88cc44"
+			},
+			'Android Browser':
+			{
+				rawData: [],
+				sum: 0,
+				color: "#88cc44"
+			},
 			'Internet Explorer':
 			{
 				rawData: [],
@@ -46,24 +64,6 @@ var Me =
 				rawData: [],
 				sum: 0,
 				color: "#2255bb"
-			},
-			'YaBrowser':
-			{
-				rawData: [],
-				sum: 0,
-				color: "#555555"
-			},
-			'Opera Mini':
-			{
-				rawData: [],
-				sum: 0,
-				color: "#777777"
-			},
-			'Android Browser':
-			{
-				rawData: [],
-				sum: 0,
-				color: "#66cc22"
 			}
 		}
 	},
@@ -196,13 +196,22 @@ var Me =
 			browsers[name] = stat
 		}
 		
-		var other = total - browsers.Opera - browsers.Firefox - browsers.Chrome - browsers['Internet Explorer'] - browsers.Safari
+		var other =
+			  total
+			- browsers.Opera
+			- browsers['Opera Mini']
+			- browsers.Firefox
+			- browsers.Chrome
+			- browsers.YaBrowser
+			- browsers['Android Browser']
+			- browsers['Internet Explorer']
+			- browsers.Safari
 		
 		var data =
 		[
-			['Opera', browsers.Opera],
+			['Opera', browsers.Opera + browsers['Opera Mini']],
 			['Firefox', browsers.Firefox],
-			['Chorme', browsers.Chrome],
+			['Chorme', browsers.Chrome + browsers.YaBrowser + browsers['Android Browser']],
 			['Internet Explorer', browsers['Internet Explorer']],
 			['Safari', browsers.Safari],
 			['Other', other]
@@ -215,7 +224,7 @@ var Me =
 			infoBrowsers.Chrome.color,
 			infoBrowsers['Internet Explorer'].color,
 			infoBrowsers.Safari.color,
-			'#999999'
+			'#555555'
 		]
 		
 		return {data: data, colors: colors}
@@ -269,7 +278,7 @@ var Me =
 		}
 		
 		data.push(['Unknown', this.total - known])
-		colors.push('#999999')
+		colors.push('#555555')
 		
 		return {data: data, colors: colors}
 	},
