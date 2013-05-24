@@ -330,7 +330,18 @@ var Me =
 		listOfVersions.sort(function (a, b) { return b.hits - a.hits })
 		
 		// prepare for charts and paint with color
-		var browsersOptions = this.browsers
+		var colorByName =
+		{
+			'Opera': "#cc2200",
+			'Firefox': "#ff9900",
+			'Chrome': "#66cc22",
+			'Internet Explorer': "#4499ff",
+			'Safari': "#2255bb",
+			'YaBrowser': "#88cc44",
+			'Opera Mini': "#cc6644",
+			'Android Browser': "#aacc66"
+		}
+		
 		
 		var data = [],
 			colors = []
@@ -340,9 +351,7 @@ var Me =
 			var browser = listOfVersions[i]
 			
 			data.push([browser.signature, browser.hits])
-			
-			var option = browsersOptions[browser.name]
-			colors.push(option ? option.color : '#000000')
+			colors.push(colorByName[browser.name] || '#000000')
 		}
 		
 		return {data: data, colors: colors}
