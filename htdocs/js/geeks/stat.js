@@ -285,15 +285,15 @@ var Me =
 				hits = row[2]
 			
 			// take first one or two digits
-			var meaningfullVersion = +(/^\d+(?:\.\d)?/.exec(fullVersion))
+			var meaningfulVersion = +(/^\d+(?:\.\d)?/.exec(fullVersion))
 			// if NaN of zero
-			if (!meaningfullVersion)
+			if (!meaningfulVersion)
 			{
 				brokenVersion += hits
 				continue
 			}
 			
-			var signature = browserName + ' ' + meaningfullVersion
+			var signature = browserName + ' ' + meaningfulVersion
 			if (signature in groupedByVersion)
 				groupedByVersion[signature].hits += hits
 			else
@@ -301,7 +301,7 @@ var Me =
 				{
 					signature: signature, // preserve for next step
 					name: browserName,
-					version: meaningfullVersion,
+					version: meaningfulVersion,
 					hits: hits
 				}
 		}
