@@ -6,13 +6,8 @@
 	<title>Статистика по браузерам — Inshaker</title>
 	<style>
 	.stat { position: relative; margin: 20px -20px 0 -20px; }
-	.stat .viewport { position: relative; width: 100%; height: 770px; overflow: hidden; }
-	.stat .viewport .point { width: 100%; height: 100%; }
-	.stat .prev,
-	.stat .next { position: absolute; top: 4px; z-index: 11; }
-	.stat .prev { left: 890px; }
-	.stat .next { right: 0px; }
-	.stat h3 { text-align: right; width: 150px; margin: 0 38px 0 auto; }
+	.stat .viewport .point { height: 770px; }
+	.stat h3 { position: relative; z-index: 1; text-align: right; width: 150px; margin: 0 38px 0 auto; font-size: 20px; }
 	
 	path[stroke="#ffffff"] { stroke-width: 1.5px; stroke: rgba(255,255,255,0.2) }
 	</style>
@@ -23,24 +18,21 @@
 
 <div id="main-column" class="common-box"><div class="common-content">
 	<div class="common-title">
-		<h1>Статистика по браузерам за 30 дней</h1>
+		<h1>Browser stats for last 7 days</h1>
 	</div>
 	<div class="b-content">
 		<div class="stat cocktail-list" id="rolling-stats">
 			<ul class="viewport">
 				<li class="point">
-					<h3>детально</h3>
+					<h3><a href="#stat-browsers">detailed</a></h3>
 					<div id="stat-browsers"></div>
 				</li>
 				<li class="point">
-					<h3>общо</h3>
+					<h3><a href="#stat-browsers-plain">overview</a></h3>
 					<div id="stat-browsers-plain"></div>
 				</li>
 			</ul>
-			<a class="prev"></a>
-			<a class="next"></a>
 		</div>
-		
 	</div>
 </div></div>
 

@@ -57,7 +57,5 @@ function onready ()
 	
 	googleApiLoader.addEventListener('visualization', onvisualization, false)
 	googleApiLoader.load('visualization', 1, {packages: ['corechart']})
-	
-	new RollingImagesLite($('#rolling-stats'), {animationType: 'directJump'})
 }
 $.onready(onready)
