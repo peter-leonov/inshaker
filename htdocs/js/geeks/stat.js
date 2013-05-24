@@ -2,9 +2,9 @@
 
 var Me =
 {
-	initialize: function (data, plain)
+	initialize: function (detailed, plain)
 	{
-		this.data = data
+		this.detailed = detailed
 		this.plain = plain
 		
 		var browsers = this.browsers =
@@ -64,7 +64,7 @@ var Me =
 	
 	groupBrowsers: function ()
 	{
-		var stats = this.data,
+		var stats = this.detailed.slice(),
 			browsers = this.browsers
 		
 		var sum = stats.pop()
