@@ -47,6 +47,12 @@ var Me =
 				sum: 0,
 				color: "#2255bb"
 			},
+			'YaBrowser':
+			{
+				rawData: [],
+				sum: 0,
+				color: "#555555"
+			},
 			'Opera Mini':
 			{
 				rawData: [],
