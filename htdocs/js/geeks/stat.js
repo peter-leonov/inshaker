@@ -57,7 +57,7 @@ var Me =
 			{
 				rawData: [],
 				sum: 0,
-				color: "#888888"
+				color: "#66cc22"
 			}
 		}
 	},
