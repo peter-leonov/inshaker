@@ -266,6 +266,80 @@ var Me =
 		colors.push('#999999')
 		
 		return {data: data, colors: colors}
+	},
+	
+	getTopChart: function ()
+	{
+		var detailed = this.detailed.slice()
+		
+		var total = detailed.pop()
+		var brokenVersion = 0
+		
+		var groupedByVersion = {}
+		for (var i = 0, il = detailed.length; i < il; i++)
+		{
+			var row = detailed[i]
+			
+			var browserName = row[0],
+				fullVersion = row[1],
+				hits = row[2]
+			
+			// take first one or two digits
+			var meaningfullVersion = +(/^\d+(?:\.\d)?/.exec(fullVersion))
+			// if NaN of zero
+			if (!meaningfullVersion)
+			{
+				brokenVersion += hits
+				continue
+			}
+			
+			var signature = browserName + ' ' + meaningfullVersion
+			if (signature in groupedByVersion)
+				groupedByVersion[signature].hits += hits
+			else
+				groupedByVersion[signature] =
+				{
+					signature: signature, // preserve for next step
+					name: browserName,
+					version: meaningfullVersion,
+					hits: hits
+				}
+		}
+		
+		// add the browsers with broken versions to match the table total
+		groupedByVersion['broken'] =
+		{
+			signature: 'broken',
+			name: 'broken',
+			version: 0.0,
+			hits: brokenVersion
+		}
+		
+		// convert hash values to array
+		var listOfVersions = []
+		for (var k in groupedByVersion)
+			listOfVersions.push(groupedByVersion[k])
+		
+		// sort by hist ASC
+		listOfVersions.sort(function (a, b) { return b.hits - a.hits })
+		
+		// prepare for charts and paint with color
+		var browsersOptions = this.browsers
+		
+		var data = [],
+			colors = []
+		
+		for (var i = 0, il = listOfVersions.length; i < il; i++)
+		{
+			var browser = listOfVersions[i]
+			
+			data.push([browser.signature, browser.hits])
+			
+			var option = browsersOptions[browser.name]
+			colors.push(option ? option.color : '#000000')
+		}
+		
+		return {data: data, colors: colors}
 	}
 }
 

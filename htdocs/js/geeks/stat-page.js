@@ -51,6 +51,7 @@ function onready ()
 {
 	function onvisualization ()
 	{
+		drawChartToNode($('#top-browsers'), BrowsersStats.getTopChart())
 		drawChartToNode($('#stat-browsers'), BrowsersStats.getChartData())
 		drawChartToNode($('#stat-browsers-plain'), BrowsersStats.getChartDataPlain())
 	}
