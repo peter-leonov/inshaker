@@ -278,8 +278,8 @@ var Me =
 	{
 		var detailed = this.detailed.slice()
 		
-		var total = detailed.pop()
-		var brokenVersion = 0
+		var tableTotal = detailed.pop().total.visits
+		var countedTotal = 0
 		
 		var groupedByVersion = {}
 		for (var i = 0, il = detailed.length; i < il; i++)
@@ -290,16 +290,13 @@ var Me =
 				fullVersion = row[1],
 				hits = row[2]
 			
-			// take first one or two digits
-			var meaningfulVersion = +(/^\d+(?:\.\d)?/.exec(fullVersion))
-			// if NaN of zero
-			if (!meaningfulVersion)
-			{
-				brokenVersion += hits
-				continue
-			}
+			// calculate subtotal to check the match with the table total
+			countedTotal += hits
 			
-			var signature = browserName + ' ' + meaningfulVersion
+			// take first one or two digits
+			var meaningfulVersion = +(/^\d+(?:\.\d)?/.exec(fullVersion)) || 0
+			
+			var signature = meaningfulVersion ? browserName + ' ' + meaningfulVersion : browserName
 			if (signature in groupedByVersion)
 				groupedByVersion[signature].hits += hits
 			else
@@ -312,15 +309,6 @@ var Me =
 				}
 		}
 		
-		// add the browsers with broken versions to match the table total
-		groupedByVersion['broken'] =
-		{
-			signature: 'broken',
-			name: 'broken',
-			version: 0.0,
-			hits: brokenVersion
-		}
-		
 		// convert hash values to array
 		var listOfVersions = []
 		for (var k in groupedByVersion)
@@ -328,6 +316,28 @@ var Me =
 		
 		// sort by hist ASC
 		listOfVersions.sort(function (a, b) { return b.hits - a.hits })
+		
+		// cut the tail
+		var tail = 0,
+			barriere = tableTotal * 0.0005
+		for (var i = listOfVersions.length - 1; i >= 0; i--)
+		{
+			var hits = listOfVersions[i].hits
+			if (hits >= barriere)
+				break
+			
+			tail += hits
+		}
+		listOfVersions.length = i + 1 // i is the last OK index
+		
+		// add the browsers not count to match the table total
+		listOfVersions.push
+		({
+			signature: 'The Rest',
+			name: 'The Rest',
+			version: 0.0,
+			hits: tableTotal - (countedTotal - tail)
+		})
 		
 		// prepare for charts and paint with color
 		var colorByName =
@@ -337,11 +347,12 @@ var Me =
 			'Chrome': "#66cc22",
 			'Internet Explorer': "#4499ff",
 			'Safari': "#2255bb",
+			'Safari (in-app)': "#2255bb",
 			'YaBrowser': "#88cc44",
 			'Opera Mini': "#cc6644",
-			'Android Browser': "#aacc66"
+			'Android Browser': "#aacc66",
+			'The Rest': '#555555'
 		}
-		
 		
 		var data = [],
 			colors = []
