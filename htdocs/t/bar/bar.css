@@ -87,7 +87,8 @@
 
 
 .position-control { display: none; }
-#map .position-control { display: block; position: absolute; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; }
+#map .position-control { display: block; position: absolute; z-index: 1; left: 10px; top: 10px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.2 }
+#map .position-control:hover { opacity: 1 }
 #map .position-control .to-top,
 #map .position-control .to-right,
 #map .position-control .to-bottom,
