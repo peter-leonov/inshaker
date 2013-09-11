@@ -7,8 +7,11 @@
 {"name":"Ballantine's","path":"ballantine-s"},
 {"name":"Becherovka","path":"becherovka"},
 {"name":"Beefeater","path":"beefeater"},
+{"name":"Benedictine","path":"benedictine"},
 {"name":"Bushmills","path":"bushmills"},
+{"name":"Campari","path":"campari"},
 {"name":"De Kuyper","path":"de-kuyper"},
+{"name":"Galliano","path":"galliano"},
 {"name":"Grand Marnier","path":"grand-marnier"},
 {"name":"Jameson","path":"jameson"},
 {"name":"Jim Beam","path":"jim-beam"},
@@ -21,6 +24,8 @@
 {"name":"Pernod","path":"pernod"},
 {"name":"Perrier","path":"perrier"},
 {"name":"Red Stag","path":"red-stag"},
+{"name":"Remy Martin","path":"remy-martin"},
 {"name":"Rich","path":"rich"},
+{"name":"Southern Comfort","path":"southern-comfort"},
 {"name":"Yupioca","path":"yupioca"}
 ]

@@ -76,7 +76,6 @@ http://www.inshaker.ru/cocktail/bacchus_party/
 http://www.inshaker.ru/cocktail/white_lady/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
 http://www.inshaker.ru/cocktail/bellini/
-http://www.inshaker.ru/cocktail/white_bungalow/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
 http://www.inshaker.ru/cocktail/white_cuban/
@@ -261,7 +260,6 @@ http://www.inshaker.ru/cocktail/grog/
 http://www.inshaker.ru/cocktail/pear_breeze/
 http://www.inshaker.ru/cocktail/pear_milkshake/
 http://www.inshaker.ru/cocktail/pears_shot/
-http://www.inshaker.ru/cocktail/guav-berry_martini/
 http://www.inshaker.ru/cocktail/good_time_girl/
 http://www.inshaker.ru/cocktail/daiquiri/
 http://www.inshaker.ru/cocktail/daiquiri_2/
@@ -327,7 +325,6 @@ http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon-basil_smoothie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
-http://www.inshaker.ru/cocktail/duboudreau/
 http://www.inshaker.ru/cocktail/e-sencha-l/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
@@ -491,7 +488,6 @@ http://www.inshaker.ru/cocktail/bloody_mary/
 http://www.inshaker.ru/cocktail/little_bloody_masha/
 http://www.inshaker.ru/cocktail/bloody_joseph/
 http://www.inshaker.ru/cocktail/blood_and_sand/
-http://www.inshaker.ru/cocktail/crimean_flip/
 http://www.inshaker.ru/cocktail/cuba_libre/
 http://www.inshaker.ru/cocktail/grasshopper/
 http://www.inshaker.ru/cocktail/cucaracha/
@@ -662,7 +658,6 @@ http://www.inshaker.ru/cocktail/nights/
 http://www.inshaker.ru/cocktail/nano-mojito/
 http://www.inshaker.ru/cocktail/naomi/
 http://www.inshaker.ru/cocktail/our_mary/
-http://www.inshaker.ru/cocktail/just_as_well/
 http://www.inshaker.ru/cocktail/heaven/
 http://www.inshaker.ru/cocktail/innocent_sex/
 http://www.inshaker.ru/cocktail/negroni/
@@ -878,7 +873,6 @@ http://www.inshaker.ru/cocktail/silver_bullet__2_/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
 http://www.inshaker.ru/cocktail/silver_tequila_with_lime_and_salt/
 http://www.inshaker.ru/cocktail/siberian_grog/
-http://www.inshaker.ru/cocktail/silver_hound_cobler/
 http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/singapore_sling/
 http://www.inshaker.ru/cocktail/lilac_mist/
@@ -919,7 +913,6 @@ http://www.inshaker.ru/cocktail/spice_and_ice/
 http://www.inshaker.ru/cocktail/sprite_and_liqueur_advocaat/
 http://www.inshaker.ru/cocktail/spring_grass_tini/
 http://www.inshaker.ru/cocktail/style_martini/
-http://www.inshaker.ru/cocktail/old_cuban/
 http://www.inshaker.ru/cocktail/way_of_life/
 http://www.inshaker.ru/cocktail/stinger/
 http://www.inshaker.ru/cocktail/stratosphere/
