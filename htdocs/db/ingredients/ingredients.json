@@ -254,7 +254,7 @@
 {"group":"Фрукты","name":"Лимон","path":"limon","tags":["Фрукты","Цитрусовые"],"unit":"г","volumes":[[1000.0,140.0,"Бутылка"]]},
 {"group":"Травы и цветы","name":"Лимонная трава","names":["Лимонник","Лемонграсс"],"path":"limonnaya-trava","unit":"г","volumes":[[100.0,150.0,"Бутылка"]]},
 {"group":"Биттеры","name":"Лимонный биттер","path":"limonnyiy-bitter","tags":["Биттеры"],"unit":"л","volumes":[[0.2,643.0,"Бутылка",false]]},
-{"group":"Ликеры и настойки","name":"Лимончелло","path":"limonchello","unit":"л","volumes":[[0.5,885.0,"Бутылка"]]},
+{"group":"Ликеры и настойки","name":"Лимончелло","names":["Limoncello"],"path":"limonchello","unit":"л","volumes":[[0.5,885.0,"Бутылка"]]},
 {"group":"Чай и кофе","name":"Липовый чай","path":"lipovyiy-chay","tags":["Цветочный чай","Чай"],"unit":"г","volumes":[[50.0,189.0,"Упаковка"]]},
 {"group":"Травы и цветы","name":"Листья алоэ","names":["Алоэ","Столетник"],"path":"listya-aloe","unit":"шт","volumes":[[20.0,465.0,"Бутылка"]]},
 {"group":"Травы и цветы","name":"Листья зеленого эвкалипта","path":"listya-zelenogo-evkalipta","unit":"шт","volumes":[[10.0,77.0,"Бутылка"]]},
