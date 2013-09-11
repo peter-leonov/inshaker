@@ -4,10 +4,13 @@
 {"name":"Antica","path":"antica"},
 {"name":"Bacardi","path":"bacardi"},
 {"name":"Baileys","path":"baileys"},
+{"name":"Ballantine's","path":"ballantine-s"},
+{"name":"Becherovka","path":"becherovka"},
 {"name":"Beefeater","path":"beefeater"},
 {"name":"Bushmills","path":"bushmills"},
 {"name":"De Kuyper","path":"de-kuyper"},
 {"name":"Grand Marnier","path":"grand-marnier"},
+{"name":"Jameson","path":"jameson"},
 {"name":"Jim Beam","path":"jim-beam"},
 {"name":"Johnnie Walker","path":"johnnie-walker"},
 {"name":"Malibu","path":"malibu"},
@@ -15,6 +18,9 @@
 {"name":"Olmeca","path":"olmeca"},
 {"name":"Olmeca Altos","path":"olmeca-altos"},
 {"name":"Pere Magloire","path":"pere-magloire"},
+{"name":"Pernod","path":"pernod"},
 {"name":"Perrier","path":"perrier"},
-{"name":"Red Stag","path":"red-stag"}
+{"name":"Red Stag","path":"red-stag"},
+{"name":"Rich","path":"rich"},
+{"name":"Yupioca","path":"yupioca"}
 ]
