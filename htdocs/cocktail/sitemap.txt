@@ -22,7 +22,6 @@ http://www.inshaker.ru/cocktail/alleluja/
 http://www.inshaker.ru/cocktail/scarlet_sails/
 http://www.inshaker.ru/cocktail/amba/
 http://www.inshaker.ru/cocktail/americano/
-http://www.inshaker.ru/cocktail/americano_2/
 http://www.inshaker.ru/cocktail/amigo/
 http://www.inshaker.ru/cocktail/pineapple-pomegranate_fresh/
 http://www.inshaker.ru/cocktail/pineapple-apple_milkshake/
@@ -602,7 +601,6 @@ http://www.inshaker.ru/cocktail/mexican_astronaut/
 http://www.inshaker.ru/cocktail/mexican_mule/
 http://www.inshaker.ru/cocktail/mexican_pie/
 http://www.inshaker.ru/cocktail/melonic/
-http://www.inshaker.ru/cocktail/mercury/
 http://www.inshaker.ru/cocktail/mixet/
 http://www.inshaker.ru/cocktail/milano_breeze/
 http://www.inshaker.ru/cocktail/milano_spritzer/
@@ -814,9 +812,7 @@ http://www.inshaker.ru/cocktail/rum_and_sprite/
 http://www.inshaker.ru/cocktail/romantic_daiquiri/
 http://www.inshaker.ru/cocktail/camomile_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/cranberry_rum_sunset/
-http://www.inshaker.ru/cocktail/cherry_rum_sunset/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
-http://www.inshaker.ru/cocktail/rum_dawn/
 http://www.inshaker.ru/cocktail/rori/
 http://www.inshaker.ru/cocktail/rossini/
 http://www.inshaker.ru/cocktail/rosso_pomegranate/
@@ -846,7 +842,6 @@ http://www.inshaker.ru/cocktail/sangrita/
 http://www.inshaker.ru/cocktail/sangrita_carlitos/
 http://www.inshaker.ru/cocktail/sangrita_in_russian/
 http://www.inshaker.ru/cocktail/satisfaction/
-http://www.inshaker.ru/cocktail/saturn/
 http://www.inshaker.ru/cocktail/sour_24/
 http://www.inshaker.ru/cocktail/beet_chaser/
 http://www.inshaker.ru/cocktail/traffic_lights/
