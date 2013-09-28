@@ -29,11 +29,11 @@ button.strong b { color: #000; }
 
 
 /* footer */
-#common-footer { color: #364; }
+#common-footer { color: #888; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #ae0000; text-decoration: none; }
-#common-footer .index { border-bottom: solid 1px #9c9; }
-#common-footer .index .theme .head { color: #063; }
+#common-footer .index { border-bottom: solid 1px #888; }
+#common-footer .index .theme .head { color: #999; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
 #common-footer .bottom { background-color: rgba(255,255,255,0.05); }
 #common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
