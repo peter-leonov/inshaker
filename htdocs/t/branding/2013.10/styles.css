@@ -31,7 +31,7 @@ button.strong b { color: #000; }
 /* footer */
 #common-footer { color: #888; }
 #common-footer a { color: inherit; }
-#common-footer a:hover { color: #af883f; text-decoration: none; }
+#common-footer a:hover { color: #dea843; text-decoration: none; text-shadow: 0 0 15px #fee843; }
 #common-footer .index { border-bottom: solid 1px #888; }
 #common-footer .index .theme .head { color: #999; }
 #common-footer .index .theme .head:after { background-image: url(common.png); }
