@@ -1,0 +1,86 @@
+#top,
+#top .logo,
+#top .link { background-image: url(top.png); }
+
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #dea843; }
+
+/* common.css */
+#spotlighted i,
+.b-more-cocktails .prev,
+.b-more-cocktails .next,
+.cocktail-list .prev,
+.cocktail-list .next,
+button.rounded,
+.common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
+#spotlighted i { width: 53px; height: 40px; right: -1px; top: -11px; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 570px; left: 140px; bottom: -610px; }
+#branded-image-holder { height: 1060px; position: absolute; top: 65px; bottom: auto; }
+html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
+html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
+a { color: #000; }
+html { background: #0C0502 url(bg.jpg) center 60px no-repeat; }
+html.branding-short {  }
+button.rounded b,
+button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
+button.rounded b { color: #fff; }
+button.strong b { color: #000; }
+
+
+/* footer */
+#common-footer { color: #888; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #dea843; text-decoration: none; text-shadow: 0 0 15px #fee843; }
+#common-footer .index { border-bottom: solid 1px #888; }
+#common-footer .index .theme .head { color: #999; }
+#common-footer .index .theme .head:after { background-image: url(common.png); }
+#common-footer .bottom { background-color: rgba(255,255,255,0.05); }
+#common-footer .alcohol-harm { background-repeat: no-repeat; background-image: url(alcohol-harm.png); }
+
+#common-footer .index .theme .head,
+#common-footer a { text-shadow: 1px 1px #000, 1px -1px #000, -1px 1px #000, -1px -1px #000; }
+
+
+html.barmen-section #common-footer .about-menu .link.barmen,
+html.job-section #common-footer .link.job,
+html.about-page #common-footer .link.about,
+html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
+{ color: #000; cursor: default; text-decoration: none !important; }
+
+
+/* cocktails.css */
+.search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
+#more .button { background-color: #ee4700; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
+#more .button:hover { background-color: #FC620B; text-shadow: 0 0 5px #fff; }
+
+
+/* cocktail.css */
+#top-menu .border-links a:hover,
+#b-more dt,
+#b-more dt b { background-color: #333; }
+#b-more dt b { color: #fff; }
+#main-content .description .summary i { background-repeat: no-repeat; background-image: url(common.png); }
+
+/* bars.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(101,178,0,0.7); }
+#sort-menu .bars-select dt,
+#sort-menu .bars-select dd ul li.selected,
+#sort-menu .bars-select dd ul li:hover { color: #dea843; }
+#map .point .icon,
+#map .position-control,
+#mobile-bar { background-image: url(bars-common.png); }
+#map .point .title { color: #fff; }
+#map .point .point-name { color: #fb351b; }
+#map .point.selected .point-name { color: #F09741; }
+
+/* bar.css */
+#main-column .info .block .head,
+#bar-on-map .head { background-color: #333; }
+#main-column .info .block .head a { color: #F09741; }
+
+/* combinator.css */
+
+/* rating.css */
+.ratings-widget .head .switch { color: #fb351b; }

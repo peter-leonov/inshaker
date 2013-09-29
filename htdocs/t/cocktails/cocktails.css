@@ -23,7 +23,7 @@
 .b-content .surface{padding:500px;}
 
 #more { display: block; width: 590px; margin: 13px 0 25px; text-align: center; }
-#more .button { display: inline-block; padding: 10px 15px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; }
+#more .button { display: inline-block; padding: 10px 17px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; line-height: 21px; }
 #more .button:hover { text-decoration: none; }
 
 
