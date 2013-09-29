@@ -94,7 +94,7 @@
 {"group":"Добавки","name":"Вишня гриотин","path":"vishnya-griotin","tags":["Ягоды"],"unit":"г","volumes":[[750.0,300.0,"Бутылка"]]},
 {"group":"Вода и напитки","name":"Вода без газа","path":"voda-bez-gaza","tags":["Вода","Минеральная вода"],"unit":"л","volumes":[[0.6,36.0,"Бутылка"]]},
 {"group":"Добавки","name":"Вода из цветков апельсина","path":"voda-iz-tsvetkov-apelsina","unit":"мл","volumes":[[20.0,192.0,"Бутылка"]]},
-{"brand":"Absolut","group":"Крепкий алкоголь","mark":"Absolut","name":"Водка","names":["Absolut","Абсолют"],"path":"vodka","tags":["Absolut","Absolut"],"unit":"л","volumes":[[0.7,776.0,"Бутылка"]]},
+{"brand":"Absolut","group":"Крепкий алкоголь","mark":"Absolut","name":"Водка","names":["Absolut","Абсолют"],"path":"vodka","tags":["Absolut","Absolut","Водка","Водка классическая"],"unit":"л","volumes":[[0.7,776.0,"Бутылка"]]},
 {"brand":"Absolut Vanilia","group":"Крепкий алкоголь","mark":"Absolut","name":"Водка ванильная","names":["Absolut Vanilia","Абсолют Ванила","Абсолют ванильный"],"path":"vodka-vanilnaya","tags":["Absolut","Absolut","Вкусовая водка","Водка"],"unit":"л","volumes":[[0.7,803,"Бутылка"]]},
 {"brand":"Absolut Pears","group":"Крепкий алкоголь","mark":"Absolut","name":"Водка грушевая","names":["Absolut Pears","Абсолют Пеарс","Абсолют грушевый"],"path":"vodka-grushevaya","tags":["Absolut","Absolut","Вкусовая водка","Водка"],"unit":"л","volumes":[[0.7,961.0,"Бутылка"]]},
 {"brand":"Absolut Raspberry","group":"Крепкий алкоголь","mark":"Absolut","name":"Водка малиновая","names":["Absolut Raspberry","Абсолют распбери","Абсолют малиновый"],"path":"vodka-malinovaya","tags":["Absolut","Absolut","Вкусовая водка","Водка"],"unit":"л","volumes":[[0.7,803,"Бутылка"]]},
