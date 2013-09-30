@@ -446,7 +446,6 @@ http://www.inshaker.ru/cocktail/coconut_breeze/
 http://www.inshaker.ru/cocktail/coconut_breeze_in_a_jug/
 http://www.inshaker.ru/cocktail/coconut_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/coconut_sprite/
-http://www.inshaker.ru/cocktail/cola_and_cherry_liqueur/
 http://www.inshaker.ru/cocktail/cola_and_grapefruit_liqueur/
 http://www.inshaker.ru/cocktail/compote_from_kindergarten_in_a_jug/
 http://www.inshaker.ru/cocktail/compote_of_kiwi_in_a_jug/
@@ -811,7 +810,6 @@ http://www.inshaker.ru/cocktail/apple_white_rum/
 http://www.inshaker.ru/cocktail/rum_and_sprite/
 http://www.inshaker.ru/cocktail/romantic_daiquiri/
 http://www.inshaker.ru/cocktail/camomile_lemonade_in_a_jug/
-http://www.inshaker.ru/cocktail/cranberry_rum_sunset/
 http://www.inshaker.ru/cocktail/rum_spicy_mousse/
 http://www.inshaker.ru/cocktail/rori/
 http://www.inshaker.ru/cocktail/rossini/

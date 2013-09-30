@@ -24,7 +24,6 @@ http://www.inshaker.ru/bar/all_time_bar/
 http://www.inshaker.ru/bar/projector/
 http://www.inshaker.ru/bar/rock-n-roll/
 http://www.inshaker.ru/bar/secret_bar/
-http://www.inshaker.ru/bar/city_space/
 http://www.inshaker.ru/bar/strelka/
 http://www.inshaker.ru/bar/tapa_de_comida/
 http://www.inshaker.ru/bar/free_bar/
