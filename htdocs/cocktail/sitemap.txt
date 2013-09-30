@@ -79,6 +79,7 @@ http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
 http://www.inshaker.ru/cocktail/white_cuban/
 http://www.inshaker.ru/cocktail/white_lemon_mulled_wine/
+http://www.inshaker.ru/cocktail/white_mexican/
 http://www.inshaker.ru/cocktail/white_camomile_mulled_wine/
 http://www.inshaker.ru/cocktail/white_russian/
 http://www.inshaker.ru/cocktail/birch_cooler/
@@ -323,6 +324,7 @@ http://www.inshaker.ru/cocktail/smoky_apple_pie/
 http://www.inshaker.ru/cocktail/melon-basil_smoothie/
 http://www.inshaker.ru/cocktail/melon_bellini/
 http://www.inshaker.ru/cocktail/duke_tulip/
+http://www.inshaker.ru/cocktail/diablo/
 http://www.inshaker.ru/cocktail/e-sencha-l/
 http://www.inshaker.ru/cocktail/blackberry_mood/
 http://www.inshaker.ru/cocktail/blackberry_milkshake/
@@ -931,7 +933,6 @@ http://www.inshaker.ru/cocktail/tequila_sour/
 http://www.inshaker.ru/cocktail/tequila_smash/
 http://www.inshaker.ru/cocktail/tequila_sprite/
 http://www.inshaker.ru/cocktail/tequila_toreador/
-http://www.inshaker.ru/cocktail/tequila_espresso/
 http://www.inshaker.ru/cocktail/tequila_apple_cowberry/
 http://www.inshaker.ru/cocktail/black_cola/
 http://www.inshaker.ru/cocktail/ten_opener/
@@ -1041,8 +1042,10 @@ http://www.inshaker.ru/cocktail/whisper/
 http://www.inshaker.ru/cocktail/bumblebee/
 http://www.inshaker.ru/cocktail/chocolate_curant/
 http://www.inshaker.ru/cocktail/chocolate-orange_martini/
+http://www.inshaker.ru/cocktail/chocolate_mint_margarita/
 http://www.inshaker.ru/cocktail/chocolate_milkshake/
 http://www.inshaker.ru/cocktail/chocolate_cheesecake_smoothie/
+http://www.inshaker.ru/cocktail/chocolate_espresso/
 http://www.inshaker.ru/cocktail/pavlov_s_shot/
 http://www.inshaker.ru/cocktail/scotch_old_fashioned/
 http://www.inshaker.ru/cocktail/shtyrlits/
@@ -1056,8 +1059,10 @@ http://www.inshaker.ru/cocktail/exotic_grog/
 http://www.inshaker.ru/cocktail/extra_crush/
 http://www.inshaker.ru/cocktail/electric_chaser/
 http://www.inshaker.ru/cocktail/elisa/
+http://www.inshaker.ru/cocktail/el_bandito/
 http://www.inshaker.ru/cocktail/el_nino/
 http://www.inshaker.ru/cocktail/endorfun/
+http://www.inshaker.ru/cocktail/anyday_anyway_shot/
 http://www.inshaker.ru/cocktail/espresso_martini/
 http://www.inshaker.ru/cocktail/aesthetics/
 http://www.inshaker.ru/cocktail/butterfly_effect/
