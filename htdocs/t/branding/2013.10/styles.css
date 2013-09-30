@@ -50,6 +50,8 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 
 
 /* cocktails.css */
+.square-list .prev,
+.square-list .next { background-repeat: no-repeat; background-image: url(common.png); }
 .search-control { background-repeat: no-repeat; background-image: url(cocktails.png); }
 #more .button { background-color: #ee4700; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
 #more .button:hover { background-color: #FC620B; text-shadow: 0 0 5px #fff; }
