@@ -189,7 +189,6 @@ http://www.inshaker.ru/cocktail/vodka_mandarin/
 http://www.inshaker.ru/cocktail/vodka_martini/
 http://www.inshaker.ru/cocktail/vodka_minty_tea/
 http://www.inshaker.ru/cocktail/vodka_on_the_rocks/
-http://www.inshaker.ru/cocktail/vodka_with_orange_juice/
 http://www.inshaker.ru/cocktail/vodka_smash/
 http://www.inshaker.ru/cocktail/vodka_sprite/
 http://www.inshaker.ru/cocktail/vodka_tonic/
