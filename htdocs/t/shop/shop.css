@@ -57,7 +57,7 @@ html.msie-8 #image { font-size: 0; }
 #map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; }
 #map .point.selected .point-name {  }
 html.msie-8 #map .point .title { filter: alpha(opacity=85); }
-/* branding part */
+/* skin part */
 #map .point .icon { background-image: url(/t/shop/icon-map-point.png); }
 #map .point .title { color: #fff; }
 #map .point .point-name { color: #ff4ea5; }
@@ -78,8 +78,8 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 #map .position-control .to-left { left: 14px; top: 26px; }
 #map .position-control .to-plus { left: 23px; top: 62px; }
 #map .position-control .to-minus { left: 23px; top: 80px; }
-/* branding part */
-#map .position-control { background-image: url(/t/branding/tasteit/bars-common.png); }
+/* skin part */
+#map .position-control { background-image: url(/t/skin/tasteit/bars-common.png); }
 
 
 #promo .info {
