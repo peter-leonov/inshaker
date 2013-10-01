@@ -2,7 +2,7 @@ html {overflow-y: scroll;}
 #common-main-wrapper { position: relative; z-index: 1; }
 #branded-image-holder { display: none; }
 
-#spotlighted { position: absolute; right: 15px; top: 15px; }
+#spotlighted { position: absolute; right: 20px; top: 20px; }
 
 #mobile-bar { position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px; overflow: hidden; text-indent: -1000px; background-position: -100px 0; }
 
