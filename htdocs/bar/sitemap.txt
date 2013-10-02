@@ -10,7 +10,6 @@ http://www.inshaker.ru/bar/squirrel/
 http://www.inshaker.ru/bar/delicatessen/
 http://www.inshaker.ru/bar/gipsy/
 http://www.inshaker.ru/bar/carabas_bar/
-http://www.inshaker.ru/bar/inshaker/
 http://www.inshaker.ru/bar/cuba_libre/
 http://www.inshaker.ru/bar/lawsons/
 http://www.inshaker.ru/bar/ray/
