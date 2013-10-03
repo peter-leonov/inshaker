@@ -521,7 +521,7 @@
 {"group":"Ягоды","name":"Шиповник","path":"shipovnik","tags":["Ягоды"],"unit":"г","volumes":[[300.0,45.0,"Бутылка",false]]},
 {"group":"Сладости","name":"Шоколад апельсиновый","path":"shokolad-apelsinovyiy","unit":"г","volumes":[[100.0,29.0,"Бутылка"]]},
 {"group":"Сладости","name":"Шоколад черный","names":["Горький шоколад"],"path":"shokolad-chernyiy","unit":"г","volumes":[[100.0,50.0,"Бутылка"]]},
-{"brand":"Olmeca Dark Chocolate","group":"Крепкий алкоголь","mark":"Olmeca","name":"Шоколадная текила","names":["Olmeca Dark Chocolate","Olmeca Chocolate","Шоколадная текила"],"path":"shokoladnaya-tekila","tags":["Olmeca","Текила"],"unit":"л","volumes":[[0.75,1400.0,"Бутылка"]]},
+{"brand":"Olmeca Dark Chocolate","group":"Крепкий алкоголь","mark":"Olmeca Dark Chocolate","name":"Шоколадная текила","names":["Olmeca Dark Chocolate","Olmeca Chocolate","Шоколадная текила"],"path":"shokoladnaya-tekila","tags":["Olmeca Dark Chocolate","Текила"],"unit":"л","volumes":[[0.75,1400.0,"Бутылка"]]},
 {"group":"Молочные продукты. Яйца","name":"Шоколадное мороженое","path":"shokoladnoe-morozhenoe","tags":["Мороженое"],"unit":"г","volumes":[[900.0,149.0,"Упаковка"]]},
 {"brand":"Monin Chocolat","group":"Сиропы","mark":"Monin","name":"Шоколадный сироп","names":["Monin Chocolat","Монин Шоколад"],"path":"shokoladnyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[1.0,413.0,"Бутылка"]]},
 {"group":"Украшения","name":"Шпажка","path":"shpazhka","unit":"шт","volumes":[[100.0,100.0,"Упаковка"]]},
