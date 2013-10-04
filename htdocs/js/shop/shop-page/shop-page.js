@@ -12,7 +12,7 @@
 $.onready(function ()
 {
 	UserAgent.setupDocumentElementClassNames()
-	return
+	
 	var nodes =
 	{
 		promo: $('#promo'),
