@@ -246,7 +246,6 @@ http://www.inshaker.ru/cocktail/pomegranate-grapefruit_fresh/
 http://www.inshaker.ru/cocktail/pomegranate_tini/
 http://www.inshaker.ru/cocktail/grand_sazerac/
 http://www.inshaker.ru/cocktail/grand_mimosa/
-http://www.inshaker.ru/cocktail/grand_o/
 http://www.inshaker.ru/cocktail/count/
 http://www.inshaker.ru/cocktail/grapefruit_splash/
 http://www.inshaker.ru/cocktail/grapefruit_compote_in_a_jug/
