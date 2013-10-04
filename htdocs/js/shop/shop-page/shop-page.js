@@ -68,17 +68,17 @@ ShopPage.prototype =
 		
 		var map = this.map = new Map()
 		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
-		map.setCenter({lat: 55.678951, lng: 37.641293}, 14)
+		map.setCenter({lat: 55.783175, lng: 37.600684}, 16)
 		
 		var shop =
 		{
-			name: 'Inshaker на САМОСКЛАДе',
+			name: 'Коктейльный магазин',
 			contacts:
 			{
 				address: this.nodes.address.firstChild.nodeValue,
 				tel: this.nodes.phone.firstChild.nodeValue
 			},
-			point: [55.678951, 37.641293]
+			point: [55.783175, 37.600684]
 		}
 		map.setPoints([new ShopPoint(shop)])
 	}
