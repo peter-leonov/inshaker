@@ -118,7 +118,7 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 
 #promo .info .location {
 	width: 235px;
-	margin-right: 45px;
+	margin-right: 20px;
 }
 #promo .info .location .icon {
 	background-position: 0 0;
