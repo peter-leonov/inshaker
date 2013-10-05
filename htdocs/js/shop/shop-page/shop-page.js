@@ -47,18 +47,22 @@ ShopPage.prototype =
   render: function ()
   {
     var widget = this
-    this.nodes.address.addEventListener('click', function ()
+    
+    function switchToMap ()
     {
       widget.nodes.promo.setAttribute('data-state', 'map')
       forceRedraw()
       widget.initMap()
-    }, false)
+    }
     
-    this.nodes.mapClose.addEventListener('click', function ()
+    function switchToImage ()
     {
       widget.nodes.promo.setAttribute('data-state', 'image')
       forceRedraw()
-    }, false)
+    }
+    
+    this.nodes.address.addEventListener('click', switchToMap, false)
+    this.nodes.mapClose.addEventListener('click', switchToImage, false)
   },
   
   initMap: function ()
