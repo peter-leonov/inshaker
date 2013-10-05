@@ -75,7 +75,7 @@ ShopPage.prototype =
     
     var map = this.map = new Map()
     map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
-    map.setCenter({lat: 55.783175, lng: 37.600684}, 14)
+    map.setCenter({lat: 55.783016, lng: 37.599892}, 14)
     
     var shop =
     {
@@ -85,7 +85,7 @@ ShopPage.prototype =
         address: this.nodes.address.firstChild.nodeValue,
         tel: this.nodes.phone.firstChild.nodeValue
       },
-      point: [55.783175, 37.600684]
+      point: [55.783016, 37.599892]
     }
     map.setPoints([new ShopPoint(shop)])
   }
