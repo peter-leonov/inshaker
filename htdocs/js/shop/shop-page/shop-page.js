@@ -63,6 +63,9 @@ ShopPage.prototype =
     
     this.nodes.address.addEventListener('click', switchToMap, false)
     this.nodes.mapClose.addEventListener('click', switchToImage, false)
+    
+    if (this.nodes.promo.getAttribute('data-state') == 'map')
+      switchToMap()
   },
   
   initMap: function ()
