@@ -41,7 +41,6 @@ html.msie-8 #image { font-size: 0; }
 	background: url(icon-map-close.png) no-repeat;
 	width: 20px;
 	height: 20px;
-	display: block;
 	cursor: pointer;
 	text-indent: 999px;
 }
