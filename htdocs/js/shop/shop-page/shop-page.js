@@ -75,7 +75,7 @@ ShopPage.prototype =
     
     var map = this.map = new Map()
     map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
-    map.setCenter({lat: 55.783175, lng: 37.600684}, 16)
+    map.setCenter({lat: 55.783175, lng: 37.600684}, 14)
     
     var shop =
     {
