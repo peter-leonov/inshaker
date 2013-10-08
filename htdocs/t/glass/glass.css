@@ -63,6 +63,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 
 /* menu tweks */
 #index-page #top .logo { cursor: default; }
+html.shop-section #top .link.shop,
 html.party-section #top .link.party,
 html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !important; background-position: 0 -150px; }
 
