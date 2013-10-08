@@ -20,7 +20,7 @@ button.rounded,
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #000; }
-html { background: #0C0502 url(bg.jpg) center 60px no-repeat; }
+html { background: #000; }
 html.branding-short {  }
 button.rounded b,
 button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
