@@ -82,7 +82,7 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 
 
 #promo .info {
-	min-height: 81px;
+	min-height: 61px;
 	background-color: #000;
 	border-top: 1px solid #313131;
 	padding-left: 35px;
@@ -94,7 +94,6 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 	display: inline-block;
 	vertical-align: middle;
 	padding-left: 40px;
-	margin-top: 12px;
 	position: relative;
 	white-space: normal;
 	*zoom:1;
