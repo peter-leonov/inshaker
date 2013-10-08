@@ -15,8 +15,8 @@
 button.rounded,
 .common-share-box .button i { background-repeat: no-repeat; background-image: url(common.png); }
 #spotlighted i { width: 53px; height: 40px; right: -1px; top: -11px; }
-#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 460px; height: 570px; left: 140px; bottom: -610px; }
-#branded-image-holder { height: 1060px; position: absolute; top: 65px; bottom: auto; }
+#branded-image { background-repeat: no-repeat; background-image: url(image.png); width: 510px; height: 570px; left: 50px; bottom: -596px; }
+#branded-image-holder { height: 1040px; position: absolute; top: 65px; bottom: auto; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 a { color: #000; }
