@@ -6,3 +6,6 @@ remote:
 
 remote.restart:
 	ssh inshaker.back 'sudo restart inshaker/nginx'
+
+remote.nginx.reload:
+	ssh inshaker.back 'sudo reload inshaker/nginx'
