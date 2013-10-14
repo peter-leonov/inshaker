@@ -1,5 +1,5 @@
 body {
-	background: url(bg-wall.jpg) top center #140903;
+	background: url(bg-neon.jpg) center 65px no-repeat, url(bg.jpg) center 65px #140903;
 	color: #fff;
 }
 #common-main-wrapper {
