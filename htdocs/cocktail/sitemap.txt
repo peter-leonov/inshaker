@@ -1042,7 +1042,7 @@ http://www.inshaker.ru/cocktail/chocolate-orange_martini/
 http://www.inshaker.ru/cocktail/chocolate_mint_margarita/
 http://www.inshaker.ru/cocktail/chocolate_milkshake/
 http://www.inshaker.ru/cocktail/chocolate_cheesecake_smoothie/
-http://www.inshaker.ru/cocktail/chocolate_espresso/
+http://www.inshaker.ru/cocktail/chocolate_espresso_martini/
 http://www.inshaker.ru/cocktail/pavlov_s_shot/
 http://www.inshaker.ru/cocktail/scotch_old_fashioned/
 http://www.inshaker.ru/cocktail/shtyrlits/
