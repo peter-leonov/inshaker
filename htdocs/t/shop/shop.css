@@ -168,6 +168,7 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 	text-align: center;
 }	
 .we-have-more .title {
+  background: url(on-stock.png);
 	width: 585px;
 	height: 55px;
 	margin: 0 auto 18px;
