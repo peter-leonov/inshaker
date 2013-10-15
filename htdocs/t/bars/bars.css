@@ -4,7 +4,12 @@ html {overflow-y: scroll;}
 
 #spotlighted { position: absolute; right: 20px; top: 20px; }
 
-#mobile-bar { position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px; overflow: hidden; text-indent: -1000px; background-position: -100px 0; }
+#mobile-bar
+{
+  position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px;
+  overflow: hidden; text-indent: -1000px;
+  background-position: -100px 0;
+}
 
 .bar-mini { float: left; margin: 20px 25px 0 0; }
 .bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
