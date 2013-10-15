@@ -6,6 +6,7 @@ html {overflow-y: scroll;}
 
 #mobile-bar
 {
+  display: none;
   position: absolute; right: 0; width: 30px; height: 36px; right: 40px; top: 3px;
   overflow: hidden; text-indent: -1000px;
   background-position: -100px 0;
