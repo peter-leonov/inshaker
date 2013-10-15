@@ -77,7 +77,6 @@
 {"group":"Мёд, варенье, джемы","name":"Варенье облепиховое","path":"varene-oblepihovoe","tags":["Варенье"],"unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Варенье черносмородиновое","path":"varene-chernosmorodinovoe","tags":["Варенье"],"unit":"г","volumes":[]},
 {"group":"Штучки","name":"Венчик","path":"venchik","unit":"шт","volumes":[]},
-{"group":"Чай и кофе","name":"Вересковый чай","path":"vereskovyiy-chay","tags":["Чай"],"unit":"г","volumes":[]},
 {"group":"Молочные продукты. Яйца","name":"Взбитые сливки","path":"vzbityie-slivki","tags":["Сливки"],"unit":"г","volumes":[]},
 {"group":"Штучки","name":"Вилка","path":"vilka","unit":"шт","volumes":[]},
 {"group":"Ягоды","name":"Виноград зеленый","path":"vinograd-zelenyiy","tags":["Виноград","Ягоды"],"unit":"г","volumes":[]},
@@ -181,7 +180,6 @@
 {"group":"Специи и пряности","name":"Китайский перец молотый","path":"kitayskiy-perets-molotyiy","unit":"г","volumes":[]},
 {"brand":"Monin Maple Spice","group":"Сиропы","mark":"Monin","name":"Кленовый сироп","names":["Монин Мапл Спайс","Monin Maple Spice"],"path":"klenovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,450.0,"Бутылка"]]},
 {"group":"Ягоды","name":"Клубника","path":"klubnika","tags":["Ягоды"],"unit":"г","volumes":[]},
-{"group":"Молочные продукты. Яйца","name":"Клубничное мороженое","path":"klubnichnoe-morozhenoe","tags":["Мороженое"],"unit":"г","volumes":[]},
 {"brand":"De Kuyper Wild Strawberry","group":"Ликеры и настойки","mark":"De Kuyper","name":"Клубничный ликер","names":["De Kuyper Wild Strawberry","Де кайпер вайлд строберри","Де кайпер клубничный","Ди кайпер вайлд строберри","Ди кайпер клубничный"],"path":"klubnichnyiy-liker","tags":["De Kuyper","Ликер","Ягодный ликер"],"unit":"л","volumes":[[0.7,1150.0,"Бутылка"]]},
 {"brand":"Monin Fraise","group":"Сиропы","mark":"Monin","name":"Клубничный сироп","names":["Монин Фраизе","Monin Fraise"],"path":"klubnichnyiy-sirop","tags":["Monin","Сироп","Ягодный сироп"],"unit":"л","volumes":[[0.7,450.0,"Бутылка"]]},
 {"group":"Ягоды","name":"Клюква","path":"klyukva","tags":["Ягоды"],"unit":"г","volumes":[]},
@@ -348,7 +346,6 @@
 {"brand":"Cinzano","group":"Вермуты","mark":"Cinzano","name":"Розовый вермут","path":"rozovyiy-vermut","tags":["Cinzano","Вермут"],"unit":"л","volumes":[[1.0,450.0,"Бутылка"]]},
 {"group":"Посуда","name":"Рокс","path":"roks","unit":"шт","volumes":[]},
 {"brand":"Bacardi-151","group":"Крепкий алкоголь","mark":"Bacardi","name":"Ром-151","names":["Bacardi-151","Бакарди-151"],"path":"rom-151","tags":["Bacardi","Ром"],"unit":"л","volumes":[]},
-{"group":"Травы и цветы","name":"Ромашка сушеная","path":"romashka-sushenaya","unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Ромашковый чай","path":"romashkovyiy-chay","tags":["Цветочный чай","Чай"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Ромашковый чай в пакетиках","path":"romashkovyiy-chay-v-paketikah","tags":["Цветочный чай","Чай"],"unit":"шт","volumes":[]},
 {"group":"Травы и цветы","name":"Руккола","path":"rukkola","unit":"г","volumes":[]},
@@ -422,7 +419,6 @@
 {"group":"Специи и пряности","name":"Соль морская","path":"sol-morskaya","unit":"г","volumes":[]},
 {"group":"Молочные продукты. Яйца","name":"Сорбет лайм","path":"sorbet-laym","tags":["Сорбет"],"unit":"г","volumes":[]},
 {"group":"Посуда","name":"Сосуд и чаша для саке","path":"sosud-i-chasha-dlya-sake","unit":"шт","volumes":[]},
-{"group":"Соусы и масло","name":"Соус винкотто ягодный","path":"sous-vinkotto-yagodnyiy","unit":"л","volumes":[]},
 {"group":"Соусы и масло","name":"Соус чили","path":"sous-chili","tags":["Соус"],"unit":"л","volumes":[]},
 {"group":"Морепродукты","name":"Спирулина","path":"spirulina","unit":"г","volumes":[]},
 {"group":"Вода и напитки","name":"Спрайт","names":["7up","Севен ап","Sprite"],"path":"sprayt","unit":"л","volumes":[[0.33,30.0,"Бутылка"]]},
@@ -523,7 +519,6 @@
 {"group":"Добавки","name":"Экстракт лаванды","path":"ekstrakt-lavandyi","unit":"мл","volumes":[]},
 {"group":"Вода и напитки","name":"Энергетик","path":"energetik","unit":"л","volumes":[[0.25,90.0,"Банка"]]},
 {"group":"Травы и цветы","name":"Эстрагон","names":["Тархун"],"path":"estragon","unit":"г","volumes":[]},
-{"group":"Фрукты","name":"Юдзу","path":"yudzu","tags":["Фрукты","Цитрусовые"],"unit":"г","volumes":[]},
 {"brand":"Southern Comfort","group":"Ликеры и настойки","mark":"Southern Comfort","name":"Южный комфорт","names":["Саузерн комфорт","Southern Comfort"],"path":"yuzhnyiy-komfort","tags":["Southern Comfort","Ликер"],"unit":"л","volumes":[]},
 {"group":"Фрукты","name":"Яблоко желтое","path":"yabloko-zheltoe","tags":["Фрукты","Яблоки"],"unit":"г","volumes":[]},
 {"group":"Фрукты","name":"Яблоко зеленое","path":"yabloko-zelenoe","tags":["Фрукты","Яблоки"],"unit":"г","volumes":[]},
@@ -537,6 +532,5 @@
 {"group":"Молочные продукты. Яйца","name":"Яблочный сорбет","path":"yablochnyiy-sorbet","tags":["Сорбет"],"unit":"г","volumes":[]},
 {"group":"Соки и морсы","name":"Ягодный морс","path":"yagodnyiy-mors","tags":["Морс"],"unit":"л","volumes":[]},
 {"brand":"De Kuyper Advocaat","group":"Ликеры и настойки","mark":"De Kuyper","name":"Яичный ликер","names":["Де кайпер адвокат","De Kuyper Advocaat","Ди кайпер адвокат"],"path":"yaichnyiy-liker","tags":["De Kuyper","Ликер","Сливочный ликер"],"unit":"л","volumes":[[0.7,950.0,"Бутылка"]]},
-{"group":"Молочные продукты. Яйца","name":"Яйцо","path":"yaytso","unit":"шт","volumes":[]},
-{"group":"Травы и цветы","name":"Японская крапива","path":"yaponskaya-krapiva","unit":"г","volumes":[]}
+{"group":"Молочные продукты. Яйца","name":"Яйцо","path":"yaytso","unit":"шт","volumes":[]}
 ]
