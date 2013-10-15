@@ -1,20 +1,18 @@
 #!/usr/bin/env ruby1.9
 # encoding: utf-8
 
-$:.push('/www/inshaker/barman')
+require 'cgi'
+require 'rest-client'
+require 'oj'
 
-require "rubygems"
-require "cgi"
-require "lib/mail"
-
-class ClientError < Exception
-end
+class ClientError < Exception; end
 
 
 class MailSender
   
   module Config
     FROM = 'mail@inshaker.ru'
+    COPY_TO = %w{mail@inshaker.ru pl@inshaker.ru}
     LIMIT = 7
   end
   
@@ -23,7 +21,7 @@ class MailSender
     
     cgi = CGI.new
     
-    @to = cgi.has_key?("to") ? cgi["to"].to_s : Config::FROM
+    @to = cgi.has_key?("to") ? cgi["to"].to_s : ''
     
     cgi.has_key?("subject") or raise ClientError, "'subject' is undefined"
     @subject = cgi["subject"].to_s
@@ -37,22 +35,27 @@ class MailSender
     
     raise ClientError, "Too many addresses in 'to' with a limit of #{Config::LIMIT}." if @to.length > Config::LIMIT
     
+    @to += Config::COPY_TO
     
     # send emails
-    @to.each do |to|
-      message = Mail.bake(:to => to, :from => "Shaker <#{Config::FROM}>", :subject => @subject, :body => @body)
-      message.deliver
+    @to.collect do |to|
+      RestClient.post "https://api:key-5pkxouxpxr5wwjoztfof2s1bs-1h5ii4"\
+        "@api.mailgun.net/v2/mg.inshaker.ru/messages",
+        :from => "Shaker <#{Config::FROM}>",
+        :to => to,
+        :subject => @subject,
+        :html => @body
     end
   end
 end
 
 
 begin
-  MailSender.new.run
+  res = MailSender.new.run
   puts "Content-type: text/plain; charset=utf-8"
   puts ""
 
-  puts "OK"
+  puts Oj.dump(res)
   
 rescue ClientError => e
   puts "Status: 400"
