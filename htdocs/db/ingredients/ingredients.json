@@ -486,7 +486,6 @@
 {"group":"Мучные изделия","name":"Хлеб пшеничный","path":"hleb-pshenichnyiy","unit":"г","volumes":[]},
 {"group":"Штуковины","name":"Хлопушка","path":"hlopushka","unit":"шт","volumes":[]},
 {"group":"Добавки","name":"Хлористый кальций","names":["Е509","Е-509"],"path":"hloristyiy-kaltsiy","unit":"г","volumes":[]},
-{"group":"Вода и напитки","name":"Холодный белый чай","path":"holodnyiy-belyiy-chay","tags":["Холодный чай"],"unit":"л","volumes":[]},
 {"group":"Вода и напитки","name":"Холодный зеленый чай","path":"holodnyiy-zelenyiy-chay","tags":["Холодный чай"],"unit":"л","volumes":[[0.33,40.0,"Банка"]]},
 {"group":"Вода и напитки","name":"Холодный персиковый чай","path":"holodnyiy-persikovyiy-chay","tags":["Холодный чай"],"unit":"л","volumes":[[0.33,40.0,"Банка"]]},
 {"group":"Специи и пряности","name":"Хрен","path":"hren","unit":"г","volumes":[]},
