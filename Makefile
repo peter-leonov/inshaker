@@ -4,6 +4,9 @@ default:
 remote:
 	ssh inshaker.back
 
+remote.update:
+	ssh www@inshaker.back 'cd /www/inshaker; git pull'
+
 remote.restart:
 	ssh inshaker.back 'sudo restart inshaker/nginx'
 
