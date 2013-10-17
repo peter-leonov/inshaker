@@ -620,22 +620,6 @@ window.loadGoogleInfobox = function () {
       target.closest("li").addClass("active").siblings(".active").removeClass("active");
       return false;
     });
-    return $(".slides").carouFredSel({
-      prev: {
-        button: ".arrow-left",
-        key: "left"
-      },
-      next: {
-        button: ".arrow-right",
-        key: "right"
-      },
-      auto: {
-        play: false
-      },
-      scroll: {
-        duration: 400
-      }
-    });
   });
 
 }).call(this);
