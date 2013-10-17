@@ -501,7 +501,7 @@ window.loadGoogleInfobox = function () {
       var closeUI, map;
 
       map = this.map;
-      closeUI = $('<a href="#" class="close">Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ ÐºÐ°Ñ€Ñ‚Ñƒ</a>');
+      closeUI = $('<a href="#" class="close">Закрыть карту</a>');
       map.controls[google.maps.ControlPosition.TOP_RIGHT].push(closeUI[0]);
       return closeUI;
     };
@@ -581,7 +581,7 @@ window.loadGoogleInfobox = function () {
     });
     return mapWidget.addInfoBox(marker, {
       className: "inshaker-popup",
-      content: "<div class='title'>ÐšÐ¾ÐºÑ‚ÐµÐ¹Ð»ÑŒÐ½Ñ‹Ð¹ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½</div><div class='body'>ÐœÐ¾ÑÐºÐ²Ð°, ÑƒÐ». Ð¡ÑƒÑ‰ÐµÐ²ÑÐºÐ°Ñ, 27Ñ2</div>",
+      content: "<div class='title'>Коктейльный магазин</div><div class='body'>Москва, ул. Сущевская, 27с2</div>",
       closeButton: false,
       bindOnClick: true
     });
@@ -639,6 +639,7 @@ window.loadGoogleInfobox = function () {
   });
 
 }).call(this);
+
 
 
 
