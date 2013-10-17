@@ -34,6 +34,7 @@
 }
 /* line 32, ../../../app/assets/stylesheets/partials/_views.css.scss */
 .carousel .arrow-left, .carousel .arrow-right {
+  display: none;
   position: absolute;
   width: 30px;
   height: 45px;
