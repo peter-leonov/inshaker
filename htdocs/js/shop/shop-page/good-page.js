@@ -84,16 +84,16 @@ GoodPage.prototype =
 	
 	renderCocktail: function (cocktail)
 	{
-		var li = Nc('li', '')
+		var li = N('li')
 		
-		var a = Nc('a', '')
+		var a = N('a')
 		a.href = cocktail.legacyUri
 		li.appendChild(a)
 		
 		var image = Nc('div', 'image')
 		a.appendChild(image)
 		
-		var img = Nc('img', '')
+		var img = N('img')
 		img.src = cocktail.imageUrl
 		image.appendChild(img)
 		
