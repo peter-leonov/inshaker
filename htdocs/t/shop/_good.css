@@ -7,7 +7,7 @@ body { background: url(bg.jpg) center 57px #140903; }
 .common-name span { font-size: 32px; vertical-align: top; }
 .common-content { background: #fff; margin: 0 0 30px; }
 .common-content .common-content-area { padding: 20px 40px; }
-.common-content .title { text-align: center; font-size: 18px; font-weight: 700; color: #000; margin: 7px 0 24px; }
+.common-content .title { text-align: center; font-size: 24px; letter-spacing: 1px; margin: 20px 0 0; }
 /* END COMMON */
 
 /* COCKTAILS */
