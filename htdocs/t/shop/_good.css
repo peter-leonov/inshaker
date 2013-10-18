@@ -13,7 +13,7 @@ body { background: url(bg.jpg) center 57px #140903; }
 
 /* COCKTAILS */
 #coctails { margin: 0 0 49px; }
-#coctails li { display: inline-block; text-align: center; vertical-align: top; width: 200px; height: 217px; margin: 65px 10px 10px; font-size: 14px; }
+#coctails li { display: inline-block; text-align: center; vertical-align: top; width: 200px; height: 217px; margin: 65px 20px 10px; font-size: 14px; }
 #coctails li a { color: #000; }
 #coctails li .image { height: 166px; margin: 0 0 10px; text-align: center; position: relative; }
 #coctails li .image img { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 55%; }
