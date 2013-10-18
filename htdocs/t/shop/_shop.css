@@ -18,7 +18,5 @@ body { background: url(bg-neon.jpg) center 65px no-repeat, url(bg.jpg) center 65
 
 /* MAP */
 <!--# include virtual="map.css" -->
-#map .point.selected .point-name { color: #ff2929; }
 #map .close { position: absolute; overflow: hidden; right: 15px; top: 15px; background: url(icon-map-close.png) center center no-repeat black; width: 20px; height: 20px; display: block; cursor: pointer; text-indent: 999px; }
-#map .point.selected .icon { background-position: 0 0; }
 /* END MAP */
