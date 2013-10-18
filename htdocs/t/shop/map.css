@@ -6,4 +6,5 @@
 #map .point .title { color: #fff; pointer-events: none; }
 #map .point .point-name { color: #ff4ea5; }
 #map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
-#map .position-control { z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; }
+#map .position-control { z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; opacity: 0.4; }
+#map .position-control:hover { opacity: 1; }
