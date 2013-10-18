@@ -1,0 +1,45 @@
+body { background: url(bg.jpg) center 57px #140903; }
+#common-main-wrapper { font-size: 16px; }
+#common-main-wrapper a { color: #ff0893; }
+
+/* COMMON */
+.common-name { line-height: 34px; }
+.common-name span { font-size: 32px; vertical-align: top; }
+.common-content { background: #fff; margin: 0 0 30px; }
+.common-content .common-content-area { padding: 20px 40px; }
+.common-content .title { text-align: center; font-size: 18px; font-weight: 700; color: #000; margin: 7px 0 24px; }
+/* END COMMON */
+
+/* COCKTAILS */
+#coctails { margin: 0 0 49px; }
+#coctails li { display: inline-block; text-align: center; vertical-align: top; width: 200px; height: 217px; margin: 65px 10px 10px; font-size: 14px; }
+#coctails li a { color: #000; }
+#coctails li .image { height: 166px; margin: 0 0 10px; text-align: center; position: relative; }
+#coctails li .image img { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 55%; }
+/* END COCKTAILS */
+
+/* CAROUSEL */
+.carousel { background: #444; position: relative; height: 374px; }
+.carousel .arrow-left,
+.carousel .arrow-right { display: none; position: absolute; width: 30px; height: 45px; top: 50%; margin-top: -22px; cursor: pointer; opacity: .3; z-index: 1; filter: alpha(opacity=30); -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; }
+.carousel .arrow-left .icon,
+.carousel .arrow-right .icon { width: 30px; height: 45px; background: url(sprite.png) -50px 0 no-repeat; }
+.carousel .arrow-left:hover,
+.carousel .arrow-right:hover { opacity: 1; filter: alpha(opacity=100); }
+.carousel .arrow-left { left: 14px; }
+.carousel .arrow-right { right: 14px; }
+.carousel .arrow-right .icon { background-position: 0 0; }
+/* fixme: carousel JS needs it */
+.carousel .slides { width: 962px; height: 374px; overflow: hidden; }
+.carousel .slides li { float: left; }
+/* CAROUSEL */
+
+<!--# include virtual="we-have-more.css" -->
+<!--# include virtual="promo.css" -->
+
+/* MAP */
+<!--# include virtual="map.css" -->
+#map { display: block; }
+/* END MAP */
+
+#promo { padding-top: 0; margin: 0;}
