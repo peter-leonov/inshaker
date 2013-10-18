@@ -1,0 +1,38 @@
+/* common-map pretendent */
+#map .point { position: absolute; }
+#map .point.selected { z-index: 4; }
+#map .point:hover { z-index: 5; }
+#map .point.selected .icon { width: 30px; height: 30px; background-position: -75px -25px; cursor: default; }
+#map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; }
+#map .point .title { display: none; position: absolute; z-index: 10; left: -110px; top: 10px; min-width: 200px; padding: 10px; font-size: 15px; line-height: 21px; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
+#map .point:hover .title { display: block; }
+#map .point .point-name { display: block; font-size: 19px; margin: 0 0 0.5em; }
+#map .point.selected .point-name {  }
+
+.position-control { display: none; }
+#map .position-control { display: block; position: absolute; }
+
+#map .position-control .to-top,
+#map .position-control .to-right,
+#map .position-control .to-bottom,
+#map .position-control .to-left,
+#map .position-control .to-plus,
+#map .position-control .to-minus { position: absolute; width: 15px; height: 15px; cursor: pointer; }
+#map .position-control .to-top { left: 23px; top: 8px; }
+#map .position-control .to-right { left: 32px; top: 26px; }
+#map .position-control .to-bottom { left: 23px; top: 44px; }
+#map .position-control .to-left { left: 14px; top: 26px; }
+#map .position-control .to-plus { left: 23px; top: 62px; }
+#map .position-control .to-minus { left: 23px; top: 80px; }
+/* END common-map pretendent */
+
+
+
+#map { position: absolute; top: 0; left: 0; display: none; height: 100%; background-color: #ccc; width: 100%; }
+#map .surface { width: 100%; height: 100%; }
+#map .point .icon { background-image: url(icon-map-point.png); }
+#map .point .title { color: #fff; pointer-events: none; }
+#map .point .point-name { color: #ff4ea5; }
+#map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
+#map .position-control { z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; opacity: 0.4; }
+#map .position-control:hover { opacity: 1; }
