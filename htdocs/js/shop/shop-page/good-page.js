@@ -70,7 +70,7 @@ GoodPage.prototype =
 	
 	initCocktails: function ()
 	{
-		var cocktails = InPageCahchedData.alcoholic_cocktails.concat(InPageCahchedData.non_alcoholic_cocktails),
+		var cocktails = InPageCahchedData.cocktails,
 			fragment = document.createDocumentFragment()
 		
 		for (var i = 0, il = cocktails.length; i < il; i++)
