@@ -576,7 +576,7 @@ window.loadGoogleInfobox = function () {
     mapWidget.addControls();
     mapWidget.addCloseButton();
     marker = mapWidget.addMarker({
-      icon: "/assets/icon-map-marker.png",
+      icon: "/t/shop/icon-map-marker.png",
       position: new google.maps.LatLng(55.783016, 37.599892)
     });
     return mapWidget.addInfoBox(marker, {
