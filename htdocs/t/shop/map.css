@@ -5,6 +5,6 @@
 #map .point .icon { background-image: url(icon-map-point.png); }
 #map .point .title { color: #fff; pointer-events: none; }
 #map .point .point-name { color: #ff4ea5; }
-#map .point .icon { left: -19px; top: -60px; width: 69px; height: 60px; background-position: 0 0; }
+#map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
 #map .position-control { z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; }
 #map .position-control { background-image: url(/t/skin/tasteit/bars-common.png); }
