@@ -624,8 +624,4 @@ window.loadGoogleInfobox = function () {
 
 }).call(this);
 
-
-
-
-
-
+GoogleAnalytics.trackPageview()
