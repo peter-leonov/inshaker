@@ -1,7 +1,7 @@
 [
 {
 	"name": "Как давить мадлером?",
-	"example": "(на примере Малиновой кайпироски)",
+	"example": {title: "купить мадлер", link: "/products/24/madler"},
 	"movie": "http://player.vimeo.com/video/44307356",
 	"cocktails":
 	[
@@ -14,7 +14,7 @@
 },
 {
 	"name": "Как готовить в шейкере?",
-	"example": "(на примере Дайкири)",
+	"example": {title: "купить шейкер", link: "/products/12/sheyker"},
 	"movie": "http://player.vimeo.com/video/44312256",
 	"cocktails":
 	[
@@ -27,7 +27,7 @@
 },
 {
 	"name": "Как готовить в бостонском шейкере?",
-	"example": "(на примере Секса на пляже)",
+	"example": {title: "купить бостонский шейкер", link: "/products/13/sheyker-bostonskiy"},
 	"movie": "http://player.vimeo.com/video/44389285",
 	"cocktails":
 	[
@@ -40,7 +40,7 @@
 },
 {
 	"name": "Как готовить в блендере?",
-	"example": "(на примере Клубничной Маргариты)",
+	"example": {title: "купить блендер", link: "/"},
 	"movie": "http://player.vimeo.com/video/44442011",
 	"cocktails":
 	[
@@ -53,7 +53,7 @@
 },
 {
 	"name": "Как готовить в стакане для смешивания?",
-	"example": "(на примере Водка мартини)",
+	"example": {title: "купить стакан для смешивания", link: "/products/31/stakan-dlya-smeshivaniya"},
 	"movie": "http://player.vimeo.com/video/44519862",
 	"cocktails":
 	[
@@ -66,7 +66,7 @@
 },
 {
 	"name": "Как укладывать слои?",
-	"example": "(на примере Б-52)",
+	"example": {title: "купить коктейльную ложку", link: "/products/26/kokteylnaya-lozhka"},
 	"movie": "http://player.vimeo.com/video/44439652",
 	"cocktails":
 	[
@@ -79,7 +79,7 @@
 },
 {
 	"name": "Как делать дабл стрейн?",
-	"example": "(на примере Арбузного тини)",
+	"example": {title: "купить стрейнер", link: "/products/22/streyner"},
 	"movie": "http://player.vimeo.com/video/44662439",
 	"cocktails":
 	[
