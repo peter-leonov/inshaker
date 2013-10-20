@@ -33,7 +33,11 @@ Me.prototype =
 			
 			var example = v.example
 			if (example)
-				head.appendChild(Nct('span', 'example', example))
+			{
+			  var link = Nct('a', 'example', example.title)
+			  link.href = example.link
+				head.appendChild(link)
+			}
 			
 			var video = Nc('div', 'video')
 			item.appendChild(video)

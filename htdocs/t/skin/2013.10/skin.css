@@ -86,3 +86,6 @@ html.cocktail-groups-section #common-footer .about-menu .link.cocktail-groups
 
 /* rating.css */
 .ratings-widget .head .switch { color: #fb351b; }
+
+/* academy.css */
+#video-blocks .item .head .example { background: url(hart.png) no-repeat; }
