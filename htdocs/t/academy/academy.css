@@ -5,7 +5,12 @@
 #video-blocks .item { height: 515px; position: relative; margin: 20px 0 10px 0; border-bottom: 1px dashed #aaa; }
 #video-blocks .item:last-child { height: 480px; margin-bottom: 20px; border-bottom: none; }
 #video-blocks .item .head { font-size: 18px; margin: 0 0 6px 0; }
-#video-blocks .item .head .example { font-size: 12px; color: #aaa; margin: 0 0 0 0.6em; }
+#video-blocks .item .head .example
+{
+  position: absolute; right: 0; padding: 4px 5px 4px 36px;
+  background-size: 35px;
+  font-size: 15px; letter-spacing: 1px; color: #a62;
+}
 #video-blocks .item .video { width: 600px; height: 338px; margin: 0 0 15px 0; position: relative; }
 #video-blocks .item .video .player { width: 600px; height: 338px; border: none; }
 
