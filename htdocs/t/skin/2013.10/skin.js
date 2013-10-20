@@ -26,7 +26,7 @@ var Me =
 	}
 }
 
-var link = '/'
+var link = '/products/17/shokoladnaya-tekila-olmeca'
 
 Me.initialize
 ({
