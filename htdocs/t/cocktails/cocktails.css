@@ -1,8 +1,6 @@
-#common-main-wrapper { overflow: hidden; }
-
 .column-main { width: 627px; }
 
-.common-box { overflow: hidden; position: relative; z-index: 1; }
+.common-box { position: relative; z-index: 1; }
 .common-title { padding-bottom: 11px; position: relative; }
 .common-title h1 {font-size:20px } 
 
@@ -30,7 +28,6 @@
 .search-form { position:relative; height: 32px; }
 .search-form input{width:559px; padding:2px 0 2px 20px;margin: 5px 0 0 5px;font-size:14px;text-align:left; background: transparent; line-height: 18px; height:18px; border: none;}
 
-.b-content {width:100%;}
 #results_display {}
 #results_display .empty-result { display: none; position: absolute; z-index: 1; left: 170px; top: 130px; width: 300px; text-align: center; font-size: 15px; line-height: 22px; }
 #results_display .empty-result a { text-decoration: underline; }
