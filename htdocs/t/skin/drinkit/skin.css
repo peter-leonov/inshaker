@@ -19,7 +19,7 @@
 
 #branded-image { display: none; }
 a { color: #ec118f; }
-html { background-color: #fff; } /* fixes centered body bg */
+html { background-color: #555; } /* fixes centered body bg */
 body { background: center top; color: #000; }
 
 .common-box .common-title .common-name { color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
