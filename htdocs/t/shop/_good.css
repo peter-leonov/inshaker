@@ -5,7 +5,7 @@ body { background: url(bg.jpg) center 57px #140903; }
 /* COMMON */
 .common-name { line-height: 34px; }
 .common-name span { font-size: 32px; vertical-align: top; }
-.common-content { background: #fff; margin: 0 0 30px; }
+.common-content { margin: 0 0 30px; }
 #cocktails { padding: 30px 0 0; border-top: 1px solid #ccc; background: linear-gradient(to bottom, #e0e0e0 0%, rgba(255,255,255,0) 40px); }
 #cocktails .common-content-area { padding: 20px 40px; }
 #cocktails .title { text-align: center; font-size: 24px; line-height: 31px; letter-spacing: 1px; }
