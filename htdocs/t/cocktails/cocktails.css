@@ -26,7 +26,7 @@
 
 
 .search-form { position:relative; height: 32px; }
-.search-form input{width:559px; padding:2px 0 2px 20px;margin: 5px 0 0 5px;font-size:14px;text-align:left; background: transparent; line-height: 18px; height:18px; border: none;}
+.search-form input { box-sizing: border-box; width: 100%; padding: 4px 22px; border: none; border-bottom: 1px solid #ccc; background-color: transparent; font-size: 25px; }
 
 #results_display {}
 #results_display .empty-result { display: none; position: absolute; z-index: 1; left: 170px; top: 130px; width: 300px; text-align: center; font-size: 15px; line-height: 22px; }
