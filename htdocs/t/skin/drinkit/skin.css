@@ -27,6 +27,10 @@ body { background: center top; color: #000; }
 .common-box .common-content { background-color: #fff; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
 
+/* add more X button FIXME: convert to a cammon-* class */
+#more .button { background-color: #ec118f; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
+#more .button:hover { background-color: #fc0066; text-shadow: 0 0 5px #fff; }
+
 /* footer */
 #common-footer { color: #565656; }
 #common-footer a { color: inherit; }
