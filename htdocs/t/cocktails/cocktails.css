@@ -52,3 +52,22 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 <!--# endif -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
+
+#cocktail-shop-banner
+{
+    margin-top: 20px;
+}
+#cocktail-shop-banner .common-title h1
+{
+    font-size: 13.8px;
+}
+#cocktail-shop-banner .promo
+{
+    display: block; margin: 12px -10px 0 -10px;
+    border-radius: 2px;
+    background: url(cocktail-shop.jpg) center no-repeat; background-size: auto 100%;
+}
+#cocktail-shop-banner .parking
+{
+    display: none;
+}

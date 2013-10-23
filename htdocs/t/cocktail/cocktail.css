@@ -147,13 +147,18 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 }
 #cocktail-shop-banner .promo
 {
-  display: block; height: 270px; margin: 12px -10px 0 -10px;
+  display: block; margin: 12px -10px 0 -10px;
   border-radius: 2px;
   background: url(cocktail-shop.jpg) center no-repeat; background-size: auto 100%;
 }
-#cocktail-shop-banner .promo:hover
+#cocktail-shop-banner #map .point .point-name
 {
-  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+  background: transparent;
+}
+
+#cocktail-shop-banner .parking
+{
+    display: none;
 }
 
 #print-logo-hd { display: none; } 
