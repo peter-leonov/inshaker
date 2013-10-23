@@ -163,9 +163,9 @@ Me.prototype =
 		this.scroller.run()
 	},
 	
-	goNext: function ()
+	goNext: function (v)
 	{
-		this.scroller.setVelocity(this.conf.pageVelocity, 0)
+		this.scroller.setVelocity(v || this.conf.pageVelocity, 0)
 		this.scroller.run()
 	},
 	
