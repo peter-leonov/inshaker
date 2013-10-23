@@ -1,6 +1,9 @@
+#main-column,
+#bar-on-map { width: 627px; }
+
 #common-main-wrapper { font-size: 13px; }
 
-#main-column { width: 627px; position: relative; z-index: 1; }
+#main-column { position: relative; z-index: 1; }
 .common-box .common-content { overflow: hidden; }
 
 #main-column .common-title { position: relative; }
@@ -38,7 +41,7 @@
 #main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
-#bar-on-map { position: relative; z-index: 1; width: 630px; margin-top: 20px; }
+#bar-on-map { position: relative; z-index: 1; margin-top: 20px; }
 #bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; }
 #bar-on-map .body { border: 1px solid #564; border-top: none; }
 #bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; display: none; }
@@ -73,7 +76,7 @@
 .photos.geometry-big .next { top: 132px; }
 
 
-#share-box { position: absolute; right: 0; top: 0; }
+#share-box { position: absolute; right: 1px; top: 0; }
 
 #map { height: 330px; position: relative; overflow: hidden; background-color: gray !important; }
 
