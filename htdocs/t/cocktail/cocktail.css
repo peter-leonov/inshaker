@@ -124,7 +124,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #view-recipe .buttons button { margin-right: 16px; }
 
 
-.what-need { overflow: hidden; font-size: 120%; padding: 35px; }
+.what-need { overflow: hidden; font-size: 120%; padding: 35px 22px; }
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
