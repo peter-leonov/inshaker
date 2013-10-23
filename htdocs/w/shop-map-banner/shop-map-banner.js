@@ -10,8 +10,6 @@
 
 $.onready(function ()
 {
-	UserAgent.setupDocumentElementClassNames()
-	
 	var nodes =
 	{
 		address: $('.info .location p'),
