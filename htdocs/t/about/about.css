@@ -1,6 +1,9 @@
 #main-column { width: 627px; }
 #main-column h1 { font-size: 21px; }
 
+/* cut the bottom of the graph */
+#stat_cities { height: 400px; overflow: hidden; }
+
 .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
 .border-links a b { height: 1.64em; display: block; border: 0 solid transparent; border-width: 0 1px; position: relative; top: 1px; padding: 0 11px; margin: -1px; }
 .border-links a.now, .border-links a.selected, .border-links a:hover { background: #0392f1; }
@@ -16,13 +19,13 @@
 #poster {position:absolute;top:42px;}
 .b-content .content ol {padding-left:18px;}
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
-.b-content .content h3{font-size:18px;margin:1em 0;}
+.b-content .content h3{font-size:22px;margin:1em 0;}
 .view-stat {padding-bottom: 30px}
 .view-stat .note {width: 300px; font-size: 12px; margin-left: 178px;}
-.view-stat .stat{position:relative;width:580px;margin:0 auto;text-align:center;}
+.view-stat .stat{position:relative;margin:0 auto;text-align:center;}
 .view-stat .stat .viewport { width: 540px; overflow: hidden; margin-left: 20px;}
 .view-stat .stat .surface { width: 520px; padding:0;}
-.view-stat .stat .point { width: 510px; height: 560px; float: right;}
+.view-stat .stat .point { width: 510px; margin: 0 auto;}
 .view-stat .stat a { margin-top: 140px; z-index: 1;}
 .view-stat .stat .prev,
 .view-stat .stat .next{position:absolute;left:0;top:90px;}

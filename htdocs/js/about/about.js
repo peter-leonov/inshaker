@@ -239,17 +239,12 @@ var AboutPage = {
 
 $.onready(function(){
 	AboutPage.init(<!--# include virtual="/db/stats/cities.json" -->, <!--# include virtual="/db/stats/visits.json" -->);
-	new RollingImagesLite($('#rolling_stats'), {animationType: 'directJump'});
 })
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
 
 <!--# include virtual="/liby/modules/location-hash.js" -->
-<!--# include virtual="/liby/modules/motion.js" -->
-<!--# include virtual="/liby/modules/motion-types.js" -->
-<!--# include virtual="/liby/modules/animation.js" -->
-<!--# include virtual="/js/common/rolling-images.js" -->
 
 <!--# include virtual="/js/event/switcher.js" -->
 
