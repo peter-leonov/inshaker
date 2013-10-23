@@ -38,7 +38,7 @@
 
 .common-title { position: relative; }
 .common-title h1 { position: relative; }
-.common-title .hrefs { position: absolute; right: 0; bottom: 15px; font-size: 110%; }
+.common-title .hrefs { position: absolute; right: 0; top: 31px; font-size: 12px; }
 .common-title h1,
 .common-title .hrefs { z-index: 10; }
 
