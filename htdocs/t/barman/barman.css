@@ -1,12 +1,8 @@
 html { overflow-y: scroll; }
 
-#head
-{
-	margin-bottom: 15px;
-	position: relative;
-}
+.b-content { padding: 20px; }
 
-#head .hrefs { position:absolute; right: 0; top: 7px; font-size:110%; }
+#head .hrefs { display: none; position:absolute; right: 0; top: 7px; font-size:110%; }
 #head .hrefs .arrow { text-decoration: none; }
 
 #head .hrefs li
