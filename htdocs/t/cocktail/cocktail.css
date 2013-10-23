@@ -1,20 +1,18 @@
 @media screen {
 
-#common-main-wrapper { overflow: hidden; }
-#b-more {padding-top:20px;overflow:hidden;width:630px;padding-bottom:1px;}
-#b-more .b-more-cocktails { width:398px;}
+#b-more {margin-top:20px;width:630px;height: 145px;}
+#b-more .b-more-cocktails { width:397px;}
 #b-more .common-box { float: left; }
-#b-more dl{font-size:120%;}
-#b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
-#b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
+#b-more dl{font-size:120%;height:150px;}
+#b-more dt{ border-bottom: 1px solid #ddd;}
+#b-more dt b{padding:0 10px 0 20px; line-height:34px; font-size:15px; font-weight:normal; display:block; height:31px;}
 #b-more dd{line-height:1.17;position:relative;}
-#b-more .b-more-rec .point{width:130px; display:block}
-#b-more .b-more-rec {width:208px;margin-right:20px;}
-#b-more .b-more-rec .viewport{width:130px;left:21px;}
+#b-more .b-more-rec .point{width:210px; display:block}
+#b-more .b-more-rec {width:210px;margin-right:20px;}
 #b-more .b-more-rec li{width:130px;}
 #b-more.wide .b-more-rec { display: none; }
 #b-more.wide .b-more-similar { width: 628px; }
-.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:135px; width:330px;}
+.b-more-cocktails .viewport{overflow:hidden;position:relative;height:140px;}
 .b-more-cocktails .surface{width:20000px;height: 140px;}
 .b-more-cocktails .point{height:140px;width:330px;float:left;}
 .b-more-cocktails ul{padding-top:5px;}
@@ -36,9 +34,9 @@
 
 .cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
 
-.column-main { width: 628px; }
+.column-main { width: 627px; }
 
-.common-title { width: 100%; position: relative; }
+.common-title { position: relative; }
 .common-title h1 { position: relative; }
 .common-title .hrefs { position: absolute; right: 0; bottom: 15px; font-size: 110%; }
 .common-title h1,
@@ -50,11 +48,17 @@
 
 .common-box { overflow: hidden; position: relative; z-index: 1; }
 
-#top-menu { position: relative; width: 590px; height: 182px; background: url(menu.png) repeat-x 0 0; }
-#top-menu .poster { width: 590px; height: 210px; position: absolute; top: -28px; }
-#top-menu .border-links { position: relative; height: 19px; padding: 13px 0 6px 9px; font-size: 110%; z-index: 1; }
-#top-menu .border-links a { padding: 3px 10px 4px 10px; margin-right: 12px; line-height: 1.5; color: #fff; border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; text-decoration: none; }
-#top-menu .border-links a:hover { text-decoration: none; }
+.square-list .next,
+.square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
+.square-list .prev { background-position: -450px 0; }
+.square-list .next { background-position: -475px 0; }
+.square-list .prev.disabled,
+.square-list .next.disabled { cursor:default; }
+.square-list .prev.disabled { background-position: -450px -25px; }
+.square-list .next.disabled { background-position: -475px -25px; }
+
+#top-menu { height: 152px; }
+#top-menu .poster { width: 640px /*to fix blury upper border*/; position: absolute; top: -76px; left: -7px }
 
 #content { position: relative; min-height: 190px; }
 
@@ -78,7 +82,7 @@
 
 #show-legend { cursor: pointer; }
 
-#main-content { padding: 20px 0 0 225px; }
+#main-content { padding: 20px 35px 0 225px; }
 #main-content .description { font-size: 120%; line-height: 1.25; }
 #main-content .description .summary { position: relative; font-size: 14px; font-weight: bold; padding: 0 0 12px 16px; margin-left: -16px; }
 #main-content .description .summary i { position: absolute; left: -5px; top: 4px; width: 16px; height: 10px; background-position: -420px -25px; }
@@ -95,9 +99,8 @@
 #view-legend h3 { font-size: 150%; margin-bottom: 10px; }
 #view-legend button { display: block; margin: 2em auto 0; }
 
-#view-recipe { padding: 20px 0 0 0; }
-#view-recipe .ingredients{ background-color: #f4f8f9; height: 140px; width: 590px; position: absolute; top: -140px; }
-#view-recipe .ingredients .viewport { position: absolute; bottom: 0; left: 170px; width: 360px; height: 120px; z-index: 1; }
+#view-recipe .ingredients{ background-color: #f4f8f9; height: 140px; width: 100%; position: absolute; top: -152px; }
+#view-recipe .ingredients .viewport { position: absolute; bottom: 0; left: 205px; width: 360px; height: 120px; z-index: 1; }
 #view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 #view-recipe .ingredients .surface .image img { display: none; }
@@ -121,7 +124,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #view-recipe .buttons button { margin-right: 16px; }
 
 
-.what-need { overflow: hidden; font-size: 120%; padding-top: 35px; margin-bottom: 27px; }
+.what-need { overflow: hidden; font-size: 120%; padding: 35px; }
 .what-need dl{float:left;width:23em;margin-bottom:-1px;}
 .what-need .tools{float:right;}
 .what-need dt{border-bottom:3px solid #5c5c5c;font-weight:bold;margin-bottom:10px;padding-bottom:6px;}
@@ -131,12 +134,12 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 .what-need strong{font-weight:normal;display:block;float:right;width:25%;}
 .what-need dd .brand { display: none; }
 
-#recommendations .point { line-height: 124px; text-align: center; }
+#recommendations .point { line-height: 116px; text-align: center; }
 #recommendations .point img { display: inline; vertical-align: middle; }
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
-#share { border-top: 1px solid #ddd; margin: 0 -18px -18px -18px; padding: 18px 18px; background-color: #fff; }
+#share { border-top: 1px solid #ddd; padding: 18px; background-color: #fff; }
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
