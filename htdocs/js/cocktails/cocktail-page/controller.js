@@ -255,7 +255,7 @@ var Controller = {
 		
 		var list = new LazyList()
 		list.bind(nodes)
-		list.configure({friction: 5, pageVelocity: 18, soft: Infinity, min: 75, max: 100})
+		list.configure({friction: 7, pageVelocity: 150, soft: Infinity, min: 75, max: 100})
 		list.setNodes(items, size)
 		
 		if (size <= 1)
@@ -272,12 +272,12 @@ var Controller = {
 	{
 		var carousel =
 		{
-			timeout: 2600,
+			timeout: 5000,
 			start: function ()
 			{
 				function goNext ()
 				{
-					list.goNext()
+					list.goNext(80 * (1 + Math.random()))
 					carousel.start()
 				}
 				carousel.cycle = window.setTimeout(goNext, carousel.timeout)
