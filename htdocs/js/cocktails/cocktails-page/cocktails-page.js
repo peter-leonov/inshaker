@@ -3,6 +3,8 @@
 <!--# include virtual="/liby/fixes/onhashchange.js" -->
 <!--# include virtual="/liby/modules/location-hash.js" -->
 
+<!--# include virtual="/w/shop-map-banner/map.js" -->
+
 ;(function(){
 
 <!--# include virtual="cocktails-widget.js" -->

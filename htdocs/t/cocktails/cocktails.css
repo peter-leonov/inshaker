@@ -50,3 +50,5 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 .search-form {z-index:1;}
 .search-form input { height: 22px; line-height: 22px; position:absolute}
 <!--# endif -->
+
+<!--# include virtual="/w/shop-map-banner/map.css" -->

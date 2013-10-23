@@ -91,3 +91,5 @@ html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:fi
 .ratings-widget .rating-total li .cocktail .cocktail-ingredient { font-size: 11px; color: #505050; }
 
 <!--# include virtual="/t/ingredient-popup.css" -->
+
+<!--# include virtual="/w/shop-map-banner/map.css" -->
