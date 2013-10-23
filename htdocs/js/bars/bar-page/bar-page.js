@@ -84,9 +84,7 @@ $.onready
 			barName: $('#bar-name'),
 			cityName: $('#city-name'),
 			map: $('#map'),
-			positionControl: $('.position-control'),
-			barPrev: $('#main-column .common-title .navigation .prev'),
-			barNext: $('#main-column .common-title .navigation .next')
+			positionControl: $('.position-control')
 		}
 		RoundedCorners.round(nodes.photos.root)
 		
