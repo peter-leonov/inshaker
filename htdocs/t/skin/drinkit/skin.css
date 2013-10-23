@@ -57,6 +57,11 @@ body { background: center top; color: #000; }
 #bars-page #map .point .point-name { color: #ec118f; }
 #bars-page #map .point.selected .point-name { color: #f00; }
 
+/* bar.css */
+#bar-page #main-column .info .block .head,
+#bar-page #bar-on-map .head { background-color: #333; }
+#bar-page #main-column .info .block .head a { color: #F09741; }
+
 
 /* footer */
 #common-footer { color: #565656; }
