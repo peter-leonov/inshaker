@@ -81,6 +81,17 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .common-box .common-top { border-top-left-radius: 7px; border-top-right-radius: 7px; -moz-border-radius-topleft: 7px; -moz-border-radius-topright: 7px; }
 .common-box .common-bottom { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; -moz-border-radius-bottomleft: 7px; -moz-border-radius-bottomright: 7px; }
 
+/* 0px to 10px rounded corners */
+.rounding-corners .lt,
+.rounding-corners .rt,
+.rounding-corners .lb,
+.rounding-corners .rb { position: absolute; width: 10px; height: 10px; background: url(rounded-corners-10px.png) no-repeat; }
+.rounding-corners .lt { left: 0; top: 0; background-position: -9px -9px; }
+.rounding-corners .rt { right: 0; top: 0; background-position: 0 -9px; }
+.rounding-corners .lb { left: 0; bottom: 0; background-position: -9px 0; }
+.rounding-corners .rb { right: 0; bottom: 0; background-position: 0 0; }
+
+
 .cocktail-list .prev,
 .cocktail-list .next { position: absolute; top: 54px; height: 14px; width: 14px; z-index: 2; }
 .cocktail-list .prev { background-position: 0 0; left: 0; }
