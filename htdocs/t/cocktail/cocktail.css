@@ -36,6 +36,21 @@
 
 .cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
 
+/* that great buttons */
+button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
+button.rounded b { position: relative; left: 1px; top: 0px; font-size: 11px; line-height: 12px; letter-spacing: 0.1em; font-weight: normal; }
+button.tiny { width: 110px; background-position: 0 -25px; }
+button.strong { background-position: 0 -50px; }
+html.msie-6 button.rounded b,
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { font-weight: bold; top: 5px; }
+html.msie-7 button.rounded b,
+html.msie-8 button.rounded b { display: inline-block; letter-spacing: 0.1px; filter: Shadow(Color=#333333,Direction=135,Strength=1); padding-bottom: 1px; }
+html.msie-8 button.rounded b { top: -2px; }
+html.firefox button.rounded b {  top: -2px; }
+html.safari button.rounded b { top: -1px; }
+
+
 .column-main { width: 627px; }
 
 .common-title { position: relative; }
