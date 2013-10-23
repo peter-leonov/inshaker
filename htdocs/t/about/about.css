@@ -1,3 +1,4 @@
+#main-column { width: 627px; }
 #main-column h1 { font-size: 21px; }
 
 .border-links a { display: block; text-decoration: none; float: left; height: 1.64em; line-height: 1.5; padding: 1px 0; color: #fff; margin-right: 12px; }
@@ -10,9 +11,8 @@
 .common-box .common-title { position: relative; }
 .common-box .common-title .hrefs {position:absolute; right:0; bottom:15px; font-size:110%;}
 
+.b-content { padding: 20px; }
 .b-content .viewport { height: 450px; }
-.b-content{min-height:46em;}
-.b-content {width:590px;}
 #poster {position:absolute;top:42px;}
 .b-content .content ol {padding-left:18px;}
 .b-content .content ol li {list-style-type:decimal; margin-bottom:3px;}
@@ -33,7 +33,6 @@
 
 .common-content{min-height:505px;}
 #body_wrapper{padding-bottom: 14px;}
-#main-column { width: 628px; }
 .b-content .top-menu{background: url(menu.png) repeat-x 0 0;position:relative;}
 .b-content .top-menu img{position:absolute;bottom:0;left:0;}
 .b-content .top-menu p{padding:10px 0 8px 9px;height:20px;overflow:hidden;margin-bottom:142px;font-size:110%;position:relative; z-index:2}
@@ -57,7 +56,7 @@
 .b-content .view-about ul { margin: 0 0 0 2em; }
 .b-content .view-about ul li { list-style-type: disc; }
 
-#b-cr-about { overflow: hidden; float: right; }
+#b-cr-about { overflow: hidden; float: right; width: 310px; }
 #b-cr-about h2 { font-size: 21px; }
 #b-cr-about .common-content{height:505px;}
 #b-cr-about form {font-size:11px;line-height:2;}
