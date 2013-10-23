@@ -8,7 +8,9 @@
 #main-column .common-title .navigation a.hidden { cursor: default; color: #ccc; }
 #main-column .common-title .navigation li { display: inline; margin: 0 4px; vertical-align: middle; }
 
-#main-column .description { font-size: 14px; margin: 10px 0 15px 0; line-height: 18px; }
+#main-column .content { padding: 18px; }
+
+#main-column .description { font-size: 14px; margin: 0 0 15px 0; line-height: 18px; }
 
 #main-column .atmosphere { overflow: hidden; margin-top: 12px; }
 #main-column .atmosphere .part { width: 250px; float: left; }
