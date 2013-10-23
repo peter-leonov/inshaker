@@ -105,12 +105,12 @@ Me.prototype =
 	
 	showMoreButton: function ()
 	{
-		this.nodes.more.show()
+		this.nodes.moreHolder.show()
 	},
 	
 	hideMoreButton: function ()
 	{
-		this.nodes.more.hide()
+		this.nodes.moreHolder.hide()
 	},
 	
 	renameMoreButton: function (count)
