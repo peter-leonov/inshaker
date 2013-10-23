@@ -1,6 +1,7 @@
 html { overflow-y: scroll; }
 
 #main-column { font-size: 14px; }
+#main-column .b-content { padding: 20px; }
 #main-column .title h1 { display: inline; font-size: 21px; }
 #main-column .title a { text-shadow: none; }
 #main-column .about { line-height: 20px; }
