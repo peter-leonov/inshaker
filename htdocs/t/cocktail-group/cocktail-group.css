@@ -83,6 +83,19 @@ html.loading #cocktail-list { display: none; }
 #more .button { display: inline-block; padding: 10px 15px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; }
 #more .button:hover { text-decoration: none; }
 
+#cocktail-shop-banner
+{
+  display: block; height: 256px; margin: -10px 0 30px 0;
+  border: 2px solid #D5E2CF;
+  background: url(cocktail-shop.jpg) center no-repeat;
+  border-radius: 15px; box-shadow: 0 0 25px #6E3021;
+}
+#cocktail-shop-banner .promo:hover
+{
+  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+}
+
+
 html.opera-9 .ingredient-preview .image:before,
 html.opera-10-0 .ingredient-preview .image:before,
 html.opera-10-1 .ingredient-preview .image:before,
