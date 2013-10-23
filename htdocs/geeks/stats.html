@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<link rel="stylesheet" href="/t/light/light.css"/>
-	<link rel="stylesheet" href="/t/skin/shakeit/skin.css"/>
+	<link rel="stylesheet" href="/t/glass/glass.css"/>
+	<link rel="stylesheet" href="/t/skin/drinkit/skin.css"/>
 	<title>Статистика по браузерам — Inshaker</title>
 	<style>
+	.b-content { padding: 20px; }
 	.stat { position: relative; margin: 20px -20px 0 -20px; }
 	.stat .viewport .point { height: 770px; }
 	.stat h3 { position: relative; z-index: 1; text-align: right; width: 150px; margin: 0 38px 0 auto; font-size: 20px; }
@@ -16,10 +17,11 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
-<div id="main-column" class="common-box"><div class="common-content">
+<div id="main-column" class="common-box">
 	<div class="common-title">
-		<h1>Browser stats for last 30 days</h1>
+		<h1 class="common-name">Browser stats for last 30 days</h1>
 	</div>
+	<div class="common-content common-bottom">
 	<div class="b-content">
 		<div class="stat cocktail-list" id="rolling-stats">
 			<ul class="viewport">
