@@ -1,3 +1,5 @@
+#common-main-wrapper { min-height: 600px; }
+
 .column-main { width: 627px; }
 
 .common-box { position: relative; z-index: 1; }
@@ -35,7 +37,7 @@
 #results_display.empty #more { display: none; }
 #results_display .viewport {width:585px;margin-left:11px; }
 #results_display .point{width:585px;}
-#results_display .surface { padding: 0px; min-height: 520px; }
+#results_display .surface { padding: 0px; }
 html.opera-10 #results_display .surface,
 html.opera-11-0 #results_display .surface { width: 30000px; }
 
