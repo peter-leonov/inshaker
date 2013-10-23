@@ -272,15 +272,23 @@ var Controller = {
 	{
 		var carousel =
 		{
+		  changeNTimes: 15,
 			timeout: 5000,
 			start: function ()
 			{
+			  // safe the battery life
+				if (--carousel.changeNTimes < 0)
+					return
+				
 				function goNext ()
 				{
 					list.goNext(80 * (1 + Math.random()))
 					carousel.start()
 				}
 				carousel.cycle = window.setTimeout(goNext, carousel.timeout)
+				
+				// increase the timeout exponentially to avoid the crazy spinning
+				carousel.timeout *= 1.2
 			},
 			stop: function ()
 			{
