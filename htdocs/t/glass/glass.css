@@ -74,6 +74,7 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .common-box .common-title { height: 29px; padding: 22px 22px 22px 22px; background: no-repeat, no-repeat; background-clip: padding-box, border-box; border-right: 25px solid transparent; }
 .common-box .common-title { background-position: -26px -175px, 937px -175px; }
 .common-box.common-column-2n .common-title { background-position: -26px -175px, 602px -175px; }
+.common-box.common-column-1n .common-title { background-position: -26px -175px, 285px -175px; }
 .common-box .common-title .common-name { font-size: 24px; font-weight: bold; }
 .common-box .common-mini { height: 40px; padding: 0 22px; background-position: 0 -125px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; -moz-border-radius: 7px; }
 .common-box .common-content-plain { padding: 15px 19px 15px 19px; }
