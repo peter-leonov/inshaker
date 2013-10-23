@@ -18,11 +18,12 @@
 .ratings-widget.state-ingredient .head .switch.total,
 .ratings-widget.state-ingredient .head .switch.tag { text-shadow: none; }
 
+.ratings-widget > .content { padding: 0 20px 15px; }
 
 .ratings-widget .rating-ingredient,
 .ratings-widget .rating-tag { width: 945px; }
 
-.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 0 22px 55px 0; vertical-align: top; }
+.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 40px 22px 0 0; vertical-align: top; }
 
 .ratings-widget .rating-name { font-size: 18px; }
 .ratings-widget .rating-name .count { font-size: 10px; color: #bbb; vertical-align: super; margin-left: 5px; }
