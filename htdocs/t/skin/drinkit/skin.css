@@ -9,10 +9,10 @@
 .common-share-button i,
 .common-share-box .button i,
 #common-footer .alcohol-harm,
-.common-box .common-title:before,
-.common-box .common-title:after,
 .common-box .common-mini,
 .common-box .common-content-gradiented { background-image: url(common.png); }
+.common-box .common-title
+{ background-image: url(common.png), url(common.png); }
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
