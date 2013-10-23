@@ -4,7 +4,7 @@
 #b-more .b-more-cocktails { width:397px;}
 #b-more .common-box { float: left; }
 #b-more dl{font-size:120%;height:150px;}
-#b-more dt{ border-bottom: 1px solid #ddd;}
+#b-more dt{ border-bottom: 1px solid #dbdbdb;}
 #b-more dt b{padding:0 10px 0 20px; line-height:34px; font-size:15px; font-weight:normal; display:block; height:31px;}
 #b-more dd{line-height:1.17;position:relative;}
 #b-more .b-more-rec .point{width:210px; display:block}
@@ -30,7 +30,9 @@
 .b-more-cocktails .cocktail-list .next{background-position:-525px 0;right:-2px;}
 .b-more-cocktails .cocktail-list .prev.disabled{background-position:-500px -25px;cursor:default;}
 .b-more-cocktails .cocktail-list .next.disabled{background-position:-525px -25px;cursor:default;}
-
+#related .viewport { margin: -4px auto 0; }
+#related .prev { left: 14px; }
+#related .next { right: 14px; }
 
 .cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
 
