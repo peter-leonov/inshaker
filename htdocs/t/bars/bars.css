@@ -12,6 +12,8 @@ html {overflow-y: scroll;}
   background-position: -100px 0;
 }
 
+.content { padding: 20px; }
+
 .bar-mini { float: left; margin: 20px 25px 0 0; }
 .bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
 .bar-mini a .label,
@@ -53,7 +55,7 @@ html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0
 #head h1 #switch-view a:hover { border-bottom: none; }
 #head h1 #switch-view a.selected { border-bottom: none; color: inherit; cursor: default; }
 
-#sort-menu { margin: 0; padding: 0 16px; height: 40px; width: 920px; background: #000 linear-gradient(to bottom, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 40px); border-radius: 10px; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+#sort-menu { margin: 0; padding: 0 16px; height: 40px; background: #000 linear-gradient(to bottom, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 40px); border-radius: 10px; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
 #sort-menu dl, #sort-menu dt { display: inline; }
 #sort-menu dl,
 #sort-menu dd { position: relative; }
@@ -70,7 +72,7 @@ html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0
 
 #sort-menu #bars-city.bars-select dd { left: -7px; }
 
-#bars-container { overflow: hidden; clear: both; }
+#bars-container { margin-right: -23px /* eats item right margin*/; overflow: hidden; clear: both; }
 
 html.loading #bars-container { display: none; }
 
@@ -112,7 +114,6 @@ html.msie-8 #map .point .title { filter: alpha(opacity=85); }
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }
 .body-wrapper { width: 920px; position: relative; }
-#bars-list { width: 945px; }
 
 .bar-map-popup img {width:100px;float:right;}
 .bar-map-popup h2 {font-weight:bold;}
