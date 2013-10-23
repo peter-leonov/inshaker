@@ -47,11 +47,16 @@ MapWidget.prototype =
 		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
 		map.setCenter({lat: 55.783016, lng: 37.599892}, 14)
 		
+		var nodeValue = function (node)
+		{
+			return node.nodeValue
+		}
+		
 		var shop =
 		{
 			name: 'Коктейльный магазин',
 			contacts: {
-				address: this.nodes.address.firstChild.nodeValue,
+				address: [].map.call(this.nodes.address.childNodes, nodeValue).join(''),
 				tel: this.nodes.phone.firstChild.nodeValue
 			},
 			point: [55.783016, 37.599892]
