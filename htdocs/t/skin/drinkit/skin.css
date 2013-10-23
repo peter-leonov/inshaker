@@ -44,6 +44,19 @@ body { background: center top; color: #000; }
 /* academy.css */
 #academy-page #video-blocks .item .head .example { background-repeat: no-repeat; background-image: url(hart.png); }
 
+/* bars.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(101,178,0,0.7); }
+#bars-page #sort-menu .bars-select dt,
+#bars-page #sort-menu .bars-select dd ul li.selected,
+#bars-page #sort-menu .bars-select dd ul li:hover { color: #ec118f; }
+#bars-page #map .point .icon,
+#bars-page #map .position-control,
+#bars-page #mobile-bar { background-image: url(bars-common.png); }
+#bars-page #map .point .title { color: #fff; }
+#bars-page #map .point .point-name { color: #ec118f; }
+#bars-page #map .point.selected .point-name { color: #f00; }
+
 
 /* footer */
 #common-footer { color: #565656; }
