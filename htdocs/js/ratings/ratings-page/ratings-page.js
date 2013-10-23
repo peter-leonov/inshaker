@@ -5,7 +5,7 @@
 
 <!--# include virtual="/js/common/ingredient-popup.js" -->
 
-<!--# include virtual="/w/shop-map-banner/map.js" -->
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
 ;(function(){
 
