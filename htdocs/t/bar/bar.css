@@ -38,8 +38,8 @@
 #main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
-#bar-on-map { position: relative; z-index: 1; width: 630px; margin-top: 10px; }
-#bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+#bar-on-map { position: relative; z-index: 1; width: 630px; margin-top: 20px; }
+#bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; }
 #bar-on-map .body { border: 1px solid #564; border-top: none; }
 #bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; display: none; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }
