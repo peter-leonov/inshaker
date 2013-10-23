@@ -57,8 +57,8 @@
 .square-list .prev.disabled { background-position: -450px -25px; }
 .square-list .next.disabled { background-position: -475px -25px; }
 
-#top-menu { height: 152px; }
-#top-menu .poster { width: 640px /*to fix blury upper border*/; position: absolute; top: -76px; left: -7px }
+#top-menu { height: 152px; border-top: 2px solid #000; }
+#top-menu .poster { width: 640px /*to fix blury upper border*/; position: absolute; top: -74px; left: -7px }
 
 #content { position: relative; min-height: 190px; }
 
