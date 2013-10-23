@@ -103,7 +103,9 @@ html.safari button.rounded b { top: -1px; }
 #main-content .description { font-size: 120%; line-height: 1.25; }
 #main-content .description .summary { position: relative; font-size: 14px; font-weight: bold; padding: 0 0 12px 16px; margin-left: -16px; }
 #main-content .description .summary i { position: absolute; left: -5px; top: 4px; width: 16px; height: 10px; background-position: -420px -25px; }
-#main-content .tags { font-size: 110%; padding: 29px 0 50px 0; text-transform: lowercase; }
+#main-content .author { font-size: 110%; padding: 20px 0 5px 0; }
+#main-content .tags { font-size: 110%; padding: 0 0 50px 0; }
+#main-content .tags .tag { text-transform: lowercase; }
 #main-content .tags .tag:after { content: ',' }
 #main-content .tags .tag:last-child:after { content: '.' }
 #main-content .buttons { position: absolute; bottom: 0; left: 245px; z-index: 1; }

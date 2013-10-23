@@ -116,19 +116,17 @@ var Controller = {
 		var barman = Barman.getByCocktailName(name)
 		if (barman)
 		{
-			var a = $('#author')
+			var a = $('#main-content .author')
 			if (a)
 			{
 				a.classList.remove('hidden')
-				a.href = barman.pageHref()
 			}
 			
-			
-			a = $('a.author')
+			var a = $('#main-content .author .name')
 			if (a)
 			{
-				a.classList.add('active')
-				a.href = barman.pageHref()
+			  a.href = barman.pageHref()
+			  a.innerHTML = barman.name
 			}
 		}
 		
