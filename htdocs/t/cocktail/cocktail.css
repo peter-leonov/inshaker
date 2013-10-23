@@ -4,7 +4,7 @@
 #b-more {padding-top:20px;overflow:hidden;width:630px;padding-bottom:1px;}
 #b-more .b-more-cocktails { width:398px;}
 #b-more .common-box { float: left; }
-#b-more dl{font-size:120%;height:150px;}
+#b-more dl{font-size:120%;}
 #b-more dt{margin:-5px -10px 0;padding:0 1px;height:29px;}
 #b-more dt b{padding:0 10px;position:relative;top:-1px;line-height:30px;font-size:13px;font-weight:normal;display:block;height:31px;}
 #b-more dd{line-height:1.17;position:relative;}
@@ -14,7 +14,7 @@
 #b-more .b-more-rec li{width:130px;}
 #b-more.wide .b-more-rec { display: none; }
 #b-more.wide .b-more-similar { width: 628px; }
-.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:140px; width:330px;}
+.b-more-cocktails .viewport{overflow:hidden;position:relative;left:16px;top:2px;height:135px; width:330px;}
 .b-more-cocktails .surface{width:20000px;height: 140px;}
 .b-more-cocktails .point{height:140px;width:330px;float:left;}
 .b-more-cocktails ul{padding-top:5px;}
@@ -139,6 +139,22 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #share { border-top: 1px solid #ddd; margin: 0 -18px -18px -18px; padding: 18px 18px; background-color: #fff; }
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
+
+#b-more #cocktail-shop-banner
+{
+  width: 100%;
+  margin-top: 20px;
+}
+#cocktail-shop-banner .promo
+{
+  display: block; height: 270px; margin: 12px -10px 0 -10px;
+  border-radius: 2px;
+  background: url(cocktail-shop.jpg) center no-repeat; background-size: auto 100%;
+}
+#cocktail-shop-banner .promo:hover
+{
+  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+}
 
 #print-logo-hd { display: none; } 
 
