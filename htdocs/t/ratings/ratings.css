@@ -102,6 +102,7 @@ html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:fi
 {
     font-size: 23px;
 }
+#cocktail-shop-banner h1 a { color: #EC9340; }
 #shop-map .info {
     padding: 15px 15px 15px 35px;
 }
