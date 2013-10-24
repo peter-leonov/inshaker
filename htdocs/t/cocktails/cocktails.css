@@ -63,7 +63,7 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 }
 #cocktail-shop-banner .promo
 {
-    display: block; margin: 12px -10px 0 -10px;
+    display: block; margin: 12px 0 0 0;
     border-radius: 2px;
 }
 #cocktail-shop-banner .parking
