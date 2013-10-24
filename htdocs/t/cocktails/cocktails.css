@@ -27,8 +27,15 @@
 #more .button:hover { text-decoration: none; }
 
 
-.search-form { position:relative; height: 32px; }
-.search-form input { box-sizing: border-box; width: 100%; padding: 4px 22px; border: none; border-bottom: 1px solid #ccc; background-color: transparent; font-size: 25px; }
+.search-form { position: relative; z-index: 1; height: 32px; }
+.search-form input { box-sizing: border-box; -moz-box-sizing: border-box; width: 100%; padding: 4px 5px 4px 38px; border: none; border-bottom: 1px solid #ccc; background-color: transparent; font-size: 25px; }
+.search-form .magnifier
+{
+  position: absolute; z-index: -1; left: 10px; top: 10px; width: 25px; height: 25px;
+  background-position: -300px 0;
+  cursor: pointer;
+}
+
 
 #results_display {}
 #results_display .empty-result { display: none; position: absolute; z-index: 1; left: 170px; top: 130px; width: 300px; text-align: center; font-size: 15px; line-height: 22px; }
