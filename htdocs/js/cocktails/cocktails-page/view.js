@@ -49,7 +49,7 @@ Me.prototype =
 	
 	renderRandomCocktail: function (cocktail)
 	{
-		this.nodes.searchByNameInput.placeholder = cocktail.name + '   —   ' + cocktail.name_eng
+		this.nodes.searchByNameInput.placeholder = cocktail.name
 	},
 	
 	renderMoreCocktails: function (cocktails, left)
