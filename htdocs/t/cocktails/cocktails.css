@@ -50,3 +50,23 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 .search-form {z-index:1;}
 .search-form input { height: 22px; line-height: 22px; position:absolute}
 <!--# endif -->
+
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
+
+#cocktail-shop-banner
+{
+    margin-top: 20px;
+}
+#cocktail-shop-banner .common-title h1
+{
+    font-size: 13.8px;
+}
+#cocktail-shop-banner .promo
+{
+    display: block; margin: 12px 0 0 0;
+    border-radius: 2px;
+}
+#cocktail-shop-banner .parking
+{
+    display: none;
+}
