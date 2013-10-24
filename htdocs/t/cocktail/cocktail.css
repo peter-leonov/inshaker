@@ -231,3 +231,7 @@ input { border: none; background: none; }
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
+#cocktail-shop-banner .promo .info
+{
+    padding: 20px;
+}
