@@ -43,7 +43,7 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.view.bind(nodes)
-		this.model.bind()
+		this.model.bind(<!--# include virtual="/db/shop/groups.json" -->)
 		
 		this.view.locationHashUpdated()
 		

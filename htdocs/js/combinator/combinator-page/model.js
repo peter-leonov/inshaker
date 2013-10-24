@@ -82,8 +82,10 @@ Me.prototype =
 		'alphabetically'
 	],
 	
-	bind: function ()
+	bind: function (exceptGroups)
 	{
+		this.exceptGroups = exceptGroups
+		
 		var hideGroups = this.hideGroups
 		var groups = Ingredient.getGroups()
 		for (var i = 0, il = groups.length; i < il; i++)
