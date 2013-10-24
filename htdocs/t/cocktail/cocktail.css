@@ -55,7 +55,7 @@ html.safari button.rounded b { top: -1px; }
 
 .common-title { position: relative; }
 .common-title h1 { position: relative; }
-.common-title .hrefs { position: absolute; right: 0; top: 31px; font-size: 12px; }
+.common-title .hrefs { position: absolute; right: 0; top: 31px; font-size: 12px; color: #fff }
 .common-title h1,
 .common-title .hrefs { z-index: 10; }
 
