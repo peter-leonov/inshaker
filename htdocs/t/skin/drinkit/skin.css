@@ -73,6 +73,9 @@ body { background: center top; color: #000; }
 #common-footer .index .theme .head:after { border-left-color: #d6d6d6; background-color: #e0e0e0; border-right-color: #eaeaea; }
 #common-footer .bottom { background-color: #f8f8f8; }
 
+/* ratings.css */
+/*#ratings-page*/ .ratings-widget .head .switch { color: #f4a; }
+
 /* map */
 .common-map .position-control { background-image: url(bars-common.png); background-position: 0 0; }
 
