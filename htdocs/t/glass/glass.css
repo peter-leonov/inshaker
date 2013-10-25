@@ -28,7 +28,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 
 @media screen {
 
-#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
+#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
 #top .content { position: relative; width: 962px; height: 65px; margin: 0 auto; }
 #top .logo { position: absolute; left: -10px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 #top .menu { position: absolute; top: 0; left: 190px; }
