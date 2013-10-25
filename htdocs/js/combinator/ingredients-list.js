@@ -146,7 +146,11 @@ Me.prototype =
 		var root = Nc('dl', 'group')
 		
 		if ('name' in group)
-			root.appendChild(Nct('dt', 'head', group.name))
+		{
+			var dt = Nc('dt', 'head')
+			dt.innerHTML = group.name
+			root.appendChild(dt)
+		}
 		
 		var body = Nc('dt', 'body')
 		root.appendChild(body)

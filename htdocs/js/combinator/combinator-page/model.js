@@ -82,8 +82,10 @@ Me.prototype =
 		'alphabetically'
 	],
 	
-	bind: function ()
+	bind: function (exceptGroups)
 	{
+		this.exceptGroups = exceptGroups
+		
 		var hideGroups = this.hideGroups
 		var groups = Ingredient.getGroups()
 		for (var i = 0, il = groups.length; i < il; i++)
@@ -468,6 +470,9 @@ Me.prototype =
 				
 				if (this.hideGroups[name])
 					continue
+				
+				if (this.exceptGroups.indexOf(name) == -1)
+					name += ' <a href="/" class="link">купить в магазине Inshaker</a>'
 				
 				data.push({name: name, list: list})
 			}
