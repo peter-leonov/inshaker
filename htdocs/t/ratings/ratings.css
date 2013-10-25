@@ -6,7 +6,7 @@
 .ratings-widget .head { position: relative; font-size: 24px; }
 .ratings-widget .head .switch { text-decoration: none; border-bottom: 2px dashed; }
 .ratings-widget .head .switch:hover { border: none; }
-.ratings-widget .head .hint { color: #c2c2c2; font-size: 12px; text-shadow: none; vertical-align: top; }
+.ratings-widget .head .hint { color: #c2c2c2; font-size: 12px; text-shadow: none; vertical-align: top; letter-spacing: 0; }
 
 .ratings-widget.state-total .head .switch.total,
 .ratings-widget.state-tag .head .switch.tag,
