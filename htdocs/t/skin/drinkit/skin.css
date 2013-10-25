@@ -30,8 +30,10 @@ body { background: center top; color: #000; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
 
 /* add more X button FIXME: convert to a cammon-* class */
-#more .button { background-color: #ec118f; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
-#more .button:hover { background-color: #fc0066; text-shadow: 0 0 5px #fff; }
+#more { background-color: #ec118f; }
+#more .button { display: block; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
+#more:hover { background-color: #fc0066; }
+#more:hover .button { text-shadow: 0 0 5px #fff; text-decoration: none; }
 
 /* cocktail.css */
 #cocktail-page button.rounded,
@@ -51,12 +53,6 @@ body { background: center top; color: #000; }
 #bars-page #sort-menu .bars-select dt,
 #bars-page #sort-menu .bars-select dd ul li.selected,
 #bars-page #sort-menu .bars-select dd ul li:hover { color: #ec118f; }
-#bars-page #map .point .icon,
-#bars-page #map .position-control,
-#bars-page #mobile-bar { background-image: url(bars-common.png); }
-#bars-page #map .point .title { color: #fff; }
-#bars-page #map .point .point-name { color: #ec118f; }
-#bars-page #map .point.selected .point-name { color: #f00; }
 
 /* bar.css */
 #bar-page #main-column .info .block .head,
@@ -78,6 +74,11 @@ body { background: center top; color: #000; }
 
 /* map */
 .common-map .position-control { background-image: url(bars-common.png); background-position: 0 0; }
+.common-map .point .icon { background-image: url(bars-common.png); background-position: -75px 0; }
+.common-map .point .title { color: #fff; }
+.common-map .point .point-name { color: #f4a; }
+.common-map .point.selected .point-name { color: #f00; }
+
 
 } /* @media screen */
 

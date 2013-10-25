@@ -22,9 +22,7 @@
 .b-content .viewport{overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;}
 
-#more { display: block; width: 590px; margin: 13px 0 25px; text-align: center; }
-#more .button { display: inline-block; padding: 10px 17px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; line-height: 21px; }
-#more .button:hover { text-decoration: none; }
+#more .button { display: block; text-align: center; padding: 20px 17px; font-size: 20px; letter-spacing: 2px; line-height: 21px; }
 
 
 .search-form { position: relative; z-index: 1; height: 32px; }

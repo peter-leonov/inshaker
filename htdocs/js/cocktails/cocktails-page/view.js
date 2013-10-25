@@ -105,11 +105,13 @@ Me.prototype =
 	
 	showMoreButton: function ()
 	{
+	  this.nodes.root.classList.remove('common-bottom')
 		this.nodes.moreHolder.show()
 	},
 	
 	hideMoreButton: function ()
 	{
+	  this.nodes.root.classList.add('common-bottom')
 		this.nodes.moreHolder.hide()
 	},
 	
