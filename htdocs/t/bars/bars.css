@@ -56,7 +56,7 @@ html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0
 #switch-view a.selected { border-bottom: none; color: inherit; cursor: default; }
 #switch-view a:not(.selected) { text-shadow: none; }
 
-#sort-menu { margin: 0; padding: 0 16px; height: 40px; background: #000 linear-gradient(to bottom, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 40px); border-radius: 10px; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 2; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+#sort-menu { margin: 0; padding: 0 16px; height: 40px; background: #444; background: #000 linear-gradient(to bottom, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 40px); border-radius: 10px; color: #fff; font-size: 18px; line-height: 36px; position: relative; z-index: 10; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
 #sort-menu dl, #sort-menu dt { display: inline; }
 #sort-menu dl,
 #sort-menu dd { position: relative; }
@@ -64,7 +64,7 @@ html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0
 #sort-menu .bars-select dt { cursor: pointer; border-bottom: 1px dashed; }
 #sort-menu .bars-select.single dt { cursor: default; border-bottom: none; color: inherit; }
 #sort-menu .bars-select dd { display: none; position: absolute; top: 33px; /*left: 50%;*/ left: -14px; }
-#sort-menu .bars-select dd ul { position: relative; /*left: -50%;*/ padding: 5px 15px 9px; width: 260px; background: rgba(0,0,0,0.8); border-radius: 10px; border-top-left-radius: 0; border-top-right-radius: 0; color: #fff; }
+#sort-menu .bars-select dd ul { position: relative; /*left: -50%;*/ padding: 5px 15px 9px; width: 260px; background: #444; background: rgba(0,0,0,0.8); border-radius: 10px; border-top-left-radius: 0; border-top-right-radius: 0; color: #fff; }
 #sort-menu .bars-select dd ul li { font-size: 14px; line-height: 20px; cursor: pointer; }
 #sort-menu .bars-select dd ul li.selected { cursor: default; }
 #sort-menu .bars-select dd ul li:hover {}
