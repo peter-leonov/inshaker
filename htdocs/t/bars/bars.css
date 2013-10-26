@@ -36,21 +36,6 @@ html.msie-8 .bar-mini.new a .label,
 html.msie-8 .bar-mini.new a .bar-name { background-color: #ff2a92; }
 
 
-html.msie-8 .bar-mini a:before,
-html.msie-8 .bar-mini a:after,
-html.msie-8 .bar-mini .bar-name:before,
-html.msie-8 .bar-mini .bar-name:after,
-html.msie-8 .bar-mini .label:before,
-html.msie-8 .bar-mini .label:after { position: absolute; z-index: 10;  width: 10px; height: 10px; background: url(/t/light/rounded-corners-10px.png) no-repeat; content: ' '; }
-html.msie-8 .bar-mini a:before { left: 0; top: 0; background-position: -9px -9px; }
-html.msie-8 .bar-mini a:after { right: 0; top: 0; background-position: 0 -9px; }
-html.msie-8 .bar-mini .bar-name:before { left: 0; bottom: 0; background-position: -9px 0; }
-html.msie-8 .bar-mini .bar-name:after { right: 0; bottom: 0; background-position: 0 0; }
-html.msie-8 .bar-mini .label:before { left: 0; bottom: 0; background-position: -9px 0; }
-html.msie-8 .bar-mini .label:after { right: 0; bottom: 0; background-position: 0 0; }
-
-
-
 #switch-view a { text-decoration: none; border-bottom: 2px dashed; }
 #switch-view a:hover { border-bottom: none; }
 #switch-view a.selected { border-bottom: none; color: inherit; cursor: default; }
