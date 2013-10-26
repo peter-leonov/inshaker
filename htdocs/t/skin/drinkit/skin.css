@@ -23,6 +23,7 @@ html.msie-8 .common-box .common-title
   background-position: -26px -175px;
 }
 
+.cocktail-preview .link { color: inherit; }
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
@@ -67,7 +68,6 @@ body { background: center top; color: #000; }
 /* bar.css */
 #bar-page #main-column .info .block .head,
 #bar-page #bar-on-map .head { background-color: #333; }
-#bar-page #main-column .info .block .head a { color: #F09741; }
 
 
 /* footer */
