@@ -4,7 +4,7 @@
 #map .point:hover { z-index: 5; }
 #map .point.selected .icon { width: 30px; height: 30px; background-position: -75px -25px; cursor: default; }
 #map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; }
-#map .point .title { display: none; position: absolute; z-index: 10; left: -110px; top: 10px; min-width: 200px; padding: 10px; font-size: 15px; line-height: 21px; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
+#map .point .title { display: none; position: absolute; z-index: 10; left: -110px; top: 10px; min-width: 200px; padding: 10px; font-size: 15px; line-height: 21px; background: #000; background: rgba(0,0,0,0.85); border-radius: 5px; white-space: nowrap; }
 #map .point:hover .title { display: block; }
 #map .point .point-name { display: block; font-size: 19px; margin: 0 0 0.5em; }
 #map .point.selected .point-name {  }

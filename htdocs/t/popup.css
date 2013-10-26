@@ -24,9 +24,6 @@
 .popup.hidden .popup-front { top: 0 !important; }
 
 
-html.msie-6 .popup .popup-back { width: 100%; height: 10000px; }
-html.msie-6 .popup {scrollbar-base-color:expression(runtimeStyle.scrollbarBaseColor="transparent",(function(element){setTimeout(function(){element.className=element.className},3000)})(this))}
-
 html.msie-6 .popup .popup-back,
 html.msie-7 .popup .popup-back,
 html.msie-8 .popup .popup-back { filter: alpha(opacity=75); }

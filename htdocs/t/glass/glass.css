@@ -37,7 +37,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #common-footer-spacer,
 #common-footer { height: 433px; margin-top: 50px; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
-#common-footer .wrapper { width: 962px; margin: 0 auto; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius: 7px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0; }
+#common-footer .wrapper { width: 962px; margin: 0 auto; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); border-radius: 7px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 #common-footer .content { position: relative; }
 #common-footer .index { position: relative; z-index: 1; padding: 19px 0 0 19px; font-size: 12px; margin-bottom: -2px; }
 #common-footer .index .content { height: 255px; }
@@ -70,16 +70,16 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
-.common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 7px; -moz-border-radius: 7px; }
+.common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); border-radius: 7px; }
 .common-box .common-title { height: 29px; padding: 22px 22px 22px 22px; background: no-repeat, no-repeat; background-clip: padding-box, border-box; border-right: 25px solid transparent; }
 .common-box.common-column-2n .common-title { background-position: -26px -175px, 602px -175px; }
 .common-box.common-column-1n .common-title { background-position: -26px -175px, 285px -175px; }
 .common-box .common-title .common-name { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
-.common-box .common-mini { height: 40px; padding: 0 22px; background-position: 0 -125px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; -moz-border-radius: 7px; }
+.common-box .common-mini { height: 40px; padding: 0 22px; background-position: 0 -125px; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; }
 .common-box .common-content-plain { padding: 15px 19px 15px 19px; }
 .common-box .common-content-gradiented { padding: 14px 19px 14px 19px; background: 0 -250px repeat-x; }
-.common-box .common-top { border-top-left-radius: 7px; border-top-right-radius: 7px; -moz-border-radius-topleft: 7px; -moz-border-radius-topright: 7px; }
-.common-box .common-bottom { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; -moz-border-radius-bottomleft: 7px; -moz-border-radius-bottomright: 7px; }
+.common-box .common-top { border-top-left-radius: 7px; border-top-right-radius: 7px; }
+.common-box .common-bottom { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; }
 
 
 .common-map .position-control { position: absolute; z-index: 7; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.3 }
@@ -138,7 +138,7 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .common-share-button { display: inline-block; position: relative; height: 30px; padding-left: 30px; margin-left: 10px; }
 .common-share-button:first-child { margin-left: 0; }
 .common-share-button i { position: absolute; left: 7px; top: 7px; width: 16px; height: 16px; }
-.common-share-button:hover i { box-shadow: 0 0 10px -1px #fff; -moz-box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
+.common-share-button:hover i { box-shadow: 0 0 10px -1px #fff; background-color: rgba(255, 255, 255, 0.25); }
 .common-share-button:hover .name { text-shadow: 0 0 8px #fff; }
 .common-share-button.facebook i { background-position: -50px 0; }
 .common-share-button.twitter i { background-position: -50px -25px; }
