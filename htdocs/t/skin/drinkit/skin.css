@@ -30,10 +30,8 @@ body { background: center top; color: #000; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
 
 /* add more X button FIXME: convert to a cammon-* class */
-#more { background-color: #ec118f; }
-#more .button { display: block; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.5); }
-#more:hover { background-color: #fc0066; }
-#more:hover .button { text-shadow: 0 0 5px #fff; text-decoration: none; }
+#more:hover { background-color: #fc0066; color: #fff; }
+#more:hover .button { text-shadow: 0 0 5px #fff; color: #fff; text-decoration: none; }
 
 /* cocktail.css */
 #cocktail-page button.rounded,
