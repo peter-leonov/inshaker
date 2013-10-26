@@ -16,11 +16,11 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #spotlighted { position: absolute; right: 18px; top: 18px; }
 
 #search-box { position: relative; z-index: 10; top: -3px; }
-#search-box .query { color: inherit; width: 798px; }
+#search-box .query { color: inherit; width: 770px; }
 #search-box .query,
 #search-box .button { font-size: 24px; vertical-align: middle; }
-#search-box .button.plus { width: 30px; }
-#search-box .button.search { width: 80px; }
+#search-box .button.plus { width: 40px; }
+#search-box .button.search { width: 100px; }
 #search-box .reset { display: none; position: absolute; left: 772px; top: 8px; width: 25px; height: 25px; text-align: center; font-size: 18px; color: #888; cursor: pointer; }
 #search-box .reset:hover { color: #000; }
 
