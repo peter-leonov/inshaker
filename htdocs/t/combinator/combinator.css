@@ -34,7 +34,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 
 #output { padding-top: 80px; position: relative; background-image: none; }
-#output .body-content { padding: 0 20px; }
+#output .body-content { padding: 0 20px 10px 20px; }
 
 #output .empty-block { font-size: 15px; }
 #output .empty-block .share-recipe { font-size: 20px; }
