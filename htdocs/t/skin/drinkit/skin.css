@@ -17,6 +17,12 @@
   background-image: url(common.png), url(common.png);
   background-position: -26px -175px, 937px -175px;
 }
+html.msie-8 .common-box .common-title
+{
+  background-image: url(common.png);
+  background-position: -26px -175px;
+}
+
 
 #top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
