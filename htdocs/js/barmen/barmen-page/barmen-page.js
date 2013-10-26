@@ -45,6 +45,7 @@ self[Me.className] = Papa = Me
 
 $.onready(function ()
 {
+  UserAgent.setupDocumentElementClassNames()
 	document.documentElement.classList.remove('loading')
 	
 	var nodes =
