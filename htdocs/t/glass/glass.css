@@ -28,7 +28,7 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 
 @media screen {
 
-#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+#top { position: relative; z-index: 5; height: 60px; font-size: 12px; margin: 0 auto 39px; border-bottom: 5px solid; background-position: 0 -75px; }
 #top .content { position: relative; width: 962px; height: 65px; margin: 0 auto; }
 #top .logo { position: absolute; left: -10px; top: 0; width: 150px; height: 65px; background-position: 0 0; text-indent: -1000px; overflow: hidden; }
 #top .menu { position: absolute; top: 0; left: 190px; }
@@ -70,7 +70,7 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
-.common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); border-radius: 7px; }
+.common-box { border-radius: 7px; }
 .common-box .common-title { height: 29px; padding: 22px 22px 22px 22px; background: no-repeat, no-repeat; background-clip: padding-box, border-box; border-right: 25px solid transparent; }
 .common-box.common-column-2n .common-title { background-position: -26px -175px, 602px -175px; }
 .common-box.common-column-1n .common-title { background-position: -26px -175px, 285px -175px; }
