@@ -7,7 +7,7 @@ a { color: #ec118f; }
 #top,
 #top .logo,
 #top .link { background-image: url(top.png); }
-#top { border-bottom-color: #fff; background-color: #000; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+#top { border-bottom-color: #fff; background-color: #000; }
 #top .link { color: #fff; }
 #top .link:hover { border-bottom-color: #8dd013; }
 
@@ -35,11 +35,22 @@ html.msie-8 .common-box .common-title
 
 #branded-image { display: none; }
 
-.common-box { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+.common-box { }
 .common-box .common-title .common-name { color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
 .common-box .common-mini { color: #fff; border-color: rgba(200, 200, 200, 0.5); text-shadow: 1px 1px 0px #000; }
 .common-box .common-content { background-color: #fff; }
 .common-box .common-content-gradiented { background-color: #fff; border-color: #fff; }
+
+/* lights and shadows */
+#top,
+.common-box
+{ box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+html.shop-section .we-have-more .in-stock-item .picture
+{ box-shadow: 0 1px 10px #000, inset 0 1px 10px #000; }
+.we-have-more .in-stock-item .name,
+.we-have-more .in-stock-item .price
+{ text-shadow: 0 1px 2px #000; color: #fff }
+
 
 /* add more X button FIXME: convert to a cammon-* class */
 #more:hover { background-color: #fc0066; color: #fff; }
