@@ -143,35 +143,4 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .ingredient-preview .image { background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
-html.opera-9 .ingredient-preview .image:before,
-html.opera-10-0 .ingredient-preview .image:before,
-html.opera-10-1 .ingredient-preview .image:before,
-html.msie-8 .ingredient-preview .image:before,
-html.firefox-2 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
-
-html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
-
-html.msie-6 .ingredient-preview .image,
-html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
-
 <!--# include virtual="/t/ingredient-popup.css" -->
-
-html.msie-6 .ingredients-list .group .list,
-html.msie-7 .ingredients-list .group .list { zoom: 1; }
-html.msie-6 .ingrediented-cocktail-list .row .body,
-html.msie-7 .ingrediented-cocktail-list .row .body { padding-bottom: 35px; }
-
-html.msie-6 #search-box .button,
-html.msie-7 #search-box .button,
-html.msie-8 #search-box .button { font-size: 16px; margin: 0 -5px 0 7px; }
-html.msie-6 #search-box .reset,
-html.msie-7 #search-box .reset,
-html.msie-8 #search-box .reset { top: 3px; }
-html.msie-6 .ingrediented-cocktail-list .cocktail-preview .image,
-html.msie-7 .ingrediented-cocktail-list .cocktail-preview .image,
-html.msie-8 .ingrediented-cocktail-list .cocktail-preview .image { width: 100px; }
-
-
-
-html.msie-7 body { position: relative; }
-html.firefox-2 body { position: relative; height: none; }
