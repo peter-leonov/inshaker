@@ -5,8 +5,11 @@
   -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
 }
 .we-have-more .in-stock-item .picture { display: inline-block; width: 198px; height: 170px; border: 6px solid #fff; border-radius: 2px; box-shadow: 0 1px 10px #000, inset 0 1px 10px #000; margin-bottom: 23px; }
-.we-have-more .in-stock-item .name { display: block; font-size: 24px; line-height: 1.5; text-transform: uppercase; letter-spacing: 2px; color: #fff; text-shadow: 0 1px 2px #000; }
-.we-have-more .in-stock-item .price { display: block; font-size: 33px; font-weight: 700; color: #fff; text-shadow: 0 1px 20px rgba(255,255,255,0.5); }
+.we-have-more .in-stock-item .name,
+.we-have-more .in-stock-item .price
+{ display: block; text-shadow: 0 1px 2px #000; color: #fff; }
+.we-have-more .in-stock-item .name { font-size: 26px; line-height: 35px; letter-spacing: 2px; }
+.we-have-more .in-stock-item .price { margin-top: 15px; font-size: 33px; font-weight: bold; }
 .we-have-more .in-stock-item:nth-child(3n+2)
 {
   margin-left:  60px;
