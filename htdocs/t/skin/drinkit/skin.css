@@ -1,5 +1,9 @@
 @media screen {
 
+html { background: #b6651a url(bg.jpg) center top; } /* fixes centered body bg */
+body { background: center top; color: #000; }
+a { color: #ec118f; }
+
 #top,
 #top .logo,
 #top .link { background-image: url(top.png); }
@@ -30,9 +34,6 @@ html.msie-8 .common-box .common-title
 
 
 #branded-image { display: none; }
-a { color: #ec118f; }
-html { background: #b6651a url(bg.jpg) center top; } /* fixes centered body bg */
-body { background: center top; color: #000; }
 
 .common-box .common-title .common-name { color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
 .common-box .common-mini { color: #fff; border-color: rgba(200, 200, 200, 0.5); text-shadow: 1px 1px 0px #000; }
