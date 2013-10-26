@@ -33,7 +33,8 @@ var myProto =
 		var icon = nodes.icon = main.appendChild(Nc('a', 'icon'))
 		icon.href = this.bar.pageHref()
 		
-		var title = nodes.title = main.appendChild(Nc('dl', 'title'))
+		var wider = nodes.title = main.appendChild(Nc('dl', 'wider'))
+		var title = nodes.title = wider.appendChild(Nc('dl', 'title'))
 		
 		var name = nodes.name = title.appendChild(Nct('dt', 'point-name', bar.name))
 		
