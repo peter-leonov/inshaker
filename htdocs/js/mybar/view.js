@@ -618,7 +618,7 @@ var myProto =
 			{
 				text.appendChild(T('В твоем баре уже есть '))
 				if (havingIngredients.length > 5)
-					text.appendChild(Nct('span', 'pink', 'много ингредиентов'))
+					text.appendChild(Nct('span', '', 'много ингредиентов'))
 				else
 					text.appendChild(this.createIngredientsTextFromArr(havingIngredients))
 				text.appendChild(T('. '))
@@ -681,7 +681,7 @@ var myProto =
 		for (var i = 0, il = ingredients.length; i < il; i++) 
 		{
 			var ingredient = ingredients[i]
-			var link = Nct('span', 'ingredient-link', ingredient.name)
+			var link = Nct('a', 'ingredient-link', ingredient.name)
 			link['data-ingredient'] = ingredient
 			
 			if(i == il - 1 && i != 0)
