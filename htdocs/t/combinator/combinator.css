@@ -70,7 +70,6 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .dropdown-select .body .options { position: relative; padding: 10px 15px; background-color: #fff; border: 2px solid #ccc; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
 .dropdown-select .body .options .option.selected { visibility: hidden; }
-.dropdown-select .body .options .option:hover { color: #f84; }
 .dropdown-select.open { z-index: 200; }
 .dropdown-select.open .body { display: block; }
 .dropdown-select.open .button { cursor: default; border: none; color: #aaa; }

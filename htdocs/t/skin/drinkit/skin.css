@@ -51,6 +51,9 @@ body { background: center top; color: #000; }
 #cocktail-page button.rounded b { color: #fff; }
 #cocktail-page button.strong b { color: #fff; }
 
+/* combinator.css */
+#combinator-page .dropdown-select .body .options .option:hover { color: #ec118f; }
+
 /* academy.css */
 #academy-page #video-blocks .item .head .example { background-repeat: no-repeat; background-image: url(hart.png); }
 
