@@ -3,6 +3,9 @@
 #top,
 #top .logo,
 #top .link { background-image: url(top.png); }
+#top { border-bottom-color: #fff; background-color: #000; }
+#top .link { color: #fff; }
+#top .link:hover { border-bottom-color: #8dd013; }
 
 .cocktail-list .prev,
 .cocktail-list .next,
@@ -25,9 +28,6 @@ html.msie-8 .common-box .common-title
 
 .cocktail-preview .link { color: inherit; }
 
-#top { border-bottom-color: #fff; background-color: #000; }
-#top .link { color: #fff; }
-#top .link:hover { border-bottom-color: #8dd013; }
 
 #branded-image { display: none; }
 a { color: #ec118f; }
