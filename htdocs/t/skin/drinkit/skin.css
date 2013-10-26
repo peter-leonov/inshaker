@@ -71,6 +71,7 @@ body { background: center top; color: #000; }
 
 
 /* footer */
+#common-footer .alcohol-harm { background: url(common.png) 0 -50px no-repeat; }
 #common-footer { color: #565656; }
 #common-footer a { color: inherit; }
 #common-footer a:hover { color: #000; }
