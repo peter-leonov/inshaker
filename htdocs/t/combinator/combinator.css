@@ -9,7 +9,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #the-main-menu .center { position: relative; width: 922px; height: 60px; padding: 21px 18px 12px 18px; margin: 0 auto; }
 #the-main-menu.state-up .center,
 #the-main-menu.state-down .center,
-#the-main-menu.state-fixed .center { border-bottom: 1px solid #eee; background-color: rgba(255,255,255,0.9); }
+#the-main-menu.state-fixed .center { border-bottom: 1px solid #eee; background-color: #fff; background-color: rgba(255,255,255,0.9); }
 #the-main-menu.state-up .center { border-top: 10px solid #eee; margin-top: -10px; }
 #the-main-menu.fixed { position: fixed; }
 
