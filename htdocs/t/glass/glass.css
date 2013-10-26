@@ -82,7 +82,7 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 .common-box .common-bottom { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; -moz-border-radius-bottomleft: 7px; -moz-border-radius-bottomright: 7px; }
 
 
-.common-map .position-control { position: absolute; z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.3 }
+.common-map .position-control { position: absolute; z-index: 7; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.3 }
 .common-map .position-control:hover { opacity: 1; }
 .common-map .position-control .to-top,
 .common-map .position-control .to-right,
