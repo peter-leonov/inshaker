@@ -82,6 +82,8 @@ html.loading .common-content .cocktails { display: none; }
 	margin: 0 auto 5px;
 }
 
+.cocktail-preview .link { color: inherit; }
+
 .hidden
 {
 	display: none;

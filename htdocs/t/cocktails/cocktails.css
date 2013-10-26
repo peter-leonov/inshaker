@@ -14,7 +14,7 @@
 .b-content { margin-top: 20px; padding: 15px; }
 .b-content ul.cocktails .item { float: left; width: 117px; height: 140px; }
 
-.cocktail-preview { display: block; position: relative; width: 100px; height: 100px; }
+.cocktail-preview { display: block; position: relative; width: 100px; height: 100px; color: inherit; }
 .cocktail-preview .image-box { position: absolute; width: 100%; height: 80px; left: 0; bottom: 20px; line-height: 80px; text-align: center; }
 .cocktail-preview .image-box .image { position: relative; vertical-align: bottom; }
 .cocktail-preview .name { position: absolute; left: 0; top: 87px; width: 100%; text-align: center; font-size: 120%; word-wrap: break-word; text-decoration: inherit; }

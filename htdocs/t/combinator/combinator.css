@@ -135,7 +135,9 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .ingrediented-cocktail-list .cocktail-preview .image { display: block; margin: 0 auto -10px; height: 170px; }
 .ingrediented-cocktail-list .cocktail-preview.lazy .image { background-color: #f4f4f4; }
 
-.ingredient-preview { display: block; float: left; }
+.cocktail-preview .link { color: inherit; }
+
+.ingredient-preview { display: block; float: left; color: inherit; }
 .ingredient-preview,
 .ingredient-preview .image { width: 100px; height: 100px; }
 .ingredient-preview .image { background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }

@@ -34,7 +34,7 @@
 #related .prev { left: 14px; }
 #related .next { right: 14px; }
 
-.cocktail-preview .link { display: block; width: 105px; margin: 0 auto; }
+.cocktail-preview .link { display: block; width: 105px; margin: 0 auto; color: inherit; }
 
 /* that great buttons */
 button.rounded { position: relative; margin: 0; padding: 0; border: 0; width: 145px; height: 24px; overflow: hidden; color: #fff; cursor: pointer; background: none; }
