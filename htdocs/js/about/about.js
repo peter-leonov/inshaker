@@ -238,6 +238,7 @@ var AboutPage = {
 };
 
 $.onready(function(){
+  UserAgent.setupDocumentElementClassNames()
 	AboutPage.init(<!--# include virtual="/db/stats/cities.json" -->, <!--# include virtual="/db/stats/visits.json" -->);
 })
 
