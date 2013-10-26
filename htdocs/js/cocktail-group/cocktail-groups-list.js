@@ -108,6 +108,8 @@ self[Me.className] = Me
 
 function onready ()
 {
+  UserAgent.setupDocumentElementClassNames()
+  
 	var nodes =
 	{
 		list: $('#groups-list'),

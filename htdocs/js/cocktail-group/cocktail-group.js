@@ -89,6 +89,8 @@ self[Me.className] = Me
 
 function onready ()
 {
+  UserAgent.setupDocumentElementClassNames()
+  
 	var nodes =
 	{
 		root: $('#main-column'),
