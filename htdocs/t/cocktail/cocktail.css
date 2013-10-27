@@ -12,7 +12,7 @@
 #b-more .b-more-rec li{width:130px;}
 #b-more.wide .b-more-rec { display: none; }
 #b-more.wide .b-more-similar { width: 628px; }
-.b-more-cocktails .viewport{overflow:hidden;position:relative;height:140px;}
+.b-more-cocktails .viewport{overflow:hidden;position:relative;height:120px;}
 .b-more-cocktails .surface{width:20000px;height: 140px;}
 .b-more-cocktails .point{height:140px;width:330px;float:left;}
 .b-more-cocktails ul{padding-top:5px;}
