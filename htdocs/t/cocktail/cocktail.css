@@ -75,7 +75,12 @@ html.safari button.rounded b { top: -1px; }
 .square-list .next.disabled { background-position: -475px -25px; }
 
 #top-menu { height: 152px; border-top: 2px solid #000; background-color: #433; }
-#top-menu .poster { width: 640px /*to fix blury upper border*/; position: absolute; top: -74px; left: -7px }
+#top-menu .poster
+{
+  position: absolute; top: -74px; left: 0; width: 627px; height: 228px;
+  background-repeat: no-repeat; background-position: center bottom;
+  background-size: 640px 228px;/* 640x228 fixes blury upper border */;
+}
 
 #content { position: relative; min-height: 190px; }
 
