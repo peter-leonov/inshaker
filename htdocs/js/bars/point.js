@@ -5,7 +5,7 @@ var myName = 'BarPoint'
 function Me (bar)
 {
 	this.bar = bar
-	this.ll = {lat: bar.point[0], lng: bar.point[1]}
+	this.ll = {lat: this.bar.point[0], lng: this.bar.point[1]}
 }
 
 Me.prototype = new MapLightMarker()
@@ -23,8 +23,6 @@ var myProto =
 	
 	getNode: function ()
 	{
-		var bar = this.bar
-		
 		var main = Nc('div', 'point')
 		main.addEventListener('mousedown', stopPropagation, false)
 		
@@ -34,9 +32,9 @@ var myProto =
 		var wider = main.appendChild(Nc('div', 'wider'))
 		var title = wider.appendChild(Nc('dl', 'title'))
 		
-		var name = title.appendChild(Nct('dt', 'point-name', bar.name))
+		title.appendChild(Nct('dt', 'point-name', this.bar.name))
 		
-		var contacts = bar.contacts
+		var contacts = this.bar.contacts
 		if (contacts)
 		{
 			title.appendChild(Nct('dd', 'address', contacts.address))
