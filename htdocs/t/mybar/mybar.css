@@ -28,11 +28,11 @@ html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
 .hidden { visibility: hidden; position: absolute !important; top: -20000px !important; background: none !important; }
-.single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 .main-box .wrapper-box { margin: 0 0 20px 0; }
 .main-box .wrapper-box .section-wrapper { padding: 20px; position: relative; }
 .main-box .wrapper-box .section-head { position: relative; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 8px; }
+.single-box { margin: 0 0 20px 0; height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 
 /*ingredient-previews*/
 .main-box .ingredient-preview { display: block; font-size: 12px; text-align: center; position: relative; width: 100px; height: 100px; }
