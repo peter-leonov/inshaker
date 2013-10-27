@@ -94,9 +94,9 @@ html.loading #cocktail-list { display: none; }
   background: url(cocktail-shop.jpg) center no-repeat;
   border-radius: 15px; box-shadow: 0 0 25px #6E3021;
 }
-#cocktail-shop-banner .promo:hover
+#cocktail-shop-banner:hover
 {
-  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+  -webkit-filter: saturate(1.1) brightness(1.1) contrast(1.1);
 }
 
 <!--# include virtual="/t/popup.css" -->
