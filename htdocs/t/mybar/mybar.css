@@ -24,8 +24,6 @@ html { min-height: 100%; height: 100%; overflow-y: scroll; }
 #the-main-menu .nav .link.shop { color: #EC5197; }
 
 
-#common-main-wrapper { width: 960px; }
-
 html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
