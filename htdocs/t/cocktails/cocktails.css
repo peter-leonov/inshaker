@@ -52,11 +52,6 @@ html.opera-11-0 #results_display .surface { width: 30000px; }
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
-<!--# if expr="$HTTP_USER_AGENT = /MSIE 7/" -->
-.search-form {z-index:1;}
-.search-form input { height: 22px; line-height: 22px; position:absolute}
-<!--# endif -->
-
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
 
 #cocktail-shop-banner
