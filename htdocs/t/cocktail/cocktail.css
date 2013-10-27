@@ -1,6 +1,6 @@
 @media screen {
 
-#b-more {margin-top:20px;width:630px;height: 145px;}
+#b-more {margin-top:20px;width:630px;height: 151px;}
 #b-more .b-more-cocktails { width:397px;}
 #b-more .common-box { float: left; }
 #b-more dl{font-size:120%;height:150px;}
@@ -258,8 +258,3 @@ input { border: none; background: none; }
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
-#cocktail-shop-banner .promo .info
-{
-    padding: 20px;
-}
-#cocktail-shop-banner dt a { color: #EC9340; }

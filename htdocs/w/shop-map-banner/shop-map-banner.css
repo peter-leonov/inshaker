@@ -20,7 +20,7 @@
 #shop-map-banner .info .parking .icon { background-position: -93px 0; }
 
 
-html#cocktails-page #shop-map-banner
+html.cocktails-section #shop-map-banner
 {
     margin-top: 30px;
 }
