@@ -65,14 +65,14 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000; }
 .main-box .ingredients-box .search-box .query { width: 826px; font-size: 24px; vertical-align: middle; color: inherit; }
 .main-box .ingredients-box .ingredients-list,
-.main-box .maybe-have-box .ingredients-list { margin: 20px 0 0 2px; }
-.main-box .ingredients-box .ingredients-list ul.by-list { padding-top: 10px; position: relative; }
+.main-box .maybe-have-box .ingredients-list { margin: 20px 0 0 0; }
+.main-box .ingredients-box .ingredients-list ul.by-list { position: relative; }
 .main-box .ingredients-box .ingredients-list dt.group-name { overflow: hidden; margin: 0 0 10px; position: relative; left: -40px; }
 .main-box .ingredients-box .ingredients-list dt.group-name .name-wrapper { position: relative; float: left; height: 37px; color: #fff; font-size: 14px; background: url("mybar.png") no-repeat -295px -490px transparent; padding: 0 4px 0px 12px; margin-right: 8px; line-height: 31px; }
 .main-box .ingredients-box .ingredients-list dt.group-name .name-wrapper i { position: absolute; display: block; width: 8px; height: 40px; right: -8px; top: 0; background: url("mybar.png") no-repeat -537px -490px transparent; }
 .main-box .ingredients-box .ingredients-list dd.group { margin-bottom: 35px; }
 .main-box .ingredients-box .ingredients-list ul,
-.main-box .maybe-have-box .ingredients-list ul { overflow: hidden; }
+.main-box .maybe-have-box .ingredients-list ul { overflow: hidden; margin-left: -15px; padding-left: 15px; }
 .main-box .ingredients-box .ingredients-list ul { padding-top: 10px; }
 html.msie-7 .main-box .ingredients-box .ingredients-list ul { padding-bottom: 30px; }
 .main-box .ingredients-box .ingredients-list .ingredient,
