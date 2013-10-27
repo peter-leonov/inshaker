@@ -78,7 +78,7 @@
 
 #share-box { position: absolute; right: 1px; top: 0; }
 
-#map { height: 330px; position: relative; overflow: hidden; background-color: gray !important; }
+#map { height: 330px; }
 
 html.msie-6 #common-main-wrapper { width: 630px; overflow: hidden; }
 html.msie-6 #main-column .atmosphere,

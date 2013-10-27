@@ -63,7 +63,7 @@ html.loading #bars-container { display: none; }
 .please-wait { display: none; }
 html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding: 20px 0; text-align: center; color: #888; }
 
-#map { position: relative; height: 500px; clear: both; margin: 20px 0 0; background: #eee; overflow: hidden; }
+#map { height: 500px; clear: both; margin: 20px 0 0; }
 #map .surface { width: 100%; height: 100%; }
 #map .please-wait-map { display: none; }
 #map.loading .please-wait-map { display: block; position: absolute; top: 40%; left: 0; padding: 40px 0 0 0; width: 100%; text-align: center; font-size: 25px; }
