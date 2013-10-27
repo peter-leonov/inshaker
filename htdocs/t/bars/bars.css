@@ -70,7 +70,3 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }
 .body-wrapper { width: 920px; position: relative; }
-
-.bar-map-popup img {width:100px;float:right;}
-.bar-map-popup h2 {font-weight:bold;}
-.bar-map-popup p {display:block;margin:5px 5px 5px 0;}
