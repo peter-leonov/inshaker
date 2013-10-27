@@ -6,7 +6,6 @@ function Me (shop)
 {
 	this.shop = shop
 	this.ll = {lat: shop.point[0], lng: shop.point[1]}
-	this.nodes = {}
 }
 
 Me.prototype = new MapLightMarker()
