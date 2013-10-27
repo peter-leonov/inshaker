@@ -63,7 +63,7 @@ html.safari button.rounded b { top: -1px; }
 .b-content .viewport{height:560px;overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;width:10000px;}
 
-.common-box { overflow: hidden; position: relative; z-index: 1; }
+.common-box { position: relative; z-index: 1; }
 
 .square-list .next,
 .square-list .prev { display: block; width: 20px; height: 20px; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
@@ -158,7 +158,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 
 .client-storage, .storage-helper { visibility: hidden; width: 1px; height: 1px; position: absolute; top: -100px; }
 
-#share { border-top: 1px solid #ddd; padding: 18px; background-color: #fff; }
+#share { border-top: 1px solid #ddd; padding: 18px; }
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
