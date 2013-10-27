@@ -79,7 +79,6 @@ html.msie-7 .main-box .ingredients-box .ingredients-list ul { padding-bottom: 30
 .main-box .maybe-have-box .ingredients-list .ingredient { float: left; height: 140px; margin: 0 0 17px 17px; position: relative; }
 .main-box .ingredients-box .ingredient:hover .control,
 .main-box .maybe-have-box .ingredient:hover .control { display: block; }
-.main-box .ingredients-box .empty-box { margin: 15px 0px; }
 .main-box .ingredients-box .empty-box .image { display: block; margin: 0 auto; }
 .main-box .ingredients-box .switcher { position: absolute; width: 40px; height: 84px; right: -40px; top: 116px; }
 .main-box .ingredients-box .switcher div { cursor: pointer; height: 42px;  background: url("mybar.png") no-repeat -984px -44px transparent; }
