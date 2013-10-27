@@ -25,7 +25,10 @@ var myProto =
 		
 		var icon = main.appendChild(Nc('a', 'icon'))
 		icon.href = '/'
-		var title = main.appendChild(Nc('dl', 'title'))
+		
+		var wider = main.appendChild(Nc('div', 'wider'))
+		var title = wider.appendChild(Nc('dl', 'title'))
+		
 		title.appendChild(Nct('dt', 'point-name', this.shop.name))
 		
 		var contacts = this.shop.contacts
