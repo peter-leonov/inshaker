@@ -28,9 +28,9 @@ html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
 .hidden { visibility: hidden; position: absolute !important; top: -20000px !important; background: none !important; }
-.main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 .main-box .wrapper-box { margin: 0 0 20px 0; }
+.main-box .wrapper-box .section-wrapper { padding: 20px; position: relative; }
 .main-box .wrapper-box .section-head { position: relative; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 8px; }
 
@@ -200,6 +200,8 @@ html.safari .main-box .ingredients-box .section-head .bar-name-editable { top: -
 
 /*recommends-box*/
 .main-box .recommends-box .tags-wrapper { overflow: hidden; position: relative; margin: 24px 0 24px 5px; }
+.main-box .recommends-box .section-wrapper { padding: 0; }
+
 .main-box .recommends-box .tags-wrapper .tags-list { overflow: hidden; position: relative; top: 1px; }
 .main-box .recommends-box .tags-wrapper .tags-list .item { float: left; width: 181px; height: 29px; margin-bottom: 1px; font-size: 14px; color: #000; position: relative; cursor: pointer; padding: 0 13px 0 13px; margin-left: 22px; line-height: 27px; }
 .main-box .recommends-box .tags-wrapper .tags-list .item.active,
