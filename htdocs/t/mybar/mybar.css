@@ -28,12 +28,12 @@ html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
 .hidden { visibility: hidden; position: absolute !important; top: -20000px !important; background: none !important; }
-.main-box  .wrapper-box .section-head { height: 85px; width: 982px; position: relative; left: -11px; background: url('mybar.png') 0px 0px no-repeat; }
 .main-box .wrapper-box .section-head h2 { color: #fff; font-size: 24px; font-weight: bold; padding: 33px 0 0 32px; text-shadow: 0 0 3px #FFFFFF; text-shadow: 0 0 3px #FFFFFF, 1px 1px 0px #000; }
 .main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
 .main-box .wrapper-box { margin: 0 0 20px 0; }
+.main-box .wrapper-box .section-head { position: relative; }
 
 /*ingredient-previews*/
 .main-box .ingredient-preview { display: block; font-size: 12px; text-align: center; position: relative; width: 100px; height: 100px; }
