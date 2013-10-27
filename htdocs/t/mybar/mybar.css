@@ -35,10 +35,6 @@ html.loading .main-box { display: none; }
 .main-box .wrapper-box .section-bottom { height: 15px; width: 982px; position: relative; left: -11px; background: url('mybar.png') 0px -85px no-repeat; }
 .wrapper-box, .single-box { margin: 20px 0px; }
 .main-box .wrapper-box .section-wrapper { background-color: #fff; position: relative; }
-.main-box .wrapper-box .section-wrapper .left-shadow,
-.main-box .wrapper-box .section-wrapper .right-shadow,
-.main-box .wrapper-box .section-wrapper .left-shadow { left: -11px; background-position: -1079px 0px; }
-.main-box .wrapper-box .section-wrapper .right-shadow { right: -11px; background-position: -1090px 0px; }
 .main-box .wrapper-box .section-wrapper .content { border: 1px solid #fff; background: url("content-gradient-v.png") repeat-x scroll 0 0 #FFFFFF; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 28px; }
 .single-box { height: 42px; position: relative; background: url("mybar.png") no-repeat -11px -103px transparent; }
