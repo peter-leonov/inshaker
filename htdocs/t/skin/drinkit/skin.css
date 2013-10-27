@@ -32,8 +32,14 @@ html.msie-8 .common-box .common-title
 
 .cocktail-preview .link { color: inherit; }
 
+#spotlighted i { width: 0; height: 0; right: -6px; top: 16px; }
+
 
 #branded-image { display: none; }
+
+
+
+
 
 .common-box { }
 .common-box .common-title .common-name { color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
@@ -50,6 +56,8 @@ html.shop-section .we-have-more .in-stock-item .picture
 .we-have-more .in-stock-item .name,
 .we-have-more .in-stock-item .price
 { text-shadow: 0 1px 2px #000; color: #fff }
+
+
 
 
 /* add more X button FIXME: convert to a cammon-* class */
