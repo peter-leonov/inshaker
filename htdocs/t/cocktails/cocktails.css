@@ -6,8 +6,6 @@
 .common-title { padding-bottom: 11px; position: relative; }
 .common-title h1 {font-size:20px } 
 
-#spotlighted { position: absolute; right: 0; top: 0; }
-
 .autocomplete { position: absolute; opacity: 0.95; border-style: solid; border-width: 0px 1px 1px 1px; font-size: 14px; }
 .autocomplete .item { padding: 2px 0 4px 5px; cursor: pointer; }
 

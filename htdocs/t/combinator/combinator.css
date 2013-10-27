@@ -14,10 +14,8 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #the-main-menu.state-up .center { border-top: 10px solid #eee; margin-top: -10px; }
 #the-main-menu.fixed { position: fixed; }
 
-#spotlighted { position: absolute; right: 18px; top: 2px; }
-
 #search-box { position: relative; z-index: 10; top: -3px; }
-#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 695px; }
+#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 690px; }
 #search-box .query,
 #search-box .button { font-size: 24px; vertical-align: middle; }
 #search-box .button.plus { width: 40px; }

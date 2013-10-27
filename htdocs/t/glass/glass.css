@@ -58,7 +58,8 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 #branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; }
 
-#spotlighted { position: absolute; text-decoration: none; }
+#spotlighted { position: absolute; z-index: 10; right: 0; top: 0; text-decoration: none; }
+#combinator-page #spotlighted { right: 23px; }
 #spotlighted i { position: absolute; }
 
 
@@ -72,7 +73,7 @@ html.mybar-section #top .link.mybar { cursor: default; border-bottom: none !impo
 /* really common rules */
 #common-main-wrapper { margin: 0 auto; width: 962px; }
 .common-box { border-radius: 7px; }
-.common-box .common-title { height: 29px; padding: 22px 22px 22px 22px; background: no-repeat, no-repeat; background-clip: padding-box, border-box; border-right: 25px solid transparent; }
+.common-box .common-title { position: relative; height: 29px; padding: 22px 22px 22px 22px; background: no-repeat, no-repeat; background-clip: padding-box, border-box; border-right: 25px solid transparent; }
 .common-box.common-column-2n .common-title { background-position: -26px -175px, 602px -175px; }
 .common-box.common-column-1n .common-title { background-position: -26px -175px, 285px -175px; }
 .common-box .common-title .common-name { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
