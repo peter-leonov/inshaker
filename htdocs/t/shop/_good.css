@@ -28,6 +28,7 @@
 /* MAP */
 <!--# include virtual="map.css" -->
 #map { display: block; }
+#map .close { display: none; }
 /* END MAP */
 
 #promo { padding-top: 0; margin: 0;}
