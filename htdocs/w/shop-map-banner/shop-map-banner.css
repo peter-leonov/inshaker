@@ -29,3 +29,10 @@
 #shop-map-banner.column-main .info .phone,
 #shop-map-banner.column-main .info .time
 { margin-right: 22px; }
+
+
+@media print {
+
+#shop-map-banner { display: none; }
+
+} /* @media print */

@@ -202,7 +202,7 @@ body,
 #view-recipe .buttons { display: none; }
 
 #view-recipe .ingredients { min-height: 210px; margin-left: 130px; }
-#view-recipe .ingredients .surface .image img { display: block; float: left; width: 60px; height: 60px; margin: 0 13px 8px 0; }
+#view-recipe .ingredients .surface .image img { display: block; float: left; width: 60px; height: 60px; margin: 13px 13px 13px 0; border-radius: 5px; }
 
 #view-recipe .recipe dt,
 .what-need dt,

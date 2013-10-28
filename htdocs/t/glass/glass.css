@@ -206,4 +206,6 @@ html.msie-7 #ancient-browser-warning { display: block; }
 #common-footer { display: none; }
 input { border: none; background: none; }
 
+#nojs-warning { display: none; }
+
 } /* @media print */
