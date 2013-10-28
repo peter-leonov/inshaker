@@ -16,5 +16,4 @@
 
 /* MAP */
 <!--# include virtual="map.css" -->
-#map .close { position: absolute; overflow: hidden; right: 15px; top: 15px; background: url(icon-map-close.png) center center no-repeat black; width: 20px; height: 20px; display: block; cursor: pointer; text-indent: 999px; }
 /* END MAP */
