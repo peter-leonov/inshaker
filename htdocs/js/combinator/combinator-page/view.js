@@ -37,7 +37,6 @@ Me.prototype =
 		nodes.searchForm.addEventListener('submit', function (e) { e.preventDefault(); window.setTimeout(function () { me.searchFormSubmitted() }, 50) }, false)
 		
 		nodes.plusButton.addEventListener('click', function (e) { me.plusButtonClicked() }, false)
-		nodes.resetButton.addEventListener('click', function (e) { me.resetButtonClicked() }, false)
 		
 		var controller = this.controller
 		
@@ -82,15 +81,6 @@ Me.prototype =
 			input.value = value.replace(/\s*$/, ' + ')
 		
 		input.focus()
-	},
-	
-	resetButtonClicked: function ()
-	{
-		var input = this.nodes.queryInput
-		
-		input.value = ''
-		input.focus()
-		this.controller.setQuery([], [], '')
 	},
 	
 	locationHashUpdated: function ()

@@ -19,8 +19,7 @@ $.onready(function ()
 		address: $('#promo .info .location p'),
 		phone: $('#promo .info .phone p'),
 		
-		map: $('#map'),
-		mapSurface: $('#map .surface'),
+		map: $('#map .map'),
 		positionControl: $('.position-control'),
 		
 		cocktails: $('#coctails')
@@ -53,13 +52,14 @@ GoodPage.prototype =
 			return
 		
 		var map = this.map = new Map()
-		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
+		map.bind({main: this.nodes.map, control: this.nodes.positionControl})
 		map.setCenter({lat: 55.783016, lng: 37.599892}, 14)
 		
 		var shop =
 		{
 			name: 'Коктейльный магазин',
-			contacts: {
+			contacts:
+			{
 				address: this.nodes.address.firstChild.nodeValue,
 				tel: this.nodes.phone.firstChild.nodeValue
 			},

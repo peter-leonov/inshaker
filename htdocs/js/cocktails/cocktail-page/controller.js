@@ -116,19 +116,17 @@ var Controller = {
 		var barman = Barman.getByCocktailName(name)
 		if (barman)
 		{
-			var a = $('#author')
+			var a = $('#main-content .author')
 			if (a)
 			{
 				a.classList.remove('hidden')
-				a.href = barman.pageHref()
 			}
 			
-			
-			a = $('a.author')
+			var a = $('#main-content .author .name')
 			if (a)
 			{
-				a.classList.add('active')
-				a.href = barman.pageHref()
+			  a.href = barman.pageHref()
+			  a.innerHTML = barman.name
 			}
 		}
 		
@@ -255,7 +253,7 @@ var Controller = {
 		
 		var list = new LazyList()
 		list.bind(nodes)
-		list.configure({friction: 5, pageVelocity: 18, soft: Infinity, min: 75, max: 100})
+		list.configure({friction: 7, pageVelocity: 150, soft: Infinity, min: 75, max: 100})
 		list.setNodes(items, size)
 		
 		if (size <= 1)
@@ -272,15 +270,23 @@ var Controller = {
 	{
 		var carousel =
 		{
-			timeout: 2600,
+		  changeNTimes: 15,
+			timeout: 5000,
 			start: function ()
 			{
+			  // safe the battery life
+				if (--carousel.changeNTimes < 0)
+					return
+				
 				function goNext ()
 				{
-					list.goNext()
+					list.goNext(80 * (1 + Math.random()))
 					carousel.start()
 				}
 				carousel.cycle = window.setTimeout(goNext, carousel.timeout)
+				
+				// increase the timeout exponentially to avoid the crazy spinning
+				carousel.timeout *= 1.2
 			},
 			stop: function ()
 			{

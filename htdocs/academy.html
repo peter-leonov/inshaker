@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html id="academy-page" class="loading" lang="ru">
+<html id="academy-page" class="academy-section loading" lang="ru">
 <head>
-	<link rel="stylesheet" href="/t/light/light.css"/>
-	<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/skin/$date_local/branding-head.html" -->
+  <link rel="stylesheet" href="/t/glass/glass.css"/>
+  <!--# include virtual="/t/skin/current/branding-head.html" -->
 	<link rel="stylesheet" href="/t/academy/academy.css"/>
 	<title>Коктейльная академия — Inshaker</title>
 </head>
@@ -10,13 +10,15 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
-<div id="main-column" class="common-box"><div class="common-content">
+<div id="main-column" class="common-box common-column-2n">
 	<div class="common-title" id="head">
 		<h1 class="common-name">Коктейльная академия</h1>
 		<a id="spotlighted"><i></i></a>
 	</div>
-	<ul id="video-blocks"></ul>
-</div></div>
+	<div class="common-content common-bottom">
+  	<ul id="video-blocks"></ul>
+	</div>
+</div>
 
 </div id="common-main-wrapper">
 
@@ -28,6 +30,6 @@
 <script src="/js/entities/Cocktail.js"></script>
 <script src="/js/entities/Video.js"></script>
 <script src="/js/academy/academy-page/academy-page.js"></script>
-<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/skin/$date_local/branding-footer.html" -->
+<!--# include virtual="/t/skin/current/branding-footer.html" -->
 </body>
 </html>

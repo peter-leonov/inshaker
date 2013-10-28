@@ -1,21 +1,29 @@
 
 #branded-image-holder { display: none; }
 
-#spotlighted { position: absolute; right: 0px; top: 4px; }
+.cocktail-preview .link { color: inherit; }
 
-.ratings-widget .head { position: relative; font-size: 24px; padding-bottom: 17px; margin-bottom: 37px; }
+.ratings-widget .head { position: relative; font-size: 24px; }
 .ratings-widget .head .switch { text-decoration: none; border-bottom: 2px dashed; }
 .ratings-widget .head .switch:hover { border: none; }
-.ratings-widget .head .hint { color: #c2c2c2; font-size: 16px; }
+.ratings-widget .head .hint { color: #c2c2c2; font-size: 12px; text-shadow: none; vertical-align: top; letter-spacing: 0; }
 
 .ratings-widget.state-total .head .switch.total,
 .ratings-widget.state-tag .head .switch.tag,
 .ratings-widget.state-ingredient .head .switch.ingredient { color: inherit; border: none; cursor: text; }
+.ratings-widget.state-total .head .switch.tag,
+.ratings-widget.state-total .head .switch.ingredient,
+.ratings-widget.state-tag .head .switch.total,
+.ratings-widget.state-tag .head .switch.ingredient,
+.ratings-widget.state-ingredient .head .switch.total,
+.ratings-widget.state-ingredient .head .switch.tag { text-shadow: none; }
+
+.ratings-widget > .content { padding: 0 20px 15px; }
 
 .ratings-widget .rating-ingredient,
 .ratings-widget .rating-tag { width: 945px; }
 
-.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 0 22px 55px 0; vertical-align: top; }
+.ratings-widget .rating-col { display: inline-block; width: 292px; margin: 40px 22px 0 0; vertical-align: top; }
 
 .ratings-widget .rating-name { font-size: 18px; }
 .ratings-widget .rating-name .count { font-size: 10px; color: #bbb; vertical-align: super; margin-left: 5px; }
@@ -93,30 +101,3 @@ html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:fi
 <!--# include virtual="/t/ingredient-popup.css" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
-
-#cocktail-shop-banner
-{
-    margin-top: 20px;
-}
-#cocktail-shop-banner .common-title h1
-{
-    font-size: 23px;
-}
-#cocktail-shop-banner h1 a { color: #EC9340; }
-#shop-map .info {
-    padding: 15px 15px 15px 35px;
-}
-#shop-map .info .location
-{
-    width: 215px;
-    margin-right: 0px;
-}
-#shop-map .info .phone
-{
-    min-width: 131px;
-    margin-right: 60px;
-}
-#shop-map .info .parking
-{
-    width: 80px;
-}

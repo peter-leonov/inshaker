@@ -55,7 +55,6 @@ Me.prototype =
 		// cocktails
 		this.renderCocktails(data.carte)
 		this.renderMap(data.bar, data.otherBarsSet)
-		this.renderPrevNext(data.prevNext)
 	},
 	
 	readBarCityNames: function ()
@@ -104,25 +103,6 @@ Me.prototype =
 	renderCocktails: function (cocktails)
 	{
 		this.nodes.hitBox.appendChild(cocktails[0].getPreviewNode(false, true))
-	},
-	
-	renderPrevNext: function (prevNext)
-	{
-		if (prevNext[0])
-		{
-			this.nodes.barPrev.href = prevNext[0].pageHref()
-			this.nodes.barPrev.title = prevNext[0].name
-		}
-		else
-			this.nodes.barPrev.hide()
-		
-		if (prevNext[1])
-		{
-			this.nodes.barNext.href = prevNext[1].pageHref()
-			this.nodes.barNext.title = prevNext[1].name
-		}
-		else
-			this.nodes.barNext.hide()
 	}
 }
 

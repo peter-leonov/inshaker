@@ -1,6 +1,9 @@
+#main-column,
+#bar-on-map { width: 627px; }
+
 #common-main-wrapper { font-size: 13px; }
 
-#main-column { width: 628px; position: relative; z-index: 1; }
+#main-column { position: relative; z-index: 1; }
 .common-box .common-content { overflow: hidden; }
 
 #main-column .common-title { position: relative; }
@@ -8,7 +11,9 @@
 #main-column .common-title .navigation a.hidden { cursor: default; color: #ccc; }
 #main-column .common-title .navigation li { display: inline; margin: 0 4px; vertical-align: middle; }
 
-#main-column .description { font-size: 14px; margin: 10px 0 15px 0; line-height: 18px; }
+#main-column .content { padding: 18px; }
+
+#main-column .description { font-size: 14px; margin: 0 0 15px 0; line-height: 18px; }
 
 #main-column .atmosphere { overflow: hidden; margin-top: 12px; }
 #main-column .atmosphere .part { width: 250px; float: left; }
@@ -36,8 +41,8 @@
 #main-column .info .about .contacts { position: absolute; bottom: 0; width: 250px; }
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
-#bar-on-map { position: relative; z-index: 1; width: 630px; margin-top: 10px; }
-#bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+#bar-on-map { position: relative; z-index: 1; margin-top: 20px; }
+#bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; }
 #bar-on-map .body { border: 1px solid #564; border-top: none; }
 #bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; display: none; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }
@@ -71,36 +76,9 @@
 .photos.geometry-big .next { top: 132px; }
 
 
-#share-box { position: absolute; right: 0; top: 0; }
+#share-box { position: absolute; right: 1px; top: 0; }
 
-#map { height: 330px; position: relative; overflow: hidden; background-color: gray !important; }
-
-#map .point { position: absolute; }
-#map .point.selected { z-index: 4; }
-#map .point:hover { z-index: 5; }
-#map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; cursor: pointer; }
-#map .point.selected .icon { width: 30px; height: 30px; background-position: -75px -25px; cursor: default; }
-#map .point .title { display: none; position: absolute; z-index: 10; left: -94px; top: 10px; min-width: 170px; padding: 10px; font-size: 13px; line-height: 17px; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
-#map .point:hover .title { display: block; }
-#map .point .point-name { display: block; font-size: 15px; margin: 0 0 0.5em; }
-#map .point.selected .point-name {  }
-
-
-.position-control { display: none; }
-#map .position-control { display: block; position: absolute; z-index: 1; left: 10px; top: 10px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.2 }
-#map .position-control:hover { opacity: 1 }
-#map .position-control .to-top,
-#map .position-control .to-right,
-#map .position-control .to-bottom,
-#map .position-control .to-left,
-#map .position-control .to-plus,
-#map .position-control .to-minus { position: absolute; width: 15px; height: 15px; cursor: pointer; }
-#map .position-control .to-top { left: 23px; top: 8px; }
-#map .position-control .to-right { left: 32px; top: 26px; }
-#map .position-control .to-bottom { left: 23px; top: 44px; }
-#map .position-control .to-left { left: 14px; top: 26px; }
-#map .position-control .to-plus { left: 23px; top: 62px; }
-#map .position-control .to-minus { left: 23px; top: 80px; }
+#map { height: 330px; }
 
 html.msie-6 #common-main-wrapper { width: 630px; overflow: hidden; }
 html.msie-6 #main-column .atmosphere,

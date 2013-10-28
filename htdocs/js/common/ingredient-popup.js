@@ -140,7 +140,7 @@ var myProto =
 		// var good = Good.getBySellName(ingredient.name)[0]
 		
 		var volume = ingredient.volumes[0]
-		if (volume[3] !== false) // in shop!
+		if (volume && volume[3] !== false) // in shop!
 		{
 			nodes.ingredientWindow.classList.add('can-buy')
 			nodes.buy.price.appendChild(T(volume[1] + 'р.-'))

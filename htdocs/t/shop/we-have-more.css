@@ -1,19 +1,65 @@
-.we-have-more { margin-top: 48px; white-space: normal; text-align: center; }
-.we-have-more .title { text-align: left; text-indent: -999px; background: url(on-stock.png); width: 585px; height: 55px; margin: 0 auto; color: transparent; font-size: 58px; line-height: 55px; }
-.we-have-more .picture { position: relative; margin-bottom: 23px; }
-.we-have-more .picture .frame { position: absolute; z-index: 2; }
-.we-have-more .price { font-size: 33px; font-weight: 700; color: #fff; }
-.we-have-more .in-stock-item { margin: 52px 0 0; }
-.we-have-more .in-stock-item a { cursor: pointer; }
-.we-have-more .in-stock-item:nth-child(3n+1) img { position: relative; left: -9px; -webkit-transform: rotate(-3deg); -moz-transform: rotate(-3deg); -ms-transform: rotate(-3deg); -o-transform: rotate(-3deg); transform: rotate(-3deg); }
-.we-have-more .in-stock-item:nth-child(3n+1) .frame { left: 38px; top: -16px; width: 232px; height: 205px; background: url(photo-frame-3.png) 0 0 no-repeat; }
-.we-have-more .in-stock-item:nth-child(3n+2) img { position: relative; left: -10px; -webkit-transform: rotate(-2deg); -moz-transform: rotate(-2deg); -ms-transform: rotate(-2deg); -o-transform: rotate(-2deg); transform: rotate(-2deg); }
-.we-have-more .in-stock-item:nth-child(3n+2) .frame { left: 34px; top: -16px; width: 228px; height: 208px; background: url(photo-frame-1.png) 0 0 no-repeat; }
-.we-have-more .in-stock-item:nth-child(3n+3) img { position: relative; top: 2px; -webkit-transform: rotate(2deg); -moz-transform: rotate(2deg); -ms-transform: rotate(2deg); -o-transform: rotate(2deg); transform: rotate(2deg); }
-.we-have-more .in-stock-item:nth-child(3n+3) .frame { left: 45px; top: -12px; width: 232px; height: 205px; background: url(photo-frame-2.png) 0 0 no-repeat; }
-
-html.msie-8 .we-have-more .title { font-size: 0; }
-.we-have-more > div { width: 320px; white-space: normal; display: inline-block; vertical-align: top; *zoom:1; *display: inline; }
-.we-have-more > div .picture { margin-bottom: 20px; }
-.we-have-more > div a { font-size: 24px; line-height: 1.5; text-transform: uppercase; cursor: text; }
-.we-have-more > div a:hover { text-decoration: none; }
+.we-have-more { text-align: center; }
+.we-have-more .in-stock-item { width: 280px; white-space: normal; display: inline-block; vertical-align: top; margin: 80px 0 0; text-decoration: none; }
+.we-have-more .in-stock-item:hover .picture
+{
+  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+}
+.we-have-more .in-stock-item .picture { display: inline-block; width: 198px; height: 170px; border: 6px solid #fff; border-radius: 2px; margin-bottom: 23px; }
+.we-have-more .in-stock-item .name,
+.we-have-more .in-stock-item .price
+{ display: block; }
+.we-have-more .in-stock-item .name { font-size: 26px; line-height: 35px; letter-spacing: 2px; }
+.we-have-more .in-stock-item .price { margin-top: 15px; font-size: 33px; font-weight: bold; }
+.we-have-more .in-stock-item:nth-child(3n+2)
+{
+  margin-left:  60px;
+  margin-right: 60px;
+}
+.we-have-more .in-stock-item:nth-child(6n+1) .picture
+{
+  -webkit-transform: rotate(-2.5deg);
+     -moz-transform: rotate(-2.5deg);
+      -ms-transform: rotate(-2.5deg);
+       -o-transform: rotate(-2.5deg);
+          transform: rotate(-2.5deg);
+}
+.we-have-more .in-stock-item:nth-child(6n+2) .picture
+{
+  -webkit-transform: rotate(3deg);
+     -moz-transform: rotate(3deg);
+      -ms-transform: rotate(3deg);
+       -o-transform: rotate(3deg);
+          transform: rotate(3deg);
+}
+.we-have-more .in-stock-item:nth-child(6n+3) .picture
+{
+  -webkit-transform: rotate(-2.3deg);
+     -moz-transform: rotate(-2.3deg);
+      -ms-transform: rotate(-2.3deg);
+       -o-transform: rotate(-2.3deg);
+          transform: rotate(-2.3deg);
+}
+.we-have-more .in-stock-item:nth-child(6n+4) .picture
+{
+  -webkit-transform: rotate(3deg);
+     -moz-transform: rotate(3deg);
+      -ms-transform: rotate(3deg);
+       -o-transform: rotate(3deg);
+          transform: rotate(3deg);
+}
+.we-have-more .in-stock-item:nth-child(6n+5) .picture
+{
+  -webkit-transform: rotate(-2.5deg);
+     -moz-transform: rotate(-2.5deg);
+      -ms-transform: rotate(-2.5deg);
+       -o-transform: rotate(-2.5deg);
+          transform: rotate(-2.5deg);
+}
+.we-have-more .in-stock-item:nth-child(6n+6) .picture
+{
+  -webkit-transform: rotate(3.2deg);
+     -moz-transform: rotate(3.2deg);
+      -ms-transform: rotate(3.2deg);
+       -o-transform: rotate(3.2deg);
+          transform: rotate(3.2deg);
+}

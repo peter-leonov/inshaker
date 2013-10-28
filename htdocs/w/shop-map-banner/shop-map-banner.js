@@ -12,12 +12,11 @@ $.onready(function ()
 {
 	var nodes =
 	{
-		address: $('.info .location p'),
-		phone: $('.info .phone p'),
+		address: $('#shop-map-banner .info .location p'),
+		phone: $('#shop-map-banner .info .phone p'),
 		
-		map: $('#map'),
-		mapSurface: $('#map .surface'),
-		positionControl: $('.position-control')
+		map: $('#shop-map-banner .map'),
+		positionControl: $('#shop-map-banner .position-control')
 	}
 	
 	var widget = new MapWidget(nodes)
@@ -44,7 +43,7 @@ MapWidget.prototype =
 			return
 		
 		var map = this.map = new Map()
-		map.bind({main: this.nodes.mapSurface, wrapper: this.nodes.map, control: this.nodes.positionControl})
+		map.bind({main: this.nodes.map, control: this.nodes.positionControl})
 		map.setCenter({lat: 55.783016, lng: 37.599892}, 14)
 		
 		var shop =

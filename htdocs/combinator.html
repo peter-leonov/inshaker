@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html id="combinator-page" class="cocktails-page" lang="ru">
+<html id="combinator-page" class="combinator-section" lang="ru">
 <head>
-	<link rel="stylesheet" href="/t/light/light.css"/>
-	<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/skin/$date_local/branding-head.html" -->
+	<link rel="stylesheet" href="/t/glass/glass.css"/>
+	<!--# include virtual="/t/skin/current/branding-head.html" -->
 	<link rel="stylesheet" href="/t/combinator/combinator.css"/>
 	<title>Сочетайзер — Inshaker</title>
 </head>
@@ -10,23 +10,22 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 	
-<div id="main-column" class="common-box"><div class="common-content" id="output">
+<div id="main-column" class="common-box"><div class="common-content common-top common-bottom" id="output">
 	<div id="the-main-menu"><div class="center">
 		<div id="search-box">
 			<form>
 				<input class="query" name="query" autocomplete="off" autofocus>
 				<button class="button plus" type="button">+</button>
-				<div class="reset">×</div>
 				<button class="button search" type="submit">Найти!</button>
+				<ul class="autocomplete"><li class="item empty-message">это название еще не знакомо сочетайзеру</li></ul>
 			</form>
-			<ul class="autocomplete"><li class="item empty-message">это название еще не знакомо сочетайзеру</li></ul>
 		</div>
 		<div class="sort-line"><em class="cocktail-count">∞ коктейлей</em> <span class="sorted-word">отсортированы</span> <dl class="dropdown-select" id="sortby-select"><dt class="button"></dt><dd class="body"><ul class="options"></ul></dd></dl><!-- , украшения коктейлей не учитываются и штучки не учитываются -->:</div>
 		<div class="sort-line empty"><em class="cocktail-count">0 коктейлей</em> с таким сочетанием. <a href="mailto:combinator-recipe@inshaker.ru">Возможно, ты знаешь рецепт?</a></div>
 		<a id="spotlighted"><i></i></a>
 	</div></div>
 	
-	<div class="b-content">
+	<div class="body-content">
 		<div class="initial-block">
 			<div class="ingredients-list"></div>
 		</div>

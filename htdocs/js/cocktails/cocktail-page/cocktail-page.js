@@ -1,4 +1,5 @@
-$.onready(function(){
+$.onready(function()
+{
 	UserAgent.setupDocumentElementClassNames()
 	IngredientPopup.bootstrap()
 	

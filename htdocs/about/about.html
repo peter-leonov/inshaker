@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="about-page" lang="ru">
+<html id="about-page" class="about-page" lang="ru">
 <head>
-	<link rel="stylesheet" href="/t/light/light.css"/>
-	<link rel="stylesheet" href="/t/skin/shakeit/skin.css"/>
+	<link rel="stylesheet" href="/t/glass/glass.css"/>
+	<link rel="stylesheet" href="/t/skin/drinkit/skin.css"/>
 	<link rel="stylesheet" href="/t/about/about.css" media="screen"/>
 	<title>Inshaker — Коктейльный сайт</title>
 	<style>
@@ -13,10 +13,12 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
-<div id="b-cr-about" class="common-box column-r"><div class="common-content">
+<div id="b-cr-about" class="common-box common-column-1n column-r">
 	<div class="common-title">
-		<h2>Быстросвязь</h2>
+		<h2 class="common-name">Быстросвязь</h2>
 	</div>
+	<div class="common-content common-bottom">
+	<div class="b-content">
 	<form action="/act/send.cgi" method="post" target="ajax" id='feedback_form'>
 		<label>Меня зовут		<input type="text" name="name" value=""></label>
 		<label>Мой телефон или email	<input type="text" name="address" value=""></label>
@@ -29,13 +31,14 @@
 		Сообщение отправлено
 		<a onclick="AboutPage.formShow()">Отправить еще одно?</a>
 	</div>
+	</div>
 </div></div>
 
-<div class="common-box" id="main-column"><div class="common-content" id="body_wrapper">
+<div class="common-box common-column-2n" id="main-column">
 	<div class="common-title">
-		<h1>Коктейльный сайт Inshaker</h1>
-		<a class="hrefs" href="/">← на главную</a>
+		<h1 class="common-name">Коктейльный сайт Inshaker</h1>
 	</div>
+	<div class="common-content common-bottom" id="body_wrapper">
 	<div class="b-content">
 			<div class="top-menu"><div class="b">
 				<p class="border-links" id="menu">
@@ -100,11 +103,7 @@
 				</div>
 			</div>
 			<div class="view-stat content">
-				<div class="stat square-list" id="rolling_stats">
-					<a class="prev"></a>
-					<a class="next"></a>
-					<div class="viewport">
-						<div class="surface">
+				<div class="stat" id="rolling_stats">
 							<div class="point">
 								<h3>Посетители и просмотры за последние 90 дней</h3>
 								<div id="stat_visits"></div>
@@ -113,8 +112,6 @@
 								<h3>Посетители по регионам за последние 90 дней</h3>
 								<div id="stat_cities"></div>
 							</div>
-						</div>
-					</div>
 				</div>
 				<div class="note">Статистика по данным <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a></div>
 			</div>

@@ -82,7 +82,6 @@ function onready ()
 		queryInput: $('#search-box .query'),
 		searchForm: $('#search-box form'),
 		plusButton: $('#search-box .plus'),
-		resetButton: $('#search-box .reset'),
 		ingredientComplete: $('#search-box .autocomplete'),
 		totalCocktails: $('#output .sort-line .cocktail-count'),
 		sortedWord: $('#output .sort-line .sorted-word'),

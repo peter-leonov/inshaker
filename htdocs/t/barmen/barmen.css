@@ -1,11 +1,10 @@
 #main-column h1 { font-size: 21px; }
 
-.b-content { width: 100%; }
+.b-content { padding: 20px 20px 0 20px; width: 100%; }
 
 .barmen-list
 {
 	width: 103%;
-	margin: 17px 0 -17px 0;
 	overflow: hidden; 
 }
 html.loading .barmen-list { display: none; }

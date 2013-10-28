@@ -16,9 +16,11 @@ function onready ()
 	
 	var nodes =
 	{
+	  root: $('.cocktails-search-widget'),
 		resultsDisplay: $('#results_display'),
 		cocktailsList: $('#cocktails'),
 		
+		moreHolder: $('#more'),
 		more: $('#more .button'),
 		
 		searchForm: $('#search_by_name .search-form'),

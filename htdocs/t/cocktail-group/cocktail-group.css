@@ -1,7 +1,9 @@
 html { overflow-y: scroll; }
 
 #main-column { font-size: 14px; }
+#main-column .b-content { padding: 20px; }
 #main-column .title h1 { display: inline; font-size: 21px; }
+#main-column .title a { text-shadow: none; }
 #main-column .about { line-height: 20px; }
 #main-column .about .facts { width: 960px; margin: 0 0 25px; line-height: 21px; counter-reset: fact; }
 #main-column .about .facts .column { width: 426px; margin: 0 22px; display: inline-block; vertical-align: top; }
@@ -15,7 +17,7 @@ html { overflow-y: scroll; }
 #groups-list { overflow: hidden; border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; font-size: 20px; }
 #groups-list .item { float: left; margin: 0 60px 25px 0; }
 #groups-list .item:nth-child(3n) { margin-right: 0; }
-#groups-list .item .group { display: block; position: relative; width: 260px; height: 50px; padding: 425px 0 0 0; text-align: center; }
+#groups-list .item .group { display: block; position: relative; width: 260px; height: 50px; padding: 425px 0 0 0; text-align: center; color: inherit; }
 #groups-list .item .group .image-box { position: absolute; bottom: 45px; left: 0; right: 0; text-align: center; }
 #groups-list .item .group .name .count { font-size: 11px; color: #aaa; margin-left: 5px;  position: absolute; }
 #groups-list .item .group:hover .name .count { text-decoration: none; }
@@ -34,7 +36,7 @@ html.loading #cocktail-list { display: none; }
 
 .ingrediented-cocktail-list .row { margin: 50px 0 0 0; position: relative; border-bottom: 1px solid #eee; }
 .ingrediented-cocktail-list .row:last-child { border-bottom: none; }
-.ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; }
+.ingrediented-cocktail-list .row.lazy { background: #f4f4f4; border-radius: 20px; }
 .ingrediented-cocktail-list .row.lines-0 { height: 155px; }
 .ingrediented-cocktail-list .row.lines-1 { height: 155px; }
 .ingrediented-cocktail-list .row.lines-2 { height: 310px; }
@@ -43,6 +45,8 @@ html.loading #cocktail-list { display: none; }
 .ingrediented-cocktail-list .row.lines-5 { height: 775px; }
 
 .ingrediented-cocktail-list .row .operator { float: left; vertical-align: middle; line-height: 98px; font-size: 34px; color: #aaa; }
+
+.ingrediented-cocktail-list .row .link { color: inherit; }
 
 .ingrediented-cocktail-list .row .head { width: 200px; position: absolute; }
 .ingrediented-cocktail-list .row .head .cocktail-preview .image { max-width: 120px; }
@@ -76,7 +80,7 @@ html.loading #cocktail-list { display: none; }
 .ingredient-preview { display: block; float: left; }
 .ingredient-preview,
 .ingredient-preview .image { width: 100px; height: 100px; }
-.ingredient-preview .image { background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.ingredient-preview .image { background-color: #eee; border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
 
 #more { display: block; margin: 13px 0 35px; text-align: center; }
@@ -90,22 +94,10 @@ html.loading #cocktail-list { display: none; }
   background: url(cocktail-shop.jpg) center no-repeat;
   border-radius: 15px; box-shadow: 0 0 25px #6E3021;
 }
-#cocktail-shop-banner .promo:hover
+#cocktail-shop-banner:hover
 {
-  -webkit-filter: saturate(2.0) brightness(1.25) contrast(1.1);
+  -webkit-filter: saturate(1.1) brightness(1.1) contrast(1.1);
 }
-
-
-html.opera-9 .ingredient-preview .image:before,
-html.opera-10-0 .ingredient-preview .image:before,
-html.opera-10-1 .ingredient-preview .image:before,
-html.msie-8 .ingredient-preview .image:before,
-html.firefox-2 .ingredient-preview .image:before { display: block; height: 100px; width: 100px; content: ''; background: url(/t/ingredient/preview-mask.png); }
-
-html.firefox-2 .ingredient-preview .image { -moz-border-radius: 0; }
-
-html.msie-6 .ingredient-preview .image,
-html.msie-7 .ingredient-preview .image { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/t/ingredient/preview-mask.png",sizingMethod="crop"); }
 
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->

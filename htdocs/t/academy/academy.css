@@ -1,19 +1,17 @@
-#main-column { width: 639px; position: relative; z-index: 1; }
+#main-column { width: 627px; position: relative; z-index: 1; }
 
-#spotlighted { position: absolute; right: 15px; top: 15px; }
-
-#video-blocks .item { height: 515px; position: relative; margin: 20px 0 10px 0; border-bottom: 1px dashed #aaa; }
+#video-blocks .item { padding: 20px; border-bottom: 1px dashed #aaa; }
 #video-blocks .item:last-child { height: 480px; margin-bottom: 20px; border-bottom: none; }
-#video-blocks .item .head { font-size: 18px; margin: 0 0 6px 0; }
+#video-blocks .item .head { position: relative; margin: 0 0 6px 0; font-size: 18px; }
 #video-blocks .item .head .example
 {
   position: absolute; right: 0; padding: 4px 5px 4px 36px;
   background-size: 35px;
-  font-size: 15px; letter-spacing: 1px; color: #a62;
+  font-size: 15px; letter-spacing: 1px;
 }
-#video-blocks .item .video { width: 600px; height: 338px; margin: 0 0 15px 0; position: relative; }
-#video-blocks .item .video .player { width: 600px; height: 338px; border: none; }
+#video-blocks .item .video { width: 588px; height: 331px; margin: 0 0 15px 0; position: relative; }
+#video-blocks .item .video .player { width: 588px; height: 331px; border: none; }
 
 .cocktail-list { position: relative; overflow: hidden; }
-.cocktail-list .cocktail-preview { width: 120px; float: left; text-align: center; font-size: 12px;  }
+.cocktail-list .cocktail-preview { width: 117px; float: left; text-align: center; font-size: 12px;  }
 .cocktail-list .cocktail-preview .image { display: block; margin: 0 auto 5px; width: 60px; height: 80px; }

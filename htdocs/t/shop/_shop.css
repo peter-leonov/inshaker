@@ -1,12 +1,9 @@
-body { background: url(bg-neon.jpg) center 65px no-repeat, url(bg.jpg) center 65px #140903; }
 #common-main-wrapper { font-size: 16px; }
-#common-main-wrapper a { color: #ff0893; }
+#branded-image-holder { display: none; }
 
 <!--# include virtual="we-have-more.css" -->
-
-/* PROMO */
 <!--# include virtual="promo.css" -->
-#promo #image { position: absolute; top: 0; left: 0; z-index: 2; display: block; line-height: 1; height: 374px; background: url(/t/shop/cocktail-shop.jpg) center center; font-size: 82px; text-align: center; color: transparent; }
+
 #promo .info .location a { text-decoration: none; border-bottom: 1px dashed #ff0893; }
 #promo .info .location a:hover { border-bottom-style: solid; }
 #promo[data-state="image"] #image { display: block; }
@@ -18,5 +15,4 @@ body { background: url(bg-neon.jpg) center 65px no-repeat, url(bg.jpg) center 65
 
 /* MAP */
 <!--# include virtual="map.css" -->
-#map .close { position: absolute; overflow: hidden; right: 15px; top: 15px; background: url(icon-map-close.png) center center no-repeat black; width: 20px; height: 20px; display: block; cursor: pointer; text-indent: 999px; }
 /* END MAP */

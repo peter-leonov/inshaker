@@ -49,7 +49,7 @@ Me.prototype =
 	
 	renderRandomCocktail: function (cocktail)
 	{
-		this.nodes.searchByNameInput.placeholder = cocktail.name + '   —   ' + cocktail.name_eng
+		this.nodes.searchByNameInput.placeholder = cocktail.name
 	},
 	
 	renderMoreCocktails: function (cocktails, left)
@@ -105,12 +105,14 @@ Me.prototype =
 	
 	showMoreButton: function ()
 	{
-		this.nodes.more.show()
+	  this.nodes.root.classList.remove('common-bottom')
+		this.nodes.moreHolder.show()
 	},
 	
 	hideMoreButton: function ()
 	{
-		this.nodes.more.hide()
+	  this.nodes.root.classList.add('common-bottom')
+		this.nodes.moreHolder.hide()
 	},
 	
 	renameMoreButton: function (count)

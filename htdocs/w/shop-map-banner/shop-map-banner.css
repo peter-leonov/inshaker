@@ -1,53 +1,31 @@
-.common-map { position: relative; height: 374px; }
+#shop-map-banner { margin-top: 30px; }
 
-/* common-map pretendent */
-#map .point { position: absolute; }
-#map .point.selected { z-index: 4; }
-#map .point:hover { z-index: 5; }
-#map .point.selected .icon { width: 30px; height: 30px; background-position: -75px -25px; cursor: default; }
-#map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; }
-#map .point .title { display: none; position: absolute; z-index: 10; left: -110px; top: 10px; min-width: 200px; padding: 10px; font-size: 15px; line-height: 21px; background: #000; background: rgba(0,0,0,0.85); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; white-space: nowrap; }
-#map .point:hover .title { display: block; }
-#map .point .point-name { display: block; font-size: 19px; margin: 0 0 0.5em; }
-#map .point.selected .point-name {  }
+#shop-map-banner h1 a { text-shadow: none; }
 
-.position-control { display: none; }
-#map .position-control { display: block; position: absolute; }
+#shop-map-banner .map { height: 374px; }
+#shop-map-banner .map .point .icon { background-image: url(/w/shop-map-banner/icon-map-point.png); }
+#shop-map-banner .map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
 
-#map .position-control .to-top,
-#map .position-control .to-right,
-#map .position-control .to-bottom,
-#map .position-control .to-left,
-#map .position-control .to-plus,
-#map .position-control .to-minus { position: absolute; width: 15px; height: 15px; cursor: pointer; }
-#map .position-control .to-top { left: 23px; top: 8px; }
-#map .position-control .to-right { left: 32px; top: 26px; }
-#map .position-control .to-bottom { left: 23px; top: 44px; }
-#map .position-control .to-left { left: 14px; top: 26px; }
-#map .position-control .to-plus { left: 23px; top: 62px; }
-#map .position-control .to-minus { left: 23px; top: 80px; }
-/* END common-map pretendent */
+#shop-map-banner .the-body { background-color: #000; }
+#shop-map-banner .info { overflow: hidden; color: #fff; font-size: 16px; min-height: 61px; border-top: 1px solid #313131; white-space: nowrap; line-height: 54px; padding: 15px 15px 15px 15px; }
+#shop-map-banner .info > div { display: inline-block; vertical-align: middle; padding-left: 40px; position: relative; white-space: normal; }
+#shop-map-banner .info .icon { position: absolute; left: 0; top: 50%; margin-top: -15px; background: url(/w/shop-map-banner/icons-info.png) no-repeat; overflow: hidden; display: inline-block; width: 31px; height: 31px; }
+#shop-map-banner .info p { line-height: 1.3; }
+#shop-map-banner .info .location { line-height: 1.1; width: 150px; }
+#shop-map-banner .info .location .icon { background-position: 0 0; }
+#shop-map-banner .info .phone { min-width: 131px; }
+#shop-map-banner .info .phone .icon { background-position: -31px 0; }
+#shop-map-banner .info .phone p { margin-left: -5px; }
+#shop-map-banner .info .time { min-width: 142px; }
+#shop-map-banner .info .time .icon { background-position: -62px 0; }
+#shop-map-banner .info .parking { width: 80px; }
+#shop-map-banner .info .parking .icon { background-position: -93px 0; }
 
-#map { position: absolute; top: 0; left: 0; height: 100%; background-color: #ccc; width: 100%; }
-#map .surface { width: 100%; height: 100%; padding: 0;}
-#map .point .icon { background-image: url(/w/shop-map-banner/icon-map-point.png); }
-#map .point .title { color: #fff; pointer-events: none; }
-#map .point .point-name { color: #ff4ea5; }
-#map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
-#map .position-control { z-index: 10; left: 20px; top: 20px; width: 61px; height: 106px; opacity: 0.4; }
-#map .position-control:hover { opacity: 1; }
-
-
-#shop-map .info { color: #fff; background-color: #000; font-size: 16px; min-height: 61px; border-top: 1px solid #313131; white-space: nowrap; line-height: 54px; padding: 15px 15px 15px 10px; }
-#shop-map .info > div { display: inline-block; vertical-align: middle; padding-left: 40px; position: relative; white-space: normal; }
-#shop-map .info .icon { position: absolute; left: 0; top: 50%; margin-top: -15px; background: url(/w/shop-map-banner/icons-info.png) no-repeat; overflow: hidden; display: inline-block; width: 31px; height: 31px; }
-#shop-map .info p { line-height: 1.3; }
-#shop-map .info .location { line-height: 1.1; width: 150px; margin-right: 10px; }
-#shop-map .info .location .icon { background-position: 0 0; }
-#shop-map .info .phone { min-width: 131px; margin-right: 10px; }
-#shop-map .info .phone .icon { background-position: -31px 0; }
-#shop-map .info .phone p { margin-left: -5px; }
-#shop-map .info .time { min-width: 142px; margin-right: 48px; }
-#shop-map .info .time .icon { background-position: -62px 0; }
-#shop-map .info .parking { width: 80px; }
-#shop-map .info .parking .icon { background-position: -93px 0; }
+#shop-map-banner .info .location,
+#shop-map-banner .info .phone,
+#shop-map-banner .info .time
+{ margin-right: 85px; }
+#shop-map-banner.column-main .info .location,
+#shop-map-banner.column-main .info .phone,
+#shop-map-banner.column-main .info .time
+{ margin-right: 22px; }

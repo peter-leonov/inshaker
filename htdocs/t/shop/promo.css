@@ -1,4 +1,4 @@
-#promo { color: #fff; margin: 320px 0 30px 0; position: relative; background-color: #000; }
+#promo { color: #fff; position: relative; background-color: #000; }
 html.msie-8 #promo #image { font-size: 0; }
 #promo #figure { position: relative; height: 374px; }
 
