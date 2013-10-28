@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="cocktail-page" class="cocktails-page" lang="ru">
+<html id="cocktail-page" class="cocktails-section" lang="ru">
 <head>
 	<!--# include virtual="/inc/cocktails-head.html" -->
 	<link rel="stylesheet" href="/t/cocktail/cocktail.css"/>
@@ -16,19 +16,16 @@
 <!--# include virtual="/inc/common-top.html" -->
 <div id="common-main-wrapper">
 
-<div class="common-box column-main"><div class="common-content hrecipe">
+<div class="common-box common-column-2n column-main">
 	<div class="common-title">
 		<h1 id="cocktail_name" class="common-name fn" data-cocktail-name="Мисс Мартини">Мисс Мартини</h1>
 		<a class="hrefs" href="/cocktails.html">← к списку коктейлей</a>
 	</div>
+	<div class="common-content common-bottom hrecipe">
 	<div class="b-content">
 		<div class="hreview state-initial">
 			<div id="top-menu">
-				<div class="border-links" id="panel_cocktail">
-					<a id="author" class="hidden">Авторская подача</a>
-					<a id="where-to-taste" class="hidden">Где попробовать</a>
-				</div>
-				<img class="poster" src="miss_martini-bg.png" alt="Коктейль «Мисс Мартини»"/>
+				<div class="poster" style="background-image: url(miss_martini-bg.png);"></div>
 			</div>
 			
 			<div id="content">
@@ -44,6 +41,7 @@
 						</div>
 						
 					</div>
+					<div class="author hidden"><b>Авторская подача:</b> <a class="name"></a>.</div>
 					<div class="tags"><b>Группы:</b>
 						
 						<a class="tag" href="/combinator.html#q=В шейкере">В шейкере</a>
@@ -186,7 +184,8 @@
 </div></div>
 
 <div id="b-more">
-	<div class="common-box b-more-cocktails b-more-rec"><dl class="common-content">
+	<div class="common-box b-more-cocktails b-more-rec">
+		<dl class="common-content common-top common-bottom">
 		<dt><b>Inshaker рекомендует</b></dt>
 		<dd>
 			<div class="programica-rolling-images" id="recommendations">
@@ -199,10 +198,10 @@
 		</dd>
 	</dl></div>
 	
-	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
+	<div class="common-box b-more-cocktails b-more-similar"><dl class="common-content common-top common-bottom">
 		<dt><b>Вам также могут понравиться эти коктейли</b></dt>
 		<dd>
-			<div class="programica-rolling-images" id="related">
+			<div class="programica-rolling-images square-list" id="related">
 				<a class="prev"></a>
 				<a class="next"></a>
 				<div class="viewport" id="rel_viewport">
@@ -211,16 +210,9 @@
 			</div>
 		</dd>
 	</dl></div>
-	
-	<div id="cocktail-shop-banner" class="common-box b-more-cocktails b-more-similar"><dl class="common-content">
-		<dt><b>Купить все ингредиенты и штучки <a href="/">на коктейльном складе Inshaker в Москве</a></b></dt>
-		<dd>
-			<div class="promo">
-				<!--# include virtual="/w/shop-map-banner/shop-map-banner.html" -->
-			</div>
-		 </dd>
-	</dl></div>
 </div>
+
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.html?2n" -->
 
 <img id="print-logo-hd" src="/t/print/logo-hd.png">
 
