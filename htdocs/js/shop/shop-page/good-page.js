@@ -19,7 +19,7 @@ $.onready(function ()
 		address: $('#promo .info .location p'),
 		phone: $('#promo .info .phone p'),
 		
-		map: $('#map'),
+		map: $('#map .map'),
 		positionControl: $('.position-control'),
 		
 		cocktails: $('#coctails')
