@@ -682,6 +682,11 @@ class CocktailsProcessor < Inshaker::Processor
   def parse_parts parts
     parts.map do |e|
       if e.class == String
+        good = Ingredient[e]
+        unless good
+          # check_parts_existence will report on`e`
+          next [e, 1.0, "шт", "cocktail"]
+        end
         case Ingredient.group_of_group(Ingredient[e]["group"])
         when "glass"
           [e, 1.0, "шт", "guest"]
