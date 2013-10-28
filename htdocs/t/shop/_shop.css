@@ -2,9 +2,8 @@
 #branded-image-holder { display: none; }
 
 <!--# include virtual="we-have-more.css" -->
-
-/* PROMO */
 <!--# include virtual="promo.css" -->
+
 #promo .info .location a { text-decoration: none; border-bottom: 1px dashed #ff0893; }
 #promo .info .location a:hover { border-bottom-style: solid; }
 #promo[data-state="image"] #image { display: block; }
