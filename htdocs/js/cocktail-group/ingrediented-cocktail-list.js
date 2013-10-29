@@ -197,6 +197,12 @@ Me.prototype =
 		
 		this.group = res
 		this.view.renderGroup(res)
+
+		var showRows = this.showRows,
+			lengthRows = this.group.rows.length
+		
+		if ( showRows >= lengthRows )
+			this.view.hideButton()
 	},
 	
 	addMoreCocktails: function ()
