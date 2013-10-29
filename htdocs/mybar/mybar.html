@@ -24,52 +24,41 @@
 <div id="common-main-wrapper">
 
 <div class="main-box">
-	<div class="ingredients-box  wrapper-box" id="ingredients-box-anchor">
-		<div class="section-head">
-			<h2><input class="bar-name-editable" value="Мой бар"/><small class="advice">Придумай название!</small>&nbsp;</h2>
+	<div class="ingredients-box wrapper-box common-box" id="ingredients-box-anchor">
+		<div class="section-head common-title">
+			<h2 class="common-name"><input class="bar-name-editable" value="Мой бар"/><small class="advice">Придумай название!</small>&nbsp;</h2>
 			<div class="links"></div>
 		</div>
-		<div class="section-wrapper">
-			<div class="left-shadow"></div>
-			<div class="right-shadow"></div>
-			<div class="content">
-				<div class="search-box">
-					<form>
-						<div class="hint hidden">Введи ингредиенты, которые есть в твоем баре</div>
-						<input class="query" name="query" autocomplete="off" value=""/>
-						<button type="submit" class="search-button">Добавить</button>
-						<button class="lucky-button">Мне повезет</button>
-					</form>
+		<div class="section-wrapper common-content common-bottom">
+			<div class="search-box">
+				<form>
+					<input class="query" name="query" autocomplete="off" value="" placeholder="Введи ингредиенты, которые есть в твоем баре"/>
+					<button type="submit" class="search-button">Добавить</button>
+					<button class="lucky-button">Мне повезет</button>
 					<ul class="autocomplete"><li class="item empty-message">такого ингредиента нет</li></ul>
-				</div>
-				<div class="ingredients-list"></div>
-				<div class="empty-box hidden">
-					<img class="image" src="/t/mybar/three-steps-illustration.png"/>
-				</div>
-				<div class="switcher hidden">
-					<div class="by-list"></div>
-					<div class="by-groups"></div>
-				</div>
+				</form>
+			</div>
+			<div class="ingredients-list"></div>
+			<div class="empty-box hidden">
+				<img class="image" src="/t/mybar/three-steps-illustration.png"/>
+			</div>
+			<div class="switcher hidden">
+				<div class="by-list"></div>
+				<div class="by-groups"></div>
 			</div>
 		</div>
-		<div class="section-bottom"></div>
 	</div>
-	<div class="maybe-have-box wrapper-box hidden">
-		<div class="section-head">
-			<h2>Возможно в твоем баре уже есть!</h2>
+	<div class="maybe-have-box wrapper-box common-box hidden">
+		<div class="section-head common-title">
+			<h2 class="common-name">Возможно в твоем баре уже есть!</h2>
 		</div>
-		<div class="section-wrapper">
-			<div class="left-shadow"></div>
-			<div class="right-shadow"></div>
-			<div class="content">
-				<div class="ingredients-list"></div>
-			</div>
+		<div class="section-wrapper common-content common-bottom">
+			<div class="ingredients-list"></div>
 		</div>
-		<div class="section-bottom"></div>
 	</div>
-	<div class="cocktails-box  wrapper-box" id="cocktails-box-anchor">
-		<div class="section-head">
-			<h2>
+	<div class="cocktails-box wrapper-box common-box" id="cocktails-box-anchor">
+		<div class="section-head common-title">
+			<h2 class="common-name">
 				<span class="have-cocktails">В моем баре есть всё для приготовления <span class="plural">0</span></span>
 				<span class="have-no-cocktails">Мои коктейли</span>
 			</h2>
@@ -77,27 +66,22 @@
 				<a class="cocktails-cart-link" href="cocktail-cart-print.html"></a>
 			</div>
 		</div>
-		<div class="section-wrapper">
-			<div class="left-shadow"></div>
-			<div class="right-shadow"></div>
-			<div class="content">
-				<div class="cocktails-wrapper">
-					<div class="visible-cocktails"></div>
-					<dl class="hidden-cocktails">
-						<dt><div class="name-wrapper">Не хочу готовить<i></i></div></dt>
-						<dd class="list by-pics"></dd>
-					</dl>
-				</div>
-				<div class="empty-notice">
-					В твоем баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
-				</div>
-				<div class="switcher hidden">
-					<div class="by-pics"></div>
-					<div class="by-ingredients"></div>
-				</div>
+		<div class="section-wrapper common-content common-bottom">
+			<div class="cocktails-wrapper">
+				<div class="visible-cocktails"></div>
+				<dl class="hidden-cocktails">
+					<dt><div class="name-wrapper">Не хочу готовить<i></i></div></dt>
+					<dd class="list by-pics"></dd>
+				</dl>
+			</div>
+			<div class="empty-notice">
+				В твоем баре недостаточно ингредиентов для приготовления хотя бы одного коктейля.
+			</div>
+			<div class="switcher hidden">
+				<div class="by-pics"></div>
+				<div class="by-ingredients"></div>
 			</div>
 		</div>
-		<div class="section-bottom"></div>
 	</div>
 	<div class="share-box single-box">
 		<div class="share-wrapper">
@@ -123,20 +107,15 @@
 		<div class="web-share-popup hidden"><input type="text" value="" /></div>
 	</div>
 	
-	<div class="recommends-box  wrapper-box" id="recommendations-box-anchor">
-		<div class="section-head"><h2>Inshaker рекомендует пополнить бар и приготовить новые коктейли</h2></div>
-		<div class="section-wrapper">
-			<div class="left-shadow"></div>
-			<div class="right-shadow"></div>
-			<div class="content">
-				<div class="tags-wrapper"><ul class="tags-list"></ul></div>
-				<div class="recommends-wrapper">
-					<dl class="recommends-list"></dl>
-					<ul class="must-have-list"></ul>
-				</div>
+	<div class="recommends-box wrapper-box common-box" id="recommendations-box-anchor">
+		<div class="section-head common-title"><h2 class="common-name">Пополни бар и приготовь новые коктейли</h2></div>
+		<div class="section-wrapper common-content common-bottom">
+			<div class="tags-wrapper"><ul class="tags-list"></ul></div>
+			<div class="recommends-wrapper">
+				<dl class="recommends-list"></dl>
+				<ul class="must-have-list"></ul>
 			</div>
 		</div>
-		<div class="section-bottom"></div>
 	</div>
 </div><!-- /main-box -->
 

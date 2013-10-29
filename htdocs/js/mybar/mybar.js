@@ -76,7 +76,6 @@ function onready ()
 			list : $('#common-main-wrapper .ingredients-box .ingredients-list'),
 			searchForm : $('#common-main-wrapper .ingredients-box .search-box form'),
 			queryInput : $('#common-main-wrapper .ingredients-box .search-box form .query'),
-			hint : $('#common-main-wrapper .ingredients-box .search-box .hint'),
 			complete: $('#common-main-wrapper .ingredients-box .search-box .autocomplete'),
 			luckyButton : $('#common-main-wrapper .ingredients-box .search-box .lucky-button'),
 			switcher : $('#common-main-wrapper .ingredients-box .switcher'),
