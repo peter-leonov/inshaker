@@ -63,7 +63,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .autocomplete .item .substr { font-weight: bold; }
 .main-box .ingredients-box .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000; }
-.main-box .ingredients-box .search-box .query { width: 824px; font-size: 24px; vertical-align: middle; color: inherit; }
+.main-box .ingredients-box .search-box .query { width: 825px; height: 35px; box-sizing: border-box; -moz-box-sizing: border-box; font-size: 24px; vertical-align: middle; color: inherit; }
 .main-box .ingredients-box .ingredients-list,
 .main-box .maybe-have-box .ingredients-list { margin: 20px 0 0 0; }
 .main-box .ingredients-box .ingredients-list ul.by-list { position: relative; }
