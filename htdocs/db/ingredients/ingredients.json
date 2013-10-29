@@ -202,7 +202,7 @@
 {"group":"Овощи","name":"Корень имбиря","path":"koren-imbirya","tags":["Имбирь","Овощи"],"unit":"г","volumes":[]},
 {"group":"Овощи","name":"Корень фенхеля","path":"koren-fenhelya","unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Корица в палочках","path":"koritsa-v-palochkah","tags":["Корица"],"unit":"г","volumes":[[17.0,50.0,"Упаковка"]]},
-{"group":"Специи и пряности","name":"Корица молотая","path":"koritsa-molotaya","tags":["Корица"],"unit":"г","volumes":[[25.0,19.0,"Бутылка"]]},
+{"group":"Специи и пряности","name":"Корица молотая","path":"koritsa-molotaya","tags":["Корица"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Кофе в зернах","path":"kofe-v-zernah","tags":["Кофе"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Кофе молотый","path":"kofe-molotyiy","tags":["Кофе"],"unit":"г","volumes":[]},
 {"brand":"De Kuyper Creme de Cafe","group":"Ликеры и настойки","mark":"De Kuyper","name":"Кофейный ликер","names":["Kahlua","Калуа","De Kuyper Creme de Cafe","Де кайпер крем де кафе","Ди кайпер крем де кафе","Де кайпер кофейный","Ди кайпер кофейный"],"path":"kofeynyiy-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1150.0,"Бутылка"]]},
