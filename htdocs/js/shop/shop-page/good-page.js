@@ -22,7 +22,17 @@ $.onready(function ()
 		map: $('#map .map'),
 		positionControl: $('.position-control'),
 		
-		cocktails: $('#coctails')
+		cocktails: $('#coctails'),
+		
+		photos:
+		{
+			root:     $('.photos'),
+			viewport: $('.photos .viewport'),
+			surface:  $('.photos .surface'),
+			prev:     $('.photos .prev'),
+			next:     $('.photos .next'),
+			items:   $$('.photos .point')
+		}
 	}
 	
 	var widget = new GoodPage(nodes)
