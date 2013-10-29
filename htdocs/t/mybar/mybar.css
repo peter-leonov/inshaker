@@ -28,7 +28,7 @@ html.loading .please-wait { display: block; }
 html.loading .main-box { display: none; }
 .please-wait { display: none; text-align: center; font-size: 19px; line-height: 39px; color: #fff; }
 .hidden { visibility: hidden; position: absolute !important; top: -20000px !important; background: none !important; }
-.main-box .wrapper-box { margin: 0 0 20px 0; }
+.main-box .wrapper-box { margin: 0 0 35px 0; }
 .main-box .wrapper-box .section-wrapper { padding: 20px; position: relative; }
 .main-box .wrapper-box .section-head { position: relative; }
 .main-box .wrapper-box .section-head .links { position: absolute; right: 28px; top: 8px; }
@@ -48,6 +48,7 @@ html.loading .main-box { display: none; }
 .main-box .cocktail-preview .control { position: absolute; width: 32px; height: 32px; background: url("mybar.png") no-repeat -984px -417px transparent; left: 10px; top: -3px; cursor: pointer; display: none; }
 
 /*ingredients-box*/
+.main-box .ingredients-box { margin-top: 50px; }
 .main-box .ingredients-box .section-head .bar-name-editable { position: relative; top: -1px; background: none; border: medium none; outline: none; color: inherit; display: block; float: left; font-size: inherit; color: #fff; font-weight: bold; text-shadow: inherit; width: 600px; }
 .main-box .ingredients-box .section-head .bar-name-editable:hover { outline: 2px dashed #f48; }
 .main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: absolute; top: 32px; left: 140px; }
