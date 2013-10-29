@@ -54,6 +54,7 @@ GoodPage.prototype =
 	{
 		this.initMap()
 		this.initCocktails()
+		this.renderPhotos()
 	},
 	
 	initMap: function ()
@@ -111,6 +112,31 @@ GoodPage.prototype =
 		a.appendChild(name)
 		
 		return li
+	},
+	
+	renderPhotos: function ()
+	{
+		var photos = this.nodes.photos,
+			items = photos.items
+		
+		var total = items.length,
+			last = photos.surface.appendChild(items[0].cloneNode(true))
+		
+		var list = new LazyList()
+		list.bind(photos)
+		list.configure({pageLength: 1, friction: 100, pageVelocity: 46.5, soft: Infinity, min: 75, max: 100})
+		list.load = function (nodes)
+		{
+			for (var i = 0, il = nodes.length; i < il; i++)
+			{
+				// buggy in Firefox
+				var image = nodes[i].firstChild
+				if (!image.src)
+					image.src = image.getAttribute('data-lazy-src')
+			}
+		}
+		list.setNodes(items, total)
+		list.load([last])
 	}
 }
 
