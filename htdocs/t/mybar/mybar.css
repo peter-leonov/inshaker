@@ -50,7 +50,7 @@ html.loading .main-box { display: none; }
 /*ingredients-box*/
 .main-box .ingredients-box .section-head .bar-name-editable { position: relative; top: -1px; background: none; border: medium none; outline: none; color: inherit; display: block; float: left; font-size: inherit; color: #fff; font-weight: bold; text-shadow: inherit; width: 600px; }
 .main-box .ingredients-box .section-head .advice { font-size: 10px; font-weight: normal; position: absolute; top: 32px; left: 140px; }
-.main-box .ingredients-box .search-box { height: 45px; position: relative; z-index: 5; }
+.main-box .ingredients-box .search-box { height: 45px; position: relative; z-index: 5; margin-right: -10px; }
 .main-box .ingredients-box .search-box button { font-size: 14px; height: 35px; vertical-align: middle; }
 .main-box .ingredients-box .search-box .search-button { width: 87px; }
 .main-box .ingredients-box .search-box .lucky-button { width: 107px; display: none; }
@@ -63,7 +63,7 @@ html.loading .main-box { display: none; }
 .main-box .ingredients-box .search-box .autocomplete .item .substr { font-weight: bold; }
 .main-box .ingredients-box .search-box .autocomplete .item .hint { font-size: 0.6em; color: #aaa; vertical-align: middle; }
 .main-box .ingredients-box .search-box .autocomplete .empty-message { display: none; color: #000; }
-.main-box .ingredients-box .search-box .query { width: 825px; height: 35px; box-sizing: border-box; -moz-box-sizing: border-box; font-size: 24px; vertical-align: middle; color: inherit; }
+.main-box .ingredients-box .search-box .query { width: 830px; height: 35px; box-sizing: border-box; -moz-box-sizing: border-box; font-size: 24px; vertical-align: middle; color: inherit; }
 .main-box .ingredients-box .ingredients-list,
 .main-box .maybe-have-box .ingredients-list { margin: 20px 0 0 0; }
 .main-box .ingredients-box .ingredients-list ul.by-list { position: relative; }
