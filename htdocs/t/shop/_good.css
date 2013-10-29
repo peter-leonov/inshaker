@@ -16,10 +16,6 @@
 #coctails li .image img { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 55%; }
 /* END COCKTAILS */
 
-.carousel { background: #444; position: relative; height: 374px; }
-.carousel .slides { width: 962px; height: 374px; overflow: hidden; }
-.carousel .slides li { float: left; }
-
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
 
