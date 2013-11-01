@@ -47,17 +47,20 @@ a { color: #ec118f; }
 
 
 #common-footer-spacer,
-#common-footer { height: 433px; margin-top: 50px; }
+#common-footer
+{ height: 433px; margin-top: 50px; color: #565656; }
 #common-footer { position: absolute; left: 0; bottom: 0; right: 0; z-index: 1; }
+#common-footer a { color: inherit; }
+#common-footer a:hover { color: #000; }
 #common-footer .wrapper { width: 962px; margin: 0 auto; background-color: #fff; }
 #common-footer .content { position: relative; }
-#common-footer .index { position: relative; z-index: 1; padding: 19px 0 0 19px; font-size: 12px; margin-bottom: -2px; }
+#common-footer .index { position: relative; z-index: 1; padding: 19px 0 0 19px; font-size: 12px; margin-bottom: -2px; border-bottom: solid 1px #ededed; }
 #common-footer .index .content { height: 255px; }
 #common-footer .index .theme { float: left; width: 188px; }
-#common-footer .index .theme .head { position: relative; font-size: 14px; padding-bottom: 14px; margin-bottom: 15px; text-indent: -1px; }
-#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 56px; border-left: 56px solid; border-right: 56px solid; height: 1px; left: 0; bottom: 0; }
+#common-footer .index .theme .head { position: relative; font-size: 14px; padding-bottom: 14px; margin-bottom: 15px; text-indent: -1px; color: #323232; }
+#common-footer .index .theme .head:after { content: ' '; position: absolute; width: 56px; border-left: 56px solid; border-right: 56px solid; height: 1px; left: 0; bottom: 0; border-left-color: #d6d6d6; background-color: #e0e0e0; border-right-color: #eaeaea; }
 #common-footer .index .theme .link { line-height: 20px; }
-#common-footer .bottom { padding: 0 19px; }
+#common-footer .bottom { padding: 0 19px; background-color: #f8f8f8; }
 #common-footer .bottom .content { height: 160px; }
 #common-footer .bottom .about-menu { position: absolute; top: 28px; left: 0px; font-size: 11px; }
 #common-footer .bottom .about-menu .link { padding: 7px; }
