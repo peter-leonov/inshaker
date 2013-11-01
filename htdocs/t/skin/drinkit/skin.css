@@ -1,9 +1,5 @@
 @media screen {
 
-/* add more X button FIXME: convert to a cammon-* class */
-#more:hover { background-color: #fc0066; color: #fff; }
-#more:hover .button { text-shadow: 0 0 5px #fff; color: #fff; text-decoration: none; }
-
 /* combinator.css */
 #combinator-page .dropdown-select .body .options .option:hover { color: #ec118f; }
 
