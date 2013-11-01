@@ -4,13 +4,6 @@ html { background: #b6651a url(bg.jpg) center top; } /* fixes centered body bg *
 body { background: center top; color: #000; }
 a { color: #ec118f; }
 
-#top,
-#top .logo,
-#top .link { background-image: url(top.png); }
-#top { border-bottom-color: #fff; background-color: #000; }
-#top .link { color: #fff; }
-#top .link:hover { border-bottom-color: #8dd013; }
-
 .cocktail-list .prev,
 .cocktail-list .next,
 .common-share-button i,
