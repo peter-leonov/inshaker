@@ -97,13 +97,6 @@ html.shop-section .we-have-more .in-stock-item .picture
 /* ratings.css */
 /*#ratings-page*/ .ratings-widget .head .switch { color: #f4a; }
 
-/* map */
-.common-map .position-control { background-image: url(bars-common.png); background-position: 0 0; }
-.common-map .point .icon { background-image: url(bars-common.png); background-position: -75px 0; }
-.common-map .point .title { color: #fff; }
-.common-map .point .point-name { color: #f4a; }
-.common-map .point.selected .point-name { color: #f00; }
-
 
 } /* @media screen */
 

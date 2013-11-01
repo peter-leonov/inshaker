@@ -95,7 +95,7 @@ html.blog-section #top .link.blog
 
 
 .common-map { position: relative; overflow: hidden; background-color: #ccc !important; }
-.common-map .position-control { position: absolute; z-index: 7; left: 20px; top: 20px; width: 61px; height: 106px; background-position: 0 0; opacity: 0.3 }
+.common-map .position-control { position: absolute; z-index: 7; left: 20px; top: 20px; width: 61px; height: 106px; background: url(common-map.png) 0 0; opacity: 0.3 }
 .common-map .position-control:hover { opacity: 1; }
 .common-map .position-control .to-top,
 .common-map .position-control .to-right,
@@ -113,12 +113,12 @@ html.blog-section #top .link.blog
 .common-map .point.selected { z-index: 4; }
 .common-map .point:hover { z-index: 5; }
 .common-map .point.selected .icon { background-position: -75px -25px; cursor: default; }
-.common-map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; cursor: pointer; }
+.common-map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; cursor: pointer; background: url(common-map.png) -75px 0; }
 .common-map .point .wider { position: absolute; width: 500px; left: -250px; text-align: center; pointer-events: none; }
-.common-map .point .title { display: none; margin-top: 10px; min-width: 170px; padding: 12px 14px; font-size: 15px; line-height: 23px; background: #000; background: rgba(0,0,0,0.85); border-radius: 5px; white-space: nowrap; text-align: left; }
+.common-map .point .title { display: none; margin-top: 10px; min-width: 170px; padding: 12px 14px; font-size: 15px; line-height: 23px; background: #000; background: rgba(0,0,0,0.85); border-radius: 5px; white-space: nowrap; text-align: left; color: #fff; }
 .common-map .point:hover .title { display: inline-block; }
-.common-map .point .point-name { display: block; font-size: 17px; margin: 0 0 0.2em; }
-.common-map .point.selected .point-name {  }
+.common-map .point .point-name { display: block; font-size: 17px; margin: 0 0 0.2em; color: #f4a; }
+.common-map .point.selected .point-name { color: #f00; }
 
 
 /* 0px to 10px rounded corners */
