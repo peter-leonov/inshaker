@@ -1,9 +1,5 @@
 @media screen {
 
-html { background: #b6651a url(bg.jpg) center top; } /* fixes centered body bg */
-body { background: center top; color: #000; }
-a { color: #ec118f; }
-
 .cocktail-list .prev,
 .cocktail-list .next,
 .common-share-button i,
