@@ -1,8 +1,5 @@
 @media screen {
 
-/* combinator.css */
-#combinator-page .dropdown-select .body .options .option:hover { color: #ec118f; }
-
 /* academy.css */
 #academy-page #video-blocks .item .head .example { background-repeat: no-repeat; background-image: url(hart.png); }
 
