@@ -70,3 +70,10 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }
 .body-wrapper { width: 920px; position: relative; }
+
+/* skin.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(236, 17, 143, 0.7); }
+#bars-page #sort-menu .bars-select dt,
+#bars-page #sort-menu .bars-select dd ul li.selected,
+#bars-page #sort-menu .bars-select dd ul li:hover { color: #ec118f; }

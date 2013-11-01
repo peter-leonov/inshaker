@@ -79,13 +79,6 @@ html.shop-section .we-have-more .in-stock-item .picture
 /* academy.css */
 #academy-page #video-blocks .item .head .example { background-repeat: no-repeat; background-image: url(hart.png); }
 
-/* bars.css */
-#bars-page .bar-mini.new a .label,
-#bars-page .bar-mini.new a .bar-name { background-color: rgba(101,178,0,0.7); }
-#bars-page #sort-menu .bars-select dt,
-#bars-page #sort-menu .bars-select dd ul li.selected,
-#bars-page #sort-menu .bars-select dd ul li:hover { color: #ec118f; }
-
 /* bar.css */
 #bar-page #main-column .info .block .head,
 #bar-page #bar-on-map .head { background-color: #333; }
