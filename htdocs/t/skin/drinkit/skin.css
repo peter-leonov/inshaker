@@ -4,15 +4,6 @@
 #more:hover { background-color: #fc0066; color: #fff; }
 #more:hover .button { text-shadow: 0 0 5px #fff; color: #fff; text-decoration: none; }
 
-/* cocktail.css */
-#cocktail-page button.rounded,
-#cocktail-page .square-list .prev,
-#cocktail-page .square-list .next { background-repeat: no-repeat; background-image: url(cocktails.png); }
-#cocktail-page button.rounded b,
-#cocktail-page button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
-#cocktail-page button.rounded b { color: #fff; }
-#cocktail-page button.strong b { color: #fff; }
-
 /* combinator.css */
 #combinator-page .dropdown-select .body .options .option:hover { color: #ec118f; }
 
