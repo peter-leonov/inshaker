@@ -191,6 +191,17 @@ html.msie-8 .common-box .common-title
 .common-share-button.barmen i { background-position: -100px 0; }
 
 
+/* lights and shadows */
+#top,
+.common-box
+{ box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+html.shop-section .we-have-more .in-stock-item .picture
+{ box-shadow: 0 1px 10px #000, inset 0 1px 10px #000; }
+.we-have-more .in-stock-item .name,
+.we-have-more .in-stock-item .price
+{ text-shadow: 0 1px 2px #000; color: #fff }
+
+
 .overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
 a.overall-technical-warning { text-decoration: none; }
 .overall-technical-warning:hover { background-color: #6b0; }
