@@ -202,6 +202,10 @@ html.shop-section .we-have-more .in-stock-item .picture
 .we-have-more .in-stock-item .price
 { text-shadow: 0 1px 2px #000; color: #fff }
 
+/* branding banners */
+#spotlighted i,
+#branded-image { display: none; }
+
 
 .overall-technical-warning { display: none; position: absolute; top: -25px; height: 25px; width: 100%; background-color: #fa0; color: #000; font-size: 15px; line-height: 25px; text-align: center; }
 a.overall-technical-warning { text-decoration: none; }
