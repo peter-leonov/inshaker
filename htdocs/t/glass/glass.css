@@ -24,8 +24,9 @@ body { min-width: 985px; position: relative; min-height: 100%; }
 html { background: #b6651a url(common-bg.jpg) center top; } /* fixes centered body bg */
 body { background: center top; color: #000; }
 
+/* links and their colors */
 a { color: #ec118f; }
-
+.cocktail-preview .link { color: inherit; }
 
 /* art goes here */
 
