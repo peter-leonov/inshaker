@@ -107,10 +107,11 @@ html.msie-8 .common-box .common-title
 }
 .common-box.common-column-2n .common-title { background-position: -26px -175px, 602px -175px; }
 .common-box.common-column-1n .common-title { background-position: -26px -175px, 285px -175px; }
-.common-box .common-title .common-name { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
-.common-box .common-mini { height: 40px; padding: 0 22px; background: url(common.png) 0 -125px no-repeat; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; }
+.common-box .common-title .common-name { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: #fff; text-shadow: 0 0 3px #fff, 1px 1px 0px #000; }
+.common-box .common-mini { height: 40px; padding: 0 22px; background: url(common.png) 0 -125px no-repeat; border: 1px solid; border-bottom: 1px solid; border-radius: 7px; color: #fff; border-color: rgba(200, 200, 200, 0.5); text-shadow: 1px 1px 0px #000; }
+.common-box .common-content { background-color: #fff; }
 .common-box .common-content-plain { padding: 15px 19px 15px 19px; }
-.common-box .common-content-gradiented { padding: 14px 19px 14px 19px; background: url(common.png) 0 -250px repeat-x; }
+.common-box .common-content-gradiented { padding: 14px 19px 14px 19px; background: #fff url(common.png) 0 -250px repeat-x; border-color: #fff; }
 .common-box .common-top { border-top-left-radius: 7px; border-top-right-radius: 7px; }
 .common-box .common-bottom { border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; }
 
