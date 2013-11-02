@@ -8,15 +8,15 @@
   background: url(/skin/2013.11/spotlighted.png) 0 0;
 }
 
+#branded-image-holder
+{
+  height: 1320px; position: absolute; top: 154px; bottom: auto;
+}
 #branded-image
 {
   display: block;
-  width: 510px; height: 570px; left: 50px; bottom: -596px;
-  background: url(/skin/2013.11/image.jpg) no-repeat;
-}
-#branded-image-holder
-{
-  height: 1040px; position: absolute; top: 65px; bottom: auto;
+  width: 315px; height: 814px; right: 0; top: 23px;
+  background: #fff url(/skin/2013.11/image.jpg) center no-repeat;
 }
 
 } /* @media screen */
