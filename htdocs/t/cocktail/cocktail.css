@@ -233,11 +233,6 @@ html.msie-6 .what-need dd { zoom: 1; }
 
 #b-more { display: none; }
 
-#ancient-browser-warning,
-#branded-image-holder,
-#top,
-#common-footer-spacer,
-#common-footer { display: none; }
 input { border: none; background: none; }
 
 #print-logo-hd { position: absolute; top: 0; right: 0; width: 100px; }

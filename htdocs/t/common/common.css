@@ -68,7 +68,7 @@ a { color: #ec118f; }
 #common-footer .bottom .social { position: absolute; right: -7px; top: 20px; }
 #common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 928px; height: 60px; text-indent: -1000px; overflow: hidden; background: url(common.png) 0 -50px no-repeat; }
 
-#branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
+#branded-image-holder { display: none; position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
 #branded-image-holder .center { width: 962px; height: 100%; margin: 0 auto; position: relative; }
 #branded-image { display: block; position: absolute; border-radius: 7px; }
 html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
@@ -250,6 +250,7 @@ html.msie-8 #ancient-browser-warning
 
 @media print {
 
+#branded-image-holder,
 #ancient-browser-warning,
 #top,
 #common-footer-spacer,

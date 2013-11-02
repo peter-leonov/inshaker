@@ -12,8 +12,6 @@ html { overflow-y: scroll; }
 #main-column .about .facts li img { float: left; width: 90px; margin: 8px 10px 4px 0; border-radius: 7px; }
 #main-column .about .facts li:nth-child(1) img { float: right; margin: 8px 0 4px 10px; }
 
-#branded-image-holder { display: none; }
-
 #groups-list { overflow: hidden; border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; font-size: 20px; }
 #groups-list .item { float: left; margin: 0 60px 25px 0; }
 #groups-list .item:nth-child(3n) { margin-right: 0; }

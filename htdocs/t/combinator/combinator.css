@@ -3,8 +3,6 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #spotlighted { top: -10px; right: 21px; }
 #spotlighted i { padding: 10px; background-color: rgba(0,0,0,0.85); border-radius: 3px; }
 
-#branded-image-holder { display: none; }
-
 .common-box .common-title { background: none; z-index: 1; position: relative; }
 #main-column { z-index: 2; }
 

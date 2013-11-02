@@ -1,6 +1,5 @@
 html {overflow-y: scroll;}
 #common-main-wrapper { position: relative; z-index: 1; }
-#branded-image-holder { display: none; }
 
 #mobile-bar
 {
