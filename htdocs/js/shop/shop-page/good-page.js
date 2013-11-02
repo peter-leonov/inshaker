@@ -7,6 +7,10 @@
 
 <!--# include virtual="shop-point.js" -->
 
+<!--# include virtual="/liby/modules/motion.js" -->
+<!--# include virtual="/liby/modules/motion-types.js" -->
+<!--# include virtual="/liby/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
 
 $.onready(function ()
 {
