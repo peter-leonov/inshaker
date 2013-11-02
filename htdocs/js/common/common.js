@@ -54,4 +54,4 @@ require.names =
 	'Good': '/js/entities/Good.js'
 }
 
-<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/skin/$date_local/skin-$date_local.js" -->
+<!--# config timefmt="%Y.%m" --><!--# include virtual="/skin/$date_local/skin.js" -->
