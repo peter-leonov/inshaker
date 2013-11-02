@@ -30,7 +30,7 @@
 .ingredient-window .cocktail-list .prev { left: 15px; }
 .ingredient-window .cocktail-list .next { right: 15px; }
 .ingredient-window .cocktail-list .viewport { width: 625px; height: 133px; margin: 0 auto;  position: relative; overflow: hidden; }
-.ingredient-window .cocktail-list .viewport .surface { width: 100000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
+.ingredient-window .cocktail-list .viewport .surface { width: 200000px; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
 
 .ingredient-window .cocktail-list .cocktail-preview { width: 125px; float: left; text-align: center; font-size: 12px; }
 .ingredient-window .cocktail-list .cocktail-preview .link { display: block; width: 95px; margin: 0 auto; }
