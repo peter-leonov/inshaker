@@ -130,21 +130,21 @@ var Controller = {
 			}
 		}
 		
-		var bars = Bar.getByCocktailName(name)
-		if (bars.length)
-		{
-			var a = $('#where-to-taste')
-			a.classList.remove('hidden')
-			
-			if (bars.length == 1)
-			{
-				a.href = bars[0].pageHref()
-			}
-			else
-			{
-				a.href = '/bars.html#cocktail=' + encodeURIComponent(name)
-			}
-		}
+		// var bars = Bar.getByCocktailName(name)
+		// if (bars.length)
+		// {
+		// 	var a = $('#where-to-taste')
+		// 	a.classList.remove('hidden')
+		// 	
+		// 	if (bars.length == 1)
+		// 	{
+		// 		a.href = bars[0].pageHref()
+		// 	}
+		// 	else
+		// 	{
+		// 		a.href = '/bars.html#cocktail=' + encodeURIComponent(name)
+		// 	}
+		// }
 		
 		this.lh.addEventListener('change', function (e)
 		{
