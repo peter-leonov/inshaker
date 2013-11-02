@@ -1,6 +1,6 @@
 html { overflow-y: scroll; min-height: 100%; position: relative; }
 
-#spotlighted { right: 27px; }
+#spotlighted { right: 23px; }
 
 .common-box .common-title { background: none; z-index: 1; position: relative; }
 #main-column { z-index: 2; }
