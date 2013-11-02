@@ -28,15 +28,7 @@ $.onready(function ()
 		
 		cocktails: $('#coctails'),
 		
-		photos:
-		{
-			root:     $('.photos'),
-			viewport: $('.photos .viewport'),
-			surface:  $('.photos .surface'),
-			prev:     $('.photos .prev'),
-			next:     $('.photos .next'),
-			items:   $$('.photos .point')
-		}
+		photos: $('.photos')
 	}
 	
 	var widget = new GoodPage(nodes)
