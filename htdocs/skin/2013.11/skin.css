@@ -4,8 +4,8 @@
 #spotlighted i
 {
   display: block;
-  width: 53px; height: 40px; right: -6px; top: 16px;
-  background: url(/skin/2013.11/spotlighted.png) 0 0;
+  width: 116px; height: 25px; right: -10px; top: 23px;
+  background: url(/skin/2013.11/logo.png) 0 0 no-repeat;
 }
 
 #branded-image-holder
