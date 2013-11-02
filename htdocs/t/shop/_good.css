@@ -27,23 +27,21 @@
 
 #promo { padding-top: 0; margin: 0;}
 
-.photos .viewport,
-.photos { overflow: hidden; position: relative; }
+.photos { position: relative; }
+.photos .viewport { overflow:hidden; position:relative; height:374px; }
+.photos .surface { width:20000px; height: 374px; }
+.photos .point { width: 962px; height: 374px; float:left; }
+.photos ul { padding-top:5px; }
+.photos li { width:8em; text-align:center; float:left; width:110px; }
+.photos img { display:block; margin:0 auto 5px; }
 
-.photos .viewport { cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; }
-.photos .viewport.grabbing { cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing; }
-.photos .viewport .point { float: left; }
-.photos .viewport .surface { width: 20000px; padding: 0; margin: 0; }
 .photos .prev,
 .photos .next { position: absolute; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
 .photos:hover .prev,
 .photos:hover .next { display: block; }
 .photos .prev { left: 0; background-position: -60px 0; }
 .photos .next { right: 0; background-position: 0 0; }
-.photos .prev.disabled { background-position: -60px -60px; cursor: default; }
-.photos .next.disabled { background-position: 0 -60px; cursor: default; }
-
-.photos .viewport .point,
-.photos { width: 962px; height: 374px; }
+.photos .prev.disabled { display: none; }
+.photos .next.disabled { display: none; }
 .photos .prev,
 .photos .next { top: 159px; }
