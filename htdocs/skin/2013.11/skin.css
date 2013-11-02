@@ -7,6 +7,10 @@
   width: 116px; height: 25px; right: -10px; top: 23px;
   background: url(/skin/2013.11/logo.png) center center no-repeat;
 }
+#combinator-page #spotlighted i
+{
+  background: url(/skin/2013.11/logo-black.png) center center no-repeat;
+}
 
 #branded-image-holder
 {
