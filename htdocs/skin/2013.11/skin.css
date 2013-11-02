@@ -1,0 +1,22 @@
+/* skin.css */
+@media screen {
+
+#spotlighted i
+{
+  display: block;
+  width: 53px; height: 40px; right: -6px; top: 16px;
+  background: url(/skin/2013.11/spotlighted.png) 0 0;
+}
+
+#branded-image
+{
+  display: block;
+  width: 510px; height: 570px; left: 50px; bottom: -596px;
+  background: url(/skin/2013.11/image.jpg) no-repeat;
+}
+#branded-image-holder
+{
+  height: 1040px; position: absolute; top: 65px; bottom: auto;
+}
+
+} /* @media screen */
