@@ -1,4 +1,4 @@
-html { overflow-y: scroll; }
+#branded-image-holder { display: none; }
 
 .b-content { padding: 20px; }
 
