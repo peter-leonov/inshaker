@@ -19,4 +19,11 @@
   background: #fff url(/skin/2013.11/image.jpg) center no-repeat;
 }
 
+#cocktail-page #branded-image-holder,
+#cocktails-page #branded-image-holder,
+#ratings-page #branded-image-holder,
+#academy-page #branded-image-holder,
+#bar-page #branded-image-holder
+{ display: block; }
+
 } /* @media screen */
