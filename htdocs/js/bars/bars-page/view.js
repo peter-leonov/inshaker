@@ -210,7 +210,7 @@ Me.prototype =
 		{
 			nodes.titleSearch.hide()
 			nodes.titleAll.value.firstChild.nodeValue = allBarsCount
-			nodes.titleAll.unit.firstChild.nodeValue = allBarsCount.plural('лучший коктейльный бар', 'лучших коктейльных бара', 'лучших коктейльных баров')
+			nodes.titleAll.unit.firstChild.nodeValue = allBarsCount.plural('лучший бар', 'лучших бара', 'лучших баров')
 			nodes.titleAll.root.show()
 		}
 	},

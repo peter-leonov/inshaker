@@ -69,8 +69,10 @@ a { color: #ec118f; }
 #common-footer .bottom .alcohol-harm { position: absolute; top: 70px; left: 0; width: 928px; height: 60px; text-indent: -1000px; overflow: hidden; background: url(common.png) 0 -50px no-repeat; }
 
 #branded-image-holder { position: absolute; z-index: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; background-position: 0 0; }
-#branded-image-holder .center { width: 1px; height: 1px; margin: 0 auto; position: relative; }
-#branded-image { display: block; position: absolute; }
+#branded-image-holder .center { width: 962px; height: 100%; margin: 0 auto; position: relative; }
+#branded-image { display: block; position: absolute; border-radius: 7px; }
+html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; }
+html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 
 #spotlighted { position: absolute; z-index: 10; right: 0; top: 0; text-decoration: none; }
 #combinator-page #spotlighted { right: 23px; }
@@ -203,6 +205,7 @@ html.msie-8 .common-box .common-title
 
 /* lights and shadows */
 #top,
+#branded-image,
 .common-box
 { box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
 html.shop-section .we-have-more .in-stock-item .picture
@@ -258,4 +261,4 @@ input { border: none; background: none; }
 
 } /* @media print */
 
-<!--# config timefmt="%Y.%m" --><!--# include virtual="/t/skin/$date_local/skin-$date_local.css" -->
+<!--# config timefmt="%Y.%m" --><!--# include virtual="/skin/$date_local/skin.css" -->
