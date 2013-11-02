@@ -26,7 +26,7 @@ var Me =
   }
 }
 
-var link = '/'
+var link = '/products/39/absolut-originality'
 
 Me.initialize
 ({
