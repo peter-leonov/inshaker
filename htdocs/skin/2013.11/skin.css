@@ -14,12 +14,12 @@
 
 #branded-image-holder
 {
-  height: 1320px; position: absolute; top: 154px; bottom: auto;
+  height: 956px; position: absolute; top: 154px; bottom: auto;
 }
 #branded-image
 {
   display: block;
-  width: 315px; height: 814px; right: 0; top: 23px;
+  width: 315px; height: 450px; right: 0; top: 23px;
   background: #fff url(/skin/2013.11/image.jpg) center no-repeat;
 }
 
