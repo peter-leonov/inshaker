@@ -149,7 +149,7 @@ html.msie-8 .common-box .common-title
 .common-map .point:hover { z-index: 5; }
 .common-map .point.selected .icon { background-position: -75px -25px; cursor: default; }
 .common-map .point .icon { position: absolute; left: -10px; top: -24px; width: 21px; height: 25px; background-position: -75px 0; cursor: pointer; background: url(common-map.png) -75px 0; }
-.common-map .point .wider { position: absolute; width: 500px; left: -250px; text-align: center; pointer-events: none; }
+.common-map .point .wider { position: absolute; width: 500px; height: 0; left: -250px; text-align: center; pointer-events: none; }
 .common-map .point .title { display: none; margin-top: 10px; min-width: 170px; padding: 12px 14px; font-size: 15px; line-height: 23px; background: #000; background: rgba(0,0,0,0.85); border-radius: 5px; white-space: nowrap; text-align: left; color: #fff; }
 .common-map .point:hover .title { display: inline-block; }
 .common-map .point .point-name { display: block; font-size: 17px; margin: 0 0 0.2em; color: #f4a; }
