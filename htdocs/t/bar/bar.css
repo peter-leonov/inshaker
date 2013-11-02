@@ -75,6 +75,10 @@
 .photos.geometry-big .prev,
 .photos.geometry-big .next { top: 132px; }
 
+/* skin.css */
+#bar-page #main-column .info .block .head,
+#bar-page #bar-on-map .head { background-color: #333; }
+
 
 #share-box { position: absolute; right: 1px; top: 0; }
 

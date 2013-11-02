@@ -246,7 +246,7 @@ Me.prototype =
 		{
 			var label = document.createElement('span')
 			label.className = 'label'
-			label.appendChild(document.createTextNode('Бар недавно открылся, заходи посмотреть!'))
+			label.appendChild(document.createTextNode('Бар открылся, заходи посмотреть!'))
 			nameCont.appendChild(label)
 			main.classList.add(bar.labelType)
 		}

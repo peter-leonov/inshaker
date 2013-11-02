@@ -68,6 +68,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 .dropdown-select.single .button { cursor: default; color: inherit; }
 .dropdown-select .body { display: none; position: absolute; z-index: 1; left: -17px; top: -9px; }
 .dropdown-select .body .options { position: relative; padding: 10px 15px; background-color: #fff; border: 2px solid #ccc; border-radius: 10px; }
+.dropdown-select .body .options .option:hover { color: #ec118f; }
 .dropdown-select .body .options .option { font-size: 14px; line-height: 20px; cursor: pointer; white-space: nowrap; }
 .dropdown-select .body .options .option.selected { visibility: hidden; }
 .dropdown-select.open { z-index: 200; }

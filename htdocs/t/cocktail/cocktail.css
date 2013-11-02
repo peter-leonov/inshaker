@@ -167,6 +167,16 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #share .frame { display: block; width: 100%; height: 22px; overflow: hidden; border: none; opacity: 0.5; }
 #share:hover .frame { opacity: 1; }
 
+/* skin.css */
+#cocktail-page button.rounded,
+#cocktail-page .square-list .prev,
+#cocktail-page .square-list .next { background-repeat: no-repeat; background-image: url(cocktail.png); }
+#cocktail-page button.rounded b,
+#cocktail-page button.strong b { text-shadow: 1px 1px 1px rgba(0,0,0,0.4); }
+#cocktail-page button.rounded b { color: #fff; }
+#cocktail-page button.strong b { color: #fff; }
+
+
 #print-logo-hd { display: none; } 
 
 } /* @media screen */

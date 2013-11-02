@@ -15,7 +15,7 @@ html {overflow-y: scroll;}
 .bar-mini { float: left; margin: 20px 25px 0 0; }
 .bar-mini a { display: block; position:relative; width: 290px; height: 200px; background-position: 0 0; color: #fff; }
 .bar-mini a .label,
-.bar-mini a .bar-name { position: absolute; left: 0; top: 161px; right: 0px; height: 30px; padding: 9px 10px 0px 15px; font-size: 13px; background-color: rgba(0,0,0,0.6); }
+.bar-mini a .bar-name { position: absolute; overflow: hidden; left: 0; top: 161px; right: 0px; height: 30px; padding: 9px 0 0 15px;  font-size: 15px; white-space: nowrap; text-overflow: ellipsis; background-color: rgba(0,0,0,0.6); }
 
 .bar-mini a,
 .bar-mini a .label,
@@ -70,3 +70,10 @@ html.loading .please-wait { display: block; font-size: 16px; margin: 0; padding:
 
 #main-wrapper .column { width: 958px; /*two pixels for borders*/ }
 .body-wrapper { width: 920px; position: relative; }
+
+/* skin.css */
+#bars-page .bar-mini.new a .label,
+#bars-page .bar-mini.new a .bar-name { background-color: rgba(236, 17, 143, 0.7); }
+#bars-page #sort-menu .bars-select dt,
+#bars-page #sort-menu .bars-select dd ul li.selected,
+#bars-page #sort-menu .bars-select dd ul li:hover { color: #ec118f; }

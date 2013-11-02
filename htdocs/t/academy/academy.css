@@ -6,8 +6,8 @@
 #video-blocks .item .head .example
 {
   position: absolute; right: 0; padding: 4px 5px 4px 36px;
-  background-size: 35px;
   font-size: 15px; letter-spacing: 1px;
+  background: url(hart.png) no-repeat; background-size: 35px;
 }
 #video-blocks .item .video { width: 588px; height: 331px; margin: 0 0 15px 0; position: relative; }
 #video-blocks .item .video .player { width: 588px; height: 331px; border: none; }
