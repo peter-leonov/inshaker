@@ -28,7 +28,6 @@
 .ratings-widget .rating-name { font-size: 18px; }
 .ratings-widget .rating-name .count { font-size: 10px; color: #bbb; vertical-align: super; margin-left: 5px; }
 
-.ratings-widget .ingredients-list .cocktail-ingredient { margin-right: 3px;  }
 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:last-child:after { content: '…' !important; }
 html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:first-child + a + a + a:after { content: '…' !important; }
 
@@ -96,7 +95,7 @@ html.msie-8 .ratings-widget .ingredients-list.overflowed .cocktail-ingredient:fi
 .ratings-widget .rating-total li .cocktail { padding-left: 160px; padding-top: 30px; padding-bottom: 36px; width: 550px; }
 .ratings-widget .rating-total li .cocktail h3 { padding-bottom: 5px; }
 .ratings-widget .rating-total li .cocktail h3 .cocktail-name { font-size: 18px; color: #000; }
-.ratings-widget .rating-total li .cocktail .cocktail-ingredient { font-size: 11px; color: #505050; }
+.ratings-widget .rating-total li .cocktail .cocktail-ingredient { white-space: nowrap; font-size: 11px; color: #505050; }
 
 <!--# include virtual="/t/ingredient-popup.css" -->
 

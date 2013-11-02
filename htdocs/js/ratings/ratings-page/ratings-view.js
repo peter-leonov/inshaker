@@ -152,6 +152,7 @@ Me.prototype =
 			var a = Nct('a', 'cocktail-ingredient', name)
 			a['data-ingredient'] = ingObj
 			links.appendChild(a)
+			links.appendChild(T(' '))
 		}
 		
 		this.planToRender(links)
