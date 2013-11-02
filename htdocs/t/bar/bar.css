@@ -42,7 +42,7 @@
 #main-column .info .about .index { font-size: 48px; margin: 15px 0 20px -3px; }
 
 #bar-on-map { position: relative; z-index: 1; margin-top: 20px; }
-#bar-on-map .head { height: 31px; padding: 0 20px; position: relative; line-height: 28px; color: #fff; }
+#bar-on-map .head { height: 37px; padding: 0 20px; position: relative; font-size: 15px; line-height: 37px; color: #fff; }
 #bar-on-map .head .taxi { position: absolute; right: 20px; top: 0; display: none; }
 #bar-on-map .head .taxi .name i { display: inline-block; width: 15px; height: 6px; margin: 1px 2px; background-image: url(chequered-pattern.png); }
 #bar-on-map .head .taxi .name { color: #e6d408; }
@@ -76,10 +76,10 @@
 
 /* skin.css */
 #bar-page #main-column .info .block .head,
-#bar-page #bar-on-map .head { background-color: #333; }
+#bar-page #bar-on-map .head { background-color: #000; }
 
 
-#share-box { position: absolute; right: 1px; top: 0; }
+#share-box { position: absolute; right: 7px; top: 4px; }
 
 #map { height: 330px; }
 
