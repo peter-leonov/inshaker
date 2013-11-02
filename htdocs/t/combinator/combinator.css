@@ -1,5 +1,8 @@
 html { overflow-y: scroll; min-height: 100%; position: relative; }
 
+#spotlighted { top: -10px; right: 21px; }
+#spotlighted i { padding: 10px; background-color: rgba(0,0,0,0.85); border-radius: 3px; }
+
 #branded-image-holder { display: none; }
 
 .common-box .common-title { background: none; z-index: 1; position: relative; }
@@ -14,14 +17,14 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #the-main-menu.state-up .center { border-top: 10px solid #eee; margin-top: -10px; }
 #the-main-menu.fixed { position: fixed; }
 
-#search-box { position: relative; z-index: 10; top: -3px; }
-#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 690px; }
+#search-box { position: relative; z-index: 10; top: -3px; width: 750px; }
+#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 590px; }
 #search-box .query,
 #search-box .button { font-size: 24px; vertical-align: middle; }
 #search-box .button.plus { width: 40px; }
 #search-box .button.search { width: 100px; }
 
-#search-box .autocomplete { display: none; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; background: rgba(255,255,255,0.9); font-size: 20px; }
+#search-box .autocomplete { display: none; width: 595px; border: solid #ddd; border-width: 0px 1px 1px 1px; background: #fff; background: rgba(255,255,255,0.9); font-size: 20px; }
 #search-box .autocomplete.focused { display: block; }
 #search-box .autocomplete .empty-message { display: none; }
 #search-box .autocomplete.empty .empty-message { display: block; }

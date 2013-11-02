@@ -75,7 +75,6 @@ html.float-fixed #branded-image-holder { position: fixed; top: 0; bottom: auto; 
 html.stick-bottom #branded-image-holder { top: auto; bottom: 0; }
 
 #spotlighted { position: absolute; z-index: 10; right: 0; top: 0; text-decoration: none; }
-#combinator-page #spotlighted { right: 23px; }
 #spotlighted i { position: absolute; }
 
 
