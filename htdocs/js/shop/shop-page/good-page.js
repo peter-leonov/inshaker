@@ -116,7 +116,6 @@ GoodPage.prototype =
 			aniOpts = {animationType: 'easeInOutCubic'}
 		
 		new RollingImagesLite(photos, aniOpts)
-		photos.RollingImagesLite.sync()
 		photos.RollingImagesLite.goInit()
 	}
 }
