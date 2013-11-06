@@ -50,7 +50,7 @@ GoodPage.prototype =
 	{
 		this.initMap()
 		this.initCocktails()
-		this.renderPhotos()
+		this.bindScroller()
 	},
 	
 	initMap: function ()
@@ -110,7 +110,7 @@ GoodPage.prototype =
 		return li
 	},
 	
-	renderPhotos: function ()
+	bindScroller: function ()
 	{
 		var photos = this.nodes.photos,
 			aniOpts = {animationType: 'easeInOutCubic'}
