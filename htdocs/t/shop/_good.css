@@ -16,10 +16,6 @@
 #coctails li .image img { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 55%; }
 /* END COCKTAILS */
 
-.carousel { background: #444; position: relative; height: 374px; }
-.carousel .slides { width: 962px; height: 374px; overflow: hidden; }
-.carousel .slides li { float: left; }
-
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
 
@@ -30,3 +26,17 @@
 /* END MAP */
 
 #promo { padding-top: 0; margin: 0;}
+
+.photos { position: relative; }
+.photos .viewport { overflow:hidden; position:relative; height:374px; }
+.photos .surface { height: 100%; white-space: nowrap; }
+.photos .point { display: inline-block; vertical-align: top; width: 100%; height: 100%; }
+
+.photos .prev,
+.photos .next { display: none; position: absolute; top: 158px; z-index: 10; width: 60px; height: 60px; background: url(photos-buttons.png); }
+.photos:hover .prev,
+.photos:hover .next { display: block; }
+.photos .prev { left: 0; background-position: -60px 0; }
+.photos .next { right: 0; background-position: 0 0; }
+.photos .prev.disabled,
+.photos .next.disabled { display: none; }

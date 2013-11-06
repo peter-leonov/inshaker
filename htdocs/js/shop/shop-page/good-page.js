@@ -7,6 +7,10 @@
 
 <!--# include virtual="shop-point.js" -->
 
+<!--# include virtual="/liby/modules/motion.js" -->
+<!--# include virtual="/liby/modules/motion-types.js" -->
+<!--# include virtual="/liby/modules/animation.js" -->
+<!--# include virtual="/js/common/rolling-images.js" -->
 
 $.onready(function ()
 {
@@ -22,7 +26,9 @@ $.onready(function ()
 		map: $('#map .map'),
 		positionControl: $('.position-control'),
 		
-		cocktails: $('#coctails')
+		cocktails: $('#coctails'),
+		
+		photos: $('.photos')
 	}
 	
 	var widget = new GoodPage(nodes)
@@ -44,6 +50,7 @@ GoodPage.prototype =
 	{
 		this.initMap()
 		this.initCocktails()
+		this.bindScroller()
 	},
 	
 	initMap: function ()
@@ -101,6 +108,11 @@ GoodPage.prototype =
 		a.appendChild(name)
 		
 		return li
+	},
+	
+	bindScroller: function ()
+	{
+		new RollingImagesLite(this.nodes.photos, {animationType: 'easeOutCubic', duration: 0.7})
 	}
 }
 
