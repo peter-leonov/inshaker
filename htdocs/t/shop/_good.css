@@ -35,12 +35,10 @@
 .photos img { display:block; margin:0 auto 5px; }
 
 .photos .prev,
-.photos .next { position: absolute; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
+.photos .next { position: absolute; top: 159px; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
 .photos:hover .prev,
 .photos:hover .next { display: block; }
 .photos .prev { left: 0; background-position: -60px 0; }
 .photos .next { right: 0; background-position: 0 0; }
 .photos .prev.disabled { display: none; }
 .photos .next.disabled { display: none; }
-.photos .prev,
-.photos .next { top: 159px; }
