@@ -29,16 +29,14 @@
 
 .photos { position: relative; }
 .photos .viewport { overflow:hidden; position:relative; height:374px; }
-.photos .surface { width:20000px; height: 374px; }
-.photos .point { width: 962px; height: 374px; float:left; }
-.photos li { width:8em; text-align:center; float:left; width:110px; }
-.photos img { display:block; margin:0 auto 5px; }
+.photos .surface { width:20000px; height: 100%; }
+.photos .point { width: 962px; height: 100%; float:left; }
 
 .photos .prev,
-.photos .next { position: absolute; top: 158px; z-index: 10; width: 60px; height: 60px; display: none; background: url(photos-buttons.png); }
+.photos .next { display: none; position: absolute; top: 158px; z-index: 10; width: 60px; height: 60px; background: url(photos-buttons.png); }
 .photos:hover .prev,
 .photos:hover .next { display: block; }
 .photos .prev { left: 0; background-position: -60px 0; }
 .photos .next { right: 0; background-position: 0 0; }
-.photos .prev.disabled { display: none; }
+.photos .prev.disabled,
 .photos .next.disabled { display: none; }
