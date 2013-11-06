@@ -29,8 +29,8 @@
 
 .photos { position: relative; }
 .photos .viewport { overflow:hidden; position:relative; height:374px; }
-.photos .surface { width:20000px; height: 100%; }
-.photos .point { width: 962px; height: 100%; float:left; }
+.photos .surface { height: 100%; white-space: nowrap; }
+.photos .point { display: inline-block; vertical-align: top; width: 100%; height: 100%; }
 
 .photos .prev,
 .photos .next { display: none; position: absolute; top: 158px; z-index: 10; width: 60px; height: 60px; background: url(photos-buttons.png); }
