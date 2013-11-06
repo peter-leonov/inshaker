@@ -112,10 +112,10 @@ GoodPage.prototype =
 	
 	bindScroller: function ()
 	{
-		var photos = this.nodes.photos,
+		var
 			aniOpts = {animationType: 'easeInOutCubic'}
 		
-		new RollingImagesLite(photos, aniOpts)
+		new RollingImagesLite(this.nodes.photos, aniOpts)
 	}
 }
 
