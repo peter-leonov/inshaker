@@ -12,6 +12,11 @@ Me.prototype =
 		
 		document.documentElement.classList.remove('loading')
 		
+		// SEO: let search engines see the text block goes before giant cocktail list,
+		// and for real users we move the text below the list:
+		if (nodes.boxes[0])
+			nodes.root.appendChild(nodes.boxes[0])
+		
 		var items = nodes.cocktailItems,
 			cocktails = []
 		for (var i = 0, il = items.length; i < il; i++)
@@ -94,6 +99,7 @@ function onready ()
 	var nodes =
 	{
 		root: $('#main-column'),
+		boxes: $$('#main-column .box'),
 		groupName: $('#group-name'),
 		list: $('#cocktail-list'),
 		cocktailItems: $$('#cocktail-list li'),

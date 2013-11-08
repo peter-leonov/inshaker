@@ -1,11 +1,14 @@
 html { overflow-y: scroll; }
 
 #main-column { font-size: 14px; }
+#main-column .box { margin-bottom: 30px; }
 #main-column .b-content { padding: 20px; }
-#main-column .title h1 { display: inline; font-size: 21px; }
+#main-column .title h1,
+#main-column .title h2
+{ display: inline; }
 #main-column .title a { text-shadow: none; }
 #main-column .about { line-height: 20px; }
-#main-column .about .facts { width: 960px; margin: 0 0 25px; line-height: 21px; counter-reset: fact; }
+#main-column .about .facts { width: 960px; line-height: 21px; counter-reset: fact; }
 #main-column .about .facts .column { width: 426px; margin: 0 22px; display: inline-block; vertical-align: top; }
 #main-column .about .facts li { margin: 0 0 7px 0; clear: both; list-style: none; counter-increment: fact; }
 #main-column .about .facts li:before { display: inline-block; width: 20px; padding-right: 5px; margin-left: -25px; text-align: right; content: counter(fact) "."; }
@@ -21,14 +24,14 @@ html { overflow-y: scroll; }
 #groups-list .item .group:hover .name .count { text-decoration: none; }
 
 html.loading #cocktail-list { display: none; }
-#cocktail-list { border-top: 1px solid #eee; margin: 20px 0 10px 0; padding-top: 20px; }
+#cocktail-list { margin: 0 0 10px 0; padding-top: 20px; }
 
 
 .ingrediented-cocktail-list .group { overflow: hidden; margin: 0 0 50px 0; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
 
 .ingrediented-cocktail-list .group.collapsed .row { display: none; }
-.ingrediented-cocktail-list .group .group-name { font-size: 35px; }
+.ingrediented-cocktail-list .group .group-name { display: none; font-size: 35px; }
 .ingrediented-cocktail-list .group .group-name:first-letter { text-transform: uppercase; }
 .ingrediented-cocktail-list .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
 
