@@ -28,7 +28,7 @@ html.loading #cocktail-list { display: none; }
 .ingrediented-cocktail-list .group.collapsed { margin: 0 0 20px 0; }
 
 .ingrediented-cocktail-list .group.collapsed .row { display: none; }
-.ingrediented-cocktail-list .group .group-name { font-size: 35px; }
+.ingrediented-cocktail-list .group .group-name { display: none; font-size: 35px; }
 .ingrediented-cocktail-list .group .group-name:first-letter { text-transform: uppercase; }
 .ingrediented-cocktail-list .group .group-name .count { position: relative; top: -15px; padding: 0 0.4em; font-size: 0.45em; color: #ccc; }
 
