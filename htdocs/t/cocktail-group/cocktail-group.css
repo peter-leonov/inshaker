@@ -24,7 +24,7 @@ html { overflow-y: scroll; }
 #groups-list .item .group:hover .name .count { text-decoration: none; }
 
 html.loading #cocktail-list { display: none; }
-#cocktail-list { margin: 0 0 10px 0; padding-top: 20px; }
+#cocktail-list { padding-top: 20px; }
 
 
 .ingrediented-cocktail-list .group { overflow: hidden; margin: 0 0 50px 0; }
@@ -83,10 +83,6 @@ html.loading #cocktail-list { display: none; }
 .ingredient-preview .image { width: 100px; height: 100px; }
 .ingredient-preview .image { background-color: #eee; border-radius: 10px; }
 .ingredient-preview .name { display: block; margin: 5px 0 0 0; text-align: center; font-size: 12px;}
-
-#more { display: block; margin: 13px 0 35px; text-align: center; }
-#more .button { display: inline-block; padding: 10px 15px; border-radius: 5px; font-size: 20px; letter-spacing: 2px; }
-#more .button:hover { text-decoration: none; }
 
 <!--# include virtual="/t/popup.css" -->
 <!--# include virtual="/t/ingredient-popup.css" -->
