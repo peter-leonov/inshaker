@@ -96,7 +96,9 @@ html.blog-section #top .link.blog
 }
 
 /* really common rules */
-#common-main-wrapper { margin: 0 auto; width: 962px; }
+#common-main-wrapper,
+.common-main-wrapper
+{ margin: 0 auto; width: 962px; }
 .common-box { border-radius: 7px; }
 .common-box .common-title
 {
