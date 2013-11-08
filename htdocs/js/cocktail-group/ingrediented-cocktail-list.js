@@ -128,9 +128,8 @@ Me.prototype =
 	
 	hideButton: function ()
 	{
-		var more = this.nodes.more
-		
-		more.className = 'hidden'
+	  this.nodes.main.classList.add('common-bottom')
+		this.nodes.more.hide()
 	}
 }
 
