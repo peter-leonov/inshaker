@@ -3,7 +3,9 @@ html { overflow-y: scroll; }
 #main-column { font-size: 14px; }
 #main-column .box { margin-bottom: 30px; }
 #main-column .b-content { padding: 20px; }
-#main-column .title h1 { display: inline; font-size: 21px; }
+#main-column .title h1,
+#main-column .title h2
+{ display: inline; }
 #main-column .title a { text-shadow: none; }
 #main-column .about { line-height: 20px; }
 #main-column .about .facts { width: 960px; line-height: 21px; counter-reset: fact; }
