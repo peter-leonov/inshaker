@@ -20,13 +20,6 @@
 .b-content .viewport{overflow:hidden;position:relative;}
 .b-content .surface{padding:500px;}
 
-#more .button
-{
-  display: block; padding: 25px 0; border-top: 2px dashed; 
-  text-align: center;  font-size: 22px; letter-spacing: 2px; line-height: 22px;
-}
-
-
 .search-form { position: relative; z-index: 1; height: 32px; }
 .search-form input { box-sizing: border-box; -moz-box-sizing: border-box; width: 100%; padding: 4px 5px 4px 54px; border: none; border-bottom: 1px solid #ccc; background-color: transparent; font-size: 25px; }
 
