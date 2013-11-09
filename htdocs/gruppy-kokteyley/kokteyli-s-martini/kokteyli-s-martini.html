@@ -7,12 +7,12 @@
 </head>
 <body>
 <!--# include virtual="/inc/common-top.html" -->
-<div id="common-main-wrapper">
+<div class="common-main-wrapper" id="main-column">
 
-<div id="main-column" class="common-box">
+<div class="common-box box">
 	<div class="common-title title">
 	  <div class="common-name">
-		<h1 id="group-name" data-name="Коктейли с мартини">Коктейли с мартини</h1> / <a href="/gruppy-kokteyley/">Группы коктейлей</a>
+		<h1 id="group-name" data-name="Коктейли с мартини">Коктейли с мартини</h1>
 		</div>
 	</div>
 	
@@ -36,13 +36,19 @@
 				</div>
 			</ol>
 		</div>
-		
-		<ul id="cocktail-list" class="ingrediented-cocktail-list">
-			<!--# include virtual="list.html" -->
-		</ul>
-		<div class="common-bottom common-more" id="more"><a class="button">еще 30 коктейлей</a></div>
 	</div>
 </div></div>
+<div class="common-box box">
+  <div class="common-title title">
+    <div class="common-name">
+    <h2 id="group-name" data-name="Коктейли с мартини">Коктейли с мартини</h2> / <a href="/gruppy-kokteyley/">Группы коктейлей</a>
+    </div>
+  </div>
+  <ul class="common-content b-content ingrediented-cocktail-list" id="cocktail-list">
+      <!--# include virtual="list.html" -->
+  </ul class="common-content">
+  <div class="common-content common-bottom common-more" id="more"><a class="button">еще 30 коктейлей</a></div>
+</div class="common-box">
 
 </div id="common-main-wrapper">
 
