@@ -1,6 +1,9 @@
 default:
 	@echo "usage: make TASK"
 
+cache.purge:
+	rm -rf var/cache/
+
 remote:
 	ssh inshaker.back
 
