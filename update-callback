@@ -11,10 +11,8 @@ server = TCPServer.new $port
 loop do
   client = server.accept
   
-  # render the minimal HTTP 1.1 header
-  client.puts 'HTTP/1.1 200 OK'
-  client.puts 'Server: GithubCallbackHandler'
-  client.puts 'Connection: close'
+  # render the minimal HTTP 1.0 header
+  client.puts 'HTTP/1.0 200 OK'
   client.puts 'Content-Type: text/plain'
   client.puts '' # end of header
   
