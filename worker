@@ -48,7 +48,7 @@ class PostForkingHTTPServer
   end
   
   def process_request client
-    first_line = client.gets
+    first_line = client.gets # GET /bla-bla.bla123 HTTP/1.1
     m = %r{^GET /([a-zA-Z0-9\-\.]{1,25}) }.match(first_line)
     unless m
       # render the minimal HTTP 1.0 header
