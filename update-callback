@@ -1,56 +1,71 @@
 #!/usr/bin/env ruby
 require 'socket'
 
-# invoke with curl http://HOST:PORT/
 HOST = "127.0.0.1"
 PORT = 34543
 
-puts "Listening at #{HOST}:#{PORT}"
-warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
-
-
 Dir.chdir(File.dirname($PROGRAM_NAME))
 
-$log = $stdout.dup
 
-server = TCPServer.new(HOST, PORT)
+class PostForkingHTTPServer
 
-loop do
-  client = server.accept
+  def initialize host, port
+    @host = host
+    @port = port
+    
+    @log = $stdout.dup
+    @server = TCPServer.new(HOST, PORT)
+    
+    puts "Listening at #{HOST}:#{PORT}"
+    warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
+  end
   
-  # run the job in a worker
-  fork do
-    # worker doesn't need a server socket
-    server.close
-    
-    # redirect all output to the client socket
-    $stdout.reopen(client)
-    $stdout.sync = true
-    $stderr.reopen($stdout)
-    
-    m = /^GET (\S+) /.match(client.gets)
+  def listen_loop
+    loop do
+      client = @server.accept
+
+      # run the job in a worker
+      fork do
+        # worker doesn't need a server socket
+        @server.close
+
+        # redirect all output to the client socket
+        $stdout.reopen(client)
+        $stdout.sync = true
+        $stderr.reopen($stdout)
+        
+        process_request client
+      end
+
+      # server doesn't need a client socket
+      client.close
+    end
+  end
+  
+  def process_request client
+    first_line = client.gets
+    m = /^GET (\S+) /.match(first_line)
     unless m
       # render the minimal HTTP 1.0 header
       print "HTTP/1.0 400 Bad Request\r\n"
       print "\r\n" # end of header
       print "This server expects only GET requests. Thank you." # end of header
-      
+
       # never return from child
       exit
     end
-    
+
     uri = m[1]
-    $log.puts uri
-    
+    @log.puts uri
+
     # render the minimal HTTP 1.0 header
     print "HTTP/1.0 200 OK\r\n"
     print "Content-Type: text/plain\r\n"
     print "\r\n" # end of header
-    
+
     # hooray! do the job
     system('id')
   end
-  
-  # server doesn't need a client socket
-  client.close
 end
+
+PostForkingHTTPServer.new(HOST, PORT).listen_loop
