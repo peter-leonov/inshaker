@@ -11,6 +11,8 @@ warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
 
 Dir.chdir(File.dirname($PROGRAM_NAME))
 
+$log = $stdout.dup
+
 server = TCPServer.new(HOST, PORT)
 
 loop do
