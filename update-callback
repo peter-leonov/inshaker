@@ -5,6 +5,10 @@ require 'socket'
 HOST = "127.0.0.1"
 PORT = 34543
 
+puts "Listening at #{HOST}:#{PORT}"
+warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
+
+
 Dir.chdir(File.dirname($PROGRAM_NAME))
 
 server = TCPServer.new(HOST, PORT)
