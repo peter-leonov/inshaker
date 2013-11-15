@@ -27,7 +27,7 @@ class PostForkingHTTPServer
       client = @server.accept
 
       # run the job in a worker
-      fork do
+      child = fork do
         # worker doesn't need a server socket
         @server.close
 
@@ -41,6 +41,9 @@ class PostForkingHTTPServer
         # never return from a child
         exit!
       end
+
+      # be free, my boy
+      Process.detach child
 
       # server doesn't need a client socket
       client.close
