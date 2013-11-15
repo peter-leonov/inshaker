@@ -1,4 +1,6 @@
 #!/bin/sh
 
 # preserves var/cache for nginx
+echo Purging the cache…
 rm -r var/cache/*
+echo Done.
