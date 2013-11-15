@@ -10,6 +10,8 @@ Dir.chdir(File.dirname($PROGRAM_NAME))
 class PostForkingHTTPServer
 
   def initialize host, port
+    @routes = {}
+    
     @host = host
     @port = port
     
@@ -35,6 +37,9 @@ class PostForkingHTTPServer
         $stderr.reopen($stdout)
         
         process_request client
+        
+        # never return from a child
+        exit!
       end
 
       # server doesn't need a client socket
@@ -49,23 +54,40 @@ class PostForkingHTTPServer
       # render the minimal HTTP 1.0 header
       print "HTTP/1.0 400 Bad Request\r\n"
       print "\r\n" # end of header
-      print "This server expects only GET requests. Thank you." # end of header
-
-      # never return from child
-      exit
+      puts "This server expects only GET requests. Thank you." # end of header
+      return
     end
 
     uri = m[1]
     @log.puts uri
 
+    job = @routes[uri]
+    unless job
+      # render the minimal HTTP 1.0 header
+      print "HTTP/1.0 400 Not found\r\n"
+      print "\r\n" # end of header
+      puts "Not found." # end of header
+      return
+    end
+    
     # render the minimal HTTP 1.0 header
     print "HTTP/1.0 200 OK\r\n"
     print "Content-Type: text/plain\r\n"
     print "\r\n" # end of header
 
-    # hooray! do the job
-    system('id')
+    # hooray! finally, do the job
+    job.call
+  end
+
+  def get uri, &block
+    @routes[uri] = block
   end
 end
 
-PostForkingHTTPServer.new(HOST, PORT).listen_loop
+s = PostForkingHTTPServer.new(HOST, PORT)
+
+s.get '/hi' do
+  system('id')
+end
+
+s.listen_loop
