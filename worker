@@ -9,8 +9,6 @@ PORT = 34543
 class PostForkingHTTPServer
 
   def initialize host, port
-    @routes = {}
-    
     @host = host
     @port = port
     
@@ -51,45 +49,35 @@ class PostForkingHTTPServer
   
   def process_request client
     first_line = client.gets
-    m = /^GET (\S+) /.match(first_line)
+    m = %r{^GET /([a-zA-Z\-\.]{1,25})}.match(first_line)
     unless m
       # render the minimal HTTP 1.0 header
       print "HTTP/1.0 400 Bad Request\r\n"
       print "\r\n" # end of header
-      puts "This server expects only GET requests. Thank you." # end of header
+      puts "This server expects only GET /abc-def.xyz requests. Thank you."
       return
     end
 
-    uri = m[1]
-    @log.puts uri
+    job = m[1]
+    @log.puts job
+    command = "./worker-jobs/#{job}"
 
-    job = @routes[uri]
-    unless job
+    unless File.exists?(command)
       # render the minimal HTTP 1.0 header
-      print "HTTP/1.0 400 Not found\r\n"
+      print "HTTP/1.0 404 Not Found\r\n"
       print "\r\n" # end of header
-      puts "Not found." # end of header
+      puts "Not found."
       return
     end
-    
+
     # render the minimal HTTP 1.0 header
     print "HTTP/1.0 200 OK\r\n"
     print "Content-Type: text/plain\r\n"
     print "\r\n" # end of header
 
     # hooray! finally, do the job
-    job.call
-  end
-
-  def get uri, &block
-    @routes[uri] = block
+    Process.exec(command, "--worker")
   end
 end
 
-s = PostForkingHTTPServer.new(HOST, PORT)
-
-s.get '/update-callback' do
-  system('./worker-jobs/update-callback')
-end
-
-s.listen_loop
+s = PostForkingHTTPServer.new(HOST, PORT).listen_loop
