@@ -5,6 +5,7 @@ Dir.chdir(File.dirname($PROGRAM_NAME))
 
 HOST = "127.0.0.1"
 PORT = 34543
+PIDFILE = "var/worker.pid"
 
 class PostForkingHTTPServer
 
@@ -12,11 +13,27 @@ class PostForkingHTTPServer
     @host = host
     @port = port
     
-    @log = $stdout.dup
-    @server = TCPServer.new(HOST, PORT)
+    start
+  end
+  
+  def start
+    Signal.trap(:TERM, method(:stop))
+    Signal.trap(:QUIT, method(:stop))
+    Signal.trap(:INT,  method(:stop))
     
-    puts "Listening at #{HOST}:#{PORT}"
+    @log = $stdout.dup
+    
+    @server = TCPServer.new(HOST, PORT)
+    puts "Listening at #{HOST}:#{PORT}, pidfile: #{PIDFILE}"
     warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
+    
+    File.open(PIDFILE, "w") { |f| f.print Process.pid }
+  end
+  
+  def stop *garbage
+    File.unlink(PIDFILE)
+    puts "Worker stoped."
+    exit
   end
   
   def listen_loop
