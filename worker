@@ -89,7 +89,7 @@ end
 s = PostForkingHTTPServer.new(HOST, PORT)
 
 s.get '/update-callback' do
-  system('./jobs/update-callback')
+  system('./worker-jobs/update-callback')
 end
 
 s.listen_loop
