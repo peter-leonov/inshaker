@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# preserves var/cache for nginx
+rm -r var/cache/*
