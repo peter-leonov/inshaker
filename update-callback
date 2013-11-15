@@ -24,8 +24,8 @@ loop do
   # tell the client the server name
   client.puts "updating #{Socket.gethostname}"
   
-  # run job in a worker
-  child = fork do
+  # run the job in a worker
+  fork do
     # worker doesn't need a server socket
     server.close
     
@@ -38,8 +38,6 @@ loop do
     system('./update-callback-job')
   end
   
-  # avoid overusage of the service
-  Process.wait child
-  
+  # server doesn't need a client socket
   client.close
 end
