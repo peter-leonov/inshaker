@@ -47,9 +47,8 @@ loop do
     print "Content-Type: text/plain\r\n"
     print "\r\n" # end of header
     
-    puts uri
     # hooray! do the job
-    system('./update-callback-job')
+    system('id')
   end
   
   # server doesn't need a client socket
