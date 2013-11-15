@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 require 'socket'
 
-HOST = "127.0.0.1"
-PORT = 34543
-
 Dir.chdir(File.dirname($PROGRAM_NAME))
 
+HOST = "127.0.0.1"
+PORT = 34543
 
 class PostForkingHTTPServer
 
@@ -89,8 +88,8 @@ end
 
 s = PostForkingHTTPServer.new(HOST, PORT)
 
-s.get '/hi' do
-  system('id')
+s.get '/update-callback' do
+  system('./jobs/update-callback')
 end
 
 s.listen_loop
