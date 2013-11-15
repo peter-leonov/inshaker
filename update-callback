@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 require 'socket'
 
-# invoke with curl http://host:$PORT/
-$port="34543"
+# invoke with curl http://HOST:PORT/
+HOST = "127.0.0.1"
+PORT = 34543
 
 Dir.chdir(File.dirname($PROGRAM_NAME))
 
-server = TCPServer.new $port
+server = TCPServer.new(HOST, PORT)
 
 loop do
   client = server.accept
