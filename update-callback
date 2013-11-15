@@ -18,14 +18,6 @@ server = TCPServer.new(HOST, PORT)
 loop do
   client = server.accept
   
-  # render the minimal HTTP 1.0 header
-  client.print "HTTP/1.0 200 OK\r\n"
-  client.print "Content-Type: text/plain\r\n"
-  client.print "\r\n" # end of header
-  
-  # tell the client the server name
-  client.puts "updating #{Socket.gethostname}"
-  
   # run the job in a worker
   fork do
     # worker doesn't need a server socket
@@ -37,6 +29,10 @@ loop do
     $stderr.reopen($stdout)
     
     uri = client.gets
+    # render the minimal HTTP 1.0 header
+    print "HTTP/1.0 200 OK\r\n"
+    print "Content-Type: text/plain\r\n"
+    print "\r\n" # end of header
     
     puts uri
     # hooray! do the job
