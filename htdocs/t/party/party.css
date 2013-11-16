@@ -25,6 +25,7 @@ html.msie-9 #window.rendering { visibility: hidden; }
 #illustration-box .content .description { padding: 20px; font-style: italic; font-family: Georgia; font-size: 17px; line-height: 25px; }
 
 #recipe-list .recipe { position: relative; overflow: hidden; margin: 20px 0 50px 0; }
+#recipe-list .recipe:last-child { margin-bottom: 20px; }
 #recipe-list .recipe .name { font-size: 24px; }
 #recipe-list .recipe .image-box { float: left; width: 290px; text-align: center; margin-top: 40px; }
 #recipe-list .ingredients { overflow: hidden; width: 600px; margin: 35px 0 0 305px; }
