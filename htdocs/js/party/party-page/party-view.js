@@ -32,7 +32,7 @@ function getFloatValue (v)
 }
 
 
-function Me ()
+function PartyPageView ()
 {
 	this.nodes = {}
 	this.cache = {portions: [], plan: []}
@@ -40,7 +40,7 @@ function Me ()
 
 eval(NodesShortcut.include())
 
-Me.prototype =
+PartyPageView.prototype =
 {
 	bind: function (nodes)
 	{
@@ -592,6 +592,6 @@ Me.prototype =
 	}
 }
 
-Papa.View = Me
+Papa.View = PartyPageView
 
 })();
