@@ -224,7 +224,7 @@
 {"group":"Фрукты","name":"Лайм","path":"laym","tags":["Фрукты","Цитрусовые"],"unit":"г","volumes":[]},
 {"brand":"Monin Lime juice cordial","group":"Сиропы","mark":"Monin","name":"Лаймовый кордиал","names":["Monin Lime juice cordial","Монин Лайм джус кордиал","Лайм джус кордиал"],"path":"laymovyiy-kordial","tags":["Monin","Сироп"],"unit":"л","volumes":[[1.0,400.0,"Бутылка"]]},
 {"brand":"Monin Citron Vert","group":"Сиропы","mark":"Monin","name":"Лаймовый сироп","names":["Monin Citron Vert","Монин Цитрон Верт"],"path":"laymovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[]},
-{"group":"Лед","name":"Лед в кубиках","path":"led-v-kubikah","tags":["Лед"],"unit":"г","volumes":[[2000.0,100.0,"Пакет"]]},
+{"group":"Лед","inShop":"/products/20/led-dlya-kokteyley","name":"Лед в кубиках","path":"led-v-kubikah","tags":["Лед"],"unit":"г","volumes":[[2000.0,100.0,"Пакет"]]},
 {"group":"Лед","name":"Лед дробленый","path":"led-droblenyiy","tags":["Лед"],"unit":"г","volumes":[[2000.0,100.0,"Бутылка"]]},
 {"group":"Сладости","name":"Леденцы барбарисовые","path":"ledentsyi-barbarisovyie","unit":"г","volumes":[]},
 {"group":"Травы и цветы","name":"Лепестки белой розы","path":"lepestki-beloy-rozyi","unit":"шт","volumes":[]},
