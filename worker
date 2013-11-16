@@ -1,22 +1,46 @@
 #!/usr/bin/env ruby
 require 'socket'
-
-Dir.chdir(File.dirname($PROGRAM_NAME))
-
-HOST = "127.0.0.1"
-PORT = 34543
+require 'optparse'
 
 class PostForkingHTTPServer
 
-  def initialize host, port
-    @host = host
-    @port = port
+  def initialize options
+    @options = options
+    
+    start
+  end
+  
+  def start
+    Signal.trap(:TERM, method(:stop))
+    Signal.trap(:QUIT, method(:stop))
+    Signal.trap(:INT,  method(:stop))
+    
+    if @options[:daemonize]
+      # Daemonize the process and stay in the current directory
+      Process.daemon(true)
+    end
+    
+    # create the main listening socket
+    @server = TCPServer.new(@options[:host], @options[:port])
+    
+    # save our master process pid to the pidfile
+    File.open(@options[:pidfile], "w") { |f| f.print Process.pid }
+    
+    url = "http://#{@options[:host]}:#{@options[:port]}"
+    # name ourselves in top and ps
+    $0 = "(ruby) worker at: #{url}"
     
     @log = $stdout.dup
-    @server = TCPServer.new(HOST, PORT)
     
-    puts "Listening at #{HOST}:#{PORT}"
+    # start done (c)
+    puts "Listening at #{url}, pidfile: #{@options[:pidfile]}"
     warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
+  end
+  
+  def stop *garbage
+    File.unlink(@options[:pidfile])
+    puts "Worker stoped."
+    exit
   end
   
   def listen_loop
@@ -80,4 +104,30 @@ class PostForkingHTTPServer
   end
 end
 
-s = PostForkingHTTPServer.new(HOST, PORT).listen_loop
+
+Dir.chdir(File.dirname($PROGRAM_NAME))
+
+options = {
+  host: "127.0.0.1",
+  port: 34543,
+  pidfile: "var/worker.pid",
+  daemonize: false
+}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: worker [options]"
+  opts.on("-h", "--host", "Host to bind to (default: #{options[:host]})") do |v|
+    options[:host] = v
+  end
+  opts.on("-p", "--port", "Port to bind to (default: #{options[:port]})") do |v|
+    options[:port] = v
+  end
+  opts.on("-i", "--pid", "Pidfile path (default: #{options[:pidfile]})") do |v|
+    options[:pidfile] = v
+  end
+  opts.on("-d", "--daemonize", "Detach from console (default: #{options[:daemonize]})") do |v|
+    options[:daemonize] = v
+  end
+end.parse!
+
+s = PostForkingHTTPServer.new(options).listen_loop
