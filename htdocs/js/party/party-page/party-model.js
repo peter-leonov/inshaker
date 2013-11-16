@@ -204,7 +204,7 @@ Me.prototype =
 		
 		parties.sort(function (a, b) { return a.people - b.people || a.portions.length - b.portions.length || a.name.localeCompare(b.name) })
 		
-		this.view.renderPartyList(parties)
+    // this.view.renderPartyList(parties)
 	}
 }
 
