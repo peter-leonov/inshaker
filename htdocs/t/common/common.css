@@ -105,8 +105,7 @@ html.blog-section #top .link.blog
   position: relative; height: 29px; padding: 22px 0 22px 22px;
   border-right: 25px solid transparent;
   background: url(common.png) -26px -175px no-repeat,
-              url(common.png) 937px -175px no-repeat,
-              url(common-bg-blurred.jpg) -418px -103px;
+              url(common.png) 937px -175px no-repeat;
   background-clip: padding-box, border-box, border-box;
   border-top-left-radius: 3px; border-top-right-radius: 3px;
 }
