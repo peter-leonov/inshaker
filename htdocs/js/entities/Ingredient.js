@@ -18,6 +18,7 @@ function Me (data)
 	
 	this.unit    = data.unit
 	this.volumes = data.volumes
+	this.inShop = data.inShop
 }
 
 Me.prototype =
