@@ -12,6 +12,7 @@ function getIntegerValue (v)
 	// convert NaN to 0
 	v = isNaN(v) ? 0 : v
 	
+	// here is the difference
 	return Math.ceil(v)
 }
 
