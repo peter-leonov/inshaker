@@ -86,6 +86,8 @@ Me.prototype =
 	getCost: function (anount)
 	{
 		var best = this.volumes[0]
+		if (!best) // has no volumes at all
+		  return 0
 		return anount * best[1] / best[0]
 	},
 	
