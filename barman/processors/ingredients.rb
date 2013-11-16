@@ -250,6 +250,10 @@ class IngredientsProcessor < Inshaker::Processor
     
     good_tags.sort!
     
+    if about["В магазине"]
+      good["inShop"] = about["В магазине"].to_s.gsub(%r{\w+://[^/]+}, '')
+    end
+    
     if about["Тара"] and about["Тара"].length > 0
       volumes = []
       about["Тара"].each_with_index do |v, i|

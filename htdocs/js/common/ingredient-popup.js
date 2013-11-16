@@ -145,6 +145,7 @@ var myProto =
 			nodes.ingredientWindow.classList.add('can-buy')
 			nodes.buy.price.appendChild(T(volume[1] + 'р.-'))
 			nodes.buy.unit.appendChild(T(volume[2] + ' ' + volume[0] + ingredient.unit))
+			nodes.buy.where.href = ingredient.inShop || '/'
 		}
 	},
 	
@@ -218,6 +219,7 @@ var myStatic =
 				brand: $('#ingredient-info-popup .description .about .brand .link'),
 				buy:
 				{
+					where: $('#ingredient-info-popup .description .about .where-to-buy'),
 					price: $('#ingredient-info-popup .description .about .where-to-buy .price'),
 					unit: $('#ingredient-info-popup .description .about .where-to-buy .unit')
 				},
