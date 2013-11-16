@@ -125,7 +125,7 @@ Me.prototype =
 			var buy = buyByName[good.name]
 			
 			buy.amount = amount
-			buy.cost = good.getCost(amount).ceil()
+			buy.cost = this.getCostForGood(good, amount).ceil()
 			
 			var human = Units.humanizeDose(amount, good.unit)
 			buy.amountHumanized = human[0].round(10)
@@ -150,12 +150,28 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = buy.good.getCost(amount).ceil()
+		buy.cost = this.getCostForGood(buy.good, amount).ceil()
 		
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
 	},
+	
+	getCostForGood: function (good, anount)
+	{
+		var best = good.volumes[0]
+		if (!best) // has no volumes at all
+		  return 0
+		
+		var volume = best[0],
+		    price = best[1]
+		
+		var bottles = Math.ceil(anount / volume)
+		var cost = bottles * price
+		
+		return cost
+	},
+	
 	
 	getPartsFor: function (portions, goods, peopleCount)
 	{
