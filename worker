@@ -11,26 +11,30 @@ class PostForkingHTTPServer
   end
   
   def start
-    # name ourselves in top and ps
-    $0 = "worker (ruby)"
-    
     Signal.trap(:TERM, method(:stop))
     Signal.trap(:QUIT, method(:stop))
     Signal.trap(:INT,  method(:stop))
     
-    @server = TCPServer.new(@options[:host], @options[:port])
-    pidfile = File.open(@options[:pidfile], "w")
-    puts "Listening at http://#{@options[:host]}:#{@options[:port]}, pidfile: #{@options[:pidfile]}"
-    warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
-    
     if @options[:daemonize]
-      puts "Detaching from console (daemonizing), see you at: ps ax | grep ruby"
       # Daemonize the process and stay in the current directory
       Process.daemon(true)
     end
+    
+    # create the main listening socket
+    @server = TCPServer.new(@options[:host], @options[:port])
+    
+    # save our master process pid to the pidfile
+    File.open(@options[:pidfile], "w") { |f| f.print Process.pid }
+    
+    url = "http://#{@options[:host]}:#{@options[:port]}"
+    # name ourselves in top and ps
+    $0 = "(ruby) worker at: #{url}"
+    
     @log = $stdout.dup
-    # if daemonized pid has changed, so save the new pid after Process.daemon
-    pidfile.print Process.pid
+    
+    # start done (c)
+    puts "Listening at #{url}, pidfile: #{@options[:pidfile]}"
+    warn "WARNING: You better hide me behind nginx, as I'm a careless webserver!"
   end
   
   def stop *garbage
