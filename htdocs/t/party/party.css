@@ -19,8 +19,8 @@ html.msie-9 #window.rendering { visibility: hidden; }
 #window .layer img { display: block; margin: 0 auto; }
 #window .transparent-borders .top,
 #window .transparent-borders .right,
-#window .transparent-borders .left { background-color: rgba(255, 255, 255, 0.6); }
-#window .transparent-borders .bottom { background-color: rgba(0, 0, 0, 0.7); }
+#window .transparent-borders .left,
+#window .transparent-borders .bottom { background-color: rgba(0, 0, 0, 0.4); }
 
 #illustration-box .content .description { padding: 20px; font-style: italic; font-family: Georgia; font-size: 17px; line-height: 25px; }
 
@@ -124,11 +124,11 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 .transparent-borders .top,
 .transparent-borders .bottom { height: 1px; }
 .transparent-borders .right,
-.transparent-borders .left { width: 1px; }
-.transparent-borders .top { top: 0; left: 1px; right: 1px; }
-.transparent-borders .right { right: 0; top: 0; bottom: 0; }
-.transparent-borders .bottom { bottom: 0; left: 1px; right: 1px; }
-.transparent-borders .left { left: 0; top: 0; bottom: 0; }
+.transparent-borders .left { /* hide for now: */ display: none; width: 1px; }
+.transparent-borders .top { top: 0; left: 0; right: 0; }
+.transparent-borders .right { right: 0; top: 1px; bottom: 1px; }
+.transparent-borders .bottom { bottom: 0; left: 0; right: 0; }
+.transparent-borders .left { left: 0; top: 1px; bottom: 1px; }
 
 #print-logo-hd { display: none; } 
 
