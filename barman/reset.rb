@@ -31,6 +31,9 @@ class ResetState < Inshaker::Processor
     end
     FileUtils.rmtree(GlobalConfig::LOCKPATH)
     
+    say "сбрасываю кеш…"
+    system("./worker-jobs/cache.purge")
+    
     say "сбрасываю все изменения…"
     system("git fetch")
     system("git reset --hard origin/master")
