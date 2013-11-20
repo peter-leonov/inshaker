@@ -152,32 +152,15 @@ PartyPageView.prototype =
   {
     var nodes = this.nodes
     
-    function findIngredientInParents (node, deep)
-    {
-      do
-      {
-        var ingredient = node.getAttribute('data-good')
-        if (ingredient)
-          return ingredient
-      }
-      while (--deep && (node = node.parentNode))
-      
-      return false
-    }
-    
     var controller = this.controller
-    function maybeGoodClicked (target)
+    function maybeGoodClicked (e)
     {
-      var name = findIngredientInParents(target, 3)
+      var name = e.target.findParent(function (n) { return n.getAttribute('data-good') }, /*deep=*/ 3)
       if (name)
         controller.goodSelected(name)
     }
     
-    function onclick (e)
-    {
-      maybeGoodClicked(e.target)
-    }
-    nodes.root.addEventListener('click', onclick, false)
+    nodes.root.addEventListener('click', maybeGoodClicked, false)
   },
   
   showGoodPopup: function (good)
