@@ -133,12 +133,12 @@ Me.prototype =
 			this.addPart(v, portions, count, guests)
 		}
 		
-		var tools = cocktail.tools
-		for (var i = 0, il = tools.length; i < il; i++)
-		{
-			var v = tools[i]
-			this.addPart(v, portions, count, guests)
-		}
+		// var tools = cocktail.tools
+		// for (var i = 0, il = tools.length; i < il; i++)
+		// {
+		// 	var v = tools[i]
+		// 	this.addPart(v, portions, count, guests)
+		// }
 	},
 	
 	toArray: function () { return Object.values(this.parts) }
