@@ -40,6 +40,7 @@ Me.prototype =
 		}
 		
 		this.view.renderPortions(portions)
+		this.view.renderRecipes(portions)
 	},
 	
 	setupPeopleCount: function (count)

@@ -535,6 +535,52 @@ PartyPageView.prototype =
     this.controller.partyNameGuessed(name)
   },
   
+  renderRecipes: function (portions)
+  {
+    var list = this.nodes.recipeList
+    
+    for (var i = 0, il = portions.length; i < il; i++)
+    {
+      var cocktail = portions[i].cocktail
+      
+      var recipe = Nc('li', 'recipe')
+      
+      var name = recipe.appendChild(Nc('h3', 'name'))
+      name.appendChild(T('Приготовь '))
+      var link = name.appendChild(Nct('a', 'link', cocktail.name))
+      link.href = cocktail.getPath()
+      
+      var imageBox = recipe.appendChild(Nc('div', 'image-box'))
+      var link = imageBox.appendChild(Nc('a', 'link'))
+      link.href = cocktail.getPath()
+      var img = link.appendChild(Nc('img', 'image'))
+      img.src = cocktail.getBigCroppedImageSrc()
+      
+      var ingredients = recipe.appendChild(Nc('ul', 'ingredients'))
+      for (var j = 0, jl = cocktail.parts.length; j < jl; j++)
+      {
+        var part = cocktail.parts[j]
+        
+        var ingredientPreview = ingredients.appendChild(Nc('li', 'ingredient-preview'))
+        ingredientPreview.setAttribute('data-good', part.ingredient.name)
+        ingredientPreview.style.backgroundImage = 'url(' + part.ingredient.getMiniImageSrc() + ')'
+      }
+      
+      var instructions = recipe.appendChild(Nc('ol', 'instructions'))
+      instructions.appendChild(Nct('h4', 'head', 'Как приготовить:'))
+      for (var j = 0, jl = cocktail.receipt.length; j < jl; j++)
+      {
+        var step = cocktail.receipt[j]
+        
+        var instruction = instructions.appendChild(Nc('li', 'instruction'))
+        instruction.appendChild(Nct('span', 'text', step))
+      }
+      
+      list.appendChild(recipe)
+    }
+    
+  },
+
   renderRecipeIngredientPreviews: function ()
   {
     var previews = this.nodes.recipeIngredientPreviews
