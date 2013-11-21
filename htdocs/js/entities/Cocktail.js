@@ -168,6 +168,7 @@ Me.staticMethods =
 {
 	index: {},
 	letters: [],
+	dataCache: {},
 	
 	initialize: function (hash, groups, strengths, methods, tags)
 	{
@@ -528,6 +529,18 @@ Me.staticMethods =
 		}
 		
 		return a
+	},
+	
+	precacheData: function (name, data)
+	{
+	  this.dataCache[name] = data
+	  
+	  // FIXME: use Cocktail#loadLocalData() with callback instead of this
+	  var cocktail = this.getByName(name)
+	  if (!cocktail)
+	    return
+	  
+	  Object.extend(cocktail, data)
 	},
 	
 	sortIngredientsByUsage: function ()

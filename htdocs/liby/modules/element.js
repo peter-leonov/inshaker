@@ -45,6 +45,23 @@ var prototype =
 		
 		return false
 	},
+
+	findParent: function (f, deep)
+	{
+		if (deep === undefined)
+			deep = Infinity
+
+		var node = this
+		do
+		{
+		  var val = f(node)
+		  if (val !== undefined)
+		    return val
+		}
+		while (--deep > 0 && (node = node.parentNode))
+		
+		return null
+	},
 	
 	offsetPosition: function (root)
 	{

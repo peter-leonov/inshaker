@@ -105,8 +105,7 @@ html.blog-section #top .link.blog
   position: relative; height: 29px; padding: 22px 0 22px 22px;
   border-right: 25px solid transparent;
   background: url(common.png) -26px -175px no-repeat,
-              url(common.png) 937px -175px no-repeat,
-              url(common-bg-blurred.jpg) -418px -103px;
+              url(common.png) 937px -175px no-repeat;
   background-clip: padding-box, border-box, border-box;
   border-top-left-radius: 3px; border-top-right-radius: 3px;
 }
@@ -213,7 +212,7 @@ html.msie-8 .common-box .common-title
 #top,
 #branded-image,
 .common-box
-{ box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+{ box-shadow: 0 1px 20px rgba(0, 0, 0, 0.8); }
 html.shop-section .we-have-more .in-stock-item .picture
 { box-shadow: 0 1px 10px #000, inset 0 1px 10px #000; }
 .we-have-more .in-stock-item .name,

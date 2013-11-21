@@ -40,6 +40,7 @@ Me.prototype =
 		}
 		
 		this.view.renderPortions(portions)
+		this.view.renderRecipes(portions)
 	},
 	
 	setupPeopleCount: function (count)
@@ -125,7 +126,7 @@ Me.prototype =
 			var buy = buyByName[good.name]
 			
 			buy.amount = amount
-			buy.cost = good.getCost(amount).ceil()
+			buy.cost = this.getCostForGood(good, amount).cost.ceil()
 			
 			var human = Units.humanizeDose(amount, good.unit)
 			buy.amountHumanized = human[0].round(10)
@@ -150,12 +151,37 @@ Me.prototype =
 		amount /= buy.factorHumanized
 		
 		buy.amount = amount
-		buy.cost = buy.good.getCost(amount).ceil()
+		buy.cost = this.getCostForGood(buy.good, amount).cost.ceil()
 		
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
 	},
+	
+	getCostForGood: function (good, amount)
+	{
+	  var res =
+	  {
+	    volume: 0,
+	    price: 0,
+	    tare: '—',
+	    count: 0,
+	    cost: 0
+	  }
+	  
+		var best = good.volumes[0]
+		if (!best) // has no volumes at all
+		  return res
+		
+		res.volume = best[0]
+		res.price = best[1]
+		
+		res.count = Math.ceil(amount / res.volume)
+		res.cost = res.count * res.price
+		
+		return res
+	},
+	
 	
 	getPartsFor: function (portions, goods, peopleCount)
 	{
@@ -204,7 +230,7 @@ Me.prototype =
 		
 		parties.sort(function (a, b) { return a.people - b.people || a.portions.length - b.portions.length || a.name.localeCompare(b.name) })
 		
-		this.view.renderPartyList(parties)
+    // this.view.renderPartyList(parties)
 	}
 }
 
