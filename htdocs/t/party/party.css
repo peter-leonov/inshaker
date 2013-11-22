@@ -89,7 +89,7 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient .name { cursor: pointer; }
 #purchase-plan .table .list .ingredient .name:hover { color: #ec118f; }
 #purchase-plan .table .list .ingredient .amount { position: absolute; left: 295px; bottom: 3px; }
-#purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; }
+#purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; border: none; background: none; cursor: text; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .parts-list { margin-bottom: 20px; }

@@ -387,6 +387,7 @@ PartyPageView.prototype =
       item.appendChild(amount)
       
       var value = Nc('input', 'value')
+      value.setAttribute('readonly', 'true')
       amount.appendChild(value)
       value.dataGoodName = good.name
       cache.amount = value
