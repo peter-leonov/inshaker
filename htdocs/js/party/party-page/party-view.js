@@ -202,12 +202,9 @@ PartyPageView.prototype =
     nodes.peopleCount.addEventListener('blur', blurInteger, true)
     nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
     nodes.portions.addEventListener('blur', blurInteger, true)
-    nodes.ingredientsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
-    nodes.toolsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.toolsPartList.addEventListener('blur', blurFloat, true)
-    nodes.thingsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.thingsPartList.addEventListener('blur', blurFloat, true)
+    
+    nodes.purchasePlan.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+    nodes.purchasePlan.addEventListener('blur', blurFloat, true)
   },
   
   peopleCountChanged: function (e)
