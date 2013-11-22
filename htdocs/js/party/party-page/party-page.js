@@ -36,17 +36,26 @@ function onready ()
     recipeIngredientPreviews: $$('#recipe-list .recipe .ingredients .ingredient-preview'),
     purchasePlan: $('#purchase-plan'),
     
-    ingredientsPart: $('#ingredients-part'),
-    ingredientsPartList: $('#ingredients-part .parts-list .list'),
-    ingredientsPartPreviewList: $('#ingredients-part .preview-list'),
+    ingredients:
+    {
+      root: $('#ingredients-part'),
+      list: $('#ingredients-part .parts-list .list'),
+      previewList: $('#ingredients-part .preview-list'),
+    },
     
-    toolsPart: $('#tools-part'),
-    toolsPartList: $('#tools-part .parts-list .list'),
-    toolsPartPreviewList: $('#tools-part .preview-list'),
+    tools:
+    {
+      root: $('#tools-part'),
+      list: $('#tools-part .parts-list .list'),
+      previewList: $('#tools-part .preview-list'),
+    },
     
-    thingsPart: $('#things-part'),
-    thingsPartList: $('#things-part .parts-list .list'),
-    thingsPartPreviewList: $('#things-part .preview-list'),
+    things:
+    {
+      root: $('#things-part'),
+      list: $('#things-part .parts-list .list'),
+      previewList: $('#things-part .preview-list'),
+    },
     
     purchasePlanTotal:
     {

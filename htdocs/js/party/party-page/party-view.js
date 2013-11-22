@@ -325,45 +325,48 @@ PartyPageView.prototype =
     }
     
     var plan = byGroup.ingredients
-    if (plan.length)
-      nodes.ingredientsPart.show()
     this.renderIngredientsPlan(plan)
     this.renderIngredientsPreviewList(plan)
     
     var plan = byGroup.tools
-    if (plan.length)
-      nodes.toolsPart.show()
     this.renderToolsPlan(plan)
     this.renderToolsPreviewList(plan)
     
     var plan = byGroup.things
-    if (plan.length)
-      nodes.thingsPart.show()
     this.renderThingsPlan(plan)
     this.renderThingsPreviewList(plan)
   },
   
   renderIngredientsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.ingredientsPartList)
+    this.renderPlanTo(plan, this.nodes.ingredients)
   },
   
   renderToolsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.toolsPartList)
+    this.renderPlanTo(plan, this.nodes.tools)
   },
   
   renderThingsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.thingsPartList)
+    this.renderPlanTo(plan, this.nodes.things)
   },
   
-  renderPlanTo: function (plan, root)
+  renderPlanTo: function (plan, section)
   {
-    root.empty()
-    
+    var root = section.root
     if (plan.length == 0)
+    {
+      root.hide()
       return
+    }
+    else
+    {
+      root.show()
+    }
+    
+    var list = section.list
+    list.empty()
     
     var planCache = this.cache.plan
     for (var i = 0, il = plan.length; i < il; i++)
@@ -413,17 +416,17 @@ PartyPageView.prototype =
   
   renderIngredientsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.ingredientsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.ingredients.previewList)
   },
   
   renderToolsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.tools.previewList)
   },
   
   renderThingsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.thingsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.things.previewList)
   },
   
   renderPreviewListTo: function (plan, root)
