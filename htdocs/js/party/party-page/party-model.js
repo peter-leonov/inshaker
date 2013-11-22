@@ -116,10 +116,10 @@ Me.prototype =
 		var parts = this.getPartsFor(portions, this.party.goods, this.peopleCount)
 		
 		var buyByName = this.buyByName
-		var arr = parts.toArray()
-		for (var i = 0, il = arr.length; i < il; i++)
+		parts = parts.toArray()
+		for (var i = 0, il = parts.length; i < il; i++)
 		{
-			var part = arr[i],
+			var part = parts[i],
 				amount = part.amount,
 				good = part.good
 			
