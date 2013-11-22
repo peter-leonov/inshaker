@@ -376,7 +376,8 @@ PartyPageView.prototype =
         cache = planCache[good.name] = {}
       
       var item = Nc('li', 'ingredient')
-      root.appendChild(item)
+      list.appendChild(item)
+      cache.item = item
       
       var name = Nct('span', 'name', good.getBrandedName())
       item.appendChild(name)
@@ -433,13 +434,15 @@ PartyPageView.prototype =
   {
     root.empty()
     
-    
+    var planCache = this.cache.plan
     for (var i = 0, il = plan.length; i < il; i++)
     {
-      var good = plan[i].good
+      var good = plan[i].good,
+        cache = planCache[good.name]
       
       var item = Nc('li', 'item ingredient-preview')
       root.appendChild(item)
+      cache.preview = item
       item.setAttribute('data-good', good.name)
       item.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
       
@@ -460,6 +463,18 @@ PartyPageView.prototype =
     {
       var buy = plan[i],
         item = planCache[buy.good.name]
+      
+      if (buy.amount == 0)
+      {
+        item.item.hide()
+        item.preview.hide()
+        continue
+      }
+      else
+      {
+        item.item.show()
+        item.preview.show()
+      }
       
       var human = Units.humanizeDose(buy.amount, buy.good.unit)
       
