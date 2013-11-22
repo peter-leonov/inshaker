@@ -497,7 +497,7 @@ PartyPageView.prototype =
   
   updatePeopleUnit: function (count)
   {
-    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человек', 'человек')
+    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человека', 'человек')
   },
   
   updateUnit: function (n, portion)
