@@ -433,8 +433,6 @@ PartyPageView.prototype =
   {
     root.empty()
     
-    if (plan.length == 0)
-      return
     
     for (var i = 0, il = plan.length; i < il; i++)
     {
