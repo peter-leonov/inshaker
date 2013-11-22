@@ -3,24 +3,11 @@
 window.$$ = function (query, root)
 {
 	var list = (root || document).querySelectorAll(query)
-	if (list.length == 0)
-	{
-		log('empty $$("' + query + '")')
-		return []
-	}
-	
 	return Array.from(list)
 }
 window.$ = function (query, root)
 {
-	var node = (root || document).querySelector(query)
-	if (!node)
-	{
-		log('empty $("' + query + '")')
-		return node
-	}
-	
-	return node
+	return (root || document).querySelector(query)
 }
 
 $.id = function (id) { return document.getElementById(id) }
