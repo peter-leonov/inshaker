@@ -407,8 +407,9 @@ PartyPageView.prototype =
       
       cost.appendChild(T(' '))
       
-      var unit = Nct('span', 'unit', 'р.')
+      var unit = Nct('span', 'unit', ' ')
       cost.appendChild(unit)
+      cache.currency = unit.firstChild
     }
   },
   
@@ -465,7 +466,8 @@ PartyPageView.prototype =
       
       item.amount.value = buy.amountHumanized
       item.unit.nodeValue = buy.unitHumanized
-      item.cost.nodeValue = buy.cost
+      
+      this.updateBuy(buy.good.name, buy)
     }
   },
   
@@ -487,7 +489,16 @@ PartyPageView.prototype =
     var planCache = this.cache.plan
     
     var item = planCache[name]
-    item.cost.nodeValue = buy.cost
+    if (buy.cost)
+    {
+      item.cost.nodeValue = buy.cost
+      item.currency.nodeValue = 'р.'
+    }
+    else // for free
+    {
+      item.cost.nodeValue = ''
+      item.currency.nodeValue = 'дарим'
+    }
   },
   
   renderPeopleCount: function (count)
