@@ -9,6 +9,8 @@
 <!--# include virtual="/js/party/cocktail-parts.js" -->
 <!--# include virtual="/js/party/number.js" -->
 
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
+
 ;(function(){
 
 <!--# include virtual="party.js" -->
