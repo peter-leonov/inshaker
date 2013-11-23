@@ -81,6 +81,6 @@
 	"imperative": "Проведи теплый вечер у камина!",
 	"path": "fireplace",
 	"portions": [{"cocktail": "Космо пэшн ти", "factor": 0.5}, {"cocktail": "Согревающий восточный мед", "factor": 0.5}],
-	"people": 4
+	"people": 10
 }
 ]
