@@ -55,7 +55,7 @@ var prototype =
 		do
 		{
 		  var val = f(node)
-		  if (val !== undefined)
+		  if (val)
 		    return val
 		}
 		while (--deep > 0 && (node = node.parentNode))

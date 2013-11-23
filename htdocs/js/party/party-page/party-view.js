@@ -202,12 +202,9 @@ PartyPageView.prototype =
     nodes.peopleCount.addEventListener('blur', blurInteger, true)
     nodes.portions.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.cocktailCountChanged(e) }) }, false)
     nodes.portions.addEventListener('blur', blurInteger, true)
-    nodes.ingredientsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.ingredientsPartList.addEventListener('blur', blurFloat, true)
-    nodes.toolsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.toolsPartList.addEventListener('blur', blurFloat, true)
-    nodes.thingsPartList.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
-    nodes.thingsPartList.addEventListener('blur', blurFloat, true)
+    
+    nodes.purchasePlan.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
+    nodes.purchasePlan.addEventListener('blur', blurFloat, true)
   },
   
   peopleCountChanged: function (e)
@@ -328,45 +325,48 @@ PartyPageView.prototype =
     }
     
     var plan = byGroup.ingredients
-    if (plan.length)
-      nodes.ingredientsPart.show()
     this.renderIngredientsPlan(plan)
     this.renderIngredientsPreviewList(plan)
     
     var plan = byGroup.tools
-    if (plan.length)
-      nodes.toolsPart.show()
     this.renderToolsPlan(plan)
     this.renderToolsPreviewList(plan)
     
     var plan = byGroup.things
-    if (plan.length)
-      nodes.thingsPart.show()
     this.renderThingsPlan(plan)
     this.renderThingsPreviewList(plan)
   },
   
   renderIngredientsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.ingredientsPartList)
+    this.renderPlanTo(plan, this.nodes.ingredients)
   },
   
   renderToolsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.toolsPartList)
+    this.renderPlanTo(plan, this.nodes.tools)
   },
   
   renderThingsPlan: function (plan)
   {
-    this.renderPlanTo(plan, this.nodes.thingsPartList)
+    this.renderPlanTo(plan, this.nodes.things)
   },
   
-  renderPlanTo: function (plan, root)
+  renderPlanTo: function (plan, section)
   {
-    root.empty()
-    
+    var root = section.root
     if (plan.length == 0)
+    {
+      root.hide()
       return
+    }
+    else
+    {
+      root.show()
+    }
+    
+    var list = section.list
+    list.empty()
     
     var planCache = this.cache.plan
     for (var i = 0, il = plan.length; i < il; i++)
@@ -376,7 +376,8 @@ PartyPageView.prototype =
         cache = planCache[good.name] = {}
       
       var item = Nc('li', 'ingredient')
-      root.appendChild(item)
+      list.appendChild(item)
+      cache.item = item
       
       var name = Nct('span', 'name', good.getBrandedName())
       item.appendChild(name)
@@ -387,6 +388,7 @@ PartyPageView.prototype =
       item.appendChild(amount)
       
       var value = Nc('input', 'value')
+      value.setAttribute('readonly', 'true')
       amount.appendChild(value)
       value.dataGoodName = good.name
       cache.amount = value
@@ -407,39 +409,40 @@ PartyPageView.prototype =
       
       cost.appendChild(T(' '))
       
-      var unit = Nct('span', 'unit', 'р.')
+      var unit = Nct('span', 'unit', ' ')
       cost.appendChild(unit)
+      cache.currency = unit.firstChild
     }
   },
   
   renderIngredientsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.ingredientsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.ingredients.previewList)
   },
   
   renderToolsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.toolsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.tools.previewList)
   },
   
   renderThingsPreviewList: function (plan)
   {
-    this.renderPreviewListTo(plan, this.nodes.thingsPartPreviewList)
+    this.renderPreviewListTo(plan, this.nodes.things.previewList)
   },
   
   renderPreviewListTo: function (plan, root)
   {
     root.empty()
     
-    if (plan.length == 0)
-      return
-    
+    var planCache = this.cache.plan
     for (var i = 0, il = plan.length; i < il; i++)
     {
-      var good = plan[i].good
+      var good = plan[i].good,
+        cache = planCache[good.name]
       
       var item = Nc('li', 'item ingredient-preview')
       root.appendChild(item)
+      cache.preview = item
       item.setAttribute('data-good', good.name)
       item.style.backgroundImage = 'url(' + good.getMiniImageSrc() + ')'
       
@@ -461,11 +464,24 @@ PartyPageView.prototype =
       var buy = plan[i],
         item = planCache[buy.good.name]
       
+      if (buy.amount == 0)
+      {
+        item.item.hide()
+        item.preview.hide()
+        continue
+      }
+      else
+      {
+        item.item.show()
+        item.preview.show()
+      }
+      
       var human = Units.humanizeDose(buy.amount, buy.good.unit)
       
       item.amount.value = buy.amountHumanized
       item.unit.nodeValue = buy.unitHumanized
-      item.cost.nodeValue = buy.cost
+      
+      this.updateBuy(buy.good.name, buy)
     }
   },
   
@@ -487,7 +503,16 @@ PartyPageView.prototype =
     var planCache = this.cache.plan
     
     var item = planCache[name]
-    item.cost.nodeValue = buy.cost
+    if (buy.cost)
+    {
+      item.cost.nodeValue = buy.cost
+      item.currency.nodeValue = 'р.'
+    }
+    else // for free
+    {
+      item.cost.nodeValue = ''
+      item.currency.nodeValue = 'дарим'
+    }
   },
   
   renderPeopleCount: function (count)
@@ -497,7 +522,7 @@ PartyPageView.prototype =
   
   updatePeopleUnit: function (count)
   {
-    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человек', 'человек')
+    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человека', 'человек')
   },
   
   updateUnit: function (n, portion)

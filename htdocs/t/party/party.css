@@ -49,11 +49,12 @@ html.opera-10-1 #recipe-list .ingredients { margin-left: 15px; }
 #cocktail-plan .head { font-size: 22px; }
 #cocktail-plan .head .people .value { width: 50px; font-size: 25px; text-align: center; }
 #cocktail-plan .body .portions { overflow: hidden; padding: 5px 0; }
-#cocktail-plan .body .portions .portion { float: left; position: relative; width: 450px; height: 120px; margin: 30px 20px 10px 0; }
-#cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; width: 240px; font-size: 18px; }
+#cocktail-plan .body .portions .portion { float: left; position: relative; width: 465px; height: 120px; margin: 30px 10px 10px 0; }
+#cocktail-plan .body .portions .portion:nth-child(2n) { margin-right: 0; }
+#cocktail-plan .body .portions .portion .name { margin-left: 100px; min-height: 35px; width: 245px; font-size: 18px; }
 #cocktail-plan .body .portions .portion .image-box { position: absolute; left: 0; top: 0; width: 90px; text-align: center; }
 #cocktail-plan .body .portions .portion .image-box .image { max-width: 90px; max-height: 120px; }
-#cocktail-plan .body .portions .portion .count { position: absolute; left: 340px; top: 0; }
+#cocktail-plan .body .portions .portion .count { position: absolute; left: 350px; top: 0; }
 #cocktail-plan .body .portions .portion .count .value { width: 30px; padding: 0 3px 2px 3px; text-align: right; }
 #cocktail-plan .body .portions .portion .ingredients { margin: 3px 0 0 100px; width: 310px; font-size: 12px; }
 #cocktail-plan .body .portions .portion .ingredients .ingredient { display: inline; cursor: pointer; }
@@ -88,8 +89,8 @@ html.msie-7 .ingredient-preview { filter: progid:DXImageTransform.Microsoft.Alph
 #purchase-plan .table .list .ingredient:last-child { border-bottom: none; }
 #purchase-plan .table .list .ingredient .name { cursor: pointer; }
 #purchase-plan .table .list .ingredient .name:hover { color: #ec118f; }
-#purchase-plan .table .list .ingredient .amount { position: absolute; left: 295px; bottom: 3px; }
-#purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; }
+#purchase-plan .table .list .ingredient .amount { position: absolute; left: 295px; bottom: 6px; }
+#purchase-plan .table .list .ingredient .amount .value { width: 40px; padding: 0 3px 2px 3px; text-align: right; border: none; background: none; cursor: text; }
 #purchase-plan .table .list .ingredient .unit { color: #ccc; left: 325px; }
 #purchase-plan .table .list .ingredient .cost { position: absolute; right: 7px; }
 #purchase-plan .parts-list { margin-bottom: 20px; }
@@ -220,3 +221,5 @@ body,
 <!--# include virtual="/t/parties/party-list.css" -->
 
 <!--# include virtual="/t/ingredient-popup.css" -->
+
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
