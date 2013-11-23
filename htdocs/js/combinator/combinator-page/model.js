@@ -57,7 +57,7 @@ function Me ()
 {
 	this.ds = {}
 	this.searchCache = {}
-	this.hideGroups = {}
+  // this.hideGroups = {}
 	
 	this.state = new DefaultState()
 }
@@ -86,14 +86,14 @@ Me.prototype =
 	{
 		this.exceptGroups = exceptGroups
 		
-		var hideGroups = this.hideGroups
-		var groups = Ingredient.getGroups()
-		for (var i = 0, il = groups.length; i < il; i++)
-		{
-			var group = groups[i]
-			if (Ingredient.getGroupOfGroup(group) != 'ingredients')
-				hideGroups[group] = true
-		}
+    // var hideGroups = this.hideGroups
+    // var groups = Ingredient.getGroups()
+    // for (var i = 0, il = groups.length; i < il; i++)
+    // {
+    //  var group = groups[i]
+    //  if (Ingredient.getGroupOfGroup(group) != 'ingredients')
+    //    hideGroups[group] = true
+    // }
 		
 		this.view.renderSortbyOptions(this.sortByNames)
 		this.view.renderSortby(this.sortTypeByNum.indexOf(this.state.sortBy))
@@ -468,8 +468,8 @@ Me.prototype =
 				var list = [], name = groups[i]
 				slices[name] = list
 				
-				if (this.hideGroups[name])
-					continue
+        // if (this.hideGroups[name])
+        //  continue
 				
 				if (this.exceptGroups.indexOf(name) == -1)
 					name += ' <a href="/" class="link">купить в магазине Inshaker</a>'
