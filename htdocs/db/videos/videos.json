@@ -40,7 +40,7 @@
 },
 {
 	"name": "Как готовить в блендере?",
-	"example": {title: "купить блендер", link: "/"},
+	"example": {title: "купить блендер", link: "/shop/"},
 	"movie": "http://player.vimeo.com/video/44442011",
 	"cocktails":
 	[

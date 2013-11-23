@@ -24,7 +24,7 @@ var myProto =
 		var main = Nc('div', 'point')
 		
 		var icon = main.appendChild(Nc('a', 'icon'))
-		icon.href = '/'
+		icon.href = '/shop/'
 		
 		var wider = main.appendChild(Nc('div', 'wider'))
 		var title = wider.appendChild(Nc('dl', 'title'))

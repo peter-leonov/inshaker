@@ -472,7 +472,7 @@ Me.prototype =
         //  continue
 				
 				if (this.exceptGroups.indexOf(name) == -1)
-					name += ' <a href="/" class="link">купить в магазине Inshaker</a>'
+					name += ' <a href="/shop/" class="link">купить в магазине Inshaker</a>'
 				
 				data.push({name: name, list: list})
 			}
