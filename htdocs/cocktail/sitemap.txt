@@ -73,6 +73,7 @@ http://www.inshaker.ru/cocktail/bacchus/
 http://www.inshaker.ru/cocktail/bacchus_party/
 http://www.inshaker.ru/cocktail/white_lady/
 http://www.inshaker.ru/cocktail/white_sangria_in_a_jug/
+http://www.inshaker.ru/cocktail/white_sangria_in_a_puch/
 http://www.inshaker.ru/cocktail/bellini/
 http://www.inshaker.ru/cocktail/white_mulled_wine/
 http://www.inshaker.ru/cocktail/white_and_pepper/
@@ -338,6 +339,7 @@ http://www.inshaker.ru/cocktail/forbidden_fruit/
 http://www.inshaker.ru/cocktail/zaharoff_forest/
 http://www.inshaker.ru/cocktail/green_terrace/
 http://www.inshaker.ru/cocktail/green_fairy/
+http://www.inshaker.ru/cocktail/green_fairy_punch/
 http://www.inshaker.ru/cocktail/zempole/
 http://www.inshaker.ru/cocktail/winter/
 http://www.inshaker.ru/cocktail/winter_apple/
@@ -471,6 +473,7 @@ http://www.inshaker.ru/cocktail/cranberryni/
 http://www.inshaker.ru/cocktail/red_moscow/
 http://www.inshaker.ru/cocktail/red_square/
 http://www.inshaker.ru/cocktail/red_sangria_in_a_jug/
+http://www.inshaker.ru/cocktail/red_sangria_in_a_punch/
 http://www.inshaker.ru/cocktail/red-skinned_macho/
 http://www.inshaker.ru/cocktail/red/
 http://www.inshaker.ru/cocktail/red_dog/
@@ -517,6 +520,7 @@ http://www.inshaker.ru/cocktail/scarface/
 http://www.inshaker.ru/cocktail/lolita/
 http://www.inshaker.ru/cocktail/long_island_iced_tea/
 http://www.inshaker.ru/cocktail/long_island_in_a_french_press/
+http://www.inshaker.ru/cocktail/long_island_punch/
 http://www.inshaker.ru/cocktail/long_berry_iced_tea/
 http://www.inshaker.ru/cocktail/london_minty_swizzle/
 http://www.inshaker.ru/cocktail/horse_s_neck/
@@ -681,6 +685,7 @@ http://www.inshaker.ru/cocktail/cucumber_cooler/
 http://www.inshaker.ru/cocktail/cucumber_lemonade/
 http://www.inshaker.ru/cocktail/cucumber_fruit_drink_in_a_jug/
 http://www.inshaker.ru/cocktail/cucumber_tini/
+http://www.inshaker.ru/cocktail/oxford_s_punch/
 http://www.inshaker.ru/cocktail/old_fashioned/
 http://www.inshaker.ru/cocktail/peel_infused_old_fashioned/
 http://www.inshaker.ru/cocktail/old_fashioned_with_camomile/
@@ -963,6 +968,7 @@ http://www.inshaker.ru/cocktail/tuttosi/
 http://www.inshaker.ru/cocktail/tykvan_do/
 http://www.inshaker.ru/cocktail/sorrel_smile/
 http://www.inshaker.ru/cocktail/hurricane/
+http://www.inshaker.ru/cocktail/hurricane_punch/
 http://www.inshaker.ru/cocktail/hurricane_shot/
 http://www.inshaker.ru/cocktail/ural_s_lemonade/
 http://www.inshaker.ru/cocktail/prairie_oyster/
