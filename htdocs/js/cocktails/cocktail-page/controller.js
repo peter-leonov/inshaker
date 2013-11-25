@@ -154,7 +154,7 @@ var Controller = {
 		
 		this.nodes.whereToBuy.addEventListener('click', function (e)
 		{
-			window.location.href = '/'
+			window.location.href = '/shop/'
 		},
 		false)
 		
