@@ -7,10 +7,10 @@
 	"people": 10
 },
 {
-	"name": "Коктейльный День Рождения",
+	"name": "Испанская вечеринка",
 	"imperative": "Отпразднуй коктейльный день рождения!",
 	"path": "cocktail-birthday",
-	"portions": [{"cocktail": "Душевный пунш", "factor": 0.2}],
+	"portions": [{"cocktail": "Белая сангрия в пунше", "factor": 0.2},{"cocktail": "Красная сангрия в пунше", "factor": 0.2}],
 	"people": 10
 },
 {
