@@ -1,24 +1,42 @@
 [
 {
-	"name": "Мохито вечеринка",
-	"imperative": "Пригласи друзей в гости на вечеринку Домашнего Мохито!",
-	"path": "mojito-party",
-	"portions": [{"cocktail": "Домашний классический Мохито", "factor": 0.5}, {"cocktail": "Домашний клубничный Мохито", "factor": 1}, {"cocktail": "Домашний виноградный Мохито", "factor": 0.5}],
-	"people": 10
-},
-{
   "name": "Испанская вечеринка",
   "imperative": "Отпразднуй коктейльный день рождения!",
-  "path": "cocktail-birthday",
+  "path": "spanish",
   "portions": [{"cocktail": "Белая сангрия в пунше", "factor": 0.1},{"cocktail": "Красная сангрия в пунше", "factor": 0.1}],
   "people": 10
 },
 {
   "name": "Английская вечеринка",
   "imperative": "Отпразднуй коктейльный день рождения!",
-  "path": "cocktail-birthday",
+  "path": "english",
   "portions": [{"cocktail": "Джин тоник", "factor": 1},{"cocktail": "Оксфордский пунш", "factor": 0.2},{"cocktail": "Виски он зе рокс", "factor": 1}],
   "people": 10
+},
+{
+  "name": "Теплый вечер у камина",
+  "imperative": "Проведи теплый вечер у камина!",
+  "path": "fireplace",
+  "portions": [{"cocktail": "Космо пэшн ти", "factor": 0.5}, {"cocktail": "Согревающий восточный мед", "factor": 0.5}],
+  "people": 10
+}
+
+/*
+
+{
+	"name": "Клуб на одну ночь",
+	"imperative": "Открой свой клуб на одну ночь!",
+	"path": "private-club",
+	"portions": [{"cocktail": "Куба либре", "factor": 5}],
+	"goods": [["Дискобол",1,3]],
+	"people": 10
+},
+{
+	"name": "Мохито вечеринка",
+	"imperative": "Пригласи друзей в гости на вечеринку Домашнего Мохито!",
+	"path": "mojito-party",
+	"portions": [{"cocktail": "Домашний классический Мохито", "factor": 0.5}, {"cocktail": "Домашний клубничный Мохито", "factor": 1}, {"cocktail": "Домашний виноградный Мохито", "factor": 0.5}],
+	"people": 10
 },
 {
 	"name": "Коктейльное барбекю",
@@ -74,20 +92,8 @@
 	{"cocktail": "Фрамбуэза", "factor": 3}],
 	"goods": [["Ароматические палочки",4,3], ["Ароматические свечи",1,3]],
 	"people": 2
-},
-{
-	"name": "Клуб на одну ночь",
-	"imperative": "Открой свой клуб на одну ночь!",
-	"path": "private-club",
-	"portions": [{"cocktail": "Куба либре", "factor": 5}],
-	"goods": [["Дискобол",1,3]],
-	"people": 10
-},
-{
-	"name": "Теплый вечер у камина",
-	"imperative": "Проведи теплый вечер у камина!",
-	"path": "fireplace",
-	"portions": [{"cocktail": "Космо пэшн ти", "factor": 0.5}, {"cocktail": "Согревающий восточный мед", "factor": 0.5}],
-	"people": 10
 }
+
+*/
+
 ]
