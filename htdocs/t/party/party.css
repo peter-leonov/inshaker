@@ -22,7 +22,7 @@ html.msie-9 #window.rendering { visibility: hidden; }
 #window .transparent-borders .left,
 #window .transparent-borders .bottom { background-color: rgba(0, 0, 0, 0.4); }
 
-#illustration-box .content .description { padding: 20px; font-style: italic; font-family: Georgia; font-size: 17px; line-height: 25px; }
+#illustration-box .content .description { font-style: italic; font-family: Georgia; font-size: 17px; line-height: 25px; }
 
 #recipe-list .recipe { position: relative; overflow: hidden; margin: 20px 0 50px 0; }
 #recipe-list .recipe:last-child { margin-bottom: 20px; }
