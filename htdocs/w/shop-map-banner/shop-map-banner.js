@@ -10,6 +10,10 @@
 
 $.onready(function ()
 {
+  // check, if the banner is present on a page
+  if (!$('#shop-map-banner'))
+    return
+  
 	var nodes =
 	{
 		address: $('#shop-map-banner .info .location p'),
