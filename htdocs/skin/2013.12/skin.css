@@ -5,11 +5,11 @@
 {
   display: block;
   width: 116px; height: 25px; right: -10px; top: 23px;
-  background: url(/skin/2013.11/logo.png) center center no-repeat;
+  background: url(/skin/2013.12/logo.png) center center no-repeat;
 }
 #combinator-page #spotlighted i
 {
-  background: url(/skin/2013.11/logo-black.png) center center no-repeat;
+  background: url(/skin/2013.12/logo-black.png) center center no-repeat;
 }
 
 #branded-image-holder
@@ -20,7 +20,7 @@
 {
   display: block;
   width: 315px; height: 450px; right: 0; top: 23px;
-  background: #fff url(/skin/2013.11/image.jpg) center no-repeat;
+  background: #fff url(/skin/2013.12/image.jpg) center no-repeat;
 }
 
 #cocktail-page #branded-image-holder,
