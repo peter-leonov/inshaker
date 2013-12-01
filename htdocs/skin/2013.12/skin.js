@@ -26,7 +26,7 @@ var Me =
   }
 }
 
-var link = '/products/39/absolut-originality'
+var link = '/products/27/nabor-super-barmena'
 
 Me.initialize
 ({
