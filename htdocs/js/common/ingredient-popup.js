@@ -144,7 +144,7 @@ var myProto =
 		{
 			nodes.ingredientWindow.classList.add('can-buy')
 			nodes.buy.price.appendChild(T(volume[1] + 'р.-'))
-			nodes.buy.unit.appendChild(T(volume[2] + ' ' + volume[0] + ingredient.unit))
+			nodes.buy.unit.appendChild(T(volume[2][0] + ' ' + volume[0] + ingredient.unit))
 			nodes.buy.where.href = ingredient.inShop || '/shop/'
 		}
 	},

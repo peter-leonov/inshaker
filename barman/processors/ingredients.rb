@@ -81,6 +81,7 @@ class IngredientsProcessor < Inshaker::Processor
     @tags_hidden = YAML::load(File.open("#{Config::BASE_DIR}/hidden-tags.yaml"))
     @units = YAML::load(File.open("#{Config::BASE_DIR}/units.yaml"))
     @units_i = @units.hash_index
+    @tara = YAML::load(File.open("#{Config::BASE_DIR}/tara.yaml"))
   end
   
   def prepare_ingredients
@@ -267,7 +268,14 @@ class IngredientsProcessor < Inshaker::Processor
           next
         end
         
-        volumes << [v["Объем"], v["Цена"], v["Тара"] || "Бутылка", v["Наличие"] != "нет"]
+        tara = v["Тара"] || "бутылка"
+        tara_opts = @tara[tara.u_downcase]
+        unless tara_opts
+          error "непонятная тара «#{tara}» (номер #{i+1})"
+          next
+        end
+        
+        volumes << [v["Объем"], v["Цена"], tara_opts["ИП"], v["Наличие"] != "нет"]
       end
       # increment sort by cost per litre
       good["volumes"] = volumes.sort { |a, b| b[0] / b[1] - a[0] / a[1] }
