@@ -1,14 +1,10 @@
 /* skin.css */
 @media screen {
 
-#spotlighted
-{
-  display: none;
-}
 #spotlighted i
 {
   display: block;
-  width: 116px; height: 25px; right: -10px; top: 23px;
+  width: 48px; height: 30px; right: -10px; top: 20px;
   background: url(/skin/2013.12/logo.png) center center no-repeat;
 }
 #combinator-page #spotlighted i
