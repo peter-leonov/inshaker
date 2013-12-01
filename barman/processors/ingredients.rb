@@ -197,7 +197,7 @@ class IngredientsProcessor < Inshaker::Processor
     
     legend = dir.path + "/about.txt"
     if File.exists?(legend)
-      good["about"] = File.read(legend)
+      good["about"] = File.read(legend).gsub(/\n\r?/, '<br>')
     else
       warning "нет файла с легендой ингредиента (about.txt)"
     end
