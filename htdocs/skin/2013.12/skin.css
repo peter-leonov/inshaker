@@ -1,6 +1,10 @@
 /* skin.css */
 @media screen {
 
+#spotlighted
+{
+  display: none;
+}
 #spotlighted i
 {
   display: block;
