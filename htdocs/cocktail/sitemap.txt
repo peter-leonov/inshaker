@@ -498,7 +498,6 @@ http://www.inshaker.ru/cocktail/kurant_shot/
 http://www.inshaker.ru/cocktail/courtesan/
 http://www.inshaker.ru/cocktail/love_me_do/
 http://www.inshaker.ru/cocktail/lavander_creme_brulle/
-http://www.inshaker.ru/cocktail/avalanche/
 http://www.inshaker.ru/cocktail/titbit/
 http://www.inshaker.ru/cocktail/lady_scarlett/
 http://www.inshaker.ru/cocktail/lady_killer/
@@ -703,7 +702,6 @@ http://www.inshaker.ru/cocktail/postcard_from_italy/
 http://www.inshaker.ru/cocktail/dreadlock_holiday/
 http://www.inshaker.ru/cocktail/hunter/
 http://www.inshaker.ru/cocktail/ocha_karai/
-http://www.inshaker.ru/cocktail/mesmerized/
 http://www.inshaker.ru/cocktail/missionary_s_downfall/
 http://www.inshaker.ru/cocktail/paloma/
 http://www.inshaker.ru/cocktail/paloma_light/
@@ -763,7 +761,6 @@ http://www.inshaker.ru/cocktail/bird_shit/
 http://www.inshaker.ru/cocktail/way_forward/
 http://www.inshaker.ru/cocktail/pushkin_tini/
 http://www.inshaker.ru/cocktail/little_bee/
-http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
 http://www.inshaker.ru/cocktail/fifth_element/
 http://www.inshaker.ru/cocktail/squashed_frog/
@@ -830,7 +827,6 @@ http://www.inshaker.ru/cocktail/russian_long_island/
 http://www.inshaker.ru/cocktail/russian_national/
 http://www.inshaker.ru/cocktail/russian-japanese_war/
 http://www.inshaker.ru/cocktail/ryazanov/
-http://www.inshaker.ru/cocktail/near_fidel/
 http://www.inshaker.ru/cocktail/sazerac/
 http://www.inshaker.ru/cocktail/sazerac_2/
 http://www.inshaker.ru/cocktail/sidecar/
@@ -997,7 +993,6 @@ http://www.inshaker.ru/cocktail/french_desert/
 http://www.inshaker.ru/cocktail/french_maple_tea/
 http://www.inshaker.ru/cocktail/french_75/
 http://www.inshaker.ru/cocktail/french_75_2/
-http://www.inshaker.ru/cocktail/fruit_blazer/
 http://www.inshaker.ru/cocktail/grapefruit_frutoccino/
 http://www.inshaker.ru/cocktail/fusion_crush/
 http://www.inshaker.ru/cocktail/fusion_peach/
