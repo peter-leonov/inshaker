@@ -157,6 +157,9 @@ OrderForm.prototype =
   {
     e.preventDefault()
     
+    // track as soon as possible
+    Statistics.productOrdered(this.productName)
+    
     var h = FormHelper.toHash(e.target)
     
     // empty contact field
@@ -182,6 +185,7 @@ OrderForm.prototype =
       }
       else
       {
+        Statistics.productOrderError(this.productName)
         alert('Технические неполадки!\n\nПожалуйста, отправь заказ\nна почту: support@inshaker.ru\nили по телефону: +7 499 391-43-67.\n\nСпасибо!')
       }
     }
@@ -194,7 +198,6 @@ OrderForm.prototype =
   
   saveContact: function ()
   {
-    console.log(this.nodes.input.value)
     window.localStorage['delivery-widget.contact'] = this.nodes.input.value
   },
 }
