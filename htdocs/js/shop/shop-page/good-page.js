@@ -148,9 +148,13 @@ OrderForm.prototype =
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
     
-    var contact = window.localStorage['delivery-widget.contact']
-    if (contact != null)
-      this.nodes.input.value = contact
+    this.loadContact()
+    if (this.contact)
+    {
+      this.nodes.input.value = this.contact
+      // track the now user visit
+      Statistics.shopUserVisit(this.contact)
+    }
   },
   
   sendListener: function (e)
@@ -158,12 +162,11 @@ OrderForm.prototype =
     e.preventDefault()
     
     // track as soon as possible
-    Statistics.productOrdered(this.productName)
+    Statistics.productOrdered(this.productName, this.contact)
     
-    var h = FormHelper.toHash(e.target)
-    
-    // empty contact field
-    if (!/\S/.test(h.contact))
+    this.saveContact()
+    // the contact field is empty
+    if (!this.contact)
       return
     
     var message =
@@ -172,7 +175,7 @@ OrderForm.prototype =
       to: 'shop.order@mg.inshaker.ru',
       from: 'Product Page <shop.order@mg.inshaker.ru>',
       text: this.productName + '\n'+ window.location.href + '\n\n' +
-            'Контакт: ' + h.contact
+            'Контакт: ' + this.contact
     }
     
     Mail.send(message, sent.bind(this))
@@ -185,7 +188,7 @@ OrderForm.prototype =
       }
       else
       {
-        Statistics.productOrderError(this.productName)
+        Statistics.productOrderError(this.productName, this.contact)
         alert('Технические неполадки!\n\nПожалуйста, отправь заказ\nна почту: support@inshaker.ru\nили по телефону: +7 499 391-43-67.\n\nСпасибо!')
       }
     }
@@ -196,10 +199,18 @@ OrderForm.prototype =
     log('ok')
   },
   
+  loadContact: function ()
+  {
+    this.contact = window.localStorage['delivery-widget.contact']
+  },
   saveContact: function ()
   {
-    window.localStorage['delivery-widget.contact'] = this.nodes.input.value
-  },
+    var value = this.nodes.input.value
+    if (!/\S/.test(value)) // has no meaningful symbols
+      value = undefined
+    
+    this.contact = window.localStorage['delivery-widget.contact'] = value
+  }
 }
 
 window.OrderForm = OrderForm

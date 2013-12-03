@@ -59,13 +59,19 @@ var Me =
 		this.path('/party/' + party.path + '/print')
 	},
 	
-  productOrdered: function (name)
+  shopUserVisit: function (user)
   {
-    this.event('shop-product-ordered', name)
+    this.event('shop-user-visit', user)
   },
-  productOrderError: function (name)
+  productOrdered: function (product, user)
   {
-    this.event('shop-product-order-error', name)
+    this.event('shop-product-ordered', product)
+    this.event('shop-product-ordered-by', user)
+  },
+  productOrderError: function (product, user)
+  {
+    this.event('shop-product-order-error', product)
+    this.event('shop-product-order-error-by', user)
   },
   
 	poll: function (name, value)
