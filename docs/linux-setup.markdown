@@ -324,14 +324,14 @@ Upstart
 
 И сам nginx:
 
-	curl http://nginx.org/download/nginx-1.2.4.tar.gz | tar xzf -
-	cd nginx-1.2.4
-	./configure --error-log-path=stderr && make && sudo make install
+	curl http://nginx.org/download/nginx-1.4.4.tar.gz | tar xzf -
+	cd nginx-1.4.4
+	./configure --with-http_ssl_module && make && sudo make install
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 
 и сразу дебажную версию:
 
-	make clean && ./configure --error-log-path=stderr --with-debug && make
+	make clean && ./configure --with-http_ssl_module --with-debug && make
 	sudo cp ./objs/nginx /usr/local/nginx/sbin/nginx-debug
 	sudo ln -s /usr/local/nginx/sbin/nginx-debug /usr/local/bin/nginx-debug
 
