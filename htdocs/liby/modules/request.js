@@ -10,7 +10,7 @@ function onreadystatechange ()
 	{
 		this.statusType = types[Math.floor(this.status / 100)]
 		if (this.callback)
-			this.callback()
+			this.callback(this)
 	}
 }
 

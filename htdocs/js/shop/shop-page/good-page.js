@@ -123,3 +123,80 @@ GoodPage.prototype =
 window.GoodPage = GoodPage
 
 })();
+
+
+;(function(){
+
+// simple form
+function OrderForm (nodes)
+{
+  this.nodes = nodes
+  this.bind()
+}
+
+OrderForm.prototype =
+{
+  bind: function ()
+  {
+    this.productName = this.nodes.form.getAttribute('data-item-title')
+    this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
+  },
+  
+  sendListener: function (e)
+  {
+    e.preventDefault()
+    
+    var h = FormHelper.toHash(e.target)
+    
+    // empty contact field
+    if (!/\S/.test(h.contact))
+      return
+    
+    var message =
+    {
+      subject: 'Заказ: ' + this.productName,
+      to: 'shop.order@mg.inshaker.ru',
+      from: 'Product Page <shop.order@mg.inshaker.ru>',
+      text: this.productName + '\n'+ window.location.href + '\n\n' +
+            'Контакт: ' + h.contact
+    }
+    
+    Mail.send(message, sent.bind(this))
+    
+    function sent (r)
+    {
+      if (r.statusType == 'success')
+      {
+        this.formSuccess()
+      }
+      else
+      {
+        alert('Технические неполадки!\n\nПожалуйста, отправь заказ\nна почту: support@inshaker.ru\nили по телефону: +7 499 391-43-67.\n\nСпасибо!')
+      }
+    }
+  },
+  
+  formSuccess: function ()
+  {
+    log('ok')
+  }
+}
+
+window.OrderForm = OrderForm
+
+})();
+
+$.onready(function ()
+{
+  var widget = $('#delivery-widget')
+  if (!widget) // not the right page to shop around
+    return
+
+  var nodes =
+  {
+    widget: widget,
+    form: $('#delivery-widget form')
+  }
+
+  new OrderForm(nodes)
+})
