@@ -14,6 +14,7 @@
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
 <!--# include virtual="/liby/modules/url-encode.js" -->
+<!--# include virtual="/liby/modules/function-throttle.js" -->
 <!--# include virtual="/js/common/mail.js" -->
 
 $.onready(function ()
@@ -132,7 +133,8 @@ function OrderForm (widget)
   this.nodes =
   {
     widget: widget,
-    form: $('.delivery-widget-form', widget)
+    form: $('.delivery-widget-form', widget),
+    input: $('.delivery-widget-input', widget)
   }
   
   this.bind()
@@ -144,6 +146,11 @@ OrderForm.prototype =
   {
     this.productName = this.nodes.form.getAttribute('data-item-title')
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
+    this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
+    
+    var contact = window.localStorage['delivery-widget.contact']
+    if (contact != null)
+      this.nodes.input.value = contact
   },
   
   sendListener: function (e)
@@ -183,7 +190,13 @@ OrderForm.prototype =
   formSuccess: function ()
   {
     log('ok')
-  }
+  },
+  
+  saveContact: function ()
+  {
+    console.log(this.nodes.input.value)
+    window.localStorage['delivery-widget.contact'] = this.nodes.input.value
+  },
 }
 
 window.OrderForm = OrderForm
