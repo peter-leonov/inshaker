@@ -127,10 +127,14 @@ window.GoodPage = GoodPage
 
 ;(function(){
 
-// simple form
-function OrderForm (nodes)
+function OrderForm (widget)
 {
-  this.nodes = nodes
+  this.nodes =
+  {
+    widget: widget,
+    form: $('.delivery-widget-form', widget)
+  }
+  
   this.bind()
 }
 
@@ -192,11 +196,5 @@ $.onready(function ()
   if (!widget) // not the right page to shop around
     return
 
-  var nodes =
-  {
-    widget: widget,
-    form: $('#delivery-widget form')
-  }
-
-  new OrderForm(nodes)
+  new OrderForm(widget)
 })
