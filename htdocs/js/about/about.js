@@ -130,7 +130,7 @@ var AboutPage = {
 				html: 'Имя: ' + h.name + '<br/>Контакт: ' + h.address + '<br/>Компания: ' + h.company + '<br/>Что говорит: ' + h.text
 			}
 			
-			Request.post('/act/message', message, sent)
+			Mail.send(message, sent)
 		}
 		form.addEventListener('submit', sendListener, false)
 		
@@ -253,5 +253,7 @@ $.onready(function(){
 
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 <!--# include virtual="/js/common/google.js" -->
+
+<!--# include virtual="/js/common/mail.js" -->
 
 <!--# include virtual="/liby/modules/rus-date.js" -->
