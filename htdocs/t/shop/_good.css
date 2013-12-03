@@ -10,7 +10,7 @@
 /* END COMMON */
 
 /* COCKTAILS */
-#coctails { margin: 10px 0 49px; }
+#coctails { margin: 10px 0 49px; text-align: center; }
 #coctails li { display: inline-block; text-align: center; vertical-align: top; width: 200px; height: 217px; margin: 65px 20px 10px; font-size: 14px; }
 #coctails li a { color: #000; }
 #coctails li .image { height: 166px; margin: 0 0 10px; text-align: center; position: relative; }
