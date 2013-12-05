@@ -26,7 +26,7 @@ $.onready(function ()
 		map: $('#map .map'),
 		positionControl: $('.position-control'),
 		
-		cocktails: $('#coctails'),
+		cocktails: $('#cocktails .list'),
 		
 		photos: $('.photos')
 	}
