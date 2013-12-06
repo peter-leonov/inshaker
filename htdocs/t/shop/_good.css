@@ -21,6 +21,11 @@
 #cocktails .list li:only-child .image img { max-width: 100%; }
 /* END COCKTAILS */
 
+#delivery-widget .content { font-size: 20px; line-height: 30px; }
+#delivery-widget .delivery-widget-input { width: 620px; margin: 0; font-size: inherit; }
+#delivery-widget .delivery-widget-form { margin: 15px 0; }
+#delivery-widget .order button { margin: 25px 0 0 0; }
+
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
 
