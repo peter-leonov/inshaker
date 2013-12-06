@@ -231,7 +231,7 @@ OrderForm.prototype =
   {
     var value = this.nodes.input.value
     if (!/\S/.test(value)) // has no meaningful symbols
-      value = undefined
+      value = ''
     
     this.contact = window.localStorage['delivery-widget.contact'] = value
   }
