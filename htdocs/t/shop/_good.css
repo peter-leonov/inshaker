@@ -21,9 +21,21 @@
 #cocktails .list li:only-child .image img { max-width: 100%; }
 /* END COCKTAILS */
 
+@-webkit-keyframes shake
+{
+  0%, 100% { -webkit-transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { -webkit-transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { -webkit-transform: translateX(5px); }
+  
+  0% { outline: 4px solid #fc0066; }
+  99.99% { outline: 4px solid #fc0066; }
+  100% { outline: none; }
+}
+
 #delivery-widget .delivery-widget-content,
 #delivery-widget .delivery-widget-done-message { font-size: 20px; line-height: 30px; }
 #delivery-widget .delivery-widget-input { width: 620px; margin: 0; font-size: inherit; }
+#delivery-widget .delivery-widget-input.error { -webkit-animation: shake .75s; outline: 0 solid; }
 #delivery-widget .delivery-widget-form { margin: 15px 0; }
 #delivery-widget .delivery-widget-done-message .message { width: 400px; margin: 25px auto; text-align: center; }
 #delivery-widget .delivery-widget-done-message .message .title { font-size: 30px; }

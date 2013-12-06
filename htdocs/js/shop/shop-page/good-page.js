@@ -143,6 +143,12 @@ function OrderForm (widget)
   this.bind()
 }
 
+function replayClass (node, cn)
+{
+  node.classList.remove(cn)
+  window.setTimeout(function () { node.classList.add(cn) }, 0)
+}
+
 OrderForm.prototype =
 {
   livingTargets:
@@ -180,7 +186,11 @@ OrderForm.prototype =
     this.saveContact()
     // the contact field is empty
     if (!this.contact)
+    {
+      replayClass(this.nodes.input, 'error')
       return
+    }
+    this.nodes.input.classList.remove('error')
     
     // track as soon as possible
     Statistics.productOrdered(this.productName, this.contact)
