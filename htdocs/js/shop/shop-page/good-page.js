@@ -134,7 +134,8 @@ function OrderForm (widget)
   {
     widget: widget,
     form: $('.delivery-widget-form', widget),
-    input: $('.delivery-widget-input', widget)
+    input: $('.delivery-widget-input', widget),
+    order: $('.delivery-widget-order', widget)
   }
   
   this.bind()
@@ -146,6 +147,7 @@ OrderForm.prototype =
   {
     this.productName = this.nodes.form.getAttribute('data-item-title')
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
+    this.nodes.order.addEventListener('click', this.sendListener.bind(this), false)
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
     
     this.loadContact()
