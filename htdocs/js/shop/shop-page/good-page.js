@@ -167,9 +167,9 @@ OrderForm.prototype =
       Statistics.shopUserVisit(this.contact)
     }
     
-    if (window.localStorage['delivery-widget.done'])
+    if (window.localStorage['delivery-widget.state'] == 'sent')
     {
-      this.switchToDone()
+      this.switchToSent()
     }
   },
   
@@ -200,8 +200,7 @@ OrderForm.prototype =
     {
       if (r.statusType == 'success')
       {
-        window.localStorage['delivery-widget.done'] = 1
-        this.switchToDone()
+        this.switchToSent()
       }
       else
       {
@@ -211,14 +210,16 @@ OrderForm.prototype =
     }
   },
   
-  switchToDone: function ()
+  switchToSent: function ()
   {
+    window.localStorage['delivery-widget.state'] = 'sent'
     this.nodes.widget.setAttribute('data-state', 'sent')
     this.nodes.target.firstChild.nodeValue = this.livingTargets[Math.floor(Math.random() * this.livingTargets.length)]
   },
   
   switchToInit: function ()
   {
+    window.localStorage['delivery-widget.state'] = 'init'
     this.nodes.widget.setAttribute('data-state', 'init')
   },
   
