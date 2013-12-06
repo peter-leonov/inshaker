@@ -135,7 +135,9 @@ function OrderForm (widget)
     widget: widget,
     form: $('.delivery-widget-form', widget),
     input: $('.delivery-widget-input', widget),
-    order: $('.delivery-widget-order', widget)
+    order: $('.delivery-widget-order', widget),
+    target: $('.delivery-widget-repeat .target', widget),
+    repeat: $('.delivery-widget-repeat', widget)
   }
   
   this.bind()
@@ -143,12 +145,19 @@ function OrderForm (widget)
 
 OrderForm.prototype =
 {
+  livingTargets:
+    [
+      'в подарок другу', 'подруге в подарок', 'в подарок коллеге',
+      'в подарок начальнику', 'для себя', 'прозапас', 'на день рождения', 'под ёлочку'
+    ],
+  
   bind: function ()
   {
     this.productName = this.nodes.form.getAttribute('data-item-title')
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
     this.nodes.order.addEventListener('click', this.sendListener.bind(this), false)
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
+    this.nodes.repeat.addEventListener('click', this.switchToInit.bind(this), false)
     
     this.loadContact()
     if (this.contact)
@@ -186,7 +195,7 @@ OrderForm.prototype =
     {
       if (r.statusType == 'success')
       {
-        this.formSuccess()
+        this.switchToDone()
       }
       else
       {
@@ -196,9 +205,15 @@ OrderForm.prototype =
     }
   },
   
-  formSuccess: function ()
+  switchToDone: function ()
   {
-    log('ok')
+    this.nodes.widget.setAttribute('data-state', 'sent')
+    this.nodes.target.firstChild.nodeValue = this.livingTargets[Math.floor(Math.random() * this.livingTargets.length)]
+  },
+  
+  switchToInit: function ()
+  {
+    this.nodes.widget.setAttribute('data-state', 'init')
   },
   
   loadContact: function ()

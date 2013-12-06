@@ -28,11 +28,16 @@
 #delivery-widget .delivery-widget-done-message .message { width: 400px; margin: 25px auto; text-align: center; }
 #delivery-widget .delivery-widget-done-message .message .title { font-size: 30px; }
 /* normal */
-#delivery-widget .delivery-widget-done-message { display: none; }
+#delivery-widget .delivery-widget-done-message,
+#delivery-widget .delivery-widget-repeat
+{ display: none; }
 /* sent */
-#delivery-widget.form-sent .delivery-widget-done-message { display: block; }
-#delivery-widget.form-sent .delivery-widget-content,
-#delivery-widget.form-sent .delivery-widget-order { display: none; }
+#delivery-widget[data-state="sent"] .delivery-widget-done-message,
+#delivery-widget[data-state="sent"] .delivery-widget-repeat
+{ display: block; }
+#delivery-widget[data-state="sent"] .delivery-widget-content,
+#delivery-widget[data-state="sent"] .delivery-widget-order
+{ display: none; }
 
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
