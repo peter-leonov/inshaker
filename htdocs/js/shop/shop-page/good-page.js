@@ -166,6 +166,11 @@ OrderForm.prototype =
       // track the now user visit
       Statistics.shopUserVisit(this.contact)
     }
+    
+    if (window.localStorage['delivery-widget.done'])
+    {
+      this.switchToDone()
+    }
   },
   
   sendListener: function (e)
@@ -195,6 +200,7 @@ OrderForm.prototype =
     {
       if (r.statusType == 'success')
       {
+        window.localStorage['delivery-widget.done'] = 1
         this.switchToDone()
       }
       else
