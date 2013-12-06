@@ -177,13 +177,13 @@ OrderForm.prototype =
   {
     e.preventDefault()
     
-    // track as soon as possible
-    Statistics.productOrdered(this.productName, this.contact)
-    
     this.saveContact()
     // the contact field is empty
     if (!this.contact)
       return
+    
+    // track as soon as possible
+    Statistics.productOrdered(this.productName, this.contact)
     
     var message =
     {
