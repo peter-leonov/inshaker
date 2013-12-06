@@ -3,7 +3,7 @@
 
 /* COMMON */
 .common-name span { font-size: 32px; line-height: 1px; }
-.common-content { margin: 0 0 30px; }
+.common-box { margin: 0 0 30px; }
 #cocktails { padding: 30px 0; border-top: 1px solid #ccc; background: linear-gradient(to bottom, #e0e0e0 0%, rgba(255,255,255,0) 40px); }
 #cocktails .common-content-area { padding: 20px 40px; }
 #cocktails .title { text-align: center; font-size: 24px; line-height: 31px; letter-spacing: 1px; position: relative; z-index: 1; }
@@ -21,10 +21,18 @@
 #cocktails .list li:only-child .image img { max-width: 100%; }
 /* END COCKTAILS */
 
-#delivery-widget .content { font-size: 20px; line-height: 30px; }
+#delivery-widget .delivery-widget-content,
+#delivery-widget .delivery-widget-done-message { font-size: 20px; line-height: 30px; }
 #delivery-widget .delivery-widget-input { width: 620px; margin: 0; font-size: inherit; }
 #delivery-widget .delivery-widget-form { margin: 15px 0; }
-#delivery-widget .order button { margin: 25px 0 0 0; }
+#delivery-widget .delivery-widget-done-message .message { width: 400px; margin: 25px auto; text-align: center; }
+#delivery-widget .delivery-widget-done-message .message .title { font-size: 30px; }
+/* normal */
+#delivery-widget .delivery-widget-done-message { display: none; }
+/* sent */
+#delivery-widget.form-sent .delivery-widget-done-message { display: block; }
+#delivery-widget.form-sent .delivery-widget-content,
+#delivery-widget.form-sent .delivery-widget-order { display: none; }
 
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
