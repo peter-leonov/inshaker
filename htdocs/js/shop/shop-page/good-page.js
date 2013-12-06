@@ -146,7 +146,7 @@ function OrderForm (widget)
 function replayClass (node, cn)
 {
   node.classList.remove(cn)
-  window.setTimeout(function () { node.classList.add(cn) }, 0)
+  window.setTimeout(function () { node.classList.add(cn) }, 100)
 }
 
 OrderForm.prototype =
@@ -188,6 +188,7 @@ OrderForm.prototype =
     if (!this.contact)
     {
       replayClass(this.nodes.input, 'error')
+      this.nodes.input.focus()
       return
     }
     this.nodes.input.classList.remove('error')
