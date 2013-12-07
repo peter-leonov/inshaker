@@ -12,9 +12,6 @@
 <!--# include virtual="/liby/modules/animation.js" -->
 <!--# include virtual="/js/common/rolling-images.js" -->
 
-<!--# include virtual="/liby/modules/form-helper.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
-<!--# include virtual="/liby/modules/function-throttle.js" -->
 <!--# include virtual="/js/common/mail.js" -->
 
 $.onready(function ()
