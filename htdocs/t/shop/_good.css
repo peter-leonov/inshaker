@@ -38,6 +38,7 @@
   0%, 100% { background-color: #fc0066; }
 }
 
+#delivery-widget { display: none; } /* hide untill the deal (see also good-page.js) */
 #delivery-widget .delivery-widget-content,
 #delivery-widget .delivery-widget-done-message { font-size: 20px; line-height: 30px; }
 #delivery-widget .delivery-widget-input { width: 620px; margin: 0; font-size: inherit; }
