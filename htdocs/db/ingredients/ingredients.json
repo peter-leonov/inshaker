@@ -336,7 +336,7 @@
 {"group":"Пиво и сидр","name":"Пиво темное","path":"pivo-temnoe","tags":["Пиво"],"unit":"л","volumes":[]},
 {"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Писко","path":"pisko","unit":"л","volumes":[]},
 {"group":"Фрукты","name":"Питайя","names":["питахайя"],"path":"pitayya","tags":["Фрукты"],"unit":"г","volumes":[]},
-{"group":"Штучки","name":"Питчер","path":"pitcher","unit":"мл","volumes":[[600.0,750.0,["питчер","питчера","питчеров"]]]},
+{"group":"Штучки","inShop":"/products/43/pitcher-dlya-glintveyna","name":"Питчер","path":"pitcher","unit":"мл","volumes":[[600.0,750.0,["питчер","питчера","питчеров"]]]},
 {"group":"Биттеры","inShop":"/products/8/krutoy-domashniy-bar","name":"Пишо биттер","path":"pisho-bitter","tags":["Биттеры"],"unit":"л","volumes":[]},
 {"group":"Штучки","name":"Подстаканник","path":"podstakannik","unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Половник","path":"polovnik","unit":"шт","volumes":[[1.0,200.0,["половник","половника","половников"]]]},
