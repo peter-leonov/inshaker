@@ -254,6 +254,6 @@ $.onready(function ()
   var widget = $('#delivery-widget')
   if (!widget) // not the right page to shop around
     return
-return // disable untill the deal (see also _good.css)
+
   new OrderForm(widget)
 })
