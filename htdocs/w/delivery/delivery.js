@@ -69,23 +69,8 @@ DeliveryWidget.prototype =
     }
   },
   
-  sendListener: function (e)
+  bakeMessage: function ()
   {
-    e.preventDefault()
-    
-    this.saveContact()
-    // the contact field is empty
-    if (!this.contact)
-    {
-      replayClass(this.nodes.input, 'error')
-      this.nodes.input.focus()
-      return
-    }
-    this.nodes.input.classList.remove('error')
-    
-    // track as soon as possible
-    Statistics.productOrdered(this.commodityName, this.contact)
-    
     var messageBody = [] // accumulate message parts
     
     var submit = document.createEvent('Event')
@@ -105,15 +90,32 @@ DeliveryWidget.prototype =
     // stringify
     messageBody = messageBody.join('\n\n-------------------\n\n')
     
-    var message =
-    {
+    return {
       subject: 'Заказ: ' + this.commodityName,
       to: 'shop.order@mg.inshaker.ru',
       from: 'Коктейльный магазин <shop.order@mg.inshaker.ru>',
       text: messageBody
     }
+  },
+  
+  sendListener: function (e)
+  {
+    e.preventDefault()
     
-    Mail.send(message, sent.bind(this))
+    this.saveContact()
+    // the contact field is empty
+    if (!this.contact)
+    {
+      replayClass(this.nodes.input, 'error')
+      this.nodes.input.focus()
+      return
+    }
+    this.nodes.input.classList.remove('error')
+    
+    // track as soon as possible
+    Statistics.productOrdered(this.commodityName, this.contact)
+    
+    Mail.send(this.bakeMessage(), sent.bind(this))
     
     function sent (r)
     {
