@@ -86,13 +86,31 @@ DeliveryWidget.prototype =
     // track as soon as possible
     Statistics.productOrdered(this.commodityName, this.contact)
     
+    var messageBody = [] // accumulate message parts
+    
+    var submit = document.createEvent('Event')
+    submit.initEvent('inshaker.delivery-widget.submit', true, true)
+    submit.deliveryWidgetData = messageBody
+    this.nodes.widget.dispatchEvent(submit)
+    
+    messageBody.push
+    (
+      this.commodityName + '\n' +
+      window.location.href + '\n\n' +
+      'Контакт: ' + this.contact
+    )
+    
+    // more specific parts go last
+    messageBody.reverse()
+    // stringify
+    messageBody = messageBody.join('\n\n-------------------\n\n')
+    
     var message =
     {
       subject: 'Заказ: ' + this.commodityName,
       to: 'shop.order@mg.inshaker.ru',
       from: 'Коктейльный магазин <shop.order@mg.inshaker.ru>',
-      text: this.commodityName + '\n'+ window.location.href + '\n\n' +
-            'Контакт: ' + this.contact
+      text: messageBody
     }
     
     Mail.send(message, sent.bind(this))
