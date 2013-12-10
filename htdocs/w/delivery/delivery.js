@@ -31,9 +31,20 @@ DeliveryWidget.prototype =
     'в подарок начальнику', 'для себя', 'прозапас', 'на день рождения', 'под ёлочку'
   ],
   
+  // universal commodity/page name fetcher
+  getCommodityName: function ()
+  {
+    // get the first part of a compaund page title
+    var first = document.title.split(/\s*—/)[0]
+    // try to fetch the commodity name in quotes
+    var name = /«(.+)»/.exec(first)
+    // return either the matched name or the full first part
+    return name ? name[1] : first
+  },
+  
   bind: function ()
   {
-    this.commodityName = this.nodes.form.getAttribute('data-item-title')
+    this.commodityName = this.getCommodityName()
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
     this.nodes.order.addEventListener('click', this.sendListener.bind(this), false)
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
