@@ -90,7 +90,7 @@ DeliveryWidget.prototype =
     {
       subject: 'Заказ: ' + this.commodityName,
       to: 'shop.order@mg.inshaker.ru',
-      from: 'Product Page <shop.order@mg.inshaker.ru>',
+      from: 'Коктейльный магазин <shop.order@mg.inshaker.ru>',
       text: this.commodityName + '\n'+ window.location.href + '\n\n' +
             'Контакт: ' + this.contact
     }
