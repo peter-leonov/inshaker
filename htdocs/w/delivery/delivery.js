@@ -39,6 +39,11 @@ DeliveryWidget.prototype =
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
     this.nodes.repeat.addEventListener('click', this.switchToInit.bind(this), false)
     
+    this.init()
+  },
+  
+  init: function ()
+  {
     this.loadContact()
     if (this.contact)
     {
