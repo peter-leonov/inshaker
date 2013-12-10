@@ -110,11 +110,11 @@ DeliveryWidget.prototype =
   
   getState: function ()
   {
-    return window.localStorage['delivery-widget.state']
+    return window.localStorage['delivery-widget.state:' + this.productName]
   },
   setState: function (state)
   {
-    return window.localStorage['delivery-widget.state'] = state
+    return window.localStorage['delivery-widget.state:' + this.productName] = state
   },
   
   loadContact: function ()
