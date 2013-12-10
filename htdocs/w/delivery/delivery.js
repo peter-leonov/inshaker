@@ -33,7 +33,7 @@ DeliveryWidget.prototype =
   
   bind: function ()
   {
-    this.productName = this.nodes.form.getAttribute('data-item-title')
+    this.commodityName = this.nodes.form.getAttribute('data-item-title')
     this.nodes.form.addEventListener('submit', this.sendListener.bind(this), false)
     this.nodes.order.addEventListener('click', this.sendListener.bind(this), false)
     this.nodes.input.addEventListener('keydown', this.saveContact.bind(this).throttle(250, 10000), false)
@@ -68,14 +68,14 @@ DeliveryWidget.prototype =
     this.nodes.input.classList.remove('error')
     
     // track as soon as possible
-    Statistics.productOrdered(this.productName, this.contact)
+    Statistics.productOrdered(this.commodityName, this.contact)
     
     var message =
     {
-      subject: 'Заказ: ' + this.productName,
+      subject: 'Заказ: ' + this.commodityName,
       to: 'shop.order@mg.inshaker.ru',
       from: 'Product Page <shop.order@mg.inshaker.ru>',
-      text: this.productName + '\n'+ window.location.href + '\n\n' +
+      text: this.commodityName + '\n'+ window.location.href + '\n\n' +
             'Контакт: ' + this.contact
     }
     
@@ -89,7 +89,7 @@ DeliveryWidget.prototype =
       }
       else
       {
-        Statistics.productOrderError(this.productName, this.contact)
+        Statistics.productOrderError(this.commodityName, this.contact)
         alert('Технические неполадки!\n\nПожалуйста, отправь заказ\nна почту: support@inshaker.ru\nили по телефону: +7 499 391-43-67.\n\nСпасибо!')
       }
     }
@@ -110,11 +110,11 @@ DeliveryWidget.prototype =
   
   getState: function ()
   {
-    return window.localStorage['delivery-widget.state:' + this.productName]
+    return window.localStorage['delivery-widget.state:' + this.commodityName]
   },
   setState: function (state)
   {
-    return window.localStorage['delivery-widget.state:' + this.productName] = state
+    return window.localStorage['delivery-widget.state:' + this.commodityName] = state
   },
   
   loadContact: function ()
