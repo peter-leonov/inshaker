@@ -47,7 +47,7 @@ DeliveryWidget.prototype =
       Statistics.shopUserVisit(this.contact)
     }
     
-    if (window.localStorage['delivery-widget.state'] == 'sent')
+    if (this.getState() == 'sent')
     {
       this.switchToSent()
     }
@@ -97,15 +97,24 @@ DeliveryWidget.prototype =
   
   switchToSent: function ()
   {
-    window.localStorage['delivery-widget.state'] = 'sent'
+    this.setState('sent')
     this.nodes.widget.setAttribute('data-state', 'sent')
     this.nodes.target.firstChild.nodeValue = this.livingTargets[Math.floor(Math.random() * this.livingTargets.length)]
   },
   
   switchToInit: function ()
   {
-    window.localStorage['delivery-widget.state'] = 'init'
+    this.setState('init')
     this.nodes.widget.setAttribute('data-state', 'init')
+  },
+  
+  getState: function ()
+  {
+    return window.localStorage['delivery-widget.state']
+  },
+  setState: function (state)
+  {
+    return window.localStorage['delivery-widget.state'] = state
   },
   
   loadContact: function ()
