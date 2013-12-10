@@ -2,7 +2,7 @@
 
 ;(function(){
 
-function ShopOrderForm (widget)
+function DeliveryWidget (widget)
 {
   this.nodes =
   {
@@ -23,7 +23,7 @@ function replayClass (node, cn)
   window.setTimeout(function () { node.classList.add(cn) }, 100)
 }
 
-ShopOrderForm.prototype =
+DeliveryWidget.prototype =
 {
   livingTargets:
     [
@@ -122,7 +122,7 @@ ShopOrderForm.prototype =
   }
 }
 
-window.ShopOrderForm = ShopOrderForm
+window.DeliveryWidget = DeliveryWidget
 
 })();
 
@@ -132,5 +132,5 @@ $.onready(function ()
   if (!widget) // not the right page to shop around
     return
 
-  new ShopOrderForm(widget)
+  new DeliveryWidget(widget)
 })

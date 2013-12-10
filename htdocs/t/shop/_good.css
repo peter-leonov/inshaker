@@ -46,5 +46,5 @@
 .photos .prev.disabled,
 .photos .next.disabled { display: none; }
 
-<!--# include virtual="/w/shop-order-form/shop-order-form.css" -->
+<!--# include virtual="/w/delivery/delivery.css" -->
 <!--# include virtual="/w/plain-popup/plain-popup.css" -->
