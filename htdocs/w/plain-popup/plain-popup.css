@@ -1,0 +1,4 @@
+.plain-popup-widget .popup-controls,
+.plain-popup-widget .popup-window { width: 700px; margin: 0 auto; top: 40px; position: relative; }
+.plain-popup-widget .popup-controls { height: 10px; }
+.plain-popup-widget .popup-controls .cross { position: absolute; z-index: 100; right: -18px; top: -5px; }

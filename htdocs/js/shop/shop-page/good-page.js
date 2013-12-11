@@ -14,6 +14,8 @@
 
 <!--# include virtual="/js/common/mail.js" -->
 
+<!--# include virtual="/w/plain-popup/plain-popup.js" -->
+
 $.onready(function ()
 {
 	UserAgent.setupDocumentElementClassNames()
