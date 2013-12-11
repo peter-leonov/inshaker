@@ -51,6 +51,7 @@ var prototype =
 		if (deep === undefined)
 			deep = Infinity
 
+		var doc = window.document
 		var node = this
 		do
 		{
@@ -58,7 +59,7 @@ var prototype =
 		  if (val)
 		    return val
 		}
-		while (--deep > 0 && (node = node.parentNode))
+		while (--deep > 0 && (node = node.parentNode) && node != doc)
 		
 		return null
 	},
