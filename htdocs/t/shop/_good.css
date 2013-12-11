@@ -45,6 +45,11 @@
 #delivery-widget .delivery-widget-form { margin: 15px 0; }
 #delivery-widget .delivery-widget-done-message .message { width: 400px; margin: 25px auto; text-align: center; }
 #delivery-widget .delivery-widget-done-message .message .title { font-size: 30px; }
+#delivery-widget .delivery-widget-content .about-item,
+#delivery-widget .delivery-widget-content .about-item .title { display: inline; }
+#delivery-widget .delivery-widget-content .about-item .title { border-bottom: 1px dashed; font-size: 14px; cursor: pointer; }
+#delivery-widget .delivery-widget-content .about-item .title:hover { color: #ec118f; }
+#delivery-widget .delivery-widget-content .about-item .shop-product-popup { display: none; }
 /* normal */
 #delivery-widget .delivery-widget-done-message,
 #delivery-widget .delivery-widget-repeat
