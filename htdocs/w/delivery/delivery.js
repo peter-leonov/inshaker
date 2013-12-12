@@ -82,7 +82,7 @@ DeliveryWidget.prototype =
     (
       this.commodityName + '<br>' +
       window.location.href + '<br><br>' +
-      'Контакт: ' + this.contact
+      'Телефон: ' + this.contact
     )
     
     // more specific parts go last
