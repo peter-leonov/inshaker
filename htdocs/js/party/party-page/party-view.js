@@ -56,6 +56,8 @@ PartyPageView.prototype =
     
     this.renderRecipeIngredientPreviews()
     
+    this.bindDeliveryWidget()
+    
     return this
   },
   
@@ -216,6 +218,15 @@ PartyPageView.prototype =
     
     this.plainTextPlan = plan.join('\n')
   },
+  bindDeliveryWidget: function ()
+  {
+    var view = this
+    document.addEventListener('inshaker.delivery-widget.submit', function (e)
+    {
+      e.deliveryWidgetData.push(view.plainTextPlan)
+    }, false)
+  },
+  
   peopleCountChanged: function (e)
   {
     this.controller.peopleCountChanged(getIntegerValue(e.target.value))
