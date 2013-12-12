@@ -171,7 +171,7 @@ Me.prototype =
 	
 	updatePlainTextPlan: function ()
 	{
-	  this.view.renderPlainTextPlan
+	  this.view.setPlainTextPlan
 	  ({
 	    peopleCount: this.peopleCount,
 	    portions: this.portions,

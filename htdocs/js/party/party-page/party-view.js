@@ -209,9 +209,21 @@ PartyPageView.prototype =
     nodes.purchasePlan.addEventListener('blur', blurFloat, true)
   },
   
-  plainTextPlan: '(empty plain text plan)',
-  renderPlainTextPlan: function (data)
+  plainTextData: null,
+  setPlainTextPlan: function (data)
   {
+    // it's not a state it's just a cache for postponed rendering
+    this.plainTextData = data
+  },
+  renderPlainTextPlan: function ()
+  {
+    var data = this.plainTextData
+    if (!data)
+    {
+      // TODO: scream to error log
+      return
+    }
+    
     var plan = ''
     
     plan += 'На <b>' + data.peopleCount + '</b> ' + data.peopleCount.plural('человека', 'человек', 'человек')
@@ -253,14 +265,14 @@ PartyPageView.prototype =
     
     plan += 'Итого: <b>' + data.total + '</b> <small>руб.</small>'
     
-    this.plainTextPlan = plan
+    return plan
   },
   bindDeliveryWidget: function ()
   {
     var view = this
     document.addEventListener('inshaker.delivery-widget.submit', function (e)
     {
-      e.deliveryWidgetData.push(view.plainTextPlan)
+      e.deliveryWidgetData.push(view.renderPlainTextPlan())
     }, false)
   },
   
