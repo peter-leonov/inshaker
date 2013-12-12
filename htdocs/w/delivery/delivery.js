@@ -80,21 +80,21 @@ DeliveryWidget.prototype =
     
     messageBody.push
     (
-      this.commodityName + '\n' +
-      window.location.href + '\n\n' +
+      this.commodityName + '<br>' +
+      window.location.href + '<br><br>' +
       'Контакт: ' + this.contact
     )
     
     // more specific parts go last
     messageBody.reverse()
     // stringify
-    messageBody = messageBody.join('\n\n-------------------\n\n')
+    messageBody = messageBody.join('<br><br><hr><br><br>')
     
     return {
       subject: 'Заказ: ' + this.commodityName,
       to: 'shop.order@mg.inshaker.ru',
       from: 'Коктейльный магазин <shop.order@mg.inshaker.ru>',
-      text: messageBody
+      html: messageBody
     }
   },
   

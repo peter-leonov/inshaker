@@ -212,38 +212,48 @@ PartyPageView.prototype =
   plainTextPlan: '(empty plain text plan)',
   renderPlainTextPlan: function (data)
   {
-    function w (str, n, chr)
-    {
-      str = str.substr(0, n)
-      return str + new Array(n - str.length + 1).join(chr || ' ')
-    }
+    var plan = ''
     
-    var plan = []
-	  
-	  plan.push('На ' + data.peopleCount + ' ' + data.peopleCount.plural('человека', 'человек', 'человек'))
-	  plan.push('')
-	  
-    plan.push('Коктейли')
+    plan += 'На <b>' + data.peopleCount + '</b> ' + data.peopleCount.plural('человека', 'человек', 'человек')
+    
+    
+    plan += '<p>'
+    
+    
+    plan += '<table cellspacing="10">'
     for (var i = 0, il = data.portions.length; i < il; i++)
     {
       var portion = data.portions[i]
-      console.log(portion)
-      plan.push('  ' + w(portion.cocktail.name + ' ', 40, '⋅') + ' ' + portion.count + ' ' + portion.count.pluralA(portion.cocktail.getPlurals()))
+      
+      plan += '<tr>'
+        plan += '<td>' + portion.cocktail.name + '</td>'
+        plan += '<td><b>' + portion.count + '</b> <small>' + portion.count.pluralA(portion.cocktail.getPlurals()) + '</small></td>'
+      plan += '</tr>'
     }
-    plan.push('')
+    plan += '</table>'
     
-    plan.push('Ингредиенты')
+    
+    plan += '<p>'
+    
+    
+    plan += '<table cellspacing="10">'
     for (var i = 0, il = data.plan.length; i < il; i++)
     {
       var buy = data.plan[i]
-      console.log(buy)
-      plan.push('  ' + w(buy.good.name + ' ', 40, '⋅') + ' ' + w(buy.amountHumanized + buy.unitHumanized, 7) + ' ' + buy.cost + ' руб.')
+      
+      plan += '<tr>'
+        plan += '<td>' + buy.good.name + '</td>'
+        plan += '<td><b>' + buy.amountHumanized + '</b><small>' + buy.unitHumanized + '</small></td>'
+        plan += '<td>' + (buy.cost ? '<b>' + buy.cost + '</b><small>руб.</small>' : '—') + '</td>'
+      plan += '</tr>'
     }
-    plan.push('')
+    plan += '</table>'
     
-    plan.push('Итого: ' + data.total + ' руб.')
+    plan += '<p>'
     
-    this.plainTextPlan = plan.join('\n')
+    plan += 'Итого: <b>' + data.total + '</b> <small>руб.</small>'
+    
+    this.plainTextPlan = plan
   },
   bindDeliveryWidget: function ()
   {
