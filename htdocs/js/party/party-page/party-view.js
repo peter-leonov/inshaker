@@ -212,9 +212,28 @@ PartyPageView.prototype =
   plainTextPlan: '(empty plain text plan)',
   renderPlainTextPlan: function (data)
   {
-    console.log(data)
-    
     var plan = []
+	  
+	  plan.push('На ' + data.peopleCount + ' ' + data.peopleCount.plural('человека', 'человек', 'человек'))
+	  plan.push('')
+	  
+    plan.push('Коктейли')
+    for (var i = 0, il = data.portions.length; i < il; i++)
+    {
+      var portion = data.portions[i]
+      plan.push('  ' + portion.cocktail.name + ': ' + portion.count)
+    }
+    
+    plan.push('Ингредиенты')
+    for (var i = 0, il = data.plan.length; i < il; i++)
+    {
+      var buy = data.plan[i]
+      console.log(buy)
+      plan.push('  ' + buy.good.name + ': ' + buy.amountHumanized + buy.unitHumanized + ' за ' + buy.cost + ' руб.')
+    }
+    plan.push('')
+    
+    plan.push('Итого: ' + data.total + ' руб.')
     
     this.plainTextPlan = plan.join('\n')
   },
@@ -542,7 +561,7 @@ PartyPageView.prototype =
   
   updatePeopleUnit: function (count)
   {
-    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человека', 'человек')
+    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человек', 'человек')
   },
   
   updateUnit: function (n, portion)
