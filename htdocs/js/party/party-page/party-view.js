@@ -212,6 +212,12 @@ PartyPageView.prototype =
   plainTextPlan: '(empty plain text plan)',
   renderPlainTextPlan: function (data)
   {
+    function w (str, n, chr)
+    {
+      str = str.substr(0, n)
+      return str + new Array(n - str.length + 1).join(chr || ' ')
+    }
+    
     var plan = []
 	  
 	  plan.push('На ' + data.peopleCount + ' ' + data.peopleCount.plural('человека', 'человек', 'человек'))
@@ -221,15 +227,17 @@ PartyPageView.prototype =
     for (var i = 0, il = data.portions.length; i < il; i++)
     {
       var portion = data.portions[i]
-      plan.push('  ' + portion.cocktail.name + ': ' + portion.count)
+      console.log(portion)
+      plan.push('  ' + w(portion.cocktail.name + ' ', 40, '⋅') + ' ' + portion.count + ' ' + portion.count.pluralA(portion.cocktail.getPlurals()))
     }
+    plan.push('')
     
     plan.push('Ингредиенты')
     for (var i = 0, il = data.plan.length; i < il; i++)
     {
       var buy = data.plan[i]
       console.log(buy)
-      plan.push('  ' + buy.good.name + ': ' + buy.amountHumanized + buy.unitHumanized + ' за ' + buy.cost + ' руб.')
+      plan.push('  ' + w(buy.good.name + ' ', 40, '⋅') + ' ' + w(buy.amountHumanized + buy.unitHumanized, 7) + ' ' + buy.cost + ' руб.')
     }
     plan.push('')
     
