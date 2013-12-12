@@ -207,6 +207,15 @@ PartyPageView.prototype =
     nodes.purchasePlan.addEventListener('blur', blurFloat, true)
   },
   
+  plainTextPlan: '(empty plain text plan)',
+  renderPlainTextPlan: function (data)
+  {
+    console.log(data)
+    
+    var plan = []
+    
+    this.plainTextPlan = plan.join('\n')
+  },
   peopleCountChanged: function (e)
   {
     this.controller.peopleCountChanged(getIntegerValue(e.target.value))
