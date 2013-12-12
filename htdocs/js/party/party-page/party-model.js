@@ -135,15 +135,6 @@ Me.prototype =
 		}
 	},
 	
-	calculateTotal: function (plan)
-	{
-		var total = 0
-		for (var i = 0, il = plan.length; i < il; i++)
-			total += plan[i].cost
-		
-		this.view.updateTotal(total, (total / this.peopleCount).ceil())
-	},
-	
 	setIngredientAmount: function (name, amount)
 	{
 		var buy = this.buyByName[name]
@@ -156,6 +147,15 @@ Me.prototype =
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
+	},
+	
+	calculateTotal: function (plan)
+	{
+		var total = 0
+		for (var i = 0, il = plan.length; i < il; i++)
+			total += plan[i].cost
+		
+		this.view.updateTotal(total, (total / this.peopleCount).ceil())
 	},
 	
 	getCostForGood: function (good, amount)
