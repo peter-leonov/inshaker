@@ -21,52 +21,6 @@
 #cocktails .list li:only-child .image img { max-width: 100%; }
 /* END COCKTAILS */
 
-@-webkit-keyframes shake
-{
-  0%, 100% { -webkit-transform: translateX(0); }
-  20%, 60% { -webkit-transform: translateX(-3px); }
-  40%, 80% { -webkit-transform: translateX(3px); }
-  
-  0%, 100% { background-color: #fc0066; }
-}
-@-moz-keyframes shake
-{
-  0%, 100% { -moz-transform: translateX(0); }
-  20%, 60% { -moz-transform: translateX(-3px); }
-  40%, 80% { -moz-transform: translateX(3px); }
-  
-  0%, 100% { background-color: #fc0066; }
-}
-
-#delivery-widget .delivery-widget-content,
-#delivery-widget .delivery-widget-done-message { font-size: 20px; line-height: 30px; }
-#delivery-widget .delivery-widget-input { width: 620px; margin: 0; font-size: inherit; }
-#delivery-widget .delivery-widget-input.error { -webkit-animation: shake .75s; -moz-animation: shake .75s; }
-#delivery-widget .delivery-widget-form { margin: 15px 0; }
-#delivery-widget .delivery-widget-done-message .message { width: 400px; margin: 25px auto; text-align: center; }
-#delivery-widget .delivery-widget-done-message .message .title { font-size: 30px; }
-#delivery-widget .delivery-widget-content .about-item,
-#delivery-widget .delivery-widget-content .about-item .link { display: inline; }
-#delivery-widget .delivery-widget-content .about-item .link { border-bottom: 1px dashed; font-size: 14px; cursor: pointer; }
-#delivery-widget .delivery-widget-content .about-item .link:hover { color: #ec118f; }
-#delivery-widget .delivery-widget-content .about-item .shop-product-popup { display: none; }
-.shop-product-popup { position: relative; padding: 30px; min-height: 200px; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; background-color: #fff; font-size: 17px; line-height: 25px; box-shadow: 0 0 20px -3px #ffb; }
-.shop-product-popup .title { font-size: 24px; text-align: center; margin-bottom: 20px; }
-.shop-product-popup p { margin: 20px; }
-.shop-product-popup .phone { white-space: nowrap; }
-
-/* normal */
-#delivery-widget .delivery-widget-done-message,
-#delivery-widget .delivery-widget-repeat
-{ display: none; }
-/* sent */
-#delivery-widget[data-state="sent"] .delivery-widget-done-message,
-#delivery-widget[data-state="sent"] .delivery-widget-repeat
-{ display: block; }
-#delivery-widget[data-state="sent"] .delivery-widget-content,
-#delivery-widget[data-state="sent"] .delivery-widget-order
-{ display: none; }
-
 <!--# include virtual="we-have-more.css" -->
 <!--# include virtual="promo.css" -->
 
@@ -92,4 +46,5 @@
 .photos .prev.disabled,
 .photos .next.disabled { display: none; }
 
+<!--# include virtual="/w/delivery/delivery.css" -->
 <!--# include virtual="/w/plain-popup/plain-popup.css" -->

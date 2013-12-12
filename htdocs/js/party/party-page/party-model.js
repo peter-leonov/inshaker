@@ -95,6 +95,9 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
+		
+		// call after all calculate* methods
+		this.updatePlainTextPlan()
 	},
 	
 	setCocktailCount: function (n, v)
@@ -109,6 +112,9 @@ Me.prototype =
 		this.view.updatePlan(this.plan)
 		
 		this.calculateTotal(this.plan)
+		
+		// call after all calculate* methods
+		this.updatePlainTextPlan()
 	},
 	
 	calculatePlan: function (portions)
@@ -135,15 +141,6 @@ Me.prototype =
 		}
 	},
 	
-	calculateTotal: function (plan)
-	{
-		var total = 0
-		for (var i = 0, il = plan.length; i < il; i++)
-			total += plan[i].cost
-		
-		this.view.updateTotal(total, (total / this.peopleCount).ceil())
-	},
-	
 	setIngredientAmount: function (name, amount)
 	{
 		var buy = this.buyByName[name]
@@ -156,6 +153,31 @@ Me.prototype =
 		this.view.updateBuy(name, buy)
 		
 		this.calculateTotal(this.plan)
+		
+		// call after all calculate* methods
+		this.updatePlainTextPlan()
+	},
+	
+	calculateTotal: function (plan)
+	{
+		var total = 0
+		for (var i = 0, il = plan.length; i < il; i++)
+			total += plan[i].cost
+		
+		this.view.updateTotal(total, (total / this.peopleCount).ceil())
+		
+		this.total = total
+	},
+	
+	updatePlainTextPlan: function ()
+	{
+	  this.view.setPlainTextPlan
+	  ({
+	    peopleCount: this.peopleCount,
+	    portions: this.portions,
+	    plan: this.plan,
+	    total: this.total
+	  })
 	},
 	
 	getCostForGood: function (good, amount)

@@ -56,6 +56,8 @@ PartyPageView.prototype =
     
     this.renderRecipeIngredientPreviews()
     
+    this.bindDeliveryWidget()
+    
     return this
   },
   
@@ -205,6 +207,73 @@ PartyPageView.prototype =
     
     nodes.purchasePlan.addEventListener('keypress', function (e) { ifReallyChanged(e, function () { view.ingredientAmountChanged(e) }) }, false)
     nodes.purchasePlan.addEventListener('blur', blurFloat, true)
+  },
+  
+  plainTextData: null,
+  setPlainTextPlan: function (data)
+  {
+    // it's not a state it's just a cache for postponed rendering
+    this.plainTextData = data
+  },
+  renderPlainTextPlan: function ()
+  {
+    var data = this.plainTextData
+    if (!data)
+    {
+      // TODO: scream to error log
+      return
+    }
+    
+    var plan = ''
+    
+    plan += 'На <b>' + data.peopleCount + '</b> ' + data.peopleCount.plural('человека', 'человек', 'человек')
+    
+    
+    plan += '<p>'
+    
+    
+    plan += '<table cellspacing="10">'
+    for (var i = 0, il = data.portions.length; i < il; i++)
+    {
+      var portion = data.portions[i]
+      
+      plan += '<tr>'
+        plan += '<td>' + portion.cocktail.name + '</td>'
+        plan += '<td><b>' + portion.count + '</b> <small>' + portion.count.pluralA(portion.cocktail.getPlurals()) + '</small></td>'
+      plan += '</tr>'
+    }
+    plan += '</table>'
+    
+    
+    plan += '<p>'
+    
+    
+    plan += '<table cellspacing="10">'
+    for (var i = 0, il = data.plan.length; i < il; i++)
+    {
+      var buy = data.plan[i]
+      
+      plan += '<tr>'
+        plan += '<td>' + buy.good.name + '</td>'
+        plan += '<td><b>' + buy.amountHumanized + '</b><small>' + buy.unitHumanized + '</small></td>'
+        plan += '<td>' + (buy.cost ? '<b>' + buy.cost + '</b><small>руб.</small>' : '—') + '</td>'
+      plan += '</tr>'
+    }
+    plan += '</table>'
+    
+    plan += '<p>'
+    
+    plan += 'Итого: <b>' + data.total + '</b> <small>руб.</small>'
+    
+    return plan
+  },
+  bindDeliveryWidget: function ()
+  {
+    var view = this
+    document.addEventListener('inshaker.delivery-widget.submit', function (e)
+    {
+      e.deliveryWidgetData.push(view.renderPlainTextPlan())
+    }, false)
   },
   
   peopleCountChanged: function (e)
@@ -522,7 +591,7 @@ PartyPageView.prototype =
   
   updatePeopleUnit: function (count)
   {
-    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человека', 'человек')
+    this.nodes.peopleUnit.firstChild.nodeValue = count.plural('человека', 'человек', 'человек')
   },
   
   updateUnit: function (n, portion)
