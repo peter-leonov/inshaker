@@ -312,6 +312,7 @@
 {"group":"Овощи","name":"Огурец","path":"ogurets","tags":["Овощи"],"unit":"г","volumes":[]},
 {"brand":"Monin Cucumber","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Огуречный сироп","names":["Monin Cucumber","Монин Кукумбер"],"path":"ogurechnyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,450.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"The Glenlivet","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"The Glenlivet","name":"Односолодовый виски","names":["Односолодовый виски","Гленливет","The Glenlivet","Glenlivet"],"path":"odnosolodovyiy-viski","tags":["The Glenlivet","Виски"],"unit":"л","volumes":[[0.7,2950.0,["бутылка","бутылки","бутылок"]]]},
+{"brand":"The Glenlivet","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"The Glenlivet","name":"Односолодовый виски 18 лет","names":["Односолодовый виски","Односолодовый виски выдержанный","Выдержанный виски","Гленливет","The Glenlivet","Glenlivet"],"path":"odnosolodovyiy-viski-18-let","tags":["The Glenlivet","Виски"],"unit":"л","volumes":[[0.7,4950.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Травы и цветы","name":"Одуванчик","path":"oduvanchik","unit":"г","volumes":[]},
 {"group":"Овощи","name":"Оливки","path":"olivki","tags":["Овощи"],"unit":"г","volumes":[]},
 {"group":"Травы и цветы","name":"Орхидея","path":"orhideya","unit":"шт","volumes":[]},
