@@ -73,6 +73,12 @@ DeliveryWidget.prototype =
   {
     var messageBody = [] // accumulate message parts
     
+    if (window.UserHistory)
+    {
+      // add the lst N pages visited
+      messageBody.push(UserHistory.report())
+    }
+    
     var submit = document.createEvent('Event')
     submit.initEvent('inshaker.delivery-widget.submit', true, true)
     submit.deliveryWidgetData = messageBody
