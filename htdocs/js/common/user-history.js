@@ -107,13 +107,20 @@ window.UserHistory =
       return mins + ':' + (secs < 10 ? '0'+secs : secs)
     }
     
+    var lastDate = null
     var report = '<table cellspacing="10">'
     for (var i = 0, il = this.history.length; i < il; i++)
     {
       var record = this.history[i]
       
+      var date = new Date(record[DATEi]).toRusDate()
+      if (lastDate != date)
+      {
+        report += '<tr><td colspan="2">' + date + '</td></tr>'
+        lastDate = date
+      }
+      
       report += '<tr>'
-        report += '<td>' + new Date(record[DATEi]).toRusDate() + '</td>'
         report += '<td><b>' + duration(record[DURATIONi]) + '</b></td>'
         report += '<td><a href="'+record[URIi]+'">' + record[TITLEi] + '</a></td>'
       report += '</tr>'
