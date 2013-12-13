@@ -2,8 +2,8 @@
 // page history accumulator
 
 var STORAGE_KEY = 'inshaker.user_history'
-var START_DELAY = 100 // ms; never less or equal to zero!
-var DELAY_FACTOR = 1.25 // ms; never less or equal to zero!
+var START_DELAY = 1000 // ms; never less or equal to zero!
+var DELAY_FACTOR = 1.1 // ms; never less or equal to zero!
 var MAX_RECORDS = 100 // erase extra ones
 
 var DATEi = 0
@@ -45,7 +45,7 @@ window.UserHistory =
     
     // fill up our record
     var record = this.createNewRecord()
-    record[DATEi] = start
+    record[DATEi] = Math.round(start / 1000)
     record[DURATIONi] = 0
     record[TITLEi] = this.getPageName()
     record[URIi] = this.getPageURI()
@@ -59,7 +59,8 @@ window.UserHistory =
       window.setTimeout(update, delay *= DELAY_FACTOR)
       
       // the payload
-      record[DURATIONi] = new Date() - start
+      record[DURATIONi] = Math.round((new Date() - start) / 1000)
+      // console.log(record[DURATIONi])
       me.commit()
     }
     update()
