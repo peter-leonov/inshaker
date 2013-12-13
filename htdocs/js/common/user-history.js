@@ -5,6 +5,7 @@ var STORAGE_KEY = 'inshaker.user_history'
 var START_DELAY = 1000 // ms; never less or equal to zero!
 var DELAY_FACTOR = 1.1 // ms; never less or equal to zero!
 var MAX_RECORDS = 100 // erase extra ones
+var HTTP_ROOT = 'http://www.inshaker.ru'
 
 var DATEi = 0
 var DURATIONi = 1
@@ -95,6 +96,34 @@ window.UserHistory =
   getPageURI: function ()
   {
     return location.pathname + location.search
+  },
+  
+  // public
+  
+  report: function ()
+  {
+    function duration (secs)
+    {
+      var mins = Math.floor(secs / 60)
+      secs %= 60
+      
+      return mins + ':' + (secs < 10 ? '0'+secs : secs)
+    }
+    
+    var report = '<table cellspacing="10">'
+    for (var i = 0, il = this.history.length; i < il; i++)
+    {
+      var record = this.history[i]
+      
+      report += '<tr>'
+        report += '<td>' + new Date(record[DATEi]*1000).toRusDate() + '</td>'
+        report += '<td><b>' + duration(record[DURATIONi]) + '</b></td>'
+        report += '<td><a href="'+HTTP_ROOT+record[URIi]+'">' + record[TITLEi] + '</a></td>'
+      report += '</tr>'
+    }
+    report += '</table>'
+    
+    return report
   }
 }
 
