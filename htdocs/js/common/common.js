@@ -23,6 +23,7 @@
 <!--# include virtual="/liby/modules/state-machine.js" -->
 <!--# include virtual="/liby/modules/url-encode.js"-->
 <!--# include virtual="/liby/modules/request.js"-->
+<!--# include virtual="/liby/modules/rus-date.js" -->
 
 if (!document.documentElement.classList)
 	$.load('/liby/fixes/class-list.js')

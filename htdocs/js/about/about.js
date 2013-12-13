@@ -255,5 +255,3 @@ $.onready(function(){
 <!--# include virtual="/js/common/google.js" -->
 
 <!--# include virtual="/js/common/mail.js" -->
-
-<!--# include virtual="/liby/modules/rus-date.js" -->
