@@ -43,10 +43,10 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
-$.onready(function () { window.setTimeout(function ()
+$.onready(function ()
 {
-	GoogleAnalytics.trackPageview()
-}, 250) })
+  window.setTimeout(function () { GoogleAnalytics.trackPageview() }, 250)
+})
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
