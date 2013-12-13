@@ -5,7 +5,6 @@ var STORAGE_KEY = 'inshaker.user_history'
 var START_DELAY = 1000 // ms; never less or equal to zero!
 var DELAY_FACTOR = 1.1 // ms; never less or equal to zero!
 var MAX_RECORDS = 100 // erase extra ones
-var HTTP_ROOT = 'http://www.inshaker.ru'
 
 var DATEi = 0
 var DURATIONi = 1
@@ -49,7 +48,7 @@ window.UserHistory =
     record[DATEi] = Math.round(start / 1000)
     record[DURATIONi] = 0
     record[TITLEi] = this.getPageName()
-    record[URIi] = this.getPageURI()
+    record[URIi] = window.location.href
     
     
     var me = this
@@ -93,10 +92,6 @@ window.UserHistory =
     // return either the matched name or the full first part
     return name ? name[1] : first
   },
-  getPageURI: function ()
-  {
-    return location.pathname + location.search
-  },
   
   // public
   
@@ -118,7 +113,7 @@ window.UserHistory =
       report += '<tr>'
         report += '<td>' + new Date(record[DATEi]*1000).toRusDate() + '</td>'
         report += '<td><b>' + duration(record[DURATIONi]) + '</b></td>'
-        report += '<td><a href="'+HTTP_ROOT+record[URIi]+'">' + record[TITLEi] + '</a></td>'
+        report += '<td><a href="'+record[URIi]+'">' + record[TITLEi] + '</a></td>'
       report += '</tr>'
     }
     report += '</table>'
