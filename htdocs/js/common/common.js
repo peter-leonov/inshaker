@@ -40,12 +40,15 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 <!--# include virtual="/js/common/rounded-corners.js" -->
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
+<!--# include virtual="/js/common/user-history.js" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
 $.onready(function ()
 {
   window.setTimeout(function () { GoogleAnalytics.trackPageview() }, 250)
+  
+  UserHistory.track()
 })
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
