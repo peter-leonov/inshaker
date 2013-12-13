@@ -45,7 +45,7 @@ window.UserHistory =
     
     // fill up our record
     var record = this.createNewRecord()
-    record[DATEi] = Math.round(start / 1000)
+    record[DATEi] = start
     record[DURATIONi] = 0
     record[TITLEi] = this.getPageName()
     record[URIi] = window.location.href
@@ -59,7 +59,7 @@ window.UserHistory =
       window.setTimeout(update, delay *= DELAY_FACTOR)
       
       // the payload
-      record[DURATIONi] = Math.round((new Date() - start) / 1000)
+      record[DURATIONi] = new Date() - start
       // console.log(record[DURATIONi])
       me.commit()
     }
@@ -97,8 +97,10 @@ window.UserHistory =
   
   report: function ()
   {
-    function duration (secs)
+    function duration (msecs)
     {
+      var secs = Math.round(msecs / 1000)
+      
       var mins = Math.floor(secs / 60)
       secs %= 60
       
@@ -111,7 +113,7 @@ window.UserHistory =
       var record = this.history[i]
       
       report += '<tr>'
-        report += '<td>' + new Date(record[DATEi]*1000).toRusDate() + '</td>'
+        report += '<td>' + new Date(record[DATEi]).toRusDate() + '</td>'
         report += '<td><b>' + duration(record[DURATIONi]) + '</b></td>'
         report += '<td><a href="'+record[URIi]+'">' + record[TITLEi] + '</a></td>'
       report += '</tr>'
