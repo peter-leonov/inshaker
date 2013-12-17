@@ -52,6 +52,11 @@ Me.prototype =
 		window.setTimeout(function () { me.unbindListeners() }, 0)
 	},
 	
+	adjustPosition: function (e)
+	{
+	  this.nodes.front.style.top = window.pageYOffset + 'px'
+	},
+	
 	show: function ()
 	{
 		if (this.visible)
@@ -62,7 +67,7 @@ Me.prototype =
 		
 		var nodes = this.nodes
 		nodes.root.show()
-		nodes.front.style.top = window.pageYOffset + 'px'
+		this.adjustPosition()
 		this.visible = true
 		
 		var me = this

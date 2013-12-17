@@ -1,5 +1,3 @@
-<!--# include virtual="/js/common/mail.js" -->
-
 ;(function(){
 
 function DeliveryWidget (widget)
