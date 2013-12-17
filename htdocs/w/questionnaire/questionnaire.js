@@ -34,7 +34,7 @@ QuestionnairePopup.prototype =
     // catch the adjusting scroll after load
     function onscroll ()
     {
-      popup.adjustPostion()
+      popup.adjustPosition()
       window.removeEventListener('scroll', onscroll, false)
     }
     window.addEventListener('scroll', onscroll, false)
