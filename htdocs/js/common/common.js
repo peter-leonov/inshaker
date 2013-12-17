@@ -61,4 +61,6 @@ require.names =
 	'Good': '/js/entities/Good.js'
 }
 
+window.navigator.publicIP = '<!--# echo var="remote_addr" -->'
+
 <!--# config timefmt="%Y.%m" --><!--# include virtual="/skin/$date_local/skin.js" -->
