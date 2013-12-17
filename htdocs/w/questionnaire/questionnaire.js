@@ -41,7 +41,7 @@ QuestionnairePopup.prototype =
   
   hide: function ()
   {
-    window.localStorage.setItem('questionnaire.' + this.name + '.expires', +Date.add('10s')) // 28d
+    window.localStorage.setItem('questionnaire.' + this.name + '.hidden', +new Date())
   },
   
   hideFromUI: function ()
@@ -52,8 +52,8 @@ QuestionnairePopup.prototype =
   
   maybeShow: function ()
   {
-    var expires = window.localStorage.getItem('questionnaire.' + this.name + '.expires')
-    if (expires && new Date() < new Date(+expires))
+    var hidden = window.localStorage.getItem('questionnaire.' + this.name + '.hidden')
+    if (hidden && new Date() < new Date(+hidden).add('3s')) // 28d
       return
     
     if (Math.floor(Math.random() * 3) != 0)
