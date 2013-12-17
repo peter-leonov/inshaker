@@ -42,6 +42,7 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="/js/common/user-history.js" -->
+<!--# include virtual="/js/common/mail.js" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 <!--# include virtual="/w/questionnaire/questionnaire.js" -->
