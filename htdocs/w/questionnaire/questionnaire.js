@@ -85,6 +85,13 @@ QuestionnairePopup.prototype =
       messageBody += '<tr><td>' + k + '</td><td>' + form[k] + '</td></tr>'
     messageBody += '</table>'
     
+    if (window.UserHistory)
+    {
+      // add the last N pages visited
+      messageBody += '<br><br><hr><br><br>'
+      messageBody += UserHistory.report()
+    }
+    
     Mail.send({
       subject: 'Форма: ' + this.title,
       to: 'questionnaire@mg.inshaker.ru',
