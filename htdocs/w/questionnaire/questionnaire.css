@@ -1,0 +1,63 @@
+#questionnaire-popup .popup-controls,
+#questionnaire-popup .popup-window
+{
+  width: 500px; margin: 0 auto; top: 40px; position: relative;
+}
+#questionnaire-popup .popup-controls
+{
+  height: 10px;
+}
+#questionnaire-popup .popup-controls .cross
+{
+  position: absolute; z-index: 100; right: -18px; top: -5px;
+}
+
+#questionnaire-popup .poll-window
+{
+  position: relative; min-height: 150px; padding: 30px;
+  border-radius: 20px;
+  background-color: #fff; box-shadow: 0 0 20px -3px #ffb; font-size: 15px;
+}
+#questionnaire-popup .poll-window h4
+{
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+#questionnaire-popup .poll-window .variants li
+{
+  display: block; margin: 0 0 10px 0;
+}
+#questionnaire-popup .poll-window .variants .control
+{
+  margin: 0 10px 0 0;
+}
+#questionnaire-popup .poll-window .hint
+{
+  margin: 20px 0;
+  font-size: 12px; font-style: italic;
+}
+#questionnaire-popup .poll-window .confirm
+{
+  margin: 22px 0 0;
+  font-size: 17px; text-align: center;
+}
+
+#questionnaire-popup .poll-window .thank-you
+{
+  display: none;
+  position: absolute; top: 50%; left: 0; width: 100%; margin-top: -0.65em;
+  font-size: 35px; text-align: center;
+}
+#questionnaire-popup .poll-window.done .thank-you
+{
+  display: block;
+}
+#questionnaire-popup .poll-window.done .poll-form
+{
+  visibility: hidden;
+}
+
+#common-footer .copyright .poll-show
+{
+  cursor: pointer;
+}
