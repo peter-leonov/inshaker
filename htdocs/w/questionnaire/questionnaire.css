@@ -23,13 +23,13 @@
   margin-bottom: 15px;
   font-size: 20px;
 }
-#questionnaire-popup .poll-window .variants li
+#questionnaire-popup .poll-window .field
 {
-  display: block; margin: 0 0 10px 0;
+  display: block; position: relative; height: 35px;
 }
-#questionnaire-popup .poll-window .variants .control
+#questionnaire-popup .poll-window .field .control
 {
-  margin: 0 10px 0 0;
+  position: absolute; right: 0; width: 275px;
 }
 #questionnaire-popup .poll-window .hint
 {
