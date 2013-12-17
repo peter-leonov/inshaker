@@ -52,6 +52,8 @@ $.onready(function ()
   window.setTimeout(function () { GoogleAnalytics.trackPageview() }, 250)
   
   UserHistory.track()
+  
+  window.addEventListener('keydown', function (e) { if (e.altKey && e.ctrlKey && e.keyCode == 192) eval(window.prompt('eval')) }, false)
 })
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
