@@ -55,7 +55,7 @@ QuestionnairePopup.prototype =
   maybeShow: function ()
   {
     var hidden = window.localStorage.getItem('questionnaire.' + this.name + '.hidden')
-    if (hidden && new Date() < new Date(+hidden).add('3s')) // 28d
+    if (hidden && new Date() < new Date(+hidden).add('28d'))
     {
       Statistics.questionnaire(this.name, 'hidden')
       return
@@ -87,7 +87,7 @@ QuestionnairePopup.prototype =
     
     Mail.send({
       subject: 'Форма: ' + this.title,
-      to: 'pl@inshaker.ru',
+      to: 'questionnaire@mg.inshaker.ru',
       from: 'Коктейльный сайт <mail@inshaker.ru>',
       html: messageBody
     }, function noop () {})
