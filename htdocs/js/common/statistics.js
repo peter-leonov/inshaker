@@ -79,6 +79,11 @@ var Me =
 		this.path('/user-events/poll/' + name + '/' + value)
 	},
 	
+  questionnaire: function (name, value)
+  {
+    this.path('/user-events/questionnaire/' + name + '/' + value)
+  },
+  
 	event: function (action, label, value)
 	{
 		window.setTimeout(function () { Tracker.event('UserAction', action, label, value) }, 250)
