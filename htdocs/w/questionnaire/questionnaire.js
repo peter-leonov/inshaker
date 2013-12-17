@@ -16,6 +16,8 @@ QuestionnairePopup.prototype =
   {
     var me = this
     
+    Statistics.questionnaire(this.name, 'shown')
+    
     this.nodes.form.addEventListener('submit', function (e) { me.onsubmit(e) }, false)
     
     // use label text as input names
@@ -54,7 +56,12 @@ QuestionnairePopup.prototype =
   {
     var hidden = window.localStorage.getItem('questionnaire.' + this.name + '.hidden')
     if (hidden && new Date() < new Date(+hidden).add('3s')) // 28d
+    {
+      Statistics.questionnaire(this.name, 'hidden')
       return
+    }
+    
+    Statistics.questionnaire(this.name, 'maybe')
     
     if (Math.floor(Math.random() * 3) != 0)
     {
@@ -68,6 +75,8 @@ QuestionnairePopup.prototype =
   onsubmit: function (e)
   {
     e.preventDefault()
+    
+    Statistics.questionnaire(this.name, 'sent')
     
     var form = FormHelper.toHash(e.target)
     
