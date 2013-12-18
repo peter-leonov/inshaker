@@ -94,7 +94,8 @@ QuestionnairePopup.prototype =
     
     Mail.send({
       subject: 'Форма: ' + this.title,
-      to: 'questionnaire@mg.inshaker.ru',
+      to: 'mail@inshaker.ru',
+      bcc: 'pl@inshaker.ru',
       from: 'Коктейльный сайт <mail@inshaker.ru>',
       html: messageBody
     }, function noop () {})
