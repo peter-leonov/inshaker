@@ -1,7 +1,7 @@
 [
 {
   "name": "Новогодняя вечеринка",
-  "path": "romantic",
+  "path": "newyear",
   "portions":
   [
     {"cocktail": "Лимонад тархун в кувшине", "factor": 0.2},
