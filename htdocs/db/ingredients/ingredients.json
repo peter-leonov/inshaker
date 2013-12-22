@@ -199,7 +199,7 @@
 {"group":"Добавки","name":"Кокосовый крем","path":"kokosovyiy-krem","unit":"г","volumes":[]},
 {"brand":"De Kuyper Coconut","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Кокосовый ликер","names":["De Kuyper Coconut","Де кайпер коконат","Де кайпер кокосовый","Ди кайпер коконат","Ди кайпер кокосовый"],"path":"kokosovyiy-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1150.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Monin Coco","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Кокосовый сироп","names":["Monin Coco","Монин Коко"],"path":"kokosovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[1.0,450.0,["бутылка","бутылки","бутылок"]]]},
-{"group":"Добавки","name":"Коктейльная вишня красная","path":"kokteylnaya-vishnya-krasnaya","tags":["Ягоды"],"unit":"г","volumes":[[225.0,250.0,["банка","банки","банок"]]]},
+{"group":"Добавки","name":"Коктейльная вишня красная","path":"kokteylnaya-vishnya-krasnaya","tags":["Ягоды"],"unit":"г","volumes":[[750.0,650.0,["банка","банки","банок"]]]},
 {"group":"Штучки","inShop":"/products/26/kokteylnaya-lozhka","name":"Коктейльная ложка","path":"kokteylnaya-lozhka","unit":"шт","volumes":[[1.0,400.0,["ложка","ложки","ложек"]]]},
 {"group":"Посуда","name":"Коктейльный бокал","path":"kokteylnyiy-bokal","unit":"шт","volumes":[[1.0,100.0,["бокал","бокал","бокал"]]]},
 {"group":"Штучки","name":"Коктейльный миксер","path":"kokteylnyiy-mikser","unit":"шт","volumes":[]},
