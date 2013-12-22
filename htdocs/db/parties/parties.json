@@ -1,5 +1,21 @@
 [
 {
+  "hidden": true,
+  "name": "Новогодняя вечеринка",
+  "path": "newyear",
+  "portions":
+  [
+    {"cocktail": "Лимонад тархун в кувшине", "factor": 0.2},
+    {"cocktail": "Мандариновый лимонад в кувшине", "factor": 0.2},
+    {"cocktail": "Кир Рояль", "factor": 0.2},
+    {"cocktail": "Кокосовый ананас", "factor": 2},
+    {"cocktail": "Виски кола", "factor": 2},
+    {"cocktail": "Отвертка", "factor": 2},
+    {"cocktail": "Подарок из Амстердама", "factor": 4}
+  ],
+  "people": 10
+},
+{
   "name": "Коктейльная вечеринка в офисе",
   "imperative": "Устрой романтическую дегустацию!",
   "path": "office",
