@@ -2,7 +2,7 @@
 {
   "name": "Коктейльная вечеринка в офисе",
   "imperative": "Устрой романтическую дегустацию!",
-  "path": "romantic",
+  "path": "office",
   "portions":
   [
     {"cocktail": "Зеленая фея пунш", "factor": 0.1},
