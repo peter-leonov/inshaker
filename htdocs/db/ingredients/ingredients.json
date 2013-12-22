@@ -337,7 +337,7 @@
 {"group":"Пиво и сидр","name":"Пиво темное","path":"pivo-temnoe","tags":["Пиво"],"unit":"л","volumes":[]},
 {"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Писко","path":"pisko","unit":"л","volumes":[]},
 {"group":"Фрукты","name":"Питайя","names":["питахайя"],"path":"pitayya","tags":["Фрукты"],"unit":"г","volumes":[]},
-{"group":"Штучки","inShop":"/products/43/pitcher-dlya-glintveyna","name":"Питчер","path":"pitcher","unit":"мл","volumes":[[600.0,750.0,["питчер","питчера","питчеров"]]]},
+{"group":"Штучки","inShop":"/products/43/pitcher-dlya-glintveyna","name":"Питчер","path":"pitcher","unit":"мл","volumes":[[1000.0,950.0,["питчер","питчера","питчеров"]]]},
 {"group":"Биттеры","inShop":"/products/8/krutoy-domashniy-bar","name":"Пишо биттер","path":"pisho-bitter","tags":["Биттеры"],"unit":"л","volumes":[]},
 {"group":"Наборы","inShop":"/products/40/podarok-iz-amsterdama","name":"Подарок из Амстердама","path":"podarok-iz-amsterdama","unit":"шт","volumes":[[1.0,3450.0,["набор","набора","набором"]]]},
 {"group":"Штучки","name":"Подстаканник","path":"podstakannik","unit":"шт","volumes":[]},
