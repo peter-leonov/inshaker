@@ -1010,7 +1010,7 @@ http://www.inshaker.ru/cocktail/island_blossom/
 http://www.inshaker.ru/cocktail/citron_shot/
 http://www.inshaker.ru/cocktail/citrus_jam/
 http://www.inshaker.ru/cocktail/citrus_margarita/
-http://www.inshaker.ru/cocktail/citrus_cape_coder/
+http://www.inshaker.ru/cocktail/tsitrusovyy_keyp_koder/
 http://www.inshaker.ru/cocktail/tsunami/
 http://www.inshaker.ru/cocktail/good_morning_tea/
 http://www.inshaker.ru/cocktail/citrus_tea_with_passion_fruit/
