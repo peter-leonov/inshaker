@@ -1,5 +1,10 @@
 #shop-map-banner { margin-top: 30px; }
 
+#shop-map-banner .title .cards
+{
+  position: absolute; top: 0; right: 0; width: 200px; height: 100%;
+  background: url(/w/shop-map-banner/cards.png) center center no-repeat;
+}
 #shop-map-banner h1 a { text-shadow: none; }
 
 #shop-map-banner .map { height: 374px; }
