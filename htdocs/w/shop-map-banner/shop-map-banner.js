@@ -48,7 +48,7 @@ MapWidget.prototype =
 		
 		var map = this.map = new Map()
 		map.bind({main: this.nodes.map, control: this.nodes.positionControl})
-		map.setCenter({lat: 55.783016, lng: 37.599892}, 14)
+		map.setCenter({lat: 55.78255, lng: 37.599892}, 17)
 		
 		var shop =
 		{
