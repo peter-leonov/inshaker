@@ -22,7 +22,6 @@
 /* END COCKTAILS */
 
 <!--# include virtual="we-have-more.css" -->
-<!--# include virtual="promo.css" -->
 
 /* MAP */
 <!--# include virtual="map.css" -->
@@ -46,5 +45,6 @@
 .photos .prev.disabled,
 .photos .next.disabled { display: none; }
 
+<!--# include virtual="/w/shop-map-banner/shop-map-banner.css" -->
 <!--# include virtual="/w/delivery/delivery.css" -->
 <!--# include virtual="/w/plain-popup/plain-popup.css" -->
