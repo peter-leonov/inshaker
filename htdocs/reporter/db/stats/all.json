@@ -26,6 +26,5 @@
 "views-2012-03": <!--# include virtual="views-2012-03.json" -->,
 "views-2012-02": <!--# include virtual="views-2012-02.json" -->,
 "views-2012-01": <!--# include virtual="views-2012-01.json" -->,
-"views-2011-12": <!--# include virtual="views-2011-12.json" -->,
-"views-2011-11": <!--# include virtual="views-2011-11.json" -->
+"views-2011-12": <!--# include virtual="views-2011-12.json" -->
 }
