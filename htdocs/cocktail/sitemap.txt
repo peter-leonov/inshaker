@@ -1026,6 +1026,8 @@ http://www.inshaker.ru/cocktail/black-curr_nt_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/black_october/
 http://www.inshaker.ru/cocktail/black_russian/
 http://www.inshaker.ru/cocktail/black_flip/
+http://www.inshaker.ru/cocktail/czech_mulled_wine/
+http://www.inshaker.ru/cocktail/czech_saloop/
 http://www.inshaker.ru/cocktail/chivava/
 http://www.inshaker.ru/cocktail/cheese_cream/
 http://www.inshaker.ru/cocktail/chiki-puki/
