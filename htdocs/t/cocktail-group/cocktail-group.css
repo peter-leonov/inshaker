@@ -1,7 +1,7 @@
 html { overflow-y: scroll; }
+.common-box { margin-bottom: 30px; }
 
 #main-column { font-size: 14px; }
-#main-column .box { margin-bottom: 30px; }
 #main-column .b-content { padding: 20px; }
 #main-column .title h1,
 #main-column .title h2
