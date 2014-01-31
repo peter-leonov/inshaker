@@ -1,0 +1,38 @@
+<!--# if expr="$QUERY_STRING = 2n"-->
+<div id="shop-product-banner" class="common-box common-column-2n column-main shop-any-banner shop-product-banner">
+<!--# else -->
+<div id="shop-product-banner" class="common-box shop-any-banner shop-product-banner">
+<!--# endif -->
+  <div class="common-title title">
+    <!--# if expr="$shop_map_banner_title" -->
+      <!--# include stub="shop-map-banner-title" virtual="/404" -->
+    <!--# else -->
+      <h1 class="common-name">Купи всё <a href="/shop/">в магазине Inshaker</a></h1>
+    <!--# endif -->
+    <i class="cards"></i>
+  </div>
+  <div class="common-content common-bottom the-body">
+    <div class="promo">
+      <a class="banner" href="/products/27/nabor-super-barmena"><img src="/uploads/product_image/image/36/big2.jpg"></a>
+      <div class="info">
+        <div class="location">
+          <span class="icon"></span>
+          <p>Москва, <br>ул. Сущевская, 27с2</p>
+        </div>
+        <div class="phone">
+          <span class="icon"></span>
+          <p>+7 499 391-43-67</p>
+        </div>
+        <div class="time">
+          <span class="icon"></span>
+          <p>пн-пт 10:00-21:00</p>
+          <p>сб-вс 11:00-18:00</p>
+        </div>
+        <div class="parking">
+          <span class="icon"></span>
+          <p>Парковка по записи</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
