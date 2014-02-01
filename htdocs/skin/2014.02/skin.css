@@ -1,0 +1,32 @@
+/* skin.css */
+@media screen {
+
+#spotlighted i
+{
+  display: block;
+  width: 118px; height: 30px; right: -10px; top: 20px;
+  background: url(/skin/2014.02/logo.png) center center no-repeat;
+}
+#combinator-page #spotlighted i
+{
+  background: url(/skin/2014.02/logo-black.png) center center no-repeat;
+}
+
+#branded-image-holder
+{
+  height: 956px; position: absolute; top: 154px; bottom: auto;
+}
+#branded-image
+{
+  display: block;
+  width: 315px; height: 450px; right: 0; top: 23px;
+  background: url(/skin/2014.02/image.jpg) center no-repeat;
+}
+
+#cocktail-page #branded-image-holder,
+#cocktails-page #branded-image-holder,
+#academy-page #branded-image-holder,
+#bar-page #branded-image-holder
+{ display: block; }
+
+} /* @media screen */
