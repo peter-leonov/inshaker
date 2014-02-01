@@ -4,12 +4,12 @@
 #spotlighted i
 {
   display: block;
-  width: 118px; height: 30px; right: -10px; top: 20px;
+  width: 126px; height: 30px; right: -10px; top: 20px;
   background: url(/skin/2014.02/logo.png) center center no-repeat;
 }
 #combinator-page #spotlighted i
 {
-  background: url(/skin/2014.02/logo-black.png) center center no-repeat;
+  background: url(/skin/2014.02/logo.png) center center no-repeat;
 }
 
 #branded-image-holder
