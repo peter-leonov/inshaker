@@ -26,7 +26,7 @@ var Me =
   }
 }
 
-var link = '/products/45/absolut-citron'
+var link = '/cocktail/czech_mulled_wine/'
 
 Me.initialize
 ({
