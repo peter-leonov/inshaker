@@ -614,7 +614,7 @@ class CocktailsProcessor < Inshaker::Processor
       [["Милкшейки"], "molochnye-kokteyli", "Молочный коктейль"],
       [["Мохито"], "mojito", "Мохито"],
       [["Красные"], "krasnye-kokteyli", "Красный коктейль"],
-      [["Глинтвейны"], "glintvejn", "Глинтвейн"],
+      [["Глинтвейны"], "glintvejn", "Коктейль"],
       [["Лимонады"], "limonad", "Лимонад"],
       [["Голубые"], "golubye-kokteyli", "Голубой коктейль"],
       [["Маргариты"], "margarita", "Маргарита"],
@@ -634,8 +634,14 @@ class CocktailsProcessor < Inshaker::Processor
       [["Клубника", "Свежемороженая клубника"], "klubnichnye-kokteyli", "Клубничный коктейль"],
       [["Банан", "Банановый сок"], "bananovyje-kokteyli", "Банановый коктейль"],
       [["В блендере"], "v-blendere", "В блендере"],
-      [["Шоколад черный", "Шоколадный сироп"], "shokoladnyje-kokteyli", "Шокодадный коктейль"],
+      [["Шоколад черный", "Шоколадный сироп"], "shokoladnyje-kokteyli", "Шоколадный коктейль"],
       [["Классические"], "populyarnyje-kokteyli", "Популярный коктейль"],
+      [["Просто приготовить"], "kokteyli-kak-prigotovit", "Как приготовить коктейль"],
+      [["Белые"], "beliye-kokteyli", "Белый коктейль"],
+      [["Содовая"], "kislorodnyy-kokteyl", "Кислородный коктейль"],
+      [["Свежевыжатые"], "kokteyli-dlya-pohudeniya", "Коктейль"],
+      [["Самбука светлая"], "kokteyli-s-sambukoy", "Коктейль"],
+      [["Сок"], "kokteyli-s-sokom", "Коктейль"],
     ]
     
     tags.each do |v|
