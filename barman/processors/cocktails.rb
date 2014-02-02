@@ -355,6 +355,10 @@ class CocktailsProcessor < Inshaker::Processor
       @cocktail["nameVP"] = about["Винительный падеж"]
     end
     
+    if about["Видео"]
+      @cocktail["video"] = about["Видео"]
+    end
+    
     screen_name = about["Текст названия"]
     if screen_name
       @cocktail["screen"] = screen_name
