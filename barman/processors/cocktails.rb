@@ -614,7 +614,7 @@ class CocktailsProcessor < Inshaker::Processor
       [["Милкшейки"], "molochnye-kokteyli", "Молочный коктейль"],
       [["Мохито"], "mojito", "Мохито"],
       [["Красные"], "krasnye-kokteyli", "Красный коктейль"],
-      [["Глинтвейны"], "glintvejn", "Глинтвейн"],
+      [["Глинтвейны"], "glintvejn", "Коктейль"],
       [["Лимонады"], "limonad", "Лимонад"],
       [["Голубые"], "golubye-kokteyli", "Голубой коктейль"],
       [["Маргариты"], "margarita", "Маргарита"],
