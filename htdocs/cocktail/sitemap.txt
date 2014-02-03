@@ -609,7 +609,6 @@ http://www.inshaker.ru/cocktail/milky_way/
 http://www.inshaker.ru/cocktail/mimosa/
 http://www.inshaker.ru/cocktail/miss_martini/
 http://www.inshaker.ru/cocktail/mitsubishi/
-http://www.inshaker.ru/cocktail/trendy_breeze/
 http://www.inshaker.ru/cocktail/fashion_orgasm/
 http://www.inshaker.ru/cocktail/mocha_chocolata_yaya/
 http://www.inshaker.ru/cocktail/rejuvenating_apple/
@@ -623,6 +622,7 @@ http://www.inshaker.ru/cocktail/carrot_chaser/
 http://www.inshaker.ru/cocktail/fruit_drink_of_gooseberry_in_a_jug/
 http://www.inshaker.ru/cocktail/mors_martini/
 http://www.inshaker.ru/cocktail/sea_breeze/
+http://www.inshaker.ru/cocktail/morskoi_kokteil/
 http://www.inshaker.ru/cocktail/moscow_fever/
 http://www.inshaker.ru/cocktail/moscow_lights/
 http://www.inshaker.ru/cocktail/spring_punch/
