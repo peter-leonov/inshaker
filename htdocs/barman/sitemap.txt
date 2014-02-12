@@ -21,6 +21,7 @@ http://www.inshaker.ru/barman/artur-balayan/
 http://www.inshaker.ru/barman/artur-galaichuk/
 http://www.inshaker.ru/barman/bek-narzi/
 http://www.inshaker.ru/barman/bogdan-petrov/
+http://www.inshaker.ru/barman/brian-van-flandern/
 http://www.inshaker.ru/barman/vitalyi-bgantsov/
 http://www.inshaker.ru/barman/vlad-lyahov-and-ivan-vladimirov/
 http://www.inshaker.ru/barman/vladimir-zhuravlev/
@@ -31,6 +32,7 @@ http://www.inshaker.ru/barman/dale-degroff/
 http://www.inshaker.ru/barman/jamie-stephenson/
 http://www.inshaker.ru/barman/jim-meehan/
 http://www.inshaker.ru/barman/joseph-biolatto/
+http://www.inshaker.ru/barman/george-nemec/
 http://www.inshaker.ru/barman/joshua-fontaine-and-carina-velasquez/
 http://www.inshaker.ru/barman/dmitry-sokolov/
 http://www.inshaker.ru/barman/dmitry-suvorov/
@@ -39,6 +41,7 @@ http://www.inshaker.ru/barman/david-cordoba/
 http://www.inshaker.ru/barman/dan-warner/
 http://www.inshaker.ru/barman/evgeny-alexandrov/
 http://www.inshaker.ru/barman/evgenyi-novichenko/
+http://www.inshaker.ru/barman/ekaterina-bays/
 http://www.inshaker.ru/barman/ilya-dolya/
 http://www.inshaker.ru/barman/joerg-meyer/
 http://www.inshaker.ru/barman/kirill-bashkatov/
@@ -59,6 +62,7 @@ http://www.inshaker.ru/barman/ricardo-albrecht/
 http://www.inshaker.ru/barman/ricardo-sporksled/
 http://www.inshaker.ru/barman/roman-milostivy/
 http://www.inshaker.ru/barman/roman-toroshin/
+http://www.inshaker.ru/barman/ruslan-fernandez/
 http://www.inshaker.ru/barman/rustam-nigmatzianov/
 http://www.inshaker.ru/barman/salvatore-calabrese/
 http://www.inshaker.ru/barman/sasha-petraske/
@@ -66,10 +70,12 @@ http://www.inshaker.ru/barman/seyran-gevorkyan/
 http://www.inshaker.ru/barman/sergey-zaharov/
 http://www.inshaker.ru/barman/sergey-sysolyatin/
 http://www.inshaker.ru/barman/sergei-chesnokov/
+http://www.inshaker.ru/barman/stas-kireev/
 http://www.inshaker.ru/barman/sam-konyahin-and-ilya-astafiev/
 http://www.inshaker.ru/barman/thomas-waugh/
 http://www.inshaker.ru/barman/fernando-castellon/
 http://www.inshaker.ru/barman/ueno-hidetsugu/
+http://www.inshaker.ru/barman/charles-vexenat/
 http://www.inshaker.ru/barman/edvin-byarygaba/
 http://www.inshaker.ru/barman/andy-pearson/
 http://www.inshaker.ru/barman/yaroslav-panov/
