@@ -17,14 +17,12 @@ http://www.inshaker.ru/bar/ray/
 http://www.inshaker.ru/bar/martinez/
 http://www.inshaker.ru/bar/mayak/
 http://www.inshaker.ru/bar/main/
-http://www.inshaker.ru/bar/mendeleev/
 http://www.inshaker.ru/bar/milk/
 http://www.inshaker.ru/bar/mulata/
 http://www.inshaker.ru/bar/noor/
 http://www.inshaker.ru/bar/all_time_bar/
 http://www.inshaker.ru/bar/projector/
 http://www.inshaker.ru/bar/rock-n-roll/
-http://www.inshaker.ru/bar/secret_bar/
 http://www.inshaker.ru/bar/strelka/
 http://www.inshaker.ru/bar/tapa_de_comida/
 http://www.inshaker.ru/bar/free_bar/
@@ -38,4 +36,3 @@ http://www.inshaker.ru/bar/22.13/
 http://www.inshaker.ru/bar/arch/
 http://www.inshaker.ru/bar/big_liver_place/
 http://www.inshaker.ru/bar/thebar/
-http://www.inshaker.ru/bar/clocks/
