@@ -1,6 +1,5 @@
 http://www.inshaker.ru/barman/inshaker/
 http://www.inshaker.ru/barman/agostino-perrone/
-http://www.inshaker.ru/barman/alex-kratena/
 http://www.inshaker.ru/barman/alexander-kan/
 http://www.inshaker.ru/barman/aleksandr-pugachev/
 http://www.inshaker.ru/barman/alexey-perekatov/
@@ -31,7 +30,7 @@ http://www.inshaker.ru/barman/dale-degroff/
 http://www.inshaker.ru/barman/jamie-stephenson/
 http://www.inshaker.ru/barman/jim-meehan/
 http://www.inshaker.ru/barman/joseph-biolatto/
-http://www.inshaker.ru/barman/joshua-fontaine-and-carina-velasquez/
+http://www.inshaker.ru/barman/joshua-fontaine-and-carina-tsou/
 http://www.inshaker.ru/barman/dmitry-sokolov/
 http://www.inshaker.ru/barman/dmitry-suvorov/
 http://www.inshaker.ru/barman/dushan-zaric/
@@ -59,7 +58,6 @@ http://www.inshaker.ru/barman/ricardo-albrecht/
 http://www.inshaker.ru/barman/ricardo-sporksled/
 http://www.inshaker.ru/barman/roman-milostivy/
 http://www.inshaker.ru/barman/roman-toroshin/
-http://www.inshaker.ru/barman/rustam-nigmatzianov/
 http://www.inshaker.ru/barman/salvatore-calabrese/
 http://www.inshaker.ru/barman/sasha-petraske/
 http://www.inshaker.ru/barman/seyran-gevorkyan/
