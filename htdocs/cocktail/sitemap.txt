@@ -385,6 +385,7 @@ http://www.inshaker.ru/cocktail/caipirinha_2/
 http://www.inshaker.ru/cocktail/blackberry_caipirinha/
 http://www.inshaker.ru/cocktail/strawberry_caipirinha/
 http://www.inshaker.ru/cocktail/caipiroska/
+http://www.inshaker.ru/cocktail/caligula/
 http://www.inshaker.ru/cocktail/arrowwood_martini/
 http://www.inshaker.ru/cocktail/calvados_infused_on_plums/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
@@ -417,6 +418,7 @@ http://www.inshaker.ru/cocktail/kilim/
 http://www.inshaker.ru/cocktail/kin-dza-dza/
 http://www.inshaker.ru/cocktail/kir_royal/
 http://www.inshaker.ru/cocktail/clubland/
+http://www.inshaker.ru/cocktail/claudius_galenus/
 http://www.inshaker.ru/cocktail/classic_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/maple_apple/
 http://www.inshaker.ru/cocktail/maple_julep/
@@ -579,6 +581,8 @@ http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
 http://www.inshaker.ru/cocktail/mary_love/
+http://www.inshaker.ru/cocktail/marcus_aurelius/
+http://www.inshaker.ru/cocktail/marcus_licinius_crassus/
 http://www.inshaker.ru/cocktail/marmalade_margarita/
 http://www.inshaker.ru/cocktail/moroccan_smash/
 http://www.inshaker.ru/cocktail/martinez/
@@ -662,6 +666,7 @@ http://www.inshaker.ru/cocktail/negroni/
 http://www.inshaker.ru/cocktail/negroni_2/
 http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
+http://www.inshaker.ru/cocktail/nero/
 http://www.inshaker.ru/cocktail/knickerbocker/
 http://www.inshaker.ru/cocktail/knickerbocker_2/
 http://www.inshaker.ru/cocktail/new_new_york/
