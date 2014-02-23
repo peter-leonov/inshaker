@@ -105,6 +105,7 @@ http://www.inshaker.ru/cocktail/borodinsky/
 http://www.inshaker.ru/cocktail/boston_tea/
 http://www.inshaker.ru/cocktail/bowling_in_tu-154/
 http://www.inshaker.ru/cocktail/keg_with_honey/
+http://www.inshaker.ru/cocktail/boyarskyi/
 http://www.inshaker.ru/cocktail/brazilian_lemonade/
 http://www.inshaker.ru/cocktail/brazilian/
 http://www.inshaker.ru/cocktail/brandy_alexander/
@@ -310,6 +311,7 @@ http://www.inshaker.ru/cocktail/home_marmalade/
 http://www.inshaker.ru/cocktail/home_dad_s_double/
 http://www.inshaker.ru/cocktail/home_sling/
 http://www.inshaker.ru/cocktail/home_fashioned/
+http://www.inshaker.ru/cocktail/boyarskyi_daughter/
 http://www.inshaker.ru/cocktail/dry_martini/
 http://www.inshaker.ru/cocktail/ancient_greek/
 http://www.inshaker.ru/cocktail/dream_daiquiri_meringe/
