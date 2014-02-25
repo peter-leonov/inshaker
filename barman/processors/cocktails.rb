@@ -657,6 +657,7 @@ class CocktailsProcessor < Inshaker::Processor
       [["Все коктейли"], "kupit-kokteyli", "Купить коктейль"],
       [["Морской коктейль"], "morskoy-kokteyl", "Коктейль"],
       [["Все коктейли"], "novie-kokteyli", "Новый коктейль"],
+      [["Просто приготовить"], "prostyye-kokteyli", "Простой коктейль"],
     ]
     
     tags.each do |v|
