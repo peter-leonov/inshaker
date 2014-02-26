@@ -1,6 +1,8 @@
 /* skin.css */
 @media screen {
 
+html { background: #fff url(/skin/2014.03/bg.jpg) center 65px; }
+
 #spotlighted i
 {
   display: block;
