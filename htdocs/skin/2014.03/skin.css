@@ -6,7 +6,7 @@ html { background: #fff url(/skin/2014.03/bg.jpg) center 65px; }
 #spotlighted i
 {
   display: block;
-  width: 126px; height: 30px; right: -10px; top: 20px;
+  width: 80px; height: 35px; right: -10px; top: 20px;
   background: url(/skin/2014.03/logo.png) center center no-repeat;
 }
 #combinator-page #spotlighted i
