@@ -1,7 +1,14 @@
 /* skin.css */
 @media screen {
 
-html { background: #fff url(/skin/2014.03/bg.jpg) center 65px; }
+html.cocktails-section,
+html.combinator-section,
+html.ratings-section,
+html.academy-section,
+html.bars-section,
+html.mybar-section,
+html.cocktail-groups-section
+{ background: #fff url(/skin/2014.03/bg.jpg) center 65px; }
 
 #spotlighted i
 {
