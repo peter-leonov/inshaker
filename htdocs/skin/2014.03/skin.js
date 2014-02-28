@@ -26,7 +26,7 @@ var Me =
   }
 }
 
-var link = '/cocktail/czech_mulled_wine/'
+var link = '/combinator.html#q=Rich'
 
 Me.initialize
 ({
