@@ -299,6 +299,7 @@ http://www.inshaker.ru/cocktail/jack_rose/
 http://www.inshaker.ru/cocktail/jackie/
 http://www.inshaker.ru/cocktail/jam_jack_pot/
 http://www.inshaker.ru/cocktail/jimmy-jimmy/
+http://www.inshaker.ru/cocktail/gin_boutique/
 http://www.inshaker.ru/cocktail/gin_bitter_lemon/
 http://www.inshaker.ru/cocktail/gin_garden/
 http://www.inshaker.ru/cocktail/gin_and_cranberries/
@@ -692,6 +693,7 @@ http://www.inshaker.ru/cocktail/heaven/
 http://www.inshaker.ru/cocktail/innocent_sex/
 http://www.inshaker.ru/cocktail/negroni/
 http://www.inshaker.ru/cocktail/negroni_2/
+http://www.inshaker.ru/cocktail/negroni_in_the_hood/
 http://www.inshaker.ru/cocktail/pappy_s_tea/
 http://www.inshaker.ru/cocktail/divine_love/
 http://www.inshaker.ru/cocktail/nero/
@@ -877,6 +879,7 @@ http://www.inshaker.ru/cocktail/sazerac/
 http://www.inshaker.ru/cocktail/sazerac_2/
 http://www.inshaker.ru/cocktail/sidecar/
 http://www.inshaker.ru/cocktail/salers_martini/
+http://www.inshaker.ru/cocktail/salvador/
 http://www.inshaker.ru/cocktail/world_fasted_bloody_mary/
 http://www.inshaker.ru/cocktail/sambuca/
 http://www.inshaker.ru/cocktail/samoan_fog_cutter/
