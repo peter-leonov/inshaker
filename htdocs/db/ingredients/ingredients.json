@@ -375,7 +375,7 @@
 {"group":"Добавки","name":"Розовая вода","path":"rozovaya-voda","unit":"мл","volumes":[]},
 {"brand":"Cinzano","group":"Вермуты","inShop":"/products/8/krutoy-domashniy-bar","mark":"Cinzano","name":"Розовый вермут","path":"rozovyiy-vermut","tags":["Cinzano","Вермут"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Посуда","name":"Рокс","path":"roks","unit":"шт","volumes":[[1.0,100.0,["бокал","бокал","бокал"]]]},
-{"brand":"Bacardi-151","group":"Крепкий алкоголь","mark":"Bacardi","name":"Ром-151","names":["Bacardi-151","Бакарди-151"],"path":"rom-151","tags":["Bacardi","Ром"],"unit":"л","volumes":[]},
+{"brand":"Bacardi-151","group":"Крепкий алкоголь","mark":"Bacardi","name":"Ром-151","names":["Bacardi-151","Бакарди-151"],"path":"rom-151","tags":["Bacardi","Ром"],"unit":"л","volumes":[[0.75,3350.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Чай и кофе","name":"Ромашковый чай","path":"romashkovyiy-chay","tags":["Цветочный чай","Чай"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Ромашковый чай в пакетиках","path":"romashkovyiy-chay-v-paketikah","tags":["Цветочный чай","Чай"],"unit":"шт","volumes":[]},
 {"group":"Травы и цветы","name":"Руккола","path":"rukkola","unit":"г","volumes":[]},
