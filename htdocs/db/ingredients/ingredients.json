@@ -97,7 +97,7 @@
 {"group":"Ягоды","name":"Вишня","path":"vishnya","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Добавки","name":"Вишня гриотин","path":"vishnya-griotin","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Вода и напитки","name":"Вода без газа","path":"voda-bez-gaza","tags":["Вода","Минеральная вода"],"unit":"л","volumes":[[0.275,100.0,["бутылка","бутылки","бутылок"]]]},
-{"group":"Добавки","name":"Вода из цветков апельсина","path":"voda-iz-tsvetkov-apelsina","unit":"мл","volumes":[]},
+{"group":"Добавки","name":"Вода из цветков апельсина","names":["Апельсиновая вода","Флер де оранж"],"path":"voda-iz-tsvetkov-apelsina","unit":"мл","volumes":[]},
 {"brand":"Absolut","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Absolut","name":"Водка","names":["Absolut","Абсолют"],"path":"vodka","tags":["Absolut","Absolut","Водка","Водка классическая"],"unit":"л","volumes":[[0.5,650.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Absolut Vanilia","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Absolut","name":"Водка ванильная","names":["Absolut Vanilia","Абсолют Ванила","Абсолют ванильный"],"path":"vodka-vanilnaya","tags":["Absolut","Absolut","Вкусовая водка","Водка"],"unit":"л","volumes":[[0.7,900.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Absolut Pears","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Absolut","name":"Водка грушевая","names":["Absolut Pears","Абсолют Пеарс","Абсолют грушевый"],"path":"vodka-grushevaya","tags":["Absolut","Absolut","Вкусовая водка","Водка"],"unit":"л","volumes":[[0.7,900.0,["бутылка","бутылки","бутылок"]]]},
