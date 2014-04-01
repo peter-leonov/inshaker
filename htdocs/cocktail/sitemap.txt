@@ -354,6 +354,7 @@ http://www.inshaker.ru/cocktail/liquid_cheesecake/
 http://www.inshaker.ru/cocktail/life_is_beautiful/
 http://www.inshaker.ru/cocktail/breakfast/
 http://www.inshaker.ru/cocktail/jokers_breakfast/
+http://www.inshaker.ru/cocktail/breakfast_with_dali/
 http://www.inshaker.ru/cocktail/tequila_breakfast/
 http://www.inshaker.ru/cocktail/baked_smoothie/
 http://www.inshaker.ru/cocktail/forbidden_fruit/
@@ -413,6 +414,7 @@ http://www.inshaker.ru/cocktail/arrowwood_martini/
 http://www.inshaker.ru/cocktail/calvados_infused_on_plums/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_siphon/
 http://www.inshaker.ru/cocktail/kamikaze_in_a_shaker/
+http://www.inshaker.ru/cocktail/caprese/
 http://www.inshaker.ru/cocktail/capri/
 http://www.inshaker.ru/cocktail/cardicas/
 http://www.inshaker.ru/cocktail/karel_gott/
@@ -879,7 +881,6 @@ http://www.inshaker.ru/cocktail/sazerac/
 http://www.inshaker.ru/cocktail/sazerac_2/
 http://www.inshaker.ru/cocktail/sidecar/
 http://www.inshaker.ru/cocktail/salers_martini/
-http://www.inshaker.ru/cocktail/salvador/
 http://www.inshaker.ru/cocktail/world_fasted_bloody_mary/
 http://www.inshaker.ru/cocktail/sambuca/
 http://www.inshaker.ru/cocktail/samoan_fog_cutter/
