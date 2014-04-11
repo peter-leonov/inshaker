@@ -39,7 +39,7 @@ class MailSender
     
     # send emails
     @to.collect do |to|
-      RestClient.post "https://api:key-5pkxouxpxr5wwjoztfof2s1bs-1h5ii4"\
+      RestClient.post "https://api:key-33cugysmbei5j08yh7tz2z4mx64lyua7"\
         "@api.mailgun.net/v2/mg.inshaker.ru/messages",
         :from => "Shaker <#{Config::FROM}>",
         :to => to,
