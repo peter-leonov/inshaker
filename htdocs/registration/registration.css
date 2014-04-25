@@ -2,7 +2,7 @@
 {
   height: 640px; margin-top: -38px; padding-top: 130px;
   border-bottom: solid 10px #fff;
-  background: #444 url(promo.jpg) center -240px; text-shadow: 1px 1px 1px #000;
+  background: #444 url(promo.jpg) center top; text-shadow: 1px 1px 1px #000;
 }
 
 #friends-club-info .container
