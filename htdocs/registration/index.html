@@ -42,16 +42,6 @@
   </div>
   <div class="common-content common-bottom content">
     <iframe src="http://club.inshaker.pro/" frameborder="0" scrolling="no"></iframe>
-    <script>
-    $.onload(function (){
-      window.setTimeout(function (){
-        var iframe = $('#the-form iframe')
-        var src = "http://club.inshaker.pro/"
-        if (inshaker.src != src)
-          inshaker.src = src
-      }, 3000)
-    })
-    </script>
   </div>
 </div>
 
@@ -62,5 +52,15 @@
 <!--# include virtual="/inc/common-footer.html" -->
 <script src="/js/common/oops.js"></script>
 <script src="/js/common/common.js"></script>
+<script>
+$.onload(function (){
+  window.setTimeout(function (){
+    var iframe = $('#the-form iframe')
+    var src = "http://club.inshaker.pro/"
+    if (inshaker.src != src)
+      inshaker.src = src
+  }, 3000)
+})
+</script>
 </body>
 </html>
