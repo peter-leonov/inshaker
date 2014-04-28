@@ -4,20 +4,20 @@ default:
 cache.purge:
 	rm -r var/cache/*
 
-remote:
+r:
 	ssh inshaker.back
 
-remote.update:
+r.update:
 	ssh www@inshaker.back 'cd /www/inshaker; git pull'
 
-remote.restart:
+r.restart:
 	ssh inshaker.back 'sudo restart inshaker/nginx'
 
-remote.nginx.reload:
+r.nginx.reload:
 	ssh inshaker.back 'sudo reload inshaker/nginx'
 
-remote.cache.purge:
+r.cache.purge:
 	ssh www@inshaker.back 'cd /www/inshaker; rm -r var/cache/*'
-remote.cache.warmup:
+r.cache.warmup:
 	wget -r --delete-after --accept-regex="ru/products/" http://www.inshaker.ru/shop/ 2>&1 | grep 'HTTP request sent'
-remote.cache: remote.cache.purge remote.cache.warmup
+r.cache: remote.cache.purge remote.cache.warmup
