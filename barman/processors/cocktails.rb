@@ -85,7 +85,6 @@ class CocktailsProcessor < Inshaker::Processor
       flush_groups_and_strengths_and_methods
       flush_json
       flush_links
-      flush_seo
     end
   end
   
@@ -605,95 +604,6 @@ class CocktailsProcessor < Inshaker::Processor
     File.open(Config::SITEMAP_LINKS, "w+") do |links|
       @cocktails.each do |name, hash|
         links.puts %Q{http://#{Inshaker::DOMAIN}/cocktail/#{hash["name_eng"].html_name}/}
-      end
-    end
-  end
-  
-  def flush_seo
-    tags = [
-      [["Алкогольные"], "alkogolnye-kokteyli", "Алкогольный коктейль"],
-      [["Просто приготовить"], "domashnie-kokteyli", "Домашний коктейль"],
-      [["Алкогольные"], "recepty-alkogolnyh-kokteyley", "Рецепт алкогольного коктейля"],
-      [["Безалкогольные"], "bezalkogolnye-kokteyli", "Безалкогольный коктейль"],
-      [["Милкшейки"], "molochnye-kokteyli", "Молочный коктейль"],
-      [["Мохито"], "mojito", "Мохито"],
-      [["Красные"], "krasnye-kokteyli", "Красный коктейль"],
-      [["Глинтвейны"], "glintvejn", "Коктейль"],
-      [["Лимонады"], "limonad", "Лимонад"],
-      [["Голубые"], "golubye-kokteyli", "Голубой коктейль"],
-      [["Маргариты"], "margarita", "Маргарита"],
-      [["Космополитен"], "cosmopolitan", "Космополитен"],
-      [["Пина Колада"], "pina-colada", "Пина Колада"],
-      [["Водка"], "kokteyli-s-vodkoj", "Коктейль с водкой"],
-      [["Виски"], "kokteyli-s-viski", "Коктейль с виски"],
-      [["Ром"], "kokteyli-s-romom", "Коктейль с ромом"],
-      [["Ликер"], "kokteyli-s-likerom", "Коктейль с ликером"],
-      [["Б-52"], "b-52", "Б-52"],
-      [["Текила"], "kokteyli-s-tekiloj", "Коктейль с текилой"],
-      [["Джин"], "kokteyli-s-djinom", "Коктейль с джином"],
-      [["Фруктовые"], "fruktovye-kokteyli", "Фруктовый коктейль"],
-      [["Вермут"], "kokteyli-s-martini", "Коктейль с мартини"],
-      [["Кола"], "kokteyli-s-koloj", "Коктейль с колой"],
-      [["Мороженое", "Сорбет"], "kokteyli-s-morozhenym", "Коктейль с мороженым"],
-      [["Клубника", "Свежемороженая клубника"], "klubnichnye-kokteyli", "Клубничный коктейль"],
-      [["Банан", "Банановый сок"], "bananovyje-kokteyli", "Банановый коктейль"],
-      [["В блендере"], "v-blendere", "В блендере"],
-      [["Шоколад черный", "Шоколадный сироп"], "shokoladnyje-kokteyli", "Шоколадный коктейль"],
-      [["Классические"], "populyarnyje-kokteyli", "Популярный коктейль"],
-      [["Просто приготовить"], "kokteyli-kak-prigotovit", "Как приготовить коктейль"],
-      [["Белые"], "beliye-kokteyli", "Белый коктейль"],
-      [["Содовая"], "kislorodnyy-kokteyl", "Кислородный коктейль"],
-      [["Свежевыжатые"], "kokteyli-dlya-pohudeniya", "Коктейль"],
-      [["Самбука светлая"], "kokteyli-s-sambukoy", "Коктейль"],
-      [["Сок"], "kokteyli-s-sokom", "Коктейль"],
-      [["Молоко"], "belkovye-kokteyli", "Белковый коктейль"],
-      [["Лед"], "zamorojennie-kokteyli", "Замороженный коктейль"],
-      [["Шахматная доска"], "igry-kokteyli", "Игры с коктейлем"],
-      [["Все коктейли"], "kak-sdelat-kokteyl", "Как сделать коктейль"],
-      [["Безалкогольные"], "kokteyli-dlya-detey", "Коктейль для детей"],
-      [["Все коктейли"], "kokteyli-onlayn", "Коктейль онлайн"],
-      [["Морской коктейль"], "morskoy-recepty-s-foto", "Коктейль"],
-      [["Шампанское"], "kokteyli-s-shampanskim", "Коктейль с шампанским"],
-      [["Все коктейли"], "kupit-kokteyli", "Купить коктейль"],
-      [["Морской коктейль"], "morskoy-kokteyl", "Коктейль"],
-      [["Все коктейли"], "novie-kokteyli", "Новый коктейль"],
-      [["Просто приготовить"], "prostyye-kokteyli", "Простой коктейль"],
-      [["Молоко"], "proteinovye-kokteyli", "Протеиновый коктейль"],
-      [["Все коктейли"], "sostav-kokteyley", "Состав коктейля"],
-      [["Все коктейли"], "vkusniye-kokteyli", "Вкусный коктейль"],
-      [["Все коктейли"], "kokteyli-besplatno", "Коктейль бесплатно"],
-      [["Безалкогольные"], "kokteyli-dlya-devochek", "Коктейль для девочек"],
-      [["Все коктейли"], "kokteyli-otzyvy", "Отзывы о коктейле"],
-      [["Ром"], "kokteyli-s-bakardi", "Коктейль с бакарди"],
-      [["Б-52"], "kokteyl-video", "Коктейль видео"],
-      [["Голубая лагуна"], "kokteyl-laguna", "Коктейль лагуна"],
-      [["Зеленые"], "zelenye-kokteyli", "Зеленый коктейль"],
-      [["Абсент"], "kokteyli-s-absentom", "Коктейль с абсентом"],
-      [["Самые популярные"], "luchshie-kokteyli", "Лучший коктейль"],
-      [["Все коктейли"], "nabor-dlya-kokteyley", "Набор для коктейля"],
-      [["Водка"], "russkie-kokteyli", "Русский коктейль"],
-    ]
-    
-    tags.each do |v|
-      tag, dir, prefix = v
-      
-      cocktails = Cocktail.by_any_of_entities(tag)
-      cocktails.sort! do |a, b|
-        length = a["ingredients"].length - b["ingredients"].length
-        if length != 0
-          length
-        else
-          a["name"] <=> b["name"]
-        end
-      end
-      
-      path = Config::SEO_GROUPS_PATH % dir
-      
-      File.open(path, "w+") do |list|
-        cocktails.each do |c|
-          ingredients = c["ingredients"].map { |e| e[0] }
-          list.puts %Q{<li data-cocktail="#{c["name"]}">#{prefix} «#{c["name"]}» = #{ingredients.join(" + ")}</li>}
-        end
       end
     end
   end
