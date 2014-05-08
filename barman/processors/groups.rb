@@ -12,6 +12,7 @@ class GroupsProcessor < Inshaker::Processor
     BASE_DIR       = Inshaker::BASE_DIR + "Groups/"
     
     HT_ROOT        = Inshaker::HTDOCS_DIR + "gruppy-kokteyley/"
+    INDEX_PATH     = HT_ROOT + "list.html"
     
     TEMPLATE       = Inshaker::TEMPLATES_DIR + "cocktail-group.rhtml"
   end
@@ -36,6 +37,7 @@ class GroupsProcessor < Inshaker::Processor
     @renderer = ERB.new(File.read(Config::TEMPLATE))
     
     update_groups
+    flush_list
     
     unless errors?
       # cleanup_deleted
@@ -105,6 +107,15 @@ class GroupsProcessor < Inshaker::Processor
       end
     end
     end # indent
+  end
+  
+  def flush_list
+    File.open(Config::INDEX_PATH, "w+") do |list|
+      @entities.each do |g|
+        list.puts %Q{<li class="item"><a class="group" href="#{g.path}/" data-query="#{g.tags.join('|')}">#{g.name}</a></li>}
+      end
+    end
+    
   end
 end
 
