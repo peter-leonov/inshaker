@@ -46,6 +46,7 @@ class GroupsProcessor < Inshaker::Processor
   
   def update_groups
     Dir.new(Config::BASE_DIR).each_dir do |entity_dir|
+      say entity_dir.name
       indent do
         process_entity entity_dir
       end
@@ -53,165 +54,34 @@ class GroupsProcessor < Inshaker::Processor
   end
   
   def process_entity src_dir
-    say src_dir.name
-    return
-    indent do
-    
-    @entity = {}
-    
+    return unless File.exists? src_dir.path + "/about.yaml"
     yaml = YAML::load(File.open(src_dir.path + "/about.yaml"))
     
-    if yaml['Главное событие'] == "да"
-      @entity["main"] = true
-    end
     
-    @entity["adate"]             = yaml['Примерная дата']
-    @entity["name"]              = yaml['Название']
-    @entity["header"]            = yaml['Слоган']
-    @entity["target"]            = yaml['Задача']
-    @entity["subject"]           = yaml['Задача']
-    @entity["city"]              = yaml['Город']
-    @entity["country"]           = yaml['Страна']
-    @entity["href"]              = yaml['Ссылка']
-    @entity["venue"]             = yaml['Место']
-    @entity["time"]              = yaml['Время']
-    @entity["enter"]             = yaml['Вход']
-    @entity["photos"]            = yaml['Ссылка на фотки']
-    @entity["fields"]            = yaml['Поля формы']
-    @entity["form_hint"]         = yaml['Подсказка в форме']
-    @entity["sent_message"]      = yaml['Сообщение в форме после отправки']
-    @entity["sent_message_en"]   = yaml['Сообщение в форме после отправки (англ.)']
-    @entity["status"]            = {'подготовка' => 'preparing', 'проведение' => 'holding', 'архив' => 'archive' }[yaml['Статус']]
     
-    @entity["date_ru"]           = ru_date_str
-    @entity["address"]           = yaml['Ссылка на место']
+    @entity = OpenStruct.new(
+      name:   src_dir.name,
+      path:   yaml['Путь'],
+      prefix: yaml['Префикс'],
+      tags:   yaml['Теги'],
+      facts:  yaml['Факты']
+    )
     
-    @entity["rating"]            = {}
-    
-    @entity["type"]              = {'для любителей' => 'amateur', 'для профессионалов' => 'pro', nil => 'pro'}[yaml['Тип']]
-    unless @entity["type"]
-      error %Q{непонятный тип события «#{yaml['Тип']}»}
-    end
-    @by_type[@entity["type"]] += 1
-    
-    if @entity["main"]
-      main_event = @type_main[@entity["type"]]
-      if main_event
-        error %Q{главным событием #{@type_names[@entity["type"]]} уже назначено "#{main_event["name"]}"}
-      else
-        @type_main[@entity["type"]] = @entity
-      end
-    end
-    
-    fields = []
-    if @entity["fields"]
-      @entity["fields"].each do |label|
-        if label.class == Hash
-          field = {"label" => label["Название"]}
-          if label["Подсказка"]
-            field["tip"] = label["Подсказка"]
-          end
-          if label["Столбец"]
-            field["name"] = label["Столбец"]
-          end
-          if label["Тип"]
-            field["type"] = {'много текста' => 'textarea'}[label["Тип"]]
-          end
-          fields << field
-        else
-          fields << {"label" => label.to_s}
-        end
-      end
-    end
-    @entity["fields"] = fields
-    
-    seen = @entities_hrefs[@entity["href"]]
+    seen = @entities_hrefs[@entity.path]
     if seen
-      error %Q{событие с такой ссылкой уже существует: "#{seen["name"]}"}
+      error %Q{группа с такой ссылкой уже существует: "#{seen.name}"}
     else
-      @entities_hrefs[@entity["href"]] = @entity
+      @entities_hrefs[@entity.path] = @entity
     end
     
-    ht_path = Config::HT_ROOT + @entity["href"]
+    
+    ht_path = Config::HT_ROOT + @entity.path
     FileUtils.mkdir_p ht_path
     ht_dir = Dir.new(ht_path)
-    
-    arr = []
-    if yaml['Диалоги']
-      yaml['Диалоги'].each do |v|
-        arr << {"back" => v[0], "popups" => v[1] == "нет" ? nil : v[1]}
-      end
-    end
-    @entity["dialogue"] = arr
-    
-    FileUtils.mkdir_p ht_dir.path + "/logos/"
-    
-    arr = []
-    if yaml['Генеральные спонсоры']
-      yaml['Генеральные спонсоры']['Баннеры'].each do |v|
-        hash = {"name" => v[0], "src" => v[1], "href" => v[2]}
-        arr << hash
-        FileUtils.cp_r(src_dir.path + "/logos/" + hash["src"], ht_dir.path + "/logos/" + hash["src"], @mv_opt)
-      end
-      @entity["high_head"] = yaml['Генеральные спонсоры']['Заголовок']
-      if @entity["high_head"] == 'нет'
-        @entity["high_head"] = nil
-      end
-    end
-    @entity["high"] = arr
-    
-    arr = []
-    if yaml['Спонсоры']
-      yaml['Спонсоры'].each do |v|
-        hash = {"name" => v[0], "src" => v[1], "href" => v[2]}
-        arr << hash
-        FileUtils.cp_r(src_dir.path + "/logos/" + hash["src"], ht_dir.path + "/logos/" + hash["src"], @mv_opt)
-      end
-    end
-    @entity["medium"] = arr
-    
-    low = []
-    if yaml['При поддержке']
-      yaml['При поддержке'].each do |v|
-        name, logos = v['Название'], v['Логотипы']
-        arr = []
-        low << {"name" => name, "logos" => arr}
-        logos.each do |sponsor|
-          if sponsor == "заглушка"
-            hash = nil
-          else
-            hash = {"name" => sponsor[0], "src" => sponsor[1], "href" => sponsor[2]}
-            FileUtils.cp_r(src_dir.path + "/logos/" + hash["src"], ht_dir.path + "/logos/" + hash["src"], @mv_opt)
-          end
-          arr << hash
-        end
-      end
-    end
-    @entity["low"] = low
-    
-    rating = yaml['Рейтинг']
-    if rating
-      say "нашел рейтинг"
-      data = {"phrase" => rating['Фраза'], "max" => rating['Выводить']}
-      @entity["rating"] = data
-      
-      type = {'корпоративный' => 'corp', 'соревнование' => 'comp'}[rating['Тип']]
-      if type
-        data["type"] = type
-      end
-      
-      if rating['В обратном порядке'] == 'да'
-        data["reverse"] = true
-      end
-      
-      process_rating src_dir
-    end
-    
+    return
     update_html @entity, ht_dir
-    end # indent
     
-    @entities[@entity["name"]] = @entity
-    @entities_array << @entity
+    @entities << @entity
   end
   
   def update_main
