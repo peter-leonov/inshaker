@@ -29,6 +29,7 @@ module Inshaker
       "blog" => {script: "./processors/blog.rb", name: "Блог"},
       "blog-banners" => {script: "./processors/blog-banners.rb", name: "Баннеры в Блоге"},
       "mybar" => {script: "./processors/mybar.rb", name: "Мой бар"},
+      "groups" => {script: "./processors/groups.rb", name: "Группы коктейлей"},
       
       "analytics" => {script: "./processors/analytics.rb", name: "Аналитика"},
       
