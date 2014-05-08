@@ -2,6 +2,8 @@
 # encoding: utf-8
 $:.push('/www/inshaker/barman')
 
+require 'ostruct'
+
 require "inshaker"
 require "entities/cocktail"
 require "entities/ingredient"
