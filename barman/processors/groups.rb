@@ -40,7 +40,7 @@ class GroupsProcessor < Inshaker::Processor
     flush_list
     
     unless errors?
-      # cleanup_deleted
+      cleanup_deleted
     end
   end
   
@@ -97,7 +97,7 @@ class GroupsProcessor < Inshaker::Processor
     indent do
     index = {}
     @entities.each do |entity|
-      index[entity["href"]] = entity
+      index[entity.path] = entity
     end
     
     Dir.new(Config::HT_ROOT).each_dir do |dir|
