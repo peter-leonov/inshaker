@@ -85,7 +85,7 @@ class GroupsProcessor < Inshaker::Processor
   def update_html dst
     mid = @entity.facts.map(&:size).reduce(:+) / 2
     size = 0
-    @column_a, @column_b = @entity.facts.partition {|s| size += s.size; size <= mid}
+    @column_a, @column_b = @entity.facts.partition {|s| r = size < mid; size += s.size; r }
     
     @cocktails = Cocktail.by_any_of_entities(@entity.tags).sort_by { |c| [c["ingredients"].size, c["name"]] }
     
