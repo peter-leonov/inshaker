@@ -3,6 +3,8 @@
 $:.push('/www/inshaker/barman')
 
 require "inshaker"
+require "entities/cocktail"
+require "entities/ingredient"
 
 class GroupsProcessor < Inshaker::Processor
   
@@ -27,6 +29,9 @@ class GroupsProcessor < Inshaker::Processor
   def job
     sync_base "Groups"
     fix_base "Groups"
+    
+    Ingredient.init
+    Cocktail.init
     
     @renderer = ERB.new(File.read(Config::TEMPLATE))
     
@@ -79,6 +84,8 @@ class GroupsProcessor < Inshaker::Processor
     mid = @entity.facts.map(&:size).reduce(:+) / 2
     size = 0
     @column_a, @column_b = @entity.facts.partition {|s| size += s.size; size <= mid}
+    
+    @cocktails = Cocktail.by_any_of_entities(@entity.tags).sort_by { |c| [c["ingredients"].size, c["name"]] }
     
     File.write("#{dst.path}/#{@entity.path}.html", @renderer.result(binding))
   end

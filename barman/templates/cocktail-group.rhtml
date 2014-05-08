@@ -35,8 +35,8 @@
     <h2 id="group-name" data-name="<%= @entity.name %>"><%= @entity.name %></h2> / <a href="/gruppy-kokteyley/">Группы коктейлей</a>
     </div>
   </div>
-  <ul class="common-content b-content ingrediented-cocktail-list" id="cocktail-list">
-      <!--# include virtual="list.html" -->
+  <ul class="common-content b-content ingrediented-cocktail-list" id="cocktail-list"><% @cocktails.each do |c| %>
+    <li data-cocktail="<%= c["name"] %>"><%= @entity.prefix %> «<%= c["name"] %>» = <%= c["ingredients"].map { |e| e[0] }.join(" + ") %></li><% end %>
   </ul class="common-content">
   <div class="common-content common-bottom common-more" id="more"><a class="button">еще 30 коктейлей</a></div>
 </div class="common-box">
