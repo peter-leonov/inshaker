@@ -12,8 +12,8 @@ var Controller = {
 	
 	name : "",
 	relatedCount: 10,
-	lastFrame: 'state-initial',
-	defaultFrame: 'state-initial',
+	lastFrame: 'state-recipe',
+	defaultFrame: 'state-recipe',
 	
 	nodes:
 	{
