@@ -3,20 +3,20 @@
 .shop-any-banner .title .cards
 {
   position: absolute; top: 0; right: 0; width: 200px; height: 100%;
-  background: url(/w/shop-map-banner/cards.png) center center no-repeat;
+  background: url(/w/shop-any-banner/cards.png) center center no-repeat;
 }
 .shop-any-banner.common-column-2n .title .cards { right: -25px; }
 
 .shop-any-banner h1 a { text-shadow: none; }
 
 .shop-any-banner .map { height: 374px; }
-.shop-any-banner .map .point .icon { background-image: url(/w/shop-map-banner/icon-map-point.png); }
+.shop-any-banner .map .point .icon { background-image: url(/w/shop-any-banner/icon-map-point.png); }
 .shop-any-banner .map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
 
 .shop-any-banner .the-body { background-color: #000; }
 .shop-any-banner .info { overflow: hidden; color: #fff; font-size: 16px; min-height: 61px; border-top: 1px solid #313131; white-space: nowrap; line-height: 54px; padding: 15px 15px 15px 15px; }
 .shop-any-banner .info > div { display: inline-block; vertical-align: middle; padding-left: 40px; position: relative; white-space: normal; }
-.shop-any-banner .info .icon { position: absolute; left: 0; top: 50%; margin-top: -15px; background: url(/w/shop-map-banner/icons-info.png) no-repeat; overflow: hidden; display: inline-block; width: 31px; height: 31px; }
+.shop-any-banner .info .icon { position: absolute; left: 0; top: 50%; margin-top: -15px; background: url(/w/shop-any-banner/icons-info.png) no-repeat; overflow: hidden; display: inline-block; width: 31px; height: 31px; }
 .shop-any-banner .info p { line-height: 1.3; }
 .shop-any-banner .info .location { line-height: 1.1; width: 150px; }
 .shop-any-banner .info .location .icon { background-position: 0 0; }
