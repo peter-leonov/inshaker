@@ -9,6 +9,12 @@
 
 .shop-any-banner h1 a { text-shadow: none; }
 
+.shop-any-banner .image
+{
+  display: block; height: 374px;
+  background: #ccc url(/w/shop-club-banner/promo.jpg) top right;
+}
+
 .shop-any-banner .map { height: 374px; }
 .shop-any-banner .map .point .icon { background-image: url(/w/shop-any-banner/icon-map-point.png); }
 .shop-any-banner .map .point .icon { left: -19px; top: -60px; width: 40px; height: 60px; background-position: 0 0; }
