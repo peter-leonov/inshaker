@@ -806,6 +806,7 @@ http://www.inshaker.ru/cocktail/drunk_gold/
 http://www.inshaker.ru/cocktail/passione/
 http://www.inshaker.ru/cocktail/fifth_element/
 http://www.inshaker.ru/cocktail/squashed_frog/
+http://www.inshaker.ru/cocktail/paradise_punch/
 http://www.inshaker.ru/cocktail/raquel/
 http://www.inshaker.ru/cocktail/ramcooler/
 http://www.inshaker.ru/cocktail/ramos_gin_fizz/
