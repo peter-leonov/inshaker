@@ -13,12 +13,12 @@ html.cocktail-groups-section
 #spotlighted i
 {
   display: block;
-  width: 145px; height: 55px; right: -15px; top: 9px;
+  width: 65px; height: 55px; right: -15px; top: 9px;
   background: url(/skin/2014.07/logo-white.png) center center no-repeat;
 }
 #combinator-page #spotlighted i
 {
-  width: 65px;
+  width: 145px;
   background: url(/skin/2014.07/logo.png) center center no-repeat;
 }
 
