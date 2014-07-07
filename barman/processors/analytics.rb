@@ -2,7 +2,8 @@
 # encoding: utf-8
 $:.push('/www/inshaker/barman')
 
-require "digest/md5"
+require 'byebug'
+require 'google/api_client'
 require "optparse"
 require "date"
 
@@ -11,8 +12,6 @@ require "lib/string"
 require "lib/array"
 require "lib/file"
 require "lib/output"
-require "lib/curl"
-require "lib/oauth2helper"
 
 require "config"
 require "entities/entity"
@@ -25,10 +24,9 @@ class Analytics
   DAY  = 24 * 60 * 60
   
   module Config
-    PROFILE_ID     = "9038802"
-    DATA_URI       = "https://www.googleapis.com/analytics/v3/data/ga"
-    
-    TMP            = Inshaker::ROOT_DIR + "/barman/tmp"
+    PROFILE_ID                    = "ga:9038802"
+    SERVICE_ACCOUNT_EMAIL_ADDRESS = '971471176148-84gsvj1nv6lrhpbbinhlharprqdmavd3@developer.gserviceaccount.com'
+    PATH_TO_KEY_FILE              = Inshaker::ROOT_DIR + '/barman/9e74ff16424f117e894c1d93a0895184166c938f-privatekey.p12'
     
     REPORTER_DIR   = Inshaker::HTDOCS_DIR + "/reporter/db/stats"
     ALL_JSON       = REPORTER_DIR + "/all.json"
@@ -46,8 +44,6 @@ class Analytics
   
   def initialize
     @all = []
-    @auth = OAuth2Helper.new
-    @auth.temp = Config::TMP
   end
   
   def process_options
@@ -57,10 +53,6 @@ class Analytics
       
       opts.on("-q", "--quite", "сообщать только об ошибках") do |v|
         quite!
-      end
-      
-      opts.on("-f", "--force", "не кешировать ответы") do |v|
-        @options[:force] = true
       end
     end.parse!
   end
@@ -81,7 +73,17 @@ class Analytics
   end
   
   def get_credentials
-    @token = @auth.get_access_token
+    @client = Google::APIClient.new(application_name: 'Inshaker', application_version: 1.0)
+    
+    @client.authorization = Signet::OAuth2::Client.new(
+      :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+      :audience             => 'https://accounts.google.com/o/oauth2/token',
+      :scope                => 'https://www.googleapis.com/auth/analytics.readonly',
+      :issuer               => Config::SERVICE_ACCOUNT_EMAIL_ADDRESS,
+      :signing_key          => Google::APIClient::PKCS12.load_key(Config::PATH_TO_KEY_FILE, 'notasecret')
+    ).tap { |auth| auth.fetch_access_token! }
+
+    @api_method = @client.discovered_api('analytics','v3').data.ga.get
   end
   
   
@@ -93,41 +95,15 @@ class Analytics
     File.write(Config::LAST_UP_JSON, [Time.now.to_i].to_json)
   end
   
-  def newer? fn, sec
-    File.exists?(fn) && Time.now - File.mtime(fn) < sec
-  end
-  
-  def get_authed url, query
-    Curl.get(url, query, {"Authorization" => "Bearer #{@token}"})
-  end
-  
-  def get_cached url, query
-    if @options[:force]
-      return get_authed(url, query)
-    end
-    
-    hash = Digest::MD5.hexdigest("#{url}?#{query.to_a.flatten.join("&")}")
-    cache = "#{Config::TMP}/#{hash}.url.txt"
-    if newer?(cache, 15 * MINUTE)
-      return File.read(cache)
-    end
-    
-    r = get_authed(url, query)
-    
-    File.write(cache, r)
-    
-    return r
-  end
-  
   def report query, start, endd, results=100
-    rep =
+    mandatory =
     {
-      "ids" => "ga:#{Config::PROFILE_ID}",
-      "start-date" => start.strftime("%Y-%m-%d"),
-      "end-date" => endd.strftime("%Y-%m-%d"),
-      "max-results" => results
+      'ids'        => Config::PROFILE_ID,
+      'start-date' => start.strftime("%Y-%m-%d"),
+      'end-date'   => endd.strftime("%Y-%m-%d")
     }
-    get_cached(Config::DATA_URI, query.merge(rep))
+    result = @client.execute(:api_method => @api_method, :parameters => mandatory.merge(query))
+    result.data
   end
   
   def get_pageviews start, endd
@@ -138,9 +114,8 @@ class Analytics
       "filters" => "ga:pagePath=~^/cocktails?/",
       "sort" => "-ga:pageviews"
     }
-    json = report(query, start, endd, 10000)
-    data = JSON.parse(json)
-    parse_pageviews(data)
+    result = report(query, start, endd, 10000)
+    parse_pageviews(result)
   end
   
   def cocktails_pageviews name, start, endd
@@ -180,85 +155,68 @@ class Analytics
     
     
     r = report({"dimensions" => "ga:date", "metrics" => "ga:visits,ga:pageviews"}, endd - DAY * 90, endd, 90)
-    # puts r
-    r = JSON.parse(r)
-    
-    total = r["totalsForAllResults"]
-    
-    stats = r["rows"]
-    stats.each do |e|
-      e[0] = Date.strptime(e[0], "%Y%m%d").to_time.to_i
-      e[1] = e[1].to_i
-      e[2] = e[2].to_i
+    stats = r.rows.map do |e|
+      [
+        Date.strptime(e[0], "%Y%m%d").to_time.to_i, # day
+        e[1].to_i, # uniques
+        e[2].to_i, # pageviews
+      ]
     end
+    total = r.totalsForAllResults
     stats.push({"total" => {"visits" => total["ga:visits"].to_i, "pageviews" => total["ga:pageviews"].to_i}})
-    
     File.write(Config::VISITS_JSON, JSON.stringify(stats))
     
     
-    
     r = report({"dimensions" => "ga:region", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 90, endd, 50)
-    # puts r
-    r = JSON.parse(r)
-    
-    total = r["totalsForAllResults"]
-    
-    stats = r["rows"]
-    stats.each do |e|
-      e[1] = e[1].to_i
+    stats = r.rows.map do |e|
+      [
+        e[0].to_s, # city
+        e[1].to_i, # pageviews
+      ]
     end
+    total = r.totalsForAllResults
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
-    
     File.write(Config::CITIES_JSON, JSON.stringify(stats))
     
     
-    
     r = report({"dimensions" => "ga:browser,ga:browserVersion", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 30, endd, 1000)
-    # puts r
-    r = JSON.parse(r)
-    
-    total = r["totalsForAllResults"]
-    
-    stats = r["rows"]
-    stats.each do |e|
-      e[2] = e[2].to_i
+    stats = r.rows.map do |e|
+      [
+        e[0].to_s, # browser name
+        e[1].to_s, # version
+        e[2].to_i, # uniques
+      ]
     end
+    total = r.totalsForAllResults
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
-    
     File.write(Config::BROWSERS_JSON, JSON.stringify(stats))
     
     
-    
     r = report({"dimensions" => "ga:browser", "metrics" => "ga:visits", "sort" => "-ga:visits"}, endd - DAY * 30, endd, 100)
-    # puts r
-    r = JSON.parse(r)
-    
-    total = r["totalsForAllResults"]
-    
-    stats = r["rows"]
-    stats.each do |e|
-      e[1] = e[1].to_i
+    stats = r.rows.map do |e|
+      [
+        e[0].to_s, # browser name
+        e[1].to_i, # uniques
+      ]
     end
+    total = r.totalsForAllResults
     stats.push({"total" => {"visits" => total["ga:visits"].to_i}})
-    
     File.write(Config::BROWSERSP_JSON, JSON.stringify(stats))
     
     
     r = report({"dimensions" => "ga:eventLabel,ga:browser,ga:browserVersion", "metrics" => "ga:uniqueEvents,ga:eventValue", "filters" => "ga:eventAction==error", "sort" => "-ga:uniqueEvents"}, endd - DAY * 30, endd, 500)
-    # puts r
-    r = JSON.parse(r)
-    
-    total = r["totalsForAllResults"]
-    
-    stats = r["rows"]
-    stats.each do |e|
-      e[3] = e[3].to_i
-      e[4] = e[4].to_i
+    stats = r.rows.map do |e|
+      [
+        e[0].to_s, # exception message
+        e[1].to_s, # browser name
+        e[2].to_s, # browser version
+        e[3].to_i, # unique events
+        e[4].to_i, # event value (errors before)
+      ]
     end
+    total = r.totalsForAllResults
     stats.push({"total" => {"uniqueEvents" => total["ga:uniqueEvents"].to_i}})
-    
     File.write(Config::ERRORS_JSON, JSON.stringify(stats))
-    
   end
   
   def update_ratings
@@ -388,8 +346,8 @@ class Analytics
     stats = Hash::new do |h, k|
       h[k] = Hash::new(0)
     end
-    
-    data["rows"].each do |entry|
+
+    data.rows.each do |entry|
       
       path = entry[0]
       pv = entry[1].to_i
@@ -430,8 +388,8 @@ class Analytics
       stats[name]["uniques"] += upv
     end
     
-    total_pageviews = data["totalsForAllResults"]["ga:pageviews"].to_i
-    total_uniques = data["totalsForAllResults"]["ga:uniquePageviews"].to_i
+    total_pageviews = data.totalsForAllResults["ga:pageviews"].to_i
+    total_uniques = data.totalsForAllResults["ga:uniquePageviews"].to_i
     
     if total_pageviews < total_uniques
       error "всего просмотров меньше чем всего уникальных просмотров"
