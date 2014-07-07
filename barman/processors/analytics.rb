@@ -2,7 +2,7 @@
 # encoding: utf-8
 $:.push('/www/inshaker/barman')
 
-require 'byebug'
+# require 'byebug'
 require 'google/api_client'
 require "optparse"
 require "date"
