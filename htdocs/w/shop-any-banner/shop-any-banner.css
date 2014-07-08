@@ -5,6 +5,10 @@
   position: absolute; top: 0; right: 0; width: 200px; height: 100%;
   background: url(/w/shop-any-banner/cards.png) center center no-repeat;
 }
+.shop-any-banner.common-column-2n .title .long
+{
+  display: none;
+}
 .shop-any-banner.common-column-2n .title .cards { right: -25px; }
 
 .shop-any-banner h1 a { text-shadow: none; }
@@ -12,7 +16,11 @@
 .shop-any-banner .image
 {
   display: block; height: 374px;
-  background: #ccc url(/w/shop-club-banner/promo.jpg) top right;
+  background: #ccc url(/w/shop-club-banner/promo-wide.jpg) top center;
+}
+.shop-any-banner.common-column-2n .image
+{
+  background-image: url(/w/shop-club-banner/promo.jpg);
 }
 
 .shop-any-banner .map { height: 374px; }
