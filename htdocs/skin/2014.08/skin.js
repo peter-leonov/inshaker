@@ -1,6 +1,6 @@
 ;(function(){
 
-var LINK = '/cocktail/paradise_punch/'
+var LINK = '/combinator.html#q=Rich'
 
 var Me =
 {
