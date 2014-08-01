@@ -1,6 +1,7 @@
 {
 "last-30-days": <!--# include virtual="last-30-days.json" -->,
 "last-365-days": <!--# include virtual="last-365-days.json" -->,
+"views-2014-08": <!--# include virtual="views-2014-08.json" -->,
 "views-2014-07": <!--# include virtual="views-2014-07.json" -->,
 "views-2014-06": <!--# include virtual="views-2014-06.json" -->,
 "views-2014-05": <!--# include virtual="views-2014-05.json" -->,
