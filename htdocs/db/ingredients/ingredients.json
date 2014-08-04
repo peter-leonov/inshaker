@@ -276,7 +276,7 @@
 {"group":"Штучки","name":"Ложка для абсента","path":"lozhka-dlya-absenta","unit":"шт","volumes":[]},
 {"group":"Штучки","inShop":"/products/24/madler","name":"Мадлер","path":"madler","unit":"шт","volumes":[[1.0,400.0,["мадлер","мадлера","мадлеров"]]]},
 {"group":"Специи и пряности","name":"Мак","path":"mak","unit":"г","volumes":[]},
-{"brand":"Malibu","group":"Ликеры и настойки","inShop":"/krutoy-domashniy-bar","mark":"Malibu","name":"Малибу","names":["Malibu","Малибу"],"path":"malibu","tags":["Malibu","Малибу"],"unit":"л","volumes":[[0.7,800.0,["бутылка","бутылки","бутылок"]]]},
+{"brand":"Malibu","group":"Ликеры и настойки","inShop":"/products/8/krutoy-domashniy-bar","mark":"Malibu","name":"Малибу","names":["Malibu","Малибу"],"path":"malibu","tags":["Malibu","Малибу"],"unit":"л","volumes":[[0.7,800.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Ягоды","name":"Малина","path":"malina","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Малиновый джем","path":"malinovyiy-dzhem","tags":["Джем"],"unit":"г","volumes":[]},
 {"brand":"De Kuyper Raspberry","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Малиновый ликер","names":["De Kuyper Raspberry","Де кайпер распберри","Ди кайпер распберри","Де кайпер малиновый","Ди кайпер малиновый"],"path":"malinovyiy-liker","tags":["De Kuyper","Ликер","Ягодный ликер"],"unit":"л","volumes":[[0.7,1250.0,["бутылка","бутылки","бутылок"]]]},
