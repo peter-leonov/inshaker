@@ -1,6 +1,6 @@
 ;(function(){
 
-var LINK = 'http://inshaker.pro/'
+var LINK = '/products/51/pisho-bitter'
 
 var Me =
 {
