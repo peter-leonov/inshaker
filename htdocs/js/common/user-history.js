@@ -3,7 +3,7 @@
 
 var STORAGE_KEY = 'inshaker.user_history'
 var START_DELAY = 1000 // ms; never less or equal to zero!
-var DELAY_FACTOR = 1.1 // ms; never less or equal to zero!
+var DELAY_FACTOR = 1.1 // ms; never less or equal to one!
 var MAX_RECORDS = 100 // erase extra ones
 
 var DATEi = 0
