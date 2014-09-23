@@ -215,7 +215,7 @@ html.msie-8 .common-box .common-title
 
 /* lights and shadows */
 #top,
-#branded-image,
+/* #branded-image, */
 .common-box
 { box-shadow: 0 1px 20px rgba(0, 0, 0, 0.8); }
 html.shop-section .we-have-more .in-stock-item .picture
