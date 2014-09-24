@@ -1,6 +1,6 @@
 ;(function(){
 
-var LINK = '//products/17/shokoladnaya-tekila-olmeca'
+var LINK = '/cocktail/paloma_light/'
 
 var Me =
 {
