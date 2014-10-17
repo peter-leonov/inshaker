@@ -185,12 +185,6 @@ var Controller = {
 			false)
 		}
 		
-		var printRecipe = $('.bt-print-how')
-		printRecipe.addEventListener('click', function (e)
-		{
-			window.print()
-		}, false);
-		
 		var tools_links = $$(".b-content .tools dd a");
 		for (var i = 0; i < tools_links.length; i++){
 			var tool = Ingredient.getByName(tools_links[i].innerHTML)
