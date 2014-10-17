@@ -53,7 +53,7 @@ class Deployer < Inshaker::Processor
     end
     
     say "сохраняю в гит…"
-    unless system(%Q{git add . && git commit -am "content update" --author="#{@user_author.quote}" >>inshaker.log 2>&1})
+    unless system(%Q{git add . && git commit -am "content update" --author="#{user_author.quote}" >>inshaker.log 2>&1})
       error "не удалось сохранить обновления в гит"
       return 4
     end

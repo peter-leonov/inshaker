@@ -32,8 +32,10 @@ module Inshaker
     def initialize
       @options = {:optimize_images => true}
       @mv_opt = {:remove_destination => true}
-      
-      @user_author = ENV["INSHAKER_USER_AUTHOR"] or raise "Unknown author (set ENV['INSHAKER_USER_AUTHOR'])"
+    end
+    
+    def user_author
+      @user_author ||= ENV["INSHAKER_USER_AUTHOR"] or raise "Unknown author (set ENV['INSHAKER_USER_AUTHOR'])"
     end
     
     def flush_json_object(object, dest_file, wrap="%s")
