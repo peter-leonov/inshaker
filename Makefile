@@ -26,4 +26,4 @@ GIT_USER="$(git config user.name) <$(git config user.email)>"
 mix:
 	ssh www@barman 'cd /www/inshaker; git pull'
 	ssh www@barman 'cd /www/inshaker; ./barman/processors/cocktails.rb'
-	ssh www@barman "cd /www/inshaker; ./barman/deployer.rb INSHAKER_USER_AUTHOR='$GIT_USER'"
+	ssh www@barman "cd /www/inshaker; INSHAKER_USER_AUTHOR='$GIT_USER' ./barman/deployer.rb"
