@@ -8,7 +8,6 @@ $.onready(function()
 	new RollingImagesLite($('#ingredients'), aniOpts);
 	Controller.init();
 	
-	ShareButtons.bootstrap({text: 'Коктейль «' + Controller.name + '»'})
 	
 	var nodes =
 	{
@@ -20,7 +19,6 @@ $.onready(function()
 	bs.bind(nodes)
 })
 
-<!--# include virtual="/js/cocktails/share-buttons.js" -->
 <!--# include virtual="model.js" -->
 <!--# include virtual="controller.js" -->
 <!--# include virtual="/liby/fixes/onhashchange.js" -->
