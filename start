@@ -1,9 +1,0 @@
-#!/bin/sh
-
-PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
-
-# front
-nginx -q -p "$PROJ_ROOT" -c "nginx.developer.conf"
-
-# worker
-./worker -d

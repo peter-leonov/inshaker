@@ -1,7 +1,0 @@
-#!/bin/sh
-
-PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
-
-$PROJ_ROOT/stop
-sleep 1
-$PROJ_ROOT/start
