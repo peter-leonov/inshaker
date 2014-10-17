@@ -172,6 +172,22 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #cocktail-page button.rounded b { color: #fff; }
 #cocktail-page button.strong b { color: #fff; }
 
+#apps
+{
+  padding: 10px 20px;
+  border-top: 1px solid #eee;
+  opacity: 0.5;
+  text-align: right;
+}
+#apps:hover
+{
+  opacity: 1;
+}
+#apps .appstore img
+{
+  width: 150px;
+}
+
 
 #print-logo-hd { display: none; } 
 
