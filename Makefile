@@ -27,7 +27,7 @@ barman.pull:
 
 GIT_USER="$(git config user.name) <$(git config user.email)>"
 barman.deploy:
-	ssh www@barman "cd /www/inshaker; export INSHAKER_USER_AUTHOR='$GIT_USER'; ./barman/deployer.rb"
+	ssh www@barman "cd /www/inshaker; export INSHAKER_USER_AUTHOR='${GIT_USER}'; ./barman/deployer.rb"
 
 mix: barman.pull
 	ssh www@barman 'cd /www/inshaker; ./barman/processors/cocktails.rb'
