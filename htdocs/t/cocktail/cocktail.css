@@ -177,6 +177,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
   padding: 10px 20px;
   border-top: 1px solid #eee;
   opacity: 0.5;
+  text-align: center;
 }
 #apps:hover
 {
@@ -185,9 +186,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 #apps .appstore,
 #apps .play
 {
-  display: inline-block;
-  width: 50%;
-  text-align: center;
+  margin: 0 25px;
 }
 #apps .appstore img
 {
