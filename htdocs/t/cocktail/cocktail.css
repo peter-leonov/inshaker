@@ -183,9 +183,18 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 {
   opacity: 1;
 }
+#apps .appstore,
+#apps .play
+{
+  margin: 0 25px;
+}
 #apps .appstore img
 {
-  width: 150px;
+  height: 45px;
+}
+#apps .play img
+{
+  height: 46px;
 }
 
 
