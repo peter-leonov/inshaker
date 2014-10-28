@@ -391,8 +391,11 @@ http://www.inshaker.ru/cocktail/indian_sour/
 http://www.inshaker.ru/cocktail/ines/
 http://www.inshaker.ru/cocktail/incognito/
 http://www.inshaker.ru/cocktail/irish_brothers/
+http://www.inshaker.ru/cocktail/irish_ginger_ale/
 http://www.inshaker.ru/cocktail/irish_coffee/
+http://www.inshaker.ru/cocktail/irish_old-fashioned/
 http://www.inshaker.ru/cocktail/irish_pie_toddy/
+http://www.inshaker.ru/cocktail/irish_boozy_punch/
 http://www.inshaker.ru/cocktail/irish_strudel/
 http://www.inshaker.ru/cocktail/irony_of_destiny/
 http://www.inshaker.ru/cocktail/isaev_martini/
@@ -507,6 +510,7 @@ http://www.inshaker.ru/cocktail/kremlin_strudel/
 http://www.inshaker.ru/cocktail/strong_mulled_wine/
 http://www.inshaker.ru/cocktail/krzhemilek_and_vahmurka/
 http://www.inshaker.ru/cocktail/bloody_mashka/
+http://www.inshaker.ru/cocktail/bloody_molly/
 http://www.inshaker.ru/cocktail/bloody_mary/
 http://www.inshaker.ru/cocktail/little_bloody_masha/
 http://www.inshaker.ru/cocktail/bloody_joseph/
@@ -703,6 +707,7 @@ http://www.inshaker.ru/cocktail/norman_hot_pie/
 http://www.inshaker.ru/cocktail/not_in_me/
 http://www.inshaker.ru/cocktail/a_night_in_tunisia/
 http://www.inshaker.ru/cocktail/new_fashion/
+http://www.inshaker.ru/cocktail/new-yorker/
 http://www.inshaker.ru/cocktail/eau_de_vie/
 http://www.inshaker.ru/cocktail/monkey_brains/
 http://www.inshaker.ru/cocktail/clouds/
@@ -1009,6 +1014,7 @@ http://www.inshaker.ru/cocktail/transformer/
 http://www.inshaker.ru/cocktail/tropical_margarita/
 http://www.inshaker.ru/cocktail/tropical_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/tropical_fruit_drink_in_a_jug/
+http://www.inshaker.ru/cocktail/truffle_sauer/
 http://www.inshaker.ru/cocktail/tundra_libre/
 http://www.inshaker.ru/cocktail/tuttosi/
 http://www.inshaker.ru/cocktail/tykvan_do/
