@@ -256,6 +256,8 @@ input { border: none; background: none; }
 
 #print-logo-hd { position: absolute; top: 0; right: 0; width: 100px; }
 
+#apps { display: none; }
+
 } /* @media print */
 
 <!--# include virtual="/t/ingredient-popup.css" -->
