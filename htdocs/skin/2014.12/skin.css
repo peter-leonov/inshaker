@@ -1,0 +1,48 @@
+/* skin.css */
+@media screen {
+
+html.cocktails-section,
+html.combinator-section,
+html.ratings-section,
+html.academy-section,
+html.bars-section,
+html.mybar-section,
+html.cocktail-groups-section
+{
+  background: #0e271c url(/skin/2014.12/bg.jpg) fixed center top repeat-x;
+  background-size: auto 100%;
+}
+
+#spotlighted i
+{
+  display: block;
+  width: 100px; height: 50px; right: -10px; top: 12px;
+  background: url(/skin/2014.12/logo.png) center center no-repeat;
+}
+
+/*
+#combinator-page #spotlighted i
+{
+  width: 145px;
+  background: url(/skin/2014.12/logo.png) center center no-repeat;
+}
+*/
+
+#branded-image-holder
+{
+  height: 956px; position: absolute; top: 154px; bottom: auto;
+}
+#branded-image
+{
+  display: block;
+  width: 315px; height: 450px; right: 0; top: 23px;
+  background: url(/skin/2014.12/image.jpg) center no-repeat;
+}
+
+#cocktail-page #branded-image-holder,
+#cocktails-page #branded-image-holder,
+#academy-page #branded-image-holder,
+#bar-page #branded-image-holder
+{ display: block; }
+
+} /* @media screen */
