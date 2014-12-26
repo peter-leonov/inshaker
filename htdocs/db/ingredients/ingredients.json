@@ -139,7 +139,7 @@
 {"group":"Мёд, варенье, джемы","name":"Джем смородиновый","path":"dzhem-smorodinovyiy","tags":["Джем"],"unit":"г","volumes":[]},
 {"brand":"De Kuyper Jenever","group":"Ликеры и настойки","inShop":"/products/44/redkie-napitki","mark":"De Kuyper","name":"Дженевер","names":["Женевер","Jenever"],"path":"dzhenever","tags":["De Kuyper"],"unit":"л","volumes":[[1.0,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","inShop":"/products/25/dzhigger","name":"Джиггер","path":"dzhigger","unit":"шт","volumes":[[1.0,250.0,["джиггер","джиггера","джиггеров"]]]},
-{"brand":"Beefeater","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Beefeater","name":"Джин","names":["Beefeater","Бифитер"],"path":"dzhin","tags":["Beefeater","Джин"],"unit":"л","volumes":[[0.7,1450.0,["бутылка","бутылки","бутылок"]]]},
+{"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Джин","path":"dzhin","tags":["Джин"],"unit":"л","volumes":[[0.7,1300.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Дистиллятор","path":"distillyator","unit":"шт","volumes":[]},
 {"group":"Штучки","inShop":"/shop/","name":"Дозатор для сиропов","path":"dozator-dlya-siropov","unit":"шт","volumes":[[1.0,200.0,["дозатор","дозатора","дозатором"]]]},
 {"group":"Ликеры и настойки","inShop":"/products/8/krutoy-domashniy-bar","name":"Драмбуи","names":["Drambuie"],"path":"drambui","tags":["Ликер","Травяной ликер"],"unit":"л","volumes":[[0.7,1750.0,["бутылка","бутылки","бутылок"]]]},
