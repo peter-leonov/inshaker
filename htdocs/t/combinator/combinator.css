@@ -15,7 +15,7 @@ html { overflow-y: scroll; min-height: 100%; position: relative; }
 #the-main-menu.fixed { position: fixed; }
 
 #search-box { position: relative; z-index: 10; top: -3px; width: 750px; }
-#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 590px; }
+#search-box .query { color: inherit; /*full crossbrowser width: 765px;*/ width: 570px; }
 #search-box .query,
 #search-box .button { font-size: 24px; vertical-align: middle; }
 #search-box .button.plus { width: 40px; }
