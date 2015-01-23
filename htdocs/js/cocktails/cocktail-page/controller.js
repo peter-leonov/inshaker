@@ -152,11 +152,11 @@ var Controller = {
 		},
 		false)
 		
-		this.nodes.whereToBuy.addEventListener('click', function (e)
-		{
-			window.location.href = 'http://shop.inshaker.ru/'
-		},
-		false)
+    // this.nodes.whereToBuy.addEventListener('click', function (e)
+    // {
+    //  window.location.href = 'http://shop.inshaker.ru/'
+    // },
+    // false)
 		
 		this.nodes.showRecipe.addEventListener('click', function (e)
 		{

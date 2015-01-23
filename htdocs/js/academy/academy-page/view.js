@@ -35,6 +35,7 @@ Me.prototype =
 			if (example)
 			{
 			  var link = Nct('a', 'example', example.title)
+			  link.target = '_blank'
 			  link.href = example.link
 				head.appendChild(link)
 			}
