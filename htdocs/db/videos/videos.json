@@ -1,7 +1,7 @@
 [
 {
 	"name": "Как давить мадлером?",
-	"example": {title: "купить мадлер", link: "/products/24/madler"},
+	"example": {title: "купить мадлер", link: "http://shop.inshaker.ru/products/madler"},
 	"movie": "http://player.vimeo.com/video/44307356",
 	"cocktails":
 	[
@@ -14,7 +14,7 @@
 },
 {
 	"name": "Как готовить в шейкере?",
-	"example": {title: "купить шейкер", link: "/products/12/sheyker"},
+	"example": {title: "купить шейкер", link: "http://shop.inshaker.ru/products/shaker"},
 	"movie": "http://player.vimeo.com/video/44312256",
 	"cocktails":
 	[
@@ -27,7 +27,7 @@
 },
 {
 	"name": "Как готовить в бостонском шейкере?",
-	"example": {title: "купить бостонский шейкер", link: "/products/13/sheyker-bostonskiy"},
+	"example": {title: "купить бостонский шейкер", link: "http://shop.inshaker.ru/products/boston-shaker"},
 	"movie": "http://player.vimeo.com/video/44389285",
 	"cocktails":
 	[
@@ -40,7 +40,7 @@
 },
 {
 	"name": "Как готовить в блендере?",
-	"example": {title: "купить блендер", link: "/shop/"},
+	"example": {title: "купить блендер", link: "http://shop.inshaker.ru/"},
 	"movie": "http://player.vimeo.com/video/44442011",
 	"cocktails":
 	[
@@ -53,7 +53,7 @@
 },
 {
 	"name": "Как готовить в стакане для смешивания?",
-	"example": {title: "купить стакан", link: "/products/31/stakan-dlya-smeshivaniya"},
+	"example": {title: "купить стакан", link: "http://shop.inshaker.ru/products/mixing-glass"},
 	"movie": "http://player.vimeo.com/video/44519862",
 	"cocktails":
 	[
@@ -66,7 +66,7 @@
 },
 {
 	"name": "Как укладывать слои?",
-	"example": {title: "купить коктейльную ложку", link: "/products/26/kokteylnaya-lozhka"},
+	"example": {title: "купить коктейльную ложку", link: "http://shop.inshaker.ru/products/cocktail-spoon"},
 	"movie": "http://player.vimeo.com/video/44439652",
 	"cocktails":
 	[
@@ -79,7 +79,7 @@
 },
 {
 	"name": "Как делать дабл стрейн?",
-	"example": {title: "купить стрейнер", link: "/products/22/streyner"},
+	"example": {title: "купить стрейнер", link: "http://shop.inshaker.ru/products/strainer"},
 	"movie": "http://player.vimeo.com/video/44662439",
 	"cocktails":
 	[
