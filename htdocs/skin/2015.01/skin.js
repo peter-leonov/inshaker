@@ -1,6 +1,6 @@
 ;(function(){
 
-var LINK = '/shop/'
+var LINK = 'http://shop.inshaker.ru/'
 
 var Me =
 {
