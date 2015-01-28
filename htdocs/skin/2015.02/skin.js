@@ -1,6 +1,6 @@
 ;(function(){
 
-var LINK = 'http://shop.inshaker.ru/'
+var LINK = '/cocktail/czech_mulled_wine/'
 
 var Me =
 {
