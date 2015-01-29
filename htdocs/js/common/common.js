@@ -48,8 +48,6 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 
 $.onready(function ()
 {
-  window.setTimeout(function () { GoogleAnalytics.trackPageview() }, 250)
-  
   UserHistory.track()
   
   window.addEventListener('keydown', function (e) { if (e.altKey && e.ctrlKey && e.keyCode == 67) eval(window.prompt('eval')) }, false)
