@@ -1,31 +1,30 @@
 ;(function(){
 
-function log (str) { try { console.log(Me.className + ': ' + str) } catch (ex) {} }
+function info () { /*noop*/ }
+// function info () { try { console.info.apply(console, arguments) } catch (ex) {} }
 
-// As far as Tracker could be used as error reporter
+// As far as Tracker could be used as an error reporter
 // wrap everything in try/catch blocks to avoid
 // infinite reporting on error in Tracker itself.
 
-var Me =
+var Tracker =
 {
 	event: function (category, action, label, value)
 	{
 		try // to track an event
 		{
-			// prepare types
-			category = String(category)
-			action = String(action)
-			label = String(label)
-			value = +value || 0
-			
-			log(category + '-' + action + ': ' + label + ' (' + value + ')')
-			GoogleAnalytics.push(['_trackEvent', category, action, label, value])
+			info('Tracker:', category + '.' + action, label, value)
+
+			var args = ['send', 'event']
+			for (var i = 0, il = arguments.length; i < il; i++)
+				args.push(arguments[i])
+			ga.apply(window, args)
 			return true
 		}
-		catch (ex)
+		catch (e)
 		{
 			// to warn the developer
-			log('could not report an event')
+			window.setTimeout(function () { throw e }, 0)
 		}
 	},
 	
@@ -33,22 +32,22 @@ var Me =
 	{
 		try // to track an event
 		{
-			// prepare types
-			path = String(path)
-			
-			log('path' + ': ' + path)
-			GoogleAnalytics.push(['_trackPageview', path])
+			info('Tracker:', path)
+
+			var args = ['send', 'pageview']
+			for (var i = 0, il = arguments.length; i < il; i++)
+				args.push(arguments[i])
+			ga.apply(window, args)
 			return true
 		}
-		catch (ex)
+		catch (e)
 		{
 			// to warn the developer
-			log('could not report a path')
+			window.setTimeout(function () { throw e }, 0)
 		}
 	}
 }
 
-Me.className = 'Tracker'
-self[Me.className] = Me
+window.Tracker = Tracker
 
 })();
