@@ -2,6 +2,9 @@
 # encoding: utf-8
 $:.push('/www/inshaker/barman')
 
+require 'nokogiri'
+require 'ostruct'
+
 require "inshaker"
 require "entities/cocktail"
 require "entities/bar"
@@ -301,25 +304,39 @@ class BarsProcessor < Inshaker::Processor
   end
   
   def prepare_map_points
-    rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<description><!\[CDATA\[(.*?)\]\]><\/description>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
+    # rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<description><!\[CDATA\[(.*?)\]\]><\/description>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
     
     body = `curl --silent 'https://www.google.com/maps/d/kml?mid=zEhyVCFmCK8E.k-VeIGRUgcxI&ie=UTF8&hl=ru&msa=0&output=kml' | funzip`
-    bars = body.scan(rx)
+    bars = parse_places(body)
     raise "не удалось скачать карту баров" if bars.empty?
-    bars.each do |arr|
-      @bar_points[arr[0]] = [arr[3].to_f, arr[2].to_f]
+    bars.each do |place|
+      @bar_points[place.name] = place.point
     end
     
     body = `curl --silent 'https://www.google.com/maps/d/kml?mid=zEhyVCFmCK8E.k_kF12B8N3cU&ie=UTF8&hl=ru&msa=0&output=kml' | funzip`
-    cities = body.scan(rx)
+    cities = parse_places(body)
     throw "не удалось скачать карту городов" if cities.empty?
-    cities.each do |arr|
-      zoom = /zoom: *(\d+)/.match(arr[1])
-      zoom = zoom ? zoom[1].to_i : 11
-      @city_points[arr[0]] = {"point" => [arr[3].to_f, arr[2].to_f], "zoom" => zoom}
+    cities.each do |place|
+      @city_points[place.name] = {
+        "point" => place.point,
+        "zoom" => place.zoom || 11
+      }
     end
   end
-  
+
+  def parse_places kml
+    Nokogiri::XML(kml).css('Placemark').map do |placemark|
+      name        = placemark.css('> name').first.text
+      description = placemark.css('description').text
+      coordinates = placemark.css('Point coordinates').text.split(',')[0..1].map &:to_f
+
+      zoom = /zoom: *(\d+)/.match(description)
+      zoom = zoom ? zoom[1].to_i : nil
+
+      OpenStruct.new(name: name, zoom: zoom, point: [coordinates[1], coordinates[0]])
+    end
+  end
+
   def cleanup_deleted
     say "ищу удаленные"
     indent do
