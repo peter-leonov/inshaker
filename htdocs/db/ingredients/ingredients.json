@@ -4,7 +4,7 @@
 {"brand":"De Kuyper Apricot Brandy","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Абрикосовый ликер","names":["Абрикосовый бренди","Apricot brandy","De Kuyper Apricot Brandy","Де кайпер априкот бренди","Ди кайпер априкот бренди"],"path":"abrikosovyiy-liker","tags":["De Kuyper","Ликер","Фруктовый ликер"],"unit":"л","volumes":[[0.7,1250.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Monin Apricot","group":"Сиропы","mark":"Monin","name":"Абрикосовый сироп","names":["Monin Apricot","Монин Эприкот"],"path":"abrikosovyiy-sirop","tags":["Monin","Сироп","Фруктовый сироп"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Соки и морсы","name":"Абрикосовый сок","path":"abrikosovyiy-sok","tags":["Сок","Фруктовый сок"],"unit":"л","volumes":[]},
-{"brand":"Xenta","group":"Крепкий алкоголь","inShop":"/products/49/karta-kluba-druzey-i-barmenov-inshaker","mark":"Xenta","name":"Абсент","names":["Xenta"],"path":"absent","tags":["Xenta","Абсент"],"unit":"л","volumes":[[0.5,1500.0,["бутылка","бутылки","бутылок"]]]},
+{"brand":"Boulevard","group":"Крепкий алкоголь","inShop":"/products/49/karta-kluba-druzey-i-barmenov-inshaker","mark":"Xenta","name":"Абсент","names":["Boulevard"],"path":"absent","tags":["Xenta","Абсент"],"unit":"л","volumes":[[0.5,1500.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Фрукты","name":"Авокадо","path":"avokado","tags":["Фрукты"],"unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Аджика","path":"adzhika","tags":["Соус"],"unit":"л","volumes":[]},
 {"group":"Фрукты","name":"Айва","path":"ayva","tags":["Фрукты"],"unit":"г","volumes":[]},
