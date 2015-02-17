@@ -183,7 +183,7 @@
 {"group":"Чай и кофе","name":"Каркаде","names":["Гибискус сушеный","Суданская роза"],"path":"karkade","tags":["Сироп"],"unit":"г","volumes":[]},
 {"group":"Штучки","name":"Кастрюли для водяной бани","path":"kastryuli-dlya-vodyanoy-bani","unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Кастрюля","path":"kastryulya","unit":"шт","volumes":[]},
-{"brand":"Velho Barreiro","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Velho Barreiro","name":"Кашаса","names":["Кашаса","Velho Barreiro"],"path":"kashasa","tags":["Velho Barreiro"],"unit":"л","volumes":[[0.7,1200.0,["бутылка","бутылки","бутылок"]]]},
+{"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Кашаса","names":["Кашаса","Cachaca"],"path":"kashasa","unit":"л","volumes":[[1.0,1600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Вода и напитки","name":"Квас","path":"kvas","unit":"л","volumes":[[0.5,40.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Орехи и сухофрукты","name":"Кедровые орехи","path":"kedrovyie-orehi","tags":["Орехи"],"unit":"г","volumes":[]},
 {"group":"Соусы и масло","name":"Кетчуп барбекю","path":"ketchup-barbekyu","tags":["Соус"],"unit":"л","volumes":[]},
