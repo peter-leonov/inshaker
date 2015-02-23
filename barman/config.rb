@@ -25,7 +25,6 @@ module Inshaker
       "events" => {script: "./processors/events.rb", name: "События"},
       "barmen" => {script: "./processors/barmen.rb", name: "Барменов"},
       "goods" => {script: "./processors/goods.rb", name: "Покупки"},
-      "magazine" => {script: "./processors/magazine.rb", name: "Журнал"},
       "blog" => {script: "./processors/blog.rb", name: "Блог"},
       "blog-banners" => {script: "./processors/blog-banners.rb", name: "Баннеры в Блоге"},
       "mybar" => {script: "./processors/mybar.rb", name: "Мой бар"},

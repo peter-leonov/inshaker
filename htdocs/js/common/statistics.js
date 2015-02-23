@@ -4,11 +4,6 @@ var myName = 'Statistics'
 
 var Me =
 {
-	magazinePromoViewed: function (name)
-	{
-		this.event('magazine-promo-viewed', name)
-	},
-	
 	cocktailsFilterSelected: function (name)
 	{
 		this.event('cocktails-filter-selected', name)
