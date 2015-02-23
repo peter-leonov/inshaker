@@ -44,11 +44,6 @@ var Me =
 		this.event('combinator-query', query)
 	},
 	
-	blogTagSelected: function (tag)
-	{
-		this.event('blog-tag-selected', tag)
-	},
-	
 	partyPrinted: function (party)
 	{
 		this.path('/party/' + party.path + '/print')
