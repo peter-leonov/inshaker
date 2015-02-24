@@ -46,6 +46,8 @@ if (!('draggable' in document.body || 'ondrop' in document.body))
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
+<!--# include virtual="/w/subscribe/subscribe.js" -->
+
 $.onready(function ()
 {
   UserHistory.track()
