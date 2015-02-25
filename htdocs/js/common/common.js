@@ -31,9 +31,6 @@ if (!document.documentElement.classList)
 if (!document.querySelectorAll)
 	$.load('/liby/fixes/dom-level2-selectors.js')
 
-if (!('draggable' in document.body || 'ondrop' in document.body))
-	$.load('/liby/fixes/dnd.js')
-
 <!--# include virtual="/js/common/db.js" -->
 <!--# include virtual="/js/common/statistics.js" -->
 <!--# include virtual="/js/common/lazy-list.js" -->
