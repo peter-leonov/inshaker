@@ -3,7 +3,6 @@
 *.log
 *.tmp
 *.pid
-*.htpasswd
 .idea/*
 Thumbs.db
 .lock-barman
