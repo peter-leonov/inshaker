@@ -50,7 +50,7 @@ function subscribe (email)
   })
 
   // add directly to the MailChimp list
-  new Image().src = 'http://inshaker.us10.list-manage.com/subscribe/post?u=3750249e6abbaabf6c38e93bf&id=eded7a8b18&EMAIL=' + email
+  new Image().src = 'http://inshaker.us10.list-manage.com/subscribe/post?u=3750249e6abbaabf6c38e93bf&id=eded7a8b18&EMAIL=' + email + '&ac=' + (+new Date())
 
   hide()
 }
