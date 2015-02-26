@@ -24,6 +24,16 @@ $('.popup-controls', popup).addEventListener('click', hide, false)
 $('.sale .login',    popup).addEventListener('click', hide, false)
 $('.sale form',      popup).addEventListener('submit', function (e) { e.preventDefault(); subscribe(this.email.value) }, false)
 
+function show ()
+{
+  popup.show()
+
+  var nodes = $$('iframe', popup)
+  for (var i = 0, il = nodes.length; i < il; i++)
+    nodes[i].src = nodes[i].getAttribute('lazy-src')
+}
+
+show()
 
 // model
 
@@ -62,7 +72,7 @@ $.load('http://geoiplookup.wikimedia.org/').onload = function ()
   if (!(REGION.lat(Geo.lat) && REGION.lng(Geo.lon)))
     return // located outside of Moscow region
 
-  popup.show()
+  show()
 
   // confirm user has viewed the popup
   window.localStorage.setItem('subscribe-widget-state', 'shown')
