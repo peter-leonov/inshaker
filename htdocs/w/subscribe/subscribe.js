@@ -27,17 +27,13 @@ $('.sale form',      popup).addEventListener('submit', function (e) { e.preventD
 
 // model
 
-var state = window.localStorage.getItem('subscribe-widget-state')
-if (state == 'shown')
+if (window.localStorage.getItem('subscribe-widget-state') == 'shown')
   return
-window.localStorage.setItem('subscribe-widget-state', 'shown')
 
 function subscribe (email)
 {
   if (!/@/.test(email))
     return // better filter it right here
-
-  Tracker.event('subscribe-popup', 'subscribe', Geo.city)
 
   EventLogger.log('subscribe', email, Geo.city, Geo.country)
 
@@ -52,7 +48,10 @@ function subscribe (email)
   // add directly to the MailChimp list
   new Image().src = 'http://inshaker.us10.list-manage.com/subscribe/post?u=3750249e6abbaabf6c38e93bf&id=eded7a8b18&EMAIL=' + email + '&ac=' + (+new Date())
 
-  hide()
+  window.setTimeout(hide, 250)
+
+  // looks like all went well, then track
+  Tracker.event('subscribe-popup', 'subscribe', Geo.city)
 }
 
 $.load('http://geoiplookup.wikimedia.org/').onload = function ()
@@ -63,9 +62,13 @@ $.load('http://geoiplookup.wikimedia.org/').onload = function ()
   if (!(REGION.lat(Geo.lat) && REGION.lng(Geo.lon)))
     return // located outside of Moscow region
 
-  Tracker.event('subscribe-popup', 'show', Geo.city)
-
   popup.show()
+
+  // confirm user has viewed the popup
+  window.localStorage.setItem('subscribe-widget-state', 'shown')
+
+  // looks like all went well, then track
+  Tracker.event('subscribe-popup', 'show', Geo.city)
 }
 
 });
