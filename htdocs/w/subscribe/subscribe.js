@@ -34,7 +34,6 @@ window.localStorage.setItem('subscribe-widget-state', 'shown')
 
 function subscribe (email)
 {
-  console.log(email)
   if (!/@/.test(email))
     return // better filter it right here
 
