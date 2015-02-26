@@ -22,6 +22,7 @@ function hide () { popup.hide() }
 $('.popup-back',     popup).addEventListener('click', hide, false)
 $('.popup-controls', popup).addEventListener('click', hide, false)
 $('.sale .login',    popup).addEventListener('click', hide, false)
+$('.sale form',      popup).addEventListener('submit', function (e) { e.preventDefault(); subscribe(this.email.value) }, false)
 
 
 // model
