@@ -42,6 +42,17 @@ function subscribe (email)
 
   EventLogger.log('subscribe', email, Geo.city, Geo.country)
 
+  // backup copy to gmail
+  Mail.send({
+    subject: 'Подписка на акции',
+    to: 'subscribe@mg.inshaker.ru',
+    from: email,
+    html: 'City: ' + Geo.city + '<br/>Country: ' + Geo.country
+  })
+
+  // add directly to the MailChimp list
+  new Image().src = 'http://inshaker.us10.list-manage.com/subscribe/post?u=3750249e6abbaabf6c38e93bf&id=eded7a8b18&EMAIL=' + email
+
   hide()
 }
 
