@@ -1,3 +1,5 @@
+<!--# include virtual="/js/common/event-logger.js" -->
+
 $.onready(function(){
 
 function range (l, h) { return function (v) { return l <= v && v <= h } }
@@ -24,10 +26,23 @@ $('.sale .login',    popup).addEventListener('click', hide, false)
 
 // model
 
-var state = false//window.localStorage.getItem('subscribe-widget-state')
+var state = window.localStorage.getItem('subscribe-widget-state')
 if (state == 'shown')
   return
 window.localStorage.setItem('subscribe-widget-state', 'shown')
+
+function subscribe (email)
+{
+  console.log(email)
+  if (!/@/.test(email))
+    return // better filter it right here
+
+  Tracker.event('subscribe-popup', 'subscribe', Geo.city)
+
+  EventLogger.log('subscribe', email, Geo.city, Geo.country)
+
+  hide()
+}
 
 $.load('http://geoiplookup.wikimedia.org/').onload = function ()
 {
