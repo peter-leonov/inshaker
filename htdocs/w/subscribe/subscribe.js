@@ -28,6 +28,7 @@ function show ()
 {
   popup.show()
 
+  // lazy load heavy widgets
   var nodes = $$('iframe', popup)
   for (var i = 0, il = nodes.length; i < il; i++)
     nodes[i].src = nodes[i].getAttribute('lazy-src')
