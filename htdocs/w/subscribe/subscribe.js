@@ -34,8 +34,6 @@ function show ()
     nodes[i].src = nodes[i].getAttribute('lazy-src')
 }
 
-show()
-
 // model
 
 if (window.localStorage.getItem('subscribe-widget-state') == 'shown')
