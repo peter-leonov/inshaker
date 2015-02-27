@@ -125,8 +125,9 @@
     font-size: 20px;
 }
 
-#subscribe-popup .sale .text a {
+#subscribe-popup .sale .text b {
     font-weight: 600;
+    color: #ec118f;
 }
 
 #subscribe-popup .sale ul.container--footer {
