@@ -245,7 +245,6 @@ $.onready(function(){
 })
 
 <!--# include virtual="/liby/modules/form-helper.js" -->
-<!--# include virtual="/liby/modules/url-encode.js" -->
 
 <!--# include virtual="/liby/modules/location-hash.js" -->
 
@@ -253,5 +252,3 @@ $.onready(function(){
 
 <!--# include virtual="/liby/modules/google-api-loader.js" -->
 <!--# include virtual="/js/common/google.js" -->
-
-<!--# include virtual="/js/common/mail.js" -->

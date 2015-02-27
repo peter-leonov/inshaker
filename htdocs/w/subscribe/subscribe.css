@@ -1,0 +1,147 @@
+#subscribe-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#subscribe-popup .popup-front {
+    width: 910px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    margin-left: -460px;
+    margin-top: -210px;
+}
+
+#subscribe-popup .popup-controls {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: -30px;
+    top: -30px;
+}
+
+#subscribe-popup .popup-window {
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+#subscribe-popup a.cross {
+    position: relative;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+}
+
+#subscribe-popup .popup-front:after {
+    position: absolute;
+    content: '';
+    width: 77px;
+    height: 108px;
+    right: -77px;
+    top: 80px;
+    background: url(/w/subscribe/list.png);
+    pointer-events: none;
+}
+
+#subscribe-popup .sale a.login {
+    position: absolute;
+    bottom: -40px;
+    color: #fff;
+    font-size: 16px;
+    border-bottom: 1px dashed;
+    padding-bottom: 2px;
+    left: 300px;
+}
+
+#subscribe-popup .sale a.login:hover {
+    text-decoration: none;
+    border-color: transparent;
+}
+
+#subscribe-popup .sale {
+    height: 100%;
+    background: url(/w/subscribe/becherovka.jpg) no-repeat 0;
+    border-radius: 10px;
+}
+
+#subscribe-popup .sale .container {
+    width: 543px;
+    padding: 40px 30px 0 40px;
+    float: right;
+    height: 250px;
+}
+
+#subscribe-popup .sale .container h1 {
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ff0893;
+}
+
+#subscribe-popup .sale .container span {
+    font-size: 28px;
+}
+
+#subscribe-popup .sale form input {
+    height: 40px;
+    width: 405px;
+    border: 2px solid;
+    border-color: #ff0893;
+    border-radius: 5px;
+    font-size: 16px;
+    text-indent: 20px;
+    padding: 0;
+    vertical-align: top;
+}
+
+#subscribe-popup .sale form {
+    margin: 40px 0;
+    width: 100%;
+}
+
+#subscribe-popup .sale .container button {
+    border: none;
+    background: #ff0893;
+    color: #fff;
+    height: 44px;
+    border-radius: 5px;
+    width: 110px;
+    font-size: 15px;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+#subscribe-popup .sale .text {
+    font-size: 20px;
+}
+
+#subscribe-popup .sale .text a {
+    font-weight: 600;
+}
+
+#subscribe-popup .sale ul.container--footer {
+    margin-top: 44px;
+    float: left;
+    width: 100%;
+    border-top: 1px solid #dddddd;
+    font-size: 12px;
+    width: 592px;
+    padding: 0 10px;  float: right;
+}
+
+#subscribe-popup .sale ul.container--footer li {
+    float: left;
+    width: 50%;
+    padding: 30px 0 0 0;
+    text-align: center;
+}
