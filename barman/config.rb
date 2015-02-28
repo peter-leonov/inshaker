@@ -27,6 +27,7 @@ module Inshaker
       "goods" => {script: "./processors/goods.rb", name: "Покупки"},
       "mybar" => {script: "./processors/mybar.rb", name: "Мой бар"},
       "groups" => {script: "./processors/groups.rb", name: "Группы коктейлей"},
+      "branding" => {script: "./processors/branding.rb", name: "Брендинг"},
       
       "analytics" => {script: "./processors/analytics.rb", name: "Аналитика"},
       
