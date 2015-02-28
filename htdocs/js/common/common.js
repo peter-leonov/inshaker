@@ -47,6 +47,8 @@ window.localStorage.removeItem('inshaker.user_history')
 
 <!--# include virtual="/w/subscribe/subscribe.js" -->
 
+<!--# include virtual="/skin/skin.js" -->
+
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
 require.names =
@@ -55,5 +57,3 @@ require.names =
 }
 
 window.navigator.publicIP = '<!--# echo var="remote_addr" -->'
-
-<!--# config timefmt="%Y.%m" --><!--# include virtual="/skin/$date_local/skin.js" -->

@@ -1,6 +1,7 @@
+<!--# config timefmt="%Y.%m" -->
 !function(){
 
-var LINK = 'http://shop.inshaker.ru/products/antica?variant=1187319656'
+var LINK = '<!--# include virtual="/skin/$date_local/link.txt" -->'
 var SELECTOR = '#spotlighted, #branded-image'
 
 var nodes = $$(SELECTOR)

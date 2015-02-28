@@ -272,6 +272,8 @@ html.msie-8 #ancient-browser-warning
 
 <!--# include virtual="/w/subscribe/subscribe.css" -->
 
+<!--# include virtual="/skin/skin.css" -->
+
 } /* @media screen */
 
 
@@ -288,4 +290,3 @@ input { border: none; background: none; }
 
 } /* @media print */
 
-<!--# config timefmt="%Y.%m" --><!--# include virtual="/skin/$date_local/skin.css" -->
