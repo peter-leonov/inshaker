@@ -56,8 +56,6 @@ PartyPageView.prototype =
     
     this.renderRecipeIngredientPreviews()
     
-    this.bindDeliveryWidget()
-    
     return this
   },
   
@@ -266,14 +264,6 @@ PartyPageView.prototype =
     plan += 'Итого: <b>' + data.total + '</b> <small>руб.</small>'
     
     return plan
-  },
-  bindDeliveryWidget: function ()
-  {
-    var view = this
-    document.addEventListener('inshaker.delivery-widget.submit', function (e)
-    {
-      e.deliveryWidgetData.push(view.renderPlainTextPlan())
-    }, false)
   },
   
   peopleCountChanged: function (e)

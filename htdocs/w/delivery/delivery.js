@@ -71,11 +71,6 @@ DeliveryWidget.prototype =
   {
     var messageBody = [] // accumulate message parts
     
-    var submit = document.createEvent('Event')
-    submit.initEvent('inshaker.delivery-widget.submit', true, true)
-    submit.deliveryWidgetData = messageBody
-    this.nodes.widget.dispatchEvent(submit)
-    
     messageBody.push
     (
       this.commodityName + '<br>' +
