@@ -44,11 +44,6 @@ if (!document.querySelectorAll)
 
 <!--# include virtual="/w/subscribe/subscribe.js" -->
 
-$.onready(function ()
-{
-  window.addEventListener('keydown', function (e) { if (e.altKey && e.ctrlKey && e.keyCode == 67) eval(window.prompt('eval')) }, false)
-})
-
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
 
 require.names =
