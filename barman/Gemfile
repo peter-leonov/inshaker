@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'google-api-client'
-# gem 'byebug'
+gem 'unicode_utils'
+gem 'mini_magick'

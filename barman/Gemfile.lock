@@ -23,6 +23,7 @@ GEM
     jwt (1.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    mini_magick (4.1.0)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     retriable (1.4.1)
@@ -31,6 +32,7 @@ GEM
       faraday (>= 0.9.0.rc5)
       jwt (>= 0.1.5)
       multi_json (>= 1.0.0)
+    unicode_utils (1.4.0)
     uuidtools (2.1.4)
 
 PLATFORMS
@@ -38,3 +40,5 @@ PLATFORMS
 
 DEPENDENCIES
   google-api-client
+  mini_magick
+  unicode_utils
