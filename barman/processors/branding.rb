@@ -85,6 +85,7 @@ class BrandingProcessor < Inshaker::Processor
       end
 
       image.write "#{ht_dir.path}/image.jpg"
+      File.write "#{ht_dir.path}/image-color.txt", image.average_color
     end
 
 
@@ -110,6 +111,7 @@ class BrandingProcessor < Inshaker::Processor
       end
 
       image.write "#{ht_dir.path}/bg.jpg"
+      File.write "#{ht_dir.path}/bg-color.txt", image.average_color
     end
 
 
