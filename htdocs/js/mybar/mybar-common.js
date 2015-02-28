@@ -7,7 +7,17 @@
 
 var clientStorage = ClientStorage.guess()
 if (!clientStorage)
-	throw new Error('no client storge was found')
+{
+  window.setTimeout(function () { throw new Error('no client storge was found') }, 0)
+  clientStorage =
+  {
+    hash: {},
+    ready: function (f) { window.setTimeout(f, 0) },
+    set: function (k, v) { return this.hash[k] = v },
+    get: function (k) { return this.hash[k] },
+    remove: function (k) { delete this.hash[k] }
+  }
+}
 
 <!--# include virtual="bar-storage.js" -->
 
