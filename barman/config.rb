@@ -40,7 +40,6 @@ module Inshaker
       "mike" => "занял Мишенька",
       "max" => "занял Максимка",
       "viola" => "заняла Виолочка",
-      "anya" => "заняла Анечка",
       "peter" => "занял Петечка",
       "barman" => "занял Бармен",
       "worker" => "занял Рабочий"
@@ -52,7 +51,6 @@ module Inshaker
       "mike" => "Мишенька неудачно смешал",
       "max" => "Максимка неудачно смешал",
       "viola" => "Виолочка неудачно смешала",
-      "anya" => "Анечка неудачно смешала",
       "peter" => "Петечка неудачно смешал",
       "barman" => "Бармен неудачно смешал",
       "worker" => "Рабочий неудачно смешал"
@@ -64,7 +62,6 @@ module Inshaker
       "mike" => "Mikhail Vikhman <mike@inshaker.ru>",
       "max" => "Maxim Dergilev <max@inshaker.ru>",
       "viola" => "Viola Kostina <viola@inshaker.ru>",
-      "anya" => "Anna Baturina <anya@inshaker.ru>",
       "peter" => "Peter Leonov <pl@inshaker.ru>",
       "barman" => "Barman <barman@inshaker.ru>",
       "worker" => "Worker <pl+worker@inshaker.ru>"
