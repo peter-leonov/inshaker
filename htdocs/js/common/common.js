@@ -40,6 +40,9 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/branding-scroller.js" -->
 <!--# include virtual="/js/common/mail.js" -->
 
+// recycle local storage space
+window.localStorage.removeItem('inshaker.user_history')
+
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
 <!--# include virtual="/w/subscribe/subscribe.js" -->
