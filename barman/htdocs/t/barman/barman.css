@@ -19,7 +19,7 @@ button.active .a { display: inline; }
 
 .page { position: relative; width: 500px; height: 275px; border: 1px solid #e0e0e0; margin: 0 auto; padding: 20px; border-radius: 10px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .page .name { font-size: 18px; font-weight: normal; margin: 0 0 20px 0; }
-.page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); }
+.page .logo { position: absolute; left: 20px; top: 62px; width: 128px; height: 128px; background-image: url(barman.png); cursor: pointer; }
 
 
 .page.shaker form { position: absolute; left: 175px; top: 55px; width: 210px; font-size: 16px; }
