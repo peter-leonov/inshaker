@@ -38,7 +38,6 @@ if (!document.querySelectorAll)
 <!--# include virtual="/js/common/rounded-corners.js" -->
 <!--# include virtual="/js/common/popup.js" -->
 <!--# include virtual="/js/common/branding-scroller.js" -->
-<!--# include virtual="/js/common/user-history.js" -->
 <!--# include virtual="/js/common/mail.js" -->
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
@@ -47,8 +46,6 @@ if (!document.querySelectorAll)
 
 $.onready(function ()
 {
-  UserHistory.track()
-  
   window.addEventListener('keydown', function (e) { if (e.altKey && e.ctrlKey && e.keyCode == 67) eval(window.prompt('eval')) }, false)
 })
 
