@@ -98,7 +98,7 @@ class Launcher
     ENV["INSHAKER_SAYING_TYPE"] = "HTML"
     
     puts "Запускаю «#{job[:name]}»…"
-    pid = fork { exec job[:script] }
+    pid = fork { exec('bundle', 'exec', job[:script]) }
     write_pid pid unless job[:nolock]
     Process.wait pid
     
