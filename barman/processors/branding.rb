@@ -48,23 +48,32 @@ class BrandingProcessor < Inshaker::Processor
 
     indent do
       say "парсю ссылку месяца из link.txt"
+
       unless File.exists?("#{src_dir.path}/link.txt")
-        error "нет файла со ссылкой месяца"
+        error "нет файла!"
         return
       end
       link = File.read("#{src_dir.path}/link.txt")
+
       link = link.gsub(/\s/, '')
       unless %r{^https?://}.match(link)
         error "содержимое не похоже на ссылку"
         return
       end
+
       link = link.sub(%r{https?://www\.inshaker\.ru}, '')
+
       File.write("#{ht_dir.path}/link.txt", link)
     end
 
 
     indent do
       say "проверяю картинку баннера image.jpg"
+
+      unless File.exists?("#{src_dir.path}/image.jpg")
+        error "нет файла!"
+        return
+      end
       image = MiniMagick::Image.open("#{src_dir.path}/image.jpg")
 
       unless image.mime_type == 'image/jpeg'
@@ -91,6 +100,11 @@ class BrandingProcessor < Inshaker::Processor
 
     indent do
       say "проверяю картинку фона bg.jpg"
+
+      unless File.exists?("#{src_dir.path}/bg.jpg")
+        error "нет файла!"
+        return
+      end
       image = MiniMagick::Image.open("#{src_dir.path}/bg.jpg")
 
       unless image.mime_type == 'image/jpeg'
