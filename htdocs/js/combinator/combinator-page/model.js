@@ -436,11 +436,18 @@ Me.prototype =
 	searchCocktails: function (add, remove)
 	{
 		// remove logic has been removed ;)
-		
+		var query = []
 		for (var i = 0, il = add.length; i < il; i++)
-			add[i] = Cocktail.guessEntityCI(add[i])
+		{
+		  if (!add[i])
+		    continue
+		  var entity = Cocktail.guessEntityCI(add[i])
+		  if (!entity)
+		    continue
+			query.push(entity)
+		}
 		
-		return Cocktail.getByQuery(add.joinA('&'))
+		return Cocktail.getByQuery(query.joinA('&'))
 	},
 	
 	updateAllIngredients: function ()
