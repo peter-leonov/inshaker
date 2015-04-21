@@ -227,6 +227,15 @@ html.msie-8 .common-box .common-title
 .common-more:hover .button { text-shadow: 0 0 5px #fff; color: #fff; text-decoration: none; }
 
 
+.plain-h-banner
+{
+  display: block;
+  width: 628px; height: 375px; margin: 20px 0;
+  /* hide the text totally */
+  font-size: 0; color: rgba(0,0,0,0);
+}
+
+
 /* lights and shadows */
 #top,
 #branded-image,
