@@ -148,7 +148,7 @@
 </div>
 
 <% if @cocktail["shop_banner"] %>
-<a class="common-box plain-h-banner" href="<%=@cocktail["shop_banner"][:link]%>">Где купить ингредиенты для коктейля «<%= @name %>»</a>
+<a class="common-box plain-h-banner" href="<%=@cocktail["shop_banner"][:link]%>" style="background-image: url(<%="#{@cocktail["html_name"]}-shop.png"%>)">Где купить ингредиенты для коктейля «<%= @name %>»</a>
 <% else %>
 <!--# include virtual="/w/shop-club-banner/shop-club-banner.html?2n" -->
 <% end %>
