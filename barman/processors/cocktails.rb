@@ -298,8 +298,8 @@ class CocktailsProcessor < Inshaker::Processor
     end # indent
   end
   
-  def process_cocktail_job dir
-    name = dir.name
+  def process_cocktail_job src
+    name = src.name
     if name.cs_index != name
       error "в названии коктейля есть лишние символы (обычно, это пробелы)"
     end
@@ -309,10 +309,10 @@ class CocktailsProcessor < Inshaker::Processor
     @cocktail["tools"]       = []
     @cocktail["ingredients"] = []
     
-    legend_path = dir.path + "/legend.txt"
+    legend_path = src.path + "/legend.txt"
     parse_legend_text File.read(legend_path)
     
-    about = load_yaml("#{dir.path}/about.yaml")
+    about = load_yaml("#{src.path}/about.yaml")
     
     @cocktail["name_eng"] = about["Name"]
     @cocktail["teaser"] = about["Тизер"]
@@ -450,14 +450,15 @@ class CocktailsProcessor < Inshaker::Processor
     
     html_name = @cocktail["html_name"] = @cocktail["name_eng"].html_name
     
-    dir_path = "#{Config::HTDOCS_ROOT}/#{html_name}"
-    FileUtils.mkdir_p(dir_path)
-    root_dir = Dir.open(dir_path)
-    root_dir.name = html_name
-    @cocktail["root_dir"] = root_dir
-    
-    update_images dir, root_dir, @cocktail unless @options[:text]
-    update_html root_dir, @cocktail
+    dst_path = "#{Config::HTDOCS_ROOT}/#{html_name}"
+    FileUtils.mkdir_p(dst_path)
+    dst = Dir.open(dst_path)
+    dst.name = html_name
+
+    @cocktail["root_dir"] = dst
+
+    update_images src, dst, @cocktail unless @options[:text]
+    update_html dst, @cocktail
   end
   
   def prepare_groups_and_strengths_and_methods
@@ -487,6 +488,7 @@ class CocktailsProcessor < Inshaker::Processor
     cocktail.delete("groups")
     cocktail.delete("strength")
     cocktail.delete("method")
+    cocktail.delete("shop_banner")
     
     data = {}
     root_dir = cocktail.delete("root_dir")
