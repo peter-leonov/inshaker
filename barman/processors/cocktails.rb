@@ -457,6 +457,21 @@ class CocktailsProcessor < Inshaker::Processor
 
     @cocktail["root_dir"] = dst
 
+    # shop banner
+    shop_banner_link = about["Ссылка магазина"]
+    if shop_banner_link
+      shop_banner_from = "#{src.path}/shop-banner.jpg"
+      unless File.exists?(shop_banner_from)
+        error "есть ссылка на баннер магазина, а картинки баннера нету"
+        return
+      end
+      @cocktail["shop_banner"] = {link: shop_banner_link.to_s}
+      shop_banner_to   = "#{dst.path}/#{@cocktail["html_name"]}-shop.png"
+      cp_if_different(shop_banner_from, shop_banner_to)
+    else
+      @cocktail["shop_banner"]  = nil
+    end
+
     update_images src, dst, @cocktail unless @options[:text]
     update_html dst, @cocktail
   end
@@ -711,6 +726,8 @@ end
 
 class CocktailsProcessor::Template
   def initialize(hash)
+    @cocktail = hash
+    # GC the code below, if you can
     @name        = hash["name"]
     @name_eng    = hash["name_eng"]
     @name_html   = hash["name_eng"].html_name 
