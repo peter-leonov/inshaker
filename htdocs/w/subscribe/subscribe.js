@@ -4,6 +4,8 @@ $.onready(function(){
 
 function range (l, h) { return function (v) { return l <= v && v <= h } }
 
+var NAMESPACE = 'subscribe'
+
 var CENTER = {lat: 55.7500, lng: 37.6167}
 var REGION =
 {
@@ -36,7 +38,7 @@ function v_show ()
 
 // model
 
-if (window.localStorage.getItem('subscribe-widget-state') == 'shown')
+if (window.localStorage.getItem(NAMESPACE + '-widget-state') == 'shown')
   return
 
 function subscribe (email)
@@ -44,14 +46,14 @@ function subscribe (email)
   if (!/@/.test(email))
     return // better filter it right here
 
-  EventLogger.log('subscribe', email, Geo.city, Geo.country)
+  EventLogger.log(NAMESPACE, email, Geo.city, Geo.country)
 
   // backup copy to gmail
   Mail.send({
     subject: 'Подписка на акции',
     to: 'subscribe@mg.inshaker.ru',
     from: email,
-    html: 'City: ' + Geo.city + '<br/>Country: ' + Geo.country
+    html: 'Type: ' + NAMESPACE + '<br/>City: ' + Geo.city + '<br/>Country: ' + Geo.country
   })
 
   // add directly to the MailChimp list
@@ -60,7 +62,7 @@ function subscribe (email)
   window.setTimeout(hide, 250)
 
   // looks like all went well, then track
-  Tracker.event('subscribe-popup', 'subscribe', Geo.city)
+  Tracker.event(NAMESPACE + '-popup', 'subscribe', Geo.city)
 }
 
 function m_show ()
@@ -68,10 +70,10 @@ function m_show ()
   v_show()
 
   // confirm user has viewed the popup
-  window.localStorage.setItem('subscribe-widget-state', 'shown')
+  window.localStorage.setItem(NAMESPACE + '-widget-state', 'shown')
 
   // looks like all went well, then track
-  Tracker.event('subscribe-popup', 'show', Geo.city)
+  Tracker.event(NAMESPACE + '-popup', 'show', Geo.city)
 }
 
 // $.load('http://geoiplookup.wikimedia.org/').onload = function m_check_geo ()
