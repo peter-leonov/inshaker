@@ -24,7 +24,7 @@ $('.popup-controls', popup).addEventListener('click', hide, false)
 $('.sale .login',    popup).addEventListener('click', hide, false)
 $('.sale form',      popup).addEventListener('submit', function (e) { e.preventDefault(); subscribe(this.email.value) }, false)
 
-function show ()
+function v_show ()
 {
   popup.show()
 
@@ -63,7 +63,18 @@ function subscribe (email)
   Tracker.event('subscribe-popup', 'subscribe', Geo.city)
 }
 
-$.load('http://geoiplookup.wikimedia.org/').onload = function ()
+function m_show ()
+{
+  v_show()
+
+  // confirm user has viewed the popup
+  window.localStorage.setItem('subscribe-widget-state', 'shown')
+
+  // looks like all went well, then track
+  Tracker.event('subscribe-popup', 'show', Geo.city)
+}
+
+$.load('http://geoiplookup.wikimedia.org/').onload = function m_check_geo ()
 {
   if (!Geo)
     return // error at server side
@@ -71,13 +82,7 @@ $.load('http://geoiplookup.wikimedia.org/').onload = function ()
   if (!(REGION.lat(Geo.lat) && REGION.lng(Geo.lon)))
     return // located outside of Moscow region
 
-  show()
-
-  // confirm user has viewed the popup
-  window.localStorage.setItem('subscribe-widget-state', 'shown')
-
-  // looks like all went well, then track
-  Tracker.event('subscribe-popup', 'show', Geo.city)
+  m_show()
 }
 
 });
