@@ -4,7 +4,7 @@ $.onready(function(){
 
 function range (l, h) { return function (v) { return l <= v && v <= h } }
 
-var NAMESPACE = 'subscribe'
+var NAMESPACE = 'challenge-2'
 
 var CENTER = {lat: 55.7500, lng: 37.6167}
 var REGION =
