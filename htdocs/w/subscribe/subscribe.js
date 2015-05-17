@@ -81,8 +81,8 @@ $.load('http://geoiplookup.wikimedia.org/').onload = function m_get_geo ()
   if (!Geo)
     return // error at server side
 
-  // if (!(REGION.lat(Geo.lat) && REGION.lng(Geo.lon)))
-  //   return // located outside of Moscow region
+  if (!(REGION.lat(Geo.lat) && REGION.lng(Geo.lon)))
+    return // located outside of Moscow region
 
   m_show()
 }
