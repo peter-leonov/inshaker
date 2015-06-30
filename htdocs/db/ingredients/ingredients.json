@@ -445,7 +445,7 @@
 {"group":"Штучки","name":"Сифон","path":"sifon","unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Сифон для сливок","path":"sifon-dlya-slivok","unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Сковородка","path":"skovorodka","unit":"шт","volumes":[]},
-{"group":"Ингредиенты месяца","inShop":"/products/8/krutoy-domashniy-bar","name":"Скотч","names":["Паспорт скотч","Passport Scotch","Скотч"],"path":"skotch","tags":["Виски","Сочетайзер"],"unit":"л","volumes":[[0.7,1400.0,["бутылка","бутылки","бутылок"]]]},
+{"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Скотч","names":["Паспорт скотч","Passport Scotch","Скотч"],"path":"skotch","tags":["Виски","Сочетайзер"],"unit":"л","volumes":[[0.7,1400.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","inShop":"/products/28/slayser-dlya-ananasa","name":"Слайсер для ананаса","path":"slayser-dlya-ananasa","unit":"шт","volumes":[[1.0,300.0,["слайсер","слайсера","слайсером"]]]},
 {"group":"Фрукты","name":"Слива черная","path":"sliva-chernaya","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Молочные продукты. Яйца","name":"Сливки (11%)","path":"slivki-11","tags":["Сливки"],"unit":"л","volumes":[]},
