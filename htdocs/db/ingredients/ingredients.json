@@ -246,7 +246,7 @@
 {"brand":"Monin Citron Vert","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Лаймовый сироп","names":["Monin Citron Vert","Монин Цитрон Верт"],"path":"laymovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Лед","inShop":"/products/20/led-dlya-kokteyley","name":"Лед в кубиках","path":"led-v-kubikah","tags":["Лед"],"unit":"г","volumes":[[2000.0,100.0,["пакет","пакета","пакетов"]]]},
 {"group":"Лед","inShop":"/products/20/led-dlya-kokteyley","name":"Лед дробленый","path":"led-droblenyiy","tags":["Лед"],"unit":"г","volumes":[[2000.0,100.0,["бутылка","бутылки","бутылок"]]]},
-{"group":"Украшения","name":"Леденцы барбарисовые","path":"ledentsyi-barbarisovyie","unit":"г","volumes":[]},
+{"group":"Добавки","name":"Леденцы барбарисовые","path":"ledentsyi-barbarisovyie","unit":"г","volumes":[]},
 {"group":"Украшения","name":"Лепестки белой розы","path":"lepestki-beloy-rozyi","unit":"шт","volumes":[]},
 {"group":"Украшения","name":"Лепестки красной розы","path":"lepestki-krasnoy-rozyi","unit":"шт","volumes":[]},
 {"group":"Добавки","name":"Лецитин","names":["Е322","Е-322"],"path":"letsitin","unit":"г","volumes":[]},
