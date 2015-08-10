@@ -202,7 +202,7 @@
 {"brand":"Monin Airelles","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Клюквенный сироп","names":["Monin Airelles","Monin Cranberry","Монин Айрелес","Монин Аирелес","Монин Кранберри"],"path":"klyukvennyiy-sirop","tags":["Monin","Сироп","Ягодный сироп"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Орехи и сухофрукты","name":"Кокос","path":"kokos","tags":["Орехи"],"unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Кокосовая стружка","path":"kokosovaya-struzhka","unit":"г","volumes":[]},
-{"group":"Молочные продукты. Яйца","name":"Кокосовое молоко","path":"kokosovoe-moloko","tags":["Молоко"],"unit":"мл","volumes":[]},
+{"group":"Добавки","name":"Кокосовое молоко","path":"kokosovoe-moloko","tags":["Молоко"],"unit":"мл","volumes":[]},
 {"group":"Пюре","name":"Кокосовое пюре","path":"kokosovoe-pyure","unit":"г","volumes":[]},
 {"group":"Добавки","name":"Кокосовый крем","path":"kokosovyiy-krem","unit":"г","volumes":[]},
 {"brand":"De Kuyper Coconut","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Кокосовый ликер","names":["De Kuyper Coconut","Де кайпер коконат","Де кайпер кокосовый","Ди кайпер коконат","Ди кайпер кокосовый"],"path":"kokosovyiy-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
