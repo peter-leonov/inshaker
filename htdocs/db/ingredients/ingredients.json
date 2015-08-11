@@ -140,6 +140,7 @@
 {"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Джин","path":"dzhin","tags":["Джин"],"unit":"л","volumes":[[0.7,1300.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Дистиллятор","path":"distillyator","unit":"шт","volumes":[]},
 {"group":"Штучки","inShop":"/shop/","name":"Дозатор для сиропов","path":"dozator-dlya-siropov","unit":"шт","volumes":[[1.0,200.0,["дозатор","дозатора","дозатором"]]]},
+{"group":"Домашние настойки","name":"Домашняя лавандовая водка","path":"domashnyaya-lavandovaya-vodka","tags":["Домашние настойки"],"unit":"л","volumes":[]},
 {"group":"Ликеры и настойки","inShop":"/products/8/krutoy-domashniy-bar","name":"Драмбуи","names":["Drambuie"],"path":"drambui","tags":["Ликер","Травяной ликер"],"unit":"л","volumes":[[0.7,1750.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"De Kuyper Melon","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Дынный ликер","names":["Мидори","Midori","De Kuyper Melon","Де кайпер мелон","Ди кайпер мелон","Де кайпер дынный","Ди кайпер дынный"],"path":"dyinnyiy-liker","tags":["De Kuyper","Ликер","Ягодный ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Monin Melon","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Дынный сироп","names":["Monin Melon","Монин Мелон"],"path":"dyinnyiy-sirop","tags":["Monin","Сироп","Ягодный сироп"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
