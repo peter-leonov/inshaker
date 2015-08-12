@@ -488,6 +488,7 @@
 {"group":"Молочные продукты. Яйца","name":"Сметана (20%)","path":"smetana-20","tags":["Сметана"],"unit":"г","volumes":[]},
 {"group":"Ягоды","name":"Смородина красная","path":"smorodina-krasnaya","tags":["Смородина","Ягоды"],"unit":"г","volumes":[]},
 {"group":"Ягоды","name":"Смородина черная","path":"smorodina-chernaya","tags":["Смородина","Ягоды"],"unit":"г","volumes":[]},
+{"group":"Штучки","name":"Совок для льда","path":"sovok-dlya-lda","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Вода и напитки","name":"Содовая","path":"sodovaya","tags":["Вода","Минеральная вода"],"unit":"л","volumes":[[0.275,100.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Соусы и масло","name":"Соевый соус","path":"soevyiy-sous","tags":["Соус"],"unit":"л","volumes":[]},
 {"group":"Соки и морсы","name":"Сок алоэ","path":"sok-aloe","tags":["Сок"],"unit":"мл","volumes":[]},
