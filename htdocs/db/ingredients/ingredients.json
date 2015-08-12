@@ -573,7 +573,6 @@
 {"group":"Чай и кофе","name":"Чай сенча","path":"chay-sencha","tags":["Зеленый чай","Чай"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Чай эрл грей","path":"chay-erl-grey","tags":["Чай","Черный чай"],"unit":"г","volumes":[]},
 {"group":"Штучки","name":"Чайная ложка","path":"chaynaya-lozhka","unit":"шт","volumes":[]},
-{"group":"Посуда","name":"Чаша","path":"chasha","unit":"шт","volumes":[[1.0,1250.0,["чаша","чаши","чашей"]]]},
 {"group":"Посуда","inShop":"/products/21/chasha-dlya-punsha","name":"Чаша для пунша","path":"chasha-dlya-punsha","unit":"л","volumes":[[5.4,1900.0,["чаша","чаши","чашей"]]]},
 {"group":"Посуда","name":"Чашка","path":"chashka","unit":"шт","volumes":[]},
 {"group":"Ягоды","name":"Черешня","path":"chereshnya","tags":["Ягоды"],"unit":"г","volumes":[]},
