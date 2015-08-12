@@ -115,6 +115,7 @@
 {"group":"Биттеры","inShop":"/products/46/bittery-fee-brothers","name":"Гвоздичный биттер","path":"gvozdichnyiy-bitter","tags":["Биттеры"],"unit":"мл","volumes":[[150.0,650.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Травы и цветы","name":"Гибискус в сиропе","path":"gibiskus-v-sirope","tags":["Сироп"],"unit":"мл","volumes":[[250.0,850.0,["банка","банки","банок"]]]},
 {"group":"Ягоды","name":"Голубика","path":"golubika","tags":["Ягоды"],"unit":"г","volumes":[]},
+{"group":"Штучки","name":"Горелка","path":"gorelka","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Фрукты","name":"Гранат","path":"granat","tags":["Фрукты"],"unit":"г","volumes":[]},
 {"group":"Соки и морсы","name":"Гранатовый сок","path":"granatovyiy-sok","tags":["Сок","Фруктовый сок"],"unit":"л","volumes":[[0.75,250.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Фрукты","name":"Грейпфрут","path":"greypfrut","tags":["Фрукты","Цитрусовые"],"unit":"г","volumes":[]},
