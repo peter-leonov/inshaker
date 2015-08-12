@@ -186,7 +186,7 @@
 {"group":"Специи и пряности","name":"Имбирь молотый","path":"imbir-molotyiy","tags":["Имбирь"],"unit":"г","volumes":[]},
 {"group":"Фрукты","name":"Инжир","names":["фига","смоковица"],"path":"inzhir","tags":["Фрукты"],"unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Инжирное варенье","path":"inzhirnoe-varene","tags":["Варенье"],"unit":"г","volumes":[]},
-{"group":"Мёд, варенье, джемы","name":"Инжирный джем copy","path":"inzhirnyiy-dzhem-copy","tags":["Джем"],"unit":"г","volumes":[]},
+{"group":"Мёд, варенье, джемы","name":"Инжирный джем","path":"inzhirnyiy-dzhem","tags":["Джем"],"unit":"г","volumes":[]},
 {"brand":"Monin Fig","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Инжирный сироп","names":["Monin Fig","Монин Фиг"],"path":"inzhirnyiy-sirop","tags":["Monin","Сироп","Фруктовый сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"De Kuyper Butterscotch Caramel","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Ирисковый ликер","names":["De Kuyper Butterscotch Caramel","Де кайпер баттерскотч","Ди кайпер баттерскотч","Де кайпер ирисковый","Ди кайпер ирисковый"],"path":"iriskovyiy-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Monin Butterscotch","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Ирисковый сироп","names":["Монин Биттерскотч","Монин Баттерскотч","Monin Butterscotch"],"path":"iriskovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
