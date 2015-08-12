@@ -585,7 +585,7 @@
 {"group":"Чай и кофе","name":"Черный чай","path":"chernyiy-chay","tags":["Чай","Черный чай"],"unit":"г","volumes":[]},
 {"group":"Овощи","name":"Чеснок","path":"chesnok","tags":["Овощи"],"unit":"г","volumes":[]},
 {"group":"Травы и цветы","name":"Шалфей","path":"shalfey","unit":"г","volumes":[]},
-{"group":"Вина","name":"Шампанское","path":"shampanskoe","tags":["Вино"],"unit":"л","volumes":[]},
+{"group":"Игристые вина","name":"Шампанское","path":"shampanskoe","tags":["Вино"],"unit":"л","volumes":[]},
 {"group":"Посуда","name":"Шампанское блюдце","path":"shampanskoe-blyudtse","unit":"шт","volumes":[[1.0,100.0,["бокал","бокал","бокал"]]]},
 {"group":"Ликеры и настойки","name":"Шартрез зеленый","path":"shartrez-zelenyiy","tags":["Ликер","Травяной ликер","Шартрез"],"unit":"л","volumes":[[0.7,1800.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Специи и пряности","name":"Шафран","path":"shafran","unit":"г","volumes":[]},
