@@ -181,7 +181,6 @@
 {"group":"Игристые вина","inShop":"/products/8/krutoy-domashniy-bar","name":"Игристое вино сухое","names":["Шампанское сухое"],"path":"igristoe-vino-suhoe","tags":["Игристое вино сухое","Шампанское"],"unit":"л","volumes":[[0.75,1200.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Орехи и сухофрукты","name":"Изюм","path":"izyum","tags":["Сухофрукты"],"unit":"г","volumes":[]},
 {"group":"Соусы и масло","name":"Имбирное масло","path":"imbirnoe-maslo","unit":"л","volumes":[]},
-{"group":"Вода и напитки","name":"Имбирное пиво","names":["Имбирный эль"],"path":"imbirnoe-pivo","unit":"л","volumes":[]},
 {"brand":"Monin Gingembre","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Имбирный сироп","names":["Monin Gingembre","Монин Джинджер"],"path":"imbirnyiy-sirop","tags":["Monin","Сироп","Травяной сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Вода и напитки","name":"Имбирный эль","names":["Имбирный эль"],"path":"imbirnyiy-el","unit":"л","volumes":[[0.25,60.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Специи и пряности","name":"Имбирь молотый","path":"imbir-molotyiy","tags":["Имбирь"],"unit":"г","volumes":[]},
