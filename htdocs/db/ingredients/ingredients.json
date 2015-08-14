@@ -360,6 +360,7 @@
 {"group":"Ягоды","name":"Облепиха","path":"oblepiha","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Облепиховый джем","path":"oblepihovyiy-dzhem","tags":["Джем"],"unit":"г","volumes":[]},
 {"group":"Соки и морсы","name":"Облепиховый сок","path":"oblepihovyiy-sok","tags":["Сок"],"unit":"л","volumes":[]},
+{"group":"Домашние настойки","name":"Обогащенный маслом бурбон","path":"obogaschennyiy-maslom-burbon","tags":["Домашние настойки"],"unit":"л","volumes":[]},
 {"group":"Овощи","name":"Огурец","path":"ogurets","tags":["Овощи"],"unit":"г","volumes":[]},
 {"brand":"Monin Cucumber","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Огуречный сироп","names":["Monin Cucumber","Монин Кукумбер"],"path":"ogurechnyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Травы и цветы","name":"Одуванчик","path":"oduvanchik","unit":"г","volumes":[]},
