@@ -443,6 +443,7 @@
 {"group":"Ягоды","name":"Свежемороженая клубника","path":"svezhemorozhenaya-klubnika","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Ягоды","name":"Свежемороженая малина","path":"svezhemorozhenaya-malina","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Овощи","name":"Свекла","path":"svekla","tags":["Овощи"],"unit":"г","volumes":[]},
+{"group":"Крепкий алкоголь","name":"Сверхкрепкий ром","path":"sverhkrepkiy-rom","unit":"л","volumes":[]},
 {"group":"Молочные продукты. Яйца","name":"Сгущенное молоко","path":"sguschennoe-moloko","tags":["Молоко"],"unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Сельдереевая соль","path":"seldereevaya-sol","unit":"г","volumes":[]},
 {"group":"Биттеры","inShop":"/products/46/bittery-fee-brothers","name":"Сельдереевый биттер","path":"seldereevyiy-bitter","tags":["Биттеры"],"unit":"мл","volumes":[[150.0,650.0,["бутылка","бутылки","бутылок"]]]},
