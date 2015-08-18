@@ -585,6 +585,7 @@
 {"brand":"De Kuyper Creme de Cassis","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Черносмородиновый ликер","names":["De Kuyper Creme de Cassis","Де кайпер крем де кассис","Смородиновый ликер","Ди кайпер крем де кассис","Де кайпер черносмородиновый","Ди кайпер черносмородиновый"],"path":"chernosmorodinovyiy-liker","screen":"Чер­но­смо­ро­ди­но­вый ли­кер","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"Monin Cassis","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Черносмородиновый сироп","names":["Смородиновый сироп","Monin Cassis","Монин Кассис"],"path":"chernosmorodinovyiy-sirop","screen":"Чер­но­смо­ро­ди­но­вый си­роп","tags":["Monin","Сироп","Ягодный сироп"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Чай и кофе","name":"Черный чай","path":"chernyiy-chay","tags":["Чай","Черный чай"],"unit":"г","volumes":[]},
+{"group":"Чай и кофе","name":"Черный чай листовой","path":"chernyiy-chay-listovoy","tags":["Чай","Черный чай"],"unit":"мл","volumes":[]},
 {"group":"Овощи","name":"Чеснок","path":"chesnok","tags":["Овощи"],"unit":"г","volumes":[]},
 {"group":"Травы и цветы","name":"Шалфей","path":"shalfey","unit":"г","volumes":[]},
 {"group":"Игристые вина","name":"Шампанское","path":"shampanskoe","tags":["Вино"],"unit":"л","volumes":[]},
