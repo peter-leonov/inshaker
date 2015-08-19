@@ -59,7 +59,7 @@
 .b-content .view-about ul { margin: 0 0 0 2em; }
 .b-content .view-about ul li { list-style-type: disc; }
 
-#b-cr-about { overflow: hidden; float: right; width: 310px; }
+#b-cr-about { display: none; overflow: hidden; float: right; width: 310px; }
 #b-cr-about h2 { font-size: 21px; }
 #b-cr-about .common-content{height:505px;}
 #b-cr-about form {font-size:11px;line-height:2;}
