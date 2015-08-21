@@ -254,7 +254,7 @@
 {"group":"Травы и цветы","name":"Крапива","path":"krapiva","unit":"г","volumes":[]},
 {"group":"Вина","inShop":"/products/8/krutoy-domashniy-bar","name":"Красное вино сухое","path":"krasnoe-vino-suhoe","tags":["Вино"],"unit":"л","volumes":[[0.75,750.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Вермуты","inShop":"/products/8/krutoy-domashniy-bar","name":"Красный вермут","path":"krasnyiy-vermut","tags":["Вермут"],"unit":"л","volumes":[[1.0,650.0,["бутылка","бутылки","бутылок"]]]},
-{"group":"Украшения","name":"Крафт-баумага","path":"kraft-baumaga","tags":["Украшения"],"unit":"шт","volumes":[]},
+{"group":"Украшения","name":"Крафт-бумага","path":"kraft-bumaga","tags":["Украшения"],"unit":"шт","volumes":[]},
 {"group":"Мучные изделия","name":"Крекер","path":"kreker","unit":"г","volumes":[]},
 {"group":"Посуда","name":"Креманка","path":"kremanka","unit":"шт","volumes":[]},
 {"group":"Вина","inShop":"/products/8/krutoy-domashniy-bar","name":"Крепленое вино красное","path":"kreplenoe-vino-krasnoe","tags":["Вино"],"unit":"л","volumes":[[0.75,950.0,["бутылка","бутылки","бутылок"]]]},
