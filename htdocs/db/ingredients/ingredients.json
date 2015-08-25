@@ -139,6 +139,7 @@
 {"group":"Крепкий алкоголь","inShop":"/products/44/redkie-napitki","name":"Дженевер","names":["Женевер","Jenever"],"path":"dzhenever","unit":"л","volumes":[[1.0,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","inShop":"/products/25/dzhigger","name":"Джиггер","path":"dzhigger","unit":"шт","volumes":[[1.0,250.0,["джиггер","джиггера","джиггеров"]]]},
 {"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Джин","path":"dzhin","tags":["Джин"],"unit":"л","volumes":[[0.7,1300.0,["бутылка","бутылки","бутылок"]]]},
+{"group":"Штучки","name":"Джулеп стрейнер","path":"dzhulep-streyner","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Дистиллятор","path":"distillyator","unit":"шт","volumes":[]},
 {"group":"Домашние настойки","name":"Домашний ванильный ром","path":"domashniy-vanilnyiy-rom","tags":["Домашние настойки"],"unit":"л","volumes":[]},
 {"group":"Домашние сиропы","name":"Домашний ванильный сироп","path":"domashniy-vanilnyiy-sirop","tags":["Домашние сиропы"],"unit":"л","volumes":[]},
