@@ -536,6 +536,7 @@
 {"group":"Штучки","name":"Терка для муската","path":"terka-dlya-muskata","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Терка мелкая","path":"terka-melkaya","unit":"шт","volumes":[]},
 {"group":"Фрукты","name":"Терн","names":["Терновник"],"path":"tern","tags":["Ягоды"],"unit":"г","volumes":[]},
+{"group":"Ликеры и настойки","name":"Терновый джин","names":["Sloe gin","Терновый джин"],"path":"ternovyiy-dzhin","unit":"л","volumes":[]},
 {"group":"Травы и цветы","name":"Тимьян","names":["Чабрец","Чебрец"],"path":"timyan","unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Тмин","path":"tmin","unit":"г","volumes":[]},
 {"brand":"Rich","group":"Ингредиенты месяца","inShop":"/products/42/soki-rich","mark":"Rich","name":"Томатный сок","path":"tomatnyiy-sok","tags":["Rich","Rich","Овощной сок","Рич","Сок","Томатный сок"],"unit":"л","volumes":[[1.0,100.0,["пакет","пакета","пакетов"]]]},
