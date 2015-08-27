@@ -45,8 +45,6 @@ window.localStorage.removeItem('inshaker.user_history')
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
 
-<!--# include virtual="/w/subscribe/subscribe.js" -->
-
 <!--# include virtual="/skin/skin.js" -->
 
 String.prototype.htmlName = function () { return this.replace(/[^\w\-\.]/g, "_").toLowerCase() }
