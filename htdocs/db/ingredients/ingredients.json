@@ -329,7 +329,6 @@
 {"brand":"Monin Orgeat","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Миндальный сироп","names":["Monin Orgeat","Монин Оргеат","Монин Оршад"],"path":"mindalnyiy-sirop","tags":["Monin","Ореховый сироп","Сироп"],"unit":"л","volumes":[[1.0,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Миска","path":"miska","unit":"шт","volumes":[]},
 {"group":"Молочные продукты. Яйца","name":"Молоко","path":"moloko","tags":["Молоко"],"unit":"л","volumes":[]},
-{"group":"Молочные продукты. Яйца","name":"Молоко (3%)","path":"moloko-3","tags":["Молоко"],"unit":"л","volumes":[]},
 {"group":"Украшения","name":"Монпансье","path":"monpanse","unit":"г","volumes":[]},
 {"group":"Соки и морсы","name":"Морковный сок","path":"morkovnyiy-sok","tags":["Сок"],"unit":"л","volumes":[]},
 {"group":"Овощи","name":"Морковь","path":"morkov","tags":["Овощи"],"unit":"г","volumes":[]},
