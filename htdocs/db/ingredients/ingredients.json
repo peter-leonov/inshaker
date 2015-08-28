@@ -519,7 +519,6 @@
 {"group":"Молочные продукты. Яйца","name":"Творог","path":"tvorog","unit":"г","volumes":[]},
 {"brand":"Angostura","group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Angostura","name":"Темный ром","names":["Bacardi Black","Бакарди блэк","Бакарди блек"],"path":"temnyiy-rom","tags":["Angostura","Ром"],"unit":"л","volumes":[[0.7,1450.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Терка для муската","path":"terka-dlya-muskata","tags":["Штучки"],"unit":"шт","volumes":[]},
-{"group":"Штучки","name":"Терка мелкая","path":"terka-melkaya","unit":"шт","volumes":[]},
 {"group":"Фрукты","name":"Терн","names":["Терновник"],"path":"tern","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Ликеры и настойки","name":"Терновый джин","names":["Sloe gin","Терновый джин"],"path":"ternovyiy-dzhin","unit":"л","volumes":[]},
 {"group":"Травы и цветы","name":"Тимьян","names":["Чабрец","Чебрец"],"path":"timyan","unit":"г","volumes":[]},
