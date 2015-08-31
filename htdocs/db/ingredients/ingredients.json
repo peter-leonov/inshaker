@@ -598,6 +598,5 @@
 {"brand":"Rich","group":"Ингредиенты месяца","inShop":"/products/42/soki-rich","mark":"Rich","name":"Яблочный сок","path":"yablochnyiy-sok","tags":["Rich","Rich","Рич","Сок","Фруктовый сок","Яблочный сок"],"unit":"л","volumes":[[1.0,100.0,["пакет","пакета","пакетов"]]]},
 {"group":"Молочные продукты. Яйца","name":"Яблочный сорбет","path":"yablochnyiy-sorbet","tags":["Сорбет"],"unit":"г","volumes":[]},
 {"group":"Соки и морсы","name":"Ягодный морс","path":"yagodnyiy-mors","tags":["Морс"],"unit":"л","volumes":[]},
-{"brand":"De Kuyper Advocaat","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Яичный ликер","names":["Де кайпер адвокат","De Kuyper Advocaat","Ди кайпер адвокат"],"path":"yaichnyiy-liker","tags":["De Kuyper","Ликер","Сливочный ликер"],"unit":"л","volumes":[[0.7,1450.0,["бутылка","бутылки","бутылок"]]]},
-{"group":"Молочные продукты. Яйца","name":"Яйцо","path":"yaytso","unit":"шт","volumes":[]}
+{"brand":"De Kuyper Advocaat","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Яичный ликер","names":["Де кайпер адвокат","De Kuyper Advocaat","Ди кайпер адвокат"],"path":"yaichnyiy-liker","tags":["De Kuyper","Ликер","Сливочный ликер"],"unit":"л","volumes":[[0.7,1450.0,["бутылка","бутылки","бутылок"]]]}
 ]
