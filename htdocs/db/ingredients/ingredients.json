@@ -224,6 +224,7 @@
 {"group":"Украшения","name":"Коктейльная вишня красная","path":"kokteylnaya-vishnya-krasnaya","tags":["Ягоды"],"unit":"г","volumes":[[750.0,650.0,["банка","банки","банок"]]]},
 {"group":"Посуда","name":"Коктейльная креманка","path":"kokteylnaya-kremanka","tags":["Посуда"],"unit":"шт","volumes":[]},
 {"group":"Штучки","inShop":"/products/26/kokteylnaya-lozhka","name":"Коктейльная ложка","path":"kokteylnaya-lozhka","unit":"шт","volumes":[[1.0,400.0,["ложка","ложки","ложек"]]]},
+{"group":"Сегодня в тренде","inShop":"/products/35/angostura-bitter","name":"Коктейльная тележка","path":"kokteylnaya-telezhka","unit":"шт","volumes":[[200.0,30000.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Посуда","name":"Коктейльный бокал","path":"kokteylnyiy-bokal","unit":"шт","volumes":[[1.0,100.0,["бокал","бокал","бокал"]]]},
 {"group":"Вода и напитки","name":"Кола","names":["Кока-кола","Пепси","Cola","Pepsi"],"path":"kola","unit":"л","volumes":[[0.33,30.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Посуда","name":"Коллинз","path":"kollinz","tags":["Посуда"],"unit":"шт","volumes":[]},
