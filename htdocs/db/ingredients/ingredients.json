@@ -125,7 +125,7 @@
 {"group":"Крепкий алкоголь","inShop":"/products/8/krutoy-domashniy-bar","name":"Джин","path":"dzhin","tags":["Джин"],"unit":"л","volumes":[[0.7,1300.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Джулеп стрейнер","path":"dzhulep-streyner","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Штучки","name":"Дистиллятор","path":"distillyator","unit":"шт","volumes":[]},
-{"group":"Сегодня в тренде","name":"Домашний бар Crate\u0026Barrel","path":"domashniy-bar-crate-barrel","unit":"шт","volumes":[[1.0,50000.0,["штука","штуки","штук"]]]},
+{"group":"Сегодня в тренде","inShop":"/products/35/angostura-bitter","name":"Домашний бар","path":"domashniy-bar","unit":"шт","volumes":[[200.0,50000.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Домашние настойки","name":"Домашний ванильный ром","path":"domashniy-vanilnyiy-rom","tags":["Домашние настойки"],"unit":"л","volumes":[]},
 {"group":"Домашние сиропы","name":"Домашний ванильный сироп","path":"domashniy-vanilnyiy-sirop","tags":["Домашние сиропы"],"unit":"л","volumes":[]},
 {"group":"Домашние сиропы","name":"Домашний винный сироп","path":"domashniy-vinnyiy-sirop","tags":["Домашние сиропы"],"unit":"л","volumes":[]},
