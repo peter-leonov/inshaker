@@ -321,7 +321,7 @@
 {"group":"Молочные продукты. Яйца","name":"Масло сливочное соленое","path":"maslo-slivochnoe-solenoe","unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Мед","path":"med","unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Мед белой акации","path":"med-beloy-akatsii","unit":"г","volumes":[]},
-{"group":"Посуда","name":"Медная кружка","path":"mednaya-kruzhka","unit":"шт","volumes":[]},
+{"brand":"Crate and Barrel","group":"Сегодня в тренде","mark":"Crate and Barrel","name":"Медная кружка","path":"mednaya-kruzhka","tags":["Crate and Barrel"],"unit":"шт","volumes":[]},
 {"brand":"Monin Miel","group":"Сиропы","inShop":"/products/14/siropy-dlya-kokteyley-monin","mark":"Monin","name":"Медовый сироп","names":["Monin Miel","Монин Миел"],"path":"medovyiy-sirop","tags":["Monin","Сироп"],"unit":"л","volumes":[[0.7,600.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","inShop":"/products/8/krutoy-domashniy-bar","name":"Мешалка","path":"meshalka","unit":"шт","volumes":[[50.0,300.0,["коробка","коробки","коробок"]]]},
 {"group":"Штучки","name":"Миксер для милкшейков","path":"mikser-dlya-milksheykov","tags":["Штучки"],"unit":"шт","volumes":[]},
