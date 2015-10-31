@@ -209,7 +209,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
   padding: 22px 0;
   text-align: center;
 }
-#pink-block > u { text-decoration: none; border-bottom: 2px solid rgba(255,255,255, 0.85); }
+#pink-block > u { text-decoration: none; border-bottom: 2px solid rgba(255,255,255, 0.7); }
 #pink-block:hover { text-decoration: none; }
 
 #print-logo-hd { display: none; } 
