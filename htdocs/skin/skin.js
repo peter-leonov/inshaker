@@ -17,7 +17,7 @@ function pink ()
 {
   var SELECTOR = '#pink-block'
   var PINK = JSON.parse('<!--# include virtual="/skin/$date_local/pink.json" -->')
-  var random = PINK[Math.ceil(Math.random() * PINK.length)]
+  var random = PINK[Math.floor(Math.random() * PINK.length)]
 
   var nodes = $$(SELECTOR)
   for (var i = 0, il = nodes.length; i < il; i++)
