@@ -48,14 +48,19 @@ class BrandingProcessor < Inshaker::Processor
     indent do
       say "парсю розовый блок из pink.yaml"
 
-      unless File.exists?("#{src_dir.path}/pink.yaml")
-        error "нет файла!"
-        return
+      if File.exists?("#{src_dir.path}/pink.yaml")
+        pink = load_yaml("#{src_dir.path}/pink.yaml")
+        # validate roughly
+        pink.map! do |item|
+          {
+            "text" => item["text"],
+            "link" => item["link"]
+          }
+        end
+        flush_json_object(pink, "#{ht_dir.path}/pink.json")
+      else
+        say "нет файла."
       end
-      pink = load_yaml("#{src_dir.path}/pink.yaml")
-
-      File.write("#{ht_dir.path}/pink-link.txt", pink["link"])
-      File.write("#{ht_dir.path}/pink-text.txt", link["text"])
     end
 
     indent do
