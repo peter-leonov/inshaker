@@ -175,6 +175,7 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
 
 #apps
 {
+  display: none;
   padding: 10px 20px;
   border-top: 1px solid #eee;
   opacity: 0.5;
