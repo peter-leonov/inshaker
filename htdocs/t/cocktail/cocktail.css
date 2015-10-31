@@ -199,6 +199,10 @@ html.msie-7 #view-recipe .ingredients .surface .image { filter: progid:DXImageTr
   height: 46px;
 }
 
+#pink-block
+{
+  display: block;
+}
 
 #print-logo-hd { display: none; } 
 
