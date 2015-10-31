@@ -57,7 +57,7 @@ class BrandingProcessor < Inshaker::Processor
             "link" => item["link"]
           }
         end
-        flush_json_object(pink, "#{ht_dir.path}/pink.json")
+        File.write("#{ht_dir.path}/pink.json", pink.to_json)
       else
         say "нет файла."
       end
