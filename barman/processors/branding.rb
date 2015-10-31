@@ -45,6 +45,18 @@ class BrandingProcessor < Inshaker::Processor
     ht_dir = Dir.create("#{Config::HT_ROOT}#{ht_name}")
     FileUtils.mkdir_p ht_dir.path
 
+    indent do
+      say "парсю розовый блок из pink.yaml"
+
+      unless File.exists?("#{src_dir.path}/pink.yaml")
+        error "нет файла!"
+        return
+      end
+      pink = load_yaml("#{src_dir.path}/pink.yaml")
+
+      File.write("#{ht_dir.path}/pink-link.txt", pink["link"])
+      File.write("#{ht_dir.path}/pink-text.txt", link["text"])
+    end
 
     indent do
       say "парсю ссылку месяца из link.txt"
