@@ -44,6 +44,7 @@ if (!document.querySelectorAll)
 window.localStorage.removeItem('inshaker.user_history')
 
 <!--# include virtual="/w/shop-map-banner/shop-map-banner.js" -->
+<!--# include virtual="/w/polling/poll.js" -->
 
 <!--# include virtual="/skin/skin.js" -->
 

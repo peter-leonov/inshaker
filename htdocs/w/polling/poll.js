@@ -90,6 +90,9 @@ self[Me.className] = Me
 
 function onready ()
 {
+  if (!$('#poll-popup'))
+    return
+
 	var nodes =
 	{
 		root: $('#poll-popup .poll-window'),
