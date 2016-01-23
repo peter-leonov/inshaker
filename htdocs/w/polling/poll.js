@@ -32,7 +32,7 @@ Me.prototype =
 	
 	hide: function ()
 	{
-		Cookie.set(this.name + '-hidden', Date.now(), Date.add('28d'), '/')
+		window.localStorage.setItem('poll.' + this.name + '.hidden', Date.now(), Date.add('28d'), '/')
 	},
 	
 	hideFromUI: function ()
@@ -43,7 +43,7 @@ Me.prototype =
 	
 	maybeShow: function ()
 	{
-		var hidden = Cookie.get(this.name + '-hidden')
+		var hidden = window.localStorage.getItem('poll.' + this.name + '.hidden')
 		if (hidden)
 			return
 		
