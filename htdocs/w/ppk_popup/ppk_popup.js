@@ -24,5 +24,7 @@ var popup={
 	}
 };
 window.onload=function(){
+  if (!$('#ppk_popup'))
+    return
 	popup.init();
 };
