@@ -331,7 +331,7 @@
 {"group":"Овощи","name":"Морковь","path":"morkov","tags":["Овощи"],"unit":"г","volumes":[]},
 {"brand":"Mozzarella Ungrande","group":"Молочные продукты. Яйца","mark":"Ungrande","name":"Моцарелла классическая","path":"motsarella-klassicheskaya","tags":["Ungrande","Сыр"],"unit":"г","volumes":[]},
 {"group":"Штучки","name":"Мультипипетка","path":"multipipetka","unit":"шт","volumes":[]},
-{"brand":"Rich","group":"Соки и морсы","inShop":"/products/42/soki-rich","mark":"Rich","name":"Мультифруктовый сок","path":"multifruktovyiy-sok","tags":["Rich","Rich","Мультифруктовый сок","Рич","Сок","Фруктовый сок"],"unit":"л","volumes":[[1.0,100.0,["пакет","пакета","пакетов"]]]},
+{"group":"Соки и морсы","inShop":"/products/42/soki-rich","name":"Мультифруктовый сок","path":"multifruktovyiy-sok","tags":["Мультифруктовый сок","Сок","Фруктовый сок"],"unit":"л","volumes":[[1.0,100.0,["пакет","пакета","пакетов"],false]]},
 {"group":"Украшения","name":"Мускатный орех молотый","path":"muskatnyiy-oreh-molotyiy","unit":"г","volumes":[[18.0,90.0,["упаковка","упаковки","упаковок"]]]},
 {"group":"Травы и цветы","name":"Мята","path":"myata","unit":"г","volumes":[]},
 {"group":"Биттеры","inShop":"/products/46/bittery-fee-brothers","name":"Мятный биттер","path":"myatnyiy-bitter","tags":["Биттеры"],"unit":"мл","volumes":[[150.0,650.0,["бутылка","бутылки","бутылок"]]]},
