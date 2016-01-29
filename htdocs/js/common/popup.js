@@ -76,7 +76,6 @@ Me.prototype =
 	{
 		this.nodes.back .addEventListener('click', this.listeners.click, false)
 		this.nodes.cross.addEventListener('click', this.listeners.click, false)
-		this.nodes.cross.addEventListener('touchstart', this.listeners.click, false)
 		document.addEventListener('keydown', this.listeners.key, false)
 	},
 	
