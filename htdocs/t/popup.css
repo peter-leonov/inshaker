@@ -3,6 +3,9 @@
 .popup,
 .popup .popup-back { left: 0; top: 0; bottom: 0; right: 0; }
 
+.popup .popup-front { pointer-events: none; }
+.popup .popup-front > * { pointer-events: auto; }
+
 .popup .popup-front { position: absolute; width: 100%;  }
 .popup .popup-controls,
 .popup .popup-window { margin: 0 auto; position: relative; }
