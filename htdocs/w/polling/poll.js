@@ -101,9 +101,11 @@ function onready ()
 		button: $('#poll-popup .poll-form button'),
 		popup:
 		{
-			root: $('#poll-popup'),
+			root:   $('#poll-popup'),
 			window: $('#poll-popup .popup-window'),
-			front: $('#poll-popup .popup-front')
+			back:   $('#poll-popup .popup-back'),
+			cross:  $('#poll-popup .popup-controls .cross'),
+			front:  $('#poll-popup .popup-front')
 		}
 	}
 	

@@ -93,7 +93,9 @@ $.onready(function ()
     popupParts:
     {
       window: $('.plain-popup-widget .popup-window'),
-      front: $('.plain-popup-widget .popup-front')
+      back:   $('.plain-popup-widget .popup-back'),
+      cross:  $('.plain-popup-widget .popup-controls .cross'),
+      front:  $('.plain-popup-widget .popup-front')
     }
   })
 

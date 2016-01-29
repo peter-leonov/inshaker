@@ -23,8 +23,6 @@ Me.prototype =
 		this.listeners.click = function (e) { me.hideFromUI() }
 		this.listeners.key = function (e) { if (e.keyCode == KEY_ESC){ e.preventDefault(); me.hideFromUI() }}
 		
-		nodes.window.addEventListener('click', function (e) { e.stopPropagation() }, false)
-		
 		return this
 	},
 	
@@ -76,13 +74,16 @@ Me.prototype =
 	
 	bindListeners: function ()
 	{
-		document.addEventListener('click', this.listeners.click, false)
+		this.nodes.back .addEventListener('click', this.listeners.click, false)
+		this.nodes.cross.addEventListener('click', this.listeners.click, false)
+		this.nodes.cross.addEventListener('touchstart', this.listeners.click, false)
 		document.addEventListener('keydown', this.listeners.key, false)
 	},
 	
 	unbindListeners: function ()
 	{
-		document.removeEventListener('click', this.listeners.click, false)
+		// no need to unbind clicks
+
 		document.removeEventListener('keydown', this.listeners.key, false)
 	}
 }

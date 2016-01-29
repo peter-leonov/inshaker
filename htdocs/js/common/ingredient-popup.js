@@ -212,7 +212,9 @@ var myStatic =
 			popupParts:
 			{
 				window: $('#ingredient-info-popup .popup-window'),
-				front: $('#ingredient-info-popup .popup-front'),
+				back:   $('#ingredient-info-popup .popup-back'),
+				cross:  $('#ingredient-info-popup .popup-controls .cross'),
+				front:  $('#ingredient-info-popup .popup-front'),
 				ingredientWindow: $('#ingredient-info-popup .popup-window .ingredient-window'),
 				image: $('#ingredient-info-popup .description .image'),
 				mark: $('#ingredient-info-popup .description .about .mark'),

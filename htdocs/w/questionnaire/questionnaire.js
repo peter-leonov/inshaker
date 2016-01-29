@@ -124,9 +124,11 @@ function onready ()
     button: $('#questionnaire-popup .poll-form button'),
     popup:
     {
-      root: $('#questionnaire-popup'),
+      root:   $('#questionnaire-popup'),
       window: $('#questionnaire-popup .popup-window'),
-      front: $('#questionnaire-popup .popup-front')
+      back:   $('#questionnaire-popup .popup-back'),
+      cross:  $('#questionnaire-popup .popup-controls .cross'),
+      front:  $('#questionnaire-popup .popup-front')
     }
   }
   
