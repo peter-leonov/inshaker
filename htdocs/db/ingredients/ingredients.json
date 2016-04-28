@@ -9,7 +9,6 @@
 {"group":"Фрукты","name":"Авокадо","path":"avokado","tags":["Фрукты"],"unit":"г","volumes":[]},
 {"group":"Специи и пряности","name":"Аджика","path":"adzhika","tags":["Соус"],"unit":"л","volumes":[]},
 {"group":"Фрукты","name":"Айва","path":"ayva","tags":["Фрукты"],"unit":"г","volumes":[]},
-{"brand":"iQOS","group":"Сегодня в тренде","inShop":"www.inshaker.ru","mark":"iQOS","name":"Айкос","names":["Айкос","Айкас","Ikos"],"path":"aykos","tags":["iQOS"],"unit":"шт","volumes":[[1.0,7000.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Ликеры и настойки","inShop":"/krutoy-domashniy-bar","name":"Айриш крим","names":["Сливочный ликер","Кантри лейн","Айриш крим"],"path":"ayrish-krim","unit":"л","volumes":[[0.7,1250.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Добавки","name":"Альгинат натрия","names":["Е401","Е-401"],"path":"alginat-natriya","unit":"г","volumes":[]},
 {"brand":"De Kuyper Amaretto","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Амаретто ликер","names":["Amaretto","Миндальный ликер","De Kuyper Amaretto","Де кайпер амаретто","Ди кайпер амаретто"],"path":"amaretto-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
