@@ -610,6 +610,7 @@ http://www.inshaker.ru/cocktail/strawberry_margarita/
 http://www.inshaker.ru/cocktail/margarita_with_sage_and_pineapple/
 http://www.inshaker.ru/cocktail/morning_margarita/
 http://www.inshaker.ru/cocktail/mary_love/
+http://www.inshaker.ru/cocktail/mariko/
 http://www.inshaker.ru/cocktail/marcus_aurelius/
 http://www.inshaker.ru/cocktail/marcus_licinius_crassus/
 http://www.inshaker.ru/cocktail/marmalade_margarita/
