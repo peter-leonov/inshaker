@@ -561,7 +561,7 @@
 {"group":"Биттеры","name":"Чайный биттер","path":"chaynyiy-bitter","tags":["Биттеры"],"unit":"мл","volumes":[]},
 {"group":"Посуда","inShop":"/products/21/chasha-dlya-punsha","name":"Чаша для пунша","path":"chasha-dlya-punsha","unit":"л","volumes":[[5.4,1900.0,["чаша","чаши","чашей"]]]},
 {"group":"Посуда","name":"Чашка","path":"chashka","unit":"шт","volumes":[]},
-{"brand":"Red Stag","group":"Ароматизированный алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Jim Beam","name":"Черешнвый бурбон","path":"chereshnvyiy-burbon","tags":["Jim Beam"],"unit":"л","volumes":[[0.7,3000.0,["бутылка","бутылки","бутылок"]]]},
+{"brand":"Red Stag","group":"Ароматизированный алкоголь","inShop":"/products/8/krutoy-domashniy-bar","mark":"Jim Beam","name":"Черешневый бурбон","path":"chereshnevyiy-burbon","tags":["Jim Beam"],"unit":"л","volumes":[[0.7,3000.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Ягоды","name":"Черешня","path":"chereshnya","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Ягоды","name":"Черника","path":"chernika","tags":["Ягоды"],"unit":"г","volumes":[]},
 {"group":"Орехи и сухофрукты","name":"Чернослив","path":"chernosliv","tags":["Сухофрукты"],"unit":"г","volumes":[]},
