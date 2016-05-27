@@ -572,7 +572,7 @@
 {"group":"Чай и кофе","name":"Черный чай листовой","path":"chernyiy-chay-listovoy","tags":["Чай","Черный чай"],"unit":"мл","volumes":[]},
 {"group":"Овощи","name":"Чеснок","path":"chesnok","tags":["Овощи"],"unit":"г","volumes":[]},
 {"group":"Травы и цветы","name":"Шалфей","path":"shalfey","unit":"г","volumes":[]},
-{"brand":"Martini Brut","group":"Вина","mark":"Martini","name":"Шампанское","names":["Шампанское","Игристое","Мартини","Martini","Просекко","Брют"],"path":"shampanskoe","tags":["Martini","Вино"],"unit":"л","volumes":[]},
+{"brand":"Martini Brut","group":"Вина","mark":"Martini","name":"Шампанское","names":["Просекко","Игристое","Мартини","Martini","Брют"],"path":"shampanskoe","tags":["Martini","Вино"],"unit":"л","volumes":[]},
 {"group":"Посуда","name":"Шампанское блюдце","path":"shampanskoe-blyudtse","tags":["Посуда"],"unit":"шт","volumes":[[1.0,100.0,["бокал","бокал","бокал"]]]},
 {"group":"Ликеры и настойки","name":"Шартрез зеленый","path":"shartrez-zelenyiy","tags":["Ликер","Травяной ликер","Шартрез"],"unit":"л","volumes":[[0.7,1800.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Специи и пряности","name":"Шафран","path":"shafran","unit":"г","volumes":[]},
