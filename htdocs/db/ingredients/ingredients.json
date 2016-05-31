@@ -237,7 +237,6 @@
 {"group":"Чай и кофе","name":"Кофе в зернах","path":"kofe-v-zernah","tags":["Кофе"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Кофе молотый","path":"kofe-molotyiy","tags":["Кофе"],"unit":"г","volumes":[]},
 {"group":"Чай и кофе","name":"Кофе эспрессо","path":"kofe-espresso","tags":["Кофе"],"unit":"мл","volumes":[]},
-{"group":"Ароматизированный алкоголь","inShop":"/products/17/shokoladnaya-tekila-olmeca","name":"Кофейная текила","path":"kofeynaya-tekila","tags":["Текила"],"unit":"л","volumes":[[0.7,1900.0,["бутылка","бутылки","бутылок"]]]},
 {"brand":"De Kuyper Creme de Cafe","group":"Ликеры и настойки","inShop":"/products/15/likery-dlya-kokteyley-de-kuyper","mark":"De Kuyper","name":"Кофейный ликер","names":["Kahlua","Калуа","De Kuyper Creme de Cafe","Де кайпер крем де кафе","Ди кайпер крем де кафе","Де кайпер кофейный","Ди кайпер кофейный"],"path":"kofeynyiy-liker","tags":["De Kuyper","Ликер"],"unit":"л","volumes":[[0.7,1350.0,["бутылка","бутылки","бутылок"]]]},
 {"group":"Штучки","name":"Кофемашина","path":"kofemashina","tags":["Штучки"],"unit":"шт","volumes":[]},
 {"group":"Травы и цветы","name":"Крапива","path":"krapiva","unit":"г","volumes":[]},
