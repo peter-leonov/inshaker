@@ -306,14 +306,14 @@ class BarsProcessor < Inshaker::Processor
   def prepare_map_points
     # rx = /<Placemark>.*?<name>(.+?)<\/name>.*?<description><!\[CDATA\[(.*?)\]\]><\/description>.*?<coordinates>(-?\d+\.\d+),(-?\d+\.\d+)/m
     
-    body = `curl --silent 'https://www.google.com/maps/d/kml?mid=zEhyVCFmCK8E.k-VeIGRUgcxI&ie=UTF8&hl=ru&msa=0&output=kml' | funzip`
+    body = `curl --silent 'https://www.google.com/maps/d/kml?output=kml&hl=ru&msa=0&ie=UTF8&mid=1keJZzDkaURAe5LqnEqJXMRS6MQQ' | funzip`
     bars = parse_places(body)
     raise "не удалось скачать карту баров" if bars.empty?
     bars.each do |place|
       @bar_points[place.name] = place.point
     end
     
-    body = `curl --silent 'https://www.google.com/maps/d/kml?mid=zEhyVCFmCK8E.k_kF12B8N3cU&ie=UTF8&hl=ru&msa=0&output=kml' | funzip`
+    body = `curl --silent 'https://www.google.com/maps/d/kml?output=kml&hl=ru&msa=0&ie=UTF8&mid=10I7bqXR4PBv2NfZ1_SYMJOD4pnA' | funzip`
     cities = parse_places(body)
     throw "не удалось скачать карту городов" if cities.empty?
     cities.each do |place|
