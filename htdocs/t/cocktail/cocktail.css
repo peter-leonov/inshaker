@@ -85,7 +85,7 @@
 
 #content { position: relative; min-height: 190px; }
 
-#cocktail-image { position: absolute; left: 13px; bottom: -33px; z-index: 1; }
+#cocktail-image { position: absolute; left: 13px; bottom: -33px; z-index: 1; pointer-events: none; }
 
 #main-content,
 #view-legend,
@@ -125,7 +125,7 @@
 #view-legend .button { display: block; margin: 2em auto 0; }
 
 #view-recipe .ingredients{ background-color: #f4f8f9; height: 152px; width: 100%; position: absolute; top: -152px; }
-#view-recipe .ingredients .viewport { position: absolute; top: 26px; left: 0; width: 100%; height: 120px; z-index: 1; }
+#view-recipe .ingredients .viewport { position: absolute; top: 26px; left: 0; width: 100%; height: 120px; /* z-index: 1; */ }
 #view-recipe .ingredients .surface{width:5000px;height:120px;padding:0}
 #view-recipe .ingredients .surface .image { float: left; width: 100px; height: 100px; margin-left: 20px; cursor: pointer; background-color: #eee; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 #view-recipe .ingredients .surface .image img { display: none; }
