@@ -587,6 +587,7 @@
 {"group":"Травы и цветы","name":"Щавель","path":"schavel","unit":"г","volumes":[]},
 {"group":"Мёд, варенье, джемы","name":"Эвкалиптовый мед","path":"evkaliptovyiy-med","unit":"г","volumes":[]},
 {"group":"Добавки","name":"Экстракт лаванды","path":"ekstrakt-lavandyi","unit":"мл","volumes":[]},
+{"group":"Пиво и сидр","name":"Эль","path":"el","tags":["Пиво"],"unit":"л","volumes":[]},
 {"group":"Вода и напитки","name":"Энергетик","path":"energetik","unit":"л","volumes":[[0.25,90.0,["банка","банки","банок"]]]},
 {"group":"Травы и цветы","name":"Эстрагон","names":["Тархун"],"path":"estragon","unit":"г","volumes":[]},
 {"group":"Добавки","name":"Эфирное масло апельсина","path":"efirnoe-maslo-apelsina","unit":"шт","volumes":[]},
