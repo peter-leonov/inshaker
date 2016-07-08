@@ -371,6 +371,7 @@ http://www.inshaker.ru/cocktail/golden_autumn/
 http://www.inshaker.ru/cocktail/golden_tear/
 http://www.inshaker.ru/cocktail/gold_tequila_slammer/
 http://www.inshaker.ru/cocktail/gold_tequila_with_lime_and_salt/
+http://www.inshaker.ru/cocktail/gold_tequila_with_cucumber/
 http://www.inshaker.ru/cocktail/gold_bottom/
 http://www.inshaker.ru/cocktail/gold_gingery_rum/
 http://www.inshaker.ru/cocktail/zombie/
@@ -917,6 +918,7 @@ http://www.inshaker.ru/cocktail/silver_bullet/
 http://www.inshaker.ru/cocktail/silver_bullet__2_/
 http://www.inshaker.ru/cocktail/sokolov_s_silver_bullet/
 http://www.inshaker.ru/cocktail/silver_tequila_with_lime_and_salt/
+http://www.inshaker.ru/cocktail/silver_tequila_with_cucumber/
 http://www.inshaker.ru/cocktail/siberian_grog/
 http://www.inshaker.ru/cocktail/symphony/
 http://www.inshaker.ru/cocktail/singapore_sling/
