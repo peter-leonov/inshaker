@@ -1124,6 +1124,7 @@ http://www.inshaker.ru/cocktail/electric_chaser/
 http://www.inshaker.ru/cocktail/elisa/
 http://www.inshaker.ru/cocktail/el_nino/
 http://www.inshaker.ru/cocktail/endorfun/
+http://www.inshaker.ru/cocktail/apple_tonic/
 http://www.inshaker.ru/cocktail/espresso_martini/
 http://www.inshaker.ru/cocktail/aesthetics/
 http://www.inshaker.ru/cocktail/butterfly_effect/
@@ -1144,7 +1145,6 @@ http://www.inshaker.ru/cocktail/apple-celery_fresh_with_ginger/
 http://www.inshaker.ru/cocktail/apple_temptation/
 http://www.inshaker.ru/cocktail/apple_joy/
 http://www.inshaker.ru/cocktail/apple_ro_martini/
-http://www.inshaker.ru/cocktail/apple_tonic/
 http://www.inshaker.ru/cocktail/apple_lemonade_in_a_jug/
 http://www.inshaker.ru/cocktail/apple_jelly/
 http://www.inshaker.ru/cocktail/apple_martini/
