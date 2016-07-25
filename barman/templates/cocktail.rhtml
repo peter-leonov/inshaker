@@ -82,7 +82,6 @@
 					</dl>
 					<div class="buttons">
 					  <button class="button rounded" id="close-recipe"><b>Легенда коктейля</b></button>
-					  <a class="button rounded strong bt-want-slap" id="where-to-buy" target="_blank" href="<%= @cocktail["shop_banner"] ? @cocktail["shop_banner"][:link] : "http://inshaker.pro/" %>"><b>Где всё купить</b></a>
 					</div>
 				</div>
 			</div>
@@ -148,12 +147,6 @@
 		</dd>
 	</dl></div>
 </div>
-
-<% if @cocktail["shop_banner"] %>
-<a class="common-box plain-h-banner" href="<%=@cocktail["shop_banner"][:link]%>" style="background-image: url(<%="#{@cocktail["html_name"]}-shop.png"%>)">Где купить ингредиенты для коктейля «<%= @name %>»</a>
-<% else %>
-<!--# include virtual="/w/shop-club-banner/shop-club-banner.html?2n" -->
-<% end %>
 
 <img id="print-logo-hd" src="/t/print/logo-hd.png">
 
