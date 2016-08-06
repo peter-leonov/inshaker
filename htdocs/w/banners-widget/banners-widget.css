@@ -2,3 +2,18 @@
 	position: relative;
 	z-index: 1;
 }
+.BannersWidget-wide {
+	margin-top: 20px;
+	display: block;
+	width: 627px;
+	height: 218px;
+}
+.BannersWidget-small {
+	margin-top: 20px;
+	display: inline-block;
+	width: 303px;
+	height: 218px;
+}
+.BannersWidget-small + .BannersWidget-small {
+	margin-left: 21px;
+}
