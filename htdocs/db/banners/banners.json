@@ -1,8 +1,18 @@
 [
 	{
-		"main": true,
+		"type": "wide",
+		"showOnAllCocktailsPage": true,
+		"weight": 0,
 		"query": "все коктейли",
 		"link": "http://yandex.ru/",
+		"img": ""
+	},
+	{
+		"type": "wide",
+		"showOnAllCocktailsPage": true,
+		"weight": 1,
+		"query": "все коктейли",
+		"link": "http://google.ru/",
 		"img": ""
 	}
 ]

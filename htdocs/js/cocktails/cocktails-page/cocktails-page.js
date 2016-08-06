@@ -39,6 +39,9 @@ function onready ()
 	
 	var bs = new BrandingScroller()
 	bs.bind(nodes)
+
+	if (window.BannersWidget)
+		window.BannersWidget('all-cocktails')
 }
 
 $.onready(onready)
