@@ -36,12 +36,12 @@ function onready ()
 		page: document.documentElement,
 		holder: $('#branded-image-holder')
 	}
-	
-	var bs = new BrandingScroller()
-	bs.bind(nodes)
 
 	if (window.BannersWidget)
 		window.BannersWidget('all-cocktails')
+
+	var bs = new BrandingScroller()
+	bs.bind(nodes)
 }
 
 $.onready(onready)

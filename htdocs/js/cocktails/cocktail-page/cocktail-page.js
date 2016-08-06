@@ -15,11 +15,11 @@ $.onready(function()
 		holder: $('#branded-image-holder')
 	}
 	
-	var bs = new BrandingScroller()
-	bs.bind(nodes)
-
 	if (window.BannersWidget)
 		window.BannersWidget('cocktail')
+
+	var bs = new BrandingScroller()
+	bs.bind(nodes)
 })
 
 <!--# include virtual="model.js" -->
