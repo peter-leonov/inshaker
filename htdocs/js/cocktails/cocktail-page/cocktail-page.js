@@ -17,6 +17,9 @@ $.onready(function()
 	
 	var bs = new BrandingScroller()
 	bs.bind(nodes)
+
+	if (window.BannersWidget)
+		window.BannersWidget('cocktail')
 })
 
 <!--# include virtual="model.js" -->

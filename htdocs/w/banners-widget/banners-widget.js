@@ -44,24 +44,52 @@ function renderBannersToNodes (banners, nodes)
     })
 }
 
-function renderAllCocktailsPageBanners ()
+function renderBanners (banners)
 {
-    // get banners marked to be shown on cocktails page
-    var matching = db
-        .filter(function (e) { return e.showOnAllCocktailsPage })
-
-    var layout = selectBannersToShow(sortByWeightAndRandomize(matching))
+    var layout = selectBannersToShow(sortByWeightAndRandomize(banners))
 
     if (layout.wide)
     {
         bannersRoot.show()
-        bannerWide.show()
         renderBannersToNodes(layout.wide, [bannerWide])
     }
-    
+
+    if (layout.small)
+    {
+        bannersRoot.show()
+        renderBannersToNodes(layout.small, [bannerA, bannerB])
+    }
+}
+
+function renderAllCocktailsPageBanners ()
+{
+    // get banners marked to be shown on cocktails page
+    var matching = db
+        .filter(function (banner) {
+            return banner.showOnAllCocktailsPage
+        })
+
+    renderBanners(matching)
+}
+
+function renderCocktailPageBanners ()
+{
+    // current page cocktail object, see cocktail-page/model.js
+    var cocktail = Model.cocktail
+    // get banners with queries matching the cocktail from the current page
+    var matching = db
+        .filter(function (banner) {
+            return Cocktail
+                .getCocktailsByQuery(banner.query.split(/\s*\+\s*/), [])
+                .indexOf(cocktail) != -1
+        })
+
+    renderBanners(matching)
 }
 
 if (type == 'all-cocktails')
     renderAllCocktailsPageBanners()
+else if (type == 'cocktail')
+    renderCocktailPageBanners()
 
 }

@@ -3,15 +3,23 @@
 		"type": "wide",
 		"showOnAllCocktailsPage": true,
 		"weight": 0,
-		"query": "все коктейли",
+		"query": "мохито",
 		"link": "http://yandex.ru/",
 		"img": ""
 	},
 	{
-		"type": "wide",
+		"type": "small",
 		"showOnAllCocktailsPage": true,
 		"weight": 1,
-		"query": "все коктейли",
+		"query": "мохито",
+		"link": "http://google.ru/",
+		"img": ""
+	},
+	{
+		"type": "small",
+		"showOnAllCocktailsPage": true,
+		"weight": 1,
+		"query": "мохито",
 		"link": "http://google.ru/",
 		"img": ""
 	}
