@@ -34,29 +34,9 @@ Array.prototype.uniqString = function uniqString ()
 	return res
 }
 
-Array.prototype.joinA = function joinA (o)
-{
-	var l = this.length
-	
-	if (l == 0)
-		return []
-	
-	var res = [this[0]]
-	
-	for (var i = 1; i < l; i++)
-	{
-		res.push(o)
-		res.push(this[i])
-	}
-	
-	return res
-}
-
-
 function Me ()
 {
 	this.ds = {}
-	this.searchCache = {}
   // this.hideGroups = {}
 	
 	this.state = new DefaultState()
@@ -160,7 +140,7 @@ Me.prototype =
 			return
 		}
 		
-		var cocktails = this.getCocktailsByQuery(add, remove)
+		var cocktails = Cocktail.getCocktailsByQuery(add, remove)
 		
 		if (cocktails.length == 0)
 		{
@@ -340,7 +320,7 @@ Me.prototype =
 		{
 			var query = combinatios[i]
 			
-			var set = this.getCocktailsByQuery(query, [])
+			var set = Cocktail.getCocktailsByQuery(query, [])
 			if (set.length)
 				suggestions.push({add: query, count: set.length})
 			
@@ -418,36 +398,6 @@ Me.prototype =
 		
 		this.view.setBookmark(state)
 		this.updateData()
-	},
-	
-	
-	getCocktailsByQuery: function (add, remove)
-	{
-		var key = add.join(':') + '::' + remove.join(':')
-		
-		// look up the cache
-		var cocktails = this.searchCache[key]
-		if (!cocktails)
-			cocktails = this.searchCache[key] = this.searchCocktails(add, remove)
-		
-		return cocktails
-	},
-	
-	searchCocktails: function (add, remove)
-	{
-		// remove logic has been removed ;)
-		var query = []
-		for (var i = 0, il = add.length; i < il; i++)
-		{
-		  if (!add[i])
-		    continue
-		  var entity = Cocktail.guessEntityCI(add[i])
-		  if (!entity)
-		    continue
-			query.push(entity)
-		}
-		
-		return Cocktail.getByQuery(query.joinA('&'))
 	},
 	
 	updateAllIngredients: function ()
