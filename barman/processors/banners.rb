@@ -13,8 +13,8 @@ class BannersProcessor < Inshaker::Processor
     DB_JS          = Inshaker::HTDOCS_DIR + "db/banners/banners.json"
 
     IMAGE = {
-      "wide"  => {dim: '627x218', size: 300},
-      "small" => {dim: '303x218', size: 150}
+      "wide"  => {dim: '627x218', size: 150},
+      "small" => {dim: '303x218', size: 75}
     }
   end
   
