@@ -1,26 +1,2 @@
 [
-	{
-		"type": "wide",
-		"showOnAllCocktailsPage": true,
-		"weight": 0,
-		"query": "мохито",
-		"link": "http://yandex.ru/",
-		"img": ""
-	},
-	{
-		"type": "small",
-		"showOnAllCocktailsPage": true,
-		"weight": 1,
-		"query": "мохито",
-		"link": "http://google.ru/",
-		"img": ""
-	},
-	{
-		"type": "small",
-		"showOnAllCocktailsPage": true,
-		"weight": 1,
-		"query": "мохито",
-		"link": "http://google.ru/",
-		"img": ""
-	}
 ]
