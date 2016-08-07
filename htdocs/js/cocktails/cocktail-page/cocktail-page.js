@@ -15,6 +15,9 @@ $.onready(function()
 		holder: $('#branded-image-holder')
 	}
 	
+	if (window.BannersWidget)
+		window.BannersWidget('cocktail')
+
 	var bs = new BrandingScroller()
 	bs.bind(nodes)
 })

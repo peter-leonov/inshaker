@@ -36,7 +36,10 @@ function onready ()
 		page: document.documentElement,
 		holder: $('#branded-image-holder')
 	}
-	
+
+	if (window.BannersWidget)
+		window.BannersWidget('all-cocktails')
+
 	var bs = new BrandingScroller()
 	bs.bind(nodes)
 }

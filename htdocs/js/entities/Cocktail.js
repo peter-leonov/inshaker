@@ -1,3 +1,21 @@
+Array.prototype.joinA = function joinA (o)
+{
+	var l = this.length
+	
+	if (l == 0)
+		return []
+	
+	var res = [this[0]]
+	
+	for (var i = 1; i < l; i++)
+	{
+		res.push(o)
+		res.push(this[i])
+	}
+	
+	return res
+}
+
 ;(function(){
 
 function Me (data)
@@ -530,7 +548,36 @@ Me.staticMethods =
 		
 		return a
 	},
-	
+
+	searchCocktails: function (add)
+	{
+		var query = []
+		for (var i = 0, il = add.length; i < il; i++)
+		{
+		  if (!add[i])
+		    continue
+		  var entity = this.guessEntityCI(add[i])
+		  if (!entity)
+		    continue
+			query.push(entity)
+		}
+
+		return this.getByQuery(query.joinA('&'))
+	},
+
+	searchCache:  {},
+	getCocktailsByQuery: function (add, remove)
+	{
+		var key = add.join(':') + '::' + remove.join(':')
+		
+		// look up the cache
+		var cocktails = this.searchCache[key]
+		if (!cocktails)
+			cocktails = this.searchCache[key] = this.searchCocktails(add, remove)
+		
+		return cocktails
+	},
+
 	precacheData: function (name, data)
 	{
 	  this.dataCache[name] = data

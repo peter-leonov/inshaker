@@ -1,3 +1,15 @@
+# run on MacOS
+
+	sudo nginx -q -p "." -c "nginx.developer.conf" -g "user $USER staff;"
+	127.0.0.1 dev.inshaker.ru
+
+	set -x RUBYLIB './'
+	ln -s /usr/local/Cellar/ruby/2.2.3/bin/ruby ~/bin/ruby1.9
+	gem install ...
+
+	sudo ln -s /Users/peter/www/inshaker.ru/ /www/inshaker
+	set -x INSHAKER_BASE_DIR ~/inshaker/
+
 # Главное
 
 Ни при каких условиях не пишите свои приложения так, чтобы они ожидали что картинка коктейля будет лежать на www.inshaker.ru там, где она лежит сейчас. Или что формат, например, `cocktails.json` или `ingredients.json` не изменится (как раз обязательно изменится). Никто не гарантирует никаких предварительных уведомлений, серверных редиректов, содержательных сообщений об ошибках и тому подобного.
