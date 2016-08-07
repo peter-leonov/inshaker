@@ -1,6 +1,6 @@
-# run
+# run on MacOS
 
-	sudo nginx -q -p "." -c "nginx.developer.conf"
+	sudo nginx -q -p "." -c "nginx.developer.conf" -g "user $USER staff;"
 	127.0.0.1 dev.inshaker.ru
 
 	set -x RUBYLIB './'
