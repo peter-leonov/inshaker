@@ -28,6 +28,7 @@ module Inshaker
       "mybar" => {script: "./processors/mybar.rb", name: "Мой бар"},
       "groups" => {script: "./processors/groups.rb", name: "Группы коктейлей"},
       "branding" => {script: "./processors/branding.rb", name: "Брендинг"},
+      "banners" => {script: "./processors/banners.rb", name: "Баннеры"},
       
       "analytics" => {script: "./processors/analytics.rb", name: "Аналитика"},
       
@@ -40,7 +41,6 @@ module Inshaker
     {
       "mike" => "занял Мишенька",
       "max" => "занял Максимка",
-      "viola" => "заняла Виолочка",
       "peter" => "занял Петечка",
       "barman" => "занял Бармен",
       "worker" => "занял Рабочий"
