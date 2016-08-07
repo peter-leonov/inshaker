@@ -40,8 +40,9 @@ function renderBannersToNodes (banners, nodes)
     banners.forEach(function (banner, i) {
         nodes[i].show()
         nodes[i].href = banner.link
-        nodes[i].style.backgoundColor = banner.bgColor
-        nodes[i].style.backgoundImage = 'url('+banner.bgImage+')'
+        console.log(banner.bgColor)
+        nodes[i].style.backgroundColor = banner.bgColor
+        nodes[i].style.backgroundImage = 'url('+banner.bgImage+')'
     })
 }
 

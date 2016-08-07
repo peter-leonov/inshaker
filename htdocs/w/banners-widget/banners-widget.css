@@ -2,6 +2,11 @@
 	position: relative;
 	z-index: 1;
 }
+.BannersWidget-wide,
+.BannersWidget-small {
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 .BannersWidget-wide {
 	margin-top: 20px;
 	display: block;
