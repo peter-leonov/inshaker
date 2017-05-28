@@ -1,3 +1,10 @@
+# Run in Docker
+
+    echo '127.0.0.1 inshaker' >> /etc/hosts
+    docker-compose up
+    open http://inshaker/
+
+
 # run on MacOS
 
 	sudo nginx -q -p "." -c "nginx.developer.conf" -g "user $USER staff;"
