@@ -1,14 +1,15 @@
 # encoding: utf-8
 require 'sqlite3'
 require 'digest/md5'
+require 'byebug'
 
 class Storage
   module Config
-    ROOT = File.dirname(__FILE__)
-    throw "need absolute path" unless ROOT[0] == '/'
+    # ROOT = File.dirname(__FILE__)
+    # throw "need absolute path" unless ROOT[0] == '/'
 
-    DB_PATH = ROOT + '/db/storage.sqlite3'
-    SALT = File.read(ROOT + '/salt.txt')
+    DB_PATH = '/app/db/storage.sqlite3'
+    SALT = "secretsalt"#File.read(ROOT + '/salt.txt')
     throw "need salt" if SALT.nil?
   end
   
@@ -82,7 +83,7 @@ class Storage
         return [
           404,
           {"Content-Type" => "application/json"},
-          [%Q{{"error":"“bar” does not exist"}}]
+          [%Q{{"error":"bar does not exist"}}]
         ]
       end
       
@@ -104,10 +105,11 @@ class Storage
           ]
         end
       rescue => e
+        warn e, e.backtrace
         return [
           404,
           {"Content-Type" => "application/json"},
-          [%Q{{"error":"“bar” does not exist"}}]
+          [%Q{{"error":"bar does not exist"}}]
         ]
       end
     end
@@ -115,7 +117,7 @@ class Storage
     return [
       404,
       {"Content-Type" => "application/json"},
-      [%Q{{"error":"unknown action “#{action}”"}}]
+      [%Q{{"error":"unknown action #{action}"}}]
     ]
   end
 end

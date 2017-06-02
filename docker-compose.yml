@@ -9,3 +9,11 @@ services:
       - .:/app
       - ./nginx.production.conf:/etc/nginx/nginx.conf:ro
     restart: always
+    depends_on:
+      - storage
+
+  storage:
+    build: ./storage
+    volumes:
+      - ./storage:/app
+    restart: always
