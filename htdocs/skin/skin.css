@@ -8,7 +8,7 @@ html.bars-section,
 html.mybar-section,
 html.cocktail-groups-section
 {
-  background: <!--# include virtual="/skin/2015.11/bg-color.txt" --> url(/skin/<!--# echo var="date_local" -->/bg.jpg) fixed center top repeat-x;
+  background: <!--# include virtual="/skin/2015.11/bg-color.txt" --> url(/skin/2015.11/bg.jpg) fixed center top repeat-x;
   background-size: auto 100%;
 }
 
@@ -16,12 +16,12 @@ html.cocktail-groups-section
 {
   display: block;
   width: 100px; height: 50px; right: -10px; top: 12px;
-  background: url(/skin/<!--# echo var="date_local" -->/logo-on-black.png) center center no-repeat;
+  background: url(/skin/2015.11/logo-on-black.png) center center no-repeat;
 }
 
 #combinator-page #spotlighted i
 {
-  background: url(/skin/<!--# echo var="date_local" -->/logo-on-white.png) center center no-repeat;
+  background: url(/skin/2015.11/logo-on-white.png) center center no-repeat;
 }
 
 #branded-image-holder
@@ -32,7 +32,7 @@ html.cocktail-groups-section
 {
   display: block;
   width: 315px; height: 450px; right: 0; top: 23px;
-  background: <!--# include virtual="/skin/2015.11/image-color.txt" --> url(/skin/<!--# echo var="date_local" -->/image.jpg) center no-repeat;
+  background: <!--# include virtual="/skin/2015.11/image-color.txt" --> url(/skin/2015.11/image.jpg) center no-repeat;
 }
 
 #cocktail-page #branded-image-holder,
