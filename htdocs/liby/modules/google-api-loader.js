@@ -2,13 +2,12 @@
 
 var myName = 'GoogleApiLoader'
 
-function Me (keys, host, language)
+function Me (key, language)
 {
-	this.host = /[^.]+\.[^.]+$/i.exec(host || location.host)
 	this.state = 'init'
+	this.key = key
 	this.apis = []
 	this.language = language || (self.LanguagePack ? LanguagePack.code : 'en')
-	this.keys = keys
 	this.prerequisites = {}
 }
 
@@ -23,10 +22,7 @@ Me.prototype =
 		
 		if (this.state == 'init')
 		{
-			if (!this.keys)
-				throw new Error(myName + ': keys is undefined')
-			
-			this.node = $.load('http://www.google.com/jsapi?key=' + this.keys[this.host])
+			this.node = $.load('http://www.google.com/jsapi')
 			
 			function wait ()
 			{
