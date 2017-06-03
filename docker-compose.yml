@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    image: peterleonov/inshaker-web
     build: .
     ports:
       - 80:80
@@ -13,6 +14,7 @@ services:
       - storage
 
   storage:
+    image: peterleonov/inshaker-storage
     build: ./storage
     volumes:
       - ./storage:/app
