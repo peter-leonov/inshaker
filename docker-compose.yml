@@ -6,9 +6,6 @@ services:
     build: .
     ports:
       - 80:80
-    volumes:
-      - .:/app
-      - ./nginx.production.conf:/etc/nginx/nginx.conf:ro
     restart: always
     depends_on:
       - storage
@@ -16,6 +13,4 @@ services:
   storage:
     image: peterleonov/inshaker-storage
     build: ./storage
-    volumes:
-      - ./storage:/app
     restart: always

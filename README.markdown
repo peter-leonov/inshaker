@@ -1,8 +1,17 @@
 # Run in Docker
 
+Dev:
+
     echo '127.0.0.1 inshaker' >> /etc/hosts
-    docker-compose up
+    docker-compose -f docker-compose.yml -f dev.yml up
     open http://inshaker/
+
+Deploy:
+
+    docker-compose push
+    eval $(docker-machine env inshaker)
+    docker-compose pull
+    docker-compose up -d
 
 
 # run on MacOS

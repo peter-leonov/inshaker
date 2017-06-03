@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    volumes:
+      - .:/app
+      - ./nginx.production.conf:/etc/nginx/nginx.conf:ro
+
+  storage:
+    volumes:
+      - ./storage:/app
