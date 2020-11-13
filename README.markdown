@@ -28,5 +28,6 @@ Deploy:
 
 # License
 
-For the code license is MIT (both inshaker and liby).
-Data is proprietary, think of it as if you've found it on public web site.
+Very much Doom inspired:
+* for the source code the license is MIT (for both Inshaker and Liby);
+* for the data the is no license (it's proprietary) think of it as if you've found it on public web site.
